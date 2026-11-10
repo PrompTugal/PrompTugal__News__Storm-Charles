@@ -26,7 +26,7 @@ for (const c of items) for (const to of c.to) { const k = c.agent + '\u0000' + t
 fs.mkdirSync(path.dirname(OUT), { recursive: true })
 fs.writeFileSync(OUT, JSON.stringify({
     about: 'The last commits on dev of this repository: who pushed what, when, and for whom (Agent: and For: trailers), and each pair\'s count. Written by tools/agents-commits.mjs from git log; a snapshot as of read_at (the live page reads GitHub\'s public API first and falls back to this). No session ids.',
-    kept_by: 'incident.observability@web-summit.dinis', repository: REPO, branch: 'dev', read_at: new Date().toISOString().replace(/\.\d+Z$/, 'Z'),
+    by: 'incident.observability@web-summit.dinis', updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'), repository: REPO, branch: 'dev',
     head: items[0]?.sha || '', count: items.length,
     talks: [...pairs.values()].sort((a, b) => b.n - a.n || a.from.localeCompare(b.from)), items
 }, null, 1) + '\n')

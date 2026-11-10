@@ -1,7 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
-  "state": "active: /agents/ shows every agent, Dinis's asks on top, who talks to whom on Angelo's live map, and the team in Silvio's Universe (map, circuit, Talk), both as pinned copies; next page views, release speed, the ledger",
-  "last_wake": "2026-11-10T23:51Z",
+  "by": "incident.observability@web-summit.dinis",
+  "updated": "2026-11-10T23:54:49Z",
+  "state": "active: /agents/ shows every agent, Dinis's asks, who talks to whom (Angelo's live map), the Universe (Silvio's), release speed per push and the model ledger; page views are built and switched off until a vault exists",
+  "last_wake": "2026-11-10T23:54Z",
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
     "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -13,16 +15,21 @@
     "the agents page at /app/agents/ (app/agents/agents.js, agents.css, index.html, about.md): asks for Dinis on top, a card per agent, who writes for whom, the last pushes; live status files and GitHub's public API, refreshed every minute",
     "Angelo's live map on /app/agents/#live: live.js and live3d.js unchanged, pinned at SGit-AI__Website__Web-Summit commit 57636ac (app/agents/vendor/live-map@57636ac/pin.json, tools/agents-pin.mjs); app/agents/live-adapter.js shapes this repository's commits (Agent: and For: trailers) into the engine's map and live.json, and labels the dots through the engine's own hook; 3D loads Silvio's three.js bundle from web-summit.sgit.ai under a sha384 check, never committed",
     "tools/agents-commits.mjs -> data/agents/commits.json (who pushed what, for whom; pair counts): the page's fallback when GitHub's API does not answer, and the who-talks-to-whom dataset for agents",
-    "Silvio's Universe on /agents/#universe (Map, Circuit, Talk): brain.js and brain.css unchanged, pinned at commit 57636ac (app/agents/vendor/universe@57636ac/pin.json); app/agents/universe-adapter.js puts this site's four readers where the engine looks (window.LiveUniverse), so it draws this team from this repository and reads nothing from its home site; opened on request (1.6 MB of 3D libraries from web-summit.sgit.ai under a sha384 check)"
+    "Silvio's Universe on /agents/#universe (Map, Circuit, Talk): brain.js and brain.css unchanged, pinned at commit 57636ac (app/agents/vendor/universe@57636ac/pin.json); app/agents/universe-adapter.js puts this site's four readers where the engine looks (window.LiveUniverse), so it draws this team from this repository and reads nothing from its home site; opened on request (1.6 MB of 3D libraries from web-summit.sgit.ai under a sha384 check)",
+    "release speed on /agents/#releases: every run of the deploy workflow (GitHub's public API): pushed, by whom, deployed / superseded / failed, seconds from push to run finished; median and slowest tenth",
+    "the model ledger on /agents/#ledger: tools/agents-ledger.mjs turns an agent's own ledger (tools/llm.mjs) into counts per day and task in data/agents/ledger/<role>.json (no model names, prompts or answers)",
+    "page views: app/agents/obs.js, promptugal.news's sender without the place lookup (no third party sees a visitor's IP); data/agents/obs.json holds its lane and is off until a vault exists",
+    "tools/agents-index.mjs takes --out <dir> (the build can refresh the index on every push); every JSON carries by and updated; about.md opens with its Kept-by line"
   ],
   "next": [
-    "page views without geo lookup (promptugal.news's obs.js model)",
-    "release speed per push (from CI's public run records; a proposal for deploy.yml to the conductor)",
-    "the model ledger (tools/llm.mjs)",
-    "replay.js (the Gantt of every commit) on the live-map pin, if its data shape can be made in the browser"
+    "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
+    "replay.js (the Gantt of every commit) on the live-map pin, if its data shape can be made in the browser",
+    "agents' behaviour policies in the Circuit, once the conductor says where they live (agents/policy.json?)"
   ],
   "asks": [
-    "incident.conductor@: an observation, yours to route: the Universe's Circuit shows 0 of this team's agents with a behaviour policy (the summit team's agents have ABPs under /abp/). The adapter does not pass job rows off as policies. If the team should have them, say who writes them and where; the Circuit will show them once universe-adapter.js reads that place.",
-    "everyone: keep agents/<role>/status.json (agent, state, last_wake in UTC ISO 8601, done, next, asks) and put Agent: and For: trailers on every commit; that is all the page needs."
+    "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session).",
+    "incident.conductor@: three small changes in files of yours. (1) admin/build/build.mjs: add 'tools/agents-index.mjs' to the --out generators, so /data/agents/index.json is made from each push and nobody regenerates it by hand. (2) the page head: <script src=\"${u}app/agents/obs.js\" defer></script> on every page (it does nothing until obs.json is enabled). (3) .github/workflows/deploy.yml, the last step: also print the figure as an annotation, echo \"::notice title=push-to-served::$((now - pushed)) s ($VERSION)\", so /agents/ can show CI's exact number from the public check-runs API instead of the upper bound it shows now.",
+    "incident.conductor@: the Universe's Circuit shows 0 of this team's agents with a behaviour policy. I see agents/policy.json was placed from the librarian's draft: say when it is agreed and universe-adapter.js will read it.",
+    "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line)."
   ]
 }

@@ -2,6 +2,8 @@
 // The team's index: repository -> data/agents/index.json (kept by incident.observability@web-summit.dinis).
 //   node tools/agents-index.mjs            write it
 //   node tools/agents-index.mjs --check    exit 1 if the committed file is behind the repository
+//   node tools/agents-index.mjs --out _site   write <dir>/data/agents/index.json instead (for the build: on every push the
+//                                          site serves the index made from that commit, and no tracked file is touched)
 // Reads only files in the working tree, never git history: agents/JOBS.md (the roster and each job), agents/*/status.json
 // (state, done, next, asks), data/keys.json (public keys). The page (app/agents/agents.js) reads this JSON, then each
 // agent's live status.json and GitHub's public API for commits, so a status an agent pushes shows without this tool running.
@@ -12,7 +14,7 @@ import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const OUT = path.join(ROOT, 'data/agents/index.json')
+const outAt = process.argv.indexOf('--out'), OUT = path.join(outAt > 0 ? path.resolve(process.argv[outAt + 1]) : ROOT, 'data/agents/index.json')
 const DOMAIN = 'web-summit.dinis'
 const read = rel => fs.readFileSync(path.join(ROOT, rel), 'utf8')
 // session ids and session links never reach a page (as Silvio's clean() does on the Universe)
@@ -56,25 +58,29 @@ for (const k of JSON.parse(read('data/keys.json')).keys || []) {
     ;(a.keys ||= []).push({ id: k.id, record: k.bundle?.signing_fingerprint || '', encryption: k.bundle?.fingerprint || '', added: k.added || '', status: k.status || '', how: clean(k.how || '') })
 }
 
+// 4. model calls, as counts: one file per agent, written by tools/agents-ledger.mjs on the machine that made them
+const LED = path.join(ROOT, 'data/agents/ledger')
+const ledger = fs.existsSync(LED) ? fs.readdirSync(LED).filter(f => f.endsWith('.json')).sort().map(f => `data/agents/ledger/${f}`) : []
+
 const order = ['conductor', 'observability', 'designer', 'identity', 'dev', 'meteorologist', 'researcher']
 const agents = [...roster.values()].sort((a, b) => ((order.indexOf(a.role) + 1) || 99) - ((order.indexOf(b.role) + 1) || 99) || a.name.localeCompare(b.name))
     .map(a => ({ in_jobs: !!a.job, has_status: !!a.status_file, has_key: !!a.keys?.length, ...a }))
 const body = {
     about: 'Every agent of the incident team behind storm-charles.promptugal.news: its job (agents/JOBS.md), what it says it is doing, has done, will do next and asks for (agents/<role>/status.json; asks starting "Dinis:" are for the operator), and its public key fingerprints (data/keys.json). Written by tools/agents-index.mjs from the repository; nothing here is typed by hand. Commits are not in this file: the page reads them from GitHub\'s public API.',
-    kept_by: 'incident.observability@web-summit.dinis',
+    by: 'incident.observability@web-summit.dinis',
     repository: 'PrompTugal/PrompTugal__News__Storm-Charles', branch: 'dev',
-    sources: ['agents/JOBS.md', 'agents/*/status.json', 'data/keys.json'],
+    sources: ['agents/JOBS.md', 'agents/*/status.json', 'data/keys.json', 'data/agents/ledger/*.json'],
     counts: { agents: agents.length, with_status: agents.filter(a => a.has_status).length, with_key: agents.filter(a => a.has_key).length, asks_for_dinis: agents.reduce((n, a) => n + (a.asks_dinis?.length || 0), 0) },
-    agents
+    ledger, agents
 }
 // generated_at changes only when the content does: a run with nothing new writes nothing (no commit churn)
 const sig = crypto.createHash('sha256').update(JSON.stringify(body)).digest('hex')
-let prev = null; try { prev = JSON.parse(fs.readFileSync(OUT, 'utf8')) } catch { }
+let prev = null; try { prev = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/agents/index.json'), 'utf8')) } catch { }
 const same = prev?.content_sha256 === sig
 if (process.argv.includes('--check')) { console.log(same ? 'agents-index: current' : 'agents-index: behind the repository (run node tools/agents-index.mjs)'); process.exit(same ? 0 : 1) }
-if (same) console.log(`agents-index: no change (${agents.length} agents)`)
+if (same && outAt < 0) console.log(`agents-index: no change (${agents.length} agents)`)
 else {
     fs.mkdirSync(path.dirname(OUT), { recursive: true })
-    fs.writeFileSync(OUT, JSON.stringify({ ...body, generated_at: new Date().toISOString().replace(/\.\d+Z$/, 'Z'), content_sha256: sig }, null, 2) + '\n')
+    fs.writeFileSync(OUT, JSON.stringify({ ...body, updated: same && prev.updated ? prev.updated : new Date().toISOString().replace(/\.\d+Z$/, 'Z'), content_sha256: sig }, null, 2) + '\n')
     console.log(`agents-index: ${agents.length} agents, ${body.counts.with_status} with a status, ${body.counts.with_key} with a key, ${body.counts.asks_for_dinis} asks for Dinis -> data/agents/index.json`)
 }

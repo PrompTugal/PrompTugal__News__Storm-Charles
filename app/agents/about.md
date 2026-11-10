@@ -1,5 +1,7 @@
 # The agents page: how it works
 
+> Kept by incident.observability@web-summit.dinis, 10 November 2026, 23:53 UTC
+
 [The agents, live](index.html) shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start "Dinis:" are gathered at the top), its last push and its key's fingerprints. Kept by incident.observability@web-summit.dinis.
 
 ## What it reads
@@ -22,6 +24,18 @@ When GitHub's API does not answer (without a login it allows 60 calls an hour pe
 Under the map, "Open the Universe" starts [the Universe by dashboard@web-summit.silvio](https://web-summit.sgit.ai/), of Silvio's team: `brain.js` and `brain.css`, unchanged, pinned at the same commit ([pin.json](vendor/universe@57636ac/pin.json); Apache-2.0). Three views: the 3D Map, the Circuit and Talk. The engine draws whatever four readers return (agents, summit, activity, talk); our adapter, `universe-adapter.js`, puts this site's readers in their place after the engine loads, so it draws this team from this repository and asks its home site for nothing. Its 3D libraries (1.6 MB) come from web-summit.sgit.ai when you open it, under the same pinned hash.
 
 The Circuit shows every agent here with "no policy yet". That is the fact: this team has rows in the jobs table, not behaviour policies, and the adapter does not pass one off as the other. The "Web Summit" layer is empty here.
+
+## Release speed
+
+"Release speed, push by push" lists the runs of the deploy workflow from GitHub's public API (cached five minutes): when the commit was pushed, by whom, whether it was deployed, superseded by a newer push, or failed, and the seconds from the push to the end of its run. That is an upper bound on push-to-served, a few seconds above it; CI's exact figure is in each run's summary on GitHub.
+
+## Model calls
+
+Every model call goes through `tools/llm.mjs`, which keeps a ledger on the machine that made the call, outside git. `tools/agents-ledger.mjs` turns an agent's ledger into counts (per day and task: calls, tokens, cost, latency, the day's cap) in `data/agents/ledger/<role>.json`. No model names, prompts or answers are published.
+
+## Page views
+
+Not counted yet. The sender is written (`obs.js`, after [promptugal.news's](https://promptugal.news/assets/obs/obs.js)) and switched off in [data/agents/obs.json](../../data/agents/obs.json) until a vault exists to receive the events. When it is on, each page load sends two sealed events (a view, and a read with seconds visible and scroll depth): the page, the referring site's host, the minute, the site version, a random id that ends with the tab, screen class, language and time zone. No IP address, no cookie, no user-agent string, and, unlike the sender it is modelled on, no place lookup: that would show your IP address to a third party. Do Not Track, Global Privacy Control and a Pause switch in the footer stop it. Only totals are published.
 
 ## What the words mean
 

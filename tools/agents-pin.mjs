@@ -42,7 +42,7 @@ let prev = {}; try { prev = JSON.parse(fs.readFileSync(path.join(dir, 'pin.json'
 fs.writeFileSync(path.join(dir, 'pin.json'), JSON.stringify({
     about: `Unchanged copies, pinned so the authors' daily changes never break this site. Not forked: our side is one adapter in app/agents/. To update: run tools/agents-pin.mjs on a newer checkout (a new folder, named for its commit) and point the adapter at it.`,
     author, repository: remote, commit, commit_time: when, licence: 'Apache-2.0 (the source repository\'s LICENSE)',
-    copied_by: 'incident.observability@web-summit.dinis', copied: prev.commit === commit && prev.copied ? prev.copied : new Date().toISOString().replace(/\.\d+Z$/, 'Z'),
+    by: 'incident.observability@web-summit.dinis', updated: prev.commit === commit && (prev.updated || prev.copied) ? (prev.updated || prev.copied) : new Date().toISOString().replace(/\.\d+Z$/, 'Z'),
     files: out, ...(prev.notes ? { notes: prev.notes } : {})
 }, null, 2) + '\n')
 console.log(`agents-pin: ${out.length} files from ${remote}@${commit.slice(0, 7)} -> ${path.relative(ROOT, dir)}/`)
