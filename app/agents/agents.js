@@ -7,6 +7,12 @@
 // Refreshes every minute. Everything shown is escaped; session ids are stripped; only https links are made.
 (() => {
     const el = document.getElementById('agents-live'); if (!el) return
+    const HERE = document.currentScript.src
+    // the live map (Angelo's engine, pinned; live-adapter.js feeds it): its own box after the cards, so a refresh never redraws it
+    const liveBox = document.createElement('section'); liveBox.id = 'live'; liveBox.className = 'ag-live'
+    liveBox.innerHTML = `<h2 class="ag-h">Who talks to whom, live</h2><p class="ag-note">Each dot is an agent, beside the person who operates it; each pulse is a commit travelling to the agents named in its <code>For:</code> trailer, at its real moment (four minutes behind, so it plays in order); the faint flow shows how busy each pair has been. Drag the dial to look back. The engine is <a href="https://web-summit.sgit.ai/people/angelo/app/">the live map by dev.map@PrompTugal.angelo, of Angelo's team</a>, an unchanged copy pinned at <a href="${new URL('vendor/live-map@57636ac/pin.json', HERE).href}">commit 57636ac</a>; 3D uses the three.js bundle from Silvio's Universe, loaded from web-summit.sgit.ai only when switched on.</p><div id="ag-live-map"></div><p class="ag-note" data-ag-live-note></p>`
+    el.insertAdjacentElement('afterend', liveBox)
+    { const s = document.createElement('script'); s.src = new URL('live-adapter.js', HERE).href; document.head.appendChild(s) }
     const BASE = el.dataset.base || '../../', REPO = 'PrompTugal/PrompTugal__News__Storm-Charles', BRANCH = 'dev'
     const GH = `https://api.github.com/repos/${REPO}/commits?sha=${BRANCH}&per_page=100`, CACHE = 'sc-agents-commits-v1', TTL = 120e3
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
@@ -24,15 +30,19 @@
         const agent = tr('Agent')[0] || (subject.match(/^([a-z]+\.[a-z0-9-]+@[a-z0-9.-]+):/i) || [])[1] || ''
         return { sha: c.sha, at: c.commit?.committer?.date || c.commit?.author?.date, agent, to: tr('For'), issue: tr('Issue')[0] || '', what: subject.replace(/^[^:]+@[^:]+:\s*/, ''), url: c.html_url }
     }
+    // GitHub first (two-minute cache); when it does not answer, the snapshot in data/agents/commits.json; whichever is newer wins,
+    // and commits GitHub's list no longer holds are kept from the snapshot (the map's dial reaches back over them)
     async function commits() {
         let c = null; try { c = JSON.parse(localStorage.getItem(CACHE)) } catch { }
         if (c && Date.now() - c.read < TTL) return { ...c, cached: true }
-        try {
-            const items = (await getJSON(GH, { headers: { Accept: 'application/vnd.github+json' } })).map(parse)
-            c = { read: Date.now(), items }
-            try { localStorage.setItem(CACHE, JSON.stringify(c)) } catch { }
-            return c
-        } catch (e) { return c ? { ...c, cached: true, error: e.message } : { read: 0, items: [], error: e.message } }
+        let error = '', api = null
+        try { api = (await getJSON(GH, { headers: { Accept: 'application/vnd.github+json' } })).map(parse) } catch (e) { error = e.message }
+        let snap = null; try { snap = await getJSON(`${BASE}data/agents/commits.json?t=${Math.floor(Date.now() / 6e4)}`) } catch { }
+        if (!api && !snap) return c ? { ...c, cached: true, error } : { read: 0, items: [], error }
+        const have = new Set((api || []).map(x => x.sha)), items = (api || []).concat((snap?.items || []).filter(x => !have.has(x.sha))).sort((a, b) => Date.parse(b.at) - Date.parse(a.at))
+        const out = { read: Date.now(), items, error, source: api ? 'github' : 'snapshot', snapshot_at: snap?.read_at || '' }
+        if (api) try { localStorage.setItem(CACHE, JSON.stringify(out)) } catch { }
+        return out
     }
 
     const liveness = (a, last) => {
@@ -52,7 +62,7 @@
 <h3>${T(short(a.name))}<span class="ag-pill ${cls}">${esc(word)}</span></h3>
 <div class="role">${T(a.role)}${a.shared_row ? '' : ''}</div>
 ${a.state ? `<p><span class="lbl">Doing (its own words)</span>${T(a.state)}</p>` : `<p class="ag-note">${a.has_status ? 'No state written.' : `No status file yet (expected at <code>agents/${esc(a.role)}/status.json</code>).`}</p>`}
-<p><span class="lbl">Last push</span>${last ? `<a href="${esc(/^https:/.test(last.url) ? last.url : '#')}">${T(last.what)}</a><br><span class="ag-note">${esc(ago(last.at))} · ${esc(utc(last.at))} · ${mine.length} of the last 100 commits${last.to.length ? ` · for ${T(last.to.map(short).join(', '))}` : ''}</span>` : '<span class="ag-note">None among the last 100 commits on dev.</span>'}</p>
+<p><span class="lbl">Last push</span>${last ? `<a href="${esc(/^https:/.test(last.url) ? last.url : '#')}">${T(last.what)}</a><br><span class="ag-note">${esc(ago(last.at))} · ${esc(utc(last.at))} · ${mine.length} commit${mine.length > 1 ? 's' : ''} read${last.to.length ? ` · for ${T(last.to.map(short).join(', '))}` : ''}</span>` : '<span class="ag-note">No commit read from it on dev.</span>'}</p>
 ${a.last_wake ? `<p><span class="lbl">Last wake (its own file)</span>${esc(utc(a.last_wake))} · ${esc(ago(a.last_wake))}</p>` : ''}
 ${a.asks_dinis?.length ? `<p><span class="lbl">Asks Dinis</span></p>${ul(a.asks_dinis, 'ask')}` : ''}
 ${a.asks?.length ? `<p><span class="lbl">Asks the team</span></p>${ul(a.asks)}` : ''}
@@ -109,9 +119,10 @@ ${strangers.length ? `<p class="ag-note">Also pushing here, not in agents/JOBS.m
 ${flow(gh.items)}
 <h2 class="ag-h" id="pushes">The last pushes</h2>
 <ul class="ag-feed">${gh.items.slice(0, 25).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(11, 16))}</time><code>${T(short(c.agent) || '?')}</code> <a href="${esc(/^https:/.test(c.url) ? c.url : '#')}">${T(c.what)}</a>${c.to.length ? ` <span class="ag-note">for ${T(c.to.map(short).join(', '))}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commits read.</li>'}</ul>
-<p class="ag-note">Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. Roster, jobs, statuses and keys: <a href="${BASE}data/agents/index.json">data/agents/index.json</a> (written ${T(idx.generated_at)} from agents/JOBS.md, agents/*/status.json and data/keys.json), then each agent's own status.json as served now. Commits: <a href="https://github.com/${REPO}/commits/${BRANCH}">GitHub's public API</a>${gh.read ? `, read ${esc(new Date(gh.read).toISOString().slice(11, 19))} UTC${gh.cached ? ' (cached up to two minutes in this browser)' : ''}` : ''}${gh.error ? ` <span class="ag-err">(GitHub did not answer: ${T(gh.error)}; an unsigned-in browser gets 60 calls an hour)</span>` : ''}. "Active", "quiet" (30 min to 2 h) and "silent" are derived from the last push or wake; "blocked" is the agent's own word. Session ids are never shown.</p>`
+<p class="ag-note">Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. Roster, jobs, statuses and keys: <a href="${BASE}data/agents/index.json">data/agents/index.json</a> (written ${T(idx.generated_at)} from agents/JOBS.md, agents/*/status.json and data/keys.json), then each agent's own status.json as served now. Commits: ${gh.source === 'snapshot' ? `<a href="${BASE}data/agents/commits.json">the snapshot in data/agents/commits.json</a>, taken ${T(gh.snapshot_at)} <span class="ag-err">(GitHub's public API did not answer this browser${gh.error ? ': ' + T(gh.error) : ''}; without a login it allows 60 calls an hour per address, so pushes after the snapshot are missing until it does)</span>` : `<a href="https://github.com/${REPO}/commits/${BRANCH}">GitHub's public API</a>${gh.read ? `, read ${esc(new Date(gh.read).toISOString().slice(11, 19))} UTC${gh.cached ? ' (cached up to two minutes in this browser)' : ''}` : ''}${gh.error ? ` <span class="ag-err">(GitHub did not answer: ${T(gh.error)})</span>` : ''}`}. "Active", "quiet" (30 min to 2 h) and "silent" are derived from the last push or wake; "blocked" is the agent's own word. Session ids are never shown.</p>`
         for (const d of el.querySelectorAll('details')) { const k = d.closest('article')?.id + '|' + d.querySelector('summary')?.textContent.replace(/ \(\d+\)$/, ''); if (hadDrawn) d.open = open.has(k) }
         el.dataset.drawn = '1'
+        document.dispatchEvent(new CustomEvent('agents-data', { detail: { idx, commits: gh.items } }))
         if (!hadDrawn && location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView()
     }
     draw(); setInterval(() => { if (!document.hidden) draw() }, 60e3)
