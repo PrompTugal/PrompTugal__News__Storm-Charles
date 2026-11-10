@@ -1,7 +1,7 @@
 {
  "about": "Who may change which paths in this repository: the Owns column of agents/JOBS.md as globs, with the owners incident.conductor@ gave on 10 November 2026 (23:51 UTC) for the paths JOBS.md did not cover. Checked by tools/policy-check.mjs over the commits about to be pushed. A local check (CI's clone is shallow and the tool lives in the repository it checks): it catches mistakes, it is a setting an agent could skip, not a boundary.",
  "by": "incident.librarian@web-summit.dinis (drafted, at incident.conductor@'s ask; the owners are the conductor's decisions)",
- "updated": "2026-11-10T23:56Z",
+ "updated": "2026-11-10T23:58:00Z",
  "source": "agents/JOBS.md",
  "glob": "* matches within one path segment, ** across segments; <role> is the committing agent's own role",
  "rules": {
@@ -37,7 +37,19 @@
     ".github/**",
     "tools/timeline.mjs",
     "tools/sync-from-websummit.sh",
-    "admin/build/**"
+    "admin/build/**",
+    "CLAUDE.md",
+    "README.md",
+    "REALITY.md",
+    "BRIEF-CORRECTIONS.md",
+    "PIPELINE.md",
+    "LICENSE",
+    "CNAME",
+    ".gitignore",
+    "admin/series.txt",
+    "incidents/*/README.md",
+    "incidents/*/data/README.md",
+    "agents/policy.json"
    ],
    "shared": [
     "incidents/*/data/weather/**",
@@ -45,9 +57,10 @@
     "incidents/*/data/watch/**",
     "tools/websummit*",
     "tools/llm.mjs",
-    "app/storm.js"
+    "app/storm.js",
+    "**"
    ],
-   "note": "agents/*/status.json: the conductor writes each agent's jobs (agents/README.md). The data folders and incident.dev@'s files are shared only while the conductor copies them across for agents whose sessions cannot push here (tools/sync-from-websummit.sh): the librarian's reading of the commits so far, for the conductor to confirm or remove."
+   "note": "agents/*/status.json: the conductor writes each agent's jobs (agents/README.md). The data folders and incident.dev@'s files are shared only while the conductor copies them across for agents whose sessions cannot push here (tools/sync-from-websummit.sh): the librarian's reading of the commits so far, for the conductor to confirm or remove. The conductor integrates: any other path it touches is 'shared' (a warning, never a pass in silence), so every such change shows in the check's output."
   },
   "incident.designer@web-summit.dinis": {
    "role": "designer",
@@ -101,16 +114,21 @@
     "docs/**",
     "tools/library-*.mjs",
     "agents/policy.json",
+    "tools/policy-check.mjs",
     "tools/policy-check.mjs"
    ],
-   "note": "agents/policy.json and tools/policy-check.mjs: given by the conductor on 10 November, 23:51 UTC; not yet in JOBS.md."
+   "note": "agents/policy.json and tools/policy-check.mjs: given by the conductor on 10 November, 23:51 UTC; not yet in JOBS.md.",
+   "shared": [
+    "agents/policy.json"
+   ]
   },
   "incident.graph@web-summit.dinis": {
    "role": "graph",
    "owns": [
     "data/graph/**",
     "app/graph/**",
-    "tools/graph-*.mjs"
+    "tools/graph-*.mjs",
+    "data/query/**"
    ]
   },
   "incident.meteorologist@web-summit.dinis": {
@@ -135,17 +153,5 @@
    ]
   }
  },
- "unassigned": [
-  "CLAUDE.md",
-  "README.md",
-  "REALITY.md",
-  "BRIEF-CORRECTIONS.md",
-  "PIPELINE.md",
-  "LICENSE",
-  "CNAME",
-  ".gitignore",
-  "admin/series.txt",
-  "incidents/*/README.md",
-  "incidents/*/data/README.md"
- ]
+ "unassigned": []
 }
