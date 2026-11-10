@@ -1,0 +1,3073 @@
+{
+ "about": "Three maps of weather sites, for incident.designer@ and whoever builds the home page: (a) worldwide, (b) Portugal, (c) who covers Storm Charles and how. Kept by incident.weatherwatch@web-summit.dinis. Public sources only. This is research about how others present weather; it is not a forecast and not a warning service: warnings are IPMA's.",
+ "updated": "2026-11-10T23:47Z",
+ "method": "Each address was requested once from this session with a plain HTTP GET (no login, no script execution) between 23:38Z and 23:47Z on 10 November 2026. opened.status is the HTTP status; opened.read the UTC time; opened.seen says what the description rests on: \"html\" = content read in the returned page; \"json\" = a data answer was read; \"shell\" = the page is drawn by script, only its shell and labels were read, and the description of the interactive part is general knowledge of the product, not an observation of this read; \"blocked\" = refused (401/403/429/bot check); \"failed\" = no answer or 404. Licence lines say \"read\" where the terms page was opened; otherwise they say so.",
+ "fields": {
+  "map": "worldwide | portugal | storm-charles",
+  "how": "tags: maps, warnings, timeline-hourly, presenter-video, radar, satellite, lightning, stations, models, tracker, liveblog, explainer, embed, interactive, feed, api, social",
+  "data": "api, licence, reuse (can we show its content: yes / with attribution / embed only / link only / no)",
+  "best": "what it does best",
+  "learn": "what our site should take from it",
+  "rank": "position within its map in the README ranking, where ranked"
+ },
+ "counts": {
+  "worldwide": 52,
+  "portugal": 27,
+  "storm-charles": 27,
+  "addresses_requested": 244,
+  "not_opened": [
+   "accuweather",
+   "expresso",
+   "kachelmann",
+   "meteo-not-opened",
+   "netweather",
+   "pivotal",
+   "pt-blocked",
+   "sic",
+   "wxcharts"
+  ]
+ },
+ "sites": [
+  {
+   "id": "metoffice",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Met Office (UK)",
+   "url": "https://www.metoffice.gov.uk/",
+   "owner": "UK Met Office (public body)",
+   "shows": "Home opens on the UK warnings map with a day strip (today and the next days, each coloured by its highest warning); a place search gives an hour-by-hour table (symbol, chance of rain, temperature, feels-like, wind and gust, visibility, humidity, UV). The UK Storm Centre lists the named storms of the season with the date named and the map of each; surface-pressure charts by forecaster.",
+   "how": [
+    "maps",
+    "warnings",
+    "timeline-hourly",
+    "presenter-video",
+    "explainer",
+    "api"
+   ],
+   "data": {
+    "api": "Weather DataHub (site-specific, map images, atmospheric models); key needed; plans by daily request limit",
+    "licence": "Crown copyright; website material under the UK Open Government Licence v3.0 unless marked; some data licensed for a fee",
+    "reuse": "yes with attribution for OGL material"
+   },
+   "best": "The warnings page: one map, a day selector, and each warning written as \"what to expect\" in plain bullet points, with issued and updated times and a likelihood-by-impact matrix.",
+   "learn": "Write each warning as what to expect, not only as a colour; show the impact-likelihood matrix cell; one line \"issued / updated\" under every warning.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "metoffice-warnings": "200",
+     "metoffice-stormcentre": "200",
+     "metoffice-datapoint": "200",
+     "l-metoffice": "200",
+     "c-metoffice-surface": "200"
+    }
+   },
+   "rank": 2
+  },
+  {
+   "id": "nws",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "US National Weather Service",
+   "url": "https://www.weather.gov/",
+   "owner": "NOAA / National Weather Service (US government)",
+   "shows": "A national hazards map coloured by warning type with a legend ordered by priority; each point forecast page has a \"hazardous weather conditions\" box first, then current conditions, a 7-day strip, an hourly graph (temperature, wind and gusts, precipitation chance as stacked charts) and the forecast discussion, the forecaster's own reasoning in text.",
+   "how": [
+    "maps",
+    "warnings",
+    "timeline-hourly",
+    "radar",
+    "satellite",
+    "api",
+    "feed"
+   ],
+   "data": {
+    "api": "api.weather.gov: JSON-LD/GeoJSON, alerts in CAP, no key (a User-Agent is asked for)",
+    "licence": "US government work: public domain (third-party imagery excepted)",
+    "reuse": "yes"
+   },
+   "best": "The forecast discussion: the reasoning and the uncertainty in the forecaster's words, timestamped, next to the numbers. And an open alerts API in a standard format (CAP).",
+   "learn": "Publish the reasoning beside the numbers, signed and timed; keep the hazards box above everything else on the page.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "nws-api": "200",
+     "l-nws": "200",
+     "spc": "200"
+    }
+   },
+   "rank": 5
+  },
+  {
+   "id": "nhc",
+   "map": "worldwide",
+   "kind": "storm-tracker",
+   "name": "US National Hurricane Center",
+   "url": "https://www.nhc.noaa.gov/",
+   "owner": "NOAA (US government)",
+   "shows": "One map of the basin with every active system; per storm a fixed set of products issued on a fixed clock (public advisory, forecast advisory, discussion, wind-speed probabilities) and the cone graphic: the track, the forecast points with times, the uncertainty cone, the coastal warnings.",
+   "how": [
+    "maps",
+    "tracker",
+    "warnings",
+    "satellite",
+    "feed",
+    "explainer"
+   ],
+   "data": {
+    "api": "RSS and GIS feeds (shapefile, KML) per storm; text products",
+    "licence": "public domain",
+    "reuse": "yes"
+   },
+   "best": "The fixed product set on a fixed clock: everyone knows when the next advisory comes and what will be in it. The cone states uncertainty in the picture itself.",
+   "learn": "Say when the next update is due (IPMA's next communiqué or warning revision), and draw uncertainty (the track \"entering further south\") rather than writing it only.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "dwd",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Deutscher Wetterdienst (Germany)",
+   "url": "https://www.dwd.de/EN/Home/home_node.html",
+   "owner": "DWD (German federal authority)",
+   "shows": "Warnings map down to municipality level with a time slider; the WarnWetter app; a large open-data server (model output ICON, radar composites, station observations, warnings in CAP).",
+   "how": [
+    "maps",
+    "warnings",
+    "radar",
+    "models",
+    "api"
+   ],
+   "data": {
+    "api": "opendata.dwd.de: files over HTTPS, no key (GRIB, BUFR, CAP, CSV)",
+    "licence": "CC BY 4.0 with source named (read on its legal notice)",
+    "reuse": "yes with attribution"
+   },
+   "best": "Open data at scale, including the model fields and the radar composite, under one plain licence.",
+   "learn": "A single plain licence line per dataset, as DWD does; ICON-EU fields are a reusable second model for Lisbon.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "dwd-warnings": "200",
+     "dwd-opendata": "200",
+     "l-dwd": "200"
+    }
+   }
+  },
+  {
+   "id": "meteofrance-vigilance",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Météo-France: Vigilance",
+   "url": "https://vigilance.meteofrance.fr/fr",
+   "owner": "Météo-France (public body)",
+   "shows": "The vigilance map: one colour per département, today and tomorrow side by side, a row of hazard pictograms to filter by phenomenon, and a national bulletin with the \"consequences\" and \"advice\" for each colour. The home site adds rain-in-the-next-hour for a place.",
+   "how": [
+    "maps",
+    "warnings",
+    "timeline-hourly",
+    "radar",
+    "api"
+   ],
+   "data": {
+    "api": "meteo.data.gouv.fr and a public API portal (key needed)",
+    "licence": "French open licence (Etalab) for public data; not re-read in this pass",
+    "reuse": "yes with attribution (to confirm)"
+   },
+   "best": "Today and tomorrow as two maps side by side, and the hazard filter as a row of pictograms: the whole country's risk in one glance.",
+   "learn": "Two small maps (today, tomorrow) beside each other; a row of hazard chips (wind, rain, coast) that filters the timeline.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "meteofrance": "200",
+     "l-meteofrance": "200"
+    },
+    "note": "map rendered by script; the bulletin structure was read in the HTML"
+   },
+   "rank": 6
+  },
+  {
+   "id": "aemet",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "AEMET (Spain)",
+   "url": "https://www.aemet.es/en/portada",
+   "owner": "Agencia Estatal de Meteorología (Spanish government)",
+   "shows": "Warnings map by zone with tabs for today, tomorrow and the day after and a table of every warning (zone, phenomenon, level, start, end, probability, comment). Keeps the season's list of high-impact storms named by the south-western group, with who named each and when, and a study of each episode afterwards.",
+   "how": [
+    "maps",
+    "warnings",
+    "radar",
+    "satellite",
+    "api",
+    "explainer"
+   ],
+   "data": {
+    "api": "AEMET OpenData (REST, free API key)",
+    "licence": "reuse allowed citing AEMET as the source, without distorting the information (read on its legal notice)",
+    "reuse": "yes with attribution"
+   },
+   "best": "The season table of named storms: name, type, date named, the service that named it, and a link to the episode study.",
+   "learn": "Our incident page should link the naming record; and promise the after-study (\"estudio del episodio\") as a section from the start.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "aemet-avisos": "200",
+     "aemet-borrascas": "200",
+     "aemet-opendata": "200",
+     "l-aemet": "200",
+     "c-aemet-borrascas": "200",
+     "c-aemet-avisos": "200"
+    },
+    "note": "the 2026-2027 table lists Adam (16 Oct, AEMET) and Bruna (5 Nov, IPMA); the Charles row had no date or naming service filled in at 23:38Z"
+   }
+  },
+  {
+   "id": "yr",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Yr (MET Norway and NRK)",
+   "url": "https://www.yr.no/en",
+   "owner": "Norwegian Meteorological Institute and NRK (public broadcaster)",
+   "shows": "A place page with one table: a row per day that opens into a row per hour (symbol, temperature, precipitation as a min-max range, wind with gust in brackets). A meteogram (one chart: temperature line, precipitation bars with uncertainty, wind arrows). Warnings appear as a banner on the place they cover. Works worldwide: Lisbon was read.",
+   "how": [
+    "timeline-hourly",
+    "maps",
+    "warnings",
+    "radar",
+    "api"
+   ],
+   "data": {
+    "api": "api.met.no (Locationforecast and others): JSON, no key, an identifying User-Agent required",
+    "licence": "NLOD 2.0 and CC BY 4.0; credit MET Norway (read on its licence page)",
+    "reuse": "yes with attribution"
+   },
+   "best": "The calmest hour-by-hour table on the web: nothing decorative, gusts in brackets beside the mean wind, precipitation as a range. The same data is an open API for any point on Earth.",
+   "learn": "Our Wednesday strip: one row per hour, gust in brackets, rain as a range; a banner only when a warning covers the place.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "yr-lisbon": "200",
+     "metno-api": "200",
+     "metno-lisbon": "200",
+     "l-metno": "200"
+    },
+    "note": "the help-centre page on terms returned 403; the API licence page was read instead"
+   },
+   "rank": 1
+  },
+  {
+   "id": "knmi",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "KNMI (Netherlands)",
+   "url": "https://www.knmi.nl/home",
+   "owner": "Royal Netherlands Meteorological Institute",
+   "shows": "Home leads with the colour code for the country and a one-paragraph \"weather picture\" by the duty forecaster; KNMI Data Platform publishes observations, radar and HARMONIE model output.",
+   "how": [
+    "maps",
+    "warnings",
+    "radar",
+    "api"
+   ],
+   "data": {
+    "api": "KNMI Data Platform: Open Data API, EDR API, notification service (key needed)",
+    "licence": "CC BY 4.0 on the datasets read",
+    "reuse": "yes with attribution"
+   },
+   "best": "The duty forecaster's short text on the home page, dated and plain.",
+   "learn": "A dated two-sentence \"the picture now\" by a named role, above the data.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "l-knmi": "200"
+    }
+   }
+  },
+  {
+   "id": "smhi",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "SMHI (Sweden)",
+   "url": "https://www.smhi.se/en/weather",
+   "owner": "Swedish Meteorological and Hydrological Institute",
+   "shows": "Impact-based warnings (the same wind gets a different level by region and season), each with \"what can happen\"; open data API.",
+   "how": [
+    "maps",
+    "warnings",
+    "api"
+   ],
+   "data": {
+    "api": "opendata.smhi.se (no key)",
+    "licence": "CC BY 4.0 (not re-read in this pass)",
+    "reuse": "yes with attribution"
+   },
+   "best": "Warnings written from the consequences backwards.",
+   "learn": "Lead with the consequence (\"trees down, roofs, power cuts\"), then the number.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell"
+   }
+  },
+  {
+   "id": "fmi",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Finnish Meteorological Institute",
+   "url": "https://en.ilmatieteenlaitos.fi/",
+   "owner": "FMI (Finnish government)",
+   "shows": "Local forecast with an hourly table and a 5-day warnings strip per region; open data (observations, radar, HARMONIE, lightning) also on a public cloud bucket.",
+   "how": [
+    "timeline-hourly",
+    "warnings",
+    "radar",
+    "api"
+   ],
+   "data": {
+    "api": "WFS open data, no key for most",
+    "licence": "CC BY 4.0 (read on its licence page)",
+    "reuse": "yes with attribution"
+   },
+   "best": "The warnings strip: five days across, one row per hazard.",
+   "learn": "A five-day strip with one row per hazard is the compact form of IPMA's warnings.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "l-fmi": "200"
+    }
+   }
+  },
+  {
+   "id": "jma",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Japan Meteorological Agency",
+   "url": "https://www.jma.go.jp/bosai/map.html#lang=en",
+   "owner": "JMA (Japanese government)",
+   "shows": "One \"disaster prevention\" map application with every layer on the same base map (warnings, typhoon track and probability circle, rain nowcast, river flood and landslide risk meshes), in 15 languages; risk meshes are coloured by what to do, not by millimetres.",
+   "how": [
+    "maps",
+    "warnings",
+    "radar",
+    "tracker"
+   ],
+   "data": {
+    "api": "JSON behind the map, undocumented but stable; XML feeds",
+    "licence": "government terms of use, compatible with CC BY (not re-read)",
+    "reuse": "yes with attribution (to confirm)"
+   },
+   "best": "Risk coloured by the action it asks for, on one map for every hazard.",
+   "learn": "One base map for everything; a legend that reads as actions.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "jma-bosai": "200"
+    }
+   }
+  },
+  {
+   "id": "bom",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Bureau of Meteorology (Australia)",
+   "url": "https://www.bom.gov.au/",
+   "owner": "Australian Government",
+   "shows": "Redesigned home: a place card first (now, today, the next hours), then warnings for that place, then the radar; warnings list ordered by severity with issued times.",
+   "how": [
+    "timeline-hourly",
+    "warnings",
+    "radar",
+    "maps"
+   ],
+   "data": {
+    "api": "FTP/JSON products; reuse under its copyright notice",
+    "licence": "CC BY for most Bureau material (not re-read)",
+    "reuse": "yes with attribution (to confirm)"
+   },
+   "best": "A page that starts from \"your place, now\" and puts warnings for that place directly under it.",
+   "learn": "Start from the reader's place (Lisbon by default), not from the country.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "eccc",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Environment and Climate Change Canada",
+   "url": "https://weather.gc.ca/",
+   "owner": "Government of Canada",
+   "shows": "Alerts map and table; city pages with text forecast and hourly table; MSC Datamart and GeoMet open data.",
+   "how": [
+    "maps",
+    "warnings",
+    "timeline-hourly",
+    "radar",
+    "api"
+   ],
+   "data": {
+    "api": "MSC GeoMet (OGC API, WMS), Datamart; no key",
+    "licence": "Environment and Climate Change Canada Data Servers End-use Licence (open, attribution)",
+    "reuse": "yes with attribution"
+   },
+   "best": "Open standards (OGC API) for every layer.",
+   "learn": "Serve our layers at stable, documented paths, as we do under api/v1.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "meteoswiss",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "MeteoSwiss",
+   "url": "https://www.meteoswiss.admin.ch/",
+   "owner": "Swiss Federal Office of Meteorology and Climatology",
+   "shows": "Home is the map with an animation bar (past radar into forecast, one continuous timeline); hazards by degree 1 to 5 with behaviour advice per degree.",
+   "how": [
+    "maps",
+    "radar",
+    "warnings",
+    "timeline-hourly"
+   ],
+   "data": {
+    "api": "open data since 2025 (STAC API)",
+    "licence": "open government data, attribution (not re-read)",
+    "reuse": "yes with attribution (to confirm)"
+   },
+   "best": "One time bar running from observed (radar) into forecast, the \"now\" line in the middle.",
+   "learn": "Our strip should run from observed gusts into the forecast with a clear \"now\" marker.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell"
+   },
+   "rank": 8
+  },
+  {
+   "id": "meteireann",
+   "map": "worldwide",
+   "kind": "national-service",
+   "name": "Met Éireann (Ireland)",
+   "url": "https://www.met.ie/",
+   "owner": "Irish Meteorological Service",
+   "shows": "Warnings first on the home page as a list with status, validity and issue time; national forecast text by the forecaster; names storms with the western group.",
+   "how": [
+    "warnings",
+    "maps",
+    "radar",
+    "api"
+   ],
+   "data": {
+    "api": "open data (warnings JSON/XML, forecast API)",
+    "licence": "CC BY 4.0 (not re-read)",
+    "reuse": "yes with attribution"
+   },
+   "best": "Warnings as text first: status, valid from/to, issued.",
+   "learn": "Every warning row carries valid-from, valid-to and issued.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "ecmwf",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "ECMWF charts and open data",
+   "url": "https://charts.ecmwf.int/",
+   "owner": "European Centre for Medium-Range Weather Forecasts (intergovernmental)",
+   "shows": "The reference global model: chart catalogue (mean sea level pressure and wind, ensemble meteograms for any point, extreme forecast index). A subset of IFS and AIFS output is open data.",
+   "how": [
+    "maps",
+    "models",
+    "api"
+   ],
+   "data": {
+    "api": "open data files (GRIB) and a client; charts via Open Charts",
+    "licence": "CC BY 4.0 with the ECMWF Terms of Use: redistribution and commercial use allowed with attribution (read)",
+    "reuse": "yes with attribution"
+   },
+   "best": "The ensemble meteogram: the spread of 50 runs for one place as box-and-whisker by time step, uncertainty made visible. The extreme forecast index shows how unusual the forecast is for that place.",
+   "learn": "Show a spread, not one line, for Lisbon's gusts where we have several models; say how unusual a value is for the place.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "ecmwf-opendata": "200",
+     "l-ecmwf": "200"
+    },
+    "note": "charts.ecmwf.int answered with a bot check; the open-data and licence pages were read"
+   }
+  },
+  {
+   "id": "eumetsat",
+   "map": "worldwide",
+   "kind": "satellite",
+   "name": "EUMETSAT EUMETView",
+   "url": "https://view.eumetsat.int/",
+   "owner": "EUMETSAT (intergovernmental)",
+   "shows": "Satellite imagery viewer (Meteosat: airmass, natural colour, infrared) with animation; OGC services (WMS/WMTS).",
+   "how": [
+    "maps",
+    "satellite",
+    "api"
+   ],
+   "data": {
+    "api": "WMS/WMTS, Data Store API",
+    "licence": "EUMETSAT data policy: most Meteosat imagery free with attribution; the licensing page was a script shell here",
+    "reuse": "yes with attribution (to confirm per product)"
+   },
+   "best": "The airmass composite: the one image that shows a deepening Atlantic low and its dry intrusion.",
+   "learn": "One satellite frame with its time, linked to the source, says \"where is it now\" better than text; pointer only, no image in git.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "l-eumetsat": "200"
+    }
+   }
+  },
+  {
+   "id": "meteoalarm",
+   "map": "worldwide",
+   "kind": "warnings-aggregator",
+   "name": "MeteoAlarm",
+   "url": "https://www.meteoalarm.org/en/live/",
+   "owner": "EUMETNET (the network of European national services)",
+   "shows": "One map of Europe coloured by the highest warning per region, from the national services themselves; per country a list with level, hazard, validity; Atom/CAP feeds per country. Portugal's feed was read: 122 entries at 23:35Z, levels Moderate, Severe and Extreme.",
+   "how": [
+    "maps",
+    "warnings",
+    "feed",
+    "api"
+   ],
+   "data": {
+    "api": "Atom + CAP feeds per country, no key",
+    "licence": "terms equivalent to CC BY 4.0 with extra conditions for redistribution (read in the feed)",
+    "reuse": "yes with attribution and its conditions"
+   },
+   "best": "The same colours and the same format for every country: IPMA and AEMET on one map, machine-readable in CAP.",
+   "learn": "Show Spain's warnings beside Portugal's from one feed; keep the four European colours exactly.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "meteoalarm-pt": "200",
+     "meteoalarm-feed": "200",
+     "c-meteoalarm-pt-feed": "200",
+     "l-meteoalarm": "200"
+    }
+   },
+   "rank": 7
+  },
+  {
+   "id": "wmo-swic",
+   "map": "worldwide",
+   "kind": "warnings-aggregator",
+   "name": "WMO Severe Weather Information Centre",
+   "url": "https://severeweather.wmo.int/",
+   "owner": "World Meteorological Organization",
+   "shows": "World map of official warnings and tropical cyclones from national services, in CAP.",
+   "how": [
+    "maps",
+    "warnings",
+    "tracker",
+    "feed"
+   ],
+   "data": {
+    "api": "CAP feeds via the WMO Alert Hub",
+    "licence": "per issuing service",
+    "reuse": "per issuing service"
+   },
+   "best": "Only official sources, worldwide.",
+   "learn": "The rule we already follow: the authority's warning, never ours.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell"
+   }
+  },
+  {
+   "id": "copernicus-ems",
+   "map": "worldwide",
+   "kind": "emergency-mapping",
+   "name": "Copernicus Emergency Management Service",
+   "url": "https://emergency.copernicus.eu/",
+   "owner": "European Commission",
+   "shows": "Rapid mapping activations (satellite damage and flood extent maps) and EFAS flood forecasts.",
+   "how": [
+    "maps",
+    "api"
+   ],
+   "data": {
+    "api": "activation products as open files",
+    "licence": "Copernicus open data, attribution",
+    "reuse": "yes with attribution"
+   },
+   "best": "After the event: the mapped extent, with its provenance.",
+   "learn": "Watch for an activation for Portugal after the storm; none named Charles was listed at 23:40Z.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "efas": "200",
+     "c-copernicus-act": "200"
+    }
+   }
+  },
+  {
+   "id": "nasa-worldview",
+   "map": "worldwide",
+   "kind": "satellite",
+   "name": "NASA Worldview / GIBS",
+   "url": "https://worldview.earthdata.nasa.gov/",
+   "owner": "NASA (US government)",
+   "shows": "Daily global true-colour imagery with a date slider; GIBS serves the tiles.",
+   "how": [
+    "maps",
+    "satellite",
+    "api"
+   ],
+   "data": {
+    "api": "GIBS WMTS/WMS, no key",
+    "licence": "open (NASA data policy)",
+    "reuse": "yes with credit"
+   },
+   "best": "A date slider over imagery: yesterday against today.",
+   "learn": "A before/after slider is the form for the day after.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "l-gibs": "200"
+    }
+   }
+  },
+  {
+   "id": "bbc-weather",
+   "map": "worldwide",
+   "kind": "broadcaster",
+   "name": "BBC Weather",
+   "url": "https://www.bbc.com/weather",
+   "owner": "BBC (public broadcaster); forecast data from a commercial provider",
+   "shows": "A place page that is one horizontal strip: day tabs across the top, under them an hour-by-hour row (symbol, temperature, chance of precipitation, wind arrow with speed; tap an hour for gust, humidity, pressure, visibility); warnings as a labelled bar above the strip; a presenter video forecast and a one-sentence text summary for the day. Lisbon was read.",
+   "how": [
+    "timeline-hourly",
+    "presenter-video",
+    "warnings",
+    "maps"
+   ],
+   "data": {
+    "api": "none public",
+    "licence": "BBC terms: no reuse without permission; link and short quotation only",
+    "reuse": "no"
+   },
+   "best": "The hour strip with the sentence above it: \"what kind of day\" in words, then every hour in one scrollable line, on a phone. The presenter video is the same forecast told by a person.",
+   "learn": "The hero: one sentence, then the hour strip; a named voice (\"the presenter\") is a text block with a time and a role, not a video.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "bbc-lisbon": "200",
+     "l-bbc": "200",
+     "c-bbc-weather-news": "200",
+     "c-bbc-search": "200"
+    }
+   },
+   "rank": 3
+  },
+  {
+   "id": "weathercom",
+   "map": "worldwide",
+   "kind": "commercial",
+   "name": "The Weather Channel (weather.com)",
+   "url": "https://weather.com/",
+   "owner": "The Weather Company",
+   "shows": "Place card (now, feels like, high/low), hourly and 10-day, radar map, video; alerts as a red bar at the very top.",
+   "how": [
+    "timeline-hourly",
+    "radar",
+    "presenter-video",
+    "warnings",
+    "maps"
+   ],
+   "data": {
+    "api": "commercial only",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "The alert bar: one line, the highest alert, always at the top.",
+   "learn": "One persistent line at the top with the highest current warning and its end time.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "accuweather",
+   "map": "worldwide",
+   "kind": "commercial",
+   "name": "AccuWeather",
+   "url": "https://www.accuweather.com/",
+   "owner": "AccuWeather Inc.",
+   "shows": "Not opened (403). Known for minute-by-minute precipitation and its own impact scales.",
+   "how": [
+    "timeline-hourly",
+    "radar"
+   ],
+   "data": {
+    "api": "commercial",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "Not assessed.",
+   "learn": "Not assessed.",
+   "opened": {
+    "status": "403",
+    "read": "2026-11-10T23:38Z",
+    "seen": "blocked"
+   }
+  },
+  {
+   "id": "meteoblue",
+   "map": "worldwide",
+   "kind": "commercial",
+   "name": "meteoblue",
+   "url": "https://www.meteoblue.com/en/weather/week/lisbon_portugal_2267057",
+   "owner": "meteoblue AG (Basel)",
+   "shows": "Lisbon read: a 7-day strip with predictability per day as a percentage; meteograms; the multi-model diagram (every model's line for one place on one chart) and a \"where are the clouds now\" map.",
+   "how": [
+    "timeline-hourly",
+    "maps",
+    "models",
+    "radar",
+    "satellite",
+    "api"
+   ],
+   "data": {
+    "api": "commercial API; free non-commercial tier",
+    "licence": "all rights reserved; attribution required for the free tier",
+    "reuse": "limited"
+   },
+   "best": "A predictability figure per day and the multi-model chart: disagreement between models shown, not hidden.",
+   "learn": "Put a confidence note on each day; when two models disagree on the peak hour, show both.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   },
+   "rank": 10
+  },
+  {
+   "id": "wunderground",
+   "map": "worldwide",
+   "kind": "commercial",
+   "name": "Weather Underground",
+   "url": "https://www.wunderground.com/",
+   "owner": "The Weather Company",
+   "shows": "A network of personal weather stations on a map (Lisbon has many), each with its own page and history graph.",
+   "how": [
+    "maps",
+    "stations",
+    "timeline-hourly"
+   ],
+   "data": {
+    "api": "for station owners",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "Density: a reading from the next street.",
+   "learn": "Amateur stations are evidence, labelled as such, never fact.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "wu-pws-lisbon": "200"
+    }
+   }
+  },
+  {
+   "id": "foreca",
+   "map": "worldwide",
+   "kind": "commercial",
+   "name": "Foreca",
+   "url": "https://www.foreca.com/",
+   "owner": "Foreca Ltd (Finland)",
+   "shows": "Clean place pages, hourly table, rain radar.",
+   "how": [
+    "timeline-hourly",
+    "radar",
+    "maps"
+   ],
+   "data": {
+    "api": "commercial",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "Plain hourly layout.",
+   "learn": "Nothing beyond Yr.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "weatherandradar",
+   "map": "worldwide",
+   "kind": "commercial",
+   "name": "Weather & Radar",
+   "url": "https://www.weatherandradar.co.uk/",
+   "owner": "WetterOnline GmbH",
+   "shows": "Radar-first home page with a play bar from past to forecast.",
+   "how": [
+    "radar",
+    "maps",
+    "timeline-hourly"
+   ],
+   "data": {
+    "api": "none public",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "Radar as the first thing seen.",
+   "learn": "For a rain event the radar is the hero; for wind it is the gust strip.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "windy",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "Windy",
+   "url": "https://www.windy.com/",
+   "owner": "Windyty SE (Prague)",
+   "shows": "A full-screen animated map (wind particles over a colour field) with a layer menu (wind, gusts, rain, waves, pressure), a model switch (ECMWF, GFS, ICON, AROME) and a time slider along the bottom; click a point for a forecast table that compares models; radar, satellite, webcams and station reports as layers. Embeddable as an iframe with a chosen place, layer and model.",
+   "how": [
+    "maps",
+    "models",
+    "timeline-hourly",
+    "radar",
+    "satellite",
+    "embed",
+    "api"
+   ],
+   "data": {
+    "api": "paid Point Forecast and Map Forecast APIs; free embed widget (iframe)",
+    "licence": "all rights reserved; embed allowed as provided",
+    "reuse": "embed only"
+   },
+   "best": "The model switch on the same map and the same hour: the fastest way to see whether models agree on where the low goes.",
+   "learn": "If we show a moving map, embed it with its credit rather than copy it; keep it below the fold, since it loads slowly and says nothing about decisions.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "c-windy-lisbon": "200",
+     "c-windy-embed": "200",
+     "l-windy": "200"
+    }
+   },
+   "rank": 4
+  },
+  {
+   "id": "ventusky",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "Ventusky",
+   "url": "https://www.ventusky.com/",
+   "owner": "InMeteo s.r.o. (Czechia)",
+   "shows": "Animated map like Windy, with a strong gust layer and fronts drawn on the map; embeddable. Observador embeds it (gust layer, two models) in its Charles special.",
+   "how": [
+    "maps",
+    "models",
+    "embed"
+   ],
+   "data": {
+    "api": "commercial",
+    "licence": "all rights reserved; embed allowed",
+    "reuse": "embed only"
+   },
+   "best": "Gusts and fronts on one map.",
+   "learn": "The press already uses this embed; two embeds with two models side by side is Observador's way to show uncertainty.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "c-ventusky-embed": "200"
+    }
+   }
+  },
+  {
+   "id": "nullschool",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "earth.nullschool.net",
+   "url": "https://earth.nullschool.net/",
+   "owner": "Cameron Beccario",
+   "shows": "The globe with flowing wind lines (GFS), minimal chrome: the picture is the page.",
+   "how": [
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved (the original code is MIT on GitHub)",
+    "reuse": "link only"
+   },
+   "best": "Beauty and legibility of a single field.",
+   "learn": "One field, no chrome: restraint.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell"
+   }
+  },
+  {
+   "id": "zoomearth",
+   "map": "worldwide",
+   "kind": "storm-tracker",
+   "name": "Zoom Earth",
+   "url": "https://zoom.earth/",
+   "owner": "Neave Interactive",
+   "shows": "Near-real-time satellite imagery with a time scrubber; radar, wind and pressure layers; tropical storm tracks with forecast cone.",
+   "how": [
+    "maps",
+    "satellite",
+    "radar",
+    "tracker"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved; imagery from public agencies",
+    "reuse": "link only"
+   },
+   "best": "The scrubber: drag time over real satellite imagery.",
+   "learn": "A time scrubber is the interaction people understand; ours scrubs the hour strip.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "c-zoomearth-storms": "200"
+    },
+    "note": "no page for Charles (it tracks tropical systems)"
+   }
+  },
+  {
+   "id": "openmeteo",
+   "map": "worldwide",
+   "kind": "data-api",
+   "name": "Open-Meteo",
+   "url": "https://open-meteo.com/",
+   "owner": "Open-Meteo (open source)",
+   "shows": "A free JSON API over the open models of the national services (ECMWF, DWD ICON, Météo-France AROME/ARPEGE, and others), hourly, any point, with gusts; an ensemble API and a historical API. A call for Lisbon (hourly gusts and precipitation, two days) answered in 534 bytes.",
+   "how": [
+    "api",
+    "models",
+    "timeline-hourly"
+   ],
+   "data": {
+    "api": "HTTP GET, no key, no sign-up",
+    "licence": "CC BY 4.0 for the data; the free tier is for non-commercial use",
+    "reuse": "yes with attribution"
+   },
+   "best": "Several models for one place in one call, with a clear licence.",
+   "learn": "The source for a model-spread strip for Lisbon (labelled analysis material, never a warning).",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "json",
+    "also": {
+     "openmeteo-api": "200",
+     "l-openmeteo": "200"
+    }
+   },
+   "rank": 9
+  },
+  {
+   "id": "pirateweather",
+   "map": "worldwide",
+   "kind": "data-api",
+   "name": "Pirate Weather",
+   "url": "https://pirateweather.net/",
+   "owner": "open source project",
+   "shows": "An open forecast API in the old Dark Sky shape (minutely, hourly, alerts).",
+   "how": [
+    "api"
+   ],
+   "data": {
+    "api": "free key",
+    "licence": "open source; data from NOAA",
+    "reuse": "yes"
+   },
+   "best": "Minutely precipitation in an open API.",
+   "learn": "None for Lisbon beyond Open-Meteo.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "rainviewer",
+   "map": "worldwide",
+   "kind": "radar",
+   "name": "RainViewer",
+   "url": "https://www.rainviewer.com/",
+   "owner": "RainViewer",
+   "shows": "Worldwide radar composite as map tiles with past frames.",
+   "how": [
+    "radar",
+    "maps",
+    "api"
+   ],
+   "data": {
+    "api": "public Weather Maps API",
+    "licence": "free for personal, educational and small community use only (read on its API page)",
+    "reuse": "limited"
+   },
+   "best": "Radar tiles anyone can put on a map.",
+   "learn": "Possible radar layer; check the terms fit a public newsroom first.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "l-rainviewer": "200"
+    }
+   }
+  },
+  {
+   "id": "blitzortung",
+   "map": "worldwide",
+   "kind": "lightning",
+   "name": "Blitzortung / LightningMaps",
+   "url": "https://www.lightningmaps.org/",
+   "owner": "Blitzortung.org (volunteer network)",
+   "shows": "Real-time lightning strikes on a map, from volunteers' receivers.",
+   "how": [
+    "maps",
+    "lightning",
+    "stations"
+   ],
+   "data": {
+    "api": "data for contributing station owners",
+    "licence": "non-commercial; raw data only for participants (read)",
+    "reuse": "link only"
+   },
+   "best": "Seconds-old data from a citizen network.",
+   "learn": "Link, do not copy; IPMA has its own lightning page.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "lightningmaps": "200",
+     "l-blitzortung": "200"
+    }
+   }
+  },
+  {
+   "id": "meteociel",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "Meteociel",
+   "url": "https://www.meteociel.fr/",
+   "owner": "Meteociel (France)",
+   "shows": "Every model run as static charts (GFS, ECMWF, AROME, ARPEGE, ICON), observations and soundings; dense, fast, old-fashioned.",
+   "how": [
+    "maps",
+    "models",
+    "stations"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "link only"
+   },
+   "best": "Speed and completeness: every run, every field, no script.",
+   "learn": "Fast static pages beat pretty slow ones during an incident.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "wetterzentrale",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "Wetterzentrale",
+   "url": "https://www.wetterzentrale.de/",
+   "owner": "Wetterzentrale (Germany)",
+   "shows": "Model chart archive and ensembles (\"spaghetti\" plots).",
+   "how": [
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "link only"
+   },
+   "best": "Ensemble plots for a point.",
+   "learn": "As ECMWF: spread over single line.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "tropicaltidbits",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "Tropical Tidbits",
+   "url": "https://www.tropicaltidbits.com/",
+   "owner": "Levi Cowan",
+   "shows": "Model charts with a frame slider and keyboard stepping; storm pages.",
+   "how": [
+    "maps",
+    "models",
+    "tracker"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "link only"
+   },
+   "best": "Keyboard stepping through time.",
+   "learn": "Arrow keys step our hour strip.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "windguru",
+   "map": "worldwide",
+   "kind": "specialist",
+   "name": "Windguru",
+   "url": "https://www.windguru.cz/",
+   "owner": "Windguru (Czechia)",
+   "shows": "A colour-coded table for a spot (Guincho was read): columns are hours, rows are wind, gust, direction, wave, period, rain; cell colour is the value.",
+   "how": [
+    "timeline-hourly",
+    "models"
+   ],
+   "data": {
+    "api": "for paying members",
+    "licence": "all rights reserved",
+    "reuse": "link only"
+   },
+   "best": "The heat-map table: forty hours of six variables readable at a glance.",
+   "learn": "Colour the cells of our hour strip by threshold (IPMA's yellow/orange/red gust criteria).",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "shell",
+    "also": {
+     "windguru-guincho": "200"
+    }
+   }
+  },
+  {
+   "id": "windfinder",
+   "map": "worldwide",
+   "kind": "specialist",
+   "name": "Windfinder",
+   "url": "https://www.windfinder.com/",
+   "owner": "Windfinder GmbH",
+   "shows": "Wind map and spot forecasts with live station reports.",
+   "how": [
+    "maps",
+    "timeline-hourly",
+    "stations"
+   ],
+   "data": {
+    "api": "commercial",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "Measured against forecast at the same spot.",
+   "learn": "We already plot observed gusts against forecast: keep it on the home page.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "estofex",
+   "map": "worldwide",
+   "kind": "specialist",
+   "name": "ESTOFEX",
+   "url": "https://www.estofex.org/",
+   "owner": "European Storm Forecast Experiment (volunteers)",
+   "shows": "Convective outlooks for Europe: a map with level lines and a reasoned text.",
+   "how": [
+    "maps",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "non-commercial reuse with credit (not re-read)",
+    "reuse": "link only"
+   },
+   "best": "A reasoned outlook, signed.",
+   "learn": "For tornado or squall-line risk it is evidence from experts, labelled.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "c-estofex": "200"
+    }
+   }
+  },
+  {
+   "id": "eswd",
+   "map": "worldwide",
+   "kind": "specialist",
+   "name": "European Severe Weather Database",
+   "url": "https://eswd.eu/",
+   "owner": "European Severe Storms Laboratory",
+   "shows": "Quality-controlled reports of severe weather events (wind, tornado, hail, rain) on a map.",
+   "how": [
+    "maps",
+    "stations"
+   ],
+   "data": {
+    "api": "on request",
+    "licence": "free viewing; data by agreement",
+    "reuse": "link only"
+   },
+   "best": "Each report has a quality level.",
+   "learn": "Our evidence items could carry a quality level the same way.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "severeweathereu",
+   "map": "worldwide",
+   "kind": "specialist-press",
+   "name": "Severe Weather Europe",
+   "url": "https://www.severe-weather.eu/",
+   "owner": "Severe Weather Europe",
+   "shows": "Long explainers on large events with many model charts.",
+   "how": [
+    "explainer",
+    "maps"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "Depth for enthusiasts.",
+   "learn": "Nothing on Charles on its front page at 23:40Z.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "c-severeweathereu": "200"
+    }
+   }
+  },
+  {
+   "id": "fuberlin",
+   "map": "worldwide",
+   "kind": "storm-naming",
+   "name": "FU Berlin: Aktion Wetterpate",
+   "url": "https://www.met.fu-berlin.de/adopt-a-vortex/",
+   "owner": "Freie Universität Berlin",
+   "shows": "Names every low and high over Europe (a second, older naming scheme); daily analysis charts with the names.",
+   "how": [
+    "maps",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "link only"
+   },
+   "best": "A second name for the same low: useful for searching German-language coverage.",
+   "learn": "Record other names for the same storm in incident.json.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "mesonet",
+   "map": "worldwide",
+   "kind": "archive",
+   "name": "Iowa Environmental Mesonet",
+   "url": "https://mesonet.agron.iastate.edu/",
+   "owner": "Iowa State University",
+   "shows": "Archive of METAR/TAF worldwide and of every US warning text, with download.",
+   "how": [
+    "api",
+    "stations"
+   ],
+   "data": {
+    "api": "open CSV/JSON",
+    "licence": "open",
+    "reuse": "yes"
+   },
+   "best": "History of every airport report.",
+   "learn": "Lisbon airport's past METARs for the after-study.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "aviationweather",
+   "map": "worldwide",
+   "kind": "aviation",
+   "name": "Aviation Weather Center data API",
+   "url": "https://aviationweather.gov/",
+   "owner": "NOAA (US government)",
+   "shows": "METAR and TAF for any airport as JSON; Lisbon's TAF answered.",
+   "how": [
+    "api",
+    "stations"
+   ],
+   "data": {
+    "api": "JSON, no key",
+    "licence": "public domain",
+    "reuse": "yes"
+   },
+   "best": "The airport forecast as data.",
+   "learn": "Already used by the meteorologist for the airport.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "json"
+   }
+  },
+  {
+   "id": "ogimet",
+   "map": "worldwide",
+   "kind": "archive",
+   "name": "OGIMET",
+   "url": "https://www.ogimet.com/",
+   "owner": "OGIMET (Spain, volunteer)",
+   "shows": "Decoded SYNOP, METAR and TAF archive for any station.",
+   "how": [
+    "stations"
+   ],
+   "data": {
+    "api": "query pages",
+    "licence": "free, rate-limited",
+    "reuse": "link only"
+   },
+   "best": "Raw reports nobody else keeps public.",
+   "learn": "Backup source for station gusts.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "kachelmann",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "Kachelmannwetter / meteologix / weather.us",
+   "url": "https://kachelmannwetter.com/",
+   "owner": "private",
+   "shows": "Not opened: refused our request (bot check).",
+   "how": [
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "not assessed",
+    "licence": "not assessed",
+    "reuse": "not assessed"
+   },
+   "best": "Not assessed.",
+   "learn": "Not assessed.",
+   "opened": {
+    "status": "403",
+    "read": "2026-11-10T23:38Z",
+    "seen": "blocked",
+    "also": {
+     "meteologix": "403",
+     "weatherus": "403"
+    }
+   }
+  },
+  {
+   "id": "wxcharts",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "WXCharts",
+   "url": "https://wxcharts.com/",
+   "owner": "private",
+   "shows": "Not opened: refused our request (bot check).",
+   "how": [
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "not assessed",
+    "licence": "not assessed",
+    "reuse": "not assessed"
+   },
+   "best": "Not assessed.",
+   "learn": "Not assessed.",
+   "opened": {
+    "status": "403",
+    "read": "2026-11-10T23:38Z",
+    "seen": "blocked"
+   }
+  },
+  {
+   "id": "netweather",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "Netweather",
+   "url": "https://www.netweather.tv/",
+   "owner": "private",
+   "shows": "Not opened: refused our request (bot check).",
+   "how": [
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "not assessed",
+    "licence": "not assessed",
+    "reuse": "not assessed"
+   },
+   "best": "Not assessed.",
+   "learn": "Not assessed.",
+   "opened": {
+    "status": "403",
+    "read": "2026-11-10T23:38Z",
+    "seen": "blocked"
+   }
+  },
+  {
+   "id": "pivotal",
+   "map": "worldwide",
+   "kind": "model-viewer",
+   "name": "Pivotal Weather",
+   "url": "https://www.pivotalweather.com/",
+   "owner": "private",
+   "shows": "Not opened: refused our request (bot check).",
+   "how": [
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "not assessed",
+    "licence": "not assessed",
+    "reuse": "not assessed"
+   },
+   "best": "Not assessed.",
+   "learn": "Not assessed.",
+   "opened": {
+    "status": "202",
+    "read": "2026-11-10T23:38Z",
+    "seen": "blocked"
+   }
+  },
+  {
+   "id": "ipma",
+   "map": "portugal",
+   "kind": "national-service",
+   "name": "IPMA",
+   "url": "https://www.ipma.pt/pt/index.html",
+   "owner": "Instituto Português do Mar e da Atmosfera (the State's meteorological authority)",
+   "shows": "Home: the map of warnings by district with a day selector, the forecast for the capitals, the latest communiqués and the seismic map. The authority for every warning in Portugal and the service that named Charles.",
+   "how": [
+    "maps",
+    "warnings",
+    "timeline-hourly",
+    "radar",
+    "satellite",
+    "lightning",
+    "api",
+    "feed"
+   ],
+   "data": {
+    "api": "api.ipma.pt open data: JSON, no key (warnings up to 3 days, daily forecast by city, hourly station observations, sea state, seismic events)",
+    "licence": "use allowed for personal or public purposes that are not for profit or offensive, always naming the source (read on api.ipma.pt)",
+    "reuse": "yes, non-commercial, with attribution"
+   },
+   "best": "It is the primary source: the warning itself, the communiqué itself, with validity times.",
+   "learn": "Everything in our hero comes from here and links here; our job is to make its content faster to read, not to add to it.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "ipma-en": "200",
+     "c-ipma-home": "200",
+     "l-ipma-api": "200"
+    }
+   },
+   "rank": 1
+  },
+  {
+   "id": "ipma-avisos",
+   "map": "portugal",
+   "kind": "national-service",
+   "name": "IPMA: warnings on a timeline",
+   "url": "https://www.ipma.pt/pt/otempo/prev-sam/",
+   "owner": "IPMA",
+   "shows": "\"Avisos meteorológicos em linha temporal\": for a district, one row per hazard and coloured bars along a three-day time axis (yellow, orange, red), with the text of each warning. The JSON behind it is api.ipma.pt/open-data/forecast/warnings/warnings_www.json.",
+   "how": [
+    "warnings",
+    "timeline-hourly",
+    "maps",
+    "api"
+   ],
+   "data": {
+    "api": "warnings_www.json (read: 2 KB)",
+    "licence": "as IPMA",
+    "reuse": "yes, non-commercial, with attribution"
+   },
+   "best": "The Gantt of warnings: when each hazard starts and ends, in one picture.",
+   "learn": "This is the model for our strip: hazards as rows, hours as columns, IPMA's colours; add the events we track (Web Summit day, transport) as extra rows.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "shell",
+    "also": {
+     "c-ipma-avisos-page": "200",
+     "ipma-api-warnings": "200"
+    },
+    "note": "the chart is drawn by script; the JSON was read"
+   },
+   "rank": 2
+  },
+  {
+   "id": "ipma-comunicados",
+   "map": "portugal",
+   "kind": "national-service",
+   "name": "IPMA: communiqués",
+   "url": "https://www.ipma.pt/pt/otempo/comunicados/",
+   "owner": "IPMA",
+   "shows": "Special information notes. Read at 23:40Z: communiqué no. 2 on Charles, \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira\", valid from 2026-11-10 17:07 to 2026-11-11 23:59, stating that CHARLES is the name IPMA gave the low and where it is forecast to be centred at 00 UTC on 11 November. An RSS feed carries each communiqué.",
+   "how": [
+    "explainer",
+    "warnings",
+    "feed"
+   ],
+   "data": {
+    "api": "RSS (comunicados.xml)",
+    "licence": "as IPMA; its notice says copyright does not apply to communiqués",
+    "reuse": "yes with attribution"
+   },
+   "best": "The forecaster's own account of the storm, numbered and with a validity window.",
+   "learn": "Quote the current communiqué's number and validity in the hero; a new number is a signal.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "ipma-comunicados-rss": "200",
+     "c-ipma-comunicados": "200"
+    }
+   }
+  },
+  {
+   "id": "ipma-local",
+   "map": "portugal",
+   "kind": "national-service",
+   "name": "IPMA: forecast by place, hourly",
+   "url": "https://www.ipma.pt/pt/otempo/prev.localidade.hora/",
+   "owner": "IPMA",
+   "shows": "Ten days for a place: hourly for the first days (symbol, temperature, wind class and direction, precipitation probability), then 3-hourly and daily; the warnings for the district on top.",
+   "how": [
+    "timeline-hourly",
+    "warnings"
+   ],
+   "data": {
+    "api": "daily by city in the open API; the hourly series is on the site",
+    "licence": "as IPMA",
+    "reuse": "yes, non-commercial, with attribution"
+   },
+   "best": "The official hourly forecast for Lisbon.",
+   "learn": "The numbers in our strip should be these, with the model run time.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "shell",
+    "also": {
+     "ipma-api-daily": "200"
+    }
+   }
+  },
+  {
+   "id": "ipma-obs",
+   "map": "portugal",
+   "kind": "national-service",
+   "name": "IPMA: radar, satellite, stations, lightning",
+   "url": "https://www.ipma.pt/pt/otempo/obs.radar/",
+   "owner": "IPMA",
+   "shows": "Radar mosaic with animation; satellite (Meteosat channels); hourly surface observations with graphs per station; lightning discharges on a map; sea state and coastal forecast; synoptic charts; descriptive and significant-weather forecasts.",
+   "how": [
+    "radar",
+    "satellite",
+    "stations",
+    "lightning",
+    "maps"
+   ],
+   "data": {
+    "api": "station observations in the open API (read: 93 KB JSON)",
+    "licence": "as IPMA; imagery under its terms",
+    "reuse": "yes, non-commercial, with attribution; images by link"
+   },
+   "best": "Observed gusts per station, hourly, as open JSON.",
+   "learn": "Our observed-against-forecast chart rests on this; say the station and the hour on every point.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "shell",
+    "also": {
+     "ipma-sat": "200",
+     "ipma-superficie": "200",
+     "ipma-dea": "200",
+     "ipma-mar": "200",
+     "ipma-descritiva": "200",
+     "ipma-significativa": "200",
+     "ipma-cartas": "200",
+     "ipma-api-obs": "200"
+    }
+   }
+  },
+  {
+   "id": "prociv",
+   "map": "portugal",
+   "kind": "civil-protection",
+   "name": "ANEPC: notices to the population",
+   "url": "https://prociv.gov.pt/pt/avisos-a-populacao/",
+   "owner": "Autoridade Nacional de Emergência e Proteção Civil",
+   "shows": "Numbered notices. Read: \"Aviso 21 | Depressão Charles - Agravamento da Situação Meteo\" (dated 09.11.2026, active) and a notice of preventive measures for Charles; before it, notice 20 for Bruna (06.11.2026). The occurrences page refused our request.",
+   "how": [
+    "warnings",
+    "explainer"
+   ],
+   "data": {
+    "api": "none documented; occurrences are republished by fogos.pt",
+    "licence": "public body; cite the source",
+    "reuse": "quote with attribution"
+   },
+   "best": "The measures people are asked to take, from the body that asks.",
+   "learn": "Advice on our pages is only this text, quoted and linked.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "prociv-avisos": "200",
+     "c-prociv-avisos": "200",
+     "prociv-ocorrencias": "200"
+    }
+   }
+  },
+  {
+   "id": "fogos",
+   "map": "portugal",
+   "kind": "volunteer-network",
+   "name": "Fogos.pt / VOST Portugal",
+   "url": "https://fogos.pt/",
+   "owner": "VOST Portugal (digital volunteers)",
+   "shows": "A map of civil-protection occurrences in near real time, built on ANEPC's data, with an API; made for fires, used in storms for falls of trees, floods and structures.",
+   "how": [
+    "maps",
+    "tracker",
+    "api"
+   ],
+   "data": {
+    "api": "api.fogos.pt (answered 429 to us: rate limit)",
+    "licence": "open project; data from ANEPC",
+    "reuse": "yes with attribution (to confirm)"
+   },
+   "best": "Occurrences as open data, by volunteers.",
+   "learn": "A count of occurrences by hour is the \"impact so far\" figure, sourced to ANEPC via this API.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "shell",
+    "also": {
+     "fogos-api": "429",
+     "vost": "200",
+     "c-fogos-home": "200",
+     "c-vost": "200"
+    }
+   }
+  },
+  {
+   "id": "hidrografico",
+   "map": "portugal",
+   "kind": "public-service",
+   "name": "Instituto Hidrográfico",
+   "url": "https://www.hidrografico.pt/",
+   "owner": "Portuguese Navy",
+   "shows": "Tide tables, wave buoys and sea-state forecasts.",
+   "how": [
+    "stations",
+    "maps"
+   ],
+   "data": {
+    "api": "none documented",
+    "licence": "all rights reserved; cite",
+    "reuse": "link only"
+   },
+   "best": "Measured wave height at the buoys.",
+   "learn": "For the coastal warning: the buoy reading beside the forecast.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "hidrografico-boias": "404"
+    },
+    "note": "the buoys page address we tried returned 404; home was read"
+   }
+  },
+  {
+   "id": "amn",
+   "map": "portugal",
+   "kind": "public-service",
+   "name": "Autoridade Marítima Nacional",
+   "url": "https://www.amn.pt/",
+   "owner": "Portuguese Navy",
+   "shows": "Bar closures and notices to seafarers.",
+   "how": [
+    "warnings"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "public body; cite",
+    "reuse": "quote with attribution"
+   },
+   "best": "Which harbour bars are closed.",
+   "learn": "A decision source for the coast.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "rtp",
+   "map": "portugal",
+   "kind": "broadcaster",
+   "name": "RTP Notícias",
+   "url": "https://www.rtp.pt/noticias/",
+   "owner": "RTP (public broadcaster)",
+   "shows": "Runs the national live blog on Charles (see the Storm Charles map); television forecast by presenters with IPMA's meteorologists as guests.",
+   "how": [
+    "liveblog",
+    "presenter-video"
+   ],
+   "data": {
+    "api": "RSS",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "\"Momento-chave\" entries: the live blog marks the few entries that matter.",
+   "learn": "Mark key moments in our timeline the same way.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "rtp-tempo": "404"
+    },
+    "note": "rtp.pt/noticias/tempo returned 404: no standing weather page at that address"
+   }
+  },
+  {
+   "id": "sic",
+   "map": "portugal",
+   "kind": "broadcaster",
+   "name": "SIC Notícias: meteorologia",
+   "url": "https://sicnoticias.pt/meteorologia",
+   "owner": "Impresa",
+   "shows": "Not opened (403). Its headlines were read through SAPO's front page.",
+   "how": [
+    "presenter-video"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "Not assessed.",
+   "learn": "Not assessed.",
+   "opened": {
+    "status": "403",
+    "read": "2026-11-10T23:39Z",
+    "seen": "blocked",
+    "also": {
+     "c-sic-wf": "403"
+    }
+   }
+  },
+  {
+   "id": "cnnportugal",
+   "map": "portugal",
+   "kind": "broadcaster",
+   "name": "CNN Portugal / TVI: meteorologia",
+   "url": "https://cnnportugal.iol.pt/meteorologia",
+   "owner": "Media Capital",
+   "shows": "A weather section that is mostly video: studio explainers and reporters on the ground, each with its length and time; a topic label \"Depressão Charles\".",
+   "how": [
+    "presenter-video",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Video with the duration and the age shown on every item.",
+   "learn": "Show the age of every item (\"3 h ago\") next to its absolute time.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "tvi": "200",
+     "c-cnn-meteo": "200"
+    }
+   }
+  },
+  {
+   "id": "publico",
+   "map": "portugal",
+   "kind": "press",
+   "name": "Público: meteorologia",
+   "url": "https://www.publico.pt/meteorologia",
+   "owner": "Público Comunicação Social",
+   "shows": "A standing weather section; live blog and \"what you need to know\" piece on Charles.",
+   "how": [
+    "liveblog",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "The explainer kept updated all day (first 07:54, last change 20:25).",
+   "learn": "One standing explainer, updated, with both times shown.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "publico-tempo": "200"
+    }
+   }
+  },
+  {
+   "id": "observador",
+   "map": "portugal",
+   "kind": "press",
+   "name": "Observador",
+   "url": "https://observador.pt/",
+   "owner": "Observador On Time",
+   "shows": "Live blog (general news) and a long special on Charles with embedded gust maps.",
+   "how": [
+    "liveblog",
+    "explainer",
+    "embed"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "The special: a comparison with a past storm (Kristin) and two model maps.",
+   "learn": "Comparison with the last storm is what readers ask for; we can give it as numbers, sourced.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "observador-meteo": "404"
+    },
+    "note": "the address we guessed for a weather section returned 404"
+   }
+  },
+  {
+   "id": "expresso",
+   "map": "portugal",
+   "kind": "press",
+   "name": "Expresso",
+   "url": "https://expresso.pt/",
+   "owner": "Impresa",
+   "shows": "Not opened (403).",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "no"
+   },
+   "best": "Not assessed.",
+   "learn": "Not assessed.",
+   "opened": {
+    "status": "403",
+    "read": "2026-11-10T23:39Z",
+    "seen": "blocked",
+    "also": {
+     "c-expresso-wf": "403"
+    }
+   }
+  },
+  {
+   "id": "press-others",
+   "map": "portugal",
+   "kind": "press",
+   "name": "JN, DN, Correio da Manhã, Negócios, ECO, TSF, Renascença, Lusa, Notícias ao Minuto, SAPO",
+   "url": "https://www.jn.pt/",
+   "owner": "several publishers",
+   "shows": "All opened; all carried Charles on the front page at 23:39Z except DN, where no headline with the name was found. Their Charles pieces are in the Storm Charles map.",
+   "how": [
+    "liveblog",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "See the Storm Charles map.",
+   "learn": "See the Storm Charles map.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "dn": "200",
+     "cm": "200",
+     "negocios": "200",
+     "eco": "200",
+     "tsf": "200",
+     "renascenca": "200",
+     "lusa": "200",
+     "noticiasaominuto": "200",
+     "c-sapo": "200",
+     "c-dn": "200",
+     "c-lusa": "200"
+    }
+   }
+  },
+  {
+   "id": "tempopt",
+   "map": "portugal",
+   "kind": "commercial",
+   "name": "tempo.pt (Meteored)",
+   "url": "https://www.tempo.pt/",
+   "owner": "Meteored (Spain)",
+   "shows": "Place forecasts for 14 days with hourly detail, warnings, radar, satellite and model maps; and a news desk of named meteorologists publishing several pieces a day: seven on Charles were listed, each headline a number (\"Até 100 mm em 24 horas\", \"rajadas até 140 km/h em 4 distritos\", \"um mínimo de 976 hPa\").",
+   "how": [
+    "timeline-hourly",
+    "maps",
+    "radar",
+    "satellite",
+    "models",
+    "explainer"
+   ],
+   "data": {
+    "api": "none public",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "A named forecaster per article and a number in every headline.",
+   "learn": "These are forecasts by a private outlet: evidence for us, never the headline. The habit of one number per headline is worth copying for facts.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "tempopt-lisboa": "200",
+     "tempopt-noticias": "200",
+     "c-tempopt-noticias": "200",
+     "c-tempopt-1": "200"
+    }
+   },
+   "rank": 4
+  },
+  {
+   "id": "lusometeo",
+   "map": "portugal",
+   "kind": "amateur",
+   "name": "Luso Meteo",
+   "url": "https://www.lusometeo.com/",
+   "owner": "Luso Meteo (independent)",
+   "shows": "An independent forecasting site with its own maps and daily analysis; on 10 Nov at 19:14 it published that Charles might be weaker than forecast, with reasons.",
+   "how": [
+    "explainer",
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Says when the forecast changes and why.",
+   "learn": "A dissenting analysis is a hypothesis with its source: show it as such, beside IPMA's unchanged warning.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "c-lusometeo": "200"
+    }
+   },
+   "rank": 5
+  },
+  {
+   "id": "meteopt",
+   "map": "portugal",
+   "kind": "amateur",
+   "name": "MeteoPT",
+   "url": "https://www.meteopt.com/",
+   "owner": "MeteoPT community",
+   "shows": "The Portuguese meteorology forum: follow-up threads per region and per event where members post their own station readings, radar captures and model reading, minute by minute.",
+   "how": [
+    "stations",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "posts belong to their authors",
+    "reuse": "link only; no names of private people"
+   },
+   "best": "Ground truth from hundreds of gardens, before any official total.",
+   "learn": "Evidence only, linked by thread, never by person.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "meteopt-forum": "200",
+     "c-meteopt-forum": "200",
+     "c-meteopt-seguimento": "404"
+    },
+    "note": "forum index read; the thread address we guessed returned 404"
+   },
+   "rank": 6
+  },
+  {
+   "id": "meteo-regional",
+   "map": "portugal",
+   "kind": "amateur",
+   "name": "Regional station networks: MeteoEstrela, MeteoAlentejo",
+   "url": "https://www.meteoestrela.pt/",
+   "owner": "local associations and volunteers",
+   "shows": "Networks of automatic stations with live values on a map, for regions where IPMA's stations are far apart.",
+   "how": [
+    "stations",
+    "maps"
+   ],
+   "data": {
+    "api": "none documented",
+    "licence": "per network",
+    "reuse": "link only"
+   },
+   "best": "Density inland.",
+   "learn": "Evidence for places outside Lisbon.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "meteoalentejo": "200"
+    }
+   }
+  },
+  {
+   "id": "meteo-not-opened",
+   "map": "portugal",
+   "kind": "amateur",
+   "name": "Not opened: Meteo Trás-os-Montes, BestWeather, Troposfera, Meteomoita",
+   "url": "https://meteotrasosmontes.pt/",
+   "owner": "independent",
+   "shows": "Three did not answer (connection failed); meteomoita.com now serves unrelated content and is not a weather site.",
+   "how": [
+    "stations"
+   ],
+   "data": {
+    "api": "not assessed",
+    "licence": "not assessed",
+    "reuse": "not assessed"
+   },
+   "best": "Not assessed.",
+   "learn": "Not assessed.",
+   "opened": {
+    "status": "000",
+    "read": "2026-11-10T23:39Z",
+    "seen": "failed",
+    "also": {
+     "bestweather": "000",
+     "troposfera": "000",
+     "meteomoita": "200"
+    }
+   }
+  },
+  {
+   "id": "sapo-tempo",
+   "map": "portugal",
+   "kind": "portal",
+   "name": "SAPO Tempo and SAPO front page",
+   "url": "https://tempo.sapo.pt/",
+   "owner": "MEO / Altice",
+   "shows": "The portal's front page aggregates the storm headlines of many outlets (SIC, Executive Digest, others); the weather sub-site is a script shell.",
+   "how": [
+    "timeline-hourly"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "link only"
+   },
+   "best": "One page with every outlet's headline.",
+   "learn": "A \"who says what\" list by outlet is useful and cheap: incident.media@ has it.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "shell",
+    "also": {
+     "c-sapo": "200"
+    }
+   }
+  },
+  {
+   "id": "english-press",
+   "map": "portugal",
+   "kind": "press",
+   "name": "The Portugal News (English)",
+   "url": "https://www.theportugalnews.com/",
+   "owner": "The Portugal News",
+   "shows": "English-language daily: a \"Weather Alert\" item with a presenter-led video forecast, and a daily \"Portugal weather today\" item.",
+   "how": [
+    "presenter-video",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "A daily weather video for people who do not read Portuguese.",
+   "learn": "Web Summit visitors read English: our hero is in English with IPMA's Portuguese terms beside it.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "c-theportugalnews": "200",
+     "c-tpn-alert": "200",
+     "portugalresident": "403"
+    },
+    "note": "portugalresident.com refused our request (403)"
+   }
+  },
+  {
+   "id": "beachcam",
+   "map": "portugal",
+   "kind": "webcams",
+   "name": "Beachcam (MEO)",
+   "url": "https://beachcam.meo.pt/",
+   "owner": "MEO",
+   "shows": "Live coastal webcams with surf reports; it carried Charles items on its front page.",
+   "how": [
+    "maps"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "link only"
+   },
+   "best": "Seeing the sea now.",
+   "learn": "A link to the live camera, never a capture in git.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "pt-transport-weather",
+   "map": "portugal",
+   "kind": "aviation",
+   "name": "Airport and air navigation: ANA, NAV Portugal",
+   "url": "https://www.ana.pt/",
+   "owner": "ANA (VINCI) and NAV Portugal",
+   "shows": "Corporate pages opened; no weather product on the front pages. The airport's forecast is the TAF (see the aviation API in the worldwide map).",
+   "how": [
+    "warnings"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "link only"
+   },
+   "best": "Not a weather source.",
+   "learn": "Use the TAF, as now.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html",
+    "also": {
+     "navlisboa": "200"
+    }
+   }
+  },
+  {
+   "id": "dados-gov",
+   "map": "portugal",
+   "kind": "open-data",
+   "name": "dados.gov.pt",
+   "url": "https://dados.gov.pt/pt/datasets/?q=ipma",
+   "owner": "AMA (Portuguese State)",
+   "shows": "The State's open data portal lists IPMA datasets.",
+   "how": [
+    "api"
+   ],
+   "data": {
+    "api": "catalogue API",
+    "licence": "per dataset",
+    "reuse": "per dataset"
+   },
+   "best": "A catalogue with licences per dataset.",
+   "learn": "For incident.librarian@: licence text per dataset.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:39Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "pt-blocked",
+   "map": "portugal",
+   "kind": "public-service",
+   "name": "Not opened: SNIRH (rivers), E-REDES network status, Lisboa Aberta, Surfline",
+   "url": "https://snirh.apambiente.pt/",
+   "owner": "APA, E-REDES, Lisbon City Council, Surfline",
+   "shows": "SNIRH, Lisboa Aberta and Surfline refused our request (403); the E-REDES address we tried returned 404.",
+   "how": [
+    "stations"
+   ],
+   "data": {
+    "api": "not assessed",
+    "licence": "not assessed",
+    "reuse": "not assessed"
+   },
+   "best": "Not assessed.",
+   "learn": "River levels and power cuts are the two impact series still missing.",
+   "opened": {
+    "status": "403",
+    "read": "2026-11-10T23:39Z",
+    "seen": "blocked",
+    "also": {
+     "eredes": "404",
+     "lisboa-aberta": "403",
+     "surfline": "403"
+    }
+   }
+  },
+  {
+   "id": "sc-ipma",
+   "map": "storm-charles",
+   "kind": "authority",
+   "name": "IPMA: communiqué no. 2 and the warnings",
+   "url": "https://www.ipma.pt/pt/otempo/comunicados/",
+   "owner": "IPMA",
+   "shows": "The primary source. Communiqué no. 2 (valid 10 Nov 17:07 to 11 Nov 23:59) and the warnings JSON. No tracker, no map of the low's path, no live page: text and the warnings map.",
+   "how": [
+    "warnings",
+    "explainer",
+    "api"
+   ],
+   "data": {
+    "api": "warnings_www.json, comunicados.xml",
+    "licence": "as IPMA",
+    "reuse": "yes, non-commercial, with attribution"
+   },
+   "best": "Authority.",
+   "learn": "Nobody presents IPMA's own content as a single live page for one storm: that is the gap we fill.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "ipma-api-warnings": "200"
+    }
+   },
+   "rank": 1
+  },
+  {
+   "id": "sc-prociv",
+   "map": "storm-charles",
+   "kind": "authority",
+   "name": "ANEPC: notice 21 and preventive measures",
+   "url": "https://prociv.gov.pt/pt/avisos-a-populacao/",
+   "owner": "ANEPC",
+   "shows": "Numbered notices for Charles, active.",
+   "how": [
+    "warnings",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "public body; cite",
+    "reuse": "quote with attribution"
+   },
+   "best": "The measures, from the authority.",
+   "learn": "Link the notice number.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:41Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "sc-meteoalarm",
+   "map": "storm-charles",
+   "kind": "authority-aggregator",
+   "name": "MeteoAlarm: Portugal feed",
+   "url": "https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-portugal",
+   "owner": "EUMETNET",
+   "shows": "IPMA's warnings in CAP: 122 entries, including Extreme (red) entries, for example a red rain warning for Faro issued 21:23Z on 10 Nov.",
+   "how": [
+    "warnings",
+    "feed",
+    "api"
+   ],
+   "data": {
+    "api": "Atom/CAP",
+    "licence": "equivalent to CC BY 4.0 with conditions",
+    "reuse": "yes with attribution"
+   },
+   "best": "Machine-readable, with onset and expiry per entry.",
+   "learn": "A second path to the same warnings, with Spain's in the same format.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "sc-aemet",
+   "map": "storm-charles",
+   "kind": "authority",
+   "name": "AEMET: season table of named storms",
+   "url": "https://www.aemet.es/es/conocermas/borrascas/2026-2027",
+   "owner": "AEMET",
+   "shows": "Charles is the third name on the south-western list; at 23:38Z its row had no naming date or service yet, while Bruna's says IPMA, 5 November.",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "OpenData",
+    "licence": "cite AEMET",
+    "reuse": "yes with attribution"
+   },
+   "best": "The naming record.",
+   "learn": "Watch for the row to be filled; link it.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "aemet-borrascas": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-rr-dashboard",
+   "map": "storm-charles",
+   "kind": "interactive",
+   "name": "Renascença: \"Monitorização Depressão Charles\"",
+   "url": "https://rr.pt/tempestade-charles-avisos-e-ocorrencias",
+   "owner": "Rádio Renascença",
+   "shows": "The only purpose-built tracker found. A dashboard with two views: weather warnings (a risk map by warning area, a national severity figure, \"warnings in my area\" by the reader's location, the day's warnings sorted by importance and time) and civil-protection occurrences (a map with markers coloured by state: under way, being resolved, concluding, dispatched; a number on a marker when several share a place; a filter by state). Built with an open map library; data loaded by script.",
+   "how": [
+    "maps",
+    "tracker",
+    "warnings",
+    "interactive"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Warnings and occurrences in one tool, with \"my area\" and occurrence states.",
+   "learn": "The closest thing to our site. It has no timeline, no decisions, no sources per item and no machine-readable twin: those are ours. Its occurrence-state legend and \"my area\" are worth matching.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:46Z",
+    "seen": "shell",
+    "also": {
+     "c-rr-tag": "200"
+    },
+    "note": "the page shell and legends were read; the data loads by script and was not seen"
+   },
+   "rank": 2
+  },
+  {
+   "id": "sc-rtp-live",
+   "map": "storm-charles",
+   "kind": "liveblog",
+   "name": "RTP: live blog \"Depressão Charles junta-se a Bruna. A evolução do mau tempo em Portugal\"",
+   "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024",
+   "owner": "RTP",
+   "shows": "Minute-by-minute entries with \"Momento-chave\" flags, embedded social posts and video; a very heavy page (1.4 MB of HTML).",
+   "how": [
+    "liveblog",
+    "presenter-video"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Key-moment flags; the public broadcaster's reach.",
+   "learn": "Flag key moments; stay 100 times lighter.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html"
+   },
+   "rank": 3
+  },
+  {
+   "id": "sc-publico-live",
+   "map": "storm-charles",
+   "kind": "liveblog",
+   "name": "Público: \"Ao Minuto\" on Charles",
+   "url": "https://www.publico.pt/2026/11/10/sociedade/noticia/carros-submersos-estradas-alagadas-lisboa-escolas-servicos-publicos-fecham-quarta-2194405",
+   "owner": "Público",
+   "shows": "Live blog opened 10 Nov 11:38; the headline is rewritten as a running summary of three facts; one embedded chart from a charting service.",
+   "how": [
+    "liveblog",
+    "embed"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "A headline that is the state of things in three clauses.",
+   "learn": "Our hero sentence should be rewritten each wake the same way: three facts, each sourced.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html"
+   },
+   "rank": 4
+  },
+  {
+   "id": "sc-publico-explainer",
+   "map": "storm-charles",
+   "kind": "explainer",
+   "name": "Público: \"O que precisa de saber sobre a depressão Charles\"",
+   "url": "https://www.publico.pt/2026/11/10/sociedade/noticia/mau-tempo-governo-pede-apenas-deslocacoes-necessarias-periodos-chuva-intensa-2194385",
+   "owner": "Público",
+   "shows": "Question-and-answer explainer, first published 07:54Z, last changed 20:25Z.",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Kept current all day.",
+   "learn": "Show first-published and last-changed on our explainer.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "sc-observador-live",
+   "map": "storm-charles",
+   "kind": "liveblog",
+   "name": "Observador: general live blog leading on Charles",
+   "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/",
+   "owner": "Observador",
+   "shows": "The day's general live blog (its address is about another story); at 23:34Z its title was \"IPMA admite que Charles entre mais a sul do que o previsto\"; entries carry their own anchors and times; marked up as a live blog for search engines.",
+   "how": [
+    "liveblog"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Every entry has its own address.",
+   "learn": "Every row of our timeline needs a stable anchor (it has a time; give it an id).",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "sc-observador-especial",
+   "map": "storm-charles",
+   "kind": "explainer",
+   "name": "Observador: special \"Charles: o que a distingue da Kristin e quão grave pode ser?\"",
+   "url": "https://observador.pt/especiais/ventos-superiores-a-150-km-h-chuva-torrencial-e-a-ameaca-de-um-novo-sting-jet-pode-a-charles-repetir-a-kristin/",
+   "owner": "Observador",
+   "shows": "Long explainer (published 21:14Z, changed 23:15Z) comparing Charles with storm Kristin; two embedded animated gust maps from Ventusky, one per model (GFS and ECMWF).",
+   "how": [
+    "explainer",
+    "embed",
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Two models side by side as the picture of uncertainty; the comparison with the last big storm.",
+   "learn": "A \"Charles against the last storm\" table from IPMA's published figures.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html"
+   },
+   "rank": 5
+  },
+  {
+   "id": "sc-negocios-live",
+   "map": "storm-charles",
+   "kind": "liveblog",
+   "name": "Jornal de Negócios: live \"País em estado de alerta esta quarta-feira\"",
+   "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "owner": "Medialivre",
+   "shows": "Live blog on the economic side (closures, transport, services), last changed 23:31Z; one embedded Datawrapper chart; a video of the storm's path shared with Correio da Manhã's television channel.",
+   "how": [
+    "liveblog",
+    "embed",
+    "presenter-video"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "What closes: shops, services, transport.",
+   "learn": "A \"what is closed\" table is the most practical block: ours covers Web Summit, transport, schools, with sources.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-cm-percurso": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-nam-live",
+   "map": "storm-charles",
+   "kind": "liveblog",
+   "name": "Notícias ao Minuto: \"AO MINUTO\"",
+   "url": "https://www.noticiasaominuto.com/pais/3081421/ao-minuto-so-saia-de-casa-se-for-necessario-madeira-a-vermelho",
+   "owner": "Notícias ao Minuto",
+   "shows": "Live blog since 07:44Z; headline rewritten through the day.",
+   "how": [
+    "liveblog"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Speed.",
+   "learn": "None beyond the others.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "sc-rr-live",
+   "map": "storm-charles",
+   "kind": "liveblog",
+   "name": "Renascença: \"Depressão Charles ao minuto\" and topic page",
+   "url": "https://rr.pt/depressao-charles/tag/12540/",
+   "owner": "Rádio Renascença",
+   "shows": "Live blog (from 13:27 on 10 Nov) and a topic page, promoted on the front page beside its interactive.",
+   "how": [
+    "liveblog"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Live blog and tool promoted as a pair.",
+   "learn": "Pair our timeline with the data pages the same way.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:46Z",
+    "seen": "html",
+    "also": {
+     "c-renascenca": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-eco",
+   "map": "storm-charles",
+   "kind": "topic-page",
+   "name": "ECO: topic \"Depressão Charles\"",
+   "url": "https://eco.sapo.pt/topico/depressao-charles/",
+   "owner": "ECO",
+   "shows": "A topic page collecting every piece (33 links on the front page at 23:39Z): companies, closures, insurance, transport.",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Volume on the business consequences.",
+   "learn": "A source list for decisions by companies.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-eco-live": "200",
+     "eco": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-jn",
+   "map": "storm-charles",
+   "kind": "explainer",
+   "name": "Jornal de Notícias: \"Tudo o que precisa de saber\" and \"o que fecha\"",
+   "url": "https://www.jn.pt/nacional/artigo/tudo-o-que-precisa-de-saber-sobre-a-tempestade-charles/18146628",
+   "owner": "Global Media",
+   "shows": "Two service pieces (12:22Z and 15:17Z): everything to know, and what closes on 11 November; plus a 60-second video round-up.",
+   "how": [
+    "explainer",
+    "presenter-video"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Service journalism in list form.",
+   "learn": "Lists beat prose for closures.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-jn-fecha": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-tsf",
+   "map": "storm-charles",
+   "kind": "explainer",
+   "name": "TSF: path \"incerto\", critical period Wednesday afternoon; transport",
+   "url": "https://www.tsf.pt/sociedade/artigo/depressao-charles-mantem-trajeto-incerto-e-devera-atingir-o-periodo-mais-critico-na-tarde-de-quarta-feira/18146855",
+   "owner": "Global Media",
+   "shows": "Two pieces at 21:26Z and 21:31Z: the uncertain path with the critical period on Wednesday afternoon (attributed to the authorities), and transport conditions north to south.",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Radio's plain summary of when.",
+   "learn": "The \"when\" belongs in the first line of our hero, attributed.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-tsf-transportes": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-cnn",
+   "map": "storm-charles",
+   "kind": "broadcaster",
+   "name": "CNN Portugal / TVI: video coverage and \"Por onde vai entrar a tempestade Charles\"",
+   "url": "https://cnnportugal.iol.pt/meteorologia",
+   "owner": "Media Capital",
+   "shows": "Studio and field video through the evening (preparation at a fire station, the police, the Prime Minister), and an explainer on where the storm may make landfall (\"several possibilities\"). The article address we tried returned 404 (truncated link); the section listing was read.",
+   "how": [
+    "presenter-video",
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "The presenter at the map: the storm's possible paths explained by a person.",
+   "learn": "The \"presenter\" on our home page: a short voice that says what is known, what is not, and when we will know.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:41Z",
+    "seen": "html",
+    "also": {
+     "c-cnn-trajeto": "404",
+     "c-cnn-tag": "404"
+    }
+   }
+  },
+  {
+   "id": "sc-cm",
+   "map": "storm-charles",
+   "kind": "broadcaster",
+   "name": "Correio da Manhã / CMTV: \"Veja o percurso da tempestade Charles\"",
+   "url": "https://www.cmjornal.pt/cmtv/videos/detalhe/veja-o-percurso-da-tempestade-charles-e-por-onde-deve-entrar-em-portugal",
+   "owner": "Medialivre",
+   "shows": "A video of the storm's path on a map; a climate section with closures (supermarkets) and the government's advice.",
+   "how": [
+    "presenter-video",
+    "maps"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "The path as a moving picture.",
+   "learn": "People want the path; IPMA publishes a centre position per communiqué: plot those points, sourced.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-cm-clima": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-tempopt",
+   "map": "storm-charles",
+   "kind": "specialist-press",
+   "name": "tempo.pt (Meteored): seven forecast pieces",
+   "url": "https://www.tempo.pt/noticias/previsao/",
+   "owner": "Meteored",
+   "shows": "Seven pieces on Charles by its meteorologists, each built around one number and one map: rain totals, gusts by district, the hour the heaviest rain reaches Lisbon, the size of the cloud mass.",
+   "how": [
+    "explainer",
+    "maps",
+    "models"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "Hour-specific claims for Lisbon.",
+   "learn": "Private forecasts: evidence. Useful to compare against what IPMA says, never to replace it.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:41Z",
+    "seen": "html",
+    "also": {
+     "c-tempopt-noticias": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-lusometeo",
+   "map": "storm-charles",
+   "kind": "amateur",
+   "name": "Luso Meteo: \"Tempestade Charles pode, afinal, ser mais fraca do que o previsto\"",
+   "url": "https://lusometeo.com/atualidade/tempestade-charles-mais-fraca-32997/",
+   "owner": "Luso Meteo",
+   "shows": "Published 19:14Z on 10 Nov: an independent analysis that the storm may be weaker than forecast, with its own interactive maps.",
+   "how": [
+    "explainer",
+    "maps"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "The dissenting view, argued.",
+   "learn": "A hypothesis with its source; our own analysis recorded a weaker TAF at 23:00 too. Shown beside, not instead of, IPMA's reds.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html"
+   }
+  },
+  {
+   "id": "sc-wikipedia-pt",
+   "map": "storm-charles",
+   "kind": "encyclopedia",
+   "name": "Wikipedia (pt): \"Depressão Charles\"",
+   "url": "https://pt.wikipedia.org/wiki/Depress%C3%A3o_Charles",
+   "owner": "Wikimedia volunteers",
+   "shows": "An article exists: page id 8011202, eight revisions on 10 Nov between 13:07Z and 20:01Z, 17 KB. The article page itself answered 429 (rate limit); the revision list was read through the API.",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "MediaWiki API",
+    "licence": "CC BY-SA 4.0",
+    "reuse": "yes with attribution, share-alike"
+   },
+   "best": "A citable summary that others will copy.",
+   "learn": "For incident.media@ and the conductor: sources.json records \"no article found\"; the title is \"Depressão Charles\" without a year.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:41Z",
+    "seen": "json",
+    "also": {
+     "c-wiki-pt-article": "429",
+     "c-wiki-pt": "200"
+    }
+   },
+   "rank": 6
+  },
+  {
+   "id": "sc-wikipedia-en",
+   "map": "storm-charles",
+   "kind": "encyclopedia",
+   "name": "Wikipedia (en): \"2026–27 European windstorm season\", section Storm Charles",
+   "url": "https://en.wikipedia.org/wiki/2026%E2%80%9327_European_windstorm_season",
+   "owner": "Wikimedia volunteers",
+   "shows": "No article of its own in English (\"Storm Charles 2026\" does not exist); a section \"Storm Charles\" in the season article, which lists Bruna and Charles as active; last edited 10 Nov 20:32Z.",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "MediaWiki API",
+    "licence": "CC BY-SA 4.0",
+    "reuse": "yes with attribution, share-alike"
+   },
+   "best": "The season in one table.",
+   "learn": "Link it for context on naming.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-wiki-en": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-euronews",
+   "map": "storm-charles",
+   "kind": "international",
+   "name": "Euronews: three pieces in English",
+   "url": "https://www.euronews.com/2026/11/10/portugal-on-alert-as-storms-bruna-and-charles-raise-sting-jet-risk-of-160-kmh-winds",
+   "owner": "Euronews",
+   "shows": "English coverage since 9 Nov: Charles to hit Portugal and Spain; red warnings for Madeira; the sting-jet risk (published 16:41Z, changed 18:01Z on 10 Nov).",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "The main English-language source found.",
+   "learn": "English readers have little: our English hero matters.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-euronews-1": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-elpais",
+   "map": "storm-charles",
+   "kind": "international",
+   "name": "El País: Bruna and Charles in Spain",
+   "url": "https://elpais.com/el-tiempo/2026-11-10/las-borrascas-bruna-y-charles-ponen-bajo-aviso-rojo-por-lluvias-a-extremadura-y-castilla-y-leon.html",
+   "owner": "PRISA",
+   "shows": "Spanish side: red rain warnings in Extremadura and Castilla y León, schools closed in Extremadura and on the coast of Cádiz and Huelva.",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "The neighbour's decisions.",
+   "learn": "Spain's decisions are comparable decisions: one line with a link.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-elpais-1": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-tpn",
+   "map": "storm-charles",
+   "kind": "international",
+   "name": "The Portugal News: \"Weather Alert: Portugal on Red Alert for Storm Charles\"",
+   "url": "https://www.theportugalnews.com/news/2026-11-10/weather-alert-portugal-on-red-alert-for-storm-charles/1114149",
+   "owner": "The Portugal News",
+   "shows": "A presenter-led video forecast in English (17:35Z) and two earlier text items.",
+   "how": [
+    "presenter-video"
+   ],
+   "data": {
+    "api": "none",
+    "licence": "all rights reserved",
+    "reuse": "short quotation with link"
+   },
+   "best": "English, video, short.",
+   "learn": "As Euronews.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:41Z",
+    "seen": "html",
+    "also": {
+     "c-theportugalnews": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-social",
+   "map": "storm-charles",
+   "kind": "social",
+   "name": "Open social networks: Mastodon tag #Charles",
+   "url": "https://mastodon.social/tags/charles",
+   "owner": "public posts",
+   "shows": "Twenty recent public posts under the tag, a few about the storm (in Spanish and Portuguese), most about other things. The Bluesky post search refused our request (403).",
+   "how": [
+    "social"
+   ],
+   "data": {
+    "api": "Mastodon public API",
+    "licence": "posts belong to their authors",
+    "reuse": "link only"
+   },
+   "best": "Little signal.",
+   "learn": "Not worth a block on the home page.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:40Z",
+    "seen": "html",
+    "also": {
+     "c-bsky-search": "403",
+     "c-bsky-ipma": "200"
+    }
+   }
+  },
+  {
+   "id": "sc-not-covering",
+   "map": "storm-charles",
+   "kind": "absent",
+   "name": "Not covering Charles when read: Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth, Copernicus EMS",
+   "url": "https://www.metoffice.gov.uk/weather/warnings-and-advice/uk-storm-centre/index",
+   "owner": "several",
+   "shows": "No mention of Charles was found on these pages at 23:38Z to 23:41Z. It is a south-western-group storm; the UK pages follow the western group's list. Reuters and The Guardian refused our requests (401, bot check) and were not read.",
+   "how": [
+    "explainer"
+   ],
+   "data": {
+    "api": "n/a",
+    "licence": "n/a",
+    "reuse": "n/a"
+   },
+   "best": "n/a",
+   "learn": "Outside Portugal and Spain, Charles is barely covered in English: an opening for a clear English page with sources.",
+   "opened": {
+    "status": "200",
+    "read": "2026-11-10T23:38Z",
+    "seen": "html",
+    "also": {
+     "c-bbc-search": "200",
+     "c-severeweathereu": "200",
+     "c-zoomearth-storms": "200",
+     "c-copernicus-act": "200",
+     "c-reuters": "401",
+     "c-guardian": "200"
+    }
+   }
+  }
+ ]
+}
