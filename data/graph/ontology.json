@@ -26,8 +26,8 @@
         "organiser": "runs the event: Web Summit and its own programmes",
         "outlet": "where others report: the press and public social platforms"
       },
-      "id": "actor:<id>",
-      "from": "decisions/graph.json nodes; outlets from the hosts of the URLs that evidence and signals cite"
+      "id": "actor:<id> (from the decision graph) or actor:host:<host> (derived from a cited or covering site)",
+      "from": "decisions/graph.json nodes; outlets from the hosts of the URLs that evidence and signals cite, and from the sites covering the storm (research/weather-sites/sites.json)"
     },
     "Decision": {
       "what": "Something an actor decided, or has not yet announced (status says which).",
@@ -37,17 +37,17 @@
     "Warning": {
       "what": "A warning from a body that warns: issued (the moment it was made or first read) or in force (its type, level, area, start and end).",
       "id": "warning:<id>",
-      "from": "decisions/graph.json edges by IPMA and ANEPC's avisos; weather/warnings.json"
+      "from": "decisions/graph.json edges by IPMA and ANEPC's avisos; weather/warnings.json (in force); weather/cap.json (phase cap: IPMA's own messages, with the time IPMA sent each)"
     },
     "Signal": {
       "what": "A row of the incident's timeline: something published, said or observed, at a time.",
-      "id": "signal:<time>:<hash>",
+      "id": "signal:<the timeline's permanent id>",
       "from": "signals.json"
     },
     "Source": {
       "what": "A URL that was read: a page, a feed, an API.",
       "id": "source:<id>",
-      "from": "decisions/sources.json; every other URL an item cites"
+      "from": "decisions/sources.json; every other URL an item cites; the pages covering the storm (research/weather-sites/sites.json, coverage says what kind)"
     },
     "Place": {
       "what": "Where a warning applies: an IPMA warning area (a district) or mainland Portugal.",

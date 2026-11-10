@@ -26,14 +26,14 @@
     }
     function chips() {
         const t = $('g-types'), l = $('g-labels')
-        for (const k of TYPES) t.append(chip(k, COL[k], storm.counts.by_type[k] || 0, true, p => p ? off.types.delete(k) : off.types.add(k)))
+        for (const k of TYPES) t.append(chip(k, COL[k], storm.nodes.filter(n => n.type === k).length, true, p => p ? off.types.delete(k) : off.types.add(k)))
         for (const k of LABELS) l.append(chip(k, null, storm.nodes.filter(n => n.label === k).length, true, p => p ? off.labels.delete(k) : off.labels.add(k)))
         l.append(chip('warnings outside Lisbon', null, storm.nodes.filter(n => n.type === 'Warning' && n.phase === 'in_force' && n.area !== 'LSB').length, false, p => { off.elsewhere = !p }))
     }
     const originHref = o => { if (!o) return null; const f = (o.startsWith('/') ? o.slice(1) : storm.origin_base + o).split('#')[0]; return BASE + f }
     function pick(n) {
         const p = $('g-panel'); p.textContent = ''
-        p.append(el('span', { class: 'g-type' }, [el('i', { style: `--c:${COL[n.type]}` }), n.type + (n.kind ? ' · ' + n.kind : '') + (n.phase ? ' · ' + n.phase.replace('_', ' ') : '')]))
+        p.append(el('span', { class: 'g-type' }, [el('i', { style: `--c:${COL[n.type]}` }), n.type + (n.kind ? ' · ' + n.kind : '') + (n.phase ? ' · ' + (n.phase === 'cap' ? 'IPMA message' : n.phase.replace('_', ' ')) : '')]))
         const row = (tables[n.id] || {}), full = row.decision || row.text || n.name
         p.append(el('h2', { text: full }))
         const dl = el('dl'), add = (k, v) => { if (v == null || v === '') return; dl.append(el('dt', { text: k }), el('dd', {}, [v])) }
@@ -70,18 +70,18 @@
         const msg = $('g-msg')
         try {
             const get = async u => { const r = await fetch(u, { cache: 'no-cache' }); if (!r.ok) throw new Error(u + ': HTTP ' + r.status); return r.json() }
-            const [s, d, w, sg] = await Promise.all([get(BASE + 'data/graph/storm.json'), ...['decisions', 'warnings', 'signals'].map(t => get(BASE + `data/graph/tables/${t}.json`))])
-            storm = s; for (const t of [d, w, sg]) for (const r of t.rows) tables[r.id] = r
+            const [s, more, d, w, sg] = await Promise.all([get(BASE + 'data/graph/storm.json'), get(BASE + 'data/graph/storm-elsewhere.json'), ...['decisions', 'warnings', 'signals'].map(t => get(BASE + `data/graph/tables/${t}.json`))])
+            storm = { ...s, nodes: s.nodes.concat(more.nodes), edges: s.edges.concat(more.edges) }; for (const t of [d, w, sg]) for (const r of t.rows) tables[r.id] = r
             for (const n of storm.nodes) byId.set(n.id, n)
             for (const e of storm.edges) { (out.get(e.from) || out.set(e.from, []).get(e.from)).push(e); (inn.get(e.to) || inn.set(e.to, []).get(e.to)).push(e) }
-            $('g-asof').textContent = `${storm.counts.nodes} nodes, ${storm.counts.edges} edges, data as of ${storm.as_of.replace('T', ' ').replace('Z', ' UTC')}`
+            $('g-asof').textContent = `${storm.nodes.length} nodes, ${storm.edges.length} edges, data as of ${storm.as_of.replace('T', ' ').replace('Z', ' UTC')}`
             chips(); list()
             const first = byId.get('decision:websummit-wednesday') || storm.nodes[0]; pick(first)
         } catch (e) { msg.textContent = 'The graph could not be read: ' + (e && e.message || e); return }
         try {
             g = await window.StormGraph.mount($('g-canvas'), window.StormGraph.fromStorm(storm), { colours: STAGE, onPick: pick, tip: n => `${n.type} · ${n.label}${n.at ? ' · ' + n.at.slice(5, 16).replace('T', ' ') : ''}` })
             msg.hidden = true; apply()
-            window.__tools = Object.assign(window.__tools || {}, { graph: { focus: id => { const n = byId.get(id); if (n) pick(n); return g.focus(id) }, node: id => byId.get(id), counts: () => storm.counts } })
+            window.__tools = Object.assign(window.__tools || {}, { graph: { focus: id => { const n = byId.get(id); if (n) pick(n); return g.focus(id) }, node: id => byId.get(id), counts: () => ({ nodes: storm.nodes.length, edges: storm.edges.length }) } })
             document.dispatchEvent(new CustomEvent('tool:ready', { detail: { tool: 'graph' } }))
         } catch (e) { msg.hidden = false; msg.textContent = 'The 3D view is not available here (' + (e && e.message || e) + '). The same graph is in the list below and in the panel.'; apply() }
     }

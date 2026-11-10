@@ -13,15 +13,15 @@
 | Table | Rows are | From |
 |---|---|---|
 | `decisions` | decisions and issued warnings: `by`, `decision`, `at`, `at_epoch`, `status`, `follows` | [tables/decisions.json](../graph/tables/decisions.json) |
-| `warnings` | warnings: `phase` is issued, in_force or history; `level`, `area`, `starts`, `ends` | [tables/warnings.json](../graph/tables/warnings.json) |
+| `warnings` | warnings: `phase` is issued, in_force, cap (IPMA's own messages, with the time sent and what each replaced) or history; `level`, `area`, `starts`, `ends` | [tables/warnings.json](../graph/tables/warnings.json) |
 | `signals` | the timeline, with `publisher` | [tables/signals.json](../graph/tables/signals.json) |
-| `sources` | every URL read, its publisher, `cited_by` | [tables/sources.json](../graph/tables/sources.json) |
+| `sources` | every URL read, its publisher, `cited_by`; `coverage` for the pages covering the storm | [tables/sources.json](../graph/tables/sources.json) |
 | `actors` | bodies, operators, the organiser, outlets | [tables/actors.json](../graph/tables/actors.json) |
-| `nodes`, `edges` | the graph itself | [storm.json](../graph/storm.json) |
+| `nodes`, `edges` | the graph itself | [storm.json](../graph/storm.json) and [storm-elsewhere.json](../graph/storm-elsewhere.json) |
 
 Every row has `label` (fact, evidence, hypothesis), `source` (URL), `read` (UTC) and `origin` (the file and place it came from). Times are UTC text (`2026-11-10T19:09Z`); `*_epoch` columns are the same time in seconds, present only when the time is known to the minute, so differences are plain arithmetic. [The ontology](../graph/README.md) says what each thing is.
 
-## The five questions
+## The seven questions
 
 ### 1. What was decided, by whom and when?
 
@@ -38,14 +38,16 @@ ORDER BY at IS NULL, at;
 
 ### 2. How long after the first warning was each decision?
 
-Two clocks: hours since IPMA's first communiqué named the storm, and hours since IPMA's red wind warning for Lisbon was first read by us (the press gives an earlier time for it: see the warnings table, phase = 'history'). A negative number means the decision came before that warning was read. Time order, not cause.
+Two clocks: hours since IPMA's first communiqué named the storm, and hours since IPMA sent its red wind warning for Lisbon (IPMA's own time, from its CAP message; if that file has none, the time we first read the warning). Time order, not cause.
 
 ```
 WITH first_warning AS (SELECT MIN(at_epoch) AS t FROM decisions WHERE kind = 'warning'),
-     red_wind AS (SELECT at_epoch AS t FROM decisions WHERE id = 'warning:ipma-red-wind')
+     red_wind AS (SELECT COALESCE(
+         (SELECT MIN(at_epoch) FROM warnings WHERE phase = 'cap' AND level = 'red' AND warning_type = 'Vento'),
+         (SELECT at_epoch FROM decisions WHERE id = 'warning:ipma-red-wind')) AS t)
 SELECT d.at, d.by_name AS decided_by, substr(d.decision, 1, 100) AS decision,
        round((d.at_epoch - first_warning.t) / 3600.0, 1) AS h_after_first_warning,
-       round((d.at_epoch - red_wind.t) / 3600.0, 1) AS h_after_red_wind_read,
+       round((d.at_epoch - red_wind.t) / 3600.0, 1) AS h_after_red_wind_sent,
        d.label, d.source
 FROM decisions d, first_warning, red_wind
 WHERE d.kind = 'decision' AND d.at_epoch IS NOT NULL
@@ -94,9 +96,39 @@ WHERE status IN ('not_announced', 'expected', 'unknown')
 ORDER BY CASE status WHEN 'not_announced' THEN 0 WHEN 'unknown' THEN 1 ELSE 2 END, by_name;
 ```
 
+### 6. Which warnings changed, and how long before they started?
+
+IPMA's own CAP messages for the Lisbon district (phase = 'cap'): every Update, when IPMA sent it, how many hours that was before the warning's start, and what it replaced. was_level and was_starts are filled only when the replaced message is still in the feed we read; replaced_sent is always IPMA's own time for the message it replaced. A negative h_before_start means the update came after the start.
+
+```
+SELECT w.at AS sent, w.warning_type, w.level, w.starts, w.ends,
+       round((w.starts_epoch - w.at_epoch) / 3600.0, 1) AS h_before_start,
+       w.replaces_sent AS replaced_sent,
+       p.level AS was_level, p.starts AS was_starts,
+       w.label, w.source
+FROM warnings w LEFT JOIN warnings p ON p.id = w.replaces
+WHERE w.phase = 'cap' AND w.msg_type = 'Update'
+ORDER BY w.at_epoch;
+```
+
+### 7. Which decisions cite which warning?
+
+Every decision the researcher linked to a warning it followed (the 'precedes' edges from a Warning to a Decision), with the minutes between them where both times are known to the minute. The link is the researcher's reading of the decision's own words or of the order of events; the label is the decision's. Order, not cause.
+
+```
+SELECT b.at AS decided_at, substr(b.name, 1, 80) AS decision,
+       a.at AS warning_at, substr(a.name, 1, 80) AS warning,
+       e.lead_minutes, e.label, e.source
+FROM edges e
+JOIN nodes a ON a.id = e."from" AND a.type = 'Warning'
+JOIN nodes b ON b.id = e."to" AND b.type = 'Decision'
+WHERE e.rel = 'precedes'
+ORDER BY b.at IS NULL, b.at, a.at;
+```
+
 ## For an agent
 
-Open the page, wait for the `tool:ready` event on `document`, then `window.__tools.sql.run(sql)` returns `{ columns, rows, ms }`; `window.__tools.sql.schema()` lists the tables. Or skip the page: the tables are plain JSON at the paths above, and the five queries are in [queries.json](../graph/queries.json). A query can be linked: `index.html#q=<the SQL, URL-encoded>`.
+Open the page, wait for the `tool:ready` event on `document`, then `window.__tools.sql.run(sql)` returns `{ columns, rows, ms }`; `window.__tools.sql.schema()` lists the tables. Or skip the page: the tables are plain JSON at the paths above, and the queries are in [queries.json](../graph/queries.json). A query can be linked: `index.html#q=<the SQL, URL-encoded>`.
 
 ## What it does not do
 

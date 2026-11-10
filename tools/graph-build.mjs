@@ -2,9 +2,12 @@
 // The graph of an incident, built from its JSON files and never by hand (incident.graph@web-summit.dinis).
 //   node tools/graph-build.mjs [incidents/<id>]     writes data/graph/storm.json and data/graph/tables/*.json
 //   node tools/graph-build.mjs --check              exits 1 if what is committed is not what the inputs give
+//   node tools/graph-build.mjs --out DIR            writes DIR/data/graph/{storm,storm-elsewhere,queries}.json and tables/*.json ONLY:
+//                                                   no tracked file is touched (for the build: --out _site, so the served graph
+//                                                   is rebuilt on every push by anyone)
 // Reads: data/graph/ontology.json (what a node and an edge may be), data/graph/ref/ipma-areas.json, data/keys.json, and
-// the incident's data/: decisions/graph.json, decisions/sources.json, signals.json, weather/warnings.json, every *.json
-// (as Dataset nodes). Every node, edge and table row carries label (fact, evidence, hypothesis), source (https URL),
+// the incident's data/: decisions/graph.json, decisions/sources.json, signals.json, weather/warnings.json, weather/cap.json
+// (IPMA's real issue times), every *.json (as Dataset nodes); and research/weather-sites/sites.json (who covers the storm). Every node, edge and table row carries label (fact, evidence, hypothesis), source (https URL),
 // read (UTC) and origin (file#pointer). The output has no clock in it: the same inputs give the same bytes.
 // No dependencies, no network, nothing from git history.
 import fs from 'node:fs'
@@ -14,7 +17,10 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2), CHECK = args.includes('--check')
-const INC = (args.find(a => !a.startsWith('--')) || 'incidents/2026-11-10-storm-charles').replace(/\/$/, '')
+const outAt = args.indexOf('--out'), OUT_DIR = outAt >= 0 ? path.resolve(args[outAt + 1] || '') : ''
+if (outAt >= 0 && (!args[outAt + 1] || OUT_DIR === ROOT)) { console.error('graph-build: --out needs a directory other than the repository root'); process.exit(2) }
+if (OUT_DIR && CHECK) { console.error('graph-build: --out and --check do not go together'); process.exit(2) }
+const INC = (args.find((a, i) => !a.startsWith('--') && i !== outAt + 1) || 'incidents/2026-11-10-storm-charles').replace(/\/$/, '')
 const SITE = 'https://storm-charles.promptugal.news/'
 const DATA = `${INC}/data/`
 const read = rel => fs.readFileSync(path.join(ROOT, rel), 'utf8')
@@ -23,6 +29,8 @@ const sha = s => crypto.createHash('sha256').update(s).digest('hex')
 const host = u => { try { return new URL(u).hostname.replace(/^www\./, '') } catch { return '' } }
 const https = u => typeof u === 'string' && /^https:\/\//.test(u)
 // a time known to the minute: 2026-11-10T12:10Z or with seconds; anything else (a day, "between ...", empty) has no epoch
+// CAP times come as 2026-11-10T07:18:40+00:00: the same instant, written with Z
+const toZ = t => typeof t === 'string' ? t.replace(/\+00:00$/, 'Z') : t
 const epoch = t => /^\d{4}-\d\d-\d\dT\d\d:\d\d(:\d\d)?Z$/.test(t || '') ? Math.floor(Date.parse(t) / 1000) : null
 const precision = t => epoch(t) !== null ? 'minute' : /^\d{4}-\d\d-\d\d$/.test(t || '') ? 'day' : t ? 'approx' : 'none'
 const slug = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
@@ -32,6 +40,8 @@ const AREAS = J('data/graph/ref/ipma-areas.json')
 const KEYS = J('data/keys.json')
 const G = J(DATA + 'decisions/graph.json'), S = J(DATA + 'decisions/sources.json'), SIG = J(DATA + 'signals.json'), W = J(DATA + 'weather/warnings.json')
 const incident = J(`${INC}/incident.json`)
+const opt = rel => fs.existsSync(path.join(ROOT, rel)) ? J(rel) : null
+const CAP = opt(DATA + 'weather/cap.json'), SITES = opt('research/weather-sites/sites.json')
 
 const nodes = new Map(), edges = new Map(), problems = []
 const LABELS = new Set(Object.keys(ONT.labels))
@@ -69,11 +79,11 @@ const NOT_OUTLET = new Set(ONT.own_channels.not_outlets)
 // sub-domains of an actor's host are its channel too (api.ipma.pt and ipma.pt)
 const actorOfHost = h => { if (!h) return null; if (ownHost.has(h)) return ownHost.get(h); for (const [k, v] of ownHost) if (h.endsWith('.' + k) || k.endsWith('.' + h)) return v; return null }
 // an outlet: a host that is nobody's own channel, cited by evidence or by a signal
-function publisher(url, ctx, asOutlet) {
+function publisher(url, ctx, asOutlet, kind = 'outlet') {
     const h = host(url); if (!h) return null
     const own = actorOfHost(h); if (own) return own
     if (!asOutlet || NOT_OUTLET.has(h)) return null
-    return node({ id: 'actor:outlet:' + h, type: 'Actor', kind: 'outlet', kind_in_source: null, name: h, role: 'Publishes reports that this incident cites (derived from the host of the cited URLs).', label: 'fact', source: url, read: ctx.read, read_by: ctx.read_by || null, blocked: null, derived: true, origin: ctx.origin }).id
+    return node({ id: 'actor:host:' + h, type: 'Actor', kind, kind_in_source: null, name: h, role: 'Publishes reports that this incident cites (derived from the host of the cited URLs).', label: 'fact', source: url, read: ctx.read, read_by: ctx.read_by || null, blocked: null, derived: true, origin: ctx.origin }).id
 }
 
 // ---------------------------------------------------------------- sources (decisions/sources.json, then any other cited URL)
@@ -106,7 +116,7 @@ G.edges.forEach((e, i) => {
     // a hypothesis has no source of its own: its source is the file that holds its reasons
     const src = https(e.source) ? e.source : graphFileUrl
     const ctx = { read: e.read || G.updated, read_by: e.read_by, origin, at: e.at }
-    node({ id, type: w ? 'Warning' : 'Decision', name: e.decision, text: e.decision, at: e.at || null, at_precision: precision(e.at), status: e.status, ...(w ? { phase: 'issued', level: (e.id.match(/red|orange|yellow/) || [null])[0] } : {}), label: e.label, source: src, read: ctx.read, read_by: e.read_by || null, note: e.note || null, reasons: e.reasons || null, against: e.against || null, conflict: e.conflict || null, origin })
+    node({ id, type: w ? 'Warning' : 'Decision', name: e.decision, text: e.decision, at: e.at || null, at_precision: precision(e.at), effect_from: e.effect_from_utc || null, effect_to: e.effect_to_utc || null, status: e.status, ...(w ? { phase: 'issued', level: (e.id.match(/red|orange|yellow/) || [null])[0] } : {}), label: e.label, source: src, read: ctx.read, read_by: e.read_by || null, note: e.note || null, reasons: e.reasons || null, against: e.against || null, conflict: e.conflict || null, origin })
     for (const by of [e.by, ...(e.also_by || [])]) edge({ from: 'actor:' + by, to: id, rel: w ? 'warns' : 'decides', label: e.label, source: src, read: ctx.read, origin })
     for (const to of e.to || []) edge({ from: id, to: 'actor:' + to, rel: 'affects', label: e.label, source: src, read: ctx.read, origin })
     if (https(e.source)) {
@@ -153,21 +163,58 @@ W.lisbon.forEach((w, i) => addInForce(w, 'LSB', `${DATA}weather/warnings.json#/l
 const E = W.red_and_orange_elsewhere || { items: [] }
 E.items.forEach((w, i) => addInForce(w, w.area, `${DATA}weather/warnings.json#/red_and_orange_elsewhere/items/${i}`, E.source || W.source, E.read_utc || W.read_utc))
 
+// ---------------------------------------------------------------- IPMA's real issue times (weather/cap.json: CAP messages, Lisbon)
+// Each message is a Warning (phase cap): when IPMA sent it, what it says, from when to when; an Update replaces an
+// earlier message, and that is a precedes edge when the earlier one is in the file.
+const LEVEL = { Amarelo: 'yellow', Laranja: 'orange', Vermelho: 'red', Verde: 'green' }
+const capRows = []
+if (CAP) {
+    const capId = id => 'warning:cap:' + String(id).replace('.-', '.').split('.').slice(-2).join('.')
+    const have = new Map(CAP.lisbon_messages.map(m => [capId(m.identifier), m]))
+    CAP.lisbon_messages.forEach((m, i) => {
+        const origin = `${DATA}weather/cap.json#/lisbon_messages/${i}`, id = capId(m.identifier), src = m.source || CAP.source, readAt = m.read_utc || CAP.read_utc
+        const ev = String(m.event_pt || '').match(/^Aviso (\S+) (.+)$/) || [], level = LEVEL[ev[1]] || null, type = ev[2] || m.event_pt
+        const sent = toZ(m.sent_utc), starts = toZ(m.onset_utc), ends = toZ(m.expires_utc), rep0 = (m.replaces || [])[0] || null
+        node({ id, type: 'Warning', name: `${level || '?'} ${type}, LSB: ${m.msg_type === 'Update' ? 'updated' : 'issued'} ${sent.slice(5, 16).replace('T', ' ')}, for ${starts.slice(5, 16).replace('T', ' ')} to ${ends.slice(5, 16).replace('T', ' ')}`, text: m.description_pt || null, phase: 'cap', msg_type: m.msg_type, warning_type: type, level, area: 'LSB', starts, ends, at: sent, at_precision: precision(sent), status: 'happened', label: 'fact', source: src, read: readAt, read_by: 'incident.meteorologist@web-summit.dinis', origin })
+        edge({ from: 'actor:ipma', to: id, rel: 'warns', label: 'fact', source: src, read: readAt, origin })
+        edge({ from: id, to: place('LSB', { source: src, read: readAt, origin }), rel: 'located-in', label: 'fact', source: src, read: readAt, origin })
+        capRows.push({ id, m, level, type, sent, starts, ends, src, readAt, origin, replaces: rep0 ? capId(rep0.identifier) : null, replaces_sent: rep0 ? toZ(rep0.sent_utc) : null })
+    })
+    for (const r of capRows) if (r.replaces && have.has(r.replaces)) {
+        const a = epoch(toZ(have.get(r.replaces).sent_utc)), b = epoch(r.sent)
+        edge({ from: r.replaces, to: r.id, rel: 'precedes', lead_minutes: a !== null && b !== null ? Math.round((b - a) / 60) : null, label: 'fact', source: r.src, read: r.readAt, origin: r.origin + '/replaces' })
+    }
+}
+
+// ---------------------------------------------------------------- who covers the storm (research/weather-sites/sites.json, map storm-charles)
+// Each site is a Source (the page read), produced by its outlet (or by the body whose channel it is).
+if (SITES) SITES.sites.forEach((x, i) => {
+    if (x.map !== 'storm-charles' || x.kind === 'absent' || !https(x.url)) return
+    const origin = `research/weather-sites/sites.json#/sites/${i}`, readAt = (x.opened && x.opened.read) || SITES.updated, ctx = { read: readAt, read_by: 'incident.weatherwatch@web-summit.dinis', origin }
+    const sid = sourceNode(x.url, ctx), n = nodes.get(sid)
+    n.coverage = x.kind; n.coverage_name = x.name; if (!n.holds) n.holds = x.shows || null
+    const h = host(x.url); let a = actorOfHost(h)
+    if (!a && !NOT_OUTLET.has(h)) { a = publisher(x.url, ctx, true, /^authority/.test(x.kind) ? 'body' : 'outlet'); const an = nodes.get(a); if (an.derived && an.name === h && x.owner) an.name = `${String(x.owner).split(/[(;:]/)[0].trim()} (${h})` }
+    if (a) edge({ from: sid, to: a, rel: 'produced-by', label: 'fact', source: x.url, read: readAt, origin })
+})
+
 // ---------------------------------------------------------------- signals (signals.json)
 const signalRows = []
 SIG.items.forEach((s, i) => {
     const origin = `${DATA}signals.json#/items/${i}`, urls = (s.sources || []).filter(x => https(x.url))
-    const id = `signal:${s.at.slice(0, 16).replace(/[-:]/g, '')}:${sha(s.at + '\n' + s.text).slice(0, 6)}`
+    // the timeline's own permanent id when it has one (signals.json, id and supersedes); a hash of time and text otherwise
+    const id = s.id ? 'signal:' + s.id : `signal:${s.at.slice(0, 16).replace(/[-:]/g, '')}:${sha(s.at + '\n' + s.text).slice(0, 6)}`
+    const supersedes = s.supersedes ? [].concat(s.supersedes).map(x => 'signal:' + x) : []
     const src = urls[0] ? urls[0].url : timelineUrl
     const ctx = { read: SIG.made_at, origin, at: s.at }
-    node({ id, type: 'Signal', name: s.text.length > 110 ? s.text.slice(0, 109).trimEnd() + '…' : s.text, text: s.text, at: s.at, at_precision: s.approx ? 'approx' : precision(s.at), kind: s.kind, key: !!s.key, is_decision: !!s.decision, via: (s.sources || []).map(x => x.label).filter(Boolean), label: s.label, source: src, read: SIG.made_at, origin })
+    node({ id, type: 'Signal', name: s.text.length > 110 ? s.text.slice(0, 109).trimEnd() + '…' : s.text, text: s.text, at: s.at, at_precision: s.approx ? 'approx' : precision(s.at), kind: s.kind, key: !!s.key, is_decision: !!s.decision, supersedes: supersedes.length ? supersedes : null, via: (s.sources || []).map(x => x.label).filter(Boolean), label: s.label, source: src, read: SIG.made_at, origin })
     let pub = null
     for (const u of urls) {
         cite(id, u.url, ctx, s.label)
         const p = publisher(u.url, ctx, true)
         if (p) { edge({ from: p, to: id, rel: 'reports', label: s.label, source: u.url, read: SIG.made_at, origin }); pub = pub || p }
     }
-    signalRows.push({ id, at: s.at, at_epoch: epoch(s.at), approx: s.approx ? 1 : 0, kind: s.kind, label: s.label, key: s.key ? 1 : 0, is_decision: s.decision ? 1 : 0, text: s.text, publisher: pub, source: src, source_host: host(src), via: (s.sources || []).map(x => x.label).filter(Boolean).join('; '), read: SIG.made_at, origin })
+    signalRows.push({ id, at: s.at, at_epoch: epoch(s.at), approx: s.approx ? 1 : 0, kind: s.kind, label: s.label, key: s.key ? 1 : 0, is_decision: s.decision ? 1 : 0, supersedes: supersedes.length ? JSON.stringify(supersedes) : null, text: s.text, publisher: pub, source: src, source_host: host(src), via: (s.sources || []).map(x => x.label).filter(Boolean).join('; '), read: SIG.made_at, origin })
 })
 
 // ---------------------------------------------------------------- agents and datasets
@@ -200,9 +247,9 @@ const deg = new Map(); for (const e of edges.values()) { deg.set(e.from, (deg.ge
 const N = [...nodes.values()].map(n => ({ ...n, degree: deg.get(n.id) || 0 })).sort((a, b) => a.id.localeCompare(b.id))
 // in the graph file a node is short: a name of at most 140 characters, no empty field; the long text (decision, note,
 // reasons, role, what a source holds) is in the tables, joined by id
-const LONG = new Set(['text', 'note', 'reasons', 'against', 'conflict', 'role', 'holds', 'changes', 'machine_readable', 'reuse', 'about', 'via', 'blocked'])
+const LONG = new Set(['text', 'note', 'reasons', 'against', 'conflict', 'role', 'holds', 'changes', 'machine_readable', 'reuse', 'about', 'via', 'blocked', 'coverage_name'])
 const short = s => s.length > 140 ? s.slice(0, 139).trimEnd() + '…' : s
-const slim = n => Object.fromEntries(Object.entries(n).filter(([k, v]) => v !== null && v !== false && !LONG.has(k)).map(([k, v]) => [k, k === 'name' ? short(v) : v]))
+const slim = n => Object.fromEntries(Object.entries(n).filter(([k, v]) => v !== null && v !== false && !LONG.has(k) && !(k === 'url' && v === n.source)).map(([k, v]) => [k, k === 'name' ? short(v) : v]))
 const rel0 = o => typeof o === 'string' && o.startsWith(DATA) ? o.slice(DATA.length) : o && '/' + o
 const lines = arr => '[\n' + arr.map(x => JSON.stringify(x)).join(',\n') + '\n]'
 const EDG = [...edges.values()].sort((a, b) => a.id.localeCompare(b.id))
@@ -213,39 +260,51 @@ const storm = {
     about: `One graph of ${incident.title}: actors, decisions, warnings, signals, sources, places, datasets and agents, built from the incident's JSON files by tools/graph-build.mjs (never by hand). Every node and edge carries label (fact, evidence, hypothesis), source (URL), read (UTC) and origin (the file and place it came from). The ontology: data/graph/ontology.json. Not a warning service: follow IPMA and ANEPC.`,
     incident: incident.id, ontology: 'data/graph/ontology.json', ontology_sha256: ontologySha, as_of: asOf, built_by: 'incident.graph@web-summit.dinis (tools/graph-build.mjs)',
     origin_base: DATA, origin_note: 'origin is file#pointer, relative to origin_base; a leading / means relative to the repository root. An edge\'s id is rel:from>to.',
-    built_from: builtFrom, counts: { nodes: N.length, edges: EDG.length, by_type: count(N, n => n.type), by_relation: count(EDG, e => e.rel), by_label: count([...N, ...EDG], x => x.label) },
-    nodes: '@@NODES@@', edges: '@@EDGES@@'
+    built_from: builtFrom
 }
+// two files, so neither nears 256 KB: storm.json holds Lisbon, the decisions and everything else; storm-elsewhere.json
+// holds the warnings in force in the other districts and those districts, with their edges (which point into storm.json)
+const isElsewhere = n => (n.type === 'Warning' && n.phase === 'in_force' && n.area !== 'LSB') || (n.type === 'Place' && n.code !== 'LSB' && n.code !== 'PT-mainland')
+const ELSE = new Set(N.filter(isElsewhere).map(n => n.id))
+const part = (about, keepN, keepE, extra) => {
+    const ns = N.filter(keepN), es = EDG.filter(keepE)
+    return JSON.stringify({ ...storm, about, ...extra, counts: { nodes: ns.length, edges: es.length, by_type: count(ns, n => n.type), by_relation: count(es, e => e.rel), by_label: count([...ns, ...es], x => x.label) }, nodes: '@@NODES@@', edges: '@@EDGES@@' }, null, 1)
+        .replace('"@@NODES@@"', () => lines(ns.map(slim).map(n => ({ ...n, origin: rel0(n.origin) })))).replace('"@@EDGES@@"', () => lines(es.map(({ id, ...e }) => ({ ...e, origin: rel0(e.origin) })))) + '\n'
+}
+const touchesElse = e => ELSE.has(e.from) || ELSE.has(e.to)
 
 // ---------------------------------------------------------------- the tables (one row per item, with its provenance)
 const actorName = id => (nodes.get(id) || {}).name || null
 const firstBy = id => (EDG.find(e => (e.rel === 'decides' || e.rel === 'warns') && e.to === id) || {}).from || null
 const decisionRows = N.filter(n => n.type === 'Decision' || (n.type === 'Warning' && n.phase === 'issued')).map(n => {
     const src = G.edges.find(e => idOf.get(e.id) === n.id), by = 'actor:' + src.by
-    return { id: n.id, kind: n.type.toLowerCase(), by, by_name: actorName(by), also_by: JSON.stringify((src.also_by || []).map(x => 'actor:' + x)), decision: n.text, at: n.at, at_precision: n.at_precision, at_epoch: epoch(n.at), status: n.status, label: n.label, follows: JSON.stringify((src.follows || []).map(f => idOf.get(f))), affects: JSON.stringify((src.to || []).map(x => 'actor:' + x)), source: n.source, source_host: host(n.source), read: n.read, read_epoch: epoch(n.read), read_by: n.read_by, note: n.note, origin: n.origin }
+    return { id: n.id, kind: n.type.toLowerCase(), by, by_name: actorName(by), also_by: JSON.stringify((src.also_by || []).map(x => 'actor:' + x)), decision: n.text, at: n.at, at_precision: n.at_precision, at_epoch: epoch(n.at), effect_from: n.effect_from || null, effect_from_epoch: epoch(n.effect_from), effect_to: n.effect_to || null, effect_to_epoch: epoch(n.effect_to), status: n.status, label: n.label, follows: JSON.stringify((src.follows || []).map(f => idOf.get(f))), affects: JSON.stringify((src.to || []).map(x => 'actor:' + x)), source: n.source, source_host: host(n.source), read: n.read, read_epoch: epoch(n.read), read_by: n.read_by, note: n.note, origin: n.origin }
 }).sort((a, b) => (a.at || '9').localeCompare(b.at || '9') || a.id.localeCompare(b.id))
 const warningRows = [
     ...N.filter(n => n.type === 'Warning').map(n => {
         const by = firstBy(n.id)
-        return { id: n.id, phase: n.phase, issuer: by, issuer_name: actorName(by), warning_type: n.warning_type || null, level: n.level || null, area: n.area || null, area_name: n.area && areaName[n.area] ? areaName[n.area].name : null, text: n.text, at: n.at, at_epoch: epoch(n.at), starts: n.starts || null, starts_epoch: epoch(n.starts), ends: n.ends || null, ends_epoch: epoch(n.ends), label: n.label, source: n.source, read: n.read, read_by: n.read_by, origin: n.origin }
+        return { id: n.id, phase: n.phase, issuer: by, issuer_name: actorName(by), warning_type: n.warning_type || null, level: n.level || null, area: n.area || null, area_name: n.area && areaName[n.area] ? areaName[n.area].name : null, text: n.text, at: n.at, at_epoch: epoch(n.at), starts: n.starts || null, starts_epoch: epoch(n.starts), ends: n.ends || null, ends_epoch: epoch(n.ends), msg_type: n.msg_type || null, replaces: (capRows.find(r => r.id === n.id) || {}).replaces || null, replaces_sent: (capRows.find(r => r.id === n.id) || {}).replaces_sent || null, replaces_sent_epoch: epoch((capRows.find(r => r.id === n.id) || {}).replaces_sent), label: n.label, source: n.source, read: n.read, read_by: n.read_by, origin: n.origin }
     }),
     // the history of the warnings as the meteorologist recorded it: rows of the table, not nodes (they repeat the issued ones)
-    ...(W.history || []).map((h, i) => ({ id: `warning:history:${i}`, phase: 'history', issuer: null, issuer_name: null, warning_type: null, level: null, area: null, area_name: null, text: h.event, at: h.at_utc || null, at_epoch: epoch(h.at_utc), starts: null, starts_epoch: null, ends: null, ends_epoch: null, label: h.kind === 'fact' ? 'fact' : 'evidence', source: https(h.source) ? h.source : W.source, read: h.read_utc || W.read_utc, read_by: h.read_by || null, origin: `${DATA}weather/warnings.json#/history/${i}` }))
+    ...(W.history || []).map((h, i) => ({ id: `warning:history:${i}`, phase: 'history', issuer: null, issuer_name: null, warning_type: null, level: null, area: null, area_name: null, text: h.event, at: h.at_utc || null, at_epoch: epoch(h.at_utc), starts: null, starts_epoch: null, ends: null, ends_epoch: null, msg_type: null, replaces: null, replaces_sent: null, replaces_sent_epoch: null, label: h.kind === 'fact' ? 'fact' : 'evidence', source: https(h.source) ? h.source : W.source, read: h.read_utc || W.read_utc, read_by: h.read_by || null, origin: `${DATA}weather/warnings.json#/history/${i}` }))
 ]
 const sourceRows = N.filter(n => n.type === 'Source').map(n => {
     const c = cited.get(n.id) || [], times = c.map(x => x.at).filter(t => epoch(t) !== null).sort()
-    const p = actorOfHost(n.host) || (nodes.has('actor:outlet:' + n.host) ? 'actor:outlet:' + n.host : null)
-    return { id: n.id, url: n.url, host: n.host, publisher: p, publisher_name: actorName(p), publisher_kind: p ? nodes.get(p).kind : null, holds: n.holds, changes: n.changes, machine_readable: n.machine_readable, status: n.status, reuse: n.reuse, cited_by: c.length, first_cited_item_at: times[0] || null, first_cited_item_epoch: epoch(times[0]), label: n.label, source: n.source, read: n.read, read_epoch: epoch(n.read), read_by: n.read_by || null, origin: n.origin }
+    const p = actorOfHost(n.host) || (nodes.has('actor:host:' + n.host) ? 'actor:host:' + n.host : null)
+    return { id: n.id, url: n.url, host: n.host, publisher: p, publisher_name: actorName(p), publisher_kind: p ? nodes.get(p).kind : null, holds: n.holds, changes: n.changes, machine_readable: n.machine_readable, status: n.status, reuse: n.reuse, coverage: n.coverage || null, coverage_name: n.coverage_name || null, cited_by: c.length, first_cited_item_at: times[0] || null, first_cited_item_epoch: epoch(times[0]), label: n.label, source: n.source, read: n.read, read_epoch: epoch(n.read), read_by: n.read_by || null, origin: n.origin }
 })
 const actorRows = N.filter(n => n.type === 'Actor').map(n => ({ id: n.id, name: n.name, kind: n.kind, kind_in_source: n.kind_in_source, role: n.role, decisions: EDG.filter(e => e.from === n.id && e.rel === 'decides').length, warnings: EDG.filter(e => e.from === n.id && e.rel === 'warns').length, reports: EDG.filter(e => e.from === n.id && e.rel === 'reports').length, blocked: n.blocked ? JSON.stringify(n.blocked) : null, label: n.label, source: n.source, read: n.read, read_by: n.read_by, origin: n.origin }))
 const TABLES = {
     signals: ['The timeline as rows: one per signal, with who published it (publisher) where the source has a URL.', signalRows],
     decisions: ['Decisions and issued warnings: who (by), what, when (at, at_epoch in seconds when known to the minute), status, and what each followed.', decisionRows],
-    warnings: ['Warnings: issued (when made or first read), in_force (type, level, area, start, end: IPMA) and history (the meteorologist\'s record of when each was first seen).', warningRows],
-    sources: ['Every URL read: the researcher\'s list and every other URL an item cites, with its publisher, how often it is cited and the earliest item citing it.', sourceRows],
+    warnings: ['Warnings: issued (when made or first read), in_force (type, level, area, start, end: IPMA), cap (IPMA\'s own CAP messages for Lisbon: at is when IPMA sent it; an Update names the message it replaces) and history (the meteorologist\'s record of when each was first seen).', warningRows],
+    sources: ['Every URL read: the researcher\'s list, every other URL an item cites and the pages covering the storm (coverage: liveblog, explainer, ...; from research/weather-sites), with its publisher, how often it is cited and the earliest item citing it.', sourceRows],
     actors: ['Who decides, warns or reports: bodies, operators, the organiser, outlets (outlets are derived from cited hosts).', actorRows]
 }
-const out = { 'data/graph/storm.json': JSON.stringify(storm, null, 1).replace('"@@NODES@@"', () => lines(N.map(slim).map(n => ({ ...n, origin: rel0(n.origin) })))).replace('"@@EDGES@@"', () => lines(EDG.map(({ id, ...e }) => ({ ...e, origin: rel0(e.origin) })))) + '\n' }
+const out = {
+    'data/graph/storm.json': part(storm.about, n => !ELSE.has(n.id), e => !touchesElse(e), { more: 'data/graph/storm-elsewhere.json: the warnings in force in the other districts (same shape; its edges point to nodes here)' }),
+    'data/graph/storm-elsewhere.json': part(`The rest of the graph of ${incident.title}: IPMA's red and orange warnings in force outside the Lisbon district, and those districts. Same shape as data/graph/storm.json; edges here point to nodes there (actor:ipma, place:PT-mainland). Built by tools/graph-build.mjs. Not a warning service: follow IPMA and ANEPC.`, n => ELSE.has(n.id), touchesElse, { part_of: 'data/graph/storm.json' })
+}
 for (const [name, [about, rows]] of Object.entries(TABLES)) {
     for (const r of rows) for (const f of ['label', 'source', 'read', 'origin']) if (!r[f]) problems.push(`table ${name}, row ${r.id}: no ${f}`)
     out[`data/graph/tables/${name}.json`] = JSON.stringify({ about: `${about} Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.`, table: name, incident: incident.id, as_of: asOf, columns: Object.keys(rows[0] || {}), count: rows.length, rows: '@@ROWS@@' }, null, 1).replace('"@@ROWS@@"', () => lines(rows)) + '\n'
@@ -255,8 +314,10 @@ if (problems.length) { for (const p of problems.slice(0, 40)) console.error('gra
 let stale = 0
 for (const [rel, txt] of Object.entries(out)) {
     if (txt.length > 256 * 1024) { console.error(`graph-build: ${rel} would be ${txt.length} bytes, over 256 KB`); process.exit(1) }
-    const f = path.join(ROOT, rel), old = fs.existsSync(f) ? fs.readFileSync(f, 'utf8') : null
+    const f = path.join(OUT_DIR || ROOT, rel), old = fs.existsSync(f) ? fs.readFileSync(f, 'utf8') : null
     if (old !== txt) { stale++; if (!CHECK) { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, txt) } }
 }
-console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(storm.counts.by_type).map(([k, v]) => `${v} ${k}`).join(', ')}); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written'}`)
+// with --out the queries go too, so the served folder is whole even if the build's copy ran before a change
+if (OUT_DIR) fs.copyFileSync(path.join(ROOT, 'data/graph/queries.json'), path.join(OUT_DIR, 'data/graph/queries.json'))
+console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${ELSE.size} nodes in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
 if (CHECK && stale) process.exit(1)
