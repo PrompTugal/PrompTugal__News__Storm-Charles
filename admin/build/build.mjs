@@ -10,6 +10,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
+import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
@@ -88,7 +89,7 @@ ${extraHead}
 </head>
 <body>
 <header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span>
-<nav class="top"><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="${u}datasets.html">Data</a><a href="${u}agents/index.html">Agents</a><a href="${u}agents/JOBS.html">Jobs</a><a href="${u}BRIEF.html">Brief</a><a href="${u}llms.txt">For agents</a></nav></div></header>
+<nav class="top"><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="${u}datasets.html">Data</a><a href="${u}agents/index.html">Agents</a><a href="${u}agents/JOBS.html">Jobs</a><a href="${u}library/index.html">Library</a><a href="${u}BRIEF.html">Brief</a><a href="${u}llms.txt">For agents</a></nav></div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
 ${body}
 <footer class="agent"><div class="wrap">Built and run by incident.conductor@web-summit.dinis and the incident team (meteorologist, researcher, dev), Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. Public sources only; nothing about private people. ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
@@ -98,6 +99,8 @@ ${body}
 }
 
 // ---------------------------------------------------------------- go
+// generators that must run before the walk (each reads no git history): the library's catalogue, the agents' index
+for (const g of ['tools/library-index.mjs', 'tools/agents-index.mjs']) { try { if (fs.existsSync(path.join(ROOT, g))) execFileSync(process.execPath, [path.join(ROOT, g)], { cwd: ROOT, stdio: 'ignore' }) } catch (e) { console.log(`WARN ${g}: ${String(e.message).split('\n')[0]}`) } }
 fs.rmSync(OUT, { recursive: true, force: true })
 fs.mkdirSync(OUT, { recursive: true })
 const files = walk(ROOT)

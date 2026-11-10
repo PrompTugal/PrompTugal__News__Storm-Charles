@@ -48,10 +48,14 @@ jobs:
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
-          for i in $(seq 1 30); do
+          # green does not mean live: fail unless the live site serves this version, or a newer one (a later push won)
+          n=${VERSION##*.}; got=""
+          for i in $(seq 1 45); do
             got=$(curl -s -H 'Cache-Control: no-cache' "${PAGE_URL}version.json?t=$(date +%s%N)" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).version)}catch{console.log('')}})")
-            if [ "$got" = "$VERSION" ]; then break; fi
+            g=${got##*.}
+            if [ -n "$got" ] && [ "${g:-0}" -ge "$n" ] 2>/dev/null; then break; fi
             sleep 2
           done
           now=$(date -u +%s); pushed=$(date -u -d "${PUSHED_AT:-now}" +%s)
-          echo "push to served: $((now - pushed)) s ($VERSION, served: ${got:-not yet})" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "push to served: $((now - pushed)) s ($VERSION, served: ${got:-nothing})" | tee -a "$GITHUB_STEP_SUMMARY"
+          g=${got##*.}; [ -n "$got" ] && [ "${g:-0}" -ge "$n" ] || { echo "::error::$VERSION was deployed but the live site serves ${got:-nothing}"; exit 1; }
