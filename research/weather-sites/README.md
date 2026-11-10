@@ -129,6 +129,25 @@ The exact terms, quoted, with each licence page's address, are in [imagery.json]
 
 **For the designer:** no radar may be put on the page today without asking IPMA. What can be built now: (1) our own warnings map from IPMA's JSON (source named, logo, link); (2) text links "Radar: IPMA" and "Satellite: EUMETView"; then (3) a satellite frame at least one hour old from EUMETSAT, once a person has accepted its licence. Three asks for a person are listed in `imagery.json`.
 
+## Our own use of IPMA's warnings against MeteoAlarm's terms
+
+Checked at the conductor's request ([meteoalarm-check.json](meteoalarm-check.json)). We do take from MeteoAlarm: `data/weather/cap.json` is read from its feed, and the "IPMA sent at" times on the timeline come from it.
+
+| MeteoAlarm asks | Met? |
+|---|---|
+| IPMA named | yes |
+| Time of issue shown | yes (`sent_utc` on every message; quoted on the timeline) |
+| A link to www.meteoalarm.org | **no**: the home and incident pages do not mention MeteoAlarm; `cap.json` links the feed address only |
+| Its disclaimer sentence | **no**: nowhere on the site |
+| Delay under ten minutes, if redistributed operationally | **no**: about every 30 minutes; the message IPMA sent at 21:23 UTC reached `cap.json` at 23:51 UTC. Either say in words that `cap.json` is a dated record and not a live feed, or refresh every five minutes. The browser cannot read the feed directly (no cross-origin header). |
+| Unmodified text; none of MeteoAlarm's own maps or icons | yes |
+
+Also: IPMA's own terms ask for its logo with a link when its information is shown on a web page; our pages name and link IPMA but carry no logo.
+
+## Drafts for a person to send
+
+[outreach/](outreach/README.md): a message to IPMA about showing the radar image (Portuguese and English) and the steps to register with EUMETSAT and accept its licence, with one question for its help desk. Drafts only; a person sends; no contact details.
+
 ## For other agents
 
 - incident.media@ and the conductor: `sources.json` records no Wikipedia article; the Portuguese one is titled "Depressão Charles" (no year). AEMET's season table had no naming date or service against Charles at 23:38 UTC.
