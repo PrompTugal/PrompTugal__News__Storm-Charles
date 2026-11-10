@@ -10,9 +10,9 @@
   ],
   "counts": {
     "agents": 11,
-    "with_status": 7,
-    "with_key": 6,
-    "asks_for_dinis": 14
+    "with_status": 10,
+    "with_key": 7,
+    "asks_for_dinis": 16
   },
   "agents": [
     {
@@ -25,9 +25,9 @@
       "job": "leads; routes; talks with Dinis",
       "shared_row": false,
       "status_file": "agents/conductor/status.json",
-      "status_sha256": "166a97fe023f5b7efab95d5d2511275c0636f5426bf5195d9f70c8e010910a0c",
-      "state": "active: lead of WS-214 since 18:58; hourly wake at :02",
-      "last_wake": "2026-11-10T21:02:51Z",
+      "status_sha256": "a99bc70db8f2f06c78cf75e93f5d62a1347d29f7fc7102aab995f84cc891c811",
+      "state": "active: leads the incident and the site; 11 agents",
+      "last_wake": "2026-11-10T23:45:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:fa135665c51ee284), public half in data/keys.json",
@@ -41,15 +41,14 @@
         "20:58 to 21:05: the primary source (Web Summit's page, 19:09) recorded; lead times recomputed; sweep 3 in the timeline; the lesson in README"
       ],
       "next": [
-        "each wake: pull dev, read social.watch@'s signals and Vicky's weather desk, update timeline and decisions, route work",
-        "tell conductor@web-summit.dinis at once if the organisers announce a decision on Wednesday"
+        "integrate each agent's first pushes (nav, build hooks); forward Dinis's page-by-page feedback"
       ],
       "asks_dinis": [
-        "Dinis: PrompTugal__News__Website is read here from its public clone (read-only); add_repo was refused by this session's permission check. Enough for reading; say if you want it attached.",
-        "Dinis: the four decisions at the end of PIPELINE.md (repository name, version tag, two vaults, a deploy credential if seconds are needed for the shell)",
-        "Dinis: no credentials for the weather desk conductor's inbox (conductor.B@PrompTugal.vicky); offers to Vicky's desk go in commits (For:) until a lane exists",
-        "Dinis: incident.dev@ proved why each push takes minutes: the validate job's blobless clone (filter: blob:none in .github/workflows/deploy-pages.yml) makes 316 lazy blob fetches (git blame and git show in people/angelo/app/data.mjs); the gate takes 2 min 35 s blobless against 3.6 s with a full clone. Dropping that one line saves ~70 s a push on this site. It changes the team site's CI, so it waits for your yes (or Angelo's data.mjs avoids blame in the build).",
-        "Dinis: ROADMAP's questions: the OpenRouter key is already set in incident.dev@'s environment (one 20-token test call, 3a00a1b); still open: a daily spend cap, the repository (PrompTugal__News__Storm-Charles, storm-charles.promptugal.news, per your messages), which roles become sessions, raw vault private, API keys later"
+        "Dinis: an SG/Send access token as an environment secret (never in chat): the feedback lane, your vaults and the page-view vaults need it",
+        "Dinis: identity's three decisions (SECURITY.html): 1. a new key on this site behind a passkey (recommended) or your pki.sgit.ai key; 2. a signed feedback message is your word for pages and content only, anything hard to undo is confirmed in session (recommended); 3. where the token lives, and may replies sit in this public repo as ciphertext sealed to your key until the bridge vault exists",
+        "Dinis: attach PrompTugal/PrompTugal__News__Storm-Charles (push) to the sessions of incident.meteorologist@, incident.researcher@ and incident.dev@ (their add_repo was refused); until then the conductor syncs their data",
+        "Dinis: outreach is drafts only (a person sends, no contact details in git): say if you want that changed",
+        "Dinis: the one-line CI fix on web-summit.sgit.ai (drop filter: blob:none; ~70 s a push) waits for your yes"
       ],
       "asks": [],
       "keys": [
@@ -109,13 +108,30 @@
     },
     {
       "in_jobs": true,
-      "has_status": false,
+      "has_status": true,
       "has_key": true,
       "name": "incident.designer@web-summit.dinis",
       "role": "designer",
       "owns": "`app/site.css`, `app/design/`, the front page's look (with the conductor's content), `design/` (rounds, notes, screenshots described not committed)",
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
+      "status_file": "agents/designer/status.json",
+      "status_sha256": "2d611b92f44939f5f5ab9d6d2b9464c6ae4f86d36d4d49db7f1c93d0aa4c8224",
+      "state": "active: design rounds on the home page",
+      "last_wake": "2026-11-10T23:50:00Z",
+      "jobs": [],
+      "done": [
+        "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
+        "round 1: the home page as the weather presenter (warning tiles, the day hour by hour, sourced Thursday card); design/round-1.md"
+      ],
+      "next": [
+        "round 2: where (districts under red and orange); one gust chart (warned, forecast, observed, one axis); phone view of the day; masthead and theme switch",
+        "round 3: the dashboard and document pages"
+      ],
+      "asks_dinis": [],
+      "asks": [
+        "incident.conductor@: the front page block of admin/build/build.mjs now also reads forecast.json, airport.json, analysis.json and gusts-vs-forecast.json (read-only); say if any of those shapes is about to change"
+      ],
       "keys": [
         {
           "id": "incident-designer-dinis",
@@ -129,13 +145,42 @@
     },
     {
       "in_jobs": true,
-      "has_status": false,
-      "has_key": false,
+      "has_status": true,
+      "has_key": true,
       "name": "incident.identity@web-summit.dinis",
       "role": "identity",
       "owns": "`app/login/`, `account/`, `data/lanes.json`, `tools/lane-*.mjs`, `SECURITY.md`",
       "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
-      "shared_row": false
+      "shared_row": false,
+      "status_file": "agents/identity/status.json",
+      "status_sha256": "54e730f8d69758f613640a9de75ffdcf8a9e31fbb751253158d511cbd25e4a81",
+      "state": "active: design pushed; building the first slice (the key in the browser, the sealed feedback, the page)",
+      "last_wake": "",
+      "jobs": [],
+      "done": [
+        "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
+        "SECURITY.md: the design for the login, the feedback lane, the reverse path and the two vaults; what is public, what a stolen token or key allows, what we will not build",
+        "pki.sgit.ai's keys.js, message.js, door.js, local.js copied unmodified and pinned (app/login/pki/PIN.json)"
+      ],
+      "next": [
+        "/account/: make a key behind a passkey, show its fingerprint, write feedback sealed to the conductor, open the conductor's replies",
+        "tools/lane-*.mjs for the conductor: open what Dinis sends, seal to him, drain the lane; a test end to end with a throwaway key"
+      ],
+      "asks_dinis": [
+        "Dinis: three decisions, at the end of SECURITY.md: (1) a new key made on this site behind a passkey, or sign in with your pki.sgit.ai key; (2) how far a signed message from the feedback box carries (recommended: feedback on pages and content; anything hard to undo is confirmed in your session); (3) the SG/Send access token: as a secret in the conductor's environment, or typed only in your browser; and may replies sit in this repository as ciphertext sealed to your key until the bridge vault exists. Never paste a token or a key in chat.",
+        "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it."
+      ],
+      "asks": [],
+      "keys": [
+        {
+          "id": "incident-identity-dinis",
+          "record": "sha256:2d91c7d9fe8df5d3",
+          "encryption": "sha256:9e6e630e0d1d051a",
+          "added": "2026-11-10",
+          "status": "active",
+          "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -284,13 +329,36 @@
     },
     {
       "in_jobs": true,
-      "has_status": false,
+      "has_status": true,
       "has_key": true,
       "name": "incident.librarian@web-summit.dinis",
       "role": "librarian",
       "owns": "`library/`, `docs/`, the site's index of everything (`library/index.json`)",
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
+      "status_file": "agents/librarian/status.json",
+      "status_sha256": "0a32b1a3a734ab29b4b5be7dc91747d45ad395746a6adf48461d25e16084df31",
+      "state": "active: the catalogue is live at /library/ (index.json, the page, provenance.json); the reading list and the glossary being written",
+      "last_wake": "2026-11-10T23:40Z",
+      "jobs": [
+        "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
+        "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
+        "L3: library/glossary.md: the terms this site uses, two lines each",
+        "L4: tell the conductor when the index is live, and the five most useful things the newsroom's articles say we should do"
+      ],
+      "done": [
+        "23:38 session key made (pki-agent.mjs, the pinned sha256 checked); public half in data/keys.json",
+        "23:58 L1 first push: tools/library-index.mjs, library/index.json, library/README.md, library/provenance.json"
+      ],
+      "next": [
+        "L2 the reading list; L3 the glossary",
+        "refresh library/provenance.json (--git) and the catalogue before each of my releases"
+      ],
+      "asks_dinis": [],
+      "asks": [
+        "incident.conductor@: one line in admin/build/build.mjs, before the walk, so the catalogue is rebuilt on every push and never stale between my pushes: execFileSync(process.execPath, [path.join(ROOT, 'tools/library-index.mjs')]) (about 60 ms; it reads no git history). Until then the catalogue is as fresh as my last push.",
+        "incident.conductor@: link /library/ from the top navigation (admin/build/build.mjs is yours)."
+      ],
       "keys": [
         {
           "id": "incident-librarian-dinis",
@@ -373,6 +441,6 @@
       ]
     }
   ],
-  "generated_at": "2026-11-10T23:40:49Z",
-  "content_sha256": "56425a17c8e102b2e66e73233ab5b3a032f113aaa53af07dd9d3f7c808993959"
+  "generated_at": "2026-11-10T23:42:56Z",
+  "content_sha256": "f6f4148e3d4acde4a1f6d4054079cc341fca4e61ceb68451ecdeff57241c5bde"
 }

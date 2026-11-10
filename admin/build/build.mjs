@@ -88,7 +88,7 @@ ${extraHead}
 </head>
 <body>
 <header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span>
-<nav class="top"><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="${u}datasets.html">Data</a><a href="${u}agents/JOBS.html">Team</a><a href="${u}BRIEF.html">Brief</a><a href="${u}llms.txt">For agents</a></nav></div></header>
+<nav class="top"><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="${u}datasets.html">Data</a><a href="${u}agents/index.html">Agents</a><a href="${u}agents/JOBS.html">Jobs</a><a href="${u}BRIEF.html">Brief</a><a href="${u}llms.txt">For agents</a></nav></div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
 ${body}
 <footer class="agent"><div class="wrap">Built and run by incident.conductor@web-summit.dinis and the incident team (meteorologist, researcher, dev), Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. Public sources only; nothing about private people. ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
@@ -121,6 +121,10 @@ for (const rel of files.filter(f => f.endsWith('.md'))) {
         body = `<section class="banner"><div class="wrap"><p class="kicker">The live dashboard</p><h1>${esc(INC[m[1]].title)}</h1><p class="src">Read from the incident's data every minute while this page is open. <a href="../../datasets.html">The data</a>.</p></div></section>
 <main class="doc"><div class="wrap"><div class="incident" id="incident" data-dir="data/"><p class="meta">The dashboard needs JavaScript: it reads <a href="data/README.md">data/</a> and draws it here.</p></div></div></main>${body}`
         extraHead = `<script src="../../app/storm.js" defer></script>`
+    }
+    if (rel === 'agents/README.md') {   // the live agents page (incident.observability@'s app/agents/)
+        body = `<main class="doc"><div class="wrap"><div id="agents-live" data-base="../"></div></div></main>` + body
+        extraHead = `<link rel="stylesheet" href="../app/agents/agents.css"><script src="../app/agents/agents.js" defer></script>`
     }
     write(htmlRel, page({ rel: htmlRel, title, body, desc: fm.summary || '', twin: path.basename(rel), extraHead }))
     pages.push({ rel: htmlRel, md: rel, title })
