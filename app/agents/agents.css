@@ -1,0 +1,39 @@
+/* /app/agents/: the team console (incident.observability@web-summit.dinis). Uses app/site.css's tokens; adds nothing global. */
+.ag-sum { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 6px; }
+.ag-sum div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; min-width: 120px; }
+.ag-sum b { display: block; font: 700 24px/1.1 var(--sans); font-variant-numeric: tabular-nums; }
+.ag-sum span { font-size: 13px; color: var(--ink-2); }
+.ag-h { font-size: 18px; margin: 26px 0 10px; }
+.ag-asks { background: var(--warn-soft); border: 1px solid var(--line-2); border-left: 4px solid var(--warn); border-radius: 8px; padding: 12px 16px; }
+.ag-asks h2 { margin: 0 0 8px; font-size: 18px; }
+.ag-asks ol { margin: 0; padding-left: 22px; }
+.ag-asks li { margin: 6px 0; overflow-wrap: anywhere; }
+.ag-asks .who { font: 600 12px/1.4 var(--mono); color: var(--ink-2); display: block; }
+.ag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 16px; }
+.ag-card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; min-width: 0; overflow-wrap: anywhere; }
+.ag-card h3 { margin: 0; font: 700 15px/1.3 var(--mono); }
+.ag-card .role { font-size: 13px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .06em; }
+.ag-card p { margin: 8px 0; font-size: 14px; }
+.ag-card .lbl { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); display: block; margin-bottom: 2px; }
+.ag-card ul { margin: 4px 0 8px; padding-left: 18px; font-size: 14px; }
+.ag-card li { margin: 3px 0; }
+.ag-card details { border-top: 1px solid var(--line); padding: 6px 0; font-size: 14px; }
+.ag-card summary { cursor: pointer; font-weight: 600; }
+.ag-card code, .ag-flow code { font: 12px/1.4 var(--mono); }
+.ag-pill { display: inline-block; font: 700 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 3px 7px; border-radius: 3px; background: var(--surface-2); color: var(--ink-2); margin-left: 6px; vertical-align: 2px; }
+.ag-pill.now { background: var(--ok-soft); color: var(--ok); }
+.ag-pill.quiet { background: var(--sent-soft); color: var(--sent); }
+.ag-pill.silent { background: var(--surface-2); color: var(--wait); }
+.ag-pill.blocked { background: var(--bad-soft); color: var(--bad); }
+.ag-pill.none { background: var(--warn-soft); color: var(--warn); }
+.ag-card .ask { color: var(--warn); font-weight: 600; }
+.ag-flow { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--surface); border: 1px solid var(--line); }
+.ag-flow th, .ag-flow td { text-align: left; padding: 6px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+.ag-flow td.n { text-align: right; font-variant-numeric: tabular-nums; }
+.ag-flow .bar { display: inline-block; height: 8px; background: var(--sent); border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+.ag-feed { list-style: none; margin: 0; padding: 0; font-size: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.ag-feed li { padding: 8px 12px; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
+.ag-feed li:first-child { border-top: 0; }
+.ag-feed time { font: 700 12px/1 var(--mono); color: var(--accent); margin-right: 8px; }
+.ag-note { font-size: 13px; color: var(--ink-2); margin: 10px 0; }
+.ag-err { color: var(--bad); }

@@ -1,0 +1,24 @@
+{
+  "agent": "incident.observability@web-summit.dinis",
+  "state": "active: the agents page is up at /app/agents/ (every agent, its asks, its last push); next the live map and the Universe as pinned copies",
+  "last_wake": "2026-11-10T23:55Z",
+  "jobs": [
+    "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
+    "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
+    "J3: page views (promptugal.news's obs.js model, no geo lookup); release speed per push; the model ledger."
+  ],
+  "done": [
+    "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
+    "tools/agents-index.mjs -> data/agents/index.json (roster from agents/JOBS.md, statuses, key fingerprints; session ids stripped)",
+    "the agents page at /app/agents/ (app/agents/agents.js, agents.css, index.html, about.md): asks for Dinis on top, a card per agent, who writes for whom, the last pushes; live status files and GitHub's public API, refreshed every minute"
+  ],
+  "next": [
+    "Angelo's live map on a pinned copy, fed by an adapter from the commits' For: trailers",
+    "Silvio's Universe / mind map / Talk view on a pinned brain.js (brain-libs.js loaded from web-summit.sgit.ai, never committed)",
+    "page views without geo lookup; release speed per push; the model ledger"
+  ],
+  "asks": [
+    "incident.conductor@: the page lives at /app/agents/ because /agents/ is built from your agents/README.md and the build is not mine. To serve it at /agents/: in admin/build/build.mjs, for rel === 'agents/README.md', put <div id=\"agents-live\" data-base=\"../\"></div> before the article and add app/agents/agents.css and app/agents/agents.js to the head (the same pattern as the incident dashboard); and an 'Agents' link in the nav.",
+    "everyone: keep agents/<role>/status.json (agent, state, last_wake in UTC ISO 8601, done, next, asks) and put Agent: and For: trailers on every commit; that is all the page needs."
+  ]
+}
