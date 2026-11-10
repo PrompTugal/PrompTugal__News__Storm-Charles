@@ -38,7 +38,7 @@ for (const line of md.split('\n')) {
     const sources = [...src.matchAll(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g)].map(([, label, url]) => ({ label, url }))
     const rest = plain(src.replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, '')).replace(/^[,;\s]+/, '')
     if (rest) sources.push({ label: rest, url: null })
-    rows.push({ at, approx: !!m[3], kind, label: signal ? 'evidence' : 'fact', key: /\*\*/.test(raw), decision: /^\**DECISION\b/.test(raw), text: plain(raw.replace(/^signal:\s*/i, '').replace(/^signal \(([^)]+)\):\s*/i, '($1) ')), sources })
+    rows.push({ at, approx: !!m[3], kind, label: /^analysis\b/i.test(raw) ? 'hypothesis' : signal ? 'evidence' : 'fact', key: /\*\*/.test(raw), decision: /^\**DECISION\b/.test(raw), text: plain(raw.replace(/^signal:\s*/i, '').replace(/^signal \(([^)]+)\):\s*/i, '($1) ')), sources })
 }
 rows.sort((a, b) => a.at.localeCompare(b.at))
 const out = { about: 'The incident timeline as data, made from timeline.md by tools/timeline.mjs (never edit by hand; edit timeline.md). See README.md.', source: path.join(dir, 'timeline.md'), made_at: new Date().toISOString().slice(0, 16) + 'Z', items: rows }

@@ -1,7 +1,7 @@
 {
  "about": "The incident timeline as data, made from timeline.md by tools/timeline.mjs (never edit by hand; edit timeline.md). See README.md.",
  "source": "incidents/2026-11-10-storm-charles/timeline.md",
- "made_at": "2026-11-10T23:24Z",
+ "made_at": "2026-11-10T23:41Z",
  "items": [
   {
    "at": "2026-11-10T08:46Z",
@@ -343,7 +343,7 @@
    "at": "2026-11-10T19:05Z",
    "approx": false,
    "kind": "official",
-   "label": "fact",
+   "label": "hypothesis",
    "key": false,
    "decision": false,
    "text": "analysis (incident.meteorologist@, labelled): worst window Wed 12:00 to 18:00, peak most likely ~15:00 to 19:00 around the wind's swing to north-west, easing but dangerous to 21:00; red wind was known ~27.5 h ahead; confidence medium on the window, low on the peak",
@@ -559,7 +559,7 @@
    "at": "2026-11-10T21:18Z",
    "approx": false,
    "kind": "team",
-   "label": "fact",
+   "label": "hypothesis",
    "key": false,
    "decision": false,
    "text": "analysis (incident.meteorologist@, labelled): IPMA's hourly model changed its values (same 07:55 stamp): Wednesday's strongest mean wind now 23 km/h at 20:00 (was 49 at 18:00); the swing to north 18:00; peak most likely 17:00 to 20:00 (was 15:00 to 19:00); worst window 12:00 to 18:00 and end 21:00 unchanged; IPMA's red warnings unchanged and outrank one model",
@@ -622,14 +622,29 @@
   {
    "at": "2026-11-10T23:23Z",
    "approx": false,
-   "kind": "team",
+   "kind": "official",
    "label": "fact",
    "key": false,
    "decision": false,
-   "text": "The first airport TAF covering Thursday (issued 23:00) is weaker than 17:00's: Wed 09:00 to 16:00 at times 30 kt gusting 45 (83 km/h); 30% chance (was 40%) of 58 kt thunderstorm gusts 10:00 to 18:00; west 12 kt from 18:00 to 20:00; Thursday 00:00 to 06:00 west 12 kt, no gusts. Analysis (labelled): peak widened back to 12:00 to 18:00; end 21:00; Thursday morning behind the storm, medium confidence. IPMA's red warnings unchanged: a weaker airport forecast is not a downgrade",
+   "text": "The first airport TAF covering Thursday (issued 23:00) is weaker than 17:00's: Wed 09:00 to 16:00 at times 30 kt gusting 45 (83 km/h); 30% chance (was 40%) of 58 kt thunderstorm gusts 10:00 to 18:00; west 12 kt from 18:00 to 20:00; Thursday 00:00 to 06:00 west 12 kt, no gusts. IPMA's red warnings unchanged",
    "sources": [
     {
-     "label": "LPPT TAF via data/weather/airport.json; analysis.md section 5 (incident.meteorologist@, a63ac9696)",
+     "label": "LPPT TAF (IPMA, via NOAA's Aviation Weather), data/weather/airport.json (incident.meteorologist@, a63ac9696)",
+     "url": null
+    }
+   ]
+  },
+  {
+   "at": "2026-11-10T23:24Z",
+   "approx": false,
+   "kind": "team",
+   "label": "hypothesis",
+   "key": false,
+   "decision": false,
+   "text": "analysis (incident.meteorologist@, labelled): the TAF's peak (09:00 to 16:00) and IPMA's model peak (19:00 to 20:00) disagree, so the peak is widened back to 12:00 to 18:00; end 21:00; Thursday morning behind the storm, medium confidence; a weaker airport forecast is not a downgrade of IPMA's warning",
+   "sources": [
+    {
+     "label": "data/weather/analysis.md section 5",
      "url": null
     }
    ]
