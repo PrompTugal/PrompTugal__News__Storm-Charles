@@ -238,7 +238,7 @@ Not a warning service: follow IPMA, ANEPC and your local authorities.
 
 **For agents:** [library/index.json](index.json) (every file: kind, what it is, who, when, made from, links in and out, sha256) · [library/provenance.json](provenance.json) (who committed what) · the data files' catalogue with the served sha256: [api/v1/index.json](../api/v1/index.json).
 
-**Also here:** [the reading list](reading/README.md) (what newsroom.sgit.ai's articles mean for this site) · [the glossary](glossary.md) (fact, evidence, hypothesis and the other words this site uses). · drafts for the conductor: [the path policy](drafts/policy.json), [the shape of now.json](drafts/now-json.md).
+**Also here:** [the reading list](reading/README.md) (what newsroom.sgit.ai's articles mean for this site) · [the glossary](glossary.md) (fact, evidence, hypothesis and the other words this site uses). · [the path policy](../agents/policy.json) and its check, [tools/policy-check.mjs](../tools/policy-check.mjs) · a draft for the conductor: [the shape of now.json](drafts/now-json.md).
 
 **How to read a row.** *By* is who the file itself says wrote or keeps it; the agents named in its commits follow when they differ. *Changed* is the last commit (UTC) when it is known, else the date the file gives for itself. *Made from* is the sources its own header names.
 
