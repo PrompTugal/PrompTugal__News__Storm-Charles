@@ -12,7 +12,7 @@ export const M = await import('../app/login/pki/message.js')
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 export const readJson = rel => JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8'))
 export const sha256hex = s => createHash('sha256').update(s).digest('hex')
-const FLAGS = new Set(['no-seen', 'keep', 'inbox'])                 // these take no value
+const FLAGS = new Set(['no-seen', 'keep', 'inbox', 'dry-run'])                 // these take no value
 export const args = argv => { const o = { _: [] }; for (let i = 0; i < argv.length; i++) { const a = argv[i]; if (a.startsWith('--')) { const k = a.slice(2), n = argv[i + 1]; if (FLAGS.has(k) || n === undefined || n.startsWith('--')) o[k] = true; else { o[k] = n; i++ } } else o._.push(a) } return o }
 
 /** This agent's identity from sgit's key store (PKI_KEY_DIR, or the only key in ~/.sg-send/keys). Never printed. */
@@ -68,19 +68,23 @@ export const seenStore = (file = process.env.LANE_SEEN || path.join(os.homedir()
     write: set => { fs.mkdirSync(path.dirname(file), { recursive: true, mode: 0o700 }); fs.writeFileSync(file, JSON.stringify([...set].slice(-5000)), { mode: 0o600 }) },
 })
 
-/** One call to SG/Send's append-lane API (the calls pki.sgit.ai's account.js makes). */
+/**
+ * One call to SG/Send's append-lane API (https://sgit.ai/api/append-lanes.md, read 10 November 2026; the server answers
+ * a wrong key or an unknown token with 404 and an HTML page, not JSON: checked against dev.send.sgraph.ai with no key).
+ */
 export async function lane(endpoint, op, vault, body, headers = {}) {
     const r = await fetch(`${endpoint}/api/vault/append/${op}/${vault}`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...headers }, body: JSON.stringify(body) })
     let j = null; try { j = await r.json() } catch { }
-    if (!r.ok || !j) { const e = new Error(`the vault server answered ${r.status} to ${op}`); e.status = r.status; throw e }
+    if (!r.ok || !j) { const e = new Error(`the vault server answered ${r.status} to ${op}` + (r.status === 404 ? ' (a wrong key or token, or no such lane)' : r.status === 401 ? ' (no SG/Send access token, or not a valid one)' : r.status === 507 ? ' (the lane is full: 1000 pending)' : '')); e.status = r.status; throw e }
     return j
 }
-/** Everything waiting in a vault's lanes: [{ inbox, file_id, enc }]. Needs the enum key; marks nothing. */
+/** Everything waiting in a vault's lanes: [{ inbox (the lane: its raw token), file_id, enc }]. Needs the enum key; marks
+    nothing. The content is base64 of the .enc text (encoded twice, as the server and sgit's drainers expect). */
 export async function waiting({ endpoint, vault, enumKey }) {
     const h = { 'x-sgraph-vault-enum-key': enumKey }, entries = []
     let after = null
     for (let page = 0; page < 50; page++) {
-        const j = await lane(endpoint, 'list', vault, after ? { include_content: false, after_file_id: after } : { include_content: false }, h)
+        const j = await lane(endpoint, 'list', vault, after ? { include_content: false, limit: 200, after_file_id: after } : { include_content: false, limit: 200 }, h)
         entries.push(...(j.entries || []))
         if (!j.truncated || !(j.entries || []).length) break
         after = j.entries[j.entries.length - 1].file_id

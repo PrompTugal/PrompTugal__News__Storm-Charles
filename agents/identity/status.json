@@ -1,6 +1,6 @@
 {
   "agent": "incident.identity@web-summit.dinis",
-  "state": "active: the first slice is pushed (the key in the browser, sealed feedback, the page, the conductor's tools); the lane and the vaults wait for Dinis",
+  "state": "active: the login and the sealed feedback box are live on every page; the lane tools are ready and not run; the lane and the vaults wait for Dinis",
   "done": [
     "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
     "SECURITY.md: the design for the login, the feedback lane, the reverse path and the two vaults; what is public, what a stolen token or key allows, what we will not build",
@@ -8,16 +8,18 @@
     "/account/: a key made in the browser behind a passkey (WebAuthn PRF) or a passphrase; its public half and fingerprint; the conductor's replies opened and their signature checked; lock, forget",
     "app/login/feedback.js: the box for any page (drawn only in a browser that holds a key): the text, the page's URL and the version, signed and sealed to the conductor's key; appended to the lane, or shown as an m1 code while there is no lane",
     "tools/lane-open.mjs, lane-seal.mjs, lane-drain.mjs for the conductor; data/lanes.json; account/inbox.json",
-    "checked: node tools/lane-test.mjs (21 checks, throwaway keys: accepted when signed by a named sender; refused when unsigned, a stranger's, expired, replayed, re-addressed, changed) and node tools/lane-e2e.mjs (15 checks in Chromium with a virtual passkey: make, seal, POST caught and opened, reply opened, no lane, passphrase, forget, no Content-Security-Policy error)"
+    "checked: node tools/lane-test.mjs (21 checks, throwaway keys: accepted when signed by a named sender; refused when unsigned, a stranger's, expired, replayed, re-addressed, changed) and node tools/lane-e2e.mjs (15 checks in Chromium with a virtual passkey: make, seal, POST caught and opened, reply opened, no lane, passphrase, forget, no Content-Security-Policy error)",
+    "the box is on every page (the conductor's line in the page frame, aeab8c5); /account/ brought in line with design/README.md (tokens only, the banner and cards, UTC times in monospace, light and dark, a phone)",
+    "tools/lane-configure.mjs (opens the lane on the bridge vault; --dry-run calls nothing) and lane-drain.mjs rewritten to SG/Send's append-lane reference (https://sgit.ai/api/append-lanes.md, read 10 November 23:55 UTC); tools/lane-test.mjs is now 30 checks against a stand-in built from that reference",
+    "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says"
   ],
   "not_checked": [
-    "against the real SG/Send server: there is no lane yet. The drain was run against a stand-in that speaks the calls pki.sgit.ai's account.js makes",
-    "a real passkey on a real device (Touch ID, a phone, a security key): only Chromium's virtual authenticator. A passkey store that gives no PRF bytes falls back to the passphrase",
-    "the box on every page: it needs one line in the page frame (admin/build/build.mjs, not mine): <script type=\"module\" src=\"${u}app/login/feedback.js\"></script>. Today it is on /account/ only"
+    "a lane on the real SG/Send server: none exists. lane-configure.mjs and lane-drain.mjs have made no call to it",
+    "a real passkey on a real device (Touch ID, a phone, a security key): only Chromium's virtual authenticator. A passkey store that gives no PRF bytes falls back to the passphrase"
   ],
   "next": [
-    "when Dinis has made his key: his public half into data/keys.json (after he reads the fingerprint to the conductor), its id into data/lanes.json to_conductor.senders",
-    "when a token is in place and he says yes: the bridge vault, the lane (tokens into data/lanes.json), the data vault; their keys sealed to him",
+    "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
+    "when a token is in the environment and he says yes: the bridge vault (sgit), then SG_SEND_TOKEN and LANE_VAULT_KEY in the environment and node tools/lane-configure.mjs; the data vault; their keys sealed to him",
     "sign in with pki.sgit.ai (sso.js) if that is his choice in decision 1"
   ],
   "asks": [
@@ -25,6 +27,6 @@
     "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
     "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret)."
   ],
-  "updated": "2026-11-10T23:50:00Z",
+  "updated": "2026-11-10T23:55:00Z",
   "by": "incident.identity@web-summit.dinis"
 }

@@ -5,13 +5,15 @@
 // 2. feedback: "Dinis" signs and seals to "the conductor"; the conductor opens it and accepts it; every way it must be
 //    refused is refused (unsigned, a stranger's key, a sender not named, expired, replayed, re-addressed, changed);
 // 3. the reverse path: the conductor seals to Dinis, he opens it and the signature checks; a secret is refused;
-// 4. the lane's calls (write, list, fetch, mark-processed) against a stand-in server in this process, speaking the calls
-//    pki.sgit.ai's account.js makes. This checks our client, not SG/Send: the real lane is checked when it exists.
+// 4. the lane's calls (configure, write, list, fetch, mark-processed) against a stand-in server in this process, built
+//    from https://sgit.ai/api/append-lanes.md. This checks our client, not SG/Send: the real lane is checked when it exists.
 import fs from 'node:fs'
+import os from 'node:os'
 import http from 'node:http'
 import path from 'node:path'
 import { K, M, ROOT, sha256hex, judge, looksSecret, lane as laneCall } from './lane-common.mjs'
 import { drain } from './lane-drain.mjs'
+import { configure, writeKeyOf } from './lane-configure.mjs'
 
 let n = 0, failed = 0
 const ok = (cond, what) => { n++; if (!cond) { failed++; console.log('FAIL ' + what) } }
@@ -60,31 +62,54 @@ const sealed = async (from, to, over = {}) => (await M.sealMessage(await M.compo
     ok(o.verified === true && o.msg.text === 'done in v1.41' && !o.problems.length, 'Dinis opens the reply and the signature is the conductor\'s')
     ok(looksSecret('here: sgit_private_' + 'vault_' + 'a'.repeat(24) + ':abcd1234') && looksSecret('ghp_' + 'A'.repeat(36)) && !looksSecret('the banner is fine at 14:02'), 'a vault key or a token is seen, plain words are not')
 }
-// 4. the lane's calls, against a stand-in
+// 4. the lane's calls, against a stand-in built from https://sgit.ai/api/append-lanes.md: configure stores hashes only and
+//    replaces the anchor list; write is gated by sha256(token) and answers exactly {"ok":true}; a wrong key or token is a
+//    404 with an HTML page; list names each lane by its raw token; fetch serves pending files only; content is base64 of
+//    the .enc text; mark-processed is idempotent (missing); file ids are {epoch_ms}_{24 hex}.enc.
 {
-    const files = [], token = 'a'.repeat(32), enumKey = 'b'.repeat(64), full = 'f'.repeat(32)
+    const cfg = { anchors: [], enumHash: '' }, files = []
     const server = http.createServer((req, res) => {
         let body = ''; req.on('data', d => body += d).on('end', () => {
-            const [, op] = req.url.match(/^\/api\/vault\/append\/([a-z-]+)\/testvault$/) || [], j = JSON.parse(body || '{}')
+            const [, op] = req.url.match(/^\/api\/vault\/append\/([a-z-]+)\/testvlt1$/) || [], j = JSON.parse(body || '{}'), h = req.headers
             const send = (code, o) => { res.writeHead(code, { 'content-type': 'application/json' }); res.end(JSON.stringify(o)) }
-            if (op === 'write') return j.append_token === full ? send(507, { detail: 'full' }) : j.append_token !== token ? send(404, {}) : (files.push({ inbox: 'in1', file_id: String(files.length + 1).padStart(6, '0'), content: j.payload, done: false }), send(200, { ok: true }))
-            if (req.headers['x-sgraph-vault-enum-key'] !== enumKey) return send(404, {})
+            const no = () => { res.writeHead(404, { 'content-type': 'text/html' }); res.end('<!DOCTYPE html><html>not found</html>') }
+            if (op === 'configure') { if (!h['x-sgraph-access-token']) return send(401, { detail: 'no access token' }); if (h['x-sgraph-vault-write-key'] !== writeKeyHex) return no(); cfg.anchors = j.append_anchors; cfg.enumHash = j.enum_key_hash; return send(200, { ok: true }) }
+            if (op === 'write') { if (!cfg.anchors.includes(sha256hex(j.append_token || ''))) return no(); if (files.filter(f => f.inbox === j.append_token && !f.done).length >= 3) return send(507, { detail: 'full' }); files.push({ inbox: j.append_token, file_id: `${String(Date.now()).padStart(13, '0')}_${String(files.length).padStart(24, '0')}.enc`, content: j.payload, done: false }); return send(200, { ok: true }) }
+            if (!cfg.enumHash || sha256hex(h['x-sgraph-vault-enum-key'] || '') !== cfg.enumHash) return no()
             if (op === 'list') return send(200, { entries: files.filter(f => !f.done).map(f => ({ inbox: f.inbox, file_id: f.file_id })), truncated: false })
-            if (op === 'fetch') return send(200, { files: files.filter(f => j.file_ids.includes(f.file_id)).map(f => ({ file_id: f.file_id, content: f.content })) })
-            if (op === 'mark-processed') { for (const f of files) if (j.file_ids.includes(f.file_id)) f.done = true; return send(200, { ok: true }) }
-            send(404, {})
+            if (op === 'fetch') return send(200, { files: files.filter(f => !f.done && f.inbox === j.inbox && j.file_ids.includes(f.file_id)).map(f => ({ file_id: f.file_id, content: f.content })) })
+            if (op === 'mark-processed') { const missing = []; for (const id of j.file_ids) { const f = files.find(x => x.file_id === id && x.inbox === j.inbox && !x.done); f ? f.done = true : missing.push(id) } return send(200, { ok: true, missing }) }
+            no()
         })
     })
     await new Promise(r => server.listen(0, '127.0.0.1', r))
-    const endpoint = `http://127.0.0.1:${server.address().port}`, L = { endpoint, vault: 'testvault', enumKey }
-    const write = enc => laneCall(endpoint, 'write', 'testvault', { append_token: token, payload: btoa(enc) })
-    await write((await sealed(dinis, conductor)).enc); await write((await sealed(stranger, conductor)).enc); await write('junk')
-    let wrong = null; try { await laneCall(endpoint, 'list', 'testvault', {}, { 'x-sgraph-vault-enum-key': token }) } catch (e) { wrong = e.status }
-    ok(wrong === 404, 'the append token cannot list the lane (the stand-in refuses, as the design requires of the server)')
-    const seen = new Set(), out = await drain({ lane: L, identity: conductor, ring, senders, seen })
-    ok(out.length === 3 && out.filter(r => r.accept).length === 1 && out[0].accept && out[0].text === 'the banner is too tall', 'the drain reads three and accepts only Dinis\'s')
+    const endpoint = `http://127.0.0.1:${server.address().port}`
+    const { vaultId, writeKeyHex } = await writeKeyOf('sgit_private_' + 'vault_' + 'throwawaypassphrase000000:testvlt1')
+    ok(vaultId === 'testvlt1' && /^[0-9a-f]{64}$/.test(writeKeyHex) && (await writeKeyOf('throwawaypassphrase000000:testvlt1')).writeKeyHex === writeKeyHex, 'the write key is derived from the vault key, prefixed or not')
+    let st = null; try { await configure({ endpoint, vaultId, writeKeyHex, accessToken: '' }) } catch (e) { st = e.status }
+    ok(st === 401, 'configure without an access token is refused (401)')
+    const rec = await configure({ endpoint, vaultId, writeKeyHex, accessToken: 'throwaway', lanes: 2 })
+    ok(rec.tokens.length === 2 && cfg.anchors.length === 2 && !JSON.stringify(cfg).includes(rec.tokens[0]) && !JSON.stringify(cfg).includes(rec.enum_key), 'configure sends hashes only: two lanes, no token and no enum key on the server')
+    const rec2 = await configure({ endpoint, vaultId, writeKeyHex, accessToken: 'throwaway', lanes: 1, previous: rec })
+    ok(rec2.tokens.length === 3 && rec2.enum_key === rec.enum_key && cfg.anchors.length === 3, 'configuring again keeps the earlier lanes (the server replaces the list) and the enum key')
+    const L = { endpoint, vault: vaultId, enumKey: rec.enum_key }, [t1, t2] = rec.tokens
+    const write = (token, enc) => laneCall(endpoint, 'write', vaultId, { append_token: token, payload: btoa(enc) })
+    const w = await write(t1, (await sealed(dinis, conductor)).enc)
+    ok(JSON.stringify(w) === '{"ok":true}', 'the write answer is blind')
+    await write(t2, (await sealed(stranger, conductor)).enc); await write(t1, 'junk'); await write(t2, 'x'.repeat(70000))
+    const refused = async f => { try { await f(); return null } catch (e) { return e.status } }
+    ok(await refused(() => write('0'.repeat(64), 'x')) === 404, 'an unknown token cannot write (404, an HTML page, read without a crash)')
+    ok(await refused(() => laneCall(endpoint, 'list', vaultId, {}, { 'x-sgraph-vault-enum-key': t1 })) === 404, 'an append token cannot list the lane')
+    await write(t1, 'fill'); ok(await refused(() => write(t1, 'over')) === 507, 'a full lane answers 507')
+    const keepDir = fs.mkdtempSync(path.join(os.tmpdir(), 'lane-kept-')), seen = new Set()
+    const dry = await drain({ lane: L, identity: conductor, ring, senders, seen: new Set(), keep: true })
+    const out = await drain({ lane: L, identity: conductor, ring, senders, seen, keepDir })
+    const acc = out.filter(r => r.accept)
+    ok(dry.length === 5 && out.length === 5 && acc.length === 1 && acc[0].text === 'the banner is too tall', 'the drain reads both lanes (five files) and accepts only Dinis\'s; --keep marks nothing')
+    ok(out.some(r => /too large/.test(r.reasons.join())) && fs.readdirSync(keepDir).length === 4, 'an oversized payload is not opened; the ciphertext of the rest is kept outside git')
     ok((await drain({ lane: L, identity: conductor, ring, senders, seen })).length === 0, 'drained messages are marked processed')
-    server.close()
+    ok((await laneCall(endpoint, 'mark-processed', vaultId, { inbox: t1, file_ids: [out[0].file_id] }, { 'x-sgraph-vault-enum-key': rec.enum_key })).missing.length === 1, 'marking again is safe (missing, not an error)')
+    fs.rmSync(keepDir, { recursive: true, force: true }); server.close()
 }
 console.log(failed ? `RED: ${failed} of ${n} checks failed` : `OK lane: ${n} checks, throwaway keys, ${Date.now() - t0} ms`)
 process.exit(failed ? 1 : 0)

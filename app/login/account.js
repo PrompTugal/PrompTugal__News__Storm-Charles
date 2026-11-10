@@ -10,13 +10,14 @@ import { el, css, say, act, copy } from './dom.js'
 css()
 const root = document.getElementById('account')
 const status = el('p', { class: 'sc-status', role: 'status' })
+const utc = iso => el('time', { datetime: iso }, String(iso).slice(0, 16).replace('T', ' ') + ' UTC')
 const btn = (label, cls, fn) => { const b = el('button', { class: 'sc-btn' + (cls ? ' ' + cls : ''), type: 'button' }, label); b.addEventListener('click', act(b, status, fn)); return b }
 
 function make() {
     const label = el('input', { type: 'text', value: 'Dinis Cruz', id: 'sc-label', maxlength: '64' })
     const p1 = el('input', { type: 'password', id: 'sc-p1', autocomplete: 'new-password' }), p2 = el('input', { type: 'password', id: 'sc-p2', autocomplete: 'new-password' })
     const slow = 'Making the key (RSA 4096: a few seconds)…'
-    return el('section', {},
+    return el('section', { class: 'card' },
         el('h2', {}, 'Make your key in this browser'),
         el('p', { class: 'meta' }, 'Two key pairs are made here (RSA-OAEP 4096 to seal to you, ECDSA P-256 to sign). The private halves stay in this browser, encrypted; only the public halves leave it.'),
         el('label', { for: 'sc-label' }, 'The name on the key (public)'), label,
@@ -29,9 +30,9 @@ function make() {
 
 function locked(h) {
     const pass = el('input', { type: 'password', id: 'sc-pass', autocomplete: 'current-password' })
-    return el('section', {},
+    return el('section', { class: 'card' },
         el('h2', {}, 'Your key is in this browser, locked'),
-        el('p', { class: 'meta' }, h.label, ' · made ', new Date(h.created).toISOString().slice(0, 16).replace('T', ' '), ' UTC · behind a ', h.mode),
+        el('p', { class: 'meta' }, h.label, ' · made ', utc(new Date(h.created).toISOString()), ' · behind a ', h.mode),
         el('p', { class: 'fp' }, h.signing_fingerprint),
         h.mode === 'passphrase' && [el('label', { for: 'sc-pass' }, 'Passphrase'), pass],
         el('div', { class: 'sc-row' }, btn(h.mode === 'passkey' ? 'Unlock with your passkey' : 'Unlock', 'primary', async () => { await ID.unlock(pass.value); return 'Unlocked, for this page.' }), forgetBtn()))
@@ -50,7 +51,7 @@ function unlocked(id) {
     const pasted = el('div', {})
     const show = m => el('div', { class: 'msg' },
         el('span', { class: 'sc-tag ' + (m.verified === true ? 'ok' : 'bad') }, m.verified === true ? 'signature checked' : m.verified === false ? 'signature does not check' : 'signer not in data/keys.json'),
-        ' ', el('strong', {}, m.from), ' · ', el('span', { class: 'meta' }, m.at), m.subject && el('p', {}, el('strong', {}, m.subject)), el('p', {}, m.text),
+        ' ', el('strong', {}, m.from), ' · ', utc(m.at), m.subject && el('p', {}, el('strong', {}, m.subject)), el('p', {}, m.text),
         m.problems.length ? el('p', { class: 'sc-status bad' }, m.problems.join('; ')) : null)
     ;(async () => {
         const c = await LANE.config(), codes = await LANE.inbox(), out = []
@@ -58,14 +59,14 @@ function unlocked(id) {
         inboxList.replaceChildren(...(out.length ? out.reverse() : [el('p', { class: 'meta' }, codes.length ? 'Nothing here is sealed to this key.' : 'Nothing yet.')]))
     })().catch(e => inboxList.replaceChildren(el('p', { class: 'sc-status bad' }, e.message)))
     return [
-        el('section', {},
+        el('section', { class: 'card' },
             el('h2', {}, 'Your key, unlocked for this page'),
             el('p', { class: 'meta' }, b.label, ' · the fingerprint to read to the conductor (the record):'),
             el('p', { class: 'fp', id: 'sc-fp' }, b.signing_fingerprint),
             el('p', { class: 'meta' }, 'Encryption key ', el('code', {}, b.fingerprint), '. The public half, for ', el('code', {}, 'data/keys.json'), ' (not secret: paste it to the conductor):'),
             bundle,
             el('div', { class: 'sc-row' }, btn('Copy the public half', '', () => copy(pub)), btn('Copy as a key link (k1)', '', () => copy(LANE.keyCode(b))), btn('Lock', '', async () => { ID.lock(); return '' }), forgetBtn())),
-        el('section', {},
+        el('section', { class: 'card' },
             el('h2', {}, 'From the conductor'),
             el('p', { class: 'meta' }, 'Sealed to your key and opened here. From ', el('code', {}, 'account/inbox.json'), ' (ciphertext, public), or pasted:'),
             inboxList, el('label', { for: 'sc-paste' }, 'A sealed message'), paste,
@@ -80,5 +81,6 @@ function draw() {
 ID.onChange(draw); draw()
 LANE.config().then(async c => {
     const L = c.lanes.to_conductor, to = await LANE.recipient(c)
-    document.getElementById('account-lane').textContent = `Feedback is sealed to ${to.agent} (${to.bundle.signing_fingerprint}). ` + (L.enabled ? `The lane is open (vault ${L.vault_id}).` : 'There is no lane yet: the sealed text is shown for you to copy.') + ` Site ${c.version || 'version unknown'}.`
+    document.getElementById('account-lane').textContent = `Feedback is sealed to ${to.agent} (${to.bundle.signing_fingerprint}). ` + (L.enabled ? `The lane is open (vault ${L.vault_id}).` : 'There is no lane yet: the sealed text is shown for you to copy.') 
+    document.getElementById('account-ver').textContent = c.version || 'version'
 }).catch(e => { document.getElementById('account-lane').textContent = 'The lane could not be read: ' + e.message })

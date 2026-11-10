@@ -1,27 +1,34 @@
-/* The login and the feedback box (incident.identity@). Uses app/site.css's tokens; falls back where a page has none. */
-.sc-fb-btn { position: fixed; right: 16px; bottom: 16px; z-index: 50; font: 600 14px/1 var(--sans, system-ui, sans-serif); padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line-2, #c4c6c1); background: var(--ink, #16181d); color: var(--paper, #f7f7f5); cursor: pointer; }
-.sc-fb { position: fixed; right: 16px; bottom: 16px; z-index: 51; width: min(420px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: auto; background: var(--surface, #fff); color: var(--ink, #16181d); border: 1px solid var(--line-2, #c4c6c1); border-radius: 10px; padding: 14px; box-shadow: 0 8px 30px rgba(0, 0, 0, .25); font: 14px/1.45 var(--sans, system-ui, sans-serif); }
+/* The login and the feedback box (incident.identity@). Tokens from app/site.css only (design/README.md): no colour is
+   written here, so light and dark follow the site. States (--ok, --bad) are of things we run, and each carries its word. */
+.sc-fb-btn { position: fixed; right: 16px; bottom: 16px; z-index: 50; font: 600 14px/1 var(--sans); padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--ink); color: var(--paper); cursor: pointer; }
+.sc-fb { position: fixed; right: 16px; bottom: 16px; z-index: 51; width: min(420px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: auto; background: var(--surface); color: var(--ink); border: 1px solid var(--line-2); border-radius: 8px; padding: 14px; box-shadow: 0 8px 30px color-mix(in srgb, var(--ink) 28%, transparent); font: 14px/1.45 var(--sans); }
 .sc-fb h2 { font-size: 16px; margin: 0 0 6px; }
-.sc-fb .meta, .sc-acct .meta { color: var(--ink-2, #4a505c); font-size: 13px; margin: 4px 0; overflow-wrap: anywhere; }
-.sc-fb textarea, .sc-acct textarea, .sc-acct input[type=text], .sc-acct input[type=password], .sc-fb input[type=password] { width: 100%; font: 14px/1.4 var(--sans, system-ui, sans-serif); padding: 8px; border: 1px solid var(--line-2, #c4c6c1); border-radius: 6px; background: var(--paper, #f7f7f5); color: inherit; }
+.sc-fb .meta, .sc-acct .meta { overflow-wrap: anywhere; margin: 4px 0; }
+.sc-fb .meta { font-size: 13px; color: var(--ink-2); }
+.sc-fb textarea, .sc-fb input[type=password], .sc-acct textarea, .sc-acct input[type=text], .sc-acct input[type=password] { width: 100%; font: 14px/1.4 var(--sans); padding: 8px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--paper); color: inherit; }
+.sc-fb textarea:focus-visible, .sc-fb input:focus-visible, .sc-acct textarea:focus-visible, .sc-acct input:focus-visible, .sc-btn:focus-visible, .sc-fb-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
 .sc-fb textarea { min-height: 110px; }
-.sc-acct textarea.code, .sc-fb textarea.code { font: 12px/1.35 var(--mono, monospace); min-height: 90px; overflow-wrap: anywhere; }
+.sc-fb textarea.code, .sc-acct textarea.code { font: 12px/1.35 var(--mono); min-height: 90px; overflow-wrap: anywhere; }
 .sc-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
-.sc-btn { font: 600 14px/1 var(--sans, system-ui, sans-serif); padding: 9px 12px; border-radius: 6px; border: 1px solid var(--line-2, #c4c6c1); background: var(--surface-2, #f0f0ec); color: inherit; cursor: pointer; }
-.sc-btn.primary { background: var(--focus, #1d5fd1); border-color: var(--focus, #1d5fd1); color: #fff; }
-.sc-btn.danger { color: var(--bad, #b3261e); }
+.sc-btn { font: 600 14px/1 var(--sans); padding: 9px 12px; border-radius: 6px; border: 1px solid var(--line-2); background: var(--surface-2); color: inherit; cursor: pointer; }
+.sc-btn.primary { background: var(--focus); border-color: var(--focus); color: var(--paper); }
+.sc-btn.danger { border-style: dashed; color: var(--bad); }
 .sc-btn:disabled { opacity: .55; cursor: default; }
 .sc-status { margin: 8px 0 0; font-size: 13px; }
-.sc-status.ok { color: var(--ok, #1d7a46); }
-.sc-status.bad { color: var(--bad, #b3261e); }
-.sc-acct section { background: var(--surface, #fff); border: 1px solid var(--line, #d9dad6); border-radius: 8px; padding: 16px; margin: 16px 0; }
-.sc-acct h2 { font-size: 18px; margin: 0 0 8px; }
-.sc-acct .fp { font: 700 18px/1.3 var(--mono, monospace); letter-spacing: .04em; overflow-wrap: anywhere; }
-.sc-acct label { display: block; font-size: 13px; color: var(--ink-2, #4a505c); margin: 10px 0 4px; }
-.sc-acct .msg { border-top: 1px solid var(--line, #d9dad6); padding: 10px 0; }
+.sc-status.ok { color: var(--ok); }
+.sc-status.bad { color: var(--bad); }
+.sc-status.ok::before { content: "Done: "; font-weight: 700; }
+.sc-status.bad::before { content: "Not done: "; font-weight: 700; }
+.sc-acct { padding-top: 18px; padding-bottom: 28px; }
+.sc-acct .card { margin: 0 0 16px; }
+.sc-acct .card h2:not(:first-child) { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); }
+.sc-acct .fp { font: 700 18px/1.3 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: .04em; overflow-wrap: anywhere; margin: 6px 0; }
+.sc-acct label { display: block; font-size: 13px; color: var(--ink-2); margin: 10px 0 4px; }
+.sc-acct .msg { border-top: 1px solid var(--line); padding: 10px 0; }
 .sc-acct .msg p { margin: 4px 0; white-space: pre-wrap; overflow-wrap: anywhere; }
-.sc-tag { font: 600 11px/1 var(--sans, system-ui, sans-serif); text-transform: uppercase; letter-spacing: .06em; padding: 2px 6px; border-radius: 3px; background: var(--surface-2, #f0f0ec); }
-.sc-tag.ok { background: var(--ok-soft, #e3f3ea); color: var(--ok, #1d7a46); }
-.sc-tag.bad { background: var(--bad-soft, #fbe7e5); color: var(--bad, #b3261e); }
+.sc-acct time, .sc-fb time { font: 13px/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.sc-acct code, .sc-fb code { font-family: var(--mono); font-size: .92em; background: var(--surface-2); padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
+.sc-tag { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 2px 6px; border-radius: 3px; background: var(--surface-2); color: var(--ink-2); }
+.sc-tag.ok { background: var(--ok-soft); color: var(--ok); }
+.sc-tag.bad { background: var(--bad-soft); color: var(--bad); border: 1px dashed var(--bad); }
 .sc-fb[hidden], .sc-fb-btn[hidden], .sc-fb [hidden], .sc-acct [hidden] { display: none !important; }
-.sc-acct h2 + p + label, .sc-acct .sc-row + h2 { margin-top: 18px; }

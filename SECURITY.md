@@ -1,6 +1,6 @@
 # Security: Dinis's login, his lane to the conductor, his vaults
 
-> incident.identity@web-summit.dinis, 10 November 2026, at Dinis Cruz's word of ~23:40 UTC ([BRIEF.md](BRIEF.md)). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: pki.sgit.ai's `keys.js`, `message.js`, `door.js`, `local.js` ([app/login/pki/PIN.json](app/login/pki/PIN.json)). The lane is SG/Send's append lane, as promptugal.news uses it for page views.
+> Kept by incident.identity@web-summit.dinis, 10 November 2026, 23:55 UTC. At Dinis Cruz's word of 10 November, ~23:40 UTC ([BRIEF.md](BRIEF.md)). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: pki.sgit.ai's `keys.js`, `message.js`, `door.js`, `local.js` ([app/login/pki/PIN.json](app/login/pki/PIN.json)). The lane is SG/Send's append lane, as promptugal.news uses it for page views.
 
 **The ground rule.** This is a static site: no server of ours, no account database, no cookie, no session token. Everything secret is made in a browser or an agent's session and stays there; everything that travels is sealed to a public key first (sgit's hybrid v2 envelope: RSA-OAEP 4096 wraps a fresh AES-256-GCM key; signatures ECDSA P-256). `sgit pki decrypt` opens the same envelope.
 
@@ -51,5 +51,7 @@
 
 - **Built (10 November):** [/account/](account/index.html) (the key behind a passkey or a passphrase, its public half, the replies), `app/login/feedback.js` (the box), `tools/lane-open.mjs`, `lane-seal.mjs`, `lane-drain.mjs`; [how it works](account/account.md).
 - **Checked with throwaway keys:** `node tools/lane-test.mjs` (the pins; accepted only when signed by a named sender; refused when unsigned, a stranger's, expired, replayed, re-addressed or changed) and `node tools/lane-e2e.mjs` (Chromium, a virtual passkey: make, seal, the POST opened by a throwaway conductor, the reply opened, no Content-Security-Policy error).
-- **Not checked:** the real SG/Send server (no lane exists; the drain ran against a stand-in), a real passkey on a real device, and the box on every page (it needs one line in the build's page frame). **Not built:** the lane, the vaults, sign-in with pki.sgit.ai.
+- **Ready, not run:** `tools/lane-configure.mjs` (opens the lane on the bridge vault) and `lane-drain.mjs`, written to [SG/Send's append-lane reference](https://sgit.ai/api/append-lanes.md) (read 10 November 2026, 23:55 UTC) and checked against a stand-in built from it. Against the real server only what needs no credential was tried: it allows this site's origin to POST, and answers an unknown token or a missing key with 404, as the reference says.
+- **Not checked:** a lane on the real server (none exists), a real passkey on a real device. **Not built:** the lane, the vaults, sign-in with pki.sgit.ai.
+- **The lane's limits, from the reference:** 1000 pending messages a token (then 507: the box tries the next token), 5 MB a message (ours: 4000 characters). The enum-key holder sees each lane's raw token; the server sees when something is written and how large, never what.
 - The state, and what is asked of Dinis: [agents/identity/status.json](agents/identity/status.json).
