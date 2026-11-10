@@ -37,6 +37,15 @@ function inline(s) {
     s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, '$1<em>$2</em>')
     return s.replace(/\u0000(\d+)\u0000/g, (_, i) => `<code>${esc(codes[+i])}</code>`)
 }
+// a timeline row's permanent id, the same as tools/timeline.mjs gives it in signals.json: s-<MMDD>T<HHMM>, lettered within a minute
+const MONTHS = { Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' }
+function rowId(cell, seen) {
+    const m = String(cell).match(/^(\d{1,2}) ([A-Z][a-z]{2}),?\s*~?(\d{1,2}):(\d\d)$/)
+    if (!m || !MONTHS[m[2]]) return ''
+    const base = `s-${MONTHS[m[2]]}${m[1].padStart(2, '0')}T${m[3].padStart(2, '0')}${m[4]}`
+    seen[base] = (seen[base] || 0) + 1
+    return ` id="${seen[base] === 1 ? base : base + String.fromCharCode(96 + seen[base])}"`
+}
 function markdown(md) {
     const L = md.replace(/\r/g, '').split('\n'), out = []
     let i = 0
@@ -47,9 +56,9 @@ function markdown(md) {
         const h = l.match(/^(#{1,6})\s+(.*)$/)
         if (h) { const id = h[2].toLowerCase().replace(/<[^>]+>|[^\w\s-]/g, '').trim().replace(/\s+/g, '-'); out.push(`<h${h[1].length} id="${esc(id)}">${inline(h[2])}</h${h[1].length}>`); i++; continue }
         if (/^\s*\|/.test(l) && i + 1 < L.length && /^\s*\|?\s*:?-{3,}/.test(L[i + 1])) {
-            const head = cells(l); i += 2; const rows = []
+            const head = cells(l); i += 2; const rows = [], seenIds = {}
             while (i < L.length && /^\s*\|/.test(L[i])) rows.push(cells(L[i++]))
-            out.push(`<table><thead><tr>${head.map(c => `<th>${inline(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(c => `<td>${inline(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`); continue
+            out.push(`<table><thead><tr>${head.map(c => `<th>${inline(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr${rowId(r[0], seenIds)}>${r.map(c => `<td>${inline(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`); continue
         }
         if (/^>\s?/.test(l)) { const buf = []; while (i < L.length && /^>\s?/.test(L[i])) buf.push(L[i++].replace(/^>\s?/, '')); out.push(`<blockquote>${markdown(buf.join('\n'))}</blockquote>`); continue }
         if (/^\s*([-*]|\d+\.)\s+/.test(l)) {
