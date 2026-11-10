@@ -99,8 +99,6 @@ ${body}
 }
 
 // ---------------------------------------------------------------- go
-// generators that must run before the walk (each reads no git history): the library's catalogue, the agents' index
-for (const g of ['tools/library-index.mjs', 'tools/agents-index.mjs']) { try { if (fs.existsSync(path.join(ROOT, g))) execFileSync(process.execPath, [path.join(ROOT, g)], { cwd: ROOT, stdio: 'ignore' }) } catch (e) { console.log(`WARN ${g}: ${String(e.message).split('\n')[0]}`) } }
 fs.rmSync(OUT, { recursive: true, force: true })
 fs.mkdirSync(OUT, { recursive: true })
 const files = walk(ROOT)
