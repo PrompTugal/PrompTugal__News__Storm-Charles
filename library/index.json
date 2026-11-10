@@ -15,6 +15,7 @@
    "dataset": "JSON data: every value with its source and the time read.",
    "dataset doc": "What a dataset holds and who keeps it.",
    "analysis": "Our analysis, labelled as analysis: a hypothesis with its reasons, never a fact.",
+   "research": "Research files: what was found, where, and when it was read.",
    "reading": "The reading list: what others wrote that bears on this site, and what it means here.",
    "library": "The catalogue itself, the glossary, the standard.",
    "agent file": "Each agent's jobs, status and asks.",
@@ -36,9 +37,9 @@
   "linked_from": "files here that link to it or name it as a source",
   "sha256": "of the file in the repository at this build (generated files carry none)"
  },
- "as_of": "2026-11-10T23:47:05Z",
+ "as_of": "2026-11-10T23:51Z",
  "commits_read_at_head": "f509c53526",
- "total": 99,
+ "total": 129,
  "counts": {
   "build": 3,
   "repository": 4,
@@ -46,20 +47,21 @@
   "rules": 1,
   "plan": 3,
   "record": 1,
+  "app": 25,
   "admin": 1,
-  "tool": 12,
+  "tool": 20,
   "agent file": 13,
-  "app": 11,
-  "dataset": 22,
+  "dataset": 24,
   "dataset doc": 4,
-  "design": 3,
+  "design": 5,
   "incident record": 2,
   "comms draft": 6,
   "analysis": 1,
   "decision log": 2,
   "material": 1,
   "library": 4,
-  "reading": 3
+  "reading": 3,
+  "research": 4
  },
  "gaps": {
   "no_author_in_file": [
@@ -89,9 +91,19 @@
    },
    {
     "path": "SECURITY.md",
-    "committed_by": [
-     "incident.identity@web-summit.dinis"
-    ]
+    "committed_by": []
+   },
+   {
+    "path": "account/account.md",
+    "committed_by": []
+   },
+   {
+    "path": "account/inbox.json",
+    "committed_by": []
+   },
+   {
+    "path": "account/index.html",
+    "committed_by": []
    },
    {
     "path": "admin/series.txt",
@@ -107,9 +119,35 @@
    },
    {
     "path": "app/agents/index.html",
-    "committed_by": [
-     "incident.observability@web-summit.dinis"
-    ]
+    "committed_by": []
+   },
+   {
+    "path": "app/agents/vendor/live-map@57636ac/pin.json",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/account.js",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/dom.js",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/feedback.js",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/lane.js",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/login.css",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/package.json",
+    "committed_by": []
    },
    {
     "path": "app/login/pki/PIN.json",
@@ -143,10 +181,7 @@
    },
    {
     "path": "app/site.css",
-    "committed_by": [
-     "incident.conductor@web-summit.dinis",
-     "incident.designer@web-summit.dinis"
-    ]
+    "committed_by": []
    },
    {
     "path": "data/graph/ref/ipma-areas.json",
@@ -202,6 +237,10 @@
      "incident.observability@web-summit.dinis",
      "incident.weatherwatch@web-summit.dinis"
     ]
+   },
+   {
+    "path": "data/lanes.json",
+    "committed_by": []
    },
    {
     "path": "incidents/2026-11-10-storm-charles/comms/dinis.md",
@@ -312,10 +351,38 @@
     ]
    },
    {
+    "path": "research/weather-sites/tools/gen.py",
+    "committed_by": []
+   },
+   {
+    "path": "research/weather-sites/tools/probe.sh",
+    "committed_by": []
+   },
+   {
     "path": "tools/graph-places.mjs",
     "committed_by": [
      "incident.graph@web-summit.dinis"
     ]
+   },
+   {
+    "path": "tools/lane-drain.mjs",
+    "committed_by": []
+   },
+   {
+    "path": "tools/lane-e2e.mjs",
+    "committed_by": []
+   },
+   {
+    "path": "tools/lane-open.mjs",
+    "committed_by": []
+   },
+   {
+    "path": "tools/lane-seal.mjs",
+    "committed_by": []
+   },
+   {
+    "path": "tools/lane-test.mjs",
+    "committed_by": []
    },
    {
     "path": "tools/sync-from-websummit.sh",
@@ -340,6 +407,7 @@
    "data/graph/tables/sources.json",
    "data/graph/tables/warnings.json",
    "data/keys.json",
+   "data/lanes.json",
    "incidents/2026-11-10-storm-charles/comms/README.md",
    "incidents/2026-11-10-storm-charles/comms/dinis.md",
    "incidents/2026-11-10-storm-charles/comms/facts.md",
@@ -350,9 +418,181 @@
    "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
    "incidents/2026-11-10-storm-charles/decisions.md",
    "incidents/2026-11-10-storm-charles/timeline.md",
-   "library/reading/README.md"
+   "library/reading/README.md",
+   "research/weather-sites/README.md",
+   "research/weather-sites/tools/gen.py",
+   "research/weather-sites/tools/probe.sh"
   ],
-  "no_commit_record": [],
+  "no_commit_record": [
+   {
+    "path": "SECURITY.md",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "account/account.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "account/inbox.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "account/index.html",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "agents/designer/status.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "agents/identity/status.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "agents/librarian/status.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "agents/observability/status.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "agents/weatherwatch/status.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "app/agents/about.md",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "app/agents/agents.css",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "app/agents/agents.js",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "app/agents/index.html",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "app/agents/live-adapter.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/agents/vendor/live-map@57636ac/live.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/agents/vendor/live-map@57636ac/live3d.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/agents/vendor/live-map@57636ac/pin.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/account.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/dom.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/feedback.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/id.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/lane.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/login.css",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/package.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/site.css",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "data/agents/commits.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/agents/index.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "data/lanes.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "design/README.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "design/round-4.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "research/weather-sites/README.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "research/weather-sites/sites.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "research/weather-sites/tools/gen.py",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "research/weather-sites/tools/probe.sh",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/agents-commits.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/agents-pin.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/lane-common.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/lane-drain.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/lane-e2e.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/lane-open.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/lane-seal.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/lane-test.mjs",
+    "why": "new since the commits were last read"
+   }
+  ],
   "datasets_naming_no_source": [
    "data/keys.json",
    "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
@@ -362,16 +602,9 @@
   ],
   "documents_nothing_links_to": [
    "app/agents/about.md",
-   "design/round-1.md",
-   "design/round-2.md",
-   "design/round-3.md"
+   "research/weather-sites/README.md"
   ],
-  "older_than_their_sources": [
-   {
-    "path": "data/agents/index.json",
-    "why": "last changed 11-10 23:42; its source data/keys.json changed 11-10 23:44"
-   }
-  ],
+  "older_than_their_sources": [],
   "not_served_on_the_site": [
    ".github/workflows/deploy.yml",
    ".gitignore",
@@ -803,31 +1036,115 @@
    ],
    "links_to": [
     "BRIEF.md",
+    "account/account.md",
+    "account/inbox.json",
+    "account/index.html",
     "agents/identity/status.json",
+    "app/login/feedback.js",
     "app/login/pki/PIN.json",
-    "data/keys.json"
+    "data/keys.json",
+    "data/lanes.json",
+    "tools/lane-open.mjs",
+    "tools/lane-seal.mjs",
+    "tools/lane-test.mjs"
    ],
    "external_links": 0,
-   "bytes": 7936,
-   "sha256": "33298b2179aa7a0cecb8a1809d80981cb6d3c419fbc5d1ed9501dca935183829",
+   "bytes": 8774,
+   "sha256": "4e2763aa39a1aa6f55a2cff09a913159fac31fde123339203a9c893c23f33100",
    "served": true,
    "file": "https://storm-charles.promptugal.news/SECURITY.md",
    "page": "https://storm-charles.promptugal.news/SECURITY.html",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.identity@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:00Z",
-    "last_by": "incident.identity@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:00Z",
-    "last_commit": "588962e3ce",
-    "agents": [
-     "incident.identity@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:00Z",
+   "commits": null,
+   "changed": "",
    "linked_from": [
+    "account/account.md",
+    "account/inbox.json",
     "agents/JOBS.md",
+    "data/lanes.json",
     "library/glossary.md"
+   ]
+  },
+  {
+   "path": "account/account.md",
+   "kind": "app",
+   "title": "Account: the operator's login, and how it works",
+   "what": "The page is /account/. It is for Dinis Cruz, the operator of this site's agents; readers need no login. The design, the threats and what we will not build: SECURITY.md.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "SECURITY.md",
+    "account/index.html"
+   ],
+   "links_to": [
+    "SECURITY.md",
+    "account/inbox.json",
+    "account/index.html",
+    "app/login/feedback.js",
+    "app/login/pki/PIN.json",
+    "data/keys.json",
+    "data/lanes.json"
+   ],
+   "external_links": 0,
+   "bytes": 2274,
+   "sha256": "2903d59e8dbe0cf45d858caa199c27546857b41420f3d798abfd40f37c1390cf",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/account/account.md",
+   "page": "https://storm-charles.promptugal.news/account/account.html",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md"
+   ]
+  },
+  {
+   "path": "account/inbox.json",
+   "kind": "app",
+   "title": "inbox.json",
+   "what": "Replies to Dinis Cruz, each sealed to his public key (ciphertext: sgit's hybrid v2 envelope as an m1 code). Written by tools/lane-seal.mjs --inbox; opened at /account/ with his key. Never a vault key, a token or anything personal (SECURITY.md, section c).",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/lane-seal.mjs",
+    "SECURITY.md"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 291,
+   "sha256": "c8909a5e53b7c3b949d81e163f8471759778575f5d83cd188170dbb480871e82",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/account/inbox.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md",
+    "account/account.md"
+   ]
+  },
+  {
+   "path": "account/index.html",
+   "kind": "app",
+   "title": "index.html",
+   "what": "",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2433,
+   "sha256": "6bcc392bb906114022fb2f492e85b2e723594ee1e85d26e710bdb6e5ea6e150d",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/account/index.html",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md",
+    "account/account.md"
    ]
   },
   {
@@ -976,6 +1293,7 @@
     "app/site.css",
     "data/graph/ontology.json",
     "data/keys.json",
+    "data/lanes.json",
     "library/index.json"
    ],
    "links_to": [
@@ -986,6 +1304,7 @@
     "app/storm.js",
     "data/graph/ontology.json",
     "data/keys.json",
+    "data/lanes.json",
     "library/index.json",
     "tools/llm.mjs"
    ],
@@ -1084,27 +1403,17 @@
    "what": "",
    "by": "incident.designer@web-summit.dinis",
    "by_from": "its own fields",
-   "dated": "2026-11-10T23:45:55Z",
+   "dated": "2026-11-10T23:47:30Z",
    "dated_from": "\"last_wake\"",
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 1062,
-   "sha256": "ed21ceb5193f37da349eac1515b5b12b3b6ae1dcecc77f29709672b10ba979b8",
+   "bytes": 1378,
+   "sha256": "466fe166f1cd08aae3efd2301d88ed75aa0863c29b08568c29988727303d73d3",
    "served": true,
    "file": "https://storm-charles.promptugal.news/agents/designer/status.json",
-   "commits": {
-    "n": 3,
-    "first_by": "incident.designer@web-summit.dinis",
-    "first_at": "2026-11-10T23:40:49Z",
-    "last_by": "incident.designer@web-summit.dinis",
-    "last_at": "2026-11-10T23:45:56Z",
-    "last_commit": "13e6f06f07",
-    "agents": [
-     "incident.designer@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:45:56Z",
+   "commits": null,
+   "changed": "2026-11-10T23:47:30Z",
    "linked_from": []
   },
   {
@@ -1177,29 +1486,20 @@
    "what": "",
    "by": "incident.identity@web-summit.dinis",
    "by_from": "its own fields",
-   "dated": "2026-11-10T23:55:00Z",
+   "dated": "2026-11-10T23:50:00Z",
    "dated_from": "\"updated\"",
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 1634,
-   "sha256": "54e730f8d69758f613640a9de75ffdcf8a9e31fbb751253158d511cbd25e4a81",
+   "bytes": 3473,
+   "sha256": "7bc2b2f5818700b6e621865c574008c0ba981f93e6841f39892e1fc153000947",
    "served": true,
    "file": "https://storm-charles.promptugal.news/agents/identity/status.json",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.identity@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:00Z",
-    "last_by": "incident.identity@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:00Z",
-    "last_commit": "588962e3ce",
-    "agents": [
-     "incident.identity@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:00Z",
+   "commits": null,
+   "changed": "2026-11-10T23:50:00Z",
    "linked_from": [
-    "SECURITY.md"
+    "SECURITY.md",
+    "data/lanes.json"
    ]
   },
   {
@@ -1209,27 +1509,17 @@
    "what": "",
    "by": "incident.librarian@web-summit.dinis",
    "by_from": "its own fields",
-   "dated": "2026-11-10T23:48Z",
+   "dated": "2026-11-10T23:51Z",
    "dated_from": "\"updated\"",
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 2877,
-   "sha256": "72a19f2cae46488b9aaca74445262504bcfb4eab7f59c3c1435e4ae5908a4d24",
+   "bytes": 3029,
+   "sha256": "2ec10c3d079f2d782d522edb40e7d87f68ba857618addb2c93e450a16f2b47e0",
    "served": true,
    "file": "https://storm-charles.promptugal.news/agents/librarian/status.json",
-   "commits": {
-    "n": 2,
-    "first_by": "incident.librarian@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:40Z",
-    "last_by": "incident.librarian@web-summit.dinis",
-    "last_at": "2026-11-10T23:47:05Z",
-    "last_commit": "f509c53526",
-    "agents": [
-     "incident.librarian@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:47:05Z",
+   "commits": null,
+   "changed": "2026-11-10T23:51Z",
    "linked_from": []
   },
   {
@@ -1301,27 +1591,17 @@
    "what": "",
    "by": "incident.observability@web-summit.dinis",
    "by_from": "its own fields",
-   "dated": "2026-11-10T23:55Z",
+   "dated": "2026-11-10T23:47Z",
    "dated_from": "\"last_wake\"",
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 2264,
-   "sha256": "c26010263dc0433d1acb308f480aede80efd1b22d0abe4868d25947edab219c1",
+   "bytes": 3013,
+   "sha256": "20f61afd4239d4c7fd40e88d2f57ae14b05b9e11e9df0d9a058ccaba827f790b",
    "served": true,
    "file": "https://storm-charles.promptugal.news/agents/observability/status.json",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.observability@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:15Z",
-    "last_by": "incident.observability@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:15Z",
-    "last_commit": "a485c845f8",
-    "agents": [
-     "incident.observability@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:15Z",
+   "commits": null,
+   "changed": "2026-11-10T23:47Z",
    "linked_from": []
   },
   {
@@ -1363,27 +1643,17 @@
    "what": "",
    "by": "incident.weatherwatch@web-summit.dinis",
    "by_from": "its own fields",
-   "dated": "2026-11-10T23:38:00Z",
+   "dated": "2026-11-10T23:48:00Z",
    "dated_from": "\"updated\"",
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 666,
-   "sha256": "11c307d34e74211b04ce71bb0941a6b097673fcf78704c46d9a0c93e9a34f6f4",
+   "bytes": 1344,
+   "sha256": "3a83d6db2c09b2ced483a4a7eb9068067bb56eb0bdb41f38ddc62f4b9e20be38",
    "served": true,
    "file": "https://storm-charles.promptugal.news/agents/weatherwatch/status.json",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.weatherwatch@web-summit.dinis",
-    "first_at": "2026-11-10T23:38:13Z",
-    "last_by": "incident.weatherwatch@web-summit.dinis",
-    "last_at": "2026-11-10T23:38:13Z",
-    "last_commit": "066df683d4",
-    "agents": [
-     "incident.weatherwatch@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:38:13Z",
+   "commits": null,
+   "changed": "2026-11-10T23:48:00Z",
    "linked_from": []
   },
   {
@@ -1401,28 +1671,22 @@
    "links_to": [
     "agents/JOBS.md",
     "app/agents/index.html",
+    "app/agents/live-adapter.js",
+    "app/agents/vendor/live-map@57636ac/pin.json",
+    "data/agents/commits.json",
     "data/agents/index.json",
     "data/keys.json",
+    "tools/agents-commits.mjs",
     "tools/agents-index.mjs"
    ],
-   "external_links": 0,
-   "bytes": 2131,
-   "sha256": "aa7fa73ef1f50ee1ed2f73206ab631d5cd6c5bb3a6f0dea49271549ab44f668d",
+   "external_links": 1,
+   "bytes": 3416,
+   "sha256": "a91f9e38c53474a147b57c22aca78161181bf0e506322b24c2b743c76ba7a868",
    "served": true,
    "file": "https://storm-charles.promptugal.news/app/agents/about.md",
    "page": "https://storm-charles.promptugal.news/app/agents/about.html",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.observability@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:15Z",
-    "last_by": "incident.observability@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:15Z",
-    "last_commit": "a485c845f8",
-    "agents": [
-     "incident.observability@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:15Z",
+   "commits": null,
+   "changed": "",
    "linked_from": []
   },
   {
@@ -1437,22 +1701,12 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 3450,
-   "sha256": "fa3c840ae999b063ab6ef60b844ec7afdb301367d11519c1e21a72359e37a5af",
+   "bytes": 5243,
+   "sha256": "61db75e14dff2bbea5d59165db8d1501a49d7236d45ac12aa5f94f79ef44c5b3",
    "served": true,
    "file": "https://storm-charles.promptugal.news/app/agents/agents.css",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.observability@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:15Z",
-    "last_by": "incident.observability@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:15Z",
-    "last_commit": "a485c845f8",
-    "agents": [
-     "incident.observability@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:15Z",
+   "commits": null,
+   "changed": "",
    "linked_from": []
   },
   {
@@ -1467,22 +1721,12 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 12224,
-   "sha256": "f55116d33a2ef2531455d2444b31eca3731eeb3ab378d96e8de552a9c550c356",
+   "bytes": 14621,
+   "sha256": "c0eafa964bfe9c333adb0fd2b2919196ff7a983fb2152bacc6a9fb8fc3b7bf28",
    "served": true,
    "file": "https://storm-charles.promptugal.news/app/agents/agents.js",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.observability@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:15Z",
-    "last_by": "incident.observability@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:15Z",
-    "last_commit": "a485c845f8",
-    "agents": [
-     "incident.observability@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:15Z",
+   "commits": null,
+   "changed": "",
    "linked_from": []
   },
   {
@@ -1497,25 +1741,244 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 2752,
-   "sha256": "492127398bbad01b653368e18bb96aca492969eed859d394b6ad98ad57052c10",
+   "bytes": 2765,
+   "sha256": "80f80af29a34a7eb90a348b457ea46ced32d6ab714f7ad76773d2993df151b50",
    "served": true,
    "file": "https://storm-charles.promptugal.news/app/agents/index.html",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.observability@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:15Z",
-    "last_by": "incident.observability@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:15Z",
-    "last_commit": "a485c845f8",
-    "agents": [
-     "incident.observability@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:15Z",
+   "commits": null,
+   "changed": "",
    "linked_from": [
     "app/agents/about.md"
    ]
+  },
+  {
+   "path": "app/agents/live-adapter.js",
+   "kind": "app",
+   "title": "live-adapter.js",
+   "what": "The adapter between this repository's commits and Angelo's live map (incident.observability@web-summit.dinis). The engine is an unchanged, pinned copy: vendor/live-map@57636ac/ (live.js, live3d.js by dev.map@PrompTugal.angelo; pin.json says which commit). …",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 6932,
+   "sha256": "e9cc987a11356a7f6844614844a4c63d3898472c2a9df6617a2dc6b1c554619f",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/agents/live-adapter.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "app/agents/about.md"
+   ]
+  },
+  {
+   "path": "app/agents/vendor/live-map@57636ac/live.js",
+   "kind": "app",
+   "title": "live.js",
+   "what": "The live map: Team and the machine's graph as a small always-on view, lines and dots only, in a hexagon (dev.map@PrompTugal.angelo, 7 November 2026, at Angelo's go; spec: people/angelo/proposals/live-map/spec-realtime.md). It draws the same graph as the …",
+   "by": "dev.map@PrompTugal.angelo",
+   "by_from": "header",
+   "dated": "2026-11-07",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 67365,
+   "sha256": "d8c6148bad857d41dc8c6f80c9524c5c54d670d113afc7a4f58df4b412657a47",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/agents/vendor/live-map@57636ac/live.js",
+   "commits": null,
+   "changed": "2026-11-07",
+   "linked_from": []
+  },
+  {
+   "path": "app/agents/vendor/live-map@57636ac/live3d.js",
+   "kind": "app",
+   "title": "live3d.js",
+   "what": "The live graph in 3D (backlog 0c; Angelo, 8 November: \"interacting with the mouse is very slow, it lags heavily, and more importantly, dots and lines don't light up, so it's cool static graph but not what we wanted\"). A light renderer on the site's own …",
+   "by": "dev.map@PrompTugal.angelo",
+   "by_from": "header",
+   "dated": "2026-11-08",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 25178,
+   "sha256": "e2bc0ab7873b6b9d17421025cca066265e80c25b08f3ceb16edca3d861d143d8",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/agents/vendor/live-map@57636ac/live3d.js",
+   "commits": null,
+   "changed": "2026-11-08",
+   "linked_from": []
+  },
+  {
+   "path": "app/agents/vendor/live-map@57636ac/pin.json",
+   "kind": "app",
+   "title": "pin.json",
+   "what": "Unchanged copies, pinned so the authors' daily changes never break this site. Not forked: our side is one adapter in app/agents/. To update: run tools/agents-pin.mjs on a newer checkout (a new folder, named for its commit) and point the adapter at it.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/agents-pin.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1032,
+   "sha256": "f94f3c79a8436fd9141f94c293e35c0630d7dc017e653106c41e4b2d14e90400",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/agents/vendor/live-map@57636ac/pin.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "app/agents/about.md"
+   ]
+  },
+  {
+   "path": "app/login/account.js",
+   "kind": "app",
+   "title": "account.js",
+   "what": "account.js: the page at /account/ (incident.identity@; the design is /SECURITY.md). Three states: no key in this browser (make one), a key that is locked (unlock), unlocked (the public half to hand to the conductor, the conductor's replies opened here, lock, …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 6812,
+   "sha256": "371dc8f9ef7d0743b386d3eb79764b33fcb8d281f121fe485259ce79b739e390",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/account.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/login/dom.js",
+   "kind": "app",
+   "title": "dom.js",
+   "what": "dom.js: the few DOM helpers the login pages share. Text only, never markup: nothing read from a message is parsed as HTML.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1531,
+   "sha256": "3f2ad855d47976ded61caeb8480186e4eb72cc9d68bc92af078a8c200b432345",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/dom.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/login/feedback.js",
+   "kind": "app",
+   "title": "feedback.js",
+   "what": "feedback.js: the feedback box, on any page that loads it (incident.identity@; the design is /SECURITY.md, section b). <script type=\"module\" src=\"<root/app/login/feedback.js\"</script It draws nothing unless this browser holds a key made at /account/ (so …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 3714,
+   "sha256": "0201a3b304ca3e3a8f2a054007ca14379a916305b2ff0228a07f1d30a60e1bdb",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/feedback.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md",
+    "account/account.md"
+   ]
+  },
+  {
+   "path": "app/login/id.js",
+   "kind": "app",
+   "title": "id.js",
+   "what": "id.js: Dinis's key in this browser (incident.identity@web-summit.dinis; the design is /SECURITY.md, section a). passkey ──PRF──▶ door seed (pki/door.js) ──▶ AES-256-GCM ──▶ localStorage (pki/local.js): the two private halves or, where the browser gives no PRF …",
+   "by": "incident.identity@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 5468,
+   "sha256": "d3a764e254ebcdbdfcaef1f6e6a223dd26299acba8a5f7f0d2d6e3da383801a5",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/id.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/login/lane.js",
+   "kind": "app",
+   "title": "lane.js",
+   "what": "lane.js: what travels between Dinis's browser and the conductor (the design is /SECURITY.md, sections b and c). feedback pki/message.js compose (signed by his key; to = the conductor's signing fingerprint; expires) → sealMessage (sgit's hybrid v2 envelope, to …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 4733,
+   "sha256": "3a1bb91ab3ba1c659d8d0d867c8f677ae63cab9220e4e2461009b6b0444ac483",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/lane.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/login/login.css",
+   "kind": "app",
+   "title": "login.css",
+   "what": "The login and the feedback box (incident.identity@). Uses app/site.css's tokens; falls back where a page has none.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 3202,
+   "sha256": "120e33b6732cdcd3d99559e1acbc2dccc654161acfa9470c275e2344df5222c8",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/login.css",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/login/package.json",
+   "kind": "app",
+   "title": "package.json",
+   "what": "",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 171,
+   "sha256": "244722735de7940ae4d4ad520247493239a064e7fd06ab4044c1ecec6ce12da7",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/package.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
   },
   {
    "path": "app/login/pki/PIN.json",
@@ -1526,7 +1989,9 @@
    "by_from": "",
    "dated": "",
    "dated_from": "",
-   "made_from": [],
+   "made_from": [
+    "tools/lane-test.mjs"
+   ],
    "links_to": [],
    "external_links": 0,
    "bytes": 1788,
@@ -1547,6 +2012,7 @@
    "changed": "2026-11-10T23:41:00Z",
    "linked_from": [
     "SECURITY.md",
+    "account/account.md",
     "library/reading/standard.md"
    ]
   },
@@ -1682,25 +2148,15 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 17371,
-   "sha256": "6bebe1ea9b1fb7790c03b5fa9734e7aa4b964e7acfcc0e806d393b73b9879e1f",
+   "bytes": 19125,
+   "sha256": "202a145e8bcb3add203b13dffd25007e085e24f0fd02b9d76a6c813c3b0a1056",
    "served": true,
    "file": "https://storm-charles.promptugal.news/app/site.css",
-   "commits": {
-    "n": 4,
-    "first_by": "incident.conductor@web-summit.dinis",
-    "first_at": "2026-11-10T21:14:33Z",
-    "last_by": "incident.designer@web-summit.dinis",
-    "last_at": "2026-11-10T23:45:56Z",
-    "last_commit": "13e6f06f07",
-    "agents": [
-     "incident.conductor@web-summit.dinis",
-     "incident.designer@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:45:56Z",
+   "commits": null,
+   "changed": "",
    "linked_from": [
-    "agents/JOBS.md"
+    "agents/JOBS.md",
+    "design/README.md"
    ]
   },
   {
@@ -1734,7 +2190,32 @@
    "linked_from": [
     "REALITY.md",
     "agents/JOBS.md",
-    "design/round-3.md"
+    "design/round-3.md",
+    "design/round-4.md"
+   ]
+  },
+  {
+   "path": "data/agents/commits.json",
+   "kind": "dataset",
+   "title": "commits.json",
+   "what": "The last commits on dev of this repository: who pushed what, when, and for whom (Agent: and For: trailers), and each pair's count. Written by tools/agents-commits.mjs from git log; a snapshot as of read_at (the live page reads GitHub's public API first and …",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:47:37Z",
+   "dated_from": "\"read_at\"",
+   "made_from": [
+    "tools/agents-commits.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 20226,
+   "sha256": "acb1e1eeae12e044fe0f99e02612f0723583763d1b2a52d96720ae3de840b76f",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/agents/commits.json",
+   "commits": null,
+   "changed": "2026-11-10T23:47:37Z",
+   "linked_from": [
+    "app/agents/about.md"
    ]
   },
   {
@@ -1753,23 +2234,12 @@
    ],
    "links_to": [],
    "external_links": 0,
-   "bytes": 43030,
-   "sha256": "9a3ff712824dedbb7d4e29153341d95e91f65d7d535b1fa70e0c6dd89a85f1f3",
+   "bytes": 49176,
+   "sha256": "e615a4de34fc1701d0e1e78b62617e398b2bd944227f8ed6b6ea8a2e5015d7af",
    "served": true,
    "file": "https://storm-charles.promptugal.news/data/agents/index.json",
-   "commits": {
-    "n": 2,
-    "first_by": "incident.observability@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:15Z",
-    "last_by": "incident.conductor@web-summit.dinis",
-    "last_at": "2026-11-10T23:42:56Z",
-    "last_commit": "084df62b8a",
-    "agents": [
-     "incident.conductor@web-summit.dinis",
-     "incident.observability@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:42:56Z",
+   "commits": null,
+   "changed": "",
    "linked_from": [
     "app/agents/about.md"
    ]
@@ -2140,12 +2610,75 @@
     "CLAUDE.md",
     "PIPELINE.md",
     "SECURITY.md",
+    "account/account.md",
     "agents/JOBS.md",
     "app/agents/about.md",
     "data/agents/index.json",
     "data/graph/README.md",
     "library/glossary.md",
     "library/reading/standard.md"
+   ]
+  },
+  {
+   "path": "data/lanes.json",
+   "kind": "dataset",
+   "title": "lanes.json",
+   "what": "The lanes between Dinis Cruz and incident.conductor@web-summit.dinis (incident.identity@web-summit.dinis, 10 November 2026; the design is SECURITY.md). Public on purpose: an append token can only write to its lane, and the recipient's key can only encrypt. No …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "SECURITY.md",
+    "agents/identity/status.json"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1058,
+   "sha256": "beec28868ee168228875bd18719a5679ba28260f993bba8eed778b9364c505cc",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/lanes.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md",
+    "account/account.md",
+    "agents/JOBS.md"
+   ]
+  },
+  {
+   "path": "design/README.md",
+   "kind": "design",
+   "title": "The design of this site: tokens, parts, rules",
+   "what": "Kept by incident.designer@web-summit.dinis. For every agent that builds a page here: use these and your page will match the rest, in light and dark, on a phone and a desk. One stylesheet, no dependencies: app/site.css. Rounds: 1, 2, 3, 4.",
+   "by": "incident.designer@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "app/site.css",
+    "design/round-1.md",
+    "design/round-2.md",
+    "design/round-3.md",
+    "design/round-4.md"
+   ],
+   "links_to": [
+    "app/site.css",
+    "design/round-1.md",
+    "design/round-2.md",
+    "design/round-3.md",
+    "design/round-4.md"
+   ],
+   "external_links": 0,
+   "bytes": 3124,
+   "sha256": "ffa006b60d77e4e5327a70b04752a96158e8406bca1f1caa3db43b60a05ebcc7",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/design/README.md",
+   "page": "https://storm-charles.promptugal.news/design/",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "design/round-4.md"
    ]
   },
   {
@@ -2179,7 +2712,9 @@
     ]
    },
    "changed": "2026-11-10T23:43:36Z",
-   "linked_from": []
+   "linked_from": [
+    "design/README.md"
+   ]
   },
   {
    "path": "design/round-2.md",
@@ -2212,7 +2747,9 @@
     ]
    },
    "changed": "2026-11-10T23:45:56Z",
-   "linked_from": []
+   "linked_from": [
+    "design/README.md"
+   ]
   },
   {
    "path": "design/round-3.md",
@@ -2245,7 +2782,35 @@
     ]
    },
    "changed": "2026-11-10T23:45:56Z",
-   "linked_from": []
+   "linked_from": [
+    "design/README.md"
+   ]
+  },
+  {
+   "path": "design/round-4.md",
+   "kind": "design",
+   "title": "Design round 4: the document pages, and a guide for the other agents",
+   "what": "By incident.designer@web-summit.dinis, 10 November 2026, about 23:52 to 23:58 UTC.",
+   "by": "incident.designer@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [
+    "app/storm.js",
+    "design/README.md"
+   ],
+   "external_links": 0,
+   "bytes": 1473,
+   "sha256": "59a311a14089d08d2e9fca9f82036d34d723faf206206a5d0de615899fc6a231",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/design/round-4.md",
+   "page": "https://storm-charles.promptugal.news/design/round-4.html",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": [
+    "design/README.md"
+   ]
   },
   {
    "path": "incidents/2026-11-10-storm-charles/README.md",
@@ -3561,7 +4126,8 @@
     "app/login/pki/PIN.json",
     "data/keys.json",
     "library/README.md",
-    "library/reading/README.md"
+    "library/reading/README.md",
+    "tools/lane-test.mjs"
    ],
    "external_links": 1,
    "bytes": 7245,
@@ -3583,6 +4149,122 @@
    "changed": "2026-11-10T23:47:05Z",
    "linked_from": [
     "library/reading/README.md"
+   ]
+  },
+  {
+   "path": "research/weather-sites/README.md",
+   "kind": "research",
+   "title": "The best weather sites, and who is covering Storm Charles",
+   "what": "Research for the home page, by incident.weatherwatch@web-summit.dinis, for incident.designer@web-summit.dinis. The data is sites.json: 106 entries in three maps (52 worldwide, 27 Portugal, 27 on Storm Charles), from 244 addresses requested once each between …",
+   "by": "incident.weatherwatch@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "research/weather-sites/sites.json"
+   ],
+   "links_to": [
+    "research/weather-sites/sites.json",
+    "research/weather-sites/tools/gen.py",
+    "research/weather-sites/tools/probe.sh"
+   ],
+   "external_links": 29,
+   "bytes": 11827,
+   "sha256": "eb77de09ddc40ead9df9410a16c66016a667f0813c491e5df8d8887e96ddeba9",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/research/weather-sites/README.md",
+   "page": "https://storm-charles.promptugal.news/research/weather-sites/",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "research/weather-sites/sites.json",
+   "kind": "research",
+   "title": "sites.json",
+   "what": "Three maps of weather sites, for incident.designer@ and whoever builds the home page: (a) worldwide, (b) Portugal, (c) who covers Storm Charles and how. Kept by incident.weatherwatch@web-summit.dinis. Public sources only. This is research about how others …",
+   "by": "incident.weatherwatch@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:47Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 97215,
+   "sha256": "05bc3f25bfe2992e2290466953dfc38d48b131264aeb44201e68ab8bf4e69797",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/research/weather-sites/sites.json",
+   "commits": null,
+   "changed": "2026-11-10T23:47Z",
+   "linked_from": [
+    "research/weather-sites/README.md"
+   ]
+  },
+  {
+   "path": "research/weather-sites/tools/gen.py",
+   "kind": "research",
+   "title": "gen.py",
+   "what": "Builds research/weather-sites/sites.json from the probe results (status, time read) and the entries below.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 68237,
+   "sha256": "6d8a679a2679c9dff6e6eeba45c5939481bc3a9ce8efda38c2b710b5bcaa0467",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/research/weather-sites/tools/gen.py",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "research/weather-sites/README.md"
+   ]
+  },
+  {
+   "path": "research/weather-sites/tools/probe.sh",
+   "kind": "research",
+   "title": "probe.sh",
+   "what": "usage: probe.sh <outdir < urls ; one line per url: id<TABurl",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 713,
+   "sha256": "dd4cc8205f2b0178dc7e09cd56a89be19beba8a56ea8384f8880eda73ea486d3",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/research/weather-sites/tools/probe.sh",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "research/weather-sites/README.md"
+   ]
+  },
+  {
+   "path": "tools/agents-commits.mjs",
+   "kind": "tool",
+   "title": "agents-commits.mjs",
+   "what": "The last commits on dev as data: git log - data/agents/commits.json (kept by incident.observability@web-summit.dinis). node tools/agents-commits.mjs Who pushed what, when, and for whom (the Agent: and For: trailers): the same shape the agents page makes from …",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2996,
+   "sha256": "5df8a89fd9697992bc9c50567641ac7e58fcab745036a47dc50c472954beee13",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/agents-commits.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "app/agents/about.md",
+    "data/agents/commits.json"
    ]
   },
   {
@@ -3616,6 +4298,28 @@
    "linked_from": [
     "app/agents/about.md",
     "data/agents/index.json"
+   ]
+  },
+  {
+   "path": "tools/agents-pin.mjs",
+   "kind": "tool",
+   "title": "agents-pin.mjs",
+   "what": "Pinned copies of other teams' engines (kept by incident.observability@web-summit.dinis): copy named files, unchanged, from a checkout of their repository into app/agents/vendor/<name@<short commit/ and write pin.json beside them (repository, commit, each …",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 3570,
+   "sha256": "cfba4a7399acae8ec7b1f06ae2d6a29de1a9ad9564a5c9e8a42690ef051763df",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/agents-pin.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "app/agents/vendor/live-map@57636ac/pin.json"
    ]
   },
   {
@@ -3687,6 +4391,135 @@
    "changed": "2026-11-10T23:44:08Z",
    "linked_from": [
     "data/graph/ref/ipma-areas.json"
+   ]
+  },
+  {
+   "path": "tools/lane-common.mjs",
+   "kind": "tool",
+   "title": "lane-common.mjs",
+   "what": "lane-common.mjs: what the lane tools share (incident.identity@web-summit.dinis; the design is SECURITY.md). The same pinned pki.sgit.ai modules the browser runs (app/login/pki/), over Node's Web Crypto. No dependencies.",
+   "by": "incident.identity@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 7122,
+   "sha256": "6ac110441886f6abc5b519edc1019bf4fb6f41fa0abfa1d77a2943daedfb2f5a",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/lane-common.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "tools/lane-drain.mjs",
+   "kind": "tool",
+   "title": "lane-drain.mjs",
+   "what": "lane-drain.mjs: the conductor's drain, each wake. Lists the lane, opens each message with this agent's key, judges it (lane-common.mjs judge), prints one JSON line per message, then marks them processed. LANE_ENUM_KEY=<the lane's enum key node …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2109,
+   "sha256": "c48d4a7e0741fbdecdbca2b3171278c7d105dcfd63c0ff069f107789962fb162",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/lane-drain.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "tools/lane-e2e.mjs",
+   "kind": "tool",
+   "title": "lane-e2e.mjs",
+   "what": "lane-e2e.mjs: the login and the lane in a real browser (Chromium through Playwright, which is not a dependency of this repository: the test says so and stops where it is not installed). Throwaway keys; a virtual passkey with PRF; the lane's server stood in …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 11179,
+   "sha256": "d5643007174f58b3c2c8076eb5ce1c5f55c4b89630ddb90072772a60534856c7",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/lane-e2e.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "tools/lane-open.mjs",
+   "kind": "tool",
+   "title": "lane-open.mjs",
+   "what": "lane-open.mjs: open what Dinis sealed to this agent, and judge it. One JSON line per message. node tools/lane-open.mjs <m1 code | file holding one [...] (or the text on stdin) \"accept\": true only for a message signed by a sender named in data/lanes.json …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1150,
+   "sha256": "28d4870af4bd5c67a7f30110e2990fbe4e2fa18c3bfd6bf6b23bed201adcbda9",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/lane-open.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md"
+   ]
+  },
+  {
+   "path": "tools/lane-seal.mjs",
+   "kind": "tool",
+   "title": "lane-seal.mjs",
+   "what": "lane-seal.mjs: the reverse path. Sign with this agent's key, seal to a key in data/keys.json (Dinis's), 7 days by default. node tools/lane-seal.mjs --to <key id --text \"…\" [--subject S] [--expires DAYS] [--inbox] Prints the m1 code; with --inbox, appends it …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2256,
+   "sha256": "ac1fce320d4b6e3c0a46f140d1cc673611dc80a40af5928f1be5a471125d92b7",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/lane-seal.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md",
+    "account/inbox.json"
+   ]
+  },
+  {
+   "path": "tools/lane-test.mjs",
+   "kind": "tool",
+   "title": "lane-test.mjs",
+   "what": "lane-test.mjs: the lane, end to end, with throwaway keys made here and thrown away (nothing is written to a key store). node tools/lane-test.mjs 1. the pinned pki.sgit.ai copies are byte for byte what app/login/pki/PIN.json says; 2. feedback: \"Dinis\" signs …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 7792,
+   "sha256": "cb9f6970d5365b3f69a1cc23003fdbdd4ae7819694d2b1caee8a2ef5a13a0f09",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/lane-test.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md",
+    "app/login/pki/PIN.json",
+    "library/reading/standard.md"
    ]
   },
   {
