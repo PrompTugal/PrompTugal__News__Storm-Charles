@@ -41,6 +41,11 @@ for (const line of md.split('\n')) {
     rows.push({ at, approx: !!m[3], kind, label: /^analysis\b/i.test(raw) ? 'hypothesis' : signal ? 'evidence' : 'fact', key: /\*\*/.test(raw), decision: /^\**DECISION\b/.test(raw), text: plain(raw.replace(/^signal:\s*/i, '').replace(/^signal \(([^)]+)\):\s*/i, '($1) ')), sources })
 }
 rows.sort((a, b) => a.at.localeCompare(b.at))
+// a permanent id per row (the librarian's reading of "The wire as a graph"): the row's minute, plus a letter when a minute holds
+// more than one row (in time order, then the order written). A row's id survives edits to its text; a corrected row is a new
+// row whose text names the id it supersedes ("supersedes s-...")
+const seen = {}
+for (const r of rows) { const base = 's-' + r.at.slice(5, 16).replace(/[-:]/g, ''); seen[base] = (seen[base] || 0) + 1; r.id = seen[base] === 1 ? base : base + String.fromCharCode(96 + seen[base]); const sup = r.text.match(/supersedes (s-[0-9T]+[a-z]?)/); if (sup) r.supersedes = sup[1] }
 const out = { about: 'The incident timeline as data, made from timeline.md by tools/timeline.mjs (never edit by hand; edit timeline.md). See README.md.', source: path.join(dir, 'timeline.md'), made_at: new Date().toISOString().slice(0, 16) + 'Z', items: rows }
 fs.mkdirSync(path.join(dir, 'data'), { recursive: true })
 fs.writeFileSync(path.join(dir, 'data', 'signals.json'), JSON.stringify(out, null, 1) + '\n')
