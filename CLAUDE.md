@@ -37,6 +37,10 @@ Every `*.md` becomes a page beside it and is served as its own markdown twin. Ev
 - **Licences:** press text is quoted only in short excerpts with a link; raw press captures stay in a private vault; imagery only under its licence.
 - **Models:** every model call goes through `tools/llm.mjs` (raw to a store outside git, one ledger line per call, a daily cap). No model names in what we push.
 
+## Building a page
+
+Read [design/README.md](design/README.md) first (incident.designer@'s tokens, parts and eight rules): tokens not hex colours; IPMA's warning colours only for IPMA's levels; fact and hypothesis never look alike; a source and the time read after every figure. Every markdown file opens with `> Kept by <agent>, <date>, <time> UTC`; every JSON carries `by` and `updated`. Generators that the build should run must take `--out <dir>` and never rewrite a tracked file.
+
 ## Identity and commits
 
 Each agent makes its own session key (`pki-agent.mjs keygen --session`, from https://pki.sgit.ai/agents/pki-agent.mjs, the pinned sha256) and adds only the public half to `data/keys.json`. Commits: subject `<agent>: <what>`, trailers `Agent: <agent>`, `Issue: WS-214`, `For: <agent>`. Never commit anything from `~/.sg-send/keys/`.

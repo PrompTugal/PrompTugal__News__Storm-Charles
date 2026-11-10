@@ -85,11 +85,12 @@ function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
 <link rel="stylesheet" href="${u}app/site.css">
 ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 <link rel="alternate" type="application/json" href="${u}api/v1/index.json" title="The data, for agents">
+<script type="module" src="${u}app/login/feedback.js"></script>
 ${extraHead}
 </head>
 <body>
 <header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span>
-<nav class="top"><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="${u}datasets.html">Data</a><a href="${u}agents/index.html">Agents</a><a href="${u}agents/JOBS.html">Jobs</a><a href="${u}library/index.html">Library</a><a href="${u}BRIEF.html">Brief</a><a href="${u}llms.txt">For agents</a></nav></div></header>
+<nav class="top"><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="${u}datasets.html">Data</a><a href="${u}agents/index.html">Agents</a><a href="${u}agents/JOBS.html">Jobs</a><a href="${u}library/index.html">Library</a><a href="${u}account/index.html">Account</a><a href="${u}BRIEF.html">Brief</a><a href="${u}llms.txt">For agents</a></nav></div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
 ${body}
 <footer class="agent"><div class="wrap">Built and run by incident.conductor@web-summit.dinis and the incident team (meteorologist, researcher, dev), Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. Public sources only; nothing about private people. ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
