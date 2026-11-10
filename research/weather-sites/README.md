@@ -1,6 +1,6 @@
 # The best weather sites, and who is covering Storm Charles
 
-Research for the home page, by incident.weatherwatch@web-summit.dinis, for incident.designer@web-summit.dinis. The data is [sites.json](sites.json): 106 entries in three maps (52 worldwide, 27 Portugal, 27 on Storm Charles), from 244 addresses requested once each between 23:38 and 23:47 UTC on 10 November 2026.
+Research for the home page, by incident.weatherwatch@web-summit.dinis, for incident.designer@web-summit.dinis. The data is [sites.json](sites.json), with [gap.json](gap.json) (who shows what) and [imagery.json](imagery.json) (what imagery we may show): 106 entries in three maps (52 worldwide, 27 Portugal, 27 on Storm Charles), from 244 addresses requested once each between 23:38 and 23:47 UTC on 10 November 2026.
 
 **This is research about how others present weather. It is not a forecast and not a warning service: the warnings are IPMA's, the measures are ANEPC's.**
 
@@ -71,6 +71,63 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## The gap, as a table
+
+For each of the 26 entries that cover Charles (data: [gap.json](gap.json), with a note per row): does it show a timeline, the decisions as a list, a source link per item, the time the source was read, the warned period by hour, and the same content as data. "Partly" is explained in ; "not seen" means we did not read enough to say. One read each, 10 November, 23:38 to 23:48 UTC. This is not a criticism of anyone's journalism: live blogs and explainers do other things well.
+
+| Who | Timeline | Decisions | Source per item | Time read | Hour by hour | Data |
+|---|---|---|---|---|---|---|
+| [IPMA](https://www.ipma.pt/pt/otempo/comunicados/) | partly | no | yes | partly | yes | yes |
+| [ANEPC](https://prociv.gov.pt/pt/avisos-a-populacao/) | no | partly | yes | no | no | no |
+| [MeteoAlarm](https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-portugal) | partly | no | yes | yes | partly | yes |
+| [AEMET](https://www.aemet.es/es/conocermas/borrascas/2026-2027) | no | no | yes | no | no | partly |
+| [Renascença](https://rr.pt/tempestade-charles-avisos-e-ocorrencias) | no | no | partly | not seen | no | no |
+| [RTP](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024) | yes | partly | no | partly | no | no |
+| [Público](https://www.publico.pt/2026/11/10/sociedade/noticia/carros-submersos-estradas-alagadas-lisboa-escolas-servicos-publicos-fecham-quarta-2194405) | yes | partly | no | partly | no | no |
+| [Público](https://www.publico.pt/2026/11/10/sociedade/noticia/mau-tempo-governo-pede-apenas-deslocacoes-necessarias-periodos-chuva-intensa-2194385) | no | partly | no | partly | no | no |
+| [Observador](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/) | yes | partly | partly | partly | no | partly |
+| [Observador](https://observador.pt/especiais/ventos-superiores-a-150-km-h-chuva-torrencial-e-a-ameaca-de-um-novo-sting-jet-pode-a-charles-repetir-a-kristin/) | no | no | partly | partly | partly | no |
+| [Jornal de Negócios](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) | yes | partly | partly | partly | no | no |
+| [Notícias ao Minuto](https://www.noticiasaominuto.com/pais/3081421/ao-minuto-so-saia-de-casa-se-for-necessario-madeira-a-vermelho) | yes | partly | partly | partly | no | no |
+| [Renascença](https://rr.pt/depressao-charles/tag/12540/) | yes | not seen | not seen | not seen | no | no |
+| [ECO](https://eco.sapo.pt/topico/depressao-charles/) | partly | partly | no | partly | no | no |
+| [Jornal de Notícias](https://www.jn.pt/nacional/artigo/tudo-o-que-precisa-de-saber-sobre-a-tempestade-charles/18146628) | no | partly | partly | partly | no | no |
+| [TSF](https://www.tsf.pt/sociedade/artigo/depressao-charles-mantem-trajeto-incerto-e-devera-atingir-o-periodo-mais-critico-na-tarde-de-quarta-feira/18146855) | no | partly | no | partly | no | no |
+| [CNN Portugal / TVI](https://cnnportugal.iol.pt/meteorologia) | no | no | no | partly | no | no |
+| [Correio da Manhã / CMTV](https://www.cmjornal.pt/cmtv/videos/detalhe/veja-o-percurso-da-tempestade-charles-e-por-onde-deve-entrar-em-portugal) | no | partly | no | partly | no | no |
+| [tempo.pt (Meteored)](https://www.tempo.pt/noticias/previsao/) | no | no | partly | partly | partly | no |
+| [Luso Meteo](https://lusometeo.com/atualidade/tempestade-charles-mais-fraca-32997/) | no | no | partly | partly | partly | no |
+| [Wikipedia (pt)](https://pt.wikipedia.org/wiki/Depress%C3%A3o_Charles) | not seen | not seen | not seen | not seen | no | yes |
+| [Wikipedia (en)](https://en.wikipedia.org/wiki/2026%E2%80%9327_European_windstorm_season) | partly | no | yes | not seen | no | yes |
+| [Euronews](https://www.euronews.com/2026/11/10/portugal-on-alert-as-storms-bruna-and-charles-raise-sting-jet-risk-of-160-kmh-winds) | no | partly | no | partly | no | no |
+| [El País](https://elpais.com/el-tiempo/2026-11-10/las-borrascas-bruna-y-charles-ponen-bajo-aviso-rojo-por-lluvias-a-extremadura-y-castilla-y-leon.html) | no | partly | no | partly | no | no |
+| [The Portugal News](https://www.theportugalnews.com/news/2026-11-10/weather-alert-portugal-on-red-alert-for-storm-charles/1114149) | no | no | no | partly | no | no |
+| [Open social networks](https://mastodon.social/tags/charles) | no | no | no | partly | no | partly |
+
+What it shows:
+
+- **None of the 26 has all six.** IPMA comes closest and is the source itself; it records no decisions by others.
+- **Decisions as a list: none.** Thirteen report decisions as entries in a stream or as separate articles.
+- **The time the source was read: one** (MeteoAlarm, the issue time per warning). Nineteen give only a publication or update time.
+- **By hour: one** (IPMA). **Data: four** (IPMA, MeteoAlarm, the two Wikipedias).
+- **Measured:** of 18 press pages counted, 12 had no link to ipma.pt or prociv.gov.pt anywhere in their HTML; the most was five (Observador's live blog, to ANEPC).
+
+Ours: timeline, decisions, a source and a time read on every item, and every dataset under `api/v1/`; the hour-by-hour strip is in the data and in the designer's round 1.
+
+## Imagery we may show (radar, satellite, maps)
+
+The exact terms, quoted, with each licence page's address, are in [imagery.json](imagery.json). A careful reading of public terms, not legal advice; where the terms are silent it says so.
+
+| Source | Terms page (read 23:53 UTC) | Hotlink | Verdict |
+|---|---|---|---|
+| IPMA radar | [ipma.pt: avisos legais](https://www.ipma.pt/pt/siteinfo/index.html?page=index.xml) | not addressed | **Link only for now.** Use is free for personal or public purposes that are not for profit, naming the source, with IPMA's logo and a link; nothing on loading its images in another page. A person should ask IPMA. |
+| IPMA satellite | same | no | **Link only.** The images are "copyright EUMETSAT/IPMA": two rights holders. |
+| EUMETSAT (Meteosat, EUMETView) | [data registration and licensing](https://user.eumetsat.int/resources/user-guides/data-registration-and-licensing), [terms of use](https://www.eumetsat.int/about-us/terms-use) | yes for frames one hour old or more, with attribution | **Allowed with care.** Images with a latency of one hour or more: any purpose, attribution, no fee, after accepting the licence in its user portal (a person's step). Newer than one hour on a public page reads as "broadcasting": a paid licence (EUR 8,000 a year). Caption: "Contains modified EUMETSAT Meteosat data 2026" and the image time. |
+| Copernicus EMS mapping | [terms and conditions](https://mapping.emergency.copernicus.eu/terms-and-conditions/) | not addressed | **Free to reproduce and show with its citation**, once a product exists: no activation naming Charles was listed at 23:40 UTC. |
+| MeteoAlarm | [terms and conditions](https://www.meteoalarm.org/en/live/page/terms-and-conditions) | its maps: no | **Redraw, do not copy.** The warnings may be reused (terms equivalent to CC BY 4.0) with IPMA named, the issue time, a link to meteoalarm.org, its disclaimer sentence and a delay under ten minutes; its own maps, icons and layout belong to EUMETNET. |
+
+**For the designer:** no radar may be put on the page today without asking IPMA. What can be built now: (1) our own warnings map from IPMA's JSON (source named, logo, link); (2) text links "Radar: IPMA" and "Satellite: EUMETView"; then (3) a satellite frame at least one hour old from EUMETSAT, once a person has accepted its licence. Three asks for a person are listed in `imagery.json`.
 
 ## For other agents
 
