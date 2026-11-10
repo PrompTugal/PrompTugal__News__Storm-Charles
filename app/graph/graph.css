@@ -1,0 +1,77 @@
+/* The query page and the graph page (incident.graph@web-summit.dinis). Colours come from app/site.css's tokens;
+   the eight node colours are this file's own, one per kind of thing, and every one is also named in words. */
+:root {
+  --g-actor: #2f6fde; --g-decision: #c8102e; --g-warning: #e07000; --g-signal: #8a5cd6;
+  --g-source: #5f6b7a; --g-place: #1d8a5a; --g-dataset: #0f8f9c; --g-agent: #b0439a;
+  --g-canvas: #0b0d12;
+}
+.meter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 16px; }
+.meter div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; min-width: 0; }
+.meter b { display: block; font: 600 1.15rem/1.2 var(--sans); font-variant-numeric: tabular-nums; }
+.meter span { display: block; font-size: .8rem; color: var(--ink-2); }
+.meter em { display: block; font-style: normal; font-size: .74rem; color: var(--ink-2); overflow-wrap: anywhere; }
+@media (max-width: 640px) { .meter { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.q-examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.q-examples button, .chips button, button.small, #q-run {
+  font: inherit; font-size: .88rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2);
+  border-radius: 999px; padding: 6px 12px; cursor: pointer; text-align: left;
+}
+.q-examples button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.q-examples button:hover, .chips button:hover, button.small:hover { border-color: var(--ink-2); }
+button:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+#q-sql { display: block; width: 100%; box-sizing: border-box; min-height: 11.5em; resize: vertical; font: .86rem/1.5 var(--mono);
+  color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: 8px; padding: 12px; tab-size: 4; }
+.q-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 10px 0 14px; }
+#q-run { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; padding: 7px 18px; }
+#q-run:disabled { opacity: .5; cursor: default; }
+#q-info, #q-status { font-size: .86rem; color: var(--ink-2); }
+#q-info.bad, #q-status.bad { color: var(--bad); }
+#q-note { font-size: .9rem; color: var(--ink-2); margin: 0 0 10px; max-width: 78ch; }
+.q-out { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.q-out:empty { display: none; }
+.q-out table { border-collapse: collapse; width: 100%; font-size: .84rem; }
+.q-out th, .q-out td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.q-out th { position: sticky; top: 0; background: var(--surface-2); font: 600 .78rem var(--mono); white-space: nowrap; }
+.q-out td { max-width: 46ch; overflow-wrap: anywhere; }
+.q-out td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.q-out td a, .q-out td.time { white-space: nowrap; }
+.q-out td.time { font-variant-numeric: tabular-nums; }
+.q-out .null { color: var(--ink-2); }
+.q-out p { margin: 10px 12px; }
+.lab { display: inline-block; font: 600 .72rem var(--sans); letter-spacing: .02em; padding: 1px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.lab.fact { color: var(--ok); } .lab.evidence { color: var(--warn); } .lab.hypothesis { color: var(--g-signal); border-style: dashed; }
+.q-schema details { border-top: 1px solid var(--line); padding: 8px 0; }
+.q-schema summary { cursor: pointer; font-size: .9rem; }
+.q-schema .cols { font-size: .82rem; color: var(--ink-2); margin: 6px 0 8px; overflow-wrap: anywhere; }
+h2.sec { font-size: 1.05rem; margin: 26px 0 10px; }
+
+/* the graph page */
+.g-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 14px; align-items: start; }
+@media (max-width: 900px) { .g-layout { grid-template-columns: minmax(0, 1fr); } }
+.g-stage { position: relative; height: min(72vh, 680px); min-height: 380px; background: var(--g-canvas); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.g-canvas { position: absolute; inset: 0; }
+.g-stage canvas { display: block; }
+.g-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; color: #c9cfdb; font-size: .92rem; }
+.g-msg[hidden] { display: none; }
+.g-tip { color: #fff; background: rgba(11, 13, 18, .88); border: 1px solid #3a404c; border-radius: 6px; padding: 5px 8px; font: .8rem/1.35 var(--sans); max-width: 320px; }
+.g-tip small { display: block; color: #a7adb9; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.chips button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: .82rem; }
+.chips button[aria-pressed="false"] { opacity: .45; text-decoration: line-through; }
+.chips i { width: 10px; height: 10px; border-radius: 50%; background: var(--c, var(--ink-2)); flex: none; }
+.chips .n { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.g-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; font-size: .88rem; min-width: 0; }
+.g-panel h2 { font-size: 1rem; margin: 0 0 6px; overflow-wrap: anywhere; }
+.g-panel dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; margin: 10px 0; }
+.g-panel dt { color: var(--ink-2); } .g-panel dd { margin: 0; overflow-wrap: anywhere; }
+.g-panel ul { list-style: none; padding: 0; margin: 6px 0 0; max-height: 300px; overflow: auto; }
+.g-panel li { padding: 5px 0; border-top: 1px solid var(--line); }
+.g-panel li button { font: inherit; color: var(--focus); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+.g-panel li small { color: var(--ink-2); display: block; }
+.g-type { display: inline-flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--ink-2); }
+.g-type i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.g-list details { border-top: 1px solid var(--line); padding: 8px 0; }
+.g-list summary { cursor: pointer; }
+.g-list ul { margin: 8px 0 0; padding-left: 18px; font-size: .86rem; }
+.g-list li { margin: 3px 0; overflow-wrap: anywhere; }

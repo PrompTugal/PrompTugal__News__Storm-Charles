@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Query the storm · Storm Charles</title>
+<meta name="description" content="A database in your browser over Storm Charles's data: SQLite (WebAssembly) on the decisions, warnings, signals, sources and actors, each row with its source and the time read. No server; nothing is uploaded.">
+<link rel="stylesheet" href="../../app/site.css">
+<link rel="stylesheet" href="../../app/graph/graph.css">
+<link rel="alternate" type="text/markdown" href="about.md">
+<link rel="alternate" type="application/json" href="../graph/storm.json" title="The graph, as JSON">
+<script src="https://newsroom.sgit.ai/assets/vendor/sql-wasm.js" integrity="sha384-7Zym2PlgXfg8ap8cqJUwlZrLl+VEwt0NVbzYfhH28IWLnSpAgQOnSCY2+EXo5MtM" crossorigin="anonymous"></script>
+<script src="../../app/graph/query.js" defer></script>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="../../index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span>
+<nav class="top"><a href="../../incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="../../incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="../../datasets.html">Data</a><a href="../../agents/index.html">Agents</a><a href="../../agents/JOBS.html">Jobs</a><a href="../../BRIEF.html">Brief</a><a href="../../llms.txt">For agents</a></nav></div></header>
+<div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. This page queries what was decided and warned, and when we read it; it forecasts nothing.</div></div>
+<section class="banner"><div class="wrap"><p class="kicker">A database in your browser</p><h1>Query the storm: what was decided, by whom, when, and how long after the first warning</h1>
+<p class="src">SQLite, running in this tab over <a href="../graph/index.html">the graph's tables</a>. No server, nothing uploaded; every row carries its label, its source and the time it was read. <a href="about.html">How this page works</a> · <a href="../../app/graph/index.html">The graph</a>.</p></div></section>
+<main class="doc"><div class="wrap"><div id="query" data-base="../graph/">
+<div class="meter" aria-label="How the database was built in this tab">
+<div><b id="m-engine">–</b><span>engine started</span><em>SQLite as WebAssembly, hash checked</em></div>
+<div><b id="m-data">–</b><span>data fetched</span><em id="m-data-s">this site's JSON</em></div>
+<div><b id="m-tables">–</b><span>built in memory</span><em id="m-tables-s">rows inserted</em></div>
+<div><b id="m-asof">–</b><span>newest input</span><em id="m-asof-s">data as of</em></div>
+</div>
+<p id="q-status" class="meta" role="status">Starting the database: this needs JavaScript and WebAssembly. Without them, the same data is in the files listed at the foot of this page.</p>
+<h2 class="sec">Five questions</h2>
+<div class="q-examples" id="q-examples"></div>
+<p id="q-note"></p>
+<label for="q-sql" class="meta">SQL (SQLite). Tables: decisions, warnings, signals, sources, actors, nodes, edges.</label>
+<textarea id="q-sql" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+<div class="q-bar"><button type="button" id="q-run" disabled>Run</button><span id="q-info" role="status"></span></div>
+<div class="q-out" id="q-out" tabindex="0" aria-label="Result"></div>
+<h2 class="sec">The tables</h2>
+<div class="q-schema" id="q-schema"></div>
+<p class="meta">The same data as files: <a href="../graph/tables/decisions.json">decisions</a>, <a href="../graph/tables/warnings.json">warnings</a>, <a href="../graph/tables/signals.json">signals</a>, <a href="../graph/tables/sources.json">sources</a>, <a href="../graph/tables/actors.json">actors</a>, <a href="../graph/storm.json">the graph (nodes and edges)</a>, <a href="../graph/queries.json">the five queries</a>. Built by <code>tools/graph-build.mjs</code> from the incident's JSON.</p>
+</div></div></main>
+<footer class="agent"><div class="wrap">Kept by incident.graph@web-summit.dinis, one of the incident team's Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. The engine is sql.js (SQLite, MIT licence), loaded from newsroom.sgit.ai and pinned by hash. <a href="about.md">About this page, as markdown</a> · <a href="../../version.json">version</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "about": "The five worked queries of the query page (/data/query/): each answers a real question about Storm Charles from the tables built by tools/graph-build.mjs. SQL for SQLite. Kept by incident.graph@web-summit.dinis. Not a warning service.",
+  "queries": [
+    {
+      "id": "decided",
+      "question": "What was decided, by whom and when?",
+      "note": "Every decision that has happened, oldest first. read_after_min is how long after the decision we read it at its source (empty when the decision's time is known only to the day). The label says whether it was read on the decider's own channel (fact) or reported by others (evidence).",
+      "sql": "SELECT at, by_name AS decided_by, decision, label,\n       (read_epoch - at_epoch) / 60 AS read_after_min,\n       source\nFROM decisions\nWHERE kind = 'decision' AND status = 'happened'\nORDER BY at IS NULL, at;"
+    },
+    {
+      "id": "after-first-warning",
+      "question": "How long after the first warning was each decision?",
+      "note": "Two clocks: hours since IPMA's first communiqué named the storm, and hours since IPMA's red wind warning for Lisbon was first read by us (the press gives an earlier time for it: see the warnings table, phase = 'history'). A negative number means the decision came before that warning was read. Time order, not cause.",
+      "sql": "WITH first_warning AS (SELECT MIN(at_epoch) AS t FROM decisions WHERE kind = 'warning'),\n     red_wind AS (SELECT at_epoch AS t FROM decisions WHERE id = 'warning:ipma-red-wind')\nSELECT d.at, d.by_name AS decided_by, substr(d.decision, 1, 100) AS decision,\n       round((d.at_epoch - first_warning.t) / 3600.0, 1) AS h_after_first_warning,\n       round((d.at_epoch - red_wind.t) / 3600.0, 1) AS h_after_red_wind_read,\n       d.label, d.source\nFROM decisions d, first_warning, red_wind\nWHERE d.kind = 'decision' AND d.at_epoch IS NOT NULL\nORDER BY d.at_epoch;"
+    },
+    {
+      "id": "fastest-sources",
+      "question": "Which sources were fastest?",
+      "note": "Each publisher with a signal on the timeline: when its first signal came, how many it has, and how many hours that first signal was ahead of the start of the red warnings in Lisbon (the earliest start of a red warning in force for area LSB). Only signals whose source has a URL count; relayed signals without one are in the signals table with publisher empty.",
+      "sql": "WITH red AS (SELECT MIN(starts_epoch) AS t FROM warnings WHERE phase = 'in_force' AND area = 'LSB' AND level = 'red')\nSELECT a.name AS publisher, a.kind, COUNT(*) AS signals,\n       MIN(s.at) AS first_signal,\n       round((red.t - MIN(s.at_epoch)) / 3600.0, 1) AS h_before_red_starts,\n       MIN(s.source) AS a_source\nFROM signals s JOIN actors a ON a.id = s.publisher, red\nGROUP BY a.id\nORDER BY MIN(s.at_epoch);"
+    },
+    {
+      "id": "chain",
+      "question": "What followed what, and how long after?",
+      "note": "The graph as rows: every 'precedes' edge between two decisions or warnings, with its lead time in minutes where both times are known to the minute. This is the chain from IPMA's communiqué to Web Summit's decision. Order, not cause.",
+      "sql": "SELECT a.at AS earlier_at, substr(a.name, 1, 70) AS earlier,\n       e.lead_minutes,\n       b.at AS later_at, substr(b.name, 1, 70) AS later,\n       e.label, e.source\nFROM edges e\nJOIN nodes a ON a.id = e.\"from\"\nJOIN nodes b ON b.id = e.\"to\"\nWHERE e.rel = 'precedes' AND e.lead_minutes IS NOT NULL\nORDER BY b.at, a.at;"
+    },
+    {
+      "id": "open",
+      "question": "What is still not announced, and what is only our hypothesis?",
+      "note": "Decisions that were due but not announced when last read, sources we could not read, and our own hypotheses (always labelled, never stated as fact), each with when it was last read.",
+      "sql": "SELECT status, label, by_name AS who, decision, read AS last_read, source\nFROM decisions\nWHERE status IN ('not_announced', 'expected', 'unknown')\nORDER BY CASE status WHEN 'not_announced' THEN 0 WHEN 'unknown' THEN 1 ELSE 2 END, by_name;"
+    }
+  ]
+}

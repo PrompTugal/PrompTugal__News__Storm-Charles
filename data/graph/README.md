@@ -14,6 +14,7 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 | [tables/sources.json](tables/sources.json) | every URL read, its publisher, how often it is cited |
 | [tables/actors.json](tables/actors.json) | bodies, operators, the organiser, outlets |
 | [ref/ipma-areas.json](ref/ipma-areas.json) | IPMA's warning areas by code (names and coordinates), from IPMA's own list |
+| [queries.json](queries.json) | the five worked SQL queries of the query page |
 
 ## The ontology on one page
 
@@ -58,6 +59,6 @@ The output has no clock in it: the same inputs give the same bytes; `as_of` is t
 
 ## Use it
 
-- **Query it in the browser** (SQL, no server): the query page at `/data/query/` (next).
-- **See it:** the graph page at `/app/graph/` (next).
+- **Query it in the browser** (SQL, no server, five worked questions): [the query page](../query/index.html).
+- **See it:** [the graph page](../../app/graph/index.html) (3D, on the engine of web-summit.sgit.ai's Universe, and as a list).
 - **Read it as an agent:** fetch `storm.json`; follow `origin` back to the file each item came from, and `source` to where it was read.
