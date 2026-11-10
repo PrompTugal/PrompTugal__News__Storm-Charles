@@ -1,6 +1,6 @@
 # The library: everything on this site, and where it came from
 
-> Kept by incident.librarian@web-summit.dinis. This page and [index.json](index.json) are built from the repository by [`tools/library-index.mjs`](../tools/library-index.mjs); nobody writes them by hand. **82 files**, the newest change 11-10 23:58 UTC. Nothing here is guessed: what a file does not say about itself is left empty and listed under [Gaps](#gaps).
+> Kept by incident.librarian@web-summit.dinis. This page and [index.json](index.json) are built from the repository by [`tools/library-index.mjs`](../tools/library-index.mjs); nobody writes them by hand. **82 files**, the newest change 11-10 23:41 UTC. Nothing here is guessed: what a file does not say about itself is left empty and listed under [Gaps](#gaps).
 
 Not a warning service: follow IPMA, ANEPC and your local authorities.
 
@@ -58,7 +58,7 @@ Proposals and priorities: what is to be built and in what order.
 |---|---|---|---|---|
 | [`PIPELINE.md`](../PIPELINE.md) | **The incident site: repository, pipeline, data and dashboard (a proposal for Dinis).** The direction and priorities it serves: ROADMAP.md (Dinis, ~19:15: a proxy of the flows, a newsroom and a data source for agents). | incident.conductor@ | 11-10 21:14 | [`ROADMAP.md`](../ROADMAP.md) |
 | [`ROADMAP.md`](../ROADMAP.md) | **The incident site: a newsroom for people and a data source for agents (roadmap, in priority order).** By incident.conductor@web-summit.dinis, 10 November 2026, ~19:20 UTC, from Dinis's direction in his session (close to his words): a separate repository that publishes "super fast"; "a proxy of the … | incident.conductor@ | 11-10 21:14 | [`PIPELINE.md`](../PIPELINE.md) |
-| [`SECURITY.md`](../SECURITY.md) | **Security: Dinis's login, his lane to the conductor, his vaults.** incident.identity@web-summit.dinis, 10 November 2026, at Dinis Cruz's word of ~23:40 UTC (BRIEF.md). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: … | *not said* |  | [`BRIEF.md`](../BRIEF.md), [`app/login/pki/PIN.json`](../app/login/pki/PIN.json) |
+| [`SECURITY.md`](../SECURITY.md) | **Security: Dinis's login, his lane to the conductor, his vaults.** incident.identity@web-summit.dinis, 10 November 2026, at Dinis Cruz's word of ~23:40 UTC (BRIEF.md). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: … | *not said in the file*; commits: incident.identity@ | 11-10 23:41 | [`BRIEF.md`](../BRIEF.md), [`app/login/pki/PIN.json`](../app/login/pki/PIN.json) |
 
 ## record
 
@@ -75,7 +75,7 @@ The timeline of signals and the decisions, newest first.
 | File | What it is | By | Changed | Made from |
 |---|---|---|---|---|
 | [`incidents/2026-11-10-storm-charles/decisions.md`](../incidents/2026-11-10-storm-charles/decisions.md) | **Decisions (simulate first: each decision is written here before anyone acts).** Newest first. | conductor@ (commits: incident.conductor@) | 11-10 21:14 | [websummit.com](https://websummit.com/blog/web-summit/important-event-update-2026/) |
-| [`incidents/2026-11-10-storm-charles/timeline.md`](../incidents/2026-11-10-storm-charles/timeline.md) | **Timeline (UTC, 10 to 11 November 2026).** Newest first (from 18:58, at the incident conductor's takeover). Facts and evidence carry their source; anything unofficial says so. | *not said* |  | [`incidents/2026-11-10-storm-charles/data/watch/websummit.json`](../incidents/2026-11-10-storm-charles/data/watch/websummit.json), [`incidents/2026-11-10-storm-charles/data/weather/airport.json`](../incidents/2026-11-10-storm-charles/data/weather/airport.json), [`incidents/2026-11-10-storm-charles/data/weather/analysis.md`](../incidents/2026-11-10-storm-charles/data/weather/analysis.md), [pt.euronews.com](https://pt.euronews.com/2026/11/10/portugal-web-summit-cancela-segundo-dia-em-lisboa-devido-a-tempestade-charles), [social.vivaldi.net](https://social.vivaldi.net/@jon/117594316167337659), [storm-charles.promptugal.news**](https://storm-charles.promptugal.news**), and 1 more |
+| [`incidents/2026-11-10-storm-charles/timeline.md`](../incidents/2026-11-10-storm-charles/timeline.md) | **Timeline (UTC, 10 to 11 November 2026).** Newest first (from 18:58, at the incident conductor's takeover). Facts and evidence carry their source; anything unofficial says so. | *not said in the file*; commits: incident.conductor@ | 11-10 23:41 | [`incidents/2026-11-10-storm-charles/data/watch/websummit.json`](../incidents/2026-11-10-storm-charles/data/watch/websummit.json), [`incidents/2026-11-10-storm-charles/data/weather/airport.json`](../incidents/2026-11-10-storm-charles/data/weather/airport.json), [`incidents/2026-11-10-storm-charles/data/weather/analysis.md`](../incidents/2026-11-10-storm-charles/data/weather/analysis.md), [pt.euronews.com](https://pt.euronews.com/2026/11/10/portugal-web-summit-cancela-segundo-dia-em-lisboa-devido-a-tempestade-charles), [social.vivaldi.net](https://social.vivaldi.net/@jon/117594316167337659), [storm-charles.promptugal.news**](https://storm-charles.promptugal.news**), and 1 more |
 
 ## incident record
 
@@ -92,11 +92,11 @@ JSON data: every value with its source and the time read.
 
 | File | What it is | By | Changed | Made from |
 |---|---|---|---|---|
-| [`data/agents/index.json`](../data/agents/index.json) | Every agent of the incident team behind storm-charles.promptugal.news: its job (agents/JOBS.md), what it says it is doing, has done, will do next and asks for (agents/<role>/status.json; asks … | incident.observability@ |  | [`agents/JOBS.md`](../agents/JOBS.md), [`data/keys.json`](../data/keys.json), [`tools/agents-index.mjs`](../tools/agents-index.mjs) |
-| [`data/keys.json`](../data/keys.json) | Public keys of the agents that write this repository. Public halves only: no private key, vault key or token is ever listed here. Each entry was added by the agent that made it, in its own session; … | *not said* |  |  |
+| [`data/agents/index.json`](../data/agents/index.json) | Every agent of the incident team behind storm-charles.promptugal.news: its job (agents/JOBS.md), what it says it is doing, has done, will do next and asks for (agents/<role>/status.json; asks … | incident.observability@ | 11-10 23:41 | [`agents/JOBS.md`](../agents/JOBS.md), [`data/keys.json`](../data/keys.json), [`tools/agents-index.mjs`](../tools/agents-index.mjs) |
+| [`data/keys.json`](../data/keys.json) | Public keys of the agents that write this repository. Public halves only: no private key, vault key or token is ever listed here. Each entry was added by the agent that made it, in its own session; … | *not said in the file*; commits: incident.conductor@, incident.designer@, incident.identity@, incident.librarian@, incident.media@, incident.observability@, incident.weatherwatch@ | 11-10 23:39 |  |
 | [`incidents/2026-11-10-storm-charles/data/decisions/graph.json`](../incidents/2026-11-10-storm-charles/data/decisions/graph.json) ([api](../api/v1/2026-11-10-storm-charles/decisions/graph.json)) | The decision graph of the storm (WS-214), kept by incident.researcher@web-summit.dinis. Nodes are decision-makers; edges are decisions, each with who made it (by), whom it touches (to) and what it … | incident.researcher@ (commits: incident.conductor@) | 11-10 23:03 |  |
 | [`incidents/2026-11-10-storm-charles/data/decisions/sources.json`](../incidents/2026-11-10-storm-charles/data/decisions/sources.json) ([api](../api/v1/2026-11-10-storm-charles/decisions/sources.json)) | Every source incident.researcher@ uses for WS-214: what it holds, how often it changes, whether a machine can read it, its status when last tried. parser_ask = the part we ask incident.dev@ to parse. | *not said in the file*; commits: incident.conductor@ | 11-10 23:03 |  |
-| [`incidents/2026-11-10-storm-charles/data/signals.json`](../incidents/2026-11-10-storm-charles/data/signals.json) ([api](../api/v1/2026-11-10-storm-charles/signals.json)) | The incident timeline as data, made from timeline.md by tools/timeline.mjs (never edit by hand; edit timeline.md). See README.md. | *not said* | 11-10 23:41 | [`incidents/2026-11-10-storm-charles/timeline.md`](../incidents/2026-11-10-storm-charles/timeline.md), [`tools/timeline.mjs`](../tools/timeline.mjs), [`incidents/2026-11-10-storm-charles/data/README.md`](../incidents/2026-11-10-storm-charles/data/README.md) |
+| [`incidents/2026-11-10-storm-charles/data/signals.json`](../incidents/2026-11-10-storm-charles/data/signals.json) ([api](../api/v1/2026-11-10-storm-charles/signals.json)) | The incident timeline as data, made from timeline.md by tools/timeline.mjs (never edit by hand; edit timeline.md). See README.md. | *not said in the file*; commits: incident.conductor@ | 11-10 23:41 | [`incidents/2026-11-10-storm-charles/timeline.md`](../incidents/2026-11-10-storm-charles/timeline.md), [`tools/timeline.mjs`](../tools/timeline.mjs), [`incidents/2026-11-10-storm-charles/data/README.md`](../incidents/2026-11-10-storm-charles/data/README.md) |
 | [`incidents/2026-11-10-storm-charles/data/watch/websummit.json`](../incidents/2026-11-10-storm-charles/data/watch/websummit.json) ([api](../api/v1/2026-11-10-storm-charles/watch/websummit.json)) | Web Summit's own channels, watched for its decisions (Wednesday 11 November: off, 19:38; now Day 3 and the open items: talks, PITCH, side events, tickets): the blog's listings (polled every 2 … | *not said in the file*; commits: incident.conductor@ | 11-10 21:37 | [`tools/websummit.mjs`](../tools/websummit.mjs), [`incidents/2026-11-10-storm-charles/data/README.md`](../incidents/2026-11-10-storm-charles/data/README.md) |
 | [`incidents/2026-11-10-storm-charles/data/weather/airport.json`](../incidents/2026-11-10-storm-charles/data/weather/airport.json) ([api](../api/v1/2026-11-10-storm-charles/weather/airport.json)) | IPMA's aeronautical forecast (TAF) and observations (METAR) for Lisbon airport (LPPT), read through the US NOAA Aviation Weather Center's public API. Knots, with km/h (1 kt = 1.852 km/h). A point … | *not said in the file*; commits: incident.conductor@ | 11-10 23:24 |  |
 | [`incidents/2026-11-10-storm-charles/data/weather/analysis.json`](../incidents/2026-11-10-storm-charles/data/weather/analysis.json) ([api](../api/v1/2026-11-10-storm-charles/weather/analysis.json)) | Reasoning from the facts in this folder; not IPMA's words. Times are UTC = Lisbon time (WET). See analysis.md for the reasons. | incident.meteorologist@ (commits: incident.conductor@) | 11-10 23:24 | [`incidents/2026-11-10-storm-charles/data/weather/analysis.md`](../incidents/2026-11-10-storm-charles/data/weather/analysis.md) |
@@ -131,7 +131,7 @@ The reading list: what others wrote that bears on this site, and what it means h
 
 | File | What it is | By | Changed | Made from |
 |---|---|---|---|---|
-| [`library/reading/README.md`](reading/README.md) | **The reading list.** Kept by incident.librarian@web-summit.dinis, 10 November 2026. Being written now: what the articles on https://newsroom.sgit.ai mean for this site. | incident.librarian@ | 2026-11-10 | [`library/README.md`](README.md), [newsroom.sgit.ai](https://newsroom.sgit.ai) |
+| [`library/reading/README.md`](reading/README.md) | **The reading list.** Kept by incident.librarian@web-summit.dinis, 10 November 2026. Being written now: what the articles on https://newsroom.sgit.ai mean for this site. | incident.librarian@ | 11-10 23:41 | [`library/README.md`](README.md), [newsroom.sgit.ai](https://newsroom.sgit.ai) |
 
 ## library
 
@@ -140,7 +140,7 @@ The catalogue itself, the glossary, the standard.
 | File | What it is | By | Changed | Made from |
 |---|---|---|---|---|
 | [`library/README.md`](README.md) | **The library: everything on this site, and where it came from.** The catalogue as a page, by kind, with the gaps listed. | incident.librarian@ |  | [`tools/library-index.mjs`](../tools/library-index.mjs) |
-| [`library/glossary.md`](glossary.md) | **Glossary.** Kept by incident.librarian@web-summit.dinis, 10 November 2026. Being written now. | incident.librarian@ | 2026-11-10 | [`library/README.md`](README.md) |
+| [`library/glossary.md`](glossary.md) | **Glossary.** Kept by incident.librarian@web-summit.dinis, 10 November 2026. Being written now. | incident.librarian@ | 11-10 23:41 | [`library/README.md`](README.md) |
 | [`library/index.json`](index.json) | **The catalogue, for agents.** Every file on this site: kind, what it is, who wrote it, when it changed, what it was made from, what links to it, sha256; and the gaps. | incident.librarian@ |  | [`tools/library-index.mjs`](../tools/library-index.mjs) |
 | [`library/provenance.json`](provenance.json) | **Who committed what.** For each file: its commits' agents, the first and the last commit, and the sha256 the record holds for. | incident.librarian@ |  | [`tools/library-index.mjs`](../tools/library-index.mjs) |
 
@@ -153,13 +153,13 @@ Each agent's jobs, status and asks.
 | [`agents/JOBS.md`](../agents/JOBS.md) | **The team and its jobs (kept by incident.conductor@web-summit.dinis).** From Dinis's direction of 10 November ~23:40 UTC (BRIEF.md). Each agent owns its folders; nobody edits another's files (ask in a commit with For:). Everyone: read CLAUDE.md first, make a session key, … | incident.conductor@ | 11-10 23:35 | [`BRIEF.md`](../BRIEF.md), [`CLAUDE.md`](../CLAUDE.md), [`SECURITY.md`](../SECURITY.md), [`app/site.css`](../app/site.css), [`data/keys.json`](../data/keys.json), [`library/index.json`](index.json) |
 | [`agents/README.md`](../agents/README.md) | **The incident team's status files.** One folder per role; status.json holds the jobs routed to it, what is done, what is next, and asks (an ask starting "Dinis:" means the agent is blocked by its environment or needs his decision). Kept … | incident.conductor@ | 11-10 21:14 |  |
 | [`agents/conductor/status.json`](../agents/conductor/status.json) |  | incident.conductor@ | 11-10 21:14 |  |
-| [`agents/designer/status.json`](../agents/designer/status.json) |  | incident.designer@ | 11-10 23:50 |  |
+| [`agents/designer/status.json`](../agents/designer/status.json) |  | incident.designer@ | 11-10 23:40 |  |
 | [`agents/dev/status.json`](../agents/dev/status.json) |  | incident.dev@web-summit.dinis (done, next, asks, baseline); jobs by incident.conductor@ | 11-10 22:03 |  |
-| [`agents/identity/status.json`](../agents/identity/status.json) |  | incident.identity@ | 11-10 23:55 |  |
-| [`agents/librarian/status.json`](../agents/librarian/status.json) |  | incident.librarian@ | 11-10 23:58 |  |
+| [`agents/identity/status.json`](../agents/identity/status.json) |  | incident.identity@ | 11-10 23:41 |  |
+| [`agents/librarian/status.json`](../agents/librarian/status.json) |  | incident.librarian@ | 11-10 23:41 |  |
 | [`agents/media/status.json`](../agents/media/status.json) |  | incident.media@ | 11-10 23:38 |  |
 | [`agents/meteorologist/status.json`](../agents/meteorologist/status.json) |  | incident.meteorologist@ (commits: incident.conductor@) | 11-10 23:24 |  |
-| [`agents/observability/status.json`](../agents/observability/status.json) |  | incident.observability@ | 11-10 23:55 |  |
+| [`agents/observability/status.json`](../agents/observability/status.json) |  | incident.observability@ | 11-10 23:41 |  |
 | [`agents/researcher/status.json`](../agents/researcher/status.json) |  | incident.researcher@ (commits: incident.conductor@) | 11-10 23:03 |  |
 | [`agents/weatherwatch/status.json`](../agents/weatherwatch/status.json) |  | incident.weatherwatch@ | 11-10 23:38 |  |
 
@@ -190,7 +190,7 @@ Design rounds and notes.
 
 | File | What it is | By | Changed | Made from |
 |---|---|---|---|---|
-| [`design/round-1.md`](../design/round-1.md) | **Design round 1: the home page as the weather presenter.** By incident.designer@web-summit.dinis, 10 November 2026, 23:35 to 23:50 UTC. Screenshots were taken (1280 and 390 wide, light and dark) and are described here, not committed. | incident.designer@ | 2026-11-10 |  |
+| [`design/round-1.md`](../design/round-1.md) | **Design round 1: the home page as the weather presenter.** By incident.designer@web-summit.dinis, 10 November 2026, 23:35 to 23:50 UTC. Screenshots were taken (1280 and 390 wide, light and dark) and are described here, not committed. | incident.designer@ | 11-10 23:40 |  |
 
 ## tool
 
@@ -200,11 +200,11 @@ Scripts the agents run.
 |---|---|---|---|---|
 | [`admin/tools/release.sh`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/tools/release.sh) | Release from any agent's clone: AGENT=<name admin/tools/release.sh Commit your SOURCE changes first (subject "<agent: <what", trailers Agent:, Issue:, For:). This script rebases on dev, runs the gate … | *not said in the file*; commits: incident.conductor@ | 11-10 21:14 |  |
 | [`incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py`](../incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py) | The weather picture for WS-214 (the storm, Wednesday 11 November 2026), as JSON. | *not said in the file*; commits: incident.conductor@ | 11-10 23:03 |  |
-| [`tools/agents-index.mjs`](../tools/agents-index.mjs) | The team's index: repository - data/agents/index.json (kept by incident.observability@web-summit.dinis). node tools/agents-index.mjs write it node tools/agents-index.mjs --check exit 1 if the … | incident.observability@ |  |  |
-| [`tools/library-index.mjs`](../tools/library-index.mjs) | The library's catalogue (incident.librarian@web-summit.dinis, 10 November 2026, WS-214; Dinis's direction ~23:40: "all information, all documents, all briefs should be on the site"; "provenance, … | incident.librarian@ | 2026-11-10 |  |
+| [`tools/agents-index.mjs`](../tools/agents-index.mjs) | The team's index: repository - data/agents/index.json (kept by incident.observability@web-summit.dinis). node tools/agents-index.mjs write it node tools/agents-index.mjs --check exit 1 if the … | incident.observability@ | 11-10 23:41 |  |
+| [`tools/library-index.mjs`](../tools/library-index.mjs) | The library's catalogue (incident.librarian@web-summit.dinis, 10 November 2026, WS-214; Dinis's direction ~23:40: "all information, all documents, all briefs should be on the site"; "provenance, … | incident.librarian@ | 11-10 23:41 |  |
 | [`tools/llm.mjs`](../tools/llm.mjs) | The model ledger's one wrapper (incident.dev@web-summit.dinis, 10 November 2026, WS-214; ROADMAP P0.4, Dinis's direction ~19:15): every model call the incident team makes goes through call() here, … | incident.dev@ (commits: incident.conductor@) | 11-10 21:14 |  |
 | [`tools/sync-from-websummit.sh`](../tools/sync-from-websummit.sh) | Temporary bridge (10 November 2026): until the incident agents' sessions can push here, they keep writing data/ and their status files in SGit-AI__Website__Web-Summit team/incidents/ (its MOVED.md); … | *not said in the file*; commits: incident.conductor@ | 11-10 21:37 |  |
-| [`tools/timeline.mjs`](../tools/timeline.mjs) | timeline.md - signals.json (incident.dev@web-summit.dinis, 10 November 2026, WS-214). The lead keeps the timeline as a markdown table (UTC \| Signal or decision \| Source); this turns just that table … | incident.dev@ | 2026-11-10 |  |
+| [`tools/timeline.mjs`](../tools/timeline.mjs) | timeline.md - signals.json (incident.dev@web-summit.dinis, 10 November 2026, WS-214). The lead keeps the timeline as a markdown table (UTC \| Signal or decision \| Source); this turns just that table … | incident.dev@ (commits: incident.conductor@) | 11-10 23:41 |  |
 | [`tools/websummit-poll.sh`](../tools/websummit-poll.sh) | The 2-minute blog poll (incident.dev@web-summit.dinis, 10 November 2026, WS-214; incident.researcher@'s ask via the lead, 21:03). Rewritten at 21:30 after security.repos@'s MEDIUM (report … | incident.dev@ (commits: incident.conductor@) | 11-10 21:18 |  |
 | [`tools/websummit.mjs`](../tools/websummit.mjs) | Web Summit's own channels, watched for the decision everyone waits for (incident.dev@web-summit.dinis, 10 November 2026, WS-214; incident.researcher@'s parser asks in decisions/sources.json: … | incident.dev@ (commits: incident.conductor@) | 11-10 21:37 |  |
 
@@ -215,7 +215,7 @@ The build, the gate and CI.
 | File | What it is | By | Changed | Made from |
 |---|---|---|---|---|
 | [`.github/workflows/deploy.yml`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/.github/workflows/deploy.yml) | One job: checkout (shallow), build, gate, deploy, tag, measure. Target: push to served in about 40 s (PIPELINE.md section 3). - fetch-depth 1 and nothing reads git history (a blobless full clone made … | *not said in the file*; commits: incident.conductor@ | 11-10 21:14 |  |
-| [`admin/build/build.mjs`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/build/build.mjs) | The build: repository - _site/ (never committed). Zero dependencies, one pass, a few hundred milliseconds. - every .md becomes a page beside it (and is served too, as its own markdown twin); - the … | *not said* |  |  |
+| [`admin/build/build.mjs`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/build/build.mjs) | The build: repository - _site/ (never committed). Zero dependencies, one pass, a few hundred milliseconds. - every .md becomes a page beside it (and is served too, as its own markdown twin); - the … | *not said in the file*; commits: incident.conductor@, incident.designer@ | 11-10 23:40 |  |
 | [`admin/build/validate.mjs`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/build/validate.mjs) | The gate: must print OK, and a red gate is no release. Budget: 5 seconds. It builds the site once, then checks: 1. the repository stays fast: no tracked file over 256 KB, no binary, no raw capture, … | *not said in the file*; commits: incident.conductor@ | 11-10 21:15 |  |
 
 ## admin
@@ -232,16 +232,16 @@ What runs in the browser.
 
 | File | What it is | By | Changed | Made from |
 |---|---|---|---|---|
-| [`app/agents/about.md`](../app/agents/about.md) | **The agents page: how it works.** The agents, live shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start "Dinis:" are gathered at the top), its last … | incident.observability@ |  | [`app/agents/index.html`](../app/agents/index.html) |
-| [`app/agents/agents.css`](../app/agents/agents.css) | /app/agents/: the team console (incident.observability@web-summit.dinis). Uses app/site.css's tokens; adds nothing global. | incident.observability@ |  |  |
-| [`app/agents/agents.js`](../app/agents/agents.js) | The team console (incident.observability@web-summit.dinis): every agent, what it is doing, what it asks, its last push. Mounts into <div id="agents-live" data-base="<path to the site root". Reads … | incident.observability@ |  |  |
-| [`app/agents/index.html`](../app/agents/index.html) |  | *not said* |  |  |
-| [`app/login/pki/PIN.json`](../app/login/pki/PIN.json) | Copies of pki.sgit.ai's modules, byte for byte, read on 10 November 2026 (23:30 UTC) by incident.identity@web-summit.dinis. Not edited here: to change one, change it at its source and pin the new … | *not said* |  |  |
-| [`app/login/pki/door.js`](../app/login/pki/door.js) | door.js: from a passkey's PRF bytes (or a recovery code) to a door vault's key, the way the article says. Moved out of passkey/lab.js so that the vault pane (assets/vault-pane/) and the lab derive … | *not said* |  |  |
-| [`app/login/pki/keys.js`](../app/login/pki/keys.js) | keys.js: the key material of the directory of people, in the browser and in Node, byte-compatible with sgit pki. Everything here is Web Crypto and nothing else. Each construction was checked against … | *not said* |  |  |
-| [`app/login/pki/local.js`](../app/login/pki/local.js) | local.js: an account kept in this browser only, opened by the passkey alone. No access key, no vault, no passphrase. The passkey's PRF bytes already give a door (door.js). When no vault answers at … | *not said* |  |  |
-| [`app/login/pki/message.js`](../app/login/pki/message.js) | message.js: a message to someone in the register, as a link and a QR code, or into their inbox; and an invitation. A message is JSON, signed by the sender when the sender has a key, then sealed in … | *not said* |  |  |
-| [`app/site.css`](../app/site.css) | storm-charles.promptugal.news: one stylesheet, no dependencies. Tokens first; the dashboard (app/storm.js) uses the same names. | *not said* |  |  |
+| [`app/agents/about.md`](../app/agents/about.md) | **The agents page: how it works.** The agents, live shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start "Dinis:" are gathered at the top), its last … | incident.observability@ | 11-10 23:41 | [`app/agents/index.html`](../app/agents/index.html) |
+| [`app/agents/agents.css`](../app/agents/agents.css) | /app/agents/: the team console (incident.observability@web-summit.dinis). Uses app/site.css's tokens; adds nothing global. | incident.observability@ | 11-10 23:41 |  |
+| [`app/agents/agents.js`](../app/agents/agents.js) | The team console (incident.observability@web-summit.dinis): every agent, what it is doing, what it asks, its last push. Mounts into <div id="agents-live" data-base="<path to the site root". Reads … | incident.observability@ | 11-10 23:41 |  |
+| [`app/agents/index.html`](../app/agents/index.html) |  | *not said in the file*; commits: incident.observability@ | 11-10 23:41 |  |
+| [`app/login/pki/PIN.json`](../app/login/pki/PIN.json) | Copies of pki.sgit.ai's modules, byte for byte, read on 10 November 2026 (23:30 UTC) by incident.identity@web-summit.dinis. Not edited here: to change one, change it at its source and pin the new … | *not said in the file*; commits: incident.identity@ | 11-10 23:41 |  |
+| [`app/login/pki/door.js`](../app/login/pki/door.js) | door.js: from a passkey's PRF bytes (or a recovery code) to a door vault's key, the way the article says. Moved out of passkey/lab.js so that the vault pane (assets/vault-pane/) and the lab derive … | *not said in the file*; commits: incident.identity@ | 11-10 23:41 |  |
+| [`app/login/pki/keys.js`](../app/login/pki/keys.js) | keys.js: the key material of the directory of people, in the browser and in Node, byte-compatible with sgit pki. Everything here is Web Crypto and nothing else. Each construction was checked against … | *not said in the file*; commits: incident.identity@ | 11-10 23:41 |  |
+| [`app/login/pki/local.js`](../app/login/pki/local.js) | local.js: an account kept in this browser only, opened by the passkey alone. No access key, no vault, no passphrase. The passkey's PRF bytes already give a door (door.js). When no vault answers at … | *not said in the file*; commits: incident.identity@ | 11-10 23:41 |  |
+| [`app/login/pki/message.js`](../app/login/pki/message.js) | message.js: a message to someone in the register, as a link and a QR code, or into their inbox; and an invitation. A message is JSON, signed by the sender when the sender has a key, then sealed in … | *not said in the file*; commits: incident.identity@ | 11-10 23:41 |  |
+| [`app/site.css`](../app/site.css) | storm-charles.promptugal.news: one stylesheet, no dependencies. Tokens first; the dashboard (app/storm.js) uses the same names. | *not said in the file*; commits: incident.conductor@, incident.designer@ | 11-10 23:40 |  |
 | [`app/storm.js`](../app/storm.js) | The incident dashboard (incident.dev@web-summit.dinis, 10 November 2026, WS-214, at Dinis's word: "a full-blown new dashboard" that leverages Silvio's and Angelo's work). It reads the incident's data … | incident.dev@ (commits: incident.conductor@) | 11-10 21:16 |  |
 
 ## repository
@@ -265,17 +265,17 @@ What the catalogue could not establish from the files themselves. Each is for th
 - [`CLAUDE.md`](../CLAUDE.md) (commits: incident.conductor@)
 - [`README.md`](../README.md) (commits: incident.conductor@)
 - [`REALITY.md`](../REALITY.md) (commits: incident.conductor@)
-- [`SECURITY.md`](../SECURITY.md)
+- [`SECURITY.md`](../SECURITY.md) (commits: incident.identity@)
 - [`admin/series.txt`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/series.txt) (commits: incident.conductor@)
 - [`admin/tools/release.sh`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/tools/release.sh) (commits: incident.conductor@)
-- [`app/agents/index.html`](../app/agents/index.html)
-- [`app/login/pki/PIN.json`](../app/login/pki/PIN.json)
-- [`app/login/pki/door.js`](../app/login/pki/door.js)
-- [`app/login/pki/keys.js`](../app/login/pki/keys.js)
-- [`app/login/pki/local.js`](../app/login/pki/local.js)
-- [`app/login/pki/message.js`](../app/login/pki/message.js)
-- [`app/site.css`](../app/site.css)
-- [`data/keys.json`](../data/keys.json)
+- [`app/agents/index.html`](../app/agents/index.html) (commits: incident.observability@)
+- [`app/login/pki/PIN.json`](../app/login/pki/PIN.json) (commits: incident.identity@)
+- [`app/login/pki/door.js`](../app/login/pki/door.js) (commits: incident.identity@)
+- [`app/login/pki/keys.js`](../app/login/pki/keys.js) (commits: incident.identity@)
+- [`app/login/pki/local.js`](../app/login/pki/local.js) (commits: incident.identity@)
+- [`app/login/pki/message.js`](../app/login/pki/message.js) (commits: incident.identity@)
+- [`app/site.css`](../app/site.css) (commits: incident.conductor@, incident.designer@)
+- [`data/keys.json`](../data/keys.json) (commits: incident.conductor@, incident.designer@, incident.identity@, incident.librarian@, incident.media@, incident.observability@, incident.weatherwatch@)
 - [`incidents/2026-11-10-storm-charles/comms/dinis.md`](../incidents/2026-11-10-storm-charles/comms/dinis.md) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/comms/facts.md`](../incidents/2026-11-10-storm-charles/comms/facts.md) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/comms/meetings.md`](../incidents/2026-11-10-storm-charles/comms/meetings.md) (commits: incident.conductor@)
@@ -283,7 +283,7 @@ What the catalogue could not establish from the files themselves. Each is for th
 - [`incidents/2026-11-10-storm-charles/comms/team.md`](../incidents/2026-11-10-storm-charles/comms/team.md) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/data/README.md`](../incidents/2026-11-10-storm-charles/data/README.md) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/data/decisions/sources.json`](../incidents/2026-11-10-storm-charles/data/decisions/sources.json) (commits: incident.conductor@)
-- [`incidents/2026-11-10-storm-charles/data/signals.json`](../incidents/2026-11-10-storm-charles/data/signals.json)
+- [`incidents/2026-11-10-storm-charles/data/signals.json`](../incidents/2026-11-10-storm-charles/data/signals.json) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/data/watch/websummit.json`](../incidents/2026-11-10-storm-charles/data/watch/websummit.json) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/data/weather/airport.json`](../incidents/2026-11-10-storm-charles/data/weather/airport.json) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/data/weather/changes.json`](../incidents/2026-11-10-storm-charles/data/weather/changes.json) (commits: incident.conductor@)
@@ -293,7 +293,7 @@ What the catalogue could not establish from the files themselves. Each is for th
 - [`incidents/2026-11-10-storm-charles/data/weather/stations.json`](../incidents/2026-11-10-storm-charles/data/weather/stations.json) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py`](../incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py) (commits: incident.conductor@)
 - [`incidents/2026-11-10-storm-charles/data/weather/warnings.json`](../incidents/2026-11-10-storm-charles/data/weather/warnings.json) (commits: incident.conductor@)
-- [`incidents/2026-11-10-storm-charles/timeline.md`](../incidents/2026-11-10-storm-charles/timeline.md)
+- [`incidents/2026-11-10-storm-charles/timeline.md`](../incidents/2026-11-10-storm-charles/timeline.md) (commits: incident.conductor@)
 - [`tools/sync-from-websummit.sh`](../tools/sync-from-websummit.sh) (commits: incident.conductor@)
 
 ### Records and datasets that give no date of their own
@@ -341,34 +341,9 @@ Their values may each carry a source inside; the file as a whole names none at t
 
 ### Files with no commit record yet
 
-The commits are read in the librarian's clone, not in CI (last at commit `72a73628ab`); a file new or changed since shows here until the next read.
+The commits are read in the librarian's clone, not in CI (last at commit `3449349d91`); a file new or changed since shows here until the next read.
 
-- [`SECURITY.md`](../SECURITY.md): new since the commits were last read
-- [`admin/build/build.mjs`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/build/build.mjs): changed since the commits were last read
-- [`agents/designer/status.json`](../agents/designer/status.json): new since the commits were last read
-- [`agents/identity/status.json`](../agents/identity/status.json): new since the commits were last read
-- [`agents/librarian/status.json`](../agents/librarian/status.json): new since the commits were last read
-- [`agents/observability/status.json`](../agents/observability/status.json): new since the commits were last read
-- [`app/agents/about.md`](../app/agents/about.md): new since the commits were last read
-- [`app/agents/agents.css`](../app/agents/agents.css): new since the commits were last read
-- [`app/agents/agents.js`](../app/agents/agents.js): new since the commits were last read
-- [`app/agents/index.html`](../app/agents/index.html): new since the commits were last read
-- [`app/login/pki/PIN.json`](../app/login/pki/PIN.json): new since the commits were last read
-- [`app/login/pki/door.js`](../app/login/pki/door.js): new since the commits were last read
-- [`app/login/pki/keys.js`](../app/login/pki/keys.js): new since the commits were last read
-- [`app/login/pki/local.js`](../app/login/pki/local.js): new since the commits were last read
-- [`app/login/pki/message.js`](../app/login/pki/message.js): new since the commits were last read
-- [`app/site.css`](../app/site.css): changed since the commits were last read
-- [`data/agents/index.json`](../data/agents/index.json): new since the commits were last read
-- [`data/keys.json`](../data/keys.json): changed since the commits were last read
-- [`design/round-1.md`](../design/round-1.md): new since the commits were last read
-- [`incidents/2026-11-10-storm-charles/data/signals.json`](../incidents/2026-11-10-storm-charles/data/signals.json): changed since the commits were last read
-- [`incidents/2026-11-10-storm-charles/timeline.md`](../incidents/2026-11-10-storm-charles/timeline.md): changed since the commits were last read
-- [`library/glossary.md`](glossary.md): new since the commits were last read
-- [`library/reading/README.md`](reading/README.md): new since the commits were last read
-- [`tools/agents-index.mjs`](../tools/agents-index.mjs): new since the commits were last read
-- [`tools/library-index.mjs`](../tools/library-index.mjs): new since the commits were last read
-- [`tools/timeline.mjs`](../tools/timeline.mjs): changed since the commits were last read
+- None.
 
 ### Not served on the site
 
