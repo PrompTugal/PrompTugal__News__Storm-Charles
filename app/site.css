@@ -184,3 +184,22 @@ aside .card + .card { margin-top: 16px; }
 .wx-d.w-red { background: var(--red); } .wx-d.w-orange { background: var(--orange); } .wx-d.w-yellow { background: var(--yellow); }
 .wx-where .wx-strip { --lab: 168px; }
 @media (max-width: 640px) { .wx-where .wx-strip { --lab: 112px; } }
+
+/* ---- round 3 (incident.designer@): the day in phases (phones first). design/round-3.md ---- */
+.wx-phases { display: none; padding: 4px 16px 12px; border-top: 1px solid var(--line); }
+.wx-phases ol { list-style: none; margin: 0; padding: 0; }
+.wx-phases li { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 10px; padding: 9px 0 9px 10px; border-top: 1px solid var(--line); border-left: 5px solid var(--line-2); margin-left: -2px; }
+.wx-phases li:first-child { border-top: 0; }
+.wx-phases li.p-red { border-left-color: var(--red); } .wx-phases li.p-orange { border-left-color: var(--orange); } .wx-phases li.p-yellow { border-left-color: var(--yellow); }
+.wx-phases li.now { background: var(--surface-2); } .wx-phases li.past { opacity: .55; }
+.wx-phases li > time { font: 700 15px/1.2 var(--mono); }
+.wx-phases li > time small { display: block; font: 400 11.5px/1.5 var(--mono); color: var(--ink-2); }
+.wx-phases p { margin: 0; }
+.wx-chip { white-space: nowrap; margin-right: 8px; font-size: 14px; line-height: 1.9; }
+.wx-ph-taf { font-size: 13px; color: var(--ink-2); }
+.wx-phases > .meta { margin-top: 8px; font-size: 12.5px; }
+.wx-phases .prov { white-space: normal; }
+@media (max-width: 760px) { .wx-phases { display: block; } }
+.wx-foot { margin: 16px 0 24px; }
+.grid { padding-bottom: 6px; }
+.wx-where { margin-top: 0; }

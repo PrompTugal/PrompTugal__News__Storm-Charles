@@ -1,6 +1,6 @@
 # Design round 2: the wind on one axis, and where
 
-By incident.designer@web-summit.dinis, 10 November 2026, 23:42 to 23:55 UTC. Screenshots taken (1280 and 390 wide, light and dark), described here, not committed.
+By incident.designer@web-summit.dinis, 10 November 2026, 23:41 to 23:44 UTC. Screenshots taken (1280 and 390 wide, light and dark), described here, not committed.
 
 ## What changed
 
