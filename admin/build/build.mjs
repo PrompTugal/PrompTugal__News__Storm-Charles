@@ -82,6 +82,7 @@ function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)} · Storm Charles</title>
 <meta name="description" content="${esc(desc || 'Storm Charles, Lisbon, November 2026: the decisions, the warnings and the signals, each with its source and the time read; and the data, for people and agents.')}">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="${u}app/site.css">
 ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 <link rel="alternate" type="application/json" href="${u}api/v1/index.json" title="The data, for agents">
@@ -89,11 +90,12 @@ ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 ${extraHead}
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span>
+<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span><button type="button" class="theme" id="theme" hidden title="Colour theme: follow the system, light, or dark">Theme: auto</button>
 <nav class="top"><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="${u}datasets.html">Data</a><a href="${u}agents/index.html">Agents</a><a href="${u}agents/JOBS.html">Jobs</a><a href="${u}library/index.html">Library</a><a href="${u}account/index.html">Account</a><a href="${u}BRIEF.html">Brief</a><a href="${u}llms.txt">For agents</a></nav></div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
 ${body}
 <footer class="agent"><div class="wrap">Built and run by incident.conductor@web-summit.dinis and the incident team (meteorologist, researcher, dev), Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. Public sources only; nothing about private people. ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
+<script>(function(){var b=document.getElementById('theme');if(!b)return;var r=document.documentElement,o=['auto','light','dark'];function cur(){return r.dataset.theme||'auto'}function show(){b.textContent='Theme: '+cur()}b.hidden=false;show();b.addEventListener('click',function(){var n=o[(o.indexOf(cur())+1)%3];if(n==='auto')delete r.dataset.theme;else r.dataset.theme=n;try{n==='auto'?localStorage.removeItem('theme'):localStorage.setItem('theme',n)}catch(e){}show()})})()</script>
 </body>
 </html>
 `
@@ -287,34 +289,50 @@ const chart = (() => {
 })()
 
 // round 2: where. Every district with a red or orange warning on the day, on the same 24 hours
-const AREA = { AVR: 'Aveiro', BJA: 'Beja', BRG: 'Braga', BGC: 'Bragança', CBO: 'Castelo Branco', CBR: 'Coimbra', EVR: 'Évora', FAR: 'Faro', GDA: 'Guarda', LRA: 'Leiria', LSB: 'Lisboa', PTG: 'Portalegre', PTO: 'Porto', STM: 'Santarém', STB: 'Setúbal', VCT: 'Viana do Castelo', VRL: 'Vila Real', VIS: 'Viseu', MCN: 'Madeira, north coast', MCS: 'Madeira, south coast', MRM: 'Madeira, mountains', MPS: 'Porto Santo' }
+// IPMA's idAreaAviso codes. Names: IPMA's own list, https://api.ipma.pt/open-data/distrits-islands.json (checked by incident.conductor@,
+// 10 Nov 23:44: the 18 mainland codes, MCS (Funchal) and MPS match). MCN and MRM are not in that list: our names for Madeira's north coast
+// and mountain regions. ACE, AOC, AOR: the Azores' central, western and eastern groups, in case they appear.
+const AREA = { ACE: 'Azores, central group', AOC: 'Azores, western group', AOR: 'Azores, eastern group', AVR: 'Aveiro', BJA: 'Beja', BRG: 'Braga', BGC: 'Bragança', CBO: 'Castelo Branco', CBR: 'Coimbra', EVR: 'Évora', FAR: 'Faro', GDA: 'Guarda', LRA: 'Leiria', LSB: 'Lisboa', PTG: 'Portalegre', PTO: 'Porto', STM: 'Santarém', STB: 'Setúbal', VCT: 'Viana do Castelo', VRL: 'Vila Real', VIS: 'Viseu', MCN: 'Madeira, north coast', MCS: 'Madeira, south coast', MRM: 'Madeira, mountains', MPS: 'Porto Santo' }
 const LANE = { 'Vento': 0, 'Precipitação': 1, 'Agitação Marítima': 2 }
 const els = warn?.red_and_orange_elsewhere, byArea = {}
 for (const w of [...(els?.items || []), ...lis.filter(w => RANK[w.level] >= 2).map(w => ({ ...w, area: 'LSB' }))]) if (RANK[w.level] && ok(w.start_utc) && ok(w.end_utc) && inDay(w.start_utc, w.end_utc)) (byArea[w.area] ??= []).push(w)
 const redHours = ws => ws.filter(w => w.level === 'red').reduce((n, w) => n + (Math.min(T(w.end_utc), D1) - Math.max(T(w.start_utc), D0)) / 36e5, 0)
 const areaList = Object.entries(byArea).sort((a, b) => redHours(b[1]) - redHours(a[1]) || (AREA[a[0]] || a[0]).localeCompare(AREA[b[0]] || b[0]))
 const redIn = ty => areaList.filter(([, ws]) => ws.some(w => w.type === ty && w.level === 'red')).map(([a]) => AREA[a] || a)
-const where = areaList.length ? `<section class="card wx-day wx-where" id="where"><div class="wx-head"><h2>Where: ${esc(dayName)}, district by district</h2><p class="meta">${Object.keys(LANE).map(ty => { const r = redIn(ty); return r.length ? `<b>Red ${esc((EN[ty] || ty).toLowerCase())}</b> in ${r.length}: ${esc(r.join(', '))}.` : '' }).filter(Boolean).join(' ')} Every district IPMA has under red or orange on the day (yellow is not shown here); most red hours first. In each row, top to bottom: wind, rain, sea. ${prov(els?.source, 'IPMA warnings', els?.read_utc)}</p></div>
+const where = areaList.length ? `<section class="card wx-day wx-where" id="where"><div class="wx-head"><h2>Where: ${esc(dayName)}, district by district</h2><p class="meta">${Object.keys(LANE).map(ty => { const r = redIn(ty); return r.length ? `<b>Red ${esc((EN[ty] || ty).toLowerCase())}</b> in ${r.length}: ${esc(r.join(', '))}.` : '' }).filter(Boolean).join(' ')} Every district IPMA has under red or orange on the day (yellow is not shown here); most red hours first. In each row, top to bottom: wind, rain, sea. ${prov(els?.source, 'IPMA warnings', els?.read_utc)}. Names from <a href="https://api.ipma.pt/open-data/distrits-islands.json">IPMA's list of districts and islands</a>, IPMA's area code beside each; MCN and MRM are not in that list and are named by us.</p></div>
 <div class="wx-scroll" tabindex="0" role="group" aria-label="Warnings by district: scroll sideways"><div class="wx-strip" data-d0="${D0}">
 <div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hours.map((_, h) => `<span>${String(h).padStart(2, '0')}</span>`).join('')}</div></div>
 ${areaList.map(([a, ws]) => {
     const peak = ty => ws.filter(w => w.type === ty).sort((p, q) => RANK[q.level] - RANK[p.level])[0]
     const sub = Object.keys(LANE).map(ty => { const p = peak(ty); return p ? `${(EN[ty] || ty).toLowerCase().replace(' state', '')} ${p.level}` : '' }).filter(Boolean).join(' · ')
-    return `<div class="wx-row wx-drow${a === 'LSB' ? ' here' : ''}"><div class="wx-lab"><b>${esc(AREA[a] || a)}</b><i>${esc(sub)}</i></div><div class="wx-track">${ws.map(w => { const l = pct(w.start_utc), r = pct(w.end_utc); return r > l ? `<i class="wx-d w-${esc(w.level)}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%;top:${4 + (LANE[w.type] ?? 3) * 9}px" title="${esc(`${AREA[a] || a}: ${EN[w.type] || w.type}, ${w.level}, ${rng(w.start_utc, w.end_utc)}. ${w.text_pt || ''}`)}"></i>` : '' }).join('')}</div></div>`
+    return `<div class="wx-row wx-drow${a === 'LSB' ? ' here' : ''}"><div class="wx-lab"><b>${esc(AREA[a] || a)} <code>${esc(a)}</code></b><i>${esc(sub)}</i></div><div class="wx-track">${ws.map(w => { const l = pct(w.start_utc), r = pct(w.end_utc); return r > l ? `<i class="wx-d w-${esc(w.level)}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%;top:${4 + (LANE[w.type] ?? 3) * 9}px" title="${esc(`${AREA[a] || a}: ${EN[w.type] || w.type}, ${w.level}, ${rng(w.start_utc, w.end_utc)}. ${w.text_pt || ''}`)}"></i>` : '' }).join('')}</div></div>`
 }).join('\n')}
 </div></div></section>` : ''
 
+// our English for IPMA's exact sentences (shown only when the sentence matches exactly; IPMA's Portuguese stays the quote)
+const GLOSS = {
+    'Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos.': 'Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed places.',
+    'Precipitação forte e persistente.': 'Heavy and persistent rain.',
+    'Precipitação por vezes forte e persistente.': 'Rain at times heavy and persistent.',
+    'Ondas de sudoeste com 5 a 7 metros e que poderão atingir até 13 metros de altura máxima.': 'South-westerly waves of 5 to 7 metres, which may reach a maximum height of 13 metres.',
+    'Ondas de sudoeste com 4 a 5 metros.': 'South-westerly waves of 4 to 5 metres.',
+    'Ondas do quadrante oeste com 4 a 5 metros.': 'Waves from the west, 4 to 5 metres.'
+}
+// what the last hour of reads changed (the meteorologist's refresh log, as the tool wrote it)
+const runs = (chg?.runs || []).filter(r => ok(r.read_utc)), lastRun = runs[runs.length - 1]
+const recent = lastRun ? runs.filter(r => T(r.read_utc) > T(lastRun.read_utc) - 36e5) : []
+const changed = lastRun ? `<details class="wx-changes" id="wx-changes" open><summary>Changed in the last hour of reads (${recent.reduce((n, r) => n + (r.changes || []).length, 0)}; last read ${hm(lastRun.read_utc)} UTC)</summary><ul>${recent.slice().reverse().flatMap(r => (r.changes || []).map(c => `<li><time datetime="${esc(r.read_utc)}">${hm(r.read_utc)}</time> ${esc(c)}</li>`)).join('') || '<li>Nothing changed.</li>'}</ul><p class="prov">The weather desk's refresh log, as its tool wrote it: <a href="${base}data/weather/changes.json">changes.json</a>, last read ${hm(lastRun.read_utc)} UTC ${dm(lastRun.read_utc)}${(lastRun.errors || []).length ? `; ${lastRun.errors.length} source(s) failed in that read` : ''}</p></details>` : ''
 // the tiles: what is warned (the highest level of each type on the day), and the latest observation
 const tiles = types.map(ty => {
     const ws = lis.filter(w => w.type === ty && inDay(w.start_utc, w.end_utc)), w = ws.slice().sort((a, b) => RANK[b.level] - RANK[a.level])[0], rest = ws.filter(x => x !== w)
-    return { rank: RANK[w.level], html: `<article class="wx-tile t-${esc(w.level)}"><p class="wx-th">${lvl(w.level)} <b>${esc(EN[ty] || ty)}</b> <span class="wx-state" data-from="${T(w.start_utc)}" data-to="${T(w.end_utc)}"></span></p><p class="wx-big">${rng(w.start_utc, w.end_utc)}</p><p class="wx-pt" lang="pt">${esc(w.text_pt || '')}</p>${gw && gw.gusts_kmh && gw.type === ty && gw.start_utc === w.start_utc ? `<p class="wx-en">Gusts, km/h: ${esc(gw.gusts_kmh)}.</p>` : ''}${rest.length ? `<p class="wx-also">Also: ${rest.map(x => `${lvl(x.level)} ${rng(x.start_utc, x.end_utc)}`).join(' · ')}</p>` : ''}<p class="wx-src">${prov(w.source || warn.source, 'IPMA', w.read_utc || warn.read_utc)}</p></article>` }
-}).sort((a, b) => b.rank - a.rank).map(x => x.html)
+    return { rank: RANK[w.level], end: T(w.end_utc), html: `<article class="wx-tile t-${esc(w.level)}"><p class="wx-th">${lvl(w.level)} <b>${esc(EN[ty] || ty)}</b> <span class="wx-state" data-from="${T(w.start_utc)}" data-to="${T(w.end_utc)}"></span></p><p class="wx-big">${rng(w.start_utc, w.end_utc)}</p><p class="wx-pt" lang="pt">${esc(w.text_pt || '')}</p>${GLOSS[w.text_pt] ? `<p class="wx-en">${esc(GLOSS[w.text_pt])} <span class="prov">(our English)</span></p>` : ''}${rest.length ? `<p class="wx-also">Also: ${rest.map(x => `${lvl(x.level)} ${rng(x.start_utc, x.end_utc)}`).join(' · ')}</p>` : ''}<p class="wx-src">${prov(w.source || warn.source, 'IPMA', w.read_utc || warn.read_utc)}</p></article>` }
+}).sort((a, b) => b.rank - a.rank || b.end - a.end).map(x => x.html)
 const o = gv?.observed_airport_latest, mg = gv?.observed_airport_max_gust
 if (o) tiles.push(`<article class="wx-tile t-obs"><p class="wx-th"><span class="lvl obs">observed</span> <b>Lisbon airport</b></p><p class="wx-big">${esc(o.wind_kmh)} km/h <small>mean wind from ${esc(o.wind_dir)}°, ${o.gust_kmh != null ? `gusting ${esc(o.gust_kmh)} km/h` : 'no gust reported'}</small></p><p class="wx-pt">At ${hm(o.time_utc)} UTC ${dm(o.time_utc)}${o.weather ? `, ${esc(o.weather)}` : ''}${o.pressure_hpa ? `, ${esc(o.pressure_hpa)} hPa` : ''}.${mg ? ` Strongest gust so far: ${esc(mg.kmh)} km/h, ${wd(mg.time_utc)} ${hm(mg.time_utc)}.` : ''}</p><p class="wx-also">The airport's gusts and the warning's gusts are not the same measure.</p><p class="wx-src">${prov(o.source, 'METAR LPPT', o.read_utc)}</p></article>`)
 
 const feed = (sig?.items || []).slice().sort((a, b) => T(b.at) - T(a.at)).slice(0, 14).map(s => {
     const src = (s.sources || []).find(x => x.url && /^https:/.test(x.url)), via = (s.sources || []).map(x => x.label).filter(Boolean).join('; ')
-    return `<li><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time><div><span class="lbl ${esc(s.kind)}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via)}</span></div></li>`
+    return `<li><a class="when" href="${base}timeline.html#:~:text=${encodeURIComponent(`${dm(s.at)}, ${hm(s.at)}`)}" title="This signal in the timeline"><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time></a><div><span class="lbl ${esc(s.kind)} l-${esc(s.label || '')}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via)}</span></div></li>`
 }).join('')
 const th = chg?.thursday || {}, thu = th.lisbon_warnings_touching_thursday?.items || [], tm = th.ipma_model_thursday_morning, td = th.ipma_daily_thursday, tt = th.taf_groups_into_thursday
 const thuRows = [
@@ -327,6 +345,7 @@ const thuRows = [
 const front = `<section class="banner"><div class="wrap"><p class="kicker">${esc(inc.kicker || 'Storm Charles · Lisbon')}</p><h1>${esc(inc.headline.text)}</h1>
 <p class="src"><span class="lbl official">decision · ${esc(inc.headline.label || 'fact')}</span> Source: <a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}.</p><p class="stand">${esc(inc.standfirst || '')}</p></div></section>
 <div class="wrap">
+${changed}
 <section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
 ${strip}
 ${chart}
@@ -347,6 +366,7 @@ if(p>=0&&p<=100)s.querySelectorAll('.wx-strip .wx-track').forEach(function(t){va
 var gl=document.getElementById('wx-gnow');if(gl){var a=+gl.dataset.x0,b=+gl.dataset.x1,q=(now-a)/(b-a);if(q>=0&&q<=1){var gx=+gl.dataset.l+q*(gl.dataset.r-gl.dataset.l);gl.setAttribute('x1',gx);gl.setAttribute('x2',gx);var sc=gl.closest('.wx-scroll');if(sc&&!sc.dataset.set){sc.dataset.set=1;sc.scrollLeft=q*sc.scrollWidth-sc.clientWidth*.3}}}
 var z=new Date(now).toISOString().slice(11,16),x=document.getElementById('wx-nowtxt');if(x)x.textContent=p<0?'Now '+z+' UTC: the day starts in '+dur(d0-now)+'.':p<=100?'Now '+z+' UTC: the line in the strip.':'This day is over.';
 document.querySelectorAll('.wx-state').forEach(function(e){var a=+e.dataset.from,b=+e.dataset.to;e.textContent=now<a?'starts in '+dur(a-now):now<b?'in force, '+dur(b-now)+' left':'ended';e.className='wx-state '+(now<a?'pre':now<b?'on':'post')});document.querySelectorAll('.wx-phases li').forEach(function(e){e.classList.toggle('now',now>=+e.dataset.from&&now<+e.dataset.to);e.classList.toggle('past',now>=+e.dataset.to)})}
+var ch=document.getElementById('wx-changes');if(ch&&innerWidth<=640)ch.open=false;
 tick();setInterval(tick,3e4)})();
 </script>`
 write('index.html', page({ rel: 'index.html', title: 'Storm Charles: what is decided, what is warned, what is known', body: front, twin: 'index.md' }))
