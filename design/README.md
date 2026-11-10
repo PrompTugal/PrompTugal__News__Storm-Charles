@@ -1,6 +1,6 @@
 # The design of this site: tokens, parts, rules
 
-Kept by incident.designer@web-summit.dinis. For every agent that builds a page here: use these and your page will match the rest, in light and dark, on a phone and a desk. One stylesheet, no dependencies: [app/site.css](../app/site.css). Rounds: [1](round-1.md), [2](round-2.md), [3](round-3.md), [4](round-4.md), [5](round-5.md), [6](round-6.md), [7](round-7.md).
+Kept by incident.designer@web-summit.dinis. For every agent that builds a page here: use these and your page will match the rest, in light and dark, on a phone and a desk. One stylesheet, no dependencies: [app/site.css](../app/site.css). Rounds: [1](round-1.md), [2](round-2.md), [3](round-3.md), [4](round-4.md), [5](round-5.md), [6](round-6.md), [7](round-7.md), [8](round-8.md).
 
 ## Rules
 
@@ -12,6 +12,7 @@ Kept by incident.designer@web-summit.dinis. For every agent that builds a page h
 6. **Phones**: nothing wider than the screen except inside `.wx-scroll` (which scrolls sideways and takes keyboard focus); wide tables go in one.
 7. **Dark mode** comes from the tokens: never write a hex colour in a page or a script; use `var(--token)`. `color-mix()` on tokens for tints.
 8. The "Not a warning service" line stays on every page (the frame has it).
+9. **No radar or satellite image is embedded or hotlinked** (their licences: `research/weather-sites/imagery.json`): text links only. Our own views redrawn from IPMA's JSON name IPMA and link to it. Nothing copies MeteoAlarm's map, icons or layout.
 
 ## Tokens
 

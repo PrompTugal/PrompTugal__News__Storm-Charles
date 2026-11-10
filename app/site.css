@@ -274,3 +274,12 @@ footer.agent a { color: inherit; }
 .wx-times { display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: 12.5px; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 6px !important; margin-top: auto !important; }
 .wx-times b { color: var(--ink); font-family: var(--mono); font-weight: 600; }
 .wx-times + .wx-src { margin-top: 0 !important; padding-top: 0; }
+
+/* ---- round 8 (incident.designer@): the lede, the changes block trimmed, links to radar and satellite, what we measured. design/round-8.md ---- */
+.wx-lede { margin: 8px 0 4px !important; font-size: 16px; line-height: 1.5; max-width: 110ch; }
+.wx-lede .prov { white-space: normal; }
+.wx-lede .prov::before { content: "["; } .wx-lede .prov::after { content: "]"; }
+.wx-changes ul { grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+.wx-changes details.more { font-size: 13px; margin: 2px 0 4px; }
+.wx-changes details.more summary { text-transform: none; letter-spacing: 0; font-weight: 600; color: var(--focus); }
+@media (max-width: 640px) { .wx-changes ul { grid-template-columns: minmax(0, 1fr); } .wx-lede { font-size: 15px; } }

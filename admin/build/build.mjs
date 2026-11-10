@@ -290,7 +290,7 @@ const phases = cuts.slice(0, -1).map((a, i) => {
     return `<li class="p-${esc(on[0]?.level || 'none')}" data-from="${a}" data-to="${b}"><time>${hm(a)}<small>to ${b === D1 ? '24:00' : hm(b)}</small></time><div><p>${on.map(w => `<span class="wx-chip">${lvl(w.level)} ${esc(EN[w.type] || w.type)}</span>`).join(' ') || '<span class="meta">No warning above green</span>'}</p>${tafTxt ? `<p class="wx-ph-taf">Airport forecast, km/h: ${esc(tafTxt)}</p>` : ''}</div></li>`
 }).join('')
 const phaseHtml = `<div class="wx-phases"><ol>${phases}</ol><p class="meta">Warnings: ${warnProv}.${taf ? ` Airport forecast (strongest wind or gust in each stretch; a point forecast, not a warning): ${prov(taf.source, `TAF LPPT ${hm(taf.issue_utc)}`, taf.read_utc)}.` : ''} The full strip is below: scroll it sideways.</p></div>`
-const strip = `<section class="card wx-day" id="day"><div class="wx-head"><h2>${esc(dayName)}, hour by hour</h2><p class="meta">Lisbon time (UTC in November). Warnings first; then forecasts; then what was observed; our analysis last and labelled. <span class="wx-nowtxt" id="wx-nowtxt"></span></p></div>
+const strip = `<section class="card wx-day" id="day"><div class="wx-head"><h2>${esc(dayName)}, hour by hour</h2><p class="meta">Lisbon time (UTC in November). Warnings first; then forecasts; then what was observed; our analysis last and labelled. <span class="wx-nowtxt" id="wx-nowtxt"></span></p><!--lede--></div>
 ${phaseHtml}
 <div class="wx-scroll" tabindex="0" role="group" aria-label="${esc(dayName)}, hour by hour: scroll sideways"><div class="wx-strip" id="wx-strip" data-d0="${D0}">
 <div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hours.map((_, h) => `<span>${String(h).padStart(2, '0')}</span>`).join('')}</div></div>
@@ -361,7 +361,7 @@ const GLOSS = {
 // what the last hour of reads changed (the meteorologist's refresh log, as the tool wrote it)
 const runs = (chg?.runs || []).filter(r => ok(r.read_utc)), lastRun = runs[runs.length - 1]
 const recent = lastRun ? runs.filter(r => T(r.read_utc) > T(lastRun.read_utc) - 36e5) : []
-const changed = lastRun ? `<details class="wx-changes" id="wx-changes" open><summary>Changed in the last hour of reads (${recent.reduce((n, r) => n + (r.changes || []).length, 0)}; last read ${hm(lastRun.read_utc)} UTC)</summary><ul>${recent.slice().reverse().flatMap(r => (r.changes || []).map(c => `<li><time datetime="${esc(r.read_utc)}">${hm(r.read_utc)}</time> ${esc(c)}</li>`)).join('') || '<li>Nothing changed.</li>'}</ul><p class="prov">The weather desk's refresh log, as its tool wrote it: <a href="${base}data/weather/changes.json">changes.json</a>, last read ${hm(lastRun.read_utc)} UTC ${dm(lastRun.read_utc)}${(lastRun.errors || []).length ? `; ${lastRun.errors.length} source(s) failed in that read` : ''}</p></details>` : ''
+const changed = lastRun ? `<details class="wx-changes" id="wx-changes" open><summary>Changed in the last hour of reads (${recent.reduce((n, r) => n + (r.changes || []).length, 0)}; last read ${hm(lastRun.read_utc)} UTC)</summary>${(() => { const all = recent.slice().reverse().flatMap(r => (r.changes || []).map(c => ({ c, r }))).sort((p, q) => (/warning/i.test(q.c) ? 1 : 0) - (/warning/i.test(p.c) ? 1 : 0)), li = x => `<li><time datetime="${esc(x.r.read_utc)}">${hm(x.r.read_utc)}</time> ${esc(x.c)}</li>`; return `<ul>${all.slice(0, 4).map(li).join('') || '<li>Nothing changed.</li>'}</ul>${all.length > 4 ? `<details class="more"><summary>${all.length - 4} more</summary><ul>${all.slice(4).map(li).join('')}</ul></details>` : ''}` })()}<p class="prov">The weather desk's refresh log, as its tool wrote it: <a href="${base}data/weather/changes.json">changes.json</a>, last read ${hm(lastRun.read_utc)} UTC ${dm(lastRun.read_utc)}${(lastRun.errors || []).length ? `; ${lastRun.errors.length} source(s) failed in that read` : ''}</p></details>` : ''
 // the tiles: what is warned (the highest level of each type on the day), and the latest observation
 const tiles = types.map(ty => {
     const ws = lis.filter(w => w.type === ty && inDay(w.start_utc, w.end_utc)), w = ws.slice().sort((a, b) => RANK[b.level] - RANK[a.level])[0], rest = ws.filter(x => x !== w)
@@ -370,6 +370,14 @@ const tiles = types.map(ty => {
 const o = gv?.observed_airport_latest, mg = gv?.observed_airport_max_gust
 if (o) tiles.push(`<article class="wx-tile t-obs"><p class="wx-th"><span class="lvl obs">observed</span> <b>Lisbon airport</b></p><p class="wx-big">${esc(o.wind_kmh)} km/h <small>mean wind from ${esc(o.wind_dir)}°, ${o.gust_kmh != null ? `gusting ${esc(o.gust_kmh)} km/h` : 'no gust reported'}</small></p><p class="wx-pt">At ${hm(o.time_utc)} UTC ${dm(o.time_utc)}${o.weather ? `, ${esc(o.weather)}` : ''}${o.pressure_hpa ? `, ${esc(o.pressure_hpa)} hPa` : ''}.${mg ? ` Strongest gust so far: ${esc(mg.kmh)} km/h, ${wd(mg.time_utc)} ${hm(mg.time_utc)}.` : ''}</p><p class="wx-also">The airport's gusts and the warning's gusts are not the same measure.</p><p class="wx-src">${prov(o.source, 'METAR LPPT', o.read_utc)}</p></article>`)
 
+// round 8: three sourced facts in one sentence above the strip (all from the data: the red warnings, the last observation, the decisions in force)
+const reds = dayW.filter(w => RANK[w.level] === RANK[top?.level]).sort((p, q) => T(p.start_utc) - T(q.start_utc))
+const lastDec = dEdges.filter(d => /T\d\d:\d\d/.test(d.e.at || '')).sort((p, q) => T(q.e.at) - T(p.e.at))[0]
+const lede = `<p class="wx-lede">${reds.length ? `IPMA warns <b>${reds.map(w => `${esc(w.level)} ${esc((EN[w.type] || w.type).toLowerCase())} ${hm(w.start_utc)} to ${hm(w.end_utc)}`).join('</b> and <b>')}</b> for the Lisbon district ${prov(warn.source, 'IPMA', warn.read_utc)}. ` : ''}${o ? `The airport last reported <b>${esc(o.wind_kmh)} km/h</b> mean wind, ${o.gust_kmh != null ? `gusting <b>${esc(o.gust_kmh)}</b>` : 'no gust'}, at ${hm(o.time_utc)} ${prov(o.source, 'METAR LPPT', o.read_utc)}. ` : ''}${dEdges.length ? `<b>${dEdges.length} decisions</b> are drawn in force on the day${lastDec ? `, the latest by ${esc(String(lastDec.node?.name || lastDec.e.by).replace(/\s*\(.*$/, ''))}, ${wd(lastDec.e.at)} ${hm(lastDec.e.at)} ${prov(lastDec.e.source, 'source', lastDec.e.read)}` : ''}.` : ''}</p>`
+// what we measured about the coverage (incident.weatherwatch@'s gap.json), and links (never images) to radar and satellite
+const gap = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'research/weather-sites/gap.json'), 'utf8')) } catch { return null } })()
+const gs = gap?.summary, gapHtml = gs && gs.press_pages_counted ? `<section class="card"><h2>What we measured</h2><p class="meta">One read of each page, ${esc(String(gap.about || '').match(/on (\d+ \w+ \d{4}) \(([^)]+)\)/)?.slice(1).join(', ') || dm(gap.updated))}: of <b>${esc(gs.press_pages_counted)}</b> press pages on Storm Charles, <b>${esc(gs.press_pages_with_no_link_to_ipma_or_anepc)}</b> had no link to ipma.pt or prociv.gov.pt; of <b>${esc(gs.assessed)}</b> pages assessed, <b>${esc(gs.by_column?.decisions?.yes ?? '?')}</b> showed the decisions as a list or table. A page may have changed since; it is a count, not a judgement of anyone's journalism. <a href="research/weather-sites/gap.json">gap.json</a> · <a href="research/weather-sites/index.html">the survey</a></p></section>` : ''
+const sky = `<section class="card"><h2>Radar and satellite</h2><p class="meta">Links only: we embed no radar or satellite image (their licences; <a href="research/weather-sites/imagery.json">what we read</a>). <a href="https://www.ipma.pt/pt/otempo/obs.radar/">Radar: IPMA</a> · <a href="https://view.eumetsat.int/">Satellite: EUMETView</a></p></section>`
 const feed = (sig?.items || []).slice().sort((a, b) => T(b.at) - T(a.at)).slice(0, 14).map(s => {
     const src = (s.sources || []).find(x => x.url && /^https:/.test(x.url)), via = (s.sources || []).map(x => x.label).filter(Boolean).join('; ')
     return `<li><a class="when" href="${base}timeline.html${s.id ? '#' + esc(s.id) : ''}" title="This signal in the timeline"><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time></a><div><span class="lbl ${esc(s.kind)} l-${esc(s.label || '')}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via)}</span></div></li>`
@@ -387,12 +395,14 @@ const front = `<section class="banner"><div class="wrap"><p class="kicker">${esc
 <div class="wrap">
 ${changed}
 <section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
-${strip}
+${strip.replace('<!--lede-->', lede)}
 ${chart}
 <div class="grid">
 <section class="card"><h2>Latest signals</h2><ul class="feed">${feed || '<li class="meta">No signals yet.</li>'}</ul><p class="meta"><a href="${base}timeline.html">The whole timeline</a> · <a href="${base}decisions.html">Decisions</a></p></section>
 <aside>
 <section class="card"><h2>${esc(nextName)}</h2><ul class="kv src">${thuRows}</ul><p class="meta">${esc(inc.thursday || '')}</p></section>
+${sky}
+${gapHtml}
 <section class="card"><h2>For agents and analysts</h2><p class="meta">Every file behind this page, with its sha256: <a href="api/v1/index.json">api/v1/index.json</a>. How to use it: <a href="llms.txt">llms.txt</a>. Refreshed at least hourly while the storm runs.</p></section>
 </aside></div>
 ${where}
