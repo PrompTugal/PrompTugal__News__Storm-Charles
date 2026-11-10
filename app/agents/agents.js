@@ -137,7 +137,11 @@ ${a.job ? `<details><summary>Its job (agents/JOBS.md)</summary><p>${T(a.job).rep
         const series = String(ver?.version || 'v0.1.0').replace(/^v/, '').split('.').slice(0, 2).join('.')
         const by = new Map(); for (const c of gh.items) { if (!by.has(c.agent)) by.set(c.agent, []); by.get(c.agent).push(c) }
         const known = new Set(idx.agents.map(a => a.name)), strangers = [...by.keys()].filter(n => n && !known.has(n))
-        const asks = idx.agents.flatMap(a => (a.asks_dinis || []).map(x => ({ who: a.name, role: a.role, x })))
+        // an agent with a status file here and no commit of its own here: its file comes by sync from the old repository
+        // (the conductor's note), so its asks may predate the move; they are listed last and say so. Only when commits were read.
+        const synced = a => gh.items.length > 0 && a.has_status && !(by.get(a.name) || []).length
+        const asks = idx.agents.flatMap(a => (a.asks_dinis || []).map(x => ({ who: a.name, role: a.role, x, old: synced(a) }))).sort((p, q) => p.old - q.old)
+        const fresh = asks.filter(q => !q.old).length
         const live = idx.agents.map(a => liveness(a, (by.get(a.name) || [])[0])[0])
         const n = k => live.filter(x => x === k).length
         const open = new Set([...el.querySelectorAll('details[open]')].map(d => d.closest('article')?.id + '|' + d.querySelector('summary')?.textContent.replace(/ \(\d+\)$/, '')))
@@ -152,8 +156,8 @@ ${a.job ? `<details><summary>Its job (agents/JOBS.md)</summary><p>${T(a.job).rep
 <div><b>${gh.items[0] ? esc(ago(gh.items[0].at)) : 'n/a'}</b><span>last push to dev</span></div>
 <div><b>${ver?.version ? esc(ver.version) : 'n/a'}</b><span>version served</span></div>
 </div>
-<section class="ag-asks" id="asks"><h2>Dinis: ${asks.length ? `${asks.length} ask${asks.length > 1 ? 's' : ''} only you can answer` : 'nothing is waiting for you'}</h2>
-${asks.length ? `<ol>${asks.map(q => `<li><a class="who" href="#${esc(q.role)}">${T(short(q.who))}</a>${T(q.x.replace(/^Dinis\s*:\s*/i, ''))}</li>`).join('')}</ol>` : ''}</section>
+<section class="ag-asks" id="asks"><h2>Dinis: ${asks.length ? `${fresh} ask${fresh === 1 ? '' : 's'} only you can answer${asks.length > fresh ? `, and ${asks.length - fresh} that may be stale` : ''}` : 'nothing is waiting for you'}</h2>
+${asks.length ? `<ol>${asks.map(q => `<li${q.old ? ' class="old"' : ''}><a class="who" href="#${esc(q.role)}">${T(short(q.who))}${q.old ? ' · may be stale: its status file is synced from the old repository, and it has pushed nothing here' : ''}</a>${T(q.x.replace(/^Dinis\s*:\s*/i, ''))}</li>`).join('')}</ol>` : ''}</section>
 <h2 class="ag-h">The agents</h2>
 <div class="ag-grid">${idx.agents.map(a => card(a, by)).join('')}</div>
 ${strangers.length ? `<p class="ag-note">Also pushing here, not in agents/JOBS.md: ${strangers.map(s => `<code>${T(s)}</code>`).join(', ')}.</p>` : ''}
