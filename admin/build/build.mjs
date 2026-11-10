@@ -103,7 +103,7 @@ ${extraHead}
 <nav class="top"><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="${u}datasets.html">Data</a><a href="${u}agents/index.html">Agents</a><a href="${u}agents/JOBS.html">Jobs</a><a href="${u}library/index.html">Library</a><a href="${u}account/index.html">Account</a><a href="${u}BRIEF.html">Brief</a><a href="${u}llms.txt">For agents</a></nav></div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
 ${body}
-<footer class="agent"><div class="wrap">Built and run by incident.conductor@web-summit.dinis and the incident team (meteorologist, researcher, dev), Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. Public sources only; nothing about private people. ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
+<footer class="agent"><div class="wrap">Built and run by incident.conductor@web-summit.dinis and the incident team (<a href="${u}agents/index.html">every agent, live</a>; <a href="${u}agents/JOBS.html">their jobs</a>), Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. Public sources only; nothing about private people. ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
 <script>(function(){var b=document.getElementById('theme');if(!b)return;var r=document.documentElement,o=['auto','light','dark'];function cur(){return r.dataset.theme||'auto'}function show(){b.textContent='Theme: '+cur()}b.hidden=false;show();b.addEventListener('click',function(){var n=o[(o.indexOf(cur())+1)%3];if(n==='auto')delete r.dataset.theme;else r.dataset.theme=n;try{n==='auto'?localStorage.removeItem('theme'):localStorage.setItem('theme',n)}catch(e){}show()})})()</script>
 </body>
 </html>
@@ -187,9 +187,10 @@ const D0 = T(DAY + 'T00:00:00Z'), D1 = D0 + 864e5, dayName = utc(D0, { weekday: 
 const NEXT = new Date(D1).toISOString().slice(0, 10), nextName = utc(D1, { weekday: 'long', day: 'numeric', month: 'long' })
 const inDay = (a, b) => T(a) < D1 && T(b) > D0
 const pct = t => Math.max(0, Math.min(100, (T(t) - D0) / 864e3))
-const bar = ({ a, b, cls = '', text, title = '', style = '' }) => {
+const bar = ({ a, b, cls = '', text, title = '', style = '', href = '' }) => {
     const l = pct(a), r = pct(b); if (r <= l) return ''
-    return `<div class="wx-bar ${cls}${T(a) < D0 ? ' cut-l' : ''}${T(b) > D1 ? ' cut-r' : ''}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%;${style}" title="${esc(title)}"><span>${text}</span></div>`
+    const tag = href ? `a href="${esc(href)}"` : 'div'
+    return `<${tag} class="wx-bar ${cls}${T(a) < D0 ? ' cut-l' : ''}${T(b) > D1 ? ' cut-r' : ''}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%;${style}" title="${esc(title)}"><span>${text}</span></${href ? 'a' : 'div'}>`
 }
 const rows = [], tbl = []
 const row = (label, sub, inner, cls = '') => rows.push(`<div class="wx-row ${cls}"><div class="wx-lab"><b>${label}</b>${sub}</div><div class="wx-track">${inner}</div></div>`)
@@ -203,6 +204,33 @@ for (const ty of types) {
     const ws = lis.filter(w => w.type === ty && inDay(w.start_utc, w.end_utc))
     row(esc(EN[ty] || ty), `<i lang="pt">${esc(ty)}</i>`, ws.map(w => bar({ a: w.start_utc, b: w.end_utc, cls: 'w-' + esc(w.level), text: `<b>${esc(w.level)}</b> ${hm(w.start_utc)} to ${hm(w.end_utc)}`, title: `${w.level}: ${rng(w.start_utc, w.end_utc)}. ${w.text_pt || ''}` })).join(''))
     for (const w of ws) tbl.push([`IPMA warning: ${EN[ty] || ty}`, `${w.level}. <span lang="pt">${esc(w.text_pt || '')}</span>`, w.start_utc, w.end_utc, prov(w.source || warn.source, 'IPMA', w.read_utc || warn.read_utc)])
+}
+// 1b. the decisions in force on the day, on the same hours as the warnings (data/decisions/graph.json, kept by incident.researcher@).
+// An edge says when a decision was MADE (at), not the hours it covers. Until edges carry effect_from_utc / effect_to_utc (asked of the
+// researcher; used first when present), the hours below are transcribed from each edge's own decision text, hours of the day [from, to]
+// (to: null = no end given), with a short label that says no more than the edge does. An edge not listed here is not drawn.
+const dg = J('data/decisions/graph.json')
+const EFFECT = {
+    'gov-alert': [0, 24, 'Alert situation, mainland: schools and non-essential public services closed, outdoor events suspended'],
+    'websummit-wednesday': [0, 24, 'Web Summit Day 2 will not take place'],
+    'schools-close': [0, 24, 'Schools closed'],
+    'tunnels-close': [0, null, 'Lisbon road tunnels closed from midnight'],
+    'ana-conditioned': [0, 24, 'Lisbon, Faro and Madeira airports: operations conditioned, cancellations expected'],
+    'flixbus-suspends': [0, 24, 'FlixBus: all national links suspended'],
+    'rede-expressos-suspends': [10, 24, 'Rede Expressos coaches suspended 10:00 to midnight'],
+    'ttsl-wednesday': [0, 12, 'Ferries run in the morning, reassessed from 12:00']
+}
+const dEdges = (dg?.edges || []).filter(e => e.status === 'happened' && (ok(e.effect_from_utc) || (EFFECT[e.id] && DAY === '2026-11-11'))).map(e => {
+    const f = EFFECT[e.id] || [], a = ok(e.effect_from_utc) ? T(e.effect_from_utc) : D0 + f[0] * 36e5, open = ok(e.effect_from_utc) ? !ok(e.effect_to_utc) : f[1] == null
+    return { e, a, b: open ? D1 + 1 : ok(e.effect_to_utc) ? T(e.effect_to_utc) : D0 + f[1] * 36e5, open, text: f[2] || e.decision, node: (dg.nodes || []).find(n => n.id === e.by) }
+}).filter(d => d.b > D0 && d.a < D1).sort((p, q) => (p.e.label === 'fact' ? 0 : 1) - (q.e.label === 'fact' ? 0 : 1) || (T(p.e.at) || 0) - (T(q.e.at) || 0))
+if (dEdges.length) {
+    head('Decided', `Decisions in force on the day, on the same hours: who decided, what, from when to when. Solid: a fact, read on the decider's own channel. Outlined: evidence, reported by others. Under each name: the label and when it was decided. Each bar links to its source. <span class="prov"><a href="${base}data/decisions/graph.json">The decision graph</a>, updated ${hm(dg.updated)} UTC ${dm(dg.updated)}</span>`)
+    for (const d of dEdges) {
+        const who = String(d.node?.name || d.e.by).replace(/\s*\(.*$/, ''), made = /T\d\d:\d\d/.test(d.e.at || '') && ok(d.e.at) ? `${wd(d.e.at)} ${hm(d.e.at)}` : ok(d.e.at) ? `${dm(d.e.at)}, hour not given` : 'time not given'
+        row(esc(who), `<i>${esc(d.e.label)} · ${esc(made)}</i>`, bar({ a: d.a, b: d.b, cls: 'dec d-' + esc(d.e.label), href: /^https:/.test(d.e.source || '') ? d.e.source : '', text: `<b>${esc(d.e.label)}</b> ${esc(d.text)}`, title: `${d.e.label}: ${d.e.decision} Decided ${made}; source read ${hm(d.e.read)} UTC ${dm(d.e.read)} by ${d.e.read_by || ''}.${d.e.note ? ' Note: ' + d.e.note : ''}` }), 'wx-dec')
+        tbl.push([`Decision: ${who}`, `${d.e.label}. ${d.e.decision}`, d.a, d.open ? D1 : d.b, prov(d.e.source, who, d.e.read)])
+    }
 }
 // 2. the airport forecast (TAF): prevailing, at times, and with a stated chance
 const taf = ap?.taf, groups = (taf?.groups || []).filter(g => ok(g.from_utc) && ok(g.to_utc) && inDay(g.from_utc, g.to_utc))
