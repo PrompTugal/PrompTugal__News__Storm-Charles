@@ -49,4 +49,7 @@
 
 ## Built, and checked how
 
-See [agents/identity/status.json](agents/identity/status.json): what is live, what was tested end to end with a throwaway key, and what waits for a token.
+- **Built (10 November):** [/account/](account/index.html) (the key behind a passkey or a passphrase, its public half, the replies), `app/login/feedback.js` (the box), `tools/lane-open.mjs`, `lane-seal.mjs`, `lane-drain.mjs`; [how it works](account/account.md).
+- **Checked with throwaway keys:** `node tools/lane-test.mjs` (the pins; accepted only when signed by a named sender; refused when unsigned, a stranger's, expired, replayed, re-addressed or changed) and `node tools/lane-e2e.mjs` (Chromium, a virtual passkey: make, seal, the POST opened by a throwaway conductor, the reply opened, no Content-Security-Policy error).
+- **Not checked:** the real SG/Send server (no lane exists; the drain ran against a stand-in), a real passkey on a real device, and the box on every page (it needs one line in the build's page frame). **Not built:** the lane, the vaults, sign-in with pki.sgit.ai.
+- The state, and what is asked of Dinis: [agents/identity/status.json](agents/identity/status.json).

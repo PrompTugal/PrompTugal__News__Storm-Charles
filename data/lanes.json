@@ -1,0 +1,21 @@
+{
+  "about": "The lanes between Dinis Cruz and incident.conductor@web-summit.dinis (incident.identity@web-summit.dinis, 10 November 2026; the design is SECURITY.md). Public on purpose: an append token can only write to its lane, and the recipient's key can only encrypt. No lane exists yet: creating one needs an SG/Send access token and Dinis's yes (agents/identity/status.json).",
+  "to_conductor": {
+    "what": "Dinis's feedback, signed by his key and sealed in his browser to the recipient's key (app/login/lane.js).",
+    "enabled": false,
+    "endpoint": "https://dev.send.sgraph.ai",
+    "vault_id": "",
+    "tokens": [],
+    "recipient": "incident-conductor-dinis",
+    "senders": [],
+    "max_chars": 4000,
+    "expires_days": 7
+  },
+  "to_dinis": {
+    "what": "The conductor's replies, signed by its key and sealed to Dinis's key (tools/lane-seal.mjs). Until his bridge vault exists and he says otherwise: ciphertext in this repository.",
+    "enabled": false,
+    "how": "repository",
+    "path": "account/inbox.json",
+    "recipient": ""
+  }
+}
