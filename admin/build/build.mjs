@@ -110,12 +110,14 @@ for (const rel of files) {
     const src = path.join(ROOT, rel)
     write(rel, fs.readFileSync(src))   // everything public in the repository is served as itself (the twins, the data, the app)
 }
+// generators that take --out: they write only into _site/, never a tracked file (CLAUDE.md, "Building a page")
+for (const g of ['tools/library-index.mjs']) { try { execFileSync(process.execPath, [path.join(ROOT, g), '--out', OUT], { cwd: ROOT, stdio: 'ignore' }) } catch (e) { console.log(`WARN ${g}: ${String(e.message).split('\n')[0]}`) } }
 // the incidents
 const incidents = fs.readdirSync(path.join(ROOT, 'incidents')).filter(d => fs.existsSync(path.join(ROOT, 'incidents', d, 'incident.json')))
 const INC = Object.fromEntries(incidents.map(d => [d, JSON.parse(fs.readFileSync(path.join(ROOT, 'incidents', d, 'incident.json'), 'utf8'))]))
 
 for (const rel of files.filter(f => f.endsWith('.md'))) {
-    const [fm, md] = frontMatter(fs.readFileSync(path.join(ROOT, rel), 'utf8'))
+    const [fm, md] = frontMatter(fs.readFileSync(path.join(OUT, rel), 'utf8'))   // the served copy (a generator may have refreshed it)
     const htmlRel = rel.replace(/(^|\/)README\.md$/, '$1index.html').replace(/\.md$/, '.html')
     const title = fm.title || titleOf(md, rel)
     let body = `<main class="doc"><div class="wrap"><article>${markdown(md)}</article></div></main>`
