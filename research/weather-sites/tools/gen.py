@@ -12,6 +12,8 @@ for f in sorted(glob.glob(probe_dir + '/res*.tsv')):
             P[c[0]] = {'read': c[1], 'status': c[2], 'bytes': int(c[3] or 0), 'title': (c[6] if len(c) > 6 else '').strip()}
 
 S = []
+# Pages also rendered in a headless browser (1280 px wide, one screenshot each, looked at, not kept in git): id -> what was seen.
+RENDERED = {}
 def site(map_, id_, kind, name, url, owner, shows, how, data, best, learn, probes, seen='html', note=None, rank=None):
     ps = [p for p in probes.split() if p in P]
     missing = [p for p in probes.split() if p not in P]
@@ -23,12 +25,27 @@ def site(map_, id_, kind, name, url, owner, shows, how, data, best, learn, probe
     if len(ps) > 1:
         opened['also'] = {p: P[p]['status'] for p in ps[1:]}
     if note: opened['note'] = note
+    if id_ in RENDERED: opened['rendered'] = {'read': '2026-11-10T23:48Z', **RENDERED[id_]}; opened['seen'] = 'rendered' if RENDERED[id_].get('status') == 200 else opened['seen']
     e = {'id': id_, 'map': map_, 'kind': kind, 'name': name, 'url': url, 'owner': owner, 'shows': shows, 'how': how.split(),
          'data': data, 'best': best, 'learn': learn, 'opened': opened}
     if rank: e['rank'] = rank
     S.append(e)
 
 W, PT, SC = 'worldwide', 'portugal', 'storm-charles'
+RENDERED.update({
+ 'yr': {'status': 200, 'saw': 'Lisbon, hourly table for Wednesday 11 November: above the table, five warning banners for Lisboa in English, each starting with a status word ("Ongoing: Yellow Coastal Event Warning", "Expected: Orange Rain Warning", "Expected: Red Rain Warning", "Expected: Red Wind Warning", "Expected: Orange Coastal Event Warning"), each expandable; under them one row per hour: time, symbol, temperature, precipitation in mm, wind speed in m/s with an arrow, and the wind in words ("Fresh breeze from south east"). No gust column was shown. The automatic rows read 4 to 10 m/s for Lisbon under a banner carrying the red wind warning: the page does not comment on the difference.'},
+ 'bbc-weather': {'status': 200, 'saw': 'Lisbon: a card "Tonight" with one sentence ("Thundery showers and a gentle breeze"), day tabs for eight days with high and low, an hour row (symbol, temperature, chance of precipitation, a wind circle with speed), "Last updated today at 23:02", then a rain map with a play button and a week-long time bar. No warning of any kind was shown for Lisbon on the eve of IPMA\'s red warnings: outside the UK the page carries no authority\'s warnings.'},
+ 'metoffice': {'status': 200, 'saw': 'UK warnings page with a day strip; "No warnings" for Tuesday 10 November, so the warning layout itself was not seen in use.'},
+ 'meteofrance-vigilance': {'status': 200, 'saw': 'One card: "Vigilance météorologique et crues", issued 10 November 16:00, valid to 12 November 00:00 (Paris time); two tabs, "Aujourd\'hui" and "Demain" (the second greyed with "Prochaine carte à 06h": it says when the next map comes); the map by département in four colours with the legend as actions ("Soyez attentif", "Soyez très vigilant", "Vigilance absolue"); "cartes par phénomène" as a list; under the map one bar per phenomenon along the hours of the day (0h to 0h); and the line "updated at least twice a day, at 6h and 16h".'},
+ 'meteoalarm': {'status': 200, 'saw': 'Portugal: a map coloured by district (Madeira red; the mainland yellow and orange at 23:00 to 02:00), a time bar with buttons Now, +24h and each day to Saturday plus "Animation", filters by awareness level and hazard type, and a list of areas, one row per warning with the hazard pictogram on its colour.'},
+ 'windy': {'status': 200, 'saw': 'The gust layer over Portugal rendered as a full-screen map with place labels; no text about warnings.'},
+ 'windguru': {'status': 200, 'saw': 'Guincho: a "Live Wind" strip of nearby stations with their current reading first (Cabo Raso, Cascais), then the table: columns every two hours for a week, rows for wind speed, gusts, direction, wave, period, temperature, cloud, rain, every cell coloured by its value; the same table repeated per model below, with the model run time ("init") on each.'},
+ 'meteoswiss': {'status': 200, 'saw': 'Rendered, but only navigation text was captured; the time bar was not checked.'},
+ 'ipma': {'status': 200, 'saw': 'Home (updated 2026/11/10 23:31 UTC): tabs "Hoje", "Amanhã", "Depois de Amanhã", each with a warning triangle in the day\'s highest colour (red, red, yellow); the daily forecast map; the warnings map (mainland, Azores, Madeira); a "Comunicados" box; yesterday\'s extremes by station; small tiles for model charts, satellite, seismic activity.'},
+ 'ipma-avisos': {'status': 200, 'saw': 'Lisboa, last update 10 November 21:23 UTC: eight hazard rows (thunder, sea state, rain, wind, snow, cold, heat, fog) by 72 hourly cells for 11, 12 and 13 November, coloured green, yellow, orange, red; under it each warning as a coloured bar with hazard, level, start and end and one line of text, e.g. "Vento - Vermelho [11 Nov 12:00 - 11 Nov 21:00]: Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos" and "Precipitação - Vermelho [11 Nov 09:00 - 11 Nov 18:00]"; a district list on the right with each district\'s highest level; "Toda a informação em horas UTC".'},
+ 'ipma-local': {'status': 200, 'saw': 'Lisboa (updated 2026-11-10 19:56:03 UTC): ten day tabs, each with symbol, min and max, wind, rain probability and the day\'s warning colour as a label ("Amarelo", "Vermelho", "Amarelo"); under them one column per hour of Wednesday 11 with rows: symbol, probability of precipitation, temperature and felt temperature, mean wind in km/h with direction, sea state (height, direction, water temperature) and a last row, "Avisos Meteorológicos", one coloured cell per hour (yellow, then orange, then red from 09H to 21H). The mean wind row reads 11 to 23 km/h under the red cells; the page explains in its notes that this automatic forecast may differ from the forecasters\' descriptive forecast and warnings, which should be consulted.'},
+ 'sc-rr-dashboard': {'status': 403, 'saw': 'The headless browser was refused ("The request is blocked"); the plain request had returned the page shell.'},
+})
 
 # ------------------------------------------------------------------ worldwide: national and international services
 site(W, 'metoffice', 'national-service', 'Met Office (UK)', 'https://www.metoffice.gov.uk/', 'UK Met Office (public body)',
@@ -60,12 +77,12 @@ site(W, 'dwd', 'national-service', 'Deutscher Wetterdienst (Germany)', 'https://
      'A single plain licence line per dataset, as DWD does; ICON-EU fields are a reusable second model for Lisbon.',
      'dwd dwd-warnings dwd-opendata l-dwd')
 site(W, 'meteofrance-vigilance', 'national-service', 'Météo-France: Vigilance', 'https://vigilance.meteofrance.fr/fr', 'Météo-France (public body)',
-     'The vigilance map: one colour per département, today and tomorrow side by side, a row of hazard pictograms to filter by phenomenon, and a national bulletin with the "consequences" and "advice" for each colour. The home site adds rain-in-the-next-hour for a place.',
+     'The vigilance map: one colour per département, tabs for today and tomorrow, the issue time and the validity on the card, the time the next map is due, a legend written as actions, maps per phenomenon, and one bar per phenomenon along the hours of the day.',
      'maps warnings timeline-hourly radar api',
      {'api': 'meteo.data.gouv.fr and a public API portal (key needed)', 'licence': 'French open licence (Etalab) for public data; not re-read in this pass', 'reuse': 'yes with attribution (to confirm)'},
-     'Today and tomorrow as two maps side by side, and the hazard filter as a row of pictograms: the whole country\'s risk in one glance.',
-     'Two small maps (today, tomorrow) beside each other; a row of hazard chips (wind, rain, coast) that filters the timeline.',
-     'vigilance meteofrance l-meteofrance', seen='shell', note='map rendered by script; the bulletin structure was read in the HTML', rank=6)
+     'The card says when it was issued, until when it is valid and when the next one comes; the legend is what to do, not what the colour is called.',
+     'Three times on the hero (issued, valid to, next due); a legend of actions in the authority\'s words; one bar per hazard along the day.',
+     'vigilance meteofrance l-meteofrance', seen='shell', rank=6)
 site(W, 'aemet', 'national-service', 'AEMET (Spain)', 'https://www.aemet.es/en/portada', 'Agencia Estatal de Meteorología (Spanish government)',
      'Warnings map by zone with tabs for today, tomorrow and the day after and a table of every warning (zone, phenomenon, level, start, end, probability, comment). Keeps the season\'s list of high-impact storms named by the south-western group, with who named each and when, and a study of each episode afterwards.',
      'maps warnings radar satellite api explainer',
@@ -75,11 +92,11 @@ site(W, 'aemet', 'national-service', 'AEMET (Spain)', 'https://www.aemet.es/en/p
      'aemet aemet-avisos aemet-borrascas aemet-opendata l-aemet c-aemet-borrascas c-aemet-avisos',
      note='the 2026-2027 table lists Adam (16 Oct, AEMET) and Bruna (5 Nov, IPMA); the Charles row had no date or naming service filled in at 23:38Z')
 site(W, 'yr', 'national-service', 'Yr (MET Norway and NRK)', 'https://www.yr.no/en', 'Norwegian Meteorological Institute and NRK (public broadcaster)',
-     'A place page with one table: a row per day that opens into a row per hour (symbol, temperature, precipitation as a min-max range, wind with gust in brackets). A meteogram (one chart: temperature line, precipitation bars with uncertainty, wind arrows). Warnings appear as a banner on the place they cover. Works worldwide: Lisbon was read.',
+     'A place page with one table: a row per day that opens into a row per hour (symbol, temperature, precipitation in mm, wind speed with an arrow and the wind in words). The national service\'s warnings for the place sit above the table as banners that start with a status word (Ongoing, Expected), in English, worldwide: for Lisbon it showed IPMA\'s five warnings. Lisbon was read and rendered.',
      'timeline-hourly maps warnings radar api',
      {'api': 'api.met.no (Locationforecast and others): JSON, no key, an identifying User-Agent required', 'licence': 'NLOD 2.0 and CC BY 4.0; credit MET Norway (read on its licence page)', 'reuse': 'yes with attribution'},
-     'The calmest hour-by-hour table on the web: nothing decorative, gusts in brackets beside the mean wind, precipitation as a range. The same data is an open API for any point on Earth.',
-     'Our Wednesday strip: one row per hour, gust in brackets, rain as a range; a banner only when a warning covers the place.',
+     'The calmest hour-by-hour table on the web, with the authority\'s warnings for that place above it, each with a status word. The same data is an open API for any point on Earth.',
+     'Warnings above the hours, each starting with Ongoing or Expected. And its flaw to avoid: automatic hourly wind of 4 to 10 m/s printed under a red wind warning with no word on why they differ.',
      'yr yr-lisbon metno-api metno-lisbon l-metno', note='the help-centre page on terms returned 403; the API licence page was read instead', rank=1)
 site(W, 'knmi', 'national-service', 'KNMI (Netherlands)', 'https://www.knmi.nl/home', 'Royal Netherlands Meteorological Institute',
      'Home leads with the colour code for the country and a one-paragraph "weather picture" by the duty forecaster; KNMI Data Platform publishes observations, radar and HARMONIE model output.',
@@ -218,7 +235,7 @@ site(W, 'wetterzentrale', 'model-viewer', 'Wetterzentrale', 'https://www.wetterz
 site(W, 'tropicaltidbits', 'model-viewer', 'Tropical Tidbits', 'https://www.tropicaltidbits.com/', 'Levi Cowan', 'Model charts with a frame slider and keyboard stepping; storm pages.', 'maps models tracker',
      {'api': 'none', 'licence': 'all rights reserved', 'reuse': 'link only'}, 'Keyboard stepping through time.', 'Arrow keys step our hour strip.', 'tropicaltidbits')
 site(W, 'windguru', 'specialist', 'Windguru', 'https://www.windguru.cz/', 'Windguru (Czechia)',
-     'A colour-coded table for a spot (Guincho was read): columns are hours, rows are wind, gust, direction, wave, period, rain; cell colour is the value.', 'timeline-hourly models',
+     'A colour-coded table for a spot (Guincho was read and rendered): live readings from nearby stations first, then columns of hours and rows for wind, gust, direction, wave, period, rain; cell colour is the value; one table per model with its run time.', 'timeline-hourly models',
      {'api': 'for paying members', 'licence': 'all rights reserved', 'reuse': 'link only'},
      'The heat-map table: forty hours of six variables readable at a glance.', 'Colour the cells of our hour strip by threshold (IPMA\'s yellow/orange/red gust criteria).', 'windguru windguru-guincho', seen='shell')
 site(W, 'windfinder', 'specialist', 'Windfinder', 'https://www.windfinder.com/', 'Windfinder GmbH', 'Wind map and spot forecasts with live station reports.', 'maps timeline-hourly stations',
@@ -261,9 +278,9 @@ site(PT, 'ipma-comunicados', 'national-service', 'IPMA: communiqués', 'https://
      'Quote the current communiqué\'s number and validity in the hero; a new number is a signal.',
      'ipma-comunicados ipma-comunicados-rss c-ipma-comunicados')
 site(PT, 'ipma-local', 'national-service', 'IPMA: forecast by place, hourly', 'https://www.ipma.pt/pt/otempo/prev.localidade.hora/', 'IPMA',
-     'Ten days for a place: hourly for the first days (symbol, temperature, wind class and direction, precipitation probability), then 3-hourly and daily; the warnings for the district on top.',
+     'Ten days for a place: day tabs carrying each day\'s warning colour, then one column per hour with rows for symbol, rain probability, temperature, mean wind, sea state and, last, the warnings as one coloured cell per hour.',
      'timeline-hourly warnings', {'api': 'daily by city in the open API; the hourly series is on the site', 'licence': 'as IPMA', 'reuse': 'yes, non-commercial, with attribution'},
-     'The official hourly forecast for Lisbon.', 'The numbers in our strip should be these, with the model run time.', 'ipma-lisboa ipma-api-daily', seen='shell')
+     'The warnings as a row of the hourly table itself: hazard level and hour on one axis with the weather.', 'The model for our strip, with one change: put the warnings row first, not last, and label the automatic rows as automatic, since they read far below the warning\'s gusts (IPMA says so only in the notes).', 'ipma-lisboa ipma-api-daily', seen='shell', rank=3)
 site(PT, 'ipma-obs', 'national-service', 'IPMA: radar, satellite, stations, lightning', 'https://www.ipma.pt/pt/otempo/obs.radar/', 'IPMA',
      'Radar mosaic with animation; satellite (Meteosat channels); hourly surface observations with graphs per station; lightning discharges on a map; sea state and coastal forecast; synoptic charts; descriptive and significant-weather forecasts.',
      'radar satellite stations lightning maps', {'api': 'station observations in the open API (read: 93 KB JSON)', 'licence': 'as IPMA; imagery under its terms', 'reuse': 'yes, non-commercial, with attribution; images by link'},
@@ -304,15 +321,15 @@ site(PT, 'tempopt', 'commercial', 'tempo.pt (Meteored)', 'https://www.tempo.pt/'
      'Place forecasts for 14 days with hourly detail, warnings, radar, satellite and model maps; and a news desk of named meteorologists publishing several pieces a day: seven on Charles were listed, each headline a number ("Até 100 mm em 24 horas", "rajadas até 140 km/h em 4 distritos", "um mínimo de 976 hPa").',
      'timeline-hourly maps radar satellite models explainer', {'api': 'none public', 'licence': 'all rights reserved', 'reuse': 'short quotation with link'},
      'A named forecaster per article and a number in every headline.', 'These are forecasts by a private outlet: evidence for us, never the headline. The habit of one number per headline is worth copying for facts.',
-     'tempopt tempopt-lisboa tempopt-noticias c-tempopt-noticias c-tempopt-1', rank=4)
+     'tempopt tempopt-lisboa tempopt-noticias c-tempopt-noticias c-tempopt-1', rank=5)
 site(PT, 'lusometeo', 'amateur', 'Luso Meteo', 'https://www.lusometeo.com/', 'Luso Meteo (independent)',
      'An independent forecasting site with its own maps and daily analysis; on 10 Nov at 19:14 it published that Charles might be weaker than forecast, with reasons.',
      'explainer maps models', {'api': 'none', 'licence': 'all rights reserved', 'reuse': 'short quotation with link'},
-     'Says when the forecast changes and why.', 'A dissenting analysis is a hypothesis with its source: show it as such, beside IPMA\'s unchanged warning.', 'lusometeo c-lusometeo', rank=5)
+     'Says when the forecast changes and why.', 'A dissenting analysis is a hypothesis with its source: show it as such, beside IPMA\'s unchanged warning.', 'lusometeo c-lusometeo', rank=6)
 site(PT, 'meteopt', 'amateur', 'MeteoPT', 'https://www.meteopt.com/', 'MeteoPT community',
      'The Portuguese meteorology forum: follow-up threads per region and per event where members post their own station readings, radar captures and model reading, minute by minute.',
      'stations explainer', {'api': 'none', 'licence': 'posts belong to their authors', 'reuse': 'link only; no names of private people'},
-     'Ground truth from hundreds of gardens, before any official total.', 'Evidence only, linked by thread, never by person.', 'meteopt meteopt-forum c-meteopt-forum c-meteopt-seguimento', note='forum index read; the thread address we guessed returned 404', rank=6)
+     'Ground truth from hundreds of gardens, before any official total.', 'Evidence only, linked by thread, never by person.', 'meteopt meteopt-forum c-meteopt-forum c-meteopt-seguimento', note='forum index read; the thread address we guessed returned 404', rank=7)
 site(PT, 'meteo-regional', 'amateur', 'Regional station networks: MeteoEstrela, MeteoAlentejo', 'https://www.meteoestrela.pt/', 'local associations and volunteers',
      'Networks of automatic stations with live values on a map, for regions where IPMA\'s stations are far apart.', 'stations maps', {'api': 'none documented', 'licence': 'per network', 'reuse': 'link only'},
      'Density inland.', 'Evidence for places outside Lisbon.', 'meteoestrela meteoalentejo')
@@ -411,7 +428,7 @@ now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
 doc = {
     'about': 'Three maps of weather sites, for incident.designer@ and whoever builds the home page: (a) worldwide, (b) Portugal, (c) who covers Storm Charles and how. Kept by incident.weatherwatch@web-summit.dinis. Public sources only. This is research about how others present weather; it is not a forecast and not a warning service: warnings are IPMA\'s.',
     'updated': now,
-    'method': 'Each address was requested once from this session with a plain HTTP GET (no login, no script execution) between 23:38Z and 23:47Z on 10 November 2026. opened.status is the HTTP status; opened.read the UTC time; opened.seen says what the description rests on: "html" = content read in the returned page; "json" = a data answer was read; "shell" = the page is drawn by script, only its shell and labels were read, and the description of the interactive part is general knowledge of the product, not an observation of this read; "blocked" = refused (401/403/429/bot check); "failed" = no answer or 404. Licence lines say "read" where the terms page was opened; otherwise they say so.',
+    'method': 'Each address was requested once from this session with a plain HTTP GET (no login, no script execution) between 23:38Z and 23:47Z on 10 November 2026. opened.status is the HTTP status; opened.read the UTC time; opened.seen says what the description rests on: "rendered" = also drawn in a headless browser at 23:48Z and looked at (opened.rendered.saw says what was seen; no image is kept); "html" = content read in the returned page; "json" = a data answer was read; "shell" = the page is drawn by script, only its shell and labels were read, and the description of the interactive part is general knowledge of the product, not an observation of this read; "blocked" = refused (401/403/429/bot check); "failed" = no answer or 404. Licence lines say "read" where the terms page was opened; otherwise they say so.',
     'fields': {'map': 'worldwide | portugal | storm-charles', 'how': 'tags: maps, warnings, timeline-hourly, presenter-video, radar, satellite, lightning, stations, models, tracker, liveblog, explainer, embed, interactive, feed, api, social', 'data': 'api, licence, reuse (can we show its content: yes / with attribution / embed only / link only / no)', 'best': 'what it does best', 'learn': 'what our site should take from it', 'rank': 'position within its map in the README ranking, where ranked'},
     'counts': {},
     'sites': S,

@@ -1,7 +1,7 @@
 {
  "about": "Three maps of weather sites, for incident.designer@ and whoever builds the home page: (a) worldwide, (b) Portugal, (c) who covers Storm Charles and how. Kept by incident.weatherwatch@web-summit.dinis. Public sources only. This is research about how others present weather; it is not a forecast and not a warning service: warnings are IPMA's.",
- "updated": "2026-11-10T23:47Z",
- "method": "Each address was requested once from this session with a plain HTTP GET (no login, no script execution) between 23:38Z and 23:47Z on 10 November 2026. opened.status is the HTTP status; opened.read the UTC time; opened.seen says what the description rests on: \"html\" = content read in the returned page; \"json\" = a data answer was read; \"shell\" = the page is drawn by script, only its shell and labels were read, and the description of the interactive part is general knowledge of the product, not an observation of this read; \"blocked\" = refused (401/403/429/bot check); \"failed\" = no answer or 404. Licence lines say \"read\" where the terms page was opened; otherwise they say so.",
+ "updated": "2026-11-10T23:50Z",
+ "method": "Each address was requested once from this session with a plain HTTP GET (no login, no script execution) between 23:38Z and 23:47Z on 10 November 2026. opened.status is the HTTP status; opened.read the UTC time; opened.seen says what the description rests on: \"rendered\" = also drawn in a headless browser at 23:48Z and looked at (opened.rendered.saw says what was seen; no image is kept); \"html\" = content read in the returned page; \"json\" = a data answer was read; \"shell\" = the page is drawn by script, only its shell and labels were read, and the description of the interactive part is general knowledge of the product, not an observation of this read; \"blocked\" = refused (401/403/429/bot check); \"failed\" = no answer or 404. Licence lines say \"read\" where the terms page was opened; otherwise they say so.",
  "fields": {
   "map": "worldwide | portugal | storm-charles",
   "how": "tags: maps, warnings, timeline-hourly, presenter-video, radar, satellite, lightning, stations, models, tracker, liveblog, explainer, embed, interactive, feed, api, social",
@@ -54,13 +54,18 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html",
+    "seen": "rendered",
     "also": {
      "metoffice-warnings": "200",
      "metoffice-stormcentre": "200",
      "metoffice-datapoint": "200",
      "l-metoffice": "200",
      "c-metoffice-surface": "200"
+    },
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "UK warnings page with a day strip; \"No warnings\" for Tuesday 10 November, so the warning layout itself was not seen in use."
     }
    },
    "rank": 2
@@ -170,7 +175,7 @@
    "name": "Météo-France: Vigilance",
    "url": "https://vigilance.meteofrance.fr/fr",
    "owner": "Météo-France (public body)",
-   "shows": "The vigilance map: one colour per département, today and tomorrow side by side, a row of hazard pictograms to filter by phenomenon, and a national bulletin with the \"consequences\" and \"advice\" for each colour. The home site adds rain-in-the-next-hour for a place.",
+   "shows": "The vigilance map: one colour per département, tabs for today and tomorrow, the issue time and the validity on the card, the time the next map is due, a legend written as actions, maps per phenomenon, and one bar per phenomenon along the hours of the day.",
    "how": [
     "maps",
     "warnings",
@@ -183,17 +188,21 @@
     "licence": "French open licence (Etalab) for public data; not re-read in this pass",
     "reuse": "yes with attribution (to confirm)"
    },
-   "best": "Today and tomorrow as two maps side by side, and the hazard filter as a row of pictograms: the whole country's risk in one glance.",
-   "learn": "Two small maps (today, tomorrow) beside each other; a row of hazard chips (wind, rain, coast) that filters the timeline.",
+   "best": "The card says when it was issued, until when it is valid and when the next one comes; the legend is what to do, not what the colour is called.",
+   "learn": "Three times on the hero (issued, valid to, next due); a legend of actions in the authority's words; one bar per hazard along the day.",
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "shell",
+    "seen": "rendered",
     "also": {
      "meteofrance": "200",
      "l-meteofrance": "200"
     },
-    "note": "map rendered by script; the bulletin structure was read in the HTML"
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "One card: \"Vigilance météorologique et crues\", issued 10 November 16:00, valid to 12 November 00:00 (Paris time); two tabs, \"Aujourd'hui\" and \"Demain\" (the second greyed with \"Prochaine carte à 06h\": it says when the next map comes); the map by département in four colours with the legend as actions (\"Soyez attentif\", \"Soyez très vigilant\", \"Vigilance absolue\"); \"cartes par phénomène\" as a list; under the map one bar per phenomenon along the hours of the day (0h to 0h); and the line \"updated at least twice a day, at 6h and 16h\"."
+    }
    },
    "rank": 6
   },
@@ -242,7 +251,7 @@
    "name": "Yr (MET Norway and NRK)",
    "url": "https://www.yr.no/en",
    "owner": "Norwegian Meteorological Institute and NRK (public broadcaster)",
-   "shows": "A place page with one table: a row per day that opens into a row per hour (symbol, temperature, precipitation as a min-max range, wind with gust in brackets). A meteogram (one chart: temperature line, precipitation bars with uncertainty, wind arrows). Warnings appear as a banner on the place they cover. Works worldwide: Lisbon was read.",
+   "shows": "A place page with one table: a row per day that opens into a row per hour (symbol, temperature, precipitation in mm, wind speed with an arrow and the wind in words). The national service's warnings for the place sit above the table as banners that start with a status word (Ongoing, Expected), in English, worldwide: for Lisbon it showed IPMA's five warnings. Lisbon was read and rendered.",
    "how": [
     "timeline-hourly",
     "maps",
@@ -255,19 +264,24 @@
     "licence": "NLOD 2.0 and CC BY 4.0; credit MET Norway (read on its licence page)",
     "reuse": "yes with attribution"
    },
-   "best": "The calmest hour-by-hour table on the web: nothing decorative, gusts in brackets beside the mean wind, precipitation as a range. The same data is an open API for any point on Earth.",
-   "learn": "Our Wednesday strip: one row per hour, gust in brackets, rain as a range; a banner only when a warning covers the place.",
+   "best": "The calmest hour-by-hour table on the web, with the authority's warnings for that place above it, each with a status word. The same data is an open API for any point on Earth.",
+   "learn": "Warnings above the hours, each starting with Ongoing or Expected. And its flaw to avoid: automatic hourly wind of 4 to 10 m/s printed under a red wind warning with no word on why they differ.",
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html",
+    "seen": "rendered",
     "also": {
      "yr-lisbon": "200",
      "metno-api": "200",
      "metno-lisbon": "200",
      "l-metno": "200"
     },
-    "note": "the help-centre page on terms returned 403; the API licence page was read instead"
+    "note": "the help-centre page on terms returned 403; the API licence page was read instead",
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "Lisbon, hourly table for Wednesday 11 November: above the table, five warning banners for Lisboa in English, each starting with a status word (\"Ongoing: Yellow Coastal Event Warning\", \"Expected: Orange Rain Warning\", \"Expected: Red Rain Warning\", \"Expected: Red Wind Warning\", \"Expected: Orange Coastal Event Warning\"), each expandable; under them one row per hour: time, symbol, temperature, precipitation in mm, wind speed in m/s with an arrow, and the wind in words (\"Fresh breeze from south east\"). No gust column was shown. The automatic rows read 4 to 10 m/s for Lisbon under a banner carrying the red wind warning: the page does not comment on the difference."
+    }
    },
    "rank": 1
   },
@@ -466,7 +480,12 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "shell"
+    "seen": "rendered",
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "Rendered, but only navigation text was captured; the time bar was not checked."
+    }
    },
    "rank": 8
   },
@@ -581,12 +600,17 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html",
+    "seen": "rendered",
     "also": {
      "meteoalarm-pt": "200",
      "meteoalarm-feed": "200",
      "c-meteoalarm-pt-feed": "200",
      "l-meteoalarm": "200"
+    },
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "Portugal: a map coloured by district (Madeira red; the mainland yellow and orange at 23:00 to 02:00), a time bar with buttons Now, +24h and each day to Saturday plus \"Animation\", filters by awareness level and hazard type, and a list of areas, one row per warning with the hazard pictogram on its colour."
     }
    },
    "rank": 7
@@ -700,12 +724,17 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html",
+    "seen": "rendered",
     "also": {
      "bbc-lisbon": "200",
      "l-bbc": "200",
      "c-bbc-weather-news": "200",
      "c-bbc-search": "200"
+    },
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "Lisbon: a card \"Tonight\" with one sentence (\"Thundery showers and a gentle breeze\"), day tabs for eight days with high and low, an hour row (symbol, temperature, chance of precipitation, a wind circle with speed), \"Last updated today at 23:02\", then a rain map with a play button and a week-long time bar. No warning of any kind was shown for Lisbon on the eve of IPMA's red warnings: outside the UK the page carries no authority's warnings."
     }
    },
    "rank": 3
@@ -901,11 +930,16 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "shell",
+    "seen": "rendered",
     "also": {
      "c-windy-lisbon": "200",
      "c-windy-embed": "200",
      "l-windy": "200"
+    },
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "The gust layer over Portugal rendered as a full-screen map with place labels; no text about warnings."
     }
    },
    "rank": 4
@@ -1193,7 +1227,7 @@
    "name": "Windguru",
    "url": "https://www.windguru.cz/",
    "owner": "Windguru (Czechia)",
-   "shows": "A colour-coded table for a spot (Guincho was read): columns are hours, rows are wind, gust, direction, wave, period, rain; cell colour is the value.",
+   "shows": "A colour-coded table for a spot (Guincho was read and rendered): live readings from nearby stations first, then columns of hours and rows for wind, gust, direction, wave, period, rain; cell colour is the value; one table per model with its run time.",
    "how": [
     "timeline-hourly",
     "models"
@@ -1208,9 +1242,14 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "shell",
+    "seen": "rendered",
     "also": {
      "windguru-guincho": "200"
+    },
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "Guincho: a \"Live Wind\" strip of nearby stations with their current reading first (Cabo Raso, Cascais), then the table: columns every two hours for a week, rows for wind speed, gusts, direction, wave, period, temperature, cloud, rain, every cell coloured by its value; the same table repeated per model below, with the model run time (\"init\") on each."
     }
    }
   },
@@ -1552,11 +1591,16 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:39Z",
-    "seen": "html",
+    "seen": "rendered",
     "also": {
      "ipma-en": "200",
      "c-ipma-home": "200",
      "l-ipma-api": "200"
+    },
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "Home (updated 2026/11/10 23:31 UTC): tabs \"Hoje\", \"Amanhã\", \"Depois de Amanhã\", each with a warning triangle in the day's highest colour (red, red, yellow); the daily forecast map; the warnings map (mainland, Azores, Madeira); a \"Comunicados\" box; yesterday's extremes by station; small tiles for model charts, satellite, seismic activity."
     }
    },
    "rank": 1
@@ -1585,12 +1629,17 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:39Z",
-    "seen": "shell",
+    "seen": "rendered",
     "also": {
      "c-ipma-avisos-page": "200",
      "ipma-api-warnings": "200"
     },
-    "note": "the chart is drawn by script; the JSON was read"
+    "note": "the chart is drawn by script; the JSON was read",
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "Lisboa, last update 10 November 21:23 UTC: eight hazard rows (thunder, sea state, rain, wind, snow, cold, heat, fog) by 72 hourly cells for 11, 12 and 13 November, coloured green, yellow, orange, red; under it each warning as a coloured bar with hazard, level, start and end and one line of text, e.g. \"Vento - Vermelho [11 Nov 12:00 - 11 Nov 21:00]: Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos\" and \"Precipitação - Vermelho [11 Nov 09:00 - 11 Nov 18:00]\"; a district list on the right with each district's highest level; \"Toda a informação em horas UTC\"."
+    }
    },
    "rank": 2
   },
@@ -1631,7 +1680,7 @@
    "name": "IPMA: forecast by place, hourly",
    "url": "https://www.ipma.pt/pt/otempo/prev.localidade.hora/",
    "owner": "IPMA",
-   "shows": "Ten days for a place: hourly for the first days (symbol, temperature, wind class and direction, precipitation probability), then 3-hourly and daily; the warnings for the district on top.",
+   "shows": "Ten days for a place: day tabs carrying each day's warning colour, then one column per hour with rows for symbol, rain probability, temperature, mean wind, sea state and, last, the warnings as one coloured cell per hour.",
    "how": [
     "timeline-hourly",
     "warnings"
@@ -1641,16 +1690,22 @@
     "licence": "as IPMA",
     "reuse": "yes, non-commercial, with attribution"
    },
-   "best": "The official hourly forecast for Lisbon.",
-   "learn": "The numbers in our strip should be these, with the model run time.",
+   "best": "The warnings as a row of the hourly table itself: hazard level and hour on one axis with the weather.",
+   "learn": "The model for our strip, with one change: put the warnings row first, not last, and label the automatic rows as automatic, since they read far below the warning's gusts (IPMA says so only in the notes).",
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:39Z",
-    "seen": "shell",
+    "seen": "rendered",
     "also": {
      "ipma-api-daily": "200"
+    },
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 200,
+     "saw": "Lisboa (updated 2026-11-10 19:56:03 UTC): ten day tabs, each with symbol, min and max, wind, rain probability and the day's warning colour as a label (\"Amarelo\", \"Vermelho\", \"Amarelo\"); under them one column per hour of Wednesday 11 with rows: symbol, probability of precipitation, temperature and felt temperature, mean wind in km/h with direction, sea state (height, direction, water temperature) and a last row, \"Avisos Meteorológicos\", one coloured cell per hour (yellow, then orange, then red from 09H to 21H). The mean wind row reads 11 to 23 km/h under the red cells; the page explains in its notes that this automatic forecast may differ from the forecasters' descriptive forecast and warnings, which should be consulted."
     }
-   }
+   },
+   "rank": 3
   },
   {
    "id": "ipma-obs",
@@ -2047,7 +2102,7 @@
      "c-tempopt-1": "200"
     }
    },
-   "rank": 4
+   "rank": 5
   },
   {
    "id": "lusometeo",
@@ -2077,7 +2132,7 @@
      "c-lusometeo": "200"
     }
    },
-   "rank": 5
+   "rank": 6
   },
   {
    "id": "meteopt",
@@ -2109,7 +2164,7 @@
     },
     "note": "forum index read; the thread address we guessed returned 404"
    },
-   "rank": 6
+   "rank": 7
   },
   {
    "id": "meteo-regional",
@@ -2466,7 +2521,12 @@
     "also": {
      "c-rr-tag": "200"
     },
-    "note": "the page shell and legends were read; the data loads by script and was not seen"
+    "note": "the page shell and legends were read; the data loads by script and was not seen",
+    "rendered": {
+     "read": "2026-11-10T23:48Z",
+     "status": 403,
+     "saw": "The headless browser was refused (\"The request is blocked\"); the plain request had returned the page shell."
+    }
    },
    "rank": 2
   },
