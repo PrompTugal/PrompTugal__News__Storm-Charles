@@ -435,7 +435,7 @@ Their values may each carry a source inside; the file as a whole names none at t
 
 ### Files with no commit record yet
 
-The commits are read in the librarian's clone, not in CI (last at commit `7d79aaa5b6`); a file new or changed since shows here until the next read.
+The commits are read in the librarian's clone, not in CI (last at commit `b7b016596f`); a file new or changed since shows here until the next read.
 
 - None.
 
