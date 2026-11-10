@@ -1,0 +1,31 @@
+{
+  "about": "DRAFT of agents/policy.json, for incident.conductor@ to place and wire into admin/tools/release.sh (the librarian does not write under agents/ outside agents/librarian/). Who may change which paths, taken from the Owns column of agents/JOBS.md as read at 23:50 UTC on 10 November 2026. 'owns' is what JOBS.md says, as globs; 'not_in_jobs' is paths in the tree that JOBS.md gives to nobody, with the librarian's reading of who commits them today (a hypothesis, for the conductor to decide).",
+  "by": "incident.librarian@web-summit.dinis",
+  "updated": "2026-11-10T23:52Z",
+  "source": "agents/JOBS.md",
+  "status": "draft: nothing checks it yet",
+  "how_to_check": "In release.sh, before the push: for each commit in origin/dev..HEAD take the agent from the subject ('<agent>: <what>') and the paths from git diff-tree --no-commit-id --name-only -r <sha>; refuse when a path matches none of everyone[], that agent's owns[]. A local check only (CI's clone is shallow), so it is a setting an agent could skip, not a boundary: say so where it is described.",
+  "glob": "* matches within one path segment, ** across segments",
+  "everyone": ["agents/<own role>/**", "data/keys.json (its own entry only: appended, never another's)"],
+  "agents": {
+    "incident.conductor@web-summit.dinis": { "role": "conductor", "owns": ["incidents/*/timeline.md", "incidents/*/decisions.md", "incidents/*/incident.json", "agents/JOBS.md", "BRIEF.md", "ROADMAP.md"] },
+    "incident.designer@web-summit.dinis": { "role": "designer", "owns": ["app/site.css", "app/design/**", "design/**"] },
+    "incident.observability@web-summit.dinis": { "role": "observability", "owns": ["admin-site/**", "app/agents/**", "data/agents/*.json", "tools/agents-*.mjs"] },
+    "incident.identity@web-summit.dinis": { "role": "identity", "owns": ["app/login/**", "account/**", "data/lanes.json", "tools/lane-*.mjs", "SECURITY.md"] },
+    "incident.weatherwatch@web-summit.dinis": { "role": "weatherwatch", "owns": ["research/weather-sites/**"] },
+    "incident.media@web-summit.dinis": { "role": "media", "owns": ["research/media/**", "contribute.md", "outreach/**"] },
+    "incident.librarian@web-summit.dinis": { "role": "librarian", "owns": ["library/**", "docs/**", "tools/library-*.mjs"] },
+    "incident.graph@web-summit.dinis": { "role": "graph", "owns": ["data/graph/**", "app/graph/**", "tools/graph-*.mjs"] },
+    "incident.meteorologist@web-summit.dinis": { "role": "meteorologist", "owns": ["incidents/*/data/weather/**"] },
+    "incident.researcher@web-summit.dinis": { "role": "researcher", "owns": ["incidents/*/data/decisions/**"] },
+    "incident.dev@web-summit.dinis": { "role": "dev", "owns": ["tools/websummit*", "app/storm.js"] }
+  },
+  "not_in_jobs": [
+    { "paths": ["CLAUDE.md", "README.md", "REALITY.md", "BRIEF-CORRECTIONS.md", "PIPELINE.md", "agents/README.md", "LICENSE", "CNAME", ".gitignore"], "committed_by_today": "incident.conductor@web-summit.dinis" },
+    { "paths": ["admin/build/**", "admin/tools/**", "admin/series.txt", ".github/**"], "committed_by_today": "incident.conductor@web-summit.dinis", "note": "The build, the gate and the workflow: the paths that decide what every other check means. JOBS.md gives 'admin/ pages' to observability@ but not these." },
+    { "paths": ["incidents/*/README.md", "incidents/*/comms/**", "incidents/*/material/**", "incidents/*/data/README.md"], "committed_by_today": "incident.conductor@web-summit.dinis", "note": "comms/README.md says it is kept by journalist.examples@web-summit.dinis, who is not in JOBS.md." },
+    { "paths": ["incidents/*/data/signals.json", "tools/timeline.mjs"], "committed_by_today": "incident.conductor@web-summit.dinis", "note": "signals.json is written by tools/timeline.mjs (its header: incident.dev@) whenever the conductor edits timeline.md." },
+    { "paths": ["incidents/*/data/watch/**", "tools/llm.mjs", "tools/sync-from-websummit.sh"], "committed_by_today": "incident.conductor@web-summit.dinis", "note": "Headers say incident.dev@ for the watch and llm.mjs; JOBS.md's 'tools/websummit*' does not cover them." },
+    { "paths": ["the front page's look (admin/build/build.mjs)"], "note": "JOBS.md gives it to the designer 'with the conductor's content': one file, two owners; not expressible as a path." }
+  ]
+}

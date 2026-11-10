@@ -9,6 +9,8 @@
 //   node tools/library-index.mjs --git      first refresh library/provenance.json from the commits (a full clone only; refuses a
 //                                           shallow one), then build. Run by the librarian before each release, never by CI.
 //   node tools/library-index.mjs --check    build in memory; exit 1 if the committed catalogue differs (stale).
+//   node tools/library-index.mjs --out DIR  write DIR/library/index.json and DIR/library/README.md ONLY: no tracked file is touched
+//                                           (for the build: --out _site, so the served catalogue is fresh on every push).
 //
 // For every file: path, where it is served, what kind of thing it is, what it is (its own first words), who wrote it (its
 // header; and the commits' agents, from the sidecar), when (its own date; the last commit), what it was made from (the sources
@@ -26,6 +28,9 @@ const REPO = 'https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob
 const ME = 'incident.librarian@web-summit.dinis'
 const GENERATED = new Set(['library/index.json', 'library/README.md', 'library/provenance.json'])
 const args = new Set(process.argv.slice(2))
+const outAt = process.argv.indexOf('--out'), OUT_DIR = outAt > 0 ? path.resolve(process.argv[outAt + 1] || '') : ''
+if (outAt > 0 && (!process.argv[outAt + 1] || OUT_DIR === ROOT)) { console.error('library-index: --out needs a directory other than the repository root'); process.exit(2) }
+if (OUT_DIR && args.has('--git')) { console.error('library-index: --out and --git do not go together (--git writes the tracked commit record)'); process.exit(2) }
 const sha = buf => crypto.createHash('sha256').update(buf).digest('hex')
 const git = (...a) => execFileSync('git', a, { cwd: ROOT, maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'ignore'] }).toString()
 
@@ -233,7 +238,7 @@ Not a warning service: follow IPMA, ANEPC and your local authorities.
 
 **For agents:** [library/index.json](index.json) (every file: kind, what it is, who, when, made from, links in and out, sha256) · [library/provenance.json](provenance.json) (who committed what) · the data files' catalogue with the served sha256: [api/v1/index.json](../api/v1/index.json).
 
-**Also here:** [the reading list](reading/README.md) (what newsroom.sgit.ai's articles mean for this site) · [the glossary](glossary.md) (fact, evidence, hypothesis and the other words this site uses).
+**Also here:** [the reading list](reading/README.md) (what newsroom.sgit.ai's articles mean for this site) · [the glossary](glossary.md) (fact, evidence, hypothesis and the other words this site uses). · drafts for the conductor: [the path policy](drafts/policy.json), [the shape of now.json](drafts/now-json.md).
 
 **How to read a row.** *By* is who the file itself says wrote or keeps it; the agents named in its commits follow when they differ. *Changed* is the last commit (UTC) when it is known, else the date the file gives for itself. *Made from* is the sources its own header names.
 
@@ -300,5 +305,6 @@ if (args.has('--check')) {
     if (stale.length) { console.log(`library-index: STALE ${stale.join(', ')} (run node tools/library-index.mjs)`); process.exit(1) }
     console.log(`library-index: OK ${entries.length} files`); process.exit(0)
 }
-for (const [f, s] of targets) { fs.mkdirSync(path.dirname(path.join(ROOT, f)), { recursive: true }); fs.writeFileSync(path.join(ROOT, f), s) }
+const DEST = OUT_DIR || ROOT
+for (const [f, s] of targets) { fs.mkdirSync(path.dirname(path.join(DEST, f)), { recursive: true }); fs.writeFileSync(path.join(DEST, f), s) }
 console.log(`library-index: ${entries.length} files, ${Object.keys(counts).length} kinds, gaps: ${Object.entries(gaps).map(([k, v]) => `${k} ${v.length}`).join(', ')}${args.has('--git') ? '; commits read' : ''}`)
