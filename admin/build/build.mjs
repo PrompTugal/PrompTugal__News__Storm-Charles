@@ -143,28 +143,140 @@ const catalog = {
 }
 write('api/v1/index.json', JSON.stringify(catalog, null, 2) + '\n')
 
-// the front page: the newsroom
+// the front page: the weather presenter. Markup by incident.designer@web-summit.dinis (design/round-1.md); it reads the
+// incident's files as they are and changes no data. Every figure carries its source link and the time it was read.
 const d0 = incidents[0], inc = INC[d0], base = `incidents/${d0}/`
 const J = rel => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, base, rel), 'utf8')) } catch { return null } }
 const sig = J('data/signals.json'), warn = J('data/weather/warnings.json'), chg = J('data/weather/changes.json')
-const hm = t => String(t || '').slice(11, 16)
-const feed = (sig?.items || []).slice().sort((a, b) => Date.parse(b.at) - Date.parse(a.at)).slice(0, 14).map(s => {
-    const src = (s.sources || []).find(x => x.url && /^https:/.test(x.url)), via = (s.sources || []).map(x => x.label).filter(Boolean).join('; ')
-    return `<li><time datetime="${esc(s.at)}">${esc(hm(s.at))}</time><span class="lbl ${esc(s.kind)}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via)}</span></li>`
-}).join('')
+const fc = J('data/weather/forecast.json'), ap = J('data/weather/airport.json'), an = J('data/weather/analysis.json'), gv = J('data/weather/gusts-vs-forecast.json')
+const T = t => typeof t === 'number' ? t : Date.parse(t), ok = t => t && !isNaN(T(t))
+const utc = (t, o) => new Date(T(t)).toLocaleString('en-GB', { timeZone: 'UTC', ...o })
+const hm = t => ok(t) ? new Date(T(t)).toISOString().slice(11, 16) : '?'
+const dm = t => ok(t) ? utc(t, { day: 'numeric', month: 'short' }) : ''
+const wd = t => ok(t) ? utc(t, { weekday: 'short' }) : ''
+const day = t => ok(t) ? new Date(T(t)).toISOString().slice(0, 10) : ''
+const rng = (a, b) => `${wd(a)} ${hm(a)} to ${day(a) === day(b) ? '' : wd(b) + ' '}${hm(b)}`
+const prov = (url, name, t) => `<span class="prov">${url ? `<a href="${esc(url)}">${esc(name)}</a>` : esc(name)}${ok(t) ? `, read <time datetime="${esc(t)}">${hm(t)} UTC ${dm(t)}</time>` : ''}</span>`
 const lvl = l => `<span class="lvl ${esc(l)}">${esc(l)}</span>`
-const wx = (warn?.lisbon || []).filter(w => w.level !== 'green').sort((a, b) => Date.parse(a.start_utc) - Date.parse(b.start_utc)).map(w => `<li><span>${esc(w.type)} <span class="meta">${esc(w.start_utc.slice(5, 16).replace('T', ' '))} to ${esc(w.end_utc.slice(5, 16).replace('T', ' '))}</span></span><b>${lvl(w.level)}</b></li>`).join('')
-const thu = chg?.thursday?.lisbon_warnings_touching_thursday?.items || []
+const RANK = { yellow: 1, orange: 2, red: 3 }
+const EN = { 'Vento': 'Wind', 'Precipitação': 'Rain', 'Agitação Marítima': 'Sea state', 'Trovoada': 'Thunderstorms', 'Nevoeiro': 'Fog', 'Neve': 'Snow', 'Tempo Frio': 'Cold', 'Tempo Quente': 'Heat' }
+const lis = (warn?.lisbon || []).filter(w => RANK[w.level] && ok(w.start_utc) && ok(w.end_utc)).sort((a, b) => T(a.start_utc) - T(b.start_utc))
+// the day the page presents: the day the highest warning starts (no warning: the day after the build)
+const top = lis.slice().sort((a, b) => RANK[b.level] - RANK[a.level] || T(a.start_utc) - T(b.start_utc))[0]
+const DAY = top ? day(top.start_utc) : new Date(Date.now() + 864e5).toISOString().slice(0, 10)
+const D0 = T(DAY + 'T00:00:00Z'), D1 = D0 + 864e5, dayName = utc(D0, { weekday: 'long', day: 'numeric', month: 'long' })
+const NEXT = new Date(D1).toISOString().slice(0, 10), nextName = utc(D1, { weekday: 'long', day: 'numeric', month: 'long' })
+const inDay = (a, b) => T(a) < D1 && T(b) > D0
+const pct = t => Math.max(0, Math.min(100, (T(t) - D0) / 864e3))
+const bar = ({ a, b, cls = '', text, title = '', style = '' }) => {
+    const l = pct(a), r = pct(b); if (r <= l) return ''
+    return `<div class="wx-bar ${cls}${T(a) < D0 ? ' cut-l' : ''}${T(b) > D1 ? ' cut-r' : ''}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%;${style}" title="${esc(title)}"><span>${text}</span></div>`
+}
+const rows = [], tbl = []
+const row = (label, sub, inner, cls = '') => rows.push(`<div class="wx-row ${cls}"><div class="wx-lab"><b>${label}</b>${sub}</div><div class="wx-track">${inner}</div></div>`)
+const head = (label, sub) => rows.push(`<div class="wx-row wx-group"><div class="wx-lab"><b>${label}</b></div><div class="wx-track"><span>${sub}</span></div></div>`)
+
+// 1. IPMA's warnings, one lane per type
+const types = [...new Set(lis.filter(w => inDay(w.start_utc, w.end_utc)).map(w => w.type))]
+const warnProv = prov(warn?.source, 'IPMA warnings', warn?.read_utc)
+if (types.length) head('Warned', `IPMA's warnings for the Lisbon district: facts. ${warnProv}`)
+for (const ty of types) {
+    const ws = lis.filter(w => w.type === ty && inDay(w.start_utc, w.end_utc))
+    row(esc(EN[ty] || ty), `<i lang="pt">${esc(ty)}</i>`, ws.map(w => bar({ a: w.start_utc, b: w.end_utc, cls: 'w-' + esc(w.level), text: `<b>${esc(w.level)}</b> ${hm(w.start_utc)} to ${hm(w.end_utc)}`, title: `${w.level}: ${rng(w.start_utc, w.end_utc)}. ${w.text_pt || ''}` })).join(''))
+    for (const w of ws) tbl.push([`IPMA warning: ${EN[ty] || ty}`, `${w.level}. <span lang="pt">${esc(w.text_pt || '')}</span>`, w.start_utc, w.end_utc, prov(w.source || warn.source, 'IPMA', w.read_utc || warn.read_utc)])
+}
+// 2. the airport forecast (TAF): prevailing, at times, and with a stated chance
+const taf = ap?.taf, groups = (taf?.groups || []).filter(g => ok(g.from_utc) && ok(g.to_utc) && inDay(g.from_utc, g.to_utc))
+const gtxt = g => [g.wind_kmh != null ? `${g.wind_kmh}${g.gust_kmh != null ? ` <b>G${g.gust_kmh}</b>` : ''} km/h` : '', g.weather ? esc(g.weather) : ''].filter(Boolean).join(' · ') || 'no change in wind'
+const gttl = g => `${g.change}${g.prob ? ' PROB' + g.prob : ''} ${rng(g.from_utc, g.to_utc)}${g.becoming_by_utc ? ', becoming by ' + hm(g.becoming_by_utc) : ''}: ${g.wind_kt != null ? `${g.wind_dir}° ${g.wind_kt} kt${g.gust_kt != null ? ' gusting ' + g.gust_kt + ' kt' : ''} (${g.wind_kmh}${g.gust_kmh != null ? ' gusting ' + g.gust_kmh : ''} km/h)` : 'wind unchanged'}${g.weather ? ', ' + g.weather : ''}`
+const heat = g => `--k:${Math.round(Math.min(1, (g.gust_kmh ?? g.wind_kmh ?? 0) / 120) * 100)}%`
+if (groups.length) {
+    const tafProv = prov(taf.source, 'TAF LPPT', taf.read_utc)
+    head('Airport forecast', `TAF for Lisbon airport (LPPT), issued ${hm(taf.issue_utc)} UTC ${dm(taf.issue_utc)}: a point forecast for pilots, never instead of IPMA's warning. Mean wind and gusts (G) in km/h. ${tafProv}`)
+    const lanes = [['Prevailing', 'base and becoming', g => !g.prob && g.change !== 'TEMPO'], ['At times', 'TEMPO', g => !g.prob && g.change === 'TEMPO'], ...[...new Set(groups.filter(g => g.prob).map(g => g.prob))].map(p => [`${p}% chance`, `PROB${p} TEMPO`, g => g.prob === p])]
+    for (const [name, sub, f] of lanes) {
+        const gs = groups.filter(f); if (!gs.length) continue
+        row(esc(name), `<i>${esc(sub)}</i>`, gs.map(g => {
+            const tr = g.becoming_by_utc ? (Math.min(T(g.becoming_by_utc), D1) - Math.max(T(g.from_utc), D0)) / (Math.min(T(g.to_utc), D1) - Math.max(T(g.from_utc), D0)) * 100 : 0
+            return bar({ a: g.from_utc, b: g.to_utc, cls: 'taf' + (tr ? ' becmg' : ''), text: (tr ? `<i>by ${hm(g.becoming_by_utc)}:</i> ` : '') + gtxt(g), title: gttl(g), style: `${heat(g)};--tr:${tr.toFixed(1)}%` })
+        }).join(''), 'wx-taf')
+        for (const g of gs) tbl.push([`Airport TAF: ${name}`, gttl(g), g.from_utc, g.to_utc, tafProv])
+    }
+}
+// 3. IPMA's hourly model for the city (mean wind, no gusts), and what the airport has observed
+const hours = [...Array(24)].map((_, h) => D0 + h * 36e5)
+const cells = f => hours.map((t, h) => { const c = f(t, h); return `<div class="wx-cell${c ? '' : ' empty'}"${c?.title ? ` title="${esc(c.title)}"` : ''}${c?.style ? ` style="${c.style}"` : ''}>${c ? c.text : ''}</div>` }).join('')
+const hr = (fc?.hourly?.rows || []).filter(r => ok(r.time_utc) && T(r.time_utc) >= D0 && T(r.time_utc) < D1)
+if (hr.length) {
+    const at = t => hr.find(r => T(r.time_utc) === t), mProv = prov(fc.hourly.source, 'IPMA hourly forecast', fc.hourly.read_utc)
+    head('City model', `IPMA's hourly model forecast for Lisbon, stamped ${esc(String(fc.hourly.updated_local || '').replace('T', ' ').slice(0, 16))}: mean wind only, this feed has no gusts. ${mProv}`)
+    row('Mean wind', '<i>km/h, from</i>', cells(t => { const r = at(t); return r && r.wind_mean_kmh != null ? { text: `<b>${Math.round(r.wind_mean_kmh)}</b><i>${esc(r.wind_dir || '')}</i>`, title: `${hm(r.time_utc)}: mean wind ${r.wind_mean_kmh} km/h from ${r.wind_dir}`, style: `--k:${Math.round(Math.min(1, r.wind_mean_kmh / 120) * 100)}%` } : null }), 'wx-cells')
+    row('Rain', '<i>IPMA intensity class</i>', cells(t => { const r = at(t); return r && r.rain_intensity_class != null ? { text: `<b>${esc(r.rain_intensity_class)}</b>${r.rain_prob_pct != null ? `<i>${esc(r.rain_prob_pct)}%</i>` : ''}`, title: `${hm(r.time_utc)}: rain intensity class ${r.rain_intensity_class}${r.rain_prob_pct != null ? ', probability ' + r.rain_prob_pct + '%' : ''}`, style: `--k:${Math.min(100, r.rain_intensity_class * 25)}%` } : null }), 'wx-cells rain')
+    tbl.push(['IPMA hourly model', `mean wind ${Math.min(...hr.map(r => r.wind_mean_kmh))} to ${Math.max(...hr.map(r => r.wind_mean_kmh))} km/h; no gusts in this feed`, new Date(D0).toISOString(), new Date(D1).toISOString(), mProv])
+}
+const obs = (ap?.metars || []).filter(m => ok(m.time_utc) && T(m.time_utc) >= D0 && T(m.time_utc) < D1)
+{
+    const oProv = prov(obs[0]?.source || ap?.max_gust?.source, 'METAR LPPT', ap?.read_utc)
+    head('Observed', `Lisbon airport's reports (METAR), the strongest in each hour: gust (G) if one was reported, else mean wind, km/h. ${obs.length ? '' : `None yet for ${esc(dayName)}. `}${oProv}`)
+    row('Airport', '<i>km/h</i>', cells(t => { const ms = obs.filter(m => T(m.time_utc) >= t && T(m.time_utc) < t + 36e5); if (!ms.length) return null; const m = ms.slice().sort((a, b) => (b.gust_kmh ?? b.wind_kmh ?? 0) - (a.gust_kmh ?? a.wind_kmh ?? 0))[0]; return { text: `<b>${m.gust_kmh != null ? 'G' + m.gust_kmh : m.wind_kmh ?? ''}</b><i>${m.weather ? esc(m.weather) : ''}</i>`, title: m.raw, style: `--k:${Math.round(Math.min(1, (m.gust_kmh ?? m.wind_kmh ?? 0) / 120) * 100)}%` } }), 'wx-cells obs')
+}
+// 4. our analysis, always labelled, drawn unlike a fact
+const lastAn = (an?.updates || []).slice(-1)[0] || an?.wednesday_lisbon, ww = lastAn?.worst_window_utc
+if (ww && ok(ww[0]) && inDay(ww[0], ww[1])) {
+    const ends = lastAn.ends_utc, conf = lastAn.confidence?.window
+    head('Our analysis', `A hypothesis by ${esc(an.by || 'the meteorologist')}, written ${hm(lastAn.written_utc || an.written_utc)} UTC ${dm(lastAn.written_utc || an.written_utc)}: reasoning from the files above, not IPMA's words. <span class="prov"><a href="${base}data/weather/analysis.html">The reasons</a></span>`)
+    row('Worst window', `<i>confidence: ${esc(conf || 'not stated')}</i>`, bar({ a: ww[0], b: ww[1], cls: 'hyp', text: `<b>hypothesis</b> worst ${hm(ww[0])} to ${hm(ww[1])}`, title: lastAn.why ? String([].concat(lastAn.why).join('; ')) : '' }) + (ok(ends) && T(ends) > T(ww[1]) ? bar({ a: ww[1], b: ends, cls: 'hyp ease', text: `easing, ends ${hm(ends)}`, title: 'analysis: when the warned weather ends' }) : ''), 'wx-hyp')
+    tbl.push(['Our analysis (hypothesis)', `worst window, confidence ${conf || 'not stated'}`, ww[0], ww[1], `<span class="prov"><a href="${base}data/weather/analysis.html">analysis</a></span>`])
+}
+const strip = `<section class="card wx-day" id="day"><div class="wx-head"><h2>${esc(dayName)}, hour by hour</h2><p class="meta">Lisbon time (UTC in November). Warnings first; then forecasts; then what was observed; our analysis last and labelled. <span class="wx-nowtxt" id="wx-nowtxt"></span></p></div>
+<div class="wx-scroll" tabindex="0" role="group" aria-label="${esc(dayName)}, hour by hour: scroll sideways"><div class="wx-strip" id="wx-strip" data-d0="${D0}">
+<div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hours.map((_, h) => `<span>${String(h).padStart(2, '0')}</span>`).join('')}</div></div>
+${rows.join('\n')}
+</div></div>
+<details class="wx-table"><summary>The same as a table, each row with its source</summary><table><thead><tr><th>Lane</th><th>What</th><th>From</th><th>To</th><th>Source, time read</th></tr></thead><tbody>${tbl.map(r => `<tr><td>${esc(r[0])}</td><td>${r[1].includes('<') ? r[1] : esc(r[1])}</td><td>${wd(r[2])} ${hm(r[2])}</td><td>${wd(r[3])} ${hm(r[3])}</td><td>${r[4]}</td></tr>`).join('')}</tbody></table>${taf?.raw ? `<p class="meta">The TAF as issued: <code>${esc(taf.raw)}</code></p>` : ''}<p class="meta">Codes: RA rain, +RA heavy rain, TSRA thunderstorm with rain, SHRA showers, BR mist; G gust; TEMPO at times; BECMG becoming.</p></details></section>`
+
+// the tiles: what is warned (the highest level of each type on the day), and the latest observation
+const tiles = types.map(ty => {
+    const ws = lis.filter(w => w.type === ty && inDay(w.start_utc, w.end_utc)), w = ws.slice().sort((a, b) => RANK[b.level] - RANK[a.level])[0], rest = ws.filter(x => x !== w)
+    return { rank: RANK[w.level], html: `<article class="wx-tile t-${esc(w.level)}"><p class="wx-th">${lvl(w.level)} <b>${esc(EN[ty] || ty)}</b> <span class="wx-state" data-from="${T(w.start_utc)}" data-to="${T(w.end_utc)}"></span></p><p class="wx-big">${rng(w.start_utc, w.end_utc)}</p><p class="wx-pt" lang="pt">${esc(w.text_pt || '')}</p>${rest.length ? `<p class="wx-also">Also: ${rest.map(x => `${lvl(x.level)} ${rng(x.start_utc, x.end_utc)}`).join(' · ')}</p>` : ''}<p class="wx-src">${prov(w.source || warn.source, 'IPMA', w.read_utc || warn.read_utc)}</p></article>` }
+}).sort((a, b) => b.rank - a.rank).map(x => x.html)
+const o = gv?.observed_airport_latest, mg = gv?.observed_airport_max_gust
+if (o) tiles.push(`<article class="wx-tile t-obs"><p class="wx-th"><span class="lvl obs">observed</span> <b>Lisbon airport</b></p><p class="wx-big">${esc(o.wind_kmh)} km/h <small>mean wind from ${esc(o.wind_dir)}°, ${o.gust_kmh != null ? `gusting ${esc(o.gust_kmh)} km/h` : 'no gust reported'}</small></p><p class="wx-pt">At ${hm(o.time_utc)} UTC ${dm(o.time_utc)}${o.weather ? `, ${esc(o.weather)}` : ''}${o.pressure_hpa ? `, ${esc(o.pressure_hpa)} hPa` : ''}.${mg ? ` Strongest gust so far: ${esc(mg.kmh)} km/h, ${wd(mg.time_utc)} ${hm(mg.time_utc)}.` : ''}</p><p class="wx-also">The airport's gusts and the warning's gusts are not the same measure.</p><p class="wx-src">${prov(o.source, 'METAR LPPT', o.read_utc)}</p></article>`)
+
+const feed = (sig?.items || []).slice().sort((a, b) => T(b.at) - T(a.at)).slice(0, 14).map(s => {
+    const src = (s.sources || []).find(x => x.url && /^https:/.test(x.url)), via = (s.sources || []).map(x => x.label).filter(Boolean).join('; ')
+    return `<li><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time><div><span class="lbl ${esc(s.kind)}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via)}</span></div></li>`
+}).join('')
+const th = chg?.thursday || {}, thu = th.lisbon_warnings_touching_thursday?.items || [], tm = th.ipma_model_thursday_morning, td = th.ipma_daily_thursday, tt = th.taf_groups_into_thursday
+const thuRows = [
+    ...thu.map(w => `<li><span>${lvl(w.level)} ${esc(EN[w.type] || w.type)} <span class="meta">${rng(w.start_utc, w.end_utc)}</span></span>${prov(w.source, 'IPMA', w.read_utc)}</li>`),
+    !thu.length ? `<li><span>No Lisbon warning touches the day</span>${prov(th.lisbon_warnings_touching_thursday?.source, 'IPMA', th.lisbon_warnings_touching_thursday?.read_utc)}</li>` : '',
+    tm ? `<li><span>Morning, city model: mean wind <b>${esc((tm.wind_mean_kmh_range || []).join(' to '))} km/h</b> from ${esc((tm.wind_dirs || []).join(', '))}; rain probability up to <b>${esc(tm.rain_prob_pct_max)}%</b>; sea ${esc((tm.sea_total_m_range || []).join(' to '))} m</span>${prov(tm.source, 'IPMA hourly', tm.read_utc)}</li>` : '',
+    td ? `<li><span>Day forecast: <b>${esc(td.tMin)} to ${esc(td.tMax)} °C</b>, rain probability ${esc(Math.round(td.precipitaProb))}%, wind from ${esc(td.predWindDir)}</span>${prov(td.source, 'IPMA daily', td.read_utc)}</li>` : '',
+    ...(tt?.groups || []).map(g => `<li><span>Airport, ${rng(g.from_utc, g.to_utc)}: <b>${gtxt(g)}</b></span>${prov(tt.source, `TAF LPPT ${hm(tt.taf_issue_utc)}`, tt.read_utc)}</li>`)
+].join('')
 const front = `<section class="banner"><div class="wrap"><p class="kicker">${esc(inc.kicker || 'Storm Charles · Lisbon')}</p><h1>${esc(inc.headline.text)}</h1>
-<p class="src">Source: <a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}. ${esc(inc.standfirst || '')}</p></div></section>
-<div class="wrap"><div class="grid">
+<p class="src"><span class="lbl official">decision · ${esc(inc.headline.label || 'fact')}</span> Source: <a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}.</p><p class="stand">${esc(inc.standfirst || '')}</p></div></section>
+<div class="wrap">
+<section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
+${strip}
+<div class="grid">
 <section class="card"><h2>Latest signals</h2><ul class="feed">${feed || '<li class="meta">No signals yet.</li>'}</ul><p class="meta"><a href="${base}timeline.html">The whole timeline</a> · <a href="${base}decisions.html">Decisions</a></p></section>
 <aside>
-<section class="card"><h2>IPMA warnings, Lisbon district</h2><ul class="kv">${wx || '<li>None read</li>'}</ul><p class="meta">IPMA open data, read ${esc(hm(warn?.read_utc))} UTC. Times are Lisbon time (= UTC in November).</p></section>
-<section class="card" style="margin-top:16px"><h2>Thursday 12 November</h2><ul class="kv">${thu.map(w => `<li><span>${esc(w.type)} <span class="meta">to ${esc(w.end_utc.slice(5, 16).replace('T', ' '))}</span></span><b>${lvl(w.level)}</b></li>`).join('') || '<li>No Lisbon warning touches Thursday</li>'}</ul><p class="meta">${esc(inc.thursday || '')}</p></section>
-<section class="card" style="margin-top:16px"><h2>For agents and analysts</h2><p class="meta">Every file behind this page, with its sha256: <a href="api/v1/index.json">api/v1/index.json</a>. How to use it: <a href="llms.txt">llms.txt</a>. Refreshed at least hourly while the storm runs.</p></section>
+<section class="card"><h2>${esc(nextName)}</h2><ul class="kv src">${thuRows}</ul><p class="meta">${esc(inc.thursday || '')}</p></section>
+<section class="card"><h2>For agents and analysts</h2><p class="meta">Every file behind this page, with its sha256: <a href="api/v1/index.json">api/v1/index.json</a>. How to use it: <a href="llms.txt">llms.txt</a>. Refreshed at least hourly while the storm runs.</p></section>
 </aside></div>
-<p class="meta"><a href="${base}index.html">The live dashboard</a> (the decision graph, the weather, the timeline) · <a href="${base}data/weather/analysis.html">The meteorologist's analysis</a> (labelled as analysis)</p></div>`
+<p class="meta"><a href="${base}index.html">The live dashboard</a> (the decision graph, the weather, the timeline) · <a href="${base}data/weather/analysis.html">The meteorologist's analysis</a> (labelled as analysis)</p></div>
+<script>
+(function(){var s=document.getElementById('wx-strip');if(!s)return;var d0=+s.dataset.d0,D=864e5;
+function dur(ms){var m=Math.round(ms/6e4),h=Math.floor(m/60);return (h?h+' h ':'')+(m%60)+' min'}
+function tick(){var now=Date.now(),p=(now-d0)/D*100;
+s.querySelectorAll('.wx-now').forEach(function(n){n.remove()});
+if(p>=0&&p<=100)s.querySelectorAll('.wx-track').forEach(function(t){var n=document.createElement('i');n.className='wx-now';n.style.left=p+'%';t.appendChild(n)});
+var z=new Date(now).toISOString().slice(11,16),x=document.getElementById('wx-nowtxt');if(x)x.textContent=p<0?'Now '+z+' UTC: the day starts in '+dur(d0-now)+'.':p<=100?'Now '+z+' UTC: the line in the strip.':'This day is over.';
+document.querySelectorAll('.wx-state').forEach(function(e){var a=+e.dataset.from,b=+e.dataset.to;e.textContent=now<a?'starts in '+dur(a-now):now<b?'in force, '+dur(b-now)+' left':'ended';e.className='wx-state '+(now<a?'pre':now<b?'on':'post')})}
+tick();setInterval(tick,3e4)})();
+</script>`
 write('index.html', page({ rel: 'index.html', title: 'Storm Charles: what is decided, what is warned, what is known', body: front, twin: 'index.md' }))
 write('index.md', `# Storm Charles, Lisbon, November 2026\n\n**${inc.headline.text}** Source: [${inc.headline.source}](${inc.headline.url}), ${inc.headline.at}.\n\n${inc.standfirst || ''}\n\nNot a warning service: follow IPMA, ANEPC and your local authorities.\n\n- [The live dashboard](${base}README.md)\n- [The timeline](${base}timeline.md)\n- [The decisions](${base}decisions.md)\n- [The data, for agents](api/v1/index.json) and [llms.txt](llms.txt)\n`)
 pages.push({ rel: 'index.html', md: 'index.md', title: 'Storm Charles' })
