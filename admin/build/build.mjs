@@ -239,10 +239,57 @@ ${rows.join('\n')}
 </div></div>
 <details class="wx-table"><summary>The same as a table, each row with its source</summary><table><thead><tr><th>Lane</th><th>What</th><th>From</th><th>To</th><th>Source, time read</th></tr></thead><tbody>${tbl.map(r => `<tr><td>${esc(r[0])}</td><td>${r[1].includes('<') ? r[1] : esc(r[1])}</td><td>${wd(r[2])} ${hm(r[2])}</td><td>${wd(r[3])} ${hm(r[3])}</td><td>${r[4]}</td></tr>`).join('')}</tbody></table>${taf?.raw ? `<p class="meta">The TAF as issued: <code>${esc(taf.raw)}</code></p>` : ''}<p class="meta">Codes: RA rain, +RA heavy rain, TSRA thunderstorm with rain, SHRA showers, BR mist; G gust; TEMPO at times; BECMG becoming.</p></details></section>`
 
+// round 2: one chart, one axis (km/h): what is warned, what the airport forecast says, what the airport observed
+const gw = gv?.forecast_ipma_red_wind_warning, gnum = String(gw?.gusts_kmh || '').match(/\d+/g)?.map(Number) || []
+const chart = (() => {
+    const W = 960, H = 290, ml = 40, mr = 14, mt = 14, mb = 30, X0 = D0 - 12 * 36e5, X1 = D1 + 6 * 36e5, YM = 150
+    const x = t => ml + (Math.max(X0, Math.min(X1, T(t))) - X0) / (X1 - X0) * (W - ml - mr), y = v => mt + (1 - v / YM) * (H - mt - mb), f = n => n.toFixed(1)
+    const g = []
+    for (let v = 0; v <= YM; v += 30) g.push(`<line class="grid" x1="${ml}" x2="${W - mr}" y1="${f(y(v))}" y2="${f(y(v))}"/><text class="ax" x="${ml - 6}" y="${f(y(v) + 4)}" text-anchor="end">${v}</text>`)
+    for (let t = X0; t <= X1; t += 3 * 36e5) { const mid = new Date(t).getUTCHours() === 0; g.push(`<line class="${mid ? 'grid day' : 'tick'}" x1="${f(x(t))}" x2="${f(x(t))}" y1="${mid ? mt : H - mb}" y2="${H - mb + 4}"/><text class="ax${mid ? ' b' : ''}" x="${f(x(t))}" y="${H - mb + 16}" text-anchor="middle">${mid ? wd(t) + ' ' + dm(t) : hm(t).slice(0, 2)}</text>`) }
+    if (gw && gnum.length && ok(gw.start_utc)) {
+        const lo = gnum[0], hi = gnum[1] || gnum[0], xa = x(gw.start_utc), xb = x(gw.end_utc)
+        g.push(`<a href="${esc(gw.source)}"><rect class="warned" x="${f(xa)}" y="${f(y(hi))}" width="${f(xb - xa)}" height="${f(y(lo) - y(hi))}"><title>IPMA red wind warning, ${rng(gw.start_utc, gw.end_utc)}: ${esc(gw.text_pt)} (read ${hm(gw.read_utc)} UTC)</title></rect><line class="warned-l" x1="${f(xa)}" x2="${f(xb)}" y1="${f(y(lo))}" y2="${f(y(lo))}"/></a><text class="lab red" x="${f(xa + 6)}" y="${f(y(hi) - 5)}">IPMA red warning: gusts to ${lo}${hi > lo ? `, up to ${hi} in the most exposed places` : ''}</text>`)
+    }
+    for (const q of (taf?.groups || []).filter(q => ok(q.from_utc) && ok(q.to_utc) && T(q.to_utc) > X0 && T(q.from_utc) < X1 && q.wind_kmh != null)) {
+        const kind = q.prob ? 'prob' : q.change === 'TEMPO' ? 'tempo' : 'prev', a = x(q.becoming_by_utc || q.from_utc), b = x(q.to_utc), top = q.gust_kmh ?? q.wind_kmh
+        const name = q.prob ? `${q.prob}% chance` : kind === 'tempo' ? 'at times' : 'prevailing'
+        g.push(`<g class="taf ${kind}"><title>${esc(gttl(q))}</title><line class="hit" x1="${f(a)}" x2="${f(b)}" y1="${f(y(top))}" y2="${f(y(top))}"/><line x1="${f(a)}" x2="${f(b)}" y1="${f(y(top))}" y2="${f(y(top))}"/>${q.gust_kmh != null ? `<line class="mean" x1="${f(a)}" x2="${f(b)}" y1="${f(y(q.wind_kmh))}" y2="${f(y(q.wind_kmh))}"/>` : ''}</g>${b - a > 90 ? `<text class="lab" x="${f(a + 4)}" y="${f(y(top) - 5)}">${name}: ${q.gust_kmh != null ? 'G' : ''}${top}</text>` : ''}`)
+    }
+    const ms = (ap?.metars || []).filter(m => ok(m.time_utc) && T(m.time_utc) >= X0 && T(m.time_utc) <= X1 && m.wind_kmh != null).sort((a, b) => T(a.time_utc) - T(b.time_utc))
+    if (ms.length) {
+        g.push(`<polyline class="obs" points="${ms.map(m => f(x(m.time_utc)) + ',' + f(y(m.wind_kmh))).join(' ')}"/>`)
+        for (const m of ms) g.push(m.gust_kmh != null ? `<circle class="obs-g" cx="${f(x(m.time_utc))}" cy="${f(y(m.gust_kmh))}" r="4"><title>${wd(m.time_utc)} ${hm(m.time_utc)}: gust ${m.gust_kmh} km/h (mean ${m.wind_kmh}). ${esc(m.raw)}</title></circle>` : `<circle class="obs-hit" cx="${f(x(m.time_utc))}" cy="${f(y(m.wind_kmh))}" r="7"><title>${wd(m.time_utc)} ${hm(m.time_utc)}: mean ${m.wind_kmh} km/h, no gust reported. ${esc(m.raw)}</title></circle>`)
+        const l = ms[ms.length - 1]; g.push(`<circle class="obs-last" cx="${f(x(l.time_utc))}" cy="${f(y(l.wind_kmh))}" r="3.5"/><text class="lab blue" text-anchor="end" x="${f(x(l.time_utc) - 4)}" y="${f(y(l.wind_kmh) - 12)}">observed ${hm(l.time_utc)}: ${l.wind_kmh}</text>`)
+    }
+    g.push(`<line class="gnow" id="wx-gnow" data-x0="${X0}" data-x1="${X1}" data-l="${ml}" data-r="${W - mr}" y1="${mt}" y2="${H - mb}" x1="-9" x2="-9"/>`)
+    return `<section class="card wx-day wx-gust" id="wind"><div class="wx-head"><h2>Wind: warned, forecast, observed</h2><p class="meta">One axis, km/h; Lisbon time. Three different measures, shown together and never as one: IPMA's warning is for the district's gusts, most of all in exposed places; the TAF and the observations are for one point, the airport.</p></div>
+<div class="wx-scroll" tabindex="0" role="group" aria-label="Wind in km/h: scroll sideways"><svg class="wx-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Wind in km/h from ${wd(X0)} ${hm(X0)} to ${wd(X1)} ${hm(X1)}: the gusts IPMA warns of, the airport forecast and the airport's observations">${g.join('')}</svg></div>
+<ul class="wx-legend"><li><i class="k warned"></i>Warned gusts ${prov(gw?.source, 'IPMA warning', gw?.read_utc)}</li><li><i class="k prev"></i>Airport forecast, prevailing gust <i class="k tempo"></i>at times <i class="k prob"></i>with a stated chance; thin line: mean wind ${prov(taf?.source, `TAF LPPT ${hm(taf?.issue_utc)}`, taf?.read_utc)}</li><li><i class="k obs"></i>Observed mean wind <i class="k obsg"></i>observed gust ${prov(ms[0]?.source, 'METAR LPPT', ap?.read_utc)}</li></ul></section>`
+})()
+
+// round 2: where. Every district with a red or orange warning on the day, on the same 24 hours
+const AREA = { AVR: 'Aveiro', BJA: 'Beja', BRG: 'Braga', BGC: 'Bragança', CBO: 'Castelo Branco', CBR: 'Coimbra', EVR: 'Évora', FAR: 'Faro', GDA: 'Guarda', LRA: 'Leiria', LSB: 'Lisboa', PTG: 'Portalegre', PTO: 'Porto', STM: 'Santarém', STB: 'Setúbal', VCT: 'Viana do Castelo', VRL: 'Vila Real', VIS: 'Viseu', MCN: 'Madeira, north coast', MCS: 'Madeira, south coast', MRM: 'Madeira, mountains', MPS: 'Porto Santo' }
+const LANE = { 'Vento': 0, 'Precipitação': 1, 'Agitação Marítima': 2 }
+const els = warn?.red_and_orange_elsewhere, byArea = {}
+for (const w of [...(els?.items || []), ...lis.filter(w => RANK[w.level] >= 2).map(w => ({ ...w, area: 'LSB' }))]) if (RANK[w.level] && ok(w.start_utc) && ok(w.end_utc) && inDay(w.start_utc, w.end_utc)) (byArea[w.area] ??= []).push(w)
+const redHours = ws => ws.filter(w => w.level === 'red').reduce((n, w) => n + (Math.min(T(w.end_utc), D1) - Math.max(T(w.start_utc), D0)) / 36e5, 0)
+const areaList = Object.entries(byArea).sort((a, b) => redHours(b[1]) - redHours(a[1]) || (AREA[a[0]] || a[0]).localeCompare(AREA[b[0]] || b[0]))
+const redIn = ty => areaList.filter(([, ws]) => ws.some(w => w.type === ty && w.level === 'red')).map(([a]) => AREA[a] || a)
+const where = areaList.length ? `<section class="card wx-day wx-where" id="where"><div class="wx-head"><h2>Where: ${esc(dayName)}, district by district</h2><p class="meta">${Object.keys(LANE).map(ty => { const r = redIn(ty); return r.length ? `<b>Red ${esc((EN[ty] || ty).toLowerCase())}</b> in ${r.length}: ${esc(r.join(', '))}.` : '' }).filter(Boolean).join(' ')} Every district IPMA has under red or orange on the day (yellow is not shown here); most red hours first. In each row, top to bottom: wind, rain, sea. ${prov(els?.source, 'IPMA warnings', els?.read_utc)}</p></div>
+<div class="wx-scroll" tabindex="0" role="group" aria-label="Warnings by district: scroll sideways"><div class="wx-strip" data-d0="${D0}">
+<div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hours.map((_, h) => `<span>${String(h).padStart(2, '0')}</span>`).join('')}</div></div>
+${areaList.map(([a, ws]) => {
+    const peak = ty => ws.filter(w => w.type === ty).sort((p, q) => RANK[q.level] - RANK[p.level])[0]
+    const sub = Object.keys(LANE).map(ty => { const p = peak(ty); return p ? `${(EN[ty] || ty).toLowerCase().replace(' state', '')} ${p.level}` : '' }).filter(Boolean).join(' · ')
+    return `<div class="wx-row wx-drow${a === 'LSB' ? ' here' : ''}"><div class="wx-lab"><b>${esc(AREA[a] || a)}</b><i>${esc(sub)}</i></div><div class="wx-track">${ws.map(w => { const l = pct(w.start_utc), r = pct(w.end_utc); return r > l ? `<i class="wx-d w-${esc(w.level)}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%;top:${4 + (LANE[w.type] ?? 3) * 9}px" title="${esc(`${AREA[a] || a}: ${EN[w.type] || w.type}, ${w.level}, ${rng(w.start_utc, w.end_utc)}. ${w.text_pt || ''}`)}"></i>` : '' }).join('')}</div></div>`
+}).join('\n')}
+</div></div></section>` : ''
+
 // the tiles: what is warned (the highest level of each type on the day), and the latest observation
 const tiles = types.map(ty => {
     const ws = lis.filter(w => w.type === ty && inDay(w.start_utc, w.end_utc)), w = ws.slice().sort((a, b) => RANK[b.level] - RANK[a.level])[0], rest = ws.filter(x => x !== w)
-    return { rank: RANK[w.level], html: `<article class="wx-tile t-${esc(w.level)}"><p class="wx-th">${lvl(w.level)} <b>${esc(EN[ty] || ty)}</b> <span class="wx-state" data-from="${T(w.start_utc)}" data-to="${T(w.end_utc)}"></span></p><p class="wx-big">${rng(w.start_utc, w.end_utc)}</p><p class="wx-pt" lang="pt">${esc(w.text_pt || '')}</p>${rest.length ? `<p class="wx-also">Also: ${rest.map(x => `${lvl(x.level)} ${rng(x.start_utc, x.end_utc)}`).join(' · ')}</p>` : ''}<p class="wx-src">${prov(w.source || warn.source, 'IPMA', w.read_utc || warn.read_utc)}</p></article>` }
+    return { rank: RANK[w.level], html: `<article class="wx-tile t-${esc(w.level)}"><p class="wx-th">${lvl(w.level)} <b>${esc(EN[ty] || ty)}</b> <span class="wx-state" data-from="${T(w.start_utc)}" data-to="${T(w.end_utc)}"></span></p><p class="wx-big">${rng(w.start_utc, w.end_utc)}</p><p class="wx-pt" lang="pt">${esc(w.text_pt || '')}</p>${gw && gw.gusts_kmh && gw.type === ty && gw.start_utc === w.start_utc ? `<p class="wx-en">Gusts, km/h: ${esc(gw.gusts_kmh)}.</p>` : ''}${rest.length ? `<p class="wx-also">Also: ${rest.map(x => `${lvl(x.level)} ${rng(x.start_utc, x.end_utc)}`).join(' · ')}</p>` : ''}<p class="wx-src">${prov(w.source || warn.source, 'IPMA', w.read_utc || warn.read_utc)}</p></article>` }
 }).sort((a, b) => b.rank - a.rank).map(x => x.html)
 const o = gv?.observed_airport_latest, mg = gv?.observed_airport_max_gust
 if (o) tiles.push(`<article class="wx-tile t-obs"><p class="wx-th"><span class="lvl obs">observed</span> <b>Lisbon airport</b></p><p class="wx-big">${esc(o.wind_kmh)} km/h <small>mean wind from ${esc(o.wind_dir)}°, ${o.gust_kmh != null ? `gusting ${esc(o.gust_kmh)} km/h` : 'no gust reported'}</small></p><p class="wx-pt">At ${hm(o.time_utc)} UTC ${dm(o.time_utc)}${o.weather ? `, ${esc(o.weather)}` : ''}${o.pressure_hpa ? `, ${esc(o.pressure_hpa)} hPa` : ''}.${mg ? ` Strongest gust so far: ${esc(mg.kmh)} km/h, ${wd(mg.time_utc)} ${hm(mg.time_utc)}.` : ''}</p><p class="wx-also">The airport's gusts and the warning's gusts are not the same measure.</p><p class="wx-src">${prov(o.source, 'METAR LPPT', o.read_utc)}</p></article>`)
@@ -264,6 +311,8 @@ const front = `<section class="banner"><div class="wrap"><p class="kicker">${esc
 <div class="wrap">
 <section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
 ${strip}
+${chart}
+${where}
 <div class="grid">
 <section class="card"><h2>Latest signals</h2><ul class="feed">${feed || '<li class="meta">No signals yet.</li>'}</ul><p class="meta"><a href="${base}timeline.html">The whole timeline</a> · <a href="${base}decisions.html">Decisions</a></p></section>
 <aside>
@@ -272,11 +321,12 @@ ${strip}
 </aside></div>
 <p class="meta"><a href="${base}index.html">The live dashboard</a> (the decision graph, the weather, the timeline) · <a href="${base}data/weather/analysis.html">The meteorologist's analysis</a> (labelled as analysis)</p></div>
 <script>
-(function(){var s=document.getElementById('wx-strip');if(!s)return;var d0=+s.dataset.d0,D=864e5;
+(function(){var s=document.getElementById('wx-strip');if(!s)return;var d0=+s.dataset.d0,D=864e5;s=document;
 function dur(ms){var m=Math.round(ms/6e4),h=Math.floor(m/60);return (h?h+' h ':'')+(m%60)+' min'}
 function tick(){var now=Date.now(),p=(now-d0)/D*100;
 s.querySelectorAll('.wx-now').forEach(function(n){n.remove()});
-if(p>=0&&p<=100)s.querySelectorAll('.wx-track').forEach(function(t){var n=document.createElement('i');n.className='wx-now';n.style.left=p+'%';t.appendChild(n)});
+if(p>=0&&p<=100)s.querySelectorAll('.wx-strip .wx-track').forEach(function(t){var n=document.createElement('i');n.className='wx-now';n.style.left=p+'%';t.appendChild(n)});
+var gl=document.getElementById('wx-gnow');if(gl){var a=+gl.dataset.x0,b=+gl.dataset.x1,q=(now-a)/(b-a);if(q>=0&&q<=1){var gx=+gl.dataset.l+q*(gl.dataset.r-gl.dataset.l);gl.setAttribute('x1',gx);gl.setAttribute('x2',gx)}}
 var z=new Date(now).toISOString().slice(11,16),x=document.getElementById('wx-nowtxt');if(x)x.textContent=p<0?'Now '+z+' UTC: the day starts in '+dur(d0-now)+'.':p<=100?'Now '+z+' UTC: the line in the strip.':'This day is over.';
 document.querySelectorAll('.wx-state').forEach(function(e){var a=+e.dataset.from,b=+e.dataset.to;e.textContent=now<a?'starts in '+dur(a-now):now<b?'in force, '+dur(b-now)+' left':'ended';e.className='wx-state '+(now<a?'pre':now<b?'on':'post')})}
 tick();setInterval(tick,3e4)})();
