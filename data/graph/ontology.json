@@ -1,0 +1,173 @@
+{
+  "about": "The ontology of an incident on this site: eight kinds of thing and eight relations, small enough to explain on one page (README.md beside this file). tools/graph-build.mjs reads it, builds data/graph/storm.json and data/graph/tables/*.json from the incident's JSON files, and refuses a node or edge this file does not allow. Kept by incident.graph@web-summit.dinis.",
+  "version": 1,
+  "written": "2026-11-10T23:50Z",
+  "by": "incident.graph@web-summit.dinis",
+  "every_item": {
+    "about": "Every node and every edge carries these four, with no exception.",
+    "fields": {
+      "label": "fact | evidence | hypothesis",
+      "source": "an https URL: where it was read (a primary channel, a press page, or the file on this site it was derived from)",
+      "read": "the UTC time it was read (where the file gives no time per item, the file's own time)",
+      "origin": "the file and the place inside it this item was built from (file#pointer)"
+    }
+  },
+  "labels": {
+    "fact": "read on the channel of the body that decides or warns, by us or by a named desk",
+    "evidence": "reported by others (press, a relayed statement, a public post), with its source; holds until a primary source says otherwise",
+    "hypothesis": "our analysis, with its reasons; never stated as fact"
+  },
+  "types": {
+    "Actor": {
+      "what": "Someone who decides, warns or reports.",
+      "kinds": {
+        "body": "a public body: an authority, the government, a municipality",
+        "operator": "runs a service: transport, a venue, a bridge, schools",
+        "organiser": "runs the event: Web Summit and its own programmes",
+        "outlet": "where others report: the press and public social platforms"
+      },
+      "id": "actor:<id>",
+      "from": "decisions/graph.json nodes; outlets from the hosts of the URLs that evidence and signals cite"
+    },
+    "Decision": {
+      "what": "Something an actor decided, or has not yet announced (status says which).",
+      "id": "decision:<id>",
+      "from": "decisions/graph.json edges"
+    },
+    "Warning": {
+      "what": "A warning from a body that warns: issued (the moment it was made or first read) or in force (its type, level, area, start and end).",
+      "id": "warning:<id>",
+      "from": "decisions/graph.json edges by IPMA and ANEPC's avisos; weather/warnings.json"
+    },
+    "Signal": {
+      "what": "A row of the incident's timeline: something published, said or observed, at a time.",
+      "id": "signal:<time>:<hash>",
+      "from": "signals.json"
+    },
+    "Source": {
+      "what": "A URL that was read: a page, a feed, an API.",
+      "id": "source:<id>",
+      "from": "decisions/sources.json; every other URL an item cites"
+    },
+    "Place": {
+      "what": "Where a warning applies: an IPMA warning area (a district) or mainland Portugal.",
+      "id": "place:<code>",
+      "from": "weather/warnings.json areas; names from IPMA's list of districts (data/graph/ref/ipma-areas.json)"
+    },
+    "Dataset": {
+      "what": "A JSON file of the incident, served on this site and under api/v1/.",
+      "id": "dataset:<path>",
+      "from": "the files under incidents/<id>/data/"
+    },
+    "Agent": {
+      "what": "An agent or desk that reads sources and writes datasets.",
+      "id": "agent:<name>",
+      "from": "data/keys.json; the read_by and updated_by fields of the datasets"
+    }
+  },
+  "relations": {
+    "decides": {
+      "from": [
+        "Actor"
+      ],
+      "to": [
+        "Decision"
+      ],
+      "what": "the actor made (or owes) this decision"
+    },
+    "warns": {
+      "from": [
+        "Actor"
+      ],
+      "to": [
+        "Warning"
+      ],
+      "what": "the body issued this warning"
+    },
+    "reports": {
+      "from": [
+        "Actor"
+      ],
+      "to": [
+        "Signal",
+        "Decision",
+        "Warning"
+      ],
+      "what": "the actor published it: an outlet reporting a decision, a body publishing on its own channel"
+    },
+    "cites": {
+      "from": [
+        "Decision",
+        "Warning",
+        "Signal"
+      ],
+      "to": [
+        "Source"
+      ],
+      "what": "the item was read at this URL (or is corroborated by it)"
+    },
+    "precedes": {
+      "from": [
+        "Decision",
+        "Warning"
+      ],
+      "to": [
+        "Decision",
+        "Warning"
+      ],
+      "what": "time order between two items the researcher linked (follows); carries lead_minutes when both times are known to the minute. Order only: it does not claim cause",
+      "attributes": {
+        "lead_minutes": "minutes from the earlier to the later; null when either time is unknown or known only to the day"
+      }
+    },
+    "affects": {
+      "from": [
+        "Decision",
+        "Warning"
+      ],
+      "to": [
+        "Actor"
+      ],
+      "what": "the actors a decision touches (the researcher's `to`)"
+    },
+    "located-in": {
+      "from": [
+        "Warning",
+        "Place"
+      ],
+      "to": [
+        "Place"
+      ],
+      "what": "a warning's area; a district inside mainland Portugal"
+    },
+    "produced-by": {
+      "from": [
+        "Dataset",
+        "Source"
+      ],
+      "to": [
+        "Agent",
+        "Actor"
+      ],
+      "what": "who made it: a dataset by the agent that keeps it, a source by the actor whose channel it is"
+    }
+  },
+  "own_channels": {
+    "about": "The one hand-kept list the builder uses. A host is an actor's own channel when the researcher read the actor there as a fact; these hosts are added because they are plainly the actor's own although its node was read through the press. not_outlets: hosts that carry files, not reporting; they never become an outlet.",
+    "hosts": {
+      "lisboa.pt": "camara-lisboa",
+      "informacao.lisboa.pt": "camara-lisboa",
+      "metrolisboa.pt": "metro",
+      "lusoponte.pt": "lusoponte",
+      "cp.pt": "cp",
+      "mai.gov.pt": "mai",
+      "rede-expressos.pt": "rede-expressos"
+    },
+    "not_outlets": [
+      "raw.githubusercontent.com",
+      "github.com"
+    ]
+  },
+  "not_in_the_graph": "People. No private person is a node; journalists and officials are not modelled here (incident.media@ keeps by-lines on public articles in its own files). Forecast values and observations stay in weather/*.json: the graph links the dataset, not each number.",
+  "not_a_warning_service": "The graph records what authorities decided and warned, and when we read it. It is not a forecast and gives no advice: follow IPMA and ANEPC."
+}
