@@ -63,17 +63,36 @@
             return c
         } catch (e) { return c ? { ...c, error: e.message } : { read: 0, items: [], error: e.message } }
     }
+    // CI's own measured push-to-served, from the notice the workflow's last step prints (title "push-to-served"): two public
+    // API reads per release, kept for good in this browser once read (a finished run never changes); one new release per
+    // refresh at most, and only while GitHub's hourly allowance for this address is not running low
+    const EX = 'sc-agents-served-v1'
+    const exactAll = () => { try { return JSON.parse(localStorage.getItem(EX)) || {} } catch { return {} } }
+    async function exact(R) {
+        const have = exactAll(), r = R.items.find(r => r.conclusion === 'success' && !(r.sha in have)); if (!r) return have
+        try {
+            const res = await fetch(`https://api.github.com/repos/${REPO}/commits/${r.sha}/check-runs?per_page=20`, { headers: { Accept: 'application/vnd.github+json' } })
+            if (!res.ok || +(res.headers.get('x-ratelimit-remaining') || 0) < 20) return have
+            const cr = ((await res.json()).check_runs || []).find(c => c.name === 'deploy' && c.conclusion === 'success'); if (!cr) return have
+            const an = await getJSON(`https://api.github.com/repos/${REPO}/check-runs/${cr.id}/annotations`, { headers: { Accept: 'application/vnd.github+json' } })
+            const m = (an.find(a => a.title === 'push-to-served') || {}).message, n = m && String(m).match(/^(\d{1,5}) s\b/)
+            have[r.sha] = n ? +n[1] : null   // null: that run printed no figure (it ran before the notice existed)
+            const keys = Object.keys(have); for (const k of keys.slice(0, Math.max(0, keys.length - 80))) delete have[k]
+            try { localStorage.setItem(EX, JSON.stringify(have)) } catch { }
+        } catch { }
+        return have
+    }
     const secs = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 1000)
-    function releases(R, by, series) {
+    function releases(R, by, series, X = {}) {
         if (!R.items.length) return `<p class="ag-note">${R.error ? `<span class="ag-err">GitHub did not answer (${T(R.error)}).</span> ` : ''}No run records read. Each run's own summary on GitHub carries CI's measured "push to served".</p>`
         const who = new Map(); for (const [name, cs] of by) for (const c of cs) who.set(c.sha, name)
         const done = R.items.filter(r => r.conclusion === 'success').map(r => secs(r.pushed, r.ended)).filter(x => x > 0 && x < 3600).sort((a, b) => a - b)
         const q = p => done.length ? done[Math.min(done.length - 1, Math.floor(p * done.length))] : null
         const n = k => R.items.filter(r => r.conclusion === k).length
         return `<div class="ag-sum"><div><b>${q(0.5) ?? 'n/a'} s</b><span>median, push to run finished</span></div><div><b>${q(0.9) ?? 'n/a'} s</b><span>slowest tenth, at least</span></div><div><b>${done[0] ?? 'n/a'} s</b><span>fastest</span></div><div><b>${n('success')}</b><span>deployed</span></div><div><b>${n('cancelled')}</b><span>superseded by a newer push</span></div><div><b>${n('failure')}</b><span>failed</span></div></div>
-<table class="ag-flow"><thead><tr><th>Release</th><th>Pushed (UTC)</th><th>By</th><th>Result</th><th>Push to run finished</th></tr></thead><tbody>${R.items.slice(0, 20).map(r => { const s = secs(r.pushed, r.ended), ok = r.conclusion === 'success'
-            return `<tr><td><a href="${esc(/^https:/.test(r.url) ? r.url : '#')}"><code>v${esc(series)}.${esc(r.n)}</code></a></td><td>${esc(String(r.pushed).slice(11, 19))}</td><td><code>${T(short(who.get(r.sha) || '') || '?')}</code></td><td>${ok ? 'deployed' : r.conclusion === 'cancelled' ? 'superseded' : r.conclusion === 'failure' ? '<span class="ag-err">failed</span>' : T(r.status)}</td><td class="n">${ok && s > 0 ? `<span class="bar" style="width:${Math.min(120, s)}px"></span>${s} s` : ''}</td></tr>` }).join('')}</tbody></table>
-<p class="ag-note">From the last ${R.items.length} runs of the deploy workflow on dev (GitHub's public API, read ${esc(new Date(R.read).toISOString().slice(11, 19))} UTC, cached five minutes). "Push to run finished" is the commit's time to the end of its CI run: it includes the build, the gate, the deploy and CI's own wait until the site serves the new version, so it is an upper bound on push-to-served, a few seconds above it. The exact figure CI measures is in each run's summary on GitHub, which the public API does not expose; a one-line change to the workflow would (asked of the conductor).</p>`
+<table class="ag-flow"><thead><tr><th>Release</th><th>Pushed (UTC)</th><th>By</th><th>Result</th><th>Push to run finished</th><th>Push to served (CI's measure)</th></tr></thead><tbody>${R.items.slice(0, 20).map(r => { const s = secs(r.pushed, r.ended), ok = r.conclusion === 'success'
+            return `<tr><td><a href="${esc(/^https:/.test(r.url) ? r.url : '#')}"><code>v${esc(series)}.${esc(r.n)}</code></a></td><td>${esc(String(r.pushed).slice(11, 19))}</td><td><code>${T(short(who.get(r.sha) || '') || '?')}</code></td><td>${ok ? 'deployed' : r.conclusion === 'cancelled' ? 'superseded' : r.conclusion === 'failure' ? '<span class="ag-err">failed</span>' : T(r.status)}</td><td class="n">${ok && s > 0 ? `<span class="bar" style="width:${Math.min(120, s)}px"></span>${s} s` : ''}</td><td class="n">${X[r.sha] != null ? `<b>${esc(X[r.sha])} s</b>` : ''}</td></tr>` }).join('')}</tbody></table>
+<p class="ag-note">From the last ${R.items.length} runs of the deploy workflow on dev (GitHub's public API, read ${esc(new Date(R.read).toISOString().slice(11, 19))} UTC, cached five minutes). "Push to run finished" is the commit's time to the end of its CI run: it includes the build, the gate, the deploy and CI's own wait until the site serves the new version, so it is an upper bound on push-to-served, a few seconds above it. "Push to served" is CI's own measure, printed by the workflow's last step as a notice and read here from the public check-runs API: one release per refresh, kept in this browser, so the column fills in over a few minutes and is empty for runs older than the notice. A newer push waits for the run in progress, and only the newest waiting push is deployed ("superseded" marks the ones skipped).</p>`
     }
     async function ledger(idx) {
         const files = await Promise.all((idx.ledger || []).map(f => getJSON(`${BASE}${f}?t=${Math.floor(Date.now() / 6e4)}`).catch(() => null)))
@@ -134,6 +153,7 @@ ${a.job ? `<details><summary>Its job (agents/JOBS.md)</summary><p>${T(a.job).rep
             } catch { }
         }))
         const [gh, ver, R, led] = await Promise.all([commits(), getJSON(`${BASE}version.json?t=${Date.now()}`).catch(() => null), runs(), ledger(idx).catch(() => '')])
+        const X = R.items.length ? await exact(R) : {}
         const series = String(ver?.version || 'v0.1.0').replace(/^v/, '').split('.').slice(0, 2).join('.')
         const by = new Map(); for (const c of gh.items) { if (!by.has(c.agent)) by.set(c.agent, []); by.get(c.agent).push(c) }
         const known = new Set(idx.agents.map(a => a.name)), strangers = [...by.keys()].filter(n => n && !known.has(n))
@@ -164,7 +184,7 @@ ${strangers.length ? `<p class="ag-note">Also pushing here, not in agents/JOBS.m
 <h2 class="ag-h" id="flow">Who writes for whom (the commits' For: trailers)</h2>
 ${flow(gh.items)}
 <h2 class="ag-h" id="releases">Release speed, push by push</h2>
-${releases(R, by, series)}
+${releases(R, by, series, X)}
 <h2 class="ag-h" id="ledger">Model calls (the ledger)</h2>
 ${led}
 <h2 class="ag-h" id="pushes">The last pushes</h2>
