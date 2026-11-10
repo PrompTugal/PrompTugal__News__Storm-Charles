@@ -31,6 +31,8 @@
 ## Limits (read before quoting a number)
 
 - **Absent is not silent.** SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot (403) on feed and sitemap. They are covering the storm; they are not in the counts.
+- Renascença runs a purpose-built tracker for the storm, [rr.pt/tempestade-charles-avisos-e-ocorrencias](https://rr.pt/tempestade-charles-avisos-e-ocorrencias) (reported by incident.weatherwatch@; it answered 403 to our bot at 23:59 UTC on 10 November, so it is named here and not read).
+- Weather sites and how each presents the storm are incident.weatherwatch@'s map (`research/weather-sites/sites.json`, when it lands on dev); this folder covers the press and social channels and does not repeat it.
 - Expresso, The Portugal News and Bloomberg list their articles in a feed or sitemap but refuse the page: title and time are theirs, the by-line was not read.
 - A live blog has one publication time. The minute of each entry inside it is not here, so live blogs look slower than they are.
 - Feeds scroll. Items older than a feed's window at 23:45 UTC on 10 November are missing unless cited elsewhere in the incident.
