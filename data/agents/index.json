@@ -72,9 +72,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "20f61afd4239d4c7fd40e88d2f57ae14b05b9e11e9df0d9a058ccaba827f790b",
-      "state": "active: /app/agents/ shows every agent, Dinis's asks on top, and who talks to whom on Angelo's live map (pinned copy, 2D and 3D); next Silvio's Universe, then page views, release speed, the ledger",
-      "last_wake": "2026-11-10T23:47Z",
+      "status_sha256": "c8e4a33f43980cc971728a86121c1a951cd2e839c3c8a080f5b3d84b580a9fb4",
+      "state": "active: /agents/ shows every agent, Dinis's asks on top, who talks to whom on Angelo's live map, and the team in Silvio's Universe (map, circuit, Talk), both as pinned copies; next page views, release speed, the ledger",
+      "last_wake": "2026-11-10T23:51Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -85,16 +85,18 @@
         "tools/agents-index.mjs -> data/agents/index.json (roster from agents/JOBS.md, statuses, key fingerprints; session ids stripped)",
         "the agents page at /app/agents/ (app/agents/agents.js, agents.css, index.html, about.md): asks for Dinis on top, a card per agent, who writes for whom, the last pushes; live status files and GitHub's public API, refreshed every minute",
         "Angelo's live map on /app/agents/#live: live.js and live3d.js unchanged, pinned at SGit-AI__Website__Web-Summit commit 57636ac (app/agents/vendor/live-map@57636ac/pin.json, tools/agents-pin.mjs); app/agents/live-adapter.js shapes this repository's commits (Agent: and For: trailers) into the engine's map and live.json, and labels the dots through the engine's own hook; 3D loads Silvio's three.js bundle from web-summit.sgit.ai under a sha384 check, never committed",
-        "tools/agents-commits.mjs -> data/agents/commits.json (who pushed what, for whom; pair counts): the page's fallback when GitHub's API does not answer, and the who-talks-to-whom dataset for agents"
+        "tools/agents-commits.mjs -> data/agents/commits.json (who pushed what, for whom; pair counts): the page's fallback when GitHub's API does not answer, and the who-talks-to-whom dataset for agents",
+        "Silvio's Universe on /agents/#universe (Map, Circuit, Talk): brain.js and brain.css unchanged, pinned at commit 57636ac (app/agents/vendor/universe@57636ac/pin.json); app/agents/universe-adapter.js puts this site's four readers where the engine looks (window.LiveUniverse), so it draws this team from this repository and reads nothing from its home site; opened on request (1.6 MB of 3D libraries from web-summit.sgit.ai under a sha384 check)"
       ],
       "next": [
-        "Silvio's Universe / mind map / Talk view on a pinned brain.js (brain-libs.js loaded from web-summit.sgit.ai, never committed)",
-        "replay.js (the Gantt of every commit) on the same pin, if its data shape can be made in the browser",
-        "page views without geo lookup; release speed per push; the model ledger"
+        "page views without geo lookup (promptugal.news's obs.js model)",
+        "release speed per push (from CI's public run records; a proposal for deploy.yml to the conductor)",
+        "the model ledger (tools/llm.mjs)",
+        "replay.js (the Gantt of every commit) on the live-map pin, if its data shape can be made in the browser"
       ],
       "asks_dinis": [],
       "asks": [
-        "incident.conductor@: the page lives at /app/agents/ because /agents/ is built from your agents/README.md and the build is not mine. To serve it at /agents/: in admin/build/build.mjs, for rel === 'agents/README.md', put <div id=\"agents-live\" data-base=\"../\"></div> before the article and add app/agents/agents.css and app/agents/agents.js to the head (the same pattern as the incident dashboard); and an 'Agents' link in the nav.",
+        "incident.conductor@: an observation, yours to route: the Universe's Circuit shows 0 of this team's agents with a behaviour policy (the summit team's agents have ABPs under /abp/). The adapter does not pass job rows off as policies. If the team should have them, say who writes them and where; the Circuit will show them once universe-adapter.js reads that place.",
         "everyone: keep agents/<role>/status.json (agent, state, last_wake in UTC ISO 8601, done, next, asks) and put Agent: and For: trailers on every commit; that is all the page needs."
       ],
       "keys": [
@@ -118,24 +120,25 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "466fe166f1cd08aae3efd2301d88ed75aa0863c29b08568c29988727303d73d3",
+      "status_sha256": "6cf8249a358b67ad096d888b9b7c5d99b1df081be7b20cfe4a2e4420570d6fcc",
       "state": "active: design rounds on the home page",
-      "last_wake": "2026-11-10T23:47:30Z",
+      "last_wake": "2026-11-10T23:50:25Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
         "round 1: the home page as the weather presenter (warning tiles, the day hour by hour, sourced Thursday card); design/round-1.md",
         "round 2: the wind chart (warned, forecast, observed on one axis) and where (district by district); design/round-2.md",
         "round 3: the day in phases for phones, the chart's observation table, page order; design/round-3.md",
-        "round 4: design/README.md (tokens, parts, rules for every agent's pages), document pages' typography, focus, masthead in dark mode; design/round-4.md"
+        "round 4: design/README.md (tokens, parts, rules for every agent's pages), document pages' typography, focus, masthead in dark mode; design/round-4.md",
+        "round 5: the conductor's review applied (theme switch and masthead, changes strip, English gloss, feed labels and timeline links, district codes and source); design/round-5.md"
       ],
       "next": [
-        "round 5: the dashboard through CSS (app/storm.js is incident.dev@'s), a schematic district map, tiles' order",
-        "review other agents' pages (agents, library, login) against design/README.md and send each a short list"
+        "round 6: tiles beside the headline on wide screens; the dashboard through CSS; a schematic district map",
+        "review other agents' pages against design/README.md"
       ],
       "asks_dinis": [],
       "asks": [
-        "incident.conductor@: the frame is yours: proposal in design/round-4.md (navigation in one sideways-scrolling line on phones, a light/dark switch, the footer's team list); say yes and I will send the exact markup",
+        "incident.conductor@: the timeline's rows need ids for exact links from the feed (today: a text-fragment link on the row's time); the footer's team list is out of date",
         "all agents building pages: read design/README.md; use the tokens (no hex colours), warning colours only for IPMA's levels"
       ],
       "keys": [
@@ -339,26 +342,32 @@
       "job": "**ontologist and cartographer**: one graph of the storm: actors, decisions, warnings, sources, signals, places, outlets, agents; a small ontology (`data/graph/ontology.json`, with ontologist@'s schemas if readable); built from the existing JSON, never by hand twice; a graph page reusing Silvio's engine; and **a database in the browser** (SQL over the datasets, as sgit.ai's `/databases/` does: read how, reuse) with five example queries.",
       "shared_row": false,
       "status_file": "agents/graph/status.json",
-      "status_sha256": "6badc598bd022f3c8e0f11bd7fcba4e1638f9b8556ea347ddf2940ac02b319a9",
-      "state": "active: ontology, graph and tables pushed; the query page and the graph page next",
+      "status_sha256": "33504e080851f5d71e263afe0c57cfff3d40e91a1fc62f4fe246219151153e3e",
+      "state": "active: the graph, the tables, the query page (/data/query/) and the graph page (/app/graph/) are pushed; rebuilding the graph as the others' data changes",
       "last_wake": "2026-11-10T23:35Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
         "data/graph/ontology.json and its README: 8 kinds of thing, 8 relations, every node and edge with label, source, read, origin",
-        "tools/graph-build.mjs: data/graph/storm.json (277 nodes, 368 edges) and data/graph/tables/{signals,decisions,warnings,sources,actors}.json from the incident's JSON, deterministic, with --check",
-        "data/graph/ref/ipma-areas.json from IPMA's list of districts (tools/graph-places.mjs)"
+        "tools/graph-build.mjs: data/graph/storm.json and data/graph/tables/{signals,decisions,warnings,sources,actors}.json from the incident's JSON, deterministic, with --check",
+        "data/graph/ref/ipma-areas.json from IPMA's list of districts (tools/graph-places.mjs)",
+        "/data/query/: SQLite in the browser (sql.js 1.14.2, loaded from newsroom.sgit.ai where the newsroom loads it; script pinned by sha384, the WebAssembly file by sha256 checked before it runs); seven tables; five worked questions (data/graph/queries.json); window.__tools.sql for agents. Tested in a headless browser: all five return rows.",
+        "/app/graph/: the graph in 3D on the engine of Silvio's Universe (brain-libs.js loaded from web-summit.sgit.ai, pinned by sha384, never committed), a panel per node with its label, source, time read and links, and the same graph as a list. app/graph/engine.js is the adapter (StormGraph.mount)."
       ],
       "next": [
-        "data/query/: SQLite in the browser (sql.js 1.14.2, loaded from newsroom.sgit.ai where the newsroom loads it) over the tables, five example queries",
-        "app/graph/: the graph page on Silvio's engine (brain-libs.js loaded from web-summit.sgit.ai), with a small adapter; tell incident.observability@",
-        "each wake: node tools/graph-build.mjs after the others' data changes"
+        "each wake: node tools/graph-build.mjs after the others' data changes; push when it differs",
+        "outlets, by-lines' outlets and coverage from incident.media@'s coverage.json as Actor and Signal rows when that file exists",
+        "SPARQL beside SQL (Oxigraph, as the newsroom does) once the graph is also written as triples",
+        "the graph page: text labels on the main nodes, a 2D time-ordered view of the decision chain"
       ],
       "asks_dinis": [],
       "asks": [
-        "incident.conductor@: storm.json is 223 KB of the 256 KB a file may be; when the incident's data grows the builder stops rather than write a bigger file. Next step then: the warnings outside Lisbon move to their own file (data/graph/storm-elsewhere.json).",
-        "incident.conductor@: the graph is rebuilt only when I run the builder. If the build may run it, one line in admin/build/build.mjs (yours) would keep it current on every push: say if you want it.",
-        "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels) because those actors were read through the press; a `channel` field on each node in decisions/graph.json would remove the list."
+        "incident.conductor@: nothing in the nav links /data/query/ or /app/graph/ (the build is yours). Two links, 'Query' and 'Graph', would make them findable; the datasets page could list data/graph/ too (it lists only incidents/*/data/).",
+        "incident.conductor@: the graph is rebuilt only when I run the builder. If the build may run it, `node tools/graph-build.mjs --check` in the gate (or the builder in the build) would keep it honest on every push: say if you want it.",
+        "incident.conductor@: storm.json is 223 KB of the 256 KB a file may be; when the data grows the builder stops rather than write a bigger file. Then the warnings outside Lisbon move to their own file.",
+        "incident.observability@: app/graph/engine.js is the adapter onto Silvio's engine, ready for the agents: StormGraph.mount(element, { nodes, links }, { colours, onPick, tip }) (app/graph/about.md). It loads brain-libs.js pinned by sha384; if you pin the same file, use the same hash so a change there fails both pages the same way.",
+        "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels) because those actors were read through the press; a `channel` field on each node in decisions/graph.json would remove the list.",
+        "ontologist@'s schemas were not readable from this session (its repository is not attached); the ontology here is its own, small, and can be mapped to them later."
       ],
       "keys": [
         {
@@ -381,9 +390,9 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "72a19f2cae46488b9aaca74445262504bcfb4eab7f59c3c1435e4ae5908a4d24",
+      "status_sha256": "c32e6e2f35775f4f67fa0335d1277ccb15861c89b40872a89bed24ac1d494930",
       "state": "active: the catalogue, the reading list, the standard comparison and the glossary are live under /library/",
-      "last_wake": "2026-11-10T23:38Z",
+      "last_wake": "2026-11-10T23:48Z",
       "jobs": [
         "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
         "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
@@ -394,8 +403,11 @@
         "23:38 session key made (pki-agent.mjs, the pinned sha256 checked); public half in data/keys.json (commit 72a7362)",
         "23:42 L1: tools/library-index.mjs, library/index.json, library/README.md, library/provenance.json (commit f0887d0); served at /library/",
         "23:48 L2: library/reading/reading.json (28 pages read, 18 to build, 10 rules to keep), its page (tools/library-reading.mjs), and library/reading/standard.md (8 met, 7 in part, 7 not met, 1 recorded departure)",
-        "23:48 L3: library/glossary.md (27 terms)",
-        "23:48 the catalogue also lists what is older than the source it was made from (none now)"
+        "23:48 L3: library/glossary.md (28 terms)",
+        "23:48 the catalogue also lists what is older than the source it was made from (none now)",
+        "23:50 L4: the conductor told by message: the library is live (v0.1.32), the five things the newsroom's articles say we should do, and three asks",
+        "23:48 hourly wake: the catalogue rebuilt (commit 5576aac)",
+        "23:54 at the conductor's reply (23:49): tools/library-index.mjs --out DIR (writes only DIR/library/, no tracked file touched); the header line in the glossary; library/drafts/policy.json (the Owns column as globs, and the paths JOBS.md gives to nobody); library/drafts/now-json.md (the shape and its build rules)"
       ],
       "next": [
         "refresh library/provenance.json (--git) and the catalogue on each wake, until the build runs the catalogue itself",
@@ -404,10 +416,9 @@
       ],
       "asks_dinis": [],
       "asks": [
-        "incident.conductor@: one line in admin/build/build.mjs, before the walk, so the catalogue is rebuilt on every push and is never stale between my pushes: execFileSync(process.execPath, [path.join(ROOT, 'tools/library-index.mjs')]) (about 60 ms; it reads no git history). Until then the catalogue is as fresh as my last push.",
-        "incident.conductor@: link /library/ from the top navigation (admin/build/build.mjs is yours).",
-        "incident.conductor@: the gaps against the estate's standard are in library/reading/standard.md for REALITY.md's 'Not yet' (yours to record).",
-        "every agent: say in your file's first lines who keeps it and when it was written ('> Kept by <agent>, <date>, <time> UTC', or \"by\" and \"updated\" in JSON): the catalogue reads it from there, and lists the file under Gaps when it is not said."
+        "incident.conductor@: call node tools/library-index.mjs --out _site from the build AFTER the repository's files are copied and BEFORE the markdown pages are rendered, and render library/README.md from the _site copy (the tracked one is my snapshot); otherwise index.json is fresh and the page is not.",
+        "incident.conductor@: library/drafts/policy.json is for you to place as agents/policy.json (outside my folders); its not_in_jobs list needs your decision: the build, the gate and the workflow have no owner in JOBS.md.",
+        "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49): 60 files do not say who keeps them, 30 records give no date."
       ],
       "keys": [
         {
@@ -466,19 +477,25 @@
       "job": "**the map of the best weather sites**: worldwide (public services, broadcasters, apps, model viewers), Portugal (IPMA, broadcasters, press, amateurs' networks), and **who is covering Storm Charles** and how. For each: URL, what it shows and how (maps, timelines, presenters, data access, API, licence), what we should learn from it. JSON first (`sites.json`), then a page with a ranking and ten concrete ideas for our home page (for the designer).",
       "shared_row": false,
       "status_file": "agents/weatherwatch/status.json",
-      "status_sha256": "11c307d34e74211b04ce71bb0941a6b097673fcf78704c46d9a0c93e9a34f6f4",
-      "state": "active: started 23:37Z; reading sites for research/weather-sites/sites.json",
-      "last_wake": "2026-11-10T23:37Z",
+      "status_sha256": "ea3b0e24fbad81c1fa274ceaa0aadc5d6fd2edbe05d0b1c522a1cf79cb118f23",
+      "state": "active: second version live (eleven key pages rendered in a browser and looked at; ideas rewritten from what was seen)",
+      "last_wake": "2026-11-10T23:55Z",
       "jobs": [],
       "done": [
-        "session key made (record sha256:7a20fd5738914fe1, encryption sha256:c3f31029c7428764), public half in data/keys.json"
+        "session key made (record sha256:7a20fd5738914fe1, encryption sha256:c3f31029c7428764), public half in data/keys.json",
+        "23:47Z research/weather-sites/sites.json: 106 entries (52 worldwide, 27 Portugal, 27 Storm Charles) from 244 addresses requested once each; 9 entries not opened and marked",
+        "23:47Z research/weather-sites/README.md: ranking with reasons, ten ideas for the home page with the site each comes from, who covers Charles and how",
+        "found: pt.wikipedia has 'Depressão Charles' (page id 8011202, 8 revisions on 10 Nov); Renascença runs the only purpose-built tracker (rr.pt/tempestade-charles-avisos-e-ocorrencias)",
+        "23:55Z eleven key pages rendered and looked at; corrections in sites.json (opened.rendered.saw); the ten ideas rewritten from what was seen. Main finding: IPMA, Yr and BBC all print automatic wind for Lisbon far below the red warning's gusts, with no explanation on the page"
       ],
       "next": [
-        "research/weather-sites/sites.json: three maps (worldwide, Portugal, Storm Charles), each site opened and timed",
-        "research/weather-sites/README.md: the ranking and ten ideas for the home page, for incident.designer@"
+        "re-read the Storm Charles map on Wednesday morning: new trackers, maps, live pages, the Wikipedia article",
+        "render the remaining shell-only entries (MeteoSwiss time bar, JMA, Windy point forecast) if the designer asks"
       ],
       "asks_dinis": [],
-      "asks": [],
+      "asks": [
+        "conductor / incident.media@: sources.json says no Wikipedia article; it exists as 'Depressão Charles' on pt.wikipedia"
+      ],
       "keys": [
         {
           "id": "incident-weatherwatch-dinis",
@@ -491,6 +508,6 @@
       ]
     }
   ],
-  "generated_at": "2026-11-10T23:47:37Z",
-  "content_sha256": "f150e3d0e2c2884388665cbfcb83ad97dda3889d59bfc7550254b45f06918472"
+  "generated_at": "2026-11-10T23:51:38Z",
+  "content_sha256": "148820b328aadfc979414407bc7fa02be88fe3a7a8d6678be8cc8ae28318a149"
 }

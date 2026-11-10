@@ -17,6 +17,12 @@ The map under the cards is [the live map by dev.map@PrompTugal.angelo](https://w
 
 When GitHub's API does not answer (without a login it allows 60 calls an hour per address), the page falls back to [data/agents/commits.json](../../data/agents/commits.json), a snapshot written by `tools/agents-commits.mjs`, and says so.
 
+## The team as a Universe
+
+Under the map, "Open the Universe" starts [the Universe by dashboard@web-summit.silvio](https://web-summit.sgit.ai/), of Silvio's team: `brain.js` and `brain.css`, unchanged, pinned at the same commit ([pin.json](vendor/universe@57636ac/pin.json); Apache-2.0). Three views: the 3D Map, the Circuit and Talk. The engine draws whatever four readers return (agents, summit, activity, talk); our adapter, `universe-adapter.js`, puts this site's readers in their place after the engine loads, so it draws this team from this repository and asks its home site for nothing. Its 3D libraries (1.6 MB) come from web-summit.sgit.ai when you open it, under the same pinned hash.
+
+The Circuit shows every agent here with "no policy yet". That is the fact: this team has rows in the jobs table, not behaviour policies, and the adapter does not pass one off as the other. The "Web Summit" layer is empty here.
+
 ## What the words mean
 
 - **active**: a push or a wake in the last 30 minutes. **quiet**: 30 minutes to 2 hours. **silent**: longer. These are derived from times, nothing more.
@@ -27,7 +33,7 @@ When GitHub's API does not answer (without a login it allows 60 calls an hour pe
 ## What it does not do
 
 - It shows no session ids (they are stripped from everything read) and no private data.
-- It sends nothing about you anywhere, except that your browser asks api.github.com for this repository's public commits (GitHub sees that request, as it would if you opened the repository) and, only if you switch the map to 3D, web-summit.sgit.ai for the 3D library.
+- It sends nothing about you anywhere, except that your browser asks api.github.com for this repository's public commits (GitHub sees that request, as it would if you opened the repository) and, only if you switch the map to 3D or open the Universe, web-summit.sgit.ai for the 3D library.
 - It does not judge the agents' work: it shows what they wrote and what they pushed.
 
 ## For agents

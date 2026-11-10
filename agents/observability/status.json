@@ -1,7 +1,7 @@
 {
   "agent": "incident.observability@web-summit.dinis",
-  "state": "active: /app/agents/ shows every agent, Dinis's asks on top, and who talks to whom on Angelo's live map (pinned copy, 2D and 3D); next Silvio's Universe, then page views, release speed, the ledger",
-  "last_wake": "2026-11-10T23:47Z",
+  "state": "active: /agents/ shows every agent, Dinis's asks on top, who talks to whom on Angelo's live map, and the team in Silvio's Universe (map, circuit, Talk), both as pinned copies; next page views, release speed, the ledger",
+  "last_wake": "2026-11-10T23:51Z",
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
     "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -12,15 +12,17 @@
     "tools/agents-index.mjs -> data/agents/index.json (roster from agents/JOBS.md, statuses, key fingerprints; session ids stripped)",
     "the agents page at /app/agents/ (app/agents/agents.js, agents.css, index.html, about.md): asks for Dinis on top, a card per agent, who writes for whom, the last pushes; live status files and GitHub's public API, refreshed every minute",
     "Angelo's live map on /app/agents/#live: live.js and live3d.js unchanged, pinned at SGit-AI__Website__Web-Summit commit 57636ac (app/agents/vendor/live-map@57636ac/pin.json, tools/agents-pin.mjs); app/agents/live-adapter.js shapes this repository's commits (Agent: and For: trailers) into the engine's map and live.json, and labels the dots through the engine's own hook; 3D loads Silvio's three.js bundle from web-summit.sgit.ai under a sha384 check, never committed",
-    "tools/agents-commits.mjs -> data/agents/commits.json (who pushed what, for whom; pair counts): the page's fallback when GitHub's API does not answer, and the who-talks-to-whom dataset for agents"
+    "tools/agents-commits.mjs -> data/agents/commits.json (who pushed what, for whom; pair counts): the page's fallback when GitHub's API does not answer, and the who-talks-to-whom dataset for agents",
+    "Silvio's Universe on /agents/#universe (Map, Circuit, Talk): brain.js and brain.css unchanged, pinned at commit 57636ac (app/agents/vendor/universe@57636ac/pin.json); app/agents/universe-adapter.js puts this site's four readers where the engine looks (window.LiveUniverse), so it draws this team from this repository and reads nothing from its home site; opened on request (1.6 MB of 3D libraries from web-summit.sgit.ai under a sha384 check)"
   ],
   "next": [
-    "Silvio's Universe / mind map / Talk view on a pinned brain.js (brain-libs.js loaded from web-summit.sgit.ai, never committed)",
-    "replay.js (the Gantt of every commit) on the same pin, if its data shape can be made in the browser",
-    "page views without geo lookup; release speed per push; the model ledger"
+    "page views without geo lookup (promptugal.news's obs.js model)",
+    "release speed per push (from CI's public run records; a proposal for deploy.yml to the conductor)",
+    "the model ledger (tools/llm.mjs)",
+    "replay.js (the Gantt of every commit) on the live-map pin, if its data shape can be made in the browser"
   ],
   "asks": [
-    "incident.conductor@: the page lives at /app/agents/ because /agents/ is built from your agents/README.md and the build is not mine. To serve it at /agents/: in admin/build/build.mjs, for rel === 'agents/README.md', put <div id=\"agents-live\" data-base=\"../\"></div> before the article and add app/agents/agents.css and app/agents/agents.js to the head (the same pattern as the incident dashboard); and an 'Agents' link in the nav.",
+    "incident.conductor@: an observation, yours to route: the Universe's Circuit shows 0 of this team's agents with a behaviour policy (the summit team's agents have ABPs under /abp/). The adapter does not pass job rows off as policies. If the team should have them, say who writes them and where; the Circuit will show them once universe-adapter.js reads that place.",
     "everyone: keep agents/<role>/status.json (agent, state, last_wake in UTC ISO 8601, done, next, asks) and put Agent: and For: trailers on every commit; that is all the page needs."
   ]
 }
