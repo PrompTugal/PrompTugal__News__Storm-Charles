@@ -1,0 +1,2960 @@
+{
+ "about": "Everything on storm-charles.promptugal.news, catalogued: every brief, plan, decision log, dataset, tool, agent file and research file, with what it is (its own first words), who wrote it, when it last changed, what it was made from and what links to it. Built from the repository by tools/library-index.mjs; nothing is guessed: what a file does not say is empty here and listed under gaps. The data files' own catalogue (with the served sha256) is api/v1/index.json.",
+ "by": "incident.librarian@web-summit.dinis",
+ "site": "https://storm-charles.promptugal.news/",
+ "page": "https://storm-charles.promptugal.news/library/",
+ "made_by": "tools/library-index.mjs",
+ "fields": {
+  "kind": {
+   "rules": "The rules every agent reads first.",
+   "brief": "Dinis's direction, close to his words, and its corrections.",
+   "plan": "Proposals and priorities: what is to be built and in what order.",
+   "record": "What exists.",
+   "decision log": "The timeline of signals and the decisions, newest first.",
+   "incident record": "The incident's own page and front-page record.",
+   "dataset": "JSON data: every value with its source and the time read.",
+   "dataset doc": "What a dataset holds and who keeps it.",
+   "analysis": "Our analysis, labelled as analysis: a hypothesis with its reasons, never a fact.",
+   "reading": "The reading list: what others wrote that bears on this site, and what it means here.",
+   "library": "The catalogue itself, the glossary, the standard.",
+   "agent file": "Each agent's jobs, status and asks.",
+   "comms draft": "Drafts for people; a person sends.",
+   "material": "Material offered to another newsroom's desk.",
+   "design": "Design rounds and notes.",
+   "tool": "Scripts the agents run.",
+   "build": "The build, the gate and CI.",
+   "admin": "The admin area.",
+   "app": "What runs in the browser.",
+   "repository": "The repository's own files."
+  },
+  "by": "who the file itself says wrote or keeps it (by_from says where: header, front matter, its own fields); empty when it does not say",
+  "dated": "the time the file gives for itself (dated_from says which field or the header); for a dataset, usually the time its sources were last read",
+  "commits": "from the commits, as recorded in library/provenance.json (first_by, last_by, last_at, the agents); null when the file changed after the commits were last read",
+  "changed": "when it last changed: the last commit when known, else the file's own date",
+  "made_from": "the sources its header or fields name: files here (paths) and URLs",
+  "links_to": "files here that it links to anywhere in its text",
+  "linked_from": "files here that link to it or name it as a source",
+  "sha256": "of the file in the repository at this build (generated files carry none)"
+ },
+ "as_of": "2026-11-10T23:58Z",
+ "commits_read_at_head": "72a73628ab",
+ "total": 82,
+ "counts": {
+  "build": 3,
+  "repository": 4,
+  "brief": 2,
+  "rules": 1,
+  "plan": 3,
+  "record": 1,
+  "admin": 1,
+  "tool": 9,
+  "agent file": 12,
+  "app": 11,
+  "dataset": 14,
+  "design": 1,
+  "incident record": 2,
+  "comms draft": 6,
+  "dataset doc": 3,
+  "analysis": 1,
+  "decision log": 2,
+  "material": 1,
+  "library": 4,
+  "reading": 1
+ },
+ "gaps": {
+  "no_author_in_file": [
+   {
+    "path": "BRIEF-CORRECTIONS.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "CLAUDE.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "README.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "REALITY.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "SECURITY.md",
+    "committed_by": []
+   },
+   {
+    "path": "admin/series.txt",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "admin/tools/release.sh",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "app/agents/index.html",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/pki/PIN.json",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/pki/door.js",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/pki/keys.js",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/pki/local.js",
+    "committed_by": []
+   },
+   {
+    "path": "app/login/pki/message.js",
+    "committed_by": []
+   },
+   {
+    "path": "app/site.css",
+    "committed_by": []
+   },
+   {
+    "path": "data/keys.json",
+    "committed_by": []
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/comms/dinis.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/comms/facts.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/comms/meetings.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/comms/public.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/comms/team.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/README.md",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/decisions/sources.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/signals.json",
+    "committed_by": []
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/timeline.md",
+    "committed_by": []
+   },
+   {
+    "path": "tools/sync-from-websummit.sh",
+    "committed_by": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   }
+  ],
+  "no_date_in_file": [
+   "BRIEF-CORRECTIONS.md",
+   "REALITY.md",
+   "SECURITY.md",
+   "agents/JOBS.md",
+   "agents/README.md",
+   "data/agents/index.json",
+   "data/keys.json",
+   "incidents/2026-11-10-storm-charles/comms/README.md",
+   "incidents/2026-11-10-storm-charles/comms/dinis.md",
+   "incidents/2026-11-10-storm-charles/comms/facts.md",
+   "incidents/2026-11-10-storm-charles/comms/meetings.md",
+   "incidents/2026-11-10-storm-charles/comms/public.md",
+   "incidents/2026-11-10-storm-charles/comms/team.md",
+   "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+   "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+   "incidents/2026-11-10-storm-charles/decisions.md",
+   "incidents/2026-11-10-storm-charles/timeline.md"
+  ],
+  "no_commit_record": [
+   {
+    "path": "SECURITY.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "admin/build/build.mjs",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "agents/designer/status.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "agents/identity/status.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "agents/librarian/status.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "agents/observability/status.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/agents/about.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/agents/agents.css",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/agents/agents.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/agents/index.html",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/pki/PIN.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/pki/door.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/pki/keys.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/pki/local.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/login/pki/message.js",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "app/site.css",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "data/agents/index.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/keys.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "design/round-1.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/data/signals.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "incidents/2026-11-10-storm-charles/timeline.md",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "library/glossary.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "library/reading/README.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/agents-index.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/library-index.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/timeline.mjs",
+    "why": "changed since the commits were last read"
+   }
+  ],
+  "datasets_naming_no_source": [
+   "data/keys.json",
+   "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+   "incidents/2026-11-10-storm-charles/data/decisions/sources.json",
+   "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+   "incidents/2026-11-10-storm-charles/data/weather/forecast.json"
+  ],
+  "documents_nothing_links_to": [
+   "BRIEF-CORRECTIONS.md",
+   "agents/README.md",
+   "app/agents/about.md",
+   "design/round-1.md",
+   "incidents/2026-11-10-storm-charles/comms/README.md",
+   "incidents/2026-11-10-storm-charles/material/wednesday-is-off-what-now.md",
+   "library/glossary.md",
+   "library/reading/README.md"
+  ],
+  "not_served_on_the_site": [
+   ".github/workflows/deploy.yml",
+   ".gitignore",
+   "admin/build/build.mjs",
+   "admin/build/validate.mjs",
+   "admin/series.txt",
+   "admin/tools/release.sh"
+  ]
+ },
+ "entries": [
+  {
+   "path": ".github/workflows/deploy.yml",
+   "kind": "build",
+   "title": "deploy.yml",
+   "what": "One job: checkout (shallow), build, gate, deploy, tag, measure. Target: push to served in about 40 s (PIPELINE.md section 3). - fetch-depth 1 and nothing reads git history (a blobless full clone made the team site's gate 40x slower); - the newest push wins: a …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2514,
+   "sha256": "7dda40837f18d41a10356d40cdb89952688a5ce4e5b520dbb44fdb2abe7b179d",
+   "served": false,
+   "repo": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/.github/workflows/deploy.yml",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "REALITY.md"
+   ]
+  },
+  {
+   "path": ".gitignore",
+   "kind": "repository",
+   "title": ".gitignore",
+   "what": "Byte-compiled / optimized / DLL files",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 4875,
+   "sha256": "66317bb74596d0f59d3fcf014f754b28452221172704021e1285a0978b7cab01",
+   "served": false,
+   "repo": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/.gitignore",
+   "commits": {
+    "n": 3,
+    "first_by": "",
+    "first_at": "2026-11-10T21:03:38Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:15:16Z",
+    "last_commit": "610dd5f8eb",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:15:16Z",
+   "linked_from": []
+  },
+  {
+   "path": "BRIEF-CORRECTIONS.md",
+   "kind": "brief",
+   "title": "Brief corrections and departures from the estate's standard",
+   "what": "",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 877,
+   "sha256": "39822af97969fd8d4061eebdcada0630aa3f375ed21fd34a84db5c8e8bd8cbf4",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/BRIEF-CORRECTIONS.md",
+   "page": "https://storm-charles.promptugal.news/BRIEF-CORRECTIONS.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "BRIEF.md",
+   "kind": "brief",
+   "title": "Brief",
+   "what": "Dinis Cruz, 10 November 2026, in his session with incident.conductor@web-summit.dinis (close to his words). The incident team's own brief, from his voice memo of about 19:00 UTC, is in SGit-AI__Website__Web-Summit team/incidents/BRIEF.md.",
+   "by": "Dinis Cruz (as recorded by incident.conductor@web-summit.dinis)",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 3542,
+   "sha256": "080b576fb2eb058e466bdec71683fb2ae10880dff2efff9f452c551fa4ba1590",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/BRIEF.md",
+   "page": "https://storm-charles.promptugal.news/BRIEF.html",
+   "commits": {
+    "n": 2,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:35:36Z",
+    "last_commit": "cdaa2d7bf8",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:35:36Z",
+   "linked_from": [
+    "CLAUDE.md",
+    "SECURITY.md",
+    "agents/JOBS.md"
+   ]
+  },
+  {
+   "path": "CLAUDE.md",
+   "kind": "rules",
+   "title": "storm-charles.promptugal.news: the rules of this repository",
+   "what": "A newsroom for people and a data source for agents on Storm Charles (Lisbon, 10 to 12 November 2026), and the template for the next incident. Built and run by Dinis Cruz's incident team: incident.conductor@web-summit.dinis (lead) with incident.meteorologist@, …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "BRIEF.md",
+    "PIPELINE.md",
+    "ROADMAP.md"
+   ],
+   "links_to": [
+    "BRIEF.md",
+    "PIPELINE.md",
+    "ROADMAP.md",
+    "data/keys.json",
+    "tools/llm.mjs"
+   ],
+   "external_links": 1,
+   "bytes": 3850,
+   "sha256": "cf1ed8a84639b7a933dc94f5619287f3192872a88bf186d3b1840467bb863f58",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/CLAUDE.md",
+   "page": "https://storm-charles.promptugal.news/CLAUDE.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "README.md",
+    "agents/JOBS.md"
+   ]
+  },
+  {
+   "path": "CNAME",
+   "kind": "repository",
+   "title": "CNAME",
+   "what": "",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 30,
+   "sha256": "d6772b26758dcf0895f04536ac276632aea6530f3634bc4906ebababdd3dabd7",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/CNAME",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "LICENSE",
+   "kind": "repository",
+   "title": "LICENSE",
+   "what": "",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 11357,
+   "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/LICENSE",
+   "commits": {
+    "n": 1,
+    "first_by": "",
+    "first_at": "2026-11-10T21:03:38Z",
+    "last_by": "",
+    "last_at": "2026-11-10T21:03:38Z",
+    "last_commit": "3a61421c9d",
+    "agents": []
+   },
+   "changed": "2026-11-10T21:03:38Z",
+   "linked_from": []
+  },
+  {
+   "path": "PIPELINE.md",
+   "kind": "plan",
+   "title": "The incident site: repository, pipeline, data and dashboard (a proposal for Dinis)",
+   "what": "The direction and priorities it serves: ROADMAP.md (Dinis, ~19:15: a proxy of the flows, a newsroom and a data source for agents).",
+   "by": "incident.conductor@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10T19:10Z",
+   "dated_from": "header",
+   "made_from": [
+    "ROADMAP.md"
+   ],
+   "links_to": [
+    "ROADMAP.md",
+    "agents/dev/status.json",
+    "data/keys.json"
+   ],
+   "external_links": 0,
+   "bytes": 13845,
+   "sha256": "0fea004e55619f49d60b4d46be4779eb5258f7cf3aa535a5b0408f011daa19a1",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/PIPELINE.md",
+   "page": "https://storm-charles.promptugal.news/PIPELINE.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "CLAUDE.md",
+    "README.md",
+    "ROADMAP.md"
+   ]
+  },
+  {
+   "path": "README.md",
+   "kind": "repository",
+   "title": "PrompTugal__News__Storm-Charles",
+   "what": "https://storm-charles.promptugal.news: Storm Charles, Lisbon, November 2026. What is decided, what is warned and what is known, each with its source and the time read; and the data behind it, for people and agents (/api/v1/index.json, /llms.txt).",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "CLAUDE.md",
+    "PIPELINE.md",
+    "REALITY.md",
+    "ROADMAP.md",
+    "incidents/2026-11-10-storm-charles/README.md",
+    "https://storm-charles.promptugal.news**"
+   ],
+   "links_to": [
+    "CLAUDE.md",
+    "PIPELINE.md",
+    "REALITY.md",
+    "ROADMAP.md",
+    "incidents/2026-11-10-storm-charles/README.md"
+   ],
+   "external_links": 1,
+   "bytes": 755,
+   "sha256": "6bb80121417688cd77171c0526cd8b080f08ad99de89b00fc753da2925992b10",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/README.md",
+   "page": "https://storm-charles.promptugal.news/",
+   "commits": {
+    "n": 2,
+    "first_by": "",
+    "first_at": "2026-11-10T21:03:38Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "REALITY.md",
+   "kind": "record",
+   "title": "Reality: what exists (a thing not here does not exist)",
+   "what": "Version: see /version.json on the live site (CI writes it; never committed).",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [
+    ".github/workflows/deploy.yml",
+    "admin/build/validate.mjs",
+    "app/storm.js",
+    "tools/llm.mjs",
+    "tools/timeline.mjs",
+    "tools/websummit.mjs"
+   ],
+   "external_links": 0,
+   "bytes": 1542,
+   "sha256": "eca7e166dd850bec8b241283335f66ba5285c90503dbcf3dad954601fcad8cce",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/REALITY.md",
+   "page": "https://storm-charles.promptugal.news/REALITY.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "README.md"
+   ]
+  },
+  {
+   "path": "ROADMAP.md",
+   "kind": "plan",
+   "title": "The incident site: a newsroom for people and a data source for agents (roadmap, in priority order)",
+   "what": "By incident.conductor@web-summit.dinis, 10 November 2026, ~19:20 UTC, from Dinis's direction in his session (close to his words): a separate repository that publishes \"super fast\"; \"a proxy of the flows of this activity\", so that we become \"a data source for …",
+   "by": "incident.conductor@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10T19:20Z",
+   "dated_from": "header",
+   "made_from": [
+    "PIPELINE.md"
+   ],
+   "links_to": [
+    "PIPELINE.md",
+    "tools/llm.mjs"
+   ],
+   "external_links": 0,
+   "bytes": 9639,
+   "sha256": "709ca6b0270d0a1fdc664d6cb504f39167b619f1deaa58d667ac4ea0577d32ec",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/ROADMAP.md",
+   "page": "https://storm-charles.promptugal.news/ROADMAP.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "CLAUDE.md",
+    "PIPELINE.md",
+    "README.md"
+   ]
+  },
+  {
+   "path": "SECURITY.md",
+   "kind": "plan",
+   "title": "Security: Dinis's login, his lane to the conductor, his vaults",
+   "what": "incident.identity@web-summit.dinis, 10 November 2026, at Dinis Cruz's word of ~23:40 UTC (BRIEF.md). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: pki.sgit.ai's keys.js, message.js, door.js, local.js …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "BRIEF.md",
+    "app/login/pki/PIN.json"
+   ],
+   "links_to": [
+    "BRIEF.md",
+    "agents/identity/status.json",
+    "app/login/pki/PIN.json",
+    "data/keys.json"
+   ],
+   "external_links": 0,
+   "bytes": 7936,
+   "sha256": "33298b2179aa7a0cecb8a1809d80981cb6d3c419fbc5d1ed9501dca935183829",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/SECURITY.md",
+   "page": "https://storm-charles.promptugal.news/SECURITY.html",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "agents/JOBS.md"
+   ]
+  },
+  {
+   "path": "admin/build/build.mjs",
+   "kind": "build",
+   "title": "build.mjs",
+   "what": "The build: repository - _site/ (never committed). Zero dependencies, one pass, a few hundred milliseconds. - every .md becomes a page beside it (and is served too, as its own markdown twin); - the front page is the newsroom: the incident's headline …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 32565,
+   "sha256": "203f87fb464345f167fe6483da34e61b18f29860dde2d5f5dc589dbf875d5bb6",
+   "served": false,
+   "repo": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/build/build.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "design/round-1.md"
+   ]
+  },
+  {
+   "path": "admin/build/validate.mjs",
+   "kind": "build",
+   "title": "validate.mjs",
+   "what": "The gate: must print OK, and a red gate is no release. Budget: 5 seconds. It builds the site once, then checks: 1. the repository stays fast: no tracked file over 256 KB, no binary, no raw capture, nothing from a key store; 2. no secret: private keys, tokens, …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 5194,
+   "sha256": "69245e14cda24829c70ede6de6425a8854572436d2516c4d2a01c31e9b0382ec",
+   "served": false,
+   "repo": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/build/validate.mjs",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:15:16Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:15:16Z",
+    "last_commit": "610dd5f8eb",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:15:16Z",
+   "linked_from": [
+    "REALITY.md"
+   ]
+  },
+  {
+   "path": "admin/series.txt",
+   "kind": "admin",
+   "title": "series.txt",
+   "what": "",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 4,
+   "sha256": "a6311009c6c322ca8ac2e620cff5204f0c3af23115d403293a0cb5be36796688",
+   "served": false,
+   "repo": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/series.txt",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "admin/tools/release.sh",
+   "kind": "tool",
+   "title": "release.sh",
+   "what": "Release from any agent's clone: AGENT=<name admin/tools/release.sh Commit your SOURCE changes first (subject \"<agent: <what\", trailers Agent:, Issue:, For:). This script rebases on dev, runs the gate locally (a red gate never leaves your machine), pushes …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1379,
+   "sha256": "8b19c3267f7703802df7b2f37950abe23707691624bb11470bc906aa50ccd287",
+   "served": false,
+   "repo": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/tools/release.sh",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "agents/JOBS.md",
+   "kind": "agent file",
+   "title": "The team and its jobs (kept by incident.conductor@web-summit.dinis)",
+   "what": "From Dinis's direction of 10 November ~23:40 UTC (BRIEF.md). Each agent owns its folders; nobody edits another's files (ask in a commit with For:). Everyone: read CLAUDE.md first, make a session key, add its public half to data/keys.json, keep …",
+   "by": "incident.conductor@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "BRIEF.md",
+    "CLAUDE.md",
+    "SECURITY.md",
+    "app/site.css",
+    "data/keys.json",
+    "library/index.json"
+   ],
+   "links_to": [
+    "BRIEF.md",
+    "CLAUDE.md",
+    "SECURITY.md",
+    "app/site.css",
+    "app/storm.js",
+    "data/keys.json",
+    "library/index.json",
+    "tools/llm.mjs"
+   ],
+   "external_links": 0,
+   "bytes": 5492,
+   "sha256": "f12fc5e84eae048d2127b46fa3e818e3b64d8b7eec98ef1c4ae4fcf9dbfe583f",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/JOBS.md",
+   "page": "https://storm-charles.promptugal.news/agents/JOBS.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T23:35:36Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:35:36Z",
+    "last_commit": "cdaa2d7bf8",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:35:36Z",
+   "linked_from": [
+    "app/agents/about.md",
+    "data/agents/index.json"
+   ]
+  },
+  {
+   "path": "agents/README.md",
+   "kind": "agent file",
+   "title": "The incident team's status files",
+   "what": "One folder per role; status.json holds the jobs routed to it, what is done, what is next, and asks (an ask starting \"Dinis:\" means the agent is blocked by its environment or needs his decision). Kept by incident.conductor@web-summit.dinis; each agent may …",
+   "by": "incident.conductor@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 569,
+   "sha256": "abf1cc26d394edd86d88e3ed7b63092d9b2b00ec7f08db38d835f2df691c4c61",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/README.md",
+   "page": "https://storm-charles.promptugal.news/agents/",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "agents/conductor/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.conductor@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T21:05:00Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2773,
+   "sha256": "166a97fe023f5b7efab95d5d2511275c0636f5426bf5195d9f70c8e010910a0c",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/conductor/status.json",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "agents/designer/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.designer@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:50:00Z",
+   "dated_from": "\"last_wake\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 842,
+   "sha256": "2d611b92f44939f5f5ab9d6d2b9464c6ae4f86d36d4d49db7f1c93d0aa4c8224",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/designer/status.json",
+   "commits": null,
+   "changed": "2026-11-10T23:50:00Z",
+   "linked_from": []
+  },
+  {
+   "path": "agents/dev/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.dev@web-summit.dinis (done, next, asks, baseline); jobs by incident.conductor@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T21:45Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 15223,
+   "sha256": "f381a3fc3036cb8a4a04341cf68bd08e1eb479944ab5c347d3027766958742c2",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/dev/status.json",
+   "commits": {
+    "n": 7,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T22:03:27Z",
+    "last_commit": "9b42aedd8d",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T22:03:27Z",
+   "linked_from": [
+    "PIPELINE.md"
+   ]
+  },
+  {
+   "path": "agents/identity/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.identity@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:55:00Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1634,
+   "sha256": "54e730f8d69758f613640a9de75ffdcf8a9e31fbb751253158d511cbd25e4a81",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/identity/status.json",
+   "commits": null,
+   "changed": "2026-11-10T23:55:00Z",
+   "linked_from": [
+    "SECURITY.md"
+   ]
+  },
+  {
+   "path": "agents/librarian/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:58Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1845,
+   "sha256": "0a32b1a3a734ab29b4b5be7dc91747d45ad395746a6adf48461d25e16084df31",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/librarian/status.json",
+   "commits": null,
+   "changed": "2026-11-10T23:58Z",
+   "linked_from": []
+  },
+  {
+   "path": "agents/media/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.media@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:40:00Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 572,
+   "sha256": "372428e5218cd4f9a596488413086419e41c2fb9abd071c3fba026733d8c3ada",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/media/status.json",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.media@web-summit.dinis",
+    "first_at": "2026-11-10T23:38:00Z",
+    "last_by": "incident.media@web-summit.dinis",
+    "last_at": "2026-11-10T23:38:00Z",
+    "last_commit": "8b9392e6e3",
+    "agents": [
+     "incident.media@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:38:00Z",
+   "linked_from": []
+  },
+  {
+   "path": "agents/meteorologist/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.meteorologist@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:26:00Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 3894,
+   "sha256": "91ea877ca60cb2df757f694f13a40280940f768fe887801f59dcc86481d364c3",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/meteorologist/status.json",
+   "commits": {
+    "n": 6,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md"
+   ]
+  },
+  {
+   "path": "agents/observability/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:55Z",
+   "dated_from": "\"last_wake\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2264,
+   "sha256": "c26010263dc0433d1acb308f480aede80efd1b22d0abe4868d25947edab219c1",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/observability/status.json",
+   "commits": null,
+   "changed": "2026-11-10T23:55Z",
+   "linked_from": []
+  },
+  {
+   "path": "agents/researcher/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.researcher@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T22:33Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 6871,
+   "sha256": "9b80d9d12ceb9ace04efd6cc1e1cb4f3053768a022f66ddd8ee077bc2b090ee6",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/researcher/status.json",
+   "commits": {
+    "n": 4,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:03:27Z",
+    "last_commit": "44a983bfb2",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:03:27Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/decisions/README.md"
+   ]
+  },
+  {
+   "path": "agents/weatherwatch/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.weatherwatch@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:38:00Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 666,
+   "sha256": "11c307d34e74211b04ce71bb0941a6b097673fcf78704c46d9a0c93e9a34f6f4",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/weatherwatch/status.json",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.weatherwatch@web-summit.dinis",
+    "first_at": "2026-11-10T23:38:13Z",
+    "last_by": "incident.weatherwatch@web-summit.dinis",
+    "last_at": "2026-11-10T23:38:13Z",
+    "last_commit": "066df683d4",
+    "agents": [
+     "incident.weatherwatch@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:38:13Z",
+   "linked_from": []
+  },
+  {
+   "path": "app/agents/about.md",
+   "kind": "app",
+   "title": "The agents page: how it works",
+   "what": "The agents, live shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start \"Dinis:\" are gathered at the top), its last push and its key's fingerprints. Kept by …",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "app/agents/index.html"
+   ],
+   "links_to": [
+    "agents/JOBS.md",
+    "app/agents/index.html",
+    "data/agents/index.json",
+    "data/keys.json",
+    "tools/agents-index.mjs"
+   ],
+   "external_links": 0,
+   "bytes": 2131,
+   "sha256": "aa7fa73ef1f50ee1ed2f73206ab631d5cd6c5bb3a6f0dea49271549ab44f668d",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/agents/about.md",
+   "page": "https://storm-charles.promptugal.news/app/agents/about.html",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/agents/agents.css",
+   "kind": "app",
+   "title": "agents.css",
+   "what": "/app/agents/: the team console (incident.observability@web-summit.dinis). Uses app/site.css's tokens; adds nothing global.",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 3450,
+   "sha256": "fa3c840ae999b063ab6ef60b844ec7afdb301367d11519c1e21a72359e37a5af",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/agents/agents.css",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/agents/agents.js",
+   "kind": "app",
+   "title": "agents.js",
+   "what": "The team console (incident.observability@web-summit.dinis): every agent, what it is doing, what it asks, its last push. Mounts into <div id=\"agents-live\" data-base=\"<path to the site root\". Reads JSON only: 1. data/agents/index.json the roster, jobs, statuses …",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 12224,
+   "sha256": "f55116d33a2ef2531455d2444b31eca3731eeb3ab378d96e8de552a9c550c356",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/agents/agents.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/agents/index.html",
+   "kind": "app",
+   "title": "index.html",
+   "what": "",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2752,
+   "sha256": "492127398bbad01b653368e18bb96aca492969eed859d394b6ad98ad57052c10",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/agents/index.html",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "app/agents/about.md"
+   ]
+  },
+  {
+   "path": "app/login/pki/PIN.json",
+   "kind": "app",
+   "title": "PIN.json",
+   "what": "Copies of pki.sgit.ai's modules, byte for byte, read on 10 November 2026 (23:30 UTC) by incident.identity@web-summit.dinis. Not edited here: to change one, change it at its source and pin the new copy. tools/lane-test.mjs checks each sha256.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1788,
+   "sha256": "0adb46143e51bd888be873eb24c25f4afe26336196a8ed289c891fa3a3ffca55",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/pki/PIN.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "SECURITY.md"
+   ]
+  },
+  {
+   "path": "app/login/pki/door.js",
+   "kind": "app",
+   "title": "door.js",
+   "what": "door.js: from a passkey's PRF bytes (or a recovery code) to a door vault's key, the way the article says. Moved out of passkey/lab.js so that the vault pane (assets/vault-pane/) and the lab derive the same door from the same bytes; the lab re-exports …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 9223,
+   "sha256": "0f45abf09f4af0150660a3beeb7402424d26301eb1f80d3b02a9ad6c36974c5d",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/pki/door.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/login/pki/keys.js",
+   "kind": "app",
+   "title": "keys.js",
+   "what": "keys.js: the key material of the directory of people, in the browser and in Node, byte-compatible with sgit pki. Everything here is Web Crypto and nothing else. Each construction was checked against sgit-ai v0.23.0 (the PKI__Crypto and PKI__Key_Store classes …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 19688,
+   "sha256": "7c97cbd9dab3c3969b6bed4f24bce211c0406cee15c5a88458fec9fc5d48d143",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/pki/keys.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/login/pki/local.js",
+   "kind": "app",
+   "title": "local.js",
+   "what": "local.js: an account kept in this browser only, opened by the passkey alone. No access key, no vault, no passphrase. The passkey's PRF bytes already give a door (door.js). When no vault answers at that door, the same seed gives a key for this browser's own …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 3981,
+   "sha256": "87b5defae8a4860610e2034b07037136642635976d9b1634e926b40ffb91e78b",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/pki/local.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/login/pki/message.js",
+   "kind": "app",
+   "title": "message.js",
+   "what": "message.js: a message to someone in the register, as a link and a QR code, or into their inbox; and an invitation. A message is JSON, signed by the sender when the sender has a key, then sealed in sgit's hybrid v2 envelope to the recipient's encryption key: …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 15667,
+   "sha256": "ad91e33ab9a711cad431bfc92f5610c5fe131e828a8e99450dbeccb1535b3b49",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/login/pki/message.js",
+   "commits": null,
+   "changed": "",
+   "linked_from": []
+  },
+  {
+   "path": "app/site.css",
+   "kind": "app",
+   "title": "site.css",
+   "what": "storm-charles.promptugal.news: one stylesheet, no dependencies. Tokens first; the dashboard (app/storm.js) uses the same names.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 13256,
+   "sha256": "ed9750be1ae82c5e34d45ce25f006f4015538cf910091c1a1c0248f6699ecb1c",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/site.css",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "agents/JOBS.md"
+   ]
+  },
+  {
+   "path": "app/storm.js",
+   "kind": "app",
+   "title": "storm.js",
+   "what": "The incident dashboard (incident.dev@web-summit.dinis, 10 November 2026, WS-214, at Dinis's word: \"a full-blown new dashboard\" that leverages Silvio's and Angelo's work). It reads the incident's data folder (the page's incident <dir block), the files their …",
+   "by": "incident.dev@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 40314,
+   "sha256": "0d087dccdac9fdbd37f034c0c29b893d8e157ec2ab78ed1911240f5bc5f09a0c",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/app/storm.js",
+   "commits": {
+    "n": 2,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:16:42Z",
+    "last_commit": "7dc3fe412f",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:16:42Z",
+   "linked_from": [
+    "REALITY.md",
+    "agents/JOBS.md"
+   ]
+  },
+  {
+   "path": "data/agents/index.json",
+   "kind": "dataset",
+   "title": "index.json",
+   "what": "Every agent of the incident team behind storm-charles.promptugal.news: its job (agents/JOBS.md), what it says it is doing, has done, will do next and asks for (agents/<role>/status.json; asks starting \"Dinis:\" are for the operator), and its public key …",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "agents/JOBS.md",
+    "data/keys.json",
+    "tools/agents-index.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 38435,
+   "sha256": "d155512d719b97de2d16821f202235277d6921a0540dd362f9de6bf160d584fc",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/agents/index.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "app/agents/about.md"
+   ]
+  },
+  {
+   "path": "data/keys.json",
+   "kind": "dataset",
+   "title": "keys.json",
+   "what": "Public keys of the agents that write this repository. Public halves only: no private key, vault key or token is ever listed here. Each entry was added by the agent that made it, in its own session; the push is its authorisation. Session keys end with their …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 12870,
+   "sha256": "f621dc173417e6457c35f6db24129577118face6d96f25cac41d59d797784f4d",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/keys.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "CLAUDE.md",
+    "PIPELINE.md",
+    "SECURITY.md",
+    "agents/JOBS.md",
+    "app/agents/about.md",
+    "data/agents/index.json"
+   ]
+  },
+  {
+   "path": "design/round-1.md",
+   "kind": "design",
+   "title": "Design round 1: the home page as the weather presenter",
+   "what": "By incident.designer@web-summit.dinis, 10 November 2026, 23:35 to 23:50 UTC. Screenshots were taken (1280 and 390 wide, light and dark) and are described here, not committed.",
+   "by": "incident.designer@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [
+    "admin/build/build.mjs"
+   ],
+   "external_links": 0,
+   "bytes": 3504,
+   "sha256": "72dc4061c7107aa4cc2fee9125b2576d25e1d05d5526948aa7decad9705aeaeb",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/design/round-1.md",
+   "page": "https://storm-charles.promptugal.news/design/round-1.html",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": []
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/README.md",
+   "kind": "incident record",
+   "title": "Incident: the storm on Wednesday 11 November (run as P1)",
+   "what": "Declared (board WS-214) by conductor@web-summit.dinis at Dinis's word (\"I want to run this weather situation as an incident, only here in our account\", in his own session, 10 November 2026, about 18:35 UTC). Run on account A, by Dinis's agents only. Vicky's …",
+   "by": "conductor@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10T18:35Z",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [
+    "incidents/2026-11-10-storm-charles/decisions.md",
+    "incidents/2026-11-10-storm-charles/timeline.md"
+   ],
+   "external_links": 0,
+   "bytes": 7946,
+   "sha256": "a0702a94ac141ae9a5be3226d5ddc4711a2260a4d42fe4824c3c4424cc28d6bb",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/README.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "README.md",
+    "incidents/2026-11-10-storm-charles/data/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/comms/README.md",
+   "kind": "comms draft",
+   "title": "Communications: the storm (incident WS-214)",
+   "what": "Kept by journalist.examples@web-summit.dinis, the incident's journalist. The method is Dinis's incident-handling series, part 4 (\"Personalised stakeholder communication\"): one source, many audiences, each draft derived from the same facts so they never …",
+   "by": "journalist.examples@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "incidents/2026-11-10-storm-charles/comms/dinis.md",
+    "incidents/2026-11-10-storm-charles/comms/facts.md",
+    "incidents/2026-11-10-storm-charles/comms/meetings.md",
+    "incidents/2026-11-10-storm-charles/comms/public.md",
+    "incidents/2026-11-10-storm-charles/comms/team.md"
+   ],
+   "links_to": [
+    "incidents/2026-11-10-storm-charles/comms/dinis.md",
+    "incidents/2026-11-10-storm-charles/comms/facts.md",
+    "incidents/2026-11-10-storm-charles/comms/meetings.md",
+    "incidents/2026-11-10-storm-charles/comms/public.md",
+    "incidents/2026-11-10-storm-charles/comms/team.md"
+   ],
+   "external_links": 0,
+   "bytes": 1900,
+   "sha256": "cb3dd1d5c0ee8ec8de7ab6b487a2f1ab8781a15e1dbe469a95081a829ad96893",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/README.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/comms/dinis.md",
+   "kind": "comms draft",
+   "title": "Brief for Dinis (through the incident's lead)",
+   "what": "Facts as of 20:02 UTC. Five lines, then what needs your word. The 18:45 version is superseded.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1631,
+   "sha256": "5e466e189791eee274b66b49c8b264761ee789a22fe9321c734576247c146843",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/dinis.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/dinis.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/comms/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/comms/facts.md",
+   "kind": "comms draft",
+   "title": "The one source (facts as of 20:02 UTC, 10 November 2026; weather facts as of 18:38, Thursday's as of 19:22)",
+   "what": "Every communication draft in this folder is built from these facts and cites them by number. Sources: weather@PrompTugal.vicky's desk (desks/weather-vicky/live.md, last full check 18:36 to 18:38 UTC, and decision-graph.json), which reads the authorities at …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 1,
+   "bytes": 4159,
+   "sha256": "fb8495dfd028d05551b296f04b6499b698f6b5e2ae638acee6163aca2bbab5c3",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/facts.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/facts.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/comms/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/comms/meetings.md",
+   "kind": "comms draft",
+   "title": "Draft for the people we are meeting on Wednesday (a person sends)",
+   "what": "No names here. Whoever holds the meeting sends it on their own channel, edits it in their own voice, and keeps the reply in the private CRM if it is a lead. Facts as of 20:02 UTC (facts.md).",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1311,
+   "sha256": "c29b3a2a5a67ad543b84c6717862c62e1dd46291be68bc68d95fdd8989b58989",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/meetings.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/meetings.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/comms/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/comms/public.md",
+   "kind": "comms draft",
+   "title": "Draft for the public, through pt.news's newsroom",
+   "what": "An offer to Vicky's newsroom, not a publication. pt.news covers the storm and the summit's decision as news (S41, its weather desk and reviewer). This draft covers what the news does not: how our own team, at the summit, handled it. The newsroom decides …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 1,
+   "bytes": 1601,
+   "sha256": "08ed8e54d9e0e68caa07513bbbd81b4c3447fec22123552fd71563ccd6bb43e9",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/public.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/public.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/comms/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/comms/team.md",
+   "kind": "comms draft",
+   "title": "Draft for the team (WhatsApp; a person sends)",
+   "what": "Facts as of 18:38 UTC (F1 to F7, N1 to N5 in facts.md). Short enough for a phone. Two versions. From 19:55 UTC, B replaces A (Web Summit suspended Wednesday, F8).",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 1,
+   "bytes": 2319,
+   "sha256": "75f27f91d49ed5e0151cf3d0ccc6a44d4b80e8ded413edb4353d6a7d3f8cc760",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/team.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/comms/team.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/comms/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/README.md",
+   "kind": "dataset doc",
+   "title": "The storm's data (WS-214)",
+   "what": "JSON first: the incident dashboard (the incident page), Vicky's agents and the work desk read these files, not pages. Every item carries one label: fact, evidence or hypothesis (the meteorologist's analysis is a hypothesis). Times are UTC (Lisbon's own time …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "incidents/2026-11-10-storm-charles/README.md",
+    "incidents/2026-11-10-storm-charles/data/decisions/README.md",
+    "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+    "incidents/2026-11-10-storm-charles/data/decisions/sources.json",
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+    "incidents/2026-11-10-storm-charles/data/weather/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py",
+    "incidents/2026-11-10-storm-charles/timeline.md",
+    "tools/timeline.mjs",
+    "tools/websummit.mjs"
+   ],
+   "links_to": [
+    "incidents/2026-11-10-storm-charles/README.md",
+    "incidents/2026-11-10-storm-charles/data/decisions/README.md",
+    "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+    "incidents/2026-11-10-storm-charles/data/decisions/sources.json",
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+    "incidents/2026-11-10-storm-charles/data/weather/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py",
+    "incidents/2026-11-10-storm-charles/timeline.md",
+    "tools/timeline.mjs",
+    "tools/websummit.mjs"
+   ],
+   "external_links": 0,
+   "bytes": 7325,
+   "sha256": "21e45a9f3d0eb6691481a0f8e2b178bb8505943f7ad048aabe03a90c90cc903a",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/README.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/",
+   "commits": {
+    "n": 4,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:37:01Z",
+    "last_commit": "140323fe6b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:37:01Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "incidents/2026-11-10-storm-charles/data/watch/websummit.json"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/decisions/README.md",
+   "kind": "dataset doc",
+   "title": "The decision graph of the storm (WS-214)",
+   "what": "Kept by incident.researcher@web-summit.dinis for the incident team, the dashboard and Vicky's agents (as material). JSON first: read the data, not the pages.",
+   "by": "incident.researcher@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [
+    "agents/researcher/status.json",
+    "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+    "incidents/2026-11-10-storm-charles/data/decisions/sources.json"
+   ],
+   "external_links": 0,
+   "bytes": 2740,
+   "sha256": "030d9ba953bba3fc83fad8ae6f8e43e9481c38c137822d76a592c13919526f98",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/decisions/README.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/decisions/",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+   "kind": "dataset",
+   "title": "graph.json",
+   "what": "The decision graph of the storm (WS-214), kept by incident.researcher@web-summit.dinis. Nodes are decision-makers; edges are decisions, each with who made it (by), whom it touches (to) and what it followed (follows: ids of earlier decisions). Every node and …",
+   "by": "incident.researcher@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T22:33Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 35803,
+   "sha256": "b76869080cddd039303123b1303b2b3b316630f7fe37b3f3d8e09f4677069315",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/decisions/graph.json",
+   "commits": {
+    "n": 3,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:03:27Z",
+    "last_commit": "44a983bfb2",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:03:27Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "incidents/2026-11-10-storm-charles/data/decisions/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/decisions/sources.json",
+   "kind": "dataset",
+   "title": "sources.json",
+   "what": "Every source incident.researcher@ uses for WS-214: what it holds, how often it changes, whether a machine can read it, its status when last tried. parser_ask = the part we ask incident.dev@ to parse.",
+   "by": "",
+   "by_from": "",
+   "dated": "2026-11-10T22:09Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 19099,
+   "sha256": "54dcba72df6d2345253153fde1fc9c17c1b46229325f9caf98187033f84348f8",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/decisions/sources.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/decisions/sources.json",
+   "commits": {
+    "n": 2,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:03:27Z",
+    "last_commit": "44a983bfb2",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:03:27Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "incidents/2026-11-10-storm-charles/data/decisions/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/signals.json",
+   "kind": "dataset",
+   "title": "signals.json",
+   "what": "The incident timeline as data, made from timeline.md by tools/timeline.mjs (never edit by hand; edit timeline.md). See README.md.",
+   "by": "",
+   "by_from": "",
+   "dated": "2026-11-10T23:41Z",
+   "dated_from": "\"made_at\"",
+   "made_from": [
+    "incidents/2026-11-10-storm-charles/timeline.md",
+    "tools/timeline.mjs",
+    "incidents/2026-11-10-storm-charles/data/README.md"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 20223,
+   "sha256": "6d6b3c09feb73003c77e982e9e9ececc34effe9c24fa6a7d463582b89f04971e",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/signals.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/signals.json",
+   "commits": null,
+   "changed": "2026-11-10T23:41Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+   "kind": "dataset",
+   "title": "websummit.json",
+   "what": "Web Summit's own channels, watched for its decisions (Wednesday 11 November: off, 19:38; now Day 3 and the open items: talks, PITCH, side events, tickets): the blog's listings (polled every 2 minutes, --quick), the sitemaps' URL set and the organisers' …",
+   "by": "",
+   "by_from": "",
+   "dated": "2026-11-10T21:34Z",
+   "dated_from": "\"read_at\"",
+   "made_from": [
+    "tools/websummit.mjs",
+    "incidents/2026-11-10-storm-charles/data/README.md"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 67302,
+   "sha256": "7a5607c35d5c692f49f006b95b8e7748dd575fd3ec4613487a94858cde83ad2b",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/watch/websummit.json",
+   "commits": {
+    "n": 4,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:37:01Z",
+    "last_commit": "140323fe6b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:37:01Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "incidents/2026-11-10-storm-charles/timeline.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/README.md",
+   "kind": "dataset doc",
+   "title": "The weather picture: data (WS-214, the storm on Wednesday 11 November 2026)",
+   "what": "Kept by incident.meteorologist@web-summit.dinis for the incident team, the dashboard and, as material, Vicky's weather desk. JSON first: read these files, not pages. Every record carries source (the URL read) and read_utc (when). Facts, press and analysis are …",
+   "by": "incident.meteorologist@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "agents/meteorologist/status.json",
+    "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+    "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+    "incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+    "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+    "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+    "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+    "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+    "https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1110600.json",
+    "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json",
+    "https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json",
+    "https://api.ipma.pt/public-data/forecast/aggregate/1110600.json",
+    "https://aviationweather.gov/api/data/metar?ids=LPPT&hours=30&format=json",
+    "https://aviationweather.gov/api/data/taf?ids=LPPT&format=json",
+    "https://www.ipma.pt/resources.www/rss/comunicados.xml"
+   ],
+   "links_to": [
+    "agents/meteorologist/status.json",
+    "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+    "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+    "incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+    "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+    "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+    "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+    "incidents/2026-11-10-storm-charles/data/weather/warnings.json"
+   ],
+   "external_links": 7,
+   "bytes": 3673,
+   "sha256": "6e0b73983a3f2733469130e7423cc3a9b42c35589562037f03227373ce442eb9",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/README.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+   "kind": "dataset",
+   "title": "airport.json",
+   "what": "IPMA's aeronautical forecast (TAF) and observations (METAR) for Lisbon airport (LPPT), read through the US NOAA Aviation Weather Center's public API. Knots, with km/h (1 kt = 1.852 km/h). A point forecast for pilots at the airport, 8 km north of the centre; …",
+   "by": "",
+   "by_from": "",
+   "dated": "2026-11-10T23:22:52Z",
+   "dated_from": "\"read_utc\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 33259,
+   "sha256": "ff1260cd9e3a9c521b9193a41f5e48eabf473e4c8f0623282122cf9221c690a4",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/airport.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/weather/airport.json",
+   "commits": {
+    "n": 5,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+    "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+    "incidents/2026-11-10-storm-charles/timeline.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+   "kind": "dataset",
+   "title": "analysis.json",
+   "what": "Reasoning from the facts in this folder; not IPMA's words. Times are UTC = Lisbon time (WET). See analysis.md for the reasons.",
+   "by": "incident.meteorologist@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T19:05Z",
+   "dated_from": "\"written_utc\"",
+   "made_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 4391,
+   "sha256": "c44d2454a6cf6b2f6b706a908627e2c77ea484cb3134b2b6c3ad96670d6985b2",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/weather/analysis.json",
+   "commits": {
+    "n": 3,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+   "kind": "analysis",
+   "title": "Analysis: when the worst arrives in Lisbon on Wednesday, and how far ahead each warning could be known",
+   "what": "Label: ANALYSIS (incident.meteorologist@web-summit.dinis, 10 November 2026, written at 19:05 UTC from the data in this folder as read at 19:01 UTC). The facts it rests on are in the JSON files beside it, each with its source and time read. The conclusions are …",
+   "by": "incident.meteorologist@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10T19:05Z",
+   "dated_from": "header",
+   "made_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.json"
+   ],
+   "links_to": [
+    "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+    "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+    "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+    "incidents/2026-11-10-storm-charles/data/weather/warnings.json"
+   ],
+   "external_links": 0,
+   "bytes": 11627,
+   "sha256": "22cfc69cf1e0ac2de217a17f112fb6c360ac29450280a89842060cd45f76647e",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/analysis.html",
+   "commits": {
+    "n": 3,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+    "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+    "incidents/2026-11-10-storm-charles/timeline.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+   "kind": "dataset",
+   "title": "changes.json",
+   "what": "thursday (first): Lisbon warnings touching Thursday 12 Nov and the forecasts for its morning. gusts_above_warned: every LPPT METAR gust from Wed 05:00 above the gust warned for that hour (the IPMA wind warning in force, from its text; outside a wind warning, …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 8004,
+   "sha256": "a890b24c3f2b7ca0c07255d2cc0695c2b8b60a298a19bbf56dae7d7eb1fca87c",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/changes.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/weather/changes.json",
+   "commits": {
+    "n": 5,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+   "kind": "dataset",
+   "title": "communiques.json",
+   "what": "IPMA's communiqués (special weather information) from its RSS feed, kept across reads; earthquake notices left out.",
+   "by": "",
+   "by_from": "",
+   "dated": "2026-11-10T23:22:52Z",
+   "dated_from": "\"read_utc\"",
+   "made_from": [
+    "https://www.ipma.pt/resources.www/rss/comunicados.xml"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 6926,
+   "sha256": "37ccbec753af97c12581aa28a017081a6381215156091a52ac0e7757376d3be9",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/weather/communiques.json",
+   "commits": {
+    "n": 5,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+   "kind": "dataset",
+   "title": "forecast.json",
+   "what": "IPMA's own forecast for Lisbon (globalIdLocal 1110600): the 5-day daily forecast and the hourly model forecast (mean wind, no gusts). IPMA's wind classes: 1 weak, 2 moderate, 3 strong, 4 very strong.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 21736,
+   "sha256": "1f59c00d7739e1d930ed4eff8b2c6aa829c05c0107ed745663a24861fc6e003c",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/weather/forecast.json",
+   "commits": {
+    "n": 6,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+   "kind": "dataset",
+   "title": "gusts-vs-forecast.json",
+   "what": "The latest observed wind in Lisbon against what was forecast for that hour. Facts with sources; no analysis here (see analysis.md).",
+   "by": "",
+   "by_from": "",
+   "dated": "2026-11-10T23:22:52Z",
+   "dated_from": "\"read_utc\"",
+   "made_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2955,
+   "sha256": "58613aab6384c3e30b8ab06a5deda9f0fe34d286b3311ca740010d69c3f5ccbd",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/weather/gusts-vs-forecast.json",
+   "commits": {
+    "n": 5,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+   "kind": "dataset",
+   "title": "stations.json",
+   "what": "IPMA's hourly station observations in and next to Lisbon, kept across reads (the feed holds 24 hours). Mean wind only: this feed has NO gusts; gusts are in the airport's METAR (airport.json).",
+   "by": "",
+   "by_from": "",
+   "dated": "2026-11-10T23:22:52Z",
+   "dated_from": "\"read_utc\"",
+   "made_from": [
+    "https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json",
+    "https://api.ipma.pt/open-data/observation/meteorology/stations/stations.json",
+    "incidents/2026-11-10-storm-charles/data/weather/airport.json"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 47387,
+   "sha256": "84f1f00b996fe32564e4b1027c73d575ef651f600293d98d26d9e6209ee8a879",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/stations.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/weather/stations.json",
+   "commits": {
+    "n": 5,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py",
+   "kind": "tool",
+   "title": "refresh.py",
+   "what": "The weather picture for WS-214 (the storm, Wednesday 11 November 2026), as JSON.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 28278,
+   "sha256": "88953aac7f465141f22ded801c89d0a113688e532ee5e814a642ac6185e9ec83",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py",
+   "commits": {
+    "n": 3,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:03:27Z",
+    "last_commit": "44a983bfb2",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:03:27Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/changes.json"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+   "kind": "dataset",
+   "title": "warnings.json",
+   "what": "IPMA's weather warnings for the Lisbon district (idAreaAviso LSB), non-green only; red and orange warnings elsewhere; and how Lisbon's warnings changed over time. Times are local = UTC (WET). Warnings carry no issue time in IPMA's feed: an issue time comes …",
+   "by": "",
+   "by_from": "",
+   "dated": "2026-11-10T23:22:52Z",
+   "dated_from": "\"read_utc\"",
+   "made_from": [
+    "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 18983,
+   "sha256": "6dabcc18b94d1897a39846465ad0269be54eddb374847ca3e6f2d2d031157b85",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+   "api": "https://storm-charles.promptugal.news/api/v1/2026-11-10-storm-charles/weather/warnings.json",
+   "commits": {
+    "n": 5,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T23:24:10Z",
+    "last_commit": "ada2a2075b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T23:24:10Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/data/weather/README.md",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/decisions.md",
+   "kind": "decision log",
+   "title": "Decisions (simulate first: each decision is written here before anyone acts)",
+   "what": "Newest first.",
+   "by": "conductor@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "https://websummit.com/blog/web-summit/important-event-update-2026/"
+   ],
+   "links_to": [],
+   "external_links": 1,
+   "bytes": 3508,
+   "sha256": "b1d7a6d31dcd06d242918be776d7d332eb06cd8df2d0680a713b17cd299c510c",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/decisions.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/decisions.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/README.md"
+   ]
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/incident.json",
+   "kind": "incident record",
+   "title": "Storm Charles, Lisbon: Wednesday 11 November 2026",
+   "what": "The incident's front-page record, kept by incident.conductor@web-summit.dinis. The headline is always a decision or warning from its primary source, with the time it was published; the front page renders it as written.",
+   "by": "incident.conductor@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1272,
+   "sha256": "a50bd5ebe5ad7691fef8cc6d70ef1be94bc86df8b550843b678815a7fc607208",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/incident.json",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/material/wednesday-is-off-what-now.md",
+   "kind": "material",
+   "title": "Material for Vicky's weather desk: \"Wednesday is off: what now?\" (a service piece's facts)",
+   "what": "Offered by incident.conductor@web-summit.dinis (WS-214), 10 November 2026, 20:00 UTC, as material for weather@PrompTugal.vicky and conductor.B@PrompTugal.vicky. Not an article and not advice. Vicky directs her desk; the desk decides whether to use any of it, …",
+   "by": "incident.conductor@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10T20:00Z",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 6,
+   "bytes": 4441,
+   "sha256": "f9a63fbca712d0bf814a62e7ff81a71338d2bd684a8a009fba6f5b80e7170d79",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/material/wednesday-is-off-what-now.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/material/wednesday-is-off-what-now.html",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": []
+  },
+  {
+   "path": "incidents/2026-11-10-storm-charles/timeline.md",
+   "kind": "decision log",
+   "title": "Timeline (UTC, 10 to 11 November 2026)",
+   "what": "Newest first (from 18:58, at the incident conductor's takeover). Facts and evidence carry their source; anything unofficial says so.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+    "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+    "https://pt.euronews.com/2026/11/10/portugal-web-summit-cancela-segundo-dia-em-lisboa-devido-a-tempestade-charles",
+    "https://social.vivaldi.net/@jon/117594316167337659",
+    "https://storm-charles.promptugal.news**",
+    "https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles"
+   ],
+   "links_to": [
+    "incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+    "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ],
+   "external_links": 15,
+   "bytes": 12424,
+   "sha256": "e50f8c6453831acfa3d513c7c8a3659273b430fb1cc8affccba4d8407c9d9d36",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/timeline.md",
+   "page": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/timeline.html",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "incidents/2026-11-10-storm-charles/README.md",
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "incidents/2026-11-10-storm-charles/data/signals.json"
+   ]
+  },
+  {
+   "path": "library/README.md",
+   "kind": "library",
+   "title": "The library: everything on this site, and where it came from",
+   "what": "The catalogue as a page, by kind, with the gaps listed.",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "generated",
+   "dated": "",
+   "dated_from": "",
+   "generated_by": "tools/library-index.mjs",
+   "made_from": [
+    "every file in this repository",
+    "library/provenance.json"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "commits": null,
+   "changed": "",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/library/README.md",
+   "page": "https://storm-charles.promptugal.news/library/",
+   "linked_from": [
+    "library/glossary.md",
+    "library/reading/README.md"
+   ]
+  },
+  {
+   "path": "library/glossary.md",
+   "kind": "library",
+   "title": "Glossary",
+   "what": "Kept by incident.librarian@web-summit.dinis, 10 November 2026. Being written now.",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [
+    "library/README.md"
+   ],
+   "links_to": [
+    "library/README.md"
+   ],
+   "external_links": 0,
+   "bytes": 131,
+   "sha256": "9619864b7b42af079b7aaf27f43d1a893985a3e99d248509b19a223d92c8bf1b",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/library/glossary.md",
+   "page": "https://storm-charles.promptugal.news/library/glossary.html",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": []
+  },
+  {
+   "path": "library/index.json",
+   "kind": "library",
+   "title": "The catalogue, for agents",
+   "what": "Every file on this site: kind, what it is, who wrote it, when it changed, what it was made from, what links to it, sha256; and the gaps.",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "generated",
+   "dated": "",
+   "dated_from": "",
+   "generated_by": "tools/library-index.mjs",
+   "made_from": [
+    "every file in this repository",
+    "library/provenance.json"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "commits": null,
+   "changed": "",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/library/index.json",
+   "linked_from": [
+    "agents/JOBS.md"
+   ]
+  },
+  {
+   "path": "library/provenance.json",
+   "kind": "library",
+   "title": "Who committed what",
+   "what": "For each file: its commits' agents, the first and the last commit, and the sha256 the record holds for.",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "generated",
+   "dated": "",
+   "dated_from": "",
+   "generated_by": "tools/library-index.mjs",
+   "made_from": [
+    "the commits of this repository (read in a full clone)"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "commits": null,
+   "changed": "",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/library/provenance.json",
+   "linked_from": []
+  },
+  {
+   "path": "library/reading/README.md",
+   "kind": "reading",
+   "title": "The reading list",
+   "what": "Kept by incident.librarian@web-summit.dinis, 10 November 2026. Being written now: what the articles on https://newsroom.sgit.ai mean for this site.",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [
+    "library/README.md",
+    "https://newsroom.sgit.ai"
+   ],
+   "links_to": [
+    "library/README.md"
+   ],
+   "external_links": 1,
+   "bytes": 208,
+   "sha256": "cf5b5825bd0215a6a5de8a2291987900858139472ec7fa1321c897b3e2d985e2",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/library/reading/README.md",
+   "page": "https://storm-charles.promptugal.news/library/reading/",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": []
+  },
+  {
+   "path": "tools/agents-index.mjs",
+   "kind": "tool",
+   "title": "agents-index.mjs",
+   "what": "The team's index: repository - data/agents/index.json (kept by incident.observability@web-summit.dinis). node tools/agents-index.mjs write it node tools/agents-index.mjs --check exit 1 if the committed file is behind the repository Reads only files in the …",
+   "by": "incident.observability@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 5820,
+   "sha256": "c3945164b3e14b3cb2743f715c47470301bbec6be449031ab198ae4f7f6f96ef",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/agents-index.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "app/agents/about.md",
+    "data/agents/index.json"
+   ]
+  },
+  {
+   "path": "tools/library-index.mjs",
+   "kind": "tool",
+   "title": "library-index.mjs",
+   "what": "The library's catalogue (incident.librarian@web-summit.dinis, 10 November 2026, WS-214; Dinis's direction ~23:40: \"all information, all documents, all briefs should be on the site\"; \"provenance, where everything needs to be linked\"). Repository - …",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 25145,
+   "sha256": "7330beb1495038ec43e9b6f9e27029fd62e43afccc3e0596832df7f387cdfa76",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/library-index.mjs",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": []
+  },
+  {
+   "path": "tools/llm.mjs",
+   "kind": "tool",
+   "title": "llm.mjs",
+   "what": "The model ledger's one wrapper (incident.dev@web-summit.dinis, 10 November 2026, WS-214; ROADMAP P0.4, Dinis's direction ~19:15): every model call the incident team makes goes through call() here, ours or OpenRouter's, so every call is stored and counted. - …",
+   "by": "incident.dev@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 8679,
+   "sha256": "244a25f7a9b19f5c6961b945823d47a903ffce55bcfb9a4bd3c37b2c881d171e",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/llm.mjs",
+   "commits": {
+    "n": 1,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:14:33Z",
+    "last_commit": "77cdd51fc1",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:14:33Z",
+   "linked_from": [
+    "CLAUDE.md",
+    "REALITY.md",
+    "ROADMAP.md",
+    "agents/JOBS.md"
+   ]
+  },
+  {
+   "path": "tools/sync-from-websummit.sh",
+   "kind": "tool",
+   "title": "sync-from-websummit.sh",
+   "what": "Temporary bridge (10 November 2026): until the incident agents' sessions can push here, they keep writing data/ and their status files in SGit-AI__Website__Web-Summit team/incidents/ (its MOVED.md); the lead copies them across with this. Usage: …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1503,
+   "sha256": "5bfb740da6365e74fc6ca1974795ba6b9aad9e08640dd7c52fdaae8270e8bc06",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/sync-from-websummit.sh",
+   "commits": {
+    "n": 3,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:19:37Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:37:21Z",
+    "last_commit": "64eff59bfe",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:37:21Z",
+   "linked_from": []
+  },
+  {
+   "path": "tools/timeline.mjs",
+   "kind": "tool",
+   "title": "timeline.mjs",
+   "what": "timeline.md - signals.json (incident.dev@web-summit.dinis, 10 November 2026, WS-214). The lead keeps the timeline as a markdown table (UTC | Signal or decision | Source); this turns just that table into data, so the dashboard and Vicky's agents read JSON and …",
+   "by": "incident.dev@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 4052,
+   "sha256": "973fc752c83bb821192b4980017eec1ac667bf53179501983708700b32e1c8c4",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/timeline.mjs",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": [
+    "REALITY.md",
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "incidents/2026-11-10-storm-charles/data/signals.json"
+   ]
+  },
+  {
+   "path": "tools/websummit-poll.sh",
+   "kind": "tool",
+   "title": "websummit-poll.sh",
+   "what": "The 2-minute blog poll (incident.dev@web-summit.dinis, 10 November 2026, WS-214; incident.researcher@'s ask via the lead, 21:03). Rewritten at 21:30 after security.repos@'s MEDIUM (report 2026-11-10T2130Z): the first version reset a worktree to dev every loop …",
+   "by": "incident.dev@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2208,
+   "sha256": "886b340811f35c0df1a9265bb0447b917e80d0f02657d648ae1306bd011263c5",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/websummit-poll.sh",
+   "commits": {
+    "n": 2,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:16:42Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:18:01Z",
+    "last_commit": "d9e2b8b926",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:18:01Z",
+   "linked_from": []
+  },
+  {
+   "path": "tools/websummit.mjs",
+   "kind": "tool",
+   "title": "websummit.mjs",
+   "what": "Web Summit's own channels, watched for the decision everyone waits for (incident.dev@web-summit.dinis, 10 November 2026, WS-214; incident.researcher@'s parser asks in decisions/sources.json: websummit-sitemap, websummit-bluesky). Just the part that matters: …",
+   "by": "incident.dev@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 14670,
+   "sha256": "808b5441f49fe96a2c6f3445bb0ebfe9ad252566ae62f0435a6808fc0b9b88e5",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/websummit.mjs",
+   "commits": {
+    "n": 3,
+    "first_by": "incident.conductor@web-summit.dinis",
+    "first_at": "2026-11-10T21:14:33Z",
+    "last_by": "incident.conductor@web-summit.dinis",
+    "last_at": "2026-11-10T21:37:01Z",
+    "last_commit": "140323fe6b",
+    "agents": [
+     "incident.conductor@web-summit.dinis"
+    ]
+   },
+   "changed": "2026-11-10T21:37:01Z",
+   "linked_from": [
+    "REALITY.md",
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "incidents/2026-11-10-storm-charles/data/watch/websummit.json"
+   ]
+  }
+ ]
+}
