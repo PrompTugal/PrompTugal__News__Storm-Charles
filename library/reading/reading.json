@@ -1,0 +1,368 @@
+{
+ "about": "The reading list: what the articles and design pages on newsroom.sgit.ai say that bears on this site, each with its argument in two sentences (our summary, not a quotation) and what it means here: a rule to keep or a thing to build. Asked for by Dinis Cruz, 10 November 2026 (BRIEF.md). The page is rendered from this file by tools/library-reading.mjs.",
+ "by": "incident.librarian@web-summit.dinis",
+ "updated": "2026-11-10T23:47Z",
+ "source": "https://newsroom.sgit.ai/llms.txt",
+ "how_read": "Found through https://newsroom.sgit.ai/llms.txt and /newsroom/wire.json (389 articles listed); selected by title for the six themes; each article read through its markdown twin and its per-section summaries (/articles/summaries/<slug>.json), the design pages as HTML. Read between 23:40 and 23:45 UTC on 10 November 2026 (read_utc is the middle of that window). The newsroom's content is CC BY 4.0; nothing is quoted at length. Articles are by Dinis Cruz, written from his voice notes by an agent; several are designs or proposals and say so: status_there repeats the page's own note.",
+ "label": "The arguments are evidence (reported by their authors); 'means_here' is our analysis, a hypothesis about what this site should do, for the conductor and Dinis to decide.",
+ "for_us_values": {
+  "keep": "a rule this site already follows and should keep",
+  "build": "something this site does not do yet"
+ },
+ "themes": [
+  {
+   "id": "graph",
+   "theme": "A story is a graph",
+   "items": [
+    {
+     "url": "https://newsroom.sgit.ai/design/index.html",
+     "title": "The design, and what runs",
+     "by": "newsroom.sgit.ai",
+     "argument": "The story is a graph and the article is one projection of it; six ideas (the graph, corrections, provenance, paying the fact's finder, rights, no server) are each set beside what runs and what does not yet. The page's own rule is that running is not designed: nothing is called live because a design describes it.",
+     "for_us": "keep",
+     "means_here": "Every sentence on a page here must be a projection of a JSON file under data/, never the other way round; and REALITY.md, not ROADMAP.md, is what we cite when we say a thing exists.",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/the-wire-as-a-graph.html",
+     "markdown": "https://newsroom.sgit.ai/articles/the-wire-as-a-graph.md",
+     "title": "The wire as a graph: start from what the reader sees, give every story and every name a long-lived ID, link every phrase of a short narrative, and a brief for the desks",
+     "published": "2026-10-14",
+     "by": "Dinis Cruz",
+     "argument": "Design the graph backwards from what the reader sees: every name a link, every sentence a typed claim (fact, observation, party statement, analysis) pointing at a capture. Every object gets an identifier minted once, never reused and never derived from its title, so old links survive merges and splits.",
+     "for_us": "build",
+     "means_here": "signals.json items have no id today (a row is known only by its time and text): tools/timeline.mjs should mint a permanent id per row and keep it when the row is edited, and the graph's nodes, the signals and sources.json should name actors by one shared id.",
+     "for": "incident.dev@, incident.graph@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/the-bridge-followed-to-the-end.html",
+     "markdown": "https://newsroom.sgit.ai/articles/the-bridge-followed-to-the-end.md",
+     "title": "The bridge, followed to the end: what one local story is worth when it is kept as a graph",
+     "published": "2026-10-07",
+     "by": "Dinis Cruz",
+     "argument": "A bridge closure was newsworthy on five days but needed by readers on fifty-seven; each new date superseded the last claim and the graph kept what was believed when. An article is written once; a maintained claim is a service.",
+     "for_us": "build",
+     "means_here": "Each open item (Thursday's Day 3, the PITCH semi-final, Night Summit, Thursday's transport) should be one maintained claim with its current state, its source, the time read and its whole history, kept current after the storm leaves the front pages.",
+     "for": "incident.conductor@, incident.graph@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/breaking-the-story-down-before-the-agents-do.html",
+     "markdown": "https://newsroom.sgit.ai/articles/breaking-the-story-down-before-the-agents-do.md",
+     "title": "Breaking the story down before the agents do: a reply to Ole Reissmann's session at the News Product Alliance Summit, and what this newsroom already ships to the machines that read it",
+     "published": "2026-10-30",
+     "by": "Dinis Cruz",
+     "argument": "Break a story into actors, events, sources and claims before the agents do it for you, and publish the breakdown with the article. What is still missing is an allegation kind: a claim about a party, with whether it was put to them and their answer.",
+     "for_us": "build",
+     "means_here": "Where we state something about a named body (for example that an organiser's decision was public for 43 minutes before we saw it), the item should say whether it was put to that body and what it answered; incident.media@'s outreach drafts are where the question is drafted, and a person sends.",
+     "for": "incident.media@, incident.researcher@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/search-as-navigation.html",
+     "markdown": "https://newsroom.sgit.ai/articles/search-as-navigation.md",
+     "title": "Search as navigation: walking the newsroom's graph with no model, and why a clean graph should beat vectors",
+     "published": "2026-10-18",
+     "by": "Dinis Cruz",
+     "argument": "Search can be a walk through the graph with no model: curated names and aliases, counted co-occurrence, exact counts, and databases running in the browser over the site's own files. The work is the debt: duplicate tags and graphs that share no labels are islands.",
+     "for_us": "build",
+     "means_here": "Before the SQL console is useful, the ids must join: a build-time report of every actor, place and source id used in only one file, so the islands are counted on each push.",
+     "for": "incident.graph@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/databases/index.html",
+     "title": "Databases with no server",
+     "by": "newsroom.sgit.ai",
+     "argument": "Keep the truth as files, derive every other shape at build time, and let the reader's machine do the querying: SQLite and a SPARQL store run in the browser over the same hashed JSON files. Nothing is uploaded and the database is gone when the tab closes.",
+     "for_us": "build",
+     "means_here": "The database in the browser (incident.graph@'s job) should load exactly the files listed in api/v1/index.json and check each against its sha256 before querying, so a query result can be traced to the bytes.",
+     "for": "incident.graph@",
+     "read_utc": "2026-11-10T23:42Z"
+    }
+   ]
+  },
+  {
+   "id": "provenance",
+   "theme": "Provenance is the product",
+   "items": [
+    {
+     "url": "https://newsroom.sgit.ai/provenance/index.html",
+     "title": "Provenance is the product",
+     "by": "newsroom.sgit.ai",
+     "status_there": "A design, not a running system, by the page's own note.",
+     "argument": "Most articles give a link, not evidence: the link is rarely followed and may die. A newsroom that shows who found, checked and changed each claim earns trust a black box cannot, and the differentiator is the walkable chain.",
+     "for_us": "build",
+     "means_here": "ROADMAP's provenance record (source URL, time published, time captured, sha256 of the capture, vault object, agent, label) is still two fields short on every item: there is no capture and so no sha256, because the raw vault is not built (REALITY.md, Not yet).",
+     "for": "incident.conductor@, incident.dev@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/capture-first.html",
+     "markdown": "https://newsroom.sgit.ai/articles/capture-first.md",
+     "title": "Capture first: how a BBC live page at breakfast became an evidence vault, a section here and a site of its own by lunchtime, for a story that was still changing as we covered it",
+     "published": "2026-10-22",
+     "by": "Dinis Cruz",
+     "argument": "Live pages change by the hour, so the evidence vault was made before any page was written: captures only ever added, each hashed, one file per writer. Two agents nearly lost forty sources by not committing, which gave two rules: commit after every source, and check every clone; and a hash proves bytes unchanged since stored, not when they were captured.",
+     "for_us": "build",
+     "means_here": "Build the raw vault before the next page: every source read is captured and committed to the vault at once, git keeps the pointer and sha256, and our pages say 'unchanged since we stored it' and never 'as published at'.",
+     "for": "incident.dev@, incident.conductor@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/the-side-stories-of-php2shell.html",
+     "markdown": "https://newsroom.sgit.ai/articles/the-side-stories-of-php2shell.md",
+     "title": "The side stories of php2shell: provenance, features built against a real problem, who corrects their reporting, a crisis with no named victim, the sites that went dark, the flaws nobody watched, and how much of it was AI",
+     "published": "2026-10-25",
+     "by": "Dinis Cruz",
+     "argument": "Linking each claim to a source and each source to a dated, hashed capture is rare and underpins everything else. One publisher reworded a claim without a note, and it was detectable only because both captures had been kept.",
+     "for_us": "build",
+     "means_here": "tools/websummit.mjs already keeps the organiser's post text hash and its modified times; extend the same to every official page we watch, and publish a silent change as a signal of its own ('changed without a note', both hashes, both times read).",
+     "for": "incident.dev@, incident.researcher@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/provenance/the-decision-graph.html",
+     "title": "The decision graph",
+     "by": "newsroom.sgit.ai",
+     "status_there": "A specified process, not a running one, by the page's own note.",
+     "argument": "A decision should never be a yes or no but a graph that collects evidence, with a named owner at every step. A person who approves without the evidence is not oversight.",
+     "for_us": "keep",
+     "means_here": "decisions.md already has By and Evidence columns: keep both filled on every row, and when a draft goes to a person to send, the person gets the facts it cites (comms/facts.md), not a summary.",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/a-desk-anyone-can-open.html",
+     "markdown": "https://newsroom.sgit.ai/articles/a-desk-anyone-can-open.md",
+     "title": "A desk anyone can open: the PHP story's work and who did it, nine names with their responsibilities, and an evidence vault anyone can now read, scanned before its key was published",
+     "published": "2026-10-22",
+     "by": "newsroom.dev",
+     "argument": "Nine names worked a story in a day and only chat described it, so the work became a file where every row has an owner and its proof, and roles say what each name may change. The roles were drawn from the record (git logs, vault commits), not from memory.",
+     "for_us": "build",
+     "means_here": "Each 'done' line in agents/*/status.json should end with its proof (a commit or a URL); library/provenance.json already gives who committed each file, read from the record.",
+     "for": "every agent",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/the-waiting-room-knew-first.html",
+     "markdown": "https://newsroom.sgit.ai/articles/the-waiting-room-knew-first.md",
+     "title": "The waiting room knew first: a live local story, and the gap where local information used to be",
+     "published": "2026-10-08",
+     "by": "Dinis Cruz",
+     "argument": "A local outage was known only to the people already in the waiting room; nothing checkable from home showed it. The answer is a log that keeps every observation by evidence level, every source and how it was accessed, and an agent that keeps re-checking.",
+     "for_us": "keep",
+     "means_here": "This is the closest article to what this site is: keep 'how it was read' on every source (sources.json has machine_readable and status; a page only a person can read says so), and keep the list of what is not known beside what is.",
+     "read_utc": "2026-11-10T23:42Z"
+    }
+   ]
+  },
+  {
+   "id": "corrections",
+   "theme": "Corrections must propagate",
+   "items": [
+    {
+     "url": "https://newsroom.sgit.ai/corrections/index.html",
+     "title": "Corrections must propagate",
+     "by": "newsroom.sgit.ai",
+     "status_there": "None of the mechanism is built, by the page's own note.",
+     "argument": "In a document a correction is a new document and nothing that cited the original knows; in a graph a correction is an edge, typed, dated and traceable. Staleness and correction are first-class, not an afterthought.",
+     "for_us": "build",
+     "means_here": "The library now records what every document names as its source and what links to it (linked_from): when a file is corrected, the list of pages that cite it is one lookup, and the catalogue can list documents older than the sources they were made from.",
+     "for": "incident.librarian@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/corrections/how-a-graph-answers-it.html",
+     "title": "How a graph answers it",
+     "by": "newsroom.sgit.ai",
+     "status_there": "A design marked proposed, by the page's own note.",
+     "argument": "Supersede, never delete: a superseded claim stays, marked from the date it was superseded, so 'what did we believe at 19:00?' can still be answered. Citations are typed by faithfulness (supports, partially supports, extends beyond, contradicts) and freshness is a recorded property of a claim.",
+     "for_us": "build",
+     "means_here": "A corrected timeline row is never rewritten in place: the new row carries 'supersedes' and the old one stays, marked; today the PITCH semi-final conflict and the widened peak are told in prose only. Evidence rows should say whether the press report supports or extends beyond the primary source.",
+     "for": "incident.conductor@, incident.dev@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/wire/index.html",
+     "title": "The Industry Wire (a beta)",
+     "by": "newsroom.sgit.ai",
+     "status_there": "Described from the newsroom's llms.txt; the wire's stories are marked unreviewed.",
+     "argument": "A corrected story carries its changes, dated, under its own text, so the correction is read where the story is read. Thirteen stories were corrected after their primary sources were fetched.",
+     "for_us": "keep",
+     "means_here": "A correction here is shown on the item it corrects, with the time and the source that corrected it, never only in a later row.",
+     "read_utc": "2026-11-10T23:42Z"
+    }
+   ]
+  },
+  {
+   "id": "policies",
+   "theme": "Agents under behaviour policies",
+   "items": [
+    {
+     "url": "https://newsroom.sgit.ai/newsroom/policies.html",
+     "title": "Behaviour policies",
+     "by": "newsroom.sgit.ai",
+     "argument": "For agents sharing one repository the reach is every file and the mandate is a short list of paths; the barrier is a check that lists every changed file outside the role's list. The page's table is generated from the same role files the checker reads, so the two cannot disagree.",
+     "for_us": "build",
+     "means_here": "agents/JOBS.md's Owns column is our policy and nothing checks it: put the paths in a file (agents/policy.json), render the table from it, and have admin/tools/release.sh refuse a push whose commits touch paths outside the committing agent's list.",
+     "for": "incident.conductor@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/a-second-reader-the-agent-cannot-skip.html",
+     "markdown": "https://newsroom.sgit.ai/articles/a-second-reader-the-agent-cannot-skip.md",
+     "title": "A second reader the agent cannot skip: how two wrong emails became a gate on every draft",
+     "published": "2026-10-09",
+     "by": "Dinis Cruz",
+     "argument": "A rule kept by the agent it governs is hope. The fix is an independent reader behind a gate the harness runs: certain checks in code first, judgement by a reader with no history, and anything but an explicit pass fails.",
+     "for_us": "keep",
+     "means_here": "'Agents draft, a person sends' is our one real boundary for anything leaving the repositories; keep it absolute, and put what can be checked in code (the gate) rather than in an agent's promise.",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/where-a-check-runs.html",
+     "markdown": "https://newsroom.sgit.ai/articles/where-a-check-runs.md",
+     "title": "Where a check runs is part of the policy: tests as enforcers of Agent Behaviour Policies, and what moving them out of the agent's environment would gain, measured on this newsroom",
+     "published": "2026-10-22",
+     "by": "Dinis Cruz",
+     "argument": "Where a check runs decides what kind of control it is: a check the agent can edit or skip is a setting, not a boundary. CI is a setting until the owner protects the branch and the workflow.",
+     "for_us": "build",
+     "means_here": "Our gate and workflow live in the repository every agent can push to: say so in SECURITY.md, and ask Dinis for branch protection on main and on admin/ and .github/ (only he can set it).",
+     "for": "incident.identity@, incident.conductor@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/re-anchoring-agent-behaviour-policies.html",
+     "markdown": "https://newsroom.sgit.ai/articles/re-anchoring-agent-behaviour-policies.md",
+     "title": "Re-anchoring: keeping an agent's rules alive through every summary, and a canary that shows when they are not",
+     "published": "2026-10-10",
+     "by": "Dinis Cruz",
+     "argument": "Rules held only in conversation do not survive a summary (eighteen compactions kept 1.7% of context on average), so the policy is printed back from a file after every one, with a small computed report as a canary. A rule in view is still only an expectation.",
+     "for_us": "keep",
+     "means_here": "CLAUDE.md and agents/JOBS.md are the anchor: every agent rereads both on every wake, and keeps its jobs and asks in status.json, not in its memory of the session.",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/web-summit-part-four.html",
+     "markdown": "https://newsroom.sgit.ai/articles/web-summit-part-four.md",
+     "title": "The Web Summit team, part four: the day the agents ran on their own, 75 releases, four people connected, a procurement agent writing to printers, and the behaviour policies catching our own agents out",
+     "published": "2026-11-02",
+     "by": "Dinis Cruz",
+     "argument": "On the day the Web Summit team's agents ran on schedules (75 releases, 17 agents), the policies caught two of our own: writes outside a folder and a session signing as another. Neither did harm; both were the gap between mandate and reach, and both went to a person within hours.",
+     "for_us": "build",
+     "means_here": "Every commit here has the same git author and the agent is only a word in the subject: the session keys in data/keys.json sign nothing yet. Signed commits or a signed status file per agent would make 'who wrote this' checkable, not asserted.",
+     "for": "incident.identity@, incident.observability@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/the-librarians-daily-brief.html",
+     "markdown": "https://newsroom.sgit.ai/articles/the-librarians-daily-brief.md",
+     "title": "The Librarian's daily brief: everything that happened in my universe yesterday, the threads I left, and where my leverage is today",
+     "published": "2026-10-18",
+     "by": "Dinis Cruz",
+     "status_there": "A design, not built, by the article's own limits.",
+     "argument": "A librarian reads everything and writes only its own folder: it catalogues, keeps things in sync and flags; others fix. Its brief each morning lists what happened and the threads at risk of being lost.",
+     "for_us": "keep",
+     "means_here": "The library lists gaps (files that do not say who wrote them, documents nothing links to) and sends them to their owners; it never edits another agent's file.",
+     "read_utc": "2026-11-10T23:42Z"
+    }
+   ]
+  },
+  {
+   "id": "version",
+   "theme": "CI owns the version; shipped means served",
+   "items": [
+    {
+     "url": "https://newsroom.sgit.ai/articles/ci-owns-the-version.html",
+     "markdown": "https://newsroom.sgit.ai/articles/ci-owns-the-version.md",
+     "title": "CI owns the version: the release scheme I wrote for OSBot-Utils in 2023, now on every site we run, and the technical debt that showed us why",
+     "published": "2026-10-27",
+     "by": "Dinis Cruz",
+     "argument": "Whoever pushes cannot know the next number, so one CI job picks it after the push, stamps it, tags and deploys; with several agents committing, guessed numbers collide. Keep commit subjects numberless and guard the version file.",
+     "for_us": "keep",
+     "means_here": "We follow it with one recorded departure (BRIEF-CORRECTIONS.md: CI tags and writes version.json but commits nothing). Because the newest push cancels older runs, some numbers are never deployed: say so where versions are listed.",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/green-does-not-mean-live.html",
+     "markdown": "https://newsroom.sgit.ai/articles/green-does-not-mean-live.md",
+     "title": "Green does not mean live",
+     "published": "2026-08-17",
+     "by": "",
+     "argument": "Two releases passed every check and never went live: the checks proved arrival at the remote, not that a reader was served. Now each release polls the live site for its version and fails loudly; and a page nothing links to, or missing from llms.txt, counts as unpublished.",
+     "for_us": "build",
+     "means_here": "Our CI measures push to served but does not fail when the version is never served (it prints 'not yet' and ends green): make that step fail. And make 'a page nothing links to' a gate warning: the library counts them on every build.",
+     "for": "incident.conductor@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/the-checks-measured.html",
+     "markdown": "https://newsroom.sgit.ai/articles/the-checks-measured.md",
+     "title": "The checks, measured: 123 local builds, 245 CI runs, 1,061 test checks, and where each check actually lives",
+     "published": "2026-10-21",
+     "by": "newsroom.writer",
+     "argument": "Measured, a release took about 8 minutes locally and 5 in CI, and 26 of 44 failed CI test runs came from live data, not from the change. Checks coupled to live services fail for the wrong reason.",
+     "for_us": "keep",
+     "means_here": "The gate stays offline and under its 5 s budget (0.1 to 0.2 s today); anything that needs the network runs on a schedule and reports, and never blocks a push during the storm.",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/how-a-journalist-agent-publishes-here.html",
+     "markdown": "https://newsroom.sgit.ai/articles/how-a-journalist-agent-publishes-here.md",
+     "title": "How a journalist agent publishes here: the newsroom's handbook, from the brief to the live page, with the versioning, the checks and the mistakes that taught us each rule",
+     "published": "2026-10-28",
+     "by": "Dinis Cruz",
+     "argument": "The handbook for an agent that publishes: eight rules, the release in eleven steps with CI choosing the number, and thirteen mistakes, each with the rule it produced. Another agent's draft is checked like a source.",
+     "for_us": "build",
+     "means_here": "CLAUDE.md has our rules but not the mistakes behind them: the decision graph's 'lessons' and the 43-minute miss belong in one lessons page, each with the rule or tool it produced.",
+     "for": "incident.conductor@",
+     "read_utc": "2026-11-10T23:42Z"
+    }
+   ]
+  },
+  {
+   "id": "agents",
+   "theme": "Data for agents",
+   "items": [
+    {
+     "url": "https://newsroom.sgit.ai/articles/the-agent-is-the-reader.html",
+     "markdown": "https://newsroom.sgit.ai/articles/the-agent-is-the-reader.md",
+     "title": "The agent is the reader: why agents will pay for graphs, personas and signed claims, because it is cheaper than not paying",
+     "published": "2026-10-11",
+     "by": "Dinis Cruz",
+     "status_there": "No agent has paid yet, by the article's own limits.",
+     "argument": "An agent arrives with an objective and little room, so a small curated slice of a graph, with provenance, is worth more to it than pages. A second product is the signed claim: checked against its source on a date and valid until an expiry.",
+     "for_us": "build",
+     "means_here": "Every dataset says when it was read; none says until when to trust it. Add the next scheduled read (or valid-until) at the top of each file, and serve one small now.json (the headline, the warnings in force, the open items) for an agent with one question.",
+     "for": "incident.dev@, incident.meteorologist@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/two-agents-one-vault.html",
+     "markdown": "https://newsroom.sgit.ai/articles/two-agents-one-vault.md",
+     "title": "Two agents, one vault: the Industry Wire is written into an encrypted vault by one agent and drawn by newsroom.sgit.ai, which holds only the read key",
+     "published": "2026-10-12",
+     "by": "Dinis Cruz",
+     "argument": "One agent writes the news into an encrypted vault and the site only reads it with a published read key: updating is a commit, not a release, and neither side holds the other's key. The vault is the interface between agents, and a third agent can join from the clone command alone.",
+     "for_us": "build",
+     "means_here": "This is PIPELINE.md's data lane, running elsewhere: one writer per file, the read key published on purpose, the site drawing what it decrypts. Here it is still 'Not yet' in REALITY.md.",
+     "for": "incident.dev@",
+     "read_utc": "2026-11-10T23:42Z"
+    },
+    {
+     "url": "https://newsroom.sgit.ai/articles/one-researcher-for-every-newsroom.html",
+     "markdown": "https://newsroom.sgit.ai/articles/one-researcher-for-every-newsroom.md",
+     "title": "One researcher for every newsroom: a research site that works as a light, focused Internet Archive for the sources our stories rest on, captured on a schedule into a pack a day, published by licence tier, and shared by the PHP site, the wires and the Web Summit newsroom",
+     "published": "2026-10-26",
+     "by": "Dinis Cruz",
+     "status_there": "A proposal, not built, by the article's own limits.",
+     "argument": "Several newsrooms research the same sources slowly, so one shared researcher should capture on a schedule and publish a pack a day. What is published depends on the source's licence tier: open and public-sector pages in full, others as link, hash, change dates and at most 25 words.",
+     "for_us": "keep",
+     "means_here": "sources.json already records reuse and its basis per source: keep it on every source, publish open data (IPMA) in full with attribution, and hold press text to a short excerpt with a link.",
+     "read_utc": "2026-11-10T23:42Z"
+    }
+   ]
+  }
+ ]
+}

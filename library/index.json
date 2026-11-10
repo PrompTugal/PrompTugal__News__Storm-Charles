@@ -36,9 +36,9 @@
   "linked_from": "files here that link to it or name it as a source",
   "sha256": "of the file in the repository at this build (generated files carry none)"
  },
- "as_of": "2026-11-10T23:41:40Z",
+ "as_of": "2026-11-10T23:58Z",
  "commits_read_at_head": "3449349d91",
- "total": 82,
+ "total": 99,
  "counts": {
   "build": 3,
   "repository": 4,
@@ -47,19 +47,19 @@
   "plan": 3,
   "record": 1,
   "admin": 1,
-  "tool": 9,
-  "agent file": 12,
+  "tool": 12,
+  "agent file": 13,
   "app": 11,
-  "dataset": 14,
-  "design": 1,
+  "dataset": 22,
+  "dataset doc": 4,
+  "design": 3,
   "incident record": 2,
   "comms draft": 6,
-  "dataset doc": 3,
   "analysis": 1,
   "decision log": 2,
   "material": 1,
   "library": 4,
-  "reading": 1
+  "reading": 3
  },
  "gaps": {
   "no_author_in_file": [
@@ -143,22 +143,39 @@
    },
    {
     "path": "app/site.css",
-    "committed_by": [
-     "incident.conductor@web-summit.dinis",
-     "incident.designer@web-summit.dinis"
-    ]
+    "committed_by": []
+   },
+   {
+    "path": "data/graph/ref/ipma-areas.json",
+    "committed_by": []
+   },
+   {
+    "path": "data/graph/storm.json",
+    "committed_by": []
+   },
+   {
+    "path": "data/graph/tables/actors.json",
+    "committed_by": []
+   },
+   {
+    "path": "data/graph/tables/decisions.json",
+    "committed_by": []
+   },
+   {
+    "path": "data/graph/tables/signals.json",
+    "committed_by": []
+   },
+   {
+    "path": "data/graph/tables/sources.json",
+    "committed_by": []
+   },
+   {
+    "path": "data/graph/tables/warnings.json",
+    "committed_by": []
    },
    {
     "path": "data/keys.json",
-    "committed_by": [
-     "incident.conductor@web-summit.dinis",
-     "incident.designer@web-summit.dinis",
-     "incident.identity@web-summit.dinis",
-     "incident.librarian@web-summit.dinis",
-     "incident.media@web-summit.dinis",
-     "incident.observability@web-summit.dinis",
-     "incident.weatherwatch@web-summit.dinis"
-    ]
+    "committed_by": []
    },
    {
     "path": "incidents/2026-11-10-storm-charles/comms/dinis.md",
@@ -269,6 +286,10 @@
     ]
    },
    {
+    "path": "tools/graph-places.mjs",
+    "committed_by": []
+   },
+   {
     "path": "tools/sync-from-websummit.sh",
     "committed_by": [
      "incident.conductor@web-summit.dinis"
@@ -282,6 +303,14 @@
    "agents/JOBS.md",
    "agents/README.md",
    "data/agents/index.json",
+   "data/graph/ontology.json",
+   "data/graph/ref/ipma-areas.json",
+   "data/graph/storm.json",
+   "data/graph/tables/actors.json",
+   "data/graph/tables/decisions.json",
+   "data/graph/tables/signals.json",
+   "data/graph/tables/sources.json",
+   "data/graph/tables/warnings.json",
    "data/keys.json",
    "incidents/2026-11-10-storm-charles/comms/README.md",
    "incidents/2026-11-10-storm-charles/comms/dinis.md",
@@ -292,9 +321,123 @@
    "incidents/2026-11-10-storm-charles/data/weather/changes.json",
    "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
    "incidents/2026-11-10-storm-charles/decisions.md",
-   "incidents/2026-11-10-storm-charles/timeline.md"
+   "incidents/2026-11-10-storm-charles/timeline.md",
+   "library/reading/README.md"
   ],
-  "no_commit_record": [],
+  "no_commit_record": [
+   {
+    "path": "admin/build/build.mjs",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "agents/conductor/status.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "agents/designer/status.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "agents/graph/status.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "agents/librarian/status.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "app/site.css",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "data/agents/index.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "data/graph/README.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/graph/ontology.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/graph/ref/ipma-areas.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/graph/storm.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/graph/tables/actors.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/graph/tables/decisions.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/graph/tables/signals.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/graph/tables/sources.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/graph/tables/warnings.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "data/keys.json",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "design/round-1.md",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "design/round-2.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "design/round-3.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "library/glossary.md",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "library/reading/README.md",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "library/reading/reading.json",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "library/reading/standard.md",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/graph-build.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/graph-places.mjs",
+    "why": "new since the commits were last read"
+   },
+   {
+    "path": "tools/library-index.mjs",
+    "why": "changed since the commits were last read"
+   },
+   {
+    "path": "tools/library-reading.mjs",
+    "why": "new since the commits were last read"
+   }
+  ],
   "datasets_naming_no_source": [
    "data/keys.json",
    "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
@@ -303,15 +446,12 @@
    "incidents/2026-11-10-storm-charles/data/weather/forecast.json"
   ],
   "documents_nothing_links_to": [
-   "BRIEF-CORRECTIONS.md",
-   "agents/README.md",
    "app/agents/about.md",
    "design/round-1.md",
-   "incidents/2026-11-10-storm-charles/comms/README.md",
-   "incidents/2026-11-10-storm-charles/material/wednesday-is-off-what-now.md",
-   "library/glossary.md",
-   "library/reading/README.md"
+   "design/round-2.md",
+   "design/round-3.md"
   ],
+  "older_than_their_sources": [],
   "not_served_on_the_site": [
    ".github/workflows/deploy.yml",
    ".gitignore",
@@ -413,7 +553,10 @@
     ]
    },
    "changed": "2026-11-10T21:14:33Z",
-   "linked_from": []
+   "linked_from": [
+    "library/glossary.md",
+    "library/reading/standard.md"
+   ]
   },
   {
    "path": "BRIEF.md",
@@ -447,7 +590,10 @@
    "linked_from": [
     "CLAUDE.md",
     "SECURITY.md",
-    "agents/JOBS.md"
+    "agents/JOBS.md",
+    "library/glossary.md",
+    "library/reading/reading.json",
+    "library/reading/standard.md"
    ]
   },
   {
@@ -491,7 +637,8 @@
    "changed": "2026-11-10T21:14:33Z",
    "linked_from": [
     "README.md",
-    "agents/JOBS.md"
+    "agents/JOBS.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -590,7 +737,8 @@
    "linked_from": [
     "CLAUDE.md",
     "README.md",
-    "ROADMAP.md"
+    "ROADMAP.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -674,7 +822,9 @@
    },
    "changed": "2026-11-10T21:14:33Z",
    "linked_from": [
-    "README.md"
+    "README.md",
+    "library/glossary.md",
+    "library/reading/standard.md"
    ]
   },
   {
@@ -714,7 +864,8 @@
    "linked_from": [
     "CLAUDE.md",
     "PIPELINE.md",
-    "README.md"
+    "README.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -755,7 +906,8 @@
    },
    "changed": "2026-11-10T23:41:00Z",
    "linked_from": [
-    "agents/JOBS.md"
+    "agents/JOBS.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -770,25 +922,15 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 32565,
-   "sha256": "203f87fb464345f167fe6483da34e61b18f29860dde2d5f5dc589dbf875d5bb6",
+   "bytes": 44852,
+   "sha256": "bdaedf50516e64e6a4698a00988e2a491a0c8fb2315b42218ee3afd66f22c86a",
    "served": false,
    "repo": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/admin/build/build.mjs",
-   "commits": {
-    "n": 3,
-    "first_by": "incident.conductor@web-summit.dinis",
-    "first_at": "2026-11-10T21:15:16Z",
-    "last_by": "incident.designer@web-summit.dinis",
-    "last_at": "2026-11-10T23:40:49Z",
-    "last_commit": "8c07e4ab45",
-    "agents": [
-     "incident.conductor@web-summit.dinis",
-     "incident.designer@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:40:49Z",
+   "commits": null,
+   "changed": "",
    "linked_from": [
-    "design/round-1.md"
+    "design/round-1.md",
+    "design/round-2.md"
    ]
   },
   {
@@ -820,7 +962,8 @@
    },
    "changed": "2026-11-10T21:15:16Z",
    "linked_from": [
-    "REALITY.md"
+    "REALITY.md",
+    "library/reading/standard.md"
    ]
   },
   {
@@ -881,7 +1024,10 @@
     ]
    },
    "changed": "2026-11-10T21:14:33Z",
-   "linked_from": []
+   "linked_from": [
+    "library/glossary.md",
+    "library/reading/standard.md"
+   ]
   },
   {
    "path": "agents/JOBS.md",
@@ -897,6 +1043,7 @@
     "CLAUDE.md",
     "SECURITY.md",
     "app/site.css",
+    "data/graph/ontology.json",
     "data/keys.json",
     "library/index.json"
    ],
@@ -906,6 +1053,7 @@
     "SECURITY.md",
     "app/site.css",
     "app/storm.js",
+    "data/graph/ontology.json",
     "data/keys.json",
     "library/index.json",
     "tools/llm.mjs"
@@ -930,7 +1078,9 @@
    "changed": "2026-11-10T23:35:36Z",
    "linked_from": [
     "app/agents/about.md",
-    "data/agents/index.json"
+    "data/agents/index.json",
+    "library/glossary.md",
+    "library/reading/standard.md"
    ]
   },
   {
@@ -962,7 +1112,9 @@
     ]
    },
    "changed": "2026-11-10T21:14:33Z",
-   "linked_from": []
+   "linked_from": [
+    "library/glossary.md"
+   ]
   },
   {
    "path": "agents/conductor/status.json",
@@ -976,22 +1128,12 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 2773,
-   "sha256": "166a97fe023f5b7efab95d5d2511275c0636f5426bf5195d9f70c8e010910a0c",
+   "bytes": 2327,
+   "sha256": "a99bc70db8f2f06c78cf75e93f5d62a1347d29f7fc7102aab995f84cc891c811",
    "served": true,
    "file": "https://storm-charles.promptugal.news/agents/conductor/status.json",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.conductor@web-summit.dinis",
-    "first_at": "2026-11-10T21:14:33Z",
-    "last_by": "incident.conductor@web-summit.dinis",
-    "last_at": "2026-11-10T21:14:33Z",
-    "last_commit": "77cdd51fc1",
-    "agents": [
-     "incident.conductor@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T21:14:33Z",
+   "commits": null,
+   "changed": "2026-11-10T21:05:00Z",
    "linked_from": []
   },
   {
@@ -1001,27 +1143,17 @@
    "what": "",
    "by": "incident.designer@web-summit.dinis",
    "by_from": "its own fields",
-   "dated": "2026-11-10T23:50:00Z",
+   "dated": "2026-11-10T23:45:55Z",
    "dated_from": "\"last_wake\"",
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 842,
-   "sha256": "2d611b92f44939f5f5ab9d6d2b9464c6ae4f86d36d4d49db7f1c93d0aa4c8224",
+   "bytes": 1062,
+   "sha256": "ed21ceb5193f37da349eac1515b5b12b3b6ae1dcecc77f29709672b10ba979b8",
    "served": true,
    "file": "https://storm-charles.promptugal.news/agents/designer/status.json",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.designer@web-summit.dinis",
-    "first_at": "2026-11-10T23:40:49Z",
-    "last_by": "incident.designer@web-summit.dinis",
-    "last_at": "2026-11-10T23:40:49Z",
-    "last_commit": "8c07e4ab45",
-    "agents": [
-     "incident.designer@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:40:49Z",
+   "commits": null,
+   "changed": "2026-11-10T23:45:55Z",
    "linked_from": []
   },
   {
@@ -1053,8 +1185,29 @@
    },
    "changed": "2026-11-10T22:03:27Z",
    "linked_from": [
-    "PIPELINE.md"
+    "PIPELINE.md",
+    "library/reading/standard.md"
    ]
+  },
+  {
+   "path": "agents/graph/status.json",
+   "kind": "agent file",
+   "title": "status.json",
+   "what": "",
+   "by": "incident.graph@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:58Z",
+   "dated_from": "\"updated\"",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1925,
+   "sha256": "6badc598bd022f3c8e0f11bd7fcba4e1638f9b8556ea347ddf2940ac02b319a9",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/agents/graph/status.json",
+   "commits": null,
+   "changed": "2026-11-10T23:58Z",
+   "linked_from": []
   },
   {
    "path": "agents/identity/status.json",
@@ -1095,27 +1248,17 @@
    "what": "",
    "by": "incident.librarian@web-summit.dinis",
    "by_from": "its own fields",
-   "dated": "2026-11-10T23:58Z",
+   "dated": "2026-11-10T23:48Z",
    "dated_from": "\"updated\"",
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 1845,
-   "sha256": "0a32b1a3a734ab29b4b5be7dc91747d45ad395746a6adf48461d25e16084df31",
+   "bytes": 2877,
+   "sha256": "72a19f2cae46488b9aaca74445262504bcfb4eab7f59c3c1435e4ae5908a4d24",
    "served": true,
    "file": "https://storm-charles.promptugal.news/agents/librarian/status.json",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.librarian@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:40Z",
-    "last_by": "incident.librarian@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:40Z",
-    "last_commit": "3449349d91",
-    "agents": [
-     "incident.librarian@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:40Z",
+   "commits": null,
+   "changed": "2026-11-10T23:48Z",
    "linked_from": []
   },
   {
@@ -1432,7 +1575,8 @@
    },
    "changed": "2026-11-10T23:41:00Z",
    "linked_from": [
-    "SECURITY.md"
+    "SECURITY.md",
+    "library/reading/standard.md"
    ]
   },
   {
@@ -1567,23 +1711,12 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 13256,
-   "sha256": "ed9750be1ae82c5e34d45ce25f006f4015538cf910091c1a1c0248f6699ecb1c",
+   "bytes": 17371,
+   "sha256": "6bebe1ea9b1fb7790c03b5fa9734e7aa4b964e7acfcc0e806d393b73b9879e1f",
    "served": true,
    "file": "https://storm-charles.promptugal.news/app/site.css",
-   "commits": {
-    "n": 2,
-    "first_by": "incident.conductor@web-summit.dinis",
-    "first_at": "2026-11-10T21:14:33Z",
-    "last_by": "incident.designer@web-summit.dinis",
-    "last_at": "2026-11-10T23:40:49Z",
-    "last_commit": "8c07e4ab45",
-    "agents": [
-     "incident.conductor@web-summit.dinis",
-     "incident.designer@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:40:49Z",
+   "commits": null,
+   "changed": "",
    "linked_from": [
     "agents/JOBS.md"
    ]
@@ -1618,7 +1751,8 @@
    "changed": "2026-11-10T21:16:42Z",
    "linked_from": [
     "REALITY.md",
-    "agents/JOBS.md"
+    "agents/JOBS.md",
+    "design/round-3.md"
    ]
   },
   {
@@ -1637,24 +1771,251 @@
    ],
    "links_to": [],
    "external_links": 0,
-   "bytes": 38435,
-   "sha256": "d155512d719b97de2d16821f202235277d6921a0540dd362f9de6bf160d584fc",
+   "bytes": 43030,
+   "sha256": "9a3ff712824dedbb7d4e29153341d95e91f65d7d535b1fa70e0c6dd89a85f1f3",
    "served": true,
    "file": "https://storm-charles.promptugal.news/data/agents/index.json",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.observability@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:15Z",
-    "last_by": "incident.observability@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:15Z",
-    "last_commit": "a485c845f8",
-    "agents": [
-     "incident.observability@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:15Z",
+   "commits": null,
+   "changed": "",
    "linked_from": [
     "app/agents/about.md"
+   ]
+  },
+  {
+   "path": "data/graph/README.md",
+   "kind": "dataset doc",
+   "title": "The graph of the storm, and its ontology",
+   "what": "One graph of Storm Charles: who decided and warned what, when, what was reported, where it was read, and which agent keeps which dataset. Kept by incident.graph@web-summit.dinis. Built from the incident's JSON files by tools/graph-build.mjs, never by hand. …",
+   "by": "incident.graph@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/graph-build.mjs",
+    "https://prociv.gov.pt/",
+    "https://www.ipma.pt/"
+   ],
+   "links_to": [
+    "data/graph/ontology.json",
+    "data/graph/ref/ipma-areas.json",
+    "data/graph/storm.json",
+    "data/graph/tables/actors.json",
+    "data/graph/tables/decisions.json",
+    "data/graph/tables/signals.json",
+    "data/graph/tables/sources.json",
+    "data/graph/tables/warnings.json",
+    "data/keys.json",
+    "tools/graph-build.mjs"
+   ],
+   "external_links": 2,
+   "bytes": 5121,
+   "sha256": "522c15dbf5aa6bede32d742f73e6da5378ba895253a6c222d659b3644a086828",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/README.md",
+   "page": "https://storm-charles.promptugal.news/data/graph/",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/ontology.json"
+   ]
+  },
+  {
+   "path": "data/graph/ontology.json",
+   "kind": "dataset",
+   "title": "ontology.json",
+   "what": "The ontology of an incident on this site: eight kinds of thing and eight relations, small enough to explain on one page (README.md beside this file). tools/graph-build.mjs reads it, builds data/graph/storm.json and data/graph/tables/*.json from the incident's …",
+   "by": "incident.graph@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "data/graph/README.md",
+    "tools/graph-build.mjs",
+    "data/graph/storm.json"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 6467,
+   "sha256": "20291e994060a2e6eff9657bda849cde5d3e4ca9c6b6dd1280e1558a3c70d6cb",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/ontology.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "agents/JOBS.md",
+    "data/graph/README.md",
+    "data/graph/storm.json"
+   ]
+  },
+  {
+   "path": "data/graph/ref/ipma-areas.json",
+   "kind": "dataset",
+   "title": "ipma-areas.json",
+   "what": "IPMA's warning areas by code (idAreaAviso), from IPMA's list of districts and islands: the first place listed for each area gives its name and coordinates. Reference data for the graph's Place nodes. Made by tools/graph-places.mjs.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "https://api.ipma.pt/open-data/distrits-islands.json",
+    "tools/graph-places.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2863,
+   "sha256": "d9ded82f014ee574ff479e3ec10f1e2f5da09fed3c03e6a15396058dbff5b4c0",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/ref/ipma-areas.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/README.md"
+   ]
+  },
+  {
+   "path": "data/graph/storm.json",
+   "kind": "dataset",
+   "title": "storm.json",
+   "what": "One graph of Storm Charles, Lisbon: Wednesday 11 November 2026: actors, decisions, warnings, signals, sources, places, datasets and agents, built from the incident's JSON files by tools/graph-build.mjs (never by hand). Every node and edge carries label (fact, …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/graph-build.mjs",
+    "data/graph/ontology.json"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 224082,
+   "sha256": "28f4eb1a33c759bf103c0a9225212d8f471c51b0c10c8e9a68ca0fac3df75093",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/storm.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/README.md",
+    "data/graph/ontology.json"
+   ]
+  },
+  {
+   "path": "data/graph/tables/actors.json",
+   "kind": "dataset",
+   "title": "actors.json",
+   "what": "Who decides, warns or reports: bodies, operators, the organiser, outlets (outlets are derived from cited hosts). Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/graph-build.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 22100,
+   "sha256": "e52b03fc301d835c8277c01beba429b262f073dbb0ec269bb1a02fb8fe2b6ea7",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/tables/actors.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/README.md"
+   ]
+  },
+  {
+   "path": "data/graph/tables/decisions.json",
+   "kind": "dataset",
+   "title": "decisions.json",
+   "what": "Decisions and issued warnings: who (by), what, when (at, at_epoch in seconds when known to the minute), status, and what each followed. Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/graph-build.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 30716,
+   "sha256": "a0d0449fc3b512682d304bdc0845c01ecff27ce2bbaaffa41a5f2c9356b994a0",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/tables/decisions.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/README.md"
+   ]
+  },
+  {
+   "path": "data/graph/tables/signals.json",
+   "kind": "dataset",
+   "title": "signals.json",
+   "what": "The timeline as rows: one per signal, with who published it (publisher) where the source has a URL. Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/graph-build.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 26189,
+   "sha256": "23c654d5120d77fa08cf44464c552d4477147eab5c71c5a1d8e3efb746bbf9a1",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/tables/signals.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/README.md"
+   ]
+  },
+  {
+   "path": "data/graph/tables/sources.json",
+   "kind": "dataset",
+   "title": "sources.json",
+   "what": "Every URL read: the researcher's list and every other URL an item cites, with its publisher, how often it is cited and the earliest item citing it. Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/graph-build.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 47601,
+   "sha256": "fb45f0d07974489632b2ba96e7801aa3795de213691d6dacaa5954bc95306437",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/tables/sources.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/README.md"
+   ]
+  },
+  {
+   "path": "data/graph/tables/warnings.json",
+   "kind": "dataset",
+   "title": "warnings.json",
+   "what": "Warnings: issued (when made or first read), in_force (type, level, area, start, end: IPMA) and history (the meteorologist's record of when each was first seen). Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "tools/graph-build.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 49165,
+   "sha256": "fecf2d25b89e0d4586e704818ed11006547659629957e1ba880de7c57a096384",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/data/graph/tables/warnings.json",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/README.md"
    ]
   },
   {
@@ -1669,42 +2030,29 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 12870,
-   "sha256": "f621dc173417e6457c35f6db24129577118face6d96f25cac41d59d797784f4d",
+   "bytes": 14680,
+   "sha256": "bfa650388f5ed09be4b3121fa762bca756356269cb11e2cb391e68a11344d7cd",
    "served": true,
    "file": "https://storm-charles.promptugal.news/data/keys.json",
-   "commits": {
-    "n": 7,
-    "first_by": "incident.conductor@web-summit.dinis",
-    "first_at": "2026-11-10T21:14:33Z",
-    "last_by": "incident.identity@web-summit.dinis",
-    "last_at": "2026-11-10T23:39:17Z",
-    "last_commit": "b53673e7c9",
-    "agents": [
-     "incident.conductor@web-summit.dinis",
-     "incident.designer@web-summit.dinis",
-     "incident.identity@web-summit.dinis",
-     "incident.librarian@web-summit.dinis",
-     "incident.media@web-summit.dinis",
-     "incident.observability@web-summit.dinis",
-     "incident.weatherwatch@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:39:17Z",
+   "commits": null,
+   "changed": "",
    "linked_from": [
     "CLAUDE.md",
     "PIPELINE.md",
     "SECURITY.md",
     "agents/JOBS.md",
     "app/agents/about.md",
-    "data/agents/index.json"
+    "data/agents/index.json",
+    "data/graph/README.md",
+    "library/glossary.md",
+    "library/reading/standard.md"
    ]
   },
   {
    "path": "design/round-1.md",
    "kind": "design",
    "title": "Design round 1: the home page as the weather presenter",
-   "what": "By incident.designer@web-summit.dinis, 10 November 2026, 23:35 to 23:50 UTC. Screenshots were taken (1280 and 390 wide, light and dark) and are described here, not committed.",
+   "what": "By incident.designer@web-summit.dinis, 10 November 2026, 23:30 to 23:41 UTC. Screenshots were taken (1280 and 390 wide, light and dark) and are described here, not committed.",
    "by": "incident.designer@web-summit.dinis",
    "by_from": "header",
    "dated": "2026-11-10",
@@ -1715,22 +2063,58 @@
    ],
    "external_links": 0,
    "bytes": 3504,
-   "sha256": "72dc4061c7107aa4cc2fee9125b2576d25e1d05d5526948aa7decad9705aeaeb",
+   "sha256": "1d98e2500f1c8e20d4688b5219d42c086c57554d85443a84c2889641e0046ac1",
    "served": true,
    "file": "https://storm-charles.promptugal.news/design/round-1.md",
    "page": "https://storm-charles.promptugal.news/design/round-1.html",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.designer@web-summit.dinis",
-    "first_at": "2026-11-10T23:40:49Z",
-    "last_by": "incident.designer@web-summit.dinis",
-    "last_at": "2026-11-10T23:40:49Z",
-    "last_commit": "8c07e4ab45",
-    "agents": [
-     "incident.designer@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:40:49Z",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": []
+  },
+  {
+   "path": "design/round-2.md",
+   "kind": "design",
+   "title": "Design round 2: the wind on one axis, and where",
+   "what": "By incident.designer@web-summit.dinis, 10 November 2026, 23:41 to 23:44 UTC. Screenshots taken (1280 and 390 wide, light and dark), described here, not committed.",
+   "by": "incident.designer@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [
+    "admin/build/build.mjs"
+   ],
+   "external_links": 0,
+   "bytes": 2897,
+   "sha256": "4cf454f0b6e9c32059a8f140b5e4de86503adc420779c9a24a43086f381c3ff7",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/design/round-2.md",
+   "page": "https://storm-charles.promptugal.news/design/round-2.html",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": []
+  },
+  {
+   "path": "design/round-3.md",
+   "kind": "design",
+   "title": "Design round 3: the day in phases (phones first), and the chart's table",
+   "what": "By incident.designer@web-summit.dinis, 10 November 2026, about 23:44 to 23:50 UTC. Screenshots at 390 wide, described here, not committed.",
+   "by": "incident.designer@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [
+    "app/storm.js"
+   ],
+   "external_links": 0,
+   "bytes": 2160,
+   "sha256": "da04618b681a8c81100752d222100661e11bf97c3c4984deb37439406a2d1fe0",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/design/round-3.md",
+   "page": "https://storm-charles.promptugal.news/design/round-3.html",
+   "commits": null,
+   "changed": "2026-11-10",
    "linked_from": []
   },
   {
@@ -1767,7 +2151,8 @@
    "changed": "2026-11-10T21:14:33Z",
    "linked_from": [
     "README.md",
-    "incidents/2026-11-10-storm-charles/data/README.md"
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -1811,7 +2196,9 @@
     ]
    },
    "changed": "2026-11-10T21:14:33Z",
-   "linked_from": []
+   "linked_from": [
+    "library/glossary.md"
+   ]
   },
   {
    "path": "incidents/2026-11-10-storm-charles/comms/dinis.md",
@@ -2033,7 +2420,8 @@
    "changed": "2026-11-10T21:37:01Z",
    "linked_from": [
     "incidents/2026-11-10-storm-charles/data/signals.json",
-    "incidents/2026-11-10-storm-charles/data/watch/websummit.json"
+    "incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+    "library/glossary.md"
    ]
   },
   {
@@ -2070,7 +2458,8 @@
    },
    "changed": "2026-11-10T21:14:33Z",
    "linked_from": [
-    "incidents/2026-11-10-storm-charles/data/README.md"
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -2104,7 +2493,8 @@
    "changed": "2026-11-10T23:03:27Z",
    "linked_from": [
     "incidents/2026-11-10-storm-charles/data/README.md",
-    "incidents/2026-11-10-storm-charles/data/decisions/README.md"
+    "incidents/2026-11-10-storm-charles/data/decisions/README.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -2138,7 +2528,8 @@
    "changed": "2026-11-10T23:03:27Z",
    "linked_from": [
     "incidents/2026-11-10-storm-charles/data/README.md",
-    "incidents/2026-11-10-storm-charles/data/decisions/README.md"
+    "incidents/2026-11-10-storm-charles/data/decisions/README.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -2175,7 +2566,8 @@
    },
    "changed": "2026-11-10T23:41:36Z",
    "linked_from": [
-    "incidents/2026-11-10-storm-charles/data/README.md"
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -2212,7 +2604,8 @@
    "changed": "2026-11-10T21:37:01Z",
    "linked_from": [
     "incidents/2026-11-10-storm-charles/data/README.md",
-    "incidents/2026-11-10-storm-charles/timeline.md"
+    "incidents/2026-11-10-storm-charles/timeline.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -2388,7 +2781,8 @@
     "incidents/2026-11-10-storm-charles/data/weather/README.md",
     "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
     "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
-    "incidents/2026-11-10-storm-charles/timeline.md"
+    "incidents/2026-11-10-storm-charles/timeline.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -2669,7 +3063,8 @@
    },
    "changed": "2026-11-10T21:14:33Z",
    "linked_from": [
-    "incidents/2026-11-10-storm-charles/README.md"
+    "incidents/2026-11-10-storm-charles/README.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -2700,7 +3095,9 @@
     ]
    },
    "changed": "2026-11-10T21:14:33Z",
-   "linked_from": []
+   "linked_from": [
+    "library/glossary.md"
+   ]
   },
   {
    "path": "incidents/2026-11-10-storm-charles/material/wednesday-is-off-what-now.md",
@@ -2731,7 +3128,9 @@
     ]
    },
    "changed": "2026-11-10T21:14:33Z",
-   "linked_from": []
+   "linked_from": [
+    "library/glossary.md"
+   ]
   },
   {
    "path": "incidents/2026-11-10-storm-charles/timeline.md",
@@ -2777,7 +3176,8 @@
    "linked_from": [
     "incidents/2026-11-10-storm-charles/README.md",
     "incidents/2026-11-10-storm-charles/data/README.md",
-    "incidents/2026-11-10-storm-charles/data/signals.json"
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "library/glossary.md"
    ]
   },
   {
@@ -2803,43 +3203,68 @@
    "page": "https://storm-charles.promptugal.news/library/",
    "linked_from": [
     "library/glossary.md",
-    "library/reading/README.md"
+    "library/reading/README.md",
+    "library/reading/standard.md"
    ]
   },
   {
    "path": "library/glossary.md",
    "kind": "library",
-   "title": "Glossary",
-   "what": "Kept by incident.librarian@web-summit.dinis, 10 November 2026. Being written now.",
+   "title": "Glossary: the words this site uses",
+   "what": "Kept by incident.librarian@web-summit.dinis, 10 November 2026, from CLAUDE.md, ROADMAP.md, PIPELINE.md and the data's own READMEs. Each term in two lines: what it means here, and where it is defined or enforced. Back to the library · the reading list.",
    "by": "incident.librarian@web-summit.dinis",
    "by_from": "header",
    "dated": "2026-11-10",
    "dated_from": "header",
    "made_from": [
-    "library/README.md"
+    "CLAUDE.md",
+    "PIPELINE.md",
+    "ROADMAP.md",
+    "library/README.md",
+    "library/reading/README.md"
    ],
    "links_to": [
-    "library/README.md"
+    "BRIEF-CORRECTIONS.md",
+    "BRIEF.md",
+    "CLAUDE.md",
+    "PIPELINE.md",
+    "REALITY.md",
+    "ROADMAP.md",
+    "SECURITY.md",
+    "admin/tools/release.sh",
+    "agents/JOBS.md",
+    "agents/README.md",
+    "data/keys.json",
+    "incidents/2026-11-10-storm-charles/README.md",
+    "incidents/2026-11-10-storm-charles/comms/README.md",
+    "incidents/2026-11-10-storm-charles/data/README.md",
+    "incidents/2026-11-10-storm-charles/data/decisions/README.md",
+    "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+    "incidents/2026-11-10-storm-charles/data/decisions/sources.json",
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "incidents/2026-11-10-storm-charles/data/watch/websummit.json",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+    "incidents/2026-11-10-storm-charles/decisions.md",
+    "incidents/2026-11-10-storm-charles/incident.json",
+    "incidents/2026-11-10-storm-charles/material/wednesday-is-off-what-now.md",
+    "incidents/2026-11-10-storm-charles/timeline.md",
+    "library/README.md",
+    "library/index.json",
+    "library/reading/README.md",
+    "tools/llm.mjs",
+    "tools/timeline.mjs"
    ],
-   "external_links": 0,
-   "bytes": 131,
-   "sha256": "9619864b7b42af079b7aaf27f43d1a893985a3e99d248509b19a223d92c8bf1b",
+   "external_links": 1,
+   "bytes": 8947,
+   "sha256": "eede044067ab63be218e8acc91a524a7541804d1133f2cbd75734341fcce9131",
    "served": true,
    "file": "https://storm-charles.promptugal.news/library/glossary.md",
    "page": "https://storm-charles.promptugal.news/library/glossary.html",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.librarian@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:40Z",
-    "last_by": "incident.librarian@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:40Z",
-    "last_commit": "3449349d91",
-    "agents": [
-     "incident.librarian@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:40Z",
-   "linked_from": []
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": [
+    "library/reading/README.md"
+   ]
   },
   {
    "path": "library/index.json",
@@ -2862,7 +3287,8 @@
    "served": true,
    "file": "https://storm-charles.promptugal.news/library/index.json",
    "linked_from": [
-    "agents/JOBS.md"
+    "agents/JOBS.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -2889,38 +3315,105 @@
   {
    "path": "library/reading/README.md",
    "kind": "reading",
-   "title": "The reading list",
-   "what": "Kept by incident.librarian@web-summit.dinis, 10 November 2026. Being written now: what the articles on https://newsroom.sgit.ai mean for this site.",
+   "title": "The reading list: what newsroom.sgit.ai's articles mean for this site",
+   "what": "Kept by incident.librarian@web-summit.dinis, 2026-11-10, at Dinis Cruz's word (\"read a lot of the articles, because a lot of the stuff that we talk about here is related\"). Rendered from reading.json by tools/library-reading.mjs. Back to the library · the …",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [
+    "library/README.md",
+    "library/glossary.md",
+    "library/reading/reading.json",
+    "library/reading/standard.md",
+    "tools/library-reading.mjs",
+    "https://newsroom.sgit.ai/llms.txt"
+   ],
+   "links_to": [
+    "library/README.md",
+    "library/glossary.md",
+    "library/reading/reading.json",
+    "library/reading/standard.md",
+    "tools/library-reading.mjs"
+   ],
+   "external_links": 29,
+   "bytes": 29370,
+   "sha256": "428ad30e6d6d01022670b9af25415030e67e31b41becfc1dbd239878de14917c",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/library/reading/README.md",
+   "page": "https://storm-charles.promptugal.news/library/reading/",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "library/glossary.md",
+    "library/reading/standard.md"
+   ]
+  },
+  {
+   "path": "library/reading/reading.json",
+   "kind": "reading",
+   "title": "reading.json",
+   "what": "The reading list: what the articles and design pages on newsroom.sgit.ai say that bears on this site, each with its argument in two sentences (our summary, not a quotation) and what it means here: a rule to keep or a thing to build. Asked for by Dinis Cruz, …",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "its own fields",
+   "dated": "2026-11-10T23:47Z",
+   "dated_from": "\"updated\"",
+   "made_from": [
+    "https://newsroom.sgit.ai/llms.txt",
+    "BRIEF.md",
+    "tools/library-reading.mjs"
+   ],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 28378,
+   "sha256": "5c3e8cd92f679760e871ade3bb91b7a842d4ffd944636b27a12fdcf50f909f03",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/library/reading/reading.json",
+   "commits": null,
+   "changed": "2026-11-10T23:47Z",
+   "linked_from": [
+    "library/reading/README.md"
+   ]
+  },
+  {
+   "path": "library/reading/standard.md",
+   "kind": "reading",
+   "title": "This repository against the estate's standard",
+   "what": "Kept by incident.librarian@web-summit.dinis, 10 November 2026. The standard is Every sgit repository: how the sites, the tools and the code are built (sgit.ai, first version, written 6 October 2026; site v0.7.87 when read at 23:41 UTC on 10 November 2026). …",
    "by": "incident.librarian@web-summit.dinis",
    "by_from": "header",
    "dated": "2026-11-10",
    "dated_from": "header",
    "made_from": [
+    "REALITY.md",
     "library/README.md",
-    "https://newsroom.sgit.ai"
+    "library/reading/README.md",
+    "https://sgit.ai/docs/guidance/repositories.md"
    ],
    "links_to": [
-    "library/README.md"
+    "BRIEF-CORRECTIONS.md",
+    "BRIEF.md",
+    "REALITY.md",
+    "admin/build/validate.mjs",
+    "admin/tools/release.sh",
+    "agents/JOBS.md",
+    "agents/dev/status.json",
+    "app/login/pki/PIN.json",
+    "data/keys.json",
+    "library/README.md",
+    "library/reading/README.md"
    ],
    "external_links": 1,
-   "bytes": 208,
-   "sha256": "cf5b5825bd0215a6a5de8a2291987900858139472ec7fa1321c897b3e2d985e2",
+   "bytes": 7245,
+   "sha256": "ee9acc437f31e83552015f7c441d8c96216f27b343fe43a60a8a1d1dbc94bc67",
    "served": true,
-   "file": "https://storm-charles.promptugal.news/library/reading/README.md",
-   "page": "https://storm-charles.promptugal.news/library/reading/",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.librarian@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:40Z",
-    "last_by": "incident.librarian@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:40Z",
-    "last_commit": "3449349d91",
-    "agents": [
-     "incident.librarian@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:40Z",
-   "linked_from": []
+   "file": "https://storm-charles.promptugal.news/library/reading/standard.md",
+   "page": "https://storm-charles.promptugal.news/library/reading/standard.html",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": [
+    "library/reading/README.md"
+   ]
   },
   {
    "path": "tools/agents-index.mjs",
@@ -2956,6 +3449,57 @@
    ]
   },
   {
+   "path": "tools/graph-build.mjs",
+   "kind": "tool",
+   "title": "graph-build.mjs",
+   "what": "The graph of an incident, built from its JSON files and never by hand (incident.graph@web-summit.dinis). node tools/graph-build.mjs [incidents/<id] writes data/graph/storm.json and data/graph/tables/.json node tools/graph-build.mjs --check exits 1 if what is …",
+   "by": "incident.graph@web-summit.dinis",
+   "by_from": "header",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 25629,
+   "sha256": "83f6b2092ae4a4717265bf4b7a9a6407ac0d869815495cd5c95b0bfffa37514c",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/graph-build.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/README.md",
+    "data/graph/ontology.json",
+    "data/graph/storm.json",
+    "data/graph/tables/actors.json",
+    "data/graph/tables/decisions.json",
+    "data/graph/tables/signals.json",
+    "data/graph/tables/sources.json",
+    "data/graph/tables/warnings.json"
+   ]
+  },
+  {
+   "path": "tools/graph-places.mjs",
+   "kind": "tool",
+   "title": "graph-places.mjs",
+   "what": "IPMA's warning areas, by code: node tools/graph-places.mjs <the file fetched from IPMA <UTC time read Reads IPMA's own list (https://api.ipma.pt/open-data/distrits-islands.json), keeps one row per warning area (idAreaAviso): its code, the name of its seat, …",
+   "by": "",
+   "by_from": "",
+   "dated": "",
+   "dated_from": "",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 1523,
+   "sha256": "de4de0dff7915e72687b592b2040d3a1b6575d996c9da32604b33aada1c790cb",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/graph-places.mjs",
+   "commits": null,
+   "changed": "",
+   "linked_from": [
+    "data/graph/ref/ipma-areas.json"
+   ]
+  },
+  {
    "path": "tools/library-index.mjs",
    "kind": "tool",
    "title": "library-index.mjs",
@@ -2967,23 +3511,36 @@
    "made_from": [],
    "links_to": [],
    "external_links": 0,
-   "bytes": 25145,
-   "sha256": "7330beb1495038ec43e9b6f9e27029fd62e43afccc3e0596832df7f387cdfa76",
+   "bytes": 25916,
+   "sha256": "65d711bc9517d445183e9eed0328010dcaa9a324cffec475f4e4f60257ad6b10",
    "served": true,
    "file": "https://storm-charles.promptugal.news/tools/library-index.mjs",
-   "commits": {
-    "n": 1,
-    "first_by": "incident.librarian@web-summit.dinis",
-    "first_at": "2026-11-10T23:41:40Z",
-    "last_by": "incident.librarian@web-summit.dinis",
-    "last_at": "2026-11-10T23:41:40Z",
-    "last_commit": "3449349d91",
-    "agents": [
-     "incident.librarian@web-summit.dinis"
-    ]
-   },
-   "changed": "2026-11-10T23:41:40Z",
+   "commits": null,
+   "changed": "2026-11-10",
    "linked_from": []
+  },
+  {
+   "path": "tools/library-reading.mjs",
+   "kind": "tool",
+   "title": "library-reading.mjs",
+   "what": "library/reading/reading.json - library/reading/README.md (incident.librarian@web-summit.dinis, 10 November 2026, WS-214). The reading list is kept as data (one entry per article: URL, its argument, what it means here, when it was read); this renders the page, …",
+   "by": "incident.librarian@web-summit.dinis",
+   "by_from": "header",
+   "dated": "2026-11-10",
+   "dated_from": "header",
+   "made_from": [],
+   "links_to": [],
+   "external_links": 0,
+   "bytes": 2405,
+   "sha256": "5abad9324b0e57b8afce59d6e5333aad78db397fcce534b874d5518058d2af50",
+   "served": true,
+   "file": "https://storm-charles.promptugal.news/tools/library-reading.mjs",
+   "commits": null,
+   "changed": "2026-11-10",
+   "linked_from": [
+    "library/reading/README.md",
+    "library/reading/reading.json"
+   ]
   },
   {
    "path": "tools/llm.mjs",
@@ -3017,7 +3574,8 @@
     "CLAUDE.md",
     "REALITY.md",
     "ROADMAP.md",
-    "agents/JOBS.md"
+    "agents/JOBS.md",
+    "library/glossary.md"
    ]
   },
   {
@@ -3081,7 +3639,8 @@
    "linked_from": [
     "REALITY.md",
     "incidents/2026-11-10-storm-charles/data/README.md",
-    "incidents/2026-11-10-storm-charles/data/signals.json"
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "library/glossary.md"
    ]
   },
   {

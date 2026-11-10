@@ -194,6 +194,7 @@ const gaps = {
     no_commit_record: real.filter(e => !e.commits).map(e => ({ path: e.path, why: prov[e.path] ? 'changed since the commits were last read' : 'new since the commits were last read' })),
     datasets_naming_no_source: real.filter(e => e.kind === 'dataset' && !e.made_from.length && !/status\.json$/.test(e.path)).map(e => e.path),
     documents_nothing_links_to: real.filter(e => e.path.endsWith('.md') && !e.linked_from.length && e.path !== 'README.md' && e.path !== 'CLAUDE.md').map(e => e.path),
+    older_than_their_sources: real.filter(e => ['comms draft', 'material', 'analysis', 'dataset'].includes(e.kind) && e.commits).flatMap(e => e.made_from.map(x => byPath[x]).filter(x => x && x.commits && ['decision log', 'dataset', 'comms draft', 'analysis', 'incident record'].includes(x.kind) && x.commits.last_at > e.commits.last_at).map(x => ({ path: e.path, why: `last changed ${e.commits.last_at.slice(5, 16).replace('T', ' ')}; its source ${x.path} changed ${x.commits.last_at.slice(5, 16).replace('T', ' ')}` }))),
     not_served_on_the_site: real.filter(e => !e.served).map(e => e.path),
 }
 const counts = {}; for (const e of entries) counts[e.kind] = (counts[e.kind] || 0) + 1
@@ -272,6 +273,12 @@ ${list(gaps.datasets_naming_no_source)}
 "Everything linked" (Dinis, 10 November): these are reachable only from this catalogue.
 
 ${list(gaps.documents_nothing_links_to)}
+
+### Older than the sources they were made from
+
+"Corrections must propagate": a draft, an analysis or a derived dataset whose named source was committed after it. It may still be right; someone should look.
+
+${list(gaps.older_than_their_sources)}
 
 ### Files with no commit record yet
 
