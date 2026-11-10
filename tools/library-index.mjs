@@ -3,7 +3,8 @@
 // information, all documents, all briefs should be on the site"; "provenance, where everything needs to be linked").
 // Repository -> library/index.json (for agents) and library/README.md (the page). Zero dependencies, tens of milliseconds.
 //
-//   node tools/library-index.mjs            build the catalogue from the files as they are. Reads NO git history (CI's clone is
+//   node tools/library-index.mjs            rebuild the tracked page (library/README.md) from the files as they are; index.json is
+//                                           NOT written here (it is over git's 256 KB rule): the build makes it with --out. Reads NO git history (CI's clone is
 //                                           shallow): authorship and dates come from each file's own header or front matter, and
 //                                           from library/provenance.json where its sha256 still matches the file.
 //   node tools/library-index.mjs --git      first refresh library/provenance.json from the commits (a full clone only; refuses a
@@ -64,7 +65,7 @@ if (args.has('--git')) {
     fs.writeFileSync(PROV, JSON.stringify({
         about: 'Who committed each file and when, read from this repository\'s commits by tools/library-index.mjs --git in the librarian\'s full clone (CI never reads history). The agent is the commit subject\'s prefix ("<agent>: <what>"). An entry counts only while its sha256 still matches the file; a file changed since is listed under gaps in library/index.json until the next refresh.',
         by: ME, head: git('rev-parse', '--short=10', 'HEAD').trim(), files: out
-    }, null, 1) + '\n')
+    }, null, 1).replace(/\{\n\s+"sha256"[\s\S]*?\n\s+\}(?=,?\n)/g, m => m.replace(/\n\s*/g, ' ')) + '\n')   // one line per file: it grows with the tree
 }
 let prov = {}, provHead = ''
 try { const p = JSON.parse(fs.readFileSync(PROV, 'utf8')); prov = p.files || {}; provHead = p.head || '' } catch { }
@@ -238,7 +239,7 @@ Not a warning service: follow IPMA, ANEPC and your local authorities.
 
 **For agents:** [library/index.json](index.json) (every file: kind, what it is, who, when, made from, links in and out, sha256) · [library/provenance.json](provenance.json) (who committed what) · the data files' catalogue with the served sha256: [api/v1/index.json](../api/v1/index.json).
 
-**Also here:** [the release history](releases.md) (every version, what changed, whether it was served) · [the reading list](reading/README.md) (what newsroom.sgit.ai's articles mean for this site) · [the glossary](glossary.md) (fact, evidence, hypothesis and the other words this site uses). · [the path policy](../agents/policy.json) and its check, [tools/policy-check.mjs](../tools/policy-check.mjs) · a draft for the conductor: [the shape of now.json](drafts/now-json.md).
+**Also here:** [the agents' behaviour policies](abp.md) (drafts, not agreed by Dinis) · [the release history](releases.md) (every version, what changed, whether it was served) · [the reading list](reading/README.md) (what newsroom.sgit.ai's articles mean for this site) · [the glossary](glossary.md) (fact, evidence, hypothesis and the other words this site uses). · [the path policy](../agents/policy.json) and its check, [tools/policy-check.mjs](../tools/policy-check.mjs) · a draft for the conductor: [the shape of now.json](drafts/now-json.md).
 
 **How to read a row.** *By* is who the file itself says wrote or keeps it; the agents named in its commits follow when they differ. *Changed* is the last commit (UTC) when it is known, else the date the file gives for itself. *Made from* is the sources its own header names.
 
@@ -299,7 +300,9 @@ ${list(gaps.not_served_on_the_site)}
 `
 
 // ---------------------------------------------------------------- write (or check)
-const targets = [['library/index.json', indexText], ['library/README.md', md]]
+// index.json is written only with --out (into the served site): it outgrew git's 256 KB rule at about 170 files, and the build
+// makes it fresh on every push. The page stays tracked as a snapshot, because the build renders the markdown it finds in the tree.
+const targets = OUT_DIR ? [['library/index.json', indexText], ['library/README.md', md]] : [['library/README.md', md]]
 if (args.has('--check')) {
     const stale = targets.filter(([f, s]) => !fs.existsSync(path.join(ROOT, f)) || fs.readFileSync(path.join(ROOT, f), 'utf8') !== s).map(([f]) => f)
     if (stale.length) { console.log(`library-index: STALE ${stale.join(', ')} (run node tools/library-index.mjs)`); process.exit(1) }
