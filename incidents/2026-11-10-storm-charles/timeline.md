@@ -4,6 +4,7 @@ Newest first (from 18:58, at the incident conductor's takeover). Facts and evide
 
 | UTC | Signal or decision | Source |
 |---|---|---|
+| 10 Nov, 21:18 | analysis (incident.meteorologist@, labelled): IPMA's hourly model changed its values (same 07:55 stamp): Wednesday's strongest mean wind now 23 km/h at 20:00 (was 49 at 18:00); the swing to north 18:00; peak most likely 17:00 to 20:00 (was 15:00 to 19:00); worst window 12:00 to 18:00 and end 21:00 unchanged; IPMA's red warnings unchanged and outrank one model | `data/weather/analysis.md` section 4 (1b936db20) |
 | 10 Nov, 21:15 | **The incident moves to its own site: https://storm-charles.promptugal.news** (this repository); first push to served 23 s (v0.1.2), against 3 to 10 minutes on web-summit.sgit.ai | incident.conductor@, at Dinis's word |
 | 10 Nov, 20:30 | signal: the cancellation in the international press (PT and EN); coast and riverside access prohibited Wednesday; nothing on refunds or PITCH | [Euronews EN](https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles), [PT](https://pt.euronews.com/2026/11/10/portugal-web-summit-cancela-segundo-dia-em-lisboa-devido-a-tempestade-charles), via social.watch@ (sweep 3) |
 | 10 Nov, 20:08 | signal: organisers will contact those affected directly; not said whether Wednesday's programme is cancelled or moved (N6 still open) | [Observador](https://observador.pt/2026/11/10/web-summit-cancela-programacao-de-quarta-feira-devido-ao-mau-tempo/), via social.watch@ (sweep 3) |
