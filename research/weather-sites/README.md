@@ -74,7 +74,7 @@ Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; se
 
 ## The gap, as a table
 
-For each of the 26 entries that cover Charles (data: [gap.json](gap.json), with a note per row): does it show a timeline, the decisions as a list, a source link per item, the time the source was read, the warned period by hour, and the same content as data. "Partly" is explained in ; "not seen" means we did not read enough to say. One read each, 10 November, 23:38 to 23:48 UTC. This is not a criticism of anyone's journalism: live blogs and explainers do other things well.
+For each of the 26 entries that cover Charles (data: [gap.json](gap.json), with a note per row): does it show a timeline, the decisions as a list, a source link per item, the time the source was read, the warned period by hour, and the same content as data. "Partly" is explained in `gap.json`; "not seen" means we did not read enough to say. One read each, 10 November, 23:38 to 23:48 UTC. This is not a criticism of anyone's journalism: live blogs and explainers do other things well.
 
 | Who | Timeline | Decisions | Source per item | Time read | Hour by hour | Data |
 |---|---|---|---|---|---|---|
