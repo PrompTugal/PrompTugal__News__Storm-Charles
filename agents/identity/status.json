@@ -1,0 +1,19 @@
+{
+  "agent": "incident.identity@web-summit.dinis",
+  "state": "active: design pushed; building the first slice (the key in the browser, the sealed feedback, the page)",
+  "done": [
+    "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
+    "SECURITY.md: the design for the login, the feedback lane, the reverse path and the two vaults; what is public, what a stolen token or key allows, what we will not build",
+    "pki.sgit.ai's keys.js, message.js, door.js, local.js copied unmodified and pinned (app/login/pki/PIN.json)"
+  ],
+  "next": [
+    "/account/: make a key behind a passkey, show its fingerprint, write feedback sealed to the conductor, open the conductor's replies",
+    "tools/lane-*.mjs for the conductor: open what Dinis sends, seal to him, drain the lane; a test end to end with a throwaway key"
+  ],
+  "asks": [
+    "Dinis: three decisions, at the end of SECURITY.md: (1) a new key made on this site behind a passkey, or sign in with your pki.sgit.ai key; (2) how far a signed message from the feedback box carries (recommended: feedback on pages and content; anything hard to undo is confirmed in your session); (3) the SG/Send access token: as a secret in the conductor's environment, or typed only in your browser; and may replies sit in this repository as ciphertext sealed to your key until the bridge vault exists. Never paste a token or a key in chat.",
+    "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it."
+  ],
+  "updated": "2026-11-10T23:55:00Z",
+  "by": "incident.identity@web-summit.dinis"
+}

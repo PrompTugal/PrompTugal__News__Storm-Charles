@@ -1,0 +1,11 @@
+{
+  "about": "Copies of pki.sgit.ai's modules, byte for byte, read on 10 November 2026 (23:30 UTC) by incident.identity@web-summit.dinis. Not edited here: to change one, change it at its source and pin the new copy. tools/lane-test.mjs checks each sha256.",
+  "licence": "CC BY 4.0 (pki.sgit.ai, published by the sgit project)",
+  "files": {
+    "keys.js": { "source": "https://pki.sgit.ai/lib/v0/v0.2/v0.2.28/keys.js", "release": "v0.2.28 (immutable)", "sha256": "7c97cbd9dab3c3969b6bed4f24bce211c0406cee15c5a88458fec9fc5d48d143", "what": "key pairs (RSA-OAEP 4096, ECDSA P-256), fingerprints, sgit's hybrid v2 envelope (seal, unseal), PBES2 for a passphrase" },
+    "message.js": { "source": "https://pki.sgit.ai/lib/v0/v0.2/v0.2.28/message.js", "release": "v0.2.28 (immutable)", "sha256": "ad91e33ab9a711cad431bfc92f5610c5fe131e828a8e99450dbeccb1535b3b49", "what": "a signed message sealed to a bundle; the m1 code; the k1 key code" },
+    "door.js": { "source": "https://pki.sgit.ai/assets/people/door.js", "release": "as served by site v0.2.33 (this path can move: the sha256 is the pin)", "sha256": "0f45abf09f4af0150660a3beeb7402424d26301eb1f80d3b02a9ad6c36974c5d", "what": "from a passkey's PRF bytes to a door seed (HKDF); AES-256-GCM helpers" },
+    "local.js": { "source": "https://pki.sgit.ai/assets/people/local.js", "release": "as served by site v0.2.33 (this path can move: the sha256 is the pin)", "sha256": "87b5defae8a4860610e2034b07037136642635976d9b1634e926b40ffb91e78b", "what": "the account kept in this browser only, encrypted under the door seed" }
+  },
+  "agent_tool": { "source": "https://pki.sgit.ai/agents/pki-agent.mjs", "sha256": "fcb28a1cc40d05bf8ccc8fc61a2a907c934840cac7aa41d9d8283c1d461002ab", "kept": "not in git: fetched and checked by each agent" }
+}
