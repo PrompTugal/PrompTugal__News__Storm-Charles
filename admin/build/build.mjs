@@ -96,6 +96,7 @@ function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
 ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 <link rel="alternate" type="application/json" href="${u}api/v1/index.json" title="The data, for agents">
 <script type="module" src="${u}app/login/feedback.js"></script>
+<script src="${u}app/agents/obs.js" defer></script>
 ${extraHead}
 </head>
 <body>
@@ -120,7 +121,7 @@ for (const rel of files) {
     write(rel, fs.readFileSync(src))   // everything public in the repository is served as itself (the twins, the data, the app)
 }
 // generators that take --out: they write only into _site/, never a tracked file (CLAUDE.md, "Building a page")
-for (const g of ['tools/library-index.mjs']) { try { execFileSync(process.execPath, [path.join(ROOT, g), '--out', OUT], { cwd: ROOT, stdio: 'ignore' }) } catch (e) { console.log(`WARN ${g}: ${String(e.message).split('\n')[0]}`) } }
+for (const g of ['tools/library-index.mjs', 'tools/agents-index.mjs']) { try { execFileSync(process.execPath, [path.join(ROOT, g), '--out', OUT], { cwd: ROOT, stdio: 'ignore' }) } catch (e) { console.log(`WARN ${g}: ${String(e.message).split('\n')[0]}`) } }
 // the incidents
 const incidents = fs.readdirSync(path.join(ROOT, 'incidents')).filter(d => fs.existsSync(path.join(ROOT, 'incidents', d, 'incident.json')))
 const INC = Object.fromEntries(incidents.map(d => [d, JSON.parse(fs.readFileSync(path.join(ROOT, 'incidents', d, 'incident.json'), 'utf8'))]))

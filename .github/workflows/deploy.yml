@@ -1,6 +1,7 @@
 # One job: checkout (shallow), build, gate, deploy, tag, measure. Target: push to served in about 40 s (PIPELINE.md section 3).
 #   - fetch-depth 1 and nothing reads git history (a blobless full clone made the team site's gate 40x slower);
-#   - the newest push wins: a run superseded by a newer push is cancelled (each build is the whole tree, nothing is lost);
+#   - the newest push wins among the waiting runs; a running deploy is never cancelled (with agents pushing every few
+#     seconds, cancelling starved the site: nothing was served until pushes paused);
 #   - CI owns the version: v<series>.<run number>, written into the artifact and pushed as a tag; never committed
 #     (no second push, no rebase race: BRIEF-CORRECTIONS.md, at Dinis's yes, 10 November 2026);
 #   - after the deploy, it reads version.json from the live site until it serves this version, and reports push-to-served.
@@ -13,7 +14,7 @@ permissions:
   contents: read
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false   # a running deploy always finishes (~25 s); GitHub keeps only the newest waiting run, so the newest push still wins and a burst of pushes cannot starve the site
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -58,4 +59,5 @@ jobs:
           done
           now=$(date -u +%s); pushed=$(date -u -d "${PUSHED_AT:-now}" +%s)
           echo "push to served: $((now - pushed)) s ($VERSION, served: ${got:-nothing})" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "::notice title=push-to-served::$((now - pushed)) s ($VERSION)"
           g=${got##*.}; [ -n "$got" ] && [ "${g:-0}" -ge "$n" ] || { echo "::error::$VERSION was deployed but the live site serves ${got:-nothing}"; exit 1; }
