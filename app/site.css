@@ -203,3 +203,27 @@ aside .card + .card { margin-top: 16px; }
 .wx-foot { margin: 16px 0 24px; }
 .grid { padding-bottom: 6px; }
 .wx-where { margin-top: 0; }
+
+/* ---- round 4 (incident.designer@): document pages, focus, phone density. design/round-4.md, design/README.md ---- */
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+a { text-underline-offset: 2px; }
+.doc article { font-variant-numeric: tabular-nums; }
+.doc article h1 { font-size: clamp(24px, 3.4vw, 34px); line-height: 1.15; margin: .2em 0 .5em; letter-spacing: -.01em; }
+.doc article h2 { font-size: 21px; line-height: 1.25; margin: 1.6em 0 .5em; padding-top: .7em; border-top: 1px solid var(--line); }
+.doc article h3 { font-size: 17px; margin: 1.3em 0 .4em; }
+.doc article > p, .doc article > ul, .doc article > ol, .doc article > blockquote { max-width: 86ch; }
+.doc article li { margin: .2em 0; }
+.doc tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
+.doc th { white-space: nowrap; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); }
+.doc td:first-child { font-family: var(--mono); font-size: 13px; }
+.doc td code, .doc p code, .doc li code { background: var(--surface-2); padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
+.doc hr { border: 0; border-top: 1px solid var(--line); margin: 1.5em 0; }
+@media (max-width: 640px) {
+  .doc article { padding: 14px; border-radius: 0; border-left: 0; border-right: 0; margin: 0 -16px; }
+  .wx-tiles { gap: 8px; padding-top: 12px; }
+  .wx-tile { padding: 9px 12px; gap: 2px; border-top-width: 3px; }
+  .wx-tile .wx-big { font-size: 18px; }
+  .wx-tile .wx-pt, .wx-tile .wx-en { font-size: 13px; }
+  .wx-tile.t-obs .wx-also { display: none; }
+}
+header.top { background: #16181d; color: #f7f7f5; } /* the masthead stays dark in both themes (it was turning light in dark mode) */
