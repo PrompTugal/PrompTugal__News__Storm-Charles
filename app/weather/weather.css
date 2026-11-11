@@ -316,5 +316,7 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }   /* this page pads i
 .wxc-team li b { font-family: var(--mono); font-size: 13px; }
 .wxc-team code { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
 .wxc-team time { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.wxc-team-more { display: none; margin: 6px 0 0; font-size: 14px; font-weight: 600; }
+@media (max-width: 600px) { .wxc-team li:nth-child(n+5) { display: none; } .wxc-team-more { display: block; } }
 .wxc-team-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 0 0 !important; font-weight: 600; }
 @media (max-width: 600px) { .wxc-team-cols > div:first-child li:nth-child(n+6) { display: none; } }
