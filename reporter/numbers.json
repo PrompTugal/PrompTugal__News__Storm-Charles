@@ -1,7 +1,7 @@
 {
  "about": "The project counted by hour (UTC), from the data other agents keep: commits, agents active and hand-offs (incident.ci@), runs and releases (incident.ci@), cards opened and closed (incident.board@). Each figure's source file and that file's own time are in sources: a figure knows nothing after its source's as_of, so the last hour is always short. Pages by hour are not recorded anywhere (not_recorded); now holds the latest whole-site counts. Written by tools/reporter-numbers.mjs; nothing here is counted by hand.",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T13:34:45Z",
+ "updated": "2026-11-11T14:34:03Z",
  "updated_note": "the newest of the sources' own times (the tool reads no clock, so the same sources always give the same file)",
  "sources": [
   {
@@ -12,7 +12,7 @@
    ],
    "file": "data/ci/commits/*.json",
    "by": "incident.ci@web-summit.dinis",
-   "as_of": "2026-11-11T13:22:26Z",
+   "as_of": "2026-11-11T14:20:17Z",
    "note": "agents_active: distinct Agent: trailers on the hour's commits (agents that write in another repository and are synced by the conductor do not count); handoffs_for: For: trailers"
   },
   {
@@ -25,7 +25,7 @@
    ],
    "file": "data/ci/runs/*.json",
    "by": "incident.ci@web-summit.dinis",
-   "as_of": "2026-11-11T13:22:26Z",
+   "as_of": "2026-11-11T14:20:17Z",
    "note": "a release is a run that succeeded (it deployed and tagged a version); cancelled: a newer push replaced it while it waited; by the hour the run was queued"
   },
   {
@@ -35,7 +35,7 @@
    ],
    "file": "board/items/*.json",
    "by": "incident.board@web-summit.dinis",
-   "as_of": "2026-11-11T13:34:45Z",
+   "as_of": "2026-11-11T14:34:03Z",
    "note": "opened: the card's event_utc where the board has one (the first commit of the ask), else its opened_utc, which is the board's reading, not the event; closed: the history line that moved it to done or answered"
   },
   {
@@ -45,7 +45,7 @@
    ],
    "file": "data/ci/tree.json",
    "by": "incident.ci@web-summit.dinis",
-   "as_of": "2026-11-11T13:22:26Z"
+   "as_of": "2026-11-11T14:20:17Z"
   },
   {
    "figures": [
@@ -54,7 +54,7 @@
    ],
    "file": "data/agents/index.json",
    "by": "incident.observability@web-summit.dinis",
-   "as_of": "2026-11-11T13:26:48Z"
+   "as_of": "2026-11-11T14:22:07Z"
   },
   {
    "figures": [
@@ -62,7 +62,7 @@
    ],
    "file": "data/agents/sessions.json",
    "by": "incident.observability@web-summit.dinis",
-   "as_of": "2026-11-11T13:26:58Z"
+   "as_of": "2026-11-11T14:22:19Z"
   },
   {
    "figures": [
@@ -71,7 +71,7 @@
    ],
    "file": "data/ci/index.json",
    "by": "incident.ci@web-summit.dinis",
-   "as_of": "2026-11-11T13:22:26Z"
+   "as_of": "2026-11-11T14:20:17Z"
   }
  ],
  "by_hour": [
@@ -324,50 +324,63 @@
   },
   {
    "hour": "2026-11-11T13Z",
-   "commits": 29,
-   "agents_active": 12,
-   "handoffs_for": 42,
-   "runs": 25,
-   "releases": 18,
-   "runs_cancelled": 7,
+   "commits": 62,
+   "agents_active": 28,
+   "handoffs_for": 81,
+   "runs": 57,
+   "releases": 46,
+   "runs_cancelled": 11,
    "runs_failed": 0,
-   "push_to_served_median_s": 52,
-   "cards_opened": 6,
+   "push_to_served_median_s": 44,
+   "cards_opened": 10,
+   "cards_closed": 11
+  },
+  {
+   "hour": "2026-11-11T14Z",
+   "commits": 22,
+   "agents_active": 10,
+   "handoffs_for": 28,
+   "runs": 20,
+   "releases": 14,
+   "runs_cancelled": 6,
+   "runs_failed": 0,
+   "push_to_served_median_s": 46,
+   "cards_opened": 8,
    "cards_closed": 11
   }
  ],
  "now": {
-  "files": 3026,
-  "bytes": 28334904,
+  "files": 3057,
+  "bytes": 29312710,
   "agents": 41,
-  "asks_for_dinis": 54,
-  "sessions": 106,
+  "asks_for_dinis": 53,
+  "sessions": 109,
   "totals": {
-   "commits": 1298,
+   "commits": 1353,
    "first_commit": "2026-11-10T21:03:38Z",
-   "last_commit": "2026-11-11T13:20:25Z",
-   "runs": 1184,
+   "last_commit": "2026-11-11T14:17:55Z",
+   "runs": 1236,
    "by_result": {
     "failure": 6,
-    "success": 815,
-    "cancelled": 363
+    "success": 857,
+    "cancelled": 373
    },
    "agents": 39,
-   "tags": 817,
+   "tags": 859,
    "github_releases": 0
   },
   "push_to_served_s": {
-   "runs": 784,
+   "runs": 826,
    "median": 39,
    "p90": 57,
    "max": 161,
    "min": 21,
    "source": "each successful run's own notice"
   },
-  "cards": 552,
+  "cards": 564,
   "cards_by_state": {
-   "open": 268,
-   "done": 253,
+   "open": 269,
+   "done": 264,
    "blocked": 7,
    "answered": 3,
    "watching": 21

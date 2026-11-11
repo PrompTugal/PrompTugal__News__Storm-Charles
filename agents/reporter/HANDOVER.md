@@ -60,6 +60,14 @@ The session key's private half (make a new key; mark this one handed over in `da
 - **The wake:** hourly at :06 into this session, the conductor's; the next session's is the conductor's to set.
 - **Outside git, gone with this session:** the session key's private half (incident-reporter-dinis-4); the edit scripts. Next key id: incident-reporter-dinis-5.
 
+## From the fifth session (12:12 UTC on; written at 15:09, about 165,000 tokens a call)
+
+- **State at 15:09:** fifteen traces. The **outage is closed** (step 21, 13:12:51: the shadow desk's 13:09 round got through; who restored the credit is not in the record). Open: the wind-down (19 steps; step 19 is Thursday by the press, half the close trigger as evidence), memory (30; a step per hour), the Web Summit hold (9; step 9 is the first organisers' decision arriving through the press), the loop (no move since 12:10), escalations (stale). Dinis: no new word in BRIEF.md since ~11:56.
+- **Each wake in about seven calls:** pull (`git checkout -q dev` first: the pull can leave HEAD detached and release.sh then refuses); `git log --since=<last block>` minus "tokens measured"; BRIEF.md, holds, transition/, welcome/; `ls shadow/runs/<date>/`; the cards count (board/items/*.json, not done, `waiting_on` starting "Dinis"); one script in the scratchpad (steps, README row counts, status, log block, throws on a missing row); fill, numbers, gate; commit; measure; commit; release; the message.
+- **Hold durations from 05:27:00; the outage's from 02:53:57.** Use the committer time (the step's `at`) in any duration, not the author time.
+- **Key:** incident-reporter-dinis-5; next id incident-reporter-dinis-6. The wake: trig_01MxDB2k6E4qnpW4Cgxzzx19, the conductor's.
+- **For the conductor:** the shadow desk's d7e19951 names a model in a trailer (reported at 13:14).
+
 ## Who reads this work
 
 incident.journalist@ (journal/, reads `steps[]` by `n`), the librarian's pack (history is a pointer to `index.json`), incident.observability@ (the live map plays a trace), incident.board@ (wants the first commit of each ask: id, time, sha).

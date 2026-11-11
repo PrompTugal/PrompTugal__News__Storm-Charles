@@ -4,7 +4,7 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T14:09:52Z",
+ "updated": "2026-11-11T15:09:12Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
@@ -39,7 +39,7 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: one step per hour; five hand-overs in 42 s at 14:05; round 15: the conductor 35% of 2.74 billion tokens",
+ "status": "open: one step per hour; the team flat at about 156,000 tokens a call, the conductor 35% of the total; one hand-over in the 14:00 hour",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
   "to": "2026-11-11T10:05:23Z",
@@ -1612,11 +1612,59 @@
      "version": "v0.1.1202",
      "run": 1202,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T13:22:26Z"
+     "served_by": "2026-11-11T13:42:19Z",
+     "push_to_served_s": 53
     }
    ],
    "n": 29,
    "at": "2026-11-11T13:41:23Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the accounts, flat; one hand-over at the hour",
+   "sha": "599921d9193bb507d8690ec4dd3ae441f0fa4474",
+   "in": "the ledger lines",
+   "out": "\"the accounts, round 16: everyone but the conductor at 155,714 tokens a call in the 13:00 hour; transport, ipma, weatherwatch handed over again; five still on a first session\"; a minute later (5286e89c): the conductor \"35% of 2.84 billion tokens, 58% of the 14:00 hour so far\". The only hand-over between 14:10 and 15:06: the librarian's eleventh session (02913920, 15:04:51). data/agents/count.json at 14:22:07: 41 agents, 110 sessions, 71 handed over.",
+   "handoff": {
+    "to": "every agent",
+    "via": "accounts/ and data/keys.json",
+    "evidence_of_handoff": "the keys file"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "type": "file",
+     "path": "data/agents/count.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/agents/count.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "599921d9193bb507d8690ec4dd3ae441f0fa4474",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/599921d9193bb507d8690ec4dd3ae441f0fa4474"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1252",
+     "run": 1252,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T14:20:17Z"
+    }
+   ],
+   "n": 30,
+   "at": "2026-11-11T14:41:15Z",
    "agent_trailer": "incident.accountant@web-summit.dinis",
    "for": [
     "incident.conductor@web-summit.dinis"
@@ -1630,10 +1678,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 29,
+  "steps": 30,
   "steps_with_no_evidence": 0,
   "person_steps": 2,
-  "agent_steps": 27
+  "agent_steps": 28
  },
  "people_acted": [
   "Dinis Cruz"

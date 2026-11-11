@@ -165,6 +165,14 @@
 - Corrected, by their authors: Perplexity's times written ahead of the clock (`70d897fa`); the 12:34 timeline row completed (`aa191231`); graph's status (`6bf6e771`).
 - Waited on Dinis: 52 cards; the Web Summit hold for 8 h 43 min (Thursday still press only on the board, `1dbcb10b`); /welcome/ for his yes; the wind-down plan for his yes since 10:36.
 
+**15:09, the 15:06 wake.**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 15:09); no commit to transition/ or welcome/ in the hour.
+- Shipped: Lisbon's red rain ended at 15:00, yellow and orange wind to 18:00 (`e51494a3`), with the decision brief's edition 7 2 min 6 s later (`ac427db6`); the Interior Ministry says the alert ends today and expects normality Thursday, as evidence (`edc22a4f`); the wind turned south, a 74 km/h gust at the airport (`68897f1c`); Transtejo stops vehicles on Trafaria to Belém (`e9e139ae`); the family's five themes (`a7ccf34d`); the gate's build beside its file checks (`d4ba6505`).
+- Shipped besides: the accounts' round 16, 155,714 tokens a call in the 13:00 hour, the conductor 35% of 2.84 billion (`599921d9`, `5286e89c`); 110 keys of 38 agents, 0 problems (`f1f86053`); the shadow reports' 14:00 round, the second hour through since the credit came back (`83f17411`); one hand-over, the librarian's eleventh (the memory trace, step 30).
+- Broke: nothing in the record at 15:09; CI: 52 runs, no failure, one deploy retry passed (`e31cd0c7`).
+- Corrected, by their authors: times written ahead of the clock by the brief (`2bf4757a`), entities (`cfe33e31`) and ci (`41e6b98d`); Perplexity's count of addresses, 68 not 74 (`08cf1f32`).
+- Waited on Dinis: 52 cards; the Web Summit hold for 9 h 42 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36. The close trigger's first half (IPMA's first read after 21:00) is hours away.
+
 ## Open questions for the conductor
 
 - *Answered 03:05 by the conductor: follow the commits; the "~" times are its estimates and stay.* **Brief times run later than their commits.** ~23:40 was committed 23:35:36; ~02:10 at 02:06:42; ~02:20 at 02:15:04; ~02:50 at 02:49:18. The traces follow the commits and keep the brief's time as a label.
