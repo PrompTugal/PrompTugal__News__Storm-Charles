@@ -46,6 +46,26 @@ const CAP = opt(DATA + 'weather/cap.json'), SITES = opt('research/weather-sites/
 // By-lines are not carried into the graph or its tables: no person is a node or a column here (only the kind of by-line).
 const M_OUT = opt('research/media/outlets.json'), M_COV = opt('research/media/coverage.json'), M_FIRST = opt('research/media/first-on-each-fact.json')
 
+// ---------------------------------------------------------------- no private person is named or linked (CLAUDE.md, People)
+// A post address on a social platform names the account that wrote it. Unless the address is one of the official
+// channels the researcher lists (decisions/sources.json), it never enters the graph or a table: the builder keeps the
+// host only ("a public post on mastodon.social"), before anything is built. At the end every output is scanned again,
+// and one trace of such an address or of a fediverse handle (@name@host) stops the build with nothing written.
+const OFFICIAL = new Set(S.sources.map(s => s.url))
+const POST = [/\/@[^/?#]+/, /\/users\/[^/?#]+/, /\/u(ser)?\/[^/?#]+/, /\/profile\/[^/?#]+/, /^\/[^/?#]+\/status(es)?\//, /\/posts?\/[^/?#]+/, /\/comments\/[^/?#]+/, /\/p\/[^/?#]+/, /\/notice\/[^/?#]+/]
+const SOCIAL_HOST = /(^|\.)(x\.com|twitter\.com|bsky\.app|threads\.(net|com)|instagram\.com|facebook\.com|linkedin\.com|reddit\.com|tiktok\.com|tumblr\.com)$/
+const personalPost = u => { let x; try { x = new URL(u) } catch { return false } const h = x.hostname.replace(/^www\./, ''); return !OFFICIAL.has(u) && (/\/@[^/?#]+/.test(x.pathname) || (SOCIAL_HOST.test(h) && POST.some(re => re.test(x.pathname)))) }
+const HANDLE = /@[A-Za-z0-9_.-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+/g
+let withheld = 0
+const cleanUrl = u => typeof u === 'string' && https(u) && personalPost(u) ? (withheld++, `https://${new URL(u).hostname}/`) : u
+const cleanText = t => typeof t === 'string' ? t.replace(HANDLE, () => (withheld++, 'a public account')) : t
+for (const n of G.nodes) n.source = cleanUrl(n.source)
+for (const e of G.edges) { e.source = cleanUrl(e.source); if (e.corroborated_by) e.corroborated_by = e.corroborated_by.map(cleanUrl); for (const k of ['decision', 'note']) e[k] = cleanText(e[k]) }
+for (const s of SIG.items) { s.text = cleanText(s.text); for (const x of s.sources || []) { x.url = cleanUrl(x.url); x.label = cleanText(x.label) } }
+for (const x of (SITES ? SITES.sites : [])) x.url = cleanUrl(x.url)
+for (const a of (M_COV ? M_COV.articles : [])) { a.url = cleanUrl(a.url); a.title = cleanText(a.title) }
+for (const f of (M_FIRST ? M_FIRST.facts : [])) for (const x of f.first_by_outlet || []) { x.url = cleanUrl(x.url); x.title = cleanText(x.title) }
+
 const nodes = new Map(), edges = new Map(), problems = []
 const LABELS = new Set(Object.keys(ONT.labels))
 function node(n) {
@@ -350,6 +370,11 @@ for (const [name, [about, rows]] of Object.entries(TABLES)) {
     out[`data/graph/tables/${name}.json`] = JSON.stringify({ about: `${about} Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.`, table: name, incident: incident.id, by: 'incident.graph@web-summit.dinis', updated: asOf, as_of: asOf, columns: Object.keys(rows[0] || {}), count: rows.length, rows: '@@ROWS@@' }, null, 1).replace('"@@ROWS@@"', () => lines(rows)) + '\n'
 }
 
+// the last check: no personal post address and no fediverse handle in anything about to be written
+for (const [rel, txt] of Object.entries(out)) {
+    for (const u of txt.match(/https:\/\/[^\s"'<>\\)]+/g) || []) if (personalPost(u)) problems.push(`${rel}: a personal post address would be written (${new URL(u).hostname}): withheld by rule, fix the builder`)
+    if (HANDLE.test(txt)) problems.push(`${rel}: a fediverse handle would be written`); HANDLE.lastIndex = 0
+}
 if (problems.length) { for (const p of problems.slice(0, 40)) console.error('graph-build: ' + p); console.error(`graph-build: ${problems.length} problem(s); nothing written`); process.exit(1) }
 let stale = 0
 for (const [rel, txt] of Object.entries(out)) {
@@ -359,5 +384,5 @@ for (const [rel, txt] of Object.entries(out)) {
 }
 // with --out the queries go too, so the served folder is whole even if the build's copy ran before a change
 if (OUT_DIR) fs.copyFileSync(path.join(ROOT, 'data/graph/queries.json'), path.join(OUT_DIR, 'data/graph/queries.json'))
-console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${SRC.size} nodes in storm-sources.json, ${ELSE.size} in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
+console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${SRC.size} nodes in storm-sources.json, ${ELSE.size} in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; ${withheld} personal address(es) withheld; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
 if (CHECK && stale) process.exit(1)
