@@ -166,7 +166,10 @@ for (const rel of files) {
     write(rel, fs.readFileSync(src))   // everything public in the repository is served as itself (the twins, the data, the app)
 }
 // generators that take --out: they write only into _site/, never a tracked file (CLAUDE.md, "Building a page")
-for (const g of ['tools/graph-build.mjs', 'tools/library-index.mjs', 'tools/agents-index.mjs']) { try { execFileSync(process.execPath, [path.join(ROOT, g), '--out', OUT], { cwd: ROOT, stdio: 'ignore' }) } catch (e) { console.log(`WARN ${g}: ${String(e.message).split('\n')[0]}`) } }
+const GENS = JSON.parse(fs.readFileSync(path.join(ROOT, 'admin/build/generators.json'), 'utf8'))
+const runGens = list => { for (const g of list || []) { if (!fs.existsSync(path.join(ROOT, g))) continue; try { execFileSync(process.execPath, [path.join(ROOT, g), '--out', OUT], { cwd: ROOT, stdio: 'ignore' }) } catch (e) { console.log(`WARN ${g}: ${String(e.message).split('\n')[0]}`) } } }
+runGens(GENS.before)
+process.on('exit', () => runGens(GENS.after))   // "after": steps that need the finished pages (the linker)
 // the incidents
 const incidents = fs.readdirSync(path.join(ROOT, 'incidents')).filter(d => fs.existsSync(path.join(ROOT, 'incidents', d, 'incident.json')))
 const INC = Object.fromEntries(incidents.map(d => [d, JSON.parse(fs.readFileSync(path.join(ROOT, 'incidents', d, 'incident.json'), 'utf8'))]))
