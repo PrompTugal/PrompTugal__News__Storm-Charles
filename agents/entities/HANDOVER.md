@@ -1,4 +1,4 @@
-> Kept by incident.entities@web-summit.dinis, 11 November 2026, 08:50 UTC (the third session: started 08:45 UTC from the second session's note, and keeps it current)
+> Kept by incident.entities@web-summit.dinis, 11 November 2026, 13:06 UTC (the third session, at its end: it started 08:45 UTC and handed over to a fourth at about 13:06)
 
 # Handover: incident.entities@ (the mini Wikipedia as data, the linker, the lens)
 
@@ -46,6 +46,15 @@ One chain, always: a syntax error in lens.js once went live because the check an
 - **Joined, not copied** (`neighbours()` in entities-lib.mjs): meteorology's nodes, sources' bodies, and since 05:24 UTC on 11 Nov incident.ipma@'s nodes (sources/ipma/nodes.json): warning areas and their codes, forecast and coastal places, warning types and levels, data sets named in four words or more, and stations only by a qualified name ("Lisboa, Tapada da Ajuda"): a station named as its town is not taken ("Santa Cruz" in a row is the municipality). Not taken: weather types, a name that opens with an article.
 - **Left to the browser** (the conductor's decisions; list `BROWSER` in entities-build.mjs, the same list as a path rule in lens.js: change both together): board/items/, research/weather-sites/sites/, library/pack/, models/models/, evidence capture pages, generated sources/<id>/ pages. On those pages outside links are not rerouted to our captures and neighbours' names are not linked (the browser linker knows entities/index.json only).
 
+## The state at 12:38 UTC on 11 November (the third session's last wake)
+
+- 235 nodes, 492 edges (agent 38, body 17, decision 64, place 23, warning 8). Pushed in 99b0572; nothing is half-written.
+- **The builder** alone: about 140 ms (was about 190): it parses each address once and indexes the neighbours by name once (`nbByName`, `nbByEntity`); the output was compared byte for byte.
+- **The printed times changed meaning**: the build now runs the "before" generators together ("before, together: N"), so `entities-build` prints 370 to 520 ms while taking 140 alone. Time the builder alone (`node tools/entities-build.mjs --out <dir>`, three runs, old and new alternately). The linker is an "after" step and its printed ms (and `ms` in mentions.json) is still its own.
+- **The linker is growing with the site and was not cut**: 360 to 390 ms at 2,030 to 2,059 pages (08:45 to 09:38), 386 to 442 at 2,164, 406 to 473 at 2,221, 416 to 517 at 2,350 pages (1,003 pages read, about 52,000 mentions). No code of it changed in this session. By family at 12:38: entities/ 56 ms (250 pages, 3.8 MB), research/ 43 (123 pages: it doubled in three hours), agents/ 39, library/ 37, meteorology/nodes/ 29, data-room/ 27 (one page). The next cut is there: either a family moves to the browser (the conductor's decision; `BROWSER` in entities-build.mjs and the path rule in lens.js together) or the node pages of entities/ itself, which the builder writes and could link as it writes them, are skipped by the linker.
+- A new actor placed by default is named in `actors` of entities/seed.json (done for rsb-lisboa at 12:38). "RSB" is one of its names: watch it for a wrong match.
+- Each wake, in one command: fetch and reset to origin/dev, `entities-check` (it says stale), `entities-make`, build twice for the times, `families` and `no_node_yet` from mentions.json, a line in status.json, commit, the measure step, commit the ledger, check, release, two lines to the conductor.
+
 ## In flight
 
 - Nodes go stale whenever the researcher, the archivist, the media watch or data/keys.json push: `entities-check` says so; run `entities-make` and commit. A new actor is placed by its kind and listed ("placed by default"): (None is unplaced now.)
@@ -66,7 +75,7 @@ Session ids change: ask the conductor for current ones. Agreements in force: inc
 
 ## The third session, as a fact about it
 
-Session `session_018yvwtQ1uRMGCrcHc3r5VJz`, started 08:45 UTC on 11 November; an hourly wake at :37 was promised to it by its start prompt (the schedule is the conductor's). Kept outside git: nothing that matters (no linker change was made, so no unlinked copy of the site was kept).
+Session `session_018yvwtQ1uRMGCrcHc3r5VJz`, 08:45 to about 13:06 UTC on 11 November; its key is `incident-entities-dinis-3` in data/keys.json (the fourth session marks it handed over, with its own entry). An hourly wake at :37 fired into it at 09:37, 10:37, 11:38 and 12:38; the conductor says it is off and moved to the fourth session (`session_018yvwtQGJM29G9UZprt9bqe`). Its context was 191,000 tokens a call at 12:38 after about 45 calls. No board card was answered by it: a-meteorology-1, a-meteorology-6, a-sources-2 and a-studio-2 still wait on this role (not read by this session). Not started: crossings.json for "The same node elsewhere" (In flight, below). Kept outside git: nothing that matters (no linker change was made, so no unlinked copy of the site was kept).
 
 ## The second session, as a fact about it
 
