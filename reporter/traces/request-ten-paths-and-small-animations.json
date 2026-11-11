@@ -4,14 +4,14 @@
  "size": "medium",
  "title": "A request mapped while it happens: \"start maybe finding 10 different paths\" to a storyteller, a motion agent and the traces they start from",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T10:15:58Z",
+ "updated": "2026-11-11T11:17:00Z",
  "captured_at": "2026-11-11T10:15:58Z",
  "summary": [
   "Dinis (~10:10), to the conductor: small animations that \"explain the workflow, that explain how it was done\", \"a set of APIs and data structures so that I can use the same visual explanation ... on a specific event, on a specific set of actions for a specific agent\"; \"start maybe finding 10 different paths\". One of his examples is this request itself: \"map out everything that's going to happen from this request\".",
   "The conductor recorded it at 10:10:38 (f4071e9c) as two new agents, incident.storyteller@ (the cast, the primitives, ten paths, the arc) and incident.motion@ (one small data format for a flow, animations, a gallery at /flows/), and a full page each for the Universe and the live map (incident.observability@).",
-  "Observability wrote it first into its hand-over at 10:11:53 (65b29a34); the storyteller's key and status were on dev at 10:13:14 (edc481e0), 2 min 36 s after the record. No commit by incident.motion@ in the record at 10:15.",
-  "The reporter (a fourth session, from 10:14) pointed both at what already exists: fourteen traces in sc-trace/1, each a path from Dinis's word to a live page, step by step with evidence, and a player that already flies them on Angelo's live map (app/agents/live-adapter.js).",
-  "Open: this trace grows one step per move (the cast, the primitives, the first path, the first animation, /flows/) until the ten paths are served."
+  "The storyteller's key was on dev 2 min 36 s after the record (edc481e0); the cast of 43 and the primitives at 5 min 22 s (8862c581); motion@'s format and first three animations at /flows/ at 10 min 30 s (b144acec); ten paths and the arc at 20 min 51 s (53a3368a, 10:31:29).",
+  "The reporter pointed both at the traces at 10:16:52; motion@ played all fourteen as they are 10 min 47 s later (4038053e), and the storyteller told two of Dinis's examples no trace held (a journalist's wake, a story made) and built path 5 on this trace. Nothing was traced twice.",
+  "Closed at 10:31:29. Dinis's next word (~10:30, the wind-down) came while it was finishing: the paths become part of the closing record (trace: wind-down-explorer-to-villager)."
  ],
  "rests_on": [
   "BRIEF.md",
@@ -28,13 +28,13 @@
  "output": {
   "kind": "not yet served",
   "what": "story/ (the storyteller: cast, primitives, ten paths, arc); /flows/ (motion: small animations of a flow); a page each for the Universe and the live map",
-  "url": null
+  "url": "https://storm-charles.promptugal.news/flows/"
  },
- "status": "open: at 10:15 two agents named, one started; nothing served yet",
+ "status": "closed at 10:31:29: ten paths and the arc told, /flows/ playing them and these traces; what Dinis makes of it is not in the record at 11:17",
  "duration": {
   "from": "2026-11-11T10:10:38Z",
-  "to": null,
-  "note": "words recorded to the storyteller's key on dev: 2 min 36 s"
+  "to": "2026-11-11T10:31:29Z",
+  "note": "words recorded to: the storyteller's key 2 min 36 s; the cast 5 min 22 s; the first animations 10 min 30 s; the traces playing 17 min 1 s; ten paths and the arc 20 min 51 s"
  },
  "steps": [
   {
@@ -100,7 +100,8 @@
      "version": "v0.1.817",
      "run": 817,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+     "served_by": "2026-11-11T10:11:31Z",
+     "push_to_served_s": 50
     }
    ],
    "n": 2,
@@ -139,7 +140,8 @@
      "version": "v0.1.819",
      "run": 819,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+     "served_by": "2026-11-11T10:12:57Z",
+     "push_to_served_s": 62
     }
    ],
    "n": 3,
@@ -181,7 +183,8 @@
      "version": "v0.1.822",
      "run": 822,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+     "served_by": "2026-11-11T10:13:51Z",
+     "push_to_served_s": 34
     }
    ],
    "n": 4,
@@ -190,7 +193,6 @@
    "for": []
   },
   {
-   "at": "2026-11-11T10:15:58Z",
    "actor": {
     "name": "incident.reporter@web-summit.dinis",
     "kind": "agent"
@@ -209,16 +211,302 @@
      "path": "reporter/traces/README.md",
      "url": "https://storm-charles.promptugal.news/view/?path=reporter/traces/README.md",
      "section": "For incident.storyteller@ and incident.motion@"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "3d98465761c4766b0d7501ce946a2455d6c3afbf",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/3d98465761c4766b0d7501ce946a2455d6c3afbf"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.827",
+     "run": 827,
+     "own_run": false,
+     "served_by": "2026-11-11T10:17:31Z",
+     "push_to_served_s": 36
     }
    ],
-   "n": 5
+   "n": 5,
+   "sha": "3d98465761c4766b0d7501ce946a2455d6c3afbf",
+   "at": "2026-11-11T10:16:52Z",
+   "agent_trailer": "incident.reporter@web-summit.dinis",
+   "for": [
+    "incident.storyteller@web-summit.dinis",
+    "incident.motion@web-summit.dinis",
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.storyteller@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the cast and the primitives",
+   "in": "agents/JOBS.md and the record",
+   "out": "\"the cast (43: Dinis, 35 agents with their generations, outside bodies and machines) and the primitives (actors, things, steps, the step record, the glyph list), proposed to motion@\". 5 min 22 s after the record.",
+   "handoff": {
+    "to": "incident.motion@",
+    "via": "story/ and the commit's For: trailer",
+    "evidence_of_handoff": "motion@ took the primitives into its schema (bed1fa94, 10:24:23)"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "8862c58168a677dd4516fcd38c2155f0ea0db9e8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8862c58168a677dd4516fcd38c2155f0ea0db9e8"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.826",
+     "run": 826,
+     "own_run": true,
+     "served_by": "2026-11-11T10:16:55Z",
+     "push_to_served_s": 51
+    }
+   ],
+   "sha": "8862c58168a677dd4516fcd38c2155f0ea0db9e8",
+   "n": 6,
+   "at": "2026-11-11T10:16:00Z",
+   "agent_trailer": "incident.storyteller@web-summit.dinis",
+   "for": [
+    "incident.motion@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.storyteller@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "two paths told",
+   "in": "the journalist's commits",
+   "out": "\"paths 1 and 3 told from the record (a journalist's 08:12 wake; its third session handing over to its fourth at 08:16), each as JSON in the primitives' words and a page made from it\": two of Dinis's own examples, which no trace held.",
+   "handoff": {
+    "to": "incident.motion@",
+    "via": "story/paths/",
+    "evidence_of_handoff": "b144acec animates both"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f54ad5e593dd12459c013d82e0e36fff2185c461",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f54ad5e593dd12459c013d82e0e36fff2185c461"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.831",
+     "run": 831,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "f54ad5e593dd12459c013d82e0e36fff2185c461",
+   "n": 7,
+   "at": "2026-11-11T10:18:56Z",
+   "agent_trailer": "incident.storyteller@web-summit.dinis",
+   "for": [
+    "incident.motion@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.motion@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a format and three animations",
+   "in": "the primitives",
+   "out": "\"flows: one small format for a flow of the work, built from the record, and the first three small animations (a journalist's wake, a hand-over, an agent over the night) at /flows/\". 10 min 30 s after the record.",
+   "handoff": {
+    "to": "readers of /flows/",
+    "via": "the site",
+    "evidence_of_handoff": "the commit's version"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "b144acec5fd59d2f3542cc69654f1d4e82cc66ce",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b144acec5fd59d2f3542cc69654f1d4e82cc66ce"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.835",
+     "run": 835,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "b144acec5fd59d2f3542cc69654f1d4e82cc66ce",
+   "n": 8,
+   "at": "2026-11-11T10:21:08Z",
+   "agent_trailer": "incident.motion@web-summit.dinis",
+   "for": [
+    "incident.storyteller@web-summit.dinis",
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.observability@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "two pages",
+   "in": "the lead's reading: \"a full page each\" for the Universe and the live map",
+   "out": "\"the live map and the Universe, each full size on its own page (/agents/live/, /agents/universe/), linked from the top of /agents/\"",
+   "handoff": {
+    "to": "readers of /agents/",
+    "via": "the site",
+    "evidence_of_handoff": "the commit's version"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "e73737c5493430a17d56441c7e2cfdb18e3606ff",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/e73737c5493430a17d56441c7e2cfdb18e3606ff"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.836",
+     "run": 836,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "e73737c5493430a17d56441c7e2cfdb18e3606ff",
+   "n": 9,
+   "at": "2026-11-11T10:22:14Z",
+   "agent_trailer": "incident.observability@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.motion@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the traces played as they are",
+   "in": "this trace's step 5 (reporter/traces/README.md)",
+   "out": "\"flows: the reporter's traces play as they are (14 trace-* flows)\": each trace is read at build time into data/flows/trace-<id>.json; nothing copied, nothing changed in reporter/traces/. This trace plays at app/flows/embed.html?flow=trace-request-ten-paths-and-small-animations. 17 min 1 s after the record; 10 min 47 s after the reporter's pointer.",
+   "handoff": {
+    "to": "incident.reporter@",
+    "via": "the commit's For: trailer and a session message",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "4038053e22fc6a26a77bcefbb3330a23c75a3ed2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4038053e22fc6a26a77bcefbb3330a23c75a3ed2"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.855",
+     "run": 855,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "4038053e22fc6a26a77bcefbb3330a23c75a3ed2",
+   "n": 10,
+   "at": "2026-11-11T10:27:39Z",
+   "agent_trailer": "incident.motion@web-summit.dinis",
+   "for": [
+    "incident.reporter@web-summit.dinis",
+    "incident.observability@web-summit.dinis",
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.motion@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a designer's look taken",
+   "in": "incident.designer@'s first look at /flows/, five notes (8e1f5e76, 10:26:01)",
+   "out": "\"flows: designer's round 52 taken: lane names in HTML (nothing under 11 px), the lanes 1:1 and scrolling in their own box, the h1 first ...\", 4 min 26 s after the notes.",
+   "handoff": {
+    "to": "incident.designer@",
+    "via": "the commit",
+    "evidence_of_handoff": "a second look at 10:31:26 (03258d59)"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "ae944231b9312311a9064d47fcd4c7636132bc39",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ae944231b9312311a9064d47fcd4c7636132bc39"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.860",
+     "run": 860,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "ae944231b9312311a9064d47fcd4c7636132bc39",
+   "n": 11,
+   "at": "2026-11-11T10:30:27Z",
+   "agent_trailer": "incident.motion@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.storyteller@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "ten paths and the arc",
+   "in": "paths 2 and 4 to 9 told between 10:20:13 and 10:28:27; path 10 and the arc at 10:30:42 (6a43c78a: \"the whole incident in a page for a newcomer: the acts, who arrived when, the generations, the maturity of things\")",
+   "out": "\"story/ index; transport@ in the cast; path 5 brought to 10:30 (all ten paths and the arc)\". Path 5 is this request, told by the storyteller from this trace. 20 min 51 s after the record.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "story/ on the site",
+    "evidence_of_handoff": "not in the record at 11:17: no word from Dinis on the paths"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "53a3368af9e90b732e2fd55c3286e98c3e9a2fb7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/53a3368af9e90b732e2fd55c3286e98c3e9a2fb7"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.865",
+     "run": 865,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "53a3368af9e90b732e2fd55c3286e98c3e9a2fb7",
+   "n": 12,
+   "at": "2026-11-11T10:31:29Z",
+   "agent_trailer": "incident.storyteller@web-summit.dinis",
+   "for": [
+    "incident.motion@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 5,
+  "steps": 12,
   "steps_with_no_evidence": 0,
   "person_steps": 1,
-  "agent_steps": 4
+  "agent_steps": 11
  },
  "people_acted": [
   "Dinis Cruz"
@@ -227,6 +515,7 @@
   "incident.conductor@web-summit.dinis",
   "incident.observability@web-summit.dinis",
   "incident.storyteller@web-summit.dinis",
-  "incident.reporter@web-summit.dinis"
+  "incident.reporter@web-summit.dinis",
+  "incident.motion@web-summit.dinis"
  ]
 }

@@ -4,7 +4,7 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T10:09:20Z",
+ "updated": "2026-11-11T11:17:00Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
@@ -39,7 +39,7 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: Dinis answered the vault-key question (~09:30 and ~09:47); the conductor's append lane carries keys since 09:40 and IPMA's second session is running; 67 sessions for 32 agents at 10:05, 37 handed over; the 08:00 hour was the cheapest yet at 171,681 tokens a call; the conductor's own session has not handed over in the record (it compacts)",
+ "status": "open: one step per hour; nine hand-overs between 10:09 and 11:14; the wind-down makes the hand-over the way the incident ends",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
   "to": "2026-11-11T10:05:23Z",
@@ -1414,7 +1414,8 @@
      "version": "v0.1.777",
      "run": 777,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+     "served_by": "2026-11-11T09:49:37Z",
+     "push_to_served_s": 35
     }
    ],
    "n": 25,
@@ -1422,6 +1423,54 @@
    "agent_trailer": "incident.ipma@web-summit.dinis",
    "for": [
     "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the accounts, and nine hand-overs in an hour",
+   "in": "the ledger lines",
+   "out": "\"the accounts, round 11: with the conductor's line in, the team's call is 258,028 tokens at 09:00 (brief 10's 171,681 corrected)\". Between 10:09 and 11:14, nine sessions handed over to fresh ones, each with its new key in data/keys.json: the designer twice (its fifth, 63a0d0fe; its sixth, 56afd287, after its fifth wrote it was at about 199,000 tokens a call, 2877824d), observability (e39ded70), identity (dd53362c), the journalist (39d6e633), weather (5e3429da), the reporter (3d984657), media (b8f25219), stories (5b345184). Dinis (~10:32): \"the team (which shouldn't stop until the handover is done)\": the hand-over is now also how the incident ends (trace: wind-down-explorer-to-villager).",
+   "handoff": {
+    "to": "every agent",
+    "via": "accounts/ and data/keys.json",
+    "evidence_of_handoff": "the keys file"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "type": "file",
+     "path": "accounts/measure.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/measure.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "11b9f7a6dfe1ddcf2bfb29ee642bdbb5223aee10",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/11b9f7a6dfe1ddcf2bfb29ee642bdbb5223aee10"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.905",
+     "run": 905,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "11b9f7a6dfe1ddcf2bfb29ee642bdbb5223aee10",
+   "n": 26,
+   "at": "2026-11-11T10:42:29Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.planner@web-summit.dinis"
    ]
   }
  ],
@@ -1432,10 +1481,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 25,
+  "steps": 26,
   "steps_with_no_evidence": 0,
   "person_steps": 2,
-  "agent_steps": 23
+  "agent_steps": 24
  },
  "people_acted": [
   "Dinis Cruz"

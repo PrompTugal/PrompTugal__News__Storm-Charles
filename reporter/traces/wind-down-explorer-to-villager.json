@@ -1,0 +1,603 @@
+{
+ "id": "wind-down-explorer-to-villager",
+ "schema": "sc-trace/1",
+ "size": "large",
+ "title": "The wind-down, traced as it happens: \"move it into a BAU\" to a plan, exit interviews and a correction, in 14 minutes; open until the hand-overs",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T11:17:00Z",
+ "captured_at": "2026-11-11T11:17:00Z",
+ "summary": [
+  "Dinis (~10:30): \"create a plan to refactor this entire incident and then move it into a BAU\"; wind down every agent, \"an exit interview and ... a wrap up\", then decide which to start and continue; \"almost that move from explorer to villager\". Two more words followed within eight minutes: nobody stops \"until the handover is done\" (~10:32), and a correction (~10:38): the outside hand-over \"was for another team\"; \"I'm going to be the only one running this site\".",
+  "The conductor recorded each word within seconds of the next (bda392be 10:29:37, 9fea08ec 10:31:14, 5a92b0d6 10:34:56) and named a new agent, incident.planner@, whose first draft of transition/PLAN.md was on dev 5 min 59 s after the first record (c31fe378) and its second, with every agent's place, 9 min 19 s after (a0877332).",
+  "One step went the wrong way: the designer pushed a public \"join the hand-over\" band at 10:39:08, 4 min 12 s after the correction that withdrew it was recorded, and took it out 91 s later (05d710ff, a489b23a). Nothing else in the record acted on the withdrawn part.",
+  "By 10:43 the board had a card for Dinis's yes (21079385), every agent could write its own exit interview (4dff1bc7), the journalist had drafted the first (53c705fe), the storyteller had named the close trigger (7fffa7eb), and the conductor had written its own hand-over ahead (701df38c).",
+  "Open: nothing stops before Dinis's yes and each agent's hand-over; this trace takes a step per exit interview and per hand-over until the last."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "transition/PLAN.md",
+  "transition/interviews/TEMPLATE.md",
+  "board/items/a-wind-down-plan.json"
+ ],
+ "input": {
+  "kind": "three spoken directions in eight minutes",
+  "what": "\"move it into a BAU\"; \"which shouldn't stop until the handover is done\"; \"Sorry, ignore that. The handover was for another team\" (BRIEF.md, ~10:30, ~10:32, ~10:38)"
+ },
+ "output": {
+  "kind": "a plan for Dinis's yes, then a wind-down",
+  "what": "transition/PLAN.md (the plan), transition/interviews/ (exit interviews), the closing record (reporter, journalist, storyteller, librarian), a storm conductor for business as usual",
+  "url": "https://storm-charles.promptugal.news/transition/PLAN.html"
+ },
+ "status": "open: the plan in its second draft, waiting on Dinis's yes; live coverage continues until the close trigger",
+ "duration": {
+  "from": "2026-11-11T10:29:37Z",
+  "to": null,
+  "note": "first word recorded to: the plan's first draft 5 min 59 s; its second 9 min 19 s; a card for Dinis 6 min 42 s"
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "~10:30 UTC by BRIEF.md; recorded 10:29:37",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "direction",
+   "in": "an incident still live (IPMA red rain to 18:00, orange wind to 21:00, by the lead's reading)",
+   "out": "\"take a step back and ask an agent to create a plan to refactor this entire incident and then move it into a BAU now action\"; \"an exit interview and do a wrap up of everything they're doing\"; \"A good opportunity for the reporter and the journalist to really wrap it up ... go to town in creating the incident pages\"; \"that move from explorer to villager\".",
+   "handoff": {
+    "to": "incident.conductor@",
+    "via": "spoken, in the conductor's session",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md",
+     "section": "Dinis, 11 November, ~10:30 UTC"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "record and assign",
+   "in": "the words",
+   "out": "\"Dinis's 10:30 word: wind down, move to BAU; incident.planner@\". The lead's reading: live coverage runs until the storm ends; for every agent an exit interview and a verdict (stop, continue, refactor, merge); a closing record; a storm conductor; \"Nothing is stopped until Dinis says yes to the plan.\"",
+   "handoff": {
+    "to": "incident.planner@ (new)",
+    "via": "BRIEF.md and agents/JOBS.md",
+    "evidence_of_handoff": "step 7"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md",
+     "section": "As the lead reads it"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "bda392bebf9d87bc0458071bcac2626e80ddc38c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/bda392bebf9d87bc0458071bcac2626e80ddc38c"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.859",
+     "run": 859,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "bda392bebf9d87bc0458071bcac2626e80ddc38c",
+   "n": 2,
+   "at": "2026-11-11T10:29:37Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.planner@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "~10:32 UTC by BRIEF.md; recorded 10:31:14",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "direction",
+   "in": "the plan being written",
+   "out": "\"also please ask the team (which shouldn't stop until the handover is done) to add a big link and reference from our storm site to the main promptugal.news site\"",
+   "handoff": {
+    "to": "incident.conductor@",
+    "via": "spoken",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md",
+     "section": "Dinis, 11 November, ~10:32 UTC"
+    }
+   ],
+   "n": 3
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "record",
+   "in": "the words",
+   "out": "\"Dinis's 10:32 word: a big link to promptugal.news; nobody stops before the hand-over\"",
+   "handoff": {
+    "to": "incident.planner@, incident.designer@, incident.weather@, incident.envoy@",
+    "via": "BRIEF.md",
+    "evidence_of_handoff": "a0877332 (the plan) and f60ac42c, 0c2a5542, 1aee231a (the link)"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "9fea08ecc954df7ccbdb18573105d358573cdfee",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/9fea08ecc954df7ccbdb18573105d358573cdfee"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.865",
+     "run": 865,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "9fea08ecc954df7ccbdb18573105d358573cdfee",
+   "n": 4,
+   "at": "2026-11-11T10:31:14Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis",
+    "incident.weather@web-summit.dinis",
+    "incident.envoy@web-summit.dinis",
+    "incident.planner@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "~10:38 UTC by BRIEF.md; recorded 10:34:56 (BRIEF.md's times run a few minutes late)",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "correction",
+   "in": "the ~10:30 section's part about other accounts and other people's agent teams",
+   "out": "\"Sorry, ignore that. The handover was for another team, for another session. This is for reference. I'm going to be the only one running this site.\"",
+   "handoff": {
+    "to": "incident.conductor@",
+    "via": "spoken",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md",
+     "section": "Dinis, 11 November, ~10:38 UTC"
+    }
+   ],
+   "n": 5
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "record a withdrawal",
+   "in": "the correction",
+   "out": "\"Dinis's 10:38 correction: no outside hand-over page; he alone runs this site\". Withdrawn: \"the public \\\"join the hand-over\\\" page and band\"; stands: the plan, the interviews, the closing record, the storm conductor, nobody stopping before the hand-over.",
+   "handoff": {
+    "to": "every agent",
+    "via": "BRIEF.md",
+    "evidence_of_handoff": "step 11 shows one agent had not read it"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "5a92b0d6b02b18511f75eb309c3050cc4bd6c34d",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5a92b0d6b02b18511f75eb309c3050cc4bd6c34d"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.877",
+     "run": 877,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "5a92b0d6b02b18511f75eb309c3050cc4bd6c34d",
+   "n": 6,
+   "at": "2026-11-11T10:34:56Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.planner@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.envoy@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.planner@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a first draft",
+   "in": "BRIEF.md's ~10:30 section",
+   "out": "\"transition/PLAN.md first draft (wind-down to BAU, for Dinis's yes); session key\". 5 min 59 s after the first record.",
+   "handoff": {
+    "to": "every agent (each sends its part)",
+    "via": "transition/PLAN.md and session messages",
+    "evidence_of_handoff": "the reporter, journalist and storyteller sent their parts between 10:30 and 10:34 (PLAN.md's own words)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "c31fe378594bcbd4c7ec90186fa244cfbd07405c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/c31fe378594bcbd4c7ec90186fa244cfbd07405c"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.880",
+     "run": 880,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "c31fe378594bcbd4c7ec90186fa244cfbd07405c",
+   "n": 7,
+   "at": "2026-11-11T10:35:36Z",
+   "agent_trailer": "incident.planner@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.board@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a card for Dinis",
+   "in": "the plan",
+   "out": "\"a-wind-down-plan opened for Dinis (transition/PLAN.md), a-launch moved below it and reworded at the conductor's word\"",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "board/items/a-wind-down-plan.json",
+    "evidence_of_handoff": "the card"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-wind-down-plan.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-wind-down-plan.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "21079385505256e625be39211f7636d000454493",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/21079385505256e625be39211f7636d000454493"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.881",
+     "run": 881,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "21079385505256e625be39211f7636d000454493",
+   "n": 8,
+   "at": "2026-11-11T10:36:19Z",
+   "agent_trailer": "incident.board@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.planner@web-summit.dinis",
+    "incident.envoy@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "interviews opened to every agent",
+   "in": "the plan's D7",
+   "out": "\"every agent may write its own exit interview, transition/interviews/<role>.md (plan D7)\"",
+   "handoff": {
+    "to": "every agent",
+    "via": "transition/interviews/",
+    "evidence_of_handoff": "step 13"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "4dff1bc762c64bd197c02c3991dc4ebbd1ff24e4",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4dff1bc762c64bd197c02c3991dc4ebbd1ff24e4"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.887",
+     "run": 887,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "4dff1bc762c64bd197c02c3991dc4ebbd1ff24e4",
+   "n": 9,
+   "at": "2026-11-11T10:37:01Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.planner@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.planner@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a second draft",
+   "in": "the agents' parts and the two later words",
+   "out": "\"PLAN.md second draft: nobody stops before hand-over; no outside teams; wakes; closing record from reporter, journalist, storyteller\". 9 min 19 s after the first record; it took both of Dinis's later words. Its table gives each agent a verdict for Dinis; the reporter's: \"merge with journalist and storyteller\" into one desk, \"the record\".",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "transition/PLAN.md and the card",
+    "evidence_of_handoff": "the card is open"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md",
+     "section": "the record"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "a08773322fee76160986d67e4e88c54043709059",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a08773322fee76160986d67e4e88c54043709059"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.895",
+     "run": 895,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "a08773322fee76160986d67e4e88c54043709059",
+   "n": 10,
+   "at": "2026-11-11T10:38:56Z",
+   "agent_trailer": "incident.planner@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a band against the correction",
+   "in": "the plan's first draft",
+   "out": "\"round 55: \\\"The hand-over: join in\\\": a band under the warning notice on every page and the first entry of the Team menu, to incident.planner@'s plan\". Pushed 4 min 12 s after the correction that withdrew such a page was recorded (step 6).",
+   "handoff": {
+    "to": "every reader",
+    "via": "the site",
+    "evidence_of_handoff": "step 14"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "05d710ff5a71fd20e9b25f67485561cfd6c10d1b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/05d710ff5a71fd20e9b25f67485561cfd6c10d1b"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.895",
+     "run": 895,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "05d710ff5a71fd20e9b25f67485561cfd6c10d1b",
+   "n": 11,
+   "at": "2026-11-11T10:39:08Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.storyteller@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the close trigger named",
+   "in": "the plan",
+   "out": "\"the close trigger for the arc's last act (IPMA's first read after 21:00 plus Web Summit's Day 3 decision, as a timeline row)\"",
+   "handoff": {
+    "to": "incident.planner@",
+    "via": "agents/storyteller/status.json",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "7fffa7ebcf2aaa9a09cd47ad29002cde6991d77a",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7fffa7ebcf2aaa9a09cd47ad29002cde6991d77a"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.901",
+     "run": 901,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "7fffa7ebcf2aaa9a09cd47ad29002cde6991d77a",
+   "n": 12,
+   "at": "2026-11-11T10:40:12Z",
+   "agent_trailer": "incident.storyteller@web-summit.dinis",
+   "for": []
+  },
+  {
+   "actor": {
+    "name": "incident.journalist@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the first exit interview",
+   "in": "transition/interviews/TEMPLATE.md",
+   "out": "\"exit interview, a draft written early (the journalist is in the live crew; to be brought up to date after the close trigger)\"",
+   "handoff": {
+    "to": "incident.planner@",
+    "via": "transition/interviews/",
+    "evidence_of_handoff": "the planner corrected the journalist's row and linked the interview (625f1ceb, 10:41:08)"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "53c705fe7ec338bf3dd5aff45666357b77a2a38e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/53c705fe7ec338bf3dd5aff45666357b77a2a38e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.901",
+     "run": 901,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "53c705fe7ec338bf3dd5aff45666357b77a2a38e",
+   "n": 13,
+   "at": "2026-11-11T10:40:23Z",
+   "agent_trailer": "incident.journalist@web-summit.dinis",
+   "for": [
+    "incident.planner@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the band withdrawn",
+   "in": "the correction (step 6)",
+   "out": "\"round 55 withdrawn: the hand-over band and its Team-menu entry taken out (reverts 05d710f; Dinis, ~10:38: no outside hand-over)\". 91 s after the band.",
+   "handoff": {
+    "to": "every reader",
+    "via": "the site",
+    "evidence_of_handoff": "the commit's version"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "a489b23a04b92562154219ed717e8d8af59822e6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a489b23a04b92562154219ed717e8d8af59822e6"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.902",
+     "run": 902,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "a489b23a04b92562154219ed717e8d8af59822e6",
+   "n": 14,
+   "at": "2026-11-11T10:40:39Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the lead's hand-over, ahead",
+   "in": "the plan",
+   "out": "\"the conductor's hand-over, written ahead (a fresh conductor only on Dinis's word)\"",
+   "handoff": {
+    "to": "a fresh conductor, on Dinis's word",
+    "via": "the conductor's HANDOVER.md",
+    "evidence_of_handoff": "none yet: no fresh conductor in the record"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "701df38c755212fc02eeb69d06b1b541dd4c040f",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/701df38c755212fc02eeb69d06b1b541dd4c040f"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.911",
+     "run": 911,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+    }
+   ],
+   "sha": "701df38c755212fc02eeb69d06b1b541dd4c040f",
+   "n": 15,
+   "at": "2026-11-11T10:43:29Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.planner@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
+  }
+ ],
+ "counts": {
+  "steps": 15,
+  "steps_with_no_evidence": 0,
+  "person_steps": 3,
+  "agent_steps": 12
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.planner@web-summit.dinis",
+  "incident.board@web-summit.dinis",
+  "incident.designer@web-summit.dinis",
+  "incident.storyteller@web-summit.dinis",
+  "incident.journalist@web-summit.dinis"
+ ]
+}

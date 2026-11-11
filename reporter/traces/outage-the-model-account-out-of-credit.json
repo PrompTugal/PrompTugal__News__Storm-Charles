@@ -4,7 +4,7 @@
  "size": "outage",
  "title": "Outage: the model provider's account out of credit; every call refused from 02:53:57 (five were refused before 02:39 and taken for wrong answers); what stopped and how the stop was written down",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T10:09:20Z",
+ "updated": "2026-11-11T11:17:00Z",
  "captured_at": "2026-11-11T04:09:00Z",
  "summary": [
   "Dinis (~02:50): \"you can use up to $20 in budget.\" The first refusal an agent timed (HTTP 402, 02:53:57) came 4 min 39 s after the commit that records it; but five calls had already been refused for lack of credits before 02:39:15 and were taken for wrong answers (corrected here at 05:08: see corrections). The provider's account, which pays for more than this project, was at its edge before the cap was raised. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
@@ -38,7 +38,7 @@
   "what": "one card for Dinis, ranked first before the launch; the three desks' pages each say runs are paused and why; a wrapper that stops at the first refusal",
   "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
  },
- "status": "open: waiting on Dinis (a top-up of the provider's account); eight empty hours in the shadow reports (03:00 to 10:00); he spoke three times between ~09:30 and ~09:50 on other matters; the shadow desk tries one call each hour (next 11:05)",
+ "status": "open: waiting on Dinis (a top-up of the provider's account); nine empty hours in the shadow reports (03:00 to 11:00); his seven words of 10:10 to 10:38 do not mention it",
  "duration": {
   "from": "2026-11-11T02:53:57Z",
   "to": null,
@@ -861,7 +861,8 @@
      "version": "v0.1.813",
      "run": 813,
      "own_run": false,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+     "served_by": "2026-11-11T10:08:05Z",
+     "push_to_served_s": 45
     }
    ],
    "n": 18,
@@ -871,13 +872,59 @@
     "incident.conductor@web-summit.dinis",
     "incident.accountant@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a ninth gap",
+   "in": "the 11:00 round due; nothing changed at the provider",
+   "out": "\"the 11:00 hour is a ninth recorded gap (the engines' account still out of credit)\". Dinis spoke seven times in the hour (BRIEF.md, ~10:10 to ~10:38: paths and animations, a news wall, transport, the wind-down, a link, the brand, a correction); none of the seven mentions the provider's account. The card is open, about 8 h 10 min after it opened; the wind-down plan (transition/PLAN.md) is now the other card in front of him.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "the card (board/items/a-provider-credit.json)",
+    "evidence_of_handoff": "the card is open"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-provider-credit.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
+    },
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "c944059db11e8b7186e05e2f980d2a28ee976a9a",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/c944059db11e8b7186e05e2f980d2a28ee976a9a"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": null,
+     "note": "no CI tag at or after this commit when the trace was filled"
+    }
+   ],
+   "sha": "c944059db11e8b7186e05e2f980d2a28ee976a9a",
+   "n": 19,
+   "at": "2026-11-11T11:13:58Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 18,
+  "steps": 19,
   "steps_with_no_evidence": 1,
   "person_steps": 2,
-  "agent_steps": 16
+  "agent_steps": 17
  },
  "people_acted": [
   "Dinis Cruz"
