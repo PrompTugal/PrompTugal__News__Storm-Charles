@@ -98,6 +98,10 @@
       (ds.length ? '<p class="gd-src-h">Decisions' + (n ? ', as reported' : '') + '</p><ul class="gd-sub">' + ds.map(decLi).join('') + '</ul>' : '') +
       ((e && e.open || []).length ? '<p class="gd-open"><b>Not yet answered:</b> ' + e.open.map(esc).join(' ') + '</p>' : '') + '</details></li>'
   }
+  function asDec(d) { var at = d.at && typeof d.at === 'object' ? d.at : null; return { decision: String(d.decision || '').replace(/^HYPOTHESIS:\s*/, ''), label: d.label, state: stateOf(d), status: d.status === 'superseded' ? 'superseded' : null, address: d.address || d.source || (at && at.source), read: d.read || (at && at.read), published_utc: d.published_utc || (at ? at.at : (typeof d.at === 'string' ? d.at : null)), decided_by: d.decided_by } }
+  function one(name, d) { var x = asDec(d); x.status = null; return unit(name, null, { decisions: [x] }) }
+  var WSN = { 'websummit-wednesday': 'Day 2, Wednesday|Web Summit: Day 2 (Wednesday 11 November)', 'websummit-thursday': 'Day 3, Thursday|Web Summit: Day 3 (Thursday 12 November)', 'websummit-n6': 'Talks, PITCH, tickets', 'pitch-semifinal': 'PITCH semi-final', 'night-summit-wednesday': 'Night Summit', 'side-events-wednesday': 'Side events', 'gov-recommends-suspend': 'The government|The government\'s recommendation', 'mai-websummit-indoor': 'Interior Minister', 'mayor-expects-closure': 'Lisbon\'s mayor', 'websummit-assessing': 'The organisers, Tuesday' }
+  var mName = function (d) { var t = d.decision; return /occurrence count/i.test(t) ? 'Occurrences' : /airport|flights/i.test(t) ? 'Airport' : /school/i.test(t) ? 'Schools' : /cruise/i.test(t) ? 'Port of Funchal' : /centre/i.test(t) ? 'Funchal centre' : /power/i.test(t) ? 'Porto Santo' : 'Civil protection|' + (d.decided_by || '') }
   function short(name, e, re) { return unit(name, null, e, re) }
   var LINES = {}
   function sect(id, q, simple, deep, open, line) {
@@ -250,11 +254,11 @@
     var wsOpen = wsIds.filter(function (e) { return e.status === 'not_announced' })
     LINES.websummit = wsFacts[0] ? wsFacts[0].decision : ''
     out += sect('websummit', '5 · Web Summit',
-      '<ul class="gd-rows">' + wsFacts.map(row).join('') + '</ul>' +
+      '<ul class="gd-short">' + wsFacts.map(function (e) { return one(WSN[e.id] || 'Web Summit', e) }).join('') + '</ul>' +
       (wsOpen.length ? '<p><b>Not yet announced by the organisers:</b></p><ul class="gd-short">' + wsOpen.map(function (e) { return '<li>' + esc(e.decision) + ' <span class="gd-ns">not announced</span></li>' }).join('') + '</ul>' : '') +
       '<p class="meta">The organisers\' own page: <a href="https://websummit.com/blog/web-summit/important-event-update-2026/" rel="noopener">websummit.com, “Important event update”</a>.</p>',
       ((G && G.websummit_hold) ? '<p class="gd-open"><b>Note:</b> we have not read websummit.com since ' + tm(G.websummit_hold.since) + ' UTC, under its terms; we watch the press and the authorities instead. Its latest word may be newer than ours.</p>' : '') +
-      '<ul class="gd-rows">' + wsIds.filter(function (e) { return wsFacts.indexOf(e) < 0 }).map(row).join('') + '</ul>' +
+      '<ul class="gd-short">' + wsIds.filter(function (e) { return wsFacts.indexOf(e) < 0 }).map(function (e) { return one(WSN[e.id] || 'Web Summit', e) }).join('') + '</ul>' +
       '<p>Hypotheses are our analysis, dashed and labelled; never the organisers\' word.</p>')
 
     // (6) Madeira
@@ -266,8 +270,8 @@
       (mDec[0] ? '<p class="gd-big">' + stateChip(stateOf(mDec[0])) + ' <b>' + esc(mDec[0].decision) + '</b> ' + lbl(mDec[0].label) + ' ' + prov(host(mDec[0].address), mDec[0].address, mDec[0].read, mDec[0].published_utc, kind(mDec[0].label)) + '</p>' : '') +
       '<h4>IPMA\'s warnings for Madeira</h4><ul class="gd-ws">' + (mw.length ? mw.map(function (w) { return warnLine(w).replace('<b>', '<b>' + esc(AREA[w.area] || w.area) + ': ') }).join('') : '<li>No orange or red IPMA warning for Madeira in force or ahead, in the feed as we last read it.</li>') + '</ul>' +
       '<p class="meta">' + prov('IPMA open data', W && W.red_and_orange_elsewhere && W.red_and_orange_elsewhere.source, W && W.red_and_orange_elsewhere && W.red_and_orange_elsewhere.read_utc) + ' (orange and red only)</p>' +
-      '<h4>Decisions stated, newest first</h4><ul class="gd-rows">' + mDec.slice(1, 8).map(row).join('') + '</ul>' +
-      (mCount[0] ? '<h4>Occurrences, the latest count</h4><ul class="gd-rows">' + row(mCount[0]) + '</ul>' : '') +
+      '<h4>Decisions stated, newest first</h4><ul class="gd-short">' + mDec.slice(1, 8).map(function (d) { return one(mName(d), d) }).join('') + '</ul>' +
+      (mCount[0] ? '<ul class="gd-short">' + one('Occurrences|The latest count of occurrences', mCount[0]) + '</ul>' : '') +
       '<p class="gd-ns-line">The government\'s alert situation covers mainland Portugal (its own words); Madeira\'s measures are the regional authorities\'. Anything not listed here (roads, buses, the Porto Santo ferry, shops, Funchal\'s centre since this morning): <span class="gd-ns">not stated</span> in what we have read.</p>' +
       '<p class="meta">Madeira\'s civil protection: <a href="https://www.procivmadeira.pt/" rel="noopener">procivmadeira.pt</a>.</p>',
       entityBlock(E.madeira, 'Everything we hold on Madeira'))
