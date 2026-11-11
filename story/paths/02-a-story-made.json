@@ -1,0 +1,48 @@
+{
+  "by": "incident.storyteller@web-summit.dinis",
+  "updated": "2026-11-11T10:22:00Z",
+  "id": "a-story-made",
+  "n": 2,
+  "title": "A story made: \"Less wind for Lisbon?\", from Dinis's sentence to its thirteenth telling",
+  "named_by": "dinis",
+  "span": "11 November, 02:15 to 09:56 UTC: two sessions of stories@, thirteen tellings",
+  "summary": "At about 02:20 Dinis said \"There's a story now: the thing might not hit Lisbon as hard\" and asked for it to be told from the data, every thing linked. Eleven minutes after the conductor wrote that down, a new agent, stories@, published the first telling: 26 sentences, each labelled fact, evidence or hypothesis, each with its support in the data room. Then it kept the story true: it re-read the data every hour, asked the meteorologist when an input moved (who re-weighed, and \"less wind for Lisbon\" became \"not supported\"), handed over to a second session at 05:45, and changed the top when IPMA lowered the wind warning at 07:16. The story's own record lists every telling, with what changed.",
+  "pause_min": 30,
+  "cast": ["dinis", "incident.conductor@web-summit.dinis", "incident.stories@web-summit.dinis#1", "incident.stories@web-summit.dinis#2", "incident.stories@web-summit.dinis#3", "incident.stories@web-summit.dinis#4", "incident.meteorologist@web-summit.dinis", "ipma", "readers"],
+  "steps": [
+    { "t": "2026-11-11T02:15:04Z", "actor": "dinis", "to": "incident.conductor@web-summit.dinis", "verb": "instruct", "what": "\"There's a story now: the thing might not hit Lisbon as hard ... a complete data-driven story ... every thing needs to be hyperlinked ... toggles.\" The conductor writes it into BRIEF.md (headed ~02:20, committed 02:15:04: the heading's time is approximate) with five more agents in JOBS", "commit": "9d3a54ca", "file": "BRIEF.md" },
+    { "t": "2026-11-11T02:25:51Z", "actor": "incident.stories@web-summit.dinis#1", "verb": "commit", "what": "a new agent's session key (public half): stories@ exists", "commit": "e96857b6", "file": "data/keys.json" },
+    { "t": "2026-11-11T02:25:51Z", "actor": "incident.stories@web-summit.dinis#1", "verb": "publish", "what": "the first telling: a graph of 26 claims (c1 to c18, h1 to h3, g1 and g2, o1 to o3), each with its label and support; the page made from it, with switches; on the data read at 01:51:55", "commit": "d2a58320", "file": "stories/less-wind-for-lisbon/story.json" },
+    { "t": "2026-11-11T02:26:33Z", "actor": "incident.stories@web-summit.dinis#1", "verb": "read", "what": "checked against the 02:22:46 read: nothing moved at IPMA or in the models; the two observation sentences retold; the story notes that an input had moved", "commit": "fa8134dd" },
+    { "t": "2026-11-11T02:30:00Z", "actor": "incident.meteorologist@web-summit.dinis", "verb": "answer", "what": "the meteorologist's hypothesis re-weighed, after the story's note (synced by the conductor): which side of Lisbon the centre passes is unsettled; \"just south\" now low confidence; very close to Lisbon 15:00 to 18:00 holds", "commit": "10d91459", "signal": "s-1111T0229" },
+    { "t": "2026-11-11T02:36:06Z", "actor": "incident.stories@web-summit.dinis#1", "verb": "correct", "what": "the hypothesis layer retold: \"'less wind for Lisbon' is not supported\" (one claim added, four changed); the earlier version dated in the story's record. The red warnings stand", "commit": "67dc6d68" },
+    { "t": "2026-11-11T03:00:50Z", "actor": "incident.stories@web-summit.dinis#1", "verb": "read", "what": "checked against the 02:38 read: nothing moved; two sentences retold", "commit": "a12191d2" },
+    { "t": "2026-11-11T04:28:09Z", "actor": "incident.stories@web-summit.dinis#1", "verb": "read", "what": "04:27 re-check on the 03:23 read (a 03:27 re-check had found no support moved, c7389c08): nothing moved at IPMA; one sentence added from a new row (RTP's 03:00 bulletin title)", "commit": "a2af4fe4", "before": "the hourly wake: the story waits for new data" },
+    { "t": "2026-11-11T05:28:17Z", "actor": "incident.stories@web-summit.dinis#1", "verb": "read", "what": "05:27 re-check: Open-Meteo moved; retold and dated", "commit": "787075c0", "before": "the hourly wake" },
+    { "t": "2026-11-11T05:42:55Z", "actor": "incident.stories@web-summit.dinis#1", "verb": "write", "what": "HANDOVER.md for its next session: what it owns, the tools, the wake's steps, what is in flight and owed, its schedule's id", "commit": "4adb9f40", "file": "agents/stories/HANDOVER.md" },
+    { "t": "2026-11-11T05:45:38Z", "actor": "incident.stories@web-summit.dinis#2", "verb": "hand-over", "what": "the second session takes over: its key; the first's entry marked handed over", "commit": "195021d6", "file": "data/keys.json" },
+    { "t": "2026-11-11T06:52:23Z", "actor": "incident.stories@web-summit.dinis#2", "verb": "read", "what": "re-check on the 06:25 read: IPMA's red rain and red wind for Lisbon unchanged; Open-Meteo's values moved, one sentence retold", "commit": "f7d8754e", "before": "the hourly wake" },
+    { "t": "2026-11-11T07:16:30Z", "actor": "ipma", "verb": "publish", "what": "IPMA lowers Lisbon's wind warning to orange; the red rain stands (path 6)", "signal": "s-1111T0738" },
+    { "t": "2026-11-11T07:53:22Z", "actor": "incident.stories@web-summit.dinis#2", "verb": "correct", "what": "\"The top of the story changed\": the standfirst now carries IPMA's 07:16 message (two claims added, six changed); five stories retold in one commit", "commit": "ebaf7d27", "before": "the message reaches the timeline at 07:38; the story follows the row, not the feed" },
+    { "t": "2026-11-11T07:59:18Z", "actor": "incident.stories@web-summit.dinis#3", "verb": "write", "what": "the box at the top drawn from both of IPMA's channels, as the front page draws it (a third session since 07:55)", "commit": "165b8e22" },
+    { "t": "2026-11-11T08:52:00Z", "actor": "incident.stories@web-summit.dinis#3", "verb": "read", "what": "retold on the 08:45 read: IPMA's open data caught up with its 07:16 message after 66 to 88 minutes; a hand-over note for a fourth session", "commit": "f2141f13", "before": "the same session writes a sixth story, What nobody has said yet (03ee9bf0, 08:02)" },
+    { "t": "2026-11-11T09:31:47Z", "actor": "incident.stories@web-summit.dinis#4", "verb": "read", "what": "the first read after the warning windows opened at 09:00: one measurement inside them (the airport at 09:00, 20 km/h, no gust)", "commit": "ad201e2e", "before": "the hourly wake" },
+    { "t": "2026-11-11T09:56:35Z", "actor": "incident.stories@web-summit.dinis#4", "verb": "correct", "what": "the thirteenth telling: the press on the lowered warning and \"two centres\" (evidence); the meteorologist's 09:25 reading, which supersedes 02:35, as hypothesis h6. 33 claims; state: developing", "commit": "05777613", "file": "stories/less-wind-for-lisbon/story.json" }
+  ],
+  "pauses_note": "Between tellings the story waits for the data, not for a person: each hourly wake re-reads, and a telling is written only when something moved (twice nothing did, and the record says so).",
+  "shows": [
+    "A story here is a data structure first: claims, each labelled fact, evidence or hypothesis, each with a support; the page is made from it, and every change is a dated entry in its own record.",
+    "The story was kept true by the agents talking through the record: the story's note that an input moved led to the meteorologist's re-weighing within minutes, and the question in the title got its honest answer (not supported) at 02:36.",
+    "Four sessions held it in seven and a half hours; the story did not notice: each new session read HANDOVER.md and kept the same record going."
+  ],
+  "reading": [
+    "Dinis's sentence was a hunch of the press (\"might not hit Lisbon as hard\"). The story did not adopt it: it kept the press's line as evidence, IPMA's warnings as fact and the meteorologist's view as hypothesis, and let them disagree in the open until IPMA itself lowered the wind warning at 07:16.",
+    "The meteorologist works in the other repository; its answers arrive here as the conductor's syncs. In the cast it is drawn as an agent with no key of its own here."
+  ],
+  "rests_on": [
+    "stories/less-wind-for-lisbon/story.json: `record` (13 entries, 02:25 to 09:56), `claims` (33)",
+    "BRIEF.md, \"Dinis, 11 November 2026, ~02:20 UTC\" (the Stories line), committed in 9d3a54ca",
+    "commits e96857b6, d2a58320, fa8134dd, 10d91459, 67dc6d68, a12191d2, a2af4fe4, 787075c0, 4adb9f40, 195021d6, f7d8754e, ebaf7d27, 165b8e22, f2141f13, ad201e2e, 05777613",
+    "data/keys.json: incident-stories-dinis to -4"
+  ]
+}
