@@ -43,6 +43,7 @@ Not looked at: the 09:25 check's push, if it changed the page after 09:30; the n
 - **Against the investor pack** (web-summit.sgit.ai/investors/, read 09:26): the top is the same grammar already (brand, menu, version, repository; the subsite's pages on a second bar where the pack has a side list). Not changed.
 - **A link in a document's table** now breaks between words: on a phone the first column of "What is here" on `research/media/` read "Visualis / ed".
 - **Print**: nothing prints a shadow (incident.journalist@'s ask, card `a-journalist-6`: a shadow is two full-page masks a page in a PDF). `data-room/`, `stories/` and a document page fit the printed page; `/` does not (point 8 above).
+- **"In force" is ink, not red** (the data room's front page, mine): under the red rain, the site's red "IN FORCE" chip on the orange wind card read as a second level. Only the level chip wears a warning colour now (rule 3).
 - **The menu asks on the board are all in the menu already**: Accounts and For Dinis under Team (`a-accountant-1`, `a-board-1`), Jobs at the drawn page (`a-observability-2`), Perplexity under Research (`a-perplexity-1`), Stories as a subsite (`a-stories-7`). Each card closes when its asker drops the ask from its status file.
 
 ## Next
