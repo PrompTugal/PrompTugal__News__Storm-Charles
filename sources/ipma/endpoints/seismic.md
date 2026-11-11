@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Seismic events, last 30 days
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 15:51 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 16:51 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,8 +19,8 @@ IPMA's name for it: *Informação sismicidade, Arq. Açores, Continente e Arq. M
 | Shape | {idArea, country, owner, updateDate, lastSismicActivityDate, data: [events]} |
 | `{idArea}` | 3 the Azores; 7 the mainland and Madeira: 3, 7 |
 | IPMA says it updates | Atualização é horária. |
-| IPMA's file dated (its Last-Modified header) | 2026-11-11 15:36 UTC |
-| We last read it | 2026-11-11 15:51 UTC, 2 files, 146364 bytes |
+| IPMA's file dated (its Last-Modified header) | 2026-11-11 16:36 UTC |
+| We last read it | 2026-11-11 16:51 UTC, 2 files, 146364 bytes |
 | IPMA's note | "Integra 30 dias de informação" |
 
 ## Fields
@@ -51,7 +51,7 @@ IPMA's name for it: *Informação sismicidade, Arq. Açores, Continente e Arq. M
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [observation/seismic/3.json](https://api.ipma.pt/open-data/observation/seismic/3.json) | 200 | 36651 | `0794f4b205bfb3e1…` | 2026-11-11 15:36 | 2026-11-11 15:51 |
-| [observation/seismic/7.json](https://api.ipma.pt/open-data/observation/seismic/7.json) | 200 | 109713 | `1cf31ce7d71de29b…` | 2026-11-11 15:36 | 2026-11-11 15:51 |
+| [observation/seismic/3.json](https://api.ipma.pt/open-data/observation/seismic/3.json) | 200 | 36651 | `134fcfe1e1e2120f…` | 2026-11-11 16:36 | 2026-11-11 16:51 |
+| [observation/seismic/7.json](https://api.ipma.pt/open-data/observation/seismic/7.json) | 200 | 109713 | `d81b7bca8c092f7e…` | 2026-11-11 16:36 | 2026-11-11 16:51 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/seismic.json](../changes/seismic.json). Our small files made from it: [data/seismic.json](../data.md#data/seismic.json).
