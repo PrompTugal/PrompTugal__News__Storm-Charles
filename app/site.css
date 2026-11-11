@@ -441,3 +441,10 @@ footer.agent .cap { display: block; font-size: 11.5px; line-height: 1.45; margin
   .hero .wx-tile .wx-also { font-size: 12.5px; }
 }
 @media (min-width: 1440px) { .wrap { max-width: 1400px; } }
+
+/* ---- round 20 (incident.designer@): the masthead can never widen the page. design/round-20.md ---- */
+header.top { max-width: 100vw; overflow: hidden; }
+header.top .wrap { min-width: 0; flex-wrap: wrap; }
+header.top .wrap > * { min-width: 0; }
+nav.top { display: flex; flex: 1 1 100%; width: 100%; max-width: 100%; min-width: 0; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+.navg { flex: none; }
