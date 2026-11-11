@@ -1,9 +1,9 @@
 diff --git a/admin/build/validate.mjs b/admin/build/validate.mjs
-index dbea046..e7c10e9 100644
+index 864babe..0603a8d 100644
 --- a/admin/build/validate.mjs
 +++ b/admin/build/validate.mjs
-@@ -45,6 +45,12 @@ for (const rel of tracked) {
-     if (/^app\/weather\/.*\.m?js$/.test(rel) && /(fetch|XMLHttpRequest|EventSource|WebSocket|import)\s*\(?\s*['"`](https?:)?\/\//.test(s)) fail(`${rel}: the Weather face must read only this site's own files (an outside address is requested)`)
+@@ -51,6 +51,12 @@ for (const rel of tracked) {
+       else if (rel.endsWith('.json')) { const u = s.slice(0, 4000).match(/"updated"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:\.\d+)?Z)"/); if (u && ahead(Date.parse(u[1].length === 17 ? u[1].replace('Z', ':00Z') : u[1]))) future.push(rel) } }
      if (rel.endsWith('.json')) { try { JSON.parse(s) } catch (e) { fail(`${rel}: invalid JSON (${e.message})`) } }
  }
 +// the signed release record (ci/signing.md, tools/ci-release-record.mjs): a record whose signature does not verify against its agent's
@@ -33,15 +33,15 @@ index dfc0ab3..834c0c9 100755
      node admin/build/validate.mjs
      node tools/policy-check.mjs   # each commit's Agent: may change only its own paths (agents/policy.json); a local check, not a boundary
 diff --git a/agents/policy.json b/agents/policy.json
-index a589cdd..35cc803 100644
+index e9b365a..de54f4d 100644
 --- a/agents/policy.json
 +++ b/agents/policy.json
-@@ -12,7 +12,9 @@
-   },
+@@ -13,7 +13,9 @@
    "everyone": {
      "owns": [
--      "agents/<role>/**"
-+      "agents/<role>/**",
+       "agents/<role>/**",
+-      "accounts/ledger/<role>.jsonl"
++      "accounts/ledger/<role>.jsonl",
 +      "data/releases/<role>.json",
 +      "data/releases/<role>.json.sig"
      ],

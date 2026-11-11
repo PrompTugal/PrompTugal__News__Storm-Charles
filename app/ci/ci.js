@@ -52,7 +52,7 @@ ${r.reason ? `<dt>Reason</dt><dd>${esc(r.reason)}</dd>` : ''}</dl><p class="prov
             const last = runs.at(-1), lastOk = runs.filter(r => r.result === 'success').at(-1)
             const today = new Date().toISOString().slice(0, 10), days = [...new Set(runs.map(r => r.queued.slice(0, 10)))], day = days.includes(today) ? today : days.at(-1)
             const strip = d => { const list = runs.filter(r => r.queued.startsWith(d)), hours = [...new Set(list.map(r => r.queued.slice(11, 13)))]; return `<div class="ci-day"><h3>${dm(d + 'T00:00Z')} <span class="meta">${list.length} runs: ${Object.entries(list.reduce((m, r) => (m[res(r.result)[1]] = (m[res(r.result)[1]] || 0) + 1, m), {})).map(([k, n]) => n + ' ' + k).join(', ')}</span></h3>${hours.map(h => `<div class="ci-hour"><span class="ci-hh">${h}:00</span><span class="ci-cells">${list.filter(r => r.queued.slice(11, 13) === h).map(r => `<button type="button" class="ci-cell ${res(r.result)[0]}" data-run="${r.run}" aria-label="Run ${r.run}, ${esc(res(r.result)[1])}, ${hm(r.queued)} UTC, ${esc(short(r.agent))}" data-tip="<b>${esc(r.version)}</b> ${esc(res(r.result)[1])}<br>${hm(r.queued)} UTC · ${esc(short(r.agent))}${r.push_to_served_s != null ? `<br>push to served ${r.push_to_served_s} s` : ''}">${r.result === 'failure' ? '×' : ''}</button>`).join('')}</span></div>`).join('')}</div>` }
-            const gateMax = P.gate.last_20_max_s, gateCls = gateMax >= 5 ? 'warn' : ''
+            const gateMax = P.gate.last_20_max_s, gateB = P.gate.budget_s || 5, gateCls = gateMax >= gateB ? 'warn' : ''
             // push-to-served over time: a dot per served run
             const pts = runs.filter(r => r.push_to_served_s != null), W = 900, H = 220, L = 44, R = 12, T = 12, B = 28
             const t0 = pts.length ? +new Date(pts[0].queued) : 0, t1 = pts.length ? +new Date(pts.at(-1).queued) : 1, cap = 90, x = t => L + (W - L - R) * ((+new Date(t) - t0) / Math.max(1, t1 - t0)), y = v => T + (H - T - B) * (1 - Math.min(v, cap) / cap)
@@ -67,7 +67,7 @@ ${pts.map(r => `<circle class="pt${r.push_to_served_s > cap ? ' over' : ''}" tab
 <div class="wx-tiles">
 ${tile('The last run', last ? `${esc(last.version)} ${chip(last.result)}` : 'none', last ? `${esc(short(last.agent))}, queued ${hm(last.queued)} UTC (${ago(last.queued)})` : '')}
 ${tile('Push to served', `${P.push_to_served_s.median} s <small>median</small>`, `90% within ${P.push_to_served_s.p90} s; longest ${dur(P.push_to_served_s.max)}. ${P.push_to_served_s.runs} runs that measured themselves on the live site.`)}
-${tile('The gate', `${P.gate.last_20_median_s} s <small>median, last 20</small>`, `longest ${gateMax} s of a 5 s budget${gateMax >= 5 ? ': at the budget' : ''}. Whole seconds as GitHub timed the step.`, gateCls)}
+${tile('The gate', `${P.gate.last_20_median_s} s <small>median, last 20</small>`, `longest ${gateMax} s of a ${gateB} s budget${gateMax >= gateB ? ': at the budget' : ''}. Whole seconds as GitHub timed the step.`, gateCls)}
 ${tile('Waiting for a runner', `${P.queue.last_20_median_s} s <small>median, last 20</small>`, `longest ${dur(P.queue.last_20_max_s)}. Only the newest waiting push is kept: an older one is replaced.`)}
 ${tile('Runs so far', `${runs.length}`, Object.entries(ix.totals.by_result).map(([k, n]) => `${n} ${esc(res(k)[1])}`).join(', ') + `. ${ix.totals.tags} version tags.`)}
 </div>

@@ -3,7 +3,7 @@
 //   node tools/ci-read.mjs            read GitHub's Actions API and this clone's history, write data/ci/
 //   node tools/ci-read.mjs --no-api   history and tree only (runs are kept as they were)
 // Run by the CI agent each wake, by hand, in a FULL clone; never by the build (the build reads no git history and CI
-// clones one commit). It writes only small JSON, each file under 256 KB, split by UTC day (by hour if a day outgrows it):
+// clones one commit). It writes only small JSON, each file under 256 KB, split by UTC day (by hour, then by ten minutes, when one outgrows it):
 //   data/ci/runs/<date>.json      every run of the deploy workflow: number, version, commit, agent, queued, started,
 //                                 each step's seconds, push-to-served (from the run's own notice), result, the reason it failed
 //   data/ci/commits/<date>.json   every commit on dev: sha, time, agent (from the Agent: trailer), subject, issue, For:,
@@ -166,13 +166,13 @@ const about = {
     runs: 'Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub\'s Actions API gave them. version: v<series>.<run number>, CI\'s own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit\'s time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. push_to_served_s: the run\'s own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.',
     commits: 'Commits on dev made on this day (UTC, committer time), oldest first, from a full clone. agent: the Agent: trailer (agent_from says where it was read); what: the subject without the agent; to: the For: trailers (a hand-off); folders: files changed per top-level folder; files: the paths (the first 40); outside: paths that are not the agent\'s own under agents/policy.json as it is today, with their owners; sig: the signature the commit object carries (kind, the key\'s fingerprint) and GitHub\'s verdict; run: the workflow run of this very commit; served: the run and version that first served it (its own, or a later one when its own was replaced), and lag_s from commit to served. No session ids. A commit: ' + WEB + '/commit/<sha>.'
 }
-const split = (items, timeOf) => {
-    const days = new Map(); for (const it of items) { const d = timeOf(it).slice(0, 10); (days.get(d) || days.set(d, []).get(d)).push(it) }
+// by day; a day over the size by hour; an hour over it by ten minutes (a busy hour here is fifty commits of forty paths each)
+const split = (items, timeOf, cut = 10) => {
+    const groups = new Map(); for (const it of items) { const d = timeOf(it).slice(0, cut); (groups.get(d) || groups.set(d, []).get(d)).push(it) }
     const out = []
-    for (const [d, list] of days) {
-        if (JSON.stringify(list, null, 1).length < MAXF) { out.push([d, list]); continue }
-        const hours = new Map(); for (const it of list) { const h = timeOf(it).slice(0, 13); (hours.get(h) || hours.set(h, []).get(h)).push(it) }
-        out.push(...hours)
+    for (const [d, list] of groups) {
+        if (cut >= 15 || JSON.stringify(list, null, 1).length < MAXF) out.push([d, list])
+        else out.push(...split(list, timeOf, cut === 10 ? 13 : 15))
     }
     return out
 }
@@ -180,7 +180,7 @@ const listing = { runs: [], commits: [] }
 for (const [kind, items, timeOf] of [['runs', runs, r => r.queued], ['commits', commits, c => c.at]]) {
     const dir = path.join(OUT, kind), keep = new Set()
     for (const [key, list] of split(items, timeOf)) {
-        const name = key.replace(':', '') + '.json'; keep.add(name)
+        const name = key.replace(':', '') + (key.length === 15 ? '0' : '') + '.json'; keep.add(name)   // 2026-11-11, 2026-11-11T02, 2026-11-11T0210
         // a file whose items did not change keeps its stamp, so a wake that finds nothing new changes nothing
         const old = readJ(path.join(dir, name)), same = old && JSON.stringify(old[kind]) === JSON.stringify(list)
         const bytes = same ? fs.statSync(path.join(dir, name)).size : writeJ(`${kind}/${name}`, { about: about[kind], by: BY, updated: now, source: kind === 'runs' ? `${API}/actions/runs` : `${WEB}/commits/dev`, period: key, count: list.length, [kind]: list })
@@ -239,7 +239,7 @@ const index = {
         steps_in_order: ['push', 'queued', 'checkout', 'gate', 'upload', 'deploy', 'tag', 'measure'],
         push_to_served_s: { runs: pts.length, median: q(pts, .5), p90: q(pts, .9), max: pts.at(-1) ?? null, min: pts[0] ?? null, source: 'each successful run\'s own notice' },
         steps, slowest_step: steps.slice().sort((a, b) => b.median_s - a.median_s || b.max_s - a.max_s)[0] || null,
-        gate: { budget_s: 5, last_20_max_s: gate20.length ? Math.max(...gate20) : null, last_20_median_s: q(gate20.slice().sort((a, b) => a - b), .5), note: 'the step\'s seconds as GitHub timed them (whole seconds, node start included); the gate prints its own milliseconds in the run\'s log' },
+        gate: { budget_s: Number((fs.readFileSync(path.join(ROOT, 'admin/build/validate.mjs'), 'utf8').match(/over its (\d+) s budget/) || [0, 5])[1]), last_20_max_s: gate20.length ? Math.max(...gate20) : null, last_20_median_s: q(gate20.slice().sort((a, b) => a - b), .5), note: 'the step\'s seconds as GitHub timed them (whole seconds, node start included); the gate prints its own milliseconds in the run\'s log' },
         queue: { last_20_max_s: queue20.length ? Math.max(...queue20) : null, last_20_median_s: q(queue20.slice().sort((a, b) => a - b), .5) },
         failures: runs.filter(r => r.result === 'failure').map(r => ({ run: r.run, at: r.queued, agent: short(r.agent), failed_step: r.failed_step || null, reason: r.reason || 'not recorded', url: r.url })),
         last: runs.slice(-12).reverse().map(r => ({ run: r.run, version: r.version, result: r.result, agent: short(r.agent), queued: r.queued, push_to_served_s: r.push_to_served_s ?? null, what: r.what }))

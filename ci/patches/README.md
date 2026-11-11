@@ -1,12 +1,13 @@
 # Patches for the conductor's files
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 03:18 UTC
 
-The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open one was checked with `git apply --check` at commit `e9e2e68` (rebuilt at 02:55 after `release.sh` changed).
+The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open ones were checked with `git apply --check` at commit `f42d48a` (the signing patch rebuilt at 03:16 after `validate.mjs` and the policy changed).
 
 | Patch | Touches | State | What it does |
 |---|---|---|---|
 | generators-timed.patch | `admin/build/build.mjs` | **applied** by the conductor (`444257a`, 02:4x UTC); the file is removed | the build prints each generator's milliseconds on one line, so every CI log shows where the gate's budget goes |
+| [deploy-retry.patch](deploy-retry.patch) | `.github/workflows/deploy.yml` | ready; **not testable outside CI** | when `deploy-pages` fails, wait 8 s and try once more; a second failure is a red run, as today |
 | [signed-release-record.patch](signed-release-record.patch) | `admin/tools/release.sh`, `admin/build/validate.mjs`, `agents/policy.json` | **waits for Dinis's yes** | each push carries a record signed with the pushing agent's own key; the gate verifies it ([the proposal](../signing.html)) |
 
 ## Generators in-process: measured, and not recommended
@@ -33,3 +34,12 @@ The conductor asked for a patch that runs the build's generators inside the buil
 3. `agents/policy.json`: every agent may write `data/releases/<role>.json` and its `.sig`.
 
 Tested here with the patch applied and not committed: a signed tree printed `release-record: OK, this tree was signed by incident.ci@web-summit.dinis (sha256:815a07d3a9d80692)`; one byte changed in the record turned the gate red; a file changed after signing gave the unsigned warning. A signature made by `pki-agent.mjs sign` verifies with the same check.
+
+## The deploy retry: why, and what is not known
+
+Five of the first 414 runs failed at the deploy step with the same words from GitHub: "No artifacts named github-pages were found for this workflow run", each a second or two after the upload step succeeded in the same job (runs 54 and 55 at 23:54, 205 at 02:21, 343 and 344 at 02:58: twice in pairs). Each time the next push's run served the tree, 20 to 60 s later, so nothing was lost; but if the failed run is the last push for a while, the site stays one push behind until someone pushes again.
+
+- **Fact**: the failures, their wording and their times (`data/ci/index.json`, `pipeline.failures`).
+- **Hypothesis**: the artifact exists but GitHub's artifact listing has not caught up when `deploy-pages` asks. If so, a second try a few seconds later succeeds. This has not been tested: it can only be seen on the runner, the next time it happens.
+- **The patch**: the first `deploy-pages` may fail without stopping the job; then an 8 s wait and a second `deploy-pages`. If the second fails, the job stops there, red, with no tag and no measure, exactly as now. The page address is taken from whichever try succeeded.
+- After it is applied, /ci/ will show whether a retried run served: the first try's failure stays visible in the run's steps.
