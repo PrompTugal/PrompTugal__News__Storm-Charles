@@ -33,3 +33,5 @@ mount: <section class="card hc-card"><h2>Residents under each level, hour by hou
 ```
 
 **20:10:** datascience's 19:32 read landed (170076e, the stale red removed); the lines above are the version without the 15:52 note, since the chart now carries the file's own read time. With no orange or red in a read, the headline gives the yellow figure ("at most about 0.3 million residents … under yellow").
+
+**21:13: live.** The conductor added the mount (060fa06). Measured on a local build of that commit (page views count the live host): the chart sits under the title at 494 px on a phone (450 at 1280), 599 px tall, its 10 hours scroll 760 in 324 at 390, no page overflow, 0 contrast failures in all five themes. One fix of mine: the 20:52 read's worst hour (19:00) is before the read, and the headline said "live in"; it now says "About 3.8 million residents were in areas under IPMA orange at 19:00 UTC, the worst hour in the file (read 20:52 UTC)", and "live in … this read" when the hour is still to come.

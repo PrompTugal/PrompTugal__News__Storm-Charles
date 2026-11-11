@@ -37,8 +37,9 @@
     })
     s += '</svg>'
     var pk = d.peak || {}, pkh = pk.hour_utc ? hm(pk.hour_utc) : ''
-    var head = pk.red ? 'About <b>' + (pk.red / 1e6).toFixed(1) + ' million residents</b> live in areas under IPMA red at ' + esc(pkh) + ' UTC, the worst hour in this read.'
-      : pk.orange ? 'About <b>' + (pk.orange / 1e6).toFixed(1) + ' million residents</b> live in areas under IPMA orange at ' + esc(pkh) + ' UTC, the worst hour in this read.'
+    var was = pk.hour_utc && d.read_utc && pk.hour_utc.slice(0, 13) < String(d.read_utc).slice(0, 13), verb = was ? 'were in areas under' : 'live in areas under'
+    var head = pk.red ? 'About <b>' + (pk.red / 1e6).toFixed(1) + ' million residents</b> ' + verb + ' IPMA red at ' + esc(pkh) + ' UTC, the worst hour in ' + (was ? 'the file (read ' + esc(hm(d.read_utc)) + ' UTC)' : 'this read') + '.'
+      : pk.orange ? 'About <b>' + (pk.orange / 1e6).toFixed(1) + ' million residents</b> ' + verb + ' IPMA orange at ' + esc(pkh) + ' UTC, the worst hour in ' + (was ? 'the file (read ' + esc(hm(d.read_utc)) + ' UTC)' : 'this read') + '.'
       : pk.yellow ? 'No area is under IPMA orange or red in this read; at most about <b>' + (pk.yellow / 1e6).toFixed(1) + ' million residents</b> live in areas under yellow (' + esc(pkh) + ' UTC).' : 'No area is under an IPMA warning in the hours of this read.'
     var legend = '<ul class="wx-legend hc-legend">' + LV.map(function (lv) { return '<li><svg width="14" height="14" aria-hidden="true"><rect class="lv-' + lv[0] + '" width="14" height="14"/></svg> ' + lv[1] + '</li>' }).join('') + '</ul>'
     var src = d.source ? '<a href="' + esc(d.source) + '">IPMA warnings</a>' : 'IPMA warnings'
