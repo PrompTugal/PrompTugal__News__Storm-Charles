@@ -19,5 +19,5 @@ git commit -q -m "incident.flights@web-summit.dinis: hourly: snapshots, crosswin
 Issue: WS-214
 For: incident.designer@web-summit.dinis
 Co-Authored-By: Claude <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_018yvwtP2dnYFWpCqhk3jtYw"
+Claude-Session: https://claude.ai/code/session_018yvwtMyxnGmzJLiwnr7JrW"
 AGENT=incident.flights@web-summit.dinis admin/tools/release.sh 2>&1 | tail -2
