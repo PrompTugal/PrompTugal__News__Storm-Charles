@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:31Z",
-  "updated": "2026-11-11T09:56Z",
-  "based_on_read_utc": "2026-11-11T08:45:09Z",
+  "updated": "2026-11-11T10:52Z",
+  "based_on_read_utc": "2026-11-11T10:22:42Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for Madeira's areas, resolved from the data room when the page is built and read again in the reader's browser.",
     "title": "IPMA's red warnings for Madeira",
@@ -223,11 +223,11 @@
     },
     {
       "id": "m7",
-      "text": "Hour by hour at Areeiro: 29.7 mm (labelled 20:00), 47.6 (21:00), 44.7 (22:00), 25.4 (23:00), 33.5 (00:00), 49.6 (01:00), 30.0 (02:00), 48.9 (03:00), 33.7 (04:00), 29.3 (05:00), 58.0 (06:00) 44.3 (07:00) and 8.9 mm (08:00): 483.6 mm in thirteen hourly values. The largest hour is the one labelled 06:00, the last of the red window; the rain went on for an hour after it under the orange warning, and in the hour labelled 08:00 it fell to 8.9 mm.",
+      "text": "Hour by hour at Areeiro: 29.7 mm (labelled 20:00), 47.6 (21:00), 44.7 (22:00), 25.4 (23:00), 33.5 (00:00), 49.6 (01:00), 30.0 (02:00), 48.9 (03:00), 33.7 (04:00), 29.3 (05:00), 58.0 (06:00) 44.3 (07:00), 8.9 (08:00) and 0.6 mm (09:00): 484.2 mm in fourteen hourly values. The largest hour is the one labelled 06:00, the last of the red window; the rain went on for an hour after it under the orange warning, then fell to 8.9 mm in the hour labelled 08:00 and 0.6 mm in the one labelled 09:00, when the orange rain warning ended.",
       "label": "fact",
       "said_by": "IPMA, station observations (station 1210973)",
-      "at_utc": "2026-11-11T08:00Z",
-      "read_utc": "2026-11-11T08:45:09Z",
+      "at_utc": "2026-11-11T09:00Z",
+      "read_utc": "2026-11-11T10:22:42Z",
       "supports": [
         {
           "kind": "data",
@@ -323,8 +323,14 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
-          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T09:00Z]",
-          "note": "Not there at this read: when IPMA's next hour arrives the sentence is retold.",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
+          "expect": 0.6
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T12:00Z]",
+          "note": "A tripwire: when the hour labelled 12:00 arrives (the orange wind warning ends then), the total is given again.",
           "absent": true
         }
       ]
@@ -900,6 +906,13 @@
       "what": "Retold on the meteorologist's analysis of 09:50 (row s-1111T0941). Before, m17 said: \"Our meteorologist's hypothesis from those reports: the storm's centre passed close to Madeira airport between about 07:30 and 08:00, later than the position in IPMA's communiqué no. 2 (a forecast) would suggest. Its reason: a swing from south-west to north-east with the wind collapsing usually means a low's centre is passing close to the observer. No track of the centre from IPMA is in the data room, so this is our analysis and not a position IPMA has given.\" Now: the swing is read as most likely a separate feature, not the centre that the models bring to Lisbon.",
       "claims_changed": [
         "m17"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T10:52Z",
+      "what": "Retold on the read of 10:22:42 UTC. Before: Areeiro 483.6 mm in thirteen hourly values to 08:00. Now: 484.2 mm in fourteen; the hour labelled 09:00 had 0.6 mm.",
+      "claims_changed": [
+        "m7"
       ]
     }
   ]

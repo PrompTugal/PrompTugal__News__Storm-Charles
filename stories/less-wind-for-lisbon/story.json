@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T09:56Z",
-  "based_on_read_utc": "2026-11-11T09:22:47Z",
+  "updated": "2026-11-11T10:52Z",
+  "based_on_read_utc": "2026-11-11T10:22:42Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -623,99 +623,103 @@
     },
     {
       "id": "c16",
-      "text": "Open-Meteo's forecast for the same point is far lower, and moved again between reads: its strongest mean wind is now 19.4 km/h, at 10:00, and its strongest gust 50 km/h, at 11:00, both from the south. At 14:00 it has 17.6 km/h from the north-east.",
+      "text": "Open-Meteo's forecast for the same point is far lower, and moves a little at most reads: between 09:00 and 21:00 its strongest mean wind is now 18.9 km/h, at 10:00 from the south-south-west, and its strongest gust 50.8 km/h, at 11:00 from the south-south-west. At 14:00 it has 16.7 km/h from the north-east.",
       "label": "evidence",
       "model": true,
       "said_by": "Open-Meteo, best match (a second model, never merged with IPMA)",
-      "read_utc": "2026-11-11T06:25:17Z",
+      "read_utc": "2026-11-11T10:22:42Z",
       "supports": [
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.open_meteo.rows[time_utc=2026-11-11T10:00Z].wind_mean_kmh",
-          "expect": 19.4,
-          "read_field": "second_models.open_meteo.read_utc",
-          "url_field": "second_models.open_meteo.source"
+          "expect": 18.9
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.open_meteo.rows[time_utc=2026-11-11T10:00Z].wind_from_deg",
-          "expect": 190,
-          "read_field": "second_models.open_meteo.read_utc"
+          "expect": 193
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.open_meteo.rows[time_utc=2026-11-11T11:00Z].gust_kmh",
-          "expect": 50,
-          "read_field": "second_models.open_meteo.read_utc"
+          "expect": 50.8
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.open_meteo.rows[time_utc=2026-11-11T11:00Z].wind_from_deg",
-          "expect": 184,
-          "read_field": "second_models.open_meteo.read_utc"
+          "expect": 197
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.open_meteo.rows[time_utc=2026-11-11T14:00Z].wind_mean_kmh",
-          "expect": 17.6,
-          "read_field": "second_models.open_meteo.read_utc"
+          "expect": 16.7
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.open_meteo.rows[time_utc=2026-11-11T14:00Z].wind_from_deg",
-          "expect": 59,
-          "read_field": "second_models.open_meteo.read_utc"
+          "expect": 37
         }
       ]
     },
     {
       "id": "c17",
-      "text": "The airport's forecast, written by IPMA for pilots, has not eased since: the one issued at 05:00 on Wednesday keeps 30 knots gusting 45 (83 km/h) at times, now from 09:00 to 18:00 (the 23:00 issue ended that at 16:00), with a 30% chance of gusts of 58 knots (107 km/h) in thunderstorms between 10:00 and 18:00.",
+      "text": "The airport's forecast, written by IPMA for pilots, held through the night and was then lowered. The one issued at 05:00 on Wednesday kept 30 knots gusting 45 (83 km/h) at times to 18:00. The amended forecast of 10:08 has, at times between 10:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms in the same hours, and the wind turning west between 18:00 and 20:00.",
       "label": "fact",
       "said_by": "IPMA, the TAF for Lisbon airport (a point forecast for pilots, not a public warning)",
-      "at_utc": "2026-11-11T05:00Z",
-      "read_utc": "2026-11-11T05:22:49Z",
+      "at_utc": "2026-11-11T10:08Z",
+      "read_utc": "2026-11-11T10:22:42Z",
       "supports": [
         {
           "kind": "row",
           "id": "s-1110T2323"
         },
         {
+          "kind": "row",
+          "id": "s-1111T1028"
+        },
+        {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "taf.issue_utc",
-          "expect": "2026-11-11T05:00Z"
+          "expect": "2026-11-11T10:08Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=TEMPO&gust_kt=45].gust_kmh",
-          "expect": 83
+          "field": "taf.groups[change=TEMPO&gust_kt=35].gust_kmh",
+          "expect": 65
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=TEMPO&gust_kt=45].to_utc",
-          "expect": "2026-11-11T18:00Z"
+          "field": "taf.groups[change=TEMPO&gust_kt=35].to_utc",
+          "expect": "2026-11-11T16:00Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "taf.groups[prob=30].gust_kmh",
-          "expect": 107
+          "expect": 102
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[prob=30].to_utc",
+          "expect": "2026-11-11T16:00Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "taf.raw",
           "contains": [
-            "TEMPO 1109/1118 16030G45KT"
+            "TEMPO 1110/1116 16020G35KT",
+            "BECMG 1118/1120 26012KT"
           ]
         }
       ]
@@ -897,10 +901,10 @@
     },
     {
       "id": "o1",
-      "text": "The windows opened at 09:00 on Wednesday (orange for wind, red for rain), and one measurement from inside them is in the data room: the airport's 09:00 report, south-south-east 20 km/h with no gust reported, rain and mist, 1001 hPa. That is the same wind as at 08:00 and 08:30. IPMA's station hours we hold end at the one labelled 08:00, before the windows. One report at the opening minute cannot test any of this.",
+      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's three reports at 09:00, 09:30 and 10:00 have a south-south-east wind of 20 to 22 km/h with no gust reported, rain, and pressure falling from 1001 to 999 hPa. IPMA's newest station hour is the one labelled 09:00: six stations in and around Lisbon measured between 3.0 and 6.5 mm of rain in it, and the strongest mean wind among them was 18.7 km/h, at Barreiro. IPMA does not document whether that label is the hour ending or starting at 09:00, so it may lie wholly before the windows. This is too little to test any of the above.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T09:22:47Z",
+      "read_utc": "2026-11-11T10:22:42Z",
       "supports": [
         {
           "kind": "data",
@@ -917,8 +921,20 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T09:00Z].wind_dir",
-          "expect": 160
+          "field": "metars[time_utc=2026-11-11T09:30Z].wind_kmh",
+          "expect": 22
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T10:00Z].wind_kmh",
+          "expect": 20
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T10:00Z].wind_dir",
+          "expect": 150
         },
         {
           "kind": "data",
@@ -929,31 +945,76 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T09:00Z].raw",
-          "expect": "METAR LPPT 110900Z 16011KT 3000 RA BR FEW002 BKN006 FEW016TCU 17/16 Q1001 NOSIG"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T08:30Z].wind_kmh",
-          "expect": 20
+          "field": "metars[time_utc=2026-11-11T10:00Z].pressure_hpa",
+          "expect": 999
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
           "field": "latest_hour_utc",
-          "expect": "2026-11-11T08:00Z",
-          "note": "The newest station hour held. When it moves, this sentence is retold."
+          "expect": "2026-11-11T09:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
+          "expect": 3
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
+          "expect": 6.5
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
+          "expect": 6.4
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=1210762].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
+          "expect": 4.9
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=6215302].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
+          "expect": 4.4
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=7240919].hourly[time_utc=2026-11-11T09:00Z].rain_mm",
+          "expect": 3.6
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T09:00Z].wind_mean_kmh",
+          "expect": 18.7
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "hour_label.convention",
+          "expect": "not documented"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T10:00Z]",
+          "field": "metars[time_utc=2026-11-11T11:00Z]",
           "absent": true,
-          "note": "A tripwire: when the airport's 10:00 report arrives, this sentence is behind the data and is retold."
+          "note": "A tripwire: when the airport's 11:00 report arrives, this sentence is behind the data and is retold."
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1028"
         }
       ],
-      "at_utc": "2026-11-11T09:00Z"
+      "at_utc": "2026-11-11T10:00Z"
     },
     {
       "id": "o2",
@@ -1323,6 +1384,15 @@
         "c21",
         "h6",
         "h7"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T10:52Z",
+      "what": "Retold on the read of 10:22:42 UTC. Before: o1 said: \"The windows opened at 09:00 on Wednesday (orange for wind, red for rain), and one measurement from inside them is in the data room: the airport's 09:00 report, south-south-east 20 km/h with no gust reported, rain and mist, 1001 hPa. That is the same wind as at 08:00 and 08:30. IPMA's station hours we hold end at the one labelled 08:00, before the windows. One report at the opening minute cannot test any of this.\" c17 said: \"The airport's forecast, written by IPMA for pilots, has not eased since: the one issued at 05:00 on Wednesday keeps 30 knots gusting 45 (83 km/h) at times, now from 09:00 to 18:00 (the 23:00 issue ended that at 16:00), with a 30% chance of gusts of 58 knots (107 km/h) in thunderstorms between 10:00 and 18:00.\" c16 said: \"Open-Meteo's forecast for the same point is far lower, and moved again between reads: its strongest mean wind is now 19.4 km/h, at 10:00, and its strongest gust 50 km/h, at 11:00, both from the south. At 14:00 it has 17.6 km/h from the north-east.\" Now: o1 gives the airport's three reports inside the windows and the station hour labelled 09:00; c17 gives the airport forecast amended at 10:08 (lowered: 65 km/h at times to 16:00, was 83 km/h to 18:00; row s-1111T1028); c16 gives Open-Meteo's figures as they now stand.",
+      "claims_changed": [
+        "o1",
+        "c17",
+        "c16"
       ]
     }
   ]
