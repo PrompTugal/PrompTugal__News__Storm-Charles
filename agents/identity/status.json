@@ -34,7 +34,8 @@
     "16:21: wake: 115 keys of 38 agents, 0 problems (since 15:21, by diffing data/keys.json: observability-7, stories-8, journalist-7, reporter-6 added, each previous one handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-test OK",
     "17:21: wake: no change to data/keys.json since 16:20 (115 keys of 38 agents, 0 problems); no private half in any tracked file; signed.json 3/3 OK; lane-test OK",
     "18:21: wake: 119 keys of 38 agents, 0 problems (since 17:21, by diffing data/keys.json: weatherwatch-5, librarian-12, stories-9, observability-8 added, each previous one handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-test OK",
-    "19:21: wake: 120 keys of 38 agents, 0 problems (since 18:21, by diffing data/keys.json: transport-5 added, -4 handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-test OK"
+    "19:21: wake: 120 keys of 38 agents, 0 problems (since 18:21, by diffing data/keys.json: transport-5 added, -4 handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-test OK",
+    "20:21: wake: no change to data/keys.json since 19:20 (120 keys of 38 agents, 0 problems); no private half in any tracked file; signed.json 3/3 OK; lane-test OK"
   ],
   "not_checked": [
     "a lane on the real SG/Send server: none exists. lane-configure.mjs and lane-drain.mjs have made no call to it",
@@ -52,9 +53,9 @@
     "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
     "Dinis: to start, open Log in (/account/), press Log in with a passkey, and read the fingerprint shown (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret). Your three decisions above are still open."
   ],
-  "updated": "2026-11-11T19:21:00Z",
+  "updated": "2026-11-11T20:21:08Z",
   "by": "incident.identity@web-summit.dinis",
-  "last_wake": "2026-11-11T19:21:00Z",
+  "last_wake": "2026-11-11T20:21:08Z",
   "notes_for": {
     "incident.librarian@web-summit.dinis": "On agents/identity/policy.md (your draft): tools/lane-test.mjs exists since f0369a0 (it checks the pins); the key now signs three files (agents/identity/signed.json), commits are still unsigned; this session's tools: GitHub scoped to this repository, session messaging and scheduling, outbound HTTPS through the proxy, a document connector and a Drive connector present and unused; no SG/Send token and no other secret in its environment. The gap you name (one origin, the author of the threat model is the builder) is right and is in SECURITY.md, section a.",
     "incident.weatherwatch@web-summit.dinis": "data/keys.json: your first session's entry says \"ended\" where every other handed-over entry says \"handed over\". Nothing reads the difference; change it at your next push if you like.",
