@@ -1,7 +1,7 @@
 {
  "agent": "incident.meteorology@web-summit.dinis",
- "state": "second session; re-read at 17:47Z: 2 rows changed state (Copernicus's ERA5 page not read: the site stalls or answers 502); next re-read about 20:55Z",
- "last_wake": "2026-11-11T17:55Z",
+ "state": "second session; re-read at 20:59Z: the two ERA5 rows are stated again; nothing else changed; next re-read about 00:05Z",
+ "last_wake": "2026-11-11T21:01Z",
  "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, ~02:20 UTC)",
  "done": [
   "session key made (record sha256:c5d0a303df53cf64, encryption sha256:162a3344a5c28014), public half in data/keys.json",
@@ -23,10 +23,11 @@
   "08:24Z re-read (--stale): 258 stamped, 1 changed state: site-sc-negocios-live visualises site-windy went from stated to not found in this read (the live blog moved on; noted on the edge); 125 pages changed bytes with the statement still standing; 22 not read, as before",
   "11:36Z re-read (--stale): 258 stamped, 0 changed state in the end. EUMETSAT's licence page (three rows) first came back \"not read\": the page answered, but slowly, and the headless reader dropped its status; tools/meteorology-render.mjs now keeps the document's status when the browser gives up waiting, and the three rows read \"stated\" again. 22 not read, as before; the Negócios live blog edge still \"not found in this read\"",
   "14:42Z re-read (--stale): 258 stamped, 0 changed state in the end. prociv.gov.pt (two rows) did not answer on the first pass and answered on a second, a few minutes later: \"not stated\", as before (the address answers intermittently from here). 22 not read, as before; the Negócios live blog edge still \"not found in this read\"",
-  "17:55Z re-read (--stale): 258 stamped, 2 changed state: \"body-ecmwf publishes data-era5\" and the licence row lic-copernicus-era5 went from stated to not read. Their page (cds.climate.copernicus.eu) stalled, then answered 502, on five tries over ten minutes; one direct read in between got it whole with the licence wording still there, so this is the site being unwell, not the statement changing. Reader fixed on the way: a rendered read and a plain read of one address are now two reads (one failure no longer stands for the other), and the ERA5 edge is read in the browser like its licence row. 22 other addresses not read, as before"
+  "17:55Z re-read (--stale): 258 stamped, 2 changed state: \"body-ecmwf publishes data-era5\" and the licence row lic-copernicus-era5 went from stated to not read. Their page (cds.climate.copernicus.eu) stalled, then answered 502, on five tries over ten minutes; one direct read in between got it whole with the licence wording still there, so this is the site being unwell, not the statement changing. Reader fixed on the way: a rendered read and a plain read of one address are now two reads (one failure no longer stands for the other), and the ERA5 edge is read in the browser like its licence row. 22 other addresses not read, as before",
+  "21:01Z re-read (--stale): 258 stamped; \"body-ecmwf publishes data-era5\" and lic-copernicus-era5 went from not read back to stated (Copernicus's page answers again, the licence wording unchanged). Météo-France's page on data.gouv.fr did not answer on the first pass and did on a second: stated, as before. 22 not read, as before; the Negócios live blog edge still \"not found in this read\""
  ],
  "next": [
-  "about 20:55Z: the three-hourly re-read (node tools/meteorology-read.mjs --stale), scheduled into this session; report only what changed (expect the two ERA5 rows to come back to stated)",
+  "about 00:05Z on 12 November: the three-hourly re-read (node tools/meteorology-read.mjs --stale), scheduled into this session; report only what changed",
   "licences still unclear: Copernicus EMS products and Marine (the licence documents), Météo-France per data set, the Met Office's DataHub, FourCastNet's weights",
   "22 addresses not read (refused, blocked, or not requested because of their terms): listed on the map page",
   "if Dinis says yes to a build-on item: a GRIB decoder outside the build (GFS box to small JSON); a person registers with EUMETSAT"
@@ -50,6 +51,6 @@
   "ECMWF open data: also at 0.1° from 20 October 2026; the portal is limited to 500 to 2000 simultaneous connections"
  ],
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T17:55Z",
+ "updated": "2026-11-11T21:01Z",
  "session": "session_018yvwtQ4WgJUHwF2G8Ezss3"
 }
