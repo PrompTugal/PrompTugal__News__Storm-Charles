@@ -11,7 +11,8 @@
   var FILES = {
     incident: room + 'incident.json', signals: api + 'signals.json', warn: api + 'weather/warnings.json', rain: api + 'weather/lisbon-rain.json',
     stations: api + 'weather/stations.json', forecast: api + 'weather/forecast.json', airport: api + 'weather/airport.json',
-    madeira: api + 'weather/madeira.json', changes: api + 'weather/changes.json', analysis: api + 'weather/analysis.json', comm: api + 'weather/communiques.json', decisions: api + 'decisions/graph.json'
+    madeira: api + 'weather/madeira.json', changes: api + 'weather/changes.json', analysis: api + 'weather/analysis.json', comm: api + 'weather/communiques.json', decisions: api + 'decisions/graph.json',
+    areas: base + 'sources/ipma/data/warnings.json', places: base + 'sources/ipma/data/places.json'
   }
   // where a reader lands for each file: the data room's own copy (one place to change when the data room's file viewer is live)
   // the data room's file viewer: one page, view/?path=<path>, and &at=<field>/<index>/<field> opens one value inside a JSON file
@@ -19,7 +20,8 @@
   var ROOM = {
     incident: view('incident.json', 'headline'), signals: room + 'timeline.html', warn: view('data/weather/warnings.json', 'lisbon'), rain: view('data/weather/lisbon-rain.json', 'stations'),
     stations: view('data/weather/stations.json', 'stations'), forecast: view('data/weather/forecast.json', 'hourly'), airport: view('data/weather/airport.json', 'metars'),
-    madeira: view('data/weather/madeira.json', 'stations'), changes: view('data/weather/changes.json', 'thursday'), analysis: room + 'data/weather/analysis.html', comm: view('data/weather/communiques.json', 'items'), decisions: view('data/decisions/graph.json')
+    madeira: view('data/weather/madeira.json', 'stations'), changes: view('data/weather/changes.json', 'thursday'), analysis: room + 'data/weather/analysis.html', comm: view('data/weather/communiques.json', 'items'), decisions: view('data/decisions/graph.json'),
+    areas: base + 'view/?path=sources/ipma/data/warnings.json&at=instances', places: base + 'view/?path=sources/ipma/data/places.json&at=areas'
   }
   var qNow = new URLSearchParams(location.search).get('now')   // ?now=2026-11-11T13:00Z shows the page as at that time (a check, not a forecast)
   var now = function () { var t = qNow ? Date.parse(qNow) : NaN; return isNaN(t) ? Date.now() : t }
@@ -294,6 +296,42 @@
       '<p>' + (D.warn ? prov('warn', 'IPMA warnings', D.warn.read_utc) + ' · ' : '') + prov(o.key || 'rain', 'IPMA stations, rain', (o.read || (D.rain || {}).read_utc)) + '</p></section>'
   }
 
+  // where: IPMA's highest warning level for the rest of today in each of its warning areas (sources/ipma/data/warnings.json), each drawn
+  // as a dot at the label spot incident.ipma@ computes from IPMA's forecast places (a spot for a label, not a border: no map is copied).
+  // IPMA's colours for IPMA's levels, and the level is written beside every name.
+  function whereMap(t) {
+    var W = D.areas, P = D.places; if (!W || !P) return ''
+    var D1 = T(day(t) + 'T00:00:00Z') + 864e5, peak = {}, kinds = {}
+    ;(W.instances || []).forEach(function (w) {
+      if (w.gone_read_utc || !RANK[w.level]) return
+      var a = T(w.start + 'Z'), b = T(w.end + 'Z'); if (!(b > t && a < D1)) return
+      if (!peak[w.area] || RANK[w.level] > RANK[peak[w.area]]) { peak[w.area] = w.level; kinds[w.area] = {} }
+      if (w.level === peak[w.area]) kinds[w.area][EN[w.type] || w.type] = 1
+    })
+    var areas = (P.areas || []).filter(function (a) { return a.label_at }), main = areas.filter(function (a) { return a.region === 'mainland' })
+    if (!main.length) return ''
+    var lon = main.map(function (a) { return a.label_at[0] }), lat = main.map(function (a) { return a.label_at[1] })
+    var x0 = Math.min.apply(0, lon), x1 = Math.max.apply(0, lon), y0 = Math.min.apply(0, lat), y1 = Math.max.apply(0, lat), k = Math.cos(39.5 * Math.PI / 180)
+    var Ht = 560, pad = 34, sc = (Ht - 2 * pad) / (y1 - y0), Wd = Math.round((x1 - x0) * k * sc + 2 * pad + 150)
+    var X = function (a) { return pad + (a.label_at[0] - x0) * k * sc }, Y = function (a) { return pad + (y1 - a.label_at[1]) * sc }
+    var word = function (id) { return peak[id] || 'none' }, why = function (id) { return peak[id] ? Object.keys(kinds[id]).join(', ').toLowerCase() : '' }
+    var g = main.map(function (a) {
+      var lv = peak[a.id], left = main.some(function (o) { return o !== a && X(o) > X(a) && X(o) - X(a) < 16 + 7.5 * a.name.length && Math.abs(Y(o) - Y(a)) < 14 }) && X(a) > 16 + 7.5 * a.name.length
+      return '<g class="c-area' + (a.id === 'LSB' ? ' here' : '') + '"><circle class="c-dot' + (lv ? ' w-' + esc(lv) : '') + '" cx="' + X(a).toFixed(1) + '" cy="' + Y(a).toFixed(1) + '" r="' + (a.id === 'LSB' ? 13 : 10) + '"><title>' + esc(a.name + ': ' + (lv ? lv + ' (' + why(a.id) + ')' : 'no warning above green for the rest of today in IPMA\'s feed')) + '</title></circle>' +
+        '<text class="c-lab" x="' + (X(a) + (left ? -16 : 16)).toFixed(1) + '" y="' + (Y(a) + 4).toFixed(1) + '"' + (left ? ' text-anchor="end"' : '') + '>' + esc(a.name) + '</text>' + (lv ? '<text class="c-in w-' + esc(lv) + '" x="' + X(a).toFixed(1) + '" y="' + (Y(a) + 4).toFixed(1) + '" text-anchor="middle">' + lv.charAt(0).toUpperCase() + '</text>' : '') + '</g>'
+    }).join('')
+    var isl = areas.filter(function (a) { return a.region !== 'mainland' }).sort(function (a, b) { return (RANK[peak[b.id]] || 0) - (RANK[peak[a.id]] || 0) })
+    var row = function (a) { return '<li>' + (peak[a.id] ? lvl(peak[a.id]) : '<span class="lvl obs">none</span>') + ' <b>' + esc(a.name) + '</b> <span class="meta">' + esc(why(a.id)) + '</span></li>' }
+    var count = { red: 0, orange: 0, yellow: 0 }; areas.forEach(function (a) { if (peak[a.id]) count[peak[a.id]]++ })
+    var from = (W.from || [])[0] || {}
+    return '<section class="wxc-sec" aria-labelledby="wxc-h-where"><h2 id="wxc-h-where">Where <span class="meta">IPMA\'s highest warning level for the rest of today, by warning area</span></h2>' +
+      '<p class="wxc-lead">' + lvl('red') + ' ' + count.red + ' areas · ' + lvl('orange') + ' ' + count.orange + ' · ' + lvl('yellow') + ' ' + count.yellow + ' <span class="meta">of IPMA\'s ' + areas.length + ' warning areas</span></p>' +
+      '<div class="wxc-where2"><div class="wxc-scroll plain"><svg class="wxc-map" viewBox="0 0 ' + Wd + ' ' + Ht + '" role="img" aria-label="Mainland Portugal: each of IPMA\'s 18 district warning areas as a dot at a label spot, in the colour of its highest warning level for the rest of today, with the first letter of the level in the dot (R, O, Y). The same, with the level written, is the list beside it.">' + g + '</svg></div>' +
+      '<div><h3>The mainland, highest first</h3><ul class="wxc-list tight cols">' + main.slice().sort(function (a, b) { return (RANK[peak[b.id]] || 0) - (RANK[peak[a.id]] || 0) || a.name.localeCompare(b.name) }).map(row).join('') + '</ul><h3>Madeira and the Azores</h3><ul class="wxc-list tight">' + isl.map(row).join('') + '</ul>' +
+      '<p class="meta">Each dot sits at a label spot (the mean of IPMA\'s forecast places in the area), not on a border: this is not a map of the districts\' shapes.</p></div></div>' +
+      '<p>' + prov('areas', 'IPMA warnings, all areas (kept by incident.ipma@)', from.read_utc || W.updated) + ' · ' + prov('places', 'IPMA\'s areas and places', P.updated) + '</p></section>'
+  }
+
   // our meteorologist's reading: a hypothesis, never a forecast of ours stated as fact. Dashed, and it says so.
   function reading(t) {
     var A = D.analysis; if (!A) return ''
@@ -415,7 +453,7 @@
     var t = now(), sx = (el.querySelector('.wxc-scroll') || {}).scrollLeft, first = !el.querySelector('.wxc'), opened = {}
     el.querySelectorAll('details').forEach(function (d, i) { opened[d.dataset.k || (d.querySelector('summary') || {}).textContent + i] = d.open })
     var nextRead = D.warn && D.warn.next_read_utc
-    el.innerHTML = '<div class="wxc">' + hero(t) + hours(t) + tomorrow(t) + '<div class="wxc-pair">' + latest(t) + madeira(t) + '</div>' +
+    el.innerHTML = '<div class="wxc">' + hero(t) + hours(t) + whereMap(t) + tomorrow(t) + '<div class="wxc-pair">' + latest(t) + madeira(t) + '</div>' +
       fold('closed', 'What is closed and what runs', 'every entry: who, what, when, the source', closed(t)) +
       fold('charts', 'Rain and wind today, as charts', 'measured against warned', '<div class="wxc-pair even">' + rainChart(t) + windChart(t) + '</div>') +
       fold('madeira', 'Madeira, hour by hour', 'rain measured against warned, the last 24 hours read', madeiraHours(t)) +
