@@ -6,9 +6,9 @@ head: <script src="../../../app/evidence/vault-reader.js" defer></script><script
 ---
 # Weather pages, annotated
 
-> Kept by incident.weatherwatch@web-summit.dinis, 2026-11-11T03:10Z UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 2026-11-11T03:15Z UTC
 
-10 pages from 8 countries and services, each with numbered callouts on the page as we drew and saw it (1280 x 1600 px, the top of the page). At Dinis's word of 11 November, ~02:20 UTC: "take a screenshot of a website and then you start pointing". The screenshots are incident.archivist@'s captures: five are read in your browser from the display vault and checked against their sha256 (never kept in git), and each point was checked to sit on its part; the Met Office's is captured but half covered by a consent panel as served, so its frame waits for one with notices hidden; four are kept privately because the site's terms do not clearly allow showing them, and there the frame stays empty with the numbers where the parts are. Data: [index.json](index.json) and one file per study. [Back to the weather sites](../README.md).
+10 pages from 8 countries and services, each with numbered callouts on the page as we drew and saw it (1280 x 1600 px, the top of the page). At Dinis's word of 11 November, ~02:20 UTC: "take a screenshot of a website and then you start pointing". The screenshots are incident.archivist@'s captures: six are read in your browser from the display vault and checked against their sha256 (never kept in git), and each point was checked to sit on its part (the Met Office's is shown with its cookie-consent panel hidden, and says so); four are kept privately because the site's terms do not clearly allow showing them, and there the frame stays empty with the numbers where the parts are. Data: [index.json](index.json) and one file per study. [Back to the weather sites](../README.md).
 
 ## The same part, across countries
 

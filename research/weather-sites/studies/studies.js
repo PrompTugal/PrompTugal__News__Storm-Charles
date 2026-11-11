@@ -18,7 +18,7 @@
     function show(id) {
       fetch(id + '.json').then(function (r) { return r.json() }).then(function (s) {
         var img = null, cap = s.capture
-        meta.innerHTML = 'seen ' + esc(s.frame.seen_utc) + ' · <a href="' + esc(s.url) + '" rel="noopener">the page itself (leaves this site)</a> · ' + (cap ? '<a href="../../../' + esc(cap.evidence_page) + '">capture ' + esc(cap.read_utc) + '</a> <span id="ws-chk">reading the vault…</span>' : 'no screenshot shown: empty frame')
+        meta.innerHTML = 'seen ' + esc(s.frame.seen_utc) + ' · <a href="' + esc(s.url) + '" rel="noopener">the page itself (leaves this site)</a> · ' + (cap ? '<a href="../../../' + esc(cap.evidence_page) + '">capture ' + esc(cap.read_utc) + '</a> (' + esc(cap.shown_as || 'as served') + ') <span id="ws-chk">reading the vault…</span>' : 'no screenshot shown: empty frame')
         var dots = s.callouts.map(function (c) {
           return '<a href="#ws-c' + c.n + '" title="' + esc(c.title) + '" style="position:absolute;left:' + (c.x * 100) + '%;top:' + (c.y * 100) + '%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:var(--focus);color:var(--paper);font:600 13px var(--mono);display:flex;align-items:center;justify-content:center;text-decoration:none;border:2px solid var(--paper)">' + c.n + '</a>'
         }).join('')
