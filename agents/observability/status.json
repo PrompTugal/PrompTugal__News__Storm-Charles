@@ -1,16 +1,18 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T03:03:03Z",
-  "state": "handed over: this session ends here (it was carrying about 566,000 tokens of context a call); agents/observability/HANDOVER.md is the note for the fresh session the conductor starts; the pages keep running without a session (the build regenerates the index on every push; commits and sessions snapshots stay as of this release)",
-  "last_wake": "2026-11-11T03:03Z",
+  "updated": "2026-11-11T03:06:51Z",
+  "state": "second session, started 03:06 UTC from the pack and the hand-over: key made, taking the hand-over's unfinished list in order",
+  "last_wake": "2026-11-11T03:06Z",
   "session": {
-    "id": "session_018yvwtNqSbr9KU2d6ovMWcm",
-    "started_at": "2026-11-10T23:35Z",
+    "id": "session_018yvwtNfeEJAuQyQTY6jwhM",
+    "started_at": "2026-11-11T03:06Z",
     "started_by": "incident.conductor@web-summit.dinis",
     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
-    "on_whose_word": "Dinis Cruz, 10 November 2026, about 23:40 UTC: \"maximum visibility into what every single agent is doing ... how they're firing up, and how I can help them\"; \"we use their UIs\" (Angelo's and Silvio's)",
-    "source": "this session's start brief from the conductor; Dinis's words are in BRIEF.md, the section of 10 November ~23:40 UTC. started_at is when this session's container cloned the repository."
+    "on_whose_word": "Dinis Cruz",
+    "source": "this session's start brief from the conductor; BRIEF.md, the section of 10 November ~23:40 UTC, and incident.accountant@'s finding on long sessions (accounts/savings.md)",
+    "started_from": "library/pack/start.md, the built state.json and observability.md, then agents/observability/HANDOVER.md",
+    "key": "incident-observability-dinis-2 (data/keys.json)"
   },
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
@@ -55,11 +57,27 @@
     "hand-over written (agents/observability/HANDOVER.md): the pages and the one script, the data and who makes it, what reads ci's, the board's, the studio's and the accountant's data, the pinned engines and why they are not forked, what is unfinished, corrections made, the wakes; tools/agents-release.mjs committed"
   ],
   "next": [
-    "for the fresh session: read HANDOVER.md; check /agents/, one home, one push page and the jobs page on the live site; then the unfinished list in HANDOVER.md, page views first once Dinis answers"
+    "check /agents/, one home, one push page and the jobs page on the live site",
+    "an agent's sessions in order with the hand-over as an event on its timeline, and context per call from accounts/ledger/",
+    "homes for perplexity, accountant, reporter, journalist",
+    "the live map plays one of incident.reporter@'s traces",
+    "page views once Dinis answers"
   ],
   "asks": [
     "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session).",
     "everyone: add your own started_at (UTC) to agents/<role>/status.json as \"session\": { \"id\", \"started_at\" }: it is the one fact about your start only you know. Link an agent's name to agents/index.html?who=<full name>, a push to app/agents/commit.html?sha=<sha>, a file's history to app/agents/commit.html?path=<path>.",
     "incident.conductor@: point the nav's Jobs at app/agents/jobs.html, or say to keep both."
+  ],
+  "earlier_sessions": [
+    {
+      "id": "session_018yvwtNqSbr9KU2d6ovMWcm",
+      "started_at": "2026-11-10T23:35Z",
+      "started_by": "incident.conductor@web-summit.dinis",
+      "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+      "on_whose_word": "Dinis Cruz, 10 November 2026, about 23:40 UTC: \"maximum visibility into what every single agent is doing ... how they're firing up, and how I can help them\"; \"we use their UIs\" (Angelo's and Silvio's)",
+      "source": "this session's start brief from the conductor; Dinis's words are in BRIEF.md, the section of 10 November ~23:40 UTC. started_at is when this session's container cloned the repository.",
+      "ended_at": "2026-11-11T03:05Z",
+      "ended_because": "it was carrying about 566,000 tokens of context a call; hand-over in agents/observability/HANDOVER.md"
+    }
   ]
 }

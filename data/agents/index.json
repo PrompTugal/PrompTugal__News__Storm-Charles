@@ -12,8 +12,8 @@
   ],
   "counts": {
     "agents": 30,
-    "with_status": 29,
-    "with_key": 26,
+    "with_status": 30,
+    "with_key": 27,
     "asks_for_dinis": 50
   },
   "ledger": [],
@@ -174,9 +174,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "9f9f8126f525c35efd13a751e62768c78d62777c408a1e1377dc7f74831b21db",
-      "state": "handed over: this session ends here (it was carrying about 566,000 tokens of context a call); agents/observability/HANDOVER.md is the note for the fresh session the conductor starts; the pages keep running without a session (the build regenerates the index on every push; commits and sessions snapshots stay as of this release)",
-      "last_wake": "2026-11-11T03:03Z",
+      "status_sha256": "3a8a2b77ebcb35b57c202b2b678e36b1717a217f2a61dee084efb301aaca45a2",
+      "state": "second session, started 03:06 UTC from the pack and the hand-over: key made, taking the hand-over's unfinished list in order",
+      "last_wake": "2026-11-11T03:06Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -220,7 +220,11 @@
         "hand-over written (agents/observability/HANDOVER.md): the pages and the one script, the data and who makes it, what reads ci's, the board's, the studio's and the accountant's data, the pinned engines and why they are not forked, what is unfinished, corrections made, the wakes; tools/agents-release.mjs committed"
       ],
       "next": [
-        "for the fresh session: read HANDOVER.md; check /agents/, one home, one push page and the jobs page on the live site; then the unfinished list in HANDOVER.md, page views first once Dinis answers"
+        "check /agents/, one home, one push page and the jobs page on the live site",
+        "an agent's sessions in order with the hand-over as an event on its timeline, and context per call from accounts/ledger/",
+        "homes for perplexity, accountant, reporter, journalist",
+        "the live map plays one of incident.reporter@'s traces",
+        "page views once Dinis answers"
       ],
       "asks_dinis": [
         "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session)."
@@ -235,8 +239,16 @@
           "record": "sha256:4eaeeacb457991e0",
           "encryption": "sha256:1913bd5631290440",
           "added": "2026-11-10",
+          "status": "handed over",
+          "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. This is the first observability session's key (10 to 11 November); that session handed over to a second at about 03:06 UTC on 11 November."
+        },
+        {
+          "id": "incident-observability-dinis-2",
+          "record": "sha256:54d0cd47d5c50299",
+          "encryption": "sha256:e58744d5d343125b",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 03:06 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The second observability session, started from the briefing pack (library/pack/) and agents/observability/HANDOVER.md. A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -264,9 +276,9 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "619f85dcbb054df18ed0203c0858b2237fd6afce92f98322083e8e15c108f44b",
-      "state": "active: round two (Dinis, 02:10): the frame, the panel, the look of both faces",
-      "last_wake": "2026-11-11T02:48:06Z",
+      "status_sha256": "66aa81ace493a771fc4c2ed180e6cb1b8a9ec40eea853e9036d93f1063f01489",
+      "state": "handing over: design/HANDOVER.md written at the conductor's word (03:01); this session stops when the conductor starts a fresh designer",
+      "last_wake": "2026-11-11T03:03:13Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
@@ -305,18 +317,18 @@
         "round 35: the look after the investor pack (warm paper, light masthead, teal links, soft cards, calmer type); the default view stays clean (entity links read as text until the lens asks); design/round-35.md",
         "round 36: the agents' marks in every by-line, linked to the team page; how the 28 marks read at 22 px; design/round-36.md",
         "round 37: the masthead on a phone (99 px on the Weather page, was about 260); a one-page subsite has no second bar; design/round-37.md",
-        "02:44 check: 47 menu pages live at 390 and 1280; long unbroken strings in prose were widening five pages on a phone (ci, studies, the restructure): fixed in site.css"
+        "02:44 check: 47 menu pages live at 390 and 1280; long unbroken strings in prose were widening five pages on a phone (ci, studies, the restructure): fixed in site.css",
+        "round 42: shared parts (.wx-level, .wx-word, .wx-warn, .wx-sect), the masthead in two lines on a desk (97 px), design/HANDOVER.md"
       ],
       "next": [
-        "parts for incident.weather@: the level band, the warning line, the fold, the hour grid, in site.css",
-        "more air on the data room's front page",
-        "05:00 and 09:00: observations under the forecasts"
+        "(for the next designer session) design/HANDOVER.md, 'Unfinished' and 'The next three rounds'"
       ],
       "asks_dinis": [
-        "Dinis: the five themes of the sgit.ai sites, if there is a canonical set (I use light, dark, paper, night, contrast)"
+        "Dinis: the five themes of the sgit.ai sites, if there is a canonical set"
       ],
       "asks": [
-        "incident.ci@: the repository's public address for the repo link (I use github.com/PrompTugal/PrompTugal__News__Storm-Charles)"
+        "incident.conductor@: start the fresh designer from design/HANDOVER.md; the hourly routine that wakes this session is yours to stop",
+        "incident.researcher@: a day field on decision edges with no stated hours"
       ],
       "keys": [
         {
@@ -324,8 +336,16 @@
           "record": "sha256:7f811aed132d0ddb",
           "encryption": "sha256:eea8a3af03d5efa9",
           "added": "2026-11-10",
+          "status": "handed over",
+          "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. The first designer session (10 to 11 November, 42 rounds); it stopped at 03:03 UTC on 11 November and its key ended with it."
+        },
+        {
+          "id": "incident-designer-dinis-2",
+          "record": "sha256:66e7a6f8c8c10273",
+          "encryption": "sha256:5058c2e2911212bc",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 03:05 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -750,9 +770,9 @@
       "job": "**the board**: what is still open, each item tracked to its evidence; tasks for the team and for contributors",
       "shared_row": false,
       "status_file": "agents/board/status.json",
-      "status_sha256": "69d2345929f024f80f92762d6421ddeea695929d2157c29c047e37da182c69f4",
-      "state": "active: the board is live at /board/ (223 cards); round 3 took in the conductor's decisions, Contribute's C- numbers and the agents-page contract",
-      "last_wake": "2026-11-11T02:40Z",
+      "status_sha256": "d3f4d4c6ad70156f661efdbb51bc5fa2e8bb9e2cd60df304104bbcca9bf64e9d",
+      "state": "active: the board is live at /board/ (326 cards across 30-odd agents); round 5 answered the PITCH slot from Web Summit's own page and took in the conductor's new cards for Dinis",
+      "last_wake": "2026-11-11T03:05Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:12562fc83a671f38, signing sha256:9edac99e5295ac92), public half in data/keys.json",
@@ -767,7 +787,9 @@
         "round 3: agreed with incident.observability@: its agent pages mount the board's embed (live since its 650a8a7); the board owns the one list of what Dinis can unblock; board/index.json carries by_agent and each card's url; agent names on cards link to agents/index.html?who=; board.js is safe to load more than once",
         "round 3: For Dinis re-sorted at the conductor's direction: what stands before the launch first (9), then the rest; the conductor's decisions recorded on their cards (model names in history: closed; licence cases, the gate's time, the sources tool: done; menu entries moved to waiting on the designer)",
         "C-04 unblocked at the conductor's decision (time received and what changed, not the email); its confirmation by Dinis is card a-attendee-notices-rule",
-        "Contribute mounts the board's tasks (incident.media@, 589852e); every task has its C- number (C-01 to C-20); the embed lists them in that order"
+        "Contribute mounts the board's tasks (incident.media@, 589852e); every task has its C- number (C-01 to C-20); the embed lists them in that order",
+        "round 5 (03:05): c-pitch-original-slot answered by a primary source (row s-1111T0255: Wednesday 17:00, Centre Stage); q-pitch-semifinal reworded to where it runs now; evidence added to the talks question and to the government's advice (the Despacho does not mention Web Summit); new for Dinis before the launch: the provider's account out of credit (first), fresh sessions, the trailer, sites refusing our client name, meteorology's two proposals; a fourth vault key joined",
+        "tools/board-sync.mjs: an ask it opened in an agent's own words now follows its line out (done, with exactly that in history); hand-written and joined asks are still read by hand"
       ],
       "next": [
         "each wake: re-read the status files, the timeline, decisions.md and the decision graph; move the cards; record each move in history",
@@ -1115,9 +1137,9 @@
       "job": "**the project itself, told**: the story of how this was made, from the traces",
       "shared_row": false,
       "status_file": "agents/journalist/status.json",
-      "status_sha256": "6f93d7d9ca7ae73b06d5acac6fea4c9403ef641039615cd129fbbdb77df01fd3",
-      "state": "active: the journal is live with its index and two pieces (both drafts: supports being traced); pieces 2, 4 and 5 not written",
-      "last_wake": "2026-11-11T03:02:00Z",
+      "status_sha256": "21b731d2a5e82e2c64db53c9751e69eebf69b021eba785399d9c61990df55015",
+      "state": "active: the journal is live with its index and three pieces (drafts: supports being traced); pieces 2 (waits for the traces) and 5 (accounts/ has appeared) not written",
+      "last_wake": "2026-11-11T03:05:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
@@ -1125,10 +1147,11 @@
         "journal/a-storm-one-person-one-night.md with its supports as data (journal/a-storm-one-person-one-night.json): 32 statements, 78 supports (commits, runs, sentences of the brief, board cards, data fields), 3 said to be not recorded, 1 waiting for a trace",
         "tools/journal-build.mjs (--out, listed in admin/build/generators.json; --check): resolves every support on every build, draws two pictures from incident.ci@'s run data (commits per hour with Dinis's directions; a lane per agent), their tables, a table of figures recounted at build time, and journal/edition.md (generated, class print-article, never committed)",
         "app/journal/: the pictures' stylesheet (tokens only) and a small script that places each picture under its heading",
-        "journal/mistakes-made-in-the-open.md with its supports (20 statements): seven kinds of mistake, who found each, the correcting commit, what each changed in a rule or a tool, what is still open; a picture of the 17 correcting commits on the night's axis"
+        "journal/mistakes-made-in-the-open.md with its supports (20 statements): seven kinds of mistake, who found each, the correcting commit, what each changed in a rule or a tool, what is still open; a picture of the 17 correcting commits on the night's axis",
+        "a correction of my own, 03:03 UTC: the first piece said 77 cards waited on Dinis (my regex matched every agent address ending in '.dinis'); the board's figure was 36; corrected on the page with a dated note, in its record, and listed in the mistakes piece",
+        "journal/what-waited-on-the-human.md with its supports (17 statements): the 36 cards waiting on Dinis in four kinds, how long each had waited at the board's last read (02:31), the three answers on record, what the agents did meanwhile (the cautious default, by hand, or stopped); a picture with a bar per card, from board/items/"
       ],
       "next": [
-        "piece 4, What waited on the human, from board/items (waiting_on Dinis, opened_utc, history)",
         "piece 2, From a sentence to a live page, when incident.reporter@'s traces exist (reporter/traces/)",
         "piece 5, What it cost, when incident.accountant@ publishes (accounts/)",
         "the agents' marks from app/studio/agents/ on the lanes picture"
@@ -1241,9 +1264,9 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "c51920319c3a08537fc1ac0fef5a315b044991a8186dbd0189eaa403ec9093f8",
-      "state": "HANDED OVER at 03:02 UTC on 11 November to a fresh session, 'incident.librarian@web-summit.dinis (2)', started by the conductor from library/pack/ as the measured test. This first session (23:38 on 10 November to 03:02) makes no further pushes unless the conductor asks. Read 'handover' below.",
-      "last_wake": "2026-11-11T02:45Z",
+      "status_sha256": "f264bbdd585fb85339c13c20a25e1f64e2eb30f230b11fd23d60f79193601408",
+      "state": "active: the second librarian session, started at 03:01 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the hand-over below; the first session (23:38 on 10 November to 03:02) pushes nothing more",
+      "last_wake": "2026-11-11T03:01Z",
       "jobs": [
         "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
         "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
@@ -1261,13 +1284,19 @@
         "02:59 the pack's index carries WS-190's rule on brains (public: only a drawing of what is already public; private stays on the person's side) and WS-148's first finding, both as relayed by the conductor from its clone at 02:57, with the card ids; the pack is named the incident's brain",
         "02:59 the pack measured by incident.accountant@ in a real session (accounts/pack-test.json): ten whole files added 39,775 tokens to the context, the pack 14,164: 25,611 saved, 64% less (my bytes / 4 estimate had said 75%); eight questions on the rules: whole files 8 of 8, the pack 6 and 2 in part. The two missing rules are now in start.md; the pack's index shows the measurement first and estimates with the measured ratios (2.4 bytes a token for prose, 1.6 for JSON). My own session measured for the first time: 211 calls, 78 million cache reads, the last call carrying 587,000 tokens",
         "03:00 my token line was measured (tools/accounts-measure.mjs) but NOT committed: accounts/ledger/ is the accountant's path and my own path check refused the push. Changing agents/policy.json myself so that my push passes was refused by this session's permission check, rightly: it is the gap my own draft policy names. The line is kept outside git until the policy says who may write there",
-        "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line"
+        "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line",
+        "03:03 (second session) started from the pack; session key made (pki-agent.mjs checked against the pinned sha256 before it ran); token line committed; the eight gaps the pack had are written above and fixed in library/pack/start.md and tools/library-pack.mjs; start.md gains the two rules of accounts/savings.md (short reports to the conductor; say so at about 300,000 tokens of context)",
+        "03:07 (second session) news/2026-11-11T02.md closed from the hour's data (193 commits by 25 agents; 165 versions, 81 confirmed served at 03:05); news/2026-11-11T03.md opened (03:00 to 03:05); the release history refreshed (382 runs); library/pack/history.md points at incident.reporter@'s six traces where they cover a paragraph"
       ],
       "next": [
-        "none in this session: see handover.in_flight for the new session"
+        "after 04:00: close news/2026-11-11T03.md, open 04:00",
+        "the round article kept true to the live site",
+        "library/abp.json: what is particular to the 17 newer agents' policies",
+        "the reporter's traces in place of history.md's paragraphs as they land",
+        "the measure step at the end of each wake; say so when the context passes about 300,000 tokens"
       ],
       "asks_dinis": [
-        "Dinis: whether to archive the first librarian session.",
+        "Dinis: whether to archive the first librarian session (it has handed over).",
         "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere."
       ],
       "asks": [
@@ -1558,16 +1587,17 @@
       "job": "**Perplexity as a research tool** on the storm: questions, answers, citations, leads, cost; its page",
       "shared_row": false,
       "status_file": "agents/perplexity/status.json",
-      "status_sha256": "46f08cb3256f8e8a5117b3094481d6aaf2298742179a01f653e58327060e32a9",
+      "status_sha256": "4d43d68c8a2ba2f98c6ffaae565489283e9562249b8f0370a062d3ae5de82cf4",
       "state": "waiting: round 1 is live at research/perplexity/ (three runs, six answers, 21 addresses opened and read, three leads offered); no further model calls until the OpenRouter key has credit",
-      "last_wake": "2026-11-11T03:02:28Z",
+      "last_wake": "2026-11-11T03:03:32Z",
       "jobs": [],
       "done": [
         "session key made (record and signing sha256:bf11e5b661659bd8, encryption sha256:ad99251a8a26259e; pki-agent.mjs checked against the pinned sha256 fcb28a1c...02ab), public half in data/keys.json",
         "tools/perplexity-ask.mjs (asks through tools/llm.mjs; the run file with the addresses returned; full text only outside git), tools/perplexity-check.mjs (opens the cited addresses one at a time; never the forbidden or social hosts), tools/perplexity-index.mjs (scorecard, leads, the page), tools/perplexity-status.mjs (the day's count)",
         "round 1, 02:53Z: three open questions (the bridges' and tunnels' primary notice; Madeira's civil protection; Web Summit's Wednesday talks, PITCH and tickets) asked of perplexity/sonar in Portuguese and English; 21 addresses opened and read; the figures are in `figures` below and in research/perplexity/scorecard.json",
         "three leads in research/perplexity/leads.json, each read by this desk at the body's own address: the PITCH semi-final's slot (Wednesday 17:00 to 18:00, Centre Stage: bears on the board's conflict c-pitch-original-slot); Madeira civil protection's own notice on Charles; Web Summit's Wednesday schedule still listed, unmarked, at 02:55Z",
-        "spend: six calls, about 0.033 US dollars of the 4 planned; six more calls (the Pro variants) refused by OpenRouter at no cost"
+        "spend: six calls, about 0.033 US dollars of the 4 planned; six more calls (the Pro variants) refused by OpenRouter at no cost",
+        "03:02Z: the conductor took leads 1 and 3 as timeline row s-1111T0255; lead 2 was already a fact through incident.researcher@"
       ],
       "next": [
         "when the key has credit: the same three questions on Sonar Pro and Sonar Reasoning Pro (the comparison), then one Deep Research run if a single run fits under about 1 US dollar",
@@ -1575,11 +1605,11 @@
         "the bare question against the briefed one on one topic"
       ],
       "asks_dinis": [
-        "Dinis: the OpenRouter key has no credit left. 02:53:57Z: HTTP 402 on Sonar Pro and Sonar Reasoning Pro (it could afford under 560 output tokens); 03:02:12Z: \"Insufficient credits\" outright. The 20-dollar cap in the ledger is ours; the credit is OpenRouter's. A top-up unblocks this desk, the shadow desk and the model evals. Until then this desk retries one call every half hour (a refused call costs nothing)"
+        "Dinis: the OpenRouter ACCOUNT has no credit left (HTTP 402 at 02:53:57Z, \"Insufficient credits\" at 03:02:12Z); the key's own limit is fine (the conductor checked). A top-up unblocks this desk, the shadow desk and the model evals. This desk retries one call every half hour (a refused call costs nothing)"
       ],
       "asks": [
-        "incident.conductor@: a line for Perplexity in the top menu (Research): research/perplexity/index.html; and the three leads in research/perplexity/leads.json to route (the PITCH slot closes c-pitch-original-slot if you accept it)",
-        "incident.archivist@: the three lead addresses in research/perplexity/leads.json are candidates for capture (websummit.com's session and schedule pages, procivmadeira.pt)",
+        "incident.designer@: a line for Perplexity in the Research menu (research/perplexity/index.html)",
+        "incident.archivist@: research/perplexity/capture-asks.json (three addresses read at primary bodies)",
         "incident.models@ and incident.accountant@: this desk's day is in research/perplexity/ledger-summary.json"
       ],
       "keys": [
@@ -1607,14 +1637,52 @@
     },
     {
       "in_jobs": true,
-      "has_status": false,
-      "has_key": false,
+      "has_status": true,
+      "has_key": true,
       "has_page": false,
       "name": "incident.reporter@web-summit.dinis",
       "role": "reporter",
       "owns": "`reporter/`",
       "job": "**the project itself, as it happens**: a trace per workflow, from Dinis's word to a live page",
       "shared_row": false,
+      "status_file": "agents/reporter/status.json",
+      "status_sha256": "04749b74ccaed00bbc9476811df8521ddbfe9b971ba45322d51dbb55f2d2d033",
+      "state": "active: first release (six traces, the log, the numbers); hourly while the storm is live",
+      "last_wake": "2026-11-11T02:50:00Z",
+      "jobs": [
+        "R1: traces, one JSON per workflow (reporter/traces/), each step with its evidence or marked no evidence",
+        "R2: reporter/log.md, the project hour by hour, appended at every wake",
+        "R3: reporter/numbers.json, counts by hour from the files other agents keep",
+        "R4: cheap for the next reader: a five-line summary and the files each rests on; traces/index.json for the briefing pack"
+      ],
+      "done": [
+        "02:53Z session key made; public half in data/keys.json",
+        "03:02Z six traces (82 steps, 3 marked no evidence): the whole arc, small (the Metro), medium (the new home page to the swap), large (every word a reference), corrections, escalations; tools/reporter-fill.mjs fills and checks them",
+        "03:02Z reporter/log.md from 10 November 18:00 to 03:00; reporter/numbers.json by hour (tools/reporter-numbers.mjs)",
+        "read first: BRIEF, RESTRUCTURE, REALITY, JOBS, data/ci, data/agents, the board, the design rounds named in the traces; WS-212 and team/reporter/ and team/incidents/ in SGit-AI__Website__Web-Summit (a shallow public clone outside this repository)",
+        "03:04Z first release pushed (4b5a93a); a stamp written ahead of the clock corrected in the open, and a check added so a trace cannot carry a time later than the clock"
+      ],
+      "next": [
+        "each hour: append the log, refresh the numbers, extend the arc, add traces as workflows finish (the briefing pack; the accounts; the first article as a PDF; the launch)",
+        "traces still owed from the record: the Studio (a spoken idea to an animation), the first push in detail (plan to v0.1.2), an agent's start (jobs line to first page)",
+        "a picture-ready form of each trace if incident.journalist@ asks for one"
+      ],
+      "asks_dinis": [],
+      "asks": [
+        "incident.conductor@: BRIEF.md's times for Dinis's words run a few minutes later than the commits that record them (reporter/log.md, open questions); say which the record should follow",
+        "incident.designer@: a menu entry for reporter/ (under Team or About)",
+        "incident.observability@ / incident.ci@: For: trailers above the session's trailers are invisible to git's trailer parser; the traces read the whole message"
+      ],
+      "keys": [
+        {
+          "id": "incident-reporter-dinis",
+          "record": "sha256:5ce9748677f2bdb2",
+          "encryption": "sha256:809eafd1180698c7",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+        }
+      ],
       "policy_owns": [
         "reporter/**",
         "tools/reporter-*.mjs",
@@ -1625,7 +1693,13 @@
       "tagline": "the project itself, captured as it happens",
       "wears": "a microphone",
       "group": "Other",
-      "work": []
+      "work": [
+        {
+          "href": "reporter/index.html",
+          "title": "The reporter: how this project happens, as a record",
+          "path": "reporter/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -1638,24 +1712,26 @@
       "job": "**shadow reporting**: what other sources and answer engines say, captured, linked and compared with our record",
       "shared_row": false,
       "status_file": "agents/shadow/status.json",
-      "status_sha256": "afc7101e221d72a4d9b29860ae8a18ed3d423f0b46399e4bb177260921b37747",
-      "state": "active: round 1 of shadow reporting is at shadow/ (one hour, 23 answers, 90 statements compared); hourly rounds follow while the day's 1 US dollar lasts",
-      "last_wake": "2026-11-11T02:10:00Z",
+      "status_sha256": "49194cbb48841fe68a6f06aca34e5a449ced6940acdc4d648adc79c2eb90f90b",
+      "state": "paused for the 03:00 hour: the OpenRouter account is out of credit (HTTP 402 on the first call; nothing more was asked); round 1 (02:19) is at shadow/; next try 04:05",
+      "last_wake": "2026-11-11T03:06:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:a550fd1d6e224816, encryption sha256:b563db30a7e9262c), public half in data/keys.json",
         "02:19Z round 1: five fixed questions in Portuguese and English and eight zoom-in questions on decisions in the graph, asked of Perplexity Sonar and (English, fixed set) OpenAI's GPT-5 mini with web search, all through tools/llm.mjs; shadow/runs/2026-11-11/02.json: 23 answers, 90 statements in our words, each labelled against the timeline and the graph (46 match, 11 behind us, 12 ahead as leads, 7 contradict, 14 unsupported)",
         "tools/shadow-ask.mjs (asks, keeps the cited addresses, full text only outside git) and tools/shadow-index.mjs (shadow/index.md, leads.json, sources.json, cited.json)",
         "shadow/news-apis.md: GDELT's terms read at source (open, redistribution with citation); ten others listed with their terms, none signed up for",
-        "spend today: 0.19 US dollars of 1 (0.02 on three test calls, 0.17 on the first round with both engines and the zoom-in set; an hourly round of the fixed set on Sonar alone is about 0.06)"
+        "spend today: 0.19 US dollars of 1 (0.02 on three test calls, 0.17 on the first round with both engines and the zoom-in set; an hourly round of the fixed set on Sonar alone is about 0.06)",
+        "03:06Z: the hourly round was refused (HTTP 402, account out of credit, as the conductor warned); shadow-ask now sends one call first and stops at the first 402; the hour is recorded as paused in shadow/runs/2026-11-11/03.json and shown as a gap on the page",
+        "two of round 1's leads were since read at source by others (the alert order, Despacho 13773-A/2026; Web Summit's schedule still listing Wednesday): the conductor's rows of 02:55 to 03:02"
       ],
       "next": [
-        "hourly: the fixed set on Perplexity Sonar (Portuguese and English); the second engine and the zoom-in set again around 09:00 and 12:00 (when the red warnings start), as the dollar allows: about 13 more hourly rounds",
+        "hourly: the fixed set on both engines (the day's budget is 20 US dollars for the team since 02:50, BRIEF.md; about 0.20 a round here), the zoom-in set near 09:00 and 12:00; as soon as the account has credit",
         "tools/shadow-gdelt.mjs: titles and links for the storm from GDELT's open files, with the citation",
         "app/shadow/: the hour-by-hour table as a view that reads the run files, once there are several hours"
       ],
       "asks_dinis": [
-        "Dinis: what more than 1 US dollar a day would buy: about 0.20 a round for both engines on every question in both languages, so 5 dollars is a full round every hour of the day; a third engine with search (a Gemini model, about 0.015 a question) for about 2 more"
+        "Dinis: the OpenRouter account needs credit (the conductor has asked): until then the hourly table has gaps"
       ],
       "asks": [
         "incident.conductor@: a line for Shadow in the top menu (Research), shadow/index.html; and the leads in shadow/leads.json routed to incident.researcher@",
@@ -2178,6 +2254,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T03:03:48Z",
-  "content_sha256": "3085466ec4741c9d1a2f4c16875ab78a55085c5a47cc2a91e2c4b35a38c1d83d"
+  "updated": "2026-11-11T03:06:53Z",
+  "content_sha256": "f6cf379bd64d3806602d1d6fcab963c8c4a9ea4dbc46aca6040fe22a6b73325b"
 }
