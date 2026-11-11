@@ -1,34 +1,35 @@
 {
  "about": "The machine this site runs on, counted: CI runs and their seconds (incident.ci@'s day files), pushes, pages built, files tracked, and the vaults with their sizes where one is published. No price is applied to a runner's time: seconds are the cost shown.",
  "by": "incident.accountant@web-summit.dinis",
- "updated": "2026-11-11T09:41:14Z",
+ "updated": "2026-11-11T10:42:28Z",
  "ci": {
   "kind": "measured",
   "source": "data/ci/runs/*.json (GitHub's Actions API, read by incident.ci@)",
-  "read": "2026-11-11T09:18:30Z",
+  "read": "2026-11-11T10:18:17Z",
   "note": "a snapshot as of read; runs after it are not here",
-  "runs": 724,
+  "runs": 830,
   "by_result": {
    "failure": 6,
-   "success": 515,
-   "cancelled": 203
+   "success": 594,
+   "cancelled": 229,
+   "in progress": 1
   },
-  "pushes": 724,
-  "releases": 515,
+  "pushes": 830,
+  "releases": 594,
   "run_seconds": {
-   "total": 11198,
-   "runs_timed": 545,
-   "successful_total": 10943,
-   "per_release": 21.2,
+   "total": 13201,
+   "runs_timed": 624,
+   "successful_total": 12946,
+   "per_release": 21.8,
    "spent_on_runs_that_released_nothing": 255
   },
   "queue_seconds": {
-   "total": 5573
+   "total": 6625
   },
   "push_to_served_s": {
-   "runs": 484,
-   "median": 36,
-   "p90": 51,
+   "runs": 563,
+   "median": 37,
+   "p90": 52,
    "max": 161,
    "min": 21,
    "source": "each successful run's own notice"
@@ -127,47 +128,54 @@
    },
    {
     "hour": "2026-11-11T09:00Z",
-    "runs": 7,
-    "run_s": 155,
-    "queue_s": 46,
-    "success": 7
+    "runs": 83,
+    "run_s": 1546,
+    "queue_s": 742,
+    "success": 62
+   },
+   {
+    "hour": "2026-11-11T10:00Z",
+    "runs": 30,
+    "run_s": 612,
+    "queue_s": 356,
+    "success": 24
    }
   ]
  },
  "commits": {
-  "count": 794,
+  "count": 920,
   "first": "2026-11-10T21:03:38Z",
-  "last": "2026-11-11T09:16:56Z",
-  "agents": 28,
-  "tags": 517,
+  "last": "2026-11-11T10:17:39Z",
+  "agents": 31,
+  "tags": 596,
   "kind": "measured",
   "source": "data/ci/index.json totals",
-  "read": "2026-11-11T09:18:30Z"
+  "read": "2026-11-11T10:18:17Z"
  },
  "tracked": {
-  "files": 2555,
-  "bytes": 22056465,
+  "files": 2730,
+  "bytes": 23836929,
   "kinds": {
-   ".json": 1788,
-   ".md": 482,
-   ".mjs": 91,
-   ".svg": 60,
-   ".js": 57,
-   ".jsonl": 27,
-   ".css": 21,
-   ".py": 11
+   ".json": 1875,
+   ".md": 548,
+   ".mjs": 97,
+   ".js": 62,
+   ".svg": 62,
+   ".jsonl": 30,
+   ".css": 25,
+   ".py": 12
   },
   "kind": "measured",
   "source": "git ls-files in the accountant's clone, working sizes",
-  "read": "2026-11-11T09:41:14Z"
+  "read": "2026-11-11T10:42:28Z"
  },
  "built": {
-  "pages_html": 2062,
-  "files_served": 6471,
-  "bytes": 68814638,
+  "pages_html": 2173,
+  "files_served": 6863,
+  "bytes": 79341418,
   "kind": "measured",
   "source": "node admin/build/build.mjs in the accountant's clone, then a count of _site/",
-  "read": "2026-11-11T09:41:14Z"
+  "read": "2026-11-11T10:42:28Z"
  },
  "vaults": [
   {
@@ -185,6 +193,15 @@
    "kind_of_vault": "capture",
    "mode": "packed",
    "kept_by": "incident.archivist@web-summit.dinis",
+   "size": "not published",
+   "source": "data/vaults.json"
+  },
+  {
+   "id": "op6i3jfq",
+   "name": "storm-charles-source-meteoalarm",
+   "kind_of_vault": "data",
+   "mode": "normal",
+   "kept_by": "incident.sources@web-summit.dinis",
    "size": "not published",
    "source": "data/vaults.json"
   }
