@@ -11,6 +11,7 @@ import { BY, DATA, INCIDENT, NOT_WARNING, OPENSKY_CITE, fetchProv, writeJSON, sh
 
 const W = `incidents/${INCIDENT}/data`
 const FROM = '2026-11-10T18:00:00Z'
+const TO = '2026-11-12T12:00:00Z'   // the window ends here: the file grows about 5 KB an hour and must stay under 256 KB (HANDOVER.md)
 const AIRPORTS = [
   { icao: 'LPPT', iata: 'LIS', name: 'Lisbon (Humberto Delgado)', met: `${W}/weather/airport.json` },
   { icao: 'LPMA', iata: 'FNC', name: 'Funchal (Madeira, Cristiano Ronaldo)', met: `${W}/weather/airport-madeira.json` }
@@ -56,14 +57,14 @@ function comps (dir, kt, gust, rws) {
   }
   return out
 }
-const out = { by: BY, updated: iso(Date.now()), label: 'fact', about: 'The wind the airports reported (METAR) during Storm Charles, from 10 November 18:00 UTC, resolved onto each runway end as headwind (negative: tailwind) and crosswind, joined per hour to the airline departures OpenSky\'s receivers saw and to ANA\'s own cancellation figures. Facts: the METAR (IPMA\'s observations) and the counts as their sources give them; the components are arithmetic on the METAR (wind speed x cos/sin of the angle between wind and runway, true degrees). Hypothesis, labelled where it appears: which runway end the wind favours (air traffic control chooses the runway, and pilots and airlines apply their own limits; we state none). Departures are a floor: what OpenSky saw, only for hours its rolling window covered.', not_a_warning_service: NOT_WARNING, attribution: [OPENSKY_CITE, 'METAR: IPMA, through the US NOAA Aviation Weather Center (aviationweather.gov), public domain.', 'Runways: OurAirports (ourairports.com/data), public domain.', 'Cancellations: ANA Aeroportos de Portugal, newsroom figures only, with the link.'], units: { wind: 'knots (1 kt = 1.852 km/h); direction: degrees true the wind blows from', components: 'knots; crosswind_from: the side of the aircraft the wind comes from, landing or taking off on that runway end' }, window: { from: FROM, to: null }, airports: [], sources }
+const out = { by: BY, updated: iso(Date.now()), label: 'fact', about: 'The wind the airports reported (METAR) during Storm Charles, from 10 November 18:00 UTC to 12 November 12:00 UTC, resolved onto each runway end as headwind (negative: tailwind) and crosswind, joined per hour to the airline departures OpenSky\'s receivers saw and to ANA\'s own cancellation figures. Facts: the METAR (IPMA\'s observations) and the counts as their sources give them; the components are arithmetic on the METAR (wind speed x cos/sin of the angle between wind and runway, true degrees). Hypothesis, labelled where it appears: which runway end the wind favours (air traffic control chooses the runway, and pilots and airlines apply their own limits; we state none). Departures are a floor: what OpenSky saw, only for hours its rolling window covered.', not_a_warning_service: NOT_WARNING, attribution: [OPENSKY_CITE, 'METAR: IPMA, through the US NOAA Aviation Weather Center (aviationweather.gov), public domain.', 'Runways: OurAirports (ourairports.com/data), public domain.', 'Cancellations: ANA Aeroportos de Portugal, newsroom figures only, with the link.'], units: { wind: 'knots (1 kt = 1.852 km/h); direction: degrees true the wind blows from', components: 'knots; crosswind_from: the side of the aircraft the wind comes from, landing or taking off on that runway end' }, window: { from: FROM, to: null }, airports: [], sources }
 for (const ap of AIRPORTS) {
   const met = fileSrc(ap.met, `METAR history kept by incident.meteorologist@ (${ap.icao})`, null); sources.at(-1).read_utc = met.read_utc
   const byTime = {}
-  for (const m of met.metars) if (m.time_utc >= FROM.slice(0, 16)) byTime[m.time_utc] = { time: m.time_utc.replace(/Z$/, ':00Z'), raw: m.raw, wind_dir: m.wind_dir, wind_kt: m.wind_kt, gust_kt: m.gust_kt, from: 'meteorologist' }
+  for (const m of met.metars) if (m.time_utc >= FROM.slice(0, 16) && m.time_utc <= TO.slice(0, 16)) byTime[m.time_utc] = { time: m.time_utc.replace(/Z$/, ':00Z'), raw: m.raw, wind_dir: m.wind_dir, wind_kt: m.wind_kt, gust_kt: m.gust_kt, from: 'meteorologist' }
   for (const a of awcRows) {
     if (a.icaoId !== ap.icao) continue
-    const t = iso(a.obsTime * 1000); if (t < FROM) continue
+    const t = iso(a.obsTime * 1000); if (t < FROM || t > TO) continue
     const k = t.slice(0, 16) + 'Z'
     if (!byTime[k]) byTime[k] = { time: t, raw: a.rawOb, wind_dir: a.wdir === 'VRB' ? 'VRB' : Number(a.wdir), wind_kt: a.wspd ?? null, gust_kt: a.wgst ?? null, from: 'awc' }
   }
