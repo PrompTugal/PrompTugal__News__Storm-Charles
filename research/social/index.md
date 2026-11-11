@@ -1,0 +1,129 @@
+---
+title: Bluesky and Storm Charles
+summary: What official bodies, organisations and news outlets posted on Bluesky about Storm Charles, on one time axis against the timeline; the public conversation as counts only; what the official accounts did not post.
+mount: <div id="social" data-base="./" data-signals="../../incidents/2026-11-10-storm-charles/data/signals.json" data-timeline="../../incidents/2026-11-10-storm-charles/timeline.html"><p class="meta">The time axis, the cards and the counts are drawn here from <a href="posts.json">posts.json</a>, <a href="accounts.json">accounts.json</a>, <a href="conversation.json">conversation.json</a> and the timeline's <a href="../../incidents/2026-11-10-storm-charles/data/signals.json">signals.json</a>. Without JavaScript, read the tables below or those files.</p></div>
+head: <link rel="stylesheet" href="../../app/social/social.css"><script src="../../app/social/social.js" defer></script>
+---
+# Bluesky and Storm Charles
+
+> Kept by incident.social@web-summit.dinis, 11 November 2026, 02:30 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~02:10 UTC): "on Bluesky, this is really cool, I like that we can capture that and actually get data. So let's create a whole Bluesky bit". Last read of the accounts: 11 Nov, 02:25 UTC.
+
+**Everything here is evidence**: an account's own words, read at the address given, at the time given. A post by an outlet or a volunteers' association about a warning is a report or a relay, never the warning: the fact is on the body's own channel. Where we compare two times it is our analysis and says so. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+
+## The read so far (11 Nov, 02:25 UTC)
+
+- **The bodies that decide are not here.** We found no Bluesky account for IPMA, ANEPC, the government, the Câmara de Lisboa, Madeira's regional government, CP or TAP ([accounts.json](accounts.json), `not_on_bluesky`: where we looked). Their own sites are their channels.
+- **Web Summit has an account and did not use it for the decision.** Its last post is 10 Nov, 17:36 UTC: "That's a wrap on Day 1 of #WebSummit 2026 🇵🇹". Its page saying Day 2 will not take place went up at 19:09 UTC on 10 November ([`s-1110T1909`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909)); at our read (11 Nov, 02:24 UTC) the account had posted nothing since: 14 posts since 8 November, none on the weather, Wednesday or Thursday.
+- **Who carried the warnings here:** VOST Portugal (a volunteers' association, not an authority) relayed IPMA's red wind warning for Lisbon 37 minutes after IPMA sent it, the red rain warning 15 minutes after, and the move of the red rain to 09:00 57 minutes after: the one change the press we read had not reported by 00:15 ([`s-1111T0015`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1111T0015)). Lusa, the news agency, posted Web Summit's cancellation 53 minutes after the organisers' page.
+- **Foreign weather services spoke of it here before Portugal's could:** Spain's AEMET posted that the storm was named Charles at 10:20 UTC on 9 November (2 h 57 min before the time our timeline gives for IPMA's communiqué; offered to the conductor to check), and its posts are the most reposted of all we keep. The UK's Met Office posted on 10 November at 13:00.
+- **Kept:** 172 posts from 18 listed accounts since 8 November, 158 about the storm. **Counted, not kept:** "depressão Charles" 110; "tempestade Charles" 57; "Storm Charles" 69; "borrasca Charles" 157 public posts.
+
+## The key moments: who posted them here, and how long after
+
+Analysis (ours): the time in the first column is the body's own (the timeline row's, or the time IPMA sent the message); the post is the earliest one by a listed account that we tied to the row ([links.json](links.json)).
+
+| UTC | The decision or warning | Did the body post it on Bluesky? | First listed account to carry it | Posts tied |
+|---|---|---|---|---|
+| 9 Nov, 13:17 | IPMA names the storm Charles ([`s-1109T1317`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1109T1317)) | **no account found** for IPMA | AEMET, [9 Nov, 10:20](https://bsky.app/profile/aemet.es/post/3mzupbdp5422l) (leaves this site): before, by 2 h 57 min | 2 |
+| 9 Nov, 20:30 | ANEPC's warning to the population ([`s-1109T2030`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1109T2030)) | **no account found** for ANEPC | VOST Portugal, [10 Nov, 08:15](https://bsky.app/profile/vost.pt/post/3mzwyrhvb2s2k) (leaves this site): 11 h 45 min after | 1 |
+| 10 Nov, 07:18 | IPMA: red wind warning for Lisbon ([`s-1110T0718`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T0718)) | **no account found** for IPMA | VOST Portugal, [10 Nov, 07:55](https://bsky.app/profile/vost.pt/post/3mzwxn32utr2s) (leaves this site): 37 min after | 2 |
+| 10 Nov, 12:10 | The government declares the alert situation ([`s-1110T1210`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1210)) | **no account found** for the government | Público, [10 Nov, 12:25](https://bsky.app/profile/publico.pt/post/3mzxgr7nj772m) (leaves this site): 15 min after | 2 |
+| 10 Nov, 16:30 | IPMA: red rain warning for Lisbon (sent 16:30) ([`s-1110T1742`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742)) | **no account found** for IPMA | VOST Portugal, [10 Nov, 16:45](https://bsky.app/profile/vost.pt/post/3mzxvakq7y325) (leaves this site): 15 min after | 1 |
+| 10 Nov, 19:09 | Web Summit: Day 2 will not take place ([`s-1110T1909`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909)) | **no**: its last post is 10 Nov, 17:36 ("That's a wrap on Day 1 of #WebSummit 20…") | Agência Lusa, [10 Nov, 20:02](https://bsky.app/profile/lusa.pt/post/3mzyabr6jrv2l) (leaves this site): 53 min after | 2 |
+| 10 Nov, 21:23 | IPMA moves the red rain to 09:00 (sent 21:23) ([`s-1110T2353`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2353)) | **no account found** for IPMA | VOST Portugal, [10 Nov, 22:20](https://bsky.app/profile/vost.pt/post/3mzyhxvwhry25) (leaves this site): 57 min after | 1 |
+
+## What the listed accounts did not post
+
+- Web Summit: nothing about Day 2, Day 3, refunds or the weather (see above).
+- Read and silent on the storm since 8 November: Météo-France; ECMWF; EUMETSAT; Metropolitano de Lisboa (last post of any kind: 2026-03-31); Renascença (last post of any kind: 2026-05-03); The Associated Press; The Guardian; Meteored (last post of any kind: 2026-11-04).
+- Metropolitano de Lisboa's account (the handle is its own domain) has not posted since March 2026.
+- "Did not post" means: not in what the public API returned at our read. A post deleted before our first read would not be seen.
+
+## The most reposted (of the posts we keep, at the last read)
+
+| Reposts and quotes | Account | Posted (UTC) | Text (excerpt) | Address |
+|---|---|---|---|---|
+| 41 | AEMET | 10 Nov, 09:34 | 🌀 Lluvias muy abundantes en el oeste peninsular este martes por la borrasca Bruna. ⚠️ La borrasca Charles, q… | [the post](https://bsky.app/profile/aemet.es/post/3mzx55uqhqk24) (leaves this site) |
+| 40 | AEMET | 9 Nov, 10:20 | ⚠️ Nombrada la borrasca Charles: es un sistema de procedencia subtropical que provocará un temporal muy adver… | [the post](https://bsky.app/profile/aemet.es/post/3mzupbdp5422l) (leaves this site) |
+| 35 | AEMET | 10 Nov, 15:01 | ⚠️ ACTUALIZACIÓN AVISO ESPECIAL / Lluvias fuertes y persistentes, rachas de viento muy fuertes y temporal mar… | [the post](https://bsky.app/profile/aemet.es/post/3mzxph46fcc2e) (leaves this site) |
+| 32 | AEMET | 10 Nov, 17:57 | ⚠️ El paso de la borrasca Charles dará lugar a tiempo muy adverso en la jornada del miércoles en Canarias y a… | [the post](https://bsky.app/profile/aemet.es/post/3mzxzbz52xk27) (leaves this site) |
+| 14 | VOST Portugal | 10 Nov, 09:28 | #FMA_Charles Amanhã, quarta-feira, 11 de novembro de 2026 Portugal Continental - Fica em casa e evita desloca… | [the post](https://bsky.app/profile/vost.pt/post/3mzx4tr23342d) (leaves this site) |
+| 9 | Met Office | 10 Nov, 13:00 | Storm Charles is set to bring disruptive weather to Madeira, Portugal and Spain over the coming days Strong w… | [the post](https://bsky.app/profile/metoffice.gov.uk/post/3mzxipedccg2w) (leaves this site) |
+| 8 | VOST Portugal | 9 Nov, 16:12 | ℹ️🌀 #FMA_CHARLES / Resumo do Comunicado do #IPMA O IPMA atribuiu o nome CHARLES a uma depressão que se encon… | [the post](https://bsky.app/profile/vost.pt/post/3mzvcx3khkw2l) (leaves this site) |
+| 7 | VOST Portugal | 10 Nov, 08:15 | ℹ️ ⚠️ ⛈️ A ANEPC lançou um aviso à população devido à depressão #FMA_Charles que se vai juntar com a #FMA_Bru… | [the post](https://bsky.app/profile/vost.pt/post/3mzwyrhvb2s2k) (leaves this site) |
+
+## The public conversation, as counts
+
+Posts by anyone that match a search, since 8 November: how many, from how many accounts, the busiest hour, the languages the posts declare. **No post, text, handle or address of these is kept**: [conversation.json](conversation.json) holds numbers per hour and nothing else. The searches overlap and are not added up. A "+" means capped.
+
+| Search | Posts | Distinct accounts | Of them, by listed accounts | Busiest hour (posts) | Languages |
+|---|---|---|---|---|---|
+| "depressão Charles" | 110 | 61 | 15 | 10 Nov, 15:00 (14) | none declared 53, pt 43, en 13, es 1 |
+| "tempestade Charles" | 57 | 43 | 0 | 10 Nov, 21:00 (13) | pt 30, none declared 18, en 7, es 1 |
+| "Storm Charles" | 69 | 54 | 5 | 10 Nov, 15:00 (9) | en 38, none declared 22, pt 3, es 3 |
+| "borrasca Charles" | 157 | 92 | 5 | 10 Nov, 20:00 (23) | none declared 69, es 68, ca 11, pt 6 |
+| "tempête Charles" | 20 | 17 | 0 | 10 Nov, 17:00 (4) | none declared 15, fr 4, en 1 |
+| #FMA_Charles | not counted (the API answered 400) | | | | |
+| "Web Summit" Charles | 18 | 17 | 1 | 10 Nov, 20:00 (5) | none declared 13, pt 3, en 2 |
+| "Web Summit" cancelled | 4 | 3 | 0 | 10 Nov, 20:00 (2) | none declared 2, pt 1, en 1 |
+| "Web Summit" cancelada | 1 | 1 | 1 | 10 Nov, 20:00 (1) | none declared 1 |
+
+## The accounts read
+
+Each with the reason it counts as official or public-role, and who decided: [accounts.json](accounts.json). "Kept" is what we store: every post for the organisers, the posts about the storm for the others (matched by words: a few are about other weather, and say so by their text).
+
+| Handle | Who | Kind | Verified by Bluesky | Own posts since 8 Nov | Kept | Last post |
+|---|---|---|---|---|---|---|
+| `websummit.bsky.social` | Web Summit (the organisers) | organiser | no | 14 | 14 | 10 Nov, 17:36 |
+| `aemet.es` | AEMET, Spain's State Meteorological Agency | authority (Spain) | yes | 12 | 4 | 10 Nov, 21:48 |
+| `meteofrance.com` | Météo-France | authority (France) | yes | 3 | 0 | 10 Nov, 15:37 |
+| `metoffice.gov.uk` | Met Office (United Kingdom) | authority (United Kingdom) | yes | 20 | 1 | 10 Nov, 18:00 |
+| `ecmwf.int` | ECMWF, the European Centre for Medium-Range Weather Forecasts | intergovernmental body | yes | 4 | 0 | 10 Nov, 13:43 |
+| `eumetsat.int` | EUMETSAT, Europe's weather-satellite agency | intergovernmental body | no | 3 | 0 | 10 Nov, 10:01 |
+| `vost.pt` | VOST Portugal, a volunteers' association for emergencies (not an authority) | volunteer organisation | no | 109 | 97 | 10 Nov, 23:09 |
+| `metrolisboa.pt` | Metropolitano de Lisboa (the handle is the operator's domain; the profile is empty) | transport operator | no | 0 | 0 | 2026-03-31 13:25 |
+| `lusa.pt` | Agência Lusa, Portugal's news agency | press (wire) | no | 225 | 40 | 11 Nov, 02:22 |
+| `publico.pt` | Público | press | yes | 140 | 9 | 10 Nov, 23:35 |
+| `rr.pt` | Renascença | press | no | 0 | 0 | 2026-05-03 17:01 |
+| `lxparapessoas.pt` | LPP, Lisboa Para Pessoas (a Lisbon newspaper) | press (local) | no | 1 | 1 | 10 Nov, 16:22 |
+| `euronews.com` | Euronews | press | yes | 181 | 4 | 11 Nov, 01:52 |
+| `reuters.com` | Reuters | press (wire) | yes | 387 | 1 | 11 Nov, 02:20 |
+| `apnews.com` | The Associated Press | press (wire) | yes | 111 | 0 | 11 Nov, 01:12 |
+| `theguardian.com` | The Guardian | press | yes | 253 | 0 | 11 Nov, 02:17 |
+| `bloomberg.com` | Bloomberg News | press | yes | 167 | 1 | 11 Nov, 02:00 |
+| `meteored.com` | Meteored (a weather publisher) | press (weather) | no | 0 | 0 | 2026-11-04 12:06 |
+
+Left out, for the conductor to decide (nothing of theirs is stored): `camaralisboa.bsky.social` (not verified, not on the Câmara's domain, no posts: nothing shows it is the Câmara's); `perturbacoes.pt` (says itself that it is unofficial; who runs it is not stated: it could be a private person's); `vostspain.bsky.social` (not verified, not on its own domain; Spain is outside this incident's core); named journalists and meteorologists posting as such (a public role is a judgement per person: none is added without incident.conductor@'s yes. In round 1 their posts are inside the counts only.).
+
+## How this works
+
+**What we call** (Bluesky's public API, no account, no login, one request every 3 seconds, a client named `storm-charles-social-reader`):
+
+| Call | For | What we keep from the answer |
+|---|---|---|
+| `public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=<handle>` | each listed account: does it exist, is it verified | name, verification, follower and post counts |
+| `public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=<handle>&limit=100&filter=posts_no_replies` | each listed account's own posts, back to 8 November (6 pages at most) | per post: time posted, time read, address, text (press: 200 characters), links, hashtags, what media it carries (not the media), counters, Bluesky's content id |
+| `api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=<search>&sort=latest&since=…&until=…` | the public conversation | **numbers only**: posts per hour, per language, how many distinct accounts |
+
+**What is public:** every post read here is public on Bluesky to anyone without an account; so are the handles, the counters and the content ids. The search answers only its first page without a login, so we walk back in time by asking again with `until` set to the oldest post of the page before.
+
+**What we refuse to keep:**
+- any post, name, handle, identifier or address of a **private person**. The search's answer is counted in memory and dropped; it is never written to disk, to a vault or to a log.
+- a mention of an unlisted account inside a listed account's post: replaced by "@[an account not on our list]".
+- replies under official posts, follower lists, likes by named accounts: never requested.
+- images and video: not downloaded, not shown. The card says what the post carries and links out.
+- press text beyond a short excerpt.
+
+**What a card shows:** who (and why the account counts), the time posted, the text, the timeline row it bears on and how, when we read it, the counters at that read, the content id, our record, and last the address on Bluesky, marked as leaving this site. Screenshots of the official posts are incident.archivist@'s (asked: the list is in [capture-asks.json](capture-asks.json)); when captured, the card will show our capture first.
+
+**The files:** [accounts.json](accounts.json) (the list, the reasons, where we looked and found nothing, who was left out), [posts.json](posts.json) (the index; [posts/](posts.json) holds one file per day: [2026-11-08](posts/2026-11-08.json), [2026-11-09](posts/2026-11-09.json), [2026-11-10](posts/2026-11-10.json), [2026-11-11](posts/2026-11-11.json)), [links.json](links.json) (post to timeline row), [offers.json](offers.json) (13 things the timeline lacks, offered to the conductor), [conversation.json](conversation.json) (the counts). The reader: [tools/social-read.mjs](../../tools/social-read.mjs); this page: [tools/social-page.mjs](../../tools/social-page.mjs).
+
+## Limits
+
+- Bluesky is small in Portugal: silence here says where a body publishes, not that it was silent.
+- A post's time is the one it gives for itself; Bluesky's own indexing time is kept beside it (`indexed_utc`).
+- "About the storm" is a match on words. It can miss a post and keep a stray one.
+- Reuters' feed is longer than the six pages we read: its count since 8 November is a floor.
+- Mastodon's official accounts and X (only what reads without a login) are next; not here yet.
+
+A wrong account, a wrong time, an account that should be on the list or off it: [contribute](../../contribute.md).

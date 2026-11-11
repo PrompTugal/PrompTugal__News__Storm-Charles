@@ -1,0 +1,40 @@
+/* Bluesky as a section (incident.social@web-summit.dinis). Tokens only (design/README.md): no hex colours here. */
+#social { margin: 0 0 28px; }
+#social .card { margin-top: 16px; }
+#social .wx-tile b { font: 700 28px/1.1 var(--sans); font-variant-numeric: tabular-nums; }
+#social .wx-tile { border-top-color: var(--line-2); }
+.so-chart { display: block; width: 100%; min-width: 900px; height: auto; font-family: var(--sans); }
+.so-chart .grid { stroke: var(--line); stroke-width: 1; } .so-chart .grid.day { stroke: var(--line-2); }
+.so-chart .ax { fill: var(--ink-2); font: 11px var(--mono); } .so-chart .ax.b { fill: var(--ink); font-weight: 700; }
+.so-chart .lane { fill: var(--ink); font-size: 12.5px; font-weight: 600; } .so-chart .lane.sub { fill: var(--ink-2); font-weight: 400; font-size: 11px; }
+.so-chart .band { fill: var(--surface-2); }
+.so-chart .key line { stroke: var(--ink); stroke-width: 1.5; } .so-chart .key text { fill: var(--ink); font-size: 11px; font-weight: 600; paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+.so-chart .key.sel line { stroke: var(--focus); stroke-width: 2.5; }
+.so-chart .now { stroke: var(--focus); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.so-chart .p { fill: var(--ink-2); stroke: var(--surface); stroke-width: 2; cursor: pointer; }
+.so-chart .p.storm { fill: var(--focus); }
+.so-chart .p.linked { stroke: var(--ink); stroke-width: 2; }
+.so-chart .p:hover, .so-chart .p.sel { fill: var(--ink); r: 8; }
+.so-chart .hit { fill: transparent; cursor: pointer; }
+.so-chart .bar { fill: var(--focus); } .so-chart .bar:hover { fill: var(--ink); }
+.so-chart .silent { stroke: var(--ink-2); stroke-width: 1.5; stroke-dasharray: 2 4; } .so-chart .silent-t { fill: var(--ink-2); font-size: 11px; font-style: italic; }
+.so-tip { position: fixed; z-index: 30; pointer-events: none; background: var(--surface); border: 1px solid var(--line-2); border-radius: 6px; padding: 6px 9px; font-size: 12.5px; max-width: 320px; box-shadow: 0 2px 10px color-mix(in srgb, var(--ink) 18%, transparent); }
+.so-tip time { font-family: var(--mono); }
+.so-pick { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 10px; }
+.so-pick button { font: 13px var(--sans); padding: 4px 10px; border: 1px solid var(--line-2); border-radius: 14px; background: var(--surface); color: var(--ink); cursor: pointer; }
+.so-pick button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.so-card { border: 1px solid var(--line-2); border-left: 4px solid var(--ink-2); border-radius: 8px; padding: 12px 14px; background: var(--surface); margin: 10px 0; }
+.so-card header { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; margin-bottom: 6px; }
+.so-card header b { font-size: 15px; } .so-card time, .so-list time { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.so-card .txt { white-space: pre-wrap; overflow-wrap: anywhere; margin: 6px 0; font-size: 15px; }
+.so-card .lbl, .so-list .lbl { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 3px 6px; border-radius: 3px; background: var(--surface-2); color: var(--ink-2); }
+.so-card .row { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 8px; font-size: 13.5px; }
+.so-card dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; font-size: 13px; margin: 8px 0 0; color: var(--ink-2); } .so-card dd { margin: 0; overflow-wrap: anywhere; } .so-card dd code { font-size: 12px; }
+a.so-out::after { content: " ↗ leaves this site"; font-size: 11px; color: var(--ink-2); white-space: nowrap; }
+.so-list { list-style: none; margin: 0; padding: 0; max-height: 520px; overflow: auto; border-top: 1px solid var(--line); }
+.so-list li { display: grid; grid-template-columns: 96px 150px 1fr; gap: 10px; padding: 6px 4px; border-bottom: 1px solid var(--line); font-size: 13.5px; cursor: pointer; align-items: baseline; }
+.so-list li:hover, .so-list li.sel { background: var(--surface-2); }
+.so-list .t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.so-lag { width: 100%; border-collapse: collapse; font-size: 14px; } .so-lag th, .so-lag td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; } .so-lag td.n { font-family: var(--mono); white-space: nowrap; }
+.so-lag .none { color: var(--ink-2); font-style: italic; }
+@media (max-width: 640px) { .so-list li { grid-template-columns: 84px 1fr; } .so-list li .t { grid-column: 1 / -1; white-space: normal; } }

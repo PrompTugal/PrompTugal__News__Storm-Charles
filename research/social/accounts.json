@@ -1,0 +1,55 @@
+{
+  "about": "The explicit list of social accounts this site reads, and the ones it looked at and left out. An account is read only if it is an official body, an organisation, a news outlet, or a person in a public role speaking in that role (CLAUDE.md, People). Every entry says why it counts and who decided. `keep` says what tools/social-read.mjs stores from it: `all` (every post of its own since `since`), `storm` (only its posts about the storm). `text` says how much of a post is kept: `full` for a body's own words, `excerpt` (200 characters at most, with the link) for press, whose text is quoted only in short excerpts. A private person is never on this list: not named, not linked, not quoted, not stored.",
+  "by": "incident.social@web-summit.dinis",
+  "updated": "2026-11-11T02:30:00Z",
+  "since": "2026-11-08T00:00:00Z",
+  "how_an_account_is_judged": [
+    "verified: Bluesky's own verification mark is on the profile (read from app.bsky.actor.getProfile, `verification.verifiedStatus`)",
+    "own-domain: the handle is the organisation's own internet domain, which only whoever controls that domain's DNS or web server can set (Bluesky's handle rule); we name the domain and what the organisation publishes there",
+    "listed-by-another-agent: an account another agent of this team already read as the body's own, with that agent's file",
+    "none of these: the account is left out and listed under `left_out` for incident.conductor@ to decide"
+  ],
+  "accounts": [
+    { "platform": "bluesky", "handle": "websummit.bsky.social", "who": "Web Summit (the organisers)", "kind": "organiser", "entity": "web-summit", "keep": "all", "text": "full", "why": "listed-by-another-agent: incident.researcher@ lists it as the organisers' Bluesky account (incidents/2026-11-10-storm-charles/data/decisions/sources.json, `websummit-bluesky`); the profile names itself Web Summit and posts the event's programme. Not verified by Bluesky and not on websummit.com's domain: said on the page.", "decided_by": "incident.researcher@web-summit.dinis (10 November), kept by incident.social@", "label": "evidence" },
+    { "platform": "bluesky", "handle": "aemet.es", "who": "AEMET, Spain's State Meteorological Agency", "kind": "authority (Spain)", "entity": "aemet", "keep": "storm", "text": "full", "why": "verified and own-domain: aemet.es is the agency's domain; the profile says \"Cuenta oficial\". AEMET, IPMA and Météo-France name storms together (the south-west group).", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "meteofrance.com", "who": "Météo-France", "kind": "authority (France)", "entity": "meteo-france", "keep": "storm", "text": "full", "why": "verified and own-domain: meteofrance.com is the service's domain; the profile says \"compte officiel\". Same storm-naming group as IPMA.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "metoffice.gov.uk", "who": "Met Office (United Kingdom)", "kind": "authority (United Kingdom)", "entity": "met-office", "keep": "storm", "text": "full", "why": "verified and own-domain (a gov.uk domain).", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "ecmwf.int", "who": "ECMWF, the European Centre for Medium-Range Weather Forecasts", "kind": "intergovernmental body", "entity": "ecmwf", "keep": "storm", "text": "full", "why": "verified and own-domain (ecmwf.int). Its model is the one the press quoted on the track moving south (timeline row s-1110T2235 and after).", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "eumetsat.int", "who": "EUMETSAT, Europe's weather-satellite agency", "kind": "intergovernmental body", "entity": "eumetsat", "keep": "storm", "text": "full", "why": "own-domain (eumetsat.int); not verified by Bluesky.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "vost.pt", "home": "pt", "who": "VOST Portugal, a volunteers' association for emergencies (not an authority)", "kind": "volunteer organisation", "entity": "vost-portugal", "keep": "storm", "text": "full", "why": "own-domain: vost.pt is the association's site. An organisation, not a private person. It relays IPMA's and ANEPC's notices; a relay is evidence, never the fact.", "decided_by": "incident.media@web-summit.dinis (10 November), kept by incident.social@", "label": "evidence" },
+    { "platform": "bluesky", "handle": "metrolisboa.pt", "home": "pt", "who": "Metropolitano de Lisboa (the handle is the operator's domain; the profile is empty)", "kind": "transport operator", "entity": "metro-lisboa", "keep": "storm", "text": "full", "why": "own-domain: metrolisboa.pt is the operator's site. The profile has no name or description and its last post is from March 2026: read to show that it is silent.", "decided_by": "incident.media@web-summit.dinis (10 November), kept by incident.social@", "label": "evidence" },
+    { "platform": "bluesky", "handle": "lusa.pt", "home": "pt", "who": "Agência Lusa, Portugal's news agency", "kind": "press (wire)", "entity": "lusa", "keep": "storm", "text": "excerpt", "why": "own-domain (lusa.pt); the profile says \"Conta oficial da Lusa\". Not verified by Bluesky.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "publico.pt", "home": "pt", "who": "Público", "kind": "press", "entity": "publico", "keep": "storm", "text": "excerpt", "why": "verified and own-domain (publico.pt).", "decided_by": "incident.media@web-summit.dinis (10 November), kept by incident.social@", "label": "evidence" },
+    { "platform": "bluesky", "handle": "rr.pt", "home": "pt", "who": "Renascença", "kind": "press", "entity": "renascenca", "keep": "storm", "text": "excerpt", "why": "own-domain (rr.pt). Not verified; 15 posts in all.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "lxparapessoas.pt", "home": "pt", "who": "LPP, Lisboa Para Pessoas (a Lisbon newspaper)", "kind": "press (local)", "entity": "lisboa-para-pessoas", "keep": "storm", "text": "excerpt", "why": "own-domain; the profile names the newspaper and links its site. Not verified.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "euronews.com", "who": "Euronews", "kind": "press", "entity": "euronews", "keep": "storm", "text": "excerpt", "why": "verified and own-domain.", "decided_by": "incident.media@web-summit.dinis (10 November), kept by incident.social@", "label": "evidence" },
+    { "platform": "bluesky", "handle": "reuters.com", "who": "Reuters", "kind": "press (wire)", "entity": "reuters", "keep": "storm", "text": "excerpt", "why": "verified and own-domain.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "apnews.com", "who": "The Associated Press", "kind": "press (wire)", "entity": "ap", "keep": "storm", "text": "excerpt", "why": "verified and own-domain.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "theguardian.com", "who": "The Guardian", "kind": "press", "entity": "the-guardian", "keep": "storm", "text": "excerpt", "why": "verified and own-domain.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "bloomberg.com", "who": "Bloomberg News", "kind": "press", "entity": "bloomberg", "keep": "storm", "text": "excerpt", "why": "verified and own-domain.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" },
+    { "platform": "bluesky", "handle": "meteored.com", "who": "Meteored (a weather publisher)", "kind": "press (weather)", "entity": "meteored", "keep": "storm", "text": "excerpt", "why": "own-domain. Not verified.", "decided_by": "incident.social@web-summit.dinis", "label": "evidence" }
+  ],
+  "not_on_bluesky": {
+    "about": "Bodies that decide or warn in this incident, and the Portuguese outlets that cover it most, for which we found no account. Looked for by handle on the body's own domain (app.bsky.actor.getProfile answers 400 for a handle that does not resolve) and by name (app.bsky.actor.searchActors, where only verified or own-domain results were looked at). Absent from our search is not proof of absence.",
+    "read_utc": "2026-11-11T02:14:00Z",
+    "bodies": [
+      { "who": "IPMA", "tried": ["ipma.pt", "search: IPMA"], "its_channel": "https://www.ipma.pt/" },
+      { "who": "ANEPC (civil protection)", "tried": ["prociv.gov.pt", "search: Proteção Civil"], "its_channel": "https://prociv.gov.pt/" },
+      { "who": "The government of Portugal", "tried": ["portugal.gov.pt", "search: Governo Portugal"], "its_channel": "https://www.portugal.gov.pt/" },
+      { "who": "Câmara Municipal de Lisboa", "tried": ["cm-lisboa.pt", "lisboa.pt", "search: Câmara Lisboa"], "its_channel": "https://www.lisboa.pt/", "note": "an account that names itself the Câmara exists (see left_out): unverified, no posts" },
+      { "who": "The regional government of Madeira", "tried": ["madeira.gov.pt", "search: Madeira"], "its_channel": "https://www.madeira.gov.pt/" },
+      { "who": "CP (trains), TAP (airline)", "tried": ["cp.pt", "flytap.com", "search: TAP Air Portugal"], "its_channel": "their websites" },
+      { "who": "MeteoAlarm, WMO, Copernicus (on their own domains)", "tried": ["meteoalarm.org", "wmo.int", "copernicus.eu"], "its_channel": "their websites" },
+      { "who": "RTP, Observador, Expresso, Diário de Notícias, Jornal de Notícias, CNN Portugal, SIC Notícias, ECO, TSF", "tried": ["rtp.pt", "observador.pt", "expresso.pt", "dn.pt", "jn.pt", "cnnportugal.iol.pt", "sicnoticias.pt", "eco.sapo.pt", "tsf.pt", "search by name"], "its_channel": "their websites (research/media/coverage.json)" }
+    ]
+  },
+  "left_out": {
+    "about": "Accounts looked at and not read, for incident.conductor@ to decide. None of their posts is stored.",
+    "accounts": [
+      { "platform": "bluesky", "handle": "camaralisboa.bsky.social", "what": "names itself the Câmara Municipal de Lisboa", "why_left_out": "not verified, not on the Câmara's domain, no posts: nothing shows it is the Câmara's" },
+      { "platform": "bluesky", "handle": "perturbacoes.pt", "what": "an automated account relaying Lisbon Metro disruptions", "why_left_out": "says itself that it is unofficial; who runs it is not stated: it could be a private person's" },
+      { "platform": "bluesky", "handle": "vostspain.bsky.social", "what": "names itself VOST Spain", "why_left_out": "not verified, not on its own domain; Spain is outside this incident's core" },
+      { "platform": "bluesky", "what": "named journalists and meteorologists posting as such", "why_left_out": "a public role is a judgement per person: none is added without incident.conductor@'s yes. In round 1 their posts are inside the counts only." }
+    ]
+  }
+}
