@@ -1,13 +1,13 @@
 # Expresso: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 17:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | weekly, online daily (pt) |
-| Items we read | 41: 41 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:21 to 11 Nov 15:57 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 41 not read |
+| Items we read | 42: 42 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:21 to 11 Nov 16:37 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 42 not read |
 | Does best (from the counts) | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 
 ## Against the key moments
@@ -25,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 41 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 42 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -90,3 +90,4 @@ Its public contact page was not found by our reader (start at [Expresso ↗](htt
 | 11 Nov 14:02 | article | not read | [Tempestade Charles provoca danos no cocelho de Cascais e Oeiras ↗](https://expresso.pt/sociedade/2026-11-11-tempestade-charles-provoca-danos-no-cocelho-de-cascais-e-oeiras-bed42370) |
 | 11 Nov 15:17 | article | not read | [Tempestade ‘Charles” cancela metade dos voos nos aeroportos portugueses. Maioria são da TAP ↗](https://expresso.pt/economia/transportes/aviacao/2026-11-11-tempestade-charles-cancela-metade-dos-voos-nos-aeroportos-portugueses.-maioria-sao-da-tap-be48a846) |
 | 11 Nov 15:57 | article | not read | [Situação de alerta não será prolongada: MAI recusa excesso de zelo e avisa para perigo no Algarve ↗](https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-e-avisa-para-perigo-no-algarve-1d821b8b) |
+| 11 Nov 16:37 | article | not read | [Risco de inundações urbanas desce, mas mantém-se em 54 municípios ↗](https://expresso.pt/tempestades/2026-11-11-risco-de-inundacoes-urbanas-desce-mas-mantem-se-em-54-municipios-c816c391) |

@@ -1,20 +1,20 @@
 # The outlets covering Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 17:42 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | Outlet | Kind | Items read | First on | Wire share | Terms page read | AI crawlers disallowed in robots.txt | Readable by a plain bot |
 |---|---|---|---|---|---|---|---|
-| [Notícias ao Minuto](noticias-ao-minuto.md) | online | 129 | 1 | 86% | yes | 8 of 10 | yes |
-| [CNN Portugal](cnn-portugal.md) | news channel | 68 |  | 67% | not found | 1 of 10 | yes |
-| [Observador](observador.md) | online daily | 57 | 4 | 14% | yes | 1 of 10 | yes |
-| [RTP](rtp.md) | public broadcaster | 48 |  | 0% | yes | 0 of 10 | yes |
-| [Expresso](expresso.md) | weekly, online daily | 41 |  |  | refused (403) | not read | feed only |
+| [Notícias ao Minuto](noticias-ao-minuto.md) | online | 137 | 1 | 87% | yes | 8 of 10 | yes |
+| [CNN Portugal](cnn-portugal.md) | news channel | 71 |  | 67% | not found | 1 of 10 | yes |
+| [Observador](observador.md) | online daily | 59 | 5 | 15% | yes | 1 of 10 | yes |
+| [RTP](rtp.md) | public broadcaster | 51 |  | 0% | yes | 0 of 10 | yes |
+| [Expresso](expresso.md) | weekly, online daily | 42 |  |  | refused (403) | not read | feed only |
+| [Correio da Manhã](correio-da-manha.md) | daily | 30 |  | 33% | yes | 3 of 10 | yes |
 | [Público](publico.md) | daily | 28 | 1 | 12% | yes | 10 of 10 | yes |
 | [Diário de Notícias](dn.md) | daily | 28 | 4 | 11% | yes | 0 of 10 | yes |
-| [Correio da Manhã](correio-da-manha.md) | daily | 27 |  | 33% | yes | 3 of 10 | yes |
-| [Jornal Económico](jornal-economico.md) | business weekly, online daily | 19 |  | 0% | yes | 0 of 10 | yes |
+| [Jornal Económico](jornal-economico.md) | business weekly, online daily | 20 |  | 0% | yes | 0 of 10 | yes |
 | [ECO](eco.md) | business daily (online) | 18 | 1 | 0% | yes | 0 of 10 | yes |
-| [Portugal Resident](portugal-resident.md) | English-language weekly in Portugal | 7 |  | 0% | yes | 9 of 10 | yes |
+| [Portugal Resident](portugal-resident.md) | English-language weekly in Portugal | 8 |  | 0% | yes | 9 of 10 | yes |
 | [TEK Notícias (SAPO)](tek.md) | technology | 5 |  | 0% | not found | 0 of 10 | yes |
 | [Euronews](euronews.md) | international broadcaster | 3 |  | 0% | yes | 2 of 10 | yes |
 | [Jornal de Negócios](negocios.md) | business daily | 2 | 2 | 0% | not found | 3 of 10 | yes |
@@ -43,9 +43,9 @@ From by-lines, and from what an entry itself says. It does not see quotes or lin
 
 | Who | Verb | Whom | Items | How we know |
 |---|---|---|---|---|
-| [Notícias ao Minuto](noticias-ao-minuto.md) | published the wire of | [Lusa](lusa.md) | 112 | the item's by-line names the agency |
-| [Observador](observador.md) | published the wire of | [Lusa](lusa.md) | 10 | the item's by-line names the agency |
-| [Correio da Manhã](correio-da-manha.md) | published the wire of | [Lusa](lusa.md) | 9 | the item's by-line names the agency |
+| [Notícias ao Minuto](noticias-ao-minuto.md) | published the wire of | [Lusa](lusa.md) | 120 | the item's by-line names the agency |
+| [Observador](observador.md) | published the wire of | [Lusa](lusa.md) | 11 | the item's by-line names the agency |
+| [Correio da Manhã](correio-da-manha.md) | published the wire of | [Lusa](lusa.md) | 10 | the item's by-line names the agency |
 | [CNN Portugal](cnn-portugal.md) | published the wire of | [Lusa](lusa.md) | 6 | the item's by-line names the agency |
 | [Diário de Notícias](dn.md) | published the wire of | [Lusa](lusa.md) | 4 | the item's by-line names the agency |
 | [Público](publico.md) | published the wire of | [Lusa](lusa.md) | 4 | the item's by-line names the agency |

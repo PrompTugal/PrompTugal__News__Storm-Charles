@@ -43,8 +43,9 @@ FACTS.sort((a, b) => (a.primary_time || a.from || '').localeCompare(b.primary_ti
 const events = FACTS.map(e => {
     const from = e.from || e.primary_time, until = e.until || '2026-11-13T00:00:00Z', re = new RegExp(e.pattern, 'i')
     const items = []
-    for (const a of A) if (a.published && a.published >= from && a.published < until && !a.published_precision && a.kind !== 'live' && re.test(a.title)) items.push({ outlet: a.outlet, published: a.published.replace(/\.\d+Z$/, 'Z'), via: a.kind, byline: a.byline, byline_kind: a.byline_kind, title: a.title, url: a.url, article: a.id })
-    for (const l of LIVE.entries) if (l.fact === e.id) items.push({ outlet: l.outlet, published: l.at, via: 'live blog entry', byline: [], byline_kind: 'not kept', title: l.title, url: l.url })
+    const nm = (o, t) => (e.not_matches || []).some(n => n.outlet === o && n.at === t.replace(/\.\d+Z$/, 'Z'))   // read by hand: not a report of this fact (facts.json)
+    for (const a of A) if (a.published && !nm(a.outlet, a.published) && a.published >= from && a.published < until && !a.published_precision && a.kind !== 'live' && re.test(a.title)) items.push({ outlet: a.outlet, published: a.published.replace(/\.\d+Z$/, 'Z'), via: a.kind, byline: a.byline, byline_kind: a.byline_kind, title: a.title, url: a.url, article: a.id })
+    for (const l of LIVE.entries) if (l.fact === e.id && !nm(l.outlet, l.at)) items.push({ outlet: l.outlet, published: l.at, via: 'live blog entry', byline: [], byline_kind: 'not kept', title: l.title, url: l.url })
     items.sort((x, y) => x.published.localeCompare(y.published))
     const firsts = new Map(); for (const it of items) if (!firsts.has(it.outlet)) firsts.set(it.outlet, it)
     const rows = [...firsts.values()].map((r, i) => ({ rank: i + 1, ...r, seconds_after_primary: e.primary_time ? Math.round((Date.parse(r.published) - Date.parse(e.primary_time)) / 1000) : null, minutes_after_primary: e.primary_time ? Math.trunc((Date.parse(r.published) - Date.parse(e.primary_time)) / 60000) : null }))

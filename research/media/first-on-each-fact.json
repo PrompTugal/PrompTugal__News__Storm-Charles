@@ -2,7 +2,7 @@
  "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T16:38:52Z",
+ "updated": "2026-11-11T17:42:54Z",
  "lag_rule": "minutes_after_primary = whole minutes elapsed, truncated toward zero (19:09:00 to 19:41:31 is 32 minutes, not 33); seconds_after_primary carries the exact difference. Times are each page's own, to the second where the page gives seconds.",
  "shape_for_other_series": "To put another series (for example Wikipedia's first edit per fact) on the same axis: for each fact id here, a row {fact, series (e.g. \"wikipedia-pt\"), at (UTC), title or summary, url, via, seconds_after_primary, minutes_after_primary}. first-on-each-fact.json's facts[].first_by_outlet[] rows have that shape with `outlet` as the series and `published` as `at`.",
  "facts": [
@@ -1024,10 +1024,39 @@
    "primary_note": "IPMA's CAP messages sent 15:05:38 (two), read from MeteoAlarm's Portugal feed (timeline row s-1111T1526). Matched on titles",
    "primary_label": "fact",
    "notes": [
-    "Added 15:38 UTC by the third session."
+    "Added 15:38 UTC by the third session.",
+    "17:42 UTC: the pattern now also takes \"Santarém ... sem avisos vermelhos\" (Lusa's title of about 17:00, read by hand: Santarém \"já só tem avisos amarelos para chuva e vento\")."
    ],
-   "items_matched": 0,
-   "first_by_outlet": []
+   "items_matched": 2,
+   "first_by_outlet": [
+    {
+     "rank": 1,
+     "outlet": "observador",
+     "published": "2026-11-11T17:05:09Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Lisboa, Santarém e Setúbal sem avisos vermelhos, Faro mantém nível mais elevado",
+     "url": "https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791386-scroll",
+     "seconds_after_primary": 7171,
+     "minutes_after_primary": 119
+    },
+    {
+     "rank": 2,
+     "outlet": "rtp",
+     "published": "2026-11-11T17:17:11Z",
+     "via": "article",
+     "byline": [
+      "Rádio e Televisão de Portugal"
+     ],
+     "byline_kind": "desk",
+     "title": "Lisboa, Santarém e Setúbal sem avisos vermelhos, Faro mantém nível mais elevado",
+     "url": "https://www.rtp.pt/noticias/pais/lisboa-santarem-e-setubal-sem-avisos-vermelhos-faro-mantem-nivel-mais-elevado_n1778482",
+     "article": "A-cb21327f",
+     "seconds_after_primary": 7893,
+     "minutes_after_primary": 131
+    }
+   ]
   },
   {
    "id": "18-wind-ended-no-red",
@@ -1036,7 +1065,9 @@
    "primary_note": "IPMA's CAP batch sent 15:55:03 (14 messages), seen in MeteoAlarm's Portugal feed at 16:09; IPMA's warnings page agrees at 16:24 (timeline row s-1111T1609). Not an all-clear. Matched on titles",
    "primary_label": "fact",
    "notes": [
-    "Added 16:38 UTC by the third session."
+    "Added 16:38 UTC by the third session.",
+    "16:39 UTC: no title we read reports it yet. Evidence beside it: from 16:03 to 16:30 DN, Público and RTP title the Interior Minister's words that \"o período mais grave está à porta\" (DN 16:03, Público 16:05, RTP 16:30), after IPMA's 15:55:03 batch; when he spoke is not given in the titles, so no comparison with IPMA's time is made here.",
+    "17:42 UTC: two title matches (Observador's live blog 17:05:09, RTP 17:17:11) are Lusa's report of the earlier state and are excluded (not_matches). No report of the 15:55:03 batch itself found yet."
    ],
    "items_matched": 0,
    "first_by_outlet": []

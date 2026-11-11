@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 17:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 68: 20 articles, 0 live, 48 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 15:59 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 59 not read; wire share 67% |
+| Items we read | 71: 20 articles, 0 live, 51 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 16:52 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 62 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -25,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 68 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 71 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -122,3 +122,6 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 15:26 | article | not read | [MAI diz que estado de alerta termina à meia-noite e espera que quinta-feira retorne à normalidade ↗](https://cnnportugal.iol.pt/alerta/mau-tempo/mai-diz-que-estado-de-alerta-termina-a-meia-noite-e-espera-que-quinta-feira-retorne-a-normalidade/20261111/6af485f8d34e5a653d733c4a) |
 | 11 Nov 15:51 | article | not read | [Depois da depressão Charles, vem aí um "corredor de tempestades": prepare-se para chuva forte até d… ↗](https://cnnportugal.iol.pt/clima/mau-tempo/depois-da-depressao-charles-vem-ai-um-corredor-de-tempestades-prepare-se-para-chuva-forte-ate-dia-18/20261111/6af47df8d34e5a653d733c20) |
 | 11 Nov 15:59 | video | not read | [Charles. Os piores cenários não se confirmaram, mas "não é um sinal de ignorância ou de falha cient… ↗](https://cnnportugal.iol.pt/videos/charles-os-piores-cenarios-nao-se-confirmaram-mas-nao-e-um-sinal-de-ignorancia-ou-de-falha-cientifica/6af48ce60cf2aafa0453e2f3) |
+| 11 Nov 16:51 | video | not read | [Sines preparou-se para o pior da tempestade Charles mas escapou aos efeitos mais graves ↗](https://cnnportugal.iol.pt/videos/sines-preparou-se-para-o-pior-da-tempestade-charles-mas-escapou-aos-efeitos-mais-graves/6af4924b0cf2aafa0453e30f) |
+| 11 Nov 16:52 | video | not read | [Operações subaquáticas, drones, geradores e autotanques: foi assim que a GNR se preparou para receb… ↗](https://cnnportugal.iol.pt/videos/operacoes-subaquaticas-drones-geradores-e-autotanques-foi-assim-que-a-gnr-se-preparou-para-receber-a-tempestade-charles/6af499d60cf2051820fb159f) |
+| 11 Nov 16:52 | video | not read | [Apesar da "fase de acalmia", ainda "é importante estar vigilante" ao mau tempo ↗](https://cnnportugal.iol.pt/videos/apesar-da-fase-de-acalmia-ainda-e-importante-estar-vigilante-ao-mau-tempo/6af498bb0cf2cb2507aa8585) |
