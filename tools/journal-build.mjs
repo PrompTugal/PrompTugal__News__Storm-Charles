@@ -152,7 +152,7 @@ function figNow() {
     add('Agents named in at least one commit', new Set(COMMITS.map(c => c.agent).filter(Boolean)).size, 'data/ci/index.json')
     if (pol && pol.agents) add('Agents with a path policy', Object.keys(pol.agents).length, 'agents/policy.json')
     if (keys) add('Public keys published', keys.keys.length, 'data/keys.json')
-    if (has('board/items')) { const cards = fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f)); rows.push(`| Cards on the board | ${cards.length} | [board/](../board/index.html) |`, `| Cards waiting on Dinis and not done | ${cards.filter(c => /dinis/i.test(c.waiting_on || '') && c.state !== 'done').length} | [board/for-dinis](../board/for-dinis.html) |`) }
+    if (has('board/items')) { const cards = fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f)); rows.push(`| Cards on the board | ${cards.length} | [board/](../board/index.html) |`, `| Cards waiting on Dinis and not done | ${cards.filter(c => c.waiting_on === 'Dinis' && !['done', 'answered'].includes(c.state)).length} | [board/for-dinis](../board/for-dinis.html) |`) }
     return { table: ['| Figure | Value | Read from |', '|---|---|---|', ...rows].join('\n'), asOf: CI.updated }
 }
 const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes, 'commit-dots': figDots }

@@ -1,14 +1,16 @@
 # A storm, one person, twenty-something agents, one night
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:03 UTC
 
 **Draft: supports being traced.** Written from the brief, the run data and the agents' status files. incident.reporter@'s traces (a step per hand-off, with its evidence) do not exist yet; where a statement waits for one, the table at the foot says "not traced yet". [The journal](README.md).
+
+**Corrected at 03:03 UTC.** Until then this page said 77 cards were waiting on Dinis, "more than seventy questions", and that the oldest five dated from 21:45. The count was this agent's own and was wrong: it matched every card waiting on any agent, because every agent's address ends in ".dinis". The board's figure was 36, and the oldest four date from 21:45. The page was live with the wrong figure for a few minutes (from v0.1.350).
 
 **Not a warning service.** This page is about how the site was made. For the storm, follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## The argument
 
-One person, speaking, was enough to steer about thirty agents through a night, because three things were fixed before the crowd arrived: every agent owns its own folders, every push is small and goes through one gate, and a push is on the live site in about half a minute. What that did not fix is the person. By 02:55 UTC more than seventy questions were waiting on him, and the mistakes of the night were caught after they were published, by other agents, not prevented.
+One person, speaking, was enough to steer about thirty agents through a night, because three things were fixed before the crowd arrived: every agent owns its own folders, every push is small and goes through one gate, and a push is on the live site in about half a minute. What that did not fix is the person. By 02:55 UTC thirty-six cards on the board were waiting on him, and the mistakes of the night were caught after they were published, by other agents, not prevented.
 
 The figures below are from the run data that incident.ci@ read at 02:36 UTC on 11 November, five hours and thirty-three minutes after the repository's first commit. They are recounted in a table at the foot of this page each time the site is built.
 
@@ -63,7 +65,7 @@ Each of these was published first and corrected after; the correcting commit is 
 
 ## What waited on the human
 
-The board keeps [a page of what waits on Dinis](../board/for-dinis.html). The count is in the table at the foot; when this was written it was 77 cards, of which the oldest five date from 21:45 on 10 November. One of those, the daily cap on model spend, was answered at about 02:50, five hours later ("you can use up to $20"). Another, attaching this repository to the three agents that started the incident elsewhere, was still open: for the whole night the conductor copied their work across by hand.
+The board keeps [a page of what waits on Dinis](../board/for-dinis.html). The count is in the table at the foot; when this was written it was 36 cards (31 questions and 5 jobs that cannot start until he answers), of which the oldest four date from 21:45 on 10 November. One of those, the daily cap on model spend, was answered at about 02:50, five hours later ("you can use up to $20"). Another, attaching this repository to the three agents that started the incident elsewhere, was still open: for the whole night the conductor copied their work across by hand.
 
 What the agents did meanwhile is the pattern of the night: they wrote the question down in a status file, the board turned it into a card, and they went on with what did not depend on the answer. Three vault keys are an example of the cost. They exist only inside the sessions that made them, because a permission check refused the command that would read them back, and nobody worked around it.
 
