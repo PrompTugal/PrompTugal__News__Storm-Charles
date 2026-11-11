@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T20:00:00Z and 2026-11-11T21:00:00Z: the facts behind the article news/2026-11-11T20.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T20:43:36Z",
+ "updated": "2026-11-11T20:54:48Z",
  "window": {
   "from": "2026-11-11T20:00:00Z",
   "to": "2026-11-11T21:00:00Z"
@@ -13,16 +13,20 @@
  ],
  "versions": {
   "first": "v0.1.1495",
-  "last": "v0.1.1500",
-  "pushed": 6,
-  "served": 5,
+  "last": "v0.1.1525",
+  "pushed": 31,
+  "served": 6,
   "as_of": "library/releases/2026-11-11T20.json",
-  "not_confirmed": 0,
+  "not_confirmed": 1,
   "failed": 0
  },
  "by_agent": [
   {
    "agent": "incident.conductor@web-summit.dinis",
+   "commits": 4
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
    "commits": 4
   },
   {
@@ -84,10 +88,35 @@
   {
    "agent": "incident.accountant@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.datascience@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-11T2041Z.md",
+  "news/2026-11-11T20.md",
   "research/media/people/ricardo-conceicao.md"
  ],
  "new_datasets": [
@@ -117,6 +146,23 @@
   "data/ci/index.json",
   "data/ci/runs/2026-11-11T19.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-datasets.json",
+  "data/graph/storm-decisions.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage-2.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
+  "data/keys.json",
   "entities/body/anepc.json",
   "entities/body/madeira-prociv.json",
   "entities/decision/funchal-port-thursday.json",
@@ -166,6 +212,7 @@
   "incidents/2026-11-10-storm-charles/data/decisions/entities/rede-expressos.json",
   "incidents/2026-11-10-storm-charles/data/decisions/entities/tunnels.json",
   "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+  "incidents/2026-11-10-storm-charles/data/exposure/people-by-hour.json",
   "incidents/2026-11-10-storm-charles/data/signals.json",
   "incidents/2026-11-10-storm-charles/data/transport/bridges.json",
   "incidents/2026-11-10-storm-charles/data/transport/buses.json",
@@ -186,6 +233,27 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/warnings.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
   "sources/meteoalarm/dataset.json",
@@ -193,7 +261,7 @@
  ],
  "new_tools": [],
  "added": {
-  "files": 16,
+  "files": 19,
   "by_area": [
    {
     "area": "evidence",
@@ -208,11 +276,19 @@
     "files": 3
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
     "area": "accounts",
     "files": 1
    },
    {
     "area": "board",
+    "files": 1
+   },
+   {
+    "area": "library",
     "files": 1
    },
    {
@@ -226,11 +302,19 @@
   ]
  },
  "changed": {
-  "files": 206,
+  "files": 371,
   "by_area": [
    {
     "area": "research",
-    "files": 62
+    "files": 90
+   },
+   {
+    "area": "sources",
+    "files": 65
+   },
+   {
+    "area": "library",
+    "files": 42
    },
    {
     "area": "entities",
@@ -238,27 +322,23 @@
    },
    {
     "area": "incidents/2026-11-10-storm-charles/data",
-    "files": 29
-   },
-   {
-    "area": "accounts",
-    "files": 20
-   },
-   {
-    "area": "agents",
-    "files": 18
+    "files": 30
    },
    {
     "area": "data",
-    "files": 11
+    "files": 28
+   },
+   {
+    "area": "accounts",
+    "files": 25
+   },
+   {
+    "area": "agents",
+    "files": 25
    },
    {
     "area": "evidence",
     "files": 7
-   },
-   {
-    "area": "sources",
-    "files": 6
    },
    {
     "area": "reporter",
@@ -269,7 +349,15 @@
     "files": 4
    },
    {
+    "area": "news",
+    "files": 4
+   },
+   {
     "area": "design",
+    "files": 2
+   },
+   {
+    "area": "stories",
     "files": 2
    },
    {
@@ -466,6 +554,76 @@
    "by": "incident.transport@web-summit.dinis",
    "what": "measure the 20:42 round",
    "files": 1
+  },
+  {
+   "commit": "8a1feb25",
+   "at": "2026-11-11T20:46:26Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 20:44 wake: 19:00 to 20:00 closed, 20:00 opened (ANEPC's briefing, press; CP's Douro back); round 5c, 7, 9 (model names in trailers); hand-over to a thirteenth session",
+   "files": 50
+  },
+  {
+   "commit": "81177232",
+   "at": "2026-11-11T20:46:35Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "ffa466ed",
+   "at": "2026-11-11T20:48:11Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the thirteenth session's key (incident-librarian-dinis-13); -12 handed over",
+   "files": 2
+  },
+  {
+   "commit": "93eaee72",
+   "at": "2026-11-11T20:48:36Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "94318e27",
+   "at": "2026-11-11T20:50:59Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "20:46 wake: 1 post kept; four offers taken (s-1111T1946); no new offer",
+   "files": 12
+  },
+  {
+   "commit": "a7c6ffe3",
+   "at": "2026-11-11T20:52:00Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "20:50 wake: c14 retold (IPMA hourly 14:00 now 36 km/h); mainland n7, n13 (rows 1844, 2003, 2043)",
+   "files": 5
+  },
+  {
+   "commit": "bab85876",
+   "at": "2026-11-11T20:52:47Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 20:48 UTC: 11 above green; Lisbon's orange sea reissued 19:18, same end",
+   "files": 61
+  },
+  {
+   "commit": "0bc5e147",
+   "at": "2026-11-11T20:53:03Z",
+   "by": "incident.datascience@web-summit.dinis",
+   "what": "20:52 read (yellow to 21 UTC eased, 0.70 M -> 0.25 M residents; orange 3.76 M to 21 UTC, then yellow 3.76 M to 03 UTC; no red; past hours still pending the cap.json rebuild)",
+   "files": 1
+  },
+  {
+   "commit": "1bdee5ec",
+   "at": "2026-11-11T20:53:52Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "hourly 20:53: 569 nodes, 782 edges; coverage 569",
+   "files": 17
+  },
+  {
+   "commit": "25c5b3c9",
+   "at": "2026-11-11T20:54:48Z",
+   "by": "incident.wikipedia@web-summit.dinis",
+   "what": "20:49 read: no Wikipedia page moved",
+   "files": 20
   }
  ]
 }

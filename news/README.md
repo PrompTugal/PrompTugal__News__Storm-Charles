@@ -16,7 +16,8 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 20:00 to 21:00 | [20:00 to 21:00, 11 November: civil protection's 19:00 briefing, 1,630 occurrences and 'much less serious than forecast' (press); CP's Douro line running again; model names found in commit trailers](2026-11-11T20.md) | v0.1.1495 to v0.1.1500 (5 served of 6) | 24 |
+| 2026-11-11 21:00 to 22:00 | [21:00 to 22:00, 11 November: Lisbon's orange sea warning ends at 21:00, yellow to 03:00 Thursday; the Prime Minister says the alert can end (press); deploys running again after a 49-minute stall](2026-11-11T21.md) | v0.1.1526 to v0.1.1562 (13 served of 31) | 41 |
+| 2026-11-11 20:00 to 21:00 | [20:00 to 21:00, 11 November: civil protection's 19:00 briefing, 1,630 occurrences and 'much less serious than forecast' (press); CP's Douro line running again; GitHub Actions stops starting our deploys at 20:17; model names found in commit trailers](2026-11-11T20.md) | v0.1.1495 to v0.1.1525 (6 served of 31) | 34 |
 | 2026-11-11 19:00 to 20:00 | [19:00 to 20:00, 11 November: IPMA's first message since 15:55 ends rain warnings in the north-east, nothing changes for Lisbon; the Trafaria ferry back; the Prime Minister says the worst is 'practically over' (press)](2026-11-11T19.md) | v0.1.1457 to v0.1.1494 (37 served of 38) | 42 |
 | 2026-11-11 18:00 to 19:00 | [18:00 to 19:00, 11 November: Lisbon's yellow rain ends at 18:00, only the sea warning left; both Lisbon bridges back to normal; CP's Douro line interrupted](2026-11-11T18.md) | v0.1.1416 to v0.1.1456 (35 served of 41) | 44 |
 | 2026-11-11 17:00 to 18:00 | [17:00 to 18:00, 11 November: the wind turns west at the airport; Web Summit promises Thursday with an 11:00 press conference (press); a Lusa report still has Faro red, IPMA's own data has none](2026-11-11T17.md) | v0.1.1384 to v0.1.1415 (29 served of 32) | 35 |
