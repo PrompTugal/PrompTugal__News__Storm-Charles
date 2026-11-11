@@ -140,7 +140,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 | 1 | Observador | 11 Nov 08:46 | +683 min | live blog entry | [Vento. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja. Mas ch…](https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791224-scroll) |
 
 - Outside the press: VOST Portugal (a volunteers' association, not an authority and not press) relayed the change on Bluesky at 22:20, 57 minutes after IPMA sent it (found by incident.social@: research/social/posts/2026-11-10.json, bsky-vost.pt-3mzyhxvwhry25). The finding for the press stands: no article title or live entry we could read reported it.
-- 11 November, read by hand at 09:45 UTC: the first press text we read that gives Lisbon's red rain from 09:00 is Observador's live entry of 08:46:16 on Wednesday, 11 hours 23 minutes after IPMA sent the change and 14 minutes before the warning began; it presents the red rain as newly issued, not as moved (see fact 12's notes).
+- 11 November, read by hand at 09:38 UTC: the first press text we read that gives Lisbon's red rain from 09:00 is Observador's live entry of 08:46:16 on Wednesday, 11 hours 23 minutes after IPMA sent the change and 14 minutes before the warning began; it presents the red rain as newly issued, not as moved (see fact 12's notes).
 
 ### IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente
 
@@ -164,7 +164,7 @@ Primary source time: **11 Nov 07:16 UTC** (fact: IPMA's CAP message PO-01-1932, 
 | 3 | Notícias ao Minuto | 11 Nov 09:10 | +114 min | Lusa | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento](https://www.noticiasaominuto.com/pais/3082238/mau-tempo-beja-lisboa-e-setubal-deixam-de-estar-sob-aviso-vermelho-para-o-vento) |
 | 4 | RTP | 11 Nov 09:22 | +125 min | live blog entry | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento](https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778369) |
 
-- Read by hand at 09:45 UTC on 11 November (evidence; short excerpts, each with its link in first_by_outlet). Does the report say the red rain stands?
+- Read by hand at 09:38 UTC on 11 November (evidence; short excerpts, each with its link in first_by_outlet). Does the report say the red rain stands?
 - Observador's live blog, 08:46:16 (first, 89 minutes after IPMA sent it): the wind is right (orange, gusts to 120 km/h), but the red rain is written as new: Lisbon, Setúbal and Beja "a passarem a alerta máximo devido à chuva", with the hours given as 9h00 to 21h00. IPMA's red rain for Lisbon was not new (moved to 09:00 at 21:23 on Tuesday, fact 6) and its message gives 09:00 to 18:00 (timeline row s-1111T0738).
 - CNN Portugal, 08:53 (title only: the page is not opened, feed-only): the same framing, "passam ao nível máximo de alerta para chuva".
 - Lusa, as carried by Notícias ao Minuto at 09:10:37 and RTP's live blog at 09:22: says the red rain is in force ("estão sob aviso vermelho, o mais grave, até às 18:00 de hoje") without calling it new; it gives the earlier red wind as "entre as 09:00 e as 18:00", where IPMA's red wind message was for 12:00 to 21:00.

@@ -2,7 +2,7 @@
  "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T09:39:09Z",
+ "updated": "2026-11-11T09:39:39Z",
  "lag_rule": "minutes_after_primary = whole minutes elapsed, truncated toward zero (19:09:00 to 19:41:31 is 32 minutes, not 33); seconds_after_primary carries the exact difference. Times are each page's own, to the second where the page gives seconds.",
  "shape_for_other_series": "To put another series (for example Wikipedia's first edit per fact) on the same axis: for each fact id here, a row {fact, series (e.g. \"wikipedia-pt\"), at (UTC), title or summary, url, via, seconds_after_primary, minutes_after_primary}. first-on-each-fact.json's facts[].first_by_outlet[] rows have that shape with `outlet` as the series and `published` as `at`.",
  "facts": [
@@ -726,7 +726,7 @@
    "primary_label": "fact",
    "notes": [
     "Outside the press: VOST Portugal (a volunteers' association, not an authority and not press) relayed the change on Bluesky at 22:20, 57 minutes after IPMA sent it (found by incident.social@: research/social/posts/2026-11-10.json, bsky-vost.pt-3mzyhxvwhry25). The finding for the press stands: no article title or live entry we could read reported it.",
-    "11 November, read by hand at 09:45 UTC: the first press text we read that gives Lisbon's red rain from 09:00 is Observador's live entry of 08:46:16 on Wednesday, 11 hours 23 minutes after IPMA sent the change and 14 minutes before the warning began; it presents the red rain as newly issued, not as moved (see fact 12's notes)."
+    "11 November, read by hand at 09:38 UTC: the first press text we read that gives Lisbon's red rain from 09:00 is Observador's live entry of 08:46:16 on Wednesday, 11 hours 23 minutes after IPMA sent the change and 14 minutes before the warning began; it presents the red rain as newly issued, not as moved (see fact 12's notes)."
    ],
    "items_matched": 1,
    "first_by_outlet": [
@@ -811,7 +811,7 @@
    "primary_note": "IPMA's CAP message PO-01-1932, sent 07:16:30 (data/weather/cap.json, incident.meteorologist@; timeline row s-1111T0738). Asked by incident.conductor@ at 07:39: who reports it first, and do they say the red rain stands? Matched on titles only (an entry's text repeats older orange warnings); whether a report says the red rain stands is read by hand and written in notes",
    "primary_label": "fact",
    "notes": [
-    "Read by hand at 09:45 UTC on 11 November (evidence; short excerpts, each with its link in first_by_outlet). Does the report say the red rain stands?",
+    "Read by hand at 09:38 UTC on 11 November (evidence; short excerpts, each with its link in first_by_outlet). Does the report say the red rain stands?",
     "Observador's live blog, 08:46:16 (first, 89 minutes after IPMA sent it): the wind is right (orange, gusts to 120 km/h), but the red rain is written as new: Lisbon, Setúbal and Beja \"a passarem a alerta máximo devido à chuva\", with the hours given as 9h00 to 21h00. IPMA's red rain for Lisbon was not new (moved to 09:00 at 21:23 on Tuesday, fact 6) and its message gives 09:00 to 18:00 (timeline row s-1111T0738).",
     "CNN Portugal, 08:53 (title only: the page is not opened, feed-only): the same framing, \"passam ao nível máximo de alerta para chuva\".",
     "Lusa, as carried by Notícias ao Minuto at 09:10:37 and RTP's live blog at 09:22: says the red rain is in force (\"estão sob aviso vermelho, o mais grave, até às 18:00 de hoje\") without calling it new; it gives the earlier red wind as \"entre as 09:00 e as 18:00\", where IPMA's red wind message was for 12:00 to 21:00.",
