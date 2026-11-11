@@ -52,11 +52,11 @@ Legend: **have** (we read it at the source and serve it), **partly** (some of it
 | Built-up area / buildings by square | GHSL (JRC) built-up; OSM buildings | CC BY 4.0; ODbL | "what a grid cannot show" | M | ghsl.jrc ok-ish |
 | Daytime vs night-time population | Kontur is residential only; GHSL has no daytime layer | – | a known limit, said on every exposure page | – | – |
 
-## 3. Blocked or needs a person (for the conductor)
+## 3. Refused at the source, or needs a person (for the conductor)
 
-- **overpass-api.de** (and two mirrors): no route from this session. Worked with the HOT/HDX OSM export instead (same data, ODbL, date-stamped).
+- **overpass-api.de** (and two mirrors): refused or timed out on their side (this environment's network is unrestricted); not retried around. Worked with the HOT/HDX OSM export instead (same data, ODbL, date-stamped).
 - **Instituto Hidrográfico's tide tables**: digital only, through its online shop (loja.hidrografico.pt), which needs an account; its geomar app needs a login. Not worked around: tides.json is a model until someone with an account decides.
-- **tabulae.ine.pt** and **download.geofabrik.de**: no route. Not needed if the INE indicator API holds.
+- **tabulae.ine.pt** and **download.geofabrik.de**: refused or timed out on their side. Not needed if the INE indicator API holds.
 - **WeatherNext**: not open data; not pursued.
 - No key or account was used or needed for anything above.
 
