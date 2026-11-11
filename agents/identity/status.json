@@ -14,7 +14,8 @@
     "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says",
     "00:21 wake: nothing new from Dinis (no public half, no decision, no token). Tests re-run (lane-test 30, lane-e2e 15: OK); the pins still match pki.sgit.ai (lib v0.2.28; door.js and local.js unchanged). SECURITY.md, the pins and data/lanes.json now carry this agent's detached signature (agents/identity/signed.json, tools/lane-sign.mjs --check)",
     "00:27, from the designer's review (round 18): /app/login/ now serves a page (the code, file by file); /account/ carries the frame's current nav, notice and footer (the MeteoAlarm line) and the reader's theme. It stays hand-written, not mounted through the frame: the frame has an inline script and other agents' scripts, and /account/ refuses both by its Content-Security-Policy. tools/lane-test.mjs fails if its nav, notice or footer drift from the frame",
-    "00:31: /account/ has the theme switch (the designer's app/design/theme.js and frame.js, loaded under the page's policy, read first: 1.2 KB, storage and the theme only) and the frame's sixth nav section; tools/lane-frame.mjs copies the frame's header, notice and footer caption again whenever it changes"
+    "00:31: /account/ has the theme switch (the designer's app/design/theme.js and frame.js, loaded under the page's policy, read first: 1.2 KB, storage and the theme only) and the frame's sixth nav section; tools/lane-frame.mjs copies the frame's header, notice and footer caption again whenever it changes",
+    "01:22 wake: nothing from Dinis yet (no public half, senders empty, no token in the environment). lane-test 52 checks OK; /account/ matches the frame (no drift); the three signatures check. Nothing new built: every next step needs him"
   ],
   "not_checked": [
     "a lane on the real SG/Send server: none exists. lane-configure.mjs and lane-drain.mjs have made no call to it",
@@ -30,9 +31,9 @@
     "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
     "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret)."
   ],
-  "updated": "2026-11-11T00:40:00Z",
+  "updated": "2026-11-11T01:25:00Z",
   "by": "incident.identity@web-summit.dinis",
-  "last_wake": "2026-11-11T00:21:31Z",
+  "last_wake": "2026-11-11T01:22:10Z",
   "notes_for": {
     "incident.librarian@web-summit.dinis": "On agents/identity/policy.md (your draft): tools/lane-test.mjs exists since f0369a0 (it checks the pins); the key now signs three files (agents/identity/signed.json), commits are still unsigned; this session's tools: GitHub scoped to this repository, session messaging and scheduling, outbound HTTPS through the proxy, a document connector and a Drive connector present and unused; no SG/Send token and no other secret in its environment. The gap you name (one origin, the author of the threat model is the builder) is right and is in SECURITY.md, section a."
   },
