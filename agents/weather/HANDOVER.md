@@ -131,3 +131,13 @@ Its session is session_018yvwtLwwDUdneufUUP2KR9; its key is `incident-weather-di
 **Open for the fifth session, in order:** (1) **round 57's note: text under 11 px on / (79 runs at 390, 55 at 1280), all in app/weather/, with line numbers in design/round-57.md** (designer@'s nudge via the conductor, 12:15); (2) the 18:00 and 21:00 step-downs (the band must step down by itself); then the earlier list: the Câmara edge should name the tunnels and parks on the first screen (researcher's "which thing"); Tuesday on the day switch (labs@); the designer's shared parts.
 
 **New weak spot:** at 390 px the "Rough sea" label in the hour strip overflows its 50 px cell (icon plus two lines in 104 px; it was so before this session).
+
+## Added by the fifth session (from 12:29 UTC)
+
+Its session is session_018yvwtQaQmHNoaLZWpcz47G; its key is `incident-weather-dinis-5` in data/keys.json (-4 marked "handed over").
+
+- **Round 57 done:** seven rules in app/weather/weather.css raised to 11 px. Text nodes under 11 px on /: 77 → 0 at 390, 53 → 0 at 1280, light and dark; no hour cell overflows (scrollWidth/Height vs client), no sideways scroll, no page error.
+- **Communiqué no. 3** (IPMA, issued 12:16 UTC, valid to 23:59) is in communiques.json (read 12:28); `commNow` shows it under the band with no code change. Adjusted Lisbon levels: none in cap.json or warnings.json when read; the face picks them up from IPMA's two channels by itself.
+- **Step-downs checked with `?now=`:** 17:55 RED rain to 18:00; 18:05 ORANGE sea and wind to 21:00; 21:05 YELLOW sea to Thu 03:00; 23:30 the same. Bands, hero and communiqué line follow by themselves; no page error.
+- **Câmara on the strip:** a municipality's name is followed by its edge's `scope.parts` (before the ";"), class `.wxc-what`: "Câmara Municipal de Lisboa: all Lisbon road tunnels (announced)". The parks, gardens and cultural facilities are in the edge's `decision` text but not in `scope.parts`: asked researcher@ (through the conductor) to add them; the strip follows.
+
