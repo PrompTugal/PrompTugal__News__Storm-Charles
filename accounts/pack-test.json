@@ -1,14 +1,85 @@
 {
  "about": "The librarian's briefing pack, measured in a real session: two sub-agents of the accountant's session started the same job (a new incident.stories@ orienting itself), one from ten whole files, one from three files of the pack, then answered the same eight questions. The tokens are each sub-agent's own, from its transcript (tools/accounts-measure.mjs, subagents.each). One run of each: a first measurement, not an average.",
  "by": "incident.accountant@web-summit.dinis",
- "updated": "2026-11-11T02:57:00Z",
+ "updated": "2026-11-11T03:04:00Z",
  "kind": "measured",
  "run_at": "2026-11-11T02:56:08Z",
  "source": "accounts/ledger/accountant.jsonl, the line of 2026-11-11T02:56:33Z (subagents.each)",
  "pack_built_from": "tools/library-pack.mjs at commit 3171210, built in the accountant's clone",
  "arms": [
-  { "arm": "whole files", "reads": ["CLAUDE.md", "BRIEF.md", "agents/JOBS.md", "ROADMAP.md", "PIPELINE.md", "REALITY.md", "RESTRUCTURE.md", "design/README.md", "agents/policy.json", "library/glossary.md"], "bytes": 94946, "bytes_source": "library/pack/sizes.json (incident.librarian@)", "context_before_reading": 63832, "context_after_reading": 103607, "tokens_added_by_reading": 39775, "calls": 2, "output": 1174, "answers": { "right": 8, "partly": 0, "of": 8 } },
-  { "arm": "the pack", "reads": ["library/pack/start.md", "library/pack/state.json", "library/pack/stories.md"], "bytes": 22950, "bytes_source": "wc -c on the built files", "context_before_reading": 63791, "context_after_reading": 77955, "tokens_added_by_reading": 14164, "calls": 2, "output": 847, "answers": { "right": 6, "partly": 2, "of": 8, "missing_from_the_pack": ["who merges to main (it is in CLAUDE.md, which the harness loads anyway)", "rows of the same minute are lettered in the order written, a new one goes below"] } }
+  {
+   "arm": "whole files",
+   "reads": [
+    "CLAUDE.md",
+    "BRIEF.md",
+    "agents/JOBS.md",
+    "ROADMAP.md",
+    "PIPELINE.md",
+    "REALITY.md",
+    "RESTRUCTURE.md",
+    "design/README.md",
+    "agents/policy.json",
+    "library/glossary.md"
+   ],
+   "bytes": 94946,
+   "bytes_source": "library/pack/sizes.json (incident.librarian@)",
+   "context_before_reading": 63832,
+   "context_after_reading": 103607,
+   "tokens_added_by_reading": 39775,
+   "calls": 2,
+   "output": 1174,
+   "answers": {
+    "right": 8,
+    "partly": 0,
+    "of": 8
+   }
+  },
+  {
+   "arm": "the pack",
+   "reads": [
+    "library/pack/start.md",
+    "library/pack/state.json",
+    "library/pack/stories.md"
+   ],
+   "bytes": 22950,
+   "bytes_source": "wc -c on the built files",
+   "context_before_reading": 63791,
+   "context_after_reading": 77955,
+   "tokens_added_by_reading": 14164,
+   "calls": 2,
+   "output": 847,
+   "answers": {
+    "right": 6,
+    "partly": 2,
+    "of": 8,
+    "missing_from_the_pack": [
+     "who merges to main (it is in CLAUDE.md, which the harness loads anyway)",
+     "rows of the same minute are lettered in the order written, a new one goes below"
+    ]
+   }
+  },
+  {
+   "arm": "the pack, second run (after the librarian added the two missing rules, e89408a)",
+   "run_at": "2026-11-11T03:01:23Z",
+   "reads": [
+    "library/pack/start.md",
+    "library/pack/state.json",
+    "library/pack/stories.md"
+   ],
+   "bytes": 24364,
+   "bytes_source": "wc -c on the built files",
+   "context_before_reading": 63796,
+   "context_after_reading": 78530,
+   "tokens_added_by_reading": 14734,
+   "calls": 2,
+   "output": 668,
+   "answers": {
+    "right": 8,
+    "partly": 0,
+    "of": 8
+   },
+   "source": "accounts/ledger/accountant.jsonl, the line of 2026-11-11T03:01:55Z (subagents.each, the third)"
+  }
  ],
  "result": {
   "tokens_saved_at_start": 25611,
@@ -16,7 +87,17 @@
   "librarian_estimate_less_to_read": 0.75,
   "estimate_note": "bytes / 4 undercounts here: the whole files measured 2.39 bytes a token, the pack 1.62 (state.json is dense), so the saving is 64%, not 75%",
   "carried_on_every_later_call": "what a session reads at its start is read again from the cache on every later call: 25,611 tokens saved at the start is 25,611 cache-read tokens saved per call after it (arithmetic from the measured figure; a session's number of calls is its own)",
-  "floor": "a sub-agent's first call carried 63,800 tokens and a full session's 84,717 before reading anything (the harness, its tools, CLAUDE.md): the pack cannot reduce that part"
+  "floor": "a sub-agent's first call carried 63,800 tokens and a full session's 84,717 before reading anything (the harness, its tools, CLAUDE.md): the pack cannot reduce that part",
+  "second_run": {
+   "tokens_saved_at_start": 25041,
+   "less_to_read": 0.63,
+   "answers": "8 of 8, the same as the whole files"
+  }
  },
- "limits": ["one run per arm", "sub-agents, not full sessions (a full session's floor is higher)", "eight questions on the rules; not a test of doing the job", "the accountant marked the answers"]
+ "limits": [
+  "one run of the whole files, two of the pack (before and after its correction)",
+  "sub-agents, not full sessions (a full session's floor is higher)",
+  "eight questions on the rules; not a test of doing the job",
+  "the accountant marked the answers"
+ ]
 }

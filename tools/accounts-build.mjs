@@ -49,6 +49,7 @@ const models = {
     most_expensive_hour: hours[0] ? { ...hours[0], day: day.day, kind: 'measured', source: 'models/ledger-summary.json by_hour', note: 'the ledger of incident.models@ only; other desks report a day total, not hours' } : NM,
     ledger: { kind: 'measured', source: 'models/ledger-summary.json', read: LS.updated || null, kept_by: LS.by || null, days: LS.days.map(d => ({ day: d.day, calls: d.calls, cost_usd: d.cost_usd, tokens_in: d.tokens_in, tokens_out: d.tokens_out, by_agent: d.by_agent, by_task: d.by_task, by_model: d.by_model, by_status: d.by_status, by_hour: d.by_hour })) },
     reported,
+    provider_account: J('accounts/provider.json') ? (({ about, by, updated, ...r }) => ({ ...r, file: 'accounts/provider.json' }))(J('accounts/provider.json')) : NM,
     not_counted: 'A ledger lives in the session that made the calls. A desk whose calls are in neither the ledger summary nor its own status file is not in these totals: its cell would say "not measured".',
 }
 W('models.json', models)
@@ -187,7 +188,8 @@ This is the cost of running the site, not news of the storm, and not a warning s
 | | Figure | Kind | Source, read |
 |---|---|---|---|
 | Model spend today | **${usd(spentToday)} of ${CAP.usd_per_day} US dollars** (${pct(models.today.of_cap)} of the cap) | measured ${usd(ledgerToday)} + reported ${usd(reportedToday)} | [models.json](models.json), from [the model ledger's summary](../models/ledger-summary.json), ${d(LS.updated)} |
-| Agent sessions measured | **${measured.length} of ${agents.length}** | measured | [agents.json](agents.json), ${d(NOW)} |
+${models.provider_account === NM ? '' : `| The provider's account | **${models.provider_account.state}**: credits ${models.provider_account.total_credits_usd}, used ${models.provider_account.total_usage_usd} US dollars (the account serves more than this project) | reported by the provider | [provider.json](provider.json), from [incident.models@'s status](../agents/models/status.json), ${d(models.provider_account.read)} |
+`}| Agent sessions measured | **${measured.length} of ${agents.length}** | measured | [agents.json](agents.json), ${d(NOW)} |
 | Tokens, measured sessions | ${team ? `**${n(team.all)}** in all, ${n(team.cache_reads)} of them cache reads (${pct(team.cache_reads_share)})` : NM} | measured | [the ledger lines](ledger/) |
 | Most expensive hour, models | ${hours[0] ? `${hours[0].hour} UTC: ${usd(hours[0].cost_usd)} US dollars, ${n(hours[0].calls)} calls` : NM} | measured | [models.json](models.json) |
 | Most expensive hour, tokens | ${hourList.length ? (() => { const h = hourList.slice().sort((x, y) => y.weighted - x.weighted)[0]; return `${h.hour.slice(11, 16)} UTC: ${n(h.fresh_input + h.output + h.cache_writes + h.cache_reads)} tokens (${h.agents.length} measured agent${h.agents.length > 1 ? 's' : ''})` })() : NM} | measured | [agents.json](agents.json) |
@@ -265,7 +267,7 @@ File: [machine.json](machine.json).
 
 ## The files
 
-[books.json](books.json) (at a glance), [models.json](models.json), [agents.json](agents.json), [machine.json](machine.json), [outputs.json](outputs.json), [the ledger lines](ledger/), [savings](savings.md), [the measure step](measure.md)${briefs.length ? ', briefs: ' + briefs.map(b => `[${b.replace('.md', '')}](briefs/${b})`).join(', ') : ''}. The method is WS-148's (an accountant agent: every agent measures its tokens, the accountant finds the savings) from [web-summit.sgit.ai](https://web-summit.sgit.ai).
+[books.json](books.json) (at a glance), [models.json](models.json), [provider.json](provider.json), [agents.json](agents.json), [machine.json](machine.json), [outputs.json](outputs.json), [the ledger lines](ledger/), [savings](savings.md), [the measure step](measure.md)${briefs.length ? ', briefs: ' + briefs.map(b => `[${b.replace('.md', '')}](briefs/${b})`).join(', ') : ''}. The method is WS-148's (an accountant agent: every agent measures its tokens, the accountant finds the savings) from [web-summit.sgit.ai](https://web-summit.sgit.ai).
 `)
 fs.writeFileSync(P('accounts', 'index.md'), md.join('\n'))
 console.log(`accounts: ${usd(spentToday)} of ${CAP.usd_per_day} USD today; ${measured.length} of ${agents.length} agents measured; ${runs.length} CI runs; ${tracked.files} files`)

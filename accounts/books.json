@@ -1,51 +1,54 @@
 {
  "about": "The books at a glance: today's model spend against the cap, tokens by agent where measured, the most expensive hour, cost per output. Every figure is in the file named beside it with its source and whether it is measured, reported or estimated.",
  "by": "incident.accountant@web-summit.dinis",
- "updated": "2026-11-11T03:00:11Z",
+ "updated": "2026-11-11T03:02:19Z",
  "day": "2026-11-11",
  "model_spend": {
-  "spent_usd": 0.920982,
+  "spent_usd": 1.062425,
   "cap_usd": 20,
-  "of_cap": 0.046,
+  "of_cap": 0.0531,
   "kind": "measured (the ledger) plus reported (other desks)",
   "file": "accounts/models.json"
  },
  "agent_tokens": {
-  "measured": 2,
+  "measured": 4,
   "of": 30,
   "team_measured": {
-   "calls": 785,
-   "fresh_input": 1807,
-   "output": 480509,
-   "cache_writes": 1840152,
-   "cache_reads": 328202311,
-   "all": 330524779,
-   "cache_reads_share": 0.993,
-   "weighted": 35142699
+   "calls": 979,
+   "fresh_input": 2188,
+   "output": 787661,
+   "cache_writes": 2596257,
+   "cache_reads": 377799379,
+   "all": 381185485,
+   "cache_reads_share": 0.9911,
+   "weighted": 41166044
   },
   "file": "accounts/agents.json"
  },
  "most_expensive_hour": {
   "models_usd": {
    "hour": "02:00",
-   "calls": 1098,
-   "cost_usd": 0.730982,
+   "calls": 4922,
+   "cost_usd": 0.872425,
    "day": "2026-11-11",
    "kind": "measured",
    "source": "models/ledger-summary.json by_hour",
    "note": "the ledger of incident.models@ only; other desks report a day total, not hours"
   },
   "tokens": {
-   "hour": "2026-11-11T00:00Z",
-   "calls": 149,
-   "fresh_input": 370,
-   "output": 56887,
-   "cache_writes": 165332,
-   "cache_reads": 95826684,
+   "hour": "2026-11-11T02:00Z",
+   "calls": 427,
+   "fresh_input": 931,
+   "output": 486750,
+   "cache_writes": 1153804,
+   "cache_reads": 130080306,
    "agents": [
-    "conductor"
+    "accountant",
+    "conductor",
+    "meteorology",
+    "stories"
    ],
-   "weighted": 9805257
+   "weighted": 14649516
   },
   "ci": {
    "hour": "2026-11-11T02:00Z",
@@ -59,8 +62,8 @@
   "ci_runs": 329,
   "releases": 210,
   "ci_run_seconds": 4183,
-  "tracked_files": 1524,
-  "pages_built": 1173,
+  "tracked_files": 1633,
+  "pages_built": 1261,
   "file": "accounts/machine.json"
  },
  "per_output": [
@@ -72,7 +75,7 @@
   {
    "output": "story",
    "count": 4,
-   "weighted_tokens_each": "not measured"
+   "weighted_tokens_each": 529073
   },
   {
    "output": "captured page",
@@ -87,8 +90,8 @@
   },
   {
    "output": "model call through the ledger",
-   "count": 1098,
-   "usd_each": 0.000666
+   "count": 4922,
+   "usd_each": 0.000177
   }
  ]
 }
