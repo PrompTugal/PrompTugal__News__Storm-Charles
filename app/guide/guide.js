@@ -151,6 +151,8 @@
     var out = ''
 
     // (1) now, in one line
+    // the label key: one line of the frame's three chips, once per page under the now box (designer@ 12:37)
+    var KEY = '<p class="gd-key">' + lbl('fact') + ' ' + lbl('evidence') + ' ' + lbl('hypothesis') + ' <a href="' + base + 'guide/index.html#how-this-guide-works">What the labels mean</a></p>'
     var lis = inForce(W && W.lisbon), top = lis[0], nowOn = lis.filter(function (w) { return T(w.start_utc) <= now })
     var line
     if (!W) line = 'IPMA\'s warnings could not be read from our data room just now. Go to <a href="https://www.ipma.pt/en/otempo/prev-sam/" rel="noopener">IPMA</a>.'
@@ -163,7 +165,7 @@
         (tw.length > 1 ? '; also ' + tw.filter(function (w) { return w.level !== peak.level }).map(function (w) { return esc(w.level) + ' ' + esc(TYPE[w.type] || w.type) }).join(', ') : '') + '.'
     }
     out += '<div class="gd-now" id="now"><p class="gd-now-line">' + line + '</p><p class="meta">' + (W ? lbl('fact') + ' ' : '') + prov('IPMA\'s warnings feed', W && W.source, W && W.read_utc) + ' Lisbon is on UTC in November.</p><p class="gd-now-safe">' +
-      'Not a warning service: <a href="https://www.ipma.pt/" rel="noopener">IPMA</a> issues the warnings, <a href="https://prociv.gov.pt/" rel="noopener">ANEPC</a> says what to do; emergency <b>112</b>.</p></div>'
+      'Not a warning service: <a href="https://www.ipma.pt/" rel="noopener">IPMA</a> issues the warnings, <a href="https://prociv.gov.pt/" rel="noopener">ANEPC</a> says what to do; emergency <b>112</b>.</p></div>' + KEY
 
     // changed today (UTC): decisions and warning changes published today, newest first
     var today = new Date(now).toISOString().slice(0, 10), seen = {}, ch = []
@@ -176,10 +178,9 @@
     var rank = function (c) { return /^ipma/.test(c.d.id || '') || c.d.by === 'ipma' || c.w ? 0 : kind(c.d.label) === 'fact' ? 1 : 2 }
     ch.sort(function (a, b) { return (rank(a) - rank(b)) || (T(b.t) - T(a.t)) })
     ch = ch.filter(function (c, i) { for (var j = 0; j < i; j++) if (Math.abs(T(ch[j].t) - T(c.t)) < 36e5 * 6 && alike(ch[j].d.decision, c.d.decision)) return false; return true })
-    var KEY = '<p class="gd-key">' + lbl('fact') + ' read at the body that decides or warns · ' + lbl('evidence') + ' reported by others, named · ' + lbl('hypothesis') + ' our analysis, never a fact · <span class="gd-st">closed</span> the state the source gives · <span class="gd-ns">not stated</span> we do not know</p>'
     var todayHtml = !ch.length ? '' : '<section class="gd-today" id="gd-today" aria-labelledby="gd-today-h"><h2 id="gd-today-h">Changed today <span class="meta">(published ' + esc(today) + ', UTC; IPMA\'s warning changes first, then other facts, then reports; newest first in each)</span></h2><ul class="gd-rows">' +
       ch.slice(0, 3).map(function (c) { return rowCut(c.d, 140).replace('<li class="gd-row', '<li data-t="' + esc(c.t) + '" class="gd-row') }).join('') + '</ul>' +
-      (ch.length > 3 ? '<details class="gd-deep"><summary>' + (ch.length - 3) + ' more today</summary><ul class="gd-rows">' + ch.slice(3).map(function (c) { return rowCut(c.d, 140) }).join('') + '</ul></details>' : '') + KEY + '</section>'
+      (ch.length > 3 ? '<details class="gd-deep"><summary>' + (ch.length - 3) + ' more today</summary><ul class="gd-rows">' + ch.slice(3).map(function (c) { return rowCut(c.d, 140) }).join('') + '</ul></details>' : '') + '</section>'
 
     // the path: pick your question
     var CASES = [['now-detail', 'What is happening now'], ['flight', 'I have a flight'], ['around', 'Getting around'], ['stranded', 'I\'m stranded: what is open?'], ['websummit', 'Web Summit'], ['madeira', 'Madeira'], ['press', 'I\'m a journalist']]
@@ -297,7 +298,7 @@
     if (focus.length) {
       var jr = document.createElement('nav'); jr.className = 'gd-jump'; jr.setAttribute('aria-label', 'On this page')
       jr.innerHTML = focus.map(function (id) { var n = document.getElementById(id), h = n && n.querySelector('h2'); return h ? '<a href="#' + id + '">' + esc(h.textContent.replace(/^\d/, '')) + '</a>' : '' }).join('')
-      var nw = document.getElementById('now'); if (nw) { nw.parentNode.insertBefore(jr, nw); if (todayHtml) nw.insertAdjacentHTML('afterend', todayHtml) }
+      var nw = document.getElementById('now'); if (nw) { nw.parentNode.insertBefore(jr, nw); if (todayHtml) { var kk = el.querySelector('.gd-key'); (kk || nw).insertAdjacentHTML('afterend', todayHtml) } }
     }
     if (focus.length) { var nv = el.querySelector('.gd-paths'); if (nv) { var h = document.createElement('h2'); h.className = 'gd-other'; h.textContent = 'Other questions'; el.appendChild(h); el.appendChild(nv) } }
     var go = function () { if (!location.hash) return; var t = document.getElementById(location.hash.slice(1)); if (!t) return; if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView() }
