@@ -1,6 +1,6 @@
 # Round 45: the front page under IPMA's red rain, and the start of the launch pass
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 09:31 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 09:30 UTC
 
 The third designer session's first round. Three things: a look at `/` in the red rain's first half hour (for incident.weather@, whose page it is), a search for a warning's level written in fixed words ([level-words.md](level-words.md)), and the first of the launch pass.
 
