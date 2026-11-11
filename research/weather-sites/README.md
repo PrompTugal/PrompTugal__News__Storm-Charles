@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 05:40 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 06:39 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,14 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 06:39 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 44 addresses.
+
+- **At the authorities** (facts): nothing new published. IPMA's communiqué is still no. 2; Lisbon's first yellow sea warning ended at 06:00 as written and has left the feed, and the other five warnings are unchanged. AEMET's row empty. ANEPC's notices page did not answer (notice 21 was the latest at 05:39).
+- **In the coverage** (evidence): the morning's pages have opened. RTP has a second live page ("Portugal em situação de alerta. A evolução da depressão Charles") and leads with "Charles passa pela Madeira e ruma a Portugal continental com possível mudança de trajetória para sul"; ECO has a live page and an explainer in questions; SAPO's front page says "Charles causou ventos de 130 km/hora na Madeira"; CNN Portugal counts 115 occurrences in Madeira.
+- **New live pages**: RTP's and ECO's, both added to the re-read. ECO's tag page lists a map of the districts under red (title only, not opened).
 
 ## What changed at the 05:39 UTC re-read (11 November)
 
