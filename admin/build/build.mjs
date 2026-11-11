@@ -99,6 +99,7 @@ const MENU = [
     ['Help', [['Help', 'help/index.html'], ["What's new", 'news/index.html']]],
     ['About', [['Brief', 'BRIEF.html'], ['Restructure', 'RESTRUCTURE.html'], ['Design', 'design/index.html'], ['LLMs', 'llms.txt']]]
 ]
+const HAS_LENS_CSS = fs.existsSync(path.join(ROOT, 'app/lens/lens.css')), HAS_LENS_JS = fs.existsSync(path.join(ROOT, 'app/lens/lens.js'))
 const GENERATED = new Set(['index.html', 'datasets.html', 'llms.txt', 'library/index.html'])
 const hasPage = t => GENERATED.has(t) || fs.existsSync(path.join(ROOT, t)) || fs.existsSync(path.join(ROOT, t.replace(/index\.html$/, 'README.md'))) || fs.existsSync(path.join(ROOT, t.replace(/\.html$/, '.md')))
 const MENU_LIVE = MENU.map(([name, items]) => [name, items.filter(([, t]) => hasPage(t))]).filter(([, items]) => items.length)
@@ -122,7 +123,7 @@ function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
 <title>${esc(title)} · Storm Charles</title>
 <meta name="description" content="${esc(desc || 'Storm Charles, Lisbon, November 2026: the decisions, the warnings and the signals, each with its source and the time read; and the data, for people and agents.')}">
 <script src="${u}app/design/theme.js?v=${encodeURIComponent(VERSION)}"></script>
-<link rel="stylesheet" href="${u}app/site.css?v=${encodeURIComponent(VERSION)}">
+<link rel="stylesheet" href="${u}app/site.css?v=${encodeURIComponent(VERSION)}">${HAS_LENS_CSS ? `\n<link rel="stylesheet" href="${u}app/lens/lens.css?v=${encodeURIComponent(VERSION)}">` : ''}
 ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 <link rel="alternate" type="application/json" href="${u}api/v1/index.json" title="The data, for agents">
 <script type="module" src="${u}app/login/feedback.js"></script>
@@ -142,15 +143,15 @@ ${body}
 <label><input type="checkbox" data-lens="evidence"> <span class="lbl l-evidence">evidence</span> reported by others</label>
 <label><input type="checkbox" data-lens="hypothesis"> <span class="lbl l-hypothesis">hypothesis</span> our analysis</label>
 <label><input type="checkbox" data-lens="entity"> <span class="pn-sw ent"></span> entities (things with a page here)</label>
-<label><input type="checkbox" data-lens="out" checked> <span class="pn-sw out"></span> links that leave this site</label></details>
+<label><input type="checkbox" data-lens="out" checked> <span class="pn-sw out"></span> links that leave this site</label><div id="panel-lens"></div></details>
 <details id="pn-item" open><summary>This item</summary><div id="panel-item"><p class="pn-meta">Click a bar in a strip, a row of the timeline or a linked word: what it is, and where it comes from, opens here.</p></div></details>
 <details id="pn-source"><summary>Source</summary><div id="panel-source"><p class="pn-meta">The file behind this page, shown here, not downloaded.</p></div></details>
-<details id="pn-theme"><summary>Theme</summary><div class="pn-themes" role="radiogroup" aria-label="Theme">${['auto', 'light', 'dark', 'paper', 'night', 'contrast'].map(t => `<label><input type="radio" name="pn-theme" value="${t}"> ${t}</label>`).join('')}</div></details>
+<details id="pn-theme"><summary>Theme</summary><div class="pn-themes" id="panel-theme" role="radiogroup" aria-label="Theme">${['auto', 'light', 'dark', 'paper', 'night', 'contrast'].map(t => `<label><input type="radio" name="pn-theme" value="${t}"> ${t}</label>`).join('')}</div></details>
 <details id="pn-version"><summary>Version</summary><div id="panel-version"><p><a href="${u}version.json">${esc(VERSION)}</a></p></div></details>
 </aside></div>
 <footer class="agent"><div class="wrap">Built and run by Dinis Cruz's incident team of Claude Code agents (see <a href="${u}agents/index.html">Agents</a>), with a named human operator. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. <span class="cap">The times IPMA sent its warnings come through <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes, not a live feed.</span> ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
 <script src="${u}app/design/frame.js?v=${encodeURIComponent(VERSION)}"></script>
-<script src="${u}app/design/panel.js?v=${encodeURIComponent(VERSION)}"></script>
+<script src="${u}app/design/panel.js?v=${encodeURIComponent(VERSION)}"></script>${HAS_LENS_JS ? `\n<script src="${u}app/lens/lens.js?v=${encodeURIComponent(VERSION)}"></script>` : ''}
 </body>
 </html>
 `

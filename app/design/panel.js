@@ -29,7 +29,15 @@
         var d = document.getElementById('pn-item'); if (d) d.open = true
         if (panel.hidden) setOpen(true, false)
     }
-    window.stormPanel = { show: show, open: function () { setOpen(true, true) } }
+    // hooks for the other agents: a slot per accordion (an element to fill), show() for anything, openItem(id) for an entity
+    // (handed to incident.entities@'s window.StormLens.show when it is loaded), openSource(address) for a file of this site
+    var SLOT = { lens: 'panel-lens', item: 'panel-item', source: 'panel-source', theme: 'panel-theme', version: 'panel-version' }
+    window.stormPanel = {
+        show: show, open: function () { setOpen(true, true) }, close: function () { setOpen(false, true) }, isOpen: function () { return !panel.hidden },
+        slot: function (name) { return document.getElementById(SLOT[name] || '') },
+        openItem: function (id) { if (panel.hidden) setOpen(true, false); var d = document.getElementById('pn-item'); if (d) d.open = true; if (window.StormLens && typeof window.StormLens.show === 'function') window.StormLens.show(id); else show({ title: id, text: 'This thing has no page yet.' }) },
+        openSource: function (href, label) { openSource(href, label) }
+    }
     function linksOf(el) { return [].slice.call(el.querySelectorAll('a[href]')).concat(el.matches && el.matches('a[href]') ? [el] : []).map(function (a) { return { href: a.href, label: (a.textContent || '').trim().slice(0, 90) || a.href } }) }
     document.addEventListener('click', function (e) {
         if (e.target.closest('#panel')) return
@@ -41,6 +49,25 @@
         } else if (row && !e.target.closest('a')) {
             var cells = row.children; show({ title: (row.querySelector('time') || {}).textContent + ' · ' + (row.dataset.label || '') + (row.classList.contains('decision') ? ' · decision' : ''), html: '<p>' + cells[1].innerHTML + '</p><p class="pn-meta">Source: ' + cells[2].innerHTML + '</p>', links: [{ href: '#' + row.id, label: 'This row: ' + row.id }] })
         }
+    })
+    // a link to a file of this site (.json, .md, .txt) opens in the panel, shown, not as a bare file; with a modifier key it opens as usual
+    function openSource(href, label) {
+        var box = document.getElementById('panel-source'), d = document.getElementById('pn-source'); srcDone = true
+        if (panel.hidden) setOpen(true, false); if (d) d.open = true
+        box.innerHTML = '<p class="pn-meta">Loading ' + esc(label || href) + '</p>'
+        fetch(href).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text() }).then(function (t) {
+            var shown = t; if (/\.json(\?|#|$)/.test(href)) { try { shown = JSON.stringify(JSON.parse(t), null, 1) } catch (e) { } }
+            var page = /\.md(\?|#|$)/.test(href) ? href.replace(/(^|\/)README\.md/, '$1index.html').replace(/\.md/, '.html') : ''
+            box.innerHTML = '<p><b>' + esc(label || href.split('/').pop()) + '</b></p><p class="pn-meta">' + t.length.toLocaleString('en-GB') + ' characters' + (shown.length > 30000 ? ' (the first 30,000 shown)' : '') + ' · <a href="' + esc(href) + '" data-raw="1">the file itself</a>' + (page ? ' · <a href="' + esc(page) + '">its page</a>' : '') + '</p><pre>' + esc(shown.slice(0, 30000)) + '</pre>'
+            box.scrollIntoView({ block: 'nearest' })
+        }).catch(function () { box.innerHTML = '<p class="pn-meta">Could not read <a href="' + esc(href) + '" data-raw="1">' + esc(href) + '</a>.</p>' })
+    }
+    document.addEventListener('click', function (e) {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+        var a = e.target.closest('a[href]'); if (!a || a.dataset.raw || a.target === '_blank' || a.closest('header.top')) return
+        var url; try { url = new URL(a.href) } catch (x) { return }
+        if (url.origin !== location.origin || !/\.(json|md|txt)$/.test(url.pathname)) return
+        e.preventDefault(); openSource(a.href, (a.textContent || '').trim().slice(0, 80))
     })
     // source: the file behind the page, shown
     var srcDone = false
