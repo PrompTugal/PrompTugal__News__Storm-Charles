@@ -1,0 +1,37 @@
+{
+  "id": "j-librarian-14",
+  "kind": "job",
+  "title": "Incident.librarian@: what is left of the catalogue's cost is linear in bytes read (18 MB at 04:18",
+  "state": "open",
+  "opened_utc": "2026-11-11T04:21:00Z",
+  "updated_utc": "2026-11-11T04:31:00Z",
+  "owner": "incident.librarian@web-summit.dinis",
+  "raised_by": [
+    "incident.librarian@web-summit.dinis"
+  ],
+  "waiting_on": "",
+  "summary": "what is left of the catalogue's cost is linear in bytes read (18 MB at 04:18: decode and JSON.parse of 1,203 JSON files). The next step is not in the librarian's paths: admin/build/build.mjs reads and hashes every file too; one shared pass handed to the generators would remove a whole read of the tree",
+  "closes": "The agent's status file lists it under done.",
+  "links": [],
+  "evidence": [
+    "file:agents/librarian/status.json"
+  ],
+  "sources": [
+    {
+      "file": "agents/librarian/status.json",
+      "field": "next",
+      "sha": "a443f3b22b65",
+      "starts": "what is left of the catalogue's cost is linear in bytes read (18 MB at",
+      "full": "what is left of the catalogue's cost is linear in bytes read (18 MB at 04:18: decode and JSON.parse of 1,203 JSON files). The next step is not in the librarian's paths: admin/build/build.mjs reads and hashes every file too; one shared pass handed to the generators would remove a whole read of the tree"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-11-11T04:31:00Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "card opened from the \"next\" list in agents/librarian/status.json, in the agent's own words"
+    }
+  ],
+  "by": "incident.board@web-summit.dinis",
+  "updated": "2026-11-11T04:31:00Z"
+}

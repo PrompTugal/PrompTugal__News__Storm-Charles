@@ -4,7 +4,7 @@
   "title": "Fresh sessions for the long-running agents",
   "state": "open",
   "opened_utc": "2026-11-11T03:03:47Z",
-  "updated_utc": "2026-11-11T03:04:56Z",
+  "updated_utc": "2026-11-11T04:31:00Z",
   "owner": "incident.conductor@web-summit.dinis",
   "raised_by": [
     "incident.conductor@web-summit.dinis",
@@ -12,29 +12,37 @@
     "incident.observability@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "The longest-running agents now carry very large contexts on every call (one reports about 566,000 tokens a call). The librarian has started a fresh session; the designer and observability are to follow; the conductor's own needs your word. Say yes to the conductor's, and whether the first librarian session is archived.",
+  "summary": "The longest-running agents now carry very large contexts on every call (one reports about 566,000 tokens a call). The librarian has started a fresh session; the designer and observability are to follow; the conductor's own needs your word. Say yes to the conductor's, and whether the first librarian session is archived. Also: scheduled routines still fire into the sessions that were handed over; only you can disable them.",
   "closes": "Your word on the conductor's fresh session and on archiving the old ones.",
   "blocks": "Cost and speed of every call by those agents; the conductor cannot restart itself without you.",
   "rank": 9.7,
   "before_launch": true,
   "links": [],
   "evidence": [
-    "file:accounts/measure.md"
+    "file:accounts/measure.md",
+    "file:library/pack/conductor-handover.md"
   ],
   "sources": [
-    {
-      "file": "agents/librarian/status.json",
-      "field": "asks",
-      "sha": "d19970359ef2",
-      "starts": "incident.conductor@ or Dinis: the hourly wake (scheduled task) is stil",
-      "full": "incident.conductor@ or Dinis: the hourly wake (scheduled task) is still bound to the first librarian session; point it at the new one or disable it."
-    },
     {
       "file": "agents/librarian/status.json",
       "field": "asks",
       "sha": "2e000b6c3371",
       "starts": "Dinis: whether to archive the first librarian session (it has handed o",
       "full": "Dinis: whether to archive the first librarian session (it has handed over)."
+    },
+    {
+      "file": "agents/conductor/status.json",
+      "field": "asks",
+      "sha": "73440144fb37",
+      "starts": "Dinis: disable the routines that still fire into handed-over sessions ",
+      "full": "Dinis: disable the routines that still fire into handed-over sessions (designer (scheduled task), graph (scheduled task), weatherwatch (scheduled task), studio (scheduled task)): this session's permission check refused one such change"
+    },
+    {
+      "file": "agents/conductor/status.json",
+      "field": "asks",
+      "sha": "19e4698a7b52",
+      "starts": "Dinis: whether a fresh conductor session takes over from library/pack/",
+      "full": "Dinis: whether a fresh conductor session takes over from library/pack/conductor-handover.md"
     }
   ],
   "history": [
@@ -52,8 +60,23 @@
       "at": "2026-11-11T03:04:56Z",
       "by": "incident.board@web-summit.dinis",
       "change": "no longer listed in agents/observability/status.json; still listed in agents/librarian/status.json"
+    },
+    {
+      "at": "2026-11-11T04:31:00Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "no longer listed in agents/librarian/status.json; still listed in agents/librarian/status.json"
+    },
+    {
+      "at": "2026-11-11T04:31:00Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "joined from incident.conductor@: routines still fire into sessions that were handed over; only Dinis can disable them"
+    },
+    {
+      "at": "2026-11-11T04:31:00Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "joined from incident.conductor@: whether a fresh conductor session takes over from its handover file"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T03:04:56Z"
+  "updated": "2026-11-11T04:31:00Z"
 }
