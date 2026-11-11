@@ -4,11 +4,11 @@ summary: Our dated captures of every outside page this site cites: a screenshot,
 ---
 ## Wayback: our captures of outside pages and feeds
 
-> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 04:46 UTC
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 04:48 UTC
 
 Every time this site cites an outside page, we keep what that page looked like at that moment: a screenshot, the HTML as served, and the sha256 of each. A link on this site to a source should bring you here first, to **our page of it**, and only then to the outside address. When we read a page again we record whether it still says the same thing.
 
-**539 addresses, 554 captures, 111 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
+**542 addresses, 557 captures, 111 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
 
 | Source | Page (our latest capture) | Last read | Captures | Since the one before | Shown |
 |---|---|---|---|---|---|
@@ -127,8 +127,10 @@ Every time this site cites an outside page, we keep what that page looked like a
 | dnoticias.pt | [GNR prepara reserva operacional de 1.100 militares — DNOTICIAS.PT](dnoticias/2026/11/11/0443-2026-11-10-512414-gnr-prepara-reserva-operacional-de-1100-militares.md) `dnoticias.pt/2026/11/10/512414-gnr-prepara-reserva-operacional-de-1100-militares` | 11 Nov 2026, 04:43 UTC | 1 | one capture | hash and excerpt |
 | dnoticias.pt | [Metro de Lisboa abre várias estações para acolher sem-abrigo — DNOTICIAS.PT](dnoticias/2026/11/11/0444-2026-11-10-512423-metro-de-lisboa-abre-varias-estacoes-para-06478780.md) `dnoticias.pt/2026/11/10/512423-metro-de-lisboa-abre-varias-estacoes-para-acolher` | 11 Nov 2026, 04:44 UTC | 1 | one capture | hash and excerpt |
 | dnoticias.pt | [Chão do Areeiro com duplo registo de aviso vermelho — DNOTICIAS.PT](dnoticias/2026/11/11/0445-2026-11-10-512437-chao-do-areeiro-com-duplo-registo-de-aviso-vermelho.md) `dnoticias.pt/2026/11/10/512437-chao-do-areeiro-com-duplo-registo-de-aviso-vermel` | 11 Nov 2026, 04:45 UTC | 1 | one capture | hash and excerpt |
+| dnoticias.pt | [Derrocada e inundação obrigam ao encerramento de rua em Machico — DNOTICIAS.PT](dnoticias/2026/11/11/0447-2026-11-10-512438-derrocada-e-inundacao-obrigam-ao-encerrame-4da25db5.md) `dnoticias.pt/2026/11/10/512438-derrocada-e-inundacao-obrigam-ao-encerramento-de-` | 11 Nov 2026, 04:47 UTC | 1 | one capture | hash and excerpt |
 | dnoticias.pt | [Aviso vermelho para chuva alargado à Costa Norte da Madeira — DNOTICIAS.PT](dnoticias/2026/11/11/0442-2026-11-10-512439-aviso-vermelho-para-chuva-alargado-a-costa-862ce946.md) `dnoticias.pt/2026/11/10/512439-aviso-vermelho-para-chuva-alargado-a-costa-norte-` | 11 Nov 2026, 04:42 UTC | 1 | one capture | hash and excerpt |
 | dnoticias.pt | ['Charles' já soma 14 ocorrências na Madeira — DNOTICIAS.PT](dnoticias/2026/11/11/0358-2026-11-10-512441-charles-ja-soma-14-ocorrencias-na-madeira.md) `dnoticias.pt/2026/11/10/512441-charles-ja-soma-14-ocorrencias-na-madeira/` | 11 Nov 2026, 03:58 UTC | 1 | one capture | hash and excerpt |
+| dnoticias.pt | [Muita chuva nas serras do Funchal coloca cinco estações no vermelho — DNOTICIAS.PT](dnoticias/2026/11/11/0446-2026-11-10-512447-muita-chuva-nas-serras-do-funchal-coloca-c-8371182a.md) `dnoticias.pt/2026/11/10/512447-muita-chuva-nas-serras-do-funchal-coloca-cinco-es` | 11 Nov 2026, 04:46 UTC | 1 | one capture | hash and excerpt |
 | dnoticias.pt | [Charles já provocou 38 ocorrências na Madeira — DNOTICIAS.PT](dnoticias/2026/11/11/0445-2026-11-10-512452-charles-ja-provocou-38-ocorrencias-na-madeira.md) `dnoticias.pt/2026/11/10/512452-charles-ja-provocou-38-ocorrencias-na-madeira/` | 11 Nov 2026, 04:45 UTC | 1 | one capture | hash and excerpt |
 | dnoticias.pt | [Porto Santo Line antecipa viagens devido ao mau tempo — DNOTICIAS.PT](dnoticias/2026/11/11/0436-2026-11-9-512208-porto-santo-line-cancela-viagens-de-quarta-2add96cf.md) `dnoticias.pt/2026/11/9/512208-porto-santo-line-cancela-viagens-de-quarta-feira-d` | 11 Nov 2026, 04:36 UTC | 1 | one capture | hash and excerpt |
 | dwd.de | [www.dwd.de/EN/Home/home_node.html](dwd-de/2026/11/11/0306-en-home-home-node.md) `dwd.de/EN/Home/home_node.html` | 11 Nov 2026, 03:06 UTC | 1 | one capture | hash and excerpt |
@@ -156,6 +158,7 @@ Every time this site cites an outside page, we keep what that page looked like a
 | l.euronews.com | [Portugal on alert as storms Bruna and Charles raise sting jet risk of 160 km/h winds · Euronews](euronews/2026/11/11/0430-t6o8.md) `l.euronews.com/T6o8` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
 | l.euronews.com | [Portugal on alert as storms Bruna and Charles raise sting jet risk of 160 km/h winds · Euronews](euronews/2026/11/11/0431-y90r.md) `l.euronews.com/y90R` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
 | pt.euronews.com | [Última hora. - Web Summit cancela segundo dia em Lisboa devido à tempestade Charles · Euronews](euronews/2026/11/11/0242-2026-11-10-portugal-web-summit-cancela-segundo-dia-em-lisboa-1baff4c8.md) `pt.euronews.com/2026/11/10/portugal-web-summit-cancela-segundo-dia-em-lisboa-dev` | 11 Nov 2026, 02:42 UTC | 1 | one capture | hash and excerpt |
+| euronews.com | [Portugal on alert as storm Charles brings red warnings to Madeira · Euronews](euronews/2026/11/11/0447-2026-11-10-depression-charles-to-hit-madeira-and-portugal-as-ca3583cf.md) `euronews.com/2026/11/10/depression-charles-to-hit-madeira-and-portugal-as-govern` | 11 Nov 2026, 04:47 UTC | 1 | one capture | hash and excerpt |
 | euronews.com | [Web Summit Lisbon day 2 cancelled due to Storm Charles · Euronews](euronews/2026/11/11/0242-2026-11-10-web-summit-lisbon-day-2-cancelled-due-to-storm-charles.md) `euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles` | 11 Nov 2026, 02:42 UTC | 1 | one capture | hash and excerpt |
 | euronews.com | [Contact - Euronews](euronews/2026/11/11/0425-contact.md) `euronews.com/contact` | 11 Nov 2026, 04:25 UTC | 1 | one capture | hash and excerpt |
 | euronews.com | [www.euronews.com/rss?level=theme&name=news](euronews/2026/11/11/0409-rss-level-theme-name-news.md) `euronews.com/rss?level=theme&name=news` | 11 Nov 2026, 04:09 UTC | 1 | one capture | hash and excerpt |
