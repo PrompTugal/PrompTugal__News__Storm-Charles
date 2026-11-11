@@ -2,7 +2,7 @@
 
 # What Watchfloor's decision brief holds (a model to learn from)
 
-Dinis received it in a messaging group at about 11:45 UTC on 11 November and shared it with the conductor: **Watchfloor (Notamy Ltd), "Storm Charles · Portugal and Madeira", decision brief WF-PRT-20261110-CHARLES, edition 1, as of 07:49 UTC, 11 Nov 2026**, 7 pages, "written for government and institutional decision-makers", "offered to Lisbon, with thanks for its hospitality to Web Summit". Live version named in it: crisis.notamy.app. The PDF itself is not in git: it is their work and a binary. This file describes its **shape and data points**, in our words, so the team can learn from it and find what we lack. Quote it only in short excerpts with credit; never copy its figures as ours: read each at its own source.
+Dinis received it in a messaging group and shared it at about 11:42 UTC on 11 November and shared it with the conductor: **Watchfloor (Notamy Ltd), "Storm Charles · Portugal and Madeira", decision brief WF-PRT-20261110-CHARLES, edition 1, as of 07:49 UTC, 11 Nov 2026**, 7 pages, "written for government and institutional decision-makers", "offered to Lisbon, with thanks for its hospitality to Web Summit". Live version named in it: crisis.notamy.app. The PDF itself is not in git: it is their work and a binary. This file describes its **shape and data points**, in our words, so the team can learn from it and find what we lack. Quote it only in short excerpts with credit; never copy its figures as ours: read each at its own source.
 
 ## Its shape (what makes it work)
 

@@ -186,7 +186,7 @@ As the lead reads it: storm-charles.promptugal.news takes PrompTugal News's bran
 
 As the lead reads it: **withdrawn**: the public "join the hand-over" page and band (~10:36), and in the ~10:30 section the part about other accounts, other team members and their agent teams joining. Dinis is the only one running this site; the Fringe is another team's work. **Stands**: the wind-down plan (transition/PLAN.md, for Dinis), the exit interviews, the closing record, the storm conductor, nobody stopping before the hand-over, the promptugal.news brand and link.
 
-## Dinis, 11 November, ~11:45 UTC: Watchfloor's decision brief; "Are you in Lisbon right now?"; a contact desk; journalists; data science
+## Dinis, 11 November, ~11:42 UTC: Watchfloor's decision brief; "Are you in Lisbon right now?"; a contact desk; journalists; data science
 
 He shared a PDF received in a messaging group: Watchfloor (Notamy Ltd)'s 7-page decision brief on Storm Charles (described in research/watchfloor/README.md; the PDF is not in git). Close to his words:
 - "a great example of how to communicate this message. A great example of the kind of PDF that we should be publishing." "Look at the data, but also see if we have everything that's there. And if we don't, let's map it up and let's connect the dots, because we should be able to replicate everything that's here ... let's learn with this crowd." "Also see if there's new data points that we can actually consume."
