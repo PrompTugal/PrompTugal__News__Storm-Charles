@@ -9,7 +9,7 @@
 //   <iframe src="https://storm-charles.promptugal.news/app/flows/embed.html?flow=wake-journalist" width="640" height="420"></iframe>
 // or ask for a flow the gallery does not list (built in the browser from data/flows/record.json by app/flows/core.js):
 //   <div data-flow-kind="wake|handover|night" data-flow-agent="reporter" data-flow-at="2026-11-11T09:00:00Z" data-flow-n="2"></div>
-// Options: data-flow-autoplay="0" to wait for a press; data-flow-speed (ms a step, default chosen from the length).
+// Options: data-flow-bare="1" leaves out the title and summary (for a card that shows them); data-flow-autoplay="0" to wait for a press; data-flow-speed (ms a step, default chosen from the length).
 // No outside request: it reads only this site's files. Colours are the site's tokens, with system colours where they are absent.
 (function () {
     'use strict'
@@ -82,7 +82,7 @@
         steps.forEach((s, i) => { if (i && gapAt.has(s.t) && steps[i - 1].t !== s.t) x += GAP; xs.push(x); x += col })
         const head = document.createElement('div'); head.className = 'fl-head'
         head.innerHTML = `<span class="fl-exp" title="An experiment: a view of the record, not a finished page">experiment</span> <b>${esc(f.title)}</b>`
-        host.appendChild(head)
+        if (host.dataset.flowBare !== '1') host.appendChild(head)   // bare: the card around it already shows the title
         const body = document.createElement('div'); body.className = 'fl-body'; host.appendChild(body)
         const labs = document.createElement('div'); labs.className = 'fl-labs'; labs.style.paddingTop = PADT + 'px'; body.appendChild(labs)
         actors.forEach(a => {
@@ -132,6 +132,7 @@
         host.appendChild(bar)
         const foot = document.createElement('div'); foot.className = 'fl-foot'
         foot.innerHTML = `${esc(f.summary || '')} <span class="fl-src">Built from <code>${esc((f.built_from || []).join(', '))}</code>${f.id ? ` · <a href="${esc(BASE + 'data/flows/' + f.id + '.json')}" target="_blank">the flow as JSON</a>` : ''} · <a href="${esc(BASE + 'flows/index.html')}" target="_blank">all flows</a></span>`
+        if (host.dataset.flowBare === '1') foot.innerHTML = foot.querySelector('.fl-src').outerHTML
         host.appendChild(foot)
         const range = bar.querySelector('input'), nOut = bar.querySelector('.fl-n'), playB = bar.querySelector('[data-a=play]')
         let at = -1, timer = null

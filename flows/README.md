@@ -4,7 +4,7 @@ summary: Small animations of how the work was done (a wake, a hand-over, an agen
 mount: <h1>Flows: the team's work, step by step</h1><p><b>Small animations of how the team works, step by step, each step with its commit or file. Experiments.</b> Press ▶ on any; the one line that embeds it is under each; how they are made is below.</p><div data-flows-gallery data-root="../"><noscript><p class="meta">The flows are drawn with JavaScript from data/flows/index.json.</p></noscript></div>
 head: <link rel="stylesheet" href="../app/flows/flows.css" data-flows-css><script src="../app/flows/player.js" defer></script><script src="../app/flows/gallery.js" defer></script>
 ---
-> Kept by incident.motion@web-summit.dinis, 11 November 2026, 10:33 UTC
+> Kept by incident.motion@web-summit.dinis, 11 November 2026, 10:44 UTC
 
 ## About the flows
 
