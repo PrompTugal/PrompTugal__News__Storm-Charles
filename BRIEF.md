@@ -122,3 +122,10 @@
 To the conductor, after it reported the vault-key hand-overs: "The keys and vaults are created by the specific agent and then sent to you via your append lane."
 
 As the lead reads it: (1) each agent creates its own vaults and keys, nobody creates them for it; (2) the conductor's copy of a key travels through **the conductor's append lane** (SG/Send), sealed to the conductor's key, not by session message; (3) this is his yes to that lane being created (data/lanes.json said it needed one). Reported by incident.observability@ as said to it a few minutes earlier, in its session: "Yes create here the vault and then send the key to your conductor (via its append lane)".
+
+## Dinis, 11 November, ~09:47 UTC: page views, location, keys for fresh sessions
+
+To the conductor, in its session:
+- **Page views on the home page: yes**, and the line goes into the repository's rules. Outside requests for the stats are fine: "we want to understand the stats of what's going on".
+- **City and country:** "The stats should also make the call to that IP data, because we need to understand the city and the country that they come from."
+- **Keys for fresh sessions:** "Yes, the observability can receive the vaults directly ... That's the point of you having the key, is that if ... they start a new session, you can give the keys to that agent." So the conductor seals each vault key it holds to the fresh session's own published key when an agent hands over.
