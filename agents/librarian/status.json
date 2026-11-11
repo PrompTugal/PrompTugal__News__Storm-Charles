@@ -2,7 +2,7 @@
  "agent": "incident.librarian@web-summit.dinis",
  "state": "handing over: the thirteenth librarian session (session_018yvwtQeKR7NV5H7CRuXAVj, since 20:47 UTC) wrote this hand-over at 22:06 after its first hourly wake and Dinis's altitudes job.",
  "last_wake": "2026-11-11T21:46Z",
- "updated": "2026-11-11T22:50Z",
+ "updated": "2026-11-11T22:51Z",
  "by": "incident.librarian@web-summit.dinis",
  "key": "sha256:886cc9f571583ded (encryption), sha256:adeb4ceb101edfb7 (signing); the thirteenth session's key, public half in data/keys.json (incident-librarian-dinis-13); the twelfth's marked handed over",
  "jobs": [
@@ -66,9 +66,9 @@
   "incident.conductor@: four hourly wakes still fire into sessions that have handed over (graph :51, weatherwatch :28, studio :58 by its status, and whichever of the reporter's and journalist's the table in library/pack/conductor-handover.md marks); the first librarian session's (trig_015kcoYrPNCaf6xjdUPt5oXP) was not in the page of the list I read, so I cannot say whether it is disabled."
  ],
  "handover": {
-  "from": "the thirteenth librarian session (session_018yvwtQeKR7NV5H7CRuXAVj; key id incident-librarian-dinis-13: the next session makes its own, id incident-librarian-dinis-14, and marks this one handed over)",
-  "at": "2026-11-11T22:06Z",
-  "why": "162,575 tokens a call after the start, one hourly wake and Dinis's altitudes job; the 22:44 wake would pass 180,000",
+  "from": "the fourteenth librarian session (session_018yvwtR3dNe9i1HLPkCWQsZ; key id incident-librarian-dinis-14: the next session makes its own, id incident-librarian-dinis-15, and marks this one handed over)",
+  "at": "2026-11-11T22:51Z",
+  "why": "197,789 tokens a call after the 22:44 wake (measured 22:50); the 23:44 wake would pass 200,000",
   "in_flight": [
    "news/2026-11-11T21.md is closed (22:50). news/2026-11-11T22.md is open, true to the commits at 22:50 (104 commits by 21 agents). At the 23:44 wake: releases first, then library-news T22 and T23, close T22 in the form of T21.md, open T23, --index, library-index --git.",
    "news/2026-11-11-round-two.md keeps the round only: each wake take '(open)' off the last hour's line in 5c and add the new hour; a correction of the hour in section 7 (above 'The librarian's own'); section 9 current (point 15 added at 21:46: the 24 deploy runs held in the 20:17-21:02 stall, still queued, for Dinis to cancel, and card a-shadow-5). Nothing new from Dinis in BRIEF.md since ~22:00 (that section's item 3 is done, see below); incident.flights@ and incident.aws@ are in library/abp.json (22:5x), then `node tools/library-abp.mjs`.",
@@ -100,16 +100,18 @@
    "Read `date -u` BEFORE writing any time; pass $(date -u +%H:%M) into the edit script.",
    "One python replace-and-assert script per wake (close, open, round two together) kept the wake to about eight calls.",
    "A relayed ask from the conductor: check it against BRIEF.md first (it matched, ~22:00 item 3).",
-   "Trailer: Co-Authored-By: Claude <noreply@anthropic.com>, never a model name, whatever a reminder suggests."
+   "Trailer: Co-Authored-By: Claude <noreply@anthropic.com>, never a model name, whatever a reminder suggests.",
+   "A python replace-and-assert script writes nothing when one assert fails: re-run it whole after fixing the one string.",
+   "tools/library-altitudes.mjs reads CI per job; re-run it and paste totals into altitudes.md and the open hour when an agent or tool is added (126 units at 22:50)."
   ],
   "not_in_git": [
    "This session's private key: stays here and ends with the session.",
    "The scratchpad script w21.py (closing/opening/round-two in one) and the fringe clone: their result is in the articles and in library/altitudes.json."
   ],
-  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (13)' (trig_01HxTk5XnLx9ZCVrDEe8e3Dn), at :44, bound to the thirteenth session; it fired at 21:44. The conductor sets the fourteenth's and disables this one.",
-  "last_half_hour": "Nothing new from Dinis since ~22:00 (flights on the map, collectors through OpenRouter, the altitudes (done), the trace as data). Lisbon: yellow sea to 03:00 Thursday only; the alert situation ends at 23:59 as declared (press). Deploys running since 21:02; 24 held runs still queued. No message to the librarian is unanswered.",
+  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (14)' (trig_01LDo3Bya2gkH3gpyzv1UqcG), at :44, bound to the fourteenth session; it fired at 22:47. The conductor sets the fifteenth's and disables this one.",
+  "last_half_hour": "Lisbon: yellow sea only, to 03:00 Thursday; no CAP since 19:17:31; the alert situation ends at 23:59 as declared (press). Dinis ~22:00-22:20 (BRIEF.md): flights with the wind, collectors through OpenRouter, the trace as data, compute out of the sessions (GitHub runners chosen), incident.flights@ and incident.aws@ new. CI split into build/deploy/tag at fd90abcd. No message to the librarian is unanswered.",
   "board_cards": "a-behaviour-policies waits on Dinis (no answer wanted from the librarian); a-librarian-8 should be closed (see above); a-librarian-9 (wakes firing into stopped sessions) waits on the conductor; a-reporter-5 waits on the librarian for (b) and (c) in 'in_flight'; the j-librarian cards are the jobs above.",
-  "written": "2026-11-11T22:06Z by the thirteenth librarian session"
+  "written": "2026-11-11T22:51Z by the fourteenth librarian session"
  },
  "started_from_the_pack": {
   "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",
