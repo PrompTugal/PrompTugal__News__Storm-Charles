@@ -1,9 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T22:06Z",
-  "state": "ninth session started 22:04 UTC: key made; building the trace job (data/trace/**, tools/trace.mjs) at Dinis's word (~22:00)",
-  "last_wake": "2026-11-11T21:14:00Z",
+  "updated": "2026-11-11T22:19Z",
+  "state": "ninth session: the trace job is live (tools/trace.mjs, data/trace/ backfilled to 10 Nov, Elastic feeds ptnews-storm-trace/units); hourly duties at :14",
+  "last_wake": "2026-11-11T22:14Z: page views drained (56 opened, 0 refused; 334 views in 236 visits by people, 1,434 automated, 1,664 inferred); live check: /, /agents/, a home, jobs, /agents/live/, now demo, data/trace/ all 200",
   "session": {
     "id": "session_018yvwtNLckeBUnGzpdekcJ6",
     "started_at": "2026-11-11T22:04Z",
@@ -14,7 +14,7 @@
     "started_from": "agents/observability/HANDOVER.md, section for the ninth session (the trace job)",
     "takes_over_from": "session_018yvwtPEPERAHymX68grYRS",
     "key": "incident-observability-dinis-9 (data/keys.json; sha256:fd93caf24b4627c3, signing sha256:1f469b1c96d6e5ad)",
-    "vault_keys": "asked of the conductor 22:06 UTC (sealed to incident-observability-dinis-9)",
+    "vault_keys": "keys of zd1cb3kt and j7z16ln1 received from the conductor 22:06 UTC (sealed to incident-observability-dinis-9), opened and cloned 22:12, kept outside git",
     "hourly_wake": "at :14, set by the conductor",
     "now_json_contract": "incident.weather@ draws the team at work on / (14eb197) from data/agents/now.json; keep stable: updated, counts.{working,commits_in_hour,sources_read,feeds}, flags.{commits_stale,snapshot_age_min,stale_after_min,snapshot_newest,sources_window_hours}, working[].{agent,what,at,sha}, sources_read[].{body,host,read_utc}, public_posts_not_listed, feeds[].{path,api,changed}, links[].{label,href}; tell weather before changing; commits_stale since 15:24 on 11 Nov also means the newer snapshot is over 20 min old (weather reads it, 988c05e)"
   },
@@ -75,10 +75,14 @@
     "11 Nov 09:36 page views on, at Dinis's words in this session (about 09:31: make the events' key here and send it to the conductor; publish the vault's read key on the site and put the stats there, as promptugal.news does). Vault zd1cb3kt is public to read: its read key is in data/agents/obs.json, and it holds only stats/views.json. The lanes' enum key (replaced: the first one sat in zd1cb3kt for some minutes and is now refused by the server) and the events' private key are in a second, private vault, j7z16ln1; its key was sent to incident.conductor@ sealed (tools/lane-handover.mjs, by session message; the conductor still has no append lane). tools/agents-views.mjs drains the lanes, keeps the opened events in the private vault and writes counts only to data/agents/views.json and the public vault; /agents/#views draws them. Tested with a real browser against the real lanes before release",
     "11 Nov 10:22 fifth session: the live map and the Universe each full size on a page of its own, at Dinis's word (~10:10): /agents/live/ and /agents/universe/ (agents/live/README.md, agents/universe/README.md; data-view=\"live\" and \"universe\" in app/agents/agents.js draw only that engine, as wide and tall as the screen, started without a button; Stop still gates the animation frames), linked from the top of /agents/; tested in Chromium at 390 px and 1440 px: no sideways scroll, both engines drew",
     "11 Nov 11:24 hourly wake: page views drained (287 events opened, 0 refused; 141 views in 97 visits, 58 automated), data/agents/views.json republished; /agents/, /agents/live/ and /agents/universe/ serve 200 on the live host",
-    "11 Nov 11:53 the team at work, for the front page (Dinis ~11:46): tools/agents-now.mjs (an after generator) writes data/agents/now.json on every push (agents working in the last hour, sources read with their read times, social posts counted not listed, feeds from api/v1/index.json; every item with its source and time; no time ahead of the build); app/agents/now.js and now.css, demo at /app/agents/now.html; handed to incident.weather@, which draws it under IPMA's band"
+    "11 Nov 11:53 the team at work, for the front page (Dinis ~11:46): tools/agents-now.mjs (an after generator) writes data/agents/now.json on every push (agents working in the last hour, sources read with their read times, social posts counted not listed, feeds from api/v1/index.json; every item with its source and time; no time ahead of the build); app/agents/now.js and now.css, demo at /app/agents/now.html; handed to incident.weather@, which draws it under IPMA's band",
+    "11 Nov 22:15 the swarm's trace as data (Dinis ~22:00, item 4): tools/trace.mjs (live msg|spawn|fetch|write|ev; backfill; units), data/trace/<date>/<HH>.json backfilled to 10 Nov (1,735 commits, 2,222 For: edges incl. Vicky's, Silvio's and Angelo's desks, 1,545 CI runs as A0, 555 hourly A1 aggregates, 25 spawns; 8,187 docs), units.json, index.json, README.md for the fringe visualizers; fringe swarm-flows schema; every file an elastic_feed (ptnews-storm-trace / ptnews-storm-units: the fringe's elastic-lib refuses storm-*); pushed 7d67da42, 9973959c"
   ],
   "next": [
-    "the swarm trace as data (Dinis ~22:00; data/trace/**, tools/trace*.mjs): tools/trace.mjs, data/trace/units.json, backfill, data/trace/README.md, in the fringe schema; see HANDOVER.md, first section",
+    "each wake: node tools/trace.mjs backfill (new commits, CI runs, ledger hours, spawns), then the release",
+    "a span command for RUNNER.md's A0/A1/A2 runner results (agents/conductor/RUNNER.md step 5)",
+    "the team's third-party model calls (tools/llm.mjs ledger, outside git) as A1 lines: ask incident.models@ for text-free per-call records",
+    "the fringe's swarm/tools/run.mjs runs reading our api/v1, once published, as cross-account fetch edges",
     "in order: drain the page views each wake (tools/agents-views.mjs) and watch the counts for junk; the night's strip from incident.ci@'s commit files; the measured lines read live on each home"
   ],
   "asks": [

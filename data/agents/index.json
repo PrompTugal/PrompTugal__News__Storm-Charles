@@ -13,14 +13,14 @@
   "count": {
     "about": "The one count of the team to cite (data/agents/count.json is the same object): agents = the roster in agents/JOBS.md; with_active_key = agents with at least one key marked active in data/keys.json; sessions = session keys ever published (one per session); handed_over = sessions that handed over to a fresh one.",
     "agents": 42,
-    "with_active_key": 38,
-    "sessions": 126,
-    "handed_over": 87
+    "with_active_key": 39,
+    "sessions": 131,
+    "handed_over": 91
   },
   "counts": {
     "agents": 42,
-    "with_status": 41,
-    "with_key": 38,
+    "with_status": 42,
+    "with_key": 39,
     "asks_for_dinis": 54
   },
   "ledger": [],
@@ -171,9 +171,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "72b9ae4deda1dbecc3798681d305bf447e0ffbae4305eed1dfc381db9ffa8b85",
-      "state": "eighth session handing over at about 160,000 tokens a call (22:02): the new trace job (Dinis ~22:00) is written into HANDOVER.md for a ninth session, not started",
-      "last_wake": "2026-11-11T21:14:00Z",
+      "status_sha256": "2fcbd8b883046bf60187519e8e56d2c2b7ed2dcde108bdd0f34cae32c1700047",
+      "state": "ninth session: the trace job is live (tools/trace.mjs, data/trace/ backfilled to 10 Nov, Elastic feeds ptnews-storm-trace/units); hourly duties at :14",
+      "last_wake": "2026-11-11T22:14Z: page views drained (56 opened, 0 refused; 334 views in 236 visits by people, 1,434 automated, 1,664 inferred); live check: /, /agents/, a home, jobs, /agents/live/, now demo, data/trace/ all 200",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -184,18 +184,21 @@
       "done": [
         "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
         "tools/agents-index.mjs -> data/agents/index.json (roster from agents/JOBS.md, statuses, key fingerprints; session ids stripped)",
-        "11 Nov 05:16 wake: nothing routed. The gate refused this wake's first release (nothing went out): data/agents/commits.json had grown to 264 KB, over the 256 KB limit, because its budget was counted before the file was indented. Fixed in th…",
         "11 Nov 08:16 wakes 06:14 to 08:14: nothing routed, live checks clean, snapshots within the limit; hand-over written for the third session (HANDOVER.md, \"For the third session\")",
         "11 Nov 08:17 third session began (key incident-observability-dinis-3; the second's entry marked handed over). Checked every agent's sessions against data/keys.json and the status files after the morning's hand-overs: 30 agents, 57 sessions…",
         "11 Nov 09:25 Dinis, in this session: \"Yes create here the vault and then send the key to your conductor\". Made vault zd1cb3kt on dev.send.sgraph.ai for page views, with two append lanes, tested there and back (write, list, fetch, mark-proc…",
         "11 Nov 09:36 page views on, at Dinis's words in this session (about 09:31: make the events' key here and send it to the conductor; publish the vault's read key on the site and put the stats there, as promptugal.news does). Vault zd1cb3kt i…",
         "11 Nov 10:22 fifth session: the live map and the Universe each full size on a page of its own, at Dinis's word (~10:10): /agents/live/ and /agents/universe/ (agents/live/README.md, agents/universe/README.md; data-view=\"live\" and \"universe\"…",
         "11 Nov 11:24 hourly wake: page views drained (287 events opened, 0 refused; 141 views in 97 visits, 58 automated), data/agents/views.json republished; /agents/, /agents/live/ and /agents/universe/ serve 200 on the live host",
-        "11 Nov 11:53 the team at work, for the front page (Dinis ~11:46): tools/agents-now.mjs (an after generator) writes data/agents/now.json on every push (agents working in the last hour, sources read with their read times, social posts counte…"
+        "11 Nov 11:53 the team at work, for the front page (Dinis ~11:46): tools/agents-now.mjs (an after generator) writes data/agents/now.json on every push (agents working in the last hour, sources read with their read times, social posts counte…",
+        "11 Nov 22:15 the swarm's trace as data (Dinis ~22:00, item 4): tools/trace.mjs (live msg|spawn|fetch|write|ev; backfill; units), data/trace/<date>/<HH>.json backfilled to 10 Nov (1,735 commits, 2,222 For: edges incl. Vicky's, Silvio's and …"
       ],
-      "done_total": 50,
+      "done_total": 51,
       "next": [
-        "the swarm trace as data (Dinis ~22:00; data/trace/**, tools/trace*.mjs): tools/trace.mjs, data/trace/units.json, backfill, data/trace/README.md, in the fringe schema; see HANDOVER.md, first section",
+        "each wake: node tools/trace.mjs backfill (new commits, CI runs, ledger hours, spawns), then the release",
+        "a span command for RUNNER.md's A0/A1/A2 runner results (agents/conductor/RUNNER.md step 5)",
+        "the team's third-party model calls (tools/llm.mjs ledger, outside git) as A1 lines: ask incident.models@ for text-free per-call records",
+        "the fringe's swarm/tools/run.mjs runs reading our api/v1, once published, as cross-account fetch edges",
         "in order: drain the page views each wake (tools/agents-views.mjs) and watch the counts for junk; the night's strip from incident.ci@'s commit files; the measured lines read live on each home"
       ],
       "asks_dinis": [],
@@ -266,8 +269,16 @@
           "record": "sha256:6eca575a4f02ae8e",
           "encryption": "sha256:9621b97d8bd1a3b8",
           "added": "2026-11-11",
-          "status": "active",
+          "status": "handed over",
           "how": "Made in its own session on 11 November 2026, 18:04 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The eighth observability session, started fro…"
+        },
+        {
+          "id": "incident-observability-dinis-9",
+          "record": "sha256:1f469b1c96d6e5ad",
+          "encryption": "sha256:fd93caf24b4627c3",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026, 22:05 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The ninth observability session, started from…"
         }
       ],
       "policy_owns": [
@@ -285,7 +296,13 @@
       "tagline": "the live map of the agents: who is doing what, now",
       "wears": "a visor across the eyes",
       "group": "The machine: build, identity, models, visibility",
-      "work": []
+      "work": [
+        {
+          "href": "data/trace/index.html",
+          "title": "The swarm's trace, as data",
+          "path": "data/trace/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -622,9 +639,9 @@
       "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
       "shared_row": true,
       "status_file": "agents/researcher/status.json",
-      "status_sha256": "16db41d16d754a36dc6b24a9712e230068bf504585b633e227ecb7d93a5223e9",
+      "status_sha256": "1e627752529e63367d9be86ea947790a5087f1c84acc28324c14e721ea4daa6e",
       "state": "blocked on the move: cannot reach PrompTugal/PrompTugal__News__Storm-Charles from this session",
-      "last_wake": "2026-11-11T20:44Z",
+      "last_wake": "2026-11-11T21:35Z",
       "jobs": [
         "J1 (tonight, first): where will Web Summit announce a Wednesday decision? Every organiser channel (site, news page, app notices, press office statements as reported, official social accounts readable without a login), and the side events o…",
         "J2 (tonight): the decision graph as JSON (incidents/2026-11-10-storm-charles/data/graph.json, README): actors (IPMA, ANEPC, government, Câmara, schools, Metro, Carris, CP, Fertagus, Transtejo, bridges, ANA/the airport, Web Summit, side eve…",
@@ -636,17 +653,18 @@
       "done": [
         "J2 v1: incidents/2026-11-10-storm-charles/data/decisions/graph.json and README.md (in data/decisions/ as my start brief named it; J2 named data/graph.json: say if you want it moved)",
         "J1 start: organiser channels and every source mapped in data/decisions/sources.json (readable without a login: websummit.com home, /news/, sitemap.xml; X, Instagram, LinkedIn, the app are not)",
-        "14:35 wake: no change to Day 3; IPMA open data now matches the 12:33 cut; CP urban: Campolide–Alcântara Terra suppressed (press); Madeira 285 to 13:10 (press); primary tries run 13: none published",
-        "15:36 wake: no change to Day 3; MAI: alert ends at midnight, normality expected Thursday (press 14:44); PSP: all Lisbon tunnels closed (15:24); IP: 8 roads restricted at 14:00; IPMA Lisbon now yellow rain 15-18, orange wind to 18; primary …",
         "16:35 wake: no change to Day 3; IPMA: no red left for Lisbon (yellow rain, orange wind 15:06-18:00; fact); A1 Vialonga restricted from 15:00 (GNR via press); ANEPC briefing due 19:00; primary tries run 15: none published",
         "16:41: ipma-cut-1555 (fact, CAP 15:55:03): Lisbon's orange wind ended 15:56; corrected ipma-lisbon-1506 (our 16:33 open-data read was stale for wind)",
         "17:42 wake: no change to Day 3; IPMA: no red anywhere at 17:40 (press says Faro stays red: conflict recorded, source wins); Lisbon 275 occurrences to 16:30 (RSB); Madeira trails closed Thursday (IFCN); primary tries run 16: none published",
         "18:35 wake: no change to Day 3; IPMA: no red; Lisbon only sea warnings (orange to 21:00, yellow to 03:00) after yellow rain ended 18:00; Funchal port expected operational Thursday (press); primary tries run 17: none published",
         "19:36 wake: no change to Day 3; ANEPC 19:00: 1,630 occurrences, \"muito menos grave do que o previsto\"; PM: hardest moments \"praticamente ultrapassados\"; ~400 flights cancelled to 18:30 (ANA via press); Madeira 328 to 18:40; primary tries r…",
-        "20:44 wake (redo after a script error at 20:36 that wrote nothing): no change to Day 3; PM: alert not extended, crisis centre deactivated (press 19:34); all rain and wind warnings lifted (IPMA via press 20:05); bridges back to normal limit…"
+        "20:44 wake (redo after a script error at 20:36 that wrote nothing): no change to Day 3; PM: alert not extended, crisis centre deactivated (press 19:34); all rain and wind warnings lifted (IPMA via press 20:05); bridges back to normal limit…",
+        "21:35 wake: no change to Day 3; no new Lisbon decisions in the press (regional counts only: Alentejo 254, Setúbal 95; E-Redes a few hundred without power at 19:30); primary tries run 20: none published",
+        "21:39: no early end of the alert published (DRE despacho page, portugal.gov.pt); declaration to 23:59 stands"
       ],
-      "done_total": 51,
+      "done_total": 53,
       "next": [
+        "Until 23:59: check diariodarepublica.pt (the despacho's page, Relacionados) and portugal.gov.pt for an act ending the alert early; tell incident.conductor@ at once",
         "Find the press live blogs for 11 Nov (Observador's 10 Nov blog stopped at 01:03; Jornal de Negócios at 00:09)",
         "Each wake: Web Summit via the press and its Bluesky (no websummit.com reads: hold since 05:25); then python3 incidents/2026-11-10-storm-charles/data/decisions/tools/primary_tries.py",
         "Each wake: blog list, Bluesky, schedule page; PITCH and Night Summit",
@@ -1414,14 +1432,42 @@
     },
     {
       "in_jobs": true,
-      "has_status": false,
-      "has_key": false,
-      "has_page": false,
+      "has_status": true,
+      "has_key": true,
+      "has_page": true,
       "name": "incident.flights@web-summit.dinis",
       "role": "flights",
       "owns": "`flights/`, `incidents/*/data/flights/`",
       "job": "**flights on the map with the wind** (Dinis, ~22:00 UTC, 11 Nov): airline aircraft near Lisbon and Funchal from OpenSky, the wind field from Open-Meteo, the airport's METAR/TAF and ANA's figures, as JSON snapshots that can be replayed",
       "shared_row": false,
+      "status_file": "agents/flights/status.json",
+      "status_sha256": "eb8e91d3073e949324c40767fead62e291738dfed38cc0330cdbd86c5f9cd60b",
+      "state": "active: first session; key published; building crosswind.json",
+      "last_wake": "2026-11-11T22:03:31Z",
+      "jobs": [],
+      "done": [
+        "session key made and published"
+      ],
+      "done_total": 1,
+      "next": [
+        "crosswind.json",
+        "wind field (Open-Meteo)",
+        "OpenSky snapshot poller",
+        "index.json",
+        "hourly model summary"
+      ],
+      "asks_dinis": [],
+      "asks": [],
+      "keys": [
+        {
+          "id": "incident-flights-dinis-1",
+          "record": "sha256:dd4ed33602958464",
+          "encryption": "sha256:f219807bfe8d2375",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026, 22:02 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The first flights session. A session key: it …"
+        }
+      ],
       "policy_owns": [
         "flights/**",
         "incidents/*/data/flights/**",
@@ -1637,26 +1683,27 @@
       "job": "**the project itself, told**: the story of how this was made, from the traces",
       "shared_row": false,
       "status_file": "agents/journalist/status.json",
-      "status_sha256": "1c6a35ecea323865355b9d23aedeeb389960ddb795cdda427be385ad5e6db146",
-      "state": "active: the sixth session (from 11:24), hand-over brought up to date at 14:17 (about 170k tokens a call); thirteen pieces, the closing piece first and open until the hand-over; 636 supports, 0 problems at 14:17",
+      "status_sha256": "5b401ab0a2418a81a4c47a69f37e9cd00f23c5ea7f44635f704d4200885f9881",
+      "state": "active: the eighth session (from 22:15), session key incident-journalist-dinis-8; thirteen pieces, the closing piece first and open until the close trigger; 661 supports, 0 problems at 22:15",
       "last_wake": "2026-11-11T14:17:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
         "journal/README.md: the index, how to read a piece, how the journal differs from What's new",
-        "10:33: the fifth session started; session key made (record sha256:63d75f6d37676e1e, encryption sha256:303672c8b066fa21; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json, the fourth session's ent…",
         "10:35: the closing piece, journal/beginning-to-end.md (first in journal/index.json and the edition): the incident from beginning to end for someone who was not there, linking the twelve pieces and story/arc.md, 25 claims with supports; ope…",
         "10:35: Mistakes made in the open, section 9: an unfinished hour read as final (08:17 and 09:13), and the closing piece's draft times ahead of the clock, caught before the commit",
         "10:34: told incident.planner@ (send_message) what the journal gives the closing record: the closing piece, the two cost pieces rewritten from the final round, section 9, endings for pieces 3, 7, 10, 12, the journal's exit interview, the ed…",
         "11:23 (the 11:12 wake): an-empty-account e12 re-anchored to commits f44d22e and a8c2cf7 (the reporter's log rewritten at 11:18); What it cost: a dated correction from the accountant's round 11 (the 10:14 'falling' wrong with the conductor'…",
         "12:17 wake (sixth session): dated lines from the reporter's 12:06 traces on piece 7 (tenth empty hour at 12:00), piece 12 (two doors on the front page at 12:01; no yes at 12:10) and the closing piece (Dinis's four words of ~11:42 to ~11:56…",
         "13:19 wake: piece 7 ended (the outage closed at 13:12:51, credit back, who restored it not on record); piece 10 and the closing piece: Web Summit's Thursday through the press at 13:04, as evidence, the hold standing; What it cost's round-1…",
-        "14:17 wake: five supports (pieces 1 of the closing record x15, 7 e5/e8/e9, 8 a9) re-anchored on incident.perplexity@'s commit 1ea0c72 after its status file was rewritten at 13:37 when the credit came back; dated on piece 7"
+        "14:17 wake: five supports (pieces 1 of the closing record x15, 7 e5/e8/e9, 8 a9) re-anchored on incident.perplexity@'s commit 1ea0c72 after its status file was rewritten at 13:37 when the credit came back; dated on piece 7",
+        "eighth session, 22:15 UTC: session key made (record sha256:f7c845adc2564598, encryption sha256:35520827476dd75b; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json as incident-journalist-dinis-8, …"
       ],
-      "done_total": 34,
+      "done_total": 35,
       "next": [
-        "FIRST (seventh session, key incident-journalist-dinis-7 since 16:04): the hourly round at :12: pull; node tools/journal-build.mjs --check (641 supports, 0 problems at 16:05); re-anchor what failed on a commit (find it in data/ci/commits/<h…",
+        "Each wake (eighth session from 22:15; first wake 23:12): the hourly round at :12: pull; node tools/journal-build.mjs --check (661 supports, 0 problems at 22:13); re-anchor what failed and date it on the page; read BRIEF.md for new Dinis se…",
         "close trigger (a), PLAN.md line 41: incident.ipma@'s read at :47 must show no yellow or above for Lisbon district; IPMA's yellow sea runs to 03:00 Thursday (s-1111T2100), so the first read that can meet it is 03:47 Thursday if IPMA adds no…",
+        "the closing piece's dated lines this session (journal/beginning-to-end.md, under 'How it ends'): 16:05, 16:15 (+16:16 correction), 18:13, 21:13, 22:13 (Dinis ~22:00-22:10: flights, OpenRouter collectors, the trace as data, compute on GitHu…",
         "endings still open (status.closing_record.endings_state): piece 10 (the hold on Web Summit's site; Thursday reached through the press at 13:04 as evidence), piece 12 (/welcome/, no yes), piece 3 (cards waiting on Dinis). Piece 7 ended at 1…",
         "after the close trigger (IPMA's first read after 21:00 UTC Wednesday + Web Summit's Day 3 decision; PLAN.md §1): the closing piece's 'How it ends' written through (it carries dated lines at 12:16 and 13:18 under the 10:35 body); endings fo…",
         "after the accountant's closing round (accounts/closing.md, PLAN.md §3): rewrite the bodies of What it cost and Starting again once, keep every correction as a dated list at the foot",
@@ -1724,8 +1771,16 @@
           "record": "sha256:a7b76ad3d139c9e6",
           "encryption": "sha256:aa10e3bde5a852ce",
           "added": "2026-11-11",
-          "status": "active",
+          "status": "handed over",
           "how": "Made in its own session on 11 November 2026, 16:04 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked against the pin before it ran). The seventh journalist sessio…"
+        },
+        {
+          "id": "incident-journalist-dinis-8",
+          "record": "sha256:f7c845adc2564598",
+          "encryption": "sha256:35520827476dd75b",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026, 22:15 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked against the pin before it ran). The eighth journalist session…"
         }
       ],
       "policy_owns": [
@@ -1844,8 +1899,8 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "3deffd152248a279a7db203956ce05fb14e29027e4f7dcc443da654de5599844",
-      "state": "active: the thirteenth librarian session ([session], since 20:47 UTC), started from the twelfth's hand-over of 20:46 (kept below as 'handover' until this session writes its own).",
+      "status_sha256": "71e314ebdff046ce02aa5985ecbbe2f3ccb39ca47c368e09ca8f8aa7ca843a0b",
+      "state": "handing over: the thirteenth librarian session ([session], since 20:47 UTC) wrote this hand-over at 22:06 after its first hourly wake and Dinis's altitudes job.",
       "last_wake": "2026-11-11T21:46Z",
       "jobs": [
         "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
@@ -1871,7 +1926,7 @@
       ],
       "done_total": 37,
       "next": [
-        "at the 22:44 wake: FIRST node tools/library-releases.mjs (tags fetched), then close news/2026-11-11T21.md in the form of T20.md and open T22; round two 5c/7/9; the alert situation ends at 23:59 as declared (press), Lisbon's yellow sea to 0…",
+        "a fourteenth session: at the 22:44 wake close news/2026-11-11T21.md and open T22 (releases first); add incident.flights@ to library/abp.json once it pushes, and re-run tools/library-altitudes.mjs",
         "the round article at each hourly wake: 5c, section 7, section 9",
         "at the close trigger: library/closing-inventory.json for incident.planner@"
       ],
@@ -1985,8 +2040,16 @@
           "record": "sha256:adeb4ceb101edfb7",
           "encryption": "sha256:886cc9f571583ded",
           "added": "2026-11-11",
-          "status": "active",
+          "status": "handed over",
           "how": "Made in its own session on 11 November 2026, 20:47 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The thirteenth librarian session, started fro…"
+        },
+        {
+          "id": "incident-librarian-dinis-14",
+          "record": "sha256:e76fdab641b7fe00",
+          "encryption": "sha256:5e7a054a305779fc",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026, 22:08 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The fourteenth librarian session, started fro…"
         }
       ],
       "policy_owns": [
@@ -2241,8 +2304,16 @@
           "record": "sha256:ba085e12563c29bc",
           "encryption": "sha256:81ba78c3312c1f76",
           "added": "2026-11-11",
+          "status": "handed over",
+          "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. The first models session (11 November,…"
+        },
+        {
+          "id": "incident-models-dinis-2",
+          "record": "sha256:d2de7f2d13f6dd7c",
+          "encryption": "sha256:c12fa892e0c16d9b",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 22:03 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The second models session, started from agent…"
         }
       ],
       "policy_owns": [
@@ -2461,9 +2532,9 @@
       "job": "**the project itself, as it happens**: a trace per workflow, from Dinis's word to a live page",
       "shared_row": false,
       "status_file": "agents/reporter/status.json",
-      "status_sha256": "b28bcb3bca6e36f61a310c7d0a0db716f077d176b10c51dfa160911a245cd09a",
-      "state": "active, seventh session (from 21:09 UTC): fifteen traces, the wind-down open (25 steps; the close trigger waits on incident.ipma@'s first read after 21:00), memory 37; the log to 21:07; hourly at :06 (first 22:06)",
-      "last_wake": "2026-11-11T21:08:21Z",
+      "status_sha256": "a294b8f49af741bdaad91d1b02fdb1db3f94384ab8fabd671ed88e7bbb455aea",
+      "state": "active, seventh session (from 21:09 UTC): fifteen traces, the wind-down open (26 steps; the close trigger not met at the 21:48 read, the plan has no rule for a later one), memory 38; the log to 22:08; hourly at :06",
+      "last_wake": "2026-11-11T22:08:41Z",
       "jobs": [
         "R1: traces, one JSON per workflow (reporter/traces/), each step with its evidence or marked no evidence",
         "R2: reporter/log.md, the project hour by hour, appended at every wake",
@@ -2473,16 +2544,16 @@
       "done": [
         "first session (02:50 to 04:06): seven traces (97 steps), the log from 10 November 18:00 to 04:00, the numbers, tools/reporter-fill.mjs and tools/reporter-numbers.mjs, agents/reporter/HANDOVER.md",
         "04:07Z second session: session key (6a509d6); first measured line (9451fc3): 115,554 tokens a call after 12 calls",
-        "12:10: the 12:06 wake: three steps in the wind-down (an interview across a hand-over; the plan's decisions on one card; four new agents taken into the plan), one each in outage (tenth gap), memory (five hand-overs) and the loop (/guide/ be…",
         "16:04 sixth session: key incident-reporter-dinis-6 (3c164d9); the 16:06 round: wind-down step 20 (only Faro red), memory steps 31 (a fix carried across observability's hand-over) and 32 (round 17; stories, reporter hand-overs); the log blo…",
         "17:08 the 17:07 wake: wind-down step 21 (no red left on the mainland, brief edition 9), memory step 33 (round 18) and step 32 corrected in the open (three hand-overs at 16:04, not one); the log block",
         "18:07 the 18:06 wake: wind-down step 22 (Lisbon's last land warning ended 18:00), memory step 34 (round 19; four hand-overs in 36 s); the log block",
         "19:06 the 19:06 wake: wind-down step 23 (bridges normal, no second peak as hypothesis), memory step 35 (round 20; transport's hand-over); the log block",
         "20:07 the 20:06 wake: wind-down step 24 (the PM's 'practically over' as evidence, ferries back), memory step 36 (round 21; the conductor's fifth compaction); the log block",
         "21:08 the 21:06 wake: wind-down step 25 (21:00 passed; brief edition 10; CI's report and the tags side by side), memory step 37 (round 22; librarian-13; model names in trailers); the log block; HANDOVER.md brought up to date (sixth session…",
-        "21:10 seventh session: key incident-reporter-dinis-7 (pin fcb28a1c checked), -6 marked handed over in the same commit; started from start.md and HANDOVER.md"
+        "21:10 seventh session: key incident-reporter-dinis-7 (pin fcb28a1c checked), -6 marked handed over in the same commit; started from start.md and HANDOVER.md",
+        "22:08 the 22:06 wake: wind-down step 26 (the close trigger not met at incident.ipma@'s 21:48 read; the planner's gap; step 25 corrected in it), memory step 38 (round 23; seven hand-overs and flights' first key); the log block (Dinis ~22:00)"
       ],
-      "done_total": 21,
+      "done_total": 22,
       "next": [
         "traces owed: the first article as a PDF; the launch (neither has happened in the record)",
         "the wind-down trace: a step per exit interview and per hand-over, Dinis's yes, the close trigger; then the closing record (transition/PLAN.md section 3)",
@@ -3558,6 +3629,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T22:03:28Z",
-  "content_sha256": "4d218407160c2f168d76e7ccaf44fdf9214b2b54b6d0dabf345749430851652f"
+  "updated": "2026-11-11T22:15:46Z",
+  "content_sha256": "57cf46166f48303dbefe4fcc21788c3429d5a2c09d3c3d97e9b1ab0ca6abc207"
 }
