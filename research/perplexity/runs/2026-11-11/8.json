@@ -1,0 +1,531 @@
+{
+ "about": "One research run: an open question of the incident team put to Perplexity (its Sonar models, through OpenRouter and tools/llm.mjs), the answer split into statements in our own words, and each statement checked by opening the address the engine cited. An engine's answer is evidence about the engine, not about the storm; nothing here is a fact until it is read at the body that decides or warns. The answers' full text is not here (raw store, outside git: the raw name and sha256 point to it).",
+ "by": "incident.perplexity@web-summit.dinis",
+ "date": "2026-11-11",
+ "n": 8,
+ "id": "ipma-warning-archives",
+ "topic": "Who keeps an archive of IPMA's earlier warnings?",
+ "from": [],
+ "updated": "2026-11-11T14:42:15Z",
+ "asks": [
+  {
+   "k": 1,
+   "at": "2026-11-11T14:39:12Z",
+   "lang": "en",
+   "question": "IPMA (Portugal's weather service) publishes only its warnings currently in force. Where can earlier, superseded IPMA warnings for Storm Charles (9 to 11 November 2026) be read: MeteoAlarm's archive or CAP feeds, EUMETNET, IPMA's own API, the Internet Archive, or any other public archive of Portuguese weather warnings? Give the address of each archive and say what it holds.",
+   "model": "perplexity/sonar-pro",
+   "model_served": "perplexity/sonar-pro",
+   "settings": {
+    "brief": "the research brief (tools/perplexity-ask.mjs, BRIEF) with the time of asking",
+    "max_tokens": 800,
+    "search_context": "the engine's default"
+   },
+   "status": "ok",
+   "cost_usd": 0.0155133,
+   "tokens_in": 192,
+   "tokens_out": 606,
+   "latency_ms": 8714,
+   "raw": "2026-11-11/20261111T143912-144ccc98.json",
+   "raw_sha256": "0af7560b6860901d",
+   "cited": [
+    {
+     "n": 1,
+     "host": "nottinghampost.com",
+     "used": false,
+     "url": "https://www.nottinghampost.com/news/uk-world-news/extraordinary-danger-red-alerts-issued-11236693"
+    },
+    {
+     "n": 2,
+     "host": "aol.co.uk",
+     "used": false,
+     "url": "https://www.aol.co.uk/articles/severe-weather-portugal-hit-travel-100609000.html"
+    },
+    {
+     "n": 3,
+     "host": "eumetnet.eu",
+     "used": true,
+     "url": "https://www.eumetnet.eu/search/"
+    },
+    {
+     "n": 4,
+     "host": "eumetnet.eu",
+     "used": true,
+     "url": "https://www.eumetnet.eu/category/forecasting-programme/e-nwc/"
+    },
+    {
+     "n": 5,
+     "host": "euronews.com",
+     "used": false,
+     "url": "https://www.euronews.com/2026/11/10/depression-charles-to-hit-madeira-and-portugal-as-government-urges-maximum-caution"
+    },
+    {
+     "n": 6,
+     "host": "globalincidenttracker.com",
+     "used": false,
+     "url": "https://globalincidenttracker.com/incident/orange-coastal-event-warning-faro-427617"
+    },
+    {
+     "n": 7,
+     "host": "api.ipma.pt",
+     "used": true,
+     "url": "https://api.ipma.pt/"
+    },
+    {
+     "n": 8,
+     "host": "eumetnet.eu",
+     "used": false,
+     "url": "https://www.eumetnet.eu/observations/surface-marine-observations/"
+    },
+    {
+     "n": 9,
+     "host": "uk.news.yahoo.com",
+     "used": false,
+     "url": "https://uk.news.yahoo.com/storm-charles-state-alert-issued-110618486.html"
+    },
+    {
+     "n": 10,
+     "host": "globalincidenttracker.com",
+     "used": false,
+     "url": "https://globalincidenttracker.com/incident/orange-rain-warning-faro-429475"
+    },
+    {
+     "n": 11,
+     "host": "globalincidenttracker.com",
+     "used": true,
+     "url": "https://globalincidenttracker.com/incident/red-rain-warning-madeira-regi-es-montanhosas-429226"
+    },
+    {
+     "n": 12,
+     "host": "greatapis.com",
+     "used": false,
+     "url": "https://greatapis.com/api/ipma/"
+    },
+    {
+     "n": 13,
+     "host": "eumetnet.eu",
+     "used": false,
+     "url": "https://www.eumetnet.eu/observations/ship-based-radiosonde-observations/"
+    },
+    {
+     "n": 14,
+     "host": "bloomberg.com",
+     "used": false,
+     "url": "https://www.bloomberg.com/news/articles/2026-11-10/portuguese-told-to-stay-home-to-cover-from-unusually-strong-wind"
+    },
+    {
+     "n": 15,
+     "host": "planetbriefing.com",
+     "used": false,
+     "url": "https://planetbriefing.com/events/portugal"
+    }
+   ],
+   "statements": [
+    {
+     "i": 1,
+     "kind": "claim",
+     "s": "EUMETNET says APIs for MeteoAlarm are being developed that give bulk downloads of archived warnings.",
+     "cites": [
+      4
+     ],
+     "check": "primary",
+     "at": "https://www.eumetnet.eu/category/forecasting-programme/e-nwc/",
+     "read_utc": "2026-11-11T14:40:10Z",
+     "note": "Read at eumetnet.eu (the network that runs MeteoAlarm): \"bulk downloads for archived warnings\", within the RODEO project, with Near-Real-Time, Archived Warning and Storm Name APIs."
+    },
+    {
+     "i": 2,
+     "kind": "claim",
+     "s": "That archive is downloaded through CEDA and needs registration.",
+     "cites": [
+      4
+     ],
+     "check": "wrong",
+     "at": "https://www.eumetnet.eu/category/forecasting-programme/e-nwc/",
+     "read_utc": "2026-11-11T14:40:10Z",
+     "note": "The page's CEDA line is about a different thing listed on the same page (an aerosol and cloud profiler network). The engine joined two unrelated paragraphs of one page."
+    },
+    {
+     "i": 3,
+     "kind": "claim",
+     "s": "MeteoAlarm's public feeds carry active warnings only and are not a record of superseded ones.",
+     "cites": [
+      3
+     ],
+     "check": "primary",
+     "at": "https://www.eumetnet.eu/search/",
+     "read_utc": "2026-11-11T14:40:07Z",
+     "note": "Read at eumetnet.eu: the feeds \"provide a thorough summary of active multi-hazard early warnings\". Matches what incident.sources@ found."
+    },
+    {
+     "i": 4,
+     "kind": "claim",
+     "s": "IPMA's open data gives the warnings file (warnings_www.json) and documents no history of earlier versions.",
+     "cites": [
+      7
+     ],
+     "check": "primary",
+     "at": "https://api.ipma.pt/",
+     "read_utc": "2026-11-11T14:40:13Z",
+     "note": "Read at api.ipma.pt: \"Avisos Meteorológicos até 3 dias\" with that one address; no archive endpoint listed. Matches incident.ipma@'s map."
+    },
+    {
+     "i": 5,
+     "kind": "none-found",
+     "s": "It found no public CAP archive by date and no Internet Archive capture.",
+     "cites": [],
+     "check": "said-none",
+     "note": "It did not look in the Internet Archive; it says it found no address. Not checked by us at web.archive.org in this round."
+    },
+    {
+     "i": 6,
+     "kind": "claim",
+     "s": "A third-party site, Global Incident Tracker, keeps records generated from MeteoAlarm, for example the red rain warning for Madeira's mountains.",
+     "cites": [
+      6,
+      10,
+      11
+     ],
+     "check": "press",
+     "at": "https://globalincidenttracker.com/incident/red-rain-warning-madeira-regi-es-montanhosas-429226",
+     "read_utc": "2026-11-11T14:40:16Z",
+     "note": "Read there (not a primary body, counted with the press): a record from MeteoAlarm of a red rain warning for Madeira's mountain regions valid 10 November 21:00 to 11 November 06:00. A pointer for incident.sources@: a third party that kept what the feed dropped; its licence and method are unread."
+    }
+   ]
+  },
+  {
+   "k": 2,
+   "at": "2026-11-11T14:39:21Z",
+   "lang": "pt",
+   "question": "O IPMA publica apenas os avisos em vigor. Onde se podem consultar os avisos anteriores, já substituídos, do IPMA para a depressão Charles (9 a 11 de novembro de 2026): arquivo ou feeds CAP do MeteoAlarm, EUMETNET, a API do IPMA, o Internet Archive, ou outro arquivo público de avisos meteorológicos portugueses? Indique o endereço de cada arquivo e o que contém.",
+   "model": "perplexity/sonar",
+   "model_served": "perplexity/sonar",
+   "settings": {
+    "brief": "the research brief (tools/perplexity-ask.mjs, BRIEF) with the time of asking",
+    "max_tokens": 800,
+    "search_context": "the engine's default"
+   },
+   "status": "ok",
+   "cost_usd": 0.0055935,
+   "tokens_in": 207,
+   "tokens_out": 445,
+   "latency_ms": 7852,
+   "raw": "2026-11-11/20261111T143921-dae6ee73.json",
+   "raw_sha256": "e9b1b9609c304f3e",
+   "cited": [
+    {
+     "n": 1,
+     "host": "api.ipma.pt",
+     "used": true,
+     "url": "https://api.ipma.pt/"
+    },
+    {
+     "n": 2,
+     "host": "github.com",
+     "used": true,
+     "url": "https://github.com/marcelogdomingues/ipma-api/blob/main/README.md"
+    },
+    {
+     "n": 3,
+     "host": "meteoalarm.org",
+     "used": true,
+     "url": "https://meteoalarm.org/en/live/page/news"
+    },
+    {
+     "n": 4,
+     "host": "github.com",
+     "used": false,
+     "url": "https://github.com/marcelogdomingues/ipma-api/tree/main/dotnet"
+    },
+    {
+     "n": 5,
+     "host": "greatapis.com",
+     "used": false,
+     "url": "https://greatapis.com/api/ipma/"
+    },
+    {
+     "n": 6,
+     "host": "fibric.io",
+     "used": false,
+     "url": "https://www.fibric.io/integrations/c/sg-ipma-api"
+    },
+    {
+     "n": 7,
+     "host": "api.meteoalarm.org",
+     "used": false,
+     "url": "https://api.meteoalarm.org/"
+    },
+    {
+     "n": 8,
+     "host": "github.com",
+     "used": false,
+     "url": "https://github.com/marcelogdomingues/ipma-api/tree/main/typescript"
+    },
+    {
+     "n": 9,
+     "host": "github.com",
+     "used": false,
+     "url": "https://github.com/marcelogdomingues/ipma-api/tree/main/java"
+    },
+    {
+     "n": 10,
+     "host": "github.com",
+     "used": false,
+     "url": "https://github.com/marcelogdomingues/ipma-api"
+    },
+    {
+     "n": 11,
+     "host": "glama.ai",
+     "used": false,
+     "url": "https://glama.ai/mcp/servers/gabriel20vieira/ipma-mcp-server"
+    },
+    {
+     "n": 12,
+     "host": "data.trilemma.foundation",
+     "used": false,
+     "url": "https://data.trilemma.foundation/datasets/ipma-weather-warnings"
+    },
+    {
+     "n": 13,
+     "host": "github.com",
+     "used": false,
+     "url": "https://github.com/gabriel20vieira/ipma-mcp-server/commit/eb95d4d57d78381d6cc8725eaaa97726985e1490"
+    },
+    {
+     "n": 14,
+     "host": "github.com",
+     "used": false,
+     "url": "https://github.com/VascoFlorentino/IPMA_API"
+    },
+    {
+     "n": 15,
+     "host": "eumetnet.eu",
+     "used": false,
+     "url": "https://www.eumetnet.eu/forecasting-and-climate/multi-hazard-warning/"
+    }
+   ],
+   "statements": [
+    {
+     "i": 1,
+     "kind": "claim",
+     "s": "IPMA's API page gives only the warnings in force, with a link to its guide.",
+     "cites": [
+      1
+     ],
+     "check": "primary",
+     "at": "https://api.ipma.pt/",
+     "read_utc": "2026-11-11T14:40:13Z",
+     "note": "Read at api.ipma.pt."
+    },
+    {
+     "i": 2,
+     "kind": "claim",
+     "s": "MeteoAlarm's API portal offers near real-time and archived warnings through authenticated endpoints for approved re-users, with queries by space and time; no open archive without a token.",
+     "cites": [
+      3
+     ],
+     "check": "primary",
+     "at": "https://api.meteoalarm.org/",
+     "read_utc": "2026-11-11T14:40:25Z",
+     "note": "Read at api.meteoalarm.org (not at the address cited, which did not render): \"Token-based access for approved re-users\", \"queryable EDR archives\". Confirms the board's item a-meteoalarm-archive-key: the archive exists and needs an account in someone's name."
+    },
+    {
+     "i": 3,
+     "kind": "none-found",
+     "s": "It found no official address pointing to the Internet Archive, and no other Portuguese public archive of superseded warnings.",
+     "cites": [],
+     "check": "said-none",
+     "note": "As above."
+    }
+   ]
+  }
+ ],
+ "addresses": {
+  "https://www.nottinghampost.com/news/uk-world-news/extraordinary-danger-red-alerts-issued-11236693": {
+   "host": "nottinghampost.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.aol.co.uk/articles/severe-weather-portugal-hit-travel-100609000.html": {
+   "host": "aol.co.uk",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.eumetnet.eu/search/": {
+   "host": "eumetnet.eu",
+   "class": "primary",
+   "opened": true,
+   "read_utc": "2026-11-11T14:40:07Z",
+   "http": 200,
+   "bytes": 260989,
+   "sha256": "d82c0c00a5b165f9b43f2fd3ef6b9acf05d76e5a3f0dbbfadf0ba23bb919cf42",
+   "title": "Search - Eumetnet",
+   "text_chars": 51251
+  },
+  "https://www.eumetnet.eu/category/forecasting-programme/e-nwc/": {
+   "host": "eumetnet.eu",
+   "class": "primary",
+   "opened": true,
+   "read_utc": "2026-11-11T14:40:10Z",
+   "http": 200,
+   "bytes": 264251,
+   "sha256": "8f2f71e7f6c5f8fefaa2b4a79bf81f2c9d268916af2d767c83770151d092d61f",
+   "title": "E-NWC Archives - Eumetnet",
+   "text_chars": 52901
+  },
+  "https://www.euronews.com/2026/11/10/depression-charles-to-hit-madeira-and-portugal-as-government-urges-maximum-caution": {
+   "host": "euronews.com",
+   "class": "press",
+   "source": "press",
+   "opened": false
+  },
+  "https://globalincidenttracker.com/incident/orange-coastal-event-warning-faro-427617": {
+   "host": "globalincidenttracker.com",
+   "class": "aggregator",
+   "opened": false
+  },
+  "https://api.ipma.pt/": {
+   "host": "api.ipma.pt",
+   "class": "primary",
+   "source": "ipma",
+   "opened": true,
+   "read_utc": "2026-11-11T14:40:13Z",
+   "http": 200,
+   "bytes": 87235,
+   "sha256": "32e9d7337a162fc457a871499671d0a6b465cd6af7c06339ab186acd0e55ffcc",
+   "title": "IPMA - api",
+   "text_chars": 32347
+  },
+  "https://www.eumetnet.eu/observations/surface-marine-observations/": {
+   "host": "eumetnet.eu",
+   "class": "primary",
+   "opened": false
+  },
+  "https://uk.news.yahoo.com/storm-charles-state-alert-issued-110618486.html": {
+   "host": "uk.news.yahoo.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://globalincidenttracker.com/incident/orange-rain-warning-faro-429475": {
+   "host": "globalincidenttracker.com",
+   "class": "aggregator",
+   "opened": false
+  },
+  "https://globalincidenttracker.com/incident/red-rain-warning-madeira-regi-es-montanhosas-429226": {
+   "host": "globalincidenttracker.com",
+   "class": "aggregator",
+   "opened": true,
+   "read_utc": "2026-11-11T14:40:16Z",
+   "http": 200,
+   "bytes": 50659,
+   "sha256": "5e8ab969cb8ea4044726a549f23907cce5c9bc3cf542851fe07a8ea496d1a2d6",
+   "title": "Red Rain Warning — Madeira - Regiões Montanhosas — 10 November 2026",
+   "text_chars": 9089
+  },
+  "https://greatapis.com/api/ipma/": {
+   "host": "greatapis.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.eumetnet.eu/observations/ship-based-radiosonde-observations/": {
+   "host": "eumetnet.eu",
+   "class": "primary",
+   "opened": false
+  },
+  "https://www.bloomberg.com/news/articles/2026-11-10/portuguese-told-to-stay-home-to-cover-from-unusually-strong-wind": {
+   "host": "bloomberg.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://planetbriefing.com/events/portugal": {
+   "host": "planetbriefing.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://github.com/marcelogdomingues/ipma-api/blob/main/README.md": {
+   "host": "github.com",
+   "class": "other",
+   "opened": true,
+   "read_utc": "2026-11-11T14:40:18Z",
+   "http": 403,
+   "bytes": 378,
+   "sha256": "b3e03aaaff81d68730d67392a135ac3fdfdf022880c66632ab188d2fe084cda3",
+   "title": null,
+   "text_chars": 378
+  },
+  "https://meteoalarm.org/en/live/page/news": {
+   "host": "meteoalarm.org",
+   "class": "primary",
+   "source": "meteoalarm",
+   "opened": true,
+   "read_utc": "2026-11-11T14:40:22Z",
+   "http": 200,
+   "bytes": 422653,
+   "sha256": "f0878be46e492d38385424422b15883a3808344e2cb17134c22041c07e6cd276",
+   "title": "MeteoAlarm | Early Warnings for Europe",
+   "text_chars": 38
+  },
+  "https://github.com/marcelogdomingues/ipma-api/tree/main/dotnet": {
+   "host": "github.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.fibric.io/integrations/c/sg-ipma-api": {
+   "host": "fibric.io",
+   "class": "other",
+   "opened": false
+  },
+  "https://api.meteoalarm.org/": {
+   "host": "api.meteoalarm.org",
+   "class": "primary",
+   "source": "meteoalarm",
+   "opened": true,
+   "read_utc": "2026-11-11T14:40:25Z",
+   "http": 200,
+   "bytes": 40304,
+   "sha256": "3cc84f25faaec5c3ab261853fe321587a5a49b612c8c162bf2a9ddb2ceab111b",
+   "title": "MeteoAlarm API Portal | Early Warnings for Europe",
+   "text_chars": 2573
+  },
+  "https://github.com/marcelogdomingues/ipma-api/tree/main/typescript": {
+   "host": "github.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://github.com/marcelogdomingues/ipma-api/tree/main/java": {
+   "host": "github.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://github.com/marcelogdomingues/ipma-api": {
+   "host": "github.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://glama.ai/mcp/servers/gabriel20vieira/ipma-mcp-server": {
+   "host": "glama.ai",
+   "class": "other",
+   "opened": false
+  },
+  "https://data.trilemma.foundation/datasets/ipma-weather-warnings": {
+   "host": "data.trilemma.foundation",
+   "class": "other",
+   "opened": false
+  },
+  "https://github.com/gabriel20vieira/ipma-mcp-server/commit/eb95d4d57d78381d6cc8725eaaa97726985e1490": {
+   "host": "github.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://github.com/VascoFlorentino/IPMA_API": {
+   "host": "github.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.eumetnet.eu/forecasting-and-climate/multi-hazard-warning/": {
+   "host": "eumetnet.eu",
+   "class": "primary",
+   "opened": false
+  }
+ },
+ "checked_by": "incident.perplexity@web-summit.dinis"
+}

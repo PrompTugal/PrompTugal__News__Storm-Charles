@@ -1,4 +1,4 @@
-> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 13:37 UTC
+> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 14:42 UTC
 
 ## What it is good for here, and what it is not
 
@@ -21,7 +21,17 @@ Our analysis of six runs (15 answers, two models); labelled as analysis, to be t
 - **The broad question.** "Which European events cancelled for a named storm since 2017?" got two unsupported examples from Sonar Pro (not on the page cited) and, in Portuguese, an answer about this storm. Sonar Pro searched only the United Kingdom's Met Office for a question about Lisbon.
 - **Being the source.** On the bridges and tunnels it has still returned no primary page at all in three answers. Where it does return primary pages it returns them in bulk from one site (all fifteen from one body in several Pro answers), which looks thorough and is one search.
 
-**So, for this team:** use it to find *where* something might be published, then read it there, including what the engine says is not there. Five answers of fifteen gave us an address worth opening that we did not hold; two would have misled us if believed; none gave us a fact we could use without opening the page.
+**So, for this team:** use it to find *where* something might be published, then read it there, including what the engine says is not there. After three rounds (23 answers): seven gave us an address worth opening that we did not hold; three contained a statement that would have misled us if believed; none gave us a fact we could use without opening the page.
+
+## Round 3 (14:39 UTC): what four more questions added
+
+Analysis of runs 7 to 10 (eight answers).
+
+- **It can read a site that refuses us, and we cannot check it.** lisboa.pt answers 403 to every tool this team has. Both models returned the same two pages of the Câmara by exact address, with what they say (tunnels from 00:00, parks, gardens, reassessed within 24 hours) and, from one, a publication time. That is the most useful thing it has given on the board's blocked question about the Câmara, and none of it is checked: two answers from one index agreeing is not a check. It is a pointer for a person to open.
+- **It joins paragraphs.** On EUMETNET's page it attached a registration note about one data set to MeteoAlarm's archive. Each half is on the page; the sentence it made is not.
+- **On archives it confirmed what the team had found by hand**: MeteoAlarm's archive exists behind a token for approved re-users; the public feeds and IPMA's file carry only what is in force. It also turned up a third party that kept what the feed dropped.
+- **It looks where the first result is.** Asked about five transport operators, Sonar Pro returned fifteen addresses, all CP's, and reported "not found" for the other four.
+- **The bare question against the briefed one** (the bridges, the same minute, the same model): both drew on the same 22 addresses and both missed that the restrictions had been lifted, on pages whose headlines say so. The bare answer reversed the order of Tuesday's and Wednesday's limits. The briefed answer named who said what and when, numbered its points, and said its best source was the press. The brief does not change what it finds; it changes how honestly it presents it.
 
 ## The Sonar variants compared
 
@@ -35,7 +45,7 @@ The same three questions (runs 1 to 3, in English), then three more where each m
 
 ## Cost per useful lead
 
-Five leads read at primary addresses for 0.12 US dollars of model spend: about two and a half cents a lead. The real cost is the checking: 45 addresses opened and read against 65 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
+Five leads read at primary addresses for 0.19 US dollars of model spend: about four cents a lead (round 3 added pointers and confirmations, no new lead). The real cost is the checking: 74 addresses opened against 95 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
 
 ## A hold on Web Summit's site (05:27 UTC)
 
@@ -43,6 +53,5 @@ Since 05:27 UTC this desk does not request websummit.com: an interim hold from i
 
 ## What is next
 
-- More of the team's open questions: the Câmara's measures, who else archived IPMA's earlier warnings, Thursday's transport, the trains.
-- The bare question against the briefed one, on the same topic: does asking for the primary page change what comes back?
+- Thursday morning: what the operators and the organiser publish about Day 3 and the return of services; the same questions re-asked to see whether the engine has caught up.
 - The reasoning and deep-research variants, if they can be made to answer within the wrapper's limits.

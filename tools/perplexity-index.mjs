@@ -19,7 +19,7 @@ for (const d of fs.readdirSync(path.join(P, 'runs')).sort()) for (const f of fs.
 export const CHECKS = {
     primary: { label: 'confirmed at a primary source', bucket: 'confirmed' }, press: { label: 'press only', bucket: 'press' },
     'not-found': { label: 'not found at the address cited', bucket: 'unsupported' }, 'no-address': { label: 'no address given', bucket: 'unsupported' },
-    wrong: { label: 'wrong', bucket: 'wrong' }, held: { label: 'not checked: the site is on hold', bucket: 'unchecked' }, unreadable: { label: 'not checked: the address did not render for our reader', bucket: 'unchecked' }, 'said-none': { label: 'the engine said it found none', bucket: 'none_found' },
+    wrong: { label: 'wrong', bucket: 'wrong' }, held: { label: 'not checked: the site is on hold', bucket: 'unchecked' }, unreadable: { label: 'not checked: the address refused our reader or did not render', bucket: 'unchecked' }, 'said-none': { label: 'the engine said it found none', bucket: 'none_found' },
 }
 const zero = () => ({ asks: 0, statements: 0, confirmed: 0, press: 0, unsupported: 0, wrong: 0, none_found: 0, unchecked: 0, addresses: 0, addresses_primary: 0, addresses_press: 0, addresses_aggregator: 0, addresses_other: 0, addresses_not_requested: 0, cost_usd: 0, latency_ms: [], tokens_in: 0, tokens_out: 0 })
 function add(t, q, run) {
@@ -74,7 +74,7 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 
 **Runs were paused from 02:54 to 13:30 UTC on 11 November** for lack of credit on the OpenRouter account; they resumed at 13:30.
 
-**In one sentence:** of ${S.statements} statements, ${S.confirmed} confirmed at a primary body, ${S.press} press only, ${S.unsupported} unsupported and ${S.wrong} wrong; the two wrong ones are the instructive ones: it said a government page records advice to Web Summit that the page does not contain, and it said ANA had published nothing while citing the page that lists ANA's statement.
+**In one sentence:** of ${S.statements} statements, ${S.confirmed} confirmed at a primary body, ${S.press} press only, ${S.unsupported} unsupported and ${S.wrong} wrong; the wrong ones are the instructive ones: it said a government page records advice to Web Summit that the page does not contain; it said ANA had published nothing while citing the page that lists ANA's statement; and it joined two unrelated paragraphs of one page into a fact about MeteoAlarm's archive.
 
 ## What this is
 
@@ -92,7 +92,7 @@ Unlike the shadow desk's bare questions, a research question carries a short bri
 
 ## The scorecard
 
-So far: **${runs.length}** runs, **${S.asks}** answers, **${S.statements}** statements checked: **${S.confirmed}** confirmed at a primary source, **${S.press}** press only, **${S.unsupported}** unsupported, **${S.wrong}** wrong, **${S.unchecked}** not checked (a site on hold, or a page that did not render); **${S.none_found}** times the engine said it found no page. It returned **${S.addresses}** addresses; **${S.addresses_primary}** were a primary body's own page. Spent: **${usd(S.cost_usd)} US dollars** (this desk plans up to 4 a day of the team's 20). Leads offered to the conductor: **${leadList.length}**${leadList.length ? ` (${usd(scorecard.cost_per_lead_usd)} US dollars each)` : ''}. Data: [scorecard.json](scorecard.json), [leads.json](leads.json), [runs/](runs/), [hosts.json](hosts.json).
+So far: **${runs.length}** runs, **${S.asks}** answers, **${S.statements}** statements checked: **${S.confirmed}** confirmed at a primary source, **${S.press}** press only, **${S.unsupported}** unsupported, **${S.wrong}** wrong, **${S.unchecked}** not checked (a site on hold, or a page that refused our reader or did not render); **${S.none_found}** times the engine said it found no page. It returned **${S.addresses}** addresses; **${S.addresses_primary}** were a primary body's own page. Spent: **${usd(S.cost_usd)} US dollars** (this desk plans up to 4 a day of the team's 20). Leads offered to the conductor: **${leadList.length}**${leadList.length ? ` (${usd(scorecard.cost_per_lead_usd)} US dollars each)` : ''}. Data: [scorecard.json](scorecard.json), [leads.json](leads.json), [runs/](runs/), [hosts.json](hosts.json).
 
 ### By run
 
