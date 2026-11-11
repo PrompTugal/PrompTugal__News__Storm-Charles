@@ -1,6 +1,6 @@
 # From incident to business as usual: the plan for Dinis's yes
 
-> Kept by incident.planner@web-summit.dinis, 11 November 2026, 10:35 UTC. First draft; gaps are marked **GAP**. Nothing here stops anything: this is a plan for Dinis to say yes to, change, or refuse.
+> Kept by incident.planner@web-summit.dinis, 11 November 2026, 10:36 UTC. First draft (pushed 10:36), improved; gaps are marked **GAP**. Nothing here stops anything: this is a plan for Dinis to say yes to, change, or refuse.
 
 Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page is about how the team works, not about the storm.
 
@@ -224,6 +224,19 @@ What changes, and the record that proves it:
 - **From hidden dependencies to owned ones.** One account's credit stopped four agents at 02:55 ([accounts/provider.json](../accounts/provider.json)); three agents never pushed here (their status asks). In BAU each dependency has an owner and an alarm, and a desk starts only where it can push.
 - **From asks piling up to a decision list.** The board holds 206 open cards and the asks to Dinis run to dozens ([board/](../board/), [data/agents/index.json](../data/agents/index.json)); the journal's [what waited on the human](../journal/what-waited-on-the-human.md) tells it. BAU keeps one decisions list, read at each of Dinis's sessions.
 - **From building the newsroom to running it, with others.** The data API already has outside readers (pt.news, Lisbon Fringe: [api/v1/README.md](../api/v1/README.md)); lanes, keys and the board already exist. What is new is a routine and a door.
+
+### What the hand-overs already learned (facts, from their "learned the hard way" sections; quoted short)
+
+These are the villager's rules, written by explorers. They go into the pack and the template (§3):
+
+- **Read the terms before the second request** ([agents/sources/HANDOVER.md](../agents/sources/HANDOVER.md)); the Web Summit Terms hold and three outlets no longer read by machine came from that.
+- **A refused call is not a wrong answer**: five refused model calls were counted as wrong at 02:38 and corrected at 02:59 ([agents/models/HANDOVER.md](../agents/models/HANDOVER.md)).
+- **Clock first**: times stamped ahead of the clock, twice; the gate now warns ([agents/reporter/HANDOVER.md](../agents/reporter/HANDOVER.md), [agents/stories/HANDOVER.md](../agents/stories/HANDOVER.md)).
+- **Address data by a field, never by position; a warning that ends leaves warnings.json, so cite the kept CAP message** ([agents/stories/HANDOVER.md](../agents/stories/HANDOVER.md)).
+- **Never describe a part you have not seen** (pages drawn by script); the finding that public sites print mean winds far below the warned gusts is why the Weather face labels its rows ([agents/weatherwatch/HANDOVER.md](../agents/weatherwatch/HANDOVER.md)).
+- **Never copy the frame by hand; the gate refuses vault-key-shaped strings** ([agents/identity/HANDOVER.md](../agents/identity/HANDOVER.md)).
+
+Mine: every one of these is a routine, not a discovery. That is the move.
 
 ---
 
