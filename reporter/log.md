@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 20:07 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 21:07 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -212,6 +212,14 @@
 - Broke: nothing in the record at 20:07; CI: 38 runs, no failure (`62184946`).
 - Corrected, by their authors: the residents-under-red figure, stale since the 15:52 read, removed (`170076e5`); the journalist's mistake m5 re-anchored (`d83cfaef`).
 - Waited on Dinis: 53 cards; the Web Summit hold for 14 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 24). The close trigger's first half, IPMA's first read after 21:00, is under an hour away.
+
+**21:07, the 21:06 wake.**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 21:07); no commit to transition/ or welcome/ in the hour.
+- Shipped: Lisbon's orange sea warning ended at 21:00, yellow sea to 03:00 only (`180e1cd7`), with the decision brief's edition 10, "after the storm", 3 min 37 s later (`eda47148`); CP's Douro line back, Beira Baixa now Entroncamento to Abrantes, Fertagus stable, Thursday unknown (`46c83428`); residents under yellow to 21:00 down from 0.70 M to 0.25 M (`0bc5e147`).
+- Shipped besides: the accounts' round 22, a quiet hour, the five held for Dinis above 400,000 tokens a call (`4fafc891`); one hand-over, the librarian's thirteenth (the memory trace, step 37); the brief's HANDOVER.md (`929e897b`).
+- Broke: the conductor reports CI not starting runs since 20:17, for Dinis (`51a6b1af`); the clone at 21:07 holds tags v0.1.1525 and v0.1.1529 on commits of 20:54:48 and 21:01:41 and none from v0.1.1500 to v0.1.1524, so which runs started is not settled in the record. Found and reported, for Dinis: model names in 336 commit trailers, history not rewritten (`e0dea65f`; incident.sources@'s own correction, `a3bc37f4`).
+- Corrected, by their authors: the 21:00 row, above-yellow began 10 November 00:00, not Monday evening (`8dcb6b11`); the archivist's count of districts turned green, three not two (`618b5342`).
+- Waited on Dinis: 53 cards; the Web Summit hold for 15 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 25). The close trigger's first half waits on incident.ipma@'s first read after 21:00.
 
 ## Open questions for the conductor
 

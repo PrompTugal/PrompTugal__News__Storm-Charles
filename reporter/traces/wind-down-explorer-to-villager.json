@@ -28,7 +28,7 @@
   "what": "transition/PLAN.md (the plan), transition/interviews/ (exit interviews), the closing record (reporter, journalist, storyteller, librarian), a storm conductor for business as usual",
   "url": "https://storm-charles.promptugal.news/transition/PLAN.html"
  },
- "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 20:07); the Prime Minister says the worst is practically over, as evidence, the ferries and bridges back (step 24); the close trigger's first half, IPMA's first read after 21:00, is under an hour away",
+ "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 21:07); 21:00 passed, Lisbon's orange sea ended, the brief's edition 10 'after the storm' (step 25); the close trigger's first half waits on incident.ipma@'s first read after 21:00, the second is press only",
  "duration": {
   "from": "2026-11-11T10:29:37Z",
   "to": null,
@@ -1063,7 +1063,8 @@
      "version": "v0.1.1480",
      "run": 1480,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T19:18:10Z"
+     "served_by": "2026-11-11T19:36:19Z",
+     "push_to_served_s": 38
     }
    ],
    "n": 24,
@@ -1072,13 +1073,68 @@
    "for": [
     "incident.weatherwatch@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.brief@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "21:00 passes; the brief turns to after the storm",
+   "sha": "eda4714816f93c2e7172736ea58df1774bdbbf22",
+   "in": "the conductor's 21:00 row: Lisbon's orange sea warning ended at 21:00, yellow sea to 03:00 only (180e1cd7, 21:00:31)",
+   "out": "\"decision brief, edition 10: after the storm (forecast beside observations)\", 3 min 37 s after the row; the brief's HANDOVER.md written two minutes later (929e897b). The close trigger's first half is IPMA's first read after 21:00: the conductor's row reads IPMA at 21:00; incident.ipma@'s own read after 21:00 is not in the record at 21:07 (its last, 20:48, bab85876). The second half, the organisers' Day 3 decision, is still press only. No commit to transition/ in the hour; the plan still waits on Dinis's yes. The conductor reports CI not starting runs since 20:17 (51a6b1af, for Dinis); the clone at 21:07 holds tags v0.1.1525 and v0.1.1529 on commits of 20:54:48 and 21:01:41, and none from v0.1.1500 to v0.1.1524.",
+   "handoff": {
+    "to": "incident.planner@web-summit.dinis",
+    "via": "transition/PLAN.md",
+    "evidence_of_handoff": "not in the record at 21:07: no commit to transition/ since 12:10"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md"
+    },
+    {
+     "type": "commit",
+     "sha": "180e1cd74da0b0244c6ad33a4bd78c84cb351a41",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/180e1cd74da0b0244c6ad33a4bd78c84cb351a41"
+    },
+    {
+     "type": "commit",
+     "sha": "bab858761132da65de158078a7787493bdc85d13",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/bab858761132da65de158078a7787493bdc85d13"
+    },
+    {
+     "type": "commit",
+     "sha": "51a6b1af0a64ffadc881b80aff398122798aa35c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/51a6b1af0a64ffadc881b80aff398122798aa35c"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "eda4714816f93c2e7172736ea58df1774bdbbf22",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/eda4714816f93c2e7172736ea58df1774bdbbf22"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": null,
+     "note": "no CI tag at or after this commit when the trace was filled"
+    }
+   ],
+   "n": 25,
+   "at": "2026-11-11T21:04:08Z",
+   "agent_trailer": "incident.brief@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 24,
+  "steps": 25,
   "steps_with_no_evidence": 0,
   "person_steps": 3,
-  "agent_steps": 21
+  "agent_steps": 22
  },
  "people_acted": [
   "Dinis Cruz"

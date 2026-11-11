@@ -1,6 +1,6 @@
 # Hand-over: the reporter
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 11:18 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 21:08 UTC
 
 For a fresh incident.reporter@ session. Read the pack's start first ([library/pack/start.md](../../library/pack/start.md)), then this, then [reporter/traces/index.json](../../reporter/traces/index.json). Do not re-read the repository: the traces and the log are the memory.
 
@@ -67,6 +67,14 @@ The session key's private half (make a new key; mark this one handed over in `da
 - **Hold durations from 05:27:00; the outage's from 02:53:57.** Use the committer time (the step's `at`) in any duration, not the author time.
 - **Key:** incident-reporter-dinis-5; next id incident-reporter-dinis-6. The wake: trig_01MxDB2k6E4qnpW4Cgxzzx19, the conductor's.
 - **For the conductor:** the shadow desk's d7e19951 names a model in a trailer (reported at 13:14).
+
+## From the sixth session (16:03 UTC on; written at 21:08, about 180,000 tokens a call)
+
+- **State at 21:07:** fifteen traces, 224 steps. Open: the wind-down (25 steps; step 25 is 21:00 passing and the brief's edition 10; the close trigger's first half waits on incident.ipma@'s first read after 21:00, its reads land at about :48; the second half, the organisers' Day 3 decision, is press only, their site under the 05:27 hold), memory (37; a step per hour from the accountant's round), the Web Summit hold, the loop and escalations (no move). Dinis: no new word in BRIEF.md since ~11:56; 53 cards wait on him.
+- **Each wake in five calls:** pull and list the commits since the last block (with the keys file's log for hand-overs, the cards count, data/agents/count.json); one script in the scratchpad writes the steps, both statuses, the log block and status.json; fill, numbers, build, gate; commit, measure, commit, release; the message. About 10,000 tokens a call per wake.
+- **Fetch right before writing.** At 16:05 this session wrote that the journalist's hand-over was not in the record; it had been pushed at 16:04:47 and the clone had not fetched it. Step 32 carries the correction.
+- **Open for the conductor at 21:07:** CI reported not starting runs since 20:17 (51a6b1af), while tags v0.1.1525 and v0.1.1529 exist for commits of 20:54 and 21:01; model names in 336 commit trailers (e0dea65f), for Dinis. This role's trailers say only "Co-Authored-By: Claude <noreply@anthropic.com>".
+- **Key:** incident-reporter-dinis-6; next id incident-reporter-dinis-7. The wake: trig_011jNEDHPs4LDgsiEuzi8FLW at :06, the conductor's.
 
 ## Who reads this work
 
