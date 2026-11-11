@@ -1,0 +1,25 @@
+{
+  "about": "Where the Contact us form (app/desk/desk.js) sends a visitor's message. Public on purpose: an append token can only write to its lane and cannot read anything back, and the key can only encrypt. The message is sealed in the visitor's browser to this key (RSA-OAEP-SHA256 + AES-256-GCM, the same envelope as the page views) and appended to a write-only lane of vault jl7orkfg. The lanes' enum key (which lists and fetches) and the private key (which opens) are only in that vault, held by incident.desk@ and, sealed, by the conductor; neither is in this repository. Made 11 November 2026 at Dinis Cruz's word of ~11:45 UTC (BRIEF.md, last section; CLAUDE.md, Contact desk).",
+  "by": "incident.desk@web-summit.dinis",
+  "updated": "2026-11-11T11:49:34Z",
+  "enabled": true,
+  "live_host": "storm-charles.promptugal.news",
+  "endpoint": "https://dev.send.sgraph.ai",
+  "vault_id": "jl7orkfg",
+  "lanes": [
+    "241295463a2c519c35311b11821b0d87cce4eb6c245b85ad2cf82cabb2393a64",
+    "19beb8f39ebc30e84077212ff1c685ed7e8092f6ca96762889649bfa08097e8c"
+  ],
+  "max_chars": 4000,
+  "max_reply_chars": 200,
+  "recipient": {
+    "fingerprint": "sha256:6419bcc2fcd31f2e",
+    "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAu25BBkFnQ/OFloiIM25j\nIQFguZJPDhn6zznhDKh0oosGk54ToNj9mH8qgeVV1CPg/PrZmQ4gr7ky7X3Obtg2\nHyBHMKZNmCV2sR9Y1pjtY/r5JsSdAlciBfzmYvvH2lDT6RtI+OT1JMuP1siI2MvZ\npfOy0Di4wawecp1n9f40p9MJEWSzm3n2Jpj6sp7F+xibxrQaevfQdM/ctaspVkAZ\nJbj4kIx4RB5nzwfxq3tAnMFK5fxq/q1Y3hEkLyMYoiTH1ha+eWAoDr2Zrsw94RiT\nOM4kKJie+GPu/729rhsMZ0o5/L3FmPQuR8K/UhYmJHnl2CKpc481KvPNBS/F5JPH\ngI8nDC38AcX1uRzyi826JlKUmSHPcS4Yy7LIgy6iJmKew5aBKMWV5EdmOmr8tztW\nV6mKHZhL+K12TdBQMdbx/9bPstIrl/P9BSjPGK0gYMC5+syz/4AD9IHie2wGkxoO\nu9OYu1ghUPs/vsfidbKeqz3XtV3pVH4H0iL1MXMYJNm87Rg7jjqrMMmf2UtRUMI5\nxhnXxAZKTJEKC1hZ1eoRpcsNrmZpbMKe653YZlLr5kA9+O2WAjs4Y8YsrZ0JzYT/\nkDGc33/18XBECa+9ZCtIsaxMoGsBk720o0VT3/AkGHcZhwneZ2VxQ6AKa8qjlcGo\nEczPoqSSyn7QCtT9yR/6dd0CAwEAAQ==\n-----END PUBLIC KEY-----\n"
+  },
+  "kinds": [
+    "correction",
+    "collaborate",
+    "press",
+    "other"
+  ]
+}

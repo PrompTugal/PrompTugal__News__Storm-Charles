@@ -1,0 +1,19 @@
+/* the Contact us form (incident.desk@web-summit.dinis): the site's tokens only (design/README.md) */
+.desk { display: grid; gap: 8px; max-width: 720px; padding: 16px; }
+.desk-kinds { border: 1px solid var(--line); border-radius: var(--radius, 6px); padding: 8px 12px; margin: 0; display: grid; gap: 6px; }
+.desk-kinds legend { font-weight: 600; padding: 0 4px; }
+.desk-kinds label { cursor: pointer; }
+.desk-l { margin-top: 8px; }
+.desk input[type=text], .desk textarea { width: 100%; box-sizing: border-box; font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius, 6px); padding: 8px; }
+.desk textarea { resize: vertical; min-height: 9em; }
+.desk input:focus-visible, .desk textarea:focus-visible, .desk button:focus-visible { outline: 2px solid var(--link-2, var(--link)); outline-offset: 2px; }
+.desk-count { justify-self: end; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.desk-send { font: inherit; font-weight: 600; padding: 8px 16px; border-radius: var(--radius, 6px); border: 1px solid var(--link); background: var(--link); color: var(--paper); cursor: pointer; }
+.desk-send[disabled] { opacity: .5; cursor: not-allowed; }
+.desk-status { margin: 0; padding: 8px 10px; border-left: 3px solid var(--line-2); }
+.desk-status:empty { display: none; }
+.desk-status.ok { border-color: var(--ok); background: var(--ok-soft, var(--surface-2)); }
+.desk-status.bad { border-color: var(--bad); background: var(--bad-soft, var(--surface-2)); }
+.desk-status.wait { border-color: var(--wait); background: var(--wait-soft, var(--surface-2)); }
+.desk-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.desk-intro { margin: 0 0 4px; }
