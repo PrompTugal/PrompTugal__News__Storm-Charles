@@ -102,7 +102,7 @@ function link() {
     // The names are matched in their UTF-8 bytes (matcher's `bytes`), so an accented name is found the same.
     const dec = s => Buffer.from(s, 'latin1').toString('utf8')
     const have = new Set(nodes.flatMap(n => [n.name, ...n.also].map(x => x.toLowerCase())))
-    const NB = neighbours().filter(x => !x.entity && !/ and | \/ /.test(x.name) && !have.has(x.name.toLowerCase().replace(/^the /, '')))   // a name both have goes to the node here, whose page points across
+    const NB = neighbours().filter(x => !x.entity).map(x => ({ ...x, also: x.also.filter(a => !have.has(a.toLowerCase())) })).filter(x => !have.has(x.name.toLowerCase().replace(/^the /, '')))   // a name both have goes to the node here, whose page points across
     const M = matcher([...nodes, ...NB], { html: true, bytes: true })
     const SKIP = new Set(['a', 'code', 'pre', 'svg', 'button', 'nav', 'header', 'footer', 'form', 'select', 'label', 'summary', 'time', 'kbd', 'samp', 'output', 'noscript', 'template'])
     const RAW = new Set(['script', 'style', 'textarea', 'title'])

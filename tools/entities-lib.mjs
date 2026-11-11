@@ -93,7 +93,7 @@ export function neighbours(root = ROOT) {
         for (const s of S.sources || []) {
             // every body has its own address, sources/<id>/ (made at build time), and `entity` where incident.sources@ matched a node here
             const base = String(s.name || '').replace(/\s*\(.*$/, '').trim(), page = s.page || `${s.id}/index.html`
-            if (base.length > 2 && /[A-Z]/.test(base)) out.push({ id: `sources/${s.id}`, type: 'source', kind: s.group, entity: s.entity || null, name: base, also: [], hosts: s.hosts || [], href: `sources/${page}`, md: `sources/${page.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md')}`, summary: [s.kind, s.publishes && `Publishes: ${s.publishes}`, s.we_take && `We take: ${s.we_take}`, s.licence?.status && `Licence: ${s.licence.status}${s.licence.summary ? ` (${s.licence.summary})` : ''}`].filter(Boolean).join('. ') })
+            if (base.length > 2 && /[A-Z]/.test(base)) out.push({ id: `sources/${s.id}`, type: 'source', kind: s.group, entity: s.entity || null, name: base, also: (s.also || []).filter(x => x !== base && x.length > 2 && /[A-Z]/.test(x)), hosts: s.hosts || [], href: `sources/${page}`, md: `sources/${page.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md')}`, summary: [s.kind, s.publishes && `Publishes: ${s.publishes}`, s.we_take && `We take: ${s.we_take}`, s.licence?.status && `Licence: ${s.licence.status}${s.licence.summary ? ` (${s.licence.summary})` : ''}`].filter(Boolean).join('. ') })
         }
     } catch { }
     return out
