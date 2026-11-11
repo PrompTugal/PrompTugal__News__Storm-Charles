@@ -1,0 +1,2576 @@
+{
+ "about": "Every unit that appears in data/trace/*/*.jsonl: the person, the swarm (A4), each agent (A3) with its keys and its sessions in order, and the compute (A0). Altitudes and runtimes as in the fringe repository's docs/where-agents-run.md §2-3. io_level: L5 for the conductor (git, vaults, lanes, wakes, spawns), L4 for the team (git behind the gate; most also use vaults and lanes). Sessions: from data/agents/sessions.json (by Claude-Session trailers) and agents/conductor/sessions.json (spawns from 20:47 UTC on 11 November); \"started_at\" only where someone wrote it down.",
+ "by": "incident.observability@web-summit.dinis",
+ "updated": "2026-11-11T22:10:55Z",
+ "sources": [
+  "data/keys.json",
+  "data/agents/sessions.json",
+  "agents/conductor/sessions.json",
+  "data/agents/index.json"
+ ],
+ "count": 51,
+ "units": [
+  {
+   "unit_id": "P-dinis",
+   "altitude": "P",
+   "role": "person",
+   "name": "Dinis Cruz",
+   "about": "the only person who instructs this team (CLAUDE.md)"
+  },
+  {
+   "unit_id": "A4-ws214",
+   "altitude": "A4",
+   "role": "swarm",
+   "parent_id": "P-dinis",
+   "name": "the Storm Charles incident team (WS-214)",
+   "account": "web-summit.dinis",
+   "runner": "incident.conductor@web-summit.dinis",
+   "about": "agents of agents: the conductor spawns, hands over and schedules the team (docs/where-agents-run.md §3 in the fringe repository)"
+  },
+  {
+   "unit_id": "A3-conductor.B@PrompTugal.vicky",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "conductor.B@PrompTugal.vicky",
+   "account": "PrompTugal.vicky",
+   "runtime": "R1",
+   "environment": "R1 PrompTugal.vicky",
+   "keys": []
+  },
+  {
+   "unit_id": "A3-conductor@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "conductor@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": []
+  },
+  {
+   "unit_id": "A3-dashboard@web-summit.silvio",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "dashboard@web-summit.silvio",
+   "account": "web-summit.silvio",
+   "environment": "R1 web-summit.silvio",
+   "keys": []
+  },
+  {
+   "unit_id": "A3-dev.map@PrompTugal.angelo",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "dev.map@PrompTugal.angelo",
+   "account": "PrompTugal.angelo",
+   "environment": "R1 PrompTugal.angelo",
+   "keys": []
+  },
+  {
+   "unit_id": "A3-incident.accountant@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.accountant@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-accountant-dinis",
+     "key_fp": "sha256:7740387a11cc72c6",
+     "signing_fp": "sha256:ca96a65cc0f549ff",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-accountant-dinis-2",
+     "key_fp": "sha256:e1bfc8c65a6afbaa",
+     "signing_fp": "sha256:d0b6426e069787a4",
+     "made": "2026-11-11T05:40:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-accountant-dinis-3",
+     "key_fp": "sha256:744635677e584d8b",
+     "signing_fp": "sha256:f45587a7246386d1",
+     "made": "2026-11-11T13:05:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-accountant-dinis-4",
+     "key_fp": "sha256:4ff7a437f6d71ed0",
+     "signing_fp": "sha256:f5ee47b30db87081",
+     "made": "2026-11-11T21:42:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtQ4skp9ZXDUQUxvvsV",
+     "first_commit_at": "2026-11-11T02:58:02Z",
+     "last_commit_at": "2026-11-11T05:39:18Z",
+     "commits": 8
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtPb9tY4ycm7mpt9Hfs",
+     "first_commit_at": "2026-11-11T05:41:14Z",
+     "last_commit_at": "2026-11-11T13:07:24Z",
+     "commits": 10
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtMAwJzdrTaR5WLF97a",
+     "first_commit_at": "2026-11-11T13:06:37Z",
+     "last_commit_at": "2026-11-11T21:41:55Z",
+     "commits": 13
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtNbnZYCfZVx38QJKcW",
+     "first_commit_at": "2026-11-11T21:43:43Z",
+     "last_commit_at": "2026-11-11T21:43:43Z",
+     "commits": 1,
+     "started_at": "2026-11-11T21:42:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.archivist@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.archivist@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-archivist-dinis",
+     "key_fp": "sha256:d3f6afe074c9293c",
+     "signing_fp": "sha256:1767bd4a70295162",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPjTTJWWpfgwZeancy",
+     "first_commit_at": "2026-11-11T02:22:31Z",
+     "last_commit_at": "2026-11-11T21:25:29Z",
+     "commits": 39,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.board@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.board@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-board-dinis",
+     "key_fp": "sha256:12562fc83a671f38",
+     "signing_fp": "sha256:9edac99e5295ac92",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-board-dinis-2",
+     "key_fp": "sha256:4660afd41f103b3c",
+     "signing_fp": "sha256:4e667a2a85d4afa1",
+     "made": "2026-11-11T05:44:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-board-dinis-3",
+     "key_fp": "sha256:1f78d86dcb95be9c",
+     "signing_fp": "sha256:6e281131b6f39911",
+     "made": "2026-11-11T12:37:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-board-dinis-4",
+     "key_fp": "sha256:7a48eebed467363c",
+     "signing_fp": "sha256:1e83f9f9bfe8b15e",
+     "made": "2026-11-11T21:36:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtLnUwKTTfNU5tKBiqR",
+     "first_commit_at": "2026-11-11T02:23:14Z",
+     "last_commit_at": "2026-11-11T05:43:06Z",
+     "commits": 16,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtLqzXKWP2zar4raBhw",
+     "first_commit_at": "2026-11-11T05:45:53Z",
+     "last_commit_at": "2026-11-11T12:34:55Z",
+     "commits": 10
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtPEGmttxNU2xvFk7Xo",
+     "first_commit_at": "2026-11-11T12:37:45Z",
+     "last_commit_at": "2026-11-11T21:34:59Z",
+     "commits": 12
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtMKGc1BsswhZDKsrxu",
+     "first_commit_at": "2026-11-11T21:36:34Z",
+     "last_commit_at": "2026-11-11T21:37:18Z",
+     "commits": 2,
+     "started_at": "2026-11-11T21:35Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.brief@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.brief@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-brief-dinis",
+     "key_fp": "sha256:b8d6e26f36def7f9",
+     "signing_fp": "sha256:8fbe68ee888c751b",
+     "made": "2026-11-11T11:53:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPVWJtSb1BoAg7xMvW",
+     "first_commit_at": "2026-11-11T11:55:35Z",
+     "last_commit_at": "2026-11-11T21:06:31Z",
+     "commits": 25
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.broadcast@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.broadcast@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-broadcast-dinis",
+     "key_fp": "sha256:fb72c29a70ed0783",
+     "signing_fp": "sha256:074b95e49e9096a6",
+     "made": "2026-11-11T10:20:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtLhJtPPrHjFiJuoSHA",
+     "first_commit_at": "2026-11-11T10:22:26Z",
+     "last_commit_at": "2026-11-11T19:31:55Z",
+     "commits": 8,
+     "started_at": "2026-11-11T10:13:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.ci@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.ci@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-ci-dinis",
+     "key_fp": "sha256:c3f625a55509acc1",
+     "signing_fp": "sha256:815a07d3a9d80692",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-ci-dinis-2",
+     "key_fp": "sha256:0f94b62eb1d9353a",
+     "signing_fp": "sha256:7d21184584221853",
+     "made": "2026-11-11T05:45:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-ci-dinis-3",
+     "key_fp": "sha256:8ae4aefbedffbaa7",
+     "signing_fp": "sha256:978c7dc6bfbf8e14",
+     "made": "2026-11-11T12:39:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtMAK6ef3vZMLDAyfHT",
+     "first_commit_at": "2026-11-11T02:28:32Z",
+     "last_commit_at": "2026-11-11T05:43:15Z",
+     "commits": 10,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtNHbvRkrXA1rejJfbf",
+     "first_commit_at": "2026-11-11T05:48:03Z",
+     "last_commit_at": "2026-11-11T12:38:27Z",
+     "commits": 12
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtLVQXvckk4k5VQ1eEk",
+     "first_commit_at": "2026-11-11T12:40:10Z",
+     "last_commit_at": "2026-11-11T21:21:02Z",
+     "commits": 13,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.conductor@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.conductor@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "spawns_others": true,
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L5",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-conductor-dinis",
+     "key_fp": "sha256:2df48a3207ec20ae",
+     "signing_fp": "sha256:fa135665c51ee284",
+     "made": "2026-11-10T00:00:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "first_commit_at": "2026-11-10T21:14:33Z",
+     "last_commit_at": "2026-11-11T22:00:26Z",
+     "commits": 249,
+     "started_at": "2026-11-10T18:56Z",
+     "started_by": "conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.datascience@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.datascience@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-datascience-dinis",
+     "key_fp": "sha256:9116bf8a32baf7b8",
+     "signing_fp": "sha256:fe8de5d7a10fea1a",
+     "made": "2026-11-11T11:58:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtNCCyzCZhz1YPkEkFM",
+     "first_commit_at": "2026-11-11T11:48:37Z",
+     "last_commit_at": "2026-11-11T12:02:10Z",
+     "commits": 8
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtNw7R3MGziXNMFaETq",
+     "first_commit_at": "2026-11-11T12:54:07Z",
+     "last_commit_at": "2026-11-11T21:52:51Z",
+     "commits": 7
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.designer@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.designer@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-designer-dinis",
+     "key_fp": "sha256:eea8a3af03d5efa9",
+     "signing_fp": "sha256:7f811aed132d0ddb",
+     "made": "2026-11-10T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-designer-dinis-2",
+     "key_fp": "sha256:5058c2e2911212bc",
+     "signing_fp": "sha256:66e7a6f8c8c10273",
+     "made": "2026-11-11T03:05:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-designer-dinis-3",
+     "key_fp": "sha256:993ffeef7992f4df",
+     "signing_fp": "sha256:aeca8313882d093c",
+     "made": "2026-11-11T09:21:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-designer-dinis-4",
+     "key_fp": "sha256:22285083cd82308b",
+     "signing_fp": "sha256:b2676872dccd8ce8",
+     "made": "2026-11-11T09:34:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-designer-dinis-5",
+     "key_fp": "sha256:4bce0de451fc6428",
+     "signing_fp": "sha256:7dcf0ea17dd89bd1",
+     "made": "2026-11-11T10:14:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-designer-dinis-6",
+     "key_fp": "sha256:4632febfaacdccf9",
+     "signing_fp": "sha256:c4cbf4d798faff16",
+     "made": "2026-11-11T10:41:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-designer-dinis-7",
+     "key_fp": "sha256:5beef1eff056bcf9",
+     "signing_fp": "sha256:04971c589d88529d",
+     "made": "2026-11-11T11:54:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-designer-dinis-8",
+     "key_fp": "sha256:46a7e53fc634a4d1",
+     "signing_fp": "sha256:27f1f7c46231aceb",
+     "made": "2026-11-11T14:05:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtQkhemqpDQRF7VtAN2",
+     "first_commit_at": "2026-11-10T23:36:58Z",
+     "last_commit_at": "2026-11-11T03:05:08Z",
+     "commits": 48,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtN3kVQHCeNb1A2Gnbv",
+     "first_commit_at": "2026-11-11T03:06:24Z",
+     "last_commit_at": "2026-11-11T05:38:03Z",
+     "commits": 7
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtN4aaxsPSDGjXAD5ct",
+     "first_commit_at": "2026-11-11T09:22:08Z",
+     "last_commit_at": "2026-11-11T09:32:27Z",
+     "commits": 6
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtLcywtNyhkSURQtnxK",
+     "first_commit_at": "2026-11-11T09:35:09Z",
+     "last_commit_at": "2026-11-11T10:12:46Z",
+     "commits": 14
+    },
+    {
+     "n": 5,
+     "id": "session_018yvwtQYk4phZDn4YzNL9n9",
+     "first_commit_at": "2026-11-11T10:15:25Z",
+     "last_commit_at": "2026-11-11T10:41:20Z",
+     "commits": 15
+    },
+    {
+     "n": 6,
+     "id": "session_018yvwtPDnWQ4g4gw4SqSVJ1",
+     "first_commit_at": "2026-11-11T10:42:42Z",
+     "last_commit_at": "2026-11-11T11:53:07Z",
+     "commits": 10
+    },
+    {
+     "n": 7,
+     "id": "session_018yvwtMEaqLHkwAqo3HR4TJ",
+     "first_commit_at": "2026-11-11T11:54:52Z",
+     "last_commit_at": "2026-11-11T13:20:25Z",
+     "commits": 15
+    },
+    {
+     "n": 8,
+     "id": "session_018yvwtN62Qh4eNTP2FnoWiZ",
+     "first_commit_at": "2026-11-11T14:05:39Z",
+     "last_commit_at": "2026-11-11T21:13:53Z",
+     "commits": 15,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.desk@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.desk@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-desk-dinis",
+     "key_fp": "sha256:0be3778033f91534",
+     "signing_fp": "sha256:12c63a32df60d619",
+     "made": "2026-11-11T11:46:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtR9T7jJXC54JvxYm1b",
+     "first_commit_at": "2026-11-11T11:54:45Z",
+     "last_commit_at": "2026-11-11T21:08:57Z",
+     "commits": 16,
+     "started_at": "2026-11-11T11:45:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.dev@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.dev@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": []
+  },
+  {
+   "unit_id": "A3-incident.entities@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.entities@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-entities-dinis",
+     "key_fp": "sha256:f7eaaf5aa9755aef",
+     "signing_fp": "sha256:1c95636ab25862f2",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-entities-dinis-2",
+     "key_fp": "sha256:67fc4a1c3cb7a9e2",
+     "signing_fp": "sha256:ca18255b6d2b966f",
+     "made": "2026-11-11T05:20:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-entities-dinis-3",
+     "key_fp": "sha256:2824ab133170f5a0",
+     "signing_fp": "sha256:7c1dd95639d65d7d",
+     "made": "2026-11-11T08:45:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-entities-dinis-4",
+     "key_fp": "sha256:54e13411711247a5",
+     "signing_fp": "sha256:d119e37146dc0a63",
+     "made": "2026-11-11T13:06:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPekvw1VMwtPXd7yi7",
+     "first_commit_at": "2026-11-11T02:20:30Z",
+     "last_commit_at": "2026-11-11T05:19:18Z",
+     "commits": 20,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtNhYapg1rxUvqsHnbw",
+     "first_commit_at": "2026-11-11T05:20:41Z",
+     "last_commit_at": "2026-11-11T08:44:16Z",
+     "commits": 8
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtQ1uRMGCrcHc3r5VJz",
+     "first_commit_at": "2026-11-11T08:47:56Z",
+     "last_commit_at": "2026-11-11T13:06:44Z",
+     "commits": 14
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtQGJM29G9UZprt9bqe",
+     "first_commit_at": "2026-11-11T13:06:47Z",
+     "last_commit_at": "2026-11-11T21:38:12Z",
+     "commits": 13,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.envoy@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.envoy@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-envoy-dinis",
+     "key_fp": "sha256:415bdd988a305246",
+     "signing_fp": "sha256:d2e0b77b62132af1",
+     "made": "2026-11-11T09:35:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtP6k6ER4tTYGUMQRcH",
+     "first_commit_at": "2026-11-11T09:35:57Z",
+     "last_commit_at": "2026-11-11T12:24:14Z",
+     "commits": 11
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.flights@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.flights@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-flights-dinis-1",
+     "key_fp": "sha256:f219807bfe8d2375",
+     "signing_fp": "sha256:dd4ed33602958464",
+     "made": "2026-11-11T22:02:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtP2dnYFWpCqhk3jtYw",
+     "started_at": "2026-11-11T22:01Z",
+     "started_by": "incident.conductor@web-summit.dinis",
+     "replaces": null
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.graph@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.graph@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-graph-dinis",
+     "key_fp": "sha256:6caf6606ce46c991",
+     "signing_fp": "sha256:6c3575f81c3ff0e8",
+     "made": "2026-11-10T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-graph-dinis-2",
+     "key_fp": "sha256:4e092cb8c9676a39",
+     "signing_fp": "sha256:cc9e5c52b41d3393",
+     "made": "2026-11-11T03:35:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-graph-dinis-3",
+     "key_fp": "sha256:af1009c9c126b694",
+     "signing_fp": "sha256:bdff3e1a8cc41f1b",
+     "made": "2026-11-11T07:56:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-graph-dinis-4",
+     "key_fp": "sha256:edc574bd735d2f62",
+     "signing_fp": "sha256:a156b57983bc9b81",
+     "made": "2026-11-11T14:05:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtR8zLQivnC4JDKPoSw",
+     "first_commit_at": "2026-11-10T23:44:08Z",
+     "last_commit_at": "2026-11-11T03:34:46Z",
+     "commits": 20,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtQWC1x97qFht5qyLfF",
+     "first_commit_at": "2026-11-11T03:36:18Z",
+     "last_commit_at": "2026-11-11T07:55:10Z",
+     "commits": 10
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtP1y7DSUdad3FP11yj",
+     "first_commit_at": "2026-11-11T07:56:29Z",
+     "last_commit_at": "2026-11-11T13:55:29Z",
+     "commits": 10
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtLYKQGps5EW7DLEs96",
+     "first_commit_at": "2026-11-11T14:06:21Z",
+     "last_commit_at": "2026-11-11T21:54:02Z",
+     "commits": 10,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.identity@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.identity@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-identity-dinis",
+     "key_fp": "sha256:9e6e630e0d1d051a",
+     "signing_fp": "sha256:2d91c7d9fe8df5d3",
+     "made": "2026-11-10T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-identity-dinis-2",
+     "key_fp": "sha256:c23c81b2d69bf193",
+     "signing_fp": "sha256:9fded90149a8a5da",
+     "made": "2026-11-11T05:45:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-identity-dinis-3",
+     "key_fp": "sha256:c3f77eedf6884139",
+     "signing_fp": "sha256:4576d54b573c363f",
+     "made": "2026-11-11T10:22:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtNHFqJdWi8SYTp77QS",
+     "first_commit_at": "2026-11-10T23:39:17Z",
+     "last_commit_at": "2026-11-11T05:43:09Z",
+     "commits": 14,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtPfte8Ucw9rmSbQq8n",
+     "first_commit_at": "2026-11-11T05:46:33Z",
+     "last_commit_at": "2026-11-11T10:20:59Z",
+     "commits": 15
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtNggF45tJ4bWYzTYyn",
+     "first_commit_at": "2026-11-11T10:23:34Z",
+     "last_commit_at": "2026-11-11T21:21:14Z",
+     "commits": 12,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.ipma@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.ipma@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-ipma-dinis",
+     "key_fp": "sha256:768a297eda9ef6b7",
+     "signing_fp": "sha256:300a5ee463bec60d",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-ipma-dinis-2",
+     "key_fp": "sha256:8809b017f0000fa8",
+     "signing_fp": "sha256:5eca2dab5f8d4df5",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-ipma-dinis-3",
+     "key_fp": "sha256:69823eef68698c9a",
+     "signing_fp": "sha256:65ab31c6707170ca",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtMQ1cXDPwtPYk1GtZe",
+     "first_commit_at": "2026-11-11T02:31:46Z",
+     "last_commit_at": "2026-11-11T08:50:56Z",
+     "commits": 15,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtLfkNxnMn1G2ZPWJkY",
+     "first_commit_at": "2026-11-11T05:45:10Z",
+     "last_commit_at": "2026-11-11T13:06:32Z",
+     "commits": 11
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtMm94gfCnfSD8wbCMdw",
+     "first_commit_at": "2026-11-11T13:06:41Z",
+     "last_commit_at": "2026-11-11T13:06:41Z",
+     "commits": 1
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtM94gfCnfSD8wbCMdw",
+     "first_commit_at": "2026-11-11T13:08:20Z",
+     "last_commit_at": "2026-11-11T21:52:27Z",
+     "commits": 10,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.journalist@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.journalist@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-journalist-dinis",
+     "key_fp": "sha256:6528852cc90c1ff7",
+     "signing_fp": "sha256:b0d9ea38680bd88f",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-journalist-dinis-2",
+     "key_fp": "sha256:35027cffa2f0930a",
+     "signing_fp": "sha256:091bcf0d60acaa08",
+     "made": "2026-11-11T04:09:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-journalist-dinis-3",
+     "key_fp": "sha256:f5ff6a13d8fdd221",
+     "signing_fp": "sha256:40b45ae2ef721c7b",
+     "made": "2026-11-11T05:15:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-journalist-dinis-4",
+     "key_fp": "sha256:3a33f2da642fc656",
+     "signing_fp": "sha256:b7a1a114b17768f8",
+     "made": "2026-11-11T08:16:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-journalist-dinis-5",
+     "key_fp": "sha256:303672c8b066fa21",
+     "signing_fp": "sha256:63d75f6d37676e1e",
+     "made": "2026-11-11T10:32:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-journalist-dinis-6",
+     "key_fp": "sha256:b19d1559b797322c",
+     "signing_fp": "sha256:928a0f85de7dbf24",
+     "made": "2026-11-11T11:24:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-journalist-dinis-7",
+     "key_fp": "sha256:aa10e3bde5a852ce",
+     "signing_fp": "sha256:a7b76ad3d139c9e6",
+     "made": "2026-11-11T16:04:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPcSHLvG26ednuFeVj",
+     "first_commit_at": "2026-11-11T02:59:44Z",
+     "last_commit_at": "2026-11-11T04:09:15Z",
+     "commits": 9
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtN2TrJFpSFhdf8yUNe",
+     "first_commit_at": "2026-11-11T04:09:25Z",
+     "last_commit_at": "2026-11-11T05:14:27Z",
+     "commits": 10
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtMcuzsJHoaLzCGX3jg",
+     "first_commit_at": "2026-11-11T05:17:43Z",
+     "last_commit_at": "2026-11-11T08:15:01Z",
+     "commits": 8
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtQt1vn9jd81W6Faovj",
+     "first_commit_at": "2026-11-11T08:18:05Z",
+     "last_commit_at": "2026-11-11T10:30:55Z",
+     "commits": 9
+    },
+    {
+     "n": 5,
+     "id": "session_018yvwtQLfmfdYfvEWuTn3xb",
+     "first_commit_at": "2026-11-11T10:33:12Z",
+     "last_commit_at": "2026-11-11T11:23:07Z",
+     "commits": 7
+    },
+    {
+     "n": 6,
+     "id": "session_018yvwtPHC9kN4k98JrvQBNr",
+     "first_commit_at": "2026-11-11T11:25:29Z",
+     "last_commit_at": "2026-11-11T15:15:29Z",
+     "commits": 10,
+     "started_at": "2026-11-11T11:24:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 7,
+     "id": "session_018yvwtMqR5bWAk1mrS7MYj8",
+     "first_commit_at": "2026-11-11T16:04:47Z",
+     "last_commit_at": "2026-11-11T21:14:07Z",
+     "commits": 14
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.labs@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.labs@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-labs-dinis",
+     "key_fp": "sha256:e7ba51b45cae191b",
+     "signing_fp": "sha256:38e087ab3c122885",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-labs-dinis-2",
+     "key_fp": "sha256:ebba9a92c386ec63",
+     "signing_fp": "sha256:2bf209f3a17b276f",
+     "made": "2026-11-11T06:44:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-labs-dinis-3",
+     "key_fp": "sha256:a5c56a67fc4acce5",
+     "signing_fp": "sha256:7071f05e5732e6c7",
+     "made": "2026-11-11T12:12:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtLm195KWcUuYeRHn8M",
+     "first_commit_at": "2026-11-11T02:22:49Z",
+     "last_commit_at": "2026-11-11T06:43:21Z",
+     "commits": 8,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtQd1Y2ZeoQ81ypPc4n",
+     "first_commit_at": "2026-11-11T06:44:26Z",
+     "last_commit_at": "2026-11-11T09:15:11Z",
+     "commits": 6
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtQ8gCfHzSHZ9M2NSQ7",
+     "first_commit_at": "2026-11-11T12:14:31Z",
+     "last_commit_at": "2026-11-11T12:14:31Z",
+     "commits": 2,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.librarian@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.librarian@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-librarian-dinis",
+     "key_fp": "sha256:cefff668d770eca8",
+     "signing_fp": "sha256:c1dd34b5c4dcfc33",
+     "made": "2026-11-10T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-2",
+     "key_fp": "sha256:e77d2966a54afa44",
+     "signing_fp": "sha256:dda2eb162ed93165",
+     "made": "2026-11-11T03:02:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-3",
+     "key_fp": "sha256:b9954567e6e13193",
+     "signing_fp": "sha256:4f295d0960b0468d",
+     "made": "2026-11-11T04:07:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-4",
+     "key_fp": "sha256:5f913e60ada18db9",
+     "signing_fp": "sha256:5e31bdee54ec992b",
+     "made": "2026-11-11T04:15:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-5",
+     "key_fp": "sha256:0d8363fe56621ca1",
+     "signing_fp": "sha256:dc538c6dfba6f1f9",
+     "made": "2026-11-11T05:48:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-6",
+     "key_fp": "sha256:0c478754e23a8cb1",
+     "signing_fp": "sha256:0b18cf6dab70f1fe",
+     "made": "2026-11-11T07:47:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-7",
+     "key_fp": "sha256:959ce49207047ded",
+     "signing_fp": "sha256:656ec4d6064cff0d",
+     "made": "2026-11-11T09:54:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-8",
+     "key_fp": "sha256:2a7ad8572f6c00ae",
+     "signing_fp": "sha256:97b7a5786ce154c2",
+     "made": "2026-11-11T10:49:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-9",
+     "key_fp": "sha256:0031937d702dc88f",
+     "signing_fp": "sha256:196ba7c026b4af0b",
+     "made": "2026-11-11T11:50:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-10",
+     "key_fp": "sha256:340d5803140f06d7",
+     "signing_fp": "sha256:8fdcba03544e2d1f",
+     "made": "2026-11-11T13:05:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-11",
+     "key_fp": "sha256:9b2863bf304cefd3",
+     "signing_fp": "sha256:fdbfe482fdb2ccd6",
+     "made": "2026-11-11T15:04:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-12",
+     "key_fp": "sha256:e4180613e2e35b5d",
+     "signing_fp": "sha256:8daf8a5fdebb37c1",
+     "made": "2026-11-11T18:04:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-librarian-dinis-13",
+     "key_fp": "sha256:886cc9f571583ded",
+     "signing_fp": "sha256:adeb4ceb101edfb7",
+     "made": "2026-11-11T20:47:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPysshPQ94qEprs4pr",
+     "first_commit_at": "2026-11-10T23:38:35Z",
+     "last_commit_at": "2026-11-11T03:02:01Z",
+     "commits": 45,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtQQ3RTefHBaf6cV6U5",
+     "first_commit_at": "2026-11-11T03:02:59Z",
+     "last_commit_at": "2026-11-11T04:12:14Z",
+     "commits": 22
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtNGqHPZizrHtXCufyT",
+     "first_commit_at": "2026-11-11T04:07:47Z",
+     "last_commit_at": "2026-11-11T04:14:56Z",
+     "commits": 5
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtPhgYySRbGrAJBQuJ7",
+     "first_commit_at": "2026-11-11T04:16:11Z",
+     "last_commit_at": "2026-11-11T05:46:12Z",
+     "commits": 10
+    },
+    {
+     "n": 5,
+     "id": "session_018yvwtNYLgrZsp7bHQZzBmZ",
+     "first_commit_at": "2026-11-11T05:50:11Z",
+     "last_commit_at": "2026-11-11T07:46:01Z",
+     "commits": 6
+    },
+    {
+     "n": 6,
+     "id": "session_018yvwtPYRC6cLT5XYTRFeSQ",
+     "first_commit_at": "2026-11-11T07:50:15Z",
+     "last_commit_at": "2026-11-11T09:53:06Z",
+     "commits": 7
+    },
+    {
+     "n": 7,
+     "id": "session_018yvwtMyQoEg5L5WqSTj55u",
+     "first_commit_at": "2026-11-11T09:56:34Z",
+     "last_commit_at": "2026-11-11T10:47:40Z",
+     "commits": 4
+    },
+    {
+     "n": 8,
+     "id": "session_018yvwtPRjbYNkXeK8cK7Hxc",
+     "first_commit_at": "2026-11-11T10:51:13Z",
+     "last_commit_at": "2026-11-11T11:47:14Z",
+     "commits": 5
+    },
+    {
+     "n": 9,
+     "id": "session_018yvwtN7F5ipc9ntEXwY81c",
+     "first_commit_at": "2026-11-11T11:50:57Z",
+     "last_commit_at": "2026-11-11T12:49:21Z",
+     "commits": 6
+    },
+    {
+     "n": 10,
+     "id": "session_018yvwtLtwNjPxzYaorZ8NTh",
+     "first_commit_at": "2026-11-11T13:06:13Z",
+     "last_commit_at": "2026-11-11T14:45:46Z",
+     "commits": 6
+    },
+    {
+     "n": 11,
+     "id": "session_018yvwtQeKR7NV5H7CRuXAVj",
+     "first_commit_at": "2026-11-11T20:48:11Z",
+     "last_commit_at": "2026-11-11T21:47:10Z",
+     "commits": 4,
+     "started_at": "2026-11-11T20:47Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.media@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.media@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-media-dinis",
+     "key_fp": "sha256:c32235761af5a47b",
+     "signing_fp": "sha256:01d564d05862cdbd",
+     "made": "2026-11-10T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-media-dinis-2",
+     "key_fp": "sha256:8146ed0f2b066a92",
+     "signing_fp": "sha256:d182e3b9ed7b3d42",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-media-dinis-3",
+     "key_fp": "sha256:82bcb00cfbc1e060",
+     "signing_fp": "sha256:0ac66dc14c78a762",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-media-dinis-4",
+     "key_fp": "sha256:ff3e006d9a46be40",
+     "signing_fp": "sha256:c4bdf53f1b8a5d01",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtMBxaFYWBGAGvzTqtH",
+     "first_commit_at": "2026-11-10T23:38:00Z",
+     "last_commit_at": "2026-11-11T05:19:35Z",
+     "commits": 24,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtMHxUtYjMeZSsMQffc",
+     "first_commit_at": "2026-11-11T05:26:55Z",
+     "last_commit_at": "2026-11-11T10:42:47Z",
+     "commits": 9
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtQmV2ByHVtGARvuDx8",
+     "first_commit_at": "2026-11-11T10:53:19Z",
+     "last_commit_at": "2026-11-11T21:14:45Z",
+     "commits": 12
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtPDTB1YzeDrWjfmTPs",
+     "first_commit_at": "2026-11-11T21:16:07Z",
+     "last_commit_at": "2026-11-11T21:43:27Z",
+     "commits": 2,
+     "started_at": "2026-11-11T21:15Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.meteorologist@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.meteorologist@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [],
+   "sessions": [
+    {
+     "id": "session_018yvwtQBJhvhtFvtaZmBb6L",
+     "note": "live at 22:05 UTC on 11 November (agents/conductor/sessions.json)"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.meteorology@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.meteorology@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-meteorology-dinis",
+     "key_fp": "sha256:162a3344a5c28014",
+     "signing_fp": "sha256:c5d0a303df53cf64",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-meteorology-dinis-2",
+     "key_fp": "sha256:29969fb5974c7b2c",
+     "signing_fp": "sha256:05ede4a171ccc4be",
+     "made": "2026-11-11T05:20:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtLNnfMHT4hBN1HVaGK",
+     "first_commit_at": "2026-11-11T02:37:07Z",
+     "last_commit_at": "2026-11-11T02:58:29Z",
+     "commits": 6,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtQ4WgJUHwF2G8Ezss3",
+     "first_commit_at": "2026-11-11T05:23:42Z",
+     "last_commit_at": "2026-11-11T21:01:41Z",
+     "commits": 12,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.models@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.models@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-models-dinis",
+     "key_fp": "sha256:81ba78c3312c1f76",
+     "signing_fp": "sha256:ba085e12563c29bc",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-models-dinis-2",
+     "key_fp": "sha256:c12fa892e0c16d9b",
+     "signing_fp": "sha256:d2de7f2d13f6dd7c",
+     "made": "2026-11-11T22:03:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtNBN8q8YgXEpxUrh6n",
+     "first_commit_at": "2026-11-11T02:36:13Z",
+     "last_commit_at": "2026-11-11T09:32:32Z",
+     "commits": 9,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "id": "session_018yvwtNj7LsuSTWaGMRPthX",
+     "started_at": "2026-11-11T22:01Z",
+     "started_by": "incident.conductor@web-summit.dinis",
+     "replaces": null
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.motion@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.motion@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-motion-dinis",
+     "key_fp": "sha256:2717dab9e1ac419f",
+     "signing_fp": "sha256:ca5d87b5153a25ce",
+     "made": "2026-11-11T10:12:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtQ9HfwjnTnbT5NP1L4",
+     "first_commit_at": "2026-11-11T10:21:08Z",
+     "last_commit_at": "2026-11-11T11:48:46Z",
+     "commits": 8,
+     "started_at": "2026-11-11T10:12:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.observability@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.observability@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-observability-dinis",
+     "key_fp": "sha256:1913bd5631290440",
+     "signing_fp": "sha256:4eaeeacb457991e0",
+     "made": "2026-11-10T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-observability-dinis-2",
+     "key_fp": "sha256:e58744d5d343125b",
+     "signing_fp": "sha256:54d0cd47d5c50299",
+     "made": "2026-11-11T03:06:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-observability-dinis-3",
+     "key_fp": "sha256:a4019d26266d8cd5",
+     "signing_fp": "sha256:a1d78f6a85208add",
+     "made": "2026-11-11T08:18:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-observability-dinis-4",
+     "key_fp": "sha256:451a710b70685551",
+     "signing_fp": "sha256:9bfd5438e0da85b4",
+     "made": "2026-11-11T09:49:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-observability-dinis-5",
+     "key_fp": "sha256:3882a2e38f7dd7ca",
+     "signing_fp": "sha256:9b09d0c18db0f999",
+     "made": "2026-11-11T10:16:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-observability-dinis-6",
+     "key_fp": "sha256:bf0204799ea364ad",
+     "signing_fp": "sha256:ef293918e203848b",
+     "made": "2026-11-11T11:55:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-observability-dinis-7",
+     "key_fp": "sha256:c8bb8156036177d7",
+     "signing_fp": "sha256:022fd17e12b49400",
+     "made": "2026-11-11T15:21:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-observability-dinis-8",
+     "key_fp": "sha256:9621b97d8bd1a3b8",
+     "signing_fp": "sha256:6eca575a4f02ae8e",
+     "made": "2026-11-11T18:04:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-observability-dinis-9",
+     "key_fp": "sha256:fd93caf24b4627c3",
+     "signing_fp": "sha256:1f469b1c96d6e5ad",
+     "made": "2026-11-11T22:05:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtNqSbr9KU2d6ovMWcm",
+     "first_commit_at": "2026-11-10T23:38:37Z",
+     "last_commit_at": "2026-11-11T03:04:02Z",
+     "commits": 26,
+     "started_at": "2026-11-10T23:35Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtNfeEJAuQyQTY6jwhM",
+     "first_commit_at": "2026-11-11T03:06:59Z",
+     "last_commit_at": "2026-11-11T08:16:59Z",
+     "commits": 15,
+     "started_at": "2026-11-11T03:06Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtNSagD2HLpMKTkrQ2u",
+     "first_commit_at": "2026-11-11T08:18:21Z",
+     "last_commit_at": "2026-11-11T09:42:00Z",
+     "commits": 10,
+     "started_at": "2026-11-11T08:17Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtP3xfmDdrSBWr9ZGBQ",
+     "first_commit_at": "2026-11-11T09:49:47Z",
+     "last_commit_at": "2026-11-11T10:15:36Z",
+     "commits": 12,
+     "started_at": "2026-11-11T09:48Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 5,
+     "id": "session_018yvwtMQ5aoHiSmnWrLz33S",
+     "first_commit_at": "2026-11-11T10:17:02Z",
+     "last_commit_at": "2026-11-11T11:54:33Z",
+     "commits": 7,
+     "started_at": "2026-11-11T10:16Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 6,
+     "id": "session_018yvwtNDcKKGXEDHo5hy3SQ",
+     "first_commit_at": "2026-11-11T11:56:00Z",
+     "last_commit_at": "2026-11-11T15:21:01Z",
+     "commits": 10,
+     "started_at": "2026-11-11T11:54Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 7,
+     "id": "session_018yvwtLe9Px9Ni7aTs4AbYs",
+     "first_commit_at": "2026-11-11T15:22:10Z",
+     "last_commit_at": "2026-11-11T17:18:00Z",
+     "commits": 8,
+     "started_at": "2026-11-11T15:20Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 8,
+     "id": "session_018yvwtPEPERAHymX68grYRS",
+     "first_commit_at": "2026-11-11T18:05:05Z",
+     "last_commit_at": "2026-11-11T22:03:09Z",
+     "commits": 7,
+     "started_at": "2026-11-11T18:03Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 9,
+     "id": "session_018yvwtNLckeBUnGzpdekcJ6",
+     "started_at": "2026-11-11T22:04Z",
+     "started_by": "incident.conductor@web-summit.dinis",
+     "replaces": "session_018yvwtPEPERAHymX68grYRS"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.perplexity@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.perplexity@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-perplexity-dinis",
+     "key_fp": "sha256:ad99251a8a26259e",
+     "signing_fp": "sha256:bf11e5b661659bd8",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtQY58cTFYY5MpmaxVF",
+     "first_commit_at": "2026-11-11T03:01:18Z",
+     "last_commit_at": "2026-11-11T17:52:00Z",
+     "commits": 9
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.planner@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.planner@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-planner-dinis",
+     "key_fp": "sha256:49e54d2844641ca0",
+     "signing_fp": "sha256:304649f8fb0d60a2",
+     "made": "2026-11-11T10:31:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtP6g8C2NWAQG7utq3x",
+     "first_commit_at": "2026-11-11T10:35:36Z",
+     "last_commit_at": "2026-11-11T11:49:48Z",
+     "commits": 7,
+     "started_at": "2026-11-11T10:31:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.reporter@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.reporter@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-reporter-dinis",
+     "key_fp": "sha256:809eafd1180698c7",
+     "signing_fp": "sha256:5ce9748677f2bdb2",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-reporter-dinis-2",
+     "key_fp": "sha256:c18fbbaced0fe23d",
+     "signing_fp": "sha256:964714548a1ab978",
+     "made": "2026-11-11T04:06:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-reporter-dinis-3",
+     "key_fp": "sha256:7ee5146689501cb2",
+     "signing_fp": "sha256:6ab1d657ca7f6d72",
+     "made": "2026-11-11T05:11:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-reporter-dinis-4",
+     "key_fp": "sha256:1a91f355e683558d",
+     "signing_fp": "sha256:1d9e6c7cc35e8af2",
+     "made": "2026-11-11T10:14:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-reporter-dinis-5",
+     "key_fp": "sha256:ed4331fd90340d85",
+     "signing_fp": "sha256:f488cfcb95303f44",
+     "made": "2026-11-11T13:11:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-reporter-dinis-6",
+     "key_fp": "sha256:4940bd6ef6693a9b",
+     "signing_fp": "sha256:356117011399173a",
+     "made": "2026-11-11T16:04:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-reporter-dinis-7",
+     "key_fp": "sha256:2cdfc75ba963f17e",
+     "signing_fp": "sha256:acfc7bb047fdb66c",
+     "made": "2026-11-11T21:09:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPscqgDXjyU4vzfiwQ",
+     "first_commit_at": "2026-11-11T03:03:46Z",
+     "last_commit_at": "2026-11-11T04:06:27Z",
+     "commits": 6
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtLTf6oLBFtDW3cuSBV",
+     "first_commit_at": "2026-11-11T04:07:18Z",
+     "last_commit_at": "2026-11-11T05:09:30Z",
+     "commits": 8
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtNL6EvG11QLDPJdRAn",
+     "first_commit_at": "2026-11-11T05:11:37Z",
+     "last_commit_at": "2026-11-11T10:09:43Z",
+     "commits": 12
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtR4FqHabwDcCDH6QEJ",
+     "first_commit_at": "2026-11-11T10:16:52Z",
+     "last_commit_at": "2026-11-11T12:10:59Z",
+     "commits": 8
+    },
+    {
+     "n": 5,
+     "id": "session_018yvwtQFYTWoRWBeJQZ5CMF",
+     "first_commit_at": "2026-11-11T13:13:25Z",
+     "last_commit_at": "2026-11-11T15:09:32Z",
+     "commits": 7
+    },
+    {
+     "n": 6,
+     "id": "session_018yvwtNt94paTTR1g8PWxZS",
+     "first_commit_at": "2026-11-11T21:10:17Z",
+     "last_commit_at": "2026-11-11T21:10:17Z",
+     "commits": 1,
+     "started_at": "2026-11-11T21:09:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.researcher@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.researcher@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [],
+   "sessions": [
+    {
+     "id": "session_018yvwtNxyH9wRdXZG35n39T",
+     "note": "live at 22:05 UTC on 11 November (agents/conductor/sessions.json)"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.shadow@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.shadow@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-shadow-dinis",
+     "key_fp": "sha256:b563db30a7e9262c",
+     "signing_fp": "sha256:a550fd1d6e224816",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtLa54qWjrfAHBvcFJp",
+     "first_commit_at": "2026-11-11T02:26:28Z",
+     "last_commit_at": "2026-11-11T21:07:36Z",
+     "commits": 23,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.sherpa@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.sherpa@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-sherpa-dinis",
+     "key_fp": "sha256:4d11d0f024815af3",
+     "signing_fp": "sha256:c6247a11f49c45e9",
+     "made": "2026-11-11T11:49:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtMa5MKek8GAHcaFiBZ",
+     "first_commit_at": "2026-11-11T11:49:59Z",
+     "last_commit_at": "2026-11-11T12:43:39Z",
+     "commits": 18,
+     "started_at": "2026-11-11T11:45:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.social@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.social@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-social-dinis",
+     "key_fp": "sha256:a6df1c3e1a231d0f",
+     "signing_fp": "sha256:45a620ac071b6c24",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-social-dinis-2",
+     "key_fp": "sha256:0adef9c835729b33",
+     "signing_fp": "sha256:ee6b669c5d252aed",
+     "made": "2026-11-11T05:44:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-social-dinis-3",
+     "key_fp": "sha256:f65b5f3c0153c7a7",
+     "signing_fp": "sha256:96ab998d0661dead",
+     "made": "2026-11-11T14:05:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtNtFmWN3ndbbSiZThz",
+     "first_commit_at": "2026-11-11T02:30:46Z",
+     "last_commit_at": "2026-11-11T05:42:49Z",
+     "commits": 8,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtPuwjT6qsd3kPvkqCy",
+     "first_commit_at": "2026-11-11T05:44:30Z",
+     "last_commit_at": "2026-11-11T13:52:17Z",
+     "commits": 10,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "id": "session_018yvwtQbMKibk4usafhy6gJ",
+     "note": "live at 22:05 UTC on 11 November (agents/conductor/sessions.json)"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.sources@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.sources@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-sources-dinis",
+     "key_fp": "sha256:f9bdf85cc46df676",
+     "signing_fp": "sha256:3d1c2c32d113bd99",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtMmyTKYfQRk5pMazCA",
+     "first_commit_at": "2026-11-11T02:21:55Z",
+     "last_commit_at": "2026-11-11T21:24:45Z",
+     "commits": 35,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.stories@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.stories@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-stories-dinis",
+     "key_fp": "sha256:756dd0add148a910",
+     "signing_fp": "sha256:8d8aa934071ec450",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-2",
+     "key_fp": "sha256:164902fc084c209d",
+     "signing_fp": "sha256:f59049d288bad0ae",
+     "made": "2026-11-11T05:44:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-3",
+     "key_fp": "sha256:d7f2e0730be22d91",
+     "signing_fp": "sha256:66e6c1ee689e0a01",
+     "made": "2026-11-11T07:55:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-4",
+     "key_fp": "sha256:d92b540703adc9af",
+     "signing_fp": "sha256:ca6a470e327716bc",
+     "made": "2026-11-11T08:53:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-5",
+     "key_fp": "sha256:a1079b4f8455e38c",
+     "signing_fp": "sha256:58912f9aec2266f5",
+     "made": "2026-11-11T10:54:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-6",
+     "key_fp": "sha256:15fb59e3e3a797a1",
+     "signing_fp": "sha256:a8918baecf42cf00",
+     "made": "2026-11-11T12:26:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-7",
+     "key_fp": "sha256:6127830b2be68d4b",
+     "signing_fp": "sha256:efeeb3aaddf548bd",
+     "made": "2026-11-11T14:05:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-8",
+     "key_fp": "sha256:442778ff205ca534",
+     "signing_fp": "sha256:71a69a4a5d453599",
+     "made": "2026-11-11T16:04:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-9",
+     "key_fp": "sha256:ce1504bb0950ad20",
+     "signing_fp": "sha256:6d719c2a85ba3a00",
+     "made": "2026-11-11T18:04:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-stories-dinis-10",
+     "key_fp": "sha256:85dd4759198083ce",
+     "signing_fp": "sha256:b8930afad8de1281",
+     "made": "2026-11-11T21:53:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtM72QS9oqV5Eq9HvRF",
+     "first_commit_at": "2026-11-11T02:26:45Z",
+     "last_commit_at": "2026-11-11T05:43:02Z",
+     "commits": 14,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtP1c38kGvNvQmKfQ76",
+     "first_commit_at": "2026-11-11T05:45:38Z",
+     "last_commit_at": "2026-11-11T07:54:21Z",
+     "commits": 9
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtMAAfzeNBwcVZaMSJh",
+     "first_commit_at": "2026-11-11T07:59:19Z",
+     "last_commit_at": "2026-11-11T08:52:01Z",
+     "commits": 5
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtNmhrvRa7Y9H6V9wGh",
+     "first_commit_at": "2026-11-11T08:53:17Z",
+     "last_commit_at": "2026-11-11T10:53:33Z",
+     "commits": 9
+    },
+    {
+     "n": 5,
+     "id": "session_018yvwtQeZYy9FogvsHwUXtx",
+     "first_commit_at": "2026-11-11T10:59:00Z",
+     "last_commit_at": "2026-11-11T12:25:27Z",
+     "commits": 7
+    },
+    {
+     "n": 6,
+     "id": "session_018yvwtPjSDxGkZT9Rbcp6Wq",
+     "first_commit_at": "2026-11-11T12:29:44Z",
+     "last_commit_at": "2026-11-11T13:52:30Z",
+     "commits": 7
+    },
+    {
+     "n": 7,
+     "id": "session_018yvwtMUoatNgjyvJsPup3P",
+     "first_commit_at": "2026-11-11T21:53:54Z",
+     "last_commit_at": "2026-11-11T21:53:54Z",
+     "commits": 1,
+     "started_at": "2026-11-11T21:52Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.storyteller@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.storyteller@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-storyteller-dinis",
+     "key_fp": "sha256:04179652db3e2fa9",
+     "signing_fp": "sha256:01efced5750df04a",
+     "made": "2026-11-11T10:12:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPTkeEj8DoVNyaeniF",
+     "first_commit_at": "2026-11-11T10:13:14Z",
+     "last_commit_at": "2026-11-11T10:40:12Z",
+     "commits": 16
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.studio@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.studio@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-studio-dinis",
+     "key_fp": "sha256:a245b51b57e34f52",
+     "signing_fp": "sha256:1450b77352b69c10",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-studio-dinis-2",
+     "key_fp": "sha256:ea7c0bb8950e70db",
+     "signing_fp": "sha256:600cbc29e8988850",
+     "made": "2026-11-11T03:36:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtLqxneDnR4p11VDywD",
+     "first_commit_at": "2026-11-11T00:38:03Z",
+     "last_commit_at": "2026-11-11T03:35:20Z",
+     "commits": 22,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtMY9ztMdDNc8k7nKCj",
+     "first_commit_at": "2026-11-11T03:37:07Z",
+     "last_commit_at": "2026-11-11T03:55:10Z",
+     "commits": 4,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.synthetic@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.synthetic@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-synthetic-dinis",
+     "key_fp": "sha256:f6d3ab50a877c868",
+     "signing_fp": "sha256:703f812e78f7565b",
+     "made": "2026-11-11T09:51:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtMQ4bQecYYREzUqLN6",
+     "first_commit_at": "2026-11-11T09:53:46Z",
+     "last_commit_at": "2026-11-11T12:29:09Z",
+     "commits": 12
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.transport@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.transport@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-transport-dinis",
+     "key_fp": "sha256:a0de6f638c44091b",
+     "signing_fp": "sha256:f62069a3d80b0df2",
+     "made": "2026-11-11T10:32:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-transport-dinis-2",
+     "key_fp": "sha256:ba2c25bc55222bea",
+     "signing_fp": "sha256:33b3e0fa7b8f3d2b",
+     "made": "2026-11-11T12:09:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-transport-dinis-3",
+     "key_fp": "sha256:782bbdafd1122428",
+     "signing_fp": "sha256:374ec54a883c7bf4",
+     "made": "2026-11-11T12:46:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-transport-dinis-4",
+     "key_fp": "sha256:949b9016db82288f",
+     "signing_fp": "sha256:bc19cac431154fe4",
+     "made": "2026-11-11T14:05:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-transport-dinis-5",
+     "key_fp": "sha256:a6babdb707ed6595",
+     "signing_fp": "sha256:61325763db84fc35",
+     "made": "2026-11-11T19:05:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPXEVykHHGmwcj9W4P",
+     "first_commit_at": "2026-11-11T10:38:49Z",
+     "last_commit_at": "2026-11-11T12:09:16Z",
+     "commits": 8
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtQ34NMWTX5qSMUCC9j",
+     "first_commit_at": "2026-11-11T12:10:17Z",
+     "last_commit_at": "2026-11-11T12:47:08Z",
+     "commits": 15,
+     "started_at": "2026-11-11T12:09:00Z",
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtPCj1qubhR8qwpnnKc",
+     "first_commit_at": "2026-11-11T12:47:26Z",
+     "last_commit_at": "2026-11-11T13:47:45Z",
+     "commits": 9
+    },
+    {
+     "id": "session_018yvwtQ9zahLJ3zABzMxiY7",
+     "note": "live at 22:05 UTC on 11 November (agents/conductor/sessions.json)"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.weather@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.weather@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-weather-dinis",
+     "key_fp": "sha256:59bd6a558daf0242",
+     "signing_fp": "sha256:112fde2bd4edd8d8",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-weather-dinis-2",
+     "key_fp": "sha256:d83e14069f37584a",
+     "signing_fp": "sha256:dec8219792c4add4",
+     "made": "2026-11-11T09:31:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-weather-dinis-3",
+     "key_fp": "sha256:86fb12f87bb6493e",
+     "signing_fp": "sha256:f85d4ac0b71f85cc",
+     "made": "2026-11-11T10:34:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-weather-dinis-4",
+     "key_fp": "sha256:134becba9b5d51c8",
+     "signing_fp": "sha256:b7b010e544f333d2",
+     "made": "2026-11-11T11:59:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-weather-dinis-5",
+     "key_fp": "sha256:49c1f33fb9738e46",
+     "signing_fp": "sha256:4a25c96d80ac3b79",
+     "made": "2026-11-11T12:31:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtQpLvbJSGYz3qLMq86",
+     "first_commit_at": "2026-11-11T02:16:19Z",
+     "last_commit_at": "2026-11-11T09:29:28Z",
+     "commits": 25,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtNZb76i5cStvskYn1i",
+     "first_commit_at": "2026-11-11T09:32:15Z",
+     "last_commit_at": "2026-11-11T10:29:23Z",
+     "commits": 7
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtQYMVvhqjVntBCKjaa",
+     "first_commit_at": "2026-11-11T10:33:40Z",
+     "last_commit_at": "2026-11-11T11:58:26Z",
+     "commits": 10
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtLwwDUdneufUUP2KR9",
+     "first_commit_at": "2026-11-11T12:01:20Z",
+     "last_commit_at": "2026-11-11T12:28:26Z",
+     "commits": 6
+    },
+    {
+     "n": 5,
+     "id": "session_018yvwtQaQmHNoaLZWpcz47G",
+     "first_commit_at": "2026-11-11T12:31:59Z",
+     "last_commit_at": "2026-11-11T16:27:03Z",
+     "commits": 13,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.weatherwatch@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.weatherwatch@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-weatherwatch-dinis",
+     "key_fp": "sha256:c3f31029c7428764",
+     "signing_fp": "sha256:7a20fd5738914fe1",
+     "made": "2026-11-10T00:00:00.000Z",
+     "status": "ended"
+    },
+    {
+     "id": "incident-weatherwatch-dinis-2",
+     "key_fp": "sha256:cba9eccd1302fc0b",
+     "signing_fp": "sha256:ae778e80fa53560b",
+     "made": "2026-11-11T03:36:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-weatherwatch-dinis-3",
+     "key_fp": "sha256:42d7d19b2e70d905",
+     "signing_fp": "sha256:eb84f510acfc6d0b",
+     "made": "2026-11-11T09:43:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-weatherwatch-dinis-4",
+     "key_fp": "sha256:070aaeadf7646c6b",
+     "signing_fp": "sha256:fee24186a1b0f42f",
+     "made": "2026-11-11T13:39:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-weatherwatch-dinis-5",
+     "key_fp": "sha256:71456f4ab25c8224",
+     "signing_fp": "sha256:f0e6c851b27aa967",
+     "made": "2026-11-11T18:04:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtLRz9YpWVk9QAktkQD",
+     "first_commit_at": "2026-11-10T23:38:13Z",
+     "last_commit_at": "2026-11-11T03:35:08Z",
+     "commits": 21,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtNDsCgU1fa7CiTye6e",
+     "first_commit_at": "2026-11-11T03:36:44Z",
+     "last_commit_at": "2026-11-11T09:40:56Z",
+     "commits": 18
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtQjhsB4Drkug4Aow9u",
+     "first_commit_at": "2026-11-11T09:45:43Z",
+     "last_commit_at": "2026-11-11T12:35:23Z",
+     "commits": 9
+    },
+    {
+     "n": 4,
+     "id": "session_018yvwtMAMaYZJdT7DuCAo8s",
+     "first_commit_at": "2026-11-11T13:40:39Z",
+     "last_commit_at": "2026-11-11T17:41:29Z",
+     "commits": 10
+    },
+    {
+     "n": 5,
+     "id": "session_018yvwtPqDUXNufne6BnonLS",
+     "first_commit_at": "2026-11-11T18:04:43Z",
+     "last_commit_at": "2026-11-11T18:04:43Z",
+     "commits": 1,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-incident.wikipedia@web-summit.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "incident.wikipedia@web-summit.dinis",
+   "parent_id": "A4-ws214",
+   "account": "web-summit.dinis",
+   "runtime": "R1",
+   "io_level": "L4",
+   "environment": "R1 web-summit.dinis",
+   "keys": [
+    {
+     "id": "incident-wikipedia-dinis",
+     "key_fp": "sha256:da1d37c302cd8700",
+     "signing_fp": "sha256:75ed17adda4b899d",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-wikipedia-dinis-2",
+     "key_fp": "sha256:71df9610206086af",
+     "signing_fp": "sha256:dfff9ffd5c1ef6e1",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "handed over"
+    },
+    {
+     "id": "incident-wikipedia-dinis-3",
+     "key_fp": "sha256:2a11f4930d84a31b",
+     "signing_fp": "sha256:9524ecd67715395b",
+     "made": "2026-11-11T00:00:00.000Z",
+     "status": "active"
+    }
+   ],
+   "sessions": [
+    {
+     "n": 1,
+     "id": "session_018yvwtPhxRFHgK1h5einS95",
+     "first_commit_at": "2026-11-11T01:43:52Z",
+     "last_commit_at": "2026-11-11T05:50:31Z",
+     "commits": 10,
+     "started_by": "incident.conductor@web-summit.dinis"
+    },
+    {
+     "n": 2,
+     "id": "session_018yvwtM6WQ89E3QSV22FB8D",
+     "first_commit_at": "2026-11-11T05:57:56Z",
+     "last_commit_at": "2026-11-11T11:55:26Z",
+     "commits": 7
+    },
+    {
+     "n": 3,
+     "id": "session_018yvwtQ6uZ6iAhVSJumTqqY",
+     "first_commit_at": "2026-11-11T12:59:17Z",
+     "last_commit_at": "2026-11-11T21:55:10Z",
+     "commits": 10,
+     "started_by": "incident.conductor@web-summit.dinis"
+    }
+   ]
+  },
+  {
+   "unit_id": "A3-swarm.1.fringe@PrompTugal.dinis",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "swarm.1.fringe@PrompTugal.dinis",
+   "account": "PrompTugal.dinis",
+   "runtime": "R1",
+   "environment": "R1 PrompTugal.dinis",
+   "keys": []
+  },
+  {
+   "unit_id": "A3-weather@PrompTugal.vicky",
+   "altitude": "A3",
+   "role": "agent",
+   "name": "weather@PrompTugal.vicky",
+   "account": "PrompTugal.vicky",
+   "runtime": "R1",
+   "environment": "R1 PrompTugal.vicky",
+   "keys": []
+  },
+  {
+   "unit_id": "A0-ci",
+   "altitude": "A0",
+   "role": "compute",
+   "name": "CI: build, gate, deploy (each run is a unit A0-ci-<run>)",
+   "account": "PrompTugal (GitHub Actions)",
+   "environment": "GitHub Actions PrompTugal",
+   "about": "started by a push; its runs are recorded by incident.ci@ in data/ci/runs/"
+  }
+ ]
+}
