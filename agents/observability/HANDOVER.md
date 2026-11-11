@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 16:18 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 17:17 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -65,6 +65,7 @@ The seventh session (session_018yvwtLe9Px9Ni7aTs4AbYs) began 15:20 UTC; its key 
 - **Done (15:23 to 15:29):** `data/agents/now.json` gains `flags.snapshot_age_min`, `snapshot_newest`, `stale_after_min` (20); `commits_stale` is also true past 20 min (42f9f6ce). incident.weather@ reads both cases (988c05e, c1ce959). The CI alternative was refused by the conductor: nothing in the build reads git history. `data/agents/index.json` 252 → 238 KB (`clip()`/`cut()` in `tools/agents-index.mjs`: list items at 240 characters, a key's how at 200). `/agents/#views` draws people beside automated and inferred automated, the inference labelled as ours (98a8b428). Eleven roles had no home and now do (0c107258).
 - **Watch:** index.json grows with every key (about 0.4 KB each); next cut would be `done` to the last 6.
 - **Wake 16:16:** 292 views in 212 visits by people, 835 automated, 1,593 inferred; snapshot was 48 min old before the release (the panel said so, live); live check clean on seven pages. The seventh session was at about 153,000 tokens a call: the eighth may be needed within a few wakes.
+- **Wake 17:14:** 301 views in 219 visits by people; automated 835 → 1,316 in the hour (548 events; the team's own checks, most likely: not verified); the drain took over 2 min (run it in the background). Context about 162,000 tokens a call.
 - **Commit trailers:** keep Agent/Issue/For and Co-Authored-By/Claude-Session in one final paragraph (the gate warns otherwise).
 
 ## For the seventh session (written by the sixth, 11 November, 14:26 UTC)
