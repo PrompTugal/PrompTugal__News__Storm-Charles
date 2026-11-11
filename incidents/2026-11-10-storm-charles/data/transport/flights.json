@@ -1,7 +1,7 @@
 {
  "about": "Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network's public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations: ANA's own figures (scheduled, cancelled, operated movements) from its newsroom where it has published them (ana_statement, and ana on each airport); diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.",
  "by": "incident.transport@web-summit.dinis",
- "updated": "2026-11-11T17:46:03Z",
+ "updated": "2026-11-11T18:42:46Z",
  "not_a_warning_service": "Not a warning service. No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
  "sources_page": "transport/sources.md",
  "attribution": "The OpenSky Network, https://opensky-network.org (M. Schäfer, M. Strohmeier, V. Lenders, I. Martinovic, M. Wilhelm, \"Bringing Up OpenSky: A Large-scale ADS-B Sensor Network for Research\", IPSN 2014)",
@@ -45,7 +45,7 @@
   "unit": "aircraft movements (departures and arrivals together)",
   "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
   "source": "https://en.newsroom.ana.pt/",
-  "read": "2026-11-11T17:45:23Z",
+  "read": "2026-11-11T18:42:07Z",
   "sha256": "396c4f997a0d00edb151dbcd664d8cf9ef9c14e130972d6d16d67bba3d7c6187",
   "licence": "ANA's terms do not allow reproducing its information without consent: the figures only, as numbers, with ANA named and the link; none of its text"
  },
@@ -57,7 +57,7 @@
    "departures_today": {
     "label": "fact",
     "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
-    "count": 66,
+    "count": 83,
     "covered_from": "2026-11-11T06:25:03Z",
     "by_hour_utc": [
      null,
@@ -70,28 +70,33 @@
      1,
      6,
      18,
-     11,
+     12,
      8,
      1,
      0,
      4,
      5,
      5,
-     6
+     8,
+     14
     ],
     "window_note": "The first covered hour may be partial. Counts are a floor: what OpenSky's receivers saw.",
     "by_airline": [
      {
       "airline": "TAP Air Portugal",
-      "n": 25
+      "n": 36
      },
      {
       "airline": "Ryanair",
-      "n": 15
+      "n": 17
      },
      {
       "airline": "easyJet Europe",
-      "n": 4
+      "n": 6
+     },
+     {
+      "airline": "Vueling",
+      "n": 3
      },
      {
       "airline": "Turkish Airlines",
@@ -99,10 +104,6 @@
      },
      {
       "airline": "Delta",
-      "n": 2
-     },
-     {
-      "airline": "Vueling",
       "n": 2
      },
      {
@@ -148,12 +149,16 @@
      {
       "airline": "United",
       "n": 1
+     },
+     {
+      "airline": "SAS",
+      "n": 1
      }
     ],
     "other_operators_not_counted": 2,
     "source": "https://opensky-network.org/api/flights/departure?airport=LPPT",
-    "read": "2026-11-11T17:45:03Z",
-    "sha256": "e5993eb351d7fbf3da7719496ef0a18775caab14ad64b18b30299220d385ec7d"
+    "read": "2026-11-11T18:41:47Z",
+    "sha256": "9fc04af82c09e359b58b6002da5262ba05ff97139f65d75be832d63871ee2d8c"
    },
    "arrivals_today": {
     "label": "none",
@@ -162,13 +167,13 @@
    "live_snapshot": {
     "label": "fact",
     "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
-    "at": "2026-11-11T17:45:04Z",
-    "on_ground": 3,
-    "airborne_low": 3,
-    "other_operators_not_counted": 0,
+    "at": "2026-11-11T18:41:45Z",
+    "on_ground": 6,
+    "airborne_low": 2,
+    "other_operators_not_counted": 1,
     "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
-    "read": "2026-11-11T17:45:06Z",
-    "sha256": "b5b5a93776220bdececd796f75205c5cc49adcd5e95cec414fe68f4541362500"
+    "read": "2026-11-11T18:41:50Z",
+    "sha256": "aedca74a620211602a0d2be011d655ca741779318c6a0c99de41573b6e67357a"
    },
    "baseline": {
     "label": "none",
@@ -187,7 +192,7 @@
     "situation_at": "2026-11-11T11:00:00Z",
     "published": "2026-11-11T11:55:02Z",
     "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-    "read": "2026-11-11T17:45:23Z",
+    "read": "2026-11-11T18:42:07Z",
     "label": "fact"
    }
   },
@@ -198,7 +203,7 @@
    "departures_today": {
     "label": "fact",
     "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
-    "count": 51,
+    "count": 57,
     "covered_from": "2026-11-11T07:05:24Z",
     "by_hour_utc": [
      null,
@@ -213,34 +218,35 @@
      3,
      4,
      7,
-     9,
+     10,
      8,
      4,
      4,
      7,
-     2
+     4,
+     3
     ],
     "window_note": "The first covered hour may be partial. Counts are a floor: what OpenSky's receivers saw.",
     "by_airline": [
      {
       "airline": "Ryanair",
-      "n": 13
+      "n": 15
      },
      {
       "airline": "easyJet Europe",
-      "n": 9
+      "n": 11
      },
      {
       "airline": "TAP Air Portugal",
       "n": 6
      },
      {
-      "airline": "Lufthansa",
+      "airline": "Transavia France",
       "n": 3
      },
      {
-      "airline": "Transavia France",
-      "n": 2
+      "airline": "Lufthansa",
+      "n": 3
      },
      {
       "airline": "KLM",
@@ -297,12 +303,16 @@
      {
       "airline": "Vueling",
       "n": 1
+     },
+     {
+      "airline": "United",
+      "n": 1
      }
     ],
     "other_operators_not_counted": 4,
     "source": "https://opensky-network.org/api/flights/departure?airport=LPPR",
-    "read": "2026-11-11T17:45:07Z",
-    "sha256": "eb1d683fea74187b132a9271b51c930d7eb076c26f648b23b913f524b60bd608"
+    "read": "2026-11-11T18:41:52Z",
+    "sha256": "03a7b9c854f73524c1094725975157dfe38577d8e761bf9a8dbf37fe0da3b091"
    },
    "arrivals_today": {
     "label": "none",
@@ -311,13 +321,13 @@
    "live_snapshot": {
     "label": "fact",
     "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
-    "at": "2026-11-11T17:45:00Z",
-    "on_ground": 2,
-    "airborne_low": 1,
-    "other_operators_not_counted": 0,
+    "at": "2026-11-11T18:41:45Z",
+    "on_ground": 0,
+    "airborne_low": 2,
+    "other_operators_not_counted": 1,
     "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
-    "read": "2026-11-11T17:45:10Z",
-    "sha256": "7c4de1a977c0899856afa814d6349a7ddedbc87736e8e549ab1662f74b6b74f9"
+    "read": "2026-11-11T18:41:54Z",
+    "sha256": "452023d707741cd4a5112cb73d3f695c0756210cb8cf70573c2b7008e23caa43"
    },
    "baseline": {
     "label": "none",
@@ -336,7 +346,7 @@
     "situation_at": "2026-11-11T11:00:00Z",
     "published": "2026-11-11T11:55:02Z",
     "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-    "read": "2026-11-11T17:45:23Z",
+    "read": "2026-11-11T18:42:07Z",
     "label": "fact"
    }
   },
@@ -351,7 +361,7 @@
     "departures_seen_any_operator": 1,
     "note": "OpenSky's receivers detected 1 departure of any operator here since 08:15 UTC: its coverage at this airport is too thin to count. Not zero: unknown.",
     "source": "https://opensky-network.org/api/flights/departure?airport=LPFR",
-    "read": "2026-11-11T17:45:12Z",
+    "read": "2026-11-11T18:41:56Z",
     "sha256": "a0e491083c5f6dc22f6f1d23d5399c191ad186dd632203227235e6808f246da5"
    },
    "arrivals_today": {
@@ -361,13 +371,13 @@
    "live_snapshot": {
     "label": "fact",
     "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
-    "at": "2026-11-11T17:45:04Z",
+    "at": "2026-11-11T18:41:48Z",
     "on_ground": 0,
     "airborne_low": 0,
     "other_operators_not_counted": 0,
     "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
-    "read": "2026-11-11T17:45:14Z",
-    "sha256": "2ed1e9be767b9de5cac655d0ebd2428531e827b9e1e4b6f87dd4590674de6cf0"
+    "read": "2026-11-11T18:41:58Z",
+    "sha256": "f7ccf3ccda650f373218324d6e5b2974c29ac8a174f2e255dac1d4864cb3333f"
    },
    "baseline": {
     "label": "none",
@@ -386,7 +396,7 @@
     "situation_at": "2026-11-11T11:00:00Z",
     "published": "2026-11-11T11:55:02Z",
     "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-    "read": "2026-11-11T17:45:23Z",
+    "read": "2026-11-11T18:42:07Z",
     "label": "fact"
    }
   },
@@ -397,7 +407,7 @@
    "departures_today": {
     "label": "fact",
     "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
-    "count": 10,
+    "count": 12,
     "covered_from": "2026-11-11T13:42:39Z",
     "by_hour_utc": [
      null,
@@ -417,13 +427,14 @@
      2,
      3,
      3,
-     1
+     3,
+     0
     ],
     "window_note": "The first covered hour may be partial. Counts are a floor: what OpenSky's receivers saw.",
     "by_airline": [
      {
       "airline": "easyJet Europe",
-      "n": 3
+      "n": 4
      },
      {
       "airline": "easyJet",
@@ -444,12 +455,16 @@
      {
       "airline": "TAP Air Portugal",
       "n": 1
+     },
+     {
+      "airline": "Wizz Air",
+      "n": 1
      }
     ],
-    "other_operators_not_counted": 2,
+    "other_operators_not_counted": 3,
     "source": "https://opensky-network.org/api/flights/departure?airport=LPMA",
-    "read": "2026-11-11T17:45:16Z",
-    "sha256": "c550ec1df6c3ecd926d70a36c73e85c45cccb541be9d0fde5c0ae3dca49af863"
+    "read": "2026-11-11T18:42:00Z",
+    "sha256": "931769416f611b8428f325e19516e298a33c2188f0310d2343f446ac4a81e8f6"
    },
    "arrivals_today": {
     "label": "none",
@@ -458,13 +473,13 @@
    "live_snapshot": {
     "label": "fact",
     "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
-    "at": "2026-11-11T17:45:10Z",
-    "on_ground": 1,
-    "airborne_low": 0,
-    "other_operators_not_counted": 1,
+    "at": "2026-11-11T18:41:55Z",
+    "on_ground": 0,
+    "airborne_low": 1,
+    "other_operators_not_counted": 0,
     "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
-    "read": "2026-11-11T17:45:18Z",
-    "sha256": "482578b8830d28e2ac4d820ffb6517a99b5d020f5dc978fa5612af67f4a50649"
+    "read": "2026-11-11T18:42:02Z",
+    "sha256": "7305ed8beaee0433905d9be8153816fcb6573b923947dc790b20c0f7ff19a972"
    },
    "baseline": {
     "label": "none",
@@ -484,7 +499,7 @@
     "situation_at": "2026-11-11T11:00:00Z",
     "published": "2026-11-11T11:55:02Z",
     "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-    "read": "2026-11-11T17:45:23Z",
+    "read": "2026-11-11T18:42:07Z",
     "label": "fact"
    }
   }
