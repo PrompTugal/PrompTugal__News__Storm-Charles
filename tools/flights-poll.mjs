@@ -1,46 +1,47 @@
 #!/usr/bin/env node
-// One OpenSky snapshot of airline aircraft in a small box (incident.flights@web-summit.dinis, 11 November 2026, WS-214).
+// One snapshot of airline aircraft around Lisbon or Funchal from adsb.lol (incident.flights@web-summit.dinis, WS-214).
 //   node tools/flights-poll.mjs --area lisbon|funchal [--root <dir>]
-// Appends to <root>/incidents/<id>/data/flights/snapshots/<date>/<HH>.json (root defaults to this repository; the
-// background poller writes to a staging folder that is published hourly). Anonymous /states/all, one credit per call
-// (a box under 25 square degrees). Airline flights only: callsign = an airline's ICAO code + a flight number
-// (flights-common.mjs). Every other aircraft is dropped: never kept, only counted as one number. No ICAO24 address is written.
+// Appends to <root>/incidents/<id>/data/flights/snapshots/<date>/<HH>.json. No key: adsb.lol's public API (500 requests a day
+// per IP; we use 288). Runs unchanged on a scheduled runner: no secret, input from the network, output as files.
+// Source changed from OpenSky at 22:24 UTC on 11 November: OpenSky's terms (as read at 22:19) ask that aircraft identifiers be
+// de-identified in publications and forbid passing the data on; adsb.lol's data is ODbL, which allows it with attribution.
+// Airline flights only: callsign = an airline's ICAO code + a flight number (flights-common.mjs). Every other aircraft is
+// dropped: never kept, only counted as one number. Never kept: the ICAO24 hex address, the registration.
 import fs from 'node:fs'
 import path from 'node:path'
-import { BY, DATA, NOT_WARNING, OPENSKY_CITE, AIRLINES, airlineOf, fetchProv, writeJSON, iso } from './flights-common.mjs'
+import { BY, DATA, NOT_WARNING, ADSBLOL_CITE, AIRLINES, airlineOf, fetchProv, writeJSON, iso } from './flights-common.mjs'
 
 export const AREAS = {
-  lisbon: { name: 'Lisbon area (around LPPT, Humberto Delgado)', lamin: 38.3, lamax: 39.2, lomin: -9.8, lomax: -8.6 },
-  funchal: { name: 'Madeira (around LPMA, Funchal)', lamin: 32.4, lamax: 33.2, lomin: -17.4, lomax: -16.2 }
+  lisbon: { name: 'Lisbon area: within 40 nautical miles (74 km) of 38.75 N, 9.20 W (LPPT is 8 km north of the centre)', lat: 38.75, lon: -9.2, dist_nm: 40 },
+  funchal: { name: 'Madeira: within 30 nautical miles (56 km) of 32.75 N, 16.85 W (LPMA, Funchal)', lat: 32.75, lon: -16.85, dist_nm: 30 }
 }
 const NEAR = { lisbon: { icao: 'LPPT', box: [38.524, -9.384, 39.024, -8.884] }, funchal: { icao: 'LPMA', box: [32.448, -17.024, 32.948, -16.524] } }
 const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > 0 ? process.argv[i + 1] : d }
 const area = arg('area'); const root = arg('root', '.')
 if (!AREAS[area]) { console.error('--area lisbon|funchal'); process.exit(2) }
 const b = AREAS[area]
-const url = `https://opensky-network.org/api/states/all?lamin=${b.lamin}&lomin=${b.lomin}&lamax=${b.lamax}&lomax=${b.lomax}`
-let r = await fetchProv(url, { kind: 'opensky-states' }); const failed = []
-for (let i = 0; i < 2 && !r.ok; i++) { failed.push(r.prov); await new Promise(res => setTimeout(res, 20000)); r = await fetchProv(url, { kind: 'opensky-states' }) }
+const url = `https://api.adsb.lol/v2/lat/${b.lat}/lon/${b.lon}/dist/${b.dist_nm}`
+let r = await fetchProv(url, { kind: 'adsblol' }); const failed = []
+for (let i = 0; i < 2 && !r.ok && r.prov.status !== 429; i++) { failed.push(r.prov); await new Promise(res => setTimeout(res, 20000)); r = await fetchProv(url, { kind: 'adsblol' }) }
 const { prov, body, ok } = r
-let snap = { area, time: null, request: prov, aircraft: [], other_aircraft_dropped: null }
+const snap = { area, source: 'adsb.lol', time: null, request: prov, aircraft: [], other_aircraft_dropped: null }
 if (failed.length) snap.failed_attempts = failed
+const num = x => typeof x === 'number' ? x : null
 if (ok) {
   const j = JSON.parse(body.toString('utf8'))
-  snap.time = j.time ? iso(j.time * 1000) : null
+  snap.time = j.now ? iso(j.now) : null
   let other = 0
-  for (const s of j.states || []) {
-    const cs = String(s[1] || '').trim(); const al = airlineOf(cs)
-    if (!al) { other++; continue }
-    // [icao24, callsign, origin_country, time_position, last_contact, lon, lat, baro_alt, on_ground, velocity, true_track, vertical_rate, sensors, geo_alt, squawk, spi, position_source]
-    snap.aircraft.push({ callsign: cs, airline: al, lat: s[6], lon: s[5], baro_alt_m: s[7], geo_alt_m: s[13], on_ground: s[8], ground_speed_ms: s[9], track_deg: s[10], vertical_rate_ms: s[11], time_position: s[3] ? iso(s[3] * 1000) : null })
+  for (const a of j.ac || []) {
+    const cs = String(a.flight || '').trim(); const al = airlineOf(cs)
+    if (!al || typeof a.lat !== 'number') { other++; continue }
+    const ground = a.alt_baro === 'ground'
+    snap.aircraft.push({ callsign: cs, airline: al, type: a.t || null, lat: a.lat, lon: a.lon, baro_alt_ft: ground ? null : num(a.alt_baro), geo_alt_ft: num(a.alt_geom), on_ground: ground, ground_speed_kt: num(a.gs), track_deg: num(a.track), vertical_rate_fpm: num(a.baro_rate ?? a.geom_rate), position_age_s: num(a.seen_pos) })
   }
   snap.aircraft.sort((x, y) => x.callsign.localeCompare(y.callsign))
-  // incident.transport@'s count, so it can read ours instead of calling OpenSky itself (agreed 22:05): its exact box,
-  // airline aircraft on the ground or airborne below 3,000 m.
-  const ap = NEAR[area]; const inBox = a => a.lat >= ap.box[0] && a.lon >= ap.box[1] && a.lat <= ap.box[2] && a.lon <= ap.box[3]
-  const nb = snap.aircraft.filter(inBox)
-  snap.near_airport = { [ap.icao]: { box: ap.box, box_order: 'lamin, lomin, lamax, lomax', on_ground: nb.filter(a => a.on_ground).length, airborne_below_3000m: nb.filter(a => !a.on_ground && a.baro_alt_m != null && a.baro_alt_m < 3000).length, read: prov.read } }
   snap.other_aircraft_dropped = other
+  // incident.transport@'s count in its own box: airline aircraft on the ground or airborne below 3,000 m (9,843 ft)
+  const ap = NEAR[area]; const nb = snap.aircraft.filter(a => a.lat >= ap.box[0] && a.lon >= ap.box[1] && a.lat <= ap.box[2] && a.lon <= ap.box[3])
+  snap.near_airport = { [ap.icao]: { box: ap.box, box_order: 'lamin, lomin, lamax, lomax', on_ground: nb.filter(a => a.on_ground).length, airborne_below_3000m: nb.filter(a => !a.on_ground && a.baro_alt_ft != null && a.baro_alt_ft < 9843).length, read: prov.read } }
 }
 const t = snap.time || prov.read
 const file = path.join(root, DATA, 'snapshots', t.slice(0, 10), t.slice(11, 13) + '.json')
@@ -48,11 +49,10 @@ let doc
 try { doc = JSON.parse(fs.readFileSync(file, 'utf8')) } catch {
   doc = {
     by: BY, updated: null, label: 'fact',
-    about: `Airline aircraft OpenSky Network's receivers saw in two small boxes (Lisbon, Madeira), ${t.slice(0, 10)} ${t.slice(11, 13)}:00 to :59 UTC, one snapshot every 10 minutes (Lisbon) or 20 minutes (Madeira). Airline flights only (an airline's ICAO code plus a flight number); every other aircraft is dropped and only counted. Fact: what OpenSky shows at the time read; positions can be up to a few seconds old (time_position). Not the storm's peak: anonymous OpenSky has no history, so these start on 11 November at about 22:15 UTC.`,
-    not_a_warning_service: NOT_WARNING, attribution: OPENSKY_CITE,
-    units: { baro_alt_m: 'metres, barometric', geo_alt_m: 'metres, geometric', ground_speed_ms: 'metres per second (x 1.944 = knots)', track_deg: 'degrees true, clockwise from north', vertical_rate_ms: 'metres per second, + climbing' },
-    areas: Object.fromEntries(Object.entries(AREAS).map(([k, v]) => [k, v])),
-    airlines: {}, snapshots: []
+    about: `Airline aircraft adsb.lol's community receivers saw around Lisbon and Madeira, ${t.slice(0, 10)} ${t.slice(11, 13)}:00 to :59 UTC, one snapshot every 10 minutes for each. Airline flights only (an airline's ICAO code plus a flight number); every other aircraft is dropped and only counted. Fact: what adsb.lol shows at the time read; position_age_s says how old each position is. Not the storm's peak: these start on 11 November at about 22:25 UTC (adsb.lol's daily history archive for 11 November is not out yet).`,
+    not_a_warning_service: NOT_WARNING, attribution: ADSBLOL_CITE, licence: 'ODbL 1.0',
+    units: { baro_alt_ft: 'feet, barometric (null on the ground)', geo_alt_ft: 'feet, geometric', ground_speed_kt: 'knots', track_deg: 'degrees true, clockwise from north', vertical_rate_fpm: 'feet per minute, + climbing', position_age_s: 'seconds since the position was received' },
+    areas: AREAS, airlines: {}, snapshots: []
   }
 }
 doc.snapshots.push(snap)

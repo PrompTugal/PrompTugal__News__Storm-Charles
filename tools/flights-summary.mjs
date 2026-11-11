@@ -9,7 +9,7 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { call } from './llm.mjs'
-import { BY, DATA, NOT_WARNING, OPENSKY_CITE, AIRLINES, writeJSON, sha256, iso } from './flights-common.mjs'
+import { BY, DATA, NOT_WARNING, ADSBLOL_CITE, AIRLINES, writeJSON, sha256, iso } from './flights-common.mjs'
 
 const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > 0 ? process.argv[i + 1] : d }
 const root = arg('root', '.')
@@ -31,7 +31,7 @@ for (const area of ['lisbon', 'funchal']) {
   const byAl = {}; for (const s of ok) for (const a of s.aircraft) (byAl[a.airline] ||= new Set()).add(a.callsign)
   facts.areas[area] = {
     snapshots_tried: S.length, snapshots_read: ok.length,
-    ...(ok.length ? {} : { note: 'no snapshot could be read this hour (OpenSky did not answer): nothing is known about aircraft here, which is not the same as none' }),
+    ...(ok.length ? {} : { note: 'no snapshot could be read this hour (the source did not answer): nothing is known about aircraft here, which is not the same as none' }),
     distinct_airline_flights_seen: flights.size,
     at_last_snapshot: last ? { time_utc: last.time.slice(11, 16), airborne: last.aircraft.filter(a => !a.on_ground).length, on_ground: last.aircraft.filter(a => a.on_ground).length } : null,
     airlines: Object.entries(byAl).map(([k, v]) => ({ airline: AIRLINES[k] || k, flights: v.size })).sort((a, b) => b.flights - a.flights).slice(0, 5)
@@ -62,7 +62,7 @@ function check (text) {
 
 const messages = [
   { role: 'system', content: 'You summarise flight data for a newsroom. Use only the numbers in the JSON you are given; never estimate, round or add a number; no advice, no forecast. Write exactly two plain sentences in English, no lists, no markdown.' },
-  { role: 'user', content: `Airline aircraft OpenSky Network saw near Lisbon and Funchal (Madeira) in one hour, and the airports' latest METAR wind. Write two sentences summarising the flight picture.\n\n${input}` }
+  { role: 'user', content: `Airline aircraft adsb.lol's receivers saw near Lisbon and Funchal (Madeira) in one hour, and the airports' latest METAR wind. Write two sentences summarising the flight picture.\n\n${input}` }
 ]
 const r = await call({ task: 'WS-214/flights-summary', agent: BY, model: MODEL, messages, max_tokens: 300, mock: process.argv.includes('--mock'), extra: MODEL.includes('qwen') ? { reasoning: { enabled: false } } : {} })
 const text = r.text ? r.text.trim() : null
@@ -75,7 +75,7 @@ if (c.passed && r.line.status === 'ok' && !process.argv.includes('--mock')) {
   writeJSON(file, {
     by: BY, updated: iso(Date.now()), label: 'model output',
     about: `A two-sentence summary of the flight picture for ${facts.hour_utc} UTC, written by an open-weight model (${r.line.model_served || MODEL}) through OpenRouter from the JSON in input, and published only because every number in it is one of the input's numbers and it is two sentences (check). Model output: not checked for meaning beyond that, and not ours. The data itself: snapshots/ and crosswind.json.`,
-    not_a_warning_service: NOT_WARNING, attribution: OPENSKY_CITE,
+    not_a_warning_service: NOT_WARNING, attribution: ADSBLOL_CITE,
     hour: rec.hour, text, model: { asked: MODEL, served: r.line.model_served, via: 'OpenRouter, through tools/llm.mjs (one ledger line per call)', cost_usd: r.line.cost_usd, ledger_id: r.line.id },
     input: facts, input_sha256: rec.input_sha256, sources: [path.relative(root, snapFile), path.relative(root, cwFile)], check: c
   })

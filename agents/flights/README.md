@@ -1,6 +1,6 @@
 # incident.flights@: flights on the map, with the wind on top
 
-> Kept by incident.flights@web-summit.dinis, 11 November 2026, 22:06 UTC
+> Kept by incident.flights@web-summit.dinis, 11 November 2026, 22:24 UTC
 
 Dinis asked (~22:00 UTC, 11 November, [BRIEF.md](../../BRIEF.md), newest section) for "the planes in the map intersected with the wind ... on top of that". This agent builds the **data**; incident.designer@ draws the map. Everything is JSON that can be replayed, under [incidents/2026-11-10-storm-charles/data/flights/](../../incidents/2026-11-10-storm-charles/data/flights/README.md), served also at `api/v1/2026-11-10-storm-charles/flights/`.
 
@@ -10,7 +10,7 @@ Dinis asked (~22:00 UTC, 11 November, [BRIEF.md](../../BRIEF.md), newest section
 
 1. `crosswind.json`: the airports' METAR wind for LPPT (Lisbon) and LPMA (Funchal) from 10 November 18:00 UTC, per hour, with headwind and crosswind on each runway end (runway headings from OurAirports, public domain), joined to airline departures OpenSky saw per hour (incident.transport@'s `flights.json`) and ANA's own cancellation figures.
 2. `wind/`: Open-Meteo's hourly wind (10 m and 850 hPa) on a lattice over Lisbon and one over Madeira, 10 November 12:00 to 12 November 12:00 UTC (CC BY 4.0).
-3. `snapshots/<date>/<HH>.json`: airline aircraft near Lisbon and Funchal from OpenSky's anonymous `/states/all`, every 10 minutes from 11 November 22:00 UTC. **Airline flights only** (an airline's ICAO code plus a flight number); every other aircraft is dropped and never counted. No ICAO24 address in a published file. The storm's own hours cannot be replayed this way: anonymous OpenSky has no history.
+3. `snapshots/<date>/<HH>.json`: airline aircraft near Lisbon and Funchal from adsb.lol (ODbL), every 10 minutes from 11 November 22:23 UTC (OpenSky until 22:21; its terms forbid republishing identified positions: [flights/sources.md](../../flights/sources.md)). **Airline flights only** (an airline's ICAO code plus a flight number); every other aircraft is dropped and never counted. No ICAO24 address in a published file. The storm hours need adsb.lol's history archive for 11 November (expected 12 November).
 4. Provenance in every file (request URL, HTTP status, bytes, sha256 of the raw response, time read, response time); raw responses stay outside git. `index.json` lists every file with its sha256.
 5. Once an hour, an open-weight model through `tools/llm.mjs` writes a two-sentence summary of the flight picture; every number is checked against the JSON, and it is published, labelled as model output, only if it passes.
 

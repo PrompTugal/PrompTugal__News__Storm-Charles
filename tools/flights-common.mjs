@@ -13,6 +13,7 @@ export const DATA = `incidents/${INCIDENT}/data/flights`
 export const RAW_DIR = process.env.FLIGHTS_RAW_DIR || path.join(os.homedir(), '.incident-raw', 'flights')
 export const NOT_WARNING = 'Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.'
 export const OPENSKY_CITE = 'The OpenSky Network, https://opensky-network.org (M. Schäfer, M. Strohmeier, V. Lenders, I. Martinovic, M. Wilhelm, "Bringing Up OpenSky: A Large-scale ADS-B Sensor Network for Research", IPSN 2014). Used for research and non-commercial purposes, as its API documentation asks; its full terms page is still for a person to read (transport/sources.md).'
+export const ADSBLOL_CITE = 'Aircraft positions: adsb.lol (https://adsb.lol), community ADS-B data, licensed under the Open Database License (ODbL) v1.0 (https://opendatacommons.org/licenses/odbl/1-0/). Our snapshots are a derived database offered under the same licence.'
 export const OPENMETEO_CITE = 'Weather data by Open-Meteo.com, https://open-meteo.com, licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Its forecast API with past_days: the model\'s hourly analysis and short-range forecast, not observations.'
 
 export const sha256 = b => crypto.createHash('sha256').update(b).digest('hex')
@@ -34,7 +35,7 @@ export async function fetchProv (url, { kind = 'raw', timeoutMs = 30000, headers
   try {
     const r = await fetch(url, { headers: { 'user-agent': 'storm-charles-newsroom-flights/1 (non-commercial research)', ...headers }, signal: AbortSignal.timeout(timeoutMs) })
     status = r.status; body = Buffer.from(await r.arrayBuffer())
-    for (const h of ['x-rate-limit-remaining', 'content-type']) if (r.headers.get(h)) hdr[h] = r.headers.get(h)
+    for (const h of ['x-rate-limit-remaining', 'x-ratelimit-remaining', 'content-type']) if (r.headers.get(h)) hdr[h] = r.headers.get(h)
   } catch (e) { error = String(e.message || e) }
   const ms = Date.now() - t0
   const digest = sha256(body)
@@ -45,7 +46,7 @@ export async function fetchProv (url, { kind = 'raw', timeoutMs = 30000, headers
   fs.writeFileSync(path.join(dir, name + '.meta.json'), JSON.stringify({ url, status, bytes: body.length, sha256: digest, read, response_ms: ms, error, headers: hdr }, null, 2))
   const prov = { url, status, bytes: body.length, sha256: digest, read, response_ms: ms, raw: `flights vault: ${kind}/${day}/${name}.body` }
   if (error) prov.error = error
-  if (hdr['x-rate-limit-remaining']) prov.rate_limit_remaining = Number(hdr['x-rate-limit-remaining'])
+  const rl = hdr['x-rate-limit-remaining'] ?? hdr['x-ratelimit-remaining']; if (rl != null) prov.rate_limit_remaining = Number(rl)
   return { prov, body, ok: status >= 200 && status < 300 && !error }
 }
 

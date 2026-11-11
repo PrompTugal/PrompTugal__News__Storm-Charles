@@ -7,7 +7,7 @@
 //    (one per hour of the wind field), runways.json, movements.json. index.json (flights-index.mjs) lists them for the app.
 import fs from 'node:fs'
 import path from 'node:path'
-import { BY, DATA, INCIDENT, OPENSKY_CITE, OPENMETEO_CITE, NOT_WARNING, iso } from './flights-common.mjs'
+import { BY, DATA, INCIDENT, OPENSKY_CITE, ADSBLOL_CITE, OPENMETEO_CITE, NOT_WARNING, iso } from './flights-common.mjs'
 const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > 0 ? process.argv[i + 1] : d }
 const root = arg('root', '.'); const D = path.join(root, DATA)
 const OUT = arg('out', null); if (!OUT) { console.error('--out <dir>'); process.exit(2) }
@@ -26,10 +26,10 @@ for (const f of walk(path.join(D, 'snapshots')).filter(f => f.endsWith('.json'))
     const rel = `map/snapshots/${s.time.slice(0, 10)}/${s.time.slice(11, 13)}${s.time.slice(14, 16)}-${s.area}.json`
     n.snapshots += write(rel, {
       by: BY, updated: h.updated, t: s.time, area: s.area, label: 'fact',
-      source: s.request.url, read_utc: s.request.read, licence: 'OpenSky Network: research and non-commercial use; cite ' + OPENSKY_CITE,
-      method: `One OpenSky /states/all snapshot, airline callsigns only (every other aircraft dropped: ${s.other_aircraft_dropped} this time). id is the callsign (never the ICAO24 address). alt_ft from barometric altitude (geometric when absent), gs_kt from ground speed; on the ground: alt_ft null. Made from ${path.relative(root, f)}, which holds the request's status, bytes and sha256.`,
+      source: s.request.url, read_utc: s.request.read, licence: ADSBLOL_CITE,
+      method: `One adsb.lol snapshot, airline callsigns only (every other aircraft dropped: ${s.other_aircraft_dropped} this time). id is the callsign (never the ICAO24 address or a registration). alt_ft: barometric altitude, geometric when absent, null on the ground. Made from ${path.relative(root, f)}, which holds the request's status, bytes and sha256.`,
       not_a_warning_service: NOT_WARNING,
-      aircraft: s.aircraft.map(a => ({ id: a.callsign, callsign: a.callsign, airline: a.airline, lat: a.lat, lon: a.lon, track_deg: a.track_deg == null ? null : Math.round(a.track_deg), alt_ft: a.on_ground ? null : r1((a.baro_alt_m ?? a.geo_alt_m) == null ? null : (a.baro_alt_m ?? a.geo_alt_m) * 3.28084), gs_kt: a.ground_speed_ms == null ? null : r1(a.ground_speed_ms * 1.94384), vrate_fpm: a.vertical_rate_ms == null ? null : r1(a.vertical_rate_ms * 196.85), on_ground: a.on_ground, time_position: a.time_position }))
+      aircraft: s.aircraft.map(a => ({ id: a.callsign, callsign: a.callsign, airline: a.airline, type: a.type, lat: a.lat, lon: a.lon, track_deg: a.track_deg == null ? null : Math.round(a.track_deg), alt_ft: a.on_ground ? null : (a.baro_alt_ft ?? a.geo_alt_ft), gs_kt: a.ground_speed_kt == null ? null : Math.round(a.ground_speed_kt), vrate_fpm: a.vertical_rate_fpm, on_ground: a.on_ground, position_age_s: a.position_age_s }))
     })
   }
 }
