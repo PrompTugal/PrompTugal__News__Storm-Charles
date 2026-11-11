@@ -121,7 +121,12 @@ async function flights() {
         }
         out.push({
             icao: ap.icao, iata: ap.iata, name: ap.name,
-            departures_today: depOk ? {
+            // Thin coverage: OpenSky saw (almost) no departure of any operator over 3+ covered hours. A zero there is the receivers' gap, not a closed airport: say so, draw nothing.
+            departures_today: depOk && list.length < 3 && (covHour == null || new Date(now).getUTCHours() - covHour >= 3) ? {
+                label: 'none', count: null, covered_from: covFrom ? iso(covFrom) : null, departures_seen_any_operator: list.length,
+                note: `OpenSky's receivers detected ${list.length} departure${list.length === 1 ? '' : 's'} of any operator here ${covFrom ? 'since ' + iso(covFrom).slice(11, 16) + ' UTC' : 'in our readings today'}: its coverage at this airport is too thin to count. Not zero: unknown.`,
+                source: `https://opensky-network.org/api/flights/departure?airport=${ap.icao}`, read: dep.rec.read, sha256: dep.rec.sha256,
+            } : depOk ? {
                 label: 'fact', what: 'airline departures OpenSky\'s receivers detected leaving this airport, in our readings today (OpenSky\'s anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)',
                 count: airline, covered_from: covFrom ? iso(covFrom) : null,
                 by_hour_utc: hours.slice(0, new Date(now).getUTCHours() + 1).map((n, h) => covHour == null || h < covHour ? null : n),
