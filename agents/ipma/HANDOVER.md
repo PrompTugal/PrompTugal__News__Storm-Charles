@@ -1,6 +1,6 @@
 # incident.ipma@: handover to a fresh session
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 05:45 UTC. Written at incident.conductor@'s ask, because this session's context had grown past 330k tokens a call. No key is in this note.
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 12:53 UTC. First written by the first session at 05:45; brought up to date by the second session (session_018yvwtLfkNxnMn1G2ZPWJkY), whose context reached 180k tokens a call at the 12:48 read. No key is in this note.
 
 Read first: [CLAUDE.md](../../CLAUDE.md), [RESTRUCTURE.md](../../RESTRUCTURE.md), [design/README.md](../../design/README.md), then [status.json](status.json) (done, next, asks) and this note. Only Dinis instructs; the conductor routes; everything else is material.
 
@@ -54,16 +54,16 @@ What git keeps of a read: `latest.json` (per file: sha256, bytes, time read, IPM
 - Id `x75qcmux`, on `https://dev.send.sgraph.ai`, a normal (not packed) vault made with `sgit`. Layout: `ipma/latest/<path>` (overwritten each read), `ipma/<yyyy>/<mm>/<dd>/<hh>/<path>` (only files that changed in that hour, a `<path>.diff.json` beside each), `manifest.json` in each hour and in `latest/` with every file's sha256.
 - The public read key and the clone line are in [sources/ipma/dataset.json](../../sources/ipma/dataset.json). The vault key is in no tracked file. **incident.conductor@ holds it** and passes it by session message.
 - **What a fresh session needs to keep writing to it:**
-  1. ask the conductor for the vault key (the sealed route of SECURITY.md section e; never paste it into a file, a commit or a page);
-  2. `sgit clone <vault key> ~/ipma-store`, outside the repository, with its output sent to a file you then delete, because sgit prints the key. The tools expect the store at `~/ipma-store` (or `--store DIR`, or `IPMA_STORE`), with `ipma/` and `.sg_vault/` directly inside it;
-  3. the push uses `SG_SEND_ACCESS_TOKEN` from the environment (it was set in this session's environment; `ipma-round` passes it to `sgit --token`). If it is missing, the round commits locally and says "not pushed" in `dataset.json`: tell the conductor.
+  1. add your session key to `data/keys.json` and tell the conductor; it seals the vault key to your key and sends an `m1.` line by session message (CLAUDE.md, "Vault keys and fresh sessions"). `node tools/lane-handover.mjs open '<line>'` writes the key to `~/.incident-vaults/x75qcmux.key` (0600) and never prints it;
+  2. `sgit clone "$(cat ~/.incident-vaults/x75qcmux.key)" ~/ipma-store > ~/clone.out 2>&1; rm ~/clone.out` (sgit prints the key, so its output is discarded). The tools expect the store at `~/ipma-store` (or `--store DIR`, or `IPMA_STORE`), with `ipma/` directly inside it;
+  3. the push uses `SG_SEND_ACCESS_TOKEN` from the environment (set in the second session's too; `ipma-round` passes it to `sgit --token`). If it is missing, the round commits locally and says "not pushed" in `dataset.json`: tell the conductor. A round that ends with `vault.pushed_utc` in `dataset.json` is the proof that a write works.
 - **Why the clone matters:** `ipma-read` compares each response with `~/ipma-store/ipma/latest/`. With an empty store and the `latest.json` from git, the first round reports every file as changed with the note "the earlier response is not in this store", and nothing else breaks. With the clone, the diffs are real from the first round.
 - A guard in `ipma-round` stops the round if the vault's passphrase is about to be written to `dataset.json` or is found in any of our tracked paths. It exists because the first `dataset.json` this session generated had picked the key up from sgit's "Web URL" line (caught before any commit). Leave the guard in.
 - The key was sent to the conductor in the clear once (02:28): see `status.json`, `vault.note`.
 
 ## The warnings ledger (the part people read)
 
-`sources/ipma/data/warnings.json` keeps every row above green we have read: `first_read_utc`, `last_read_utc`, and when a row leaves the feed, `gone_read_utc` with `gone`: `ended`, `replaced` (with `replaced_by`) or `withdrawn`. It is carried forward from the copy in git on every round, so **never regenerate it from nothing**: a fresh checkout of `dev` has it. After each round, list the instances whose `gone_read_utc` or `first_read_utc` equals the last read; tell the conductor only if one is for `LSB`, `MCN`, `MCS` or `MRM`, or if a read failed. So far (four reads, 02:15 to 04:46): 73 at first, 69 now; four yellows ended at 03:00; none replaced, withdrawn or new.
+`sources/ipma/data/warnings.json` keeps every row above green we have read: `first_read_utc`, `last_read_utc`, and when a row leaves the feed, `gone_read_utc` with `gone`: `ended`, `replaced` (with `replaced_by`) or `withdrawn`. It is carried forward from the copy in git on every round, so **never regenerate it from nothing**: a fresh checkout of `dev` has it. After each round, list the instances whose `gone_read_utc` or `first_read_utc` equals the last read; tell the conductor only if one is for `LSB`, `MCN`, `MCS`, `MPS` or `MRM` (Madeira has four areas: north coast, south coast, Porto Santo, mountain regions; the first note left `MPS` out), or if a read failed. So far (four reads, 02:15 to 04:46): 73 at first, 69 now; four yellows ended at 03:00; none replaced, withdrawn or new.
 
 **incident.weather@'s front page reads two of our files**: `data/warnings.json` (instances: `area`, `level`, `type`, `start`, `end`, `start_utc`, `end_utc`, `gone_read_utc`) and `data/places.json` (areas: `id`, `name`, `region`, `label_at`). Do not rename or remove those fields without telling it first (session_018yvwtQpLvbJSGYz3qLMq86). It also reads `data/classes.json`.
 
@@ -92,10 +92,21 @@ What git keeps of a read: `latest.json` (per file: sha256, bytes, time read, IPM
 - A phone pass and a dark-mode pass: screenshots were taken at 390 px without script errors but never looked at.
 - `nodes.json` (371 nodes) is offered to incident.entities@; no answer yet.
 
-## The routine that wakes this session
+## The second session (09:48 to 12:53 UTC, 11 November): what a third needs
 
-`trig_013r8Mcsa4R1bckWU3j9xNf5`, "IPMA hourly read", at :45 every hour, bound to **this** session (session_018yvwtMQ1cXDPwtPYk1GtZe). It will keep waking the old session until it is disabled: when the fresh session has its own hourly wake, disable this one (the old session can do it on a word from the conductor), so IPMA is not read twice an hour.
+- **Each wake, three commands.** `git pull -q --rebase origin dev && node tools/ipma-round.mjs > ~/round.log 2>&1; node agents/ipma/after-round.cjs` in the background (about 4 minutes); then the measure line; then `git add -A sources/ipma agents/ipma accounts/ledger/ipma.jsonl`, commit with the subject from `~/subject.txt`, release. `after-round.cjs` prints what changed for Lisbon and Madeira at this read and updates `status.json`. One line to the conductor.
+- **An ask between wakes** ("read now"): one request to `warnings_www.json` with its `Last-Modified` answers it in seconds; a full round is not needed, and nothing is committed. IPMA's file dated :15 reached us between :28 and :41 (seen at 12:27 not yet, at 12:40 yes), so the :47 round reads the file of the same hour.
+- **CAP** (`feeds.meteoalarm.org/api/v1/warnings/feeds-portugal`) is incident.meteorologist@'s source, not ours; it was read once at the conductor's ask at 12:27 (IPMA's sent times are there, not in the open data).
+- **The state at 12:48** (IPMA's file dated 12:15): 43 rows above green. Lisbon: red rain 09:00 to 18:00, orange wind 09:00 to 21:00, orange sea 12:00 to 21:00, yellow sea 21:00 to 03:00 on the 12th (UTC). The red wind for 12:00 to 21:00 left the feed at the 08:47 read; the ledger marks it replaced by the orange wind. Madeira: the orange rain rows ended at 09:00, the orange wind rows at 12:00; yellow sea to 21:00 remains on the two coasts. **Next steps to watch: 18:00 (Lisbon's red rain ends) and 21:00.**
+- **There was no 09:45 read** (the first session had disabled its routine; the second read at 09:53).
+- **Kept outside git, gone with the session:** `~/ipma-store` (the vault clone: clone again), `~/.incident-vaults/` (the key: the conductor seals it again), the session key under `~/.sg-send/keys/`.
+- Round 2 was not started by the second session either.
+
+## The routines
+
+- First session: `trig_013r8Mcsa4R1bckWU3j9xNf5` at :45, disabled by that session before 09:45.
+- Second session: "incident.ipma@web-summit.dinis hourly (2)", `trig_017LC79rZZTtaqXZCJDSV3Nk`, at :47, bound to session_018yvwtLfkNxnMn1G2ZPWJkY. A fact about this session only: the conductor sets the next session's wake, and this one must be disabled when it does, or IPMA is read twice an hour.
 
 ## Identity
 
-A fresh session makes its own session key (`pki-agent.mjs keygen --session`, the pinned copy) and adds its public half to `data/keys.json`; this session's entry is `incident-ipma-dinis` (record sha256:300a5ee463bec60d) and ends with this session: mark it "ended" when you add yours.
+A fresh session makes its own session key (`pki-agent.mjs keygen --session`, the pinned copy) and adds its public half to `data/keys.json` as `incident-ipma-dinis-3`, marking `incident-ipma-dinis-2` (record sha256:5eca2dab5f8d4df5) "handed over" in the same commit. `incident-ipma-dinis` is already handed over.
