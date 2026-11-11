@@ -10,7 +10,8 @@
         '<div class="g-layout"><div class="o-stage"><svg id="o-svg" viewBox="0 0 760 560" role="img" aria-label="The kinds of thing and the verbs between them"></svg></div>' +
         '<aside class="g-panel" id="o-panel" aria-live="polite"><p class="meta">Press a kind of thing or a verb.</p></aside></div>' +
         '<h2 class="sec" id="verbs">The verbs</h2><div class="q-out" tabindex="0"><table id="o-verbs"></table></div>' +
-        '<h2 class="sec" id="kinds">The kinds of thing</h2><div class="q-out" tabindex="0"><table id="o-kinds"></table></div>'
+        '<h2 class="sec" id="kinds">The kinds of thing</h2><div class="q-out" tabindex="0"><table id="o-kinds"></table></div>' +
+        '<h2 class="sec" id="crossings">Where it joins the other graphs</h2><p class="meta" id="o-xnote"></p><div class="q-out" tabindex="0"><table id="o-cross"></table></div>'
     const $ = id => document.getElementById(id), S = (tag, a = {}, kids = []) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(a)) e.setAttribute(k, v); for (const k of [].concat(kids)) e.append(k); return e }
     let G = null
     const pos = {}; TYPES.forEach((t, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / TYPES.length; pos[t] = [380 + 270 * Math.cos(a), 280 + 215 * Math.sin(a)] })
@@ -65,6 +66,12 @@
         const kt = $('o-kinds'); kt.append(el('thead', {}, el('tr', {}, ['kind', 'drawn as', 'what it is', 'built from', 'in the graph'].map(h => el('th', { scope: 'col', text: h })))))
         const kb = el('tbody'); kt.append(kb)
         for (const t of TYPES) { const o = G.ont.types[t], a = el('a', { href: '#' + t, id: t }, [D.mark({ type: t }), ' ' + t]); a.addEventListener('click', () => showType(t)); kb.append(el('tr', {}, [el('td', {}, [a]), el('td', { text: SHAPE_WORD[SHAPE[t]] }), el('td', { text: o.what }), el('td', { text: o.from }), el('td', { class: 'num', text: String(count.type(t)) })])) }
+        // the crossings: verbs that leave this graph for another world's own page (joined, never copied)
+        const X = G.ont.crossings || { verbs: {}, worlds: {} }, xn = {}; for (const list of G.cross.values()) for (const c of list) xn[c.rel] = (xn[c.rel] || 0) + 1
+        $('o-xnote').textContent = X.about || ''
+        const xt = $('o-cross'); xt.append(el('thead', {}, el('tr', {}, ['verb', 'inverse', 'from', 'to (another graph)', 'meaning', 'now'].map(h => el('th', { scope: 'col', text: h })))))
+        const xb = el('tbody'); xt.append(xb)
+        for (const [v, r] of Object.entries(X.verbs)) { const w = X.worlds[r.to] || {}; xb.append(el('tr', {}, [el('td', { text: v }), el('td', { text: r.inverse }), el('td', { text: r.from.length === TYPES.length ? 'any kind' : r.from.join(', ') }), el('td', {}, [el('a', { href: BASE + r.to + '/index.html', text: r.to + '/' }), ': ' + (w.what || '')]), el('td', { text: r.what }), el('td', { class: 'num', text: v === 'kept-as' ? Object.values(G.captures).filter(c => c.evidence).length + ' addresses' : String(xn[v] || 0) })])) }
     }
     (async () => {
         try {

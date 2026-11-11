@@ -1,7 +1,7 @@
 {
   "agent": "incident.graph@web-summit.dinis",
-  "state": "handing over: agents/graph/HANDOVER.md written at the conductor's word (03:33); this session pushes nothing after this commit; a fresh graph session takes the row",
-  "last_wake": "2026-11-11T03:34Z",
+  "state": "the second graph session (from 03:35): the graph is joined to sources/, meteorology/ and evidence/ by crossings (data/graph/crossings.json: 120 edges, 71 addresses ending at our capture); the pages show them",
+  "last_wake": "2026-11-11T03:40Z",
   "done": [
     "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
     "data/graph/ontology.json and its README: 8 kinds of thing, 8 relations, every node and edge with label, source, read, origin",
@@ -24,17 +24,36 @@
     "round 1 of Dinis's 02:10 direction: /app/graph/ starts from a question (eight presets, or 'everything about' any actor, place or agent within 1 to 3 steps; each answer has an address), filters by kind, verb and label, three layouts, press a node to read it and bring in its links, hide it or open it as its own graph, press a link to read the link; the answer as a list with every item linked; /app/graph/ontology/ draws the ontology (verbs with inverses); /app/graph/lead-times/ is its own page with every cell a link",
     "the verb issued-as (inverse issue-of): a warning the researcher recorded, or one in force for Lisbon, linked to IPMA's own CAP message for it; found missing by incident.studio@",
     "round 2: /data/query/ opens on The answers: every saved question run in the tab and shown as a small chart (bars of one column with zero marked, dots along time, or a count), its first rows, the SQL, a link to the answer (#a-<id>) and a link that opens it in the console; chart specs live with the queries in data/graph/queries.json; ids agreed with incident.entities@ (its index joined: nodes carry `entity`); the verb issued-as",
-    "02:51 wake: storm.json was back at 198 KB (51 decisions, 79 actors, entity links), so the timeline's rows moved to storm-signals.json: four parts now, and both pages follow storm.json's `more` list; a node with an entity opens in the designer's side panel (stormPanel.openItem) from its pane"
+    "02:51 wake: storm.json was back at 198 KB (51 decisions, 79 actors, entity links), so the timeline's rows moved to storm-signals.json: four parts now, and both pages follow storm.json's `more` list; a node with an entity opens in the designer's side panel (stormPanel.openItem) from its pane",
+    "03:35 to 03:40, the second session: its own session key (the first marked handed over); rebuilt on the 03:29 data; FIXED: every entity link from the graph was broken since the entities index changed its ids (the builder wrote entities/body/body/ipma; 141 nodes); JOINED, not copied: ontology.json `crossings` (4 worlds, 4 verbs each with an inverse), built into data/graph/crossings.json: 40 registered-as (34 fact through the entity id, 6 by host), 2 in-lineage-as, 78 issued-through (a warning to IPMA's warning service in the supply chain), and for 85 of the 151 addresses the graph was read at, our capture (71) or why there is none (14); the node and link panes show 'our capture' before the outside address and 'in the other graphs'; the ontology page has the crossings table. Tested in a headless browser on a local build: no page error, every crossing link opens a page that exists"
   ],
   "next": [
-    "a fresh session: read agents/graph/HANDOVER.md, then take 'Unfinished, in order' from it"
+    "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
+    "the media watch's keyed facts as edges (research/media/facts.json joined to node ids)",
+    "sizes: storm.json 158 KB, coverage 125 KB, storm-sources 124 KB, crossings 84 KB of 256 (issued-through repeats its reason 78 times: move to one reason per verb if it grows)",
+    "meteorology: once its nodes carry `entity`, the two in-lineage-as crossings become facts and more bodies join (16 of its 18 bodies have no actor here: they decided nothing in this incident)",
+    "check the pages on the live site, not only the local build"
   ],
   "asks": [
     "Dinis: git history (earlier commits and CI tags) still holds a private person's post address in data/graph/; nothing here rewrites history. The conductor has it for you.",
     "incident.meteorologist@: in weather/cap.json, most `replaces` point at messages no longer in the feed, so was_level and was_starts are empty for 10 of 11 updates; keeping each message once seen (as warnings.json keeps history) would fill them.",
+    "ontologist@'s schemas were not readable from this session (its repository is not attached).",
     "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels); a `channel` field on each node in decisions/graph.json would remove the list.",
-    "ontologist@'s schemas were not readable from this session (its repository is not attached)."
+    "incident.sources@: nine `node` ids in sources/registry.json (source:amn, source:carris, source:cp, source:dnoticias, source:lusoponte, source:metro, source:rede-expressos, source:ttsl, source:wikipedia) are already ids in the graph for a single address (the researcher's list), so one id names two things; the graph crosses to sources/<id> and does not use `node`. Proposal: `node` becomes sources/<id>, as entities-lib already writes it. Also sources/wikipedia/ has no page in the build (45 of 46 do), and meteoalarm's entity body/meteoalarm has no `graph` id (the graph has only actor:host:feeds.meteoalarm.org).",
+    "incident.meteorology@: an `entity` field on each node that is the same thing as an entity (as sources/registry.json has) would make the join a fact instead of a match by host.",
+    "incident.entities@: agree the pivot: the entity id is the one id; every other world names it (`entity`), and the entity names the graph's node (`graph`). The graph's side is in data/graph/ontology.json, crossings."
   ],
-  "updated": "2026-11-11T03:34Z",
-  "by": "incident.graph@web-summit.dinis"
+  "updated": "2026-11-11T03:40Z",
+  "by": "incident.graph@web-summit.dinis",
+  "session": "session_018yvwtQWC1x97qFht5qyLfF",
+  "not_in_the_pack": [
+    "start.md says state.json and the role pack are on the live site or in _site after a build; the start prompt said to read them from library/pack/ (not in the clone): the build is needed first",
+    "accounts/measure.md gives the commit as several -m paragraphs (Agent, Issue, For each its own), which start.md says breaks the trailers: the two pages disagree",
+    "HANDOVER.md and the conductor say mark the old key 'ended'; start.md and data/keys.json use 'handed over' (3 entries): 'handed over' was used",
+    "the entities index now writes ids as <type>/<slug>; the hand-over still described entity as <type>/<id> built by the graph: every entity link from the graph was broken and nothing said so (no check opens the links a page makes)",
+    "'Wayback' in the brief means our own evidence/ captures, not the Internet Archive: only evidence/README.md's title says so",
+    "playwright is installed globally but an ES module outside its folder cannot import it: createRequire('/')('playwright') works",
+    "the pack's neighbour list did not name incident.archivist@ (evidence/) or incident.meteorology@, whose files the graph now reads",
+    "sources/registry.json `node` ids collide with the graph's Source ids (nine): no file says who owns the id space source:*"
+  ]
 }

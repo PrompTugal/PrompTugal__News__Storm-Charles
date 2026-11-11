@@ -126,6 +126,10 @@
         if (x.effect_from) add('in effect', `${D.when(x.effect_from)}${x.effect_to ? ' to ' + D.when(x.effect_to) : ''}`)
         add('status', x.status && x.type !== 'Signal' ? x.status.replace('_', ' ') : null)
         if (x.lead_minutes != null) add('lead time', D.dur(x.lead_minutes / 60) + ' between them')
+        // the last step before the outside address: our own dated capture of it (evidence/, Wayback), or why there is none
+        const cap = G.captures[x.source]
+        if (cap && cap.evidence) add('our capture', el('span', {}, [el('a', { href: BASE + 'evidence/' + cap.evidence + '.html', text: 'our latest capture of this address, ' + D.when(cap.last_read) }), cap.captures > 1 ? ` (${cap.captures} captures${cap.changes ? ', ' + cap.changes + ' changed' : ''})` : '']))
+        else if (cap && cap.why) add('our capture', 'none: ' + cap.why)
         add('source', D.outLink(x.source))
         add('read', D.when(x.read) + (x.read_by ? ', by ' + x.read_by.split(' ')[0] : ''))
         const oh = D.originHref(BASE, G.storm, x.origin); add('built from', oh ? el('a', { href: oh, text: x.origin.replace(/^\//, '') }) : null)
@@ -148,6 +152,13 @@
         if (n.entity) add('its page', el('a', { href: BASE + 'entities/' + n.entity + '.html', text: 'everything about it (entities/' + n.entity + ')' }))
         add('address', el('a', { href: D.nodeHref(BASE, n.id), text: 'a link to this node' })); p.append(dl)
         if (row.note) p.append(el('p', { class: 'meta', text: row.note }))
+        // where it continues in the site's other graphs (joined, not copied): each crossing is a verb, and opens that world's own page
+        const xs = G.cross.get(n.id) || []
+        if (xs.length) {
+            const ul = el('ul')
+            for (const c of xs) ul.append(el('li', {}, [el('b', { text: c.rel }), ' ', el('a', { href: BASE + c.href, text: c.name }), el('small', {}, [` ${c.to.split('/')[0]} · `, el('span', { class: 'lab ' + c.label, text: c.label }), ` · read ${D.when(c.read)}`, c.why ? ' · ' + c.why : ''])]))
+            p.append(el('details', { open: '' }, [el('summary', {}, [el('b', { text: 'in the other graphs' }), ` ${xs.length}`]), ul, el('p', { class: 'meta' }, [el('a', { href: 'ontology/index.html#crossings', text: 'How the graphs are joined' })])]))
+        }
         // its links, by verb: outgoing with the verb, incoming with the verb's inverse
         const groups = new Map(), put = (verb, e, other) => (groups.get(verb) || groups.set(verb, []).get(verb)).push([e, other])
         for (const e of G.out.get(n.id) || []) put(e.rel, e, e.to)

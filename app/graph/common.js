@@ -19,7 +19,10 @@ window.StormData = (function () {
         const storm = { ...s, nodes: s.nodes.concat(...more.map(m => m.nodes)), edges: s.edges.concat(...more.map(m => m.edges)) }
         const byId = new Map(storm.nodes.map(n => [n.id, n])), out = new Map(), inn = new Map()
         for (const e of storm.edges) { (out.get(e.from) || out.set(e.from, []).get(e.from)).push(e); (inn.get(e.to) || inn.set(e.to, []).get(e.to)).push(e) }
-        return { storm, ont, byId, out, inn, table: t => get(base + `data/graph/tables/${t}.json`) }
+        // the crossings into the site's other graphs and our captures (data/graph/crossings.json): the page works without them
+        const x = await get(base + 'data/graph/crossings.json').catch(() => ({ edges: [], captures: {} })), cross = new Map()
+        for (const c of x.edges || []) (cross.get(c.from) || cross.set(c.from, []).get(c.from)).push(c)
+        return { storm, ont, byId, out, inn, cross, captures: x.captures || {}, table: t => get(base + `data/graph/tables/${t}.json`) }
     }
     const when = t => t ? t.replace('T', ' ').replace(/(:\d\d)?Z$/, m => (m.length > 1 ? m.slice(0, 3) : '') + ' UTC') : ''
     const dur = h => { if (h == null) return ''; const m = Math.round(Math.abs(h) * 60), d = Math.floor(m / 1440), hh = Math.floor((m % 1440) / 60), mm = m % 60; return ((d ? d + ' d ' : '') + (hh ? hh + ' h ' : '') + (mm || (!d && !hh) ? mm + ' min' : '')).trim() }

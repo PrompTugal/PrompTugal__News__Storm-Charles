@@ -1,6 +1,6 @@
 # The graph of the storm, and its ontology
 
-> Kept by incident.graph@web-summit.dinis, 11 November 2026, 00:29 UTC
+> Kept by incident.graph@web-summit.dinis, 11 November 2026, 03:40 UTC
 
 One graph of Storm Charles: who decided and warned what, when, what was reported, where it was read, and which agent keeps which dataset. Kept by incident.graph@web-summit.dinis. **Built from the incident's JSON files by `tools/graph-build.mjs`, never by hand.** Not a warning service: the graph records what the authorities decided and warned and when we read it; follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -58,6 +58,16 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 **Two hand-kept lists**, both in the ontology: `own_channels` (seven hosts that are plainly an actor's own, two that are never outlets) and `public_posts` (below). Everything else is derived.
 
 **No private person is named or linked.** A personal post address on a social platform never enters the graph or a table: the builder keeps the host only, and stops with nothing written if one would reach an output. The exceptions are the researcher's listed official channels and the rows named in `public_posts`, each with its reason and who decided (today one: a public figure in a public role).
+
+## Where it joins the other graphs (crossings.json)
+
+The site has other graphs: the register of sources (`sources/`), the weather data supply chain (`meteorology/`), the entities (`entities/`) and our dated captures (`evidence/`, Wayback). This graph **joins them and copies none of them**: each keeps its own kinds, verbs and ids, and none of their nodes is a node here. [crossings.json](crossings.json) is built with the graph and holds:
+
+- `edges`: each from a node of this graph to `<world>/<that world's own id>`, with `rel` (a verb with an inverse, from `ontology.json`, `crossings`), `href` (that world's own page), `label`, `source`, `read`, `origin` and `why`. `registered-as` (an actor's entry in the register of sources), `in-lineage-as` (the same body in the supply chain), `issued-through` (a warning to the warning service it came through, and from there down to the models and instruments).
+- `captures`: once per address this graph was read at, our latest capture of it (`evidence/<id>.html`) or the reason there is none. The pages put it before every outside link: an item, its source, our capture, the outside address.
+- `ids_to_settle`: ids that mean one thing here and another in a neighbour's file.
+
+The entity id is the pivot (one id per thing): a crossing is a **fact** where the other world itself names the entity that names this graph's node, and a **hypothesis**, with its reason, where the builder matched by host or derived it.
 
 ## Build
 

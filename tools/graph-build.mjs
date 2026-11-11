@@ -295,10 +295,11 @@ for (const n of [...nodes.values()].filter(n => n.type === 'Source')) { const a 
 
 // ---------------------------------------------------------------- one thing, one id: the entity pages (incident.entities@)
 // entities/index.json lists { id, type, name, also, graph } where graph is this graph's node id for the same thing.
-// A node that has an entity carries entity: "<type>/<id>"; its page is entities/<type>/<id>.html. Agreed 11 Nov, 02:15.
+// A node that has an entity carries entity: the entity's own id ("<type>/<slug>", as the index writes it); its page is
+// entities/<that id>.html. Agreed 11 Nov, 02:15. (Until 03:40 the type was written twice and the link led nowhere.)
 const ENT = opt('entities/index.json')
 let entityLinks = 0
-for (const x of (ENT ? (ENT.entities || ENT.items || ENT.nodes || (Array.isArray(ENT) ? ENT : [])) : [])) { const n = x && x.graph && nodes.get(x.graph); if (n && x.type && x.id) { n.entity = `${x.type}/${x.id}`; entityLinks++ } }
+for (const x of (ENT ? (ENT.entities || ENT.items || ENT.nodes || (Array.isArray(ENT) ? ENT : [])) : [])) { const n = x && x.graph && nodes.get(x.graph); if (n && x.type && x.id) { n.entity = String(x.id).includes('/') ? x.id : `${x.type}/${x.id}`; entityLinks++ } }
 
 // ---------------------------------------------------------------- degree, order, the graph file
 const deg = new Map(); for (const e of edges.values()) { deg.set(e.from, (deg.get(e.from) || 0) + 1); deg.set(e.to, (deg.get(e.to) || 0) + 1) }
@@ -397,6 +398,69 @@ for (const [name, [about, rows]] of Object.entries(TABLES)) {
     out[`data/graph/tables/${name}.json`] = JSON.stringify({ about: `${about} Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.`, table: name, incident: incident.id, by: 'incident.graph@web-summit.dinis', updated: asOf, as_of: asOf, columns: Object.keys(rows[0] || {}), count: rows.length, rows: '@@ROWS@@' }, null, 1).replace('"@@ROWS@@"', () => lines(rows)) + '\n'
 }
 
+// ---------------------------------------------------------------- the crossings: joined, not copied (ontology.json, crossings)
+// The other graphs of the site keep their own kinds, verbs and ids; none of their nodes is a node here. A crossing is a
+// named edge (with its inverse) from a node of this graph to "<world>/<its own id>", opened on that world's own page.
+const XV = (ONT.crossings || {}).verbs || {}, XW = (ONT.crossings || {}).worlds || {}
+const cross = []
+const crossing = c => {
+    const v = XV[c.rel], a = nodes.get(c.from)
+    if (!v) problems.push(`crossing ${c.rel}: not in the ontology`); else if (!a || !v.from.includes(a.type)) problems.push(`crossing ${c.rel}:${c.from}: not allowed from here`); else if (!c.to.startsWith(v.to + '/')) problems.push(`crossing ${c.rel}:${c.from}: must end in ${v.to}/`)
+    for (const f of ['label', 'source', 'read', 'origin', 'href', 'name']) if (!c[f]) problems.push(`crossing ${c.rel}:${c.from}>${c.to}: no ${f}`)
+    if (!https(c.source) || !LABELS.has(c.label)) problems.push(`crossing ${c.rel}:${c.from}>${c.to}: source or label`)
+    cross.push(c)
+}
+const actorByHosts = hs => { for (const h0 of hs || []) { const h = String(h0).replace(/^www\./, ''); const a = actorOfHost(h) || (nodes.has(derivedActor(h)) ? derivedActor(h) : null); if (a) return [a, h] } return [null, null] }
+// sources/: the register of outside bodies. Its entry names an entity; the entity names this graph's node.
+const REG = opt('sources/registry.json'), entGraph = new Map(((ENT && ENT.nodes) || []).filter(x => x.graph).map(x => [x.id, x.graph]))
+const regCollide = []
+if (REG) REG.sources.forEach((r, i) => {
+    if (r.node && nodes.has(r.node)) regCollide.push(r.node)
+    const declared = r.entity && nodes.has(entGraph.get(r.entity)) ? entGraph.get(r.entity) : null
+    const [byHost, h] = declared ? [null, null] : actorByHosts(r.hosts)
+    const from = declared || byHost; if (!from) return
+    crossing({ from, rel: 'registered-as', to: 'sources/' + r.id, name: r.name, href: `sources/${r.page || r.id + '/index.html'}`, label: declared ? 'fact' : 'hypothesis', why: declared ? `the register names the entity ${r.entity}, and the entity names this node` : `matched by host: ${h} is one of the register's hosts for this body`, source: fileUrl('sources/registry.json'), read: toZ(REG.updated), origin: `/sources/registry.json#/sources/${i}` })
+})
+// meteorology/: the weather data supply chain. A body there and an actor here are joined by the host of the body's address;
+// a warning goes through the one warning service its body issues alone (a service two bodies issue is nobody's own).
+const M_BODY = opt('meteorology/nodes/body.json'), M_SVC = opt('meteorology/nodes/warning-service.json'), M_ISS = opt('meteorology/edges/issues.json')
+const lineageOf = new Map()
+if (M_BODY) M_BODY.nodes.forEach((b, i) => {
+    const [a, h] = actorByHosts([host(b.url)]); if (!a || lineageOf.has(a)) return
+    lineageOf.set(a, b.id)
+    crossing({ from: a, rel: 'in-lineage-as', to: 'meteorology/' + b.id, name: b.name, href: `meteorology/nodes/${b.id}.html`, label: 'hypothesis', why: `matched by host: the body's address there is on ${h}, this actor's own channel`, source: fileUrl('meteorology/nodes/body.json'), read: toZ(M_BODY.updated), origin: `/meteorology/nodes/body.json#/nodes/${i}` })
+})
+if (M_ISS && M_SVC) {
+    const issuers = new Map(); for (const e of M_ISS.edges) issuers.set(e.to, (issuers.get(e.to) || 0) + 1)
+    const svcName = new Map(M_SVC.nodes.map(s => [s.id, s.name]))
+    const own = new Map(); M_ISS.edges.forEach((e, i) => { if (issuers.get(e.to) === 1 && e.state === 'stated' && svcName.has(e.to)) (own.get(e.from) || own.set(e.from, []).get(e.from)).push([e, i]) })
+    for (const e of edges.values()) if (e.rel === 'warns') {
+        const svc = own.get(lineageOf.get(e.from)); if (!svc || svc.length !== 1) continue
+        const [x, i] = svc[0]
+        crossing({ from: e.to, rel: 'issued-through', to: 'meteorology/' + x.to, name: svcName.get(x.to), href: `meteorology/nodes/${x.to}.html`, label: 'hypothesis', why: `${nodes.get(e.from).name} warns this, and in the supply chain ${x.from} issues one warning service of its own (stated on the page read)`, source: https(x.source) ? x.source : fileUrl('meteorology/edges/issues.json'), read: toZ(x.read_utc || M_ISS.updated), origin: `/meteorology/edges/issues.json#/edges/${i}` })
+    }
+}
+// evidence/: our dated captures. Once per address this graph was read at: the capture, or why there is none.
+const EVI = opt('evidence/index.json'), EVR = opt('evidence/rows.json')
+const captures = {}
+if (EVI) {
+    const used = new Set(); for (const x of [...nodes.values(), ...edges.values()]) { if (https(x.source)) used.add(x.source); if (https(x.url)) used.add(x.url) }
+    for (const a of EVI.addresses) if (used.has(a.url) && a.latest) captures[a.url] = { evidence: a.latest, captures: (a.captures || []).length, first_read: a.first_read, last_read: a.last_read, changes: a.changes || 0, shown: !!a.shown }
+    for (const list of Object.values((EVR && EVR.rows) || {})) for (const r of list) if (used.has(r.url) && !captures[r.url] && !r.evidence && r.why) captures[r.url] = { evidence: null, why: r.why }
+}
+if (ONT.crossings) {
+    cross.sort((a, b) => (a.rel + a.from + a.to).localeCompare(b.rel + b.from + b.to))
+    const cap = Object.keys(captures).sort()
+    out['data/graph/crossings.json'] = JSON.stringify({
+        about: `Where the graph of ${incident.title} joins the site's other graphs, without copying them: the register of sources (sources/), the weather data supply chain (meteorology/) and our dated captures (evidence/, Wayback). Each edge runs from a node of data/graph/storm.json to "<world>/<that world's own id>", with the page to open (href, relative to the site), a label, a source, the time read, where it was built from, and why. "captures" holds, once per address this graph was read at, our latest capture of it (evidence/<id>.html) or the reason there is none. The verbs and their inverses: data/graph/ontology.json, crossings. Built by tools/graph-build.mjs, never by hand. Not a warning service: follow IPMA and ANEPC.`,
+        incident: incident.id, ontology: 'data/graph/ontology.json#/crossings', by: 'incident.graph@web-summit.dinis', updated: asOf, as_of: asOf, built_by: 'tools/graph-build.mjs',
+        worlds: XW, verbs: Object.fromEntries(Object.entries(XV).map(([k, v]) => [k, v.inverse])),
+        counts: { edges: cross.length, by_verb: count(cross, c => c.rel), by_label: count(cross, c => c.label), addresses_captured: cap.filter(u => captures[u].evidence).length, addresses_not_captured_with_reason: cap.filter(u => !captures[u].evidence).length },
+        ids_to_settle: regCollide.length ? { what: 'These ids mean a body in sources/registry.json (`node`) and a single address in this graph: two things, one id. This graph crosses to sources/<id> and does not use the register\'s `node`.', ids: regCollide.sort() } : undefined,
+        edges: '@@X@@', captures: '@@C@@'
+    }, null, 1).replace('"@@X@@"', () => lines(cross)).replace('"@@C@@"', () => '{\n' + cap.map(u => JSON.stringify(u) + ': ' + JSON.stringify(captures[u])).join(',\n') + '\n}') + '\n'
+}
+
 // the last check: no personal post address and no fediverse handle in anything about to be written
 for (const [rel, txt] of Object.entries(out)) {
     for (const u of txt.match(/https:\/\/[^\s"'<>\\)]+/g) || []) if (personalPost(u)) problems.push(`${rel}: a personal post address would be written (${new URL(u).hostname}): withheld by rule, or name the row in ontology.json public_posts with who decided`)
@@ -411,5 +475,5 @@ for (const [rel, txt] of Object.entries(out)) {
 }
 // with --out the queries go too, so the served folder is whole even if the build's copy ran before a change
 if (OUT_DIR) fs.copyFileSync(path.join(ROOT, 'data/graph/queries.json'), path.join(OUT_DIR, 'data/graph/queries.json'))
-console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${SIGS.size} nodes in storm-signals.json, ${SRC.size} in storm-sources.json, ${ELSE.size} in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; ${entityLinks} node(s) linked to an entity page; ${withheld} personal address(es) withheld; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
+console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${SIGS.size} nodes in storm-signals.json, ${SRC.size} in storm-sources.json, ${ELSE.size} in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; ${entityLinks} node(s) linked to an entity page; ${cross.length} crossing(s), ${Object.values(captures).filter(c => c.evidence).length} address(es) with a capture; ${withheld} personal address(es) withheld; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
 if (CHECK && stale) process.exit(1)
