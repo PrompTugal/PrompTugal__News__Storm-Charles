@@ -103,10 +103,12 @@
       var o = open.filter(function (w) { return w.type === ty }), c = cur.filter(function (w) { return w.type === ty })
       var oLive = o.filter(function (w) { return T(w.end_utc) > t }), cLive = c.filter(function (w) { return T(w.end_utc) > t })
       var same = oLive.length === cLive.length && oLive.every(function (w) { return cLive.some(function (x) { return key(x) === key(w) }) })
-      var capSent = Math.max.apply(0, cLive.map(function (w) { return T(w.sent_utc) }).concat([0])), openSent = Math.max.apply(0, o.map(function (w) { return ok(w.sent_utc) ? T(w.sent_utc) : 0 }).concat([0]))
-      if (same || !cLive.length || !(capSent > openSent)) { list = list.concat(o); return }
+      // the newest standing CAP message counts even after its window has run: once it has ended, an older open-data entry must not come back
+      var capSent = Math.max.apply(0, c.map(function (w) { return T(w.sent_utc) }).concat([0])), openSent = Math.max.apply(0, o.map(function (w) { return ok(w.sent_utc) ? T(w.sent_utc) : 0 }).concat([0]))
+      if (same || !(capSent > openSent)) { list = list.concat(o); return }
+      var cPast = c.filter(function (w) { return T(w.end_utc) <= t && T(w.sent_utc) === capSent }).sort(function (a, b) { return T(b.end_utc) - T(a.end_utc) })
       list = list.concat(o.filter(function (w) { return T(w.end_utc) <= t }), cLive)
-      out.differ.push({ type: ty, shown: cLive, open: oLive.filter(function (w) { return !cLive.some(function (x) { return key(x) === key(w) }) }), sent: capSent })
+      out.differ.push({ type: ty, shown: cLive, ended: cLive.length ? null : cPast[0] || null, open: oLive.filter(function (w) { return !cLive.some(function (x) { return key(x) === key(w) }) }), sent: capSent })
     })
     out.list = list
     return out
@@ -117,7 +119,7 @@
     var ch = channels(t); if (!ch.differ.length) return ''
     var span = function (w) { return lvl(w.level) + ' ' + when(w.start_utc, t) + ' to ' + when(w.end_utc, t) }
     return '<div class="wxc-differ" role="note"><p class="wxc-eyebrow">IPMA\'s two channels differ ' + lbl('fact') + '</p>' + ch.differ.map(function (d) {
-      return '<p><b>' + esc(EN[d.type] || d.type) + '.</b> IPMA\'s newest message, sent ' + when(d.sent, t) + ' UTC, says ' + d.shown.map(span).join(', ') + (d.shown[0] && d.shown[0].text_pt ? ': <span lang="pt">' + esc(String(d.shown[0].text_pt).replace(/\.\s*$/, '')) + '</span>' : '') + '. ' +
+      return '<p><b>' + esc(EN[d.type] || d.type) + '.</b> IPMA\'s newest message, sent ' + when(d.sent, t) + ' UTC, ' + (d.shown.length ? 'says ' + d.shown.map(span).join(', ') : d.ended ? 'ended at ' + when(d.ended.end_utc, t) : 'lists nothing still to run') + (d.shown[0] && d.shown[0].text_pt ? ': <span lang="pt">' + esc(String(d.shown[0].text_pt).replace(/\.\s*$/, '')) + '</span>' : '') + '. ' +
         (d.open.length ? 'IPMA\'s open-data feed, read ' + when((D.warn || {}).read_utc, t) + ' UTC, still lists ' + d.open.map(span).join(', ') + '.' : 'IPMA\'s open-data feed, read ' + when((D.warn || {}).read_utc, t) + ' UTC, does not list it.') + '</p>'
     }).join('') + '<p class="meta">Both are IPMA\'s. This page shows the newest message by the time IPMA sent it; it does not choose a level of its own. ' + prov('cap', 'IPMA\'s messages (CAP, via MeteoAlarm)', (D.cap || {}).read_utc) + ' · ' + prov('warn', 'IPMA\'s open-data feed', (D.warn || {}).read_utc) + '</p></div>'
   }
