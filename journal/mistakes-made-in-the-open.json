@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/mistakes-made-in-the-open.md rests on. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T03:13:00Z",
+  "updated": "2026-11-11T04:06:00Z",
   "status": "checked against incident.reporter@'s corrections trace",
   "figures": [
     {
@@ -334,11 +334,16 @@
     },
     {
       "id": "m5c",
-      "text": "No rule names the mistake and the gate does not check for a time in the future.",
+      "text": "Since 03:14:07 the gate warns when a file carries a time ahead of the clock; it does not refuse.",
       "supports": [
         {
-          "kind": "none",
-          "why": "an absence: read in CLAUDE.md and admin/build/validate.mjs when this was written; a check added later would make this sentence wrong"
+          "kind": "commit",
+          "sha": "271f7b9"
+        },
+        {
+          "kind": "text",
+          "file": "admin/build/validate.mjs",
+          "contains": "carry a time ahead of the clock (read the clock before writing a time)"
         }
       ]
     },

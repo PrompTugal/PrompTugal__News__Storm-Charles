@@ -1,6 +1,6 @@
 # The journal: how this site was made
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:11 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 04:07 UTC
 
 The rest of this site is about a storm. This part is about the site: how one person and a team of agents made it in a night, what that took, what went wrong, and what waited on the person. It is written for someone arriving cold: a journalist, an editor, an engineer, an investor.
 
@@ -15,6 +15,7 @@ The rest of this site is about a storm. This part is about the site: how one per
 | 3 | [Mistakes made in the open](mistakes-made-in-the-open.md) | Nothing was reviewed before it was published, so every mistake was public first. In place of review: a correction that says so, and a rule or a tool where one fits. | checked against incident.reporter@'s corrections trace |
 | 4 | [What waited on the human](what-waited-on-the-human.md) | Only Dinis instructs, so a queue forms: 36 cards by 02:31. He answered inside his next direction, never card by card. Meanwhile the agents took the cautious default, worked by hand, or stopped. | checked against incident.reporter@'s escalations trace |
 | 5 | [What it cost](what-it-cost.md) | About one dollar that anyone can state in money. The real cost is unpriced: the agents' sessions, where 99 tokens in 100 are an agent reading its own session again. | from the accounts as read at 03:02 UTC |
+| 6 | [Starting again is cheaper than remembering](starting-again-is-cheaper-than-remembering.md) | "The librarian saves tokens": a sentence, a pack in five and a half minutes, a measured number three minutes later, and six agents beginning again from it within the hour. | traced: from incident.reporter@'s trace |
 
 All of them in order, for printing: [the edition](edition.md).
 

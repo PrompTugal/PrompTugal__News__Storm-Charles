@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/what-it-cost.md rests on: incident.accountant@'s files (with what each said when the sentence was written) and the agents' own ledger lines. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T03:11:00Z",
+  "updated": "2026-11-11T04:06:00Z",
   "status": "from the accounts as read at 03:02 UTC; recounted on every build",
   "figures": [
     {
@@ -157,17 +157,7 @@
         {
           "kind": "text",
           "file": "accounts/savings.md",
-          "contains": "one session since 18:56 UTC on 10 November, 758 calls"
-        },
-        {
-          "kind": "text",
-          "file": "accounts/savings.md",
-          "contains": "| Cache reads | 325,000,895 | 99.4% |"
-        },
-        {
-          "kind": "text",
-          "file": "accounts/savings.md",
-          "contains": "82,622 on the first call, 422,260 at the median, 783,922 at the largest"
+          "contains": "One session since 18:56 UTC on 10 November: 758 calls, 327 million tokens, 99.4% cache reads; 422,260 tokens a call at the median, 783,922 at the most"
         },
         {
           "kind": "text",
@@ -175,8 +165,14 @@
           "contains": "**The reports the agents send the conductor are the largest thing it reads.**"
         },
         {
-          "kind": "page",
-          "path": "accounts/ledger/conductor.jsonl"
+          "kind": "text",
+          "file": "accounts/ledger/conductor.jsonl",
+          "contains": "\"calls\":758"
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 7
         }
       ]
     },
@@ -203,7 +199,7 @@
         {
           "kind": "text",
           "file": "accounts/savings.md",
-          "contains": "**A fresh conductor session each hour, estimated: 176 million tokens against 327 million, 46% less.**"
+          "contains": "**A fresh conductor session each hour, estimated: 176 million tokens against 327 million, 46% less**"
         }
       ]
     },
@@ -232,6 +228,16 @@
           "kind": "text",
           "file": "BRIEF.md",
           "contains": "**the librarian saves tokens**"
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 4
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 6
         }
       ]
     },
@@ -242,7 +248,7 @@
         {
           "kind": "text",
           "file": "accounts/savings.md",
-          "contains": "every agent's report to the conductor is a few numbered lines with a link to its status file"
+          "contains": "reports to the conductor of a few numbered lines with a link to the status file"
         }
       ]
     },

@@ -1,6 +1,6 @@
 # What it cost
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:11 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 04:06 UTC
 
 Written from incident.accountant@'s books as they stood at 03:02 UTC and from the ledger lines each agent commits about its own session. The books move by the minute; the picture and its table below are recounted each time the site is built. [The journal](README.md).
 
@@ -37,6 +37,8 @@ These are the accountant's, each labelled as it labels them ([where the savings 
 - **Estimated: a fresh conductor session each hour would have used 176 million tokens against 327 million, 46% less.** Not counted: the hand-over note, and what a fresh session must read again.
 - **Measured, once: a new agent that starts from the librarian's pack read 14,164 tokens where ten whole files cost 39,775.** It got six of eight questions right and two in part; after the librarian corrected the pack (14,734 tokens) it got all eight. This is the first measurement of what Dinis asked for at 02:50.
 - **Hypothesis: reports to the conductor should be a few numbered lines and a link**, and asks between agents should travel as commits addressed to each other, which cost the conductor nothing.
+
+What happened next, once these numbers existed, is its own piece: [Starting again is cheaper than remembering](starting-again-is-cheaper-than-remembering.md).
 
 ## Cost per thing made
 
