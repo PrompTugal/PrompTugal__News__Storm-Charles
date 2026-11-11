@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-11T22:10:31Z",
+  "updated": "2026-11-11T22:15:51Z",
   "label": "fact",
   "about": "The wind the airports reported (METAR) during Storm Charles, from 10 November 18:00 UTC, resolved onto each runway end as headwind (negative: tailwind) and crosswind, joined per hour to the airline departures OpenSky's receivers saw and to ANA's own cancellation figures. Facts: the METAR (IPMA's observations) and the counts as their sources give them; the components are arithmetic on the METAR (wind speed x cos/sin of the angle between wind and runway, true degrees). Hypothesis, labelled where it appears: which runway end the wind favours (air traffic control chooses the runway, and pilots and airlines apply their own limits; we state none). Departures are a floor: what OpenSky saw, only for hours its rolling window covered.",
   "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
@@ -3379,14 +3379,14 @@
   ],
   "sources": [
     {
-      "what": "runway headings, degrees true (OurAirports, public domain)",
+      "what": "runway headings, degrees true (OurAirports, public domain; read once, cached)",
       "url": "https://davidmegginson.github.io/ourairports-data/runways.csv",
       "status": 200,
       "bytes": 3974055,
       "sha256": "a39ff4071b14c0425dc4a76600f164830bde78814f8af8f9d3b7fd230dd601a9",
-      "read": "2026-11-11T22:10:27Z",
-      "response_ms": 257,
-      "raw": "flights vault: ourairports/2026-11-11/2026-11-11T221027Z-a39ff4071b14.body"
+      "read": "2026-11-11T22:13:10Z",
+      "response_ms": 314,
+      "raw": "flights vault: ourairports/2026-11-11/2026-11-11T221310Z-a39ff4071b14.body"
     },
     {
       "what": "METAR, IPMA's observations through the US NOAA Aviation Weather Center's public API (public domain)",
@@ -3394,9 +3394,9 @@
       "status": 200,
       "bytes": 112410,
       "sha256": "e9b29a14b4088d36629a324e342a413dfa2f0409926a0e6a8f9bf88c559fa2c1",
-      "read": "2026-11-11T22:10:27Z",
-      "response_ms": 4007,
-      "raw": "flights vault: awc-metar/2026-11-11/2026-11-11T221027Z-e9b29a14b408.body"
+      "read": "2026-11-11T22:15:50Z",
+      "response_ms": 289,
+      "raw": "flights vault: awc-metar/2026-11-11/2026-11-11T221550Z-e9b29a14b408.body"
     },
     {
       "path": "incidents/2026-11-10-storm-charles/data/transport/flights.json",
