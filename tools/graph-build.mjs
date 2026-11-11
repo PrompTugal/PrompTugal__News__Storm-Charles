@@ -281,6 +281,13 @@ for (const rel of walk(DATA).filter(f => f.endsWith('.json')).sort()) {
 // a source is produced by the actor whose channel it is
 for (const n of [...nodes.values()].filter(n => n.type === 'Source')) { const a = actorOfHost(n.host); if (a) edge({ from: n.id, to: a, rel: 'produced-by', label: 'fact', source: n.url, read: n.read, origin: n.origin }) }
 
+// ---------------------------------------------------------------- one thing, one id: the entity pages (incident.entities@)
+// entities/index.json lists { id, type, name, also, graph } where graph is this graph's node id for the same thing.
+// A node that has an entity carries entity: "<type>/<id>"; its page is entities/<type>/<id>.html. Agreed 11 Nov, 02:15.
+const ENT = opt('entities/index.json')
+let entityLinks = 0
+for (const x of (ENT ? (ENT.entities || ENT.items || ENT.nodes || (Array.isArray(ENT) ? ENT : [])) : [])) { const n = x && x.graph && nodes.get(x.graph); if (n && x.type && x.id) { n.entity = `${x.type}/${x.id}`; entityLinks++ } }
+
 // ---------------------------------------------------------------- degree, order, the graph file
 const deg = new Map(); for (const e of edges.values()) { deg.set(e.from, (deg.get(e.from) || 0) + 1); deg.set(e.to, (deg.get(e.to) || 0) + 1) }
 const N = [...nodes.values()].map(n => ({ ...n, degree: deg.get(n.id) || 0 })).sort((a, b) => a.id.localeCompare(b.id))
@@ -388,5 +395,5 @@ for (const [rel, txt] of Object.entries(out)) {
 }
 // with --out the queries go too, so the served folder is whole even if the build's copy ran before a change
 if (OUT_DIR) fs.copyFileSync(path.join(ROOT, 'data/graph/queries.json'), path.join(OUT_DIR, 'data/graph/queries.json'))
-console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${SRC.size} nodes in storm-sources.json, ${ELSE.size} in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; ${withheld} personal address(es) withheld; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
+console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${SRC.size} nodes in storm-sources.json, ${ELSE.size} in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; ${entityLinks} node(s) linked to an entity page; ${withheld} personal address(es) withheld; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
 if (CHECK && stale) process.exit(1)

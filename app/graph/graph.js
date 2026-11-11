@@ -143,6 +143,7 @@
         act('Hide it', () => { removed.add(n.id); apply() })
         p.append(acts)
         const dl = el('dl'), add = facts(dl, n)
+        if (n.entity) add('its page', el('a', { href: BASE + 'entities/' + n.entity + '.html', text: 'everything about it (entities/' + n.entity + ')' }))
         add('address', el('a', { href: D.nodeHref(BASE, n.id), text: 'a link to this node' })); p.append(dl)
         if (row.note) p.append(el('p', { class: 'meta', text: row.note }))
         // its links, by verb: outgoing with the verb, incoming with the verb's inverse
