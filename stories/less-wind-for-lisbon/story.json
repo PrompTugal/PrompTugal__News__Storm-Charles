@@ -2,13 +2,13 @@
   "about": "A story as a small graph: claims, each with its label, who said it, when, and the rows and data fields that support it. The page is generated from this file by tools/stories-build.mjs; nothing here is new reporting. See stories/grammar.md for the grammar.",
   "id": "less-wind-for-lisbon",
   "title": "Less wind for Lisbon?",
-  "standfirst": "Late on Tuesday the press began to report that Storm Charles would pass further south, with less wind for Lisbon. This is what IPMA has written, what one of its meteorologists said aloud, what the headlines say, what the models in the data room show, and what IPMA's warnings for Lisbon say at the last read.",
+  "standfirst": "Late on Tuesday the press began to report that Storm Charles would pass further south, with less wind for Lisbon. At 07:16 on Wednesday IPMA lowered Lisbon's wind warning from red to orange, with gusts up to 120 km/h still warned from 09:00; the red rain warning stands. This is what IPMA has written, what one of its meteorologists said aloud, what the headlines say, what the models in the data room show, and what IPMA's warnings for Lisbon say at the last read.",
   "state": "developing",
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T06:52Z",
-  "based_on_read_utc": "2026-11-11T06:25:17Z",
+  "updated": "2026-11-11T07:53Z",
+  "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first. Each is resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser when the page opens.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -61,7 +61,8 @@
       "claims": [
         "c4",
         "c5",
-        "c6"
+        "c6",
+        "c20"
       ]
     },
     {
@@ -103,7 +104,8 @@
         "h1",
         "h3",
         "h4",
-        "h2"
+        "h2",
+        "h5"
       ]
     },
     {
@@ -200,7 +202,7 @@
     },
     {
       "id": "c4",
-      "text": "IPMA sent the red wind warning for the Lisbon district on Tuesday at 07:18: Wednesday 12:00 to 21:00, \"Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos\".",
+      "text": "IPMA sent the red wind warning for the Lisbon district on Tuesday at 07:18: Wednesday 12:00 to 21:00, \"Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos\". It stood until Wednesday morning.",
       "label": "fact",
       "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
       "at_utc": "2026-11-10T07:18:40Z",
@@ -216,15 +218,15 @@
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "lisbon[type=Vento&level=red].text_pt",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261110071840.PO-01-1915].description_pt",
           "expect": "Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos."
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "lisbon[type=Vento&level=red].sent_utc",
-          "expect": "2026-11-10T07:18:40Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261110071840.PO-01-1915].sent_utc",
+          "expect": "2026-11-10T07:18:40+00:00"
         }
       ]
     },
@@ -260,33 +262,95 @@
     },
     {
       "id": "c6",
-      "text": "Since then IPMA has sent no message that lowers, shortens or lifts a Lisbon warning: the red wind warning is as it was sent at 07:18 on Tuesday.",
+      "text": "At 07:16:30 on Wednesday IPMA lowered Lisbon's wind warning from red to orange, and started it three hours earlier: orange, 09:00 to 21:00, \"Rajadas até 120 km/h\". The clause on 140 km/h in the most exposed places is gone. The message replaces the red one of Tuesday 07:18, and was sent 1 hour 44 minutes before the orange begins. The red rain warning is unchanged: 09:00 to 18:00.",
       "label": "fact",
-      "said_by": "IPMA's warnings, as read",
-      "read_utc": "2026-11-11T05:22:49Z",
+      "said_by": "IPMA, warnings (a CAP message through MeteoAlarm, PO-01-1932)",
+      "read_utc": "2026-11-11T07:38:35Z",
       "supports": [
         {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "lisbon[type=Vento&level=red].end_utc",
-          "expect": "2026-11-11T21:00:00Z"
+          "kind": "row",
+          "id": "s-1111T0738"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "lisbon_peak_level",
-          "expect": "red"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].event_pt",
+          "expect": "Aviso Laranja Vento"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].sent_utc",
+          "expect": "2026-11-11T07:16:30+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].onset_utc",
+          "expect": "2026-11-11T09:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].expires_utc",
+          "expect": "2026-11-11T21:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].description_pt",
+          "expect": "Rajadas até 120 km/h."
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
-          "field": "updates[written_utc=2026-11-11T00:40Z].official_facts.downgrade_or_window_change",
-          "expect": false
+          "field": "updates[written_utc=2026-11-11T07:45Z].lead_time",
+          "contains": [
+            "sent 1 h 44 min before the new orange begins"
+          ]
         },
         {
           "kind": "data",
-          "file": "research/weather-sites/rereads.json",
-          "field": "rereads[read=2026-11-11T01:29Z].unchanged_at_the_authorities[1].what"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "lisbon[type=Precipitação&level=red].start_utc",
+          "expect": "2026-11-11T09:00:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "lisbon[type=Precipitação&level=red].end_utc",
+          "expect": "2026-11-11T18:00:00Z"
+        }
+      ],
+      "at_utc": "2026-11-11T07:16:30Z"
+    },
+    {
+      "id": "c20",
+      "text": "IPMA's two channels did not agree when this was read: at 07:38 its open-data feed still listed the red wind warning for Lisbon, 22 minutes after the message that replaced it. On Tuesday night the same feed followed a changed warning at least two hours late. The list of warnings at the top of this page is drawn from that feed.",
+      "label": "fact",
+      "said_by": "IPMA's two feeds, as read by incident.meteorologist@web-summit.dinis",
+      "at_utc": "2026-11-11T07:38Z",
+      "read_utc": "2026-11-11T07:38:35Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0738"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "history[at_utc=2026-11-11T07:16:30Z].event",
+          "contains": [
+            "IPMA's open data still showed red wind at 07:38"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "history[at_utc=between 2026-11-10T23:22:52Z and 23:51:47Z].event",
+          "contains": [
+            "lagged the CAP messages by at least 2 h"
+          ]
         }
       ]
     },
@@ -631,7 +695,7 @@
     },
     {
       "id": "c18",
-      "text": "So the three models in the data room do not agree with each other: the strongest mean wind for Lisbon on Wednesday is 23.4, 58.3 or 18.7 km/h, at 20:00, 15:00 or 10:00, depending on which is read. None of these is a gust at an exposed place, which is what the warning's 120 km/h measures.",
+      "text": "So the three models in the data room do not agree with each other: the strongest mean wind for Lisbon on Wednesday is 23.4, 58.3 or 19.4 km/h, at 20:00, 15:00 or 10:00, depending on which is read. None of these is a gust at an exposed place, which is what the warning's 120 km/h measures.",
       "label": "evidence",
       "model": true,
       "derived": true,
@@ -689,7 +753,7 @@
     },
     {
       "id": "h2",
-      "text": "Its guidance for a headline changed with it: \"'less wind for Lisbon' is not supported; say the models disagree on which side the centre passes, and IPMA's red warnings for Lisbon stand\".",
+      "text": "Its guidance for a headline changed with it, and held until the warning was lowered (see the last sentence of this section): \"'less wind for Lisbon' is not supported; say the models disagree on which side the centre passes, and IPMA's red warnings for Lisbon stand\".",
       "label": "hypothesis",
       "confidence": "the analysis's own guidance, on low confidence about the side and medium about the timing",
       "said_by": "incident.meteorologist@web-summit.dinis (analysis; not IPMA's words)",
@@ -776,11 +840,11 @@
     },
     {
       "id": "g1",
-      "text": "Set side by side: the headline says \"menos vento em Lisboa\"; the warning in force for Lisbon says gusts up to 120 km/h, and 140 in the most exposed places, from 12:00 to 21:00 on Wednesday, and has not been changed since Tuesday at 07:18.",
+      "text": "Set side by side: the headline said \"menos vento em Lisboa\" on Tuesday night, when the warning in force said gusts up to 120 km/h, and 140 in the most exposed places, from 12:00 to 21:00 on Wednesday, unchanged since Tuesday at 07:18. Some seven hours after the headlines, IPMA lowered the level to orange and dropped the 140; the 120 km/h is still warned, from 09:00.",
       "label": "evidence",
       "derived": true,
       "said_by": "this desk, setting a headline beside a warning",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T07:38:35Z",
       "derived_from": [
         "c11",
         "c4",
@@ -805,16 +869,16 @@
     },
     {
       "id": "o1",
-      "text": "Nothing measured yet can test any of this: the red wind warning begins at 12:00 on Wednesday, and the observations we hold end before it.",
+      "text": "Nothing measured yet can test any of this: the orange wind warning and the red rain warning both begin at 09:00 on Wednesday, and the observations we hold end before it.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
       "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "lisbon[type=Vento&level=red].start_utc",
-          "expect": "2026-11-11T12:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].onset_utc",
+          "expect": "2026-11-11T09:00:00+00:00"
         },
         {
           "kind": "data",
@@ -893,11 +957,36 @@
           "field": "stations"
         }
       ]
+    },
+    {
+      "id": "h5",
+      "text": "Our meteorologist's reading of the change, written at 07:45: it is consistent with what IPMA's forecasters said on radio at 22:35 (the worst further south); IPMA now judges Lisbon's gusts at up to 120 km/h, not 140. In the analysis's words: \"Not a 'storm is over': orange means dangerous weather; red rain still stands 09:00-18:00.\" Its guidance for a headline is now: \"IPMA lowers Lisbon's wind warning to orange (gusts to 120 km/h, 09:00-21:00); the red rain warning (09:00-18:00) stands\".",
+      "label": "hypothesis",
+      "confidence": "an analysis of a fact; which side of Lisbon the centre passes is still unsettled in it",
+      "said_by": "incident.meteorologist@web-summit.dinis (analysis; not IPMA's words)",
+      "at_utc": "2026-11-11T07:45Z",
+      "read_utc": "2026-11-11T07:45Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T07:45Z].analysis",
+          "contains": [
+            "Not a 'storm is over': orange means dangerous weather; red rain still stands 09:00-18:00."
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T07:45Z].headline_guidance",
+          "expect": "IPMA lowers Lisbon's wind warning to orange (gusts to 120 km/h, 09:00-21:00); the red rain warning (09:00-18:00) stands"
+        }
+      ]
     }
   ],
   "not_known": [
     {
-      "text": "Whether IPMA will publish a communiqué no. 3, or change the red wind warning for Lisbon. A lowered or shortened Lisbon warning is the fact that would change the top of this story.",
+      "text": "Whether IPMA will publish a communiqué no. 3, or change Lisbon's warnings again: the wind warning was lowered to orange at 07:16 on Wednesday; the red rain warning stands. When IPMA's open-data feed will show the change.",
       "watch": "incidents/2026-11-10-storm-charles/data/weather/cap.json"
     },
     {
@@ -1027,6 +1116,23 @@
       "claims_added": [],
       "claims_changed": [
         "c16"
+      ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T07:53Z",
+      "what": "The top of the story changed. Before: IPMA had sent no message that lowered, shortened or lifted a Lisbon warning; red wind 12:00 to 21:00, gusts to 120 km/h and 140 in the most exposed places. Now: at 07:16:30 on Wednesday IPMA lowered the wind warning to orange, 09:00 to 21:00, gusts to 120 km/h (row s-1111T0738); red rain unchanged; IPMA's open-data feed still showed red wind at 07:38; the meteorologist's reading of 07:45 added. Supports for the red wind warning now point at the kept CAP message, since the replaced warning leaves the feed.",
+      "claims_added": [
+        "c20",
+        "h5"
+      ],
+      "claims_changed": [
+        "c4",
+        "c6",
+        "c18",
+        "g1",
+        "h2",
+        "o1"
       ],
       "by": "incident.stories@web-summit.dinis"
     }

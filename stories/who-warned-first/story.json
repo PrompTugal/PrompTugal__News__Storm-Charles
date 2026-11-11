@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:29Z",
-  "updated": "2026-11-11T05:48Z",
-  "based_on_read_utc": "2026-11-11T02:22:46Z",
+  "updated": "2026-11-11T07:53Z",
+  "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -139,11 +139,11 @@
     },
     {
       "id": "w4",
-      "text": "IPMA sent the red wind warning for Lisbon on Tuesday at 07:18:40, for Wednesday 12:00 to 21:00: 28.7 hours ahead.",
+      "text": "IPMA sent the red wind warning for Lisbon on Tuesday at 07:18:40, for Wednesday 12:00 to 21:00: 28.7 hours ahead. It stood just under 24 hours: at 07:16:30 on Wednesday IPMA replaced it with an orange wind warning from 09:00 to 21:00, sent 1 hour 44 minutes before that begins.",
       "label": "fact",
       "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
       "at_utc": "2026-11-10T07:18:40Z",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T07:38:35Z",
       "supports": [
         {
           "kind": "row",
@@ -155,15 +155,57 @@
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "lisbon[type=Vento&level=red].sent_utc",
-          "expect": "2026-11-10T07:18:40Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261110071840.PO-01-1915].sent_utc",
+          "expect": "2026-11-10T07:18:40+00:00"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
           "field": "updates[written_utc=2026-11-10T23:58Z].lead_times_revised[warning=red wind 12:00-21:00].lead_hours",
           "expect": 28.7
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0738"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].event_pt",
+          "expect": "Aviso Laranja Vento"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].sent_utc",
+          "expect": "2026-11-11T07:16:30+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].onset_utc",
+          "expect": "2026-11-11T09:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].expires_utc",
+          "expect": "2026-11-11T21:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].description_pt",
+          "expect": "Rajadas até 120 km/h."
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T07:45Z].lead_time",
+          "contains": [
+            "sent 1 h 44 min before the new orange begins"
+          ]
         }
       ]
     },
@@ -525,6 +567,15 @@
       "claims_added": [],
       "claims_changed": [
         "w13"
+      ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T07:53Z",
+      "what": "One sentence retold after IPMA lowered Lisbon's wind warning. Before: the red wind warning, sent Tuesday 07:18:40, 28.7 hours ahead. Now also: replaced at 07:16:30 on Wednesday by an orange warning from 09:00 (row s-1111T0738). The lead times counted to 12:00 elsewhere in this story are to the start the red warning had.",
+      "claims_added": [],
+      "claims_changed": [
+        "w4"
       ],
       "by": "incident.stories@web-summit.dinis"
     }

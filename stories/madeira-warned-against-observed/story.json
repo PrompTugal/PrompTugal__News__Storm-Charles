@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:31Z",
-  "updated": "2026-11-11T06:54Z",
-  "based_on_read_utc": "2026-11-11T06:25:17Z",
+  "updated": "2026-11-11T07:53Z",
+  "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for Madeira's areas, resolved from the data room when the page is built and read again in the reader's browser.",
     "title": "IPMA's red warnings for Madeira",
@@ -100,21 +100,21 @@
       "supports": [
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Precipitação&level=red].sent_utc",
-          "expect": "2026-11-10T06:14:54Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-10-1231].sent_utc",
+          "expect": "2026-11-10T06:14:54+00:00"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Precipitação&level=red].start_utc",
-          "expect": "2026-11-10T21:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-10-1231].onset_utc",
+          "expect": "2026-11-10T21:00:00+00:00"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MCS&type=Precipitação&level=red].sent_utc",
-          "expect": "2026-11-10T06:14:54Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-10-1232].sent_utc",
+          "expect": "2026-11-10T06:14:54+00:00"
         },
         {
           "kind": "edge",
@@ -132,15 +132,15 @@
       "supports": [
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MCN&type=Precipitação&level=red].sent_utc",
-          "expect": "2026-11-10T20:52:39Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110205239.MD-10-1237].sent_utc",
+          "expect": "2026-11-10T20:52:39+00:00"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MCN&type=Precipitação&level=red].start_utc",
-          "expect": "2026-11-10T21:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110205239.MD-10-1237].onset_utc",
+          "expect": "2026-11-10T21:00:00+00:00"
         }
       ]
     },
@@ -154,15 +154,13 @@
       "supports": [
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Vento&level=red].text_pt",
-          "expect": "Rajadas até 140 km/h."
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-01-668].onset_utc",
+          "expect": "2026-11-11T00:00:00+00:00"
         },
         {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Vento&level=red].start_utc",
-          "expect": "2026-11-11T00:00:00Z"
+          "kind": "row",
+          "id": "s-1111T0642"
         }
       ]
     },
@@ -192,21 +190,21 @@
     },
     {
       "id": "m6",
-      "text": "Measured: 232.1 mm of rain in six consecutive hourly values at IPMA's station Areeiro, the hours labelled 22:00 Tuesday to 03:00 Wednesday.",
+      "text": "Measured: 249.5 mm of rain in six consecutive hourly values at IPMA's station Areeiro, the hours labelled 01:00 to 06:00 on Wednesday: its largest six so far.",
       "label": "fact",
       "said_by": "IPMA, station observations (station 1210973)",
-      "at_utc": "2026-11-11T03:00Z",
-      "read_utc": "2026-11-11T06:25:17Z",
+      "at_utc": "2026-11-11T06:00Z",
+      "read_utc": "2026-11-11T07:38:35Z",
       "supports": [
         {
           "kind": "row",
-          "id": "s-1111T0146"
+          "id": "s-1111T0727"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
           "field": "stations[id=1210973].max_6h_rain.mm",
-          "expect": 232.1,
+          "expect": 249.5,
           "read_field": "stations[id=1210973].read_utc"
         },
         {
@@ -214,8 +212,8 @@
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
           "field": "stations[id=1210973].max_6h_rain.hours_labelled",
           "expect": [
-            "2026-11-10T22:00Z",
-            "2026-11-11T03:00Z"
+            "2026-11-11T01:00Z",
+            "2026-11-11T06:00Z"
           ],
           "read_field": "stations[id=1210973].read_utc"
         }
@@ -223,11 +221,11 @@
     },
     {
       "id": "m7",
-      "text": "Hour by hour at Areeiro: 29.7 mm (labelled 20:00), 47.6 (21:00), 44.7 (22:00), 25.4 (23:00), 33.5 (00:00), 49.6 (01:00), 30.0 (02:00), 48.9 (03:00), 33.7 (04:00) and 29.3 mm (05:00): 372.4 mm in ten hourly values. The hour labelled 06:00, the red window's last, is not in the data yet.",
+      "text": "Hour by hour at Areeiro: 29.7 mm (labelled 20:00), 47.6 (21:00), 44.7 (22:00), 25.4 (23:00), 33.5 (00:00), 49.6 (01:00), 30.0 (02:00), 48.9 (03:00), 33.7 (04:00), 29.3 (05:00), 58.0 (06:00) and 44.3 mm (07:00): 474.7 mm in twelve hourly values. The largest hour is the one labelled 06:00, the last of the red window, and the rain went on after it under the orange warning.",
       "label": "fact",
       "said_by": "IPMA, station observations (station 1210973)",
-      "at_utc": "2026-11-11T05:00Z",
-      "read_utc": "2026-11-11T06:25:17Z",
+      "at_utc": "2026-11-11T07:00Z",
+      "read_utc": "2026-11-11T07:38:35Z",
       "supports": [
         {
           "kind": "data",
@@ -302,7 +300,21 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
-          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T06:00Z]",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T06:00Z].rain_mm",
+          "expect": 58,
+          "read_field": "stations[id=1210973].read_utc"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T07:00Z].rain_mm",
+          "expect": 44.3,
+          "read_field": "stations[id=1210973].read_utc"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T08:00Z]",
           "note": "Not there at this read: when IPMA's next hour arrives the sentence is retold.",
           "absent": true
         }
@@ -310,11 +322,11 @@
     },
     {
       "id": "m8",
-      "text": "Four more stations measured over 100 mm in six hours: São Vicente 141.5, Santo da Serra 130.4, Pico do Areeiro 123.9 and Pico Alto 116.7 mm.",
+      "text": "Four more stations measured over 100 mm in six hours: São Vicente 141.5, Santo da Serra 130.4, Pico Alto 125.3 and Pico do Areeiro 123.9 mm.",
       "label": "fact",
       "said_by": "IPMA, station observations",
       "at_utc": "2026-11-11T03:00Z",
-      "read_utc": "2026-11-11T06:25:17Z",
+      "read_utc": "2026-11-11T07:38:35Z",
       "supports": [
         {
           "kind": "data",
@@ -338,17 +350,17 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
           "field": "stations[id=1210972].max_6h_rain.mm",
-          "expect": 116.7
+          "expect": 125.3
         }
       ]
     },
     {
       "id": "m9",
-      "text": "Against the communiqué: its figure was more than 100 mm in 12 hours in places, above all in the mountains. Five stations passed 100 mm in six hours, and Areeiro 232.1. The communiqué's wording has no upper figure, so the measurements fall inside its words, at more than twice its number in half its time at one station.",
+      "text": "Against the communiqué: its figure was more than 100 mm in 12 hours in places, above all in the mountains. Five stations passed 100 mm in six hours, and Areeiro 249.5. The communiqué's wording has no upper figure, so the measurements fall inside its words, at about two and a half times its number in half its time at one station.",
       "label": "fact",
       "derived": true,
       "said_by": "this desk, setting the communiqué beside the station values",
-      "read_utc": "2026-11-11T06:25:17Z",
+      "read_utc": "2026-11-11T07:38:35Z",
       "derived_from": [
         "m1",
         "m6",
@@ -515,51 +527,49 @@
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Precipitação&level=red].end_utc",
-          "expect": "2026-11-11T06:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-10-1231].expires_utc",
+          "expect": "2026-11-11T06:00:00+00:00"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MCS&type=Precipitação&level=red].end_utc",
-          "expect": "2026-11-11T06:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-10-1232].expires_utc",
+          "expect": "2026-11-11T06:00:00+00:00"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MCN&type=Precipitação&level=red].end_utc",
-          "expect": "2026-11-11T06:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110205239.MD-10-1237].expires_utc",
+          "expect": "2026-11-11T06:00:00+00:00"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Vento&level=red].end_utc",
-          "expect": "2026-11-11T06:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-01-668].expires_utc",
+          "expect": "2026-11-11T06:00:00+00:00"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Precipitação&level=orange].end_utc",
-          "expect": "2026-11-11T09:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-10-1234].expires_utc",
+          "expect": "2026-11-11T09:00:00+00:00"
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Vento&level=orange].end_utc",
-          "expect": "2026-11-11T12:00:00Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110061454.MD-01-667].expires_utc",
+          "expect": "2026-11-11T12:00:00+00:00"
         },
         {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Vento&level=orange].text_pt",
-          "expect": "Rajadas até 130 km/h."
+          "kind": "row",
+          "id": "s-1111T0642"
         }
       ]
     },
     {
       "id": "m15",
-      "text": "An IPMA meteorologist, speaking to Lusa (published 06:28), is reported as saying gusts above 130 km/h were measured in Madeira's highlands: \"tendo sido registado rajadas que ultrapassaram os 130 quilómetros por hora nas terras altas\", with no station and no time. The same article gives 130 km/h as the forecast of the orange warning to 12:00, and rain \"em seis horas que ultrapassaram os 240 milímetros\". This is the press reporting IPMA's spoken word, not read by us at IPMA: its public station feed carries no gusts, and its highest six-hour rain there is Areeiro's 232.1 mm. In the data we hold, the highest gust measured is the airport's 98 km/h at 02:30.",
+      "text": "An IPMA meteorologist, speaking to Lusa (published 06:28), is reported as saying gusts above 130 km/h were measured in Madeira's highlands: \"tendo sido registado rajadas que ultrapassaram os 130 quilómetros por hora nas terras altas\", with no station and no time. The same article gives 130 km/h as the forecast of the orange warning to 12:00, and rain \"em seis horas que ultrapassaram os 240 milímetros\". This is the press reporting IPMA's spoken word, not read by us at IPMA: its public station feed carries no gusts. The rain figure is now in IPMA's open data: Areeiro's 249.5 mm in the six hours labelled 01:00 to 06:00. In the data we hold, the highest gust measured is the airport's 98 km/h at 02:30.",
       "label": "evidence",
       "said_by": "an IPMA meteorologist, as reported by Lusa (carried by Notícias ao Minuto); not read at IPMA",
       "at_utc": "2026-11-11T06:28Z",
@@ -568,12 +578,6 @@
         {
           "kind": "row",
           "id": "s-1111T0642"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "red_and_orange_elsewhere.items[area=MRM&type=Vento&level=orange].text_pt",
-          "expect": "Rajadas até 130 km/h."
         },
         {
           "kind": "data",
@@ -590,8 +594,12 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
           "field": "stations[id=1210973].max_6h_rain.mm",
-          "expect": 232.1,
+          "expect": 249.5,
           "read_field": "stations[id=1210973].read_utc"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0727"
         }
       ],
       "qualified_by": [
@@ -603,7 +611,7 @@
   ],
   "not_known": [
     {
-      "text": "What fell in the hour labelled 06:00 on Wednesday, the last of the red rain window, and after it under the orange warning: the next reads.",
+      "text": "What falls after the hour labelled 07:00 on Wednesday, under the orange warning: the next reads.",
       "watch": "incidents/2026-11-10-storm-charles/data/weather/madeira.json"
     },
     {
@@ -626,10 +634,6 @@
     },
     {
       "text": "The regional civil protection service's own warnings: not in the data room."
-    },
-    {
-      "text": "Which station and which six hours gave the more than 240 mm the meteorologist is reported to have cited: the highest six-hour figure in IPMA's open data as we read it is 232.1 mm, at Areeiro.",
-      "watch": "incidents/2026-11-10-storm-charles/data/weather/madeira.json"
     }
   ],
   "record": [
@@ -733,6 +737,19 @@
       "what": "Sentence m15 corrected a second time, after row s-1111T0642 was changed again (Lusa's article read by incident.media@). Before: the headline's 130 km/h matches IPMA's warning figure, and whether IPMA gave the press a measured gust is not known. Now: an IPMA meteorologist is reported by Lusa as saying gusts above 130 km/h were measured in the highlands (no station, no time) and more than 240 mm fell in six hours; evidence, said aloud, not read by us at IPMA.",
       "claims_added": [],
       "claims_changed": [
+        "m15"
+      ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T07:53Z",
+      "what": "Retold on the read of 07:38:35 UTC (station hours to 07:00) and row s-1111T0727. Before: Areeiro's largest six hours 232.1 mm (22:00 to 03:00), 372.4 mm in ten values to 05:00; Pico Alto 116.7 mm. Now: 249.5 mm (01:00 to 06:00), 474.7 mm in twelve values to 07:00, with 58.0 mm in the red window's last hour and 44.3 mm in the hour after it; Pico Alto 125.3 mm. The 249.5 mm is the measurement behind the \"more than 240 mm\" the meteorologist gave Lusa. Supports for the ended red warnings now point at the kept CAP messages, since ended warnings leave IPMA's open data.",
+      "claims_added": [],
+      "claims_changed": [
+        "m6",
+        "m7",
+        "m8",
+        "m9",
         "m15"
       ],
       "by": "incident.stories@web-summit.dinis"

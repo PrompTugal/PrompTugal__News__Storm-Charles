@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:33Z",
-  "updated": "2026-11-11T03:28Z",
-  "based_on_read_utc": "2026-11-11T02:22:46Z",
+  "updated": "2026-11-11T07:53Z",
+  "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first: resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -53,7 +53,8 @@
       "claims": [
         "d11",
         "d12",
-        "d14"
+        "d14",
+        "d15"
       ]
     }
   ],
@@ -76,9 +77,9 @@
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "lisbon[type=Vento&level=red].sent_utc",
-          "expect": "2026-11-10T07:18:40Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261110071840.PO-01-1915].sent_utc",
+          "expect": "2026-11-10T07:18:40+00:00"
         }
       ]
     },
@@ -380,6 +381,56 @@
         "d8"
       ],
       "supports": []
+    },
+    {
+      "id": "d15",
+      "text": "The warning this story begins with did not last to its own start: at 07:16:30 on Wednesday, with Day 2 already called off, IPMA lowered Lisbon's wind warning from red to orange, from 09:00 to 21:00, with gusts up to 120 km/h. The red rain warning for 09:00 to 18:00 stands.",
+      "label": "fact",
+      "said_by": "IPMA, warnings (a CAP message through MeteoAlarm)",
+      "at_utc": "2026-11-11T07:16:30Z",
+      "read_utc": "2026-11-11T07:38:35Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0738"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].event_pt",
+          "expect": "Aviso Laranja Vento"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].sent_utc",
+          "expect": "2026-11-11T07:16:30+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].onset_utc",
+          "expect": "2026-11-11T09:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].expires_utc",
+          "expect": "2026-11-11T21:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].description_pt",
+          "expect": "Rajadas até 120 km/h."
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "lisbon[type=Precipitação&level=red].start_utc",
+          "expect": "2026-11-11T09:00:00Z"
+        }
+      ]
     }
   ],
   "not_known": [
@@ -429,6 +480,15 @@
       "what": "One sentence added from a new timeline row (s-1111T0255): Web Summit's schedule still lists Wednesday's sessions and the PITCH semi-final at 17:00 on 11 November, unmarked.",
       "claims_added": [
         "d14"
+      ],
+      "claims_changed": [],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T07:53Z",
+      "what": "One sentence added: IPMA lowered Lisbon's wind warning from red to orange at 07:16:30 on Wednesday (row s-1111T0738). Nothing in the telling of Tuesday changes.",
+      "claims_added": [
+        "d15"
       ],
       "claims_changed": [],
       "by": "incident.stories@web-summit.dinis"

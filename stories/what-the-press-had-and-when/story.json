@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T05:48Z",
-  "updated": "2026-11-11T05:48Z",
-  "based_on_read_utc": "2026-11-11T05:37:20Z",
+  "updated": "2026-11-11T07:53Z",
+  "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first: resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -123,6 +123,15 @@
         "p19"
       ],
       "claims_changed": [],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T07:53Z",
+      "what": "One sentence retold. Before: IPMA's red wind warning for Lisbon \"was not replaced\". Now: not replaced that night; lowered to orange at 07:16:30 on Wednesday (row s-1111T0738).",
+      "claims_added": [],
+      "claims_changed": [
+        "p15"
+      ],
       "by": "incident.stories@web-summit.dinis"
     }
   ],
@@ -845,7 +854,7 @@
     },
     {
       "id": "p15",
-      "text": "Two later headlines spoke of less wind: Expresso's, at 23:54 (\"muda trajetória para sul, com menos vento\"), and CNN Portugal's, at 00:31 (\"com menos intensidade\"). A headline is evidence of what the press reports, not of the weather: IPMA's red wind warning for Lisbon, sent at 07:18 on Tuesday, was not replaced.",
+      "text": "Two later headlines spoke of less wind: Expresso's, at 23:54 (\"muda trajetória para sul, com menos vento\"), and CNN Portugal's, at 00:31 (\"com menos intensidade\"). A headline is evidence of what the press reports, not of the weather: IPMA's red wind warning for Lisbon, sent at 07:18 on Tuesday, was not replaced that night. It was at 07:16:30 on Wednesday, some seven hours after those headlines: lowered to orange, with gusts up to 120 km/h still warned.",
       "label": "evidence",
       "said_by": "Expresso and CNN Portugal (headlines); IPMA (the warning)",
       "at_utc": "2026-11-11T00:31Z",
@@ -862,15 +871,49 @@
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
-          "field": "lisbon[type=Vento&level=red].sent_utc",
-          "expect": "2026-11-10T07:18:40Z"
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261110071840.PO-01-1915].sent_utc",
+          "expect": "2026-11-10T07:18:40+00:00"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0738"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].event_pt",
+          "expect": "Aviso Laranja Vento"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].sent_utc",
+          "expect": "2026-11-11T07:16:30+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].onset_utc",
+          "expect": "2026-11-11T09:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].expires_utc",
+          "expect": "2026-11-11T21:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].description_pt",
+          "expect": "Rajadas até 120 km/h."
         }
       ],
       "qualified_by": [
         "p14"
       ],
-      "read_utc": "2026-11-11T05:37:20Z"
+      "read_utc": "2026-11-11T07:38:35Z"
     },
     {
       "id": "p16",
