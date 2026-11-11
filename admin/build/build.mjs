@@ -118,6 +118,7 @@ ${active[1].length > 1 ? `<nav class="top" aria-label="${esc(active[0])}"><span 
 const MENU_MARK = (rel, u, title) => `<!--menu:${Buffer.from(JSON.stringify([rel, u, title])).toString('base64')}-->`
 const HAS_LENS_CSS = fs.existsSync(path.join(ROOT, 'app/lens/lens.css')), HAS_LENS_JS = fs.existsSync(path.join(ROOT, 'app/lens/lens.js'))
 const HAS_CI_REPO = fs.existsSync(path.join(ROOT, 'ci/repository.md'))
+const HAS_WELCOME = fs.existsSync(path.join(ROOT, 'welcome/index.md')) || fs.existsSync(path.join(ROOT, 'welcome/README.md'))   // the page for newcomers (incident.envoy@'s words; design/landing.md)
 const HAS_NEWS = fs.existsSync(path.join(ROOT, 'news/README.md')) || fs.existsSync(path.join(ROOT, 'news/index.md'))
 function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
     const u = rel === '404.html' ? '/' : up(rel)   // the 404 page is served at any depth: its links are absolute
@@ -137,7 +138,7 @@ ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 ${extraHead}
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b><span class="brand-org"> · PrompTugal</span></a><span class="live">Live</span><a class="ver" href="${u}${HAS_NEWS ? 'news/index.html' : 'version.json'}" title="This version: what changed, what was built, when">${esc(VERSION)}</a>${HAS_CI_REPO ? `<a class="ver" href="${u}ci/repository.html" title="The repository this site is built from: its map here, then GitHub">Repo</a>` : `<a class="ver repo" href="${REPO}" title="The repository this site is built from (leaves this site)">Repo</a>`}<button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
+<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b><span class="brand-org"> · PrompTugal</span></a><span class="live">Live</span>${HAS_WELCOME ? `<a class="ver new" href="${u}welcome/index.html" title="What this site is, for someone new to it">New here?</a>` : ''}<a class="ver" href="${u}${HAS_NEWS ? 'news/index.html' : 'version.json'}" title="This version: what changed, what was built, when">${esc(VERSION)}</a>${HAS_CI_REPO ? `<a class="ver" href="${u}ci/repository.html" title="The repository this site is built from: its map here, then GitHub">Repo</a>` : `<a class="ver repo" href="${REPO}" title="The repository this site is built from (leaves this site)">Repo</a>`}<button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
 ${MENU_MARK(rel, u, title)}</div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a><span class="nt-more"> and your local authorities. We aggregate public sources, each with its source and the time we read it</span>.</div></div>
 <!--crumbs--><div class="shell" id="shell"><div class="shell-main">

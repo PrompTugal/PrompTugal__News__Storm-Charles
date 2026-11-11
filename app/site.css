@@ -803,3 +803,46 @@ select, input, textarea, button { max-width: 100%; }
   /* a page name as long as its title stays on one line in the trail */
   .crumbs b { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
+
+/* ---- round 47 (incident.designer@): the features page for newcomers, from plain markdown. design/landing.md ----
+   The build escapes raw HTML, so the parts are shaped from what markdown gives: front matter `class: landing`, then
+   h1, the "Kept by" line, a lead paragraph, a paragraph of buttons (a bold link, an italic link), a list of figures;
+   then sections: h2, a paragraph, a list (cards) or a numbered list (steps), a quotation. */
+.doc article.landing { background: none; border: 0; box-shadow: none; padding: 4px 0 0; max-width: 1080px; margin: 0 auto; }
+.doc article.landing > * { max-width: none; }
+.doc article.landing > h1 { font-size: clamp(2.1rem, 5.4vw, 3.5rem); line-height: 1.06; letter-spacing: -.028em; max-width: 19ch; margin: 1.4rem 0 .7rem; text-wrap: balance; }
+.doc article.landing > h1 + blockquote { background: none; border: 0; border-radius: 0; padding: 0; margin: 0 0 1.1rem; font-size: 12.5px; color: var(--ink-2); max-height: none; -webkit-mask-image: none; mask-image: none; }
+.doc article.landing > h1 + blockquote + p { font-size: clamp(1.14rem, 2.1vw, 1.38rem); line-height: 1.45; max-width: 48ch; color: var(--ink); margin: 0 0 1.3rem; }
+.doc article.landing > p, .doc article.landing > h2 + p { max-width: 62ch; font-size: 1.06rem; }
+.landing p > strong > a, .landing p > em > a { display: inline-block; margin: 0 10px 10px 0; padding: 12px 20px; border-radius: 10px; border: 2px solid var(--link); font: 700 1rem/1.2 var(--sans); font-style: normal; text-decoration: none; }
+.landing p > strong > a { background: var(--link); color: var(--paper); }
+.landing p > em > a { background: transparent; color: var(--link); }
+.landing p > strong > a:hover, .landing p > em > a:hover { border-color: var(--ink); text-decoration: none; }
+.landing p > strong > a:hover { background: var(--ink); }
+.landing p > strong > a:focus-visible, .landing p > em > a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* the figures: the list before the first section */
+.doc article.landing > ul:not(h2 ~ ul) { list-style: none; margin: 2.2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px 28px; }
+.doc article.landing > ul:not(h2 ~ ul) > li { font-size: 13.5px; line-height: 1.4; color: var(--ink-2); margin: 0; }
+.doc article.landing > ul:not(h2 ~ ul) > li > strong:first-child { display: block; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.1; letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums; margin-bottom: 3px; }
+/* sections */
+.doc article.landing > h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); line-height: 1.15; letter-spacing: -.018em; margin: 3.4rem 0 .5rem; padding-top: 2.4rem; border-top: 1px solid var(--line); text-wrap: balance; }
+.doc article.landing > h2 ~ ul, .doc article.landing > ol { list-style: none; margin: 1.3rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.doc article.landing > h2 ~ ul > li, .doc article.landing > ol > li { margin: 0; padding: 18px 18px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.doc article.landing > h2 ~ ul > li > strong:first-child, .doc article.landing > ol > li > strong:first-child { display: block; font-size: 1.08rem; line-height: 1.25; color: var(--ink); margin-bottom: 5px; }
+.doc article.landing > h2 ~ ul > li a, .doc article.landing > ol > li a { font-weight: 600; }
+.doc article.landing > ol { counter-reset: lp; }
+.doc article.landing > ol > li { counter-increment: lp; border-top: 3px solid var(--link-2); border-radius: 0 0 12px 12px; }
+.doc article.landing > ol > li::before { content: counter(lp); display: block; font: 800 1.5rem/1 var(--sans); color: var(--link); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+.doc article.landing > blockquote:not(h1 + blockquote) { margin: 1.6rem 0; padding: 2px 0 2px 20px; border-left: 4px solid var(--link-2); border-radius: 0; background: none; font-size: clamp(1.2rem, 2.5vw, 1.6rem); line-height: 1.35; color: var(--ink); max-width: 34ch; }
+.doc article.landing > blockquote:not(h1 + blockquote) p + p { font-size: 13.5px; color: var(--ink-2); margin-top: .6em; }
+.doc article.landing > pre { max-width: 760px; }
+.doc article.landing > table { margin-top: 1.2rem; }
+@media (max-width: 640px) {
+  .landing p > strong > a, .landing p > em > a { display: block; text-align: center; margin-right: 0; }
+  .doc article.landing > ul:not(h2 ~ ul) { grid-template-columns: 1fr 1fr; }
+  .doc article.landing > h2 { margin-top: 2.4rem; padding-top: 1.8rem; }
+}
+@media print { .landing p > strong > a { background: none; color: var(--ink); } }
+/* the masthead's way in for someone new: shown when welcome/ exists (admin/build/build.mjs) */
+a.ver.new { font-family: var(--sans); text-transform: none; color: var(--link); border-color: var(--link-2); }
+@media (max-width: 640px) { header.top:has(a.ver.new) a.ver:not(.new) { display: none; } }   /* on a phone it takes the version chip's place (the version is in the panel) */

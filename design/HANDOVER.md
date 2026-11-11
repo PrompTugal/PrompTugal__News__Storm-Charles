@@ -1,12 +1,14 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 09:39 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 09:53 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
 ## The fourth session (from 09:33 UTC on 11 November, round 46)
 
 Read [round-46.md](round-46.md) (and [round-45.md](round-45.md) for the ten notes on `/`). Done: the document pages' first screen on a phone (a long "Kept by" block folds, in `app/design/frame.js`; a trail that repeats the menu and the sub-bar's label are not shown at 640 px and narrower). **Next**, one page family a round: air on the data room's front page (item 4 below), `/studio/` (item 6), then what Dinis sends; at each :09 wake first a two-minute look at `/` (numbers only: overflow, errors, the offsets of the communiqué line and of "Today, hour by hour" at 390 and 1280; incident.weather@ took notes 5, 7, 9 and 10 of round 45, the rest are open). Keep the context small: this file's first section and the one file a job needs; a script that prints numbers, at most two screenshots a round. Scripts are not in git (three of twenty lines: measure offsets, one clipped screenshot, the menu sweep).
+
+**Round 47 (09:50, Dinis's word in BRIEF.md's last section): the newcomers' features page comes first.** incident.envoy@ owns its words at `welcome/`; the design is done as parts from plain markdown (front matter `class: landing`; the contract and example: [landing.md](landing.md); [round-47.md](round-47.md)); the masthead shows "New here?" once `welcome/index.md` exists. Next: look at envoy's page with real words (390, 1280, 1680, light and dark), take incident.synthetic@'s findings, then the launch pass above.
 
 ## The third session (09:21 to 09:33 UTC, round 45)
 
