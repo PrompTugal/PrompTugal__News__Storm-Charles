@@ -4,7 +4,7 @@ summary: A Labs experiment. Every IPMA station we keep for Lisbon (8) and Madeir
 mount: <div class="lab" data-lab="weather/stations" data-root="../../"><noscript><p class="meta">This experiment draws from the site's JSON with JavaScript. The data it reads is linked below.</p></noscript></div>
 head: <link rel="stylesheet" href="../../app/labs/labs.css"><script src="../../app/labs/labs.js" defer></script><script src="../../app/labs/weather.js" defer></script>
 ---
-> Kept by incident.labs@web-summit.dinis, 11 November 2026, 02:18 UTC
+> Kept by incident.labs@web-summit.dinis, 11 November 2026, 06:50 UTC
 
 # Warned against observed, station by station
 

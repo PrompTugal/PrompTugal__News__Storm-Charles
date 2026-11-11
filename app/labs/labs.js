@@ -124,7 +124,7 @@
     panel = h('aside', { class: 'lab-panel', hidden: true, 'aria-live': 'polite', 'aria-label': 'This item' })
     add(el, [tools, body, h('p', { class: 'lab-hint meta', text: 'Every mark opens its row or edge with its source and the time it was read. Times are UTC (Lisbon is on UTC in November).' })]); body.appendChild(panel)
     var state = {}, data; for (var k0 in (def.init || {})) state[k0] = def.init[k0]
-    function draw() { stage.textContent = ''; try { def.draw({ el: stage, tools: tools, W: Math.max(320, stage.clientWidth), data: data, state: state, redraw: draw, phone: window.innerWidth < 700 }) } catch (e) { stage.appendChild(h('p', { class: 'meta', text: 'This experiment failed to draw: ' + e.message })); console.error(e) } }
+    function draw() { stage.textContent = ''; try { def.draw({ el: stage, tools: tools, W: Math.max(320, stage.clientWidth), data: data, state: state, redraw: draw, phone: window.innerWidth < 700 }); if (!stage.querySelector('details.wx-table')) stage.appendChild(twin(stage)) } catch (e) { stage.appendChild(h('p', { class: 'meta', text: 'This experiment failed to draw: ' + e.message })); console.error(e) } }
     load(def.needs).then(function (d) {
       data = d; tools.textContent = ''; if (def.setup) def.setup({ tools: tools, data: d, state: state, redraw: draw })
       draw()
@@ -152,6 +152,18 @@
   // the table twin of a chart (the design's .wx-table): the same marks as rows; a cell { text, item } opens the item like a mark does
   function table(summary, heads, rows) {
     return h('details', { class: 'wx-table lab-table' }, h('summary', { text: summary + ' (' + rows.length + ' rows)' }), h('table', {}, h('thead', {}, h('tr', {}, heads.map(function (x) { return h('th', { scope: 'col', text: x }) }))), h('tbody', {}, rows.map(function (r) { return h('tr', {}, r.map(function (c) { return h('td', {}, c && c.item ? mark(h('button', { type: 'button', class: 'lab-cell', text: c.text }), c.item) : (c == null ? '' : String(c))) })) }))))
+  }
+  // every chart's table twin, made from its own marks in the order drawn (one row per item); built when it is first opened
+  function twin(stage) {
+    var d = h('details', { class: 'wx-table lab-table' }, h('summary', { text: 'The same as a table: every mark on this view, one row each' }))
+    d.addEventListener('toggle', function () {
+      if (!d.open || d.querySelector('table')) return
+      var seen = {}, rows = []
+      stage.querySelectorAll('[data-item]').forEach(function (m) { var id = m.getAttribute('data-item'), it = items.get(id); if (!it || seen[id]) return; seen[id] = 1; rows.push([(it.approx ? 'about ' : '') + when(it.when), it.label || '', it.type || '', { text: String(it.title || id).slice(0, 160), item: id }, it.read ? dhm(T(it.read)) : 'not recorded']) })
+      d.appendChild(table('', ['When (UTC)', 'Label', 'What it is', 'The item', 'Read (UTC)'], rows).querySelector('table'))
+      d.querySelector('summary').textContent = 'The same as a table: ' + rows.length + ' items, in the order drawn'
+    })
+    return d
   }
   var LABELS = [['lg-fact', 'fact: read at the body that decides or warns'], ['lg-evidence', 'evidence: reported by others'], ['lg-hypothesis', 'hypothesis: our analysis'], ['lg-decision', 'a decision (diamond)']]
 

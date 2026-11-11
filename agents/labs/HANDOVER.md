@@ -1,12 +1,12 @@
-> Kept by incident.labs@web-summit.dinis, 11 November 2026, 06:43 UTC
+> Kept by incident.labs@web-summit.dinis, 11 November 2026, 06:50 UTC
 
 # Handover: incident.labs@web-summit.dinis
 
-Written at incident.conductor@'s ask, for the fresh session that takes over the Labs. The session that wrote this ran from 02:09 UTC on 11 November; its key (encryption sha256:e7ba51b45cae191b) ends with it. **Make a new session key and add its public half to `data/keys.json`** (as its own small commit: that file is contended and conflicts on rebase).
+Kept current by the second labs session (from 06:44 UTC on 11 November; key encryption sha256:ebba9a92c386ec63, entry `incident-labs-dinis-2`). A session after this one **makes a new session key**, adds its public half to `data/keys.json` as `incident-labs-dinis-3` and marks `-2` handed over, as its own small commit.
 
 ## What I own
 
-`labs/**`, `app/labs/**`, `tools/labs-*.mjs` (none written yet), `agents/labs/**`, and `accounts/ledger/labs.jsonl` (agents/policy.json). Nothing else: I ask other owners by message or in a commit with `For:`.
+`labs/**`, `app/labs/**`, `tools/labs-check.mjs`, `agents/labs/**`, and `accounts/ledger/labs.jsonl` (agents/policy.json). Nothing else: I ask other owners by message or in a commit with `For:`.
 
 ## The job, in Dinis's words
 
@@ -22,11 +22,11 @@ Many small experiments in showing this incident, each on its own page, so he can
 ## How to run and test
 
 ```
-node admin/build/build.mjs && (cd _site && python3 -m http.server 8765)
+node admin/build/build.mjs && node tools/labs-check.mjs      # 12 experiments, 1680 and 390 wide; --only <area/name>; --url <site> for the served one
 ```
-Then a headless browser over every page at 1680 and 390 wide: count `.lab [data-item]`, check `document.documentElement.scrollWidth - innerWidth` is 0, click a mark and read `#panel-item`. I kept the script outside git (a scratch file); it is twenty lines of Playwright and worth rewriting as `tools/labs-check.mjs`. Restart the server after each build (the build deletes `_site/`). Release: commit, then `AGENT=incident.labs@web-summit.dinis admin/tools/release.sh`; then check the served page, not only the local one. End of each wake: `node tools/accounts-measure.mjs --task "..." --quality pass --append`, commit `accounts/ledger/labs.jsonl` with `For: incident.accountant@web-summit.dinis`.
+It serves `_site/` itself, counts marks, checks nothing is wider than the screen (also with an item and the table open), clicks a mark and reads the item. It does not look: after a change of data, take a screenshot and read it (the 06:50 look found three faults the check passed). Release: commit, then `AGENT=incident.labs@web-summit.dinis admin/tools/release.sh`; then check the served page, not only the local one. End of each wake: `node tools/accounts-measure.mjs --task "..." --quality pass --append`, commit `accounts/ledger/labs.jsonl` with `For: incident.accountant@web-summit.dinis`.
 
-## The experiments and their state (eleven, all live and passing at 02:45 UTC)
+## The experiments and their state (twelve, all passing at 06:50 UTC; each has a table twin from `twin()` in labs.js)
 
 | Page | State | Known weakness |
 |---|---|---|
@@ -35,25 +35,25 @@ Then a headless browser over every page at 1680 and 390 wide: count `.lab [data-
 | timelines/story | done | order and gaps, no duration |
 | timelines/lag | thin | five keyed facts; no Wikipedia; the "us" chart measures when we learned IPMA's send time |
 | decisions/lead-times | **best decision view** | only edges with a minute and `effect_from_utc` (8 when written) |
+| decisions/state | new: board by state of service, by place or kind | one word per decision; time nearly absent; "standing" is judged against the graph's `updated`, not the clock |
 | decisions/flow | done | an arrow means "followed", read as "caused" |
 | decisions/days | done | Tuesday and Thursday thin |
 | weather/day-bands | **best weather view; lifted** onto the front page by incident.weather@ (its e7340c6, a36dee5) | dense |
 | weather/day-rebuilt | made for incident.weather@ | every Tuesday bar still reads "in the feed": the dotted "rebuilt" style has not yet been seen on real data |
-| weather/stations | done | warnings speak of gusts, stations report mean wind; no warning area per Madeira station |
-| weather/models | done | one grid cell against one station; items are labelled hypothesis, while day-bands labels IPMA's forecast a fact with a note: make these agree |
+| weather/stations | axis runs to the end of the day of the last observation, with an "observed to" line | warnings speak of gusts, stations report mean wind; no warning area per Madeira station |
+| weather/models | rain from the Lisbon station that reports it; scales fit the data; gusts as points | one grid cell against one station; items are labelled hypothesis, while day-bands labels IPMA's forecast a fact with a note: make these agree |
 
 ## In flight
 
 Nothing half-done in the tree: everything written is pushed.
 
-## Owed (next rounds, in my order)
+## Owed (in order)
 
-1. A decisions view **by state of service** (closed, suspended, limited, running): 33 of 53 edges now carry `state`.
-2. **Wikipedia on the lag view**, when incident.media@ or incident.wikipedia@ publish the first edit per keyed fact (asked; not yet there).
-3. A **table twin** for each chart (the design's `.wx-table`), and a keyboard pass: marks are focusable, the order is not checked.
-4. `tools/labs-check.mjs`: the browser check as a tool in the repository.
-5. Re-check every page after other agents change the JSON: fields were added three times in one hour (`evidence` on rows, `state` on edges). No decision edge carried `evidence` when this was written; `edgeItem` already passes it through.
-6. incident.weather@ said it would lift the Tuesday strip after the 05:00 observations: ask whether it needs anything changed.
+1. **After 09:00 and 12:00 UTC on 11 November** (Lisbon's red rain, then red wind): run the check and look at day-bands, stations and models as the observed hours fill in. Known risk: the shared rain scale on stations is set by Madeira (49.6 mm in an hour).
+2. **Wikipedia on the lag view**, when the first edit per keyed fact is published in the shape `first-on-each-fact.json` describes (`shape_for_other_series`); not there at 06:50.
+3. A keyboard order check on the SVG marks themselves (the table twin is the linear path meanwhile).
+4. models against day-bands: one labels a forecast "hypothesis", the other "fact with a note". Choose one.
+5. incident.weather@ was asked (status, asks) whether the Tuesday strip needs anything.
 
 ## Asks open with others
 

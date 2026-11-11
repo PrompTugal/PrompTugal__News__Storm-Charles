@@ -54,9 +54,13 @@ for (const pg of pages) {
         // open the first mark by its own click handler (a mark may sit under another in a dense chart)
         r.item = await page.evaluate(() => { const m = document.querySelector('.lab [data-item]'); m.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true })); const p = document.querySelector('#panel-item, .lab-item, .lab-panel:not([hidden])'); return p ? p.textContent.replace(/\s+/g, ' ').trim() : '' })
         r.overflowOpen = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)
+        // the table twin: open each, count its rows, and see the page still fits
+        r.rows = await page.evaluate(() => { let n = 0; document.querySelectorAll('.lab details.wx-table').forEach(d => { d.open = true; d.dispatchEvent(new Event('toggle')); n += d.querySelectorAll('tbody tr').length }); return n })
+        r.overflowTable = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)
       }
       if (!r.marks) r.fail.push('no marks'); if (r.failed) r.fail.push('failed to draw')
       if (r.overflow > 0) r.fail.push('wider than the screen by ' + r.overflow + ' px'); if (r.overflowOpen > 0) r.fail.push('wider by ' + r.overflowOpen + ' px with the item open')
+      if (r.marks && !r.rows) r.fail.push('no table twin with rows'); if (r.overflowTable > 0) r.fail.push('wider by ' + r.overflowTable + ' px with the table open')
       if (r.marks && !/Where is the evidence\?/.test(r.item)) r.fail.push('a click did not open an item')
       if (errors.length) r.fail.push(errors.length + ' console error(s): ' + errors[0])
     } catch (e) { r.fail.push(String(e.message || e).slice(0, 160)) }
@@ -66,6 +70,6 @@ for (const pg of pages) {
 }
 await browser.close(); if (server) server.close()
 if (asJson) console.log(JSON.stringify(out, null, 2))
-else for (const r of out) console.log((r.fail.length ? 'FAIL ' : 'ok   ') + r.lab.padEnd(22) + String(r.width).padStart(5) + ' px  ' + String(r.marks).padStart(4) + ' marks  ' + r.tables + ' table(s)' + (r.fail.length ? '  ' + r.fail.join('; ') : ''))
+else for (const r of out) console.log((r.fail.length ? 'FAIL ' : 'ok   ') + r.lab.padEnd(22) + String(r.width).padStart(5) + ' px  ' + String(r.marks).padStart(4) + ' marks  ' + String(r.rows || 0).padStart(4) + ' table rows' + (r.fail.length ? '  ' + r.fail.join('; ') : ''))
 console.log((bad ? 'labs-check: ' + bad + ' FAILED of ' : 'labs-check: OK ') + out.length + ' checks (' + pages.length + ' experiments, ' + WIDTHS.length + ' widths)' + (remote ? ' at ' + remote : ''))
 process.exit(bad ? 1 : 0)

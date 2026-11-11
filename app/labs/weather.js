@@ -21,12 +21,13 @@
         { name: 'Madeira', file: 'weather/madeira.json', ds: d.madeira, msgs: [].concat.apply([], d.cap.other_messages.filter(function (m) { return /Madeira/.test(m.areas.join()) }).map(function (m) { return m.areas.map(function (a) { return { m: m, area: a.replace('Madeira - ', '') } }) })), note: 'The data does not say which warning area each station is in, so the warnings are drawn by area above the stations, not on each one.' }]
       var allR = 1, allW = 1; groups.forEach(function (g) { g.ds.stations.forEach(function (st) { st.hourly.forEach(function (r) { allR = Math.max(allR, r.rain_mm || 0); allW = Math.max(allW, r.wind_mean_kmh || 0) }) }) })
       groups.forEach(function (gr) {
-        var ts = [].concat.apply([], gr.ds.stations.map(function (st) { return st.hourly.map(function (r) { return T(r.time_utc) }) })), t0 = Math.min.apply(null, ts) - H, t1 = Math.max.apply(null, ts) + H / 2, sc = L.scale(t0, t1, lab, W - 12), bw = Math.max(2, (sc(t0 + H) - sc(t0)) - 2)
-        // warning rows: area and type, only the messages not replaced by a later one, clipped to the hours observed
+        var ts = [].concat.apply([], gr.ds.stations.map(function (st) { return st.hourly.map(function (r) { return T(r.time_utc) }) })), t0 = Math.min.apply(null, ts) - H, tObs = Math.max.apply(null, ts), t1 = Math.max(tObs + H / 2, Math.ceil((tObs + 1) / L.DAY) * L.DAY), sc = L.scale(t0, t1, lab, W - 12), bw = Math.max(2, (sc(t0 + H) - sc(t0)) - 2)
+        // warning rows: area and type, only the messages not replaced by a later one. The axis runs to the end of the day of the last
+        // observation, so IPMA's warnings for the hours still to come are seen against the hours not yet observed
         var replaced = {}; gr.msgs.forEach(function (q) { (q.m.replaces || []).forEach(function (r) { replaced[r.identifier] = 1 }) })
         var wr = {}; gr.msgs.forEach(function (q) { if (replaced[q.m.identifier] || T(q.m.expires_utc) <= t0 || T(q.m.onset_utc) >= t1) return; var k = q.area + ' · ' + L.wtype(q.m.event_pt); (wr[k] = wr[k] || []).push(q.m) })
         var wk = Object.keys(wr).sort(), top = 40, WH = 18, SH = 52, y = top
-        var g = L.svg(W, top + wk.length * WH + 14 + gr.ds.stations.length * SH + 8, gr.name + ': warned and observed, hour by hour')
+        var g = L.svg(W, top + wk.length * WH + 14 + gr.ds.stations.length * SH + 14, gr.name + ': warned and observed, hour by hour')
         L.axis(g, sc, top, top + wk.length * WH + 14 + gr.ds.stations.length * SH)
         wk.forEach(function (k) {
           g.appendChild(s('text', { x: 6, y: y + 13, class: 't-small', text: short('Warned: ' + k, c.phone ? 20 : 44) }))
@@ -34,6 +35,7 @@
           y += WH
         })
         y += 14
+        var yEnd = top + wk.length * WH + 14 + gr.ds.stations.length * SH
         gr.ds.stations.forEach(function (st, i) {
           var mr = 1, mw = 1; st.hourly.forEach(function (r) { mr = Math.max(mr, r.rain_mm || 0); mw = Math.max(mw, r.wind_mean_kmh || 0) })
           var R = c.state.scale === 'own' ? mr : allR, Wd = c.state.scale === 'own' ? mw : allW, base = y + SH - 6, ht = SH - 14
@@ -47,13 +49,14 @@
           st.hourly.forEach(function (r) {
             var x = sc(T(r.time_utc))
             if (r.rain_mm) g.appendChild(s('rect', { x: x - bw / 2, y: base - r.rain_mm / R * ht, width: bw, height: r.rain_mm / R * ht, class: 'obs-bar' }))
-            if (r.rain_mm >= R * 0.45 && bw >= 14) g.appendChild(s('text', { x: x, y: base - r.rain_mm / R * ht - 2, class: 't-val', 'text-anchor': 'middle', text: r.rain_mm }))
+            if (r.rain_mm >= R * 0.45 && bw >= 24) g.appendChild(s('text', { x: x, y: base - r.rain_mm / R * ht - 2, class: 't-val', 'text-anchor': 'middle', text: r.rain_mm }))
             if (r.wind_mean_kmh != null) pts.push([x, base - r.wind_mean_kmh / Wd * ht])
           })
           if (pts.length) g.appendChild(s('path', { d: path(pts), class: 'wind-line' }))
           st.hourly.forEach(function (r) { var x = sc(T(r.time_utc)); g.appendChild(L.mark(s('rect', { x: x - bw / 2 - 1, y: y + 2, width: bw + 2, height: SH - 4, class: 'hit', title: L.dhm(T(r.time_utc)) + ' · ' + (r.rain_mm == null ? 'no rain value' : r.rain_mm + ' mm') + ' · ' + (r.wind_mean_kmh == null ? 'no wind value' : r.wind_mean_kmh + ' km/h ' + (r.wind_dir || '')) }), obsItem(st, r, gr.file, st.source || gr.ds.source, st.read_utc || gr.ds.read_utc), st.name + ' ' + L.dhm(T(r.time_utc)))) })
           y += SH
         })
+        if (t1 - tObs > H) { var xo = sc(tObs + H / 2); g.appendChild(s('line', { x1: xo, x2: xo, y1: top - 4, y2: yEnd, class: 'readline' })); g.appendChild(s('text', { x: xo + 4, y: yEnd + 6, class: 'readline-t', text: 'observed to ' + L.hm(tObs) + '; to the right, only what IPMA has warned' })) }
         c.el.appendChild(h('h3', { text: gr.name + ': ' + gr.ds.stations.length + ' stations, read ' + L.dhm(T(gr.ds.read_utc)) + ' UTC' })); c.el.appendChild(g)
         c.el.appendChild(h('p', { class: 'meta', text: gr.note }))
       })
@@ -164,9 +167,10 @@
       var geo = d.stations.stations[0], t0 = T('2026-11-10T00:00Z'), t1 = T('2026-11-12T12:00Z'), sc = L.scale(t0, t1, padL, W - padR)
       function fcItem(m, r, what) { return L.valueItem('fc:' + m.key + ':' + r.time_utc, { type: 'a model\'s forecast (theirs, not ours)', label: 'hypothesis', title: m.name + ' for ' + L.dhm(T(r.time_utc)) + ': mean wind ' + r.wind_mean_kmh + ' km/h' + (r.gust_kmh != null ? ', gusts ' + r.gust_kmh + ' km/h' : '') + ((r.rain_mm != null ? r.rain_mm : r.rain_mm_next_1h) != null ? ', rain ' + (r.rain_mm != null ? r.rain_mm : r.rain_mm_next_1h) + ' mm' : ''), when: r.time_utc, whenName: 'Forecast for', facts: [['Model', m.name], ['Licence', m.lic], ['Label', 'A model\'s statement about the future: it is a fact that the model said this, and a hypothesis that it will happen. We make no forecast.']], sources: [{ label: L.host(m.src), url: m.src }], read: m.read, file: L.DATA + 'weather/forecast.json' }) }
       function chart(title, unit, maxV, series, extra) {
+        var step = maxV / 4, dmax = Math.max.apply(null, [0].concat([].concat.apply([], series.map(function (se) { return se.rows.filter(function (r) { var t = T(r.time_utc); return t >= t0 && t <= t1 }).map(function (r) { return se.val(r) || 0 }) })))); maxV = Math.max(maxV, Math.ceil(dmax / step) * step)
         var top = 34, ht = c.phone ? 200 : 280, g = L.svg(W, top + ht + 26, title), ys = function (v) { return top + ht - v / maxV * ht }
         L.axis(g, sc, top, top + ht)
-        for (var v = 0; v <= maxV; v += maxV / 4) { g.appendChild(s('line', { x1: padL, x2: W - padR, y1: ys(v), y2: ys(v), class: 'ax-h' })); g.appendChild(s('text', { x: padL - 6, y: ys(v) + 3, class: 'ax-t', 'text-anchor': 'end', text: Math.round(v) })) }
+        for (var v = 0; v <= maxV; v += step) { g.appendChild(s('line', { x1: padL, x2: W - padR, y1: ys(v), y2: ys(v), class: 'ax-h' })); g.appendChild(s('text', { x: padL - 6, y: ys(v) + 3, class: 'ax-t', 'text-anchor': 'end', text: Math.round(v) })) }
         g.appendChild(s('text', { x: 4, y: top - 20, class: 't-small', text: unit }))
         if (extra) extra(g, ys, top, ht)
         var ends = []
@@ -174,6 +178,7 @@
           var pts = se.rows.filter(function (r) { var t = T(r.time_utc); return t >= t0 && t <= t1 && se.val(r) != null }).map(function (r) { return [sc(T(r.time_utc)), ys(Math.min(maxV, se.val(r))), r] })
           if (!pts.length) return
           if (se.bars) pts.forEach(function (p) { g.appendChild(s('rect', { x: p[0] - 3, y: p[1], width: 6, height: top + ht - p[1], class: 'obs-bar' })) })
+          else if (se.points) pts.forEach(function (p) { g.appendChild(s('circle', { cx: p[0], cy: p[1], r: 3.5, class: 'obs-dot' })) })
           else g.appendChild(s('path', { d: path(pts), class: se.cls, 'stroke-dasharray': se.dash || null }))
           pts.forEach(function (p) { g.appendChild(L.mark(s('circle', { cx: p[0], cy: p[1], r: 7, class: 'hit', title: se.name + ' · ' + L.dhm(T(p[2].time_utc)) + ' · ' + se.val(p[2]) + ' ' + unit }), se.item(p[2]), se.name + ' ' + L.dhm(T(p[2].time_utc)))) })
           ends.push({ y: pts[pts.length - 1][1], x: pts[pts.length - 1][0], name: se.name, hyp: !!se.dash })
@@ -187,14 +192,16 @@
         c.el.appendChild(h('h3', { text: title })); c.el.appendChild(g)
       }
       var obsWind = { name: 'Observed: ' + geo.name, cls: 'obs-line', rows: geo.hourly, val: function (r) { return r.wind_mean_kmh }, item: function (r) { return obsItem(geo, r, 'weather/stations.json', geo.source, geo.read_utc) } }
-      var rainSt = d.rain.stations.filter(function (x) { return x.id === geo.id })[0] || d.rain.stations[0]
+      var rainHours = function (x) { return x.hourly.filter(function (r) { return r.rain_mm != null }).length }
+      var rainSt = d.rain.stations.filter(function (x) { return x.id === geo.id && rainHours(x) > x.hourly.length / 2 })[0] || d.rain.stations.filter(function (x) { return /^Lisboa/.test(x.name) }).sort(function (a, b) { return rainHours(b) - rainHours(a) })[0] || d.rain.stations[0]
+      var gusts = d.airport.metars.filter(function (m) { return m.gust_kmh }), lastMetar = d.airport.metars[d.airport.metars.length - 1], lastGust = gusts[gusts.length - 1]
       var red = d.warnings.lisbon.map(function (w, i) { return { w: w, i: i } }).filter(function (q) { return q.w.level === 'red' })
       var redStrip = function (type) { return function (g, ys, top, ht) { red.forEach(function (q) { if (L.wtype(q.w.type) !== type) return; var a = Math.max(t0, T(q.w.start_utc)), b = Math.min(t1, T(q.w.end_utc)); L.mark(L.levelBar(g, sc(a), top + ht + 5, sc(b) - sc(a), 13, 'red', 'RED ' + q.w.type.toUpperCase() + ' (IPMA)'), L.warnItem(q.w, q.i), 'IPMA red ' + q.w.type) }) } }
       chart('Mean wind in Lisbon: four model runs and what was measured', 'km/h', 60, models.map(function (m) { return { name: m.name, cls: 'fc-line', dash: m.dash, rows: m.rows, val: function (r) { return r.wind_mean_kmh }, item: function (r) { return fcItem(m, r) } } }).concat([obsWind]), redStrip('wind'))
-      chart('Gusts: the one model that gives them here, and the airport\'s measurements', 'km/h', 140, [{ name: 'Open-Meteo gusts', cls: 'fc-line', dash: '4 4', rows: models[3].rows, val: function (r) { return r.gust_kmh }, item: function (r) { return fcItem(models[3], r) } }, { name: 'Observed: airport gusts', cls: 'obs-line', rows: d.airport.metars.filter(function (m) { return m.gust_kmh }), val: function (r) { return r.gust_kmh }, item: function (m) { return L.valueItem('metar:' + m.time_utc, { type: 'observation, Lisbon airport (METAR)', label: 'fact', title: 'Gust ' + m.gust_kmh + ' km/h, wind ' + m.wind_kmh + ' km/h', when: m.time_utc, facts: [['Raw', m.raw]], sources: [{ label: 'METAR LPPT via NOAA Aviation Weather', url: m.source }], read: m.read_utc, file: L.DATA + 'weather/airport.json' }) } }], function (g, ys, top, ht) { redStrip('wind')(g, ys, top, ht); g.appendChild(s('line', { x1: padL, x2: W - padR, y1: ys(120), y2: ys(120), style: 'stroke: var(--red); stroke-width: 1.5' })); g.appendChild(s('text', { x: padL + 4, y: ys(120) - 4, class: 't-small', text: 'IPMA\'s red wind warning says: gusts to 120 km/h (140 where most exposed)' })) })
+      chart('Gusts: the one model that gives them here, and the airport\'s measurements', 'km/h', 140, [{ name: 'Open-Meteo gusts', cls: 'fc-line', dash: '4 4', rows: models[3].rows, val: function (r) { return r.gust_kmh }, item: function (r) { return fcItem(models[3], r) } }, { name: 'Observed: airport gusts', points: true, rows: gusts, val: function (r) { return r.gust_kmh }, item: function (m) { return L.valueItem('metar:' + m.time_utc, { type: 'observation, Lisbon airport (METAR)', label: 'fact', title: 'Gust ' + m.gust_kmh + ' km/h, wind ' + m.wind_kmh + ' km/h', when: m.time_utc, facts: [['Raw', m.raw]], sources: [{ label: 'METAR LPPT via NOAA Aviation Weather', url: m.source }], read: m.read_utc, file: L.DATA + 'weather/airport.json' }) } }], function (g, ys, top, ht) { redStrip('wind')(g, ys, top, ht); g.appendChild(s('line', { x1: padL, x2: W - padR, y1: ys(120), y2: ys(120), style: 'stroke: var(--red); stroke-width: 1.5' })); g.appendChild(s('text', { x: padL + 4, y: ys(120) - 4, class: 't-small', text: 'IPMA\'s red wind warning says: gusts to 120 km/h (140 where most exposed)' })) })
       chart('Rain in the hour: two models and what fell at ' + rainSt.name, 'mm', 12, [{ name: 'Observed: ' + rainSt.name, bars: true, rows: rainSt.hourly, val: function (r) { return r.rain_mm }, item: function (r) { return obsItem(rainSt, r, 'weather/lisbon-rain.json', rainSt.source, rainSt.read_utc) } }, { name: 'MET Norway', cls: 'fc-line', dash: '10 3 2 3', rows: models[2].rows, val: function (r) { return r.rain_mm_next_1h }, item: function (r) { return fcItem(models[2], r) } }, { name: 'Open-Meteo', cls: 'fc-line', dash: '4 4', rows: models[3].rows, val: function (r) { return r.rain_mm }, item: function (r) { return fcItem(models[3], r) } }], redStrip('rain'))
-      c.el.appendChild(L.legend([['lg-fc', 'a model\'s forecast: dashed, named at the line, a hypothesis about the future'], ['lg-obs', 'measured (solid)'], ['lg-rain', 'rain measured in the hour'], ['lg-red', 'IPMA red warning in force']]))
-      c.el.appendChild(h('p', { class: 'meta' }, 'None of these lines is our forecast: we are not a warning service. Models: IPMA; ', models[2].lic, '; ', models[3].lic, '. Values above the top of a chart are drawn at the top.'))
+      c.el.appendChild(L.legend([['lg-fc', 'a model\'s forecast: dashed, named at the line, a hypothesis about the future'], ['lg-obs', 'measured (solid; gusts as points)'], ['lg-rain', 'rain measured in the hour'], ['lg-red', 'IPMA red warning in force']]))
+      c.el.appendChild(h('p', { class: 'meta' }, 'None of these lines is our forecast: we are not a warning service. Models: IPMA; ', models[2].lic, '; ', models[3].lic, '. Each scale grows to fit its highest value. The airport reports a gust only when there is one, so its gusts are points, not a line: ' + gusts.length + ' of the ' + d.airport.metars.length + ' reports kept carry one' + (lastGust ? ', the latest at ' + L.dhm(T(lastGust.time_utc)) : '') + '; the latest report read is ' + L.dhm(T(lastMetar.time_utc)) + '. Rain is drawn for ' + rainSt.name + (rainSt.id !== geo.id ? ', because ' + geo.name + ' (the wind station) reports no rain in this file' : '') + '.'))
     }
   })
 })()
