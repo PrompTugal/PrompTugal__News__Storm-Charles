@@ -14,11 +14,13 @@
     el.insertAdjacentElement('afterend', liveBox)
     // the Universe (Silvio's engine, pinned; universe-adapter.js feeds it): opened on request, because it needs 1.6 MB of 3D libraries
     const uniBox = document.createElement('section'); uniBox.id = 'universe'; uniBox.className = 'ag-uni'
-    uniBox.innerHTML = `<h2 class="ag-h">The team as a Universe: map, circuit and Talk</h2><p class="ag-note">The same team in <a href="https://web-summit.sgit.ai/">the Universe by dashboard@web-summit.silvio, of Silvio's team</a>: a 3D <b>Map</b> (people, agents, the folders each may write), the <b>Circuit</b> (each agent through its behaviour policy to what it reaches) and <b>Talk</b> (who talks to whom, from the commits' <code>For:</code> trailers). The engine is an unchanged copy pinned at <a href="${new URL('vendor/universe@57636ac/pin.json', HERE).href}">commit 57636ac</a>, reading this site's data through one adapter. The Circuit shows every agent here as "no policy yet", and that is the fact: this team has job rows in <a href="${el.dataset.base || "../../"}agents/JOBS.html">the jobs table</a>, not behaviour policies. Opening it loads 1.6 MB of 3D libraries from web-summit.sgit.ai (checked against a pinned hash).</p><p><button type="button" class="ag-btn" data-ag-uni>Open the Universe</button> <span class="ag-note" data-ag-uni-note></span></p><div id="ag-universe"></div>`
+    uniBox.innerHTML = `<h2 class="ag-h">The team as a Universe: map, circuit and Talk</h2><p class="ag-note">The same team in <a href="https://web-summit.sgit.ai/">the Universe by dashboard@web-summit.silvio, of Silvio's team</a>: a 3D <b>Map</b> (people, agents, the folders each may write), the <b>Circuit</b> (each agent through its behaviour policy to what it reaches) and <b>Talk</b> (who talks to whom, from the commits' <code>For:</code> trailers). The engine is an unchanged copy pinned at <a href="${new URL('vendor/universe@57636ac/pin.json', HERE).href}">commit 57636ac</a>, reading this site's data through one adapter. The policies it shows are the librarian's drafts (<a href="${el.dataset.base || "../../"}library/abp.html">all of them</a>).</p><p class="ag-draft" data-ag-draft><b>Draft policies, not agreed by Dinis.</b> A draft is not a licence to operate: where the Circuit says "a written policy", read "a written draft".</p><p class="ag-note">Opening it loads 1.6 MB of 3D libraries from web-summit.sgit.ai (checked against a pinned hash).</p><p><button type="button" class="ag-btn" data-ag-uni>Open the Universe</button> <span class="ag-note" data-ag-uni-note></span></p><div id="ag-universe"></div>`
     liveBox.insertAdjacentElement('afterend', uniBox)
     for (const f of ['live-adapter.js', 'universe-adapter.js']) { const s = document.createElement('script'); s.src = new URL(f, HERE).href; s.async = false; document.head.appendChild(s) }
     const openUni = () => { const b = uniBox.querySelector('[data-ag-uni]'); if (!window.AgentsUniverse || b.hidden) return; b.hidden = true; window.AgentsUniverse.open(uniBox.querySelector('#ag-universe'), uniBox.querySelector('[data-ag-uni-note]')).then(() => { if (!uniBox.querySelector('.bm')) b.hidden = false }) }
     uniBox.querySelector('[data-ag-uni]').onclick = openUni
+    document.addEventListener('agents-universe', e => { const d = e.detail, n = uniBox.querySelector('[data-ag-draft]'); if (!n) return
+        n.innerHTML = d.policies ? (d.drafts ? `<b>${d.drafts} of ${d.policies} behaviour policies are drafts, not agreed by Dinis</b> (${d.policies} of ${d.agents} agents have one). A draft is not a licence to operate: where the Circuit says "a written policy", read "a written draft".` : `${d.policies} of ${d.agents} agents have an agreed behaviour policy.`) : `<b>0 of ${d.agents} agents have a behaviour policy.</b>` })
     const BASE = el.dataset.base || '../../', REPO = 'PrompTugal/PrompTugal__News__Storm-Charles', BRANCH = 'dev'
     const GH = `https://api.github.com/repos/${REPO}/commits?sha=${BRANCH}&per_page=100`, CACHE = 'sc-agents-commits-v1', TTL = 120e3
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
@@ -52,7 +54,7 @@
     }
 
     // releases: CI's public run records (one run per push; the newest push cancels an older run still going), cached five minutes
-    const RUNS = `https://api.github.com/repos/${REPO}/actions/workflows/deploy.yml/runs?branch=${BRANCH}&per_page=40`, RCACHE = 'sc-agents-runs-v1'
+    const RUNS = `https://api.github.com/repos/${REPO}/actions/workflows/deploy.yml/runs?branch=${BRANCH}&per_page=100`, RCACHE = 'sc-agents-runs-v2'
     async function runs() {
         let c = null; try { c = JSON.parse(localStorage.getItem(RCACHE)) } catch { }
         if (c && Date.now() - c.read < 300e3) return c
@@ -166,7 +168,15 @@ ${a.job ? `<details><summary>Its job (agents/JOBS.md)</summary><p>${T(a.job).rep
         const n = k => live.filter(x => x === k).length
         const open = new Set([...el.querySelectorAll('details[open]')].map(d => d.closest('article')?.id + '|' + d.querySelector('summary')?.textContent.replace(/ \(\d+\)$/, '')))
         const hadDrawn = !!el.dataset.drawn
+        // pipeline health: the last hour of the deploy workflow's runs (the same records as "Release speed" below)
+        const hour = R.items.filter(r => Date.now() - Date.parse(r.pushed) < 36e5), okH = hour.filter(r => r.conclusion === 'success')
+        const medOf = a => { a = a.filter(x => x != null && x > 0).sort((p, q) => p - q); return a.length ? a[Math.floor(a.length / 2)] : null }
+        const servedH = okH.map(r => X[r.sha]).filter(x => x != null), mServed = servedH.length >= 3 ? medOf(servedH) : null, mRun = medOf(okH.map(r => secs(r.pushed, r.ended)))
+        const failedH = hour.filter(r => r.conclusion === 'failure').length, supH = hour.filter(r => r.conclusion === 'cancelled').length
+        const health = !R.items.length ? `<p class="ag-note" id="health">Pipeline health: ${R.error ? 'GitHub did not answer this browser, so the run records could not be read.' : 'no run records read.'}</p>`
+            : `<div class="ag-health${failedH ? ' bad' : ''}" id="health"><b>Pipeline, last hour</b><span><b>${hour.length}${R.items.length >= 100 && hour.length === R.items.length ? '+' : ''}</b> pushes</span><span><b>${okH.length}</b> deployed</span><span><b>${mServed != null ? mServed + ' s' : mRun != null ? '≤ ' + mRun + ' s' : 'n/a'}</b> median push to served${mServed != null ? ` (CI's measure, ${servedH.length} of ${okH.length} read so far)` : mRun != null ? ' (upper bound: push to run finished)' : ''}</span><span><b>${supH}</b> superseded</span><span class="${failedH ? 'ag-err' : ''}"><b>${failedH}</b> failed</span><a href="#releases">push by push</a></div>`
         el.innerHTML = `
+${health}
 <div class="ag-sum">
 <div><b>${idx.agents.length}</b><span>agents in the team</span></div>
 <div><b>${n('now')}</b><span>active in the last 30 min</span></div>
@@ -193,6 +203,7 @@ ${led}
         for (const d of el.querySelectorAll('details')) { const k = d.closest('article')?.id + '|' + d.querySelector('summary')?.textContent.replace(/ \(\d+\)$/, ''); if (hadDrawn) d.open = open.has(k) }
         el.dataset.drawn = '1'
         document.dispatchEvent(new CustomEvent('agents-data', { detail: { idx, commits: gh.items } }))
+        if (!hadDrawn) setTimeout(() => window.AgentsUniverse?.counts().catch(() => { }), 1500)
         if (!hadDrawn && location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView()
     }
     draw(); setInterval(() => { if (!document.hidden) draw() }, 60e3)

@@ -1,9 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T00:15:23Z",
+  "updated": "2026-11-11T00:17:36Z",
   "state": "active: /agents/ is the one agents page (cards, Dinis's asks, live map, Universe, release speed with CI's own push-to-served, ledger); page views built and off until a vault exists; hourly wake",
-  "last_wake": "2026-11-11T00:15Z",
+  "last_wake": "2026-11-11T00:17Z",
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
     "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -23,16 +23,16 @@
     "asks that may be stale are marked and listed last: an agent whose status file is here but who has pushed nothing here (its file is synced from the old repository)",
     "/app/agents/ redirects to /agents/ (one agents page, the framed one)",
     "release cadence measured after CI stopped cancelling a running deploy (23:56 to 00:14 UTC, GitHub's run records read 00:14:51): 44 pushes (2.5 a minute), 34 deployed, 10 superseded while waiting, 0 failed; a deploy every 24 s at the median (longest gap 95 s); push to run finished 32 s median, 41 s at the 90th percentile, 49 s worst; CI's own push-to-served on the last twelve releases 22 to 32 s",
-    "the push-to-served column checked against the real check-runs API (the notice reads '<n> s (<version>)', as the page parses it)"
+    "the push-to-served column checked against the real check-runs API (the notice reads '<n> s (<version>)', as the page parses it)",
+    "the Circuit reads the librarian's draft policies (agents/<role>/policy.md) as served; every one is titled and versioned DRAFT, not agreed, and a banner above the Universe says how many are drafts and that a draft is not a licence to operate; gaps and barriers stay on the policy pages",
+    "a pipeline-health strip at the top of /agents/: pushes, deployed, median push to served, superseded and failed in the last hour"
   ],
   "next": [
     "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
-    "replay.js (the Gantt of every commit) on the live-map pin, if its data shape can be made in the browser",
-    "agents' behaviour policies in the Circuit, once the conductor says where they live (agents/policy.json?)"
+    "replay.js (the Gantt of every commit) on the live-map pin, if its data shape can be made in the browser"
   ],
   "asks": [
     "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session).",
-    "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line).",
-    "incident.conductor@: say when the first agents/<role>/policy.md is in; universe-adapter.js will then read them for the Circuit."
+    "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line)."
   ]
 }

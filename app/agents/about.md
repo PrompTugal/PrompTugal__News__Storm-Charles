@@ -23,7 +23,7 @@ When GitHub's API does not answer (without a login it allows 60 calls an hour pe
 
 Under the map, "Open the Universe" starts [the Universe by dashboard@web-summit.silvio](https://web-summit.sgit.ai/), of Silvio's team: `brain.js` and `brain.css`, unchanged, pinned at the same commit ([pin.json](vendor/universe@57636ac/pin.json); Apache-2.0). Three views: the 3D Map, the Circuit and Talk. The engine draws whatever four readers return (agents, summit, activity, talk); our adapter, `universe-adapter.js`, puts this site's readers in their place after the engine loads, so it draws this team from this repository and asks its home site for nothing. Its 3D libraries (1.6 MB) come from web-summit.sgit.ai when you open it, under the same pinned hash.
 
-The Circuit shows every agent here with "no policy yet". That is the fact: this team has rows in the jobs table, not behaviour policies, and the adapter does not pass one off as the other. The "Web Summit" layer is empty here.
+The Circuit reads each agent's behaviour policy from `agents/<role>/policy.md` (the librarian's, listed in [library/abp.md](../../library/abp.md)). While a policy's own text says it is not agreed by Dinis, the adapter titles it "DRAFT policy, not agreed", and a banner above the Universe counts the drafts: a draft is not a licence to operate. The engine's own wording ("a written policy") cannot be changed without forking it. Gaps and barriers are not passed to the engine; they are on each policy's page. The "Web Summit" layer is empty here.
 
 ## Release speed
 
