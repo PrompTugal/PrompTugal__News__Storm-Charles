@@ -171,9 +171,10 @@
     var rank = function (c) { return /^ipma/.test(c.d.id || '') || c.d.by === 'ipma' || c.w ? 0 : kind(c.d.label) === 'fact' ? 1 : 2 }
     ch.sort(function (a, b) { return (rank(a) - rank(b)) || (T(b.t) - T(a.t)) })
     ch = ch.filter(function (c, i) { for (var j = 0; j < i; j++) if (Math.abs(T(ch[j].t) - T(c.t)) < 36e5 * 6 && alike(ch[j].d.decision, c.d.decision)) return false; return true })
+    var KEY = '<p class="gd-key">' + lbl('fact') + ' read at the body that decides or warns · ' + lbl('evidence') + ' reported by others, named · ' + lbl('hypothesis') + ' our analysis, never a fact · <span class="gd-st">closed</span> the state the source gives · <span class="gd-ns">not stated</span> we do not know</p>'
     var todayHtml = !ch.length ? '' : '<section class="gd-today" id="gd-today" aria-labelledby="gd-today-h"><h2 id="gd-today-h">Changed today <span class="meta">(published ' + esc(today) + ', UTC; IPMA\'s warning changes first, then other facts, then reports; newest first in each)</span></h2><ul class="gd-rows">' +
       ch.slice(0, 3).map(function (c) { return rowCut(c.d, 140).replace('<li class="gd-row', '<li data-t="' + esc(c.t) + '" class="gd-row') }).join('') + '</ul>' +
-      (ch.length > 3 ? '<details class="gd-deep"><summary>' + (ch.length - 3) + ' more today</summary><ul class="gd-rows">' + ch.slice(3).map(function (c) { return rowCut(c.d, 140) }).join('') + '</ul></details>' : '') + '</section>'
+      (ch.length > 3 ? '<details class="gd-deep"><summary>' + (ch.length - 3) + ' more today</summary><ul class="gd-rows">' + ch.slice(3).map(function (c) { return rowCut(c.d, 140) }).join('') + '</ul></details>' : '') + KEY + '</section>'
 
     // the path: pick your question
     var CASES = [['now-detail', 'What is happening now'], ['flight', 'I have a flight'], ['around', 'Getting around'], ['stranded', 'I\'m stranded: what is open?'], ['websummit', 'Web Summit'], ['madeira', 'Madeira'], ['press', 'I\'m a journalist']]
@@ -274,7 +275,7 @@
     LINES.press = 'The headline, the record, the data, and how to cite it.'
     out += sect('press', '7 · I\'m a journalist',
       (I && I.headline ? '<div class="gd-lead"><p class="meta">The incident\'s headline, as our lead keeps it</p><p><b>' + esc(I.headline.text) + '</b> ' + lbl(I.headline.label) + '</p>' + prov(I.headline.source, I.headline.url, null) + '<p class="meta">Published: ' + esc(I.headline.at) + '</p>' + (I.standfirst ? '<p>' + esc(I.standfirst) + '</p><p class="meta">Kept by ' + esc(I.lead) + ', updated ' + tm(I.updated) + ' UTC</p>' : '') + '</div>' : '') +
-      '<p class="gd-key">' + lbl('fact') + ' read at the body that decides or warns · ' + lbl('evidence') + ' reported by others, named · ' + lbl('hypothesis') + ' our analysis, never a fact · <span class="gd-st">closed</span> the state the source gives · <span class="gd-ns">not stated</span> we do not know</p>' +
+      '<p class="gd-cite"><b>Citing:</b> name the body that decided or warned, with its time; name this site for the record and the time we read it. <a href="' + base + 'help/cite.html">How to cite</a>.</p>' +
       '<p>Who we are, how this is made, and how to reach us: <a href="' + base + 'welcome/index.html">the newcomers\' page</a> (incident.envoy@, with its media section). Every claim here links to its source; cite the source, and us for the record.</p>',
       '<ul class="gd-links"><li><a href="' + base + 'incidents/' + inc + '/timeline.html">The timeline</a>: every warning and decision, with its permanent row id</li>' +
       '<li><a href="' + base + 'incidents/' + inc + '/decisions.html">The decisions</a>: who decided what, labelled fact, evidence or hypothesis</li>' +
@@ -283,7 +284,7 @@
       '<li><a href="' + base + 'api/v1/index.json">The data, as JSON</a>, each file with its sha256</li>' +
       '<li><a href="' + base + 'help/cite.html">How to cite</a></li></ul>')
 
-    if (document.querySelector('.contact-foot a')) out += '<p class="gd-contact">Missing something you need, or something wrong? <a href="' + esc(document.querySelector('.contact-foot a').getAttribute('href')) + '">Contact us</a>: the desk reads every message.</p>'
+    if (document.querySelector('.contact-foot a')) out += '<p class="gd-contact">Missing something you need, or something wrong? <a href="' + esc(document.querySelector('.contact-foot a').getAttribute('href')) + '">Contact us</a>: the desk reads every message.' + (shown('press') ? ' Citing: <a href="' + base + 'help/cite.html">how to cite</a>.' : '') + '</p>'
     el.innerHTML = out
     hospWire()
     focus.forEach(function (id) { var n = document.getElementById(id); if (n && n.classList.contains('gd-case')) el.appendChild(n) })
