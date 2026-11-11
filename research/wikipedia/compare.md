@@ -3,7 +3,7 @@ title: Wikipedia on Storm Charles, language against language
 ---
 # Wikipedia, language against language
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 05:45 UTC (written by tools/wikipedia-claims.mjs from claims-curated.json and the revisions named below)
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 05:49 UTC (written by tools/wikipedia-claims.mjs from claims-curated.json and the revisions named below)
 
 What the Portuguese article states that the English section does not, and the reverse; and where two languages give different figures or attributions for the same thing. Data: [compare.json](compare.json); the claims: [claims.md](claims.md). The grouping and every "reading" are **our analysis**; the statements are evidence.
 

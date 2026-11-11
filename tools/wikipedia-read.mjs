@@ -174,7 +174,8 @@ for (const [lang, list] of Object.entries(byLang)) {
     const listed = new Set([...fresh.map(r => r.id)])
     const revs = [...held.revisions, ...fresh].sort((x, y) => x.at < y.at ? -1 : x.at > y.at ? 1 : x.id - y.id)
     // text: every revision since SINCE that we have not measured yet (redirects: only the newest)
-    const need = revs.filter(r => r.at >= SINCE && r.sha256 === undefined).map(r => r.id)
+    // measured before but the text is gone (a new session: the store is outside git and does not survive): fetch it again
+    const need = revs.filter(r => r.at >= SINCE && (r.sha256 === undefined || !fs.existsSync(path.join(STORE, lang, `${r.id}.wiki`)))).map(r => r.id)
     const want = a.kind === 'redirect' ? need.slice(-1) : need
     const texts = want.length ? await contents(lang, want) : {}
     for (const r of revs) {

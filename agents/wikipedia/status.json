@@ -1,6 +1,6 @@
 {
   "agent": "incident.wikipedia@web-summit.dinis",
-  "state": "active: hourly re-read while the storm is live (the conductor's routine); reports only when changes.md touches our key facts",
+  "state": "handing over: agents/wikipedia/HANDOVER.md written at the conductor's request (this session's context is large); a fresh session takes over from the repository and that note",
   "last_wake": "2026-11-11T05:39:35Z",
   "done": [
     "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
@@ -19,7 +19,8 @@
     "02:39 wake: third read. pt unchanged since 01:33. en (2 revisions, 02:03 and 02:22) and zh (1, 02:04) only extended the season chart's bars for Charles and Bruna to 11 November; the storm's sections are byte for byte the same, so no claim, comparison or relation changed. Claims moved to the new revisions. Still nothing on Wikipedia about the 21:23 red rain move or the 22:35 line; en and zh still without Web Summit",
     "03:44 wake: fourth read. pt 'Depressão Charles' has one new revision (03:25, 28,258 to 29,091 bytes): Madeira's incident count replaced (38 to 23:30 becomes 71 to 02:00, provisional, with a breakdown) and Porto Santo's power failures added, both citing the regional daily. Claim w-pt-33 rewritten, w-pt-37 added (62 claims). 'Depressão Bruna' grew by a Spain paragraph that names Charles in passing. en and zh unchanged. One 429 (waited as told). Still nothing on Wikipedia about the 21:23 red rain move or the track further south. Conductor told (Madeira's figures).",
     "04:39 wake: fifth read. Nothing changed on any of the 6 pages since 03:44 (pt last edited 03:25). The API answered 429 eight times this read (it had been 0 or 1): waited as told each time, 332 s in all; the read still completed",
-    "05:39 wake: sixth read. Nothing changed on any of the 6 pages since 03:44 (pt last edited 03:25; en 02:22; zh 02:04). No 429 this read"
+    "05:39 wake: sixth read. Nothing changed on any of the 6 pages since 03:44 (pt last edited 03:25; en 02:22; zh 02:04). No 429 this read",
+    "05:47 UTC: the reader now fetches texts again when its store outside git is empty (a new session), tested with an empty store; that run was a seventh read: nothing changed on Wikipedia, and Wikidata answered for the first time (the storm's item has one sitelink, pt, and labels in pt, en, es). HANDOVER.md written"
   ],
   "next": [
     "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
@@ -27,16 +28,16 @@
     "Wikidata, when Dinis says yes to a client name; the talk pages, read-only"
   ],
   "asks": [
-    "Dinis: Wikipedia's API answered 429 to this session's shared address before the first read (retry-after 37 s), then served every request at one per 5 s (no 429 in either read). Wikidata is the exception: it answered 429 to one direct request and, in both reads, reported server lag on all 12 tries (2 requests given up), so the other languages were found through each article's own language links instead. Wikimedia's rule asks bots for a client name with a way to reach the operator; ours is generic by your instruction. If you want Wikidata read too, a client name carrying the site's address is the polite way: your yes is needed.",
+    "Dinis: Wikipedia's API answered 429 to this session's shared address before the first read (retry-after 37 s), then served every request at one per 5 s (no 429 in either read). Wikidata reported server lag on every try in the first six reads and answered in the seventh (05:47). Wikimedia's rule asks bots for a client name with a way to reach the operator; ours is generic by your instruction. If you want Wikidata read too, a client name carrying the site's address is the polite way: your yes is needed.",
     "incident.conductor@: the chatbot's product name was pushed in four commits before it was withheld; it stays in git history. Rewriting history is forbidden; say if Dinis wants anything else done."
   ],
   "api": {
-    "requests": 50,
-    "waits_429": 0,
-    "waits_maxlag": 12,
-    "failed": 2,
-    "note": "counts of the last read (05:39 UTC); the 12 lag waits and 2 failures are Wikidata's; every read is in research/wikipedia/reads.json"
+    "requests": 49,
+    "waits_429": 1,
+    "waits_maxlag": 0,
+    "failed": 0,
+    "note": "counts of the last read (05:47 UTC); Wikidata answered; every read is in research/wikipedia/reads.json"
   },
-  "updated": "2026-11-11T05:45:00Z",
+  "updated": "2026-11-11T05:51:00Z",
   "by": "incident.wikipedia@web-summit.dinis"
 }
