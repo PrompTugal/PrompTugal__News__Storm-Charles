@@ -1,12 +1,12 @@
 # The outlets covering Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 03:37 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 04:36 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | Outlet | Kind | Items read | First on | Wire share | Terms page read | AI crawlers disallowed in robots.txt | Readable by a plain bot |
 |---|---|---|---|---|---|---|---|
-| [Notícias ao Minuto](noticias-ao-minuto.md) | online | 81 | 1 | 88% | yes | 8 of 10 | yes |
+| [Notícias ao Minuto](noticias-ao-minuto.md) | online | 82 | 1 | 88% | yes | 8 of 10 | yes |
 | [CNN Portugal](cnn-portugal.md) | news channel | 26 |  | 67% | not found | 1 of 10 | yes |
-| [Observador](observador.md) | online daily | 21 | 2 | 29% | yes | 1 of 10 | yes |
+| [Observador](observador.md) | online daily | 23 | 2 | 26% | yes | 1 of 10 | yes |
 | [Expresso](expresso.md) | weekly, online daily | 19 |  |  | refused (403) | not read | feed only |
 | [RTP](rtp.md) | public broadcaster | 18 |  | 0% | yes | 0 of 10 | yes |
 | [Diário de Notícias](dn.md) | daily | 17 | 3 | 6% | yes | 0 of 10 | yes |
@@ -43,7 +43,7 @@ From by-lines, and from what an entry itself says. It does not see quotes or lin
 
 | Who | Verb | Whom | Items | How we know |
 |---|---|---|---|---|
-| [Notícias ao Minuto](noticias-ao-minuto.md) | published the wire of | [Lusa](lusa.md) | 71 | the item's by-line names the agency |
+| [Notícias ao Minuto](noticias-ao-minuto.md) | published the wire of | [Lusa](lusa.md) | 72 | the item's by-line names the agency |
 | [Observador](observador.md) | published the wire of | [Lusa](lusa.md) | 7 | the item's by-line names the agency |
 | [CNN Portugal](cnn-portugal.md) | published the wire of | [Lusa](lusa.md) | 6 | the item's by-line names the agency |
 | [Público](publico.md) | published the wire of | [Lusa](lusa.md) | 4 | the item's by-line names the agency |

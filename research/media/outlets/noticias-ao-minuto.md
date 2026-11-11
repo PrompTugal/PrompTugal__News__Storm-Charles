@@ -1,13 +1,13 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 03:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 04:36 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online (pt) |
-| Items we read | 81: 80 articles, 1 live, 0 video, 0 opinion |
-| First and last | 9 Nov 16:06 to 11 Nov 00:00 UTC |
-| Whose reporting | 4 with a reporter's by-line, 71 the agency's (Lusa), 6 the desk's, 0 not read; wire share 88% |
+| Items we read | 82: 81 articles, 1 live, 0 video, 0 opinion |
+| First and last | 9 Nov 16:06 to 11 Nov 04:01 UTC |
+| Whose reporting | 4 with a reporter's by-line, 72 the agency's (Lusa), 6 the desk's, 0 not read; wire share 88% |
 | Does best (from the counts) | volume: the most items in the list; first on "ANEPC's public warning on Charles (Aviso 21)"; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 
 ## Against the key moments
@@ -23,8 +23,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 81 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 71 items (the item's by-line names the agency).
+- **Links to primary sources:** 1 of 82 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 72 items (the item's by-line names the agency).
 - **It relayed RTP:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -135,3 +135,4 @@ Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Pa
 | 10 Nov 22:21 | article | Lusa | [IP reforça medidas de prevenção e vigilância devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082077/ip-reforca-medidas-de-prevencao-e-vigilancia-devido-ao-mau-tempo) |
 | 10 Nov 23:50 | article | Lusa | [Mau tempo: Albuquerque diz que ocorrências "não são significativas" ↗](https://www.noticiasaominuto.com/pais/3082101/mau-tempo-albuquerque-diz-que-ocorrencias-nao-sao-significativas) |
 | 11 Nov 00:00 | article | Lusa | [Portugal em alerta: Escolas fechadas e transportes suspensos ↗](https://www.noticiasaominuto.com/pais/3082105/continente-em-alerta-devido-a-passagem-da-depressao-charles) |
+| 11 Nov 04:01 | article | Lusa | [Proteção Civil: 66 ocorrências em Portugal continental às 03:30 ↗](https://www.noticiasaominuto.com/pais/3082141/protecao-civil-66-ocorrencias-em-portugal-continental-as-0330) |
