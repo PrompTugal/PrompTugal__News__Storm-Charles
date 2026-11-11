@@ -53,6 +53,8 @@ const result = days.map(day => {
 const doc = {
     by: 'incident.transport@web-summit.dinis', updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'),
     kind: 'fact',
+    status: 'planned timetable, not today\'s service',
+    todays_service: { label: 'none', note: 'Metro de Lisboa\'s own word on today\'s service is not read (its terms forbid republishing without its written consent; asked through Dinis). Its decisions as the press reported them are in data/decisions/entities/metro.json (evidence).', see: 'incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json' },
     what: 'Metro de Lisboa trips scheduled to start each hour, per line, both directions, from its published timetable. The plan, not what ran: a normal day to set beside the operator\'s and the authorities\' reports.',
     hours: 'Local time in Lisbon (WET, the same as UTC in November). A trip counts in the hour its first stop departs; trips that start after midnight on the service day are in after_midnight.',
     source: { name: 'GTFS do Metropolitano de Lisboa', publisher: feed.feed_publisher_name || 'Metropolitano de Lisboa, EPE', url: 'https://dados.gov.pt/datasets/gtfs-do-metropolitano-de-lisboa/', licence: 'CC BY 4.0 (dados.gov.pt)', feed_version: feed.feed_version || null, feed_valid: [feed.feed_start_date, feed.feed_end_date].filter(Boolean).join('..') || null, file_sha256: crypto.createHash('sha256').update(fs.readFileSync(zip)).digest('hex'), read: arg('read', null) },

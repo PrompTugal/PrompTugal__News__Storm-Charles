@@ -104,7 +104,7 @@
         (l.after_midnight ? '<p class="meta">And ' + l.after_midnight + ' more start after midnight, the last at ' + esc(gt(l.last).slice(0, 5)) + '.</p>' : '') + '</section>'
     }
     return '<section class="tr-sched"><h2>Metro de Lisboa: the timetable for ' + esc(day.weekday.charAt(0).toUpperCase() + day.weekday.slice(1)) + ' ' + esc(day.day.slice(8)) + ' November ' + lbl('fact') + '</h2>' +
-      '<p class="meta">Trips scheduled to start each hour, both directions, Lisbon time (the same as UTC in November). <b>The plan, not what ran</b>: a normal day to set beside the operator’s and the authorities’ reports. ' + prov(j.source.name + ', ' + j.source.publisher + ', ' + j.source.licence, j.source.url, j.source.read) + ', feed version ' + esc(j.source.feed_version) + '.</p>' +
+      '<p class="tr-state"><b>' + esc(j.status || 'planned timetable, not today’s service') + '.</b> ' + (j.todays_service ? esc(j.todays_service.note) : '') + '</p><p class="meta">Trips scheduled to start each hour, both directions, Lisbon time (the same as UTC in November). <b>The plan, not what ran</b>: a normal day to set beside the operator’s and the authorities’ reports. ' + prov(j.source.name + ', ' + j.source.publisher + ', ' + j.source.licence, j.source.url, j.source.read) + ', feed version ' + esc(j.source.feed_version) + '.</p>' +
       '<div class="tr-grid">' + day.lines.map(row).join('') + '</div></section>'
   }
 
