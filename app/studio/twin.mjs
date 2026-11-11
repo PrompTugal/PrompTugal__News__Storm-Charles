@@ -23,7 +23,7 @@ out.push('', 'How to add one: [animations/README.md](animations/README.md). The 
 for (const a of anims) {
     out.push(`## ${a.title}`, '', `The same storyboard as text: every scene, in order, with its caption. ${a.about || ''}`, '')
     a.chapters.forEach((ch, ci) => {
-        out.push(`### ${ci + 1}. ${ch.title}`, '')
+        out.push(`### ${ci + 1}. ${ch.title}`, '', ...(ch.question ? [`**${ch.question}**`, ''] : []))
         // sums, to check the figures the captions quote
         const U = id => { const k = (typeof id === 'string' ? id : id.id).split(':')[0], o = typeof id === 'string' ? {} : id; return o.u || (ch.blocks?.[k]?.u) || 1 }
         ch.scenes.forEach((sc, si) => {

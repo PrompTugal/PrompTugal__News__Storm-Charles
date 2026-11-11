@@ -3,7 +3,7 @@
   "title": "What compression is",
   "summary": "What travels to the model each time you say something to a chat assistant, what a cache changes, why a full conversation gets compressed, what is lost when it is, and how this team works so that the loss does not matter.",
   "by": "incident.studio@web-summit.dinis",
-  "updated": "2026-11-11T00:46:00Z",
+  "updated": "2026-11-11T00:52:00Z",
   "about": "An explanation in general terms that hold for chat assistants: the context is sent with each request; a cache reuses an unchanged beginning; a full window is summarised or cut. It describes no one product's internals. Block sizes are an illustration, not a measurement. At Dinis Cruz's word (BRIEF.md, 11 November 2026).",
   "chapters": [
     {
@@ -13,13 +13,13 @@
         "sys": {
           "label": "Instructions",
           "note": "the system prompt",
-          "u": 2,
+          "u": 1,
           "kind": "system"
         },
         "tools": {
           "label": "Tools",
           "note": "what each tool does",
-          "u": 2,
+          "u": 1,
           "kind": "tools"
         },
         "q1": {
@@ -156,7 +156,7 @@
           }
         },
         {
-          "caption": "That is a request with no cache. You typed three short lines; the model read 24 blocks to answer them, most of them more than once. The bars show the shape: each request is longer than the one before, so the total grows faster than the conversation does. This is the picture to keep: the context is sent with every request.",
+          "caption": "That is a request with no cache. You typed three short lines; the model read 18 blocks to answer them, most of them more than once. The bars show the shape: each request is longer than the one before, so the total grows faster than the conversation does. This is the picture to keep: the context is sent with every request.",
           "stack": [
             "sys",
             "tools",
@@ -172,7 +172,8 @@
             "right": "Here is who decided what."
           }
         }
-      ]
+      ],
+      "question": "What travels to the model when you say one thing?"
     },
     {
       "id": "with-cache",
@@ -181,13 +182,13 @@
         "sys": {
           "label": "Instructions",
           "note": "the system prompt",
-          "u": 2,
+          "u": 1,
           "kind": "system"
         },
         "tools": {
           "label": "Tools",
           "note": "what each tool does",
-          "u": 2,
+          "u": 1,
           "kind": "tools"
         },
         "q1": {
@@ -292,7 +293,7 @@
           }
         },
         {
-          "caption": "What the cache changed: cost and time. Over the same three requests the model read 12 blocks at full cost instead of 24: each request now pays in full only for what is new. The reused part is usually charged at a lower rate, not at nothing; how much lower differs from one service to another.",
+          "caption": "What the cache changed: cost and time. Over the same three requests the model read 10 blocks at full cost instead of 18: each request now pays in full only for what is new. The reused part is usually charged at a lower rate, not at nothing; how much lower differs from one service to another.",
           "stack": [
             "sys",
             "tools",
@@ -353,43 +354,44 @@
             "cached": 0
           }
         }
-      ]
+      ],
+      "question": "What does a cache change, and what does it not?"
     },
     {
       "id": "the-door",
       "title": "The door",
-      "window": 16,
+      "window": 11,
       "meters": false,
       "blocks": {
         "sys": {
           "label": "Instructions",
           "note": "the system prompt",
-          "u": 2,
+          "u": 1,
           "kind": "system"
         },
         "tools": {
           "label": "Tools",
           "note": "what each tool does",
-          "u": 2,
+          "u": 1,
           "kind": "tools"
         },
         "t13": {
           "label": "Turns 1 to 3",
-          "u": 3
+          "u": 2
         },
         "file": {
           "label": "File read",
           "note": "the timeline's text",
-          "u": 3,
+          "u": 2,
           "kind": "file"
         },
         "t49": {
           "label": "Turns 4 to 9",
-          "u": 3
+          "u": 2
         },
         "file2": {
           "label": "Another file read",
-          "u": 3,
+          "u": 2,
           "kind": "file"
         },
         "t1012": {
@@ -520,33 +522,34 @@
             "q13"
           ]
         }
-      ]
+      ],
+      "question": "Why does a long conversation have to be compressed?"
     },
     {
       "id": "what-gets-lost",
       "title": "What gets lost, and why",
-      "window": 16,
+      "window": 11,
       "meters": false,
       "blocks": {
         "sys": {
           "label": "Instructions",
           "note": "the system prompt",
-          "u": 2,
+          "u": 1,
           "kind": "system"
         },
         "tools": {
           "label": "Tools",
           "note": "what each tool does",
-          "u": 2,
+          "u": 1,
           "kind": "tools"
         },
         "t111": {
           "label": "Turns 1 to 11",
-          "u": 4
+          "u": 3
         },
         "file": {
           "label": "File read",
-          "u": 3,
+          "u": 2,
           "kind": "file"
         },
         "rule": {
@@ -555,11 +558,11 @@
         },
         "t1320": {
           "label": "Turns 13 to 20",
-          "u": 3
+          "u": 2
         },
         "t2124": {
           "label": "Turns 21 to 24",
-          "u": 3
+          "u": 2
         },
         "sum": {
           "label": "Summary of turns 1 to 20",
@@ -686,7 +689,8 @@
             "a25"
           ]
         }
-      ]
+      ],
+      "question": "Why does the assistant seem to forget?"
     },
     {
       "id": "side-by-side",
@@ -696,13 +700,13 @@
         "sys": {
           "label": "Instructions",
           "note": "the system prompt",
-          "u": 2,
+          "u": 1,
           "kind": "system"
         },
         "tools": {
           "label": "Tools",
           "note": "what each tool does",
-          "u": 2,
+          "u": 1,
           "kind": "tools"
         },
         "w1": {
@@ -713,13 +717,13 @@
         "w2": {
           "label": "Turns 9 to 30",
           "note": "sources read, dead ends",
-          "u": 3,
+          "u": 2,
           "kind": "file"
         },
         "w3": {
           "label": "Turns 31 to 50",
           "note": "decisions, a rule, filing",
-          "u": 3
+          "u": 2
         },
         "sum": {
           "label": "Summary of turns 1 to 50",
@@ -1301,12 +1305,13 @@
           ],
           "note": "The file sizes are measured: bytes in this repository, read 11 November 2026, 00:39 UTC; they grow as the storm goes on. The conversations were not measured."
         }
-      ]
+      ],
+      "question": "How does this team work, so that the loss does not matter?"
     },
     {
       "id": "the-point",
       "title": "The point",
-      "window": 12,
+      "window": 9,
       "meters": false,
       "cast": {
         "centre": "agent"
@@ -1318,13 +1323,13 @@
         "sys": {
           "label": "Instructions",
           "note": "the system prompt",
-          "u": 2,
+          "u": 1,
           "kind": "system"
         },
         "tools": {
           "label": "Tools",
           "note": "what each tool does",
-          "u": 2,
+          "u": 1,
           "kind": "tools"
         },
         "sum": {
@@ -1408,7 +1413,8 @@
           ],
           "shelf": "The file system (this repository)"
         }
-      ]
+      ],
+      "question": "So what is the point?"
     }
   ],
   "simplifies": [

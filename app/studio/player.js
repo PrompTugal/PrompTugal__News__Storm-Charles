@@ -43,7 +43,7 @@
         if (a.simplifies && a.simplifies.length) a.chapters.push({ id: 'what-this-simplifies', title: 'What this simplifies', scenes: [{ caption: 'Every picture here leaves things out. These are the ones that matter.', list: a.simplifies, lanes: [] }] })
         for (const ch of a.chapters) {
             const us = l => l.live.reduce((n, b) => n + b.u, 0)
-            ch.units = Math.max(4, ...ch.scenes.flatMap(sc => sc.lanes.map(l => Math.max(us(l), l.window || 0)))) + 1
+            ch.units = Math.max(4, ...ch.scenes.flatMap(sc => sc.lanes.map(l => Math.max(us(l) + l.stack.length - l.live.length, (l.window || 0) + 1))))
             // what each request read at full cost and reused, summed over the requests so far in this chapter (per lane)
             const seen = [{}, {}, {}]
             ch.cache = ch.scenes.some(sc => sc.lanes.some(l => l.send && l.send.cached !== undefined))
@@ -86,39 +86,64 @@
             return block(Object.assign({}, b, { state: c ? 'cached' : 'read' }), c ? 'r-cached' : 'r-read', i)
         }).join('') : ''
         const m = lane.m, sum = lane.sum
-        const meters = lane.meters === false || !sum || !sum.requests ? '' : `<dl class="sb-meters${ch.cache ? '' : ' two'}">
-<div><dt>This request, read at full cost</dt><dd>${m ? m.read : 0}<small> of ${m ? m.total : 0} blocks sent</small></dd></div>
-${ch.cache ? `<div class="reuse"><dt>This request, reused from the cache</dt><dd>${m ? m.cached : 0}<small> blocks</small></dd></div>` : ''}
-<div><dt>All ${sum.requests} request${sum.requests > 1 ? 's' : ''} so far, read at full cost</dt><dd>${sum.read}<small> blocks${sum.cached ? ` (${sum.cached} reused)` : ''}</small></dd></div>
+        const meters = lane.meters === false || !sum || !sum.requests ? '' : `<div class="sb-count"><dl class="sb-meters">
+<div><dt>This request</dt><dd>${m ? m.read : 0}<small> blocks read at full cost${ch.cache ? `, <span class="reuse">${m ? m.cached : 0} reused</span>` : ''}</small></dd></div>
+<div><dt>All ${sum.requests} request${sum.requests > 1 ? 's' : ''} so far</dt><dd>${sum.read}<small> read at full cost${ch.cache ? `, <span class="reuse">${sum.cached} reused</span>` : ''}</small></dd></div>
 </dl>
-<div class="sb-bars" role="img" aria-label="Each request so far: ${lane.reqs.map(r => `request ${r.n}, ${r.read} blocks read at full cost${r.cached ? `, ${r.cached} reused` : ''}`).join('; ')}"><b>Each request so far</b>${lane.reqs.map(r => `<div class="${m && r.n === m.n ? 'now' : ''}"><span>${r.n}</span><i class="c" data-w="${r.cached}"></i><i class="r" data-w="${r.read}"></i><small>${r.read} read${r.cached ? `, ${r.cached} reused` : ''}</small></div>`).join('')}</div>`
-        const files = lane.files ? `<div class="sb-shelf"><h5>${esc(lane.shelf || 'The file system')}</h5><ul>${lane.files.map(f => `<li class="${f.state ? 's-' + esc(f.state) : ''}${animate && f.state === 'new' ? ' enter' : ''}">${f.href ? `<a href="${esc(f.href)}">${esc(f.name)}</a>` : `<b>${esc(f.name)}</b>`}${f.size ? ` <span class="sb-size">${esc(f.size)}</span>` : ''}${f.note ? `<small>${esc(f.note)}</small>` : ''}</li>`).join('')}</ul></div>` : ''
+<div class="sb-bars" role="img" aria-label="Each request so far: ${lane.reqs.map(r => `request ${r.n}, ${r.read} blocks read at full cost${r.cached ? `, ${r.cached} reused` : ''}`).join('; ')}"><b>Each request so far</b>${lane.reqs.map(r => `<div class="${m && r.n === m.n ? 'now' : ''}"><span>${r.n}</span><i class="c" data-w="${r.cached}"></i><i class="r" data-w="${r.read}"></i><small>${r.read} read${r.cached ? `, ${r.cached} reused` : ''}</small></div>`).join('')}</div></div>`
+        const files = lane.files ? `<div class="sb-shelf"><h5>${esc(lane.shelf || 'The file system')}</h5><ul>${lane.files.map(f => `<li title="${esc(f.note || '')}" class="${f.state ? 's-' + esc(f.state) : ''}${animate && f.state === 'new' ? ' enter' : ''}">${f.href ? `<a href="${esc(f.href)}">${esc(f.name)}</a>` : `<b>${esc(f.name)}</b>`}${f.size ? ` <span class="sb-size">${esc(f.size)}</span>` : ''}${f.note ? `<small>${esc(f.note)}</small>` : ''}</li>`).join('')}</ul></div>` : ''
         return `<section class="sb-lane${lane.title ? ' titled' : ''}">${lane.title ? `<h4>${esc(lane.title)}</h4>` : ''}
 <div class="sb-cols${win ? ' has-door' : ''}${lane.cast.left ? '' : ' no-left'}">
-${head(lane, 'left')}${head(lane, 'centre')}${head(lane, 'right')}
-<div class="sb-pile sb-held" data-units="${ch.units}"><span class="sb-cap">${esc(lane.held || 'The conversation ' + String(lane.names[lane.cast.centre] || 'the app').replace(/^[A-Z]/, c => c.toLowerCase()) + ' holds')}</span>${win ? `<span class="sb-lintel" data-u="${win}"><i>the window: ${win} blocks</i></span>` : ''}${pile}</div>
+<div class="sb-side">${head(lane, 'left')}${meters}${lane.cast.left ? files : ''}</div>${head(lane, 'centre')}${head(lane, 'right')}
+<div class="sb-pile sb-held" data-units="${ch.units}"><span class="sb-cap">${esc(lane.held || 'The conversation ' + String(lane.names[lane.cast.centre] || 'the app').replace(/^[A-Z]/, c => c.toLowerCase()) + ' holds')}</span>${win ? `<span class="sb-lintel" data-u="${win}"></span>` : ''}${pile}</div>
 ${win ? `<div class="sb-door${blocked ? ' blocked' : ''}" data-units="${ch.units}"><span data-u="${win}"></span></div>` : ''}
-<div class="sb-pile sb-got${sendNew ? ' arrive' : ''}${blocked ? ' blocked' : ''}" data-units="${ch.units}"><span class="sb-cap">${lane.send ? (blocked ? 'Request ' + lane.send.n + ': does not fit' : 'Request ' + lane.send.n + ': what the model receives') : 'Between requests the model holds nothing'}</span>${got}</div>
-</div>${meters}${files}</section>`
+<div class="sb-pile sb-got${sendNew ? ' arrive' : ''}${blocked ? ' blocked' : ''}" data-units="${ch.units}">${win ? `<span class="sb-lintel lab" data-u="${win}"><i>the window: ${win} blocks</i></span>` : ''}<span class="sb-cap">${lane.send ? (blocked ? 'Request ' + lane.send.n + ': does not fit' : 'Request ' + lane.send.n + ': what the model receives') : 'Between requests the model holds nothing'}</span>${got}</div>
+</div>${lane.cast.left ? '' : files}</section>`
     }
-    function draw(animate) {
-        const a = S.anim, ch = a.chapters[S.ch], sc = ch.scenes[S.sc], stage = root.querySelector('.sb-stage')
-        const prev = S.prev && S.prev.ch === S.ch ? ch.scenes[S.prev.sc] : null
-        animate = animate && !still()
+    function paint(stage, ch, sc, prev, animate) {
         stage.className = 'sb-stage' + (sc.lanes.length > 1 ? ' two' : '') + (animate ? '' : ' still')
         stage.innerHTML = sc.list ? `<ol class="sb-list">${sc.list.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : sc.lanes.map((l, i) => drawLane(ch, l, prev && prev.lanes[i], animate)).join('')
-        // sizes are set through the CSSOM (no inline style attributes: the site may run under a strict Content-Security-Policy)
+        sizes(stage, ch)
+    }
+    // sizes are set through the CSSOM (no inline style attributes: the site may run under a strict Content-Security-Policy)
+    function sizes(stage, ch) {
         for (const e of stage.querySelectorAll('[data-u]')) e.style.setProperty('--u', e.dataset.u)
         for (const e of stage.querySelectorAll('[data-units]')) e.style.setProperty('--units', e.dataset.units)
         for (const e of stage.querySelectorAll('[data-w]')) e.style.width = (60 * e.dataset.w / (ch.maxReq || 1)) + '%'
         for (const e of stage.querySelectorAll('[data-i]')) e.style.setProperty('--i', e.dataset.i)
-        root.querySelector('.sb-caption').innerHTML = `<b>${esc(ch.title)} · scene ${S.sc + 1} of ${ch.scenes.length}</b> ${esc(sc.caption)}${sc.note ? ` <small>${esc(sc.note)}</small>` : ''}`
+    }
+    // one screen: on a desk the stage, the caption and the controls fit the window without scrolling. The chapter's tallest scene
+    // is measured and the block height (--U) is lowered until it fits (never under 13 px); the stage then keeps that height, so
+    // nothing jumps between scenes. On a phone the page scrolls and the controls stick to the bottom instead.
+    function fit() {
+        const ch = S.anim.chapters[S.ch], stage = root.querySelector('.sb-stage'), sb = root.querySelector('.sb')
+        S.fit = S.ch + '|' + window.innerWidth + '|' + window.innerHeight
+        stage.style.removeProperty('--U'); stage.style.minHeight = '0'
+        if (window.innerWidth < 700) { stage.style.minHeight = ''; root.querySelector('.sb-caption').style.minHeight = ''; return }
+        const cap = root.querySelector('.sb-caption'); cap.style.minHeight = ''
+        const tallest = () => { let all = 0, st = 0, cp = 0; for (const sc of ch.scenes) { paint(stage, ch, sc, null, false); cap.innerHTML = caption(ch, sc, 0); all = Math.max(all, sb.offsetHeight); st = Math.max(st, stage.offsetHeight); cp = Math.max(cp, cap.offsetHeight) } return { all, st, cp } }
+        let h = tallest()
+        const room = window.innerHeight - Math.min(sb.getBoundingClientRect().top + window.scrollY, 240) - 8
+        for (let U = Math.round(parseFloat(getComputedStyle(stage).getPropertyValue('--U'))) - 1; h.all > room && U >= 15; U--) { stage.style.setProperty('--U', U + 'px'); const n = tallest(); if (n.all >= h.all) { stage.style.setProperty('--U', (U + 1) + 'px'); break } h = n }   // stop when shorter blocks no longer help
+        stage.style.minHeight = h.st + 'px'; cap.style.minHeight = h.cp + 'px'
+    }
+    const caption = (ch, sc, i) => `<b>${esc(ch.title)} · scene ${i + 1} of ${ch.scenes.length}</b>${sc === ch.scenes[0] && ch.question ? `<strong>${esc(ch.question)}</strong> ` : ' '}${esc(sc.caption)}${sc.note ? ` <small>${esc(sc.note)}</small>` : ''}`
+    function draw(animate) {
+        const a = S.anim, ch = a.chapters[S.ch], sc = ch.scenes[S.sc], stage = root.querySelector('.sb-stage')
+        const prev = S.prev && S.prev.ch === S.ch ? ch.scenes[S.prev.sc] : null
+        animate = animate && !still()
+        if (S.fit !== S.ch + '|' + window.innerWidth + '|' + window.innerHeight) fit()
+        paint(stage, ch, sc, prev, animate)
+        if (!S.started) stage.insertAdjacentHTML('beforeend', '<button type="button" class="sb-big" data-do="play"><span aria-hidden="true">▶</span> Play</button>')
+        root.querySelector('.sb-caption').innerHTML = caption(ch, sc, S.sc)
         root.querySelectorAll('.sb-chapters button').forEach((b, i) => b.setAttribute('aria-current', i === S.ch ? 'true' : 'false'))
         root.querySelector('.sb-scenes').innerHTML = ch.scenes.map((x, i) => `<button type="button" data-sc="${i}" aria-label="Scene ${i + 1}" aria-current="${i === S.sc}">${i + 1}</button>`).join('')
         const first = S.ch === 0 && S.sc === 0, last = S.ch === a.chapters.length - 1 && S.sc === ch.scenes.length - 1
         root.querySelector('[data-do=prev]').disabled = first
         root.querySelector('[data-do=next]').disabled = last
-        try { history.replaceState(null, '', '#' + a.id + '/' + (S.ch + 1) + '/' + (S.sc + 1)) } catch (e) { }
+        const hash = '#' + a.id + '/' + (S.ch + 1) + '/' + (S.sc + 1), link = root.querySelector('.sb-link')
+        link.href = hash; link.textContent = 'Link to this scene'
+        if (S.started) try { history.replaceState(null, '', hash) } catch (e) { }
         S.prev = { ch: S.ch, sc: S.sc }
     }
     function go(ch, sc, animate) {
@@ -129,12 +154,14 @@ ${win ? `<div class="sb-door${blocked ? ' blocked' : ''}" data-units="${ch.units
         draw(animate !== false)
         if (S.playing) schedule()
     }
+    function started() { if (S.started) return; S.started = true; const b = root.querySelector('.sb-big'); if (b) b.remove() }
     function next() { const ch = S.anim.chapters[S.ch]; if (S.sc < ch.scenes.length - 1) go(S.ch, S.sc + 1); else if (S.ch < S.anim.chapters.length - 1) go(S.ch + 1, 0); else play(false) }
     function prev() { if (S.sc > 0) go(S.ch, S.sc - 1, false); else if (S.ch > 0) go(S.ch - 1, -1, false) }
+    const dur = sc => sc.dur || Math.max(3500, 1500 + 42 * String(sc.caption).length)
     function schedule() {
         clearTimeout(S.timer)
         const sc = S.anim.chapters[S.ch].scenes[S.sc], bar = root.querySelector('.sb-progress i')
-        const ms = (sc.dur || Math.max(3800, 2200 + 55 * String(sc.caption).length)) / S.speed
+        const ms = (sc.dur || dur(sc)) / S.speed
         bar.style.animation = 'none'; void bar.offsetWidth
         if (!still()) bar.style.animation = `sb-progress ${ms}ms linear forwards`
         S.timer = setTimeout(next, ms)
@@ -152,17 +179,21 @@ ${win ? `<div class="sb-door${blocked ? ' blocked' : ''}" data-units="${ch.units
     function frame() {
         const a = S.anim
         root.innerHTML = `<div class="sb" tabindex="0" role="group" aria-label="Storyboard: ${esc(a.title)}">
-<div class="sb-title">${S.list.length > 1 ? `<label>Animation <select class="sb-pick">${S.list.map(x => `<option value="${esc(x.id)}"${x.id === a.id ? ' selected' : ''}>${esc(x.title)}</option>`).join('')}</select></label>` : `<h2>${esc(a.title)}</h2>`}<p class="meta">${esc(a.summary || '')}</p></div>
+<div class="sb-title">${S.list.length > 1 ? `<label>Animation <select class="sb-pick">${S.list.map(x => `<option value="${esc(x.id)}"${x.id === a.id ? ' selected' : ''}>${esc(x.title)}</option>`).join('')}</select></label>` : `<h2>${esc(a.title)}</h2>`}<p class="meta"><b>What you will see:</b> ${esc(a.summary || '')} ${a.chapters.length - (a.simplifies ? 1 : 0)} chapters, ${a.chapters.reduce((n, c) => n + c.scenes.length, 0)} scenes, about ${Math.round(a.chapters.reduce((n, c) => n + c.scenes.reduce((m, sc) => m + dur(sc), 0), 0) / 60000)} minutes at normal speed, or step through with Next.</p></div>
 <ol class="sb-chapters">${a.chapters.map((c, i) => `<li><button type="button" data-ch="${i}"><span>${i + 1}</span> ${esc(c.title)}</button></li>`).join('')}</ol>
 <div class="sb-stage"></div>
 <p class="sb-caption" aria-live="polite"></p>
 <div class="sb-progress" aria-hidden="true"><i></i></div>
-<div class="sb-controls"><button type="button" data-do="restart" title="Restart this chapter (R)">Restart</button><button type="button" data-do="prev" title="Previous scene (←)">Previous</button><button type="button" data-do="play" class="primary" aria-pressed="false" title="Play or pause (Space)">Play</button><button type="button" data-do="next" title="Next scene (→)">Next</button><button type="button" data-do="speed" title="Speed (S)">Speed 1×</button><span class="sb-scenes" role="group" aria-label="Scenes of this chapter"></span></div>
-<p class="sb-keys meta">Keys: Space play or pause · ← → scene · PageUp PageDown chapter · R restart · S speed. Blocks are an illustration of size, not a measurement. The same, as text, is below.</p>
+<div class="sb-controls"><button type="button" data-do="prev" title="Previous scene (←)">Previous</button><button type="button" data-do="play" class="primary" aria-pressed="false" title="Play or pause (Space)">Play</button><button type="button" data-do="next" title="Next scene (→)">Next</button><button type="button" data-do="speed" title="Speed (S)">Speed 1×</button></div>
+<div class="sb-more"><button type="button" data-do="restart" title="Restart this chapter (R)">Restart</button><a class="sb-link" href="#" title="Copy a link to this scene">Link to this scene</a><span class="sb-scenes" role="group" aria-label="Scenes of this chapter"></span></div>
+<p class="sb-keys meta">Keys: Space play or pause · ← → scene · PageUp PageDown chapter · R restart · S speed. Blocks show size as an illustration, not a measurement. The same, as text, is below.</p>
 </div>`
         const sb = root.querySelector('.sb')
         sb.addEventListener('click', e => {
+            const l = e.target.closest('.sb-link')
+            if (l) { e.preventDefault(); S.started = true; try { history.replaceState(null, '', l.getAttribute('href')) } catch (x) { } const done = () => { l.textContent = 'Link copied' }; if (navigator.clipboard) navigator.clipboard.writeText(l.href).then(done, () => { l.textContent = 'The link is in the address bar' }); else l.textContent = 'The link is in the address bar'; return }
             const b = e.target.closest('button'); if (!b) return
+            started()
             if (b.dataset.ch) return go(+b.dataset.ch, 0)
             if (b.dataset.sc) return go(S.ch, +b.dataset.sc)
             const d = b.dataset.do
@@ -179,14 +210,15 @@ ${win ? `<div class="sb-door${blocked ? ' blocked' : ''}" data-units="${ch.units
             else if (k === 's' || k === 'S') speed()
             else if (/^[1-9]$/.test(k) && !onControl && +k <= S.anim.chapters.length) go(+k - 1, 0)
             else done = false
-            if (done) e.preventDefault()
+            if (done) { e.preventDefault(); started() }
         })
         const pick = root.querySelector('.sb-pick'); if (pick) pick.addEventListener('change', () => load(pick.value, 0, 0))
+        let rz = 0; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => draw(false), 150) })
         document.addEventListener('visibilitychange', () => { if (document.hidden && S.playing) play(false) })
     }
     function load(id, ch, sc) {
         const item = S.list.find(x => x.id === id) || S.list[0]
-        return getJSON(base + item.file).then(a => { clearTimeout(S.timer); S.playing = false; S.prev = null; S.anim = normalise(a); frame(); go(ch || 0, sc || 0, false) })
+        return getJSON(base + item.file).then(a => { clearTimeout(S.timer); S.playing = false; S.prev = null; S.anim = normalise(a); S.fit = ''; if (ch || sc) S.started = true; frame(); go(ch || 0, sc || 0, false) })
     }
     getJSON(base + 'index.json').then(ix => {
         S.list = ix.animations || []
