@@ -1,0 +1,80 @@
+{
+ "about": "An aggregator republishes the warnings of the services that issue them. Every edge: the page that says so (`source`), when we read it (`read_utc`), whether the phrases we looked for were on it (`state`), a short quote. Stamped by tools/meteorology-read.mjs.",
+ "by": "incident.meteorology@web-summit.dinis",
+ "updated": "2026-11-11T02:30Z",
+ "verb": "aggregates",
+ "inverse": "aggregated_by",
+ "edges": [
+  {
+   "from": "svc-meteoalarm",
+   "to": "svc-ipma-warnings",
+   "source": "https://www.meteoalarm.org/en/live/page/about-meteoalarm",
+   "expect": [
+    "National Meteorological",
+    "EUMETNET"
+   ],
+   "note": "Per country, the feed is at feeds.meteoalarm.org (Portugal: IPMA). The feeds are mapped by incident.sources@.",
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "9c0cf2728b1900bc0e1af9a1831fe195c9e99ce2393bf0230a142e63a814db80",
+   "state": "not found in this read",
+   "render": true,
+   "found": []
+  },
+  {
+   "from": "svc-meteoalarm",
+   "to": "svc-aemet-meteoalerta",
+   "source": "https://www.meteoalarm.org/en/live/page/about-meteoalarm",
+   "expect": [
+    "National Meteorological"
+   ],
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "9c0cf2728b1900bc0e1af9a1831fe195c9e99ce2393bf0230a142e63a814db80",
+   "state": "not found in this read",
+   "render": true,
+   "found": []
+  },
+  {
+   "from": "svc-meteoalarm",
+   "to": "svc-meteofrance-vigilance",
+   "source": "https://www.meteoalarm.org/en/live/page/about-meteoalarm",
+   "expect": [
+    "National Meteorological"
+   ],
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "9c0cf2728b1900bc0e1af9a1831fe195c9e99ce2393bf0230a142e63a814db80",
+   "state": "not found in this read",
+   "render": true,
+   "found": []
+  },
+  {
+   "from": "svc-meteoalarm",
+   "to": "svc-metoffice-nswws",
+   "source": "https://www.meteoalarm.org/en/live/page/about-meteoalarm",
+   "expect": [
+    "National Meteorological"
+   ],
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "9c0cf2728b1900bc0e1af9a1831fe195c9e99ce2393bf0230a142e63a814db80",
+   "state": "not found in this read",
+   "render": true,
+   "found": []
+  },
+  {
+   "from": "svc-wmo-swic",
+   "to": "svc-ipma-warnings",
+   "source": "https://severeweather.wmo.int/",
+   "expect": [
+    "Severe Weather"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "8ce2f68d624aead8b1f064a122ba6ce3c5a26c5da015a46bfcb62bb1c58968e5",
+   "state": "stated",
+   "quote": "Severe Weather Information Centre 3.0 Severe Weather Information Centre 3.0 A Core Component of the WMO Global Multi-hazard Alert System (GMAS) Framework Supporting UN Early"
+  }
+ ]
+}

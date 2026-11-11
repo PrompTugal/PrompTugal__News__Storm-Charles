@@ -1,0 +1,99 @@
+{
+ "about": "Nodes of the meteorology lineage graph, type \"model\": what computes the forecast. Ids are stable (incident.entities@ may adopt them); meaning is in the edges (meteorology/edges/), not here.",
+ "by": "incident.meteorology@web-summit.dinis",
+ "updated": "2026-11-11T02:30Z",
+ "type": "model",
+ "nodes": [
+  {
+   "id": "model-ecmwf-ifs",
+   "name": "ECMWF IFS",
+   "summary": "The Integrated Forecasting System: ECMWF's global physics-based model (high-resolution and ensemble forecasts, four runs a day).",
+   "url": "https://www.ecmwf.int/en/forecasts/documentation-and-support",
+   "kind": "global, physics-based"
+  },
+  {
+   "id": "model-ecmwf-aifs",
+   "name": "ECMWF AIFS",
+   "summary": "ECMWF's Artificial Intelligence Forecasting System: a machine-learned global model run operationally beside IFS, with open outputs and open weights.",
+   "url": "https://www.ecmwf.int/en/forecasts/datasets/open-data",
+   "kind": "global, machine-learned"
+  },
+  {
+   "id": "model-gfs",
+   "name": "GFS (NOAA/NCEP)",
+   "summary": "The Global Forecast System: the United States' global model, four runs a day, outputs in the public domain.",
+   "url": "https://www.emc.ncep.noaa.gov/emc/pages/numerical_forecast_systems/gfs.php",
+   "kind": "global, physics-based"
+  },
+  {
+   "id": "model-icon",
+   "name": "ICON (DWD)",
+   "summary": "Germany's ICOsahedral Nonhydrostatic model: global, with nested ICON-EU and the convection-permitting ICON-D2.",
+   "url": "https://www.dwd.de/EN/research/weatherforecasting/num_modelling/01_num_weather_prediction_modells/icon_description.html",
+   "kind": "global and regional, physics-based"
+  },
+  {
+   "id": "model-arpege",
+   "name": "ARPEGE (Météo-France)",
+   "summary": "Météo-France's global model with a stretched grid, finest over France and coarser on the far side of the globe.",
+   "url": "https://www.umr-cnrm.fr/spip.php?article121&lang=en",
+   "kind": "global, physics-based"
+  },
+  {
+   "id": "model-arome",
+   "name": "AROME (Météo-France)",
+   "summary": "Météo-France's convection-permitting regional model (about 1.3 km), the family several European services run over their own territory.",
+   "url": "https://www.umr-cnrm.fr/spip.php?article120&lang=en",
+   "kind": "regional, physics-based"
+  },
+  {
+   "id": "model-harmonie-arome",
+   "name": "HARMONIE-AROME (AEMET and the ACCORD consortium)",
+   "summary": "The configuration of AROME run by AEMET over the Iberian Peninsula and the Canaries, and by the Nordic and Dutch services.",
+   "url": "https://www.aemet.es/en/eltiempo/prediccion/modelosnumericos/harmonie_arome",
+   "kind": "regional, physics-based"
+  },
+  {
+   "id": "model-ukmo-um",
+   "name": "Met Office Unified Model",
+   "summary": "The United Kingdom's model: one code for global and for the kilometre-scale UKV forecasts.",
+   "url": "https://www.metoffice.gov.uk/research/approach/modelling-systems/unified-model/weather-forecasting",
+   "kind": "global and regional, physics-based"
+  },
+  {
+   "id": "model-meps",
+   "name": "MEPS (MetCoOp)",
+   "summary": "The Nordic services' shared ensemble of HARMONIE-AROME; it covers the Nordic area only, so a forecast for Lisbon from MET Norway's API comes from ECMWF.",
+   "url": "https://docs.api.met.no/doc/locationforecast/datamodel",
+   "kind": "regional ensemble, physics-based"
+  },
+  {
+   "id": "model-graphcast",
+   "name": "GraphCast (Google DeepMind)",
+   "summary": "A machine-learned global model published with code and weights; trained on ECMWF reanalysis.",
+   "url": "https://github.com/google-deepmind/graphcast",
+   "kind": "global, machine-learned"
+  },
+  {
+   "id": "model-pangu",
+   "name": "Pangu-Weather (Huawei)",
+   "summary": "A machine-learned global model published with its trained weights for non-commercial use.",
+   "url": "https://github.com/198808xc/Pangu-Weather",
+   "kind": "global, machine-learned"
+  },
+  {
+   "id": "model-aurora",
+   "name": "Aurora (Microsoft)",
+   "summary": "A machine-learned foundation model of the atmosphere published with code and weights.",
+   "url": "https://github.com/microsoft/aurora",
+   "kind": "global, machine-learned"
+  },
+  {
+   "id": "model-fourcastnet",
+   "name": "FourCastNet (NVIDIA and others)",
+   "summary": "An early machine-learned global model published with code.",
+   "url": "https://github.com/NVlabs/FourCastNet",
+   "kind": "global, machine-learned"
+  }
+ ]
+}

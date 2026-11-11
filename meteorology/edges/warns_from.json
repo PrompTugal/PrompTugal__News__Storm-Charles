@@ -1,0 +1,66 @@
+{
+ "about": "A warning service says what its warnings or forecasts are based on. Most services do not say which model stands behind a given warning: a forecaster decides. Every edge: the page that says so (`source`), when we read it (`read_utc`), whether the phrases we looked for were on it (`state`), a short quote. Stamped by tools/meteorology-read.mjs.",
+ "by": "incident.meteorology@web-summit.dinis",
+ "updated": "2026-11-11T02:30Z",
+ "verb": "warns_from",
+ "inverse": "informs_warning_by",
+ "edges": [
+  {
+   "from": "svc-nhc",
+   "to": "model-gfs",
+   "source": "https://www.nhc.noaa.gov/modelsummary.shtml",
+   "expect": [
+    "GFS",
+    "Global Forecast System"
+   ],
+   "read_utc": "2026-11-11T02:23Z",
+   "http": 200,
+   "sha256": "9c9d37ab146b336aa98f4bdfd70ceaee5bc414a20df61e7b836fda8cc203df09",
+   "state": "stated",
+   "quote": "tropical cyclone (TC) along based on the prevailing flow obtained from a separate dynamical model (either the GFS or the ECMWF). Super Intelligence/Machine Learning (SI/ML) models are trained on reanalysis outputs from dynamical models, as well as other datasets, to reproduce predicted"
+  },
+  {
+   "from": "svc-nhc",
+   "to": "model-ecmwf-ifs",
+   "source": "https://www.nhc.noaa.gov/modelsummary.shtml",
+   "expect": [
+    "ECMWF"
+   ],
+   "read_utc": "2026-11-11T02:23Z",
+   "http": 200,
+   "sha256": "9c9d37ab146b336aa98f4bdfd70ceaee5bc414a20df61e7b836fda8cc203df09",
+   "state": "stated",
+   "quote": "cyclone (TC) along based on the prevailing flow obtained from a separate dynamical model (either the GFS or the ECMWF). Super Intelligence/Machine Learning (SI/ML) models are trained on reanalysis outputs from dynamical models, as well as other datasets, to reproduce predicted atmospheric"
+  },
+  {
+   "from": "svc-nhc",
+   "to": "model-ukmo-um",
+   "source": "https://www.nhc.noaa.gov/modelsummary.shtml",
+   "expect": [
+    "UKMET"
+   ],
+   "read_utc": "2026-11-11T02:23Z",
+   "http": 200,
+   "sha256": "9c9d37ab146b336aa98f4bdfd70ceaee5bc414a20df61e7b836fda8cc203df09",
+   "state": "stated",
+   "quote": "*UKM/UKMI/UKM2 U.K. Met Office Global Model Grid point (~10 km) 70 Hybrid Sigma-pressure 4D-VAR Ensemble Hybrid UKMET 12 hr (144 hr) 00/12 UTC Track, intensity, wind radii CMC/CMCI/CMC2 Canadian Deterministic Prediction System Grid point (~15 km) 80 Hybrid Sigma-pressure 4D-VAR Ensemble"
+  },
+  {
+   "from": "svc-ipma-warnings",
+   "to": null,
+   "source": "https://www.ipma.pt/pt/enciclopedia/otempo/sam/index.html",
+   "searched": [
+    "AROME",
+    "GFS",
+    "ARPEGE",
+    "modelo numérico",
+    "modelos numéricos"
+   ],
+   "note": "IPMA's page on its warning system gives the criteria (thresholds by hazard and district) and not the models behind a warning.",
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "298b68cc9691556d1555cecf9713710413494bd3fc2fa0e347e87745ea83dbe3",
+   "state": "not stated"
+  }
+ ]
+}

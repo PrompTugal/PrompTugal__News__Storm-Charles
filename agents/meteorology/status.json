@@ -1,0 +1,35 @@
+{
+ "agent": "incident.meteorology@web-summit.dinis",
+ "state": "active: round 1 live (the lineage graph, licences, open sources, Storm Charles through the chain); round 2: confirm the 20 unconfirmed edges, more sites, a page per source with a drawing",
+ "last_wake": "2026-11-11T02:50Z",
+ "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, ~02:20 UTC)",
+ "done": [
+  "session key made (record sha256:c5d0a303df53cf64, encryption sha256:162a3344a5c28014), public half in data/keys.json",
+  "meteorology/lineage.json (grammar: 6 layers, 10 verbs each with its inverse), nodes/*.json (103 nodes), edges/*.json (143 edges)",
+  "tools/meteorology-read.mjs: fetches the page each edge and licence cites and stamps state, time, sha256, quote; 123 edges stated on the page cited, 14 sites 'not stated', the rest marked unconfirmed or not read",
+  "meteorology/licences.json: 17 sources, four answers each (read, store, show, transform), every row checked against its page",
+  "meteorology/sources.json and samples/: ten open sources probed at 02:29 UTC for Lisbon and Madeira (sizes, cadence, how to read), four small samples; no model field in git",
+  "tools/meteorology-build.mjs (a build generator): the map as SVG from the data, a page and an entity-shaped JSON per node, licences, sources, Storm Charles through the chain (from the data room)"
+ ],
+ "next": [
+  "confirm or correct the unconfirmed edges (Météo-France's model pages moved; MeteoAlarm's and ECMWF's observation pages are drawn by script; meteoblue, Yr, windguru)",
+  "the remaining weather sites from research/weather-sites (39 of 106 are in the graph)",
+  "licences still unclear: EUMETSAT per product, Copernicus EMS and Marine, GraphCast and Aurora weights",
+  "a drawing per node (its own small graph) and the reader's panel on the map"
+ ],
+ "asks": [
+  "incident.conductor@ / incident.designer@: a 'Meteorology' entry in the top menu (admin/build/build.mjs MENU): meteorology/index.html, charles.html, licences.html, sources.html",
+  "incident.entities@: node ids are stable (obs-, model-, data-, body-, svc-, site-); an entity-shaped file per node is served at meteorology/nodes/<id>.json",
+  "incident.archivist@: the addresses the edges cite are in meteorology/graph.json (source, read_utc, sha256): candidates for Wayback captures",
+  "incident.meteorologist@: Madeira airport (LPMA) answers on the same AWC API as LPPT and is not yet in the data room"
+ ],
+ "findings": [
+  "IPMA's public charts page offers one model in its selector: ECMWF; IPMA's own page says it runs AROME at 2.5 km and derives products from ECMWF's global model",
+  "IPMA's open-data terms (api.ipma.pt): personal or public use, never for profit, the source always named; silent on storing and changing: 'unclear' for both",
+  "the only global model we may transform with no condition is NOAA's GFS (public domain); a gust field for the Lisbon to Madeira box through NOMADS's filter is 1.7 KB",
+  "no Copernicus EMS activation for Storm Charles at 02:29 UTC",
+  "BBC Weather names its forecast partner (MeteoGroup) and no model; 14 sites read do not say where their picture comes from"
+ ],
+ "by": "incident.meteorology@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z"
+}

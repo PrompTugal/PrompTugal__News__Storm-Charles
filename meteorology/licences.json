@@ -1,0 +1,478 @@
+{
+ "about": "Licences as data: for each source in the meteorology lineage, the exact licence or terms with the page that states them, and four plain answers: may we read it, store it, show it, transform it; and with what attribution. \"unclear\" where the terms are silent or not yet read. A careful reading of public terms by an agent, not legal advice: the decision in a doubtful case is Dinis's. Each row is checked against its page by tools/meteorology-read.mjs (state, read_utc, quote).",
+ "by": "incident.meteorology@web-summit.dinis",
+ "updated": "2026-11-11T02:31Z",
+ "answers": [
+  "yes",
+  "yes, with attribution",
+  "yes, with conditions (written out)",
+  "unclear",
+  "no"
+ ],
+ "licences": [
+  {
+   "id": "lic-noaa",
+   "name": "NOAA / US National Weather Service (GFS, NOMADS, Aviation Weather Center, NHC)",
+   "covers": [
+    "model-gfs",
+    "data-noaa-nomads",
+    "data-awc-api",
+    "svc-nhc",
+    "obs-goes",
+    "obs-jpss"
+   ],
+   "licence": "US government work: public domain",
+   "source": "https://www.weather.gov/disclaimer",
+   "expect": [
+    "public domain",
+    "without charge for any lawful purpose"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes",
+    "transform": "yes"
+   },
+   "attribution": "Not required; NOAA asks not to claim it as your own and not to imply endorsement. We credit \"NOAA/NWS\".",
+   "conditions": "Do not present modified data as official NWS information.",
+   "read_utc": "2026-11-11T02:30Z",
+   "http": 200,
+   "sha256": "c08c1597ebd52b31e3ba749f76d2217c290dcd16dc894cb4c109655566ecbbd1",
+   "state": "stated",
+   "quote": "Centers Use of NOAA/NWS Data and Products The information on National Weather Service (NWS) Web pages are in the public domain, unless specifically noted otherwise, and may be used without charge for any lawful purpose so long as you do not: 1) claim it is your own (e.g., by claiming"
+  },
+  {
+   "id": "lic-ecmwf-open",
+   "name": "ECMWF open data (IFS and AIFS real-time forecasts)",
+   "covers": [
+    "data-ecmwf-open",
+    "model-ecmwf-ifs",
+    "model-ecmwf-aifs"
+   ],
+   "licence": "CC BY 4.0, with ECMWF's Terms of Use",
+   "source": "https://www.ecmwf.int/en/forecasts/datasets/open-data",
+   "expect": [
+    "CC-BY-4.0"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "\"Copyright © [year] European Centre for Medium-Range Weather Forecasts (ECMWF)\", the source, the licence, and a statement of any change made.",
+   "conditions": "No service guarantee; the open subset is coarser (0.25°) and later than what members receive.",
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "85d2592ad1fd7c023d9645e9b5c13e65b8facc25079b463529b0a66d5d579f10",
+   "state": "stated",
+   "quote": "and AIFS models is made available to the public free of charge. Their use is governed by the Creative Commons CC-BY-4.0 licence and the ECMWF Terms of Use . This means that the data may be redistributed and used commercially, subject to appropriate attribution . Accessing this data,"
+  },
+  {
+   "id": "lic-aifs-weights",
+   "name": "ECMWF AIFS (the trained model itself)",
+   "covers": [
+    "model-ecmwf-aifs"
+   ],
+   "licence": "CC BY 4.0 (model card)",
+   "source": "https://huggingface.co/ecmwf/aifs-single-1.0",
+   "expect": [
+    "License: cc-by-4.0"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "ECMWF, with the model card cited.",
+   "conditions": "Running it needs the IFS analysis as input (also open data) and a GPU.",
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "9394960837db86afb86ba48ba2af2e2f01dab0485a2bce5e0157f4012ba250a7",
+   "state": "stated",
+   "quote": "aifs-single-1.0 Like 53 Follow ECMWF 173 Graph Machine Learning AnemoI English doi:10.57967/hf/4629 arxiv: 2406.01465 License: cc-by-4.0 Model card Files Files and versions xet Community 9 Deploy Copy to bucket Use this model Instructions to use ecmwf/aifs-single-1.0 with libraries, inference"
+  },
+  {
+   "id": "lic-dwd",
+   "name": "Deutscher Wetterdienst (ICON and the open data server)",
+   "covers": [
+    "data-dwd-open",
+    "model-icon"
+   ],
+   "licence": "CC BY 4.0 (legal notice of dwd.de; the open data server names the same terms)",
+   "source": "https://www.dwd.de/EN/service/legal_notice/legal_notice.html",
+   "expect": [
+    "CC BY 4.0",
+    "providing the source is duly acknowledged"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "\"Source: Deutscher Wetterdienst\"; a change must be stated.",
+   "conditions": "Content marked as third-party is excluded.",
+   "read_utc": "2026-11-11T02:30Z",
+   "http": 200,
+   "sha256": "5e0e50c0e52b6defed26ce3c7c5ffa6fac3ce37a89fad7623b54e310f8cc2023",
+   "state": "stated",
+   "quote": "copyright and related rights. Re-use is permitted solely under the terms of the Creative Commons license BY 4.0 ( CC BY 4.0 ) providing the source is duly acknowledged. Content that is subject to third-party rights is marked as such. For using such content, it may be necessary to obtain"
+  },
+  {
+   "id": "lic-metno",
+   "name": "MET Norway (api.met.no, Locationforecast)",
+   "covers": [
+    "data-metno-api",
+    "model-meps",
+    "site-yr"
+   ],
+   "licence": "NLOD 2.0 and CC BY 4.0",
+   "source": "https://api.met.no/doc/License",
+   "expect": [
+    "Norwegian Licence for Open Government Data (NLOD) 2.0",
+    "Creative Commons 4.0 BY"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "\"Data from MET Norway\" or \"Based on data from MET Norway\".",
+   "conditions": "Terms of service: an identifying User-Agent, caching, no more than 20 requests a second; outside the Nordic area the forecast is ECMWF's.",
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "c93748340237b7850bafd371365eb194893975dca0d191401b4b83594a546b72",
+   "state": "stated",
+   "quote": "User-Agent header! Licensing and Data Policy Unless specified otherwise, all data and products are licensed under the Norwegian Licence for Open Government Data (NLOD) 2.0 and Creative Commons 4.0 BY International licences. Credit should be given to The Norwegian Meteorological Institute,"
+  },
+  {
+   "id": "lic-open-meteo",
+   "name": "Open-Meteo (API data)",
+   "covers": [
+    "data-open-meteo"
+   ],
+   "licence": "CC BY 4.0 for the data; the free API is for non-commercial use",
+   "source": "https://open-meteo.com/en/licence",
+   "expect": [
+    "API data are offered under Attribution 4.0 International (CC BY 4.0)"
+   ],
+   "may": {
+    "read": "yes, non-commercial use on the free API",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "\"Weather data by Open-Meteo.com\", linked; a change must be stated.",
+   "conditions": "Free API: non-commercial only, fewer than 10,000 calls a day (its terms page). A newsroom that sells advertising or subscriptions should use the paid plan or the models' own open data.",
+   "terms_url": "https://open-meteo.com/en/terms",
+   "read_utc": "2026-11-11T02:30Z",
+   "http": 200,
+   "sha256": "9344d5374eb5db986bbfae2cfb77d23918d017506292dea4cb8626d7b7be1026",
+   "state": "stated",
+   "quote": "Licence ) Location database from GeoNames ( CC-BY Licence ) Icons from Weather Icons ( SIL OFL 1.1 ) Licence API data are offered under Attribution 4.0 International (CC BY 4.0) You are free to share: copy and redistribute the material in any medium or format and adapt: remix, transform,"
+  },
+  {
+   "id": "lic-ipma-open",
+   "name": "IPMA open data (api.ipma.pt)",
+   "covers": [
+    "data-ipma-open",
+    "obs-ipma-stations",
+    "svc-ipma-warnings",
+    "site-ipma"
+   ],
+   "licence": "IPMA's own terms on api.ipma.pt: personal or public use, never for profit or offence, the source always named",
+   "source": "https://api.ipma.pt/",
+   "expect": [
+    "finalidades lucrativas",
+    "deve referir, sempre, a fonte"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "unclear",
+    "show": "yes, non-profit, with the source named",
+    "transform": "unclear"
+   },
+   "attribution": "\"Fonte: IPMA\" on every use.",
+   "conditions": "The terms speak of using the information, not of storing or changing it: silent on both, so \"unclear\". No profit-making purpose. The full reading is incident.ipma@'s (sources/ipma/).",
+   "owner_here": "incident.ipma@web-summit.dinis",
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "32e9d7337a162fc457a871499671d0a6b465cd6af7c06339ab186acd0e55ffcc",
+   "state": "stated",
+   "quote": "símbolos nacionais existentes neste site para uso pessoal ou público desde que dessa utilização não decorram finalidades lucrativas ou ofensivas . O Utilizador deve referir, sempre, a fonte de informação . No que respeita aos sítios para que este site faz ligação deverá ser obtida"
+  },
+  {
+   "id": "lic-meteoalarm",
+   "name": "MeteoAlarm feeds",
+   "covers": [
+    "svc-meteoalarm",
+    "data-meteoalarm-feeds"
+   ],
+   "licence": "Terms equivalent to CC BY 4.0 with extra conditions (as read by incident.weatherwatch@)",
+   "source": "https://storm-charles.promptugal.news/research/weather-sites/imagery.json",
+   "expect": [
+    "MeteoAlarm"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, with attribution and its conditions",
+    "transform": "yes, redrawn by us; its own map images may not be copied"
+   },
+   "attribution": "EUMETNET MeteoAlarm and the issuing national service, with the time.",
+   "conditions": "Not read by us: this row repeats incident.weatherwatch@'s reading (research/weather-sites/imagery.json); the full reading is incident.sources@'s (sources/meteoalarm/).",
+   "owner_here": "incident.sources@web-summit.dinis",
+   "label": "evidence",
+   "read_utc": "2026-11-11T02:30Z",
+   "http": 200,
+   "sha256": "6b4ca46800c64787b3222ac256319fdde4cde809adf6903ee75730d343971511",
+   "state": "stated",
+   "quote": "(after accepting a free licence in its user portal); newer than one hour on a public site needs a paid licence. MeteoAlarm's warnings may be redrawn by us under its conditions; its own map images may not be copied. Safest now: a text link \\\"IPMA radar\\\" and \\\"EUMETView\\\" with the time;"
+  },
+  {
+   "id": "lic-eumetsat",
+   "name": "EUMETSAT (Meteosat and Metop data and imagery)",
+   "covers": [
+    "data-eumetsat",
+    "obs-meteosat",
+    "obs-metop",
+    "site-eumetsat"
+   ],
+   "licence": "EUMETSAT data policy: a licence per product",
+   "source": "https://www.eumetsat.int/eumetsat-data-licensing",
+   "expect": [
+    "licen"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "unclear",
+    "show": "yes for Meteosat images one hour old or more, with attribution (incident.weatherwatch@'s reading); newer: unclear",
+    "transform": "unclear"
+   },
+   "attribution": "\"© EUMETSAT [year]\".",
+   "conditions": "The licensing page is drawn by script; our read is recorded below. Until it is read in full, treat everything but an hour-old image with credit as unclear.",
+   "render": true,
+   "read_utc": "2026-11-11T02:30Z",
+   "http": 200,
+   "sha256": "42bdcf46d4dbdb241428602fe455d0365e7fe5bc32780177196c38653c0a93ea",
+   "state": "stated",
+   "quote": "Dashboard Data catalogue Using data Data access News & events Log in Go to EUMETSAT website Data registration and licensing V2.2, 4 Nov 2026 Under the EUMETSAT Data Policy, a sub-set of data, products and services derived from our satellites are subject to licensing terms and conditions."
+  },
+  {
+   "id": "lic-copernicus-era5",
+   "name": "Copernicus Climate Change Service (ERA5)",
+   "covers": [
+    "data-era5"
+   ],
+   "licence": "CC BY 4.0 (stated on the data set's page)",
+   "source": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels",
+   "expect": [
+    "CC-BY",
+    "ERA5"
+   ],
+   "may": {
+    "read": "yes, with a free account",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "\"Contains modified Copernicus Climate Change Service information [year]\".",
+   "conditions": "A reanalysis: it lags real time by about five days, so it will show Charles only afterwards.",
+   "render": true,
+   "read_utc": "2026-11-11T02:31Z",
+   "http": 200,
+   "sha256": "a1467c82b76643b52ff33ea9ecafa85988849c255247013bd6a81d7175852ee0",
+   "state": "stated",
+   "quote": "Scientific Basis Quality Control User Guidance References Citation and attribution DOI: 10.24381/cds.adbb2d47 Licence CC-BY licence earthkit Open-source tools for Earth sciences Dataset sample viewer Launch example in JupyterHub Publication date 2018-06-14 Update date 2026-11-11 Standard"
+  },
+  {
+   "id": "lic-cmems",
+   "name": "Copernicus Marine Service",
+   "covers": [
+    "data-cmems"
+   ],
+   "licence": "Copernicus Marine service licence (free of charge, attribution)",
+   "source": "https://marine.copernicus.eu/user-corner/service-commitments-and-licence",
+   "expect": [
+    "Licence",
+    "Copernicus"
+   ],
+   "may": {
+    "read": "yes, with a free account",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "unclear"
+   },
+   "attribution": "\"Generated using E.U. Copernicus Marine Service Information\" with the product's DOI.",
+   "conditions": "The licence text itself is a linked document not yet read: transform is \"unclear\" until it is.",
+   "read_utc": "2026-11-11T02:31Z",
+   "http": 200,
+   "sha256": "9993fc8972b86cff432377678f44bed3e084643b5e65c0e9262d3a43f69cef16",
+   "state": "stated",
+   "quote": "Quality Product Roadmap All Product Ocean Monitoring Indicators Service Get Inspired Service Commitments and Licence Contact Us Education About About How we work Observation requirements About Producers R&D Projects Service Evolution Strategy 1st call for tenders 2nd call for tenders"
+  },
+  {
+   "id": "lic-meteofrance",
+   "name": "Météo-France open data (ARPEGE, AROME, observations)",
+   "covers": [
+    "data-meteofrance-open",
+    "model-arpege",
+    "model-arome"
+   ],
+   "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+   "source": "https://www.data.gouv.fr/organizations/meteo-france/",
+   "expect": [
+    "Open Licence 2.0"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "\"Météo-France\", with the date of the data.",
+   "conditions": "The sentence read is the portal's default (\"unless stated otherwise\"); each Météo-France data set states its own licence, still to be read one by one.",
+   "read_utc": "2026-11-11T02:31Z",
+   "http": 200,
+   "sha256": "e37386e99e173589e1b9d6c47943c164a4ce308d476bef86bfb37a3b0ef21648",
+   "state": "stated",
+   "quote": ": partiellement conforme Sauf indication contraire, tout le contenu de ce site est disponible sous la licence Open Licence 2.0"
+  },
+  {
+   "id": "lic-aemet",
+   "name": "AEMET (Spain)",
+   "covers": [
+    "body-aemet",
+    "svc-aemet-meteoalerta",
+    "model-harmonie-arome"
+   ],
+   "licence": "Reuse allowed with AEMET named as the source (its legal notice)",
+   "source": "https://www.aemet.es/en/nota_legal",
+   "expect": [
+    "reuse",
+    "AEMET"
+   ],
+   "may": {
+    "read": "yes (the API needs a free key)",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, if the changed data is not presented as AEMET's"
+   },
+   "attribution": "\"© AEMET\" or \"Source: AEMET\", with the date.",
+   "conditions": "Its notice forbids distorting the meaning and asks that changed information not be attributed to AEMET.",
+   "read_utc": "2026-11-11T02:31Z",
+   "http": 200,
+   "sha256": "b5d57466941dfd653a0dcaa9f168a64b55e6f7400d86c7ec8ea05dfddf978ac0",
+   "state": "stated",
+   "quote": "Statistics Virtual office Homepage Legal notice Legal Notice normalize-space(pagina/entradilla) != '' --> Use and reuse --> normalize-space(./texto/parrafo_con_formato) != '' and normalize-space(./imagen/nombre_imagen) = '' --> --> The information obtained and elaborated by the State"
+  },
+  {
+   "id": "lic-metoffice",
+   "name": "Met Office (UK)",
+   "covers": [
+    "body-metoffice",
+    "svc-metoffice-nswws",
+    "model-ukmo-um"
+   ],
+   "licence": "Open Government Licence v3.0 for website material; data products under their own terms",
+   "source": "https://www.metoffice.gov.uk/policies/legal",
+   "expect": [
+    "Open Government Licence"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes for OGL material",
+    "show": "yes, with attribution",
+    "transform": "yes for OGL material; unclear for DataHub products"
+   },
+   "attribution": "\"Contains public sector information licensed under the Open Government Licence v3.0\", Met Office named.",
+   "conditions": "The model data through Weather DataHub needs a key and has its own terms: not read.",
+   "read_utc": "2026-11-11T02:31Z",
+   "http": 200,
+   "sha256": "a33c2de7ea196701657aede2e0a7985a637b30c94433ae6d7be3e1da9ccc9619",
+   "state": "stated",
+   "quote": "Policy provides further information on the categorisation of our data. Met Office Open Data Policy Free Licences Open Government Licence The Website terms of use contain licence provisions under the terms of the UK Open Government Licence for Public Sector Information v3.0 which govern"
+  },
+  {
+   "id": "lic-graphcast",
+   "name": "GraphCast (Google DeepMind)",
+   "covers": [
+    "model-graphcast"
+   ],
+   "licence": "Code: Apache 2.0. Weights and other materials: a Creative Commons licence named in the README",
+   "source": "https://raw.githubusercontent.com/google-deepmind/graphcast/main/README.md",
+   "expect": [
+    "Apache License, Version 2.0",
+    "All other materials are licensed under"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "unclear",
+    "transform": "unclear"
+   },
+   "attribution": "Google DeepMind, with the paper cited.",
+   "conditions": "The README says the training data (ERA5, HRES) \"may be governed by separate terms\". Read the weights' licence line before any use: we have not decided \"show\" or \"transform\" from it.",
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "9f0879fac17bda69b021bb8239241e488b91943d7c813c8727253ff9847853b1",
+   "state": "stated",
+   "quote": "use. ## License Copyright 2026 Google LLC. The Colab notebooks and the associated code are licensed under the Apache License, Version 2.0 (Apache 2.0); you may not use these materials except in compliance with the Apache 2.0 license. You may obtain a copy of the License at: https://www.apache.org/li"
+  },
+  {
+   "id": "lic-pangu",
+   "name": "Pangu-Weather (Huawei Cloud)",
+   "covers": [
+    "model-pangu"
+   ],
+   "licence": "CC BY-NC-SA 4.0 for the trained parameters",
+   "source": "https://raw.githubusercontent.com/198808xc/Pangu-Weather/main/README.md",
+   "expect": [
+    "BY-NC-SA 4.0",
+    "commercial use of these models is forbidden"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, non-commercial, with attribution",
+    "transform": "yes, non-commercial, shared alike"
+   },
+   "attribution": "Huawei Cloud, with the paper cited.",
+   "conditions": "Commercial use forbidden. Its outputs depend on ERA5 or ECMWF initial fields.",
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "b21aeee735b3196efd1334fc7f34caa0a5fb1e549d06d7ae3738db7b237a19a1",
+   "state": "stated",
+   "quote": "released by Huawei Cloud. The trained parameters of Pangu-Weather were made available under the terms of the BY-NC-SA 4.0 license. You can find details [here](https://creativecommons.org/licenses/by-nc-sa/4.0/). **The commercial use of these models is forbidden.** Also, please note"
+  },
+  {
+   "id": "lic-aurora",
+   "name": "Aurora (Microsoft)",
+   "covers": [
+    "model-aurora"
+   ],
+   "licence": "Stated in the repository's licence section",
+   "source": "https://raw.githubusercontent.com/microsoft/aurora/main/README.md",
+   "expect": [
+    "License",
+    "Aurora"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "unclear",
+    "show": "unclear",
+    "transform": "unclear"
+   },
+   "attribution": "Microsoft, with the paper cited.",
+   "conditions": "The README has a licence section; its text was not matched in this read: unclear until read.",
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "73535361d411738555fba1054f88e97aed8a746b6174391e0feb11db08c04c92",
+   "state": "stated",
+   "quote": "- [What is Aurora?](#what-is-aurora) - [Getting Started](#getting-started) - [Contributing](#contributing) - [License](#license) - [Security](#security) - [Responsible AI Transparency Documentation](#responsible-ai-transparency-documentation) - [Trademarks](#trademarks) - [FAQ](#faq)"
+  }
+ ]
+}

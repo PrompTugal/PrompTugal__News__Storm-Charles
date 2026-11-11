@@ -1,0 +1,182 @@
+{
+ "about": "A body operates an observing system. Every edge: the page that says so (`source`), when we read it (`read_utc`), whether the phrases we looked for were on it (`state`), a short quote. Stamped by tools/meteorology-read.mjs.",
+ "by": "incident.meteorology@web-summit.dinis",
+ "updated": "2026-11-11T02:30Z",
+ "verb": "operates",
+ "inverse": "operated_by",
+ "edges": [
+  {
+   "from": "body-eumetsat",
+   "to": "obs-meteosat",
+   "source": "https://www.eumetsat.int/our-satellites/meteosat-series",
+   "expect": [
+    "Meteosat",
+    "geostationary"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "bb8bf41ed4299bb6591d68d44c5efa5eb7c4077a70c796846ba03f6b8e0d63a8",
+   "state": "stated",
+   "quote": "Meteosat series | EUMETSAT Skip to main content Main navigation IMAGES IMAGES Real time imagery EUMETView (Real-time images) Earth view Imagery and media Image of the week"
+  },
+  {
+   "from": "body-eumetsat",
+   "to": "obs-metop",
+   "source": "https://www.eumetsat.int/our-satellites/metop-series",
+   "expect": [
+    "Metop",
+    "polar"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "282b3536a55dc3dfb7569f910665beda2f45e19d5fed43f887452abfd2f87c54",
+   "state": "stated",
+   "quote": "Metop series | EUMETSAT Skip to main content Main navigation IMAGES IMAGES Real time imagery EUMETView (Real-time images) Earth view Imagery and media Image of the week Choose"
+  },
+  {
+   "from": "body-noaa",
+   "to": "obs-jpss",
+   "source": "https://www.nesdis.noaa.gov/our-satellites/currently-flying/joint-polar-satellite-system",
+   "expect": [
+    "Joint Polar Satellite System",
+    "NOAA"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "d58a2b67aa6e98cdfae2f0724a3455de86dc263f204914033805df36d6d6db48",
+   "state": "stated",
+   "quote": "Joint Polar Satellite System | NESDIS | National Environmental Satellite, Data, and Information Service Skip to main content An official website of the United States government"
+  },
+  {
+   "from": "body-noaa",
+   "to": "obs-goes",
+   "source": "https://www.nesdis.noaa.gov/our-satellites/currently-flying/geostationary-satellites",
+   "expect": [
+    "GOES",
+    "geostationary"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "dd72da813f9eaaa2230827f4873d0494cb5abaeed25eec6b7df061856b8d7067",
+   "state": "stated",
+   "quote": "Weather Imagery JPSS Geostationary Satellites Media Gallery ARGOS-4 Infographics Our Satellites Currently Flying GOES East & West Joint Polar Satellite System SOLAR-1 Argos-4 COSMIC-2 DSCOVR JASON-3 Satellite Operations Satellite Ground Systems Satellite Flyout Charts Future Programs"
+  },
+  {
+   "from": "body-noaa",
+   "to": "obs-radiosondes",
+   "source": "https://www.weather.gov/upperair/radiosonde",
+   "expect": [
+    "radiosonde",
+    "balloon"
+   ],
+   "note": "For its own network; every national service launches its own. IPMA's launch sites were not read in this pass.",
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "6029005aa0e16d965eaece39cc04be0d88f0de7438997fbbbe62416634b3c3dd",
+   "state": "stated",
+   "quote": "Weather Balloon Instrument/Radiosonde Information HOME FORECAST Local Graphical Aviation Marine Rivers and Lakes Hurricanes Severe Weather Fire Weather Sunrise/Sunset Long Range Forecasts Climate Prediction"
+  },
+  {
+   "from": "body-wmo",
+   "to": "obs-surface-stations",
+   "source": "https://wmo.int/activities/global-observing-system-gos",
+   "expect": [
+    "Global Observing System",
+    "surface"
+   ],
+   "note": "WMO coordinates; the stations belong to each country's service.",
+   "verb_note": "coordinates",
+   "read_utc": "2026-11-11T02:26Z",
+   "http": 200,
+   "sha256": "c71f2a564ba636d2fcea6908d118a28c822e7df04022929b1a486a6e8e817bfd",
+   "state": "stated",
+   "quote": "Global Observing System (GOS) Skip to main content Weather Climate Water Select your language English عربي 中文 Français Русский Español عربي 中文 English Français Русский Español"
+  },
+  {
+   "from": "body-wmo",
+   "to": "obs-aircraft",
+   "source": "https://community.wmo.int/en/activity-areas/aircraft-based-observations",
+   "expect": [
+    "AMDAR",
+    "aircraft"
+   ],
+   "note": "WMO coordinates; airlines and national services run it.",
+   "verb_note": "coordinates",
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "2859c324908364aefc5e8a6cd07a428c54ed44e9d9b50d8de4bb89e9d17b3bff",
+   "state": "stated",
+   "quote": "Aircraft-Based Observations The WMO ABO Programme collects vital meteorological data from aircraft. Key sources include AMDAR, ICAO ADS-C/ADS-B, SSR Mode S, IAGOS, and wx-UAS from NMHS and partners. As a key component of WIGOS, it provides critical upper-air data for global NWP, enhancing forecast"
+  },
+  {
+   "from": "body-eumetnet",
+   "to": "obs-buoys-ships",
+   "source": "https://www.eumetnet.eu/activities/observations-programme/current-activities/e-surfmar/",
+   "expect": [
+    "buoys",
+    "ships"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "3cf6fa558c8bd281853e3b194763d2ccffb300af43f595d2d15c34debea3806b",
+   "state": "stated",
+   "quote": "During autumn 2025 and winter 2025/26, E-SurfMar has been working with partners to deploy around 60 drifting buoys into the atmospheric storm track region of the North Atlantic Ocean. These partners are from both Europe and North America, including the Global Drifter Program at Scripps"
+  },
+  {
+   "from": "body-eumetnet",
+   "to": "obs-radar-opera",
+   "source": "https://www.eumetnet.eu/activities/observations-programme/current-activities/opera/",
+   "expect": [
+    "radar",
+    "OPERA"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "8bd9f2c4a2fa8b08e7d028d4b5e95c057d9b171e5e4fc77a364abdd0893b72d9",
+   "state": "stated",
+   "quote": "Opera Radar Animation - Eumetnet Portal Contact Us Search About Us Secretariat Members Partners Observations Internet of Things Observations Data Sharing Ship-Based Radiosonde Observations"
+  },
+  {
+   "from": "body-ipma",
+   "to": "obs-ipma-stations",
+   "source": "https://api.ipma.pt/",
+   "expect": [
+    "Observação Meteorológica de Estações",
+    "IPMA"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "32e9d7337a162fc457a871499671d0a6b465cd6af7c06339ab186acd0e55ffcc",
+   "state": "stated",
+   "quote": "Baixo intervaloHora : intervalo de horas relativo ao valor máximo de UV idPeriodo : código interno do período Observação Meteorológica de Estações (dados horários, últimas 24 horas) Invocação : https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json Notas"
+  },
+  {
+   "from": "body-ipma",
+   "to": "obs-radar-ipma",
+   "source": "https://www.ipma.pt/pt/otempo/obs.radar/",
+   "expect": [
+    "radar"
+   ],
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "51ba0fad6fdadc5a7649d154329084dd5d6d549942c6c85fed0ed2544743c869",
+   "state": "stated",
+   "quote": "IPMA - Imagens de radar Quem somos | Onde estamos | Conselho científico | Recrutamento | Formação @ IPMA | Investigação | e Biblioteca | Enciclopédia ipma --> | Contacto | EN Tempo Previsão"
+  },
+  {
+   "from": "body-ipma",
+   "to": "obs-airport-metar",
+   "source": "https://aviationweather.gov/data/api/",
+   "expect": [
+    "METAR"
+   ],
+   "note": "The AWC API redistributes METARs; that IPMA issues Lisbon's is recorded in the data room (airport.json), not on this page.",
+   "label": "evidence",
+   "read_utc": "2026-11-11T02:22Z",
+   "http": 200,
+   "sha256": "0878d71049f7d391c5ea8e04b07e7bfdf17e863e898c70dc2e97bbd03eb23a86",
+   "state": "stated",
+   "quote": "Temperature Winds Turbulence Icing Products SIGMET G-AIRMET Center Weather Adv Prog charts TAF map Forecast Discussions METAR/TAF data PIREP/AIREP data Wind/temp data ITWS data WAFS grids SigWx charts TCF/eTCF/ECFP Tools Terminal Weather Dashboard Winter Weather Dashboard Ceiling & Visibility"
+  }
+ ]
+}

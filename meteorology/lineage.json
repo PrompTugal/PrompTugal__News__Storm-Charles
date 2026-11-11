@@ -1,0 +1,131 @@
+{
+ "about": "The weather data supply chain as a graph: where a forecast, a warning or a picture on a weather site comes from, down to the instruments. This file is the index and the grammar: the layers (node types, each in its own small file under nodes/), the verbs (each with its inverse, each in its own small file under edges/) and the rules. Built into one file at meteorology/graph.json by the site's build.",
+ "by": "incident.meteorology@web-summit.dinis",
+ "updated": "2026-11-11T02:40Z",
+ "grammar": "https://graphs.sgit.ai/llms.txt : a node is just a node; every edge is a verb with a distinct inverse; no generic \"related to\" edge; meaning is in the edges.",
+ "rules": [
+  "Every edge carries `source` (the provider's own documentation or attribution page where one exists), `read_utc` (when our reader fetched it), `state` and a short `quote`.",
+  "state \"stated\": every phrase in `expect` was on the page at read_utc. \"not found in this read\": the page answered but the phrases were not on it: the edge is unconfirmed and drawn dashed. \"not read\": the address did not answer 200, or we do not request it (terms).",
+  "An edge with \"to\": null and state \"not stated\" means the site does not say where its picture comes from on the address read (`searched` lists the names looked for). It is never guessed.",
+  "`label` is \"fact\" by default (read on the page of the body the edge is about); \"evidence\" where the statement is someone else's reading (named in `note`).",
+  "Ids are stable: obs-, model-, data-, body-, svc-, site- (site ids are incident.weatherwatch@'s, prefixed). incident.entities@ may adopt any node; each has an entity-shaped file at meteorology/nodes/<id>.json on the site.",
+  "Not a warning service: the graph explains and attributes; it forecasts nothing."
+ ],
+ "layers": [
+  {
+   "type": "body",
+   "name": "Bodies",
+   "question": "Who runs it",
+   "file": "nodes/body.json"
+  },
+  {
+   "type": "observing-system",
+   "name": "Observing systems",
+   "question": "What measures the atmosphere",
+   "file": "nodes/observing-system.json"
+  },
+  {
+   "type": "model",
+   "name": "Models",
+   "question": "What computes the forecast",
+   "file": "nodes/model.json"
+  },
+  {
+   "type": "dataset",
+   "name": "Open data and APIs",
+   "question": "Where the output can be fetched",
+   "file": "nodes/dataset.json"
+  },
+  {
+   "type": "warning-service",
+   "name": "Warning services",
+   "question": "Who turns it into a warning",
+   "file": "nodes/warning-service.json"
+  },
+  {
+   "type": "site",
+   "name": "Sites and apps",
+   "question": "What people look at",
+   "file": "nodes/site.json"
+  }
+ ],
+ "verbs": [
+  {
+   "verb": "aggregates",
+   "inverse": "aggregated_by",
+   "means": "An aggregator republishes the warnings of the services that issue them.",
+   "file": "edges/aggregates.json",
+   "edges": 5
+  },
+  {
+   "verb": "assimilates",
+   "inverse": "assimilated_by",
+   "means": "A model takes an observing system's measurements as its starting state (data assimilation), or a machine-learned model is trained on or started from another product.",
+   "file": "edges/assimilates.json",
+   "edges": 15
+  },
+  {
+   "verb": "issues",
+   "inverse": "issued_by",
+   "means": "A body issues warnings through its warning service, or names storms.",
+   "file": "edges/issues.json",
+   "edges": 9
+  },
+  {
+   "verb": "operates",
+   "inverse": "operated_by",
+   "means": "A body operates an observing system.",
+   "file": "edges/operates.json",
+   "edges": 12
+  },
+  {
+   "verb": "publishes",
+   "inverse": "published_by",
+   "means": "A body publishes a data set or API; or a data set carries a model's output.",
+   "file": "edges/publishes.json",
+   "edges": 19
+  },
+  {
+   "verb": "redistributes",
+   "inverse": "redistributed_by",
+   "means": "A service passes on another body's model output or observations, in its own format.",
+   "file": "edges/redistributes.json",
+   "edges": 11
+  },
+  {
+   "verb": "runs",
+   "inverse": "run_by",
+   "means": "A body runs a forecast model.",
+   "file": "edges/runs.json",
+   "edges": 13
+  },
+  {
+   "verb": "supplies",
+   "inverse": "supplied_by",
+   "means": "A forecast provider supplies a site with its forecasts (the site says so).",
+   "file": "edges/supplies.json",
+   "edges": 2
+  },
+  {
+   "verb": "visualises",
+   "inverse": "visualised_by",
+   "means": "A site or app draws a model's output or an observing system's data. \"to\": null means the site does not say where its picture comes from on the address read: never guessed.",
+   "file": "edges/visualises.json",
+   "edges": 53
+  },
+  {
+   "verb": "warns_from",
+   "inverse": "informs_warning_by",
+   "means": "A warning service says what its warnings or forecasts are based on. Most services do not say which model stands behind a given warning: a forecaster decides.",
+   "file": "edges/warns_from.json",
+   "edges": 4
+  }
+ ],
+ "also": {
+  "licences": "licences.json",
+  "sources_we_could_use_now": "sources.json",
+  "samples": "samples/",
+  "reader": "tools/meteorology-read.mjs (stamps every edge and licence against its page)",
+  "pages": "tools/meteorology-build.mjs (the build generator)"
+ }
+}
