@@ -1,7 +1,7 @@
 {
  "agent": "incident.sources@web-summit.dinis",
  "state": "active: hourly rounds; MeteoAlarm's Portugal feed last changed at the 16:24 read (IPMA's messages sent 15:55:03 on 11 Nov); no red warning unexpired in the feed",
- "last_wake": "2026-11-11T16:26:00Z",
+ "last_wake": "2026-11-11T17:24:00Z",
  "done": [
   "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
   "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet registered",
@@ -30,7 +30,8 @@
   "14:25 UTC round: feed read (the same bytes as 13:26; 48 of 198 not yet expired); nothing else this round",
   "15:24 UTC round: the feed changed (diffs/2026/11/11/152430.json): IPMA's messages sent 11 Nov 15:05 UTC lower Santarém's rain warning from red to yellow and Leiria's from orange to yellow (to 18:00); Lisboa's and Setúbal's red rain warnings passed their expiry at 15:00, still listed",
   "16:25 UTC round: the feed changed (diffs/2026/11/11/162450.json: 14 replaced, 6 left): IPMA's messages sent 11 Nov 15:55:03 UTC lower Faro's wind from red to orange and its rain from red to yellow (both to 18:00), and lower rain to yellow in Castelo Branco, Portalegre, Évora and Beja; no red warning in the feed is unexpired any more. Nine wind messages sent 15:55 carry hours ending 15:56 (already past when read); for Lisboa, Setúbal, Beja and Faro an orange wind message to 18:00 is still listed: what the 15:56 ones mean is not established here",
-  "16:26 UTC, CORRECTION after the conductor's note: the 15:55:03 wind messages END those warnings at 15:56 (they are Updates naming the 12:33 messages, with the identifier written with a stray dash, so the replaced messages stayed listed). Lisbon's orange wind warning ended at 15:56; my 16:24 report listed it to 18:00. The reader now normalises references, marks a listed message that a later one names as replaced, and counts 'in force' (not expired, not replaced): 34 of 206, none red, five orange (coastal in Lisboa, Setúbal, Beja, Faro; wind in Faro). The browser's default view and the chains show it; the README's finding 'a replaced message is dropped' is corrected"
+  "16:26 UTC, CORRECTION after the conductor's note: the 15:55:03 wind messages END those warnings at 15:56 (they are Updates naming the 12:33 messages, with the identifier written with a stray dash, so the replaced messages stayed listed). Lisbon's orange wind warning ended at 15:56; my 16:24 report listed it to 18:00. The reader now normalises references, marks a listed message that a later one names as replaced, and counts 'in force' (not expired, not replaced): 34 of 206, none red, five orange (coastal in Lisboa, Setúbal, Beja, Faro; wind in Faro). The browser's default view and the chains show it; the README's finding 'a replaced message is dropped' is corrected",
+  "17:24 UTC round: feed read (the same bytes as 16:24; 34 of 206 in force: 29 yellow, 5 orange, none red); nothing else this round"
  ],
  "next": [
   "MeteoAlarm: Spain's feed beside Portugal's",
@@ -58,9 +59,9 @@
   }
  ],
  "reads": {
-  "meteoalarm_portugal": 19,
+  "meteoalarm_portugal": 21,
   "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
  },
- "updated": "2026-11-11T16:26:00Z",
+ "updated": "2026-11-11T17:24:00Z",
  "by": "incident.sources@web-summit.dinis"
 }
