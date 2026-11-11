@@ -1,0 +1,435 @@
+{
+ "id": "loop-a-front-page-for-newcomers",
+ "schema": "sc-trace/1",
+ "size": "medium",
+ "title": "A loop: \"the first page has to be super clear\" to a draft read by four invented visitors and rewritten, in 14 minutes; not yet at /",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T10:09:20Z",
+ "captured_at": "2026-11-11T10:09:20Z",
+ "summary": [
+  "Dinis (~09:50), after 6 h 41 min without a word in the record and a first look at the site: \"we need to send this to a journalist ... So the first page has to be super clear, and it has to basically be like a normal website\". And: \"I would like to simulate a journalist ... a normal visitor ... a newsroom exec and an investor\".",
+  "Two agents that did not exist an hour earlier did it with the designer: incident.envoy@ (made at 09:34:38 for outreach) wrote the page; incident.synthetic@ (its key and four invented personas at 09:53:46, \"written before run 1\") read it.",
+  "The first draft was pushed 7 min 37 s after the commit that records the words (94f2ed9a, 09:57:53). The synthetic visitors read the old front page first (run 1), then the draft (run 2, 10:03:08); 56 seconds after run 2 the writer had taken three of its findings.",
+  "It is the first workflow in the record with a reader in the loop before a person sees the page: writer, designer and invented readers took six turns between 09:57:53 and 10:07:18. The readers are invented and the brief says so: \"it is not user research\".",
+  "Open: the page is a draft at /welcome/ and moves to / only on Dinis's yes; the weather face stays as the live overview."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "welcome/index.md",
+  "research/synthetic/README.md",
+  "research/synthetic/findings.md",
+  "research/synthetic/findings-run-2.md",
+  "agents/envoy/policy.md",
+  "agents/synthetic/policy.md",
+  "agents/JOBS.md"
+ ],
+ "input": {
+  "kind": "two spoken paragraphs",
+  "what": "\"the first page has to be super clear ... a features website, that explains everything, that shows the power of what we're doing here\"; \"do we have the synthetic agent here? I would like to simulate a journalist ...\" (BRIEF.md, ~09:50)"
+ },
+ "output": {
+  "kind": "a draft page and two rounds of invented readers",
+  "what": "welcome/ (a draft for Dinis, not yet at /); research/synthetic/ (four personas, run 1 on /, run 2 on the draft, ranked findings)",
+  "url": "https://storm-charles.promptugal.news/welcome/"
+ },
+ "status": "open: a draft at /welcome/, in its sixth turn at 10:07; it moves to / on Dinis's yes",
+ "duration": {
+  "from": "2026-11-11T09:50:16Z",
+  "to": null,
+  "note": "words recorded to the readers' personas: 3 min 30 s; to a first draft: 7 min 37 s; to the readers' first run (on the old front page): 8 min 10 s; to their run on the draft: 12 min 52 s; to the draft changed by it: 13 min 48 s"
+ },
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "~09:50 UTC by BRIEF.md; recorded 09:50:16",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "direction",
+   "in": "a first look at the site",
+   "out": "\"I don't see the sort of design-friendly, like the user-friendly page of this ... the first page has to be super clear ... And it's not that the current page doesn't exist. I think the current page is very powerful. But it feels to me that the current page is like the data page\". And: \"I would like to simulate a journalist. I would like to simulate a normal visitor to the website, curious about the summit. And I would like to simulate a newsroom exec and an investor\".",
+   "handoff": {
+    "to": "incident.conductor@",
+    "via": "spoken, in the conductor's session",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November, ~09:50 UTC",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "record and assign",
+   "sha": "45dc1bd9d4e05b5db0f7cdfaf967ed83f6abd902",
+   "in": "the words",
+   "out": "\"at Dinis's word (~09:50): a newcomers' front page (envoy with designer, at /welcome/ first) and a synthetic-visitors agent\". The envoy already existed: \"a new agent at Dinis's word: incident.envoy@ (outreach materials with Dinis)\" (77d28513, 09:34:38; its key 79 s later, 8d1efd8e).",
+   "handoff": {
+    "to": "incident.envoy@, incident.designer@ and a new incident.synthetic@",
+    "via": "BRIEF.md and agents/JOBS.md",
+    "evidence_of_handoff": "the next three steps"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "As the lead reads it",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    },
+    {
+     "type": "commit",
+     "sha": "77d28513381a9ed0b582e0cf6a145fd8e1a6d7e7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/77d28513381a9ed0b582e0cf6a145fd8e1a6d7e7"
+    },
+    {
+     "type": "commit",
+     "sha": "8d1efd8eed8ab1771a275448ea4bb944309d1ac6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8d1efd8eed8ab1771a275448ea4bb944309d1ac6"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "45dc1bd9d4e05b5db0f7cdfaf967ed83f6abd902",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/45dc1bd9d4e05b5db0f7cdfaf967ed83f6abd902"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.779",
+     "run": 779,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T09:50:16Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.envoy@web-summit.dinis",
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.synthetic@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a new agent",
+   "sha": "76ccd12c4482cfafefb8e1bdfd9e9da0438f9d09",
+   "in": "the four people Dinis named",
+   "out": "\"session key (public half) and the four invented personas, written before run 1\". 3 min 30 s after the words were recorded.",
+   "handoff": {
+    "to": "itself: run 1",
+    "via": "research/synthetic/",
+    "evidence_of_handoff": "step 5"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/synthetic/README.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/synthetic/README.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/synthetic/policy.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/synthetic/policy.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "76ccd12c4482cfafefb8e1bdfd9e9da0438f9d09",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/76ccd12c4482cfafefb8e1bdfd9e9da0438f9d09"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.782",
+     "run": 782,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T09:53:46Z",
+   "agent_trailer": "incident.synthetic@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.envoy@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a first draft",
+   "sha": "94f2ed9a642cbe215ce97dc7f76ea06b6ddbe07e",
+   "in": "the brief; the designer's parts for such a page, made two minutes earlier from plain markdown (8534f47a, 09:55:08: \"class: landing\")",
+   "out": "\"welcome/: a first draft of the newcomers' page (what this is, what you can do here, how it is made, what it is not); a draft for Dinis, not yet at /\". 7 min 37 s.",
+   "handoff": {
+    "to": "incident.designer@ and incident.synthetic@",
+    "via": "the page",
+    "evidence_of_handoff": "steps 6 and 7"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "welcome/index.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=welcome/index.md"
+    },
+    {
+     "type": "commit",
+     "sha": "8534f47a701f86c2f4542a3e200906cf1bf985dd",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8534f47a701f86c2f4542a3e200906cf1bf985dd"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "94f2ed9a642cbe215ce97dc7f76ea06b6ddbe07e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/94f2ed9a642cbe215ce97dc7f76ea06b6ddbe07e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.797",
+     "run": 797,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T09:57:53Z",
+   "agent_trailer": "incident.envoy@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.synthetic@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "readers, run 1",
+   "sha": "0843a40e459300548e39cef57f2a4b1ac71d39dd",
+   "in": "the front page as it was (the weather face)",
+   "out": "\"run 1 of the synthetic visitors (four invented personas on /), ranked findings for /welcome/\". The old page read first, so the draft has something to be better than.",
+   "handoff": {
+    "to": "incident.envoy@",
+    "via": "research/synthetic/findings.md",
+    "evidence_of_handoff": "the file"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/synthetic/findings.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/synthetic/findings.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "0843a40e459300548e39cef57f2a4b1ac71d39dd",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/0843a40e459300548e39cef57f2a4b1ac71d39dd"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.798",
+     "run": 798,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T09:58:26Z",
+   "agent_trailer": "incident.synthetic@web-summit.dinis",
+   "for": [
+    "incident.envoy@web-summit.dinis, incident.designer@web-summit.dinis, incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the frame",
+   "sha": "c107c7e617c9836586a95ff92523822939d11b4a",
+   "in": "the draft",
+   "out": "\"welcome/ is a front door in the frame (no subsite lit, no sub-bar, no trail)\"; the writer followed a minute later: \"a two-sentence lead and shorter figures (the designer's two notes)\" (c0d91085, 10:01:43).",
+   "handoff": {
+    "to": "incident.envoy@",
+    "via": "the designer's notes",
+    "evidence_of_handoff": "c0d91085"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "sha": "c0d91085321e840449e195833ce6692a91a721ca",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/c0d91085321e840449e195833ce6692a91a721ca"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "c107c7e617c9836586a95ff92523822939d11b4a",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/c107c7e617c9836586a95ff92523822939d11b4a"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.801",
+     "run": 801,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "evidence_note": "commits only: the design files were not opened for this step",
+   "n": 6,
+   "at": "2026-11-11T10:00:43Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.envoy@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.synthetic@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "readers, run 2",
+   "sha": "f93e8c7f7de35db73405a6fe69ec54e288a9b6f9",
+   "in": "the first draft (it names the commit it read: 94f2ed9)",
+   "out": "\"run 2 of the synthetic visitors on the first /welcome/ draft (94f2ed9), ranked findings\".",
+   "handoff": {
+    "to": "incident.envoy@",
+    "via": "research/synthetic/findings-run-2.md",
+    "evidence_of_handoff": "step 8, 56 s later, names the findings it took"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/synthetic/findings-run-2.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/synthetic/findings-run-2.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f93e8c7f7de35db73405a6fe69ec54e288a9b6f9",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f93e8c7f7de35db73405a6fe69ec54e288a9b6f9"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.805",
+     "run": 805,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T10:03:08Z",
+   "agent_trailer": "incident.synthetic@web-summit.dinis",
+   "for": [
+    "incident.envoy@web-summit.dinis, incident.designer@web-summit.dinis, incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.envoy@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "rewritten from the readers",
+   "sha": "4addc33e5669630ce5d61de02c1637c71d2ba728",
+   "in": "run 2's ranked findings",
+   "out": "\"welcome/: the latest decision on the first screen, what a person checks and what goes live without one, the 22 minutes said plainly (synthetic run 2: 1, 4, 5)\". Then the designer on a phone (a538dab1, 10:05:47: \"both buttons inside 844 px\") and the writer again: \"the figures are labelled as the site's own\" (dcdac7ad, 10:07:18).",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "the draft at /welcome/",
+    "evidence_of_handoff": "none yet: the page says it is a draft"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "welcome/index.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=welcome/index.md"
+    },
+    {
+     "type": "commit",
+     "sha": "a538dab1aa952338ec1fbd8958ef467d7df0f2f2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a538dab1aa952338ec1fbd8958ef467d7df0f2f2"
+    },
+    {
+     "type": "commit",
+     "sha": "dcdac7ad6cdc47883d15db0c60f949bd652e9796",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/dcdac7ad6cdc47883d15db0c60f949bd652e9796"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "4addc33e5669630ce5d61de02c1637c71d2ba728",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4addc33e5669630ce5d61de02c1637c71d2ba728"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.808",
+     "run": 808,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 8,
+   "at": "2026-11-11T10:04:04Z",
+   "agent_trailer": "incident.envoy@web-summit.dinis",
+   "for": [
+    "incident.synthetic@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "state read 10:08 UTC",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "waiting",
+   "in": "a draft at /welcome/",
+   "out": "no yes in the record: the page is not at /",
+   "handoff": {
+    "to": "incident.envoy@ and incident.conductor@",
+    "via": "none yet",
+    "evidence_of_handoff": "BRIEF.md: \"moved to / on Dinis's yes\""
+   },
+   "evidence": [],
+   "evidence_note": "no evidence of an answer: BRIEF.md's last section is ~09:50",
+   "n": 9
+  }
+ ],
+ "counts": {
+  "steps": 9,
+  "steps_with_no_evidence": 1,
+  "person_steps": 2,
+  "agent_steps": 7
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.synthetic@web-summit.dinis",
+  "incident.envoy@web-summit.dinis",
+  "incident.designer@web-summit.dinis"
+ ]
+}

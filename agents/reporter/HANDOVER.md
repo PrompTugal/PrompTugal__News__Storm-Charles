@@ -1,6 +1,6 @@
 # Hand-over: the reporter
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 05:09 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 10:09 UTC
 
 For a fresh incident.reporter@ session. Read the pack's start first ([library/pack/start.md](../../library/pack/start.md)), then this, then [reporter/traces/index.json](../../reporter/traces/index.json). Do not re-read the repository: the traces and the log are the memory.
 
@@ -35,6 +35,18 @@ The session key's private half (make a new key; mark this one handed over in `da
 - **Read the journal's "difference" notes:** incident.journalist@ checks pieces against the traces and found the outage trace's wrong first time. Its commits say so in the subject.
 - **Board cards on this role:** a-reporter-1, a-reporter-2 and a-reporter-3 are all done on the board; none needs an answer from the next session. The board has the outage trace as evidence on a-provider-credit; its event time there (02:53:57) is the first refusal anyone timed, which the corrected trace still supports.
 - **Outside git, gone with this session:** the session key's private half; the edit scripts; nothing else.
+
+## From the third session (05:10 to 10:09 UTC; this section replaces what the second session wrote where they differ)
+
+- **State:** thirteen traces. Open: the outage (one step per shadow gap; a closing step when a call goes through), memory (one step per hour: the accounts' round and the new sessions), the Web Summit hold (waits on Dinis; agents/conductor/holds.md is where the conductor records it), the loop (/welcome/: add a step when it moves to / or Dinis answers), the escalations (not touched since 03:04; its status is stale). Owed: the first article as a PDF; the launch (the move of /welcome/ to / may be it).
+- **A wake in six tool calls:** (1) read the notification; (2) one command: `date -u`, pull, `git fetch --tags`, `git log --since=<last block> --reverse` cut to about 220 characters a line, `git log -- BRIEF.md agents/conductor/holds.md`, the count of open cards waiting on Dinis, `ls shadow/runs/<date>/`; (3) only if BRIEF.md moved: its diff; (4) one script file outside the repository that appends the steps, the README rows, the log block and the status, then the fill tool, the numbers tool, commit, measure, commit, release; (5) the message to the conductor. The script throws if a README row or a file it cites is missing: keep that.
+- **The key entry:** the new session marks the earlier one "handed over" in the same commit as its own entry (start.md's rule; the note above saying the old session does it is wrong). Next id: incident-reporter-dinis-4.
+- **The wake:** hourly at :06 into this session, trig_014Kj9wgkKUZ4jReygeGnicj, the conductor's. A fact about this session only; the next session's schedule is the conductor's to set.
+- **Durations in a trace are arithmetic on commit times:** print the steps' `at` after the fill tool and check each figure before the push.
+- **A wake reads the record at one instant:** say "not in the record at hh:mm", never "has not happened" (the 09:06 block missed the shadow desk's commit of 09:07:06, which was not yet on dev at the 09:07:10 pull).
+- **Who uses the traces within minutes:** incident.journalist@ writes a piece from each new trace in the next round and re-anchors on every correction; the conductor answered a "not in the record" by writing the record (holds.md). A gap named plainly gets filled.
+- **Board cards on this role:** a-reporter-4 answered (the wake); a-reporter-5 (the list for the librarian) still open, no answer needed from the next session; a-journalist-5 was answered by the 05:08 correction.
+- **Outside git, gone with this session:** the session key's private half; the edit scripts (one per wake); nothing else.
 
 ## Who reads this work
 

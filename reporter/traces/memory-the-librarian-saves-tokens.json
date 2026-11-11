@@ -4,7 +4,7 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T09:07:50Z",
+ "updated": "2026-11-11T10:09:20Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
@@ -39,10 +39,10 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: the average call falling again (175,178 tokens so far in the 08:00 hour, the accounts' round 9); second, third and fourth hand-overs are now routine; four first sessions cannot be replaced until Dinis says how vault keys are held; the conductor's own session has not handed over in the record (it compacts)",
+ "status": "open: Dinis answered the vault-key question (~09:30 and ~09:47); the conductor's append lane carries keys since 09:40 and IPMA's second session is running; 67 sessions for 32 agents at 10:05, 37 handed over; the 08:00 hour was the cheapest yet at 171,681 tokens a call; the conductor's own session has not handed over in the record (it compacts)",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
-  "to": "2026-11-11T08:53:17Z",
+  "to": "2026-11-11T10:05:23Z",
   "note": "sentence recorded to pack: 5 min 37 s; to the first measured number: 8 min 44 s; to the first hand-over: 12 min 43 s; to the sixth: 47 min 49 s; to the ninth: 1 h 20 min 7 s"
  },
  "steps": [
@@ -1261,12 +1261,165 @@
      "version": "v0.1.700",
      "run": 700,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T08:17:55Z"
+     "served_by": "2026-11-11T08:44:30Z",
+     "push_to_served_s": 37
     }
    ],
    "n": 23,
    "at": "2026-11-11T08:43:50Z",
    "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "~09:30 and ~09:47 UTC by BRIEF.md; recorded in commits at 09:30:14 (84158ea2) and 09:47:30 (4dd30049)",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "an answer",
+   "in": "the question that kept four roles in their first sessions (step 21): how vault keys are held",
+   "out": "\"The keys and vaults are created by the specific agent and then sent to you via your append lane.\" And, 17 minutes later: \"That's the point of you having the key, is that if ... they start a new session, you can give the keys to that agent.\" The first words from Dinis in the record since ~02:50: 6 h 41 min between the two commits that record them.",
+   "handoff": {
+    "to": "incident.conductor@, incident.identity@ and the agents that hold a vault",
+    "via": "BRIEF.md and CLAUDE.md",
+    "evidence_of_handoff": "the lane, built and opened in the next ten minutes (step 25)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November, ~09:30 UTC: keys and vaults; ~09:47 UTC",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    },
+    {
+     "type": "commit",
+     "sha": "84158ea242418d898946b93db0a9c675191c2f21",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/84158ea242418d898946b93db0a9c675191c2f21"
+    },
+    {
+     "type": "commit",
+     "sha": "4dd30049580ea1d1e5317a9561636b1443c56a0e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4dd30049580ea1d1e5317a9561636b1443c56a0e"
+    }
+   ],
+   "n": 24
+  },
+  {
+   "actor": {
+    "name": "incident.ipma@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "hand-over, unblocked",
+   "sha": "5d9a79cb486a3f03ae98e7722df395163081a760",
+   "in": "Dinis's word, and a way to carry a key: incident.identity@ built the conductor's append lane (4fb4d7c2, 09:34:20), opened it \"at Dinis's yes\" (218c89a0, 09:39:25) and saw it \"live end to end since 09:40 UTC (its drain saved a key)\" (7980fa5e); incident.sources@ and incident.models@ sent their keys through it (6387cf2f, 8e13cfe0)",
+   "out": "\"second session back on at Dinis's word (~09:47): incident-ipma-dinis-2 active, the first session's entry handed over\". The session that stood down at 05:46:04 for want of a key was running 4 h 3 min later, 90 seconds after the commit that records the word. In the same hour: the accounts' round 10 (\"weather handed over (73% less a call); the 08:00 hour at 171,681 tokens a call, the cheapest yet\", cbfb680c); fresh sessions for the designer (twice: 7516a009, 7f2e34d6), weather (4060b7f1), the weather watch (f899426f), observability (b7402569) and the librarian (its seventh, 58f19d48); and one canonical count: \"agents 32, with an active key 29, sessions 67, handed over 37\" (2bc7133c, 10:05:23).",
+   "handoff": {
+    "to": "every agent that holds a vault",
+    "via": "data/lanes.json (what a sender needs)",
+    "evidence_of_handoff": "data/keys.json; data/agents/count.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/lanes.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/lanes.json"
+    },
+    {
+     "type": "file",
+     "path": "data/agents/count.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/agents/count.json"
+    },
+    {
+     "type": "file",
+     "path": "accounts/index.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/index.md"
+    },
+    {
+     "type": "commit",
+     "sha": "4fb4d7c2c07d7731e436e2516f7d309dd0be0828",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4fb4d7c2c07d7731e436e2516f7d309dd0be0828"
+    },
+    {
+     "type": "commit",
+     "sha": "218c89a0a1817056cd40e07f56bc83e845cdeb8e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/218c89a0a1817056cd40e07f56bc83e845cdeb8e"
+    },
+    {
+     "type": "commit",
+     "sha": "7980fa5e9c4139925b81a4b1faf75ecc2bba1b21",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7980fa5e9c4139925b81a4b1faf75ecc2bba1b21"
+    },
+    {
+     "type": "commit",
+     "sha": "6387cf2f9b90bd2e76487fa107c46099e382ee81",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6387cf2f9b90bd2e76487fa107c46099e382ee81"
+    },
+    {
+     "type": "commit",
+     "sha": "8e13cfe0084bc40674f00e90b4747f075cc8a3f3",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8e13cfe0084bc40674f00e90b4747f075cc8a3f3"
+    },
+    {
+     "type": "commit",
+     "sha": "cbfb680c9b31e6796a618e81b8f155ac953bc5e6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/cbfb680c9b31e6796a618e81b8f155ac953bc5e6"
+    },
+    {
+     "type": "commit",
+     "sha": "7516a009d4cccbedc039171554d4d9e8bcb5d488",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7516a009d4cccbedc039171554d4d9e8bcb5d488"
+    },
+    {
+     "type": "commit",
+     "sha": "7f2e34d6023764c72ef4a980dbcd30e794669ccd",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7f2e34d6023764c72ef4a980dbcd30e794669ccd"
+    },
+    {
+     "type": "commit",
+     "sha": "4060b7f1aa36603a3e882cce12a29647db4ed410",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4060b7f1aa36603a3e882cce12a29647db4ed410"
+    },
+    {
+     "type": "commit",
+     "sha": "f899426f0f99469e83c122d292ace3bf1b6f4b61",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f899426f0f99469e83c122d292ace3bf1b6f4b61"
+    },
+    {
+     "type": "commit",
+     "sha": "b74025691bb6c21118a0f453298c5ce7634d63c8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b74025691bb6c21118a0f453298c5ce7634d63c8"
+    },
+    {
+     "type": "commit",
+     "sha": "58f19d4874cb96a0f1c82902836af9b255c72669",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/58f19d4874cb96a0f1c82902836af9b255c72669"
+    },
+    {
+     "type": "commit",
+     "sha": "2bc7133c823db5dd9db6f79c2ce609b552a96f90",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2bc7133c823db5dd9db6f79c2ce609b552a96f90"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "5d9a79cb486a3f03ae98e7722df395163081a760",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5d9a79cb486a3f03ae98e7722df395163081a760"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.777",
+     "run": 777,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 25,
+   "at": "2026-11-11T09:49:00Z",
+   "agent_trailer": "incident.ipma@web-summit.dinis",
    "for": [
     "incident.conductor@web-summit.dinis"
    ]
@@ -1279,10 +1432,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 23,
+  "steps": 25,
   "steps_with_no_evidence": 0,
-  "person_steps": 1,
-  "agent_steps": 22
+  "person_steps": 2,
+  "agent_steps": 23
  },
  "people_acted": [
   "Dinis Cruz"
@@ -1296,6 +1449,7 @@
   "incident.graph@web-summit.dinis",
   "incident.studio@web-summit.dinis",
   "incident.reporter@web-summit.dinis",
-  "incident.journalist@web-summit.dinis"
+  "incident.journalist@web-summit.dinis",
+  "incident.ipma@web-summit.dinis"
  ]
 }

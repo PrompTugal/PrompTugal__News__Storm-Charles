@@ -4,7 +4,7 @@
  "size": "outage",
  "title": "Outage: the model provider's account out of credit; every call refused from 02:53:57 (five were refused before 02:39 and taken for wrong answers); what stopped and how the stop was written down",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T08:08:51Z",
+ "updated": "2026-11-11T10:09:20Z",
  "captured_at": "2026-11-11T04:09:00Z",
  "summary": [
   "Dinis (~02:50): \"you can use up to $20 in budget.\" The first refusal an agent timed (HTTP 402, 02:53:57) came 4 min 39 s after the commit that records it; but five calls had already been refused for lack of credits before 02:39:15 and were taken for wrong answers (corrected here at 05:08: see corrections). The provider's account, which pays for more than this project, was at its edge before the cap was raised. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
@@ -38,7 +38,7 @@
   "what": "one card for Dinis, ranked first before the launch; the three desks' pages each say runs are paused and why; a wrapper that stops at the first refusal",
   "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
  },
- "status": "open: waiting on Dinis (a top-up of the provider's account); six empty hours in the shadow reports (03:00 to 08:00); the shadow desk tries one call each hour (next 09:05), the Perplexity desk one each half hour",
+ "status": "open: waiting on Dinis (a top-up of the provider's account); eight empty hours in the shadow reports (03:00 to 10:00); he spoke three times between ~09:30 and ~09:50 on other matters; the shadow desk tries one call each hour (next 11:05)",
  "duration": {
   "from": "2026-11-11T02:53:57Z",
   "to": null,
@@ -807,13 +807,75 @@
     "incident.conductor@web-summit.dinis",
     "incident.accountant@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a seventh and an eighth gap",
+   "sha": "123e9dce92ca7011bb924413b6189e3bfeee1552",
+   "in": "the 09:00 and 10:00 rounds due; nothing changed at the provider",
+   "out": "\"the 10:00 hour is an eighth recorded gap (the engines' account still out of credit)\"; the seventh was recorded at 09:07:06 (01ff4dd3), a few seconds before this trace's last wake read the record. Dinis spoke again in the hour, three times between ~09:30 and ~09:50 (BRIEF.md: keys and vaults; page views; a front page for newcomers and synthetic visitors). None of the three sections mentions the provider's account, and the card is still open: seven hours and three minutes after it opened.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "the card (board/items/a-provider-credit.json)",
+    "evidence_of_handoff": "the card is open"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "shadow/runs/2026-11-11/10.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=shadow/runs/2026-11-11/10.json"
+    },
+    {
+     "type": "file",
+     "path": "shadow/runs/2026-11-11/09.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=shadow/runs/2026-11-11/09.json"
+    },
+    {
+     "type": "file",
+     "path": "board/items/a-provider-credit.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
+    },
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November, ~09:30, ~09:47 and ~09:50 UTC",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    },
+    {
+     "type": "commit",
+     "sha": "01ff4dd36bc9d3663cf6462c3d5c85c6396894b0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/01ff4dd36bc9d3663cf6462c3d5c85c6396894b0"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "123e9dce92ca7011bb924413b6189e3bfeee1552",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/123e9dce92ca7011bb924413b6189e3bfeee1552"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": null,
+     "note": "no CI tag at or after this commit when the trace was filled"
+    }
+   ],
+   "n": 18,
+   "at": "2026-11-11T10:07:11Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 17,
+  "steps": 18,
   "steps_with_no_evidence": 1,
   "person_steps": 2,
-  "agent_steps": 15
+  "agent_steps": 16
  },
  "people_acted": [
   "Dinis Cruz"

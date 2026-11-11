@@ -1,13 +1,13 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 09:07 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 10:09 UTC
 
 **In five lines.**
-1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November; a team that grew from 4 agents to 26 (30 named by 03:00) turned each direction into pages within minutes.
+1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then three more times between about 09:30 and 09:50 after 6 h 41 min without a word in the record; a team that grew from 4 agents to 32 (67 sessions by 10:05) turned each direction into pages within minutes.
 2. The first push here was at 21:14:33; by 04:37 incident.ci@ had counted 565 commits by 28 agents and 337 releases (6 runs failed, 174 cancelled by a newer push).
 3. The busiest hour was 02:00 to 03:00: Dinis's page-by-page review became a contract (RESTRUCTURE.md) in 45 s, thirteen new agents shipped in 35 minutes, and the home page was swapped at 02:19:08.
 4. What broke was mostly the machine under load (cancelled runs, a push race, the gate's budget) and clocks (five agents wrote times ahead of the clock); each was fixed in a commit that says so.
-5. What waits, waits on Dinis: 44 cards at 09:07, first among them the model provider's account out of credit (every call refused from 02:53:57; six empty hours in the shadow reports), second the hold the conductor put at 05:27 on reading Web Summit's site, whose terms forbid it; the oldest is from 21:20 (attach the repository to three agents' sessions). He has not spoken in the record since ~02:50; in that silence nineteen roles were taken over by fresh sessions, and four cannot be until he says how vault keys are held.
+5. What waits, waits on Dinis: 44 cards at 10:09, first among them the model provider's account out of credit (every call refused from 02:53:57; eight empty hours in the shadow reports), second the hold the conductor put at 05:27 on reading Web Summit's site, whose terms forbid it; neither is in what he said at ~09:30 to ~09:50. What he did answer (how vault keys are held) was acted on within ten minutes; what he asked for (a front page a journalist can read) had a draft in under eight, waiting on his yes at /welcome/.
 
 **Rests on:** [BRIEF.md](../BRIEF.md), [numbers.json](numbers.json) (from [data/ci/](../data/ci/index.json) and [board/items/](../board/README.md)), [the traces](traces/README.md), [agents/JOBS.md](../agents/JOBS.md), [REALITY.md](../REALITY.md), and for 10 November before 21:14 the commits of `team/incidents/` in SGit-AI__Website__Web-Summit. **How to read it:** times are UTC; a seven-letter code is a commit of this repository (`ws:` before it: of SGit-AI__Website__Web-Summit); "Dinis ~hh:mm" is BRIEF.md's own time for his words, which runs a few minutes later than the commit that records them. Counts are from numbers.json and stop at its sources' snapshot (03:38). Not a warning service: this is the project's record, not the storm's.
 
@@ -123,6 +123,14 @@
 - Broke: the gate refused a librarian push on a wrong link; nothing had gone out (`72b65b80`). The pipeline: 685 runs, no new failure or retry, push to served median 41 s (`9bb20909`). The shadow desk's 09:00 round is not in the record at 09:07; its last is the sixth gap (`01b680db`).
 - Corrected, by their authors: the accounts' round 8 reading (the average call was not flat: it falls again, `85712007`); the conductor's row s-1111T0824 completed from incident.ipma@'s read (`d3330839`); observability's latest-session mark (`07792d4f`); a Chinese-language Wikipedia figure followed to its new revision (`06fb32fb`).
 - Waited on Dinis: 44 cards; the provider's account for 6 h 3 min at 09:07; the Web Summit hold for 3 h 39 min.
+
+**10:09, the 10:06 wake.**
+- Asked, by Dinis, three times after 6 h 41 min (BRIEF.md): ~09:30, "The keys and vaults are created by the specific agent and then sent to you via your append lane" (`84158ea2`); ~09:47, page views on every page with city and country, and the conductor gives vault keys to fresh sessions (`4dd30049`); ~09:50, "the first page has to be super clear ... like a normal website", and four simulated visitors (`45dc1bd9`).
+- Shipped from his words: the conductor's key lane built, opened and live end to end by 09:40 (`4fb4d7c2`, `218c89a0`, `7980fa5e`); IPMA's second session back on 90 s after the word was recorded (`5d9a79cb`; the memory trace, steps 24 and 25); page views on, sealed, counts only published (`bcab685a`), with country and city (`8fa018f3`); two new agents, incident.envoy@ (`77d28513`) and incident.synthetic@ (`76ccd12c`); a draft at /welcome/ in 7 min 37 s, read by the invented visitors and rewritten 56 s after their findings (`94f2ed9a`, `f93e8c7f`, `4addc33e`). A new trace: [a loop](traces/loop-a-front-page-for-newcomers.json).
+- Shipped besides: the build twice as fast, 4.8 s to 2.3 s (`2c23f1dd`); the designer's ten notes on the front page under the red rain, all taken by incident.weather@ within eight minutes (`50ade454` to `5b363efa`); rows s-1111T0922 (analysis), s-1111T0939, s-1111T0941, s-1111T0955, s-1111T0957; the press reported IPMA's change 89 minutes after IPMA (`546d119f`); the accounts' round 10 (`cbfb680c`: the 08:00 hour the cheapest yet); one canonical agent count (`2bc7133c`: 32 agents, 67 sessions).
+- Broke: pages that named the warning's level in fixed words went stale when IPMA lowered it (`846d769c`; the designer's search found 4 pages wrong as present fact, `a0facd2a`); the timeline tool counted an analysis row as official (`90e72e1e`); a literal \n joined two rules in CLAUDE.md (`b44e52e6`); the shadow reports' 09:00 and 10:00 hours are a seventh and an eighth gap (`01ff4dd3`, `123e9dce`).
+- Corrected, by their authors: three more times written ahead of the clock (observability `ed75f9a9`, media `8422f038`, the designer `7bdc76b3`). Mine: the 09:06 block said the shadow desk's 09:00 round was not in the record; it was committed at 09:07:06 and was not yet on dev at the pull that block was written from (09:07:10).
+- Waited on Dinis: 44 cards; the provider's account for 7 h 4 min at 10:09; the Web Summit hold for 4 h 40 min; /welcome/ for his yes.
 
 ## Open questions for the conductor
 
