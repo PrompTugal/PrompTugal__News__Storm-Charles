@@ -1,9 +1,10 @@
 {
  "about": "Which of our agents does what in the fringe repository's definitions of where agents run: each agent's altitude (A3) with the A2 loops, A1 LLM calls and A0 compute it runs, its runtime (R1-R5), model endpoints (M1-M4), I/O level (L0-L5), account and key. Every item labelled: fact (read from the agent's own files or ours), evidence (read elsewhere, or inferred from what it does: the reason given). The definitions are the fringe's; the mapping is the librarian's. At Dinis's word, ~22:00 UTC, 11 November (BRIEF.md item 3).",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T22:05Z",
+ "updated": "2026-11-11T22:11Z",
  "made_by": "tools/library-altitudes.mjs",
  "definitions": {
+  "section_3_unchanged_at": "3256d3cafa8200a9ff5b46443400732fc474e0e5 (2026-11-11T22:05:57Z, read 22:09Z)",
   "repo": "https://github.com/PrompTugal/PrompTugal__News__Fringe",
   "file": "docs/where-agents-run.md",
   "commit": "a8ee36eb8dc9ab580dc3a32c7ebb1d34f3c2f996",
@@ -34,20 +35,84 @@
    "from": "https://github.com/PrompTugal/PrompTugal__News__Fringe"
   }
  ],
+ "grants": {
+  "session": {
+   "altitude": "A4",
+   "label": "fact for the librarian's own session (read at 2026-11-11T22:11Z); evidence for the others (the same cloud environment, sessions started the same way)",
+   "holds": [
+    "push to dev (the session's git credentials; admin/tools/release.sh)",
+    "the agent's private session key (~/.sg-send/keys, outside git)",
+    "every vault key the agent made or was given (outside git)",
+    "the environment's credentials: the OpenRouter key (under two names), a GitHub token, an SG/Send token and cloud-provider credentials (names read, never values)",
+    "the right to message other sessions, start sessions and set scheduled wakes (the session-control tools of Claude Code in the cloud); changes to the environment with the owner's approval"
+   ]
+  },
+  "ci": {
+   "altitude": "A3",
+   "label": "fact",
+   "from": ".github/workflows/deploy.yml",
+   "holds": [
+    "the job's GITHUB_TOKEN with contents: write, pages: write, id-token: write",
+    "actions/checkout keeps the token in .git/config for every later step (persist-credentials is not set to false): any step can push to any branch of this repository",
+    "no agent key, no vault key, no model key (no secrets.* in the workflow)"
+   ],
+   "why": "A3 in part: a durable write beyond the runner (push to this repository, deploy the site), but no session control, no memory and no keys of an agent"
+  }
+ },
+ "corrections_to_compute_md": [
+  {
+   "what": "CI is not at its own altitude yet: the deploy job holds contents: write (kept in .git/config by actions/checkout for every step), pages: write and id-token: write, and in that one job it runs the gate, every generator and, when the brief changed, Chromium installed from npm at run time. A0 work under an A3-part grant: crosses. The fix is two jobs: build and gate with contents: read, then deploy and tag in a job that runs no repository code (the workflow is incident.ci@'s).",
+   "label": "fact",
+   "from": ".github/workflows/deploy.yml"
+  },
+  {
+   "what": "The generators in admin/build/generators.json run in every pushing agent's session (release.sh runs the gate, which builds): every agent runs the other agents' generators under its own A4 grant. By count, the widest crossing.",
+   "label": "fact",
+   "from": "admin/tools/release.sh, admin/build/validate.mjs, admin/build/generators.json"
+  },
+  {
+   "what": "graph, labs, studio, identity and weatherwatch use a headless browser on our own pages (local builds, our live site, our lanes), not on arbitrary web pages; the readers of outside pages in a browser are the researcher, meteorology (render: true) and the conductor.",
+   "label": "fact",
+   "from": "agents/<role>/status.json and README.md"
+  },
+  {
+   "what": "The meteorologist, researcher and dev run on the Web-Summit repository's side: the grant there is that repository's push, not ours; their work arrives here under the conductor's commits.",
+   "label": "fact",
+   "from": "tools/sync-from-websummit.sh"
+  },
+  {
+   "what": "An A2 now exists: tools/models-delegate.mjs, incident.models@'s delegation loop (commit 9fff5fb7).",
+   "label": "fact",
+   "from": "tools/models-delegate.mjs"
+  },
+  {
+   "what": "In the librarian's session, 10 environment variables named as keys or tokens hold credentials (names read, never values), against 17 counted in the conductor's: the sessions may not hold the same set.",
+   "label": "fact",
+   "from": "the librarian's session, at 2026-11-11T22:11Z"
+  }
+ ],
  "totals": {
   "agents": 42,
+  "units": 112,
+  "crossing": 112,
+  "by_mandate": {
+   "A0": 101,
+   "A1": 10,
+   "A2": 1
+  },
+  "in_ci_and_every_session": 15,
   "io": {
    "L5": 24,
-   "L4": 14,
-   "L4, elsewhere": 3,
-   "not yet seen": 1
+   "L4": 15,
+   "L4, elsewhere": 3
   },
   "calls_models_through_llm_mjs": [
    "incident.models@web-summit.dinis",
    "incident.shadow@web-summit.dinis",
-   "incident.perplexity@web-summit.dinis"
+   "incident.perplexity@web-summit.dinis",
+   "incident.flights@web-summit.dinis"
   ],
-  "keyed": 38
+  "keyed": 39
  },
  "agents": [
   {
@@ -73,8 +138,61 @@
      }
     ],
     "A0_compute": [
-     "tools/sync-from-websummit.sh",
-     "tools/timeline.mjs"
+     {
+      "unit": "tools/sync-from-websummit.sh",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "a background loop in its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/sync-from-websummit.sh"
+     },
+     {
+      "unit": "tools/timeline.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/timeline.mjs"
+     },
+     {
+      "unit": "reads of IPMA's CAP feed and open data with curl, the bridge sync, site builds, PDF rendering in Chromium",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "MeteoAlarm XML, IPMA JSON, the Web-Summit repository's files",
+       "a headless browser (Chromium)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/conductor/COMPUTE.md §1 (of itself)"
+     }
     ]
    },
    "runtime": {
@@ -92,12 +210,18 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "249 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:00Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "254 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:09Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -147,12 +271,18 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "130 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:13Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "131 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:04Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -186,14 +316,181 @@
      }
     ],
     "A0_compute": [
-     "tools/agents-commits.mjs",
-     "tools/agents-index.mjs",
-     "tools/agents-ledger.mjs",
-     "tools/agents-now.mjs",
-     "tools/agents-pin.mjs",
-     "tools/agents-release.mjs",
-     "tools/agents-sessions.mjs",
-     "tools/agents-views.mjs"
+     {
+      "unit": "tools/agents-commits.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-commits.mjs"
+     },
+     {
+      "unit": "tools/agents-index.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-index.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/agents-ledger.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-ledger.mjs"
+     },
+     {
+      "unit": "tools/agents-now.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-now.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/agents-pin.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-pin.mjs"
+     },
+     {
+      "unit": "tools/agents-release.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-release.mjs"
+     },
+     {
+      "unit": "tools/agents-sessions.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-sessions.mjs"
+     },
+     {
+      "unit": "tools/agents-views.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the network (hosts given at run time or from data files)",
+       "our own services: dev.send.sgraph.ai",
+       "sealed messages from the public lanes, opened here (visitors' words or events)",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-views.mjs"
+     },
+     {
+      "unit": "Chromium checks of our live site",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our live site, in a headless browser"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/observability/status.json"
+     }
     ]
    },
    "runtime": {
@@ -211,18 +508,24 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "94 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:17Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "97 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:05Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
-     "incident-observability-dinis-8"
+     "incident-observability-dinis-9"
     ],
-    "handed_over": 7,
+    "handed_over": 8,
     "label": "fact",
     "from": "data/keys.json"
    }
@@ -250,17 +553,233 @@
      }
     ],
     "A0_compute": [
-     "tools/lane-common.mjs",
-     "tools/lane-configure.mjs",
-     "tools/lane-drain.mjs",
-     "tools/lane-e2e.mjs",
-     "tools/lane-frame.mjs",
-     "tools/lane-handover.mjs",
-     "tools/lane-keys.mjs",
-     "tools/lane-open.mjs",
-     "tools/lane-seal.mjs",
-     "tools/lane-sign.mjs",
-     "tools/lane-test.mjs"
+     {
+      "unit": "tools/lane-common.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the network (hosts given at run time or from data files)",
+       "our own services: sgit.ai",
+       "sealed messages from the public lanes, opened here (visitors' words or events)",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-common.mjs"
+     },
+     {
+      "unit": "tools/lane-configure.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "sealed messages from the public lanes, opened here (visitors' words or events)",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-configure.mjs"
+     },
+     {
+      "unit": "tools/lane-drain.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: sgit.ai",
+       "sealed messages from the public lanes, opened here (visitors' words or events)",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-drain.mjs"
+     },
+     {
+      "unit": "tools/lane-e2e.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "a headless browser (Chromium): runs the scripts of the pages it opens",
+       "our own services: dev.send.sgraph.ai",
+       "sealed messages from the public lanes, opened here (visitors' words or events)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-e2e.mjs"
+     },
+     {
+      "unit": "tools/lane-frame.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-frame.mjs"
+     },
+     {
+      "unit": "tools/lane-handover.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "sealed messages from the public lanes, opened here (visitors' words or events)",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-handover.mjs"
+     },
+     {
+      "unit": "tools/lane-keys.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-keys.mjs"
+     },
+     {
+      "unit": "tools/lane-open.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "sealed messages from the public lanes, opened here (visitors' words or events)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-open.mjs"
+     },
+     {
+      "unit": "tools/lane-seal.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-seal.mjs"
+     },
+     {
+      "unit": "tools/lane-sign.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-sign.mjs"
+     },
+     {
+      "unit": "tools/lane-test.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: sgit.ai",
+       "sealed messages from the public lanes, opened here (visitors' words or events)",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-test.mjs"
+     },
+     {
+      "unit": "tools/lane-e2e.mjs in Chromium with a virtual passkey",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own lane pages; the public lane's sealed messages"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/identity/status.json"
+     }
     ]
    },
    "runtime": {
@@ -284,6 +803,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -316,7 +841,26 @@
       "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
      }
     ],
-    "A0_compute": []
+    "A0_compute": [
+     {
+      "unit": "Playwright renders of our front page and of a warning's text, each wake",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our front page; the warning page it renders, in a headless browser"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/weatherwatch/status.json"
+     }
+    ]
    },
    "runtime": {
     "value": "R1",
@@ -339,6 +883,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -395,6 +945,12 @@
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
      "incident-media-dinis-4"
@@ -427,15 +983,183 @@
      }
     ],
     "A0_compute": [
-     "tools/library-abp.mjs",
-     "tools/library-altitudes.mjs",
-     "tools/library-index.mjs",
-     "tools/library-news.mjs",
-     "tools/library-pack.mjs",
-     "tools/library-reading.mjs",
-     "tools/library-releases.mjs",
-     "tools/library-view.mjs",
-     "tools/policy-check.mjs"
+     {
+      "unit": "tools/library-abp.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: web-summit.sgit.ai",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/library-abp.mjs"
+     },
+     {
+      "unit": "tools/library-altitudes.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "a headless browser (Chromium): runs the scripts of the pages it opens",
+       "outside hosts: github.com",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/library-altitudes.mjs"
+     },
+     {
+      "unit": "tools/library-index.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "our own services: storm-charles.promptugal.news",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/library-index.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/library-news.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/library-news.mjs"
+     },
+     {
+      "unit": "tools/library-pack.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: web-summit.sgit.ai",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/library-pack.mjs"
+     },
+     {
+      "unit": "tools/library-reading.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/library-reading.mjs"
+     },
+     {
+      "unit": "tools/library-releases.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/library-releases.mjs"
+     },
+     {
+      "unit": "tools/library-view.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/library-view.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/policy-check.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/policy-check.mjs"
+     }
     ]
    },
    "runtime": {
@@ -453,18 +1177,24 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "138 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:47Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "143 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:07Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
-     "incident-librarian-dinis-13"
+     "incident-librarian-dinis-14"
     ],
-    "handed_over": 12,
+    "handed_over": 13,
     "label": "fact",
     "from": "data/keys.json"
    }
@@ -492,8 +1222,65 @@
      }
     ],
     "A0_compute": [
-     "tools/graph-build.mjs",
-     "tools/graph-places.mjs"
+     {
+      "unit": "tools/graph-build.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "our own services: storm-charles.promptugal.news"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/graph-build.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/graph-places.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: api.ipma.pt"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/graph-places.mjs"
+     },
+     {
+      "unit": "headless browser tests of our own pages (local builds)",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own pages only"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/graph/status.json"
+     }
     ]
    },
    "runtime": {
@@ -517,6 +1304,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -549,7 +1342,26 @@
       "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
      }
     ],
-    "A0_compute": []
+    "A0_compute": [
+     {
+      "unit": "a read every 5 minutes between its wakes",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its session, on the Web-Summit repository's side (bridged)",
+        "grant": "session (on the Web-Summit side: push to that repository, not this one)",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the feeds it reads (COMPUTE.md: the CAP feed, METAR and TAF; its status says only \"reads every 5 min\")"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/meteorologist/status.json"
+     }
+    ]
    },
    "runtime": {
     "value": "R1",
@@ -572,6 +1384,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "started before this repository, on the Web-Summit incident; the account is not stated in its files"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to SGit-AI__Website__Web-Summit (bridged), not here",
+    "see": "grants.session"
    },
    "key": {
     "active": [],
@@ -601,7 +1419,26 @@
       "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
      }
     ],
-    "A0_compute": []
+    "A0_compute": [
+     {
+      "unit": "headless browser reads of outside pages (the Diário da República's, for one)",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its session, on the Web-Summit repository's side (bridged)",
+        "grant": "session (on the Web-Summit side: push to that repository, not this one)",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside pages and their scripts, in a headless browser"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/researcher/status.json"
+     }
+    ]
    },
    "runtime": {
     "value": "R1",
@@ -624,6 +1461,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "started before this repository, on the Web-Summit incident; the account is not stated in its files"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to SGit-AI__Website__Web-Summit (bridged), not here",
+    "see": "grants.session"
    },
    "key": {
     "active": [],
@@ -654,8 +1497,42 @@
      }
     ],
     "A0_compute": [
-     "tools/websummit-poll.sh",
-     "tools/websummit.mjs"
+     {
+      "unit": "tools/websummit-poll.sh",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "a background loop in its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/websummit-poll.sh"
+     },
+     {
+      "unit": "tools/websummit.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: websummit.com, public.api.bsky.app, bsky.app"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/websummit.mjs"
+     }
     ]
    },
    "runtime": {
@@ -679,6 +1556,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "started before this repository, on the Web-Summit incident; the account is not stated in its files"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to SGit-AI__Website__Web-Summit (bridged), not here",
+    "see": "grants.session"
    },
    "key": {
     "active": [],
@@ -708,7 +1591,26 @@
       "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
      }
     ],
-    "A0_compute": []
+    "A0_compute": [
+     {
+      "unit": "headless Chromium tests of our own pages before each push",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own pages only"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/studio/README.md, status.json"
+     }
+    ]
    },
    "runtime": {
     "value": "R1",
@@ -731,6 +1633,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -764,9 +1672,60 @@
      }
     ],
     "A0_compute": [
-     "tools/wikipedia-claims.mjs",
-     "tools/wikipedia-lib.mjs",
-     "tools/wikipedia-read.mjs"
+     {
+      "unit": "tools/wikipedia-claims.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/wikipedia-claims.mjs"
+     },
+     {
+      "unit": "tools/wikipedia-lib.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the network (hosts given at run time or from data files)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/wikipedia-lib.mjs"
+     },
+     {
+      "unit": "tools/wikipedia-read.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/wikipedia-read.mjs"
+     }
     ]
    },
    "runtime": {
@@ -790,6 +1749,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -823,7 +1788,25 @@
      }
     ],
     "A0_compute": [
-     "tools/weather-check.mjs"
+     {
+      "unit": "tools/weather-check.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: www.ipma.pt, prociv.gov.pt",
+       "our own services: promptugal.news"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/weather-check.mjs"
+     }
     ]
    },
    "runtime": {
@@ -847,6 +1830,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -880,10 +1869,78 @@
      }
     ],
     "A0_compute": [
-     "tools/ipma-pages.mjs",
-     "tools/ipma-read.mjs",
-     "tools/ipma-round.mjs",
-     "tools/ipma-views.mjs"
+     {
+      "unit": "tools/ipma-pages.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ipma-pages.mjs"
+     },
+     {
+      "unit": "tools/ipma-read.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: api.ipma.pt"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ipma-read.mjs"
+     },
+     {
+      "unit": "tools/ipma-round.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ipma-round.mjs"
+     },
+     {
+      "unit": "tools/ipma-views.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ipma-views.mjs"
+     }
     ]
    },
    "runtime": {
@@ -907,6 +1964,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -940,9 +2003,66 @@
      }
     ],
     "A0_compute": [
-     "tools/source-index.mjs",
-     "tools/source-meteoalarm.mjs",
-     "tools/source-pages.mjs"
+     {
+      "unit": "tools/source-index.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/source-index.mjs"
+     },
+     {
+      "unit": "tools/source-meteoalarm.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: feeds.meteoalarm.org, www.meteoalarm.org",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/source-meteoalarm.mjs"
+     },
+     {
+      "unit": "tools/source-pages.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/source-pages.mjs, admin/build/generators.json"
+     }
     ]
    },
    "runtime": {
@@ -966,6 +2086,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -999,9 +2125,66 @@
      }
     ],
     "A0_compute": [
-     "tools/capture-pages.mjs",
-     "tools/capture-records.mjs",
-     "tools/capture.mjs"
+     {
+      "unit": "tools/capture-pages.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/capture-pages.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/capture-records.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/capture-records.mjs"
+     },
+     {
+      "unit": "tools/capture.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "a headless browser (Chromium): runs the scripts of the pages it opens",
+       "the network (hosts given at run time or from data files)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/capture.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1025,6 +2208,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1058,11 +2247,106 @@
      }
     ],
     "A0_compute": [
-     "tools/entities-build.mjs",
-     "tools/entities-check.mjs",
-     "tools/entities-lib.mjs",
-     "tools/entities-link.mjs",
-     "tools/entities-make.mjs"
+     {
+      "unit": "tools/entities-build.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "our own services: storm-charles.promptugal.news"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/entities-build.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/entities-check.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/entities-check.mjs"
+     },
+     {
+      "unit": "tools/entities-lib.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: storm-charles.promptugal.news"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/entities-lib.mjs"
+     },
+     {
+      "unit": "tools/entities-link.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/entities-link.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/entities-make.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/entities-make.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1086,6 +2370,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1119,7 +2409,42 @@
      }
     ],
     "A0_compute": [
-     "tools/labs-check.mjs"
+     {
+      "unit": "tools/labs-check.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "a headless browser (Chromium): runs the scripts of the pages it opens"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/labs-check.mjs"
+     },
+     {
+      "unit": "Playwright screenshots of our own lab pages (a scratch script)",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own pages only"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/labs/status.json"
+     }
     ]
    },
    "runtime": {
@@ -1143,6 +2468,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1176,9 +2507,65 @@
      }
     ],
     "A0_compute": [
-     "tools/board-build.mjs",
-     "tools/board-item.mjs",
-     "tools/board-sync.mjs"
+     {
+      "unit": "tools/board-build.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/board-build.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/board-item.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/board-item.mjs"
+     },
+     {
+      "unit": "tools/board-sync.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/board-sync.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1202,6 +2589,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1235,10 +2628,83 @@
      }
     ],
     "A0_compute": [
-     "tools/social-accounts.mjs",
-     "tools/social-mastodon.mjs",
-     "tools/social-page.mjs",
-     "tools/social-read.mjs"
+     {
+      "unit": "tools/social-accounts.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/social-accounts.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/social-mastodon.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the network (hosts given at run time or from data files)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/social-mastodon.mjs"
+     },
+     {
+      "unit": "tools/social-page.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/social-page.mjs"
+     },
+     {
+      "unit": "tools/social-read.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: bsky.app, api.bsky.app"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/social-read.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1262,6 +2728,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1295,9 +2767,83 @@
      }
     ],
     "A0_compute": [
-     "tools/meteorology-build.mjs",
-     "tools/meteorology-read.mjs",
-     "tools/meteorology-render.mjs"
+     {
+      "unit": "tools/meteorology-build.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/meteorology-build.mjs, admin/build/generators.json"
+     },
+     {
+      "unit": "tools/meteorology-read.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the network (hosts given at run time or from data files)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/meteorology-read.mjs"
+     },
+     {
+      "unit": "tools/meteorology-render.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "a headless browser (Chromium): runs the scripts of the pages it opens"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/meteorology-render.mjs"
+     },
+     {
+      "unit": "headless reads of the pages marked render: true (tools/meteorology-render.mjs)",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside pages and their scripts, in a headless browser"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/meteorology/README.md"
+     }
     ]
    },
    "runtime": {
@@ -1321,6 +2867,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1354,7 +2906,29 @@
      }
     ],
     "A0_compute": [
-     "tools/stories-build.mjs"
+     {
+      "unit": "tools/stories-build.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/stories-build.mjs, admin/build/generators.json"
+     }
     ]
    },
    "runtime": {
@@ -1379,6 +2953,12 @@
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
      "incident-stories-dinis-10"
@@ -1399,41 +2979,159 @@
    "inside": {
     "A2_loops": [
      {
-      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
-      "label": "evidence"
+      "unit": "tools/models-delegate.mjs",
+      "mandate": "A2",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/models-delegate.mjs"
      }
     ],
     "A1_calls": [
      {
       "what": "tools/llm.mjs calls (OpenRouter, M2): the evals",
       "share_usd_a_day": 6,
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session, through tools/llm.mjs",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
       "label": "fact",
       "from": "models/budgets.json"
-     },
-     {
-      "what": "tools/models-ask.mjs calls tools/llm.mjs (M2)",
-      "label": "fact",
-      "from": "tools/models-ask.mjs"
-     },
-     {
-      "what": "tools/models-report.mjs calls tools/llm.mjs (M2)",
-      "label": "fact",
-      "from": "tools/models-report.mjs"
-     },
-     {
-      "what": "tools/models-run.mjs calls tools/llm.mjs (M2)",
-      "label": "fact",
-      "from": "tools/models-run.mjs"
      },
      {
       "what": "tools/llm.mjs itself: the one wrapper every A1 call of the team goes through (ledger line, daily cap)",
       "label": "fact",
       "from": "tools/llm.mjs (owned by incident.models@ and incident.dev@ in agents/policy.json)"
+     },
+     {
+      "unit": "tools/models-ask.mjs",
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/models-ask.mjs"
+     },
+     {
+      "unit": "tools/models-report.mjs",
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/models-report.mjs"
+     },
+     {
+      "unit": "tools/models-run.mjs",
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/models-run.mjs"
      }
     ],
     "A0_compute": [
-     "tools/models-items.mjs",
-     "tools/models-prompts.mjs"
+     {
+      "unit": "tools/models-calls.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/models-calls.mjs"
+     },
+     {
+      "unit": "tools/models-items.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/models-items.mjs"
+     },
+     {
+      "unit": "tools/models-prompts.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/models-prompts.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1456,18 +3154,24 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "11 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T09:32Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "14 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:07Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
-     "incident-models-dinis"
+     "incident-models-dinis-2"
     ],
-    "handed_over": 0,
+    "handed_over": 1,
     "label": "fact",
     "from": "data/keys.json"
    }
@@ -1491,17 +3195,61 @@
      {
       "what": "tools/llm.mjs calls (OpenRouter, M2): shadow reporting",
       "share_usd_a_day": 1,
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session, through tools/llm.mjs",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
       "label": "fact",
       "from": "models/budgets.json"
      },
      {
-      "what": "tools/shadow-ask.mjs calls tools/llm.mjs (M2)",
+      "unit": "tools/shadow-ask.mjs",
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
       "label": "fact",
       "from": "tools/shadow-ask.mjs"
      }
     ],
     "A0_compute": [
-     "tools/shadow-index.mjs"
+     {
+      "unit": "tools/shadow-index.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: newsroom.sgit.ai",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/shadow-index.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1530,6 +3278,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1563,8 +3317,42 @@
      }
     ],
     "A0_compute": [
-     "tools/ci-read.mjs",
-     "tools/ci-release-record.mjs"
+     {
+      "unit": "tools/ci-read.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: api.github.com, github.com"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ci-read.mjs"
+     },
+     {
+      "unit": "tools/ci-release-record.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ci-release-record.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1588,6 +3376,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1617,23 +3411,96 @@
      {
       "what": "tools/llm.mjs calls (OpenRouter, M2): research through an answer engine with search",
       "share_usd_a_day": 4,
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session, through tools/llm.mjs",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
       "label": "fact",
       "from": "models/budgets.json"
      },
      {
-      "what": "tools/perplexity-ask.mjs calls tools/llm.mjs (M2)",
+      "unit": "tools/perplexity-ask.mjs",
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
       "label": "fact",
       "from": "tools/perplexity-ask.mjs"
      },
      {
-      "what": "tools/perplexity-status.mjs calls tools/llm.mjs (M2)",
+      "unit": "tools/perplexity-status.mjs",
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
       "label": "fact",
       "from": "tools/perplexity-status.mjs"
      }
     ],
     "A0_compute": [
-     "tools/perplexity-check.mjs",
-     "tools/perplexity-index.mjs"
+     {
+      "unit": "tools/perplexity-check.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the network (hosts given at run time or from data files)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/perplexity-check.mjs"
+     },
+     {
+      "unit": "tools/perplexity-index.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/perplexity-index.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1662,6 +3529,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1695,9 +3568,61 @@
      }
     ],
     "A0_compute": [
-     "tools/accounts-build.mjs",
-     "tools/accounts-measure.mjs",
-     "tools/accounts-round.mjs"
+     {
+      "unit": "tools/accounts-build.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: web-summit.sgit.ai",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/accounts-build.mjs"
+     },
+     {
+      "unit": "tools/accounts-measure.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/accounts-measure.mjs"
+     },
+     {
+      "unit": "tools/accounts-round.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/accounts-round.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1721,6 +3646,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1754,8 +3685,42 @@
      }
     ],
     "A0_compute": [
-     "tools/reporter-fill.mjs",
-     "tools/reporter-numbers.mjs"
+     {
+      "unit": "tools/reporter-fill.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: storm-charles.promptugal.news"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/reporter-fill.mjs"
+     },
+     {
+      "unit": "tools/reporter-numbers.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/reporter-numbers.mjs"
+     }
     ]
    },
    "runtime": {
@@ -1773,12 +3738,18 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "55 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:10Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "57 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:09Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1812,7 +3783,29 @@
      }
     ],
     "A0_compute": [
-     "tools/journal-build.mjs"
+     {
+      "unit": "tools/journal-build.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/journal-build.mjs, admin/build/generators.json"
+     }
     ]
    },
    "runtime": {
@@ -1836,6 +3829,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -1892,6 +3891,12 @@
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
      "incident-envoy-dinis"
@@ -1946,6 +3951,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -2002,6 +4013,12 @@
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
      "incident-storyteller-dinis"
@@ -2034,7 +4051,29 @@
      }
     ],
     "A0_compute": [
-     "tools/flows-build.mjs"
+     {
+      "unit": "tools/flows-build.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4"
+       },
+       {
+        "at": "CI (GitHub Actions), every push",
+        "grant": "ci",
+        "altitude": "A3"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/flows-build.mjs, admin/build/generators.json"
+     }
     ]
    },
    "runtime": {
@@ -2058,6 +4097,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -2091,8 +4136,43 @@
      }
     ],
     "A0_compute": [
-     "tools/broadcast-coast.mjs",
-     "tools/broadcast-field.mjs"
+     {
+      "unit": "tools/broadcast-coast.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/broadcast-coast.mjs"
+     },
+     {
+      "unit": "tools/broadcast-field.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: api.open-meteo.com, open-meteo.com",
+       "our own services: storm-charles.promptugal.news"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/broadcast-field.mjs"
+     }
     ]
    },
    "runtime": {
@@ -2116,6 +4196,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -2149,8 +4235,44 @@
      }
     ],
     "A0_compute": [
-     "tools/transport-gtfs.mjs",
-     "tools/transport-read.mjs"
+     {
+      "unit": "tools/transport-gtfs.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/transport-gtfs.mjs"
+     },
+     {
+      "unit": "tools/transport-read.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "a headless browser (Chromium): runs the scripts of the pages it opens",
+       "outside hosts: crt.sectigo.com, opensky-network.org, api.carrismetropolitana.pt, www.carrismetropolitana.pt, broker.fiware.urbanplatform.portodigital.pt, www.stcp.pt and 9 more",
+       "our own services: storm-charles.promptugal.news"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/transport-read.mjs"
+     }
     ]
    },
    "runtime": {
@@ -2168,12 +4290,18 @@
    "io": {
     "level": "L4",
     "label": "fact",
-    "why": "63 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:43Z), pushed to dev behind the gate"
+    "why": "64 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:04Z), pushed to dev behind the gate"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -2230,6 +4358,12 @@
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
      "incident-planner-dinis"
@@ -2262,9 +4396,60 @@
      }
     ],
     "A0_compute": [
-     "tools/ds-ensemble.mjs",
-     "tools/ds-exposure.mjs",
-     "tools/ds-tides.mjs"
+     {
+      "unit": "tools/ds-ensemble.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: ensemble-api.open-meteo.com"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ds-ensemble.mjs"
+     },
+     {
+      "unit": "tools/ds-exposure.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: api.ipma.pt"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ds-exposure.mjs"
+     },
+     {
+      "unit": "tools/ds-tides.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: marine-api.open-meteo.com, www.hidrografico.pt"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/ds-tides.mjs"
+     }
     ]
    },
    "runtime": {
@@ -2288,6 +4473,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -2321,8 +4512,47 @@
      }
     ],
     "A0_compute": [
-     "tools/brief-make.mjs",
-     "tools/brief-pdf.mjs"
+     {
+      "unit": "tools/brief-make.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "our own services: storm-charles.promptugal.news"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/brief-make.mjs"
+     },
+     {
+      "unit": "tools/brief-pdf.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "CI (GitHub Actions), the deploy job",
+        "grant": "ci",
+        "altitude": "A3"
+       },
+       {
+        "at": "its agent's session when it tests it",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "a headless browser (Chromium): runs the scripts of the pages it opens"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/brief-pdf.mjs, .github/workflows/deploy.yml"
+     }
     ]
    },
    "runtime": {
@@ -2346,6 +4576,12 @@
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -2379,7 +4615,27 @@
      }
     ],
     "A0_compute": [
-     "tools/desk-drain.mjs"
+     {
+      "unit": "tools/desk-drain.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "the network (hosts given at run time or from data files)",
+       "our own services: storm-charles.promptugal.news, dev.send.sgraph.ai",
+       "sealed messages from the public lanes, opened here (visitors' words or events)",
+       "vault contents"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/desk-drain.mjs"
+     }
     ]
    },
    "runtime": {
@@ -2397,12 +4653,18 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "16 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:08Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "17 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:08Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "its own files speak of vaults (evidence that it holds vault keys)",
+    "push": "to dev here",
+    "see": "grants.session"
    },
    "key": {
     "active": [
@@ -2459,6 +4721,12 @@
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
     "active": [
      "incident-sherpa-dinis"
@@ -2485,12 +4753,45 @@
     ],
     "A1_calls": [
      {
-      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
-      "label": "evidence",
-      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+      "what": "tools/llm.mjs calls (OpenRouter, M2): an hourly summary of the flight data",
+      "share_usd_a_day": 1,
+      "mandate": "A1",
+      "where": [
+       {
+        "at": "its agent's session, through tools/llm.mjs",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "model answers (untrusted text), and prompts built from collected material"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "models/budgets.json"
      }
     ],
-    "A0_compute": []
+    "A0_compute": [
+     {
+      "unit": "an OpenSky poller every 10 minutes (anonymous /states/all) and Open-Meteo reads",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session",
+        "grant": "session",
+        "altitude": "A4"
+       }
+      ],
+      "untrusted": [
+       "outside hosts: OpenSky's API, Open-Meteo's API (JSON)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "agents/flights/README.md, status.json"
+     }
+    ]
    },
    "runtime": {
     "value": "R1",
@@ -2502,22 +4803,36 @@
      "id": "M1",
      "label": "evidence",
      "why": "its own session's model (not named here: CLAUDE.md)"
+    },
+    {
+     "id": "M2",
+     "label": "fact",
+     "why": "OpenRouter through tools/llm.mjs"
     }
    ],
    "io": {
-    "level": "not yet seen",
-    "label": "evidence",
-    "why": "no commit by it read here yet"
+    "level": "L4",
+    "label": "fact",
+    "why": "1 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:03Z), pushed to dev behind the gate"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
     "label": "evidence",
     "why": "the conductor starts each session from Dinis's; no agent file states the account"
    },
+   "session_grant": {
+    "altitude": "A4",
+    "vault_keys": "none named in its files",
+    "push": "to dev here",
+    "see": "grants.session"
+   },
    "key": {
-    "active": [],
+    "active": [
+     "incident-flights-dinis-1"
+    ],
+    "handed_over": 0,
     "label": "fact",
-    "why": "no key in data/keys.json"
+    "from": "data/keys.json"
    }
   }
  ]
