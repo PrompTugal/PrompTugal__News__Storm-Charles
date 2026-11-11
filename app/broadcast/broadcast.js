@@ -144,6 +144,7 @@
       '<div class="meta">Residents (INE Census 2021) of the IPMA areas at each level in the hour from ' + tm(cur.hour_utc, hm(cur.hour_utc)) + ' UTC' +
       (x.peak ? '; the most under red in the file: ' + esc(M(x.peak.red)) + ' at ' + tm(x.peak.hour_utc, dayhm(x.peak.hour_utc)) + ' UTC' : '') +
       '. Where people sleep, not where they are; never a count of people harmed.</div>' +
+      (D.areas && D.areas.now && T(D.areas.now.read_utc) - T(x.read_utc) > 30 * 60e3 ? '<div class="bc-stale">Worked out from IPMA\'s warnings as read at ' + tm(x.read_utc, hm(x.read_utc)) + ' UTC; IPMA\'s warnings were read again at ' + tm(D.areas.now.read_utc, hm(D.areas.now.read_utc)) + ' UTC and may have changed since: the warnings panel has the newer read.</div>' : '') +
       prov('IPMA warnings × INE census, by incident.datascience@', view('incidents/' + inc + '/data/exposure/people-by-hour.json', 'hours'), x.read_utc)
     box.innerHTML = hd
   }
