@@ -79,16 +79,17 @@ const KINDS = [
     [/^incidents\/[^/]+\/comms\//, 'comms draft'], [/^incidents\/[^/]+\/material\//, 'material'],
     [/^incidents\/[^/]+\/data\/.*\.(py|mjs|js|sh)$/, 'tool'], [/^incidents\/[^/]+\/data\/.*\.json$/, 'dataset'], [/^incidents\/[^/]+\/data\/.*analysis\.md$/, 'analysis'], [/^incidents\/[^/]+\/data\/.*\.md$/, 'dataset doc'],
     [/^incidents\/[^/]+\/README\.md$/, 'incident record'],
-    [/^research\//, 'research'], [/^(outreach\/|contribute\.md$)/, 'outreach'], [/^design\//, 'design'], [/^app\/design\//, 'design'],
+    [/^research\//, 'research'], [/^studio\//, 'studio'], [/^(outreach\/|contribute\.md$)/, 'outreach'], [/^design\//, 'design'], [/^app\/design\//, 'design'],
     [/^data\/.*\.json$/, 'dataset'], [/^data\//, 'dataset doc'],
     [/^(tools|admin\/tools)\//, 'tool'], [/^(admin\/build\/|\.github\/)/, 'build'], [/^admin\//, 'admin'], [/^app\//, 'app'], [/^account\//, 'app'],
     [/^(README\.md|LICENSE|CNAME|\.gitignore)$/, 'repository'],
 ]
-const ORDER = ['rules', 'brief', 'plan', 'record', 'decision log', 'incident record', 'dataset', 'dataset doc', 'analysis', 'research', 'reading', 'library', 'agent file', 'comms draft', 'material', 'outreach', 'design', 'tool', 'build', 'admin', 'app', 'repository', 'other']
+const ORDER = ['rules', 'brief', 'plan', 'record', 'decision log', 'incident record', 'dataset', 'dataset doc', 'analysis', 'research', 'studio', 'reading', 'library', 'agent file', 'comms draft', 'material', 'outreach', 'design', 'tool', 'build', 'admin', 'app', 'repository', 'other']
 const KIND_ABOUT = {
     rules: 'The rules every agent reads first.', brief: 'Dinis\'s direction, close to his words, and its corrections.', plan: 'Proposals and priorities: what is to be built and in what order.',
     record: 'What exists.', 'decision log': 'The timeline of signals and the decisions, newest first.', 'incident record': 'The incident\'s own page and front-page record.',
     dataset: 'JSON data: every value with its source and the time read.', 'dataset doc': 'What a dataset holds and who keeps it.', analysis: 'Our analysis, labelled as analysis: a hypothesis with its reasons, never a fact.',
+    studio: 'The Studio: explanations as storyboards and animations (our analysis, drawn).',
     research: 'Research files: what was found, where, and when it was read.', reading: 'The reading list: what others wrote that bears on this site, and what it means here.', library: 'The catalogue itself, the glossary, the standard.',
     'agent file': 'Each agent\'s jobs, status and asks.', 'comms draft': 'Drafts for people; a person sends.', material: 'Material offered to another newsroom\'s desk.', outreach: 'How to contribute, and drafts for experts; a person sends.',
     design: 'Design rounds and notes.', tool: 'Scripts the agents run.', build: 'The build, the gate and CI.', admin: 'The admin area.', app: 'What runs in the browser.', repository: 'The repository\'s own files.', other: 'Not yet classified.'

@@ -1,12 +1,12 @@
 # The release history: every version, what changed, and whether it was served
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 00:45 UTC. Built by [tools/library-releases.mjs](../tools/library-releases.mjs) from the tags, the commit subjects and [a snapshot of the deploy workflow's runs](releases-runs.json) read at that time; the data is [releases.json](releases.json). Back to [the library](README.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:46 UTC. Built by [tools/library-releases.mjs](../tools/library-releases.mjs) from the tags, the commit subjects and [a snapshot of the deploy workflow's runs](releases-runs.json) read at that time; the data is [releases.json](releases.json). Back to [the library](README.md).
 
-CI numbers every push (`v0.1.<run>`), deploys it and tags it; nobody who pushes writes a number ([BRIEF-CORRECTIONS.md](../BRIEF-CORRECTIONS.md)). Until about 23:55 UTC on 10 November the newest push cancelled a run in progress; since then a running deploy finishes and only a run still waiting is replaced (the workflow's own comment), so a later "cancelled" should mean it never started. **130 runs: 88 served (confirmed by CI), 3 deployed and tagged but cancelled before CI confirmed, 36 cancelled before the tag, 3 failed.**
+CI numbers every push (`v0.1.<run>`), deploys it and tags it; nobody who pushes writes a number ([BRIEF-CORRECTIONS.md](../BRIEF-CORRECTIONS.md)). Until about 23:55 UTC on 10 November the newest push cancelled a run in progress; since then a running deploy finishes and only a run still waiting is replaced (the workflow's own comment), so a later "cancelled" should mean it never started. **158 runs: 113 served (confirmed by CI), 3 deployed and tagged but cancelled before CI confirmed, 38 cancelled before the tag, 3 failed, 1 still running or unknown when read.**
 
 ## Versions never confirmed served
 
-v0.1.1 (failed), v0.1.8, v0.1.9, v0.1.18, v0.1.20, v0.1.23, v0.1.24, v0.1.25, v0.1.26, v0.1.32 (seen served by us, see below), v0.1.33, v0.1.34, v0.1.35, v0.1.37, v0.1.38, v0.1.41, v0.1.44, v0.1.47, v0.1.51, v0.1.52, v0.1.54 (failed), v0.1.55 (failed), v0.1.56, v0.1.57, v0.1.58, v0.1.61, v0.1.62, v0.1.67, v0.1.68, v0.1.71, v0.1.73, v0.1.75, v0.1.81, v0.1.88, v0.1.91, v0.1.115, v0.1.123, v0.1.124, v0.1.125
+v0.1.1 (failed), v0.1.8, v0.1.9, v0.1.18, v0.1.20, v0.1.23, v0.1.24, v0.1.25, v0.1.26, v0.1.32 (seen served by us, see below), v0.1.33, v0.1.34, v0.1.35, v0.1.37, v0.1.38, v0.1.41, v0.1.44, v0.1.47, v0.1.51, v0.1.52, v0.1.54 (failed), v0.1.55 (failed), v0.1.56, v0.1.57, v0.1.58, v0.1.61, v0.1.62, v0.1.67, v0.1.68, v0.1.71, v0.1.73, v0.1.75, v0.1.81, v0.1.88, v0.1.91, v0.1.115, v0.1.123, v0.1.124, v0.1.125, v0.1.137, v0.1.149
 
 **This is not a list of versions that were never deployed**, and none can be made from the runs alone: a cancelled deploy step can still go live. Run 32: served: /version.json answered v0.1.32 with commit 487818fc40 when read at 23:49 UTC, although the run's deploy step is recorded as cancelled (job 130213112738) and no tag was pushed (incident.librarian@). Each of these versions' commits is contained in the next served version, so no change was lost; what is not known is whether a reader was ever served that exact number.
 
@@ -16,6 +16,34 @@ What changed is each commit's own subject, as its agent wrote it.
 
 | Version | Pushed (UTC) | State | What changed |
 |---|---|---|---|
+| v0.1.158 | 11-11 01:44 | in_progress | *incident.conductor@* timeline rows we had as data but not as rows (IPMA names the storm 9 Nov 13:17; ANEPC's Aviso 21; the red wind sent 07:18; communiqué no. 2 at 17:07); the 17:42 row says sent 16:30 (found by incident.wikipedia@'s first comparison) |
+| v0.1.157 | 11-11 01:43 | served | *incident.wikipedia@* Wikipedia on the storm: 6 pages in 4 languages, 577 revisions as data, the growth chart against the timeline, the reader that appends |
+| v0.1.156 | 11-11 01:37 | served | *incident.media@* 01:36 wake: sweep (230 items); two headlines speak of less wind (Expresso 23:54, CNN Portugal 00:31), recorded as evidence |
+| v0.1.155 | 11-11 01:35 | served | *incident.conductor@* sync: Madeira in the decision graph (red warnings, schools closed Wednesday morning, the airport, cruise calls); RTP's new address |
+| v0.1.154 | 11-11 01:30 | served | *incident.weatherwatch@* weather-sites: 01:29 re-read (IPMA unchanged; four outlets now lead on less wind for Lisbon; RTP's live blog retitled and moved) |
+| v0.1.153 | 11-11 01:27 | served | *incident.media@* Wikipedia is incident.wikipedia@'s now: wikipedia.json frozen, README points to research/wikipedia/ |
+| v0.1.152 | 11-11 01:27 | served | *incident.conductor@* the cross-folder log (the Wikipedia placeholder page) |
+| v0.1.151 | 11-11 01:26 | served | *incident.conductor@* Wikipedia: Dinis's brief, a first page, the nav link, incident.wikipedia@ in the jobs and the policy |
+| v0.1.150 | 11-11 01:24 | served | *incident.observability@* every agent has its own page (/agents/<role>/); the three synced agents' strips say their pushes are not counted here |
+| v0.1.149 | 11-11 01:24 | not confirmed | *incident.designer@* design round 25: the 01:20 check (117 live pages at 390 px, none wider than the screen); the now line's tags are left out where they would be cut; a lighter wash over the past |
+| v0.1.148 | 11-11 01:24 | served | *incident.conductor@* sync: the 01:23 weather refresh (Tuesday's yellow rain expired; nothing else changed; airport 13 km/h at 01:00) |
+| v0.1.147 | 11-11 01:23 | served | *incident.conductor@* policy: incident.observability@ writes agents/*/README.md (the per-agent pages) |
+| v0.1.146 | 11-11 01:23 | served | *incident.observability@* an agent's name links to its own page only where that page exists (the index says so); otherwise to its card |
+| v0.1.145 | 11-11 01:23 | served | *incident.observability@* the night as it happened (a strip per agent: pushes, wakes, waiting on Dinis or on an agent); what Dinis can unblock, grouped; an agent's own page (mine first) |
+| v0.1.144 | 11-11 01:22 | served | *incident.identity@* 01:22 wake: status (waiting on Dinis: his key, three decisions, the token; tests and signatures green) |
+| v0.1.143 | 11-11 01:18 | served | *incident.observability@* 01:19 wake: /agents/ checked live (37 pushes, 32 deployed, 0 failed in the hour); commits snapshot refreshed; status |
+| v0.1.142 | 11-11 01:02 | served | *incident.conductor@* 01:02 wake: sync (the researcher's corrected times); no new organiser statement; status |
+| v0.1.141 | 11-11 00:59 | served | *incident.conductor@* the alert was announced at ~09:17 (press conference), 12:10 is the page's time; the minister's 09:30 line on Web Summit; the lead-time table's correction; sync |
+| v0.1.140 | 11-11 00:56 | served | *incident.studio@* the designer's round-24 list: larger characters, the text twin folded by chapter, the caption under the stage on a phone too, the blocks note beside the stage, Kept-by first in studio/README.md |
+| v0.1.139 | 11-11 00:54 | served | *incident.studio@* a second animation, "How a fact gets onto this site": the path, and two real cases from the timeline (Web Summit's 19:09 page, read 20:58; IPMA's red rain moved to 09:00, sent 21:23, read 23:53) |
+| v0.1.138 | 11-11 00:53 | served | *incident.conductor@* sync: the 'said on air' record says who read the quotes at source and when |
+| v0.1.137 | 11-11 00:53 | not confirmed | *incident.designer@* design round 24: /studio/ reviewed against design/README.md (seven notes for incident.studio@); app/agents re-checked (tokens, no hex); no code change |
+| v0.1.136 | 11-11 00:53 | served | *incident.graph@* the media layer: outlets as actors, coverage and first-on-fact as tables, "Who was first on each fact?" as a question |
+| v0.1.135 | 11-11 00:52 | served | *incident.designer@* design round 23: Thursday as its own strip (warned, decided, the TAF, IPMA's model, MET Norway as a second labelled model, the morning hypothesis); "said on air" as a form of its own under the standfirst |
+| v0.1.134 | 11-11 00:50 | served | *incident.studio@* the player fits one screen (1280 x 800), sticky controls on a phone, a big Play on first load, a question per chapter, a link per scene; the window's label no longer collides |
+| v0.1.133 | 11-11 00:49 | served | *incident.designer@* design round 22: the 00:47 check (front page four ways against the latest data; 114 live pages at 390 px, none wider than the screen); no code change |
+| v0.1.132 | 11-11 00:45 | served | *incident.librarian@* 00:44 wake: the release history to run 130 (88 served); a draft behaviour policy for incident.studio@; the commit record refreshed; status · *incident.librarian@* the catalogue's commit record refreshed |
+| v0.1.131 | 11-11 00:44 | served | *incident.studio@* a bar per request under chapters 1 and 2 (the shape of the cost, named as a simplification); library/index.json on chapter 5's shelf |
 | v0.1.130 | 11-11 00:42 | served | *incident.studio@* "What compression is", chapters 3 to 6: the door, what gets lost and why, side by side with how this team works, the point |
 | v0.1.129 | 11-11 00:39 | served | *incident.designer@* design round 21: the six nav sections fit one line at 1280 (34 px to spare); a fade at the edge wherever the nav is cut |
 | v0.1.128 | 11-11 00:38 | served | *incident.media@* 00:37 wake: sweep (225 items, 17 outlets; live entries, social, Wikipedia re-read) |
