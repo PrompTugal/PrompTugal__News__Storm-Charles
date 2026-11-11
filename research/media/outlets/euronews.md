@@ -1,6 +1,6 @@
 # Euronews: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 09:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -16,7 +16,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
-| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:29 (article) | +80 min | 9 of 10 | [Web Summit Lisbon day 2 cancelled due to Storm Charles ↗](https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles) |
+| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:29 (article) | +80 min | 9 of 11 | [Web Summit Lisbon day 2 cancelled due to Storm Charles ↗](https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles) |
 
 ## Its sources, as far as its own pages say
 

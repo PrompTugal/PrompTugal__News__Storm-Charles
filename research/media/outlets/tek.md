@@ -1,6 +1,6 @@
 # TEK Notícias (SAPO): its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 09:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
@@ -19,7 +19,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 14:25 (article) | +85 min | 5 of 6 | [Depressão Charles: Web Summit sob dúvida, pontes do Tejo com limite d… ↗](https://tek.sapo.pt/noticias/ciencia/artigos/depressao-charles-web-summit-sob-duvida-pontes-do-tejo-com-limite-de-60-km-h-e-tuneis-de-lisboa-fechados/) |
-| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:41 (article) | +32 min | 2 of 10 | [Web Summit cede às pressões e fecha portas no segundo dia por causa d… ↗](https://tek.sapo.pt/noticias/negocios/artigos/web-summit-cede-as-pressoes-e-fecha-portas-no-segundo-dia-por-causa-do-mau-tempo/) |
+| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:41 (article) | +32 min | 2 of 11 | [Web Summit cede às pressões e fecha portas no segundo dia por causa d… ↗](https://tek.sapo.pt/noticias/negocios/artigos/web-summit-cede-as-pressoes-e-fecha-portas-no-segundo-dia-por-causa-do-mau-tempo/) |
 
 ## Its sources, as far as its own pages say
 

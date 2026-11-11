@@ -1,13 +1,13 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 09:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 19: 17 articles, 1 live, 0 video, 1 opinion |
-| First and last | 9 Nov 08:34 to 11 Nov 08:39 UTC |
-| Whose reporting | 18 with a reporter's by-line, 1 the agency's (Lusa), 0 the desk's, 0 not read; wire share 5% |
+| Items we read | 20: 18 articles, 1 live, 0 video, 1 opinion |
+| First and last | 9 Nov 08:34 to 11 Nov 09:36 UTC |
+| Whose reporting | 18 with a reporter's by-line, 2 the agency's (Lusa), 0 the desk's, 0 not read; wire share 10% |
 | Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
@@ -21,12 +21,12 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:14 (live entry) | +0 min | 1 of 6 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:14 (live entry) | -175 min | 1 of 6 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:47 (live entry) | +47 min | 3 of 6 | ["Eu diria que tudo indica que a Web Summit não poderá funcionar amanh… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:45 (live entry) | +36 min | 4 of 10 | [Segundo dia da Web Summit cancelado ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:45 (live entry) | +36 min | 4 of 11 | [Segundo dia da Web Summit cancelado ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 2 of 19 items link to a body that decides or warns (AMN, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 2 items (the item's by-line names the agency).
+- **Links to primary sources:** 2 of 20 items link to a body that decides or warns (AMN, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 3 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
 
@@ -73,4 +73,5 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 | 10 Nov 22:22 | article | Adelaide Cabral | [Primeiro-ministro assume comando: país fechado para enfrentar tempestade ↗](https://www.dn.pt/sociedade/primeiro-ministro-assume-comando-pas-fechado-para-enfrentar-tempestade) |
 | 11 Nov 00:04 | opinion | Filipe Alves | [O teste da tempestade ↗](https://www.dn.pt/opiniao-dn/o-teste-da-tempestade) |
 | 11 Nov 00:22 | article | Ricardo Simões Ferreira | [DN garante acesso livre a todos os conteúdos sobre a tempestade ↗](https://www.dn.pt/media-geral/dn-garante-acesso-livre-a-todos-os-contedos-sobre-a-tempestade) |
-| 11 Nov 08:39 | live | Sofia Fonseca | [Charles causou ventos de 130 km/hora na Madeira. Agora está a caminho do continente ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
+| 11 Nov 08:43 | article | DN/Lusa | [Mau tempo: Regulador dos seguros recomenda verificar cobertura e conservar provas em caso de danos ↗](https://dinheirovivo.dn.pt/empresas/mau-tempo-regulador-dos-seguros-recomenda-verificar-cobertura-e-conservar-provas-em-caso-de-danos) |
+| 11 Nov 09:36 | live | Sofia Fonseca | [Charles causou ventos de 130 km/hora na Madeira. Agora está a caminho do continente ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |

@@ -1,13 +1,13 @@
 # Jornal Económico: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 08:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 09:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | business weekly, online daily (pt) |
-| Items we read | 5: 5 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 13:23 to 11 Nov 08:34 UTC |
-| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 4 not read; wire share 0% |
+| Items we read | 8: 8 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 13:23 to 11 Nov 09:20 UTC |
+| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 7 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -20,7 +20,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 5 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 8 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -54,3 +54,6 @@ José Carlos Lourinho. A by-line is a public professional credit; nothing else a
 | 11 Nov 07:33 | article | not read | [🔴 Tempestade ‘Charles’ em Portugal. Acompanhe aqui todas as incidências ↗](https://jornaleconomico.sapo.pt/noticias/%f0%9f%94%b4-tempestade-charles-em-portugal-acompanhe-aqui-todas-as-incidencias/) |
 | 11 Nov 07:51 | article | not read | [Charles causou ventos de 130 km/hora na Madeira e dirige-se para o continente ↗](https://jornaleconomico.sapo.pt/noticias/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/) |
 | 11 Nov 08:34 | article | not read | [Proteção Civil regista 60 ocorrências até às 6horas ↗](https://jornaleconomico.sapo.pt/noticias/protecao-civil-regista-60-ocorrencias-ate-as-6horas/) |
+| 11 Nov 08:42 | article | not read | [Resposta do Governo à tempestade Kristin “foi criar seguros obrigatórios abrindo mais uma área de n… ↗](https://jornaleconomico.sapo.pt/noticias/resposta-do-governo-a-tempestade-kristin-foi-criar-seguros-obrigatorios-abrindo-mais-uma-area-de-negocios/) |
+| 11 Nov 09:00 | article | not read | [Mais de 130 voos da TAP cancelados em Lisboa pelo Charles ↗](https://jornaleconomico.sapo.pt/noticias/mais-de-130-voos-da-tap-cancelados-em-lisboa-pelo-charles/) |
+| 11 Nov 09:20 | article | not read | [Apesar do alerta de tempestade, trabalhadores da Câmara de Lisboa limpam estátua no Rossio ↗](https://jornaleconomico.sapo.pt/noticias/apesar-do-alerta-de-tempestade-trabalhadores-da-camara-de-lisboa-limpam-estatua-no-rossio/) |
