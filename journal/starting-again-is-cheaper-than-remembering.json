@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/starting-again-is-cheaper-than-remembering.md rests on: steps of incident.reporter@'s trace memory-the-librarian-saves-tokens, the accountant's files and this agent's own ledger line. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T04:07:00Z",
+  "updated": "2026-11-11T04:11:00Z",
   "status": "traced",
   "figures": [
     {
@@ -232,14 +232,39 @@
         },
         {
           "kind": "text",
-          "file": "agents/journalist/status.json",
-          "contains": "handed over at"
+          "file": "data/keys.json",
+          "contains": "This is the first journalist session's key; that session handed over to a second at 04:09 UTC on 11 November."
+        },
+        {
+          "kind": "commit",
+          "sha": "0fb17c3"
+        }
+      ]
+    },
+    {
+      "id": "r13b",
+      "text": "The second session: first call 04:08:47 carrying 84,119 tokens; the seventh 105,180; 72% less per call than the first session's last (377,788). What it found missing is in its status file.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/ledger/journalist.jsonl",
+          "contains": "\"context_per_call\":{\"first\":84119,\"median\":101206,\"largest\":105180,\"last\":105180}"
+        },
+        {
+          "kind": "text",
+          "file": "accounts/ledger/journalist.jsonl",
+          "contains": "\"first_call\":\"2026-11-11T04:08:47.183Z\""
+        },
+        {
+          "kind": "text",
+          "file": "data/keys.json",
+          "contains": "The second journalist session, started from the briefing pack"
         },
         {
           "kind": "data",
           "file": "agents/journalist/status.json",
-          "field": "handover.0",
-          "expect": "Run node tools/journal-build.mjs --check first: a piece rests on other agents' living files and fails when one is reworded or re-laid (re-anchor the support, never delete the statement)."
+          "field": "session.id",
+          "expect": "session_018yvwtN2TrJFpSFhdf8yUNe"
         }
       ]
     },
