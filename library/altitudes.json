@@ -1,7 +1,7 @@
 {
  "about": "Which of our agents does what in the fringe repository's definitions of where agents run: each agent's altitude (A3) with the A2 loops, A1 LLM calls and A0 compute it runs, its runtime (R1-R5), model endpoints (M1-M4), I/O level (L0-L5), account and key. Every item labelled: fact (read from the agent's own files or ours), evidence (read elsewhere, or inferred from what it does: the reason given). The definitions are the fringe's; the mapping is the librarian's. At Dinis's word, ~22:00 UTC, 11 November (BRIEF.md item 3).",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T22:50Z",
+ "updated": "2026-11-11T23:45Z",
  "made_by": "tools/library-altitudes.mjs",
  "definitions": {
   "section_3_unchanged_at": "3256d3cafa8200a9ff5b46443400732fc474e0e5 (2026-11-11T22:05:57Z, read 22:09Z)",
@@ -38,7 +38,7 @@
  "grants": {
   "session": {
    "altitude": "A4",
-   "label": "fact for the librarian's own session (read at 2026-11-11T22:50Z); evidence for the others (the same cloud environment, sessions started the same way)",
+   "label": "fact for the librarian's own session (read at 2026-11-11T23:45Z); evidence for the others (the same cloud environment, sessions started the same way)",
    "holds": [
     "push to dev (the session's git credentials; admin/tools/release.sh)",
     "the agent's private session key (~/.sg-send/keys, outside git)",
@@ -116,20 +116,20 @@
   {
    "what": "In the librarian's session, 10 environment variables named as keys or tokens hold credentials (names read, never values), against 17 counted in the conductor's: the sessions may not hold the same set.",
    "label": "fact",
-   "from": "the librarian's session, at 2026-11-11T22:50Z"
+   "from": "the librarian's session, at 2026-11-11T23:45Z"
   }
  ],
  "totals": {
   "agents": 43,
-  "units": 126,
-  "crossing": 126,
-  "places_not_crossing": 17,
+  "units": 129,
+  "crossing": 129,
+  "places_not_crossing": 19,
   "by_mandate": {
-   "A0": 114,
+   "A0": 117,
    "A1": 11,
    "A2": 1
   },
-  "in_ci_and_every_session": 16,
+  "in_ci_and_every_session": 18,
   "io": {
    "L5": 25,
    "L4": 15,
@@ -241,7 +241,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "262 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:27Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "273 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:38Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -302,7 +302,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "136 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:28Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "143 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:34Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -317,9 +317,9 @@
    },
    "key": {
     "active": [
-     "incident-designer-dinis-8"
+     "incident-designer-dinis-9"
     ],
-    "handed_over": 7,
+    "handed_over": 8,
     "label": "fact",
     "from": "data/keys.json"
    }
@@ -493,6 +493,31 @@
       "from": "tools/agents-sessions.mjs"
      },
      {
+      "unit": "tools/agents-split.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4",
+        "crosses": true
+       },
+       {
+        "at": "CI (GitHub Actions), the build job, every push",
+        "grant": "ci.jobs.build",
+        "altitude": "A0",
+        "crosses": false
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/agents-split.mjs, admin/build/generators.json"
+     },
+     {
       "unit": "tools/agents-views.mjs",
       "mandate": "A0",
       "where": [
@@ -534,6 +559,31 @@
       "from": "tools/trace-check.mjs"
      },
      {
+      "unit": "tools/trace-index.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators",
+        "grant": "session (the pushing agent's)",
+        "altitude": "A4",
+        "crosses": true
+       },
+       {
+        "at": "CI (GitHub Actions), the build job, every push",
+        "grant": "ci.jobs.build",
+        "altitude": "A0",
+        "crosses": false
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/trace-index.mjs, admin/build/generators.json"
+     },
+     {
       "unit": "tools/trace.mjs",
       "mandate": "A0",
       "where": [
@@ -545,7 +595,7 @@
        }
       ],
       "untrusted": [
-       "the repository's files only (some written from web reads: untrusted at one remove)"
+       "our own services: storm-charles.promptugal.news"
       ],
       "grant_altitude": "A4",
       "crosses": true,
@@ -587,7 +637,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "108 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:25Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "117 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:30Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -602,9 +652,9 @@
    },
    "key": {
     "active": [
-     "incident-observability-dinis-10"
+     "incident-observability-dinis-11"
     ],
-    "handed_over": 9,
+    "handed_over": 10,
     "label": "fact",
     "from": "data/keys.json"
    }
@@ -775,6 +825,25 @@
       "from": "tools/lane-keys.mjs"
      },
      {
+      "unit": "tools/lane-keystore.mjs",
+      "mandate": "A0",
+      "where": [
+       {
+        "at": "its agent's session (by hand or on its wake)",
+        "grant": "session",
+        "altitude": "A4",
+        "crosses": true
+       }
+      ],
+      "untrusted": [
+       "the repository's files only (some written from web reads: untrusted at one remove)"
+      ],
+      "grant_altitude": "A4",
+      "crosses": true,
+      "label": "fact",
+      "from": "tools/lane-keystore.mjs"
+     },
+     {
       "unit": "tools/lane-open.mjs",
       "mandate": "A0",
       "where": [
@@ -887,7 +956,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "42 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:21Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "44 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:22Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -967,7 +1036,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "70 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:37Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "73 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:33Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -1028,7 +1097,7 @@
    "io": {
     "level": "L4",
     "label": "fact",
-    "why": "50 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:38Z), pushed to dev behind the gate"
+    "why": "51 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:39Z), pushed to dev behind the gate"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -1278,7 +1347,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "146 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:24Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "150 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:02Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -1293,9 +1362,9 @@
    },
    "key": {
     "active": [
-     "incident-librarian-dinis-14"
+     "incident-librarian-dinis-15"
     ],
-    "handed_over": 13,
+    "handed_over": 14,
     "label": "fact",
     "from": "data/keys.json"
    }
@@ -1402,7 +1471,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "50 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:54Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "51 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:55Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -1852,7 +1921,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "27 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:55Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "28 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:57Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -1934,7 +2003,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "61 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T16:27Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "62 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:32Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -2072,7 +2141,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "37 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:52Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "38 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:54Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -2217,7 +2286,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "37 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:25Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "38 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:26Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -2343,7 +2412,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "40 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:26Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "41 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:25Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -2512,7 +2581,7 @@
    "io": {
     "level": "L4",
     "label": "fact",
-    "why": "56 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:38Z), pushed to dev behind the gate"
+    "why": "57 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:38Z), pushed to dev behind the gate"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -2736,7 +2805,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "43 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:37Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "45 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:35Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -2880,7 +2949,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "28 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:50Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "29 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:54Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -3110,7 +3179,7 @@
    "io": {
     "level": "L4",
     "label": "fact",
-    "why": "74 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:53Z), pushed to dev behind the gate"
+    "why": "75 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:52Z), pushed to dev behind the gate"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -3382,7 +3451,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "27 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:39Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "31 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:34Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -3602,7 +3671,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "40 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:28Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "44 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:26Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -3879,7 +3948,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "33 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:47Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "34 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:42Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -3979,7 +4048,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "57 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:09Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+    "why": "59 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:08Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -4066,7 +4135,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "72 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:15Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "74 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:13Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -4533,7 +4602,7 @@
       ],
       "untrusted": [
        "a headless browser (Chromium): runs the scripts of the pages it opens",
-       "outside hosts: crt.sectigo.com, opensky-network.org, api.carrismetropolitana.pt, www.carrismetropolitana.pt, broker.fiware.urbanplatform.portodigital.pt, www.stcp.pt and 9 more",
+       "outside hosts: crt.sectigo.com, opensky-network.org, api.carrismetropolitana.pt, www.carrismetropolitana.pt, broker.fiware.urbanplatform.portodigital.pt, www.stcp.pt and 11 more",
        "our own services: storm-charles.promptugal.news"
       ],
       "grant_altitude": "A4",
@@ -4558,7 +4627,7 @@
    "io": {
     "level": "L4",
     "label": "fact",
-    "why": "69 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:30Z), pushed to dev behind the gate"
+    "why": "76 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:43Z), pushed to dev behind the gate"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -4573,9 +4642,9 @@
    },
    "key": {
     "active": [
-     "incident-transport-dinis-5"
+     "incident-transport-dinis-6"
     ],
-    "handed_over": 4,
+    "handed_over": 5,
     "label": "fact",
     "from": "data/keys.json"
    }
@@ -4928,7 +4997,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "17 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:08Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "18 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:08Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -5227,7 +5296,7 @@
    "io": {
     "level": "L5",
     "label": "evidence",
-    "why": "10 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:29Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+    "why": "18 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:44Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
@@ -5242,9 +5311,9 @@
    },
    "key": {
     "active": [
-     "incident-flights-dinis-1"
+     "incident-flights-dinis-2"
     ],
-    "handed_over": 0,
+    "handed_over": 1,
     "label": "fact",
     "from": "data/keys.json"
    }
@@ -5288,7 +5357,7 @@
    "io": {
     "level": "L4",
     "label": "fact",
-    "why": "2 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:27Z), pushed to dev behind the gate"
+    "why": "4 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T23:24Z), pushed to dev behind the gate"
    },
    "account": {
     "value": "Dinis Cruz's Claude account, through the conductor",
