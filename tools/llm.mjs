@@ -8,7 +8,8 @@
 //     record's name and sha256. No prompt or answer text in the ledger: that stays in the raw store (press text may not be ours to publish);
 //   - ONE PUBLISHED RECORD per call (tools/models-calls.mjs, from 11 November 22:10 UTC): models/calls/<date>/<HH>.json (another agent's in
 //     agents/<role>/calls/), text-free: the ledger line's fields, the sha256 of the request and of the response, and the parent (trace:);
-//     with trace: { trace_id, parent_span_id, flow }, the A1 llm call's start and end as flow events in the fringe's schema;
+//     with trace: { trace_id, parent_span_id, flow }, the A1 llm call's start and end as flow events in the fringe's schema; the same ids go to
+//     OpenRouter in the request (trace, user, session_id), so its Broadcast spans in Elastic join ours;
 //   - a DAILY CAP (LLM_DAILY_CAP_USD, default 20 from 11 November; each agent's share of it in models/budgets.json): a call is refused, and the refusal recorded, once the day's ledger reaches it.
 // Key: OPEN_ROUTER_KEY from the environment only (as admin/tools/xray-search.mjs). Until Dinis adds it (ROADMAP question 2), run
 // with --mock (a canned answer, no network) or a dummy key (the call is made, refused 401, and recorded as an error).
@@ -70,7 +71,13 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
     if (!model) throw new Error('call(): name the model (model:, --model or LLM_MODEL)')
     const at = new Date().toISOString(), id = `${at.replace(/[-:.]/g, '').slice(0, 15)}-${crypto.randomBytes(4).toString('hex')}`
     const base = { at: at.slice(0, 19) + 'Z', id, task, agent, provider: mock ? 'mock' : provider, model, cap_usd: CAP }
-    const request = { model, messages, max_tokens, usage: { include: true }, ...extra }
+    // OpenRouter's Broadcast (to Elastic, Dinis ~22:10 UTC): the trace and span ids of our flow events go with the request, so Elastic can join
+    // OpenRouter's span to models/calls/ and data/trace/: trace.trace_id (ours), trace.parent_span_id (the loop's span), generation_name the
+    // A1 unit; the rest lands as trace.metadata.*; user is the calling agent, session_id the flow. No effect on the answer.
+    const a1 = `A1-${id}`
+    const broadcast = provider === 'openrouter' ? { user: agent, ...(trace.flow ? { session_id: trace.flow } : {}), trace: { ...(trace.trace_id ? { trace_id: trace.trace_id } : {}), ...(trace.parent_span_id ? { parent_span_id: trace.parent_span_id } : {}),
+        trace_name: trace.flow || task, generation_name: a1, span_id: spanIdOf(a1), unit_id: a1, call_id: id, agent, task, ...(trace.parent_unit_id ? { parent_unit_id: trace.parent_unit_id } : {}) } } : {}
+    const request = { model, messages, max_tokens, usage: { include: true }, ...broadcast, ...extra }
     const spent = spentToday()
     if (!mock && spent >= CAP) {
         const line = { ...base, status: 'refused_cap', spent_today_usd: +spent.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }
@@ -86,7 +93,7 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
     // ledger. One line was written for the refusal itself; these are returned to the caller and not written. A new process tries once again.
     if (!mock && noCredit) return { text: null, line: { ...base, status: 'not_sent_account_out_of_credit', since: noCredit, tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }, response: null }
     // the A1 llm call as a span of the caller's trace (a loop's step), when the caller gives one
-    const unit = `A1-${id}`, span = { ...trace, unit_id: unit, span_id: spanIdOf(unit) }
+    const unit = a1, span = { ...trace, unit_id: unit, span_id: spanIdOf(unit) }
     if (!mock && trace.trace_id) await emit({ trace_id: trace.trace_id, span_id: span.span_id, unit_id: unit, parent_span_id: trace.parent_span_id, parent_id: trace.parent_unit_id, flow: trace.flow || task, altitude: 'A1', role: 'llm call', phase: 'start', runner: agent, model })
     const t0 = Date.now(); let status = 'ok', response = null, error = null, text = null
     try {

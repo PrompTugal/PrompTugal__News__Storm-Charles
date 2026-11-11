@@ -16,7 +16,10 @@ For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) fir
   3. **Collectors.** Patches are in `models/patches/` (README there) for transport, sources, media and researcher; each was tried on live data at 22:09 to 22:15 UTC. The owners apply them; none was wired at 22:17. Sent: transport-5 and media-4 directly; sources and researcher through the conductor.
 - **Budget**: the team cap is 20 USD a day. Shares (`models/budgets.json`): models 6, perplexity 4, shadow 1, flights 1, and delegation 5. The delegation's 5 is 1 per wired collector, drawn on delegated calls only (task `WS-214/delegate/…`). The account had credit at 22:04 UTC: 265 credits, 168.24 used; the key had 72.40 of its 100 limit left.
 - **Round 1** is complete. **Round 2** is partial; it stopped at 02:55 UTC when the account ran out of credit, and can now be finished (below).
-- Open: observability's `tools/trace.mjs` runs its CLI when imported, so our events stay in `models/calls/` until it is made import-safe (asked 22:17). The raw store (`~/.incident-raw`) is a plain folder in this session, not the vault `atrfw315`; its key was asked of the conductor.
+- OpenRouter Broadcast to Elastic (Dinis ~22:10): each request carries `trace` (our trace_id, parent_span_id, generation_name = the A1 unit, span_id, agent, task), `user` (the agent) and `session_id` (the flow), so Elastic joins OpenRouter's spans to ours.
+- The raw store `~/.incident-raw` is the vault `atrfw315` again (key from the conductor 22:11, opened 22:18; pushed 22:20 with `sgit --token "$SG_SEND_ACCESS_TOKEN" push`), its `ledger/` merged with this session's ledger.
+- Transport applied its patch (`aa94889`, `en.source` not `by`, since `by` means the agent).
+- Open: observability's `tools/trace.mjs` runs its CLI when imported, so our events stay in `models/calls/` until it is made import-safe (asked 22:17).
 
 ## What lives only in a session, and is lost with it
 
