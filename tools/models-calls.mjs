@@ -46,6 +46,8 @@ export const keyOf = agent => process.env.INCIDENT_KEY_FP || KEYS.filter(k => k.
 const ENVIRONMENT = process.env.INCIDENT_ENVIRONMENT || 'R1 Claude Code cloud'
 const PERSON = 'dinis'
 
+// one item per line (calls and events), the rest pretty: about half the bytes of indented JSON, still diffable line by line
+const compactJson = doc => '{\n' + Object.entries(doc).map(([k, v]) => Array.isArray(v) ? ` ${JSON.stringify(k)}: [${v.length ? '\n' + v.map(x => '  ' + JSON.stringify(x)).join(',\n') + '\n ' : ''}]` : ` ${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n') + '\n}\n'
 // one hour file: { about, by, updated, date, hour, part, calls: [], events: [] }; read, add, write back (synchronously: one process at a time per agent)
 function hourFile(agent, at) {
     const dir = path.join(callsDir(agent), at.slice(0, 10)); fs.mkdirSync(dir, { recursive: true })
@@ -61,7 +63,7 @@ function add(agent, at, key, item) {
     let doc; try { doc = JSON.parse(fs.readFileSync(f, 'utf8')) } catch { doc = null }
     if (!doc) doc = { about: 'Model calls and flow events of one UTC hour, text-free: no prompt and no answer (the raw stays in the raw store outside git). Calls: one per model call made through tools/llm.mjs. Events: the fringe repository\'s flow schema (A2 loop, A1 llm call). Written by tools/models-calls.mjs.', by: agent, updated: at, date: at.slice(0, 10), hour: `${hh}:00Z`, part, calls: [], events: [] }
     doc[key].push(item); doc.updated = at
-    fs.writeFileSync(f, JSON.stringify(doc, null, 1) + '\n')
+    fs.writeFileSync(f, compactJson(doc))
     return path.relative(REPO, f)
 }
 
