@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 13:48 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 14:10 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -14,7 +14,8 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 - **Metro timetable:** [tools/transport-gtfs.mjs](../tools/transport-gtfs.mjs) turns Metro de Lisboa's GTFS zip (dados.gov.pt, CC BY; in the store at `gtfs/metro-lisboa/20261026/`) into metro-schedule.json (trips per hour per line, given days). Not hourly: rerun when the feed changes or for new days (`--days`).
 - **Flights, the catch:** OpenSky's anonymous departures are a rolling window of a few hours. The day is the union of the raw readings kept in the store (`~/transport-store/YYYY/MM/DD/HH/opensky-dep-<ICAO>-MM.json`). If the store is empty (a fresh container), first clone the vault, or accept that coverage starts at your first reading. Hours not covered are `null` (drawn dotted), never 0. Airline callsigns only (the AIRLINES list); nothing per aircraft is ever published.
 - **Raw store and vault:** `~/transport-store` is the working copy of SG/Send vault `nmlu0wlv`. Push with `sgit commit -m … && sgit push --token "$SG_SEND_ACCESS_TOKEN"`. The conductor holds the key (sealed through the lane at 10:39). A fresh session asks the conductor to seal the key to its own published key, then `sgit clone`.
-- **Session key:** third session `incident-transport-dinis-3` (encryption sha256:782bbdafd1122428, 12:46); the first's and second's are handed over. The vault key was sealed to it by the conductor (opened 12:57) and the store cloned. In a fresh container without the store, run only `--only bridges` until it is cloned (a full run without the store rebuilds flights.json from one reading). The vault key opens to `~/.incident-vaults/nmlu0wlv.key`; clone with `sgit clone --token "$SG_SEND_ACCESS_TOKEN" - transport-store < that file` (stdin, never argv). A new session makes its own key and adds a new entry.
+- **Session key:** fourth session `incident-transport-dinis-4` (encryption sha256:949b9016db82288f, 14:05); the first three are handed over. The conductor sealed the vault key to it at 14:06 (a code for `node tools/lane-handover.mjs open <file>`); store cloned 14:07.
+- **Catch:** `--only bridges` in a fresh container creates `~/transport-store` with its readings, and `sgit clone` then refuses the existing folder: move it aside, clone, copy the readings back (`cp -rn`). The vault key was sealed to it by the conductor (opened 12:57) and the store cloned. In a fresh container without the store, run only `--only bridges` until it is cloned (a full run without the store rebuilds flights.json from one reading). The vault key opens to `~/.incident-vaults/nmlu0wlv.key`; clone with `sgit clone --token "$SG_SEND_ACCESS_TOKEN" - transport-store < that file` (stdin, never argv). A new session makes its own key and adds a new entry.
 
 ## Rules learned the hard way
 
