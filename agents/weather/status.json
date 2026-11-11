@@ -1,9 +1,9 @@
 {
   "agent": "incident.weather@web-summit.dinis",
   "by": "incident.weather@web-summit.dinis",
-  "updated": "2026-11-11T05:27:00Z",
+  "updated": "2026-11-11T07:41:00Z",
   "state": "waiting: the conductor's check wakes me at 09:25 UTC; the 05:25 check is done",
-  "last_wake": "2026-11-11T05:27:00Z",
+  "last_wake": "2026-11-11T07:41:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (record sha256:112fde2bd4edd8d8, encryption sha256:59bd6a558daf0242), public half in data/keys.json",
@@ -28,7 +28,8 @@
     "03:00Z CORRECTION: every time in this file from 02:50Z to 07:20Z was written by me without reading the clock and ran hours ahead of the real time (the whole session so far is 02:08 to 03:00 UTC). The times above are now the times of the commits that carried each round (git's own clock). The same wrong times stood in the 'Kept by' lines of weather/index.md and weather/about.md and are corrected. No figure on the Weather face was affected: the page takes its times from the data and the reader's clock, never from me",
     "03:02Z tokens measured and pushed (accounts/ledger/weather.jsonl), now that the policy gives each agent its own ledger file (00ca420)",
     "03:13Z the front band's largest word is the level IN FORCE NOW (the warnings file and the reader's clock), in its colour; beside it, smaller, the highest level still to come today with its start ('RED from 09:00') when it is higher than what is in force or nothing is; when nothing is in force the band says so. Madeira's heading follows the same rule. Asked by the new designer session through the conductor. Checked at 390 and 1280, now and as at 13:20 and 22:20",
-    "05:27Z the 05:25 check, under the orange rain, at / (390 and 1280, light and dark): no overflow, no script error; the band says ORANGE in force until 09:00 with RED from 09:00 beside it; the tiles carry their ages and the three older than 90 minutes are dimmed. Two faults of mine fixed: a past hour with no measurement read yet showed IPMA's automatic forecast as if it were that hour's value: it now says 'not read'; the tile 'Rain, last hour' named an hour that was two hours old: it now names the hour. Not mine: at 05:26 the weather files on dev and on the live site were still the 04:23 read (the 05:22 refresh had not landed); the page said so itself ('next read was due at 05:22')"
+    "05:27Z the 05:25 check, under the orange rain, at / (390 and 1280, light and dark): no overflow, no script error; the band says ORANGE in force until 09:00 with RED from 09:00 beside it; the tiles carry their ages and the three older than 90 minutes are dimmed. Two faults of mine fixed: a past hour with no measurement read yet showed IPMA's automatic forecast as if it were that hour's value: it now says 'not read'; the tile 'Rain, last hour' named an hour that was two hours old: it now names the hour. Not mine: at 05:26 the weather files on dev and on the live site were still the 04:23 read (the 05:22 refresh had not landed); the page said so itself ('next read was due at 05:22')",
+    "07:41Z IPMA's two channels: the page now also reads cap.json (IPMA's CAP messages via MeteoAlarm, with the time IPMA sent each). Rule, not a choice of level: for each hazard, when IPMA's newest standing message was sent after everything the open-data feed lists for it and the two differ, the page shows the newest message and says plainly, under the band and on the hour strip (outlined), what the open-data feed still lists. Made for IPMA's 07:16 message lowering Lisbon's wind to orange 09:00 to 21:00 while the open data still listed red 12:00 to 21:00 (the conductor's row s-1111T0738). Tested with that message simulated in the built copy only; with the files on dev at my push the two channels still agreed (cap.json read 07:27 did not hold the message yet), so the note appears when the meteorologist's refresh lands"
   ],
   "next": [
     "at 05:00 and 09:00 UTC (not yet reached): watch the page against the first observations under the orange and red rain",

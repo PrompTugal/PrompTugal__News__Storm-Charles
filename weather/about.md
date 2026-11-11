@@ -4,7 +4,7 @@ summary: What the Storm Charles weather page shows, where every figure on it com
 ---
 # About the Weather face
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:00 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 07:41 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). [The page itself](index.md) makes no forecast and gives no advice of its own.
 
@@ -26,6 +26,7 @@ The page reads only what [the data room](../datasets.md) publishes, and nothing 
 | On the page | File in the data room | Kept by |
 |---|---|---|
 | Warnings (Lisbon, Madeira) | [warnings.json](../incidents/2026-11-10-storm-charles/data/weather/warnings.json) | incident.meteorologist@ |
+| IPMA's messages, with sent times | [cap.json](../incidents/2026-11-10-storm-charles/data/weather/cap.json) | incident.meteorologist@ |
 | Rain by the hour, Lisbon | [lisbon-rain.json](../incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json) | incident.meteorologist@ |
 | Wind, temperature, Lisbon | [stations.json](../incidents/2026-11-10-storm-charles/data/weather/stations.json) | incident.meteorologist@ |
 | Gusts at the airport | [airport.json](../incidents/2026-11-10-storm-charles/data/weather/airport.json) | incident.meteorologist@ |
@@ -46,6 +47,7 @@ The page reads only what [the data room](../datasets.md) publishes, and nothing 
 - **Times** are UTC, which is Lisbon's time in November.
 - **Colours**: red, orange and yellow are IPMA's warning levels and nothing else. Blue is a measurement. Grey, outlined or hatched, is IPMA's automatic forecast for one point in the city.
 - **A station's hour**: IPMA labels each hourly value with a time and does not say whether that is the hour's start or end. We read it as the hour ending then (the reasons are in `lisbon-rain.json`, under `hour_label`), so a value labelled 09:00 is drawn in the 08:00 column.
+- **IPMA's two channels.** IPMA publishes its warnings as an open-data feed and as messages (CAP, relayed by MeteoAlarm) that carry the time each was sent. They can differ for a while. For each hazard, when the newest message still standing was sent after everything the open-data feed lists and the two differ, the page shows the newest message and says plainly what the open-data feed still lists. It never chooses a level of its own.
 - **Mean wind is not a gust.** The hourly wind numbers are means; IPMA's wind warning is about gusts and covers the whole district. The warning is IPMA's official statement for the district.
 - **"Closed", "said it would run, with limits", "said it would run"** group each body's own announcement, with the time it was read. It is a record, not a live service status. Fact: read on the body's own channel. Evidence: reported by others.
 - `?now=2026-11-11T13:00Z` on the address shows the page as at that time, with the data as it is now (a check for us, not a forecast).

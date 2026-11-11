@@ -9,7 +9,7 @@
   var base = el.dataset.base || '../', inc = el.dataset.incident || '2026-11-10-storm-charles'
   var api = base + 'api/v1/' + inc + '/', room = base + 'incidents/' + inc + '/'
   var FILES = {
-    incident: room + 'incident.json', signals: api + 'signals.json', warn: api + 'weather/warnings.json', rain: api + 'weather/lisbon-rain.json',
+    incident: room + 'incident.json', signals: api + 'signals.json', warn: api + 'weather/warnings.json', cap: api + 'weather/cap.json', rain: api + 'weather/lisbon-rain.json',
     stations: api + 'weather/stations.json', forecast: api + 'weather/forecast.json', airport: api + 'weather/airport.json',
     madeira: api + 'weather/madeira.json', madAir: api + 'weather/airport-madeira.json', changes: api + 'weather/changes.json', analysis: api + 'weather/analysis.json', comm: api + 'weather/communiques.json', decisions: api + 'decisions/graph.json',
     areas: base + 'sources/ipma/data/warnings.json', places: base + 'sources/ipma/data/places.json'
@@ -18,7 +18,7 @@
   // the data room's file viewer: one page, view/?path=<path>, and &at=<field>/<index>/<field> opens one value inside a JSON file
   var view = function (file, at) { return base + 'view/?path=' + encodeURIComponent('incidents/' + inc + '/' + file).replace(/%2F/g, '/') + (at ? '&at=' + at : '') }
   var ROOM = {
-    incident: view('incident.json', 'headline'), signals: room + 'timeline.html', warn: view('data/weather/warnings.json', 'lisbon'), rain: view('data/weather/lisbon-rain.json', 'stations'),
+    incident: view('incident.json', 'headline'), signals: room + 'timeline.html', warn: view('data/weather/warnings.json', 'lisbon'), cap: view('data/weather/cap.json', 'lisbon_messages'), rain: view('data/weather/lisbon-rain.json', 'stations'),
     stations: view('data/weather/stations.json', 'stations'), forecast: view('data/weather/forecast.json', 'hourly'), airport: view('data/weather/airport.json', 'metars'),
     madeira: view('data/weather/madeira.json', 'stations'), madAir: view('data/weather/airport-madeira.json', 'metars'), changes: view('data/weather/changes.json', 'thursday'), analysis: room + 'data/weather/analysis.html', comm: view('data/weather/communiques.json', 'items'), decisions: view('data/decisions/graph.json'),
     areas: base + 'view/?path=sources/ipma/data/warnings.json&at=instances', places: base + 'view/?path=sources/ipma/data/places.json&at=areas'
@@ -80,7 +80,45 @@
   }
 
   // ---------- the sections
-  function lisbonWarnings() { return ((D.warn || {}).lisbon || []).filter(function (w) { return RANK[w.level] && ok(w.start_utc) && ok(w.end_utc) }) }
+  // Lisbon's warnings, from IPMA's two channels: its open-data feed (warnings.json) and its CAP messages as MeteoAlarm relays them
+  // (cap.json), which carry the time IPMA sent each. The two can disagree for a while (the open data lagged the messages by two hours
+  // on 10 November). The rule, and it is not a choice of level by us: for each hazard, when IPMA's newest message still standing was
+  // SENT after everything the open data lists for that hazard, and the two differ, the page shows the newest message and says plainly
+  // what the open-data feed still lists. Otherwise the open data is shown.
+  var LEVEL_PT = { amarelo: 'yellow', laranja: 'orange', vermelho: 'red' }
+  function channels(t) {
+    var open = ((D.warn || {}).lisbon || []).filter(function (w) { return RANK[w.level] && ok(w.start_utc) && ok(w.end_utc) })
+    var msgs = (D.cap || {}).lisbon_messages || [], replaced = {}, out = { list: open, differ: [] }
+    msgs.forEach(function (m) { (m.replaces || []).forEach(function (r) { if (r && r.identifier) replaced[r.identifier] = 1 }) })
+    var cur = msgs.filter(function (m) { return !replaced[m.identifier] && !m.left_feed_utc && ok(m.onset_utc) && ok(m.expires_utc) && ok(m.sent_utc) }).map(function (m) {
+      var x = String(m.event_pt || '').match(/^Aviso\s+(\S+)\s+(.+)$/i), lv = x && LEVEL_PT[x[1].toLowerCase()]
+      return lv ? { type: x[2].trim(), level: lv, start_utc: iso(m.onset_utc), end_utc: iso(m.expires_utc), text_pt: m.description_pt, text_en: m.text_en, text_en_by: m.text_en_by, sent_utc: iso(m.sent_utc), read_utc: m.last_seen_utc || m.read_utc, via: 'cap', id: m.identifier } : null
+    }).filter(Boolean)
+    if (!cur.length) return out
+    var key = function (w) { return w.level + '|' + T(w.start_utc) + '|' + T(w.end_utc) }, types = {}, list = []
+    open.concat(cur).forEach(function (w) { types[w.type] = 1 })
+    Object.keys(types).forEach(function (ty) {
+      var o = open.filter(function (w) { return w.type === ty }), c = cur.filter(function (w) { return w.type === ty })
+      var oLive = o.filter(function (w) { return T(w.end_utc) > t }), cLive = c.filter(function (w) { return T(w.end_utc) > t })
+      var same = oLive.length === cLive.length && oLive.every(function (w) { return cLive.some(function (x) { return key(x) === key(w) }) })
+      var capSent = Math.max.apply(0, cLive.map(function (w) { return T(w.sent_utc) }).concat([0])), openSent = Math.max.apply(0, o.map(function (w) { return ok(w.sent_utc) ? T(w.sent_utc) : 0 }).concat([0]))
+      if (same || !cLive.length || !(capSent > openSent)) { list = list.concat(o); return }
+      list = list.concat(o.filter(function (w) { return T(w.end_utc) <= t }), cLive)
+      out.differ.push({ type: ty, shown: cLive, open: oLive.filter(function (w) { return !cLive.some(function (x) { return key(x) === key(w) }) }), sent: capSent })
+    })
+    out.list = list
+    return out
+  }
+  function lisbonWarnings() { return channels(now()).list }
+  // said plainly on the first screen when the two channels differ: what the newest message says, and what the open-data feed still lists
+  function channelNote(t) {
+    var ch = channels(t); if (!ch.differ.length) return ''
+    var span = function (w) { return lvl(w.level) + ' ' + when(w.start_utc, t) + ' to ' + when(w.end_utc, t) }
+    return '<div class="wxc-differ" role="note"><p class="wxc-eyebrow">IPMA\'s two channels differ ' + lbl('fact') + '</p>' + ch.differ.map(function (d) {
+      return '<p><b>' + esc(EN[d.type] || d.type) + '.</b> IPMA\'s newest message, sent ' + when(d.sent, t) + ' UTC, says ' + d.shown.map(span).join(', ') + (d.shown[0] && d.shown[0].text_pt ? ': <span lang="pt">' + esc(String(d.shown[0].text_pt).replace(/\.\s*$/, '')) + '</span>' : '') + '. ' +
+        (d.open.length ? 'IPMA\'s open-data feed, read ' + when((D.warn || {}).read_utc, t) + ' UTC, still lists ' + d.open.map(span).join(', ') + '.' : 'IPMA\'s open-data feed, read ' + when((D.warn || {}).read_utc, t) + ' UTC, does not list it.') + '</p>'
+    }).join('') + '<p class="meta">Both are IPMA\'s. This page shows the newest message by the time IPMA sent it; it does not choose a level of its own. ' + prov('cap', 'IPMA\'s messages (CAP, via MeteoAlarm)', (D.cap || {}).read_utc) + ' · ' + prov('warn', 'IPMA\'s open-data feed', (D.warn || {}).read_utc) + '</p></div>'
+  }
 
   // the highest IPMA level touching each of the next three days in Lisbon (the level written, never colour alone)
   function dayChips(t) {
@@ -127,7 +165,7 @@
     var where = Object.keys(reds).length ? '<p class="meta wxc-where">IPMA red warnings also in force or expected in: ' + esc(Object.keys(reds).sort().join(', ')) + '.</p>' : ''
     return '<section class="wxc-hero" aria-labelledby="wxc-now">' +
       '<div class="wxc-top"><p class="kicker">' + esc(I.kicker || 'Storm Charles') + '</p><p class="wxc-clock"><time datetime="' + iso(t) + '">' + esc(longDay(t)) + ', ' + hm(t) + ' UTC</time> (Lisbon time)</p></div>' +
-      '<div class="wxc-level' + (cur ? ' w-' + esc(cur.level) : '') + '"><h1 id="wxc-now">' + (cur ? '<span class="wxc-word">' + esc(cur.level) + '</span> <span class="wxc-h1b">IPMA warning in force in Lisbon now</span>' : D.warn ? '<span class="wxc-h1b">No IPMA warning above green is in force in Lisbon now</span>' : '<span class="wxc-h1b">Storm Charles, Lisbon</span>') + '</h1>' + (sentence ? '<p class="wxc-say">' + sentence + '</p>' : '') + '</div>' + upLine +
+      '<div class="wxc-level' + (cur ? ' w-' + esc(cur.level) : '') + '"><h1 id="wxc-now">' + (cur ? '<span class="wxc-word">' + esc(cur.level) + '</span> <span class="wxc-h1b">IPMA warning in force in Lisbon now</span>' : D.warn ? '<span class="wxc-h1b">No IPMA warning above green is in force in Lisbon now</span>' : '<span class="wxc-h1b">Storm Charles, Lisbon</span>') + '</h1>' + (sentence ? '<p class="wxc-say">' + sentence + '</p>' : '') + '</div>' + channelNote(t) + upLine +
       dayChips(t) + nowTiles(t) +
       '<div class="wxc-hero-cols"><div>' +
       (D.warn ? '<h2 class="wxc-sub">' + (live.length ? 'In force this hour' : 'No IPMA warning above green is in force in Lisbon this hour') + '</h2>' + (live.length ? '<ul class="wxc-ws">' + live.map(line).join('') + '</ul>' : '') + closedStrip(t) : '<p class="meta">The warnings file could not be read.</p>') +
@@ -171,7 +209,12 @@
         var a = Math.max(0, Math.round((T(w.start_utc) - D0) / H)), b = Math.min(24, Math.round((T(w.end_utc) - D0) / H)); if (b <= a) return ''
         return '<div role="cell" class="wxc-band w-' + esc(w.level) + (T(w.end_utc) <= t ? ' ended' : '') + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc(w.level + ' ' + (EN[ty] || ty) + ', ' + when(w.start_utc, ref) + ' to ' + when(w.end_utc, ref) + '. ' + (w.text_pt || '')) + '"><b>' + esc(w.level) + '</b> <span>' + hm(Math.max(T(w.start_utc), D0)) + '–' + (T(w.end_utc) > D1 ? wd(w.end_utc) + ' ' : '') + hm(w.end_utc) + '</span></div>'
       }).join('')
-      out += '<div role="row" class="wxc-row wxc-warn"><div role="rowheader" class="wxc-lab"><b>' + iconFor(ty) + esc(EN[ty] || ty) + '</b><i>IPMA warning</i></div>' + bars + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
+      out += '<div role="row" class="wxc-row wxc-warn"><div role="rowheader" class="wxc-lab"><b>' + iconFor(ty) + esc(EN[ty] || ty) + '</b><i>' + (channels(t).differ.some(function (d) { return d.type === ty }) ? 'IPMA\'s newest message' : 'IPMA warning') + '</i></div>' + bars + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
+      var df = channels(t).differ.filter(function (d) { return d.type === ty })[0]
+      if (df && df.open.length) out += '<div role="row" class="wxc-row wxc-warn wxc-stale"><div role="rowheader" class="wxc-lab"><b>' + esc(EN[ty] || ty) + '</b><i>IPMA\'s open-data feed still lists</i></div>' + df.open.map(function (w) {
+        var a = Math.max(0, Math.round((T(w.start_utc) - D0) / H)), b = Math.min(24, Math.round((T(w.end_utc) - D0) / H)); if (b <= a) return ''
+        return '<div role="cell" class="wxc-band stale w-' + esc(w.level) + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc('IPMA\'s open-data feed still lists: ' + w.level + ' ' + (EN[ty] || ty) + ', ' + hm(w.start_utc) + ' to ' + hm(w.end_utc)) + '"><b>' + esc(w.level) + '</b> <span>' + hm(Math.max(T(w.start_utc), D0)) + '–' + hm(w.end_utc) + '</span></div>'
+      }).join('') + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
     })
 
     // 1b. decided: the decisions whose source states hours, on the same axis as the warnings (no other site draws this). Ink, never a
