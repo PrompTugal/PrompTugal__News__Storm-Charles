@@ -56,22 +56,25 @@
     return '<div class="gd-ent"><h4>' + esc(title) + '</h4><ul class="gd-rows">' + ds.map(row).join('') + '</ul>' +
       ((e.open || []).length ? '<p class="gd-open"><b>Still open:</b> ' + e.open.map(esc).join(' ') + '</p>' : '') + '</div>'
   }
-  // the short answer: the newest stated decision of an entity, in one line
-  function latest(e) {
-    if (!e || !(e.decisions || []).length) return null
-    var ds = e.decisions.filter(function (d) { return d.status !== 'superseded' && d.state !== 'superseded' })
-    ds.sort(function (a, b) { return (T(b.published_utc || b.read) || 0) - (T(a.published_utc || a.read) || 0) })
-    return ds[0] || null
+  // each standing decision of an entity that matches (a regex on its text), newest first, two on top (the rest under "Deeper"):
+  // a row never shows one item's state beside another item's words (synthetic@, 11:54: parks read as "running")
+  function standing(e, re) {
+    if (!e) return []
+    return (e.decisions || []).filter(function (d) { return d.status !== 'superseded' && d.state !== 'superseded' && (!re || re.test(d.decision)) })
+      .sort(function (a, b) { return (T(b.published_utc || b.read) || 0) - (T(a.published_utc || a.read) || 0) })
   }
-  function short(name, e) {
-    var d = latest(e); if (!d) return '<li><b>' + esc(name) + '</b>: <span class="gd-ns">not stated</span> in what we have read</li>'
-    return '<li><b>' + esc(name) + '</b> ' + stateChip(d.state || d.status) + ' ' + esc(String(d.decision).slice(0, 140)) + (String(d.decision).length > 140 ? '…' : '') + ' ' + lbl(d.label) + ' ' + prov(host(d.address), d.address, d.read) + '</li>'
+  function short(name, e, re) {
+    var ds = standing(e, re); if (!ds.length) return '<li><b>' + esc(name) + '</b>: <span class="gd-ns">not stated</span> in what we have read</li>'
+    return '<li><b>' + esc(name) + '</b><ul class="gd-sub">' + ds.slice(0, 2).map(function (d) {
+      return '<li>' + stateChip(d.state || d.status) + ' ' + esc(String(d.decision).slice(0, 160)) + (String(d.decision).length > 160 ? '…' : '') + ' ' + lbl(d.label) + ' ' + prov(host(d.address), d.address, d.read, d.published_utc) + '</li>'
+    }).join('') + '</ul>' + (ds.length > 2 ? '<span class="meta">' + (ds.length - 2) + ' more under "Deeper"</span>' : '') + '</li>'
   }
   function sect(id, q, simple, deep, open) {
     if (!shown(id)) return ''
     if (focus.length && el.getAttribute('data-open') !== 'no') open = true
+    var m = /^(\d) · (.*)$/.exec(q); if (m) q = '<span class="gd-n">' + m[1] + '</span>' + m[2]
     return '<section class="gd-case card" id="' + id + '"><h2>' + q + '</h2><div class="gd-simple">' + simple + '</div>' +
-      '<details class="gd-deep"' + (open ? ' open' : '') + '><summary>Deeper: every source, with its time</summary>' + deep + '</details>' + SAFE + '</section>'
+      '<details class="gd-deep"' + (open ? ' open' : '') + '><summary>Deeper: every source, with its time</summary>' + deep + '</details>' + SAFE + '<p class="gd-up"><a href="#gd-q">↑ The seven questions</a></p></section>'
   }
 
   var ENT = ['airport', 'tap', 'metro', 'cp', 'ferries', 'bridges', 'tunnels', 'rede-expressos', 'flixbus', 'port', 'retail', 'museums', 'schools', 'courts', 'hospitals', 'parliament', 'madeira']
@@ -94,12 +97,12 @@
         tw.filter(function (w) { return w.level === peak.level }).map(function (w) { return esc(TYPE[w.type] || w.type) }).join(' and ') + ' warning, until ' + tm(new Date(Math.max.apply(null, ends)).toISOString(), hm(new Date(Math.max.apply(null, ends)).toISOString())) + ' UTC' +
         (tw.length > 1 ? '; also ' + tw.filter(function (w) { return w.level !== peak.level }).map(function (w) { return esc(w.level) + ' ' + esc(TYPE[w.type] || w.type) }).join(', ') : '') + '.'
     }
-    out += '<div class="gd-now" id="now"><p class="gd-now-line">' + line + '</p><p class="meta">' + prov('IPMA\'s warnings feed', W && W.source, W && W.read_utc) + ' Lisbon is on UTC in November. ' +
+    out += '<div class="gd-now" id="now"><p class="gd-now-line">' + line + '</p><p class="meta">' + (W ? lbl('fact') + ' ' : '') + prov('IPMA\'s warnings feed', W && W.source, W && W.read_utc) + ' Lisbon is on UTC in November.</p><p class="gd-now-safe">' +
       'Not a warning service: <a href="https://www.ipma.pt/" rel="noopener">IPMA</a> issues the warnings, <a href="https://prociv.gov.pt/" rel="noopener">ANEPC</a> says what to do; emergency <b>112</b>.</p></div>'
 
     // the path: pick your question
     var CASES = [['now-detail', 'What is happening now'], ['flight', 'I have a flight'], ['around', 'Getting around'], ['stranded', 'I\'m stranded: what is open?'], ['websummit', 'Web Summit'], ['madeira', 'Madeira'], ['press', 'I\'m a journalist']]
-    out += '<nav class="gd-paths" aria-label="Choose your question">' + CASES.map(function (c, i) { return '<a href="' + (shown(c[0]) ? '' : base + 'guide/index.html') + '#' + c[0] + '"' + (focus.length && shown(c[0]) ? ' aria-current="true"' : '') + '><span class="gd-n">' + (i + 1) + '</span>' + esc(c[1]) + '</a>' }).join('') + '</nav>'
+    out += '<nav class="gd-paths" id="gd-q" aria-label="Choose your question">' + CASES.map(function (c, i) { return '<a href="' + (shown(c[0]) ? '' : base + 'guide/index.html') + '#' + c[0] + '"' + (focus.length && shown(c[0]) ? ' aria-current="true"' : '') + '><span class="gd-n">' + (i + 1) + '</span>' + esc(c[1]) + '</a>' }).join('') + '</nav>'
 
     // (1) deeper
     var govAlert = edge('gov-alert')
@@ -129,7 +132,7 @@
     var thu = edge('metro-thursday') || (E.metro && (E.metro.decisions || []).filter(function (d) { return d.status === 'not_announced' })[0])
     out += sect('around', '3 · Getting around',
       '<p>Each operator\'s latest word, newest first. Most were read through the press (labelled <i>evidence</i>); go to the operator before you set off.</p><ul class="gd-short">' +
-      short('Metro (Metropolitano de Lisboa)', E.metro) + short('Trains (CP)', E.cp) + short('Ferries (Transtejo Soflusa)', E.ferries) + short('Bridges (25 de Abril, Vasco da Gama)', E.bridges) + short('Road tunnels (Lisbon city)', E.tunnels) + short('Intercity coaches (Rede Expressos)', E['rede-expressos']) + short('FlixBus', E.flixbus) + '</ul>' +
+      short('Metro (Metropolitano de Lisboa)', E.metro) + short('Trains (CP)', E.cp) + short('Ferries (Transtejo Soflusa)', E.ferries) + short('Bridges (25 de Abril, Vasco da Gama)', E.bridges) + short('Road tunnels (Lisbon city)', E.tunnels, /tunnel/i) + short('Intercity coaches (Rede Expressos)', E['rede-expressos']) + short('FlixBus', E.flixbus) + '</ul>' +
       '<p class="meta">Carris (Lisbon city buses), Fertagus, ride-hailing and taxis: <span class="gd-ns">not stated</span> in what we have read.</p>' +
       (thu ? '<p><b>Thursday:</b> ' + lbl(thu.label) + ' ' + esc(thu.decision) + ' ' + stateChip(thu.status) + '</p>' : ''),
       '<h4>From the operators\' own open feeds</h4><ul class="gd-short">' + ops.map(opLine).join('') + '</ul>' +
@@ -140,7 +143,7 @@
     var shelter = E.metro && (E.metro.decisions || []).filter(function (d) { return /shelter|homeless/i.test(d.decision) })
     out += sect('stranded', '4 · I\'m stranded: where can I go, what is open?',
       '<p>Only what an authority or an operator has <b>stated</b>, with its source and time. We never infer that a place is open.</p><ul class="gd-short">' +
-      short('Shops: Pingo Doce supermarkets', E.retail) + short('State museums and monuments', E.museums) + short('Schools', E.schools) + short('Courts and registries', E.courts) + short('Hospitals (scheduled activity)', E.hospitals) + short('Parks, gardens, municipal culture (Lisbon city)', E.tunnels) + '</ul>' +
+      short('Shops: Pingo Doce supermarkets', E.retail) + short('State museums and monuments', E.museums) + short('Schools', E.schools) + short('Courts and registries', E.courts) + short('Hospitals (scheduled activity)', E.hospitals) + short('Parks, gardens, municipal culture (Lisbon city)', E.tunnels, /park|garden|cultur/i) + '</ul>' +
       '<div class="gd-ns-box"><b>Not stated</b> by any authority or operator in what we have read: cafés and restaurants, shopping malls, other supermarket chains, hotels, ride-hailing (Uber, Bolt), taxis, pharmacies. That means <i>we do not know</i>, not that they are closed. Ask the place itself.</div>' +
       (shelter && shelter.length ? '<p><b>Shelter stated by an operator:</b></p><ul class="gd-rows">' + shelter.map(row).join('') + '</ul>' : ''),
       (govAlert ? '<h4>The government\'s measures for Wednesday</h4><ul class="gd-rows">' + row(govAlert) + '</ul>' : '') +
@@ -181,6 +184,7 @@
       '<li><a href="' + base + 'help/cite.html">How to cite</a></li></ul>')
 
     el.innerHTML = out
+    var h1 = document.querySelector('main.doc article h1'); if (h1 && !el.previousElementSibling) { h1.classList.add('gd-h1'); el.parentNode.insertBefore(h1, el) }
     focus.forEach(function (id) { var n = document.getElementById(id); if (n && n.classList.contains('gd-case')) el.appendChild(n) })
     if (focus.length) { var nv = el.querySelector('.gd-paths'); if (nv) { var h = document.createElement('h2'); h.className = 'gd-other'; h.textContent = 'Other questions'; el.appendChild(h); el.appendChild(nv) } }
     if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView() }
