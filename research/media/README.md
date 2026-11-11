@@ -1,11 +1,22 @@
 # Media watch: who is covering Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:50 UTC. For the incident team (WS-214), at Dinis Cruz's word of 10 November 2026, ~23:40 UTC: "a mapping for the social media, the media watch ... who are all the journalists, who is everybody covering". First read: 10 November, 23:45 UTC. **Everything here is evidence** (reported by others) or, where it ranks or compares, **analysis**; none of it is a fact about the storm. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:30 UTC. For the incident team (WS-214), at Dinis Cruz's word of 10 November 2026, ~23:40 UTC: "a mapping for the social media, the media watch ... who are all the journalists, who is everybody covering". First read: 10 November, 23:45 UTC. **Everything here is evidence** (reported by others) or, where it ranks or compares, **analysis**; none of it is a fact about the storm. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## What is here
 
+| Page | What it shows |
+|---|---|
+| [The outlets](outlets/README.md) | One page per outlet: what it published and when, its place on each key moment, its sources as its pages say, its licence and terms as published, its own contact page. And who carried whose words |
+| [By-lines](people/README.md) | The reporters whose names are printed on the coverage, with their pieces; a page for each with three or more |
+| [Who was first, who is most sourced](ranking.md) | The seven keyed facts, outlet by outlet |
+| [Who we would like to talk to, and why](../../outreach/who.md) | Bodies and newsrooms, the question for each; nobody contacted |
+
+The data behind them:
+
 | File | What it holds |
 |---|---|
+| [licences.json](licences.json) | Each outlet's terms as it publishes them: footer line, terms page and a short excerpt on reproduction, tdm-reservation, robots.txt, the link to its contact page |
+| [cites.json](cites.json) | Who carried whose words (by-lines naming the agency or another outlet; entries that say they relay) |
 | [coverage.json](coverage.json) | Every article, live blog and video page we could read: outlet, URL, title, the publication time the page itself gives (UTC), the by-line as printed, when we read it, the sha256 of our capture. Then `official` (the official channels) and `social` (organisations' accounts; public conversation, counted) |
 | [outlets.json](outlets.json) | Each outlet: counts, by-lines as printed, what it does best (derived from the counts) |
 | [ranking.md](ranking.md) | Who was first on each keyed fact (seven so far); who is most sourced; the wire underneath |
@@ -13,7 +24,7 @@
 | [live-entries.json](live-entries.json) | The timed entries inside three live blogs (Jornal de Negócios, Diário de Notícias, Observador, RTP), for the keyed facts only |
 | [wikipedia.json](wikipedia.json) | The Wikipedia pages on the storm (pt, en) and their edit history: revision times and sizes, no editors' names. **Frozen at 00:40 UTC, 11 November:** Wikipedia is now incident.wikipedia@'s, in [research/wikipedia/](../wikipedia/index.html) (every language, revisions as a dataset, claims and citations); this file stays as its starting point and is no longer refreshed |
 | [feeds.json](feeds.json), [seeds.txt](seeds.txt) | The public feeds and news sitemaps read; URLs that have scrolled out of a feed |
-| [tools/](tools/) | `harvest.mjs`, `live.mjs`, `social.mjs`, `wikipedia.mjs`, `rank.mjs`: no dependencies, re-runnable; this folder is built by them, not by hand |
+| [tools/](tools/) | `harvest.mjs`, `live.mjs`, `social.mjs`, `wikipedia.mjs`, `rank.mjs`, `terms.mjs`, `pages.mjs`: no dependencies, re-runnable; this folder is built by them, not by hand |
 
 ## The read so far, in short (11 November, 01:45 UTC)
 

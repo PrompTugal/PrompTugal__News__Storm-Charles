@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 01:37 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 230 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:17 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 230 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -77,7 +77,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 01:37 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 02:17 UTC | | | | |
 
 ### The storm's track is further south than forecast (strongest winds south of Lisbon)
 
@@ -100,9 +100,9 @@ Whom they quote at IPMA, as printed (role and outlet only):
 
 - VOST Portugal (a volunteers' association, not an authority) posted at 23:00 that the ECMWF model's 22:30 run showed the track shifting south: a model, not IPMA (in coverage.json, social.accounts).
 - On the wind: Observador's 22:35 entry and RTP's 23:08 entry say that if very strong winds form they would be felt south of Lisbon. Two later headlines speak of less wind: Expresso, 23:54 ("muda trajetória para sul, com menos vento") and CNN Portugal, 00:31 (the storm reaches Lisbon "com menos intensidade"). Headlines are evidence of what the press reports, not of the weather: IPMA's red warnings for Lisbon were unchanged at our last read of the timeline.
-- Público's live headline, read by incident.conductor@ at 00:29, is not in our list: Público's live page was not among the URLs we could read with entry times.
 - An earlier Lusa piece (CNN Portugal, 20:07) on the several possible entry points of the storm is about the uncertainty, not the shift, and is outside this table (items from 21:00).
 - Correction (00:50 UTC, 11 November): our first version of this table had RTP's 22:22 bulletin first and Observador at 23:16. We had not found Observador's live blog (its address names another story). With its entries read, Observador is first at 22:07 on the models and at 22:35 on IPMA's word; the order of the two on IPMA's word depends on what Antena 1's 22:00 bulletin said, which we did not hear.
+- Público: an article first published at 11:38 on 10 November (its address is about flooded roads) now carries the headline "Depressão Charles passa mais a sul do que o previsto e vento deverá ser menos intenso". The page gives its first publication time, not when the headline changed, so it cannot be placed in this table; it is the Público headline incident.conductor@ read at 00:29.
 
 Notes: the organisers' email to attendees went at 19:38 (no public URL; in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). Where the press is ahead of the primary time, the announcement was made in person before the page went up, or the primary time is itself only the first report. A title match can miss an item that reports the fact under another headline.
 
@@ -128,6 +128,7 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 | Jornal Económico | 1 | 1 | 0 | 0% | 0 | 0 | 0 |  |
 | IOL / AWAY / TVI | 1 | 0 | 0 | 0% | 1 | 0 | 0 |  |
 | Bloomberg | 1 | 0 | 0 | n/a | 0 | 1 | 0 |  |
+| Madeira Island News | 1 | 1 | 0 | 0% | 0 | 0 | 0 |  |
 
 Among outlets with at least four items:
 
@@ -155,6 +156,7 @@ Among outlets with at least four items:
 | Jornal Económico | business weekly, online daily | nothing stands out in this sample |
 | IOL / AWAY / TVI | broadcaster's portals | nothing stands out in this sample |
 | Bloomberg | business wire (international) | coverage in English; (by-lines not read: the pages refuse a bot or print none in their metadata) |
+| Madeira Island News | English-language news blog (Madeira) | coverage in English |
 
 ## By-lines, as printed
 
@@ -170,6 +172,7 @@ Reporters whose names are printed on the items in the list, by outlet, with the 
 - **Jornal de Negócios:** Pedro Barros Costa
 - **Euronews:** Pascale Davies (2)
 - **Jornal Económico:** José Carlos Lourinho
+- **Madeira Island News:** Tobi Hughes
 
 ## How to read this
 

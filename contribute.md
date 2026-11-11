@@ -1,10 +1,44 @@
 # Contribute: add or correct a fact
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:45 UTC.
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:30 UTC.
 
-This site records Storm Charles (Lisbon, 10 to 12 November 2026) from public sources: what was decided or warned, by whom, when, and where we read it. If you are a journalist, a specialist (meteorology, civil protection, transport, event safety) or a reader, and something here is wrong, late or missing, this page says how to fix it and what we publish back.
+This site records Storm Charles (Lisbon, 10 to 12 November 2026) from public sources. If you are a journalist, a specialist or a reader, here is **what you can do right now**: pick a task, open an issue with its number, and it goes in within minutes if it carries a source, two times and a label ([below](#what-a-good-contribution-carries)).
 
-**Not a warning service.** For what to do now, follow [IPMA](https://www.ipma.pt/), [ANEPC](https://prociv.gov.pt/) and your local authorities. Nothing here is advice.
+**Not a warning service.** For what to do now, follow [IPMA ↗](https://www.ipma.pt/), [ANEPC ↗](https://prociv.gov.pt/) and your local authorities. Nothing here is advice.
+
+## Tasks open now
+
+Each task says what is missing, who is best placed, and what a finished answer looks like. Open an issue titled with the task's number: [issues ↗](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/issues). The list is kept as data by incident.board@ (the board, once it is up); until then it lives here.
+
+### Send us data
+
+| No. | Task | Best placed | Done when |
+|---|---|---|---|
+| C-01 | **Who reported IPMA's 21:23 change first?** IPMA moved Lisbon's red rain warning to 09:00 at 21:23 on 10 November. We found no report of it by 01:45 ([the table](research/media/ranking.md)) | anyone who saw it on TV, radio or a site we cannot read (SIC, TSF, JN, Renascença) | a link (or programme and time) where it was reported, and the time |
+| C-02 | **The government's recommendation to suspend Web Summit:** we have one report (Jornal de Negócios' live blog, 17:53) and no government page | a journalist who covered it; the ministry's press office | a public statement or page with its time, or a second independent report |
+| C-03 | **Wednesday's service, operator by operator** (Metro, Carris, CP, Fertagus, ferries, bridges, the airport): what ran, what stopped, at what times | the operators' press offices; commuters with the operator's own notice | a link to the operator's notice for each change, with its time |
+| C-04 | **What Web Summit told attendees and when** beyond its public page: the email of 19:38, the app's notices | attendees | the text of the notice and the time received (no personal details; a screenshot stays private) |
+| C-05 | **Outlets we cannot read:** SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian, AP refuse our reader. Their first report on each of [the seven facts](research/media/ranking.md) | their own newsrooms; any reader | a link and the publication time for each fact |
+
+### Validate
+
+| No. | Task | Best placed | Done when |
+|---|---|---|---|
+| C-06 | **Is your by-line and time right?** [By-lines](research/media/people/index.html) and [each outlet's page](research/media/outlets/index.html) are copied from page metadata | the reporters and their desks | "correct", or the right time and by-line |
+| C-07 | **Is our reading of your terms right?** Each outlet's page quotes its terms on reproduction and what its robots.txt says | the outlets' legal or digital teams | "correct", or the clause we should have quoted |
+| C-08 | **Check our weather analysis** ([the analysis](incidents/2026-11-10-storm-charles/data/weather/analysis.md)): the peak window, the reading of the airport forecast against the district warning | meteorologists, atmospheric scientists | what is wrong or overstated, and why, as your professional view |
+| C-09 | **Live-blog times:** we timed entries in four live blogs from page data; two pages stop showing times after midnight | the live desks (Negócios, DN, Observador, RTP) | confirmation, or the right time of the entries in [the tables](research/media/ranking.md) |
+
+### Research
+
+| No. | Task | Best placed | Done when |
+|---|---|---|---|
+| C-10 | **Who is quoted, in what role?** For each expert quoted on the storm in the press: the role and institution as printed, the outlet, the time (no private details) | readers of the coverage; journalism students | a table of role, institution, outlet, link, time |
+| C-11 | **Wind limits of temporary event structures:** what closes them, by what standard | structural engineers, event-safety practitioners | the standard or guidance, with a link |
+| C-12 | **How Charles compares with Kristin** once station data is in: gusts, rain, warnings' lead times | meteorologists; anyone with IPMA's station records | a table with sources |
+| C-13 | **Other languages:** coverage of the storm in Spanish, French, English and Italian press, each with link and time | readers of that press | a list we can add to [the coverage](research/media/index.html) |
+
+The questions we would put to official bodies are in [outreach](outreach/index.html), and who we would like to talk to, and why, in [who](outreach/who.md).
 
 ## What a good contribution carries
 
