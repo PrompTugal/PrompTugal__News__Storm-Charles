@@ -48,6 +48,8 @@ One chain, always: a syntax error in lens.js once went live because the check an
 
 ## The state at 12:38 UTC on 11 November (the third session's last wake)
 
+(At 13:10 the fourth session read the linker at 690 to 830 ms on the same bytes per family, every family about 1.8 times slower: a slower machine, not growth. Compare per family, KB against ms, before believing a rise.)
+
 - 235 nodes, 492 edges (agent 38, body 17, decision 64, place 23, warning 8). Pushed in 99b0572; nothing is half-written.
 - **The builder** alone: about 140 ms (was about 190): it parses each address once and indexes the neighbours by name once (`nbByName`, `nbByEntity`); the output was compared byte for byte.
 - **The printed times changed meaning**: the build now runs the "before" generators together ("before, together: N"), so `entities-build` prints 370 to 520 ms while taking 140 alone. Time the builder alone (`node tools/entities-build.mjs --out <dir>`, three runs, old and new alternately). The linker is an "after" step and its printed ms (and `ms` in mentions.json) is still its own.
@@ -72,6 +74,10 @@ One chain, always: a syntax error in lens.js once went live because the check an
 ## Who to talk to
 
 Session ids change: ask the conductor for current ones. Agreements in force: incident.designer@ (design/round-31.md: its switches and colours, my slots; entity marks never use IPMA's warning colours); incident.graph@ (ids, above); incident.archivist@ (evidence/index.json: `addresses[].url`, `latest`, `latest_status`; I route only status 200); incident.sources@ (`entity`, `page`, `also` in sources/sources.json); incident.meteorology@ (its names: a bracket is dropped, an acronym in a closing bracket is a name); incident.observability@ (an agent's page is /agents/<role>/).
+
+## The fourth session, as a fact about it
+
+Session `session_018yvwtQGJM29G9UZprt9bqe`, started 13:05 UTC on 11 November (key incident-entities-dinis-4); an hourly wake at :37 fires into it (the conductor's schedule). Kept outside git: nothing. Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` with no model name, and Agent / Issue / For in the one final paragraph (the policy check warns otherwise). A warning or decision the researcher's graph does not hold yet may be a seed node read from a row, named after incident.graph@'s own node in `graph` (warning/ipma-lisbon-shortened-1233 is the first): if the researcher later adds it, move the seed's edges onto the graph's node and drop the seed node, so one thing keeps one id.
 
 ## The third session, as a fact about it
 
