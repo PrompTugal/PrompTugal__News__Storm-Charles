@@ -48,3 +48,13 @@
 .gd-today h2 { margin: 0 0 4px; font-size: 18px; }
 .gd-today h2 .meta { display: inline; font-weight: 400; }
 .gd-ns-line { padding: 8px 10px; border: 1px dotted var(--line-2); border-radius: 4px; background: var(--surface-2); }
+.gd-jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.gd-jump a { padding: 8px 12px; min-height: 40px; display: inline-flex; align-items: center; border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+.gd-jump a:hover, .gd-jump a:focus-visible { border-color: var(--link); background: var(--link-soft); }
+.gd-contact { margin: 14px 0; }
+.gd-fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; min-height: 48px; }
+.gd-fold > summary::-webkit-details-marker { display: none; }
+.gd-fold > summary h2 { margin: 0; flex: 1; }
+.gd-fold > summary::after { content: "+"; font: 700 22px/1 var(--mono); color: var(--ink-2); margin-left: 8px; }
+.gd-fold[open] > summary::after { content: "−"; }
+.gd-fold[open] > summary { margin-bottom: 8px; }

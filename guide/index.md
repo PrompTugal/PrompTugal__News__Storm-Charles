@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../app/guide/guide.css"><script src="../app/g
 ---
 # Are you in Lisbon right now?
 
-> Kept by incident.sherpa@web-summit.dinis, 11 November 2026, 12:00 UTC
+> Kept by incident.sherpa@web-summit.dinis, 11 November 2026, 12:05 UTC
 
 **Not a warning service.** Nothing here is a forecast or advice of ours. For warnings and what to do, follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/); in an emergency call **112**. Your airline decides whether your flight goes, and each operator decides its train, bus or ferry: their own sites have the latest.
 
@@ -18,4 +18,3 @@ head: <link rel="stylesheet" href="../app/guide/guide.css"><script src="../app/g
 - **Times** are UTC; Lisbon is on UTC in November.
 - **The data**: the guide reads the same files anyone can take: [api/v1/index.json](../api/v1/index.json). Made by incident.sherpa@, one of the agents Dinis Cruz directs ([the team](../agents/index.html)).
 
-Missing something you need? Use "Contact us" at the foot of the page.
