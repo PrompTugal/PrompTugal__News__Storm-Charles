@@ -1,180 +1,269 @@
 {
- "about": "Who may change which paths in this repository: the Owns column of agents/JOBS.md as globs, with the owners incident.conductor@ gave on 10 November 2026 (23:51 UTC) for the paths JOBS.md did not cover. Checked by tools/policy-check.mjs over the commits about to be pushed. A local check (CI's clone is shallow and the tool lives in the repository it checks): it catches mistakes, it is a setting an agent could skip, not a boundary.",
- "by": "incident.librarian@web-summit.dinis (drafted, at incident.conductor@'s ask; the owners are the conductor's decisions)",
- "updated": "2026-11-10T23:58:00Z",
- "source": "agents/JOBS.md",
- "glob": "* matches within one path segment, ** across segments; <role> is the committing agent's own role",
- "rules": {
-  "owns": "the agent may change these paths",
-  "shared": "a path with more than one writer: the check warns and does not fail",
-  "everyone": "every agent may change these",
-  "unassigned": "paths no agent owns yet: a change warns, until the conductor names an owner"
- },
- "everyone": {
-  "owns": [
-   "agents/<role>/**"
-  ],
-  "shared": [
-   "data/keys.json"
-  ]
- },
- "agents": {
-  "incident.conductor@web-summit.dinis": {
-   "role": "conductor",
-   "owns": [
-    "incidents/*/timeline.md",
-    "incidents/*/decisions.md",
-    "incidents/*/incident.json",
-    "incidents/*/comms/**",
-    "incidents/*/material/**",
-    "incidents/*/data/signals.json",
-    "agents/JOBS.md",
-    "agents/README.md",
-    "agents/*/status.json",
-    "BRIEF.md",
-    "ROADMAP.md",
-    "admin/tools/**",
-    ".github/**",
-    "tools/timeline.mjs",
-    "tools/sync-from-websummit.sh",
-    "admin/build/**",
-    "CLAUDE.md",
-    "README.md",
-    "REALITY.md",
-    "BRIEF-CORRECTIONS.md",
-    "PIPELINE.md",
-    "LICENSE",
-    "CNAME",
-    ".gitignore",
-    "admin/series.txt",
-    "incidents/*/README.md",
-    "incidents/*/data/README.md",
-    "agents/policy.json"
-   ],
-   "shared": [
-    "incidents/*/data/weather/**",
-    "incidents/*/data/decisions/**",
-    "incidents/*/data/watch/**",
-    "tools/websummit*",
-    "tools/llm.mjs",
-    "app/storm.js",
-    "**"
-   ],
-   "note": "agents/*/status.json: the conductor writes each agent's jobs (agents/README.md). The data folders and incident.dev@'s files are shared only while the conductor copies them across for agents whose sessions cannot push here (tools/sync-from-websummit.sh): the librarian's reading of the commits so far, for the conductor to confirm or remove. The conductor integrates: any other path it touches is 'shared' (a warning, never a pass in silence), so every such change shows in the check's output."
+  "about": "Who may change which paths in this repository: the Owns column of agents/JOBS.md as globs, with the owners incident.conductor@ gave on 10 November 2026 (23:51 UTC) for the paths JOBS.md did not cover. Checked by tools/policy-check.mjs over the commits about to be pushed. A local check (CI's clone is shallow and the tool lives in the repository it checks): it catches mistakes, it is a setting an agent could skip, not a boundary.",
+  "by": "incident.librarian@web-summit.dinis (drafted, at incident.conductor@'s ask; the owners are the conductor's decisions)",
+  "updated": "2026-11-11T02:25:00Z",
+  "source": "agents/JOBS.md",
+  "glob": "* matches within one path segment, ** across segments; <role> is the committing agent's own role",
+  "rules": {
+    "owns": "the agent may change these paths",
+    "shared": "a path with more than one writer: the check warns and does not fail",
+    "everyone": "every agent may change these",
+    "unassigned": "paths no agent owns yet: a change warns, until the conductor names an owner"
   },
-  "incident.designer@web-summit.dinis": {
-   "role": "designer",
-   "owns": [
-    "app/site.css",
-    "app/design/**",
-    "design/**"
-   ],
-   "shared": [
-    "admin/build/build.mjs",
-    "app/storm.js"
-   ],
-   "note": "admin/build/build.mjs: the page frame and the front-page block only; the file is the conductor's."
+  "everyone": {
+    "owns": [
+      "agents/<role>/**"
+    ],
+    "shared": [
+      "data/keys.json"
+    ]
   },
-  "incident.observability@web-summit.dinis": {
-   "role": "observability",
-   "owns": [
-    "admin-site/**",
-    "app/agents/**",
-    "data/agents/*.json",
-    "tools/agents-*.mjs",
-    "agents/*/README.md"
-   ]
+  "agents": {
+    "incident.conductor@web-summit.dinis": {
+      "role": "conductor",
+      "owns": [
+        "incidents/*/timeline.md",
+        "incidents/*/decisions.md",
+        "incidents/*/incident.json",
+        "incidents/*/comms/**",
+        "incidents/*/material/**",
+        "incidents/*/data/signals.json",
+        "agents/JOBS.md",
+        "agents/README.md",
+        "agents/*/status.json",
+        "BRIEF.md",
+        "ROADMAP.md",
+        "admin/tools/**",
+        ".github/**",
+        "tools/timeline.mjs",
+        "tools/sync-from-websummit.sh",
+        "admin/build/**",
+        "CLAUDE.md",
+        "README.md",
+        "REALITY.md",
+        "BRIEF-CORRECTIONS.md",
+        "PIPELINE.md",
+        "LICENSE",
+        "CNAME",
+        ".gitignore",
+        "admin/series.txt",
+        "incidents/*/README.md",
+        "incidents/*/data/README.md",
+        "agents/policy.json"
+      ],
+      "shared": [
+        "incidents/*/data/weather/**",
+        "incidents/*/data/decisions/**",
+        "incidents/*/data/watch/**",
+        "tools/websummit*",
+        "tools/llm.mjs",
+        "app/storm.js",
+        "**"
+      ],
+      "note": "agents/*/status.json: the conductor writes each agent's jobs (agents/README.md). The data folders and incident.dev@'s files are shared only while the conductor copies them across for agents whose sessions cannot push here (tools/sync-from-websummit.sh): the librarian's reading of the commits so far, for the conductor to confirm or remove. The conductor integrates: any other path it touches is 'shared' (a warning, never a pass in silence), so every such change shows in the check's output."
+    },
+    "incident.designer@web-summit.dinis": {
+      "role": "designer",
+      "owns": [
+        "app/site.css",
+        "app/design/**",
+        "design/**"
+      ],
+      "shared": [
+        "admin/build/build.mjs",
+        "app/storm.js"
+      ],
+      "note": "admin/build/build.mjs: the page frame and the front-page block only; the file is the conductor's."
+    },
+    "incident.observability@web-summit.dinis": {
+      "role": "observability",
+      "owns": [
+        "admin-site/**",
+        "app/agents/**",
+        "data/agents/*.json",
+        "tools/agents-*.mjs",
+        "agents/*/README.md"
+      ]
+    },
+    "incident.identity@web-summit.dinis": {
+      "role": "identity",
+      "owns": [
+        "app/login/**",
+        "account/**",
+        "data/lanes.json",
+        "tools/lane-*.mjs",
+        "SECURITY.md"
+      ]
+    },
+    "incident.weatherwatch@web-summit.dinis": {
+      "role": "weatherwatch",
+      "owns": [
+        "research/weather-sites/**"
+      ]
+    },
+    "incident.media@web-summit.dinis": {
+      "role": "media",
+      "owns": [
+        "research/media/**",
+        "contribute.md",
+        "outreach/**"
+      ]
+    },
+    "incident.librarian@web-summit.dinis": {
+      "role": "librarian",
+      "owns": [
+        "library/**",
+        "docs/**",
+        "tools/library-*.mjs",
+        "agents/policy.json",
+        "tools/policy-check.mjs",
+        "tools/policy-check.mjs",
+        "agents/*/policy.md"
+      ],
+      "note": "agents/policy.json and tools/policy-check.mjs: given by the conductor on 10 November, 23:51 UTC; not yet in JOBS.md.",
+      "shared": [
+        "agents/policy.json"
+      ]
+    },
+    "incident.graph@web-summit.dinis": {
+      "role": "graph",
+      "owns": [
+        "data/graph/**",
+        "app/graph/**",
+        "tools/graph-*.mjs",
+        "data/query/**"
+      ]
+    },
+    "incident.meteorologist@web-summit.dinis": {
+      "role": "meteorologist",
+      "owns": [
+        "incidents/*/data/weather/**"
+      ]
+    },
+    "incident.researcher@web-summit.dinis": {
+      "role": "researcher",
+      "owns": [
+        "incidents/*/data/decisions/**"
+      ]
+    },
+    "incident.dev@web-summit.dinis": {
+      "role": "dev",
+      "owns": [
+        "tools/websummit*",
+        "tools/llm.mjs",
+        "incidents/*/data/watch/**",
+        "app/storm.js"
+      ]
+    },
+    "incident.studio@web-summit.dinis": {
+      "role": "studio",
+      "owns": [
+        "studio/**",
+        "app/studio/**",
+        "agents/studio/**"
+      ],
+      "shared": [],
+      "note": "The Studio: animations and explanations (BRIEF.md, 11 November)."
+    },
+    "incident.wikipedia@web-summit.dinis": {
+      "role": "wikipedia",
+      "owns": [
+        "research/wikipedia/**",
+        "tools/wikipedia-*.mjs",
+        "agents/wikipedia/**"
+      ],
+      "shared": [],
+      "note": "Wikipedia on the storm, in every language; the comparison; this site against Wikipedia's values (BRIEF.md, 11 November)."
+    },
+    "incident.weather@web-summit.dinis": {
+      "role": "weather",
+      "owns": [
+        "weather/**",
+        "app/weather/**",
+        "tools/weather-*.mjs",
+        "agents/weather/**"
+      ],
+      "shared": [],
+      "note": "The Weather face: the channel-style front of the site; reads only the data room's published JSON."
+    },
+    "incident.ipma@web-summit.dinis": {
+      "role": "ipma",
+      "owns": [
+        "sources/ipma/**",
+        "app/sources/ipma/**",
+        "tools/ipma-*.mjs",
+        "agents/ipma/**"
+      ],
+      "shared": [],
+      "note": "IPMA's open data: every endpoint mapped, read, kept and visualised."
+    },
+    "incident.sources@web-summit.dinis": {
+      "role": "sources",
+      "owns": [
+        "sources/**",
+        "app/sources/**",
+        "tools/source-*.mjs",
+        "agents/sources/**"
+      ],
+      "shared": [],
+      "note": "A section per source body (MeteoAlarm first): endpoints, feeds, diffs over time, licences. sources/ipma/ is incident.ipma@'s."
+    },
+    "incident.archivist@web-summit.dinis": {
+      "role": "archivist",
+      "owns": [
+        "evidence/**",
+        "app/evidence/**",
+        "tools/capture*.mjs",
+        "data/vaults.json",
+        "agents/archivist/**"
+      ],
+      "shared": [],
+      "note": "Captures of every external page (screenshot, hash), the vaults, the evidence pages."
+    },
+    "incident.entities@web-summit.dinis": {
+      "role": "entities",
+      "owns": [
+        "entities/**",
+        "app/lens/**",
+        "tools/entities-*.mjs",
+        "agents/entities/**"
+      ],
+      "shared": [],
+      "note": "The mini Wikipedia as data: a node and a page for every thing a page mentions; the linker."
+    },
+    "incident.labs@web-summit.dinis": {
+      "role": "labs",
+      "owns": [
+        "labs/**",
+        "app/labs/**",
+        "tools/labs-*.mjs",
+        "agents/labs/**"
+      ],
+      "shared": [],
+      "note": "Experiments: timelines, decision views, weather views."
+    },
+    "incident.board@web-summit.dinis": {
+      "role": "board",
+      "owns": [
+        "board/**",
+        "app/board/**",
+        "tools/board-*.mjs",
+        "agents/board/**"
+      ],
+      "shared": [],
+      "note": "The board: open questions as tracked items, tasks for the team and for contributors."
+    },
+    "incident.social@web-summit.dinis": {
+      "role": "social",
+      "owns": [
+        "research/social/**",
+        "app/social/**",
+        "tools/social-*.mjs",
+        "agents/social/**"
+      ],
+      "shared": [],
+      "note": "Bluesky and other public social sources: official and public-role accounts, as data."
+    }
   },
-  "incident.identity@web-summit.dinis": {
-   "role": "identity",
-   "owns": [
-    "app/login/**",
-    "account/**",
-    "data/lanes.json",
-    "tools/lane-*.mjs",
-    "SECURITY.md"
-   ]
-  },
-  "incident.weatherwatch@web-summit.dinis": {
-   "role": "weatherwatch",
-   "owns": [
-    "research/weather-sites/**"
-   ]
-  },
-  "incident.media@web-summit.dinis": {
-   "role": "media",
-   "owns": [
-    "research/media/**",
-    "contribute.md",
-    "outreach/**"
-   ]
-  },
-  "incident.librarian@web-summit.dinis": {
-   "role": "librarian",
-   "owns": [
-    "library/**",
-    "docs/**",
-    "tools/library-*.mjs",
-    "agents/policy.json",
-    "tools/policy-check.mjs",
-    "tools/policy-check.mjs",
-    "agents/*/policy.md"
-   ],
-   "note": "agents/policy.json and tools/policy-check.mjs: given by the conductor on 10 November, 23:51 UTC; not yet in JOBS.md.",
-   "shared": [
-    "agents/policy.json"
-   ]
-  },
-  "incident.graph@web-summit.dinis": {
-   "role": "graph",
-   "owns": [
-    "data/graph/**",
-    "app/graph/**",
-    "tools/graph-*.mjs",
-    "data/query/**"
-   ]
-  },
-  "incident.meteorologist@web-summit.dinis": {
-   "role": "meteorologist",
-   "owns": [
-    "incidents/*/data/weather/**"
-   ]
-  },
-  "incident.researcher@web-summit.dinis": {
-   "role": "researcher",
-   "owns": [
-    "incidents/*/data/decisions/**"
-   ]
-  },
-  "incident.dev@web-summit.dinis": {
-   "role": "dev",
-   "owns": [
-    "tools/websummit*",
-    "tools/llm.mjs",
-    "incidents/*/data/watch/**",
-    "app/storm.js"
-   ]
-  },
-  "incident.studio@web-summit.dinis": {
-   "role": "studio",
-   "owns": [
-    "studio/**",
-    "app/studio/**",
-    "agents/studio/**"
-   ],
-   "shared": [],
-   "note": "The Studio: animations and explanations (BRIEF.md, 11 November)."
-  },
-  "incident.wikipedia@web-summit.dinis": {
-   "role": "wikipedia",
-   "owns": [
-    "research/wikipedia/**",
-    "tools/wikipedia-*.mjs",
-    "agents/wikipedia/**"
-   ],
-   "shared": [],
-   "note": "Wikipedia on the storm, in every language; the comparison; this site against Wikipedia's values (BRIEF.md, 11 November)."
-  }
- },
- "unassigned": []
+  "unassigned": []
 }
