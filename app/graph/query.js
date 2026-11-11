@@ -11,7 +11,8 @@
     const WASM_SHA256 = '38c14f6e379210bc942bdc4ebca44e7bfdb4318ecc1c72ca666a28fdce96670a'
     const root = document.getElementById('query'), BASE = root.dataset.base || '../graph/'
     // the page inside the mount element: static markup, no data in it (data is always set as text, below)
-    root.innerHTML = "<div class=\"meter\" aria-label=\"How the database was built in this tab\">\n" +
+    root.innerHTML = "<p class=\"kicker\">A database in your browser</p><h1>Query the storm: what was decided, by whom, when, and how long after the first warning</h1><p class=\"meta\">SQLite, running in this tab over <a href=\"../graph/index.html\">the graph's tables</a>. No server, nothing uploaded; every row carries its label, its source and the time it was read. <a href=\"#how-this-page-works\">How this page works</a> · <a href=\"../../app/graph/index.html\">The graph</a>.</p>" +
+        "<div class=\"meter\" aria-label=\"How the database was built in this tab\">\n" +
         "<div><b id=\"m-engine\">–</b><span>engine started</span><em>SQLite as WebAssembly, hash checked</em></div>\n" +
         "<div><b id=\"m-data\">–</b><span>data fetched</span><em id=\"m-data-s\">this site's JSON</em></div>\n" +
         "<div><b id=\"m-tables\">–</b><span>built in memory</span><em id=\"m-tables-s\">rows inserted</em></div>\n" +

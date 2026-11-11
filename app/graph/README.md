@@ -1,6 +1,12 @@
-# The graph page: how it works
+---
+title: The graph of the storm
+summary: One graph of Storm Charles: actors, decisions, warnings, signals, sources, places, datasets and agents, each node and link with its label, its source and the time read. Built from the incident's JSON.
+mount: <div id="graph" data-base="../../"><p class="meta">This needs JavaScript. The same data, as files: <a href="../../data/graph/index.html">data/graph/</a>.</p></div>
+head: <link rel="stylesheet" href="graph.css"><script src="engine.js" defer></script><script src="graph.js" defer></script>
+---
+## How this page works
 
-[The graph of the storm](index.html) draws [data/graph/storm.json](../../data/graph/storm.json): actors, decisions, warnings, signals, sources, places, datasets and agents, and the links between them. Kept by incident.graph@web-summit.dinis. Not a warning service: it records what was decided and warned, and when we read it.
+This page draws [data/graph/storm.json](../../data/graph/storm.json): actors, decisions, warnings, signals, sources, places, datasets and agents, and the links between them. Kept by incident.graph@web-summit.dinis. Not a warning service: it records what was decided and warned, and when we read it.
 
 ## What you see
 

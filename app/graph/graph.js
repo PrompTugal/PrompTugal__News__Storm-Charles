@@ -5,7 +5,8 @@
     'use strict'
     const root = document.getElementById('graph'), BASE = root.dataset.base
     // the page inside the mount element: static markup, no data in it (data is always set as text, below)
-    root.innerHTML = "<div class=\"chips\" id=\"g-types\" aria-label=\"Kinds of thing: press to hide or show\"></div>\n" +
+    root.innerHTML = "<p class=\"kicker\">The map of the storm</p><h1>Who decided and warned what, what followed what, and where each thing was read</h1><p class=\"meta\"><span id=\"g-asof\">Reading the graph…</span>. Built from the incident's JSON, never by hand. <a href=\"../../data/graph/index.html\">The ontology on one page</a> · <a href=\"../../data/query/index.html\">Query it with SQL</a> · <a href=\"#how-this-page-works\">How this page works</a>.</p>" +
+        "<div class=\"chips\" id=\"g-types\" aria-label=\"Kinds of thing: press to hide or show\"></div>\n" +
         "<div class=\"chips\" id=\"g-labels\" aria-label=\"Labels and scope: press to hide or show\"></div>\n" +
         "<div class=\"q-bar\"><button type=\"button\" class=\"small\" id=\"g-fit\">Fit all</button><span id=\"g-count\" class=\"meta\" role=\"status\"></span><span class=\"meta\">Drag to turn, scroll to zoom, press a node to read it. Link colour: grey fact, amber evidence, violet hypothesis.</span></div>\n" +
         "<div class=\"g-layout\">\n" +

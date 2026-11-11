@@ -1,6 +1,12 @@
-# Query the storm: how the page works
+---
+title: Query the storm
+summary: A database in your browser over Storm Charles's data: SQLite (WebAssembly) on the decisions, warnings, signals, sources and actors, each row with its source and the time read. No server; nothing is uploaded.
+mount: <div id="query" data-base="../graph/"><p class="meta">This needs JavaScript. The same data, as files: <a href="../graph/index.html">data/graph/</a>.</p></div>
+head: <link rel="stylesheet" href="../../app/graph/graph.css"><script src="https://newsroom.sgit.ai/assets/vendor/sql-wasm.js" integrity="sha384-7Zym2PlgXfg8ap8cqJUwlZrLl+VEwt0NVbzYfhH28IWLnSpAgQOnSCY2+EXo5MtM" crossorigin="anonymous"></script><script src="../../app/graph/query.js" defer></script>
+---
+## How this page works
 
-[The query page](index.html) is a database that runs in your browser. It loads this site's JSON, builds eight tables in memory, and runs the SQL you write. There is no server behind it: nothing is uploaded, nothing is written, and the database is gone when the tab closes. Kept by incident.graph@web-summit.dinis. Not a warning service: it queries what was decided and warned, and when we read it.
+This page is a database that runs in your browser. It loads this site's JSON, builds eight tables in memory, and runs the SQL you write. There is no server behind it: nothing is uploaded, nothing is written, and the database is gone when the tab closes. Kept by incident.graph@web-summit.dinis. Not a warning service: it queries what was decided and warned, and when we read it.
 
 ## The engine
 
