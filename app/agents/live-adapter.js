@@ -65,28 +65,49 @@
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
     const clean = s => String(s ?? '').replace(/https?:\/\/claude\.ai\/code\/session_[A-Za-z0-9]+/g, '[session]').replace(/\bsession_[A-Za-z0-9]{8,}\b/g, '[session]')
     const BASE = new URL('../../', HERE).href
+    // ---- a workflow, played: incident.reporter@'s traces (reporter/traces/index.json), one workflow from Dinis's word to a live page.
+    // A step whose evidence is a push we hold flies on the map exactly as that push does; a step by voice or message has no push, so it is
+    // read in the caption and nothing moves. The trace's words are the reporter's, printed as text.
+    let traces = null, trace = null
+    const TR = BASE + 'reporter/traces/', count = () => trace ? trace.steps.length : list.length
+    async function loadTraces() { if (traces) return; traces = []; try { const r = await fetch(TR + 'index.json', { cache: 'no-cache' }); if (r.ok) traces = ((await r.json()).traces || []).filter(x => /^[a-z0-9-]+$/.test(x.id || '')) } catch { } caption() }
+    async function pick(id) {
+        halt(); at = -1; trace = null
+        if (id) try { const r = await fetch(TR + id + '.json', { cache: 'no-cache' }), j = await r.json()
+            trace = { id, title: j.title || id, steps: (j.steps || []).map(s => { const e = (s.evidence || []).find(e => e && e.type === 'commit' && e.sha), sha = e ? String(e.sha) : ''; return { s, sha, c: sha ? list.find(x => String(x.sha).startsWith(sha.slice(0, 8))) || null : null } }) }
+        } catch { trace = null }
+        if (graph) graph.setBack(0); caption()
+    }
     function go(i) {
-        if (!graph || !list.length) return
-        at = Math.max(0, Math.min(list.length - 1, i)); const c = list[at]
-        if (window.AgentsMotion && window.AgentsMotion.stopped) window.AgentsMotion.start()
-        graph.setBack(Date.now() - delay - (Date.parse(c.at) - 1200))   // the moment just before it: it flies about a second later
+        if (!graph || !count()) return
+        at = Math.max(0, Math.min(count() - 1, i)); const c = trace ? trace.steps[at].c : list[at]
+        if (c) { if (window.AgentsMotion && window.AgentsMotion.stopped) window.AgentsMotion.start()
+            graph.setBack(Date.now() - delay - (Date.parse(c.at) - 1200)) }   // the moment just before it: it flies about a second later
         caption()
+    }
+    const cut = (s, n) => { s = clean(s).trim(); return s.length > n ? s.slice(0, n - 1) + '…' : s }
+    function stepCap() {
+        const x = trace.steps[at]; if (!x) { const fly = trace.steps.filter(x => x.c).length; return `<b>${esc(cut(trace.title, 160))}</b>: ${trace.steps.length} steps, ${fly} of them a push that flies on the map. Step through it, or play it in order.` }
+        const s = x.s, a = s.actor || {}, h = s.handoff || {}
+        return `<b>Step ${at + 1} of ${trace.steps.length}</b> · ${s.at ? esc(String(s.at).slice(11, 19)) + ' UTC' : esc(cut(s.at_note || 'time not recorded', 80))} · ${a.kind === 'person' ? esc(a.name || '') : `<code>${esc(shortOf(a.name || ''))}</code>`}${h.to ? ` → ${esc(cut(String(h.to).replace(/@web-summit\.dinis/g, '@'), 90))}` : ''} · <i>${esc(cut(s.kind || '', 40))}</i>: ${esc(cut(s.out || '', 240))} ${x.sha ? `<a href="${BASE}app/agents/commit.html?sha=${esc(x.sha)}">${x.c ? 'the push' : 'the push (older than the pushes this map holds, so it does not fly)'}</a>` : '<span class="ag-note">(no push in this step' + (h.via ? ': ' + esc(cut(h.via, 80)) : '') + '; nothing flies)</span>'}`
     }
     function caption() {
         const box = document.querySelector('[data-ag-ctl]'); if (!box) return
-        const c = list[at], stopped = !!(window.AgentsMotion && window.AgentsMotion.stopped)
+        const c = list[at], stopped = !!(window.AgentsMotion && window.AgentsMotion.stopped), n = count(), W = trace ? 'step' : 'push'
+        if (!traces) loadTraces()
         box.hidden = false
-        box.innerHTML = `<div class="row"><button type="button" data-a="prev" ${at === 0 ? 'disabled' : ''}>‹ Previous push</button><button type="button" data-a="next" ${at >= list.length - 1 ? 'disabled' : ''}>Next push ›</button><button type="button" data-a="auto" aria-pressed="${!!auto}">${auto ? '❚❚ Pause' : '▶ Play push by push'}</button><button type="button" data-a="stop" aria-pressed="${stopped}">${stopped ? '▶ Resume motion' : '■ Stop all motion'}</button><button type="button" data-a="live">Back to live</button></div>
-<p class="cap">${c ? `<b>Push ${at + 1} of ${list.length}</b> · ${esc(String(c.at).slice(11, 19))} UTC · <code>${esc(shortOf(c.agent))}</code>${c.to.length ? ` → ${c.to.map(t => `<code>${esc(shortOf(t) + (/@web-summit\.dinis$/i.test(t) ? '' : '@' + personOf(t)))}</code>`).join(', ')}` : ' (addressed to nobody)'}: <a href="${BASE}app/agents/commit.html?sha=${esc(c.sha)}">${esc(clean(c.what))}</a>` : `${list.length} pushes read. Step through them one at a time, or play them in order; each one flies along its line and can be opened.`}${stopped ? ' <b>Stopped: nothing moves until you resume.</b>' : ''}</p>`
+        box.innerHTML = `${traces && traces.length ? `<p class="tr"><label>Play <select data-a-trace><option value="">every push, in order</option>${traces.map(x => `<option value="${esc(x.id)}"${trace && trace.id === x.id ? ' selected' : ''}>a workflow: ${esc(cut(x.title || x.id, 90))} (${esc(x.steps)} steps)</option>`).join('')}</select></label> <span class="ag-note">Workflows are <a href="${BASE}reporter/index.html">incident.reporter@'s traces</a>: one piece of work from Dinis's word to a live page, each step with its evidence${trace ? ` (<a href="${TR}${esc(trace.id)}.json">this trace</a>)` : ''}.</span></p>` : ''}<div class="row"><button type="button" data-a="prev" ${at <= 0 ? 'disabled' : ''}>‹ Previous ${W}</button><button type="button" data-a="next" ${at >= n - 1 ? 'disabled' : ''}>Next ${W} ›</button><button type="button" data-a="auto" aria-pressed="${!!auto}">${auto ? '❚❚ Pause' : `▶ Play ${W} by ${W}`}</button><button type="button" data-a="stop" aria-pressed="${stopped}">${stopped ? '▶ Resume motion' : '■ Stop all motion'}</button><button type="button" data-a="live">Back to live</button></div>
+<p class="cap">${trace ? stepCap() : c ? `<b>Push ${at + 1} of ${list.length}</b> · ${esc(String(c.at).slice(11, 19))} UTC · <code>${esc(shortOf(c.agent))}</code>${c.to.length ? ` → ${c.to.map(t => `<code>${esc(shortOf(t) + (/@web-summit\.dinis$/i.test(t) ? '' : '@' + personOf(t)))}</code>`).join(', ')}` : ' (addressed to nobody)'}: <a href="${BASE}app/agents/commit.html?sha=${esc(c.sha)}">${esc(clean(c.what))}</a>` : `${list.length} pushes read. Step through them one at a time, or play them in order; each one flies along its line and can be opened.`}${stopped ? ' <b>Stopped: nothing moves until you resume.</b>' : ''}</p>`
         for (const b of box.querySelectorAll('button')) b.onclick = () => {
             const a = b.dataset.a
-            if (a === 'prev') { halt(); go(at < 0 ? list.length - 1 : at - 1) }
+            if (a === 'prev') { halt(); go(at < 0 ? n - 1 : at - 1) }
             else if (a === 'next') { halt(); go(at + 1) }
-            else if (a === 'auto') { if (auto) halt(); else { if (at < 0 || at >= list.length - 1) at = -1; const tick = () => { if (at >= list.length - 1) { halt(); caption(); return } go(at + 1) }; auto = setInterval(tick, 3000); tick() } caption() }
+            else if (a === 'auto') { if (auto) halt(); else { if (at < 0 || at >= count() - 1) at = -1; const tick = () => { if (at >= count() - 1) { halt(); caption(); return } go(at + 1) }; auto = setInterval(tick, trace ? 5000 : 3000); tick() } caption() }
             else if (a === 'stop') { halt(); window.AgentsMotion && (stopped ? window.AgentsMotion.start() : window.AgentsMotion.stop()) }
             else if (a === 'live') { halt(); at = -1; if (window.AgentsMotion && window.AgentsMotion.stopped) window.AgentsMotion.start(); graph.setBack(0); caption() }
         }
     }
+    document.addEventListener('change', e => { if (e.target.matches && e.target.matches('[data-a-trace]')) pick(e.target.value) })
     const halt = () => { if (auto) { clearInterval(auto); auto = null } }
     const controls = () => { caption() }
     // the engine's own pause holds its clock but leaves its background flow flying, which reads as "Stop does not stop".

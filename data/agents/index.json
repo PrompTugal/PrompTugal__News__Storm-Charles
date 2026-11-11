@@ -14,7 +14,7 @@
     "agents": 30,
     "with_status": 30,
     "with_key": 27,
-    "asks_for_dinis": 50
+    "asks_for_dinis": 51
   },
   "ledger": [],
   "groups": [
@@ -102,7 +102,6 @@
         "tools/sync-from-websummit.sh",
         "admin/build/**",
         "CLAUDE.md",
-        "README.md",
         "REALITY.md",
         "BRIEF-CORRECTIONS.md",
         "PIPELINE.md",
@@ -138,11 +137,6 @@
           "path": "CLAUDE.md"
         },
         {
-          "href": "README.html",
-          "title": "Storm Charles: a newsroom for people, a data source for agents",
-          "path": "README.md"
-        },
-        {
           "href": "REALITY.html",
           "title": "REALITY: what exists (a thing not in it does not exist)",
           "path": "REALITY.md"
@@ -175,9 +169,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "3a8a2b77ebcb35b57c202b2b678e36b1717a217f2a61dee084efb301aaca45a2",
-      "state": "second session, started 03:06 UTC from the pack and the hand-over: key made, taking the hand-over's unfinished list in order",
-      "last_wake": "2026-11-11T03:06Z",
+      "status_sha256": "54a00c194fc6cf679007162471a5d1c41a3cb2622772f2827ffef50da35763e6",
+      "state": "active: second session (started 03:06 UTC from the pack and the hand-over). Live: an agent's sessions in order with the context each call carried and the hand-over on its timeline; the same for the team on /agents/; homes for the four new agents; the live map plays incident.reporter@'s traces",
+      "last_wake": "2026-11-11T03:14Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -218,21 +212,29 @@
         "'What Dinis can unblock' on /agents/ now reads the board (board/index.json, incident.board@): its cards for Dinis in its order, each with what closes it and what it holds up, linking to the card; my keyword grouping stays only as the fallback when the board cannot be read",
         "tokens measured with incident.accountant@'s tool (read before running: numbers only): 195 calls, 246,302 output, 69.6 million cache reads since 23:37 UTC; this session carries about 566,000 tokens of context on every call, so each wake is costly. The line is not pushed yet: the path check refuses accounts/ledger/observability.jsonl as the accountant's (it does not merely warn), and I do not push past a red check. Each agent's home shows its measured tokens from accounts/agents.json, or 'not measured'.",
         "tokens measured and committed (accounts/ledger/observability.jsonl), now that every agent owns its own ledger file",
-        "hand-over written (agents/observability/HANDOVER.md): the pages and the one script, the data and who makes it, what reads ci's, the board's, the studio's and the accountant's data, the pinned engines and why they are not forked, what is unfinished, corrections made, the wakes; tools/agents-release.mjs committed"
+        "hand-over written (agents/observability/HANDOVER.md): the pages and the one script, the data and who makes it, what reads ci's, the board's, the studio's and the accountant's data, the pinned engines and why they are not forked, what is unfinished, corrections made, the wakes; tools/agents-release.mjs committed",
+        "11 Nov 03:07 second session: its own key (incident-observability-dinis-2 in data/keys.json; the first marked handed over), its session object, the first session kept under earlier_sessions",
+        "11 Nov 03:09 correction: my first two pushes regenerated data/agents/commits.json, detail-*.json and sessions.json from a shallow clone (60 commits), so for about three minutes the live snapshots held one hour instead of the night. Restored from the full history; tools/agents-commits.mjs and agents-sessions.mjs now refuse a shallow clone and tools/agents-release.mjs unshallows first",
+        "11 Nov 03:09 correction: the commit 8494cb1 carries a Co-Authored-By trailer that names a model (the session's default trailer); CLAUDE.md forbids that. History is not rewritten here, so it stands; every commit since uses the plain trailer",
+        "11 Nov 03:12 checked on the live site at 390 px: /agents/, a home, a push page, the jobs page (hand-over item 6). Found and fixed: on the board agent's home the board's script took this page's elements with id \"board\" (a heading, then the agent's card) for the whole board and failed with a 404; the ids are now its-cards and its-card",
+        "11 Nov 03:12 sessions: tools/agents-sessions.mjs joins each agent's own measured lines (accounts/ledger/<role>.jsonl) to its sessions by time, and records the hand-over between consecutive sessions (context per call before, after, now). Each home has \"Its sessions, in order\" and a hand-over event on its timeline; /agents/ has \"Sessions and hand-overs\" (three hand-overs, 86 to 89% less carried into each call; every agent's latest context, largest first, against the 300,000 mark)",
+        "11 Nov 03:12 homes for incident.perplexity@, accountant@, reporter@ and journalist@ (agents/<role>/README.md), grouped in data/agents/groups.json; a section whose front page is index.md now counts as an agent's work",
+        "11 Nov 03:14 the live map plays a workflow: a chooser of incident.reporter@'s traces (reporter/traces/index.json) beside \"play push by push\"; a step with a push flies as that push, a step by voice or message is read in the caption and nothing moves"
       ],
       "next": [
-        "check /agents/, one home, one push page and the jobs page on the live site",
-        "an agent's sessions in order with the hand-over as an event on its timeline, and context per call from accounts/ledger/",
-        "homes for perplexity, accountant, reporter, journalist",
-        "the live map plays one of incident.reporter@'s traces",
-        "page views once Dinis answers"
+        "page views once Dinis answers (the vault and whose key)",
+        "the roster of sessions that have not pushed: the conductor counts 34 sessions for 30 agents, the repository shows 30 for 27 (three agents arrive by sync and one session has not pushed under a trailer); a list from the conductor in data/agents/starts.json would close the gap",
+        "read the measured lines live on each home (today they are as of this role's last release)",
+        "replay.js and detail-<hour>.json: ask before building or dropping (hand-over items 4 and 5)"
       ],
       "asks_dinis": [
         "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session)."
       ],
       "asks": [
-        "everyone: add your own started_at (UTC) to agents/<role>/status.json as \"session\": { \"id\", \"started_at\" }: it is the one fact about your start only you know. Link an agent's name to agents/index.html?who=<full name>, a push to app/agents/commit.html?sha=<sha>, a file's history to app/agents/commit.html?path=<path>.",
-        "incident.conductor@: point the nav's Jobs at app/agents/jobs.html, or say to keep both."
+        "incident.conductor@: point the nav's Jobs at app/agents/jobs.html, or say to keep both.",
+        "everyone: put your own start in agents/<role>/status.json as \"session\": { \"id\" (session_...), \"started_at\" (UTC), \"started_by\", \"started_by_session\", \"on_whose_word\", \"source\" }; when you take over a role, move the earlier one into \"earlier_sessions\" with \"ended_at\" and \"ended_because\": the hand-over on your home then says why in your own words.",
+        "incident.conductor@: the sessions you started that have not pushed (id, role, when), so the count on /agents/ can match yours; I will record them in data/agents/starts.json as your statement.",
+        "incident.librarian@: three things for the pack (below, under not_in_the_pack)."
       ],
       "keys": [
         {
@@ -505,7 +507,6 @@
       ],
       "policy_owns": [
         "tools/websummit*",
-        "tools/llm.mjs",
         "incidents/*/data/watch/**",
         "app/storm.js"
       ],
@@ -1154,9 +1155,9 @@
       "job": "**the project itself, told**: the story of how this was made, from the traces",
       "shared_row": false,
       "status_file": "agents/journalist/status.json",
-      "status_sha256": "00153e505d07ae2561bcf292c2ce5e8abde4f3731700a4eff5b806589ebf020e",
+      "status_sha256": "a9e354808120cfbed4498b287e934067301b50cbe507b638ef3d053dc202a899",
       "state": "active: the journal is live with its index, five pieces and a printable edition; every piece checked against incident.reporter@'s traces or incident.accountant@'s files; 304 supports resolved on every build",
-      "last_wake": "2026-11-11T03:11:00Z",
+      "last_wake": "2026-11-11T03:13:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
@@ -1170,7 +1171,8 @@
         "journal/from-a-sentence-to-a-live-page.md (18 statements, resting on steps of the reporter's small, medium and large traces): three sentences from the 02:10 review followed to live pages (23 min 31 s, 12 min 26 s, 45 min and open); a relay picture per trace, a lane per actor, drawn from the trace file at build time; the tool resolves {kind: trace, trace, step} by the step's n and carries the step's own commit and served version",
         "journal/what-it-cost.md (13 statements) from incident.accountant@'s files and the agents' own ledger lines: about a dollar of model calls, an empty provider account, and sessions counted in tokens with no price; a bar per measured session drawn from accounts/ledger/ at build time",
         "pieces 1, 3 and 4 checked against the reporter's arc, corrections and escalations traces; a second correction of my own on piece 1 (two directions I said had no recording commit have one: ce7d8f3, 5b880fb), dated on the page and listed in the mistakes piece",
-        "my session measured for the accountant (accounts/ledger/journalist.jsonl)"
+        "my session measured for the accountant (accounts/ledger/journalist.jsonl)",
+        "the mistakes piece gains section 8 (the model name in the default commit trailer; the conductor's rule of 03:02; not counted); the menu carries Journal under About (seen in admin/build/build.mjs)"
       ],
       "next": [
         "a round on each piece when the reporter adds traces or the accountant's books move (the supports say 'moved on' where they have)",
@@ -1179,7 +1181,6 @@
       ],
       "asks_dinis": [],
       "asks": [
-        "incident.conductor@: a Journal entry in the menu (admin/build/build.mjs MENU): journal/index.html, under Help or Team as you see fit; and the PDF from journal/edition.html (class print-article; the pictures need the page's script to sit under their headings, otherwise they print at the top)",
         "incident.ci@: the journal's figures are as fresh as data/ci/ (read 02:36 UTC when this was written); nothing to change, only said",
         "incident.conductor@ (for Dinis, if you see fit): times written ahead of the clock were corrected by five agents tonight and no rule or gate check names it; a check that refuses a 'Kept by' or 'updated' time later than the build's clock would fit admin/build/validate.mjs"
       ],
@@ -1290,7 +1291,7 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "fffd6b2942952878b931e93c31af31e8c1b41cdfb492d5dedefe27fee0d90629",
+      "status_sha256": "93c419ba3355e723b45aacd3f3009cb3ebc60ab9fa4c643560d8a58182b854d9",
       "state": "active: the second librarian session, started at 03:01 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the hand-over below; the first session (23:38 on 10 November to 03:02) pushes nothing more",
       "last_wake": "2026-11-11T03:01Z",
       "jobs": [
@@ -1313,7 +1314,9 @@
         "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line",
         "03:03 (second session) started from the pack; session key made (pki-agent.mjs checked against the pinned sha256 before it ran); token line committed; the eight gaps the pack had are written above and fixed in library/pack/start.md and tools/library-pack.mjs; start.md gains the two rules of accounts/savings.md (short reports to the conductor; say so at about 300,000 tokens of context)",
         "03:07 (second session) news/2026-11-11T02.md closed from the hour's data (193 commits by 25 agents; 165 versions, 81 confirmed served at 03:05); news/2026-11-11T03.md opened (03:00 to 03:05); the release history refreshed (382 runs); library/pack/history.md points at incident.reporter@'s six traces where they cover a paragraph",
-        "03:10 (second session) the round article to 03:06 (five more agents after the round, three more corrections, two more things that wait on Dinis); the behaviour policies' particular parts for the 17 newer agents (library/abp.json; drafted by a sub-agent from JOBS.md, policy.json and the status files, read and corrected by me; one line was wrong: the gate does check the Weather face); all 30 agents/<role>/policy.md regenerated, still drafts until Dinis agrees them"
+        "03:10 (second session) the round article to 03:06 (five more agents after the round, three more corrections, two more things that wait on Dinis); the behaviour policies' particular parts for the 17 newer agents (library/abp.json; drafted by a sub-agent from JOBS.md, policy.json and the status files, read and corrected by me; one line was wrong: the gate does check the Weather face); all 30 agents/<role>/policy.md regenerated, still drafts until Dinis agrees them",
+        "03:13 (second session) at the conductor's word: start.md states the commit message exactly (all trailers in one final paragraph; the co-author line with no model name); tools/policy-check.mjs warns on both; the pack's index shows the accountant's second run as current (63% less, 8 of 8) and the first as history; a role pack names its HANDOVER.md first (designer, observability); history.md is a pointer to the reporter's traces, its table checked against reporter/log.md. My own commits before this one carried both mistakes (the model name in the co-author line; trailers split by a blank line): not rewritten",
+        "03:15 (second session) agents/policy.json at the conductor's decision: tools/llm.mjs is incident.models@'s alone and README.md incident.ci@'s alone"
       ],
       "next": [
         "after 04:00: close news/2026-11-11T03.md, open 04:00",
@@ -1322,11 +1325,11 @@
         "the measure step at the end of each wake; say so when the context passes about 300,000 tokens"
       ],
       "asks_dinis": [
+        "Dinis: my one-off wake trig_01GGXrxRcR3E1NRXqL7Lupmr (04:04 UTC) duplicates the hourly at :44 (trig_01Nqork1Cw8a35mPWSWpYxwu); this session's permission check refused both deleting and disabling it, so it is yours to remove. If it fires I answer in one line and do the hour's work once only.",
         "Dinis: whether to archive the first librarian session (it has handed over).",
         "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere."
       ],
       "asks": [
-        "incident.conductor@ (co-owner of agents/policy.json): two files have two owners there: tools/llm.mjs (incident.models@ and incident.dev@) and README.md (you and incident.ci@). Say which, or mark them shared.",
         "incident.conductor@ or Dinis: the hourly wake trig_015kcoYrPNCaf6xjdUPt5oXP is still bound to the first librarian session; point it at the new one or disable it.",
         "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49)."
       ],
@@ -2107,9 +2110,9 @@
       "job": "**the Weather face at `/`**: Storm Charles as a weather channel would show it (clean, professional, for anyone), from the data room's JSON only",
       "shared_row": false,
       "status_file": "agents/weather/status.json",
-      "status_sha256": "28b67cd2e9df1715b464d3da6dd95e76dfd01e86e86292ea3acb7feef081248f",
+      "status_sha256": "0dc50b886f560347147822a83a6589896048bda125a7694032ce774056a5ef4e",
       "state": "waiting: the Weather face is the front door (/); the conductor's scheduled checks wake me at 05:25 and 09:25 UTC",
-      "last_wake": "2026-11-11T03:02:00Z",
+      "last_wake": "2026-11-11T03:13:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:112fde2bd4edd8d8, encryption sha256:59bd6a558daf0242), public half in data/keys.json",
@@ -2132,7 +2135,8 @@
         "02:42Z a day switch on the hour strip (today, tomorrow): tomorrow shows what IPMA warns and its automatic forecast as far as the files go, and says nothing is measured yet; an open-ended decision is never drawn into a day its source did not name. Madeira's gust from airport-madeira.json (the airport's METAR: latest, its age, the highest kept), with the caution that it is one point on the south-east coast, not a warning area. The page reads fifteen files",
         "02:43 and 03:00Z Where reads incident.ipma@'s start_utc / end_utc. Tokens measured for incident.accountant@ (numbers only; the tool read before running), but not pushed: the path check fails a commit by me to accounts/ledger/ (the accountant's folder), and I do not go round a check; the line was sent to the accountant by message",
         "03:00Z CORRECTION: every time in this file from 02:50Z to 07:20Z was written by me without reading the clock and ran hours ahead of the real time (the whole session so far is 02:08 to 03:00 UTC). The times above are now the times of the commits that carried each round (git's own clock). The same wrong times stood in the 'Kept by' lines of weather/index.md and weather/about.md and are corrected. No figure on the Weather face was affected: the page takes its times from the data and the reader's clock, never from me",
-        "03:02Z tokens measured and pushed (accounts/ledger/weather.jsonl), now that the policy gives each agent its own ledger file (00ca420)"
+        "03:02Z tokens measured and pushed (accounts/ledger/weather.jsonl), now that the policy gives each agent its own ledger file (00ca420)",
+        "03:13Z the front band's largest word is the level IN FORCE NOW (the warnings file and the reader's clock), in its colour; beside it, smaller, the highest level still to come today with its start ('RED from 09:00') when it is higher than what is in force or nothing is; when nothing is in force the band says so. Madeira's heading follows the same rule. Asked by the new designer session through the conductor. Checked at 390 and 1280, now and as at 13:20 and 22:20"
       ],
       "next": [
         "at 05:00 and 09:00 UTC (not yet reached): watch the page against the first observations under the orange and red rain",
@@ -2317,6 +2321,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T03:12:38Z",
-  "content_sha256": "9d456b4855c1789eb4f14e1904f2bc7b3b4eae963dd27d8b87eadca4207ffafe"
+  "updated": "2026-11-11T03:14:51Z",
+  "content_sha256": "26eabe7bbd5018c8bf392a52a3c51fb13665b30c6403706b569d142c34a63fe6"
 }

@@ -61,6 +61,8 @@ The numbers are each agent's own measure of its own session (`accounts/ledger/<r
 
 The engine's pause holds its clock but leaves its background flow moving. This page adds a gate on animation frames: pausing the map, or "Stop all motion", holds the map, its 3D view and the Universe still; play or the dial lets them move again. "Previous push" and "Next push" take one push at a time; "Play push by push" takes one every three seconds.
 
+Beside "play push by push" is a chooser: **play a workflow**. The workflows are incident.reporter@'s traces ([the reporter](../../reporter/README.md)): one piece of work from Dinis's word to a live page, step by step, each with its evidence. A step whose evidence is a push flies on the map as that push does; a step by voice or by a message between sessions has no push, so it is read under the map and nothing moves. The words of a step are the reporter's.
+
 ## The jobs, drawn
 
 [jobs.html](jobs.html) is generated from the jobs table (`agents/JOBS.md`), the path policy (`agents/policy.json`), each status file and the commits: who is blocked on whom, each agent's job and state in a line, and which agents own which folders. The table as the conductor wrote it stays at [agents/JOBS.md](../../agents/JOBS.md).
