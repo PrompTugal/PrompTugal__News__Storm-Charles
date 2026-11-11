@@ -167,6 +167,22 @@ const rf = path.join(EV, 'rows.json')
 const rowsDoc = { about: 'For each timeline row (its permanent id), the outside addresses it cites and our latest capture of each: link the row to evidence/<evidence>.html. null means there is no capture, with the reason.', by: BY, updated: now(), rows }
 if (!fs.existsSync(rf) || JSON.stringify({ ...J(rf), updated: 0 }) !== JSON.stringify({ ...rowsDoc, updated: 0 })) W(rf, JSON.stringify(rowsDoc, null, 1) + '\n')
 
+// ---- 5b. the Wayback for data: every feed whose keeper publishes reads.json in the agreed shape (read only; never written by us)
+const feeds = walk(path.join(ROOT, 'sources'), n => n === 'reads.json').map(f => { try { const j = J(f); if (!j.feed || !Array.isArray(j.reads)) return null
+    const rs = j.reads, rel = path.relative(ROOT, f)
+    return { feed: j.feed, url: j.url, owner: j.by, licence: j.licence, reads: rel, vault: rs.find(x => x.vault)?.vault.id || null, first_read: rs[0]?.read_utc || null, last_read: rs[rs.length - 1]?.read_utc || null, count: rs.length, changes: rs.filter(x => x.changed === true).length } } catch { return null } }).filter(Boolean).sort((a, b) => a.feed.localeCompare(b.feed))
+const df = path.join(EV, 'data.json')
+const dataDoc = { about: 'The Wayback for data: every machine feed read over time, one row per feed. Each feed is kept by its own agent (owner); its reads.json lists every read oldest first with read_utc, sha256, changed, the vault path of the bytes and the diff. This file only indexes them.', by: BY, updated: now(), feeds }
+if (!fs.existsSync(df) || JSON.stringify({ ...J(df), updated: 0 }) !== JSON.stringify({ ...dataDoc, updated: 0 })) W(df, JSON.stringify(dataDoc, null, 1) + '\n')
+const feedTable = feeds.length ? `## Data: every read of a feed over time
+
+Machine feeds are read on a schedule by their own agents; each read is kept with its sha256 and, when the bytes changed, a diff. As data: [data.json](data.json).
+
+| Feed | Address | Reads | Changes | First read | Last read | Every read |
+|---|---|---|---|---|---|---|
+${feeds.map(f => `| ${mdEsc(f.feed)} | \`${f.url}\` | ${f.count} | ${f.changes} | ${f.first_read ? utc(f.first_read) : ''} | ${f.last_read ? utc(f.last_read) : ''} | [reads.json](../${f.reads}) |`).join('\n')}
+
+` : ''
 // ---- 6. the section's front page
 const c = index.counts
 const table = addresses.map(a => `| ${mdEsc(a.source_name)} | [${mdEsc(a.title || a.url.replace(/^https?:\/\//, '').slice(0, 70))}](${a.latest}.md) \`${a.url.replace(/^https?:\/\/(www\.)?/, '').slice(0, 80)}\` | ${utc(a.last_read)} | ${a.captures.length} | ${a.captures.length < 2 ? 'one capture' : a.captures[a.captures.length - 1].changed ? '**changed** at the last read' : 'unchanged at the last read'}${a.changes ? ` (${a.changes} change${a.changes > 1 ? 's' : ''} in all)` : ''} | ${a.shown ? 'screenshot' : 'hash and excerpt'} |`).join('\n')
@@ -174,7 +190,7 @@ const im = `---
 title: Wayback: what each outside page looked like when we read it
 summary: Our dated captures of every outside page this site cites: a screenshot, the sha256 of what was served, the time read, and whether the page has changed since.
 ---
-## Wayback: our captures of outside pages
+## Wayback: our captures of outside pages and feeds
 
 > Kept by ${BY}, ${utc(index.updated)}
 
@@ -186,7 +202,7 @@ Every time this site cites an outside page, we keep what that page looked like a
 |---|---|---|---|---|---|
 ${table}
 
-## How to read a capture
+${feedTable}## How to read a capture
 
 - **Evidence, not fact.** A capture proves what an address served to us at a time. It does not make what the page says true.
 - **The screenshot** is the full page at 1280 px wide, as a first-time visitor is served it: not logged in, nothing accepted, no paywall or consent wall bypassed. Where a cookie notice covered the words, a second picture hides the notice (nothing is clicked) and says so.
