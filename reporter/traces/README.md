@@ -1,6 +1,6 @@
 # Traces: one workflow each, from Dinis's word to a live page
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:11 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:14 UTC
 
 Read [index.json](index.json) first: it carries every trace's five-line summary. Then open only the one you need. Not a warning service: these are about how the site was made.
 
@@ -14,6 +14,8 @@ Read [index.json](index.json) first: it carries every trace's five-line summary.
 | [Escalations](escalation-asks-waiting-on-dinis.json): two asks to Dinis from the first evening, and how long each waited | escalation | 10 Nov 20:49, open | 8 (2, 6) | 1 |
 | [Memory](memory-the-librarian-saves-tokens.json): "the librarian saves tokens" to a measured number, six sessions replaced within the hour, nine by 04:09 | medium | 02:49 to 04:09, open | 18 (1, 17) | 0 |
 | [Outage](outage-the-model-account-out-of-credit.json): the model provider's account out of credit at 02:54, what stopped, and one card for Dinis | outage | 02:53, open | 12 (2, 10) | 1 |
+| [The Studio](studio-a-spoken-idea-to-an-animation.json): "what is compression ... an animation" to a player with characters, six explanations and a cast | medium | 00:29 to 03:54 | 12 (2, 10) | 0 |
+| [An agent's start](start-a-jobs-line-to-a-first-page.json): "create a Perplexity agent" to a first page in 12 minutes and a timeline row from it | small | 02:49 to 03:05 | 7 (1, 6) | 0 |
 
 ## The shape (sc-trace/1)
 

@@ -1,0 +1,630 @@
+{
+ "id": "studio-a-spoken-idea-to-an-animation",
+ "schema": "sc-trace/1",
+ "size": "medium",
+ "title": "The Studio: \"what is compression ... an animation\" to a player with characters in 8 minutes, six explanations by 03:55",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T04:13:00Z",
+ "captured_at": "2026-11-11T04:13:00Z",
+ "summary": [
+  "Dinis (~00:30): a new section, \"Studio\", and a first animation: what compression is, with mini characters, \"you should see almost the storyboard play out\", the model on the right. 8 min 19 s after the commit that records it, a new agent had pushed its key, a player and chapters 1 and 2; the six chapters were live 12 min 56 s after it.",
+  "It is also an agent's start: incident.studio@ did not exist at 00:29. One commit by the conductor gave it the brief, a first page, a line in the jobs and its paths in the policy; its own first commit carried its session key and the first page together.",
+  "The animation is data, not drawing: a player (app/studio/player.js) plays studio/animations/*.json, and every scene is also written as text for a reader without scripts. That is why the next five explanations took minutes each: a second at 00:54:27, three more between 02:20 and 02:30, a sixth at 03:54:54.",
+  "Two loops with other agents: the designer reviewed it without changing it (seven notes at 00:53:29, done by the Studio 3 min 25 s later); and the Studio's cast, a character per agent (02:23:24), was on every agent's page 2 min 47 s later and in every by-line by 02:35:24. Explaining also tested the site: writing \"Two faces\", the Studio found a rule the gate did not enforce; the conductor's gate enforced it at 02:32:33.",
+  "Dinis's second word on it (~02:10): \"worked really well, we need more\"; nine minutes after the commit that records it, each explanation had its own page and a full-screen button. Not evidenced: how the conductor started the agent and how the Studio told the conductor about the gate (messages). The sixth explanation, \"The hand-over\", was made by the Studio's second session, about its own replacement."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "agents/JOBS.md",
+  "agents/studio/status.json",
+  "agents/studio/HANDOVER.md",
+  "studio/README.md",
+  "studio/animations/index.json",
+  "studio/animations/what-compression-is.json",
+  "design/round-24.md",
+  "studio/cast/README.md"
+ ],
+ "input": {
+  "kind": "a spoken direction",
+  "what": "\"Start with one: what is compression\" ... \"Bring that to life in this studio.\" (BRIEF.md, ~00:30, as the conductor wrote it down)"
+ },
+ "output": {
+  "kind": "live pages",
+  "what": "the Studio: six explanations played as storyboards with small characters, each with a text twin; a cast of 30 characters used across the site",
+  "url": "https://storm-charles.promptugal.news/studio/what-compression-is/"
+ },
+ "status": "captured to 03:55 UTC on 11 November; the Studio goes on in its second session",
+ "duration": {
+  "from": "2026-11-11T00:29:44Z",
+  "to": "2026-11-11T03:54:54Z",
+  "note": "brief recorded to the first chapters live in the repository: 8 min 19 s; to all six chapters: 12 min 56 s; to a second explanation: 24 min 43 s; \"we need more\" recorded to a page per explanation: 9 min 0 s; to the sixth explanation: 3 h 25 min 10 s"
+ },
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "\"~00:30\" in BRIEF.md; recorded at 00:29:44",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "a site of pages and tables; \"complex data points, which we're going to have a lot here\"",
+   "out": "\"A new section, 'Studio'\"; \"Start with one: what is compression\"; \"the context that you have is sent with every request\"; the mini characters of storyboard.sgit.ai: \"Bring that to life in this studio.\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~00:30 UTC: the Studio",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief written down, an agent made",
+   "sha": "ce7d8f352350d40901dc2cd03310c24678fe9026",
+   "in": "the spoken direction",
+   "out": "\"the Studio: Dinis's brief (BRIEF.md), a first page, the nav section, incident.studio@ in the jobs and the policy\": everything a new agent needs, in one commit",
+   "handoff": {
+    "to": "a new incident.studio@ session",
+    "via": "a start prompt: not in the repository",
+    "evidence_of_handoff": "agents/JOBS.md and agents/policy.json name the agent; its first commit follows in 8 min 19 s"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "~00:30 UTC: the Studio",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "section": "incident.studio@",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "ce7d8f352350d40901dc2cd03310c24678fe9026",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ce7d8f352350d40901dc2cd03310c24678fe9026"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.114",
+     "run": 114,
+     "own_run": true,
+     "served_by": "2026-11-11T00:30:27Z",
+     "push_to_served_s": 41
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T00:29:44Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first page",
+   "sha": "7fc709c8b75fa45f121497972b1b5f99cd4af2a7",
+   "in": "the brief and an empty first page",
+   "out": "\"a storyboard player with small characters, and 'What compression is', chapters 1 and 2 (a normal request; the same with a cache)\". \"The player ... plays animations that are data (studio/animations/*.json)\"; every scene is also written as text (\"the no-JavaScript twin\"). \"Session key: the public half in data/keys.json.\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "studio/animations/what-compression-is.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=studio/animations/what-compression-is.json"
+    },
+    {
+     "type": "file",
+     "path": "app/studio/player.js",
+     "url": "https://storm-charles.promptugal.news/view/?path=app/studio/player.js"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "7fc709c8b75fa45f121497972b1b5f99cd4af2a7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7fc709c8b75fa45f121497972b1b5f99cd4af2a7"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.127",
+     "run": 127,
+     "own_run": true,
+     "served_by": "2026-11-11T00:38:31Z",
+     "push_to_served_s": 25
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T00:38:03Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the rest of the brief",
+   "sha": "87364c81daf508df1b9002a23b7361045ecaeca2",
+   "in": "four parts of the brief still to draw",
+   "out": "\"chapters 3 to 6: the door, what gets lost and why, side by side with how this team works, the point\": Dinis's \"almost like that door\" and \"we used almost a file system as our database\", each a chapter. Then a bar per request, \"the shape of the cost, named as a simplification\" (d7d4536), and the player fitted to one screen (15c0c1b, 00:50:00)",
+   "handoff": {
+    "to": "incident.designer@, at the conductor's ask",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "design/round-24.md: \"Asked by incident.conductor@ (00:50)\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "studio/what-compression-is/README.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=studio/what-compression-is/README.md"
+    },
+    {
+     "type": "commit",
+     "sha": "d7d4536",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d7d4536"
+    },
+    {
+     "type": "commit",
+     "sha": "15c0c1b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/15c0c1b"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "87364c81daf508df1b9002a23b7361045ecaeca2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/87364c81daf508df1b9002a23b7361045ecaeca2"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.130",
+     "run": 130,
+     "own_run": true,
+     "served_by": "2026-11-11T00:43:06Z",
+     "push_to_served_s": 23
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T00:42:40Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.librarian@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "review",
+   "sha": "890b38812a4cc9174ccd4ebfea030e41720cac7e",
+   "in": "/studio/ in a browser at two sizes, light and dark, and its code",
+   "out": "\"/studio/ reviewed against design/README.md (seven notes for incident.studio@)\"; \"No change to either page by me.\"",
+   "handoff": {
+    "to": "incident.studio@web-summit.dinis",
+    "via": "design/round-24.md",
+    "evidence_of_handoff": "a6e5feb: \"the designer's round-24 list\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "design/round-24.md",
+     "section": "/studio/ (incident.studio@)",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-24.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "890b38812a4cc9174ccd4ebfea030e41720cac7e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/890b38812a4cc9174ccd4ebfea030e41720cac7e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.138",
+     "run": 138,
+     "own_run": false,
+     "served_by": "2026-11-11T00:54:27Z",
+     "push_to_served_s": 49
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T00:53:29Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.studio@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a second explanation",
+   "sha": "2d433f4eaf56f48917b7bce4b52daf5ebdd89244",
+   "in": "a player that takes any storyboard as data",
+   "out": "\"a second animation, 'How a fact gets onto this site': the path, and two real cases from the timeline\"",
+   "handoff": {
+    "to": "readers",
+    "via": "the Studio",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "studio/animations/how-a-fact-gets-here.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=studio/animations/how-a-fact-gets-here.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "2d433f4eaf56f48917b7bce4b52daf5ebdd89244",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2d433f4eaf56f48917b7bce4b52daf5ebdd89244"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.139",
+     "run": 139,
+     "own_run": true,
+     "served_by": "2026-11-11T00:54:54Z",
+     "push_to_served_s": 25
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T00:54:27Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.meteorologist@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "review answered",
+   "sha": "a6e5feb7e769e89bad0936b053bbb545bbc03252",
+   "in": "the designer's seven notes",
+   "out": "\"the designer's round-24 list: larger characters, the text twin folded by chapter, the caption under the stage on a phone too ...\", 3 min 25 s after the notes were pushed",
+   "handoff": {
+    "to": "incident.designer@web-summit.dinis",
+    "via": "the commit",
+    "evidence_of_handoff": "the commit's subject names the round"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "design/round-24.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=design/round-24.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "a6e5feb7e769e89bad0936b053bbb545bbc03252",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a6e5feb7e769e89bad0936b053bbb545bbc03252"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.140",
+     "run": 140,
+     "own_run": true,
+     "served_by": "2026-11-11T00:57:21Z",
+     "push_to_served_s": 25
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T00:56:54Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.designer@web-summit.dinis",
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "\"~02:10\" in BRIEF.md; recorded at 02:06:42 (659dd79)",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice review",
+   "in": "the Studio with two explanations on one page",
+   "out": "\"worked really well, we need more\"; each explanation its own page inside the Studio; a maximise button",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "~02:10 UTC: Studio",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    },
+    {
+     "type": "commit",
+     "sha": "659dd792206cfa6d6c7ebbc69065e708edd807b8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/659dd792206cfa6d6c7ebbc69065e708edd807b8"
+    }
+   ],
+   "n": 8
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "round two",
+   "sha": "0fde362b6f1f6e590a6393d170557bc020988b7d",
+   "in": "\"we need more\"",
+   "out": "\"the Studio, round two (Dinis, 02:10): a page per explanation and the Studio as their index; a full-screen button; the script beside the stage\". Then three explanations in ten minutes, each about the site as it changed that hour: \"One warning, opened three times\" (8aafe46, 02:20:26), \"Two faces\" (59d595c, 02:27:52), \"Follow a word to its source\" (5f49ff1, 02:30:28)",
+   "handoff": {
+    "to": "readers; incident.graph@, whose missing edge the third explanation named",
+    "via": "the Studio; the graph's commit 5176f5e",
+    "evidence_of_handoff": "d174462: \"the missing edge now exists (issued-as, incident.graph@'s 5176f5e)\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "studio/animations/index.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=studio/animations/index.json"
+    },
+    {
+     "type": "commit",
+     "sha": "8aafe46",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8aafe46"
+    },
+    {
+     "type": "commit",
+     "sha": "59d595c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/59d595c"
+    },
+    {
+     "type": "commit",
+     "sha": "5f49ff14f97871c05f97b223a05841977744856a",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5f49ff14f97871c05f97b223a05841977744856a"
+    },
+    {
+     "type": "commit",
+     "sha": "d174462",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d174462"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "0fde362b6f1f6e590a6393d170557bc020988b7d",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/0fde362b6f1f6e590a6393d170557bc020988b7d"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.187",
+     "run": 187,
+     "own_run": true,
+     "served_by": "2026-11-11T02:16:07Z",
+     "push_to_served_s": 23
+    }
+   ],
+   "n": 9,
+   "at": "2026-11-11T02:15:42Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.librarian@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the cast",
+   "sha": "32f1091f374304bf1ac9f11a4718d1b923737625",
+   "in": "the characters of the storyboards; 26 agents with names and no faces",
+   "out": "\"the cast: a small character for each of the 26 agents (a figure and a by-line mark, as SVG text)\". Used by others within minutes: \"a home for every agent (its character, ...)\" (incident.observability@, 650a8a7, 02:26:11); \"the agents' marks in every by-line\" (incident.designer@, 6a564d3, 02:35:24). Thirty characters by 02:59:52 (30d5b48).",
+   "handoff": {
+    "to": "incident.observability@ and incident.designer@",
+    "via": "studio/cast/ (files, read by the others' pages)",
+    "evidence_of_handoff": "the two commits named"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "studio/cast/README.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=studio/cast/README.md"
+    },
+    {
+     "type": "commit",
+     "sha": "650a8a7e1706981fffd7deb1843c921ca28e1d01",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/650a8a7e1706981fffd7deb1843c921ca28e1d01"
+    },
+    {
+     "type": "commit",
+     "sha": "6a564d3e8f20d08a4dc7bb3826804bf446b50235",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6a564d3e8f20d08a4dc7bb3826804bf446b50235"
+    },
+    {
+     "type": "commit",
+     "sha": "30d5b48",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/30d5b48"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "32f1091f374304bf1ac9f11a4718d1b923737625",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/32f1091f374304bf1ac9f11a4718d1b923737625"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.217",
+     "run": 217,
+     "own_run": true,
+     "served_by": "2026-11-11T02:24:28Z",
+     "push_to_served_s": 61
+    }
+   ],
+   "n": 10,
+   "at": "2026-11-11T02:23:24Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.observability@web-summit.dinis",
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a rule made a check",
+   "sha": "10a9f9e0ac29a7d5a3163fafd0dd10ea823ff646",
+   "in": "the Studio, writing \"Two faces\" and its line on \"what keeps the clean face honest\", found nothing that did",
+   "out": "\"the gate enforces that the Weather face's code requests no outside address (found missing by incident.studio@)\"; the explanation then said so: \"the rule is enforced by the gate now\" (b93e923, 02:42:23)",
+   "handoff": {
+    "to": "incident.weather@ and incident.studio@",
+    "via": "the gate; the commit's For: trailer",
+    "evidence_of_handoff": "b93e923"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "admin/build/validate.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=admin/build/validate.mjs"
+    },
+    {
+     "type": "commit",
+     "sha": "b93e923",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b93e923"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "10a9f9e0ac29a7d5a3163fafd0dd10ea823ff646",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/10a9f9e0ac29a7d5a3163fafd0dd10ea823ff646"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.267",
+     "run": 267,
+     "own_run": false,
+     "served_by": "2026-11-11T02:33:15Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "evidence_note": "How the Studio told the conductor is not in the repository (a message); the conductor's commit subject is the only record that it did.",
+   "n": 11,
+   "at": "2026-11-11T02:32:33Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.weather@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a sixth explanation, by a second session",
+   "sha": "863d28febe2dce123df179ad8408d25574251441",
+   "in": "its own hand-over at 03:35 (agents/studio/HANDOVER.md) and the accountant's measurements",
+   "out": "\"a sixth explanation, 'The hand-over' (the sentence, the pack, the finding, five hand-overs measured); measured figures in 'What compression is'\": the first animation, made from Dinis's description at 00:30, now carries this team's own numbers",
+   "handoff": {
+    "to": "readers",
+    "via": "the Studio",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "studio/animations/the-hand-over.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=studio/animations/the-hand-over.json"
+    },
+    {
+     "type": "file",
+     "path": "agents/studio/HANDOVER.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/studio/HANDOVER.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "863d28febe2dce123df179ad8408d25574251441",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/863d28febe2dce123df179ad8408d25574251441"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.460",
+     "run": 460,
+     "own_run": true,
+     "served_by": "2026-11-11T03:55:39Z",
+     "push_to_served_s": 43
+    }
+   ],
+   "n": 12,
+   "at": "2026-11-11T03:54:54Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis",
+    "incident.librarian@web-summit.dinis",
+    "incident.reporter@web-summit.dinis"
+   ]
+  }
+ ],
+ "counts": {
+  "steps": 12,
+  "steps_with_no_evidence": 0,
+  "person_steps": 2,
+  "agent_steps": 10
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.studio@web-summit.dinis",
+  "incident.designer@web-summit.dinis"
+ ]
+}

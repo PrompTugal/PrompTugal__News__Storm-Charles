@@ -1,6 +1,6 @@
 # The reporter: how this project happens, as a record
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 03:04 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:14 UTC
 
 **Not a warning service.** For the storm itself follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This section is about the project, not the storm: how one person's spoken directions became this site through a team of agents. Dinis Cruz asked for it at about 02:50 UTC on 11 November ([BRIEF.md](../BRIEF.md), last section): "meta reporter and meta journalist: reporting on how this project actually occurs and how it actually happened".
 
@@ -8,7 +8,7 @@
 
 | File | What it is | Size |
 |---|---|---|
-| [traces/index.json](traces/index.json) | every trace in one file: title, five-line summary, times, counts, who acted | about 13 KB |
+| [traces/index.json](traces/index.json) | every trace in one file: title, five-line summary, times, counts, who acted | about 22 KB |
 | [traces/](traces/README.md) | one JSON per workflow, from Dinis's word to a live page, each step with its evidence | 13 to 42 KB each |
 | [log.md](log.md) | the project hour by hour: asked, shipped, broke, waited | appended every wake |
 | [numbers.json](numbers.json) | counts by hour, from the files other agents keep (nothing counted by hand) | about 6 KB |

@@ -1,0 +1,392 @@
+{
+ "id": "start-a-jobs-line-to-a-first-page",
+ "schema": "sc-trace/1",
+ "size": "small",
+ "title": "An agent's start: \"create a Perplexity agent ... and have a page for it\" to a first page in 12 minutes, and a timeline row from it 80 seconds later",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T04:14:00Z",
+ "captured_at": "2026-11-11T04:14:00Z",
+ "summary": [
+  "Dinis (~02:50): \"I think you can create a Perplexity agent for this, because I'm quite interested in seeing what you can do. And have a page for it on the site.\" Twelve minutes after the commit that records it, incident.perplexity@ pushed its first commit: its key, four tools, three questions asked, every cited address opened, a scorecard, three leads and the page.",
+  "What an agent is given at its start, all in one commit by the conductor: Dinis's words in BRIEF.md, a line in agents/JOBS.md (\"Perplexity as a research tool on the storm: questions, answers, citations, leads, cost; its page\") and its paths in the policy. The start prompt itself is a message and is not in the repository.",
+  "The team met it before it had pushed anything: the Studio drew its character at 02:59:52, 86 seconds before its first commit. After it: a line in the menu at 03:05:08, asked \"through the conductor\".",
+  "Its work was used at once, and only where it had read a primary body itself: the conductor took two of its three leads as timeline row s-1111T0255 at 03:02:38, 80 s after the first commit; the board answered an open conflict from that row 96 s later. An engine's answer stayed \"evidence about the engine, never a fact about the storm\".",
+  "It met the team's first outage in its first round: its calls were refused from 02:53:57 (the provider's account out of credit; see the outage trace), so the desk has one round and waits. Thirteen calls, six answered, 0.03 US dollars. Not evidenced: the start prompt, and how the leads reached the conductor before they were pushed (the row's time, 02:55, is earlier than the desk's first commit)."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "agents/JOBS.md",
+  "agents/policy.json",
+  "agents/perplexity/status.json",
+  "research/perplexity/index.md",
+  "research/perplexity/scorecard.json",
+  "research/perplexity/leads.json",
+  "research/perplexity/ledger-summary.json",
+  "incidents/2026-11-10-storm-charles/timeline.md",
+  "data/keys.json"
+ ],
+ "input": {
+  "kind": "a spoken sentence",
+  "what": "\"I think you can create a Perplexity agent for this ... And have a page for it on the site.\" (BRIEF.md, ~02:50, as the conductor wrote it down)"
+ },
+ "output": {
+  "kind": "live page, and a row in the timeline",
+  "what": "Perplexity as a research tool: questions, answers scored against what we read at source, leads; and timeline row s-1111T0255, read at Web Summit's own pages",
+  "url": "https://storm-charles.promptugal.news/research/perplexity/"
+ },
+ "status": "captured to 03:05 UTC; the desk is paused until the provider's account has credit",
+ "duration": {
+  "from": "2026-11-11T02:49:18Z",
+  "to": "2026-11-11T03:05:08Z",
+  "note": "the sentence recorded to the agent's first commit (key and first page together): 12 min 0 s; to a timeline row from its leads: 13 min 20 s; to the board's answer from that row: 14 min 56 s; to a line in the menu: 15 min 50 s"
+ },
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp.",
+  "names": "Perplexity and its models, and the provider (OpenRouter), are named because they are the subject here."
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "\"~02:50\" in BRIEF.md; recorded at 02:49:18",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "open questions the team could not answer from the bodies' own pages; a model budget just raised to 20 US dollars a day",
+   "out": "\"I think you can create a Perplexity agent for this, because I'm quite interested in seeing what you can do. And have a page for it on the site.\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~02:50 UTC: \"A Perplexity agent\"",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief written down, an agent made",
+   "sha": "ab8008ef978592bda87b062143704713401467a0",
+   "in": "the spoken direction",
+   "out": "\"four agents in JOBS and the path policy\": for this one, the line \"Perplexity as a research tool on the storm: questions, answers, citations, leads, cost; its page\" and the folder research/perplexity/",
+   "handoff": {
+    "to": "a new incident.perplexity@ session",
+    "via": "a start prompt: not in the repository",
+    "evidence_of_handoff": "agents/perplexity/status.json: started by \"incident.conductor@ ..., at Dinis Cruz's word (BRIEF.md, 02:50 UTC)\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "section": "incident.perplexity@",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/policy.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/policy.json"
+    },
+    {
+     "type": "file",
+     "path": "agents/perplexity/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/perplexity/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "ab8008ef978592bda87b062143704713401467a0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ab8008ef978592bda87b062143704713401467a0"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.322",
+     "run": 322,
+     "own_run": true,
+     "served_by": "2026-11-11T02:49:52Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T02:49:18Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a character before a first page",
+   "sha": "30d5b48d5ce8382f214685bdedeb1fe87bf83de5",
+   "in": "four new names in agents/JOBS.md",
+   "out": "\"characters for the four new agents (perplexity, accountant, reporter, journalist: the cast is 30)\": the new agent had a face on the team's pages 86 s before its first commit",
+   "handoff": {
+    "to": "the agents' pages and by-lines",
+    "via": "studio/cast/ (files)",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "studio/cast/README.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=studio/cast/README.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "30d5b48d5ce8382f214685bdedeb1fe87bf83de5",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/30d5b48d5ce8382f214685bdedeb1fe87bf83de5"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.350",
+     "run": 350,
+     "own_run": false,
+     "served_by": "2026-11-11T03:00:57Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T02:59:52Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.observability@web-summit.dinis",
+    "incident.designer@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.perplexity@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first page",
+   "sha": "f24a773588d231b4d7de5bb8dac6a3782fd2c38c",
+   "in": "the jobs line, the pack, and the shared model wrapper (tools/llm.mjs)",
+   "out": "\"Perplexity as a research tool, round 1: three open questions asked, every cited address opened, the scorecard, three leads, the page\": 18 files in one commit, its session key among them. The scorecard: 19 statements, 7 confirmed at a primary body's own address, 8 found only in the press, 4 unsupported, none wrong. Its leads hold \"only what this desk itself read at a primary body's own address\".",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "research/perplexity/leads.json (\"offered to incident.conductor@\"); the commit's For: trailer",
+    "evidence_of_handoff": "the next step"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/perplexity/index.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/perplexity/index.md"
+    },
+    {
+     "type": "file",
+     "path": "research/perplexity/scorecard.json",
+     "section": "overall",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/perplexity/scorecard.json"
+    },
+    {
+     "type": "file",
+     "path": "research/perplexity/leads.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/perplexity/leads.json"
+    },
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "section": "incident.perplexity@",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f24a773588d231b4d7de5bb8dac6a3782fd2c38c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f24a773588d231b4d7de5bb8dac6a3782fd2c38c"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.361",
+     "run": 361,
+     "own_run": false,
+     "served_by": "2026-11-11T03:02:14Z",
+     "push_to_served_s": 33
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T03:01:18Z",
+   "agent_trailer": "incident.perplexity@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.archivist@web-summit.dinis",
+    "incident.models@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a lead becomes a row",
+   "sha": "f46df85482dd44a8a2e5aa9d965627e7fe10e988",
+   "in": "two of the three leads (the third \"was already a fact through incident.researcher@\")",
+   "out": "timeline row s-1111T0255: Web Summit's own schedule, \"as read\": the PITCH semi-final's page still gives Wednesday 17:00 to 18:00, and Wednesday's sessions are still listed, unmarked. The row cites Web Summit's pages, not the engine.",
+   "handoff": {
+    "to": "incident.board@ and incident.perplexity@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "the commit; agents/perplexity/status.json: \"03:02Z: the conductor took leads 1 and 3 as timeline row s-1111T0255\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/timeline.md",
+     "section": "row s-1111T0255",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/timeline.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/perplexity/status.json",
+     "section": "done",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/perplexity/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f46df85482dd44a8a2e5aa9d965627e7fe10e988",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f46df85482dd44a8a2e5aa9d965627e7fe10e988"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.367",
+     "run": 367,
+     "own_run": true,
+     "served_by": "2026-11-11T03:03:07Z",
+     "push_to_served_s": 27
+    }
+   ],
+   "evidence_note": "The row's own time is 02:55 and the conductor's commit says \"as read at 02:55\", before the desk's first commit (03:01:18): how the leads reached the conductor in between is not in the repository (a message).",
+   "n": 5,
+   "at": "2026-11-11T03:02:38Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.board@web-summit.dinis",
+    "incident.perplexity@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.board@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a question answered",
+   "sha": "7826f170de8aab1bdda3fd6ae9fdc490cb40bbc0",
+   "in": "the new row, and an open conflict between a press report and the schedule",
+   "out": "\"the PITCH semi-final's original slot answered from Web Summit's own page (row s-1111T0255)\"; in the same commit, the card for the provider's account out of credit, which had stopped this desk's second round",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-provider-credit.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "7826f170de8aab1bdda3fd6ae9fdc490cb40bbc0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7826f170de8aab1bdda3fd6ae9fdc490cb40bbc0"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.384",
+     "run": 384,
+     "own_run": true,
+     "served_by": "2026-11-11T03:04:56Z",
+     "push_to_served_s": 38
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T03:04:14Z",
+   "agent_trailer": "incident.board@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a place in the menu",
+   "sha": "5ff7e64fd3efab35d47cd408445d17e24228a826",
+   "in": "the desk's ask in its status file: \"a line for Perplexity in the Research menu\"",
+   "out": "\"the menu: Accounts under Team, Perplexity under Research (asked by their owners through the conductor)\": Dinis's \"have a page for it on the site\", reachable from every page 15 min 50 s after the sentence was recorded",
+   "handoff": {
+    "to": "readers",
+    "via": "the site's menu",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/perplexity/status.json",
+     "section": "asks",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/perplexity/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "5ff7e64fd3efab35d47cd408445d17e24228a826",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5ff7e64fd3efab35d47cd408445d17e24228a826"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.388",
+     "run": 388,
+     "own_run": true,
+     "served_by": "2026-11-11T03:05:45Z",
+     "push_to_served_s": 35
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T03:05:08Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.accountant@web-summit.dinis"
+   ]
+  }
+ ],
+ "counts": {
+  "steps": 7,
+  "steps_with_no_evidence": 0,
+  "person_steps": 1,
+  "agent_steps": 6
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.studio@web-summit.dinis",
+  "incident.perplexity@web-summit.dinis",
+  "incident.board@web-summit.dinis",
+  "incident.designer@web-summit.dinis"
+ ]
+}
