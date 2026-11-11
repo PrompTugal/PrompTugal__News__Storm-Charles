@@ -2,7 +2,7 @@
  "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T20:38:06Z",
+ "updated": "2026-11-11T21:42:55Z",
  "lag_rule": "minutes_after_primary = whole minutes elapsed, truncated toward zero (19:09:00 to 19:41:31 is 32 minutes, not 33); seconds_after_primary carries the exact difference. Times are each page's own, to the second where the page gives seconds.",
  "shape_for_other_series": "To put another series (for example Wikipedia's first edit per fact) on the same axis: for each fact id here, a row {fact, series (e.g. \"wikipedia-pt\"), at (UTC), title or summary, url, via, seconds_after_primary, minutes_after_primary}. first-on-each-fact.json's facts[].first_by_outlet[] rows have that shape with `outlet` as the series and `published` as `at`.",
  "facts": [
@@ -700,7 +700,7 @@
     "Correction (00:50 UTC, 11 November): our first version of this table had RTP's 22:22 bulletin first and Observador at 23:16. We had not found Observador's live blog (its address names another story). With its entries read, Observador is first at 22:07 on the models and at 22:35 on IPMA's word; the order of the two on IPMA's word depends on what Antena 1's 22:00 bulletin said, which we did not hear.",
     "Público: an article first published at 11:38 on 10 November (its address is about flooded roads) now carries the headline \"Depressão Charles passa mais a sul do que o previsto e vento deverá ser menos intenso\". The page gives its first publication time, not when the headline changed, so it cannot be placed in this table; it is the Público headline incident.conductor@ read at 00:29."
    ],
-   "items_matched": 11,
+   "items_matched": 12,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -789,7 +789,7 @@
    "primary_time": "2026-11-10T22:35:24Z",
    "primary_note": "a spoken statement to Rádio Observador; the reference is the earliest text we read (Observador's live blog, 22:35:24). IPMA's own channels had not changed at 00:29 on 11 November (fact 7)",
    "primary_label": "evidence",
-   "items_matched": 15,
+   "items_matched": 16,
    "first_by_outlet": [
     {
      "rank": 1,

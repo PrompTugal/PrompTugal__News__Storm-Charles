@@ -1,13 +1,13 @@
 # Jornal Económico: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 20:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 21:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | business weekly, online daily (pt) |
-| Items we read | 22: 22 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 13:23 to 11 Nov 18:57 UTC |
-| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 21 not read; wire share 0% |
+| Items we read | 24: 24 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 13:23 to 11 Nov 20:47 UTC |
+| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 23 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -22,7 +22,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 22 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 24 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -73,3 +73,5 @@ José Carlos Lourinho. A by-line is a public professional credit; nothing else a
 | 11 Nov 17:22 | article | not read | [Seguro acompanha evolução da depressão Charles em Belém ↗](https://jornaleconomico.sapo.pt/noticias/seguro-acompanha-evolucao-da-depressao-charles-em-belem/) |
 | 11 Nov 18:35 | article | not read | [Mau tempo: Portugal sem avisos vermelhos após desativação em Faro ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-portugal-sem-avisos-vermelhos-apos-desativacao-em-faro/) |
 | 11 Nov 18:57 | article | not read | [“Ganhem juízo”. Presidente da CCP critica excesso de alarmismo com depressão Charles ↗](https://jornaleconomico.sapo.pt/noticias/ganhem-juizo-presidente-da-ccp-critica-excesso-de-alarmismo-mediatico-com-depressao-charles/) |
+| 11 Nov 20:38 | article | not read | [Governo termina com situação de alerta. Montenegro diz que país estava preparado para a tempestade ↗](https://jornaleconomico.sapo.pt/noticias/governo-termina-com-situacao-de-alerta-montenegro-diz-que-pais-estava-preparado-para-a-tempestade/) |
+| 11 Nov 20:47 | article | not read | [Tempestade Charles tinha níveis de gravidade não inferiores aos da Kristin, afirma ANEPC ↗](https://jornaleconomico.sapo.pt/noticias/tempestade-charles-tinha-niveis-de-gravidade-nao-inferiores-aos-da-kristin-afirma-anepc/) |

@@ -1,13 +1,13 @@
 # ECO: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 20:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 21:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | business daily (online) (pt) |
-| Items we read | 19: 18 articles, 0 live, 0 video, 1 opinion |
-| First and last | 10 Nov 17:34 to 11 Nov 18:46 UTC |
-| Whose reporting | 3 with a reporter's by-line, 0 the agency's (Lusa), 3 the desk's, 13 not read; wire share 0% |
+| Items we read | 20: 19 articles, 0 live, 0 video, 1 opinion |
+| First and last | 10 Nov 17:34 to 11 Nov 21:23 UTC |
+| Whose reporting | 3 with a reporter's by-line, 0 the agency's (Lusa), 3 the desk's, 14 not read; wire share 0% |
 | Does best (from the counts) | first on "Web Summit calls off Day 2" |
 
 ## Against the key moments
@@ -22,7 +22,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 19 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 20 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -70,3 +70,4 @@ Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira. A by-line is a public p
 | 11 Nov 14:41 | article | not read | [Depressão Charles. PSD obriga Aguiar-Branco a clarificar que Parlamento está a “trabalhar” ↗](https://eco.sapo.pt/2026/11/11/depressao-charles-psd-obriga-aguiar-branco-a-clarificar-que-parlamento-esta-a-trabalhar/) |
 | 11 Nov 16:18 | article | not read | [Da Kristin a Charles: Governo aprendeu a comunicar? ↗](https://eco.sapo.pt/2026/11/11/da-kristin-a-charles-governo-aprendeu-a-comunicar/) |
 | 11 Nov 18:46 | article | not read | [Patrões do comércio criticam ‘fecho’ do país devido à depressão Charles. “Decidir por medo sai caro… ↗](https://eco.sapo.pt/2026/11/11/patroes-do-comercio-criticam-fecho-do-pais-devido-a-depressao-charles-decidir-por-medo-sai-caro-ganhem-juizo/) |
+| 11 Nov 21:23 | article | not read | [Charles ‘deprime’ economia, mas deixa Governo “feliz” ↗](https://eco.sapo.pt/2026/11/11/charles-deprime-economia-mas-deixa-governo-feliz/) |

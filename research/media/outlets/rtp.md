@@ -1,13 +1,13 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 20:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 21:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
-| Items we read | 55: 55 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 20:07 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 54 the desk's, 1 not read; wire share 0% |
+| Items we read | 59: 59 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:34 to 11 Nov 21:31 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 58 the desk's, 1 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -28,7 +28,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 55 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 59 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **Notícias ao Minuto relayed it:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -84,13 +84,6 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 11:25 | article | Rádio e Televisão de Portugal | [Governo pede prevenção e avisa que pico da tempestade ainda não chegou ↗](https://www.rtp.pt/noticias/pais/governo-pede-prevencao-e-avisa-que-pico-da-tempestade-ainda-nao-chegou_n1778401) |
 | 11 Nov 11:25 | article | Rádio e Televisão de Portugal | [Governo pede prevenção e avisa que pico da tempestade ainda não chegou ↗](https://www.rtp.pt/noticias/politica/governo-pede-prevencao-e-avisa-que-pico-da-tempestade-ainda-nao-chegou_n1778401) |
 | 11 Nov 11:31 | article | Rádio e Televisão de Portugal | ["O mais complicado ainda vai acontecer". Gabinete de crise do Governo segue efeitos da depressão Ch… ↗](https://www.rtp.pt/noticias/pais/o-mais-complicado-ainda-vai-acontecer-gabinete-de-crise-do-governo-segue-efeitos-da-depressao-charles_e1778319) |
-| no time | article | Rádio e Televisão de Portugal | [3h IPMA: depressão Charles vai atingir mais o sul do país ↗](https://www.rtp.pt/noticias/noticiario-antena1/3h-ipma-depressao-charles-vai-atingir-mais-o-sul-do-pais_a1_1778305) |
-| no time | article | Rádio e Televisão de Portugal | [2h Depressão Charles: proteção civil da Madeira regista mais de 50 ocorrências ↗](https://www.rtp.pt/noticias/noticiario-antena1/2h-depressao-charles-protecao-civil-da-madeira-regista-mais-de-50-ocorrencias_a1_1778302) |
-| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024) |
-| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/portugal-esta-em-situacao-de-alerta-devido-a-passagem-da-depressao-charles_e1778024) |
-| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/primeiro-ministro-alerta-para-horas-dificeis-e-pede-aos-portugueses-que-nao-subestimem-mau-tempo_e1778024) |
-| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/depressao-charles-oito-distritos-sob-aviso-vermelho-na-quarta-feira_e1778024) |
-| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/pais-vai-ser-posto-a-prova-governo-declara-situacao-de-alerta-para-quarta-feira_e1778024) |
 | 11 Nov 12:32 | article | Rádio e Televisão de Portugal | ["O mais complicado ainda vai acontecer". Gabinete de crise do Governo segue efeitos da depressão Ch… ↗](https://www.rtp.pt/noticias/mundo/o-mais-complicado-ainda-vai-acontecer-gabinete-de-crise-do-governo-segue-efeitos-da-depressao-charles_e1778319) |
 | 11 Nov 12:41 | article | Rádio e Televisão de Portugal | [12h Governo alerta que o pico da tempestade ainda está por chegar ↗](https://www.rtp.pt/noticias/noticiario-antena1/12h-governo-alerta-que-o-pico-da-tempestade-ainda-esta-por-chegar_a1_1778412) |
 | 11 Nov 12:49 | article | Rádio e Televisão de Portugal | [Marginal de Lisboa condicionada pelo mau tempo ↗](https://www.rtp.pt/noticias/pais/marginal-de-lisboa-condicionada-pelo-mau-tempo_n1778416) |
@@ -106,6 +99,17 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 17:17 | article | Rádio e Televisão de Portugal | [Lisboa, Santarém e Setúbal sem avisos vermelhos, Faro mantém nível mais elevado ↗](https://www.rtp.pt/noticias/pais/lisboa-santarem-e-setubal-sem-avisos-vermelhos-faro-mantem-nivel-mais-elevado_n1778482) |
 | 11 Nov 18:19 | article | Rádio e Televisão de Portugal | [Depressão Charles. "Aparentemente, o pior já passou", adianta o IPMA ↗](https://www.rtp.pt/noticias/pais/depressao-charles-aparentemente-o-pior-ja-passou-adianta-o-ipma_e1778319) |
 | 11 Nov 18:56 | article | Rádio e Televisão de Portugal | [16h Charles, Governo prevê regresso à normalidade amanhã ↗](https://www.rtp.pt/noticias/noticiario-antena1/16h-charles-governo-preve-regresso-a-normalidade-amanha_a1_1778511) |
-| 11 Nov 19:36 | article | Rádio e Televisão de Portugal | [Depressão Charles. "Mais vale prevenir do que remediar", afirma Luís Montenegro ↗](https://www.rtp.pt/noticias/pais/depressao-charles-mais-vale-prevenir-do-que-remediar-afirma-luis-montenegro_e1778319) |
 | 11 Nov 19:36 | article | Rádio e Televisão de Portugal | [Depressão Charles. Proteção Civil contabiliza 1630 ocorrências em todo o país, a maioria inundações ↗](https://www.rtp.pt/noticias/pais/depressao-charles-protecao-civil-contabiliza-1630-ocorrencias-em-todo-o-pais-a-maioria-inundacoes_e1778319) |
 | 11 Nov 20:07 | article | Rádio e Televisão de Portugal | [Portugal fez treino ligeiro e com João Cancelo em dia de mau tempo ↗](https://www.rtp.pt/noticias/selecao-nacional/portugal-fez-treino-ligeiro-e-com-joao-cancelo-em-dia-de-mau-tempo_d1778529) |
+| 11 Nov 21:00 | article | Rádio e Televisão de Portugal | [Tempestade Charles. Governo reuniu o gabinete de crise ↗](https://www.rtp.pt/noticias/politica/tempestade-charles-governo-reuniu-o-gabinete-de-crise_v1778535) |
+| 11 Nov 21:03 | article | Rádio e Televisão de Portugal | [Depressão Charles. Casas inundadas em Alverca e Camarate ↗](https://www.rtp.pt/noticias/pais/depressao-charles-casas-inundadas-em-alverca-e-camarate_v1778537) |
+| 11 Nov 21:04 | article | Rádio e Televisão de Portugal | [Depressão Charles. Centenas de voos foram cancelados ↗](https://www.rtp.pt/noticias/pais/depressao-charles-centenas-de-voos-foram-cancelados_v1778539) |
+| 11 Nov 21:27 | article | Rádio e Televisão de Portugal | [Tempestade Charles. Proteção Civil registou mais de 1630 ocorrências ↗](https://www.rtp.pt/noticias/pais/tempestade-charles-protecao-civil-registou-mais-de-1630-ocorrencias_v1778542) |
+| 11 Nov 21:31 | article | Rádio e Televisão de Portugal | [Depressão Charles. "Mais vale prevenir do que remediar", afirma Luís Montenegro ↗](https://www.rtp.pt/noticias/pais/depressao-charles-mais-vale-prevenir-do-que-remediar-afirma-luis-montenegro_e1778319) |
+| no time | article | Rádio e Televisão de Portugal | [3h IPMA: depressão Charles vai atingir mais o sul do país ↗](https://www.rtp.pt/noticias/noticiario-antena1/3h-ipma-depressao-charles-vai-atingir-mais-o-sul-do-pais_a1_1778305) |
+| no time | article | Rádio e Televisão de Portugal | [2h Depressão Charles: proteção civil da Madeira regista mais de 50 ocorrências ↗](https://www.rtp.pt/noticias/noticiario-antena1/2h-depressao-charles-protecao-civil-da-madeira-regista-mais-de-50-ocorrencias_a1_1778302) |
+| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024) |
+| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/portugal-esta-em-situacao-de-alerta-devido-a-passagem-da-depressao-charles_e1778024) |
+| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/primeiro-ministro-alerta-para-horas-dificeis-e-pede-aos-portugueses-que-nao-subestimem-mau-tempo_e1778024) |
+| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/depressao-charles-oito-distritos-sob-aviso-vermelho-na-quarta-feira_e1778024) |
+| no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/pais-vai-ser-posto-a-prova-governo-declara-situacao-de-alerta-para-quarta-feira_e1778024) |
