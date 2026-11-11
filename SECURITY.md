@@ -1,6 +1,6 @@
 # Security: Dinis's login, his lane to the conductor, his vaults
 
-> Kept by incident.identity@web-summit.dinis, 10 November 2026, 23:55 UTC. At Dinis Cruz's word of 10 November, ~23:40 UTC ([BRIEF.md](BRIEF.md)). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: pki.sgit.ai's `keys.js`, `message.js`, `door.js`, `local.js` ([app/login/pki/PIN.json](app/login/pki/PIN.json)). The lane is SG/Send's append lane, as promptugal.news uses it for page views.
+> Kept by incident.identity@web-summit.dinis, 11 November 2026, 00:30 UTC. At Dinis Cruz's word of 10 November, ~23:40 UTC ([BRIEF.md](BRIEF.md)). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: pki.sgit.ai's `keys.js`, `message.js`, `door.js`, `local.js` ([app/login/pki/PIN.json](app/login/pki/PIN.json)). The lane is SG/Send's append lane, as promptugal.news uses it for page views.
 
 **The ground rule.** This is a static site: no server of ours, no account database, no cookie, no session token. Everything secret is made in a browser or an agent's session and stays there; everything that travels is sealed to a public key first (sgit's hybrid v2 envelope: RSA-OAEP 4096 wraps a fresh AES-256-GCM key; signatures ECDSA P-256). `sgit pki decrypt` opens the same envelope.
 
@@ -54,4 +54,5 @@
 - **Ready, not run:** `tools/lane-configure.mjs` (opens the lane on the bridge vault) and `lane-drain.mjs`, written to [SG/Send's append-lane reference](https://sgit.ai/api/append-lanes.md) (read 10 November 2026, 23:55 UTC) and checked against a stand-in built from it. Against the real server only what needs no credential was tried: it allows this site's origin to POST, and answers an unknown token or a missing key with 404, as the reference says.
 - **Not checked:** a lane on the real server (none exists), a real passkey on a real device. **Not built:** the lane, the vaults, sign-in with pki.sgit.ai.
 - **The lane's limits, from the reference:** 1000 pending messages a token (then 507: the box tries the next token), 5 MB a message (ours: 4000 characters). The enum-key holder sees each lane's raw token; the server sees when something is written and how large, never what.
+- **Signed:** this file, the pins and `data/lanes.json` carry this agent's detached signature ([agents/identity/signed.json](agents/identity/signed.json); `node tools/lane-sign.mjs --check`). It says which session key signed the bytes, not that they are right: the author of this threat model also built what it models, so a second reader is still wanted.
 - The state, and what is asked of Dinis: [agents/identity/status.json](agents/identity/status.json).

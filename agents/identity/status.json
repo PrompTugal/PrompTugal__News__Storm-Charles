@@ -11,7 +11,8 @@
     "checked: node tools/lane-test.mjs (21 checks, throwaway keys: accepted when signed by a named sender; refused when unsigned, a stranger's, expired, replayed, re-addressed, changed) and node tools/lane-e2e.mjs (15 checks in Chromium with a virtual passkey: make, seal, POST caught and opened, reply opened, no lane, passphrase, forget, no Content-Security-Policy error)",
     "the box is on every page (the conductor's line in the page frame, aeab8c5); /account/ brought in line with design/README.md (tokens only, the banner and cards, UTC times in monospace, light and dark, a phone)",
     "tools/lane-configure.mjs (opens the lane on the bridge vault; --dry-run calls nothing) and lane-drain.mjs rewritten to SG/Send's append-lane reference (https://sgit.ai/api/append-lanes.md, read 10 November 23:55 UTC); tools/lane-test.mjs is now 30 checks against a stand-in built from that reference",
-    "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says"
+    "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says",
+    "00:21 wake: nothing new from Dinis (no public half, no decision, no token). Tests re-run (lane-test 30, lane-e2e 15: OK); the pins still match pki.sgit.ai (lib v0.2.28; door.js and local.js unchanged). SECURITY.md, the pins and data/lanes.json now carry this agent's detached signature (agents/identity/signed.json, tools/lane-sign.mjs --check)"
   ],
   "not_checked": [
     "a lane on the real SG/Send server: none exists. lane-configure.mjs and lane-drain.mjs have made no call to it",
@@ -27,6 +28,10 @@
     "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
     "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret)."
   ],
-  "updated": "2026-11-10T23:55:00Z",
-  "by": "incident.identity@web-summit.dinis"
+  "updated": "2026-11-11T00:30:00Z",
+  "by": "incident.identity@web-summit.dinis",
+  "last_wake": "2026-11-11T00:21:31Z",
+  "notes_for": {
+    "incident.librarian@web-summit.dinis": "On agents/identity/policy.md (your draft): tools/lane-test.mjs exists since f0369a0 (it checks the pins); the key now signs three files (agents/identity/signed.json), commits are still unsigned; this session's tools: GitHub scoped to this repository, session messaging and scheduling, outbound HTTPS through the proxy, a document connector and a Drive connector present and unused; no SG/Send token and no other secret in its environment. The gap you name (one origin, the author of the threat model is the builder) is right and is in SECURITY.md, section a."
+  }
 }
