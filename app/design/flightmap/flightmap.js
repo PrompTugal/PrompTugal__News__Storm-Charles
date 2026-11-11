@@ -4,8 +4,17 @@
 // A page mounts it with <div data-flightmap="<path to the flights index.json>"></div>; frame.js loads this file only there.
 // No colour is written here (tokens in app/site.css); no outside request; not a warning service: it shows what the sources said.
 (function () {
-  var box = document.querySelector('[data-flightmap]'); if (!box) return
   var me = document.currentScript && document.currentScript.src || ''
+  // round 69: one map per area; a page can mount several (<div data-flightmap="…index.json" data-flightmap-area="madeira">), Lisbon by default.
+  // wind: the wind files' area; snap: the snapshots' area; icao: the airport in runways, crosswind and movements; arp: the fallback path's point.
+  var AREAS = {
+    lisbon: { wind: 'lisbon', snap: 'lisbon', icao: 'LPPT', coast: 'coast.json', name: 'the Lisbon area', place: 'Lisbon airport (LPPT)', ana: 'ANA, Lisbon airport', arp: { lat: 38.7742, lon: -9.1342 } /* the aerodrome reference point, rounded (AIP Portugal, LPPT AD 2.2) */ },
+    madeira: { wind: 'madeira', snap: 'funchal', icao: 'LPMA', coast: 'coast-madeira.json', name: 'Madeira', place: 'Madeira airport (LPMA)', ana: 'ANA, Madeira', arp: null }
+  }
+  var nmaps = 0
+  document.querySelectorAll('[data-flightmap]').forEach(mount)
+  function mount(box) {
+  var A = AREAS[box.getAttribute('data-flightmap-area')] || AREAS.lisbon, uid = 'fm-title-' + (++nmaps)
   var BASE = me.replace(/[^/]*$/, ''), IDX = box.getAttribute('data-flightmap'), DIR = IDX.replace(/[^/]*$/, '')
   var NS = 'http://www.w3.org/2000/svg', W = 1000
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -20,11 +29,11 @@
   // incident.flights@'s files (design/round-67.md): crosswind.json (METARs per airport and hour), wind/<area>-<day>.json (Open-Meteo grid),
   // snapshots/<day>/<HH>.json (OpenSky, airline only). Turned into the app's shapes; nothing is computed that the files do not say,
   // except unit conversions (m to ft, m/s to kt) and the runway's line, drawn from its true heading and length at the airport's point.
-  var LPPT = { lat: 38.7742, lon: -9.1342 }  /* the aerodrome reference point, rounded (AIP Portugal, LPPT AD 2.2) */
+  var LPPT = A.arp
   function normalise(idx) {
-    var fs = idx.files || [], winds = fs.filter(function (f) { return f.kind === 'wind-field' && (!f.covers || f.covers.area === 'lisbon') }), sn = fs.filter(function (f) { return f.kind === 'aircraft-snapshots' }), cw = fs.filter(function (f) { return f.kind === 'crosswind' })[0]
+    var fs = idx.files || [], winds = fs.filter(function (f) { return f.kind === 'wind-field' && (!f.covers || f.covers.area === A.wind) }), sn = fs.filter(function (f) { return f.kind === 'aircraft-snapshots' }), cw = fs.filter(function (f) { return f.kind === 'crosswind' })[0]
     return Promise.all([cw ? file(cw.path) : null, Promise.all(winds.map(function (f) { return file(f.path) })), Promise.all(sn.map(function (f) { return file(f.path) }))]).then(function (r) {
-      var c = r[0], ap = c && (c.airports || []).filter(function (a) { return a.icao === 'LPPT' })[0], out = { idx: { snapshots: [], wind_hours: [] } }
+      var c = r[0], ap = c && (c.airports || []).filter(function (a) { return a.icao === A.icao })[0], out = { idx: { snapshots: [], wind_hours: [] } }
       r[1].forEach(function (w, wi) {
         var g = w.grid, lv = w.levels && w.levels['10m']; if (!g || !lv) return
         ;(w.times || []).forEach(function (t, h) {
@@ -35,15 +44,17 @@
         })
       })
       r[2].forEach(function (f, fi) { (f.snapshots || []).forEach(function (x, si) {
-        if (x.area !== 'lisbon' || !x.time) return
+        if (x.area !== A.snap || !x.time) return
         var key = 'snap:' + fi + ':' + si
         cache[key] = Promise.resolve({ t: x.time, source: 'https://opensky-network.org/', source_name: 'OpenSky Network', licence: 'research and non-commercial use', label: f.label, read_utc: x.time,
           aircraft: (x.aircraft || []).map(function (a) { var m = a.geo_alt_m != null ? a.geo_alt_m : a.baro_alt_m; return { id: a.callsign, callsign: a.callsign, lat: a.lat, lon: a.lon, track_deg: a.track_deg, alt_ft: m != null ? m * 3.28084 : null, gs_kt: a.ground_speed_ms != null ? a.ground_speed_ms * 1.94384 : null, on_ground: a.on_ground } }) })
         out.idx.snapshots.push({ t: x.time, file: key })
       }) })
-      if (ap) {
+      if (ap && LPPT) {
         out.runways = (ap.runways || []).map(function (rw) { var e = rw.ends || [], hd = (e[0] && e[0].heading_true || 0) * Math.PI / 180, half = (rw.length_m || 3000) / 2 / 1000, dlat = Math.cos(hd) * half / 111.32, dlon = Math.sin(hd) * half / (111.32 * Math.cos(LPPT.lat * Math.PI / 180))
           return { id: rw.runway, approx: true, ends: [{ name: e[0] && e[0].end, lat: LPPT.lat - dlat, lon: LPPT.lon - dlon }, { name: e[1] && e[1].end, lat: LPPT.lat + dlat, lon: LPPT.lon + dlon }] } })
+      }
+      if (ap) {
         var rid = ap.runways && ap.runways[0] ? ap.runways[0].runway : 'runway'
         var meta = { source: (c.sources || []).map(function (x) { return x.url }).filter(function (u) { return /metar/i.test(u) })[0] || '', source_name: 'METAR', read_utc: c.updated, label: c.label || 'fact' }
         out.cross = Object.assign({ hours: (ap.hours || []).map(function (h) { var mx = null, gx = null
@@ -59,16 +70,17 @@
 
   box.classList.add('fm')
   box.innerHTML = '<p class="meta">Loading the flights map…</p>'
-  Promise.all([get(IDX), get(BASE + 'coast.json')]).then(function (r) {
+  Promise.all([get(IDX), get(BASE + A.coast)]).then(function (r) {
     var idx = r[0], coast = r[1]
     if (idx.snapshots || idx.wind_hours) {
-      // round 68: incident.flights@'s map files (3d3aec6) carry two areas; this map is Lisbon's
-      var lis = function (x) { return !x.area || x.area === 'lisbon' }
+      // round 68: incident.flights@'s map files (3d3aec6) carry two areas; round 69: this map is A's
+      var lis = function (x) { return !x.area || x.area === A.wind || x.area === A.snap }
       idx.snapshots = (idx.snapshots || []).filter(lis); idx.wind_hours = (idx.wind_hours || []).filter(lis)
       return Promise.all([idx.runways ? file(idx.runways) : null, idx.crosswind ? file(idx.crosswind) : null, idx.movements ? file(idx.movements) : null]).then(function (x) {
-        var rw = x[0] && (Array.isArray(x[0]) ? x[0] : x[0].runways || []).filter(function (r) { return !r.airport || r.airport === 'LPPT' })
-        var mv = x[2], ana = mv && mv.ana_day ? (mv.ana_day.LPPT || mv.ana_day) : null
-        build(idx, coast, rw, x[1], mv, ana)
+        var rw = x[0] && (Array.isArray(x[0]) ? x[0] : x[0].runways || []).filter(function (r) { return !r.airport || r.airport === A.icao })
+        var by = function (f) { return f && f.hours_by_airport ? (f.hours_by_airport[A.icao] ? Object.assign({}, f, { hours: f.hours_by_airport[A.icao] }) : null) : f }
+        var mv = by(x[2]), ana = x[2] && x[2].ana_day ? (x[2].ana_day.scheduled != null ? (A.icao === 'LPPT' ? x[2].ana_day : null) : x[2].ana_day[A.icao] || null) : null
+        build(idx, coast, rw, by(x[1]), mv, ana)
       })
     }
     return normalise(idx).then(function (n) { build(n.idx, coast, n.runways, n.cross, n.moves, n.ana) })
@@ -81,10 +93,10 @@
     var seen = {}, times = snaps.map(function (s) { return s.t }).concat(winds.map(function (w) { return w.t })).filter(function (t) { return seen[t] ? false : (seen[t] = 1) }).sort()
     if (!times.length) { box.innerHTML = '<p class="meta">No snapshots yet.</p>'; return }
     var rw = Array.isArray(runways) ? runways : runways && runways.runways || []
-    var svg = '<svg class="fm-map" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-labelledby="fm-title"><title id="fm-title">Map of the Lisbon area: aircraft and the wind</title>'
+    var svg = '<svg class="fm-map" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-labelledby="' + uid + '"><title id="' + uid + '">Map of ' + esc(A.name) + ': aircraft and the wind</title>'
     svg += '<g class="fm-coast">' + coast.lines.map(function (l) { return '<polyline points="' + l.map(function (p) { return X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1) }).join(' ') + '"/>' }).join('') + '</g>'
     svg += '<g class="fm-rw">' + rw.map(function (r) { var e = r.ends || []; if (e.length < 2) return ''; return '<line x1="' + X(e[0].lon).toFixed(1) + '" y1="' + Y(e[0].lat).toFixed(1) + '" x2="' + X(e[1].lon).toFixed(1) + '" y2="' + Y(e[1].lat).toFixed(1) + '"><title>Runway ' + esc(r.id) + (r.approx ? ' (drawn from its true heading and length at the airport\'s reference point; position approximate)' : '') + '</title></line>' }).join('') + '</g>'
-    if (rw[0] && rw[0].ends) { var a = rw[0].ends[0]; svg += '<text class="fm-place" x="' + (X(a.lon) + 14).toFixed(1) + '" y="' + (Y(a.lat) + 4).toFixed(1) + '">Lisbon airport (LPPT)</text>' }
+    if (rw[0] && rw[0].ends) { var a = rw[0].ends[0]; svg += '<text class="fm-place" x="' + (X(a.lon) + 14).toFixed(1) + '" y="' + (Y(a.lat) + 4).toFixed(1) + '">' + esc(A.place) + '</text>' }
     var km10 = 10 / (111.32 * k) / (bb[2] - bb[0]) * W
     svg += '<g class="fm-scale"><line x1="20" y1="' + (H - 20) + '" x2="' + (20 + km10).toFixed(1) + '" y2="' + (H - 20) + '"/><text x="20" y="' + (H - 32) + '">10 km</text><text x="' + (W - 34) + '" y="40" text-anchor="middle">N</text><path d="M' + (W - 34) + ' 48 l-9 20 h18 z"/></g>'
     svg += '<g class="fm-wind"></g><g class="fm-ac"></g></svg>'
@@ -94,7 +106,7 @@
       + '<output class="fm-now"></output></div>'
     box.innerHTML = '<div class="fm-grid"><figure class="fm-fig">' + svg + ctl + '<figcaption class="fm-cap"></figcaption><div class="fm-item" aria-live="polite"></div></figure><div class="fm-side">'
       + '<section class="fm-xw"><h3>Crosswind by runway, hour by hour (kt)</h3><div class="wx-scroll fm-xw-c" tabindex="0" role="region" aria-label="Crosswind chart, scrolls sideways"></div>' + prov(cross) + '</section>'
-      + (ana ? '<section class="fm-ana"><h3>ANA, Lisbon airport</h3><p><span class="lbl">fact</span> ' + (ana.scheduled != null ? ana.scheduled + ' flights scheduled; ' : '') + (ana.cancelled_in_advance != null ? ana.cancelled_in_advance + ' cancelled in advance; ' : '') + (ana.cancelled_during_day != null ? ana.cancelled_during_day + ' cancelled during the day; ' : '') + (ana.operated != null ? ana.operated + ' operated' : '') + (ana.situation_at ? ', at ' + esc(hm(ana.situation_at)) + ' UTC on ' + esc(day(ana.situation_at)) : '') + '.</p><span class="prov"><a href="' + esc(ana.link) + '">ANA</a>' + (ana.published ? ' published ' + esc(hm(ana.published)) + ' UTC' : '') + (ana.read ? ', read ' + esc(hm(ana.read)) + ' UTC' : '') + '</span>' + (ana.note ? '<p class="meta">' + esc(ana.note) + '</p>' : '') + '</section>' : '')
+      + (ana ? '<section class="fm-ana"><h3>' + esc(A.ana) + '</h3><p><span class="lbl">fact</span> ' + (ana.scope ? esc(ana.scope) + ': ' : '') + (ana.scheduled != null ? ana.scheduled + ' flights scheduled; ' : '') + (ana.cancelled_in_advance != null ? ana.cancelled_in_advance + ' cancelled in advance; ' : '') + (ana.cancelled_during_day != null ? ana.cancelled_during_day + ' cancelled during the day; ' : '') + (ana.operated != null ? ana.operated + ' operated' : '') + (ana.situation_at ? ', at ' + esc(hm(ana.situation_at)) + ' UTC on ' + esc(day(ana.situation_at)) : '') + '.</p><span class="prov"><a href="' + esc(ana.link) + '">ANA</a>' + (ana.published ? ' published ' + esc(hm(ana.published)) + ' UTC' : '') + (ana.read ? ', read ' + esc(hm(ana.read)) + ' UTC' : '') + '</span>' + (ana.note ? '<p class="meta">' + esc(ana.note) + '</p>' : '') + '</section>' : '')
       + '<section class="fm-mv"><h3>Departures seen by hour</h3><div class="wx-scroll fm-mv-c" tabindex="0" role="region" aria-label="Movements chart, scrolls sideways"></div>' + prov(moves) + '</section>'
       + '</div></div><details class="wx-table fm-tables"><summary>The tables</summary><div class="fm-tab"></div></details>'
     var mapEl = box.querySelector('.fm-map'), fit = function () { var w = mapEl.getBoundingClientRect().width; if (w) mapEl.style.setProperty('--fm-k', (W / w).toFixed(3)) }
@@ -152,18 +164,18 @@
   function axisHours(hrs, x, y0) { return hrs.map(function (h, i) { return (i % 3 === 0) ? '<text class="count" x="' + x(i).toFixed(1) + '" y="' + y0 + '" text-anchor="middle">' + (h.slice(11, 13) === '00' ? day(h) + ' ' : '') + h.slice(11, 13) + '</text>' : '' }).join('') }
   function drawCross(el, cross) {
     var hrs = cross && cross.hours || []; if (!hrs.length) { el.innerHTML = '<p class="meta">No crosswind file yet.</p>'; return }
-    var all = Object.keys(hrs[0].by_runway_end || {}), ends = [], name = {}
+    var all = Object.keys((hrs.filter(function (h) { return h.by_runway_end })[0] || {}).by_runway_end || {}), ends = [], name = {}
     all.forEach(function (e) { if (e.indexOf('/') > 0) { ends.push(e); name[e] = e; return } var r = String((+e.replace(/\D/g, '') + 18 - 1) % 36 + 1).padStart(2, '0'); if (ends.some(function (p) { return p.replace(/\D/g, '') === r })) return; ends.push(e); name[e] = all.some(function (q) { return q.replace(/\D/g, '') === r }) ? (e < r ? e + '/' + r : r + '/' + e) : e })
     var n = hrs.length, L = 40, R = 52, T = 10, B = 26, Hh = 180, w = Math.max(420, L + R + n * 18)
-    var max = 0; hrs.forEach(function (h) { ends.forEach(function (e) { var v = h.by_runway_end[e] || {}; max = Math.max(max, Math.abs(v.cross_kt || 0), Math.abs(v.gust_cross_kt || 0)) }) })
+    var max = 0; hrs.forEach(function (h) { ends.forEach(function (e) { var v = (h.by_runway_end || {})[e] || {}; max = Math.max(max, Math.abs(v.cross_kt || 0), Math.abs(v.gust_cross_kt || 0)) }) })
     var top = Math.max(10, Math.ceil(max / 10) * 10), step = (w - L - R) / Math.max(1, n - 1), x = function (i) { return L + i * step }, y = function (v) { return T + Hh - Math.abs(v) / top * Hh }
     var s = '<svg class="wx-chart fm-chart" viewBox="0 0 ' + w + ' ' + (T + Hh + B) + '" style="min-width:' + w + 'px" role="img" aria-label="Crosswind in knots by runway end and hour">'
     for (var v = 0; v <= top; v += 10) s += '<line class="grid" x1="' + L + '" x2="' + (w - R) + '" y1="' + y(v) + '" y2="' + y(v) + '"/><text class="count" x="' + (L - 6) + '" y="' + (y(v) + 4) + '" text-anchor="end">' + v + '</text>'
         ends.forEach(function (e, j) {
-      var pts = hrs.map(function (h, i) { var v = h.by_runway_end[e] || {}; return x(i).toFixed(1) + ',' + y(v.cross_kt || 0).toFixed(1) }).join(' ')
-      var gs = hrs.map(function (h, i) { var v = h.by_runway_end[e] || {}; return x(i).toFixed(1) + ',' + y(v.gust_cross_kt != null ? v.gust_cross_kt : v.cross_kt || 0).toFixed(1) }).join(' ')
+      var pts = hrs.map(function (h, i) { var v = (h.by_runway_end || {})[e] || {}; return x(i).toFixed(1) + ',' + y(v.cross_kt || 0).toFixed(1) }).join(' ')
+      var gs = hrs.map(function (h, i) { var v = (h.by_runway_end || {})[e] || {}; return x(i).toFixed(1) + ',' + y(v.gust_cross_kt != null ? v.gust_cross_kt : v.cross_kt || 0).toFixed(1) }).join(' ')
       s += '<polyline class="fm-l fm-l' + (j % 4) + '" points="' + pts + '"/><polyline class="fm-l fm-gust fm-l' + (j % 4) + '" points="' + gs + '"/>'
-      var last = hrs[n - 1].by_runway_end[e] || {}; s += '<text class="fm-end" x="' + (x(n - 1) + 4) + '" y="' + (y(last.cross_kt || 0) + 4) + '">' + esc(name[e]) + '</text>'
+      var last = (hrs[n - 1].by_runway_end || {})[e] || {}; s += '<text class="fm-end" x="' + (x(n - 1) + 4) + '" y="' + (y(last.cross_kt || 0) + 4) + '">' + esc(name[e]) + '</text>'
     })
     s += '<line class="fm-nowline" data-x0="' + L + '" data-step="' + step + '" y1="' + T + '" y2="' + (T + Hh) + '"/>' + axisHours(hrs.map(function (h) { return h.t }), x, T + Hh + 16) + '</svg>'
     el.innerHTML = s + '<p class="meta">Solid: the crosswind in the hour\'s strongest report; dashed: in its gusts. One line per runway (both ends feel the same crosswind), named at its right end. From the airport\'s own reports (METAR), resolved on the runway; not the airport\'s or an airline\'s limits.</p>'
@@ -187,9 +199,10 @@
   }
   function tables(el, cross, moves) {
     var h = ''
-    if (cross && cross.hours && cross.hours.length) { var ends = Object.keys(cross.hours[0].by_runway_end || {})
-      h += '<table><caption>Crosswind, kt (mean / in gusts)</caption><thead><tr><th>Hour (UTC)</th>' + ends.map(function (e) { return '<th>' + esc(e) + '</th>' }).join('') + '</tr></thead><tbody>' + cross.hours.map(function (r) { return '<tr><td>' + esc(r.t.slice(0, 16).replace('T', ' ')) + '</td>' + ends.map(function (e) { var v = r.by_runway_end[e] || {}; return '<td>' + (v.cross_kt != null ? Math.round(v.cross_kt) : '') + ' / ' + (v.gust_cross_kt != null ? Math.round(v.gust_cross_kt) : '') + '</td>' }).join('') + '</tr>' }).join('') + '</tbody></table>' }
+    if (cross && cross.hours && cross.hours.length) { var ends = Object.keys((cross.hours.filter(function (h) { return h.by_runway_end })[0] || {}).by_runway_end || {})
+      h += '<table><caption>Crosswind, kt (mean / in gusts)</caption><thead><tr><th>Hour (UTC)</th>' + ends.map(function (e) { return '<th>' + esc(e) + '</th>' }).join('') + '</tr></thead><tbody>' + cross.hours.map(function (r) { return '<tr><td>' + esc(r.t.slice(0, 16).replace('T', ' ')) + '</td>' + ends.map(function (e) { var v = (r.by_runway_end || {})[e] || {}; return '<td>' + (v.cross_kt != null ? Math.round(v.cross_kt) : '') + ' / ' + (v.gust_cross_kt != null ? Math.round(v.gust_cross_kt) : '') + '</td>' }).join('') + '</tr>' }).join('') + '</tbody></table>' }
     if (moves && moves.hours && moves.hours.length) h += '<table><caption>Departures and cancellations</caption><thead><tr><th>Hour (UTC)</th><th>Departures</th><th>Cancellations</th></tr></thead><tbody>' + moves.hours.map(function (r) { return '<tr><td>' + esc(r.t.slice(0, 16).replace('T', ' ')) + '</td><td>' + (r.departures != null ? r.departures : '') + '</td><td>' + (r.cancellations != null ? r.cancellations : '') + '</td></tr>' }).join('') + '</tbody></table>'
     el.innerHTML = h || '<p class="meta">No tables yet.</p>'
+  }
   }
 })()
