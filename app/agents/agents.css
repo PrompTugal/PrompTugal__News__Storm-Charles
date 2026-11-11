@@ -165,3 +165,11 @@ details.ag-lane > summary .job { margin: 0; } details.ag-lane[open] > summary { 
 .ag-tl { list-style: none; margin: 0; padding: 0 12px 8px; font-size: 14px; } .ag-tl li { padding: 6px 0 6px 10px; border-top: 1px solid var(--line); border-left: 3px solid var(--line-2); overflow-wrap: anywhere; }
 .ag-tl li.push { border-left-color: var(--focus); } .ag-tl li.ask { border-left-color: var(--warn); } .ag-tl li.blocked { border-left-color: var(--bad); } .ag-tl li.wake, .ag-tl li.ok { border-left-color: var(--ok); } .ag-tl li.session { border-left-color: var(--sent); }
 .ag-tl time { font: 700 12px/1 var(--mono); color: var(--ink-2); margin-right: 6px; } .ag-tl .k { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); margin-right: 6px; }
+/* sessions in order, and what each carried into a call (context per call, from the agents' own measures) */
+.ag-sess { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 6px; } .ag-sess > li { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--focus); border-radius: 8px; padding: 8px 12px; font-size: 14px; overflow-wrap: anywhere; min-width: 0; }
+.ag-sess > li.hand { border-left-color: var(--ok); background: var(--surface-2); } .ag-sess .save { display: block; margin-top: 2px; }
+.ag-ctxs { display: grid; gap: 3px; margin: 6px 0 4px; min-width: 0; } .ag-ctxs.wide { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; }
+.ag-ctx { display: grid; grid-template-columns: minmax(64px, 30%) minmax(0, 1fr) 7ch; gap: 8px; align-items: center; font: 12px/1.3 var(--mono); min-width: 0; } .ag-ctx .l { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ag-ctx b { text-align: right; font-weight: 600; }
+.ag-ctx .bar { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; } .ag-ctx .bar i { display: block; height: 100%; background: var(--focus); border-radius: 4px; } .ag-ctx.long .bar i { background: var(--warn); }
+.ag-tl li.handover { border-left-color: var(--ok); }
+.ag-ctxs.wide .ag-ctx { grid-template-columns: minmax(110px, 38%) minmax(0, 1fr) 7ch; }

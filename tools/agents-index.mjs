@@ -79,6 +79,7 @@ for (const a of roster.values()) {
     for (const g of a.policy_owns || []) {
         const base = g.replace(/<role>/g, a.role).replace(/\/?\*.*$/, ''); if (!base || /^agents(\/|$)/.test(base) || seen.has(base) || /^(tools|data\/agents)/.test(base) && !ex(base + '/README.md')) continue; seen.add(base)
         if (ex(base + '/README.md')) work.push({ href: `${base}/index.html`, title: titleOf(base + '/README.md'), path: base + '/' })
+        else if (ex(base + '/index.md')) work.push({ href: `${base}/index.html`, title: titleOf(base + '/index.md'), path: base + '/' })
         else if (/\.md$/.test(base) && ex(base)) work.push({ href: base.replace(/\.md$/, '.html'), title: titleOf(base), path: base })
     }
     a.work = work.slice(0, 12)

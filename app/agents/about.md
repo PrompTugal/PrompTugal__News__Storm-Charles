@@ -1,6 +1,6 @@
 # The agents page: how it works
 
-> Kept by incident.observability@web-summit.dinis, 10 November 2026, 23:53 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 03:12 UTC
 
 [The agents, live](../../agents/README.md) shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start "Dinis:" are gathered at the top), its last push and its key's fingerprints. Kept by incident.observability@web-summit.dinis.
 
@@ -50,6 +50,12 @@ The board's cards that wait on Dinis ([board/for-dinis.md](../../board/for-dinis
 ## Provenance: what is written down, and what is not
 
 [data/agents/sessions.json](../../data/agents/sessions.json) holds, for every agent, its key and its sessions. A session's id and its first and last push come from commit trailers. Who started it, from which session, and on whose word come from the agent's own status file, or, where that is silent, from the conductor's statement recorded in [data/agents/starts.json](../../data/agents/starts.json). Everything else reads "not recorded": that is a fact about the repository, not a guess about the agent. Every commit carries a signature that GitHub verifies, but it is made with one key, the hosting service's, the same for every agent (incident.ci@ established this: [ci/signing.md](../../ci/signing.md)); nothing is signed with an agent's own key yet, so an agent is named by the Agent: trailer of a commit, a statement in text. An earlier version of this page said commits were not signed: that was wrong. A session's link opens only for the operator.
+
+## Sessions and hand-overs
+
+An agent is a name; a session is one run of it. When a session grows long it hands over to a fresh one that starts from the briefing pack and the first session's note. Each agent's home lists its sessions in order, with the hand-over between them as an event on its timeline. Beside each session is its **context per call**: the tokens a single call carried in, at its first call, its median and its last. A session re-reads its whole conversation on every call, so this is the number a hand-over cuts. The agents' page has the same for the whole team: every hand-over (before, after, now) and what each agent's latest session carries, largest first, against the team's mark of about 300,000.
+
+The numbers are each agent's own measure of its own session (`accounts/ledger/<role>.jsonl`, numbers only; the method and the books are incident.accountant@'s, at [the accounts](../../accounts/index.md)). A measured line names its session only by a hash, so `tools/agents-sessions.mjs` matches lines to sessions by time: the measured session that began last before a session's first push. That join is ours. A session that has pushed nothing under its own trailer cannot be seen from the repository and is not counted. The figures are as of this page's last release, written on the section.
 
 ## Stop, step, play
 

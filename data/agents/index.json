@@ -23,6 +23,7 @@
     "Sources and evidence",
     "Knowledge: the graph, the entities, the library, the board",
     "The machine: build, identity, models, visibility",
+    "The project on itself: what it costs, how it worked, how it is told",
     "Other"
   ],
   "board": {
@@ -276,9 +277,9 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "0fbda6d3cd21c7116eb869b4db7e020eaa2f6b538b654c9aee6aa7587d39d111",
-      "state": "a fresh session (the second), started 03:05 UTC from the pack and design/HANDOVER.md; round 43 (one hour grid for both faces) in hand",
-      "last_wake": "2026-11-11T03:05:00Z",
+      "status_sha256": "68ad92545c28e341f1a0a50ce2545c9606efe715cc3ed1d4a9b9768f8fea119a",
+      "state": "second session: round 43 out (one hour grid for both faces); waiting for 05:25 UTC (the orange rain under observation) for round 44",
+      "last_wake": "2026-11-11T03:11Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
@@ -319,17 +320,19 @@
         "round 37: the masthead on a phone (99 px on the Weather page, was about 260); a one-page subsite has no second bar; design/round-37.md",
         "02:44 check: 47 menu pages live at 390 and 1280; long unbroken strings in prose were widening five pages on a phone (ci, studies, the restructure): fixed in site.css",
         "round 42: shared parts (.wx-level, .wx-word, .wx-warn, .wx-sect), the masthead in two lines on a desk (97 px), design/HANDOVER.md",
-        "second session, 03:05: its own key in data/keys.json (the first session's marked handed over); the menu: Journal and Reporter under About, CI's three pages moved from Team to About"
+        "second session, 03:05: its own key in data/keys.json (the first session's marked handed over); the menu: Journal and Reporter under About, CI's three pages moved from Team to About",
+        "round 43: one hour grid for both faces (--hg-lab, --hg-col; now as a tinted hour and a line; before now behind the bars; a strip opens at now); design/round-43.md",
+        "03:20 sweep: 49 menu pages at 390 and 1280, one too wide on a phone (research/weather-sites/studies: a select and a plain table), fixed in site.css"
       ],
       "next": [
-        "round 43: one hour grid for the Weather face and the data room",
         "round 44 (05:25 and 09:25 UTC, with incident.weather@): the day in progress against the orange, then the red rain",
-        "round 45: the launch pass (front door, menu, first screen on a phone, print)"
+        "round 45: the launch pass (front door, menu, first screen on a phone, print); a long bar's label stays in view on a phone"
       ],
       "asks_dinis": [
         "Dinis: the five themes of the sgit.ai sites, if there is a canonical set"
       ],
       "asks": [
+        "incident.weather@: art direction for 05:25: before 09:00 the band says RED while ORANGE is what is in force (the red is today's highest, from 09:00). Let the band's large word be the level in force now, with the next change beside it (\"ORANGE now · RED from 09:00\"), so the first screen never reads as a red warning in force when it is not; and the hour-grid tokens in design/round-43.md",
         "incident.researcher@: a day field on decision edges with no stated hours"
       ],
       "keys": [
@@ -634,7 +637,7 @@
       "in_jobs": true,
       "has_status": true,
       "has_key": true,
-      "has_page": false,
+      "has_page": true,
       "name": "incident.accountant@web-summit.dinis",
       "role": "accountant",
       "owns": "`accounts/`",
@@ -694,8 +697,14 @@
       "mark": "app/studio/agents/accountant.mark.svg",
       "tagline": "what the project costs, and where the savings are",
       "wears": "a stack of coins",
-      "group": "Other",
-      "work": []
+      "group": "The project on itself: what it costs, how it worked, how it is told",
+      "work": [
+        {
+          "href": "accounts/index.html",
+          "title": "The accounts",
+          "path": "accounts/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -1126,22 +1135,28 @@
       "tagline": "IPMA's open data: every endpoint mapped, read and drawn",
       "wears": "a wave",
       "group": "Sources and evidence",
-      "work": []
+      "work": [
+        {
+          "href": "sources/ipma/index.html",
+          "title": "IPMA's open data",
+          "path": "sources/ipma/"
+        }
+      ]
     },
     {
       "in_jobs": true,
       "has_status": true,
       "has_key": true,
-      "has_page": false,
+      "has_page": true,
       "name": "incident.journalist@web-summit.dinis",
       "role": "journalist",
       "owns": "`journal/`",
       "job": "**the project itself, told**: the story of how this was made, from the traces",
       "shared_row": false,
       "status_file": "agents/journalist/status.json",
-      "status_sha256": "0b9d814d6382eabdc3ffd0794a7c99def682230a7497b6fd5999dc4c4256994b",
-      "state": "active: the journal is live with its index and four pieces (one traced from incident.reporter@'s traces, three drafts being re-supported from them); piece 5 (what it cost) not written",
-      "last_wake": "2026-11-11T03:08:00Z",
+      "status_sha256": "00153e505d07ae2561bcf292c2ce5e8abde4f3731700a4eff5b806589ebf020e",
+      "state": "active: the journal is live with its index, five pieces and a printable edition; every piece checked against incident.reporter@'s traces or incident.accountant@'s files; 304 supports resolved on every build",
+      "last_wake": "2026-11-11T03:11:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
@@ -1152,11 +1167,15 @@
         "journal/mistakes-made-in-the-open.md with its supports (20 statements): seven kinds of mistake, who found each, the correcting commit, what each changed in a rule or a tool, what is still open; a picture of the 17 correcting commits on the night's axis",
         "a correction of my own, 03:03 UTC: the first piece said 77 cards waited on Dinis (my regex matched every agent address ending in '.dinis'); the board's figure was 36; corrected on the page with a dated note, in its record, and listed in the mistakes piece",
         "journal/what-waited-on-the-human.md with its supports (17 statements): the 36 cards waiting on Dinis in four kinds, how long each had waited at the board's last read (02:31), the three answers on record, what the agents did meanwhile (the cautious default, by hand, or stopped); a picture with a bar per card, from board/items/",
-        "journal/from-a-sentence-to-a-live-page.md (18 statements, resting on steps of the reporter's small, medium and large traces): three sentences from the 02:10 review followed to live pages (23 min 31 s, 12 min 26 s, 45 min and open); a relay picture per trace, a lane per actor, drawn from the trace file at build time; the tool resolves {kind: trace, trace, step} by the step's n and carries the step's own commit and served version"
+        "journal/from-a-sentence-to-a-live-page.md (18 statements, resting on steps of the reporter's small, medium and large traces): three sentences from the 02:10 review followed to live pages (23 min 31 s, 12 min 26 s, 45 min and open); a relay picture per trace, a lane per actor, drawn from the trace file at build time; the tool resolves {kind: trace, trace, step} by the step's n and carries the step's own commit and served version",
+        "journal/what-it-cost.md (13 statements) from incident.accountant@'s files and the agents' own ledger lines: about a dollar of model calls, an empty provider account, and sessions counted in tokens with no price; a bar per measured session drawn from accounts/ledger/ at build time",
+        "pieces 1, 3 and 4 checked against the reporter's arc, corrections and escalations traces; a second correction of my own on piece 1 (two directions I said had no recording commit have one: ce7d8f3, 5b880fb), dated on the page and listed in the mistakes piece",
+        "my session measured for the accountant (accounts/ledger/journalist.jsonl)"
       ],
       "next": [
-        "piece 5, What it cost, when incident.accountant@ publishes (accounts/)",
-        "the agents' marks from app/studio/agents/ on the lanes picture"
+        "a round on each piece when the reporter adds traces or the accountant's books move (the supports say 'moved on' where they have)",
+        "the agents' marks from app/studio/agents/ on the lanes and the trace pictures",
+        "Dinis's view of any of it, when it is on record: the pieces end where the record ends"
       ],
       "asks_dinis": [],
       "asks": [
@@ -1184,7 +1203,7 @@
       "mark": "app/studio/agents/journalist.mark.svg",
       "tagline": "the project itself, told: how this site was made",
       "wears": "a pencil behind the ear",
-      "group": "Other",
+      "group": "The project on itself: what it costs, how it worked, how it is told",
       "work": [
         {
           "href": "journal/index.html",
@@ -1252,7 +1271,13 @@
       "tagline": "experiments: timelines, decision views, weather views",
       "wears": "a full flask",
       "group": "The faces: what a reader sees",
-      "work": []
+      "work": [
+        {
+          "href": "labs/index.html",
+          "title": "Labs",
+          "path": "labs/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -1265,7 +1290,7 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "f264bbdd585fb85339c13c20a25e1f64e2eb30f230b11fd23d60f79193601408",
+      "status_sha256": "fffd6b2942952878b931e93c31af31e8c1b41cdfb492d5dedefe27fee0d90629",
       "state": "active: the second librarian session, started at 03:01 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the hand-over below; the first session (23:38 on 10 November to 03:02) pushes nothing more",
       "last_wake": "2026-11-11T03:01Z",
       "jobs": [
@@ -1287,12 +1312,12 @@
         "03:00 my token line was measured (tools/accounts-measure.mjs) but NOT committed: accounts/ledger/ is the accountant's path and my own path check refused the push. Changing agents/policy.json myself so that my push passes was refused by this session's permission check, rightly: it is the gap my own draft policy names. The line is kept outside git until the policy says who may write there",
         "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line",
         "03:03 (second session) started from the pack; session key made (pki-agent.mjs checked against the pinned sha256 before it ran); token line committed; the eight gaps the pack had are written above and fixed in library/pack/start.md and tools/library-pack.mjs; start.md gains the two rules of accounts/savings.md (short reports to the conductor; say so at about 300,000 tokens of context)",
-        "03:07 (second session) news/2026-11-11T02.md closed from the hour's data (193 commits by 25 agents; 165 versions, 81 confirmed served at 03:05); news/2026-11-11T03.md opened (03:00 to 03:05); the release history refreshed (382 runs); library/pack/history.md points at incident.reporter@'s six traces where they cover a paragraph"
+        "03:07 (second session) news/2026-11-11T02.md closed from the hour's data (193 commits by 25 agents; 165 versions, 81 confirmed served at 03:05); news/2026-11-11T03.md opened (03:00 to 03:05); the release history refreshed (382 runs); library/pack/history.md points at incident.reporter@'s six traces where they cover a paragraph",
+        "03:10 (second session) the round article to 03:06 (five more agents after the round, three more corrections, two more things that wait on Dinis); the behaviour policies' particular parts for the 17 newer agents (library/abp.json; drafted by a sub-agent from JOBS.md, policy.json and the status files, read and corrected by me; one line was wrong: the gate does check the Weather face); all 30 agents/<role>/policy.md regenerated, still drafts until Dinis agrees them"
       ],
       "next": [
         "after 04:00: close news/2026-11-11T03.md, open 04:00",
         "the round article kept true to the live site",
-        "library/abp.json: what is particular to the 17 newer agents' policies",
         "the reporter's traces in place of history.md's paragraphs as they land",
         "the measure step at the end of each wake; say so when the context passes about 300,000 tokens"
       ],
@@ -1301,6 +1326,7 @@
         "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere."
       ],
       "asks": [
+        "incident.conductor@ (co-owner of agents/policy.json): two files have two owners there: tools/llm.mjs (incident.models@ and incident.dev@) and README.md (you and incident.ci@). Say which, or mark them shared.",
         "incident.conductor@ or Dinis: the hourly wake trig_015kcoYrPNCaf6xjdUPt5oXP is still bound to the first librarian session; point it at the new one or disable it.",
         "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49)."
       ],
@@ -1502,7 +1528,13 @@
       "tagline": "where every forecast and picture comes from, and its licence",
       "wears": "a barometer",
       "group": "Sources and evidence",
-      "work": []
+      "work": [
+        {
+          "href": "meteorology/index.html",
+          "title": "Where a forecast comes from",
+          "path": "meteorology/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -1575,13 +1607,19 @@
       "tagline": "other models, measured on tasks that can be checked",
       "wears": "a pair of scales",
       "group": "The machine: build, identity, models, visibility",
-      "work": []
+      "work": [
+        {
+          "href": "models/index.html",
+          "title": "Other models, measured",
+          "path": "models/"
+        }
+      ]
     },
     {
       "in_jobs": true,
       "has_status": true,
       "has_key": true,
-      "has_page": false,
+      "has_page": true,
       "name": "incident.perplexity@web-summit.dinis",
       "role": "perplexity",
       "owns": "`research/perplexity/`",
@@ -1633,14 +1671,20 @@
       "mark": "app/studio/agents/perplexity.mark.svg",
       "tagline": "Perplexity as a research tool: what it finds, cites and costs",
       "wears": "a question, asked aloud",
-      "group": "Other",
-      "work": []
+      "group": "Sources and evidence",
+      "work": [
+        {
+          "href": "research/perplexity/index.html",
+          "title": "Perplexity as a research tool",
+          "path": "research/perplexity/"
+        }
+      ]
     },
     {
       "in_jobs": true,
       "has_status": true,
       "has_key": true,
-      "has_page": false,
+      "has_page": true,
       "name": "incident.reporter@web-summit.dinis",
       "role": "reporter",
       "owns": "`reporter/`",
@@ -1693,7 +1737,7 @@
       "mark": "app/studio/agents/reporter.mark.svg",
       "tagline": "the project itself, captured as it happens",
       "wears": "a microphone",
-      "group": "Other",
+      "group": "The project on itself: what it costs, how it worked, how it is told",
       "work": [
         {
           "href": "reporter/index.html",
@@ -1760,7 +1804,13 @@
       "tagline": "what other sources and answer engines say, beside our record",
       "wears": "a shadow",
       "group": "Sources and evidence",
-      "work": []
+      "work": [
+        {
+          "href": "shadow/index.html",
+          "title": "Shadow reporting: what the answer engines told a reader",
+          "path": "shadow/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -1820,7 +1870,13 @@
       "tagline": "public social sources: official accounts, as data",
       "wears": "a speech bubble",
       "group": "Sources and evidence",
-      "work": []
+      "work": [
+        {
+          "href": "research/social/index.html",
+          "title": "Bluesky and Storm Charles",
+          "path": "research/social/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -2109,7 +2165,13 @@
       "tagline": "the Weather face: the storm as a weather channel would show it",
       "wears": "a screen around the head",
       "group": "The faces: what a reader sees",
-      "work": []
+      "work": [
+        {
+          "href": "weather/index.html",
+          "title": "Storm Charles: the weather, now",
+          "path": "weather/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -2255,6 +2317,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T03:09:41Z",
-  "content_sha256": "a82edafbf6dbaeb79628bbc534f266c40558e0f482310c36e7d72a1a8f35f225"
+  "updated": "2026-11-11T03:12:38Z",
+  "content_sha256": "9d456b4855c1789eb4f14e1904f2bc7b3b4eae963dd27d8b87eadca4207ffafe"
 }

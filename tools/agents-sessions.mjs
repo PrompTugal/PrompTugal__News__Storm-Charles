@@ -57,7 +57,7 @@ for (const a of [...A.values()].sort((x, y) => (y.team - x.team) || x.agent.loca
     const measureOf = s => { const c = ML.filter(j => Date.parse(j.totals.first_call) <= Date.parse(s.first_commit.at)).pop(); if (!c || used.has(c.session)) return NR; used.add(c.session)
         return { at: j2(c.at), calls: c.totals.calls, context_per_call: c.totals.context_per_call, compactions: c.totals.compactions || 0, first_call: j2(c.totals.first_call), last_call: j2(c.totals.last_call), source: `accounts/ledger/${a.role}.jsonl, the latest line of the measured session that began before this session's first push (matched by time: a ledger line carries no session address)` } }
     const sessions = [...a.sessions.values()].sort((x, y) => x.first_commit.at.localeCompare(y.first_commit.at)).map((s, i, all) => {
-        const mine = rec.id ? rec.id === s.id : i === all.length - 1   // the status file speaks for the session it names; with no id, for the latest
+        const mine = /^session_/.test(rec.id || "") ? rec.id === s.id : i === all.length - 1   // the status file speaks for the session it names; with no id, for the latest
         const was = earlier.get(s.id), first = i === 0 && all.length > 1 && !mine && !was && told   // the conductor's statement (02:20) was about each agent's first session
         if (was || first) { const e = was || {}; return { id: s.id, url: `https://claude.ai/code/${s.id}`, commits: s.commits, first_commit: s.first_commit, last_commit: s.last_commit,
             started_at: e.started_at || NR, started_by: e.started_by || (told ? told.started_by : NR), started_by_session: e.started_by_session || (told ? told.started_by_session : NR), on_whose_word: e.on_whose_word || (told ? told.on_whose_word : NR),
