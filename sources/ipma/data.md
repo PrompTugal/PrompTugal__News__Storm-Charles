@@ -1,12 +1,12 @@
 ---
 title: Browse IPMA's data as we hold it
 summary: A browser for every JSON file of the IPMA section: its schema, a readable table, and the raw file one click away.
-mount: <div class="ipma" data-view="browser" data-base="./" data-files="data/warnings.json,data/places.json,data/stations.json,data/observations.json,data/observed-daily.json,data/sea.json,data/cities.json,data/seismic.json,data/shellfish-zones.json,api.json,latest.json,reads.json,listing.json,nodes.json,source.json,dataset.json"><p class="meta">This view is drawn in the browser from the JSON files linked below. Without JavaScript, read the tables on this page.</p></div>
+mount: <div class="ipma" data-view="browser" data-base="./" data-files="data/warnings.json,data/classes.json,data/places.json,data/stations.json,data/observations.json,data/observed-daily.json,data/sea.json,data/cities.json,data/seismic.json,data/shellfish-zones.json,api.json,latest.json,reads.json,listing.json,nodes.json,source.json,dataset.json"><p class="meta">This view is drawn in the browser from the JSON files linked below. Without JavaScript, read the tables on this page.</p></div>
 head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src="../../app/sources/ipma/ipma.js" defer></script>
 ---
 # Browse the files
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:31 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC
 
 [IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
@@ -15,6 +15,7 @@ Pick a file above: **Table** shows its rows, **Schema** its shape (keys and type
 | File | Bytes | What it is |
 |---|---|---|
 | [data/warnings.json](data/warnings.json) | 42395 | Every IPMA warning above green that we have read, each with the reads that bracket it: first_read_utc (the first of our reads that carried it) and last_read_utc; gone_read_utc is the first read that no longer carried it, and 'gone' says how: ended (its window  |
+| [data/classes.json](data/classes.json) | 4529 | IPMA's own names for its codes, in Portuguese and English exactly as IPMA publishes them (its spelling kept, trailing spaces trimmed): idWeatherType (significant weather), classWindSpeed (wind strength of the day) and classPrecInt (precipitation intensity). -9 |
 | [data/places.json](data/places.json) | 31825 | IPMA's places: the 25 warning areas (districts, island groups, parts of Madeira), the places it forecasts for, the coastal places of the sea forecast, and a point for each mainland municipality (from the fire-risk files, with the risk class for today and the n |
 | [data/stations.json](data/stations.json) | 33440 | IPMA's weather stations (id, name, coordinates as IPMA gives them) and whether each reported in the last 24 hours read. 'region' is ours, from the longitude. |
 | [data/observations.json](data/observations.json) | 127682 | The last 24 hours of IPMA's hourly station observations, as arrays in the order of 'hours'. t: air temperature (°C, mean of the hour); w: wind speed at 10 m (km/h; the mean, not gusts: IPMA's open data carries no gusts); d: wind direction class (1 or 9 N, 2 NE |

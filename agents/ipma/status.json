@@ -8,13 +8,15 @@
     "sources/ipma/api.json: 29 data sets (20 documented at api.ipma.pt, 9 found in IPMA's own directory listings), each with address, format, fields with meaning and unit, IPMA's stated cadence, and what is not documented; sources/ipma/listing.json: IPMA's directory listings as served",
     "sources/ipma/source.json and licence.md: IPMA's terms exactly as published (free use for personal or public, non-profit, non-offensive purposes; always name the source; no named open licence: \"not stated\"), with four questions for Dinis",
     "tools/ipma-read.mjs: one request every 3 s, read-only; first read 02:15 UTC: 63 requests, 62 answered 200; sha256, size, time read and IPMA's Last-Modified per file in latest.json; reads.json appended; changes/<data set>.json on each change",
-    "data vault x75qcmux (sgit, normal, on dev.send.sgraph.ai): latest/ and dated hour folders with a manifest; pushed; the vault key was sent to incident.conductor@ by session message once (02:27 UTC) and is in no tracked file; the read key is in sources/ipma/dataset.json",
+    "data vault x75qcmux (sgit, normal, on dev.send.sgraph.ai): latest/ and dated hour folders with a manifest; pushed; the vault key is in no tracked file (see vault.note for how it was handed over); the read key is in sources/ipma/dataset.json",
     "tools/ipma-views.mjs: sources/ipma/data/ (warnings ledger with first and last read of every row, places and areas, stations, 24 h of observations, daily sums, sea and city forecasts as issued, earthquakes, the coast from IPMA's shellfish zones) and nodes.json (371 nodes with stable ids for incident.entities@)",
     "pages (tools/ipma-pages.mjs, app/sources/ipma/): index (the map: stations and warning areas drawn from coordinates, no tiles), warnings over time for all 25 areas, stations, the sea, the cities beside the nearest station, the API map, a page per data set, a browser for every JSON (table, schema, raw), the licence",
-    "findings: the documented evapotranspiration address answers 404 (IPMA's directory lists the file under another name); three field names differ from the documentation (precipitaProb, lon, descClassWindSpeedDaily*; code for samp); warning areas MCN and MRM are in no id table; the UV file carries 4 days, not 3; /open-data/06.json is not valid JSON; five undocumented climate folders by district and 22 long-series spreadsheets (Lisbon from 1855)"
+    "findings: the documented evapotranspiration address answers 404 (IPMA's directory lists the file under another name); three field names differ from the documentation (precipitaProb, lon, descClassWindSpeedDaily*; code for samp); warning areas MCN and MRM are in no id table; the UV file carries 4 days, not 3; /open-data/06.json is not valid JSON; five undocumented climate folders by district and 22 long-series spreadsheets (Lisbon from 1855)",
+    "sources/ipma/data/classes.json: IPMA's own names for idWeatherType, classWindSpeed and classPrecInt in Portuguese and English, for incident.weather@ and any page"
   ],
   "next": [
     "hourly: node tools/ipma-round.mjs, commit, release; the warnings ledger then shows what IPMA replaced, withdrew and ended between reads",
+    "the data Wayback (Dinis, 02:20): every read steppable over time, in the vault layout and index incident.archivist@ gives; IPMA's reads and diffs move to that shape when it arrives",
     "round 2: the warnings timeline fitted to the screen and seeded with the CAP send times the meteorologist holds; the map's island labels untangled; earthquakes and fire risk drawn; the undocumented climate folders read and mapped; a phone pass and a dark-mode pass with screenshots",
     "round 3: forecast against observed once whole days are held; the sea as a coast strip north to south"
   ],
@@ -37,7 +39,7 @@
   "vault": {
     "id": "x75qcmux",
     "kind": "data",
-    "key_sent_to_conductor_utc": "2026-11-11T02:27Z"
+    "note": "vault key sent to the conductor in the clear by session message at 02:28; treat as known to anyone who can read the two transcripts. It crossed with the conductor's 02:19 note asking for the sealed route (SECURITY.md section e). The vault holds copies of IPMA's public data: the exposure is write access to public copies. Not sent again anywhere; any further vault uses the sealed handover (tools/lane-handover.mjs)."
   },
   "updated": "2026-11-11T02:30:48Z",
   "by": "incident.ipma@web-summit.dinis"

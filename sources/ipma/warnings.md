@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # IPMA's warnings, area by area, over time
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:31 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 

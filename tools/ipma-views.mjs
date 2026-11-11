@@ -150,6 +150,18 @@ write('cities.json', "IPMA's daily forecast for each of its 35 places, by place 
     series: issued('cities.json', r => r._id + '|' + r.forecastDate, cityRows, r => [num(r.tMin), num(r.tMax), num(r.precipitaProb), r.classWindSpeed ?? null, r.predWindDir ?? null, r.idWeatherType ?? null, r.classPrecInt ?? null], r => r._read)
 }, true)
 
+// ---------------------------------------------------------------- IPMA's id tables, whole, for any page that names a code
+{
+    const wt = raw('weather-type-classe.json')?.data || [], wc = raw('wind-speed-daily-classe.json')?.data || [], pc = raw('precipitation-classe.json')?.data || []
+    write('classes.json', "IPMA's own names for its codes, in Portuguese and English exactly as IPMA publishes them (its spelling kept, trailing spaces trimmed): idWeatherType (significant weather), classWindSpeed (wind strength of the day) and classPrecInt (precipitation intensity). -99 is IPMA's 'no value'. IPMA publishes names only: the speeds and amounts each class stands for are not in its open data.", from('weather-type-classe.json', 'wind-speed-daily-classe.json', 'precipitation-classe.json'), {
+        idWeatherType: Object.fromEntries(wt.map(x => [x.idWeatherType, { pt: x.descWeatherTypePT.trim(), en: x.descWeatherTypeEN.trim() }])),
+        classWindSpeed: Object.fromEntries(wc.map(x => [x.classWindSpeed, { pt: x.descClassWindSpeedDailyPT.trim(), en: x.descClassWindSpeedDailyEN.trim() }])),
+        classPrecInt: Object.fromEntries(pc.map(x => [x.classPrecInt, { pt: x.descClassPrecIntPT.trim(), en: x.descClassPrecIntEN.trim() }])),
+        warning_levels: { green: 'verde', yellow: 'amarelo', orange: 'laranja', red: 'vermelho' }, warning_levels_note: "the feed carries the English words (awarenessLevelID); the Portuguese are the usual names, added by us",
+        warning_types_in_feed: [...new Set(W.map(w => w.awarenessTypeName))].sort()
+    })
+}
+
 // ---------------------------------------------------------------- earthquakes
 const quakes = [3, 7].flatMap(a => (raw(`observation/seismic/${a}.json`)?.data || []).map(e => [e.time, +e.lat, +e.lon, num(e.magnitud), e.magType, e.depth, e.obsRegion, e.degree || null, e.sensed ? 1 : 0, a]))
 write('seismic.json', "IPMA's located seismic events of the last 30 days (area 3: the Azores; area 7: the mainland and Madeira), one array per event. Times are UTC (IPMA: 'TU').", from('observation/seismic/3.json', 'observation/seismic/7.json'), { columns: ['time_utc', 'lat', 'lon', 'magnitude', 'magnitude_type', 'depth', 'region_as_ipma_writes_it', 'intensity_degree', 'felt', 'area'], events: quakes.sort((a, b) => b[0].localeCompare(a[0])) }, true)

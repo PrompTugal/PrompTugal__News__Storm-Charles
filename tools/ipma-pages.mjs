@@ -261,7 +261,7 @@ The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). W
 }
 
 // ---------------------------------------------------------------- the browser
-const browse = ['data/warnings.json', 'data/places.json', 'data/stations.json', 'data/observations.json', 'data/observed-daily.json', 'data/sea.json', 'data/cities.json', 'data/seismic.json', 'data/shellfish-zones.json', 'api.json', 'latest.json', 'reads.json', 'listing.json', 'nodes.json', 'source.json', 'dataset.json', ...(fs.existsSync(path.join(SRC, 'changes')) ? fs.readdirSync(path.join(SRC, 'changes')) : []).map(f => 'changes/' + f)].filter(f => fs.existsSync(path.join(SRC, f)))
+const browse = ['data/warnings.json', 'data/classes.json', 'data/places.json', 'data/stations.json', 'data/observations.json', 'data/observed-daily.json', 'data/sea.json', 'data/cities.json', 'data/seismic.json', 'data/shellfish-zones.json', 'api.json', 'latest.json', 'reads.json', 'listing.json', 'nodes.json', 'source.json', 'dataset.json', ...(fs.existsSync(path.join(SRC, 'changes')) ? fs.readdirSync(path.join(SRC, 'changes')) : []).map(f => 'changes/' + f)].filter(f => fs.existsSync(path.join(SRC, f)))
 page('data.md', {
     title: "Browse IPMA's data as we hold it", summary: "A browser for every JSON file of the IPMA section: its schema, a readable table, and the raw file one click away.",
     view: 'browser', attrs: `data-files="${browse.join(',')}"`, body: `
