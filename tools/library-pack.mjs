@@ -34,6 +34,24 @@ const tok = (b, json) => Math.round(b / (json ? 1.6 : 2.4))
 const n = x => String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ',')   // 12,345: the same as en-GB, without loading the locale data (20 ms)
 const cut = (s, k) => { s = String(s || '').replace(/\s+/g, ' ').trim(); return s.length <= k ? s : s.slice(0, k).replace(/\s+\S*$/, '') + ' …' }
 const cell = s => String(s ?? '').replace(/\|/g, '/').replace(/\n/g, ' ')
+// A status file's hand-over, whatever shape its writer gave it: an object with named parts, a list of sentences, or one
+// sentence. (A list was once read as an object: `list.at` is a function, and the page said "Written function at() ...".)
+const HO_LABEL = { in_flight: 'In flight', each_wake: 'Each wake', lessons_of_this_session: 'Lesson', lessons: 'Lesson' }
+const hoStr = x => cell(typeof x === 'string' ? x : JSON.stringify(x))
+const handoverText = (h, role) => {
+    const obj = h && typeof h === 'object' && !Array.isArray(h)
+    const str = v => typeof v === 'string' || typeof v === 'number'
+    const lead = `${obj && str(h.at) ? `Written ${cell(String(h.at))}${str(h.from) ? ` by ${cell(cut(h.from, 200))}` : ''}${str(h.why) ? `, because ${cell(cut(h.why, 240))}` : ''}. ` : ''}Copied whole from \`agents/${role}/status.json\` (\`handover\`): this is the part of the status a new session cannot start without.`
+    let lines
+    if (!obj) lines = [].concat(h).filter(x => x != null && x !== '').map(x => `- ${hoStr(x)}`)
+    else {
+        const first = Object.keys(HO_LABEL).filter(k => h[k] != null)
+        const rest = Object.keys(h).filter(k => !(k in HO_LABEL) && !['at', 'from', 'why'].includes(k) && h[k] != null && h[k] !== '')
+        lines = [...first.flatMap(k => [].concat(h[k]).map(x => `- **${HO_LABEL[k]}:** ${hoStr(x)}`)),
+            ...rest.flatMap(k => [].concat(h[k]).map(x => `- **${k.replace(/_/g, ' ')}:** ${hoStr(x)}`))]
+    }
+    return `${lead}\n\n${lines.join('\n') || '- (the hand-over is empty: read the status file)'}`
+}
 const short = a => String(a).replace(/@web-summit\.dinis\b/g, '@')
 const view = f => `../../view/index.html?path=${f}`
 // a pointer: the file's path, its size in bytes and the first 10 hex digits of its sha256 (plain text: a link would double the
@@ -158,10 +176,7 @@ ${(st.asks || []).slice(0, 4).map(x => `- **Ask:** ${cell(cut(x, 200))}`).join('
 ${st?.handover ? `
 ## The hand-over from the session before yours
 
-${st.handover.at ? `Written ${cell(String(st.handover.at))}${st.handover.why ? `, because ${cell(cut(st.handover.why, 240))}` : ''}. ` : ''}Copied whole from \`agents/${role}/status.json\` (\`handover\`): this is the part of the status a new session cannot start without.
-
-${[['in_flight', 'In flight'], ['each_wake', 'Each wake'], ['lessons_of_this_session', 'Lesson'], ['lessons', 'Lesson']].flatMap(([k, label]) => [].concat(st.handover[k] || []).map(x => `- **${label}:** ${cell(String(x))}`)).join('\n')}
-${['what_runs_in_the_build', 'scheduled_wakes'].filter(k => st.handover[k]).map(k => `- **${k.replace(/_/g, ' ')}:** ${cell(String(st.handover[k]))}`).join('\n')}
+${handoverText(st.handover, role)}
 ` : ''}${mine.filter(e => /(^|\/)HANDOVER\.md$/.test(e.path)).map(e => `
 **Open first, before any other file: the hand-over written by the session before yours:** ${P1(e.path)}
 `).join('')}
