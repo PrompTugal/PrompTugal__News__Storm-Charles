@@ -1,13 +1,13 @@
 # Expresso: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 06:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | weekly, online daily (pt) |
-| Items we read | 19: 19 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:21 to 10 Nov 23:54 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 19 not read |
+| Items we read | 20: 20 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:21 to 11 Nov 06:07 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 20 not read |
 | Does best (from the counts) | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 
 ## Against the key moments
@@ -23,7 +23,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 19 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 20 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -66,3 +66,4 @@ Its public contact page was not found by our reader (start at [Expresso ↗](htt
 | 10 Nov 22:03 | article | not read | [Especialista aponta as horas mais críticas da passagem da tempestade Charles por Portugal ↗](https://expresso.pt/tempestades/2026-11-10-video-o-pico-da-tempestade-charles-chega-ao-final-da-tarde-especialista-alerta-para-horas-criticas-em-portugal-a98fdc36) |
 | 10 Nov 23:47 | article | not read | [Depressão Charles chega à Madeira com chuva e vento fortes (veja as imagens) ↗](https://expresso.pt/curtas/2026-11-10-video-depressao-charles-chega-a-madeira-com-chuva-e-vento-fortes--veja-as-imagens--85beb1ff) |
 | 10 Nov 23:54 | article | not read | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa e Norte mais resguardado ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
+| 11 Nov 06:07 | article | not read | [A tempestade Charles e a depressão Carlos ↗](https://expresso.pt/opiniao/2026-11-11-a-tempestade-charles-e-a-depressao-carlos-9a2731d2) |

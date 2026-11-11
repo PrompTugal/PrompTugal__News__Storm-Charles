@@ -1,13 +1,13 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 06:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
-| Items we read | 19: 19 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 05:19 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 19 the desk's, 0 not read; wire share 0% |
+| Items we read | 20: 20 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:34 to 11 Nov 06:29 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 20 the desk's, 0 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -17,15 +17,15 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:41 (live entry) | +83 min | 3 of 6 | [IPMA coloca oito distritos sob aviso vermelho na quarta-feira ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778038) |
-| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 11 Nov 00:18 (article) | +904 min | 5 of 5 | [Continente em situação de alerta devido à passagem da depressão Charl… ↗](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
-| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 11 Nov 00:18 (article) | +728 min | 5 of 5 | [Continente em situação de alerta devido à passagem da depressão Charl… ↗](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 11 Nov 00:18 (article) | +904 min | 5 of 6 | [Continente em situação de alerta devido à passagem da depressão Charl… ↗](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 11 Nov 00:18 (article) | +728 min | 5 of 6 | [Continente em situação de alerta devido à passagem da depressão Charl… ↗](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:47 (live entry) | +38 min | 6 of 10 | [Web Summit fecha portas esta quarta-feira devido ao mau tempo ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245) |
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 22:22 (article) | unknown | 2 of 3 | [22h IPMA depressão mudou a trajetória mais para sul ↗](https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275) |
 | IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 10 Nov 23:08 (live entry) | +32 min | 2 of 4 | [Tempestade terá mudado de trajetória ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 19 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 20 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **Notícias ao Minuto relayed it:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -70,3 +70,4 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 02:28 | article | Rádio e Televisão de Portugal | [2h Depressão Charles: proteção civil da Madeira regista mais de 50 ocorrências ↗](https://www.rtp.pt/noticias/noticiario-antena1/2h-depressao-charles-protecao-civil-da-madeira-regista-mais-de-50-ocorrencias_a1_1778302) |
 | 11 Nov 03:24 | article | Rádio e Televisão de Portugal | [3h IPMA: depressão Charles vai atingir mais o sul do país ↗](https://www.rtp.pt/noticias/noticiario-antena1/3h-ipma-depressao-charles-vai-atingir-mais-o-sul-do-pais_a1_1778305) |
 | 11 Nov 05:19 | article | Rádio e Televisão de Portugal | [5h Depressão Charles põe nove distritos de Portugal Continental sob aviso vermelho ↗](https://www.rtp.pt/noticias/noticiario-antena1/5h-depressao-charles-poe-nove-distritos-de-portugal-continental-sob-aviso-vermelho_a1_1778315) |
+| 11 Nov 06:29 | article | Rádio e Televisão de Portugal | [Portugal em alerta. Charles passa pela Madeira e ruma a Portugal continental com possível mudança d… ↗](https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319) |

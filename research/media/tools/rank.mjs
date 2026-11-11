@@ -39,7 +39,7 @@ const LIVE = fs.existsSync(path.join(M, 'live-entries.json')) ? J(path.join(M, '
 const oName = id => (outletsFile.outlets.find(o => o.id === id) || {}).name || id
 FACTS.sort((a, b) => (a.primary_time || a.from || '').localeCompare(b.primary_time || b.from || ''))
 const events = FACTS.map(e => {
-    const from = e.from || e.primary_time, until = e.until || '2026-11-11T12:00:00Z', re = new RegExp(e.pattern, 'i')
+    const from = e.from || e.primary_time, until = e.until || '2026-11-13T00:00:00Z', re = new RegExp(e.pattern, 'i')
     const items = []
     for (const a of A) if (a.published && a.published >= from && a.published < until && !a.published_precision && a.kind !== 'live' && re.test(a.title)) items.push({ outlet: a.outlet, published: a.published.replace(/\.\d+Z$/, 'Z'), via: a.kind, byline: a.byline, byline_kind: a.byline_kind, title: a.title, url: a.url, article: a.id })
     for (const l of LIVE.entries) if (l.fact === e.id) items.push({ outlet: l.outlet, published: l.at, via: 'live blog entry', byline: [], byline_kind: 'not kept', title: l.title, url: l.url })

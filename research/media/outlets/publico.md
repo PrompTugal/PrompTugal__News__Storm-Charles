@@ -1,13 +1,13 @@
 # Público: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 06:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 15: 14 articles, 0 live, 0 video, 1 opinion |
-| First and last | 9 Nov 09:04 to 10 Nov 21:05 UTC |
-| Whose reporting | 9 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 1 not read; wire share 21% |
+| Items we read | 16: 15 articles, 0 live, 0 video, 1 opinion |
+| First and last | 9 Nov 09:04 to 11 Nov 05:30 UTC |
+| Whose reporting | 10 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 1 not read; wire share 20% |
 | Does best (from the counts) | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line; links to the primary sources |
 
 ## Against the key moments
@@ -17,13 +17,13 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
 | IPMA names the storm Charles (communiqué no. 1) | 9 Nov 13:17 | 9 Nov 15:08 (article) | +111 min | 1 of 3 | [IPMA dá nome à depressão Charles e prevê avisos laranja com chuva e v… ↗](https://www.publico.pt/2026/11/09/azul/noticia/ipma-nome-depressao-charles-preve-avisos-laranja-chuva-vento-forte-2194295) |
-| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 14:09 (article) | +295 min | 3 of 5 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
-| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 14:09 (article) | +119 min | 4 of 5 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 14:09 (article) | +295 min | 3 of 6 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 14:09 (article) | +119 min | 4 of 6 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 14:00 (article) | +60 min | 4 of 6 | [Tempestade Charles encerra túneis em Lisboa e coloca Web Summit em dú… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/tempestade-charles-encerra-tuneis-lisboa-coloca-web-summit-duvida-2194442) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 5 of 15 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 5 of 16 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -47,7 +47,7 @@ Through its own public page: [Ficha técnica ↗](https://www.publico.pt/nos/fic
 
 ## By-lines on this story, as printed
 
-Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sónia Sapage, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -68,3 +68,4 @@ Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, J
 | 10 Nov 20:17 | article | Lusa, PÚBLICO | [Mau tempo: monumentos encerrados e espectáculos adiados ↗](https://www.publico.pt/2026/11/10/culturaipsilon/noticia/mau-tempo-monumentos-encerrados-espectaculos-adiados-2194467) |
 | 10 Nov 21:02 | article | Victor Ferreira | [Web Summit resiste a um vendaval de ciberataques na estreia mas não à tempestade ↗](https://www.publico.pt/2026/11/10/economia/noticia/web-summit-resiste-vendaval-ciberataques-estreia-nao-tempestade-2194519) |
 | 10 Nov 21:05 | article | Adriana Castro | [Da “invisibilidade” à “prontidão total”, Governo joga em antecipação à tempestade ↗](https://www.publico.pt/2026/11/10/politica/noticia/invisibilidade-prontidao-total-governo-joga-antecipacao-tempestade-2194510) |
+| 11 Nov 05:30 | article | Sara de Melo Rocha, Tiago Orato | [Tempestades e inundações. Como preparar as cidades para a chuva extrema? ↗](https://www.publico.pt/2026/11/11/sociedade/noticia/tempestades-inundacoes-preparar-cidades-chuva-extrema-2194516) |

@@ -17,7 +17,8 @@ const BLOGS = [
     // Jornal de Negócios' live blog is no longer read (its footer forbids reproduction; stopped 11 November): entries already timed are kept
     { outlet: 'dn', url: 'https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh', parse: dn },
     { outlet: 'observador', url: 'https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/', parse: dn },   // the slug is the page's first headline of the day; the page is Observador's running live blog, storm entries included
-    { outlet: 'rtp', url: 'https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024', parse: rtp }
+    { outlet: 'rtp', url: 'https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024', parse: rtp },
+    { outlet: 'rtp', url: 'https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319', parse: rtp }   // RTP's live page of 11 November (found 06:38 UTC in its feed)
 ]
 const ent = s => (s || '').replace(/<[^>]+>/g, ' ').replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16))).replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
     .replace(/&(\w+);/g, (m, n) => ({ amp: '&', quot: '"', nbsp: ' ', lt: '<', gt: '>', aacute: 'á', eacute: 'é', iacute: 'í', oacute: 'ó', uacute: 'ú', atilde: 'ã', otilde: 'õ', ccedil: 'ç', acirc: 'â', ecirc: 'ê', ocirc: 'ô', agrave: 'à', Aacute: 'Á', Eacute: 'É', ldquo: '“', rdquo: '”', ndash: '–' }[n] || m)).replace(/\s+/g, ' ').trim()
@@ -67,7 +68,7 @@ for (const b of BLOGS) {
     blogs.push({ outlet: b.outlet, url: b.url, status: r.status, read: used.read, capture_sha256: used.sha, note, entries_read: all.length, first_entry: times[0] || null, last_entry: times[times.length - 1] || null })
     for (const e of all) for (const f of FACTS) {
         const re = new RegExp(f.live_pattern || f.pattern, 'i')
-        if (e.at >= (f.from || f.primary_time) && e.at < (f.until || '2026-11-11T12:00:00Z') && re.test(e.title + (f.match_entry_text ? ' ' + e.body : '')))
+        if (e.at >= (f.from || f.primary_time) && e.at < (f.until || '2026-11-13T00:00:00Z') && re.test(e.title + (f.match_entry_text ? ' ' + e.body : '')))
             entries.push({ fact: f.id, outlet: b.outlet, at: e.at, title: e.title || '(entry without a title)', url: e.url || r.url, time_from: e.time_from, matched_in: re.test(e.title) ? 'title' : 'entry text (read, not kept)', label: 'evidence', read: used.read })
     }
     console.error(`${b.outlet}: ${r.status}, ${all.length} entries (${times[0]} to ${times[times.length - 1]})`)

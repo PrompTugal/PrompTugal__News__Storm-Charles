@@ -1,8 +1,8 @@
 # By-lines on Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:37 UTC. The reporters whose names are printed on the articles in [the coverage list](../README.md), with their pieces on this story. **A by-line is a public professional credit, and that is all this page holds:** a name as printed, the outlet, the pieces. No contact details, no profile, no account. A reporter with three or more pieces here has a page listing them. A wrong or missing by-line: [tell us](../../../contribute.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 06:37 UTC. The reporters whose names are printed on the articles in [the coverage list](../README.md), with their pieces on this story. **A by-line is a public professional credit, and that is all this page holds:** a name as printed, the outlet, the pieces. No contact details, no profile, no account. A reporter with three or more pieces here has a page listing them. A wrong or missing by-line: [tell us](../../../contribute.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
-55 by-lines on 54 items. Agency copy (Lusa) and desk by-lines are counted on [each outlet's page](../outlets/README.md), not here.
+57 by-lines on 55 items. Agency copy (Lusa) and desk by-lines are counted on [each outlet's page](../outlets/README.md), not here.
 
 | By-line as printed | Outlet | Pieces | First among the outlets we read on | Latest piece |
 |---|---|---|---|---|
@@ -56,8 +56,10 @@
 | Pedro Benevides | [Observador](../outlets/observador.md) | 1 |  | 11 Nov 05:03: [A tempestade pode custar-lhe um dia de salário? ↗](https://observador.pt/programas/a-hist-ria-do-dia/a-tempestade-pode-custar-lhe-um-dia-de-salario/) |
 | Pedro Filipe Silva | [CNN Portugal](../outlets/cnn-portugal.md) | 1 |  | 10 Nov 18:19: ["O Jamor já matou pessoas": este é um dos pontos críticos com a chega… ↗](https://cnnportugal.iol.pt/rio-jamor/oeiras/o-jamor-ja-matou-pessoas-este-e-um-dos-pontos-criticos-com-a-chegada-do-mau-tempo-a-lisboa/20261110/6af3601bd34e5a653d733a51) |
 | Ricardo Conceição | [Observador](../outlets/observador.md) | 1 |  | 10 Nov 19:25: [Ficar em casa na tempestade causa problemas com o chefe? ↗](https://observador.pt/programas/e-o-vencedor-e/ficar-em-casa-na-tempestade-causa-problemas-com-o-chefe/) |
+| Sara de Melo Rocha | [Público](../outlets/publico.md) | 1 |  | 11 Nov 05:30: [Tempestades e inundações. Como preparar as cidades para a chuva extre… ↗](https://www.publico.pt/2026/11/11/sociedade/noticia/tempestades-inundacoes-preparar-cidades-chuva-extrema-2194516) |
 | Shrikesh Laxmidas | [ECO](../outlets/eco.md) | 1 |  | 10 Nov 20:32: [A ‘Wet Summit’ dominada por Charles e China ↗](https://eco.sapo.pt/opiniao/a-wet-summit-dominada-por-charles-e-china/) |
 | Sónia Sapage | [Público](../outlets/publico.md) | 1 |  | 10 Nov 18:23: [Acesso livre a artigos sobre a tempestade ↗](https://www.publico.pt/2026/11/10/opiniao/noticia/acesso-livre-artigos-tempestade-2194500) |
 | Tiago Alexandre Pereira | [ECO](../outlets/eco.md) | 1 | Web Summit calls off Day 2 | 10 Nov 19:41: [Web Summit encerrada esta quarta-feira devido ao mau tempo ↗](https://eco.sapo.pt/2026/11/10/web-summit-vai-encerrar-esta-quarta-feira-devido-ao-mau-tempo/) |
+| Tiago Orato | [Público](../outlets/publico.md) | 1 |  | 11 Nov 05:30: [Tempestades e inundações. Como preparar as cidades para a chuva extre… ↗](https://www.publico.pt/2026/11/11/sociedade/noticia/tempestades-inundacoes-preparar-cidades-chuva-extrema-2194516) |
 | Tobi Hughes | [Madeira Island News](../outlets/madeira-island-news.md) | 1 |  | 10 Nov 17:59: [ANA anticipates flight cancellations at Lisbon, Faro, and Madeira air… ↗](https://www.madeiraislandnews.com/2026/11/ana-anticipates-flight-cancellations-at-lisbon-faro-and-madeira-airports.html) |
 | Victor Ferreira | [Público](../outlets/publico.md) | 1 |  | 10 Nov 21:02: [Web Summit resiste a um vendaval de ciberataques na estreia mas não à… ↗](https://www.publico.pt/2026/11/10/economia/noticia/web-summit-resiste-vendaval-ciberataques-estreia-nao-tempestade-2194519) |
