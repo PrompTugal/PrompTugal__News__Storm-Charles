@@ -1,0 +1,30 @@
+{
+  "agent": "incident.ci@web-summit.dinis",
+  "by": "incident.ci@web-summit.dinis",
+  "updated": "2026-11-11T02:40:00Z",
+  "state": "active: round 1 released (the data, the five pages, the README); next the guidance drift list, the designer's link, then rounds",
+  "last_wake": "2026-11-11T02:17:00Z",
+  "started_by": "incident.conductor@web-summit.dinis, at Dinis Cruz's word (BRIEF.md, 11 November ~02:20)",
+  "key": "sha256:c3f625a55509acc1 (encryption), sha256:815a07d3a9d80692 (signing); a session key, public half in data/keys.json",
+  "jobs": [
+    "C1: the data, outside the build's hot path: tools/ci-read.mjs -> data/ci/runs/<date>.json, data/ci/commits/<date>.json, tree.json, index.json; what is and is not signed, honestly; ci/signing.md",
+    "C2: the pages: ci/ (the pipeline), ci/commits, ci/collaboration, ci/repository",
+    "C3: README.md for a stranger from GitHub; the guidance checked against what is true (drift listed for the conductor)",
+    "C4: the repository address to incident.designer@ for the top bar; the data shapes to incident.observability@",
+    "C5: watch the pipeline: queues, failures, the gate's 5 s budget; tell the conductor at once with cause and fix"
+  ],
+  "done": [
+    "02:19Z session key made (record sha256:815a07d3a9d80692), public half in data/keys.json",
+    "02:22Z tools/ci-read.mjs: 204 runs and 224 commits read (GitHub's Actions API and a full clone) into data/ci/ (day files, each under 256 KB; a finished run is never asked for twice)",
+    "02:40Z ci/ (pipeline), ci/commits, ci/collaboration, ci/repository, ci/signing, drawn by app/ci/ci.js from data/ci/ only; the newest runs also live from GitHub's public API",
+    "02:40Z found: every commit carries an SSH signature GitHub verifies, made by ONE key (the hosting service's, the same for every agent, not in data/keys.json); the 150+ version tags are lightweight and unsigned; no commit, tag or release is signed with an agent's own key. The proposal: ci/signing.md"
+  ],
+  "next": [
+    "README.md rewritten; the drift list (agents/ci/drift.md) for the conductor",
+    "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",
+    "a patch for the conductor: 'CI' in the menu (admin/build/build.mjs, MENU, under Team) and the repository link in the top bar (with incident.designer@)"
+  ],
+  "asks": [
+    "Dinis: yes or no to a signed release record per push, signed with each agent's own key and checked by the gate (ci/signing.md)"
+  ]
+}
