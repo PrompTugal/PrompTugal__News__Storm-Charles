@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 22:20 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 22:50 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -39,14 +39,17 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 4. Shadow's leads checked 13:14: TAP states no cancellation count (its own weather alert went to the researcher, now a fact there); ANA's split now comes from its newsroom.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 
-## State at 20:43 UTC (fifth session)
+## State at 22:50 UTC (fifth session; context reached ~200k a call, handover current)
 
-- Bridges: Lusoponte normal on both bridges from 17:30. Row proposed 18:42.
-- TTSL: Trafaria–Porto Brandão–Belém **normalised**, vehicles and passengers (its update 19:01; row proposed 19:07, supersedes 14:40).
-- CP (weather notice, "Atualização 19h40", valid 10–11/11), read 20:42: Douro resumed; Beira Baixa interrupted Entroncamento–Abrantes; Campolide–Alcântara Terra suppressed (Carris 713/751 the alternative). Row proposed 20:43. CP's text is never published (its terms).
-- Fertagus 20:00: no relevant disruption expected to the end of today's service (row proposed 20:43). ANA's latest by-airport update still 11:55 UTC.
-- Thursday 12/11: no notice yet from CP, Fertagus, TTSL or Lusoponte: unknown (not stated). Watch each round.
-- A fresh session reads CP's notice body by rendering https://www.cp.pt/pt/detalhe-aviso/mau-tempo-10-11-novembro in Chromium (the reader keeps only titles and times).
+- **OpenSky paused** from the 22:41 round: `transport/opensky-paused.json` (status in the conductor's words, 22:26: "read under OpenSky's terms, now paused pending a licence (Dinis)"). Its terms, read by incident.flights@ at 22:19 (flights/sources.md; 403 to us), ask a written licence for automated use. While the file exists the reader makes no OpenSky call; flights.json keeps each airport's departures as last read at 21:42 (`paused`, `frozen_at`), `live_snapshot` none, top-level `opensky_paused`; ANA continues. incident.broadcast@ shows "as of 21:42 UTC, readings paused" (9d0e479e). Resume only at Dinis's word (delete the file).
+- **Planned, not built:** from the 23:41 round, live counts for LPPT and LPMA from incident.flights@'s adsb.lol snapshots (ODbL): `incidents/2026-11-10-storm-charles/data/flights/snapshots/<YYYY-MM-DD>/<HH>.json`, `snapshots[].near_airport.<LPPT|LPMA>.transport_list = {on_ground, airborne_below_3000m}` (our AIRLINES list, our boxes), newest with non-null `time` in the previous and current hour files; none if absent, never 0, no fall-back to OpenSky. Label a new series ("adsb.lol, via incident.flights@"), not OpenSky; LPPR/LPFR live none. Note it in sources.md. The conductor agreed (22:04, 22:26).
+- **Gloss** in the round from 22:41 (`tools/transport-gloss.mjs`, incident.models@'s patch, field `en.source`): 12 asked, 0.0046 USD, 7 passed, 5 failed (text null). Commit `agents/transport/calls/` with the data (compact JSON; 51 calls, 154 KB by 22:46).
+- **Reader** logs OpenSky's `X-Rate-Limit-Remaining` as `rate_remaining` (moot while paused).
+- Bridges: Lusoponte normal from 17:30. TTSL: Trafaria–Porto Brandão–Belém normalised (19:01; row proposed 19:07).
+- CP weather notice "Atualização 19h40", valid 10–11/11: Douro resumed; Beira Baixa interrupted Entroncamento–Abrantes; Campolide–Alcântara Terra suppressed (Carris 713/751). Fertagus 20:00: no relevant disruption expected to end of service. Both rows proposed 20:43. CP's text is never published.
+- Thursday 12/11: no storm notice yet from CP, Fertagus, TTSL or Lusoponte: unknown. CP lists a RENFE strike on 12/11 as called off (not storm; no row).
+- ANA's latest by-airport update still 11:55 UTC.
+- CP's notice body: render https://www.cp.pt/pt/detalhe-aviso/mau-tempo-10-11-novembro in Chromium (a short Playwright script; the reader keeps only titles and times).
 
 ## Who to tell
 
@@ -54,3 +57,5 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 - incident.broadcast@ (session_018yvwtLhJtPPrHjFiJuoSHA): reads flights.json (`covered_from`) and services.json at page load.
 - incident.sherpa@ (session_018yvwtMa5MKek8GAHcaFiBZ): /guide/ links into the mode pages.
 - incident.researcher@ (session_018yvwtNxyH9wRdXZG35n39T): new decisions found go to it in a `For:` commit.
+- incident.flights@ (session_018yvwtP2dnYFWpCqhk3jtYw): owns data/flights/; reads our flights.json (never writes it); the adsb.lol counts above.
+- incident.models@ (session_018yvwtNj7LsuSTWaGMRPthX): the gloss and its prompt.
