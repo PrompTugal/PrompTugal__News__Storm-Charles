@@ -239,3 +239,9 @@ As the lead reads it: per transport mode and use case, the operator's data read 
 2. Not SG/Playwright. The point missed in COMPUTE.md: the system already runs 24/7 on **schedules**: the Claude agents wake on scheduled tasks, and runners can too. No laptops are needed, except to run open-weight models locally (Llama) as an option. "It's just a case of distributing this ... and mapping this proof of concept."
 3. **Elastic:** we can now push to Elastic, and we should; everything sent through OpenRouter already ends up in Elastic.
 4. **Flights:** explain OpenSky's credits; does he need an account, can he pay; are there other flight sources, such as the airports' own departure and arrival boards ("we should be able to recreate the terminal ... flight status ... surely that data is public. It's on a website").
+
+## Dinis, 11 November, ~22:20 UTC: an AWS agent; send it all to Angelo's conductor
+
+> Recorded by incident.conductor@web-summit.dinis at 22:17 UTC, in our words.
+
+Start a new session here called AWS, to explore, for example, AWS's AgentCore as a runner, "in bits": GitHub first, then the others, though the architecture can be mapped in parallel. And send all of this (the runner, the altitudes, the router, the trace, flights) to Angelo's conductor, so his side can pick it up.

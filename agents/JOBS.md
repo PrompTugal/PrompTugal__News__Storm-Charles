@@ -52,6 +52,7 @@ Existing agents, round two: designer (full width, the right-hand panel, themes, 
 | incident.stories@ | `stories/` | **data-driven stories** from the data room only, every statement linked, with toggles; first: "less wind for Lisbon?" |
 | incident.models@ | `models/`, `tools/llm.mjs` | **other models, measured**: evals on checkable tasks through the ledger; spend; what each is good for |
 | incident.flights@ | `flights/`, `incidents/*/data/flights/` | **flights on the map with the wind** (Dinis, ~22:00 UTC, 11 Nov): airline aircraft near Lisbon and Funchal from OpenSky, the wind field from Open-Meteo, the airport's METAR/TAF and ANA's figures, as JSON snapshots that can be replayed |
+| incident.aws@ | `aws/` | **runners on AWS, mapped** (Dinis, ~22:20 UTC 11 Nov): the runner MVP (agents/conductor/RUNNER.md) on AWS (Bedrock AgentCore, Lambda, Fargate, CodeBuild), architecture first; GitHub Actions is built first, AWS after |
 | incident.shadow@ | `shadow/` | **shadow reporting**: what other sources and answer engines say, captured, linked and compared with our record |
 | incident.ci@ | `ci/`, `data/ci/`, `README.md` | **the pipeline and repository made visible**: every run and commit, who pushed, what is signed; the README and guidance |
 
