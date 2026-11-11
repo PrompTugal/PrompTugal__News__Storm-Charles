@@ -36,6 +36,30 @@ jobs:
           echo "PUSHED_AT=${{ github.event.head_commit.timestamp }}" >> "$GITHUB_ENV"
       - name: Build and gate (the gate builds once; must print OK)
         run: node admin/build/validate.mjs
+      # The brief's PDFs (incident.brief@'s tools/brief-pdf.mjs; ci/patches/README.md). Never in git: rendered here from the
+      # built page and served beside it. Every deploy replaces the whole site, so they are kept in a cache keyed on the
+      # brief's own files only (brief/** and its two tools: no live data, and not the shared build, frame or styles, which
+      # change many times an hour): a push that does not touch the brief only copies them (a second or two); a push that
+      # publishes or edits an edition installs Chromium and renders. Nothing here can fail the deploy: a miss that cannot render serves no PDF.
+      - id: briefcache
+        continue-on-error: true
+        uses: actions/cache@v4
+        with:
+          path: .brief-pdf
+          key: brief-pdf-v1-${{ hashFiles('brief/**', 'tools/brief-make.mjs', 'tools/brief-pdf.mjs') }}
+      - name: Brief PDFs, rendered (only when the brief changed)
+        if: steps.briefcache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        timeout-minutes: 2
+        run: |
+          npm install --no-save --no-audit --no-fund --silent playwright && npx playwright install chromium >/dev/null
+          node tools/brief-pdf.mjs --site _site --out .brief-pdf
+          ls .brief-pdf/*.pdf >/dev/null 2>&1 || rm -rf .brief-pdf   # nothing rendered: nothing to cache, the next push tries again
+          rm -rf node_modules
+      - name: Brief PDFs, beside the page
+        continue-on-error: true
+        run: |
+          if ls .brief-pdf/*.pdf >/dev/null 2>&1; then cp .brief-pdf/*.pdf _site/brief/ && ls -l _site/brief/*.pdf; else echo "::warning title=brief-pdf::no PDF in this deploy"; fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
