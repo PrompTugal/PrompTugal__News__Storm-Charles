@@ -39,7 +39,8 @@ const sources = reg.sources.map(s => {
     const ids = s.hosts.flatMap(h => rowIds[h] || [])
     const uniq = [...new Map(ids.map(x => [x.incident + x.id, x])).values()]
     const section = s.section && fs.existsSync(path.join(ROOT, 'sources', s.section.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md'))) ? s.section : null
-    return { ...s, section, section_planned: s.section && !section ? s.section : undefined, cited: { timeline_rows: uniq.length, row_ids: uniq.map(x => x.id), addresses_in_data_and_research: s.hosts.reduce((n, h) => n + (mentions[h] || 0), 0) } }
+    const entity = s.entity && fs.existsSync(path.join(ROOT, 'entities', s.entity + '.json')) ? s.entity : undefined
+    return { ...s, entity, entity_page: entity ? `entities/${entity}.html` : undefined, page: section || `${s.id}/index.html`, section, section_planned: s.section && !section ? s.section : undefined, cited: { timeline_rows: uniq.length, row_ids: uniq.map(x => x.id), addresses_in_data_and_research: s.hosts.reduce((n, h) => n + (mentions[h] || 0), 0) } }
 })
 const unclaimed = Object.entries(mentions).filter(([h]) => !claimed.has(h) && !/promptugal\.news|sgit\.ai|creativecommons|github|w3\.org|schema\.org/.test(h)).sort((a, b) => b[1] - a[1])
 fs.writeFileSync(path.join(ROOT, 'sources/sources.json'), JSON.stringify({
@@ -55,7 +56,7 @@ for (const [g, title] of GROUPS) {
     const list = sources.filter(s => s.group === g).sort((a, b) => (b.section ? 1 : 0) - (a.section ? 1 : 0) || b.cited.timeline_rows - a.cited.timeline_rows || b.cited.addresses_in_data_and_research - a.cited.addresses_in_data_and_research)
     if (!list.length) continue
     md += `\n## ${title}\n\n| Body | Who | What we take | Rows | Addresses | Licence | Their site |\n|---|---|---|---|---|---|---|\n`
-    for (const s of list) md += `| ${s.section ? `**[${s.name}](${s.section.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md')})**` : `**${s.name}**`}${s.owner ? ` (kept by ${s.owner.split('@')[0]}@)` : ''} | ${s.kind} | ${s.we_take} | ${s.cited.timeline_rows} | ${s.cited.addresses_in_data_and_research} | ${lic(s)} | [${s.hosts[0]}](https://${s.hosts[0]}/) |\n`
+    for (const s of list) md += `| **[${s.name}](${s.section ? s.section.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md') : s.id + '/README.md'})**${s.entity ? ` · [entity](../entities/${s.entity}.html)` : ''}${s.owner ? ` (kept by ${s.owner.split('@')[0]}@)` : ''} | ${s.kind} | ${s.we_take} | ${s.cited.timeline_rows} | ${s.cited.addresses_in_data_and_research} | ${lic(s)} | [${s.hosts[0]}](https://${s.hosts[0]}/) |\n`
 }
 md += `\n## The licence map: can we access it, can we change it?\n\n| Body | Access | Change and republish | As published |\n|---|---|---|---|\n`
 for (const s of sources.filter(s => s.licence.status === 'read')) md += `| ${s.name} | ${s.licence.access} | ${s.licence.manipulate} | ${s.licence.summary} ([terms](${s.licence.url})) |\n`

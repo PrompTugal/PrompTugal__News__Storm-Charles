@@ -4,16 +4,56 @@
  "name": "MeteoAlarm",
  "kind": "official: an aggregator of national weather warnings",
  "who": "The early-warning dissemination system of Europe's national meteorological and hydrological services. In its own words it was \"developed for EUMETNET, the European Network of National Meteorological Services, and is managed on its behalf by GeoSphere Austria\". It issues no warnings itself: each one is issued by a national service (for Portugal, IPMA) and carried by MeteoAlarm as a CAP 1.2 message.",
- "who_source": {"url": "https://www.meteoalarm.org/en/live/page/terms-and-conditions", "read_utc": "2026-11-11T02:15:31Z", "label": "fact"},
+ "who_source": {
+  "url": "https://www.meteoalarm.org/en/live/page/terms-and-conditions",
+  "read_utc": "2026-11-11T02:15:31Z",
+  "label": "fact"
+ },
  "home": "https://www.meteoalarm.org",
  "why_we_read_it": "IPMA's own open data gives each warning's level and hours but not the time it was issued. The CAP message MeteoAlarm carries has `sent` (the time IPMA issued it) and `references` (the message it replaces). Every 'IPMA sent the change at ...' on this site comes from here.",
  "publishes": [
-  {"what": "warnings as CAP 1.2 messages, per country, in JSON", "address": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal", "format": "JSON", "access": "open, no key", "we_read": "yes, every read recorded in data/portugal/reads.json"},
-  {"what": "the same warnings as an Atom feed with CAP elements, per country (41 countries listed)", "address": "https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-portugal", "format": "Atom XML", "access": "open, no key; WebSub offered", "we_read": "its hash and entry count with each read"},
-  {"what": "one message as CAP XML", "address": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal/<uuid>", "format": "CAP 1.2 XML", "access": "open, no key", "we_read": "not yet"},
-  {"what": "real-time and archived warnings by country and time (OGC EDR)", "address": "https://api.meteoalarm.org/edr/v1", "format": "GeoJSON", "access": "the data queries need a token (for re-distributors) or a free MeteoGate key (for the public)", "we_read": "the open description pages only; no token"},
-  {"what": "real-time push of every warning (MQTT)", "address": "mqtts://api.meteoalarm.org", "format": "GeoJSON", "access": "a token; or, with no registration, the WMO WIS2 Global Brokers' public stream", "we_read": "no"},
-  {"what": "hazard types, awareness levels, regions, languages (Metadata API)", "address": "https://api.meteoalarm.org/metadata/v1", "format": "JSON", "access": "described as for re-distributors and partners", "we_read": "no"}
+  {
+   "what": "warnings as CAP 1.2 messages, per country, in JSON",
+   "address": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "format": "JSON",
+   "access": "open, no key",
+   "we_read": "yes, every read recorded in data/portugal/reads.json"
+  },
+  {
+   "what": "the same warnings as an Atom feed with CAP elements, per country (41 countries listed)",
+   "address": "https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-portugal",
+   "format": "Atom XML",
+   "access": "open, no key; WebSub offered",
+   "we_read": "its hash and entry count with each read"
+  },
+  {
+   "what": "one message as CAP XML",
+   "address": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal/<uuid>",
+   "format": "CAP 1.2 XML",
+   "access": "open, no key",
+   "we_read": "not yet"
+  },
+  {
+   "what": "real-time and archived warnings by country and time (OGC EDR)",
+   "address": "https://api.meteoalarm.org/edr/v1",
+   "format": "GeoJSON",
+   "access": "the data queries need a token (for re-distributors) or a free MeteoGate key (for the public)",
+   "we_read": "the open description pages only; no token"
+  },
+  {
+   "what": "real-time push of every warning (MQTT)",
+   "address": "mqtts://api.meteoalarm.org",
+   "format": "GeoJSON",
+   "access": "a token; or, with no registration, the WMO WIS2 Global Brokers' public stream",
+   "we_read": "no"
+  },
+  {
+   "what": "hazard types, awareness levels, regions, languages (Metadata API)",
+   "address": "https://api.meteoalarm.org/metadata/v1",
+   "format": "JSON",
+   "access": "described as for re-distributors and partners",
+   "we_read": "no"
+  }
  ],
  "licence": {
   "summary": "CC BY 4.0 equivalent, with seven additional requirements for redistribution",
@@ -44,23 +84,80 @@
  },
  "also_read_by": "incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py (incident.meteorologist@) reads the same feed for cap.json (the Lisbon district's messages)",
  "nodes": [
-  {"id": "source:meteoalarm", "type": "source", "name": "MeteoAlarm"},
-  {"id": "source:meteoalarm/feed/json", "type": "endpoint", "name": "MeteoAlarm warnings feed (JSON, per country)"},
-  {"id": "source:meteoalarm/feed/json/portugal", "type": "dataset", "name": "MeteoAlarm's Portugal feed (JSON)"},
-  {"id": "source:meteoalarm/feed/atom", "type": "endpoint", "name": "MeteoAlarm Atom feed (per country)"},
-  {"id": "source:meteoalarm/feed/atom/portugal", "type": "dataset", "name": "MeteoAlarm's Portugal feed (Atom)"},
-  {"id": "source:meteoalarm/cap", "type": "endpoint", "name": "one CAP message as XML"},
-  {"id": "source:meteoalarm/api/edr", "type": "api", "name": "MeteoAlarm OGC EDR API v1 (real-time and archive)"},
-  {"id": "source:meteoalarm/api/mqtt", "type": "api", "name": "MeteoAlarm MQTT API v1"},
-  {"id": "source:meteoalarm/api/metadata", "type": "api", "name": "MeteoAlarm Metadata API v0.1"},
-  {"id": "source:meteoalarm/api/hub", "type": "api", "name": "MeteoAlarm Hub API v1 (members only)"},
-  {"id": "source:meteoalarm/terms", "type": "licence", "name": "MeteoAlarm Terms and Conditions"}
+  {
+   "id": "source:meteoalarm",
+   "type": "source",
+   "name": "MeteoAlarm"
+  },
+  {
+   "id": "source:meteoalarm/feed/json",
+   "type": "endpoint",
+   "name": "MeteoAlarm warnings feed (JSON, per country)"
+  },
+  {
+   "id": "source:meteoalarm/feed/json/portugal",
+   "type": "dataset",
+   "name": "MeteoAlarm's Portugal feed (JSON)"
+  },
+  {
+   "id": "source:meteoalarm/feed/atom",
+   "type": "endpoint",
+   "name": "MeteoAlarm Atom feed (per country)"
+  },
+  {
+   "id": "source:meteoalarm/feed/atom/portugal",
+   "type": "dataset",
+   "name": "MeteoAlarm's Portugal feed (Atom)"
+  },
+  {
+   "id": "source:meteoalarm/cap",
+   "type": "endpoint",
+   "name": "one CAP message as XML"
+  },
+  {
+   "id": "source:meteoalarm/api/edr",
+   "type": "api",
+   "name": "MeteoAlarm OGC EDR API v1 (real-time and archive)"
+  },
+  {
+   "id": "source:meteoalarm/api/mqtt",
+   "type": "api",
+   "name": "MeteoAlarm MQTT API v1"
+  },
+  {
+   "id": "source:meteoalarm/api/metadata",
+   "type": "api",
+   "name": "MeteoAlarm Metadata API v0.1"
+  },
+  {
+   "id": "source:meteoalarm/api/hub",
+   "type": "api",
+   "name": "MeteoAlarm Hub API v1 (members only)"
+  },
+  {
+   "id": "source:meteoalarm/terms",
+   "type": "licence",
+   "name": "MeteoAlarm Terms and Conditions"
+  }
  ],
  "related": [
-  {"verb": "carries the warnings of", "to": "source:ipma", "inverse": "is carried by"},
-  {"verb": "is developed for", "to": "body:eumetnet", "inverse": "has as its warning system"},
-  {"verb": "is managed by", "to": "body:geosphere-austria", "inverse": "manages"}
+  {
+   "verb": "carries the warnings of",
+   "to": "source:ipma",
+   "inverse": "is carried by"
+  },
+  {
+   "verb": "is developed for",
+   "to": "body:eumetnet",
+   "inverse": "has as its warning system"
+  },
+  {
+   "verb": "is managed by",
+   "to": "body:geosphere-austria",
+   "inverse": "manages"
+  }
  ],
  "by": "incident.sources@web-summit.dinis",
- "updated": "2026-11-11T02:20:00Z"
+ "updated": "2026-11-11T02:20:00Z",
+ "entity": "body/meteoalarm"
 }

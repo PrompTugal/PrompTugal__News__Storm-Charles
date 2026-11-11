@@ -1,5 +1,5 @@
 {
- "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first.",
+ "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first. `entity` is the id of the same body in entities/ (incident.entities@), where one exists.",
  "by": "incident.sources@web-summit.dinis",
  "updated": "2026-11-11T02:30:00Z",
  "sources": [
@@ -33,7 +33,8 @@
     "CAP 1.2 XML",
     "GeoJSON"
    ],
-   "reads": "about hourly by tools/source-meteoalarm.mjs; about every 5 to 30 minutes by the meteorologist's refresh.py"
+   "reads": "about hourly by tools/source-meteoalarm.mjs; about every 5 to 30 minutes by the meteorologist's refresh.py",
+   "entity": "body/meteoalarm"
   },
   {
    "id": "ipma",
@@ -57,7 +58,8 @@
     "JSON",
     "RSS"
    ],
-   "reads": "every 5 to 30 minutes (refresh.py); hourly by incident.ipma@"
+   "reads": "every 5 to 30 minutes (refresh.py); hourly by incident.ipma@",
+   "entity": "body/ipma"
   },
   {
    "id": "anepc",
@@ -74,7 +76,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "body/anepc"
   },
   {
    "id": "government",
@@ -96,7 +99,8 @@
     "read_utc": "2026-11-11T02:22:00Z",
     "access": "yes, public pages",
     "manipulate": "not stated: we quote official communiqués with the source and the time read, and link"
-   }
+   },
+   "entity": "body/government"
   },
   {
    "id": "websummit",
@@ -113,7 +117,8 @@
     "status": "not read yet",
     "note": "its Terms and conditions page (https://websummit.com/terms-and-conditions/, 'Updated October 27, 2026') draws its text with a script; not read yet"
    },
-   "reads": "its blog every 2 minutes by tools/websummit-poll.sh (incident.dev@), robots.txt obeyed"
+   "reads": "its blog every 2 minutes by tools/websummit-poll.sh (incident.dev@), robots.txt obeyed",
+   "entity": "organisation/websummit"
   },
   {
    "id": "cml",
@@ -130,7 +135,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "body/camara-lisboa"
   },
   {
    "id": "aemet",
@@ -146,7 +152,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "body/aemet"
   },
   {
    "id": "nhc",
@@ -198,7 +205,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "body/amn"
   },
   {
    "id": "metro",
@@ -214,7 +222,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "service/metro"
   },
   {
    "id": "carris",
@@ -230,7 +239,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "service/carris"
   },
   {
    "id": "cp",
@@ -246,7 +256,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "service/cp"
   },
   {
    "id": "ttsl",
@@ -262,7 +273,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "service/ferries"
   },
   {
    "id": "rede-expressos",
@@ -278,7 +290,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "service/rede-expressos"
   },
   {
    "id": "lisbon-airport",
@@ -295,7 +308,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "service/airport"
   },
   {
    "id": "lusoponte",
@@ -311,7 +325,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "organisation/lusoponte"
   },
   {
    "id": "venues",
@@ -442,7 +457,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/lusa"
   },
   {
    "id": "jornaldenegocios",
@@ -464,7 +480,8 @@
     "access": "yes, public pages (some behind a paywall)",
     "manipulate": "no: we link, and quote a short excerpt with the source; no copy of an article is kept in git or shown",
     "note": "the page's general conditions (dated 21 August 2008) also limit use to the reader's personal needs"
-   }
+   },
+   "entity": "outlet/negocios"
   },
   {
    "id": "observador",
@@ -485,7 +502,8 @@
     "read_utc": "2026-11-11T02:22:00Z",
     "access": "yes, public pages (some behind a paywall)",
     "manipulate": "no: we link, and quote a short excerpt with the source; no copy of an article is kept in git or shown"
-   }
+   },
+   "entity": "outlet/observador"
   },
   {
    "id": "noticiasaominuto",
@@ -501,7 +519,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/noticias-ao-minuto"
   },
   {
    "id": "rtp",
@@ -517,7 +536,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/rtp"
   },
   {
    "id": "dn",
@@ -535,7 +555,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/dn"
   },
   {
    "id": "cnnportugal",
@@ -552,7 +573,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/cnn-portugal"
   },
   {
    "id": "dnoticias",
@@ -569,7 +591,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/dnoticias"
   },
   {
    "id": "publico",
@@ -585,7 +608,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/publico"
   },
   {
    "id": "expresso",
@@ -601,7 +625,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/expresso"
   },
   {
    "id": "theportugalnews",
@@ -617,7 +642,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/portugal-news"
   },
   {
    "id": "eco",
@@ -633,7 +659,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/eco"
   },
   {
    "id": "euronews",
@@ -651,7 +678,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/euronews"
   },
   {
    "id": "cmjornal",
@@ -667,7 +695,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/correio-da-manha"
   },
   {
    "id": "sapo",
@@ -689,7 +718,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/sapo"
   },
   {
    "id": "rr",
@@ -705,7 +735,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/renascenca"
   },
   {
    "id": "tsf",
@@ -721,7 +752,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/tsf"
   },
   {
    "id": "jn",
@@ -737,7 +769,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/jn"
   },
   {
    "id": "elpais",
@@ -769,7 +802,8 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "entity": "outlet/madeira-island-news"
   },
   {
    "id": "bluesky",

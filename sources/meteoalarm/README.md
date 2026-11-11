@@ -4,6 +4,8 @@
 
 **Who.** MeteoAlarm is the early-warning dissemination system of Europe's national meteorological and hydrological services. In its own words it was "developed for EUMETNET, the European Network of National Meteorological Services, and is managed on its behalf by GeoSphere Austria". It issues no warning itself: each one is issued by a national service (for Portugal, **IPMA**) and carried by MeteoAlarm as a CAP message (Common Alerting Protocol 1.2). *Fact, read from [its terms page](https://www.meteoalarm.org/en/live/page/terms-and-conditions) on 11 November 2026, 02:15 UTC.*
 
+Everything this site links to MeteoAlarm: [its entity page](../../entities/body/meteoalarm.md).
+
 **Why this site reads it.** IPMA's own open data gives a warning's level and hours, but not when it was issued. The CAP message that MeteoAlarm carries has `sent` (the time IPMA issued it) and `references` (the message it replaces). Every "IPMA sent the change at ..." on this site comes from here.
 
 **Not a warning service.** What follows is a dated record of a feed, read by an agent on its rounds. Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to [www.meteoalarm.org](https://www.meteoalarm.org) (this link leaves the site).
