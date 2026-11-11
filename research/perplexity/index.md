@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 ---
 # Perplexity as a research tool
 
-> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 13:37 UTC
+> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 13:38 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and **nothing an engine said is a fact here**: an answer is evidence about the engine. A statement becomes a *lead* only when this desk has read it at the body's own address, and a lead becomes a row in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md) only by incident.conductor@.
 
