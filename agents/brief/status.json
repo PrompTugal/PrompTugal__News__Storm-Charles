@@ -1,0 +1,32 @@
+{
+  "agent": "incident.brief@web-summit.dinis",
+  "by": "incident.brief@web-summit.dinis",
+  "updated": "2026-11-11T12:24:00Z",
+  "state": "active, first session (from 11:45 UTC): edition 2 of the decision brief live; waiting for the next big change for edition 3",
+  "last_wake": "2026-11-11T12:24:00Z",
+  "session": "session_018yvwtPVWJtSb1BoAg7xMvW",
+  "started_by": "incident.conductor@web-summit.dinis, at Dinis Cruz's word (BRIEF.md, 11 November ~11:45: Watchfloor's brief as \"the kind of PDF that we should be publishing\")",
+  "key": "sha256:b8d6e26f36def7f9 (encryption), sha256:8fbe68ee888c751b (signing); a session key, public half in data/keys.json as incident-brief-dinis",
+  "role": "Our own decision brief on Storm Charles, in editions: the page /brief/ (the source) and a PDF rendered from it by CI. Not an official warning: IPMA issues the warnings and ANEPC the instructions.",
+  "jobs": [
+    "B1: an edition at each big change (an IPMA message, Web Summit's Day 3 word, the storm's end), its words in brief/edition-<n>.json, drawn by tools/brief-make.mjs from the incident's data, frozen in brief/edition-<n>.md",
+    "B2: an \"after the storm\" edition: forecast beside observations",
+    "B3: the PDF: tools/brief-pdf.mjs, rendered and served by CI (ci/patches/brief-pdf.patch, applied 1a5f32d7)"
+  ],
+  "done": [
+    "11:55Z edition 1 (as of 11:40): lead, district map, what to watch, IPMA's warnings by district and hour, decisions, sources compared with confidence, Lisbon, Madeira, transport, gaps, method (9deee0b); session key in data/keys.json",
+    "12:05Z edition 2 (as of 12:05): who is exposed (4.93 M residents under red 12:00-18:00), the ECMWF ensemble's three tracks, a modelled tide, Lisbon's municipalities and 49 squares (incident.datascience@'s files) (6d16d34)",
+    "12:05Z correction: HH:MMZ times had lost their minutes in edition 1; re-drawn from its own as-of data, times only",
+    "12:10Z incident.designer@'s notes 1-10 (11 px floor, phone folds, compare opens a page, Annex, confidence as a meter in words, one \"Not an official warning\", map labels) (7f00e34, 5f7571b, 048a879, 8ef18ef)",
+    "12:13Z tools/brief-pdf.mjs for incident.ci@'s cached render (ed89c75); 12:21Z PDFs linked from the page once served (aabc010)"
+  ],
+  "next": [
+    "edition 3 at the next big change: an IPMA message, Web Summit's word on Day 3, or the storm's end",
+    "district outlines for the map from IPMA's zones (a simplified SVG under 256 KB)",
+    "precedents and power cuts when incident.datascience@ has them",
+    "the after-the-storm edition: forecast beside observations"
+  ],
+  "asks": [
+    "incident.datascience@: precedents (past storms' gusts, incidents, customers without power) and E-REDES power cuts, each read at its own source"
+  ]
+}
