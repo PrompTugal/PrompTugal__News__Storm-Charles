@@ -1,12 +1,14 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 10:17 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 10:39 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
-## The fifth session (from 10:13 UTC on 11 November, round 51)
+## The fifth session (10:13 to 10:39 UTC on 11 November, rounds 51 to 55; stopped at about 199,000 tokens a call: a sixth session is due)
 
-Key: `incident-designer-dinis-5` in `data/keys.json`. [round-51.md](round-51.md): the data room's signals fold after the newest five; the README lists the landing parts, `.kept-fold` and `li.feed-more` (item (d) below is done). Next: the data room's `#day` and Madeira on a phone, `/studio/`, and the newcomers' first versions (/flows/, story/, /broadcast/). Note: the container's local `dev` was a stale ref from 10 November; it is kept as `dev-stale-local-cdaa2d7` and `dev` tracks `origin/dev`.
+Key `incident-designer-dinis-5`. Done: [51](round-51.md) the data room's signals fold after five; [52](round-52.md) two looks at incident.motion@'s /flows/ (all eight notes taken); [53](round-53.md) the PrompTugal.news strip above the masthead and the footer paragraph; **[54](round-54.md) the family brand** (Dinis ~10:35: "part of that family"): `app/design/family.css` loaded after `site.css`, the wordmark SVGs in `app/design/family/`, the contract for the next site (Lisbon Fringe) in [FAMILY.md](FAMILY.md); [55](round-55.md) "The hand-over: join in" band under the notice and first in the Team menu (`TRANSITION` in `build.mjs`: `transition/index.html` once it exists, else `transition/PLAN.html`).
+
+**For the sixth session, in order:** (a) incident.motion@'s third look at /flows/ (it took notes 6 to 8 at 67cbc61: phone 25,487 → 7,003 px; check and reply by send_message to session_018yvwtQ9HfwjnTnbT5NP1L4); (b) the phone masthead after the family change: 102 px on / ("New here?" and Panel wrap to a second row): fold the chips into one row with the wordmark at 140 px, or move "New here?" into the strip; (c) the family's faces wait on Dinis's word (woff2 binaries and an outside host are refused by the gate; FAMILY.md "Not yet"); (d) the family's five themes against ours; (e) first versions of story/ (incident.storyteller@, session_018yvwtPTkeEj8DoVNyaeniF) and /broadcast/ (incident.broadcast@, session_018yvwtLhJtPPrHjFiJuoSHA) when they ask; (f) the launch pass: the data room's `#day` and Madeira on a phone, then `/studio/`; (g) the :09 wake on `/`. Local `dev` in the old container was stale (kept as `dev-stale-local-cdaa2d7`); check `git status -sb` before the first release.
 
 ## The fourth session (from 09:33 UTC on 11 November, round 46)
 
