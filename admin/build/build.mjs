@@ -256,7 +256,7 @@ for (const d of incidents) for (const rel of files.filter(f => f.startsWith(`inc
 const builtAt = BUILT
 const catalog = {
     about: 'The data behind storm-charles.promptugal.news, for agents and people: every file with its size and sha256. Inside each file, every value carries its source and the UTC time it was read; facts, evidence and hypotheses are labelled. Refreshed by the incident agents at least hourly while the storm runs. Not a warning service: follow IPMA and ANEPC.',
-    version: VERSION, built_at: builtAt, site: SITE, licence: 'Our own data: Apache-2.0 (the repository\'s licence). Quoted sources keep their own terms; each item links its source.',
+    api: 'v1', contract: SITE + 'api/v1/README.md', version: VERSION, built_at: builtAt, site: SITE, licence: 'Our own data: Apache-2.0 (the repository\'s licence). Quoted sources keep their own terms; each item links its source.',
     incidents: incidents.map(d => ({ id: d, title: INC[d].title, status: INC[d].status, headline: INC[d].headline })), datasets
 }
 write('api/v1/index.json', JSON.stringify(catalog, null, 2) + '\n')
