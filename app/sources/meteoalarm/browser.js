@@ -26,6 +26,7 @@
 <p class="meta"><span class="lbl l-fact">fact</span> Warnings issued by <b>IPMA</b> (Instituto Português do Mar e da Atmosfera), carried by <a class="out" href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). ${esc(L.disclaimer)} <span class="prov">source: <a class="out" href="${esc(L.source)}">the feed</a>, read ${t(L.read_utc)} UTC</span></p>
 <div class="bar">${sel('area', 'Area')}${sel('hazard', 'Hazard')}${sel('level', 'Level')}<label>Search<input type="search" placeholder="text, id" data-k="q"></label><label class="chk"><input type="checkbox" data-k="live" checked> only not yet expired</label><span class="meta" id="src-n"></span></div>
 <div class="wx-scroll tbl" tabindex="0"><table><thead><tr><th>Sent by IPMA (UTC)</th><th>Type</th><th>Area</th><th>Warning</th><th>From (UTC)</th><th>To (UTC)</th><th>Replaces</th></tr></thead><tbody id="src-rows"></tbody></table></div>
+<div class="card"><h2>How each warning changed, area by area</h2><p class="meta">Every message the feed still holds for one area, by hazard, in the order IPMA sent them. A message replaced by a later one has usually left the feed: then only its sent time is known (shown as "replaced a message sent ..."). Choose the area with the filter above. <span class="lbl l-fact">fact</span></p><div id="src-chain"></div></div>
 <div class="card"><h2>What changed between our reads</h2><ul class="reads" id="src-reads"></ul><div id="src-diff"></div></div>
 <div class="card"><h2>The schema</h2><p class="meta">One line per CAP message. The fields of our compact table (<a href="${dir}latest.json">latest.json</a>):</p><div class="wx-scroll" tabindex="0"><table><thead><tr><th>Field</th><th>What it is</th></tr></thead><tbody>${Object.entries(L.fields).map(([k, v]) => `<tr><td class="mono">${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</tbody></table></div><p class="meta">The feed's own shape, and everything else MeteoAlarm publishes: <a href="api-map.html">the API map</a>.</p></div>
 <div class="card"><h2>The raw files</h2><ul><li><a href="${dir}latest.json">latest.json</a>: this table as JSON (ours, in git, ${M.length} lines)</li><li><a href="${dir}reads.json">reads.json</a>: every read, its sha256 and what changed</li><li><a href="dataset.json">dataset.json</a>: where the full bytes of each read are kept (a data vault), with their hashes</li><li><a class="out" href="${esc(L.source)}">the feed itself, now</a> (leaves this site; it will differ from our copy)</li><li><a class="out" href="${esc(L.atom)}">its Atom twin</a> (leaves this site)</li></ul></div>
@@ -52,6 +53,19 @@
         })
         rows.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.matches('tr.m')) toggle(e.target.dataset.id) })
         draw()
+        const chain = root.querySelector('#src-chain')
+        const drawChain = () => {
+            const area = st.area || (uniq('area').includes('Lisboa') ? 'Lisboa' : uniq('area')[0])
+            const hz = {}
+            for (const m of M) if (m.area === area) (hz[m.hazard || m.event] ||= []).push(m)
+            chain.innerHTML = `<h3>${esc(area)}</h3>` + Object.keys(hz).sort().map(h => `<div class="wx-scroll" tabindex="0"><table><thead><tr><th>${esc(h)}: sent (UTC)</th><th>Level</th><th>From</th><th>To</th><th>What it did</th></tr></thead><tbody>${hz[h].map(m => {
+                const r = (m.replaces || [])[0], o = r && byId.get(r.id)
+                const did = !r ? 'a new warning' : o ? `replaced the message sent ${t(o.sent_utc)}${o.level !== m.level ? `: level ${esc(o.level)} to ${esc(m.level)}` : ''}${o.onset_utc !== m.onset_utc || o.expires_utc !== m.expires_utc ? ': hours changed' : ''}` : `replaced a message sent ${t(r.sent_utc)} (no longer in the feed)`
+                return `<tr class="${m.expires_utc <= now ? 'past' : ''}"><td class="t">${t(m.sent_utc)}</td><td>${lvl(m.level)}</td><td class="t">${t(m.onset_utc)}</td><td class="t">${t(m.expires_utc)}</td><td>${did}</td></tr>`
+            }).join('')}</tbody></table></div>`).join('')
+        }
+        drawChain()
+        root.addEventListener('input', e => { if (e.target.dataset.k === 'area') drawChain() })
 
         const reads = root.querySelector('#src-reads'), box = root.querySelector('#src-diff')
         reads.innerHTML = R.reads.slice().reverse().slice(0, 60).map(r => {
