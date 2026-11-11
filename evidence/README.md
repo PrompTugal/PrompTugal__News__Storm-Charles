@@ -4,11 +4,11 @@ summary: Our dated captures of every outside page this site cites: a screenshot,
 ---
 ## Wayback: our captures of outside pages and feeds
 
-> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 04:28 UTC
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 04:31 UTC
 
 Every time this site cites an outside page, we keep what that page looked like at that moment: a screenshot, the HTML as served, and the sha256 of each. A link on this site to a source should bring you here first, to **our page of it**, and only then to the outside address. When we read a page again we record whether it still says the same thing.
 
-**469 addresses, 484 captures, 111 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
+**504 addresses, 519 captures, 111 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
 
 | Source | Page (our latest capture) | Last read | Captures | Since the one before | Shown |
 |---|---|---|---|---|---|
@@ -136,6 +136,9 @@ Every time this site cites an outside page, we keep what that page looked like a
 | euronews.com | [Latest breaking news available as free video on demand · Euronews](euronews/2026/11/11/0425-front.md) `euronews.com/` | 11 Nov 2026, 04:25 UTC | 1 | one capture | hash and excerpt |
 | euronews.com | [euronews.com/robots.txt](euronews/2026/11/11/0425-robots-txt.md) `euronews.com/robots.txt` | 11 Nov 2026, 04:25 UTC | 1 | one capture | hash and excerpt |
 | l.euronews.com | [Portugal on alert as storm Charles brings red warnings to Madeira · Euronews](euronews/2026/11/11/0317-mbrz.md) `l.euronews.com/mbrZ` | 11 Nov 2026, 03:17 UTC | 1 | one capture | hash and excerpt |
+| l.euronews.com | [Storm Charles to hit Portugal and Spain with torrential rain and 120 km/h winds · Euronews](euronews/2026/11/11/0428-qdhh.md) `l.euronews.com/QDhH` | 11 Nov 2026, 04:28 UTC | 1 | one capture | hash and excerpt |
+| l.euronews.com | [Portugal on alert as storms Bruna and Charles raise sting jet risk of 160 km/h winds · Euronews](euronews/2026/11/11/0430-t6o8.md) `l.euronews.com/T6o8` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| l.euronews.com | [Portugal on alert as storms Bruna and Charles raise sting jet risk of 160 km/h winds · Euronews](euronews/2026/11/11/0431-y90r.md) `l.euronews.com/y90R` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
 | pt.euronews.com | [Última hora. - Web Summit cancela segundo dia em Lisboa devido à tempestade Charles · Euronews](euronews/2026/11/11/0242-2026-11-10-portugal-web-summit-cancela-segundo-dia-em-lisboa-1baff4c8.md) `pt.euronews.com/2026/11/10/portugal-web-summit-cancela-segundo-dia-em-lisboa-dev` | 11 Nov 2026, 02:42 UTC | 1 | one capture | hash and excerpt |
 | euronews.com | [Web Summit Lisbon day 2 cancelled due to Storm Charles · Euronews](euronews/2026/11/11/0242-2026-11-10-web-summit-lisbon-day-2-cancelled-due-to-storm-charles.md) `euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles` | 11 Nov 2026, 02:42 UTC | 1 | one capture | hash and excerpt |
 | euronews.com | [Contact - Euronews](euronews/2026/11/11/0425-contact.md) `euronews.com/contact` | 11 Nov 2026, 04:25 UTC | 1 | one capture | hash and excerpt |
@@ -224,6 +227,37 @@ Every time this site cites an outside page, we keep what that page looked like a
 | lusa.pt | [www.lusa.pt/article/48094794](lusa/2026/11/11/0428-article-48094794.md) `lusa.pt/article/48094794` | 11 Nov 2026, 04:28 UTC | 1 | one capture | hash and excerpt |
 | lusa.pt | [www.lusa.pt/article/48096429](lusa/2026/11/11/0428-article-48096429.md) `lusa.pt/article/48096429` | 11 Nov 2026, 04:28 UTC | 1 | one capture | hash and excerpt |
 | lusa.pt | [www.lusa.pt/article/48096799](lusa/2026/11/11/0428-article-48096799.md) `lusa.pt/article/48096799` | 11 Nov 2026, 04:28 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48099521](lusa/2026/11/11/0428-article-48099521.md) `lusa.pt/article/48099521` | 11 Nov 2026, 04:28 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48099609](lusa/2026/11/11/0428-article-48099609.md) `lusa.pt/article/48099609` | 11 Nov 2026, 04:28 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48099817](lusa/2026/11/11/0428-article-48099817.md) `lusa.pt/article/48099817` | 11 Nov 2026, 04:28 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48099837](lusa/2026/11/11/0429-article-48099837.md) `lusa.pt/article/48099837` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48101878](lusa/2026/11/11/0429-article-48101878.md) `lusa.pt/article/48101878` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48102151](lusa/2026/11/11/0429-article-48102151.md) `lusa.pt/article/48102151` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48102551](lusa/2026/11/11/0429-article-48102551.md) `lusa.pt/article/48102551` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48102651](lusa/2026/11/11/0429-article-48102651.md) `lusa.pt/article/48102651` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48102699](lusa/2026/11/11/0429-article-48102699.md) `lusa.pt/article/48102699` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48103159](lusa/2026/11/11/0429-article-48103159.md) `lusa.pt/article/48103159` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48103230](lusa/2026/11/11/0429-article-48103230.md) `lusa.pt/article/48103230` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48103338](lusa/2026/11/11/0429-article-48103338.md) `lusa.pt/article/48103338` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48103408](lusa/2026/11/11/0429-article-48103408.md) `lusa.pt/article/48103408` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48103814](lusa/2026/11/11/0429-article-48103814.md) `lusa.pt/article/48103814` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48103930](lusa/2026/11/11/0429-article-48103930.md) `lusa.pt/article/48103930` | 11 Nov 2026, 04:29 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48103946](lusa/2026/11/11/0430-article-48103946.md) `lusa.pt/article/48103946` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104100](lusa/2026/11/11/0430-article-48104100.md) `lusa.pt/article/48104100` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104107](lusa/2026/11/11/0430-article-48104107.md) `lusa.pt/article/48104107` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104147](lusa/2026/11/11/0430-article-48104147.md) `lusa.pt/article/48104147` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104166](lusa/2026/11/11/0430-article-48104166.md) `lusa.pt/article/48104166` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104257](lusa/2026/11/11/0430-article-48104257.md) `lusa.pt/article/48104257` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104274](lusa/2026/11/11/0430-article-48104274.md) `lusa.pt/article/48104274` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104372](lusa/2026/11/11/0430-article-48104372.md) `lusa.pt/article/48104372` | 11 Nov 2026, 04:30 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104384](lusa/2026/11/11/0431-article-48104384.md) `lusa.pt/article/48104384` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104497](lusa/2026/11/11/0431-article-48104497.md) `lusa.pt/article/48104497` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104517](lusa/2026/11/11/0431-article-48104517.md) `lusa.pt/article/48104517` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104539](lusa/2026/11/11/0431-article-48104539.md) `lusa.pt/article/48104539` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104714](lusa/2026/11/11/0431-article-48104714.md) `lusa.pt/article/48104714` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48104915](lusa/2026/11/11/0431-article-48104915.md) `lusa.pt/article/48104915` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48105026](lusa/2026/11/11/0431-article-48105026.md) `lusa.pt/article/48105026` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
+| lusa.pt | [www.lusa.pt/article/48105225](lusa/2026/11/11/0431-article-48105225.md) `lusa.pt/article/48105225` | 11 Nov 2026, 04:31 UTC | 1 | one capture | hash and excerpt |
 | lusa.pt | [Contactos da Lusa](lusa/2026/11/11/0423-contact-us.md) `lusa.pt/contact-us` | 11 Nov 2026, 04:23 UTC | 1 | one capture | hash and excerpt |
 | lusa.pt | [www.lusa.pt/robots.txt](lusa/2026/11/11/0423-robots-txt.md) `lusa.pt/robots.txt` | 11 Nov 2026, 04:23 UTC | 1 | one capture | hash and excerpt |
 | lusa.pt | [LUSA: Notícias do Dia](lusa/2026/11/11/0409-rss.md) `lusa.pt/rss` | 11 Nov 2026, 04:09 UTC | 1 | one capture | hash and excerpt |
@@ -371,6 +405,7 @@ Every time this site cites an outside page, we keep what that page looked like a
 | publico.pt | [Depressão Bruna: há nove desalojados na Madeira, um homem desapareceu no mar · Mau tempo · PÚBLICO](publico/2026/11/11/0427-2026-11-08-sociedade-noticia-depressao-bruna-deixa-familia-c-b6d9b8b4.md) `publico.pt/2026/11/08/sociedade/noticia/depressao-bruna-deixa-familia-cinco-pess` | 11 Nov 2026, 04:27 UTC | 1 | one capture | hash and excerpt |
 | publico.pt | [Mau tempo: todos os distritos do continente sob aviso amarelo devido a chuva e vento · Mau tempo · PÚBLICO](publico/2026/11/11/0427-2026-11-08-sociedade-noticia-mau-tempo-distritos-continente-508b6f9c.md) `publico.pt/2026/11/08/sociedade/noticia/mau-tempo-distritos-continente-aviso-ama` | 11 Nov 2026, 04:27 UTC | 1 | one capture | hash and excerpt |
 | publico.pt | [IPMA dá nome à depressão Charles e prevê avisos laranja com chuva e vento forte · Meteorologia · PÚBLICO](publico/2026/11/11/0317-2026-11-09-azul-noticia-ipma-nome-depressao-charles-preve-av-40e8466d.md) `publico.pt/2026/11/09/azul/noticia/ipma-nome-depressao-charles-preve-avisos-lara` | 11 Nov 2026, 03:17 UTC | 1 | one capture | hash and excerpt |
+| publico.pt | [Habitação: Lisboa levanta tendas do Rossio, Porto mantém-nas e negoceia com a Câmara · Habitação · PÚBLICO](publico/2026/11/11/0428-2026-11-09-sociedade-noticia-habitacao-lisboa-levanta-tendas-55992963.md) `publico.pt/2026/11/09/sociedade/noticia/habitacao-lisboa-levanta-tendas-rossio-p` | 11 Nov 2026, 04:28 UTC | 1 | one capture | hash and excerpt |
 | publico.pt | [Mau tempo provoca 73 ocorrências na madrugada desta segunda-feira · Mau tempo · PÚBLICO](publico/2026/11/11/0312-2026-11-09-sociedade-noticia-mau-tempo-provoca-73-ocorrencia-af6c1724.md) `publico.pt/2026/11/09/sociedade/noticia/mau-tempo-provoca-73-ocorrencias-madruga` | 11 Nov 2026, 03:12 UTC | 1 | one capture | hash and excerpt |
 | publico.pt | [Charles pode trazer fenómeno raro de vento, como aconteceu com a Kristin · Meteorologia · PÚBLICO](publico/2026/11/11/0324-2026-11-10-azul-noticia-charles-ameaca-fenomeno-raro-vento-t-4f3f7102.md) `publico.pt/2026/11/10/azul/noticia/charles-ameaca-fenomeno-raro-vento-temporal-g` | 11 Nov 2026, 03:24 UTC | 1 | one capture | hash and excerpt |
 | publico.pt | [Mau tempo: monumentos encerrados e espectáculos adiados · Mau tempo · PÚBLICO](publico/2026/11/11/0352-2026-11-10-culturaipsilon-noticia-mau-tempo-monumentos-encer-d4d3800e.md) `publico.pt/2026/11/10/culturaipsilon/noticia/mau-tempo-monumentos-encerrados-esp` | 11 Nov 2026, 03:52 UTC | 1 | one capture | hash and excerpt |
