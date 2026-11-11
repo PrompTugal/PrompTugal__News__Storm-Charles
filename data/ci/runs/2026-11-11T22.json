@@ -1,10 +1,10 @@
 {
  "about": "Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub's Actions API gave them. version: v<series>.<run number>, CI's own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit's time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. jobs (from run 1618, three: build, deploy, tag): each job's queue_s, seconds and result; gap_s: build's end to deploy's start; superseded: build passed, deploy skipped (no longer dev's head). push_to_served_s: the run's own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T23:18:34Z",
+ "updated": "2026-11-11T23:24:23Z",
  "source": "https://api.github.com/repos/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs",
  "period": "2026-11-11T22",
- "count": 114,
+ "count": 115,
  "runs": [
   {
    "run": 1572,
@@ -1924,7 +1924,86 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
+   "tag": null
+  },
+  {
+   "run": 1618,
+   "id": 43110759907,
+   "attempt": 1,
+   "version": "v0.1.1618",
+   "sha": "fd90abcd44453b61e3026786807a833bffe9f8e2",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.conductor@web-summit.dinis",
+   "what": "CI split by altitude (ci/patches/ci-altitudes.patch: build read-only, deploy without repository code, tag apart); per-ro",
+   "pushed": "2026-11-11T22:19:09Z",
+   "queued": "2026-11-11T22:19:16Z",
+   "started": "2026-11-11T22:19:52Z",
+   "ended": "2026-11-11T22:20:03Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43110759907",
+   "queue_s": 36,
+   "run_s": 11,
+   "jobs": [
+    {
+     "job": "build",
+     "queue_s": 15,
+     "s": 11,
+     "result": "success"
+    },
+    {
+     "job": "deploy",
+     "queue_s": null,
+     "s": null,
+     "result": "skipped"
+    },
+    {
+     "job": "tag",
+     "queue_s": null,
+     "s": null,
+     "result": "skipped"
+    }
+   ],
+   "superseded": true,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "Still dev's newest push?",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "Run actions/cache@v4",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "Brief PDFs, beside the page",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 4,
    "tag": null
   },
   {
@@ -2021,7 +2100,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -2136,7 +2215,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -2276,12 +2355,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 49,
    "tag": "v0.1.1626"
   },
@@ -2397,7 +2476,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -2494,7 +2573,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -2573,7 +2652,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -2695,12 +2774,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 2,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 58,
    "tag": "v0.1.1634"
   },
@@ -2823,12 +2902,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 5,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 40,
    "tag": "v0.1.1636"
   },
@@ -2908,7 +2987,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -2987,7 +3066,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -3066,7 +3145,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -3163,7 +3242,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -3321,12 +3400,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 69,
    "tag": "v0.1.1645"
   },
@@ -3467,12 +3546,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 50,
    "tag": "v0.1.1648"
   },
@@ -3552,7 +3631,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -3674,12 +3753,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 63,
    "tag": "v0.1.1651"
   },
@@ -3802,12 +3881,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 5,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 66,
    "tag": "v0.1.1653"
   },
@@ -3912,12 +3991,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 42,
    "tag": "v0.1.1654"
   },
@@ -4058,12 +4137,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 172,
    "tag": "v0.1.1657"
   },
@@ -4168,12 +4247,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 101,
    "tag": "v0.1.1658"
   },
@@ -4271,7 +4350,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -4350,7 +4429,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -4454,12 +4533,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 66,
    "tag": "v0.1.1662"
   },
@@ -4564,12 +4643,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 62,
    "tag": "v0.1.1663"
   },
@@ -4692,12 +4771,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 90,
    "tag": "v0.1.1665"
   },
@@ -4820,12 +4899,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 42,
    "tag": "v0.1.1667"
   },
@@ -4930,12 +5009,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 42,
    "tag": "v0.1.1668"
   },
@@ -5040,12 +5119,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 41,
    "tag": "v0.1.1669"
   },
@@ -5150,12 +5229,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 42,
    "tag": "v0.1.1670"
   },
@@ -5260,12 +5339,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 2,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 48,
    "tag": "v0.1.1671"
   },
@@ -5370,12 +5449,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 57,
    "tag": "v0.1.1672"
   },
@@ -5473,7 +5552,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -5570,7 +5649,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -5674,12 +5753,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 95,
    "tag": "v0.1.1677"
   },
@@ -5759,7 +5838,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -5863,12 +5942,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 67,
    "tag": "v0.1.1679"
   },
@@ -5948,7 +6027,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -6027,7 +6106,7 @@
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "tag": null
   },
   {
@@ -6131,12 +6210,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 72,
    "tag": "v0.1.1682"
   },
@@ -6241,12 +6320,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 67,
    "tag": "v0.1.1683"
   },
@@ -6351,12 +6430,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 8,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 42,
    "tag": "v0.1.1684"
   },
@@ -6461,12 +6540,12 @@
      "result": "success"
     },
     {
-     "step": "checkout",
+     "step": "tag",
      "s": 1,
      "result": "success"
     }
    ],
-   "p": 3,
+   "p": 4,
    "push_to_served_s": 41,
    "tag": "v0.1.1685"
   }

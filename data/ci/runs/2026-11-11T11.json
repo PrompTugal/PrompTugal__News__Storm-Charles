@@ -1,10 +1,10 @@
 {
  "about": "Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub's Actions API gave them. version: v<series>.<run number>, CI's own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit's time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. jobs (from run 1618, three: build, deploy, tag): each job's queue_s, seconds and result; gap_s: build's end to deploy's start; superseded: build passed, deploy skipped (no longer dev's head). push_to_served_s: the run's own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T23:18:34Z",
+ "updated": "2026-11-11T23:23:01Z",
  "source": "https://api.github.com/repos/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs",
  "period": "2026-11-11T11",
- "count": 85,
+ "count": 84,
  "runs": [
   {
    "run": 932,
@@ -3729,70 +3729,6 @@
    "p": 2,
    "push_to_served_s": 42,
    "tag": "v0.1.1005"
-  },
-  {
-   "run": 1006,
-   "id": 43016203580,
-   "attempt": 1,
-   "version": "v0.1.1006",
-   "sha": "f6ed46c50833356d3695f6caf4561df2107aa828",
-   "branch": "dev",
-   "event": "push",
-   "agent": "incident.datascience@web-summit.dinis",
-   "what": "ECMWF ensemble crossings and Lisbon gust spread (shares of forecasts)",
-   "pushed": "2026-11-11T11:57:13Z",
-   "queued": "2026-11-11T11:57:24Z",
-   "started": "2026-11-11T11:57:34Z",
-   "ended": "2026-11-11T11:58:11Z",
-   "result": "success",
-   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43016203580",
-   "queue_s": 10,
-   "run_s": 37,
-   "steps": [
-    {
-     "step": "set up",
-     "s": 1,
-     "result": "success"
-    },
-    {
-     "step": "checkout",
-     "s": 2,
-     "result": "success"
-    },
-    {
-     "step": "version",
-     "s": 0,
-     "result": "success"
-    },
-    {
-     "step": "gate",
-     "s": 7,
-     "result": "success"
-    },
-    {
-     "step": "upload",
-     "s": 3,
-     "result": "success"
-    },
-    {
-     "step": "deploy",
-     "s": 17,
-     "result": "success"
-    },
-    {
-     "step": "tag",
-     "s": 2,
-     "result": "success"
-    },
-    {
-     "step": "measure",
-     "s": 1,
-     "result": "success"
-    }
-   ],
-   "p": 2,
-   "push_to_served_s": 55,
-   "tag": "v0.1.1006"
   },
   {
    "run": 1006,

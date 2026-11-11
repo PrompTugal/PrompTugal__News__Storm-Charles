@@ -1,10 +1,10 @@
 {
  "about": "Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub's Actions API gave them. version: v<series>.<run number>, CI's own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit's time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. jobs (from run 1618, three: build, deploy, tag): each job's queue_s, seconds and result; gap_s: build's end to deploy's start; superseded: build passed, deploy skipped (no longer dev's head). push_to_served_s: the run's own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T23:18:34Z",
+ "updated": "2026-11-11T23:23:01Z",
  "source": "https://api.github.com/repos/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs",
  "period": "2026-11-11T06",
- "count": 38,
+ "count": 37,
  "runs": [
   {
    "run": 602,
@@ -343,70 +343,6 @@
    "p": 2,
    "push_to_served_s": 45,
    "tag": "v0.1.607"
-  },
-  {
-   "run": 608,
-   "id": 42972076412,
-   "attempt": 1,
-   "version": "v0.1.608",
-   "sha": "d1bb8f9b76f9e6534c7c17047dd78e4afa07bab2",
-   "branch": "dev",
-   "event": "push",
-   "agent": "incident.ci@web-summit.dinis",
-   "what": "06:22 wake: 607 runs, no new failure or retry; gate on the runner median 5 s (one run at 12 s); push to served median 40",
-   "pushed": "2026-11-11T06:23:15Z",
-   "queued": "2026-11-11T06:23:24Z",
-   "started": "2026-11-11T06:23:29Z",
-   "ended": "2026-11-11T06:23:49Z",
-   "result": "success",
-   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42972076412",
-   "queue_s": 5,
-   "run_s": 20,
-   "steps": [
-    {
-     "step": "set up",
-     "s": 1,
-     "result": "success"
-    },
-    {
-     "step": "checkout",
-     "s": 1,
-     "result": "success"
-    },
-    {
-     "step": "version",
-     "s": 0,
-     "result": "success"
-    },
-    {
-     "step": "gate",
-     "s": 5,
-     "result": "success"
-    },
-    {
-     "step": "upload",
-     "s": 3,
-     "result": "success"
-    },
-    {
-     "step": "deploy",
-     "s": 6,
-     "result": "success"
-    },
-    {
-     "step": "tag",
-     "s": 1,
-     "result": "success"
-    },
-    {
-     "step": "measure",
-     "s": 0,
-     "result": "success"
-    }
-   ],
-   "p": 2,
-   "push_to_served_s": 32,
-   "tag": "v0.1.608"
   },
   {
    "run": 608,

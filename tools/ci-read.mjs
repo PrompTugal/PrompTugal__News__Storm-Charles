@@ -108,7 +108,7 @@ for (const f of fs.existsSync(path.join(OUT, 'runs')) ? fs.readdirSync(path.join
 const prevCommits = new Map()
 for (const f of fs.existsSync(path.join(OUT, 'commits')) ? fs.readdirSync(path.join(OUT, 'commits')) : []) for (const c of readJ(path.join(OUT, 'commits', f))?.commits || []) prevCommits.set(c.sha, c)
 const SPLIT_RUN = 1618   // the first run of the three-job workflow (fd90abcd)
-const STEP = [[/^Set up job/, 'set up'], [/checkout/i, 'checkout'], [/^Version/, 'version'], [/^Build and gate/, 'gate'], [/upload-pages/, 'upload'], [/deploy-pages/, 'deploy'], [/^Tag/, 'tag'], [/^Measure/, 'measure']]
+const STEP = [[/^Set up job/, 'set up'], [/^Tag/, 'tag'], [/checkout/i, 'checkout'], [/^Version/, 'version'], [/^Build and gate/, 'gate'], [/upload-pages/, 'upload'], [/deploy-pages/, 'deploy'], [/^Measure/, 'measure']]
 let runs = [...prevRuns.values()], apiOk = false, releases = null, apiError = ''
 if (!NO_API) try {
     // GitHub's own verdict on each signature (verified, and why not when not)
@@ -123,7 +123,7 @@ if (!NO_API) try {
     const bySha = new Map(commits.map(c => [c.sha, c]))
     runs = await pool(list.filter(r => r.path === '.github/workflows/deploy.yml'), 8, async r => {
         const old = prevRuns.get(r.id)
-        if (old && old.result !== 'in progress' && old.result !== 'queued' && old.attempt === r.run_attempt && (old.run < 418 || old.p === 3 || (old.p === 2 && old.run < SPLIT_RUN))) return old
+        if (old && old.result !== 'in progress' && old.result !== 'queued' && old.attempt === r.run_attempt && (old.run < 418 || old.p === 4 || (old.p === 2 && old.run < SPLIT_RUN))) return old
         const done = r.status === 'completed', c = bySha.get(r.head_sha)
         const o = {
             run: r.run_number, id: r.id, attempt: r.run_attempt, version: `v${SERIES}.${r.run_number}`, sha: r.head_sha, branch: r.head_branch, event: r.event,
@@ -155,7 +155,7 @@ if (!NO_API) try {
                 let deploys = 0
                 const stepName = s => { const n = (STEP.find(([re]) => re.test(s.name)) || [0, s.name])[1]; return n === 'deploy' && ++deploys > 1 ? 'deploy (2nd try)' : /^Wait before/.test(s.name) ? 'wait' : n }
                 o.steps = jobs.flatMap(j => (j.steps || []).filter(s => !/^(Post |Complete job)/.test(s.name)).map(s => ({ step: j !== job && /^Set up job/.test(s.name) ? 'set up (' + j.name + ')' : stepName(s), s: secs(s.started_at, s.completed_at), result: s.conclusion || s.status }))).filter(s => s.result !== 'skipped')
-                o.p = jobs.length > 1 ? 3 : 2
+                o.p = jobs.length > 1 ? 4 : 2   // 4: three jobs, the tag step named tag (3 named it checkout: its name says "no checkout")
                 const first = o.steps.find(s => s.step === 'deploy'), second = o.steps.find(s => s.step === 'deploy (2nd try)')
                 // the first try has continue-on-error, so GitHub's API reports its conclusion as "success" even when it failed:
                 // the second try only runs when the first failed, so its presence (not skipped) is the evidence
