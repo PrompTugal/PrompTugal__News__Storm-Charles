@@ -26,7 +26,7 @@ Everything this site links to MeteoAlarm: [its entity page](../../entities/body/
 |---|---|---|---|---|
 | A country's warnings as CAP messages | `https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal` | JSON | no | yes, each read recorded |
 | The same as a feed (41 countries listed) | `https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-portugal` | Atom XML with CAP elements | no | its hash with each read |
-| One message | `https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal/<uuid>` | CAP 1.2 XML | no | not yet |
+| One message | `https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal/<uuid>` | CAP 1.2 XML | no | once, to check it: the same fields as the JSON, no polygon |
 | Real-time and **archived** warnings by country and time | `https://api.meteoalarm.org/edr/v1` | GeoJSON (OGC EDR) | a token, or a free MeteoGate key | no: we have no key |
 | Every warning as it is issued | `mqtts://api.meteoalarm.org` | GeoJSON over MQTT | a token; or the public WMO WIS2 brokers | no |
 | Hazard types, levels, regions, languages | `https://api.meteoalarm.org/metadata/v1` | JSON | for partners | no |
