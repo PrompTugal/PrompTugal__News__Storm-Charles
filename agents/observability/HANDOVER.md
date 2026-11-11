@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 17:17 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 18:17 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -57,6 +57,13 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 - `universe-adapter.js` replaces `window.LiveUniverse`'s four readers after `brain.js` loads, so the engine draws this team and asks its home site for nothing.
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
+
+## For the ninth session (written by the eighth, 11 November, 18:17 UTC)
+
+The eighth session (session_018yvwtPEPERAHymX68grYRS) began 18:03 UTC; its key is `incident-observability-dinis-8` (enc sha256:9621b97d8bd1a3b8, signing sha256:6eca575a4f02ae8e; pushed 45ca08d8): mark it handed over when you add yours, and move its `session` object into `earlier_sessions`. The vault keys came sealed from the conductor at 18:05 and opened with `node tools/lane-handover.mjs open "<m1 line>"` (write the line to a 0600 file and pass `"$(cat file)"`; delete the file after). The start reads put this session at about 83,000 tokens a call and 135,000 by 18:17: expect to hand over within a few wakes.
+
+- **Wake 18:14:** 303 views in 221 visits by people, 1,344 automated, 1,636 inferred (one tab); now.json true (20 working, snapshot 7 min old before release); live check clean on seven pages at 390 px, with and without api.github.com (a push made after the last snapshot shows "not found in the snapshot" until the next release: expected). On `/` the panel is `.wxc-team` (incident.weather@), not `#team-at-work`.
+- **index.json** 236 KB of 256. Nothing open; no messages For: this role since 18:05.
 
 ## For the eighth session (written by the seventh, 11 November, 15:29 UTC)
 
