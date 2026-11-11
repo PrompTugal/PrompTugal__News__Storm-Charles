@@ -132,3 +132,22 @@ html.ag-frozen .lv *, html.ag-frozen .bm * { animation-play-state: paused !impor
 .ag-files .n { color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; } .ag-files i { display: inline-block; height: 8px; vertical-align: middle; } .ag-files i.a { background: var(--ok); } .ag-files i.d { background: var(--bad); margin-right: 6px; }
 .ag-plain { margin: 0; padding-left: 20px; font-size: 15px; } .ag-plain li { margin: 4px 0; }
 .ag-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 6px; } .ag-chips a { background: var(--surface-2); border: 1px solid var(--line); border-radius: 4px; padding: 2px 6px; text-decoration: none; }
+
+/* Jobs, drawn */
+.ag-tag { display: inline-block; font: 700 13px/1.5 var(--mono); padding: 0 6px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--line-2); text-decoration: none; color: var(--ink); }
+.ag-who { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 10px; }
+.ag-who section { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--wait); border-radius: 8px; padding: 10px 12px; min-width: 0; overflow-wrap: anywhere; }
+.ag-who section.dinis { border-top-color: var(--warn); } .ag-who section.agent { border-top-color: var(--sent); }
+.ag-who h3 { margin: 0 0 6px; font-size: 16px; } .ag-who ul { margin: 0; padding: 0; list-style: none; font-size: 14px; } .ag-who li { padding: 5px 0; border-top: 1px solid var(--line); }
+.ag-lanes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 10px; }
+.ag-lane { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--wait); border-radius: 8px; padding: 10px 12px; min-width: 0; overflow-wrap: anywhere; font-size: 14px; }
+.ag-lane.now { border-left-color: var(--ok); } .ag-lane.blocked { border-left-color: var(--bad); } .ag-lane.quiet { border-left-color: var(--sent); }
+.ag-lane h3 { margin: 0 0 6px; font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; } .ag-lane h3 .ag-pill { margin: 0; vertical-align: 0; }
+.ag-lane p { margin: 5px 0; } .ag-lane .job { font-size: 15px; } .ag-lane .lbl { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); display: block; margin-bottom: 2px; }
+.ag-lane details { font-size: 13px; } .ag-lane summary { cursor: pointer; color: var(--ink-2); }
+.ag-pill.wd { background: var(--warn-soft); color: var(--warn); } .ag-pill.wa { background: var(--sent-soft); color: var(--sent); }
+.ag-owns { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 8px; }
+.ag-owns .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; min-width: 0; overflow-wrap: anywhere; font-size: 13px; }
+.ag-owns .tile.many { border-color: var(--line-2); border-style: dashed; } .ag-owns .tile > b { font: 700 14px/1.3 var(--mono); }
+details.ag-lane > summary { list-style: none; cursor: pointer; } details.ag-lane > summary::-webkit-details-marker { display: none; }
+details.ag-lane > summary .job { margin: 0; } details.ag-lane[open] > summary { border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: 6px; }

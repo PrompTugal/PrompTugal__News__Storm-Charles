@@ -51,6 +51,10 @@ The asks that start "Dinis:", grouped by what is asked so the same ask from seve
 
 The engine's pause holds its clock but leaves its background flow moving. This page adds a gate on animation frames: pausing the map, or "Stop all motion", holds the map, its 3D view and the Universe still; play or the dial lets them move again. "Previous push" and "Next push" take one push at a time; "Play push by push" takes one every three seconds.
 
+## The jobs, drawn
+
+[jobs.html](jobs.html) is generated from the jobs table (`agents/JOBS.md`), the path policy (`agents/policy.json`), each status file and the commits: who is blocked on whom, each agent's job and state in a line, and which agents own which folders. The table as the conductor wrote it stays at [agents/JOBS.md](../../agents/JOBS.md).
+
 ## Release speed
 
 "Release speed, push by push" lists the runs of the deploy workflow from GitHub's public API (cached five minutes): when the commit was pushed, by whom, whether it was deployed, superseded by a newer push, or failed, and the seconds from the push to the end of its run. That is an upper bound on push-to-served, a few seconds above it; CI's exact figure is in each run's summary on GitHub.

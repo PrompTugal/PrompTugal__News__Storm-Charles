@@ -267,6 +267,42 @@ ${body ? `<h3>What it says it did</h3><p class="ag-body">${T(body).replace(/\n/g
 <p class="ag-note">From ${esc(src)}; read ${esc(new Date().toISOString().slice(11, 19))} UTC.</p></section>`
     }
 
+    // ---- Jobs, drawn: who owns what, doing what, blocked on whom (app/agents/jobs.html) ----
+    // From data/agents/index.json (the jobs table, the path policy, each status file) and the commits; nothing typed here.
+    function drawJobs(idx, gh, by, N) {
+        const row = a => N.rows.find(r => r.a.name === a.name), lv = a => liveness(a, (by.get(a.name) || [])[0])
+        const onNow = a => { const R = row(a); return R ? [...R.on[R.n - 1]] : [] }
+        const state = a => { const [c, w] = lv(a), R = row(a); return R && R.synced ? ['silent', 'by sync'] : [c, w] }
+        const nameOf = sh => idx.agents.find(x => short(x.name) === sh)
+        const tag = a => `<a class="ag-tag" href="${esc(agentHref(a.name, idx) || '#' + a.role)}">${T(a.role)}</a>`
+        const D = idx.agents.filter(a => (a.asks_dinis || []).length).sort((x, y) => y.asks_dinis.length - x.asks_dinis.length)
+        const W = idx.agents.map(a => [a, onNow(a)]).filter(([, o]) => o.length)
+        const waitedOn = new Map(); for (const [a, o] of W) for (const b of o) { if (!waitedOn.has(b)) waitedOn.set(b, []); waitedOn.get(b).push(a) }
+        const idle = idx.agents.filter(a => lv(a)[0] === 'none')
+        // who owns what: each top-level folder the path policy names, and the agents whose paths fall in it
+        const F = new Map()
+        for (const a of idx.agents) for (const g of a.policy_owns || []) { if (g === '**') continue; const top = g.replace(/<role>/g, a.role).split('/')[0].replace(/\*.*$/, '') || '(root files)'; const k = /\./.test(top) ? '(root files)' : top + '/'; if (!F.has(k)) F.set(k, new Map()); if (!F.get(k).has(a.name)) F.get(k).set(a.name, []); F.get(k).get(a.name).push(g) }
+        const folders = [...F].sort((x, y) => y[1].size - x[1].size || x[0].localeCompare(y[0]))
+        const counts = { now: 0, quiet: 0, silent: 0, blocked: 0, none: 0 }; for (const a of idx.agents) counts[lv(a)[0]]++
+        el.innerHTML = `<p class="ag-line"><span><b>${idx.agents.length}</b> agents</span><span><b>${counts.now}</b> active</span><span><b>${counts.quiet + counts.silent}</b> quiet or silent</span><span><b>${counts.blocked}</b> say blocked</span><span><b>${counts.none}</b> not started</span><span><a href="${BASE}agents/index.html">the agents, live</a></span><span><a href="${BASE}agents/JOBS.html">the jobs table as written</a></span></p>
+<h2 class="ag-h" id="blocked">Blocked on whom</h2>
+<div class="ag-who">
+<section class="dinis"><h3>On Dinis <span class="ag-note">${D.reduce((n, a) => n + a.asks_dinis.length, 0)} asks from ${D.length} agents</span></h3>${D.length ? `<ul>${D.map(a => `<li>${tag(a)} <b>${a.asks_dinis.length}</b> <span class="ag-note">${T(a.asks_dinis[0].replace(/^Dinis\s*:\s*/i, '')).slice(0, 110)}${a.asks_dinis[0].length > 116 ? '…' : ''}</span></li>`).join('')}</ul><p class="ag-note"><a href="${BASE}agents/index.html#asks">Grouped by what is asked</a></p>` : '<p class="ag-note">Nobody.</p>'}</section>
+<section class="agent"><h3>On another agent <span class="ag-note">work sent For: it, and it has not pushed since</span></h3>${waitedOn.size ? `<ul>${[...waitedOn].sort((x, y) => y[1].length - x[1].length).map(([b, as]) => { const B = nameOf(b); return `<li>${B ? tag(B) : `<code>${T(b)}</code>`} <span class="ag-note">is awaited by</span> ${as.map(tag).join(' ')}${B && row(B) && row(B).synced ? ' <span class="ag-note">(its files arrive by sync: it cannot answer here)</span>' : ''}</li>` }).join('')}</ul>` : '<p class="ag-note">Nobody.</p>'}</section>
+<section class="none"><h3>Not started <span class="ag-note">in the jobs table; no status file, no push</span></h3>${idle.length ? `<p>${idle.map(tag).join(' ')}</p>` : '<p class="ag-note">None.</p>'}</section>
+</div>
+<h2 class="ag-h" id="lanes">Each agent: its job, what it is doing, what it owns</h2>
+<div class="ag-lanes">${idx.agents.map(a => { const [c, w] = state(a), o = onNow(a), last = (by.get(a.name) || [])[0], job = clean(a.job || '').replace(/`/g, ''), lead = (job.match(/\*\*([^*]+)\*\*/) || [, ''])[1]
+            return `<details class="ag-lane ${c}" id="${esc(a.role)}" data-k="lane"><summary><h3>${tag(a)} <span class="ag-pill ${c}">${esc(w)}</span>${(a.asks_dinis || []).length ? ` <span class="ag-pill wd">waits on Dinis ×${a.asks_dinis.length}</span>` : ''}${o.length ? ` <span class="ag-pill wa">waits on ${T(o.slice(0, 3).map(x => x.replace(/^incident\./, '').replace(/@$/, '')).join(', '))}${o.length > 3 ? ` +${o.length - 3}` : ''}</span>` : ''}</h3>
+${lead ? `<p class="job"><b>${T(lead.replace(/[.:]$/, ''))}</b></p>` : job ? `<p class="job">${T(job.replace(/\*\*/g, '')).slice(0, 160)}${job.length > 160 ? '…' : ''}</p>` : '<p class="ag-note">No row in the jobs table.</p>'}</summary>
+${a.state ? `<p class="doing"><span class="lbl">Doing</span>${T(a.state).slice(0, 260)}${a.state.length > 260 ? '…' : ''}</p>` : ''}
+${last ? `<p class="ag-note">last push ${esc(ago(last.at))}: <a href="${commitHref(last)}">${T(last.what).slice(0, 110)}</a></p>` : ''}
+${(a.policy_owns || []).length ? `<p class="ag-chips">${a.policy_owns.map(g => `<a href="${fileHref(g.replace(/<role>/g, a.role).replace(/\/?\*.*$/, '') || g)}"><code>${esc(g)}</code></a>`).join(' ')}</p>` : ''}
+${job && lead ? `<p class="ag-note">${T(job.replace(/\*\*/g, ''))}</p>` : ''}</details>` }).join('')}</div>
+${section('owns', 'Who owns what', `<div class="ag-owns">${folders.map(([k, m]) => `<div class="tile${m.size > 1 ? ' many' : ''}"><b><a href="${fileHref(k.replace(/\/$/, ''))}">${esc(k)}</a></b>${[...m].map(([n, gs]) => { const a = idx.agents.find(x => x.name === n); return `<span title="${esc(gs.join(', '))}">${a ? tag(a) : T(short(n))}${gs.length > 1 || gs[0].replace(/\/?\*.*$/, '') + '/' !== k ? ` <span class="ag-note">${esc(gs.map(g => g.split('/').slice(1).join('/') || g).join(', ')).slice(0, 80)}</span>` : ''}</span>` }).join('')}</div>`).join('')}</div>`, `${folders.length} folders`)}
+<p class="ag-note">A folder with more than one agent is marked: each owns the paths named beside it. The conductor may change any path (it integrates across folders) and is not listed on every tile. Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. From <a href="${fileHref('agents/JOBS.md')}">agents/JOBS.md</a> (each job), <a href="${fileHref('agents/policy.json')}">agents/policy.json</a> (who may change which paths), each agent's status file as served now, and the commits. "Waits on" is this page's reading of status files and commits, not the agent's word.</p>`
+    }
+
     const liveness = (a, last) => {
         if (!a.has_status && !last) return ['none', 'not started']
         if (/^blocked/i.test(a.state || '')) return ['blocked', 'blocked']
@@ -335,6 +371,7 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         const all = [...el.querySelectorAll('details')], open = new Set(all.filter(d => d.open).map(keyOf))
         const hadDrawn = !!el.dataset.drawn
         const N = nightData(idx, gh.items, gh.hist || {})
+        if (VIEW === 'jobs') { const o2 = new Set([...el.querySelectorAll('details[open]')].map(keyOf)); drawJobs(idx, gh, by, N); if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = o2.has(keyOf(d)); else openHash(); el.dataset.drawn = '1'; return }
         if (VIEW === 'commit') { if (!hadDrawn) { await drawCommit(idx, gh); el.dataset.drawn = '1' } return }
         if (ROLE) return drawRole(idx, gh, by, N, keyOf, open, hadDrawn)
         // pipeline health: the last hour of the deploy workflow's runs (the same records as "Release speed" below)
