@@ -95,6 +95,25 @@ The three secrets in this table are the runner's whole grant.
    - llm: transport's notice translation;
    - loop: the CAP extract-and-compare for sources@ (fetch, ask two models, check, retry).
 
+## The secure mode, and three ways out (Dinis, ~22:15 UTC)
+
+**The recommended secure mode.** The agents run with Claude's full power and orchestrate; **all the work is delegated to runners** (GitHub Actions here, as the example). The only questions per task are how the data gets out and what resources the runner needs. Most of the storm's work reads public sources, so most runs need no secret at all. Not for everything: we show one example of each.
+
+| Way out | How the agent gets it | Secrets the runner needs | Trust anchor | Use when |
+|---|---|---|---|---|
+| **console** | the job log (GitHub's API; our GitHub tool reads job logs today) | none | GitHub's run: run id, workflow commit | small results, demos, debugging |
+| **artifact** | the run's artifact (GitHub's API, `actions:read` on the runner repository) | none | GitHub's run | the default for public-source work: JSON results, raw responses kept with the run |
+| **append lane** | drain the lane, open with its own key | the lane's append token (+ signing key) | the runner's signature | private results, or a reader without GitHub access |
+
+Note: on a **public** runner repository, logs and artifacts are readable by anyone signed in to GitHub. Fine for public storm data; anything private goes by the lane, sealed.
+
+Examples to build first, one per mode and way out:
+- A0 compute → artifact: the flights snapshot.
+- A1 LLM call → console: transport's notice translation.
+- A2 loop → append lane: the CAP extract-and-compare.
+
+(Added 22:13 UTC.)
+
 ## Not in this MVP
 
 Schedules (to try later); laptops (only for local open-weight models); long-running pollers.
