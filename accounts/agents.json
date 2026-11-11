@@ -1,7 +1,7 @@
 {
  "about": "Tokens each agent's own session has used, by the WS-148 method: an agent runs tools/accounts-measure.mjs in its own session and commits one line of numbers to accounts/ledger/<role>.jsonl (fresh input, output, cache writes, cache reads; no message text). Only the agent can measure its session. Where no line exists the cell says \"not measured\". Tokens, not money: no price is applied.",
  "by": "incident.accountant@web-summit.dinis",
- "updated": "2026-11-11T11:41:39Z",
+ "updated": "2026-11-11T12:41:49Z",
  "method": {
   "tool": "tools/accounts-measure.mjs",
   "from": "WS-148, people/indi/accountant/measure.mjs in SGit-AI/SGit-AI__Website__Web-Summit",
@@ -13,22 +13,22 @@
   }
  },
  "coverage": {
-  "agents": 37,
-  "measured": 29,
-  "not_measured": 8,
+  "agents": 41,
+  "measured": 30,
+  "not_measured": 11,
   "source": "agents/policy.json and data/agents/sessions.json for who exists; accounts/ledger/ for who has measured"
  },
  "team_measured": {
-  "calls": 7969,
-  "fresh_input": 16491,
-  "output": 7201418,
-  "cache_writes": 24296883,
-  "cache_reads": 2236797095,
-  "all": 2268311887,
-  "cache_reads_share": 0.9861,
-  "weighted": 255194502,
+  "calls": 9003,
+  "fresh_input": 18680,
+  "output": 7801297,
+  "cache_writes": 26597856,
+  "cache_reads": 2481892247,
+  "all": 2516310080,
+  "cache_reads_share": 0.9863,
+  "weighted": 282607058,
   "kind": "measured",
-  "note": "the sum of the 29 measured of 37 agents; not the team's total"
+  "note": "the sum of the 30 measured of 41 agents; not the team's total"
  },
  "most_expensive_hour": {
   "hour": "2026-11-11T02:00Z",
@@ -68,7 +68,7 @@
   ],
   "weighted": 73165499,
   "kind": "measured",
-  "note": "among the 29 measured agents only"
+  "note": "among the 30 measured agents only"
  },
  "by_hour": [
   {
@@ -433,11 +433,11 @@
   },
   {
    "hour": "2026-11-11T09:00Z",
-   "calls": 650,
-   "fresh_input": 1337,
-   "output": 457319,
-   "cache_writes": 2300073,
-   "cache_reads": 163562421,
+   "calls": 709,
+   "fresh_input": 1479,
+   "output": 498292,
+   "cache_writes": 3016664,
+   "cache_reads": 205855446,
    "agents": [
     "accountant",
     "archivist",
@@ -464,20 +464,21 @@
     "weatherwatch",
     "wikipedia"
    ],
-   "weighted": 19114971
+   "weighted": 24101980
   },
   {
    "hour": "2026-11-11T10:00Z",
-   "calls": 780,
-   "fresh_input": 1552,
-   "output": 485402,
-   "cache_writes": 1355161,
-   "cache_reads": 115169890,
+   "calls": 1025,
+   "fresh_input": 2135,
+   "output": 595272,
+   "cache_writes": 1735819,
+   "cache_reads": 190173200,
    "agents": [
     "accountant",
     "archivist",
     "board",
     "ci",
+    "conductor",
     "designer",
     "entities",
     "graph",
@@ -498,35 +499,72 @@
     "weatherwatch",
     "wikipedia"
    ],
-   "weighted": 13359104
+   "weighted": 21350546
   },
   {
    "hour": "2026-11-11T11:00Z",
-   "calls": 154,
-   "fresh_input": 297,
-   "output": 98327,
-   "cache_writes": 1022021,
-   "cache_reads": 24697660,
+   "calls": 462,
+   "fresh_input": 939,
+   "output": 283694,
+   "cache_writes": 1477530,
+   "cache_reads": 87425219,
    "agents": [
     "accountant",
     "archivist",
     "board",
     "ci",
+    "conductor",
+    "datascience",
     "designer",
     "entities",
+    "graph",
     "identity",
+    "ipma",
     "journalist",
+    "librarian",
     "media",
     "meteorology",
     "observability",
     "reporter",
     "shadow",
+    "social",
     "sources",
+    "stories",
+    "transport",
+    "weather",
+    "weatherwatch",
+    "wikipedia"
+   ],
+   "weighted": 10504685
+  },
+  {
+   "hour": "2026-11-11T12:00Z",
+   "calls": 387,
+   "fresh_input": 753,
+   "output": 232298,
+   "cache_writes": 613417,
+   "cache_reads": 61431169,
+   "agents": [
+    "accountant",
+    "archivist",
+    "board",
+    "ci",
+    "datascience",
+    "entities",
+    "identity",
+    "journalist",
+    "labs",
+    "media",
+    "observability",
+    "reporter",
+    "shadow",
+    "sources",
+    "stories",
     "transport",
     "weather",
     "weatherwatch"
    ],
-   "weighted": 3590411
+   "weighted": 6989585
   }
  ],
  "agents": [
@@ -534,111 +572,111 @@
    "agent": "incident.accountant@web-summit.dinis",
    "role": "accountant",
    "sessions_recorded": 2,
-   "commits": 15,
+   "commits": 16,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/accountant.jsonl",
-   "measured_at": "2026-11-11T11:41:39Z",
+   "measured_at": "2026-11-11T12:41:49Z",
    "sessions_measured": 2,
-   "lines": 14,
+   "lines": 15,
    "tokens": {
-    "calls": 133,
-    "fresh_input": 267,
-    "output": 142842,
-    "cache_writes": 1095912,
-    "cache_reads": 21918983,
-    "without_cache_reads": 1239021,
-    "all": 23158004,
-    "cache_reads_share": 0.9465,
-    "weighted": 3430919
+    "calls": 139,
+    "fresh_input": 279,
+    "output": 147987,
+    "cache_writes": 1105481,
+    "cache_reads": 23072576,
+    "without_cache_reads": 1253747,
+    "all": 24326323,
+    "cache_reads_share": 0.9485,
+    "weighted": 3561005
    },
    "context_per_call": {
     "first": 83979,
-    "median": 134005,
-    "largest": 188024,
-    "last": 188024
+    "median": 140135,
+    "largest": 197593,
+    "last": 197593
    },
    "compactions": 0,
    "subagents": 3,
    "first_call": "2026-11-11T02:50:45.551Z",
-   "last_call": "2026-11-11T11:41:19.692Z",
+   "last_call": "2026-11-11T12:41:28.513Z",
    "per_commit": {
-    "weighted_tokens": 228728,
+    "weighted_tokens": 222563,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 82,
-     "returned_chars": 241194
+     "calls": 85,
+     "returned_chars": 245383
     },
     "ReadNotifications": {
-     "calls": 16,
-     "returned_chars": 98331
+     "calls": 17,
+     "returned_chars": 101651
     },
     "Agent": {
      "calls": 3,
      "returned_chars": 3195
     },
     "connector tools": {
-     "calls": 51,
-     "returned_chars": 1380
+     "calls": 52,
+     "returned_chars": 1402
     },
     "Write": {
      "calls": 2,
      "returned_chars": 328
     }
    },
-   "last_task": "round 12: the 10:00 hour, the conductor's missing line, savings and brief 12",
+   "last_task": "round 13: the conductor's line to 11:42, the hours restated, savings and brief 13",
    "quality": "pass"
   },
   {
    "agent": "incident.archivist@web-summit.dinis",
    "role": "archivist",
    "sessions_recorded": 1,
-   "commits": 26,
+   "commits": 28,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/archivist.jsonl",
-   "measured_at": "2026-11-11T11:28:57Z",
+   "measured_at": "2026-11-11T12:26:16Z",
    "sessions_measured": 1,
-   "lines": 11,
+   "lines": 12,
    "tokens": {
-    "calls": 225,
-    "fresh_input": 481,
-    "output": 154356,
-    "cache_writes": 386648,
-    "cache_reads": 68185256,
-    "without_cache_reads": 541485,
-    "all": 68726741,
-    "cache_reads_share": 0.9921,
-    "weighted": 7360011
+    "calls": 230,
+    "fresh_input": 490,
+    "output": 158023,
+    "cache_writes": 395188,
+    "cache_reads": 70493591,
+    "without_cache_reads": 553701,
+    "all": 71047292,
+    "cache_reads_share": 0.9922,
+    "weighted": 7603060
    },
    "context_per_call": {
     "first": 84560,
-    "median": 307025,
-    "largest": 458895,
-    "last": 458895
+    "median": 312337,
+    "largest": 467435,
+    "last": 467435
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:08:49.574Z",
-   "last_call": "2026-11-11T11:28:50.795Z",
+   "last_call": "2026-11-11T12:26:08.825Z",
    "per_commit": {
-    "weighted_tokens": 283077,
+    "weighted_tokens": 271538,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 138,
-     "returned_chars": 276112
+     "calls": 141,
+     "returned_chars": 282654
     },
     "ReadNotifications": {
-     "calls": 30,
-     "returned_chars": 121158
+     "calls": 31,
+     "returned_chars": 125217
     },
     "connector tools": {
-     "calls": 26,
-     "returned_chars": 11420
+     "calls": 27,
+     "returned_chars": 11442
     },
     "Write": {
      "calls": 3,
@@ -649,75 +687,84 @@
      "returned_chars": 0
     }
    },
-   "last_task": "11:27 hourly re-capture of five primaries: unchanged",
+   "last_task": "12:24 hourly re-capture: IPMA communiqué no. 3 found and reported",
    "quality": "pass"
   },
   {
    "agent": "incident.board@web-summit.dinis",
    "role": "board",
    "sessions_recorded": 2,
-   "commits": 23,
+   "commits": 26,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/board.jsonl",
-   "measured_at": "2026-11-11T11:34:07Z",
-   "sessions_measured": 2,
-   "lines": 12,
+   "measured_at": "2026-11-11T12:37:56Z",
+   "sessions_measured": 3,
+   "lines": 14,
    "tokens": {
-    "calls": 187,
-    "fresh_input": 377,
-    "output": 190824,
-    "cache_writes": 518038,
-    "cache_reads": 44506741,
-    "without_cache_reads": 709239,
-    "all": 45215980,
+    "calls": 217,
+    "fresh_input": 437,
+    "output": 205678,
+    "cache_writes": 571829,
+    "cache_reads": 48687995,
+    "without_cache_reads": 777944,
+    "all": 49465939,
     "cache_reads_share": 0.9843,
-    "weighted": 5159913
+    "weighted": 5646744
    },
    "context_per_call": {
-    "first": 83706,
-    "median": 143955,
-    "largest": 192875,
-    "last": 192875
+    "first": 83122,
+    "median": 95902,
+    "largest": 100621,
+    "last": 100621
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:09:57.425Z",
-   "last_call": "2026-11-11T11:33:50.213Z",
+   "last_call": "2026-11-11T12:37:54.266Z",
    "per_commit": {
-    "weighted_tokens": 224344,
+    "weighted_tokens": 217182,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 120,
-     "returned_chars": 402296
+     "calls": 142,
+     "returned_chars": 434070
     },
     "ReadNotifications": {
-     "calls": 24,
-     "returned_chars": 96357
+     "calls": 27,
+     "returned_chars": 106721
     },
     "Write": {
      "calls": 6,
      "returned_chars": 1054
     },
     "connector tools": {
-     "calls": 28,
-     "returned_chars": 960
+     "calls": 30,
+     "returned_chars": 1004
     },
     "Read": {
      "calls": 4,
      "returned_chars": 0
     }
    },
-   "last_task": "11:33 round: three new asks for Dinis placed; no question answered",
+   "last_task": "third session takeover: session key -3 added, -2 handed over",
    "quality": "pass"
+  },
+  {
+   "agent": "incident.brief@web-summit.dinis",
+   "role": "brief",
+   "sessions_recorded": 1,
+   "commits": 12,
+   "commits_source": "data/ci/index.json",
+   "tokens": "not measured",
+   "why": "no line in accounts/ledger/brief.jsonl yet: an agent can only measure its own session"
   },
   {
    "agent": "incident.broadcast@web-summit.dinis",
    "role": "broadcast",
    "sessions_recorded": 1,
-   "commits": 3,
+   "commits": 5,
    "commits_source": "data/ci/index.json",
    "tokens": "not measured",
    "why": "no line in accounts/ledger/broadcast.jsonl yet: an agent can only measure its own session"
@@ -726,50 +773,50 @@
    "agent": "incident.ci@web-summit.dinis",
    "role": "ci",
    "sessions_recorded": 2,
-   "commits": 16,
+   "commits": 21,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/ci.jsonl",
-   "measured_at": "2026-11-11T11:25:39Z",
+   "measured_at": "2026-11-11T12:38:14Z",
    "sessions_measured": 2,
-   "lines": 13,
+   "lines": 17,
    "tokens": {
-    "calls": 149,
-    "fresh_input": 295,
-    "output": 163489,
-    "cache_writes": 471313,
-    "cache_reads": 32978002,
-    "without_cache_reads": 635097,
-    "all": 33613099,
-    "cache_reads_share": 0.9811,
-    "weighted": 3932897
+    "calls": 201,
+    "fresh_input": 403,
+    "output": 200210,
+    "cache_writes": 542085,
+    "cache_reads": 43113318,
+    "without_cache_reads": 742698,
+    "all": 43856016,
+    "cache_reads_share": 0.9831,
+    "weighted": 5054030
    },
    "context_per_call": {
     "first": 84049,
-    "median": 128356,
-    "largest": 160300,
-    "last": 160300
+    "median": 162684,
+    "largest": 231072,
+    "last": 231072
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:16:42.791Z",
-   "last_call": "2026-11-11T11:25:31.119Z",
+   "last_call": "2026-11-11T12:38:05.691Z",
    "per_commit": {
-    "weighted_tokens": 245806,
+    "weighted_tokens": 240668,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 109,
-     "returned_chars": 298861
+     "calls": 138,
+     "returned_chars": 332227
     },
     "ReadNotifications": {
-     "calls": 18,
-     "returned_chars": 69497
+     "calls": 26,
+     "returned_chars": 98185
     },
     "connector tools": {
-     "calls": 24,
-     "returned_chars": 1130
+     "calls": 32,
+     "returned_chars": 1306
     },
     "Write": {
      "calls": 3,
@@ -784,61 +831,61 @@
      "returned_chars": 0
     }
    },
-   "last_task": "hourly wake: pipeline read; signing patch rebuilt against the new policy.json",
+   "last_task": "handover written for a third session; generators-together read on the runner (three runs)",
    "quality": "pass"
   },
   {
    "agent": "incident.conductor@web-summit.dinis",
    "role": "conductor",
    "sessions_recorded": 1,
-   "commits": 157,
+   "commits": 182,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/conductor.jsonl",
-   "measured_at": "2026-11-11T09:42:07Z",
+   "measured_at": "2026-11-11T11:42:06Z",
    "sessions_measured": 1,
-   "lines": 4,
+   "lines": 5,
    "tokens": {
-    "calls": 1441,
-    "fresh_input": 3428,
-    "output": 707300,
-    "cache_writes": 2421810,
-    "cache_reads": 646342299,
-    "without_cache_reads": 3132538,
-    "all": 649474837,
-    "cache_reads_share": 0.9952,
-    "weighted": 67766768
+    "calls": 1775,
+    "fresh_input": 4232,
+    "output": 865333,
+    "cache_writes": 3554736,
+    "cache_reads": 781932332,
+    "without_cache_reads": 4424301,
+    "all": 786356633,
+    "cache_reads_share": 0.9944,
+    "weighted": 82617534
    },
    "context_per_call": {
     "first": 82622,
-    "median": 458123,
+    "median": 432516,
     "largest": 783922,
-    "last": 691711
+    "last": 473736
    },
-   "compactions": 2,
+   "compactions": 3,
    "subagents": 0,
    "first_call": "2026-11-10T18:56:43.267Z",
-   "last_call": "2026-11-11T09:41:53.081Z",
+   "last_call": "2026-11-11T11:42:02.403Z",
    "per_commit": {
-    "weighted_tokens": 431635,
+    "weighted_tokens": 453942,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "ReadNotifications": {
-     "calls": 405,
-     "returned_chars": 1934808
-    },
-    "Bash": {
-     "calls": 376,
-     "returned_chars": 425525
+     "calls": 484,
+     "returned_chars": 2267215
     },
     "connector tools": {
-     "calls": 491,
-     "returned_chars": 373427
+     "calls": 620,
+     "returned_chars": 583171
+    },
+    "Bash": {
+     "calls": 471,
+     "returned_chars": 556301
     },
     "SendUserFile": {
-     "calls": 9,
-     "returned_chars": 2486
+     "calls": 12,
+     "returned_chars": 3671
     },
     "Write": {
      "calls": 7,
@@ -849,65 +896,122 @@
      "returned_chars": 257
     },
     "ToolSearch": {
-     "calls": 2,
+     "calls": 7,
      "returned_chars": 0
     }
    },
-   "last_task": "conductor: IPMA's wind change through the site, sixteen more hand-overs, the faster build, the envoy, the append lane, wakes 06:42 to 09:42",
+   "last_task": "09:42-11:42: hand-overs (designer x2, reporter, observability, identity, weather, journalist x2, media, librarian, stories), new agents (storyteller, motion, br",
+   "quality": "pass"
+  },
+  {
+   "agent": "incident.datascience@web-summit.dinis",
+   "role": "datascience",
+   "sessions_recorded": 1,
+   "commits": 8,
+   "commits_source": "data/ci/index.json",
+   "kind": "measured",
+   "source": "accounts/ledger/datascience.jsonl",
+   "measured_at": "2026-11-11T12:01:07Z",
+   "sessions_measured": 1,
+   "lines": 1,
+   "tokens": {
+    "calls": 70,
+    "fresh_input": 135,
+    "output": 60585,
+    "cache_writes": 124063,
+    "cache_reads": 9942226,
+    "without_cache_reads": 184783,
+    "all": 10127009,
+    "cache_reads_share": 0.9818,
+    "weighted": 1179006
+   },
+   "context_per_call": {
+    "first": 83811,
+    "median": 141807,
+    "largest": 192133,
+    "last": 192133
+   },
+   "compactions": 0,
+   "subagents": 0,
+   "first_call": "2026-11-11T11:45:26.362Z",
+   "last_call": "2026-11-11T12:01:00.864Z",
+   "per_commit": {
+    "weighted_tokens": 147376,
+    "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
+   },
+   "tools": {
+    "Bash": {
+     "calls": 66,
+     "returned_chars": 83975
+    },
+    "Write": {
+     "calls": 6,
+     "returned_chars": 961
+    },
+    "connector tools": {
+     "calls": 2,
+     "returned_chars": 44
+    },
+    "Skill": {
+     "calls": 1,
+     "returned_chars": 38
+    }
+   },
+   "last_task": "gap map; 7 exposure data sets; layers.md; key; vault",
    "quality": "pass"
   },
   {
    "agent": "incident.designer@web-summit.dinis",
    "role": "designer",
-   "sessions_recorded": 6,
-   "commits": 95,
+   "sessions_recorded": 7,
+   "commits": 111,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/designer.jsonl",
-   "measured_at": "2026-11-11T11:13:35Z",
+   "measured_at": "2026-11-11T11:52:43Z",
    "sessions_measured": 6,
-   "lines": 22,
+   "lines": 24,
    "tokens": {
-    "calls": 681,
-    "fresh_input": 1374,
-    "output": 610314,
-    "cache_writes": 1322275,
-    "cache_reads": 201438746,
-    "without_cache_reads": 1933963,
-    "all": 203372709,
+    "calls": 702,
+    "fresh_input": 1415,
+    "output": 623907,
+    "cache_writes": 1346710,
+    "cache_reads": 204743249,
+    "without_cache_reads": 1972032,
+    "all": 206715281,
     "cache_reads_share": 0.9905,
-    "weighted": 22077838
+    "weighted": 22446357
    },
    "context_per_call": {
     "first": 83250,
-    "median": 119497,
-    "largest": 145099,
-    "last": 145099
+    "median": 127500,
+    "largest": 169534,
+    "last": 169534
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-10T23:36:02.740Z",
-   "last_call": "2026-11-11T11:13:31.536Z",
+   "last_call": "2026-11-11T11:52:42.814Z",
    "per_commit": {
-    "weighted_tokens": 232398,
+    "weighted_tokens": 202219,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 480,
-     "returned_chars": 708458
+     "calls": 492,
+     "returned_chars": 720553
     },
     "ReadNotifications": {
-     "calls": 54,
-     "returned_chars": 242603
+     "calls": 56,
+     "returned_chars": 250436
     },
     "Read": {
-     "calls": 113,
+     "calls": 114,
      "returned_chars": 84182
     },
     "connector tools": {
-     "calls": 70,
-     "returned_chars": 2228
+     "calls": 77,
+     "returned_chars": 2382
     },
     "Skill": {
      "calls": 1,
@@ -918,8 +1022,17 @@
      "returned_chars": 687
     }
    },
-   "last_task": "11:10 wake: / looked at; round 57: no text under 11 px in the frame's parts (data room 161 to 0); notes For: weather@, stories@",
+   "last_task": "/guide/ v1 looked at (five notes to sherpa@); the Guide group's first entry 'In Lisbon now?'",
    "quality": "n/a"
+  },
+  {
+   "agent": "incident.desk@web-summit.dinis",
+   "role": "desk",
+   "sessions_recorded": 1,
+   "commits": 7,
+   "commits_source": "data/ci/index.json",
+   "tokens": "not measured",
+   "why": "no line in accounts/ledger/desk.jsonl yet: an agent can only measure its own session"
   },
   {
    "agent": "incident.dev@web-summit.dinis",
@@ -934,50 +1047,50 @@
    "agent": "incident.entities@web-summit.dinis",
    "role": "entities",
    "sessions_recorded": 3,
-   "commits": 36,
+   "commits": 38,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/entities.jsonl",
-   "measured_at": "2026-11-11T11:38:44Z",
+   "measured_at": "2026-11-11T12:39:29Z",
    "sessions_measured": 3,
-   "lines": 13,
+   "lines": 14,
    "tokens": {
-    "calls": 286,
-    "fresh_input": 568,
-    "output": 285590,
-    "cache_writes": 775909,
-    "cache_reads": 74046211,
-    "without_cache_reads": 1062067,
-    "all": 75108278,
-    "cache_reads_share": 0.9859,
-    "weighted": 8466688
+    "calls": 295,
+    "fresh_input": 585,
+    "output": 291249,
+    "cache_writes": 786297,
+    "cache_reads": 75716274,
+    "without_cache_reads": 1078131,
+    "all": 76794405,
+    "cache_reads_share": 0.986,
+    "weighted": 8649758
    },
    "context_per_call": {
     "first": 84132,
-    "median": 149425,
-    "largest": 180928,
-    "last": 180928
+    "median": 154059,
+    "largest": 191316,
+    "last": 191316
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:09:54.818Z",
-   "last_call": "2026-11-11T11:38:36.949Z",
+   "last_call": "2026-11-11T12:39:29.099Z",
    "per_commit": {
-    "weighted_tokens": 235186,
+    "weighted_tokens": 227625,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 223,
-     "returned_chars": 461801
+     "calls": 229,
+     "returned_chars": 466043
     },
     "ReadNotifications": {
-     "calls": 22,
-     "returned_chars": 98025
+     "calls": 23,
+     "returned_chars": 101366
     },
     "connector tools": {
-     "calls": 23,
-     "returned_chars": 506
+     "calls": 24,
+     "returned_chars": 528
     },
     "Read": {
      "calls": 9,
@@ -988,14 +1101,14 @@
      "returned_chars": 0
     }
    },
-   "last_task": "hourly wake 11:38: nodes remade, builder and linker timed",
+   "last_task": "hourly wake 12:38: nodes remade; builder 50 ms faster",
    "quality": "pass"
   },
   {
    "agent": "incident.envoy@web-summit.dinis",
    "role": "envoy",
    "sessions_recorded": 1,
-   "commits": 7,
+   "commits": 11,
    "commits_source": "data/ci/index.json",
    "tokens": "not measured",
    "why": "no line in accounts/ledger/envoy.jsonl yet: an agent can only measure its own session"
@@ -1004,46 +1117,46 @@
    "agent": "incident.graph@web-summit.dinis",
    "role": "graph",
    "sessions_recorded": 3,
-   "commits": 36,
+   "commits": 37,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/graph.jsonl",
-   "measured_at": "2026-11-11T10:53:52Z",
+   "measured_at": "2026-11-11T11:54:22Z",
    "sessions_measured": 3,
-   "lines": 16,
+   "lines": 17,
    "tokens": {
-    "calls": 312,
-    "fresh_input": 627,
-    "output": 325871,
-    "cache_writes": 976415,
-    "cache_reads": 89175385,
-    "without_cache_reads": 1302913,
-    "all": 90478298,
+    "calls": 316,
+    "fresh_input": 634,
+    "output": 327822,
+    "cache_writes": 981281,
+    "cache_reads": 89853989,
+    "without_cache_reads": 1309737,
+    "all": 91163726,
     "cache_reads_share": 0.9856,
-    "weighted": 10220452
+    "weighted": 10295136
    },
    "context_per_call": {
     "first": 84189,
-    "median": 136986,
-    "largest": 167470,
-    "last": 167470
+    "median": 140241,
+    "largest": 172656,
+    "last": 172656
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-10T23:37:26.327Z",
-   "last_call": "2026-11-11T10:53:44.068Z",
+   "last_call": "2026-11-11T11:54:13.145Z",
    "per_commit": {
-    "weighted_tokens": 283901,
+    "weighted_tokens": 278247,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 210,
-     "returned_chars": 537352
+     "calls": 212,
+     "returned_chars": 538505
     },
     "ReadNotifications": {
-     "calls": 31,
-     "returned_chars": 115494
+     "calls": 32,
+     "returned_chars": 118769
     },
     "Read": {
      "calls": 18,
@@ -1062,53 +1175,53 @@
      "returned_chars": 0
     }
    },
-   "last_task": "hourly wake: rebuilt on the 10:51 data",
+   "last_task": "hourly wake: rebuilt on the 11:51 data",
    "quality": "pass"
   },
   {
    "agent": "incident.identity@web-summit.dinis",
    "role": "identity",
    "sessions_recorded": 3,
-   "commits": 30,
+   "commits": 32,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/identity.jsonl",
-   "measured_at": "2026-11-11T11:25:05Z",
+   "measured_at": "2026-11-11T12:22:35Z",
    "sessions_measured": 3,
-   "lines": 16,
+   "lines": 17,
    "tokens": {
-    "calls": 225,
-    "fresh_input": 444,
-    "output": 194780,
-    "cache_writes": 615604,
-    "cache_reads": 49184161,
-    "without_cache_reads": 810828,
-    "all": 49994989,
+    "calls": 230,
+    "fresh_input": 454,
+    "output": 196361,
+    "cache_writes": 621073,
+    "cache_reads": 49747240,
+    "without_cache_reads": 817888,
+    "all": 50565128,
     "cache_reads_share": 0.9838,
-    "weighted": 5729244
+    "weighted": 5792612
    },
    "context_per_call": {
     "first": 83152,
-    "median": 101110,
-    "largest": 110271,
-    "last": 110271
+    "median": 104130,
+    "largest": 115741,
+    "last": 115741
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-10T23:37:19.984Z",
-   "last_call": "2026-11-11T11:25:00.190Z",
+   "last_call": "2026-11-11T12:22:31.280Z",
    "per_commit": {
-    "weighted_tokens": 190975,
+    "weighted_tokens": 181019,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 163,
-     "returned_chars": 430167
+     "calls": 166,
+     "returned_chars": 432546
     },
     "ReadNotifications": {
-     "calls": 23,
-     "returned_chars": 83960
+     "calls": 24,
+     "returned_chars": 87262
     },
     "Write": {
      "calls": 2,
@@ -1130,50 +1243,50 @@
    "agent": "incident.ipma@web-summit.dinis",
    "role": "ipma",
    "sessions_recorded": 2,
-   "commits": 21,
+   "commits": 22,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/ipma.jsonl",
-   "measured_at": "2026-11-11T10:51:43Z",
+   "measured_at": "2026-11-11T11:51:05Z",
    "sessions_measured": 2,
-   "lines": 11,
+   "lines": 12,
    "tokens": {
-    "calls": 174,
-    "fresh_input": 364,
-    "output": 173889,
-    "cache_writes": 499979,
-    "cache_reads": 42739713,
-    "without_cache_reads": 674232,
-    "all": 43413945,
-    "cache_reads_share": 0.9845,
-    "weighted": 4948203
+    "calls": 180,
+    "fresh_input": 377,
+    "output": 175280,
+    "cache_writes": 504862,
+    "cache_reads": 43686065,
+    "without_cache_reads": 680519,
+    "all": 44366584,
+    "cache_reads_share": 0.9847,
+    "weighted": 5049126
    },
    "context_per_call": {
     "first": 84202,
-    "median": 125034,
-    "largest": 155511,
-    "last": 155511
+    "median": 129440,
+    "largest": 160645,
+    "last": 160645
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:08:47.384Z",
-   "last_call": "2026-11-11T10:51:42.211Z",
+   "last_call": "2026-11-11T11:51:03.794Z",
    "per_commit": {
-    "weighted_tokens": 235629,
+    "weighted_tokens": 229506,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 102,
-     "returned_chars": 238629
+     "calls": 104,
+     "returned_chars": 239457
     },
     "ReadNotifications": {
-     "calls": 23,
-     "returned_chars": 90754
+     "calls": 24,
+     "returned_chars": 94085
     },
     "connector tools": {
-     "calls": 18,
-     "returned_chars": 8097
+     "calls": 19,
+     "returned_chars": 8119
     },
     "Write": {
      "calls": 9,
@@ -1184,53 +1297,53 @@
      "returned_chars": 10817
     }
    },
-   "last_task": "hourly read 10:47",
+   "last_task": "hourly read 11:47",
    "quality": "pass"
   },
   {
    "agent": "incident.journalist@web-summit.dinis",
    "role": "journalist",
-   "sessions_recorded": 5,
-   "commits": 44,
+   "sessions_recorded": 6,
+   "commits": 49,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/journalist.jsonl",
-   "measured_at": "2026-11-11T11:26:28Z",
+   "measured_at": "2026-11-11T12:17:51Z",
    "sessions_measured": 6,
-   "lines": 19,
+   "lines": 20,
    "tokens": {
-    "calls": 321,
-    "fresh_input": 624,
-    "output": 309629,
-    "cache_writes": 908471,
-    "cache_reads": 53773297,
-    "without_cache_reads": 1218724,
-    "all": 54992021,
-    "cache_reads_share": 0.9778,
-    "weighted": 6596054
+    "calls": 333,
+    "fresh_input": 646,
+    "output": 316960,
+    "cache_writes": 927637,
+    "cache_reads": 55261203,
+    "without_cache_reads": 1245243,
+    "all": 56506446,
+    "cache_reads_share": 0.978,
+    "weighted": 6771363
    },
    "context_per_call": {
     "first": 83106,
-    "median": 100282,
-    "largest": 115705,
-    "last": 115705
+    "median": 109205,
+    "largest": 134871,
+    "last": 134871
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:50:52.075Z",
-   "last_call": "2026-11-11T11:26:28.072Z",
+   "last_call": "2026-11-11T12:17:32.169Z",
    "per_commit": {
-    "weighted_tokens": 149910,
+    "weighted_tokens": 138191,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 273,
-     "returned_chars": 922929
+     "calls": 283,
+     "returned_chars": 946753
     },
     "ReadNotifications": {
-     "calls": 16,
-     "returned_chars": 61119
+     "calls": 17,
+     "returned_chars": 64590
     },
     "Write": {
      "calls": 7,
@@ -1249,49 +1362,49 @@
      "returned_chars": 0
     }
    },
-   "last_task": "sixth session start: session key, hand-over read, exit interview brought up to date, round (nothing moved for the journal)",
+   "last_task": "12:12 wake: three dated lines from the reporter's 12:06 traces (pieces 7, 12, closing piece); 629 supports, 0 problems",
    "quality": "pass"
   },
   {
    "agent": "incident.labs@web-summit.dinis",
    "role": "labs",
-   "sessions_recorded": 2,
-   "commits": 14,
+   "sessions_recorded": 3,
+   "commits": 16,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/labs.jsonl",
-   "measured_at": "2026-11-11T09:15:10Z",
-   "sessions_measured": 2,
-   "lines": 4,
+   "measured_at": "2026-11-11T12:14:18Z",
+   "sessions_measured": 3,
+   "lines": 5,
    "tokens": {
-    "calls": 128,
-    "fresh_input": 264,
-    "output": 165049,
-    "cache_writes": 850865,
-    "cache_reads": 30000399,
-    "without_cache_reads": 1016178,
-    "all": 31016577,
-    "cache_reads_share": 0.9672,
-    "weighted": 4016218
+    "calls": 173,
+    "fresh_input": 351,
+    "output": 180663,
+    "cache_writes": 921159,
+    "cache_reads": 35073939,
+    "without_cache_reads": 1102173,
+    "all": 36176112,
+    "cache_reads_share": 0.9695,
+    "weighted": 4609567
    },
    "context_per_call": {
-    "first": 84126,
-    "median": 169779,
-    "largest": 213390,
-    "last": 213390
+    "first": 83175,
+    "median": 115959,
+    "largest": 138364,
+    "last": 138364
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:09:54.645Z",
-   "last_call": "2026-11-11T09:14:47.700Z",
+   "last_call": "2026-11-11T12:14:17.529Z",
    "per_commit": {
-    "weighted_tokens": 286873,
+    "weighted_tokens": 288098,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 102,
-     "returned_chars": 333136
+     "calls": 142,
+     "returned_chars": 384067
     },
     "ReadNotifications": {
      "calls": 8,
@@ -1306,57 +1419,57 @@
      "returned_chars": 198
     },
     "Read": {
-     "calls": 25,
+     "calls": 34,
      "returned_chars": 6414
     }
    },
-   "last_task": "09:12 look under the red rain: models view corrected for the lowered wind warning; hand-over written",
+   "last_task": "12:00 look at the labs views: two faults fixed, known-when jumps, handover",
    "quality": "pass"
   },
   {
    "agent": "incident.librarian@web-summit.dinis",
    "role": "librarian",
-   "sessions_recorded": 8,
-   "commits": 102,
+   "sessions_recorded": 9,
+   "commits": 107,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/librarian.jsonl",
-   "measured_at": "2026-11-11T10:51:43Z",
+   "measured_at": "2026-11-11T11:47:06Z",
    "sessions_measured": 8,
-   "lines": 23,
+   "lines": 24,
    "tokens": {
-    "calls": 542,
-    "fresh_input": 1077,
-    "output": 526230,
-    "cache_writes": 1508834,
-    "cache_reads": 129579853,
-    "without_cache_reads": 2036141,
-    "all": 131615994,
-    "cache_reads_share": 0.9845,
-    "weighted": 14994126
+    "calls": 563,
+    "fresh_input": 1120,
+    "output": 539674,
+    "cache_writes": 1538845,
+    "cache_reads": 132572728,
+    "without_cache_reads": 2079639,
+    "all": 134652367,
+    "cache_reads_share": 0.9846,
+    "weighted": 15336912
    },
    "context_per_call": {
     "first": 83257,
-    "median": 113078,
-    "largest": 130077,
-    "last": 130077
+    "median": 128676,
+    "largest": 160892,
+    "last": 160892
    },
    "compactions": 0,
    "subagents": 1,
    "first_call": "2026-11-10T23:37:23.184Z",
-   "last_call": "2026-11-11T10:51:42.547Z",
+   "last_call": "2026-11-11T11:47:06.325Z",
    "per_commit": {
-    "weighted_tokens": 147001,
+    "weighted_tokens": 143336,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 410,
-     "returned_chars": 1120888
+     "calls": 426,
+     "returned_chars": 1152663
     },
     "ReadNotifications": {
-     "calls": 39,
-     "returned_chars": 156967
+     "calls": 41,
+     "returned_chars": 164113
     },
     "Read": {
      "calls": 9,
@@ -1387,61 +1500,61 @@
      "returned_chars": 2047
     }
    },
-   "last_task": "eighth session start: five agents into library/abp.json with draft policies; pack start page rules 12-14 (wind-down, 10:38 correction, family); session key; tol",
+   "last_task": "11:44 wake: T10 closed, T11 opened, round article 5c/7/9, pack rule 15, 41 policies, commit record; hand-over to a ninth session",
    "quality": "pass"
   },
   {
    "agent": "incident.media@web-summit.dinis",
    "role": "media",
    "sessions_recorded": 3,
-   "commits": 34,
+   "commits": 35,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/media.jsonl",
-   "measured_at": "2026-11-11T11:38:29Z",
+   "measured_at": "2026-11-11T12:38:58Z",
    "sessions_measured": 3,
-   "lines": 14,
+   "lines": 15,
    "tokens": {
-    "calls": 316,
-    "fresh_input": 621,
-    "output": 299931,
-    "cache_writes": 694323,
-    "cache_reads": 81861911,
-    "without_cache_reads": 994875,
-    "all": 82856786,
-    "cache_reads_share": 0.988,
-    "weighted": 9181066
+    "calls": 324,
+    "fresh_input": 636,
+    "output": 306271,
+    "cache_writes": 708704,
+    "cache_reads": 83056232,
+    "without_cache_reads": 1015611,
+    "all": 84071843,
+    "cache_reads_share": 0.9879,
+    "weighted": 9321234
    },
    "context_per_call": {
     "first": 83201,
-    "median": 119121,
-    "largest": 143844,
-    "last": 143844
+    "median": 126431,
+    "largest": 158225,
+    "last": 158225
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-10T23:37:21.736Z",
-   "last_call": "2026-11-11T11:38:05.658Z",
+   "last_call": "2026-11-11T12:38:58.047Z",
    "per_commit": {
-    "weighted_tokens": 270031,
+    "weighted_tokens": 266321,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 227,
-     "returned_chars": 519499
+     "calls": 232,
+     "returned_chars": 528515
     },
     "ReadNotifications": {
-     "calls": 30,
-     "returned_chars": 117691
+     "calls": 31,
+     "returned_chars": 120993
     },
     "Write": {
      "calls": 5,
      "returned_chars": 872
     },
     "connector tools": {
-     "calls": 30,
-     "returned_chars": 660
+     "calls": 31,
+     "returned_chars": 682
     },
     "ToolSearch": {
      "calls": 1,
@@ -1452,7 +1565,7 @@
      "returned_chars": 34405
     }
    },
-   "last_task": "hourly wake 11:36: 362 items, no change in firsts",
+   "last_task": "hourly wake 12:36: 384 items, facts 13 and 14 added",
    "quality": "pass"
   },
   {
@@ -1468,7 +1581,7 @@
    "agent": "incident.meteorology@web-summit.dinis",
    "role": "meteorology",
    "sessions_recorded": 2,
-   "commits": 12,
+   "commits": 14,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/meteorology.jsonl",
@@ -1497,7 +1610,7 @@
    "first_call": "2026-11-11T02:16:40.112Z",
    "last_call": "2026-11-11T11:36:29.959Z",
    "per_commit": {
-    "weighted_tokens": 385565,
+    "weighted_tokens": 330484,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
@@ -1594,7 +1707,7 @@
    "agent": "incident.motion@web-summit.dinis",
    "role": "motion",
    "sessions_recorded": 1,
-   "commits": 7,
+   "commits": 8,
    "commits_source": "data/ci/index.json",
    "tokens": "not measured",
    "why": "no line in accounts/ledger/motion.jsonl yet: an agent can only measure its own session"
@@ -1602,51 +1715,51 @@
   {
    "agent": "incident.observability@web-summit.dinis",
    "role": "observability",
-   "sessions_recorded": 5,
-   "commits": 66,
+   "sessions_recorded": 6,
+   "commits": 76,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/observability.jsonl",
-   "measured_at": "2026-11-11T11:24:12Z",
-   "sessions_measured": 5,
-   "lines": 19,
+   "measured_at": "2026-11-11T12:20:27Z",
+   "sessions_measured": 6,
+   "lines": 21,
    "tokens": {
-    "calls": 515,
-    "fresh_input": 1035,
-    "output": 458869,
-    "cache_writes": 1229049,
-    "cache_reads": 124903314,
-    "without_cache_reads": 1688953,
-    "all": 126592267,
-    "cache_reads_share": 0.9867,
-    "weighted": 14179284
+    "calls": 622,
+    "fresh_input": 1262,
+    "output": 519455,
+    "cache_writes": 1459450,
+    "cache_reads": 137744538,
+    "without_cache_reads": 1980167,
+    "all": 139724705,
+    "cache_reads_share": 0.9858,
+    "weighted": 15754621
    },
    "context_per_call": {
-    "first": 83361,
-    "median": 130493,
-    "largest": 151712,
-    "last": 151712
+    "first": 83264,
+    "median": 110116,
+    "largest": 134696,
+    "last": 134696
    },
    "compactions": 0,
-   "subagents": 0,
+   "subagents": 1,
    "first_call": "2026-11-10T23:37:16.670Z",
-   "last_call": "2026-11-11T11:24:12.047Z",
+   "last_call": "2026-11-11T12:20:26.186Z",
    "per_commit": {
-    "weighted_tokens": 214838,
+    "weighted_tokens": 207298,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 373,
-     "returned_chars": 854128
+     "calls": 415,
+     "returned_chars": 909163
     },
     "ReadNotifications": {
-     "calls": 39,
-     "returned_chars": 165882
+     "calls": 47,
+     "returned_chars": 199862
     },
     "connector tools": {
-     "calls": 56,
-     "returned_chars": 10695
+     "calls": 64,
+     "returned_chars": 10871
     },
     "Write": {
      "calls": 3,
@@ -1657,15 +1770,23 @@
      "returned_chars": 76
     },
     "Read": {
-     "calls": 20,
+     "calls": 21,
      "returned_chars": 17571
     },
     "ToolSearch": {
-     "calls": 3,
+     "calls": 4,
      "returned_chars": 0
+    },
+    "Agent": {
+     "calls": 1,
+     "returned_chars": 1065
+    },
+    "SendMessage": {
+     "calls": 2,
+     "returned_chars": 594
     }
    },
-   "last_task": "hourly wake 11:22: page-views drain, live check",
+   "last_task": "hourly wake 12:18: drain 165 events (343 views/145 visits), 11 newer agents grouped on /agents/, live check at 390 px with and without GitHub",
    "quality": "pass"
   },
   {
@@ -1733,7 +1854,7 @@
    "agent": "incident.planner@web-summit.dinis",
    "role": "planner",
    "sessions_recorded": 1,
-   "commits": 5,
+   "commits": 7,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/planner.jsonl",
@@ -1762,7 +1883,7 @@
    "first_call": "2026-11-11T10:30:08.615Z",
    "last_call": "2026-11-11T10:36:07.917Z",
    "per_commit": {
-    "weighted_tokens": 93508,
+    "weighted_tokens": 66792,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
@@ -1790,61 +1911,61 @@
    "agent": "incident.reporter@web-summit.dinis",
    "role": "reporter",
    "sessions_recorded": 4,
-   "commits": 32,
+   "commits": 34,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/reporter.jsonl",
-   "measured_at": "2026-11-11T11:18:28Z",
+   "measured_at": "2026-11-11T12:10:51Z",
    "sessions_measured": 4,
-   "lines": 13,
+   "lines": 14,
    "tokens": {
-    "calls": 223,
-    "fresh_input": 445,
-    "output": 263986,
-    "cache_writes": 674555,
-    "cache_reads": 38509372,
-    "without_cache_reads": 938986,
-    "all": 39448358,
-    "cache_reads_share": 0.9762,
-    "weighted": 4789923
+    "calls": 234,
+    "fresh_input": 468,
+    "output": 276606,
+    "cache_writes": 695804,
+    "cache_reads": 40646811,
+    "without_cache_reads": 972878,
+    "all": 41619689,
+    "cache_reads_share": 0.9766,
+    "weighted": 5037559
    },
    "context_per_call": {
     "first": 83133,
-    "median": 130085,
-    "largest": 187780,
-    "last": 187780
+    "median": 136583,
+    "largest": 209029,
+    "last": 209029
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:50:46.201Z",
-   "last_call": "2026-11-11T11:18:20.896Z",
+   "last_call": "2026-11-11T12:10:23.493Z",
    "per_commit": {
-    "weighted_tokens": 149685,
+    "weighted_tokens": 148164,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 171,
-     "returned_chars": 674493
+     "calls": 177,
+     "returned_chars": 687051
     },
     "Read": {
      "calls": 1,
      "returned_chars": 32294
     },
     "ReadNotifications": {
-     "calls": 20,
-     "returned_chars": 73456
+     "calls": 22,
+     "returned_chars": 80094
     },
     "Write": {
      "calls": 11,
      "returned_chars": 2191
     },
     "connector tools": {
-     "calls": 21,
-     "returned_chars": 548
+     "calls": 22,
+     "returned_chars": 570
     }
    },
-   "last_task": "the 11:06 wake: request trace closed, wind-down trace opened, three traces extended, the log",
+   "last_task": "the 12:06 wake: wind-down trace to 18 steps, three traces extended, the log; hand-over for the fifth session",
    "quality": "pass"
   },
   {
@@ -1860,111 +1981,120 @@
    "agent": "incident.shadow@web-summit.dinis",
    "role": "shadow",
    "sessions_recorded": 1,
-   "commits": 13,
+   "commits": 14,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/shadow.jsonl",
-   "measured_at": "2026-11-11T11:13:57Z",
+   "measured_at": "2026-11-11T12:08:11Z",
    "sessions_measured": 1,
-   "lines": 9,
+   "lines": 10,
    "tokens": {
-    "calls": 83,
-    "fresh_input": 162,
-    "output": 76029,
-    "cache_writes": 465252,
-    "cache_reads": 18841790,
-    "without_cache_reads": 541443,
-    "all": 19383233,
-    "cache_reads_share": 0.9721,
-    "weighted": 2425622
+    "calls": 87,
+    "fresh_input": 169,
+    "output": 77952,
+    "cache_writes": 470981,
+    "cache_reads": 20072707,
+    "without_cache_reads": 549102,
+    "all": 20621809,
+    "cache_reads_share": 0.9734,
+    "weighted": 2556373
    },
    "context_per_call": {
     "first": 85041,
-    "median": 246722,
-    "largest": 305306,
-    "last": 305306
+    "median": 250710,
+    "largest": 311034,
+    "last": 311034
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:16:44.229Z",
-   "last_call": "2026-11-11T11:13:50.456Z",
+   "last_call": "2026-11-11T12:08:04.595Z",
    "per_commit": {
-    "weighted_tokens": 186586,
+    "weighted_tokens": 182598,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 53,
-     "returned_chars": 116040
+     "calls": 55,
+     "returned_chars": 116687
     },
     "Read": {
      "calls": 4,
      "returned_chars": 110696
     },
     "ReadNotifications": {
-     "calls": 12,
-     "returned_chars": 50116
+     "calls": 13,
+     "returned_chars": 54604
     },
     "connector tools": {
-     "calls": 18,
-     "returned_chars": 5602
+     "calls": 19,
+     "returned_chars": 5710
     },
     "Write": {
      "calls": 1,
      "returned_chars": 159
     }
    },
-   "last_task": "11:13 hourly round: refused for credit, gap recorded",
+   "last_task": "12:07 hourly round: refused for credit, gap recorded",
    "quality": "pass"
+  },
+  {
+   "agent": "incident.sherpa@web-summit.dinis",
+   "role": "sherpa",
+   "sessions_recorded": 1,
+   "commits": 14,
+   "commits_source": "data/ci/index.json",
+   "tokens": "not measured",
+   "why": "no line in accounts/ledger/sherpa.jsonl yet: an agent can only measure its own session"
   },
   {
    "agent": "incident.social@web-summit.dinis",
    "role": "social",
    "sessions_recorded": 2,
-   "commits": 15,
+   "commits": 16,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/social.jsonl",
-   "measured_at": "2026-11-11T10:51:21Z",
+   "measured_at": "2026-11-11T11:51:26Z",
    "sessions_measured": 2,
-   "lines": 12,
+   "lines": 13,
    "tokens": {
-    "calls": 142,
-    "fresh_input": 283,
-    "output": 117253,
-    "cache_writes": 552717,
-    "cache_reads": 25260499,
-    "without_cache_reads": 670253,
-    "all": 25930752,
-    "cache_reads_share": 0.9742,
-    "weighted": 3196303
+    "calls": 151,
+    "fresh_input": 300,
+    "output": 120331,
+    "cache_writes": 562695,
+    "cache_reads": 26877333,
+    "without_cache_reads": 683326,
+    "all": 27560659,
+    "cache_reads_share": 0.9752,
+    "weighted": 3371059
    },
    "context_per_call": {
     "first": 84695,
-    "median": 134023,
-    "largest": 174836,
-    "last": 174836
+    "median": 140606,
+    "largest": 185225,
+    "last": 185225
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:09:56.616Z",
-   "last_call": "2026-11-11T10:51:10.599Z",
+   "last_call": "2026-11-11T11:51:17.302Z",
    "per_commit": {
-    "weighted_tokens": 213087,
+    "weighted_tokens": 210691,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 93,
-     "returned_chars": 259009
+     "calls": 97,
+     "returned_chars": 261659
     },
     "ReadNotifications": {
-     "calls": 19,
-     "returned_chars": 68025
+     "calls": 21,
+     "returned_chars": 74738
     },
     "connector tools": {
-     "calls": 19,
-     "returned_chars": 762
+     "calls": 20,
+     "returned_chars": 784
     },
     "Write": {
      "calls": 2,
@@ -1983,53 +2113,53 @@
      "returned_chars": 0
     }
    },
-   "last_task": "10:16 organisers-only read; 10:46 wake: by-eye and full re-read, 2 new kept posts, one offer, one tie",
+   "last_task": "11:24 organisers-only read; 11:46 wake: by-eye and full re-read, 2 new kept posts, one tie",
    "quality": "pass"
   },
   {
    "agent": "incident.sources@web-summit.dinis",
    "role": "sources",
    "sessions_recorded": 1,
-   "commits": 22,
+   "commits": 24,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/sources.jsonl",
-   "measured_at": "2026-11-11T11:28:23Z",
+   "measured_at": "2026-11-11T12:25:40Z",
    "sessions_measured": 1,
-   "lines": 10,
+   "lines": 11,
    "tokens": {
-    "calls": 182,
-    "fresh_input": 377,
-    "output": 143858,
-    "cache_writes": 989305,
-    "cache_reads": 52092558,
-    "without_cache_reads": 1133540,
-    "all": 53226098,
-    "cache_reads_share": 0.9787,
-    "weighted": 6342796
+    "calls": 187,
+    "fresh_input": 387,
+    "output": 146230,
+    "cache_writes": 994428,
+    "cache_reads": 54232970,
+    "without_cache_reads": 1141045,
+    "all": 55374015,
+    "cache_reads_share": 0.9794,
+    "weighted": 6564342
    },
    "context_per_call": {
     "first": 84341,
-    "median": 301504,
-    "largest": 425734,
-    "last": 425734
+    "median": 303954,
+    "largest": 430857,
+    "last": 430857
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:08:48.456Z",
-   "last_call": "2026-11-11T11:28:21.535Z",
+   "last_call": "2026-11-11T12:25:30.518Z",
    "per_commit": {
-    "weighted_tokens": 288309,
+    "weighted_tokens": 273514,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 114,
-     "returned_chars": 261273
+     "calls": 117,
+     "returned_chars": 261731
     },
     "ReadNotifications": {
-     "calls": 26,
-     "returned_chars": 104347
+     "calls": 27,
+     "returned_chars": 108165
     },
     "connector tools": {
      "calls": 22,
@@ -2044,68 +2174,68 @@
      "returned_chars": 0
     }
    },
-   "last_task": "hourly round: feed read (unchanged since 08:24)",
+   "last_task": "hourly round: feed read (unchanged), the government portal's addresses",
    "quality": "pass"
   },
   {
    "agent": "incident.stories@web-summit.dinis",
    "role": "stories",
    "sessions_recorded": 5,
-   "commits": 39,
+   "commits": 46,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/stories.jsonl",
-   "measured_at": "2026-11-11T10:59:14Z",
-   "sessions_measured": 5,
-   "lines": 15,
+   "measured_at": "2026-11-11T12:29:53Z",
+   "sessions_measured": 6,
+   "lines": 18,
    "tokens": {
-    "calls": 279,
-    "fresh_input": 541,
-    "output": 304220,
-    "cache_writes": 947080,
-    "cache_reads": 52394443,
-    "without_cache_reads": 1251841,
-    "all": 53646284,
-    "cache_reads_share": 0.9767,
-    "weighted": 6491285
+    "calls": 329,
+    "fresh_input": 635,
+    "output": 335070,
+    "cache_writes": 1037769,
+    "cache_reads": 59164826,
+    "without_cache_reads": 1373474,
+    "all": 60538300,
+    "cache_reads_share": 0.9773,
+    "weighted": 7289957
    },
    "context_per_call": {
-    "first": 83196,
-    "median": 117270,
-    "largest": 151340,
-    "last": 151340
+    "first": 83207,
+    "median": 106497,
+    "largest": 126279,
+    "last": 126279
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:16:39.313Z",
-   "last_call": "2026-11-11T10:59:10.469Z",
+   "last_call": "2026-11-11T12:29:50.084Z",
    "per_commit": {
-    "weighted_tokens": 166443,
+    "weighted_tokens": 158477,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 230,
-     "returned_chars": 818778
+     "calls": 273,
+     "returned_chars": 892836
     },
     "Read": {
      "calls": 10,
      "returned_chars": 74918
     },
     "ReadNotifications": {
-     "calls": 17,
-     "returned_chars": 61324
+     "calls": 19,
+     "returned_chars": 68000
     },
     "connector tools": {
-     "calls": 21,
-     "returned_chars": 3724
+     "calls": 24,
+     "returned_chars": 3790
     },
     "Write": {
      "calls": 3,
      "returned_chars": 502
     }
    },
-   "last_task": "fifth session start: key -5; mainland warned-against-observed story (11 claims); check OK 7 stories 128 claims on the 10:22 read",
+   "last_task": "sixth session start: key -6; o1/n4/c16 retold on the 12:23 read; h9, h10, n13, n14 added",
    "quality": "pass"
   },
   {
@@ -2186,7 +2316,7 @@
    "agent": "incident.synthetic@web-summit.dinis",
    "role": "synthetic",
    "sessions_recorded": 1,
-   "commits": 4,
+   "commits": 12,
    "commits_source": "data/ci/index.json",
    "tokens": "not measured",
    "why": "no line in accounts/ledger/synthetic.jsonl yet: an agent can only measure its own session"
@@ -2194,47 +2324,47 @@
   {
    "agent": "incident.transport@web-summit.dinis",
    "role": "transport",
-   "sessions_recorded": 1,
-   "commits": 2,
+   "sessions_recorded": 2,
+   "commits": 17,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/transport.jsonl",
-   "measured_at": "2026-11-11T11:40:00Z",
-   "sessions_measured": 1,
-   "lines": 2,
+   "measured_at": "2026-11-11T12:18:33Z",
+   "sessions_measured": 2,
+   "lines": 5,
    "tokens": {
-    "calls": 94,
-    "fresh_input": 190,
-    "output": 53887,
-    "cache_writes": 125461,
-    "cache_reads": 13861913,
-    "without_cache_reads": 179538,
-    "all": 14041451,
-    "cache_reads_share": 0.9872,
-    "weighted": 1565729
+    "calls": 211,
+    "fresh_input": 415,
+    "output": 130061,
+    "cache_writes": 286713,
+    "cache_reads": 34056525,
+    "without_cache_reads": 417189,
+    "all": 34473714,
+    "cache_reads_share": 0.9879,
+    "weighted": 3822842
    },
    "context_per_call": {
-    "first": 83900,
-    "median": 154743,
-    "largest": 194626,
-    "last": 194626
+    "first": 83338,
+    "median": 126114,
+    "largest": 158025,
+    "last": 158025
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T10:24:59.719Z",
-   "last_call": "2026-11-11T11:40:00.091Z",
+   "last_call": "2026-11-11T12:18:30.404Z",
    "per_commit": {
-    "weighted_tokens": 782865,
+    "weighted_tokens": 224873,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 70,
-     "returned_chars": 86734
+     "calls": 168,
+     "returned_chars": 191731
     },
     "ReadNotifications": {
-     "calls": 4,
-     "returned_chars": 14084
+     "calls": 8,
+     "returned_chars": 31924
     },
     "WebFetch": {
      "calls": 7,
@@ -2245,77 +2375,77 @@
      "returned_chars": 3513
     },
     "Write": {
-     "calls": 6,
-     "returned_chars": 1008
+     "calls": 11,
+     "returned_chars": 1814
     },
     "connector tools": {
-     "calls": 7,
-     "returned_chars": 326
+     "calls": 13,
+     "returned_chars": 544
+    },
+    "Read": {
+     "calls": 10,
+     "returned_chars": 149
     },
     "ToolSearch": {
      "calls": 2,
      "returned_chars": 0
-    },
-    "Read": {
-     "calls": 5,
-     "returned_chars": 0
     }
    },
-   "last_task": "hourly round 11:38; OpenSky rolling-window fix (union of readings, uncovered hours null)",
+   "last_task": "second session start: key, vault key opened, store cloned; Metro GTFS timetable, STCP buses, Fertagus log; round 12:17",
    "quality": "n/a"
   },
   {
    "agent": "incident.weather@web-summit.dinis",
    "role": "weather",
-   "sessions_recorded": 3,
-   "commits": 38,
+   "sessions_recorded": 4,
+   "commits": 50,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/weather.jsonl",
-   "measured_at": "2026-11-11T11:29:57Z",
-   "sessions_measured": 3,
-   "lines": 11,
+   "measured_at": "2026-11-11T12:28:01Z",
+   "sessions_measured": 4,
+   "lines": 14,
    "tokens": {
-    "calls": 322,
-    "fresh_input": 653,
-    "output": 281287,
-    "cache_writes": 1934711,
-    "cache_reads": 85892931,
-    "without_cache_reads": 2216651,
-    "all": 88109582,
-    "cache_reads_share": 0.9748,
-    "weighted": 10805944
+    "calls": 410,
+    "fresh_input": 828,
+    "output": 331713,
+    "cache_writes": 2097332,
+    "cache_reads": 100148420,
+    "without_cache_reads": 2429873,
+    "all": 102578293,
+    "cache_reads_share": 0.9763,
+    "weighted": 12444715
    },
    "context_per_call": {
-    "first": 83353,
-    "median": 141625,
-    "largest": 191217,
-    "last": 191217
+    "first": 83245,
+    "median": 158748,
+    "largest": 198634,
+    "last": 198634
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-11T02:08:44.920Z",
-   "last_call": "2026-11-11T11:29:50.101Z",
+   "last_call": "2026-11-11T12:27:53.189Z",
    "per_commit": {
-    "weighted_tokens": 284367,
+    "weighted_tokens": 248894,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 230,
-     "returned_chars": 472962
+     "calls": 293,
+     "returned_chars": 576616
     },
     "ReadNotifications": {
-     "calls": 27,
-     "returned_chars": 129732
+     "calls": 34,
+     "returned_chars": 157405
     },
     "Edit": {
      "calls": 5,
      "returned_chars": 855
     },
     "connector tools": {
-     "calls": 36,
-     "returned_chars": 792
+     "calls": 44,
+     "returned_chars": 47000
     },
     "Write": {
      "calls": 2,
@@ -2326,7 +2456,7 @@
      "returned_chars": 24
     },
     "Read": {
-     "calls": 43,
+     "calls": 46,
      "returned_chars": 48498
     },
     "Monitor": {
@@ -2334,118 +2464,118 @@
      "returned_chars": 302
     },
     "ToolSearch": {
-     "calls": 1,
+     "calls": 4,
      "returned_chars": 0
     }
    },
-   "last_task": null,
-   "quality": "n/a"
+   "last_task": "12:00 check (all six points true on live v0.1.1082); fixed a class clash in the earlier-today rows; team panel on a phone; hand-over",
+   "quality": "pass"
   },
   {
    "agent": "incident.weatherwatch@web-summit.dinis",
    "role": "weatherwatch",
    "sessions_recorded": 3,
-   "commits": 44,
+   "commits": 48,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/weatherwatch.jsonl",
-   "measured_at": "2026-11-11T11:34:07Z",
+   "measured_at": "2026-11-11T12:35:15Z",
    "sessions_measured": 3,
-   "lines": 15,
+   "lines": 16,
    "tokens": {
-    "calls": 263,
-    "fresh_input": 523,
-    "output": 315591,
-    "cache_writes": 1075764,
-    "cache_reads": 72655759,
-    "without_cache_reads": 1391878,
-    "all": 74047637,
-    "cache_reads_share": 0.9812,
-    "weighted": 8657454
+    "calls": 272,
+    "fresh_input": 540,
+    "output": 326258,
+    "cache_writes": 1099580,
+    "cache_reads": 74218588,
+    "without_cache_reads": 1426378,
+    "all": 75644966,
+    "cache_reads_share": 0.9811,
+    "weighted": 8848237
    },
    "context_per_call": {
     "first": 84340,
-    "median": 132479,
-    "largest": 164835,
-    "last": 164835
+    "median": 140009,
+    "largest": 188651,
+    "last": 188651
    },
    "compactions": 0,
    "subagents": 0,
    "first_call": "2026-11-10T23:37:22.569Z",
-   "last_call": "2026-11-11T11:33:42.686Z",
+   "last_call": "2026-11-11T12:35:08.495Z",
    "per_commit": {
-    "weighted_tokens": 196760,
+    "weighted_tokens": 184338,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 178,
-     "returned_chars": 542448
+     "calls": 183,
+     "returned_chars": 554128
     },
     "ReadNotifications": {
-     "calls": 24,
-     "returned_chars": 92199
+     "calls": 25,
+     "returned_chars": 95550
     },
     "connector tools": {
-     "calls": 36,
-     "returned_chars": 46649
+     "calls": 38,
+     "returned_chars": 46693
     },
     "Write": {
      "calls": 1,
      "returned_chars": 213
     },
     "Read": {
-     "calls": 38,
+     "calls": 39,
      "returned_chars": 32089
     }
    },
-   "last_task": "11:33 hourly re-read (48 addresses, CAP feed first); front page checked against the 09:40 review",
+   "last_task": "12:33 hourly re-read (communiqué no. 3; CAP batch); review of / after 12:00; hand-over",
    "quality": "pass"
   },
   {
    "agent": "incident.wikipedia@web-summit.dinis",
    "role": "wikipedia",
    "sessions_recorded": 2,
-   "commits": 16,
+   "commits": 17,
    "commits_source": "data/ci/index.json",
    "kind": "measured",
    "source": "accounts/ledger/wikipedia.jsonl",
-   "measured_at": "2026-11-11T10:55:30Z",
+   "measured_at": "2026-11-11T11:55:19Z",
    "sessions_measured": 2,
-   "lines": 10,
+   "lines": 11,
    "tokens": {
-    "calls": 165,
-    "fresh_input": 322,
-    "output": 186304,
-    "cache_writes": 565250,
-    "cache_reads": 34483159,
-    "without_cache_reads": 751876,
-    "all": 35235035,
-    "cache_reads_share": 0.9787,
-    "weighted": 4200192
+    "calls": 171,
+    "fresh_input": 333,
+    "output": 191578,
+    "cache_writes": 571811,
+    "cache_reads": 35606172,
+    "without_cache_reads": 763722,
+    "all": 36369894,
+    "cache_reads_share": 0.979,
+    "weighted": 4324339
    },
    "context_per_call": {
     "first": 84051,
-    "median": 131430,
-    "largest": 183845,
-    "last": 183845
+    "median": 133970,
+    "largest": 190936,
+    "last": 190936
    },
    "compactions": 0,
    "subagents": 1,
    "first_call": "2026-11-11T01:27:05.164Z",
-   "last_call": "2026-11-11T10:55:17.506Z",
+   "last_call": "2026-11-11T11:54:47.988Z",
    "per_commit": {
-    "weighted_tokens": 262512,
+    "weighted_tokens": 254373,
     "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
    },
    "tools": {
     "Bash": {
-     "calls": 120,
-     "returned_chars": 335131
+     "calls": 123,
+     "returned_chars": 336493
     },
     "ReadNotifications": {
-     "calls": 12,
-     "returned_chars": 49194
+     "calls": 13,
+     "returned_chars": 52443
     },
     "Write": {
      "calls": 9,
@@ -2456,8 +2586,8 @@
      "returned_chars": 1065
     },
     "connector tools": {
-     "calls": 8,
-     "returned_chars": 154
+     "calls": 9,
+     "returned_chars": 176
     },
     "Skill": {
      "calls": 1,
@@ -2468,7 +2598,7 @@
      "returned_chars": 31744
     }
    },
-   "last_task": "10:48 wake: thirteenth read; pt gains the Canaries and a Spain section; Lisbon's lowered wind warning tracked as a key fact Wikipedia lacks",
+   "last_task": "11:49 wake: fourteenth read (a bot edit on pt); HANDOVER.md brought up to date",
    "quality": "pass"
   }
  ]
