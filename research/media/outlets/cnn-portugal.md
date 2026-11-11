@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 12:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 50: 16 articles, 0 live, 34 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 12:18 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 41 not read; wire share 67% |
+| Items we read | 55: 17 articles, 0 live, 38 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 13:07 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 46 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -25,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 50 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 55 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -104,3 +104,8 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 11:41 | video | not read | [Tempestade Charles mudou de trajetória: "Felizmente, enfraqueceu" ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-mudou-de-trajetoria-felizmente-enfraqueceu/6af449280cf2051820fb147a) |
 | 11 Nov 12:07 | video | not read | [Tempestade Charles fecha barra do Douro e suspende travessias fluviais entre Porto e Gaia ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-fecha-barra-do-douro-e-suspende-travessias-fluviais-entre-porto-e-gaia/6af4448a0cf2cb2507aa8436) |
 | 11 Nov 12:18 | article | not read | [Governo volta a apelar à prevenção e garante que "a parte mais difícil" ainda está por vir ↗](https://cnnportugal.iol.pt/depressao-charles/tempestade/governo-volta-a-apelar-a-prevencao-e-garante-que-a-parte-mais-dificil-ainda-esta-por-vir/20261111/6af45685d34e9ce6f1b43ef0) |
+| 11 Nov 12:28 | video | not read | [Tempestade Charles: muita água na estrada em Queluz e alerta para quem vai entrar no IC19 ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-muita-agua-na-estrada-em-queluz-e-alerta-para-quem-vai-entrar-no-ic19/6af459760cf2051820fb14a9) |
+| 11 Nov 12:58 | article | not read | ["Proteger a vida de uns e a dos restantes não, é hipocrisia". Pingo Doce fecha lojas devido à tempe… ↗](https://cnnportugal.iol.pt/pingo-doce/funcionarios-pingo-doce/proteger-a-vida-de-uns-e-a-dos-restantes-nao-e-hipocrisia-pingo-doce-fecha-lojas-devido-a-tempestade-mas-convoca-trabalhadores-para-fazer-reposicao-durante-todo-o-dia/20261111/6af3bc23d34e5a653d733ada) |
+| 11 Nov 13:06 | video | not read | [Tempestade Charles desloca-se para sul. Proteção Civil admite menor impacto em Lisboa e maior no Al… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-desloca-se-para-sul-protecao-civil-admite-menor-impacto-em-lisboa-e-maior-no-alentejo-e-algarve/6af462a10cf2cb2507aa84f7) |
+| 11 Nov 13:06 | video | not read | [Tempestade Charles divide-se em dois núcleos. IPMA avisa que chuva e vento forte continuam a preocu… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-divide-se-em-dois-nucleos-ipma-avisa-que-chuva-e-vento-forte-continuam-a-preocupar/6af45cc40cf2051820fb14b6) |
+| 11 Nov 13:07 | video | not read | [Tempestade Charles: chuva intensa pode provocar inundações e perturbar o trânsito em Lisboa ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-chuva-intensa-pode-provocar-inundacoes-e-perturbar-o-transito-em-lisboa/6af459b70cf235b99ef5093f) |

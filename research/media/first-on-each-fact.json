@@ -2,7 +2,7 @@
  "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T12:38:28Z",
+ "updated": "2026-11-11T13:38:47Z",
  "lag_rule": "minutes_after_primary = whole minutes elapsed, truncated toward zero (19:09:00 to 19:41:31 is 32 minutes, not 33); seconds_after_primary carries the exact difference. Times are each page's own, to the second where the page gives seconds.",
  "shape_for_other_series": "To put another series (for example Wikipedia's first edit per fact) on the same axis: for each fact id here, a row {fact, series (e.g. \"wikipedia-pt\"), at (UTC), title or summary, url, via, seconds_after_primary, minutes_after_primary}. first-on-each-fact.json's facts[].first_by_outlet[] rows have that shape with `outlet` as the series and `published` as `at`.",
  "facts": [
@@ -763,7 +763,7 @@
    "primary_time": "2026-11-10T22:35:24Z",
    "primary_note": "a spoken statement to Rádio Observador; the reference is the earliest text we read (Observador's live blog, 22:35:24). IPMA's own channels had not changed at 00:29 on 11 November (fact 7)",
    "primary_label": "evidence",
-   "items_matched": 12,
+   "items_matched": 11,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -916,6 +916,18 @@
    ]
   },
   {
+   "id": "16-day3-confirmed",
+   "what": "Web Summit confirms Day 3 (Thursday 12 November) goes ahead, with part of Wednesday's programme moved to Thursday",
+   "primary_time": null,
+   "primary_note": "primary time unknown: the organisers' message went to participants by email and, per PrompTugal's social.watch desk, a blog post titled \"Announcement\" at 12:04 (from the blog's index; not read here: the organisers' pages are on hold, their terms forbid automated reading). Their 19:09 update of 10 November already said Day 3 \"aims to proceed as planned\". Timeline rows s-1111T1252 and s-1111T1305. The window starts at 11:00 so that Tuesday's \"aims to proceed\" coverage is not counted",
+   "primary_label": "unknown",
+   "notes": [
+    "Added 13:38 UTC by the third session. Público's title \"já confirmou o regresso amanhã\" (article 12:00, updated 12:17) is earlier than the 12:04 post if its 12:00 is its first time: read by hand before saying who was first."
+   ],
+   "items_matched": 0,
+   "first_by_outlet": []
+  },
+  {
    "id": "13-communique-3",
    "what": "IPMA's communiqué no. 3: Charles has split into two low-pressure centres, so less deepening and less wind than forecast the day before; persistent heavy rain; the warnings adjusted",
    "primary_time": "2026-11-11T12:16:26Z",
@@ -934,7 +946,20 @@
    "primary_note": "IPMA's CAP batch sent 12:18:03 (18 messages), seen in MeteoAlarm's feed at 12:33 by incident.weatherwatch@ (timeline row s-1111T1234). Matched on titles",
    "primary_label": "fact",
    "notes": [
-    "Added 12:38 UTC by the third session. Candidate for a hand check: ECO's title \"IPMA atualiza para oito os distritos em aviso vermelho\" carries the time 11:38, before the 12:18:03 batch (a title changed after publication, or an earlier change: not checked)."
+    "Added 12:38 UTC by the third session. Candidate for a hand check: ECO's title \"IPMA atualiza para oito os distritos em aviso vermelho\" carries the time 11:38, before the 12:18:03 batch (a title changed after publication, or an earlier change: not checked).",
+    "13:38 UTC: ECO's item is feed-only (its pages are not opened), so whether its 11:38:06 title was changed later cannot be read here; it stays outside the window and is not counted."
+   ],
+   "items_matched": 0,
+   "first_by_outlet": []
+  },
+  {
+   "id": "15-lisbon-warnings-shortened",
+   "what": "IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places",
+   "primary_time": "2026-11-11T12:33:13Z",
+   "primary_note": "IPMA's CAP batch sent 12:33:13 (nine messages), first seen in MeteoAlarm's Portugal feed at 12:46:20 by incident.meteorology@; IPMA's warnings page shows the same at 13:25 (timeline row s-1111T1247). Matched on titles; \"reduz ... alerta ... Lisboa\" is left out of the pattern because DN's live page keeps fact 12's headline on later entries",
+   "primary_label": "fact",
+   "notes": [
+    "Added 13:38 UTC by the third session."
    ],
    "items_matched": 0,
    "first_by_outlet": []

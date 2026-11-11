@@ -1,13 +1,13 @@
 # Expresso: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 12:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | weekly, online daily (pt) |
-| Items we read | 29: 29 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:21 to 11 Nov 11:34 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 29 not read |
+| Items we read | 32: 32 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:21 to 11 Nov 12:01 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 32 not read |
 | Does best (from the counts) | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 
 ## Against the key moments
@@ -23,7 +23,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 29 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 32 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -66,7 +66,7 @@ Its public contact page was not found by our reader (start at [Expresso ↗](htt
 | 10 Nov 23:47 | article | not read | [Depressão Charles chega à Madeira com chuva e vento fortes (veja as imagens) ↗](https://expresso.pt/curtas/2026-11-10-video-depressao-charles-chega-a-madeira-com-chuva-e-vento-fortes--veja-as-imagens--85beb1ff) |
 | 10 Nov 23:54 | article | not read | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa e Norte mais resguardado ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
 | 11 Nov 06:07 | article | not read | [A tempestade Charles e a depressão Carlos ↗](https://expresso.pt/opiniao/2026-11-11-a-tempestade-charles-e-a-depressao-carlos-9a2731d2) |
-| 11 Nov 06:50 | article | not read | [Depressão Charles dividiu-se em dois núcleos menos intensos do que o previsto. Aviso de vento para… ↗](https://expresso.pt/tempestades/2026-11-11-mau-tempo-depressao-charles-desviou-trajetoria-na-madeira-o-pior-ja-passou--mas-vento-chegou-aos-130-kms-h--27a81536) |
+| 11 Nov 06:50 | article | not read | [Depressão Charles: Proteção Civil alerta que pico do vento e chuva será entre as 15h e as 18h ↗](https://expresso.pt/tempestades/2026-11-11-mau-tempo-depressao-charles-desviou-trajetoria-na-madeira-o-pior-ja-passou--mas-vento-chegou-aos-130-kms-h--27a81536) |
 | 11 Nov 06:50 | article | not read | [Trajetória da depressão Charles desviou-se para sul, um homem foi resgatado das águas na Madeira (o… ↗](https://expresso.pt/tempestades/2026-11-11-depressao-charles-desviou-trajetoria-na-madeira-o-pior-ja-passou--mas-chegou-aos-130-kms-h--27a81536) |
 | 11 Nov 06:50 | article | not read | [Depressão Charles desviou trajetória para Sul, na Madeira o pior já passou (mas chegou aos 130 kms/… ↗](https://expresso.pt/tempestades/2026-11-11-depressao-charles-desviou-trajetoria-para-sul-na-madeira-o-pior-ja-passou--mas-chegou-aos-130-kms-h--27a81536) |
 | 11 Nov 06:51 | article | not read | [Tempestade Charles: o mapa para ver a localização das ocorrências em tempo real ↗](https://multimedia.expresso.pt/tempestadecharles) |
@@ -74,5 +74,8 @@ Its public contact page was not found by our reader (start at [Expresso ↗](htt
 | 11 Nov 07:15 | article | not read | [A tempestade Charles e Moedas deseja um Natal sem tendas no Rossio ↗](https://expresso.pt/podcasts/lei-da-paridade/2026-11-11-a-tempestade-charles-e-moedas-deseja-um-natal-sem-tendas-no-rossio-645118e3) |
 | 11 Nov 08:38 | article | not read | [Há muita água nas estradas da região de Lisboa ↗](https://expresso.pt/tempestades/2026-11-11-video-ha-muita-agua-nas-estradas-da-regiao-de-lisboa-3703ff58) |
 | 11 Nov 09:47 | article | not read | [Depressão Charles: regulador dos seguros recomenda verificar cobertura e conservar provas em caso d… ↗](https://expresso.pt/tempestades/2026-11-11-depressao-charles-regulador-dos-seguros-recomenda-verificar-cobertura-e-conservar-provas-em-caso-de-danos-f54a7abb) |
+| 11 Nov 10:48 | article | not read | [Tempestade Charles trouxe mais chuva à Madeira do que em 2010, mas sem ocorrências graves ↗](https://expresso.pt/tempestades/2026-11-11-tempestade-charles-trouxe-mais-chuva-a-madeira-do-que-em-2010-mas-sem-ocorrencias-graves-5eda2a45) |
 | 11 Nov 10:48 | article | not read | [Madeira escapou à tragédia: tempestade Charles trouxe mais chuva do que em 2010, mas sem ocorrência… ↗](https://expresso.pt/tempestades/2026-11-11-madeira-escapou-a-tragedia-tempestade-charles-trouxe-mais-chuva-do-que-em-2010-mas-sem-ocorrencias-graves-5eda2a45) |
 | 11 Nov 11:34 | article | not read | [Madeira teve chuva forte e ventos de 130 km/h: pico da tempestade já passou e alerta baixou (veja a… ↗](https://expresso.pt/curtas/2026-11-11-video-madeira-teve-chuva-forte-e-ventos-de-130-km-h-pico-da-tempestade-ja-passou-e-alerta-baixou--veja-as-imagens--5260821f) |
+| 11 Nov 12:01 | article | not read | [SIRESP processou perto de 5 milhões de chamadas e sem registo de "constrangimentos" ↗](https://expresso.pt/tempestades/2026-11-11-siresp-processou-perto-de-5-milhoes-de-chamadas-e-sem-registo-de-constrangimentos-c217c70f) |
+| 11 Nov 12:01 | article | not read | [Depressão “Charles” perde intensidade, mas prevenção tem de manter-se. Algarve deve ser a zona mais… ↗](https://expresso.pt/tempestades/2026-11-11-depressao-charles-perde-intensidade-mas-prevencao-tem-de-manter-se.-algarve-deve-ser-a-zona-mais-afetada-fadb3d6f) |

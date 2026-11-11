@@ -1,13 +1,13 @@
 # Euronews: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 12:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | international broadcaster (en,pt) |
-| Items we read | 2: 2 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 20:29 to 10 Nov 20:30 UTC |
-| Whose reporting | 2 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 0 not read; wire share 0% |
+| Items we read | 3: 2 articles, 0 live, 1 video, 0 opinion |
+| First and last | 10 Nov 20:29 to 11 Nov 13:27 UTC |
+| Whose reporting | 2 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 1 not read; wire share 0% |
 | Does best (from the counts) | coverage in English |
 
 ## Against the key moments
@@ -20,7 +20,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 2 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 3 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -51,3 +51,4 @@ Pascale Davies (2). A by-line is a public professional credit; nothing else abou
 |---|---|---|---|
 | 10 Nov 20:29 | article | Pascale Davies | [Web Summit Lisbon day 2 cancelled due to Storm Charles ↗](https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles) |
 | 10 Nov 20:30 | article | Pascale Davies | [Web Summit cancela segundo dia em Lisboa devido à tempestade Charles ↗](https://pt.euronews.com/2026/11/10/portugal-web-summit-cancela-segundo-dia-em-lisboa-devido-a-tempestade-charles) |
+| 11 Nov 13:27 | video | not read | [Video. Storm Charles: Heavy rain and strong winds batter Portugal ↗](https://www.euronews.com/video/2026/11/11/storm-charles-heavy-rain-and-strong-winds-batter-portugal) |
