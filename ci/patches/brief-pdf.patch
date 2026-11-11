@@ -1,29 +1,24 @@
 diff --git a/.github/workflows/deploy.yml b/.github/workflows/deploy.yml
-index 2ad7267b..450a6a67 100644
+index 2ad7267b..30afcfd0 100644
 --- a/.github/workflows/deploy.yml
 +++ b/.github/workflows/deploy.yml
-@@ -36,6 +36,35 @@ jobs:
+@@ -36,6 +36,30 @@ jobs:
            echo "PUSHED_AT=${{ github.event.head_commit.timestamp }}" >> "$GITHUB_ENV"
        - name: Build and gate (the gate builds once; must print OK)
          run: node admin/build/validate.mjs
 +      # The brief's PDFs (incident.brief@'s tools/brief-pdf.mjs; ci/patches/README.md). Never in git: rendered here from the
 +      # built page and served beside it. Every deploy replaces the whole site, so they are kept in a cache keyed on the
-+      # files the page is drawn from: a push that does not touch the brief only copies them (a second or two); a push
-+      # that does installs Chromium and renders. Nothing here can fail the deploy: a miss that cannot render serves no PDF.
-+      - name: Brief PDFs, the key
-+        id: briefkey
-+        continue-on-error: true
-+        run: |
-+          echo "key=$(node tools/brief-pdf.mjs --inputs 2>&1 >/dev/null | sed -n 's/^key: //p')" >> "$GITHUB_OUTPUT"
++      # brief's own files only (brief/** and its two tools: no live data, and not the shared build, frame or styles, which
++      # change many times an hour): a push that does not touch the brief only copies them (a second or two); a push that
++      # publishes or edits an edition installs Chromium and renders. Nothing here can fail the deploy: a miss that cannot render serves no PDF.
 +      - id: briefcache
-+        if: steps.briefkey.outputs.key != ''
 +        continue-on-error: true
 +        uses: actions/cache@v4
 +        with:
 +          path: .brief-pdf
-+          key: brief-pdf-v1-${{ steps.briefkey.outputs.key }}
++          key: brief-pdf-v1-${{ hashFiles('brief/**', 'tools/brief-make.mjs', 'tools/brief-pdf.mjs') }}
 +      - name: Brief PDFs, rendered (only when the brief changed)
-+        if: steps.briefkey.outputs.key != '' && steps.briefcache.outputs.cache-hit != 'true'
++        if: steps.briefcache.outputs.cache-hit != 'true'
 +        continue-on-error: true
 +        timeout-minutes: 2
 +        run: |
