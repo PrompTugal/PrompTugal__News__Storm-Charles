@@ -57,7 +57,18 @@ for (const f of walk(IN, n => n === 'capture.json').sort()) {
         robots: c.robots, client: c.client, by: BY, updated: now(),
     }
     if (c.captured) {
-        fs.cpSync(dir, path.join(CV, c.id), { recursive: true })
+        // a re-read that says the same as the capture before keeps only its small files in the private vault (the summary and
+        // the visible text): the HTML and pictures of that load are not stored twice; their hashes stay in the record
+        const stable = (host, t) => { const vol = sourceOf(host).volatile; if (!vol) return null; for (const re of vol) t = t.replace(new RegExp(re, 'g'), ''); return crypto.createHash('sha256').update(t.replace(/\s+/g, ' ').trim()).digest('hex') }
+        const before = [...byId.values()].filter(x => x.url === c.url && x.captured && !x.failed && x.read_utc < c.read_utc).sort((a, b) => a.read_utc.localeCompare(b.read_utc)).pop()
+        let mine = null; try { mine = stable(c.host, fs.readFileSync(path.join(dir, 'text.txt'), 'utf8')) } catch { /* no text */ }
+        if (mine) rec.sha256_text_stable = mine
+        const sameAsBefore = before && c.status === before.status && (mine || c.sha256_text) === (before.sha256_text_stable || before.sha256_text)
+        if (sameAsBefore) {
+            const full = before.capture_vault?.full_copy || before.id
+            for (const n of ['capture.json', 'text.txt']) if (fs.existsSync(path.join(dir, n))) { fs.mkdirSync(path.join(CV, c.id), { recursive: true }); fs.copyFileSync(path.join(dir, n), path.join(CV, c.id, n)) }
+            rec.capture_vault = { id: vid('capture'), path: c.id, files: ['capture.json', 'text.txt'], full_copy: full, note: 'Unchanged from the capture before: the HTML and pictures of this load were hashed and not stored again; the full copy is at full_copy.' }
+        } else fs.cpSync(dir, path.join(CV, c.id), { recursive: true })
         if (rec.shown) for (const n of ['screenshot.jpg', 'screenshot-clean.jpg', 'frame.jpg', 'frame-clean.jpg', 'capture.json']) if (fs.existsSync(path.join(dir, n))) { fs.mkdirSync(path.join(DV, c.id), { recursive: true }); fs.copyFileSync(path.join(dir, n), path.join(DV, c.id, n)) }
     }
     byId.set(rec.id, rec); added++
