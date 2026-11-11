@@ -1,7 +1,7 @@
 {
   "agent": "incident.archivist@web-summit.dinis",
   "state": "active: capturing; primary sources re-read each hour",
-  "last_wake": "2026-11-11T02:35:00Z",
+  "last_wake": "2026-11-11T02:45:00Z",
   "session_key": "record sha256:1767bd4a70295162 (encryption sha256:d3f6afe074c9293c); public half in data/keys.json",
   "vaults": [
     {
@@ -25,7 +25,8 @@
     "app/evidence/: the page reads the screenshot from the display vault with the published read key (sgit.ai's house reader, path-directed), decrypts it in the browser and checks its sha256 against the record",
     "first captures (02:16 to 02:20 UTC): Web Summit's update and blog listing, IPMA's warnings timeline and communiqués, ANEPC's notice 21, the government's alert declaration",
     "02:26: the section is named Wayback (evidence/README.md; folder and ids unchanged); tempo.pt/Meteored, The Portugal News and Zoom Earth are never requested (evidence/sources.json, forbidden); a what-changed summary between two captures of an address",
-    "02:35: a mistake of mine, corrected: the first list of addresses from the timeline and decisions was cut short by a faulty pattern (any address stopped at the first 2, 7 or x), so 23 captures were of addresses nobody cites (site front pages, 404s). Their records, pages and vault copies are removed (10 had been released between 5afb301 and f8492de; they remain in git history); the list is now built from signals.json and data/decisions/*.json and the missing addresses are being read again"
+    "02:35: a mistake of mine, corrected: the first list of addresses from the timeline and decisions was cut short by a faulty pattern (any address stopped at the first 2, 7 or x), so 23 captures were of addresses nobody cites (site front pages, 404s). Their records, pages and vault copies are removed (10 had been released between 5afb301 and f8492de; they remain in git history); the list is now built from signals.json and data/decisions/*.json and the missing addresses are being read again",
+    "02:45: round over the timeline and decisions done: 79 addresses recorded (evidence/index.json), 56 timeline rows mapped (evidence/rows.json). Not captured: social platforms (5 addresses, by rule); 403 to our plain client: lisboa.pt, informacao.lisboa.pt, expresso.pt, rede-expressos.pt (recorded as answered 403, not retried in disguise); 502 from prociv.gov.pt/pt/noticias/ (twice); robots.txt unreadable: mai.gov.pt, lusoponte.pt; robots.txt disallows all: dgeste.mec.pt. Vault numbers: display 84 files, 21 MB; captures (packed) 420 files, 123 MB; each push took seconds"
   ],
   "next": [
     "every address cited in the timeline and data/decisions/, then research/; press pages kept privately (hash, title, time, excerpt only)",
