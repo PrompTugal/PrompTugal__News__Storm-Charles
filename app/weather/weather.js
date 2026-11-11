@@ -131,9 +131,18 @@
     return D.warn ? '<ul class="wxc-days" aria-label="Highest IPMA warning level for Lisbon, by day">' + out.join('') + '</ul>' : ''
   }
 
-  function communique(t) {
+  // the communiqué in force, in one line under the band: its number (from IPMA's title), its validity and when IPMA's feed last listed it
+  function commLine(t) {
+    var c = commNow(t); if (!c) return ''
+    var m = String(c.title || '').match(/comunicado\s+n\S*\s*\d+/i)
+    return '<p class="wxc-comm">IPMA <a href="' + esc(ROOM.comm) + '"><span lang="pt">' + esc(m ? m[0] : 'comunicado') + '</span></a> <span>· valid to ' + when(c.valid_to_utc, t) + ' UTC</span>' + (ok(c.last_seen_utc) ? ' <span>· last seen in IPMA\'s feed ' + when(c.last_seen_utc, t) + '</span>' : '') + '</p>'
+  }
+  function commNow(t) {
     var its = ((D.comm || {}).items || []).filter(function (c) { return ok(c.valid_to_utc) && T(c.valid_to_utc) > t && ok(c.issued_utc) && /continente|lisboa/i.test(c.title || '') }).sort(function (a, b) { return T(b.issued_utc) - T(a.issued_utc) })
-    var c = its[0]; if (!c) return ''
+    return its[0] || null
+  }
+  function communique(t) {
+    var c = commNow(t); if (!c) return ''
     return '<p class="meta wxc-where">IPMA communiqué in force: <span lang="pt">' + esc(c.title) + '</span>. Issued ' + when(c.issued_utc, t) + ' UTC, valid to ' + when(c.valid_to_utc, t) + (ok(c.last_seen_utc) ? ', last seen in IPMA\'s feed ' + when(c.last_seen_utc, t) : '') + '. ' + prov('comm', 'IPMA communiqués', D.comm.read_utc) + '</p>'
   }
 
@@ -156,6 +165,7 @@
     var gust = function (w) { var m = w.type === 'Vento' && String(w.text_pt || '').match(/(\d+)\s*km\/h/); return m ? ' (IPMA: gusts up to ' + m[1] + ' km/h)' : '' }
     var cur = live[0] || null, part = function (w) { return '<b>' + esc(EN[w.type] || w.type) + '</b> ' + (T(w.start_utc) <= t ? 'until ' + when(w.end_utc, t) : when(w.start_utc, t) + ' to ' + when(w.end_utc, t)) + gust(w) }
     var sentence = cur ? live.filter(function (w) { return w.level === cur.level }).map(part).join(' · ') : ''
+    var also = cur ? live.filter(function (w) { return w.level !== cur.level }).map(function (w) { return '<span class="wxc-also-l">' + esc(w.level) + '</span> ' + part(w) }).join(' · ') : ''
     // still to come today: the highest level among the warnings not yet started (shown when it is higher than what is in force, or when nothing is)
     var coming = today.filter(function (w) { return T(w.start_utc) > t }), up = null
     coming.forEach(function (w) { if (!up || RANK[w.level] > RANK[up.level] || (RANK[w.level] === RANK[up.level] && T(w.start_utc) < T(up.start_utc))) up = w })
@@ -165,8 +175,8 @@
     var where = Object.keys(reds).length ? '<p class="meta wxc-where">IPMA red warnings also in force or expected in: ' + esc(Object.keys(reds).sort().join(', ')) + '.</p>' : ''
     return '<section class="wxc-hero" aria-labelledby="wxc-now">' +
       '<div class="wxc-top"><p class="kicker">' + esc(I.kicker || 'Storm Charles') + '</p><p class="wxc-clock"><time datetime="' + iso(t) + '">' + '<span class="wxc-dl">' + esc(longDay(t)) + '</span><span class="wxc-ds">' + esc(loc(t, { weekday: 'short', day: 'numeric', month: 'short' })) + '</span>, ' + hm(t) + ' UTC</time> <span class="wxc-dl">(Lisbon time)</span></p></div>' +
-      '<div class="wxc-level' + (cur ? ' w-' + esc(cur.level) : '') + '"><h2 class="wxc-h" id="wxc-now">' + (cur ? '<span class="wxc-word">' + esc(cur.level) + '</span> <span class="wxc-h1b">IPMA warning in force in Lisbon now</span>' : D.warn ? '<span class="wxc-h1b">No IPMA warning above green is in force in Lisbon now</span>' : '<span class="wxc-h1b">Storm Charles, Lisbon</span>') + '</h2>' + (sentence ? '<p class="wxc-say">' + sentence + '</p>' : '') + '</div>' + channelNote(t) + upLine +
-      dayChips(t) + nowTiles(t) +
+      '<div class="wxc-level' + (cur ? ' w-' + esc(cur.level) : '') + '"><h2 class="wxc-h" id="wxc-now">' + (cur ? '<span class="wxc-word">' + esc(cur.level) + '</span> <span class="wxc-h1b">IPMA warning in force in Lisbon now</span>' : D.warn ? '<span class="wxc-h1b">No IPMA warning above green is in force in Lisbon now</span>' : '<span class="wxc-h1b">Storm Charles, Lisbon</span>') + '</h2>' + (sentence ? '<p class="wxc-say">' + sentence + '</p>' : '') + (also ? '<p class="wxc-also">Also in force: ' + also + '</p>' : '') + '</div>' + channelNote(t) + upLine +
+      commLine(t) + dayChips(t) + nowTiles(t) +
       '<div class="wxc-hero-cols"><div>' +
       (D.warn ? '<h2 class="wxc-sub">' + (live.length ? 'In force this hour' : 'No IPMA warning above green is in force in Lisbon this hour') + '</h2>' + (live.length ? '<ul class="wxc-ws">' + live.map(line).join('') + '</ul>' : '') + closedStrip(t) : '<p class="meta">The warnings file could not be read.</p>') +
       '</div><div>' +
@@ -181,13 +191,14 @@
     var wet = null, windiest = null
     st.forEach(function (s) { var l = s.latest; if (!l) return; if (l.rain_mm != null && (!wet || l.rain_mm > wet.latest.rain_mm)) wet = s; if (l.wind_mean_kmh != null && (!windiest || l.wind_mean_kmh > windiest.latest.wind_mean_kmh)) windiest = s })
     ;((D.rain || {}).stations || []).forEach(function (s) { var l = (s.hourly || [])[s.hourly.length - 1]; if (l && l.rain_mm != null && (!wet || l.rain_mm > (wet.latest || wet._l).rain_mm)) wet = { name: s.name, _l: l, latest: l } })
+    var before = function (type, at) { var w = lisbonWarnings().filter(function (w) { return w.type === type && status(w, t) === 'in force' }).sort(function (a, b) { return RANK[b.level] - RANK[a.level] })[0]; return w && T(at) <= T(w.start_utc) ? 'before IPMA\'s ' + esc(w.level) + ' ' + esc((EN[w.type] || w.type).toLowerCase()) + ' warning began (' + when(w.start_utc, t) + ')' : '' }
     var tiles = []
     if (geo) tiles.push(['Temperature', num(geo.latest.temp_c, 1) + '<small>°C</small>', esc(geo.name) + ', the hour to ' + hm(geo.latest.time_utc), prov('stations', 'IPMA stations', geo.read_utc), T(geo.latest.time_utc)])
-    if (wet) tiles.push(['Rain, the hour to ' + hm(wet.latest.time_utc), num(wet.latest.rain_mm, 1) + '<small>mm</small>', 'the wettest of IPMA\'s Lisbon stations: ' + esc(wet.name) + ', the hour to ' + hm(wet.latest.time_utc), prov('rain', 'IPMA stations', (D.rain || D.stations).read_utc), T(wet.latest.time_utc)])
-    if (windiest) tiles.push(['Wind, hourly mean', arrow(windiest.latest.wind_dir) + num(windiest.latest.wind_mean_kmh) + '<small>km/h ' + esc(windiest.latest.wind_dir || '') + '</small>', 'the windiest station: ' + esc(windiest.name) + ', the hour to ' + hm(windiest.latest.time_utc) + '. A mean, not a gust', prov('stations', 'IPMA stations', windiest.read_utc), T(windiest.latest.time_utc)])
+    if (wet) tiles.push(['Rain, the hour to ' + hm(wet.latest.time_utc), num(wet.latest.rain_mm, 1) + '<small>mm</small>', 'the wettest of IPMA\'s Lisbon stations: ' + esc(wet.name) + ', the hour to ' + hm(wet.latest.time_utc), prov('rain', 'IPMA stations', (D.rain || D.stations).read_utc), T(wet.latest.time_utc), before('Precipitação', wet.latest.time_utc)])
+    if (windiest) tiles.push(['Wind, hourly mean', arrow(windiest.latest.wind_dir) + num(windiest.latest.wind_mean_kmh) + '<small>km/h ' + esc(windiest.latest.wind_dir || '') + '</small>', 'the windiest station: ' + esc(windiest.name) + ', the hour to ' + hm(windiest.latest.time_utc) + '. A mean, not a gust', prov('stations', 'IPMA stations', windiest.read_utc), T(windiest.latest.time_utc), before('Vento', windiest.latest.time_utc)])
     if (gv) tiles.unshift([(gv.gust_kmh != null ? 'Gust' : 'Wind') + ' at the airport, ' + hm(gv.time_utc), (gv.gust_kmh != null ? 'gust ' + num(gv.gust_kmh) : num(gv.wind_kmh)) + '<small>km/h</small>', (gv.gust_kmh != null ? 'mean ' + num(gv.wind_kmh) + ' km/h. ' : 'no gust reported. ') + 'Pressure ' + num(gv.pressure_hpa) + ' hPa. Lisbon airport\'s own report (METAR)', prov('airport', 'METAR LPPT', gv.read_utc), T(gv.time_utc)])
     if (!tiles.length) return ''
-    return '<div class="wxc-tiles" aria-label="Observed in Lisbon">' + tiles.map(function (x) { return '<div class="wxc-tile' + (t - x[4] > 90 * 6e4 ? ' old' : '') + '"><p class="wxc-eyebrow">' + x[0] + '</p><p class="wxc-age">observed ' + ago(x[4], t) + '</p><p class="wxc-big">' + x[1] + '</p><p class="meta">' + x[2] + '</p><p>' + x[3] + '</p></div>' }).join('') + '</div>'
+    return '<div class="wxc-tiles" aria-label="Observed in Lisbon">' + tiles.map(function (x) { return '<div class="wxc-tile' + (t - x[4] > 90 * 6e4 ? ' old' : '') + '"><p class="wxc-eyebrow">' + x[0] + '</p><p class="wxc-age">observed ' + ago(x[4], t) + (x[5] ? ' <span class="wxc-pre">' + x[5] + '</span>' : '') + '</p><p class="wxc-big">' + x[1] + '</p><p class="meta">' + x[2] + '</p><p>' + x[3] + '</p></div>' }).join('') + '</div>'
   }
 
   // today, hour by hour: 24 columns, each the hour that STARTS at its label. A station's value labelled HH:00 is read as the hour ending
