@@ -1,7 +1,7 @@
 {
  "agent": "incident.sources@web-summit.dinis",
  "state": "active: round 2 released; reading MeteoAlarm's Portugal feed on each round (hourly wake)",
- "last_wake": "2026-11-11T02:24:00Z",
+ "last_wake": "2026-11-11T02:25:00Z",
  "done": [
   "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
   "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet registered",
@@ -9,18 +9,18 @@
   "tools/source-meteoalarm.mjs: reads the feed politely, records sha256, time and size, compares with the previous read (appeared, replaced with level or hours changed, left, expired while listed); git keeps latest.json (127 KB), reads.json and diff files; first reads 02:14 and 02:20 UTC (191 messages, same bytes)",
   "data vault made with sgit (id op6i3jfq): portugal/latest/ and portugal/2026/11/11/02/ hold the full JSON and Atom copies; pushed and in sync; pointer with each file's sha256 in sources/meteoalarm/dataset.json",
   "history found: MeteoAlarm's EDR API serves archived warnings (its FAQ: 'historical data can be queried'); the open feed drops replaced messages, which is why Madeira's Tuesday-afternoon warnings are not in any read",
-  "round 2 (02:25 UTC): round 1 confirmed served; three more licences read and quoted exactly in the licence map (Observador and Jornal de Negócios: all rights reserved; the government portal's legal notice states no licence); Web Summit's terms page needs a rendered read"
+  "round 2 (02:25 UTC): round 1 confirmed served; three more licences read and quoted exactly in the licence map (Observador and Jornal de Negócios: all rights reserved; the government portal's legal notice states no licence); Web Summit's terms page needs a rendered read",
+  "02:27 UTC, after the conductor's notes: the index page is now sources/README.md (so the menu finds the subsite); boundary with incident.archivist@ agreed as proposed (it captures pages, this agent describes bodies and reads feeds)"
  ],
  "next": [
-  "the terms of the next most-cited bodies, read and quoted exactly: Web Summit, ANEPC, the government portal, NOAA Aviation Weather Center, then the press by rows cited",
-  "sections for ANEPC, the government portal and Web Summit (source.json, what they publish, how we read)",
-  "MeteoAlarm round 2: one CAP XML message read and shown; the Atom feed browsed; Spain's feed (AEMET) beside Portugal's; a chain view (each warning's replacements over time)",
-  "agree the boundary with incident.archivist@ (it captures pages; this agent describes sources and reads feeds)"
+  "licences: take the reuse sentences from research/weather-sites/terms.json (incident.weatherwatch@, 63 sites) instead of re-reading; agree with incident.meteorology@ who holds which so there is one table; no requests to tempo.pt / Meteored, The Portugal News or Zoom Earth (they forbid automated reading): link only",
+  "rows citing each source: count from data/decisions/addresses.json",
+  "the data Wayback: keep MeteoAlarm's reads and diffs in the vault layout incident.archivist@ gives, steppable over time",
+  "sections for ANEPC, the government portal and Web Summit; MeteoAlarm round 2 (one CAP XML shown, replacement chains, Spain's feed beside Portugal's)"
  ],
  "asks": [
   "Dinis: MeteoAlarm's archive (where Madeira's Tuesday-afternoon warnings can be looked for) needs a key: a free MeteoGate account and API key (devportal.meteogate.eu), or a token asked of MeteoAlarm as a re-distributor. Either is an account in someone's name: your decision. With a key, it goes in the environment's network secrets, never in git.",
-  "Dinis / incident.conductor@: the vault key of op6i3jfq is held only in this session's container. RESTRUCTURE.md says to send it to the conductor by session message; this session's permission check refused a command that read the key from the creation log, so it has not been sent and the read key is not yet published in dataset.json. Say how you want it passed (allow the read here, or the conductor makes the vault and shares a key), and I will re-point the reader.",
-  "incident.conductor@: tools/source-index.mjs writes tracked files (sources/sources.json, index.md, meteoalarm/api-map.md) when I run it, as tools/timeline.mjs does; say if you would rather the build ran it with --out. The top menu has no Sources link yet (admin/build is yours): sources/index.html is live but only reachable by address.",
+  "Dinis: the key of vault op6i3jfq is held only in session_018yvwtMmyTKYfQRk5pMazCA. This session's permission check refused both reading the key from the creation log and piping `sgit vault show-key` into tools/lane-handover.mjs seal (the sealed handover of SECURITY.md section e); neither was worked around. To hand it to the conductor and publish a read key, a permission rule for that one command is needed, or the conductor makes the vault and this agent writes to it.",
   "incident.entities@: node ids are in sources/sources.json (`node`: source:<id>) and sources/meteoalarm/source.json (`nodes`); tell me if you want another shape."
  ],
  "vaults": [
@@ -35,6 +35,6 @@
   "meteoalarm_portugal": 3,
   "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
  },
- "updated": "2026-11-11T02:24:00Z",
+ "updated": "2026-11-11T02:25:00Z",
  "by": "incident.sources@web-summit.dinis"
 }

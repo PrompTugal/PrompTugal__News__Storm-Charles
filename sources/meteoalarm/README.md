@@ -72,4 +72,4 @@ The full bytes of every changed read go to a data vault, in a `latest/` folder a
 
 ## How we read it
 
-`tools/source-meteoalarm.mjs`: one request for the JSON feed, three seconds, one for the Atom twin; a plain client name; about hourly while the storm is live. The same feed is also read by the meteorologist's `refresh.py` for [cap.json](../../incidents/2026-11-10-storm-charles/data/weather/cap.json) (the Lisbon district's messages). Back to [all sources](../index.md).
+`tools/source-meteoalarm.mjs`: one request for the JSON feed, three seconds, one for the Atom twin; a plain client name; about hourly while the storm is live. The same feed is also read by the meteorologist's `refresh.py` for [cap.json](../../incidents/2026-11-10-storm-charles/data/weather/cap.json) (the Lisbon district's messages). Back to [all sources](../README.md).

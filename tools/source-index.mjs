@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // The index of sources: from the hand-kept register (sources/registry.json) and what the site already cites, write
 //   sources/sources.json   every body with its counts (timeline rows citing it; addresses of its hosts in our data and research),
-//   sources/index.md       the page a reader meets before leaving for a source,
+//   sources/README.md     the page a reader meets before leaving for a source,
 //   sources/meteoalarm/api-map.md   the API map as a page (from api-map.json).
 // Run by hand after the register or the timeline changes (like tools/timeline.mjs): node tools/source-index.mjs
 // Counts are counts of what is in this repository at the time run; nothing is fetched.
@@ -60,7 +60,7 @@ for (const [g, title] of GROUPS) {
 md += `\n## The licence map: can we access it, can we change it?\n\n| Body | Access | Change and republish | As published |\n|---|---|---|---|\n`
 for (const s of sources.filter(s => s.licence.status === 'read')) md += `| ${s.name} | ${s.licence.access} | ${s.licence.manipulate} | ${s.licence.summary} ([terms](${s.licence.url})) |\n`
 md += `\nFor the ${sources.filter(s => s.licence.status === 'not read yet').length} bodies marked *not read yet* we have not read the terms page ourselves: until we have, this site links to them and quotes short excerpts only, and keeps no copy of their pages in git. The press: text is quoted in short excerpts with a link, raw captures stay in a private vault (the site's rule). Each is read in the rounds to come, most cited first.\n\n## Not yet in the register\n\n${unclaimed.length} more hosts appear in our data and research (weather sites surveyed by incident.weatherwatch@, single articles). The most frequent: ${unclaimed.slice(0, 12).map(([h, n]) => `\`${h}\` (${n})`).join(', ')}. The full list is in [sources.json](sources.json) under \`not_yet_registered\`.\n\n## How this page is made\n\nThe register is [registry.json](registry.json), kept by hand; \`tools/source-index.mjs\` counts the citations and writes this page and [sources.json](sources.json). Each body has a stable node id (\`source:<id>\`) for the entity pages. Page captures (screenshots, hashes) are incident.archivist@'s; this section describes the sources and reads their feeds.\n`
-fs.writeFileSync(path.join(ROOT, 'sources/index.md'), md)
+fs.writeFileSync(path.join(ROOT, 'sources/README.md'), md)
 
 // the API map as a page
 const am = rd('sources/meteoalarm/api-map.json')
