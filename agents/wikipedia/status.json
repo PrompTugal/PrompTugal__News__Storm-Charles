@@ -1,7 +1,7 @@
 {
   "agent": "incident.wikipedia@web-summit.dinis",
   "state": "active: hourly re-read while the storm is live (the conductor's routine); reports only when changes.md touches our key facts",
-  "last_wake": "2026-11-11T03:43:58Z",
+  "last_wake": "2026-11-11T04:39:25Z",
   "done": [
     "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
     "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
@@ -17,7 +17,8 @@
     "02:02 UTC, after the conductor's messages: each claim carries our check at the primary source (18 verified, 2 press only, 4 not established, 37 not checked) and whether its footnote is a primary body or the press; the pt article's footnotes counted (46 marks, 36 sources: 5 primary, 31 press, 4 naming Lusa); relations updated for the five new timeline rows (15 match, 12 in data, 30 not here, 4 behind); values.md marks what the conductor has done",
     "the product name of a chatbot is withheld from two edit summaries (revisions 73412811, 73395114) and by the reader from now on; the earlier wording remains in git history (commits 1e744ad to d6a7d55), which no agent rewrites",
     "02:39 wake: third read. pt unchanged since 01:33. en (2 revisions, 02:03 and 02:22) and zh (1, 02:04) only extended the season chart's bars for Charles and Bruna to 11 November; the storm's sections are byte for byte the same, so no claim, comparison or relation changed. Claims moved to the new revisions. Still nothing on Wikipedia about the 21:23 red rain move or the 22:35 line; en and zh still without Web Summit",
-    "03:44 wake: fourth read. pt 'Depressão Charles' has one new revision (03:25, 28,258 to 29,091 bytes): Madeira's incident count replaced (38 to 23:30 becomes 71 to 02:00, provisional, with a breakdown) and Porto Santo's power failures added, both citing the regional daily. Claim w-pt-33 rewritten, w-pt-37 added (62 claims). 'Depressão Bruna' grew by a Spain paragraph that names Charles in passing. en and zh unchanged. One 429 (waited as told). Still nothing on Wikipedia about the 21:23 red rain move or the track further south. Conductor told (Madeira's figures)."
+    "03:44 wake: fourth read. pt 'Depressão Charles' has one new revision (03:25, 28,258 to 29,091 bytes): Madeira's incident count replaced (38 to 23:30 becomes 71 to 02:00, provisional, with a breakdown) and Porto Santo's power failures added, both citing the regional daily. Claim w-pt-33 rewritten, w-pt-37 added (62 claims). 'Depressão Bruna' grew by a Spain paragraph that names Charles in passing. en and zh unchanged. One 429 (waited as told). Still nothing on Wikipedia about the 21:23 red rain move or the track further south. Conductor told (Madeira's figures).",
+    "04:39 wake: fifth read. Nothing changed on any of the 6 pages since 03:44 (pt last edited 03:25). The API answered 429 eight times this read (it had been 0 or 1): waited as told each time, 332 s in all; the read still completed"
   ],
   "next": [
     "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
@@ -29,12 +30,13 @@
     "incident.conductor@: the chatbot's product name was pushed in four commits before it was withheld; it stays in git history. Rewriting history is forbidden; say if Dinis wants anything else done."
   ],
   "api": {
-    "requests": 53,
-    "waits_429": 1,
-    "waits_maxlag": 12,
+    "requests": 56,
+    "waits_429": 8,
+    "waits_maxlag": 10,
     "failed": 2,
-    "note": "counts of the last read (03:44 UTC): one 429 from a wiki, waited as its Retry-After said; the 12 lag waits and 2 failures are Wikidata's; every read is in research/wikipedia/reads.json"
+    "waited_s": 332,
+    "note": "counts of the last read (04:39 UTC): eight 429s, each waited out as Retry-After said; the 2 failures are Wikidata's; every read is in research/wikipedia/reads.json"
   },
-  "updated": "2026-11-11T03:50:00Z",
+  "updated": "2026-11-11T04:46:00Z",
   "by": "incident.wikipedia@web-summit.dinis"
 }

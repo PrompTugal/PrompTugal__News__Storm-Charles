@@ -3,7 +3,7 @@ title: This site against Wikipedia, both ways
 ---
 # This site against Wikipedia, both ways
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 03:50 UTC (written by tools/wikipedia-claims.mjs from claims-curated.json and the revisions named below)
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 04:48 UTC (written by tools/wikipedia-claims.mjs from claims-curated.json and the revisions named below)
 
 For each Wikipedia claim: the row of [our timeline](../../incidents/2026-11-10-storm-charles/timeline.html) that says the same (by its permanent id), the data file that holds it, or that it is missing here. Then the reverse: for each of our key facts, whether Wikipedia has it, since which revision, and citing whom. Data: [against.json](against.json). **Every relation is our analysis of two bodies of evidence.**
 
