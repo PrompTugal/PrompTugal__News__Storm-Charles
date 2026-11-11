@@ -39,7 +39,7 @@
         return lane
     }
     function normalise(a) {
-        a.chapters = (a.chapters || []).map(ch => Object.assign({}, ch, { scenes: ch.scenes.map(sc => ({ caption: sc.caption, note: sc.note || '', dur: sc.dur, lanes: (sc.lanes || [sc]).map(l => laneOf(ch, sc, l)) })) }))
+        a.chapters = (a.chapters || []).map(ch => Object.assign({}, ch, { scenes: ch.scenes.map(sc => ({ caption: sc.caption, note: sc.note || '', dur: sc.dur, at: sc.at, clock: sc.clock, cards: sc.cards || (sc.card ? [sc.card] : []), says: sc.say || {}, lanes: (sc.lanes || [sc]).map(l => laneOf(ch, sc, l)) })) }))
         if (a.simplifies && a.simplifies.length) a.chapters.push({ id: 'what-this-simplifies', title: 'What this simplifies', scenes: [{ caption: 'Every picture here leaves things out. These are the ones that matter.', list: a.simplifies, lanes: [] }] })
         for (const ch of a.chapters) {
             const us = l => l.live.reduce((n, b) => n + b.u, 0)
@@ -100,14 +100,24 @@ ${win ? `<div class="sb-door${blocked ? ' blocked' : ''}" data-units="${ch.units
 <div class="sb-pile sb-got${sendNew ? ' arrive' : ''}${blocked ? ' blocked' : ''}" data-units="${ch.units}">${win ? `<span class="sb-lintel lab" data-u="${win}"><i>the window: ${win} blocks</i></span>` : ''}<span class="sb-cap">${lane.send ? (blocked ? 'Request ' + lane.send.n + ': does not fit' : 'Request ' + lane.send.n + ': what the model receives') : 'Between requests the model holds nothing'}</span>${got}</div>
 </div>${lane.cast.left ? '' : files}</section>`
     }
+    // a track: stations in a row (a source, a collector, ... the readers), one of them at work, and a card that fills in as it goes
+    function drawTrack(ch, sc, prev, animate) {
+        const st = ch.track.stations, seen = new Set(((prev && prev.cards) || []).flatMap(c => (c.fields || []).map(f => c.title + '|' + f.k + '|' + f.v)))
+        const card = c => `<div class="sb-card ${c.label ? 'l-' + esc(c.label) : ''} ${c.state ? 's-' + esc(c.state) : ''}"><h5>${c.label ? `<span class="sb-lbl l-${esc(c.label)}">${esc(c.label)}</span>` : ''}${c.id ? (c.href ? `<a class="sb-id" href="${esc(c.href)}">${esc(c.id)}</a>` : `<span class="sb-id">${esc(c.id)}</span>`) : ''}${esc(c.title || '')}${c.state === 'superseded' ? ' <em>superseded</em>' : ''}</h5>${c.text ? `<p>${esc(c.text)}</p>` : ''}<dl>${(c.fields || []).map(f => `<div class="${animate && !seen.has(c.title + '|' + f.k + '|' + f.v) ? 'enter' : ''}${f.new ? ' new' : ''}"><dt>${esc(f.k)}</dt><dd>${f.href ? `<a href="${esc(f.href)}">${esc(f.v)}</a>` : esc(f.v)}</dd></div>`).join('')}</dl></div>`
+        return `<section class="sb-track">${sc.clock ? `<p class="sb-clock"><span>the time</span> <time>${esc(sc.clock)}</time></p>` : ''}
+<ol class="sb-stations" data-n="${st.length}">${st.map((x, i) => { const say = sc.says[i] || sc.says[x.id] || ''; return `<li class="${i === sc.at ? 'on' : i < sc.at ? 'done' : ''}">${window.StudioCast.draw(x.who, say ? 'talk' : i === sc.at ? (x.mood || 'read') : 'idle', x.name)}<b>${esc(x.name)}</b><small>${esc(x.does || '')}</small></li>` }).join('')}</ol>
+${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const say = sc.says[i] || sc.says[x.id]; return say ? `<p class="sb-say"><b>${esc(x.name)}:</b> ${esc(say)}</p>` : '' }).join('')}</div>` : ''}
+<div class="sb-cards">${sc.cards.map(card).join('')}</div></section>`
+    }
     function paint(stage, ch, sc, prev, animate) {
-        stage.className = 'sb-stage' + (sc.lanes.length > 1 ? ' two' : '') + (animate ? '' : ' still')
-        stage.innerHTML = sc.list ? `<ol class="sb-list">${sc.list.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : sc.lanes.map((l, i) => drawLane(ch, l, prev && prev.lanes[i], animate)).join('')
+        stage.className = 'sb-stage' + (sc.lanes.length > 1 && !ch.track ? ' two' : '') + (animate ? '' : ' still')
+        stage.innerHTML = sc.list ? `<ol class="sb-list">${sc.list.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ch.track ? drawTrack(ch, sc, prev, animate) : sc.lanes.map((l, i) => drawLane(ch, l, prev && prev.lanes[i], animate)).join('')
         sizes(stage, ch)
     }
     // sizes are set through the CSSOM (no inline style attributes: the site may run under a strict Content-Security-Policy)
     function sizes(stage, ch) {
         for (const e of stage.querySelectorAll('[data-u]')) e.style.setProperty('--u', e.dataset.u)
+        for (const e of stage.querySelectorAll('[data-n]')) e.style.setProperty('--n', e.dataset.n)
         for (const e of stage.querySelectorAll('[data-units]')) e.style.setProperty('--units', e.dataset.units)
         for (const e of stage.querySelectorAll('[data-w]')) e.style.width = (60 * e.dataset.w / (ch.maxReq || 1)) + '%'
         for (const e of stage.querySelectorAll('[data-i]')) e.style.setProperty('--i', e.dataset.i)
@@ -186,7 +196,7 @@ ${win ? `<div class="sb-door${blocked ? ' blocked' : ''}" data-units="${ch.units
 <div class="sb-progress" aria-hidden="true"><i></i></div>
 <div class="sb-controls"><button type="button" data-do="prev" title="Previous scene (←)">Previous</button><button type="button" data-do="play" class="primary" aria-pressed="false" title="Play or pause (Space)">Play</button><button type="button" data-do="next" title="Next scene (→)">Next</button><button type="button" data-do="speed" title="Speed (S)">Speed 1×</button></div>
 <div class="sb-more"><button type="button" data-do="restart" title="Restart this chapter (R)">Restart</button><a class="sb-link" href="#" title="Copy a link to this scene">Link to this scene</a><span class="sb-scenes" role="group" aria-label="Scenes of this chapter"></span></div>
-<p class="sb-keys meta">Keys: Space play or pause · ← → scene · PageUp PageDown chapter · R restart · S speed. Blocks show size as an illustration, not a measurement. The same, as text, is below.</p>
+<p class="sb-keys meta">Keys: Space play or pause · ← → scene · PageUp PageDown chapter · R restart · S speed. The same, as text, is below.</p>
 </div>`
         const sb = root.querySelector('.sb')
         sb.addEventListener('click', e => {

@@ -28,13 +28,18 @@ for (const a of anims) {
         const U = id => { const k = (typeof id === 'string' ? id : id.id).split(':')[0], o = typeof id === 'string' ? {} : id; return o.u || (ch.blocks?.[k]?.u) || 1 }
         ch.scenes.forEach((sc, si) => {
             const lanes = sc.lanes || [sc], extra = []
-            for (const l of lanes) {
+            for (const l of ch.track ? [] : lanes) {
                 const pre = lanes.length > 1 && l.title ? `${l.title}: ` : ''
                 if (l.send && l.send.blocked) extra.push(`${pre}request ${l.send.n} does not fit the window of ${l.window ?? sc.window ?? ch.window} blocks and cannot be sent.`)
                 if (l.send && !l.send.blocked) { const live = (l.stack || []).filter(b => !/:lost$/.test(typeof b === 'string' ? b : b.id) && b.state !== 'lost'), tot = live.reduce((n, b) => n + U(b), 0), c = live.slice(0, l.send.cached || 0).reduce((n, b) => n + U(b), 0); extra.push(`${pre}request ${l.send.n} carries ${tot} blocks; ${tot - c} read at full cost${c ? `, ${c} reused from the cache` : ''}.`) }
                 const lf = (l.files || []).filter(f => f.state || lanes.length === 1)   // side by side, only what a scene adds or reads; the full shelf is in the chapter's last scene
                 if (lf.length) extra.push(`${pre}${lf.some(f => f.state === 'read') ? 'read from the file system' : lf.some(f => f.state === 'new') ? 'written to the file system' : 'on the file system'}: ${lf.map(f => `${f.href ? `[${f.name}](${f.href})` : f.name}${f.size ? ` (${f.size})` : ''}`).join(', ')}.`)
                 for (const b of l.stack || []) { const k = (typeof b === 'string' ? b : b.id).split(':')[0]; if (!ch.blocks?.[k] && typeof b === 'string') problems.push(`${a.id} ${ci + 1}.${si + 1}: block "${k}" is not defined`) }
+            }
+            if (ch.track) {
+                if (sc.clock) extra.push(`The time: ${sc.clock}.`)
+                if (sc.at !== undefined) extra.push(`At work: ${ch.track.stations[sc.at].name.toLowerCase()}.`)
+                for (const c of sc.cards || (sc.card ? [sc.card] : [])) { const nf = (c.fields || []).filter(f => f.new); extra.push(`${c.id ? (c.href ? `[${c.id}](${c.href})` : c.id) + ' ' : ''}${c.label ? `(${c.label}${c.state ? ', ' + c.state : ''}) ` : ''}${c.text ? `"${one(c.text)}"` : c.title || ''}${nf.length ? `; added: ${nf.map(f => `${f.k}: ${f.href ? `[${f.v}](${f.href})` : f.v}`).join('; ')}` : ''}.`) }
             }
             out.push(`${si + 1}. ${one(sc.caption)}${sc.note ? ` *${one(sc.note)}*` : ''}${extra.length ? `\n   ${extra.join(' ')}` : ''}`)
         })

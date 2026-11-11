@@ -51,6 +51,23 @@ ${eyes(m, 29, 6)}${mouth(m, 37)}`),
 <circle cx="32" cy="27" r="15" class="c-skin"/>
 <path d="M30 12q2 -7 6 -3" class="c-ink"/>
 ${eyes(m, 29, 6)}${mouth(m, 37)}`),
+        // a source: a body that decides or warns, drawn as its building with a notice on the door
+        source: (m, label) => svg('source', label || 'The source', `
+<path d="M8 26l24 -16 24 16z" class="c-surface"/><rect x="12" y="26" width="40" height="40" class="c-surface c-strong"/>
+<path d="M18 30v6M26 30v6M38 30v6M46 30v6" class="c-ink"/><path d="M6 68h52" class="c-ink c-thick"/>
+<path d="M32 10v-8h9l-2 3 2 3h-9" class="c-accent"/>
+${eyes(m, 44, 7)}${mouth(m, 53)}`),
+        // the timeline: a ledger whose rows keep their ids
+        ledger: (m, label) => svg('ledger', label || 'The timeline', `
+<rect x="10" y="8" width="44" height="58" rx="3" class="c-surface c-strong"/><path d="M18 8v58" class="c-ink"/>
+<path d="M24 18h24M24 25h24M24 58h18" class="c-ink c-thin"/><rect x="23" y="13" width="9" height="3" class="c-fill"/>
+${eyes(m, 38, 7)}${mouth(m, 47)}`),
+        // the build: a machine that turns the repository into the site, and stops if the gate is red
+        machine: (m, label) => svg('machine', label || 'The build', `
+<rect x="8" y="22" width="48" height="40" rx="5" class="c-surface c-strong"/><path d="M14 62v6M50 62v6M8 54h48" class="c-ink"/>
+<circle cx="46" cy="14" r="7" class="c-screen"/><path d="M46 4v3M46 21v3M36 14h3M53 14h3M39 7l2 2M51 19l2 2M53 7l-2 2M41 19l-2 2" class="c-ink"/><circle cx="46" cy="14" r="2" class="c-fill"/>
+<path d="M14 14h18v8h-18z" class="c-accent"/>
+${eyes(m, 36, 8)}${mouth(m, 46)}`),
     }
     window.StudioCast = { draw: (who, mood, label) => (CAST[who] || CAST.user)(mood || 'idle', label), names: Object.keys(CAST) }
 })()

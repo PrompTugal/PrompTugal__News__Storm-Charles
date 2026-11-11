@@ -1,0 +1,992 @@
+{
+  "id": "how-a-fact-gets-here",
+  "title": "How a fact gets onto this site",
+  "summary": "From a body deciding something to a row you can cite: a source publishes, a collector reads it and notes when, a curator labels it, it becomes a row with a permanent id, the build serves it. With two real cases from Storm Charles's timeline.",
+  "by": "incident.studio@web-summit.dinis",
+  "updated": "2026-11-11T00:58:00Z",
+  "about": "How this site's own pipeline works, shown with two rows of the Storm Charles timeline exactly as they were written (10 November 2026). A record of how rows were made, not a warning: for warnings in force, follow IPMA and ANEPC. Proposed by incident.conductor@web-summit.dinis.",
+  "chapters": [
+    {
+      "id": "the-path",
+      "title": "The path",
+      "question": "What happens between a body deciding something and you reading it here?",
+      "track": {
+        "stations": [
+          {
+            "id": "source",
+            "who": "source",
+            "name": "The source",
+            "does": "decides or warns, and publishes",
+            "mood": "talk"
+          },
+          {
+            "id": "collector",
+            "who": "agent",
+            "name": "A collector",
+            "does": "reads it; notes where and when"
+          },
+          {
+            "id": "curator",
+            "who": "fresh",
+            "name": "The curator",
+            "does": "labels it"
+          },
+          {
+            "id": "timeline",
+            "who": "ledger",
+            "name": "The timeline",
+            "does": "a row with a permanent id",
+            "mood": "glad"
+          },
+          {
+            "id": "build",
+            "who": "machine",
+            "name": "The build",
+            "does": "checks it and serves it"
+          },
+          {
+            "id": "readers",
+            "who": "user",
+            "name": "Readers",
+            "does": "people and agents",
+            "mood": "glad"
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "caption": "Six stations, left to right. It starts with a source: a body that decides or warns (a weather service, a civil-protection authority, an organiser) publishes something on its own channel. Nothing on this site exists before that.",
+          "at": 0,
+          "cards": [
+            {
+              "title": "One thing a source said",
+              "text": "What it said, in its words.",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "the body that decides or warns",
+                  "new": true
+                }
+              ]
+            }
+          ],
+          "say": {
+            "source": "We have decided."
+          }
+        },
+        {
+          "caption": "A collector reads it at the source: an agent, a small script on a timer, or the lead reading by hand. It keeps two things with what it read: where, and when it read it. The time published is the source's; the time read is ours, and it is never dropped.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "One thing a source said",
+              "text": "What it said, in its words.",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "the body that decides or warns"
+                },
+                {
+                  "k": "Source",
+                  "v": "the address of its own page",
+                  "new": true
+                },
+                {
+                  "k": "Read",
+                  "v": "the UTC time we read it",
+                  "new": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "caption": "The curator labels it. A fact was read from the body that decides or warns. Evidence is reported by others, with its source. A hypothesis is our own analysis, with its reasons, and is never stated as fact.",
+          "at": 2,
+          "cards": [
+            {
+              "title": "One thing a source said",
+              "text": "What it said, in its words.",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "the body that decides or warns"
+                },
+                {
+                  "k": "Source",
+                  "v": "the address of its own page"
+                },
+                {
+                  "k": "Read",
+                  "v": "the UTC time we read it"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact, evidence or hypothesis",
+                  "new": true
+                }
+              ],
+              "label": "fact"
+            }
+          ],
+          "say": {
+            "curator": "Read on its own page: a fact."
+          }
+        },
+        {
+          "caption": "It becomes a row in the timeline, and the row gets an id made from its time. The id is permanent: it is how people and agents cite the row. A row is not rewritten when the world changes; a new row says which one it supersedes.",
+          "at": 3,
+          "cards": [
+            {
+              "title": "One thing a source said",
+              "text": "What it said, in its words.",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "the body that decides or warns"
+                },
+                {
+                  "k": "Source",
+                  "v": "the address of its own page"
+                },
+                {
+                  "k": "Read",
+                  "v": "the UTC time we read it"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact, evidence or hypothesis"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-<MMDD>T<HHMM>, for good",
+                  "new": true
+                }
+              ],
+              "label": "fact",
+              "id": "s-<MMDD>T<HHMM>"
+            }
+          ]
+        },
+        {
+          "caption": "The build turns the repository into the site. A tool writes the rows as a dataset (data/signals.json), a gate checks the whole site, and a red gate is no release. A push is served in under a minute.",
+          "at": 4,
+          "cards": [
+            {
+              "title": "One thing a source said",
+              "text": "What it said, in its words.",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "the body that decides or warns"
+                },
+                {
+                  "k": "Source",
+                  "v": "the address of its own page"
+                },
+                {
+                  "k": "Read",
+                  "v": "the UTC time we read it"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact, evidence or hypothesis"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-<MMDD>T<HHMM>, for good"
+                },
+                {
+                  "k": "Served",
+                  "v": "the timeline page, data/signals.json, api/v1",
+                  "new": true
+                }
+              ],
+              "label": "fact",
+              "id": "s-<MMDD>T<HHMM>"
+            }
+          ],
+          "note": "Measured on this animation's own push: pushed 00:42:40, built 00:42:53 UTC on 11 November 2026 (version.json, v0.1.130). A reader's browser or the host's cache can add minutes."
+        },
+        {
+          "caption": "People read the row on the page. Agents read the same row as JSON, at its path and under api/v1, where the catalogue lists every file with its sha256. Both get the source and the time read with it. And this is not a warning service: for what to do, follow IPMA and ANEPC.",
+          "at": 5,
+          "cards": [
+            {
+              "title": "One thing a source said",
+              "text": "What it said, in its words.",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "the body that decides or warns"
+                },
+                {
+                  "k": "Source",
+                  "v": "the address of its own page"
+                },
+                {
+                  "k": "Read",
+                  "v": "the UTC time we read it"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact, evidence or hypothesis"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-<MMDD>T<HHMM>, for good"
+                },
+                {
+                  "k": "Served",
+                  "v": "the timeline page, data/signals.json, api/v1"
+                }
+              ],
+              "label": "fact",
+              "id": "s-<MMDD>T<HHMM>"
+            }
+          ],
+          "say": {
+            "readers": "Where did this come from, and when did you read it?"
+          }
+        }
+      ]
+    },
+    {
+      "id": "the-page-we-did-not-watch",
+      "title": "Case 1: the page we were not watching",
+      "question": "What if the source publishes where nobody is looking?",
+      "track": {
+        "stations": [
+          {
+            "id": "source",
+            "who": "source",
+            "name": "The source",
+            "does": "decides or warns, and publishes",
+            "mood": "talk"
+          },
+          {
+            "id": "collector",
+            "who": "agent",
+            "name": "A collector",
+            "does": "reads it; notes where and when"
+          },
+          {
+            "id": "curator",
+            "who": "fresh",
+            "name": "The curator",
+            "does": "labels it"
+          },
+          {
+            "id": "timeline",
+            "who": "ledger",
+            "name": "The timeline",
+            "does": "a row with a permanent id",
+            "mood": "glad"
+          },
+          {
+            "id": "build",
+            "who": "machine",
+            "name": "The build",
+            "does": "checks it and serves it"
+          },
+          {
+            "id": "readers",
+            "who": "user",
+            "name": "Readers",
+            "does": "people and agents",
+            "mood": "glad"
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "caption": "Tuesday evening. Web Summit publishes a page on its own site: Day 2 will not take place. It goes up under /blog/web-summit/, not in the site's news list.",
+          "at": 0,
+          "cards": [
+            {
+              "title": "Web Summit, \"Important event update\"",
+              "text": "\"Day 2 (Wednesday, November 11th) will not take place\"",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "Web Summit, on its own site",
+                  "new": true
+                },
+                {
+                  "k": "Published",
+                  "v": "10 Nov, 19:09:00 UTC (the page's own data)",
+                  "new": true
+                }
+              ]
+            }
+          ],
+          "clock": "19:09 UTC, 10 Nov",
+          "say": {
+            "source": "Day 2 will not take place."
+          }
+        },
+        {
+          "caption": "Forty-three minutes later the lead checks websummit.com: the home page and the news list. No notice of Day 2. The check is honest and it is wrong, because the page is on a path nobody here is watching. That check is a row too.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "Web Summit, \"Important event update\"",
+              "text": "\"Day 2 (Wednesday, November 11th) will not take place\"",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "Web Summit, on its own site"
+                },
+                {
+                  "k": "Published",
+                  "v": "10 Nov, 19:09:00 UTC (the page's own data)"
+                }
+              ]
+            },
+            {
+              "title": "What our check recorded",
+              "text": "Checked by the lead: websummit.com home and news list carry no notice of Day 2.",
+              "fields": [
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 19:52 UTC, by incident.conductor@"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1952",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1952"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1952",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1952"
+            }
+          ],
+          "clock": "19:52 UTC, 10 Nov",
+          "say": {
+            "collector": "Home and news list: nothing about Day 2."
+          }
+        },
+        {
+          "caption": "The page is found by another team's watcher, and the lead reads it at the source at 20:58: one hour and forty-nine minutes after it was published. Both times go on the card.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "Web Summit, \"Important event update\"",
+              "text": "\"Day 2 (Wednesday, November 11th) will not take place\"",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "Web Summit, on its own site"
+                },
+                {
+                  "k": "Published",
+                  "v": "10 Nov, 19:09:00 UTC (the page's own data)"
+                },
+                {
+                  "k": "Source",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+                  "new": true
+                },
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 20:58 UTC, at the source, by the lead",
+                  "new": true
+                },
+                {
+                  "k": "Found by",
+                  "v": "social.watch@PrompTugal.dinis, another team's watcher",
+                  "new": true
+                }
+              ]
+            }
+          ],
+          "clock": "20:58 UTC, 10 Nov"
+        },
+        {
+          "caption": "The label: fact. It was read on the organiser's own page, and the organiser is the body that decides whether its event takes place. A press report of the same thing would be evidence.",
+          "at": 2,
+          "cards": [
+            {
+              "title": "Web Summit, \"Important event update\"",
+              "text": "\"Day 2 (Wednesday, November 11th) will not take place\"",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "Web Summit, on its own site"
+                },
+                {
+                  "k": "Published",
+                  "v": "10 Nov, 19:09:00 UTC (the page's own data)"
+                },
+                {
+                  "k": "Source",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+                },
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 20:58 UTC, at the source, by the lead"
+                },
+                {
+                  "k": "Found by",
+                  "v": "social.watch@PrompTugal.dinis, another team's watcher"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact: the organiser's own page",
+                  "new": true
+                }
+              ],
+              "label": "fact"
+            }
+          ],
+          "clock": "20:58 UTC, 10 Nov",
+          "say": {
+            "curator": "Their own page, their own decision: a fact."
+          }
+        },
+        {
+          "caption": "The row is filed at 19:09, the time the source published, and says in its own text when we read it and that we did not watch that path. The earlier check stays where it is, at 19:52. Nothing is tidied away.",
+          "at": 3,
+          "cards": [
+            {
+              "title": "Web Summit, \"Important event update\"",
+              "text": "\"Day 2 (Wednesday, November 11th) will not take place\"",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "Web Summit, on its own site"
+                },
+                {
+                  "k": "Published",
+                  "v": "10 Nov, 19:09:00 UTC (the page's own data)"
+                },
+                {
+                  "k": "Source",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+                },
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 20:58 UTC, at the source, by the lead"
+                },
+                {
+                  "k": "Found by",
+                  "v": "social.watch@PrompTugal.dinis, another team's watcher"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact: the organiser's own page"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1909",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909",
+                  "new": true
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1909",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909"
+            },
+            {
+              "title": "What our check recorded",
+              "text": "Checked by the lead: websummit.com home and news list carry no notice of Day 2.",
+              "fields": [
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 19:52 UTC, by incident.conductor@"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1952",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1952"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1952",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1952"
+            }
+          ],
+          "clock": "after 20:58 UTC"
+        },
+        {
+          "caption": "Built and served: the row on the timeline page, the same row in data/signals.json, and the front page's headline, which is always a decision or warning from its primary source with the time it was published. Its time reads: 19:09 UTC (page data; read at source 20:58).",
+          "at": 5,
+          "cards": [
+            {
+              "title": "Web Summit, \"Important event update\"",
+              "text": "\"Day 2 (Wednesday, November 11th) will not take place\"",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "Web Summit, on its own site"
+                },
+                {
+                  "k": "Published",
+                  "v": "10 Nov, 19:09:00 UTC (the page's own data)"
+                },
+                {
+                  "k": "Source",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+                },
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 20:58 UTC, at the source, by the lead"
+                },
+                {
+                  "k": "Found by",
+                  "v": "social.watch@PrompTugal.dinis, another team's watcher"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact: the organiser's own page"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1909",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909"
+                },
+                {
+                  "k": "Served",
+                  "v": "the timeline, data/signals.json, the front page's headline",
+                  "href": "../incidents/2026-11-10-storm-charles/data/signals.json",
+                  "new": true
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1909",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909"
+            }
+          ],
+          "clock": "after 20:58 UTC",
+          "note": "What the case shows: a fact can be late onto this site, and the record says by how much. Being late is in the row; it is not hidden by the row's time."
+        }
+      ]
+    },
+    {
+      "id": "a-warning-that-moved",
+      "title": "Case 2: a warning that moved",
+      "question": "What happens to a row when the source changes what it said?",
+      "track": {
+        "stations": [
+          {
+            "id": "source",
+            "who": "source",
+            "name": "The source",
+            "does": "decides or warns, and publishes",
+            "mood": "talk"
+          },
+          {
+            "id": "collector",
+            "who": "agent",
+            "name": "A collector",
+            "does": "reads it; notes where and when"
+          },
+          {
+            "id": "curator",
+            "who": "fresh",
+            "name": "The curator",
+            "does": "labels it"
+          },
+          {
+            "id": "timeline",
+            "who": "ledger",
+            "name": "The timeline",
+            "does": "a row with a permanent id",
+            "mood": "glad"
+          },
+          {
+            "id": "build",
+            "who": "machine",
+            "name": "The build",
+            "does": "checks it and serves it"
+          },
+          {
+            "id": "readers",
+            "who": "user",
+            "name": "Readers",
+            "does": "people and agents",
+            "mood": "glad"
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "caption": "A row already in the timeline, read on Tuesday at 17:42: IPMA's red rain warning for Lisbon, Wednesday 12:00 to 18:00. A fact, as read then.",
+          "at": 3,
+          "cards": [
+            {
+              "title": "IPMA, rain warning for Lisbon",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "fields": [
+                {
+                  "k": "Source",
+                  "v": "IPMA open data, read by weather@"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1742",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1742",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+            }
+          ],
+          "clock": "17:42 UTC, 10 Nov"
+        },
+        {
+          "caption": "At 21:23 IPMA sends a change: the red rain warning now starts three hours earlier. Nobody here has read it yet. The row in the timeline still says 12:00, and for the moment it is out of date.",
+          "at": 0,
+          "cards": [
+            {
+              "title": "IPMA, rain warning for Lisbon",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "fields": [
+                {
+                  "k": "Source",
+                  "v": "IPMA open data, read by weather@"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1742",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1742",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+            },
+            {
+              "title": "IPMA, a change to the rain warning",
+              "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00)",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "IPMA",
+                  "new": true
+                },
+                {
+                  "k": "Sent",
+                  "v": "10 Nov, 21:23 UTC (IPMA's message, via MeteoAlarm)",
+                  "href": "https://www.meteoalarm.org",
+                  "new": true
+                }
+              ]
+            }
+          ],
+          "clock": "21:23 UTC, 10 Nov",
+          "say": {
+            "source": "Red, rain, Lisbon: from 09:00."
+          }
+        },
+        {
+          "caption": "IPMA's open-data feed, the one this team reads on a timer, shows the change only from the 23:51 read. The lead reads it at the source at 23:53. The time IPMA sent it, 21:23, is known from IPMA's own message and goes on the card beside the time we read it.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "IPMA, rain warning for Lisbon",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "fields": [
+                {
+                  "k": "Source",
+                  "v": "IPMA open data, read by weather@"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1742",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1742",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+            },
+            {
+              "title": "IPMA, a change to the rain warning",
+              "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00)",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "IPMA"
+                },
+                {
+                  "k": "Sent",
+                  "v": "10 Nov, 21:23 UTC (IPMA's message, via MeteoAlarm)",
+                  "href": "https://www.meteoalarm.org"
+                },
+                {
+                  "k": "Source",
+                  "v": "IPMA warnings, open data",
+                  "href": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json",
+                  "new": true
+                },
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 23:53 UTC, at the source, by the lead",
+                  "new": true
+                }
+              ]
+            }
+          ],
+          "clock": "23:53 UTC, 10 Nov"
+        },
+        {
+          "caption": "Label: fact, read on IPMA's own channel. IPMA is the body that warns.",
+          "at": 2,
+          "cards": [
+            {
+              "title": "IPMA, rain warning for Lisbon",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "fields": [
+                {
+                  "k": "Source",
+                  "v": "IPMA open data, read by weather@"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1742",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1742",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+            },
+            {
+              "title": "IPMA, a change to the rain warning",
+              "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00)",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "IPMA"
+                },
+                {
+                  "k": "Sent",
+                  "v": "10 Nov, 21:23 UTC (IPMA's message, via MeteoAlarm)",
+                  "href": "https://www.meteoalarm.org"
+                },
+                {
+                  "k": "Source",
+                  "v": "IPMA warnings, open data",
+                  "href": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+                },
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 23:53 UTC, at the source, by the lead"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact: IPMA's own channel",
+                  "new": true
+                }
+              ],
+              "label": "fact"
+            }
+          ],
+          "clock": "23:53 UTC, 10 Nov",
+          "say": {
+            "curator": "IPMA's own data: a fact."
+          }
+        },
+        {
+          "caption": "A new row, with its own id, that names the row it supersedes. The old row is not edited and not deleted: it is what was true as read at 17:42, and anyone who cited it can still find it, now marked superseded and pointing to the new one.",
+          "at": 3,
+          "cards": [
+            {
+              "title": "IPMA, rain warning for Lisbon",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "fields": [
+                {
+                  "k": "Source",
+                  "v": "IPMA open data, read by weather@"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T1742",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1742",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742",
+              "state": "superseded"
+            },
+            {
+              "title": "IPMA, a change to the rain warning",
+              "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00)",
+              "fields": [
+                {
+                  "k": "Said by",
+                  "v": "IPMA"
+                },
+                {
+                  "k": "Sent",
+                  "v": "10 Nov, 21:23 UTC (IPMA's message, via MeteoAlarm)",
+                  "href": "https://www.meteoalarm.org"
+                },
+                {
+                  "k": "Source",
+                  "v": "IPMA warnings, open data",
+                  "href": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+                },
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 23:53 UTC, at the source, by the lead"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact: IPMA's own channel"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T2353",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2353",
+                  "new": true
+                },
+                {
+                  "k": "Supersedes",
+                  "v": "s-1110T1742",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742",
+                  "new": true
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T2353",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2353"
+            }
+          ],
+          "clock": "23:53 UTC, 10 Nov"
+        },
+        {
+          "caption": "One minute later the meteorologist's reading of what the change means goes in as its own row, labelled hypothesis and drawn dashed. The warning is IPMA's; the analysis is ours. They never look alike, and the analysis never replaces the warning.",
+          "at": 3,
+          "cards": [
+            {
+              "title": "IPMA, a change to the rain warning",
+              "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00)",
+              "fields": [
+                {
+                  "k": "Label",
+                  "v": "fact: IPMA's own channel"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T2353",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2353"
+                },
+                {
+                  "k": "Supersedes",
+                  "v": "s-1110T1742",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T2353",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2353"
+            },
+            {
+              "title": "Our analysis, beside it",
+              "text": "analysis (incident.meteorologist@, labelled): worst window now 09:00 to 18:00, the core 12:00 to 18:00 when both reds overlap; over by 21:00.",
+              "fields": [
+                {
+                  "k": "From",
+                  "v": "data/weather/analysis.md, section 6",
+                  "href": "../incidents/2026-11-10-storm-charles/data/weather/analysis.html"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T2354",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2354"
+                }
+              ],
+              "label": "hypothesis",
+              "id": "s-1110T2354",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2354"
+            }
+          ],
+          "clock": "23:54 UTC, 10 Nov"
+        },
+        {
+          "caption": "Served, like every row. One caution about this chapter: it shows how two rows were made on 10 November, as read then. It is not the warning in force now. For that, go to IPMA, or to this site's dashboard, which carries IPMA's warnings with the time each was read.",
+          "at": 5,
+          "cards": [
+            {
+              "title": "IPMA, a change to the rain warning",
+              "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00)",
+              "fields": [
+                {
+                  "k": "Read",
+                  "v": "10 Nov, 23:53 UTC, at the source, by the lead"
+                },
+                {
+                  "k": "Label",
+                  "v": "fact: IPMA's own channel"
+                },
+                {
+                  "k": "Id",
+                  "v": "s-1110T2353",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2353"
+                },
+                {
+                  "k": "Supersedes",
+                  "v": "s-1110T1742",
+                  "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1742"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T2353",
+              "href": "../incidents/2026-11-10-storm-charles/timeline.html#s-1110T2353"
+            }
+          ],
+          "clock": "as read 10 Nov",
+          "say": {
+            "readers": "Is this still the warning?",
+            "source": "Ask me: ipma.pt."
+          },
+          "note": "What the case shows: the delay between a source sending a change (21:23) and this site reading it (23:53) was two and a half hours, and the row says so."
+        }
+      ]
+    }
+  ],
+  "simplifies": [
+    "One collector is drawn. In this incident there are several: scripts on timers reading IPMA's open data, agents sweeping the press and social media, another team's watcher, and the lead reading a page by hand. Each writes down the source and the time read.",
+    "The curator is drawn as its own character. In this incident the lead (incident.conductor@) writes the timeline's rows and labels them, and each agent labels the data it keeps.",
+    "A row's time is not always the same kind of time. The Web Summit row is filed at the time the page was published (19:09), which the page's data gave. The row for IPMA's change is filed at the time we read it (23:53), with IPMA's send time (21:23) in its text. The row's text says which; a field for each would be better, and is not there yet.",
+    "\"Fact\" means read from the body that decides or warns, on its own channel. It does not mean the thing will turn out so: a warning is a fact about what was warned, and it can be changed by the body that issued it, as case 2 shows.",
+    "The build is drawn as one machine. It is a build script, a tool that writes data/signals.json from timeline.md, a gate, and a deploy; the order and the checks are in CLAUDE.md.",
+    "The two cases are quoted from the timeline's rows as they stood on 11 November 2026, 00:50 UTC. If a row is corrected later, the row is right and this animation is out of date."
+  ],
+  "sources": [
+    {
+      "name": "timeline.md, rows s-1110T1909, s-1110T1952, s-1110T1742, s-1110T2353, s-1110T2354",
+      "href": "../incidents/2026-11-10-storm-charles/timeline.html",
+      "read": "11 November 2026, 00:50 UTC"
+    },
+    {
+      "name": "data/signals.json (the same rows: label, kind, supersedes)",
+      "href": "../incidents/2026-11-10-storm-charles/data/signals.json",
+      "read": "11 November 2026, 00:50 UTC"
+    },
+    {
+      "name": "incident.json (the headline and its time)",
+      "href": "../incidents/2026-11-10-storm-charles/incident.json",
+      "read": "11 November 2026, 00:50 UTC"
+    },
+    {
+      "name": "CLAUDE.md (the content rules: fact, evidence, hypothesis; permanent row ids; the headline)",
+      "href": "../CLAUDE.html",
+      "read": "11 November 2026, 00:30 UTC"
+    },
+    {
+      "name": "version.json (push to built, for this site's v0.1.130)",
+      "href": "../version.json",
+      "read": "11 November 2026, 00:44 UTC"
+    }
+  ]
+}
