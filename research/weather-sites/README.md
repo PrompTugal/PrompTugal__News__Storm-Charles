@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 09:46 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 10:40 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,15 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 10:39 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 48 addresses; MeteoAlarm's feed of IPMA's CAP messages read first (10:38).
+
+- **At the authorities** (facts): nothing changed. No CAP message for Lisbon after 07:16:30. **Red rain in force to 18:00, orange wind in force to 21:00**, orange sea from 12:00, yellow sea from 21:00. Still communiqué no. 2. ANEPC's notice 21 still the latest.
+- **In the coverage** (evidence): the tone has turned to "weaker": RTP's 09:00 radio bulletin "Tempestade Charles está a perder força"; Observador's 10:00 bulletin "Tempestade Charles pode ter menos impacto". "Two centres" is now on three front pages (RTP, [DN](https://www.dn.pt/) "dividiu-se em dois núcleos", Correio da Manhã); IPMA's pages and messages read here do not say it. Observador's live blog: "Número de voos cancelados no aeroporto de Lisboa dispara a partir das 10h50".
+- **Our front page** (v0.1.891, rendered 10:39): the three points of [the 09:40 review](reviews/2026-11-11T0940.md) are still open, and the strip's rain row now begins at 09:00, so the night's orange rain has gone from it as well.
+- No new tracker or map.
 
 ## What changed at the 09:44 UTC re-read (11 November)
 
