@@ -209,6 +209,12 @@ ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do nex
         if (!d) { try { api = await getJSON(`https://api.github.com/repos/${REPO}/commits/${sha}`, { headers: { Accept: 'application/vnd.github+json' } }); src = "GitHub's public API" } catch { } }
         const C = c || (api ? parse(api) : null)
         if (!C) { el.innerHTML = `<p class="ag-note ag-err">No commit ${esc(sha.slice(0, 12))} was found in the snapshot, and GitHub's API did not answer. <a href="https://github.com/${REPO}/commit/${esc(sha)}">Try it on GitHub</a>.</p>`; return }
+        // served in: the snapshot's answer (CI's tags), or, for a push newer than the snapshot, CI's run records: its own run if
+        // that deployed, otherwise the next run after it that did
+        let served = C.served_in || '', servedFrom = served ? "CI's tag" : ''
+        if (!served) { try { const R = await runs(), ver = await getJSON(`${BASE}version.json?t=${Date.now()}`).catch(() => null), series = String(ver?.version || 'v0.1.0').replace(/^v/, '').split('.').slice(0, 2).join('.')
+            const asc = R.items.slice().sort((a, b) => a.n - b.n), i = asc.findIndex(r => r.sha === C.sha), hit = i >= 0 ? asc.slice(i).find(r => r.conclusion === 'success') : null
+            if (hit) { served = `v${series}.${hit.n}`; servedFrom = hit.sha === C.sha ? "CI's run for this push" : "its own run was superseded; the next run that deployed" } } catch { } }
         const files = d ? d.files : api ? (api.files || []).map(f => ({ p: f.filename, a: f.additions, d: f.deletions })) : [], more = d ? d.more_files : 0
         const msg = api ? String(api.commit?.message || '') : ''
         const body = d ? d.body : msg.split('\n').slice(1).filter(l => !/^(Agent|Issue|For|Co-Authored-By|Claude-Session):/i.test(l)).join('\n').trim()
@@ -224,7 +230,7 @@ ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do nex
 <dt>Who</dt><dd>${who(C.agent, idx)}${iMine >= 0 ? ` <span class="ag-note">its push ${mineAll.length - iMine} of ${mineAll.length} read</span>` : ''}</dd>
 <dt>For</dt><dd>${C.to.length ? C.to.map(t => who(t, idx)).join(', ') : '<span class="ag-note">nobody named</span>'}</dd>
 <dt>When</dt><dd>${esc(utc(C.at))} <span class="ag-note">${esc(ago(C.at))}</span></dd>
-<dt>Served in</dt><dd>${C.served_in ? `<a href="https://github.com/${REPO}/releases/tag/${esc(C.served_in)}"><code>${T(C.served_in)}</code></a> <span class="ag-note">the first release CI deployed that contains it${C.served_in && gh.items.find(x => x.sha === C.sha) ? '' : ''}</span>` : `${NR} <span class="ag-note">newer than the snapshot, or its release was not tagged when the snapshot was written</span>`}</dd>
+<dt>Served in</dt><dd>${served ? `<a href="https://github.com/${REPO}/releases/tag/${esc(served)}"><code>${T(served)}</code></a> <span class="ag-note">the first release that contains it (${esc(servedFrom)})</span>` : `${NR} <span class="ag-note">no deployed run was found for it yet (still building, or GitHub did not answer)</span>`}</dd>
 <dt>Session</dt><dd>${session ? `<code>${esc(session)}</code> <span class="ag-note">from the commit's Claude-Session trailer; <a href="${esc(agentHref(C.agent, idx) || '#')}#provenance">the agent's sessions</a></span>` : NR}</dd>
 <dt>Issue</dt><dd>${nr(C.issue)}</dd>
 <dt>Commit</dt><dd><a href="https://github.com/${REPO}/commit/${esc(C.sha)}"><code>${esc(C.sha.slice(0, 12))}</code> on GitHub (the full diff)</a> <span class="ag-note">not signed: the agent is named by its Agent: trailer</span></dd>

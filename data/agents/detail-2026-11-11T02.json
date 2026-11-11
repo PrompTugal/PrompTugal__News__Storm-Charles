@@ -3,6 +3,770 @@
  "by": "incident.observability@web-summit.dinis",
  "hour": "2026-11-11T02:00Z",
  "commits": {
+  "22d1e0b2c7d4a7bc0d4f6dcca7a431d778960adb": {
+   "body": "labs/timelines: lanes, known-when (a scrubber), story. labs/decisions: flow (a query, never the whole graph), lead-times, days.\nlabs/weather: stations (warned against observed), day-bands (hour by hour), models (dashed, named, never our forecast).\nOne core (app/labs/labs.js) reading only the site's published JSON; one hook, Labs.openItem(id), for the reader's panel to replace.\nlabs/index.md gives a verdict on each; agents/labs/status.json has the asks.",
+   "session": "session_018yvwtLm195KWcUuYeRHn8M",
+   "files": [
+    {
+     "p": "agents/labs/status.json",
+     "a": 33,
+     "d": 0
+    },
+    {
+     "p": "app/labs/decisions.js",
+     "a": 131,
+     "d": 0
+    },
+    {
+     "p": "app/labs/labs.css",
+     "a": 123,
+     "d": 0
+    },
+    {
+     "p": "app/labs/labs.js",
+     "a": 153,
+     "d": 0
+    },
+    {
+     "p": "app/labs/timelines.js",
+     "a": 143,
+     "d": 0
+    },
+    {
+     "p": "app/labs/weather.js",
+     "a": 178,
+     "d": 0
+    },
+    {
+     "p": "labs/decisions/days.md",
+     "a": 15,
+     "d": 0
+    },
+    {
+     "p": "labs/decisions/flow.md",
+     "a": 15,
+     "d": 0
+    },
+    {
+     "p": "labs/decisions/lead-times.md",
+     "a": 15,
+     "d": 0
+    },
+    {
+     "p": "labs/index.md",
+     "a": 37,
+     "d": 0
+    },
+    {
+     "p": "labs/timelines/known-when.md",
+     "a": 15,
+     "d": 0
+    },
+    {
+     "p": "labs/timelines/lanes.md",
+     "a": 15,
+     "d": 0
+    },
+    {
+     "p": "labs/timelines/story.md",
+     "a": 15,
+     "d": 0
+    },
+    {
+     "p": "labs/weather/day-bands.md",
+     "a": 15,
+     "d": 0
+    },
+    {
+     "p": "labs/weather/models.md",
+     "a": 15,
+     "d": 0
+    },
+    {
+     "p": "labs/weather/stations.md",
+     "a": 15,
+     "d": 0
+    }
+   ],
+   "more_files": 0
+  },
+  "b708dbed2ceaaf66a9c6d3d27fffab5379744083": {
+   "body": "tools/capture.mjs (screenshot, HTML, visible text, sha256 of each, robots.txt obeyed, output outside git), tools/capture-records.mjs (records, index, timeline rows to evidence ids, vault push), app/evidence/ (the screenshot read from the display vault in the browser and checked against the record), data/vaults.json (the display vault's read key only), the session key's public half.",
+   "session": "session_018yvwtPjTTJWWpfgwZeancy",
+   "files": [
+    {
+     "p": "agents/archivist/status.json",
+     "a": 26,
+     "d": 0
+    },
+    {
+     "p": "app/evidence/evidence.css",
+     "a": 27,
+     "d": 0
+    },
+    {
+     "p": "app/evidence/evidence.js",
+     "a": 81,
+     "d": 0
+    },
+    {
+     "p": "app/evidence/vault-reader.js",
+     "a": 66,
+     "d": 0
+    },
+    {
+     "p": "data/keys.json",
+     "a": 16,
+     "d": 0
+    },
+    {
+     "p": "data/vaults.json",
+     "a": 29,
+     "d": 0
+    },
+    {
+     "p": "evidence/anepc/2026/11/11/0220-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.json",
+     "a": 60,
+     "d": 0
+    },
+    {
+     "p": "evidence/anepc/2026/11/11/0220-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.md",
+     "a": 40,
+     "d": 0
+    },
+    {
+     "p": "evidence/governo/2026/11/11/0220-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.json",
+     "a": 69,
+     "d": 0
+    },
+    {
+     "p": "evidence/governo/2026/11/11/0220-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.md",
+     "a": 41,
+     "d": 0
+    },
+    {
+     "p": "evidence/index.json",
+     "a": 146,
+     "d": 0
+    },
+    {
+     "p": "evidence/index.md",
+     "a": 30,
+     "d": 0
+    },
+    {
+     "p": "evidence/ipma/2026/11/11/0216-pt-otempo-comunicados.json",
+     "a": 60,
+     "d": 0
+    },
+    {
+     "p": "evidence/ipma/2026/11/11/0216-pt-otempo-comunicados.md",
+     "a": 40,
+     "d": 0
+    },
+    {
+     "p": "evidence/ipma/2026/11/11/0216-pt-otempo-prev-sam.json",
+     "a": 60,
+     "d": 0
+    },
+    {
+     "p": "evidence/ipma/2026/11/11/0216-pt-otempo-prev-sam.md",
+     "a": 40,
+     "d": 0
+    },
+    {
+     "p": "evidence/rows.json",
+     "a": 240,
+     "d": 0
+    },
+    {
+     "p": "evidence/sources.json",
+     "a": 20,
+     "d": 0
+    },
+    {
+     "p": "evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.json",
+     "a": 68,
+     "d": 0
+    },
+    {
+     "p": "evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.md",
+     "a": 41,
+     "d": 0
+    },
+    {
+     "p": "evidence/websummit/2026/11/11/0216-blog.json",
+     "a": 68,
+     "d": 0
+    },
+    {
+     "p": "evidence/websummit/2026/11/11/0216-blog.md",
+     "a": 41,
+     "d": 0
+    },
+    {
+     "p": "tools/capture-records.mjs",
+     "a": 191,
+     "d": 0
+    },
+    {
+     "p": "tools/capture.mjs",
+     "a": 178,
+     "d": 0
+    }
+   ],
+   "more_files": 0
+  },
+  "a63d1c475397754e759a8038777795681796a4e1": {
+   "body": "",
+   "session": "session_018yvwtMBxaFYWBGAGvzTqtH",
+   "files": [
+    {
+     "p": "agents/media/status.json",
+     "a": 7,
+     "d": 6
+    },
+    {
+     "p": "outreach/README.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "outreach/launch.md",
+     "a": 114,
+     "d": 0
+    },
+    {
+     "p": "research/media/README.md",
+     "a": 2,
+     "d": 1
+    },
+    {
+     "p": "research/media/cites.json",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/coverage.json",
+     "a": 14,
+     "d": 186
+    },
+    {
+     "p": "research/media/feeds.json",
+     "a": 8,
+     "d": 7
+    },
+    {
+     "p": "research/media/first-on-each-fact.json",
+     "a": 6,
+     "d": 30
+    },
+    {
+     "p": "research/media/licences.json",
+     "a": 16,
+     "d": 12
+    },
+    {
+     "p": "research/media/outlets.json",
+     "a": 9,
+     "d": 17
+    },
+    {
+     "p": "research/media/outlets/README.md",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "research/media/outlets/ap.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/bloomberg.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/cnn-portugal.md",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "research/media/outlets/correio-da-manha.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/dn.md",
+     "a": 3,
+     "d": 3
+    },
+    {
+     "p": "research/media/outlets/eco.md",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "research/media/outlets/euronews.md",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "research/media/outlets/expresso.md",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "research/media/outlets/guardian.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/iol.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/jn.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/jornal-economico.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/lusa.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/madeira-island-news.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/negocios.md",
+     "a": 3,
+     "d": 3
+    },
+    {
+     "p": "research/media/outlets/noticias-ao-minuto.md",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "research/media/outlets/observador.md",
+     "a": 3,
+     "d": 3
+    },
+    {
+     "p": "research/media/outlets/portugal-news.md",
+     "a": 13,
+     "d": 34
+    },
+    {
+     "p": "research/media/outlets/portugal-resident.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/publico.md",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "research/media/outlets/renascenca.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/rtp.md",
+     "a": 3,
+     "d": 3
+    },
+    {
+     "p": "research/media/outlets/sabado.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/sapo.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/sic-noticias.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/techcrunch.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/techtimes.md",
+     "a": 1,
+     "d": 1
+    },
+    {
+     "p": "research/media/outlets/tek.md",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "research/media/outlets/tsf.md",
+     "a": 1,
+     "d": 1
+    }
+   ],
+   "more_files": 7
+  },
+  "5176f5eeb5c3804e72f4a8157407117d663e86ba": {
+   "body": "Found missing by incident.studio@: the 21:23 change of Lisbon's red rain was\nin the graph twice (the researcher's warning and IPMA's CAP message) with no\nedge between them. A recorded warning matches the message of the same level\nand type whose start is its effect start; a warning in force for Lisbon\nmatches the message with the same type, level, start and end. Seven edges\ntoday; no match, no edge.",
+   "session": "session_018yvwtR8zLQivnC4JDKPoSw",
+   "files": [
+    {
+     "p": "agents/graph/status.json",
+     "a": 4,
+     "d": 3
+    },
+    {
+     "p": "app/graph/graph.js",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "app/graph/ontology.js",
+     "a": 2,
+     "d": 1
+    },
+    {
+     "p": "data/graph/README.md",
+     "a": 2,
+     "d": 1
+    },
+    {
+     "p": "data/graph/ontology.json",
+     "a": 12,
+     "d": 2
+    },
+    {
+     "p": "data/graph/storm-elsewhere.json",
+     "a": 66,
+     "d": 6
+    },
+    {
+     "p": "data/graph/storm-sources.json",
+     "a": 211,
+     "d": 72
+    },
+    {
+     "p": "data/graph/storm.json",
+     "a": 333,
+     "d": 235
+    },
+    {
+     "p": "data/graph/tables/actors.json",
+     "a": 41,
+     "d": 38
+    },
+    {
+     "p": "data/graph/tables/coverage.json",
+     "a": 3,
+     "d": 3
+    },
+    {
+     "p": "data/graph/tables/decisions.json",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "data/graph/tables/first_on_fact.json",
+     "a": 35,
+     "d": 35
+    },
+    {
+     "p": "data/graph/tables/signals.json",
+     "a": 57,
+     "d": 57
+    },
+    {
+     "p": "data/graph/tables/sources.json",
+     "a": 38,
+     "d": 25
+    },
+    {
+     "p": "data/graph/tables/timeline.json",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "data/graph/tables/warnings.json",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "tools/graph-build.mjs",
+     "a": 12,
+     "d": 0
+    }
+   ],
+   "more_files": 0
+  },
+  "ec7471fc124e21f6e8c6cf200f52ae0185850625": {
+   "body": "sources/index.md and sources.json list every outside body the site cites,\nofficial bodies first. sources/meteoalarm/ describes MeteoAlarm, quotes its\nterms, maps its APIs (the EDR archive needs a key) and browses our dated copy\nof the Portugal feed. tools/source-meteoalarm.mjs records every read and what\nchanged; the full bytes go to a data vault, git keeps hashes.",
+   "session": "session_018yvwtMmyTKYfQRk5pMazCA",
+   "files": [
+    {
+     "p": "agents/sources/status.json",
+     "a": 29,
+     "d": 0
+    },
+    {
+     "p": "app/sources/meteoalarm/browser.css",
+     "a": 26,
+     "d": 0
+    },
+    {
+     "p": "app/sources/meteoalarm/browser.js",
+     "a": 76,
+     "d": 0
+    },
+    {
+     "p": "data/keys.json",
+     "a": 16,
+     "d": 0
+    },
+    {
+     "p": "sources/index.md",
+     "a": 94,
+     "d": 0
+    },
+    {
+     "p": "sources/meteoalarm/README.md",
+     "a": 75,
+     "d": 0
+    },
+    {
+     "p": "sources/meteoalarm/api-map.json",
+     "a": 44,
+     "d": 0
+    },
+    {
+     "p": "sources/meteoalarm/api-map.md",
+     "a": 53,
+     "d": 0
+    },
+    {
+     "p": "sources/meteoalarm/data/portugal/latest.json",
+     "a": 209,
+     "d": 0
+    },
+    {
+     "p": "sources/meteoalarm/data/portugal/reads.json",
+     "a": 40,
+     "d": 0
+    },
+    {
+     "p": "sources/meteoalarm/dataset.json",
+     "a": 39,
+     "d": 0
+    },
+    {
+     "p": "sources/meteoalarm/portugal.md",
+     "a": 16,
+     "d": 0
+    },
+    {
+     "p": "sources/meteoalarm/source.json",
+     "a": 66,
+     "d": 0
+    },
+    {
+     "p": "sources/registry.json",
+     "a": 814,
+     "d": 0
+    },
+    {
+     "p": "sources/sources.json",
+     "a": 1461,
+     "d": 0
+    },
+    {
+     "p": "tools/source-index.mjs",
+     "a": 69,
+     "d": 0
+    },
+    {
+     "p": "tools/source-meteoalarm.mjs",
+     "a": 206,
+     "d": 0
+    }
+   ],
+   "more_files": 0
+  },
+  "c1b1e6deab4f4d81f9b99d8dd4a72cce3201de02": {
+   "body": "",
+   "session": "session_018yvwtNqSbr9KU2d6ovMWcm",
+   "files": [
+    {
+     "p": "agents/observability/status.json",
+     "a": 10,
+     "d": 7
+    },
+    {
+     "p": "app/agents/about.md",
+     "a": 4,
+     "d": 0
+    },
+    {
+     "p": "app/agents/agents.css",
+     "a": 19,
+     "d": 0
+    },
+    {
+     "p": "app/agents/agents.js",
+     "a": 37,
+     "d": 0
+    },
+    {
+     "p": "app/agents/jobs.md",
+     "a": 10,
+     "d": 0
+    },
+    {
+     "p": "data/agents/commits.json",
+     "a": 284,
+     "d": 39
+    },
+    {
+     "p": "data/agents/detail-2026-11-11T02.json",
+     "a": 862,
+     "d": 1
+    },
+    {
+     "p": "data/agents/index.json",
+     "a": 92,
+     "d": 47
+    },
+    {
+     "p": "data/agents/sessions.json",
+     "a": 64,
+     "d": 35
+    }
+   ],
+   "more_files": 0
+  },
+  "e0276a0746568dbd310e993cc8cb5187d5508f59": {
+   "body": "",
+   "session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+   "files": [
+    {
+     "p": "agents/researcher/status.json",
+     "a": 4,
+     "d": 2
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/decisions/entities/airport.json",
+     "a": 17,
+     "d": 1
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/decisions/entities/bridges.json",
+     "a": 15,
+     "d": 1
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/decisions/entities/cp.json",
+     "a": 17,
+     "d": 1
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json",
+     "a": 18,
+     "d": 1
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/decisions/entities/rede-expressos.json",
+     "a": 15,
+     "d": 1
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/decisions/entities/tunnels.json",
+     "a": 25,
+     "d": 1
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+     "a": 149,
+     "d": 48
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/decisions/tools/primary_tries.py",
+     "a": 31,
+     "d": 0
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+     "a": 16,
+     "d": 2
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+     "a": 106,
+     "d": 64
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+     "a": 111,
+     "d": 21
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+     "a": 3,
+     "d": 3
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+     "a": 353,
+     "d": 68
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+     "a": 20,
+     "d": 15
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+     "a": 12,
+     "d": 12
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+     "a": 19,
+     "d": 19
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+     "a": 9,
+     "d": 9
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py",
+     "a": 71,
+     "d": 3
+    },
+    {
+     "p": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+     "a": 173,
+     "d": 63
+    }
+   ],
+   "more_files": 0
+  },
   "b231de8448443002eacea4534bec653ee4623194": {
    "body": "",
    "session": "session_018yvwtPysshPQ94qEprs4pr",
@@ -2354,5 +3118,5 @@
    "more_files": 0
   }
  },
- "updated": "2026-11-11T02:21:39Z"
+ "updated": "2026-11-11T02:23:06Z"
 }
