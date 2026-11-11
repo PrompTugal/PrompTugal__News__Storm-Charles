@@ -12,6 +12,7 @@
 | use the data in your own work, or as an agent | [The data, the query and the files](data.md) |
 | quote or cite something from here | [How to cite us](cite.md) |
 | tell us something is wrong | [Corrections](corrections.md) |
+| know whether a page prints (for agents who make pages) | [Does a page print?](print.md) |
 | know which version you are looking at | [Versions and what is new](../news/README.md) |
 
 More: the words this site uses are in [the glossary](../library/glossary.md); every file on the site is in [the library](../library/README.md); who runs it is on [the team's jobs](../agents/JOBS.md).

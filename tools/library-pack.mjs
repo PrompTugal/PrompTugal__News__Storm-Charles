@@ -41,6 +41,8 @@ const view = f => `../../view/index.html?path=${f}`
 const pointer = (f, stands) => { const s = stat(f); if (!s) return `\`${f}\` (not found at this build)`; stands.set(f, s.bytes); return `\`${f}\` (${n(s.bytes)} B, ${s.sha256.slice(0, 10)})` }
 const fill = (text, stands) => text.replace(/\[\[file:([^\]]+)\]\]/g, (_, f) => pointer(f, stands))
 const policy = J('agents/policy.json') || { agents: {}, everyone: { owns: [] } }
+// what an earlier session of a role asked to be pointed at from the start, which no link in its files declares (library/pack/also.json)
+const ALSO = (J('library/pack/also.json') || {}).roles || {}
 const cat = globalThis.__libraryCatalogue || (() => { try { return JSON.parse(fs.readFileSync(path.join(OUT, 'library/index.json'), 'utf8')).entries } catch { return [] } })()
 const rx = g => new RegExp('^' + g.split(/(\*\*|\*)/).map(p => p === '**' ? '.*' : p === '*' ? '[^/]*' : p.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('') + '$')
 const catBy = new Map(cat.map(e => [e.path, e]))
@@ -126,6 +128,9 @@ for (const [agent, r] of Object.entries(policy.agents)) {
     const reads = {}, readBy = {}
     for (const e of mine) for (const t of new Set([...(e.made_from || []), ...(e.links_to || [])])) { const o = /^agents\//.test(t) ? '' : ownerOf(t); if (o && o !== agent) (reads[o] ||= new Set()).add(t) }
     for (const e of mine) if (!/^agents\//.test(e.path)) for (const t of e.linked_from || []) { const o = /^agents\//.test(t) ? '' : ownerOf(t); if (o && o !== agent) (readBy[o] ||= new Set()).add(e.path) }
+    // a journal piece rests on the files its claims name in "supports" (file, trace, id), not on links in its prose: those are read too
+    for (const e of mine) if (/^journal\/[^/]+\.json$/.test(e.path)) { const j = J(e.path); for (const c of (j && Array.isArray(j.claims) ? j.claims : [])) for (const s of (Array.isArray(c.supports) ? c.supports : [])) for (const [k, v] of Object.entries(s || {})) { if (typeof v !== 'string') continue; const t = catBy.has(v) ? v : k === 'trace' && catBy.has('reporter/traces/' + v + '.json') ? 'reporter/traces/' + v + '.json' : ''; if (!t || /^agents\//.test(t)) continue; const o = ownerOf(t); if (o && o !== agent) (reads[o] ||= new Set()).add(t) } }
+    const alsoText = (ALSO[role] || []).map(a => '- ' + P1(a.path) + ': ' + a.why).join('\n')
     const what = f => { const e = catBy.get(f); return e ? cut(e.what || e.title, 110) : '' }
     const key = mine.filter(e => /(README|index)\.md$|\.json$|\.mjs$/.test(e.path) && !/\/items\/|\/sites\/|status\.json$|policy\.md$/.test(e.path)).sort((a, b) => a.path.split('/').length - b.path.split('/').length || (b.linked_from?.length || 0) - (a.linked_from?.length || 0)).slice(0, 10)
     const cards = open.filter(c => c.owner === agent || String(c.waiting_on || '').includes(`incident.${role}@`)).slice(0, 12)
@@ -172,7 +177,7 @@ Every one, with who last changed it: [the catalogue](../index.json), filtered by
 
 What your files say they read, and who reads yours: taken from the links and sources the files themselves declare. A contract here is an address and a shape that does not depend on anyone's session.
 
-**You read:**
+${alsoText ? '**Also open at the start** (asked for by an earlier session of this role; the list is library/pack/also.json):\n\n' + alsoText + '\n\n' : ''}**You read:**
 
 ${neigh(reads, 'of theirs') || '- Nothing declared yet.'}
 
