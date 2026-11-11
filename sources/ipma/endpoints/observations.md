@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Station observations, hourly, last 24 hours
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 05:49 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 06:49 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -18,8 +18,8 @@ IPMA's name for it: *Observação Meteorológica de Estações (dados horários,
 | Format | JSON |
 | Shape | {<YYYY-mm-ddThh:mi>: {<idEstacao>: {values}}}: 24 hours, every station |
 | IPMA says it updates | Taxa de atualização horária. |
-| IPMA's file dated (its Last-Modified header) | 2026-11-11 05:35 UTC |
-| We last read it | 2026-11-11 05:48 UTC, 1 file, 1070244 bytes |
+| IPMA's file dated (its Last-Modified header) | 2026-11-11 06:35 UTC |
+| We last read it | 2026-11-11 06:48 UTC, 1 file, 1069425 bytes |
 | IPMA's note | "valor "-99.0" = nodata" |
 
 ## Fields
@@ -49,6 +49,6 @@ IPMA's name for it: *Observação Meteorológica de Estações (dados horários,
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [observation/meteorology/stations/observations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json) | 200 | 1070244 | `125d604b8b001b85…` | 2026-11-11 05:35 | 2026-11-11 05:48 |
+| [observation/meteorology/stations/observations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json) | 200 | 1069425 | `c0a7e42cd3a6c5c9…` | 2026-11-11 06:35 | 2026-11-11 06:48 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/observations.json](../changes/observations.json). Our small files made from it: [data/observations.json](../data.md#data/observations.json), [data/observed-daily.json](../data.md#data/observed-daily.json).
