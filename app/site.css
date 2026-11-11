@@ -412,3 +412,18 @@ footer.agent .cap { display: block; font-size: 11.5px; line-height: 1.45; margin
 .ds-card th { background: var(--surface-2); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); white-space: nowrap; }
 .ds-card td:nth-child(1) { font-family: var(--mono); white-space: nowrap; } .ds-card td:nth-child(2), .ds-card td:nth-child(3), .ds-card td:nth-child(4) { font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
 .ds-card td small { color: var(--ink-2); font-size: 10.5px; } .ds-card td:nth-child(5) { color: var(--ink-2); min-width: 280px; }
+
+/* ---- round 17 (incident.designer@): the 404 page; quotes and lists on document pages (the Brief). design/round-17.md ---- */
+.nf article { max-width: 760px; margin: 0 auto; }
+.nf-path { font: 14px/1.4 var(--mono); color: var(--ink-2); overflow-wrap: anywhere; margin-top: -6px; }
+.nf-path:empty { display: none; }
+.nf-go { list-style: none; padding: 0; margin: 18px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; max-width: none !important; }
+.nf-go a { display: block; text-decoration: none; border: 1px solid var(--line-2); border-radius: 6px; padding: 9px 12px; color: var(--ink); height: 100%; }
+.nf-go a:hover { border-color: var(--focus); } .nf-go b { display: block; color: var(--focus); } .nf-go span { font-size: 13px; color: var(--ink-2); }
+.doc article > blockquote { border-left: 4px solid var(--accent); background: var(--surface-2); padding: 8px 14px; border-radius: 0 6px 6px 0; font-size: 14.5px; color: var(--ink-2); }
+.doc article > blockquote p { margin: .2em 0; }
+.doc article > ul > li { margin: .5em 0; line-height: 1.5; } .doc article > ul { padding-left: 1.2em; }
+.doc article > ul > li::marker { color: var(--accent); }
+.doc article h2 + ul, .doc article h2 + p { margin-top: .4em; }
+.doc article strong { font-weight: 650; }
+.doc article > ul.nf-go { padding-left: 0; } .doc article > ul.nf-go > li { margin: 0; }

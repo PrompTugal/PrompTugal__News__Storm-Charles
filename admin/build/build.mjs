@@ -83,7 +83,7 @@ const titleOf = (md, fallback) => (md.match(/^#\s+(.+)$/m) || [, fallback])[1].r
 // ---------------------------------------------------------------- the page frame
 const up = rel => '../'.repeat(rel.split('/').length - 1) || './'
 function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
-    const u = up(rel)
+    const u = rel === '404.html' ? '/' : up(rel)   // the 404 page is served at any depth: its links are absolute
     return `<!doctype html>
 <html lang="en">
 <head>
@@ -505,6 +505,6 @@ write('llms.txt', `# Storm Charles (storm-charles.promptugal.news)\n\n> Storm Ch
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(p => `<url><loc>${SITE}${p.rel.replace(/index\.html$/, '')}</loc></url>`).join('\n')}\n</urlset>\n`)
 write('version.json', JSON.stringify({ version: VERSION, commit: process.env.GITHUB_SHA || '', pushed_at: process.env.PUSHED_AT || '', built_at: builtAt }, null, 2) + '\n')
 write('version.txt', VERSION + '\n')
-write('404.html', page({ rel: '404.html', title: 'Not found', body: `<main class="doc"><div class="wrap"><article><h1>Not found</h1><p><a href="/">The front page</a> · <a href="/api/v1/index.json">The data</a></p></article></div></main>` }))
+write('404.html', page({ rel: '404.html', title: 'Not found', body: `<main class="doc nf"><div class="wrap"><article><p class="kicker">404</p><h1>No page at this address</h1><p class="nf-path" id="nf-path"></p><p>Pages here are files in a public repository, so an address can change when a file moves. The facts have not gone: every row of the timeline and every dataset keeps its own address.</p><ul class="nf-go"><li><a href="/"><b>The front page</b><span>what is warned, what is decided, hour by hour</span></a></li><li><a href="/${base}timeline.html"><b>The timeline</b><span>every signal and decision, each with its source</span></a></li><li><a href="/datasets.html"><b>The data</b><span>every file, its size and when it was read</span></a></li><li><a href="/library/index.html"><b>The library</b><span>the catalogue of everything on this site</span></a></li><li><a href="/llms.txt"><b>For agents</b><span>llms.txt and the API catalogue</span></a></li></ul><p class="meta">Not a warning service: for the weather itself, <a href="https://www.ipma.pt/">IPMA</a> and <a href="https://prociv.gov.pt/">ANEPC</a>.</p></article></div></main><script>(function(){var e=document.getElementById('nf-path');if(e)e.textContent=location.pathname})()</script>` }))
 write('.nojekyll', '')
 console.log(`build: ${pages.length} pages, ${datasets.length} datasets, ${files.length} files, ${Date.now() - t0} ms -> _site/ (${VERSION})`)
