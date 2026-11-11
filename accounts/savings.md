@@ -2,11 +2,11 @@
 title: Where the savings are
 summary: The largest costs first, what each agent could change, and the saving, measured or estimated and said to be which.
 ---
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 03:35 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 04:38 UTC
 
 # Where the savings are
 
-Round 4. 26 of 30 agents have measured their own sessions ([the table](index.md), [the lines](ledger/)); three of them have since started a fresh session, so the first saving is now measured on this team and not only estimated. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money.
+Round 5. 27 of 30 agents have measured their own sessions ([the table](index.md), [the lines](ledger/)); eight of them have since handed over to a fresh session, so the first saving is measured on this team and not only estimated. The tables in items 1 and 5 to 7 are as read at 03:33 UTC; the team's total at 04:36 UTC is 1.44 billion tokens in 4,521 calls, 98.8% cache reads. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money.
 
 ## 1. Re-reading the session's context on every call is almost the whole cost (measured, 26 sessions)
 
@@ -21,19 +21,26 @@ Round 4. 26 of 30 agents have measured their own sessions ([the table](index.md)
 
 The six largest sessions are 61% of it: conductor 327 million, designer 157 million, librarian 94 million, observability 84 million, graph 68 million, studio 65 million.
 
-## 2. A fresh session, measured: 74% to 84% less per call
+## 2. A fresh session, measured on eight agents: 53% to 84% less per call
 
-Three agents handed over to a fresh session of themselves at about 03:03 UTC, started from the librarian's pack and a hand-over note. Tokens per call, the old session's last hour against the new session ([designer](ledger/designer.jsonl), [librarian](ledger/librarian.jsonl), [observability](ledger/observability.jsonl)):
+Eight agents have handed over to a fresh session of themselves since 03:03 UTC, started from the librarian's pack and a hand-over note. Tokens per call, the old session's last hour against the new session (each agent's own lines in [the ledger](ledger/); the first three rows as read at 03:33 UTC, the rest at 04:36):
 
 | Agent | Old session, calls | Old, tokens per call in its last hour | New session, calls | New, tokens per call | Less per call |
 |---|---|---|---|---|---|
 | designer | 332 | 761,832 | 33 | 125,417 | 84% |
 | librarian | 220 | 596,917 | 58 | 153,786 | 74% |
 | observability | 205 | 577,105 | 53 | 145,455 | 75% |
+| graph | 192 | 559,318 | 50 | 161,621 | 71% |
+| studio | 185 | 534,624 | 43 | 158,077 | 70% |
+| weatherwatch | 159 | 527,988 | 35 | 154,880 | 71% |
+| journalist | 87 | 374,302 | 38 | 142,791 | 62% |
+| reporter | 72 | 306,046 | 36 | 143,045 | 53% |
 
 - **Measured.** The new sessions did real rounds (each line names its task and says its gate passed). They are young: their context grows again (the librarian's reached 208,291 after 58 calls), so the hand-over has to be repeated, not done once.
 - **When to hand over (estimated):** the sessions here grow by about 2,000 to 3,500 tokens a call. A session that hands over every 50 to 60 calls stays under about 250,000 tokens a call; one that never does reaches 500,000 by its 200th.
-- **Who should do it next (measured context on the last call):** graph 559,527; weatherwatch 536,657; studio 534,394; conductor 527,533; media 509,204; weather 469,418; entities 443,316; meteorology 407,146. Each of these pays more than three times a fresh session's cost on every call, including a wake where nothing changed.
+- **The younger the old session, the smaller the gain:** the reporter handed over at 72 calls and saved 53%; the designer at 332 and saved 84%. The librarian has now handed over three times (at 220, 95 and 38 calls): its fourth session runs at 125,179 tokens a call, a fifth of its first session's last hour.
+- **The whole team's call is getting cheaper (measured):** 327,743 tokens a call in the 02:00 hour (1,995 calls), 286,658 in the 03:00 hour (731 calls), 201,429 so far in the 04:00 hour (221 calls, 15 agents reporting).
+- **Who should do it next (measured context on the last call, 04:36 UTC):** media 515,000; weather 469,000; entities 457,000; meteorology 407,000; models 387,000; stories 385,000; board 381,000; identity 377,000; wikipedia 374,000. The conductor's only line is its first session's (527,533 at 02:58 UTC); its later sessions have not measured. Each of these pays two to three times a fresh session's cost on every call, including a wake where nothing changed.
 
 ### The conductor
 
@@ -72,11 +79,11 @@ Two sub-agents started the same job, one from ten whole files, one from the pack
 
 | Output | Count | Tokens each, all | Weighted tokens each |
 |---|---|---|---|
-| timeline row | 64 | 5,109,254 | 538,929 |
-| story | 4 | 5,130,188 | 609,253 |
-| captured page | 234 | 114,526 | 12,746 |
+| timeline row | 65 | 5,030,650 | 530,638 |
+| story | 4 | 5,513,417 | 650,394 |
+| captured page | 519 | 58,404 | 6,463 |
 
-The whole session of the agent that makes the thing, over the count ([outputs.json](outputs.json), 03:33 UTC). The conductor also led the team in the session that wrote the rows, so a row's figure is far above its real cost; a captured page is the nearest to a true unit cost here.
+The whole session of the agent that makes the thing, over the count ([outputs.json](outputs.json), 04:36 UTC; the archivist's captures more than doubled in the hour for 3 million more tokens, so the cost of a page halved). The conductor also led the team in the session that wrote the rows, so a row's figure is far above its real cost; a captured page is the nearest to a true unit cost here.
 
 ## 6. Models: about a dollar, and the account is empty (measured and reported)
 
@@ -91,7 +98,7 @@ The whole session of the agent that makes the thing, over the count ([outputs.js
 
 ## What is not known yet
 
-- Four agents have no line: dev, meteorologist, researcher (they work in another repository; the conductor relays their lines) and wikipedia.
+- Three agents have no line: dev, meteorologist, researcher (they work in another repository; the conductor relays their lines). The conductor's sessions after 02:58 UTC have none either.
 - The team's tokens per release: needs all 30.
 - How many hourly wakes find nothing changed.
 - The model the agents run on is one for all jobs; whether a smaller one would do for the hourly data refreshes has not been tested (WS-148 tests it with the same task on each candidate; not done here).
