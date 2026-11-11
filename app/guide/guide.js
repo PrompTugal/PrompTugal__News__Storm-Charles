@@ -77,16 +77,27 @@
   // a short time: HH:MM UTC today, else the day too; the full time is in the <time> element
   var shortT = function (t) { var x = iso(t); if (!x) return '?'; return tm(t, (x.slice(0, 10) === new Date(now).toISOString().slice(0, 10) ? '' : dhm(t).slice(0, 10) + ' ') + x.slice(11, 16)) + ' UTC' }
   var cut = function (t, n) { t = String(t || ''); return t.length > n ? t.slice(0, n).replace(/\s+\S*$/, '') + '…' : t }
-  function short(name, e, re) {
-    var ds = standing(e, re)
-    if (!ds.length) return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(name) + '</b> <span class="gd-ns">not stated</span></div><span class="meta">in what we have read</span></li>'
-    var d = ds[0]
-    return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(name) + '</b> ' + stateChip(stateOf(d)) + lbl(d.label) + '</div>' +
-      '<span class="gd-c-t">' + esc(cut(d.decision, 72)) + ' <span class="gd-c-r">' + (kind(d.label) === 'evidence' ? esc(host(d.address)) + ', ' : '') + 'read ' + shortT(d.read) + '</span></span>' +
-      '<details class="gd-src"><summary>Sources' + (ds.length > 1 ? ' (' + ds.length + ')' : '') + '</summary><ul class="gd-sub">' + ds.map(function (x) {
-        return '<li>' + stateChip(stateOf(x)) + ' ' + esc(x.decision) + ' ' + lbl(x.label) + (x.decided_by ? '<span class="meta">Who: ' + esc(x.decided_by) + '</span>' : '') + prov(host(x.address), x.address, x.read, x.published_utc, kind(x.label)) + '</li>'
-      }).join('') + '</ul></details></li>'
+  function noticeLi(n) { var t = n.updated || n.published || n.from; return '<li>' + lbl('fact') + ' “' + esc(n.title || n.header) + '”' + (n.excerpt ? ': ' + esc(n.excerpt) : '') + (t ? ' <span class="meta">' + (/^\d{4}-\d\d-\d\d$/.test(t) ? esc(t) : tm(t) + ' UTC') + (n.to ? ', until ' + tm(n.to) + ' UTC' : '') + '</span>' : '') + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</li>' }
+  function decLi(x) { return '<li>' + stateChip(stateOf(x)) + ' ' + esc(x.decision) + ' ' + lbl(x.label) + (x.decided_by ? '<span class="meta">Who: ' + esc(x.decided_by) + '</span>' : '') + prov(host(x.address), x.address, x.read, x.published_utc, kind(x.label)) + '</li>' }
+  // unit(name, feed, entity, re): the newest word on top (the operator's own notice if it has one, else the newest decision), two lines at most;
+  // the time read and the sources on one small line that opens everything: the feed's notices, every decision, what is still unanswered
+  function unit(name, o, e, re) {
+    var ds = standing(e, re), notices = (o && o.label !== 'none' && o.notices) || [], n = notices[0], d = ds[0]
+    var notRead = o && o.label === 'none'
+    if (!n && !d) return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(name) + '</b> <span class="gd-ns">' + (notRead ? 'we do not read this site' : 'not stated') + '</span></div><p class="gd-c-t">' + (notRead ? esc(cut(o.note, 140)) : 'in what we have read') + '</p></li>'
+    var head = n ? lbl('fact') + '<span class="gd-src-k">its own notice</span>' : stateChip(stateOf(d)) + lbl(d.label)
+    var ttl = n && (n.title || n.header); if (ttl && /^\d{4}-\d\d-\d\d$/.test(ttl)) ttl = ''
+    var text = n ? (ttl ? '“' + esc(ttl) + '”' + (n.excerpt ? ': ' : '') : '') + (n.excerpt ? esc(n.excerpt) : '') : esc(d.decision)
+    var read = n ? o.read : d.read, count = notices.length + ds.length
+    return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(name) + '</b> ' + head + (notRead ? ' <span class="gd-ns">we do not read this site</span>' : '') + '</div><p class="gd-c-t">' + text + '</p>' +
+      '<details class="gd-src"><summary><span class="gd-c-r">' + (!n && kind(d.label) === 'evidence' ? esc(host(d.address)) + ', ' : '') + 'read ' + shortT(read) + '</span> · <span class="gd-src-a">' + (count > 1 ? count + ' sources' : 'the source') + '</span></summary>' +
+      (notRead ? '<p class="meta">' + esc(o.note || '') + '</p>' : '') +
+      (notices.length ? '<p class="gd-src-h">The operator\'s own notices</p><ul class="gd-sub">' + notices.map(noticeLi).join('') + '</ul>' + prov(host(o.source), o.source, o.read) : '') +
+      (o && o.line_status && o.line_status.label === 'none' ? '<p class="meta">Live line status: <span class="gd-ns">not read</span> (not a published feed).</p>' : '') +
+      (ds.length ? '<p class="gd-src-h">Decisions' + (n ? ', as reported' : '') + '</p><ul class="gd-sub">' + ds.map(decLi).join('') + '</ul>' : '') +
+      ((e && e.open || []).length ? '<p class="gd-open"><b>Not yet answered:</b> ' + e.open.map(esc).join(' ') + '</p>' : '') + '</details></li>'
   }
+  function short(name, e, re) { return unit(name, null, e, re) }
   var LINES = {}
   function sect(id, q, simple, deep, open, line) {
     line = line || LINES[id]
@@ -199,26 +210,24 @@
     var lisOps = function (f, ids) { return ((f && f.operators) || []).filter(function (o) { return !ids || ids.indexOf(o.id) >= 0 }) }
     var ops = lisOps(MT, ['metro-lisboa']).concat(lisOps(BU, ['carris-metropolitana']), lisOps(TR, ['fertagus']), lisOps(FE))
     if (!ops.length) ops = (S && S.operators) || []
-    var opLine = function (o) {
-      if (o.label === 'none') return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(o.operator) + '</b> <span class="gd-ns">we do not read this site</span></div><span class="gd-c-t">Its own word is not shown here; what was reported about its service is below. <span class="gd-c-r">' + (o.read ? 'checked ' + shortT(o.read) : '') + '</span></span><details class="gd-src"><summary>Why</summary><p class="meta">' + esc(o.note || o.state || '') + '</p></details></li>'
-      var n = (o.notices || [])[0], t = n && (n.updated || n.published || n.from)
-      return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(o.operator) + '</b> ' + lbl(o.label) + '</div>' +
-        (n ? '<span class="gd-c-t">“' + esc(cut(n.title || n.header, 72)) + '” <span class="gd-c-r">' + (t && !/^\d{4}-\d\d-\d\d$/.test(t) ? shortT(t) + ' · ' : '') + 'read ' + shortT(o.read) + '</span></span>' : '<span class="gd-c-t">' + esc(o.state || 'no notice') + ' <span class="gd-c-r">read ' + shortT(o.read) + '</span></span>') +
-        '<details class="gd-src"><summary>Notices' + ((o.notices || []).length > 1 ? ' (' + o.notices.length + ')' : '') + '</summary><ul class="gd-sub">' + (o.notices || []).map(function (n) { var t = n.updated || n.published || n.from; return '<li>“' + esc(n.title || n.header) + '”' + (n.excerpt ? ': ' + esc(n.excerpt) : '') + (t ? ' <span class="meta">' + (/^\d{4}-\d\d-\d\d$/.test(t) ? esc(t) : tm(t) + ' UTC') + (n.to ? ', until ' + tm(n.to) + ' UTC' : '') + '</span>' : '') + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</li>' }).join('') + '</ul>' +
-        (o.line_status && o.line_status.label === 'none' ? '<p class="meta">Live line status: <span class="gd-ns">not read</span> (not a published feed).</p>' : '') + prov(host(o.source), o.source, o.read) + '</details></li>'
-    }
-    var opFull = function (o) { if (o.label === 'none') return opLine(o); return '<li><b>' + esc(o.operator) + '</b><ul class="gd-sub">' + (o.notices || []).map(function (n) { var t = n.updated || n.published || n.from; return '<li>“' + esc(n.title || n.header) + '”' + (n.excerpt ? ': ' + esc(n.excerpt) : '') + (t ? ' <span class="meta">' + esc(String(t).replace('T', ' ').slice(0, 16)) + ' UTC</span>' : '') + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</li>' }).join('') + '</ul>' + prov(host(o.source), o.source, o.read) + '</li>' }
     var thu = edge('metro-thursday') || (E.metro && (E.metro.decisions || []).filter(function (d) { return d.status === 'not_announced' })[0])
     var na = newest([E.metro, E.carris, E.cp, E.fertagus, E.ferries, E.bridges, E.tunnels, E['rede-expressos'], E.flixbus]); LINES.around = na ? 'Latest: ' + na.decision : ''
+    var feed = function (id) { for (var k = 0; k < ops.length; k++) if (ops[k].id === id) return ops[k]; return null }
     out += sect('around', '3 · Getting around',
       '<p class="gd-ns-line">' + notStated([['Carris (Lisbon city buses)', E.carris], ['Fertagus', E.fertagus]], ['taxis', 'ride-hailing']) + '</p>' +
-      '<h4>From the operators\' own sites and feeds</h4><ul class="gd-short">' + ops.map(opLine).join('') + '</ul>' +
-      '<h4>Decisions, as reported</h4><p>Each operator\'s word, newest first. Most were read through the press (labelled <i>evidence</i>). Each operator decides its own service: its site has the latest.</p><ul class="gd-short">' +
-      short('Metro (Metropolitano de Lisboa)', E.metro, /^(?!.*(shelter|homeless))/i, 1) + short('Carris (Lisbon city buses)', E.carris, null, 1) + short('Trains (CP)', E.cp, null, 1) + short('Fertagus (trains over the 25 de Abril bridge)', E.fertagus, null, 1) + short('Ferries (Transtejo Soflusa)', E.ferries, null, 1) + short('Bridges (25 de Abril, Vasco da Gama)', E.bridges, null, 1) + short('Road tunnels (Lisbon city)', E.tunnels, /tunnel/i, 1) + short('Intercity coaches (Rede Expressos)', E['rede-expressos'], null, 1) + short('FlixBus', E.flixbus, null, 1) + '</ul>' +
+      '<p class="meta">One row per operator: its own notice where we read one (fact), else its newest decision as reported (evidence). Each operator decides its own service: its site has the latest.</p><ul class="gd-short">' +
+      unit('Metro (Metropolitano de Lisboa)', feed('metro-lisboa'), E.metro, /^(?!.*(shelter|homeless))/i) +
+      unit('Carris (Lisbon city buses)', null, E.carris) +
+      unit('Carris Metropolitana (buses around Lisbon)', feed('carris-metropolitana'), null) +
+      unit('Trains (CP)', null, E.cp) +
+      unit('Fertagus (trains over the 25 de Abril bridge)', feed('fertagus'), E.fertagus) +
+      unit('Ferries (Transtejo Soflusa)', feed('ttsl'), E.ferries) +
+      unit('Bridges (25 de Abril, Vasco da Gama)', null, E.bridges) +
+      unit('Road tunnels (Lisbon city)', null, E.tunnels, /tunnel/i) +
+      unit('Intercity coaches (Rede Expressos)', null, E['rede-expressos']) +
+      unit('FlixBus', null, E.flixbus) + '</ul>' +
       (thu ? '<p><b>Thursday:</b> ' + stateChip(stateOf(thu)) + ' ' + esc(thu.decision) + ' ' + lbl(thu.label) + '</p>' : ''),
-      '<h4>Every notice from the operators\' own feeds</h4><ul class="gd-short">' + ops.map(opFull).join('') + '</ul>' +
-      entityBlock(E.metro, 'Metro') + entityBlock(E.carris, 'Carris') + entityBlock(E.cp, 'Trains (CP)') + entityBlock(E.fertagus, 'Fertagus') + entityBlock(E.ferries, 'Ferries') + entityBlock(E.bridges, 'Bridges') + entityBlock(E.tunnels, 'Road tunnels') + entityBlock(E['rede-expressos'], 'Rede Expressos') + entityBlock(E.flixbus, 'FlixBus') +
-      '<p>Mode by mode: <a href="' + base + 'transport/index.html">transport</a> (incident.transport@).</p>')
+      '<p>Every source is in its row. Mode by mode, with charts: <a href="' + base + 'transport/index.html">transport</a> (incident.transport@).</p>')
 
     // (4) stranded: what is open, only as stated
     var shelter = E.metro && (E.metro.decisions || []).filter(function (d) { return /shelter|homeless/i.test(d.decision) })
