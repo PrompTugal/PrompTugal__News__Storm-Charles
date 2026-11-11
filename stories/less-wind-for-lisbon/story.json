@@ -8,7 +8,7 @@
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
   "updated": "2026-11-11T05:28Z",
-  "based_on_read_utc": "2026-11-11T04:23:17Z",
+  "based_on_read_utc": "2026-11-11T05:22:49Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first. Each is resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser when the page opens.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -182,7 +182,7 @@
       "text": "IPMA has published no communiqué no. 3: at the last read, no. 2 is still the newest text on Charles in its feed.",
       "label": "fact",
       "said_by": "IPMA's communiqués feed",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "data",
@@ -204,7 +204,7 @@
       "label": "fact",
       "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
       "at_utc": "2026-11-10T07:18:40Z",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "row",
@@ -263,7 +263,7 @@
       "text": "Since then IPMA has sent no message that lowers, shortens or lifts a Lisbon warning: the red wind warning is as it was sent at 07:18 on Tuesday.",
       "label": "fact",
       "said_by": "IPMA's warnings, as read",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "data",
@@ -462,7 +462,7 @@
       "model": true,
       "said_by": "IPMA's automatic hourly forecast for Lisbon (a model's output, not a warning)",
       "at_utc": "2026-11-10T21:18:43Z",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "row",
@@ -492,12 +492,12 @@
     },
     {
       "id": "c15",
-      "text": "MET Norway's forecast for Lisbon, as updated at 01:19 on Wednesday, has the strongest mean wind at 58.3 km/h at 15:00, from the south-south-west, and the lowest pressure, 987.7 hPa, in the same hour; this block carries no gusts.",
+      "text": "MET Norway's forecast for Lisbon, at its latest update, has the strongest mean wind at 58.3 km/h at 15:00, from the south-south-west, and the lowest pressure, 987.7 hPa, in the same hour; this block carries no gusts.",
       "label": "evidence",
       "model": true,
       "said_by": "MET Norway, Locationforecast 2.0 (a second model, never merged with IPMA)",
-      "at_utc": "2026-11-11T01:19:09Z",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "at_utc": "2026-11-11T05:19:20Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "data",
@@ -525,9 +525,7 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.met_no.updated_utc",
-          "contains": [
-            "2026-11-11T01:19"
-          ],
+          "note": "The model's own update time, as it stands at each build; the sentence is pinned to the values, not to this stamp.",
           "read_field": "second_models.met_no.read_utc"
         }
       ]
@@ -538,7 +536,7 @@
       "label": "evidence",
       "model": true,
       "said_by": "Open-Meteo, best match (a second model, never merged with IPMA)",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "data",
@@ -580,15 +578,21 @@
     },
     {
       "id": "c17",
-      "text": "The airport's forecast, written by IPMA for pilots, was weaker at 23:00 than at 17:00, and still strong: at times 30 knots gusting 45 (83 km/h) from 09:00 to 16:00, with a 30% chance of gusts of 58 knots (107 km/h) in thunderstorms between 10:00 and 18:00.",
+      "text": "The airport's forecast, written by IPMA for pilots, has not eased since: the one issued at 05:00 on Wednesday keeps 30 knots gusting 45 (83 km/h) at times, now from 09:00 to 18:00 (the 23:00 issue ended that at 16:00), with a 30% chance of gusts of 58 knots (107 km/h) in thunderstorms between 10:00 and 18:00.",
       "label": "fact",
       "said_by": "IPMA, the TAF for Lisbon airport (a point forecast for pilots, not a public warning)",
-      "at_utc": "2026-11-10T23:00Z",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "at_utc": "2026-11-11T05:00Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "row",
           "id": "s-1110T2323"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.issue_utc",
+          "expect": "2026-11-11T05:00Z"
         },
         {
           "kind": "data",
@@ -599,14 +603,22 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=TEMPO&gust_kt=45].to_utc",
+          "expect": "2026-11-11T18:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "taf.groups[prob=30].gust_kmh",
           "expect": 107
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.issue_utc",
-          "expect": "2026-11-10T23:00Z"
+          "field": "taf.raw",
+          "contains": [
+            "TEMPO 1109/1118 16030G45KT"
+          ]
         }
       ]
     },
@@ -617,7 +629,7 @@
       "model": true,
       "derived": true,
       "said_by": "this desk, setting three files side by side",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "derived_from": [
         "c14",
         "c15",
@@ -789,7 +801,7 @@
       "text": "Nothing measured yet can test any of this: the red wind warning begins at 12:00 on Wednesday, and the observations we hold end before it.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "data",
@@ -825,7 +837,7 @@
       "label": "fact",
       "said_by": "Lisbon airport's METAR (issued by IPMA, read through NOAA's Aviation Weather)",
       "at_utc": "2026-11-10T11:00Z",
-      "read_utc": "2026-11-11T04:23:17Z",
+      "read_utc": "2026-11-11T05:22:49Z",
       "supports": [
         {
           "kind": "data",
@@ -989,6 +1001,16 @@
       "claims_changed": [
         "c16",
         "c18"
+      ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T05:28Z",
+      "what": "Checked against the read of 05:22:49 UTC: IPMA's red wind and red rain for Lisbon unchanged, the communiqué still no. 2. A new airport forecast (issued 05:00): the 45-knot gust group now runs 09:00 to 18:00 (the 23:00 issue, which this story quoted as \"weaker at 23:00 than at 17:00\", ended it at 16:00); the 30% chance of 58-knot gusts is kept. MET Norway re-stamped its run with the same values.",
+      "claims_added": [],
+      "claims_changed": [
+        "c15",
+        "c17"
       ],
       "by": "incident.stories@web-summit.dinis"
     }
