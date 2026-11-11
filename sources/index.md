@@ -15,7 +15,7 @@ A link in the *Their site* column leaves this site. *Rows* is how many rows of [
 | **IPMA (Instituto Português do Mar e da Atmosfera)** (kept by incident.ipma@) | Portugal's national meteorological service: it issues the warnings | the warnings in force, the hour-by-hour forecast for Lisbon, the stations' observations, the communiqués | 6 | 299 | see sources/ipma/ (incident.ipma@'s section). The earlier check (research/weather-sites/meteoalarm-check.json) records that IPMA asks for the source to be named. | [api.ipma.pt](https://api.ipma.pt/) |
 | **NOAA Aviation Weather Center** | a US public service that redistributes the world's aviation reports | LPPT's TAF and METAR | 1 | 90 | not read yet | [aviationweather.gov](https://aviationweather.gov/) |
 | **ANEPC (Autoridade Nacional de Emergência e Proteção Civil)** | Portugal's civil protection authority | its notices and the state of alert | 1 | 68 | not read yet | [prociv.gov.pt](https://prociv.gov.pt/) |
-| **The Government of Portugal** | the government portal and the Ministry of Internal Administration | the declaration of the alert situation and its terms | 1 | 23 | not stated: the portal's legal notice (Aviso Legal) has credits and an accessibility statement, and no licence or terms of reuse ([terms](https://portugal.gov.pt/pt/gc25/aviso-legal), read 2026-11-11 02:27 UTC) | [portugal.gov.pt](https://portugal.gov.pt/) |
+| **The Government of Portugal** | the government portal and the Ministry of Internal Administration | the declaration of the alert situation and its terms | 1 | 23 | not stated: the portal's legal notice (Aviso Legal) has credits and an accessibility statement, and no licence or terms of reuse ([terms](https://portugal.gov.pt/pt/gc25/aviso-legal), read 2026-11-11 02:22 UTC) | [portugal.gov.pt](https://portugal.gov.pt/) |
 | **AEMET (Agencia Estatal de Meteorología)** | Spain's national meteorological service | nothing directly yet: cited in research (what Wikipedia attributes to it) | 0 | 35 | not read yet | [www.aemet.es](https://www.aemet.es/) |
 | **MET Norway** | Norway's meteorological institute (an open forecast API for any point) | a second model's wind and rain for Lisbon, for comparison only (not a forecast of ours) | 0 | 17 | not read yet | [api.met.no](https://api.met.no/) |
 | **Autoridade Marítima Nacional** | Portugal's maritime authority | the state of the ports and bars | 0 | 16 | not read yet | [www.amn.pt](https://www.amn.pt/) |
@@ -48,8 +48,8 @@ A link in the *Their site* column leaves this site. *Rows* is how many rows of [
 
 | Body | Who | What we take | Rows | Addresses | Licence | Their site |
 |---|---|---|---|---|---|---|
-| **Jornal de Negócios** | a Portuguese daily | short excerpts with a link | 7 | 89 | all rights reserved: reproduction in whole or in part forbidden without prior written permission ([terms](https://www.jornaldenegocios.pt/institucional/detalhe/20150902-1659-33jn-1-3-disclaimer), read 2026-11-11 02:27 UTC) | [www.jornaldenegocios.pt](https://www.jornaldenegocios.pt/) |
-| **Observador** | a Portuguese online daily | short excerpts with a link | 5 | 166 | all rights reserved: no use without Observador's express consent, except private use allowed by law ([terms](https://observador.pt/termos-e-condicoes/), read 2026-11-11 02:27 UTC) | [observador.pt](https://observador.pt/) |
+| **Jornal de Negócios** | a Portuguese daily | short excerpts with a link | 7 | 89 | all rights reserved: reproduction in whole or in part forbidden without prior written permission ([terms](https://www.jornaldenegocios.pt/institucional/detalhe/20150902-1659-33jn-1-3-disclaimer), read 2026-11-11 02:22 UTC) | [www.jornaldenegocios.pt](https://www.jornaldenegocios.pt/) |
+| **Observador** | a Portuguese online daily | short excerpts with a link | 5 | 166 | all rights reserved: no use without Observador's express consent, except private use allowed by law ([terms](https://observador.pt/termos-e-condicoes/), read 2026-11-11 02:22 UTC) | [observador.pt](https://observador.pt/) |
 | **Diário de Notícias** | a Portuguese daily | short excerpts with a link | 2 | 92 | not read yet | [www.dn.pt](https://www.dn.pt/) |
 | **SAPO and the outlets it hosts (Tek, Jornal Económico, Executive Digest, 24 Notícias, O Digital)** | a Portuguese portal | short excerpts with a link | 2 | 58 | not read yet | [tek.sapo.pt](https://tek.sapo.pt/) |
 | **Público** | a Portuguese daily | short excerpts with a link | 1 | 104 | not read yet | [www.publico.pt](https://www.publico.pt/) |
@@ -59,10 +59,10 @@ A link in the *Their site* column leaves this site. *Rows* is how many rows of [
 | **Euronews** | a European broadcaster | short excerpts with a link | 1 | 36 | not read yet | [www.euronews.com](https://www.euronews.com/) |
 | **Madeira Island News** | an English-language outlet on Madeira | short excerpts with a link | 1 | 4 | not read yet | [www.madeiraislandnews.com](https://www.madeiraislandnews.com/) |
 | **Notícias ao Minuto** | a Portuguese online outlet | short excerpts with a link | 0 | 199 | not read yet | [www.noticiasaominuto.com](https://www.noticiasaominuto.com/) |
-| **The Portugal News** | an English-language weekly in Portugal | short excerpts with a link | 0 | 63 | not read yet | [www.theportugalnews.com](https://www.theportugalnews.com/) |
 | **Expresso** | a Portuguese weekly | short excerpts with a link | 0 | 56 | not read yet | [expresso.pt](https://expresso.pt/) |
 | **Rádio Renascença** | a Portuguese radio | short excerpts with a link | 0 | 38 | not read yet | [rr.pt](https://rr.pt/) |
 | **Diário de Notícias da Madeira** | Madeira's daily | short excerpts with a link | 0 | 37 | not read yet | [www.dnoticias.pt](https://www.dnoticias.pt/) |
+| **The Portugal News** | an English-language weekly in Portugal | short excerpts with a link | 0 | 34 | not read yet | [www.theportugalnews.com](https://www.theportugalnews.com/) |
 | **Correio da Manhã** | a Portuguese daily | short excerpts with a link | 0 | 30 | not read yet | [www.cmjornal.pt](https://www.cmjornal.pt/) |
 | **TSF** | a Portuguese news radio | short excerpts with a link | 0 | 21 | not read yet | [www.tsf.pt](https://www.tsf.pt/) |
 | **Jornal de Notícias** | a Portuguese daily | short excerpts with a link | 0 | 21 | not read yet | [www.jn.pt](https://www.jn.pt/) |
