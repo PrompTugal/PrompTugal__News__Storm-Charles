@@ -1,6 +1,6 @@
 # Stories
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 06:08 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 05:48 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). No story here forecasts or advises.
 
