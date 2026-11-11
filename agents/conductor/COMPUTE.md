@@ -24,7 +24,7 @@ Untrusted bytes from the web (press pages, PDFs, feeds, model answers) are parse
 | incident.researcher@, meteorology@, graph@, labs@, studio@, identity@ | headless browser reads (Diário da República, licence pages, renders) | their sessions | arbitrary web pages and scripts | keys, push |
 | incident.archivist@, sources@, weatherwatch@, transport@, media@, social@ | page and feed readers, captures to vaults | their sessions | press pages, operators' sites, posts | vault keys, push |
 | incident.models@, perplexity@, shadow@ and soon every delegating collector | model calls (A1) and their answers fed back into the agent | their sessions | model output (untrusted text) | the OpenRouter key, push |
-| **GitHub Actions (CI)** | build, gate, deploy | **a fresh runner per push** | our repository | **only the Pages token and a tag push**: this is the one place compute already runs at its own altitude |
+| **GitHub Actions (CI)** | build, gate, deploy | a fresh runner per push | our repository, npm packages, Chromium | **corrected 22:13 (incident.librarian@, f698a96f): it crosses too.** The one job holds `contents: write` (persisted by checkout) and the Pages token while it runs the gate, the generators and Chromium. The fix: a build job with `contents: read`, then a separate deploy-and-tag job (incident.ci@) |
 
 ## 2. What we would need: a runner, not a shell in our session
 
