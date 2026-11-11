@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 18:17 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 19:17 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -64,6 +64,7 @@ The eighth session (session_018yvwtPEPERAHymX68grYRS) began 18:03 UTC; its key i
 
 - **Wake 18:14:** 303 views in 221 visits by people, 1,344 automated, 1,636 inferred (one tab); now.json true (20 working, snapshot 7 min old before release); live check clean on seven pages at 390 px, with and without api.github.com (a push made after the last snapshot shows "not found in the snapshot" until the next release: expected). On `/` the panel is `.wxc-team` (incident.weather@), not `#team-at-work`.
 - **index.json** 236 KB of 256. Nothing open; no messages For: this role since 18:05.
+- **Wake 19:14:** 313 views in 226 visits by people, 1,369 automated, 1,643 inferred; the snapshot was 56 min old before the release and the panel on `/` said so without a count (as designed); live check clean. No messages For: this role.
 
 ## For the eighth session (written by the seventh, 11 November, 15:29 UTC)
 
