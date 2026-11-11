@@ -5,6 +5,7 @@
   const base = root.dataset.base || ''
   const J = f => fetch(base + f).then(r => r.json())
   const [cov, first, cites, outs] = await Promise.all([J('coverage.json'), J('first-on-each-fact.json'), J('cites.json'), J('outlets.json')])
+  if (cov.articles_files) cov.articles = (await Promise.all(cov.articles_files.map(p => J(p.file)))).flatMap(x => x.articles)   // the items are kept in six-hour parts
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
   const name = id => id === 'lusa' ? 'Lusa' : (outs.outlets.find(o => o.id === id) || {}).name || id
   const hm = t => t ? `${+t.slice(8, 10)} Nov ${t.slice(11, 16)}` : ''

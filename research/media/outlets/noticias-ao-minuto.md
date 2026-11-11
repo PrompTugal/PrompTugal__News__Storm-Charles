@@ -1,13 +1,13 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 09:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:41 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online (pt) |
-| Items we read | 95: 94 articles, 1 live, 0 video, 0 opinion |
-| First and last | 9 Nov 16:06 to 11 Nov 09:19 UTC |
-| Whose reporting | 5 with a reporter's by-line, 82 the agency's (Lusa), 8 the desk's, 0 not read; wire share 86% |
+| Items we read | 107: 105 articles, 2 live, 0 video, 0 opinion |
+| First and last | 9 Nov 16:06 to 11 Nov 10:32 UTC |
+| Whose reporting | 6 with a reporter's by-line, 92 the agency's (Lusa), 9 the desk's, 0 not read; wire share 86% |
 | Does best (from the counts) | volume: the most items in the list; first on "ANEPC's public warning on Charles (Aviso 21)"; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 
 ## Against the key moments
@@ -24,8 +24,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 95 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 82 items (the item's by-line names the agency).
+- **Links to primary sources:** 1 of 107 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 93 items (the item's by-line names the agency).
 - **It relayed RTP:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -49,7 +49,7 @@ Through its own public page: [Ficha técnica ↗](https://www.noticiasaominuto.c
 
 ## By-lines on this story, as printed
 
-Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias, Natacha Nunes Costa. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias, Natacha Nunes Costa. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -142,11 +142,23 @@ Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Pa
 | 11 Nov 06:28 | article | Lusa | [Charles causa vento de 130 km/hora na Madeira e dirige-se para continente ↗](https://www.noticiasaominuto.com/pais/3082173/mau-tempo-charles-causou-ventos-de-130-kmhora-na-madeira-e-dirige-se-para-o-continente) |
 | 11 Nov 06:46 | article | Lusa | [Mau tempo: Madeira com 137 ocorrências até às 06h30, sem vítimas ↗](https://www.noticiasaominuto.com/pais/3082180/mau-tempo-madeira-com-137-ocorrencias-ate-as-0630-sem-vitimas) |
 | 11 Nov 07:08 | article | Lusa | [Mau tempo leva ao cancelamento de 16 voos na Madeira ↗](https://www.noticiasaominuto.com/pais/3082183/mau-tempo-cancelados-16-voos-na-madeira) |
+| 11 Nov 07:23 | live | Notícias ao Minuto | [AO MINUTO: Charles dividiu-se em "dois núcleos"; Desagravamento no vento ↗](https://www.noticiasaominuto.com/pais/3082185/ao-minuto-portugal-em-alerta-maioria-das-ocorrencias-na-grande-lisboa) |
 | 11 Nov 07:28 | article | Lusa | [Acessos ao centro do Funchal encerrados por motivos de segurança ↗](https://www.noticiasaominuto.com/pais/3082191/mau-tempo-acessos-ao-centro-do-funchal-encerrados-por-motivos-de-seguranca) |
 | 11 Nov 07:58 | article | Natacha Nunes Costa | [Mau tempo. Pai de nadador-salvador desaparecido: "Sinto o último beijo" ↗](https://www.noticiasaominuto.com/pais/3082187/mau-tempo-pai-de-nadador-salvador-desaparecido-sinto-o-ultimo-beijo) |
+| 11 Nov 07:58 | article | Lusa | [Autoridade Marítima alerta para agravamento do estado do mar ↗](https://www.noticiasaominuto.com/pais/3082201/mau-tempo-autoridade-maritima-alerta-para-agravamento-do-estado-do-mar) |
 | 11 Nov 08:09 | article | Notícias ao Minuto | [Antes de chegar ao continente, Charles passou na Madeira. E foi assim ↗](https://www.noticiasaominuto.com/pais/3082204/antes-de-chegar-ao-continente-charles-passou-na-madeira-e-foi-assim) |
 | 11 Nov 08:24 | article | Lusa | [Homem arrastado por galgamento de ribeiro na Madeira encontrado com vida ↗](https://www.noticiasaominuto.com/pais/3082212/mau-tempo-homem-arrastado-por-galgamento-de-ribeiro-na-madeira-encontrado-com-vida) |
 | 11 Nov 09:03 | article | Lusa | [Proteção Civil regista 60 ocorrências até às 06h00 ↗](https://www.noticiasaominuto.com/pais/3082220/protecao-civil-regista-60-ocorrencias-ate-as-0600) |
 | 11 Nov 09:06 | article | Lusa | [Proteção Civil registou 139 ocorrências na Madeira até às 08h30 ↗](https://www.noticiasaominuto.com/pais/3082229/mau-tempo-protecao-civil-registou-139-ocorrencias-na-madeira-ate-as-0830) |
 | 11 Nov 09:10 | article | Lusa | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento ↗](https://www.noticiasaominuto.com/pais/3082238/mau-tempo-beja-lisboa-e-setubal-deixam-de-estar-sob-aviso-vermelho-para-o-vento) |
 | 11 Nov 09:19 | article | Notícias ao Minuto | ["A salvar a nação". Lili Caneças e a mensagem viral sobre o mau tempo ↗](https://www.noticiasaominuto.com/fama/3082236/a-salvar-a-nacao-lili-canecas-e-a-mensagem-viral-sobre-o-mau-tempo) |
+| 11 Nov 09:42 | article | Lusa | [Circulação na Ponte Vasco da Gama limitada a 100 km/h devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082251/circulacao-na-ponte-vasco-da-gama-limitada-a-100-kmh-devido-ao-mau-tempo) |
+| 11 Nov 09:48 | article | Lusa | [Mau tempo? Funchal sem ocorrências de "grande dimensão" ↗](https://www.noticiasaominuto.com/pais/3082260/mau-tempo-funchal-sem-ocorrencias-de-grande-dimensao-camara-municipal) |
+| 11 Nov 09:55 | article | Beatriz Vasconcelos com Lusa | [CP, TAP, Carris e não só: Confira o impacto do mau tempo nos transportes ↗](https://www.noticiasaominuto.com/economia/3082273/cp-tap-carris-e-nao-so-confira-o-impacto-do-mau-tempo-nos-transportes) |
+| 11 Nov 09:56 | article | Lusa | [Mais de 220 voos cancelados nos aeroportos de Lisboa e Faro ↗](https://www.noticiasaominuto.com/pais/3082270/urgente-mau-tempo-mais-de-220-voos-cancelados-nos-aeroportos-de-lisboa-e-faro) |
+| 11 Nov 09:59 | article | Lusa | [Algarve mantém situação calma apesar de aviso vermelho ↗](https://www.noticiasaominuto.com/pais/3082268/mau-tempo-algarve-mantem-situacao-calma-apesar-de-aviso-vermelho) |
+| 11 Nov 10:06 | article | Lusa | [Faro é o único distrito sob aviso vermelho por causa do vento ↗](https://www.noticiasaominuto.com/pais/3082274/mau-tempo-faro-e-o-unico-distrito-sob-aviso-vermelho-por-causa-do-vento) |
+| 11 Nov 10:07 | article | Lusa | [REN não regista perturbações nas redes energéticas apesar do mau tempo ↗](https://www.noticiasaominuto.com/pais/3082277/ren-nao-regista-perturbacoes-nas-redes-energeticas-apesar-do-mau-tempo) |
+| 11 Nov 10:10 | article | Lusa | [IPMA prevê desagravamento da intensidade do vento ↗](https://www.noticiasaominuto.com/pais/3082279/urgente-mau-tempo-ipma-preve-desagravamento-da-intensidade-do-vento) |
+| 11 Nov 10:23 | article | Lusa | [Madeira sinalizou 210 ocorrências até às 09h00 ↗](https://www.noticiasaominuto.com/pais/3082286/mau-tempo-madeira-sinalizou-210-ocorrencias-com-maior-incidencia-no-funchal-santa-cruz-e-machico-c-audio) |
+| 11 Nov 10:32 | article | Lusa | [Quatro estradas camarárias em Castro Verde encerradas ao trânsito ↗](https://www.noticiasaominuto.com/pais/3082290/mau-tempo-quatro-estradas-camararias-em-castro-verde-encerradas-ao-transito) |

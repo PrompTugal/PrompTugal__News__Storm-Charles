@@ -1,13 +1,13 @@
 # Correio da Manhã: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 09:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:41 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 13: 7 articles, 0 live, 6 video, 0 opinion |
+| Items we read | 14: 7 articles, 0 live, 7 video, 0 opinion |
 | First and last | 10 Nov 00:00 to 11 Nov 00:00 UTC |
-| Whose reporting | 1 with a reporter's by-line, 4 the agency's (Lusa), 8 the desk's, 0 not read; wire share 31% |
+| Whose reporting | 1 with a reporter's by-line, 4 the agency's (Lusa), 9 the desk's, 0 not read; wire share 29% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -16,7 +16,7 @@ No item of this outlet matched a keyed fact by its title.
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 13 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 14 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 - **It republished Jornal de Negócios:** 1 item (the item's by-line names the other outlet).
 
@@ -51,6 +51,7 @@ Marta Mariano. A by-line is a public professional credit; nothing else about any
 | 10 Nov 00:00 (day only) | article | Jornal de Negócios | [Pingo Doce fecha supermercados devido à depressão Charles. Continente mantém lojas abertas ↗](https://www.cmjornal.pt/sociedade/clima/detalhe/pingo-doce-fecha-supermercados-devido-a-depressao-charles-continente-mantem-lojas-abertas) |
 | 10 Nov 00:00 (day only) | video | Correio da Manhã | [Portugueses correm aos supermercados para se precaverem dos efeitos da tempestade Charles ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/portugueses-correm-aos-supermercados-para-se-precaverem-dos-efeitos-da-tempestade-charles) |
 | 10 Nov 00:00 (day only) | article | Lusa | [Dois mil clientes da E-Redes sem energia pelas 19h30 devido ao mau tempo ↗](https://www.cmjornal.pt/sociedade/clima/detalhe/dois-mil-clientes-da-e-redes-sem-energia-pelas-19h30-devido-ao-mau-tempo) |
+| 11 Nov 00:00 (day only) | video | Correio da Manhã | [Tempestade Charles mudou de trajetória e dividiu-se em dois núcleos. Veja por onde deverá passar ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/tempestade-charles-mudou-de-trajetoria-e-dividiu-se-em-dois-nucleos-veja-por-onde-devera-passar) |
 | 11 Nov 00:00 (day only) | article | Correio da Manhã | [CMTV escolhida pelos portugueses para acompanhar tempestade Charles ↗](https://www.cmjornal.pt/tv-media/detalhe/cmtv-escolhida-pelos-portugueses-para-acompanhar-tempestade-charles) |
 | 11 Nov 00:00 (day only) | article | Marta Mariano | [Depressão Charles deixa País em alerta. Ventos causaram estragos na Madeira e tempestade aproxima-s… ↗](https://www.cmjornal.pt/sociedade/detalhe/mau-tempo-deixa-pais-em-alerta-ventos-causaram-estragos-na-madeira-e-tempestade-dirige-se-para-o-continente) |
 | 11 Nov 00:00 (day only) | video | Correio da Manhã | [Acessos à praia na Foz de Douro cortados devido ao mau tempo ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/acessos-a-praia-na-foz-de-douro-cortados-devido-ao-mau-tempo) |

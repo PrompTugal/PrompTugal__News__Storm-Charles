@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 09:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:41 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 38: 13 articles, 0 live, 25 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 09:19 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 29 not read; wire share 67% |
+| Items we read | 41: 13 articles, 0 live, 28 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 10:35 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 32 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -24,7 +24,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 38 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 41 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -75,6 +75,8 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 10 Nov 20:17 | video | not read | [Tenho falta justificada se faltar ao trabalho devido à tempestade Charles? Tem, mas há um mas ↗](https://cnnportugal.iol.pt/videos/tenho-falta-justificada-se-faltar-ao-trabalho-devido-a-tempestade-charles-tem-mas-ha-um-mas/6af3762c0cf2aafa0453e0e9) |
 | 10 Nov 21:00 | article | Nuno Mandeiro | [Falta justificada sem perda de remuneração. O que acontece se o mau tempo não o deixar ir trabalhar? ↗](https://cnnportugal.iol.pt/trabalhadores/trabalho/falta-justificada-sem-perda-de-remuneracao-o-que-acontece-se-o-mau-tempo-nao-o-deixar-ir-trabalhar/20261110/6af349ded34e9ce6f1b43d8b) |
 | 10 Nov 23:42 | video | not read | ["O Governo tomou boa nota das críticas todas que lhe foram feitas depois da tempestade Kristin" ↗](https://cnnportugal.iol.pt/videos/o-governo-tomou-boa-nota-das-criticas-todas-que-lhe-foram-feitas-depois-da-tempestade-kristin/6af3a3830cf2cb2507aa838c) |
+| no time | video | not read | [Portugal aprendeu com as últimas tempestades? O que diz quem acompanha a Proteção Civil há 30 anos ↗](https://cnnportugal.iol.pt/videos/portugal-aprendeu-com-as-ultimas-tempestades-o-que-diz-quem-acompanha-a-protecao-civil-ha-30-anos/6af336ea0cf2051820fb12a8) |
+| no time | video | not read | [Tempestade Charles aproxima-se de Portugal, mas ainda há dúvidas sobre por onde vai entrar ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-aproxima-se-de-portugal-mas-ainda-ha-duvidas-sobre-por-onde-vai-entrar/6af336570cf2aafa0453e038) |
 | 11 Nov 00:31 | video | not read | [Algarve deverá ser a região mais afetada pela Charles. Tempestade chega a Lisboa "com menos intensi… ↗](https://cnnportugal.iol.pt/videos/algarve-devera-ser-a-regiao-mais-afetada-pela-charles-tempestade-chega-a-lisboa-com-menos-intensidade-do-que-o-previsto/6af3b07a0cf2aafa0453e19a) |
 | 11 Nov 01:16 | video | not read | [Como o Algarve se está a preparar para a chegada da tempestade ↗](https://cnnportugal.iol.pt/videos/como-o-algarve-se-esta-a-preparar-para-a-chegada-da-tempestade/6af3c0cc0cf2aafa0453e1a0) |
 | 11 Nov 05:43 | article | not read | [Depressão Charles provoca 115 ocorrências na Madeira: abastecimento de energia já foi restabelecido ↗](https://cnnportugal.iol.pt/madeira/ocorrencias/depressao-charles-provoca-99-ocorrencias-na-madeira-abastecimento-de-energia-ja-foi-restabelecido/20261111/6af40075d34e5a653d733ae2) |
@@ -89,5 +91,6 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 08:41 | video | not read | [Assim está a Avenida Marginal, em Cascais, em dia de mau tempo e de agitação marítima ↗](https://cnnportugal.iol.pt/videos/assim-esta-a-avenida-marginal-em-cascais-em-dia-de-mau-tempo-e-de-agitacao-maritima/6af420b10cf2051820fb141d) |
 | 11 Nov 08:53 | article | not read | [Lisboa, Setúbal e Beja deixam de estar em aviso vermelho para vento mas passam ao nível máximo de a… ↗](https://cnnportugal.iol.pt/depressao-charles/tempestade-charles/lisboa-setubal-e-beja-deixam-de-estar-em-aviso-vermelho-para-vento-mas-passam-ao-nivel-maximo-de-alerta-para-chuva/20261111/6af42d3ad34e9ce6f1b43e73) |
 | 11 Nov 09:19 | video | not read | [Tempestade Charles e o risco de inundações: "Não estamos preparados para situações de 120, 130, 140… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-e-o-risco-de-inundacoes-nao-estamos-preparados-para-situacoes-de-120-130-140-milimetros-em-24-horas/6af427d90cf2cb2507aa83f9) |
-| no time | video | not read | [Portugal aprendeu com as últimas tempestades? O que diz quem acompanha a Proteção Civil há 30 anos ↗](https://cnnportugal.iol.pt/videos/portugal-aprendeu-com-as-ultimas-tempestades-o-que-diz-quem-acompanha-a-protecao-civil-ha-30-anos/6af336ea0cf2051820fb12a8) |
-| no time | video | not read | [Tempestade Charles aproxima-se de Portugal, mas ainda há dúvidas sobre por onde vai entrar ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-aproxima-se-de-portugal-mas-ainda-ha-duvidas-sobre-por-onde-vai-entrar/6af336570cf2aafa0453e038) |
+| 11 Nov 10:34 | video | not read | [Tempestade Charles: lojas fechadas e ruas quase desertas em Portalegre. "Não tenho receio", diz com… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-lojas-fechadas-e-ruas-quase-desertas-em-portalegre-nao-tenho-receio-diz-comerciante-que-decidiu-abrir/6af42ee90cf2cb2507aa8401) |
+| 11 Nov 10:34 | video | not read | [Tempestade Charles em Faro: estas são as três horas de maior preocupação ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-em-faro-estas-sao-as-tres-horas-de-maior-preocupacao/6af4356b0cf2cb2507aa8410) |
+| 11 Nov 10:35 | video | not read | [Tempestade na Madeira provocou 210 ocorrências. Autoridades alertam para risco de deslizamentos de… ↗](https://cnnportugal.iol.pt/videos/tempestade-na-madeira-provocou-210-ocorrencias-autoridades-alertam-para-risco-de-deslizamentos-de-terra/6af435480cf2051820fb1432) |

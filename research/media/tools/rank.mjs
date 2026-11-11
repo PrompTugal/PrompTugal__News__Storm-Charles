@@ -5,13 +5,15 @@
 //   - ranking.md (who was first on six keyed facts; who is most sourced). Everything in it is labelled analysis.
 //   [MEDIA_RAW=<dir>] node research/media/tools/rank.mjs     (with MEDIA_RAW, links to primary sources are counted
 //   from the captures kept outside git; without it, the counts already in coverage.json are kept)
+import { loadCoverage } from './cov.mjs'
+import { saveCoverage } from './cov.mjs'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..')
 const M = path.join(ROOT, 'research/media')
 const J = f => JSON.parse(fs.readFileSync(f, 'utf8'))
-const cov = J(path.join(M, 'coverage.json')), outletsFile = J(path.join(M, 'outlets.json'))
+const cov = loadCoverage(M), outletsFile = J(path.join(M, 'outlets.json'))
 const sources = J(path.join(ROOT, 'incidents/2026-11-10-storm-charles/data/decisions/sources.json'))
 const RAW = process.env.MEDIA_RAW
 const now = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
@@ -102,7 +104,7 @@ const header = {
     counts: { articles: A.length, outlets: Object.keys(per).length, by_kind: A.reduce((m, a) => (m[a.kind] = (m[a.kind] || 0) + 1, m), {}), by_byline_kind: A.reduce((m, a) => (m[a.byline_kind] = (m[a.byline_kind] || 0) + 1, m), {}), wire_share: +(A.filter(a => a.byline_kind === 'agency').length / A.filter(a => a.byline_kind !== 'none').length).toFixed(2), wire_share_note: 'items with the agency\'s (Lusa\'s) by-line, over items whose by-line we read', first_published: A.map(a => a.published).filter(Boolean).sort()[0], last_published: A.map(a => a.published).filter(Boolean).sort().pop() }
 }
 const { articles, social, official, articles_updated, removed } = cov
-fs.writeFileSync(path.join(M, 'coverage.json'), JSON.stringify({ ...header, articles_updated, removed, official, social, articles }, null, 1) + '\n')
+saveCoverage(M, { ...header, articles_updated, removed, official, social, articles })
 
 // ---- ranking.md
 const NONE = e => `| | **none found**: no article title and no live-blog entry we could read reported it by ${hm(now)} UTC | | | | |\n`

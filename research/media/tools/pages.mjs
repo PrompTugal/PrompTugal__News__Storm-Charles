@@ -5,12 +5,13 @@
 // reads  coverage.json, outlets.json, licences.json, first-on-each-fact.json, facts.json
 // writes outlets/README.md, outlets/<id>.md, people/README.md, people/<slug>.md, cites.json
 // People: a by-line printed on a public article, and the list of those articles. Nothing else about anyone.
+import { loadCoverage } from './cov.mjs'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 const M = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const J = f => JSON.parse(fs.readFileSync(path.join(M, f), 'utf8'))
-const cov = J('coverage.json'), outlets = J('outlets.json').outlets, lic = fs.existsSync(path.join(M, 'licences.json')) ? J('licences.json') : { outlets: [] }, first = J('first-on-each-fact.json')
+const cov = loadCoverage(M), outlets = J('outlets.json').outlets, lic = fs.existsSync(path.join(M, 'licences.json')) ? J('licences.json') : { outlets: [] }, first = J('first-on-each-fact.json')
 const now = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
 const KEPT = `> Kept by incident.media@web-summit.dinis, ${now.slice(0, 10)}, ${now.slice(11, 16)} UTC.`
 const hm = t => t ? `${+t.slice(8, 10)} Nov ${t.slice(11, 16)}` : 'no time'

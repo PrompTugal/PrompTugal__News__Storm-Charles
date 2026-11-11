@@ -1,13 +1,13 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 09:39 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:41 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 20: 18 articles, 1 live, 0 video, 1 opinion |
-| First and last | 9 Nov 08:34 to 11 Nov 09:36 UTC |
-| Whose reporting | 18 with a reporter's by-line, 2 the agency's (Lusa), 0 the desk's, 0 not read; wire share 10% |
+| Items we read | 23: 20 articles, 2 live, 0 video, 1 opinion |
+| First and last | 9 Nov 08:34 to 11 Nov 10:33 UTC |
+| Whose reporting | 21 with a reporter's by-line, 2 the agency's (Lusa), 0 the desk's, 0 not read; wire share 9% |
 | Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
@@ -25,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 2 of 20 items link to a body that decides or warns (AMN, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 2 of 23 items link to a body that decides or warns (AMN, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 3 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -49,7 +49,7 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 
 ## By-lines on this story, as printed
 
-[Ricardo Simões Ferreira](../people/ricardo-simoes-ferreira.md) (4), [Sofia Fonseca](../people/sofia-fonseca.md) (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Susete Henriques (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+[Ricardo Simões Ferreira](../people/ricardo-simoes-ferreira.md) (4), [Sofia Fonseca](../people/sofia-fonseca.md) (4), [Susete Henriques](../people/susete-henriques.md) (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Tomás Gonçalves Pereira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -75,3 +75,6 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 | 11 Nov 00:22 | article | Ricardo Simões Ferreira | [DN garante acesso livre a todos os conteúdos sobre a tempestade ↗](https://www.dn.pt/media-geral/dn-garante-acesso-livre-a-todos-os-contedos-sobre-a-tempestade) |
 | 11 Nov 08:43 | article | DN/Lusa | [Mau tempo: Regulador dos seguros recomenda verificar cobertura e conservar provas em caso de danos ↗](https://dinheirovivo.dn.pt/empresas/mau-tempo-regulador-dos-seguros-recomenda-verificar-cobertura-e-conservar-provas-em-caso-de-danos) |
 | 11 Nov 09:36 | live | Sofia Fonseca | [Charles causou ventos de 130 km/hora na Madeira. Agora está a caminho do continente ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
+| 11 Nov 09:55 | article | Susete Henriques | [Revista de imprensa. Os alertas sobre a tempestade Charles em destaque ↗](https://www.dn.pt/media-geral/revista-de-imprensa-os-alertas-sobre-a-tempestade-charles-em-destaque) |
+| 11 Nov 10:25 | article | Tomás Gonçalves Pereira | [Depressão Charles deixa dois mil clientes sem luz em casa esta madrugada ↗](https://dinheirovivo.dn.pt/empresas/depresso-charles-deixa-dois-mil-clientes-sem-luz-em-casa-esta-madrugada) |
+| 11 Nov 10:33 | live | Sofia Fonseca | [Depressão Charles dividiu-se em dois núcleos. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja ↗](https://www.dn.pt/sociedade/depresso-charles-dividiu-se-em-dois-ncleos-ipma-reduz-nvel-de-alerta-para-lisboa-setbal-e-beja) |

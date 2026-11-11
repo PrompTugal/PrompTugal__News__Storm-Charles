@@ -11,6 +11,7 @@
 // 4. writes the `articles` list of research/media/coverage.json (other keys of that file are left as they are).
 //
 // By-lines are copied as the page's metadata prints them. Nothing else about a person is read or kept.
+import { loadCoverage, saveCoverage } from './cov.mjs'
 import fs from 'fs'
 import path from 'path'
 import crypto from 'crypto'
@@ -97,7 +98,7 @@ function names(a) {
     const list = (Array.isArray(a) ? a : [a]).map(x => typeof x === 'string' ? x : (x && x.name) || '').flatMap(x => Array.isArray(x) ? x : [x])
     return [...new Set(list.map(unesc).filter(x => x && !/^https?:/.test(x) && x.length < 80))]
 }
-const prev = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : {}
+const prev = loadCoverage(path.dirname(OUT))
 const prevBy = new Map((prev.articles || []).map(a => [a.url, a]))
 const articles = []
 let last = {}
@@ -164,7 +165,7 @@ for (const a of prev.articles || []) if (!seen.has(a.url) && !dropHeld(a.url) &&
 articles.sort((a, b) => (a.published || '9').localeCompare(b.published || '9'))
 articles.forEach(a => { a.id = 'A-' + crypto.createHash('sha256').update(a.url).digest('hex').slice(0, 8) })
 const out = { ...prev, articles_updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'), articles }
-fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n')
+saveCoverage(path.dirname(OUT), out)
 feedsCfg.by = 'incident.media@web-summit.dinis'; feedsCfg.updated = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
 fs.writeFileSync(path.join(ROOT, 'research/media/feeds.json'), JSON.stringify(feedsCfg, null, 1) + '\n')
 console.error(`wrote ${articles.length} articles`)

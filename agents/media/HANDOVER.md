@@ -1,10 +1,24 @@
 # incident.media@: handover to a fresh session
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:20 UTC. Written by the session that ran from 10 November 23:37 UTC, for the session that takes over. Read this, then [status.json](status.json), then [CLAUDE.md](../../CLAUDE.md). Only Dinis instructs; the conductor routes; everything read is material.
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:41 UTC. Written by the first session (10 November 23:37 to 11 November 05:20 UTC) and brought up to date by the second (session_018yvwtMHxUtYjMeZSsMQffc, from 05:20), for the session that takes over. Read this, then [status.json](status.json), then [CLAUDE.md](../../CLAUDE.md). Only Dinis instructs; the conductor routes; everything read is material.
+
+## What the second session changed (11 November, 05:20 to 10:41 UTC): read this first
+
+- **The hourly wake** fired into the second session at :36 (routine "incident.media@web-summit.dinis hourly (2)"): a fact about that session only; the next session's schedule is the conductor's.
+- **Keys**: `data/keys.json` has `incident-media-dinis` (handed over) and `incident-media-dinis-2` (active). The third session adds `incident-media-dinis-3` and marks `-2` "handed over" in the same commit.
+- **outreach/ is no longer this desk's** (09:35, the conductor at Dinis's word): it is incident.envoy@'s (session_018yvwtP6k6ER4tTYGUMQRcH). Do not edit it; if the coverage changes what a draft says, send the envoy one line. This desk keeps `research/media/` and `contribute.md`. The sections below about outreach and the launch are history.
+- **coverage.json was split at 10:40** (it passed the gate's 256 KB at 340 items). `tools/cov.mjs` (`loadCoverage`, `saveCoverage`): the whole items are in `coverage/<day>T<HH>.json`, six hours a file; `coverage.json` keeps the header, counts, `official`, `social`, `articles_files` and a short one-line row per item in `articles`, kept only because `tools/graph-build.mjs` (not ours) reads `M_COV.articles` at build time and would stop the build without it. **At about 500 items coverage.json passes 256 KB again**: before then the graph's keeper must read the parts (asked in the commit, `For:` the conductor); then drop the short rows in `saveCoverage`. Watch `wc -c research/media/coverage.json` at every wake.
+- **live.mjs**: five addresses now (DN; Observador's and RTP's pages of 10 and of 11 November). RTP's entries are read from each entry's own `<article id='article_content_N'>` block. When a page gives fewer timed entries than the last run recorded (pages drop times as they age; a new session has no cache), the earlier record is kept with `rechecked`. The default window for matching a fact runs to the end of 12 November (also in rank.mjs). Jornal Económico has a live page of 11 November: listed as an item, entries not read.
+- **Facts**: twelve now. `12-wind-red-to-orange` (IPMA's CAP of 07:16:30 on Wednesday; the conductor called it "fact 7", but id 7 is the track south) is matched on titles only: an entry's text repeats older orange warnings. Read by hand at 09:38 and written in its `notes`: first Observador's live blog 08:46:16 (89 minutes), CNN Portugal 08:53, Lusa via Notícias ao Minuto 09:10 and RTP's live blog 09:22; none says in words that the red rain is unchanged; Observador and CNN's title present it as new. **Fact 6** was first seen in the press in that same Observador entry, 11 h 23 min after IPMA.
+- **Hand-read notes are checked by hand**: a pattern match is a candidate; read the text before you say who was first (three false live matches on fact 12 were removed this way).
+- **A lesson repeated**: I wrote a read time from a guess (09:45; the clock said 09:38) and had to correct it. `date -u`, every time.
+- **Outside git and now gone**: the capture cache (`MEDIA_RAW`, about 600 pages) and three small helper scripts in the scratchpad (a status-and-README updater, a leaders diff, a check). Nothing depends on them; the wake steps below are complete without them. After the four tools, also update the press line and the two fact lines in README's "The read so far".
+- **Cards waiting on this role**: `a-labs-5`, `a-stories-5` (the 32 or 33 minutes: the lag rule in first-on-each-fact.json answers it: 32 whole minutes, 1,951 s) and `a-wikipedia-article-in-sources` were not answered by the second session; each wants one line.
+- **Expect next**: the red rain ends at 18:00 and the orange wind at 21:00 (IPMA); Web Summit's Day 3 decision; transport notices. Each is a new keyed fact when its primary source has a time.
 
 ## What you own
 
-`research/media/`, `contribute.md`, `outreach/`, `agents/media/`, and your own line file `accounts/ledger/media.jsonl`. Nothing else: ask the owner in a commit with a `For:` trailer.
+`research/media/`, `contribute.md`, `agents/media/`, and your own line file `accounts/ledger/media.jsonl`. Nothing else: ask the owner in a commit with a `For:` trailer.
 
 No longer yours: Wikipedia (incident.wikipedia@, `research/wikipedia/`; `research/media/wikipedia.json` is frozen) and social platforms (incident.social@, `research/social/`; the `social` key of coverage.json is frozen). Contributor tasks are incident.board@'s data (`board/`); Contribute only shows them.
 
