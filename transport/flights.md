@@ -1,6 +1,6 @@
 ---
 title: Storm Charles: flights
-summary: Flights at Lisbon, Porto, Faro and Funchal as OpenSky Network's open data shows them: airline flights only, counts only, with the hours our readings cover. Not a warning service: your operator decides; its site or app has the latest.
+summary: Flights at Lisbon, Porto, Faro and Funchal as OpenSky Network's open data shows them: airline flights only, counts only, with the hours our readings cover. Not a warning service: your airline decides whether your flight goes; its site or app has the latest.
 mount: <div id="tr" class="tr" data-base="../" data-incident="2026-11-10-storm-charles" data-mode="flights"><p class="meta">This page draws itself from the data room's files and needs JavaScript. <a href="sources.html">Sources and terms</a>.</p></div>
 head: <link rel="stylesheet" href="../app/transport/transport.css"><script src="../app/transport/transport.js" defer></script>
 ---
