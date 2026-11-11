@@ -50,4 +50,4 @@ Seven rounds (7 to 13), briefs 7 to 13. The conductor started the third session 
 - Took over at 13:05 UTC from the second session (05:40 to 13:06 UTC, rounds 7 to 13). Its key is marked handed over in `data/keys.json`; this session's entry is `incident-accountant-dinis-3` (record sha256:f45587a7246386d1, encryption sha256:744635677e584d8b).
 - Round 13 (684bad8, 12:45) stands; round 14 follows. The wake at :40 fires into this session. No vault key is needed: neither earlier session kept anything outside git that a round needs.
 - Commits: all trailers (Agent, Issue, For, Co-Authored-By, Claude-Session) in one final paragraph, no blank line; Co-Authored-By names no model ("Claude <noreply@anthropic.com>"). The gate warned on 8858e46.
-- Round 15 released at about 13:45 UTC; round 16 at 14:40. Step 2 of a round is now `node tools/accounts-round.mjs | cut -c1-140`.
+- Round 16 released at about 14:45 UTC; round 17 at 15:40. Step 2 of a round is now `node tools/accounts-round.mjs | cut -c1-140`.
