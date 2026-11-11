@@ -6,3 +6,10 @@
 ;(function(){var p=location.pathname,h=location.hash,m=p.match(/^(.*\/)view\/(.+)\.html$/);
 if(m&&document.getElementById('nf-path')){location.replace(m[1]+'view/?path='+encodeURIComponent(m[2])+h);return}
 if(h.length>1&&document.getElementById('wx')&&!document.getElementById(h.slice(1))&&/^#(day|wind|madeira|lisbon-rain|thursday|where|signals|wx-changes)$/.test(h))location.replace((document.getElementById('wx').dataset.base||'./')+'data-room/index.html'+h)})()
+// round 46: a long "Kept by" block under a page's title folds to four lines with a "Show all" button (on a phone it was up to 450 px before the
+// first paragraph). Without this script the block is whole; print shows it whole; a link into it opens it.
+;(function(){var q=document.querySelector('.doc article > h1 + blockquote');if(!q||q.scrollHeight<170)return;
+var b=document.createElement('button');b.type='button';b.className='kept-more';
+function set(o){q.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Show less':'Show all of this note'}
+q.classList.add('kept-fold');var t=location.hash.length>1&&document.getElementById(location.hash.slice(1));set(!!(t&&q.contains(t)));
+b.addEventListener('click',function(){set(!q.classList.contains('open'))});q.after(b)})()

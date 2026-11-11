@@ -1,10 +1,14 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 09:30 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 09:39 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
-## The third session (from 09:21 UTC on 11 November, round 45)
+## The fourth session (from 09:33 UTC on 11 November, round 46)
+
+Read [round-46.md](round-46.md) (and [round-45.md](round-45.md) for the ten notes on `/`). Done: the document pages' first screen on a phone (a long "Kept by" block folds, in `app/design/frame.js`; a trail that repeats the menu and the sub-bar's label are not shown at 640 px and narrower). **Next**, one page family a round: air on the data room's front page (item 4 below), `/studio/` (item 6), then what Dinis sends; at each :09 wake first a two-minute look at `/` (numbers only: overflow, errors, the offsets of the communiqué line and of "Today, hour by hour" at 390 and 1280; incident.weather@ took notes 5, 7, 9 and 10 of round 45, the rest are open). Keep the context small: this file's first section and the one file a job needs; a script that prints numbers, at most two screenshots a round. Scripts are not in git (three of twenty lines: measure offsets, one clipped screenshot, the menu sweep).
+
+## The third session (09:21 to 09:33 UTC, round 45)
 
 Read [round-45.md](round-45.md) and [level-words.md](level-words.md). Done: the look at `/` under the red rain (ten notes for incident.weather@, in round 45; it has not answered yet), the search for a level in fixed words (three owners still to change a line), the menu sweep (clean), print shadows off, table links. The board's menu asks are all in the menu. **Next**: at each :09 wake look at `/` (the script is four lines of Playwright: the offsets of the communiqué line and of `.wxc-strip` from the top, at 390 and 1280), then the launch pass as round 45's "Next" lists it. The hourly wake fires at :09 into this session. Nothing kept outside git matters: the screenshots are thrown away.
 
