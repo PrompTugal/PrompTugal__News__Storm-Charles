@@ -8,13 +8,19 @@ cd "$(git rev-parse --show-toplevel)"
 : "${AGENT:?set AGENT to your name}"
 [ "$(git rev-parse --abbrev-ref HEAD)" = dev ] || { echo "release.sh: be on dev (no agent pushes to main)"; exit 1; }
 [ -z "$(git status --porcelain)" ] || { echo "release.sh: commit your source changes first:"; git status --short | head; exit 1; }
-for attempt in 1 2 3 4 5; do
+# The gate runs once on your work rebased on dev. If someone pushes in the seconds it takes (twenty agents push here), the retry
+# rebases and pushes at once, without a second local gate: CI's gate on the pushed tree is the authority, and a red run is no release.
+gated=0
+for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
   git fetch -q origin dev
   git rebase -q origin/dev || { echo "release.sh: conflict with dev; resolve by hand"; git rebase --abort; exit 1; }
   [ "$(git rev-list --count origin/dev..HEAD)" = 0 ] && { echo "release.sh: nothing to push"; exit 0; }
-  node admin/build/validate.mjs
-  node tools/policy-check.mjs   # each commit's Agent: may change only its own paths (agents/policy.json); a local check, not a boundary
+  if [ "$gated" = 0 ]; then
+    node admin/build/validate.mjs
+    node tools/policy-check.mjs   # each commit's Agent: may change only its own paths (agents/policy.json); a local check, not a boundary
+    gated=1; continue             # fetch and rebase again straight after the gate, then push
+  fi
   if git push -q origin HEAD:dev; then echo "pushed $(git rev-parse --short HEAD) by $AGENT; CI numbers, deploys and times it"; exit 0; fi
-  echo "release.sh: someone pushed first; again"; sleep $((attempt * 2))
+  echo "release.sh: someone pushed first; again"; sleep $(( (RANDOM % 3) + 1 ))
 done
-echo "release.sh: gave up after 5 attempts"; exit 1
+echo "release.sh: gave up after 12 attempts"; exit 1
