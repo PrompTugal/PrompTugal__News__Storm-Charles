@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T03:00Z",
-  "based_on_read_utc": "2026-11-11T02:38:08Z",
+  "updated": "2026-11-11T04:28Z",
+  "based_on_read_utc": "2026-11-11T03:23:31Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first. Each is resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser when the page opens.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -80,7 +80,8 @@
       "claims": [
         "c11",
         "c12",
-        "c13"
+        "c13",
+        "c19"
       ]
     },
     {
@@ -181,7 +182,7 @@
       "text": "IPMA has published no communiqué no. 3: at the last read, no. 2 is still the newest text on Charles in its feed.",
       "label": "fact",
       "said_by": "IPMA's communiqués feed",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T03:23:31Z",
       "supports": [
         {
           "kind": "data",
@@ -192,7 +193,7 @@
         {
           "kind": "data",
           "file": "research/weather-sites/rereads.json",
-          "field": "rereads[0].unchanged_at_the_authorities[0].what",
+          "field": "rereads[read=2026-11-11T01:29Z].unchanged_at_the_authorities[0].what",
           "expect": "IPMA's communiqué is still no. 2 (valid 10 Nov 17:07 to 11 Nov 23:59)"
         }
       ]
@@ -203,7 +204,7 @@
       "label": "fact",
       "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
       "at_utc": "2026-11-10T07:18:40Z",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T03:23:31Z",
       "supports": [
         {
           "kind": "row",
@@ -262,7 +263,7 @@
       "text": "Since then IPMA has sent no message that lowers, shortens or lifts a Lisbon warning: the red wind warning is as it was sent at 07:18 on Tuesday.",
       "label": "fact",
       "said_by": "IPMA's warnings, as read",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T03:23:31Z",
       "supports": [
         {
           "kind": "data",
@@ -285,7 +286,7 @@
         {
           "kind": "data",
           "file": "research/weather-sites/rereads.json",
-          "field": "rereads[0].unchanged_at_the_authorities[1].what"
+          "field": "rereads[read=2026-11-11T01:29Z].unchanged_at_the_authorities[1].what"
         }
       ]
     },
@@ -406,8 +407,8 @@
         {
           "kind": "data",
           "file": "research/weather-sites/rereads.json",
-          "field": "rereads[0].changed_in_the_coverage[2].what",
-          "url_field": "rereads[0].changed_in_the_coverage[2].source"
+          "field": "rereads[read=2026-11-11T01:29Z].changed_in_the_coverage[who=CNN Portugal, weather section].what",
+          "url_field": "rereads[read=2026-11-11T01:29Z].changed_in_the_coverage[who=CNN Portugal, weather section].source"
         },
         {
           "kind": "data",
@@ -430,7 +431,24 @@
         {
           "kind": "data",
           "file": "research/weather-sites/rereads.json",
-          "field": "rereads[0].observation_for_the_home_page"
+          "field": "rereads[read=2026-11-11T01:29Z].observation_for_the_home_page"
+        }
+      ],
+      "qualified_by": [
+        "c6"
+      ]
+    },
+    {
+      "id": "c19",
+      "text": "The line was still running at 03:00 on Wednesday: RTP's radio bulletin is titled \"IPMA: depressão Charles vai atingir mais o sul do país\". The bulletin was not heard by us. At the same hour IPMA's warnings for Lisbon were unchanged and its communiqué was still no. 2.",
+      "label": "evidence",
+      "said_by": "RTP Antena 1 (the title of an audio bulletin)",
+      "at_utc": "2026-11-11T03:00Z",
+      "read_utc": "2026-11-11T03:28Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0328"
         }
       ],
       "qualified_by": [
@@ -755,7 +773,7 @@
       "text": "Nothing measured yet can test any of this: the red wind warning begins at 12:00 on Wednesday, and the observations we hold end before it.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T02:38:08Z",
+      "read_utc": "2026-11-11T03:23:31Z",
       "supports": [
         {
           "kind": "data",
@@ -791,7 +809,7 @@
       "label": "fact",
       "said_by": "Lisbon airport's METAR (issued by IPMA, read through NOAA's Aviation Weather)",
       "at_utc": "2026-11-10T11:00Z",
-      "read_utc": "2026-11-11T02:38:08Z",
+      "read_utc": "2026-11-11T03:23:31Z",
       "supports": [
         {
           "kind": "data",
@@ -937,6 +955,15 @@
         "o1",
         "o2"
       ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T04:28Z",
+      "what": "Checked against the read of 03:23:31 UTC: IPMA's red wind and red rain for Lisbon unchanged, the communiqué still no. 2, the models unchanged. One sentence added from a new timeline row (s-1111T0328): RTP's 03:00 bulletin title puts the shift south under IPMA's name again; IPMA has still written nothing new. Three supports now name the 01:29 re-read by its time (the list of re-reads had grown).",
+      "claims_added": [
+        "c19"
+      ],
+      "claims_changed": [],
       "by": "incident.stories@web-summit.dinis"
     }
   ]
