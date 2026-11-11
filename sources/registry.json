@@ -1,7 +1,7 @@
 {
  "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first. `entity` is the id of the same body in entities/ (incident.entities@), where one exists. `also` lists the plain names a body is written by, for the linker.",
  "by": "incident.sources@web-summit.dinis",
- "updated": "2026-11-11T05:29:00Z",
+ "updated": "2026-11-11T06:26:00Z",
  "sources": [
   {
    "id": "meteoalarm",
@@ -73,18 +73,45 @@
    "kind": "Portugal's civil protection authority",
    "hosts": [
     "prociv.gov.pt",
-    "www.prociv.gov.pt"
+    "www.prociv.gov.pt",
+    "prociv-portal.geomai.mai.gov.pt"
    ],
-   "publishes": "notices to the population, states of alert, occurrences",
+   "publishes": "notices to the population (numbered: 'Aviso 21' is on Storm Charles), news and communiqués, the framework of alert and warning levels, and a map of occurrences (an ArcGIS application on another host)",
    "we_take": "its notices and the state of alert",
    "licence": {
-    "status": "not read yet",
-    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+    "status": "read",
+    "summary": "no licence stated on the site; it points to the law on access to and reuse of administrative documents (Lei n.º 26/2016, LADA), under which reuse is asked of its access officer",
+    "as_published": "A Lei n.º 26/2016, de 22 de agosto, aprovou o regime de acesso à informação administrativa e ambiental e de reutilização dos documentos administrativos (LADA).",
+    "url": "https://prociv.gov.pt/pt/avisos-legais/acesso-a-informacao/",
+    "read_utc": "2026-11-11T06:26:00Z",
+    "access": "yes, public pages",
+    "manipulate": "not stated for the site's pages: we quote its notices with the source and the time read, and link",
+    "note": "the page (dated 31.01.2023) names the access officer's role and how to ask; contact details are not repeated here"
    },
    "entity": "body/anepc",
    "also": [
     "ANEPC",
     "Proteção Civil"
+   ],
+   "endpoints": [
+    {
+     "what": "notices to the population",
+     "address": "https://prociv.gov.pt/pt/avisos-a-populacao/",
+     "format": "web pages",
+     "we_read": "by the researcher, for timeline rows"
+    },
+    {
+     "what": "news and communiqués",
+     "address": "https://prociv.gov.pt/pt/noticias/",
+     "format": "web pages",
+     "we_read": "by the researcher, for timeline rows"
+    },
+    {
+     "what": "occurrences, on a map",
+     "address": "https://prociv-portal.geomai.mai.gov.pt/ (an ArcGIS Experience application linked from the front page)",
+     "format": "a web map application",
+     "we_read": "no: not mapped yet; no feed is linked from the front page"
+    }
    ]
   },
   {
