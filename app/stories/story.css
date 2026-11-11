@@ -1,0 +1,55 @@
+/* Stories (incident.stories@web-summit.dinis): a story is a list of labelled sentences, each opening its support. Tokens only (design/README.md):
+   fact solid, evidence solid in its own colour, hypothesis dashed and carrying the word, said aloud a double rule; warning colours only on IPMA's levels. */
+.st { max-width: 1180px; }
+.st-head h1 { font-size: clamp(30px, 4.4vw, 48px); line-height: 1.08; margin: 4px 0 10px; letter-spacing: -.01em; }
+.st-stand { font-size: 19px; line-height: 1.45; max-width: 74ch; margin: 0 0 8px; }
+.st-head .prov, .st-warn .prov { display: block; max-width: 96ch; font-size: 13px; }
+.st h2 { font-size: 20px; margin: 30px 0 8px; padding-top: 10px; border-top: 1px solid var(--line-2); }
+.st-warn { margin: 18px 0 6px; padding: 12px 16px 10px; background: var(--surface); border: 1px solid var(--line-2); border-radius: 6px; }
+.st-warn h2 { border: 0; margin: 0 0 6px; padding: 0; font-size: 15px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); }
+.st-warn ul { list-style: none; margin: 0 0 8px; padding: 0; }
+.st-warn li { margin: 6px 0; font-size: 16px; }
+.st-warn .lvl { text-transform: uppercase; font-weight: 700; }
+.st-warn q { font-style: italic; }
+.st-ww, .st time { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .92em; }
+#st-live { display: block; margin-top: 2px; }
+#st-live.st-diff { color: var(--ink); font-weight: 600; outline: 2px solid var(--focus); outline-offset: 3px; }
+.st-toggles { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; margin: 14px 0 0; padding: 8px 12px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; }
+.st-toggles label { display: inline-flex; gap: 5px; align-items: center; cursor: pointer; white-space: nowrap; }
+.st-toggles button { font: inherit; padding: 3px 10px; border: 1px solid var(--line-2); border-radius: 4px; background: var(--paper); color: var(--ink); cursor: pointer; }
+.st-toggles output { margin-left: auto; color: var(--ink-2); font-size: 13px; }
+.st-claim { margin: 0; padding: 10px 0 10px 14px; border-left: 3px solid var(--ok); border-bottom: 1px solid var(--line); max-width: 96ch; scroll-margin-top: 60px; }
+.st-claim.st-evidence { border-left-color: var(--sent); }
+.st-claim.st-hypothesis { border-left: 3px dashed var(--accent); }
+.st-claim.st-voice { border-left: 3px double var(--ink-2); padding-left: 14px; }
+.st-claim:target { background: color-mix(in srgb, var(--focus) 9%, transparent); }
+.st-s { font-size: 17.5px; line-height: 1.5; margin: 0; }
+.st .lbl { display: inline-block; font: 600 10.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 3px 5px; border-radius: 3px; margin-right: 5px; vertical-align: 2px; }
+.st .lbl.st-model, .st .lbl.st-derived, .st .lbl.st-chg { background: var(--surface-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line-2); }
+.st .lbl.st-chg { color: var(--focus); box-shadow: inset 0 0 0 1px var(--focus); margin-left: 6px; }
+.st-id { text-decoration: none; opacity: .55; font-size: 12px; margin-left: 4px; } .st-id:hover, .st-id:focus { opacity: 1; }
+.st-who { display: block; margin: 4px 0 0; font-size: 13px; }
+.st-flag { display: block; margin: 6px 0 0; padding: 6px 10px; font-size: 14px; font-weight: 600; background: var(--warn-soft); color: var(--ink); border: 1px dashed var(--warn); border-radius: 4px; }
+.st-sup { margin: 6px 0 0; font-size: 14px; }
+.st-sup summary { cursor: pointer; color: var(--focus); width: fit-content; }
+.st-sup ul { list-style: none; margin: 6px 0 2px; padding: 0; }
+.st-sup li { margin: 0 0 6px; padding: 8px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; overflow-wrap: anywhere; }
+.st-sup li b { font: 600 10.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); margin-right: 6px; }
+.st-sup q { display: block; margin: 4px 0 2px; quotes: none; color: var(--ink); }
+.st-sup q.st-v { font-family: var(--mono); font-size: 13px; background: var(--surface-2); padding: 4px 6px; border-radius: 3px; }
+.st-sup .st-t, .st-outs, .st-note, .st-okv { display: block; color: var(--ink-2); font-size: 12.5px; }
+.st-okv::before { content: "= "; font-family: var(--mono); }
+.st-moved { border-style: dashed !important; border-color: var(--warn) !important; }
+.st-out span { font-size: .86em; color: var(--ink-2); }
+.st-rel code, .st-sup code { font-size: 12px; }
+.st-note { color: var(--ink-2); font-size: 14px; max-width: 90ch; }
+.st-nk { max-width: 90ch; padding-left: 20px; } .st-nk li { margin: 6px 0; }
+.st-record ol { list-style: none; padding: 0; max-width: 96ch; } .st-record li { margin: 6px 0; padding-left: 12px; border-left: 2px solid var(--line-2); }
+/* the switches (app/stories/story.js sets these on #story; without JavaScript everything is shown) */
+.st.no-sources .st-sup, .st.no-sources .st-outs, .st.no-sources .st-head .prov, .st.no-sources .st-rel { display: none; }
+.st.no-times .st-t, .st.no-times .st-ww, .st.no-times .st-warn .prov time { display: none; }
+.st.no-hyp .st-hypothesis, .st.no-hyp .st-layer-hyp { display: none; }
+.st:not(.show-chg) .st-record, .st:not(.show-chg) .st-chg { display: none; }
+.st.show-chg .st-new { background: color-mix(in srgb, var(--focus) 7%, transparent); }
+@media (max-width: 760px) { .st-s { font-size: 16.5px; } .st-toggles { position: static; } .st-toggles output { margin-left: 0; width: 100%; } .st-claim { padding-left: 10px; } }
+@media print { .st-toggles { display: none; } .st-sup:not([open]) > *:not(summary) { display: block; } }
