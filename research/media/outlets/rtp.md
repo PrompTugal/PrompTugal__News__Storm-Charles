@@ -1,13 +1,13 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 04:36 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:26 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
-| Items we read | 18: 18 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 03:24 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 18 the desk's, 0 not read; wire share 0% |
+| Items we read | 19: 19 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:34 to 11 Nov 05:19 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 19 the desk's, 0 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -25,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 18 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 19 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **Notícias ao Minuto relayed it:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -69,3 +69,4 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 00:47 | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/portugal-esta-em-situacao-de-alerta-devido-a-passagem-da-depressao-charles_e1778024) |
 | 11 Nov 02:28 | article | Rádio e Televisão de Portugal | [2h Depressão Charles: proteção civil da Madeira regista mais de 50 ocorrências ↗](https://www.rtp.pt/noticias/noticiario-antena1/2h-depressao-charles-protecao-civil-da-madeira-regista-mais-de-50-ocorrencias_a1_1778302) |
 | 11 Nov 03:24 | article | Rádio e Televisão de Portugal | [3h IPMA: depressão Charles vai atingir mais o sul do país ↗](https://www.rtp.pt/noticias/noticiario-antena1/3h-ipma-depressao-charles-vai-atingir-mais-o-sul-do-pais_a1_1778305) |
+| 11 Nov 05:19 | article | Rádio e Televisão de Portugal | [5h Depressão Charles põe nove distritos de Portugal Continental sob aviso vermelho ↗](https://www.rtp.pt/noticias/noticiario-antena1/5h-depressao-charles-poe-nove-distritos-de-portugal-continental-sob-aviso-vermelho_a1_1778315) |

@@ -49,6 +49,8 @@ function rtp(html) {
     return out
 }
 const blogs = [], entries = []
+// what the last run recorded for each blog: kept when this run can time no entry and has no capture of its own (a new session starts with an empty cache)
+const PREV = (() => { try { return Object.fromEntries((JSON.parse(fs.readFileSync(path.join(M, 'live-entries.json'), 'utf8')).blogs || []).map(x => [x.url, x])) } catch { return {} } })()
 const IDX = path.join(RAW, 'index.json'), idx = fs.existsSync(IDX) ? JSON.parse(fs.readFileSync(IDX, 'utf8')) : {}
 for (const b of BLOGS) {
     const r = await fetch(b.url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(40000) }); const html = await r.text()
@@ -61,6 +63,7 @@ for (const b of BLOGS) {
         note = `entry times taken from our capture of ${used.read}: at ${read} the page no longer gave a time per entry`
     }
     const times = all.map(e => e.at).sort()
+    if (!all.length && PREV[b.url] && PREV[b.url].entries_read) { blogs.push({ ...PREV[b.url], status: r.status, rechecked: read, rechecked_note: 'at this read the page gave no time per entry and this session holds no earlier capture: the record of the earlier read is kept, and its timed entries stay below' }); console.error(`${b.outlet}: ${r.status}, 0 entries now; the earlier record kept`); await new Promise(r => setTimeout(r, 1000)); continue }
     blogs.push({ outlet: b.outlet, url: b.url, status: r.status, read: used.read, capture_sha256: used.sha, note, entries_read: all.length, first_entry: times[0] || null, last_entry: times[times.length - 1] || null })
     for (const e of all) for (const f of FACTS) {
         const re = new RegExp(f.live_pattern || f.pattern, 'i')
