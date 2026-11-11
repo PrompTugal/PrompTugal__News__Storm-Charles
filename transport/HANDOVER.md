@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 15:43 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 15:54 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -35,7 +35,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 
 1. **Hourly rounds**: the conductor's scheduled task wakes you at :42 (do not add your own; a duplicate was cancelled at 12:45): pull, run the reader, build and validate, commit the data and reads.jsonl, push to the vault, `release.sh`, then `accounts-measure --append`. Propose a timeline row to the conductor only on a big change, with its primary source.
 2. Done by the second session (12:10 to 12:20): Metro GTFS, STCP, Fertagus.
-3. Done by the third session (12:46 to 12:57): Carris (city) and IP are **terms** (the same no-publishing clause as Metro's: link only, listed for Dinis); Lusoponte **live**; FlixBus **unknown** (no readable network status). Fourth session (14:44): CP **unknown**, no live data published (sources.md). Lisbon city's tunnels **unknown** (15:43: its open data on road restrictions stops at Oct 2024). Left: the Port of Lisbon.
+3. Done by the third session (12:46 to 12:57): Carris (city) and IP are **terms** (the same no-publishing clause as Metro's: link only, listed for Dinis); Lusoponte **live**; FlixBus **unknown** (no readable network status). Fourth session: CP **live** from 15:50 (its home-page notices, rendered in Chromium by `getRendered`; titles, times, links only: its legal notice asks consent to reproduce). Lisbon city's tunnels **unknown** (15:43: its open data on road restrictions stops at Oct 2024). Left: the Port of Lisbon.
 4. Shadow's leads checked 13:14: TAP states no cancellation count (its own weather alert went to the researcher, now a fact there); ANA's split now comes from its newsroom.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 

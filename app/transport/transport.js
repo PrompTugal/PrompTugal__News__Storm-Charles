@@ -65,7 +65,7 @@
     if (o.counts) s += '<ul class="kv"><li>Notices in force <b>' + o.counts.active_notices + '</b></li><li>Of them, for the weather <b>' + o.counts.weather_notices + '</b></li>' +
       Object.keys(o.counts.by_effect || {}).map(function (k) { return '<li>' + esc(k.toLowerCase().replace(/_/g, ' ')) + ' <b>' + o.counts.by_effect[k] + '</b></li>' }).join('') + '</ul>'
     if (o.notices && o.notices.length) s += '<ul class="feed">' + o.notices.slice(0, 4).map(function (n) {
-      return '<li>' + ftm(n.updated || n.published || n.from) + '<div><b>' + esc(n.title || n.header) + '</b><span class="via">“' + esc(n.excerpt) + '”' + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</span></div></li>'
+      return '<li>' + ftm(n.updated || n.published || n.from) + '<div><b>' + esc(n.title || n.header) + '</b><span class="via">' + (n.excerpt ? '“' + esc(n.excerpt) + '”' : '') + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</span></div></li>'
     }).join('') + '</ul>'
     return s + '<p>' + prov(o.operator.split(' (')[0] + "'s own data", o.link || o.source, o.read) + '</p></section>'
   }

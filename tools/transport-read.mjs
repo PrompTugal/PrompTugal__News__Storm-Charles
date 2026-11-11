@@ -13,6 +13,7 @@
 // - Writes incidents/2026-11-10-storm-charles/data/transport/{flights,services}.json and appends one line per read to
 //   transport/reads.jsonl. No model is called. Not a warning service: facts with source and time; inferences labelled.
 // Kept by incident.transport@web-summit.dinis.
+import { createRequire } from 'node:module'
 import fs from 'node:fs'
 import path from 'node:path'
 import os from 'node:os'
@@ -299,6 +300,31 @@ async function metro() {
     return ops
 }
 
+// A page that is a JavaScript app (CP): render it in the pre-installed Chromium as a reader's browser does and keep the
+// one response the page itself loads that matches; nothing is called that the page does not call, and no key is ours.
+async function getRendered(name, pageUrl, match) {
+    const t0 = Date.now(), read = iso(t0)
+    let status = 0, body = '', err = null, url = pageUrl, b = null
+    try {
+        const { chromium } = createRequire(import.meta.url)('playwright')
+        b = await chromium.launch(); const pg = await b.newPage({ userAgent: UA })
+        const got = new Promise(res => pg.on('response', async r => { if (r.url().includes(match)) { url = r.url(); status = r.status(); res(await r.text().catch(() => '')) } }))
+        await pg.goto(pageUrl, { waitUntil: 'networkidle', timeout: 45000 })
+        body = await Promise.race([got, sleep(5000).then(() => '')])
+    } catch (e) { err = String(e.message).slice(0, 200) } finally { if (b) await b.close().catch(() => {}) }
+    const h = body ? sha(body) : null
+    if (body && !DRY) {
+        const d = new Date(t0), p = n => String(n).padStart(2, '0')
+        const f = path.join(STORE, `${d.getUTCFullYear()}`, p(d.getUTCMonth() + 1), p(d.getUTCDate()), p(d.getUTCHours()), `${name}-${p(d.getUTCMinutes())}.json`)
+        fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, body)
+    }
+    const rec = { name, url, page: pageUrl, read, status, bytes: body.length, sha256: h, ms: Date.now() - t0, ...(err ? { error: err } : {}) }
+    reads.push(rec)
+    let data = null
+    if (status === 200 && body) { try { data = JSON.parse(body) } catch { rec.error = 'not JSON' } }
+    return { data, rec }
+}
+
 // ---------- trains: each operator's own page
 const lisbonToUtc = (y, mo, d, h, mi) => {   // Lisbon wall clock -> UTC ISO (WET/WEST from Intl, not assumed)
     const guess = Date.UTC(y, mo - 1, d, h, mi), f = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Lisbon', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
@@ -333,6 +359,21 @@ async function trains() {
             ...(latest ? {} : { note: 'its page answered, but no timed entry was found' }),
         })
     } else items.push({ id: 'fertagus', operator: 'Fertagus (trains)', mode: 'train', label: 'none', note: `did not answer (status ${f.rec.status})`, source: fUrl, read: f.rec.read })
+    // CP (national trains): its notices on its own home page (a JavaScript app; rendered, see getRendered). CP's legal notice
+    // allows private use only and asks consent to reproduce its content: so its notices' titles, times and links only,
+    // none of their text (as with ANA); what a notice states goes in our words in the conductor's rows, with the link.
+    const cpUrl = 'https://www.cp.pt/pt', cp = await getRendered('cp-avisos', cpUrl, 'PWA/Homepage/Avisos')
+    if (cp.data && Array.isArray(cp.data.item)) {
+        const since = Date.now() - 3 * 86400e3, title = t => String((t && (t['pt-PT'] || t['en-US'])) || '').replace(/\s*\|\s*CP\s*$/, '')
+        const ns = cp.data.item.filter(x => Date.parse(x.dateModified || x.datePublished) >= since).sort((a, b) => Date.parse(b.dateModified) - Date.parse(a.dateModified)).slice(0, 8)
+            .map(x => ({ title: excerpt(title(x.title), 140), published: x.datePublished || null, updated: x.dateModified || null, link: `https://www.cp.pt/pt/detalhe-aviso/${x.friendlyUrlPath}` }))
+        items.push({
+            id: 'cp', operator: 'CP (national trains: urban Lisbon and Porto, regional, Intercidades, Alfa Pendular)', mode: 'train', label: ns.length ? 'fact' : 'none',
+            state: ns.length ? `${ns.length} of its notices changed in the last three days; the newest changed at ${ns[0].updated.slice(11, 16)} UTC on ${+ns[0].updated.slice(8, 10)} Nov: open it on CP's site` : 'no notice changed in the last three days',
+            notices: ns, link: cpUrl, source: cpUrl, read: cp.rec.read, sha256: cp.rec.sha256, kind: 'its own notices on its home page (titles, times and links only)',
+            licence: 'CP\'s legal notice allows private use only and asks written consent to reproduce: titles, times and links only, none of its text',
+        })
+    } else items.push({ id: 'cp', operator: 'CP (national trains)', mode: 'train', label: 'none', note: `its notices did not load (status ${cp.rec.status}${cp.rec.error ? ', ' + cp.rec.error : ''})`, source: cpUrl, read: cp.rec.read })
     return items
 }
 
