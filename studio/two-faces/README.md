@@ -4,7 +4,7 @@ summary: Why this site has two fronts: the Weather face, clean and for anyone, a
 mount: <div id="studio" data-base="../animations/" data-anim="two-faces"><noscript><p class="meta">The player needs JavaScript. The same explanation, scene by scene as text, is below.</p></noscript></div>
 head: <link rel="stylesheet" href="../../app/studio/studio.css"><script src="../../app/studio/characters.js" defer></script><script src="../../app/studio/player.js" defer></script>
 ---
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:27 UTC
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:34 UTC
 
 # Two faces
 
@@ -29,10 +29,10 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 
 1. Start where you are. On the Weather page, today's strip shows a band: IPMA's red rain warning for Lisbon, with IPMA's sentence. After it, small, a source and a time. That is where the walk back begins.
    At work: you. "A band on today's strip: IPMA's red rain warning for Lisbon, 09:00 to 18:00, "Strong and persistent precipitation."".
-2. One step back: the Weather face. It did not look anything up. It fetched a file this site publishes, weather/warnings.json, and drew what the file says. The link beside the band points at that file in the data room.
-   At work: the weather face. "A band on today's strip: IPMA's red rain warning for Lisbon, 09:00 to 18:00, "Strong and persistent precipitation.""; added: Drawn from: [api/v1/…/weather/warnings.json](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json); Linked to: [that file, in the data room](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json).
+2. One step back: the Weather face. It did not look anything up. It fetched a file this site publishes, weather/warnings.json, and drew what the file says. The link beside the band opens that file in the data room's viewer, at the value it was drawn from.
+   At work: the weather face. "A band on today's strip: IPMA's red rain warning for Lisbon, 09:00 to 18:00, "Strong and persistent precipitation.""; added: Drawn from: [api/v1/…/weather/warnings.json](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json); Shown to you as: [that file, in the data room's viewer](../../view/index.html?path=incidents/2026-11-10-storm-charles/data/weather/warnings.json).
 3. One more: the data room. The record the band was drawn from: a level, a start, an end, IPMA's sentence, and with them the address it was read from and the time it was read.
-   At work: the data room. "A band on today's strip: IPMA's red rain warning for Lisbon, 09:00 to 18:00, "Strong and persistent precipitation.""; added: Drawn from: [api/v1/…/weather/warnings.json](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json); Linked to: [that file, in the data room](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json). (fact) "Precipitação forte e persistente."; added: source: [api.ipma.pt, warnings (open data)](https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json); read_utc: 2026-11-11T02:22:46Z.
+   At work: the data room. "A band on today's strip: IPMA's red rain warning for Lisbon, 09:00 to 18:00, "Strong and persistent precipitation.""; added: Drawn from: [api/v1/…/weather/warnings.json](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json); Shown to you as: [that file, in the data room's viewer](../../view/index.html?path=incidents/2026-11-10-storm-charles/data/weather/warnings.json). (fact) "Precipitação forte e persistente."; added: source: [api.ipma.pt, warnings (open data)](https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json); read_utc: 2026-11-11T02:22:46Z.
 4. One more: the collector. The weather data is kept by the meteorologist's agent, which reads IPMA's open data again and again and writes down what it read and when. If IPMA changes the warning, the next read changes the file, and the face changes with it. *The record is quoted as read on 11 November at 02:22:46 UTC. It is rewritten at every read: the file is right, and this card dates.*
    At work: collectors. (fact) "Precipitação forte e persistente."; added: Kept by: incident.meteorologist@.
 5. And the last: IPMA, the body that warns. The warning is IPMA's. Everything between IPMA and you on this site is carrying, labelling and drawing. For what to do, follow IPMA and ANEPC, not us.
@@ -42,7 +42,7 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 
 **A clean page hides its workings. What stops it drifting from the evidence?**
 
-1. It fetches nothing from outside. Its script has one fetch, over a fixed list of eleven files, every one of them published by this site's data room. Whatever is on the page is in a file you can open. *Counted in the script as read 02:25 UTC. The table of which file feeds which part is on the Weather page itself, under "Where every figure comes from".*
+1. It fetches nothing from outside. Its script has one fetch, over a fixed list of eleven files, every one of them published by this site's data room. Whatever is on the page is in a file you can open. A small tool checks this before each push. *Counted in the script as read 02:25 UTC. The table of which file feeds which part is on the Weather page itself, under "Where every figure comes from".*
    At work: the weather face. "One fetch, eleven files, all on this site.".
 2. It makes no forecast of its own, and it does not let three different things look alike. What was measured is solid blue. IPMA's automatic forecast is grey and hatched. The meteorologist's reading is dashed and carries the word hypothesis.
    At work: the weather face. "Storm Charles as a weather channel would show it: now, today hour by hour, what is closed, tomorrow.".
@@ -55,12 +55,12 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 
 ## What this simplifies
 
-- "Reads only the data room" is how the Weather script was written and what it does as read on 11 November, 02:25 UTC (one fetch, eleven fixed paths). We did not find a check in the gate that fails the build if that changes; today it is a rule kept by the agent that owns the page.
+- "Reads only the data room" is checked by a tool the Weather agent runs before each push (tools/weather-check.mjs: it fails if the page's script fetches anything outside its fixed list of the data room's files, or names an outside address other than the links to IPMA and ANEPC). It printed OK when run here at 02:33 UTC. It is not yet enforced by the site's gate.
 - Ten of the eleven files are fetched from api/v1/; the headline's file, incident.json, is fetched from the incident's own folder. Both are this site's published files.
 - The collectors are drawn as one character. They are several agents and scripts, and the files have different keepers: the weather files the meteorologist's agent, decisions/graph.json the researcher's, signals.json and incident.json the conductor's.
 - Dinis's direction goes further than what is built: the data is to move into vaults and the site is to read it from there ("it shouldn't come from here"). Today the files are in the repository and served by the site.
 - The Weather face was hours old when this was made and is changing by the hour. Its own page says what it shows; if this explanation and that page disagree, the page is right.
-- The link beside each figure is written to open the file as a page of the data room (view/…). When this was checked at 02:27 UTC those pages were not being built for the data files, so the link did not arrive; the file itself is there. The viewer is being built.
+- When this was first made (02:27 UTC) the links beside the figures did not arrive: the viewer's address was changing. They now open view/?path=<file>, one page that shows any of the site's files.
 - The warning on the cards is a record as read at 02:22:46 UTC on 11 November 2026, not the warning in force.
 
 ## Read for this
@@ -70,5 +70,6 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 - [weather/index.md (the Weather face's own account of itself)](../../weather/index.html), read 11 November 2026, 02:25 UTC
 - [app/weather/weather.js (one fetch; the list of eleven files)](../../app/weather/weather.js), read 11 November 2026, 02:25 UTC
 - [weather/warnings.json (read from IPMA 02:22:46 UTC)](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json), read 11 November 2026, 02:25 UTC
+- [tools/weather-check.mjs (run here: OK)](../../tools/weather-check.mjs), read 11 November 2026, 02:33 UTC
 
 The data this page is drawn from: [animations/two-faces.json](../animations/two-faces.json).

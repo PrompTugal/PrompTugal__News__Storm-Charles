@@ -3,7 +3,7 @@
   "title": "Two faces",
   "summary": "Why this site has two fronts: the Weather face, clean and for anyone, and the data room, where everything read from outside is kept with its source. The one rule between them: the face draws only what the data room holds.",
   "by": "incident.studio@web-summit.dinis",
-  "updated": "2026-11-11T02:30:00Z",
+  "updated": "2026-11-11T02:34:00Z",
   "about": "From Dinis Cruz's direction of 11 November 2026, about 02:10 UTC (BRIEF.md), and the Weather face as incident.weather@ built it (weather/index.md, app/weather/weather.js, read 02:25 UTC). The warning shown is quoted from the data room as read then: a record, not the warning in force. For warnings, follow IPMA and ANEPC. Proposed by incident.conductor@web-summit.dinis.",
   "chapters": [
     {
@@ -231,7 +231,7 @@
           }
         },
         {
-          "caption": "One step back: the Weather face. It did not look anything up. It fetched a file this site publishes, weather/warnings.json, and drew what the file says. The link beside the band points at that file in the data room.",
+          "caption": "One step back: the Weather face. It did not look anything up. It fetched a file this site publishes, weather/warnings.json, and drew what the file says. The link beside the band opens that file in the data room's viewer, at the value it was drawn from.",
           "at": 3,
           "cards": [
             {
@@ -245,9 +245,9 @@
                   "new": true
                 },
                 {
-                  "k": "Linked to",
-                  "v": "that file, in the data room",
-                  "href": "../../incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+                  "k": "Shown to you as",
+                  "v": "that file, in the data room's viewer",
+                  "href": "../../view/index.html?path=incidents/2026-11-10-storm-charles/data/weather/warnings.json",
                   "new": true
                 }
               ]
@@ -272,9 +272,9 @@
                   "new": true
                 },
                 {
-                  "k": "Linked to",
-                  "v": "that file, in the data room",
-                  "href": "../../incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+                  "k": "Shown to you as",
+                  "v": "that file, in the data room's viewer",
+                  "href": "../../view/index.html?path=incidents/2026-11-10-storm-charles/data/weather/warnings.json",
                   "new": true
                 }
               ]
@@ -457,7 +457,7 @@
       },
       "scenes": [
         {
-          "caption": "It fetches nothing from outside. Its script has one fetch, over a fixed list of eleven files, every one of them published by this site's data room. Whatever is on the page is in a file you can open.",
+          "caption": "It fetches nothing from outside. Its script has one fetch, over a fixed list of eleven files, every one of them published by this site's data room. Whatever is on the page is in a file you can open. A small tool checks this before each push.",
           "at": 3,
           "cards": [
             {
@@ -660,12 +660,12 @@
     }
   ],
   "simplifies": [
-    "\"Reads only the data room\" is how the Weather script was written and what it does as read on 11 November, 02:25 UTC (one fetch, eleven fixed paths). We did not find a check in the gate that fails the build if that changes; today it is a rule kept by the agent that owns the page.",
+    "\"Reads only the data room\" is checked by a tool the Weather agent runs before each push (tools/weather-check.mjs: it fails if the page's script fetches anything outside its fixed list of the data room's files, or names an outside address other than the links to IPMA and ANEPC). It printed OK when run here at 02:33 UTC. It is not yet enforced by the site's gate.",
     "Ten of the eleven files are fetched from api/v1/; the headline's file, incident.json, is fetched from the incident's own folder. Both are this site's published files.",
     "The collectors are drawn as one character. They are several agents and scripts, and the files have different keepers: the weather files the meteorologist's agent, decisions/graph.json the researcher's, signals.json and incident.json the conductor's.",
     "Dinis's direction goes further than what is built: the data is to move into vaults and the site is to read it from there (\"it shouldn't come from here\"). Today the files are in the repository and served by the site.",
     "The Weather face was hours old when this was made and is changing by the hour. Its own page says what it shows; if this explanation and that page disagree, the page is right.",
-    "The link beside each figure is written to open the file as a page of the data room (view/…). When this was checked at 02:27 UTC those pages were not being built for the data files, so the link did not arrive; the file itself is there. The viewer is being built.",
+    "When this was first made (02:27 UTC) the links beside the figures did not arrive: the viewer's address was changing. They now open view/?path=<file>, one page that shows any of the site's files.",
     "The warning on the cards is a record as read at 02:22:46 UTC on 11 November 2026, not the warning in force."
   ],
   "sources": [
@@ -693,6 +693,11 @@
       "name": "weather/warnings.json (read from IPMA 02:22:46 UTC)",
       "href": "../../incidents/2026-11-10-storm-charles/data/weather/warnings.json",
       "read": "11 November 2026, 02:25 UTC"
+    },
+    {
+      "name": "tools/weather-check.mjs (run here: OK)",
+      "href": "../../tools/weather-check.mjs",
+      "read": "11 November 2026, 02:33 UTC"
     }
   ]
 }
