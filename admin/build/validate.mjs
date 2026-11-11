@@ -8,7 +8,7 @@
 // Run: node admin/build/validate.mjs
 import fs from 'node:fs'
 import path from 'node:path'
-import { execFileSync } from 'node:child_process'
+import { execFileSync, spawn } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
@@ -16,7 +16,9 @@ const OUT = path.join(ROOT, '_site')
 const t0 = Date.now(), errors = [], warns = []
 const fail = m => errors.push(m)
 
-execFileSync(process.execPath, [path.join(ROOT, 'admin/build/build.mjs')], { stdio: 'inherit', env: process.env })
+// the build runs beside the checks of the tracked files (they read only the repository, never _site/); the built-site checks wait for it
+const building = new Promise((ok, no) => spawn(process.execPath, [path.join(ROOT, 'admin/build/build.mjs')], { stdio: 'inherit', env: process.env })
+    .on('error', no).on('exit', (code, sig) => code === 0 ? ok() : no(new Error(`admin/build/build.mjs exited ${sig || code}`))))
 
 // the files git tracks (or, outside git, every file)
 let tracked
@@ -64,6 +66,8 @@ for (const d of fs.readdirSync(path.join(ROOT, 'incidents'))) {
     const j = JSON.parse(fs.readFileSync(f, 'utf8')), h = j.headline || {}
     if (!h.text || !/^https:\/\//.test(h.url || '') || !h.at) fail(`incidents/${d}/incident.json: the headline needs text, an https source and a time`)
 }
+
+await building
 
 // the built site: twins, links, assets
 const html = []
