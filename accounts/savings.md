@@ -2,11 +2,11 @@
 title: Where the savings are
 summary: The largest costs first, what each agent could change, and the saving, measured or estimated and said to be which.
 ---
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 19:42 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 20:41 UTC
 
 # Where the savings are
 
-Round 21. 30 of 41 agents have measured their own sessions ([the table](index.md), [the lines](ledger/)); twenty-two of them have since handed over to a fresh session, so the first saving is measured on this team and not only estimated. The tables in items 1 and 5 to 7 are as read at 03:33 UTC; the team's total at 19:41 UTC is 3.20 billion tokens in 11,634 calls. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money.
+Round 22. 30 of 41 agents have measured their own sessions ([the table](index.md), [the lines](ledger/)); twenty-two of them have since handed over to a fresh session, so the first saving is measured on this team and not only estimated. The tables in items 1 and 5 to 7 are as read at 03:33 UTC; the team's total at 20:41 UTC is 3.26 billion tokens in 11,833 calls. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money.
 
 ## 1. Re-reading the session's context on every call is almost the whole cost (measured, 26 sessions)
 
@@ -69,9 +69,11 @@ Twenty-one agents have handed over to a fresh session of themselves since 03:03 
   | 15:00 | 234,227 | 335 | 154,437 | 465,250 | 51% |
   | 16:00 | 286,043 | 356 | 165,545 | 570,237 | 59% |
   | 17:00 | 332,393 | 177 | 216,413 | 644,089 | 53% |
-  | 18:00 (the conductor to 18:42) | 256,569 | 268 | 160,062 | 710,358 | 49% |
+  | 18:00 | 278,685 | 292 | 160,125 | 718,503 | 55% |
+  | 19:00 (the conductor to 19:42, its fifth compaction before 19:24) | 236,099 | 223 | 176,196 | 372,643 | 48% |
 
   The hand-overs hold for the 28 other agents (170,000 to 194,000 a call since 06:00); the team's figure has risen since 06:00 because one session has grown from 346,000 to 692,000 tokens a call.
+- **As read at 20:41 UTC:** the rows above. A quiet hour: 223 calls at 19:00 against 1,025 at 10:00, 38 filed so far for 20:00. Split of 19:00: the handed-over agents 143 calls at 148,394, the five first-session agents 12 at 507,495, the conductor 68 at 372,643. No hand-over since 19:41. Next to hand over (held for Dinis): archivist 532,967, shadow 517,440 (no line since 19:07), sources 489,041, perplexity 409,543 (none since 17:51), models 403,575 (none since 09:31); then media's third session, 249,038. The conductor: 128,704 at 19:42, no line since.
 - **Added 19:44 UTC:** the conductor's line to 19:42: a fifth compaction just before 19:24 brought its last call to 128,704 tokens (2,635 calls, 1.21 billion tokens, 37.2% of 3.24 billion). Re-ranked, next to hand over: archivist 527,371, shadow 517,440, sources 484,055, perplexity 409,543, models 403,575 (held for Dinis, the conductor's word at 19:43); then media's third session, 240,802. The conductor grew about 100,000 a call an hour after its last compaction; at that rate it is back above 500,000 by about 23:00.
 - **As read at 19:41 UTC:** the rows above, with the conductor's line to 18:42: 2,552 calls, 1.17 billion tokens, 36.5% of the team's; **736,167 tokens on its last call, no compaction since 13:09**, about half of every hour's tokens since 14:00. Split of the hours without it: the five first-session agents 23 calls at 451,269 (17:00), 16 at 497,184 (18:00); the rest 106 at 165,454 (17:00), 205 at 133,750 (18:00), the lowest whole hour for the rest yet. Hand-overs since 18:41, old session's last hour against the new session's average: transport's fifth 178,643 to 101,144 (43% less), weatherwatch's fifth 170,840 to 109,419 (36%), stories' ninth 170,604 to 119,839 (30%), librarian's twelfth 150,016 to 109,776 (27%). Next to hand over: the conductor; archivist 527,371, shadow 517,440, sources 484,055, perplexity 409,543 (line from 17:51), models 403,575 (line from 09:31); then media, whose third session has reached 240,802.
 - **As read at 18:41 UTC:** the rows above. The 17:00 hour without the conductor reads 218,993 a call, but that is the mix, not a rise: the five first-session agents made 23 calls at 451,269 each, as in the 16:00 hour (23 at 465,339), while the rest have filed 99 calls so far at 165,030 (227 at 135,170 in the 16:00 hour). As the rest go quiet, the five weigh more. One hand-over with a line: observability's eighth 159,833 to 117,891 (26% less); weatherwatch, stories and librarian have new session keys and no line yet. Shadow passed half a million (501,136); perplexity 409,543 (up 43,000 since 14:42); archivist 519,166, sources 479,338, models 403,575 (line from 09:31). No line from the conductor since 16:42 (599,746 a call then).
