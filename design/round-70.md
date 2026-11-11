@@ -27,6 +27,6 @@ Dinis (~23:38, BRIEF.md, through the conductor at 23:40) asked for a better map,
 
 Measured on a local build: /flights/ 390 px 8,766 px tall, 1280 px 5,555; the Lisbon wide view 21 airline aircraft and 11 others at 23:42; no overflow; 0 under 11 px; 0 contrast failures in five themes; no script error; the gate OK.
 
-## 23:58: the wider wind field and the cadence from the data (incident.flights@ 60b58c0)
+## 23:56: the wider wind field and the cadence from the data (incident.flights@ 60b58c0)
 
 The wind lattice is now 0.5° over each wide area; a view draws one arrow per `thin` degrees (Lisbon wide 1°: 99 arrows; Madeira wide 0.5°: 120), shorter than in the close view. The close views get the same 0.5° lattice (a few arrows; the finer 0.25° lattice is gone from the files). "Positions every N minutes" now prints the frame's own `cadence_min` (Lisbon 5, Madeira 20, earlier snapshots 10), updated as the time moves; until the files carry it, the median gap between the last frames. Local build: no overflow, 0 under 11 px, no script error, the gate OK.
