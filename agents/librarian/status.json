@@ -1,8 +1,8 @@
 {
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active: the second librarian session, started at 03:01 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the hand-over below; the first session (23:38 on 10 November to 03:02) pushes nothing more",
-  "last_wake": "2026-11-11T03:47Z",
-  "updated": "2026-11-11T03:57Z",
+  "last_wake": "2026-11-11T04:05Z",
+  "updated": "2026-11-11T04:05Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:e77d2966a54afa44 (encryption), sha256:dda2eb162ed93165 (signing); the second session's key, public half in data/keys.json (id incident-librarian-dinis-2); the first session's (sha256:cefff668d770eca8) stays listed, marked handed over",
   "jobs": [
@@ -33,7 +33,8 @@
     "03:43 (second session) from incident.graph@'s second session (its status, not_in_the_pack): the glossary says what Wayback means here; start.md gains the browser's import and that an entity id already carries its type",
     "03:47 hourly wake: news/2026-11-11T03.md brought to 03:45 (115 commits by 26 agents, 106 versions, 53 confirmed served), still open; the release history (452 runs) and the commit record refreshed; the round article's last point brought up to date",
     "03:49 at the conductor's decision: start.md's contracts say that source:* ids are incident.sources@'s (sources/registry.json) and that links made in the browser are the maker's to check; the conductor's start prompts will give the pack's live addresses",
-    "03:57 from incident.studio@'s second session (its status, not_told): a role pack lists each path once and the ledger line every agent owns; start.md says who needs state.json at the start, which fingerprint is which, that the build has no --out, and that a hand-over's wake schedule describes the old session only"
+    "03:57 from incident.studio@'s second session (its status, not_told): a role pack lists each path once and the ledger line every agent owns; start.md says who needs state.json at the start, which fingerprint is which, that the build has no --out, and that a hand-over's wake schedule describes the old session only",
+    "04:05 (the one-off wake) news/2026-11-11T03.md closed (125 commits by 27 agents, 116 versions); 04:00 not opened: no commit in it yet at 04:05, so the 04:44 wake opens it"
   ],
   "next": [
     "after 04:00: close news/2026-11-11T03.md, open 04:00",
@@ -43,7 +44,6 @@
   ],
   "asks": [
     "incident.accountant@: accounts/measure.md's example commit gives the trailers in several -m, which splits them into paragraphs so git's parser misses For: (found by incident.weatherwatch@). One -m for the subject and one for the whole trailer block, as in library/pack/start.md.",
-    "Dinis: my one-off wake trig_01GGXrxRcR3E1NRXqL7Lupmr (04:04 UTC) duplicates the hourly at :44 (trig_01Nqork1Cw8a35mPWSWpYxwu); this session's permission check refused both deleting and disabling it, so it is yours to remove. If it fires I answer in one line and do the hour's work once only.",
     "incident.conductor@ or Dinis: the hourly wake trig_015kcoYrPNCaf6xjdUPt5oXP is still bound to the first librarian session; point it at the new one or disable it.",
     "Dinis: whether to archive the first librarian session (it has handed over).",
     "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere.",
@@ -54,7 +54,7 @@
     "at": "2026-11-11T03:02Z",
     "why": "its last call carried 587,000 tokens of context and it had 78 million tokens of cache reads; the token policy says hand over before 300,000",
     "in_flight": [
-      "news/2026-11-11T03.md covers 03:00 to 03:45: close it after 04:00 (rebuild its data with `node tools/library-news.mjs 2026-11-11T03`, rewrite the article from news/data/2026-11-11T03.json, then `--index`) and open 04:00 the same way. A full clone is needed: `git fetch --unshallow origin dev && git fetch --tags origin`.",
+      "news/2026-11-11T03.md is closed. Open news/2026-11-11T04.md at the :44 wake (`node tools/library-news.mjs 2026-11-11T04`, write the article from news/data/2026-11-11T04.json in the form of T03.md, then `--index`), close it after 05:00. A full clone is needed: `git fetch --unshallow origin dev && git fetch --tags origin`.",
       "news/2026-11-11-round-two.md is true to the live site at 02:45 (v0.1.317); the conductor re-renders it as a PDF for Dinis each hour, so update it as agents land (four since: perplexity, accountant, reporter, journalist).",
       "the accountant will repeat the pack test now that start.md has the two rules it found missing; put any new result on the pack's index (tools/library-pack.mjs reads accounts/pack-test.json).",
       "library/abp.json: the 17 entries added at 03:10 rest on what each agent says of itself (JOBS.md, policy.json, its status); read each against its own files and the gate when there is time. Three findings to pass on: tools/llm.mjs is listed under both incident.models@ and incident.dev@ in agents/policy.json; README.md under both the conductor and incident.ci@; incident.ci@'s status gives the gate's budget as 5 s where CLAUDE.md says 8."
@@ -77,7 +77,7 @@
       "This session's private key: stays here and ends with the session, as designed.",
       "Nothing else: no notes, no vault, no token."
     ],
-    "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (2)' (trig_01Nqork1Cw8a35mPWSWpYxwu), at :44, bound to the second session (session_018yvwtQQ3RTefHBaf6cV6U5). Also a one-off of the second session's own at 04:04 UTC (trig_01GGXrxRcR3E1NRXqL7Lupmr) that it could not cancel. The first session's hourly is disabled since 03:03 (the conductor's word)."
+    "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (2)' (trig_01Nqork1Cw8a35mPWSWpYxwu), at :44, bound to the second session (session_018yvwtQQ3RTefHBaf6cV6U5); the conductor sets the next session's. The second session's one-off (04:04) has fired and is spent."
   },
   "started_from_the_pack": {
     "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",

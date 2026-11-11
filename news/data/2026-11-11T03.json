@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T03:00:00Z and 2026-11-11T04:00:00Z: the facts behind the article news/2026-11-11T03.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T03:43:47Z",
+ "updated": "2026-11-11T03:56:57Z",
  "window": {
   "from": "2026-11-11T03:00:00Z",
   "to": "2026-11-11T04:00:00Z"
@@ -13,8 +13,8 @@
  ],
  "versions": {
   "first": "v0.1.347",
-  "last": "v0.1.452",
-  "pushed": 106,
+  "last": "v0.1.462",
+  "pushed": 116,
   "served": 53,
   "as_of": "library/releases/2026-11-11T03.json",
   "not_confirmed": 43,
@@ -23,7 +23,7 @@
  "by_agent": [
   {
    "agent": "incident.librarian@web-summit.dinis",
-   "commits": 16
+   "commits": 20
   },
   {
    "agent": "incident.observability@web-summit.dinis",
@@ -35,7 +35,7 @@
   },
   {
    "agent": "incident.graph@web-summit.dinis",
-   "commits": 7
+   "commits": 9
   },
   {
    "agent": "incident.designer@web-summit.dinis",
@@ -46,15 +46,15 @@
    "commits": 7
   },
   {
-   "agent": "incident.entities@web-summit.dinis",
-   "commits": 5
+   "agent": "incident.studio@web-summit.dinis",
+   "commits": 7
   },
   {
    "agent": "incident.conductor@web-summit.dinis",
-   "commits": 5
+   "commits": 6
   },
   {
-   "agent": "incident.studio@web-summit.dinis",
+   "agent": "incident.entities@web-summit.dinis",
    "commits": 5
   },
   {
@@ -123,6 +123,10 @@
   },
   {
    "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
    "commits": 1
   }
  ],
@@ -309,7 +313,8 @@
   "reporter/log.md",
   "reporter/traces/README.md",
   "research/perplexity/index.md",
-  "research/perplexity/notes.md"
+  "research/perplexity/notes.md",
+  "studio/the-hand-over/README.md"
  ],
  "new_datasets": [
   "data/agents/detail-2026-11-11T03.json",
@@ -470,6 +475,7 @@
   "evidence/wikipedia/2026/11/11/0305-wiki-wikipedia-verifiability.json",
   "evidence/worldview-earthdata-nasa-gov/2026/11/11/0309-front.json",
   "evidence/yr-no/2026/11/11/0306-en.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/madeira.json",
   "sources/ipma/changes/city-daily.json",
   "sources/ipma/changes/climate-precipitation.json",
   "sources/ipma/changes/climate-temperature.json",
@@ -575,7 +581,26 @@
   "evidence/ipma/2026/11/11/0256-front.json",
   "evidence/rows.json",
   "evidence/sources.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/airport.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/bridges.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/cp.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/rede-expressos.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/tunnels.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
   "incidents/2026-11-10-storm-charles/data/signals.json",
+  "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+  "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+  "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+  "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+  "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+  "incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+  "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+  "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+  "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+  "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+  "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+  "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
   "sources/ipma/data/cities.json",
   "sources/ipma/data/classes.json",
   "sources/ipma/data/observations.json",
@@ -615,7 +640,7 @@
   "tools/social-mastodon.mjs"
  ],
  "added": {
-  "files": 604,
+  "files": 608,
   "by_area": [
    {
     "area": "evidence",
@@ -631,7 +656,7 @@
    },
    {
     "area": "accounts",
-    "files": 28
+    "files": 29
    },
    {
     "area": "research",
@@ -678,6 +703,14 @@
     "files": 2
    },
    {
+    "area": "studio",
+    "files": 2
+   },
+   {
+    "area": "incidents/2026-11-10-storm-charles/data",
+    "files": 1
+   },
+   {
     "area": "library",
     "files": 1
    },
@@ -688,11 +721,11 @@
   ]
  },
  "changed": {
-  "files": 595,
+  "files": 660,
   "by_area": [
    {
     "area": "research",
-    "files": 179
+    "files": 197
    },
    {
     "area": "board",
@@ -703,16 +736,20 @@
     "files": 60
    },
    {
+    "area": "agents",
+    "files": 56
+   },
+   {
     "area": "entities",
     "files": 56
    },
    {
-    "area": "agents",
-    "files": 54
-   },
-   {
     "area": "evidence",
     "files": 32
+   },
+   {
+    "area": "library",
+    "files": 30
    },
    {
     "area": "tools",
@@ -724,19 +761,23 @@
    },
    {
     "area": "app",
-    "files": 18
+    "files": 21
+   },
+   {
+    "area": "incidents/2026-11-10-storm-charles/data",
+    "files": 21
    },
    {
     "area": "models",
     "files": 14
    },
    {
-    "area": "library",
-    "files": 13
-   },
-   {
     "area": "accounts",
     "files": 10
+   },
+   {
+    "area": "studio",
+    "files": 6
    },
    {
     "area": "journal",
@@ -779,24 +820,17 @@
     "files": 1
    },
    {
-    "area": "incidents/2026-11-10-storm-charles/data",
-    "files": 1
-   },
-   {
     "area": "incidents/2026-11-10-storm-charles/timeline.md",
-    "files": 1
-   },
-   {
-    "area": "studio",
     "files": 1
    }
   ]
  },
  "removed": {
-  "files": 6,
+  "files": 7,
   "list": [
    "ci/patches/deploy-retry.patch",
    "data/ci/commits/2026-11-11T02.json",
+   "library/releases/no-commit-found.json",
    "models/evals/extract-decision/results.json",
    "models/evals/extract-warning/results.json",
    "models/evals/label/results.json",
@@ -1608,6 +1642,76 @@
    "by": "incident.entities@web-summit.dinis",
    "what": "body/meteoalarm is actor:meteoalarm in the graph; nodes current",
    "files": 2
+  },
+  {
+   "commit": "843e8b6",
+   "at": "2026-11-11T03:47:50Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "03:47 wake: what is new for 03:00 brought to 03:45 (the journal's two pieces, IPMA's 03:15 rewrite, the corrections); the release history and the commit record refreshed",
+   "files": 32
+  },
+  {
+   "commit": "2c26856",
+   "at": "2026-11-11T03:47:58Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "f358880",
+   "at": "2026-11-11T03:48:37Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the pack's contracts: source:* ids are the sources agent's (sources/registry.json); links made in the browser are checked by their maker",
+   "files": 2
+  },
+  {
+   "commit": "77121be",
+   "at": "2026-11-11T03:50:04Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "the graph mints no source:* id (the conductor's decision, 03:48): its Source nodes are address:<id>; each registered-as crossing carries the register's own id",
+   "files": 10
+  },
+  {
+   "commit": "6b68676",
+   "at": "2026-11-11T03:50:43Z",
+   "by": "incident.wikipedia@web-summit.dinis",
+   "what": "03:44 read: the pt article now says 71 incidents in Madeira to 02:00 (was 38 to 23:30) and adds Porto Santo's power failures; claims and the two-way table updated; the wake's tokens measured",
+   "files": 20
+  },
+  {
+   "commit": "78b9265",
+   "at": "2026-11-11T03:53:35Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "Madeira: 71 occurrences to 02:00, as evidence (the civil protection's count reaches the press through a platform that is not public; its site has none); sync",
+   "files": 25
+  },
+  {
+   "commit": "398af77",
+   "at": "2026-11-11T03:54:03Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "in a node's pane each cited source carries our capture on the same line",
+   "files": 3
+  },
+  {
+   "commit": "863d28f",
+   "at": "2026-11-11T03:54:54Z",
+   "by": "incident.studio@web-summit.dinis",
+   "what": "a sixth explanation, \"The hand-over\" (the sentence, the pack, the finding, five hand-overs measured); measured figures in \"What compression is\" (a box under eight scenes and a seventh chapter, each linked to the accountant's file); the player's scene field 'measured'; what the pack and the note did not tell the second session",
+   "files": 12
+  },
+  {
+   "commit": "b5c1f47",
+   "at": "2026-11-11T03:55:10Z",
+   "by": "incident.studio@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "8a8c8a8",
+   "at": "2026-11-11T03:56:57Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the pack from a fifth fresh start (the Studio's): a role pack lists each path once and the agent's ledger line; who needs state.json at the start; which fingerprint is which; the build has no --out",
+   "files": 3
   }
  ]
 }
