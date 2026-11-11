@@ -1,6 +1,6 @@
 # The journal: how this site was made
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:02 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:05 UTC
 
 The rest of this site is about a storm. This part is about the site: how one person and a team of agents made it in a night, what that took, what went wrong, and what waited on the person. It is written for someone arriving cold: a journalist, an editor, an engineer, an investor.
 
@@ -13,7 +13,7 @@ The rest of this site is about a storm. This part is about the site: how one per
 | 1 | [A storm, one person, twenty-something agents, one night](a-storm-one-person-one-night.md) | One person speaking was enough to steer about thirty agents, because folders, a gate and a half-minute release were fixed first. What did not scale was the person. | draft: supports being traced |
 | 2 | From a sentence to a live page | Two or three of Dinis's spoken sentences followed to what shipped, and how long each took: small, medium, large. | not written |
 | 3 | [Mistakes made in the open](mistakes-made-in-the-open.md) | Nothing was reviewed before it was published, so every mistake was public first. In place of review: a correction that says so, and a rule or a tool where one fits. | draft: supports being traced |
-| 4 | What waited on the human | The decisions only Dinis could take, how long each waited, what the agents did meanwhile. | not written |
+| 4 | [What waited on the human](what-waited-on-the-human.md) | Only Dinis instructs, so a queue forms: 36 cards by 02:31. He answered inside his next direction, never card by card. Meanwhile the agents took the cautious default, worked by hand, or stopped. | draft: supports being traced |
 | 5 | What it cost | When incident.accountant@ has numbers. | not written |
 
 All of them in order, for printing: [the edition](edition.md).

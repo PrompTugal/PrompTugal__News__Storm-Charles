@@ -139,6 +139,22 @@ function figDots(fig) {
     const table = ['| Corrected (UTC) | What | By | Commit |', '|---|---|---|---|', ...rows.map(r => `| ${dhm(r.c.at)} | ${r.label} | ${short(r.c.agent)} | [${r.c.sha.slice(0, 7)}](${REPO}/commit/${r.c.sha}) |`)].join('\n')
     return { svg: s, table, key: 'Each dot: the commit that corrected it, at its time (UTC).' }
 }
+// 2c. what waits on Dinis: one row per card on the board, from when it was asked to the board's last read
+function figWaiting(fig) {
+    if (!has('board/items')) return null
+    const cards = fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f))
+    const read = cards.map(c => c.updated_utc).sort().at(-1)
+    const rows = cards.filter(c => c.waiting_on === 'Dinis' && !['done', 'answered'].includes(c.state)).sort((p, q) => p.opened_utc.localeCompare(q.opened_utc) || p.id.localeCompare(q.id)); if (!rows.length) return null
+    const t0 = T(rows[0].opened_utc.slice(0, 13) + ':00:00Z'), t1 = T(read), W = 720, L = 330, R = 60, rh = 16, top = 22, H = top + rows.length * rh + 6
+    const x = t => L + (T(t) - t0) / (t1 - t0) * (W - L - R), cut = (s, n) => s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s
+    const mins = c => Math.floor((t1 - T(c.opened_utc)) / 60e3), dur = m => m >= 60 ? `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}` : `${m} min`
+    let s = `<svg class="jr-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(fig.title)}">`
+    for (let t = t0; t <= t1; t += 3600e3) { const X = x(new Date(t).toISOString()); s += `<line class="jr-grid" x1="${X.toFixed(1)}" y1="${top - 4}" x2="${X.toFixed(1)}" y2="${H - 4}"/><text class="jr-ax" x="${X.toFixed(1)}" y="${top - 8}" text-anchor="middle">${new Date(t).toISOString().slice(11, 16)}</text>` }
+    rows.forEach((r, i) => { const y = top + i * rh, x0 = x(r.opened_utc), x1 = Math.max(x(read), x0 + 3); s += `<text class="jr-lab" x="${L - 8}" y="${y + 11}" text-anchor="end">${esc(cut(r.title, 44))}</text><rect class="jr-lane${r.kind === 'job' ? ' job' : ''}" x="${x0.toFixed(1)}" y="${y + 3}" width="${(x1 - x0).toFixed(1)}" height="${rh - 7}" rx="2"/><text class="jr-n" x="${(x1 + 5).toFixed(1)}" y="${y + 11}">${dur(mins(r))}</text>` })
+    s += '</svg>'
+    const table = ['| Asked (UTC) | Waiting when the board was last read | Card | Kind | What it holds up |', '|---|---|---|---|---|', ...rows.map(r => `| ${dhm(r.opened_utc)} | ${dur(mins(r))} | [${r.title.replace(/\|/g, '/')}](../board/items/${r.id}.md) | ${r.kind} | ${(r.blocks || '').replace(/\|/g, '/') || 'not stated on the card'} |`)].join('\n')
+    return { svg: s, table, key: `Each bar: a card waiting on Dinis, from the time it was asked to the board's last read (${hm(read)} UTC), with how long that is. Outlined: a job that cannot start until he answers.`, src: '<a href="../board/index.html">the board\'s cards</a>' }
+}
 // 3. the figures, recounted at this build from the files named
 function figNow() {
     const rows = []
@@ -155,7 +171,7 @@ function figNow() {
     if (has('board/items')) { const cards = fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f)); rows.push(`| Cards on the board | ${cards.length} | [board/](../board/index.html) |`, `| Cards waiting on Dinis and not done | ${cards.filter(c => c.waiting_on === 'Dinis' && !['done', 'answered'].includes(c.state)).length} | [board/for-dinis](../board/for-dinis.html) |`) }
     return { table: ['| Figure | Value | Read from |', '|---|---|---|', ...rows].join('\n'), asOf: CI.updated }
 }
-const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes, 'commit-dots': figDots }
+const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes, 'commit-dots': figDots, 'waiting-on-dinis': figWaiting }
 
 // ---------------------------------------------------------------- the pieces
 const INDEX = J('journal/index.json') || { pieces: [] }
@@ -183,7 +199,7 @@ for (const p of INDEX.pieces) {
     for (const f of data.figures || []) {
         if (f.kind === 'now') { const n = figNow(); tables.push(`### ${f.title}\n\nRecounted when this page was built, from the files in the last column (the run data was read at ${hm(n.asOf || '')} UTC on ${+String(n.asOf || '').slice(8, 10)} November).\n\n${n.table}`); continue }
         const d = DRAW[f.kind] && DRAW[f.kind](f); if (!d) continue
-        figs.push(`<figure class="jr-fig" data-piece="${esc(slugOf(title))}" data-after="${esc(f.after || '')}"><div class="jr-scroll" tabindex="0">${d.svg}</div><figcaption><b>${esc(f.title)}.</b> ${esc(d.key)} ${esc(f.caption || '')} Drawn at build time from <a href="../ci/index.html">incident.ci@'s run data</a>; the same as a table at the foot of the page.</figcaption></figure>`)
+        figs.push(`<figure class="jr-fig" data-piece="${esc(slugOf(title))}" data-after="${esc(f.after || '')}"><div class="jr-scroll" tabindex="0">${d.svg}</div><figcaption><b>${esc(f.title)}.</b> ${esc(d.key)} ${esc(f.caption || '')} Drawn at build time from ${d.src || '<a href="../ci/index.html">incident.ci@\'s run data</a>'}; the same as a table at the foot of the page.</figcaption></figure>`)
         tables.push(`### ${f.title}\n\n${d.table}`)
     }
     const tablesMd = tables.length ? `## The pictures as tables\n\n${tables.join('\n\n')}\n` : ''
