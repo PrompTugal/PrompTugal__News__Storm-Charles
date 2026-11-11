@@ -74,21 +74,29 @@
     return (e.decisions || []).filter(function (d) { return d.status !== 'superseded' && d.state !== 'superseded' && d.status !== 'not_announced' && (!re || re.test(d.decision)) })
       .sort(function (a, b) { return (T(b.published_utc || b.read) || 0) - (T(a.published_utc || a.read) || 0) })
   }
-  function short(name, e, re, max) {
-    max = max || 2
-    var ds = standing(e, re); if (!ds.length) return '<li><b>' + esc(name) + '</b>: <span class="gd-ns">not stated</span> in what we have read</li>'
-    return '<li><b>' + esc(name) + '</b><ul class="gd-sub">' + ds.slice(0, max).map(function (d) {
-      return '<li>' + stateChip(stateOf(d)) + ' ' + esc(String(d.decision).slice(0, 160)) + (String(d.decision).length > 160 ? '…' : '') + ' ' + lbl(d.label) + ' ' + prov(host(d.address), d.address, d.read, d.published_utc, kind(d.label)) + '</li>'
-    }).join('') + '</ul>' + (ds.length > max ? '<span class="meta">' + (ds.length - max) + ' more under "Deeper"</span>' : '') + '</li>'
+  // a short time: HH:MM UTC today, else the day too; the full time is in the <time> element
+  var shortT = function (t) { var x = iso(t); if (!x) return '?'; return tm(t, (x.slice(0, 10) === new Date(now).toISOString().slice(0, 10) ? '' : dhm(t).slice(0, 10) + ' ') + x.slice(11, 16)) + ' UTC' }
+  var cut = function (t, n) { t = String(t || ''); return t.length > n ? t.slice(0, n).replace(/\s+\S*$/, '') + '…' : t }
+  function short(name, e, re) {
+    var ds = standing(e, re)
+    if (!ds.length) return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(name) + '</b> <span class="gd-ns">not stated</span></div><span class="meta">in what we have read</span></li>'
+    var d = ds[0]
+    return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(name) + '</b> ' + stateChip(stateOf(d)) + lbl(d.label) + '</div>' +
+      '<span class="gd-c-t">' + esc(cut(d.decision, 72)) + ' <span class="gd-c-r">' + (kind(d.label) === 'evidence' ? esc(host(d.address)) + ', ' : '') + 'read ' + shortT(d.read) + '</span></span>' +
+      '<details class="gd-src"><summary>Sources' + (ds.length > 1 ? ' (' + ds.length + ')' : '') + '</summary><ul class="gd-sub">' + ds.map(function (x) {
+        return '<li>' + stateChip(stateOf(x)) + ' ' + esc(x.decision) + ' ' + lbl(x.label) + (x.decided_by ? '<span class="meta">Who: ' + esc(x.decided_by) + '</span>' : '') + prov(host(x.address), x.address, x.read, x.published_utc, kind(x.label)) + '</li>'
+      }).join('') + '</ul></details></li>'
   }
-  function sect(id, q, simple, deep, open) {
+  var LINES = {}
+  function sect(id, q, simple, deep, open, line) {
+    line = line || LINES[id]
     if (!shown(id)) return ''
     if (el.getAttribute('data-open') === 'yes') open = true
     var m = /^(\d) · (.*)$/.exec(q); if (m) q = '<span class="gd-n">' + m[1] + '</span>' + m[2]
     var body = '<div class="gd-simple">' + simple + '</div>' +
       '<details class="gd-deep"' + (open ? ' open' : '') + '><summary>Deeper: every source, with its time</summary>' + deep + '</details>' + SAFE + (focus.length ? '<p class="gd-up"><a href="#now">↑ Top</a> · <a href="#gd-q">All seven questions ↓</a></p>' : '<p class="gd-up"><a href="#gd-q">↑ The seven questions</a></p>')
     // on "Start here" each question is a fold of its own, opened by a tap or a jump (designer@ note 3; synthetic@ run 2): the page stays short
-    if (!focus.length) return '<details class="gd-case gd-fold card" id="' + id + '"><summary><h2>' + q + '</h2></summary>' + body + '</details>'
+    if (!focus.length) return '<details class="gd-case gd-fold card" id="' + id + '"><summary><h2>' + q + '</h2>' + (line ? '<span class="gd-line">' + esc(cut(line, 88)) + '</span>' : '') + '</summary>' + body + '</details>'
     return '<section class="gd-case card" id="' + id + '"><h2>' + q + '</h2>' + body + '</section>'
   }
 
@@ -119,9 +127,9 @@
   }
 
   var ENT = ['airport', 'tap', 'metro', 'carris', 'fertagus', 'cp', 'ferries', 'bridges', 'tunnels', 'rede-expressos', 'flixbus', 'port', 'retail', 'museums', 'schools', 'courts', 'hospitals', 'parliament', 'madeira']
-  Promise.all([get('weather/warnings.json'), get('transport/services.json'), get('transport/flights.json'), get('decisions/graph.json'), get('transport/metro.json'), get('transport/buses.json'), get('transport/ferries.json'), get('exposure/hospitals.json'), fetch(base + 'incidents/' + inc + '/incident.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null }).catch(function () { return null })].concat(ENT.map(function (n) { return get('decisions/entities/' + n + '.json') }))).then(function (r) {
-    HOSP = r[7]; var W = r[0], S = r[1], F = r[2], G = r[3], MT = r[4], BU = r[5], FE = r[6], HO = r[7], I = r[8], E = {}
-    ENT.forEach(function (n, i) { E[n] = r[9 + i] })
+  Promise.all([get('weather/warnings.json'), get('transport/services.json'), get('transport/flights.json'), get('decisions/graph.json'), get('transport/metro.json'), get('transport/buses.json'), get('transport/ferries.json'), get('transport/trains.json'), get('exposure/hospitals.json'), fetch(base + 'incidents/' + inc + '/incident.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null }).catch(function () { return null })].concat(ENT.map(function (n) { return get('decisions/entities/' + n + '.json') }))).then(function (r) {
+    HOSP = r[8]; var W = r[0], S = r[1], F = r[2], G = r[3], MT = r[4], BU = r[5], FE = r[6], TR = r[7], I = r[9], E = {}
+    ENT.forEach(function (n, i) { E[n] = r[10 + i] })
     var edges = (G && G.edges) || []
     var edge = function (id) { for (var i = 0; i < edges.length; i++) if (edges[i].id === id) return edges[i]; return null }
     var out = ''
@@ -161,6 +169,7 @@
 
     // (1) deeper
     var govAlert = edge('gov-alert')
+    LINES['now-detail'] = String(line).replace(/<[^>]+>/g, '')
     out += sect('now-detail', '1 · What is happening now',
       '<ul class="gd-ws">' + (lis.length ? lis.map(warnLine).join('') : '<li>No warning above green for Lisbon in IPMA\'s feed.</li>') + '</ul>' +
       '<p class="meta">IPMA\'s warnings for the Lisbon district, in its own words (its English text). ' + prov('IPMA open data', W && W.source, W && W.read_utc) + '</p>' +
@@ -171,6 +180,8 @@
     // (2) flight
     var lisF = F && (F.airports || []).filter(function (a) { return a.iata === 'LIS' })[0], fun = F && (F.airports || []).filter(function (a) { return a.iata === 'FNC' })[0]
     var depLine = function (a) { var d = a && a.departures_today; return d && d.label === 'fact' ? '<li><b>' + esc(a.name) + '</b>: <b class="gd-num">' + d.count + '</b> airline departures <i>seen</i> by OpenSky\'s receivers' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : ' in our readings today') + ' ' + lbl('fact') + ' ' + prov('OpenSky Network', 'https://opensky-network.org/', d.read) + '<span class="meta">A floor, not a total; it says nothing about your flight.</span></li>' : '' }
+    var newest = function (list) { var all = []; list.forEach(function (x) { all = all.concat(standing(x)) }); all.sort(function (a, b) { return (T(b.published_utc || b.read) || 0) - (T(a.published_utc || a.read) || 0) }); return all[0] }
+    var nf = newest([E.airport, E.tap]); LINES.flight = 'Your airline decides. ' + (nf ? nf.decision : '')
     out += sect('flight', '2 · I have a flight',
       '<p class="gd-big"><b>Your airline decides whether your flight goes</b>: its site or app has the latest.</p>' +
       '<ul class="gd-short">' + short('Lisbon airport (ANA)', E.airport) + short('TAP Air Portugal', E.tap) + depLine(lisF) + '</ul>' +
@@ -183,18 +194,19 @@
 
     // (3) getting around
     var lisOps = function (f, ids) { return ((f && f.operators) || []).filter(function (o) { return !ids || ids.indexOf(o.id) >= 0 }) }
-    var ops = lisOps(MT, ['metro-lisboa']).concat(lisOps(BU), lisOps(FE))
+    var ops = lisOps(MT, ['metro-lisboa']).concat(lisOps(BU, ['carris-metropolitana']), lisOps(TR, ['fertagus']), lisOps(FE))
     if (!ops.length) ops = (S && S.operators) || []
     var opLine = function (o) {
-      if (o.label === 'none') return '<li><b>' + esc(o.operator) + '</b> <span class="lbl gd-l-not-stated">not read</span><span class="meta">' + esc(o.note || o.state || 'not read') + '</span>' + (o.link ? ' <span class="prov"><a href="' + esc(o.link) + '" rel="noopener">' + esc(host(o.link)) + '</a></span>' : '') + '</li>'
-      var ns = (o.notices || []).slice(0, 1)
-      return '<li><b>' + esc(o.operator) + '</b> ' + lbl(o.label) + ' ' + esc(o.state || '') +
-        (ns.length ? '<ul class="gd-sub">' + ns.map(function (n) { var t = n.updated || n.published || n.from; return '<li>“' + esc(n.title || n.header) + '”' + (n.excerpt ? ': ' + esc(String(n.excerpt).slice(0, 120)) + (String(n.excerpt).length > 120 ? '…' : '') : '') + (t ? ' <span class="meta">' + (/^\d{4}-\d\d-\d\d$/.test(t) ? esc(t) : tm(t) + ' UTC') + (n.to ? ', until ' + tm(n.to) + ' UTC' : '') + '</span>' : '') + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</li>' }).join('') + '</ul>' : '') +
-        (o.line_status && o.line_status.label === 'none' ? '<span class="meta">Live line status: <span class="gd-ns">not read</span> (not a published feed).</span>' : '') +
-        ' ' + prov(host(o.source), o.source, o.read) + (o.notices && o.notices.length > 1 ? '<span class="meta">' + (o.notices.length - 1) + ' more notices under "Deeper"</span>' : '') + '</li>'
+      if (o.label === 'none') return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(o.operator) + '</b> <span class="lbl gd-l-not-stated">not read</span></div><span class="meta">' + esc(cut(o.note || o.state || 'not read', 100)) + '</span></li>'
+      var n = (o.notices || [])[0], t = n && (n.updated || n.published || n.from)
+      return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(o.operator) + '</b> ' + lbl(o.label) + '</div>' +
+        (n ? '<span class="gd-c-t">“' + esc(cut(n.title || n.header, 72)) + '” <span class="gd-c-r">' + (t && !/^\d{4}-\d\d-\d\d$/.test(t) ? shortT(t) + ' · ' : '') + 'read ' + shortT(o.read) + '</span></span>' : '<span class="gd-c-t">' + esc(o.state || 'no notice') + ' <span class="gd-c-r">read ' + shortT(o.read) + '</span></span>') +
+        '<details class="gd-src"><summary>Notices' + ((o.notices || []).length > 1 ? ' (' + o.notices.length + ')' : '') + '</summary><ul class="gd-sub">' + (o.notices || []).map(function (n) { var t = n.updated || n.published || n.from; return '<li>“' + esc(n.title || n.header) + '”' + (n.excerpt ? ': ' + esc(n.excerpt) : '') + (t ? ' <span class="meta">' + (/^\d{4}-\d\d-\d\d$/.test(t) ? esc(t) : tm(t) + ' UTC') + (n.to ? ', until ' + tm(n.to) + ' UTC' : '') + '</span>' : '') + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</li>' }).join('') + '</ul>' +
+        (o.line_status && o.line_status.label === 'none' ? '<p class="meta">Live line status: <span class="gd-ns">not read</span> (not a published feed).</p>' : '') + prov(host(o.source), o.source, o.read) + '</details></li>'
     }
     var opFull = function (o) { if (o.label === 'none') return opLine(o); return '<li><b>' + esc(o.operator) + '</b><ul class="gd-sub">' + (o.notices || []).map(function (n) { var t = n.updated || n.published || n.from; return '<li>“' + esc(n.title || n.header) + '”' + (n.excerpt ? ': ' + esc(n.excerpt) : '') + (t ? ' <span class="meta">' + esc(String(t).replace('T', ' ').slice(0, 16)) + ' UTC</span>' : '') + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</li>' }).join('') + '</ul>' + prov(host(o.source), o.source, o.read) + '</li>' }
     var thu = edge('metro-thursday') || (E.metro && (E.metro.decisions || []).filter(function (d) { return d.status === 'not_announced' })[0])
+    var na = newest([E.metro, E.carris, E.cp, E.fertagus, E.ferries, E.bridges, E.tunnels, E['rede-expressos'], E.flixbus]); LINES.around = na ? 'Latest: ' + na.decision : ''
     out += sect('around', '3 · Getting around',
       '<p class="gd-ns-line">' + notStated([['Carris (Lisbon city buses)', E.carris], ['Fertagus', E.fertagus]], ['taxis', 'ride-hailing']) + '</p>' +
       '<h4>From the operators\' own sites and feeds</h4><ul class="gd-short">' + ops.map(opLine).join('') + '</ul>' +
@@ -207,6 +219,8 @@
 
     // (4) stranded: what is open, only as stated
     var shelter = E.metro && (E.metro.decisions || []).filter(function (d) { return /shelter|homeless/i.test(d.decision) })
+    var cl = [['shops (Pingo Doce)', E.retail], ['state museums', E.museums], ['schools', E.schools], ['parks and gardens', E.tunnels, /park|garden/i], ['courts and registries', E.courts]].filter(function (x) { var d = standing(x[1], x[2])[0]; return d && stateOf(d) === 'closed' }).map(function (x) { return x[0] })
+    LINES.stranded = cl.length ? 'Stated closed: ' + cl.join(', ') + '. Cafés, malls, hotels: not stated.' : 'What authorities and operators have stated is open or closed.'
     out += sect('stranded', '4 · I\'m stranded: where can I go, what is open?',
       '<p>Only what an authority or an operator has <b>stated</b>, with its source and time. We never infer that a place is open.</p><ul class="gd-short">' +
       short('Shops: Pingo Doce supermarkets', E.retail) + short('State museums and monuments', E.museums) + short('Schools (mainland)', E.schools, /^(?!.*Madeira)/) + short('Courts and registries', E.courts) + short('Hospitals (scheduled activity)', E.hospitals) + short('Parks, gardens, municipal culture (Lisbon city)', E.tunnels, /park|garden|cultur/i) + '</ul>' +
@@ -220,6 +234,7 @@
     var wsIds = edges.filter(function (e) { return /^(websummit|pitch|night-summit|side-events|gov-recommends|mai-websummit|mayor-expects)/.test(e.id) })
     var wsFacts = wsIds.filter(function (e) { return kind(e.label) === 'fact' && e.status === 'happened' }).sort(function (a, b) { return String(b.read).localeCompare(String(a.read)) })
     var wsOpen = wsIds.filter(function (e) { return e.status === 'not_announced' })
+    LINES.websummit = wsFacts[0] ? wsFacts[0].decision : ''
     out += sect('websummit', '5 · Web Summit',
       '<ul class="gd-rows">' + wsFacts.map(row).join('') + '</ul>' +
       (wsOpen.length ? '<p><b>Not yet announced by the organisers:</b></p><ul class="gd-short">' + wsOpen.map(function (e) { return '<li>' + esc(e.decision) + ' <span class="gd-ns">not announced</span></li>' }).join('') + '</ul>' : '') +
@@ -232,6 +247,7 @@
     var mw = inForce(((W && W.red_and_orange_elsewhere && W.red_and_orange_elsewhere.items) || []).filter(function (w) { return /^M/.test(w.area) }))
     var md = (E.madeira && E.madeira.decisions || []).slice().sort(function (a, b) { return (T(b.published_utc) || 0) - (T(a.published_utc) || 0) })
     var mDec = md.filter(function (d) { return /closed|suspended|limited/.test(d.state || '') }), mCount = md.filter(function (d) { return /occurrence count/i.test(d.decision) })
+    LINES.madeira = mDec[0] ? mDec[0].decision : ''
     out += sect('madeira', '6 · Madeira',
       (mDec[0] ? '<p class="gd-big">' + stateChip(stateOf(mDec[0])) + ' <b>' + esc(mDec[0].decision) + '</b> ' + lbl(mDec[0].label) + ' ' + prov(host(mDec[0].address), mDec[0].address, mDec[0].read, mDec[0].published_utc, kind(mDec[0].label)) + '</p>' : '') +
       '<h4>Decisions stated, newest first</h4><ul class="gd-rows">' + mDec.slice(1, 8).map(row).join('') + '</ul>' +
@@ -243,6 +259,7 @@
       entityBlock(E.madeira, 'Everything we hold on Madeira'))
 
     // (7) journalists
+    LINES.press = 'The headline, the record, the data, and how to cite it.'
     out += sect('press', '7 · I\'m a journalist',
       (I && I.headline ? '<div class="gd-lead"><p class="meta">The incident\'s headline, as our lead keeps it</p><p><b>' + esc(I.headline.text) + '</b> ' + lbl(I.headline.label) + '</p>' + prov(I.headline.source, I.headline.url, null) + '<p class="meta">Published: ' + esc(I.headline.at) + '</p>' + (I.standfirst ? '<p>' + esc(I.standfirst) + '</p><p class="meta">Kept by ' + esc(I.lead) + ', updated ' + tm(I.updated) + ' UTC</p>' : '') + '</div>' : '') +
       '<p class="gd-key">' + lbl('fact') + ' read at the body that decides or warns · ' + lbl('evidence') + ' reported by others, named · ' + lbl('hypothesis') + ' our analysis, never a fact · <span class="gd-st">closed</span> the state the source gives · <span class="gd-ns">not stated</span> we do not know</p>' +
@@ -261,9 +278,8 @@
     if (focus.length) {
       var jr = document.createElement('nav'); jr.className = 'gd-jump'; jr.setAttribute('aria-label', 'On this page')
       jr.innerHTML = focus.map(function (id) { var n = document.getElementById(id), h = n && n.querySelector('h2'); return h ? '<a href="#' + id + '">' + esc(h.textContent.replace(/^\d/, '')) + '</a>' : '' }).join('')
-      var nw = document.getElementById('now'); if (nw) nw.parentNode.insertBefore(jr, nw.nextSibling)
+      var nw = document.getElementById('now'); if (nw) { nw.parentNode.insertBefore(jr, nw); if (todayHtml) nw.insertAdjacentHTML('afterend', todayHtml) }
     }
-    if (focus.length && todayHtml) el.insertAdjacentHTML('beforeend', todayHtml)
     if (focus.length) { var nv = el.querySelector('.gd-paths'); if (nv) { var h = document.createElement('h2'); h.className = 'gd-other'; h.textContent = 'Other questions'; el.appendChild(h); el.appendChild(nv) } }
     var go = function () { if (!location.hash) return; var t = document.getElementById(location.hash.slice(1)); if (!t) return; if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView() }
     window.addEventListener('hashchange', go); go()
