@@ -1,6 +1,6 @@
 # KNMI (Netherlands)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Netherlands
 
@@ -28,6 +28,8 @@ A dated two-sentence "the picture now" by a named role, above the data.
 ## Data and models it says it uses
 
 Its own stations and the HARMONIE-AROME model (read on the KNMI Data Platform listing).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-knmi.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

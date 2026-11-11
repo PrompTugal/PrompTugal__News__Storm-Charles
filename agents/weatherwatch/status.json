@@ -1,7 +1,7 @@
 {
   "agent": "incident.weatherwatch@web-summit.dinis",
-  "state": "handing over to a fresh session at the conductor's ask (03:33Z): agents/weatherwatch/HANDOVER.md; this session pushes nothing after this commit",
-  "last_wake": "2026-11-11T03:33Z",
+  "state": "the second session of this role (from 03:36Z, 11 Nov), started from the pack and HANDOVER.md; hourly re-read running (the routine fires at :30)",
+  "last_wake": "2026-11-11T03:36Z",
   "done": [
     "session key made (record sha256:7a20fd5738914fe1, encryption sha256:c3f31029c7428764), public half in data/keys.json",
     "23:47Z research/weather-sites/sites.json: 106 entries (52 worldwide, 27 Portugal, 27 Storm Charles) from 244 addresses requested once each; 9 entries not opened and marked",
@@ -19,10 +19,14 @@
     "02:37Z hourly wake: 44 addresses re-read at 02:33Z; authorities unchanged; first impact headlines from Madeira (50+ occurrences, power cuts at Porto Santo); second look at the weather face (round 6) sent",
     "03:10Z studies: five captures by incident.archivist@ drawn under the callouts from the display vault (sha256 checked in the browser), every point checked against its part and four moved; Met Office's capture is half covered by a consent panel (frame kept empty); BBC, MeteoAlarm, Météo-France and Yr captures are private, frames empty. 39 site pages link to incident.meteorology@'s lineage; BBC's 'in association with MeteoGroup' corrected",
     "03:32Z hourly wake: 44 addresses re-read at 03:28Z; authorities unchanged; Madeira occurrences 71 by 02:00 (SAPO); RTP's 03:00 bulletin headline says IPMA expects the storm to hit the south more; live blogs still; tokens measured",
-    "03:40Z handover written (HANDOVER.md); working tools and address lists moved into research/weather-sites/tools/; the 07:30Z one-off reminder cancelled"
+    "03:40Z handover written (HANDOVER.md); working tools and address lists moved into research/weather-sites/tools/; the 07:30Z one-off reminder cancelled",
+    "03:36Z second session: its own session key (record sha256:ae778e80fa53560b, encryption sha256:cba9eccd1302fc0b), public half in data/keys.json as incident-weatherwatch-dinis-2; the first session's entry marked ended",
+    "03:39Z re-read at 03:37Z (44 addresses): authorities unchanged (communiqué no. 2; Lisbon's six warnings; AEMET's row empty); ANEPC's page did not answer; no new headline, tracker or map. Jornal de Negócios made link only in pages.py, addresses.json and the address lists (the team stopped reading it and Sábado at 03:30Z)"
   ],
   "next": [
-    "the fresh session: read agents/weatherwatch/HANDOVER.md; make its own session key; continue the hourly re-read and the unfinished list there"
+    "each wake at :30: the hourly re-read as HANDOVER.md describes; tell the conductor at once if IPMA publishes anything new on Lisbon or a broadcaster attributes a new statement to IPMA",
+    "the wakes after 05:25Z and 09:25Z: review the front page (/) against the best public weather sites, once incident.weather@ has made its round (orange rain, then red rain in force)",
+    "then HANDOVER.md's unfinished list from item 3 (DWD, the US hazards map, Met Office and KNMI with a warning in force)"
   ],
   "asks": [
     "Dinis: three sites' terms restrict automated reading or use by AI (tempo.pt / Meteored, The Portugal News, Zoom Earth). I read each once before reading its terms and have stopped. incident.media@ also lists them; say whether the team drops them, keeps links only (my default), or a person asks for permission.",
@@ -31,6 +35,21 @@
     "conductor: the drafts are under research/weather-sites/outreach/, not outreach/weatherwatch/: my brief limits me to research/weather-sites/ and agents/weatherwatch/, and outreach/ is incident.media@'s. Link or move them as you see fit.",
     "conductor / incident.media@: sources.json says no Wikipedia article; it exists as 'Depressão Charles' on pt.wikipedia"
   ],
-  "updated": "2026-11-11T03:40:00Z",
-  "by": "incident.weatherwatch@web-summit.dinis"
+  "updated": "2026-11-11T03:39:00Z",
+  "by": "incident.weatherwatch@web-summit.dinis",
+  "session": "session_018yvwtNDsCgU1fa7CiTye6e",
+  "not_told": {
+    "about": "What neither the pack nor the hand-over told this session at its start (asked for by the conductor; sent to incident.librarian@)",
+    "items": [
+      "The status word for the earlier session's key: start.md says \"handed over\", HANDOVER.md says \"ended\" (the start message also said ended; used). Neither says what id the new entry takes (used incident-weatherwatch-dinis-2) or whether the old entry gets a date.",
+      "That Jornal de Negócios and Sábado are link only since 03:30Z: only the start message said so. tools/reread-urls.txt still listed Negócios's live page, and addresses.json still told the archivist it could be captured. Neither says where the reason is written (incident.media@'s commit says only 'no longer read').",
+      "That the earlier session's fetched pages are gone, so step 3 of the re-read ('compared with the previous read') has no previous read to compare with: only the headlines quoted in rereads.json. A tracked list of the addresses last seen would fix it for the next session.",
+      "Which routine wakes this session and when: 'incident.weatherwatch@web-summit.dinis hourly (2)' at :30. The first routine (at :28) still fires into the stopped session. The 05:25Z and 09:25Z checks fire into incident.weather@'s session, not this one: the review rides on this session's :30 wake after each.",
+      "measure.md's example commit puts each trailer in its own -m (separate paragraphs); start.md says one final paragraph or For: is lost. The two disagree.",
+      "release.sh prints 'policy-check: OK … 1 warning(s)' without the warning when its output is cut to the last lines; and it retries by itself when someone pushed first (start.md describes only the conflict case).",
+      "HANDOVER.md's review step says 'set the address inside' the review tool and its earlier reviews were of /weather/; the face is now at / (start.md says so, the hand-over does not).",
+      "ANEPC's notices page (prociv.gov.pt) often does not answer from this machine: the hand-over does not say how often, or that incident.archivist@ also captures it hourly and its capture could stand in.",
+      "The role pack lists the board card a-meteorology-3 as waiting on this role; the hand-over says only 'prefer linking to the lineage nodes'. Whether the card wants an answer is not said."
+    ]
+  }
 }

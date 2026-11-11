@@ -1,6 +1,6 @@
 # Beachcam (MEO)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · webcams · Portugal
 
@@ -28,6 +28,8 @@ A link to the live camera, never a capture in git.
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-beachcam.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

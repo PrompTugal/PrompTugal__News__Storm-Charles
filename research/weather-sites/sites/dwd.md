@@ -1,6 +1,6 @@
 # Deutscher Wetterdienst (Germany)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Germany
 
@@ -28,6 +28,8 @@ A single plain licence line per dataset, as DWD does; ICON-EU fields are a reusa
 ## Data and models it says it uses
 
 Its own models (ICON), radar network and stations (its open-data server was listed; model names from Open-Meteo's licence page).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-dwd.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

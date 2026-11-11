@@ -1,6 +1,6 @@
 # ESTOFEX
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · specialist · Europe
 

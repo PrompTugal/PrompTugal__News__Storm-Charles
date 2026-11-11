@@ -1,6 +1,6 @@
 # Público: "O que precisa de saber sobre a depressão Charles"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · explainer · Portugal
 
@@ -28,6 +28,8 @@ Show first-published and last-changed on our explainer.
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-sc-publico-explainer.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

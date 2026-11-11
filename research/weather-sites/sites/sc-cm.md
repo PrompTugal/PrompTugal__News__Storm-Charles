@@ -1,6 +1,6 @@
 # Correio da Manhã / CMTV: "Veja o percurso da tempestade Charles"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · broadcaster · Portugal
 
@@ -28,6 +28,8 @@ People want the path; IPMA publishes a centre position per communiqué: plot tho
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-sc-cm.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

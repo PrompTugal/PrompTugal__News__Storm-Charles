@@ -1,6 +1,6 @@
 # IPMA: warnings on a timeline
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · national-service · Portugal
 
@@ -30,6 +30,8 @@ This is the model for our strip: hazards as rows, hours as columns, IPMA's colou
 ## Data and models it says it uses
 
 IPMA's forecasters issue the warnings; criteria are on its "Critérios de emissão" page (linked from the page; not read).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-ipma-avisos.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

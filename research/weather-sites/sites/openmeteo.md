@@ -1,6 +1,6 @@
 # Open-Meteo
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · data-api · Switzerland
 
@@ -28,6 +28,8 @@ The source for a model-spread strip for Lisbon (labelled analysis material, neve
 ## Data and models it says it uses
 
 Open data of national services, listed on its licence page: DWD (ICON), ECMWF (IFS, AIFS), Météo-France, NOAA and others, each under its own open licence (read).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-openmeteo.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

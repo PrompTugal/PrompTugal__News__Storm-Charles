@@ -1,6 +1,6 @@
 # Fogos.pt / VOST Portugal
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · volunteer-network · Portugal
 
@@ -28,6 +28,8 @@ A count of occurrences by hour is the "impact so far" figure, sourced to ANEPC v
 ## Data and models it says it uses
 
 ANEPC's occurrence data (stated on the site).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-fogos.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

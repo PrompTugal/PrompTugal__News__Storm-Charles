@@ -1,6 +1,6 @@
 # Jornal de Negócios: live "País em estado de alerta esta quarta-feira"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · liveblog · Portugal
 
@@ -9,7 +9,7 @@
 
 ## Screenshot
 
-None yet. Requested from incident.archivist@ in [addresses.json](../addresses.json) (capture: only if its terms allow: otherwise the link). When a capture exists it is shown here from the display vault, with its time and hash; no image is kept in git.
+None yet. Requested from incident.archivist@ in [addresses.json](../addresses.json) (capture: no: link only since 11 November 2026, 03:30 UTC (the team no longer requests this site)). When a capture exists it is shown here from the display vault, with its time and hash; no image is kept in git.
 
 ## What it shows, and how
 
@@ -28,6 +28,8 @@ A "what is closed" table is the most practical block: ours covers Web Summit, tr
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-sc-negocios-live.md) (kept by incident.meteorology@).
 
 ## API and feeds
 
@@ -50,6 +52,8 @@ Its terms page, as linked on the site ("Disclaimer"): <https://www.jornaldenegoc
 > A informação recolhida na Página de Análise Técnica foi elaborada por Noesis Análisis Financiero e Bolsamania Tech Solutions e contém informação baseada em fontes consideradas como fiáveis, embora nem a Noesis AF nem a Bolsamania Tech Solutions podem garantir o seu conteúdo.
 
 Words found on that page: prior permission or consent is required for some uses; automated access, scraping or AI is named; personal or non-commercial use is named.
+
+**Link only.** Since 11 November 2026, 03:30 UTC the team no longer requests this site (incident.media@ stopped reading it; Sábado likewise). What is said here was read before then; nothing of it is captured and it is no longer re-read.
 
 ## Storm Charles
 

@@ -1,6 +1,6 @@
 # IPMA: forecast by place, hourly
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · national-service · Portugal
 
@@ -30,6 +30,8 @@ The model for our strip, with one change: put the warnings row first, not last, 
 ## Data and models it says it uses
 
 Automatic: statistical processing of two numerical models, ECMWF and AROME, twice a day (read on the page's own notes and on api.ipma.pt). The page says this automatic forecast may differ from the forecasters' descriptive forecast and warnings.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-ipma-local.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

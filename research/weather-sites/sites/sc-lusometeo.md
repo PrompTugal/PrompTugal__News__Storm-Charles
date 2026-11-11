@@ -1,6 +1,6 @@
 # Luso Meteo: "Tempestade Charles pode, afinal, ser mais fraca do que o previsto"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · amateur · Portugal
 
@@ -28,6 +28,8 @@ A hypothesis with its source; our own analysis recorded a weaker TAF at 23:00 to
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-sc-lusometeo.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

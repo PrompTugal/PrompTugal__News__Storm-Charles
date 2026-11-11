@@ -1,6 +1,6 @@
 # IPMA: radar, satellite, stations, lightning
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · national-service · Portugal
 
@@ -28,6 +28,8 @@ Our observed-against-forecast chart rests on this; say the station and the hour 
 ## Data and models it says it uses
 
 IPMA's own radars, surface stations and lightning network; Meteosat imagery from EUMETSAT (the satellite page is marked "copyright EUMETSAT/IPMA").
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-ipma-obs.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

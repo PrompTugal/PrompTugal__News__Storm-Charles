@@ -1,6 +1,6 @@
 # Renascença: "Depressão Charles ao minuto" and topic page
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · liveblog · Portugal
 
@@ -28,6 +28,8 @@ Pair our timeline with the data pages the same way.
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-sc-rr-live.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

@@ -1,6 +1,6 @@
 # MeteoAlarm
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · warnings-aggregator · Europe
 
@@ -30,6 +30,8 @@ Show Spain's warnings beside Portugal's from one feed; keep the four European co
 ## Data and models it says it uses
 
 Warnings from the national services themselves (EUMETNET members); for Portugal, IPMA (read in its terms and feed).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-meteoalarm.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

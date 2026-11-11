@@ -59,6 +59,7 @@ CH = {
  'sic': 'Not opened (403); its headlines on the storm were read through SAPO.', 'expresso': 'Not opened (403).',
 }
 # sites whose own terms restrict automated access or use by AI systems (terms.json): we stopped reading them on 11 November, 02:40 UTC
+LINKONLY = {'sc-negocios-live': 'Jornal de Negócios'}
 RESTRICT = {'zoomearth': 'Zoom Earth', 'tempopt': 'tempo.pt (Meteored)', 'sc-tempopt': 'tempo.pt (Meteored)', 'english-press': 'The Portugal News', 'sc-tpn': 'The Portugal News'}
 OFFICIAL = {'national-service', 'authority', 'authority-aggregator', 'civil-protection', 'public-service', 'warnings-aggregator', 'satellite', 'emergency-mapping', 'open-data', 'encyclopedia', 'storm-tracker', 'aviation', 'archive', 'data-api'}
 MAPNAME = {'worldwide': 'Worldwide', 'portugal': 'Portugal', 'storm-charles': 'Storm Charles coverage'}
@@ -73,6 +74,7 @@ for s in sites:
     country = COUNTRY.get(i, 'Portugal' if s['map'] != 'worldwide' else 'not stated')
     cap = 'yes' if (s['kind'] in OFFICIAL and s['owner'] not in ('Neave Interactive',)) else 'only if its terms allow: otherwise the link'
     if i in RESTRICT: cap = 'no: its terms restrict automated access; link only'
+    if i in LINKONLY: cap = 'no: link only since 11 November 2026, 03:30 UTC (the team no longer requests this site)'
     if o['seen'] in ('blocked', 'failed'): cap_note = 'the address refused or did not answer our request'
     else: cap_note = None
     terms, contact = L.get('terms'), L.get('contact')
@@ -96,6 +98,7 @@ for s in sites:
     elif tj: m += [f"Its terms page was not read: {tj.get('note') or 'no text about reuse was found in it'}.", '']
     im = imagery.get(i) or imagery.get({'ipma-obs': 'ipma-radar', 'sc-meteoalarm': 'meteoalarm', 'sc-ipma': 'ipma-radar'}.get(i, ''))
     if im: m += [f"**Exact terms** (read {im['terms_read'][11:16]} UTC, <{im['terms_url']}>):", ''] + [f'- {t}' for t in im['terms']] + ['', f"Our reading: {im['reading']} Verdict: {im['verdict']} (from [imagery.json](../imagery.json); not legal advice.)", '']
+    if i in LINKONLY: m += ['**Link only.** Since 11 November 2026, 03:30 UTC the team no longer requests this site (incident.media@ stopped reading it; Sábado likewise). What is said here was read before then; nothing of it is captured and it is no longer re-read.', '']
     if i in RESTRICT: m += ['**Its terms restrict automated access or use by AI systems (see the sentences above).** We read this site once before reading its terms; since 11 November 2026, 02:40 UTC we no longer request its pages, we keep only the link and the short description, and nothing of it is captured. Whether to ask for permission is for a person to decide.', '']
     m += ['## Storm Charles', '']
     if s['map'] == 'storm-charles':

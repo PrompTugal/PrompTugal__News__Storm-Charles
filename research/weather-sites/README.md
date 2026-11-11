@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:32 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 03:39 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,15 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 03:37 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 44 addresses, the first read by this role's second session.
+
+- **At the authorities, nothing** (facts): IPMA's communiqué no. 2 and Lisbon's six warnings unchanged; AEMET's row empty. ANEPC's notices page did not answer (notice 21 was the latest at 03:28).
+- **In the coverage, nothing new** (evidence): the live blogs' titles and the front pages' headlines on Charles are those already quoted below.
+- Jornal de Negócios is link only from 03:30 UTC (the team no longer requests it, nor Sábado): its live page has left the re-read.
+- No new tracker or map.
 
 ## What changed at the 03:28 UTC re-read (11 November)
 
