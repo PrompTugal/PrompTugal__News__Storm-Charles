@@ -4,7 +4,7 @@
 
 **Not a warning service.** These are questions for the record after and around the event. None of them should take a minute from anyone's operational work during the storm: the drafts say so, and the suggested time to send is **after the warnings end** (Thursday 12 November or later), unless Dinis decides otherwise.
 
-**Who we would like to talk to, and why: [who](who.md).** The questions as data: [questions.json](questions.json). The draft messages: [drafts.md](drafts.md).
+**The launch plan (a draft for Dinis): [launch](launch.md).** **Who we would like to talk to, and why: [who](who.md).** The questions as data: [questions.json](questions.json). The draft messages: [drafts.md](drafts.md).
 
 Two more drafts, kept by incident.weatherwatch@ where they belong (also unsent; a person sends): [IPMA: use of the radar imagery](../research/weather-sites/outreach/ipma-radar.md) and [EUMETSAT: registration for the satellite imagery](../research/weather-sites/outreach/eumetsat-registration.md). Their index: [research/weather-sites/outreach/](../research/weather-sites/outreach/index.html).
 

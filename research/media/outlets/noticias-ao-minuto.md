@@ -1,6 +1,6 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:17 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -17,7 +17,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:59 (article) | +102 min | 5 of 6 | [Oito distritos com aviso vermelho para vento na quarta-feira ↗](https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira) |
-| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:01 (article) | +53 min | 7 of 11 | [Web Summit cancela segundo dia devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
+| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:01 (article) | +53 min | 7 of 10 | [Web Summit cancela segundo dia devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
 
 ## Its sources, as far as its own pages say
 

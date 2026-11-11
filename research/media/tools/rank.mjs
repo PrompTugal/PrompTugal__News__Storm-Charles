@@ -61,6 +61,7 @@ for (const a of A) {
 const maxItems = Math.max(...Object.values(per).map(p => p.items))
 for (const o of outletsFile.outlets) {
     const p = per[o.id]
+    if (!p && o.automated_reading) { o.seen = { items: 0 }; o.does_best = 'not read: its terms forbid automated reading'; o.wire_share = null; delete o.bylines_as_printed; continue }
     if (!p) { o.seen = { items: 0 }; o.does_best = 'not read: no public feed or sitemap answered a bot, and none of its pages is cited yet'; continue }
     const best = []
     if (p.items === maxItems) best.push('volume: the most items in the list')
@@ -99,8 +100,8 @@ const header = {
     limits: ['Only outlets whose public feed, news sitemap or cited page answered a plain bot are here: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused (403), so their absence says nothing about their coverage.', 'Where a page refused but its feed or sitemap listed it (Expresso, The Portugal News, Bloomberg), the title and time are the feed\'s and the by-line was not read.', 'A live blog has one publication time; the minute of each entry inside it is not in this file.', 'Feeds scroll: items older than a feed\'s window at the first read (23:45 UTC, 10 November) are missing unless cited elsewhere in the incident.'],
     counts: { articles: A.length, outlets: Object.keys(per).length, by_kind: A.reduce((m, a) => (m[a.kind] = (m[a.kind] || 0) + 1, m), {}), by_byline_kind: A.reduce((m, a) => (m[a.byline_kind] = (m[a.byline_kind] || 0) + 1, m), {}), wire_share: +(A.filter(a => a.byline_kind === 'agency').length / A.filter(a => a.byline_kind !== 'none').length).toFixed(2), wire_share_note: 'items with the agency\'s (Lusa\'s) by-line, over items whose by-line we read', first_published: A.map(a => a.published).filter(Boolean).sort()[0], last_published: A.map(a => a.published).filter(Boolean).sort().pop() }
 }
-const { articles, social, official, articles_updated } = cov
-fs.writeFileSync(path.join(M, 'coverage.json'), JSON.stringify({ ...header, articles_updated, official, social, articles }, null, 1) + '\n')
+const { articles, social, official, articles_updated, removed } = cov
+fs.writeFileSync(path.join(M, 'coverage.json'), JSON.stringify({ ...header, articles_updated, removed, official, social, articles }, null, 1) + '\n')
 
 // ---- ranking.md
 const NONE = e => `| | **none found**: no article title and no live-blog entry we could read reported it by ${hm(now)} UTC | | | | |\n`

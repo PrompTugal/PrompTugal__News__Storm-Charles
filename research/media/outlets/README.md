@@ -1,6 +1,6 @@
 # The outlets covering Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:17 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | Outlet | Kind | Items read | First on | Wire share | Terms page read | AI crawlers disallowed in robots.txt | Readable by a plain bot |
 |---|---|---|---|---|---|---|---|
@@ -11,7 +11,6 @@
 | [Diário de Notícias](dn.md) | daily | 17 | 2 | 6% | yes | 0 of 10 | yes |
 | [RTP](rtp.md) | public broadcaster | 16 |  | 0% | yes | 0 of 10 | yes |
 | [Público](publico.md) | daily | 15 |  | 21% | yes | 10 of 10 | yes |
-| [The Portugal News](portugal-news.md) | English-language weekly in Portugal | 12 |  |  | refused (202) | not read | feed only |
 | [ECO](eco.md) | business daily (online) | 6 | 1 | 0% | yes | 0 of 10 | yes |
 | [Correio da Manhã](correio-da-manha.md) | daily | 6 |  | 67% | yes | 3 of 10 | yes |
 | [TEK Notícias (SAPO)](tek.md) | technology | 4 |  | 0% | not found | 0 of 10 | yes |
@@ -28,6 +27,7 @@
 | [Sábado](sabado.md) | weekly | 0 |  |  | not found | not read | no |
 | [SAPO](sapo.md) | portal | 0 |  |  | not found | 10 of 10 | no |
 | [Lusa](lusa.md) | national news agency | 0 |  |  | yes | 1 of 10 | no |
+| [The Portugal News](portugal-news.md) | English-language weekly in Portugal | 0 |  |  | yes | not read | no |
 | [Portugal Resident](portugal-resident.md) | English-language weekly in Portugal | 0 |  |  | yes | 9 of 10 | no |
 | [Tech Times](techtimes.md) | technology (international) | 0 |  |  | yes | 9 of 10 | no |
 | [The Guardian](guardian.md) | daily (international) | 0 |  |  | refused (403) | not read | no |

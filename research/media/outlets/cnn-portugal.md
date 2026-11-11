@@ -1,6 +1,6 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:17 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -16,7 +16,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
-| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:15 (article) | +66 min | 9 of 11 | [Tempestade Charles obriga ao cancelamento da Web Summit na quarta-fei… ↗](https://cnnportugal.iol.pt/tempestade-charles/web-summit/tempestade-charles-obriga-ao-cancelamento-da-web-summit-na-quarta-feira/20261110/6af3796cd34e9ce6f1b43dff) |
+| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:15 (article) | +66 min | 8 of 10 | [Tempestade Charles obriga ao cancelamento da Web Summit na quarta-fei… ↗](https://cnnportugal.iol.pt/tempestade-charles/web-summit/tempestade-charles-obriga-ao-cancelamento-da-web-summit-na-quarta-feira/20261110/6af3796cd34e9ce6f1b43dff) |
 
 ## Its sources, as far as its own pages say
 

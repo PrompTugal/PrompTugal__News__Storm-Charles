@@ -32,7 +32,9 @@ const CONTACT = /^(contactos?|contacte-nos|fale connosco|contact( us)?|ficha t[�
 const CLAUSE = /[^.]{0,220}(reprodu[cç][aã]o|reproduzi|direitos? de autor|propriedade intelectual|copyright|reproduc|republish|text and data mining|minera[cç][aã]o de (texto|dados)|intelig[êe]ncia artificial|artificial intelligence)[^.]{0,260}\./i
 const AI_BOTS = ['GPTBot', 'ClaudeBot', 'anthropic-ai', 'CCBot', 'Google-Extended', 'PerplexityBot', 'Bytespider', 'Applebot-Extended', 'Amazonbot', 'meta-externalagent']
 const out = []
+const prevL = fs.existsSync(path.join(M, 'licences.json')) ? JSON.parse(fs.readFileSync(path.join(M, 'licences.json'), 'utf8')).outlets : []
 for (const o of outlets) {
+    if (o.automated_reading) { const keep = prevL.find(l => l.outlet === o.id); if (keep) out.push(keep); continue }   // its terms forbid automated reading: no requests
     const host = o.hosts[0], home = 'https://' + (/^(eco|tek|jornaleconomico)\.sapo\.pt$|^cnnportugal|^away|euronews|observador\.pt|expresso\.pt|sicnoticias|rr\.pt|apnews|techcrunch/.test(host) ? host : 'www.' + host) + '/'
     const e = { outlet: o.id, name: o.name, home, read: now(), by: 'incident.media@web-summit.dinis', label: 'fact when read on the outlet\'s own page (this is the outlet speaking about itself)' }
     const h = await get(home); e.home_status = h.status

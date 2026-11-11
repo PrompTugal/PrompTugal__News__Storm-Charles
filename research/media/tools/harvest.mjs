@@ -49,7 +49,9 @@ function utc(s) {
 
 // ---- 1. candidates
 const cand = new Map()   // url -> { found_via, feed_title, feed_time }
-const add = (url, meta) => { url = unesc(url).split('#')[0].replace(/[?&]utm_[^#]*$/, ''); if (/^https?:\/\//.test(url) && !cand.has(url)) cand.set(url, meta) }
+const FORBID = OUTLETS.filter(o => o.automated_reading).flatMap(o => o.hosts)   // terms forbid automated reading: no requests, ever
+const forbidden = u => { try { const h = new URL(u).hostname.replace(/^www\./, ''); return FORBID.some(f => h === f || h.endsWith('.' + f)) } catch { return true } }
+const add = (url, meta) => { url = unesc(url).split('#')[0].replace(/[?&]utm_[^#]*$/, ''); if (/^https?:\/\//.test(url) && !cand.has(url) && !forbidden(url)) cand.set(url, meta) }
 for (const f of feedsCfg.feeds) {
     try {
         const r = await get(f.url)
@@ -153,7 +155,7 @@ for (const [url, c] of cand) {
 // keep what an earlier run read and this one did not see (a feed scrolls)
 fs.writeFileSync(IDX, JSON.stringify(idx))
 const seen = new Set(articles.map(a => a.url))
-for (const a of prev.articles || []) if (!seen.has(a.url) && !EXCLUDE.test(a.title) && !NOT_PRESS.test(a.url)) articles.push(a)
+for (const a of prev.articles || []) if (!seen.has(a.url) && !forbidden(a.url) && !EXCLUDE.test(a.title) && !NOT_PRESS.test(a.url)) articles.push(a)
 { const key = a => a.outlet + '|' + a.title, dated = new Set(articles.filter(a => a.published).map(key)); for (let i = articles.length - 1; i >= 0; i--) if (!articles[i].published && dated.has(key(articles[i]))) articles.splice(i, 1) }
 articles.sort((a, b) => (a.published || '9').localeCompare(b.published || '9'))
 articles.forEach(a => { a.id = 'A-' + crypto.createHash('sha256').update(a.url).digest('hex').slice(0, 8) })

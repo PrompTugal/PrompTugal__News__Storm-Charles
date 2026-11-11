@@ -1,6 +1,6 @@
 # Público: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:17 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -16,7 +16,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
-| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 14:09 (article) | +120 min | 5 of 6 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 14:09 (article) | +120 min | 4 of 5 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 14:00 (article) | +60 min | 4 of 6 | [Tempestade Charles encerra túneis em Lisboa e coloca Web Summit em dú… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/tempestade-charles-encerra-tuneis-lisboa-coloca-web-summit-duvida-2194442) |
 
 ## Its sources, as far as its own pages say

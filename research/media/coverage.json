@@ -1,7 +1,7 @@
 {
  "about": "Who is covering Storm Charles (Lisbon, 10 to 12 November 2026): press articles and live blogs (`articles`), the official channels (`official`) and what can be read of social platforms without a login (`social`). Every article: outlet, URL, title, the time the page itself says it was published (UTC), the by-line as the page prints it, the time we read it, and the sha256 of our capture (the capture is kept outside git). All of it is evidence: reported by others. Not a warning service: follow IPMA and ANEPC.",
  "by": "incident.media@web-summit.dinis",
- "updated": "2026-11-11T02:17:11Z",
+ "updated": "2026-11-11T02:21:01Z",
  "rules": [
   "People appear only as a by-line printed on a public article or as a body's official account: a name, nothing else. No contact details, no profiles, no private individuals.",
   "Posts by individuals on social platforms are counted, never listed.",
@@ -16,19 +16,19 @@
   "Feeds scroll: items older than a feed's window at the first read (23:45 UTC, 10 November) are missing unless cited elsewhere in the incident."
  ],
  "counts": {
-  "articles": 230,
-  "outlets": 17,
+  "articles": 218,
+  "outlets": 16,
   "by_kind": {
-   "article": 204,
+   "article": 192,
    "live": 4,
    "video": 18,
    "opinion": 4
   },
   "by_byline_kind": {
    "agency": 91,
-   "none": 50,
    "desk": 38,
-   "named": 51
+   "named": 51,
+   "none": 38
   },
   "wire_share": 0.51,
   "wire_share_note": "items with the agency's (Lusa's) by-line, over items whose by-line we read",
@@ -36,6 +36,14 @@
   "last_published": "2026-11-11T01:16:00Z"
  },
  "articles_updated": "2026-11-11T01:36:11Z",
+ "removed": [
+  {
+   "outlet": "portugal-news",
+   "items": 12,
+   "removed": "2026-11-11T03:00:00Z",
+   "why": "no automated reading: its terms forbid automated and AI uses of its content (terms read 2026-11-11T02:15Z by incident.weatherwatch@, research/weather-sites/terms.json). We make no requests to it; we keep its address and our own one-line description only. Whether a person asks it for permission is Dinis's decision. Its items (titles and times from its public feed, read before 02:15) were removed from this file."
+  }
+ ],
  "official": {
   "about": "The official channels on the storm: the bodies that decide or warn, and the organiser. Read from data/decisions/sources.json (kept by incident.researcher@), which holds what each contains and how a machine reads it; `status` and `read` are that file's. Official accounts on X, Instagram, Facebook and LinkedIn cannot be read without a login. Organisations' accounts that can be read are under `social.accounts`.",
   "from": "incidents/2026-11-10-storm-charles/data/decisions/sources.json",
@@ -902,21 +910,6 @@
    "byline_kind": "agency"
   },
   {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-09/portugal-weather-today-9-november-how-long-will-storm-bruna-last/1113131",
-   "kind": "article",
-   "lang": null,
-   "title": "Portugal Weather Today (9 November): How long will Storm Bruna last?",
-   "published": "2026-11-09T09:01:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:17Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-0759aaea",
-   "byline_kind": "none"
-  },
-  {
    "outlet": "publico",
    "url": "https://www.publico.pt/2026/11/09/sociedade/noticia/mau-tempo-provoca-73-ocorrencias-madrugada-segundafeira-2194253",
    "kind": "article",
@@ -937,21 +930,6 @@
     "ANEPC"
    ],
    "byline_kind": "agency"
-  },
-  {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-09/storm-bruna-to-bring-more-rain-and-rough-seas-to-portugal/1113158",
-   "kind": "article",
-   "lang": null,
-   "title": "Storm Bruna to bring more rain and rough seas to Portugal",
-   "published": "2026-11-09T11:03:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:16Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-e8b4ad36",
-   "byline_kind": "none"
   },
   {
    "outlet": "publico",
@@ -1358,21 +1336,6 @@
    "byline_kind": "agency"
   },
   {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/portugal-weather-today-10-november-storm-charles-headed-for-portugal/1113590",
-   "kind": "article",
-   "lang": null,
-   "title": "Portugal Weather Today (10 November): Storm Charles headed for Portugal?",
-   "published": "2026-11-10T09:01:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:14Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-f06b4d27",
-   "byline_kind": "none"
-  },
-  {
    "outlet": "noticias-ao-minuto",
    "url": "https://www.noticiasaominuto.com/pais/3081456/mau-tempo-madeira-sob-aviso-vermelho-devido-a-chuva-e-vento-a-partir-das-2100",
    "kind": "article",
@@ -1416,21 +1379,6 @@
     "IPMA"
    ],
    "byline_kind": "named"
-  },
-  {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/portugal-closes-schools-and-public-services-due-to-storms/1113644",
-   "kind": "article",
-   "lang": null,
-   "title": "Portugal closes schools and public services due to storms",
-   "published": "2026-11-10T09:55:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:13Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-7f1c2c41",
-   "byline_kind": "none"
   },
   {
    "outlet": "noticias-ao-minuto",
@@ -1568,21 +1516,6 @@
    "byline_kind": "none"
   },
   {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/new-storm-charles-to-bring-strong-winds-and-heavy-rain-to-portugal/1113609",
-   "kind": "article",
-   "lang": null,
-   "title": "New storm Charles to bring strong winds and heavy rain to Portugal",
-   "published": "2026-11-10T12:03:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:12Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-7863bc10",
-   "byline_kind": "none"
-  },
-  {
    "outlet": "dn",
    "url": "https://www.dn.pt/sociedade/mau-tempo-saiba-como-se-preparar-para-o-impacto",
    "kind": "article",
@@ -1602,21 +1535,6 @@
    "id": "A-fa5be2fc",
    "links_to_primary": [],
    "byline_kind": "named"
-  },
-  {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/e-redes-activates-crisis-plan-amid-storms-in-portugal/1113814",
-   "kind": "article",
-   "lang": null,
-   "title": "E-REDES activates crisis plan amid storms in Portugal",
-   "published": "2026-11-10T12:38:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:11Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-5423814a",
-   "byline_kind": "none"
   },
   {
    "outlet": "noticias-ao-minuto",
@@ -1718,21 +1636,6 @@
    "id": "A-756b5a7e",
    "links_to_primary": [],
    "byline_kind": "agency"
-  },
-  {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/rede-expressos-suspends-services-across-portugal-amid-storms/1113865",
-   "kind": "article",
-   "lang": null,
-   "title": "Rede Expressos suspends services across Portugal amid storms",
-   "published": "2026-11-10T13:45:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:10Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-9de0df9e",
-   "byline_kind": "none"
   },
   {
    "outlet": "noticias-ao-minuto",
@@ -1838,21 +1741,6 @@
    "byline_kind": "agency"
   },
   {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/lisbon-to-close-roads-and-cultural-venues-amid-storms-in-portugal/1113901",
-   "kind": "article",
-   "lang": null,
-   "title": "Lisbon to close roads and cultural venues amid storms in Portugal",
-   "published": "2026-11-10T14:16:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:08Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-d6eac3db",
-   "byline_kind": "none"
-  },
-  {
    "outlet": "publico",
    "url": "https://www.publico.pt/2026/11/10/azul/noticia/charles-ameaca-fenomeno-raro-vento-temporal-grave-desde-kristin-2194426",
    "kind": "article",
@@ -1955,21 +1843,6 @@
    "id": "A-0cde6d56",
    "links_to_primary": [],
    "byline_kind": "desk"
-  },
-  {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/speed-limits-reduced-on-lisbon-bridges-amid-storms-in-portugal/1113937",
-   "kind": "article",
-   "lang": null,
-   "title": "Speed limits reduced on Lisbon Bridges amid storms in Portugal",
-   "published": "2026-11-10T14:36:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:07Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-7ca17565",
-   "byline_kind": "none"
   },
   {
    "outlet": "noticias-ao-minuto",
@@ -2860,21 +2733,6 @@
    "id": "A-a06ee0ca",
    "links_to_primary": [],
    "byline_kind": "named"
-  },
-  {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/weather-alert-portugal-on-red-alert-for-storm-charles/1114149",
-   "kind": "article",
-   "lang": null,
-   "title": "Weather Alert: Portugal on Red Alert for Storm Charles",
-   "published": "2026-11-10T17:35:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:05Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-d1e965d5",
-   "byline_kind": "none"
   },
   {
    "outlet": "noticias-ao-minuto",
@@ -3870,21 +3728,6 @@
    "byline_kind": "named"
   },
   {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/portugal-hit-by-storms/1114204",
-   "kind": "article",
-   "lang": null,
-   "title": "Portugal hit by storms!",
-   "published": "2026-11-10T19:45:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:04Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-93e8f1cf",
-   "byline_kind": "none"
-  },
-  {
    "outlet": "rtp",
    "url": "https://www.rtp.pt/noticias/noticiario-antena1/19h-charles-pm-avisa-que-pais-vai-enfrentar-horas-dificeis_a1_1778244",
    "kind": "article",
@@ -3965,21 +3808,6 @@
    "id": "A-cf267d89",
    "links_to_primary": [],
    "byline_kind": "agency"
-  },
-  {
-   "outlet": "portugal-news",
-   "url": "https://www.theportugalnews.com/news/2026-11-10/web-summit-cancels-second-day-in-lisbon-amid-storm-warnings-in-portugal/1114275",
-   "kind": "article",
-   "lang": null,
-   "title": "Web Summit cancels second day in Lisbon amid storm warnings in Portugal",
-   "published": "2026-11-10T20:05:00Z",
-   "published_from": "the outlet's feed or news sitemap (the page answered 202 to a bot, so its by-line was not read)",
-   "byline": [],
-   "label": "evidence",
-   "read": "2026-11-10T23:50:03Z",
-   "found_via": "feed:portugal-news",
-   "id": "A-4600b21d",
-   "byline_kind": "none"
   },
   {
    "outlet": "cnn-portugal",

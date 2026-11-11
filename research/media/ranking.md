@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:17 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 230 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 218 items from 16 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -28,9 +28,8 @@ Primary source time: **10 Nov 12:10 UTC** (fact: portugal.gov.pt's page is dated
 | 1 | Diário de Notícias | 10 Nov 09:14 | -176 min (before the page) | live blog entry | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "…](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | 2 | Observador | 10 Nov 09:17 | -173 min (before the page) | live blog entry | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira…](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
 | 3 | Jornal de Negócios | 10 Nov 09:35 | -155 min (before the page) | live blog entry | [Escolas e serviços públicos encerrados amanhã devido ao mau tempo, an…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
-| 4 | The Portugal News | 10 Nov 09:55 | -135 min (before the page) | not read | [Portugal closes schools and public services due to storms](https://www.theportugalnews.com/news/2026-11-10/portugal-closes-schools-and-public-services-due-to-storms/1113644) |
-| 5 | Público | 10 Nov 14:09 | +120 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
-| 6 | RTP | 11 Nov 00:18 | +729 min | Rádio e Televisão de Portugal | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
+| 4 | Público | 10 Nov 14:09 | +120 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
+| 5 | RTP | 11 Nov 00:18 | +729 min | Rádio e Televisão de Portugal | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
 
 ### Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday
 
@@ -66,10 +65,9 @@ Primary source time: **10 Nov 19:09 UTC** (fact: Web Summit's "Important event u
 | 5 | Observador | 10 Nov 19:46 | +37 min | live blog entry | [Web Summit cancela programação de quarta-feira devido ao mau tempo](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791150-scroll) |
 | 6 | RTP | 10 Nov 19:47 | +38 min | live blog entry | [Web Summit fecha portas esta quarta-feira devido ao mau tempo](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245) |
 | 7 | Notícias ao Minuto | 10 Nov 20:01 | +53 min | Lusa | [Web Summit cancela segundo dia devido ao mau tempo](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
-| 8 | The Portugal News | 10 Nov 20:05 | +56 min | not read | [Web Summit cancels second day in Lisbon amid storm warnings in Portug…](https://www.theportugalnews.com/news/2026-11-10/web-summit-cancels-second-day-in-lisbon-amid-storm-warnings-in-portugal/1114275) |
-| 9 | CNN Portugal | 10 Nov 20:15 | +66 min | Agência Lusa | [Tempestade Charles obriga ao cancelamento da Web Summit na quarta-fei…](https://cnnportugal.iol.pt/tempestade-charles/web-summit/tempestade-charles-obriga-ao-cancelamento-da-web-summit-na-quarta-feira/20261110/6af3796cd34e9ce6f1b43dff) |
-| 10 | Euronews | 10 Nov 20:29 | +80 min | Pascale Davies | [Web Summit Lisbon day 2 cancelled due to Storm Charles](https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles) |
-| 11 | Expresso | 10 Nov 20:39 | +91 min | not read | [Depressão “Charles”: Web Summit fecha as portas esta quarta-feira e r…](https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428) |
+| 8 | CNN Portugal | 10 Nov 20:15 | +66 min | Agência Lusa | [Tempestade Charles obriga ao cancelamento da Web Summit na quarta-fei…](https://cnnportugal.iol.pt/tempestade-charles/web-summit/tempestade-charles-obriga-ao-cancelamento-da-web-summit-na-quarta-feira/20261110/6af3796cd34e9ce6f1b43dff) |
+| 9 | Euronews | 10 Nov 20:29 | +80 min | Pascale Davies | [Web Summit Lisbon day 2 cancelled due to Storm Charles](https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles) |
+| 10 | Expresso | 10 Nov 20:39 | +91 min | not read | [Depressão “Charles”: Web Summit fecha as portas esta quarta-feira e r…](https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428) |
 
 ### IPMA moves Lisbon's red rain warning three hours earlier, to Wednesday 09:00
 
@@ -77,7 +75,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 02:17 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 02:21 UTC | | | | |
 
 ### The storm's track is further south than forecast (strongest winds south of Lisbon)
 
@@ -119,7 +117,6 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 | Diário de Notícias | 17 | 16 | 1 | 6% | 0 | 0 | 1 | AMN, Lusoponte |
 | RTP | 16 | 0 | 0 | 0% | 16 | 0 | 0 |  |
 | Público | 15 | 9 | 3 | 21% | 2 | 1 | 5 | ANEPC, Diário da República, IPMA |
-| The Portugal News | 12 | 0 | 0 | n/a | 0 | 12 | 0 |  |
 | ECO | 6 | 3 | 0 | 0% | 3 | 0 | 0 |  |
 | Correio da Manhã | 6 | 0 | 4 | 67% | 2 | 0 | 0 |  |
 | TEK Notícias (SAPO) | 4 | 4 | 0 | 0% | 0 | 0 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
@@ -134,7 +131,7 @@ Among outlets with at least four items:
 
 - **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (33%), Diário de Notícias (6%), Observador (5%), CNN Portugal (4%).
 - **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (35%).
-- **The wire underneath:** 91 of 230 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **The wire underneath:** 91 of 218 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -147,7 +144,6 @@ Among outlets with at least four items:
 | Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 | RTP | public broadcaster | nothing stands out in this sample |
 | Público | daily | own reporting: most items carry a reporter's by-line; links to the primary sources |
-| The Portugal News | English-language weekly in Portugal | coverage in English; (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | ECO | business daily (online) | first on "Web Summit calls off Day 2" |
 | Correio da Manhã | daily | the agency wire, fast and complete (most items are Lusa's) |
 | TEK Notícias (SAPO) | technology | own reporting: most items carry a reporter's by-line; links to the primary sources |
