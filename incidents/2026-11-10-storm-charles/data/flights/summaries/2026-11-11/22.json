@@ -1,0 +1,76 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-11T23:00:31Z",
+  "label": "model output",
+  "about": "A two-sentence summary of the flight picture for 2026-11-11 22:00-22:59 UTC, written by an open-weight model (meta-llama/llama-4-maverick) through OpenRouter from the JSON in input, and published only because every number in it is one of the input's numbers and it is two sentences (check). Model output: not checked for meaning beyond that, and not ours. The data itself: snapshots/ and crosswind.json.",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "attribution": "Aircraft positions: adsb.lol (https://adsb.lol), community ADS-B data, licensed under the Open Database License (ODbL) v1.0 (https://opendatacommons.org/licenses/odbl/1-0/). Our snapshots are a derived database offered under the same licence.",
+  "hour": "2026-11-11T22:00:00Z",
+  "text": "In the hour to 22:59 UTC, adsb.lol's receivers near Lisbon and Funchal saw 13 distinct airline flights and zero distinct airline flights respectively. At 22:30 UTC, the wind at Lisbon airport was 8 knots from 270 degrees and at Funchal airport was 6 knots from 260 degrees.",
+  "model": {
+    "asked": "meta-llama/llama-4-maverick",
+    "served": "meta-llama/llama-4-maverick",
+    "via": "OpenRouter, through tools/llm.mjs (one ledger line per call)",
+    "cost_usd": 0.0002016135,
+    "ledger_id": "20261111T230030-806633ca"
+  },
+  "input": {
+    "hour_utc": "2026-11-11 22:00-22:59",
+    "areas": {
+      "lisbon": {
+        "snapshots_tried": 5,
+        "snapshots_read": 5,
+        "distinct_airline_flights_seen": 13,
+        "at_last_snapshot": {
+          "time_utc": "22:50",
+          "airborne": 2,
+          "on_ground": 1
+        },
+        "airlines": [
+          {"airline":"TAP Air Portugal","flights":3},
+          {"airline":"Ryanair","flights":2},
+          {"airline":"TAAG Angola","flights":1},
+          {"airline":"easyJet Europe","flights":1},
+          {"airline":"El Al","flights":1}
+        ]
+      },
+      "funchal": {
+        "snapshots_tried": 5,
+        "snapshots_read": 5,
+        "distinct_airline_flights_seen": 0,
+        "at_last_snapshot": {
+          "time_utc": "22:50",
+          "airborne": 0,
+          "on_ground": 0
+        },
+        "airlines": []
+      }
+    },
+    "airport_wind": {
+      "LPPT": {
+        "metar_time_utc": "22:30",
+        "wind_dir_deg": 270,
+        "wind_kt": 8,
+        "gust_kt": null,
+        "max_crosswind_kt_this_hour": 8.3
+      },
+      "LPMA": {
+        "metar_time_utc": "22:30",
+        "wind_dir_deg": 260,
+        "wind_kt": 6,
+        "gust_kt": null,
+        "max_crosswind_kt_this_hour": 3.5
+      }
+    }
+  },
+  "input_sha256": "7b79081f7c5b47576cefa099590fec32a98986afc8f198c46dace78e2fd4d18a",
+  "sources": [
+    "incidents/2026-11-10-storm-charles/data/flights/snapshots/2026-11-11/22.json",
+    "incidents/2026-11-10-storm-charles/data/flights/crosswind.json"
+  ],
+  "check": {
+    "passed": true,
+    "numbers_checked": 10,
+    "problems": []
+  }
+}

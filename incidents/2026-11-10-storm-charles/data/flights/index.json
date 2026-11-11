@@ -1,13 +1,23 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-11T22:24:50Z",
+  "updated": "2026-11-11T23:00:31Z",
   "label": "fact",
   "source": "this folder",
-  "read_utc": "2026-11-11T22:24:50Z",
+  "read_utc": "2026-11-11T23:00:31Z",
   "method": "a walk of the folder: each tracked file's sha256, and the map files made from them",
   "snapshots": [
     {"t":"2026-11-11T22:23:41Z","area":"lisbon","aircraft":9,"file":"map/snapshots/2026-11-11/2223-lisbon.json"},
-    {"t":"2026-11-11T22:23:42Z","area":"funchal","aircraft":0,"file":"map/snapshots/2026-11-11/2223-funchal.json"}
+    {"t":"2026-11-11T22:23:42Z","area":"funchal","aircraft":0,"file":"map/snapshots/2026-11-11/2223-funchal.json"},
+    {"t":"2026-11-11T22:25:17Z","area":"lisbon","aircraft":9,"file":"map/snapshots/2026-11-11/2225-lisbon.json"},
+    {"t":"2026-11-11T22:25:18Z","area":"funchal","aircraft":0,"file":"map/snapshots/2026-11-11/2225-funchal.json"},
+    {"t":"2026-11-11T22:30:15Z","area":"lisbon","aircraft":10,"file":"map/snapshots/2026-11-11/2230-lisbon.json"},
+    {"t":"2026-11-11T22:30:16Z","area":"funchal","aircraft":0,"file":"map/snapshots/2026-11-11/2230-funchal.json"},
+    {"t":"2026-11-11T22:40:16Z","area":"lisbon","aircraft":6,"file":"map/snapshots/2026-11-11/2240-lisbon.json"},
+    {"t":"2026-11-11T22:40:17Z","area":"funchal","aircraft":0,"file":"map/snapshots/2026-11-11/2240-funchal.json"},
+    {"t":"2026-11-11T22:50:15Z","area":"lisbon","aircraft":3,"file":"map/snapshots/2026-11-11/2250-lisbon.json"},
+    {"t":"2026-11-11T22:50:15Z","area":"funchal","aircraft":0,"file":"map/snapshots/2026-11-11/2250-funchal.json"},
+    {"t":"2026-11-11T23:00:16Z","area":"lisbon","aircraft":4,"file":"map/snapshots/2026-11-11/2300-lisbon.json"},
+    {"t":"2026-11-11T23:00:17Z","area":"funchal","aircraft":0,"file":"map/snapshots/2026-11-11/2300-funchal.json"}
   ],
   "wind_hours": [
     {"t":"2026-11-10T12:00:00Z","area":"lisbon","forecast":false,"file":"map/wind/lisbon/2026-11-10/12.json"},
@@ -126,12 +136,12 @@
       "path": "incidents/2026-11-10-storm-charles/data/flights/crosswind.json",
       "api": "api/v1/2026-11-10-storm-charles/flights/crosswind.json",
       "kind": "crosswind",
-      "bytes": 156626,
-      "sha256": "eeeedba5b780c92fd5f278a8bfd06f5f23b9d3a80feb33c85937fd1061c13ff1",
-      "updated": "2026-11-11T22:18:32Z",
+      "bytes": 159959,
+      "sha256": "d6c298680452c369c159cbae57a7cac3d0c643cf06b2b7e9cbde110497249279",
+      "updated": "2026-11-11T23:00:30Z",
       "covers": {
         "from": "2026-11-10T18:00:00Z",
-        "to": "2026-11-11T22:00:00Z",
+        "to": "2026-11-11T22:30:00Z",
         "airports": ["LPPT","LPMA"]
       }
     },
@@ -139,15 +149,42 @@
       "path": "incidents/2026-11-10-storm-charles/data/flights/snapshots/2026-11-11/22.json",
       "api": "api/v1/2026-11-10-storm-charles/flights/snapshots/2026-11-11/22.json",
       "kind": "aircraft-snapshots",
-      "bytes": 5886,
-      "sha256": "96a7a088e5e875600cf931fba978911064b9c7c2cb4288585fc8b3c488481894",
-      "updated": "2026-11-11T22:23:42Z",
+      "bytes": 20504,
+      "sha256": "de890170f93015ac30126e32952f57ec8c68fb28091700a7bdacf3cbc92cba4a",
+      "updated": "2026-11-11T22:50:16Z",
       "covers": {
         "from": "2026-11-11T22:23:41Z",
-        "to": "2026-11-11T22:23:42Z",
+        "to": "2026-11-11T22:50:15Z",
+        "snapshots": 10,
+        "ok": 10,
+        "airline_positions": 37
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/snapshots/2026-11-11/23.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/snapshots/2026-11-11/23.json",
+      "kind": "aircraft-snapshots",
+      "bytes": 4966,
+      "sha256": "fe9844764fe871301ff157b6a8bfb99b08d0cb77930c9282c0fe8f7365e1b60f",
+      "updated": "2026-11-11T23:00:17Z",
+      "covers": {
+        "from": "2026-11-11T23:00:16Z",
+        "to": "2026-11-11T23:00:17Z",
         "snapshots": 2,
         "ok": 2,
-        "airline_positions": 9
+        "airline_positions": 4
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/summaries/2026-11-11/22.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/summaries/2026-11-11/22.json",
+      "kind": "model-summary",
+      "bytes": 3179,
+      "sha256": "72d01674f2fc3610f50aa6143d9a3eb367ab0f54fa0542927d6fe9227ade9cec",
+      "updated": "2026-11-11T23:00:31Z",
+      "covers": {
+        "hour": "2026-11-11T22:00:00Z",
+        "passed": true
       }
     },
     {
