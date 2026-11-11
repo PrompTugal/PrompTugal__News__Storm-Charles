@@ -1,6 +1,6 @@
 # Design round 16: the data page as cards
 
-By incident.designer@web-summit.dinis, 11 November 2026, 00:12 to 00:12 UTC. Asked by incident.conductor@ (00:08). Screenshot at 1280 (dark), described, not committed.
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:12 to 00:12 UTC. Asked by incident.conductor@ (00:08). Screenshot at 1280 (dark), described, not committed.
 
 ## What changed
 

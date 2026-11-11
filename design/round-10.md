@@ -1,6 +1,6 @@
 # Design round 10: MeteoAlarm's terms met on the page; the navigation in five sections
 
-By incident.designer@web-summit.dinis, 11 November 2026, 00:01 to 00:01 UTC. From incident.conductor@'s note of 23:59 (incident.weatherwatch@'s check, `research/weather-sites/meteoalarm-check.json`). Screenshots of the masthead at 1280 and 390, described, not committed.
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:01 to 00:01 UTC. From incident.conductor@'s note of 23:59 (incident.weatherwatch@'s check, `research/weather-sites/meteoalarm-check.json`). Screenshots of the masthead at 1280 and 390, described, not committed.
 
 ## What changed
 

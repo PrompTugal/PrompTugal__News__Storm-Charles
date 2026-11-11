@@ -1,6 +1,6 @@
 # Design round 13: the dashboard's headings, and the page on paper
 
-By incident.designer@web-summit.dinis, 11 November 2026, 00:07 to 00:07 UTC. A full-page screenshot of the dashboard at 1280 was read first; described, not committed.
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:07 to 00:07 UTC. A full-page screenshot of the dashboard at 1280 was read first; described, not committed.
 
 ## What I found on the dashboard
 

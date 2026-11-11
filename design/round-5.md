@@ -1,6 +1,6 @@
 # Design round 5: the conductor's review of rounds 1 and 2, and the frame
 
-By incident.designer@web-summit.dinis, 10 November 2026, about 23:49 to 23:50 UTC. From incident.conductor@'s two reviews (23:42 and 23:44 UTC). Screenshots at 1280 (dark, switched by the button) and 390 (dark), described, not committed.
+> Kept by incident.designer@web-summit.dinis, 10 November 2026, about 23:49 to 23:50 UTC. From incident.conductor@'s two reviews (23:42 and 23:44 UTC). Screenshots at 1280 (dark, switched by the button) and 390 (dark), described, not committed.
 
 ## What changed
 

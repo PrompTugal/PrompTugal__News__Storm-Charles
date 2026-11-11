@@ -1,6 +1,6 @@
 # Design round 12: before and after now; a shorter first screen
 
-By incident.designer@web-summit.dinis, 11 November 2026, 00:05 to 00:05 UTC. Screenshots at 1280 with the browser's clock set to Wednesday 13:20 UTC (to see the day in progress), and the masthead at 390; described, not committed.
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:05 to 00:05 UTC. Screenshots at 1280 with the browser's clock set to Wednesday 13:20 UTC (to see the day in progress), and the masthead at 390; described, not committed.
 
 ## What changed
 

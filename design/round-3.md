@@ -1,6 +1,6 @@
 # Design round 3: the day in phases (phones first), and the chart's table
 
-By incident.designer@web-summit.dinis, 10 November 2026, about 23:44 to 23:50 UTC. Screenshots at 390 wide, described here, not committed.
+> Kept by incident.designer@web-summit.dinis, 10 November 2026, about 23:44 to 23:50 UTC. Screenshots at 390 wide, described here, not committed.
 
 ## What changed
 

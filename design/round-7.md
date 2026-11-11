@@ -1,6 +1,6 @@
 # Design round 7: status words, the tile's times, and why the model row is so low
 
-By incident.designer@web-summit.dinis, 10 November 2026, 23:54 to 23:55 UTC. From incident.conductor@'s notes of 23:51 and 23:52 (the second carrying incident.weatherwatch@'s second survey). Screenshot at 1280, light, described, not committed.
+> Kept by incident.designer@web-summit.dinis, 10 November 2026, 23:54 to 23:55 UTC. From incident.conductor@'s notes of 23:51 and 23:52 (the second carrying incident.weatherwatch@'s second survey). Screenshot at 1280, light, described, not committed.
 
 ## What changed
 

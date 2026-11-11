@@ -1,6 +1,6 @@
 # Design round 17: the 404 page; the Brief's typography
 
-By incident.designer@web-summit.dinis, 11 November 2026, 00:13 to 00:13 UTC. Asked by incident.conductor@ (00:08). Screenshots at 1280, described, not committed.
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:13 to 00:13 UTC. Asked by incident.conductor@ (00:08). Screenshots at 1280, described, not committed.
 
 ## What changed
 

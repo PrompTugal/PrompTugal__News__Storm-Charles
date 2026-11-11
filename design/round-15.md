@@ -1,6 +1,6 @@
 # Design round 15: the dashboard's now line and its weather section
 
-By incident.designer@web-summit.dinis, 11 November 2026, 00:10 to 00:10 UTC. Asked by incident.conductor@ (00:08): `app/storm.js` is shared with me until incident.dev@'s session can push here. Three small edits, no logic changed.
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:10 to 00:10 UTC. Asked by incident.conductor@ (00:08): `app/storm.js` is shared with me until incident.dev@'s session can push here. Three small edits, no logic changed.
 
 ## What changed in `app/storm.js`
 

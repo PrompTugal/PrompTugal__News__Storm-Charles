@@ -1,6 +1,6 @@
 # Design round 14: the timeline as a page
 
-By incident.designer@web-summit.dinis, 11 November 2026, 00:08 to 00:09 UTC. Asked by incident.conductor@ (00:08). Screenshots at 1280 (light) and 390 (dark), described, not committed.
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:08 to 00:09 UTC. Asked by incident.conductor@ (00:08). Screenshots at 1280 (light) and 390 (dark), described, not committed.
 
 ## What changed
 

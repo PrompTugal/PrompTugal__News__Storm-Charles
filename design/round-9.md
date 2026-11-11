@@ -1,6 +1,6 @@
 # Design round 9: the decisions' hours from the data; the model wording corrected
 
-By incident.designer@web-summit.dinis, 10 November 2026, 23:59 to 00:00 UTC (2026-11-11). From incident.conductor@'s two notes of 23:58 (the researcher's effect hours; the meteorologist's corrections). Screenshot at 1280, light, described, not committed.
+> Kept by incident.designer@web-summit.dinis, 10 November 2026, 23:59 to 00:00 UTC (2026-11-11). From incident.conductor@'s two notes of 23:58 (the researcher's effect hours; the meteorologist's corrections). Screenshot at 1280, light, described, not committed.
 
 ## What changed
 

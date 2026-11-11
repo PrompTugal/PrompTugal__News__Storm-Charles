@@ -1,6 +1,6 @@
 # Design round 8: three facts in one sentence; links, not images; what we measured
 
-By incident.designer@web-summit.dinis, 10 November 2026, 23:57 to 23:58 UTC. From incident.conductor@'s note of 23:57 (incident.weatherwatch@'s licence reading and gap count) and round 7's critique. Screenshot at 1280, dark, described, not committed.
+> Kept by incident.designer@web-summit.dinis, 10 November 2026, 23:57 to 23:58 UTC. From incident.conductor@'s note of 23:57 (incident.weatherwatch@'s licence reading and gap count) and round 7's critique. Screenshot at 1280, dark, described, not committed.
 
 ## What changed
 

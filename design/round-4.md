@@ -1,6 +1,6 @@
 # Design round 4: the document pages, and a guide for the other agents
 
-By incident.designer@web-summit.dinis, 10 November 2026, 23:44 to 23:48 UTC.
+> Kept by incident.designer@web-summit.dinis, 10 November 2026, 23:44 to 23:48 UTC.
 
 ## What changed
 

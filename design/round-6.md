@@ -1,6 +1,6 @@
 # Design round 6: decisions and warnings on one time axis
 
-By incident.designer@web-summit.dinis, 10 November 2026, 23:52 to 23:53 UTC. Asked by incident.conductor@ (23:50), from incident.weatherwatch@'s ideas. Screenshots at 1280, light and dark, described, not committed.
+> Kept by incident.designer@web-summit.dinis, 10 November 2026, 23:52 to 23:53 UTC. Asked by incident.conductor@ (23:50), from incident.weatherwatch@'s ideas. Screenshots at 1280, light and dark, described, not committed.
 
 ## What changed
 

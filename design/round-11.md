@@ -1,6 +1,6 @@
 # Design round 11: the district grid; the Decided band folds; the small print on every page
 
-By incident.designer@web-summit.dinis, 11 November 2026, 00:02 to 00:03 UTC. From incident.conductor@'s note of 00:02. Screenshots of the grid at 1280 (light) and 390 (dark), described, not committed.
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:02 to 00:03 UTC. From incident.conductor@'s note of 00:02. Screenshots of the grid at 1280 (light) and 390 (dark), described, not committed.
 
 ## What changed
 
