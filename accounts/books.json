@@ -1,0 +1,94 @@
+{
+ "about": "The books at a glance: today's model spend against the cap, tokens by agent where measured, the most expensive hour, cost per output. Every figure is in the file named beside it with its source and whether it is measured, reported or estimated.",
+ "by": "incident.accountant@web-summit.dinis",
+ "updated": "2026-11-11T02:57:38Z",
+ "day": "2026-11-11",
+ "model_spend": {
+  "spent_usd": 0.920982,
+  "cap_usd": 20,
+  "of_cap": 0.046,
+  "kind": "measured (the ledger) plus reported (other desks)",
+  "file": "accounts/models.json"
+ },
+ "agent_tokens": {
+  "measured": 1,
+  "of": 30,
+  "team_measured": {
+   "calls": 27,
+   "fresh_input": 52,
+   "output": 36917,
+   "cache_writes": 294116,
+   "cache_reads": 3201416,
+   "all": 3532501,
+   "cache_reads_share": 0.9063,
+   "weighted": 651227
+  },
+  "file": "accounts/agents.json"
+ },
+ "most_expensive_hour": {
+  "models_usd": {
+   "hour": "02:00",
+   "calls": 1098,
+   "cost_usd": 0.730982,
+   "day": "2026-11-11",
+   "kind": "measured",
+   "source": "models/ledger-summary.json by_hour",
+   "note": "the ledger of incident.models@ only; other desks report a day total, not hours"
+  },
+  "tokens": {
+   "hour": "2026-11-11T02:00Z",
+   "calls": 23,
+   "fresh_input": 44,
+   "output": 34896,
+   "cache_writes": 112558,
+   "cache_reads": 3073797,
+   "agents": [
+    "accountant"
+   ],
+   "weighted": 454878
+  },
+  "ci": {
+   "hour": "2026-11-11T02:00Z",
+   "runs": 154,
+   "run_s": 1646,
+   "queue_s": 916,
+   "success": 81
+  }
+ },
+ "machine": {
+  "ci_runs": 329,
+  "releases": 210,
+  "ci_run_seconds": 4183,
+  "tracked_files": 1505,
+  "pages_built": 1129,
+  "file": "accounts/machine.json"
+ },
+ "per_output": [
+  {
+   "output": "timeline row",
+   "count": 62,
+   "weighted_tokens_each": "not measured"
+  },
+  {
+   "output": "story",
+   "count": 4,
+   "weighted_tokens_each": "not measured"
+  },
+  {
+   "output": "captured page",
+   "count": 89,
+   "weighted_tokens_each": "not measured"
+  },
+  {
+   "output": "release (a successful CI run)",
+   "count": 210,
+   "weighted_tokens_each": "not measured",
+   "ci_seconds_each": 18.8
+  },
+  {
+   "output": "model call through the ledger",
+   "count": 1098,
+   "usd_each": 0.000666
+  }
+ ]
+}

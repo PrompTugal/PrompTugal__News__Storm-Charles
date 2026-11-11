@@ -1,0 +1,225 @@
+{
+ "about": "Model calls of the incident team, in US dollars: the model ledger's totals (one line per call through tools/llm.mjs; the cost is the one the provider reported on each call) by agent, task and model, and the spend other desks report from ledgers in their own sessions. The models named are third-party models that were called, the subject of this table, never the model an agent runs on. No prompt or answer text.",
+ "by": "incident.accountant@web-summit.dinis",
+ "updated": "2026-11-11T02:57:38Z",
+ "currency": "USD",
+ "cap": {
+  "usd_per_day": 20,
+  "since": "2026-11-11T02:50Z",
+  "before": 5,
+  "kind": "reported",
+  "source": "BRIEF.md, Dinis, 11 November 2026, ~02:50 UTC (\"up to $20 in budget\")"
+ },
+ "today": {
+  "day": "2026-11-11",
+  "spent_usd": 0.920982,
+  "of_cap": 0.046,
+  "left_usd": 19.079018,
+  "ledger_usd": 0.730982,
+  "reported_by_other_desks_usd": 0.19,
+  "kind": "measured (the ledger) plus reported (other desks)",
+  "source": "models/ledger-summary.json",
+  "read": "2026-11-11T02:41:01Z"
+ },
+ "most_expensive_hour": {
+  "hour": "02:00",
+  "calls": 1098,
+  "cost_usd": 0.730982,
+  "day": "2026-11-11",
+  "kind": "measured",
+  "source": "models/ledger-summary.json by_hour",
+  "note": "the ledger of incident.models@ only; other desks report a day total, not hours"
+ },
+ "ledger": {
+  "kind": "measured",
+  "source": "models/ledger-summary.json",
+  "read": "2026-11-11T02:41:01Z",
+  "kept_by": "incident.models@web-summit.dinis",
+  "days": [
+   {
+    "day": "2026-11-11",
+    "calls": 1098,
+    "cost_usd": 0.730982,
+    "tokens_in": 308465,
+    "tokens_out": 438545,
+    "by_agent": {
+     "incident.models@web-summit.dinis": {
+      "calls": 1098,
+      "cost_usd": 0.730982,
+      "tokens_in": 308465,
+      "tokens_out": 438545
+     }
+    },
+    "by_task": {
+     "WS-214/models/smoke": {
+      "calls": 1,
+      "cost_usd": 0.000001,
+      "tokens_in": 16,
+      "tokens_out": 3
+     },
+     "WS-214/eval/extract-warning": {
+      "calls": 278,
+      "cost_usd": 0.143341,
+      "tokens_in": 73440,
+      "tokens_out": 84686
+     },
+     "WS-214/eval/extract-decision": {
+      "calls": 166,
+      "cost_usd": 0.131139,
+      "tokens_in": 115387,
+      "tokens_out": 75687
+     },
+     "WS-214/eval/label": {
+      "calls": 326,
+      "cost_usd": 0.212353,
+      "tokens_in": 89938,
+      "tokens_out": 139766
+     },
+     "WS-214/eval/translate": {
+      "calls": 326,
+      "cost_usd": 0.239129,
+      "tokens_in": 29661,
+      "tokens_out": 138359
+     },
+     "WS-214/models/ask-smoke": {
+      "calls": 1,
+      "cost_usd": 0.005019,
+      "tokens_in": 23,
+      "tokens_out": 44
+     }
+    },
+    "by_model": {
+     "google/gemma-3-4b-it": {
+      "calls": 76,
+      "cost_usd": 0.001091,
+      "tokens_in": 23050,
+      "tokens_out": 4057
+     },
+     "openai/gpt-6-luna": {
+      "calls": 75,
+      "cost_usd": 0.005455,
+      "tokens_in": 20592,
+      "tokens_out": 6901
+     },
+     "qwen/qwen3.5-9b": {
+      "calls": 142,
+      "cost_usd": 0.028722,
+      "tokens_in": 42755,
+      "tokens_out": 153578
+     },
+     "google/gemma-4-31b-it": {
+      "calls": 67,
+      "cost_usd": 0.003216,
+      "tokens_in": 20572,
+      "tokens_out": 2914
+     },
+     "mistralai/ministral-8b-2512": {
+      "calls": 67,
+      "cost_usd": 0.002666,
+      "tokens_in": 19487,
+      "tokens_out": 3744
+     },
+     "openai/gpt-oss-20b": {
+      "calls": 67,
+      "cost_usd": 0.0045,
+      "tokens_in": 21817,
+      "tokens_out": 18620
+     },
+     "meta-llama/llama-4-maverick": {
+      "calls": 67,
+      "cost_usd": 0.006872,
+      "tokens_in": 18330,
+      "tokens_out": 2222
+     },
+     "deepseek/deepseek-v4.1-flash": {
+      "calls": 67,
+      "cost_usd": 0.026074,
+      "tokens_in": 20143,
+      "tokens_out": 33987
+     },
+     "google/gemini-3.5-flash-lite": {
+      "calls": 67,
+      "cost_usd": 0.01229,
+      "tokens_in": 19348,
+      "tokens_out": 2644
+     },
+     "mistralai/mistral-large-4-0": {
+      "calls": 134,
+      "cost_usd": 0.201556,
+      "tokens_in": 18709,
+      "tokens_out": 86561
+     },
+     "anthropic/claude-haiku-5.5": {
+      "calls": 67,
+      "cost_usd": 0.006526,
+      "tokens_in": 27356,
+      "tokens_out": 7713
+     },
+     "qwen/qwen3.5-397b-a17b": {
+      "calls": 134,
+      "cost_usd": 0.383451,
+      "tokens_in": 38229,
+      "tokens_out": 110374
+     },
+     "openai/gpt-6.1-terra": {
+      "calls": 67,
+      "cost_usd": 0.043544,
+      "tokens_in": 18054,
+      "tokens_out": 5186
+     },
+     "perplexity/sonar": {
+      "calls": 1,
+      "cost_usd": 0.005019,
+      "tokens_in": 23,
+      "tokens_out": 44
+     }
+    },
+    "by_status": {
+     "ok": {
+      "calls": 1023,
+      "cost_usd": 0.730982,
+      "tokens_in": 308465,
+      "tokens_out": 438545
+     },
+     "http_400": {
+      "calls": 67,
+      "cost_usd": 0,
+      "tokens_in": 0,
+      "tokens_out": 0
+     },
+     "http_402": {
+      "calls": 8,
+      "cost_usd": 0,
+      "tokens_in": 0,
+      "tokens_out": 0
+     }
+    },
+    "by_hour": {
+     "02:00": {
+      "calls": 1098,
+      "cost_usd": 0.730982
+     }
+    }
+   }
+  ]
+ },
+ "reported": [
+  {
+   "agent": "incident.shadow@web-summit.dinis",
+   "day": "2026-11-11",
+   "cost_usd": 0.19,
+   "kind": "reported",
+   "source": "agents/shadow/status.json",
+   "read": "2026-11-11T02:40:00Z"
+  },
+  {
+   "agent": "incident.accountant@web-summit.dinis",
+   "day": "2026-11-11",
+   "cost_usd": 0,
+   "kind": "reported",
+   "source": "agents/accountant/status.json",
+   "read": "2026-11-11T02:57:00Z"
+  }
+ ],
+ "not_counted": "A ledger lives in the session that made the calls. A desk whose calls are in neither the ledger summary nor its own status file is not in these totals: its cell would say \"not measured\"."
+}

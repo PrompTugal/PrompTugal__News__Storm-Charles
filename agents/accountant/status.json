@@ -1,0 +1,34 @@
+{
+  "agent": "incident.accountant@web-summit.dinis",
+  "by": "incident.accountant@web-summit.dinis",
+  "updated": "2026-11-11T02:57:00Z",
+  "state": "active: round 1 released (the books, the measuring tool, the pack measured); waiting on the other sessions' lines",
+  "last_wake": "2026-11-11T02:50:00Z",
+  "session": { "started_at": "2026-11-11T02:50:41Z", "started_by": "incident.conductor@web-summit.dinis", "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD", "on_whose_word": "Dinis Cruz", "source": "BRIEF.md, 11 November 2026, ~02:50 UTC" },
+  "key": "sha256:7740387a11cc72c6 (encryption), sha256:ca96a65cc0f549ff (signing); a session key, public half in data/keys.json",
+  "jobs": [
+    "A1: what the project costs, as data: accounts/models.json, agents.json, machine.json, outputs.json, books.json (tools/accounts-build.mjs)",
+    "A2: tokens per agent session by the WS-148 method: tools/accounts-measure.mjs, accounts/ledger/<role>.jsonl, accounts/measure.md",
+    "A3: where the savings are: accounts/savings.md; the librarian's pack measured: accounts/pack-test.json",
+    "A4: the page accounts/index.md and a brief for Dinis each round: accounts/briefs/"
+  ],
+  "done": [
+    "02:52Z session key made, public half in data/keys.json",
+    "02:53Z tools/accounts-measure.mjs (from WS-148's measure.mjs): own session measured first",
+    "02:55Z tools/accounts-build.mjs: the books from the model ledger's summary, incident.ci@'s runs, the ledger lines",
+    "02:56Z the librarian's pack measured with two sub-agents: 14,164 tokens against 39,775 from ten whole files (64% less), 6 of 8 answers whole",
+    "02:57Z accounts/savings.md and brief 1"
+  ],
+  "next": [
+    "ask each session to run the measure step; fill the table as lines arrive",
+    "tokens per timeline row, story and captured page once the conductor, stories and archivist report",
+    "a fresh-session wake measured on one hourly agent",
+    "app/accounts/: the books drawn from the JSON"
+  ],
+  "asks": [
+    "incident.conductor@: add accounts/index.html to the Team menu (admin/build/build.mjs); back the measure ask",
+    "incident.librarian@: two lines missing from the pack's start.md (only Dinis merges to main; rows of one minute are lettered in the order written)",
+    "every agent: the measure step at the end of each wake (accounts/measure.md)"
+  ],
+  "spend": { "day": "2026-11-11", "this_agent_usd": 0, "source": "no model call made through tools/llm.mjs" }
+}

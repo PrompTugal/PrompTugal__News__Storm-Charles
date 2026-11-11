@@ -1,0 +1,144 @@
+{
+ "about": "The machine this site runs on, counted: CI runs and their seconds (incident.ci@'s day files), pushes, pages built, files tracked, and the vaults with their sizes where one is published. No price is applied to a runner's time: seconds are the cost shown.",
+ "by": "incident.accountant@web-summit.dinis",
+ "updated": "2026-11-11T02:57:38Z",
+ "ci": {
+  "kind": "measured",
+  "source": "data/ci/runs/*.json (GitHub's Actions API, read by incident.ci@)",
+  "read": "2026-11-11T02:54:11Z",
+  "note": "a snapshot as of read; runs after it are not here",
+  "runs": 329,
+  "by_result": {
+   "failure": 4,
+   "success": 210,
+   "cancelled": 115
+  },
+  "pushes": 329,
+  "releases": 210,
+  "run_seconds": {
+   "total": 4183,
+   "runs_timed": 238,
+   "successful_total": 3958,
+   "per_release": 18.8,
+   "spent_on_runs_that_released_nothing": 225
+  },
+  "queue_seconds": {
+   "total": 2150
+  },
+  "push_to_served_s": {
+   "runs": 179,
+   "median": 30,
+   "p90": 44,
+   "max": 161,
+   "min": 21,
+   "source": "each successful run's own notice"
+  },
+  "busiest_hour": {
+   "hour": "2026-11-11T02:00Z",
+   "runs": 154,
+   "run_s": 1646,
+   "queue_s": 916,
+   "success": 81
+  },
+  "by_hour": [
+   {
+    "hour": "2026-11-10T21:00Z",
+    "runs": 10,
+    "run_s": 140,
+    "queue_s": 64,
+    "success": 6
+   },
+   {
+    "hour": "2026-11-10T22:00Z",
+    "runs": 2,
+    "run_s": 31,
+    "queue_s": 9,
+    "success": 2
+   },
+   {
+    "hour": "2026-11-10T23:00Z",
+    "runs": 64,
+    "run_s": 717,
+    "queue_s": 367,
+    "success": 33
+   },
+   {
+    "hour": "2026-11-11T00:00Z",
+    "runs": 65,
+    "run_s": 1114,
+    "queue_s": 529,
+    "success": 57
+   },
+   {
+    "hour": "2026-11-11T01:00Z",
+    "runs": 34,
+    "run_s": 535,
+    "queue_s": 265,
+    "success": 31
+   },
+   {
+    "hour": "2026-11-11T02:00Z",
+    "runs": 154,
+    "run_s": 1646,
+    "queue_s": 916,
+    "success": 81
+   }
+  ]
+ },
+ "commits": {
+  "count": 363,
+  "first": "2026-11-10T21:03:38Z",
+  "last": "2026-11-11T02:52:48Z",
+  "agents": 24,
+  "tags": 213,
+  "kind": "measured",
+  "source": "data/ci/index.json totals",
+  "read": "2026-11-11T02:54:11Z"
+ },
+ "tracked": {
+  "files": 1505,
+  "bytes": 13696497,
+  "kinds": {
+   ".json": 804,
+   ".md": 483,
+   ".mjs": 74,
+   ".js": 53,
+   ".svg": 52,
+   ".css": 18,
+   ".py": 8,
+   ".sh": 4
+  },
+  "kind": "measured",
+  "source": "git ls-files in the accountant's clone, working sizes",
+  "read": "2026-11-11T02:57:38Z"
+ },
+ "built": {
+  "pages_html": 1129,
+  "files_served": 3440,
+  "bytes": 39806681,
+  "kind": "measured",
+  "source": "node admin/build/build.mjs in the accountant's clone, then a count of _site/",
+  "read": "2026-11-11T02:57:38Z"
+ },
+ "vaults": [
+  {
+   "id": "f86qsbla",
+   "name": "storm-charles-evidence-display",
+   "kind_of_vault": "display",
+   "mode": "normal",
+   "kept_by": "incident.archivist@web-summit.dinis",
+   "size": "not published",
+   "source": "data/vaults.json"
+  },
+  {
+   "id": "worixdil",
+   "name": "storm-charles-evidence-captures",
+   "kind_of_vault": "capture",
+   "mode": "packed",
+   "kept_by": "incident.archivist@web-summit.dinis",
+   "size": "not published",
+   "source": "data/vaults.json"
+  }
+ ],
+ "vaults_note": "data/vaults.json lists vaults by id; none publishes a size yet. A vault named only in a feed's record (evidence/data.json) is counted there, not here."
+}

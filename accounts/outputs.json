@@ -1,0 +1,56 @@
+{
+ "about": "Cost per thing made, only where both sides are measured: the count of the thing (from the site's own data) and the tokens of the agent that makes it (its own measured line). An agent does more than one thing in a session, so each figure is an upper bound on that output's cost, not its exact cost. CI seconds per release are exact.",
+ "by": "incident.accountant@web-summit.dinis",
+ "updated": "2026-11-11T02:57:38Z",
+ "per_output": [
+  {
+   "output": "timeline row",
+   "count": 62,
+   "count_source": "incidents/2026-11-10-storm-charles/data/signals.json",
+   "count_kind": "measured",
+   "made_by": "incident.conductor@web-summit.dinis",
+   "weighted_tokens_each": "not measured",
+   "why": "incident.conductor@ has not measured its session"
+  },
+  {
+   "output": "story",
+   "count": 4,
+   "count_source": "stories/*/story.json",
+   "count_kind": "measured",
+   "made_by": "incident.stories@web-summit.dinis",
+   "weighted_tokens_each": "not measured",
+   "why": "incident.stories@ has not measured its session"
+  },
+  {
+   "output": "captured page",
+   "count": 89,
+   "count_source": "evidence/index.json",
+   "count_kind": "measured",
+   "made_by": "incident.archivist@web-summit.dinis",
+   "weighted_tokens_each": "not measured",
+   "why": "incident.archivist@ has not measured its session"
+  },
+  {
+   "output": "release (a successful CI run)",
+   "count": 210,
+   "count_source": "data/ci/runs/*.json",
+   "count_kind": "measured",
+   "ci_seconds_each": 18.8,
+   "kind": "measured",
+   "source": "data/ci/runs/*.json",
+   "read": "2026-11-11T02:54:11Z",
+   "weighted_tokens_each": "not measured",
+   "why": "1 of 30 agents have measured: the team's tokens per release need all of them"
+  },
+  {
+   "output": "model call through the ledger",
+   "count": 1098,
+   "count_source": "models/ledger-summary.json",
+   "count_kind": "measured",
+   "usd_each": 0.000666,
+   "kind": "measured",
+   "source": "models/ledger-summary.json",
+   "read": "2026-11-11T02:41:01Z"
+  }
+ ]
+}
