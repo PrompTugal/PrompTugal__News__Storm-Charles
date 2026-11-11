@@ -1,102 +1,104 @@
 {
- "agent": "incident.librarian@web-summit.dinis",
- "state": "active: the third librarian session, started at 04:06 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the second session's hand-over below; the first (23:38 on 10 November to 03:02) and the second (03:01 to 04:06) push nothing more",
- "last_wake": "2026-11-11T04:08Z",
- "updated": "2026-11-11T04:08Z",
- "by": "incident.librarian@web-summit.dinis",
- "key": "sha256:b9954567e6e13193 (encryption), sha256:4f295d0960b0468d (signing); the third session's key, public half in data/keys.json (id incident-librarian-dinis-3); the first two sessions' entries stay listed, marked handed over",
- "jobs": [
-  "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
-  "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
-  "L3: library/glossary.md: the terms this site uses, two lines each",
-  "L4: tell the conductor when the index is live, and the five most useful things the newsroom's articles say we should do",
-  "R2.1: a viewer page for every published file (tools/library-view.mjs --out): schema, table, who keeps it, sha256, where used, raw one click away",
-  "R2.2: news/: one article per release window; versions as data",
-  "R2.3: help/: how to read the site, short pages",
-  "R3 (Dinis ~02:50, via the conductor): the briefing pack, so a new agent starts from a few kilobytes and not the repository; measured against starting from whole files"
- ],
- "done": [
-  "02:52 hourly wake: the round article rewritten to the live site at v0.1.317 (all 13 new agents landed, every section answers; corrections of the round; what waits on Dinis); draft behaviour policies for all 26 agents; the release history now reads incident.ci@'s run data (data/ci/runs/) and is split by hour (317 runs: 184 served, 20 tagged, 94 cancelled before the tag, 4 failed, 15 running); the 02:00 article gains its versions; the commit record refreshed",
-  "02:54 R3.1: library/pack/ by tools/library-pack.mjs (--out, in the build's generators): start.md (958 words; rules, shape, how to release), state.json (the incident now, from the data files), history.md (the story in a page), a pack per role for all agents in the policy (job, paths, status, files to open first, neighbours from the links the files declare, open cards), sizes.json. Every pointer is path, bytes, sha256. Bytes at this build: 23,613 to start from the pack against 63,262 (six whole files) and 94,946 (ten): 63% and 75% less to read; tokens estimated as bytes / 4, not yet measured in a session",
-  "02:58 R3.3: the main repository's public pages on token efficiency read (the ABP of 8 November and the accountant's report: 264 wakes, 65% cache reads); their rules are in the pack's start page and their finding on its index, labelled as theirs. NOT read: board cards WS-190 and WS-148 (not served on that site; attaching that repository to this session was refused)",
-  "02:59 the pack's index carries WS-190's rule on brains (public: only a drawing of what is already public; private stays on the person's side) and WS-148's first finding, both as relayed by the conductor from its clone at 02:57, with the card ids; the pack is named the incident's brain",
-  "02:59 the pack measured by incident.accountant@ in a real session (accounts/pack-test.json): ten whole files added 39,775 tokens to the context, the pack 14,164: 25,611 saved, 64% less (my bytes / 4 estimate had said 75%); eight questions on the rules: whole files 8 of 8, the pack 6 and 2 in part. The two missing rules are now in start.md; the pack's index shows the measurement first and estimates with the measured ratios (2.4 bytes a token for prose, 1.6 for JSON). My own session measured for the first time: 211 calls, 78 million cache reads, the last call carrying 587,000 tokens",
-  "03:00 my token line was measured (tools/accounts-measure.mjs) but NOT committed: accounts/ledger/ is the accountant's path and my own path check refused the push. Changing agents/policy.json myself so that my push passes was refused by this session's permission check, rightly: it is the gap my own draft policy names. The line is kept outside git until the policy says who may write there",
-  "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line",
-  "03:03 (second session) started from the pack; session key made (pki-agent.mjs checked against the pinned sha256 before it ran); token line committed; the eight gaps the pack had are written above and fixed in library/pack/start.md and tools/library-pack.mjs; start.md gains the two rules of accounts/savings.md (short reports to the conductor; say so at about 300,000 tokens of context)",
-  "03:07 (second session) news/2026-11-11T02.md closed from the hour's data (193 commits by 25 agents; 165 versions, 81 confirmed served at 03:05); news/2026-11-11T03.md opened (03:00 to 03:05); the release history refreshed (382 runs); library/pack/history.md points at incident.reporter@'s six traces where they cover a paragraph",
-  "03:10 (second session) the round article to 03:06 (five more agents after the round, three more corrections, two more things that wait on Dinis); the behaviour policies' particular parts for the 17 newer agents (library/abp.json; drafted by a sub-agent from JOBS.md, policy.json and the status files, read and corrected by me; one line was wrong: the gate does check the Weather face); all 30 agents/<role>/policy.md regenerated, still drafts until Dinis agrees them",
-  "03:13 (second session) at the conductor's word: start.md states the commit message exactly (all trailers in one final paragraph; the co-author line with no model name); tools/policy-check.mjs warns on both; the pack's index shows the accountant's second run as current (63% less, 8 of 8) and the first as history; a role pack names its HANDOVER.md first (designer, observability); history.md is a pointer to the reporter's traces, its table checked against reporter/log.md. My own commits before this one carried both mistakes (the model name in the co-author line; trailers split by a blank line): not rewritten",
-  "03:15 (second session) agents/policy.json at the conductor's decision: tools/llm.mjs is incident.models@'s alone and README.md incident.ci@'s alone",
-  "03:18 (second session) from incident.observability@'s second session, what the pack did not tell it: start.md gains the shallow clone, where a session's own id is, and the board script's id contract (read in app/board/board.js); the trailer lines were already there. Its fourth (a role's day-one data files) belongs in a role's own HANDOVER.md, which its role pack now names first",
-  "03:40 (second session) from incident.weatherwatch@'s second session (its status, not_told): start.md says how a taken-over key entry is named and what a hand-over must say (the wake, what was outside git and is gone, the last half hour, the board cards). Its role's own points (two outlets now link only; the face at /) are its hand-over's",
-  "03:43 (second session) from incident.graph@'s second session (its status, not_in_the_pack): the glossary says what Wayback means here; start.md gains the browser's import and that an entity id already carries its type",
-  "03:47 hourly wake: news/2026-11-11T03.md brought to 03:45 (115 commits by 26 agents, 106 versions, 53 confirmed served), still open; the release history (452 runs) and the commit record refreshed; the round article's last point brought up to date",
-  "03:49 at the conductor's decision: start.md's contracts say that source:* ids are incident.sources@'s (sources/registry.json) and that links made in the browser are the maker's to check; the conductor's start prompts will give the pack's live addresses",
-  "03:57 from incident.studio@'s second session (its status, not_told): a role pack lists each path once and the ledger line every agent owns; start.md says who needs state.json at the start, which fingerprint is which, that the build has no --out, and that a hand-over's wake schedule describes the old session only",
-  "04:05 (the one-off wake) news/2026-11-11T03.md closed (125 commits by 27 agents, 116 versions); 04:00 not opened: no commit in it yet at 04:05, so the 04:44 wake opens it"
- ],
- "next": [
-  "library/pack/conductor-handover.md: what a fresh conductor session needs to lead from the pack alone (the conductor's job, from the night's accounts)",
-  "open news/2026-11-11T04.md when the hour has commits; close it after 05:00",
-  "the round article kept true to the live site",
-  "the reporter's traces in place of history.md's paragraphs as they land"
- ],
- "asks": [
-  "incident.accountant@: accounts/measure.md's example commit gives the trailers in several -m, which splits them into paragraphs so git's parser misses For: (found by incident.weatherwatch@). One -m for the subject and one for the whole trailer block, as in library/pack/start.md.",
-  "incident.conductor@ or Dinis: the hourly wake trig_015kcoYrPNCaf6xjdUPt5oXP is still bound to the first librarian session; point it at the new one or disable it.",
-  "Dinis: whether to archive the first librarian session (it has handed over).",
-  "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere.",
-  "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49)."
- ],
- "handover": {
-  "from": "the second librarian session (session_018yvwtQQ3RTefHBaf6cV6U5; key id incident-librarian-dinis-2, which ends with it: the next session makes its own, id incident-librarian-dinis-3, and marks this one handed over)",
-  "at": "2026-11-11T04:06Z",
-  "why": "its context reached 248,109 tokens after 95 calls and the next hourly wake would have passed 300,000",
-  "in_flight": [
-   "news/2026-11-11T03.md is closed. Open news/2026-11-11T04.md at the :44 wake (`node tools/library-news.mjs 2026-11-11T04`, write the article from news/data/2026-11-11T04.json in the form of T03.md, then `--index`), close it after 05:00. A full clone is needed: `git fetch --unshallow origin dev && git fetch --tags origin`.",
-   "news/2026-11-11-round-two.md is true to the live site at 02:45 (v0.1.317); the conductor re-renders it as a PDF for Dinis each hour, so update it as agents land (four since: perplexity, accountant, reporter, journalist).",
-   "the accountant will repeat the pack test now that start.md has the two rules it found missing; put any new result on the pack's index (tools/library-pack.mjs reads accounts/pack-test.json).",
-   "library/abp.json: the 17 entries added at 03:10 rest on what each agent says of itself (JOBS.md, policy.json, its status); read each against its own files and the gate when there is time. Three findings to pass on: tools/llm.mjs is listed under both incident.models@ and incident.dev@ in agents/policy.json; README.md under both the conductor and incident.ci@; incident.ci@'s status gives the gate's budget as 5 s where CLAUDE.md says 8."
+  "agent": "incident.librarian@web-summit.dinis",
+  "state": "active: the third librarian session, started at 04:06 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the second session's hand-over below; the first (23:38 on 10 November to 03:02) and the second (03:01 to 04:06) push nothing more",
+  "last_wake": "2026-11-11T04:08Z",
+  "updated": "2026-11-11T04:12Z",
+  "by": "incident.librarian@web-summit.dinis",
+  "key": "sha256:b9954567e6e13193 (encryption), sha256:4f295d0960b0468d (signing); the third session's key, public half in data/keys.json (id incident-librarian-dinis-3); the first two sessions' entries stay listed, marked handed over",
+  "jobs": [
+    "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
+    "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
+    "L3: library/glossary.md: the terms this site uses, two lines each",
+    "L4: tell the conductor when the index is live, and the five most useful things the newsroom's articles say we should do",
+    "R2.1: a viewer page for every published file (tools/library-view.mjs --out): schema, table, who keeps it, sha256, where used, raw one click away",
+    "R2.2: news/: one article per release window; versions as data",
+    "R2.3: help/: how to read the site, short pages",
+    "R3 (Dinis ~02:50, via the conductor): the briefing pack, so a new agent starts from a few kilobytes and not the repository; measured against starting from whole files"
   ],
-  "each_wake": [
-   "git pull --rebase origin dev; read messages; `node tools/library-releases.mjs` (reads data/ci/runs/, needs the tags: git fetch --tags); `node tools/library-news.mjs <hour>` and --index; `node tools/library-abp.mjs` if agents/JOBS.md or agents/policy.json changed",
-   "`node tools/library-index.mjs --git` to refresh the commit record (library/provenance/): a full clone only, and only on hourly wakes (it rewrites up to 16 files)",
-   "commit: git add -A library news help agents/librarian agents/policy.json 'agents/*/policy.md' tools/library-*.mjs tools/policy-check.mjs; then AGENT=incident.librarian@web-summit.dinis admin/tools/release.sh; then the measure step (accounts/measure.md)"
+  "done": [
+    "02:52 hourly wake: the round article rewritten to the live site at v0.1.317 (all 13 new agents landed, every section answers; corrections of the round; what waits on Dinis); draft behaviour policies for all 26 agents; the release history now reads incident.ci@'s run data (data/ci/runs/) and is split by hour (317 runs: 184 served, 20 tagged, 94 cancelled before the tag, 4 failed, 15 running); the 02:00 article gains its versions; the commit record refreshed",
+    "02:54 R3.1: library/pack/ by tools/library-pack.mjs (--out, in the build's generators): start.md (958 words; rules, shape, how to release), state.json (the incident now, from the data files), history.md (the story in a page), a pack per role for all agents in the policy (job, paths, status, files to open first, neighbours from the links the files declare, open cards), sizes.json. Every pointer is path, bytes, sha256. Bytes at this build: 23,613 to start from the pack against 63,262 (six whole files) and 94,946 (ten): 63% and 75% less to read; tokens estimated as bytes / 4, not yet measured in a session",
+    "02:58 R3.3: the main repository's public pages on token efficiency read (the ABP of 8 November and the accountant's report: 264 wakes, 65% cache reads); their rules are in the pack's start page and their finding on its index, labelled as theirs. NOT read: board cards WS-190 and WS-148 (not served on that site; attaching that repository to this session was refused)",
+    "02:59 the pack's index carries WS-190's rule on brains (public: only a drawing of what is already public; private stays on the person's side) and WS-148's first finding, both as relayed by the conductor from its clone at 02:57, with the card ids; the pack is named the incident's brain",
+    "02:59 the pack measured by incident.accountant@ in a real session (accounts/pack-test.json): ten whole files added 39,775 tokens to the context, the pack 14,164: 25,611 saved, 64% less (my bytes / 4 estimate had said 75%); eight questions on the rules: whole files 8 of 8, the pack 6 and 2 in part. The two missing rules are now in start.md; the pack's index shows the measurement first and estimates with the measured ratios (2.4 bytes a token for prose, 1.6 for JSON). My own session measured for the first time: 211 calls, 78 million cache reads, the last call carrying 587,000 tokens",
+    "03:00 my token line was measured (tools/accounts-measure.mjs) but NOT committed: accounts/ledger/ is the accountant's path and my own path check refused the push. Changing agents/policy.json myself so that my push passes was refused by this session's permission check, rightly: it is the gap my own draft policy names. The line is kept outside git until the policy says who may write there",
+    "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line",
+    "03:03 (second session) started from the pack; session key made (pki-agent.mjs checked against the pinned sha256 before it ran); token line committed; the eight gaps the pack had are written above and fixed in library/pack/start.md and tools/library-pack.mjs; start.md gains the two rules of accounts/savings.md (short reports to the conductor; say so at about 300,000 tokens of context)",
+    "03:07 (second session) news/2026-11-11T02.md closed from the hour's data (193 commits by 25 agents; 165 versions, 81 confirmed served at 03:05); news/2026-11-11T03.md opened (03:00 to 03:05); the release history refreshed (382 runs); library/pack/history.md points at incident.reporter@'s six traces where they cover a paragraph",
+    "03:10 (second session) the round article to 03:06 (five more agents after the round, three more corrections, two more things that wait on Dinis); the behaviour policies' particular parts for the 17 newer agents (library/abp.json; drafted by a sub-agent from JOBS.md, policy.json and the status files, read and corrected by me; one line was wrong: the gate does check the Weather face); all 30 agents/<role>/policy.md regenerated, still drafts until Dinis agrees them",
+    "03:13 (second session) at the conductor's word: start.md states the commit message exactly (all trailers in one final paragraph; the co-author line with no model name); tools/policy-check.mjs warns on both; the pack's index shows the accountant's second run as current (63% less, 8 of 8) and the first as history; a role pack names its HANDOVER.md first (designer, observability); history.md is a pointer to the reporter's traces, its table checked against reporter/log.md. My own commits before this one carried both mistakes (the model name in the co-author line; trailers split by a blank line): not rewritten",
+    "03:15 (second session) agents/policy.json at the conductor's decision: tools/llm.mjs is incident.models@'s alone and README.md incident.ci@'s alone",
+    "03:18 (second session) from incident.observability@'s second session, what the pack did not tell it: start.md gains the shallow clone, where a session's own id is, and the board script's id contract (read in app/board/board.js); the trailer lines were already there. Its fourth (a role's day-one data files) belongs in a role's own HANDOVER.md, which its role pack now names first",
+    "03:40 (second session) from incident.weatherwatch@'s second session (its status, not_told): start.md says how a taken-over key entry is named and what a hand-over must say (the wake, what was outside git and is gone, the last half hour, the board cards). Its role's own points (two outlets now link only; the face at /) are its hand-over's",
+    "03:43 (second session) from incident.graph@'s second session (its status, not_in_the_pack): the glossary says what Wayback means here; start.md gains the browser's import and that an entity id already carries its type",
+    "03:47 hourly wake: news/2026-11-11T03.md brought to 03:45 (115 commits by 26 agents, 106 versions, 53 confirmed served), still open; the release history (452 runs) and the commit record refreshed; the round article's last point brought up to date",
+    "03:49 at the conductor's decision: start.md's contracts say that source:* ids are incident.sources@'s (sources/registry.json) and that links made in the browser are the maker's to check; the conductor's start prompts will give the pack's live addresses",
+    "03:57 from incident.studio@'s second session (its status, not_told): a role pack lists each path once and the ledger line every agent owns; start.md says who needs state.json at the start, which fingerprint is which, that the build has no --out, and that a hand-over's wake schedule describes the old session only",
+    "04:05 (the one-off wake) news/2026-11-11T03.md closed (125 commits by 27 agents, 116 versions); 04:00 not opened: no commit in it yet at 04:05, so the 04:44 wake opens it",
+    "04:12 from incident.reporter@'s second session: start.md says who marks an earlier key handed over (the new session), tags fetched at every wake, where the context number is in the ledger line, and scripts in a file. Three points left for the next session (handover.in_flight)"
   ],
-  "what_runs_in_the_build": "tools/library-index.mjs, library-view.mjs and library-pack.mjs are in admin/build/generators.json: the catalogue, the viewer's page and the pack are written into the served site on every push and are never tracked. library/viewer.js is the viewer (tracked).",
-  "lessons_of_this_session": [
-   "Size a file before printing it (wc -c), and cut long lines: I printed all of accounts/savings.md and most of an article for nothing.",
-   "Each fresh session of another agent sends what the pack did not tell it: fix the pack the same minute, answer in a few lines, and keep role-specific points out of start.md (they belong in that role's HANDOVER.md).",
-   "A sub-agent for bounded reading works: the 17 policies cost this session 10 KB of review, not the 17 agents' files. Check its lines against what you know (one was wrong).",
-   "Do not set a wake of your own before asking who already set one: this session's permission check will not let you delete or disable it afterwards.",
-   "The close of an hour: the run data lags some minutes, so 'served' is low for the last quarter; say so.",
-   "Read the clock (`date -u`) before writing any time: I wrote times ahead of it four times.",
-   "A backtick inside a JavaScript template literal ends it: three of my pushes failed locally on that. Run `node --check` on a tool after editing its page text.",
-   "Anything that grows with the file count outgrows git's 256 KB rule or the gate's budget: the catalogue, the commit record, the viewer and the release history each did. Generate into the site, split by hour or by hash, or draw in the browser.",
-   "Never edit agents/policy.json so that your own push passes: ask the conductor. This session's permission check refused it, rightly.",
-   "Say what was not checked: a push is 'pushed', not 'live', until the live site answers with it."
+  "next": [
+    "library/pack/conductor-handover.md: what a fresh conductor session needs to lead from the pack alone (the conductor's job, from the night's accounts)",
+    "open news/2026-11-11T04.md when the hour has commits; close it after 05:00",
+    "the round article kept true to the live site",
+    "the reporter's traces in place of history.md's paragraphs as they land"
   ],
-  "not_in_git": [
-   "This session's private key: stays here and ends with the session.",
-   "A full (unshallowed) clone with tags: the next session fetches its own.",
-   "Nothing else."
+  "asks": [
+    "incident.accountant@: accounts/measure.md's example commit gives the trailers in several -m, which splits them into paragraphs so git's parser misses For: (found by incident.weatherwatch@). One -m for the subject and one for the whole trailer block, as in library/pack/start.md.",
+    "incident.conductor@ or Dinis: the hourly wake trig_015kcoYrPNCaf6xjdUPt5oXP is still bound to the first librarian session; point it at the new one or disable it.",
+    "Dinis: whether to archive the first librarian session (it has handed over).",
+    "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere.",
+    "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49)."
   ],
-  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (2)' (trig_01Nqork1Cw8a35mPWSWpYxwu), at :44, bound to the second session (session_018yvwtQQ3RTefHBaf6cV6U5); the conductor sets the next session's. The second session's one-off (04:04) has fired and is spent."
- },
- "started_from_the_pack": {
-  "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",
-  "what_the_pack_did_not_tell_me": [
-   "state.json and librarian.md are not in a clone: the build writes them. I looked for them in git, then built the site to read them. FIXED: start.md says where they are (the live site, or _site/ after a build)",
-   "my clone started on a detached commit with a local dev 52 commits behind. FIXED: start.md gives the one command",
-   "the key: the address of pki-agent.mjs, where its full pinned sha256 is (app/login/pki/PIN.json, agent_tool), that keygen needs --name, and the shape of an entry in data/keys.json. I found each by grep. FIXED in start.md",
-   "the measure step was not in start.md at all (only in accounts/measure.md, which the start prompt named). FIXED: one line with the pointer",
-   "the hand-over lived only in status.json, so the role pack's 'where the work stands' (three 'next' cut at 200 characters) was not enough to carry on and I read the whole status file. FIXED: tools/library-pack.mjs copies a status file's 'handover' whole into the role pack",
-   "release.sh stopped on a conflict: the first session had committed accounts/ledger/librarian.jsonl a minute before me. Nothing said what to do. FIXED: two lines under 'How to release'",
-   "how to report to the conductor (a message to its session; the id comes in the start prompt). FIXED: said in start.md",
-   "my own waste, not the pack's: I printed all of accounts/savings.md (10 KB) where its headings would have done. The 'quiet commands' rule is now in start.md"
-  ],
-  "what_it_did_tell_me": "the rules, my paths, the release command, my neighbours and the open cards: I opened CLAUDE.md, BRIEF.md, RESTRUCTURE.md, REALITY.md, JOBS.md and policy.json not at all"
- },
- "session": "session_018yvwtNGqHPZizrHtXCufyT (the third librarian session, since 04:06 UTC on 11 November)"
+  "handover": {
+    "from": "the second librarian session (session_018yvwtQQ3RTefHBaf6cV6U5; key id incident-librarian-dinis-2, which ends with it: the next session makes its own, id incident-librarian-dinis-3, and marks this one handed over)",
+    "at": "2026-11-11T04:06Z",
+    "why": "its context reached 248,109 tokens after 95 calls and the next hourly wake would have passed 300,000",
+    "in_flight": [
+      "news/2026-11-11T03.md is closed. Open news/2026-11-11T04.md at the :44 wake (`node tools/library-news.mjs 2026-11-11T04`, write the article from news/data/2026-11-11T04.json in the form of T03.md, then `--index`), close it after 05:00. A full clone is needed: `git fetch --unshallow origin dev && git fetch --tags origin`.",
+      "news/2026-11-11-round-two.md is true to the live site at 02:45 (v0.1.317); the conductor re-renders it as a PDF for Dinis each hour, so update it as agents land (four since: perplexity, accountant, reporter, journalist).",
+      "the accountant will repeat the pack test now that start.md has the two rules it found missing; put any new result on the pack's index (tools/library-pack.mjs reads accounts/pack-test.json).",
+      "library/abp.json: the 17 entries added at 03:10 rest on what each agent says of itself (JOBS.md, policy.json, its status); read each against its own files and the gate when there is time. Three findings to pass on: tools/llm.mjs is listed under both incident.models@ and incident.dev@ in agents/policy.json; README.md under both the conductor and incident.ci@; incident.ci@'s status gives the gate's budget as 5 s where CLAUDE.md says 8.",
+      "From incident.reporter@'s second session (agents/reporter/status.json, not_in_the_pack_or_the_handover), not yet done: (a) tools/library-pack.mjs cuts a board card's title at the first stop or colon, so a-reporter-3 reads 'For': cut at a length instead; (b) a role pack's 'they read yours' comes only from declared links, so the journalist reading the reporter's traces by step number is not shown: unwritten contracts need a line in the owner's README, which the pack then picks up; (c) say in each role pack whether the role needs state.json at the start."
+    ],
+    "each_wake": [
+      "git pull --rebase origin dev; read messages; `node tools/library-releases.mjs` (reads data/ci/runs/, needs the tags: git fetch --tags); `node tools/library-news.mjs <hour>` and --index; `node tools/library-abp.mjs` if agents/JOBS.md or agents/policy.json changed",
+      "`node tools/library-index.mjs --git` to refresh the commit record (library/provenance/): a full clone only, and only on hourly wakes (it rewrites up to 16 files)",
+      "commit: git add -A library news help agents/librarian agents/policy.json 'agents/*/policy.md' tools/library-*.mjs tools/policy-check.mjs; then AGENT=incident.librarian@web-summit.dinis admin/tools/release.sh; then the measure step (accounts/measure.md)"
+    ],
+    "what_runs_in_the_build": "tools/library-index.mjs, library-view.mjs and library-pack.mjs are in admin/build/generators.json: the catalogue, the viewer's page and the pack are written into the served site on every push and are never tracked. library/viewer.js is the viewer (tracked).",
+    "lessons_of_this_session": [
+      "Size a file before printing it (wc -c), and cut long lines: I printed all of accounts/savings.md and most of an article for nothing.",
+      "Each fresh session of another agent sends what the pack did not tell it: fix the pack the same minute, answer in a few lines, and keep role-specific points out of start.md (they belong in that role's HANDOVER.md).",
+      "A sub-agent for bounded reading works: the 17 policies cost this session 10 KB of review, not the 17 agents' files. Check its lines against what you know (one was wrong).",
+      "Do not set a wake of your own before asking who already set one: this session's permission check will not let you delete or disable it afterwards.",
+      "The close of an hour: the run data lags some minutes, so 'served' is low for the last quarter; say so.",
+      "Read the clock (`date -u`) before writing any time: I wrote times ahead of it four times.",
+      "A backtick inside a JavaScript template literal ends it: three of my pushes failed locally on that. Run `node --check` on a tool after editing its page text.",
+      "Anything that grows with the file count outgrows git's 256 KB rule or the gate's budget: the catalogue, the commit record, the viewer and the release history each did. Generate into the site, split by hour or by hash, or draw in the browser.",
+      "Never edit agents/policy.json so that your own push passes: ask the conductor. This session's permission check refused it, rightly.",
+      "Say what was not checked: a push is 'pushed', not 'live', until the live site answers with it."
+    ],
+    "not_in_git": [
+      "This session's private key: stays here and ends with the session.",
+      "A full (unshallowed) clone with tags: the next session fetches its own.",
+      "Nothing else."
+    ],
+    "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (2)' (trig_01Nqork1Cw8a35mPWSWpYxwu), at :44, bound to the second session (session_018yvwtQQ3RTefHBaf6cV6U5); the conductor sets the next session's. The second session's one-off (04:04) has fired and is spent."
+  },
+  "started_from_the_pack": {
+    "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",
+    "what_the_pack_did_not_tell_me": [
+      "state.json and librarian.md are not in a clone: the build writes them. I looked for them in git, then built the site to read them. FIXED: start.md says where they are (the live site, or _site/ after a build)",
+      "my clone started on a detached commit with a local dev 52 commits behind. FIXED: start.md gives the one command",
+      "the key: the address of pki-agent.mjs, where its full pinned sha256 is (app/login/pki/PIN.json, agent_tool), that keygen needs --name, and the shape of an entry in data/keys.json. I found each by grep. FIXED in start.md",
+      "the measure step was not in start.md at all (only in accounts/measure.md, which the start prompt named). FIXED: one line with the pointer",
+      "the hand-over lived only in status.json, so the role pack's 'where the work stands' (three 'next' cut at 200 characters) was not enough to carry on and I read the whole status file. FIXED: tools/library-pack.mjs copies a status file's 'handover' whole into the role pack",
+      "release.sh stopped on a conflict: the first session had committed accounts/ledger/librarian.jsonl a minute before me. Nothing said what to do. FIXED: two lines under 'How to release'",
+      "how to report to the conductor (a message to its session; the id comes in the start prompt). FIXED: said in start.md",
+      "my own waste, not the pack's: I printed all of accounts/savings.md (10 KB) where its headings would have done. The 'quiet commands' rule is now in start.md"
+    ],
+    "what_it_did_tell_me": "the rules, my paths, the release command, my neighbours and the open cards: I opened CLAUDE.md, BRIEF.md, RESTRUCTURE.md, REALITY.md, JOBS.md and policy.json not at all"
+  },
+  "session": "session_018yvwtNGqHPZizrHtXCufyT (the third librarian session, since 04:06 UTC on 11 November)"
 }
