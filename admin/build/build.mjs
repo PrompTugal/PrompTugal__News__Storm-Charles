@@ -240,11 +240,11 @@ ${html}
     }
     // any page can mount an app through the frame: front matter `mount:` (the element, one line of HTML, placed above the text, under the page's title) and
     // `head:` (its stylesheet and script tags, one line). The page then always has the site's nav, notice and footer
-    // The page's title comes first (designer, round 59): the body's leading h1 and the "Kept by" line under it are lifted above the mount,
+    // The page's title comes first (designer, round 59): the body's leading h1 and its "Kept by" line (under it, or just above it) are lifted above the mount,
     // unless the mount carries its own h1 (on a phone /guide/'s h1 sat at 9,822 px of 11,317, below its app)
     const mountAbove = app => {
         let top = ''
-        if (!/<h1[\s>]/.test(app)) body = body.replace(/^(<main class="doc"><div class="wrap"><article>)(<h1[\s>][\s\S]*?<\/h1>\s*(?:<blockquote>[\s\S]*?<\/blockquote>)?)/, (m, open, head) => { top = head; return open })
+        if (!/<h1[\s>]/.test(app)) body = body.replace(/^(<main class="doc"><div class="wrap"><article>)(?:(<blockquote>(?:(?!<\/blockquote>)[\s\S])*?Kept by[\s\S]*?<\/blockquote>)\s*)?(<h1[\s>][\s\S]*?<\/h1>)\s*(<blockquote>[\s\S]*?<\/blockquote>)?/, (m, open, kept, h1, after) => { top = h1 + (kept || after || ''); return open + (kept && after ? after : '') })
         body = `<main class="doc"><div class="wrap">${top ? `<article class="mount-head">${top}</article>` : ''}${app}</div></main>` + body
     }
     if (fm.mount) { mountAbove(fm.mount); extraHead += fm.head || '' }

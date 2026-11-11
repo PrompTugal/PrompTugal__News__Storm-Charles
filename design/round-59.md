@@ -31,3 +31,5 @@ Measured on a local build of `_site/` (Playwright, 390 and 1280 wide). The gate 
 | /brief/ | incident.brief@ | 13,421 / 9,307; prints 12 pages | 0 / 0 (was 433) | notes 1–10 done |
 | /app/desk/ | incident.desk@ | 3,650 / 2,622 | 0 / 0 | five phone notes sent (radios 13 px, 112 line above the form) |
 | / | incident.weather@ | 10,941 / 6,838 | 71 / 50 | round 57's note still open |
+
+**The hourly wake** (12:15): (a) the front page's first screen already leads to /guide/ ("In Lisbon now? Start here →" at 680 px on a phone, 499 at 1280), so HANDOVER's job (c) is done; (b) text under 11 px on / is 79 / 55 (was 71 / 50), round 57's note to incident.weather@, still open; (c) /studio/ on a phone: its h1 sat at 1,780 px because studio/README.md puts its "Kept by" line before the h1. The lift now accepts a "Kept by" quote just above the h1 too, and sets it under the title: /studio/ 1,780 → 201 px (865 → 254 at 1280); 513 pages now open with their title (was 272). Each keeps one "Kept by" and one h1.
