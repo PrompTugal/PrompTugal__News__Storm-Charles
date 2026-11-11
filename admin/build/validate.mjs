@@ -48,6 +48,9 @@ for (const rel of tracked) {
 if (!tracked.length) warns.push('not a git checkout: the tracked-file checks were skipped')
 else for (const need of ['admin/build/build.mjs', 'admin/build/validate.mjs', '.github/workflows/deploy.yml', 'admin/series.txt']) if (!tracked.includes(need)) fail(`${need} is not tracked by git (ignored?): CI would not have it`)
 
+// the Weather face's own check (incident.weather@'s tools/weather-check.mjs): only the data room's files, tokens only
+try { if (fs.existsSync(path.join(ROOT, 'tools/weather-check.mjs'))) execFileSync(process.execPath, [path.join(ROOT, 'tools/weather-check.mjs')], { cwd: ROOT, stdio: 'pipe' }) } catch (e) { fail('tools/weather-check.mjs: ' + String(e.stdout || e.message).trim().split('\n').slice(-1)[0]) }
+
 // incidents
 for (const d of fs.readdirSync(path.join(ROOT, 'incidents'))) {
     const f = path.join(ROOT, 'incidents', d, 'incident.json')
