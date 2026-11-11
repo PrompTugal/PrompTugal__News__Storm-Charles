@@ -1,16 +1,16 @@
 {
   "id": "a-pageviews-vault",
   "kind": "ask",
-  "title": "Page views: a vault with append lanes, and whose key the events are sealed to",
+  "title": "Page views: whose key are the events sealed to? (the vault is answered: it exists)",
   "state": "open",
   "opened_utc": "2026-11-11T01:23:26Z",
-  "updated_utc": "2026-11-11T02:28:54Z",
+  "updated_utc": "2026-11-11T09:34:44Z",
   "owner": "incident.observability@web-summit.dinis",
   "raised_by": [
     "incident.observability@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "For page views, either make the SG/Send vault with append lanes and hand over its id and lane tokens, or say incident.observability@ may make it with the token; and say whose key the events are sealed to (a session key ends with its session).",
+  "summary": "The vault exists (Dinis's yes of 09:25 UTC, as incident.observability@ reports it) and the conductor has its key. One answer left: whose key are the events sealed to? incident.observability@ proposes a key pair made for this vault alone, its private half kept inside the vault, so whoever holds the vault's key (the conductor, Dinis) can drain it and no session key is needed. Say yes, or name another key. Until then the sender stays off.",
   "closes": "data/agents/views.json is published with counts.",
   "blocks": "Nobody can see how many people read the site: the sender is built and switched off.",
   "rank": 18,
@@ -18,14 +18,17 @@
     "a-sgsend-token"
   ],
   "evidence": [
-    "file:data/agents/obs.json"
+    "file:data/agents/obs.json",
+    "file:agents/observability/status.json",
+    "file:BRIEF.md"
   ],
   "sources": [
     {
       "file": "agents/observability/status.json",
       "field": "asks",
-      "sha": "c2997cf4aced",
-      "starts": "Dinis: page views need a vault with append lanes on SG/Send (as prompt"
+      "sha": "f1a34bb0c541",
+      "starts": "Dinis: page views, one answer left. The vault exists (zd1cb3kt, your y",
+      "full": "Dinis: page views, one answer left. The vault exists (zd1cb3kt, your yes of 09:25) and the conductor has its key. Whose key are the events sealed to? Proposed: a key pair made for this vault alone, its private half kept inside the vault, so whoever holds the vault's key (the conductor, you) can drain and no session key is needed. Say yes, or name another key. Until then the sender stays off."
     }
   ],
   "history": [
@@ -38,9 +41,22 @@
       "at": "2026-11-11T02:28:54Z",
       "by": "incident.board@web-summit.dinis",
       "change": "re-ranked 18 of 26 for Dinis: the list is now sorted by what stands before the launch first, at incident.conductor@'s direction (02:24 UTC)"
+    },
+    {
+      "at": "2026-11-11T09:34:44Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "incident.observability@ reworded its ask: the vault exists (Dinis's yes of 09:25), one answer left (whose key the events are sealed to); title and summary follow its new line, the first half recorded as answered in part"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T02:28:54Z",
-  "before_launch": false
+  "updated": "2026-11-11T09:34:44Z",
+  "before_launch": false,
+  "partly_answered": {
+    "text": "The vault for page views exists, made by incident.observability@ on Dinis's yes of 09:25 UTC on 11 November (as its status file says; BRIEF.md quotes his words to it: \"Yes create here the vault and then send the key to your conductor (via its append lane)\").",
+    "evidence": [
+      "file:agents/observability/status.json",
+      "file:BRIEF.md"
+    ],
+    "at": "2026-11-11T09:34:44Z"
+  }
 }

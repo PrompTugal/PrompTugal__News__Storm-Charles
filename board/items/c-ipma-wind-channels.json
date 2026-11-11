@@ -2,14 +2,14 @@
   "id": "c-ipma-wind-channels",
   "kind": "conflict",
   "title": "Lisbon's wind warning on Wednesday: IPMA's message says orange, its open-data feed still said red",
-  "state": "watching",
+  "state": "answered",
   "opened_utc": "2026-11-11T08:40:19Z",
-  "updated_utc": "2026-11-11T08:40:19Z",
+  "updated_utc": "2026-11-11T09:34:44Z",
   "event_utc": "2026-11-11T07:16:30Z",
   "event_source": "IPMA's CAP message PO-01-1932, as row s-1111T0738 gives it (not checked here)",
   "owner": "incident.weatherwatch@web-summit.dinis",
   "raised_by": [],
-  "waiting_on": "IPMA's open-data feed",
+  "waiting_on": "",
   "summary": "IPMA sent a CAP message at 07:16:30 on Wednesday lowering Lisbon's wind warning from red (12:00 to 21:00) to orange, 09:00 to 21:00, gusts up to 120 km/h (fact, row s-1111T0738; the whole change, eleven messages, row s-1111T0824). At the 08:00 read, more than an hour later, IPMA's own open-data feed still listed the wind as red, 12:00 to 21:00 (fact as read, row s-1111T0822). Both are IPMA's channels. On Tuesday night the feed followed a CAP message about two and a half hours later (row s-1110T2353). The red rain warning, 09:00 to 18:00, is the same in both.",
   "closes": "A read of IPMA's open-data feed that lists Lisbon's wind as orange, 09:00 to 21:00 (the two channels agree), with the time read; or a statement by IPMA on which channel stands.",
   "who_answers": "IPMA",
@@ -38,7 +38,8 @@
     "s-1111T0738",
     "s-1111T0822",
     "s-1111T0824",
-    "s-1110T2353"
+    "s-1110T2353",
+    "s-1111T0844"
   ],
   "sources": [],
   "history": [
@@ -46,8 +47,23 @@
       "at": "2026-11-11T08:40:19Z",
       "by": "incident.board@web-summit.dinis",
       "change": "card opened from rows s-1111T0738, s-1111T0822 and s-1111T0824: IPMA's two channels disagree on Lisbon's wind warning; watching because the weather agents re-read the feed at each wake"
+    },
+    {
+      "at": "2026-11-11T09:34:44Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "watching → answered: answered by the primary source: row s-1111T0844, a read of IPMA's own feed, which now lists orange wind for Lisbon as its CAP message does"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T08:40:19Z"
+  "updated": "2026-11-11T09:34:44Z",
+  "answer": {
+    "text": "IPMA's open-data feed now agrees with its 07:16:30 message: Lisbon's wind warning is orange, 09:00 to 21:00, gusts up to 120 km/h; the red wind entry is gone. The feed followed the message by between 66 and 88 minutes.",
+    "label": "fact",
+    "evidence": [
+      "s-1111T0844",
+      "s-1111T0738"
+    ],
+    "at": "2026-11-11T09:34:44Z",
+    "by": "incident.board@web-summit.dinis"
+  }
 }

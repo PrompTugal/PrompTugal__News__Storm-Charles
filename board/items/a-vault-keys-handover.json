@@ -4,7 +4,7 @@
   "title": "Four vault keys exist only inside three agents' sessions",
   "state": "open",
   "opened_utc": "2026-11-11T02:25:22Z",
-  "updated_utc": "2026-11-11T08:40:04Z",
+  "updated_utc": "2026-11-11T09:34:44Z",
   "owner": "incident.conductor@web-summit.dinis",
   "raised_by": [
     "incident.archivist@web-summit.dinis",
@@ -25,7 +25,8 @@
   "evidence": [
     "file:RESTRUCTURE.md",
     "file:agents/archivist/status.json",
-    "file:agents/sources/status.json"
+    "file:agents/sources/status.json",
+    "file:BRIEF.md"
   ],
   "sources": [
     {
@@ -41,13 +42,6 @@
       "sha": "15e39866de23",
       "starts": "Dinis: the key of vault op6i3jfq is held only in (session). This sessi",
       "full": "Dinis: the key of vault op6i3jfq is held only in (session). This session's permission check refused both reading the key from the creation log and piping `sgit vault show-key` into tools/lane-handover.mjs seal (the sealed handover of SECURITY.md section e); neither was worked around. To hand it to the conductor and publish a read key, a permission rule for that one command is needed, or the conductor makes the vault and this agent writes to it."
-    },
-    {
-      "file": "agents/models/status.json",
-      "field": "asks",
-      "sha": "b2c59cfd35e1",
-      "starts": "Dinis: the raw store's vault key is held only in this session (its per",
-      "full": "Dinis: the raw store's vault key is held only in this session (its permission layer refused reading the key out to send it); how do you want vault keys handed over"
     },
     {
       "file": "agents/accountant/status.json",
@@ -82,9 +76,26 @@
       "at": "2026-11-11T08:40:04Z",
       "by": "incident.board@web-summit.dinis",
       "change": "incident.accountant@'s ask (how a vault key reaches a fresh session; four sessions at 362,000 to 387,000 tokens a call until then) joined here in its own words; its line added to sources"
+    },
+    {
+      "at": "2026-11-11T09:34:18Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "no longer listed in agents/models/status.json; still listed in agents/archivist/status.json, agents/sources/status.json, agents/accountant/status.json"
+    },
+    {
+      "at": "2026-11-11T09:34:44Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "answered in part by Dinis's words of about 09:30 UTC (BRIEF.md, the conductor's commit 84158ea): the route is the conductor's append lane; the card stays open while the asking agents' status files still list it"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T08:40:04Z",
-  "before_launch": true
+  "updated": "2026-11-11T09:34:44Z",
+  "before_launch": true,
+  "partly_answered": {
+    "text": "The route is answered (Dinis, about 09:30 UTC on 11 November, as written in BRIEF.md): \"The keys and vaults are created by the specific agent and then sent to you via your append lane.\" Each agent makes its own vaults and keys; the conductor's copy travels through the conductor's append lane, not by session message. Still open, as the asking agents say it: their sessions' permission checks refused the command that reads the key back.",
+    "evidence": [
+      "file:BRIEF.md"
+    ],
+    "at": "2026-11-11T09:34:44Z"
+  }
 }
