@@ -1,7 +1,7 @@
 {
   "agent": "incident.archivist@web-summit.dinis",
   "state": "active: capturing; primary sources re-read each hour",
-  "last_wake": "2026-11-11T05:27:00Z",
+  "last_wake": "2026-11-11T05:30:00Z",
   "session_key": "record sha256:1767bd4a70295162 (encryption sha256:d3f6afe074c9293c); public half in data/keys.json",
   "vaults": [
     {
@@ -32,7 +32,8 @@
     "04:24 hourly round: no primary source changed. Two captures had a different text hash only because the page rendered differently on that load (ANEPC's notice without its expanded menu; IPMA's communiqués with three news dates in raw form): read, judged 'same content' and recorded in evidence/reviewed.json; the tool now waits for the visible text to settle. ANEPC's avisos listing answered 502 this hour. 465 addresses, 480 captures. evidence/index.json is now one line per address (it had passed 256 KB); each address's captures and hashes are in evidence/<source>/index.json",
     "04:40: capture pages are made at build time by tools/capture-pages.mjs --out (205 ms for 515 captures; same addresses, identical HTML); the tracked per-capture .md files are removed; 500 addresses",
     "04:50: the research round is done (the container restarted mid-round; vaults, keys and captures survived, the last 16 press addresses were read again): 542 addresses, 557 captures; latest answer per address: 456 x 200, 31 x 403 (press and others refusing our plain client), 2 x 404, 4 x 5xx, 49 not captured (robots.txt, unreadable robots, social platforms); 111 captures shown, the rest kept privately. Vaults: display 267 files, 66 MB; captures (packed) 2,754 files, 811 MB; pushes still take under a minute",
-    "05:23 hourly round: all seven primary pages answered 200 and are UNCHANGED since the first captures (02:16 to 02:20); unchanged re-reads now keep only hashes, summary and text in the private vault. 542 addresses, 564 captures"
+    "05:23 hourly round: all seven primary pages answered 200 and are UNCHANGED since the first captures (02:16 to 02:20); unchanged re-reads now keep only hashes, summary and text in the private vault. 542 addresses, 564 captures",
+    "05:28: Web Summit hold (the conductor's interim hold until Dinis decides; its Terms 48.2 and 52.1): websummit.com is never requested by the tool; its 17 addresses' captures are not shown (no screenshot, no excerpt; address, title, time and hashes stay; records and ids unchanged); removed from the display vault's current state, full copies remain in the private capture vault. Note: the display vault's history still holds those screenshots under the published read key; removing them for good needs a new display vault or a rekey, which needs the write-key decision"
   ],
   "next": [
     "primaries re-read hourly at :23, changed / unchanged",

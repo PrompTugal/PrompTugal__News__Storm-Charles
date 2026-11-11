@@ -4,11 +4,11 @@ summary: Our dated captures of every outside page this site cites: a screenshot,
 ---
 ## Wayback: our captures of outside pages and feeds
 
-> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 05:25 UTC
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 05:27 UTC
 
 Every time this site cites an outside page, we keep what that page looked like at that moment: a screenshot, the HTML as served, and the sha256 of each. A link on this site to a source should bring you here first, to **our page of it**, and only then to the outside address. When we read a page again we record whether it still says the same thing.
 
-**542 addresses, 564 captures, 118 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
+**542 addresses, 564 captures, 103 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
 
 | Source | Page (our latest capture) | Last read | Captures | Since the one before | Shown |
 |---|---|---|---|---|---|
@@ -525,15 +525,15 @@ Every time this site cites an outside page, we keep what that page looked like a
 | weather.gov | [Contact Us](weather-gov/2026/11/11/0302-contact.md) `weather.gov/contact` | 11 Nov 2026, 03:02 UTC | 1 | one capture | screenshot |
 | weather.gov | [Disclaimer](weather-gov/2026/11/11/0300-disclaimer.md) `weather.gov/disclaimer` | 11 Nov 2026, 03:00 UTC | 1 | one capture | screenshot |
 | weather.gov | [Request for Permission to Use Official NOAA Emblem and NWS Logo](weather-gov/2026/11/11/0304-logorequest.md) `weather.gov/logorequest` | 11 Nov 2026, 03:04 UTC | 1 | one capture | screenshot |
-| Web Summit | [Web Summit - The best tech conference on the planet · November 9-12, 2026](websummit/2026/11/11/0223-front.md) `websummit.com/` | 11 Nov 2026, 02:23 UTC | 1 | one capture | screenshot |
-| Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0523-blog.md) `websummit.com/blog/` | 11 Nov 2026, 05:23 UTC | 4 | unchanged at the last read | screenshot |
-| Web Summit | [Important event update](websummit/2026/11/11/0523-blog-web-summit-important-event-update-2026.md) `websummit.com/blog/web-summit/important-event-update-2026/` | 11 Nov 2026, 05:23 UTC | 4 | unchanged at the last read | screenshot |
-| Web Summit | [Mobile app · Essentials · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-essentials-app.md) `websummit.com/essentials/app/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
-| Web Summit | [Schedule · Essentials · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-essentials-schedule.md) `websummit.com/essentials/schedule/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
-| Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0224-news.md) `websummit.com/news/` | 11 Nov 2026, 02:24 UTC | 1 | one capture | screenshot |
-| Web Summit | [Check out the 2026 program · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-schedule.md) `websummit.com/schedule/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
-| Web Summit | [websummit.com/sitemap.xml](websummit/2026/11/11/0240-sitemap-xml.md) `websummit.com/sitemap.xml` | 11 Nov 2026, 02:40 UTC | 1 | one capture | screenshot |
-| Web Summit | [PITCH · Startup competition at Web Summit · November 9-12, 2026](websummit/2026/11/11/0228-startups-pitch.md) `websummit.com/startups/pitch/` | 11 Nov 2026, 02:28 UTC | 1 | one capture | screenshot |
+| Web Summit | [Web Summit - The best tech conference on the planet · November 9-12, 2026](websummit/2026/11/11/0223-front.md) `websummit.com/` | 11 Nov 2026, 02:23 UTC | 1 | one capture | hash and excerpt |
+| Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0523-blog.md) `websummit.com/blog/` | 11 Nov 2026, 05:23 UTC | 4 | unchanged at the last read | hash and excerpt |
+| Web Summit | [Important event update](websummit/2026/11/11/0523-blog-web-summit-important-event-update-2026.md) `websummit.com/blog/web-summit/important-event-update-2026/` | 11 Nov 2026, 05:23 UTC | 4 | unchanged at the last read | hash and excerpt |
+| Web Summit | [Mobile app · Essentials · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-essentials-app.md) `websummit.com/essentials/app/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | hash and excerpt |
+| Web Summit | [Schedule · Essentials · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-essentials-schedule.md) `websummit.com/essentials/schedule/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | hash and excerpt |
+| Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0224-news.md) `websummit.com/news/` | 11 Nov 2026, 02:24 UTC | 1 | one capture | hash and excerpt |
+| Web Summit | [Check out the 2026 program · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-schedule.md) `websummit.com/schedule/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | hash and excerpt |
+| Web Summit | [websummit.com/sitemap.xml](websummit/2026/11/11/0240-sitemap-xml.md) `websummit.com/sitemap.xml` | 11 Nov 2026, 02:40 UTC | 1 | one capture | hash and excerpt |
+| Web Summit | [PITCH · Startup competition at Web Summit · November 9-12, 2026](websummit/2026/11/11/0228-startups-pitch.md) `websummit.com/startups/pitch/` | 11 Nov 2026, 02:28 UTC | 1 | one capture | hash and excerpt |
 | Wikipedia | [2026–27 European windstorm season - Wikipedia](wikipedia/2026/11/11/0257-wiki-2026-e2-80-9327-european-windstorm-season.md) `en.wikipedia.org/wiki/2026%E2%80%9327_European_windstorm_season` | 11 Nov 2026, 02:57 UTC | 1 | one capture | screenshot |
 | Wikipedia | [51st Annie Awards - Wikipedia](wikipedia/2026/11/11/0304-wiki-51st-annie-awards.md) `en.wikipedia.org/wiki/51st_Annie_Awards` | 11 Nov 2026, 03:04 UTC | 1 | one capture | screenshot |
 | Wikipedia | [2026–27 European windstorm season - Wikipedia](wikipedia/2026/11/11/0257-wiki-storm-charles.md) `en.wikipedia.org/wiki/Storm_Charles` | 11 Nov 2026, 02:57 UTC | 1 | one capture | screenshot |
@@ -561,7 +561,7 @@ Machine feeds are read on a schedule by their own agents; each read is kept with
 
 | Feed | Address | Reads | Changes | First read | Last read | Every read |
 |---|---|---|---|---|---|---|
-| meteoalarm/portugal | `https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal` | 7 | 0 | 11 Nov 2026, 02:14 UTC | 11 Nov 2026, 04:24 UTC | [reads.json](../sources/meteoalarm/data/portugal/reads.json) |
+| meteoalarm/portugal | `https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal` | 8 | 0 | 11 Nov 2026, 02:14 UTC | 11 Nov 2026, 05:25 UTC | [reads.json](../sources/meteoalarm/data/portugal/reads.json) |
 
 ## How to read a capture
 

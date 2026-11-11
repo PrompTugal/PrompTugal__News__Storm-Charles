@@ -74,6 +74,14 @@ for (const f of walk(IN, n => n === 'capture.json').sort()) {
     byId.set(rec.id, rec); added++
 }
 
+// the source table is the policy and is applied to every record on every run: a source set to 'not shown' later takes its
+// earlier captures out of the display vault's working copy and off the pages (the record, its address and hashes stay)
+for (const r of byId.values()) {
+    const src = sourceOf(r.host)
+    if (!src.show && (r.shown || r.vault)) { r.shown = false; r.vault = null; r.licence = src.licence; fs.rmSync(path.join(DV, r.id), { recursive: true, force: true }) }
+    if (!src.show) r.licence = src.licence
+    if (src.no_text) { delete r.excerpt; if (r.diff) { delete r.diff.added_text; delete r.diff.removed_text } }
+}
 // ---- 2. the chain of each address: earlier and later captures, changed or unchanged
 const all = [...byId.values()].sort((a, b) => a.read_utc.localeCompare(b.read_utc) || a.id.localeCompare(b.id))
 const chains = new Map()
