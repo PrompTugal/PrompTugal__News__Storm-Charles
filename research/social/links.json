@@ -1,24 +1,127 @@
 {
-  "about": "Which kept post bears on which row of the timeline (incidents/2026-11-10-storm-charles/timeline.md, ids in data/signals.json). Kept by hand, read by tools/social-read.mjs, which folds each link into the post. `relation`: supports (says the same, later), precedes (says it before the time the row gives), updates (says something newer than the row), relays (an organisation repeating a body's notice). Our reading of two texts side by side: analysis, never a fact.",
+  "about": "Which kept post bears on which row of the timeline (incidents/2026-11-10-storm-charles/timeline.md, ids in data/signals.json). Kept by hand, read by tools/social-read.mjs, which folds each link into the post. `relation`: supports (says the same, later), precedes (says it before the time the row gives), updates (says something newer than the row), relays (an organisation repeating a body's notice), is the source of (the row was made from this post). Our reading of two texts side by side: analysis, never a fact.",
   "by": "incident.social@web-summit.dinis",
-  "updated": "2026-11-11T02:30:00Z",
+  "updated": "2026-11-11T02:34:00Z",
   "links": [
-    { "post": "bsky-aemet.es-3mzupbdp5422l", "row": "s-1109T1317", "relation": "precedes", "note": "AEMET says the storm is named Charles at 10:20, 2 h 57 min before the time the row gives for IPMA's communiqué no. 1 (13:17)" },
-    { "post": "bsky-vost.pt-3mzvcx3khkw2l", "row": "s-1109T1317", "relation": "relays", "note": "VOST summarises IPMA's communiqué 2 h 55 min after the row's time" },
-    { "post": "bsky-vost.pt-3mzwyrhvb2s2k", "row": "s-1109T2030", "relation": "relays", "note": "VOST relays ANEPC's warning to the population the next morning, 11 h 45 min later" },
-    { "post": "bsky-vost.pt-3mzwxn32utr2s", "row": "s-1110T0718", "relation": "relays", "note": "IPMA's red wind warning for Lisbon, 37 min after IPMA sent it (07:18)" },
-    { "post": "bsky-lusa.pt-3mzx3kquwnm2o", "row": "s-1110T0718", "relation": "supports", "note": "Lusa: eight districts under red for wind, 1 h 47 min after IPMA sent it" },
-    { "post": "bsky-publico.pt-3mzxgr7nj772m", "row": "s-1110T1210", "relation": "supports", "note": "Público: the alert situation made official, 15 min after the row's time" },
-    { "post": "bsky-vost.pt-3mzxkxwk7ml2k", "row": "s-1110T1210", "relation": "supports", "note": "VOST: the declaration is published in the Diário da República (a short link, not followed by us)" },
-    { "post": "bsky-lusa.pt-3mzxlp3ijxo2d", "row": "s-1110T1425", "relation": "precedes", "note": "Lusa: Lisbon closes tunnels, parks and cultural venues at midnight, 31 min before the row's source" },
-    { "post": "bsky-lusa.pt-3mzyiilo7ik2a", "row": "s-1110T1425", "relation": "updates", "note": "Lusa at 22:29: traffic already without restrictions on the Vasco da Gama and 25 de Abril bridges; the row says limited to 60 km/h" },
-    { "post": "bsky-vost.pt-3mzxvakq7y325", "row": "s-1110T1742", "relation": "relays", "note": "IPMA's red rain warning for Lisbon (12:00 to 18:00), 15 min after IPMA sent it (16:30) and 57 min before the row's read" },
-    { "post": "bsky-lusa.pt-3mzxzzurc2d2o", "row": "s-1110T1753", "relation": "supports", "note": "Lusa: the government recommends suspending Wednesday's work, 17 min after the row's source" },
-    { "post": "bsky-websummit.bsky.social-3mzxy4lxhit2j", "row": "s-1110T1905", "relation": "supports", "note": "the organisers' last post: the row cites it; still their last at our latest read" },
-    { "post": "bsky-lusa.pt-3mzyabr6jrv2l", "row": "s-1110T1909", "relation": "supports", "note": "Lusa: Web Summit cancelled on Wednesday, 53 min after the organisers' own page" },
-    { "post": "bsky-publico.pt-3mzyeikdeos2f", "row": "s-1110T1909", "relation": "supports", "note": "Público mentions the cancelled Wednesday programme, 2 h 9 min after" },
-    { "post": "bsky-lusa.pt-3mzxykic2uj25", "row": "s-1110T2352", "relation": "precedes", "note": "Lusa: ANA expects cancellations at Lisbon, Faro and Madeira, posted 17:44; the row was read at 23:52" },
-    { "post": "bsky-vost.pt-3mzykajios22p", "row": "s-1110T2235", "relation": "supports", "note": "VOST shows the ECMWF model's track further south (a picture, not kept)" },
-    { "post": "bsky-vost.pt-3mzyhxvwhry25", "row": "s-1110T2353", "relation": "relays", "note": "IPMA's move of Lisbon's red rain to 09:00, 57 min after IPMA sent it (21:23) and 1 h 33 min before the row's read. The press we read had not reported it by 00:15 (row s-1111T0015)" }
+    {
+      "post": "bsky-aemet.es-3mzupbdp5422l",
+      "row": "s-1109T1317",
+      "relation": "precedes",
+      "note": "AEMET says the storm is named Charles at 10:20, 2 h 57 min before the time the row gives for IPMA's communiqué no. 1 (13:17)"
+    },
+    {
+      "post": "bsky-vost.pt-3mzvcx3khkw2l",
+      "row": "s-1109T1317",
+      "relation": "relays",
+      "note": "VOST summarises IPMA's communiqué 2 h 55 min after the row's time"
+    },
+    {
+      "post": "bsky-vost.pt-3mzwyrhvb2s2k",
+      "row": "s-1109T2030",
+      "relation": "relays",
+      "note": "VOST relays ANEPC's warning to the population the next morning, 11 h 45 min later"
+    },
+    {
+      "post": "bsky-vost.pt-3mzwxn32utr2s",
+      "row": "s-1110T0718",
+      "relation": "relays",
+      "note": "IPMA's red wind warning for Lisbon, 37 min after IPMA sent it (07:18)"
+    },
+    {
+      "post": "bsky-lusa.pt-3mzx3kquwnm2o",
+      "row": "s-1110T0718",
+      "relation": "supports",
+      "note": "Lusa: eight districts under red for wind, 1 h 47 min after IPMA sent it"
+    },
+    {
+      "post": "bsky-publico.pt-3mzxgr7nj772m",
+      "row": "s-1110T1210",
+      "relation": "supports",
+      "note": "Público: the alert situation made official, 15 min after the row's time"
+    },
+    {
+      "post": "bsky-vost.pt-3mzxkxwk7ml2k",
+      "row": "s-1110T1210",
+      "relation": "supports",
+      "note": "VOST: the declaration is published in the Diário da República (a short link, not followed by us)"
+    },
+    {
+      "post": "bsky-lusa.pt-3mzxlp3ijxo2d",
+      "row": "s-1110T1425",
+      "relation": "precedes",
+      "note": "Lusa: Lisbon closes tunnels, parks and cultural venues at midnight, 31 min before the row's source"
+    },
+    {
+      "post": "bsky-lusa.pt-3mzyiilo7ik2a",
+      "row": "s-1110T1425",
+      "relation": "updates",
+      "note": "Lusa at 22:29: traffic already without restrictions on the Vasco da Gama and 25 de Abril bridges; the row says limited to 60 km/h"
+    },
+    {
+      "post": "bsky-vost.pt-3mzxvakq7y325",
+      "row": "s-1110T1742",
+      "relation": "relays",
+      "note": "IPMA's red rain warning for Lisbon (12:00 to 18:00), 15 min after IPMA sent it (16:30) and 57 min before the row's read"
+    },
+    {
+      "post": "bsky-lusa.pt-3mzxzzurc2d2o",
+      "row": "s-1110T1753",
+      "relation": "supports",
+      "note": "Lusa: the government recommends suspending Wednesday's work, 17 min after the row's source"
+    },
+    {
+      "post": "bsky-websummit.bsky.social-3mzxy4lxhit2j",
+      "row": "s-1110T1905",
+      "relation": "supports",
+      "note": "the organisers' last post: the row cites it; still their last at our latest read"
+    },
+    {
+      "post": "bsky-lusa.pt-3mzyabr6jrv2l",
+      "row": "s-1110T1909",
+      "relation": "supports",
+      "note": "Lusa: Web Summit cancelled on Wednesday, 53 min after the organisers' own page"
+    },
+    {
+      "post": "bsky-publico.pt-3mzyeikdeos2f",
+      "row": "s-1110T1909",
+      "relation": "supports",
+      "note": "Público mentions the cancelled Wednesday programme, 2 h 9 min after"
+    },
+    {
+      "post": "bsky-lusa.pt-3mzxykic2uj25",
+      "row": "s-1110T2352",
+      "relation": "precedes",
+      "note": "Lusa: ANA expects cancellations at Lisbon, Faro and Madeira, posted 17:44; the row was read at 23:52"
+    },
+    {
+      "post": "bsky-vost.pt-3mzykajios22p",
+      "row": "s-1110T2235",
+      "relation": "supports",
+      "note": "VOST shows the ECMWF model's track further south (a picture, not kept)"
+    },
+    {
+      "post": "bsky-vost.pt-3mzyhxvwhry25",
+      "row": "s-1110T2353",
+      "relation": "relays",
+      "note": "IPMA's move of Lisbon's red rain to 09:00, 57 min after IPMA sent it (21:23) and 1 h 33 min before the row's read. The press we read had not reported it by 00:15 (row s-1111T0015)"
+    },
+    {
+      "post": "bsky-aemet.es-3mzupbdp5422l",
+      "row": "s-1109T1020",
+      "relation": "is the source of",
+      "note": "the timeline row was made from this post (offered by incident.social@, taken by the conductor)"
+    },
+    {
+      "post": "bsky-vost.pt-3mzyhxvwhry25",
+      "row": "s-1110T2220",
+      "relation": "is the source of",
+      "note": "the timeline row was made from this post (offered by incident.social@, taken by the conductor)"
+    },
+    {
+      "post": "bsky-lusa.pt-3mzyiilo7ik2a",
+      "row": "s-1110T2229",
+      "relation": "is the source of",
+      "note": "the timeline row was made from this post (offered by incident.social@, taken by the conductor)"
+    }
   ]
 }
