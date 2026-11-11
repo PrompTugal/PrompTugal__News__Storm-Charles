@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T05:48Z",
-  "updated": "2026-11-11T09:55Z",
-  "based_on_read_utc": "2026-11-11T07:38:35Z",
+  "updated": "2026-11-11T18:56Z",
+  "based_on_read_utc": "2026-11-11T18:23:17Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -71,6 +71,13 @@
         "p17",
         "p18",
         "p19"
+      ]
+    },
+    {
+      "id": "wednesday",
+      "title": "Wednesday afternoon: the wire behind the warning",
+      "claims": [
+        "p20"
       ]
     }
   ],
@@ -144,6 +151,13 @@
       "what": "Retold on the media desk's table of 09:39:39 UTC. Before, p12 said: \"No article title and no live-blog entry among the pages read reported that move by 00:15 on Wednesday, and the media desk's table still counted none when this was written.\" Now: the table counts one press text, Observador's live entry of 08:46:16 on Wednesday, 683 minutes after IPMA's message.",
       "claims_changed": [
         "p12"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T18:56Z",
+      "what": "p20 added (rows s-1111T1744, s-1111T1853): a Lusa report of about 17:00 still had Faro red and Lisbon's orange wind to 18:00, after IPMA's 15:55:03 messages had ended them; Lusa caught up at 18:10.",
+      "claims_changed": [
+        "p20"
       ]
     }
   ],
@@ -1107,6 +1121,52 @@
         }
       ],
       "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p20",
+      "label": "evidence",
+      "text": "On Wednesday afternoon the wire ran behind IPMA. At 15:55:03 IPMA's messages ended Lisbon's orange wind at 15:56 and took Faro's wind down from red to orange to 18:00. A Lusa report of about 17:00, carried by Observador (17:05) and RTP (17:17), still had Faro at the highest level and Lisbon's orange wind to 18:00, citing an IPMA update \"cerca das 16:40\": the warnings as they stood before the 15:55 messages. The press caught up at 18:10, when Lusa reported Portugal without red warnings \"após desativação em Faro\". IPMA's own feed, re-read at 17:43, had no red warning anywhere.",
+      "said_by": "Lusa, as carried by Observador and RTP (the titles); IPMA (the messages)",
+      "at_utc": "2026-11-11T17:05Z",
+      "read_utc": "2026-11-11T18:23:17Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T1744"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1609"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1853"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1944].sent_utc",
+          "expect": "2026-11-11T15:55:03+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1944].expires_utc",
+          "expect": "2026-11-11T18:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1945].expires_utc",
+          "expect": "2026-11-11T15:56:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1944].event_pt",
+          "expect": "Aviso Laranja Vento"
+        }
+      ]
     }
   ]
 }
