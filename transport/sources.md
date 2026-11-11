@@ -1,8 +1,8 @@
 # Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:15 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:19 UTC
 
-Not a warning service. No advice of ours: **check with your airline or operator.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+Not a warning service. No advice of ours. **Your airline or operator decides whether your flight or service runs: its site or app has the latest.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 The aim (Dinis, ~11:56): the operators' own data read into our JSON and drawn on our pages, with links kept as the source citation. Within each source's terms. A block is never got round. Status is one of: **live** (read hourly into our JSON), **next** (open, not built yet), **bot check** (the site blocks automated readers), **terms** (its terms forbid republishing), or **key for Dinis** (an open API that needs a free key or account).
 

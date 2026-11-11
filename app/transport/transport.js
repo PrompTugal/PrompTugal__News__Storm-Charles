@@ -72,7 +72,7 @@
     return '<section class="card tr-dec"><h2>' + esc(title || 'Decisions recorded by our researcher') + '</h2><p class="meta">From the researcher’s list (data/decisions/entities/), mostly read through the press because the operator publishes nothing we can read: so mostly evidence, labelled.</p><ul class="feed">' +
       rows.slice(0, 8).map(function (r) { return '<li>' + ftm(r.d.published_utc) + '<div>' + lbl(r.d.label) + '<b>' + esc(r.d.decision) + '</b><span class="via">' + esc(r.d.decided_by || '') + ' · ' + prov('source', r.d.address, r.d.read) + ' · <a href="' + room + 'decisions/entities/' + r.ent + '.json">' + esc(r.ent) + '.json</a></span></div></li>' }).join('') + '</ul></section>'
   }
-  var note = '<p class="tr-note"><b>Not a warning service.</b> No advice of ours: check with your airline or operator. Each item says where it was read and when.</p>'
+  var note = '<p class="tr-note"><b>Not a warning service.</b> No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. Each item says where it was read and when.</p>'
   var dataLine = function (files) { return '<p class="meta">As data: ' + files.map(function (f) { return '<a href="' + room + 'transport/' + f + '">' + f + '</a>' }).join(', ') + ' (also under <a href="' + base + 'api/v1/index.json">api/v1</a>). Sources and their terms: <a href="' + base + 'transport/sources.html">transport/sources</a>.</p>' }
 
   function hub() {

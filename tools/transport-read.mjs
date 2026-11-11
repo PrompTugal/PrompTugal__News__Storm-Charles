@@ -291,7 +291,7 @@ const tr = await trains()
 const sv = await services()
 const mt = await metro()
 const updated = iso(Date.now())
-const common = { by: BY, updated, not_a_warning_service: 'Not a warning service. No advice of ours: check with your airline or operator. For warnings follow IPMA and ANEPC.', sources_page: 'transport/sources.md' }
+const common = { by: BY, updated, not_a_warning_service: 'Not a warning service. No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. For warnings follow IPMA and ANEPC.', sources_page: 'transport/sources.md' }
 const flightsJ = {
     about: 'Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network\'s public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations and diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.',
     ...common, attribution: OPENSKY_CITE, airports: fl,
