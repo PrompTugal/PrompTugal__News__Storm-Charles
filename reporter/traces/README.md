@@ -1,6 +1,6 @@
 # Traces: one workflow each, from Dinis's word to a live page
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 10:09 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 10:15 UTC
 
 Read [index.json](index.json) first: it carries every trace's five-line summary. Then open only the one you need. Not a warning service: these are about how the site was made.
 
@@ -19,6 +19,7 @@ Read [index.json](index.json) first: it carries every trace's five-line summary.
 | [A decision without Dinis](decision-web-summit-terms-to-a-hold.json): Web Summit's terms read, and every automated read of its site stopped in under two minutes | decision | 05:26, open | 8 (1, 7) | 1 |
 | [A signal with nobody asking](signal-a-warning-lowered-to-the-front-page.json): IPMA lowers a warning, and the site follows in 22 to 37 minutes, with one "unchanged" corrected on the way | small | 07:16 to 08:44 | 8 (0, 8) | 0 |
 | [A loop](loop-a-front-page-for-newcomers.json): "the first page has to be super clear" to a draft read by four invented visitors and rewritten, in 14 minutes; not yet at / | medium | 09:50, open | 9 (2, 7) | 1 |
+| [A request mapped while it happens](request-ten-paths-and-small-animations.json): "start maybe finding 10 different paths" to a storyteller, a motion agent and the traces they start from | medium | 10:10, open | 5 (1, 4) | 0 |
 
 ## The shape (sc-trace/1)
 
@@ -28,6 +29,16 @@ After `ws-trace/1` (SGit-AI__Website__Web-Summit, `team/reporter/traces/`), so t
 - **A step:** `n`; `at` (UTC; for a commit step, the commit's own time) or `at: null` with `at_note`; `actor {name, kind: person | agent}`; `in` (what came in); `out` (what went out); `handoff {to, via, evidence_of_handoff}`; `kind`; `sha` (a commit here, or `repo` names another repository); `agent_trailer`; `for[]` (the commit's `For:` trailers); `evidence[]`; `evidence_note`.
 - **Evidence:** `commit {sha, url}`; `version {version, run, own_run, served_by, push_to_served_s}` (the first CI tag at or after the commit: `own_run: false` means a later push's run served it); `file {path, section}`; `url {url, read_utc}`. `evidence: []` with an `evidence_note` means **no evidence**.
 - **Quotation marks** in `in` and `out` are the record's own words (BRIEF.md, a commit subject, a file), never the reporter's.
+
+## For incident.storyteller@ and incident.motion@
+
+Dinis's ~10:10 word asks for ten paths and small animations of them. Fourteen paths are already traced here, from the record, with evidence; reuse them rather than tracing again.
+
+- **The data:** one file per path, `reporter/traces/<id>.json` ([index.json](index.json) lists them with a five-line summary each). A path is `steps[]`, read by `n`; a step has an actor (`person` or `agent`, by full name), `kind`, `in`, `out`, a `handoff {to, via}` (the line between two icons), `at` (UTC, the commit's own time) and `evidence[]` (a commit with its sha and the version that served it, a file, a URL). The sha is the join to git, status files, hand-overs and keys. Nothing in a trace is drawn: the shape is the data, and quotation marks are the record's own words.
+- **A player already exists:** Angelo's live map on [/app/agents/](../../app/agents/index.html) plays any trace step by step ("Play a workflow"), flying each step that is a push along its line ([app/agents/live-adapter.js](../../app/agents/live-adapter.js), from `index.json`). A motion format can be a superset of sc-trace/1 (add positions, icons, timing) and keep these fields, so the same files feed both.
+- **Dinis's examples, against what is here:** the handover of journalists, and of every other agent: [memory](memory-the-librarian-saves-tokens.json) (one step per round of hand-overs); this request: [a request mapped while it happens](request-ten-paths-and-small-animations.json) (it grows one step per move); an agent starting and a data source reaching a page: [an agent's start](start-a-jobs-line-to-a-first-page.json) and [large](large-every-word-needs-a-reference.json); a signal reaching the front page with nobody asking: [signal](signal-a-warning-lowered-to-the-front-page.json); the whole first night: [the arc](arc-voice-memo-to-two-faces.json). Not traced yet: a journalist's wake end to end, and the creation of one story (incident.journalist@'s commits hold both; say if you want them as traces and they will be the next two).
+- **The cast:** every actor in a trace is a full agent name or "Dinis Cruz"; `people_acted` and `agents_acted` on each trace are the icons it needs.
+- Found a step that is wrong, or need a field? A commit with `For: incident.reporter@web-summit.dinis`.
 
 ## For other agents
 

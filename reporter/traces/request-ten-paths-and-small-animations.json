@@ -1,0 +1,232 @@
+{
+ "id": "request-ten-paths-and-small-animations",
+ "schema": "sc-trace/1",
+ "size": "medium",
+ "title": "A request mapped while it happens: \"start maybe finding 10 different paths\" to a storyteller, a motion agent and the traces they start from",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T10:15:58Z",
+ "captured_at": "2026-11-11T10:15:58Z",
+ "summary": [
+  "Dinis (~10:10), to the conductor: small animations that \"explain the workflow, that explain how it was done\", \"a set of APIs and data structures so that I can use the same visual explanation ... on a specific event, on a specific set of actions for a specific agent\"; \"start maybe finding 10 different paths\". One of his examples is this request itself: \"map out everything that's going to happen from this request\".",
+  "The conductor recorded it at 10:10:38 (f4071e9c) as two new agents, incident.storyteller@ (the cast, the primitives, ten paths, the arc) and incident.motion@ (one small data format for a flow, animations, a gallery at /flows/), and a full page each for the Universe and the live map (incident.observability@).",
+  "Observability wrote it first into its hand-over at 10:11:53 (65b29a34); the storyteller's key and status were on dev at 10:13:14 (edc481e0), 2 min 36 s after the record. No commit by incident.motion@ in the record at 10:15.",
+  "The reporter (a fourth session, from 10:14) pointed both at what already exists: fourteen traces in sc-trace/1, each a path from Dinis's word to a live page, step by step with evidence, and a player that already flies them on Angelo's live map (app/agents/live-adapter.js).",
+  "Open: this trace grows one step per move (the cast, the primitives, the first path, the first animation, /flows/) until the ten paths are served."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "agents/JOBS.md",
+  "agents/policy.json",
+  "agents/storyteller/status.json",
+  "reporter/traces/README.md",
+  "app/agents/live-adapter.js"
+ ],
+ "input": {
+  "kind": "spoken paragraphs",
+  "what": "\"Start maybe finding 10 different paths\"; \"even this request ... map out everything that's going to happen from this request\" (BRIEF.md, ~10:10)"
+ },
+ "output": {
+  "kind": "not yet served",
+  "what": "story/ (the storyteller: cast, primitives, ten paths, arc); /flows/ (motion: small animations of a flow); a page each for the Universe and the live map",
+  "url": null
+ },
+ "status": "open: at 10:15 two agents named, one started; nothing served yet",
+ "duration": {
+  "from": "2026-11-11T10:10:38Z",
+  "to": null,
+  "note": "words recorded to the storyteller's key on dev: 2 min 36 s"
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "~10:10 UTC by BRIEF.md; recorded 10:10:38",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "direction",
+   "in": "the site's content, and his book's cast and flows (https://the-ultimate-insider.book.sgit.ai)",
+   "out": "\"a whole number of very small examples of that kind of animation in action ... that explain the workflow, that explain how it was done\"; examples: \"a wake of a journalist, end to end\"; \"the creation of a story\"; \"the handover of journalists\"; \"even this request\"; last night's data sources, \"So you need a little icon for me.\" \"Start maybe finding 10 different paths\".",
+   "handoff": {
+    "to": "incident.conductor@",
+    "via": "spoken, in the conductor's session",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md",
+     "section": "Dinis, 11 November, ~10:10 UTC"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "record and assign",
+   "sha": "f4071e9cfd6bcb6d1168b09a2337940005500085",
+   "in": "the words",
+   "out": "\"Dinis's 10:10 word: storyteller@ and motion@, ten paths, small animations\": BRIEF.md, two lines in agents/JOBS.md and two owners in agents/policy.json.",
+   "handoff": {
+    "to": "incident.storyteller@, incident.motion@ and incident.observability@",
+    "via": "BRIEF.md, agents/JOBS.md and the commit's For: trailers",
+    "evidence_of_handoff": "the next two steps"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md",
+     "section": "As the lead reads it"
+    },
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f4071e9cfd6bcb6d1168b09a2337940005500085",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f4071e9cfd6bcb6d1168b09a2337940005500085"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.817",
+     "run": 817,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T10:10:38Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.storyteller@web-summit.dinis",
+    "incident.motion@web-summit.dinis",
+    "incident.observability@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.observability@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "plan into a hand-over",
+   "sha": "65b29a349a0c647639944bf0658b232cb632af15",
+   "in": "its part of the record",
+   "out": "\"HANDOVER.md: first for the fifth session, the Universe and the live map each on its own page (Dinis, ~10:10)\"",
+   "handoff": {
+    "to": "its own fifth session",
+    "via": "agents/observability/HANDOVER.md",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "65b29a349a0c647639944bf0658b232cb632af15",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/65b29a349a0c647639944bf0658b232cb632af15"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.819",
+     "run": 819,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T10:11:53Z",
+   "agent_trailer": "incident.observability@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.storyteller@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a new agent starts",
+   "sha": "edc481e02d6e228c63c1c5018c3919a3b9f1a9b8",
+   "in": "agents/JOBS.md",
+   "out": "\"session key (public half) and status\"; doing: \"story/cast.md and story/cast.json first; then story/primitives.md (agreed with incident.motion@), ten paths in story/paths/, story/arc.md\".",
+   "handoff": {
+    "to": "incident.motion@ (the primitives)",
+    "via": "agents/storyteller/status.json",
+    "evidence_of_handoff": "agents/storyteller/status.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/storyteller/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/storyteller/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "edc481e02d6e228c63c1c5018c3919a3b9f1a9b8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/edc481e02d6e228c63c1c5018c3919a3b9f1a9b8"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.822",
+     "run": 822,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T09:18:30Z"
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T10:13:14Z",
+   "agent_trailer": "incident.storyteller@web-summit.dinis",
+   "for": []
+  },
+  {
+   "at": "2026-11-11T10:15:58Z",
+   "actor": {
+    "name": "incident.reporter@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "point at what exists",
+   "in": "BRIEF.md's ~10:10 section, read at a fourth session's start",
+   "out": "reporter/traces/README.md, a section \"For incident.storyteller@ and incident.motion@\": fourteen paths already traced (this one the fourteenth), their shape, the player that already flies them, and which of Dinis's examples each one covers; sent to both sessions.",
+   "handoff": {
+    "to": "incident.storyteller@ and incident.motion@",
+    "via": "reporter/traces/README.md and a message to each session",
+    "evidence_of_handoff": "the README section"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "reporter/traces/README.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=reporter/traces/README.md",
+     "section": "For incident.storyteller@ and incident.motion@"
+    }
+   ],
+   "n": 5
+  }
+ ],
+ "counts": {
+  "steps": 5,
+  "steps_with_no_evidence": 0,
+  "person_steps": 1,
+  "agent_steps": 4
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.observability@web-summit.dinis",
+  "incident.storyteller@web-summit.dinis",
+  "incident.reporter@web-summit.dinis"
+ ]
+}
