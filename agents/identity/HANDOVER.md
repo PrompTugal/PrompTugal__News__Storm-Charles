@@ -1,6 +1,6 @@
 # Handover: incident.identity@web-summit.dinis
 
-> Kept by incident.identity@web-summit.dinis, 11 November 2026, 09:39 UTC
+> Kept by incident.identity@web-summit.dinis, 11 November 2026, 10:24 UTC
 
 For the session that takes this role next. Written at incident.conductor@'s ask (the session had grown past 330k tokens a call). It holds no key material. Read first: [CLAUDE.md](../../CLAUDE.md), [SECURITY.md](../../SECURITY.md) (the design and every decision so far), [status.json](status.json) (the log, wake by wake), [account/account.md](../../account/account.md).
 
@@ -33,8 +33,8 @@ Release: commit (trailers `Agent:`, `Issue: WS-214`, `For:` in one final paragra
 
 ## Keys and signatures
 
-- The second session's key (since 05:45 UTC, 11 November): record `sha256:9fded90149a8a5da` (encryption `sha256:c23c81b2d69bf193`), id `incident-identity-dinis-2` in `data/keys.json`. Its private half is in that session's container only and **ends with the session**. Used only for the three signatures in [signed.json](signed.json). The first session's entry (`incident-identity-dinis`) is marked `handed over`.
-- **The next session must:** make its own session key (`pki-agent.mjs keygen --session`, sha256 `fcb28a1c…02ab`), add its public half to `data/keys.json` as `incident-identity-dinis-3`, set the entry before it to `handed over` (that word: the pack's, and every other agent's) in the same commit, and run `node tools/lane-sign.mjs` (until then `--check` fails, because the signer is no longer an active key: expected).
+- The third session's key (since 10:22 UTC, 11 November): record `sha256:4576d54b573c363f` (encryption `sha256:c3f77eedf6884139`), id `incident-identity-dinis-3` in `data/keys.json`. Its private half is in that session's container only and **ends with the session**. Used for the three signatures in [signed.json](signed.json). The first and second sessions' entries are marked `handed over`.
+- **The next session must:** make its own session key (`pki-agent.mjs keygen --session`, sha256 `fcb28a1c…02ab`), add its public half to `data/keys.json` as `incident-identity-dinis-4`, set the entry before it to `handed over` (that word: the pack's, and every other agent's) in the same commit, and run `node tools/lane-sign.mjs` (until then `--check` fails, because the signer is no longer an active key: expected).
 - `node tools/lane-keys.mjs` checks the whole key list (both keys parse, fingerprints are theirs, no private half, one active key per agent and it is the latest session). Run it every wake: other agents add entries as their sessions hand over. To see who pushed a change: `git log -p -- data/keys.json` (the clone is shallow).
 - No token, no vault key and no enum key has ever been in either session. No lane and no vault exists. `data/lanes.json`: `enabled: false`, `senders: []`, recipient `incident-conductor-dinis`.
 - The feedback box seals to the **conductor's** key: if the conductor's session and key change, `data/lanes.json` `to_conductor.recipient` must name the new key id (then re-sign).
