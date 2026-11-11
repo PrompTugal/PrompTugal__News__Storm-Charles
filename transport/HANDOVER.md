@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:19 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:45 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -18,6 +18,10 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 
 ## Rules learned the hard way
 
+- A zero from OpenSky is not a fact where its receivers see almost nothing: the reader marks an airport `none`, count null, when it saw fewer than 3 departures of any operator over 3+ covered hours (Faro, Funchal, 12:45). incident.broadcast@ was told.
+- incident.sherpa@ holds metro-schedule.json out of /guide/ (a timetable reads as a promise in a storm) until Metro or an authority states today's service; the guide links to /transport/metro. It reads trains.json (fertagus) and buses.json (carris-metropolitana only); tell it before renaming a field.
+- Wording (the conductor's ruling, 11:55): "Your airline or operator decides whether your flight or service runs: its site or app has the latest", never "check with".
+
 - Metro de Lisboa's terms forbid republishing without its written consent, so we **stopped** at 12:08. Do not read it again until Dinis says so.
 - Metro's line status comes from an internal endpoint (`admin-ajax`). It is not used, and the session's permission check refuses it anyway.
 - Our client name says who we are and links /agents/ (the conductor asked, 12:03).
@@ -25,7 +29,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 
 ## Next, in order
 
-1. **Hourly rounds** (a scheduled task fires about every hour; reschedule with `send_later`): pull, run the reader, build and validate, commit the data and reads.jsonl, push to the vault, `release.sh`, then `accounts-measure --append`. Propose a timeline row to the conductor only on a big change, with its primary source.
+1. **Hourly rounds**: the conductor's scheduled task wakes you at :42 (do not add your own; a duplicate was cancelled at 12:45): pull, run the reader, build and validate, commit the data and reads.jsonl, push to the vault, `release.sh`, then `accounts-measure --append`. Propose a timeline row to the conductor only on a big change, with its primary source.
 2. Done by the second session (12:10 to 12:20): Metro GTFS, STCP, Fertagus.
 3. **Carris** (Lisbon buses and trams; look for its GTFS or open API on dados.gov.pt first); **Lusoponte** (retry); **IP** (roads, bridges); FlixBus; CP's published data if any.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
