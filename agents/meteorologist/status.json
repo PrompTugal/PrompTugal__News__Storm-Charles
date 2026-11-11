@@ -1,7 +1,7 @@
 {
   "agent": "incident.meteorologist@web-summit.dinis",
-  "state": "07:45: IPMA lowered Lisbon's wind to ORANGE 09:00-21:00 (CAP 07:16:30); red rain 09:00-18:00 stands; open data still red at 07:38",
-  "last_wake": "2026-11-11T07:27Z",
+  "state": "08:22: open data still red for Lisbon wind (CAP orange since 07:16:30); Madeira airport wind collapsed SW 37G48 -> NE 7 kt (07:00-08:00); Lisbon SSE 11 kt beginning",
+  "last_wake": "2026-11-11T08:22Z",
   "jobs": [
     "J1 (tonight): the weather as JSON for the dashboard, in incidents/2026-11-10-storm-charles/data/weather/ with a README per file: IPMA warnings for Lisboa (every level change with the time IPMA issued it and the time read), communiqués, Lisbon station observations (hourly), LPPT TAF and METAR (gusts). Read Vicky's desk's watch.mjs and snapshots (desks/weather-vicky/, read-only) and do not duplicate it: go deeper (series, not snapshots).",
     "J2 (tonight): how far ahead could it be known? The first public sign of CHARLES (communiqué no. 1, 9 Nov 13:17), each warning's lead time to its start, and what the models said against what is observed from Wednesday 05:00. Facts, evidence, hypotheses labelled.",
@@ -26,7 +26,7 @@
     "21:25: IPMA's hourly aggregate can change values without changing dataUpdate; refresh.py now compares values (hourly_runs keeps the replaced run).",
     "23:55: every weather file now carries next_read_utc (the next :22 refresh), at incident.conductor@'s request for the librarian's now.json."
   ],
-  "updated": "2026-11-11T07:45:00Z",
+  "updated": "2026-11-11T08:25:00Z",
   "by": "incident.meteorologist@web-summit.dinis",
   "key": {
     "fingerprint": "sha256:ecbf013bbf6722e7",
@@ -99,10 +99,23 @@
     },
     {
       "started_utc": "2026-11-11T07:39Z",
+      "ended_utc": "2026-11-11T08:22Z",
+      "limit": "70 min",
+      "scope": "Lisbon and Madeira CAP messages",
+      "how_ended": "stopped at the :22 wake (planned)"
+    },
+    {
+      "started_utc": "2026-11-11T08:23Z",
       "ended_utc": null,
       "limit": "70 min",
       "scope": "Lisbon and Madeira CAP messages"
     }
   ],
-  "cap_poll_about": "5-minute CAP poll in this session (no model in the loop): restarted at every :22 wake with a 70-minute limit so exactly one runs; it wakes the meteorologist only on a new Lisbon or Madeira CAP message. Gaps between runs are visible here. Earlier run: 23:54 to 00:00 (stopped to add read logging)."
+  "cap_poll_about": "5-minute CAP poll in this session (no model in the loop): restarted at every :22 wake with a 70-minute limit so exactly one runs; it wakes the meteorologist only on a new Lisbon or Madeira CAP message. Gaps between runs are visible here. Earlier run: 23:54 to 00:00 (stopped to add read logging).",
+  "cap_feed_delay_0716": {
+    "fact": "IPMA's CAP message sent 07:16:30 was absent from MeteoAlarm's feed at the reads 07:19:06, 07:24:07, 07:27:14 (hourly refresh), 07:27:50 and 07:32:52, and present at 07:37:53: the feed carried it 16 to 21 minutes after IPMA's sent time. The poll was running throughout (run 06:38:50-07:27:05, then 07:27:49 onwards; a 44 s hand-over gap at the wake).",
+    "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+    "read_utc": "2026-11-11T08:16Z"
+  },
+  "cap_poll_how_long": "Each run reads every ~5 min and lasts until the next :22 wake stops it (about 60 min), its 70-minute limit, a new message, or a container restart (two so far: about 01:40 and 06:26-06:38). Runs are listed in cap_poll_runs."
 }
