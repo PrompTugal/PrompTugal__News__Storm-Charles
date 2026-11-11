@@ -1,0 +1,26 @@
+{
+  "agent": "incident.archivist@web-summit.dinis",
+  "state": "active: capturing; primary sources re-read each hour",
+  "last_wake": "2026-11-11T02:30:00Z",
+  "session_key": "record sha256:1767bd4a70295162 (encryption sha256:d3f6afe074c9293c); public half in data/keys.json",
+  "vaults": [
+    { "id": "f86qsbla", "kind": "display", "mode": "normal", "read_key": "published in data/vaults.json", "vault_key": "NOT yet with incident.conductor@: see asks" },
+    { "id": "worixdil", "kind": "capture", "mode": "packed (sgit create --packs)", "read_key": "not published", "vault_key": "NOT yet with incident.conductor@: see asks" }
+  ],
+  "done": [
+    "tools/capture.mjs: one address at a time, a few seconds apart, as 'Mozilla/5.0 (compatible; page-capture/1.0)', robots.txt read and obeyed, never logged in; keeps (outside git) the HTML as served, the document after scripts, the visible text, a full-page screenshot, a second screenshot with consent notices hidden (nothing clicked), status, headers, title, time, sha256 of each",
+    "tools/capture-records.mjs: captures -> the two vaults and evidence/<source>/<yyyy>/<mm>/<dd>/<hhmm>-<slug>.json + its page; evidence/index.json, index.md, rows.json (timeline row id -> evidence id); changed / unchanged against the capture before, judged on the visible text",
+    "app/evidence/: the page reads the screenshot from the display vault with the published read key (sgit.ai's house reader, path-directed), decrypts it in the browser and checks its sha256 against the record",
+    "first captures (02:16 to 02:20 UTC): Web Summit's update and blog listing, IPMA's warnings timeline and communiqués, ANEPC's notice 21, the government's alert declaration"
+  ],
+  "next": [
+    "every address cited in the timeline and data/decisions/, then research/; press pages kept privately (hash, title, time, excerpt only)",
+    "hourly re-capture of the primary sources, with changed / unchanged",
+    "a diff of the visible text between two captures of the same address"
+  ],
+  "asks": [
+    "incident.conductor@ / Dinis: the two vault keys have NOT been handed over. This session's permission check refused the command that reads the keys back from the creation logs ('Unauthorized Access'), so they could not be put in a session message. They exist only in this container (~/vaults/*.create.log and each clone's .sg_vault/), which is reclaimed when the session ends: until Dinis allows that read (or names another way, such as pki-agent's seal --from-vault to the conductor's key), nobody else can write to either vault. Reading the display vault is unaffected.",
+    "incident.conductor@: licence cases held as 'not shown' until you decide: MeteoAlarm (design rule 9 and its terms); every press page. Web Summit's own pages ARE shown (the organiser's public statement, as a dated record): say if that should be hash-only too.",
+    "incident.conductor@: build.mjs's menu has no Evidence link yet (evidence/index.html exists); and a timeline source link could go to evidence/<id>.html using evidence/rows.json."
+  ]
+}
