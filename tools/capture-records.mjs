@@ -134,7 +134,7 @@ ${rows}
 
 **This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [${r.url}](${r.url})
 
-The record as data: [${name}.json](${name}.json). All captures: [evidence](${base}evidence/index.md).
+The record as data: [${name}.json](${name}.json). All captures: [evidence](${base}evidence/README.md).
 `
     const mf = path.join(EV, r.id + '.md')
     if (!fs.existsSync(mf) || fs.readFileSync(mf, 'utf8').replace(/> Kept by.*\n/, '') !== md.replace(/> Kept by.*\n/, '')) W(mf, md)
@@ -151,7 +151,7 @@ const ixf = path.join(EV, 'index.json')
 if (!fs.existsSync(ixf) || JSON.stringify({ ...J(ixf), updated: 0 }) !== JSON.stringify({ ...index, updated: 0 })) W(ixf, JSON.stringify(index, null, 1) + '\n')
 
 // ---- 5. timeline rows and decision files -> evidence ids (so a row can link to our page of its source)
-const never = h => SOURCES.never.hosts.some(x => h === x || h.endsWith('.' + x))
+const never = h => [...SOURCES.never.hosts, ...SOURCES.forbidden.hosts].some(x => h === x || h.endsWith('.' + x))
 const rows = {}
 for (const d of fs.readdirSync(path.join(ROOT, 'incidents'))) {
     const sf = path.join(ROOT, 'incidents', d, 'data/signals.json'); if (!fs.existsSync(sf)) continue
@@ -160,7 +160,7 @@ for (const d of fs.readdirSync(path.join(ROOT, 'incidents'))) {
         let h; try { h = new URL(s.url).hostname.replace(/^www\./, '') } catch { continue }
         const chain = chains.get(new URL(s.url).href) || chains.get(s.url)
         const good = chain && [...chain].reverse().find(x => x.captured)
-        ;(rows[it.id] ||= []).push({ url: s.url, evidence: good ? good.id : null, captures: chain ? chain.length : 0, why: good ? undefined : never(h) ? 'a social platform: never captured' : chain ? chain[chain.length - 1].why : 'not captured yet' })
+        ;(rows[it.id] ||= []).push({ url: s.url, evidence: good ? good.id : null, captures: chain ? chain.length : 0, why: good ? undefined : never(h) ? 'never captured (a social platform, or terms that forbid automated reading)' : chain ? chain[chain.length - 1].why : 'not captured yet' })
     }
 }
 const rf = path.join(EV, 'rows.json')
@@ -171,10 +171,10 @@ if (!fs.existsSync(rf) || JSON.stringify({ ...J(rf), updated: 0 }) !== JSON.stri
 const c = index.counts
 const table = addresses.map(a => `| ${mdEsc(a.source_name)} | [${mdEsc(a.title || a.url.replace(/^https?:\/\//, '').slice(0, 70))}](${a.latest}.md) \`${a.url.replace(/^https?:\/\/(www\.)?/, '').slice(0, 80)}\` | ${utc(a.last_read)} | ${a.captures.length} | ${a.captures.length < 2 ? 'one capture' : a.captures[a.captures.length - 1].changed ? '**changed** at the last read' : 'unchanged at the last read'}${a.changes ? ` (${a.changes} change${a.changes > 1 ? 's' : ''} in all)` : ''} | ${a.shown ? 'screenshot' : 'hash and excerpt'} |`).join('\n')
 const im = `---
-title: Evidence: what each outside page looked like when we read it
+title: Wayback: what each outside page looked like when we read it
 summary: Our dated captures of every outside page this site cites: a screenshot, the sha256 of what was served, the time read, and whether the page has changed since.
 ---
-## Evidence
+## Wayback: our captures of outside pages
 
 > Kept by ${BY}, ${utc(index.updated)}
 
@@ -196,7 +196,7 @@ ${table}
 
 Not a warning service: for the live warning, go to IPMA and ANEPC.
 `
-const imf = path.join(EV, 'index.md')
+const imf = path.join(EV, 'README.md')
 if (!fs.existsSync(imf) || fs.readFileSync(imf, 'utf8').replace(/> Kept by.*\n/, '') !== im.replace(/> Kept by.*\n/, '')) W(imf, im)
 
 // ---- 7. the vaults

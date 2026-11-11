@@ -37,4 +37,4 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 **This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [https://prociv.gov.pt/pt/avisos-a-populacao/aviso-21-depressao-charles-agravamento-da-situacao-meteorologica-chuva-e-vento-forte-medidas-preventivas/](https://prociv.gov.pt/pt/avisos-a-populacao/aviso-21-depressao-charles-agravamento-da-situacao-meteorologica-chuva-e-vento-forte-medidas-preventivas/)
 
-The record as data: [0220-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.json](0220-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.json). All captures: [evidence](../../../../../evidence/index.md).
+The record as data: [0220-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.json](0220-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.json). All captures: [evidence](../../../../../evidence/README.md).

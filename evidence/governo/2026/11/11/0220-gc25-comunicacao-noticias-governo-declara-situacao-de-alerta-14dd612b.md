@@ -38,4 +38,4 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 **This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [https://portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-todo-o-territorio-continental-1](https://portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-todo-o-territorio-continental-1)
 
-The record as data: [0220-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.json](0220-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.json). All captures: [evidence](../../../../../evidence/index.md).
+The record as data: [0220-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.json](0220-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.json). All captures: [evidence](../../../../../evidence/README.md).

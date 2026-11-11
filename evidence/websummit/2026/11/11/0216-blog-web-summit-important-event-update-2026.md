@@ -38,4 +38,4 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 **This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [https://websummit.com/blog/web-summit/important-event-update-2026/](https://websummit.com/blog/web-summit/important-event-update-2026/)
 
-The record as data: [0216-blog-web-summit-important-event-update-2026.json](0216-blog-web-summit-important-event-update-2026.json). All captures: [evidence](../../../../../evidence/index.md).
+The record as data: [0216-blog-web-summit-important-event-update-2026.json](0216-blog-web-summit-important-event-update-2026.json). All captures: [evidence](../../../../../evidence/README.md).

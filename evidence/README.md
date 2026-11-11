@@ -1,30 +1,38 @@
 ---
-title: Evidence: what each outside page looked like when we read it
+title: Wayback: what each outside page looked like when we read it
 summary: Our dated captures of every outside page this site cites: a screenshot, the sha256 of what was served, the time read, and whether the page has changed since.
 ---
-## Evidence
+## Wayback: our captures of outside pages
 
-> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 02:25 UTC
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 02:26 UTC
 
 Every time this site cites an outside page, we keep what that page looked like at that moment: a screenshot, the HTML as served, and the sha256 of each. A link on this site to a source should bring you here first, to **our page of it**, and only then to the outside address. When we read a page again we record whether it still says the same thing.
 
-**13 addresses, 13 captures, 12 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
+**21 addresses, 21 captures, 20 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
 
 | Source | Page (our latest capture) | Last read | Captures | Since the one before | Shown |
 |---|---|---|---|---|---|
+| ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0226-pt-avisos-a-populacao.md) `prociv.gov.pt/pt/avisos-a-populacao/` | 11 Nov 2026, 02:26 UTC | 1 | one capture | screenshot |
+| ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [Request Rejected](anepc/2026/11/11/0225-pt-avisos-a-populacao-aviso.md) `prociv.gov.pt/pt/avisos-a-populacao/aviso-` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
 | ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0220-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.md) `prociv.gov.pt/pt/avisos-a-populacao/aviso-21-depressao-charles-agravamento-da-si` | 11 Nov 2026, 02:20 UTC | 1 | one capture | screenshot |
+| ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [prociv.gov.pt/pt/noticias/](anepc/2026/11/11/0226-pt-noticias.md) `prociv.gov.pt/pt/noticias/` | 11 Nov 2026, 02:26 UTC | 1 | one capture | screenshot |
 | away.iol.pt | [Away - Tempo, Avisos Meteo, Combustíveis e Mobilidade](away-iol/2026/11/11/0224-aviso-vermelho-ipma-vento-alerta-vermelho-ipma-admite-cenari-332f69e5.md) `away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelh` | 11 Nov 2026, 02:24 UTC | 1 | one capture | hash and excerpt |
 | Government of Portugal | [404: This page could not be found.](governo/2026/11/11/0224-gc.md) `portugal.gov.pt/gc` | 11 Nov 2026, 02:24 UTC | 1 | one capture | screenshot |
 | Government of Portugal | [Governo declara situação de alerta em todo o território continental - XXV Governo Constitucional](governo/2026/11/11/0220-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.md) `portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-` | 11 Nov 2026, 02:20 UTC | 1 | one capture | screenshot |
+| Government of Portugal | [404: This page could not be found.](governo/2026/11/11/0225-pt-gc.md) `portugal.gov.pt/pt/gc` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [api.ipma.pt/open-data/forecast/warnings/warnings_www.json](ipma/2026/11/11/0223-open-data-forecast-warnings-warnings-www-json.md) `api.ipma.pt/open-data/forecast/warnings/warnings_www.json` | 11 Nov 2026, 02:23 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [api.ipma.pt/open-data/observation/meteorology/stations/observations.js](ipma/2026/11/11/0223-open-data-observation-meteorology-stations-observations-json.md) `api.ipma.pt/open-data/observation/meteorology/stations/observations.json` | 11 Nov 2026, 02:23 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [Instituto Português do Mar e da Atmosfera](ipma/2026/11/11/0216-pt-otempo-comunicados.md) `ipma.pt/pt/otempo/comunicados/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0216-pt-otempo-prev-sam.md) `ipma.pt/pt/otempo/prev-sam/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0224-pt-otempo-prev-sam-timeline-jsp-print-true-reg-lsb.md) `ipma.pt/pt/otempo/prev-sam/timeline.jsp?print=true&reg=LSB` | 11 Nov 2026, 02:24 UTC | 1 | one capture | screenshot |
+| IPMA (Instituto Português do Mar e da Atmosfera) | [404 Not Found](ipma/2026/11/11/0225-resources-www-rss-comunicados.md) `ipma.pt/resources.www/rss/comunicados` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
 | Web Summit | [Web Summit - The best tech conference on the planet · November 9-12, 2026](websummit/2026/11/11/0223-front.md) `websummit.com/` | 11 Nov 2026, 02:23 UTC | 1 | one capture | screenshot |
 | Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0216-blog.md) `websummit.com/blog/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
 | Web Summit | [Important event update](websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.md) `websummit.com/blog/web-summit/important-event-update-2026/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
+| Web Summit | [Mobile app · Essentials · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-essentials-app.md) `websummit.com/essentials/app/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
+| Web Summit | [Schedule · Essentials · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-essentials-schedule.md) `websummit.com/essentials/schedule/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
 | Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0224-news.md) `websummit.com/news/` | 11 Nov 2026, 02:24 UTC | 1 | one capture | screenshot |
+| Web Summit | [Check out the 2026 program · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-schedule.md) `websummit.com/schedule/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
 
 ## How to read a capture
 

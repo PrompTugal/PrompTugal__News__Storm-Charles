@@ -37,4 +37,4 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 **This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json)
 
-The record as data: [0223-open-data-observation-meteorology-stations-observations-json.json](0223-open-data-observation-meteorology-stations-observations-json.json). All captures: [evidence](../../../../../evidence/index.md).
+The record as data: [0223-open-data-observation-meteorology-stations-observations-json.json](0223-open-data-observation-meteorology-stations-observations-json.json). All captures: [evidence](../../../../../evidence/README.md).

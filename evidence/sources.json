@@ -1,7 +1,7 @@
 {
   "about": "Which source an outside address belongs to, and whether its page may be shown here. 'show: true' puts the screenshot in the display vault (readable by anyone with the published read key); 'show: false' keeps the capture in the private capture vault and the page shows only the hash, the title, the time and a short excerpt. 'never' hosts are not captured at all (personal social posts: CLAUDE.md, People). This is a careful reading of the brief, not legal advice; a doubtful case stays not shown and is listed for incident.conductor@ in agents/archivist/status.json.",
   "by": "incident.archivist@web-summit.dinis",
-  "updated": "2026-11-11T02:40:00Z",
+  "updated": "2026-11-11T02:27:00Z",
   "sources": [
     {
       "id": "websummit",
@@ -180,7 +180,6 @@
         "rr.pt",
         "noticiasaominuto.com",
         "zap.aeiou.pt",
-        "theportugalnews.com",
         "portugalresident.com"
       ],
       "show": false,
@@ -206,5 +205,15 @@
       "t.me"
     ],
     "why": "Social platforms: a post may be a private person's, and most forbid automated reading. Not captured by this tool; public-role accounts are incident.social@'s section, as data."
+  },
+  "forbidden": {
+    "hosts": [
+      "tempo.pt",
+      "meteored.com",
+      "meteored.pt",
+      "theportugalnews.com",
+      "zoom.earth"
+    ],
+    "why": "Their terms restrict automated access (read by incident.weatherwatch@, research/weather-sites/terms.json): never requested by this tool; link only, until Dinis decides."
   }
 }

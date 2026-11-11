@@ -37,4 +37,4 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 **This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json](https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json)
 
-The record as data: [0223-open-data-forecast-warnings-warnings-www-json.json](0223-open-data-forecast-warnings-warnings-www-json.json). All captures: [evidence](../../../../../evidence/index.md).
+The record as data: [0223-open-data-forecast-warnings-warnings-www-json.json](0223-open-data-forecast-warnings-warnings-www-json.json). All captures: [evidence](../../../../../evidence/README.md).

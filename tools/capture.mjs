@@ -82,6 +82,7 @@ export async function capture(browser, url, out) {
     const u = new URL(url), src = sourceOf(u.hostname)
     const hh = u.hostname.replace(/^www\./, '')
     if (SOURCES.never.hosts.some(x => hh === x || hh.endsWith('.' + x))) return { url: u.href, host: u.hostname, captured: false, never: true, why: 'a social platform: never captured (CLAUDE.md, People)' }
+    if (SOURCES.forbidden.hosts.some(x => hh === x || hh.endsWith('.' + x))) return { url: u.href, host: u.hostname, captured: false, never: true, why: 'its terms restrict automated access: never requested (link only)' }
     const rb = allowed(u)
     const t = new Date(), iso = t.toISOString().replace(/\.\d+Z$/, 'Z')
     const [yyyy, mm, dd] = iso.slice(0, 10).split('-'), hhmm = iso.slice(11, 16).replace(':', '')

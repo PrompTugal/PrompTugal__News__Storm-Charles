@@ -37,4 +37,4 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 **This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [https://www.ipma.pt/pt/otempo/prev-sam/timeline.jsp?print=true&reg=LSB](https://www.ipma.pt/pt/otempo/prev-sam/timeline.jsp?print=true&reg=LSB)
 
-The record as data: [0224-pt-otempo-prev-sam-timeline-jsp-print-true-reg-lsb.json](0224-pt-otempo-prev-sam-timeline-jsp-print-true-reg-lsb.json). All captures: [evidence](../../../../../evidence/index.md).
+The record as data: [0224-pt-otempo-prev-sam-timeline-jsp-print-true-reg-lsb.json](0224-pt-otempo-prev-sam-timeline-jsp-print-true-reg-lsb.json). All captures: [evidence](../../../../../evidence/README.md).

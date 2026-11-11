@@ -1,26 +1,39 @@
 {
   "agent": "incident.archivist@web-summit.dinis",
   "state": "active: capturing; primary sources re-read each hour",
-  "last_wake": "2026-11-11T02:30:00Z",
+  "last_wake": "2026-11-11T02:27:00Z",
   "session_key": "record sha256:1767bd4a70295162 (encryption sha256:d3f6afe074c9293c); public half in data/keys.json",
   "vaults": [
-    { "id": "f86qsbla", "kind": "display", "mode": "normal", "read_key": "published in data/vaults.json", "vault_key": "NOT yet with incident.conductor@: see asks" },
-    { "id": "worixdil", "kind": "capture", "mode": "packed (sgit create --packs)", "read_key": "not published", "vault_key": "NOT yet with incident.conductor@: see asks" }
+    {
+      "id": "f86qsbla",
+      "kind": "display",
+      "mode": "normal",
+      "read_key": "published in data/vaults.json",
+      "vault_key": "write key held only in this session (never sent in the clear anywhere); the conductor is taking the handover to Dinis"
+    },
+    {
+      "id": "worixdil",
+      "kind": "capture",
+      "mode": "packed (sgit create --packs)",
+      "read_key": "not published",
+      "vault_key": "write key held only in this session (never sent in the clear anywhere); the conductor is taking the handover to Dinis"
+    }
   ],
   "done": [
     "tools/capture.mjs: one address at a time, a few seconds apart, as 'Mozilla/5.0 (compatible; page-capture/1.0)', robots.txt read and obeyed, never logged in; keeps (outside git) the HTML as served, the document after scripts, the visible text, a full-page screenshot, a second screenshot with consent notices hidden (nothing clicked), status, headers, title, time, sha256 of each",
     "tools/capture-records.mjs: captures -> the two vaults and evidence/<source>/<yyyy>/<mm>/<dd>/<hhmm>-<slug>.json + its page; evidence/index.json, index.md, rows.json (timeline row id -> evidence id); changed / unchanged against the capture before, judged on the visible text",
     "app/evidence/: the page reads the screenshot from the display vault with the published read key (sgit.ai's house reader, path-directed), decrypts it in the browser and checks its sha256 against the record",
-    "first captures (02:16 to 02:20 UTC): Web Summit's update and blog listing, IPMA's warnings timeline and communiqués, ANEPC's notice 21, the government's alert declaration"
+    "first captures (02:16 to 02:20 UTC): Web Summit's update and blog listing, IPMA's warnings timeline and communiqués, ANEPC's notice 21, the government's alert declaration",
+    "02:26: the section is named Wayback (evidence/README.md; folder and ids unchanged); tempo.pt/Meteored, The Portugal News and Zoom Earth are never requested (evidence/sources.json, forbidden); a what-changed summary between two captures of an address"
   ],
   "next": [
     "every address cited in the timeline and data/decisions/, then research/; press pages kept privately (hash, title, time, excerpt only)",
     "hourly re-capture of the primary sources, with changed / unchanged",
-    "a diff of the visible text between two captures of the same address"
+    "a diff of the visible text between two captures of the same address",
+    "weatherwatch's ten studies at a 1280 x 1600 frame (show: AEMET, Met Office, US NWS, KNMI)",
+    "the Wayback-for-data index with incident.sources@ and incident.ipma@; vault numbers (files, push and clone time) for the conductor"
   ],
   "asks": [
-    "incident.conductor@ / Dinis: the two vault keys have NOT been handed over. This session's permission check refused the command that reads the keys back from the creation logs ('Unauthorized Access'), so they could not be put in a session message. They exist only in this container (~/vaults/*.create.log and each clone's .sg_vault/), which is reclaimed when the session ends: until Dinis allows that read (or names another way, such as pki-agent's seal --from-vault to the conductor's key), nobody else can write to either vault. Reading the display vault is unaffected.",
-    "incident.conductor@: licence cases held as 'not shown' until you decide: MeteoAlarm (design rule 9 and its terms); every press page. Web Summit's own pages ARE shown (the organiser's public statement, as a dated record): say if that should be hash-only too.",
-    "incident.conductor@: build.mjs's menu has no Evidence link yet (evidence/index.html exists); and a timeline source link could go to evidence/<id>.html using evidence/rows.json."
+    "Dinis (through incident.conductor@): the two vault write keys are held only in this session. The permission check refused reading them back, so they were never sent, in the clear or sealed. Until Dinis decides the route, only this session can write to either vault; every capture's sha256 and time is in git, so the record survives even if the vaults had to be re-made."
   ]
 }

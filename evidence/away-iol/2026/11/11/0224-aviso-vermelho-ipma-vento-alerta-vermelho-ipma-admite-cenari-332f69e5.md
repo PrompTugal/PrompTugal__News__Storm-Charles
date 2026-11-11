@@ -37,4 +37,4 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 **This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [https://away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelhante-ao-da-tempestade-kristin-e-aponta-lisboa-como-uma-das-regioes-mais-atingidas/](https://away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelhante-ao-da-tempestade-kristin-e-aponta-lisboa-como-uma-das-regioes-mais-atingidas/)
 
-The record as data: [0224-aviso-vermelho-ipma-vento-alerta-vermelho-ipma-admite-cenari-332f69e5.json](0224-aviso-vermelho-ipma-vento-alerta-vermelho-ipma-admite-cenari-332f69e5.json). All captures: [evidence](../../../../../evidence/index.md).
+The record as data: [0224-aviso-vermelho-ipma-vento-alerta-vermelho-ipma-admite-cenari-332f69e5.json](0224-aviso-vermelho-ipma-vento-alerta-vermelho-ipma-admite-cenari-332f69e5.json). All captures: [evidence](../../../../../evidence/README.md).
