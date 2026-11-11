@@ -1,7 +1,7 @@
 {
  "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first. `entity` is the id of the same body in entities/ (incident.entities@), where one exists. `also` lists the plain names a body is written by, for the linker.",
  "by": "incident.sources@web-summit.dinis",
- "updated": "2026-11-11T03:25:00Z",
+ "updated": "2026-11-11T05:26:00Z",
  "sources": [
   {
    "id": "meteoalarm",
@@ -122,10 +122,16 @@
    "publishes": "its event updates, schedule and blog",
    "we_take": "its statements on what goes ahead, moves or is cancelled",
    "licence": {
-    "status": "not read yet",
-    "note": "its Terms and conditions page (https://websummit.com/terms-and-conditions/, 'Updated October 27, 2026') draws its text with a script; not read yet"
+    "status": "read",
+    "summary": "all rights reserved; its terms forbid automated access to its website and app, and copying, archiving, storing or summarising their content",
+    "as_published": "48.2. Users must not use or permit the use of any bot, script, macro, browser extension, scraper, artificial intelligence agent or other automated means (“Automation”) to access, interact with or perform any action in the Digital Platforms. […] 52.1 […] You agree not copy, publish, republish, redistribute, archive, store, adapt, alter, modify, translate, create derivative works from, summarise, photocopy, scan, syndicate, sell, licence, frame, harvest, scrape, grant or purport to grant any rights in or otherwise make available any content from the Digital Platforms.",
+    "url": "https://websummit.com/terms-and-conditions/",
+    "read_utc": "2026-11-11T05:25:00Z",
+    "access": "public pages; automated access is forbidden by its terms (\"Digital Platforms\" is its websites, their subdomains and its apps)",
+    "manipulate": "no",
+    "note": "\"Terms and conditions\", marked \"Updated October 27, 2026\"; sections 48.2 and 52.1 quoted in part. This agent read the front page (02:22 UTC) and rendered this terms page once (05:25 UTC) to learn the terms, and makes no further requests to it. Other agents read websummit.com on a schedule (tools/websummit-poll.sh, every 2 minutes) and capture its pages: whether that continues is Dinis's decision. A careful reading, not legal advice"
    },
-   "reads": "its blog every 2 minutes by tools/websummit-poll.sh (incident.dev@), robots.txt obeyed",
+   "reads": "its blog every 2 minutes by tools/websummit-poll.sh (incident.dev@), robots.txt obeyed; see the licence: its terms forbid automated access",
    "entity": "organisation/websummit"
   },
   {

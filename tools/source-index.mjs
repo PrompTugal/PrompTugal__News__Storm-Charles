@@ -56,7 +56,7 @@ const sources = reg.sources.map(s => {
     const entity = s.entity && fs.existsSync(path.join(ROOT, 'entities', s.entity + '.json')) ? s.entity : undefined
     const t = s.hosts.flatMap(h => ww[bare(h)] || [])[0]
     const terms_read_by_weatherwatch = t ? { file: TERMS_FILE, site: t.site, terms_url: t.terms_url, read_utc: t.read, signals: t.signals || [], says: (t.signals || []).map(x => SIG[x] || x), excerpts: t.excerpts } : undefined
-    const automated_reading = t && (t.signals || []).includes('names_automated_access_or_ai') ? 'its terms name automated access: this agent makes no requests to it; link only' : undefined
+    const automated_reading = (t && (t.signals || []).includes('names_automated_access_or_ai')) || /automated access is forbidden/.test(s.licence.access || '') ? 'its terms name automated access: this agent makes no requests to it; link only' : undefined
     return { ...s, terms_read_by_weatherwatch, automated_reading, entity, entity_page: entity ? `entities/${entity}.html` : undefined, page: section || `${s.id}/index.html`, section, section_planned: s.section && !section ? s.section : undefined, cited: { timeline_rows: uniq.length, row_ids: uniq.map(x => x.id), addresses_in_data_and_research: s.hosts.reduce((n, h) => n + (mentions[h] || 0), 0) } }
 })
 const unclaimed = Object.entries(mentions).filter(([h]) => !claimed.has(h) && !/promptugal\.news|sgit\.ai|creativecommons|github|w3\.org|schema\.org/.test(h)).sort((a, b) => b[1] - a[1])
