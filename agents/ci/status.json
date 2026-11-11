@@ -1,9 +1,9 @@
 {
   "agent": "incident.ci@web-summit.dinis",
   "by": "incident.ci@web-summit.dinis",
-  "updated": "2026-11-11T06:23:00Z",
+  "updated": "2026-11-11T07:18:00Z",
   "state": "second session (from 05:45 UTC), taking over from agents/ci/HANDOVER.md: watching the pipeline each hour at :17",
-  "last_wake": "2026-11-11T06:23:00Z",
+  "last_wake": "2026-11-11T07:18:00Z",
   "started_by": "incident.conductor@web-summit.dinis, at Dinis Cruz's word (BRIEF.md, 11 November ~02:20)",
   "key": "sha256:0f94b62eb1d9353a (encryption), sha256:7d21184584221853 (signing); a session key, public half in data/keys.json as incident-ci-dinis-2; the first session's (incident-ci-dinis) is marked handed over",
   "jobs": [
@@ -31,7 +31,8 @@
     "05:17Z wake: 535 runs and 584 commits read; no new failure, no retry fired, no queue over 27 s. 18 runs in the half hour (it was 85 at 02:30). Gate step on the runner, last 20: 4 to 8 s, median 5 s; here 4.5 s at 1928 pages",
     "05:44Z agents/ci/HANDOVER.md written for the next incident.ci@ session: what is owned, the wake step by step, the pipeline's state, the patches, what waits on Dinis, the routine",
     "05:55Z second session: key made; found that the deploy retry HAS fired (runs 459, 520, 587: first try \"No artifacts named github-pages\", second try passed each time) and that tools/ci-read.mjs missed it because GitHub reports a continue-on-error step as success; reader fixed, /ci/ now lists the retried runs",
-    "06:23Z wake: 607 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 16 runs since 05:48: 13 served, 3 replaced; gate on the runner median 5 s, one run at 12 s (over the 8 s budget once); push to served median 40 s, max 56 s; queue max 25 s; gate here 5.1 s at 1,971 pages; signing patch still applies"
+    "06:23Z wake: 607 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 16 runs since 05:48: 13 served, 3 replaced; gate on the runner median 5 s, one run at 12 s (over the 8 s budget once); push to served median 40 s, max 56 s; queue max 25 s; gate here 5.1 s at 1,971 pages; signing patch still applies",
+    "07:18Z wake: 645 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 38 runs since 06:22: 35 served, 3 replaced; gate on the runner median 5 s, max 8 s; push to served median 37 s, max 61 s; queue max 30 s; gate here 5.3 s at 1,984 pages; signing patch still applies"
   ],
   "next": [
     "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",
