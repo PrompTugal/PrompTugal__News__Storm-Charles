@@ -46,8 +46,8 @@ for (const d of fs.readdirSync(path.join(ROOT, 'agents'), { withFileTypes: true 
     Object.assign(a, {
         status_file: rel, status_sha256: crypto.createHash('sha256').update(raw).digest('hex'),
         state: clean(s.state || ''), last_wake: clean(s.last_wake || ''),
-        jobs: list(s.jobs), done: short(list(s.done)), done_total: list(s.done).length, next: list(s.next),
-        asks_dinis: asks.filter(x => /^Dinis\b/i.test(x)), asks: asks.filter(x => !/^Dinis\b/i.test(x))
+        jobs: clip(list(s.jobs)), done: short(list(s.done)), done_total: list(s.done).length, next: clip(list(s.next)),
+        asks_dinis: clip(asks.filter(x => /^Dinis\b/i.test(x))), asks: clip(asks.filter(x => !/^Dinis\b/i.test(x)))
     })
 }
 
@@ -55,7 +55,7 @@ for (const d of fs.readdirSync(path.join(ROOT, 'agents'), { withFileTypes: true 
 for (const k of JSON.parse(read('data/keys.json')).keys || []) {
     if (!k.agent) continue
     const a = add(k.agent)
-    ;(a.keys ||= []).push({ id: k.id, record: k.bundle?.signing_fingerprint || '', encryption: k.bundle?.fingerprint || '', added: k.added || '', status: k.status || '', how: clean(k.how || '') })
+    ;(a.keys ||= []).push({ id: k.id, record: k.bundle?.signing_fingerprint || '', encryption: k.bundle?.fingerprint || '', added: k.added || '', status: k.status || '', how: cut(clean(k.how || ''), 200) })
 }
 
 // 3b. the path policy: the folders each agent may change (agents/policy.json, kept by the conductor and the librarian)
@@ -72,6 +72,9 @@ let GROUPS = []; try { GROUPS = JSON.parse(read('data/agents/groups.json')).grou
 const titleOf = rel => { try { const t = read(rel); return (t.match(/^title:\s*(.+)$/m) || t.match(/^#\s+(.+)$/m) || [, rel])[1].replace(/[*`"]/g, '').slice(0, 90) } catch { return rel } }
 // the index stays under the gate's 256 KB as the done lists grow: the first 2 and the last 8 of each, each cut at 240 characters (43 roles by 11 November, 12:20);
 // the page reads every agent's whole status file as served, so nothing is lost to a reader
+// Under the 256 KB line (CLAUDE.md): every list item is cut at 240 characters, a key's how at 200; the whole text stays in its own file.
+function cut(x, n = 240) { return typeof x === 'string' && x.length > n ? x.slice(0, n - 1) + '…' : x }
+function clip(d) { return d.map(x => cut(x)) }
 function short(d) { return (d.length > 10 ? [...d.slice(0, 2), ...d.slice(-8)] : d).map(x => typeof x === 'string' && x.length > 240 ? x.slice(0, 239) + '…' : x) }
 for (const a of roster.values()) {
     const ex = rel => fs.existsSync(path.join(ROOT, rel))
