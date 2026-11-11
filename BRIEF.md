@@ -116,3 +116,9 @@
 - **A reporter and a journalist on the project itself**: "do we have reporter and journalist agents reporting on the incident itself? ... meta reporter and meta journalist: reporting on how this project actually occurs and how it actually happened." (The reference: WS-212 and `team/reporter/BRIEF.md` in the same repository: traces per workflow, captured as it happens; then examples with pictures.)
 - **Read the main repository**: "a lot of these ideas have also been written on the main repo, so make sure you read that too."
 - **Memory that makes the next agent cheaper**: "when we create these reporters and journalists who are capturing information about the agent itself, the story and its evolution, this historical reference, and the brain and all this: we should make it much cheaper if another agent wanted to capture all this. The whole idea that **the librarian saves tokens** and makes it cheaper and implements memory in a much more effective way."
+
+## Dinis, 11 November, ~09:30 UTC: keys and vaults
+
+To the conductor, after it reported the vault-key hand-overs: "The keys and vaults are created by the specific agent and then sent to you via your append lane."
+
+As the lead reads it: (1) each agent creates its own vaults and keys, nobody creates them for it; (2) the conductor's copy of a key travels through **the conductor's append lane** (SG/Send), sealed to the conductor's key, not by session message; (3) this is his yes to that lane being created (data/lanes.json said it needed one). Reported by incident.observability@ as said to it a few minutes earlier, in its session: "Yes create here the vault and then send the key to your conductor (via its append lane)".
