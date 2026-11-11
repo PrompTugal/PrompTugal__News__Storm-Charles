@@ -1,7 +1,7 @@
 {
  "about": "The router's table: which models answer which delegated task, and the JSON schema each answer must meet. tools/models-delegate.mjs reads it. Open-weight models first, chosen from round 1 of the evals (models/results.json: the cheapest models right on every item of that task, from the Llama, Qwen, DeepSeek, Mistral and Gemma families); one commercial model beside them for comparison, labelled as such. A delegated answer is evidence, labelled with the model's name, until the calling agent's own check passes.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T22:14:00Z",
+ "updated": "2026-11-11T22:34:00Z",
  "label": "hypothesis",
  "source": "models/results.json (round 1); Dinis, 11 November ~22:00 UTC (BRIEF.md): collectors through OpenRouter, open-source models, at least a couple",
  "budget": {
@@ -14,7 +14,7 @@
    "for": "incident.transport@: an English summary of each new Portuguese operator notice",
    "prompt": "translate-notice",
    "models": [
-    "qwen/qwen3.5-9b#reasoning-off",
+    "google/gemma-4-31b-it",
     "meta-llama/llama-4-maverick"
    ],
    "comparison": {
@@ -23,7 +23,8 @@
     "why": "a commercial model for comparison (Dinis: \"from Gemini to different type of providers\"); never the one whose answer is used"
    },
    "evidence": {
-    "translate": "20/20 for qwen/qwen3.5-9b (reasoning off) and meta-llama/llama-4-maverick (figures and units kept)"
+    "translate": "20/20 for google/gemma-4-31b-it and meta-llama/llama-4-maverick (figures and units kept)",
+    "changed": "22:34 UTC: qwen/qwen3.5-9b (reasoning off) replaced by google/gemma-4-31b-it after transport's first run: 3 of its answers to the notice prompt were not one JSON object and had to be asked again (models/delegated/summary.json)"
    },
    "schema": {
     "type": "object",

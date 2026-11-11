@@ -19,7 +19,7 @@ For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) fir
 - OpenRouter Broadcast to Elastic (Dinis ~22:10): each request carries `trace` (our trace_id, parent_span_id, generation_name = the A1 unit, span_id, agent, task), `user` (the agent) and `session_id` (the flow), so Elastic joins OpenRouter's spans to ours.
 - The raw store `~/.incident-raw` is the vault `atrfw315` again (key from the conductor 22:11, opened 22:18; pushed 22:20 with `sgit --token "$SG_SEND_ACCESS_TOKEN" push`), its `ledger/` merged with this session's ledger.
 - Transport applied its patch (`aa94889`, `en.source` not `by`, since `by` means the agent).
-- **Each hourly wake (:31)**: `node tools/models-press-decisions.mjs --wake "hourly HH:31"` (the researcher's lead list, models/delegated/, at the conductor's word 22:24), then `node tools/models-calls.mjs --index`, then push the raw vault (`cd ~/.incident-raw && sgit commit -m … && sgit --token "$SG_SEND_ACCESS_TOKEN" push`, timeout 400 s).
+- **Each hourly wake (:31)**: `node tools/models-press-decisions.mjs --wake "hourly HH:31"`, `node tools/models-delegated.mjs` (models/delegated/summary.json), the measure line (accounts/measure.md) (the researcher's lead list, models/delegated/, at the conductor's word 22:24), then `node tools/models-calls.mjs --index`, then push the raw vault (`cd ~/.incident-raw && sgit commit -m … && sgit --token "$SG_SEND_ACCESS_TOKEN" push`, timeout 400 s).
 - Wired at 22:24: transport (from 22:41), media (:36), sources (hourly); researcher's task run here. Four of four.
 - Open: observability's `tools/trace.mjs` runs its CLI when imported, so our events stay in `models/calls/` until it is made import-safe (asked 22:17).
 

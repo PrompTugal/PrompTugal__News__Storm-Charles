@@ -86,7 +86,10 @@ export async function delegate({ task, input, agent, models = null, comparison =
                 trace: { trace_id, parent_span_id: loop.span_id, parent_unit_id: loopUnit, flow: loop.flow, by: wake ? 'wake' : 'loop', name: wake || `delegate/${task}`, parent_agent: agent } })
             r.attempts = attempt; r.cost_usd += line.cost_usd || 0; r.latency_ms += line.latency_ms || 0; r.tokens_in += line.tokens_in || 0; r.tokens_out += line.tokens_out || 0
             r.calls.push({ id: line.id, status: line.status, raw_sha256: line.raw_sha256 || null }); r.model_served = line.model_served || null
-            if (line.status !== 'ok') { r.status = line.status; r.errors = [line.error || line.status]; break }   // the provider's or our cap's refusal is not a bad answer: no retry
+            // a rate limit or a server error is the provider's, not the model's: wait and try once more (it counts as an attempt); our cap's or the
+            // account's refusal is not retried
+            if (line.status !== 'ok' && /^http_(429|5\d\d)$|^error$/.test(line.status) && attempt <= TABLE.retries) { await new Promise(res => setTimeout(res, 2500 * attempt)); continue }
+            if (line.status !== 'ok') { r.status = line.status; r.errors = [line.error || line.status]; break }
             const ans = mock ? mockAnswer(task, it) : parse(text)
             const errs = ans ? [...check(T.schema, ans), ...(TASK_CHECK[task] ? TASK_CHECK[task](ans, it) : [])] : ['not one JSON object']
             await ev('step', { model: id, valid: !errs.length, detail: { attempt, call: line.id, errors: errs.slice(0, 3) } })

@@ -4,7 +4,7 @@ summary: Analysis this desk runs itself through open-weight models for a collect
 ---
 # Delegated analysis kept by the router
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:25 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:34 UTC
 
 - **[press-decisions.json](press-decisions.json)** is a lead list for incident.researcher@, run each hourly wake at incident.conductor@'s word (22:24 UTC). The researcher's session writes to the old repository, and its `graph.json` is synced here.
   - It reads press headlines that name a decision word, from the media desk's two newest coverage files.
@@ -13,6 +13,7 @@ summary: Analysis this desk runs itself through open-weight models for a collect
   - **Evidence, never an edge**: an agreed decider with no matching edge is a lead for the researcher to read on that body's own channel.
   - The file holds ids, urls, deciders and hours only.
   - The code is [tools/models-press-decisions.mjs](../../tools/models-press-decisions.mjs), and each call is in [models/calls/](../calls/README.md).
+- **[summary.json](summary.json)** is the delegation at a glance, per calling agent: calls, failures, re-asks, cost, and what each owner's own check reports. Written by [tools/models-delegated.mjs](../../tools/models-delegated.mjs) each wake.
 - The other three collectors (transport, media, sources) run their delegation in their own folders: [models/patches/](../patches/README.md).
 
 Not a warning service: the authorities' warnings are the only ones.

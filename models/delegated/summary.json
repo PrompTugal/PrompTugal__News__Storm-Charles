@@ -1,0 +1,111 @@
+{
+ "about": "The delegation of collectors' analysis to open-weight models through OpenRouter, at a glance: per calling agent, delegated calls (tasks WS-214/delegate/*), failures (a call not ok), re-asks (an answer that failed the schema or the task's check and was asked again), loops, and the agreement each owner's own check reports. From the published call records; text-free.",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T22:33:21Z",
+ "label": "fact",
+ "source": "models/calls/index.json and the owners' result files named",
+ "collectors": {
+  "incident.models@web-summit.dinis": {
+   "calls": 130,
+   "failed": 0,
+   "failure_rate": 0,
+   "cost_usd": 0.034777,
+   "loops": 32,
+   "answers_checked": 102,
+   "reasked": 6,
+   "reask_rate": 0.059,
+   "tasks": {
+    "extract-decision": 48,
+    "translate": 29,
+    "extract-warning": 15,
+    "match-fact": 38
+   },
+   "models": {
+    "google/gemini-3.5-flash-lite": 42,
+    "meta-llama/llama-4-maverick": 38,
+    "qwen/qwen3.5-397b-a17b": 16,
+    "google/gemma-4-31b-it": 13,
+    "qwen/qwen3.5-9b": 16,
+    "mistralai/ministral-8b-2512": 5
+   },
+   "owner_check": {
+    "file": "models/delegated/press-decisions.json (for incident.researcher@)",
+    "read": 20,
+    "matched_an_edge": 3,
+    "leads": 0,
+    "no_decision": 8,
+    "models_differ": 9,
+    "cost_usd": 0.021239
+   }
+  },
+  "incident.media@web-summit.dinis": {
+   "calls": 33,
+   "failed": 1,
+   "failure_rate": 0.03,
+   "cost_usd": 0.0058,
+   "loops": 11,
+   "answers_checked": 32,
+   "reasked": 0,
+   "reask_rate": 0,
+   "tasks": {
+    "match-fact": 33
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": 11,
+    "google/gemma-4-31b-it": 11,
+    "google/gemini-3.5-flash-lite": 11
+   },
+   "owner_check": {
+    "file": "research/media/models-match.json",
+    "read": 15,
+    "agree_with_pattern": 9,
+    "models_agree_pattern_differs": 1,
+    "cost_usd": 0.0058
+   }
+  },
+  "incident.sources@web-summit.dinis": {
+   "calls": 45,
+   "failed": 0,
+   "failure_rate": 0,
+   "cost_usd": 0.005755,
+   "loops": 15,
+   "answers_checked": 45,
+   "reasked": 0,
+   "reask_rate": 0,
+   "tasks": {
+    "extract-warning": 45
+   },
+   "models": {
+    "qwen/qwen3.5-9b": 15,
+    "mistralai/ministral-8b-2512": 15,
+    "google/gemini-3.5-flash-lite": 15
+   },
+   "owner_check": {
+    "file": "sources/meteoalarm/data/portugal/models-check.json",
+    "checked": 15,
+    "agree_with_parser": 15,
+    "differ": 0,
+    "cost_usd": 0.005755
+   }
+  },
+  "incident.transport@web-summit.dinis": {
+   "calls": 13,
+   "failed": 0,
+   "failure_rate": 0,
+   "cost_usd": 0.001603,
+   "loops": 3,
+   "answers_checked": 13,
+   "reasked": 4,
+   "reask_rate": 0.308,
+   "tasks": {
+    "translate": 13
+   },
+   "models": {
+    "qwen/qwen3.5-9b": 6,
+    "meta-llama/llama-4-maverick": 4,
+    "google/gemini-3.5-flash-lite": 3
+   },
+   "owner_check": null
+  }
+ }
+}
