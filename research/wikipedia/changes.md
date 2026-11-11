@@ -1,26 +1,21 @@
 # What changed on Wikipedia since the last read
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 10:48 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 11:49 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
 
-**Read 11 Nov, 10:48 UTC**; the read before was 11 Nov, 09:54 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
+**Read 11 Nov, 11:49 UTC**; the read before was 11 Nov, 10:48 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
 
-## pt: Depressão Bruna (mention): 1 new revision, 43847 to 44671 bytes
-
-| UTC | Bytes | Edit summary (the editor's words, CC BY-SA 4.0) | Revision |
-|---|---|---|---|
-| 11 Nov, 10:00 | 44671 | /* Espanha */ + | [73421361](https://pt.wikipedia.org/w/index.php?title=Depress%C3%A3o_Bruna&oldid=73421361) |
-
-## pt: Depressão Charles (article): 1 new revision, 31677 to 39744 bytes
+## pt: Depressão Charles (article): 1 new revision, 39744 to 39827 bytes
 
 | UTC | Bytes | Edit summary (the editor's words, CC BY-SA 4.0) | Revision |
 |---|---|---|---|
-| 11 Nov, 10:17 | 39744 | /* Espanha */ + | [73421512](https://pt.wikipedia.org/w/index.php?title=Depress%C3%A3o_Charles&oldid=73421512) |
+| 11 Nov, 11:49 | 39827 | [[Wikipédia:Robôs/robô]]: Arquivamento de 4 URLs | [73422228](https://pt.wikipedia.org/w/index.php?title=Depress%C3%A3o_Charles&oldid=73422228) |
 
 
 ## The reads so far
 
 | Read (UTC) | Pages | Changes | Requests | 429 waits |
 |---|---|---|---|---|
+| 11 Nov, 11:49 | 6 | pt: new revisions (1) | 54 | 0 |
 | 11 Nov, 10:48 | 6 | pt: new revisions (1); pt: new revisions (1) | 52 | 0 |
 | 11 Nov, 09:54 | 6 | pt: new revisions (2) | 51 | 0 |
 | 11 Nov, 08:50 | 6 | zh: new revisions (3) | 51 | 0 |
