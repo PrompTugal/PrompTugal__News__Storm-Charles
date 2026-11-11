@@ -164,7 +164,7 @@ if (CHECK) {
 }
 // the list: the tracked stories/index.md with its marker line replaced by the table
 const stub = fs.existsSync(path.join(ROOT, 'stories/index.md')) ? fs.readFileSync(path.join(ROOT, 'stories/index.md'), 'utf8') : '# Stories\n\nThe list is written here when the site is built.\n'
-const table = index.length ? `| Story | State | Written | Sentences | Graph |\n|---|---|---|---|---|\n` + index.map(s => `| [**${s.title}**](${s.id}/index.md) ${s.standfirst} | ${s.state}${s.moved ? ` (${s.moved} sentence${s.moved === 1 ? '' : 's'} behind the data)` : ''} | ${when(s.updated)}, on the data read ${when(s.based_on_read_utc)} | ${s.claims}: ${s.fact} fact, ${s.evidence} evidence, ${s.hypothesis} hypothesis | [story.json](${s.id}/story.json), [as text](${s.id}/story.md) |`).join('\n') : 'No story yet.'
+const table = index.length ? index.map(s => `### [${s.title}](${s.id}/index.md)\n\n${s.standfirst}\n\n**${s.state}**${s.moved ? ` (${s.moved} sentence${s.moved === 1 ? '' : 's'} behind the data)` : ''} · told ${when(s.updated)}, on the data read ${when(s.based_on_read_utc)} · ${s.claims} sentences: ${s.fact} fact, ${s.evidence} evidence, ${s.hypothesis} hypothesis · [the graph](${s.id}/story.json), [as text](${s.id}/story.md)`).join('\n\n') : 'No story yet.'
 write('stories/index.md', stub.replace(/^The list is written here when the site is built\.$/m, table))
 write('stories/index.json', JSON.stringify({ about: 'The stories of this site: each a graph of claims (story.json) with its page. States: developing, standing, superseded.', by: 'incident.stories@web-summit.dinis', updated: index.map(s => s.updated).sort().pop() || null, stories: index }, null, 1) + '\n')
 for (const p of problems) console.error('stories-build: ' + p)

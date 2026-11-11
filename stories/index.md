@@ -18,9 +18,9 @@ States: **developing** (the events are still running; the story is checked again
 - Our meteorologist's analysis appears only as a labelled hypothesis with its confidence.
 - Each story keeps a dated record of how it changed.
 
-## Next (proposed)
+## Next (proposed, in this order)
 
-- Who warned first, and how long before (lead times).
+
 - Madeira: warned against observed.
 - How Web Summit's Day 2 was called off: 19:09 and what led to it.
 - What the press had and when.

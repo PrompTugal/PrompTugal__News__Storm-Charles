@@ -1,0 +1,509 @@
+{
+  "about": "A story as a small graph: claims, each with its label, who said it, when, and the rows and data fields that support it. The page is generated from this file by tools/stories-build.mjs; nothing here is new reporting. See stories/grammar.md.",
+  "id": "who-warned-first",
+  "title": "Who warned first, and how long before",
+  "standfirst": "For Lisbon's worst hours on Wednesday, who said what, in what order, and how many hours ahead: IPMA, civil protection, the government, Web Summit. Every time is the issuer's own where the data room has it.",
+  "state": "developing",
+  "incident": "2026-11-10-storm-charles",
+  "by": "incident.stories@web-summit.dinis",
+  "written_utc": "2026-11-11T02:29Z",
+  "updated": "2026-11-11T02:29Z",
+  "based_on_read_utc": "2026-11-11T02:22:46Z",
+  "warnings_in_force": {
+    "about": "The official warnings a weather story states first: resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser.",
+    "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+    "list": "lisbon",
+    "levels": [
+      "red"
+    ]
+  },
+  "sections": [
+    {
+      "id": "weather",
+      "title": "The weather service and civil protection",
+      "claims": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5"
+      ]
+    },
+    {
+      "id": "government",
+      "title": "The government",
+      "claims": [
+        "w6",
+        "w7"
+      ]
+    },
+    {
+      "id": "rain",
+      "title": "The rain warning, which moved",
+      "claims": [
+        "w8",
+        "w9",
+        "w10"
+      ]
+    },
+    {
+      "id": "websummit",
+      "title": "Web Summit",
+      "claims": [
+        "w11",
+        "w11b",
+        "w12",
+        "w13"
+      ]
+    },
+    {
+      "id": "earlier",
+      "title": "An earlier sign?",
+      "layer": "hypothesis",
+      "claims": [
+        "w14"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "w1",
+      "text": "The first signal for the mainland was IPMA's: communiqué no. 1 named the storm on Monday 9 November at 13:17, said orange warnings would follow and did not rule out an upgrade. That is 46.7 hours before Lisbon's red wind warning begins, at 12:00 on Wednesday.",
+      "label": "fact",
+      "said_by": "IPMA, communiqué no. 1",
+      "at_utc": "2026-11-09T13:17Z",
+      "read_utc": "2026-11-10T16:53Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1109T1317"
+        },
+        {
+          "kind": "edge",
+          "id": "ipma-communique-1"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "lead_times[warning=storm named, orange expected, upgrade possible].lead_hours",
+          "expect": 46.7
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "history[at_utc=2026-11-09T13:17Z].event"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "text": "Ten minutes later, at 13:27, IPMA sent a wind warning message for the Lisbon district. Its level is no longer in the feed: it is the message the red warning later replaced.",
+      "label": "fact",
+      "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
+      "at_utc": "2026-11-09T13:27:16Z",
+      "read_utc": "2026-11-10T23:51:47Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "history[at_utc=2026-11-09T13:27:16Z].event",
+          "contains": [
+            "its level is not in the feed any more"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w3",
+      "text": "Civil protection came next: ANEPC's public warning, Aviso 21, on Monday at 20:30, 39.5 hours ahead, before any red warning existed.",
+      "label": "fact",
+      "said_by": "ANEPC, Aviso 21",
+      "at_utc": "2026-11-09T20:30Z",
+      "read_utc": "2026-11-10T17:01Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1109T2030"
+        },
+        {
+          "kind": "edge",
+          "id": "anepc-aviso-21"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "lead_times[warning=ANEPC Aviso 21].lead_hours",
+          "expect": 39.5
+        }
+      ]
+    },
+    {
+      "id": "w4",
+      "text": "IPMA sent the red wind warning for Lisbon on Tuesday at 07:18:40, for Wednesday 12:00 to 21:00: 28.7 hours ahead.",
+      "label": "fact",
+      "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
+      "at_utc": "2026-11-10T07:18:40Z",
+      "read_utc": "2026-11-11T02:22:46Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T0718"
+        },
+        {
+          "kind": "edge",
+          "id": "ipma-red-wind"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "lisbon[type=Vento&level=red].sent_utc",
+          "expect": "2026-11-10T07:18:40Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-10T23:58Z].lead_times_revised[warning=red wind 12:00-21:00].lead_hours",
+          "expect": 28.7
+        }
+      ]
+    },
+    {
+      "id": "w5",
+      "text": "The press we could read had it 47 minutes later (Diário de Notícias' live blog, 08:05), and Lusa's piece gave the warning's time as 08:31: about an hour and a quarter after IPMA sent it.",
+      "label": "evidence",
+      "said_by": "Diário de Notícias (live blog); Lusa, as published by AWAY",
+      "at_utc": "2026-11-10T08:05:24Z",
+      "read_utc": "2026-11-11T01:37:07Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": 47,
+          "url_field": "facts[id=1-red-wind].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T08:05:24Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "history[at_utc=2026-11-10T08:31Z].event",
+          "contains": [
+            "divulgada às 08h31"
+          ]
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T0846"
+        }
+      ]
+    },
+    {
+      "id": "w6",
+      "text": "The government followed IPMA by about two hours: the Interior Minister announced the alert situation at ANEPC's press conference, reported from 09:14 to 09:17 on Tuesday; the minute he spoke is not established.",
+      "label": "evidence",
+      "said_by": "the Interior Minister, as reported by Observador's and Diário de Notícias' live blogs",
+      "at_utc": "2026-11-10T09:17Z",
+      "read_utc": "2026-11-11T01:00Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T0917"
+        },
+        {
+          "kind": "edge",
+          "id": "gov-alert"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=2-alert-situation].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T09:14:29Z"
+        }
+      ]
+    },
+    {
+      "id": "w7",
+      "text": "The government's own page with the measures is timed 12:10. The alert situation covers Wednesday from 00:00 to 23:59.",
+      "label": "fact",
+      "said_by": "the Government of Portugal (portugal.gov.pt)",
+      "at_utc": "2026-11-10T12:10Z",
+      "read_utc": "2026-11-10T17:01Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1210"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=gov-alert].effect_from_utc",
+          "expect": "2026-11-11T00:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "history[at_utc=2026-11-10T12:10Z].event"
+        }
+      ]
+    },
+    {
+      "id": "w8",
+      "text": "The rain warning came later and then moved. IPMA first made Lisbon's rain red at 16:30 on Tuesday, for 12:00 on Wednesday: 19.5 hours ahead. At 21:23 it moved the start to 09:00, which left 11.6 hours; the orange rain before it was moved to 00:00, 2.6 hours ahead.",
+      "label": "fact",
+      "said_by": "IPMA, warnings (CAP messages through MeteoAlarm)",
+      "at_utc": "2026-11-10T21:23Z",
+      "read_utc": "2026-11-10T23:51:47Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1742"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T2353"
+        },
+        {
+          "kind": "edge",
+          "id": "ipma-red-rain"
+        },
+        {
+          "kind": "edge",
+          "id": "ipma-red-rain-0900"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-10T23:58Z].lead_times_revised[warning=red rain (first, 12:00-18:00)].lead_hours",
+          "expect": 19.5
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-10T23:58Z].lead_times_revised[warning=red rain moved to 09:00].lead_hours",
+          "expect": 11.6
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-10T23:58Z].lead_times_revised[warning=orange rain moved to 00:00].lead_hours",
+          "expect": 2.6
+        }
+      ]
+    },
+    {
+      "id": "w9",
+      "text": "IPMA's own open-data feed ran behind its warnings: the 21:23 change appeared there only between 23:22 and 23:51, at least two hours later.",
+      "label": "fact",
+      "said_by": "IPMA's two feeds, as read",
+      "at_utc": "2026-11-10T23:51:47Z",
+      "read_utc": "2026-11-10T23:51:47Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "history[at_utc=between 2026-11-10T23:22:52Z and 23:51:47Z].event",
+          "contains": [
+            "lagged the CAP messages by at least 2 h"
+          ]
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T2353"
+        }
+      ]
+    },
+    {
+      "id": "w10",
+      "text": "That move to 09:00 had not been reported in any article title or live-blog entry the media watch could read by 00:15 on Wednesday.",
+      "label": "hypothesis",
+      "confidence": "limited by method: matched by title only; four outlets refuse automated reads",
+      "said_by": "incident.media@web-summit.dinis (analysis)",
+      "at_utc": "2026-11-11T00:15Z",
+      "read_utc": "2026-11-11T01:37:07Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0015"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].items_matched",
+          "expect": 0
+        }
+      ]
+    },
+    {
+      "id": "w11",
+      "text": "Web Summit's decision came last. First the government's recommendation to suspend Wednesday, reported at 17:53 on Tuesday, with the decision left to the organisers.",
+      "label": "evidence",
+      "said_by": "the Government, as reported by Jornal de Negócios' live blog (no government page was found)",
+      "at_utc": "2026-11-10T17:53Z",
+      "read_utc": "2026-11-11T01:50Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1753"
+        },
+        {
+          "kind": "edge",
+          "id": "gov-recommends-suspend"
+        }
+      ]
+    },
+    {
+      "id": "w11b",
+      "text": "Then the organisers' own page, published at 19:09: \"Day 2 (Wednesday, November 11th) will not take place\".",
+      "label": "fact",
+      "said_by": "Web Summit, \"Important event update\"",
+      "at_utc": "2026-11-10T19:09Z",
+      "read_utc": "2026-11-10T20:58Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1909"
+        },
+        {
+          "kind": "edge",
+          "id": "websummit-wednesday"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/incident.json",
+          "field": "headline.at",
+          "contains": [
+            "19:09 UTC"
+          ],
+          "url_field": "headline.url"
+        }
+      ]
+    },
+    {
+      "id": "w12",
+      "text": "Set in order, with the hours between: IPMA's red wind warning (07:18), the government's alert about two hours after it, the government's recommendation to Web Summit ten and a half hours after it (17:53), the organisers' decision 11 hours 50 minutes after it (19:09).",
+      "label": "evidence",
+      "derived": true,
+      "said_by": "this desk, subtracting the times in the sentences it names",
+      "read_utc": "2026-11-11T02:22:46Z",
+      "derived_from": [
+        "w4",
+        "w6",
+        "w11",
+        "w11b"
+      ],
+      "supports": []
+    },
+    {
+      "id": "w13",
+      "text": "The press had the organisers' decision about half an hour after the page went up: ECO at 19:41.",
+      "label": "evidence",
+      "said_by": "ECO",
+      "at_utc": "2026-11-10T19:41:31Z",
+      "read_utc": "2026-11-11T01:37:07Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T19:41:31Z",
+          "url_field": "facts[id=5-day2-off].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1941"
+        }
+      ]
+    },
+    {
+      "id": "w14",
+      "text": "Was there an earlier sign? Our meteorologist's hypothesis: the low the US National Hurricane Center followed from 2 November, labelled AL94 on 6 November and dropped on 8 November, was absorbed by the low that became CHARLES. If so, a precursor about nine days ahead: in the analysis's words, \"weak signals, not warnings\". Its status there: \"not established\".",
+      "label": "hypothesis",
+      "confidence": "not established (no source says so)",
+      "said_by": "incident.meteorologist@web-summit.dinis (analysis; not IPMA's or NHC's words)",
+      "at_utc": "2026-11-11T01:55Z",
+      "read_utc": "2026-11-11T01:50Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T01:55Z].origin.hypothesis",
+          "expect": "the new non-tropical low that absorbed AL94 is, or became part of, CHARLES"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T01:55Z].origin.status",
+          "expect": "not established"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T01:55Z].origin.lead_time_meaning",
+          "contains": [
+            "weak signals, not warnings"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T01:55Z].origin.against",
+          "note": "The reasons against."
+        }
+      ]
+    }
+  ],
+  "not_known": [
+    {
+      "text": "The minute the Interior Minister announced the alert situation: 09:14 is the earliest report; the government's page is timed 12:10.",
+      "watch": "research/media/first-on-each-fact.json"
+    },
+    {
+      "text": "The level of IPMA's first wind message for Lisbon (9 November, 13:27): it left the feed when the red warning replaced it.",
+      "watch": "incidents/2026-11-10-storm-charles/data/weather/cap.json"
+    },
+    {
+      "text": "The exact minutes between Web Summit's page (19:09:00) and ECO (19:41:31): the timeline says 32 minutes, the media watch's table 33. This story says about half an hour.",
+      "watch": "research/media/first-on-each-fact.json"
+    },
+    {
+      "text": "When the government told Web Summit: its recommendation is known only from the press (first report 17:53); no government page was found.",
+      "watch": "incidents/2026-11-10-storm-charles/data/decisions/graph.json"
+    },
+    {
+      "text": "Whether these lead times were enough. That is a judgement, not in the data room, and not made here."
+    },
+    {
+      "text": "Madeira's warnings and what was measured there: a story of its own, to come."
+    }
+  ],
+  "record": [
+    {
+      "at_utc": "2026-11-11T02:29Z",
+      "what": "First telling, on the data read at 02:22:46 UTC: 15 sentences.",
+      "claims_added": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5",
+        "w6",
+        "w7",
+        "w8",
+        "w9",
+        "w10",
+        "w11",
+        "w11b",
+        "w12",
+        "w13",
+        "w14"
+      ],
+      "claims_changed": [],
+      "by": "incident.stories@web-summit.dinis"
+    }
+  ]
+}
