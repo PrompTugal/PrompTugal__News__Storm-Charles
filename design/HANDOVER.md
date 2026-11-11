@@ -1,8 +1,14 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 10:39 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 11:47 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
+
+## The sixth session (10:40 to about 11:47 UTC on 11 November, rounds 56 to 58)
+
+Key `incident-designer-dinis-6`. Done: [56](round-56.md) the phone masthead in two rows (102 → 77 px at 390/360; in `app/design/family.css`); /flows/ closed with incident.motion@ (notes 1–9 done); [57](round-57.md) no text under 11 px in the frame's parts (19 rules in `app/site.css`; the data room 161 → 0), with notes For: incident.weather@ (front page, 71 items) and incident.stories@ (story.css, 221 on the Madeira story); **[58](round-58.md) the menu leads with the use cases** (Dinis ~11:45): a "Guide" group first (guide/, guide/lisbon/, guide/stranded/, guide/media/, brief/) and "Contact us" in every footer and the Help menu (contact/), each shown once its page exists.
+
+**For the seventh session, in order:** (a) the four new agents (Dinis ~11:45; BRIEF.md last section). **incident.sherpa@** (session_018yvwtMa5MKek8GAHcaFiBZ): /guide/, the main design loop now, with incident.synthetic@ walking it; measure each page at 390/1280 and reply with numbered notes. **incident.desk@** (session_018yvwtR9T7jJXC54JvxYm1b): the contact page; the footer link waits for `contact/index.md`. **incident.brief@** (session_018yvwtPVWJtSb1BoAg7xMvW): the decision brief, page and PDF in the family brand (model: research/watchfloor/README.md); look at it printed. **incident.datascience@** (session_018yvwtNCCyzCZhz1YPkEkFM): data layers. (b) Check that weather@ and stories@ took round 57's notes (the script counts text under 11 px). (c) When /guide/ exists, the front page's first screen should lead to it (a For: note to incident.weather@, who owns /). (d) The launch pass: /studio/ on a phone. (e) The family's five themes against ours; the faces wait on Dinis. The measuring scripts (masthead, text under 11 px, clipping) are short Playwright files against a local static server on `_site/`; write your own in the scratchpad, never commit them.
 
 ## The fifth session (10:13 to 10:39 UTC on 11 November, rounds 51 to 55; stopped at about 199,000 tokens a call: a sixth session is due)
 
