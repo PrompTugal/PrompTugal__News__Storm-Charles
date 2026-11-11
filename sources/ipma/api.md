@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # IPMA's API, mapped
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 22:54 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 23:52 UTC
 
 [IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
@@ -16,57 +16,57 @@ IPMA's documentation is one page, in Portuguese: [api.ipma.pt](https://api.ipma.
 
 | Data set | Format | Files read | Bytes | IPMA's file dated (UTC) | We read it (UTC) | IPMA says it updates |
 |---|---|---|---|---|---|---|
-| [Weather warnings, up to 3 days](endpoints/warnings.md) | JSON | 1 | 35437 | 2026-11-11 22:15 | 2026-11-11 22:51 | not stated |
+| [Weather warnings, up to 3 days](endpoints/warnings.md) | JSON | 1 | 37444 | 2026-11-11 23:15 | 2026-11-11 23:49 | not stated |
 
 ### Forecasts
 
 | Data set | Format | Files read | Bytes | IPMA's file dated (UTC) | We read it (UTC) | IPMA says it updates |
 |---|---|---|---|---|---|---|
-| [Daily forecast up to 5 days, by place](endpoints/city-daily.md) | JSON | 35 | 41507 | 2026-11-11 22:31 | 2026-11-11 22:51 | taxa de atualização horária; the model runs twice a day: "a corrida das 00UTC (disponibilizada em regra a partir das 10:00) e das 12UTC (disponibilizada em regra a partir das 20:00)" |
-| [Daily forecast up to 3 days, all places for one day](endpoints/day-forecast.md) | JSON | 3 | 20585 | 2026-11-11 22:31 | 2026-11-11 22:53 | taxa de atualização horária |
-| [Ultraviolet index forecast](endpoints/uv.md) | JSON | 1 | 20100 | 2026-11-11 22:00 | 2026-11-11 22:53 | not stated |
-| [Fire risk forecast up to 3 days, by municipality](endpoints/fire-risk.md) | JSON | 3 | 72906 | 2026-11-11 09:35 | 2026-11-11 22:53 | taxa de atualização horária |
+| [Daily forecast up to 5 days, by place](endpoints/city-daily.md) | JSON | 35 | 41507 | 2026-11-11 23:31 | 2026-11-11 23:49 | taxa de atualização horária; the model runs twice a day: "a corrida das 00UTC (disponibilizada em regra a partir das 10:00) e das 12UTC (disponibilizada em regra a partir das 20:00)" |
+| [Daily forecast up to 3 days, all places for one day](endpoints/day-forecast.md) | JSON | 3 | 20585 | 2026-11-11 23:31 | 2026-11-11 23:50 | taxa de atualização horária |
+| [Ultraviolet index forecast](endpoints/uv.md) | JSON | 1 | 20100 | 2026-11-11 23:00 | 2026-11-11 23:51 | not stated |
+| [Fire risk forecast up to 3 days, by municipality](endpoints/fire-risk.md) | JSON | 3 | 72906 | 2026-11-11 09:35 | 2026-11-11 23:51 | taxa de atualização horária |
 
 ### The sea
 
 | Data set | Format | Files read | Bytes | IPMA's file dated (UTC) | We read it (UTC) | IPMA says it updates |
 |---|---|---|---|---|---|---|
-| [Sea state forecast up to 3 days, by day](endpoints/sea-forecast.md) | JSON | 3 | 9823 | 2026-11-11 22:31 | 2026-11-11 22:53 | taxa de atualização horária |
-| [Shellfish harvesting bans by production zone](endpoints/bivalves.md) | GeoJSON | 1 | 3411715 | 2026-11-09 16:20 | 2026-11-11 22:53 | not stated (the latest bulletin) |
+| [Sea state forecast up to 3 days, by day](endpoints/sea-forecast.md) | JSON | 3 | 9823 | 2026-11-11 23:31 | 2026-11-11 23:51 | taxa de atualização horária |
+| [Shellfish harvesting bans by production zone](endpoints/bivalves.md) | GeoJSON | 1 | 3411715 | 2026-11-09 16:20 | 2026-11-11 23:51 | not stated (the latest bulletin) |
 
 ### Observations
 
 | Data set | Format | Files read | Bytes | IPMA's file dated (UTC) | We read it (UTC) | IPMA says it updates |
 |---|---|---|---|---|---|---|
-| [Station observations, hourly, last 24 hours](endpoints/observations.md) | JSON | 1 | 1045876 | 2026-11-11 22:35 | 2026-11-11 22:53 | Taxa de atualização horária. |
-| [Station observations, last 3 hours, with coordinates](endpoints/obs-surface.md) | GeoJSON | 1 | 427433 | 2026-11-11 22:31 | 2026-11-11 22:53 | Taxa de atualização horária. |
+| [Station observations, hourly, last 24 hours](endpoints/observations.md) | JSON | 1 | 1044586 | 2026-11-11 23:35 | 2026-11-11 23:51 | Taxa de atualização horária. |
+| [Station observations, last 3 hours, with coordinates](endpoints/obs-surface.md) | GeoJSON | 1 | 428997 | 2026-11-11 23:31 | 2026-11-11 23:51 | Taxa de atualização horária. |
 
 ### Earthquakes
 
 | Data set | Format | Files read | Bytes | IPMA's file dated (UTC) | We read it (UTC) | IPMA says it updates |
 |---|---|---|---|---|---|---|
-| [Seismic events, last 30 days](endpoints/seismic.md) | JSON | 2 | 146029 | 2026-11-11 22:36 | 2026-11-11 22:53 | Atualização é horária. |
+| [Seismic events, last 30 days](endpoints/seismic.md) | JSON | 2 | 146029 | 2026-11-11 23:36 | 2026-11-11 23:51 | Atualização é horária. |
 
 ### Climate, by municipality
 
 | Data set | Format | Files read | Bytes | IPMA's file dated (UTC) | We read it (UTC) | IPMA says it updates |
 |---|---|---|---|---|---|---|
-| [Daily precipitation by municipality](endpoints/climate-precipitation.md) | CSV | 1 | 635427 | 2026-11-11 03:10 | 2026-11-11 22:53 | Taxa de atualização diária. |
-| [Daily air temperature by municipality](endpoints/climate-temperature.md) | CSV | 1 | 896257 | 2026-11-11 03:10 | 2026-11-11 22:53 | Taxa de atualização diária. |
-| [Daily reference evapotranspiration by municipality](endpoints/climate-evapotranspiration.md) | CSV | 1 (1 not 200) | · | · | 2026-11-11 22:53 | Taxa de atualização diária. |
-| [Daily reference evapotranspiration by municipality (the address IPMA's directory lists)](endpoints/climate-evapotranspiration-listed.md) | ZIP of SVG | 1 | 431062 | 2026-06-20 19:12 | 2026-11-11 22:53 | not stated |
+| [Daily precipitation by municipality](endpoints/climate-precipitation.md) | CSV | 1 | 635427 | 2026-11-11 03:10 | 2026-11-11 23:51 | Taxa de atualização diária. |
+| [Daily air temperature by municipality](endpoints/climate-temperature.md) | CSV | 1 | 896257 | 2026-11-11 03:10 | 2026-11-11 23:51 | Taxa de atualização diária. |
+| [Daily reference evapotranspiration by municipality](endpoints/climate-evapotranspiration.md) | CSV | 1 (1 not 200) | · | · | 2026-11-11 23:51 | Taxa de atualização diária. |
+| [Daily reference evapotranspiration by municipality (the address IPMA's directory lists)](endpoints/climate-evapotranspiration-listed.md) | ZIP of SVG | 1 | 431062 | 2026-06-20 19:12 | 2026-11-11 23:51 | not stated |
 
 ### Id tables and files
 
 | Data set | Format | Files read | Bytes | IPMA's file dated (UTC) | We read it (UTC) | IPMA says it updates |
 |---|---|---|---|---|---|---|
-| [Places: district capitals and islands](endpoints/places.md) | JSON | 1 | 10071 | 2021-12-07 14:48 | 2026-11-11 22:50 | not stated |
-| [Coastal places](endpoints/sea-places.md) | JSON | 1 | 2268 | 2020-02-04 12:21 | 2026-11-11 22:50 | not stated |
-| [Weather stations](endpoints/stations.md) | JSON | 1 | 49864 | 2026-11-11 22:35 | 2026-11-11 22:50 | not stated |
-| [Weather types](endpoints/weather-types.md) | JSON | 1 | 4954 | 2024-06-07 09:55 | 2026-11-11 22:51 | not stated |
-| [Wind strength classes](endpoints/wind-classes.md) | JSON | 1 | 644 | 2018-01-18 17:50 | 2026-11-11 22:51 | not stated |
-| [Precipitation intensity classes](endpoints/precipitation-classes.md) | JSON | 1 | 578 | 2019-11-06 17:27 | 2026-11-11 22:51 | not stated |
-| [Weather symbols (SVG, zipped)](endpoints/icons.md) | ZIP of SVG | 1 | 179447 | 2022-05-12 11:47 | 2026-11-11 22:51 | not stated |
+| [Places: district capitals and islands](endpoints/places.md) | JSON | 1 | 10071 | 2021-12-07 14:48 | 2026-11-11 23:48 | not stated |
+| [Coastal places](endpoints/sea-places.md) | JSON | 1 | 2268 | 2020-02-04 12:21 | 2026-11-11 23:48 | not stated |
+| [Weather stations](endpoints/stations.md) | JSON | 1 | 49864 | 2026-11-11 23:35 | 2026-11-11 23:48 | not stated |
+| [Weather types](endpoints/weather-types.md) | JSON | 1 | 4954 | 2024-06-07 09:55 | 2026-11-11 23:48 | not stated |
+| [Wind strength classes](endpoints/wind-classes.md) | JSON | 1 | 644 | 2018-01-18 17:50 | 2026-11-11 23:48 | not stated |
+| [Precipitation intensity classes](endpoints/precipitation-classes.md) | JSON | 1 | 578 | 2019-11-06 17:27 | 2026-11-11 23:48 | not stated |
+| [Weather symbols (SVG, zipped)](endpoints/icons.md) | ZIP of SVG | 1 | 179447 | 2022-05-12 11:47 | 2026-11-11 23:49 | not stated |
 
 ### Listed, not documented
 
@@ -78,8 +78,8 @@ IPMA's documentation is one page, in Portuguese: [api.ipma.pt](https://api.ipma.
 | [Climate series by district: maximum temperature](endpoints/climate-temperature-max-districts.md) | a folder per mainland district, files per municipality | · | · | · | · | not documented |
 | [Climate series by district: minimum temperature](endpoints/climate-temperature-min-districts.md) | a folder per mainland district, files per municipality | · | · | · | · | not documented |
 | [Monthly and daily long series (spreadsheets), Lisbon from 1855](endpoints/climate-long-series.md) | XLSX and XLS | · | · | · | · | not documented |
-| [A list of place ids for district 06 (Coimbra)](endpoints/district-06.md) | JSON (invalid) | 1 | 277 | 2018-02-27 16:20 | 2026-11-11 22:53 | not documented |
-| [zonas.gpkg (a GeoPackage, 61 MB as listed)](endpoints/zones-geopackage.md) | GeoPackage | 1 | · | 2024-06-19 10:01 | 2026-11-11 22:54 | not documented |
+| [A list of place ids for district 06 (Coimbra)](endpoints/district-06.md) | JSON (invalid) | 1 | 277 | 2018-02-27 16:20 | 2026-11-11 23:51 | not documented |
+| [zonas.gpkg (a GeoPackage, 61 MB as listed)](endpoints/zones-geopackage.md) | GeoPackage | 1 | · | 2024-06-19 10:01 | 2026-11-11 23:51 | not documented |
 
 ## Beyond the open data
 
