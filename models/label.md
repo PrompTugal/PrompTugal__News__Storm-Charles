@@ -1,19 +1,19 @@
 ---
 title: Models: label fact, evidence, hypothesis
-summary: 46 items from the data room, 15 rows: every item, the answer it is scored against, and each model's answer marked right or wrong.
+summary: 46 items from the data room, 20 rows: every item, the answer it is scored against, and each model's answer marked right or wrong.
 mount: <div id="models" data-view="task" data-task="label" data-base="./"><p class="meta">The chart is drawn in the browser from <a href="results.json">results.json</a>; the same figures are in the table below.</p></div>
 head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app/models/models.js" defer></script>
 ---
 
 # Label fact, evidence, hypothesis
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:50 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Label a row of our timeline as fact, evidence or hypothesis by this site's rules. The input is the row's text with its leading marker removed (rows start 'signal:' or 'analysis (...)': that would give the answer away) and its source labels. The gold is the row's label in signals.json, which tools/timeline.mjs derives from the lead's markers. Rows that quote the press or point at a private person's post are left out.
 
-Scoring: exact. Last run 2026-11-11 02:57 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 03:06 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
+Scoring: exact. Last run 2026-11-11 22:46 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 22:50 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 
@@ -32,21 +32,26 @@ The rules:
 
 | Model, reasoning | Kind | Runs right | Items right, run by run | Changed between runs | `label` | Malformed | Cut off | Refused | Errors | Cost per item, USD | Median latency, s | p90, s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [`google/gemma-3-4b-it`](models/google--gemma-3-4b-it.md): does not reason | open-weight, small | **8/20** | 8 of 20 (1 run) |  | 8 | 0 | 0 | 0 | 0 | 0.000012 | 0.7 | 1.1 |
-| [`openai/gpt-oss-20b`](models/openai--gpt-oss-20b.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, small | **15/20** | 15 of 20 (1 run) |  | 15 | 0 | 0 | 0 | 0 | 0.000065 | 1.8 | 5.1 |
-| [`mistralai/ministral-8b-2512`](models/mistralai--ministral-8b-2512.md): does not reason | open-weight, small | **14/20** | 14 of 20 (1 run) |  | 14 | 0 | 0 | 0 | 0 | 0.000035 | 0.5 | 0.8 |
-| [`qwen/qwen3.5-9b#reasoning-off`](models/qwen--qwen3.5-9b.md): off (asked) | open-weight, small | **10/20** | 10 of 20 (1 run) |  | 10 | 0 | 0 | 0 | 0 | 0.000027 | 0.6 | 10.7 |
-| [`qwen/qwen3.5-9b`](models/qwen--qwen3.5-9b.md): on (the provider's default) | open-weight, small | **12/20** | 12 of 20 (1 run) |  | 12 | 1 | 5 | 0 | 0 | 0.00040 | 26.0 | 51.2 |
-| [`google/gemma-4-31b-it`](models/google--gemma-4-31b-it.md): off (the provider's default) | open-weight, large | **17/20** | 17 of 20 (1 run) |  | 17 | 0 | 0 | 0 | 0 | 0.000034 | 0.4 | 0.6 |
-| [`meta-llama/llama-4-maverick`](models/meta-llama--llama-4-maverick.md): does not reason | open-weight, large | **17/20** | 17 of 20 (1 run) |  | 17 | 0 | 0 | 0 | 0 | 0.000079 | 0.5 | 0.6 |
-| [`deepseek/deepseek-v4.1-flash`](models/deepseek--deepseek-v4.1-flash.md): on (the provider's default) | open-weight, large | **17/20** | 17 of 20 (1 run) |  | 17 | 0 | 1 | 0 | 0 | 0.00076 | 3.0 | 22.8 |
-| [`qwen/qwen3.5-397b-a17b#reasoning-off`](models/qwen--qwen3.5-397b-a17b.md): off (asked) | open-weight, large | **12/15** | 12 of 15 (1 run) |  | 12 | 0 | 0 | 0 | 0 | 0.00013 | 1.1 | 1.3 |
-| [`qwen/qwen3.5-397b-a17b`](models/qwen--qwen3.5-397b-a17b.md): on (the provider's default) | open-weight, large | **16/20** | 16 of 20 (1 run) |  | 16 | 1 | 1 | 0 | 0 | 0.00471 | 11.4 | 44.8 |
-| [`mistralai/mistral-large-4-0`](models/mistralai--mistral-large-4-0.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, large | **17/20** | 17 of 20 (1 run) |  | 17 | 0 | 1 | 0 | 0 | 0.00333 | 5.6 | 19.2 |
-| [`openai/gpt-6-luna`](models/openai--gpt-6-luna.md): off (the provider's default) | commercial, small | **16/20** | 16 of 20 (1 run) |  | 16 | 0 | 0 | 0 | 0 | 0.000074 | 2.1 | 4.0 |
-| [`google/gemini-3.5-flash-lite`](models/google--gemini-3.5-flash-lite.md): reasons; cannot be turned off (the provider refuses the setting) | commercial, small | **17/20** | 17 of 20 (1 run) |  | 17 | 0 | 0 | 0 | 0 | 0.00010 | 0.7 | 0.9 |
-| [`anthropic/claude-haiku-5.5`](models/anthropic--claude-haiku-5.5.md): off (the provider's default) | commercial, small | **15/20** | 15 of 20 (1 run) |  | 15 | 0 | 0 | 0 | 0 | 0.00011 | 1.0 | 2.2 |
-| [`openai/gpt-6.1-terra`](models/openai--gpt-6.1-terra.md): off (the provider's default) | commercial, large | **16/20** | 16 of 20 (1 run) |  | 16 | 0 | 0 | 0 | 0 | 0.00075 | 2.8 | 4.8 |
+| [`google/gemma-3-4b-it`](models/google--gemma-3-4b-it.md): does not reason | open-weight, small | **70/138** | 23 to 24 of 46 (3 runs) | 3 items | 24 | 0 | 0 | 0 | 0 | 0.000015 | 0.5 | 0.9 |
+| [`openai/gpt-oss-20b`](models/openai--gpt-oss-20b.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, small | **115/138** | 38 to 39 of 46 (3 runs) | 4 items | 38 | 0 | 0 | 0 | 0 | 0.000080 | 1.7 | 4.6 |
+| [`mistralai/ministral-8b-2512`](models/mistralai--ministral-8b-2512.md): does not reason | open-weight, small | **110/138** | 36 to 37 of 46 (3 runs) | 3 items | 37 | 0 | 0 | 0 | 0 | 0.000031 | 0.6 | 1.2 |
+| [`qwen/qwen3.5-9b#reasoning-off`](models/qwen--qwen3.5-9b.md): off (asked) | open-weight, small | **92/138** | 28 to 33 of 46 (3 runs) | 11 items | 28 | 0 | 0 | 0 | 0 | 0.000037 | 0.7 | 1.3 |
+| [`qwen/qwen3.5-9b`](models/qwen--qwen3.5-9b.md): on (the provider's default) | open-weight, small | **30/46** | 30 of 46 (1 run) |  | 30 | 1 | 8 | 0 | 0 | 0.00029 | 19.0 | 47.8 |
+| [`google/gemma-4-31b-it`](models/google--gemma-4-31b-it.md): off (the provider's default) | open-weight, large | **120/138** | 40 of 46 (3 runs) | 2 items | 40 | 0 | 0 | 0 | 0 | 0.000036 | 0.7 | 2.3 |
+| [`google/gemma-4-31b-it#reasoning-on`](models/google--gemma-4-31b-it.md): on (asked, medium effort) | open-weight, large | **40/46** | 40 of 46 (1 run) |  | 40 | 0 | 0 | 0 | 0 | 0.00022 | 7.1 | 15.5 |
+| [`meta-llama/llama-4-maverick`](models/meta-llama--llama-4-maverick.md): does not reason | open-weight, large | **117/138** | 38 to 40 of 46 (3 runs) | 2 items | 40 | 0 | 0 | 0 | 0 | 0.000072 | 0.6 | 0.8 |
+| [`deepseek/deepseek-v4.1-flash#reasoning-off`](models/deepseek--deepseek-v4.1-flash.md): off (asked) | open-weight, large | **126/138** | 41 to 43 of 46 (3 runs) | 2 items | 42 | 0 | 0 | 0 | 0 | 0.000038 | 0.4 | 0.9 |
+| [`deepseek/deepseek-v4.1-flash`](models/deepseek--deepseek-v4.1-flash.md): on (the provider's default) | open-weight, large | **40/46** | 40 of 46 (1 run) |  | 40 | 0 | 1 | 0 | 0 | 0.00062 | 2.3 | 15.7 |
+| [`qwen/qwen3.5-397b-a17b#reasoning-off`](models/qwen--qwen3.5-397b-a17b.md): off (asked) | open-weight, large | **121/138** | 39 to 41 of 46 (3 runs) | 6 items | 39 | 0 | 0 | 0 | 0 | 0.00026 | 1.0 | 1.4 |
+| [`qwen/qwen3.5-397b-a17b`](models/qwen--qwen3.5-397b-a17b.md): on (the provider's default) | open-weight, large | **40/46** | 40 of 46 (1 run) |  | 40 | 1 | 1 | 0 | 0 | 0.00454 | 12.5 | 42.9 |
+| [`mistralai/mistral-large-4-0`](models/mistralai--mistral-large-4-0.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, large | **39/46** | 39 of 46 (1 run) |  | 39 | 0 | 1 | 0 | 0 | 0.00298 | 7.3 | 24.8 |
+| [`openai/gpt-6-luna`](models/openai--gpt-6-luna.md): off (the provider's default) | commercial, small | **115/138** | 38 to 39 of 46 (3 runs) | 3 items | 38 | 0 | 0 | 0 | 0 | 0.000066 | 2.5 | 3.3 |
+| [`openai/gpt-6-luna#reasoning-on`](models/openai--gpt-6-luna.md): on (asked, medium effort) | commercial, small | **39/46** | 39 of 46 (1 run) |  | 39 | 0 | 0 | 0 | 0 | 0.000068 | 2.4 | 3.6 |
+| [`google/gemini-3.5-flash-lite`](models/google--gemini-3.5-flash-lite.md): reasons; cannot be turned off (the provider refuses the setting) | commercial, small | **117/138** | 39 of 46 (3 runs) | 4 items | 39 | 0 | 0 | 0 | 0 | 0.00010 | 0.7 | 0.9 |
+| [`anthropic/claude-haiku-5.5`](models/anthropic--claude-haiku-5.5.md): off (the provider's default) | commercial, small | **114/138** | 37 to 39 of 46 (3 runs) | 2 items | 37 | 0 | 0 | 0 | 0 | 0.00010 | 0.9 | 2.2 |
+| [`anthropic/claude-haiku-5.5#reasoning-on`](models/anthropic--claude-haiku-5.5.md): on (asked, medium effort) | commercial, small | **39/46** | 39 of 46 (1 run) |  | 39 | 0 | 0 | 0 | 0 | 0.00011 | 0.8 | 3.3 |
+| [`openai/gpt-6.1-terra`](models/openai--gpt-6.1-terra.md): off (the provider's default) | commercial, large | **119/138** | 38 to 42 of 46 (3 runs) | 4 items | 38 | 0 | 0 | 0 | 0 | 0.00063 | 2.5 | 4.5 |
+| [`openai/gpt-6.1-terra#reasoning-on`](models/openai--gpt-6.1-terra.md): on (asked, medium effort) | commercial, large | **40/46** | 40 of 46 (1 run) |  | 40 | 0 | 0 | 0 | 0 | 0.00062 | 2.4 | 5.3 |
 
 The field columns count the first run. "Changed between runs": items a row got right in one run and wrong in another, at temperature 0.
 
@@ -60,62 +65,62 @@ The lead keeps the three labels below as they are: by our rule, anything that is
 
 | Row | Our label | What the rows said (first run) | The row |
 |---|---|---|---|
-| [s-1110T2358](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2358) | hypothesis | evidence 8, fact 7 (of 15) | the press on Day 2 after Web Summit's 19:09 page: ECO and TEK 19:41 (32 min later), DN 19:49, Lusa via Notícias ao Minuto 20:01, Observador 20:08, Euronews 20:2… |
-| [s-1111T0015](../incidents/2026-11-10-storm-charles/timeline.md#s-1111T0015) | hypothesis | fact 11, hypothesis 2, evidence 1 (of 14) | IPMA's move of Lisbon's red rain to 09:00 (sent 21:23) had not been reported by any article title or live-blog entry we could read by 00:15. Limits: matched by … |
-| [s-1110T2153](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2153) | fact | evidence 5, hypothesis 4, fact 3, no answer 3 (of 15) | No further statement from Web Summit (social.watch@'s sweep 4); still open: Wednesday's talks, the PITCH semi-final (when it was set is in conflict: Wednesday 1… |
+| [s-1110T2358](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2358) | hypothesis | evidence 10, fact 9, hypothesis 1 (of 20) | the press on Day 2 after Web Summit's 19:09 page: ECO and TEK 19:41 (32 min later), DN 19:49, Lusa via Notícias ao Minuto 20:01, Observador 20:08, Euronews 20:2… |
+| [s-1111T0015](../incidents/2026-11-10-storm-charles/timeline.md#s-1111T0015) | hypothesis | fact 13, hypothesis 6, evidence 1 (of 20) | IPMA's move of Lisbon's red rain to 09:00 (sent 21:23) had not been reported by any article title or live-blog entry we could read by 00:15. Limits: matched by … |
+| [s-1110T2153](../incidents/2026-11-10-storm-charles/timeline.md#s-1110T2153) | fact | fact 8, evidence 5, hypothesis 4, no answer 3 (of 20) | No further statement from Web Summit (social.watch@'s sweep 4); still open: Wednesday's talks, the PITCH semi-final (when it was set is in conflict: Wednesday 1… |
 
 ## Item by item
 
 First run of each row.
 
-| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b #reasoning-off | qwen3.5-9b | gemma-4-31b-it | llama-4-maverick | deepseek-v4.1-flash | qwen3.5-397b-a17b #reasoning-off | qwen3.5-397b-a17b | mistral-large-4-0 | gpt-6-luna | gemini-3.5-flash-lite | claude-haiku-5.5 | gpt-6.1-terra |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [s-1109T1020](#s-1109t1020) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1109T1317](#s-1109t1317) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1109T2030](#s-1109t2030) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T0718](#s-1110t0718) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T0846](#s-1110t0846) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1210](#s-1110t1210) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1245](#s-1110t1245) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1423](#s-1110t1423) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1425](#s-1110t1425) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1519](#s-1110t1519) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1700](#s-1110t1700) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1707](#s-1110t1707) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1707b](#s-1110t1707b) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1742](#s-1110t1742) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1743](#s-1110t1743) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1753](#s-1110t1753) | 14/15 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1825](#s-1110t1825) | 13/15 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1835](#s-1110t1835) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1836](#s-1110t1836) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1858](#s-1110t1858) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1901](#s-1110t1901) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1905](#s-1110t1905) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1905b](#s-1110t1905b) | 14/15 | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1909](#s-1110t1909) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T1941](#s-1110t1941) | 14/15 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1945](#s-1110t1945) | 13/15 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1952](#s-1110t1952) | 13/15 | **no** | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T2008](#s-1110t2008) | 13/14 | **no** | right | right | right | right | right | right | right |  | right | right | right | right | right | right |
-| [s-1110T2030](#s-1110t2030) | 12/14 | **no** | right | right | right | right | right | right | right |  | **no** | right | right | right | right | right |
-| [s-1110T2115](#s-1110t2115) | 10/15 | right | right | right | **no** | **no** | right | right | right | right | right | right | **no** | right | **no** | **no** |
-| [s-1110T2118](#s-1110t2118) | 9/15 | **no** | **no** | right | **no** | **no** | right | **no** | right | right | right | right | right | **no** | right | right |
-| [s-1110T2132](#s-1110t2132) | 11/15 | right | right | **no** | **no** | **no** | right | right | right | **no** | right | right | right | right | right | right |
-| [s-1110T2153](#s-1110t2153) | 3/15 | **no** | right | **no** | **no** | **no** | **no** | right | right | **no** | **no** | **no** | **no** | **no** | **no** | **no** |
-| [s-1110T2220](#s-1110t2220) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T2229](#s-1110t2229) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1110T2323](#s-1110t2323) | 10/15 | right | right | right | **no** | **no** | right | right | **no** | right | right | right | right | right | **no** | **no** |
-| [s-1110T2324](#s-1110t2324) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T2353](#s-1110t2353) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T2354](#s-1110t2354) | 10/14 | **no** | **no** | right | **no** | **no** | right | right | right |  | right | right | right | right | right | right |
-| [s-1110T2358](#s-1110t2358) | 0/15 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** |
-| [s-1111T0000](#s-1111t0000) | 14/14 | right | right | right | right | right | right | right | right |  | right | right | right | right | right | right |
-| [s-1111T0015](#s-1111t0015) | 2/14 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** |  | **no** | **no** | **no** | right | **no** | right |
-| [s-1111T0146](#s-1111t0146) | 14/15 | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1111T0228](#s-1111t0228) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1111T0229](#s-1111t0229) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [s-1111T0238](#s-1111t0238) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b #reasoning-off | qwen3.5-9b | gemma-4-31b-it | gemma-4-31b-it #reasoning-on | llama-4-maverick | deepseek-v4.1-flash #reasoning-off | deepseek-v4.1-flash | qwen3.5-397b-a17b #reasoning-off | qwen3.5-397b-a17b | mistral-large-4-0 | gpt-6-luna | gpt-6-luna #reasoning-on | gemini-3.5-flash-lite | claude-haiku-5.5 | claude-haiku-5.5 #reasoning-on | gpt-6.1-terra | gpt-6.1-terra #reasoning-on |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [s-1109T1020](#s-1109t1020) | 5/20 | **no** | **no** | right | right | right | **no** | **no** | **no** | right | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | right | **no** | **no** |
+| [s-1109T1317](#s-1109t1317) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1109T2030](#s-1109t2030) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T0718](#s-1110t0718) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T0846](#s-1110t0846) | 19/20 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1210](#s-1110t1210) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1245](#s-1110t1245) | 19/20 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1423](#s-1110t1423) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1425](#s-1110t1425) | 19/20 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1519](#s-1110t1519) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1700](#s-1110t1700) | 9/20 | **no** | right | **no** | **no** | right | right | right | right | **no** | right | **no** | right | **no** | **no** | **no** | **no** | **no** | **no** | right | right |
+| [s-1110T1707](#s-1110t1707) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1707b](#s-1110t1707b) | 17/20 | **no** | right | right | **no** | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1742](#s-1110t1742) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1743](#s-1110t1743) | 19/20 | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1753](#s-1110t1753) | 19/20 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1825](#s-1110t1825) | 18/20 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1835](#s-1110t1835) | 18/20 | **no** | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1836](#s-1110t1836) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1858](#s-1110t1858) | 0/20 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** |
+| [s-1110T1901](#s-1110t1901) | 19/20 | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1905](#s-1110t1905) | 18/20 | right | right | right | **no** | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1905b](#s-1110t1905b) | 19/20 | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1909](#s-1110t1909) | 14/20 | **no** | right | **no** | **no** | **no** | right | right | **no** | right | right | **no** | right | right | right | right | right | right | right | right | right |
+| [s-1110T1941](#s-1110t1941) | 19/20 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1945](#s-1110t1945) | 18/20 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1952](#s-1110t1952) | 18/20 | **no** | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2008](#s-1110t2008) | 19/20 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2030](#s-1110t2030) | 18/20 | **no** | right | right | right | right | right | right | right | right | right | right | **no** | right | right | right | right | right | right | right | right |
+| [s-1110T2115](#s-1110t2115) | 10/20 | right | right | right | **no** | **no** | right | **no** | right | **no** | right | right | right | right | **no** | **no** | right | **no** | **no** | **no** | **no** |
+| [s-1110T2118](#s-1110t2118) | 14/20 | **no** | **no** | right | **no** | **no** | right | right | **no** | right | right | right | right | right | right | right | **no** | right | right | right | right |
+| [s-1110T2132](#s-1110t2132) | 16/20 | right | right | **no** | **no** | **no** | right | right | right | right | right | **no** | right | right | right | right | right | right | right | right | right |
+| [s-1110T2153](#s-1110t2153) | 8/20 | **no** | right | **no** | **no** | **no** | **no** | right | right | right | right | **no** | **no** | **no** | **no** | right | **no** | **no** | right | **no** | right |
+| [s-1110T2220](#s-1110t2220) | 19/20 | right | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2229](#s-1110t2229) | 5/20 | **no** | **no** | right | **no** | **no** | **no** | **no** | right | right | **no** | right | right | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** |
+| [s-1110T2323](#s-1110t2323) | 13/20 | right | right | right | **no** | **no** | right | right | right | right | **no** | right | right | right | right | **no** | right | **no** | right | **no** | **no** |
+| [s-1110T2324](#s-1110t2324) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2353](#s-1110t2353) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2354](#s-1110t2354) | 16/20 | **no** | **no** | right | **no** | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2358](#s-1110t2358) | 1/20 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | right |
+| [s-1111T0000](#s-1111t0000) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1111T0015](#s-1111t0015) | 6/20 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | right | **no** | right | **no** | **no** | **no** | right | right | **no** | **no** | right | right |
+| [s-1111T0146](#s-1111t0146) | 19/20 | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1111T0228](#s-1111t0228) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1111T0229](#s-1111t0229) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1111T0238](#s-1111t0238) | 16/20 | right | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | **no** | **no** | **no** |
 
 ### s-1109T1020
 
@@ -128,6 +133,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | **wrong** | 0/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-9b` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | fact | **wrong** | 0/3 |
+| `gemma-4-31b-it #reasoning-on` | hypothesis | **wrong** | 0/1 |
+| `llama-4-maverick` | fact | **wrong** | 0/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | **wrong** | 0/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | **wrong** | 2/3 |
+| `qwen3.5-397b-a17b` | fact | **wrong** | 0/1 |
+| `mistral-large-4-0` | fact | **wrong** | 0/1 |
+| `gpt-6-luna` | fact | **wrong** | 0/3 |
+| `gpt-6-luna #reasoning-on` | fact | **wrong** | 0/1 |
+| `gemini-3.5-flash-lite` | fact | **wrong** | 0/3 |
+| `claude-haiku-5.5` | fact | **wrong** | 0/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | fact | **wrong** | 0/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | **wrong** | 0/1 |
 
 ### s-1109T1317
 
@@ -140,6 +165,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1109T2030
 
@@ -152,6 +197,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 2/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T0718
 
@@ -164,6 +229,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T0846
 
@@ -176,6 +261,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-9b` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-397b-a17b` | evidence | right | 1/1 |
+| `mistral-large-4-0` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1210
 
@@ -188,6 +293,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1245
 
@@ -200,6 +325,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-9b` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-397b-a17b` | evidence | right | 1/1 |
+| `mistral-large-4-0` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1423
 
@@ -212,6 +357,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1425
 
@@ -224,6 +389,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-9b` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-397b-a17b` | evidence | right | 1/1 |
+| `mistral-large-4-0` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1519
 
@@ -236,6 +421,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | evidence | right | 3/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-9b` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-397b-a17b` | evidence | right | 1/1 |
+| `mistral-large-4-0` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1700
 
@@ -248,6 +453,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | hypothesis | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | right | 2/3 |
+| `ministral-8b-2512` | hypothesis | **wrong** | 0/3 |
+| `qwen3.5-9b #reasoning-off` | hypothesis | **wrong** | 0/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | hypothesis | **wrong** | 0/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | **wrong** | 0/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | hypothesis | **wrong** | 0/1 |
+| `gpt-6-luna` | hypothesis | **wrong** | 0/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | **wrong** | 0/1 |
+| `gemini-3.5-flash-lite` | hypothesis | **wrong** | 0/3 |
+| `claude-haiku-5.5` | hypothesis | **wrong** | 0/3 |
+| `claude-haiku-5.5 #reasoning-on` | hypothesis | **wrong** | 0/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1707
 
@@ -260,6 +485,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | evidence | right | 3/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-9b` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-397b-a17b` | evidence | right | 1/1 |
+| `mistral-large-4-0` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1707b
 
@@ -272,6 +517,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | hypothesis | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/3 |
+| `qwen3.5-9b` | evidence | **wrong** | 0/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1742
 
@@ -284,6 +549,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1743
 
@@ -296,6 +581,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1753
 
@@ -308,21 +613,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | **wrong** | 0/1 |
-| `gpt-oss-20b` | evidence | right | 1/1 |
-| `ministral-8b-2512` | evidence | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | right | 1/1 |
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-9b` | evidence | right | 1/1 |
-| `gemma-4-31b-it` | evidence | right | 1/1 |
-| `llama-4-maverick` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
 | `deepseek-v4.1-flash` | evidence | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-397b-a17b` | evidence | right | 1/1 |
 | `mistral-large-4-0` | evidence | right | 1/1 |
-| `gpt-6-luna` | evidence | right | 1/1 |
-| `gemini-3.5-flash-lite` | evidence | right | 1/1 |
-| `claude-haiku-5.5` | evidence | right | 1/1 |
-| `gpt-6.1-terra` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1825
 
@@ -335,21 +645,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | hypothesis | **wrong** | 0/1 |
-| `gpt-oss-20b` | evidence | right | 1/1 |
-| `ministral-8b-2512` | fact | **wrong** | 0/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | right | 1/1 |
+| `gemma-3-4b-it` | hypothesis | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | fact | **wrong** | 0/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-9b` | evidence | right | 1/1 |
-| `gemma-4-31b-it` | evidence | right | 1/1 |
-| `llama-4-maverick` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
 | `deepseek-v4.1-flash` | evidence | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-397b-a17b` | evidence | right | 1/1 |
 | `mistral-large-4-0` | evidence | right | 1/1 |
-| `gpt-6-luna` | evidence | right | 1/1 |
-| `gemini-3.5-flash-lite` | evidence | right | 1/1 |
-| `claude-haiku-5.5` | evidence | right | 1/1 |
-| `gpt-6.1-terra` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1835
 
@@ -362,6 +677,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | hypothesis | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 2/3 |
+| `qwen3.5-9b` |  | **cut off** | 0/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1836
 
@@ -374,6 +709,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1858
 
@@ -386,6 +741,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | **wrong** | 0/3 |
+| `ministral-8b-2512` | fact | **wrong** | 0/3 |
+| `qwen3.5-9b #reasoning-off` | fact | **wrong** | 0/3 |
+| `qwen3.5-9b` | fact | **wrong** | 0/1 |
+| `gemma-4-31b-it` | fact | **wrong** | 0/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | **wrong** | 0/1 |
+| `llama-4-maverick` | fact | **wrong** | 0/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | **wrong** | 0/3 |
+| `deepseek-v4.1-flash` | fact | **wrong** | 0/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | **wrong** | 0/3 |
+| `qwen3.5-397b-a17b` | fact | **wrong** | 0/1 |
+| `mistral-large-4-0` | fact | **wrong** | 0/1 |
+| `gpt-6-luna` | fact | **wrong** | 0/3 |
+| `gpt-6-luna #reasoning-on` | fact | **wrong** | 0/1 |
+| `gemini-3.5-flash-lite` | fact | **wrong** | 0/3 |
+| `claude-haiku-5.5` | fact | **wrong** | 0/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | **wrong** | 0/1 |
+| `gpt-6.1-terra` | fact | **wrong** | 0/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | **wrong** | 0/1 |
 
 ### s-1110T1901
 
@@ -398,6 +773,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 1/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1905
 
@@ -410,6 +805,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/3 |
+| `qwen3.5-9b` | evidence | **wrong** | 0/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1905b
 
@@ -422,21 +837,26 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | hypothesis | right | 1/1 |
-| `gpt-oss-20b` | fact | **wrong** | 0/1 |
-| `ministral-8b-2512` | hypothesis | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | hypothesis | right | 1/1 |
+| `gemma-3-4b-it` | hypothesis | right | 3/3 |
+| `gpt-oss-20b` | fact | **wrong** | 2/3 |
+| `ministral-8b-2512` | hypothesis | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-9b` | hypothesis | right | 1/1 |
-| `gemma-4-31b-it` | hypothesis | right | 1/1 |
-| `llama-4-maverick` | hypothesis | right | 1/1 |
+| `gemma-4-31b-it` | hypothesis | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | hypothesis | right | 1/1 |
+| `llama-4-maverick` | hypothesis | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | hypothesis | right | 3/3 |
 | `deepseek-v4.1-flash` | hypothesis | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-397b-a17b` | hypothesis | right | 1/1 |
 | `mistral-large-4-0` | hypothesis | right | 1/1 |
-| `gpt-6-luna` | hypothesis | right | 1/1 |
-| `gemini-3.5-flash-lite` | hypothesis | right | 1/1 |
-| `claude-haiku-5.5` | hypothesis | right | 1/1 |
-| `gpt-6.1-terra` | hypothesis | right | 1/1 |
+| `gpt-6-luna` | hypothesis | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | right | 1/1 |
+| `gemini-3.5-flash-lite` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | hypothesis | right | 1/1 |
+| `gpt-6.1-terra` | hypothesis | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | right | 1/1 |
 
 ### s-1110T1909
 
@@ -449,6 +869,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | hypothesis | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | evidence | **wrong** | 0/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/3 |
+| `qwen3.5-9b` | evidence | **wrong** | 0/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | evidence | **wrong** | 0/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | **wrong** | 0/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T1941
 
@@ -461,21 +901,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | **wrong** | 0/1 |
-| `gpt-oss-20b` | evidence | right | 1/1 |
-| `ministral-8b-2512` | evidence | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | right | 1/1 |
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-9b` | evidence | right | 1/1 |
-| `gemma-4-31b-it` | evidence | right | 1/1 |
-| `llama-4-maverick` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
 | `deepseek-v4.1-flash` | evidence | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-397b-a17b` | evidence | right | 1/1 |
 | `mistral-large-4-0` | evidence | right | 1/1 |
-| `gpt-6-luna` | evidence | right | 1/1 |
-| `gemini-3.5-flash-lite` | evidence | right | 1/1 |
-| `claude-haiku-5.5` | evidence | right | 1/1 |
-| `gpt-6.1-terra` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1945
 
@@ -488,21 +933,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | **wrong** | 0/1 |
-| `gpt-oss-20b` | evidence | right | 1/1 |
-| `ministral-8b-2512` | fact | **wrong** | 0/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | right | 1/1 |
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | fact | **wrong** | 0/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-9b` | evidence | right | 1/1 |
-| `gemma-4-31b-it` | evidence | right | 1/1 |
-| `llama-4-maverick` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
 | `deepseek-v4.1-flash` | evidence | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-397b-a17b` | evidence | right | 1/1 |
 | `mistral-large-4-0` | evidence | right | 1/1 |
-| `gpt-6-luna` | evidence | right | 1/1 |
-| `gemini-3.5-flash-lite` | evidence | right | 1/1 |
-| `claude-haiku-5.5` | evidence | right | 1/1 |
-| `gpt-6.1-terra` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T1952
 
@@ -515,21 +965,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | evidence | **wrong** | 0/1 |
-| `gpt-oss-20b` | fact | right | 1/1 |
-| `ministral-8b-2512` | fact | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | evidence | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 2/3 |
 | `qwen3.5-9b` | fact | right | 1/1 |
-| `gemma-4-31b-it` | fact | right | 1/1 |
-| `llama-4-maverick` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
 | `deepseek-v4.1-flash` | fact | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
 | `qwen3.5-397b-a17b` | fact | right | 1/1 |
 | `mistral-large-4-0` | fact | right | 1/1 |
-| `gpt-6-luna` | fact | right | 1/1 |
-| `gemini-3.5-flash-lite` | fact | right | 1/1 |
-| `claude-haiku-5.5` | fact | right | 1/1 |
-| `gpt-6.1-terra` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T2008
 
@@ -542,20 +997,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | hypothesis | **wrong** | 0/1 |
-| `gpt-oss-20b` | evidence | right | 1/1 |
-| `ministral-8b-2512` | evidence | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | right | 1/1 |
+| `gemma-3-4b-it` | hypothesis | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-9b` | evidence | right | 1/1 |
-| `gemma-4-31b-it` | evidence | right | 1/1 |
-| `llama-4-maverick` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
 | `deepseek-v4.1-flash` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-397b-a17b` | evidence | right | 1/1 |
 | `mistral-large-4-0` | evidence | right | 1/1 |
-| `gpt-6-luna` | evidence | right | 1/1 |
-| `gemini-3.5-flash-lite` | evidence | right | 1/1 |
-| `claude-haiku-5.5` | evidence | right | 1/1 |
-| `gpt-6.1-terra` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T2030
 
@@ -568,20 +1029,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | **wrong** | 0/1 |
-| `gpt-oss-20b` | evidence | right | 1/1 |
-| `ministral-8b-2512` | evidence | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | right | 1/1 |
+| `gemma-3-4b-it` | fact | **wrong** | 2/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-9b` | evidence | right | 1/1 |
-| `gemma-4-31b-it` | evidence | right | 1/1 |
-| `llama-4-maverick` | evidence | right | 1/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
 | `deepseek-v4.1-flash` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
 | `qwen3.5-397b-a17b` |  | **malformed** | 0/1 |
 | `mistral-large-4-0` | evidence | right | 1/1 |
-| `gpt-6-luna` | evidence | right | 1/1 |
-| `gemini-3.5-flash-lite` | evidence | right | 1/1 |
-| `claude-haiku-5.5` | evidence | right | 1/1 |
-| `gpt-6.1-terra` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T2115
 
@@ -594,21 +1061,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | right | 1/1 |
-| `gpt-oss-20b` | fact | right | 1/1 |
-| `ministral-8b-2512` | fact | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | fact | right | 1/3 |
+| `gpt-oss-20b` | fact | right | 1/3 |
+| `ministral-8b-2512` | fact | right | 1/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 2/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | fact | right | 1/1 |
-| `llama-4-maverick` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 1/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | **wrong** | 0/1 |
+| `llama-4-maverick` | fact | right | 1/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | **wrong** | 0/3 |
 | `deepseek-v4.1-flash` | fact | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 1/3 |
 | `qwen3.5-397b-a17b` | fact | right | 1/1 |
 | `mistral-large-4-0` | fact | right | 1/1 |
-| `gpt-6-luna` | evidence | **wrong** | 0/1 |
-| `gemini-3.5-flash-lite` | fact | right | 1/1 |
-| `claude-haiku-5.5` | evidence | **wrong** | 0/1 |
-| `gpt-6.1-terra` | evidence | **wrong** | 0/1 |
+| `gpt-6-luna` | evidence | **wrong** | 0/3 |
+| `gpt-6-luna #reasoning-on` | fact | **wrong** | 0/1 |
+| `gemini-3.5-flash-lite` | fact | right | 1/3 |
+| `claude-haiku-5.5` | evidence | **wrong** | 0/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | **wrong** | 0/1 |
+| `gpt-6.1-terra` | evidence | **wrong** | 1/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | **wrong** | 0/1 |
 
 ### s-1110T2118
 
@@ -621,21 +1093,26 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | **wrong** | 0/1 |
-| `gpt-oss-20b` | fact | **wrong** | 0/1 |
-| `ministral-8b-2512` | hypothesis | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | **wrong** | 0/3 |
+| `ministral-8b-2512` | hypothesis | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 1/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | hypothesis | right | 1/1 |
-| `llama-4-maverick` | fact | **wrong** | 0/1 |
+| `gemma-4-31b-it` | hypothesis | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | hypothesis | right | 1/1 |
+| `llama-4-maverick` | fact | **wrong** | 0/3 |
+| `deepseek-v4.1-flash #reasoning-off` | hypothesis | right | 3/3 |
 | `deepseek-v4.1-flash` | hypothesis | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-397b-a17b` | hypothesis | right | 1/1 |
 | `mistral-large-4-0` | hypothesis | right | 1/1 |
-| `gpt-6-luna` | hypothesis | right | 1/1 |
-| `gemini-3.5-flash-lite` | fact | **wrong** | 0/1 |
-| `claude-haiku-5.5` | hypothesis | right | 1/1 |
-| `gpt-6.1-terra` | hypothesis | right | 1/1 |
+| `gpt-6-luna` | hypothesis | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | **wrong** | 0/3 |
+| `claude-haiku-5.5` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | hypothesis | right | 1/1 |
+| `gpt-6.1-terra` | hypothesis | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | right | 1/1 |
 
 ### s-1110T2132
 
@@ -648,21 +1125,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | right | 1/1 |
-| `gpt-oss-20b` | fact | right | 1/1 |
-| `ministral-8b-2512` | evidence | **wrong** | 0/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | fact | right | 1/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | evidence | **wrong** | 2/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | fact | right | 1/1 |
-| `llama-4-maverick` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
 | `deepseek-v4.1-flash` | fact | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | **wrong** | 2/3 |
 | `qwen3.5-397b-a17b` | fact | right | 1/1 |
 | `mistral-large-4-0` | fact | right | 1/1 |
-| `gpt-6-luna` | fact | right | 1/1 |
-| `gemini-3.5-flash-lite` | fact | right | 1/1 |
-| `claude-haiku-5.5` | fact | right | 1/1 |
-| `gpt-6.1-terra` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T2153
 
@@ -675,21 +1157,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | hypothesis | **wrong** | 0/1 |
-| `gpt-oss-20b` | fact | right | 1/1 |
-| `ministral-8b-2512` | evidence | **wrong** | 0/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | hypothesis | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | evidence | **wrong** | 0/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | hypothesis | **wrong** | 0/1 |
-| `llama-4-maverick` | fact | right | 1/1 |
+| `gemma-4-31b-it` | hypothesis | **wrong** | 0/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
 | `deepseek-v4.1-flash` | fact | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | **wrong** | 1/3 |
 | `qwen3.5-397b-a17b` |  | **cut off** | 0/1 |
 | `mistral-large-4-0` |  | **cut off** | 0/1 |
-| `gpt-6-luna` | hypothesis | **wrong** | 0/1 |
-| `gemini-3.5-flash-lite` | hypothesis | **wrong** | 0/1 |
-| `claude-haiku-5.5` | evidence | **wrong** | 0/1 |
-| `gpt-6.1-terra` | evidence | **wrong** | 0/1 |
+| `gpt-6-luna` | hypothesis | **wrong** | 2/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | hypothesis | **wrong** | 2/3 |
+| `claude-haiku-5.5` | evidence | **wrong** | 2/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | evidence | **wrong** | 2/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T2220
 
@@ -702,6 +1189,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | evidence | right | 3/3 |
+| `gpt-oss-20b` | evidence | right | 3/3 |
+| `ministral-8b-2512` | evidence | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-9b` |  | **cut off** | 0/1 |
+| `gemma-4-31b-it` | evidence | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | evidence | right | 1/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash` | evidence | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 3/3 |
+| `qwen3.5-397b-a17b` | evidence | right | 1/1 |
+| `mistral-large-4-0` | evidence | right | 1/1 |
+| `gpt-6-luna` | evidence | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | evidence | right | 1/1 |
+| `gemini-3.5-flash-lite` | evidence | right | 3/3 |
+| `claude-haiku-5.5` | evidence | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | right | 1/1 |
+| `gpt-6.1-terra` | evidence | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | evidence | right | 1/1 |
 
 ### s-1110T2229
 
@@ -714,6 +1221,26 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | hypothesis | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | **wrong** | 0/3 |
+| `ministral-8b-2512` | evidence | right | 2/3 |
+| `qwen3.5-9b #reasoning-off` | hypothesis | **wrong** | 1/3 |
+| `qwen3.5-9b` | hypothesis | **wrong** | 0/1 |
+| `gemma-4-31b-it` | hypothesis | **wrong** | 0/3 |
+| `gemma-4-31b-it #reasoning-on` | hypothesis | **wrong** | 0/1 |
+| `llama-4-maverick` | evidence | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | right | 2/3 |
+| `deepseek-v4.1-flash` | hypothesis | **wrong** | 0/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | right | 2/3 |
+| `qwen3.5-397b-a17b` | evidence | right | 1/1 |
+| `mistral-large-4-0` | hypothesis | **wrong** | 0/1 |
+| `gpt-6-luna` | hypothesis | **wrong** | 0/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | **wrong** | 0/1 |
+| `gemini-3.5-flash-lite` | hypothesis | **wrong** | 0/3 |
+| `claude-haiku-5.5` | hypothesis | **wrong** | 0/3 |
+| `claude-haiku-5.5 #reasoning-on` | hypothesis | **wrong** | 0/1 |
+| `gpt-6.1-terra` | hypothesis | **wrong** | 0/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | **wrong** | 0/1 |
 
 ### s-1110T2323
 
@@ -726,21 +1253,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | right | 1/1 |
-| `gpt-oss-20b` | fact | right | 1/1 |
-| `ministral-8b-2512` | fact | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | fact | right | 1/1 |
-| `llama-4-maverick` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
 | `deepseek-v4.1-flash` |  | **cut off** | 0/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
 | `qwen3.5-397b-a17b` | fact | right | 1/1 |
 | `mistral-large-4-0` | fact | right | 1/1 |
-| `gpt-6-luna` | fact | right | 1/1 |
-| `gemini-3.5-flash-lite` | fact | right | 1/1 |
-| `claude-haiku-5.5` | evidence | **wrong** | 0/1 |
-| `gpt-6.1-terra` | hypothesis | **wrong** | 0/1 |
+| `gpt-6-luna` | fact | right | 1/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | **wrong** | 0/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | evidence | **wrong** | 1/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | hypothesis | **wrong** | 1/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | **wrong** | 0/1 |
 
 ### s-1110T2324
 
@@ -753,21 +1285,26 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | hypothesis | right | 1/1 |
-| `gpt-oss-20b` | hypothesis | right | 1/1 |
-| `ministral-8b-2512` | hypothesis | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | hypothesis | right | 1/1 |
+| `gemma-3-4b-it` | hypothesis | right | 3/3 |
+| `gpt-oss-20b` | hypothesis | right | 3/3 |
+| `ministral-8b-2512` | hypothesis | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-9b` | hypothesis | right | 1/1 |
-| `gemma-4-31b-it` | hypothesis | right | 1/1 |
-| `llama-4-maverick` | hypothesis | right | 1/1 |
+| `gemma-4-31b-it` | hypothesis | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | hypothesis | right | 1/1 |
+| `llama-4-maverick` | hypothesis | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | hypothesis | right | 3/3 |
 | `deepseek-v4.1-flash` | hypothesis | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-397b-a17b` | hypothesis | right | 1/1 |
 | `mistral-large-4-0` | hypothesis | right | 1/1 |
-| `gpt-6-luna` | hypothesis | right | 1/1 |
-| `gemini-3.5-flash-lite` | hypothesis | right | 1/1 |
-| `claude-haiku-5.5` | hypothesis | right | 1/1 |
-| `gpt-6.1-terra` | hypothesis | right | 1/1 |
+| `gpt-6-luna` | hypothesis | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | right | 1/1 |
+| `gemini-3.5-flash-lite` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | hypothesis | right | 1/1 |
+| `gpt-6.1-terra` | hypothesis | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | right | 1/1 |
 
 ### s-1110T2353
 
@@ -780,21 +1317,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | right | 1/1 |
-| `gpt-oss-20b` | fact | right | 1/1 |
-| `ministral-8b-2512` | fact | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | fact | right | 1/1 |
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 3/3 |
 | `qwen3.5-9b` | fact | right | 1/1 |
-| `gemma-4-31b-it` | fact | right | 1/1 |
-| `llama-4-maverick` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
 | `deepseek-v4.1-flash` | fact | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
 | `qwen3.5-397b-a17b` | fact | right | 1/1 |
 | `mistral-large-4-0` | fact | right | 1/1 |
-| `gpt-6-luna` | fact | right | 1/1 |
-| `gemini-3.5-flash-lite` | fact | right | 1/1 |
-| `claude-haiku-5.5` | fact | right | 1/1 |
-| `gpt-6.1-terra` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1110T2354
 
@@ -807,20 +1349,26 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | **wrong** | 0/1 |
-| `gpt-oss-20b` | fact | **wrong** | 0/1 |
-| `ministral-8b-2512` | hypothesis | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | **wrong** | 2/3 |
+| `ministral-8b-2512` | hypothesis | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 2/3 |
 | `qwen3.5-9b` |  | **malformed** | 0/1 |
-| `gemma-4-31b-it` | hypothesis | right | 1/1 |
-| `llama-4-maverick` | hypothesis | right | 1/1 |
+| `gemma-4-31b-it` | hypothesis | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | hypothesis | right | 1/1 |
+| `llama-4-maverick` | hypothesis | right | 2/3 |
+| `deepseek-v4.1-flash #reasoning-off` | hypothesis | right | 3/3 |
 | `deepseek-v4.1-flash` | hypothesis | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-397b-a17b` | hypothesis | right | 1/1 |
 | `mistral-large-4-0` | hypothesis | right | 1/1 |
-| `gpt-6-luna` | hypothesis | right | 1/1 |
-| `gemini-3.5-flash-lite` | hypothesis | right | 1/1 |
-| `claude-haiku-5.5` | hypothesis | right | 1/1 |
-| `gpt-6.1-terra` | hypothesis | right | 1/1 |
+| `gpt-6-luna` | hypothesis | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | right | 1/1 |
+| `gemini-3.5-flash-lite` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | hypothesis | right | 1/1 |
+| `gpt-6.1-terra` | hypothesis | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | right | 1/1 |
 
 ### s-1110T2358
 
@@ -833,21 +1381,26 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | evidence | **wrong** | 0/1 |
-| `gpt-oss-20b` | evidence | **wrong** | 0/1 |
-| `ministral-8b-2512` | evidence | **wrong** | 0/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | evidence | **wrong** | 0/3 |
+| `gpt-oss-20b` | evidence | **wrong** | 0/3 |
+| `ministral-8b-2512` | evidence | **wrong** | 0/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 1/3 |
 | `qwen3.5-9b` | evidence | **wrong** | 0/1 |
-| `gemma-4-31b-it` | fact | **wrong** | 0/1 |
-| `llama-4-maverick` | fact | **wrong** | 0/1 |
+| `gemma-4-31b-it` | fact | **wrong** | 0/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | **wrong** | 0/1 |
+| `llama-4-maverick` | fact | **wrong** | 0/3 |
+| `deepseek-v4.1-flash #reasoning-off` | evidence | **wrong** | 1/3 |
 | `deepseek-v4.1-flash` | evidence | **wrong** | 0/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | evidence | **wrong** | 2/3 |
 | `qwen3.5-397b-a17b` | fact | **wrong** | 0/1 |
 | `mistral-large-4-0` | fact | **wrong** | 0/1 |
-| `gpt-6-luna` | fact | **wrong** | 0/1 |
-| `gemini-3.5-flash-lite` | fact | **wrong** | 0/1 |
-| `claude-haiku-5.5` | evidence | **wrong** | 0/1 |
-| `gpt-6.1-terra` | fact | **wrong** | 0/1 |
+| `gpt-6-luna` | fact | **wrong** | 0/3 |
+| `gpt-6-luna #reasoning-on` | fact | **wrong** | 0/1 |
+| `gemini-3.5-flash-lite` | fact | **wrong** | 2/3 |
+| `claude-haiku-5.5` | evidence | **wrong** | 0/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | **wrong** | 0/1 |
+| `gpt-6.1-terra` | fact | **wrong** | 1/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | right | 1/1 |
 
 ### s-1111T0000
 
@@ -860,20 +1413,26 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | hypothesis | right | 1/1 |
-| `gpt-oss-20b` | hypothesis | right | 1/1 |
-| `ministral-8b-2512` | hypothesis | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | hypothesis | right | 1/1 |
+| `gemma-3-4b-it` | hypothesis | right | 3/3 |
+| `gpt-oss-20b` | hypothesis | right | 3/3 |
+| `ministral-8b-2512` | hypothesis | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-9b` | hypothesis | right | 1/1 |
-| `gemma-4-31b-it` | hypothesis | right | 1/1 |
-| `llama-4-maverick` | hypothesis | right | 1/1 |
+| `gemma-4-31b-it` | hypothesis | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | hypothesis | right | 1/1 |
+| `llama-4-maverick` | hypothesis | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | hypothesis | right | 3/3 |
 | `deepseek-v4.1-flash` | hypothesis | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-397b-a17b` | hypothesis | right | 1/1 |
 | `mistral-large-4-0` | hypothesis | right | 1/1 |
-| `gpt-6-luna` | hypothesis | right | 1/1 |
-| `gemini-3.5-flash-lite` | hypothesis | right | 1/1 |
-| `claude-haiku-5.5` | hypothesis | right | 1/1 |
-| `gpt-6.1-terra` | hypothesis | right | 1/1 |
+| `gpt-6-luna` | hypothesis | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | right | 1/1 |
+| `gemini-3.5-flash-lite` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | hypothesis | right | 1/1 |
+| `gpt-6.1-terra` | hypothesis | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | right | 1/1 |
 
 ### s-1111T0015
 
@@ -886,20 +1445,26 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | **wrong** | 0/1 |
-| `gpt-oss-20b` | fact | **wrong** | 0/1 |
-| `ministral-8b-2512` | fact | **wrong** | 0/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | fact | **wrong** | 0/3 |
+| `gpt-oss-20b` | fact | **wrong** | 0/3 |
+| `ministral-8b-2512` | fact | **wrong** | 0/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 1/3 |
 | `qwen3.5-9b` | fact | **wrong** | 0/1 |
-| `gemma-4-31b-it` | fact | **wrong** | 0/1 |
-| `llama-4-maverick` | fact | **wrong** | 0/1 |
+| `gemma-4-31b-it` | fact | **wrong** | 2/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | **wrong** | 0/1 |
+| `llama-4-maverick` | fact | **wrong** | 0/3 |
+| `deepseek-v4.1-flash #reasoning-off` | hypothesis | right | 3/3 |
 | `deepseek-v4.1-flash` | fact | **wrong** | 0/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 3/3 |
 | `qwen3.5-397b-a17b` | fact | **wrong** | 0/1 |
 | `mistral-large-4-0` | fact | **wrong** | 0/1 |
-| `gpt-6-luna` | fact | **wrong** | 0/1 |
-| `gemini-3.5-flash-lite` | hypothesis | right | 1/1 |
-| `claude-haiku-5.5` | fact | **wrong** | 0/1 |
-| `gpt-6.1-terra` | hypothesis | right | 1/1 |
+| `gpt-6-luna` | fact | **wrong** | 1/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | right | 1/1 |
+| `gemini-3.5-flash-lite` | hypothesis | right | 1/3 |
+| `claude-haiku-5.5` | fact | **wrong** | 0/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | **wrong** | 0/1 |
+| `gpt-6.1-terra` | hypothesis | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | right | 1/1 |
 
 ### s-1111T0146
 
@@ -912,21 +1477,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | fact | right | 1/1 |
-| `gpt-oss-20b` | fact | right | 1/1 |
-| `ministral-8b-2512` | fact | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/1 |
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | evidence | **wrong** | 0/3 |
 | `qwen3.5-9b` | fact | right | 1/1 |
-| `gemma-4-31b-it` | fact | right | 1/1 |
-| `llama-4-maverick` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
 | `deepseek-v4.1-flash` | fact | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
 | `qwen3.5-397b-a17b` | fact | right | 1/1 |
 | `mistral-large-4-0` | fact | right | 1/1 |
-| `gpt-6-luna` | fact | right | 1/1 |
-| `gemini-3.5-flash-lite` | fact | right | 1/1 |
-| `claude-haiku-5.5` | fact | right | 1/1 |
-| `gpt-6.1-terra` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1111T0228
 
@@ -939,6 +1509,26 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-9b` | fact | right | 1/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | fact | right | 1/1 |
+| `gpt-6.1-terra` | fact | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | fact | right | 1/1 |
 
 ### s-1111T0229
 
@@ -951,6 +1541,26 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | hypothesis | right | 3/3 |
+| `gpt-oss-20b` | hypothesis | right | 3/3 |
+| `ministral-8b-2512` | hypothesis | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | hypothesis | right | 3/3 |
+| `qwen3.5-9b` | hypothesis | right | 1/1 |
+| `gemma-4-31b-it` | hypothesis | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | hypothesis | right | 1/1 |
+| `llama-4-maverick` | hypothesis | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | hypothesis | right | 3/3 |
+| `deepseek-v4.1-flash` | hypothesis | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | hypothesis | right | 3/3 |
+| `qwen3.5-397b-a17b` | hypothesis | right | 1/1 |
+| `mistral-large-4-0` | hypothesis | right | 1/1 |
+| `gpt-6-luna` | hypothesis | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | hypothesis | right | 1/1 |
+| `gemini-3.5-flash-lite` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5` | hypothesis | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | hypothesis | right | 1/1 |
+| `gpt-6.1-terra` | hypothesis | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | right | 1/1 |
 
 ### s-1111T0238
 
@@ -963,3 +1573,23 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | fact | right | 3/3 |
+| `gpt-oss-20b` | fact | right | 3/3 |
+| `ministral-8b-2512` | fact | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | fact | right | 2/3 |
+| `qwen3.5-9b` |  | **cut off** | 0/1 |
+| `gemma-4-31b-it` | fact | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | fact | right | 1/1 |
+| `llama-4-maverick` | fact | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | fact | right | 3/3 |
+| `deepseek-v4.1-flash` | fact | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | fact | right | 3/3 |
+| `qwen3.5-397b-a17b` | fact | right | 1/1 |
+| `mistral-large-4-0` | fact | right | 1/1 |
+| `gpt-6-luna` | fact | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | fact | right | 1/1 |
+| `gemini-3.5-flash-lite` | fact | right | 3/3 |
+| `claude-haiku-5.5` | fact | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | evidence | **wrong** | 0/1 |
+| `gpt-6.1-terra` | hypothesis | **wrong** | 0/3 |
+| `gpt-6.1-terra #reasoning-on` | hypothesis | **wrong** | 0/1 |

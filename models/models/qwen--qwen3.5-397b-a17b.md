@@ -5,7 +5,7 @@ summary: Qwen: Qwen3.5 397B A17B as used on this site: what it is and its licenc
 
 # Qwen: Qwen3.5 397B A17B
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:50 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** One of [the models](index.md) in [Other models, measured](../index.md). The id we call it by: `qwen/qwen3.5-397b-a17b` (through OpenRouter).
 
@@ -20,19 +20,21 @@ summary: Qwen: Qwen3.5 397B A17B as used on this site: what it is and its licenc
 
 ## Its use here, in one line
 
-**126 runs** on 4 tasks, **114 right**; 7 not answered (malformed, cut off, refused or a provider error); **38,229 tokens in, 110,374 out; 0.3835 US dollars**. Source: [results.json](../results.json), made 2026-11-11 03:06 UTC. It has written nothing on this site: every call was a test.
+**436 runs** on 5 tasks, **381 right**; 16 not answered (malformed, cut off, refused or a provider error); **282,200 tokens in, 234,325 out; 0.9006 US dollars**. Source: [results.json](../results.json), made 2026-11-11 22:50 UTC. It has written nothing on this site: every call was a test.
 
 ## Every job we gave it
 
 | Task | Setting | Runs right | Items right, run by run | Malformed | Cut off | Refused | Errors | Tokens in | Tokens out | Cost, USD | Per item, USD | Median s | p90 s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Extract a decision](../extract-decision.md) | off | **10/10** | 10 of 10 (1 run) | 0 | 0 | 0 | 0 | 7305 | 696 | 0.00443 | 0.00044 | 2.0 | 2.6 |
+| [Warnings in force at an hour](../warnings-in-force.md) | off | **21/39** | 6 to 8 of 13 (3 runs) | 0 | 0 | 0 | 0 | 125344 | 9372 | 0.0931 | 0.00239 | 2.3 | 3.6 |
+| [Warnings in force at an hour](../warnings-in-force.md) | on | **5/13** | 5 of 13 (1 run) | 0 | 8 | 0 | 0 | 41756 | 57155 | 0.2031 | 0.0156 | 30.9 | 101.1 |
+| [Extract a decision](../extract-decision.md) | off | **30/30** | 10 of 10 (3 runs) | 0 | 0 | 0 | 0 | 22435 | 2064 | 0.0162 | 0.00054 | 1.9 | 2.6 |
 | [Extract a decision](../extract-decision.md) | on | **9/10** | 9 of 10 (1 run) | 0 | 1 | 0 | 0 | 7285 | 16207 | 0.0608 | 0.00608 | 15.8 | 65.3 |
-| [Label fact, evidence, hypothesis](../label.md) | off | **12/15** | 12 of 15 (1 run) | 0 | 0 | 0 | 0 | 4490 | 114 | 0.00202 | 0.00013 | 1.1 | 1.3 |
-| [Label fact, evidence, hypothesis](../label.md) | on | **16/20** | 16 of 20 (1 run) | 1 | 1 | 0 | 0 | 5742 | 28708 | 0.0943 | 0.00471 | 11.4 | 44.8 |
-| [Translate, figures kept](../translate.md) | off | **17/17** | 17 of 17 (1 run) | 0 | 0 | 0 | 0 | 1635 | 503 | 0.00180 | 0.00011 | 1.4 | 1.9 |
-| [Translate, figures kept](../translate.md) | on | **16/20** | 16 of 20 (1 run) | 0 | 4 | 0 | 0 | 1870 | 41707 | 0.1432 | 0.00716 | 24.4 | 43.5 |
-| [Extract a warning](../extract-warning.md) | off | **17/17** | 17 of 17 (1 run) | 0 | 0 | 0 | 0 | 4968 | 1181 | 0.00465 | 0.00027 | 2.2 | 2.5 |
+| [Label fact, evidence, hypothesis](../label.md) | off | **121/138** | 39 to 41 of 46 (3 runs) | 0 | 0 | 0 | 0 | 42054 | 4651 | 0.0353 | 0.00026 | 1.0 | 1.4 |
+| [Label fact, evidence, hypothesis](../label.md) | on | **40/46** | 40 of 46 (1 run) | 1 | 1 | 0 | 0 | 13400 | 63604 | 0.2086 | 0.00454 | 12.5 | 42.9 |
+| [Translate, figures kept](../translate.md) | off | **69/69** | 23 of 23 (3 runs) | 0 | 0 | 0 | 0 | 7599 | 2908 | 0.0121 | 0.00018 | 1.3 | 2.0 |
+| [Translate, figures kept](../translate.md) | on | **18/23** | 18 of 23 (1 run) | 0 | 5 | 0 | 0 | 2489 | 53602 | 0.1821 | 0.00792 | 25.3 | 43.5 |
+| [Extract a warning](../extract-warning.md) | off | **51/51** | 17 of 17 (3 runs) | 0 | 0 | 0 | 0 | 14904 | 3504 | 0.0171 | 0.00033 | 1.9 | 2.5 |
 | [Extract a warning](../extract-warning.md) | on | **17/17** | 17 of 17 (1 run) | 0 | 0 | 0 | 0 | 4934 | 21258 | 0.0722 | 0.00425 | 16.9 | 21.2 |
 
 ## What we would use it for
@@ -43,30 +45,59 @@ summary: Qwen: Qwen3.5 397B A17B as used on this site: what it is and its licenc
 
 First run of each setting; the item links to its page, where every model's answer is.
 
+**Warnings in force at an hour, off** (5 of 13):
+
+| Item | Scored against | It answered | Result |
+|---|---|---|---|
+| [f03](../warnings-in-force.md#f03) | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"}] | **wrong** |
+| [f04](../warnings-in-force.md#f04) | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"},{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"},{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"}] | **wrong** |
+| [f05](../warnings-in-force.md#f05) | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"}] | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"}] | **wrong** |
+| [f06](../warnings-in-force.md#f06) | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"}] | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"},{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"}] | **wrong** |
+| [f11](../warnings-in-force.md#f11) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-12T03:00:00Z"}] | [{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"},{"type":"coastal_event","level":"yellow","end_utc":"2026-11-12T03:00:00Z"}] | **wrong** |
+
+**Warnings in force at an hour, on** (8 of 13):
+
+| Item | Scored against | It answered | Result |
+|---|---|---|---|
+| [f01](../warnings-in-force.md#f01) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] |  | **cut off** |
+| [f02](../warnings-in-force.md#f02) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] |  | **cut off** |
+| [f04](../warnings-in-force.md#f04) | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] |  | **cut off** |
+| [f05](../warnings-in-force.md#f05) | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"}] |  | **cut off** |
+| [f06](../warnings-in-force.md#f06) | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"}] |  | **cut off** |
+| [f07](../warnings-in-force.md#f07) | [{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"},{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"}] |  | **cut off** |
+| [f08](../warnings-in-force.md#f08) | [{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"},{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"}] |  | **cut off** |
+| [f11](../warnings-in-force.md#f11) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-12T03:00:00Z"}] |  | **cut off** |
+
 **Extract a decision, on** (1 of 10):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
 | [d06](../extract-decision.md#d06) | {"decider":"ipma","effect_from_utc":null,"effect_to_utc":null} |  | **cut off** |
 
-**Label fact, evidence, hypothesis, off** (3 of 15):
+**Label fact, evidence, hypothesis, off** (7 of 46):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
+| [s-1109T1020](../label.md#s-1109t1020) | evidence | fact | **wrong** |
+| [s-1110T1700](../label.md#s-1110t1700) | fact | hypothesis | **wrong** |
+| [s-1110T1858](../label.md#s-1110t1858) | evidence | fact | **wrong** |
+| [s-1110T1909](../label.md#s-1110t1909) | fact | evidence | **wrong** |
 | [s-1110T2132](../label.md#s-1110t2132) | fact | evidence | **wrong** |
 | [s-1110T2153](../label.md#s-1110t2153) | fact | evidence | **wrong** |
 | [s-1110T2358](../label.md#s-1110t2358) | hypothesis | evidence | **wrong** |
 
-**Label fact, evidence, hypothesis, on** (4 of 20):
+**Label fact, evidence, hypothesis, on** (6 of 46):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
+| [s-1109T1020](../label.md#s-1109t1020) | evidence | fact | **wrong** |
+| [s-1110T1858](../label.md#s-1110t1858) | evidence | fact | **wrong** |
 | [s-1110T2030](../label.md#s-1110t2030) | evidence |  | **malformed** |
 | [s-1110T2153](../label.md#s-1110t2153) | fact |  | **cut off** |
 | [s-1110T2358](../label.md#s-1110t2358) | hypothesis | fact | **wrong** |
 | [s-1111T0015](../label.md#s-1111t0015) | hypothesis | fact | **wrong** |
 
-**Translate, figures kept, on** (4 of 20):
+**Translate, figures kept, on** (5 of 23):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
@@ -74,3 +105,4 @@ First run of each setting; the item links to its page, where every model's answe
 | [t05](../translate.md#t05) | figures 4 5; units metre |  | **cut off** |
 | [t07](../translate.md#t07) | figures 100 140; units km/h |  | **cut off** |
 | [t19](../translate.md#t19) | figures ; units  |  | **cut off** |
+| [p01](../translate.md#p01) | figures 10 11 100 12 100 140 4 5; units km/h mm metre |  | **cut off** |

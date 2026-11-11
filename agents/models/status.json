@@ -1,9 +1,9 @@
 {
   "agent": "incident.models@web-summit.dinis",
   "by": "incident.models@web-summit.dinis",
-  "updated": "2026-11-11T22:19:00Z",
-  "state": "the router: collectors' analysis delegated to open-weight models through OpenRouter. Calls as JSON (models/calls/) and the delegation loop (tools/models-delegate.mjs) live; four collector patches sent (models/patches/), none wired yet",
-  "last_wake": "2026-11-11T22:01:50Z",
+  "updated": "2026-11-11T22:51:00Z",
+  "state": "the router, third session: four of four collectors delegate (transport, media, sources, and the researcher’s press decisions run here); match-fact measured; eval round 2 complete",
+  "last_wake": "2026-11-11T22:34:41Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "spend": {
     "day": "2026-11-11",
@@ -12,7 +12,8 @@
     "delegation_usd": 5,
     "team_cap_usd": 20,
     "openrouter_22_04Z": "account 265 credits, 168.24 used; key 72.40 of 100 left",
-    "source": "models/calls/index.json, models/budgets.json"
+    "source": "the restored ledger (vault atrfw315 ledger/), models/calls/index.json, models/budgets.json",
+    "this_agent_usd_today_22_48Z": 2.3065
   },
   "done": [
     "session key made (record sha256:ba085e12563c29bc, encryption sha256:81ba78c3312c1f76), public half in data/keys.json",
@@ -38,29 +39,31 @@
     "22:07Z step 1: every call through tools/llm.mjs gets a published, text-free record in models/calls/<date>/<HH>.json (other agents: agents/<role>/calls/): agent, task, provider, model asked and served, tokens, cost, latency, status, the sha256 of request and response, and the parent (agent, loop or wake, trace and span); index models/calls/index.json (tools/models-calls.mjs)",
     "22:07Z step 2: tools/models-delegate.mjs, an A2 loop: a task of models/delegate.json, an input, two open-weight models plus one commercial for comparison; schema check, at most two re-asks, agreement; fringe flow events (A2 start/step/end, A1 start/end) with ids computed as flow.mjs does",
     "22:08Z budgets: delegation 5 USD (1 per wired collector, delegated calls only) and flights 1, from the unassigned 8 (2 left), at the conductor's word of 22:01",
-    "22:11 to 22:16Z step 3: patches for transport (translate), sources (extract-warning against their parser), media (match-fact, new, against their patterns), researcher (extract-decision against graph.json), each tried on live data; models/patches/README.md"
+    "22:11 to 22:16Z step 3: patches for transport (translate), sources (extract-warning against their parser), media (match-fact, new, against their patterns), researcher (extract-decision against graph.json), each tried on live data; models/patches/README.md",
+    "22:35Z third session: key incident-models-dinis-3 (record sha256:cf844977e80dc567, encryption sha256:133a99a450651f05; pki-agent.mjs fcb28a1c...02ab checked), -2 marked handed over (60953a9)",
+    "22:38Z the key of vault atrfw315 from the conductor, sealed to -3 (tools/lane-handover.mjs), opened; the vault cloned to ~/.incident-raw, its ledger restored (5,208 lines), pushed",
+    "22:39Z match-fact measured against incident.media@’s first-on-each-fact (61 items, gold by that desk’s ranking): llama-4-maverick 47, gemma-4-31b 44, gemini-3.5-flash-lite (comparison) 38; open-weight agree on 45, right on 39; recall only; 0.031 USD (tools/models-measure-match.mjs, models/delegated/match-fact-measure.json, 662857c)",
+    "22:47Z eval round 2 complete (1.37 USD; the day 2.31 of 6): the warnings-in-force task separates the models: deepseek-v4.1-flash, gemma-4-31b with reasoning on, gpt-6.1-terra and claude-haiku-5.5 13 of 13; gemma-4-31b without reasoning 33 of 39 runs; llama-4-maverick 4 of 39; gemini-3.5-flash-lite 20 of 39; small models none. models/notes.json and every page rewritten (models-report.mjs)"
   ],
   "next": [
-    "wire each collector as its owner answers; report each to the conductor",
-    "the raw store: the key of vault atrfw315 from the conductor, or a new vault and its key to the conductor's lane",
-    "measure match-fact (gold from the media desk's first-on-each-fact) and round 2 (about 2 to 3 USD)",
-    "a page for /models/calls/ (who called what, by hour) once there are other agents' calls"
+    "each :31 wake (HANDOVER.md)",
+    "a page for /models/calls/",
+    "with incident.ci@: run.yml for the runner repository once Dinis creates it (agents/conductor/RUNNER.md)"
   ],
   "asks": [
     "incident.observability@: tools/trace.mjs import-safe (its CLI runs on import) and our events read into data/trace/",
-    "incident.conductor@: forward the sources and researcher patches (sessions not found), and the atrfw315 key sealed to sha256:c12fa892e0c16d9b",
     "Dinis: a fourth label, \"our measurement\", for what we counted or computed ourselves? The case and the three rows: models/label.md",
     "incident.perplexity@, incident.shadow@: after each round, node tools/llm.mjs --summary > <your folder>/ledger-summary.json; it is read into models/ledger-summary.json by agent, task and model",
     "incident.researcher@: the source's own sentence on each decision edge (a words field, as gov-alert's announced_utc has) would let the decision task grow from 10 items without anyone retyping official text",
     "ANEPC's pages (prociv.gov.pt) refuse automated reads from this session (Request Rejected, 02:19Z): its two notices are not in the decision task for that reason"
   ],
   "session": {
-    "id": "session_018yvwtNj7LsuSTWaGMRPthX",
-    "started_at": "2026-11-11T22:01:50Z",
+    "id": "session_018yvwtMq1mAhG21L5vLUCnK",
+    "started_at": "2026-11-11T22:34:41Z",
     "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD)",
     "on_whose_word": "Dinis Cruz (BRIEF.md ~22:00 UTC)",
-    "took_over_from": "the first models session (02:00 to 09:40 UTC; key incident-models-dinis, marked handed over)",
-    "key": "incident-models-dinis-2 (sha256:c12fa892e0c16d9b)",
+    "took_over_from": "the second models session (22:01 to 22:34 UTC; key incident-models-dinis-2, marked handed over)",
+    "key": "incident-models-dinis-3 (sha256:133a99a450651f05)",
     "wake": "hourly at :31 (set by the conductor)"
   }
 }

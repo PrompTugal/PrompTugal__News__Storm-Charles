@@ -5,7 +5,7 @@ summary: Mistral: Ministral 3 8B 2512 as used on this site: what it is and its l
 
 # Mistral: Ministral 3 8B 2512
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:50 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** One of [the models](index.md) in [Other models, measured](../index.md). The id we call it by: `mistralai/ministral-8b-2512` (through OpenRouter).
 
@@ -20,17 +20,17 @@ summary: Mistral: Ministral 3 8B 2512 as used on this site: what it is and its l
 
 ## Its use here, in one line
 
-**106 runs** on 5 tasks, **39 right**; 0 not answered (malformed, cut off, refused or a provider error); **147,329 tokens in, 9,559 out; 0.0219 US dollars**. Source: [results.json](../results.json), made 2026-11-11 03:06 UTC. It has written nothing on this site: every call was a test.
+**327 runs** on 5 tasks, **185 right**; 0 not answered (malformed, cut off, refused or a provider error); **211,479 tokens in, 19,946 out; 0.0297 US dollars**. Source: [results.json](../results.json), made 2026-11-11 22:50 UTC. It has written nothing on this site: every call was a test.
 
 ## Every job we gave it
 
 | Task | Setting | Runs right | Items right, run by run | Malformed | Cut off | Refused | Errors | Tokens in | Tokens out | Cost, USD | Per item, USD | Median s | p90 s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | [Warnings in force at an hour](../warnings-in-force.md) | does not reason | **0/39** | 0 of 13 (3 runs) | 0 | 0 | 0 | 0 | 127842 | 5815 | 0.0192 | 0.00049 | 1.8 | 2.6 |
-| [Extract a decision](../extract-decision.md) | does not reason | **8/10** | 8 of 10 (1 run) | 0 | 0 | 0 | 0 | 7202 | 743 | 0.00078 | 0.000078 | 0.9 | 1.0 |
-| [Label fact, evidence, hypothesis](../label.md) | does not reason | **14/20** | 14 of 20 (1 run) | 0 | 0 | 0 | 0 | 5755 | 439 | 0.00069 | 0.000035 | 0.5 | 0.8 |
-| [Translate, figures kept](../translate.md) | does not reason | **0/20** | 0 of 20 (1 run) | 0 | 0 | 0 | 0 | 1667 | 1089 | 0.00042 | 0.000021 | 0.8 | 1.6 |
-| [Extract a warning](../extract-warning.md) | does not reason | **17/17** | 17 of 17 (1 run) | 0 | 0 | 0 | 0 | 4863 | 1473 | 0.00076 | 0.000045 | 0.9 | 1.1 |
+| [Extract a decision](../extract-decision.md) | does not reason | **24/30** | 8 of 10 (3 runs) | 0 | 0 | 0 | 0 | 22106 | 2222 | 0.00217 | 0.000073 | 0.9 | 1.6 |
+| [Label fact, evidence, hypothesis](../label.md) | does not reason | **110/138** | 36 to 37 of 46 (3 runs) | 0 | 0 | 0 | 0 | 40129 | 2241 | 0.00425 | 0.000031 | 0.6 | 1.2 |
+| [Translate, figures kept](../translate.md) | does not reason | **0/69** | 0 of 23 (3 runs) | 0 | 0 | 0 | 0 | 6813 | 5249 | 0.00182 | 0.000026 | 0.9 | 2.0 |
+| [Extract a warning](../extract-warning.md) | does not reason | **51/51** | 17 of 17 (3 runs) | 0 | 0 | 0 | 0 | 14589 | 4419 | 0.00220 | 0.000043 | 1.0 | 1.9 |
 
 ## What we would use it for
 
@@ -65,18 +65,21 @@ First run of each setting; the item links to its page, where every model's answe
 | [d06](../extract-decision.md#d06) | {"decider":"ipma","effect_from_utc":null,"effect_to_utc":null} | {"decider":"ipma","what":"Issued Red and Orange meteorological warnings for Storm Charles","effect_from_utc":"2026-11-10T17:07Z","effect_to_utc":null} | **wrong** |
 | [d10](../extract-decision.md#d10) | {"decider":"metro","effect_from_utc":null,"effect_to_utc":null} | {"decider":"metro","what":"Activate contingency plan for homeless people during nights of 10–11 and 11–12 November","effect_from_utc":"2026-11-10T00:00Z","effect_to_utc":"2026-11-12T00:00Z"} | **wrong** |
 
-**Label fact, evidence, hypothesis, does not reason** (6 of 20):
+**Label fact, evidence, hypothesis, does not reason** (9 of 46):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
+| [s-1110T1700](../label.md#s-1110t1700) | fact | hypothesis | **wrong** |
 | [s-1110T1825](../label.md#s-1110t1825) | evidence | fact | **wrong** |
+| [s-1110T1858](../label.md#s-1110t1858) | evidence | fact | **wrong** |
+| [s-1110T1909](../label.md#s-1110t1909) | fact | evidence | **wrong** |
 | [s-1110T1945](../label.md#s-1110t1945) | evidence | fact | **wrong** |
 | [s-1110T2132](../label.md#s-1110t2132) | fact | evidence | **wrong** |
 | [s-1110T2153](../label.md#s-1110t2153) | fact | evidence | **wrong** |
 | [s-1110T2358](../label.md#s-1110t2358) | hypothesis | evidence | **wrong** |
 | [s-1111T0015](../label.md#s-1111t0015) | hypothesis | fact | **wrong** |
 
-**Translate, figures kept, does not reason** (20 of 20):
+**Translate, figures kept, does not reason** (23 of 23):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
@@ -100,3 +103,6 @@ First run of each setting; the item links to its page, where every model's answe
 | [t18](../translate.md#t18) | figures ; units  | {"message":"Showers, sometimes heavy"} | **wrong** |
 | [t19](../translate.md#t19) | figures ; units  | {"weather":"Rain, sometimes heavy and persistent."} | **wrong** |
 | [t20](../translate.md#t20) | figures ; units  | {"forecast":{"conditions":[{"type":"rain","intensity":["moderate","strong"],"additional":[{"phenomenon":"thunderstorm","description":"accompanied"}]}]}} | **wrong** |
+| [p01](../translate.md#p01) | figures 10 11 100 12 100 140 4 5; units km/h mm metre | {"region":"Madeira archipelago","timeframe":{"start":"end of today (10th)","end":"morning of 11th"},"weather":{"precipitation":{"type":"persistent and at times heavy rain","accumulation":{"possible":"yes","value":"greater than 100 mm in 12 h","location":"some areas, especially mountainous regions"}},"wind":{"direction":"southwest","speed":{"sustained":"increasing","gusts":"up to 100 km/h","high_te | **wrong** |
+| [p02](../translate.md#p02) | figures 100 120 140 100 24 5 7 11 13 4 5; units km/h mm metre | {"current_data":{"depression_path":{"most_probable":{"location":"between Sines and Cabo Carvoeiro"}},"wind":{"initial_direction":"south","direction_change":"north","gusts":{"south_edge":{"range":"100 to 120 km/h","local_max":"up to 140 km/h"}}},"precipitation":{"intensity":"sometimes strong","area":"nationwide","accumulation":{"possible":"over 100 mm in 24h","locations":"some areas"}},"waves":{"di | **wrong** |
+| [p03](../translate.md#p03) | figures 8 90 6; units km/h metre | {"forecast":{"depression":"BRUNA","wind":{"start":"Sunday morning, 8th","increase":"significant","gusts":{"max":"90","unit":"km/h","affected_areas":"all Groups of the Archipelago"}},"sea_state":{"increase":"significant","affected_islands":["Central Group","Eastern Group"],"waves":{"direction":"northwest","max_height":{"value":"6","unit":"m","type":"significant"}}}}} | **wrong** |

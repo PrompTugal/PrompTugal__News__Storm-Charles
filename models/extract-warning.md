@@ -1,19 +1,19 @@
 ---
 title: Models: extract a warning
-summary: 17 items from the data room, 15 rows: every item, the answer it is scored against, and each model's answer marked right or wrong.
+summary: 17 items from the data room, 20 rows: every item, the answer it is scored against, and each model's answer marked right or wrong.
 mount: <div id="models" data-view="task" data-task="extract-warning" data-base="./"><p class="meta">The chart is drawn in the browser from <a href="results.json">results.json</a>; the same figures are in the table below.</p></div>
 head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app/models/models.js" defer></script>
 ---
 
 # Extract a warning
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:50 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Extract a warning from one of IPMA's CAP messages (Common Alerting Protocol, read through MeteoAlarm's public feed). The input is the message's fields as the meteorologist keeps them in cap.json (Portuguese event and description, times with offsets); the gold answer is the same record, normalised: type and level in English, times in UTC with Z. 'sent' is in the input and is not the start.
 
-Scoring: each field exact; an item is right when all five are. Last run 2026-11-11 02:56 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 03:06 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
+Scoring: each field exact; an item is right when all five are. Last run 2026-11-11 22:43 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 22:50 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 
@@ -28,21 +28,26 @@ Keys: "type" (one of: rain, wind, coastal_event, thunderstorm, fog, snow, cold, 
 
 | Model, reasoning | Kind | Runs right | Items right, run by run | Changed between runs | `type` | `level` | `area` | `start_utc` | `end_utc` | Malformed | Cut off | Refused | Errors | Cost per item, USD | Median latency, s | p90, s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [`google/gemma-3-4b-it`](models/google--gemma-3-4b-it.md): does not reason | open-weight, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000016 | 3.2 | 3.6 |
-| [`openai/gpt-oss-20b`](models/openai--gpt-oss-20b.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000068 | 2.9 | 7.6 |
-| [`mistralai/ministral-8b-2512`](models/mistralai--ministral-8b-2512.md): does not reason | open-weight, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000045 | 0.9 | 1.1 |
-| [`qwen/qwen3.5-9b#reasoning-off`](models/qwen--qwen3.5-9b.md): off (asked) | open-weight, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000041 | 1.3 | 2.2 |
+| [`google/gemma-3-4b-it`](models/google--gemma-3-4b-it.md): does not reason | open-weight, small | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000021 | 1.7 | 3.3 |
+| [`openai/gpt-oss-20b`](models/openai--gpt-oss-20b.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, small | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000082 | 0.9 | 4.1 |
+| [`mistralai/ministral-8b-2512`](models/mistralai--ministral-8b-2512.md): does not reason | open-weight, small | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000043 | 1.0 | 1.9 |
+| [`qwen/qwen3.5-9b#reasoning-off`](models/qwen--qwen3.5-9b.md): off (asked) | open-weight, small | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000052 | 1.3 | 2.1 |
 | [`qwen/qwen3.5-9b`](models/qwen--qwen3.5-9b.md): on (the provider's default) | open-weight, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00030 | 18.3 | 27.5 |
-| [`google/gemma-4-31b-it`](models/google--gemma-4-31b-it.md): off (the provider's default) | open-weight, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000064 | 1.0 | 2.1 |
-| [`meta-llama/llama-4-maverick`](models/meta-llama--llama-4-maverick.md): does not reason | open-weight, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00013 | 1.0 | 1.3 |
+| [`google/gemma-4-31b-it`](models/google--gemma-4-31b-it.md): off (the provider's default) | open-weight, large | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000068 | 1.8 | 3.2 |
+| [`google/gemma-4-31b-it#reasoning-on`](models/google--gemma-4-31b-it.md): on (asked, medium effort) | open-weight, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00029 | 8.1 | 25.8 |
+| [`meta-llama/llama-4-maverick`](models/meta-llama--llama-4-maverick.md): does not reason | open-weight, large | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00012 | 1.2 | 1.6 |
+| [`deepseek/deepseek-v4.1-flash#reasoning-off`](models/deepseek--deepseek-v4.1-flash.md): off (asked) | open-weight, large | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000065 | 0.6 | 4.5 |
 | [`deepseek/deepseek-v4.1-flash`](models/deepseek--deepseek-v4.1-flash.md): on (the provider's default) | open-weight, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00012 | 1.1 | 2.1 |
-| [`qwen/qwen3.5-397b-a17b#reasoning-off`](models/qwen--qwen3.5-397b-a17b.md): off (asked) | open-weight, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00027 | 2.2 | 2.5 |
+| [`qwen/qwen3.5-397b-a17b#reasoning-off`](models/qwen--qwen3.5-397b-a17b.md): off (asked) | open-weight, large | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00033 | 1.9 | 2.5 |
 | [`qwen/qwen3.5-397b-a17b`](models/qwen--qwen3.5-397b-a17b.md): on (the provider's default) | open-weight, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00425 | 16.9 | 21.2 |
 | [`mistralai/mistral-large-4-0`](models/mistralai--mistral-large-4-0.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00215 | 4.8 | 11.3 |
-| [`openai/gpt-6-luna`](models/openai--gpt-6-luna.md): off (the provider's default) | commercial, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000064 | 2.6 | 2.8 |
-| [`google/gemini-3.5-flash-lite`](models/google--gemini-3.5-flash-lite.md): reasons; cannot be turned off (the provider refuses the setting) | commercial, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00027 | 0.8 | 0.9 |
-| [`anthropic/claude-haiku-5.5`](models/anthropic--claude-haiku-5.5.md): off (the provider's default) | commercial, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000077 | 0.8 | 1.8 |
-| [`openai/gpt-6.1-terra`](models/openai--gpt-6.1-terra.md): off (the provider's default) | commercial, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00052 | 1.5 | 1.8 |
+| [`openai/gpt-6-luna`](models/openai--gpt-6-luna.md): off (the provider's default) | commercial, small | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000064 | 2.4 | 2.8 |
+| [`openai/gpt-6-luna#reasoning-on`](models/openai--gpt-6-luna.md): on (asked, medium effort) | commercial, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000063 | 2.3 | 2.9 |
+| [`google/gemini-3.5-flash-lite`](models/google--gemini-3.5-flash-lite.md): reasons; cannot be turned off (the provider refuses the setting) | commercial, small | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00027 | 0.8 | 0.9 |
+| [`anthropic/claude-haiku-5.5`](models/anthropic--claude-haiku-5.5.md): off (the provider's default) | commercial, small | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000075 | 0.8 | 1.3 |
+| [`anthropic/claude-haiku-5.5#reasoning-on`](models/anthropic--claude-haiku-5.5.md): on (asked, medium effort) | commercial, small | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.000075 | 0.8 | 1.7 |
+| [`openai/gpt-6.1-terra`](models/openai--gpt-6.1-terra.md): off (the provider's default) | commercial, large | **51/51** | 17 of 17 (3 runs) | 0 items | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00052 | 1.5 | 1.8 |
+| [`openai/gpt-6.1-terra#reasoning-on`](models/openai--gpt-6.1-terra.md): on (asked, medium effort) | commercial, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 17 | 17 | 17 | 0 | 0 | 0 | 0 | 0.00054 | 1.7 | 2.8 |
 
 The field columns count the first run. "Changed between runs": items a row got right in one run and wrong in another, at temperature 0.
 
@@ -52,25 +57,25 @@ The field columns count the first run. "Changed between runs": items a row got r
 
 First run of each row.
 
-| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b #reasoning-off | qwen3.5-9b | gemma-4-31b-it | llama-4-maverick | deepseek-v4.1-flash | qwen3.5-397b-a17b #reasoning-off | qwen3.5-397b-a17b | mistral-large-4-0 | gpt-6-luna | gemini-3.5-flash-lite | claude-haiku-5.5 | gpt-6.1-terra |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [w01](#w01) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w02](#w02) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w03](#w03) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w04](#w04) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w05](#w05) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w06](#w06) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w07](#w07) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w08](#w08) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w09](#w09) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w10](#w10) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w11](#w11) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w12](#w12) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w13](#w13) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w14](#w14) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w15](#w15) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w16](#w16) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [w17](#w17) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b #reasoning-off | qwen3.5-9b | gemma-4-31b-it | gemma-4-31b-it #reasoning-on | llama-4-maverick | deepseek-v4.1-flash #reasoning-off | deepseek-v4.1-flash | qwen3.5-397b-a17b #reasoning-off | qwen3.5-397b-a17b | mistral-large-4-0 | gpt-6-luna | gpt-6-luna #reasoning-on | gemini-3.5-flash-lite | claude-haiku-5.5 | claude-haiku-5.5 #reasoning-on | gpt-6.1-terra | gpt-6.1-terra #reasoning-on |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [w01](#w01) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w02](#w02) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w03](#w03) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w04](#w04) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w05](#w05) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w06](#w06) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w07](#w07) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w08](#w08) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w09](#w09) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w10](#w10) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w11](#w11) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w12](#w12) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w13](#w13) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w14](#w14) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w15](#w15) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w16](#w16) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [w17](#w17) | 20/20 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
 
 ### w01
 
@@ -90,21 +95,26 @@ Scored against: `{"type":"rain","level":"orange","area":"Lisboa","start_utc":"20
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"orange","area":"Lisboa","start_utc":"2026-11-11T00:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
 
 ### w02
 
@@ -124,21 +134,26 @@ Scored against: `{"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"red","area":"Lisboa","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 
 ### w03
 
@@ -158,21 +173,26 @@ Scored against: `{"type":"rain","level":"yellow","area":"Lisboa","start_utc":"20
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"yellow","area":"Lisboa","start_utc":"2026-11-10T21:24:00Z","end_utc":"2026-11-11T00:00:00Z"} | right | 1/1 |
 
 ### w04
 
@@ -192,21 +212,26 @@ Scored against: `{"type":"coastal_event","level":"orange","area":"Lisboa","start
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"coastal_event","level":"orange","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
 
 ### w05
 
@@ -226,21 +251,26 @@ Scored against: `{"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"wind","level":"red","area":"Lisboa","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T21:00:00Z"} | right | 1/1 |
 
 ### w06
 
@@ -260,21 +290,26 @@ Scored against: `{"type":"coastal_event","level":"yellow","area":"Lisboa","start
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"coastal_event","level":"yellow","area":"Lisboa","start_utc":"2026-11-11T21:00:00Z","end_utc":"2026-11-12T03:00:00Z"} | right | 1/1 |
 
 ### w07
 
@@ -294,21 +329,26 @@ Scored against: `{"type":"thunderstorm","level":"yellow","area":"Lisboa","start_
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"thunderstorm","level":"yellow","area":"Lisboa","start_utc":"2026-11-09T21:00:00Z","end_utc":"2026-11-10T15:00:00Z"} | right | 1/1 |
 
 ### w08
 
@@ -328,21 +368,26 @@ Scored against: `{"type":"wind","level":"yellow","area":"Lisboa","start_utc":"20
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"wind","level":"yellow","area":"Lisboa","start_utc":"2026-11-08T18:00:00Z","end_utc":"2026-11-09T06:00:00Z"} | right | 1/1 |
 
 ### w09
 
@@ -360,21 +405,26 @@ Scored against: `{"type":"rain","level":"red","area":"Setúbal","start_utc":"202
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"red","area":"Setúbal","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 
 ### w10
 
@@ -392,21 +442,26 @@ Scored against: `{"type":"rain","level":"red","area":"Beja","start_utc":"2026-11
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"red","area":"Beja","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 
 ### w11
 
@@ -424,21 +479,26 @@ Scored against: `{"type":"rain","level":"red","area":"Faro","start_utc":"2026-11
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"red","area":"Faro","start_utc":"2026-11-11T09:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 
 ### w12
 
@@ -456,21 +516,26 @@ Scored against: `{"type":"rain","level":"orange","area":"Madeira - Porto Santo",
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"orange","area":"Madeira - Porto Santo","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
 
 ### w13
 
@@ -488,21 +553,26 @@ Scored against: `{"type":"rain","level":"red","area":"Madeira - Costa Norte","st
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"red","area":"Madeira - Costa Norte","start_utc":"2026-11-10T21:00:00Z","end_utc":"2026-11-11T06:00:00Z"} | right | 1/1 |
 
 ### w14
 
@@ -520,21 +590,26 @@ Scored against: `{"type":"rain","level":"orange","area":"Madeira - Costa Norte",
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"orange","area":"Madeira - Costa Norte","start_utc":"2026-11-11T06:00:00Z","end_utc":"2026-11-11T09:00:00Z"} | right | 1/1 |
 
 ### w15
 
@@ -552,21 +627,26 @@ Scored against: `{"type":"rain","level":"red","area":"Castelo Branco","start_utc
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"red","area":"Castelo Branco","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 
 ### w16
 
@@ -584,21 +664,26 @@ Scored against: `{"type":"rain","level":"red","area":"Leiria","start_utc":"2026-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"red","area":"Leiria","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 
 ### w17
 
@@ -616,18 +701,23 @@ Scored against: `{"type":"rain","level":"red","area":"Santarém","start_utc":"20
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-3-4b-it` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-oss-20b` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `ministral-8b-2512` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `qwen3.5-9b #reasoning-off` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-9b` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `llama-4-maverick` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemma-4-31b-it` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `llama-4-maverick` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `deepseek-v4.1-flash` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
 | `qwen3.5-397b-a17b` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
 | `mistral-large-4-0` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6-luna` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
-| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6-luna` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gemini-3.5-flash-lite` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |
+| `gpt-6.1-terra` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | {"type":"rain","level":"red","area":"Santarém","start_utc":"2026-11-11T12:00:00Z","end_utc":"2026-11-11T18:00:00Z"} | right | 1/1 |

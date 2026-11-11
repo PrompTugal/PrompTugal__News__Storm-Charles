@@ -5,7 +5,7 @@ summary: Google: Gemma 4 31B as used on this site: what it is and its licence, e
 
 # Google: Gemma 4 31B
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:50 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** One of [the models](index.md) in [Other models, measured](../index.md). The id we call it by: `google/gemma-4-31b-it` (through OpenRouter).
 
@@ -20,18 +20,22 @@ summary: Google: Gemma 4 31B as used on this site: what it is and its licence, e
 
 ## Its use here, in one line
 
-**116 runs** on 5 tasks, **107 right**; 0 not answered (malformed, cut off, refused or a provider error); **178,078 tokens in, 26,831 out; 0.0321 US dollars**. Source: [results.json](../results.json), made 2026-11-11 03:06 UTC. It has written nothing on this site: every call was a test.
+**436 runs** on 5 tasks, **406 right**; 0 not answered (malformed, cut off, refused or a provider error); **285,781 tokens in, 83,243 out; 0.0684 US dollars**. Source: [results.json](../results.json), made 2026-11-11 22:50 UTC. It has written nothing on this site: every call was a test.
 
 ## Every job we gave it
 
 | Task | Setting | Runs right | Items right, run by run | Malformed | Cut off | Refused | Errors | Tokens in | Tokens out | Cost, USD | Per item, USD | Median s | p90 s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | [Warnings in force at an hour](../warnings-in-force.md) | off | **33/39** | 11 of 13 (3 runs) | 0 | 0 | 0 | 0 | 125378 | 3564 | 0.0158 | 0.00040 | 1.8 | 2.8 |
-| [Warnings in force at an hour](../warnings-in-force.md) | on | **10/10** | 10 of 10 (1 run) | 0 | 0 | 0 | 0 | 32128 | 20353 | 0.0131 | 0.00131 | 22.7 | 36.6 |
-| [Extract a decision](../extract-decision.md) | off | **10/10** | 10 of 10 (1 run) | 0 | 0 | 0 | 0 | 7364 | 712 | 0.00100 | 0.000100 | 1.1 | 1.8 |
-| [Label fact, evidence, hypothesis](../label.md) | off | **17/20** | 17 of 20 (1 run) | 0 | 0 | 0 | 0 | 6197 | 140 | 0.00069 | 0.000034 | 0.4 | 0.6 |
-| [Translate, figures kept](../translate.md) | off | **20/20** | 20 of 20 (1 run) | 0 | 0 | 0 | 0 | 1946 | 629 | 0.00044 | 0.000022 | 0.5 | 1.2 |
-| [Extract a warning](../extract-warning.md) | off | **17/17** | 17 of 17 (1 run) | 0 | 0 | 0 | 0 | 5065 | 1433 | 0.00109 | 0.000064 | 1.0 | 2.1 |
+| [Warnings in force at an hour](../warnings-in-force.md) | on | **13/13** | 13 of 13 (1 run) | 0 | 0 | 0 | 0 | 41766 | 26139 | 0.0169 | 0.00130 | 30.7 | 106.3 |
+| [Extract a decision](../extract-decision.md) | off | **30/30** | 10 of 10 (3 runs) | 0 | 0 | 0 | 0 | 22600 | 2145 | 0.00320 | 0.00011 | 1.3 | 3.2 |
+| [Extract a decision](../extract-decision.md) | on | **10/10** | 10 of 10 (1 run) | 0 | 0 | 0 | 0 | 7600 | 3660 | 0.00264 | 0.00026 | 6.2 | 14.9 |
+| [Label fact, evidence, hypothesis](../label.md) | off | **120/138** | 40 of 46 (3 runs) | 0 | 0 | 0 | 0 | 43347 | 971 | 0.00499 | 0.000036 | 0.7 | 2.3 |
+| [Label fact, evidence, hypothesis](../label.md) | on | **40/46** | 40 of 46 (1 run) | 0 | 0 | 0 | 0 | 14505 | 20314 | 0.0102 | 0.00022 | 7.1 | 15.5 |
+| [Translate, figures kept](../translate.md) | off | **69/69** | 23 of 23 (3 runs) | 0 | 0 | 0 | 0 | 7783 | 3042 | 0.00220 | 0.000032 | 1.0 | 2.3 |
+| [Translate, figures kept](../translate.md) | on | **23/23** | 23 of 23 (1 run) | 0 | 0 | 0 | 0 | 2552 | 8830 | 0.00415 | 0.00018 | 5.9 | 10.6 |
+| [Extract a warning](../extract-warning.md) | off | **51/51** | 17 of 17 (3 runs) | 0 | 0 | 0 | 0 | 15209 | 4329 | 0.00345 | 0.000068 | 1.8 | 3.2 |
+| [Extract a warning](../extract-warning.md) | on | **17/17** | 17 of 17 (1 run) | 0 | 0 | 0 | 0 | 5041 | 10249 | 0.00488 | 0.00029 | 8.1 | 25.8 |
 
 ## What we would use it for
 
@@ -48,10 +52,24 @@ First run of each setting; the item links to its page, where every model's answe
 | [f01](../warnings-in-force.md#f01) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | **wrong** |
 | [f02](../warnings-in-force.md#f02) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | **wrong** |
 
-**Label fact, evidence, hypothesis, off** (3 of 20):
+**Label fact, evidence, hypothesis, off** (6 of 46):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
+| [s-1109T1020](../label.md#s-1109t1020) | evidence | fact | **wrong** |
+| [s-1110T1858](../label.md#s-1110t1858) | evidence | fact | **wrong** |
 | [s-1110T2153](../label.md#s-1110t2153) | fact | hypothesis | **wrong** |
+| [s-1110T2229](../label.md#s-1110t2229) | evidence | hypothesis | **wrong** |
+| [s-1110T2358](../label.md#s-1110t2358) | hypothesis | fact | **wrong** |
+| [s-1111T0015](../label.md#s-1111t0015) | hypothesis | fact | **wrong** |
+
+**Label fact, evidence, hypothesis, on** (6 of 46):
+
+| Item | Scored against | It answered | Result |
+|---|---|---|---|
+| [s-1109T1020](../label.md#s-1109t1020) | evidence | hypothesis | **wrong** |
+| [s-1110T1858](../label.md#s-1110t1858) | evidence | fact | **wrong** |
+| [s-1110T2115](../label.md#s-1110t2115) | evidence | fact | **wrong** |
+| [s-1110T2229](../label.md#s-1110t2229) | evidence | hypothesis | **wrong** |
 | [s-1110T2358](../label.md#s-1110t2358) | hypothesis | fact | **wrong** |
 | [s-1111T0015](../label.md#s-1111t0015) | hypothesis | fact | **wrong** |

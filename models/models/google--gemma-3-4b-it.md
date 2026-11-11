@@ -5,7 +5,7 @@ summary: Google: Gemma 3 4B as used on this site: what it is and its licence, ev
 
 # Google: Gemma 3 4B
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:50 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** One of [the models](index.md) in [Other models, measured](../index.md). The id we call it by: `google/gemma-3-4b-it` (through OpenRouter).
 
@@ -20,17 +20,17 @@ summary: Google: Gemma 3 4B as used on this site: what it is and its licence, ev
 
 ## Its use here, in one line
 
-**78 runs** on 5 tasks, **48 right**; 0 not answered (malformed, cut off, refused or a provider error); **55,508 tokens in, 10,111 out; 0.00287 US dollars**. Source: [results.json](../results.json), made 2026-11-11 03:06 UTC. It has written nothing on this site: every call was a test.
+**327 runs** on 5 tasks, **199 right**; 1 not answered (malformed, cut off, refused or a provider error); **211,706 tokens in, 43,175 out; 0.0139 US dollars**. Source: [results.json](../results.json), made 2026-11-11 22:50 UTC. It has written nothing on this site: every call was a test.
 
 ## Every job we gave it
 
 | Task | Setting | Runs right | Items right, run by run | Malformed | Cut off | Refused | Errors | Tokens in | Tokens out | Cost, USD | Per item, USD | Median s | p90 s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [Warnings in force at an hour](../warnings-in-force.md) | does not reason | **0/11** | 0 of 4 (1 run) | 0 | 0 | 0 | 0 | 35294 | 6566 | 0.00194 | 0.00018 | 13.7 | 23.3 |
-| [Extract a decision](../extract-decision.md) | does not reason | **3/10** | 3 of 10 (1 run) | 0 | 0 | 0 | 0 | 7305 | 943 | 0.00032 | 0.000032 | 2.8 | 3.9 |
-| [Label fact, evidence, hypothesis](../label.md) | does not reason | **8/20** | 8 of 20 (1 run) | 0 | 0 | 0 | 0 | 6080 | 181 | 0.00024 | 0.000012 | 0.7 | 1.1 |
-| [Translate, figures kept](../translate.md) | does not reason | **20/20** | 20 of 20 (1 run) | 0 | 0 | 0 | 0 | 1853 | 825 | 0.00010 | 0.000005 | 1.5 | 2.9 |
-| [Extract a warning](../extract-warning.md) | does not reason | **17/17** | 17 of 17 (1 run) | 0 | 0 | 0 | 0 | 4976 | 1596 | 0.00027 | 0.000016 | 3.2 | 3.6 |
+| [Warnings in force at an hour](../warnings-in-force.md) | does not reason | **0/39** | 0 of 13 (3 runs) | 0 | 1 | 0 | 0 | 125062 | 30890 | 0.00879 | 0.00023 | 11.1 | 22.5 |
+| [Extract a decision](../extract-decision.md) | does not reason | **9/30** | 3 of 10 (3 runs) | 0 | 0 | 0 | 0 | 22367 | 2729 | 0.00124 | 0.000041 | 2.4 | 3.7 |
+| [Label fact, evidence, hypothesis](../label.md) | does not reason | **70/138** | 23 to 24 of 46 (3 runs) | 0 | 0 | 0 | 0 | 42198 | 1126 | 0.00212 | 0.000015 | 0.5 | 0.9 |
+| [Translate, figures kept](../translate.md) | does not reason | **69/69** | 23 of 23 (3 runs) | 0 | 0 | 0 | 0 | 7255 | 3668 | 0.00065 | 0.000009 | 1.3 | 3.0 |
+| [Extract a warning](../extract-warning.md) | does not reason | **51/51** | 17 of 17 (3 runs) | 0 | 0 | 0 | 0 | 14824 | 4762 | 0.00107 | 0.000021 | 1.7 | 3.3 |
 
 ## What we would use it for
 
@@ -40,7 +40,7 @@ summary: Google: Gemma 3 4B as used on this site: what it is and its licence, ev
 
 First run of each setting; the item links to its page, where every model's answer is.
 
-**Warnings in force at an hour, does not reason** (4 of 4):
+**Warnings in force at an hour, does not reason** (13 of 13):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
@@ -48,6 +48,15 @@ First run of each setting; the item links to its page, where every model's answe
 | [f02](../warnings-in-force.md#f02) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"orange","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-10T15:00:00Z"},{"type":"fog","level":"yellow","end_utc":"2026- | **wrong** |
 | [f03](../warnings-in-force.md#f03) | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | [{"type":"rain","level":"yellow","end_utc":"2026-11-07T00:00:00Z"},{"type":"wind","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"agitation_maritime","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"precipitation","level":"yellow | **wrong** |
 | [f04](../warnings-in-force.md#f04) | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"}] | [{"type":"rain","level":"orange","end_utc":"2026-11-10T09:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"},{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"},{"type":"precipitation","level":"orange","end_utc":"2026-11-11T09:00:00Z"},{"type":"precipitation","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"fog","level":"none","end_utc":"none"},{ | **wrong** |
+| [f05](../warnings-in-force.md#f05) | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"}] | [{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"},{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"},{"type":"thunderstorm","level":"orange","end_utc":"2026-11-10T18:00:00Z"},{"type":"fog","level":"orange","end_utc":"2026-11-11T06:00:00Z"}] | **wrong** |
+| [f06](../warnings-in-force.md#f06) | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"}] | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"orange","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-10T15:00:00Z"},{"type":"fog","level":"yellow","end_utc":"2026- | **wrong** |
+| [f07](../warnings-in-force.md#f07) | [{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"},{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"}] | [{"type":"wind","level":"orange","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"fog","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-10T18:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-10 | **wrong** |
+| [f08](../warnings-in-force.md#f08) | [{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"},{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"}] | [{"type":"rain","level":"yellow","end_utc":"2026-11-07T00:00:00Z"},{"type":"wind","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"fog","level":"yellow","end_utc":"20 | **wrong** |
+| [f09](../warnings-in-force.md#f09) | [{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"}] | [{"type":"rain","level":"yellow","end_utc":"2026-11-07T00:00:00Z"},{"type":"wind","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-10T18:00:00Z"},{"type":"fog","level":"yellow","end_utc":"20 | **wrong** |
+| [f10](../warnings-in-force.md#f10) | [{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T21:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"}] | [{"type":"rain","level":"red","end_utc":"2026-11-11T18:00:00Z"},{"type":"wind","level":"orange","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-10T15:00:00Z"},{"type":"fog","level":"yellow","end_utc":"2026- | **wrong** |
+| [f11](../warnings-in-force.md#f11) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-12T03:00:00Z"}] | [{"type":"rain","level":"red","end_utc":"2026-11-11T21:00:00Z"},{"type":"wind","level":"red","end_utc":"2026-11-11T21:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-11T09:00:00Z"},{"type":"wind","level":"orange","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"orange","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"orange","end_utc":"2026-11-11T06:0 | **wrong** |
+| [f12](../warnings-in-force.md#f12) | [{"type":"coastal_event","level":"yellow","end_utc":"2026-11-12T03:00:00Z"}] | [{"type":"rain","level":"yellow","end_utc":"2026-11-07T00:00:00Z"},{"type":"wind","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"rain","level":"yellow","end_utc":"2026-11-10T18:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-1 | **wrong** |
+| [f13](../warnings-in-force.md#f13) | [] | [{"type":"rain","level":"yellow","end_utc":"2026-11-07T00:00:00Z"},{"type":"wind","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"thunderstorm","level":"yellow","end_utc":"2026-11-09T06:00:00Z"},{"type":"coastal_event","level":"yellow","end_utc":"2026-11-11T03:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-10T09:00:00Z"},{"type":"rain","level":"orange","end_utc":"2026-11-1 | **wrong** |
 
 **Extract a decision, does not reason** (7 of 10):
 
@@ -61,12 +70,21 @@ First run of each setting; the item links to its page, where every model's answe
 | [d09](../extract-decision.md#d09) | {"decider":"aemet","effect_from_utc":null,"effect_to_utc":null} | {"decider":"aemet","what":"Strong rain, strong gusts and stormy seas","effect_from_utc":"2026-11-10T00:00Z","effect_to_utc":"2026-11-12T23:59Z"} | **wrong** |
 | [d10](../extract-decision.md#d10) | {"decider":"metro","effect_from_utc":null,"effect_to_utc":null} | {"decider":"camara-lisboa","what":"Increased street cleaning schedule","effect_from_utc":"2026-11-10T00:00Z","effect_to_utc":"2026-11-12T00:00Z"} | **wrong** |
 
-**Label fact, evidence, hypothesis, does not reason** (12 of 20):
+**Label fact, evidence, hypothesis, does not reason** (22 of 46):
 
 | Item | Scored against | It answered | Result |
 |---|---|---|---|
+| [s-1109T1020](../label.md#s-1109t1020) | evidence | fact | **wrong** |
+| [s-1110T0846](../label.md#s-1110t0846) | evidence | fact | **wrong** |
+| [s-1110T1245](../label.md#s-1110t1245) | evidence | fact | **wrong** |
+| [s-1110T1425](../label.md#s-1110t1425) | evidence | fact | **wrong** |
+| [s-1110T1700](../label.md#s-1110t1700) | fact | hypothesis | **wrong** |
+| [s-1110T1707b](../label.md#s-1110t1707b) | fact | hypothesis | **wrong** |
 | [s-1110T1753](../label.md#s-1110t1753) | evidence | fact | **wrong** |
 | [s-1110T1825](../label.md#s-1110t1825) | evidence | hypothesis | **wrong** |
+| [s-1110T1835](../label.md#s-1110t1835) | fact | hypothesis | **wrong** |
+| [s-1110T1858](../label.md#s-1110t1858) | evidence | fact | **wrong** |
+| [s-1110T1909](../label.md#s-1110t1909) | fact | hypothesis | **wrong** |
 | [s-1110T1941](../label.md#s-1110t1941) | evidence | fact | **wrong** |
 | [s-1110T1945](../label.md#s-1110t1945) | evidence | fact | **wrong** |
 | [s-1110T1952](../label.md#s-1110t1952) | fact | evidence | **wrong** |
@@ -74,6 +92,7 @@ First run of each setting; the item links to its page, where every model's answe
 | [s-1110T2030](../label.md#s-1110t2030) | evidence | fact | **wrong** |
 | [s-1110T2118](../label.md#s-1110t2118) | hypothesis | fact | **wrong** |
 | [s-1110T2153](../label.md#s-1110t2153) | fact | hypothesis | **wrong** |
+| [s-1110T2229](../label.md#s-1110t2229) | evidence | hypothesis | **wrong** |
 | [s-1110T2354](../label.md#s-1110t2354) | hypothesis | fact | **wrong** |
 | [s-1110T2358](../label.md#s-1110t2358) | hypothesis | evidence | **wrong** |
 | [s-1111T0015](../label.md#s-1111t0015) | hypothesis | fact | **wrong** |

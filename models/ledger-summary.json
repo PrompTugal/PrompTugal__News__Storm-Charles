@@ -1,7 +1,7 @@
 {
  "about": "The model ledger's daily totals: the model calls made through tools/llm.mjs, counted. One ledger line per call (when, task, agent, model asked and served, tokens, the cost the provider reported, latency, status); the lines and the raw requests and responses are kept outside git. No prompt or answer text here. The models named are the third-party models that were called.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T03:06:05Z",
+ "updated": "2026-11-11T22:50:40Z",
  "currency": "USD",
  "source": "tools/llm.mjs --summary (the ledger at ~/.incident-ledger/<day>.jsonl in this agent's session)",
  "shape": "days[]: one per UTC day of THIS agent's ledger { day, calls, cost_usd, cap_usd, tokens_in, tokens_out, by_model, by_agent, by_task, by_status, by_hour }, each by_* a map of name -> { calls, cost_usd, tokens_in, tokens_out } (by_hour: 'HH:00' -> { calls, cost_usd }). other_desks[]: one per other agent { desk, file, day?, calls?, cost_usd, by_model?, by_task? }; reported: true means the figure is the one that agent's status file gives, not a ledger summary. budgets: models/budgets.json as it stood. team_today_usd: this agent's last day plus other_desks. total: over days[] only.",
@@ -20,6 +20,10 @@
    "incident.shadow@web-summit.dinis": {
     "usd": 1,
     "for": "shadow reporting"
+   },
+   "incident.flights@web-summit.dinis": {
+    "usd": 1,
+    "for": "an hourly summary of the flight data"
    }
   },
   "any_other_agent_usd": 1,
@@ -28,89 +32,89 @@
  "days": [
   {
    "day": "2026-11-11",
-   "calls": 4927,
-   "cost_usd": 0.872425,
+   "calls": 8796,
+   "cost_usd": 2.306509,
    "cap_usd": 20,
-   "tokens_in": 1039681,
-   "tokens_out": 559894,
+   "tokens_in": 3218709,
+   "tokens_out": 1293003,
    "by_model": {
     "google/gemma-3-4b-it": {
-     "calls": 337,
-     "cost_usd": 0.003034,
-     "tokens_in": 58344,
-     "tokens_out": 10623
+     "calls": 586,
+     "cost_usd": 0.014032,
+     "tokens_in": 214542,
+     "tokens_out": 43687
     },
     "openai/gpt-6-luna": {
-     "calls": 447,
-     "cost_usd": 0.010588,
-     "tokens_in": 78218,
-     "tokens_out": 9772
+     "calls": 794,
+     "cost_usd": 0.038916,
+     "tokens_in": 240008,
+     "tokens_out": 41817
     },
     "qwen/qwen3.5-9b": {
-     "calls": 444,
-     "cost_usd": 0.043096,
-     "tokens_in": 152023,
-     "tokens_out": 174932
+     "calls": 730,
+     "cost_usd": 0.071651,
+     "tokens_in": 295443,
+     "tokens_out": 241596
     },
     "google/gemma-4-31b-it": {
-     "calls": 439,
-     "cost_usd": 0.03214,
-     "tokens_in": 178156,
-     "tokens_out": 26849
+     "calls": 834,
+     "cost_usd": 0.074802,
+     "tokens_in": 348948,
+     "tokens_out": 84241
     },
     "mistralai/ministral-8b-2512": {
-     "calls": 327,
-     "cost_usd": 0.021906,
-     "tokens_in": 147329,
-     "tokens_out": 9559
+     "calls": 553,
+     "cost_usd": 0.029966,
+     "tokens_in": 212934,
+     "tokens_out": 20376
     },
     "openai/gpt-oss-20b": {
-     "calls": 330,
-     "cost_usd": 0.010256,
-     "tokens_in": 47437,
-     "tokens_out": 50322
+     "calls": 582,
+     "cost_usd": 0.056943,
+     "tokens_in": 200203,
+     "tokens_out": 216118
     },
     "meta-llama/llama-4-maverick": {
-     "calls": 327,
-     "cost_usd": 0.039934,
-     "tokens_in": 115362,
-     "tokens_out": 5657
+     "calls": 647,
+     "cost_usd": 0.075907,
+     "tokens_in": 244836,
+     "tokens_out": 13650
     },
     "deepseek/deepseek-v4.1-flash": {
-     "calls": 439,
-     "cost_usd": 0.054061,
-     "tokens_in": 118218,
-     "tokens_out": 54808
-    },
-    "google/gemini-3.5-flash-lite": {
-     "calls": 335,
-     "cost_usd": 0.012306,
-     "tokens_in": 19361,
-     "tokens_out": 2649
-    },
-    "mistralai/mistral-large-4-0": {
-     "calls": 179,
-     "cost_usd": 0.201783,
-     "tokens_in": 18737,
-     "tokens_out": 86661
-    },
-    "anthropic/claude-haiku-5.5": {
-     "calls": 439,
-     "cost_usd": 0.011117,
-     "tokens_in": 50133,
-     "tokens_out": 12431
+     "calls": 773,
+     "cost_usd": 0.092953,
+     "tokens_in": 251050,
+     "tokens_out": 88745
     },
     "qwen/qwen3.5-397b-a17b": {
-     "calls": 444,
-     "cost_usd": 0.383451,
-     "tokens_in": 38229,
-     "tokens_out": 110374
+     "calls": 770,
+     "cost_usd": 0.914241,
+     "tokens_in": 294764,
+     "tokens_out": 236418
+    },
+    "mistralai/mistral-large-4-0": {
+     "calls": 221,
+     "cost_usd": 0.422742,
+     "tokens_in": 59104,
+     "tokens_out": 174215
+    },
+    "google/gemini-3.5-flash-lite": {
+     "calls": 693,
+     "cost_usd": 0.121728,
+     "tokens_in": 286543,
+     "tokens_out": 14798
+    },
+    "anthropic/claude-haiku-5.5": {
+     "calls": 804,
+     "cost_usd": 0.075216,
+     "tokens_in": 335344,
+     "tokens_out": 84882
     },
     "openai/gpt-6.1-terra": {
-     "calls": 439,
-     "cost_usd": 0.043734,
-     "tokens_in": 18111,
-     "tokens_out": 5213
+     "calls": 808,
+     "cost_usd": 0.312392,
+     "tokens_in": 234967,
+     "tokens_out": 32416
     },
     "perplexity/sonar": {
      "calls": 1,
@@ -121,10 +125,10 @@
    },
    "by_agent": {
     "incident.models@web-summit.dinis": {
-     "calls": 4927,
-     "cost_usd": 0.872425,
-     "tokens_in": 1039681,
-     "tokens_out": 559894
+     "calls": 8796,
+     "cost_usd": 2.306509,
+     "tokens_in": 3218709,
+     "tokens_out": 1293003
     }
    },
    "by_task": {
@@ -135,28 +139,28 @@
      "tokens_out": 3
     },
     "WS-214/eval/extract-warning": {
-     "calls": 771,
-     "cost_usd": 0.143341,
-     "tokens_in": 73440,
-     "tokens_out": 84686
+     "calls": 1264,
+     "cost_usd": 0.221156,
+     "tokens_in": 211257,
+     "tokens_out": 136733
     },
     "WS-214/eval/extract-decision": {
-     "calls": 456,
-     "cost_usd": 0.131139,
-     "tokens_in": 115387,
-     "tokens_out": 75687
+     "calls": 746,
+     "cost_usd": 0.210066,
+     "tokens_in": 340888,
+     "tokens_out": 111228
     },
     "WS-214/eval/label": {
-     "calls": 2055,
-     "cost_usd": 0.212353,
-     "tokens_in": 89938,
-     "tokens_out": 139766
+     "calls": 3784,
+     "cost_usd": 0.637005,
+     "tokens_in": 621563,
+     "tokens_out": 372232
     },
     "WS-214/eval/translate": {
-     "calls": 1041,
-     "cost_usd": 0.239129,
-     "tokens_in": 29661,
-     "tokens_out": 138359
+     "calls": 1756,
+     "cost_usd": 0.398499,
+     "tokens_in": 114258,
+     "tokens_out": 246692
     },
     "WS-214/models/ask-smoke": {
      "calls": 1,
@@ -171,24 +175,54 @@
      "tokens_out": 321
     },
     "WS-214/eval/warnings-in-force": {
-     "calls": 577,
-     "cost_usd": 0.140888,
-     "tokens_in": 730756,
-     "tokens_out": 121028
+     "calls": 905,
+     "cost_usd": 0.768147,
+     "tokens_in": 1702605,
+     "tokens_out": 416870
     },
     "WS-214/models/credit-check": {
      "calls": 1,
      "cost_usd": 0,
      "tokens_in": 0,
      "tokens_out": 0
+    },
+    "WS-214/test": {
+     "calls": 1,
+     "cost_usd": 0.000004,
+     "tokens_in": 19,
+     "tokens_out": 2
+    },
+    "WS-214/delegate/translate": {
+     "calls": 29,
+     "cost_usd": 0.003338,
+     "tokens_in": 6508,
+     "tokens_out": 1942
+    },
+    "WS-214/delegate/extract-warning": {
+     "calls": 15,
+     "cost_usd": 0.001949,
+     "tokens_in": 4344,
+     "tokens_out": 1187
+    },
+    "WS-214/delegate/match-fact": {
+     "calls": 221,
+     "cost_usd": 0.038367,
+     "tokens_in": 180161,
+     "tokens_out": 2387
+    },
+    "WS-214/delegate/extract-decision": {
+     "calls": 48,
+     "cost_usd": 0.022402,
+     "tokens_in": 36607,
+     "tokens_out": 3362
     }
    },
    "by_status": {
     "ok": {
-     "calls": 1291,
-     "cost_usd": 0.872425,
-     "tokens_in": 1039681,
-     "tokens_out": 559894
+     "calls": 5165,
+     "cost_usd": 2.306509,
+     "tokens_in": 3218709,
+     "tokens_out": 1293003
     },
     "http_400": {
      "calls": 73,
@@ -207,12 +241,6 @@
      "cost_usd": 0,
      "tokens_in": 0,
      "tokens_out": 0
-    },
-    "account_out_of_credit": {
-     "calls": 5,
-     "cost_usd": 0,
-     "tokens_in": 0,
-     "tokens_out": 0
     }
    },
    "by_hour": {
@@ -220,28 +248,28 @@
      "calls": 4922,
      "cost_usd": 0.872425
     },
-    "03:00": {
-     "calls": 5,
-     "cost_usd": 0
+    "22:00": {
+     "calls": 3874,
+     "cost_usd": 1.434083
     }
    }
   }
  ],
  "total": {
-  "calls": 4927,
-  "cost_usd": 0.872425,
-  "tokens_in": 1039681,
-  "tokens_out": 559894
+  "calls": 8796,
+  "cost_usd": 2.306509,
+  "tokens_in": 3218709,
+  "tokens_out": 1293003
  },
  "other_desks": [
   {
    "desk": "shadow",
    "reported": true,
    "file": "agents/shadow/status.json",
-   "updated": "2026-11-11T02:40:00Z",
+   "updated": "2026-11-11T21:20:00Z",
    "cost_usd": 0.19,
    "says": "spend today: 0.19 US dollars of 1 (0.02 on three test calls, 0.17 on the first round with both engines and the zoom-in set; an hourly round of the fixed set on Sonar alone is about 0.06)"
   }
  ],
- "team_today_usd": 1.0624
+ "team_today_usd": 2.4965
 }

@@ -2,7 +2,7 @@
  "task": "warnings-in-force",
  "model": "deepseek/deepseek-v4.1-flash",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T02:55:21Z",
+ "updated": "2026-11-11T22:40:26Z",
  "about": "One model's answers to one task: the first run of each item in full (as parsed; right or wrong per field), the repeat runs as right or wrong with their cost. Raw requests and responses are in the raw store; raw_sha256 names each record.",
  "items_updated": "2026-11-11T02:53:20Z",
  "answers": {
@@ -293,6 +293,64 @@
    "reasoning_tokens": 2975,
    "at": "2026-11-11T02:54:58Z",
    "raw_sha256": "37df65376de6410d"
+  },
+  "f08": {
+   "kind": "answered",
+   "right": true,
+   "fields": {
+    "in_force": true
+   },
+   "answer": {
+    "in_force": [
+     {
+      "type": "wind",
+      "level": "red",
+      "end_utc": "2026-11-11T21:00:00Z"
+     },
+     {
+      "type": "coastal_event",
+      "level": "orange",
+      "end_utc": "2026-11-11T21:00:00Z"
+     },
+     {
+      "type": "rain",
+      "level": "red",
+      "end_utc": "2026-11-11T18:00:00Z"
+     }
+    ]
+   },
+   "model_served": "deepseek/deepseek-v4.1-flash",
+   "cost_usd": 0.002238489,
+   "latency_ms": 4679,
+   "tokens_in": 2597,
+   "tokens_out": 1235,
+   "reasoning_tokens": 1140,
+   "at": "2026-11-11T22:40:20Z",
+   "raw_sha256": "5f9e91c56dce888a"
+  },
+  "f11": {
+   "kind": "answered",
+   "right": true,
+   "fields": {
+    "in_force": true
+   },
+   "answer": {
+    "in_force": [
+     {
+      "type": "coastal_event",
+      "level": "yellow",
+      "end_utc": "2026-11-12T03:00:00Z"
+     }
+    ]
+   },
+   "model_served": "deepseek/deepseek-v4.1-flash",
+   "cost_usd": 0.0006062364,
+   "latency_ms": 5243,
+   "tokens_in": 2596,
+   "tokens_out": 809,
+   "reasoning_tokens": 770,
+   "at": "2026-11-11T22:40:20Z",
+   "raw_sha256": "6051c9d8ca4852ec"
   }
  },
  "repeats": {}

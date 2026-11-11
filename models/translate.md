@@ -1,19 +1,19 @@
 ---
 title: Models: translate, figures kept
-summary: 23 items from the data room, 15 rows: every item, the answer it is scored against, and each model's answer marked right or wrong.
+summary: 23 items from the data room, 20 rows: every item, the answer it is scored against, and each model's answer marked right or wrong.
 mount: <div id="models" data-view="task" data-task="translate" data-base="./"><p class="meta">The chart is drawn in the browser from <a href="results.json">results.json</a>; the same figures are in the table below.</p></div>
 head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app/models/models.js" defer></script>
 ---
 
 # Translate, figures kept
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:50 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Translate IPMA's Portuguese warning text to English. There is no reference translation: the check is that every figure of the Portuguese text is in the English one, as digits and no others added, and that each unit is still there (km/h, mm, hPa; 'metros' as metre or meter). A fluent translation that writes 'five' for 5, or drops 13, is wrong here.
 
-Scoring: the numbers in the answer are the numbers in the source (each as many times, in any order); every unit present; and the answer is not the Portuguese text again. Last run 2026-11-11 02:57 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 03:06 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
+Scoring: the numbers in the answer are the numbers in the source (each as many times, in any order); every unit present; and the answer is not the Portuguese text again. Last run 2026-11-11 22:48 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 22:50 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 
@@ -28,21 +28,26 @@ Key: "en". Keep every figure as digits and every unit; add nothing.
 
 | Model, reasoning | Kind | Runs right | Items right, run by run | Changed between runs | `figures` | `units` | Malformed | Cut off | Refused | Errors | Cost per item, USD | Median latency, s | p90, s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [`google/gemma-3-4b-it`](models/google--gemma-3-4b-it.md): does not reason | open-weight, small | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.000005 | 1.5 | 2.9 |
-| [`openai/gpt-oss-20b`](models/openai--gpt-oss-20b.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, small | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.000048 | 1.0 | 2.6 |
-| [`mistralai/ministral-8b-2512`](models/mistralai--ministral-8b-2512.md): does not reason | open-weight, small | **0/20** | 0 of 20 (1 run) |  | 0 | 0 | 0 | 0 | 0 | 0 | 0.000021 | 0.8 | 1.6 |
-| [`qwen/qwen3.5-9b#reasoning-off`](models/qwen--qwen3.5-9b.md): off (asked) | open-weight, small | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.000012 | 0.7 | 1.8 |
-| [`qwen/qwen3.5-9b`](models/qwen--qwen3.5-9b.md): on (the provider's default) | open-weight, small | **15/20** | 15 of 20 (1 run) |  | 15 | 15 | 0 | 5 | 0 | 0 | 0.00035 | 26.3 | 49.1 |
-| [`google/gemma-4-31b-it`](models/google--gemma-4-31b-it.md): off (the provider's default) | open-weight, large | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.000022 | 0.5 | 1.2 |
-| [`meta-llama/llama-4-maverick`](models/meta-llama--llama-4-maverick.md): does not reason | open-weight, large | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.000052 | 0.7 | 1.3 |
-| [`deepseek/deepseek-v4.1-flash`](models/deepseek--deepseek-v4.1-flash.md): on (the provider's default) | open-weight, large | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.00019 | 1.4 | 4.0 |
-| [`qwen/qwen3.5-397b-a17b#reasoning-off`](models/qwen--qwen3.5-397b-a17b.md): off (asked) | open-weight, large | **17/17** | 17 of 17 (1 run) |  | 17 | 17 | 0 | 0 | 0 | 0 | 0.00011 | 1.4 | 1.9 |
-| [`qwen/qwen3.5-397b-a17b`](models/qwen--qwen3.5-397b-a17b.md): on (the provider's default) | open-weight, large | **16/20** | 16 of 20 (1 run) |  | 16 | 16 | 0 | 4 | 0 | 0 | 0.00716 | 24.4 | 43.5 |
-| [`mistralai/mistral-large-4-0`](models/mistralai--mistral-large-4-0.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, large | **19/20** | 19 of 20 (1 run) |  | 19 | 19 | 0 | 1 | 0 | 0 | 0.00328 | 6.6 | 22.7 |
-| [`openai/gpt-6-luna`](models/openai--gpt-6-luna.md): off (the provider's default) | commercial, small | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.000050 | 2.9 | 3.9 |
-| [`google/gemini-3.5-flash-lite`](models/google--gemini-3.5-flash-lite.md): reasons; cannot be turned off (the provider refuses the setting) | commercial, small | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.00010 | 0.7 | 1.2 |
-| [`anthropic/claude-haiku-5.5`](models/anthropic--claude-haiku-5.5.md): off (the provider's default) | commercial, small | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.000042 | 0.8 | 1.0 |
-| [`openai/gpt-6.1-terra`](models/openai--gpt-6.1-terra.md): off (the provider's default) | commercial, large | **20/20** | 20 of 20 (1 run) |  | 20 | 20 | 0 | 0 | 0 | 0 | 0.00049 | 2.9 | 4.1 |
+| [`google/gemma-3-4b-it`](models/google--gemma-3-4b-it.md): does not reason | open-weight, small | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.000009 | 1.3 | 3.0 |
+| [`openai/gpt-oss-20b`](models/openai--gpt-oss-20b.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, small | **67/69** | 22 to 23 of 23 (3 runs) | 2 items | 23 | 23 | 1 | 1 | 0 | 0 | 0.000083 | 1.5 | 3.6 |
+| [`mistralai/ministral-8b-2512`](models/mistralai--ministral-8b-2512.md): does not reason | open-weight, small | **0/69** | 0 of 23 (3 runs) | 0 items | 0 | 0 | 0 | 0 | 0 | 0 | 0.000026 | 0.9 | 2.0 |
+| [`qwen/qwen3.5-9b#reasoning-off`](models/qwen--qwen3.5-9b.md): off (asked) | open-weight, small | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.000019 | 1.0 | 2.4 |
+| [`qwen/qwen3.5-9b`](models/qwen--qwen3.5-9b.md): on (the provider's default) | open-weight, small | **16/23** | 16 of 23 (1 run) |  | 16 | 16 | 0 | 7 | 0 | 0 | 0.00035 | 26.9 | 46.5 |
+| [`google/gemma-4-31b-it`](models/google--gemma-4-31b-it.md): off (the provider's default) | open-weight, large | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.000032 | 1.0 | 2.3 |
+| [`google/gemma-4-31b-it#reasoning-on`](models/google--gemma-4-31b-it.md): on (asked, medium effort) | open-weight, large | **23/23** | 23 of 23 (1 run) |  | 23 | 23 | 0 | 0 | 0 | 0 | 0.00018 | 5.9 | 10.6 |
+| [`meta-llama/llama-4-maverick`](models/meta-llama--llama-4-maverick.md): does not reason | open-weight, large | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.000066 | 0.8 | 1.8 |
+| [`deepseek/deepseek-v4.1-flash#reasoning-off`](models/deepseek--deepseek-v4.1-flash.md): off (asked) | open-weight, large | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.000037 | 0.4 | 0.8 |
+| [`deepseek/deepseek-v4.1-flash`](models/deepseek--deepseek-v4.1-flash.md): on (the provider's default) | open-weight, large | **23/23** | 23 of 23 (1 run) |  | 23 | 23 | 0 | 0 | 0 | 0 | 0.00029 | 2.1 | 6.8 |
+| [`qwen/qwen3.5-397b-a17b#reasoning-off`](models/qwen--qwen3.5-397b-a17b.md): off (asked) | open-weight, large | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.00018 | 1.3 | 2.0 |
+| [`qwen/qwen3.5-397b-a17b`](models/qwen--qwen3.5-397b-a17b.md): on (the provider's default) | open-weight, large | **18/23** | 18 of 23 (1 run) |  | 18 | 18 | 0 | 5 | 0 | 0 | 0.00792 | 25.3 | 43.5 |
+| [`mistralai/mistral-large-4-0`](models/mistralai--mistral-large-4-0.md): reasons; cannot be turned off (the provider refuses the setting) | open-weight, large | **20/23** | 20 of 23 (1 run) |  | 20 | 20 | 0 | 3 | 0 | 0 | 0.00386 | 9.0 | 31.0 |
+| [`openai/gpt-6-luna`](models/openai--gpt-6-luna.md): off (the provider's default) | commercial, small | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.000065 | 3.1 | 4.0 |
+| [`openai/gpt-6-luna#reasoning-on`](models/openai--gpt-6-luna.md): on (asked, medium effort) | commercial, small | **23/23** | 23 of 23 (1 run) |  | 23 | 23 | 0 | 0 | 0 | 0 | 0.000061 | 2.9 | 4.1 |
+| [`google/gemini-3.5-flash-lite`](models/google--gemini-3.5-flash-lite.md): reasons; cannot be turned off (the provider refuses the setting) | commercial, small | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.00014 | 0.7 | 1.2 |
+| [`anthropic/claude-haiku-5.5`](models/anthropic--claude-haiku-5.5.md): off (the provider's default) | commercial, small | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.000060 | 0.8 | 1.3 |
+| [`anthropic/claude-haiku-5.5#reasoning-on`](models/anthropic--claude-haiku-5.5.md): on (asked, medium effort) | commercial, small | **23/23** | 23 of 23 (1 run) |  | 23 | 23 | 0 | 0 | 0 | 0 | 0.000076 | 0.8 | 3.2 |
+| [`openai/gpt-6.1-terra`](models/openai--gpt-6.1-terra.md): off (the provider's default) | commercial, large | **69/69** | 23 of 23 (3 runs) | 0 items | 23 | 23 | 0 | 0 | 0 | 0 | 0.00061 | 3.0 | 4.5 |
+| [`openai/gpt-6.1-terra#reasoning-on`](models/openai--gpt-6.1-terra.md): on (asked, medium effort) | commercial, large | **23/23** | 23 of 23 (1 run) |  | 23 | 23 | 0 | 0 | 0 | 0 | 0.00060 | 3.0 | 4.4 |
 
 The field columns count the first run. "Changed between runs": items a row got right in one run and wrong in another, at temperature 0.
 
@@ -52,31 +57,31 @@ The field columns count the first run. "Changed between runs": items a row got r
 
 First run of each row.
 
-| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b #reasoning-off | qwen3.5-9b | gemma-4-31b-it | llama-4-maverick | deepseek-v4.1-flash | qwen3.5-397b-a17b #reasoning-off | qwen3.5-397b-a17b | mistral-large-4-0 | gpt-6-luna | gemini-3.5-flash-lite | claude-haiku-5.5 | gpt-6.1-terra |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [t01](#t01) | 12/15 | right | right | **no** | right | **no** | right | right | right | right | **no** | right | right | right | right | right |
-| [t02](#t02) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t03](#t03) | 13/15 | right | right | **no** | right | right | right | right | right | right | right | **no** | right | right | right | right |
-| [t04](#t04) | 13/15 | right | right | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right |
-| [t05](#t05) | 12/15 | right | right | **no** | right | **no** | right | right | right | right | **no** | right | right | right | right | right |
-| [t06](#t06) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t07](#t07) | 13/15 | right | right | **no** | right | right | right | right | right | right | **no** | right | right | right | right | right |
-| [t08](#t08) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t09](#t09) | 13/15 | right | right | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right |
-| [t10](#t10) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t11](#t11) | 13/14 | right | right | **no** | right | right | right | right | right |  | right | right | right | right | right | right |
-| [t12](#t12) | 12/14 | right | right | **no** | right | **no** | right | right | right |  | right | right | right | right | right | right |
-| [t13](#t13) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t14](#t14) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t15](#t15) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t16](#t16) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t17](#t17) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t18](#t18) | 14/15 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [t19](#t19) | 13/15 | right | right | **no** | right | right | right | right | right | right | **no** | right | right | right | right | right |
-| [t20](#t20) | 13/14 | right | right | **no** | right | right | right | right | right |  | right | right | right | right | right | right |
-| [p01](#p01) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [p02](#p02) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| [p03](#p03) | 0/0 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b #reasoning-off | qwen3.5-9b | gemma-4-31b-it | gemma-4-31b-it #reasoning-on | llama-4-maverick | deepseek-v4.1-flash #reasoning-off | deepseek-v4.1-flash | qwen3.5-397b-a17b #reasoning-off | qwen3.5-397b-a17b | mistral-large-4-0 | gpt-6-luna | gpt-6-luna #reasoning-on | gemini-3.5-flash-lite | claude-haiku-5.5 | claude-haiku-5.5 #reasoning-on | gpt-6.1-terra | gpt-6.1-terra #reasoning-on |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [t01](#t01) | 17/20 | right | right | **no** | right | **no** | right | right | right | right | right | right | **no** | right | right | right | right | right | right | right | right |
+| [t02](#t02) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t03](#t03) | 18/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | **no** | right | right | right | right | right | right | right |
+| [t04](#t04) | 18/20 | right | right | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t05](#t05) | 17/20 | right | right | **no** | right | **no** | right | right | right | right | right | right | **no** | right | right | right | right | right | right | right | right |
+| [t06](#t06) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t07](#t07) | 18/20 | right | right | **no** | right | right | right | right | right | right | right | right | **no** | right | right | right | right | right | right | right | right |
+| [t08](#t08) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t09](#t09) | 18/20 | right | right | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t10](#t10) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t11](#t11) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t12](#t12) | 18/20 | right | right | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t13](#t13) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t14](#t14) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t15](#t15) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t16](#t16) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t17](#t17) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t18](#t18) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [t19](#t19) | 18/20 | right | right | **no** | right | right | right | right | right | right | right | right | **no** | right | right | right | right | right | right | right | right |
+| [t20](#t20) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [p01](#p01) | 16/20 | right | right | **no** | right | **no** | right | right | right | right | right | right | **no** | **no** | right | right | right | right | right | right | right |
+| [p02](#p02) | 17/20 | right | right | **no** | right | **no** | right | right | right | right | right | right | right | **no** | right | right | right | right | right | right | right |
+| [p03](#p03) | 19/20 | right | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
 
 ### t01
 
@@ -88,21 +93,26 @@ Scored against: `{"figures":["5","7","11","13","4","5"],"units":["metre"]}`, fro
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Waves from the southwest are also forecast with heights of 5 to 7 meters south of Cape Raso during the afternoon of November 11th, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 1/1 |
-| `gpt-oss-20b` | It is also forecast that southwest waves of 5 to 7 metres south of Cabo Raso will occur during the afternoon of the 11th and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres at the start of the night. | right | 1/1 |
-| `ministral-8b-2512` | {"forecast":{"waves":{"direction":"southwest","height":{"south_of_Cabo_Raso":{"afternoon_of_day_11":{"range":"5 to 7 meters","max_height":"13 meters","beginning_of_evening":"4 to 5 meters"}}}}}} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Southwest waves of 5 to 7 meters are also expected south of Cape Raso during the afternoon of day 11 and may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 1/1 |
+| `gemma-3-4b-it` | Waves from the southwest are also forecast with heights of 5 to 7 meters south of Cape Raso during the afternoon of November 11th, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 3/3 |
+| `gpt-oss-20b` | It is also forecast that southwest waves of 5 to 7 metres south of Cabo Raso will occur during the afternoon of the 11th and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres at the start of the night. | right | 3/3 |
+| `ministral-8b-2512` | {"forecast":{"waves":{"direction":"southwest","height":{"south_of_Cabo_Raso":{"afternoon_of_day_11":{"range":"5 to 7 meters","max_height":"13 meters","beginning_of_evening":"4 to 5 meters"}}}}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Southwest waves of 5 to 7 meters are also expected south of Cape Raso during the afternoon of day 11 and may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 3/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 1/1 |
-| `llama-4-maverick` | Waves from southwest with 5 to 7 meters south of Cabo Raso are also forecast during the afternoon of the 11th and may reach 13 meters maximum height, decreasing to 4 to 5 meters at the start of the night. | right | 1/1 |
+| `gemma-4-31b-it` | Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Southwesterly waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11, which could reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 1/1 |
+| `llama-4-maverick` | Waves from southwest with 5 to 7 meters south of Cabo Raso are also forecast during the afternoon of the 11th and may reach 13 meters maximum height, decreasing to 4 to 5 meters at the start of the night. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Southwest waves of 5 to 7 metres are also forecast south of Cape Raso during the afternoon of day 11 and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 3/3 |
 | `deepseek-v4.1-flash` | Southwest waves of 5 to 7 metres south of Cape Raso are also forecast during the afternoon of day 11 and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 3/3 |
 | `qwen3.5-397b-a17b` |  | **cut off** | 0/1 |
 | `mistral-large-4-0` | Southwesterly waves of 5 to 7 meters are also expected south of Cabo Raso during the afternoon of the 11th and may reach a maximum height of 13 meters, decreasing to 4 to 5 meters at the beginning of the night. | right | 1/1 |
-| `gpt-6-luna` | Southwesterly waves of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of day 11, and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of the 11th, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 1/1 |
-| `claude-haiku-5.5` | Southwest swells of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of the 11th, and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 1/1 |
-| `gpt-6.1-terra` | Southwest waves of 5 to 7 metres are also expected south of Cabo Raso during the afternoon of the 11th. They may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 1/1 |
+| `gpt-6-luna` | Southwesterly waves of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of day 11, and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Southwesterly waves of 5 to 7 meters are also forecast south of Cape Raso during the afternoon of the 11th, and may reach a maximum height of 13 meters, decreasing to 4 to 5 meters at the beginning of the night. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of the 11th, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 3/3 |
+| `claude-haiku-5.5` | Southwest swells of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of the 11th, and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Southwest swells of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of the 11th, and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 1/1 |
+| `gpt-6.1-terra` | Southwest waves of 5 to 7 metres are also expected south of Cabo Raso during the afternoon of the 11th. They may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Southwest waves of 5 to 7 metres are also expected south of Cape Raso during the afternoon of the 11th. They may reach a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 1/1 |
 
 ### t02
 
@@ -114,21 +124,26 @@ Scored against: `{"figures":["10","20","1","70","90"],"units":["km/h","mm"]}`, f
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Favorable conditions exist for the occurrence of localized weather phenomena, such as: thunderstorms; locally heavy precipitation with an accumulation of 10 to 20 mm in 1 hour; gusts of wind between 70 and 90 km/h. | right | 1/1 |
-| `gpt-oss-20b` | Favorable conditions for the occurrence of localized meteorological phenomena, such as: thunderstorm; locally strong precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
-| `ministral-8b-2512` | {"conditions":"Favorable for localized weather events, including: thunderstorms; locally heavy rainfall, with accumulations between 10 to 20 mm in 1 hour; gusts between 70 and 90 km/h."} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Favorable conditions for the occurrence of localized weather phenomena, such as: thunderstorm; locally strong precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
+| `gemma-3-4b-it` | Favorable conditions exist for the occurrence of localized weather phenomena, such as: thunderstorms; locally heavy precipitation with an accumulation of 10 to 20 mm in 1 hour; gusts of wind between 70 and 90 km/h. | right | 3/3 |
+| `gpt-oss-20b` | Favorable conditions for the occurrence of localized meteorological phenomena, such as: thunderstorm; locally strong precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
+| `ministral-8b-2512` | {"conditions":"Favorable for localized weather events, including: thunderstorms; locally heavy rainfall, with accumulations between 10 to 20 mm in 1 hour; gusts between 70 and 90 km/h."} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Favorable conditions for the occurrence of localized weather phenomena, such as: thunderstorm; locally strong precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
 | `qwen3.5-9b` | Conditions favorable for occurrence of localized weather phenomena, such as: thunderstorm; locally strong precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
-| `gemma-4-31b-it` | Favorable conditions for localized meteorological phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
-| `llama-4-maverick` | Favourable conditions for localized weather events, such as: thunderstorm; locally heavy rain, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
+| `gemma-4-31b-it` | Favorable conditions for localized meteorological phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Favorable conditions for localized weather phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
+| `llama-4-maverick` | Favourable conditions for localized weather events, such as: thunderstorm; locally heavy rain, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Conditions favorable for the occurrence of localized meteorological phenomena, such as: thunderstorm; locally heavy precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
 | `deepseek-v4.1-flash` | Conditions favorable for the occurrence of localized weather phenomena, such as: thunderstorm; locally heavy precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Favorable conditions for the occurrence of localized weather phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Favorable conditions for the occurrence of localized weather phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Favorable conditions for the occurrence of localized weather phenomena, such as: thunderstorm; locally strong precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
 | `mistral-large-4-0` | Favourable conditions for the occurrence of localised meteorological phenomena, such as: thunderstorm; locally heavy precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
-| `gpt-6-luna` | Favorable conditions for localized weather phenomena, such as thunderstorms; locally heavy rainfall, with accumulations of 10 to 20 mm in 1 h; gusts of 70 to 90 km/h. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Favourable conditions for the occurrence of localized weather phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
-| `claude-haiku-5.5` | Conditions favourable for the occurrence of localised weather phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
-| `gpt-6.1-terra` | Conditions favourable for localised weather phenomena, such as thunderstorms; locally heavy rainfall, with accumulations between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
+| `gpt-6-luna` | Favorable conditions for localized weather phenomena, such as thunderstorms; locally heavy rainfall, with accumulations of 10 to 20 mm in 1 h; gusts of 70 to 90 km/h. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Conditions favorable for localized weather phenomena, such as: thunderstorms; locally heavy rainfall, with accumulations of 10 to 20 mm in 1 h; gusts of 70 to 90 km/h. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Favourable conditions for the occurrence of localized weather phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 to 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
+| `claude-haiku-5.5` | Conditions favourable for the occurrence of localised weather phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Conditions are favourable for the occurrence of localised weather phenomena, such as: thunderstorms; locally heavy precipitation, with accumulation between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 1/1 |
+| `gpt-6.1-terra` | Conditions favourable for localised weather phenomena, such as thunderstorms; locally heavy rainfall, with accumulations between 10 and 20 mm in 1 h; gusts between 70 and 90 km/h. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Conditions favorable for localized weather events, such as thunderstorms; locally heavy precipitation, with accumulations of 10 to 20 mm in 1 h; gusts of 70 to 90 km/h. | right | 1/1 |
 
 ### t03
 
@@ -140,21 +155,26 @@ Scored against: `{"figures":["100","120","140"],"units":["km/h"]}`, from `incide
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Based on current data, the center of the depression is most likely to pass between Sines and Cabo Carvoeiro. The wind will initially blow from the south and then rotate to the north. Along the southern edge of the depression, gusts will be in the range of 100 to 120 km/h, potentially reaching up to 140 km/h locally. | right | 1/1 |
-| `gpt-oss-20b` | With the data available at the moment, the most likely scenario is that the center of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south quadrant and turning to the north quadrant, and that on the southern edge of the depression the gusts will be in the order of 100 to 120 km/h, possibly locally up to 140 km/h. | right | 1/1 |
-| `ministral-8b-2512` | {"current_data":"Based on available data, the most likely scenario is that the center of the depression will pass between Sines and Cabo Carvoeiro. Initially, winds will blow from the south, shifting to the north. Along the southern edge of the depression, gusts will reach 100 to 120 km/h, potentially reaching up to 140 km/h locally."} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | With currently available data, the highest probability is for the center of the depression to pass between Sines and Cabo Carvoeiro, with wind initially blowing from the south quadrant and rotating to the north quadrant, while gusts on the southern edge of the depression will be around 100 to 120 km/h, possibly reaching up to 140 km/h locally. | right | 1/1 |
+| `gemma-3-4b-it` | Based on current data, the center of the depression is most likely to pass between Sines and Cabo Carvoeiro. The wind will initially blow from the south and then rotate to the north. Along the southern edge of the depression, gusts will be in the range of 100 to 120 km/h, potentially reaching up to 140 km/h locally. | right | 3/3 |
+| `gpt-oss-20b` | With the data available at the moment, the most likely scenario is that the center of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south quadrant and turning to the north quadrant, and that on the southern edge of the depression the gusts will be in the order of 100 to 120 km/h, possibly locally up to 140 km/h. | right | 3/3 |
+| `ministral-8b-2512` | {"current_data":"Based on available data, the most likely scenario is that the center of the depression will pass between Sines and Cabo Carvoeiro. Initially, winds will blow from the south, shifting to the north. Along the southern edge of the depression, gusts will reach 100 to 120 km/h, potentially reaching up to 140 km/h locally."} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | With currently available data, the highest probability is for the center of the depression to pass between Sines and Cabo Carvoeiro, with wind initially blowing from the south quadrant and rotating to the north quadrant, while gusts on the southern edge of the depression will be around 100 to 120 km/h, possibly reaching up to 140 km/h locally. | right | 3/3 |
 | `qwen3.5-9b` | With the data currently available, the highest probability will be for the depression centre to pass between Sines and Cape Carvoeiro, with winds initially blowing from the south quadrant and rotating to the north quadrant, with gusts on the southern edge of the depression being around 100 to 120 km/h, potentially reaching locally up to 140 km/h. | right | 1/1 |
-| `gemma-4-31b-it` | Based on currently available data, the most likely scenario is for the center of the depression to pass between Sines and Cabo Carvoeiro, with winds initially blowing from the south quadrant and rotating to the north quadrant; on the southern edge of the depression, gusts will be around 100 to 120 km/h, potentially reaching up to 140 km/h locally. | right | 1/1 |
-| `llama-4-maverick` | With the data available at the moment, the highest probability is that the depression's centre will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and rotating to the northern quadrant, with gusts on the southern edge of the depression being around 100 to 120 km/h, potentially reaching up to 140 km/h locally. | right | 1/1 |
+| `gemma-4-31b-it` | Based on currently available data, the most likely scenario is for the center of the depression to pass between Sines and Cabo Carvoeiro, with winds initially blowing from the south quadrant and rotating to the north quadrant; on the southern edge of the depression, gusts will be around 100 to 120 km/h, potentially reaching up to 140 km/h locally. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Based on currently available data, the most likely scenario is that the center of the depression will pass between Sines and Cabo Carvoeiro, with winds initially blowing from the south quadrant and shifting to the north quadrant, with gusts on the southern edge of the depression between 100 to 120 km/h, potentially reaching up to 140 km/h locally. | right | 1/1 |
+| `llama-4-maverick` | With the data available at the moment, the highest probability is that the depression's centre will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and rotating to the northern quadrant, with gusts on the southern edge of the depression being around 100 to 120 km/h, potentially reaching up to 140 km/h locally. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | With the data currently available, the highest probability is that the centre of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south and veering to the north, and on the southern edge of the depression gusts will be in the order of 100 to 120 km/h, possibly locally up to 140 km/h. | right | 3/3 |
 | `deepseek-v4.1-flash` | With the data currently available, the highest probability is that the center of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south quadrant and turning to the north quadrant, with gusts on the southern edge of the depression in the order of 100 to 120 km/h, and may locally be up to 140 km/h. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | With the data available at the moment, the highest probability is for the center of the depression to pass between Sines and Cabo Carvoeiro, with wind initially blowing from the southern quadrant and shifting to the northern quadrant, with gusts on the southern edge of the depression reaching 100 to 120 km/h, possibly locally up to 140 km/h. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | With the data available at the moment, the highest probability is for the center of the depression to pass between Sines and Cabo Carvoeiro, with wind initially blowing from the southern quadrant and shifting to the northern quadrant, with gusts on the southern edge of the depression reaching 100 to 120 km/h, possibly locally up to 140 km/h. | right | 3/3 |
 | `qwen3.5-397b-a17b` | With the data available at the moment, the highest probability is for the center of the depression to pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and shifting to the northern quadrant, with gusts on the southern edge of the depression in the order of 100 to 120 km/h, possibly locally up to 140 km/h. | right | 1/1 |
 | `mistral-large-4-0` |  | **cut off** | 0/1 |
-| `gpt-6-luna` | Based on the data currently available, the most likely scenario is for the centre of the depression to pass between Sines and Cape Carvoeiro. The wind will initially blow from the southern quadrant, then shift to the northern quadrant. On the southern edge of the depression, gusts will reach around 100 to 120 km/h, locally up to 140 km/h. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Based on currently available data, the highest probability is that the center of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and shifting to the northern quadrant, and on the southern edge of the depression gusts will be of the order of 100 to 120 km/h, potentially reaching locally up to 140 km/h. | right | 1/1 |
-| `claude-haiku-5.5` | Based on the data available at this moment, the most likely scenario is that the centre of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and then turning to the northern quadrant. On the southern edge of the depression, gusts will be of the order of 100 to 120 km/h, and locally may reach up to 140 km/h. | right | 1/1 |
-| `gpt-6.1-terra` | Based on the data currently available, the centre of the low-pressure system is most likely to pass between Sines and Cabo Carvoeiro. Winds will initially blow from the south, then shift to the north. On the southern side of the system, gusts will be around 100 to 120 km/h, locally reaching 140 km/h. | right | 1/1 |
+| `gpt-6-luna` | Based on the data currently available, the most likely scenario is for the centre of the depression to pass between Sines and Cape Carvoeiro. The wind will initially blow from the southern quadrant, then shift to the northern quadrant. On the southern edge of the depression, gusts will reach around 100 to 120 km/h, locally up to 140 km/h. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Based on the data currently available, the most likely scenario is for the centre of the depression to pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south and then turning to the north. On the southern edge of the depression, gusts are expected to reach around 100 to 120 km/h, locally up to 140 km/h. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Based on currently available data, the highest probability is that the center of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and shifting to the northern quadrant, and on the southern edge of the depression gusts will be of the order of 100 to 120 km/h, potentially reaching locally up to 140 km/h. | right | 3/3 |
+| `claude-haiku-5.5` | Based on the data available at this moment, the most likely scenario is that the centre of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and then turning to the northern quadrant. On the southern edge of the depression, gusts will be of the order of 100 to 120 km/h, and locally may reach up to 140 km/h. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Based on the data currently available, the most likely scenario is that the centre of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and then shifting to the northern quadrant. On the southern edge of the depression, gusts will be of the order of 100 to 120 km/h, and may locally reach 140 km/h. | right | 1/1 |
+| `gpt-6.1-terra` | Based on the data currently available, the centre of the low-pressure system is most likely to pass between Sines and Cabo Carvoeiro. Winds will initially blow from the south, then shift to the north. On the southern side of the system, gusts will be around 100 to 120 km/h, locally reaching 140 km/h. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Based on the data currently available, the centre of the low-pressure system is most likely to pass between Sines and Cabo Carvoeiro. Winds will initially blow from the south, then shift to come from the north. On the southern side of the low-pressure system, gusts will be around 100 to 120 km/h, locally reaching up to 140 km/h. | right | 1/1 |
 
 ### t04
 
@@ -166,21 +186,26 @@ Scored against: `{"figures":["5","7","13"],"units":["metre"]}`, from `incidents/
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Strong southwest swells with wave heights of 5 to 7 meters, potentially reaching a maximum height of 13 meters. | right | 1/1 |
-| `gpt-oss-20b` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters maximum height. | right | 1/1 |
-| `ministral-8b-2512` | {"waves":{"direction":"southwest","height":{"typical":"5 to 7 metres","maximum":"up to 13 metres"}}} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters in maximum height. | right | 1/1 |
+| `gemma-3-4b-it` | Strong southwest swells with wave heights of 5 to 7 meters, potentially reaching a maximum height of 13 meters. | right | 3/3 |
+| `gpt-oss-20b` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters maximum height. | right | 3/3 |
+| `ministral-8b-2512` | {"waves":{"direction":"southwest","height":{"typical":"5 to 7 metres","maximum":"up to 13 metres"}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters in maximum height. | right | 3/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters maximum height. | right | 1/1 |
-| `llama-4-maverick` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters maximum height. | right | 1/1 |
+| `gemma-4-31b-it` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters maximum height. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Southwest waves of 5 to 7 meters and that may reach a maximum height of up to 13 meters. | right | 1/1 |
+| `llama-4-maverick` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters maximum height. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Southwest waves of 5 to 7 meters that could reach up to 13 meters in maximum height. | right | 3/3 |
 | `deepseek-v4.1-flash` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters maximum height. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Southwest waves of 5 to 7 meters and which may reach up to 13 meters maximum height. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Southwest waves of 5 to 7 meters and which may reach up to 13 meters maximum height. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Southwest waves with 5 to 7 meters and that may reach up to 13 meters maximum height. | right | 1/1 |
 | `mistral-large-4-0` | Southwest waves 5 to 7 metres, which may reach up to 13 metres maximum height. | right | 1/1 |
-| `gpt-6-luna` | Southwesterly waves of 5 to 7 meters, potentially reaching a maximum height of 13 meters. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Southwest waves of 5 to 7 meters, which may reach up to 13 meters in maximum height. | right | 1/1 |
-| `claude-haiku-5.5` | Southwest swells of 5 to 7 metres, which could reach a maximum height of up to 13 metres. | right | 1/1 |
-| `gpt-6.1-terra` | Waves from the southwest of 5 to 7 metres, potentially reaching a maximum height of 13 metres. | right | 1/1 |
+| `gpt-6-luna` | Southwesterly waves of 5 to 7 meters, potentially reaching a maximum height of 13 meters. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Southwesterly waves of 5 to 7 metres, which may reach a maximum height of 13 metres. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Southwest waves of 5 to 7 meters, which may reach up to 13 meters in maximum height. | right | 3/3 |
+| `claude-haiku-5.5` | Southwest swells of 5 to 7 metres, which could reach a maximum height of up to 13 metres. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Southwest swells of 5 to 7 metres, which may reach a maximum height of up to 13 metres. | right | 1/1 |
+| `gpt-6.1-terra` | Waves from the southwest of 5 to 7 metres, potentially reaching a maximum height of 13 metres. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Southwesterly waves of 5 to 7 metres, potentially reaching a maximum height of 13 metres. | right | 1/1 |
 
 ### t05
 
@@ -192,21 +217,26 @@ Scored against: `{"figures":["4","5"],"units":["metre"]}`, from `incidents/2026-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Marine agitation will worsen during this period, with southwest swells of 4 to 5 meters on the south coast of the island of Madeira. | right | 1/1 |
-| `gpt-oss-20b` | The sea agitation will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira Island. | right | 1/1 |
-| `ministral-8b-2512` | {"sea_condition":{"forecast":"Sea conditions will worsen during this period","waves":{"direction":"southwest","height":{"min":"4","max":"5","unit":"meters"},"location":"southern coast of Madeira Island"}}} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | The sea state will also worsen during this period, with southwesterly waves of 4 to 5 meters on the southern coast of Madeira island. | right | 1/1 |
+| `gemma-3-4b-it` | Marine agitation will worsen during this period, with southwest swells of 4 to 5 meters on the south coast of the island of Madeira. | right | 3/3 |
+| `gpt-oss-20b` | The sea agitation will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira Island. | right | 3/3 |
+| `ministral-8b-2512` | {"sea_condition":{"forecast":"Sea conditions will worsen during this period","waves":{"direction":"southwest","height":{"min":"4","max":"5","unit":"meters"},"location":"southern coast of Madeira Island"}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | The sea state will also worsen during this period, with southwesterly waves of 4 to 5 meters on the southern coast of Madeira island. | right | 3/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | Sea agitation will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira island. | right | 1/1 |
-| `llama-4-maverick` | Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira Island. | right | 1/1 |
+| `gemma-4-31b-it` | Sea agitation will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira island. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Sea conditions will also worsen during this period, with southwesterly waves of 4 to 5 meters on the south coast of Madeira island. | right | 1/1 |
+| `llama-4-maverick` | Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira Island. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Sea agitation will also worsen during this period, with southwest waves of 4 to 5 metres on the south coast of the island of Madeira. | right | 3/3 |
 | `deepseek-v4.1-flash` | The sea state will also worsen during this period, with southwesterly waves measuring 4 to 5 meters on the south coast of the island of Madeira. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira Island. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira Island. | right | 3/3 |
 | `qwen3.5-397b-a17b` |  | **cut off** | 0/1 |
 | `mistral-large-4-0` | Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of the island of Madeira. | right | 1/1 |
-| `gpt-6-luna` | The sea conditions will also worsen during this period, with southwesterly waves of 4 to 5 meters along the southern coast of Madeira Island. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the southern coast of Madeira island. | right | 1/1 |
-| `claude-haiku-5.5` | Sea swell will also intensify during this period, with southwest waves of 4 to 5 metres on the south coast of the island of Madeira. | right | 1/1 |
-| `gpt-6.1-terra` | Sea conditions will also worsen during this period, with waves from the southwest of 4 to 5 metres on the south coast of Madeira Island. | right | 1/1 |
+| `gpt-6-luna` | The sea conditions will also worsen during this period, with southwesterly waves of 4 to 5 meters along the southern coast of Madeira Island. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Sea conditions will also worsen during this period, with southwesterly waves of 4 to 5 meters on the southern coast of Madeira Island. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the southern coast of Madeira island. | right | 3/3 |
+| `claude-haiku-5.5` | Sea swell will also intensify during this period, with southwest waves of 4 to 5 metres on the south coast of the island of Madeira. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Sea agitation will also intensify during this period, with southwest swells of 4 to 5 metres on the south coast of the island of Madeira. | right | 1/1 |
+| `gpt-6.1-terra` | Sea conditions will also worsen during this period, with waves from the southwest of 4 to 5 metres on the south coast of Madeira Island. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Sea conditions will also worsen during this period, with waves from the southwest reaching 4 to 5 metres on the south coast of Madeira Island. | right | 1/1 |
 
 ### t06
 
@@ -218,21 +248,26 @@ Scored against: `{"figures":["100","24"],"units":["mm"]}`, from `incidents/2026-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Precipitation will be sometimes heavy across the entire territory, with accumulations that may exceed 100 mm in 24 hours in some locations. | right | 1/1 |
-| `gpt-oss-20b` | Precipitation will be sometimes heavy across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. | right | 1/1 |
-| `ministral-8b-2512` | {"message":"Rain will sometimes be heavy across most of the country, with totals potentially exceeding 100 mm in 24 hours in some areas."} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Precipitation will be heavy in most of the territory, with accumulations that may exceed 100 mm in 24h in some areas. | right | 1/1 |
+| `gemma-3-4b-it` | Precipitation will be sometimes heavy across the entire territory, with accumulations that may exceed 100 mm in 24 hours in some locations. | right | 3/3 |
+| `gpt-oss-20b` | Precipitation will be sometimes heavy across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. | right | 3/3 |
+| `ministral-8b-2512` | {"message":"Rain will sometimes be heavy across most of the country, with totals potentially exceeding 100 mm in 24 hours in some areas."} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Precipitation will be heavy in most of the territory, with accumulations that may exceed 100 mm in 24h in some areas. | right | 3/3 |
 | `qwen3.5-9b` | Precipitation will occasionally be heavy across most of the territory, with accumulations that may exceed 100 mm in 24h in some areas. | right | 1/1 |
-| `gemma-4-31b-it` | Precipitation will be occasionally strong across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. | right | 1/1 |
-| `llama-4-maverick` | Rainfall will sometimes be heavy throughout the territory, with totals that may exceed 100 mm in 24h in some places. | right | 1/1 |
+| `gemma-4-31b-it` | Precipitation will be occasionally strong across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Precipitation will be strong at times across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. | right | 1/1 |
+| `llama-4-maverick` | Rainfall will sometimes be heavy throughout the territory, with totals that may exceed 100 mm in 24h in some places. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Precipitation will at times be heavy across the whole territory, with accumulations that may exceed 100 mm in 24h in some places. | right | 3/3 |
 | `deepseek-v4.1-flash` | Rainfall will be heavy at times across most of the territory, with totals that may exceed 100 mm in 24h in some places. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Precipitation will be at times heavy across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Precipitation will be at times heavy across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Precipitation will be at times heavy across most of the territory, with accumulations that may be higher than 100 mm in 24h in some places. | right | 1/1 |
 | `mistral-large-4-0` | Rainfall will sometimes be heavy across most of the territory, with totals that may exceed 100 mm in 24h in some places. | right | 1/1 |
-| `gpt-6-luna` | Precipitation will be heavy at times across most of the territory, with accumulations that may exceed 100 mm in 24h in some places. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Precipitation will sometimes be heavy across the entire territory, with accumulations that may exceed 100 mm in 24h in some places. | right | 1/1 |
-| `claude-haiku-5.5` | Precipitation will at times be heavy across most of the territory, with accumulations that could exceed 100 mm in 24h in some places. | right | 1/1 |
-| `gpt-6.1-terra` | Rainfall will sometimes be heavy across most of the territory, with totals that may exceed 100 mm in 24h in some places. | right | 1/1 |
+| `gpt-6-luna` | Precipitation will be heavy at times across most of the territory, with accumulations that may exceed 100 mm in 24h in some places. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Rainfall will be heavy at times across most of the territory, with totals possibly exceeding 100 mm in 24h in some places. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Precipitation will sometimes be heavy across the entire territory, with accumulations that may exceed 100 mm in 24h in some places. | right | 3/3 |
+| `claude-haiku-5.5` | Precipitation will at times be heavy across most of the territory, with accumulations that could exceed 100 mm in 24h in some places. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Precipitation will at times be heavy across most of the territory, with accumulations that could exceed 100 mm in 24 h in some places. | right | 1/1 |
+| `gpt-6.1-terra` | Rainfall will sometimes be heavy across most of the territory, with totals that may exceed 100 mm in 24h in some places. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Rainfall will be heavy at times across most of the territory, with accumulations that may exceed 100 mm in 24h in some places. | right | 1/1 |
 
 ### t07
 
@@ -244,21 +279,26 @@ Scored against: `{"figures":["100","140"],"units":["km/h"]}`, from `incidents/20
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, potentially reaching up to 140 km/h in higher elevations. | right | 1/1 |
-| `gpt-oss-20b` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. | right | 1/1 |
-| `ministral-8b-2512` | {"wind":{"intensity":"will increase","direction":"southwest","gusts":{"max":"100 km/h","high_terrain":"up to 140 km/h"}}} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly reaching 140 km/h in high ground. | right | 1/1 |
+| `gemma-3-4b-it` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, potentially reaching up to 140 km/h in higher elevations. | right | 3/3 |
+| `gpt-oss-20b` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. | right | 3/3 |
+| `ministral-8b-2512` | {"wind":{"intensity":"will increase","direction":"southwest","gusts":{"max":"100 km/h","high_terrain":"up to 140 km/h"}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly reaching 140 km/h in high ground. | right | 3/3 |
 | `qwen3.5-9b` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in high ground. | right | 1/1 |
-| `gemma-4-31b-it` | Wind intensity will increase, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in high lands. | right | 1/1 |
-| `llama-4-maverick` | The wind will intensify, blowing from southwest with gusts up to 100 km/h, which may be around 140 km/h in the highlands. | right | 1/1 |
+| `gemma-4-31b-it` | Wind intensity will increase, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in high lands. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in the highlands. | right | 1/1 |
+| `llama-4-maverick` | The wind will intensify, blowing from southwest with gusts up to 100 km/h, which may be around 140 km/h in the highlands. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, and may be in the order of 140 km/h in the highlands. | right | 3/3 |
 | `deepseek-v4.1-flash` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly around 140 km/h in the highlands. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly reaching 140 km/h in highlands. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly reaching 140 km/h in highlands. | right | 3/3 |
 | `qwen3.5-397b-a17b` |  | **cut off** | 0/1 |
 | `mistral-large-4-0` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly around 140 km/h in highlands. | right | 1/1 |
-| `gpt-6-luna` | The wind will increase in intensity, blowing from the southwest with gusts of up to 100 km/h, possibly around 140 km/h in the highlands. | right | 1/1 |
-| `gemini-3.5-flash-lite` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, and may reach around 140 km/h in the highlands. | right | 1/1 |
-| `claude-haiku-5.5` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly on the order of 140 km/h in the highlands. | right | 1/1 |
-| `gpt-6.1-terra` | The wind will strengthen, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. | right | 1/1 |
+| `gpt-6-luna` | The wind will increase in intensity, blowing from the southwest with gusts of up to 100 km/h, possibly around 140 km/h in the highlands. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | The wind will strengthen, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. | right | 1/1 |
+| `gemini-3.5-flash-lite` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, and may reach around 140 km/h in the highlands. | right | 3/3 |
+| `claude-haiku-5.5` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly on the order of 140 km/h in the highlands. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, and may reach around 140 km/h in the highlands. | right | 1/1 |
+| `gpt-6.1-terra` | The wind will strengthen, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | The wind will strengthen, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. | right | 1/1 |
 
 ### t08
 
@@ -270,21 +310,26 @@ Scored against: `{"figures":["4","5"],"units":["metre"]}`, from `incidents/2026-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Strong southwest swells with wave heights of 4 to 5 meters. | right | 1/1 |
-| `gpt-oss-20b` | Southwest waves with 4 to 5 meters. | right | 1/1 |
-| `ministral-8b-2512` | {"wave_condition":{"direction":"southwest","height":{"range":"4 to 5","unit":"meters"}}} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Southwest waves 4 to 5 meters. | right | 1/1 |
+| `gemma-3-4b-it` | Strong southwest swells with wave heights of 4 to 5 meters. | right | 3/3 |
+| `gpt-oss-20b` | Southwest waves with 4 to 5 meters. | right | 3/3 |
+| `ministral-8b-2512` | {"wave_condition":{"direction":"southwest","height":{"range":"4 to 5","unit":"meters"}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Southwest waves 4 to 5 meters. | right | 3/3 |
 | `qwen3.5-9b` | Southwest waves with 4 to 5 meters. | right | 1/1 |
-| `gemma-4-31b-it` | Southwest waves with 4 to 5 meters. | right | 1/1 |
-| `llama-4-maverick` | Southwest waves with 4 to 5 metres. | right | 1/1 |
+| `gemma-4-31b-it` | Southwest waves with 4 to 5 meters. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Southwest waves with 4 to 5 meters. | right | 1/1 |
+| `llama-4-maverick` | Southwest waves with 4 to 5 metres. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Southwest waves of 4 to 5 meters. | right | 3/3 |
 | `deepseek-v4.1-flash` | Southwest waves with 4 to 5 meters. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Southwest waves of 4 to 5 meters. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Southwest waves of 4 to 5 meters. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Waves from the southwest with 4 to 5 meters. | right | 1/1 |
 | `mistral-large-4-0` | Southwesterly waves with 4 to 5 meters. | right | 1/1 |
-| `gpt-6-luna` | Southwesterly waves of 4 to 5 metres. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Southwesterly waves of 4 to 5 meters. | right | 1/1 |
-| `claude-haiku-5.5` | Southwest swells of 4 to 5 metres. | right | 1/1 |
-| `gpt-6.1-terra` | Waves from the southwest, 4 to 5 meters. | right | 1/1 |
+| `gpt-6-luna` | Southwesterly waves of 4 to 5 metres. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Southwesterly waves of 4 to 5 meters. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Southwesterly waves of 4 to 5 meters. | right | 3/3 |
+| `claude-haiku-5.5` | Southwest swells of 4 to 5 metres. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Southwest swells of 4 to 5 metres. | right | 1/1 |
+| `gpt-6.1-terra` | Waves from the southwest, 4 to 5 meters. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Waves from the southwest, 4 to 5 metres. | right | 1/1 |
 
 ### t09
 
@@ -296,21 +341,26 @@ Scored against: `{"figures":["4","5"],"units":["metre"]}`, from `incidents/2026-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Waves from the westerly quadrant with 4 to 5 meters. | right | 1/1 |
-| `gpt-oss-20b` | Waves in the western quadrant with 4 to 5 meters. | right | 1/1 |
-| `ministral-8b-2512` | {"waves":{"direction":"west quadrant","height":"4 to 5 metres"}} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | West quadrant waves with 4 to 5 meters. | right | 1/1 |
+| `gemma-3-4b-it` | Waves from the westerly quadrant with 4 to 5 meters. | right | 3/3 |
+| `gpt-oss-20b` | Waves in the western quadrant with 4 to 5 meters. | right | 2/3 |
+| `ministral-8b-2512` | {"waves":{"direction":"west quadrant","height":"4 to 5 metres"}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | West quadrant waves with 4 to 5 meters. | right | 3/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | Waves from the west quadrant with 4 to 5 meters. | right | 1/1 |
-| `llama-4-maverick` | Waves from the west quadrant with 4 to 5 metres. | right | 1/1 |
+| `gemma-4-31b-it` | Waves from the west quadrant with 4 to 5 meters. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Waves from the western quadrant with 4 to 5 meters. | right | 1/1 |
+| `llama-4-maverick` | Waves from the west quadrant with 4 to 5 metres. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Waves from the west quadrant with 4 to 5 meters. | right | 3/3 |
 | `deepseek-v4.1-flash` | Waves from the west quadrant with 4 to 5 meters. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Waves from the west quadrant with 4 to 5 meters. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Waves from the west quadrant with 4 to 5 meters. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Waves from the west quadrant with 4 to 5 meters. | right | 1/1 |
 | `mistral-large-4-0` | Waves from the west with 4 to 5 meters | right | 1/1 |
-| `gpt-6-luna` | Waves from the west quadrant with 4 to 5 meters. | right | 1/1 |
-| `gemini-3.5-flash-lite` | West-quadrant waves of 4 to 5 meters. | right | 1/1 |
-| `claude-haiku-5.5` | Waves from the west quadrant with 4 to 5 metres. | right | 1/1 |
-| `gpt-6.1-terra` | Waves from the western quadrant, 4 to 5 meters. | right | 1/1 |
+| `gpt-6-luna` | Waves from the west quadrant with 4 to 5 meters. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Waves from the west quadrant, 4 to 5 meters. | right | 1/1 |
+| `gemini-3.5-flash-lite` | West-quadrant waves of 4 to 5 meters. | right | 3/3 |
+| `claude-haiku-5.5` | Waves from the west quadrant with 4 to 5 metres. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Waves from the west quadrant with 4 to 5 metres. | right | 1/1 |
+| `gpt-6.1-terra` | Waves from the western quadrant, 4 to 5 meters. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Waves from the western quadrant, 4 to 5 metres. | right | 1/1 |
 
 ### t10
 
@@ -322,21 +372,26 @@ Scored against: `{"figures":["100","12"],"units":["mm"]}`, from `incidents/2026-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Persistent and sometimes heavy rain is forecast, potentially accumulating values exceeding 100 mm in 12 hours in some locations, especially in mountainous regions. | right | 1/1 |
-| `gpt-oss-20b` | Persistent rain is forecast, sometimes strong, with accumulations exceeding 100 mm in 12 hours in some places, especially in mountainous regions. | right | 1/1 |
-| `ministral-8b-2512` | {"forecast":"Persistent and at times heavy rain is expected, potentially accumulating values exceeding 100 mm in 12 hours in some areas, especially in mountainous regions."} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Persistent and sometimes heavy rain is expected, with accumulations exceeding 100 mm in 12 h in some areas, especially in mountainous regions. | right | 1/1 |
+| `gemma-3-4b-it` | Persistent and sometimes heavy rain is forecast, potentially accumulating values exceeding 100 mm in 12 hours in some locations, especially in mountainous regions. | right | 3/3 |
+| `gpt-oss-20b` | Persistent rain is forecast, sometimes strong, with accumulations exceeding 100 mm in 12 hours in some places, especially in mountainous regions. | right | 3/3 |
+| `ministral-8b-2512` | {"forecast":"Persistent and at times heavy rain is expected, potentially accumulating values exceeding 100 mm in 12 hours in some areas, especially in mountainous regions."} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Persistent and sometimes heavy rain is expected, with accumulations exceeding 100 mm in 12 h in some areas, especially in mountainous regions. | right | 3/3 |
 | `qwen3.5-9b` | Persistent and at times heavy rain is expected, with accumulations exceeding 100 mm in 12 h in some areas, especially in mountainous regions. | right | 1/1 |
-| `gemma-4-31b-it` | Persistent and sometimes heavy rain is forecast, with accumulations that may exceed 100 mm in 12 h in some locations, especially in mountainous regions. | right | 1/1 |
-| `llama-4-maverick` | Persistent and sometimes heavy rain is forecast, possibly accumulating values above 100 mm in 12 h in some places, especially in mountainous regions. | right | 1/1 |
+| `gemma-4-31b-it` | Persistent and sometimes heavy rain is forecast, with accumulations that may exceed 100 mm in 12 h in some locations, especially in mountainous regions. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Persistent and at times heavy rain is forecast, with accumulations potentially exceeding 100 mm in 12 h in some locations, especially in mountainous regions. | right | 1/1 |
+| `llama-4-maverick` | Persistent and sometimes heavy rain is forecast, possibly accumulating values above 100 mm in 12 h in some places, especially in mountainous regions. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Persistent and sometimes heavy rain is expected, and it may accumulate more than 100 mm in 12 h in some places, especially in mountainous regions. | right | 3/3 |
 | `deepseek-v4.1-flash` | Persistent and sometimes heavy rain is expected, which may accumulate more than 100 mm in 12 h in some places, especially in mountainous regions. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Persistent and sometimes heavy rain is forecast, with accumulations exceeding 100 mm in 12 h in some locations, especially in mountainous regions. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Persistent and sometimes heavy rain is forecast, with accumulations exceeding 100 mm in 12 h in some locations, especially in mountainous regions. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Persistent and sometimes heavy rain is forecast, potentially accumulating values above 100 mm in 12 h in some locations, especially in mountainous regions. | right | 1/1 |
 | `mistral-large-4-0` | Persistent and at times heavy rain is forecast, with accumulations potentially exceeding 100 mm in 12 h in some places, especially in mountainous regions. | right | 1/1 |
-| `gpt-6-luna` | Persistent and at times heavy rain is forecast, with totals possibly exceeding 100 mm in 12 h in some locations, especially in mountainous regions. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Persistent and occasionally heavy rain is forecast, which may accumulate values exceeding 100 mm in 12 h in some locations, especially in mountainous regions. | right | 1/1 |
-| `claude-haiku-5.5` | Persistent and at times heavy rain is forecast, with accumulations exceeding 100 mm in 12 h possible in some locations, especially in mountainous regions. | right | 1/1 |
-| `gpt-6.1-terra` | Persistent and sometimes heavy rain is expected, with accumulations possibly exceeding 100 mm in 12 h in some places, especially in mountainous areas. | right | 1/1 |
+| `gpt-6-luna` | Persistent and at times heavy rain is forecast, with totals possibly exceeding 100 mm in 12 h in some locations, especially in mountainous regions. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Persistent and at times heavy rain is forecast, potentially accumulating more than 100 mm in 12 h in some locations, especially in mountainous regions. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Persistent and occasionally heavy rain is forecast, which may accumulate values exceeding 100 mm in 12 h in some locations, especially in mountainous regions. | right | 3/3 |
+| `claude-haiku-5.5` | Persistent and at times heavy rain is forecast, with accumulations exceeding 100 mm in 12 h possible in some locations, especially in mountainous regions. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Persistent and at times heavy rain is forecast, with accumulations exceeding 100 mm in 12 h in some locations, especially in mountainous regions. | right | 1/1 |
+| `gpt-6.1-terra` | Persistent and sometimes heavy rain is expected, with accumulations possibly exceeding 100 mm in 12 h in some places, especially in mountainous areas. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Persistent rain, sometimes heavy, is expected, with accumulations exceeding 100 mm in 12 h in some places, especially in mountainous areas. | right | 1/1 |
 
 ### t11
 
@@ -348,20 +403,26 @@ Scored against: `{"figures":["120","140"],"units":["km/h"]}`, from `incidents/20
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Gusts of up to 120 km/h, potentially reaching 140 km/h in the most exposed locations. | right | 1/1 |
-| `gpt-oss-20b` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed areas. | right | 1/1 |
-| `ministral-8b-2512` | {"gusts":"up to 120 km/h, potentially reaching 140 km/h in the most exposed areas"} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Gusts up to 120 km/h, may reach 140 km/h in the most exposed areas. | right | 1/1 |
+| `gemma-3-4b-it` | Gusts of up to 120 km/h, potentially reaching 140 km/h in the most exposed locations. | right | 3/3 |
+| `gpt-oss-20b` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed areas. | right | 3/3 |
+| `ministral-8b-2512` | {"gusts":"up to 120 km/h, potentially reaching 140 km/h in the most exposed areas"} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Gusts up to 120 km/h, may reach 140 km/h in the most exposed areas. | right | 3/3 |
 | `qwen3.5-9b` | Gusts up to 120 km/h, may reach 140 km/h in the most exposed areas. | right | 1/1 |
-| `gemma-4-31b-it` | Gusts up to 120 km/h, potentially reaching 140 km/h in the most exposed locations. | right | 1/1 |
-| `llama-4-maverick` | Gusts up to 120 km/h, which may reach 140 km/h in the most exposed places. | right | 1/1 |
+| `gemma-4-31b-it` | Gusts up to 120 km/h, potentially reaching 140 km/h in the most exposed locations. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Gusts up to 120 km/h, potentially reaching 140 km/h in the most exposed locations. | right | 1/1 |
+| `llama-4-maverick` | Gusts up to 120 km/h, which may reach 140 km/h in the most exposed places. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 3/3 |
 | `deepseek-v4.1-flash` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed areas. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 1/1 |
 | `mistral-large-4-0` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 1/1 |
-| `gpt-6-luna` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Gusts up to 120 km/h, which may reach 140 km/h in the most exposed locations. | right | 1/1 |
-| `claude-haiku-5.5` | Gusts of up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 1/1 |
-| `gpt-6.1-terra` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed areas. | right | 1/1 |
+| `gpt-6-luna` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Gusts up to 120 km/h, which may reach 140 km/h in the most exposed locations. | right | 3/3 |
+| `claude-haiku-5.5` | Gusts of up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 1/1 |
+| `gpt-6.1-terra` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed areas. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Gusts up to 120 km/h, possibly reaching 140 km/h in the most exposed locations. | right | 1/1 |
 
 ### t12
 
@@ -373,20 +434,26 @@ Scored against: `{"figures":["100"],"units":["km/h"]}`, from `incidents/2026-11-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Gusts of up to 100 km/h, especially in the eastern and western extremes. | right | 1/1 |
-| `gpt-oss-20b` | Gusts up to 100 km/h, especially at the eastern and western extremes. | right | 1/1 |
-| `ministral-8b-2512` | {"wind_gusts":"up to 100 km/h, especially in the eastern and western extremes"} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Gusts up to 100 km/h, especially at the eastern and western extremes. | right | 1/1 |
+| `gemma-3-4b-it` | Gusts of up to 100 km/h, especially in the eastern and western extremes. | right | 3/3 |
+| `gpt-oss-20b` | Gusts up to 100 km/h, especially at the eastern and western extremes. | right | 3/3 |
+| `ministral-8b-2512` | {"wind_gusts":"up to 100 km/h, especially in the eastern and western extremes"} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Gusts up to 100 km/h, especially at the eastern and western extremes. | right | 3/3 |
 | `qwen3.5-9b` |  | **cut off** | 0/1 |
-| `gemma-4-31b-it` | Gusts up to 100 km/h, especially in the eastern and western extremes. | right | 1/1 |
-| `llama-4-maverick` | Gusts up to 100 km/h, especially in the eastern and western extremities. | right | 1/1 |
+| `gemma-4-31b-it` | Gusts up to 100 km/h, especially in the eastern and western extremes. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Gusts up to 100 km/h, especially in the east and west extremes. | right | 1/1 |
+| `llama-4-maverick` | Gusts up to 100 km/h, especially in the eastern and western extremities. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Gusts up to 100 km/h, especially in the eastern and western extremes. | right | 3/3 |
 | `deepseek-v4.1-flash` | Gusts up to 100 km/h, especially in the eastern and western extremes. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 100 km/h, especially in the extreme east and west. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Gusts up to 100 km/h, especially in the extreme east and west. | right | 1/1 |
 | `mistral-large-4-0` | Gusts up to 100 km/h, especially at the eastern and western extremes. | right | 1/1 |
-| `gpt-6-luna` | Gusts up to 100 km/h, especially in the eastern and western extremities. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Gusts up to 100 km/h, especially in the far east and west extremes. | right | 1/1 |
-| `claude-haiku-5.5` | Gusts of up to 100 km/h, especially in the eastern and western extremes. | right | 1/1 |
-| `gpt-6.1-terra` | Gusts up to 100 km/h, especially in the eastern and western extremes. | right | 1/1 |
+| `gpt-6-luna` | Gusts up to 100 km/h, especially in the eastern and western extremities. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Gusts up to 100 km/h, especially in the eastern and western parts. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Gusts up to 100 km/h, especially in the far east and west extremes. | right | 3/3 |
+| `claude-haiku-5.5` | Gusts of up to 100 km/h, especially in the eastern and western extremes. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Gusts of up to 100 km/h, especially in the eastern and western extremes. | right | 1/1 |
+| `gpt-6.1-terra` | Gusts up to 100 km/h, especially in the eastern and western extremes. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Gusts up to 100 km/h, especially at the eastern and western ends. | right | 1/1 |
 
 ### t13
 
@@ -398,21 +465,26 @@ Scored against: `{"figures":["100"],"units":["km/h"]}`, from `incidents/2026-11-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Gusts up to 100 km/h. | right | 1/1 |
-| `gpt-oss-20b` | Gusts up to 100 km/h. | right | 1/1 |
-| `ministral-8b-2512` | {"wind_gusts":"up to 100 km/h"} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Gusts up to 100 km/h. | right | 1/1 |
+| `gemma-3-4b-it` | Gusts up to 100 km/h. | right | 3/3 |
+| `gpt-oss-20b` | Gusts up to 100 km/h. | right | 3/3 |
+| `ministral-8b-2512` | {"wind_gusts":"up to 100 km/h"} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Gusts up to 100 km/h. | right | 3/3 |
 | `qwen3.5-9b` | Gusts up to 100 km/h. | right | 1/1 |
-| `gemma-4-31b-it` | Gusts up to 100 km/h. | right | 1/1 |
-| `llama-4-maverick` | Gusts up to 100 km/h. | right | 1/1 |
+| `gemma-4-31b-it` | Gusts up to 100 km/h. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Gusts up to 100 km/h. | right | 1/1 |
+| `llama-4-maverick` | Gusts up to 100 km/h. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Gusts up to 100 km/h. | right | 3/3 |
 | `deepseek-v4.1-flash` | Gusts up to 100 km/h. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 100 km/h. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 100 km/h. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Gusts up to 100 km/h. | right | 1/1 |
 | `mistral-large-4-0` | Gusts up to 100 km/h. | right | 1/1 |
-| `gpt-6-luna` | Gusts up to 100 km/h. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Gusts up to 100 km/h. | right | 1/1 |
-| `claude-haiku-5.5` | Gusts of wind up to 100 km/h. | right | 1/1 |
-| `gpt-6.1-terra` | Gusts up to 100 km/h. | right | 1/1 |
+| `gpt-6-luna` | Gusts up to 100 km/h. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Gusts up to 100 km/h. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Gusts up to 100 km/h. | right | 3/3 |
+| `claude-haiku-5.5` | Gusts of wind up to 100 km/h. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Gusts of up to 100 km/h. | right | 1/1 |
+| `gpt-6.1-terra` | Gusts up to 100 km/h. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Gusts up to 100 km/h. | right | 1/1 |
 
 ### t14
 
@@ -424,21 +496,26 @@ Scored against: `{"figures":["120"],"units":["km/h"]}`, from `incidents/2026-11-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Gusts up to 120 km/h. | right | 1/1 |
-| `gpt-oss-20b` | Wind gusts up to 120 km/h. | right | 1/1 |
-| `ministral-8b-2512` | {"wind_gusts":"up to 120 km/h"} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Gusts up to 120 km/h. | right | 1/1 |
+| `gemma-3-4b-it` | Gusts up to 120 km/h. | right | 3/3 |
+| `gpt-oss-20b` | Wind gusts up to 120 km/h. | right | 3/3 |
+| `ministral-8b-2512` | {"wind_gusts":"up to 120 km/h"} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Gusts up to 120 km/h. | right | 3/3 |
 | `qwen3.5-9b` | Gusts up to 120 km/h. | right | 1/1 |
-| `gemma-4-31b-it` | Gusts up to 120 km/h. | right | 1/1 |
-| `llama-4-maverick` | Gusts up to 120 km/h. | right | 1/1 |
+| `gemma-4-31b-it` | Gusts up to 120 km/h. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Gusts up to 120 km/h. | right | 1/1 |
+| `llama-4-maverick` | Gusts up to 120 km/h. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Gusts up to 120 km/h. | right | 3/3 |
 | `deepseek-v4.1-flash` | Gusts up to 120 km/h. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 120 km/h. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 120 km/h. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Gusts up to 120 km/h. | right | 1/1 |
 | `mistral-large-4-0` | Gusts up to 120 km/h. | right | 1/1 |
-| `gpt-6-luna` | Gusts up to 120 km/h. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Gusts up to 120 km/h. | right | 1/1 |
-| `claude-haiku-5.5` | Gusts of up to 120 km/h. | right | 1/1 |
-| `gpt-6.1-terra` | Gusts up to 120 km/h. | right | 1/1 |
+| `gpt-6-luna` | Gusts up to 120 km/h. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Gusts up to 120 km/h. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Gusts up to 120 km/h. | right | 3/3 |
+| `claude-haiku-5.5` | Gusts of up to 120 km/h. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Gusts of wind up to 120 km/h. | right | 1/1 |
+| `gpt-6.1-terra` | Gusts up to 120 km/h. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Gusts up to 120 km/h. | right | 1/1 |
 
 ### t15
 
@@ -450,21 +527,26 @@ Scored against: `{"figures":["130"],"units":["km/h"]}`, from `incidents/2026-11-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Gusts up to 130 km/h. | right | 1/1 |
-| `gpt-oss-20b` | Gusts up to 130 km/h. | right | 1/1 |
-| `ministral-8b-2512` | {"wind_gusts":"up to 130 km/h"} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Gusts up to 130 km/h. | right | 1/1 |
+| `gemma-3-4b-it` | Gusts up to 130 km/h. | right | 3/3 |
+| `gpt-oss-20b` | Gusts up to 130 km/h. | right | 3/3 |
+| `ministral-8b-2512` | {"wind_gusts":"up to 130 km/h"} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Gusts up to 130 km/h. | right | 3/3 |
 | `qwen3.5-9b` | Gusts up to 130 km/h. | right | 1/1 |
-| `gemma-4-31b-it` | Gusts up to 130 km/h. | right | 1/1 |
-| `llama-4-maverick` | Gusts up to 130 km/h. | right | 1/1 |
+| `gemma-4-31b-it` | Gusts up to 130 km/h. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Gusts up to 130 km/h. | right | 1/1 |
+| `llama-4-maverick` | Gusts up to 130 km/h. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Gusts up to 130 km/h. | right | 3/3 |
 | `deepseek-v4.1-flash` | Gusts up to 130 km/h. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 130 km/h. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 130 km/h. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Gusts up to 130 km/h. | right | 1/1 |
 | `mistral-large-4-0` | Gusts up to 130 km/h. | right | 1/1 |
-| `gpt-6-luna` | Gusts up to 130 km/h. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Gusts up to 130 km/h. | right | 1/1 |
-| `claude-haiku-5.5` | Gusts of up to 130 km/h. | right | 1/1 |
-| `gpt-6.1-terra` | Gusts up to 130 km/h. | right | 1/1 |
+| `gpt-6-luna` | Gusts up to 130 km/h. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Gusts up to 130 km/h. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Gusts up to 130 km/h. | right | 3/3 |
+| `claude-haiku-5.5` | Gusts of up to 130 km/h. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Gusts of wind up to 130 km/h. | right | 1/1 |
+| `gpt-6.1-terra` | Gusts up to 130 km/h. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Gusts up to 130 km/h. | right | 1/1 |
 
 ### t16
 
@@ -476,21 +558,26 @@ Scored against: `{"figures":["140"],"units":["km/h"]}`, from `incidents/2026-11-
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Gusts up to 140 km/h. | right | 1/1 |
-| `gpt-oss-20b` | Wind gusts up to 140 km/h. | right | 1/1 |
-| `ministral-8b-2512` | {"wind_gusts":"up to 140 km/h"} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Gusts up to 140 km/h. | right | 1/1 |
+| `gemma-3-4b-it` | Gusts up to 140 km/h. | right | 3/3 |
+| `gpt-oss-20b` | Wind gusts up to 140 km/h. | right | 3/3 |
+| `ministral-8b-2512` | {"wind_gusts":"up to 140 km/h"} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Gusts up to 140 km/h. | right | 3/3 |
 | `qwen3.5-9b` | Gusts up to 140 km/h. | right | 1/1 |
-| `gemma-4-31b-it` | Gusts up to 140 km/h. | right | 1/1 |
-| `llama-4-maverick` | Gusts up to 140 km/h. | right | 1/1 |
+| `gemma-4-31b-it` | Gusts up to 140 km/h. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Gusts up to 140 km/h. | right | 1/1 |
+| `llama-4-maverick` | Gusts up to 140 km/h. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Gusts up to 140 km/h. | right | 3/3 |
 | `deepseek-v4.1-flash` | Gusts up to 140 km/h. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 140 km/h. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Gusts up to 140 km/h. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Gusts up to 140 km/h. | right | 1/1 |
 | `mistral-large-4-0` | Gusts up to 140 km/h. | right | 1/1 |
-| `gpt-6-luna` | Gusts up to 140 km/h. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Gusts up to 140 km/h. | right | 1/1 |
-| `claude-haiku-5.5` | Gusts of wind up to 140 km/h. | right | 1/1 |
-| `gpt-6.1-terra` | Gusts up to 140 km/h. | right | 1/1 |
+| `gpt-6-luna` | Gusts up to 140 km/h. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Gusts up to 140 km/h. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Gusts up to 140 km/h. | right | 3/3 |
+| `claude-haiku-5.5` | Gusts of wind up to 140 km/h. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Gusts of wind up to 140 km/h. | right | 1/1 |
+| `gpt-6.1-terra` | Gusts up to 140 km/h. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Gusts up to 140 km/h. | right | 1/1 |
 
 ### t17
 
@@ -502,21 +589,26 @@ Scored against: `{"figures":["75"],"units":["km/h"]}`, from `incidents/2026-11-1
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Wind from the south quadrant with gusts up to 75 km/h. | right | 1/1 |
-| `gpt-oss-20b` | South quadrant wind with gusts up to 75 km/h. | right | 1/1 |
-| `ministral-8b-2512` | {"wind":{"direction":"south","gusts":{"max_speed":"75","unit":"km/h"}}} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | South wind with gusts up to 75 km/h. | right | 1/1 |
+| `gemma-3-4b-it` | Wind from the south quadrant with gusts up to 75 km/h. | right | 3/3 |
+| `gpt-oss-20b` | South quadrant wind with gusts up to 75 km/h. | right | 3/3 |
+| `ministral-8b-2512` | {"wind":{"direction":"south","gusts":{"max_speed":"75","unit":"km/h"}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | South wind with gusts up to 75 km/h. | right | 3/3 |
 | `qwen3.5-9b` | South winds with gusts up to 75 km/h. | right | 1/1 |
-| `gemma-4-31b-it` | South quadrant wind with gusts up to 75 km/h. | right | 1/1 |
-| `llama-4-maverick` | South quadrant wind with gusts up to 75 km/h. | right | 1/1 |
+| `gemma-4-31b-it` | South quadrant wind with gusts up to 75 km/h. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Southerly winds with gusts up to 75 km/h. | right | 1/1 |
+| `llama-4-maverick` | South quadrant wind with gusts up to 75 km/h. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | South quadrant wind with gusts up to 75 km/h. | right | 3/3 |
 | `deepseek-v4.1-flash` | Wind from the south quadrant with gusts up to 75 km/h. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Wind from the south quadrant with gusts up to 75 km/h. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Wind from the south quadrant with gusts up to 75 km/h. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Wind from the southern quadrant with gusts up to 75 km/h. | right | 1/1 |
 | `mistral-large-4-0` | Wind from the south with gusts up to 75 km/h. | right | 1/1 |
-| `gpt-6-luna` | Southerly winds with gusts up to 75 km/h. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Southern quadrant wind with gusts up to 75 km/h. | right | 1/1 |
-| `claude-haiku-5.5` | Wind from the south with gusts up to 75 km/h. | right | 1/1 |
-| `gpt-6.1-terra` | Wind from the south with gusts up to 75 km/h. | right | 1/1 |
+| `gpt-6-luna` | Southerly winds with gusts up to 75 km/h. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Southerly winds with gusts up to 75 km/h. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Southern quadrant wind with gusts up to 75 km/h. | right | 3/3 |
+| `claude-haiku-5.5` | Wind from the south with gusts up to 75 km/h. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Wind from the south quadrant with gusts up to 75 km/h. | right | 1/1 |
+| `gpt-6.1-terra` | Wind from the south with gusts up to 75 km/h. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Wind from the south, with gusts up to 75 km/h. | right | 1/1 |
 
 ### t18
 
@@ -528,21 +620,26 @@ Scored against: `{"figures":[],"units":[]}`, from `incidents/2026-11-10-storm-ch
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Showers, sometimes heavy | right | 1/1 |
-| `gpt-oss-20b` | Rain showers, sometimes heavy | right | 1/1 |
-| `ministral-8b-2512` | {"message":"Showers, sometimes heavy"} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Showers, sometimes heavy | right | 1/1 |
+| `gemma-3-4b-it` | Showers, sometimes heavy | right | 3/3 |
+| `gpt-oss-20b` | Rain showers, sometimes heavy | right | 3/3 |
+| `ministral-8b-2512` | {"message":"Showers, sometimes heavy"} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Showers, sometimes heavy | right | 3/3 |
 | `qwen3.5-9b` | Showers, sometimes heavy | right | 1/1 |
-| `gemma-4-31b-it` | Showers, sometimes heavy | right | 1/1 |
-| `llama-4-maverick` | Rain showers, at times heavy | right | 1/1 |
+| `gemma-4-31b-it` | Showers, sometimes heavy | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Showers, at times heavy | right | 1/1 |
+| `llama-4-maverick` | Rain showers, at times heavy | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Showers, sometimes heavy | right | 3/3 |
 | `deepseek-v4.1-flash` | Showers, sometimes heavy | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Showers, sometimes strong | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Showers, sometimes strong | right | 3/3 |
 | `qwen3.5-397b-a17b` | Showers, sometimes heavy | right | 1/1 |
 | `mistral-large-4-0` | Showers, sometimes heavy | right | 1/1 |
-| `gpt-6-luna` | Showers, sometimes heavy | right | 1/1 |
-| `gemini-3.5-flash-lite` | Showers, occasionally heavy | right | 1/1 |
-| `claude-haiku-5.5` | Showers, sometimes heavy | right | 1/1 |
-| `gpt-6.1-terra` | Showers, sometimes heavy | right | 1/1 |
+| `gpt-6-luna` | Showers, sometimes heavy | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Showers, sometimes heavy | right | 1/1 |
+| `gemini-3.5-flash-lite` | Showers, occasionally heavy | right | 3/3 |
+| `claude-haiku-5.5` | Showers, sometimes heavy | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Showers, sometimes heavy | right | 1/1 |
+| `gpt-6.1-terra` | Showers, sometimes heavy | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Showers, sometimes heavy | right | 1/1 |
 
 ### t19
 
@@ -554,21 +651,26 @@ Scored against: `{"figures":[],"units":[]}`, from `incidents/2026-11-10-storm-ch
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Rain, sometimes heavy and persistent. | right | 1/1 |
-| `gpt-oss-20b` | Rain, sometimes strong and persistent. | right | 1/1 |
-| `ministral-8b-2512` | {"weather":"Rain, sometimes heavy and persistent."} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Rain, sometimes heavy and persistent. | right | 1/1 |
+| `gemma-3-4b-it` | Rain, sometimes heavy and persistent. | right | 3/3 |
+| `gpt-oss-20b` | Rain, sometimes strong and persistent. | right | 3/3 |
+| `ministral-8b-2512` | {"weather":"Rain, sometimes heavy and persistent."} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Rain, sometimes heavy and persistent. | right | 3/3 |
 | `qwen3.5-9b` | Rain, sometimes heavy and persistent. | right | 1/1 |
-| `gemma-4-31b-it` | Rain, sometimes heavy and persistent. | right | 1/1 |
-| `llama-4-maverick` | Rain, at times heavy and persistent. | right | 1/1 |
+| `gemma-4-31b-it` | Rain, sometimes heavy and persistent. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Rain, at times heavy and persistent. | right | 1/1 |
+| `llama-4-maverick` | Rain, at times heavy and persistent. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Rain, sometimes heavy and persistent. | right | 3/3 |
 | `deepseek-v4.1-flash` | Rain, sometimes heavy and persistent. | right | 1/1 |
-| `qwen3.5-397b-a17b #reasoning-off` | Rain, at times heavy and persistent. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Rain, at times heavy and persistent. | right | 3/3 |
 | `qwen3.5-397b-a17b` |  | **cut off** | 0/1 |
 | `mistral-large-4-0` | Rain, at times heavy and persistent. | right | 1/1 |
-| `gpt-6-luna` | Rain, at times heavy and persistent. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Rain, at times heavy and persistent. | right | 1/1 |
-| `claude-haiku-5.5` | Rain, at times heavy and persistent. | right | 1/1 |
-| `gpt-6.1-terra` | Rain, sometimes heavy and persistent. | right | 1/1 |
+| `gpt-6-luna` | Rain, at times heavy and persistent. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Rain, at times heavy and persistent. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Rain, at times heavy and persistent. | right | 3/3 |
+| `claude-haiku-5.5` | Rain, at times heavy and persistent. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Rain, at times heavy and persistent. | right | 1/1 |
+| `gpt-6.1-terra` | Rain, sometimes heavy and persistent. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Rain, sometimes heavy and persistent. | right | 1/1 |
 
 ### t20
 
@@ -580,20 +682,26 @@ Scored against: `{"figures":[],"units":[]}`, from `incidents/2026-11-10-storm-ch
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
-| `gemma-3-4b-it` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
-| `gpt-oss-20b` | Periods of rain or showers, sometimes strong and accompanied by thunder. | right | 1/1 |
-| `ministral-8b-2512` | {"forecast":{"conditions":[{"type":"rain","intensity":["moderate","strong"],"additional":[{"phenomenon":"thunderstorm","description":"accompanied"}]}]}} | **wrong** (figures, units) | 0/1 |
-| `qwen3.5-9b #reasoning-off` | Periods of rain or showers, sometimes heavy and accompanied by thunder. | right | 1/1 |
+| `gemma-3-4b-it` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 3/3 |
+| `gpt-oss-20b` | Periods of rain or showers, sometimes strong and accompanied by thunder. | right | 3/3 |
+| `ministral-8b-2512` | {"forecast":{"conditions":[{"type":"rain","intensity":["moderate","strong"],"additional":[{"phenomenon":"thunderstorm","description":"accompanied"}]}]}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Periods of rain or showers, sometimes heavy and accompanied by thunder. | right | 3/3 |
 | `qwen3.5-9b` | Periods of rain or showers, sometimes heavy and accompanied by thunder. | right | 1/1 |
-| `gemma-4-31b-it` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
-| `llama-4-maverick` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorm. | right | 1/1 |
+| `gemma-4-31b-it` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
+| `llama-4-maverick` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorm. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 3/3 |
 | `deepseek-v4.1-flash` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorm. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 3/3 |
 | `qwen3.5-397b-a17b` | Periods of rain or showers, sometimes heavy and accompanied by thunder. | right | 1/1 |
 | `mistral-large-4-0` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
-| `gpt-6-luna` | Periods of rain or showers, sometimes heavy and accompanied by thunder. | right | 1/1 |
-| `gemini-3.5-flash-lite` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
-| `claude-haiku-5.5` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
-| `gpt-6.1-terra` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
+| `gpt-6-luna` | Periods of rain or showers, sometimes heavy and accompanied by thunder. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 3/3 |
+| `claude-haiku-5.5` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
+| `gpt-6.1-terra` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Periods of rain or showers, sometimes heavy and accompanied by thunderstorms. | right | 1/1 |
 
 ### p01
 
@@ -605,6 +713,26 @@ Scored against: `{"figures":["10","11","100","12","100","140","4","5"],"units":[
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | The Madeira archipelago will experience an worsening of the weather conditions between the end of today, October 10th, and the morning of October 11th. Persistent and sometimes heavy rain is expected, potentially accumulating more than 100 mm in 12 hours in some locations, especially in mountainous areas. The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in high altitudes. The marine agitation will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of the island of Madeira. | right | 3/3 |
+| `gpt-oss-20b` | The Madeira archipelago will experience worsening weather conditions between the end of today, the 10th, and the morning of the 11th. Persistent rain is expected, sometimes heavy, with accumulations exceeding 100 mm in 12 h in some places, especially in mountainous regions. Wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters along the southern coast of Madeira Island. | right | 2/3 |
+| `ministral-8b-2512` | {"region":"Madeira archipelago","timeframe":{"start":"end of today (10th)","end":"morning of 11th"},"weather":{"precipitation":{"type":"persistent and at times heavy rain","accumulation":{"possible":"yes","value":"greater than 100 mm in 12 h","location":"some areas, especially mountainous regions"}},"wind":{"direction":"southwest","speed":{"sustained":"increasing","gusts":"up to 100 km/h","high_terrain":"up to 140 km/h"}},"sea":{"condition":"increasing agitation","waves":{"direction":"southwest","height":"4 to 5 meters","location":"south coast of Madeira Island"}}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | The Madeira archipelago will experience worsening weather conditions between the end of today, day 10, and the morning of day 11. Persistent and sometimes heavy rain is expected, with accumulations exceeding 100 mm in 12 h in some areas, especially in mountainous regions. Wind intensity will increase, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in highlands. Sea state will also worsen during this period, with southwest waves of 4 to 5 m on the southern coast of Madeira island. | right | 3/3 |
+| `qwen3.5-9b` |  | **cut off** | 0/1 |
+| `gemma-4-31b-it` | The Madeira archipelago will experience worsening weather conditions between the end of today, the 10th, and the morning of the 11th. Persistent and sometimes heavy rain is forecast, with accumulations potentially exceeding 100 mm in 12 h in some locations, especially in mountainous regions. Wind intensity will increase, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in high lands. Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira island. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | The Madeira archipelago will experience worsening weather conditions between the end of today, the 10th, and the morning of the 11th. Persistent and sometimes heavy rain is forecast, with accumulations potentially exceeding 100 mm in 12 h in some locations, especially in mountainous regions. Wind intensity will increase, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in high lands. Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira island. | right | 1/1 |
+| `llama-4-maverick` | The Madeira archipelago will experience worsening weather between the end of today, the 10th, and the morning of the 11th. Persistent and sometimes heavy rain is forecast, possibly accumulating values above 100 mm in 12 h in some places, especially in mountainous regions. The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, possibly around 140 km/h in the highlands. Sea agitation will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira island. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | The Madeira archipelago will feel a worsening of the weather between the end of today, day 10, and the morning of day 11. Persistent and sometimes heavy rain is expected, which may accumulate more than 100 mm in 12 h in some places, especially in mountainous regions. The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, and may be around 140 km/h in the highlands. Sea agitation will also worsen during this period, with southwest waves of 4 to 5 metres on the south coast of the island of Madeira. | right | 3/3 |
+| `deepseek-v4.1-flash` | The Madeira archipelago will experience a worsening of the weather between the end of today, day 10, and the morning of day 11. Persistent and sometimes heavy rain is expected, and may accumulate more than 100 mm in 12 h in some places, especially in mountainous regions. The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, and may be around 140 km/h in the highlands. The sea will also become rougher during this period, with southwest waves of 4 to 5 metres on the south coast of the island of Madeira. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | The Madeira archipelago will experience a worsening of weather conditions between the end of today, day 10, and the morning of day 11. Persistent and sometimes heavy rain is forecast, with accumulations exceeding 100 mm in 12 h in some locations, especially in mountainous regions. Wind intensity will increase, blowing from the southwest with gusts up to 100 km/h, potentially reaching 140 km/h in highlands. Sea conditions will also worsen during this period, with southwest waves of 4 to 5 meters on the south coast of Madeira Island. | right | 3/3 |
+| `qwen3.5-397b-a17b` |  | **cut off** | 0/1 |
+| `mistral-large-4-0` |  | **cut off** | 0/1 |
+| `gpt-6-luna` | The Madeira archipelago will experience worsening weather between the end of today, the 10th, and the morning of the 11th. Persistent and at times heavy rain is forecast, with accumulations possibly exceeding 100 mm in 12 h in some places, especially in mountainous areas. The wind will strengthen, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. Sea conditions will also worsen during this period, with southwesterly waves of 4 to 5 meters along the south coast of Madeira island. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | The Madeira archipelago will experience worsening weather between the end of the day today, the 10th, and the morning of the 11th. Persistent and at times heavy rain is forecast, with totals possibly exceeding 100 mm in 12 h in some areas, especially in mountainous regions. The wind will strengthen, blowing from the southwest with gusts up to 100 km/h, possibly reaching around 140 km/h in high ground. Sea conditions will also worsen during this period, with southwesterly waves of 4 to 5 metres along the south coast of Madeira Island. | right | 1/1 |
+| `gemini-3.5-flash-lite` | The Madeira archipelago will experience deteriorating weather conditions between late today, the 10th, and the morning of the 11th. Persistent and sometimes heavy rain is forecast, which may accumulate values exceeding 100 mm in 12 h in some places, especially in mountainous regions. The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, and may reach around 140 km/h in the highlands. Rough seas will also worsen during this period, with southwest waves of 4 to 5 meters on the southern coast of Madeira Island. | right | 3/3 |
+| `claude-haiku-5.5` | The Madeira archipelago will experience a worsening of the weather between the end of today, the 10th, and the morning of the 11th. Persistent and at times heavy rain is expected, with accumulations exceeding 100 mm in 12 h in some locations, especially in mountainous regions. The wind will increase in intensity, blowing from the southwest with gusts up to 100 km/h, and may reach around 140 km/h in the highlands. Sea agitation will also worsen during this period, with southwest swells of 4 to 5 metres on the south coast of Madeira island. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | The Madeira archipelago will experience a worsening of the weather between the end of today, the 10th, and the morning of the 11th. Persistent and at times heavy rain is forecast, with accumulations exceeding 100 mm in 12 h possible in some places, especially in mountainous regions. The wind will increase in strength, blowing from the southwest with gusts up to 100 km/h, possibly around 140 km/h in the highlands. Sea swell will also worsen during this period, with southwest waves of 4 to 5 metres on the south coast of Madeira island. | right | 1/1 |
+| `gpt-6.1-terra` | The weather in the Madeira archipelago will worsen between late today, the 10th, and the morning of the 11th. Persistent and sometimes heavy rain is expected, with more than 100 mm in 12 h possible in some places, especially in mountainous areas. Winds will strengthen from the southwest, with gusts of up to 100 km/h and around 140 km/h in the highlands. Sea conditions will also worsen during this period, with southwest waves of 4 to 5 metres on the south coast of Madeira island. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | The weather in the Madeira archipelago will worsen between the end of today, the 10th, and the morning of the 11th. Persistent rain, heavy at times, is expected, with more than 100 mm possible in 12 h in some places, especially in mountainous areas. Winds will strengthen from the southwest, with gusts up to 100 km/h, possibly reaching around 140 km/h in the highlands. Sea conditions will also worsen during this period, with waves from the southwest reaching 4 to 5 metres on the south coast of Madeira island. | right | 1/1 |
 
 ### p02
 
@@ -616,6 +744,26 @@ Scored against: `{"figures":["100","120","140","100","24","5","7","11","13","4",
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | Based on current data, the center of the depression is most likely to pass between Sines and Cabo Carvoeiro. The wind will initially blow from the south quadrant and rotate to the north quadrant. Along the southern edge of the depression, gusts will be in the range of 100 to 120 km/h, potentially reaching up to 140 km/h locally. Precipitation will be sometimes strong across the territory, with accumulations potentially exceeding 100 mm in 24 hours in some locations. Waves from the southwest with 5 to 7 meters in height are expected south of Cabo Raso during the afternoon of day 11 and may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 3/3 |
+| `gpt-oss-20b` | With the data available at the moment, the most likely scenario is that the centre of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south quadrant and turning to the north quadrant, and that on the southern edge of the depression the gusts will be in the order of 100 to 120 km/h, possibly locally up to 140 km/h. Precipitation will be strong at times across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. It is also forecast that southwest waves of 5 to 7 meters will be present south of Cabo Raso during the afternoon of day 11 and may reach a maximum height of 13 meters, decreasing to 4 to 5 meters | right | 3/3 |
+| `ministral-8b-2512` | {"current_data":{"depression_path":{"most_probable":{"location":"between Sines and Cabo Carvoeiro"}},"wind":{"initial_direction":"south","direction_change":"north","gusts":{"south_edge":{"range":"100 to 120 km/h","local_max":"up to 140 km/h"}}},"precipitation":{"intensity":"sometimes strong","area":"nationwide","accumulation":{"possible":"over 100 mm in 24h","locations":"some areas"}},"waves":{"direction":"southwest","height":{"south_of_Cabo_Raso":{"afternoon_of_day_11":"5 to 7 m","max_height":"up to 13 m","early_night":"4 to 5 m"}}}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | With currently available data, the highest probability is for the center of the depression to pass between Sines and Cabo Carvoeiro, with wind initially blowing from the south quadrant and rotating to the north quadrant, with gusts on the southern edge of the depression reaching 100 to 120 km/h, possibly locally up to 140 km/h. Precipitation will be strong in parts across the territory, with accumulations that may exceed 100 mm in 24h in some areas. Southwest waves of 5 to 7 meters are also expected south of Cabo Raso during the afternoon of day 11, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters at the beginning of the night. | right | 3/3 |
+| `qwen3.5-9b` |  | **cut off** | 0/1 |
+| `gemma-4-31b-it` | Based on current data, the center of the depression is most likely to pass between Sines and Cabo Carvoeiro, with winds initially blowing from the south and rotating to the north; on the southern edge of the depression, gusts will be around 100 to 120 km/h, potentially reaching 140 km/h locally. Precipitation will be occasionally strong across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11, which could reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Based on currently available data, the most likely scenario is that the center of the depression will pass between Sines and Cabo Carvoeiro, with winds initially blowing from the south quadrant and rotating to the north quadrant, with gusts on the southern edge of the depression around 100 to 120 km/h, potentially reaching up to 140 km/h locally. Precipitation will be occasionally heavy across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of the 11th, which could reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 1/1 |
+| `llama-4-maverick` | With the currently available data, the highest probability is that the depression's center will pass between Sines and Cabo Carvoeiro, with winds initially blowing from the southern quadrant and rotating to the northern quadrant, with gusts on the southern edge of the depression being around 100 to 120 km/h, potentially reaching 140 km/h locally. Precipitation will be occasionally heavy across most of the territory, with totals potentially exceeding 100 mm in 24h in some areas. Southwest waves are expected, measuring 5 to 7 meters south of Cabo Raso during the afternoon of the 11th, potentially reaching a maximum height of 13 meters, decreasing to 4 to 5 meters by the start of the night. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | With the data currently available, the most likely scenario is that the centre of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south and veering to the north, and on the southern edge of the depression gusts will be in the order of 100 to 120 km/h, possibly locally up to 140 km/h. Precipitation will at times be heavy across the whole territory, with accumulations that may exceed 100 mm in 24h in some places. Southwest waves of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of day 11 and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres early in the evening. | right | 3/3 |
+| `deepseek-v4.1-flash` | With the data available at the moment, the highest probability is that the centre of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south quadrant and veering to the north quadrant, and on the southern edge of the depression gusts will be in the order of 100 to 120 km/h, and can locally reach up to 140 km/h. Rainfall will be sometimes heavy across most of the territory, with accumulations that may be greater than 100 mm in 24h in some places. Southwest waves of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of day 11 and may reach a maximum height of 13 metres, decreasing to 4 to 5 metres early in the night. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | With the data available at the moment, the highest probability is for the center of the depression to pass between Sines and Cabo Carvoeiro, with wind initially blowing from the south quadrant and shifting to the north quadrant, with gusts on the southern edge of the depression reaching 100 to 120 km/h, possibly locally up to 140 km/h. Precipitation will be at times heavy across most of the territory, with accumulations that may exceed 100 mm in 24h in some locations. Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 3/3 |
+| `qwen3.5-397b-a17b` | With the data available at the moment, the highest probability will be for the center of the depression to pass between Sines and Cabo Carvoeiro, with the wind blowing initially from the south quadrant and rotating to the north quadrant, with gusts on the south edge of the depression being of the order of 100 to 120 km/h, possibly locally up to 140 km/h. Precipitation will be at times heavy across most of the territory, with accumulations that may be greater than 100 mm in 24h in some locations. Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11 and which may reach 13 meters of maximum height, decreasing to 4 to 5 meters at the beginning of t | right | 1/1 |
+| `mistral-large-4-0` |  | **cut off** | 0/1 |
+| `gpt-6-luna` | Based on the data currently available, the depression is most likely to pass between Sines and Cape Carvoeiro, with the wind initially blowing from the south and turning to the north. On the southern edge of the depression, gusts will be around 100 to 120 km/h, locally reaching up to 140 km/h. Rainfall will be heavy at times across most of the country, with totals that could exceed 100 mm in 24h in some places. Southwesterly waves of 5 to 7 metres are also forecast south of Cape Raso during the afternoon of day 11, potentially reaching a maximum height of 13 metres, decreasing to 4 to 5 metres in the early evening. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Based on the data currently available, the depression is most likely to pass between Sines and Cape Carvoeiro, with the wind initially blowing from the southern quadrant and turning to the northern quadrant. On the southern edge of the depression, gusts will be around 100 to 120 km/h, locally reaching up to 140 km/h. Rainfall will at times be heavy across most of the territory, with totals that may exceed 100 mm in 24h in some places. Southwesterly waves of 5 to 7 meters are also forecast south of Cape Raso during the afternoon of day 11, and may reach a maximum height of 13 meters, decreasing to 4 to 5 meters in the early evening. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Based on current data, the highest probability is that the center of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the southern quadrant and shifting to the northern quadrant, and on the southern edge of the depression gusts will be around 100 to 120 km/h, locally reaching up to 140 km/h. Precipitation will be heavy at times across the entire territory, with accumulations that may exceed 100 mm in 24h in some locations. Southwest waves of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of the 11th, which may reach a maximum height of 13 meters, decreasing to 4 to 5 meters by early evening. | right | 3/3 |
+| `claude-haiku-5.5` | Based on the data available at the moment, the most likely scenario is that the center of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south quadrant and then rotating to the north quadrant. On the southern edge of the depression, gusts will be around 100 to 120 km/h, locally reaching up to 140 km/h. Precipitation will at times be heavy across most of the territory, with accumulations that could exceed 100 mm in 24 hours in some places. Southwest swells of 5 to 7 meters are also forecast south of Cabo Raso during the afternoon of day 11, which could reach a maximum height of 13 meters, decreasing to 4 to 5 meters early in the evening. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | With the data currently available, the most likely scenario is that the centre of the depression will pass between Sines and Cabo Carvoeiro, with the wind initially blowing from the south quadrant and veering to the north quadrant. On the southern edge of the depression, gusts will be around 100 to 120 km/h, locally reaching up to 140 km/h. Precipitation will at times be heavy across most of the territory, with accumulations that could exceed 100 mm in 24 h in some places. Southwesterly swells of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of the 11th, possibly reaching a maximum height of 13 metres, decreasing to 4 to 5 metres early in the evening. | right | 1/1 |
+| `gpt-6.1-terra` | Based on the information currently available, the centre of the low-pressure system is most likely to pass between Sines and Cabo Carvoeiro, with winds initially blowing from the south and shifting to the north. On the southern edge of the system, gusts will be around 100 to 120 km/h, potentially reaching 140 km/h locally. Rainfall will be heavy at times across most of the territory, with totals possibly exceeding 100 mm in 24h in some places. Southwest waves of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of the 11th. These could reach a maximum height of 13 metres, before decreasing to 4 to 5 metres in the early evening. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Based on the information currently available, the centre of the depression is most likely to pass between Sines and Cabo Carvoeiro. Winds will initially blow from the south, then shift to the north. On the southern side of the depression, gusts will be around 100 to 120 km/h, locally reaching 140 km/h. Rain will be heavy at times across most of the territory, with totals potentially exceeding 100 mm in 24h in some places. Southwest waves of 5 to 7 metres are also forecast south of Cabo Raso during the afternoon of the 11th, potentially reaching a maximum height of 13 metres, before decreasing to 4 to 5 metres in the early evening. | right | 1/1 |
 
 ### p03
 
@@ -627,3 +775,23 @@ Scored against: `{"figures":["8","90","6"],"units":["km/h","metre"]}`, from `inc
 
 | Model | Answer (first run) | Result | Right in runs |
 |---|---|---|---|
+| `gemma-3-4b-it` | It is forecast that depression BRUNA will cause a significant increase in wind intensity starting from Sunday morning, day 8, with gusts that could reach 90 km/h in all groups of the Azores archipelago. It is also forecast an increase in marine agitation, in the islands of the Central and Eastern groups, with northwest waves that could reach a significant height of 6 meters. | right | 3/3 |
+| `gpt-oss-20b` | It is forecast that depression BRUNA will cause a significant increase in wind intensity starting from the early hours of Sunday, the 8th, with gusts that may reach 90 km/h in all groups of the archipelago. It is also forecast that there will be an increase in sea agitation in the islands of the Central and Eastern groups, with northwest waves that may reach 6 meters in significant height. | right | 3/3 |
+| `ministral-8b-2512` | {"forecast":{"depression":"BRUNA","wind":{"start":"Sunday morning, 8th","increase":"significant","gusts":{"max":"90","unit":"km/h","affected_areas":"all Groups of the Archipelago"}},"sea_state":{"increase":"significant","affected_islands":["Central Group","Eastern Group"],"waves":{"direction":"northwest","max_height":{"value":"6","unit":"m","type":"significant"}}}}} | **wrong** (figures, units) | 0/3 |
+| `qwen3.5-9b #reasoning-off` | Depression BRUNA is expected to cause a significant increase in wind intensity from early Sunday morning, day 8, with gusts that may reach 90 km/h in all Groups of the Archipelago. A maritime state increase is also expected in the Central and Eastern Groups islands, with northwesterly waves that may reach 6 meters significant wave height. | right | 3/3 |
+| `qwen3.5-9b` | Depression BRUNA is expected to cause a significant increase in wind intensity from early Sunday morning, day 8, with gusts that may reach 90 km/h in all Groups of the Archipelago. A maritime state increase is also expected in the Central and Eastern Groups islands, with northwesterly waves that may reach 6 meters significant wave height. | right | 1/1 |
+| `gemma-4-31b-it` | Depression BRUNA is expected to cause a significant increase in wind intensity starting from the early hours of Sunday, day 8, with gusts that could reach 90 km/h in all Groups of the Archipelago. An increase in sea agitation is also forecast for the islands of the Central and Eastern Groups, with northwest waves that could reach 6 meters in significant height. | right | 3/3 |
+| `gemma-4-31b-it #reasoning-on` | Depression BRUNA is expected to cause a significant increase in wind intensity starting from the early hours of Sunday, the 8th, with gusts that could reach 90 km/h in all groups of the archipelago. An increase in sea agitation is also expected in the islands of the Central and Eastern Groups, with northwest waves that could reach 6 meters in significant height. | right | 1/1 |
+| `llama-4-maverick` | It is expected that depression BRUNA will cause a significant increase in wind intensity from Sunday, 8, early morning, with gusts that may reach 90 km/h in all Groups of the Archipelago. An increase in sea agitation is also expected, in the islands of the Central and Eastern Groups, with northwest waves that may reach 6 meters of significant height. | right | 3/3 |
+| `deepseek-v4.1-flash #reasoning-off` | Depression BRUNA is expected to cause a significant increase in wind intensity from the early hours of Sunday, day 8, with gusts that may reach 90 km/h in all Groups of the Archipelago. An increase in sea agitation is also expected, on the islands of the Central and Eastern Groups, with northwest waves that may reach 6 meters of significant height. | right | 3/3 |
+| `deepseek-v4.1-flash` | Depression BRUNA is expected to cause a significant increase in wind intensity from the early hours of Sunday, day 8, with gusts that may reach 90 km/h in all Groups of the Archipelago. An increase in sea agitation is also expected, on the islands of the Central and Eastern Groups, with northwest waves that may reach 6 metres of significant height. | right | 1/1 |
+| `qwen3.5-397b-a17b #reasoning-off` | Depression BRUNA is expected to cause a significant increase in wind intensity from the early hours of Sunday, day 8, with gusts that may reach 90 km/h in all Groups of the Archipelago. An increase in sea agitation is also expected in the islands of the Central and Eastern Groups, with northwest waves that may reach 6 meters of significant height. | right | 3/3 |
+| `qwen3.5-397b-a17b` | It is forecast that depression BRUNA will cause a significant increase in wind intensity from the early hours of Sunday, day 8, with gusts that may reach 90 km/h in all Groups of the Archipelago. An increase in sea agitation is also forecast, in the islands of the Central and Eastern Groups, with northwest waves that may reach 6 meters of significant height. | right | 1/1 |
+| `mistral-large-4-0` | It is forecast that depression BRUNA will cause a significant increase in wind intensity from early Sunday morning, day 8, with gusts that may reach 90 km/h in all Groups of the Archipelago. An increase in sea agitation is also forecast in the islands of the Central and Eastern Groups, with northwest waves that may reach 6 meters of significant height. | right | 1/1 |
+| `gpt-6-luna` | Depression BRUNA is expected to cause a significant increase in wind strength from the early hours of Sunday, the 8th, with gusts that may reach 90 km/h across all island groups of the Archipelago. Sea conditions are also expected to worsen around the islands of the Central and Eastern Groups, with northwesterly waves that may reach a significant height of 6 meters. | right | 3/3 |
+| `gpt-6-luna #reasoning-on` | Depression BRUNA is expected to cause a significant increase in wind strength from the early hours of Sunday, the 8th, with gusts reaching 90 km/h across all island groups of the archipelago. Sea conditions are also expected to worsen around the islands of the Central and Eastern Groups, with northwesterly waves reaching a significant height of 6 metres. | right | 1/1 |
+| `gemini-3.5-flash-lite` | Depression BRUNA is expected to cause a significant increase in wind intensity starting from the early hours of Sunday, the 8th, with gusts that may reach 90 km/h across all Groups of the Archipelago. An increase in sea state is also expected in the islands of the Central and Oriental Groups, with northwest waves that may reach 6 meters in significant height. | right | 3/3 |
+| `claude-haiku-5.5` | The BRUNA depression is expected to cause a significant increase in wind intensity from early Sunday morning, the 8th, with gusts that could reach 90 km/h in all the Groups of the Archipelago. An increase in sea agitation is also expected in the islands of the Central and Eastern Groups, with northwest swells that could reach 6 metres of significant wave height. | right | 3/3 |
+| `claude-haiku-5.5 #reasoning-on` | The BRUNA depression is expected to cause a significant increase in wind intensity from the early hours of Sunday, the 8th, with gusts that could reach 90 km/h in all Groups of the Archipelago. An increase in sea agitation is also expected in the islands of the Central and Eastern Groups, with northwest waves that could reach 6 metres in significant height. | right | 1/1 |
+| `gpt-6.1-terra` | The BRUNA low-pressure system is expected to cause a significant increase in wind strength from the early hours of Sunday the 8th, with gusts reaching 90 km/h across all island groups in the archipelago. Sea conditions are also expected to worsen in the Central and Eastern island groups, with northwesterly waves reaching a significant height of 6 metres. | right | 3/3 |
+| `gpt-6.1-terra #reasoning-on` | Depression BRUNA is expected to cause a significant increase in wind strength from the early hours of Sunday 8, with gusts reaching 90 km/h in all groups of the archipelago. Rougher seas are also expected around the islands of the Central and Eastern Groups, with northwesterly waves reaching a significant height of 6 meters. | right | 1/1 |

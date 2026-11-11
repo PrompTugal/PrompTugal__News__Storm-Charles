@@ -1,7 +1,7 @@
 {
  "about": "Other models, measured: checkable tasks run on several models through tools/llm.mjs (OpenRouter), scored automatically against answers copied from this site's own data room. A row is a model at one reasoning setting. right / asked count RUNS: each item is asked up to three times of a row (repeats in models/evals/models.json), so asked = items x runs. run_right lists the items right in run 1, 2, 3: their spread is the only error bar here. Small samples: read the counts.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T03:06:05Z",
+ "updated": "2026-11-11T22:50:40Z",
  "models": [
   {
    "id": "google/gemma-3-4b-it",
@@ -297,55 +297,59 @@
    "items_file": "models/evals/warnings-in-force/items.json",
    "results_dir": "models/evals/warnings-in-force/results/",
    "page": "models/warnings-in-force.md",
-   "run_utc": "2026-11-11T02:56:43Z",
+   "run_utc": "2026-11-11T22:42:55Z",
    "models": {
     "google/gemma-3-4b-it": {
-     "items": 4,
-     "asked": 11,
+     "items": 13,
+     "asked": 39,
      "right": 0,
      "accuracy": 0,
      "run_right": [
+      0,
+      0,
       0
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
       "in_force": 0
      },
-     "answered": 11,
+     "answered": 38,
      "malformed": 0,
-     "cut_off": 0,
+     "cut_off": 1,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001942,
-     "cost_per_item_usd": 0.0001766,
-     "latency_ms_median": 13670,
-     "latency_ms_p90": 23302,
-     "tokens_in": 35294,
-     "tokens_out": 6566
+     "cost_usd": 0.008794,
+     "cost_per_item_usd": 0.0002255,
+     "latency_ms_median": 11096,
+     "latency_ms_p90": 22538,
+     "tokens_in": 125062,
+     "tokens_out": 30890
     },
     "openai/gpt-oss-20b": {
-     "items": 3,
-     "asked": 8,
-     "right": 4,
-     "accuracy": 0.5,
+     "items": 13,
+     "asked": 39,
+     "right": 24,
+     "accuracy": 0.615,
      "run_right": [
-      2
+      9,
+      9,
+      6
      ],
-     "items_that_changed_between_runs": 3,
+     "items_that_changed_between_runs": 11,
      "by_field": {
-      "in_force": 2
+      "in_force": 9
      },
-     "answered": 4,
+     "answered": 25,
      "malformed": 0,
-     "cut_off": 4,
+     "cut_off": 14,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.004918,
-     "cost_per_item_usd": 0.0006147,
-     "latency_ms_median": 21914,
-     "latency_ms_p90": 36103,
-     "tokens_in": 20445,
-     "tokens_out": 26756
+     "cost_usd": 0.031531,
+     "cost_per_item_usd": 0.0008085,
+     "latency_ms_median": 5461,
+     "latency_ms_p90": 31365,
+     "tokens_in": 99879,
+     "tokens_out": 118833
     },
     "mistralai/ministral-8b-2512": {
      "items": 13,
@@ -374,32 +378,34 @@
      "tokens_out": 5815
     },
     "qwen/qwen3.5-9b#reasoning-off": {
-     "items": 10,
-     "asked": 28,
-     "right": 0,
-     "accuracy": 0,
+     "items": 13,
+     "asked": 39,
+     "right": 1,
+     "accuracy": 0.026,
      "run_right": [
+      0,
+      1,
       0
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 1,
      "by_field": {
       "in_force": 0
      },
-     "answered": 28,
+     "answered": 39,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.009128,
-     "cost_per_item_usd": 0.000326,
-     "latency_ms_median": 3240,
-     "latency_ms_p90": 8152,
-     "tokens_in": 89992,
-     "tokens_out": 5020
+     "cost_usd": 0.014359,
+     "cost_per_item_usd": 0.0003682,
+     "latency_ms_median": 3481,
+     "latency_ms_p90": 7918,
+     "tokens_in": 125346,
+     "tokens_out": 7313
     },
     "qwen/qwen3.5-9b": {
-     "items": 4,
-     "asked": 4,
+     "items": 13,
+     "asked": 13,
      "right": 0,
      "accuracy": 0,
      "run_right": [
@@ -409,17 +415,17 @@
      "by_field": {
       "in_force": 0
      },
-     "answered": 0,
+     "answered": 6,
      "malformed": 0,
-     "cut_off": 4,
+     "cut_off": 7,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.004693,
-     "cost_per_item_usd": 0.0011733,
-     "latency_ms_median": 34458,
-     "latency_ms_p90": 43536,
-     "tokens_in": 12848,
-     "tokens_out": 16000
+     "cost_usd": 0.011662,
+     "cost_per_item_usd": 0.0008971,
+     "latency_ms_median": 32258,
+     "latency_ms_p90": 49335,
+     "tokens_in": 41768,
+     "tokens_out": 29355
     },
     "google/gemma-4-31b-it": {
      "items": 13,
@@ -448,28 +454,28 @@
      "tokens_out": 3564
     },
     "google/gemma-4-31b-it#reasoning-on": {
-     "items": 10,
-     "asked": 10,
-     "right": 10,
+     "items": 13,
+     "asked": 13,
+     "right": 13,
      "accuracy": 1,
      "run_right": [
-      10
+      13
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "in_force": 10
+      "in_force": 13
      },
-     "answered": 10,
+     "answered": 13,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.013136,
-     "cost_per_item_usd": 0.0013136,
-     "latency_ms_median": 22657,
-     "latency_ms_p90": 36572,
-     "tokens_in": 32128,
-     "tokens_out": 20353
+     "cost_usd": 0.016926,
+     "cost_per_item_usd": 0.001302,
+     "latency_ms_median": 30670,
+     "latency_ms_p90": 106339,
+     "tokens_in": 41766,
+     "tokens_out": 26139
     },
     "meta-llama/llama-4-maverick": {
      "items": 13,
@@ -498,82 +504,86 @@
      "tokens_out": 3435
     },
     "deepseek/deepseek-v4.1-flash#reasoning-off": {
-     "items": 8,
-     "asked": 24,
-     "right": 16,
-     "accuracy": 0.667,
+     "items": 13,
+     "asked": 39,
+     "right": 31,
+     "accuracy": 0.795,
      "run_right": [
-      5
+      10,
+      11,
+      10
      ],
      "items_that_changed_between_runs": 1,
      "by_field": {
-      "in_force": 5
+      "in_force": 10
      },
-     "answered": 24,
+     "answered": 39,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.01056,
-     "cost_per_item_usd": 0.00044,
-     "latency_ms_median": 748,
-     "latency_ms_p90": 2497,
-     "tokens_in": 61729,
-     "tokens_out": 2649
+     "cost_usd": 0.016736,
+     "cost_per_item_usd": 0.0004291,
+     "latency_ms_median": 679,
+     "latency_ms_p90": 1559,
+     "tokens_in": 100295,
+     "tokens_out": 3297
     },
     "deepseek/deepseek-v4.1-flash": {
-     "items": 11,
-     "asked": 11,
-     "right": 11,
+     "items": 13,
+     "asked": 13,
+     "right": 13,
      "accuracy": 1,
      "run_right": [
-      11
+      13
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "in_force": 11
+      "in_force": 13
      },
-     "answered": 11,
+     "answered": 13,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.016381,
-     "cost_per_item_usd": 0.0014892,
-     "latency_ms_median": 7187,
+     "cost_usd": 0.019226,
+     "cost_per_item_usd": 0.0014789,
+     "latency_ms_median": 7098,
      "latency_ms_p90": 14160,
-     "tokens_in": 28556,
-     "tokens_out": 18028
+     "tokens_in": 33749,
+     "tokens_out": 20072
     },
-    "openai/gpt-6-luna": {
-     "items": 9,
-     "asked": 17,
-     "right": 15,
-     "accuracy": 0.882,
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "items": 13,
+     "asked": 39,
+     "right": 21,
+     "accuracy": 0.538,
      "run_right": [
-      8
+      8,
+      7,
+      6
      ],
-     "items_that_changed_between_runs": 1,
+     "items_that_changed_between_runs": 2,
      "by_field": {
       "in_force": 8
      },
-     "answered": 17,
+     "answered": 39,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.003119,
-     "cost_per_item_usd": 0.0001834,
-     "latency_ms_median": 2948,
-     "latency_ms_p90": 4036,
-     "tokens_in": 42551,
-     "tokens_out": 1990
+     "cost_usd": 0.093089,
+     "cost_per_item_usd": 0.0023869,
+     "latency_ms_median": 2287,
+     "latency_ms_p90": 3625,
+     "tokens_in": 125344,
+     "tokens_out": 9372
     },
-    "openai/gpt-6-luna#reasoning-on": {
-     "items": 5,
-     "asked": 5,
+    "qwen/qwen3.5-397b-a17b": {
+     "items": 13,
+     "asked": 13,
      "right": 5,
-     "accuracy": 1,
+     "accuracy": 0.385,
      "run_right": [
       5
      ],
@@ -583,63 +593,215 @@
      },
      "answered": 5,
      "malformed": 0,
+     "cut_off": 8,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.203091,
+     "cost_per_item_usd": 0.0156224,
+     "latency_ms_median": 30926,
+     "latency_ms_p90": 101067,
+     "tokens_in": 41756,
+     "tokens_out": 57155
+    },
+    "mistralai/mistral-large-4-0": {
+     "items": 13,
+     "asked": 13,
+     "right": 9,
+     "accuracy": 0.692,
+     "run_right": [
+      9
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "in_force": 9
+     },
+     "answered": 9,
+     "malformed": 0,
+     "cut_off": 4,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.127156,
+     "cost_per_item_usd": 0.0097812,
+     "latency_ms_median": 30502,
+     "latency_ms_p90": 44372,
+     "tokens_in": 32370,
+     "tokens_out": 47273
+    },
+    "openai/gpt-6-luna": {
+     "items": 13,
+     "asked": 39,
+     "right": 37,
+     "accuracy": 0.949,
+     "run_right": [
+      12,
+      12,
+      13
+     ],
+     "items_that_changed_between_runs": 1,
+     "by_field": {
+      "in_force": 12
+     },
+     "answered": 39,
+     "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001641,
-     "cost_per_item_usd": 0.0003283,
-     "latency_ms_median": 3427,
-     "latency_ms_p90": 4314,
-     "tokens_in": 12515,
-     "tokens_out": 763
+     "cost_usd": 0.007825,
+     "cost_per_item_usd": 0.0002006,
+     "latency_ms_median": 3068,
+     "latency_ms_p90": 4036,
+     "tokens_in": 97617,
+     "tokens_out": 4635
+    },
+    "openai/gpt-6-luna#reasoning-on": {
+     "items": 13,
+     "asked": 13,
+     "right": 12,
+     "accuracy": 0.923,
+     "run_right": [
+      12
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "in_force": 12
+     },
+     "answered": 13,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.002561,
+     "cost_per_item_usd": 0.000197,
+     "latency_ms_median": 3140,
+     "latency_ms_p90": 3849,
+     "tokens_in": 32539,
+     "tokens_out": 1641
+    },
+    "google/gemini-3.5-flash-lite": {
+     "items": 13,
+     "asked": 39,
+     "right": 20,
+     "accuracy": 0.513,
+     "run_right": [
+      7,
+      6,
+      7
+     ],
+     "items_that_changed_between_runs": 1,
+     "by_field": {
+      "in_force": 7
+     },
+     "answered": 39,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.044246,
+     "cost_per_item_usd": 0.0011345,
+     "latency_ms_median": 824,
+     "latency_ms_p90": 1021,
+     "tokens_in": 124644,
+     "tokens_out": 2920
     },
     "anthropic/claude-haiku-5.5": {
-     "items": 1,
-     "asked": 3,
-     "right": 3,
+     "items": 13,
+     "asked": 39,
+     "right": 39,
      "accuracy": 1,
      "run_right": [
-      1
+      13,
+      13,
+      13
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "in_force": 1
+      "in_force": 13
      },
-     "answered": 3,
+     "answered": 39,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001993,
-     "cost_per_item_usd": 0.0006645,
-     "latency_ms_median": 2891,
-     "latency_ms_p90": 3122,
-     "tokens_in": 9726,
-     "tokens_out": 2082
+     "cost_usd": 0.025269,
+     "cost_per_item_usd": 0.0006479,
+     "latency_ms_median": 3082,
+     "latency_ms_p90": 3512,
+     "tokens_in": 126438,
+     "tokens_out": 25761
     },
     "anthropic/claude-haiku-5.5#reasoning-on": {
-     "items": 1,
-     "asked": 1,
-     "right": 1,
+     "items": 13,
+     "asked": 13,
+     "right": 13,
      "accuracy": 1,
      "run_right": [
-      1
+      13
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "in_force": 1
+      "in_force": 13
      },
-     "answered": 1,
+     "answered": 13,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000637,
-     "cost_per_item_usd": 0.0006373,
-     "latency_ms_median": 3252,
-     "latency_ms_p90": 3252,
-     "tokens_in": 3242,
-     "tokens_out": 639
+     "cost_usd": 0.008502,
+     "cost_per_item_usd": 0.000654,
+     "latency_ms_median": 4010,
+     "latency_ms_p90": 4601,
+     "tokens_in": 42146,
+     "tokens_out": 8746
+    },
+    "openai/gpt-6.1-terra": {
+     "items": 13,
+     "asked": 39,
+     "right": 39,
+     "accuracy": 1,
+     "run_right": [
+      13,
+      13,
+      13
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "in_force": 13
+     },
+     "answered": 39,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.028727,
+     "cost_per_item_usd": 0.0007366,
+     "latency_ms_median": 1924,
+     "latency_ms_p90": 3055,
+     "tokens_in": 97617,
+     "tokens_out": 2405
+    },
+    "openai/gpt-6.1-terra#reasoning-on": {
+     "items": 13,
+     "asked": 13,
+     "right": 13,
+     "accuracy": 1,
+     "run_right": [
+      13
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "in_force": 13
+     },
+     "answered": 13,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.035708,
+     "cost_per_item_usd": 0.0027468,
+     "latency_ms_median": 1813,
+     "latency_ms_p90": 3381,
+     "tokens_in": 32539,
+     "tokens_out": 881
     }
    }
   },
@@ -655,14 +817,16 @@
    "items_file": "models/evals/extract-decision/items.json",
    "results_dir": "models/evals/extract-decision/results/",
    "page": "models/extract-decision.md",
-   "run_utc": "2026-11-11T02:56:53Z",
+   "run_utc": "2026-11-11T22:44:09Z",
    "models": {
     "google/gemma-3-4b-it": {
      "items": 10,
-     "asked": 10,
-     "right": 3,
+     "asked": 30,
+     "right": 9,
      "accuracy": 0.3,
      "run_right": [
+      3,
+      3,
       3
      ],
      "items_that_changed_between_runs": 0,
@@ -671,24 +835,26 @@
       "effect_from_utc": 5,
       "effect_to_utc": 5
      },
-     "answered": 10,
+     "answered": 30,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000319,
-     "cost_per_item_usd": 0.0000319,
-     "latency_ms_median": 2755,
-     "latency_ms_p90": 3936,
-     "tokens_in": 7305,
-     "tokens_out": 943
+     "cost_usd": 0.001241,
+     "cost_per_item_usd": 0.0000414,
+     "latency_ms_median": 2379,
+     "latency_ms_p90": 3690,
+     "tokens_in": 22367,
+     "tokens_out": 2729
     },
     "openai/gpt-oss-20b": {
      "items": 10,
-     "asked": 10,
-     "right": 9,
+     "asked": 30,
+     "right": 27,
      "accuracy": 0.9,
      "run_right": [
+      9,
+      9,
       9
      ],
      "items_that_changed_between_runs": 0,
@@ -697,69 +863,73 @@
       "effect_from_utc": 10,
       "effect_to_utc": 10
      },
-     "answered": 10,
+     "answered": 30,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001086,
-     "cost_per_item_usd": 0.0001086,
+     "cost_usd": 0.003515,
+     "cost_per_item_usd": 0.0001172,
      "latency_ms_median": 2266,
-     "latency_ms_p90": 14616,
-     "tokens_in": 7269,
-     "tokens_out": 3784
+     "latency_ms_p90": 12877,
+     "tokens_in": 22320,
+     "tokens_out": 11584
     },
     "mistralai/ministral-8b-2512": {
      "items": 10,
-     "asked": 10,
-     "right": 8,
+     "asked": 30,
+     "right": 24,
      "accuracy": 0.8,
      "run_right": [
+      8,
+      8,
       8
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 2,
      "by_field": {
       "decider": 10,
       "effect_from_utc": 8,
       "effect_to_utc": 9
      },
-     "answered": 10,
+     "answered": 30,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000782,
-     "cost_per_item_usd": 0.0000782,
-     "latency_ms_median": 916,
-     "latency_ms_p90": 1026,
-     "tokens_in": 7202,
-     "tokens_out": 743
+     "cost_usd": 0.002175,
+     "cost_per_item_usd": 0.0000725,
+     "latency_ms_median": 899,
+     "latency_ms_p90": 1581,
+     "tokens_in": 22106,
+     "tokens_out": 2222
     },
     "qwen/qwen3.5-9b#reasoning-off": {
      "items": 10,
-     "asked": 10,
-     "right": 6,
-     "accuracy": 0.6,
+     "asked": 30,
+     "right": 21,
+     "accuracy": 0.7,
      "run_right": [
-      6
+      6,
+      8,
+      7
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 2,
      "by_field": {
       "decider": 8,
       "effect_from_utc": 8,
       "effect_to_utc": 9
      },
-     "answered": 10,
+     "answered": 30,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000727,
-     "cost_per_item_usd": 0.0000727,
-     "latency_ms_median": 1563,
-     "latency_ms_p90": 12322,
-     "tokens_in": 7305,
-     "tokens_out": 656
+     "cost_usd": 0.00236,
+     "cost_per_item_usd": 0.0000787,
+     "latency_ms_median": 1705,
+     "latency_ms_p90": 4698,
+     "tokens_in": 22435,
+     "tokens_out": 1959
     },
     "qwen/qwen3.5-9b": {
      "items": 10,
@@ -789,10 +959,12 @@
     },
     "google/gemma-4-31b-it": {
      "items": 10,
-     "asked": 10,
-     "right": 10,
+     "asked": 30,
+     "right": 30,
      "accuracy": 1,
      "run_right": [
+      10,
+      10,
       10
      ],
      "items_that_changed_between_runs": 0,
@@ -801,19 +973,19 @@
       "effect_from_utc": 10,
       "effect_to_utc": 10
      },
-     "answered": 10,
+     "answered": 30,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000996,
-     "cost_per_item_usd": 0.0000996,
-     "latency_ms_median": 1067,
-     "latency_ms_p90": 1821,
-     "tokens_in": 7364,
-     "tokens_out": 712
+     "cost_usd": 0.003198,
+     "cost_per_item_usd": 0.0001066,
+     "latency_ms_median": 1271,
+     "latency_ms_p90": 3213,
+     "tokens_in": 22600,
+     "tokens_out": 2145
     },
-    "meta-llama/llama-4-maverick": {
+    "google/gemma-4-31b-it#reasoning-on": {
      "items": 10,
      "asked": 10,
      "right": 10,
@@ -832,12 +1004,68 @@
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.002069,
-     "cost_per_item_usd": 0.0002069,
-     "latency_ms_median": 911,
-     "latency_ms_p90": 1355,
-     "tokens_in": 6698,
-     "tokens_out": 477
+     "cost_usd": 0.002642,
+     "cost_per_item_usd": 0.0002642,
+     "latency_ms_median": 6160,
+     "latency_ms_p90": 14852,
+     "tokens_in": 7600,
+     "tokens_out": 3660
+    },
+    "meta-llama/llama-4-maverick": {
+     "items": 10,
+     "asked": 30,
+     "right": 30,
+     "accuracy": 1,
+     "run_right": [
+      10,
+      10,
+      10
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "decider": 10,
+      "effect_from_utc": 10,
+      "effect_to_utc": 10
+     },
+     "answered": 30,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.005946,
+     "cost_per_item_usd": 0.0001982,
+     "latency_ms_median": 954,
+     "latency_ms_p90": 1419,
+     "tokens_in": 20614,
+     "tokens_out": 1432
+    },
+    "deepseek/deepseek-v4.1-flash#reasoning-off": {
+     "items": 10,
+     "asked": 30,
+     "right": 30,
+     "accuracy": 1,
+     "run_right": [
+      10,
+      10,
+      10
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "decider": 10,
+      "effect_from_utc": 10,
+      "effect_to_utc": 10
+     },
+     "answered": 30,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.002596,
+     "cost_per_item_usd": 0.0000865,
+     "latency_ms_median": 577,
+     "latency_ms_p90": 1141,
+     "tokens_in": 21957,
+     "tokens_out": 1549
     },
     "deepseek/deepseek-v4.1-flash": {
      "items": 10,
@@ -867,10 +1095,12 @@
     },
     "qwen/qwen3.5-397b-a17b#reasoning-off": {
      "items": 10,
-     "asked": 10,
-     "right": 10,
+     "asked": 30,
+     "right": 30,
      "accuracy": 1,
      "run_right": [
+      10,
+      10,
       10
      ],
      "items_that_changed_between_runs": 0,
@@ -879,17 +1109,17 @@
       "effect_from_utc": 10,
       "effect_to_utc": 10
      },
-     "answered": 10,
+     "answered": 30,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.004433,
-     "cost_per_item_usd": 0.0004433,
-     "latency_ms_median": 1964,
+     "cost_usd": 0.016181,
+     "cost_per_item_usd": 0.0005394,
+     "latency_ms_median": 1863,
      "latency_ms_p90": 2582,
-     "tokens_in": 7305,
-     "tokens_out": 696
+     "tokens_in": 22435,
+     "tokens_out": 2064
     },
     "qwen/qwen3.5-397b-a17b": {
      "items": 10,
@@ -945,36 +1175,66 @@
     },
     "openai/gpt-6-luna": {
      "items": 10,
-     "asked": 10,
-     "right": 9,
-     "accuracy": 0.9,
+     "asked": 30,
+     "right": 28,
+     "accuracy": 0.933,
      "run_right": [
+      9,
+      10,
       9
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 1,
      "by_field": {
       "decider": 9,
       "effect_from_utc": 10,
       "effect_to_utc": 10
      },
+     "answered": 30,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.003784,
+     "cost_per_item_usd": 0.0001261,
+     "latency_ms_median": 2681,
+     "latency_ms_p90": 4305,
+     "tokens_in": 20582,
+     "tokens_out": 3528
+    },
+    "openai/gpt-6-luna#reasoning-on": {
+     "items": 10,
+     "asked": 10,
+     "right": 10,
+     "accuracy": 1,
+     "run_right": [
+      10
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "decider": 10,
+      "effect_from_utc": 10,
+      "effect_to_utc": 10
+     },
      "answered": 10,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001245,
-     "cost_per_item_usd": 0.0001245,
-     "latency_ms_median": 2606,
-     "latency_ms_p90": 4877,
-     "tokens_in": 6694,
-     "tokens_out": 1177
+     "cost_usd": 0.001317,
+     "cost_per_item_usd": 0.0001317,
+     "latency_ms_median": 3185,
+     "latency_ms_p90": 4079,
+     "tokens_in": 6944,
+     "tokens_out": 1271
     },
     "google/gemini-3.5-flash-lite": {
      "items": 10,
-     "asked": 10,
-     "right": 10,
+     "asked": 30,
+     "right": 30,
      "accuracy": 1,
      "run_right": [
+      10,
+      10,
       10
      ],
      "items_that_changed_between_runs": 0,
@@ -983,24 +1243,26 @@
       "effect_from_utc": 10,
       "effect_to_utc": 10
      },
-     "answered": 10,
+     "answered": 30,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.003576,
-     "cost_per_item_usd": 0.0003576,
-     "latency_ms_median": 767,
+     "cost_usd": 0.010923,
+     "cost_per_item_usd": 0.0003641,
+     "latency_ms_median": 795,
      "latency_ms_p90": 995,
-     "tokens_in": 7181,
-     "tokens_out": 583
+     "tokens_in": 22043,
+     "tokens_out": 1768
     },
     "anthropic/claude-haiku-5.5": {
      "items": 10,
-     "asked": 10,
-     "right": 10,
+     "asked": 30,
+     "right": 30,
      "accuracy": 1,
      "run_right": [
+      10,
+      10,
       10
      ],
      "items_that_changed_between_runs": 0,
@@ -1009,19 +1271,19 @@
       "effect_from_utc": 10,
       "effect_to_utc": 10
      },
-     "answered": 10,
+     "answered": 30,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.002241,
-     "cost_per_item_usd": 0.0002241,
-     "latency_ms_median": 1581,
-     "latency_ms_p90": 1827,
-     "tokens_in": 11223,
-     "tokens_out": 2282
+     "cost_usd": 0.007016,
+     "cost_per_item_usd": 0.0002339,
+     "latency_ms_median": 1576,
+     "latency_ms_p90": 2002,
+     "tokens_in": 34549,
+     "tokens_out": 7263
     },
-    "openai/gpt-6.1-terra": {
+    "anthropic/claude-haiku-5.5#reasoning-on": {
      "items": 10,
      "asked": 10,
      "right": 10,
@@ -1040,12 +1302,66 @@
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.009988,
-     "cost_per_item_usd": 0.0009988,
-     "latency_ms_median": 1924,
-     "latency_ms_p90": 2737,
-     "tokens_in": 6694,
-     "tokens_out": 679
+     "cost_usd": 0.002282,
+     "cost_per_item_usd": 0.0002282,
+     "latency_ms_median": 2218,
+     "latency_ms_p90": 3104,
+     "tokens_in": 11663,
+     "tokens_out": 2278
+    },
+    "openai/gpt-6.1-terra": {
+     "items": 10,
+     "asked": 30,
+     "right": 30,
+     "accuracy": 1,
+     "run_right": [
+      10,
+      10,
+      10
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "decider": 10,
+      "effect_from_utc": 10,
+      "effect_to_utc": 10
+     },
+     "answered": 30,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.030732,
+     "cost_per_item_usd": 0.0010244,
+     "latency_ms_median": 1914,
+     "latency_ms_p90": 2857,
+     "tokens_in": 20582,
+     "tokens_out": 2092
+    },
+    "openai/gpt-6.1-terra#reasoning-on": {
+     "items": 10,
+     "asked": 10,
+     "right": 10,
+     "accuracy": 1,
+     "run_right": [
+      10
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "decider": 10,
+      "effect_from_utc": 10,
+      "effect_to_utc": 10
+     },
+     "answered": 10,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.010483,
+     "cost_per_item_usd": 0.0010483,
+     "latency_ms_median": 1805,
+     "latency_ms_p90": 3414,
+     "tokens_in": 6944,
+     "tokens_out": 729
     }
    }
   },
@@ -1059,367 +1375,511 @@
    "items_file": "models/evals/label/items.json",
    "results_dir": "models/evals/label/results/",
    "page": "models/label.md",
-   "run_utc": "2026-11-11T02:57:15Z",
+   "run_utc": "2026-11-11T22:46:42Z",
    "models": {
     "google/gemma-3-4b-it": {
-     "items": 20,
-     "asked": 20,
-     "right": 8,
-     "accuracy": 0.4,
+     "items": 46,
+     "asked": 138,
+     "right": 70,
+     "accuracy": 0.507,
      "run_right": [
-      8
+      24,
+      23,
+      23
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 3,
      "by_field": {
-      "label": 8
+      "label": 24
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000239,
-     "cost_per_item_usd": 0.000012,
-     "latency_ms_median": 679,
-     "latency_ms_p90": 1091,
-     "tokens_in": 6080,
-     "tokens_out": 181
+     "cost_usd": 0.002117,
+     "cost_per_item_usd": 0.0000153,
+     "latency_ms_median": 473,
+     "latency_ms_p90": 947,
+     "tokens_in": 42198,
+     "tokens_out": 1126
     },
     "openai/gpt-oss-20b": {
-     "items": 20,
-     "asked": 20,
-     "right": 15,
-     "accuracy": 0.75,
+     "items": 46,
+     "asked": 138,
+     "right": 115,
+     "accuracy": 0.833,
      "run_right": [
-      15
+      38,
+      38,
+      39
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 4,
      "by_field": {
-      "label": 15
+      "label": 38
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001293,
-     "cost_per_item_usd": 0.0000647,
-     "latency_ms_median": 1781,
-     "latency_ms_p90": 5138,
-     "tokens_in": 6571,
-     "tokens_out": 5761
+     "cost_usd": 0.011102,
+     "cost_per_item_usd": 0.0000804,
+     "latency_ms_median": 1666,
+     "latency_ms_p90": 4617,
+     "tokens_in": 46370,
+     "tokens_out": 42897
     },
     "mistralai/ministral-8b-2512": {
-     "items": 20,
-     "asked": 20,
-     "right": 14,
-     "accuracy": 0.7,
+     "items": 46,
+     "asked": 138,
+     "right": 110,
+     "accuracy": 0.797,
      "run_right": [
-      14
+      37,
+      36,
+      37
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 3,
      "by_field": {
-      "label": 14
+      "label": 37
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000694,
-     "cost_per_item_usd": 0.0000347,
-     "latency_ms_median": 522,
-     "latency_ms_p90": 831,
-     "tokens_in": 5755,
-     "tokens_out": 439
+     "cost_usd": 0.004251,
+     "cost_per_item_usd": 0.0000308,
+     "latency_ms_median": 631,
+     "latency_ms_p90": 1228,
+     "tokens_in": 40129,
+     "tokens_out": 2241
     },
     "qwen/qwen3.5-9b#reasoning-off": {
-     "items": 20,
-     "asked": 20,
-     "right": 10,
-     "accuracy": 0.5,
+     "items": 46,
+     "asked": 138,
+     "right": 92,
+     "accuracy": 0.667,
      "run_right": [
-      10
+      28,
+      31,
+      33
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 11,
      "by_field": {
-      "label": 10
+      "label": 28
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000544,
-     "cost_per_item_usd": 0.0000272,
-     "latency_ms_median": 554,
-     "latency_ms_p90": 10744,
-     "tokens_in": 6022,
-     "tokens_out": 262
+     "cost_usd": 0.005054,
+     "cost_per_item_usd": 0.0000366,
+     "latency_ms_median": 658,
+     "latency_ms_p90": 1347,
+     "tokens_in": 41968,
+     "tokens_out": 1779
     },
     "qwen/qwen3.5-9b": {
-     "items": 20,
-     "asked": 20,
-     "right": 12,
-     "accuracy": 0.6,
+     "items": 46,
+     "asked": 46,
+     "right": 30,
+     "accuracy": 0.652,
      "run_right": [
-      12
+      30
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "label": 12
+      "label": 30
      },
-     "answered": 14,
+     "answered": 37,
      "malformed": 1,
-     "cut_off": 5,
+     "cut_off": 8,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.007982,
-     "cost_per_item_usd": 0.0003991,
-     "latency_ms_median": 26035,
-     "latency_ms_p90": 51206,
-     "tokens_in": 5661,
-     "tokens_out": 44719
+     "cost_usd": 0.01337,
+     "cost_per_item_usd": 0.0002907,
+     "latency_ms_median": 19020,
+     "latency_ms_p90": 47803,
+     "tokens_in": 13339,
+     "tokens_out": 78834
     },
     "google/gemma-4-31b-it": {
-     "items": 20,
-     "asked": 20,
-     "right": 17,
-     "accuracy": 0.85,
+     "items": 46,
+     "asked": 138,
+     "right": 120,
+     "accuracy": 0.87,
      "run_right": [
-      17
+      40,
+      40,
+      40
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 2,
      "by_field": {
-      "label": 17
+      "label": 40
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.00069,
-     "cost_per_item_usd": 0.0000345,
-     "latency_ms_median": 387,
-     "latency_ms_p90": 584,
-     "tokens_in": 6197,
-     "tokens_out": 140
+     "cost_usd": 0.004993,
+     "cost_per_item_usd": 0.0000362,
+     "latency_ms_median": 707,
+     "latency_ms_p90": 2281,
+     "tokens_in": 43347,
+     "tokens_out": 971
+    },
+    "google/gemma-4-31b-it#reasoning-on": {
+     "items": 46,
+     "asked": 46,
+     "right": 40,
+     "accuracy": 0.87,
+     "run_right": [
+      40
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "label": 40
+     },
+     "answered": 46,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.010155,
+     "cost_per_item_usd": 0.0002208,
+     "latency_ms_median": 7053,
+     "latency_ms_p90": 15540,
+     "tokens_in": 14505,
+     "tokens_out": 20314
     },
     "meta-llama/llama-4-maverick": {
-     "items": 20,
-     "asked": 20,
-     "right": 17,
-     "accuracy": 0.85,
+     "items": 46,
+     "asked": 138,
+     "right": 117,
+     "accuracy": 0.848,
      "run_right": [
-      17
+      40,
+      39,
+      38
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 2,
      "by_field": {
-      "label": 17
+      "label": 40
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001583,
-     "cost_per_item_usd": 0.0000792,
-     "latency_ms_median": 476,
-     "latency_ms_p90": 629,
-     "tokens_in": 5606,
-     "tokens_out": 144
+     "cost_usd": 0.009991,
+     "cost_per_item_usd": 0.0000724,
+     "latency_ms_median": 597,
+     "latency_ms_p90": 840,
+     "tokens_in": 39281,
+     "tokens_out": 980
+    },
+    "deepseek/deepseek-v4.1-flash#reasoning-off": {
+     "items": 46,
+     "asked": 138,
+     "right": 126,
+     "accuracy": 0.913,
+     "run_right": [
+      42,
+      41,
+      43
+     ],
+     "items_that_changed_between_runs": 2,
+     "by_field": {
+      "label": 42
+     },
+     "answered": 138,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.005287,
+     "cost_per_item_usd": 0.0000383,
+     "latency_ms_median": 424,
+     "latency_ms_p90": 893,
+     "tokens_in": 39105,
+     "tokens_out": 982
     },
     "deepseek/deepseek-v4.1-flash": {
-     "items": 20,
-     "asked": 20,
-     "right": 17,
-     "accuracy": 0.85,
+     "items": 46,
+     "asked": 46,
+     "right": 40,
+     "accuracy": 0.87,
      "run_right": [
-      17
+      40
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "label": 17
+      "label": 40
      },
-     "answered": 19,
+     "answered": 45,
      "malformed": 0,
      "cut_off": 1,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.015239,
-     "cost_per_item_usd": 0.000762,
-     "latency_ms_median": 2950,
-     "latency_ms_p90": 22846,
-     "tokens_in": 6024,
-     "tokens_out": 21189
+     "cost_usd": 0.028674,
+     "cost_per_item_usd": 0.0006234,
+     "latency_ms_median": 2345,
+     "latency_ms_p90": 15676,
+     "tokens_in": 13795,
+     "tokens_out": 40320
     },
     "qwen/qwen3.5-397b-a17b#reasoning-off": {
-     "items": 15,
-     "asked": 15,
-     "right": 12,
-     "accuracy": 0.8,
+     "items": 46,
+     "asked": 138,
+     "right": 121,
+     "accuracy": 0.877,
      "run_right": [
-      12
+      39,
+      41,
+      41
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 6,
      "by_field": {
-      "label": 12
+      "label": 39
      },
-     "answered": 15,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.002024,
-     "cost_per_item_usd": 0.0001349,
-     "latency_ms_median": 1100,
-     "latency_ms_p90": 1270,
-     "tokens_in": 4490,
-     "tokens_out": 114
+     "cost_usd": 0.03526,
+     "cost_per_item_usd": 0.0002555,
+     "latency_ms_median": 974,
+     "latency_ms_p90": 1359,
+     "tokens_in": 42054,
+     "tokens_out": 4651
     },
     "qwen/qwen3.5-397b-a17b": {
-     "items": 20,
-     "asked": 20,
-     "right": 16,
-     "accuracy": 0.8,
+     "items": 46,
+     "asked": 46,
+     "right": 40,
+     "accuracy": 0.87,
      "run_right": [
-      16
+      40
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "label": 16
+      "label": 40
      },
-     "answered": 18,
+     "answered": 44,
      "malformed": 1,
      "cut_off": 1,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.094289,
-     "cost_per_item_usd": 0.0047144,
-     "latency_ms_median": 11391,
-     "latency_ms_p90": 44783,
-     "tokens_in": 5742,
-     "tokens_out": 28708
+     "cost_usd": 0.208642,
+     "cost_per_item_usd": 0.0045357,
+     "latency_ms_median": 12540,
+     "latency_ms_p90": 42931,
+     "tokens_in": 13400,
+     "tokens_out": 63604
     },
     "mistralai/mistral-large-4-0": {
-     "items": 20,
-     "asked": 20,
-     "right": 17,
-     "accuracy": 0.85,
+     "items": 46,
+     "asked": 46,
+     "right": 39,
+     "accuracy": 0.848,
      "run_right": [
-      17
+      39
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "label": 17
+      "label": 39
      },
-     "answered": 19,
+     "answered": 45,
      "malformed": 0,
      "cut_off": 1,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.066614,
-     "cost_per_item_usd": 0.0033307,
-     "latency_ms_median": 5561,
-     "latency_ms_p90": 19187,
-     "tokens_in": 5743,
-     "tokens_out": 29211
+     "cost_usd": 0.137219,
+     "cost_per_item_usd": 0.002983,
+     "latency_ms_median": 7277,
+     "latency_ms_p90": 24844,
+     "tokens_in": 13153,
+     "tokens_out": 59174
     },
     "openai/gpt-6-luna": {
-     "items": 20,
-     "asked": 20,
-     "right": 16,
-     "accuracy": 0.8,
+     "items": 46,
+     "asked": 138,
+     "right": 115,
+     "accuracy": 0.833,
      "run_right": [
-      16
+      38,
+      39,
+      38
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 3,
      "by_field": {
-      "label": 16
+      "label": 38
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001486,
-     "cost_per_item_usd": 0.0000743,
-     "latency_ms_median": 2146,
-     "latency_ms_p90": 3958,
-     "tokens_in": 5486,
-     "tokens_out": 1904
+     "cost_usd": 0.009083,
+     "cost_per_item_usd": 0.0000658,
+     "latency_ms_median": 2467,
+     "latency_ms_p90": 3310,
+     "tokens_in": 38474,
+     "tokens_out": 10654
+    },
+    "openai/gpt-6-luna#reasoning-on": {
+     "items": 46,
+     "asked": 46,
+     "right": 39,
+     "accuracy": 0.848,
+     "run_right": [
+      39
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "label": 39
+     },
+     "answered": 46,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.003136,
+     "cost_per_item_usd": 0.0000682,
+     "latency_ms_median": 2430,
+     "latency_ms_p90": 3587,
+     "tokens_in": 12946,
+     "tokens_out": 3747
     },
     "google/gemini-3.5-flash-lite": {
-     "items": 20,
-     "asked": 20,
-     "right": 17,
-     "accuracy": 0.85,
+     "items": 46,
+     "asked": 138,
+     "right": 117,
+     "accuracy": 0.848,
      "run_right": [
-      17
+      39,
+      39,
+      39
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 4,
      "by_field": {
-      "label": 17
+      "label": 39
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.002029,
-     "cost_per_item_usd": 0.0001015,
-     "latency_ms_median": 696,
+     "cost_usd": 0.014182,
+     "cost_per_item_usd": 0.0001028,
+     "latency_ms_median": 658,
      "latency_ms_p90": 911,
-     "tokens_in": 5832,
-     "tokens_out": 120
+     "tokens_in": 40766,
+     "tokens_out": 838
     },
     "anthropic/claude-haiku-5.5": {
-     "items": 20,
-     "asked": 20,
-     "right": 15,
-     "accuracy": 0.75,
+     "items": 46,
+     "asked": 138,
+     "right": 114,
+     "accuracy": 0.826,
      "run_right": [
-      15
+      37,
+      39,
+      38
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 2,
      "by_field": {
-      "label": 15
+      "label": 37
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.002141,
-     "cost_per_item_usd": 0.000107,
-     "latency_ms_median": 1031,
+     "cost_usd": 0.014121,
+     "cost_per_item_usd": 0.0001023,
+     "latency_ms_median": 878,
      "latency_ms_p90": 2242,
-     "tokens_in": 7873,
-     "tokens_out": 2750
+     "tokens_in": 55329,
+     "tokens_out": 17461
+    },
+    "anthropic/claude-haiku-5.5#reasoning-on": {
+     "items": 46,
+     "asked": 46,
+     "right": 39,
+     "accuracy": 0.848,
+     "run_right": [
+      39
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "label": 39
+     },
+     "answered": 46,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.005093,
+     "cost_per_item_usd": 0.0001107,
+     "latency_ms_median": 792,
+     "latency_ms_p90": 3311,
+     "tokens_in": 18614,
+     "tokens_out": 6566
     },
     "openai/gpt-6.1-terra": {
-     "items": 20,
-     "asked": 20,
-     "right": 16,
-     "accuracy": 0.8,
+     "items": 46,
+     "asked": 138,
+     "right": 119,
+     "accuracy": 0.862,
      "run_right": [
-      16
+      38,
+      39,
+      42
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 4,
      "by_field": {
-      "label": 16
+      "label": 38
      },
-     "answered": 20,
+     "answered": 138,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.01497,
-     "cost_per_item_usd": 0.0007485,
-     "latency_ms_median": 2800,
-     "latency_ms_p90": 4773,
-     "tokens_in": 5486,
-     "tokens_out": 1927
+     "cost_usd": 0.086268,
+     "cost_per_item_usd": 0.0006251,
+     "latency_ms_median": 2472,
+     "latency_ms_p90": 4487,
+     "tokens_in": 38474,
+     "tokens_out": 9733
+    },
+    "openai/gpt-6.1-terra#reasoning-on": {
+     "items": 46,
+     "asked": 46,
+     "right": 40,
+     "accuracy": 0.87,
+     "run_right": [
+      40
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "label": 40
+     },
+     "answered": 46,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.028473,
+     "cost_per_item_usd": 0.000619,
+     "latency_ms_median": 2394,
+     "latency_ms_p90": 5305,
+     "tokens_in": 12946,
+     "tokens_out": 3163
     }
    }
   },
@@ -1434,64 +1894,70 @@
    "items_file": "models/evals/translate/items.json",
    "results_dir": "models/evals/translate/results/",
    "page": "models/translate.md",
-   "run_utc": "2026-11-11T02:57:28Z",
+   "run_utc": "2026-11-11T22:48:21Z",
    "models": {
     "google/gemma-3-4b-it": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
+     "items": 23,
+     "asked": 69,
+     "right": 69,
      "accuracy": 1,
      "run_right": [
-      20
+      23,
+      23,
+      23
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "figures": 20,
-      "units": 20
+      "figures": 23,
+      "units": 23
      },
-     "answered": 20,
+     "answered": 69,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000104,
-     "cost_per_item_usd": 0.0000052,
-     "latency_ms_median": 1458,
-     "latency_ms_p90": 2934,
-     "tokens_in": 1853,
-     "tokens_out": 825
+     "cost_usd": 0.00065,
+     "cost_per_item_usd": 0.0000094,
+     "latency_ms_median": 1252,
+     "latency_ms_p90": 2961,
+     "tokens_in": 7255,
+     "tokens_out": 3668
     },
     "openai/gpt-oss-20b": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
-     "accuracy": 1,
+     "items": 23,
+     "asked": 69,
+     "right": 67,
+     "accuracy": 0.971,
      "run_right": [
-      20
+      23,
+      22,
+      22
      ],
-     "items_that_changed_between_runs": 0,
+     "items_that_changed_between_runs": 2,
      "by_field": {
-      "figures": 20,
-      "units": 20
+      "figures": 23,
+      "units": 23
      },
-     "answered": 20,
-     "malformed": 0,
-     "cut_off": 0,
+     "answered": 67,
+     "malformed": 1,
+     "cut_off": 1,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000958,
-     "cost_per_item_usd": 0.0000479,
-     "latency_ms_median": 1016,
-     "latency_ms_p90": 2621,
-     "tokens_in": 2846,
-     "tokens_out": 4044
+     "cost_usd": 0.005753,
+     "cost_per_item_usd": 0.0000834,
+     "latency_ms_median": 1525,
+     "latency_ms_p90": 3577,
+     "tokens_in": 10871,
+     "tokens_out": 23622
     },
     "mistralai/ministral-8b-2512": {
-     "items": 20,
-     "asked": 20,
+     "items": 23,
+     "asked": 69,
      "right": 0,
      "accuracy": 0,
      "run_right": [
+      0,
+      0,
       0
      ],
      "items_that_changed_between_runs": 0,
@@ -1499,173 +1965,50 @@
       "figures": 0,
       "units": 0
      },
-     "answered": 20,
+     "answered": 69,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000425,
-     "cost_per_item_usd": 0.0000212,
-     "latency_ms_median": 803,
-     "latency_ms_p90": 1612,
-     "tokens_in": 1667,
-     "tokens_out": 1089
+     "cost_usd": 0.001822,
+     "cost_per_item_usd": 0.0000264,
+     "latency_ms_median": 909,
+     "latency_ms_p90": 1988,
+     "tokens_in": 6813,
+     "tokens_out": 5249
     },
     "qwen/qwen3.5-9b#reasoning-off": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
+     "items": 23,
+     "asked": 69,
+     "right": 69,
      "accuracy": 1,
      "run_right": [
-      20
+      23,
+      23,
+      23
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "figures": 20,
-      "units": 20
+      "figures": 23,
+      "units": 23
      },
-     "answered": 20,
+     "answered": 69,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000229,
-     "cost_per_item_usd": 0.0000115,
-     "latency_ms_median": 704,
-     "latency_ms_p90": 1811,
-     "tokens_in": 1908,
-     "tokens_out": 608
+     "cost_usd": 0.00129,
+     "cost_per_item_usd": 0.0000187,
+     "latency_ms_median": 992,
+     "latency_ms_p90": 2422,
+     "tokens_in": 7599,
+     "tokens_out": 2982
     },
     "qwen/qwen3.5-9b": {
-     "items": 20,
-     "asked": 20,
-     "right": 15,
-     "accuracy": 0.75,
-     "run_right": [
-      15
-     ],
-     "items_that_changed_between_runs": 0,
-     "by_field": {
-      "figures": 15,
-      "units": 15
-     },
-     "answered": 15,
-     "malformed": 0,
-     "cut_off": 5,
-     "refused": 0,
-     "errors": 0,
-     "cost_usd": 0.007049,
-     "cost_per_item_usd": 0.0003525,
-     "latency_ms_median": 26333,
-     "latency_ms_p90": 49104,
-     "tokens_in": 1868,
-     "tokens_out": 46080
-    },
-    "google/gemma-4-31b-it": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
-     "accuracy": 1,
-     "run_right": [
-      20
-     ],
-     "items_that_changed_between_runs": 0,
-     "by_field": {
-      "figures": 20,
-      "units": 20
-     },
-     "answered": 20,
-     "malformed": 0,
-     "cut_off": 0,
-     "refused": 0,
-     "errors": 0,
-     "cost_usd": 0.000443,
-     "cost_per_item_usd": 0.0000222,
-     "latency_ms_median": 528,
-     "latency_ms_p90": 1151,
-     "tokens_in": 1946,
-     "tokens_out": 629
-    },
-    "meta-llama/llama-4-maverick": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
-     "accuracy": 1,
-     "run_right": [
-      20
-     ],
-     "items_that_changed_between_runs": 0,
-     "by_field": {
-      "figures": 20,
-      "units": 20
-     },
-     "answered": 20,
-     "malformed": 0,
-     "cut_off": 0,
-     "refused": 0,
-     "errors": 0,
-     "cost_usd": 0.001036,
-     "cost_per_item_usd": 0.0000518,
-     "latency_ms_median": 683,
-     "latency_ms_p90": 1326,
-     "tokens_in": 1801,
-     "tokens_out": 563
-    },
-    "deepseek/deepseek-v4.1-flash": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
-     "accuracy": 1,
-     "run_right": [
-      20
-     ],
-     "items_that_changed_between_runs": 0,
-     "by_field": {
-      "figures": 20,
-      "units": 20
-     },
-     "answered": 20,
-     "malformed": 0,
-     "cut_off": 0,
-     "refused": 0,
-     "errors": 0,
-     "cost_usd": 0.003871,
-     "cost_per_item_usd": 0.0001935,
-     "latency_ms_median": 1398,
-     "latency_ms_p90": 4025,
-     "tokens_in": 2159,
-     "tokens_out": 4969
-    },
-    "qwen/qwen3.5-397b-a17b#reasoning-off": {
-     "items": 17,
-     "asked": 17,
-     "right": 17,
-     "accuracy": 1,
-     "run_right": [
-      17
-     ],
-     "items_that_changed_between_runs": 0,
-     "by_field": {
-      "figures": 17,
-      "units": 17
-     },
-     "answered": 17,
-     "malformed": 0,
-     "cut_off": 0,
-     "refused": 0,
-     "errors": 0,
-     "cost_usd": 0.001797,
-     "cost_per_item_usd": 0.0001057,
-     "latency_ms_median": 1383,
-     "latency_ms_p90": 1868,
-     "tokens_in": 1635,
-     "tokens_out": 503
-    },
-    "qwen/qwen3.5-397b-a17b": {
-     "items": 20,
-     "asked": 20,
+     "items": 23,
+     "asked": 23,
      "right": 16,
-     "accuracy": 0.8,
+     "accuracy": 0.696,
      "run_right": [
       16
      ],
@@ -1676,140 +2019,406 @@
      },
      "answered": 16,
      "malformed": 0,
-     "cut_off": 4,
+     "cut_off": 7,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.143205,
-     "cost_per_item_usd": 0.0071602,
-     "latency_ms_median": 24415,
+     "cost_usd": 0.008159,
+     "cost_per_item_usd": 0.0003547,
+     "latency_ms_median": 26897,
+     "latency_ms_p90": 46485,
+     "tokens_in": 2489,
+     "tokens_out": 54164
+    },
+    "google/gemma-4-31b-it": {
+     "items": 23,
+     "asked": 69,
+     "right": 69,
+     "accuracy": 1,
+     "run_right": [
+      23,
+      23,
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 69,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.002201,
+     "cost_per_item_usd": 0.0000319,
+     "latency_ms_median": 953,
+     "latency_ms_p90": 2271,
+     "tokens_in": 7783,
+     "tokens_out": 3042
+    },
+    "google/gemma-4-31b-it#reasoning-on": {
+     "items": 23,
+     "asked": 23,
+     "right": 23,
+     "accuracy": 1,
+     "run_right": [
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 23,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.00415,
+     "cost_per_item_usd": 0.0001804,
+     "latency_ms_median": 5881,
+     "latency_ms_p90": 10612,
+     "tokens_in": 2552,
+     "tokens_out": 8830
+    },
+    "meta-llama/llama-4-maverick": {
+     "items": 23,
+     "asked": 69,
+     "right": 69,
+     "accuracy": 1,
+     "run_right": [
+      23,
+      23,
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 69,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.004536,
+     "cost_per_item_usd": 0.0000657,
+     "latency_ms_median": 805,
+     "latency_ms_p90": 1827,
+     "tokens_in": 7173,
+     "tokens_out": 2748
+    },
+    "deepseek/deepseek-v4.1-flash#reasoning-off": {
+     "items": 23,
+     "asked": 69,
+     "right": 69,
+     "accuracy": 1,
+     "run_right": [
+      23,
+      23,
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 69,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.002526,
+     "cost_per_item_usd": 0.0000366,
+     "latency_ms_median": 409,
+     "latency_ms_p90": 825,
+     "tokens_in": 6837,
+     "tokens_out": 2783
+    },
+    "deepseek/deepseek-v4.1-flash": {
+     "items": 23,
+     "asked": 23,
+     "right": 23,
+     "accuracy": 1,
+     "run_right": [
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 23,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.006584,
+     "cost_per_item_usd": 0.0002862,
+     "latency_ms_median": 2078,
+     "latency_ms_p90": 6778,
+     "tokens_in": 2854,
+     "tokens_out": 9006
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "items": 23,
+     "asked": 69,
+     "right": 69,
+     "accuracy": 1,
+     "run_right": [
+      23,
+      23,
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 69,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.012142,
+     "cost_per_item_usd": 0.000176,
+     "latency_ms_median": 1260,
+     "latency_ms_p90": 2027,
+     "tokens_in": 7599,
+     "tokens_out": 2908
+    },
+    "qwen/qwen3.5-397b-a17b": {
+     "items": 23,
+     "asked": 23,
+     "right": 18,
+     "accuracy": 0.783,
+     "run_right": [
+      18
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 18,
+      "units": 18
+     },
+     "answered": 18,
+     "malformed": 0,
+     "cut_off": 5,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.182113,
+     "cost_per_item_usd": 0.0079179,
+     "latency_ms_median": 25262,
      "latency_ms_p90": 43470,
-     "tokens_in": 1870,
-     "tokens_out": 41707
+     "tokens_in": 2489,
+     "tokens_out": 53602
     },
     "mistralai/mistral-large-4-0": {
-     "items": 20,
-     "asked": 20,
-     "right": 19,
-     "accuracy": 0.95,
+     "items": 23,
+     "asked": 23,
+     "right": 20,
+     "accuracy": 0.87,
      "run_right": [
-      19
+      20
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "figures": 19,
-      "units": 19
+      "figures": 20,
+      "units": 20
      },
-     "answered": 19,
+     "answered": 20,
      "malformed": 0,
-     "cut_off": 1,
+     "cut_off": 3,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.065607,
-     "cost_per_item_usd": 0.0032803,
-     "latency_ms_median": 6562,
-     "latency_ms_p90": 22707,
-     "tokens_in": 1831,
-     "tokens_out": 28800
+     "cost_usd": 0.088804,
+     "cost_per_item_usd": 0.0038611,
+     "latency_ms_median": 8965,
+     "latency_ms_p90": 30999,
+     "tokens_in": 2418,
+     "tokens_out": 39118
     },
     "openai/gpt-6-luna": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
+     "items": 23,
+     "asked": 69,
+     "right": 69,
      "accuracy": 1,
      "run_right": [
-      20
+      23,
+      23,
+      23
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "figures": 20,
-      "units": 20
+      "figures": 23,
+      "units": 23
      },
-     "answered": 20,
+     "answered": 69,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001004,
-     "cost_per_item_usd": 0.0000502,
-     "latency_ms_median": 2935,
-     "latency_ms_p90": 3934,
-     "tokens_in": 1701,
-     "tokens_out": 1689
+     "cost_usd": 0.004465,
+     "cost_per_item_usd": 0.0000647,
+     "latency_ms_median": 3056,
+     "latency_ms_p90": 3965,
+     "tokens_in": 6837,
+     "tokens_out": 7652
+    },
+    "openai/gpt-6-luna#reasoning-on": {
+     "items": 23,
+     "asked": 23,
+     "right": 23,
+     "accuracy": 1,
+     "run_right": [
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 23,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.001408,
+     "cost_per_item_usd": 0.0000612,
+     "latency_ms_median": 2914,
+     "latency_ms_p90": 4069,
+     "tokens_in": 2279,
+     "tokens_out": 2388
     },
     "google/gemini-3.5-flash-lite": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
+     "items": 23,
+     "asked": 69,
+     "right": 69,
      "accuracy": 1,
      "run_right": [
-      20
+      23,
+      23,
+      23
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "figures": 20,
-      "units": 20
+      "figures": 23,
+      "units": 23
      },
-     "answered": 20,
+     "answered": 69,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.002044,
-     "cost_per_item_usd": 0.0001022,
-     "latency_ms_median": 719,
-     "latency_ms_p90": 1220,
-     "tokens_in": 1581,
-     "tokens_out": 636
+     "cost_usd": 0.009392,
+     "cost_per_item_usd": 0.0001361,
+     "latency_ms_median": 736,
+     "latency_ms_p90": 1160,
+     "tokens_in": 6489,
+     "tokens_out": 3016
     },
     "anthropic/claude-haiku-5.5": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
+     "items": 23,
+     "asked": 69,
+     "right": 69,
      "accuracy": 1,
      "run_right": [
-      20
+      23,
+      23,
+      23
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "figures": 20,
-      "units": 20
+      "figures": 23,
+      "units": 23
      },
-     "answered": 20,
+     "answered": 69,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000841,
-     "cost_per_item_usd": 0.000042,
-     "latency_ms_median": 764,
-     "latency_ms_p90": 996,
-     "tokens_in": 2585,
-     "tokens_out": 1181
+     "cost_usd": 0.004133,
+     "cost_per_item_usd": 0.0000599,
+     "latency_ms_median": 796,
+     "latency_ms_p90": 1280,
+     "tokens_in": 10572,
+     "tokens_out": 6236
+    },
+    "anthropic/claude-haiku-5.5#reasoning-on": {
+     "items": 23,
+     "asked": 23,
+     "right": 23,
+     "accuracy": 1,
+     "run_right": [
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 23,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.001739,
+     "cost_per_item_usd": 0.0000756,
+     "latency_ms_median": 783,
+     "latency_ms_p90": 3155,
+     "tokens_in": 3524,
+     "tokens_out": 2809
     },
     "openai/gpt-6.1-terra": {
-     "items": 20,
-     "asked": 20,
-     "right": 20,
+     "items": 23,
+     "asked": 69,
+     "right": 69,
      "accuracy": 1,
      "run_right": [
-      20
+      23,
+      23,
+      23
      ],
      "items_that_changed_between_runs": 0,
      "by_field": {
-      "figures": 20,
-      "units": 20
+      "figures": 23,
+      "units": 23
      },
-     "answered": 20,
+     "answered": 69,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.009738,
-     "cost_per_item_usd": 0.0004869,
-     "latency_ms_median": 2945,
-     "latency_ms_p90": 4061,
-     "tokens_in": 1701,
-     "tokens_out": 1627
+     "cost_usd": 0.042008,
+     "cost_per_item_usd": 0.0006088,
+     "latency_ms_median": 3022,
+     "latency_ms_p90": 4517,
+     "tokens_in": 6837,
+     "tokens_out": 7119
+    },
+    "openai/gpt-6.1-terra#reasoning-on": {
+     "items": 23,
+     "asked": 23,
+     "right": 23,
+     "accuracy": 1,
+     "run_right": [
+      23
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "figures": 23,
+      "units": 23
+     },
+     "answered": 23,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.013844,
+     "cost_per_item_usd": 0.0006019,
+     "latency_ms_median": 2978,
+     "latency_ms_p90": 4424,
+     "tokens_in": 2279,
+     "tokens_out": 2341
     }
    }
   },
@@ -1827,14 +2436,16 @@
    "items_file": "models/evals/extract-warning/items.json",
    "results_dir": "models/evals/extract-warning/results/",
    "page": "models/extract-warning.md",
-   "run_utc": "2026-11-11T02:56:50Z",
+   "run_utc": "2026-11-11T22:43:47Z",
    "models": {
     "google/gemma-3-4b-it": {
      "items": 17,
-     "asked": 17,
-     "right": 17,
+     "asked": 51,
+     "right": 51,
      "accuracy": 1,
      "run_right": [
+      17,
+      17,
       17
      ],
      "items_that_changed_between_runs": 0,
@@ -1845,24 +2456,26 @@
       "start_utc": 17,
       "end_utc": 17
      },
-     "answered": 17,
+     "answered": 51,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.00027,
-     "cost_per_item_usd": 0.0000159,
-     "latency_ms_median": 3195,
-     "latency_ms_p90": 3572,
-     "tokens_in": 4976,
-     "tokens_out": 1596
+     "cost_usd": 0.001071,
+     "cost_per_item_usd": 0.000021,
+     "latency_ms_median": 1673,
+     "latency_ms_p90": 3298,
+     "tokens_in": 14824,
+     "tokens_out": 4762
     },
     "openai/gpt-oss-20b": {
      "items": 17,
-     "asked": 17,
-     "right": 17,
+     "asked": 51,
+     "right": 51,
      "accuracy": 1,
      "run_right": [
+      17,
+      17,
       17
      ],
      "items_that_changed_between_runs": 0,
@@ -1873,24 +2486,26 @@
       "start_utc": 17,
       "end_utc": 17
      },
-     "answered": 17,
+     "answered": 51,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001163,
-     "cost_per_item_usd": 0.0000684,
-     "latency_ms_median": 2852,
-     "latency_ms_p90": 7552,
-     "tokens_in": 5131,
-     "tokens_out": 5031
+     "cost_usd": 0.004203,
+     "cost_per_item_usd": 0.0000824,
+     "latency_ms_median": 922,
+     "latency_ms_p90": 4148,
+     "tokens_in": 15588,
+     "tokens_out": 14236
     },
     "mistralai/ministral-8b-2512": {
      "items": 17,
-     "asked": 17,
-     "right": 17,
+     "asked": 51,
+     "right": 51,
      "accuracy": 1,
      "run_right": [
+      17,
+      17,
       17
      ],
      "items_that_changed_between_runs": 0,
@@ -1901,24 +2516,26 @@
       "start_utc": 17,
       "end_utc": 17
      },
-     "answered": 17,
+     "answered": 51,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000765,
-     "cost_per_item_usd": 0.000045,
-     "latency_ms_median": 946,
-     "latency_ms_p90": 1123,
-     "tokens_in": 4863,
-     "tokens_out": 1473
+     "cost_usd": 0.002199,
+     "cost_per_item_usd": 0.0000431,
+     "latency_ms_median": 960,
+     "latency_ms_p90": 1907,
+     "tokens_in": 14589,
+     "tokens_out": 4419
     },
     "qwen/qwen3.5-9b#reasoning-off": {
      "items": 17,
-     "asked": 17,
-     "right": 17,
+     "asked": 51,
+     "right": 51,
      "accuracy": 1,
      "run_right": [
+      17,
+      17,
       17
      ],
      "items_that_changed_between_runs": 0,
@@ -1929,17 +2546,17 @@
       "start_utc": 17,
       "end_utc": 17
      },
-     "answered": 17,
+     "answered": 51,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.000703,
-     "cost_per_item_usd": 0.0000414,
+     "cost_usd": 0.002668,
+     "cost_per_item_usd": 0.0000523,
      "latency_ms_median": 1304,
-     "latency_ms_p90": 2200,
-     "tokens_in": 4968,
-     "tokens_out": 1277
+     "latency_ms_p90": 2122,
+     "tokens_in": 14904,
+     "tokens_out": 3781
     },
     "qwen/qwen3.5-9b": {
      "items": 17,
@@ -1971,10 +2588,12 @@
     },
     "google/gemma-4-31b-it": {
      "items": 17,
-     "asked": 17,
-     "right": 17,
+     "asked": 51,
+     "right": 51,
      "accuracy": 1,
      "run_right": [
+      17,
+      17,
       17
      ],
      "items_that_changed_between_runs": 0,
@@ -1985,19 +2604,19 @@
       "start_utc": 17,
       "end_utc": 17
      },
-     "answered": 17,
+     "answered": 51,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001086,
-     "cost_per_item_usd": 0.0000639,
-     "latency_ms_median": 995,
-     "latency_ms_p90": 2073,
-     "tokens_in": 5065,
-     "tokens_out": 1433
+     "cost_usd": 0.003446,
+     "cost_per_item_usd": 0.0000676,
+     "latency_ms_median": 1823,
+     "latency_ms_p90": 3176,
+     "tokens_in": 15209,
+     "tokens_out": 4329
     },
-    "meta-llama/llama-4-maverick": {
+    "google/gemma-4-31b-it#reasoning-on": {
      "items": 17,
      "asked": 17,
      "right": 17,
@@ -2018,12 +2637,72 @@
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.002184,
-     "cost_per_item_usd": 0.0001285,
-     "latency_ms_median": 967,
-     "latency_ms_p90": 1336,
-     "tokens_in": 4225,
-     "tokens_out": 1038
+     "cost_usd": 0.004883,
+     "cost_per_item_usd": 0.0002872,
+     "latency_ms_median": 8064,
+     "latency_ms_p90": 25837,
+     "tokens_in": 5041,
+     "tokens_out": 10249
+    },
+    "meta-llama/llama-4-maverick": {
+     "items": 17,
+     "asked": 51,
+     "right": 51,
+     "accuracy": 1,
+     "run_right": [
+      17,
+      17,
+      17
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "type": 17,
+      "level": 17,
+      "area": 17,
+      "start_utc": 17,
+      "end_utc": 17
+     },
+     "answered": 51,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.006325,
+     "cost_per_item_usd": 0.000124,
+     "latency_ms_median": 1176,
+     "latency_ms_p90": 1551,
+     "tokens_in": 12675,
+     "tokens_out": 3122
+    },
+    "deepseek/deepseek-v4.1-flash#reasoning-off": {
+     "items": 17,
+     "asked": 51,
+     "right": 51,
+     "accuracy": 1,
+     "run_right": [
+      17,
+      17,
+      17
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "type": 17,
+      "level": 17,
+      "area": 17,
+      "start_utc": 17,
+      "end_utc": 17
+     },
+     "answered": 51,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.003314,
+     "cost_per_item_usd": 0.000065,
+     "latency_ms_median": 577,
+     "latency_ms_p90": 4519,
+     "tokens_in": 12708,
+     "tokens_out": 2763
     },
     "deepseek/deepseek-v4.1-flash": {
      "items": 17,
@@ -2055,10 +2734,12 @@
     },
     "qwen/qwen3.5-397b-a17b#reasoning-off": {
      "items": 17,
-     "asked": 17,
-     "right": 17,
+     "asked": 51,
+     "right": 51,
      "accuracy": 1,
      "run_right": [
+      17,
+      17,
       17
      ],
      "items_that_changed_between_runs": 0,
@@ -2069,17 +2750,17 @@
       "start_utc": 17,
       "end_utc": 17
      },
-     "answered": 17,
+     "answered": 51,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.004654,
-     "cost_per_item_usd": 0.0002738,
-     "latency_ms_median": 2189,
-     "latency_ms_p90": 2544,
-     "tokens_in": 4968,
-     "tokens_out": 1181
+     "cost_usd": 0.017068,
+     "cost_per_item_usd": 0.0003347,
+     "latency_ms_median": 1877,
+     "latency_ms_p90": 2541,
+     "tokens_in": 14904,
+     "tokens_out": 3504
     },
     "qwen/qwen3.5-397b-a17b": {
      "items": 17,
@@ -2139,6 +2820,36 @@
     },
     "openai/gpt-6-luna": {
      "items": 17,
+     "asked": 51,
+     "right": 51,
+     "accuracy": 1,
+     "run_right": [
+      17,
+      17,
+      17
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "type": 17,
+      "level": 17,
+      "area": 17,
+      "start_utc": 17,
+      "end_utc": 17
+     },
+     "answered": 51,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.003258,
+     "cost_per_item_usd": 0.0000639,
+     "latency_ms_median": 2429,
+     "latency_ms_p90": 2825,
+     "tokens_in": 12519,
+     "tokens_out": 4078
+    },
+    "openai/gpt-6-luna#reasoning-on": {
+     "items": 17,
      "asked": 17,
      "right": 17,
      "accuracy": 1,
@@ -2158,19 +2869,21 @@
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001085,
-     "cost_per_item_usd": 0.0000638,
-     "latency_ms_median": 2579,
-     "latency_ms_p90": 2830,
+     "cost_usd": 0.001072,
+     "cost_per_item_usd": 0.0000631,
+     "latency_ms_median": 2268,
+     "latency_ms_p90": 2895,
      "tokens_in": 4173,
-     "tokens_out": 1357
+     "tokens_out": 1331
     },
     "google/gemini-3.5-flash-lite": {
      "items": 17,
-     "asked": 17,
-     "right": 17,
+     "asked": 51,
+     "right": 51,
      "accuracy": 1,
      "run_right": [
+      17,
+      17,
       17
      ],
      "items_that_changed_between_runs": 0,
@@ -2181,24 +2894,26 @@
       "start_utc": 17,
       "end_utc": 17
      },
-     "answered": 17,
+     "answered": 51,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.004642,
-     "cost_per_item_usd": 0.000273,
-     "latency_ms_median": 807,
+     "cost_usd": 0.013953,
+     "cost_per_item_usd": 0.0002736,
+     "latency_ms_median": 804,
      "latency_ms_p90": 898,
-     "tokens_in": 4754,
-     "tokens_out": 1305
+     "tokens_in": 14262,
+     "tokens_out": 3926
     },
     "anthropic/claude-haiku-5.5": {
      "items": 17,
-     "asked": 17,
-     "right": 17,
+     "asked": 51,
+     "right": 51,
      "accuracy": 1,
      "run_right": [
+      17,
+      17,
       17
      ],
      "items_that_changed_between_runs": 0,
@@ -2209,19 +2924,19 @@
       "start_utc": 17,
       "end_utc": 17
      },
-     "answered": 17,
+     "answered": 51,
      "malformed": 0,
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.001304,
-     "cost_per_item_usd": 0.0000767,
-     "latency_ms_median": 818,
-     "latency_ms_p90": 1810,
-     "tokens_in": 5675,
-     "tokens_out": 1500
+     "cost_usd": 0.003829,
+     "cost_per_item_usd": 0.0000751,
+     "latency_ms_median": 813,
+     "latency_ms_p90": 1254,
+     "tokens_in": 17025,
+     "tokens_out": 4331
     },
-    "openai/gpt-6.1-terra": {
+    "anthropic/claude-haiku-5.5#reasoning-on": {
      "items": 17,
      "asked": 17,
      "right": 17,
@@ -2242,12 +2957,70 @@
      "cut_off": 0,
      "refused": 0,
      "errors": 0,
-     "cost_usd": 0.008849,
-     "cost_per_item_usd": 0.0005205,
-     "latency_ms_median": 1517,
-     "latency_ms_p90": 1802,
+     "cost_usd": 0.001272,
+     "cost_per_item_usd": 0.0000748,
+     "latency_ms_median": 826,
+     "latency_ms_p90": 1736,
+     "tokens_in": 5675,
+     "tokens_out": 1434
+    },
+    "openai/gpt-6.1-terra": {
+     "items": 17,
+     "asked": 51,
+     "right": 51,
+     "accuracy": 1,
+     "run_right": [
+      17,
+      17,
+      17
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "type": 17,
+      "level": 17,
+      "area": 17,
+      "start_utc": 17,
+      "end_utc": 17
+     },
+     "answered": 51,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.026719,
+     "cost_per_item_usd": 0.0005239,
+     "latency_ms_median": 1546,
+     "latency_ms_p90": 1782,
+     "tokens_in": 12519,
+     "tokens_out": 2894
+    },
+    "openai/gpt-6.1-terra#reasoning-on": {
+     "items": 17,
+     "asked": 17,
+     "right": 17,
+     "accuracy": 1,
+     "run_right": [
+      17
+     ],
+     "items_that_changed_between_runs": 0,
+     "by_field": {
+      "type": 17,
+      "level": 17,
+      "area": 17,
+      "start_utc": 17,
+      "end_utc": 17
+     },
+     "answered": 17,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.00924,
+     "cost_per_item_usd": 0.0005435,
+     "latency_ms_median": 1653,
+     "latency_ms_p90": 2799,
      "tokens_in": 4173,
-     "tokens_out": 953
+     "tokens_out": 1032
     }
    }
   }
@@ -2255,317 +3028,355 @@
  "overall": {
   "google/gemma-3-4b-it": {
    "tasks": 5,
-   "asked": 78,
-   "right": 48,
-   "accuracy": 0.615,
-   "cost_usd": 0.002874,
-   "cost_per_item_usd": 0.0000368,
-   "latency_ms_median": 2755,
-   "not_answered": 0,
-   "tokens_in": 55508,
-   "tokens_out": 10111
+   "asked": 327,
+   "right": 199,
+   "accuracy": 0.609,
+   "cost_usd": 0.013873,
+   "cost_per_item_usd": 0.0000424,
+   "latency_ms_median": 1673,
+   "not_answered": 1,
+   "tokens_in": 211706,
+   "tokens_out": 43175
   },
   "openai/gpt-oss-20b": {
    "tasks": 5,
-   "asked": 75,
-   "right": 65,
-   "accuracy": 0.867,
-   "cost_usd": 0.009418,
-   "cost_per_item_usd": 0.0001256,
-   "latency_ms_median": 2266,
-   "not_answered": 4,
-   "tokens_in": 42262,
-   "tokens_out": 45376
+   "asked": 327,
+   "right": 284,
+   "accuracy": 0.869,
+   "cost_usd": 0.056104,
+   "cost_per_item_usd": 0.0001716,
+   "latency_ms_median": 1666,
+   "not_answered": 16,
+   "tokens_in": 195028,
+   "tokens_out": 211172
   },
   "mistralai/ministral-8b-2512": {
    "tasks": 5,
-   "asked": 106,
-   "right": 39,
-   "accuracy": 0.368,
-   "cost_usd": 0.021906,
-   "cost_per_item_usd": 0.0002067,
-   "latency_ms_median": 916,
+   "asked": 327,
+   "right": 185,
+   "accuracy": 0.566,
+   "cost_usd": 0.029687,
+   "cost_per_item_usd": 0.0000908,
+   "latency_ms_median": 909,
    "not_answered": 0,
-   "tokens_in": 147329,
-   "tokens_out": 9559
+   "tokens_in": 211479,
+   "tokens_out": 19946
   },
   "qwen/qwen3.5-9b#reasoning-off": {
    "tasks": 5,
-   "asked": 95,
-   "right": 53,
-   "accuracy": 0.558,
-   "cost_usd": 0.011331,
-   "cost_per_item_usd": 0.0001193,
+   "asked": 327,
+   "right": 234,
+   "accuracy": 0.716,
+   "cost_usd": 0.025731,
+   "cost_per_item_usd": 0.0000787,
    "latency_ms_median": 1304,
    "not_answered": 0,
-   "tokens_in": 110195,
-   "tokens_out": 7823
+   "tokens_in": 212252,
+   "tokens_out": 17814
   },
   "qwen/qwen3.5-9b": {
    "tasks": 5,
-   "asked": 71,
-   "right": 53,
-   "accuracy": 0.746,
-   "cost_usd": 0.028934,
-   "cost_per_item_usd": 0.0004075,
-   "latency_ms_median": 26333,
-   "not_answered": 15,
-   "tokens_in": 32596,
-   "tokens_out": 156422
+   "asked": 109,
+   "right": 72,
+   "accuracy": 0.661,
+   "cost_usd": 0.042401,
+   "cost_per_item_usd": 0.000389,
+   "latency_ms_median": 26897,
+   "not_answered": 23,
+   "tokens_in": 69815,
+   "tokens_out": 211976
   },
   "google/gemma-4-31b-it": {
    "tasks": 5,
-   "asked": 106,
-   "right": 97,
-   "accuracy": 0.915,
-   "cost_usd": 0.018984,
-   "cost_per_item_usd": 0.0001791,
-   "latency_ms_median": 995,
+   "asked": 327,
+   "right": 303,
+   "accuracy": 0.927,
+   "cost_usd": 0.029607,
+   "cost_per_item_usd": 0.0000905,
+   "latency_ms_median": 1271,
    "not_answered": 0,
-   "tokens_in": 145950,
-   "tokens_out": 6478
+   "tokens_in": 214317,
+   "tokens_out": 14051
   },
   "google/gemma-4-31b-it#reasoning-on": {
-   "tasks": 1,
-   "asked": 10,
-   "right": 10,
-   "accuracy": 1,
-   "cost_usd": 0.013136,
-   "cost_per_item_usd": 0.0013136,
-   "latency_ms_median": 22657,
+   "tasks": 5,
+   "asked": 109,
+   "right": 103,
+   "accuracy": 0.945,
+   "cost_usd": 0.038756,
+   "cost_per_item_usd": 0.0003556,
+   "latency_ms_median": 7053,
    "not_answered": 0,
-   "tokens_in": 32128,
-   "tokens_out": 20353
+   "tokens_in": 71464,
+   "tokens_out": 69192
   },
   "meta-llama/llama-4-maverick": {
    "tasks": 5,
-   "asked": 106,
-   "right": 68,
-   "accuracy": 0.642,
-   "cost_usd": 0.039934,
-   "cost_per_item_usd": 0.0003767,
-   "latency_ms_median": 911,
+   "asked": 327,
+   "right": 271,
+   "accuracy": 0.829,
+   "cost_usd": 0.05986,
+   "cost_per_item_usd": 0.0001831,
+   "latency_ms_median": 954,
    "not_answered": 0,
-   "tokens_in": 115362,
-   "tokens_out": 5657
+   "tokens_in": 176775,
+   "tokens_out": 11717
   },
   "deepseek/deepseek-v4.1-flash#reasoning-off": {
-   "tasks": 1,
-   "asked": 24,
-   "right": 16,
-   "accuracy": 0.667,
-   "cost_usd": 0.01056,
-   "cost_per_item_usd": 0.00044,
-   "latency_ms_median": 748,
+   "tasks": 5,
+   "asked": 327,
+   "right": 307,
+   "accuracy": 0.939,
+   "cost_usd": 0.030459,
+   "cost_per_item_usd": 0.0000931,
+   "latency_ms_median": 577,
    "not_answered": 0,
-   "tokens_in": 61729,
-   "tokens_out": 2649
+   "tokens_in": 180902,
+   "tokens_out": 11374
   },
   "deepseek/deepseek-v4.1-flash": {
    "tasks": 5,
-   "asked": 78,
-   "right": 75,
-   "accuracy": 0.962,
-   "cost_usd": 0.042455,
-   "cost_per_item_usd": 0.0005443,
-   "latency_ms_median": 2950,
+   "asked": 109,
+   "right": 103,
+   "accuracy": 0.945,
+   "cost_usd": 0.061448,
+   "cost_per_item_usd": 0.0005637,
+   "latency_ms_median": 2345,
    "not_answered": 1,
-   "tokens_in": 48699,
-   "tokens_out": 52015
+   "tokens_in": 62358,
+   "tokens_out": 77227
   },
   "qwen/qwen3.5-397b-a17b#reasoning-off": {
-   "tasks": 4,
-   "asked": 59,
-   "right": 56,
-   "accuracy": 0.949,
-   "cost_usd": 0.012908,
-   "cost_per_item_usd": 0.0002188,
-   "latency_ms_median": 1383,
+   "tasks": 5,
+   "asked": 327,
+   "right": 292,
+   "accuracy": 0.893,
+   "cost_usd": 0.17374,
+   "cost_per_item_usd": 0.0005313,
+   "latency_ms_median": 1863,
    "not_answered": 0,
-   "tokens_in": 18398,
-   "tokens_out": 2494
+   "tokens_in": 212336,
+   "tokens_out": 22499
   },
   "qwen/qwen3.5-397b-a17b": {
-   "tasks": 4,
-   "asked": 67,
-   "right": 58,
-   "accuracy": 0.866,
-   "cost_usd": 0.370543,
-   "cost_per_item_usd": 0.0055305,
-   "latency_ms_median": 15823,
-   "not_answered": 7,
-   "tokens_in": 19831,
-   "tokens_out": 107880
+   "tasks": 5,
+   "asked": 109,
+   "right": 89,
+   "accuracy": 0.817,
+   "cost_usd": 0.726895,
+   "cost_per_item_usd": 0.0066688,
+   "latency_ms_median": 16941,
+   "not_answered": 16,
+   "tokens_in": 69864,
+   "tokens_out": 211826
   },
   "mistralai/mistral-large-4-0": {
-   "tasks": 4,
-   "asked": 67,
-   "right": 63,
-   "accuracy": 0.94,
-   "cost_usd": 0.201557,
-   "cost_per_item_usd": 0.0030083,
-   "latency_ms_median": 5561,
-   "not_answered": 2,
-   "tokens_in": 18709,
-   "tokens_out": 86561
+   "tasks": 5,
+   "asked": 109,
+   "right": 95,
+   "accuracy": 0.872,
+   "cost_usd": 0.422515,
+   "cost_per_item_usd": 0.0038763,
+   "latency_ms_median": 7277,
+   "not_answered": 8,
+   "tokens_in": 59076,
+   "tokens_out": 174115
   },
   "openai/gpt-6-luna": {
    "tasks": 5,
-   "asked": 84,
-   "right": 77,
+   "asked": 327,
+   "right": 300,
    "accuracy": 0.917,
-   "cost_usd": 0.007939,
-   "cost_per_item_usd": 0.0000945,
-   "latency_ms_median": 2606,
+   "cost_usd": 0.028415,
+   "cost_per_item_usd": 0.0000869,
+   "latency_ms_median": 2681,
    "not_answered": 0,
-   "tokens_in": 60605,
-   "tokens_out": 8117
+   "tokens_in": 176029,
+   "tokens_out": 30547
   },
   "openai/gpt-6-luna#reasoning-on": {
-   "tasks": 1,
-   "asked": 5,
-   "right": 5,
-   "accuracy": 1,
-   "cost_usd": 0.001641,
-   "cost_per_item_usd": 0.0003282,
-   "latency_ms_median": 3427,
+   "tasks": 5,
+   "asked": 109,
+   "right": 101,
+   "accuracy": 0.927,
+   "cost_usd": 0.009494,
+   "cost_per_item_usd": 0.0000871,
+   "latency_ms_median": 2914,
    "not_answered": 0,
-   "tokens_in": 12515,
-   "tokens_out": 763
+   "tokens_in": 58881,
+   "tokens_out": 10378
   },
   "google/gemini-3.5-flash-lite": {
-   "tasks": 4,
-   "asked": 67,
-   "right": 64,
-   "accuracy": 0.955,
-   "cost_usd": 0.012291,
-   "cost_per_item_usd": 0.0001834,
-   "latency_ms_median": 719,
+   "tasks": 5,
+   "asked": 327,
+   "right": 287,
+   "accuracy": 0.878,
+   "cost_usd": 0.092696,
+   "cost_per_item_usd": 0.0002835,
+   "latency_ms_median": 795,
    "not_answered": 0,
-   "tokens_in": 19348,
-   "tokens_out": 2644
+   "tokens_in": 208204,
+   "tokens_out": 12468
   },
   "anthropic/claude-haiku-5.5": {
    "tasks": 5,
-   "asked": 70,
-   "right": 65,
-   "accuracy": 0.929,
-   "cost_usd": 0.00852,
-   "cost_per_item_usd": 0.0001217,
-   "latency_ms_median": 1031,
+   "asked": 327,
+   "right": 303,
+   "accuracy": 0.927,
+   "cost_usd": 0.054368,
+   "cost_per_item_usd": 0.0001663,
+   "latency_ms_median": 878,
    "not_answered": 0,
-   "tokens_in": 37082,
-   "tokens_out": 9795
+   "tokens_in": 243913,
+   "tokens_out": 61052
   },
   "anthropic/claude-haiku-5.5#reasoning-on": {
-   "tasks": 1,
-   "asked": 1,
-   "right": 1,
-   "accuracy": 1,
-   "cost_usd": 0.000637,
-   "cost_per_item_usd": 0.000637,
-   "latency_ms_median": 3252,
+   "tasks": 5,
+   "asked": 109,
+   "right": 102,
+   "accuracy": 0.936,
+   "cost_usd": 0.018888,
+   "cost_per_item_usd": 0.0001733,
+   "latency_ms_median": 826,
    "not_answered": 0,
-   "tokens_in": 3242,
-   "tokens_out": 639
+   "tokens_in": 81622,
+   "tokens_out": 21833
   },
   "openai/gpt-6.1-terra": {
-   "tasks": 4,
-   "asked": 67,
-   "right": 63,
-   "accuracy": 0.94,
-   "cost_usd": 0.043545,
-   "cost_per_item_usd": 0.0006499,
+   "tasks": 5,
+   "asked": 327,
+   "right": 308,
+   "accuracy": 0.942,
+   "cost_usd": 0.214454,
+   "cost_per_item_usd": 0.0006558,
    "latency_ms_median": 1924,
    "not_answered": 0,
-   "tokens_in": 18054,
-   "tokens_out": 5186
+   "tokens_in": 176029,
+   "tokens_out": 24243
+  },
+  "openai/gpt-6.1-terra#reasoning-on": {
+   "tasks": 5,
+   "asked": 109,
+   "right": 103,
+   "accuracy": 0.945,
+   "cost_usd": 0.097748,
+   "cost_per_item_usd": 0.0008968,
+   "latency_ms_median": 1813,
+   "not_answered": 0,
+   "tokens_in": 58881,
+   "tokens_out": 8146
   }
  },
  "usd_per_100_items": {
   "warnings-in-force": {
-   "google/gemma-3-4b-it": 0.0177,
-   "openai/gpt-oss-20b": 0.0615,
+   "google/gemma-3-4b-it": 0.0226,
+   "openai/gpt-oss-20b": 0.0808,
    "mistralai/ministral-8b-2512": 0.0493,
-   "qwen/qwen3.5-9b#reasoning-off": 0.0326,
-   "qwen/qwen3.5-9b": 0.1173,
+   "qwen/qwen3.5-9b#reasoning-off": 0.0368,
+   "qwen/qwen3.5-9b": 0.0897,
    "google/gemma-4-31b-it": 0.0404,
-   "google/gemma-4-31b-it#reasoning-on": 0.1314,
+   "google/gemma-4-31b-it#reasoning-on": 0.1302,
    "meta-llama/llama-4-maverick": 0.0848,
-   "deepseek/deepseek-v4.1-flash#reasoning-off": 0.044,
-   "deepseek/deepseek-v4.1-flash": 0.1489,
-   "openai/gpt-6-luna": 0.0183,
-   "openai/gpt-6-luna#reasoning-on": 0.0328,
-   "anthropic/claude-haiku-5.5": 0.0665,
-   "anthropic/claude-haiku-5.5#reasoning-on": 0.0637
+   "deepseek/deepseek-v4.1-flash#reasoning-off": 0.0429,
+   "deepseek/deepseek-v4.1-flash": 0.1479,
+   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.2387,
+   "qwen/qwen3.5-397b-a17b": 1.5622,
+   "mistralai/mistral-large-4-0": 0.9781,
+   "openai/gpt-6-luna": 0.0201,
+   "openai/gpt-6-luna#reasoning-on": 0.0197,
+   "google/gemini-3.5-flash-lite": 0.1135,
+   "anthropic/claude-haiku-5.5": 0.0648,
+   "anthropic/claude-haiku-5.5#reasoning-on": 0.0654,
+   "openai/gpt-6.1-terra": 0.0737,
+   "openai/gpt-6.1-terra#reasoning-on": 0.2747
   },
   "extract-decision": {
-   "google/gemma-3-4b-it": 0.0032,
-   "openai/gpt-oss-20b": 0.0109,
-   "mistralai/ministral-8b-2512": 0.0078,
-   "qwen/qwen3.5-9b#reasoning-off": 0.0073,
+   "google/gemma-3-4b-it": 0.0041,
+   "openai/gpt-oss-20b": 0.0117,
+   "mistralai/ministral-8b-2512": 0.0073,
+   "qwen/qwen3.5-9b#reasoning-off": 0.0079,
    "qwen/qwen3.5-9b": 0.0415,
-   "google/gemma-4-31b-it": 0.01,
-   "meta-llama/llama-4-maverick": 0.0207,
+   "google/gemma-4-31b-it": 0.0107,
+   "google/gemma-4-31b-it#reasoning-on": 0.0264,
+   "meta-llama/llama-4-maverick": 0.0198,
+   "deepseek/deepseek-v4.1-flash#reasoning-off": 0.0086,
    "deepseek/deepseek-v4.1-flash": 0.049,
-   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.0443,
+   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.0539,
    "qwen/qwen3.5-397b-a17b": 0.6081,
    "mistralai/mistral-large-4-0": 0.3279,
-   "openai/gpt-6-luna": 0.0124,
-   "google/gemini-3.5-flash-lite": 0.0358,
-   "anthropic/claude-haiku-5.5": 0.0224,
-   "openai/gpt-6.1-terra": 0.0999
+   "openai/gpt-6-luna": 0.0126,
+   "openai/gpt-6-luna#reasoning-on": 0.0132,
+   "google/gemini-3.5-flash-lite": 0.0364,
+   "anthropic/claude-haiku-5.5": 0.0234,
+   "anthropic/claude-haiku-5.5#reasoning-on": 0.0228,
+   "openai/gpt-6.1-terra": 0.1024,
+   "openai/gpt-6.1-terra#reasoning-on": 0.1048
   },
   "label": {
-   "google/gemma-3-4b-it": 0.0012,
-   "openai/gpt-oss-20b": 0.0065,
-   "mistralai/ministral-8b-2512": 0.0035,
-   "qwen/qwen3.5-9b#reasoning-off": 0.0027,
-   "qwen/qwen3.5-9b": 0.0399,
-   "google/gemma-4-31b-it": 0.0034,
-   "meta-llama/llama-4-maverick": 0.0079,
-   "deepseek/deepseek-v4.1-flash": 0.0762,
-   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.0135,
-   "qwen/qwen3.5-397b-a17b": 0.4714,
-   "mistralai/mistral-large-4-0": 0.3331,
-   "openai/gpt-6-luna": 0.0074,
-   "google/gemini-3.5-flash-lite": 0.0101,
-   "anthropic/claude-haiku-5.5": 0.0107,
-   "openai/gpt-6.1-terra": 0.0748
+   "google/gemma-3-4b-it": 0.0015,
+   "openai/gpt-oss-20b": 0.008,
+   "mistralai/ministral-8b-2512": 0.0031,
+   "qwen/qwen3.5-9b#reasoning-off": 0.0037,
+   "qwen/qwen3.5-9b": 0.0291,
+   "google/gemma-4-31b-it": 0.0036,
+   "google/gemma-4-31b-it#reasoning-on": 0.0221,
+   "meta-llama/llama-4-maverick": 0.0072,
+   "deepseek/deepseek-v4.1-flash#reasoning-off": 0.0038,
+   "deepseek/deepseek-v4.1-flash": 0.0623,
+   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.0255,
+   "qwen/qwen3.5-397b-a17b": 0.4536,
+   "mistralai/mistral-large-4-0": 0.2983,
+   "openai/gpt-6-luna": 0.0066,
+   "openai/gpt-6-luna#reasoning-on": 0.0068,
+   "google/gemini-3.5-flash-lite": 0.0103,
+   "anthropic/claude-haiku-5.5": 0.0102,
+   "anthropic/claude-haiku-5.5#reasoning-on": 0.0111,
+   "openai/gpt-6.1-terra": 0.0625,
+   "openai/gpt-6.1-terra#reasoning-on": 0.0619
   },
   "translate": {
-   "google/gemma-3-4b-it": 0.0005,
-   "openai/gpt-oss-20b": 0.0048,
-   "mistralai/ministral-8b-2512": 0.0021,
-   "qwen/qwen3.5-9b#reasoning-off": 0.0011,
-   "qwen/qwen3.5-9b": 0.0353,
-   "google/gemma-4-31b-it": 0.0022,
-   "meta-llama/llama-4-maverick": 0.0052,
-   "deepseek/deepseek-v4.1-flash": 0.0193,
-   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.0106,
-   "qwen/qwen3.5-397b-a17b": 0.716,
-   "mistralai/mistral-large-4-0": 0.328,
-   "openai/gpt-6-luna": 0.005,
-   "google/gemini-3.5-flash-lite": 0.0102,
-   "anthropic/claude-haiku-5.5": 0.0042,
-   "openai/gpt-6.1-terra": 0.0487
+   "google/gemma-3-4b-it": 0.0009,
+   "openai/gpt-oss-20b": 0.0083,
+   "mistralai/ministral-8b-2512": 0.0026,
+   "qwen/qwen3.5-9b#reasoning-off": 0.0019,
+   "qwen/qwen3.5-9b": 0.0355,
+   "google/gemma-4-31b-it": 0.0032,
+   "google/gemma-4-31b-it#reasoning-on": 0.018,
+   "meta-llama/llama-4-maverick": 0.0066,
+   "deepseek/deepseek-v4.1-flash#reasoning-off": 0.0037,
+   "deepseek/deepseek-v4.1-flash": 0.0286,
+   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.0176,
+   "qwen/qwen3.5-397b-a17b": 0.7918,
+   "mistralai/mistral-large-4-0": 0.3861,
+   "openai/gpt-6-luna": 0.0065,
+   "openai/gpt-6-luna#reasoning-on": 0.0061,
+   "google/gemini-3.5-flash-lite": 0.0136,
+   "anthropic/claude-haiku-5.5": 0.006,
+   "anthropic/claude-haiku-5.5#reasoning-on": 0.0076,
+   "openai/gpt-6.1-terra": 0.0609,
+   "openai/gpt-6.1-terra#reasoning-on": 0.0602
   },
   "extract-warning": {
-   "google/gemma-3-4b-it": 0.0016,
-   "openai/gpt-oss-20b": 0.0068,
-   "mistralai/ministral-8b-2512": 0.0045,
-   "qwen/qwen3.5-9b#reasoning-off": 0.0041,
+   "google/gemma-3-4b-it": 0.0021,
+   "openai/gpt-oss-20b": 0.0082,
+   "mistralai/ministral-8b-2512": 0.0043,
+   "qwen/qwen3.5-9b#reasoning-off": 0.0052,
    "qwen/qwen3.5-9b": 0.0298,
-   "google/gemma-4-31b-it": 0.0064,
-   "meta-llama/llama-4-maverick": 0.0129,
+   "google/gemma-4-31b-it": 0.0068,
+   "google/gemma-4-31b-it#reasoning-on": 0.0287,
+   "meta-llama/llama-4-maverick": 0.0124,
+   "deepseek/deepseek-v4.1-flash#reasoning-off": 0.0065,
    "deepseek/deepseek-v4.1-flash": 0.0121,
-   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.0274,
+   "qwen/qwen3.5-397b-a17b#reasoning-off": 0.0335,
    "qwen/qwen3.5-397b-a17b": 0.4249,
    "mistralai/mistral-large-4-0": 0.215,
    "openai/gpt-6-luna": 0.0064,
-   "google/gemini-3.5-flash-lite": 0.0273,
-   "anthropic/claude-haiku-5.5": 0.0077,
-   "openai/gpt-6.1-terra": 0.052
+   "openai/gpt-6-luna#reasoning-on": 0.0063,
+   "google/gemini-3.5-flash-lite": 0.0274,
+   "anthropic/claude-haiku-5.5": 0.0075,
+   "anthropic/claude-haiku-5.5#reasoning-on": 0.0075,
+   "openai/gpt-6.1-terra": 0.0524,
+   "openai/gpt-6.1-terra#reasoning-on": 0.0544
   }
  }
 }

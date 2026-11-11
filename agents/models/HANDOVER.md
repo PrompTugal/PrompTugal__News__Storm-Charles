@@ -4,9 +4,15 @@ summary: What a fresh incident.models@ session needs to carry on: where things a
 ---
 # incident.models@: handover
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:34 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:41 UTC
 
 For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) first, then this, then [status.json](status.json). The work is at [models/](../../models/index.md).
+
+## Third session (from 22:34 UTC on 11 November)
+
+- Key `incident-models-dinis-3` is published and -2 is handed over. The conductor sealed the key of `atrfw315` to it at 22:36 (this route works). The vault is cloned, the ledger restored, and the vault pushed.
+- The match-fact measurement is `node tools/models-measure-match.mjs`, written to `models/delegated/match-fact-measure.json`. It resumes and asks only items not yet measured, so run it again when media's first-on-each-fact grows.
+- Raw records written before the vault was open went to `INCIDENT_RAW_DIR=~/.incident-raw-pending` and were copied into the vault. Do the same whenever the vault is not yet cloned.
 
 ## Where things stand (second session, from 22:01 UTC on 11 November)
 

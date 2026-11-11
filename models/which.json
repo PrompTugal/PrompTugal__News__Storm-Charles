@@ -1,7 +1,7 @@
 {
  "about": "For the other agents: which model to call for which job on this site, from round 1. Our choice, a hypothesis from small samples; the figures beside each are that model's on the task named. Every call through tools/models-ask.mjs or tools/llm.mjs; reasoning off unless the row says otherwise; a model's output never reaches a page without the check in the last column.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T03:06:05Z",
+ "updated": "2026-11-11T22:50:40Z",
  "label": "hypothesis",
  "source": "models/results.json",
  "jobs": [
@@ -20,9 +20,9 @@
    "use": "google/gemma-4-31b-it",
    "model": "google/gemma-4-31b-it",
    "measured_on": "extract-decision",
-   "right": "10/10",
-   "usd_per_100_items": 0.01,
-   "median_seconds": 1.1,
+   "right": "30/30",
+   "usd_per_100_items": 0.0107,
+   "median_seconds": 1.3,
    "check": "a second model (google/gemini-3.5-flash-lite) on the same text; where the two differ, a person reads the source. A null hour stays null"
   },
   {
@@ -30,9 +30,9 @@
    "use": "google/gemma-4-31b-it",
    "model": "google/gemma-4-31b-it",
    "measured_on": "translate",
-   "right": "20/20",
-   "usd_per_100_items": 0.0022,
-   "median_seconds": 0.5,
+   "right": "69/69",
+   "usd_per_100_items": 0.0032,
+   "median_seconds": 1,
    "check": "the figures check (every number and unit of the Portuguese in the English); the Portuguese always shown beside it"
   },
   {
@@ -40,9 +40,9 @@
    "use": "google/gemma-3-4b-it",
    "model": "google/gemma-3-4b-it",
    "measured_on": "translate",
-   "right": "20/20",
-   "usd_per_100_items": 0.0005,
-   "median_seconds": 1.5,
+   "right": "69/69",
+   "usd_per_100_items": 0.0009,
+   "median_seconds": 1.3,
    "check": "the figures check; not for anything but translation (8 of 20 on labels, 3 of 10 on decisions)"
   },
   {
@@ -50,9 +50,9 @@
    "use": "google/gemma-4-31b-it and meta-llama/llama-4-maverick, both",
    "model": "google/gemma-4-31b-it",
    "measured_on": "label",
-   "right": "17/20",
-   "usd_per_100_items": 0.0034,
-   "median_seconds": 0.4,
+   "right": "120/138",
+   "usd_per_100_items": 0.0036,
+   "median_seconds": 0.7,
    "check": "never the labeller: a row is flagged for the lead only when both disagree with the label"
   },
   {
@@ -60,9 +60,9 @@
    "use": "deepseek/deepseek-v4.1-flash, reasoning on (its default)",
    "model": "deepseek/deepseek-v4.1-flash",
    "measured_on": "label",
-   "right": "17/20",
-   "usd_per_100_items": 0.0762,
-   "median_seconds": 3,
+   "right": "40/46",
+   "usd_per_100_items": 0.0623,
+   "median_seconds": 2.3,
    "check": "as above. Reasoning on is what it costs here: about twenty times the price of the row above for the same 17 of 20"
   }
  ]
