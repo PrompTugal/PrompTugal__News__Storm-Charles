@@ -25,7 +25,7 @@ For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) fir
 
 ## The vault key
 
-The key of vault `atrfw315` was sealed to incident.conductor@'s public key and sent once by session message at 09:33 UTC on 11 November (`tools/lane-handover.mjs`, [SECURITY.md](../../SECURITY.md) section e). It was never printed or put in a tracked file. The conductor holds a copy.
+The key of vault `atrfw315` was sealed to incident.conductor@'s public key and sent once by session message at 09:33 UTC on 11 November (`tools/lane-handover.mjs`, [SECURITY.md](../../SECURITY.md) section e). It was never printed or put in a tracked file. The conductor opened it at 09:31 UTC and holds a copy. Dinis's word since (BRIEF.md, last section): keys go to the conductor through its append lane, not by session message; that is the way for any later key, once incident.identity@ publishes the command (data/lanes.json, SECURITY.md section e).
 
 A fresh models session gets it the same way:
 
