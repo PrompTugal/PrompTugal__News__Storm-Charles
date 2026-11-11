@@ -1,6 +1,6 @@
 # Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:55 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:57 UTC
 
 Not a warning service. No advice of ours. **Your airline or operator decides whether your flight or service runs: its site or app has the latest.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -23,7 +23,7 @@ Our client name, on every request: `storm-charles.promptugal.news newsroom reade
 |---|---|---|---|---|---|
 | CP (cp.pt) | The site is a JavaScript app; its data comes from an API keyed inside the app (not a published one) | The pages answer; no open feed | Not read; we do not use an app's internal key | Line by line: trains running, suppressed, delayed | **next**: look for CP's or IP's published data (dados.gov.pt has no CP GTFS today); else a person asks CP |
 | Fertagus (fertagus.pt) | Its [public-information page](https://www.fertagus.pt/Fertagus-pt/Viajar/Comunicados-e-Campanhas/Informa%C3%A7%C3%A3o-ao-P%C3%BAblico) (server-rendered, a timed log per day) | Yes; [robots.txt](https://www.fertagus.pt/robots.txt) disallows only the site's system folders | No terms of use found (a privacy page; "all rights reserved"): short excerpts with the link | Its timed entries (Lisbon time), whether trains run | **live** (12:16): trains.json |
-| Infraestruturas de Portugal | Its site's train-times pages | Not tried yet | To read | Trains per line from the network manager | **next** |
+| Infraestruturas de Portugal (IP) | Its site's news and alerts (server-rendered); no open feed of train running found | Yes (12:54); [robots.txt](https://www.infraestruturasdeportugal.pt/robots.txt) allows the public pages | [Its terms](https://www.infraestruturasdeportugal.pt/pt-pt/termos-de-utilizacao-ip): content "só podem ser utilizados para informação pessoal"; none of it may be "reproduzido, publicado … sem o prévio consentimento escrito da IP" (read 12:54) | Trains per line from the network manager | **terms**: link only. Its [alert of 10 November](https://www.infraestruturasdeportugal.pt/pt-pt/alerta-condicoes-meteorologicas-adversas) (rail runs with restrictions, speed limits where the risk is highest) went to incident.researcher@ as material |
 
 ## Metro and light rail ([page](metro.md))
 
@@ -56,7 +56,7 @@ Our client name, on every request: `storm-charles.promptugal.news newsroom reade
 | Source | How | Answers here | Terms | The visual | Status |
 |---|---|---|---|---|---|
 | Rede Expressos | Its site | Behind a protection service (Cloudflare) | Not reached | Routes running or suspended | **bot check** |
-| FlixBus | Its site | Not tried yet | To read | | **next** |
+| FlixBus | Its site (flixbus.pt sends readers from here to flixbus.com) | Yes; no network-wide disruption page or open feed (its Portuguese sitemap read 12:55); a trip's status is per ride under `/track/`, which [robots.txt](https://www.flixbus.pt/robots.txt) disallows | Not needed: nothing to read | Routes running or suspended | **unknown**: FlixBus publishes no readable network status; the researcher's decisions stand in |
 
 ## Taxis and ride-hailing ([page](taxis.md))
 
@@ -67,7 +67,8 @@ Only what an operator or an authority states. Ride-hailing apps (Uber, Bolt) pub
 | Source | How | Answers here | Terms | The visual | Status |
 |---|---|---|---|---|---|
 | Lusoponte (25 de Abril, Vasco da Gama) | Its own notices ("destaques") on [lusoponte.pt](https://www.lusoponte.pt/): the homepage lists them newest first; each notice page carries an "Atualização" time (Lisbon) | Yes (12:49). Its server sends the wrong intermediate certificate, so strict clients fail where browsers fetch the right one; the reader adds Sectigo's public intermediate (OV R36, from the leaf's own AIA address) and verification stays on. [robots.txt](https://www.lusoponte.pt/robots.txt) allows all | No terms of use found (a privacy and a cookie policy only): short excerpts with the link | Its newest notices: speed limits, closures | **live** (12:52): [bridges.json](../incidents/2026-11-10-storm-charles/data/transport/bridges.json) |
-| Infraestruturas de Portugal, Lisbon city (tunnels) | Their sites | Not tried yet | | | **next** |
+| Infraestruturas de Portugal (roads) | Its site: news and alerts | Yes (12:54) | **terms** (as above): link only | Roads and bridges it manages | **terms**: link only |
+| Lisbon city (tunnels) | Its site | Not tried yet | | | **next** |
 
 ## For Dinis (listed, not worked around)
 
@@ -77,3 +78,4 @@ Only what an operator or an authority states. Ride-hailing apps (Uber, Bolt) pub
 4. OpenSky's full terms page did not answer from here: a person reads it.
 5. Rede Expressos sits behind a protection service.
 6. Carris (Lisbon city): its terms forbid publishing without its written consent (as Metro's); ask for it.
+7. Infraestruturas de Portugal: the same clause (its terms frame it under "commercial use is excluded", so a person may read it as allowing a non-commercial newsroom; until then, link only).
