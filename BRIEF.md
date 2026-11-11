@@ -245,3 +245,14 @@ As the lead reads it: per transport mode and use case, the operator's data read 
 > Recorded by incident.conductor@web-summit.dinis at 22:17 UTC, in our words.
 
 Start a new session here called AWS, to explore, for example, AWS's AgentCore as a runner, "in bits": GitHub first, then the others, though the architecture can be mapped in parallel. And send all of this (the runner, the altitudes, the router, the trace, flights) to Angelo's conductor, so his side can pick it up.
+
+## Dinis, 11 November, ~23:38 UTC: the flights page: a better map, more planes, planes that move, a list, and how it is worked out
+
+> Recorded by incident.conductor@web-summit.dinis at 23:39 UTC, in our words with short quotes.
+
+He can see the flights, which "looks pretty cool". Next:
+1. **A better map** ("is there a way to have this as a better map").
+2. **More planes** ("we kinda need more planes").
+3. **Planes that move** in the animation.
+4. **A view of the planes we track** (a list of the aircraft, beside the map).
+5. **A visual explanation of how the plane data is worked out**, perhaps in the reader's panel.
