@@ -2,7 +2,44 @@
    IPMA's warning colours are never used; a state is always said in words or by a pattern as well as by colour. */
 .sb { --U: 21px; --cap: 20px; --hatch: repeating-linear-gradient(135deg, var(--line-2) 0 2px, transparent 2px 7px); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px 12px; margin: 0 0 22px; }
 .sb:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.sb-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
 .sb-title h2 { margin: 0; font-size: 22px; line-height: 1.2; }
+.sb-title .meta { flex: 1 0 100%; max-width: none; }
+.sb-back { font-size: 13px; white-space: nowrap; } .sb-back::before { content: "\2190\00a0"; } .sb-back::after { content: " /"; color: var(--ink-2); }
+.sb-title [data-do=max] { margin-left: auto; align-self: center; }
+/* the page's column is 1180 px; an explanation uses the width of the screen (up to 1560 px) */
+div#studio { width: min(100vw - 48px, 1560px); margin-left: calc((100% - min(100vw - 48px, 1560px)) / 2); }
+/* one formula: the stage on the left, its script (the same scenes, written) on the right, the controls under both; on a narrow screen the caption sits under the stage and the script is the folded text below */
+.sb-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 12px; }
+.sb-left-pane { min-width: 0; }
+.sb-script { display: none; }
+@media (min-width: 1000px) {
+  .sb-main { grid-template-columns: minmax(0, 1fr) clamp(300px, 27%, 420px); }
+  .sb-caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .sb-script { display: block; overflow-y: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 10px 6px 10px 10px; scroll-behavior: smooth; }
+  .sb-progress { margin-top: 9px; }
+}
+.sb-main.solo { grid-template-columns: minmax(0, 1fr); } .sb-main.solo .sb-script { display: none; }
+.sb-stage.two .sb-b.tall b { white-space: normal; line-height: 1.05; }
+.sb-script h3 { margin: 0 0 2px; font-size: 16px; line-height: 1.25; } .sb-script h3 span { font: 700 13px/1 var(--mono); color: var(--ink-2); margin-right: 3px; }
+.sb-script .q { margin: 0 0 6px; font-weight: 700; font-size: 14.5px; line-height: 1.35; }
+.sb-script ol { list-style: none; margin: 0; padding: 0; }
+.sb .sb-script button { display: flex; gap: 8px; width: 100%; text-align: left; background: none; border: 0; border-left: 3px solid transparent; border-radius: 0; padding: 6px 6px 6px 7px; font: 400 13.5px/1.42 var(--sans); color: var(--ink-2); cursor: pointer; }
+.sb .sb-script button b { font: 700 12px/1.6 var(--mono); flex: none; width: 14px; }
+.sb .sb-script button small { display: block; font-size: 12px; margin-top: 3px; font-style: italic; }
+.sb .sb-script button:hover { color: var(--ink); background: var(--surface-2); }
+.sb .sb-script button[aria-current=true] { background: var(--paper); color: var(--ink); border-left-color: var(--focus); font-size: 15px; }
+.sb-script .fine { margin: 8px 0 0 10px; font-size: 12px; color: var(--ink-2); }
+.sb.max { position: fixed; inset: 0; z-index: 1000; margin: 0; border: 0; border-radius: 0; overflow: auto; padding: 12px 18px; }
+@media (min-width: 1000px) { .sb.max .sb-main { grid-template-columns: minmax(0, 1fr) clamp(340px, 26%, 480px); } .sb.max .sb-script button { font-size: 15px; } .sb.max .sb-script button[aria-current=true] { font-size: 17px; } }
+/* the Studio's index: a card per explanation */
+.st-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin: 0 0 22px; }
+.st-card { display: flex; flex-direction: column; gap: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; color: var(--ink); text-decoration: none; }
+.st-card:hover, .st-card:focus-visible { border-color: var(--focus); outline: none; box-shadow: 0 0 0 2px var(--focus); }
+.st-card .st-cast { display: flex; gap: 6px; min-height: 62px; align-items: flex-end; border-bottom: 2px solid var(--ink); padding-bottom: 2px; }
+.st-card .st-cast .sb-char { width: 52px; height: 58px; margin: 0; }
+.st-card b { font-size: 19px; line-height: 1.25; } .st-card span { font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+.st-card small { font: 600 12px/1.3 var(--mono); color: var(--ink-2); margin-top: auto; padding-top: 4px; } .st-card i { font-style: normal; color: var(--focus); font-weight: 700; }
 .sb-title .meta { margin: 3px 0 9px; max-width: 150ch; font-size: 13.5px; line-height: 1.4; }
 .sb-title label { font-size: 13px; color: var(--ink-2); } .sb-pick { font: 700 18px/1.2 var(--sans); padding: 1px 4px; max-width: 100%; background: var(--surface); color: var(--ink); border: 1px solid var(--line-2); border-radius: 4px; }
 

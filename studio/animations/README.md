@@ -1,8 +1,10 @@
 # The Studio's animations: how one is written
 
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 00:40 UTC
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:20 UTC
 
-An animation is one JSON file here, listed in [index.json](index.json). The player ([app/studio/player.js](../../app/studio/player.js)) draws it; [app/studio/twin.mjs](../../app/studio/twin.mjs) writes the same scenes as text into [the Studio's page](../README.md). Nothing else needs changing to add one.
+An explanation is one JSON file here, listed in [index.json](index.json) (with `line`, the one line on its card, and `cast`, the characters drawn on it). The player ([app/studio/player.js](../../app/studio/player.js)) draws it on its own page, `studio/<id>/`; [app/studio/twin.mjs](../../app/studio/twin.mjs) writes that page and [the Studio's index](../index.html) from the same data. To add one: write the file, add it to the list, run `node app/studio/twin.mjs`.
+
+Links inside an explanation (`href`) are written relative to its page, `studio/<id>/`: `../../BRIEF.html`. A page's address takes `#chapter/scene`.
 
 ## The file
 

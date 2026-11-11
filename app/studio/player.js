@@ -4,6 +4,7 @@
 // what is sent to the model on the right, and the files on the file system. The player draws each scene and moves
 // between them. The schema is in studio/animations/README.md. No dependency; colours come from the site's tokens.
 //
+// A page mounts one explanation: <div id="studio" data-base="../animations/" data-anim="<id>">. The address is #chapter/scene.
 // Keys (when the player has focus): Space or K play/pause · ← → previous/next scene · PageUp PageDown chapter ·
 // Home or R restart the chapter · S speed · 1-9 chapter.
 (function () {
@@ -127,22 +128,27 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
     // nothing jumps between scenes. On a phone the page scrolls and the controls stick to the bottom instead.
     function fit() {
         const ch = S.anim.chapters[S.ch], stage = root.querySelector('.sb-stage'), sb = root.querySelector('.sb')
-        S.fit = S.ch + '|' + window.innerWidth + '|' + window.innerHeight
-        stage.style.removeProperty('--U'); stage.style.minHeight = '0'
+        S.fit = S.ch + '|' + window.innerWidth + '|' + window.innerHeight + '|' + !!S.max
+        stage.style.removeProperty('--U'); stage.style.minHeight = '0'; root.querySelector('.sb-script').style.height = wide() ? '100px' : ''
         if (window.innerWidth < 700) { stage.style.minHeight = ''; root.querySelector('.sb-caption').style.minHeight = ''; return }
         const cap = root.querySelector('.sb-caption'); cap.style.minHeight = ''
-        const tallest = () => { let all = 0, st = 0, cp = 0; for (const sc of ch.scenes) { paint(stage, ch, sc, null, false); cap.innerHTML = caption(ch, sc, 0); all = Math.max(all, sb.offsetHeight); st = Math.max(st, stage.offsetHeight); cp = Math.max(cp, cap.offsetHeight) } return { all, st, cp } }
+        const last = sb.lastElementChild, total = () => Math.ceil(last.getBoundingClientRect().bottom - sb.getBoundingClientRect().top + sb.scrollTop + 14)   // the player's content, top to bottom (when maximised its box is the window, whatever it holds)
+        const tallest = () => { let all = 0, st = 0, cp = 0; for (const sc of ch.scenes) { paint(stage, ch, sc, null, false); cap.innerHTML = caption(ch, sc, 0); all = Math.max(all, total()); st = Math.max(st, stage.offsetHeight); cp = Math.max(cp, cap.offsetHeight) } return { all, st, cp } }
         let h = tallest()
-        const room = window.innerHeight - Math.min(sb.getBoundingClientRect().top + window.scrollY, 240) - 8
+        const room = S.max ? window.innerHeight : window.innerHeight - Math.min(sb.getBoundingClientRect().top + window.scrollY, 240) - 8
+        if (S.max) for (let U = 22; U <= 46; U++) { stage.style.setProperty('--U', U + 'px'); const n = tallest(); if (n.all > room) { stage.style.setProperty('--U', (U - 1) + 'px'); h = tallest(); break } h = n }   // room to spare: taller blocks
         for (let U = Math.round(parseFloat(getComputedStyle(stage).getPropertyValue('--U'))) - 1; h.all > room && U >= 15; U--) { stage.style.setProperty('--U', U + 'px'); const n = tallest(); if (n.all >= h.all) { stage.style.setProperty('--U', (U + 1) + 'px'); break } h = n }   // stop when shorter blocks no longer help
         stage.style.minHeight = h.st + 'px'; cap.style.minHeight = h.cp + 'px'
+        const scr = root.querySelector('.sb-script'); scr.style.height = wide() ? (h.st + (S.max ? Math.max(0, room - h.all) : 0)) + 'px' : ''
+        if (S.max && room > h.all) stage.style.minHeight = (h.st + room - h.all) + 'px'
     }
     const caption = (ch, sc, i) => `<b>${esc(ch.title)} · scene ${i + 1} of ${ch.scenes.length}${ch.track || sc.list ? '' : ' <span>· blocks show size as an illustration, not a measurement</span>'}</b>${sc === ch.scenes[0] && ch.question ? `<strong>${esc(ch.question)}</strong> ` : ' '}${esc(sc.caption)}${sc.note ? ` <small>${esc(sc.note)}</small>` : ''}`
     function draw(animate) {
         const a = S.anim, ch = a.chapters[S.ch], sc = ch.scenes[S.sc], stage = root.querySelector('.sb-stage')
         const prev = S.prev && S.prev.ch === S.ch ? ch.scenes[S.prev.sc] : null
         animate = animate && !still()
-        if (S.fit !== S.ch + '|' + window.innerWidth + '|' + window.innerHeight) fit()
+        root.querySelector('.sb-main').classList.toggle('solo', !!sc.list)   // a list (what this simplifies) is its own text: no script beside it
+        if (S.fit !== S.ch + '|' + window.innerWidth + '|' + window.innerHeight + '|' + !!S.max) fit()
         paint(stage, ch, sc, prev, animate)
         if (!S.started) stage.insertAdjacentHTML('beforeend', '<button type="button" class="sb-big" data-do="play"><span aria-hidden="true">▶</span> Play</button>')
         root.querySelector('.sb-caption').innerHTML = caption(ch, sc, S.sc)
@@ -151,10 +157,11 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
         const first = S.ch === 0 && S.sc === 0, last = S.ch === a.chapters.length - 1 && S.sc === ch.scenes.length - 1
         root.querySelector('[data-do=prev]').disabled = first
         root.querySelector('[data-do=next]').disabled = last
-        const hash = '#' + a.id + '/' + (S.ch + 1) + '/' + (S.sc + 1), link = root.querySelector('.sb-link')
+        const hash = '#' + (S.ch + 1) + '/' + (S.sc + 1), link = root.querySelector('.sb-link')
         link.href = hash; link.textContent = 'Link to this scene'
         if (S.started) try { history.replaceState(null, '', hash) } catch (e) { }
         if (!S.prev || S.prev.ch !== S.ch) unfold()
+        mark()
         S.prev = { ch: S.ch, sc: S.sc }
     }
     function go(ch, sc, animate) {
@@ -189,28 +196,41 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
 
     // the text twin below the player, folded by chapter with the current one open (without JavaScript it is simply all there)
     function fold() {
-        for (const h2 of document.querySelectorAll('main.doc article h2')) {
-            let n = h2.nextElementSibling
-            while (n && n.tagName !== 'H2') {
-                if (n.tagName !== 'H3') { n = n.nextElementSibling; continue }
-                const d = document.createElement('details'), sm = document.createElement('summary'); d.className = 'sb-fold'; d.dataset.anim = h2.textContent.trim(); d.dataset.ch = n.textContent.trim(); sm.textContent = n.textContent
-                n.replaceWith(d); d.appendChild(sm); n = d.nextElementSibling
-                while (n && !/^H[23]$/.test(n.tagName)) { const next = n.nextElementSibling; d.appendChild(n); n = next }
-            }
+        for (const h of [...document.querySelectorAll('main.doc article h2')]) {
+            if (!/^\d+\. /.test(h.textContent.trim())) continue
+            const d = document.createElement('details'), sm = document.createElement('summary'); d.className = 'sb-fold'; d.dataset.ch = h.textContent.trim(); sm.textContent = h.textContent
+            let n = h.nextElementSibling; h.replaceWith(d); d.appendChild(sm)
+            while (n && n.tagName !== 'H2') { const next = n.nextElementSibling; d.appendChild(n); n = next }
         }
     }
-    function unfold() { const a = S.anim, ch = a.chapters[S.ch]; for (const d of document.querySelectorAll('details.sb-fold')) if (d.dataset.anim === a.title) d.open = d.dataset.ch === (S.ch + 1) + '. ' + ch.title || d.dataset.ch === ch.title }
+    const wide = () => window.innerWidth >= 1000
+    function unfold() { const ch = S.anim.chapters[S.ch]; for (const d of document.querySelectorAll('details.sb-fold')) d.open = !wide() && d.dataset.ch === (S.ch + 1) + '. ' + ch.title }
+    // the script: the chapter's scenes as text beside the stage, the current one marked; the writing is part of the piece
+    function script() {
+        const ch = S.anim.chapters[S.ch], el = root.querySelector('.sb-script')
+        el.innerHTML = `<h3><span>${S.ch + 1}</span> ${esc(ch.title)}</h3>${ch.question ? `<p class="q">${esc(ch.question)}</p>` : ''}<ol>${ch.scenes.map((sc, i) => `<li><button type="button" data-sc="${i}" aria-current="${i === S.sc}"><b>${i + 1}</b><span>${esc(sc.caption)}${sc.note ? `<small>${esc(sc.note)}</small>` : ''}</span></button></li>`).join('')}</ol>${ch.track || ch.scenes[0].list ? '' : '<p class="fine">Blocks show size as an illustration, not a measurement.</p>'}`
+    }
+    function mark() {
+        const el = root.querySelector('.sb-script'); if (!el.firstChild || el.dataset.ch !== String(S.ch)) { script(); el.dataset.ch = S.ch }
+        el.querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-current', i === S.sc))
+        const cur = el.querySelector('[aria-current=true]'); if (cur) el.scrollTop = Math.max(0, cur.offsetTop - el.offsetTop - 60)   // scroll the script, never the page
+    }
+    function maximise(on) {
+        const sb = root.querySelector('.sb'); S.max = on; sb.classList.toggle('max', on); document.documentElement.style.overflow = on ? 'hidden' : ''
+        const b = root.querySelector('[data-do=max]'); b.textContent = on ? 'Close full screen' : 'Full screen'; b.setAttribute('aria-pressed', on)
+        S.fit = ''; draw(false); if (on) sb.focus()
+    }
     function frame() {
         const a = S.anim
         root.innerHTML = `<div class="sb" tabindex="0" role="group" aria-label="Storyboard: ${esc(a.title)}">
-<div class="sb-title">${S.list.length > 1 ? `<label>Animation <select class="sb-pick">${S.list.map(x => `<option value="${esc(x.id)}"${x.id === a.id ? ' selected' : ''}>${esc(x.title)}</option>`).join('')}</select></label>` : `<h2>${esc(a.title)}</h2>`}<p class="meta"><b>What you will see:</b> ${esc(a.summary || '')} ${a.chapters.length - (a.simplifies ? 1 : 0)} chapters, ${a.chapters.reduce((n, c) => n + c.scenes.length, 0)} scenes, about ${Math.round(a.chapters.reduce((n, c) => n + c.scenes.reduce((m, sc) => m + dur(sc), 0), 0) / 60000)} minutes at normal speed, or step through with Next.</p></div>
+<div class="sb-title"><a class="sb-back" href="../index.html">Studio</a><h2>${esc(a.title)}</h2><button type="button" data-do="max" aria-pressed="false" title="Fill the screen (F); Escape returns">Full screen</button><p class="meta"><b>What you will see:</b> ${esc(a.summary || '')} ${a.chapters.length - (a.simplifies ? 1 : 0)} chapters, ${a.chapters.reduce((n, c) => n + c.scenes.length, 0)} scenes, about ${Math.round(a.chapters.reduce((n, c) => n + c.scenes.reduce((m, sc) => m + dur(sc), 0), 0) / 60000)} minutes at normal speed, or step through with Next.</p></div>
 <ol class="sb-chapters">${a.chapters.map((c, i) => `<li><button type="button" data-ch="${i}"><span>${i + 1}</span> ${esc(c.title)}</button></li>`).join('')}</ol>
-<div class="sb-stage"></div>
-<p class="sb-caption" aria-live="polite"></p>
+<div class="sb-main"><div class="sb-left-pane"><div class="sb-stage"></div>
+<p class="sb-caption" aria-live="polite"></p></div><aside class="sb-script" aria-label="This chapter, scene by scene"></aside></div>
 <div class="sb-progress" aria-hidden="true"><i></i></div>
 <div class="sb-controls"><button type="button" data-do="prev" title="Previous scene (←)">Previous</button><button type="button" data-do="play" class="primary" aria-pressed="false" title="Play or pause (Space)">Play</button><button type="button" data-do="next" title="Next scene (→)">Next</button><button type="button" data-do="speed" title="Speed (S)">Speed 1×</button></div>
 <div class="sb-more"><button type="button" data-do="restart" title="Restart this chapter (R)">Restart</button><a class="sb-link" href="#" title="Copy a link to this scene">Link to this scene</a><span class="sb-scenes" role="group" aria-label="Scenes of this chapter"></span></div>
-<p class="sb-keys meta">Keys: Space play or pause · ← → scene · PageUp PageDown chapter · R restart · S speed. The same, as text, is below.</p>
+<p class="sb-keys meta">Keys: Space play or pause · ← → scene · PageUp PageDown chapter · R restart · S speed · F full screen, Escape to return. The whole text, plain, is below.</p>
 </div>`
         const sb = root.querySelector('.sb')
         sb.addEventListener('click', e => {
@@ -221,7 +241,7 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
             if (b.dataset.ch) return go(+b.dataset.ch, 0)
             if (b.dataset.sc) return go(S.ch, +b.dataset.sc)
             const d = b.dataset.do
-            if (d === 'play') play(!S.playing); else if (d === 'next') next(); else if (d === 'prev') prev(); else if (d === 'restart') go(S.sc === 0 ? 0 : S.ch, 0); else if (d === 'speed') speed()
+            if (d === 'play') play(!S.playing); else if (d === 'next') next(); else if (d === 'prev') prev(); else if (d === 'restart') go(S.sc === 0 ? 0 : S.ch, 0); else if (d === 'speed') speed(); else if (d === 'max') maximise(!S.max)
         })
         sb.addEventListener('keydown', e => {
             if (e.altKey || e.ctrlKey || e.metaKey) return
@@ -232,22 +252,19 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
             else if (k === 'PageDown') go(S.ch + 1, 0); else if (k === 'PageUp') go(S.ch - 1, 0)
             else if (k === 'Home' || k === 'r' || k === 'R') go(S.sc === 0 ? 0 : S.ch, 0)
             else if (k === 's' || k === 'S') speed()
+            else if (k === 'f' || k === 'F') maximise(!S.max)
+            else if (k === 'Escape' && S.max) maximise(false)
             else if (/^[1-9]$/.test(k) && !onControl && +k <= S.anim.chapters.length) go(+k - 1, 0)
             else done = false
             if (done) { e.preventDefault(); started() }
         })
-        const pick = root.querySelector('.sb-pick'); if (pick) pick.addEventListener('change', () => load(pick.value, 0, 0))
         let rz = 0; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => draw(false), 150) })
         document.addEventListener('visibilitychange', () => { if (document.hidden && S.playing) play(false) })
     }
     function load(id, ch, sc) {
-        const item = S.list.find(x => x.id === id) || S.list[0]
-        return getJSON(base + item.file).then(a => { clearTimeout(S.timer); S.playing = false; S.prev = null; S.anim = normalise(a); S.fit = ''; if (ch || sc) S.started = true; frame(); go(ch || 0, sc || 0, false) })
+        return getJSON(base + id + '.json').then(a => { clearTimeout(S.timer); S.playing = false; S.prev = null; S.anim = normalise(a); S.fit = ''; if (ch || sc) S.started = true; frame(); go(ch || 0, sc || 0, false) })
     }
     fold()
-    getJSON(base + 'index.json').then(ix => {
-        S.list = ix.animations || []
-        const h = decodeURIComponent(location.hash.slice(1)).split('/')
-        return load(h[0], (+h[1] || 1) - 1, (+h[2] || 1) - 1)
-    }).catch(e => { root.insertAdjacentHTML('beforeend', `<p class="meta">The player could not load its animations (${esc(e.message)}). The same, as text, is below.</p>`) })
+    const h = decodeURIComponent(location.hash.slice(1)).split('/').filter(x => /^\d+$/.test(x))   // #chapter/scene (an older link's #name/chapter/scene still lands)
+    load(root.dataset.anim, (+h[0] || 1) - 1, (+h[1] || 1) - 1).catch(e => { root.insertAdjacentHTML('beforeend', `<p class="meta">The player could not load this explanation (${esc(e.message)}). The same, as text, is below.</p>`) })
 })()
