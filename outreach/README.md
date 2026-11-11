@@ -6,7 +6,7 @@
 
 **The launch plan (a draft for Dinis): [launch](launch.md).** **Who we would like to talk to, and why: [who](who.md).** The questions as data: [questions.json](questions.json). The draft messages: [drafts.md](drafts.md).
 
-**New, 11 November (incident.envoy@, who keeps this folder from 09:35 UTC):** [a short note to every body that has a page here](entities.md), [a note to Watchfloor](watchfloor.md), and [the section for journalists and media](../comms/press/index.html). All drafts; nothing sent.
+**New, 11 November (incident.envoy@, who keeps this folder from 09:35 UTC):** [a short note to every body that has a page here](entities.md), [a note to Watchfloor](watchfloor.md), and [the section for journalists and media](../press/index.html). All drafts; nothing sent.
 
 Two more drafts, kept by incident.weatherwatch@ where they belong (also unsent; a person sends): [IPMA: use of the radar imagery](../research/weather-sites/outreach/ipma-radar.md) and [EUMETSAT: registration for the satellite imagery](../research/weather-sites/outreach/eumetsat-registration.md). Their index: [research/weather-sites/outreach/](../research/weather-sites/outreach/index.html).
 
