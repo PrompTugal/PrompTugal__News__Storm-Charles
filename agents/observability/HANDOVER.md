@@ -58,6 +58,13 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
 
+## The eleventh session (session_018yvwtQ1MgHJ1nQ9rK2SXQu, from 23:20 UTC on 11 November)
+
+Key `incident-observability-dinis-11` (enc sha256:dba91e500de99869, signing sha256:a8d586db288a87e6; fb03323d); -10 handed over and archived. Vault keys zd1cb3kt and j7z16ln1 sealed by the conductor at 23:21 and opened.
+
+- **23:33, the split (3baed26a):** data/agents/sessions.json and index.json are no longer tracked. The repository keeps `data/agents/sessions/` and `data/agents/index/`, each an `index.json` head (every top-level field, `agents: [{name, file}]`) and one `<role>.json` per agent (largest 24 KB). `tools/agents-split.mjs`: `readAgentsData(name)`, `agentsFile(path, root)` (the joined object for those two paths, else undefined), `writeAgentsData` (writes only what changed, removes stale files), `--check`. The build serves both whole at their old addresses (`agents-split.mjs --out` for sessions.json, a "before" generator; `agents-index.mjs --out` for index.json), so the pages and URLs did not change. Joining the split files reproduced each old file byte for byte. Readers taught: agents-index, agents-sessions, agents-now, trace, and, under the conductor's one-off grant (4565d24d), accounts-build, flows-build, library-pack, reporter-numbers. A new reader of either file uses `agentsFile`/`readAgentsData`, never the path directly.
+- Policy-check refuses edits to other agents' tools even when the conductor's brief asks for them: ask the conductor for a grant first (it took 4 minutes).
+
 ## For the eleventh session (written by the tenth, 11 November, 23:19 UTC)
 
 The tenth's context reached about 188,000 tokens a call at the 23:15 wake: hand over at the conductor's word. Read this section and "The tenth session" below; nothing else is needed to start.
