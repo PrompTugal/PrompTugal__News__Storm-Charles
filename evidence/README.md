@@ -4,11 +4,11 @@ summary: Our dated captures of every outside page this site cites: a screenshot,
 ---
 ## Wayback: our captures of outside pages and feeds
 
-> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 04:48 UTC
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 05:25 UTC
 
 Every time this site cites an outside page, we keep what that page looked like at that moment: a screenshot, the HTML as served, and the sha256 of each. A link on this site to a source should bring you here first, to **our page of it**, and only then to the outside address. When we read a page again we record whether it still says the same thing.
 
-**542 addresses, 557 captures, 111 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
+**542 addresses, 564 captures, 118 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
 
 | Source | Page (our latest capture) | Last read | Captures | Since the one before | Shown |
 |---|---|---|---|---|---|
@@ -33,8 +33,8 @@ Every time this site cites an outside page, we keep what that page looked like a
 | amn.pt | [Informação Legal](amn/2026/11/11/0301-paginas-informacaolegal.md) `amn.pt/Paginas/InformacaoLegal.aspx` | 11 Nov 2026, 03:01 UTC | 1 | one capture | screenshot |
 | ana.pt | [ANA - Aeroportos de Portugal](ana/2026/11/11/0309-front.md) `ana.pt/` | 11 Nov 2026, 03:09 UTC | 1 | one capture | hash and excerpt |
 | ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [prociv.gov.pt/](anepc/2026/11/11/0256-front.md) `prociv.gov.pt/` | 11 Nov 2026, 02:56 UTC | 1 | one capture | screenshot |
-| ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0325-pt-avisos-a-populacao.md) `prociv.gov.pt/pt/avisos-a-populacao/` | 11 Nov 2026, 04:25 UTC | 3 | unchanged at the last read | screenshot |
-| ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0424-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.md) `prociv.gov.pt/pt/avisos-a-populacao/aviso-21-depressao-charles-agravamento-da-si` | 11 Nov 2026, 04:24 UTC | 3 | unchanged at the last read | screenshot |
+| ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0524-pt-avisos-a-populacao.md) `prociv.gov.pt/pt/avisos-a-populacao/` | 11 Nov 2026, 05:24 UTC | 4 | unchanged at the last read | screenshot |
+| ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0524-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.md) `prociv.gov.pt/pt/avisos-a-populacao/aviso-21-depressao-charles-agravamento-da-si` | 11 Nov 2026, 05:24 UTC | 4 | unchanged at the last read | screenshot |
 | ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0302-pt-contactos.md) `prociv.gov.pt/pt/contactos/` | 11 Nov 2026, 03:02 UTC | 1 | one capture | screenshot |
 | ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0302-pt-home.md) `prociv.gov.pt/pt/home/` | 11 Nov 2026, 03:02 UTC | 1 | one capture | screenshot |
 | ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [prociv.gov.pt/pt/noticias/](anepc/2026/11/11/0226-pt-noticias.md) `prociv.gov.pt/pt/noticias/` | 11 Nov 2026, 02:26 UTC | 1 | one capture | screenshot |
@@ -193,7 +193,7 @@ Every time this site cites an outside page, we keep what that page looked like a
 | Government of Portugal | [dados.gov.pt/pt/datasets/?q=ipma](governo/2026/11/11/0300-pt-datasets-q-ipma.md) `dados.gov.pt/pt/datasets/?q=ipma` | 11 Nov 2026, 03:00 UTC | 1 | one capture | screenshot |
 | Government of Portugal | [dados.gov.pt/termos-de-utilizacao](governo/2026/11/11/0301-termos-de-utilizacao.md) `dados.gov.pt/termos-de-utilizacao` | 11 Nov 2026, 03:01 UTC | 1 | one capture | screenshot |
 | Government of Portugal | [Despacho n.º 13773-A/2026, de 10 de novembro · DR](governo/2026/11/11/0243-dr-detalhe-despacho-13773-a-2026-1193823993.md) `diariodarepublica.pt/dr/detalhe/despacho/13773-a-2026-1193823993` | 11 Nov 2026, 02:43 UTC | 1 | one capture | screenshot |
-| Government of Portugal | [Governo declara situação de alerta em todo o território continental - XXV Governo Constitucional](governo/2026/11/11/0425-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.md) `portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-` | 11 Nov 2026, 04:25 UTC | 3 | unchanged at the last read | screenshot |
+| Government of Portugal | [Governo declara situação de alerta em todo o território continental - XXV Governo Constitucional](governo/2026/11/11/0524-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.md) `portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-` | 11 Nov 2026, 05:24 UTC | 4 | unchanged at the last read | screenshot |
 | Government of Portugal | [Mau tempo: Governo declara situação de alerta - XXV Governo Constitucional](governo/2026/11/11/0305-gc25-comunicacao-noticias-mau-tempo-governo-declara-situacao-alerta.md) `portugal.gov.pt/gc25/comunicacao/noticias/mau-tempo-governo-declara-situacao-ale` | 11 Nov 2026, 03:05 UTC | 1 | one capture | screenshot |
 | Government of Portugal | [Runtime Error](governo/2026/11/11/0257-front.md) `madeira.gov.pt/` | 11 Nov 2026, 02:57 UTC | 1 | one capture | screenshot |
 | Government of Portugal | [www.mai.gov.pt/](governo/2026/11/11/0226-front.md) `mai.gov.pt/` | 11 Nov 2026, 02:26 UTC | 1 | one capture | screenshot |
@@ -209,11 +209,11 @@ Every time this site cites an outside page, we keep what that page looked like a
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Contacto](ipma/2026/11/11/0302-opencms-pt-siteinfo-contactar-jsp.md) `ipma.pt/opencms/pt/siteinfo/contactar.jsp` | 11 Nov 2026, 03:02 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Índice](ipma/2026/11/11/0301-opencms-pt-siteinfo-index-html-page-index-xml.md) `ipma.pt/opencms/pt/siteinfo/index.html?page=index.xml` | 11 Nov 2026, 03:01 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [Instituto Português do Mar e da Atmosfera](ipma/2026/11/11/0258-pt-index.md) `ipma.pt/pt/index.html` | 11 Nov 2026, 02:58 UTC | 1 | one capture | screenshot |
-| IPMA (Instituto Português do Mar e da Atmosfera) | [Instituto Português do Mar e da Atmosfera](ipma/2026/11/11/0424-pt-otempo-comunicados.md) `ipma.pt/pt/otempo/comunicados/` | 11 Nov 2026, 04:24 UTC | 3 | unchanged at the last read | screenshot |
+| IPMA (Instituto Português do Mar e da Atmosfera) | [Instituto Português do Mar e da Atmosfera](ipma/2026/11/11/0524-pt-otempo-comunicados.md) `ipma.pt/pt/otempo/comunicados/` | 11 Nov 2026, 05:24 UTC | 4 | unchanged at the last read | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [Instituto Português do Mar e da Atmosfera](ipma/2026/11/11/0305-pt-otempo-comunicados-index-jsp.md) `ipma.pt/pt/otempo/comunicados/index.jsp` | 11 Nov 2026, 03:05 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Imagens de radar](ipma/2026/11/11/0300-pt-otempo-obs-radar.md) `ipma.pt/pt/otempo/obs.radar/` | 11 Nov 2026, 03:00 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Imagens de satélite](ipma/2026/11/11/0301-pt-otempo-obs-satelite.md) `ipma.pt/pt/otempo/obs.satelite/` | 11 Nov 2026, 03:01 UTC | 1 | one capture | screenshot |
-| IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0424-pt-otempo-prev-sam.md) `ipma.pt/pt/otempo/prev-sam/` | 11 Nov 2026, 04:24 UTC | 3 | unchanged at the last read | screenshot |
+| IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0523-pt-otempo-prev-sam.md) `ipma.pt/pt/otempo/prev-sam/` | 11 Nov 2026, 05:23 UTC | 4 | unchanged at the last read | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0253-pt-otempo-prev-sam-p-lsb.md) `ipma.pt/pt/otempo/prev-sam/?p=LSB` | 11 Nov 2026, 02:53 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0224-pt-otempo-prev-sam-timeline-jsp-print-true-reg-lsb.md) `ipma.pt/pt/otempo/prev-sam/timeline.jsp?print=true&reg=LSB` | 11 Nov 2026, 02:24 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Previsão 10 dias, horária diária, localidade](ipma/2026/11/11/0259-pt-otempo-prev-localidade-hora.md) `ipma.pt/pt/otempo/prev.localidade.hora/` | 11 Nov 2026, 02:59 UTC | 1 | one capture | screenshot |
@@ -526,8 +526,8 @@ Every time this site cites an outside page, we keep what that page looked like a
 | weather.gov | [Disclaimer](weather-gov/2026/11/11/0300-disclaimer.md) `weather.gov/disclaimer` | 11 Nov 2026, 03:00 UTC | 1 | one capture | screenshot |
 | weather.gov | [Request for Permission to Use Official NOAA Emblem and NWS Logo](weather-gov/2026/11/11/0304-logorequest.md) `weather.gov/logorequest` | 11 Nov 2026, 03:04 UTC | 1 | one capture | screenshot |
 | Web Summit | [Web Summit - The best tech conference on the planet · November 9-12, 2026](websummit/2026/11/11/0223-front.md) `websummit.com/` | 11 Nov 2026, 02:23 UTC | 1 | one capture | screenshot |
-| Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0424-blog.md) `websummit.com/blog/` | 11 Nov 2026, 04:24 UTC | 3 | unchanged at the last read | screenshot |
-| Web Summit | [Important event update](websummit/2026/11/11/0424-blog-web-summit-important-event-update-2026.md) `websummit.com/blog/web-summit/important-event-update-2026/` | 11 Nov 2026, 04:24 UTC | 3 | unchanged at the last read | screenshot |
+| Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0523-blog.md) `websummit.com/blog/` | 11 Nov 2026, 05:23 UTC | 4 | unchanged at the last read | screenshot |
+| Web Summit | [Important event update](websummit/2026/11/11/0523-blog-web-summit-important-event-update-2026.md) `websummit.com/blog/web-summit/important-event-update-2026/` | 11 Nov 2026, 05:23 UTC | 4 | unchanged at the last read | screenshot |
 | Web Summit | [Mobile app · Essentials · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-essentials-app.md) `websummit.com/essentials/app/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
 | Web Summit | [Schedule · Essentials · Web Summit · November 9-12, 2026](websummit/2026/11/11/0225-essentials-schedule.md) `websummit.com/essentials/schedule/` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
 | Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0224-news.md) `websummit.com/news/` | 11 Nov 2026, 02:24 UTC | 1 | one capture | screenshot |
