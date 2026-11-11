@@ -448,3 +448,10 @@ header.top .wrap { min-width: 0; flex-wrap: wrap; }
 header.top .wrap > * { min-width: 0; }
 nav.top { display: flex; flex: 1 1 100%; width: 100%; max-width: 100%; min-width: 0; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; white-space: nowrap; -webkit-overflow-scrolling: touch; }
 .navg { flex: none; }
+
+/* ---- round 21 (incident.designer@): six sections on one line at 1280; a fade where the nav is cut. design/round-21.md ---- */
+nav.top { font-size: 12.5px; letter-spacing: -.005em; }
+.navg { gap: 6px; padding: 0 7px; }
+.navg b { font-size: 9.5px; letter-spacing: .07em; }
+@media (min-width: 1440px) { nav.top { font-size: 13.5px; } .navg { gap: 10px; padding: 0 12px; } .navg b { font-size: 10.5px; } }
+@media (max-width: 1270px) { nav.top { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); padding-right: 36px; } }
