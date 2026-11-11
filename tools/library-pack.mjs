@@ -32,6 +32,7 @@ const stat0 = f => { const c = catBy.get(f); if (c && c.sha256 && Number.isFinit
 // 2.39 bytes a token and the pack, which is dense JSON in part, to 1.62; so prose is estimated at bytes / 2.4 and JSON at bytes / 1.6
 const tok = (b, json) => Math.round(b / (json ? 1.6 : 2.4))
 const n = x => String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ',')   // 12,345: the same as en-GB, without loading the locale data (20 ms)
+const list = v => v == null || v === '' ? [] : [].concat(v) // a status may give next/asks as a string or a list (12:29, the conductor's ask)
 const cut = (s, k) => { s = String(s || '').replace(/\s+/g, ' ').trim(); return s.length <= k ? s : s.slice(0, k).replace(/\s+\S*$/, '') + ' …' }
 const cell = s => String(s ?? '').replace(/\|/g, '/').replace(/\n/g, ' ')
 // A status file's hand-over, whatever shape its writer gave it: an object with named parts, a list of sentences, or one
@@ -134,7 +135,7 @@ const board = (() => { try { return fs.readdirSync(path.join(ROOT, 'board/items'
 }
 const open = board.filter(c => !/^(done|closed|answered|resolved)$/i.test(c.state || ''))
 const statuses = Object.values(policy.agents).map(r => ({ role: r.role, s: J(`agents/${r.role}/status.json`) })).filter(x => x.s)
-const waits = statuses.flatMap(x => (x.s.asks || []).filter(a => /^Dinis\b/.test(String(a))).map(a => ({ from: x.s.agent || x.role, ask: cut(a, 300), file: `agents/${x.role}/status.json` })))
+const waits = statuses.flatMap(x => list(x.s.asks).filter(a => /^Dinis\b/.test(String(a))).map(a => ({ from: x.s.agent || x.role, ask: cut(a, 300), file: `agents/${x.role}/status.json` })))
 const state = {
     about: 'The incident now, small: for an agent that needs the state without reading the data room. Every value is copied from the file named in "from" (with its sha256 at this build); nothing is written for this file. "In force" is by the build\'s clock: check the windows against your own. Not a warning service: follow IPMA, ANEPC and local authorities.',
     by: ME, updated: iso, made_by: 'tools/library-pack.mjs', incident: incDir,
@@ -188,8 +189,8 @@ ${abpTask[role] ? cell(abpTask[role]) : jobs[role] ? cell(jobs[role].job) : '*no
 ## Where the work stands
 
 ${st ? `- **State:** ${cell(cut(st.state, 400))}${st.updated ? ` (its own date: ${st.updated})` : ''}
-${(st.next || []).slice(0, 3).map(x => `- **Next:** ${cell(cut(x, 200))}`).join('\n')}
-${(st.asks || []).slice(0, 4).map(x => `- **Ask:** ${cell(cut(x, 200))}`).join('\n')}
+${list(st.next).slice(0, 3).map(x => `- **Next:** ${cell(cut(x, 200))}`).join('\n')}
+${list(st.asks).slice(0, 4).map(x => `- **Ask:** ${cell(cut(x, 200))}`).join('\n')}
 - The whole status, with everything done: ${P1(`agents/${role}/status.json`)}` : '- No status file yet: nothing has been recorded by this agent.'}
 ${st?.handover ? `
 ## The hand-over from the session before yours
