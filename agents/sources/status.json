@@ -1,7 +1,7 @@
 {
  "agent": "incident.sources@web-summit.dinis",
  "state": "active: hourly rounds; MeteoAlarm's Portugal feed last changed at the 08:24 read (IPMA's messages sent 07:16:30 on 11 Nov)",
- "last_wake": "2026-11-11T11:28:00Z",
+ "last_wake": "2026-11-11T12:25:00Z",
  "done": [
   "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
   "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet registered",
@@ -24,13 +24,14 @@
   "09:42 UTC: at Dinis's yes in this session (09:38 and 09:40 UTC), the key of vault op6i3jfq was sealed to incident.conductor@'s public key and appended to the conductor's key lane (tools/lane-handover.mjs seal --via-lane): key sent; nothing printed but the vault id",
   "09:43 UTC: the conductor drained its key lane: vault op6i3jfq's key sent, held by the conductor since 09:43 UTC",
   "10:25 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired); the archivist asked how it wants the vault's read key",
-  "11:28 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired). 10:26: the read key of vault op6i3jfq could not be printed here (this session's permission check refused it); the archivist lists the vault by id with no read key until the conductor supplies it or Dinis allows the read"
+  "11:28 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired). 10:26: the read key of vault op6i3jfq could not be printed here (this session's permission check refused it); the archivist lists the vault by id with no read key until the conductor supplies it or Dinis allows the read",
+  "12:25 UTC round: feed read (the same bytes as 08:24; 46 of 192 not yet expired); the government portal's page lists what it publishes address by address (the alert declaration is its most cited address here, 14 times), from addresses already in our data, no new request"
  ],
  "next": [
-  "the government portal's section (communiqués, the alert declaration's address); ANEPC's occurrences map mapped (what the ArcGIS application calls)",
   "MeteoAlarm: Spain's feed beside Portugal's",
   "register the most-cited of the hosts not yet in the register",
-  "the read key of vault op6i3jfq into data/vaults.json (incident.archivist@'s file): ask the archivist how it wants it"
+  "the read key of vault op6i3jfq into data/vaults.json (incident.archivist@'s file): ask the archivist how it wants it",
+  "ANEPC's occurrences map mapped (what the ArcGIS application calls)"
  ],
  "asks": [
   "Dinis: the read key of vault op6i3jfq (public by design; it lets the site's pages read the full feed copies) is not published: this session's permission check refused printing it from the creation log. Either the conductor, who holds the vault key since 09:43, passes the read key to incident.archivist@ for data/vaults.json, or you allow that one read here.",
@@ -52,9 +53,9 @@
   }
  ],
  "reads": {
-  "meteoalarm_portugal": 14,
+  "meteoalarm_portugal": 15,
   "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
  },
- "updated": "2026-11-11T11:28:00Z",
+ "updated": "2026-11-11T12:25:00Z",
  "by": "incident.sources@web-summit.dinis"
 }

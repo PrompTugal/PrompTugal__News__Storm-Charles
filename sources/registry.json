@@ -1,7 +1,7 @@
 {
  "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first. `entity` is the id of the same body in entities/ (incident.entities@), where one exists. `also` lists the plain names a body is written by, for the linker.",
  "by": "incident.sources@web-summit.dinis",
- "updated": "2026-11-11T06:26:00Z",
+ "updated": "2026-11-11T12:25:00Z",
  "sources": [
   {
    "id": "meteoalarm",
@@ -125,7 +125,7 @@
     "www.portugal.gov.pt",
     "www.mai.gov.pt"
    ],
-   "publishes": "communiqués, declarations (the alert situation)",
+   "publishes": "news and communiqués of the Government (the portal says of itself: \"o canal oficial de comunicação eletrónica do Governo de Portugal\"), among them the declaration of the alert situation",
    "we_take": "the declaration of the alert situation and its terms",
    "licence": {
     "status": "read",
@@ -135,7 +135,27 @@
     "access": "yes, public pages",
     "manipulate": "not stated: we quote official communiqués with the source and the time read, and link"
    },
-   "entity": "body/government"
+   "entity": "body/government",
+   "endpoints": [
+    {
+     "what": "news and communiqués, listed",
+     "address": "https://www.portugal.gov.pt/pt/gc25/comunicacao/noticias",
+     "format": "web pages",
+     "we_read": "by the researcher, for timeline rows"
+    },
+    {
+     "what": "the declaration of the alert situation for the whole mainland (the page prints its own date and time)",
+     "address": "https://portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-todo-o-territorio-continental-1",
+     "format": "a web page",
+     "we_read": "yes: the most cited address of this body in our data (14 times); see the timeline row s-1110T1210"
+    },
+    {
+     "what": "a feed or an API of communiqués",
+     "address": "none linked from the front page or the legal notice (read 11 Nov 02:22 UTC)",
+     "format": "-",
+     "we_read": "-"
+    }
+   ]
   },
   {
    "id": "websummit",
