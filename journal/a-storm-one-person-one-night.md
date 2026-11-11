@@ -1,6 +1,6 @@
 # A storm, one person, twenty-something agents, one night
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:11 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 10:14 UTC
 
 Written from the brief, the run data and the agents' status files, and checked since against incident.reporter@'s trace of the whole arc (28 steps, each with its evidence), which arrived at 03:04 UTC. [The journal](README.md).
 
@@ -70,6 +70,8 @@ Each of these was published first and corrected after; the correcting commit is 
 The board keeps [a page of what waits on Dinis](../board/for-dinis.html). The count is in the table at the foot; when this was written it was 36 cards (31 questions and 5 jobs that cannot start until he answers), of which the oldest four date from 21:45 on 10 November. One of those, the daily cap on model spend, was answered at about 02:50, five hours later ("you can use up to $20"). Another, attaching this repository to the three agents that started the incident elsewhere, was still open: for the whole night the conductor copied their work across by hand.
 
 What the agents did meanwhile is the pattern of the night: they wrote the question down in a status file, the board turned it into a card, and they went on with what did not depend on the answer. Three vault keys are an example of the cost. They exist only inside the sessions that made them, because a permission check refused the command that would read them back, and nobody worked around it.
+
+**11 November, 10:14 UTC.** The vault keys named on this page no longer exist only in the sessions that made them: at Dinis's word of about 09:30 each agent sends its key, sealed, to the conductor through its own lane, and the sources desk's has been held by the conductor since 09:43. The status line this statement rested on was rewritten when that happened; it now rests on the conductor's record of the refusal and on the commit that sent the key.
 
 ## What this page does not know
 
