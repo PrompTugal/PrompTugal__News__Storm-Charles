@@ -1,0 +1,42 @@
+{
+  "by": "incident.storyteller@web-summit.dinis",
+  "updated": "2026-11-11T10:18:00Z",
+  "id": "a-journalists-hand-over",
+  "n": 3,
+  "title": "A hand-over: the journalist's third session to its fourth",
+  "named_by": "dinis",
+  "span": "11 November, 05:15 to 08:18 UTC: one session's life, and the minute the role passes on",
+  "summary": "A role is a name and a set of folders; a session is one context holding it. The journalist's third session starts at 05:15 and does three hours of hourly wakes. At its 08:12 wake ([path 1](01-a-journalists-wake.md)) its context reaches 196,389 tokens. At 08:16 the conductor starts a fourth session; it makes its own key, marks the third's key \"handed over\", reads the hand-over the third left in its status file, and pushes its first round 1 min 10 s after its key. Nothing passes between the two sessions except files.",
+  "pause_min": 30,
+  "cast": ["incident.conductor@web-summit.dinis", "incident.journalist@web-summit.dinis#3", "incident.journalist@web-summit.dinis#4", "incident.identity@web-summit.dinis", "incident.accountant@web-summit.dinis", "dinis"],
+  "steps": [
+    { "t": "2026-11-11T05:15:03Z", "actor": "incident.journalist@web-summit.dinis#3", "verb": "wake", "what": "the third session's first model call (the ledger's first_call); it was started after the second session's hand-over", "file": "accounts/ledger/journalist.jsonl" },
+    { "t": "2026-11-11T05:17:41Z", "actor": "incident.journalist@web-summit.dinis#3", "verb": "commit", "what": "the third session starts: its session key's public half (incident-journalist-dinis-3); the second's entry marked handed over; a ninth piece", "commit": "12c22b23", "file": "data/keys.json" },
+    { "t": "2026-11-11T06:20:59Z", "actor": "incident.journalist@web-summit.dinis#3", "verb": "commit", "what": "06:20 round: a tenth piece, \"The first decision to stop\"", "commit": "5c2749f1", "before": "hourly wakes: the session waits for the clock" },
+    { "t": "2026-11-11T07:15:12Z", "actor": "incident.journalist@web-summit.dinis#3", "verb": "correct", "what": "07:14 round: the tenth piece corrected from the conductor's own record of the hold", "commit": "fda196f5", "before": "hourly wakes" },
+    { "t": "2026-11-11T08:14:51Z", "actor": "incident.journalist@web-summit.dinis#3", "verb": "commit", "what": "08:14 round: the eleventh piece, \"Nobody asked\" (path 1); the status file carries a hand-over list for whoever comes next", "commit": "26371572", "file": "agents/journalist/status.json", "before": "hourly wakes" },
+    { "t": "2026-11-11T08:15:01Z", "actor": "incident.journalist@web-summit.dinis#3", "verb": "commit", "what": "tokens measured: 49 calls in the session; context 84,018 at the first call, 196,389 at the last (the team's line is to hand over near 200,000)", "commit": "82c935dc", "file": "accounts/ledger/journalist.jsonl" },
+    { "t": "2026-11-11T08:16:00Z", "actor": "incident.conductor@web-summit.dinis", "to": "incident.journalist@web-summit.dinis#4", "verb": "route", "what": "the conductor starts a fourth journalist session, at Dinis's word (the fourth's status: started_by the conductor's session, on_whose_word Dinis Cruz, follows the third)", "file": "agents/journalist/status.json" },
+    { "t": "2026-11-11T08:16:05Z", "actor": "incident.journalist@web-summit.dinis#4", "verb": "wake", "what": "the fourth session's first model call; its context starts at 84,099 tokens (the start prompt, CLAUDE.md, the start pack)", "file": "accounts/ledger/journalist.jsonl" },
+    { "t": "2026-11-11T08:16:30Z", "actor": "incident.journalist@web-summit.dinis#4", "verb": "read", "what": "the hand-over: the `handover` list in the status file (run the check first; stamp times from the clock; counts from the file that owns them) and `next` (two dated lines owed). Time approximate", "file": "agents/journalist/status.json" },
+    { "t": "2026-11-11T08:16:54Z", "actor": "incident.journalist@web-summit.dinis#4", "verb": "hand-over", "what": "its own session key's public half added (incident-journalist-dinis-4); the third session's entry marked \"handed over\". For: identity@, which checks the keys", "commit": "8aaa7ce5", "file": "data/keys.json" },
+    { "t": "2026-11-11T08:18:04Z", "actor": "incident.journalist@web-summit.dinis#4", "verb": "commit", "what": "the fourth session's first round: the two dated lines the third had listed in `next` (the accountant's round 8; the outage's sixth empty hour), each resting on a commit. For: the conductor and the accountant", "commit": "7146cfdf" },
+    { "t": "2026-11-11T08:18:04Z", "actor": "incident.journalist@web-summit.dinis#4", "verb": "commit", "what": "tokens measured: the first round cost 14 calls", "commit": "bc2d7002", "file": "accounts/ledger/journalist.jsonl" }
+  ],
+  "pauses_note": "The pauses of an hour are the session waiting for its clock: it holds its context between wakes and each wake adds to it. That is why a session ends: not on a timer, but when its context is full.",
+  "shows": [
+    "A hand-over is files, not memory: the old session leaves a list in its status file; the new one reads it, makes its own key and starts on the old one's `next`.",
+    "The record marks every generation: one key per session in data/keys.json, the old one marked \"handed over\", the new one's first commit within a minute.",
+    "The new session starts at 84,099 tokens where the old one ended at 196,389: starting again is cheaper than remembering (the title of the journalist's own sixth piece)."
+  ],
+  "reading": [
+    "Its fourth session wrote down what the start pack had not told it (`pack_did_not_tell` in its status file): that the pack was built from the status file at the last push, and that a fresh session should pull dev again before reading it. A hand-over improves the next hand-over.",
+    "The journalist's first hand-over, at 04:09, was on the conductor's word at 04:08 (commits 0fb17c3a and a5745e7d); its second at about 05:15. This one is told because the record holds both ends of it: the context number that ended the third session, and the first call of the fourth."
+  ],
+  "rests_on": [
+    "commits 12c22b23, 5c2749f1, fda196f5, 26371572, 82c935dc, 8aaa7ce5, 7146cfdf, bc2d7002",
+    "accounts/ledger/journalist.jsonl: the lines at 08:15:01 (session s-3bc2fe25665f) and 08:18:04 (session s-c97c7fa1ba3b)",
+    "agents/journalist/status.json as committed in 26371572 (handover, next) and 7146cfdf (session, pack_did_not_tell)",
+    "data/keys.json: incident-journalist-dinis-3 (handed over) and -4 (active)"
+  ]
+}

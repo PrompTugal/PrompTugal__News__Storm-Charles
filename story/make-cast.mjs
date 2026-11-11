@@ -56,6 +56,7 @@ const OTHERS = [
   { id: 'readers', kind: 'outside', name: 'readers', line: 'people and agents who read the site; counted only as totals, never named', icon: { emoji: '👀', glyph: 'readers' }, source: 'CLAUDE.md (page views)' },
   { id: 'meteoalarm', kind: 'outside', name: 'MeteoAlarm', line: "Europe's warnings feed, the first source body with its own section", icon: { emoji: '🚨', glyph: 'siren' }, source: 'agents/JOBS.md (sources@)' },
   { id: 'ci-runner', kind: 'machine', name: 'CI', line: 'the pipeline: builds, gates, deploys, numbers the release and tags it; never commits', icon: { emoji: '🏭', glyph: 'factory' }, source: 'CLAUDE.md (branches and versions)' },
+  { id: 'clock', kind: 'machine', name: 'the clock (the scheduler)', line: 'the scheduled wakes: each agent woken hourly at its own minute, with no person present', icon: { emoji: '⏰', glyph: 'clock' }, source: 'library/pack/wakes.json' },
   { id: 'vaults', kind: 'machine', name: 'the vaults (SG/Send)', line: 'where raw captures, model calls and page views go; git keeps a pointer and a sha256', icon: { emoji: '🔐', glyph: 'vault' }, source: 'CLAUDE.md' },
 ];
 

@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:16 UTC.
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:18 UTC.
 
 # Ten paths
 
@@ -6,9 +6,9 @@ Each path is told end to end from the record: the cast, the steps with their tim
 
 | # | Path | State |
 |---|---|---|
-| 1 | A journalist's wake, end to end (Dinis named it) | being written |
-| 2 | A story made by stories@ (Dinis named it) | to write |
-| 3 | A hand-over: a journalist's (Dinis named it) | to write |
+| 1 | [A journalist's wake, end to end](01-a-journalists-wake.md) (Dinis named it) | told: 08:09 to 08:16 |
+| 2 | A story made by stories@ (Dinis named it) | being written |
+| 3 | [A hand-over: the journalist's third session to its fourth](03-a-journalists-hand-over.md) (Dinis named it) | told: 05:15 to 08:18 |
 | 4 | Last night's data source: asked for, found, published as JSON, used by Dinis (Dinis named it) | to write |
 | 5 | Dinis's request of 10:10, from that moment on (Dinis named it; recorded as it happens) | to write |
 | 6 | IPMA's wind downgrade: from its warning to the front page and the press | to write |

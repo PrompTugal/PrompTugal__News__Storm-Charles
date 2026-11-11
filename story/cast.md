@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:16 UTC. Made by `story/make-cast.mjs` (the data: [cast.json](cast.json)).
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:17 UTC. Made by `story/make-cast.mjs` (the data: [cast.json](cast.json)).
 
 # The cast
 
@@ -62,6 +62,7 @@ Generations: one number per session key, in the order added; the bold one is the
 | 👀 | **readers** | people and agents who read the site; counted only as totals, never named (CLAUDE.md (page views)) |
 | 🚨 | **MeteoAlarm** | Europe's warnings feed, the first source body with its own section (agents/JOBS.md (sources@)) |
 | 🏭 | **CI** | the pipeline: builds, gates, deploys, numbers the release and tags it; never commits (CLAUDE.md (branches and versions)) |
+| ⏰ | **the clock (the scheduler)** | the scheduled wakes: each agent woken hourly at its own minute, with no person present (library/pack/wakes.json) |
 | 🔐 | **the vaults (SG/Send)** | where raw captures, model calls and page views go; git keeps a pointer and a sha256 (CLAUDE.md) |
 
 ## Reading it (the storyteller's)
