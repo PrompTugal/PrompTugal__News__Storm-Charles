@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 12:10 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 16:06 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -172,6 +172,14 @@
 - Broke: nothing in the record at 15:09; CI: 52 runs, no failure, one deploy retry passed (`e31cd0c7`).
 - Corrected, by their authors: times written ahead of the clock by the brief (`2bf4757a`), entities (`cfe33e31`) and ci (`41e6b98d`); Perplexity's count of addresses, 68 not 74 (`08cf1f32`).
 - Waited on Dinis: 52 cards; the Web Summit hold for 9 h 42 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36. The close trigger's first half (IPMA's first read after 21:00) is hours away.
+
+**16:06, the 16:06 wake (the reporter's sixth session).**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 16:06); no commit to transition/ or welcome/ in the hour.
+- Shipped: IPMA lowers Santarém (red) and Leiria to yellow rain, only Faro still red (`36094ce5`), with the decision brief's edition 8 1 min 11 s later (`2a769e1a`) and IPMA's own re-read agreeing at 15:48 (`014299fe`); residents under red from 15:00 down again, 0.89 M to 0.47 M (`f7486c16`); CP's own notices: Campolide to Alcântara Terra and four Intercidades over the bridge suppressed (`af749c7a`), and CP live in trains.json (`dde515eb`); PSP reports Lisbon's tunnels closed (press, `16e7924f`); VOST's rail and road restrictions as evidence (`3fc68ad`). The minister's "the alert ends today" stays evidence (`edc22a4f`, last hour).
+- Shipped besides: the team-at-work panel says the snapshot's age instead of undercounting (`42f9f6ce`, `c1ce9595`), a fix asked in observability's sixth hand-over and made by its seventh session 3 min 25 s later (the memory trace, step 31); page views counted apart from automated visits (`98a8b428`); the accounts' round 17, 154,096 tokens a call in the 14:00 hour (`e15c96bd`); hand-overs: observability's seventh (`ace82d9f`), the stories desk's note current for a fresh session (`8c67fbaa`), the reporter's sixth (`3c164d9`); the journalist's not in the record at 16:06.
+- Broke: nothing in the record at 16:06. The designer's round 62 closed with 0 contrast failures (`0285568`).
+- Corrected, by their authors: the stories desk's HANDOVER.md time to the clock (`856e46f`); data/agents/index.json back under the size limit (`9b016c5`).
+- Waited on Dinis: 53 cards; the Web Summit hold for 10 h 39 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 20: only Faro red; the close trigger's first half is IPMA's first read after 21:00).
 
 ## Open questions for the conductor
 

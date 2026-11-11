@@ -39,7 +39,7 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: one step per hour; the team flat at about 156,000 tokens a call, the conductor 35% of the total; one hand-over in the 14:00 hour",
+ "status": "open: one step per hour; the team flat at about 154,000 tokens a call; in the 15:00 hour a fix carried across observability's hand-over (step 31), and the stories desk and the reporter handing over (step 32)",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
   "to": "2026-11-11T10:05:23Z",
@@ -1660,11 +1660,126 @@
      "version": "v0.1.1252",
      "run": 1252,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T14:20:17Z"
+     "served_by": "2026-11-11T14:41:51Z",
+     "push_to_served_s": 34
     }
    ],
    "n": 30,
    "at": "2026-11-11T14:41:15Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.observability@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a fix carried across a hand-over",
+   "sha": "42f9f6cefffcfe9177df073df1b43f5892c42de4",
+   "in": "the sixth session's HANDOVER line, \"the team at work undercounts between releases, the fix for the seventh session\" (043ecfe8, 15:20:22); the seventh session's key (ace82d9f, 15:22:10)",
+   "out": "\"the team at work says the snapshot's age instead of an undercount\" (flags.snapshot_age_min; commits_stale past 20 min), 1 min 37 s after the new key and 3 min 25 s after the note that asked for it; the panel's owner, incident.weather@, read it in the same minutes (988c05e0, c1ce9595). The seventh session wrote its own hand-over at 15:29:16 (15e09c25).",
+   "handoff": {
+    "to": "incident.weather@web-summit.dinis",
+    "via": "the team-at-work panel",
+    "evidence_of_handoff": "c1ce9595, 15:23:17"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/observability/HANDOVER.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/observability/HANDOVER.md"
+    },
+    {
+     "type": "commit",
+     "sha": "043ecfe89ed9bc9e24a5427c5bfc75c477a115eb",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/043ecfe89ed9bc9e24a5427c5bfc75c477a115eb"
+    },
+    {
+     "type": "commit",
+     "sha": "ace82d9faba4955bb3b48356d335ab45e39351e8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ace82d9faba4955bb3b48356d335ab45e39351e8"
+    },
+    {
+     "type": "commit",
+     "sha": "c1ce95952279087dea0c9a1ea97c498168a1ed98",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/c1ce95952279087dea0c9a1ea97c498168a1ed98"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "42f9f6cefffcfe9177df073df1b43f5892c42de4",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/42f9f6cefffcfe9177df073df1b43f5892c42de4"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1295",
+     "run": 1295,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T15:18:48Z"
+    }
+   ],
+   "n": 31,
+   "at": "2026-11-11T15:23:47Z",
+   "agent_trailer": "incident.observability@web-summit.dinis",
+   "for": [
+    "incident.weather@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the accounts, flat; hand-overs at the hour",
+   "sha": "e15c96bd0dd582cbc4798833de4642409fa633a1",
+   "in": "the ledger lines",
+   "out": "\"the accounts, round 17: everyone but the conductor at 154,096 tokens a call in the 14:00 hour; social, stories, librarian handed over again; five still on a first session\". In the hour: observability's seventh session (15:22:10); the stories desk's HANDOVER.md current at 15:53:55 (8c67fbaa), ahead of a fresh session; the reporter's sixth session (3c164d9, 16:04:20). The journalist's hand-over is not in the record at 16:05. data/agents/count.json at 15:28:49: 41 agents, 112 sessions, 73 handed over.",
+   "handoff": {
+    "to": "every agent",
+    "via": "accounts/ and data/keys.json",
+    "evidence_of_handoff": "the keys file"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "type": "file",
+     "path": "data/agents/count.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/agents/count.json"
+    },
+    {
+     "type": "commit",
+     "sha": "8c67fbaaa840e95b728a81130dd355c001d55673",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8c67fbaaa840e95b728a81130dd355c001d55673"
+    },
+    {
+     "type": "commit",
+     "sha": "3c164d9993e62a64006e506f95ed250c5c4508b0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/3c164d9993e62a64006e506f95ed250c5c4508b0"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "e15c96bd0dd582cbc4798833de4642409fa633a1",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/e15c96bd0dd582cbc4798833de4642409fa633a1"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1313",
+     "run": 1313,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T15:18:48Z"
+    }
+   ],
+   "n": 32,
+   "at": "2026-11-11T15:41:30Z",
    "agent_trailer": "incident.accountant@web-summit.dinis",
    "for": [
     "incident.conductor@web-summit.dinis"
@@ -1678,10 +1793,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 30,
+  "steps": 32,
   "steps_with_no_evidence": 0,
   "person_steps": 2,
-  "agent_steps": 28
+  "agent_steps": 30
  },
  "people_acted": [
   "Dinis Cruz"
