@@ -1,0 +1,68 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T11:58:48Z",
+  "label": "Invented person; not user research",
+  "persona": "deadline",
+  "run": "guide-2",
+  "start": "/guide/media/",
+  "version_seen": "v0.1.1000",
+  "device": "mobile 390x664, DNT+GPC on",
+  "steps": [
+    {"url": "/guide/media/", "what": "Top box: RED rain until 18:00 UTC, orange wind; IPMA feed read 11:26 UTC", "seconds": 5, "px": 326},
+    {"url": "/guide/media/#press", "what": "Lead's box: Web Summit Day 2 off / Day 3 aims to proceed FACT; 07:16 wind red->orange; updated 08:44 UTC", "seconds": 25, "px": 933},
+    {"url": "/guide/media/ Deeper fold", "what": "Timeline, decisions, media watch, JSON, How to cite", "seconds": 10, "px": 1732},
+    {"url": "/guide/media/#now-detail", "what": "Four IPMA levels in IPMA's words; alert situation FACT", "seconds": 20, "px": 1503},
+    {"url": "/guide/media/#websummit", "what": "Day 3 chip 'running' beside 'aims to proceed'; Day 2 closed; not-announced list", "seconds": 20, "px": 2539},
+    {"url": "/help/cite.html", "what": "Cite the source first; address, version, UTC read time, sha256; worked example", "seconds": 30, "px": 608},
+    {"url": "/guide/media/ bottom", "what": "H1 and intro render after Madeira; 'Contact us at the foot of the page' but footer has no contact", "seconds": 15, "px": 6161},
+    {"url": "/welcome/ -> /contribute.html", "what": "Tell us what is wrong -> Contribute -> GitHub issues (only contact route)", "seconds": 60, "px": 5858}
+  ],
+  "understood_10s": "Red rain in Lisbon until 18:00 UTC, orange wind; IPMA, read 11:26 UTC; not a warning service.",
+  "understood_1min": "All four IPMA levels; nationwide alert situation for 11 Nov; Web Summit Day 2 off, Day 3 'aims to proceed' (organiser, 10 Nov 19:09 UTC); wind lowered red to orange at 07:16.",
+  "looked_for": [
+    {"what": "What stands now, with source and time", "result": "found", "where": "/guide/media/ 0-2200 px", "seconds": 25, "taps": 0},
+    {"what": "What changed since this morning", "result": "partly", "where": "/guide/media/ 933 px (lead's box, stamped 08:44) and fold row 3062 px; no changed-today list", "seconds": 25, "taps": 0},
+    {"what": "Web Summit Day 3 status", "result": "found, wording overstates", "where": "/guide/media/ 2539-2559 px: chip 'running' vs quote 'aims to proceed'", "seconds": 20, "taps": 0},
+    {"what": "How to cite", "result": "found", "where": "/guide/media/ 1732 px -> /help/cite.html 608 px", "seconds": 40, "taps": 1},
+    {"what": "Press contact", "result": "not found", "where": "'Contact us at the foot of the page' 6161 px points at nothing; only GitHub issues via /welcome/ -> /contribute.html 5858 px", "seconds": 75, "taps": 3}
+  ],
+  "misread": [
+    "Day 3 chip 'running' (2539 px) read as 'Day 3 confirmed'",
+    "Lead's box 'updated 08:44' read as current beside '1 min ago' and 'read 11:26'",
+    "'1 min ago' (40 px) taken as storm news; it links to the site's release log",
+    "FACT vs EVIDENCE guessed from context: no key on /guide/media/"
+  ],
+  "not_found": [
+    "A press contact (email or named desk) on /guide/media/",
+    "A 'since 06:00 UTC' list of changed warnings and decisions",
+    "Flights and transport on the journalist page (only links to /guide/)",
+    "A ready one-line citation on /guide/media/ itself"
+  ],
+  "advice_like": [
+    {"quote": "go to the operator before you set off", "px": 3019, "page": "/guide/"},
+    {"quote": "(12:00 to 15:00 forecast: heavy rain, strong wind)", "px": 3464, "page": "/guide/ (CP row, unattributed in the parenthesis)"}
+  ],
+  "words_not_understood": ["Panel", "Deeper", "the record", "CAP Update", "rounds"],
+  "would_act": "Files now on warnings, alert situation and Web Summit citing IPMA, the government and websummit.com; writes 'aims to proceed' only because he read the quote; wants a contact to check Day 3 before 18:00.",
+  "score": 4,
+  "score_reason": "Answers 'what stands' in 25 s with a citation guide one tap away; but 'since this morning' is 3 h stale, Day 3 still says 'running', and the promised contact does not exist.",
+  "vs_guide1": [
+    {"finding": "No 'what changed since morning' on the guide", "status": "partly"},
+    {"finding": "Mis-joined parks row", "status": "fixed"},
+    {"finding": "Day 3 status 'running' overstates 'aims to proceed'", "status": "not fixed"},
+    {"finding": "Metro row reads as today", "status": "not checked (outside path)"},
+    {"finding": "Operator rows show only time read", "status": "fixed"},
+    {"finding": "CP row unattributed forecast", "status": "not fixed"},
+    {"finding": "Labels explained only at the bottom", "status": "not fixed (no key on /guide/media/)"},
+    {"finding": "Timeline storm-track hypothesis", "status": "held"}
+  ],
+  "findings": [
+    {"class": "costly", "what": "Promised contact missing", "where": "/guide/media/ 6161 px; footer", "measure": "no contact link in footer; GitHub issues 3 taps, ~75 s", "change": "Contact line (desk name + address or issues link) in #7 and the footer, or drop the sentence"},
+    {"class": "costly", "what": "Day 3 chip 'running' overstates 'aims to proceed'", "where": "/guide/media/ 2539 px; /guide/ Web Summit row", "measure": "near-miss 'Day 3 confirmed' in copy", "change": "Status 'planned' / 'aims to proceed'"},
+    {"class": "costly", "what": "'Since this morning' is one paragraph stamped 08:44", "where": "/guide/media/ 933-1144 px", "measure": "3 h 08 min older than page stamp 11:52", "change": "'Changed today (UTC)' list from decision rows, with last-checked time"},
+    {"class": "minor", "what": "Page intro, H1 and how-to-cite sentence render at the bottom", "where": "/guide/media/ H1 5692 px of 6872", "measure": "9th screen", "change": "Move under the breadcrumb"},
+    {"class": "minor", "what": "No FACT/EVIDENCE key on the journalist page", "where": "/guide/media/", "measure": "labels guessed", "change": "One line under the top box"},
+    {"class": "minor", "what": "'1 min ago' reads as storm news", "where": "/guide/media/ 40 px -> /news/", "measure": "release log, not storm", "change": "Label 'site updated'"},
+    {"class": "minor", "what": "CP row forecast parenthesis unattributed", "where": "/guide/ 3464 px", "measure": "persisting from guide-1", "change": "'CP/press: ...' or drop"}
+  ]
+}
