@@ -1,10 +1,10 @@
 {
  "about": "Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub's Actions API gave them. version: v<series>.<run number>, CI's own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit's time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. push_to_served_s: the run's own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T08:17:55Z",
+ "updated": "2026-11-11T09:18:30Z",
  "source": "https://api.github.com/repos/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs",
  "period": "2026-11-11T00",
- "count": 66,
+ "count": 65,
  "runs": [
   {
    "run": 77,
@@ -464,69 +464,6 @@
    ],
    "push_to_served_s": 38,
    "tag": "v0.1.84"
-  },
-  {
-   "run": 85,
-   "id": 42928229213,
-   "attempt": 1,
-   "version": "v0.1.85",
-   "sha": "dc74aef176a3b46ad03c150a2ba3cfb1e3bfe085",
-   "branch": "dev",
-   "event": "push",
-   "agent": "incident.conductor@web-summit.dinis",
-   "what": "the gate is red if a generator's output is missing from the built site (the library, the agents' index, the graph)",
-   "pushed": "2026-11-11T00:02:50Z",
-   "queued": "2026-11-11T00:02:54Z",
-   "started": "2026-11-11T00:03:05Z",
-   "ended": "2026-11-11T00:03:24Z",
-   "result": "success",
-   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42928229213",
-   "queue_s": 11,
-   "run_s": 19,
-   "steps": [
-    {
-     "step": "set up",
-     "s": 2,
-     "result": "success"
-    },
-    {
-     "step": "checkout",
-     "s": 1,
-     "result": "success"
-    },
-    {
-     "step": "version",
-     "s": 0,
-     "result": "success"
-    },
-    {
-     "step": "gate",
-     "s": 0,
-     "result": "success"
-    },
-    {
-     "step": "upload",
-     "s": 3,
-     "result": "success"
-    },
-    {
-     "step": "deploy",
-     "s": 8,
-     "result": "success"
-    },
-    {
-     "step": "tag",
-     "s": 1,
-     "result": "success"
-    },
-    {
-     "step": "measure",
-     "s": 0,
-     "result": "success"
-    }
-   ],
-   "push_to_served_s": 31,
-   "tag": "v0.1.85"
   },
   {
    "run": 85,
