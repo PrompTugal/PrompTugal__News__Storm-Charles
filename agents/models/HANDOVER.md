@@ -4,7 +4,7 @@ summary: What a fresh incident.models@ session needs to carry on: where things a
 ---
 # incident.models@: handover
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:17 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:34 UTC
 
 For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) first, then this, then [status.json](status.json). The work is at [models/](../../models/index.md).
 
@@ -22,6 +22,14 @@ For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) fir
 - **Each hourly wake (:31)**: `node tools/models-press-decisions.mjs --wake "hourly HH:31"`, `node tools/models-delegated.mjs` (models/delegated/summary.json), the measure line (accounts/measure.md) (the researcher's lead list, models/delegated/, at the conductor's word 22:24), then `node tools/models-calls.mjs --index`, then push the raw vault (`cd ~/.incident-raw && sgit commit -m … && sgit --token "$SG_SEND_ACCESS_TOKEN" push`, timeout 400 s).
 - Wired at 22:24: transport (from 22:41), media (:36), sources (hourly); researcher's task run here. Four of four.
 - Open: observability's `tools/trace.mjs` runs its CLI when imported, so our events stay in `models/calls/` until it is made import-safe (asked 22:17).
+
+## State at 22:34 UTC (the second session's context passed 200k tokens a call; written for the third)
+
+- Four of four collectors delegate: transport (gloss, from 22:41), media (match-fact, :36), sources (extract-warning, hourly), and the researcher's press-decision lead list run here (`tools/models-press-decisions.mjs`, `models/delegated/press-decisions.json`). At a glance: `models/delegated/summary.json` (`node tools/models-delegated.mjs`).
+- At 22:31: 219 delegated calls, 1 failure (a 429 rate limit, now retried once after a pause), re-asks mostly Qwen 3.5 9B on the notice summary. Translate moved to gemma-4-31b + llama-4-maverick (22:34). The owners' checks: sources 15 of 15 agree with the parser; media 9 of 15 agree with its patterns; press decisions 3 matched edges, 0 leads.
+- `models/calls/` also holds the first session's eval calls of today (4,924 lines, 02:00 to 03:00 UTC, including the 3,556 refused for credit), published from the merged vault ledger with `--from-ledger` at 22:33: text-free, parent unknown.
+- Flights' summary model confirmed: meta-llama/llama-4-maverick (its 1 USD).
+- Not done: measure the new match-fact task; finish round 2 of the evals (about 2 to 3 USD); a page for /models/calls/.
 
 ## What lives only in a session, and is lost with it
 
