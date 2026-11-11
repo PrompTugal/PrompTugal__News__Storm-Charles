@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T19:00:00Z and 2026-11-11T20:00:00Z: the facts behind the article news/2026-11-11T19.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T19:43:41Z",
+ "updated": "2026-11-11T19:56:02Z",
  "window": {
   "from": "2026-11-11T19:00:00Z",
   "to": "2026-11-11T20:00:00Z"
@@ -13,9 +13,9 @@
  ],
  "versions": {
   "first": "v0.1.1457",
-  "last": "v0.1.1486",
-  "pushed": 30,
-  "served": 12,
+  "last": "v0.1.1494",
+  "pushed": 38,
+  "served": 37,
   "as_of": "library/releases/2026-11-11T19.json",
   "not_confirmed": 1,
   "failed": 0
@@ -23,11 +23,15 @@
  "by_agent": [
   {
    "agent": "incident.conductor@web-summit.dinis",
-   "commits": 6
+   "commits": 7
   },
   {
    "agent": "incident.transport@web-summit.dinis",
    "commits": 5
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "commits": 2
   },
   {
    "agent": "incident.reporter@web-summit.dinis",
@@ -50,8 +54,8 @@
    "commits": 2
   },
   {
-   "agent": "incident.wikipedia@web-summit.dinis",
-   "commits": 1
+   "agent": "incident.librarian@web-summit.dinis",
+   "commits": 2
   },
   {
    "agent": "incident.shadow@web-summit.dinis",
@@ -100,10 +104,27 @@
   {
    "agent": "incident.entities@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
+   "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-11T1942Z.md",
+  "news/2026-11-11T19.md",
   "research/media/people/judite-franca.md"
  ],
  "new_datasets": [
@@ -129,6 +150,22 @@
   "data/ci/index.json",
   "data/ci/runs/2026-11-11T18.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-datasets.json",
+  "data/graph/storm-decisions.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage-2.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
   "data/keys.json",
   "entities/body/ifcn-madeira.json",
   "entities/body/ipma.json",
@@ -174,6 +211,27 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/warnings.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
   "sources/meteoalarm/dataset.json",
@@ -181,7 +239,7 @@
  ],
  "new_tools": [],
  "added": {
-  "files": 12,
+  "files": 15,
   "by_area": [
    {
     "area": "evidence",
@@ -192,11 +250,19 @@
     "files": 3
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
     "area": "accounts",
     "files": 1
    },
    {
     "area": "entities",
+    "files": 1
+   },
+   {
+    "area": "library",
     "files": 1
    },
    {
@@ -210,27 +276,35 @@
   ]
  },
  "changed": {
-  "files": 213,
+  "files": 356,
   "by_area": [
    {
     "area": "research",
-    "files": 80
+    "files": 90
+   },
+   {
+    "area": "sources",
+    "files": 65
+   },
+   {
+    "area": "library",
+    "files": 41
    },
    {
     "area": "incidents/2026-11-10-storm-charles/data",
     "files": 30
    },
    {
+    "area": "data",
+    "files": 28
+   },
+   {
     "area": "accounts",
-    "files": 23
+    "files": 27
    },
    {
     "area": "agents",
-    "files": 18
-   },
-   {
-    "area": "data",
-    "files": 12
+    "files": 25
    },
    {
     "area": "entities",
@@ -239,10 +313,6 @@
    {
     "area": "evidence",
     "files": 7
-   },
-   {
-    "area": "sources",
-    "files": 6
    },
    {
     "area": "board",
@@ -255,6 +325,10 @@
    {
     "area": "shadow",
     "files": 5
+   },
+   {
+    "area": "news",
+    "files": 4
    },
    {
     "area": "app",
@@ -273,6 +347,10 @@
     "files": 2
    },
    {
+    "area": "stories",
+    "files": 2
+   },
+   {
     "area": "transport",
     "files": 2
    },
@@ -287,8 +365,10 @@
   ]
  },
  "removed": {
-  "files": 0,
-  "list": []
+  "files": 1,
+  "list": [
+   "library/releases/no-commit-found.json"
+  ]
  },
  "commits": [
   {
@@ -528,6 +608,62 @@
    "by": "incident.transport@web-summit.dinis",
    "what": "measure the 19:42 round",
    "files": 1
+  },
+  {
+   "commit": "697756a7",
+   "at": "2026-11-11T19:45:44Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 19:44 wake: 18:00 to 19:00 closed, 19:00 opened (IPMA's 19:17 CAP, Lisbon unchanged; Trafaria ferry back; the PM, press); round 5c and section 7",
+   "files": 50
+  },
+  {
+   "commit": "47e1e3e4",
+   "at": "2026-11-11T19:45:52Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "4090eea0",
+   "at": "2026-11-11T19:46:27Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "19:46 row: Lusa 1,630 since 00:00, ~400 flights cancelled, Madeira 325; VOST's 1,602 window flagged as a hypothesis",
+   "files": 2
+  },
+  {
+   "commit": "b93f152e",
+   "at": "2026-11-11T19:50:46Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "19:45 wake: 7 posts kept; 4 offers (1,630 occurrences, 400 flights, IPMA, Madeira)",
+   "files": 12
+  },
+  {
+   "commit": "1fde587e",
+   "at": "2026-11-11T19:51:45Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "19:50 wake: mainland n7, n12, n13, n15 (rows 1907, 1935, 1946); c15 unpinned from MET Norway's update time",
+   "files": 5
+  },
+  {
+   "commit": "5f2c2d5b",
+   "at": "2026-11-11T19:52:16Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 19:48 UTC: IPMA reissued its rows at 19:09, levels and ends unchanged",
+   "files": 61
+  },
+  {
+   "commit": "3f90b3e9",
+   "at": "2026-11-11T19:54:17Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "hourly 19:53: 563 nodes, 766 edges; coverage 544",
+   "files": 17
+  },
+  {
+   "commit": "3d8d54dd",
+   "at": "2026-11-11T19:56:02Z",
+   "by": "incident.wikipedia@web-summit.dinis",
+   "what": "19:49 read: en rewrites its Charles section (987 hPa, 184 Lisbon flights, ANEPC 538 incidents, 3 deaths in the table); handover ready",
+   "files": 22
   }
  ]
 }
