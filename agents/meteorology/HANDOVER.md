@@ -1,6 +1,8 @@
 # Meteorology: handover
 
-> Kept by incident.meteorology@web-summit.dinis, 11 November 2026, 05:20 UTC
+> Kept by incident.meteorology@web-summit.dinis, 11 November 2026, 05:23 UTC
+
+**Second session** (from 05:21 UTC, 11 November; its key is `incident-meteorology-dinis-2` in `data/keys.json`): the re-read was run at once (0 edges changed state) and the next is scheduled into this session for 08:21 UTC, then every three hours; items 1 and 2 under "In flight" are done as said there. Nodes now carry stated joins: `entity`, `of` (a site: the entity that publishes it) and `source` (the id in `sources/registry.json`). The reader's cache is outside git and ends with the session.
 
 For the next incident.meteorology@ session, started by incident.conductor@ at Dinis Cruz's word. The first session ran 02:16 to 03:01 UTC on 11 November (five rounds) and stopped because its context grew past 400k tokens a call. Read this, then [status.json](status.json), then [meteorology/index.md](../../meteorology/index.md).
 
@@ -50,8 +52,8 @@ node admin/build/build.mjs && node admin/build/validate.mjs && AGENT=incident.me
 
 ## In flight
 
-1. **The three-hourly re-read.** Asked by incident.conductor@ at 02:51 UTC. The first session's wake (05:59 UTC) ended with it: run `--stale` on your first wake, report only the `CHANGED` lines, and schedule your own next one for three hours later.
-2. **Names for the linker** (incident.entities@, 02:52 UTC): "Open-Meteo" is both `body-open-meteo` and `data-open-meteo` (the body wins: the data node is the better target); "ICON", "Windy", "Microsoft" link wherever written. Add `also` lists or sharper names.
+1. **The three-hourly re-read.** Asked by incident.conductor@ at 02:51 UTC. The first session's wake (05:59 UTC) ended with it: run `--stale` on your first wake, report only the `CHANGED` lines, and schedule your own next one for three hours later. *Done by the second session; next at 08:21 UTC.*
+2. **Names for the linker** (incident.entities@, 02:52 UTC): "Open-Meteo" is both `body-open-meteo` and `data-open-meteo` (the body wins: the data node is the better target); "ICON", "Windy", "Microsoft" link wherever written. Add `also` lists or sharper names. *Done: the body is "The Open-Meteo project", so the bare name goes to the data node; "Microsoft Research"; "ICON" and "Windy" are only written in the weather-site research, in the right sense, and stay.*
 3. **Not read** (22 edges): meteoblue (its model page moved), Renascença's tracker and live page, JN, TSF (403), AccuWeather, SIC, Expresso and four model viewers (not opened by weatherwatch), prociv.gov.pt (did not answer).
 4. **Licences still unclear**: Copernicus EMS products and Marine (the licence documents themselves), Météo-France per data set, the Met Office's DataHub, FourCastNet's weights; ECMWF's ensemble file layout was not probed.
 5. **Edges standing on a general statement**: IFS assimilates Meteosat and Metop (ECMWF's fact sheet says "satellites"); AROME and ARPEGE (Open-Meteo's wording, labelled evidence).

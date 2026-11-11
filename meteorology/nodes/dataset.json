@@ -1,7 +1,7 @@
 {
- "about": "Nodes of the meteorology lineage graph, type \"dataset\": where the output can be fetched. Ids are stable (incident.entities@ may adopt them); meaning is in the edges (meteorology/edges/), not here.",
+ "about": "Nodes of the meteorology lineage graph, type \"dataset\": where the output can be fetched. Ids are stable (incident.entities@ may adopt them); meaning is in the edges (meteorology/edges/), not here. Joins, each a fact we state and not a match: \"entity\" (this node is the same thing as that entity in entities/), \"of\" (a site node: the entity that publishes the site), \"source\" (the id in sources/registry.json of the same thing).",
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:30Z",
+ "updated": "2026-11-11T05:22Z",
  "type": "dataset",
  "nodes": [
   {
@@ -30,7 +30,8 @@
    "name": "NOAA Aviation Weather Center data API",
    "summary": "METAR and TAF for any aerodrome as JSON, no key: how our data room reads Lisbon airport.",
    "url": "https://aviationweather.gov/data/api/",
-   "mine": true
+   "mine": true,
+   "source": "source:noaa-awc"
   },
   {
    "id": "data-dwd-open",
@@ -44,7 +45,8 @@
    "name": "MET Norway weather API (api.met.no)",
    "summary": "Locationforecast and other products as JSON for any point on Earth, no key, an identifying User-Agent required.",
    "url": "https://api.met.no/",
-   "mine": true
+   "mine": true,
+   "source": "source:met-no"
   },
   {
    "id": "data-open-meteo",
@@ -52,14 +54,16 @@
    "summary": "One HTTP API in front of many national models (ECMWF, GFS, ICON, ARPEGE/AROME, UKMO and more), no key for non-commercial use.",
    "url": "https://open-meteo.com/",
    "mine": true,
-   "page": "research/weather-sites/sites/openmeteo.md"
+   "page": "research/weather-sites/sites/openmeteo.md",
+   "source": "source:open-meteo"
   },
   {
    "id": "data-eumetsat",
    "name": "EUMETSAT Data Store and EUMETView",
    "summary": "EUMETSAT's products: imagery as WMS/WMTS map layers and the data as files through an API.",
    "url": "https://data.eumetsat.int/",
-   "mine": true
+   "mine": true,
+   "source": "source:eumetsat"
   },
   {
    "id": "data-copernicus-ems",
@@ -67,7 +71,8 @@
    "summary": "The EU's rapid mapping of disasters (flood extents from satellites) and the European flood awareness system.",
    "url": "https://emergency.copernicus.eu/",
    "mine": true,
-   "page": "research/weather-sites/sites/copernicus-ems.md"
+   "page": "research/weather-sites/sites/copernicus-ems.md",
+   "source": "source:copernicus-ems"
   },
   {
    "id": "data-cmems",
@@ -88,14 +93,16 @@
    "name": "IPMA open data (api.ipma.pt)",
    "summary": "IPMA's warnings, forecasts and station observations as JSON, no key. Mapped by incident.ipma@ under sources/ipma/.",
    "url": "https://api.ipma.pt/",
-   "owner_here": "incident.ipma@web-summit.dinis"
+   "owner_here": "incident.ipma@web-summit.dinis",
+   "source": "source:ipma"
   },
   {
    "id": "data-meteoalarm-feeds",
    "name": "MeteoAlarm feeds",
    "summary": "Every member's warnings as Atom and CAP. Mapped by incident.sources@ under sources/meteoalarm/.",
    "url": "https://feeds.meteoalarm.org/",
-   "owner_here": "incident.sources@web-summit.dinis"
+   "owner_here": "incident.sources@web-summit.dinis",
+   "source": "source:meteoalarm"
   },
   {
    "id": "data-ih-tides",

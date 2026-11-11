@@ -1,7 +1,7 @@
 {
  "agent": "incident.meteorology@web-summit.dinis",
- "state": "handed over at 05:20Z at incident.conductor@'s ask (context above 400k tokens a call): agents/meteorology/HANDOVER.md; a fresh session continues",
- "last_wake": "2026-11-11T05:20Z",
+ "state": "second session, started 05:21Z from the pack and HANDOVER.md; re-read done, 0 edges changed state; next re-read 08:21Z",
+ "last_wake": "2026-11-11T05:23Z",
  "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, ~02:20 UTC)",
  "done": [
   "session key made (record sha256:c5d0a303df53cf64, encryption sha256:162a3344a5c28014), public half in data/keys.json",
@@ -15,10 +15,14 @@
   "round 3: 110 nodes, 152 edges (133 stated on the page cited, 13 not stated, 6 not read); EUMETSAT's licensing guide read in full (Core: CC BY 4.0; Meteosat level 1 an hour old or more: any purpose with attribution, no redistribution of the original numbers; newer than an hour: no public showing); Aurora MIT, FourCastNet BSD-3 (code); IPMA's site terms; ECMWF ensemble, GEFS, the IBI wave model, Instituto Hidrográfico's buoys and tide predictions; index: 'which model is behind which site' and 'what the reading found'",
   "round 4: the six-model table on charles.html rebuilt to incident.conductor@'s conditions (IPMA's warnings for Lisbon and Madeira first, from warnings.json; six single models, each with its run time as Open-Meteo reported it, labelled 'a model's output, read at Open-Meteo, evidence'; no average, no pick; 'does not forecast'); IPMA's own statement that its automatic forecasts are statistical processing of ECMWF and AROME (api.ipma.pt); Open-Meteo's upstream services from its licence page (pointers from incident.weatherwatch@, each read by us)",
   "round 5: 177 nodes, 226 edges (150 stated on the page cited, 54 not stated, 22 not read); every one of the 106 sites has a node and a page (only what each says itself; press pages keep no excerpt); meteorology/build-on.json and build-on.html: ten proposals with size, attribution line and what each needs, led by EUMETSAT's hour-old imagery (an 800 × 640 picture of the box is about 52 KB, probed and not kept) and NOAA's public-domain GFS fields (1.7 KB per step for the box); the map draws only the sites that say something; tools/meteorology-read.mjs reports what changed state",
-  "05:20Z HANDOVER.md written; the 05:59Z re-read wake of this session cancelled (the next session runs the re-read on its first wake)"
+  "05:20Z HANDOVER.md written; the 05:59Z re-read wake of this session cancelled (the next session runs the re-read on its first wake)",
+  "05:23Z second session: new session key (record sha256:05ede4a171ccc4be, encryption sha256:29969fb5974c7b2c), public half in data/keys.json as incident-meteorology-dinis-2; the first session's entry marked handed over",
+  "05:23Z re-read of every edge and licence (--stale): 258 items stamped, 0 changed state, 126 pages changed bytes with the statement still standing, 22 not read (as before: refused, blocked, or not requested because of their terms)",
+  "05:23Z joins stated on the nodes (board card a-graph-2): \"entity\" on 3 nodes (body-ipma, body-aemet, svc-meteoalarm), \"of\" on 36 site nodes (the entity that publishes the site), \"source\" on 9 (the id in sources/registry.json); in meteorology/nodes/<type>.json, graph.json and nodes/<id>.json",
+  "05:23Z names for the linker: body-open-meteo is now \"The Open-Meteo project\" (the bare name \"Open-Meteo\" goes to data-open-meteo), body-microsoft is \"Microsoft Research\"; \"ICON\" and \"Windy\" kept (every use outside meteorology/ is in research/weather-sites/, in the right sense)"
  ],
  "next": [
-  "03:00Z + 3 h: re-read every edge (node tools/meteorology-read.mjs --stale), report only what changed",
+  "08:21Z: the three-hourly re-read (node tools/meteorology-read.mjs --stale), scheduled into this session; report only what changed",
   "licences still unclear: Copernicus EMS products and Marine (the licence documents), Météo-France per data set, the Met Office's DataHub, FourCastNet's weights",
   "22 addresses not read (refused, blocked, or not requested because of their terms): listed on the map page",
   "if Dinis says yes to a build-on item: a GRIB decoder outside the build (GFS box to small JSON); a person registers with EUMETSAT"
@@ -27,7 +31,9 @@
   "incident.entities@: node ids are stable (obs-, model-, data-, body-, svc-, site-); an entity-shaped file per node is served at meteorology/nodes/<id>.json",
   "incident.archivist@: the addresses the edges cite are in meteorology/graph.json (source, read_utc, sha256): candidates for Wayback captures",
   "incident.weatherwatch@: a lineage page and JSON per site is at meteorology/nodes/site-<your id>.md / .json (39 sites so far); your site pages can link there",
-  "Dinis: two decisions on meteorology/build-on.html: (1) hour-old Meteosat pictures need a person to register with EUMETSAT and accept its licence, and design rule 9 lifted for that source; (2) GFS fields redrawn by us (public domain) need a GRIB decoder run outside the build"
+  "Dinis: two decisions on meteorology/build-on.html: (1) hour-old Meteosat pictures need a person to register with EUMETSAT and accept its licence, and design rule 9 lifted for that source; (2) GFS fields redrawn by us (public domain) need a GRIB decoder run outside the build",
+  "incident.graph@: answered (a-graph-2): nodes carry \"entity\" (the same thing as that entity), \"of\" (a site: the entity that publishes it) and \"source\" (the id in sources/registry.json), each stated by us, in meteorology/nodes/<type>.json and in graph.json; the join by host can become a fact where one is present",
+  "incident.entities@: two node names changed: body-open-meteo \"The Open-Meteo project\", body-microsoft \"Microsoft Research\" (ids unchanged)"
  ],
  "findings": [
   "IPMA's public charts page offers one model in its selector: ECMWF; IPMA's own page says it runs AROME at 2.5 km and derives products from ECMWF's global model",
@@ -40,5 +46,6 @@
   "ECMWF open data: also at 0.1° from 20 October 2026; the portal is limited to 500 to 2000 simultaneous connections"
  ],
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T05:20Z"
+ "updated": "2026-11-11T05:23Z",
+ "session": "session_018yvwtQ4WgJUHwF2G8Ezss3"
 }

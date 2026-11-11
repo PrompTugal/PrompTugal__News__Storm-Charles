@@ -1,7 +1,7 @@
 {
- "about": "Nodes of the meteorology lineage graph, type \"warning-service\": who turns it into a warning. Ids are stable (incident.entities@ may adopt them); meaning is in the edges (meteorology/edges/), not here.",
+ "about": "Nodes of the meteorology lineage graph, type \"warning-service\": who turns it into a warning. Ids are stable (incident.entities@ may adopt them); meaning is in the edges (meteorology/edges/), not here. Joins, each a fact we state and not a match: \"entity\" (this node is the same thing as that entity in entities/), \"of\" (a site node: the entity that publishes the site), \"source\" (the id in sources/registry.json of the same thing).",
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:30Z",
+ "updated": "2026-11-11T05:22Z",
  "type": "warning-service",
  "nodes": [
   {
@@ -16,7 +16,8 @@
    "id": "svc-aemet-meteoalerta",
    "name": "AEMET Meteoalerta",
    "summary": "Spain's warnings, by zone and hazard.",
-   "url": "https://www.aemet.es/en/eltiempo/prediccion/avisos"
+   "url": "https://www.aemet.es/en/eltiempo/prediccion/avisos",
+   "source": "source:aemet"
   },
   {
    "id": "svc-meteofrance-vigilance",
@@ -36,14 +37,16 @@
    "name": "US National Hurricane Center",
    "summary": "Forecasts and warnings for tropical cyclones in the Atlantic and eastern Pacific.",
    "url": "https://www.nhc.noaa.gov/",
-   "page": "research/weather-sites/sites/nhc.md"
+   "page": "research/weather-sites/sites/nhc.md",
+   "source": "source:nhc"
   },
   {
    "id": "svc-meteoalarm",
    "name": "MeteoAlarm",
    "summary": "EUMETNET's aggregator: the warnings of the European national services on one map and in one feed format (CAP).",
    "url": "https://www.meteoalarm.org/",
-   "page": "research/weather-sites/sites/meteoalarm.md"
+   "page": "research/weather-sites/sites/meteoalarm.md",
+   "entity": "body/meteoalarm"
   },
   {
    "id": "svc-wmo-swic",
