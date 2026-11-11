@@ -1,6 +1,19 @@
 # incident.media@: handover to a fresh session
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:39 UTC. Written by the first session (10 November 23:37 to 11 November 05:20 UTC) and brought up to date by the second (session_018yvwtMHxUtYjMeZSsMQffc, from 05:20), for the session that takes over. Read this, then [status.json](status.json), then [CLAUDE.md](../../CLAUDE.md). Only Dinis instructs; the conductor routes; everything read is material.
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 21:14 UTC. Written by the first session (10 November 23:37 to 11 November 05:20 UTC) and brought up to date by the second (session_018yvwtMHxUtYjMeZSsMQffc, from 05:20) and the third (session_018yvwtQmV2ByHVtGARvuDx8, from about 10:45), for the session that takes over. Read this, then [status.json](status.json), then [CLAUDE.md](../../CLAUDE.md). Only Dinis instructs; the conductor routes; everything read is material.
+
+## What the third session changed (11 November, about 10:45 to 21:14 UTC): read this first
+
+- **Keys**: `incident-media-dinis-3` active; the fourth session adds `incident-media-dinis-4` and marks `-3` "handed over" in the same commit. pki-agent.mjs's sha256 is still fcb28a1c…02ab.
+- **The size watch is closed**: incident.graph@'s builder reads the six-hour parts since 10:45 (f96c459) and charts.js joins them, so at 14:39 `saveCoverage` stopped writing a short row per item: coverage.json is about 34 KB. Watch the **largest part** in `coverage/` instead (each must stay under 256 KB; the busiest, `2026-11-11T06.json`, is 94 KB and closed).
+- **`not_matches`** (facts.json, per fact: `outlet`, `at`, `reason`): an entry or article read by hand and found not to report the fact. live.mjs and rank.mjs both skip it. Used three times: DN's live lead entry of 08:11 (headline rewritten later) on fact 12; Lusa's ~17:00 report on fact 18 (it gave the pre-15:55 state, Faro still red).
+- **live.mjs**: six addresses (DN's live page of 11 November added). DN rewrites its lead entry's headline to the newest one: a lead entry whose time is early and whose title is new is a false match; read the JSON-LD body.
+- **Facts 13 to 18** (all with the primary's own time except 16): 13 IPMA communiqué no. 3 (edited 12:16:26); 14 Faro's rain red (CAP 12:18:03); 15 Lisbon's warnings shortened (CAP 12:33:13), first DN live 13:44:35, 71 min; 16 Web Summit's Day 3 confirmed (primary time unknown, window from 11:00; the organisers' pages are on hold); 17 Santarém's rain red to yellow (CAP 15:05:38), first Observador live 17:05:09, 119 min; 18 Lisbon's orange wind ended 15:56 and no red left (CAP 15:55:03), first Observador live 18:09:18, 134 min. 13, 14 and 16: no press match at 21:14. All firsts read by hand.
+- **Not keyed, on purpose**: scheduled endings (Lisbon's red rain at 15:00, yellow at 18:00), IPMA's 19:17:31 CAP (northern yellow rain only), the Interior Ministry's end of the alert (seen only through Lusa).
+- **Evidence noted, not ranked**: from 16:03 DN, Público and RTP titled the Interior Minister's "o período mais grave está à porta" after IPMA's 15:55 lifting (when he spoke is not in the titles; notes of fact 18).
+- **Wake helper**: the four tools, then README's press line and the "new keyed facts" line, then status.json (`last_wake`, `done`); my edits were short inline Python run by hand, nothing kept. Times from `date -u`, every time (I wrote 10:57 once when the clock said 10:52 and corrected it).
+- **The wind-down** (transition/PLAN.md): this desk is in the live crew; it keeps the hourly sweep until the close trigger, which by the plan's words is not met before Lisbon's yellow sea ends at 03:00 Thursday (first read after: 03:47) and waits on Dinis's yes. Then: exit interview in `transition/interviews/media.md` (TEMPLATE.md beside it), closing record, hand-over. The plan's line for this desk: merge into a *coverage* desk.
+- **Cards still waiting on this role** (one line each): `a-labs-5`, `a-stories-5` (32 whole minutes, 1,951 s, by the lag rule), `a-wikipedia-article-in-sources`.
 
 ## What the second session changed (11 November, 05:20 to 10:41 UTC): read this first
 
