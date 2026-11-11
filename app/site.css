@@ -847,9 +847,9 @@ select, input, textarea, button { max-width: 100%; }
 @media print { .landing p > strong > a { background: none; color: var(--ink); } }
 /* the masthead's way in for someone new: shown when welcome/ exists (admin/build/build.mjs) */
 a.ver.new { font-family: var(--sans); text-transform: none; color: var(--link); border-color: var(--link-2); }
-@media (max-width: 1439px) { header.top:has(a.ver.new) a.ver:not(.new):not([href*="repository"]):not(.repo) { display: none; } }   /* below 1440 it takes the version chip's place (the version is in the panel): at 1280 the two together cut 'Help' and 'About' off the menu */
+@media (max-width: 1599px) { header.top:has(a.ver.new) a.ver:not(.new):not([href*="repository"]):not(.repo) { display: none; } }   /* below 1440 it takes the version chip's place (the version is in the panel): at 1280 the two together cut 'Help' and 'About' off the menu */
 @media (max-width: 640px) { header.top:has(a.ver.new) a.ver:not(.new) { display: none; } }
-@media (max-width: 1439px) { header.top:has(a.ver.new) .brand-org { display: none; } }   /* and the brand's " · PrompTugal" gives its room to the menu (the footer names the organisation) */
+@media (max-width: 1599px) { header.top:has(a.ver.new) .brand-org { display: none; } }   /* and the brand's " · PrompTugal" gives its room to the menu (the footer names the organisation) */
 /* ---- round 48: the chip says what is known ("Updated 3 min ago", from the build's own time), not "LIVE": a red LIVE read as "everything
    works" and sat beside IPMA's red. Calm ink; a green dot while the build is under an hour old, grey after. design/round-48.md ---- */
 a.live { background: transparent; color: var(--ink-2); border: 1px solid var(--line-2); border-radius: 6px; padding: 4px 8px; font: 600 12px/1 var(--sans); text-transform: none; letter-spacing: 0; text-decoration: none; white-space: nowrap; }
@@ -867,3 +867,7 @@ a.live.stale::before { background: var(--line-2); }
   .doc article.landing > h1 + blockquote + p + p:not(:has(> strong > a)) { font-size: 13.5px; line-height: 1.45; padding: 8px 11px; margin-bottom: .9rem; }
   .landing p > strong > a, .landing p > em > a { padding: 10px 16px; margin-bottom: 8px; }
 }
+/* round 50: the "latest" note is body-size ink, not a footnote (the rule and the surface still set it apart); and the version chip and the
+   brand's suffix give way below 1600 px, not 1440: at exactly 1440 "About" was cut to "Abou". design/round-50.md */
+.doc article.landing > h1 + blockquote + p + p:not(:has(> strong > a)) { font-size: 1rem; line-height: 1.5; color: var(--ink); border-left-color: var(--link-2); }
+@media (max-width: 640px) { .doc article.landing > h1 + blockquote + p + p:not(:has(> strong > a)) { font-size: 14.5px; line-height: 1.45; } }
