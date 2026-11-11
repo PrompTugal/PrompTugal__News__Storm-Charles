@@ -221,10 +221,10 @@ summary: ${t(i.summary).slice(0, 200)}
 
 ${`> Kept by ${ME}, ${new Date(i.updated_utc).toLocaleDateString('en-GB', { timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric' })}, ${i.updated_utc.slice(11, 16)} UTC`}
 
-**${i.kind}** · state: **${i.state}** (${STATE_SAYS[i.state]})${i.waiting_on ? ` · waiting on **${who(i.waiting_on, up)}**` : ''} · owner: ${who(i.owner, up)}${(i.raised_by || []).length ? ` · raised by ${i.raised_by.map(a => who(a, up)).join(', ')}` : ''} · opened ${hm(i.opened_utc)} UTC · card \`${i.id}\` on [the board](../index.md#${i.id})
+**${i.kind}** · state: **${i.state}** (${STATE_SAYS[i.state]})${i.waiting_on ? ` · waiting on **${who(i.waiting_on, up)}**` : ''} · owner: ${who(i.owner, up)}${(i.raised_by || []).length ? ` · raised by ${i.raised_by.map(a => who(a, up)).join(', ')}` : ''} · opened ${hm(i.opened_utc)} UTC${i.event_utc ? ` (first written down ${hm(i.event_utc)} UTC${i.event_source?.commit ? `, commit [${i.event_source.commit}](${up}app/agents/commit.html?sha=${i.event_source.commit})` : ''})` : ''} · card \`${i.id}\` on [the board](../index.md#${i.id})
 
 ${t(i.summary)}
-${i.answer ? `\n## The answer\n\n**${t(i.answer.text)}** (${t(i.answer.label || '')}; recorded ${hm(i.answer.at)} UTC by ${t(short(i.answer.by))})\n\n${(i.answer.evidence || []).map(resolve).map(e => evLine(e, up)).join('\n')}\n` : ''}${i.blocks || i.unblocks.length ? `\n## What it blocks\n\n${t(i.blocks || '')}${i.unblocks.length ? `\n\nCards behind this one:\n\n${i.unblocks.map(l => cardLine(byId[l], '../')).join('\n')}` : ''}\n` : ''}
+${i.partly_answered ? `\n**Answered in part:** ${t(i.partly_answered.text)}\n` : ''}${i.answer ? `\n## The answer\n\n**${t(i.answer.text)}** (${t(i.answer.label || '')}; recorded ${hm(i.answer.at)} UTC by ${t(short(i.answer.by))})\n\n${(i.answer.evidence || []).map(resolve).map(e => evLine(e, up)).join('\n')}\n` : ''}${i.blocks || i.unblocks.length ? `\n## What it blocks\n\n${t(i.blocks || '')}${i.unblocks.length ? `\n\nCards behind this one:\n\n${i.unblocks.map(l => cardLine(byId[l], '../')).join('\n')}` : ''}\n` : ''}
 ## What would close it
 
 ${t(i.closes || 'Not written yet.')}

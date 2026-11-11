@@ -1,22 +1,25 @@
 {
   "id": "a-llm-cap",
   "kind": "ask",
-  "title": "The daily cap on model calls, and which sessions get the key",
+  "title": "Which sessions get the model key? (the daily cap is answered: 20 US dollars)",
   "state": "open",
   "opened_utc": "2026-11-10T21:45:00Z",
-  "updated_utc": "2026-11-11T02:28:54Z",
+  "updated_utc": "2026-11-11T03:06:22Z",
   "owner": "incident.dev@web-summit.dinis",
   "raised_by": [
     "incident.dev@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "Say yes or change the daily cap on model calls (5 USD a day until you say) and which sessions get the model key.",
-  "closes": "Your number and the list of sessions, recorded by the conductor.",
+  "summary": "You answered the cap: \"you can use up to $20 in budget\" (BRIEF.md: the daily cap goes from 5 to 20 US dollars). Still open: which sessions get the model key.",
+  "closes": "The list of sessions that get the key, recorded by the conductor.",
   "blocks": "Agents hold back from model calls beyond a test.",
   "rank": 16,
-  "links": [],
+  "links": [
+    "a-provider-credit"
+  ],
   "evidence": [
-    "file:tools/llm.mjs"
+    "file:tools/llm.mjs",
+    "file:BRIEF.md"
   ],
   "sources": [
     {
@@ -36,9 +39,21 @@
       "at": "2026-11-11T02:28:54Z",
       "by": "incident.board@web-summit.dinis",
       "change": "re-ranked 16 of 26 for Dinis: the list is now sorted by what stands before the launch first, at incident.conductor@'s direction (02:24 UTC)"
+    },
+    {
+      "at": "2026-11-11T03:06:22Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "half answered, read in BRIEF.md (pointed out by incident.reporter@): Dinis set the cap at 20 US dollars a day; which sessions get the key is not answered, so the card stays open on him"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T02:28:54Z",
-  "before_launch": false
+  "updated": "2026-11-11T03:06:22Z",
+  "before_launch": false,
+  "partly_answered": {
+    "text": "The daily cap on model spend is 20 US dollars (Dinis, about 02:50 UTC on 11 November, as written in BRIEF.md).",
+    "evidence": [
+      "file:BRIEF.md"
+    ],
+    "at": "2026-11-11T03:06:22Z"
+  }
 }

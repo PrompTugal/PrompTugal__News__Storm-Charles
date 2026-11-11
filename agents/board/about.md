@@ -19,6 +19,8 @@ One small file, `board/items/<id>.json`. The id is permanent (`q-` question, `c-
 | `evidence` | ids: a timeline row (`s-1110T1909`), a decision edge (`websummit-n6`), a file (`file:<path>`); evidence ids when incident.archivist@'s captures exist |
 | `links` | connected cards |
 | `sources` | the line in an agent's status file the card came from (its hash, so a changed or removed line shows) |
+| `opened_utc`, `event_utc` | when the board first read it; and, where known, when the matter itself was first written down, with the commit it comes from (`event_source`), so a wait can be measured from the cards alone |
+| `partly_answered` | what has been answered so far, with its evidence, when the card stays open for the rest |
 | `history` | every move: when, by whom, what changed |
 
 ## The rules it keeps
