@@ -1,7 +1,7 @@
 {
  "about": "Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network's public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations: ANA's own figures (scheduled, cancelled, operated movements) from its newsroom where it has published them (ana_statement, and ana on each airport); diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.",
  "by": "incident.transport@web-summit.dinis",
- "updated": "2026-11-11T22:47:20Z",
+ "updated": "2026-11-11T23:42:24Z",
  "not_a_warning_service": "Not a warning service. No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
  "sources_page": "transport/sources.md",
  "attribution": "The OpenSky Network, https://opensky-network.org (M. Schäfer, M. Strohmeier, V. Lenders, I. Martinovic, M. Wilhelm, \"Bringing Up OpenSky: A Large-scale ADS-B Sensor Network for Research\", IPSN 2014)",
@@ -45,7 +45,7 @@
   "unit": "aircraft movements (departures and arrivals together)",
   "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
   "source": "https://en.newsroom.ana.pt/",
-  "read": "2026-11-11T22:46:38Z",
+  "read": "2026-11-11T23:41:44Z",
   "sha256": "396c4f997a0d00edb151dbcd664d8cf9ef9c14e130972d6d16d67bba3d7c6187",
   "licence": "ANA's terms do not allow reproducing its information without consent: the figures only, as numbers, with ANA named and the link; none of its text"
  },
@@ -210,8 +210,28 @@
     "note": "OpenSky updates arrivals by a batch process at night; anonymous readers cannot see past days. Not available today."
    },
    "live_snapshot": {
-    "label": "none",
-    "note": "read under OpenSky's terms, now paused pending a licence (Dinis) (from 2026-11-11T22:26:56Z): OpenSky's terms of use, as quoted by incident.flights@ from a read at 22:19 UTC (flights/sources.md), require OpenSky's written licence for use of its REST API in any live product, service or automated system, and limit use to non-profit research and education. Our hourly reader is automated. The terms page answered 403 to our own read at 22:26 UTC, so a person has to read it. Paused, as Metro de Lisboa was at 12:08, until Dinis decides."
+    "label": "fact",
+    "series": "adsb.lol, via incident.flights@ (from 11 Nov, the 23:41 round; before it, OpenSky)",
+    "what": "airline aircraft (our airline list) adsb.lol's community receivers saw in a box of about 25 km around the airport at the time read: on the ground, and airborne below 3,000 m (barometric altitude)",
+    "at": "2026-11-11T23:04:48Z",
+    "on_ground": 2,
+    "airborne_low": 0,
+    "box": [
+     38.524,
+     -9.384,
+     39.024,
+     -8.884
+    ],
+    "box_order": "lamin, lomin, lamax, lomax",
+    "source": "https://adsb.lol",
+    "source_name": "adsb.lol",
+    "licence": "ODbL 1.0 (https://opendatacommons.org/licenses/odbl/1-0/)",
+    "via": "incidents/2026-11-10-storm-charles/data/flights/snapshots/2026-11-11/23.json",
+    "read": "2026-11-11T23:04:48Z",
+    "caveat": {
+     "label": "hypothesis",
+     "text": "A different source from the OpenSky counts before it (other receivers, barometric not geometric altitude): the two series are not to be joined as one line."
+    }
    },
    "baseline": {
     "label": "none",
@@ -230,7 +250,7 @@
     "situation_at": "2026-11-11T11:00:00Z",
     "published": "2026-11-11T11:55:02Z",
     "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-    "read": "2026-11-11T22:46:38Z",
+    "read": "2026-11-11T23:41:44Z",
     "label": "fact"
    }
   },
@@ -379,7 +399,7 @@
    },
    "live_snapshot": {
     "label": "none",
-    "note": "read under OpenSky's terms, now paused pending a licence (Dinis) (from 2026-11-11T22:26:56Z): OpenSky's terms of use, as quoted by incident.flights@ from a read at 22:19 UTC (flights/sources.md), require OpenSky's written licence for use of its REST API in any live product, service or automated system, and limit use to non-profit research and education. Our hourly reader is automated. The terms page answered 403 to our own read at 22:26 UTC, so a person has to read it. Paused, as Metro de Lisboa was at 12:08, until Dinis decides."
+    "note": "No live count: OpenSky is paused pending a licence (Dinis), and adsb.lol via incident.flights@ covers only Lisbon (LPPT) and Madeira (LPMA)."
    },
    "baseline": {
     "label": "none",
@@ -398,7 +418,7 @@
     "situation_at": "2026-11-11T11:00:00Z",
     "published": "2026-11-11T11:55:02Z",
     "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-    "read": "2026-11-11T22:46:38Z",
+    "read": "2026-11-11T23:41:44Z",
     "label": "fact"
    }
   },
@@ -424,7 +444,7 @@
    },
    "live_snapshot": {
     "label": "none",
-    "note": "read under OpenSky's terms, now paused pending a licence (Dinis) (from 2026-11-11T22:26:56Z): OpenSky's terms of use, as quoted by incident.flights@ from a read at 22:19 UTC (flights/sources.md), require OpenSky's written licence for use of its REST API in any live product, service or automated system, and limit use to non-profit research and education. Our hourly reader is automated. The terms page answered 403 to our own read at 22:26 UTC, so a person has to read it. Paused, as Metro de Lisboa was at 12:08, until Dinis decides."
+    "note": "No live count: OpenSky is paused pending a licence (Dinis), and adsb.lol via incident.flights@ covers only Lisbon (LPPT) and Madeira (LPMA)."
    },
    "baseline": {
     "label": "none",
@@ -443,7 +463,7 @@
     "situation_at": "2026-11-11T11:00:00Z",
     "published": "2026-11-11T11:55:02Z",
     "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-    "read": "2026-11-11T22:46:38Z",
+    "read": "2026-11-11T23:41:44Z",
     "label": "fact"
    }
   },
@@ -527,8 +547,28 @@
     "note": "OpenSky updates arrivals by a batch process at night; anonymous readers cannot see past days. Not available today."
    },
    "live_snapshot": {
-    "label": "none",
-    "note": "read under OpenSky's terms, now paused pending a licence (Dinis) (from 2026-11-11T22:26:56Z): OpenSky's terms of use, as quoted by incident.flights@ from a read at 22:19 UTC (flights/sources.md), require OpenSky's written licence for use of its REST API in any live product, service or automated system, and limit use to non-profit research and education. Our hourly reader is automated. The terms page answered 403 to our own read at 22:26 UTC, so a person has to read it. Paused, as Metro de Lisboa was at 12:08, until Dinis decides."
+    "label": "fact",
+    "series": "adsb.lol, via incident.flights@ (from 11 Nov, the 23:41 round; before it, OpenSky)",
+    "what": "airline aircraft (our airline list) adsb.lol's community receivers saw in a box of about 25 km around the airport at the time read: on the ground, and airborne below 3,000 m (barometric altitude)",
+    "at": "2026-11-11T23:04:49Z",
+    "on_ground": 0,
+    "airborne_low": 0,
+    "box": [
+     32.448,
+     -17.024,
+     32.948,
+     -16.524
+    ],
+    "box_order": "lamin, lomin, lamax, lomax",
+    "source": "https://adsb.lol",
+    "source_name": "adsb.lol",
+    "licence": "ODbL 1.0 (https://opendatacommons.org/licenses/odbl/1-0/)",
+    "via": "incidents/2026-11-10-storm-charles/data/flights/snapshots/2026-11-11/23.json",
+    "read": "2026-11-11T23:04:49Z",
+    "caveat": {
+     "label": "hypothesis",
+     "text": "A different source from the OpenSky counts before it (other receivers, barometric not geometric altitude): the two series are not to be joined as one line."
+    }
    },
    "baseline": {
     "label": "none",
@@ -548,7 +588,7 @@
     "situation_at": "2026-11-11T11:00:00Z",
     "published": "2026-11-11T11:55:02Z",
     "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
-    "read": "2026-11-11T22:46:38Z",
+    "read": "2026-11-11T23:41:44Z",
     "label": "fact"
    }
   }
@@ -562,5 +602,6 @@
   "resume": "Only at Dinis's word: delete this file and the next round reads OpenSky again (with a licence or account if he arranges one).",
   "status": "read under OpenSky's terms, now paused pending a licence (Dinis)",
   "asked_by": "incident.conductor@web-summit.dinis, 22:26 UTC (keep the counts already published, marked; ANA's figures as they are)"
- }
+ },
+ "attribution_live": "Live counts at LPPT and LPMA: adsb.lol (https://adsb.lol), community ADS-B data, Open Database License (ODbL) v1.0, through incident.flights@'s snapshots (incidents/2026-11-10-storm-charles/data/flights/snapshots/); our counts are a derived database under the same licence."
 }
