@@ -282,7 +282,7 @@
       out += '<div role="row" class="wxc-row wxc-warn"><div role="rowheader" class="wxc-lab"><b>' + iconFor(ty) + esc(EN[ty] || ty) + '</b><i>' + (channels(t).differ.some(function (d) { return d.type === ty }) ? 'IPMA\'s newest message' : 'IPMA warning') + '</i></div>' + bars + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
       var rs0 = rec.segs.filter(function (x) { return x.type === ty && !drawn[wkey(ty, x.level, x.w.start, x.w.end)] }), rm0 = rec.marks.filter(function (x) { return x.type === ty })
       var span = function (w) { return w.level.toUpperCase() + ' ' + when(w.start, ref) + '–' + when(w.end, ref) }
-      if (rs0.length || rm0.length) out += '<div role="row" class="wxc-row wxc-warn wxc-rec"><div role="rowheader" class="wxc-lab"><b>earlier today</b><i>IPMA\'s messages kept</i></div>' + rs0.map(function (x) {
+      if (rs0.length || rm0.length) out += '<div role="row" class="wxc-row wxc-warn wxc-erl"><div role="rowheader" class="wxc-lab"><b>earlier today</b><i>IPMA\'s messages kept</i></div>' + rs0.map(function (x) {
         var a = Math.round((x.a - D0) / H), b = Math.round((x.b - D0) / H); if (b <= a) return ''
         return '<div role="cell" class="wxc-band rec w-' + esc(x.level) + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc('IPMA\'s message sent ' + when(x.w.sent, ref) + ' UTC: ' + span(x.w) + ' ' + (EN[ty] || ty) + (x.cut ? '; replaced by the message sent ' + hm(x.cut.sent) + ' UTC' : '')) + '"><i class="wxc-bl"><b>' + esc(x.level) + '</b></i></div>'
       }).join('') + rm0.map(function (x) {
