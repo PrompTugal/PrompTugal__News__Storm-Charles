@@ -1,0 +1,725 @@
+{
+  "id": "follow-a-word",
+  "title": "Follow a word to its source",
+  "summary": "You read \"Web Summit\" on this site. Follow it down: the word, its entity, the row that says what it decided, our own capture of the page that said so, and only then the outside address. One real chain, walked link by link.",
+  "by": "incident.studio@web-summit.dinis",
+  "updated": "2026-11-11T02:32:00Z",
+  "about": "The chain from RESTRUCTURE.md (\"a word, its entity, the row or edge that says so, the evidence page, the outside address\"), at Dinis Cruz's direction of 11 November 2026 (BRIEF.md), walked on files that exist: incident.entities@'s entities/, the timeline, and incident.archivist@'s evidence/, as read on 11 November at 02:29 UTC. Proposed by incident.conductor@web-summit.dinis.",
+  "chapters": [
+    {
+      "id": "the-walk",
+      "title": "The walk",
+      "question": "You read \"Web Summit\" on a page. How far down can you go?",
+      "track": {
+        "stations": [
+          {
+            "id": "word",
+            "who": "user",
+            "name": "A word on a page",
+            "does": "\"Web Summit\"",
+            "mood": "talk"
+          },
+          {
+            "id": "entity",
+            "who": "agent",
+            "name": "Its entity",
+            "does": "the thing, and what it is joined to"
+          },
+          {
+            "id": "row",
+            "who": "ledger",
+            "name": "The row that says so",
+            "does": "a fact, with its source and time read"
+          },
+          {
+            "id": "capture",
+            "who": "machine",
+            "name": "Our capture",
+            "does": "what the page said when we read it"
+          },
+          {
+            "id": "outside",
+            "who": "source",
+            "name": "The outside address",
+            "does": "the last source: theirs, not ours",
+            "mood": "talk"
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "caption": "Start with a sentence anyone can read: the headline. Two words in it, Web Summit, are a thing this site knows about. Dinis's direction (BRIEF.md): \"Web Summit, I click on Web Summit.\"",
+          "at": 0,
+          "cards": [
+            {
+              "title": "The headline, on the front page",
+              "text": "Web Summit calls off Day 2 (Wednesday) on the government's advice; Day 3 (Thursday) \"aims to proceed as planned\"",
+              "fields": [
+                {
+                  "k": "The word",
+                  "v": "Web Summit"
+                }
+              ],
+              "label": "fact",
+              "href": "../../incidents/2026-11-10-storm-charles/incident.json"
+            }
+          ],
+          "say": {
+            "word": "Who is that, here? Says who?"
+          }
+        },
+        {
+          "caption": "One step down: its entity. A small file that says what the thing is, what else it is called, and what it is joined to. The organisers' other names lead here too. Its page is the site's own page about Web Summit.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "The headline, on the front page",
+              "text": "Web Summit calls off Day 2 (Wednesday) on the government's advice; Day 3 (Thursday) \"aims to proceed as planned\"",
+              "fields": [
+                {
+                  "k": "The word",
+                  "v": "Web Summit"
+                }
+              ],
+              "label": "fact",
+              "href": "../../incidents/2026-11-10-storm-charles/incident.json"
+            },
+            {
+              "title": "entities/organisation/websummit.json",
+              "text": "Decides whether Wednesday's programme runs, changes or is suspended.",
+              "fields": [
+                {
+                  "k": "name",
+                  "v": "Web Summit",
+                  "new": true
+                },
+                {
+                  "k": "also",
+                  "v": "the organisers",
+                  "new": true
+                },
+                {
+                  "k": "type",
+                  "v": "organisation",
+                  "new": true
+                },
+                {
+                  "k": "edges",
+                  "v": "9: decided, consulted, has_not_announced, is_expected_to",
+                  "new": true
+                },
+                {
+                  "k": "kept by",
+                  "v": "incident.entities@, 11 Nov 02:20 UTC",
+                  "new": true
+                }
+              ],
+              "label": "fact",
+              "id": "organisation/websummit",
+              "href": "../../entities/organisation/websummit.html"
+            }
+          ]
+        },
+        {
+          "caption": "An entity's meaning is its edges, and each edge is a claim with its own label, source and time read. This one is a fact: Web Summit decided that Day 2 will not take place, read on Web Summit's own page.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "entities/organisation/websummit.json",
+              "text": "Decides whether Wednesday's programme runs, changes or is suspended.",
+              "fields": [
+                {
+                  "k": "name",
+                  "v": "Web Summit"
+                },
+                {
+                  "k": "also",
+                  "v": "the organisers"
+                }
+              ],
+              "label": "fact",
+              "id": "organisation/websummit",
+              "href": "../../entities/organisation/websummit.html"
+            },
+            {
+              "title": "One of its edges",
+              "text": "Web Summit decided: Day 2 (Wednesday 11 Nov) will not take place.",
+              "fields": [
+                {
+                  "k": "verb",
+                  "v": "decided",
+                  "new": true
+                },
+                {
+                  "k": "to",
+                  "v": "decision/websummit-wednesday",
+                  "href": "../../entities/decision/websummit-wednesday.html",
+                  "new": true
+                },
+                {
+                  "k": "source",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+                  "new": true
+                },
+                {
+                  "k": "read_utc",
+                  "v": "2026-11-10T20:59Z",
+                  "new": true
+                },
+                {
+                  "k": "origin",
+                  "v": "decisions/graph.json, edge websummit-wednesday",
+                  "new": true
+                }
+              ],
+              "label": "fact"
+            }
+          ],
+          "say": {
+            "entity": "Decided. Read on their own page."
+          }
+        },
+        {
+          "caption": "Not every edge is a fact, and the entity does not hide that. The same file holds what others reported (evidence) and what this team expected before the decision came (hypothesis), each marked.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "One of its edges",
+              "text": "Web Summit decided: Day 2 (Wednesday 11 Nov) will not take place.",
+              "fields": [
+                {
+                  "k": "verb",
+                  "v": "decided"
+                },
+                {
+                  "k": "to",
+                  "v": "decision/websummit-wednesday",
+                  "href": "../../entities/decision/websummit-wednesday.html"
+                },
+                {
+                  "k": "source",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+                },
+                {
+                  "k": "read_utc",
+                  "v": "2026-11-10T20:59Z"
+                }
+              ],
+              "label": "fact"
+            },
+            {
+              "title": "Another of its edges",
+              "text": "HYPOTHESIS: the organisers suspend or shorten Wednesday",
+              "fields": [
+                {
+                  "k": "verb",
+                  "v": "is_expected_to"
+                },
+                {
+                  "k": "read_utc",
+                  "v": "2026-11-10T19:00Z"
+                },
+                {
+                  "k": "source",
+                  "v": "our own decisions/graph.json"
+                }
+              ],
+              "label": "hypothesis"
+            }
+          ],
+          "note": "Of the entity's nine edges on 11 November, 02:29 UTC: three facts, four evidence, two hypotheses."
+        },
+        {
+          "caption": "One step down: the row. The timeline's own record of that decision, with a permanent id. It says when the page was published and when it was read, and since tonight it points at something new: our capture of the page.",
+          "at": 2,
+          "cards": [
+            {
+              "title": "One of its edges",
+              "text": "Web Summit decided: Day 2 (Wednesday 11 Nov) will not take place.",
+              "fields": [
+                {
+                  "k": "verb",
+                  "v": "decided"
+                },
+                {
+                  "k": "to",
+                  "v": "decision/websummit-wednesday",
+                  "href": "../../entities/decision/websummit-wednesday.html"
+                }
+              ],
+              "label": "fact"
+            },
+            {
+              "title": "A row of the timeline",
+              "text": "PRIMARY: Web Summit's own page, \"Important event update\": \"Day 2 (Wednesday, November 11th) will not take place\" …",
+              "fields": [
+                {
+                  "k": "at",
+                  "v": "10 Nov, 19:09 UTC (the page's own data)",
+                  "new": true
+                },
+                {
+                  "k": "read",
+                  "v": "at source by the lead, 20:58",
+                  "new": true
+                },
+                {
+                  "k": "cites",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+                  "new": true
+                },
+                {
+                  "k": "our capture",
+                  "v": "evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026",
+                  "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html",
+                  "new": true
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1909",
+              "href": "../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909"
+            }
+          ]
+        },
+        {
+          "caption": "One step down: the capture. Not a link to Web Summit, but this site's own record of what that address served when we read it: the time, the hash of the page, a screenshot, and whether it has changed since the capture before.",
+          "at": 3,
+          "cards": [
+            {
+              "title": "A row of the timeline",
+              "text": "PRIMARY: Web Summit's own page, \"Important event update\": \"Day 2 (Wednesday, November 11th) will not take place\" …",
+              "fields": [
+                {
+                  "k": "at",
+                  "v": "10 Nov, 19:09 UTC (the page's own data)"
+                },
+                {
+                  "k": "read",
+                  "v": "at source by the lead, 20:58"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1909",
+              "href": "../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909"
+            },
+            {
+              "title": "evidence/websummit/2026/11/11/0216-…",
+              "text": "Important event update",
+              "fields": [
+                {
+                  "k": "read_utc",
+                  "v": "2026-11-11T02:16:26Z",
+                  "new": true
+                },
+                {
+                  "k": "sha256_html",
+                  "v": "a584d39f31a7…39870fca (126,914 bytes)",
+                  "new": true
+                },
+                {
+                  "k": "screenshot",
+                  "v": "1280 x 1821, sha256 567169d842f1…965cd868; shown",
+                  "new": true
+                },
+                {
+                  "k": "changed",
+                  "v": "nothing to compare with yet: the first capture",
+                  "new": true
+                },
+                {
+                  "k": "licence",
+                  "v": "all rights stay with Web Summit; shown as a dated record",
+                  "new": true
+                },
+                {
+                  "k": "by",
+                  "v": "incident.archivist@",
+                  "new": true
+                }
+              ],
+              "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html"
+            }
+          ],
+          "say": {
+            "capture": "This is what it said, at 02:16:26."
+          }
+        },
+        {
+          "caption": "And only then, the last step: out. The outside address, marked as leaving this site. Everything above it is ours and can be checked here. What is beyond it is Web Summit's, and may change tomorrow; the capture will not.",
+          "at": 4,
+          "cards": [
+            {
+              "title": "evidence/websummit/2026/11/11/0216-…",
+              "text": "Important event update",
+              "fields": [
+                {
+                  "k": "read_utc",
+                  "v": "2026-11-11T02:16:26Z"
+                }
+              ],
+              "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html"
+            },
+            {
+              "title": "Leaving this site",
+              "text": "websummit.com/blog/web-summit/important-event-update-2026/",
+              "fields": [
+                {
+                  "k": "host",
+                  "v": "websummit.com",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+                  "new": true
+                },
+                {
+                  "k": "whose",
+                  "v": "Web Summit's: the last source",
+                  "new": true
+                }
+              ]
+            }
+          ],
+          "say": {
+            "outside": "The decision is ours: websummit.com."
+          }
+        }
+      ]
+    },
+    {
+      "id": "what-it-is-honest-about",
+      "title": "What the chain is honest about",
+      "question": "What does this chain not prove?",
+      "track": {
+        "stations": [
+          {
+            "id": "word",
+            "who": "user",
+            "name": "A word on a page",
+            "does": "\"Web Summit\"",
+            "mood": "talk"
+          },
+          {
+            "id": "entity",
+            "who": "agent",
+            "name": "Its entity",
+            "does": "the thing, and what it is joined to"
+          },
+          {
+            "id": "row",
+            "who": "ledger",
+            "name": "The row that says so",
+            "does": "a fact, with its source and time read"
+          },
+          {
+            "id": "capture",
+            "who": "machine",
+            "name": "Our capture",
+            "does": "what the page said when we read it"
+          },
+          {
+            "id": "outside",
+            "who": "source",
+            "name": "The outside address",
+            "does": "the last source: theirs, not ours",
+            "mood": "talk"
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "caption": "The capture is from 11 November, 02:16. The row says the page was read at 20:58 on the 10th. So the capture shows what the page said five hours after we first read it, not at that moment. Captures began tonight; nothing earlier was kept.",
+          "at": 3,
+          "cards": [
+            {
+              "title": "A row of the timeline",
+              "text": "PRIMARY: Web Summit's own page, \"Important event update\": \"Day 2 (Wednesday, November 11th) will not take place\" …",
+              "fields": [
+                {
+                  "k": "at",
+                  "v": "10 Nov, 19:09 UTC (the page's own data)"
+                },
+                {
+                  "k": "read",
+                  "v": "at source by the lead, 20:58"
+                },
+                {
+                  "k": "cites",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+                },
+                {
+                  "k": "our capture",
+                  "v": "evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026",
+                  "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1909",
+              "href": "../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909"
+            },
+            {
+              "title": "evidence/websummit/2026/11/11/0216-…",
+              "text": "Important event update",
+              "fields": [
+                {
+                  "k": "read_utc",
+                  "v": "2026-11-11T02:16:26Z"
+                },
+                {
+                  "k": "sha256_html",
+                  "v": "a584d39f31a7…39870fca (126,914 bytes)"
+                },
+                {
+                  "k": "screenshot",
+                  "v": "1280 x 1821, sha256 567169d842f1…965cd868; shown"
+                }
+              ],
+              "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html"
+            }
+          ],
+          "note": "The row records the page's own data: published 19:09:00, modified 19:25:44. The capture is later than both."
+        },
+        {
+          "caption": "Two levels give two times for the same reading: the row says 20:58, the entity's edge says 20:59. Two agents read the page a minute apart, and each wrote down its own time. Nothing was tidied to make them agree.",
+          "at": 2,
+          "cards": [
+            {
+              "title": "One of its edges",
+              "text": "Web Summit decided: Day 2 (Wednesday 11 Nov) will not take place.",
+              "fields": [
+                {
+                  "k": "verb",
+                  "v": "decided"
+                },
+                {
+                  "k": "to",
+                  "v": "decision/websummit-wednesday",
+                  "href": "../../entities/decision/websummit-wednesday.html"
+                },
+                {
+                  "k": "source",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+                },
+                {
+                  "k": "read_utc",
+                  "v": "2026-11-10T20:59Z"
+                }
+              ],
+              "label": "fact"
+            },
+            {
+              "title": "A row of the timeline",
+              "text": "PRIMARY: Web Summit's own page, \"Important event update\": \"Day 2 (Wednesday, November 11th) will not take place\" …",
+              "fields": [
+                {
+                  "k": "at",
+                  "v": "10 Nov, 19:09 UTC (the page's own data)"
+                },
+                {
+                  "k": "read",
+                  "v": "at source by the lead, 20:58"
+                },
+                {
+                  "k": "cites",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+                },
+                {
+                  "k": "our capture",
+                  "v": "evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026",
+                  "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1909",
+              "href": "../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909"
+            }
+          ]
+        },
+        {
+          "caption": "Most of the timeline cannot be walked this far yet. Its 51 rows cite 70 addresses: 24 have a capture, 43 are not captured yet, and 3 never will be, because they are on a social platform or under terms that forbid automated reading. Where there is no capture, the record says so and why.",
+          "at": 3,
+          "cards": [
+            {
+              "title": "evidence/rows.json",
+              "text": "Timeline rows to captures, as read 02:29 UTC",
+              "fields": [
+                {
+                  "k": "rows",
+                  "v": "51"
+                },
+                {
+                  "k": "addresses cited",
+                  "v": "70"
+                },
+                {
+                  "k": "with a capture",
+                  "v": "24"
+                },
+                {
+                  "k": "not captured yet",
+                  "v": "43"
+                },
+                {
+                  "k": "never captured",
+                  "v": "3: a social platform, or terms that forbid it"
+                }
+              ],
+              "href": "../../evidence/rows.json"
+            }
+          ]
+        },
+        {
+          "caption": "And one link is still indirect. The entity's own list of sources is empty: you get from Web Summit to the capture through the row, not straight from the entity. The chain holds; it is one step longer than it will be.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "entities/organisation/websummit.json",
+              "text": "Decides whether Wednesday's programme runs, changes or is suspended.",
+              "fields": [
+                {
+                  "k": "name",
+                  "v": "Web Summit"
+                },
+                {
+                  "k": "also",
+                  "v": "the organisers"
+                },
+                {
+                  "k": "type",
+                  "v": "organisation"
+                },
+                {
+                  "k": "edges",
+                  "v": "9: decided, consulted, has_not_announced, is_expected_to"
+                }
+              ],
+              "label": "fact",
+              "id": "organisation/websummit",
+              "href": "../../entities/organisation/websummit.html"
+            },
+            {
+              "title": "A row of the timeline",
+              "text": "PRIMARY: Web Summit's own page, \"Important event update\": \"Day 2 (Wednesday, November 11th) will not take place\" …",
+              "fields": [
+                {
+                  "k": "at",
+                  "v": "10 Nov, 19:09 UTC (the page's own data)"
+                },
+                {
+                  "k": "read",
+                  "v": "at source by the lead, 20:58"
+                },
+                {
+                  "k": "cites",
+                  "v": "websummit.com/blog/web-summit/important-event-update-2026/",
+                  "href": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+                },
+                {
+                  "k": "our capture",
+                  "v": "evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026",
+                  "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html"
+                }
+              ],
+              "label": "fact",
+              "id": "s-1110T1909",
+              "href": "../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909"
+            }
+          ]
+        },
+        {
+          "caption": "Dinis's words for what this is for (BRIEF.md): \"I should be able to connect until I arrive at the last source. And the last source should be a page about the evidence that we have.\" For this one word, tonight, you can.",
+          "at": 0,
+          "cards": [
+            {
+              "title": "The headline, on the front page",
+              "text": "Web Summit calls off Day 2 (Wednesday) on the government's advice; Day 3 (Thursday) \"aims to proceed as planned\"",
+              "fields": [
+                {
+                  "k": "The word",
+                  "v": "Web Summit"
+                }
+              ],
+              "label": "fact",
+              "href": "../../incidents/2026-11-10-storm-charles/incident.json"
+            },
+            {
+              "title": "evidence/websummit/2026/11/11/0216-…",
+              "text": "Important event update",
+              "fields": [
+                {
+                  "k": "read_utc",
+                  "v": "2026-11-11T02:16:26Z"
+                },
+                {
+                  "k": "sha256_html",
+                  "v": "a584d39f31a7…39870fca (126,914 bytes)"
+                },
+                {
+                  "k": "screenshot",
+                  "v": "1280 x 1821, sha256 567169d842f1…965cd868; shown"
+                }
+              ],
+              "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html"
+            }
+          ],
+          "say": {
+            "word": "Now I know who says so."
+          }
+        }
+      ]
+    }
+  ],
+  "simplifies": [
+    "One word, one edge, one row, one capture are shown. The entity has nine edges and the page is cited by more than one row; a real walk branches at every step.",
+    "The steps are drawn as clicks. The files and their pages exist (entities/, evidence/, the timeline); whether every word on every page is already a link to its entity was not checked here, and the linking is spreading page by page.",
+    "A capture proves what an address served to us at one moment, by its hash. It does not prove the page said the same thing earlier, or to someone else, or that what it says is true.",
+    "The raw capture (the HTML as served) is in a private vault; the site shows the screenshot only where the source's terms allow, otherwise the hash, the title and a short excerpt. This page's screenshot is shown.",
+    "The counts are as read on 11 November 2026, 02:29 UTC, minutes after the first captures. They will be out of date within the hour; evidence/rows.json is right.",
+    "The decision quoted is a record of what Web Summit published on 10 November. For what Web Summit says now, go to Web Summit."
+  ],
+  "sources": [
+    {
+      "name": "entities/organisation/websummit.json (incident.entities@, updated 02:20 UTC)",
+      "href": "../../entities/organisation/websummit.html",
+      "read": "11 November 2026, 02:29 UTC"
+    },
+    {
+      "name": "entities/decision/websummit-wednesday.json",
+      "href": "../../entities/decision/websummit-wednesday.html",
+      "read": "11 November 2026, 02:29 UTC"
+    },
+    {
+      "name": "timeline.md, row s-1110T1909",
+      "href": "../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909",
+      "read": "11 November 2026, 02:29 UTC"
+    },
+    {
+      "name": "evidence/rows.json (incident.archivist@, updated 02:26:32 UTC)",
+      "href": "../../evidence/rows.json",
+      "read": "11 November 2026, 02:29 UTC"
+    },
+    {
+      "name": "evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.json",
+      "href": "../../evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.html",
+      "read": "11 November 2026, 02:29 UTC"
+    },
+    {
+      "name": "incident.json (the headline)",
+      "href": "../../incidents/2026-11-10-storm-charles/incident.json",
+      "read": "11 November 2026, 02:29 UTC"
+    },
+    {
+      "name": "RESTRUCTURE.md (one grammar; the chain a reader can always walk)",
+      "href": "../../RESTRUCTURE.html",
+      "read": "11 November 2026, 02:12 UTC"
+    },
+    {
+      "name": "BRIEF.md (Dinis, 11 November, ~02:10 UTC)",
+      "href": "../../BRIEF.html",
+      "read": "11 November 2026, 02:12 UTC"
+    }
+  ]
+}

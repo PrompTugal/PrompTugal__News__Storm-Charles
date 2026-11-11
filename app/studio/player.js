@@ -213,7 +213,7 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
     function mark() {
         const el = root.querySelector('.sb-script'); if (!el.firstChild || el.dataset.ch !== String(S.ch)) { script(); el.dataset.ch = S.ch }
         el.querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-current', i === S.sc))
-        const cur = el.querySelector('[aria-current=true]'); if (cur) el.scrollTop = Math.max(0, cur.offsetTop - el.offsetTop - 60)   // scroll the script, never the page
+        const cur = el.querySelector('[aria-current=true]'); if (cur) el.scrollTop = Math.max(0, cur.getBoundingClientRect().top - el.getBoundingClientRect().top + el.scrollTop - 70)   // scroll the script, never the page
     }
     function maximise(on) {
         const sb = root.querySelector('.sb'); S.max = on; sb.classList.toggle('max', on); document.documentElement.style.overflow = on ? 'hidden' : ''
