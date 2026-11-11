@@ -17,7 +17,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Read | 11 Nov 2026, 02:28 UTC (`2026-11-11T02:28:43Z`) |
 | Answer | HTTP 502 |
 | Title | (none) |
-| Against the capture before | the first capture of this address |
+| Against the capture before | the server answered 502: not a reading of the page |
 | sha256 of the HTML as served | `53bf0093ee81e5a202402de8b0b06bfa46b6ba796ebfe1606722b05a42172181` |
 | sha256 of the visible text | `53bf0093ee81e5a202402de8b0b06bfa46b6ba796ebfe1606722b05a42172181` |
 | sha256 of the screenshot | `5be1e47307f61dd2e0915036993f668943d78b4c204733a35da333ab43f1e23d` |
@@ -31,7 +31,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 | Capture | Read | Answer | Against the one before | Text hash |
 |---|---|---|---|---|
-| **this one** | 11 Nov 2026, 02:28 UTC | 502 | first | `53bf0093ee81e5a2` |
+| **this one** | 11 Nov 2026, 02:28 UTC | 502 | server error | `53bf0093ee81e5a2` |
 
 ## The outside address
 

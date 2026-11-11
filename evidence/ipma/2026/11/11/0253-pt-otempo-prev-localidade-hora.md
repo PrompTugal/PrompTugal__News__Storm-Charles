@@ -18,6 +18,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Answer | HTTP 200; Last-Modified: Wed, 11 Nov 2026 02:52:42 GMT |
 | Title | IPMA - Previsão 10 dias, horária diária, localidade |
 | Against the capture before | the first capture of this address |
+| Ignored when comparing | IPMA's pages print the time of the visit (for example '03h24m UTC:'): ignored when judging whether the page changed. |
 | sha256 of the HTML as served | `f558968d449cf29d89ae4f7f80545aceb694e92e726d00b05e34f12534b035c2` |
 | sha256 of the visible text | `50cf5c3335d2390a03ca6e4419c10797253045af658007ef07d5aff64ce1dd98` |
 | sha256 of the screenshot | `a8f28fd98647a6ce9bfe789b78aa10fde479b9cf7933f2d1c9dbb1ba812751d9` |

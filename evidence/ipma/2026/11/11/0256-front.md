@@ -18,6 +18,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Answer | HTTP 200; Last-Modified: Tue, 10 Nov 2026 12:42:38 GMT |
 | Title | Instituto Português do Mar e da Atmosfera |
 | Against the capture before | the first capture of this address |
+| Ignored when comparing | IPMA's pages print the time of the visit (for example '03h24m UTC:'): ignored when judging whether the page changed. |
 | sha256 of the HTML as served | `80fa8cdeac598b2e64574f69a8eb3057a8ca92cb9e40806fece57846e3a5f1d6` |
 | sha256 of the visible text | `4da9d61f584814f20e642d7d72705c6f69bc74e8ea5fb01436146dd01f4018bd` |
 | sha256 of the screenshot | `b2b2e660b6516b5d0e278f97c5e2e3fa820671bcb05fd4815c4b3f0d1c458f62` |

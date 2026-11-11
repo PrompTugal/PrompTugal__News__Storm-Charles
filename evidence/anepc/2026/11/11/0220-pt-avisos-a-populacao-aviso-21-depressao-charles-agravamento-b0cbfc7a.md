@@ -32,6 +32,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Capture | Read | Answer | Against the one before | Text hash |
 |---|---|---|---|---|
 | **this one** | 11 Nov 2026, 02:20 UTC | 200 | first | `1fece5846ce9d324` |
+| [11 Nov 2026, 03:24 UTC](../../../../../evidence/anepc/2026/11/11/0324-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.md) | 11 Nov 2026, 03:24 UTC | 502 | server error | `53bf0093ee81e5a2` |
 
 ## The outside address
 

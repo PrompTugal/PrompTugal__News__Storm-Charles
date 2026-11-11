@@ -17,7 +17,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Read | 11 Nov 2026, 02:57 UTC (`2026-11-11T02:57:57Z`) |
 | Answer | HTTP 500 |
 | Title | Runtime Error |
-| Against the capture before | the first capture of this address |
+| Against the capture before | the server answered 500: not a reading of the page |
 | sha256 of the HTML as served | `f69ec9c7d598b2859ac983ef6adb3a865e7037b097cbc06d8f32582679309483` |
 | sha256 of the visible text | `1110944de8b87d0366644bf970afa2ac6eca1e4d5788e031302e5b8fa4f3bf71` |
 | sha256 of the screenshot | `376dac93f8207f1cbd6d2b7e9961b31ded6bfbba908fdb7b7e04e310ebeb6177` |
@@ -31,7 +31,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 
 | Capture | Read | Answer | Against the one before | Text hash |
 |---|---|---|---|---|
-| **this one** | 11 Nov 2026, 02:57 UTC | 500 | first | `1110944de8b87d03` |
+| **this one** | 11 Nov 2026, 02:57 UTC | 500 | server error | `1110944de8b87d03` |
 
 ## The outside address
 

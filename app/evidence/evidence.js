@@ -30,7 +30,7 @@
       addr.captures.forEach(function (c) {
         var here = c.id === id, n = el(here ? 'span' : 'a', (here ? 'now ' : '') + (c.changed ? 'chg' : ''), utc(c.read_utc))
         if (!here) n.href = base + 'evidence/' + c.id + '.html'
-        n.appendChild(el('small', '', c.status == null ? 'not captured' : c.changed == null ? 'first capture' : c.changed ? 'changed' : 'unchanged'))
+        n.appendChild(el('small', '', c.status == null ? 'not captured' : c.failed ? 'server error ' + c.status : c.changed == null ? 'first capture' : c.changed ? 'changed' : 'unchanged'))
         nav.appendChild(n)
       })
       root.appendChild(nav)

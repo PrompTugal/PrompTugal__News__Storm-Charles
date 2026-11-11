@@ -18,6 +18,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Answer | HTTP 200; Last-Modified: Wed, 11 Nov 2026 02:16:53 GMT |
 | Title | Instituto Português do Mar e da Atmosfera |
 | Against the capture before | the first capture of this address |
+| Ignored when comparing | IPMA's pages print the time of the visit (for example '03h24m UTC:'): ignored when judging whether the page changed. |
 | sha256 of the HTML as served | `133e3a6158d0ab6add328f62fa1b4b30fb34c7e6240c25fd6ece87241c0d8e57` |
 | sha256 of the visible text | `9a4532104d4ecd96281dbecff7fb251168e5508873a24f2389dcc2d524731f12` |
 | sha256 of the screenshot | `71f8c25459d6f2c6136f16c1b25fdb8464b054a285dd872f4d59a76adf306bc3` |
@@ -33,6 +34,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Capture | Read | Answer | Against the one before | Text hash |
 |---|---|---|---|---|
 | **this one** | 11 Nov 2026, 02:16 UTC | 200 | first | `9a4532104d4ecd96` |
+| [11 Nov 2026, 03:24 UTC](../../../../../evidence/ipma/2026/11/11/0324-pt-otempo-comunicados.md) | 11 Nov 2026, 03:24 UTC | 200 | unchanged | `b412cd25c61a60a1` |
 
 ## The outside address
 

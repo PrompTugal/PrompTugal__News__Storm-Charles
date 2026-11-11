@@ -18,6 +18,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Answer | HTTP 200; Last-Modified: Wed, 11 Nov 2026 02:59:24 GMT |
 | Title | IPMA - Imagens de radar |
 | Against the capture before | the first capture of this address |
+| Ignored when comparing | IPMA's pages print the time of the visit (for example '03h24m UTC:'): ignored when judging whether the page changed. |
 | sha256 of the HTML as served | `c0ae3954b891f036f8eab2eaa40e00636b5eeeb51f5668117da8476395902f5a` |
 | sha256 of the visible text | `ec535c0da9131acfc0f97ff28eb9ca6d092b90d1bd82b0a0d1c67e46022d7e89` |
 | sha256 of the screenshot | `88ac88c0132a2273f7af1ba7cd13cd9ba3d549c4de770aa9249d177a26dd2637` |

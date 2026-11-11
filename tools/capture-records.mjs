@@ -9,6 +9,7 @@
 // It is run by the archivist, never by the build (it writes tracked files and needs the vault clones). No image, no HTML and
 // no vault key ever reaches the repository: only ids, paths and sha256.
 import fs from 'node:fs'
+import crypto from 'node:crypto'
 import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
@@ -71,8 +72,15 @@ for (const chain of chains.values()) {
     for (const r of chain) {
         if (!r.captured) { r.previous = prev ? prev.id : null; continue }
         r.previous = prev ? prev.id : null
-        r.changed = prev ? { text: r.sha256_text !== prev.sha256_text, html: r.sha256_html !== prev.sha256_html, screenshot: r.sha256_screenshot !== prev.sha256_screenshot, status: r.status !== prev.status, since: prev.read_utc } : null
+        // a server error is not a reading of the page: it is recorded, never compared, and never the base of a later comparison
+        if (r.status >= 500) { r.changed = null; r.failed = `the server answered ${r.status}: not a reading of the page`; continue }
+        // a source may print something that differs on every visit (a clock): its pattern is removed before comparing
+        const vol = sourceOf(r.host).volatile
+        if (vol && !r.sha256_text_stable) { try { let t = fs.readFileSync(path.join(CV, r.id, 'text.txt'), 'utf8'); for (const re of vol) t = t.replace(new RegExp(re, 'g'), ''); r.sha256_text_stable = crypto.createHash('sha256').update(t.replace(/\s+/g, ' ').trim()).digest('hex'); r.ignored = sourceOf(r.host).volatile_why } catch { /* no private copy here */ } }
+        const tx = x => x.sha256_text_stable || x.sha256_text
+        r.changed = prev ? { text: tx(r) !== tx(prev), html: r.sha256_html !== prev.sha256_html, screenshot: r.sha256_screenshot !== prev.sha256_screenshot, status: r.status !== prev.status, since: prev.read_utc } : null
         // what changed, in words: sentences of the visible text present in one capture and not the other (from the private copies)
+        if (!r.changed?.text) delete r.diff
         if (r.changed?.text && !r.diff) {
             const read = id => { try { return fs.readFileSync(path.join(CV, id, 'text.txt'), 'utf8') } catch { return null } }
             const A = read(prev.id), B = read(r.id)
@@ -97,8 +105,8 @@ for (const r of all) {
     const jf = path.join(EV, r.id + '.json')
     if (!fs.existsSync(jf) || JSON.stringify({ ...J(jf), updated: 0 }) !== JSON.stringify({ ...JSON.parse(out), updated: 0 })) W(jf, out)
     const base = depth(r.id), name = path.basename(r.id)
-    const chg = r.changed == null ? (r.captured ? 'the first capture of this address' : 'not captured') : r.changed.text ? `**changed** since ${utc(r.changed.since)} (the visible text differs)` : `unchanged since ${utc(r.changed.since)} (the same visible text)`
-    const rows = chain.map(x => `| ${x === r ? '**this one**' : `[${utc(x.read_utc)}](${base}evidence/${x.id}.md)`} | ${utc(x.read_utc)} | ${x.captured ? x.status : 'not captured'} | ${x.changed == null ? 'first' : x.changed.text ? 'changed' : 'unchanged'} | \`${(x.sha256_text || '').slice(0, 16)}\` |`).join('\n')
+    const chg = r.failed ? r.failed : r.changed == null ? (r.captured ? 'the first capture of this address' : 'not captured') : r.changed.text ? `**changed** since ${utc(r.changed.since)} (the visible text differs)` : `unchanged since ${utc(r.changed.since)} (the same visible text)`
+    const rows = chain.map(x => `| ${x === r ? '**this one**' : `[${utc(x.read_utc)}](${base}evidence/${x.id}.md)`} | ${utc(x.read_utc)} | ${x.captured ? x.status : 'not captured'} | ${x.failed ? 'server error' : x.changed == null ? 'first' : x.changed.text ? 'changed' : 'unchanged'} | \`${(x.sha256_text || '').slice(0, 16)}\` |`).join('\n')
     const md = `---
 title: ${(r.title || r.host).replace(/"/g, "'").replace(/\n/g, ' ')} · as read ${utc(r.read_utc)}
 summary: Our capture of ${r.url} as it was at ${utc(r.read_utc)}: the screenshot, the hashes, earlier and later captures, then the link out.
@@ -119,7 +127,7 @@ head: <link rel="stylesheet" href="${base}app/evidence/evidence.css"><script src
 | Answer | ${r.captured ? `HTTP ${r.status}${r.headers?.['last-modified'] ? `; Last-Modified: ${r.headers['last-modified']}` : ''}${r.headers?.age ? `; served from a cache, age ${r.headers.age} s` : ''}` : `not captured: ${mdEsc(r.why)}`} |
 | Title | ${mdEsc(r.title) || '(none)'} |
 | Against the capture before | ${chg} |
-${r.captured ? `| sha256 of the HTML as served | \`${r.sha256_html || 'not kept'}\` |
+${r.ignored ? `| Ignored when comparing | ${mdEsc(r.ignored)} |\n` : ''}${r.captured ? `| sha256 of the HTML as served | \`${r.sha256_html || 'not kept'}\` |
 | sha256 of the visible text | \`${r.sha256_text}\` |
 ${r.sha256_screenshot ? `| sha256 of the screenshot | \`${r.sha256_screenshot}\` |\n` : ''}${r.clean ? `| sha256 of the second screenshot | \`${r.clean.sha256_screenshot}\` (${r.clean.what}) |\n` : ''}` : ''}| Shown here | ${r.shown ? `yes: the screenshot is read from display vault \`${r.vault.id}\`, path \`${r.vault.path}/\`` : r.captured ? 'no: the capture is kept privately; only the hash, title, time and a short excerpt are shown' : 'nothing to show'} |
 | Licence | ${mdEsc(r.licence)} |
@@ -150,9 +158,9 @@ The record as data: [${name}.json](${name}.json). All captures: [evidence](${bas
 
 // ---- 4. the index: by address, newest capture first
 const addresses = [...chains.entries()].map(([url, chain]) => {
-    const end = chain[chain.length - 1], last = [...chain].reverse().find(x => x.captured) || end, src = sourceOf(new URL(url).hostname)
+    const end = chain[chain.length - 1], last = [...chain].reverse().find(x => x.captured && !x.failed) || end, src = sourceOf(new URL(url).hostname)
     return { url, source: last.source, source_name: src.name, kind: src.kind, shown: !!src.show, title: [...chain].reverse().find(x => x.title)?.title || '', latest: last.id, latest_status: last.captured ? last.status : null, first_read: chain[0].read_utc, last_read: end.read_utc, changes: chain.filter(x => x.changed?.text).length,
-        captures: chain.map(x => ({ id: x.id, read_utc: x.read_utc, status: x.captured ? x.status : null, changed: x.changed == null ? null : x.changed.text, sha256_text: x.sha256_text, sha256_screenshot: x.sha256_screenshot })) }
+        captures: chain.map(x => ({ id: x.id, read_utc: x.read_utc, status: x.captured ? x.status : null, changed: x.changed == null ? null : x.changed.text, failed: x.failed ? true : undefined, sha256_text: x.sha256_text, sha256_screenshot: x.sha256_screenshot })) }
 }).sort((a, b) => a.source.localeCompare(b.source) || a.url.localeCompare(b.url))
 const index = { about: 'Every capture of an outside page kept for this site, by address. A record is at evidence/<id>.json and its page at evidence/<id>.html. The screenshots of sources that may be shown are in the display vault (data/vaults.json, a published read key); everything raw is in a private, packed vault. "changed" compares the visible text with the capture before.', by: BY, updated: now(), display_vault: vid('display'), counts: { addresses: addresses.length, captures: all.length, shown: all.filter(r => r.shown).length, changed: all.filter(r => r.changed?.text).length }, addresses }
 const ixf = path.join(EV, 'index.json')
@@ -167,7 +175,7 @@ for (const d of fs.readdirSync(path.join(ROOT, 'incidents'))) {
         if (!s.url || !/^https?:/.test(s.url)) continue
         let h; try { h = new URL(s.url).hostname.replace(/^www\./, '') } catch { continue }
         const chain = chains.get(new URL(s.url).href) || chains.get(s.url)
-        const good = chain && [...chain].reverse().find(x => x.captured)
+        const good = chain && [...chain].reverse().find(x => x.captured && !x.failed)
         ;(rows[it.id] ||= []).push({ url: s.url, evidence: good ? good.id : null, captures: chain ? chain.length : 0, why: good ? undefined : never(h) ? 'never captured (a social platform, or terms that forbid automated reading)' : chain ? chain[chain.length - 1].why : 'not captured yet' })
     }
 }

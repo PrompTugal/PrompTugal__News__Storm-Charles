@@ -18,6 +18,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Answer | HTTP 200; Last-Modified: Wed, 11 Nov 2026 02:53:12 GMT |
 | Title | IPMA - Avisos Meteorológicos em linha temporal |
 | Against the capture before | the first capture of this address |
+| Ignored when comparing | IPMA's pages print the time of the visit (for example '03h24m UTC:'): ignored when judging whether the page changed. |
 | sha256 of the HTML as served | `445b47deb1f772ff01308812a6c6072a465e9b84f05a9c4a01d647f39c7432f0` |
 | sha256 of the visible text | `82164c9ec3271679e8e6e2c49a1729b035a887e0637f0215c491e08e3186e44e` |
 | sha256 of the screenshot | `bf64266ebc6b7dae5aecc60c766e24152effcabeb30b59ffbc49bba1d37d6c5c` |

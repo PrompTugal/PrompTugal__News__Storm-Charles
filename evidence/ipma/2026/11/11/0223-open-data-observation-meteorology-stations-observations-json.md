@@ -18,6 +18,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Answer | HTTP 200; Last-Modified: Wed, 11 Nov 2026 01:35:02 GMT |
 | Title | (none) |
 | Against the capture before | the first capture of this address |
+| Ignored when comparing | IPMA's pages print the time of the visit (for example '03h24m UTC:'): ignored when judging whether the page changed. |
 | sha256 of the HTML as served | `7b92c17557a5d3c4dfdd773a1a506f0dfc4fb3ba8751074a2c3f2ee56e8f8124` |
 | sha256 of the visible text | `b50a8335dc8218f71a5881612784d1dbcd889db0f19c32e09465df1c89c7275f` |
 | sha256 of the screenshot | `d0ea171b4b657f82d2ca3e9042fc5977a419be60eac17f347a2afc7a9573306a` |

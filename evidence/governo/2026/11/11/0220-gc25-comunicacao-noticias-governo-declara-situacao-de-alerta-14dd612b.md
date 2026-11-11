@@ -33,6 +33,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Capture | Read | Answer | Against the one before | Text hash |
 |---|---|---|---|---|
 | **this one** | 11 Nov 2026, 02:20 UTC | 200 | first | `989fc0aaacae086d` |
+| [11 Nov 2026, 03:25 UTC](../../../../../evidence/governo/2026/11/11/0325-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.md) | 11 Nov 2026, 03:25 UTC | 200 | unchanged | `989fc0aaacae086d` |
 
 ## The outside address
 

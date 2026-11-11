@@ -18,6 +18,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Answer | HTTP 200; Last-Modified: Wed, 11 Nov 2026 02:16:25 GMT |
 | Title | IPMA - Avisos Meteorológicos em linha temporal |
 | Against the capture before | the first capture of this address |
+| Ignored when comparing | IPMA's pages print the time of the visit (for example '03h24m UTC:'): ignored when judging whether the page changed. |
 | sha256 of the HTML as served | `7aa8afd549d3162695df08b601a3284bbf9c1990e229ff654893f305e8b5b72d` |
 | sha256 of the visible text | `91b9caeaf416ce681278b95fd63623827ac34b5f2ca4155f8b01c8ce3f75e8f1` |
 | sha256 of the screenshot | `09f96c83c9556941d5cf93c6bdaea940a41fb2c50b410e258493153202e3d2cc` |
@@ -33,6 +34,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Capture | Read | Answer | Against the one before | Text hash |
 |---|---|---|---|---|
 | **this one** | 11 Nov 2026, 02:16 UTC | 200 | first | `91b9caeaf416ce68` |
+| [11 Nov 2026, 03:24 UTC](../../../../../evidence/ipma/2026/11/11/0324-pt-otempo-prev-sam.md) | 11 Nov 2026, 03:24 UTC | 200 | unchanged | `b604cb0aec26a0ff` |
 
 ## The outside address
 
