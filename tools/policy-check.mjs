@@ -34,6 +34,14 @@ for (const sha of git('rev-list', '--reverse', '--no-merges', range).split('\n')
     const s7 = sha.slice(0, 7), subject = git('log', '-1', '--format=%s', sha).trim()
     // read from the whole message: git's own trailer parser sees only the last paragraph, and the attribution lines often follow
     const trailer = [...new Set([...git('log', '-1', '--format=%B', sha).matchAll(/^Agent:[ \t]*(\S+)[ \t]*$/gm)].map(m => m[1]))]
+    // commit messages (the conductor's rule of 03:02 and 03:06 UTC on 11 November; warnings, not failures yet):
+    // (1) no name of a model in a trailer (CLAUDE.md: no name of the model an agent runs on in what we push);
+    // (2) every trailer in ONE final paragraph, or git's parser sees only the lines after the last blank line and tools miss For:
+    const body = git('log', '-1', '--format=%B', sha), seen = git('log', '-1', '--format=%(trailers:only,unfold)', sha)
+    const co = (body.match(/^Co-Authored-By:.*$/gim) || []).filter(l => !/^Co-Authored-By:\s*Claude\s*</i.test(l) && /claude|gpt|gemini|llama|mistral|qwen/i.test(l))
+    if (co.length) warns.push(`${s7}: a Co-Authored-By trailer names a model; write "Co-Authored-By: Claude <noreply@anthropic.com>" (history is not rewritten: from the next commit)`)
+    const hidden = ['Agent', 'Issue', 'For'].filter(k => new RegExp(`^${k}:`, 'm').test(body) && !new RegExp(`^${k}:`, 'mi').test(seen))
+    if (hidden.length) warns.push(`${s7}: ${hidden.join(', ')}: not seen by git's trailer parser; put all trailers in one final paragraph, no blank line between them`)
     const named = (subject.match(/^([a-z][\w.-]*@[\w.-]+?):\s/i) || [])[1]
     if (trailer.length !== 1) { fails.push(`${s7}: ${trailer.length ? 'more than one' : 'no'} Agent: trailer ("${subject.slice(0, 60)}")`); continue }
     const agent = trailer[0], rule = policy.agents[agent]

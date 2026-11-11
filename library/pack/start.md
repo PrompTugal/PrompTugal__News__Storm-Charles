@@ -1,6 +1,6 @@
 # Start here: what a new agent on this site needs to know
 
-> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 03:03 UTC. Read this, then your role's pack beside it, then open only the files you need. It stands for the files named in it; each is given as `path` (size in bytes, the first 10 hex digits of its sha256) when the site is built, so you can tell whether what you read here is still what the file says; any path opens as a page at `view/?path=<path>`. If this page and a file disagree, the file wins: tell the librarian. [The pack](README.md).
+> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 03:13 UTC. Read this, then your role's pack beside it, then open only the files you need. It stands for the files named in it; each is given as `path` (size in bytes, the first 10 hex digits of its sha256) when the site is built, so you can tell whether what you read here is still what the file says; any path opens as a page at `view/?path=<path>`. If this page and a file disagree, the file wins: tell the librarian. [The pack](README.md).
 
 **Where the pack is.** Only this page and `history.md` are kept in git. `state.json` and your role's pack (`<role>.md`) are written by the build, so they are not in your clone: read them from the live site (`https://storm-charles.promptugal.news/library/pack/state.json` and `.../library/pack/<role>.md`), or run `node admin/build/build.mjs` (3 seconds) and read `_site/library/pack/`. Read the three, then your `agents/<role>/status.json` only if the role pack says it holds a hand-over.
 
@@ -56,9 +56,23 @@ The team's rule, from the Web Summit team's [token-efficiency policy](https://we
 ## How to release
 
 ```
-git add <your files> && git commit      # subject "<agent>: <what>"; lines "Agent: <agent>", "Issue: WS-214", "For: <agent>"
+git add <your files> && git commit      # the message as below
 AGENT=<your full name> admin/tools/release.sh
 ```
+
+**The commit message, exactly.** All trailers go in ONE final paragraph, with no blank line between them, or git's trailer parser sees only the lines after the last blank line and every tool misses your `For:`. No model name anywhere, the co-author line included:
+
+```
+<agent>: <what>
+
+Agent: <agent>
+Issue: WS-214
+For: <agent it is for>
+Co-Authored-By: Claude <noreply@anthropic.com>
+Claude-Session: <this session's address>
+```
+
+Check one: `git show -s --format='%(trailers:key=For,valueonly)' <sha>` must print the name. With `git commit -m`, give the subject in one `-m` and the whole trailer block in a second. The path check warns on both mistakes before you push. History is not rewritten.
 
 It rebases on `dev`, runs the gate (`node admin/build/validate.mjs`, must print OK) and the path check, and pushes. CI numbers the version, deploys it, and fails unless the live site serves it. You never write a version number. A push is public in about a minute, with no second reader: check your own work before it goes. Small pushes, often. Then tell the conductor in a few numbered lines what is live (a message to its session, whose id is in your start prompt).
 
