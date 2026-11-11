@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T08:51Z",
-  "based_on_read_utc": "2026-11-11T08:45:09Z",
+  "updated": "2026-11-11T09:31Z",
+  "based_on_read_utc": "2026-11-11T09:22:47Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -894,10 +894,10 @@
     },
     {
       "id": "o1",
-      "text": "Nothing measured yet can test any of this: the orange wind warning and the red rain warning both begin at 09:00 on Wednesday, and the observations we hold end before it.",
+      "text": "The windows opened at 09:00 on Wednesday (orange for wind, red for rain), and one measurement from inside them is in the data room: the airport's 09:00 report, south-south-east 20 km/h with no gust reported, rain and mist, 1001 hPa. That is the same wind as at 08:00 and 08:30. IPMA's station hours we hold end at the one labelled 08:00, before the windows. One report at the opening minute cannot test any of this.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T05:22:49Z",
+      "read_utc": "2026-11-11T09:22:47Z",
       "supports": [
         {
           "kind": "data",
@@ -907,25 +907,50 @@
         },
         {
           "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T09:00Z].wind_kmh",
+          "expect": 20
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T09:00Z].wind_dir",
+          "expect": 160
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T09:00Z].pressure_hpa",
+          "expect": 1001
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T09:00Z].raw",
+          "expect": "METAR LPPT 110900Z 16011KT 3000 RA BR FEW002 BKN006 FEW016TCU 17/16 Q1001 NOSIG"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T08:30Z].wind_kmh",
+          "expect": 20
+        },
+        {
+          "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
           "field": "latest_hour_utc",
-          "note": "The newest station hour held, as it stands at each build."
+          "expect": "2026-11-11T08:00Z",
+          "note": "The newest station hour held. When it moves, this sentence is retold."
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
-          "field": "observed_airport_latest.raw",
-          "note": "The airport's newest report, as it stands at each build.",
-          "read_field": "observed_airport_latest.read_utc"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-          "field": "stations[0].hourly[time_utc=2026-11-11T12:00Z]",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T10:00Z]",
           "absent": true,
-          "note": "A tripwire: when the station hour labelled 12:00 arrives, this sentence is behind the data and is retold."
+          "note": "A tripwire: when the airport's 10:00 report arrives, this sentence is behind the data and is retold."
         }
-      ]
+      ],
+      "at_utc": "2026-11-11T09:00Z"
     },
     {
       "id": "o2",
@@ -933,7 +958,7 @@
       "label": "fact",
       "said_by": "Lisbon airport's METAR (issued by IPMA, read through NOAA's Aviation Weather)",
       "at_utc": "2026-11-10T11:00Z",
-      "read_utc": "2026-11-11T05:22:49Z",
+      "read_utc": "2026-11-11T09:22:47Z",
       "supports": [
         {
           "kind": "data",
@@ -1174,6 +1199,13 @@
         "c15",
         "c18",
         "c20"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T09:31Z",
+      "what": "Retold on the read of 09:22:47 UTC, the first after the windows opened at 09:00. Before, o1 said: \"Nothing measured yet can test any of this: the orange wind warning and the red rain warning both begin at 09:00 on Wednesday, and the observations we hold end before it.\" Now it gives the one measurement held from inside the windows (the airport at 09:00: 20 km/h, no gust reported) and says the station hours end at 08:00. o2 stands: no airport gust above the warned gust is listed.",
+      "claims_changed": [
+        "o1"
       ]
     }
   ]
