@@ -64,7 +64,7 @@ const ledger = fs.existsSync(LED) ? fs.readdirSync(LED).filter(f => f.endsWith('
 
 const order = ['conductor', 'observability', 'designer', 'identity', 'dev', 'meteorologist', 'researcher']
 const agents = [...roster.values()].sort((a, b) => ((order.indexOf(a.role) + 1) || 99) - ((order.indexOf(b.role) + 1) || 99) || a.name.localeCompare(b.name))
-    .map(a => ({ in_jobs: !!a.job, has_status: !!a.status_file, has_key: !!a.keys?.length, ...a }))
+    .map(a => ({ in_jobs: !!a.job, has_status: !!a.status_file, has_key: !!a.keys?.length, has_page: fs.existsSync(path.join(ROOT, 'agents', a.role, 'README.md')), ...a }))
 const body = {
     about: 'Every agent of the incident team behind storm-charles.promptugal.news: its job (agents/JOBS.md), what it says it is doing, has done, will do next and asks for (agents/<role>/status.json; asks starting "Dinis:" are for the operator), and its public key fingerprints (data/keys.json). Written by tools/agents-index.mjs from the repository; nothing here is typed by hand. Commits are not in this file: the page reads them from GitHub\'s public API.',
     by: 'incident.observability@web-summit.dinis',

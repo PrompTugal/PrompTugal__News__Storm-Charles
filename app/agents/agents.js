@@ -152,7 +152,7 @@
     const dur = m => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`
     function night(N, only) {
         const rows = only ? N.rows.filter(R => R.a.role === only) : N.rows
-        return `<div class="ag-night">${axis(N)}${rows.map(R => `<div class="row"><a class="nm" href="${only ? '#' : `${BASE}agents/${esc(R.a.role)}/index.html`}">${T(short(R.a.name).replace(/^incident\./, '').replace(/@$/, ''))}</a><span class="ag-note">${R.total} push${R.total === 1 ? '' : 'es'}${R.wDinis ? ` · on Dinis ${dur(R.wDinis)}` : ''}${R.wAgent ? ` · on agents ${dur(R.wAgent)}` : ''}</span>${strip(R)}</div>`).join('')}
+        return `<div class="ag-night">${axis(N)}${rows.map(R => `<div class="row"><a class="nm" href="${only || !R.a.has_page ? `#${esc(R.a.role)}` : `${BASE}agents/${esc(R.a.role)}/index.html`}">${T(short(R.a.name).replace(/^incident\./, '').replace(/@$/, ''))}</a><span class="ag-note">${R.total} push${R.total === 1 ? '' : 'es'}${R.wDinis ? ` · on Dinis ${dur(R.wDinis)}` : ''}${R.wAgent ? ` · on agents ${dur(R.wAgent)}` : ''}</span>${strip(R)}</div>`).join('')}
 <p class="ag-note ag-key"><i class="k p"></i>pushes (taller: more) <i class="k dinis"></i>an ask for Dinis was open <i class="k agent"></i>sent work for an agent that had not pushed since <i class="k w"></i>a wake (from its status file). Ten-minute cells, ${N.t0 === NIGHT0 ? 'from 21:00 UTC on Tuesday 10 November' : 'the last eight hours'} to now; hours in UTC; hover or press a cell for what was pushed. Derived from the commits and each status file's history (<a href="${BASE}data/agents/commits.json">data/agents/commits.json</a>, then GitHub's API and the files as served); "waiting" is our reading of those, not the agent's word.</p></div>`
     }
 
@@ -173,7 +173,7 @@
         const rows = [...G].map(([th, qs]) => ({ th, qs, who: [...new Set(qs.map(q => q.who))], fresh: qs.filter(q => !q.old).length })).sort((a, b) => (b.fresh > 0) - (a.fresh > 0) || b.who.length - a.who.length || b.qs.length - a.qs.length)
         return rows.map(r => `<details class="ag-un${r.fresh ? '' : ' old'}" data-k="un-${esc(r.th)}" id="un-${esc(r.th.toLowerCase().replace(/[^a-z]+/g, '-'))}">
 <summary><b>${esc(r.th)}</b><span class="ag-note">unblocks ${r.who.length} agent${r.who.length > 1 ? 's' : ''}: ${r.who.map(w => T(short(w).replace(/^incident\./, '').replace(/@$/, ''))).join(', ')}${r.fresh ? '' : ' · may be stale'}</span></summary>
-<ul>${r.qs.map(q => `<li${q.old ? ' class="old"' : ''}><a class="who" href="${BASE}agents/${esc(q.role)}/index.html">${T(short(q.who))}${q.old ? ' · may be stale' : ''}</a>${T(q.x.replace(/^Dinis\s*:\s*/i, ''))}</li>`).join('')}</ul>
+<ul>${r.qs.map(q => `<li${q.old ? ' class="old"' : ''}><a class="who" href="#${esc(q.role)}">${T(short(q.who))}${q.old ? ' · may be stale' : ''}</a>${T(q.x.replace(/^Dinis\s*:\s*/i, ''))}</li>`).join('')}</ul>
 ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do next (their own words)</p><ul>${r.who.filter(w => next.get(w)).map(w => `<li><code>${T(short(w))}</code> ${T(next.get(w))}</li>`).join('')}</ul>` : ''}
 </details>`).join('')
     }
@@ -196,7 +196,7 @@ ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do nex
         return `<details class="ag-card" id="${esc(a.role)}" data-k="card">
 <summary><span class="nm">${T(short(a.name))}</span><span class="ag-pill ${cls}">${esc(word)}</span>${nAsk ? `<span class="n">${nAsk} ask${nAsk > 1 ? 's' : ''} for Dinis</span>` : ''}<span class="lp">${last ? `${esc(ago(last.at))}: ${T(last.what)}` : a.state ? T(a.state) : 'no push read'}</span></summary>
 <div class="body">
-${ROLE ? '' : `<p class="ag-note"><a href="${BASE}agents/${esc(a.role)}/index.html">Its own page</a>: its night, its policy, its last 20 commits.</p>`}
+${ROLE || !a.has_page ? '' : `<p class="ag-note"><a href="${BASE}agents/${esc(a.role)}/index.html">Its own page</a>: its night, its policy, its last 20 commits.</p>`}
 ${a.state ? `<p><span class="lbl">Doing (its own words)</span>${T(a.state)}</p>` : `<p class="ag-note">${a.has_status ? 'No state written.' : `No status file yet (expected at <code>agents/${esc(a.role)}/status.json</code>).`}</p>`}
 <p><span class="lbl">Last push</span>${last ? `<a href="${esc(/^https:/.test(last.url) ? last.url : '#')}">${T(last.what)}</a><br><span class="ag-note">${esc(ago(last.at))} · ${esc(utc(last.at))} · ${mine.length} commit${mine.length > 1 ? 's' : ''} read${last.to.length ? ` · for ${T(last.to.map(short).join(', '))}` : ''}</span>` : '<span class="ag-note">No commit read from it on dev.</span>'}</p>
 ${a.last_wake ? `<p><span class="lbl">Last wake (its own file)</span>${esc(utc(a.last_wake))} · ${esc(ago(a.last_wake))}</p>` : ''}
