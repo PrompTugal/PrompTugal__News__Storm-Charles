@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # The sea: IPMA's sea state forecast
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 07:49 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 08:50 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -23,12 +23,12 @@ IPMA forecasts the sea for 12 coastal places, three days at a time: the signific
 | Porto, costa | 2.5 to **3.5** m, W, swell 2.4 to 3.3 m, 7 to 8.3 s, sea 15.6 to 15.8 °C | 2.5 to **3** m, W, swell 2.2 to 2.9 m, 6.1 to 7.9 s, sea 15.8 to 15.9 °C | 2 to **3** m, W, swell 1.9 to 2.9 m, 6.1 to 6.7 s, sea 15.9 to 16.1 °C |
 | Sines, costa | 3 to **4** m, W, swell 0.3 to 3.6 m, 6.2 to 7.7 s, sea 18 to 18.2 °C | 3.5 to **3.5** m, W, swell 3.1 to 3.5 m, 6.9 to 7.1 s, sea 18 to 18.2 °C | 2.5 to **3.5** m, W, swell 2.3 to 3.2 m, 6.1 to 7.1 s, sea 18 to 18.1 °C |
 | Viana do Castelo, costa | 2.5 to **3.5** m, W, swell 2.4 to 3.3 m, 7 to 8.2 s, sea 15.6 to 15.7 °C | 2.5 to **3** m, W, swell 2.2 to 3 m, 6.1 to 7.9 s, sea 15.7 to 15.8 °C | 2 to **3** m, W, swell 2 to 2.9 m, 6 to 6.7 s, sea 15.8 to 16 °C |
-| Funchal, costa | 2.5 to **4.5** m, SW, swell 0.4 to 4 m, 5.7 to 7.9 s, sea 21.8 to 22 °C | 1.5 to **2.5** m, W, swell 1.7 to 2.4 m, 7.7 to 8.6 s, sea 21.8 to 22 °C | 1 to **1.5** m, W, swell 1 to 1.7 m, 6 to 8.2 s, sea 21.8 to 22 °C |
-| Porto Santo, costa | 2 to **4.5** m, SW, swell 1.1 to 3.5 m, 5.4 to 7.1 s, sea 21.8 to 22 °C | 1.5 to **2** m, NW, swell 1.2 to 1.7 m, 6.1 to 7.1 s, sea 21.8 to 21.8 °C | 1 to **1.5** m, NW, swell 0.9 to 1.2 m, 5.9 to 6.8 s, sea 21.7 to 21.8 °C |
-| Ponta Delgada, costa | 1.5 to **2** m, NW, swell 1 to 2 m, 5.5 to 7.9 s, sea 20.2 to 20.3 °C | 1.5 to **2** m, W, swell 1.4 to 2 m, 7 to 7.9 s, sea 20.1 to 20.2 °C | 1.5 to **1.5** m, W, swell 1.3 to 1.4 m, 5.8 to 6.6 s, sea 20.1 to 20.1 °C |
-| Horta, costa | 2 to **2.5** m, N, swell 2.1 to 2.4 m, 7.2 to 7.8 s, sea 19.5 to 19.7 °C | 1.5 to **2** m, N, swell 1.5 to 2.1 m, 6.8 to 8 s, sea 19.4 to 19.6 °C | 1.5 to **2** m, N, swell 1.6 to 1.7 m, 6.8 to 7.7 s, sea 19.3 to 19.4 °C |
-| Santa Cruz das Flores, costa | 2 to **2.5** m, N, swell 1.8 to 2.2 m, 6.8 to 8.6 s, sea 19.6 to 19.6 °C | 2 to **2** m, NE, swell 1.7 to 2.2 m, 7.1 to 8.7 s, sea 19.5 to 19.6 °C | 2 to **2** m, N, swell 1.7 to 1.9 m, 7 to 8 s, sea 19.5 to 19.5 °C |
+| Funchal, costa | 2.5 to **4.5** m, SW, swell 0.4 to 3.8 m, 5.7 to 8 s, sea 21.9 to 22.1 °C | 1.5 to **2.5** m, W, swell 1.7 to 2.4 m, 7.7 to 8.5 s, sea 21.9 to 22.2 °C | 1 to **1.5** m, W, swell 1 to 1.7 m, 5.9 to 8.1 s, sea 21.9 to 22.1 °C |
+| Porto Santo, costa | 2 to **4** m, SW, swell 1.1 to 3.2 m, 5.4 to 7.2 s, sea 21.9 to 22 °C | 1.5 to **2** m, W, swell 1.2 to 1.8 m, 6 to 7.1 s, sea 21.8 to 21.9 °C | 1 to **1.5** m, NW, swell 0.9 to 1.2 m, 5.5 to 6.9 s, sea 21.8 to 21.9 °C |
+| Ponta Delgada, costa | 1.5 to **2** m, NW, swell 1 to 1.9 m, 5.5 to 7.8 s, sea 20.1 to 20.3 °C | 1.5 to **2** m, W, swell 1.5 to 2 m, 6 to 7.9 s, sea 20.1 to 20.1 °C | 1.5 to **2** m, W, swell 1.3 to 1.6 m, 5.9 to 6.5 s, sea 20 to 20.1 °C |
+| Horta, costa | 2 to **2.5** m, N, swell 1.9 to 2.4 m, 6.9 to 7.8 s, sea 19.6 to 19.7 °C | 1.5 to **2** m, N, swell 1.5 to 2.1 m, 6.5 to 8.2 s, sea 19.5 to 19.6 °C | 1.5 to **2** m, N, swell 1.6 to 1.8 m, 6.6 to 7.8 s, sea 19.4 to 19.5 °C |
+| Santa Cruz das Flores, costa | 2 to **2.5** m, N, swell 1.6 to 2.2 m, 6.5 to 8.6 s, sea 19.6 to 19.7 °C | 2 to **2** m, NE, swell 1.7 to 2.2 m, 6.9 to 8.8 s, sea 19.6 to 19.7 °C | 1.5 to **2** m, N, swell 1.6 to 1.9 m, 7.2 to 8.1 s, sea 19.5 to 19.6 °C |
 
 In each cell: significant wave height (min to **max**), prevailing direction, swell height, swell peak period, sea surface temperature.
 
-Data: [data/sea.json](data/sea.json) · the data set: [endpoints/sea-forecast.md](endpoints/sea-forecast.md) · rough-sea warnings: [warnings.md](warnings.md). Source: IPMA's hp-daily-sea-forecast-day0 to day2 files, read 2026-11-11 07:48 UTC.
+Data: [data/sea.json](data/sea.json) · the data set: [endpoints/sea-forecast.md](endpoints/sea-forecast.md) · rough-sea warnings: [warnings.md](warnings.md). Source: IPMA's hp-daily-sea-forecast-day0 to day2 files, read 2026-11-11 08:49 UTC.
