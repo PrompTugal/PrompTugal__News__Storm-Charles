@@ -8,14 +8,14 @@
   // round 69: one map per area; a page can mount several (<div data-flightmap="…index.json" data-flightmap-area="madeira">), Lisbon by default.
   // wind: the wind files' area; snap: the snapshots' area; icao: the airport in runways, crosswind and movements; arp: the fallback path's point.
   var AREAS = {
-    lisbon: { wind: 'lisbon', snap: 'lisbon', icao: 'LPPT', base: 'base-lisbon.json', view: [-10.0, 38.3, -8.5, 39.3], left: ['Lisbon'], name: 'the Lisbon area', place: 'Lisbon airport (LPPT)', ana: 'ANA, Lisbon airport', arp: { lat: 38.7742, lon: -9.1342 } /* the aerodrome reference point, rounded (AIP Portugal, LPPT AD 2.2) */ },
-    madeira: { wind: 'madeira', snap: 'funchal', icao: 'LPMA', base: 'base-madeira.json', view: [-17.4, 32.45, -16.2, 33.15], name: 'Madeira', place: 'Madeira airport (LPMA)', ana: 'ANA, Madeira', arp: null }
+    lisbon: { wind: 'lisbon', snap: 'lisbon', icao: 'LPPT', views: [{ label: 'Wide: 250 nm round Lisbon', bbox: [-14.6, 34.5, -3.8, 43.0], base: 'base-lisbon-wide.json', grat: 2, km: 100, wide: true }, { label: 'Close: Lisbon and the estuary', bbox: [-10.0, 38.3, -8.5, 39.3], base: 'base-lisbon.json', grat: 0.25, km: 10 }], left: ['Lisbon'], name: 'the Lisbon area', place: 'Lisbon airport (LPPT)', ana: 'ANA, Lisbon airport', arp: { lat: 38.7742, lon: -9.1342 } /* the aerodrome reference point, rounded (AIP Portugal, LPPT AD 2.2) */ },
+    madeira: { wind: 'madeira', snap: 'funchal', icao: 'LPMA', views: [{ label: 'Wide: 150 nm round Funchal', bbox: [-19.9, 30.2, -13.8, 35.3], base: 'base-madeira-wide.json', grat: 1, km: 50, wide: true }, { label: 'Close: Madeira', bbox: [-17.4, 32.45, -16.2, 33.15], base: 'base-madeira.json', grat: 0.25, km: 10 }], name: 'Madeira', place: 'Madeira airport (LPMA)', ana: 'ANA, Madeira', arp: null }
   }
   var nmaps = 0
   var PLANE = 'M0 -11 L2 -3 L10 2 L10 4 L2 2 L1.5 8 L4 10 L4 11.5 L0 10.5 L-4 11.5 L-4 10 L-1.5 8 L-2 2 L-10 4 L-10 2 L-2 -3 Z'
   document.querySelectorAll('[data-flightmap]').forEach(mount)
   function mount(box) {
-  var A = AREAS[box.getAttribute('data-flightmap-area')] || AREAS.lisbon, uid = 'fm-title-' + (++nmaps)
+  var A = AREAS[box.getAttribute('data-flightmap-area')] || AREAS.lisbon, uid = 'fm-title-' + (++nmaps), vi = 0, keep = {}, args = null
   var BASE = me.replace(/[^/]*$/, ''), IDX = box.getAttribute('data-flightmap'), DIR = IDX.replace(/[^/]*$/, '')
   var NS = 'http://www.w3.org/2000/svg', W = 1000
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -71,7 +71,7 @@
 
   box.classList.add('fm')
   box.innerHTML = '<p class="meta">Loading the flights map…</p>'
-  Promise.all([get(IDX), get(BASE + A.base)]).then(function (r) {
+  Promise.all([get(IDX), get(BASE + A.views[0].base)]).then(function (r) {
     var idx = r[0], coast = r[1]
     if (idx.snapshots || idx.wind_hours) {
       // round 68: incident.flights@'s map files (3d3aec6) carry two areas; round 69: this map is A's
@@ -88,8 +88,9 @@
   }).catch(function (e) { box.innerHTML = '<p class="meta">The flights map could not be read (' + esc(e.message) + ').</p>' })
 
   function build(idx, base, runways, cross, moves, ana) {
+    args = [idx, base, runways, cross, moves, ana]; var V = A.views[vi]
     // round 70 (Dinis ~23:38): a fuller base map, tracks, smooth playback, the list of aircraft, and "How is this worked out?"
-    var bb = A.view, k = Math.cos((bb[1] + bb[3]) / 2 * Math.PI / 180), H = Math.round(W * (bb[3] - bb[1]) / ((bb[2] - bb[0]) * k))
+    var bb = V.bbox, k = Math.cos((bb[1] + bb[3]) / 2 * Math.PI / 180), H = Math.round(W * (bb[3] - bb[1]) / ((bb[2] - bb[0]) * k))
     var X = function (lon) { return (lon - bb[0]) / (bb[2] - bb[0]) * W }, Y = function (lat) { return (bb[3] - lat) / (bb[3] - bb[1]) * H }
     var pl = function (l) { return l.map(function (p) { return X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1) }).join(' ') }
     var inb = function (lon, lat) { return lon >= bb[0] && lon <= bb[2] && lat >= bb[1] && lat <= bb[3] }
@@ -104,26 +105,28 @@
     svg += '<g class="fm-dist">' + (base.districts || []).map(function (l) { return '<polyline points="' + pl(l) + '"/>' }).join('') + '</g>'
     svg += '<g class="fm-river">' + (base.rivers || []).map(function (r) { return '<polyline points="' + pl(r.line) + '"><title>' + esc(r.name || 'river') + '</title></polyline>' }).join('') + '</g>'
     svg += '<g class="fm-coast">' + (base.coast || base.lines || []).map(function (l) { return '<polyline points="' + pl(l) + '"/>' }).join('') + '</g>'
-    var gs = 0.25, gr = '<g class="fm-grat">'
-    for (var gx = Math.ceil((bb[0] + 0.01) / gs) * gs; gx < bb[2]; gx += gs) gr += '<line x1="' + X(gx).toFixed(1) + '" x2="' + X(gx).toFixed(1) + '" y1="0" y2="' + H + '"/><text x="' + (X(gx) + 4).toFixed(1) + '" y="' + (H - 8) + '">' + Math.abs(gx).toFixed(2) + '°W</text>'
-    for (var gy = Math.ceil((bb[1] + 0.01) / gs) * gs; gy < bb[3] - 0.08; gy += gs) gr += '<line y1="' + Y(gy).toFixed(1) + '" y2="' + Y(gy).toFixed(1) + '" x1="0" x2="' + W + '"/><text x="' + (W - 6) + '" y="' + (Y(gy) - 4).toFixed(1) + '" text-anchor="end">' + gy.toFixed(2) + '°N</text>'
+    var gs = V.grat, gd = gs >= 1 ? 0 : 2, gr = '<g class="fm-grat">'
+    for (var gx = Math.ceil((bb[0] + gs / 20) / gs) * gs; gx < bb[2]; gx += gs) gr += '<line x1="' + X(gx).toFixed(1) + '" x2="' + X(gx).toFixed(1) + '" y1="0" y2="' + H + '"/>' + (X(gx) > W - 70 ? '' : '<text x="' + (X(gx) + 4).toFixed(1) + '" y="' + (H - 8) + '">' + Math.abs(gx).toFixed(gd) + '°W</text>')
+    for (var gy = Math.ceil((bb[1] + gs / 20) / gs) * gs; gy < bb[3] - gs / 3; gy += gs) gr += '<line y1="' + Y(gy).toFixed(1) + '" y2="' + Y(gy).toFixed(1) + '" x1="0" x2="' + W + '"/><text x="' + (W - 6) + '" y="' + (Y(gy) - 4).toFixed(1) + '" text-anchor="end">' + gy.toFixed(gd) + '°N</text>'
     svg += gr + '</g>'
     svg += '<g class="fm-rw">' + rw.map(function (r) { var e = r.ends || []; if (e.length < 2) return ''; return '<line x1="' + X(e[0].lon).toFixed(1) + '" y1="' + Y(e[0].lat).toFixed(1) + '" x2="' + X(e[1].lon).toFixed(1) + '" y2="' + Y(e[1].lat).toFixed(1) + '"><title>Runway ' + esc(r.id) + (r.approx ? ' (drawn from its true heading and length at the airport\'s reference point; position approximate)' : '') + '</title></line>' }).join('') + '</g>'
     svg += '<g class="fm-towns">' + (base.places || []).filter(function (p) { return inb(p.lon, p.lat) }).map(function (p) { var left = p.lon > bb[2] - (bb[2] - bb[0]) * 0.25 || A.left && A.left.indexOf(p.name) >= 0
       return '<circle cx="' + X(p.lon).toFixed(1) + '" cy="' + Y(p.lat).toFixed(1) + '" r="5"/><text x="' + (X(p.lon) + (left ? -10 : 10)).toFixed(1) + '" y="' + (Y(p.lat) + 5).toFixed(1) + '"' + (left ? ' text-anchor="end"' : '') + '>' + esc(p.name) + '</text>' }).join('') + '</g>'
-    if (rw[0] && rw[0].ends) { var a0 = rw[0].ends[1] || rw[0].ends[0]; svg += '<text class="fm-place" x="' + (X(a0.lon) + 14).toFixed(1) + '" y="' + (Y(a0.lat) - 6).toFixed(1) + '">' + esc(A.place) + '</text>' }
-    var km10 = 10 / (111.32 * k) / (bb[2] - bb[0]) * W
-    svg += '<g class="fm-scale"><rect x="12" y="' + (H - 94) + '" width="' + (km10 + 24).toFixed(1) + '" height="34" rx="3"/><line x1="24" y1="' + (H - 68) + '" x2="' + (24 + km10).toFixed(1) + '" y2="' + (H - 68) + '"/><line x1="24" x2="24" y1="' + (H - 74) + '" y2="' + (H - 62) + '"/><line x1="' + (24 + km10).toFixed(1) + '" x2="' + (24 + km10).toFixed(1) + '" y1="' + (H - 74) + '" y2="' + (H - 62) + '"/><text x="24" y="' + (H - 76) + '">10 km</text><text x="34" y="40" text-anchor="middle">N</text><path d="M34 48 l-9 20 h18 z"/></g>'
-    svg += '<g class="fm-wind"></g><g class="fm-trails"></g><g class="fm-ac"></g></svg>'
+    if (rw[0] && rw[0].ends && !V.wide) { var a0 = rw[0].ends[1] || rw[0].ends[0]; svg += '<text class="fm-place" x="' + (X(a0.lon) + 14).toFixed(1) + '" y="' + (Y(a0.lat) - 6).toFixed(1) + '">' + esc(A.place) + '</text>' }
+    var km10 = V.km / (111.32 * k) / (bb[2] - bb[0]) * W
+    svg += '<g class="fm-scale"><rect x="12" y="' + (H - 94) + '" width="' + (km10 + 24).toFixed(1) + '" height="34" rx="3"/><line x1="24" y1="' + (H - 68) + '" x2="' + (24 + km10).toFixed(1) + '" y2="' + (H - 68) + '"/><line x1="24" x2="24" y1="' + (H - 74) + '" y2="' + (H - 62) + '"/><line x1="' + (24 + km10).toFixed(1) + '" x2="' + (24 + km10).toFixed(1) + '" y1="' + (H - 74) + '" y2="' + (H - 62) + '"/><text x="24" y="' + (H - 76) + '">' + V.km + ' km</text><text x="34" y="40" text-anchor="middle">N</text><path d="M34 48 l-9 20 h18 z"/></g>'
+    svg += '<g class="fm-wind"></g><g class="fm-others"></g><g class="fm-trails"></g><g class="fm-ac"></g></svg>'
     var t0 = times[0], t1 = times[times.length - 1]
     var ctl = '<div class="fm-ctl"><button type="button" class="fm-play"' + (reduce ? ' disabled title="Play is off because your system asks for reduced motion; use the slider"' : '') + '>▶ Play</button>'
       + '<label class="fm-t"><span class="sr">Time</span><input type="range" min="0" max="' + (times.length - 1) + '" step="1" value="' + (times.length - 1) + '" aria-valuetext=""></label>'
       + '<output class="fm-now"></output><button type="button" class="fm-how">How is this worked out?</button></div>'
-    var key = '<ul class="fm-key"><li><svg width="22" height="14" aria-hidden="true"><circle class="fm-pt" cx="11" cy="7" r="3.5"/></svg> a measured position (adsb.lol)</li>'
+      + '<div class="fm-views" role="group" aria-label="Map view">' + A.views.map(function (v, j) { return '<button type="button" data-v="' + j + '" aria-pressed="' + (j === vi) + '">' + esc(v.label) + '</button>' }).join('') + '</div>'
+    var cad = (function () { var d = []; for (var j = Math.max(1, snaps.length - 6); j < snaps.length; j++) d.push((Date.parse(snaps[j].t) - Date.parse(snaps[j - 1].t)) / 60000); d.sort(function (a, b) { return a - b }); return d.length ? Math.round(d[Math.floor(d.length / 2)]) : null })()
+    var key = '<p class="fm-cad">' + (cad ? 'Positions every ' + cad + ' minutes; movement between them is drawn, not measured.' : 'Movement between positions is drawn, not measured.') + '</p><ul class="fm-key"><li><svg width="22" height="14" aria-hidden="true"><circle class="fm-pt" cx="11" cy="7" r="3.5"/></svg> a measured position (adsb.lol)</li>'
       + '<li><svg width="30" height="14" aria-hidden="true"><line class="fm-join" x1="2" y1="7" x2="28" y2="7"/></svg> our straight line between two measured positions: not measured</li>'
-      + '<li><svg width="18" height="18" aria-hidden="true"><path class="fm-k-m" transform="translate(9 9) scale(.7)" d="' + PLANE + '"/></svg> plane at a measured position · <svg width="18" height="18" aria-hidden="true"><path class="fm-k-i" transform="translate(9 9) scale(.7)" d="' + PLANE + '"/></svg> outlined: on our line between two</li></ul>'
+      + '<li><svg width="18" height="18" aria-hidden="true"><path class="fm-k-m" transform="translate(9 9) scale(.7)" d="' + PLANE + '"/></svg> plane at a measured position · <svg width="18" height="18" aria-hidden="true"><path class="fm-k-i" transform="translate(9 9) scale(.7)" d="' + PLANE + '"/></svg> outlined: on our line between two</li><li><svg width="14" height="14" aria-hidden="true"><path class="fm-oth" d="M7 2 l5 5 l-5 5 l-5 -5 z"/></svg> another aircraft, not an airline\'s: anonymous, never named</li></ul>'
     box.innerHTML = '<div class="fm-grid"><figure class="fm-fig">' + svg + ctl + key + '<figcaption class="fm-cap"></figcaption><div class="fm-item" aria-live="polite"></div>'
-      + '<section class="fm-list"><h3>The aircraft we track here</h3><div class="wx-scroll" tabindex="0" role="region" aria-label="The aircraft, scrolls sideways"><table class="fm-ac-t"><thead><tr><th>Callsign</th><th>Airline</th><th>Type</th><th>Altitude (ft)</th><th>Speed (kt)</th><th>Heading</th><th>Phase</th><th>Last seen (UTC)</th></tr></thead><tbody></tbody></table></div><p class="meta">From the snapshots: callsign, airline (its ICAO code from the callsign), type, altitude, ground speed and track as adsb.lol gave them; phase from the reported vertical rate (climbing above +300 ft/min, descending below −300); last seen is the newest snapshot that had it. Pick a row to light its plane and track.</p></section></figure><div class="fm-side">'
+      + '<section class="fm-list"><h3>The aircraft we track here</h3><div class="wx-scroll" tabindex="0" role="region" aria-label="The aircraft, scrolls sideways"><table class="fm-ac-t"><thead><tr><th>Callsign</th><th>Airline</th><th>Type</th><th>Altitude (ft)</th><th>Speed (kt)</th><th>Heading</th><th>Phase</th><th>Last seen (UTC)</th></tr></thead><tbody></tbody></table></div><p class="meta">From the snapshots: callsign, airline (name and ICAO code, from the callsign), type, altitude, ground speed and track as adsb.lol gave them; phase is incident.flights@\'s arithmetic on the reported vertical rate (climbing above +300 ft/min, descending below −300, cruising when level at 10,000 ft or more); last seen is the newest snapshot that had it. Pick a row to light its plane and track.</p></section></figure><div class="fm-side">'
       + '<section class="fm-xw"><h3>Crosswind by runway, hour by hour (kt)</h3><div class="wx-scroll fm-xw-c" tabindex="0" role="region" aria-label="Crosswind chart, scrolls sideways"></div>' + prov(cross) + '</section>'
       + (ana ? '<section class="fm-ana"><h3>' + esc(A.ana) + '</h3><p><span class="lbl">fact</span> ' + (ana.scope ? esc(ana.scope) + ': ' : '') + (ana.scheduled != null ? ana.scheduled + ' flights scheduled; ' : '') + (ana.cancelled_in_advance != null ? ana.cancelled_in_advance + ' cancelled in advance; ' : '') + (ana.cancelled_during_day != null ? ana.cancelled_during_day + ' cancelled during the day; ' : '') + (ana.operated != null ? ana.operated + ' operated' : '') + (ana.situation_at ? ', at ' + esc(hm(ana.situation_at)) + ' UTC on ' + esc(day(ana.situation_at)) : '') + '.</p><span class="prov"><a href="' + esc(ana.link) + '">ANA</a>' + (ana.published ? ' published ' + esc(hm(ana.published)) + ' UTC' : '') + (ana.read ? ', read ' + esc(hm(ana.read)) + ' UTC' : '') + '</span>' + (ana.note ? '<p class="meta">' + esc(ana.note) + '</p>' : '') + '</section>' : '')
       + '<section class="fm-mv"><h3>Departures seen by hour</h3><div class="wx-scroll fm-mv-c" tabindex="0" role="region" aria-label="Movements chart, scrolls sideways"></div>' + prov(moves) + '</section>'
@@ -133,18 +136,25 @@
     var g = function (s) { return box.querySelector(s) }, range = g('.fm-t input'), out = g('.fm-now'), wl = g('.fm-wind'), tl = g('.fm-trails'), al = g('.fm-ac'), cap = g('.fm-cap'), item = g('.fm-item'), tb = g('.fm-ac-t tbody')
     var hours = (cross && cross.hours || []).map(function (h) { return h.t })
     drawCross(g('.fm-xw-c'), cross); drawMoves(g('.fm-mv-c'), moves); tables(g('.fm-tab'), cross, moves)
-    g('.fm-how').addEventListener('click', function () { how(cross, rw) })
+    g('.fm-how').addEventListener('click', function () { how(cross, rw, idx.how) })
+    var ol = g('.fm-others')
+    box.querySelectorAll('.fm-views button').forEach(function (b) { b.addEventListener('click', function () { var j = +b.getAttribute('data-v'); if (j === vi) return; stop(); keep = { i: +range.value, picked: picked }; vi = j; get(BASE + A.views[j].base).then(function (nb) { args[1] = nb; build.apply(null, args) }) }) })
 
     // tracks: each aircraft's measured positions in time order, one per snapshot that had it (idx.tracks, when the flights files carry them, is read the same way)
     var tracks = {}, lastSnap = {}
     function addPoint(a, t, sd) { if (a.lat == null || a.lon == null) return; var id = a.id || a.callsign; if (!id) return
-      var p = { t: Date.parse(t), at: t, lat: a.lat, lon: a.lon, track_deg: a.track_deg, alt_ft: a.alt_ft != null ? a.alt_ft : (a.geo_alt_m != null ? a.geo_alt_m * 3.28084 : null), gs_kt: a.gs_kt != null ? a.gs_kt : (a.ground_speed_ms != null ? a.ground_speed_ms * 1.94384 : null), vrate_fpm: a.vrate_fpm, on_ground: a.on_ground, callsign: a.callsign || id, airline: a.airline, type: a.type, sd: sd }
+      var p = { t: Date.parse(t), at: t, lat: a.lat, lon: a.lon, track_deg: a.track_deg, alt_ft: a.alt_ft != null ? a.alt_ft : (a.geo_alt_m != null ? a.geo_alt_m * 3.28084 : null), gs_kt: a.gs_kt != null ? a.gs_kt : (a.ground_speed_ms != null ? a.ground_speed_ms * 1.94384 : null), vrate_fpm: a.vrate_fpm, on_ground: a.on_ground, phase: a.phase, callsign: a.callsign || id, airline: a.airline, airline_name: a.airline_name, type: a.type, sd: sd }
       ;(tracks[id] = tracks[id] || []).push(p) }
-    var loaded = Promise.all(snaps.map(function (s) { return file(s.file).catch(function () { return null }) })).then(function (list) {
-      list.forEach(function (sd, i) { if (!sd) return; lastSnap = sd; (sd.aircraft || []).forEach(function (a) { addPoint(a, sd.t || snaps[i].t, sd) }) })
-      Object.keys(tracks).forEach(function (id) { tracks[id].sort(function (p, q) { return p.t - q.t }) })
+    var th = (idx.tracks || []).filter(function (x) { return x.area === A.snap }), covered = {}
+    th.forEach(function (x) { covered[String(x.hour).slice(0, 13)] = 1 })
+    var rest = snaps.filter(function (s) { return !covered[s.t.slice(0, 13)] })
+    var loaded = Promise.all([Promise.all(th.map(function (x) { return file(x.file).catch(function () { return null }) })), Promise.all(rest.map(function (s) { return file(s.file).catch(function () { return null }) }))]).then(function (r) {
+      r[0].forEach(function (tf) { if (!tf) return; var F = tf.point_fields || ['t', 'lat', 'lon', 'alt_ft', 'gs_kt', 'track_deg', 'vrate_fpm', 'on_ground']
+        ;(tf.aircraft || []).forEach(function (ac) { (ac.points || []).forEach(function (pt, j) { var o = { id: ac.callsign, callsign: ac.callsign, airline: ac.airline, airline_name: ac.airline_name, type: ac.type }; F.forEach(function (f, n) { o[f] = pt[n] }); if (ac.now && j === ac.points.length - 1) o.phase = ac.now.phase; addPoint(o, o.t, tf) }) }) })
+      r[1].forEach(function (sd, i) { if (!sd) return; (sd.aircraft || []).forEach(function (a) { addPoint(a, sd.t || rest[i].t, sd) }) })
+      Object.keys(tracks).forEach(function (id) { var tr = tracks[id].sort(function (p, q) { return p.t - q.t }); tracks[id] = tr.filter(function (p, j) { return !j || p.t !== tr[j - 1].t }) })
     })
-    var GAP = 15 * 60000, HOLD = 90000, TRAIL = 8
+    var GAP = 25 * 60000, HOLD = 90000, TRAIL = 8
     function lerpAng(a, b, f) { var d = ((b - a + 540) % 360) - 180; return (a + d * f + 360) % 360 }
     function bearing(p, q) { var y = Math.sin((q.lon - p.lon) * Math.PI / 180) * Math.cos(q.lat * Math.PI / 180), x = Math.cos(p.lat * Math.PI / 180) * Math.sin(q.lat * Math.PI / 180) - Math.sin(p.lat * Math.PI / 180) * Math.cos(q.lat * Math.PI / 180) * Math.cos((q.lon - p.lon) * Math.PI / 180); return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360 }
     // where an aircraft is at time T: at a measured point (within 1 s, or held for 90 s after it), or on our straight line between two measured points no more than 15 minutes apart
@@ -160,7 +170,7 @@
     }
     function windAt(t) { var w = null; winds.forEach(function (x) { if (x.t <= t) w = x }); return w || winds[0] }
     function snapAt(T) { var best = null; snaps.forEach(function (s) { var d = T - Date.parse(s.t); if (d >= -1000 && d < 600000) best = s }); return best }
-    function phase(p) { if (p.on_ground) return 'on the ground'; if (p.vrate_fpm == null) return ''; return p.vrate_fpm > 300 ? 'climbing' : p.vrate_fpm < -300 ? 'descending' : 'level' }
+    function phase(p) { if (p.phase && p.phase !== 'unknown') return p.phase; if (p.on_ground) return 'on the ground'; if (p.vrate_fpm == null) return ''; return p.vrate_fpm > 300 ? 'climbing' : p.vrate_fpm < -300 ? 'descending' : 'level' }
     var picked = null, curWind = null, here = [], lastT = null
     function render(T) {
       lastT = T
@@ -177,13 +187,15 @@
         as += '<g class="fm-plane' + (s.measured ? '' : ' fm-between') + (gnd ? ' fm-gnd' : '') + (on ? ' on' : '') + '" data-id="' + esc(id) + '" tabindex="0" role="button" aria-label="' + esc((p.callsign || id) + ', ' + (gnd ? 'on the ground' : p.alt_ft != null ? Math.round(p.alt_ft) + ' ft' : 'altitude unknown') + (s.measured ? '' : ', between two measured positions')) + '" transform="translate(' + X(s.lon).toFixed(1) + ' ' + Y(s.lat).toFixed(1) + ') rotate(' + Math.round(s.hd || 0) + ') scale(' + (gnd ? 1.1 : 1.8) + ')"><path d="' + PLANE + '"/><circle r="13" class="fm-hit"/></g>'
       })
       tl.innerHTML = ts; al.innerHTML = as
+      var sn = snapAt(T), fr = sn && snapCache[sn.file]; ol.innerHTML = fr && fr.others ? fr.others.filter(function (o) { return o.lat != null && inb(o.lon, o.lat) }).map(function (o) { return '<path class="fm-oth" d="M' + X(o.lon).toFixed(1) + ' ' + (Y(o.lat) - 5).toFixed(1) + ' l5 5 l-5 5 l-5 -5 z"/>' }).join('') : ''
       var w = windAt(iso)
       if (w !== curWind) { curWind = w; if (w) file(w.file).then(function (wd) { if (curWind !== w) return; drawWind(wd) }); else wl.innerHTML = '' }
     }
     function drawWind(wd) { var ws = ''
       ;(wd && wd.points || []).forEach(function (p) {
         if (!inb(p.lon, p.lat)) return
-        var L = Math.min(64, 10 + (p.speed_kt || 0) * 1.1), ang = ((p.dir_from_deg || 0) + 180) % 360
+        if (V.wide && (Math.round(p.lat * 4) % 2 || Math.round(p.lon * 4) % 2)) return  /* the wide view: every other lattice point, shorter arrows */
+        var L = Math.min(64, 10 + (p.speed_kt || 0) * 1.1) * (V.wide ? 0.7 : 1), ang = ((p.dir_from_deg || 0) + 180) % 360
         ws += '<g transform="translate(' + X(p.lon).toFixed(1) + ' ' + Y(p.lat).toFixed(1) + ') rotate(' + ang + ')"><line y1="' + (L / 2) + '" y2="' + (-L / 2) + '"/><path d="M0 ' + (-L / 2 - 2) + ' l-4 8 h8 z"/><title>Wind from ' + Math.round(p.dir_from_deg) + '°, ' + Math.round(p.speed_kt) + ' kt' + (p.gust_kt ? ', gusts ' + Math.round(p.gust_kt) + ' kt' : '') + ' (model)</title></g>'
       })
       wl.innerHTML = ws; wl._wd = wd; caption() }
@@ -196,7 +208,7 @@
     var snapCache = {}; function lastSnapFor(s) { return snapCache[s.file] || null }
     function list() {
       var rows = here.slice().sort(function (a, b) { return String(a.s.p.callsign).localeCompare(String(b.s.p.callsign)) }).map(function (h) { var p = h.s.p, last = h.tr.filter(function (x) { return x.t <= lastT + 1000 }).pop() || p
-        return '<tr data-id="' + esc(h.id) + '" tabindex="0"' + (picked === h.id ? ' class="on" aria-selected="true"' : '') + '><td>' + esc(p.callsign || h.id) + '</td><td>' + esc(p.airline || '') + '</td><td>' + esc(p.type || '') + '</td><td>' + (p.on_ground ? '' : p.alt_ft != null ? Math.round(p.alt_ft).toLocaleString('en-GB') : '') + '</td><td>' + (p.gs_kt != null ? Math.round(p.gs_kt) : '') + '</td><td>' + (p.track_deg != null ? Math.round(p.track_deg) + '°' : '') + '</td><td>' + esc(phase(p)) + '</td><td>' + esc(hm(last.at)) + (h.s.measured ? '' : ' <span class="fm-tag">between</span>') + '</td></tr>' }).join('')
+        return '<tr data-id="' + esc(h.id) + '" tabindex="0"' + (picked === h.id ? ' class="on" aria-selected="true"' : '') + '><td>' + esc(p.callsign || h.id) + '</td><td>' + (p.airline_name ? esc(p.airline_name) + ' <span class="fm-code">' + esc(p.airline || '') + '</span>' : esc(p.airline || '')) + '</td><td>' + esc(p.type || '') + '</td><td>' + (p.on_ground ? '' : p.alt_ft != null ? Math.round(p.alt_ft).toLocaleString('en-GB') : '') + '</td><td>' + (p.gs_kt != null ? Math.round(p.gs_kt) : '') + '</td><td>' + (p.track_deg != null ? Math.round(p.track_deg) + '°' : '') + '</td><td>' + esc(phase(p)) + '</td><td>' + esc(hm(last.at)) + (h.s.measured ? '' : ' <span class="fm-tag">between</span>') + '</td></tr>' }).join('')
       tb.innerHTML = rows || '<tr><td colspan="8" class="meta">No aircraft in this box at this time.</td></tr>'
     }
     function details(id) { var tr = tracks[id]; if (!tr) return; var s = here.filter(function (h) { return h.id === id })[0], p = s ? s.s.p : tr[tr.length - 1]
@@ -235,14 +247,15 @@
     var nowIso = new Date().toISOString(), m = location.hash.match(/t=([0-9T:-]+)Z?/), start = 0
     times.forEach(function (t, i) { if (t <= nowIso) start = i }); if (snaps.length) start = times.indexOf(snaps[snaps.length - 1].t)
     if (m) times.forEach(function (t, i) { if (t.slice(0, 16) <= m[1].slice(0, 16)) start = i })
+    if (keep.i != null) { start = keep.i; picked = keep.picked; keep = {} }
     range.value = start; show(start)
   }
   // "How is this worked out?": a top-down diagram in the reader's panel. Read from flights/how.json when incident.flights@ writes it
   // (steps in order, each with a label, what it does and its source); until then from what the files above already say.
-  function how(cross, rw) {
-    var worked = workedExample(cross, rw)
-    file('how.json').catch(function () { return null }).then(function (h) {
-      var chains = h && (h.chains || (h.steps ? [{ title: h.title || 'Aircraft', steps: h.steps }] : null)) || [
+  function how(cross, rw, hp) {
+    var worked = workedExample(cross, rw);
+    (hp ? get(DIR + hp) : Promise.reject()).catch(function () { return null }).then(function (h) {
+      var chains = h && (h.pipelines || h.chains || (h.steps ? [{ title: h.title || 'Aircraft', steps: h.steps }] : null)) || [
         { title: 'Aircraft on the map', steps: [
           { label: 'adsb.lol receivers', what: 'volunteers\' receivers pick up the position each aircraft broadcasts (ADS-B)', source: 'https://adsb.lol/', kind: 'fact' },
           { label: 'Our poll', what: 'we ask adsb.lol for every aircraft within a radius of the airport, on a schedule' },
@@ -259,9 +272,9 @@
           { label: 'Arithmetic', what: 'crosswind = wind × sin(angle between wind and runway); headwind = wind × cos(same angle)' } ] } ]
       var html = '<p class="pn-meta">From the sources, top to bottom. Not a warning service: your airline decides whether your flight runs.</p>' + chains.map(function (c) {
         return '<div class="fm-how-c"><h4>' + esc(c.title) + '</h4><ol class="fm-flow">' + (c.steps || []).map(function (s) {
-          var k = s.kind || s.label_kind
-          return '<li' + (k === 'hypothesis' ? ' class="hyp"' : '') + '><b>' + esc(s.label || s.name || s.title) + '</b>' + (k ? ' <span class="lbl' + (k === 'hypothesis' ? ' l-hypothesis' : '') + '">' + esc(k === 'hypothesis' ? 'our drawing' : k) + '</span>' : '') + '<span>' + esc(s.what || s.text || s.about || '') + '</span>' + (s.source ? '<a href="' + esc(s.source) + '">' + esc(String(s.source).replace(/^https?:\/\/(www\.)?/, '').split('/')[0]) + '</a>' : '') + '</li>'
-        }).join('') + '</ol></div>' }).join('') + worked + (h ? '<p class="pn-meta">Steps from <a href="' + esc(DIR + 'how.json') + '">how.json</a>' + (h.updated ? ', ' + esc(hm(h.updated)) + ' UTC' : '') + '.</p>' : '')
+          var k = s.kind || (/^(fact|derived|evidence|hypothesis)$/.test(s.label) ? s.label : null)
+          return '<li' + (k === 'hypothesis' ? ' class="hyp"' : '') + '><b>' + esc(s.title || s.name || s.label) + '</b>' + (k ? ' <span class="lbl' + (k === 'hypothesis' ? ' l-hypothesis' : '') + '">' + esc(k === 'hypothesis' ? 'our drawing' : k) + '</span>' : '') + '<span>' + esc(s.what || s.text || s.about || '') + '</span>' + (s.source ? '<a href="' + esc(s.source) + '">' + esc(String(s.source).replace(/^https?:\/\/(www\.)?/, '').split('/')[0]) + '</a>' : '') + '</li>'
+        }).join('') + '</ol></div>' }).join('') + worked + (h ? '<p class="pn-meta">Steps from incident.flights@\'s <a href="' + esc(DIR + hp) + '">how.json</a> (the page: <a href="' + esc(DIR + hp.replace(/\.json$/, '.html')) + '">how it is worked out</a>)' + (h.updated ? ', ' + esc(hm(h.updated)) + ' UTC' : '') + '.</p>' : '')
       if (window.stormPanel && stormPanel.show) stormPanel.show({ title: 'How is this worked out?', html: html })
     })
   }

@@ -15,3 +15,14 @@ Dinis (~23:38, BRIEF.md, through the conductor at 23:40) asked for a better map,
 **Measured** on a local build: /flights/ 390 px 7,581 px tall, 1280 px 4,521; h1 227 / 254; two maps, 56 steps each; mid-play at 23:02 UTC three planes on our lines between the 23:00 and 23:04 snapshots; no overflow; 0 text under 11 px; 0 contrast failures in the five themes; no script error; the gate OK.
 
 **Next:** take incident.flights@'s track files and `how.json` when it sends their shapes (loading every snapshot will not scale at a poll every 1 to 2 minutes; the tracks file replaces that); widen each view to its new area.
+
+## 23:51: on incident.flights@'s new files (e9c24a6, 10ad0cc)
+
+- **Two views per map**, wide by default: Lisbon "Wide: 250 nm round Lisbon" (−14.6 to −3.8 E, 34.5 to 43.0 N; `base-lisbon-wide.json`, 94 KB: Iberia's land, urban areas, rivers, Portugal's district lines; Lisbon, Porto, Coimbra, Setúbal, Faro, Vigo, Seville, Tangier from Natural Earth; a 2° graticule, 100 km scale) and "Close: Lisbon and the estuary"; Madeira "Wide: 150 nm round Funchal" (`base-madeira-wide.json`, 4 KB; 1°, 50 km) and "Close: Madeira". The switch keeps the time and the picked aircraft. In the wide view the wind lattice is thinned to every other point with shorter arrows.
+- **Tracks** from `tracks/<area>/<date>/<HH>.json` (`point_fields`, joined across hours by callsign); snapshots only for hours no track file covers. The gap the map will draw a line across is now 25 minutes (Madeira's frames are 20 minutes apart).
+- **Others** (`others[]`): every non-airline aircraft as a small grey diamond, never labelled, not in the list, not clickable; in the key as "another aircraft, not an airline's: anonymous, never named".
+- **The list**: the airline's name beside its code (`airline_name`); phase is incident.flights@'s (`now.phase`: cruising, climbing, descending, level, on ground), said so under the table; the table scrolls inside a 26 rem box with its header kept.
+- **The cadence line** above the key: "Positions every N minutes; movement between them is drawn, not measured", N the median of the last frame gaps (10 now; 5 once the 5-minute frames fill the window).
+- **The panel** reads `how.json`'s `pipelines[]` (step `title`, `what`, `source`; `label` fact / derived / evidence / hypothesis shown as the step's label, hypothesis boxes dashed), then the worked 14:00 example, and links incident.flights@'s page (flights/how.html). 19 steps from its file at 23:46.
+
+Measured on a local build: /flights/ 390 px 8,766 px tall, 1280 px 5,555; the Lisbon wide view 21 airline aircraft and 11 others at 23:42; no overflow; 0 under 11 px; 0 contrast failures in five themes; no script error; the gate OK.
