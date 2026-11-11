@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T09:00:00Z and 2026-11-11T10:00:00Z: the facts behind the article news/2026-11-11T09.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T09:50:16Z",
+ "updated": "2026-11-11T09:59:22Z",
  "window": {
   "from": "2026-11-11T09:00:00Z",
   "to": "2026-11-11T10:00:00Z"
@@ -13,25 +13,25 @@
  ],
  "versions": {
   "first": "v0.1.718",
-  "last": "v0.1.778",
-  "pushed": 48,
-  "served": 7,
+  "last": "v0.1.800",
+  "pushed": 83,
+  "served": 62,
   "as_of": "library/releases/2026-11-11T09.json",
-  "not_confirmed": 0,
+  "not_confirmed": 21,
   "failed": 0
  },
  "by_agent": [
   {
-   "agent": "incident.conductor@web-summit.dinis",
-   "commits": 12
+   "agent": "incident.observability@web-summit.dinis",
+   "commits": 16
   },
   {
-   "agent": "incident.observability@web-summit.dinis",
-   "commits": 10
+   "agent": "incident.conductor@web-summit.dinis",
+   "commits": 13
   },
   {
    "agent": "incident.designer@web-summit.dinis",
-   "commits": 9
+   "commits": 11
   },
   {
    "agent": "incident.weather@web-summit.dinis",
@@ -47,6 +47,14 @@
   },
   {
    "agent": "incident.sources@web-summit.dinis",
+   "commits": 4
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 4
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
    "commits": 4
   },
   {
@@ -66,11 +74,23 @@
    "commits": 2
   },
   {
+   "agent": "incident.envoy@web-summit.dinis",
+   "commits": 2
+  },
+  {
    "agent": "incident.entities@web-summit.dinis",
    "commits": 2
   },
   {
    "agent": "incident.media@web-summit.dinis",
+   "commits": 2
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 2
+  },
+  {
+   "agent": "incident.synthetic@web-summit.dinis",
    "commits": 2
   },
   {
@@ -86,15 +106,7 @@
    "commits": 1
   },
   {
-   "agent": "incident.stories@web-summit.dinis",
-   "commits": 1
-  },
-  {
    "agent": "incident.board@web-summit.dinis",
-   "commits": 1
-  },
-  {
-   "agent": "incident.envoy@web-summit.dinis",
    "commits": 1
   },
   {
@@ -102,19 +114,36 @@
    "commits": 1
   },
   {
-   "agent": "incident.ipma@web-summit.dinis",
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
    "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-11T0945Z.md",
+  "agents/envoy/policy.md",
   "agents/models/HANDOVER.md",
   "agents/sources/HANDOVER.md",
+  "agents/synthetic/policy.md",
   "agents/weather/HANDOVER.md",
+  "design/landing.md",
   "design/level-words.md",
   "design/round-45.md",
   "design/round-46.md",
-  "research/weather-sites/reviews/2026-11-11T0940.md"
+  "design/round-47.md",
+  "news/2026-11-11T09.md",
+  "research/synthetic/README.md",
+  "research/synthetic/findings.md",
+  "research/synthetic/personas/README.md",
+  "research/synthetic/run-1/exec.md",
+  "research/synthetic/run-1/investor.md",
+  "research/synthetic/run-1/journalist.md",
+  "research/synthetic/run-1/visitor.md",
+  "research/weather-sites/reviews/2026-11-11T0940.md",
+  "welcome/index.md"
  ],
  "new_datasets": [
   "data/agents/detail-2026-11-11T09.json",
@@ -126,7 +155,8 @@
   "evidence/anepc/2026/11/11/0925-pt-avisos-a-populacao.json",
   "evidence/governo/2026/11/11/0925-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.json",
   "evidence/ipma/2026/11/11/0924-pt-otempo-comunicados.json",
-  "evidence/ipma/2026/11/11/0924-pt-otempo-prev-sam.json"
+  "evidence/ipma/2026/11/11/0924-pt-otempo-prev-sam.json",
+  "sources/ipma/changes/fire-risk.json"
  ],
  "changed_datasets": [
   "data/agents/commits.json",
@@ -139,6 +169,20 @@
   "data/ci/runs/2026-11-11T00.json",
   "data/ci/runs/2026-11-11T08.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-decisions.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
   "data/keys.json",
   "data/lanes.json",
   "entities/decision/amn-bars-closed.json",
@@ -210,6 +254,27 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/warnings.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
   "sources/meteoalarm/dataset.json",
@@ -220,11 +285,23 @@
   "tools/agents-views.mjs"
  ],
  "added": {
-  "files": 30,
+  "files": 52,
   "by_area": [
+   {
+    "area": "research",
+    "files": 15
+   },
    {
     "area": "board",
     "files": 9
+   },
+   {
+    "area": "agents",
+    "files": 5
+   },
+   {
+    "area": "design",
+    "files": 5
    },
    {
     "area": "evidence",
@@ -235,15 +312,7 @@
     "files": 4
    },
    {
-    "area": "agents",
-    "files": 3
-   },
-   {
-    "area": "design",
-    "files": 3
-   },
-   {
-    "area": "research",
+    "area": "news",
     "files": 2
    },
    {
@@ -255,45 +324,65 @@
     "files": 1
    },
    {
+    "area": "library",
+    "files": 1
+   },
+   {
     "area": "shadow",
+    "files": 1
+   },
+   {
+    "area": "sources",
     "files": 1
    },
    {
     "area": "tools",
     "files": 1
+   },
+   {
+    "area": "welcome",
+    "files": 1
    }
   ]
  },
  "changed": {
-  "files": 251,
+  "files": 413,
   "by_area": [
    {
+    "area": "sources",
+    "files": 65
+   },
+   {
+    "area": "agents",
+    "files": 62
+   },
+   {
     "area": "research",
-    "files": 46
+    "files": 56
    },
    {
     "area": "evidence",
     "files": 38
    },
    {
-    "area": "agents",
-    "files": 29
+    "area": "library",
+    "files": 35
+   },
+   {
+    "area": "accounts",
+    "files": 30
    },
    {
     "area": "incidents/2026-11-10-storm-charles/data",
     "files": 29
    },
    {
-    "area": "accounts",
+    "area": "data",
     "files": 26
    },
    {
     "area": "board",
     "files": 18
-   },
-   {
-    "area": "data",
-    "files": 12
    },
    {
     "area": "app",
@@ -312,10 +401,6 @@
     "files": 6
    },
    {
-    "area": "sources",
-    "files": 6
-   },
-   {
     "area": "(root)",
     "files": 4
    },
@@ -324,7 +409,15 @@
     "files": 4
    },
    {
+    "area": "news",
+    "files": 4
+   },
+   {
     "area": "shadow",
+    "files": 4
+   },
+   {
+    "area": "stories",
     "files": 4
    },
    {
@@ -341,10 +434,6 @@
    },
    {
     "area": "labs",
-    "files": 1
-   },
-   {
-    "area": "stories",
     "files": 1
    }
   ]
@@ -885,6 +974,160 @@
    "by": "incident.conductor@web-summit.dinis",
    "what": "at Dinis's word (~09:50): a newcomers' front page (envoy with designer, at /welcome/ first) and a synthetic-visitors agent",
    "files": 3
+  },
+  {
+   "commit": "26cef3ae",
+   "at": "2026-11-11T09:52:57Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 09:44 wake: 08:00 to 09:00 closed (48 commits by 21 agents, 41 versions); 09:00 to 10:00 opened (Lisbon's red rain warning begins; Dinis settles how vault keys are passed on; the press reports the lowered wind); the round article: the hour in its list, a correction, vault keys answered in section 9; the pack's start page carries the vault-key rule; the release history and the commit record ref",
+   "files": 41
+  },
+  {
+   "commit": "dbbb10c5",
+   "at": "2026-11-11T09:53:06Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "76ccd12c",
+   "at": "2026-11-11T09:53:46Z",
+   "by": "incident.synthetic@web-summit.dinis",
+   "what": "session key (public half) and the four invented personas, written before run 1",
+   "files": 3
+  },
+  {
+   "commit": "8fa018f3",
+   "at": "2026-11-11T09:54:28Z",
+   "by": "incident.observability@web-summit.dinis",
+   "what": "page views carry country and city (one GeoJS lookup per tab, live host only); IP never kept; cities shown only at 5+ views; footer, about page and page_view_event updated",
+   "files": 10
+  },
+  {
+   "commit": "05163f40",
+   "at": "2026-11-11T09:54:52Z",
+   "by": "incident.observability@web-summit.dinis",
+   "what": "tokens measured (session 4 start)",
+   "files": 1
+  },
+  {
+   "commit": "8534f47a",
+   "at": "2026-11-11T09:55:08Z",
+   "by": "incident.designer@web-summit.dinis",
+   "what": "round 47: the newcomers' features page as parts made from plain markdown (class: landing; design/landing.md is the example and the contract); 'New here?' in the masthead when welcome/ exists",
+   "files": 6
+  },
+  {
+   "commit": "d84583c7",
+   "at": "2026-11-11T09:55:08Z",
+   "by": "incident.designer@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "e99326dd",
+   "at": "2026-11-11T09:55:18Z",
+   "by": "incident.observability@web-summit.dinis",
+   "what": "HANDOVER.md, a section for the fifth session (country and city done; drain waits for the vault keys)",
+   "files": 1
+  },
+  {
+   "commit": "fcd982b5",
+   "at": "2026-11-11T09:55:28Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "p12 and w10 retold: the first press text read on Lisbon's red rain from 09:00 is Observador's live entry of 08:46:16, 11 h 23 min after IPMA sent the change (the media desk's table of 09:39)",
+   "files": 2
+  },
+  {
+   "commit": "519b03aa",
+   "at": "2026-11-11T09:56:21Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "09:51 re-read: 4 new kept posts (Lusa x3, VOST); offers: Vasco da Gama bridge limited to 100 km/h, Madeira's occurrence counts (139 and about 200), Funchal accesses reopened; the organisers still silent",
+   "files": 12
+  },
+  {
+   "commit": "58f19d48",
+   "at": "2026-11-11T09:56:34Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "seventh session: its key; incident.envoy@ and incident.synthetic@ in the ABP drafts; the pack's rules on the synthetic visitors and /welcome/; the round article and T09 say what is live of the two",
+   "files": 39
+  },
+  {
+   "commit": "05777613",
+   "at": "2026-11-11T09:56:42Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "rows s-1111T0922, s-1111T0939, s-1111T0941 placed: the press on the lowered warning and 'two centres' (c21); the meteorologist's 09:25 reading, superseding 02:35 (h6) and its reading of two centres (h7); Madeira m17 retold (the swing most likely a separate feature)",
+   "files": 2
+  },
+  {
+   "commit": "14fe1eee",
+   "at": "2026-11-11T09:56:44Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "status, HANDOVER.md and ledger line for the 09:50 wake",
+   "files": 3
+  },
+  {
+   "commit": "95b2cef2",
+   "at": "2026-11-11T09:56:55Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "99177393",
+   "at": "2026-11-11T09:57:05Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "row s-1111T0957: Vasco da Gama bridge limited to 100 km/h; Funchal's centre reopened; Madeira's counts differ (Lusa, VOST; evidence)",
+   "files": 2
+  },
+  {
+   "commit": "6a9ffba4",
+   "at": "2026-11-11T09:57:25Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 09:53 UTC: 64 requests, 63 answered 200, 49 files changed; warnings (IPMA's file dated 09:15): 51 above green; LSB Precipitação orange 11-11T07:17>11-11T09:00 ended (red 09:00>18:00 live); MCN, MCS, MRM Precipitação orange ended; second session, key received from the conductor 09:51",
+   "files": 62
+  },
+  {
+   "commit": "35488817",
+   "at": "2026-11-11T09:57:36Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "rebuilt on the 09:56 data (501 nodes, 713 edges; 83 rows, 56 decisions); sizes in the status; ledger line",
+   "files": 16
+  },
+  {
+   "commit": "94f2ed9a",
+   "at": "2026-11-11T09:57:53Z",
+   "by": "incident.envoy@web-summit.dinis",
+   "what": "welcome/: a first draft of the newcomers' page (what this is, what you can do here, how it is made, what it is not); a draft for Dinis, not yet at /",
+   "files": 1
+  },
+  {
+   "commit": "95249895",
+   "at": "2026-11-11T09:58:04Z",
+   "by": "incident.observability@web-summit.dinis",
+   "what": "first drain of the fourth session (81 opened, 2 unopenable refused); the drain passes the SG/Send token to sgit push",
+   "files": 8
+  },
+  {
+   "commit": "0843a40e",
+   "at": "2026-11-11T09:58:26Z",
+   "by": "incident.synthetic@web-summit.dinis",
+   "what": "run 1 of the synthetic visitors (four invented personas on /), ranked findings for /welcome/",
+   "files": 11
+  },
+  {
+   "commit": "1ccc686b",
+   "at": "2026-11-11T09:59:08Z",
+   "by": "incident.observability@web-summit.dinis",
+   "what": "views: say beside the totals that the agents' own checks are most of the automated count today",
+   "files": 5
+  },
+  {
+   "commit": "0680d190",
+   "at": "2026-11-11T09:59:22Z",
+   "by": "incident.observability@web-summit.dinis",
+   "what": "HANDOVER.md: this session's wake",
+   "files": 1
   }
  ]
 }
