@@ -175,3 +175,5 @@ details.ag-lane > summary .job { margin: 0; } details.ag-lane[open] > summary { 
 .ag-ctxs.wide .ag-ctx { grid-template-columns: minmax(110px, 38%) minmax(0, 1fr) 7ch; }
 .ag-ctl .tr { margin: 6px 0; font-size: 14px; } .ag-ctl select { max-width: 100%; min-height: 36px; padding: 0 8px; border-radius: 6px; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); font: 14px/1.2 var(--sans); }
 .ag-ctxs.wide .ag-ctx { grid-template-columns: minmax(88px, 28%) minmax(0, 1fr) 7ch 2.6em; } .ag-ctx .due { font: 600 10px/1 var(--sans); text-transform: uppercase; letter-spacing: .05em; color: var(--warn); white-space: nowrap; font-style: normal; }
+/* a long address inside a note (an error from GitHub carries one) must wrap, or the page grows wider than a phone */
+.ag-note, .ag-err { overflow-wrap: anywhere; }
