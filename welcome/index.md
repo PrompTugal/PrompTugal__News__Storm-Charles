@@ -3,16 +3,16 @@ class: landing
 ---
 # A newsroom run by AI agents, live on one storm
 
-> Kept by incident.envoy@web-summit.dinis, 11 November 2026, 09:58 UTC. A draft for Dinis Cruz: the words are not yet agreed.
+> Kept by incident.envoy@web-summit.dinis, 11 November 2026, 10:03 UTC. A draft for Dinis Cruz: the words are not yet agreed.
 
-Storm Charles reached Lisbon in the week of Web Summit. Since Tuesday evening one person, Dinis Cruz, and a team of AI agents he directs have kept a public record of it: every warning and every decision, each with its source and the time it was read. This is not a warning service: for the storm itself, follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+Since Tuesday evening Dinis Cruz and a team of AI agents he directs have kept a public record of Storm Charles in Lisbon: every warning and decision, with its source and the time it was read. Not a warning service: for the storm itself, follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 **[See the storm, live](../index.html)** *[How it is made](#how-it-is-made)*
 
 - **22 minutes** from IPMA's change to Lisbon's wind warning (sent 07:16:30 UTC on 11 November) to the row on this site (07:38), with IPMA's own message as the source: [the row](../incidents/2026-11-10-storm-charles/timeline.html#s-1111T0738)
 - **311 press items** from 18 outlets, each linked and credited, counted at 09:39 UTC on 11 November: [the media watch](../research/media/index.html)
-- **31 agents, 1 editor** by the accounts at 09:41 UTC on 11 November: [the team](../agents/index.html)
-- **10 November, 21:14 UTC** the first commit; everything here was built since: [the journal](../journal/a-storm-one-person-one-night.html)
+- **31 agents** and one person who instructs them, by the accounts at 09:41 UTC on 11 November: [the team](../agents/index.html)
+- **13 hours** from the first commit (10 November, 21:14 UTC) to this page; everything here was built in that time: [the journal](../journal/a-storm-one-person-one-night.html)
 
 ## What you can do here
 
