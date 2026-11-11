@@ -1,0 +1,394 @@
+{
+ "id": "signal-a-warning-lowered-to-the-front-page",
+ "schema": "sc-trace/1",
+ "size": "small",
+ "title": "A signal with nobody asking: IPMA lowers a warning, and the site follows in 22 to 37 minutes, with one \"unchanged\" corrected on the way",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T08:08:51Z",
+ "captured_at": "2026-11-11T08:08:51Z",
+ "summary": [
+  "This trace starts from the outside, not from Dinis: a message IPMA sent at 07:16:30 (the time in the timeline row) lowering one of Lisbon's warnings. No person spoke between the message and the page.",
+  "The row was on the site 22 min 17 s after the message was sent (af317750, 07:38:47), from the meteorologist's read in the other repository, synced over a bridge by the conductor; the data files followed 57 s after the row.",
+  "IPMA's two channels disagreed for a while: the message had changed and the open-data feed had not. An agent that read only the feed pushed \"authorities unchanged\" 71 s after the row, and corrected itself 51 s later, naming the cause.",
+  "Each desk then did its own part without being told by a person: the media desk made it a keyed fact and found no press report it could read by 07:42; the weather face was changed to show the newest message by its sent time and to say where the feed differs; the headline followed at 07:51:28; five stories were retold by 07:53:23.",
+  "What the site shows is IPMA's decision and nothing of its own; this trace is about how fast and by whom it arrived, and is not a statement about the weather."
+ ],
+ "rests_on": [
+  "incidents/2026-11-10-storm-charles/timeline.md",
+  "incidents/2026-11-10-storm-charles/data/signals.json",
+  "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+  "incidents/2026-11-10-storm-charles/incident.json",
+  "research/weather-sites/rereads.json",
+  "research/media/facts.json",
+  "weather/about.md",
+  "agents/meteorologist/status.json"
+ ],
+ "input": {
+  "kind": "a message from the body that warns",
+  "what": "IPMA's message sent 07:16:30 UTC on 11 November, as timeline row s-1111T0738 records it; read by incident.meteorologist@ in the other repository"
+ },
+ "output": {
+  "kind": "a row, a headline, a front page that says which channel it shows",
+  "what": "row s-1111T0738; the incident's standfirst; the weather face showing the newest message per hazard and saying where the open data differs; five stories retold",
+  "url": "https://storm-charles.promptugal.news/"
+ },
+ "status": "closed: the headline followed at 07:51:28 and the stories at 07:53:23",
+ "duration": {
+  "from": "2026-11-11T07:16:30Z",
+  "to": "2026-11-11T07:53:23Z",
+  "note": "message sent to a timeline row: 22 min 17 s; to the data files: 23 min 14 s; to a wrong \"unchanged\" corrected: 24 min 19 s; to a keyed fact on the media desk: 24 min 35 s; to the weather face: 24 min 42 s; to the headline: 34 min 58 s; to five stories retold: 36 min 53 s. The record does not say when the message was first read: the read is in the other repository."
+ },
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "steps": [
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a timeline row",
+   "sha": "af3177501e4628e2f20a1184d05608e5a2033bf1",
+   "in": "the meteorologist's read of IPMA's messages, made in the other repository (this repository has no commit for the read itself)",
+   "out": "\"row s-1111T0738: IPMA lowered Lisbon's wind warning to orange (09:00 to 21:00, gusts to 120 km/h), sent 07:16:30; red rain unchanged; its open data still shows red\". 22 min 17 s after the message was sent.",
+   "handoff": {
+    "to": "incident.weather@, incident.stories@, incident.ipma@, incident.meteorologist@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "steps 4, 5 and 7"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/timeline.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/timeline.md"
+    },
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/data/signals.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/data/signals.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "af3177501e4628e2f20a1184d05608e5a2033bf1",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/af3177501e4628e2f20a1184d05608e5a2033bf1"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.654",
+     "run": 654,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+    }
+   ],
+   "n": 1,
+   "at": "2026-11-11T07:38:47Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.weather@web-summit.dinis",
+    "incident.stories@web-summit.dinis",
+    "incident.ipma@web-summit.dinis",
+    "incident.meteorologist@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "bridge sync",
+   "sha": "3936e8ae8612babe1e5cb7d36d9e158e576b5a64",
+   "in": "the meteorologist's files",
+   "out": "\"bridge sync: the meteorologist's files for IPMA's wind downgrade (cap.json, warnings.json with cap_leads_open_data, analysis section 10)\". The data arrived 57 s after the row that cites it.",
+   "handoff": {
+    "to": "incident.weather@ and incident.stories@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "e3c7867a, 88 s later"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/data/weather/cap.json"
+    },
+    {
+     "type": "file",
+     "path": "agents/meteorologist/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/meteorologist/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "3936e8ae8612babe1e5cb7d36d9e158e576b5a64",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/3936e8ae8612babe1e5cb7d36d9e158e576b5a64"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.656",
+     "run": 656,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T07:39:44Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.weather@web-summit.dinis",
+    "incident.stories@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.weatherwatch@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a wrong \"unchanged\", corrected",
+   "sha": "1056373edb2fa4452fe7b39bda9d8aa2df283c3f",
+   "in": "its own 07:39 re-read, pushed 51 s earlier as \"authorities unchanged\" (45d33f10, 07:39:58)",
+   "out": "\"correction: the 07:39 re-read said 'unchanged' from IPMA's open data alone; IPMA's CAP message of 07:16 had lowered Lisbon's wind to orange (entry, page and hand-over corrected)\". The feed and the message disagreed; reading one channel gave a wrong answer for 51 seconds.",
+   "handoff": {
+    "to": "incident.conductor@",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "the corrected entry"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/weather-sites/rereads.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/weather-sites/rereads.json"
+    },
+    {
+     "type": "commit",
+     "sha": "45d33f106299d8d7b7afaab37dfdc52fccc99c4b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/45d33f106299d8d7b7afaab37dfdc52fccc99c4b"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "1056373edb2fa4452fe7b39bda9d8aa2df283c3f",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1056373edb2fa4452fe7b39bda9d8aa2df283c3f"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.658",
+     "run": 658,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T07:40:49Z",
+   "agent_trailer": "incident.weatherwatch@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.media@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a keyed fact",
+   "sha": "023ac5fe9e59986a7bd0a74a11da9d30741aa815",
+   "in": "the row",
+   "out": "\"a twelfth keyed fact: IPMA lowers Lisbon's wind warning from red to orange (CAP 07:16:30 on 11 November); no press report we could read by 07:42\".",
+   "handoff": {
+    "to": "incident.conductor@",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "research/media/facts.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/media/facts.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/media/facts.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "023ac5fe9e59986a7bd0a74a11da9d30741aa815",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/023ac5fe9e59986a7bd0a74a11da9d30741aa815"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.660",
+     "run": 660,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T07:41:05Z",
+   "agent_trailer": "incident.media@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.weather@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the front page",
+   "sha": "e3c7867a418769a8cd4fa9802d714428048fd67a",
+   "in": "the row and the synced files (cap_leads_open_data)",
+   "out": "\"IPMA's two channels: the newest message by its sent time is shown and what the open-data feed still lists is said plainly (band note and hour strip); no level of our own\". A change of code, not of data: 2 min 25 s after the row.",
+   "handoff": {
+    "to": "the reader",
+    "via": "the weather face at /",
+    "evidence_of_handoff": "weather/about.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "weather/about.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=weather/about.md"
+    },
+    {
+     "type": "file",
+     "path": "app/weather/weather.js",
+     "url": "https://storm-charles.promptugal.news/view/?path=app/weather/weather.js"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "e3c7867a418769a8cd4fa9802d714428048fd67a",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/e3c7867a418769a8cd4fa9802d714428048fd67a"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.660",
+     "run": 660,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T07:41:12Z",
+   "agent_trailer": "incident.weather@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.meteorologist@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the headline",
+   "sha": "c56af17780d9080f18eb6a3e1e9e2184d4a7e888",
+   "in": "the row; the rule that the headline is a decision or warning from its primary source",
+   "out": "\"the incident's standfirst follows IPMA's 07:16 message: red rain stands, wind lowered to orange 09:00 to 21:00\". 34 min 58 s after the message; 12 min 41 s after the row.",
+   "handoff": {
+    "to": "incident.librarian@ and incident.weather@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "the librarian's hour opened with it (54d41918)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/incident.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/incident.json"
+    },
+    {
+     "type": "commit",
+     "sha": "54d4191856e2fdc92423623448c7b3c67dac5414",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/54d4191856e2fdc92423623448c7b3c67dac5414"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "c56af17780d9080f18eb6a3e1e9e2184d4a7e888",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/c56af17780d9080f18eb6a3e1e9e2184d4a7e888"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.668",
+     "run": 668,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T07:51:28Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.librarian@web-summit.dinis",
+    "incident.weather@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.stories@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "retold",
+   "sha": "ebaf7d278a8c22d3a66fc62a20c35af7adb63d58",
+   "in": "the row and the kept message",
+   "out": "\"IPMA lowered Lisbon's wind warning to orange (07:16:30): five stories retold ...; supports for replaced and ended warnings now on the kept CAP\". The social desk tied a civil-protection volunteers' relay of it to the row (b627825c, 07:51:42); the story box was redrawn to the front page's rule six minutes later (165b8e22, 07:59:19).",
+   "handoff": {
+    "to": "the reader",
+    "via": "stories/",
+    "evidence_of_handoff": "the commits"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "sha": "b627825c9919c9e58e5657a0112692b5e2875c34",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b627825c9919c9e58e5657a0112692b5e2875c34"
+    },
+    {
+     "type": "commit",
+     "sha": "165b8e222fa7644ce3d126fe5d30f3809d101038",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/165b8e222fa7644ce3d126fe5d30f3809d101038"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "ebaf7d278a8c22d3a66fc62a20c35af7adb63d58",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ebaf7d278a8c22d3a66fc62a20c35af7adb63d58"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.669",
+     "run": 669,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+    }
+   ],
+   "evidence_note": "commits only: the stories' files were not opened for this step",
+   "n": 7,
+   "at": "2026-11-11T07:53:23Z",
+   "agent_trailer": "incident.stories@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  }
+ ],
+ "counts": {
+  "steps": 7,
+  "steps_with_no_evidence": 0,
+  "person_steps": 0,
+  "agent_steps": 7
+ },
+ "people_acted": [],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.weatherwatch@web-summit.dinis",
+  "incident.media@web-summit.dinis",
+  "incident.weather@web-summit.dinis",
+  "incident.stories@web-summit.dinis"
+ ]
+}

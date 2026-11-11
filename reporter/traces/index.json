@@ -1,7 +1,7 @@
 {
  "about": "Every trace kept by incident.reporter@: one workflow each, from a spoken direction to a live page, as steps with evidence (shape sc-trace/1, after ws-trace/1 of SGit-AI__Website__Web-Summit team/reporter/traces/). Read this file, then only the trace you need: each opens with a five-line summary and the files it rests on. Written by tools/reporter-fill.mjs.",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T07:08:32Z",
+ "updated": "2026-11-11T08:08:51Z",
  "shape": "reporter/traces/README.md",
  "traces": [
   {
@@ -192,13 +192,13 @@
    "file": "reporter/traces/memory-the-librarian-saves-tokens.json",
    "size": "medium",
    "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
-   "status": "open: eighteen roles handed over by 06:43 (the accounts' round 7, corrected), 64% to 73% less per call for the eight of the last hour; four first sessions cannot be replaced until Dinis says how vault keys are held; the conductor's own session has not handed over in the record (it compacts)",
+   "status": "open: nineteen roles handed over by 07:41 (the accounts' round 8); the average call flat at about 200,000 tokens since 05:00; four first sessions cannot be replaced until Dinis says how vault keys are held; the conductor's own session has not handed over in the record (it compacts)",
    "from": "2026-11-11T02:49:18Z",
-   "to": "2026-11-11T06:44:26Z",
-   "steps": 21,
+   "to": "2026-11-11T07:59:19Z",
+   "steps": 22,
    "steps_with_no_evidence": 0,
    "person_steps": 1,
-   "agent_steps": 20,
+   "agent_steps": 21,
    "people_acted": [
     "Dinis Cruz"
    ],
@@ -220,20 +220,20 @@
     "Six agents did within the hour: the librarian handed over to a fresh session at 03:02, then designer, observability, graph, weatherwatch and studio by 03:37; then the reporter, the librarian a second time and the journalist by 04:09 and the librarian a third time at 04:16 (ten hand-overs, eight roles). Measured on three of the first six: 74% to 84% less per call. Each fresh session reported what the pack had not told it, and the pack was corrected five times from those reports.",
     "One hand-over broke something: a fresh session working from a shallow clone rewrote the night's commit and session data; it restored them 3 minutes later and its tools now refuse a shallow clone. No person acted between the sentence and the sixth hand-over."
    ],
-   "updated": "2026-11-11T07:08:32Z"
+   "updated": "2026-11-11T08:08:51Z"
   },
   {
    "id": "outage-the-model-account-out-of-credit",
    "file": "reporter/traces/outage-the-model-account-out-of-credit.json",
    "size": "outage",
    "title": "Outage: the model provider's account out of credit; every call refused from 02:53:57 (five were refused before 02:39 and taken for wrong answers); what stopped and how the stop was written down",
-   "status": "open: waiting on Dinis (a top-up of the provider's account); five empty hours in the shadow reports (03:00 to 07:00); the shadow desk tries one call each hour (next 08:05), the Perplexity desk one each half hour",
+   "status": "open: waiting on Dinis (a top-up of the provider's account); six empty hours in the shadow reports (03:00 to 08:00); the shadow desk tries one call each hour (next 09:05), the Perplexity desk one each half hour",
    "from": "2026-11-11T02:53:57Z",
    "to": null,
-   "steps": 16,
+   "steps": 17,
    "steps_with_no_evidence": 1,
    "person_steps": 2,
-   "agent_steps": 14,
+   "agent_steps": 15,
    "people_acted": [
     "Dinis Cruz"
    ],
@@ -252,7 +252,36 @@
     "The code learned in three commits: shadow-ask stops at the first 402 (02:55:22, 85 s after the first refusal); the shared wrapper names the refusal and sends no more (03:06:15); shadow-ask reads the wrapper's statuses (04:06:20). Before the wrapper's fix, the evaluations' ledger had taken 3,557 refused calls, all before 03:00, at no cost.",
     "Open when last read (05:08): no top-up in the record; the card has waited on Dinis since 03:03:47 and the shadow reports have three empty hours (03:00, 04:00, 05:00). Only he can close it. Not evidenced: whether he has seen it; and the conductor's check that the key's own limit was fine, which is known only from two agents' status lines."
    ],
-   "updated": "2026-11-11T07:08:32Z"
+   "updated": "2026-11-11T08:08:51Z"
+  },
+  {
+   "id": "signal-a-warning-lowered-to-the-front-page",
+   "file": "reporter/traces/signal-a-warning-lowered-to-the-front-page.json",
+   "size": "small",
+   "title": "A signal with nobody asking: IPMA lowers a warning, and the site follows in 22 to 37 minutes, with one \"unchanged\" corrected on the way",
+   "status": "closed: the headline followed at 07:51:28 and the stories at 07:53:23",
+   "from": "2026-11-11T07:16:30Z",
+   "to": "2026-11-11T07:53:23Z",
+   "steps": 7,
+   "steps_with_no_evidence": 0,
+   "person_steps": 0,
+   "agent_steps": 7,
+   "people_acted": [],
+   "agents_acted": [
+    "incident.conductor@web-summit.dinis",
+    "incident.weatherwatch@web-summit.dinis",
+    "incident.media@web-summit.dinis",
+    "incident.weather@web-summit.dinis",
+    "incident.stories@web-summit.dinis"
+   ],
+   "summary": [
+    "This trace starts from the outside, not from Dinis: a message IPMA sent at 07:16:30 (the time in the timeline row) lowering one of Lisbon's warnings. No person spoke between the message and the page.",
+    "The row was on the site 22 min 17 s after the message was sent (af317750, 07:38:47), from the meteorologist's read in the other repository, synced over a bridge by the conductor; the data files followed 57 s after the row.",
+    "IPMA's two channels disagreed for a while: the message had changed and the open-data feed had not. An agent that read only the feed pushed \"authorities unchanged\" 71 s after the row, and corrected itself 51 s later, naming the cause.",
+    "Each desk then did its own part without being told by a person: the media desk made it a keyed fact and found no press report it could read by 07:42; the weather face was changed to show the newest message by its sent time and to say where the feed differs; the headline followed at 07:51:28; five stories were retold by 07:53:23.",
+    "What the site shows is IPMA's decision and nothing of its own; this trace is about how fast and by whom it arrived, and is not a statement about the weather."
+   ],
+   "updated": "2026-11-11T08:08:51Z"
   },
   {
    "id": "small-metro-sentence-to-entity-page",

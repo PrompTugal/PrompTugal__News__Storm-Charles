@@ -4,7 +4,7 @@
  "size": "outage",
  "title": "Outage: the model provider's account out of credit; every call refused from 02:53:57 (five were refused before 02:39 and taken for wrong answers); what stopped and how the stop was written down",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T07:08:32Z",
+ "updated": "2026-11-11T08:08:51Z",
  "captured_at": "2026-11-11T04:09:00Z",
  "summary": [
   "Dinis (~02:50): \"you can use up to $20 in budget.\" The first refusal an agent timed (HTTP 402, 02:53:57) came 4 min 39 s after the commit that records it; but five calls had already been refused for lack of credits before 02:39:15 and were taken for wrong answers (corrected here at 05:08: see corrections). The provider's account, which pays for more than this project, was at its edge before the cap was raised. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
@@ -38,7 +38,7 @@
   "what": "one card for Dinis, ranked first before the launch; the three desks' pages each say runs are paused and why; a wrapper that stops at the first refusal",
   "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
  },
- "status": "open: waiting on Dinis (a top-up of the provider's account); five empty hours in the shadow reports (03:00 to 07:00); the shadow desk tries one call each hour (next 08:05), the Perplexity desk one each half hour",
+ "status": "open: waiting on Dinis (a top-up of the provider's account); six empty hours in the shadow reports (03:00 to 08:00); the shadow desk tries one call each hour (next 09:05), the Perplexity desk one each half hour",
  "duration": {
   "from": "2026-11-11T02:53:57Z",
   "to": null,
@@ -747,7 +747,8 @@
      "version": "v0.1.641",
      "run": 641,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T06:22:38Z"
+     "served_by": "2026-11-11T07:07:38Z",
+     "push_to_served_s": 34
     }
    ],
    "n": 16,
@@ -757,13 +758,61 @@
     "incident.conductor@web-summit.dinis",
     "incident.accountant@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a sixth gap",
+   "sha": "01b680db457688a01f47da0ccd17c52615d609f7",
+   "in": "the 08:00 round due; nothing changed at the provider",
+   "out": "\"the 08:00 hour is a sixth recorded gap (the engines' account still out of credit)\". Five hours and three minutes after the card opened (03:03:47), no word from Dinis in the record.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "the card (board/items/a-provider-credit.json)",
+    "evidence_of_handoff": "the card is open"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "shadow/runs/2026-11-11/08.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=shadow/runs/2026-11-11/08.json"
+    },
+    {
+     "type": "file",
+     "path": "board/items/a-provider-credit.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "01b680db457688a01f47da0ccd17c52615d609f7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/01b680db457688a01f47da0ccd17c52615d609f7"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.679",
+     "run": 679,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+    }
+   ],
+   "n": 17,
+   "at": "2026-11-11T08:06:34Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 16,
+  "steps": 17,
   "steps_with_no_evidence": 1,
   "person_steps": 2,
-  "agent_steps": 14
+  "agent_steps": 15
  },
  "people_acted": [
   "Dinis Cruz"

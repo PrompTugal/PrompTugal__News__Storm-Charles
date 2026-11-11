@@ -1,13 +1,13 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 07:08 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 08:08 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November; a team that grew from 4 agents to 26 (30 named by 03:00) turned each direction into pages within minutes.
 2. The first push here was at 21:14:33; by 04:37 incident.ci@ had counted 565 commits by 28 agents and 337 releases (6 runs failed, 174 cancelled by a newer push).
 3. The busiest hour was 02:00 to 03:00: Dinis's page-by-page review became a contract (RESTRUCTURE.md) in 45 s, thirteen new agents shipped in 35 minutes, and the home page was swapped at 02:19:08.
 4. What broke was mostly the machine under load (cancelled runs, a push race, the gate's budget) and clocks (five agents wrote times ahead of the clock); each was fixed in a commit that says so.
-5. What waits, waits on Dinis: 44 cards at 07:08, first among them the model provider's account out of credit (every call refused from 02:53:57; five empty hours in the shadow reports), second the hold the conductor put at 05:27 on reading Web Summit's site, whose terms forbid it; the oldest is from 21:20 (attach the repository to three agents' sessions). He has not spoken in the record since ~02:50; in that silence eighteen roles were taken over by fresh sessions, and four cannot be until he says how vault keys are held.
+5. What waits, waits on Dinis: 44 cards at 08:08, first among them the model provider's account out of credit (every call refused from 02:53:57; six empty hours in the shadow reports), second the hold the conductor put at 05:27 on reading Web Summit's site, whose terms forbid it; the oldest is from 21:20 (attach the repository to three agents' sessions). He has not spoken in the record since ~02:50; in that silence nineteen roles were taken over by fresh sessions, and four cannot be until he says how vault keys are held.
 
 **Rests on:** [BRIEF.md](../BRIEF.md), [numbers.json](numbers.json) (from [data/ci/](../data/ci/index.json) and [board/items/](../board/README.md)), [the traces](traces/README.md), [agents/JOBS.md](../agents/JOBS.md), [REALITY.md](../REALITY.md), and for 10 November before 21:14 the commits of `team/incidents/` in SGit-AI__Website__Web-Summit. **How to read it:** times are UTC; a seven-letter code is a commit of this repository (`ws:` before it: of SGit-AI__Website__Web-Summit); "Dinis ~hh:mm" is BRIEF.md's own time for his words, which runs a few minutes later than the commit that records them. Counts are from numbers.json and stop at its sources' snapshot (03:38). Not a warning service: this is the project's record, not the storm's.
 
@@ -108,6 +108,14 @@
 - Corrected, by their authors: one row three times in eleven minutes. s-1111T0642 first said the press's 130 km/h in Madeira "is IPMA's warned figure, not an observation" (`95bd4c7`, 06:42:57); then that whether it was measured "is not known to us" (`ca94e66`, 06:52:50); then that Lusa has an IPMA meteorologist saying gusts above 130 km/h were measured (evidence; not read at IPMA) (`cc0ee6d`, 06:53:47); then the correction's own time, 06:53 not 06:55 (`19d072a`). The stories desk followed each one within a minute (`f7d8754`, `62a5efd`, `65caf6b`). Also: the accounts' round 7, eighteen roles handed over and not nineteen (`1936205`, 83 s after); the labs' models and stations against the morning's data (`d3787de`).
 - Corrected, mine: the hold's trace said how the hold was passed was "not in the record"; it is now (step 8). The memory trace could not say why IPMA's second session stood down; the conductor's file does (a vault key it could not read back): step 21.
 - Waited on Dinis: 44 cards; the provider's account for 4 h 4 min at 07:08; the Web Summit hold for 1 h 40 min; how vault keys are held (it keeps four roles in their first sessions).
+
+**08:08, the 08:06 wake.**
+- Asked: nothing new from Dinis; BRIEF.md has not changed since 02:49:18.
+- The hour's event came from outside: IPMA lowered one of Lisbon's warnings in a message sent 07:16:30. The row was live 22 min 17 s later (`af317750`), the weather face changed to show the newest message and say where the open-data feed differs (`e3c7867a`), the headline followed at 07:51:28 (`c56af177`), five stories were retold (`ebaf7d27`). No person spoke. A new trace: [a signal with nobody asking](traces/signal-a-warning-lowered-to-the-front-page.json).
+- Shipped besides: three more rows (s-1111T0727, `cda8334b`; s-1111T0735, press, evidence, `aebdcd0c`; s-1111T0738); a sixth story, "What nobody has said yet" (`03ee9bf0`); the MeteoAlarm browser shows how each warning changed (`624fab23`); the decisions as their own part of the graph (`3f796f1f`); the accounts' round 8 (`dc768fd6`: the average call flat at about 200,000 tokens since 05:00); fresh sessions for the librarian (its sixth, `b5494b2e`), the graph (`14b774bb`) and stories (`19723bb7`).
+- Broke: nothing in the pipeline (645 runs, no new failure or retry, push to served median 37 s, `bb62ff4c`); ANEPC's notice answered 502 again (`b530509e`); Wikidata still silent (`641303f9`); a graph table nearing the 256 KB limit was split before the gate refused it (`1fb42299`); the shadow reports' 08:00 hour is a sixth gap (`01b680db`).
+- Corrected, by their authors: the weather watch's "authorities unchanged", read from the open data alone, 51 s after it was pushed (`1056373e`); the media desk's order of outlets on two facts (`e1432a90`); the stories desk's hand-over time set to the clock (`085835d3`); the journal's tenth piece from the conductor's record of the hold (`fda196f5`).
+- Waited on Dinis: 44 cards; the provider's account for 5 h 4 min at 08:08; the Web Summit hold for 2 h 40 min.
 
 ## Open questions for the conductor
 
