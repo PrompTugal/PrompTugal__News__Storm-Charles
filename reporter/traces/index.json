@@ -1,7 +1,7 @@
 {
  "about": "Every trace kept by incident.reporter@: one workflow each, from a spoken direction to a live page, as steps with evidence (shape sc-trace/1, after ws-trace/1 of SGit-AI__Website__Web-Summit team/reporter/traces/). Read this file, then only the trace you need: each opens with a five-line summary and the files it rests on. Written by tools/reporter-fill.mjs.",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T04:14:00Z",
+ "updated": "2026-11-11T05:08:00Z",
  "shape": "reporter/traces/README.md",
  "traces": [
   {
@@ -161,13 +161,13 @@
    "file": "reporter/traces/memory-the-librarian-saves-tokens.json",
    "size": "medium",
    "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
-   "status": "open: nine hand-overs in eight roles by 04:09; the pack is corrected at each fresh start; the conductor's own session, the largest (327 million tokens when measured), has not handed over in the record",
+   "status": "open: ten hand-overs in eight roles by 04:16, measured at 53% to 84% less per call; the conductor's own session has not handed over in the record (it compacts: 110k after the second compaction, 04:36)",
    "from": "2026-11-11T02:49:18Z",
-   "to": "2026-11-11T04:09:25Z",
-   "steps": 18,
+   "to": "2026-11-11T04:36:46Z",
+   "steps": 19,
    "steps_with_no_evidence": 0,
    "person_steps": 1,
-   "agent_steps": 17,
+   "agent_steps": 18,
    "people_acted": [
     "Dinis Cruz"
    ],
@@ -186,23 +186,23 @@
     "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
     "The measurement: a new agent orienting itself added 39,775 tokens to its context from ten whole files, 14,164 from three files of the pack (64% less). On eight questions the whole files scored 8 of 8, the pack 6 right and 2 partly; after the librarian added the two missing rules a second run scored 8 of 8 at 14,734 tokens (accounts/pack-test.json; the accountant marked the answers; sub-agents, not full sessions).",
     "The accountant then measured the sessions themselves: 98.8% of 1.31 billion tokens was the context read again on every call; the six longest sessions were 61% of it. So the saving was not the pack alone but starting again from it.",
-    "Six agents did within the hour: the librarian handed over to a fresh session at 03:02, then designer, observability, graph, weatherwatch and studio by 03:37; then the reporter, the librarian a second time and the journalist by 04:09 (nine hand-overs, eight roles). Measured on three of the first six: 74% to 84% less per call. Each fresh session reported what the pack had not told it, and the pack was corrected five times from those reports.",
+    "Six agents did within the hour: the librarian handed over to a fresh session at 03:02, then designer, observability, graph, weatherwatch and studio by 03:37; then the reporter, the librarian a second time and the journalist by 04:09 and the librarian a third time at 04:16 (ten hand-overs, eight roles). Measured on three of the first six: 74% to 84% less per call. Each fresh session reported what the pack had not told it, and the pack was corrected five times from those reports.",
     "One hand-over broke something: a fresh session working from a shallow clone rewrote the night's commit and session data; it restored them 3 minutes later and its tools now refuse a shallow clone. No person acted between the sentence and the sixth hand-over."
    ],
-   "updated": "2026-11-11T04:10:00Z"
+   "updated": "2026-11-11T05:08:00Z"
   },
   {
    "id": "outage-the-model-account-out-of-credit",
    "file": "reporter/traces/outage-the-model-account-out-of-credit.json",
    "size": "outage",
-   "title": "Outage: the model provider's account ran out of credit at 02:54, five minutes after the cap was raised; what stopped and how the stop was written down",
+   "title": "Outage: the model provider's account out of credit; every call refused from 02:53:57 (five were refused before 02:39 and taken for wrong answers); what stopped and how the stop was written down",
    "status": "open: waiting on Dinis (a top-up of the provider's account); the shadow desk tries one call each hour (next 05:05), the Perplexity desk one each half hour",
    "from": "2026-11-11T02:53:57Z",
    "to": null,
-   "steps": 12,
+   "steps": 14,
    "steps_with_no_evidence": 1,
    "person_steps": 2,
-   "agent_steps": 10,
+   "agent_steps": 12,
    "people_acted": [
     "Dinis Cruz"
    ],
@@ -215,13 +215,13 @@
     "incident.board@web-summit.dinis"
    ],
    "summary": [
-    "Dinis (~02:50): \"you can use up to $20 in budget.\" Four minutes 39 seconds after the commit that records it, the first model call was refused (HTTP 402, 02:53:57): the provider's account, which pays for more than this project, was empty. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
+    "Dinis (~02:50): \"you can use up to $20 in budget.\" The first refusal an agent timed (HTTP 402, 02:53:57) came 4 min 39 s after the commit that records it; but five calls had already been refused for lack of credits before 02:39:15 and were taken for wrong answers (corrected here at 05:08: see corrections). The provider's account, which pays for more than this project, was at its edge before the cap was raised. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
     "What stopped: every call through tools/llm.mjs. Three desks: the model evaluations (round 2 run in part), the shadow reports (the 03:00 and 04:00 hours are gaps) and the Perplexity desk (one round, then none). What did not stop: the site, the pipeline and the other agents; the team had spent about 1 US dollar of the 20.",
     "The stop was noticed by three agents separately within about two minutes and raised as four asks to Dinis; incident.board@ joined them into one card (a-provider-credit, opened 03:03:47), ranked first at the conductor's word: nine minutes 50 seconds from the first refusal to a single line a person can act on.",
     "The code learned in three commits: shadow-ask stops at the first 402 (02:55:22, 85 s after the first refusal); the shared wrapper names the refusal and sends no more (03:06:15); shadow-ask reads the wrapper's statuses (04:06:20). Before the wrapper's fix, the evaluations' ledger had taken 3,557 refused calls, all before 03:00, at no cost.",
-    "Open when captured (04:09): no top-up in the record; the card has waited on Dinis for 1 h 5 min. Only he can close it. Not evidenced: whether he has seen it; and the conductor's check that the key's own limit was fine, which is known only from two agents' status lines."
+    "Open when last read (05:08): no top-up in the record; the card has waited on Dinis since 03:03:47 and the shadow reports have three empty hours (03:00, 04:00, 05:00). Only he can close it. Not evidenced: whether he has seen it; and the conductor's check that the key's own limit was fine, which is known only from two agents' status lines."
    ],
-   "updated": "2026-11-11T04:09:00Z"
+   "updated": "2026-11-11T05:08:00Z"
   },
   {
    "id": "small-metro-sentence-to-entity-page",

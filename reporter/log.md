@@ -1,13 +1,13 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:14 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 05:08 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November; a team that grew from 4 agents to 26 (30 named by 03:00) turned each direction into pages within minutes.
-2. The first push here was at 21:14:33; by 03:38 incident.ci@ had counted 485 commits by 28 agents and 275 releases (6 runs failed, 161 cancelled by a newer push).
+2. The first push here was at 21:14:33; by 04:37 incident.ci@ had counted 565 commits by 28 agents and 337 releases (6 runs failed, 174 cancelled by a newer push).
 3. The busiest hour was 02:00 to 03:00: Dinis's page-by-page review became a contract (RESTRUCTURE.md) in 45 s, thirteen new agents shipped in 35 minutes, and the home page was swapped at 02:19:08.
 4. What broke was mostly the machine under load (cancelled runs, a push race, the gate's budget) and clocks (five agents wrote times ahead of the clock); each was fixed in a commit that says so.
-5. What waits, waits on Dinis: 43 cards at 04:00, first among them the model provider's account out of credit since about 02:54; the oldest is from 21:20 (attach the repository to three agents' sessions). He has not spoken in the record since ~02:50.
+5. What waits, waits on Dinis: 43 cards at 05:08, first among them the model provider's account out of credit (every call refused from 02:53:57; three empty hours in the shadow reports); the oldest is from 21:20 (attach the repository to three agents' sessions). He has not spoken in the record since ~02:50.
 
 **Rests on:** [BRIEF.md](../BRIEF.md), [numbers.json](numbers.json) (from [data/ci/](../data/ci/index.json) and [board/items/](../board/README.md)), [the traces](traces/README.md), [agents/JOBS.md](../agents/JOBS.md), [REALITY.md](../REALITY.md), and for 10 November before 21:14 the commits of `team/incidents/` in SGit-AI__Website__Web-Summit. **How to read it:** times are UTC; a seven-letter code is a commit of this repository (`ws:` before it: of SGit-AI__Website__Web-Summit); "Dinis ~hh:mm" is BRIEF.md's own time for his words, which runs a few minutes later than the commit that records them. Counts are from numbers.json and stop at its sources' snapshot (03:38). Not a warning service: this is the project's record, not the storm's.
 
@@ -77,7 +77,7 @@
 - Shipped: a seventh trace (the pack, the measurement, the hand-overs); this hour; the numbers use the board's event time where a card has one.
 - Corrected, mine: the first draft of the new trace said both arms of the pack test answered equally well; the file says 8 of 8 against 6 right and 2 partly, then 8 of 8 after the pack was fixed. Found on re-reading the file, before the push.
 
-**04:00 to 05:00 (to 04:11): the hand-overs go on; the model account still empty.**
+**04:00 to 05:00: a quiet hour; the hand-overs go on; the model account still empty.** (67 commits, 21 agents in git; to 04:37 incident.ci@ counted 42 releases)
 - Asked: nothing new from Dinis in BRIEF.md (its last section is ~02:50).
 - Shipped: an eighth trace, [the model provider's account out of credit](traces/outage-the-model-account-out-of-credit.json) (first refusal 02:53:57, 4 min 39 s after the commit that records the cap raised to 20 US dollars; one card for Dinis 9 min 50 s later). The journal's sixth piece, told from the memory trace (`4d4b6ab`).
 - Shipped, traces owed from earlier hours: [the Studio](traces/studio-a-spoken-idea-to-an-animation.json) (Dinis ~00:30 to a player and two chapters in 8 min 19 s, `7fc709c`; six explanations by 03:54:54) and [an agent's start](traces/start-a-jobs-line-to-a-first-page.json) (the Perplexity desk: a jobs line at 02:49:18, `ab8008e`, to a first page at 03:01:18, `f24a773`, and a timeline row from its leads 80 s later, `f46df85`). Ten traces, 131 steps, 4 with no evidence.
@@ -85,6 +85,13 @@
 - Broke: nothing new. The shadow reports' 04:00 hour is a second recorded gap (`8d60f26`).
 - Corrected, mine: the first session and this one both marked the first key "handed over" within a minute of each other; the release stopped on the conflict, and this session's entry went in on top of the other's (`6a509d6`). The new trace first said "captured 04:13" when the clock read 04:09; changed before the push.
 - Waited on Dinis: the provider's account, 1 h 5 min at 04:09 (board/items/a-provider-credit.json). The numbers stop at 03:38, where incident.ci@'s last count stops.
+
+**05:08, the 05:06 wake.**
+- Asked: nothing new from Dinis in BRIEF.md.
+- Shipped in the hour by others: the first mainland count as a timeline row, evidence from Lusa (row s-1111T0437, `b4e72d6`); the archivist's research round done (542 addresses, 557 captures, `78dfd8e`); the edition prints at 2.0 MB where it was 12.1 (`33344be`); capture pages made at build time, not tracked (`f1d69e8`); the accounts' round 5 (`b236371`: eight roles handed over, 53% to 84% less per call; 1.44 billion tokens measured); the librarian's fourth session (`3f5079a`); the conductor at 110k after a second compaction (`653d6ad`).
+- Broke: nothing new; the shadow reports' 05:00 hour is a third gap (`bc666ab`).
+- Corrected, mine: the outage trace said the first refusal was at 02:53:57, "five minutes after the cap was raised". incident.journalist@ found an earlier one on the evaluations page: five calls refused for credit in results pushed at 02:39:15, taken then for wrong answers (`273a1d3`, corrected by incident.models@ in `8ccd1ef`). 02:53:57 is the first refusal anyone timed; the account was at its edge before Dinis raised the cap. The trace says so in a corrections field and a step 13 added at the end (numbers unchanged).
+- Waited on Dinis: 43 cards; the provider's account for 2 h 3 min at 05:06.
 
 ## Open questions for the conductor
 

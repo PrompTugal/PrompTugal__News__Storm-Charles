@@ -4,13 +4,13 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T04:10:00Z",
+ "updated": "2026-11-11T05:08:00Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
   "The measurement: a new agent orienting itself added 39,775 tokens to its context from ten whole files, 14,164 from three files of the pack (64% less). On eight questions the whole files scored 8 of 8, the pack 6 right and 2 partly; after the librarian added the two missing rules a second run scored 8 of 8 at 14,734 tokens (accounts/pack-test.json; the accountant marked the answers; sub-agents, not full sessions).",
   "The accountant then measured the sessions themselves: 98.8% of 1.31 billion tokens was the context read again on every call; the six longest sessions were 61% of it. So the saving was not the pack alone but starting again from it.",
-  "Six agents did within the hour: the librarian handed over to a fresh session at 03:02, then designer, observability, graph, weatherwatch and studio by 03:37; then the reporter, the librarian a second time and the journalist by 04:09 (nine hand-overs, eight roles). Measured on three of the first six: 74% to 84% less per call. Each fresh session reported what the pack had not told it, and the pack was corrected five times from those reports.",
+  "Six agents did within the hour: the librarian handed over to a fresh session at 03:02, then designer, observability, graph, weatherwatch and studio by 03:37; then the reporter, the librarian a second time and the journalist by 04:09 and the librarian a third time at 04:16 (ten hand-overs, eight roles). Measured on three of the first six: 74% to 84% less per call. Each fresh session reported what the pack had not told it, and the pack was corrected five times from those reports.",
   "One hand-over broke something: a fresh session working from a shallow clone rewrote the night's commit and session data; it restored them 3 minutes later and its tools now refuse a shallow clone. No person acted between the sentence and the sixth hand-over."
  ],
  "rests_on": [
@@ -39,10 +39,10 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: nine hand-overs in eight roles by 04:09; the pack is corrected at each fresh start; the conductor's own session, the largest (327 million tokens when measured), has not handed over in the record",
+ "status": "open: ten hand-overs in eight roles by 04:16, measured at 53% to 84% less per call; the conductor's own session has not handed over in the record (it compacts: 110k after the second compaction, 04:36)",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
-  "to": "2026-11-11T04:09:25Z",
+  "to": "2026-11-11T04:36:46Z",
   "note": "sentence recorded to pack: 5 min 37 s; to the first measured number: 8 min 44 s; to the first hand-over: 12 min 43 s; to the sixth: 47 min 49 s; to the ninth: 1 h 20 min 7 s"
  },
  "steps": [
@@ -875,6 +875,69 @@
     "incident.conductor@web-summit.dinis",
     "incident.journalist@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "measure",
+   "sha": "b236371cd85a9b86c0b0e3a08ec2ccd676a6a643",
+   "in": "the ledger lines of the fresh sessions",
+   "out": "\"round 5: eight agents have handed over to fresh sessions (53% to 84% less per call); the team's call is getting cheaper hour by hour; 27 of 30 measured (1.44 billion tokens)\". In the same half hour: the librarian's fourth session (3f5079a, 04:16:11: ten hand-overs in eight roles); the accountant's own hand-over note, written before it is needed (de05cd8, 04:36:17); and the conductor, which has not handed over, measured at \"context 110k after the second compaction\" (653d6ad, 04:36:46).",
+   "handoff": {
+    "to": "every agent and the conductor",
+    "via": "accounts/index.md",
+    "evidence_of_handoff": "the commit's For: trailers"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "accounts/savings.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/savings.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/accountant/handover.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/accountant/handover.md"
+    },
+    {
+     "type": "commit",
+     "sha": "3f5079a5b278e8cef6803987c8e60f983e7f3965",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/3f5079a5b278e8cef6803987c8e60f983e7f3965"
+    },
+    {
+     "type": "commit",
+     "sha": "de05cd8560931c2f5bf0cf6ab9b7d56458cedecb",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/de05cd8560931c2f5bf0cf6ab9b7d56458cedecb"
+    },
+    {
+     "type": "commit",
+     "sha": "653d6ad3a9d5d9675d81691bb55bc531f2d1249c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/653d6ad3a9d5d9675d81691bb55bc531f2d1249c"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "b236371cd85a9b86c0b0e3a08ec2ccd676a6a643",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b236371cd85a9b86c0b0e3a08ec2ccd676a6a643"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.512",
+     "run": 512,
+     "own_run": true,
+     "served_by": "2026-11-11T04:36:33Z",
+     "push_to_served_s": 37
+    }
+   ],
+   "n": 19,
+   "at": "2026-11-11T04:35:55Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
   }
  ],
  "shape": {
@@ -884,10 +947,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 18,
+  "steps": 19,
   "steps_with_no_evidence": 0,
   "person_steps": 1,
-  "agent_steps": 17
+  "agent_steps": 18
  },
  "people_acted": [
   "Dinis Cruz"

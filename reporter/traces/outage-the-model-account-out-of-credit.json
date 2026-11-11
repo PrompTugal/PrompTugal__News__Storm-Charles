@@ -2,16 +2,16 @@
  "id": "outage-the-model-account-out-of-credit",
  "schema": "sc-trace/1",
  "size": "outage",
- "title": "Outage: the model provider's account ran out of credit at 02:54, five minutes after the cap was raised; what stopped and how the stop was written down",
+ "title": "Outage: the model provider's account out of credit; every call refused from 02:53:57 (five were refused before 02:39 and taken for wrong answers); what stopped and how the stop was written down",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T04:09:00Z",
+ "updated": "2026-11-11T05:08:00Z",
  "captured_at": "2026-11-11T04:09:00Z",
  "summary": [
-  "Dinis (~02:50): \"you can use up to $20 in budget.\" Four minutes 39 seconds after the commit that records it, the first model call was refused (HTTP 402, 02:53:57): the provider's account, which pays for more than this project, was empty. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
+  "Dinis (~02:50): \"you can use up to $20 in budget.\" The first refusal an agent timed (HTTP 402, 02:53:57) came 4 min 39 s after the commit that records it; but five calls had already been refused for lack of credits before 02:39:15 and were taken for wrong answers (corrected here at 05:08: see corrections). The provider's account, which pays for more than this project, was at its edge before the cap was raised. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
   "What stopped: every call through tools/llm.mjs. Three desks: the model evaluations (round 2 run in part), the shadow reports (the 03:00 and 04:00 hours are gaps) and the Perplexity desk (one round, then none). What did not stop: the site, the pipeline and the other agents; the team had spent about 1 US dollar of the 20.",
   "The stop was noticed by three agents separately within about two minutes and raised as four asks to Dinis; incident.board@ joined them into one card (a-provider-credit, opened 03:03:47), ranked first at the conductor's word: nine minutes 50 seconds from the first refusal to a single line a person can act on.",
   "The code learned in three commits: shadow-ask stops at the first 402 (02:55:22, 85 s after the first refusal); the shared wrapper names the refusal and sends no more (03:06:15); shadow-ask reads the wrapper's statuses (04:06:20). Before the wrapper's fix, the evaluations' ledger had taken 3,557 refused calls, all before 03:00, at no cost.",
-  "Open when captured (04:09): no top-up in the record; the card has waited on Dinis for 1 h 5 min. Only he can close it. Not evidenced: whether he has seen it; and the conductor's check that the key's own limit was fine, which is known only from two agents' status lines."
+  "Open when last read (05:08): no top-up in the record; the card has waited on Dinis since 03:03:47 and the shadow reports have three empty hours (03:00, 04:00, 05:00). Only he can close it. Not evidenced: whether he has seen it; and the conductor's check that the key's own limit was fine, which is known only from two agents' status lines."
  ],
  "rests_on": [
   "BRIEF.md",
@@ -25,7 +25,9 @@
   "agents/models/status.json",
   "agents/perplexity/status.json",
   "agents/shadow/status.json",
-  "agents/accountant/status.json"
+  "agents/accountant/status.json",
+  "models/index.md",
+  "journal/an-empty-account.md"
  ],
  "input": {
   "kind": "a refusal from outside",
@@ -40,7 +42,7 @@
  "duration": {
   "from": "2026-11-11T02:53:57Z",
   "to": null,
-  "note": "first refusal to the first code that stops on it: 85 s; to the provider's figures on a page: 8 min 23 s; to one card for Dinis: 9 min 50 s; to the shared wrapper stopping at the first refusal: 12 min 18 s; waiting on Dinis since 03:03:47"
+  "note": "first refusal to the first code that stops on it: 85 s; to the provider's figures on a page: 8 min 23 s; to one card for Dinis: 9 min 50 s; to the shared wrapper stopping at the first refusal: 12 min 18 s; waiting on Dinis since 03:03:47; corrected: five refusals before 02:39:15 were not recognised (step 13)"
  },
  "shape": {
   "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
@@ -538,13 +540,127 @@
    "evidence": [],
    "evidence_note": "No evidence, and none could exist yet: the record holds no word from Dinis on the account, and page views are not recorded, so whether he has seen the card is not known.",
    "n": 12
+  },
+  {
+   "actor": {
+    "name": "incident.models@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "an earlier refusal, not seen as one",
+   "sha": "273a1d3192079dec37d12e4aa641dbdd7a497919",
+   "in": "round 1 of the evaluations: two more rows for models asked not to reason",
+   "out": "Out of time order (added by correction; it belongs before step 1). The row for one large model was pushed as 12 of 20 on labels. The evaluations page later: \"A correction: at 02:39 UTC this page said the large one fell from 16 to 12 of 20 on labels; five of those 20 calls had been refused by the provider for lack of credits and were counted as wrong answers. They are now left out.\" (12 of 15.) The first sign of the empty account was in the record 14 min 42 s before the first refusal anyone timed, read as a model's mistake.",
+   "handoff": {
+    "to": "nobody at the time",
+    "via": "none: the refusals were not recognised",
+    "evidence_of_handoff": "the correction, in models/index.md from 03:00:00 (8ccd1ef: \"a correction\")"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "models/index.md",
+     "section": "Anything in a loop, every few minutes: \"A correction\"",
+     "url": "https://storm-charles.promptugal.news/view/?path=models/index.md"
+    },
+    {
+     "type": "file",
+     "path": "journal/an-empty-account.md",
+     "section": "When it happened",
+     "url": "https://storm-charles.promptugal.news/view/?path=journal/an-empty-account.md"
+    },
+    {
+     "type": "commit",
+     "sha": "8ccd1ef7205917fe57b2166094fe46964bc9e867",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8ccd1ef7205917fe57b2166094fe46964bc9e867"
+    },
+    {
+     "type": "commit",
+     "sha": "4911dadc4fda602cdcce041d7ae1dfda6ac4bea7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4911dadc4fda602cdcce041d7ae1dfda6ac4bea7"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "273a1d3192079dec37d12e4aa641dbdd7a497919",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/273a1d3192079dec37d12e4aa641dbdd7a497919"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.306",
+     "run": 306,
+     "own_run": true,
+     "served_by": "2026-11-11T02:39:46Z",
+     "push_to_served_s": 30
+    }
+   ],
+   "n": 13,
+   "at": "2026-11-11T02:39:15Z",
+   "agent_trailer": "incident.models@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a third gap",
+   "sha": "bc666ab10918986110480fe39f93d380465f44f5",
+   "in": "the 05:00 round due; nothing changed at the provider",
+   "out": "\"the 05:00 hour is a third recorded gap (the engines' account still out of credit)\". Meanwhile the board's card took the first timed refusal as its event time and this trace as evidence (ccfd0b1, 04:16:40). Two hours and two minutes after the card opened, no word from Dinis in the record.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "the card (board/items/a-provider-credit.json)",
+    "evidence_of_handoff": "the card's history"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "shadow/runs/2026-11-11/05.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=shadow/runs/2026-11-11/05.json"
+    },
+    {
+     "type": "file",
+     "path": "board/items/a-provider-credit.json",
+     "section": "history",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
+    },
+    {
+     "type": "commit",
+     "sha": "ccfd0b16cf9958a3289eae6a9df312c484cdf0c0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ccfd0b16cf9958a3289eae6a9df312c484cdf0c0"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "bc666ab10918986110480fe39f93d380465f44f5",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/bc666ab10918986110480fe39f93d380465f44f5"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.528",
+     "run": 528,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T04:43:25Z"
+    }
+   ],
+   "n": 14,
+   "at": "2026-11-11T05:06:01Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 12,
+  "steps": 14,
   "steps_with_no_evidence": 1,
   "person_steps": 2,
-  "agent_steps": 10
+  "agent_steps": 12
  },
  "people_acted": [
   "Dinis Cruz"
@@ -556,5 +672,14 @@
   "incident.models@web-summit.dinis",
   "incident.accountant@web-summit.dinis",
   "incident.board@web-summit.dinis"
+ ],
+ "corrections": [
+  {
+   "at": "2026-11-11T05:08:00Z",
+   "by": "incident.reporter@web-summit.dinis",
+   "found_by": "incident.journalist@web-summit.dinis (journal/an-empty-account.md, \"When it happened\"; commit 4911dad)",
+   "was": "The first summary line and the title said the first model call was refused at 02:53:57, \"five minutes after the cap was raised\", as if the account ran out after Dinis's word.",
+   "is": "02:53:57 is the first refusal an agent timed. Five calls had been refused for lack of credits earlier, in results incident.models@ pushed at 02:39:15, about ten minutes before the commit that records the new cap; they were counted as wrong answers until the evaluations page corrected it. The account was at its edge before the cap was raised. Step 13 is added for it at the end: step numbers do not change."
+  }
  ]
 }
