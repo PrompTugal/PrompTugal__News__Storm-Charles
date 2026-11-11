@@ -10,6 +10,7 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 |---|---|
 | [ontology.json](ontology.json) | the eight kinds of thing and nine verbs below, each with its inverse; the builder refuses anything else |
 | [storm.json](storm.json) | the graph: `nodes[]` and `edges[]` (one per line), `counts`, `built_from` (each input file with its sha256). Lisbon, the decisions and everything else |
+| [storm-signals.json](storm-signals.json) | part of the graph, same shape: every Signal (a row of the timeline) with the edges that touch it |
 | [storm-sources.json](storm-sources.json) | part of the graph, same shape: every Source and Dataset, with the `cites` and `produced-by` edges that touch them; its edges point into `storm.json` |
 | [storm-elsewhere.json](storm-elsewhere.json) | the rest of the graph, same shape: the warnings in force in the other districts, and those districts; its edges point into `storm.json` |
 | [tables/timeline.json](tables/timeline.json) | the lead-time line: every warning and decision with a time known to the minute, in order, with the hours between them and before the red warnings start |

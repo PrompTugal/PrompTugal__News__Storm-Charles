@@ -141,6 +141,8 @@
         act('Open as its own graph', () => about(n.id, n.type === 'Warning' ? 2 : 1, true))
         act('Bring in its links', () => { for (const m of nb(n.id)) { base.add(m); removed.delete(m) } apply() })
         act('Hide it', () => { removed.add(n.id); apply() })
+        // the site's right-hand panel (incident.designer@), filled by the entity's own page (incident.entities@), when both are there
+        if (n.entity && window.stormPanel && typeof window.stormPanel.openItem === 'function') act('Everything about it, in the side panel', () => window.stormPanel.openItem(n.entity))
         p.append(acts)
         const dl = el('dl'), add = facts(dl, n)
         if (n.entity) add('its page', el('a', { href: BASE + 'entities/' + n.entity + '.html', text: 'everything about it (entities/' + n.entity + ')' }))

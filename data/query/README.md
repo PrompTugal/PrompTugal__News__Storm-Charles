@@ -32,7 +32,7 @@ The page opens on **the answers**: every saved question is run in your tab as so
 | `actors` | bodies, operators, the organiser, outlets | [tables/actors.json](../graph/tables/actors.json) |
 | `first_on_fact` | for each keyed fact, each outlet's first item on it and the minutes after the primary source (the media watch's analysis) | [tables/first_on_fact.json](../graph/tables/first_on_fact.json) |
 | `coverage` | what each outlet published on the storm and when (titles with their links; the kind of by-line, never a name) | [tables/coverage.json](../graph/tables/coverage.json) |
-| `nodes`, `edges` | the graph itself | [storm.json](../graph/storm.json), [storm-sources.json](../graph/storm-sources.json) and [storm-elsewhere.json](../graph/storm-elsewhere.json) |
+| `nodes`, `edges` | the graph itself | [storm.json](../graph/storm.json), [storm-signals.json](../graph/storm-signals.json), [storm-sources.json](../graph/storm-sources.json) and [storm-elsewhere.json](../graph/storm-elsewhere.json) |
 
 Every row has `label` (fact, evidence, hypothesis), `source` (URL), `read` (UTC) and `origin` (the file and place it came from). Times are UTC text (`2026-11-10T19:09Z`); `*_epoch` columns are the same time in seconds, present only when the time is known to the minute, so differences are plain arithmetic. [The ontology](../graph/README.md) says what each thing is.
 

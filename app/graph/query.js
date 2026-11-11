@@ -54,7 +54,10 @@
         const status = $('q-status')
         try {
             const t0 = performance.now()
-            const [[q], ...files] = await Promise.all([getJSON(BASE + 'queries.json'), getJSON(BASE + 'storm.json'), getJSON(BASE + 'storm-sources.json'), getJSON(BASE + 'storm-elsewhere.json'), ...TABLES.map(t => getJSON(BASE + 'tables/' + t + '.json'))])
+            const [[q], ...files] = await Promise.all([getJSON(BASE + 'queries.json'), getJSON(BASE + 'storm.json'), ...TABLES.map(t => getJSON(BASE + 'tables/' + t + '.json'))])
+            // the graph is in parts: storm.json names the others in `more` (paths from the site's root)
+            const parts = await Promise.all((files[0][0].more || []).map(f => getJSON(BASE + f.replace(/^data\/graph\//, ''))))
+            files.push(...parts)
             examples = q.queries; drawExamples()
             const bytes = files.reduce((n, f) => n + f[1], 0), tData = performance.now() - t0
             // the engine: fetch the WebAssembly file, check its sha256, only then hand it to sql.js
@@ -66,8 +69,8 @@
             const SQL = await initSqlJs({ wasmBinary: wasm })
             const tEngine = performance.now() - te
             db = new SQL.Database()
-            const tt = performance.now(), storm = { ...files[0][0], nodes: files[0][0].nodes.concat(files[1][0].nodes, files[2][0].nodes), edges: files[0][0].edges.concat(files[1][0].edges, files[2][0].edges) }
-            files.slice(3).forEach(([t]) => load(t.table, t.columns, t.rows))
+            const tt = performance.now(), storm = { ...files[0][0], nodes: files[0][0].nodes.concat(...parts.map(p => p[0].nodes)), edges: files[0][0].edges.concat(...parts.map(p => p[0].edges)) }
+            files.slice(1, 1 + TABLES.length).forEach(([t]) => load(t.table, t.columns, t.rows))
             const cols = arr => [...arr.reduce((s, x) => { Object.keys(x).forEach(k => s.add(k)); return s }, new Set())]
             const edges = storm.edges.map(e => ({ id: `${e.rel}:${e.from}>${e.to}`, ...e }))
             load('nodes', cols(storm.nodes), storm.nodes); load('edges', cols(edges), edges)
