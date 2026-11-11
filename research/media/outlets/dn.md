@@ -1,13 +1,13 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 19:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 20:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 29: 24 articles, 3 live, 1 video, 1 opinion |
-| First and last | 9 Nov 08:34 to 11 Nov 19:36 UTC |
-| Whose reporting | 26 with a reporter's by-line, 3 the agency's (Lusa), 0 the desk's, 0 not read; wire share 10% |
+| Items we read | 30: 25 articles, 3 live, 1 video, 1 opinion |
+| First and last | 9 Nov 08:34 to 11 Nov 20:16 UTC |
+| Whose reporting | 27 with a reporter's by-line, 3 the agency's (Lusa), 0 the desk's, 0 not read; wire share 10% |
 | Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; first on "IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places"; a running live blog; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
@@ -29,7 +29,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 3 of 29 items link to a body that decides or warns (AMN, IP, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 3 of 30 items link to a body that decides or warns (AMN, IP, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -53,7 +53,7 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 
 ## By-lines on this story, as printed
 
-[Sofia Fonseca](../people/sofia-fonseca.md) (5), [Ricardo Simões Ferreira](../people/ricardo-simoes-ferreira.md) (4), [Susete Henriques](../people/susete-henriques.md) (4), David Pereira (2), Margarida Vaqueiro Lopes (2), Rui Frias (2), Sónia Santos Pereira (2), Adelaide Cabral, Alexandra Tavares-Teles, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Reinaldo Rodrigues, Tomás Gonçalves Pereira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+[Sofia Fonseca](../people/sofia-fonseca.md) (5), [Ricardo Simões Ferreira](../people/ricardo-simoes-ferreira.md) (4), [Susete Henriques](../people/susete-henriques.md) (4), André Certã (2), David Pereira (2), Margarida Vaqueiro Lopes (2), Rui Frias (2), Sónia Santos Pereira (2), Adelaide Cabral, Alexandra Tavares-Teles, Amanda Lima, Ana Meireles, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Reinaldo Rodrigues, Tomás Gonçalves Pereira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -87,4 +87,5 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 | 11 Nov 15:34 | article | Rui Frias | [Faltas ao trabalho devido ao mau tempo: Luís Neves diz que "lei é para cumprir" e pede compreensão… ↗](https://www.dn.pt/sociedade/faltas-ao-trabalho-devido-ao-mau-tempo-lus-neves-diz-que-lei-para-cumprir-e-pede-compreenso-dos-patres) |
 | 11 Nov 16:03 | video | Reinaldo Rodrigues | [Tempestade Charles atinge Lisboa: "O período mais grave está à porta" ↗](https://www.dn.pt/videos-dn/tempestade-charles-atinge-lisboa-o-perodo-mais-grave-est-porta) |
 | 11 Nov 16:09 | article | Rui Frias | [Ministro rejeita excesso de zelo na prevenção da depressão Charles: "Não podemos responder só quand… ↗](https://www.dn.pt/sociedade/ministro-rejeita-excesso-de-zelo-na-preveno-da-depresso-charles-no-podemos-responder-s-quando-h-uma-desgraa) |
-| 11 Nov 19:36 | live | Sofia Fonseca, Susete Henriques | [Portugal sem avisos vermelhos após desativação em Faro. Principais artérias em redor de Lisboa cond… ↗](https://www.dn.pt/sociedade/perodo-mais-grave-est-a-porta-avisa-mai-situao-de-alerta-no-se-prolonga-para-amanh) |
+| 11 Nov 20:12 | article | André Certã | [Depressão Charles. Em Vila Franca de Xira, choveu muito, mas o dia foi "melhor do que se estava à e… ↗](https://www.dn.pt/sociedade/depresso-charles-em-vila-franca-de-xira-choveu-muito-mas-o-dia-foi-melhor-do-que-se-estava-espera) |
+| 11 Nov 20:16 | live | Sofia Fonseca, Susete Henriques | [Portugal sem avisos vermelhos após desativação em Faro. Principais artérias em redor de Lisboa cond… ↗](https://www.dn.pt/sociedade/perodo-mais-grave-est-a-porta-avisa-mai-situao-de-alerta-no-se-prolonga-para-amanh) |

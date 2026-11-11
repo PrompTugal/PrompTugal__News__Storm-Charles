@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 19:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 20:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 75: 22 articles, 0 live, 53 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 19:22 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 66 not read; wire share 67% |
+| Items we read | 79: 25 articles, 0 live, 54 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 20:24 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 70 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -26,7 +26,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 75 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 79 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -130,3 +130,7 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 18:43 | video | not read | [Como a depressão Bruna ajudou a limitar a "intensidade" da tempestade Charles ↗](https://cnnportugal.iol.pt/videos/como-a-depressao-bruna-ajudou-a-limitar-a-intensidade-da-tempestade-charles/6af4a9f60cf235b99ef50a66) |
 | 11 Nov 19:19 | article | not read | ["Prevenir não pode significar parar o país": CCP critica medidas aplicadas durante a tempestade Cha… ↗](https://cnnportugal.iol.pt/empresas/mau-tempo/prevenir-nao-pode-significar-parar-o-pais-ccp-critica-medidas-aplicadas-durante-a-tempestade-charles/20261111/6af4c016d34e9ce6f1b4418d) |
 | 11 Nov 19:22 | video | not read | [Modelo que analisou tempestade Charles "é o melhor do mundo". E a equipa por detrás "é a mais capaz… ↗](https://cnnportugal.iol.pt/videos/modelo-que-analisou-tempestade-charles-e-o-melhor-do-mundo-e-a-equipa-por-detras-e-a-mais-capaz-para-o-fazer/6af4bf2f0cf2cb2507aa85d7) |
+| 11 Nov 19:33 | article | not read | [Dividiu-se em dois: tempestade Charles foi menos grave do que se pensava e já está a caminho de Esp… ↗](https://cnnportugal.iol.pt/mau-tempo/tempestade-charles/dividiu-se-em-dois-tempestade-charles-foi-menos-grave-do-que-se-pensava-e-ja-esta-a-caminho-de-espanha/20261111/6af4c31dd34e5a653d733e33) |
+| 11 Nov 19:55 | article | not read | ["Excecional apetência": tempestade Charles passou e Montenegro faz um elogio especial a Luís Neves ↗](https://cnnportugal.iol.pt/tempestade-charles/mau-tempo/excecional-apetencia-tempestade-charles-passou-e-montenegro-faz-um-elogio-especial-a-luis-neves/20261111/6af4c847d34e5a653d733e3f) |
+| 11 Nov 19:56 | video | not read | ["Mais vale prevenir do que remediar": as declarações de Luís Montenegro ao país depois da passagem… ↗](https://cnnportugal.iol.pt/videos/mais-vale-prevenir-do-que-remediar-as-declaracoes-de-luis-montenegro-ao-pais-depois-da-passagem-da-tempestade-charles/6af4c66a0cf2aafa0453e37f) |
+| 11 Nov 20:24 | article | not read | [Choveu o que se esperava mas o vento foi menos intenso: IPMA garante que medidas se adequaram à gra… ↗](https://cnnportugal.iol.pt/ipma/medidas/choveu-o-que-se-esperava-mas-o-vento-foi-menos-intenso-ipma-garante-que-medidas-se-adequaram-a-gravidade-da-tempestade-charles/20261111/6af4cf0bd34e5a653d733e4c) |
