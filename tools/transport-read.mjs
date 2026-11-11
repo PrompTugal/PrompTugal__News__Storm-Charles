@@ -472,7 +472,17 @@ if (arg('only', '') === 'bridges') {
     console.log(`transport (bridges only): ${br.map(s => `${s.id} ${s.label}${s.notices ? ' ' + s.notices.length : ''}`).join(' · ')} · store ${STORE}`)
     process.exit(0)
 }
-const fl = await flights()
+// OpenSky paused (transport/opensky-paused.json): no call to OpenSky at all. The day's departures stay as last read (frozen, marked),
+// the live snapshot becomes none with the reason. Remove the file only at Dinis's word (its terms: a written licence for automated use).
+const PAUSE_F = path.join(ROOT, 'transport/opensky-paused.json')
+const PAUSE = fs.existsSync(PAUSE_F) ? JSON.parse(fs.readFileSync(PAUSE_F, 'utf8')) : null
+const fl = PAUSE ? (() => {
+    let prev = []; try { prev = JSON.parse(fs.readFileSync(path.join(OUT, 'flights.json'), 'utf8')).airports || [] } catch { }
+    const note = `OpenSky readings paused from ${PAUSE.paused_at}: ${PAUSE.reason}`
+    return prev.map(a => ({ ...a, ana: undefined,
+        departures_today: a.departures_today?.paused ? a.departures_today : { ...a.departures_today, paused: note, frozen_at: a.departures_today?.read || null },
+        live_snapshot: { label: 'none', note } }))
+})() : await flights()
 const an = await ana()
 if (an.label === 'fact') for (const a of fl) if (an.airports[a.iata]) a.ana = { ...an.airports[a.iata], situation_at: an.situation_at, published: an.published, link: an.link, read: an.read, label: 'fact' }
 const tr = await trains()
@@ -484,6 +494,7 @@ const common = { by: BY, updated, not_a_warning_service: 'Not a warning service.
 const flightsJ = {
     about: 'Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network\'s public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations: ANA\'s own figures (scheduled, cancelled, operated movements) from its newsroom where it has published them (ana_statement, and ana on each airport); diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.',
     ...common, attribution: OPENSKY_CITE, ana_statement: an, airports: fl,
+    ...(PAUSE ? { opensky_paused: PAUSE } : {}),
 }
 const servicesJ = {
     about: 'Each operator\'s current state from its own notices where an open, machine-readable source exists, with short excerpts and the link. Operators without an open source (Metro, CP, Fertagus, Carris, the bridges, the airport) are in the decisions kept by incident.researcher@ (data/decisions/entities/), linked from the page.',
