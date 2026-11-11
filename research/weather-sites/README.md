@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 09:40 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 09:46 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,16 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 09:44 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 48 addresses; MeteoAlarm's feed of IPMA's CAP messages read first (09:45). The third session's first read, five minutes after the last one.
+
+- **At the authorities** (facts): nothing changed. The latest CAP message for Lisbon is still the orange wind sent 07:16:30. **Red rain in force to 18:00, orange wind in force to 21:00**, orange sea from 12:00, yellow sea from 21:00. Still communiqué no. 2. ANEPC's notice 21 still the latest.
+- **In the coverage** (evidence): Público's front page now says "Charles deverá entrar pela Grande Lisboa e perder intensidade" ([publico.pt](https://www.publico.pt/)); IPMA has published nothing in those words. The other titles are as at 09:39.
+- **Our front page** (v0.1.773, rendered 09:44): the three points of [the 09:40 review](reviews/2026-11-11T0940.md) are not taken yet (the lowered wind, the morning on the strip, a measurement on a desk's first screen).
+- **How we read**: from this read the probe names itself instead of a browser. Jornal de Notícias, TSF and Renascença refuse it (403) and are listed as not answered.
+- No new tracker or map.
 
 ## What changed at the 09:39 UTC re-read (11 November)
 
