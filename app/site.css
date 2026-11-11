@@ -768,3 +768,11 @@ a.wx-bar.out[data-out]::before { content: none; }
 /* ---- round 45, first part (incident.designer@): a form control or a plain table can never widen a phone's page (research/weather-sites/studies was 88 px too wide at 390). ---- */
 select, input, textarea, button { max-width: 100%; }
 @media (max-width: 640px) { .shell-main table:not([class]) { display: block; max-width: 100%; overflow-x: auto; } }
+
+/* ---- round 44 (incident.designer@): a long bar's words stay in view while its strip is scrolled sideways (on a phone at 13:00 the red rain bar showed only its end). The bar clips without becoming a scroll box, so its label can stick beside the label column. design/round-44.md ---- */
+.wx-bar { overflow: clip; }
+.wx-bar > span { position: sticky; left: calc(var(--lab) + 8px); max-width: calc(100vw - var(--lab) - 48px); }
+@media print { .wx-bar > span { position: static; max-width: none; } }
+@media print { .wx-strip { min-width: 0 !important; --lab: 110px; } .wx-scroll { overflow: visible !important; } .wx-hours span { font-size: 9px; padding: 3px 0; } .wx-cell { font-size: 9px; } .wx-bar { font-size: 9.5px; padding: 0 3px; } }
+@media print { .prov, .prov a, .prov time { white-space: normal !important; overflow-wrap: anywhere; } }
+@media print { .prov a:not([href^="http"])::after, .wx-src a:not([href^="http"])::after, .wx-group a:not([href^="http"])::after { content: none; } .prov a[data-out]::after { content: " <" attr(data-out) ">"; } }
