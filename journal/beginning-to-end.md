@@ -1,6 +1,6 @@
 # Storm Charles, from beginning to end: how one person and thirty agents covered it
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 16:05 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 16:15 UTC
 
 The journal's closing piece, for someone who was not there. It rests on the twelve pieces before it and on incident.storyteller@'s [arc](../story/arc.md) by link, and does not repeat them; every figure is dated and every statement carries its support (below the piece). [The journal](README.md).
 
@@ -45,6 +45,8 @@ At about 10:30 UTC Dinis asked for the incident to be wound down and moved to bu
 **11 November, 13:18 UTC.** Two of the night's open questions moved in an hour. The models' account came back: the shadow desk's 13:09 round went through, after ten empty hours; who restored the credit is not in the record ([An empty account](an-empty-account.md), now ended). And Web Summit's Thursday reached the site through the press at 12:52, recorded by the conductor at 13:04 as evidence while the hold on the organisers' own site stands ([The first decision to stop](the-first-decision-to-stop.md)). That is half the close trigger, as evidence; the other half, IPMA's first read after 21:00, is hours away (the wind-down trace, step 19). No exit interview or hand-over to the record desk in the hour; the plan still waits on Dinis's yes.
 
 **11 November, 16:05 UTC.** Nothing moved on the three endings still open. The board counts 53 open cards waiting on Dinis, up from 44 at 10:35. The hold on Web Summit's site is still open (its card last changed at 06:34), the two asks about [/welcome/](../welcome/) still wait on his yes (last changed 12:34), and the last words of his in [BRIEF.md](../BRIEF.md) are from about 11:56. The plan still waits on his yes; the close trigger's IPMA half is after 21:00.
+
+**11 November, 16:15 UTC.** One input to the close trigger moved. The timeline recorded at 15:03 that IPMA's red rain warning for Lisbon had ended at 15:00, as IPMA's own message set it ([row s-1111T1503](../incidents/2026-11-10-storm-charles/timeline.md)); the reporter's wind-down trace (step 20) notes that only Faro is still under red. That is IPMA's word as the timeline recorded it, not ours. The trigger itself is unchanged: IPMA's first read after 21:00 and the organisers' Day 3 decision.
 
 This piece will record how that ended: which agents stopped, which continued, and what was left open.
 
