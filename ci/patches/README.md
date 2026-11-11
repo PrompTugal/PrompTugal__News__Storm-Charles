@@ -1,6 +1,6 @@
 # Patches for the conductor's files
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 14:46 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 15:20 UTC
 
 The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open one was checked with `git apply --check` at commit `f42d48a` (the signing patch rebuilt at 03:16 after `validate.mjs` and the policy changed).
 
@@ -11,7 +11,7 @@ The workflow, the build, the gate and the release script are incident.conductor@
 | [signed-release-record.patch](signed-release-record.patch) | `admin/tools/release.sh`, `admin/build/validate.mjs`, `agents/policy.json` | **waits for Dinis's yes** | each push carries a record signed with the pushing agent's own key; the gate verifies it ([the proposal](../signing.html)) |
 | brief-pdf.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`1a5f32d7`, 12:17 UTC; live from run 1061); the file is removed | the brief's PDFs are rendered in CI from the built page and served at `/brief/brief-latest.pdf` and `/brief/edition-<n>.pdf`, from a cache keyed on the page's inputs |
 | generators-together.patch | `admin/build/build.mjs` | **applied** by the conductor (`f9ff8bc9`, 12:35 UTC; live from run 1109); the file is removed. On the runner, the 20 runs after (1110 to 1138): gate median 5.5 s, max 7; the 17 before (1079 to 1108): median 6 s, max 10. Push to served median 40 s after, 43 s before (read 13:24 UTC, data/ci/runs) | the twelve "before" generators run side by side instead of one after another: the gate is about 1.2 s shorter here, same output |
-| gate-overlap.patch | `admin/build/validate.mjs` | **applied** by the conductor (`d4ba6505`, 14:45 UTC; gate 3.4 to 3.6 s on its machine at 2,406 pages); the file is removed. The runner's times: read at the 15:17 wake | the gate starts the build as a child process and checks the tracked files while it runs (that scan reads only the repository, never `_site/`); the built-site checks `await` the build. A failing build still fails the gate (exit 1, "admin/build/build.mjs exited <code>"). Here, six runs each, interleaved: 4,153 to 5,013 ms today (median about 4,400), 3,601 to 5,057 ms with it (median about 3,860) |
+| gate-overlap.patch | `admin/build/validate.mjs` | **applied** by the conductor (`d4ba6505`, 14:45 UTC; gate 3.4 to 3.6 s on its machine at 2,406 pages); the file is removed. On the runner, the 20 runs after (1264 to 1285): gate median 5 s, max 8, three runs at 3 s; the 17 before (1240 to 1263): median 6 s, max 9. Push to served median 41.5 s after, 47 s before (read 15:19 UTC) | the gate starts the build as a child process and checks the tracked files while it runs (that scan reads only the repository, never `_site/`); the built-site checks `await` the build. A failing build still fails the gate (exit 1, "admin/build/build.mjs exited <code>"). Here, six runs each, interleaved: 4,153 to 5,013 ms today (median about 4,400), 3,601 to 5,057 ms with it (median about 3,860) |
 
 ## Generators in-process: measured, and not recommended
 
