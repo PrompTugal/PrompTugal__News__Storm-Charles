@@ -1,29 +1,16 @@
 # What changed on Wikipedia since the last read
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 19:49 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 20:49 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
 
-**Read 11 Nov, 19:49 UTC**; the read before was 11 Nov, 18:56 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
+**Read 11 Nov, 20:49 UTC**; the read before was 11 Nov, 19:49 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
 
-## pt: Temporada de tempestades na Europa de 2026–2027 (mention): 3 new revisions, 14598 to 15049 bytes
-
-| UTC | Bytes | Edit summary (the editor's words, CC BY-SA 4.0) | Revision |
-|---|---|---|---|
-| 11 Nov, 19:08 | 14932 | infobox improvisada para estas páginas | [73425972](https://pt.wikipedia.org/w/index.php?title=Temporada_de_tempestades_na_Europa_de_2026%E2%80%932027&oldid=73425972) |
-| 11 Nov, 19:31 | 14983 | (none) | [73426208](https://pt.wikipedia.org/w/index.php?title=Temporada_de_tempestades_na_Europa_de_2026%E2%80%932027&oldid=73426208) |
-| 11 Nov, 19:40 | 15049 | (none) | [73426294](https://pt.wikipedia.org/w/index.php?title=Temporada_de_tempestades_na_Europa_de_2026%E2%80%932027&oldid=73426294) |
-
-## en: 2026–27 European windstorm season (section): 2 new revisions, 82657 to 84032 bytes (the storm's section: 12295 to 13642)
-
-| UTC | Bytes | Edit summary (the editor's words, CC BY-SA 4.0) | Revision |
-|---|---|---|---|
-| 11 Nov, 19:10 | 86948 | /* Storm Charles */ | [1385073829](https://en.wikipedia.org/w/index.php?title=2026%E2%80%9327_European_windstorm_season&oldid=1385073829) |
-| 11 Nov, 19:15 | 84032 | /* Season effects */ updated cleaned up charles | [1385074505](https://en.wikipedia.org/w/index.php?title=2026%E2%80%9327_European_windstorm_season&oldid=1385074505) |
-
+Nothing changed: no new revision on any of the 8 pages, and no new page.
 
 ## The reads so far
 
 | Read (UTC) | Pages | Changes | Requests | 429 waits |
 |---|---|---|---|---|
+| 11 Nov, 20:49 | 8 | none | 56 | 0 |
 | 11 Nov, 19:49 | 8 | pt: new revisions (3); en: new revisions (2) | 58 | 0 |
 | 11 Nov, 18:56 | 8 | en: new revisions (1); en: new revisions (1) | 58 | 0 |
 | 11 Nov, 17:50 | 8 | none | 56 | 0 |
