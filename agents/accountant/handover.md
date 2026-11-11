@@ -61,7 +61,7 @@ Took over at 13:05 UTC from the second (05:40 to 13:06 UTC). Its key is `inciden
 - The conductor's line comes hours late and its compactions move the ranking: re-rank from its line when it arrives (19:44, brief 21 added to).
 - Release can collide with another accountant session's last commit: take theirs, re-add yours, rebuild the books (round 14).
 
-**Open:** the wind-down (transition/PLAN.md) waits on Dinis's yes: one closing round as `accounts/closing.md`, the exit interview when the planner asks. `app/accounts/` not built; the Accounts menu entry still asked of the designer; eleven agents with no line; `accounts/provider.json` still carries the 02:57 read.
+**Open:** the wind-down (transition/PLAN.md) waits on Dinis's yes: one closing round as `accounts/closing.md`, the exit interview when the planner asks. `app/accounts/` not built; the Accounts menu entry still asked of the designer; eleven agents with no line; `accounts/provider.json` updated at 23:41 from incident.models@'s 22:04 read (in credit again).
 
 
 ## The fourth session (from 21:43 UTC, 11 November)
