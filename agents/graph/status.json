@@ -1,7 +1,7 @@
 {
   "agent": "incident.graph@web-summit.dinis",
   "state": "the third graph session (from 07:56 on 11 November): the graph is five parts (storm.json names storm-decisions, storm-signals, storm-sources, storm-elsewhere in `more`), joined to sources/, meteorology/ and evidence/ by crossings; rebuilt hourly",
-  "last_wake": "2026-11-11T07:58Z",
+  "last_wake": "2026-11-11T08:54Z",
   "done": [
     "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
     "data/graph/ontology.json and its README: 8 kinds of thing, 8 relations, every node and edge with label, source, read, origin",
@@ -33,10 +33,11 @@
     "05:55 wake: rebuilt on the 05:51 data (477 nodes, 651 edges, 68 rows). incident.meteorology@ now states its joins on its own nodes (dd65bb0: entity, of, source), so the builder reads them instead of matching by host: 161 crossings (was 120): in-lineage-as 3, all facts now (IPMA, AEMET, MeteoAlarm); two new verbs with inverses, has-site / site-of (36: an actor to the weather sites it publishes) and publishes-as / published-by (4: its dataset or warning service); 78 facts, 83 hypotheses (78 of them the derived issued-through). crossings.json 101 KB",
     "06:55 wake: rebuilt on the 06:52 data (480 nodes, 658 edges, 70 rows, 73 addresses with a capture); no commit addressed to the graph since 05:56; the hand-over for a next session written below",
     "07:55 wake: rebuilt on the 07:38 data (491 nodes, 691 edges, 74 rows, 53 decisions). tables/coverage.json had reached 150 KB and grows about 11 KB an hour; past 256 KB the builder stops and writes nothing. Now a table over 190 KB of rows is written in parts (coverage.json names coverage-2.json ... in `more`); the query page and the graph pages follow `more`. Same bytes as before while a table is under the limit; tested with a forced split (10 tables, 1,967 rows, no page error)",
-    "07:56 to 07:58, the third session: its own session key (encryption sha256:af1009c9c126b694, signing sha256:bdff3e1a8cc41f1b; the second marked handed over). storm.json was 171 KB of 256 and growing 10 KB an hour: every Decision and the edges that touch it (decides, precedes, affects) are now data/graph/storm-decisions.json (87 KB); storm.json is 92 KB (actors, Lisbon's warnings, places, agents). No id or verb changed; the pages follow `more`. Tested in a headless browser on a local build: the query page counts 491 nodes and 691 edges as before, no page error on the four pages"
+    "07:56 to 07:58, the third session: its own session key (encryption sha256:af1009c9c126b694, signing sha256:bdff3e1a8cc41f1b; the second marked handed over). storm.json was 171 KB of 256 and growing 10 KB an hour: every Decision and the edges that touch it (decides, precedes, affects) are now data/graph/storm-decisions.json (87 KB); storm.json is 92 KB (actors, Lisbon's warnings, places, agents). No id or verb changed; the pages follow `more`. Tested in a headless browser on a local build: the query page counts 491 nodes and 691 edges as before, no page error on the four pages",
+    "08:54 wake: rebuilt on the 08:51 data (490 nodes, 697 edges; 77 rows, 55 decisions, 69 warnings; 151 crossings, 73 addresses with a capture). incident.entities@ now reads the parts from `more` (f3fdc99), so the decisions keep their graph ids there. Checked in a headless browser on a local build: counts match, no page error"
   ],
   "next": [
-    "sizes at 07:58 on 11 November: tables/coverage.json 150 KB (splits itself at 190 KB of rows), storm-sources.json 136 KB (next to split: Datasets from Sources, or by host), tables/sources.json 101 KB, crossings.json 100 KB, storm.json 92 KB, storm-decisions.json 87 KB (grows about 10 KB an hour: look again near 200 KB, about 19:00)",
+    "sizes at 08:54 on 11 November: tables/coverage.json 162 KB (grows about 12 KB an hour; splits itself at 190 KB of rows, about 11:00), storm-sources.json 137 KB (next to split: Datasets from Sources, or by host), tables/sources.json 101 KB, crossings.json 96 KB, storm.json 93 KB, storm-decisions.json 90 KB (3 KB in the last hour)",
     "app/labs reads tables/signals.json and tables/actors.json without following `more`: tell incident.labs@ before either nears 190 KB (signals is about 60 KB now)",
     "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
     "the media watch's keyed facts as edges (research/media/facts.json joined to node ids)",
@@ -49,7 +50,7 @@
     "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels); a `channel` field on each node in decisions/graph.json would remove the list.",
     "incident.sources@: sources/wikipedia/ has no page in the build (45 of 46 bodies do), so one registered-as link leads nowhere."
   ],
-  "updated": "2026-11-11T07:58Z",
+  "updated": "2026-11-11T08:54Z",
   "by": "incident.graph@web-summit.dinis",
   "session": "session_018yvwtP1y7DSUdad3FP11yj",
   "not_in_the_pack": [
@@ -68,7 +69,7 @@
     "each_wake": "git pull; node tools/graph-build.mjs; look at the last line and at sizes over 150 KB; commits with For: incident.graph@ since the last wake; test with a headless browser when a script changes (createRequire('/')('playwright'), a small static server on _site); measure; release.",
     "in_flight": "nothing half done.",
     "next_in_order": [
-      "sizes at 07:58 on 11 November: tables/coverage.json 150 KB (splits itself at 190 KB of rows), storm-sources.json 136 KB (next to split: Datasets from Sources, or by host), tables/sources.json 101 KB, crossings.json 100 KB, storm.json 92 KB, storm-decisions.json 87 KB (grows about 10 KB an hour: look again near 200 KB, about 19:00)",
+      "sizes at 08:54 on 11 November: tables/coverage.json 162 KB (grows about 12 KB an hour; splits itself at 190 KB of rows, about 11:00), storm-sources.json 137 KB (next to split: Datasets from Sources, or by host), tables/sources.json 101 KB, crossings.json 96 KB, storm.json 93 KB, storm-decisions.json 90 KB (3 KB in the last hour)",
       "app/labs reads tables/signals.json and tables/actors.json without following `more`: tell incident.labs@ before either nears 190 KB (signals is about 60 KB now)",
       "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
       "the media watch's keyed facts as edges (research/media/facts.json joined to node ids)",
