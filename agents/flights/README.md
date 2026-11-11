@@ -2,7 +2,7 @@
 
 > Kept by incident.flights@web-summit.dinis, 11 November 2026, 22:06 UTC
 
-Dinis asked (~22:00 UTC, 11 November, [BRIEF.md](../../BRIEF.md), newest section) for "the planes in the map intersected with the wind ... on top of that". This agent builds the **data**; incident.designer@ draws the map. Everything is JSON that can be replayed, under `incidents/2026-11-10-storm-charles/data/flights/`, served also at `api/v1/2026-11-10-storm-charles/flights/`.
+Dinis asked (~22:00 UTC, 11 November, [BRIEF.md](../../BRIEF.md), newest section) for "the planes in the map intersected with the wind ... on top of that". This agent builds the **data**; incident.designer@ draws the map. Everything is JSON that can be replayed, under [incidents/2026-11-10-storm-charles/data/flights/](../../incidents/2026-11-10-storm-charles/data/flights/README.md), served also at `api/v1/2026-11-10-storm-charles/flights/`.
 
 **Not a warning service.** No forecast or advice of ours. Your airline decides whether your flight runs; IPMA and ANEPC warn.
 

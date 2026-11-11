@@ -1,0 +1,137 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-11T22:11:13Z",
+  "about": "Every flights file: what it covers, its size and sha256. Replay: crosswind.json (the airports' wind on each runway, hour by hour, with departures), wind/<area>-<date>.json (the wind field), snapshots/<date>/<HH>.json (airline aircraft every 10 or 20 minutes from 11 November 22:00 UTC). Read README.md beside it for the shapes.",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "attribution": [
+    "The OpenSky Network, https://opensky-network.org (M. Schäfer, M. Strohmeier, V. Lenders, I. Martinovic, M. Wilhelm, \"Bringing Up OpenSky: A Large-scale ADS-B Sensor Network for Research\", IPSN 2014). Used for research and non-commercial purposes, as its API documentation asks; its full terms page is still for a person to read (transport/sources.md).",
+    "Weather data by Open-Meteo.com, https://open-meteo.com, licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Its forecast API with past_days: the model's hourly analysis and short-range forecast, not observations."
+  ],
+  "readme": "incidents/2026-11-10-storm-charles/data/flights/README.md",
+  "files": [
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/crosswind.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/crosswind.json",
+      "kind": "crosswind",
+      "bytes": 118416,
+      "sha256": "093bb8aedc9b26fbb1307e44bcdd72ae24519ef93eefeb802e2732d5b35f9333",
+      "updated": "2026-11-11T22:10:31Z",
+      "covers": {
+        "from": "2026-11-10T18:00:00Z",
+        "to": "2026-11-11T22:00:00Z",
+        "airports": ["LPPT","LPMA"]
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/snapshots/2026-11-11/22.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/snapshots/2026-11-11/22.json",
+      "kind": "aircraft-snapshots",
+      "bytes": 6726,
+      "sha256": "76790d1d520fdff92fa00db80a38418f89e7b7c7296144aedcaac35197483724",
+      "updated": "2026-11-11T22:10:08Z",
+      "covers": {
+        "from": "2026-11-11T22:06:38Z",
+        "to": "2026-11-11T22:06:38Z",
+        "snapshots": 3,
+        "ok": 1,
+        "airline_positions": 4
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/wind/lisbon-2026-11-10.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/wind/lisbon-2026-11-10.json",
+      "kind": "wind-field",
+      "bytes": 31757,
+      "sha256": "8b7d00a1b72b09b16a089540b7c16bb539bae7beaacf3e75ca2fc81e80df0534",
+      "updated": "2026-11-11T22:10:26Z",
+      "covers": {
+        "area": "lisbon",
+        "from": "2026-11-10T12:00:00Z",
+        "to": "2026-11-10T23:00:00Z",
+        "hours": 12,
+        "points": 121,
+        "forecast_from": null
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/wind/lisbon-2026-11-11.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/wind/lisbon-2026-11-11.json",
+      "kind": "wind-field",
+      "bytes": 56661,
+      "sha256": "6f48d2ce5215a350f906815296b86bf1afafb09205d29230a926f481fef08ea0",
+      "updated": "2026-11-11T22:10:26Z",
+      "covers": {
+        "area": "lisbon",
+        "from": "2026-11-11T00:00:00Z",
+        "to": "2026-11-11T23:00:00Z",
+        "hours": 24,
+        "points": 121,
+        "forecast_from": "2026-11-11T23:00:00Z"
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/wind/lisbon-2026-11-12.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/wind/lisbon-2026-11-12.json",
+      "kind": "wind-field",
+      "bytes": 33780,
+      "sha256": "971ed29dd742946adbfa3f909ac7a4a334639d6e8f2e822e2ed09cf78d5ce5c5",
+      "updated": "2026-11-11T22:10:26Z",
+      "covers": {
+        "area": "lisbon",
+        "from": "2026-11-12T00:00:00Z",
+        "to": "2026-11-12T12:00:00Z",
+        "hours": 13,
+        "points": 121,
+        "forecast_from": "2026-11-12T00:00:00Z"
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/wind/madeira-2026-11-10.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/wind/madeira-2026-11-10.json",
+      "kind": "wind-field",
+      "bytes": 8967,
+      "sha256": "ee66d47d4a2153e8cf4f7d8387dbc4a21d656660ea04b444f40bbd43d918f7fa",
+      "updated": "2026-11-11T22:10:27Z",
+      "covers": {
+        "area": "madeira",
+        "from": "2026-11-10T12:00:00Z",
+        "to": "2026-11-10T23:00:00Z",
+        "hours": 12,
+        "points": 24,
+        "forecast_from": null
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/wind/madeira-2026-11-11.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/wind/madeira-2026-11-11.json",
+      "kind": "wind-field",
+      "bytes": 14793,
+      "sha256": "f0afa93995bb93def1151345c54e18320ad2b8faaff3d0d04370a1939241bdb0",
+      "updated": "2026-11-11T22:10:27Z",
+      "covers": {
+        "area": "madeira",
+        "from": "2026-11-11T00:00:00Z",
+        "to": "2026-11-11T23:00:00Z",
+        "hours": 24,
+        "points": 24,
+        "forecast_from": "2026-11-11T23:00:00Z"
+      }
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/flights/wind/madeira-2026-11-12.json",
+      "api": "api/v1/2026-11-10-storm-charles/flights/wind/madeira-2026-11-12.json",
+      "kind": "wind-field",
+      "bytes": 9373,
+      "sha256": "d70732fecc83dab69772f0c2d46766ee0f391f1abb2795fd1eedcd3300125e7d",
+      "updated": "2026-11-11T22:10:27Z",
+      "covers": {
+        "area": "madeira",
+        "from": "2026-11-12T00:00:00Z",
+        "to": "2026-11-12T12:00:00Z",
+        "hours": 13,
+        "points": 24,
+        "forecast_from": "2026-11-12T00:00:00Z"
+      }
+    }
+  ]
+}

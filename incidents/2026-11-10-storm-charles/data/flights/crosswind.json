@@ -1,0 +1,3423 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-11T22:10:31Z",
+  "label": "fact",
+  "about": "The wind the airports reported (METAR) during Storm Charles, from 10 November 18:00 UTC, resolved onto each runway end as headwind (negative: tailwind) and crosswind, joined per hour to the airline departures OpenSky's receivers saw and to ANA's own cancellation figures. Facts: the METAR (IPMA's observations) and the counts as their sources give them; the components are arithmetic on the METAR (wind speed x cos/sin of the angle between wind and runway, true degrees). Hypothesis, labelled where it appears: which runway end the wind favours (air traffic control chooses the runway, and pilots and airlines apply their own limits; we state none). Departures are a floor: what OpenSky saw, only for hours its rolling window covered.",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "attribution": [
+    "The OpenSky Network, https://opensky-network.org (M. Schäfer, M. Strohmeier, V. Lenders, I. Martinovic, M. Wilhelm, \"Bringing Up OpenSky: A Large-scale ADS-B Sensor Network for Research\", IPSN 2014). Used for research and non-commercial purposes, as its API documentation asks; its full terms page is still for a person to read (transport/sources.md).",
+    "METAR: IPMA, through the US NOAA Aviation Weather Center (aviationweather.gov), public domain.",
+    "Runways: OurAirports (ourairports.com/data), public domain.",
+    "Cancellations: ANA Aeroportos de Portugal, newsroom figures only, with the link."
+  ],
+  "units": {
+    "wind": "knots (1 kt = 1.852 km/h); direction: degrees true the wind blows from",
+    "components": "knots; crosswind_from: the side of the aircraft the wind comes from, landing or taking off on that runway end"
+  },
+  "window": {
+    "from": "2026-11-10T18:00:00Z",
+    "to": "2026-11-11T22:00:00Z"
+  },
+  "airports": [
+    {
+      "icao": "LPPT",
+      "iata": "LIS",
+      "name": "Lisbon (Humberto Delgado)",
+      "runways": [
+        {
+          "runway": "02/20",
+          "length_m": 3810,
+          "ends": [
+            {
+              "end": "02",
+              "heading_true": 22
+            },
+            {
+              "end": "20",
+              "heading_true": 202
+            }
+          ]
+        }
+      ],
+      "departures": {
+        "label": "fact",
+        "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
+        "covered_from": "2026-11-11T06:25:03Z",
+        "total_in_window": 124,
+        "source": "https://opensky-network.org/api/flights/departure?airport=LPPT",
+        "read": "2026-11-11T21:42:03Z",
+        "sha256": "cca064bf586a5649a8bb48844661966a15aee48b1b725d424ca7db286ecfeada",
+        "note": "departures_seen on each hour: OpenSky's count for that hour on the day transport's file covers; null where not covered (10 November, and the hours before the first reading)"
+      },
+      "ana": {
+        "label": "fact",
+        "scheduled": 565,
+        "cancelled_in_advance": 288,
+        "remained_scheduled": 277,
+        "operated": 45,
+        "cancelled_during_day": 22,
+        "situation_at": "2026-11-11T11:00:00Z",
+        "published": "2026-11-11T11:55:02Z",
+        "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
+        "read": "2026-11-11T21:42:23Z",
+        "note": "ANA's figures for the day up to the time it states, not per hour."
+      },
+      "hours": [
+        {
+          "hour": "2026-11-10T18:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T18:00:00Z",
+              "raw": "METAR LPPT 101800Z 23009KT 9999 SCT020 18/16 Q1008",
+              "wind_dir": 230,
+              "wind_kt": 9,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 7.9,
+                  "crosswind_kt": 4.2,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -7.9,
+                  "crosswind_kt": 4.2,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T18:30:00Z",
+              "raw": "METAR LPPT 101830Z 21008KT 9999 FEW008 SCT016 18/17 Q1008",
+              "wind_dir": 210,
+              "wind_kt": 8,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 7.9,
+                  "crosswind_kt": 1.1,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -7.9,
+                  "crosswind_kt": 1.1,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 9,
+          "max_crosswind_kt": 4.2
+        },
+        {
+          "hour": "2026-11-10T19:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T19:00:00Z",
+              "raw": "METAR LPPT 101900Z 21010KT 9999 FEW008 BKN016 19/17 Q1008",
+              "wind_dir": 210,
+              "wind_kt": 10,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 9.9,
+                  "crosswind_kt": 1.4,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -9.9,
+                  "crosswind_kt": 1.4,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T19:30:00Z",
+              "raw": "METAR LPPT 101930Z 22011KT 9999 FEW008 BKN020 19/17 Q1008",
+              "wind_dir": 220,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 10.5,
+                  "crosswind_kt": 3.4,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -10.5,
+                  "crosswind_kt": 3.4,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 11,
+          "max_crosswind_kt": 3.4
+        },
+        {
+          "hour": "2026-11-10T20:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T20:00:00Z",
+              "raw": "METAR LPPT 102000Z 21013KT 9999 SCT008 BKN014 19/18 Q1008",
+              "wind_dir": 210,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 12.9,
+                  "crosswind_kt": 1.8,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -12.9,
+                  "crosswind_kt": 1.8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T20:30:00Z",
+              "raw": "METAR LPPT 102030Z 21013KT 9999 SCT007 BKN014 19/18 Q1008 NOSIG",
+              "wind_dir": 210,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 12.9,
+                  "crosswind_kt": 1.8,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -12.9,
+                  "crosswind_kt": 1.8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 13,
+          "max_crosswind_kt": 1.8
+        },
+        {
+          "hour": "2026-11-10T21:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T21:00:00Z",
+              "raw": "METAR LPPT 102100Z 20013KT 9999 SCT007 BKN010 19/18 Q1008 NOSIG",
+              "wind_dir": 200,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 13,
+                  "crosswind_kt": 0.5,
+                  "crosswind_from": null
+                },
+                "02": {
+                  "headwind_kt": -13,
+                  "crosswind_kt": 0.5,
+                  "crosswind_from": null
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T21:30:00Z",
+              "raw": "METAR LPPT 102130Z 20013KT 9999 SCT006 BKN009 19/18 Q1008 NOSIG",
+              "wind_dir": 200,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 13,
+                  "crosswind_kt": 0.5,
+                  "crosswind_from": null
+                },
+                "02": {
+                  "headwind_kt": -13,
+                  "crosswind_kt": 0.5,
+                  "crosswind_from": null
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 13,
+          "max_crosswind_kt": 0.5
+        },
+        {
+          "hour": "2026-11-10T22:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T22:00:00Z",
+              "raw": "METAR LPPT 102200Z 20013KT 9999 SCT006 BKN009 19/18 Q1008 NOSIG",
+              "wind_dir": 200,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 13,
+                  "crosswind_kt": 0.5,
+                  "crosswind_from": null
+                },
+                "02": {
+                  "headwind_kt": -13,
+                  "crosswind_kt": 0.5,
+                  "crosswind_from": null
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T22:30:00Z",
+              "raw": "METAR LPPT 102230Z COR 20013KT 9999 SCT006 FEW018TCU 19/18 Q1008 NOSIG",
+              "wind_dir": 200,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 13,
+                  "crosswind_kt": 0.5,
+                  "crosswind_from": null
+                },
+                "02": {
+                  "headwind_kt": -13,
+                  "crosswind_kt": 0.5,
+                  "crosswind_from": null
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 13,
+          "max_crosswind_kt": 0.5
+        },
+        {
+          "hour": "2026-11-10T23:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T23:00:00Z",
+              "raw": "METAR LPPT 102300Z 22014KT 9999 -SHRA SCT006 BKN011 FEW018CB 19/17 Q1008 NOSIG",
+              "wind_dir": 220,
+              "wind_kt": 14,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 13.3,
+                  "crosswind_kt": 4.3,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -13.3,
+                  "crosswind_kt": 4.3,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T23:30:00Z",
+              "raw": "METAR LPPT 102330Z 22011KT 9999 -SHRA FEW005 SCT006 BKN016 FEW018CB 19/18 Q1008 NOSIG",
+              "wind_dir": 220,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 10.5,
+                  "crosswind_kt": 3.4,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -10.5,
+                  "crosswind_kt": 3.4,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 14,
+          "max_crosswind_kt": 4.3
+        },
+        {
+          "hour": "2026-11-11T00:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T00:00:00Z",
+              "raw": "METAR LPPT 110000Z COR 22014KT 6000 +RA FEW005 SCT007 BKN012 SCT018CB 18/17 Q1008 RERA NOSIG",
+              "wind_dir": 220,
+              "wind_kt": 14,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 13.3,
+                  "crosswind_kt": 4.3,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -13.3,
+                  "crosswind_kt": 4.3,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T00:30:00Z",
+              "raw": "METAR LPPT 110030Z 22005KT 190V250 9999 -RA FEW005 FEW018CB SCT022 BKN026 16/16 Q1007 RERA NOSIG",
+              "wind_dir": 220,
+              "wind_kt": 5,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 4.8,
+                  "crosswind_kt": 1.5,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -4.8,
+                  "crosswind_kt": 1.5,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 14,
+          "max_crosswind_kt": 4.3
+        },
+        {
+          "hour": "2026-11-11T01:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T01:00:00Z",
+              "raw": "METAR LPPT 110100Z 25007KT 220V280 9999 -RA FEW014 FEW018CB BKN024 17/16 Q1007 RERA NOSIG",
+              "wind_dir": 250,
+              "wind_kt": 7,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 4.7,
+                  "crosswind_kt": 5.2,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -4.7,
+                  "crosswind_kt": 5.2,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T01:30:00Z",
+              "raw": "METAR LPPT 110130Z 19005KT 160V280 9999 VCSH FEW015 FEW018TCU 17/16 Q1006 NOSIG",
+              "wind_dir": 190,
+              "wind_kt": 5,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 4.9,
+                  "crosswind_kt": 1,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -4.9,
+                  "crosswind_kt": 1,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 7,
+          "max_crosswind_kt": 5.2
+        },
+        {
+          "hour": "2026-11-11T02:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T02:00:00Z",
+              "raw": "METAR LPPT 110200Z 20005KT 160V220 9999 FEW018TCU 17/16 Q1006 NOSIG",
+              "wind_dir": 200,
+              "wind_kt": 5,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 5,
+                  "crosswind_kt": 0.2,
+                  "crosswind_from": null
+                },
+                "02": {
+                  "headwind_kt": -5,
+                  "crosswind_kt": 0.2,
+                  "crosswind_from": null
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T02:30:00Z",
+              "raw": "METAR LPPT 110230Z 19008KT 9999 SCT004 FEW018TCU 17/17 Q1006 NOSIG",
+              "wind_dir": 190,
+              "wind_kt": 8,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 7.8,
+                  "crosswind_kt": 1.7,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -7.8,
+                  "crosswind_kt": 1.7,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 8,
+          "max_crosswind_kt": 1.7
+        },
+        {
+          "hour": "2026-11-11T03:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T03:00:00Z",
+              "raw": "METAR LPPT 110300Z 18011KT 3500 RA BR SCT003 BKN012 FEW018CB 18/17 Q1005 NOSIG",
+              "wind_dir": 180,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 10.2,
+                  "crosswind_kt": 4.1,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -10.2,
+                  "crosswind_kt": 4.1,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T03:30:00Z",
+              "raw": "METAR LPPT 110330Z 22007KT 9999 RA FEW002 SCT005 BKN012 FEW018CB 17/17 Q1005 RERA NOSIG",
+              "wind_dir": 220,
+              "wind_kt": 7,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 6.7,
+                  "crosswind_kt": 2.2,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -6.7,
+                  "crosswind_kt": 2.2,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 11,
+          "max_crosswind_kt": 4.1
+        },
+        {
+          "hour": "2026-11-11T04:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T04:00:00Z",
+              "raw": "METAR LPPT 110400Z 18005KT 140V200 9999 FEW002 SCT007 BKN010 FEW018TCU 17/17 Q1005 RERA NOSIG",
+              "wind_dir": 180,
+              "wind_kt": 5,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 4.6,
+                  "crosswind_kt": 1.9,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -4.6,
+                  "crosswind_kt": 1.9,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T04:30:00Z",
+              "raw": "METAR LPPT 110430Z 16004KT 060V200 9999 VCSH FEW002 BKN005 FEW018CB 17/17 Q1004 NOSIG",
+              "wind_dir": 160,
+              "wind_kt": 4,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 3,
+                  "crosswind_kt": 2.7,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -3,
+                  "crosswind_kt": 2.7,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 5,
+          "max_crosswind_kt": 2.7
+        },
+        {
+          "hour": "2026-11-11T05:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T05:00:00Z",
+              "raw": "METAR LPPT 110500Z 20004KT 9999 -RA FEW002 SCT004 FEW018CB BKN044 17/17 Q1004 NOSIG",
+              "wind_dir": 200,
+              "wind_kt": 4,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 4,
+                  "crosswind_kt": 0.1,
+                  "crosswind_from": null
+                },
+                "02": {
+                  "headwind_kt": -4,
+                  "crosswind_kt": 0.1,
+                  "crosswind_from": null
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T05:30:00Z",
+              "raw": "METAR LPPT 110530Z 21007KT 180V240 9999 -RA FEW002 SCT006 FEW018CB BKN044 17/17 Q1003 RERA NOSIG",
+              "wind_dir": 210,
+              "wind_kt": 7,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 6.9,
+                  "crosswind_kt": 1,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -6.9,
+                  "crosswind_kt": 1,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 7,
+          "max_crosswind_kt": 1
+        },
+        {
+          "hour": "2026-11-11T06:00:00Z",
+          "departures_seen": 1,
+          "metars": [
+            {
+              "time": "2026-11-11T06:00:00Z",
+              "raw": "METAR LPPT 110600Z 20004KT 4500 RA BR FEW002 SCT007 FEW018CB BKN020 17/17 Q1003 RERA NOSIG",
+              "wind_dir": 200,
+              "wind_kt": 4,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 4,
+                  "crosswind_kt": 0.1,
+                  "crosswind_from": null
+                },
+                "02": {
+                  "headwind_kt": -4,
+                  "crosswind_kt": 0.1,
+                  "crosswind_from": null
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T06:30:00Z",
+              "raw": "METAR LPPT 110630Z 19004KT 150V230 8000 RA BR FEW002 SCT010 BKN012 FEW018CB 17/17 Q1002 RERA NOSIG",
+              "wind_dir": 190,
+              "wind_kt": 4,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 3.9,
+                  "crosswind_kt": 0.8,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -3.9,
+                  "crosswind_kt": 0.8,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 4,
+          "max_crosswind_kt": 0.8
+        },
+        {
+          "hour": "2026-11-11T07:00:00Z",
+          "departures_seen": 1,
+          "metars": [
+            {
+              "time": "2026-11-11T07:00:00Z",
+              "raw": "METAR LPPT 110700Z 18005KT 140V230 8000 -RA FEW003 SCT007 FEW018CB BKN022 17/17 Q1002 RERA NOSIG",
+              "wind_dir": 180,
+              "wind_kt": 5,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 4.6,
+                  "crosswind_kt": 1.9,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -4.6,
+                  "crosswind_kt": 1.9,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T07:30:00Z",
+              "raw": "METAR LPPT 110730Z 13005KT 080V180 6000 RA FEW001 SCT008 SCT016CB BKN018 17/17 Q1002 RERA NOSIG",
+              "wind_dir": 130,
+              "wind_kt": 5,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 1.5,
+                  "crosswind_kt": 4.8,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -1.5,
+                  "crosswind_kt": 4.8,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 5,
+          "max_crosswind_kt": 4.8
+        },
+        {
+          "hour": "2026-11-11T08:00:00Z",
+          "departures_seen": 6,
+          "metars": [
+            {
+              "time": "2026-11-11T08:00:00Z",
+              "raw": "METAR LPPT 110800Z 16011KT 6000 RA FEW002 SCT006 FEW016TCU BKN018 17/16 Q1002 NOSIG",
+              "wind_dir": 160,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 8.2,
+                  "crosswind_kt": 7.4,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -8.2,
+                  "crosswind_kt": 7.4,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T08:30:00Z",
+              "raw": "METAR LPPT 110830Z 17011KT 140V200 4000 RA BR FEW002 BKN006 FEW016TCU 17/16 Q1001 NOSIG",
+              "wind_dir": 170,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 9.3,
+                  "crosswind_kt": 5.8,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -9.3,
+                  "crosswind_kt": 5.8,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 11,
+          "max_crosswind_kt": 7.4
+        },
+        {
+          "hour": "2026-11-11T09:00:00Z",
+          "departures_seen": 18,
+          "metars": [
+            {
+              "time": "2026-11-11T09:00:00Z",
+              "raw": "METAR LPPT 110900Z 16011KT 3000 RA BR FEW002 BKN006 FEW016TCU 17/16 Q1001 NOSIG",
+              "wind_dir": 160,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 8.2,
+                  "crosswind_kt": 7.4,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -8.2,
+                  "crosswind_kt": 7.4,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T09:30:00Z",
+              "raw": "METAR LPPT 110930Z 16012KT 6000 -RA FEW002 BKN010 FEW016TCU 17/16 Q1000 RERA NOSIG",
+              "wind_dir": 160,
+              "wind_kt": 12,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 8.9,
+                  "crosswind_kt": 8,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -8.9,
+                  "crosswind_kt": 8,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 12,
+          "max_crosswind_kt": 8
+        },
+        {
+          "hour": "2026-11-11T10:00:00Z",
+          "departures_seen": 13,
+          "metars": [
+            {
+              "time": "2026-11-11T10:00:00Z",
+              "raw": "METAR LPPT 111000Z 15011KT 110V180 4000 RA BR FEW003 BKN007 FEW016TCU 17/16 Q0999 NOSIG",
+              "wind_dir": 150,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 6.8,
+                  "crosswind_kt": 8.7,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -6.8,
+                  "crosswind_kt": 8.7,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T10:30:00Z",
+              "raw": "METAR LPPT 111030Z 14011KT 120V180 3000 +RA BR FEW002 BKN006 FEW016CB 16/16 Q0999 NOSIG",
+              "wind_dir": 140,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 5.2,
+                  "crosswind_kt": 9.7,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": -5.2,
+                  "crosswind_kt": 9.7,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 11,
+          "max_crosswind_kt": 9.7
+        },
+        {
+          "hour": "2026-11-11T11:00:00Z",
+          "departures_seen": 8,
+          "metars": [
+            {
+              "time": "2026-11-11T11:00:00Z",
+              "raw": "METAR LPPT 111100Z 11009KT 090V150 2000 +RA BR FEW001 BKN004 FEW015TCU 16/16 Q0998 NOSIG",
+              "wind_dir": 110,
+              "wind_kt": 9,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": -0.3,
+                  "crosswind_kt": 9,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": 0.3,
+                  "crosswind_kt": 9,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "02",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T11:30:00Z",
+              "raw": "METAR LPPT 111130Z 07013KT 2000 +RA BR FEW001 BKN004 FEW015TCU 16/15 Q0995 NOSIG",
+              "wind_dir": 70,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": -8.7,
+                  "crosswind_kt": 9.7,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": 8.7,
+                  "crosswind_kt": 9.7,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "02",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 13,
+          "max_crosswind_kt": 9.7
+        },
+        {
+          "hour": "2026-11-11T12:00:00Z",
+          "departures_seen": 1,
+          "metars": [
+            {
+              "time": "2026-11-11T12:00:00Z",
+              "raw": "METAR LPPT 111200Z 08015KT 2500 +RA BR FEW001 BKN004 16/16 Q0994 BECMG 14015KT",
+              "wind_dir": 80,
+              "wind_kt": 15,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": -7.9,
+                  "crosswind_kt": 12.7,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": 7.9,
+                  "crosswind_kt": 12.7,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "02",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T12:30:00Z",
+              "raw": "METAR LPPT 111230Z 07015KT 2000 +RA BR FEW001 BKN003 FEW015TCU 16/16 Q0992 BECMG 14015KT",
+              "wind_dir": 70,
+              "wind_kt": 15,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": -10,
+                  "crosswind_kt": 11.1,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": 10,
+                  "crosswind_kt": 11.1,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "02",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 15,
+          "max_crosswind_kt": 12.7
+        },
+        {
+          "hour": "2026-11-11T13:00:00Z",
+          "departures_seen": 0,
+          "metars": [
+            {
+              "time": "2026-11-11T13:00:00Z",
+              "raw": "METAR LPPT 111300Z 10011KT 1500 +RA BR FEW001 BKN003 FEW015TCU 16/16 Q0991 BECMG 14015KT",
+              "wind_dir": 100,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": -2.3,
+                  "crosswind_kt": 10.8,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": 2.3,
+                  "crosswind_kt": 10.8,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "02",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T13:30:00Z",
+              "raw": "METAR LPPT 111330Z 10009KT 060V200 6000 FEW002 BKN008 17/17 Q0990 RERA BECMG 14015KT",
+              "wind_dir": 100,
+              "wind_kt": 9,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": -1.9,
+                  "crosswind_kt": 8.8,
+                  "crosswind_from": "left"
+                },
+                "02": {
+                  "headwind_kt": 1.9,
+                  "crosswind_kt": 8.8,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "02",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 11,
+          "max_crosswind_kt": 10.8
+        },
+        {
+          "hour": "2026-11-11T14:00:00Z",
+          "departures_seen": 4,
+          "metars": [
+            {
+              "time": "2026-11-11T14:00:00Z",
+              "raw": "METAR LPPT 111400Z 19029G40KT 3000 R20/0900 +RA BR FEW002 BKN007 FEW015TCU 19/19 Q0989 WS R20 NOSIG",
+              "wind_dir": 190,
+              "wind_kt": 29,
+              "gust_kt": 40,
+              "runways": {
+                "20": {
+                  "headwind_kt": 28.4,
+                  "crosswind_kt": 6,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 39.1,
+                  "gust_crosswind_kt": 8.3
+                },
+                "02": {
+                  "headwind_kt": -28.4,
+                  "crosswind_kt": 6,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -39.1,
+                  "gust_crosswind_kt": 8.3
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T14:30:00Z",
+              "raw": "METAR LPPT 111430Z 21025KT 8000 RA FEW004 BKN009 19/18 Q0989 RERA WS R20 NOSIG",
+              "wind_dir": 210,
+              "wind_kt": 25,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 24.8,
+                  "crosswind_kt": 3.5,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -24.8,
+                  "crosswind_kt": 3.5,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 40,
+          "max_crosswind_kt": 8.3
+        },
+        {
+          "hour": "2026-11-11T15:00:00Z",
+          "departures_seen": 5,
+          "metars": [
+            {
+              "time": "2026-11-11T15:00:00Z",
+              "raw": "METAR LPPT 111500Z 21022G33KT 9999 BKN008 19/18 Q0989 WS R20 NOSIG",
+              "wind_dir": 210,
+              "wind_kt": 22,
+              "gust_kt": 33,
+              "runways": {
+                "20": {
+                  "headwind_kt": 21.8,
+                  "crosswind_kt": 3.1,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": 32.7,
+                  "gust_crosswind_kt": 4.6
+                },
+                "02": {
+                  "headwind_kt": -21.8,
+                  "crosswind_kt": 3.1,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": -32.7,
+                  "gust_crosswind_kt": 4.6
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T15:30:00Z",
+              "raw": "METAR LPPT 111530Z 21020G33KT 2500 -RADZ BR FEW005 BKN008 19/18 Q0989 WS R20 NOSIG",
+              "wind_dir": 210,
+              "wind_kt": 20,
+              "gust_kt": 33,
+              "runways": {
+                "20": {
+                  "headwind_kt": 19.8,
+                  "crosswind_kt": 2.8,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": 32.7,
+                  "gust_crosswind_kt": 4.6
+                },
+                "02": {
+                  "headwind_kt": -19.8,
+                  "crosswind_kt": 2.8,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": -32.7,
+                  "gust_crosswind_kt": 4.6
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 33,
+          "max_crosswind_kt": 4.6
+        },
+        {
+          "hour": "2026-11-11T16:00:00Z",
+          "departures_seen": 5,
+          "metars": [
+            {
+              "time": "2026-11-11T16:00:00Z",
+              "raw": "METAR LPPT 111600Z 21021KT 2500 -RADZ BR BKN004 19/19 Q0989 WS R20 NOSIG",
+              "wind_dir": 210,
+              "wind_kt": 21,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 20.8,
+                  "crosswind_kt": 2.9,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -20.8,
+                  "crosswind_kt": 2.9,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T16:30:00Z",
+              "raw": "METAR LPPT 111630Z 26012KT 9999 FEW004 BKN008 18/17 Q0990 NOSIG",
+              "wind_dir": 260,
+              "wind_kt": 12,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 6.4,
+                  "crosswind_kt": 10.2,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -6.4,
+                  "crosswind_kt": 10.2,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 21,
+          "max_crosswind_kt": 10.2
+        },
+        {
+          "hour": "2026-11-11T17:00:00Z",
+          "departures_seen": 8,
+          "metars": [
+            {
+              "time": "2026-11-11T17:00:00Z",
+              "raw": "METAR LPPT 111700Z 29011G23KT 270V330 9999 FEW004 SCT008 17/16 Q0991 NOSIG",
+              "wind_dir": 290,
+              "wind_kt": 11,
+              "gust_kt": 23,
+              "runways": {
+                "20": {
+                  "headwind_kt": 0.4,
+                  "crosswind_kt": 11,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": 0.8,
+                  "gust_crosswind_kt": 23
+                },
+                "02": {
+                  "headwind_kt": -0.4,
+                  "crosswind_kt": 11,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": -0.8,
+                  "gust_crosswind_kt": 23
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T17:30:00Z",
+              "raw": "METAR LPPT 111730Z 30012KT 270V330 9999 FEW006 SCT008 17/15 Q0991 NOSIG",
+              "wind_dir": 300,
+              "wind_kt": 12,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": -1.7,
+                  "crosswind_kt": 11.9,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": 1.7,
+                  "crosswind_kt": 11.9,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "02",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 23,
+          "max_crosswind_kt": 23
+        },
+        {
+          "hour": "2026-11-11T18:00:00Z",
+          "departures_seen": 21,
+          "metars": [
+            {
+              "time": "2026-11-11T18:00:00Z",
+              "raw": "METAR LPPT 111800Z 30013G27KT 9999 BKN010 17/15 Q0992 NOSIG",
+              "wind_dir": 300,
+              "wind_kt": 13,
+              "gust_kt": 27,
+              "runways": {
+                "20": {
+                  "headwind_kt": -1.8,
+                  "crosswind_kt": 12.9,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -3.8,
+                  "gust_crosswind_kt": 26.7
+                },
+                "02": {
+                  "headwind_kt": 1.8,
+                  "crosswind_kt": 12.9,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 3.8,
+                  "gust_crosswind_kt": 26.7
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "02",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T18:30:00Z",
+              "raw": "METAR LPPT 111830Z 29013KT 9999 SCT010 17/15 Q0993 NOSIG",
+              "wind_dir": 290,
+              "wind_kt": 13,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 0.5,
+                  "crosswind_kt": 13,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -0.5,
+                  "crosswind_kt": 13,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 27,
+          "max_crosswind_kt": 26.7
+        },
+        {
+          "hour": "2026-11-11T19:00:00Z",
+          "departures_seen": 10,
+          "metars": [
+            {
+              "time": "2026-11-11T19:00:00Z",
+              "raw": "METAR LPPT 111900Z 29011KT 9999 SCT010 BKN018 17/15 Q0994 NOSIG",
+              "wind_dir": 290,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 0.4,
+                  "crosswind_kt": 11,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -0.4,
+                  "crosswind_kt": 11,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T19:30:00Z",
+              "raw": "METAR LPPT 111930Z 28011KT 9999 SCT008 BKN012 17/16 Q0995 NOSIG",
+              "wind_dir": 280,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 2.3,
+                  "crosswind_kt": 10.8,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -2.3,
+                  "crosswind_kt": 10.8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 11,
+          "max_crosswind_kt": 11
+        },
+        {
+          "hour": "2026-11-11T20:00:00Z",
+          "departures_seen": 17,
+          "metars": [
+            {
+              "time": "2026-11-11T20:00:00Z",
+              "raw": "METAR LPPT 112000Z 28009KT 9999 SCT012 17/16 Q0996 NOSIG",
+              "wind_dir": 280,
+              "wind_kt": 9,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 1.9,
+                  "crosswind_kt": 8.8,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -1.9,
+                  "crosswind_kt": 8.8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T20:30:00Z",
+              "raw": "METAR LPPT 112030Z 28010KT 9999 SCT012 17/15 Q0996 NOSIG",
+              "wind_dir": 280,
+              "wind_kt": 10,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 2.1,
+                  "crosswind_kt": 9.8,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -2.1,
+                  "crosswind_kt": 9.8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 10,
+          "max_crosswind_kt": 9.8
+        },
+        {
+          "hour": "2026-11-11T21:00:00Z",
+          "departures_seen": 6,
+          "metars": [
+            {
+              "time": "2026-11-11T21:00:00Z",
+              "raw": "METAR LPPT 112100Z 27011KT 240V300 9999 SCT014 17/15 Q0997 NOSIG",
+              "wind_dir": 270,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 4.1,
+                  "crosswind_kt": 10.2,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -4.1,
+                  "crosswind_kt": 10.2,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T21:30:00Z",
+              "raw": "METAR LPPT 112130Z 26011KT 230V310 9999 FEW014 17/15 Q0998 NOSIG",
+              "wind_dir": 260,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 5.8,
+                  "crosswind_kt": 9.3,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -5.8,
+                  "crosswind_kt": 9.3,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 11,
+          "max_crosswind_kt": 10.2
+        },
+        {
+          "hour": "2026-11-11T22:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T22:00:00Z",
+              "raw": "METAR LPPT 112200Z 27009KT 9999 FEW014 17/15 Q0998 NOSIG",
+              "wind_dir": 270,
+              "wind_kt": 9,
+              "gust_kt": null,
+              "runways": {
+                "20": {
+                  "headwind_kt": 3.4,
+                  "crosswind_kt": 8.3,
+                  "crosswind_from": "right"
+                },
+                "02": {
+                  "headwind_kt": -3.4,
+                  "crosswind_kt": 8.3,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "20",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 9,
+          "max_crosswind_kt": 8.3
+        }
+      ]
+    },
+    {
+      "icao": "LPMA",
+      "iata": "FNC",
+      "name": "Funchal (Madeira, Cristiano Ronaldo)",
+      "runways": [
+        {
+          "runway": "05/23",
+          "length_m": 2777,
+          "ends": [
+            {
+              "end": "05",
+              "heading_true": 44.7
+            },
+            {
+              "end": "23",
+              "heading_true": 224.7
+            }
+          ]
+        }
+      ],
+      "departures": {
+        "label": "fact",
+        "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
+        "covered_from": "2026-11-11T13:42:39Z",
+        "total_in_window": 18,
+        "source": "https://opensky-network.org/api/flights/departure?airport=LPMA",
+        "read": "2026-11-11T21:42:16Z",
+        "sha256": "d92d355fc188a2e6b9c2902b437032f5dc9565a030527f52ea9ce15285938b9c",
+        "note": "departures_seen on each hour: OpenSky's count for that hour on the day transport's file covers; null where not covered (10 November, and the hours before the first reading)"
+      },
+      "ana": {
+        "label": "fact",
+        "scheduled": 80,
+        "cancelled_in_advance": 20,
+        "remained_scheduled": 60,
+        "operated": 0,
+        "cancelled_during_day": 2,
+        "scope": "Madeira's airports together (Funchal and Porto Santo), as ANA gives them",
+        "situation_at": "2026-11-11T11:00:00Z",
+        "published": "2026-11-11T11:55:02Z",
+        "link": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
+        "read": "2026-11-11T21:42:23Z",
+        "note": "ANA's figures for the day up to the time it states, not per hour."
+      },
+      "hours": [
+        {
+          "hour": "2026-11-10T18:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T18:00:00Z",
+              "raw": "METAR LPMA 101800Z 21015KT 9999 -SHRA SCT013 BKN060 21/19 Q1009",
+              "wind_dir": 210,
+              "wind_kt": 15,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 14.5,
+                  "crosswind_kt": 3.8,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -14.5,
+                  "crosswind_kt": 3.8,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T18:30:00Z",
+              "raw": "METAR LPMA 101830Z 21016KT 9999 SCT013 BKN060 21/18 Q1009",
+              "wind_dir": 210,
+              "wind_kt": 16,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 15.5,
+                  "crosswind_kt": 4.1,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -15.5,
+                  "crosswind_kt": 4.1,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 16,
+          "max_crosswind_kt": 4.1
+        },
+        {
+          "hour": "2026-11-10T19:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T19:00:00Z",
+              "raw": "METAR LPMA 101900Z 21016KT 170V230 9999 -SHRA SCT013 BKN060 21/19 Q1008",
+              "wind_dir": 210,
+              "wind_kt": 16,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 15.5,
+                  "crosswind_kt": 4.1,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -15.5,
+                  "crosswind_kt": 4.1,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T19:30:00Z",
+              "raw": "METAR LPMA 101930Z 21021KT 7000 +RA SCT013 FEW016CB BKN060 20/20 Q1008",
+              "wind_dir": 210,
+              "wind_kt": 21,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 20.3,
+                  "crosswind_kt": 5.3,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -20.3,
+                  "crosswind_kt": 5.3,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 21,
+          "max_crosswind_kt": 5.3
+        },
+        {
+          "hour": "2026-11-10T20:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T20:00:00Z",
+              "raw": "METAR LPMA 102000Z 22023KT 7000 RA SCT013 FEW016CB BKN060 20/20 Q1007 RERA",
+              "wind_dir": 220,
+              "wind_kt": 23,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 22.9,
+                  "crosswind_kt": 1.9,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -22.9,
+                  "crosswind_kt": 1.9,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T20:30:00Z",
+              "raw": "METAR LPMA 102030Z 20025KT 7000 SHRA SCT013 FEW016CB BKN060 21/20 Q1007",
+              "wind_dir": 200,
+              "wind_kt": 25,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 22.7,
+                  "crosswind_kt": 10.4,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -22.7,
+                  "crosswind_kt": 10.4,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 25,
+          "max_crosswind_kt": 10.4
+        },
+        {
+          "hour": "2026-11-10T21:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T21:00:00Z",
+              "raw": "METAR LPMA 102100Z 20026KT 7000 RA SCT013 FEW016CB BKN060 21/20 Q1005",
+              "wind_dir": 200,
+              "wind_kt": 26,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 23.6,
+                  "crosswind_kt": 10.9,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -23.6,
+                  "crosswind_kt": 10.9,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T21:30:00Z",
+              "raw": "METAR LPMA 102130Z 20030KT 7000 SHRA SCT013 FEW016CB BKN060 21/21 Q1005",
+              "wind_dir": 200,
+              "wind_kt": 30,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 27.3,
+                  "crosswind_kt": 12.5,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -27.3,
+                  "crosswind_kt": 12.5,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 30,
+          "max_crosswind_kt": 12.5
+        },
+        {
+          "hour": "2026-11-10T22:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T22:00:00Z",
+              "raw": "METAR LPMA 102200Z 20031G42KT 7000 -SHRA SCT013 FEW016CB BKN060 21/21 Q1005 RESHRA",
+              "wind_dir": 200,
+              "wind_kt": 31,
+              "gust_kt": 42,
+              "runways": {
+                "23": {
+                  "headwind_kt": 28.2,
+                  "crosswind_kt": 13,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 38.2,
+                  "gust_crosswind_kt": 17.6
+                },
+                "05": {
+                  "headwind_kt": -28.2,
+                  "crosswind_kt": 13,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -38.2,
+                  "gust_crosswind_kt": 17.6
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T22:30:00Z",
+              "raw": "METAR LPMA 102230Z 21027G37KT 3000 SHRA BKN012 FEW016CB 21/21 Q1004",
+              "wind_dir": 210,
+              "wind_kt": 27,
+              "gust_kt": 37,
+              "runways": {
+                "23": {
+                  "headwind_kt": 26.1,
+                  "crosswind_kt": 6.9,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 35.8,
+                  "gust_crosswind_kt": 9.4
+                },
+                "05": {
+                  "headwind_kt": -26.1,
+                  "crosswind_kt": 6.9,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -35.8,
+                  "gust_crosswind_kt": 9.4
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 42,
+          "max_crosswind_kt": 17.6
+        },
+        {
+          "hour": "2026-11-10T23:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-10T23:00:00Z",
+              "raw": "METAR LPMA 102300Z 21032KT 6000 -RA BKN012 FEW016CB 22/21 Q1004 RESHRA",
+              "wind_dir": 210,
+              "wind_kt": 32,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 31,
+                  "crosswind_kt": 8.1,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -31,
+                  "crosswind_kt": 8.1,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-10T23:30:00Z",
+              "raw": "METAR LPMA 102330Z 20031KT 7000 -RA BKN012 FEW018CB 22/21 Q1003",
+              "wind_dir": 200,
+              "wind_kt": 31,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 28.2,
+                  "crosswind_kt": 13,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -28.2,
+                  "crosswind_kt": 13,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 32,
+          "max_crosswind_kt": 13
+        },
+        {
+          "hour": "2026-11-11T00:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T00:00:00Z",
+              "raw": "METAR LPMA 110000Z 20028KT 4000 RA BKN012 FEW018CB 22/21 Q1003",
+              "wind_dir": 200,
+              "wind_kt": 28,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 25.4,
+                  "crosswind_kt": 11.7,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -25.4,
+                  "crosswind_kt": 11.7,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T00:30:00Z",
+              "raw": "METAR LPMA 110030Z 20031G41KT 4000 RA BKN012 FEW018CB 22/21 Q1002",
+              "wind_dir": 200,
+              "wind_kt": 31,
+              "gust_kt": 41,
+              "runways": {
+                "23": {
+                  "headwind_kt": 28.2,
+                  "crosswind_kt": 13,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 37.2,
+                  "gust_crosswind_kt": 17.1
+                },
+                "05": {
+                  "headwind_kt": -28.2,
+                  "crosswind_kt": 13,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -37.2,
+                  "gust_crosswind_kt": 17.1
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 41,
+          "max_crosswind_kt": 17.1
+        },
+        {
+          "hour": "2026-11-11T01:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T01:00:00Z",
+              "raw": "METAR LPMA 110100Z 20032G42KT 6000 RA BKN012 FEW018CB 22/21 Q1001",
+              "wind_dir": 200,
+              "wind_kt": 32,
+              "gust_kt": 42,
+              "runways": {
+                "23": {
+                  "headwind_kt": 29.1,
+                  "crosswind_kt": 13.4,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 38.2,
+                  "gust_crosswind_kt": 17.6
+                },
+                "05": {
+                  "headwind_kt": -29.1,
+                  "crosswind_kt": 13.4,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -38.2,
+                  "gust_crosswind_kt": 17.6
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T01:30:00Z",
+              "raw": "METAR LPMA 110130Z 20033KT 7000 -RA BKN012 FEW018CB 22/21 Q1001 RERA",
+              "wind_dir": 200,
+              "wind_kt": 33,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 30,
+                  "crosswind_kt": 13.8,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -30,
+                  "crosswind_kt": 13.8,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 42,
+          "max_crosswind_kt": 17.6
+        },
+        {
+          "hour": "2026-11-11T02:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T02:00:00Z",
+              "raw": "METAR LPMA 110200Z 20027KT 8000 -RA BKN012 FEW018CB 22/21 Q1000",
+              "wind_dir": 200,
+              "wind_kt": 27,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 24.5,
+                  "crosswind_kt": 11.3,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -24.5,
+                  "crosswind_kt": 11.3,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T02:30:00Z",
+              "raw": "METAR LPMA 110230Z 22036G53KT 3000 RA BKN012 FEW018CB 22/21 Q1000",
+              "wind_dir": 220,
+              "wind_kt": 36,
+              "gust_kt": 53,
+              "runways": {
+                "23": {
+                  "headwind_kt": 35.9,
+                  "crosswind_kt": 2.9,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 52.8,
+                  "gust_crosswind_kt": 4.3
+                },
+                "05": {
+                  "headwind_kt": -35.9,
+                  "crosswind_kt": 2.9,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -52.8,
+                  "gust_crosswind_kt": 4.3
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 53,
+          "max_crosswind_kt": 11.3
+        },
+        {
+          "hour": "2026-11-11T03:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T03:00:00Z",
+              "raw": "METAR LPMA 110300Z 21032KT 6000 -RA BKN012 FEW018CB 22/21 Q0999 RERA",
+              "wind_dir": 210,
+              "wind_kt": 32,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 31,
+                  "crosswind_kt": 8.1,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -31,
+                  "crosswind_kt": 8.1,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T03:30:00Z",
+              "raw": "METAR LPMA 110330Z 22037G47KT 4000 RA BKN012 FEW018CB 22/21 Q0997",
+              "wind_dir": 220,
+              "wind_kt": 37,
+              "gust_kt": 47,
+              "runways": {
+                "23": {
+                  "headwind_kt": 36.9,
+                  "crosswind_kt": 3,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 46.8,
+                  "gust_crosswind_kt": 3.9
+                },
+                "05": {
+                  "headwind_kt": -36.9,
+                  "crosswind_kt": 3,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -46.8,
+                  "gust_crosswind_kt": 3.9
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 47,
+          "max_crosswind_kt": 8.1
+        },
+        {
+          "hour": "2026-11-11T04:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T04:00:00Z",
+              "raw": "METAR LPMA 110400Z 21041KT 4000 RA BKN012 FEW018CB 21/21 Q0997",
+              "wind_dir": 210,
+              "wind_kt": 41,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 39.7,
+                  "crosswind_kt": 10.4,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -39.7,
+                  "crosswind_kt": 10.4,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T04:30:00Z",
+              "raw": "METAR LPMA 110430Z 21035G45KT 4000 RA BKN012 FEW018CB 22/21 Q0997",
+              "wind_dir": 210,
+              "wind_kt": 35,
+              "gust_kt": 45,
+              "runways": {
+                "23": {
+                  "headwind_kt": 33.9,
+                  "crosswind_kt": 8.9,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 43.5,
+                  "gust_crosswind_kt": 11.4
+                },
+                "05": {
+                  "headwind_kt": -33.9,
+                  "crosswind_kt": 8.9,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -43.5,
+                  "gust_crosswind_kt": 11.4
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 45,
+          "max_crosswind_kt": 11.4
+        },
+        {
+          "hour": "2026-11-11T05:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T05:00:00Z",
+              "raw": "METAR LPMA 110500Z 21030G43KT 4000 RA BKN012 FEW018CB 22/21 Q0996",
+              "wind_dir": 210,
+              "wind_kt": 30,
+              "gust_kt": 43,
+              "runways": {
+                "23": {
+                  "headwind_kt": 29,
+                  "crosswind_kt": 7.6,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 41.6,
+                  "gust_crosswind_kt": 10.9
+                },
+                "05": {
+                  "headwind_kt": -29,
+                  "crosswind_kt": 7.6,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -41.6,
+                  "gust_crosswind_kt": 10.9
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T05:30:00Z",
+              "raw": "METAR LPMA 110530Z 21033G44KT 2000 +RA BKN012 FEW018CB 21/21 Q0995",
+              "wind_dir": 210,
+              "wind_kt": 33,
+              "gust_kt": 44,
+              "runways": {
+                "23": {
+                  "headwind_kt": 31.9,
+                  "crosswind_kt": 8.4,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 42.6,
+                  "gust_crosswind_kt": 11.2
+                },
+                "05": {
+                  "headwind_kt": -31.9,
+                  "crosswind_kt": 8.4,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -42.6,
+                  "gust_crosswind_kt": 11.2
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 44,
+          "max_crosswind_kt": 11.2
+        },
+        {
+          "hour": "2026-11-11T06:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T06:00:00Z",
+              "raw": "METAR LPMA 110600Z 21029KT 1000 +RA BKN012 FEW018CB 21/21 Q0995",
+              "wind_dir": 210,
+              "wind_kt": 29,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 28.1,
+                  "crosswind_kt": 7.4,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": -28.1,
+                  "crosswind_kt": 7.4,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T06:30:00Z",
+              "raw": "METAR LPMA 110630Z 20032G43KT 1000 +RA BKN012 FEW018CB 22/22 Q0991",
+              "wind_dir": 200,
+              "wind_kt": 32,
+              "gust_kt": 43,
+              "runways": {
+                "23": {
+                  "headwind_kt": 29.1,
+                  "crosswind_kt": 13.4,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 39.1,
+                  "gust_crosswind_kt": 18
+                },
+                "05": {
+                  "headwind_kt": -29.1,
+                  "crosswind_kt": 13.4,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -39.1,
+                  "gust_crosswind_kt": 18
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 43,
+          "max_crosswind_kt": 18
+        },
+        {
+          "hour": "2026-11-11T07:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T07:00:00Z",
+              "raw": "METAR LPMA 110700Z 22037G48KT 4000 RA BKN012 FEW018CB 23/22 Q0993 RERA",
+              "wind_dir": 220,
+              "wind_kt": 37,
+              "gust_kt": 48,
+              "runways": {
+                "23": {
+                  "headwind_kt": 36.9,
+                  "crosswind_kt": 3,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 47.8,
+                  "gust_crosswind_kt": 3.9
+                },
+                "05": {
+                  "headwind_kt": -36.9,
+                  "crosswind_kt": 3,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -47.8,
+                  "gust_crosswind_kt": 3.9
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T07:30:00Z",
+              "raw": "METAR LPMA 110730Z 23022G34KT 4000 RA BKN012 FEW018CB 23/23 Q0994",
+              "wind_dir": 230,
+              "wind_kt": 22,
+              "gust_kt": 34,
+              "runways": {
+                "23": {
+                  "headwind_kt": 21.9,
+                  "crosswind_kt": 2,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": 33.9,
+                  "gust_crosswind_kt": 3.1
+                },
+                "05": {
+                  "headwind_kt": -21.9,
+                  "crosswind_kt": 2,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": -33.9,
+                  "gust_crosswind_kt": 3.1
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 48,
+          "max_crosswind_kt": 3.9
+        },
+        {
+          "hour": "2026-11-11T08:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T08:00:00Z",
+              "raw": "METAR LPMA 110800Z 05007KT 020V080 7000 -RA BKN012 FEW018CB 22/21 Q0995 RERA",
+              "wind_dir": 50,
+              "wind_kt": 7,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -7,
+                  "crosswind_kt": 0.6,
+                  "crosswind_from": "left"
+                },
+                "05": {
+                  "headwind_kt": 7,
+                  "crosswind_kt": 0.6,
+                  "crosswind_from": "right"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T08:30:00Z",
+              "raw": "METAR LPMA 110830Z 35012KT 310V010 7000 BKN012 FEW018CB 22/21 Q0996",
+              "wind_dir": 350,
+              "wind_kt": 12,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -6.9,
+                  "crosswind_kt": 9.8,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 6.9,
+                  "crosswind_kt": 9.8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 12,
+          "max_crosswind_kt": 9.8
+        },
+        {
+          "hour": "2026-11-11T09:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T09:00:00Z",
+              "raw": "METAR LPMA 110900Z 35019KT 9999 BKN012 FEW018CB 23/20 Q0997",
+              "wind_dir": 350,
+              "wind_kt": 19,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -11,
+                  "crosswind_kt": 15.5,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 11,
+                  "crosswind_kt": 15.5,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T09:30:00Z",
+              "raw": "METAR LPMA 110930Z 35022KT 9999 SCT012 FEW018CB 23/19 Q0996",
+              "wind_dir": 350,
+              "wind_kt": 22,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -12.7,
+                  "crosswind_kt": 18,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 12.7,
+                  "crosswind_kt": 18,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 22,
+          "max_crosswind_kt": 18
+        },
+        {
+          "hour": "2026-11-11T10:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T10:00:00Z",
+              "raw": "METAR LPMA 111000Z 34019KT 290V010 9999 SCT012 24/19 Q0997",
+              "wind_dir": 340,
+              "wind_kt": 19,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -8.1,
+                  "crosswind_kt": 17.2,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 8.1,
+                  "crosswind_kt": 17.2,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T10:30:00Z",
+              "raw": "METAR LPMA 111030Z 35018KT 290V020 9999 SCT012 23/18 Q0999",
+              "wind_dir": 350,
+              "wind_kt": 18,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -10.4,
+                  "crosswind_kt": 14.7,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 10.4,
+                  "crosswind_kt": 14.7,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 19,
+          "max_crosswind_kt": 17.2
+        },
+        {
+          "hour": "2026-11-11T11:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T11:00:00Z",
+              "raw": "METAR LPMA 111100Z 33016G27KT 290V030 9999 SCT014 22/17 Q1000",
+              "wind_dir": 330,
+              "wind_kt": 16,
+              "gust_kt": 27,
+              "runways": {
+                "23": {
+                  "headwind_kt": -4.2,
+                  "crosswind_kt": 15.4,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -7.1,
+                  "gust_crosswind_kt": 26
+                },
+                "05": {
+                  "headwind_kt": 4.2,
+                  "crosswind_kt": 15.4,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 7.1,
+                  "gust_crosswind_kt": 26
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T11:30:00Z",
+              "raw": "METAR LPMA 111130Z 33020G32KT 290V010 9999 SCT014 23/16 Q1000",
+              "wind_dir": 330,
+              "wind_kt": 20,
+              "gust_kt": 32,
+              "runways": {
+                "23": {
+                  "headwind_kt": -5.3,
+                  "crosswind_kt": 19.3,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -8.4,
+                  "gust_crosswind_kt": 30.9
+                },
+                "05": {
+                  "headwind_kt": 5.3,
+                  "crosswind_kt": 19.3,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 8.4,
+                  "gust_crosswind_kt": 30.9
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 32,
+          "max_crosswind_kt": 30.9
+        },
+        {
+          "hour": "2026-11-11T12:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T12:00:00Z",
+              "raw": "METAR LPMA 111200Z 34018KT 300V010 9999 SCT014 23/16 Q1001",
+              "wind_dir": 340,
+              "wind_kt": 18,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -7.7,
+                  "crosswind_kt": 16.3,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 7.7,
+                  "crosswind_kt": 16.3,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T12:30:00Z",
+              "raw": "METAR LPMA 111230Z 34015G25KT 310V010 9999 SCT014 23/17 Q1002",
+              "wind_dir": 340,
+              "wind_kt": 15,
+              "gust_kt": 25,
+              "runways": {
+                "23": {
+                  "headwind_kt": -6.4,
+                  "crosswind_kt": 13.6,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -10.7,
+                  "gust_crosswind_kt": 22.6
+                },
+                "05": {
+                  "headwind_kt": 6.4,
+                  "crosswind_kt": 13.6,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 10.7,
+                  "gust_crosswind_kt": 22.6
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 25,
+          "max_crosswind_kt": 22.6
+        },
+        {
+          "hour": "2026-11-11T13:00:00Z",
+          "departures_seen": 1,
+          "metars": [
+            {
+              "time": "2026-11-11T13:00:00Z",
+              "raw": "METAR LPMA 111300Z 35018G29KT 9999 SCT014 23/17 Q1002",
+              "wind_dir": 350,
+              "wind_kt": 18,
+              "gust_kt": 29,
+              "runways": {
+                "23": {
+                  "headwind_kt": -10.4,
+                  "crosswind_kt": 14.7,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -16.8,
+                  "gust_crosswind_kt": 23.7
+                },
+                "05": {
+                  "headwind_kt": 10.4,
+                  "crosswind_kt": 14.7,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 16.8,
+                  "gust_crosswind_kt": 23.7
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T13:30:00Z",
+              "raw": "METAR LPMA 111330Z 34014KT 290V020 9999 SCT014 23/17 Q1003",
+              "wind_dir": 340,
+              "wind_kt": 14,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -6,
+                  "crosswind_kt": 12.7,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 6,
+                  "crosswind_kt": 12.7,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 29,
+          "max_crosswind_kt": 23.7
+        },
+        {
+          "hour": "2026-11-11T14:00:00Z",
+          "departures_seen": 2,
+          "metars": [
+            {
+              "time": "2026-11-11T14:00:00Z",
+              "raw": "METAR LPMA 111400Z 33016G28KT 270V070 9999 SCT014 23/16 Q1003",
+              "wind_dir": 330,
+              "wind_kt": 16,
+              "gust_kt": 28,
+              "runways": {
+                "23": {
+                  "headwind_kt": -4.2,
+                  "crosswind_kt": 15.4,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -7.4,
+                  "gust_crosswind_kt": 27
+                },
+                "05": {
+                  "headwind_kt": 4.2,
+                  "crosswind_kt": 15.4,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 7.4,
+                  "gust_crosswind_kt": 27
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T14:30:00Z",
+              "raw": "METAR LPMA 111430Z 34015G27KT 300V040 9999 SCT014 23/16 Q1003",
+              "wind_dir": 340,
+              "wind_kt": 15,
+              "gust_kt": 27,
+              "runways": {
+                "23": {
+                  "headwind_kt": -6.4,
+                  "crosswind_kt": 13.6,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": -11.5,
+                  "gust_crosswind_kt": 24.4
+                },
+                "05": {
+                  "headwind_kt": 6.4,
+                  "crosswind_kt": 13.6,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": 11.5,
+                  "gust_crosswind_kt": 24.4
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 28,
+          "max_crosswind_kt": 27
+        },
+        {
+          "hour": "2026-11-11T15:00:00Z",
+          "departures_seen": 3,
+          "metars": [
+            {
+              "time": "2026-11-11T15:00:00Z",
+              "raw": "METAR LPMA 111500Z 31011G21KT 250V060 9999 SCT014 24/15 Q1003",
+              "wind_dir": 310,
+              "wind_kt": 11,
+              "gust_kt": 21,
+              "runways": {
+                "23": {
+                  "headwind_kt": 0.9,
+                  "crosswind_kt": 11,
+                  "crosswind_from": "right",
+                  "gust_headwind_kt": 1.7,
+                  "gust_crosswind_kt": 20.9
+                },
+                "05": {
+                  "headwind_kt": -0.9,
+                  "crosswind_kt": 11,
+                  "crosswind_from": "left",
+                  "gust_headwind_kt": -1.7,
+                  "gust_crosswind_kt": 20.9
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T15:30:00Z",
+              "raw": "METAR LPMA 111530Z 32011KT 230V360 9999 BKN014 23/15 Q1004",
+              "wind_dir": 320,
+              "wind_kt": 11,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -1,
+                  "crosswind_kt": 11,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 1,
+                  "crosswind_kt": 11,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 21,
+          "max_crosswind_kt": 20.9
+        },
+        {
+          "hour": "2026-11-11T16:00:00Z",
+          "departures_seen": 3,
+          "metars": [
+            {
+              "time": "2026-11-11T16:00:00Z",
+              "raw": "METAR LPMA 111600Z 33009KT 260V020 9999 BKN014 23/15 Q1005",
+              "wind_dir": 330,
+              "wind_kt": 9,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -2.4,
+                  "crosswind_kt": 8.7,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 2.4,
+                  "crosswind_kt": 8.7,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T16:30:00Z",
+              "raw": "METAR LPMA 111630Z 32007KT 270V010 9999 BKN014 23/16 Q1005",
+              "wind_dir": 320,
+              "wind_kt": 7,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -0.6,
+                  "crosswind_kt": 7,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 0.6,
+                  "crosswind_kt": 7,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 9,
+          "max_crosswind_kt": 8.7
+        },
+        {
+          "hour": "2026-11-11T17:00:00Z",
+          "departures_seen": 3,
+          "metars": [
+            {
+              "time": "2026-11-11T17:00:00Z",
+              "raw": "METAR LPMA 111700Z 32008KT 270V360 9999 SCT015 22/16 Q1006",
+              "wind_dir": 320,
+              "wind_kt": 8,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -0.7,
+                  "crosswind_kt": 8,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 0.7,
+                  "crosswind_kt": 8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T17:30:00Z",
+              "raw": "METAR LPMA 111730Z 31008KT 270V350 9999 SCT015 22/16 Q1006",
+              "wind_dir": 310,
+              "wind_kt": 8,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 0.7,
+                  "crosswind_kt": 8,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": -0.7,
+                  "crosswind_kt": 8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 8,
+          "max_crosswind_kt": 8
+        },
+        {
+          "hour": "2026-11-11T18:00:00Z",
+          "departures_seen": 2,
+          "metars": [
+            {
+              "time": "2026-11-11T18:00:00Z",
+              "raw": "METAR LPMA 111800Z 32007KT 290V360 9999 SCT015 22/17 Q1006",
+              "wind_dir": 320,
+              "wind_kt": 7,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -0.6,
+                  "crosswind_kt": 7,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 0.6,
+                  "crosswind_kt": 7,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T18:30:00Z",
+              "raw": "METAR LPMA 111830Z 34009KT 300V010 9999 SCT015 21/14 Q1007",
+              "wind_dir": 340,
+              "wind_kt": 9,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -3.8,
+                  "crosswind_kt": 8.1,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 3.8,
+                  "crosswind_kt": 8.1,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 9,
+          "max_crosswind_kt": 8.1
+        },
+        {
+          "hour": "2026-11-11T19:00:00Z",
+          "departures_seen": 2,
+          "metars": [
+            {
+              "time": "2026-11-11T19:00:00Z",
+              "raw": "METAR LPMA 111900Z 30008KT 270V340 9999 SCT015 21/14 Q1007",
+              "wind_dir": 300,
+              "wind_kt": 8,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 2,
+                  "crosswind_kt": 7.7,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": -2,
+                  "crosswind_kt": 7.7,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T19:30:00Z",
+              "raw": "METAR LPMA 111930Z 32007KT 270V350 9999 SCT015 21/14 Q1008",
+              "wind_dir": 320,
+              "wind_kt": 7,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": -0.6,
+                  "crosswind_kt": 7,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": 0.6,
+                  "crosswind_kt": 7,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "05",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 8,
+          "max_crosswind_kt": 7.7
+        },
+        {
+          "hour": "2026-11-11T20:00:00Z",
+          "departures_seen": 1,
+          "metars": [
+            {
+              "time": "2026-11-11T20:00:00Z",
+              "raw": "METAR LPMA 112000Z 31006KT 270V340 9999 SCT015 21/14 Q1009",
+              "wind_dir": 310,
+              "wind_kt": 6,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 0.5,
+                  "crosswind_kt": 6,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": -0.5,
+                  "crosswind_kt": 6,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            },
+            {
+              "time": "2026-11-11T20:30:00Z",
+              "raw": "METAR LPMA 112030Z 26003KT 200V310 9999 SCT015 20/14 Q1009",
+              "wind_dir": 260,
+              "wind_kt": 3,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 2.4,
+                  "crosswind_kt": 1.7,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": -2.4,
+                  "crosswind_kt": 1.7,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 6,
+          "max_crosswind_kt": 6
+        },
+        {
+          "hour": "2026-11-11T21:00:00Z",
+          "departures_seen": 1,
+          "metars": [
+            {
+              "time": "2026-11-11T21:00:00Z",
+              "raw": "METAR LPMA 112100Z VRB01KT 9999 SCT015 20/15 Q1009",
+              "wind_dir": "VRB",
+              "wind_kt": 1,
+              "gust_kt": null,
+              "runways": null
+            },
+            {
+              "time": "2026-11-11T21:30:00Z",
+              "raw": "METAR LPMA 112130Z VRB02KT 9999 SCT015 20/15 Q1010",
+              "wind_dir": "VRB",
+              "wind_kt": 2,
+              "gust_kt": null,
+              "runways": null
+            }
+          ],
+          "max_gust_or_wind_kt": 2,
+          "max_crosswind_kt": null
+        },
+        {
+          "hour": "2026-11-11T22:00:00Z",
+          "departures_seen": null,
+          "metars": [
+            {
+              "time": "2026-11-11T22:00:00Z",
+              "raw": "METAR LPMA 112200Z 24003KT 9999 SCT015 20/15 Q1010",
+              "wind_dir": 240,
+              "wind_kt": 3,
+              "gust_kt": null,
+              "runways": {
+                "23": {
+                  "headwind_kt": 2.9,
+                  "crosswind_kt": 0.8,
+                  "crosswind_from": "right"
+                },
+                "05": {
+                  "headwind_kt": -2.9,
+                  "crosswind_kt": 0.8,
+                  "crosswind_from": "left"
+                }
+              },
+              "favoured_end": {
+                "label": "hypothesis",
+                "end": "23",
+                "why": "the end with the most headwind for this METAR; ATC chooses the runway"
+              }
+            }
+          ],
+          "max_gust_or_wind_kt": 3,
+          "max_crosswind_kt": 0.8
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "what": "runway headings, degrees true (OurAirports, public domain)",
+      "url": "https://davidmegginson.github.io/ourairports-data/runways.csv",
+      "status": 200,
+      "bytes": 3974055,
+      "sha256": "a39ff4071b14c0425dc4a76600f164830bde78814f8af8f9d3b7fd230dd601a9",
+      "read": "2026-11-11T22:10:27Z",
+      "response_ms": 257,
+      "raw": "flights vault: ourairports/2026-11-11/2026-11-11T221027Z-a39ff4071b14.body"
+    },
+    {
+      "what": "METAR, IPMA's observations through the US NOAA Aviation Weather Center's public API (public domain)",
+      "url": "https://aviationweather.gov/api/data/metar?ids=LPPT,LPMA&hours=60&format=json",
+      "status": 200,
+      "bytes": 112410,
+      "sha256": "e9b29a14b4088d36629a324e342a413dfa2f0409926a0e6a8f9bf88c559fa2c1",
+      "read": "2026-11-11T22:10:27Z",
+      "response_ms": 4007,
+      "raw": "flights vault: awc-metar/2026-11-11/2026-11-11T221027Z-e9b29a14b408.body"
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/transport/flights.json",
+      "what": "airline departures per hour (OpenSky) and ANA's figures, kept by incident.transport@",
+      "sha256": "93c17997074dfe881b32c7f5ec7c652a031ac767c2c8632410ebc0ffafc56895",
+      "bytes": 16565,
+      "read_utc": "2026-11-11T21:43:14Z"
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+      "what": "METAR history kept by incident.meteorologist@ (LPPT)",
+      "sha256": "e2c2f6793aab8e42aa76b47de9fa9d2345c4af60f8a9bfae4fd21ecd6d8dd601",
+      "bytes": 53573,
+      "read_utc": "2026-11-11T21:23:03Z"
+    },
+    {
+      "path": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+      "what": "METAR history kept by incident.meteorologist@ (LPMA)",
+      "sha256": "918930c5892dd29d639ade88afa124a012926c840dc35330ac31e491f0b56724",
+      "bytes": 43175,
+      "read_utc": "2026-11-11T21:23:03Z"
+    }
+  ]
+}
