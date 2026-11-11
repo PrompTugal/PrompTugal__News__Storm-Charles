@@ -75,7 +75,7 @@
     var idx = r[0], coast = r[1]
     if (idx.snapshots || idx.wind_hours) {
       // round 68: incident.flights@'s map files (3d3aec6) carry two areas; round 69: this map is A's
-      var lis = function (x) { return !x.area || x.area === A.wind || x.area === A.snap }
+      var lis = function (x) { return !x.area || x.area === A.wind || x.area === A.wind + '-close' || x.area === A.snap }
       idx.snapshots = (idx.snapshots || []).filter(lis); idx.wind_hours = (idx.wind_hours || []).filter(lis)
       return Promise.all([idx.runways ? file(idx.runways) : null, idx.crosswind ? file(idx.crosswind) : null, idx.movements ? file(idx.movements) : null]).then(function (x) {
         var rw = x[0] && (Array.isArray(x[0]) ? x[0] : x[0].runways || []).filter(function (r) { return !r.airport || r.airport === A.icao })
@@ -94,7 +94,7 @@
     var X = function (lon) { return (lon - bb[0]) / (bb[2] - bb[0]) * W }, Y = function (lat) { return (bb[3] - lat) / (bb[3] - bb[1]) * H }
     var pl = function (l) { return l.map(function (p) { return X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1) }).join(' ') }
     var inb = function (lon, lat) { return lon >= bb[0] && lon <= bb[2] && lat >= bb[1] && lat <= bb[3] }
-    var snaps = (idx.snapshots || []).slice().sort(function (a, b) { return a.t < b.t ? -1 : 1 }), winds = (idx.wind_hours || []).slice().sort(function (a, b) { return a.t < b.t ? -1 : 1 })
+    var snaps = (idx.snapshots || []).slice().sort(function (a, b) { return a.t < b.t ? -1 : 1 }), wa = (idx.wind_hours || []).filter(function (w) { return w.area === A.wind + '-close' }), winds = (!V.wide && wa.length ? wa : (idx.wind_hours || []).filter(function (w) { return w.area !== A.wind + '-close' })).slice().sort(function (a, b) { return a.t < b.t ? -1 : 1 })  /* the close view takes the finer field (area <wind>-close) when the files have it */
     var seen = {}, times = snaps.map(function (s) { return s.t }).concat(winds.map(function (w) { return w.t })).filter(function (t) { return seen[t] ? false : (seen[t] = 1) }).sort()
     if (!times.length) { box.innerHTML = '<p class="meta">No snapshots yet.</p>'; return }
     var rw = Array.isArray(runways) ? runways : runways && runways.runways || []
