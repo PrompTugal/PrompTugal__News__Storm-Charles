@@ -1,19 +1,23 @@
 {
   "agent": "incident.media@web-summit.dinis",
   "state": "active: first read of the coverage done 23:45 to 23:55 UTC; re-reads on request or each hour while the storm runs",
-  "last_wake": "2026-11-10T23:58:00Z",
+  "last_wake": "2026-11-11T00:15:00Z",
   "done": [
     "session key made (record sha256:01d564d05862cdbd), public half in data/keys.json",
     "research/media/coverage.json: 212 press items from 16 outlets (URL, time as the page gives it, by-line as printed), the official channels, organisations' social accounts, public conversation counted (Mastodon tags, Bluesky's public API, YouTube feeds)",
     "research/media/outlets.json and ranking.md: fastest on three keyed events, most sourced, the wire underneath (87 of 212 items are Lusa's)",
     "research/media/wikipedia.json: pt 'Depressão Charles' exists (created 10 Nov 13:07 UTC, 8 revisions); en 'Storm Charles' is a redirect (made 22:46 UTC) to the 2026-27 windstorm season article; revision times and sizes, no editors",
     "contribute.md (/contribute.html): how to add or correct a fact; what we publish back",
-    "outreach/: who could give an official view, 26 questions by field (questions.json), 7 draft messages; none sent"
+    "outreach/: who could give an official view, 26 questions by field (questions.json), 7 draft messages; none sent",
+    "live blogs' entries timed for the keyed facts (Negócios, DN, RTP): live-entries.json",
+    "who was first on each of six facts: facts.json, first-on-each-fact.json, ranking.md (nobody we read had IPMA's 21:23 move of the red rain to 09:00 by 00:15)",
+    "wire_share per outlet in outlets.json (52% overall, of items whose by-line we read)",
+    "outreach index links incident.weatherwatch@'s two drafts"
   ],
   "next": [
-    "re-read the feeds hourly while the storm runs (feeds scroll: each run keeps what earlier runs read)",
-    "time the entries inside the live blogs (Negócios, DN, Notícias ao Minuto): today a live blog has one time",
-    "by-lines to the graph: offer coverage.json and outlets.json to incident.graph@ (outlet, by-line, item, event)"
+    "re-read the feeds and live blogs hourly while the storm runs; watch for the first report of the 09:00 red rain",
+    "Wednesday's live blogs: the outlets open new pages each day; find and add them to live.mjs",
+    "by-lines to the graph: offer coverage.json and outlets.json to incident.graph@"
   ],
   "asks": [
     "Dinis: outreach/drafts.md holds 7 draft messages (IPMA, university scientists, ANEPC and the Câmara, transport operators, Web Summit's media team, event-safety practitioners, journalists). Nothing is sent. Say which you want to send, and when: the drafts suggest after the warnings end, so nobody's operational work is interrupted.",
@@ -21,6 +25,6 @@
     "Dinis: SIC Notícias, JN, TSF, Renascença, The Guardian and AP answer 403 to a bot on feed and sitemap; Wikipedia's action API answers 429 to an unnamed client (its REST API works). I stopped there. If you want them read, a named User-Agent with the site's address is the polite way: your yes is needed to put the site's name in requests.",
     "incident.conductor@: a link to /contribute.html and /research/media/ in the nav is yours to add (admin/build/build.mjs); the footer's team list could name the media watch."
   ],
-  "updated": "2026-11-10T23:58:00Z",
+  "updated": "2026-11-11T00:15:00Z",
   "by": "incident.media@web-summit.dinis"
 }

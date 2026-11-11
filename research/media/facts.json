@@ -1,0 +1,61 @@
+{
+ "about": "The six keyed facts the media watch times the press against: for each, the primary source's time and where that time comes from, and the pattern (a regular expression over titles; for live-blog entries, over the entry) that says an item is about it. Kept by incident.media@web-summit.dinis; the primary times are the timeline's (incident.conductor@) and the meteorologist's. Titles only, except where match_entry_text is true (a live entry's text is then read to match it, and not kept).",
+ "updated": "2026-11-11T00:10:00Z",
+ "facts": [
+  {
+   "id": "1-red-wind",
+   "what": "IPMA's red wind warning for Wednesday",
+   "primary_time": "2026-11-10T07:18:00Z",
+   "primary_label": "fact",
+   "primary_note": "IPMA's own issue time in its CAP message (data/weather/cap.json, incident.meteorologist@); the press said \"divulgada às 08h31\"",
+   "pattern": "avisos? vermelho|alerta vermelho|red alert|red warning",
+   "until": "2026-11-10T17:00:00Z"
+  },
+  {
+   "id": "2-alert-situation",
+   "what": "The government's alert situation: schools and non-essential public services closed on Wednesday",
+   "primary_time": "2026-11-10T12:10:00Z",
+   "from": "2026-11-10T08:00:00Z",
+   "primary_label": "fact",
+   "primary_note": "portugal.gov.pt's page is dated 12:10; the minister announced it in the morning, so the press is ahead of the page",
+   "pattern": "escolas e servi[cç]os p[úu]blicos|situa[cç][aã]o de alerta|closes schools|escolas(?! (na|da) madeira)[^:]*(encerrad|fecha)[^:]*quarta|declara[^.]{0,30}situa"
+  },
+  {
+   "id": "3-mayor",
+   "what": "Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday",
+   "primary_time": "2026-11-10T13:00:00Z",
+   "from": "2026-11-10T12:30:00Z",
+   "until": "2026-11-10T17:50:00Z",
+   "primary_label": "evidence",
+   "primary_note": "a spoken statement; no primary page found. The time is approximate: the first report is the earliest evidence of it",
+   "pattern": "web summit[^.]{0,80}(d[úu]vida|dever[áa] fechar|fechada|n[aã]o poder[áa])|(moedas|autarquia|autarca|c[âa]mara)[^.]{0,200}web summit|tudo indica[^.]{0,80}web summit"
+  },
+  {
+   "id": "4-government-recommends",
+   "what": "The government recommends suspending Web Summit on Wednesday",
+   "primary_time": "2026-11-10T17:53:00Z",
+   "from": "2026-11-10T16:00:00Z",
+   "until": "2026-11-10T19:09:00Z",
+   "primary_label": "evidence",
+   "primary_note": "no government page found; 17:53 is the first report (Jornal de Negócios' live blog, in the timeline)",
+   "pattern": "governo[^.]{0,120}(recomenda|aconselha|pede|sugere)[^.]{0,120}web summit|(recomenda|aconselha)[^.]{0,160}(suspens|cancel|encerr|adia)[^.]{0,80}web summit|web summit[^.]{0,160}recomenda[cç][aã]o do governo"
+  },
+  {
+   "id": "5-day2-off",
+   "what": "Web Summit calls off Day 2",
+   "primary_time": "2026-11-10T19:09:00Z",
+   "primary_label": "fact",
+   "primary_note": "Web Summit's \"Important event update\" page, published 19:09 (page data)",
+   "pattern": "web summit[^.]{0,80}(cancel|encerr|fech|suspen|cede|closed|\\boff\\b)|(cancel|encerr|fech|suspen)[^.]{0,80}web summit|paddy suspende"
+  },
+  {
+   "id": "6-red-rain-0900",
+   "what": "IPMA moves Lisbon's red rain warning three hours earlier, to Wednesday 09:00",
+   "primary_time": "2026-11-10T21:23:00Z",
+   "primary_label": "fact",
+   "primary_note": "IPMA's CAP message sent 21:23 (data/weather/cap.json); its open-data feed showed it from the 23:51 read",
+   "pattern": "aviso[s]? vermelho[^.]{0,160}(chuva|precipita)[^.]{0,160}(0?9h00|0?9:00|nove horas)|(chuva|precipita)[^.]{0,200}entre as 0?9h00 e as 18h00|antecipa[^.]{0,80}aviso|aviso[^.]{0,80}antecipa",
+   "match_entry_text": true
+  }
+ ]
+}

@@ -6,6 +6,8 @@
 
 The questions as data: [questions.json](questions.json). The draft messages: [drafts.md](drafts.md).
 
+Two more drafts, kept by incident.weatherwatch@ where they belong (also unsent; a person sends): [IPMA: use of the radar imagery](../research/weather-sites/outreach/ipma-radar.md) and [EUMETSAT: registration for the satellite imagery](../research/weather-sites/outreach/eumetsat-registration.md). Their index: [research/weather-sites/outreach/](../research/weather-sites/outreach/index.html).
+
 ## Why ask at all
 
 This site labels every item fact, evidence or hypothesis. Several things we most want to state are still evidence (reported by the press) or hypothesis (our analysis). The only way to turn them into facts is the body's own word, in public or on the record. Each question below names the item it would settle.

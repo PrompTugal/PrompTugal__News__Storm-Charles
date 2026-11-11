@@ -8,15 +8,18 @@
 |---|---|
 | [coverage.json](coverage.json) | Every article, live blog and video page we could read: outlet, URL, title, the publication time the page itself gives (UTC), the by-line as printed, when we read it, the sha256 of our capture. Then `official` (the official channels) and `social` (organisations' accounts; public conversation, counted) |
 | [outlets.json](outlets.json) | Each outlet: counts, by-lines as printed, what it does best (derived from the counts) |
-| [ranking.md](ranking.md) | Who was fastest on three keyed events; who is most sourced; the wire underneath |
+| [ranking.md](ranking.md) | Who was first on each of six keyed facts; who is most sourced; the wire underneath |
+| [facts.json](facts.json), [first-on-each-fact.json](first-on-each-fact.json) | The six facts (primary time, where it comes from, the pattern that matches an item) and the table as data |
+| [live-entries.json](live-entries.json) | The timed entries inside three live blogs (Jornal de Negócios, Diário de Notícias, RTP), for the six facts only |
 | [wikipedia.json](wikipedia.json) | The Wikipedia pages on the storm (pt, en) and their edit history: revision times and sizes, no editors' names |
 | [feeds.json](feeds.json), [seeds.txt](seeds.txt) | The public feeds and news sitemaps read; URLs that have scrolled out of a feed |
-| [tools/](tools/) | `harvest.mjs`, `social.mjs`, `wikipedia.mjs`, `rank.mjs`: no dependencies, re-runnable; this folder is built by them, not by hand |
+| [tools/](tools/) | `harvest.mjs`, `live.mjs`, `social.mjs`, `wikipedia.mjs`, `rank.mjs`: no dependencies, re-runnable; this folder is built by them, not by hand |
 
-## The first read, in short (10 November, 23:55 UTC)
+## The read so far, in short (11 November, 00:15 UTC)
 
-- **The press:** 212 items from 16 outlets, published between 9 November 08:34 and 10 November 23:53 UTC. 87 carry Lusa's by-line, 45 a reporter's, 34 the outlet's desk; on 46 the by-line could not be read.
-- **Web Summit's Day 2:** the organisers' page is dated 19:09. The first articles we could read are ECO's and TEK's, both at 19:41 (33 minutes later), then Diário de Notícias at 19:49. Jornal de Negócios' live blog had it at 19:42 (in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). The full table is in [ranking.md](ranking.md).
+- **The press:** 214 items from 16 outlets, published between 9 November 08:34 and 11 November 00:01 UTC. 88 carry Lusa's by-line, 45 a reporter's, 35 the outlet's desk; on 46 the by-line could not be read. **Wire share: 52%** of the items whose by-line we read are Lusa's (per outlet: `wire_share` in [outlets.json](outlets.json)).
+- **Who was first, with the live blogs' entries timed** ([ranking.md](ranking.md)): the live blogs lead on five of the six facts. Diário de Notícias' live blog had the red wind warning at 08:05 and the schools closing at 09:14; Jornal de Negócios' had the mayor's line at 13:19 and is the only report we found of the government's recommendation before the decision (17:53). On Day 2, ECO and TEK (articles, 19:41), Negócios (19:42), DN (19:45) and RTP (19:47) are within six minutes of each other, 33 to 38 minutes after the organisers' page.
+- **Nobody had the 21:23 change.** IPMA moved Lisbon's red rain warning to 09:00 at 21:23 (its CAP message). By 00:15 UTC no article title and no live-blog entry we could read reported it. A title match can miss it inside a longer piece; it is still the one fact of the six where the press we read was behind the source by hours.
 - **Official accounts:** Web Summit's Bluesky account last posted at 17:36 ("wrap on Day 1"): **nothing there about Day 2 by 23:51**. The decision is on its website (and by email) only, of the channels readable without a login. IPMA and ANEPC have no account we could find on Bluesky or Mastodon; their websites are the channels (see `official`).
 - **Social, readable without a login:** on Bluesky, "depressão Charles" and "borrasca Charles" each fill the API's page of 100 posts since 9 November (59 and 70 accounts); "Storm Charles" 67 posts; "Web Summit" with "Charles" 18. On Mastodon the tags are small (4 to 8 posts each). VOST Portugal (a volunteers' association, not an authority) and Spain's AEMET are the organisations posting most about it; RTP Notícias has 7 videos on YouTube.
 - **Wikipedia:** Portuguese has an article, [Depressão Charles](https://pt.wikipedia.org/wiki/Depress%C3%A3o_Charles), created 10 November 13:07 UTC: 8 revisions, 17,395 bytes at 20:01. English has no article: [Storm Charles](https://en.wikipedia.org/wiki/Storm_Charles) is a redirect, made 10 November 22:46 UTC, to [2026–27 European windstorm season](https://en.wikipedia.org/wiki/2026%E2%80%9327_European_windstorm_season), which had 20 revisions on 9 and 10 November (82,184 bytes at 20:32). "Tempestade Charles" (pt) and "Borrasca Charles" (es) do not exist.
@@ -34,7 +37,8 @@
 - Renascença runs a purpose-built tracker for the storm, [rr.pt/tempestade-charles-avisos-e-ocorrencias](https://rr.pt/tempestade-charles-avisos-e-ocorrencias) (reported by incident.weatherwatch@; it answered 403 to our bot at 23:59 UTC on 10 November, so it is named here and not read).
 - Weather sites and how each presents the storm are incident.weatherwatch@'s map (`research/weather-sites/sites.json`, when it lands on dev); this folder covers the press and social channels and does not repeat it.
 - Expresso, The Portugal News and Bloomberg list their articles in a feed or sitemap but refuse the page: title and time are theirs, the by-line was not read.
-- A live blog has one publication time. The minute of each entry inside it is not here, so live blogs look slower than they are.
+- Three live blogs have their entries timed, for the six facts only (Jornal de Negócios, Diário de Notícias, RTP). Notícias ao Minuto's prints no time per entry; Observador had no live blog on the storm that we could find. Negócios prints a clock time only on the day itself (after midnight, the date), and DN's entry list is in its page data on some reads and not others: entry times come from our capture of 23:5x UTC on 10 November.
+- The six tables match an article by its **title**. An article that reports a fact under another headline is missed.
 - Feeds scroll. Items older than a feed's window at 23:45 UTC on 10 November are missing unless cited elsewhere in the incident.
 - Correio da Manhã and Jornal de Negócios give a date without a time of day; those items are left out of the speed tables.
 - X, Instagram, Facebook, LinkedIn, Threads and TikTok cannot be read without a login and are not here.
@@ -44,6 +48,7 @@
 
 ```
 MEDIA_RAW=<a directory outside git> node research/media/tools/harvest.mjs
+MEDIA_RAW=<the same> node research/media/tools/live.mjs
 node research/media/tools/social.mjs
 node research/media/tools/wikipedia.mjs
 MEDIA_RAW=<the same> node research/media/tools/rank.mjs
