@@ -87,5 +87,5 @@ ID.onChange(draw); draw()
 LANE.config().then(async c => {
     const L = c.lanes.to_conductor, to = await LANE.recipient(c)
     document.getElementById('account-lane').textContent = `Feedback is sealed to ${to.agent} (${to.bundle.signing_fingerprint}). ` + (L.enabled ? `The lane is open (vault ${L.vault_id}).` : 'There is no lane yet: the sealed text is shown for you to copy.') 
-    document.getElementById('account-ver').textContent = c.version || 'version'
+    for (const id of ['account-ver', 'account-ver-top']) { const n = document.getElementById(id); if (n) n.textContent = c.version || 'version' }
 }).catch(e => { document.getElementById('account-lane').textContent = 'The lane could not be read: ' + e.message })

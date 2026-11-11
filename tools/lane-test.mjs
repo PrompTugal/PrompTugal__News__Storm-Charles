@@ -10,6 +10,7 @@
 import fs from 'node:fs'
 import os from 'node:os'
 import http from 'node:http'
+import { execFileSync } from 'node:child_process'
 import path from 'node:path'
 import { K, M, ROOT, sha256hex, judge, looksSecret, lane as laneCall } from './lane-common.mjs'
 import { drain } from './lane-drain.mjs'
@@ -31,7 +32,13 @@ for (const [name, f] of Object.entries(pin.files)) ok(sha256hex(fs.readFileSync(
     for (const must of ['Not a warning service', 'Time delays between this website and the www.meteoalarm.org website are possible', 'please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>'])
         ok(page.includes(must) && build.includes(must), `/account/ and the frame both carry: ${must.slice(0, 50)}`)
     ok(/Content-Security-Policy" content="default-src 'none'; script-src 'self';/.test(page) && !/<script(?![^>]*\ssrc=)/.test(page) && !/\sstyle="/.test(page), '/account/ keeps its Content-Security-Policy and has no inline script or style')
-    for (const [, href] of build.matchAll(/<a href="\$\{u\}([^"]+)">/g)) ok(page.includes(`"../${href}"`) || href === 'account/index.html' || href === 'index.html', `/account/'s nav has the frame's link to ${href}`)
+    // the menu and the breadcrumb are the build's: the page carries its marks, and the built page has them filled, with no inline code
+    const mark = (page.match(/<!--menu:([A-Za-z0-9+/=]+)-->/) || [])[1]
+    ok(!!mark && Buffer.from(mark, 'base64').toString() === '["account/index.html","../","Log in"]' && page.includes('<!--crumbs-->'), '/account/ carries the build\'s menu and breadcrumb marks')
+    execFileSync(process.execPath, [path.join(ROOT, 'admin/build/build.mjs')], { stdio: 'ignore' })
+    const built = fs.readFileSync(path.join(ROOT, '_site/account/index.html'), 'utf8')
+    ok(/<nav class="sites"/.test(built) && /aria-current="page">Log in</.test(built) && !/<!--menu:|<!--crumbs-->/.test(built), 'the built /account/ has the site\'s menu, with Log in current')
+    ok(!/<script(?![^>]*\ssrc=)/.test(built) && !/\sstyle="|\son[a-z]+="/.test(built) && [...built.matchAll(/<script[^>]*\ssrc="([^"]+)"/g)].every(m => !/^(https?:)?\/\//.test(m[1])), 'the built /account/ has no inline script, style or handler, and no script from another origin')
 }
 // throwaway people
 const [dinis, conductor, stranger] = await Promise.all(['Dinis (throwaway)', 'conductor (throwaway)', 'stranger (throwaway)'].map(l => K.generate(l)))

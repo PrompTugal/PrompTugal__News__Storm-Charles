@@ -102,7 +102,7 @@ const stored = page => page.evaluate(() => JSON.stringify(Object.entries(localSt
     // forget
     await page.goto(base + '/account/index.html'); await page.getByRole('button', { name: 'Forget this key' }).click()
     await page.getByRole('button', { name: 'Log in with a passkey' }).waitFor()
-    ok((await stored(page)) === '[]', 'forget leaves nothing in localStorage')
+    ok(!/sc\.id\.|pki\.local\./.test(await stored(page)), 'forget leaves nothing of the key in localStorage (other parts of the site keep their own settings there)')
     ok(errors.length === 0, 'no console or page error (the Content-Security-Policy included): ' + errors.join(' | '))
 }
 // ---- a passphrase
