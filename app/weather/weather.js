@@ -242,8 +242,13 @@
     var st = (D.stations || {}).stations || [], geo = st.filter(function (s) { return s.latest && s.latest.temp_c != null })[0]
     var gv = D.airport && D.airport.metars && D.airport.metars.length ? D.airport.metars[D.airport.metars.length - 1] : null
     var wet = null, windiest = null
-    st.forEach(function (s) { var l = s.latest; if (!l) return; if (l.rain_mm != null && (!wet || l.rain_mm > wet.latest.rain_mm)) wet = s; if (l.wind_mean_kmh != null && (!windiest || l.wind_mean_kmh > windiest.latest.wind_mean_kmh)) windiest = s })
-    ;((D.rain || {}).stations || []).forEach(function (s) { var l = (s.hourly || [])[s.hourly.length - 1]; if (l && l.rain_mm != null && (!wet || l.rain_mm > (wet.latest || wet._l).rain_mm)) wet = { name: s.name, _l: l, latest: l } })
+    // only stations that reported the newest hour (Almada stopped at 10:00 and its 5.6 mm outranked every 15:00 reading)
+    var lastOf = function (s) { return (s.hourly || [])[(s.hourly || []).length - 1] }, newest = 0
+    st.forEach(function (s) { if (s.latest && ok(s.latest.time_utc)) newest = Math.max(newest, T(s.latest.time_utc)) })
+    ;((D.rain || {}).stations || []).forEach(function (s) { var l = lastOf(s); if (l && ok(l.time_utc)) newest = Math.max(newest, T(l.time_utc)) })
+    var fresh = function (l) { return l && ok(l.time_utc) && T(l.time_utc) === newest }
+    st.forEach(function (s) { var l = s.latest; if (!fresh(l)) return; if (l.rain_mm != null && (!wet || l.rain_mm > wet.latest.rain_mm)) wet = s; if (l.wind_mean_kmh != null && (!windiest || l.wind_mean_kmh > windiest.latest.wind_mean_kmh)) windiest = s })
+    ;((D.rain || {}).stations || []).forEach(function (s) { var l = lastOf(s); if (fresh(l) && l.rain_mm != null && (!wet || l.rain_mm > (wet.latest || wet._l).rain_mm)) wet = { name: s.name, _l: l, latest: l } })
     // the observed hour (the hour to `at`) against IPMA's warnings: say which one covered it, if any; else, if one is in force now, that it began after
     var before = function (type, at) {
       var ws = lisbonWarnings().filter(function (w) { return w.type === type }), hi = function (a, b) { return RANK[b.level] - RANK[a.level] }
