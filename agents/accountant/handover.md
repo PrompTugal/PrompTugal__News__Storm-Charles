@@ -51,3 +51,4 @@ Seven rounds (7 to 13), briefs 7 to 13. The conductor started the third session 
 - Round 13 (684bad8, 12:45) stands; round 14 follows. The wake at :40 fires into this session. No vault key is needed: neither earlier session kept anything outside git that a round needs.
 - Commits: all trailers (Agent, Issue, For, Co-Authored-By, Claude-Session) in one final paragraph, no blank line; Co-Authored-By names no model ("Claude <noreply@anthropic.com>"). The gate warned on 8858e46.
 - Round 16 released at about 14:45 UTC; round 17 at 15:40. Step 2 of a round is now `node tools/accounts-round.mjs | cut -c1-140`.
+- Name a brief by `date -u` when it is written, not the round's nominal :45 (the conductor's word, 14:41 UTC); brief 16 renamed 1445Z to 1442Z.
