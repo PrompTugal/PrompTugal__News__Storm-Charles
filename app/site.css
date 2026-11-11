@@ -745,3 +745,22 @@ a.ent { white-space: normal; }
   nav.top { order: 4; }
   header.top .wrap { padding-top: 0; }
 }
+
+/* ---- round 43 (incident.designer@): one hour grid for both faces. The geometry is two tokens (--hg-lab, --hg-col), the same numbers the Weather face's grid uses; "now" is the hour's column tinted and a line at the minute; before now sits behind the bars, so a bar's words stay readable. design/round-43.md ---- */
+:root { --hg-lab: 172px; --hg-col: 38px; }
+@media (max-width: 640px) { :root { --hg-lab: 104px; --hg-col: 44px; } }
+.wx-strip { --lab: var(--hg-lab); min-width: calc(var(--lab) + 24 * var(--hg-col)); }
+.wx-day .wx-lab { padding-left: 12px; }
+.wx-hours .wx-track { padding-top: 0; }
+.wx-hours span { font: 600 13px/1.2 var(--mono); padding: 8px 0 7px; text-align: center; border-left: 1px solid color-mix(in srgb, var(--line) 55%, transparent); display: flex; flex-direction: column; align-items: center; }
+.wx-hours span.now { color: var(--focus); font-weight: 700; background: color-mix(in srgb, var(--focus) 12%, transparent); }
+.wx-hours span.now::after { content: "now"; font: 700 10px/1.1 var(--sans); }
+.wx-track { background: repeating-linear-gradient(to right, transparent 0, transparent calc(100% / var(--n, 24) - 1px), color-mix(in srgb, var(--line) 55%, transparent) calc(100% / var(--n, 24) - 1px), color-mix(in srgb, var(--line) 55%, transparent) calc(100% / var(--n, 24))); }
+.wx-hours .wx-track, .wx-group .wx-track { background: none; }
+.wx-nowcol { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--focus) 12%, transparent); pointer-events: none; z-index: 0; }
+.wx-past { z-index: 0; background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.wx-bar { z-index: 1; }
+.wx-cell { font: 13px/1.15 var(--sans); font-variant-numeric: tabular-nums; padding: 6px 0; position: relative; z-index: 1; }
+.wx-cell b { font-weight: 600; } .wx-cell i { font-size: 10px; }
+a.wx-bar.out[data-out]::before { content: none; }
+@media print { .wx-nowcol { display: none !important; } .wx-hours span.now { background: none; color: inherit; } .wx-hours span.now::after { content: none; } }
