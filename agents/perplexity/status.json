@@ -1,9 +1,9 @@
 {
  "agent": "incident.perplexity@web-summit.dinis",
  "by": "incident.perplexity@web-summit.dinis",
- "updated": "2026-11-11T05:27:40Z",
- "state": "waiting: round 1 is live at research/perplexity/ (three runs, six answers, 21 addresses opened and read, three leads offered); no further model calls until the OpenRouter key has credit",
- "last_wake": "2026-11-11T05:27:40Z",
+ "updated": "2026-11-11T13:37:24Z",
+ "state": "active: rounds 1 and 2 are live at research/perplexity/ (six runs, 15 answers, 45 addresses opened and read, five leads); the account has credit again since 13:30Z",
+ "last_wake": "2026-11-11T13:37:24Z",
  "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, 02:50 UTC)",
  "done": [
   "session key made (record and signing sha256:bf11e5b661659bd8, encryption sha256:ad99251a8a26259e; pki-agent.mjs checked against the pinned sha256 fcb28a1c...02ab), public half in data/keys.json",
@@ -12,34 +12,35 @@
   "three leads in research/perplexity/leads.json, each read by this desk at the body's own address: the PITCH semi-final's slot (Wednesday 17:00 to 18:00, Centre Stage: bears on the board's conflict c-pitch-original-slot); Madeira civil protection's own notice on Charles; Web Summit's Wednesday schedule still listed, unmarked, at 02:55Z",
   "spend: six calls, about 0.033 US dollars of the 4 planned; six more calls (the Pro variants) refused by OpenRouter at no cost",
   "03:02Z: the conductor took leads 1 and 3 as timeline row s-1111T0255; lead 2 was already a fact through incident.researcher@",
-  "05:27Z: the conductor's interim hold on websummit.com adopted: tools/perplexity-check.mjs no longer requests it (research/perplexity/hosts.json, hold); the two capture asks for its pages withdrawn. Retries of the model call at 03:33, 04:04 and 04:50 were refused (the account's credit); nothing spent"
+  "05:27Z: the conductor's interim hold on websummit.com adopted: tools/perplexity-check.mjs no longer requests it (research/perplexity/hosts.json, hold); the two capture asks for its pages withdrawn. Retries of the model call at 03:33, 04:04 and 04:50 were refused (the account's credit); nothing spent",
+  "13:30Z, round 2 and the comparison: Sonar Pro on runs 1 to 3; three new questions (the airport, the government's order and advice, comparable cancellations) on Sonar Pro (English) and Sonar (Portuguese). Two new leads read at primary addresses: ANA's own statement with the 11:00 figures; the government's document page for the despacho (13h11), which, like its 10h33 news page, does not name Web Summit. Two statements marked wrong (a government page said to record advice to Web Summit; \"no ANA statement\" beside the address that lists it). Sonar Reasoning Pro returned nothing three times; Deep Research not run (the wrapper's two-minute limit)"
  ],
  "next": [
-  "when the key has credit: the same three questions on Sonar Pro and Sonar Reasoning Pro (the comparison), then one Deep Research run if a single run fits under about 1 US dollar",
-  "round 2 questions: the airport (ANA's own statement), the government's advice to Web Summit as a published text, the Câmara's measures, who else archived IPMA's earlier warnings, Thursday's transport, comparable storms and event cancellations",
-  "the bare question against the briefed one on one topic"
+  "round 3: the Câmara's measures, IPMA warning archives, Thursday's transport, the trains; the bare question against the briefed one",
+  "the reasoning and deep-research variants if they can answer within the wrapper's limits"
  ],
  "asks": [
-  "Dinis: the OpenRouter ACCOUNT has no credit left (HTTP 402 at 02:53:57Z, \"Insufficient credits\" at 03:02:12Z); the key's own limit is fine (the conductor checked). A top-up unblocks this desk, the shadow desk and the model evals. This desk retries one call every half hour (a refused call costs nothing)",
   "incident.designer@: a line for Perplexity in the Research menu (research/perplexity/index.html)",
   "incident.archivist@: research/perplexity/capture-asks.json (three addresses read at primary bodies)",
   "incident.models@ and incident.accountant@: this desk's day is in research/perplexity/ledger-summary.json",
-  "incident.conductor@, for Dinis's decision on websummit.com: runs/2026-11-11/3.json and leads.json hold this desk's 02:55 reads of seven of its pages as short statements in our words with the pages' sha256 (no page text). If the decision is that these must go, say so and I redact them (the ids stay)"
+  "incident.conductor@, for Dinis's decision on websummit.com: runs/2026-11-11/3.json and leads.json hold this desk's 02:55 reads of seven of its pages as short statements in our words with the pages' sha256 (no page text). If the decision is that these must go, say so and I redact them (the ids stay)",
+  "incident.models@: tools/llm.mjs gives up after 120 s, too short for perplexity/sonar-deep-research (minutes); and perplexity/sonar-reasoning-pro returned empty answers three times at 13:31Z with no usage reported. A longer limit as an option to call() would let this desk try both",
+  "incident.researcher@ (pointers, unverified by this desk): Despacho n.º 13773-B/2026 on remote work for public staff (Diário da República did not render for our reader); the organiser's PITCH final listed for Thursday 12:30 to 13:00 per one answer (site on hold)"
  ],
  "figures": {
-  "runs": 3,
-  "answers": 6,
-  "statements": 19,
-  "confirmed_at_primary": 7,
-  "press_only": 8,
-  "unsupported": 4,
-  "wrong": 0,
-  "said_found_none": 10,
-  "addresses_returned": 90,
-  "addresses_primary": 28,
-  "leads": 3,
-  "spent_today_usd": 0.0331,
-  "calls_today": 16,
-  "calls_refused_today": 10
+  "runs": 6,
+  "answers": 15,
+  "statements": 44,
+  "confirmed_at_primary": 18,
+  "press_only": 12,
+  "unsupported": 8,
+  "wrong": 2,
+  "said_found_none": 21,
+  "addresses_returned": 225,
+  "addresses_primary": 123,
+  "leads": 5,
+  "spent_today_usd": 0.1248,
+  "calls_today": 33,
+  "calls_refused_today": 15
  }
 }

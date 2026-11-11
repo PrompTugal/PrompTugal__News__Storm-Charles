@@ -1,36 +1,48 @@
-> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 03:05 UTC
+> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 13:50 UTC
 
 ## What it is good for here, and what it is not
 
-Our analysis of the first three runs (six answers, one model); labelled as analysis, to be tested by the next rounds.
+Our analysis of six runs (15 answers, two models); labelled as analysis, to be tested by the next rounds.
 
 **Good for**
 
-- **Finding a deep address on a body's own site that our tools had not reached.** Asked about the PITCH semi-final, it returned Web Summit's own session page, which gives the slot as Wednesday 11 November, 17:00 to 18:00, Centre Stage. That settled a conflict the board had held open (the conductor made it timeline row s-1111T0255) since Tuesday night (Wednesday 17:00, unsourced, against Thursday in a press preview): the full agenda sits behind a login, but single session pages are public and the engine's index had this one. Only the Portuguese question found it; the English one returned the group rounds instead.
-- **Finding a regional body's own page.** Asked about Madeira, it returned the regional civil protection service's own notice on Charles, in both languages; we read it there. (incident.researcher@ had already read the same page: the engine confirmed our record here, it did not extend it.)
-- **Saying "I found no such page".** With the brief asking for the deciding body's own page, it said plainly, 10 times in six answers, that it had found none (Lusoponte, the Câmara, Infraestruturas de Portugal, the regional government, Web Summit on refunds). Each time that matched what our own reads had found. A tool that admits an empty hand saves the time of chasing a made-up address: it made none up here.
-- **Price and speed.** About half a US cent and five seconds a question. Checking its work costs far more than asking: 21 pages opened and read for six answers.
+- **Finding a deep address on a body's own site that our tools had not reached.** Asked about the PITCH semi-final, it returned the organiser's own session page with the slot (Wednesday 17:00 to 18:00, Centre Stage), which settled a conflict the board had held open since Tuesday night (the conductor made it timeline row s-1111T0255). Asked about the airport, it returned ANA's newsroom, where ANA's own statement with the 11:00 figures sits; our record had ANA only through the press.
+- **Finding a regional body's own page.** Asked about Madeira, it returned the regional civil protection service's own notice on Charles; we read it there. (incident.researcher@ had already read the same page: the engine confirmed our record here, it did not extend it.)
+- **Saying "I found no such page".** With the brief asking for the deciding body's own page, it said plainly, 21 times in 15 answers, that it had found none. Twenty of those matched what we know or could not be tested; it made up no address. The one exception is below, and it is the costly kind.
+- **Price and speed.** Half a US cent and five seconds a question on Sonar; a little over one cent and eight seconds on Sonar Pro. Checking its work costs far more than asking: 45 pages opened and read for 15 answers.
 
 **Not good for**
 
-- **Being the source.** Of 90 addresses returned, 28 were a primary body's own page, and 24 of those were Web Summit's own sites on the one question about Web Summit (the other four: Madeira's civil protection three times, an embassy once). On the bridges and tunnels it returned no primary page at all: press, and sites that rewrite the press.
-- **Knowing what happened next.** Both bridge answers reported the 60 km/h limit and neither said it had been lifted on Tuesday night (our record: 22:29). The lifting was in a headline on the very page one answer cited, and in the title of an address the other returned and did not use. It answers the question asked, from the paragraph that matches, not from the latest state of the thing.
-- **Times.** It gave a second notice by Madeira's civil protection "at 15:43" on its home page; that time is not on the page. It spoke of an "Important event update" *email* by Web Summit with no address, while not returning the organiser's public page of that title, which is this site's headline.
-- **The organiser's newest page.** On Web Summit it returned 24 schedule, session and competition pages and not the one blog post that matters. Its index of a site is broad and old; a watch on the page itself (incident.dev@'s) is the tool for news from a known address.
-- **Consistency across languages.** The same question in Portuguese and English returned different addresses and different findings; each language found a lead the other missed on Web Summit. Ask both.
+- **Telling you what a page says.** Asked in Portuguese whether the government's advice to Web Summit is published, Sonar answered that the government's page on the alert "refers that the government recommended that the summit's organisers suspend Wednesday's work", and cited two government pages. We read both: neither mentions Web Summit. The engine wrote the premise of our question back as the content of an official page. That is the board's open question on the government's advice; taken on trust, the answer would have closed it falsely, with a government address beside it.
+- **Noticing what is on the page it hands you.** Sonar Pro, asked what ANA had published, answered "no ANA statement" and in the same sentence gave the address of ANA's newsroom, whose first item is ANA's statement of that morning. It also described ANA's flights page as "not a statement" when the page carries ANA's adverse-weather notice. Its "found none" is true of its search results, not of the sites.
+- **Knowing what happened next.** Three bridge answers, the last at 13:30 on Wednesday, reported the 60 km/h limit; none said it had been lifted at 22:29 on Tuesday (our record). The lifting was in a headline on the very page one answer cited.
+- **Times.** A notice by Madeira's civil protection "at 15:43" that is not on the page; ANA's statement "at 19:18", which is a newspaper's timestamp; a flights page "updated 07:30" with no such time on it. Treat every clock time in an answer as unverified.
+- **Live pages.** It reported the hours on Madeira's warnings page as its index held them; when we read the page the warnings had changed. A page that changes cannot be checked after the fact: the hourly capture (incident.archivist@, incident.ipma@) is the tool for those.
+- **The broad question.** "Which European events cancelled for a named storm since 2017?" got two unsupported examples from Sonar Pro (not on the page cited) and, in Portuguese, an answer about this storm. Sonar Pro searched only the United Kingdom's Met Office for a question about Lisbon.
+- **Being the source.** On the bridges and tunnels it has still returned no primary page at all in three answers. Where it does return primary pages it returns them in bulk from one site (all fifteen from one body in several Pro answers), which looks thorough and is one search.
 
-**So, for this team:** use it to find *where* something might be published, then read it there. Three answers of six gave us an address worth opening that we did not hold; none gave us a fact we could use without opening it.
+**So, for this team:** use it to find *where* something might be published, then read it there, including what the engine says is not there. Five answers of fifteen gave us an address worth opening that we did not hold; two would have misled us if believed; none gave us a fact we could use without opening the page.
+
+## The Sonar variants compared
+
+The same three questions (runs 1 to 3, in English), then three more where each model got one language. Small numbers: read as a first impression.
+
+- **Sonar Pro stays on the bodies' own sites.** 68 of its 90 addresses were primary bodies' pages, against 55 of 135 for Sonar. On Madeira all fifteen were the civil protection service's own; on the government's order, all fifteen were Diário da República.
+- **It is more careful, and no more right.** Its answers hedge more and separate "the press says" from "the body says" better. But 7 of its 18 statements were confirmed at a primary body against 11 of 26 for Sonar: about the same share. It made the ANA mistake above; Sonar made the government-page one.
+- **It costs about twice as much** (0.0125 against 0.0055 US dollars a question) and takes about three seconds longer.
+- **Sonar Reasoning Pro returned nothing**: three calls came back empty after 20 to 35 seconds with no cost reported. Not compared.
+- **Sonar Deep Research was not run**: a run takes minutes, and the team's wrapper gives up after two (a call cut off may still be billed). Asked of incident.models@.
 
 ## Cost per useful lead
 
-Three leads read at primary addresses for 0.033 US dollars of model spend: about one cent a lead. The real cost is the checking: the agent's time to open 21 addresses and read them against 29 statements. A lead from the engine is cheap to get and dear to trust.
+Five leads read at primary addresses for 0.12 US dollars of model spend: about two and a half cents a lead. The real cost is the checking: 45 addresses opened and read against 65 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
 
 ## A hold on Web Summit's site (05:27 UTC)
 
-Since 05:27 UTC this desk does not request websummit.com: an interim hold from incident.conductor@ until Dinis decides, because the site's terms (updated 27 October 2026, read by incident.sources@) forbid automated access and archiving. The seven pages in run 3 were read at 02:55 to 02:56, before the hold. From now on, what an engine says about Web Summit is recorded as the engine's answer and marked **not checked: on hold**, not followed to the site.
+Since 05:27 UTC this desk does not request websummit.com: an interim hold from incident.conductor@ until Dinis decides, because the site's terms (updated 27 October 2026, read by incident.sources@) forbid automated access and archiving. The seven pages in run 3 were read at 02:55 to 02:56, before the hold. From then on, what an engine says about Web Summit is recorded as the engine's answer and marked **not checked: the site is on hold**, not followed to the site.
 
 ## What is next
 
-- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Paused since 02:54 UTC: the OpenRouter account's credit balance ran out (HTTP 402, then "Insufficient credits" at 03:02); the key's own limit is fine (incident.conductor@, 02:54). Only Dinis can top it up.
-- More of the team's open questions: the airport (ANA's own statement), the government's advice to Web Summit as a published text, the Câmara's measures, who else archived IPMA's earlier warnings, Thursday's transport, comparable storms and event cancellations.
+- More of the team's open questions: the Câmara's measures, who else archived IPMA's earlier warnings, Thursday's transport, the trains.
 - The bare question against the briefed one, on the same topic: does asking for the primary page change what comes back?
+- The reasoning and deep-research variants, if they can be made to answer within the wrapper's limits.

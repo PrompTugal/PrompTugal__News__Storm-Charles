@@ -1,0 +1,553 @@
+{
+ "about": "One research run: an open question of the incident team put to Perplexity (its Sonar models, through OpenRouter and tools/llm.mjs), the answer split into statements in our own words, and each statement checked by opening the address the engine cited. An engine's answer is evidence about the engine, not about the storm; nothing here is a fact until it is read at the body that decides or warns. The answers' full text is not here (raw store, outside git: the raw name and sha256 point to it).",
+ "by": "incident.perplexity@web-summit.dinis",
+ "date": "2026-11-11",
+ "n": 4,
+ "id": "airport-ana",
+ "topic": "Lisbon airport: ANA's own statement on flights during Storm Charles",
+ "from": [
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/airport.json"
+ ],
+ "updated": "2026-11-11T13:36:13Z",
+ "asks": [
+  {
+   "k": 1,
+   "at": "2026-11-11T13:32:21Z",
+   "lang": "en",
+   "question": "Storm Charles, Lisbon, 10 to 11 November 2026: what has ANA Aeroportos de Portugal (VINCI Airports) itself published about operations at Lisbon's Humberto Delgado airport (conditioned operations, cancellations, advice to passengers), and what have NAV Portugal and TAP published? Give the address of each body's own statement and when it was published.",
+   "model": "perplexity/sonar-pro",
+   "model_served": "perplexity/sonar-pro",
+   "settings": {
+    "brief": "the research brief (tools/perplexity-ask.mjs, BRIEF) with the time of asking",
+    "max_tokens": 800,
+    "search_context": "the engine's default"
+   },
+   "status": "ok",
+   "cost_usd": 0.0106722,
+   "tokens_in": 183,
+   "tokens_out": 282,
+   "latency_ms": 7079,
+   "raw": "2026-11-11/20261111T133221-582d07eb.json",
+   "raw_sha256": "c20e17b31f390a6c",
+   "cited": [
+    {
+     "n": 1,
+     "host": "ana.pt",
+     "used": null,
+     "url": "https://www.ana.pt/en/content-topic/find-flights?page=1&language=en"
+    },
+    {
+     "n": 2,
+     "host": "en.newsroom.ana.pt",
+     "used": null,
+     "url": "https://en.newsroom.ana.pt/lisbon-airport.html"
+    },
+    {
+     "n": 3,
+     "host": "ana.pt",
+     "used": null,
+     "url": "https://www.ana.pt/en"
+    },
+    {
+     "n": 4,
+     "host": "en.newsroom.ana.pt",
+     "used": null,
+     "url": "https://en.newsroom.ana.pt/news/"
+    },
+    {
+     "n": 5,
+     "host": "ana.pt",
+     "used": null,
+     "url": "https://www.ana.pt/en/taxonomy/term/40?language=es&page=69"
+    },
+    {
+     "n": 6,
+     "host": "ana.pt",
+     "used": null,
+     "url": "https://www.ana.pt/en/content-topic/find-flights"
+    },
+    {
+     "n": 7,
+     "host": "en.newsroom.ana.pt",
+     "used": null,
+     "url": "https://en.newsroom.ana.pt/"
+    },
+    {
+     "n": 8,
+     "host": "ana.pt",
+     "used": null,
+     "url": "https://www.ana.pt/en/content-topic/find-flights?page="
+    },
+    {
+     "n": 9,
+     "host": "ana.pt",
+     "used": null,
+     "url": "https://www.ana.pt/en/taxonomy/term/39?page=34"
+    },
+    {
+     "n": 10,
+     "host": "ana.pt",
+     "used": null,
+     "url": "https://www.ana.pt/en/news-article-tags/lisbon"
+    },
+    {
+     "n": 11,
+     "host": "en.newsroom.ana.pt",
+     "used": null,
+     "url": "https://en.newsroom.ana.pt/feed"
+    },
+    {
+     "n": 12,
+     "host": "en.newsroom.ana.pt",
+     "used": null,
+     "url": "https://en.newsroom.ana.pt/folders/publications-caaa-614cf.html"
+    },
+    {
+     "n": 13,
+     "host": "en.newsroom.ana.pt",
+     "used": null,
+     "url": "https://en.newsroom.ana.pt/traffic.html"
+    },
+    {
+     "n": 14,
+     "host": "en.newsroom.ana.pt",
+     "used": null,
+     "url": "https://en.newsroom.ana.pt/newsletter/"
+    },
+    {
+     "n": 15,
+     "host": "en.newsroom.ana.pt",
+     "used": null,
+     "url": "https://en.newsroom.ana.pt/assets/"
+    }
+   ],
+   "statements": [
+    {
+     "i": 1,
+     "kind": "none-found",
+     "s": "It found no ANA statement on Storm Charles at Lisbon airport.",
+     "cites": [],
+     "check": "wrong",
+     "at": "https://en.newsroom.ana.pt/news/",
+     "read_utc": "2026-11-11T13:34:16Z",
+     "note": "The newsroom address it gave in the same sentence lists, at the top, ANA's statement of 11 November, \"Adverse weather conditions: update by airport\". The engine pointed at the page and said nothing was there."
+    },
+    {
+     "i": 2,
+     "kind": "claim",
+     "s": "ANA's own newsroom is at en.newsroom.ana.pt/news/.",
+     "cites": [],
+     "also": [
+      "https://en.newsroom.ana.pt/news/",
+      "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html"
+     ],
+     "check": "primary",
+     "at": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
+     "read_utc": "2026-11-11T13:35:12Z",
+     "lead": "ana-statement",
+     "note": "Read at ANA's newsroom: we followed the address to the statement itself."
+    },
+    {
+     "i": 3,
+     "kind": "none-found",
+     "s": "It found no NAV Portugal statement.",
+     "cites": [],
+     "check": "said-none",
+     "note": "Not checked by us at nav.pt."
+    },
+    {
+     "i": 4,
+     "kind": "none-found",
+     "s": "It found no TAP statement.",
+     "cites": [],
+     "check": "said-none",
+     "note": "Not checked by us at flytap.com. The Portuguese answer found TAP's words in the press."
+    },
+    {
+     "i": 5,
+     "kind": "claim",
+     "s": "ANA's flight-information page was updated on 11 November at 07:30 UTC and is about flight status, not a statement on the storm.",
+     "cites": [],
+     "also": [
+      "https://www.ana.pt/en/content-topic/find-flights"
+     ],
+     "check": "not-found",
+     "at": "https://www.ana.pt/en/content-topic/find-flights",
+     "read_utc": "2026-11-11T13:34:19Z",
+     "note": "We found no 07:30 on the page. And the page does carry ANA's own notice: \"Due to adverse weather conditions, some flights are being affected\", with advice to check with the airline and allow extra time."
+    }
+   ]
+  },
+  {
+   "k": 2,
+   "at": "2026-11-11T13:32:28Z",
+   "lang": "pt",
+   "question": "Depressão Charles, Lisboa, 10 e 11 de novembro de 2026: o que publicou a própria ANA Aeroportos de Portugal (VINCI Airports) sobre a operação do aeroporto Humberto Delgado (operação condicionada, cancelamentos, conselhos aos passageiros), e o que publicaram a NAV Portugal e a TAP? Indique o endereço do comunicado de cada entidade e quando foi publicado.",
+   "model": "perplexity/sonar",
+   "model_served": "perplexity/sonar",
+   "settings": {
+    "brief": "the research brief (tools/perplexity-ask.mjs, BRIEF) with the time of asking",
+    "max_tokens": 800,
+    "search_context": "the engine's default"
+   },
+   "status": "ok",
+   "cost_usd": 0.0054747,
+   "tokens_in": 205,
+   "tokens_out": 323,
+   "latency_ms": 5124,
+   "raw": "2026-11-11/20261111T133228-330dacf9.json",
+   "raw_sha256": "4120f40320483154",
+   "cited": [
+    {
+     "n": 1,
+     "host": "ana.pt",
+     "used": true,
+     "url": "https://www.ana.pt/en/content-topic/find-flights?language=en&page=1"
+    },
+    {
+     "n": 2,
+     "host": "plataformamedia.com",
+     "used": true,
+     "url": "https://www.plataformamedia.com/en/2026/11/11/more-than-220-flights-canceled-at-lisbon-and-faro-airports-as-depression-charles-reaches-portugal/"
+    },
+    {
+     "n": 3,
+     "host": "heraldnews.com",
+     "used": true,
+     "url": "https://www.heraldnews.com/story/news/local/ojornal/2026/11/10/portugal-braces-for-storm-charles-as-schools-services-shut-down/92710458007/"
+    },
+    {
+     "n": 4,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en/taxonomy/term/41?language=es&page=11"
+    },
+    {
+     "n": 5,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en/taxonomy/term/39?page=34"
+    },
+    {
+     "n": 6,
+     "host": "newswav.com",
+     "used": false,
+     "url": "https://newswav.com/article/flights-cancelled-as-storm-charles-brings-disruption-to-portugal-A2611_l13IX0"
+    },
+    {
+     "n": 7,
+     "host": "hopinportugal.com",
+     "used": false,
+     "url": "https://hopinportugal.com/news-travel-updates/storm-charles-portugal/"
+    },
+    {
+     "n": 8,
+     "host": "madeiraislandnews.com",
+     "used": false,
+     "url": "https://www.madeiraislandnews.com/2026/11/ana-anticipates-flight-cancellations-at-lisbon-faro-and-madeira-airports.html"
+    },
+    {
+     "n": 9,
+     "host": "executivedigest.sapo.pt",
+     "used": false,
+     "url": "https://executivedigest.sapo.pt/depressao-charles-condiciona-aeroportos-de-lisboa-faro-e-madeira-ana-alerta-para-possiveis-cancelamentos-de-voos/"
+    },
+    {
+     "n": 10,
+     "host": "jornaleconomico.sapo.pt",
+     "used": true,
+     "url": "https://jornaleconomico.sapo.pt/noticias/mais-de-130-voos-da-tap-cancelados-em-lisboa-pelo-charles/"
+    },
+    {
+     "n": 11,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en/destinations/lisboa"
+    },
+    {
+     "n": 12,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en/content-topic/airlines-0"
+    },
+    {
+     "n": 13,
+     "host": "meteozentrale.de",
+     "used": false,
+     "url": "https://meteozentrale.de/live-ticker/en/meldung/portugal-acht-distrikte-wegen-sturmtief-charles-auf-rot-hochgestuft/"
+    },
+    {
+     "n": 14,
+     "host": "newswav.com",
+     "used": false,
+     "url": "https://newswav.com/article/chaos-in-portugal-as-storm-charles-sparks-flight-cancellations-A2611_prvlrA"
+    },
+    {
+     "n": 15,
+     "host": "jornaleconomico.sapo.pt",
+     "used": true,
+     "url": "https://jornaleconomico.sapo.pt/noticias/ana-preve-cancelamentos-de-voos-nos-aeroportos-de-lisboa-faro-e-madeira/"
+    }
+   ],
+   "statements": [
+    {
+     "i": 1,
+     "kind": "claim",
+     "s": "ANA said on 10 November at 19:18 that operations at Lisbon, Faro and Madeira airports would be conditioned on Wednesday, with cancellations expected, and advised passengers to confirm their flight before travelling.",
+     "cites": [
+      15,
+      3
+     ],
+     "check": "press",
+     "at": "https://jornaleconomico.sapo.pt/noticias/ana-preve-cancelamentos-de-voos-nos-aeroportos-de-lisboa-faro-e-madeira/",
+     "read_utc": "2026-11-11T13:33:39Z",
+     "note": "Jornal Económico, timed 19h18, quoting an official ANA source speaking to Lusa. The 19:18 is the newspaper's time, not ANA's; the answer says the statement is on ANA's own flights page, which it is not."
+    },
+    {
+     "i": 2,
+     "kind": "none-found",
+     "s": "It found no NAV Portugal statement.",
+     "cites": [],
+     "check": "said-none",
+     "note": "Not checked by us at nav.pt."
+    },
+    {
+     "i": 3,
+     "kind": "claim",
+     "s": "TAP said on 10 November that it was following the situation closely, had adjusted its operation and would adjust further, with safety first; found in the press, not on a TAP page.",
+     "cites": [
+      10
+     ],
+     "check": "press",
+     "at": "https://jornaleconomico.sapo.pt/noticias/mais-de-130-voos-da-tap-cancelados-em-lisboa-pelo-charles/",
+     "read_utc": "2026-11-11T13:33:34Z",
+     "note": "Jornal Económico quotes TAP's words of the day before, in an article on more than 130 TAP flights cancelled in Lisbon."
+    }
+   ]
+  }
+ ],
+ "addresses": {
+  "https://www.ana.pt/en/content-topic/find-flights?page=1&language=en": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/lisbon-airport.html": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/news/": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": true,
+   "read_utc": "2026-11-11T13:34:16Z",
+   "http": 200,
+   "bytes": 79343,
+   "sha256": "1bea13cf8f47629876e8964301b8bc91020260608126472d80ea90e9161a4e66",
+   "title": "News - ANA-Aeroportos de Portugal",
+   "text_chars": 1985
+  },
+  "https://www.ana.pt/en/taxonomy/term/40?language=es&page=69": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en/content-topic/find-flights": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": true,
+   "read_utc": "2026-11-11T13:34:19Z",
+   "http": 200,
+   "bytes": 296296,
+   "sha256": "ae18b4e4587c9e890e4aee7f8de62c57dd029e539aed1b892918157c0847e839",
+   "title": "Find Flights | Lisbon Airport",
+   "text_chars": 38748
+  },
+  "https://en.newsroom.ana.pt/": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en/content-topic/find-flights?page=": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en/taxonomy/term/39?page=34": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en/news-article-tags/lisbon": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/feed": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/folders/publications-caaa-614cf.html": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/traffic.html": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/newsletter/": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/assets/": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en/content-topic/find-flights?language=en&page=1": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": true,
+   "read_utc": "2026-11-11T13:33:24Z",
+   "http": 200,
+   "bytes": 414226,
+   "sha256": "ea36bf859203763255ac84b160a641a00f2aa93465c57160e7f46881b191b3a0",
+   "title": "Find Flights | Lisbon Airport",
+   "text_chars": 43520
+  },
+  "https://www.plataformamedia.com/en/2026/11/11/more-than-220-flights-canceled-at-lisbon-and-faro-airports-as-depression-charles-reaches-portugal/": {
+   "host": "plataformamedia.com",
+   "class": "press",
+   "opened": true,
+   "read_utc": "2026-11-11T13:33:27Z",
+   "http": 200,
+   "bytes": 123616,
+   "sha256": "caf5a9f76d91c50dbd1899ec5635e0b98a96cc330de41ad4b75dad12f346ab20",
+   "title": "More than 220 flights canceled at Lisbon and Faro airports as depression Charles reaches Portugal - Plataforma Media",
+   "text_chars": 4332
+  },
+  "https://www.heraldnews.com/story/news/local/ojornal/2026/11/10/portugal-braces-for-storm-charles-as-schools-services-shut-down/92710458007/": {
+   "host": "heraldnews.com",
+   "class": "press",
+   "opened": true,
+   "read_utc": "2026-11-11T13:33:30Z",
+   "http": 200,
+   "bytes": 200012,
+   "sha256": "7df85582f71f29101969875f40674a3b30fed5ae6539cfc9940b59bd365befa1",
+   "title": "Portugal braces for Storm Charles as schools, services shut down",
+   "text_chars": 6677
+  },
+  "https://www.ana.pt/en/taxonomy/term/41?language=es&page=11": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://newswav.com/article/flights-cancelled-as-storm-charles-brings-disruption-to-portugal-A2611_l13IX0": {
+   "host": "newswav.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://hopinportugal.com/news-travel-updates/storm-charles-portugal/": {
+   "host": "hopinportugal.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.madeiraislandnews.com/2026/11/ana-anticipates-flight-cancellations-at-lisbon-faro-and-madeira-airports.html": {
+   "host": "madeiraislandnews.com",
+   "class": "press",
+   "source": "press",
+   "opened": false
+  },
+  "https://executivedigest.sapo.pt/depressao-charles-condiciona-aeroportos-de-lisboa-faro-e-madeira-ana-alerta-para-possiveis-cancelamentos-de-voos/": {
+   "host": "executivedigest.sapo.pt",
+   "class": "press",
+   "opened": false
+  },
+  "https://jornaleconomico.sapo.pt/noticias/mais-de-130-voos-da-tap-cancelados-em-lisboa-pelo-charles/": {
+   "host": "jornaleconomico.sapo.pt",
+   "class": "press",
+   "source": "press",
+   "opened": true,
+   "read_utc": "2026-11-11T13:33:34Z",
+   "http": 200,
+   "bytes": 164574,
+   "sha256": "8be0c9176d5a3a0bd9b2b0675e4100bfaed5f653a25a9a21c3942bb6e57890d5",
+   "title": "Mais de 130 voos da TAP cancelados em Lisboa pelo Charles | Jornal Económico",
+   "text_chars": 4509
+  },
+  "https://www.ana.pt/en/destinations/lisboa": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en/content-topic/airlines-0": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://meteozentrale.de/live-ticker/en/meldung/portugal-acht-distrikte-wegen-sturmtief-charles-auf-rot-hochgestuft/": {
+   "host": "meteozentrale.de",
+   "class": "other",
+   "opened": false
+  },
+  "https://newswav.com/article/chaos-in-portugal-as-storm-charles-sparks-flight-cancellations-A2611_prvlrA": {
+   "host": "newswav.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://jornaleconomico.sapo.pt/noticias/ana-preve-cancelamentos-de-voos-nos-aeroportos-de-lisboa-faro-e-madeira/": {
+   "host": "jornaleconomico.sapo.pt",
+   "class": "press",
+   "source": "press",
+   "opened": true,
+   "read_utc": "2026-11-11T13:33:39Z",
+   "http": 200,
+   "bytes": 145056,
+   "sha256": "0df32ea03058a598cc4777c8ec800bfcbb70928b8cc56611bb3a51bfedf208f1",
+   "title": "ANA prevê cancelamentos de voos nos aeroportos de Lisboa, Faro e Madeira | Jornal Económico",
+   "text_chars": 4738
+  },
+  "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": true,
+   "read_utc": "2026-11-11T13:35:12Z",
+   "http": 200,
+   "bytes": 80823,
+   "sha256": "1ce300c124d2dba09a9e71a05d3c5883151fa66f2e45e9384bd582dcd4860d0d",
+   "title": "Adverse weather conditions: update by airport – 11 November",
+   "text_chars": 2876
+  }
+ },
+ "checked_by": "incident.perplexity@web-summit.dinis"
+}

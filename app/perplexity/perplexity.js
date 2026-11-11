@@ -5,13 +5,13 @@
     const base = el.dataset.base || './', h = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
     let S; try { S = await (await fetch(base + 'scorecard.json', { cache: 'no-store' })).json() } catch { return }
     const usd = x => x == null ? 'n/a' : x < 0.1 ? x.toFixed(4) : x.toFixed(2), o = S.overall
-    const MARKS = [['confirmed', 'confirmed at a primary source'], ['press', 'press only'], ['unsupported', 'unsupported'], ['wrong', 'wrong'], ['none_found', 'the engine said it found none']]
+    const MARKS = [['confirmed', 'confirmed at a primary source'], ['press', 'press only'], ['unsupported', 'unsupported'], ['wrong', 'wrong'], ['unchecked', 'not checked (on hold, or did not render)'], ['none_found', 'the engine said it found none']]
     const ADDR = [['primary', 'a primary body\'s own page'], ['press', 'press'], ['aggregator', 'a site that rewrites others'], ['other', 'other'], ['not_requested', 'not requested by us (terms, social)']]
     const bar = (x, keys, get) => { const tot = keys.reduce((s, [k]) => s + get(x, k), 0) || 1; return `<div class="px-track" role="img" aria-label="${h(keys.map(([k, l]) => get(x, k) + ' ' + l).join(', '))}">${keys.map(([k, l]) => get(x, k) ? `<span class="px-seg ${k}" style="width:${(100 * get(x, k) / tot).toFixed(2)}%" title="${get(x, k)} ${h(l)}"></span>` : '').join('')}</div>` }
     const m = (x, k) => x[k] || 0, a = (x, k) => x['addresses_' + k] || 0
     const rows = (list, keys, get, num) => `<div class="px-rows">${list.map(([name, x]) => `<div class="name">${name}</div>${bar(x, keys, get)}<div class="num">${num(x)}</div>`).join('')}</div>`
     const legend = keys => `<p class="px-legend">${keys.map(([k, l]) => `<span><i class="px-seg ${k}"></i>${h(l)}</span>`).join('')}</p>`
-    const marksNum = x => `${x.confirmed} · ${x.press} · ${x.unsupported} · ${x.wrong} · ${x.none_found}`
+    const marksNum = x => `${x.confirmed} · ${x.press} · ${x.unsupported} · ${x.wrong} · ${x.unchecked || 0} · ${x.none_found}`
     const runs = S.per_run.map(r => [`<a href="#run-${r.run}-${h(String(r.topic).toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-'))}">Run ${r.run}</a>: ${h(r.topic)}`, r])
     const models = Object.entries(S.by_model).map(([k, v]) => [`<code>${h(k)}</code>`, v]), langs = Object.entries(S.by_lang).map(([k, v]) => [k === 'pt' ? 'Asked in Portuguese' : 'Asked in English', v])
     el.innerHTML = `<section class="px">

@@ -1,7 +1,7 @@
 {
  "about": "Leads from the Perplexity research runs, offered to incident.conductor@: only what this desk itself read at a primary body's own address, with the address, the time read (UTC) and the page's sha256. Nothing here is in the timeline by this desk. Press-only findings are in the run files and are not leads.",
  "by": "incident.perplexity@web-summit.dinis",
- "updated": "2026-11-11T05:27:40Z",
+ "updated": "2026-11-11T13:37:24Z",
  "for": "incident.conductor@web-summit.dinis",
  "leads": [
   {
@@ -79,6 +79,51 @@
      "model": "perplexity/sonar",
      "lang": "pt",
      "statement": "On Web Summit's own session page the PITCH semi-final was set for 11 November 2026, 17:00 to 18:00, Centre Stage."
+    }
+   ]
+  },
+  {
+   "id": "ana-statement",
+   "title": "ANA's own statement on the airports, with figures at 11:00.",
+   "what": "ANA's newsroom, \"Adverse weather conditions: update by airport – 11 November\", dated 11 November 2026: at 11:00, Lisbon had 565 scheduled movements, 288 cancelled in advance by airlines, 45 operated and 22 further cancellations during the day; Madeira 80 scheduled, 20 cancelled in advance; Faro 62 and 14; Porto 214 and 12. ANA advises passengers to check with their airline before travelling. ANA's flights page (ana.pt, read 13:34) also carries its notice that adverse weather is affecting some flights. The engine returned the newsroom's address and said no statement was there; we followed it.",
+   "bears_on": [
+    "decisions/entities/airport.json (open: ANA's statement read in the press only)"
+   ],
+   "label": "a lead: read by us at the body's own address; for incident.conductor@ to route, not a row in the timeline",
+   "address": "https://en.newsroom.ana.pt/news/adverse-weather-conditions-update-by-airport-11-november-5e629-614cf.html",
+   "read_utc": "2026-11-11T13:35:12Z",
+   "sha256": "1ce300c124d2dba09a9e71a05d3c5883151fa66f2e45e9384bd582dcd4860d0d",
+   "host_class": "primary",
+   "found_by": [
+    {
+     "run": "runs/2026-11-11/4.json",
+     "ask": 1,
+     "model": "perplexity/sonar-pro",
+     "lang": "en",
+     "statement": "ANA's own newsroom is at en.newsroom.ana.pt/news/."
+    }
+   ]
+  },
+  {
+   "id": "gov-despacho-page",
+   "title": "The government's own page for the despacho, timed 13:11 on 10 November.",
+   "what": "portugal.gov.pt, Documentos, \"Declaração de situação de alerta - despacho governamental publicado em Diário da República\", 2026-11-10 às 13h11: the despacho declaring the alert from 00:00 to 23:59 on 11 November for the whole mainland is published. Neither this page nor the government's news page of 10h33 names Web Summit: a negative finding at the primary address for the board's question on the government's advice.",
+   "bears_on": [
+    "board q-government-advice-text",
+    "the timeline's 12:10 row on the alert situation"
+   ],
+   "label": "a lead: read by us at the body's own address; for incident.conductor@ to route, not a row in the timeline",
+   "address": "https://portugal.gov.pt/gc25/comunicacao/documentos/publicado-despacho-sobre-a-declaracao-da-situacao-de-alerta-entre-as-00h00-e-as-23h59-do-dia-11-de-novembro-de-2026-para-todo-o-territorio-continental",
+   "read_utc": "2026-11-11T13:33:53Z",
+   "sha256": "f65a618c102272cafdcc695730a6fe025e11e19bde94e9acc566c82fb1bb802e",
+   "host_class": "primary",
+   "found_by": [
+    {
+     "run": "runs/2026-11-11/5.json",
+     "ask": 2,
+     "model": "perplexity/sonar",
+     "lang": "pt",
+     "statement": "The alert is published as Despacho n.º 13773-A/2026 and on a page of the government's portal: all of the mainland, 00:00 to 23:59 on 11 November."
     }
    ]
   }

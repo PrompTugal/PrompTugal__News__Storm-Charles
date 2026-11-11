@@ -19,7 +19,7 @@ for (const d of fs.readdirSync(path.join(P, 'runs')).sort()) for (const f of fs.
 export const CHECKS = {
     primary: { label: 'confirmed at a primary source', bucket: 'confirmed' }, press: { label: 'press only', bucket: 'press' },
     'not-found': { label: 'not found at the address cited', bucket: 'unsupported' }, 'no-address': { label: 'no address given', bucket: 'unsupported' },
-    wrong: { label: 'wrong', bucket: 'wrong' }, 'said-none': { label: 'the engine said it found none', bucket: 'none_found' },
+    wrong: { label: 'wrong', bucket: 'wrong' }, held: { label: 'not checked: the site is on hold', bucket: 'unchecked' }, unreadable: { label: 'not checked: the address did not render for our reader', bucket: 'unchecked' }, 'said-none': { label: 'the engine said it found none', bucket: 'none_found' },
 }
 const zero = () => ({ asks: 0, statements: 0, confirmed: 0, press: 0, unsupported: 0, wrong: 0, none_found: 0, unchecked: 0, addresses: 0, addresses_primary: 0, addresses_press: 0, addresses_aggregator: 0, addresses_other: 0, addresses_not_requested: 0, cost_usd: 0, latency_ms: [], tokens_in: 0, tokens_out: 0 })
 function add(t, q, run) {
@@ -57,8 +57,8 @@ const esc = s => String(s ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ')
 const usd = x => x == null ? 'n/a' : x < 0.1 ? x.toFixed(4) : x.toFixed(2), t = z => z ? z.slice(11, 16) : ''
 const slug = h => h.toLowerCase().replace(/<[^>]+>|[^\w\s-]/g, '').trim().replace(/\s+/g, '-')   // as admin/build/build.mjs makes a heading's id
 const short = u => { try { const p = new URL(u); return p.hostname.replace(/^www\./, '') } catch { return u } }
-const row = (name, x) => `| ${name} | ${x.asks} | ${x.statements} | ${x.confirmed} | ${x.press} | ${x.unsupported} | ${x.wrong} | ${x.none_found} | ${x.addresses} | ${x.addresses_primary} | ${usd(x.cost_usd)} | ${x.latency_ms_median != null ? (x.latency_ms_median / 1000).toFixed(1) + ' s' : ''} |`
-const HEAD = '| | Answers | Statements | Confirmed at a primary source | Press only | Unsupported | Wrong | "Found none" | Addresses returned | of them primary bodies | Cost, USD | Median wait |\n|---|---|---|---|---|---|---|---|---|---|---|---|'
+const row = (name, x) => `| ${name} | ${x.asks} | ${x.statements} | ${x.confirmed} | ${x.press} | ${x.unsupported} | ${x.wrong} | ${x.unchecked} | ${x.none_found} | ${x.addresses} | ${x.addresses_primary} | ${usd(x.cost_usd)} | ${x.latency_ms_median != null ? (x.latency_ms_median / 1000).toFixed(1) + ' s' : ''} |`
+const HEAD = '| | Answers | Statements | Confirmed at a primary source | Press only | Unsupported | Wrong | Not checked | "Found none" | Addresses returned | of them primary bodies | Cost, USD | Median wait |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|'
 const notes = fs.existsSync(path.join(P, 'notes.md')) ? fs.readFileSync(path.join(P, 'notes.md'), 'utf8').replace(/^>.*\n+/, '').trim() : ''
 let md = `---
 title: Perplexity as a research tool
@@ -72,9 +72,9 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and **nothing an engine said is a fact here**: an answer is evidence about the engine. A statement becomes a *lead* only when this desk has read it at the body's own address, and a lead becomes a row in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md) only by incident.conductor@.
 
-**Runs are paused since 02:54 UTC on 11 November** for lack of credit on the OpenRouter account (not this desk's budget, not the key's limit): one model, three questions so far.
+**Runs were paused from 02:54 to 13:30 UTC on 11 November** for lack of credit on the OpenRouter account; they resumed at 13:30.
 
-**In one sentence:** ${S.wrong} wrong and ${S.unsupported} unsupported of ${S.statements} statements, ${S.confirmed} confirmed at a primary body, and it missed that the bridges' speed limit had been lifted, on a page it cited.
+**In one sentence:** of ${S.statements} statements, ${S.confirmed} confirmed at a primary body, ${S.press} press only, ${S.unsupported} unsupported and ${S.wrong} wrong; the two wrong ones are the instructive ones: it said a government page records advice to Web Summit that the page does not contain, and it said ANA had published nothing while citing the page that lists ANA's statement.
 
 ## What this is
 
@@ -92,7 +92,7 @@ Unlike the shadow desk's bare questions, a research question carries a short bri
 
 ## The scorecard
 
-So far: **${runs.length}** runs, **${S.asks}** answers, **${S.statements}** statements checked: **${S.confirmed}** confirmed at a primary source, **${S.press}** press only, **${S.unsupported}** unsupported, **${S.wrong}** wrong; **${S.none_found}** times the engine said it found no page. It returned **${S.addresses}** addresses; **${S.addresses_primary}** were a primary body's own page. Spent: **${usd(S.cost_usd)} US dollars** (this desk plans up to 4 a day of the team's 20). Leads offered to the conductor: **${leadList.length}**${leadList.length ? ` (${usd(scorecard.cost_per_lead_usd)} US dollars each)` : ''}. Data: [scorecard.json](scorecard.json), [leads.json](leads.json), [runs/](runs/), [hosts.json](hosts.json).
+So far: **${runs.length}** runs, **${S.asks}** answers, **${S.statements}** statements checked: **${S.confirmed}** confirmed at a primary source, **${S.press}** press only, **${S.unsupported}** unsupported, **${S.wrong}** wrong, **${S.unchecked}** not checked (a site on hold, or a page that did not render); **${S.none_found}** times the engine said it found no page. It returned **${S.addresses}** addresses; **${S.addresses_primary}** were a primary body's own page. Spent: **${usd(S.cost_usd)} US dollars** (this desk plans up to 4 a day of the team's 20). Leads offered to the conductor: **${leadList.length}**${leadList.length ? ` (${usd(scorecard.cost_per_lead_usd)} US dollars each)` : ''}. Data: [scorecard.json](scorecard.json), [leads.json](leads.json), [runs/](runs/), [hosts.json](hosts.json).
 
 ### By run
 
@@ -104,7 +104,7 @@ ${row('**All**', S)}
 
 ${HEAD}
 ${Object.entries(scorecard.by_model).map(([k, v]) => row('`' + k + '`', v)).join('\n')}
-${refused.length ? `\nNot yet compared: ${[...new Set(refused.map(x => '`' + x.model + '`'))].join(', ')}. ${refused.length} calls were refused by OpenRouter (HTTP 402 at ${t(refused[0].at)} UTC: the OpenRouter account's credit balance had run out; the key's own limit was fine); nothing was spent on them. The comparison of Sonar variants on the same questions follows when the account is topped up.\n` : ''}
+${refused.length ? `\n${refused.filter(x => x.status === 'empty').length} calls to \`perplexity/sonar-reasoning-pro\` returned nothing (no text, no addresses, no cost reported) after 20 to 35 s each, so that variant is not compared. ${refused.filter(x => x.status !== 'empty').length} calls were refused earlier for lack of account credit, at no cost.\n` : ''}
 ### By language of the question
 
 ${HEAD}
