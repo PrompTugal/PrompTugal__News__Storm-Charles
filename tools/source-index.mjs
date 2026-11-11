@@ -32,6 +32,20 @@ for (const f of [...walk(path.join(ROOT, 'incidents')), ...walk(path.join(ROOT, 
     if (f.endsWith('signals.json')) continue
     for (const m of fs.readFileSync(f, 'utf8').matchAll(/https?:\/\/[a-zA-Z0-9.-]+/g)) { const h = host(m[0]); if (h) mentions[h] = (mentions[h] || 0) + 1 }
 }
+// rows whose addresses the researcher found afterwards (data/decisions/addresses.json): the same count, completed
+for (const inc of fs.readdirSync(path.join(ROOT, 'incidents'))) {
+    const f = `incidents/${inc}/data/decisions/addresses.json`
+    if (!fs.existsSync(path.join(ROOT, f))) continue
+    for (const r of rd(f).rows || []) for (const h of new Set((r.addresses || []).map(host).filter(Boolean))) if (!(rowIds[h] || []).some(x => x.id === r.row)) (rowIds[h] ||= []).push({ incident: inc, id: r.row })
+}
+// the terms incident.weatherwatch@ already read (research/weather-sites/terms.json): matched by the host of the terms page; never re-read here
+const bare = h => h.replace(/^www\./, '')
+const TERMS_FILE = 'research/weather-sites/terms.json', ww = {}
+const SIG = { open_licence: 'an open licence is named', non_commercial_only: 'non-commercial or personal use only', needs_permission: 'prior permission required', names_automated_access_or_ai: 'automated access or AI is named' }
+if (fs.existsSync(path.join(ROOT, TERMS_FILE))) for (const [site, v] of Object.entries(rd(TERMS_FILE).sites || {})) {
+    if (!v || !v.terms_url || v.status !== '200' || !(v.excerpts || []).length) continue
+    const h = bare(host(v.terms_url)); (ww[h] ||= []).push({ site, ...v })
+}
 const claimed = new Set()
 const GROUPS = [['official', 'Official bodies'], ['transport', 'Transport operators and venues'], ['reference', 'Reference and open data'], ['press', 'The press'], ['platform', 'Platforms']]
 const sources = reg.sources.map(s => {
@@ -40,17 +54,20 @@ const sources = reg.sources.map(s => {
     const uniq = [...new Map(ids.map(x => [x.incident + x.id, x])).values()]
     const section = s.section && fs.existsSync(path.join(ROOT, 'sources', s.section.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md'))) ? s.section : null
     const entity = s.entity && fs.existsSync(path.join(ROOT, 'entities', s.entity + '.json')) ? s.entity : undefined
-    return { ...s, entity, entity_page: entity ? `entities/${entity}.html` : undefined, page: section || `${s.id}/index.html`, section, section_planned: s.section && !section ? s.section : undefined, cited: { timeline_rows: uniq.length, row_ids: uniq.map(x => x.id), addresses_in_data_and_research: s.hosts.reduce((n, h) => n + (mentions[h] || 0), 0) } }
+    const t = s.hosts.flatMap(h => ww[bare(h)] || [])[0]
+    const terms_read_by_weatherwatch = t ? { file: TERMS_FILE, site: t.site, terms_url: t.terms_url, read_utc: t.read, signals: t.signals || [], says: (t.signals || []).map(x => SIG[x] || x), excerpts: t.excerpts } : undefined
+    const automated_reading = t && (t.signals || []).includes('names_automated_access_or_ai') ? 'its terms name automated access: this agent makes no requests to it; link only' : undefined
+    return { ...s, terms_read_by_weatherwatch, automated_reading, entity, entity_page: entity ? `entities/${entity}.html` : undefined, page: section || `${s.id}/index.html`, section, section_planned: s.section && !section ? s.section : undefined, cited: { timeline_rows: uniq.length, row_ids: uniq.map(x => x.id), addresses_in_data_and_research: s.hosts.reduce((n, h) => n + (mentions[h] || 0), 0) } }
 })
 const unclaimed = Object.entries(mentions).filter(([h]) => !claimed.has(h) && !/promptugal\.news|sgit\.ai|creativecommons|github|w3\.org|schema\.org/.test(h)).sort((a, b) => b[1] - a[1])
 fs.writeFileSync(path.join(ROOT, 'sources/sources.json'), JSON.stringify({
     about: 'Every outside body this site takes data from or cites, official bodies first. For each: who (bodies only, no people, no contact details), what it publishes, what we take, its hosts, the licence as published (or that we have not read it yet), and how often we cite it: timeline_rows (rows of the incident timeline with a link to one of its hosts) and addresses_in_data_and_research (how many of its addresses appear in incidents/ and research/). Counted from this repository at the time made; the register is sources/registry.json. Node ids (`node`) are stable.',
     made_by: 'tools/source-index.mjs', by: BY, updated: now,
-    counts: { sources: sources.length, with_a_section: sources.filter(s => s.section).length, licence_read: sources.filter(s => s.licence.status === 'read').length, hosts_cited_but_not_registered: unclaimed.length },
+    counts: { sources: sources.length, with_a_section: sources.filter(s => s.section).length, licence_read: sources.filter(s => s.licence.status === 'read').length, licence_read_by_weatherwatch: sources.filter(s => s.licence.status !== 'read' && s.terms_read_by_weatherwatch).length, hosts_cited_but_not_registered: unclaimed.length },
     sources, not_yet_registered: unclaimed.slice(0, 80).map(([h, n]) => ({ host: h, addresses: n })),
 }, null, 1) + '\n')
 
-const lic = s => s.licence.status === 'read' ? `${s.licence.summary} ([terms](${s.licence.url}), read ${s.licence.read_utc.slice(0, 16).replace('T', ' ')} UTC)` : s.licence.status === 'not read yet' ? 'not read yet' : (s.licence.note || 'not read yet')
+const lic = s => s.licence.status !== 'read' && s.terms_read_by_weatherwatch ? `read by incident.weatherwatch@ ([its terms](${s.terms_read_by_weatherwatch.terms_url}), ${s.terms_read_by_weatherwatch.read_utc.replace('T', ' ').replace('Z', ' UTC')}): ${s.terms_read_by_weatherwatch.says.join('; ') || 'no reuse signal found; see the excerpts'}${s.automated_reading ? '. **No automated reading: link only**' : ''}` : s.licence.status === 'read' ? `${s.licence.summary} ([terms](${s.licence.url}), read ${s.licence.read_utc.slice(0, 16).replace('T', ' ')} UTC)` : s.licence.status === 'not read yet' ? 'not read yet' : (s.licence.note || 'not read yet')
 let md = `# Sources: every body this site takes data from\n\n> Kept by ${BY}, ${kept()}\n\nBefore you leave for a source, meet it here: who it is, what it publishes, what we take from it, under what licence, and how often this site cites it. ${sources.length} bodies so far; ${sources.filter(s => s.section).length} with a section of their own so far, MeteoAlarm first. The same as data: [sources.json](sources.json). **Not a warning service:** follow IPMA, ANEPC and your local authorities.\n\nA link in the *Their site* column leaves this site. *Rows* is how many rows of [the timeline](../incidents/2026-11-10-storm-charles/timeline.md) link to the body; *addresses* is how many of its addresses appear in our data and research. Counted ${now.slice(0, 16).replace('T', ' ')} UTC.\n`
 for (const [g, title] of GROUPS) {
     const list = sources.filter(s => s.group === g).sort((a, b) => (b.section ? 1 : 0) - (a.section ? 1 : 0) || b.cited.timeline_rows - a.cited.timeline_rows || b.cited.addresses_in_data_and_research - a.cited.addresses_in_data_and_research)
@@ -60,7 +77,7 @@ for (const [g, title] of GROUPS) {
 }
 md += `\n## The licence map: can we access it, can we change it?\n\n| Body | Access | Change and republish | As published |\n|---|---|---|---|\n`
 for (const s of sources.filter(s => s.licence.status === 'read')) md += `| ${s.name} | ${s.licence.access} | ${s.licence.manipulate} | ${s.licence.summary} ([terms](${s.licence.url})) |\n`
-md += `\nFor the ${sources.filter(s => s.licence.status === 'not read yet').length} bodies marked *not read yet* we have not read the terms page ourselves: until we have, this site links to them and quotes short excerpts only, and keeps no copy of their pages in git. The press: text is quoted in short excerpts with a link, raw captures stay in a private vault (the site's rule). Each is read in the rounds to come, most cited first.\n\n## Not yet in the register\n\n${unclaimed.length} more hosts appear in our data and research (weather sites surveyed by incident.weatherwatch@, single articles). The most frequent: ${unclaimed.slice(0, 12).map(([h, n]) => `\`${h}\` (${n})`).join(', ')}. The full list is in [sources.json](sources.json) under \`not_yet_registered\`.\n\n## How this page is made\n\nThe register is [registry.json](registry.json), kept by hand; \`tools/source-index.mjs\` counts the citations and writes this page and [sources.json](sources.json). Each body has a stable node id (\`source:<id>\`) for the entity pages. Page captures (screenshots, hashes) are incident.archivist@'s; this section describes the sources and reads their feeds.\n`
+md += `\nOne statement per licence: the terms of weather sites and outlets are read by incident.weatherwatch@ ([terms.json](../research/weather-sites/terms.json), excerpts verbatim) and shown here as its reading; meteorological data licences are kept in [the meteorology table](../meteorology/licences.md) by incident.meteorology@; this section reads the rest.\n\nFor the ${sources.filter(s => s.licence.status === 'not read yet' && !s.terms_read_by_weatherwatch).length} bodies marked *not read yet* nobody here has read the terms page: until we have, this site links to them and quotes short excerpts only, and keeps no copy of their pages in git. The press: text is quoted in short excerpts with a link, raw captures stay in a private vault (the site's rule). Each is read in the rounds to come, most cited first.\n\n## Not yet in the register\n\n${unclaimed.length} more hosts appear in our data and research (weather sites surveyed by incident.weatherwatch@, single articles). The most frequent: ${unclaimed.slice(0, 12).map(([h, n]) => `\`${h}\` (${n})`).join(', ')}. The full list is in [sources.json](sources.json) under \`not_yet_registered\`.\n\n## How this page is made\n\nThe register is [registry.json](registry.json), kept by hand; \`tools/source-index.mjs\` counts the citations and writes this page and [sources.json](sources.json). Each body has a stable node id (\`source:<id>\`) for the entity pages. Page captures (screenshots, hashes) are incident.archivist@'s; this section describes the sources and reads their feeds.\n`
 fs.writeFileSync(path.join(ROOT, 'sources/README.md'), md)
 
 // the API map as a page
