@@ -112,6 +112,7 @@ function link() {
     const files = []; (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); e.isDirectory() ? walk(f) : e.name.endsWith('.html') && files.push(f) } })(OUT)
     for (const f of files) {
         const rel = path.relative(OUT, f).split(path.sep).join('/')
+        if (rel.startsWith('board/items/')) { stats.left_to_the_browser = (stats.left_to_the_browser || 0) + 1; continue }   // a third of the bytes: linked in the browser by app/lens/lens.js (the conductor's decision, 11 Nov)
         if (rel.startsWith('view/')) continue   // the librarian's file viewers show a file as it is: its text is not linked
         const html = fs.readFileSync(f, 'latin1')
         const up = rel === '404.html' ? '/' : '../'.repeat(rel.split('/').length - 1)
