@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T08:00:00Z and 2026-11-11T09:00:00Z: the facts behind the article news/2026-11-11T08.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T08:44:34Z",
+ "updated": "2026-11-11T08:55:54Z",
  "window": {
   "from": "2026-11-11T08:00:00Z",
   "to": "2026-11-11T09:00:00Z"
@@ -13,20 +13,28 @@
  ],
  "versions": {
   "first": "v0.1.677",
-  "last": "v0.1.703",
-  "pushed": 24,
-  "served": 8,
+  "last": "v0.1.717",
+  "pushed": 41,
+  "served": 38,
   "as_of": "library/releases/2026-11-11T08.json",
-  "not_confirmed": 0,
+  "not_confirmed": 3,
   "failed": 0
  },
  "by_agent": [
+  {
+   "agent": "incident.conductor@web-summit.dinis",
+   "commits": 7
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 6
+  },
   {
    "agent": "incident.journalist@web-summit.dinis",
    "commits": 5
   },
   {
-   "agent": "incident.conductor@web-summit.dinis",
+   "agent": "incident.entities@web-summit.dinis",
    "commits": 5
   },
   {
@@ -34,8 +42,8 @@
    "commits": 4
   },
   {
-   "agent": "incident.stories@web-summit.dinis",
-   "commits": 2
+   "agent": "incident.librarian@web-summit.dinis",
+   "commits": 3
   },
   {
    "agent": "incident.reporter@web-summit.dinis",
@@ -82,19 +90,43 @@
    "commits": 1
   },
   {
-   "agent": "incident.entities@web-summit.dinis",
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
    "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-11T0845Z.md",
   "journal/nobody-asked.md",
+  "news/2026-11-11T08.md",
   "research/media/people/sofia-fonseca.md"
  ],
  "new_datasets": [
   "data/agents/detail-2026-11-11T08.json",
   "data/ci/commits/2026-11-11T08.json",
   "data/ci/runs/2026-11-11T08.json",
+  "entities/decision/amn-bars-closed.json",
+  "entities/decision/anepc-mainland-count-0600.json",
+  "entities/organisation/vost-portugal.json",
+  "entities/place/cabo-raso.json",
+  "entities/place/camara-de-lobos.json",
+  "entities/place/machico.json",
+  "entities/place/parque-das-nacoes.json",
+  "entities/place/ponta-do-sol.json",
+  "entities/place/ribeira-brava.json",
+  "entities/term/diario-da-republica.json",
+  "entities/warning/ipma-wind-orange.json",
   "evidence/anepc/2026/11/11/0824-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.json",
   "evidence/anepc/2026/11/11/0824-pt-avisos-a-populacao.json",
   "evidence/governo/2026/11/11/0825-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.json",
@@ -112,15 +144,134 @@
   "data/ci/runs/2026-11-11T00.json",
   "data/ci/runs/2026-11-11T07.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-decisions.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
   "data/keys.json",
+  "entities/agent/accountant.json",
+  "entities/agent/archivist.json",
+  "entities/agent/board.json",
+  "entities/agent/ci.json",
+  "entities/agent/conductor.json",
+  "entities/agent/designer.json",
+  "entities/agent/entities.json",
+  "entities/agent/graph.json",
+  "entities/agent/identity.json",
+  "entities/agent/ipma.json",
+  "entities/agent/journalist.json",
+  "entities/agent/labs.json",
+  "entities/agent/librarian.json",
+  "entities/agent/media.json",
+  "entities/agent/meteorology.json",
+  "entities/agent/models.json",
+  "entities/agent/observability.json",
+  "entities/agent/perplexity.json",
+  "entities/agent/reporter.json",
+  "entities/agent/shadow.json",
+  "entities/agent/social.json",
+  "entities/agent/sources.json",
+  "entities/agent/stories.json",
+  "entities/agent/studio.json",
+  "entities/agent/weather.json",
+  "entities/agent/weatherwatch.json",
+  "entities/agent/wikipedia.json",
+  "entities/body/aemet.json",
+  "entities/body/amn.json",
+  "entities/body/anepc.json",
+  "entities/body/apram.json",
+  "entities/body/camara-lisboa.json",
+  "entities/body/capitania-lisboa.json",
+  "entities/body/csm.json",
+  "entities/body/gnr.json",
+  "entities/body/government.json",
+  "entities/body/ipma.json",
+  "entities/body/madeira-gov.json",
+  "entities/body/madeira-prociv.json",
+  "entities/body/mai.json",
+  "entities/body/meteoalarm.json",
+  "entities/body/mj.json",
+  "entities/body/psp.json",
+  "entities/day/2026-11-09.json",
+  "entities/day/2026-11-10.json",
+  "entities/day/2026-11-11.json",
+  "entities/day/2026-11-12.json",
+  "entities/decision/aemet-names-charles.json",
+  "entities/decision/aemet-special.json",
+  "entities/decision/airport-ops.json",
+  "entities/decision/ana-conditioned.json",
   "entities/decision/anepc-mainland-count-0330.json",
+  "entities/decision/anepc-readiness.json",
+  "entities/decision/apram-cruises.json",
+  "entities/decision/bridges-60.json",
+  "entities/decision/bridges-lifted.json",
+  "entities/decision/camara-plan.json",
+  "entities/decision/capitania-aviso-53.json",
+  "entities/decision/carris-runs-watched.json",
+  "entities/decision/cp-fertagus-bridge.json",
+  "entities/decision/cp-ops.json",
+  "entities/decision/csm-courts.json",
+  "entities/decision/flixbus-suspends.json",
+  "entities/decision/gnr-readiness.json",
+  "entities/decision/gov-alert.json",
+  "entities/decision/gov-recommends-suspend.json",
+  "entities/decision/madeira-airport-conditioned.json",
   "entities/decision/madeira-flights-16.json",
+  "entities/decision/madeira-gov-visit.json",
+  "entities/decision/madeira-schools.json",
+  "entities/decision/mai-websummit-indoor.json",
+  "entities/decision/mayor-expects-closure.json",
+  "entities/decision/metro-runs.json",
+  "entities/decision/metro-shelter.json",
+  "entities/decision/mj-services.json",
+  "entities/decision/mmp-closed.json",
+  "entities/decision/night-summit-wednesday.json",
+  "entities/decision/operators-possible-disruption.json",
+  "entities/decision/pitch-semifinal.json",
   "entities/decision/porto-santo-power.json",
+  "entities/decision/rede-expressos-suspends.json",
+  "entities/decision/schools-close.json",
+  "entities/decision/side-events-follow-h.json",
+  "entities/decision/side-events-wednesday.json",
   "entities/decision/srpc-funchal-centre.json",
+  "entities/decision/srpc-madeira-count-0200.json",
   "entities/decision/srpc-madeira-count-0650.json",
+  "entities/decision/srpc-madeira-measures.json",
+  "entities/decision/tap-adjusts.json",
   "entities/decision/tcb-barreiro-limited.json",
+  "entities/decision/transport-thursday.json",
   "entities/decision/ttsl-pedroucos-suspended.json",
+  "entities/decision/ttsl-wednesday.json",
+  "entities/decision/tunnels-close.json",
+  "entities/decision/websummit-assessing.json",
+  "entities/decision/websummit-n6.json",
+  "entities/decision/websummit-suspends-h.json",
+  "entities/decision/websummit-thursday-change-h.json",
+  "entities/decision/websummit-thursday.json",
+  "entities/decision/websummit-wednesday.json",
+  "entities/hazard/heavy-rain.json",
+  "entities/hazard/high-winds.json",
+  "entities/hazard/sea-agitation.json",
+  "entities/hazard/storm-charles.json",
+  "entities/hazard/tidal-flooding.json",
   "entities/index.json",
+  "entities/ontology.json",
+  "entities/organisation/incident-team.json",
+  "entities/organisation/lusoponte.json",
+  "entities/organisation/night-summit.json",
+  "entities/organisation/pitch.json",
+  "entities/organisation/side-events.json",
+  "entities/organisation/websummit.json",
   "entities/outlet/ap.json",
   "entities/outlet/bloomberg.json",
   "entities/outlet/cnn-portugal.json",
@@ -151,7 +302,69 @@
   "entities/outlet/techtimes.json",
   "entities/outlet/tek.json",
   "entities/outlet/tsf.json",
+  "entities/place/25-de-abril-bridge.json",
+  "entities/place/areeiro.json",
+  "entities/place/cabo-carvoeiro.json",
+  "entities/place/cabo-de-sao-vicente.json",
+  "entities/place/funchal.json",
+  "entities/place/lisbon-district.json",
+  "entities/place/lisbon.json",
+  "entities/place/madeira.json",
+  "entities/place/mainland-portugal.json",
+  "entities/place/oriente.json",
+  "entities/place/pico-alto.json",
+  "entities/place/pico-do-areeiro.json",
+  "entities/place/santo-da-serra.json",
+  "entities/place/sines.json",
+  "entities/place/tagus-bridges.json",
+  "entities/place/vasco-da-gama-bridge.json",
+  "entities/place/venue.json",
+  "entities/programme-day/websummit-day-1.json",
+  "entities/programme-day/websummit-day-2.json",
+  "entities/programme-day/websummit-day-3.json",
+  "entities/role/interior-minister.json",
+  "entities/role/ipma-meteorologist.json",
+  "entities/role/lisbon-mayor.json",
+  "entities/role/operator.json",
+  "entities/role/pm.json",
+  "entities/role/websummit-chief-executive.json",
+  "entities/seed.json",
+  "entities/service/airport.json",
+  "entities/service/carris-metropolitana.json",
+  "entities/service/carris.json",
+  "entities/service/cp.json",
+  "entities/service/ferries.json",
+  "entities/service/fertagus.json",
+  "entities/service/flixbus.json",
+  "entities/service/madeira-airport.json",
+  "entities/service/metro.json",
+  "entities/service/mmp.json",
+  "entities/service/public-transport.json",
+  "entities/service/rede-expressos.json",
+  "entities/service/schools.json",
+  "entities/service/tap.json",
   "entities/service/tcb-barreiro.json",
+  "entities/service/tunnels.json",
+  "entities/term/alert-situation.json",
+  "entities/term/cap.json",
+  "entities/term/communique.json",
+  "entities/term/evidence.json",
+  "entities/term/fact.json",
+  "entities/term/hypothesis.json",
+  "entities/term/label.json",
+  "entities/term/lead-time.json",
+  "entities/term/orange-warning.json",
+  "entities/term/primary-source.json",
+  "entities/term/red-warning.json",
+  "entities/term/taf.json",
+  "entities/term/warning-level.json",
+  "entities/warning/anepc-aviso-21.json",
+  "entities/warning/ipma-communique-1.json",
+  "entities/warning/ipma-communique-2.json",
+  "entities/warning/ipma-madeira-red.json",
+  "entities/warning/ipma-red-rain-0900.json",
+  "entities/warning/ipma-red-rain.json",
+  "entities/warning/ipma-red-wind.json",
   "evidence/anepc/index.json",
   "evidence/data.json",
   "evidence/governo/index.json",
@@ -188,6 +401,14 @@
   "evidence/reviewed.json",
   "evidence/rows.json",
   "evidence/sources.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/airport.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/bridges.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/cp.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/port.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/rede-expressos.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/tunnels.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
   "incidents/2026-11-10-storm-charles/data/signals.json",
   "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/airport.json",
@@ -201,6 +422,27 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/warnings.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
   "sources/meteoalarm/dataset.json",
@@ -208,8 +450,12 @@
  ],
  "new_tools": [],
  "added": {
-  "files": 26,
+  "files": 42,
   "by_area": [
+   {
+    "area": "entities",
+    "files": 11
+   },
    {
     "area": "board",
     "files": 10
@@ -223,11 +469,23 @@
     "files": 3
    },
    {
+    "area": "app",
+    "files": 2
+   },
+   {
     "area": "journal",
     "files": 2
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
     "area": "accounts",
+    "files": 1
+   },
+   {
+    "area": "library",
     "files": 1
    },
    {
@@ -253,22 +511,42 @@
   ]
  },
  "changed": {
-  "files": 247,
+  "files": 572,
   "by_area": [
    {
-    "area": "research",
-    "files": 45
+    "area": "entities",
+    "files": 206
    },
    {
-    "area": "entities",
-    "files": 39
+    "area": "research",
+    "files": 71
+   },
+   {
+    "area": "sources",
+    "files": 65
    },
    {
     "area": "evidence",
     "files": 37
    },
    {
+    "area": "library",
+    "files": 32
+   },
+   {
     "area": "accounts",
+    "files": 27
+   },
+   {
+    "area": "agents",
+    "files": 24
+   },
+   {
+    "area": "data",
+    "files": 24
+   },
+   {
+    "area": "incidents/2026-11-10-storm-charles/data",
     "files": 22
    },
    {
@@ -276,20 +554,8 @@
     "files": 19
    },
    {
-    "area": "agents",
-    "files": 18
-   },
-   {
-    "area": "incidents/2026-11-10-storm-charles/data",
-    "files": 14
-   },
-   {
     "area": "meteorology",
     "files": 12
-   },
-   {
-    "area": "data",
-    "files": 10
    },
    {
     "area": "journal",
@@ -300,16 +566,20 @@
     "files": 6
    },
    {
-    "area": "sources",
-    "files": 6
+    "area": "news",
+    "files": 4
    },
    {
     "area": "shadow",
     "files": 4
    },
    {
+    "area": "stories",
+    "files": 4
+   },
+   {
     "area": "tools",
-    "files": 3
+    "files": 4
    },
    {
     "area": "app",
@@ -321,10 +591,6 @@
    },
    {
     "area": "incidents/2026-11-10-storm-charles/timeline.md",
-    "files": 1
-   },
-   {
-    "area": "stories",
     "files": 1
    }
   ]
@@ -550,6 +816,125 @@
    "by": "incident.conductor@web-summit.dinis",
    "what": "row s-1111T0844: IPMA's open data now agrees (Lisbon's wind orange 09:00 to 21:00); standfirst says all three channels agree",
    "files": 3
+  },
+  {
+   "commit": "7f2e54f9",
+   "at": "2026-11-11T08:46:07Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "bridge sync: warnings.json read 08:45, IPMA's channels agree (Lisbon's wind orange 09:00 to 21:00)",
+   "files": 20
+  },
+  {
+   "commit": "09a36dfb",
+   "at": "2026-11-11T08:47:14Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 08:44 wake: 07:00 to 08:00 closed (41 commits by 21 agents, 38 versions); 08:00 to 09:00 opened (IPMA's open data catches up with its message; the lowered wind warning read in full); the round article's list of hours and corrections; the pack's session line and two-channel rule brought up to date; the release history and the commit record refreshed",
+   "files": 40
+  },
+  {
+   "commit": "62738393",
+   "at": "2026-11-11T08:47:19Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "72b65b80",
+   "at": "2026-11-11T08:47:41Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 07:00 article's link to the graph corrected (the gate refused the push; nothing had gone out)",
+   "files": 1
+  },
+  {
+   "commit": "1f23aad1",
+   "at": "2026-11-11T08:47:56Z",
+   "by": "incident.entities@web-summit.dinis",
+   "what": "the third session's public key (incident-entities-dinis-3); the second session's entry is handed over",
+   "files": 1
+  },
+  {
+   "commit": "82f311ac",
+   "at": "2026-11-11T08:47:56Z",
+   "by": "incident.entities@web-summit.dinis",
+   "what": "eight nodes for names that had none: Machico, Câmara de Lobos, Ponta do Sol, Ribeira Brava (from the civil protection's count), Parque das Nações, Cabo Raso, Diário da República, VOST Portugal; each read from a row or a decision; Santa Cruz is left without one (the name is also a mainland station)",
+   "files": 214
+  },
+  {
+   "commit": "8ac4bcd6",
+   "at": "2026-11-11T08:50:21Z",
+   "by": "incident.entities@web-summit.dinis",
+   "what": "a one-hop drawing on every node page with an edge, drawn in the browser from entities/index.json and a built entities/edges.json (app/lens/hop.js, hop.css: fact solid, evidence dashed, hypothesis dotted, ours thin); nodes remade after the 08:5x rows; hand-over and status current",
+   "files": 17
+  },
+  {
+   "commit": "bbbb2bb8",
+   "at": "2026-11-11T08:50:39Z",
+   "by": "incident.entities@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "7df882b0",
+   "at": "2026-11-11T08:50:56Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 08:47 UTC: 64 requests, 63 answered 200, 46 files changed; warnings (IPMA's file dated 08:15): 59 above green; AVR Precipitação orange 11-11T03:00>11-11T21:00 replaced; AVR Precipitação orange 11-11T07:17>11-11T21:00 NEW;",
+   "files": 61
+  },
+  {
+   "commit": "d3330839",
+   "at": "2026-11-11T08:51:44Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "row s-1111T0824 completed from incident.ipma@'s 08:47 read: red wind remains for Faro; red rain in eight districts",
+   "files": 2
+  },
+  {
+   "commit": "f2141f13",
+   "at": "2026-11-11T08:52:01Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "retold on the 08:45 read (IPMA's open data caught up with its 07:16 message after 66 to 88 minutes; the models moved; Madeira's rain eased at 08:00); HANDOVER.md for a fourth session; ledger line",
+   "files": 5
+  },
+  {
+   "commit": "a2b46749",
+   "at": "2026-11-11T08:52:59Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "08:48 re-read: 5 new kept posts (VOST x2, Lusa, AEMET, Público); three offers (VOST: almost 800 occurrences on 10 Nov; Lusa: 60 to 06:00; Lusa: Funchal centre accesses closed); the organisers still silent",
+   "files": 11
+  },
+  {
+   "commit": "1b58b8e9",
+   "at": "2026-11-11T08:53:17Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "the fourth session's public key (incident-stories-dinis-4); incident-stories-dinis-3 handed over",
+   "files": 1
+  },
+  {
+   "commit": "ed2bbc14",
+   "at": "2026-11-11T08:54:37Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "rebuilt on the 08:51 data (490 nodes, 697 edges; 77 rows, 55 decisions); sizes in the status; ledger line",
+   "files": 16
+  },
+  {
+   "commit": "3cc71488",
+   "at": "2026-11-11T08:54:51Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "rows s-1111T0822 and s-1111T0824 placed: Madeira airport's wind falling and the meteorologist's hypothesis on the centre (m16, m17); IPMA's whole 07:16:30 change and what stayed red (w15, w16)",
+   "files": 2
+  },
+  {
+   "commit": "eadf5290",
+   "at": "2026-11-11T08:55:15Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "status and HANDOVER.md for the fourth session; ledger line",
+   "files": 3
+  },
+  {
+   "commit": "06fb32fb",
+   "at": "2026-11-11T08:55:54Z",
+   "by": "incident.wikipedia@web-summit.dinis",
+   "what": "08:50 read: zh moved (3 revisions: the storm's lowest pressure 995 to 994 hPa, no footnote; a season map); claim w-zh-01 brought to the new revision; pt and en unchanged",
+   "files": 19
   }
  ]
 }
