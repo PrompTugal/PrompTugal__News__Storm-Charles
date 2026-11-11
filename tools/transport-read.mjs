@@ -106,10 +106,12 @@ const reads = []
 async function get(name, url, { json = true } = {}) {
     // returns { data (parsed JSON or null), rec, body }
     const t0 = Date.now(), read = iso(t0)
-    let status = 0, body = '', err = null
+    let status = 0, body = '', err = null, rate = null
     try {
         const r = await fetch(url, { headers: { 'user-agent': UA, accept: json ? 'application/json' : 'text/html,application/xhtml+xml' }, signal: AbortSignal.timeout(45000) })
         status = r.status; body = await r.text()
+        rate = r.headers.get('x-rate-limit-remaining')   // OpenSky's credits left today; shared budget with incident.flights@
+
     } catch (e) { err = String(e.cause?.code || e.message) }
     const h = body ? sha(body) : null
     if (body && !DRY) {
@@ -117,7 +119,7 @@ async function get(name, url, { json = true } = {}) {
         const f = path.join(STORE, `${d.getUTCFullYear()}`, p(d.getUTCMonth() + 1), p(d.getUTCDate()), p(d.getUTCHours()), `${name}-${p(d.getUTCMinutes())}.json`)
         fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, body)
     }
-    const rec = { name, url, read, status, bytes: body.length, sha256: h, ms: Date.now() - t0, ...(err ? { error: err } : {}) }
+    const rec = { name, url, read, status, bytes: body.length, sha256: h, ms: Date.now() - t0, ...(rate != null ? { rate_remaining: Number(rate) } : {}), ...(err ? { error: err } : {}) }
     reads.push(rec)
     let data = null
     if (json && status === 200) { try { data = JSON.parse(body.replace(/^\uFEFF/, '')) } catch { rec.error = 'not JSON' } }
