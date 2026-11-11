@@ -26,3 +26,14 @@
 - **A contribute page**; get journalists and subject experts involved; find who could be asked for an official opinion, and what questions we have. (Standing rule: agents draft; **a person sends** every message outside the repositories; no contact details in git.)
 - Read newsroom.sgit.ai's articles: "a lot of the stuff we talk about here is related".
 - The point: "show how we can manage agents ... journalism of the future, data-driven", done by an agentic team.
+
+## Dinis, 11 November 2026, ~00:30 UTC: the Studio (close to his words)
+
+- **A new section, "Studio"** (as on the other site): "where we're going to be experimenting a lot of visualization and a lot of ways to explain complex data points, which we're going to have a lot here".
+- **Start with one: what is compression**, and what happens in Claude, ChatGPT or others when they compress. **An animation**:
+  - **a normal request**: "the context that you have is sent with every request": users often do not picture that; **one without cache, then one with cache**, to show the optimisation;
+  - **why we need to compress**: "almost like that door ... it doesn't have more capacity, and then you compress";
+  - **side by side with the work we do**: "we work and we create a markdown file and then save it". "The library is compression ... but compression in ways that we don't lose our context, because we create a set of files"; "we don't store the intermediate steps": a massive conversation, then a document "always going to be smaller than the conversation ... but more of a cohesive document";
+  - **why things get lost**, "where you feel that the agent loses memory": when it compresses, the agent is guessing which part of the prompt to remove, what matters for the user. We do that ourselves, on purpose, "by creating documents that are specific, that are hyperlinked, that contain what actually matters". "The compression still occurs, but there's no problem because we used almost a file system as our database."
+- **Look at storyboard.sgit.ai and the book for The Ultimate Insider**: the **mini characters** that explain. "Bring that to life in this studio."
+- **The UI**: "a number of actions and then buttons and then the characters ... you should see almost the storyboard play out"; **on the right, the LLM** that receives. "This should be a number of animations."
