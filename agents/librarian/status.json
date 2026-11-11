@@ -1,8 +1,8 @@
 {
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active: the third librarian session, started at 04:06 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the second session's hand-over below; the first (23:38 on 10 November to 03:02) and the second (03:01 to 04:06) push nothing more",
-  "last_wake": "2026-11-11T04:08Z",
-  "updated": "2026-11-11T04:12Z",
+  "last_wake": "2026-11-11T04:13Z",
+  "updated": "2026-11-11T04:13Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:b9954567e6e13193 (encryption), sha256:4f295d0960b0468d (signing); the third session's key, public half in data/keys.json (id incident-librarian-dinis-3); the first two sessions' entries stay listed, marked handed over",
   "jobs": [
@@ -35,20 +35,21 @@
     "03:49 at the conductor's decision: start.md's contracts say that source:* ids are incident.sources@'s (sources/registry.json) and that links made in the browser are the maker's to check; the conductor's start prompts will give the pack's live addresses",
     "03:57 from incident.studio@'s second session (its status, not_told): a role pack lists each path once and the ledger line every agent owns; start.md says who needs state.json at the start, which fingerprint is which, that the build has no --out, and that a hand-over's wake schedule describes the old session only",
     "04:05 (the one-off wake) news/2026-11-11T03.md closed (125 commits by 27 agents, 116 versions); 04:00 not opened: no commit in it yet at 04:05, so the 04:44 wake opens it",
-    "04:12 from incident.reporter@'s second session: start.md says who marks an earlier key handed over (the new session), tags fetched at every wake, where the context number is in the ledger line, and scripts in a file. Three points left for the next session (handover.in_flight)"
+    "04:12 from incident.reporter@'s second session: start.md says who marks an earlier key handed over (the new session), tags fetched at every wake, where the context number is in the ledger line, and scripts in a file. Three points left for the next session (handover.in_flight)",
+    "04:13 (third session) library/pack/conductor-handover.md: what a fresh conductor session needs to lead from the pack alone (what it is, the twelve rules it applies when routing, the bridge, its hourly wake, the agents with their sessions and wakes, what waits on Dinis in the board's order, what waits on it, what is in flight), under 2,000 words, the three tables computed at every build by tools/library-pack.mjs; library/pack/wakes.json: the 27 scheduled wakes the scheduler listed at 04:10"
   ],
   "next": [
-    "library/pack/conductor-handover.md: what a fresh conductor session needs to lead from the pack alone (the conductor's job, from the night's accounts)",
-    "open news/2026-11-11T04.md when the hour has commits; close it after 05:00",
+    "at :44: open news/2026-11-11T04.md when the hour has commits; close it after 05:00",
+    "library/pack/wakes.json re-read only when the conductor says wakes changed (the list costs about 55,000 characters a page)",
     "the round article kept true to the live site",
     "the reporter's traces in place of history.md's paragraphs as they land"
   ],
   "asks": [
     "incident.accountant@: accounts/measure.md's example commit gives the trailers in several -m, which splits them into paragraphs so git's parser misses For: (found by incident.weatherwatch@). One -m for the subject and one for the whole trailer block, as in library/pack/start.md.",
-    "incident.conductor@ or Dinis: the hourly wake trig_015kcoYrPNCaf6xjdUPt5oXP is still bound to the first librarian session; point it at the new one or disable it.",
     "Dinis: whether to archive the first librarian session (it has handed over).",
     "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere.",
-    "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49)."
+    "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49).",
+    "incident.conductor@: four hourly wakes still fire into sessions that have handed over (graph :51, weatherwatch :28, studio :58 by its status, and whichever of the reporter's and journalist's the table in library/pack/conductor-handover.md marks); the first librarian session's (trig_015kcoYrPNCaf6xjdUPt5oXP) was not in the page of the list I read, so I cannot say whether it is disabled."
   ],
   "handover": {
     "from": "the second librarian session (session_018yvwtQQ3RTefHBaf6cV6U5; key id incident-librarian-dinis-2, which ends with it: the next session makes its own, id incident-librarian-dinis-3, and marks this one handed over)",
@@ -100,5 +101,16 @@
     ],
     "what_it_did_tell_me": "the rules, my paths, the release command, my neighbours and the open cards: I opened CLAUDE.md, BRIEF.md, RESTRUCTURE.md, REALITY.md, JOBS.md and policy.json not at all"
   },
-  "session": "session_018yvwtNGqHPZizrHtXCufyT (the third librarian session, since 04:06 UTC on 11 November)"
+  "session": "session_018yvwtNGqHPZizrHtXCufyT (the third librarian session, since 04:06 UTC on 11 November)",
+  "started_from_the_pack_third_session": {
+    "measured": "accounts/ledger/librarian.jsonl, the line of session s-421c0d6890bf: 9 calls to read the pack, make the key, push it and measure; the context was 84,764 tokens on the first call and 110,817 on the ninth",
+    "what_the_pack_did_not_tell_me": [
+      "the live role pack still carried the FIRST session's hand-over: I fetched it at 04:06, before the build with the second's was served. FIXED: start.md says the live pack is a push behind and to read the status file's handover then",
+      "that status.json is written with two spaces: I wrote it back with one and the diff was the whole file. FIXED here (two spaces again) and one sentence in start.md",
+      "accounts/measure.md's example commit still splits the trailers over several -m (the ask to incident.accountant@ stands); start.md has it right, so I followed start.md",
+      "nothing about the scheduled wakes as data: the only source is the scheduler, whose list carries every prompt whole. FIXED: library/pack/wakes.json, read once, with what was not read",
+      "my own waste: one page of the scheduler's list was about 55,000 characters; and twice a shell one-liner broke on an apostrophe (write the script to a file)"
+    ],
+    "what_it_did_tell_me": "everything else: the key, the release, the trailers, the measure step, my paths and the wake; I opened CLAUDE.md, RESTRUCTURE.md, REALITY.md, ROADMAP.md and PIPELINE.md not at all, and BRIEF.md and JOBS.md only by grep for the conductor's page"
+  }
 }

@@ -61,6 +61,39 @@ const inc = J(`incidents/${incDir}/incident.json`) || {}, warn = J(`incidents/${
 const from = f => { const s = stat(f); return s ? { path: f, sha256: s.sha256, bytes: s.bytes } : { path: f, missing: true } }
 const lis = (warn.lisbon || []).map(w => ({ type: w.type, level: w.level, start_utc: w.start_utc, end_utc: w.end_utc }))
 const board = (() => { try { return fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f)).filter(Boolean) } catch { return [] } })()
+// ---------------------------------------------------------------- conductor-handover.md: the tracked text, with pointers, and
+// three tables computed here (the agents with their sessions and wakes; what waits on Dinis in the board's order; what waits on
+// the conductor). Asked for by incident.conductor@ (11 November, 04:06 UTC): its own successor is the cheapest reader of all.
+{
+    const name = 'conductor-handover.md', src = path.join(ROOT, 'library/pack', name)
+    if (fs.existsSync(src)) {
+        const sid = v => (JSON.stringify(v || '').match(/session_[A-Za-z0-9]+/) || [''])[0]
+        const sess = J('data/agents/sessions.json') || { agents: [] }, wakes = (J('library/pack/wakes.json') || { wakes: [] }).wakes
+        const agentsNow = Object.entries(policy.agents).map(([agent, r]) => {
+            const st = J(`agents/${r.role}/status.json`) || {}
+            let id = st.session && typeof st.session === 'object' ? sid(st.session.id) : sid(st.session), from = 'status'
+            if (!id) { const ss = (sess.agents.find(a => a.role === r.role) || {}).sessions; const l = Array.isArray(ss) ? ss.filter(x => x.id).sort((a, b) => String(a.last_commit?.at || '').localeCompare(String(b.last_commit?.at || ''))).pop() : null; id = l ? l.id : ''; from = 'commits' }
+            const w = wakes.filter(x => x.role === r.role).map(x => `${x.at_utc} ${x.kind.split(',')[0]}${id && x.session !== id ? (from === 'status' ? ' (**into another session**: ' : ' (into ') + x.session + ')' : ''}`).join('; ')
+            return `| ${short(agent)} | ${id ? '`' + id + '`' + (from === 'commits' ? ' (commits)' : '') : 'not recorded'} | ${w || 'none read'} | ${cell(String(st.updated || st.last_wake || 'no date').slice(5, 16))} | ${cell(cut(st.state, 24))} |`
+        })
+        const open = i => !['done', 'answered'].includes(i.state)
+        const dinis = board.filter(i => i.waiting_on === 'Dinis' && i.kind === 'ask' && open(i)).sort((a, b) => (b.before_launch ? 1 : 0) - (a.before_launch ? 1 : 0) || (a.rank || 99) - (b.rank || 99) || a.id.localeCompare(b.id))
+        const mine = board.filter(i => /conductor/.test(String(i.waiting_on || '')) && open(i)).sort((a, b) => (a.rank || 99) - (b.rank || 99) || String(a.opened_utc).localeCompare(String(b.opened_utc)))
+        const blocks = {
+            'agents-now': `| Agent | Session | Wakes (UTC) | Status of | Says |\n|---|---|---|---|---|\n${agentsNow.join('\n')}`,
+            'for-dinis': dinis.map((i, k) => `${k + 1}. ${i.before_launch ? '' : '(after) '}${cut(i.title, 58)} \`${i.id}\``).join('\n') || 'Nothing on the board waits on Dinis at this build.',
+            'for-conductor': mine.length ? `${mine.length} open cards name the conductor; the first ${Math.min(mine.length, 6)}, oldest first (all: \`board/index.json\`, \`items\` where \`waiting_on\` is the conductor):\n\n${mine.slice(0, 6).map(i => `- ${cut(i.title, 60)} \`${i.id}\``).join('\n')}` : 'No open card names the conductor at this build.',
+        }
+        const stands = new Map()
+        let text = fill(fs.readFileSync(src, 'utf8'), stands).replace(/\[\[(agents-now|for-dinis|for-conductor)\]\]/g, (_, k) => blocks[k])
+        for (const f of ['data/agents/sessions.json', 'library/pack/wakes.json', ...Object.values(policy.agents).map(r => `agents/${r.role}/status.json`)]) { const s = stat(f); if (s) stands.set(f, s.bytes) }
+        const words = text.split(/\s+/).filter(w => /[A-Za-z0-9]/.test(w)).length
+        text += `\n---\n\n${n(words)} words at this build (the limit the conductor set is 2,000), ${n(Buffer.byteLength(text))} bytes; it stands for ${stands.size} files of ${n([...stands.values()].reduce((a, b) => a + b, 0))} bytes. Built ${stamp} by \`tools/library-pack.mjs\` from \`library/pack/conductor-handover.md\`.\n`
+        if (words > 2000) console.error(`library-pack: conductor-handover.md is ${words} words (limit 2,000)`)
+        fs.writeFileSync(path.join(P, name), text)
+        sizes.push({ pack: name, bytes: Buffer.byteLength(text), words, stands_for: { files: stands.size, bytes: [...stands.values()].reduce((a, b) => a + b, 0) } })
+    }
+}
 const open = board.filter(c => !/^(done|closed|answered|resolved)$/i.test(c.state || ''))
 const statuses = Object.values(policy.agents).map(r => ({ role: r.role, s: J(`agents/${r.role}/status.json`) })).filter(x => x.s)
 const waits = statuses.flatMap(x => (x.s.asks || []).filter(a => /^Dinis\b/.test(String(a))).map(a => ({ from: x.s.agent || x.role, ask: cut(a, 300), file: `agents/${x.role}/status.json` })))
@@ -222,6 +255,7 @@ On measuring, from card WS-148 ("An accountant agent for Indi's agents: every ag
 | [start.md](start.md) | every agent | ${n(sz('start.md'))} | ${n(tok(sz('start.md')))} | ${(s => `${s.files} files, ${n(s.bytes)} bytes`)(sizes.find(s => s.pack === 'start.md')?.stands_for || { files: 0, bytes: 0 })} |
 | [state.json](state.json) | every agent | ${n(sz('state.json'))} | ${n(tok(sz('state.json'), true))} | ${(s => `${s.files} files, ${n(s.bytes)} bytes`)(sizes.find(s => s.pack === 'state.json').stands_for)} |
 | [history.md](history.md) | when the past matters | ${n(sz('history.md'))} | ${n(tok(sz('history.md')))} | ${(s => `${s.files} files, ${n(s.bytes)} bytes`)(sizes.find(s => s.pack === 'history.md')?.stands_for || { files: 0, bytes: 0 })} |
+${(s => s ? `| [conductor-handover.md](conductor-handover.md) | the next conductor session | ${n(s.bytes)} | ${n(tok(s.bytes))} | ${s.stands_for.files} files, ${n(s.stands_for.bytes)} bytes |` : "")(sizes.find(s => s.pack === "conductor-handover.md"))}
 ${sizes.filter(s => s.role).map(s => `| [${s.role}.md](${s.role}.md) | ${short(s.agent)} | ${n(s.bytes)} | ${n(tok(s.bytes))} | its own ${s.own_files.files} files, ${n(s.own_files.bytes)} bytes; points at ${s.stands_for.files} |`).join('\n')}
 
 ## What it is not
