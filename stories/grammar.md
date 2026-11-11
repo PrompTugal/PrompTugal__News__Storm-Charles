@@ -13,6 +13,7 @@ A story on this site is a graph (`stories/<slug>/story.json`), and its page is d
 - **A support**: what a claim rests on. One of:
   - `{kind: "row", id}`: a row of the incident's timeline (`data/signals.json`), by its permanent id.
   - `{kind: "data", file, field, expect | contains}`: a field of a file in the data room. `field` is an address such as `lisbon[type=Vento&level=red].sent_utc`. `expect` (or `contains`) is what the field said when the sentence was written.
+    `absent: true` marks a field that did not exist yet when the sentence was written (the next hour of a feed): when it arrives, the sentence is behind the data.
   - `{kind: "edge", id}`: an edge of the decision graph (`data/decisions/graph.json`).
 
 ## The edges (every one a verb with an inverse)

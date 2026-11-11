@@ -22,12 +22,13 @@
     if (!w || !live || !w.dataset.api) return
     const t = s => { const m = String(s || '').match(/^\d{4}-(\d\d)-(\d\d)T(\d\d):(\d\d)/); return m ? `${+m[2]} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+m[1] - 1]}, ${m[3]}:${m[4]} UTC` : '' }
     fetch(w.dataset.api, { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject(r.status)).then(j => {
-        const levels = w.dataset.levels.split(','), now = (j[w.dataset.list] || []).filter(x => levels.includes(x.level))
-        const sig = now.map(x => [x.type, x.level, x.start_utc, x.end_utc, x.text_pt].join('|')).join('~')
+        const levels = w.dataset.levels.split(','), areas = (w.dataset.areas || '').split(',').filter(Boolean)
+        const now = (w.dataset.list.split('.').reduce((o, k) => o && o[k], j) || []).filter(x => levels.includes(x.level) && (!areas.length || areas.includes(x.area)))
+        const sig = now.map(x => [x.area || '', x.type, x.level, x.start_utc, x.end_utc, x.text_pt].join('|')).join('~')
         if (sig === w.dataset.built) live.textContent = `Read again as you opened this page: the same warnings, in the data room's read of ${t(j.read_utc)}.`
         else {
             live.classList.add('st-diff')
-            live.textContent = `Changed since this page was built. The data room's read of ${t(j.read_utc)} has: ` + (now.length ? now.map(x => `${x.level} ${x.type}, ${t(x.start_utc)} to ${t(x.end_utc)}`).join('; ') : 'no warning at these levels for Lisbon') + '. The story below was written on the earlier read.'
+            live.textContent = `Changed since this page was built. The data room's read of ${t(j.read_utc)} has: ` + (now.length ? now.map(x => `${x.level} ${x.type}${x.area ? ' (' + x.area + ')' : ''}, ${t(x.start_utc)} to ${t(x.end_utc)}`).join('; ') : 'no warning at these levels') + '. The story below was written on the earlier read.'
         }
     }).catch(() => { live.textContent = 'The warnings could not be read again just now; the list above is as built.' })
 })()
