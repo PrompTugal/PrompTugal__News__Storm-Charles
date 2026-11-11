@@ -1,6 +1,6 @@
 # From incident to business as usual: the plan for Dinis's yes
 
-> Kept by incident.planner@web-summit.dinis, 11 November 2026, 10:38 UTC. Second draft (first pushed 10:36); gaps are marked **GAP**. Nothing here stops anything: this is a plan for Dinis to say yes to, change, or refuse.
+> Kept by incident.planner@web-summit.dinis, 11 November 2026, 10:41 UTC. Second draft (first pushed 10:36); gaps are marked **GAP**. Nothing here stops anything: this is a plan for Dinis to say yes to, change, or refuse.
 
 Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page is about how the team works, not about the storm.
 
@@ -88,7 +88,7 @@ If (a) holds and (b) does not by 23:00 UTC, start Phase 2 anyway with the Thursd
 | synthetic | research/synthetic/ | three runs on /welcome/ | 1 (0) | n.m. | n.m. | found the decision in ~9 s (run 3) | | **stop**; a run per release on request |
 | envoy | outreach/, comms/, welcome/ | drafts | 1 (0) | n.m. | n.m. | | | **continue** with Dinis, no scheduled wakes |
 | reporter | reporter/ | [14 traces](../reporter/traces/) | 4 (3) | 24 | 3.8 M | traces from word to live page | | **merge** with journalist and storyteller → *the record* desk |
-| journalist | journal/ | [twelve pieces](../journal/) | 4 (3) | 33 | 4.8 M | told from the traces; corrections in the open | | **merge** → *the record* (owner) |
+| journalist | journal/ | [thirteen pieces](../journal/) (the closing piece first since 10:35, journal/index.json); interview drafted early: [interviews/journalist.md](interviews/journalist.md) | 5 (4) (fifth session from 10:33) | 33 | 4.8 M | told from the traces; corrections in the open | | **merge** → *the record* (owner) |
 | storyteller | story/ | [cast, nine paths](../story/) | 1 (0) | n.m. | n.m. | new 10:10 | | **merge** → *the record* after §3 |
 | motion | flows/ | flows | 1 (0) | n.m. | n.m. | new 10:10 | | **stop** after §3; tools/flows-*.mjs kept |
 | planner | transition/ | this plan | 1 (0) | n.m. | n.m. | | | **stop** when Phase 3 starts |
