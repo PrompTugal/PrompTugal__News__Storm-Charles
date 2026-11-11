@@ -385,47 +385,60 @@ const thuStrip = (() => {
 ${R.join('\n')}
 </div></div></section>`
 })()
-// round 26: Madeira, where the storm has already been: the warnings it had (IPMA's CAP messages, with the time each was sent) over the rain
-// its stations measured, hour by hour, on one axis. The first place on the site where a warning can be checked against what happened.
-const madeira = (() => {
-    const md = J('data/weather/madeira.json'), cap = J('data/weather/cap.json'); if (!md?.stations?.length) return ''
+// rounds 26 and 27: warned against observed, on one axis: a place's rain warnings (IPMA's CAP messages, with the time each was sent) over
+// the rain its stations measured hour by hour. Madeira first (the storm has been there); Lisbon as its own hours come.
+const capAll = J('data/weather/cap.json')
+const warnedObserved = ({ id, title, file, messages, areaName, window, noteExtra = '' }) => {
+    const md = J(file); if (!md?.stations?.length) return ''
     const allH = md.stations.flatMap(s => (s.hourly || []).map(h => h.time_utc)).filter(ok).sort(), last = T(allH[allH.length - 1])
-    const B = Math.ceil((last + 1) / (12 * 36e5)) * 12 * 36e5, A = B - 864e5, N = 24, hrs = [...Array(N)].map((_, h) => A + h * 36e5), R = []
+    const [A, B] = window(last), N = Math.round((B - A) / 36e5), hrs = [...Array(N)].map((_, h) => A + h * 36e5), R = []
+    const ending = /ending/i.test(md.hour_label?.our_inference?.reading || ''), span = L => ending ? [L - 36e5, L] : [L, L + 36e5]   // the hour a label covers
     const pc = t => Math.max(0, Math.min(100, (T(t) - A) / (B - A) * 100))
-    const br = ({ a, b, cls = '', text, title = '', href = '' }) => { const l = pc(a), r = pc(b); if (r <= l) return ''; const tag = href ? `a href="${esc(href)}"` : 'div'; return `<${tag} class="wx-bar ${cls}${T(a) < A ? ' cut-l' : ''}${T(b) > B ? ' cut-r' : ''}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%" title="${esc(title)}"><span>${text}</span></${href ? 'a' : 'div'}>` }
+    const br = ({ a, b, cls = '', text, title = '' }) => { const l = pc(a), r = pc(b); if (r <= l) return ''; return `<div class="wx-bar ${cls}${T(a) < A ? ' cut-l' : ''}${T(b) > B ? ' cut-r' : ''}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%" title="${esc(title)}"><span>${text}</span></div>` }
     const rw = (label, sub, inner, cls = '') => R.push(`<div class="wx-row ${cls}"><div class="wx-lab"><b>${label}</b>${sub}</div><div class="wx-track">${inner}</div></div>`)
     const hd = (label, sub) => R.push(`<div class="wx-row wx-group"><div class="wx-lab"><b>${label}</b></div><div class="wx-track"><span>${sub}</span></div></div>`)
-    // warned: Madeira's rain messages that touch the window and were not replaced by a later message
+    // warned: the rain messages that touch the window and were not replaced by a later message
     const LV = { Amarelo: 'yellow', Laranja: 'orange', Vermelho: 'red' }
-    const ms = (cap?.other_messages || []).filter(m => (m.areas || []).some(a => /^Madeira/.test(a)) && /Precipita/.test(m.event_pt || '') && ok(m.onset_utc) && ok(m.expires_utc))
+    const ms = (messages || []).filter(m => /Precipita/.test(m.event_pt || '') && ok(m.onset_utc) && ok(m.expires_utc))
     const gone = new Set(ms.flatMap(m => (m.replaces || []).map(r => r.identifier)))
-    const live = ms.filter(m => !gone.has(m.identifier) && T(m.onset_utc) < B && T(m.expires_utc) > A).map(m => ({ ...m, level: LV[(m.event_pt.match(/Aviso (\w+)/) || [])[1]] || 'yellow' }))
+    const live = ms.filter(m => !gone.has(m.identifier) && T(m.onset_utc) < B && T(m.expires_utc) > A).map(m => ({ ...m, areas: (m.areas || []).length ? m.areas : [areaName], level: LV[(m.event_pt.match(/Aviso (\w+)/) || [])[1]] || 'yellow' }))
+    const short = a => String(a).replace(/^Madeira - /, '')
     const areas = [...new Set(live.flatMap(m => m.areas))].sort((p, q) => Math.max(...live.filter(m => m.areas.includes(q)).map(m => RANK[m.level])) - Math.max(...live.filter(m => m.areas.includes(p)).map(m => RANK[m.level])))
-    const capProv = prov('https://www.meteoalarm.org', "IPMA's messages via MeteoAlarm", cap?.read_utc)
+    const capProv = prov('https://www.meteoalarm.org', "IPMA's messages via MeteoAlarm", capAll?.read_utc)
     if (areas.length) {
-        hd('Warned', `IPMA's rain warnings for Madeira's areas, each with the time IPMA sent it: facts. ${capProv}`)
-        for (const a of areas) rw(esc(a.replace(/^Madeira - /, '')), '<i>rain · <span lang="pt">Precipitação</span></i>', live.filter(m => m.areas.includes(a)).sort((p, q) => T(p.onset_utc) - T(q.onset_utc)).map(m => br({ a: m.onset_utc, b: m.expires_utc, cls: 'w-' + m.level, text: `<b>${m.level}</b> ${hm(m.onset_utc)} to ${hm(m.expires_utc)} · sent ${wd(m.sent_utc)} ${hm(m.sent_utc)}`, title: `${m.event_pt}, ${a}: ${rng(m.onset_utc, m.expires_utc)}; sent by IPMA ${wd(m.sent_utc)} ${hm(m.sent_utc)} UTC (${m.identifier})` })).join(''))
+        hd('Warned', `IPMA's rain warnings, each with the time IPMA sent it: facts. ${capProv}`)
+        for (const a of areas) rw(esc(short(a)), '<i>rain · <span lang="pt">Precipitação</span></i>', live.filter(m => m.areas.includes(a)).sort((p, q) => T(p.onset_utc) - T(q.onset_utc)).map(m => br({ a: m.onset_utc, b: m.expires_utc, cls: 'w-' + m.level, text: `<b>${m.level}</b> ${hm(m.onset_utc)} to ${hm(m.expires_utc)} · sent ${wd(m.sent_utc)} ${hm(m.sent_utc)}`, title: `${m.event_pt}, ${a}: ${rng(m.onset_utc, m.expires_utc)}; sent by IPMA ${wd(m.sent_utc)} ${hm(m.sent_utc)} UTC (${m.identifier})` })).join(''))
     }
-    // observed: the wettest stations, rain in each hour as a column
-    const top = md.stations.filter(s => (s.hourly || []).some(h => T(h.time_utc) >= A)).slice(0, 6), vmax = Math.max(10, Math.ceil(Math.max(...top.flatMap(s => s.hourly.map(h => h.rain_mm || 0))) / 10) * 10)
-    const obsProv = prov(md.source, 'IPMA observations', md.read_utc)
-    hd('Observed', `Rain measured in each hour at Madeira's six wettest stations, mm (columns to scale, ${vmax} mm the full height): facts, measured, not forecast. Observations to ${wd(last)} ${hm(last)}. The feed labels each hour with one time and does not say whether that is the hour's start or its end. ${obsProv}`)
+    // observed: the wettest stations, the rain of each hour as a column, drawn in the hour the label covers
+    const inWin = h => { const [a, b] = span(T(h.time_utc)); return b > A && a < B }
+    const top = md.stations.filter(s => (s.hourly || []).some(h => inWin(h) && h.rain_mm != null)).slice(0, 6); if (!top.length) return ''
+    const vmax = Math.max(10, Math.ceil(Math.max(...top.flatMap(s => s.hourly.filter(inWin).map(h => h.rain_mm || 0))) / 10) * 10)
+    const reading = ending ? `Each column is drawn in the hour <b>ending</b> at its label <span class="hyp-note">(hour ending: our reading; IPMA does not say)</span>.` : `The feed labels each hour with one time and does not say whether that is the hour's start or its end; columns are drawn at the label.`
+    hd('Observed', `Rain measured in each hour at the ${top.length} wettest stations, mm (columns to scale, ${vmax} mm the full height): facts, measured, not forecast. Observations to the hour labelled ${wd(last)} ${hm(last)}. ${reading} ${prov(md.source, 'IPMA observations', md.read_utc)}`)
     for (const s of top) {
-        const by = Object.fromEntries(s.hourly.map(h => [T(h.time_utc), h])), tot = s.hourly.filter(h => T(h.time_utc) >= A).reduce((n, h) => n + (h.rain_mm || 0), 0), m6 = s.max_6h_rain
-        rw(esc(s.name.replace(/^Madeira, /, '')), `<i>${m6?.mm != null ? `${esc(m6.mm)} mm in 6 h` : `${tot.toFixed(1)} mm`}</i>`, hrs.map(t => { const h = by[t]; return h && h.rain_mm != null ? `<div class="wx-cell wx-rain" title="${esc(`${s.name}, ${wd(t)} ${hm(t)}: ${h.rain_mm} mm in the hour${h.wind_mean_kmh != null ? `; mean wind ${h.wind_mean_kmh} km/h ${h.wind_dir || ''}` : ''}`)}"><b>${h.rain_mm >= 10 ? Math.round(h.rain_mm) : h.rain_mm}</b><i style="height:${Math.max(h.rain_mm > 0 ? 1 : 0, Math.round(h.rain_mm / vmax * 30))}px"></i></div>` : '<div class="wx-cell empty"></div>' }).join(''), 'wx-cells obs wx-rainrow')
+        const by = Object.fromEntries(s.hourly.map(h => [span(T(h.time_utc))[0], h])), m6 = s.max_6h_rain, tot = s.hourly.filter(inWin).reduce((n, h) => n + (h.rain_mm || 0), 0)
+        rw(esc(s.name.replace(/^Madeira, /, '')), `<i>${tot.toFixed(1)} mm in these hours</i>`, hrs.map(t => { const h = by[t]; return h && h.rain_mm != null ? `<div class="wx-cell wx-rain" title="${esc(`${s.name}, hour labelled ${wd(h.time_utc)} ${hm(h.time_utc)}: ${h.rain_mm} mm${h.wind_mean_kmh != null ? `; mean wind ${h.wind_mean_kmh} km/h ${h.wind_dir || ''}` : ''}`)}"><b>${h.rain_mm >= 10 ? Math.round(h.rain_mm) : h.rain_mm}</b><i style="height:${Math.max(h.rain_mm > 0 ? 1 : 0, Math.round(h.rain_mm / vmax * 30))}px"></i></div>` : '<div class="wx-cell empty"></div>' }).join(''), 'wx-cells obs wx-rainrow')
     }
-    // the comparison, in one sentence, from the data alone
-    const s0 = top[0], reds = live.filter(m => m.level === 'red'), r0 = reds.slice().sort((p, q) => T(p.onset_utc) - T(q.onset_utc))[0]
-    const inRed = t => reds.some(m => t >= T(m.onset_utc) && t < T(m.expires_utc)), tot0 = s0.hourly.filter(h => T(h.time_utc) >= A).reduce((n, h) => n + (h.rain_mm || 0), 0), red0 = s0.hourly.filter(h => inRed(T(h.time_utc))).reduce((n, h) => n + (h.rain_mm || 0), 0), wet = s0.hourly.slice().sort((p, q) => (q.rain_mm || 0) - (p.rain_mm || 0))[0]
-    const lead = r0 ? Math.round((T(r0.onset_utc) - T(r0.sent_utc)) / 6e4) : 0
-    const sentence = r0 ? `IPMA sent the <b>red rain warning</b>${r0.msg_type === 'Update' ? ' (this message updates an earlier one)' : ''} for ${esc([...new Set(reds.filter(m => m.sent_utc === r0.sent_utc).flatMap(m => m.areas))].map(a => a.replace(/^Madeira - /, '')).join(' and '))} on ${wd(r0.sent_utc)} at ${hm(r0.sent_utc)}, <b>${Math.floor(lead / 60)} h ${lead % 60} min before</b> it began (${hm(r0.onset_utc)} to ${hm(r0.expires_utc)}). ${esc(s0.name.replace(/^Madeira, /, ''))} then measured <b>${esc(s0.max_6h_rain?.mm ?? '')} mm in six hours</b> (hours labelled ${hm(s0.max_6h_rain.hours_labelled[0])} to ${hm(s0.max_6h_rain.hours_labelled[1])}), ${esc(wet.rain_mm)} mm in its wettest hour; of its ${tot0.toFixed(1)} mm in this window, <b>${red0.toFixed(1)} mm</b> fell in hours labelled inside a red window.` : ''
-    return `<section class="card wx-day wx-madeira" id="madeira"><div class="wx-head"><h2>Madeira: what was warned, and what fell</h2><p class="wx-lede">${sentence}</p><p class="meta">${wd(A)} ${hm(A)} to ${wd(B)} ${hm(B)} UTC (Madeira is on UTC in November). Warnings above, measurements below, on the same hours. The stations are not tied to warning areas in the data, so no station is placed in an area here; and this card states no threshold for a warning level, because IPMA's messages as we hold them carry none.</p></div>
-<div class="wx-scroll" tabindex="0" role="group" aria-label="Madeira, warned and observed, hour by hour: scroll sideways"><div class="wx-strip" data-d0="${A}" data-span="${B - A}">
-<div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hrs.map(t => `<span>${hm(t).slice(0, 2)}</span>`).join('')}</div></div>
+    // the comparison, in sentences, from the data alone
+    const s0 = top[0], hs = s0.hourly.filter(inWin), tot0 = hs.reduce((n, h) => n + (h.rain_mm || 0), 0)
+    const within = (h, lv) => { const [a, b] = span(T(h.time_utc)); return live.some(m => m.level === lv && a >= T(m.onset_utc) && b <= T(m.expires_utc)) }
+    const sum = lv => hs.filter(h => within(h, lv) && !['red', 'orange', 'yellow'].slice(0, ['red', 'orange', 'yellow'].indexOf(lv)).some(u => within(h, u))).reduce((n, h) => n + (h.rain_mm || 0), 0)
+    const parts = ['red', 'orange', 'yellow'].map(lv => [lv, sum(lv)]).filter(([lv]) => live.some(m => m.level === lv)), outside = tot0 - parts.reduce((n, p) => n + p[1], 0)
+    const topM = live.slice().sort((p, q) => RANK[q.level] - RANK[p.level] || T(p.onset_utc) - T(q.onset_utc))[0], lead = topM ? Math.round((T(topM.onset_utc) - T(topM.sent_utc)) / 6e4) : 0, begun = topM && T(topM.onset_utc) < last
+    const wet = hs.slice().sort((p, q) => (q.rain_mm || 0) - (p.rain_mm || 0))[0]
+    const s1 = topM ? `IPMA sent the <b>${topM.level} rain warning</b>${topM.msg_type === 'Update' ? ' (this message updates an earlier one)' : ''} for ${esc([...new Set(live.filter(m => m.level === topM.level && m.sent_utc === topM.sent_utc).flatMap(m => m.areas))].map(short).join(' and '))} on ${wd(topM.sent_utc)} at ${hm(topM.sent_utc)}, <b>${Math.floor(lead / 60)} h ${lead % 60} min before</b> it began (${rng(topM.onset_utc, topM.expires_utc)})${begun ? '' : '; <b>its hours have not come yet</b>'}. ` : ''
+    const s2 = `${esc(s0.name.replace(/^Madeira, /, ''))}, the wettest station, has measured <b>${tot0.toFixed(1)} mm</b> in these hours, ${esc(wet.rain_mm)} mm in its wettest${s0.max_6h_rain?.mm != null ? `; its largest six hours in the feed: <b>${esc(s0.max_6h_rain.mm)} mm</b> (labels ${wd(s0.max_6h_rain.hours_labelled[0])} ${hm(s0.max_6h_rain.hours_labelled[0])} to ${hm(s0.max_6h_rain.hours_labelled[1])})` : ''}. `
+    const s3 = parts.length ? `Of that ${tot0.toFixed(1)} mm: ${parts.map(([lv, v]) => `<b>${v.toFixed(1)} mm</b> inside ${lv === 'orange' ? 'an' : 'a'} ${lv} window`).join(', ')}, ${outside.toFixed(1)} mm outside any window <b>in the messages we hold</b>${ending ? ' <span class="hyp-note">(reading each label as the hour ending at it: our reading; IPMA does not say)</span>' : ''}.` : ''
+    return `<section class="card wx-day wx-madeira" id="${id}"><div class="wx-head"><h2>${esc(title)}</h2><p class="wx-lede">${s1}${s2}${s3}</p><p class="meta">${wd(A)} ${hm(A)} to ${wd(B)} ${hm(B)} UTC. Warnings above, measurements below, on the same hours. The stations are not tied to warning areas in the data, so no station is placed in an area here; and this card states no threshold for a warning level, because IPMA's messages as we hold them carry none. ${noteExtra}</p></div>
+<div class="wx-scroll" tabindex="0" role="group" aria-label="${esc(title)}, hour by hour: scroll sideways"><div class="wx-strip" style="--n:${N};min-width:${Math.max(980, N * 34 + 150)}px" data-d0="${A}" data-span="${B - A}">
+<div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hrs.map(t => `<span${new Date(t).getUTCHours() === 0 ? ' class="d"' : ''}>${new Date(t).getUTCHours() === 0 ? wd(t) + ' ' : ''}${hm(t).slice(0, 2)}</span>`).join('')}</div></div>
 ${R.join('\n')}
 </div></div>
-<p class="meta wx-mfoot">All ${md.stations.length} stations, hourly: <a href="${base}data/weather/madeira.json">madeira.json</a>. The messages: <a href="${base}data/weather/cap.json">cap.json</a>. Next read ${ok(md.next_read_utc) ? hm(md.next_read_utc) + ' UTC' : 'not stated'}.</p></section>`
-})()
+<p class="meta wx-mfoot">All ${md.stations.length} stations, hourly: <a href="${base}${file}">${esc(file.split('/').pop())}</a>. The messages: <a href="${base}data/weather/cap.json">cap.json</a>. Next read ${ok(md.next_read_utc) ? hm(md.next_read_utc) + ' UTC' : 'not stated'}.</p></section>`
+}
+const day12 = last => { const B = Math.ceil((last + 1) / (12 * 36e5)) * 12 * 36e5; return [B - 864e5, B] }
+const madeira = warnedObserved({ id: 'madeira', title: 'Madeira: what was warned, and what fell', file: 'data/weather/madeira.json', messages: (capAll?.other_messages || []).filter(m => (m.areas || []).some(a => /^Madeira/.test(a))), areaName: 'Madeira', window: day12, noteExtra: `Madeira is on UTC in November. ${esc(capAll?.other_messages_about || '')} So rain shown outside any window may have fallen under an earlier warning we never saw.` })
+const lisbonRain = warnedObserved({ id: 'lisbon-rain', title: 'Lisbon: what is warned, and what has fallen', file: 'data/weather/lisbon-rain.json', messages: capAll?.lisbon_messages || [], areaName: 'Lisboa district', window: () => [D0 - 864e5, D1], noteExtra: 'Two days, so Tuesday\'s rain under Tuesday\'s warnings can be read before Wednesday\'s arrives. A message that left the feed before we first read it is not here.' })
 const chart = (() => {
     const W = 960, H = 290, ml = 40, mr = 14, mt = 14, mb = 30, X0 = D0 - 12 * 36e5, X1 = D1 + 6 * 36e5, YM = 150
     const x = t => ml + (Math.max(X0, Math.min(X1, T(t))) - X0) / (X1 - X0) * (W - ml - mr), y = v => mt + (1 - v / YM) * (H - mt - mb), f = n => n.toFixed(1)
@@ -537,6 +550,7 @@ ${lis.some(w => ok(w.sent_utc)) ? `<p class="wx-cap">The times IPMA sent each wa
 <div class="wrap">
 ${changed}
 ${madeira}
+${lisbonRain}
 ${strip.replace('<!--lede-->', lede)}
 ${chart}
 ${thuStrip}
