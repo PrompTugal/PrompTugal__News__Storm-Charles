@@ -16,6 +16,7 @@ const FACTS = JSON.parse(fs.readFileSync(path.join(M, 'facts.json'), 'utf8')).fa
 const BLOGS = [
     { outlet: 'negocios', url: 'https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto', parse: negocios },
     { outlet: 'dn', url: 'https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh', parse: dn },
+    { outlet: 'observador', url: 'https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/', parse: dn },   // the slug is the page's first headline of the day; the page is Observador's running live blog, storm entries included
     { outlet: 'rtp', url: 'https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024', parse: rtp }
 ]
 const ent = s => (s || '').replace(/<[^>]+>/g, ' ').replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16))).replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
@@ -36,7 +37,7 @@ function negocios(html, read) {
 function dn(html) {
     const out = []
     for (const m of html.matchAll(/<script[^>]*ld\+json[^>]*>([\s\S]*?)<\/script>/g)) { let d; try { d = JSON.parse(m[1]) } catch { continue }
-        for (const o of [].concat(d)) for (const u of o.liveBlogUpdate || []) out.push({ at: u.datePublished, title: ent(u.headline), body: ent(u.articleBody || '').slice(0, 6000), time_from: 'the page\'s JSON-LD (liveBlogUpdate.datePublished)' }) }
+        for (const o of [].concat(d).flatMap(x => x && x['@graph'] ? [x, ...x['@graph']] : [x])) for (const u of (o && o.liveBlogUpdate) || []) out.push({ at: new Date(u.datePublished).toISOString().replace('.000Z', 'Z'), url: typeof u.url === 'string' ? u.url : undefined, title: ent(u.headline), body: ent(u.articleBody || '').slice(0, 6000), time_from: 'the page\'s JSON-LD (liveBlogUpdate.datePublished)' }) }
     return out
 }
 function rtp(html) {
@@ -74,7 +75,7 @@ for (const b of BLOGS) {
   if (fs.existsSync(OUTF)) for (const e of JSON.parse(fs.readFileSync(OUTF, 'utf8')).entries || []) if (!have.has(key(e))) entries.push(e) }
 entries.sort((a, b) => a.fact.localeCompare(b.fact) || a.at.localeCompare(b.at))
 fs.writeFileSync(path.join(M, 'live-entries.json'), JSON.stringify({
-    about: 'Timed entries inside the press live blogs on Storm Charles, for the keyed facts only (facts.json): the entry\'s own time (UTC), its title, the live blog\'s URL. An entry\'s text is read to match it and is not kept; no author is kept. Observador had no live blog on the storm that we could find (its home page listed none at 00:05 UTC, 11 November); Notícias ao Minuto\'s live page prints no time per entry. Evidence, not fact.',
+    about: 'Timed entries inside the press live blogs on Storm Charles, for the keyed facts only (facts.json): the entry\'s own time (UTC), its title, the live blog\'s URL. An entry\'s text is read to match it and is not kept; no author is kept. Observador\'s storm entries are inside its general live blog of the day, whose address names another story (we missed it at first and said it had none: corrected 00:50 UTC, 11 November); Notícias ao Minuto\'s live page prints no time per entry. Evidence, not fact.',
     by: 'incident.media@web-summit.dinis', tool: 'research/media/tools/live.mjs', updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'), blogs, entries
 }, null, 1) + '\n')
 console.error(`${entries.length} entries on the keyed facts`)

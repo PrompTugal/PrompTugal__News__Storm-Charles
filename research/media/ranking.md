@@ -1,10 +1,10 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:34 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 222 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:36 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 222 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
-The keyed facts ([facts.json](facts.json)). For each, each outlet's first item about it: an article (matched by its title) or a timed entry inside its live blog ([live-entries.json](live-entries.json): Jornal de Negócios, Diário de Notícias, RTP), in order of the time the page itself gives. As data: [first-on-each-fact.json](first-on-each-fact.json).
+The keyed facts ([facts.json](facts.json)). For each, each outlet's first item about it: an article (matched by its title) or a timed entry inside its live blog ([live-entries.json](live-entries.json): Jornal de Negócios, Diário de Notícias, Observador, RTP), in order of the time the page itself gives. As data: [first-on-each-fact.json](first-on-each-fact.json).
 
 ### IPMA's red wind warning for Wednesday
 
@@ -13,10 +13,11 @@ Primary source time: **10 Nov 07:18 UTC** (fact: IPMA's own issue time in its CA
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
 | 1 | Diário de Notícias | 10 Nov 08:05 | +47 min | live blog entry | [Distritos de Setúbal, Santarém, Lisboa, Leiria e Portalegre sob aviso…](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| 2 | RTP | 10 Nov 08:41 | +83 min | live blog entry | [IPMA coloca oito distritos sob aviso vermelho na quarta-feira](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778038) |
-| 3 | IOL / AWAY / TVI | 10 Nov 08:46 | +89 min | Redação AWAY | [Alerta vermelho: IPMA admite cenário semelhante ao da tempestade Kris…](https://away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelhante-ao-da-tempestade-kristin-e-aponta-lisboa-como-uma-das-regioes-mais-atingidas/20261110/6af2d9fd0cf2cb2507aa81b4) |
-| 4 | Notícias ao Minuto | 10 Nov 08:59 | +102 min | Lusa | [Oito distritos com aviso vermelho para vento na quarta-feira](https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira) |
-| 5 | Jornal de Negócios | 10 Nov 09:44 | +146 min | live blog entry | [Oito distritos de Portugal continental com aviso vermelho para vento…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
+| 2 | Observador | 10 Nov 08:34 | +77 min | live blog entry | [IPMA coloca oito distritos sob aviso vermelho na quarta-feira](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790948-scroll) |
+| 3 | RTP | 10 Nov 08:41 | +83 min | live blog entry | [IPMA coloca oito distritos sob aviso vermelho na quarta-feira](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778038) |
+| 4 | IOL / AWAY / TVI | 10 Nov 08:46 | +89 min | Redação AWAY | [Alerta vermelho: IPMA admite cenário semelhante ao da tempestade Kris…](https://away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelhante-ao-da-tempestade-kristin-e-aponta-lisboa-como-uma-das-regioes-mais-atingidas/20261110/6af2d9fd0cf2cb2507aa81b4) |
+| 5 | Notícias ao Minuto | 10 Nov 08:59 | +102 min | Lusa | [Oito distritos com aviso vermelho para vento na quarta-feira](https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira) |
+| 6 | Jornal de Negócios | 10 Nov 09:44 | +146 min | live blog entry | [Oito distritos de Portugal continental com aviso vermelho para vento…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
 
 ### The government's alert situation: schools and non-essential public services closed on Wednesday
 
@@ -25,10 +26,11 @@ Primary source time: **10 Nov 12:10 UTC** (fact: portugal.gov.pt's page is dated
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
 | 1 | Diário de Notícias | 10 Nov 09:14 | -176 min (before the page) | live blog entry | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "…](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| 2 | Jornal de Negócios | 10 Nov 09:35 | -155 min (before the page) | live blog entry | [Escolas e serviços públicos encerrados amanhã devido ao mau tempo, an…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
-| 3 | The Portugal News | 10 Nov 09:55 | -135 min (before the page) | not read | [Portugal closes schools and public services due to storms](https://www.theportugalnews.com/news/2026-11-10/portugal-closes-schools-and-public-services-due-to-storms/1113644) |
-| 4 | Público | 10 Nov 14:09 | +120 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
-| 5 | RTP | 11 Nov 00:18 | +729 min | Rádio e Televisão de Portugal | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
+| 2 | Observador | 10 Nov 09:17 | -173 min (before the page) | live blog entry | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira…](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
+| 3 | Jornal de Negócios | 10 Nov 09:35 | -155 min (before the page) | live blog entry | [Escolas e serviços públicos encerrados amanhã devido ao mau tempo, an…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
+| 4 | The Portugal News | 10 Nov 09:55 | -135 min (before the page) | not read | [Portugal closes schools and public services due to storms](https://www.theportugalnews.com/news/2026-11-10/portugal-closes-schools-and-public-services-due-to-storms/1113644) |
+| 5 | Público | 10 Nov 14:09 | +120 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
+| 6 | RTP | 11 Nov 00:18 | +729 min | Rádio e Televisão de Portugal | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
 
 ### Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday
 
@@ -61,10 +63,10 @@ Primary source time: **10 Nov 19:09 UTC** (fact: Web Summit's "Important event u
 | 2 | TEK Notícias (SAPO) | 10 Nov 19:41 | +33 min | Fátima Caçador | [Web Summit cede às pressões e fecha portas no segundo dia por causa d…](https://tek.sapo.pt/noticias/negocios/artigos/web-summit-cede-as-pressoes-e-fecha-portas-no-segundo-dia-por-causa-do-mau-tempo/) |
 | 3 | Jornal de Negócios | 10 Nov 19:42 | +33 min | live blog entry | [Após recomendação do Governo, Paddy suspende Web Summit na quarta-fei…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
 | 4 | Diário de Notícias | 10 Nov 19:45 | +37 min | live blog entry | [Segundo dia da Web Summit cancelado](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| 5 | RTP | 10 Nov 19:47 | +38 min | live blog entry | [Web Summit fecha portas esta quarta-feira devido ao mau tempo](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245) |
-| 6 | Notícias ao Minuto | 10 Nov 20:01 | +53 min | Lusa | [Web Summit cancela segundo dia devido ao mau tempo](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
-| 7 | The Portugal News | 10 Nov 20:05 | +56 min | not read | [Web Summit cancels second day in Lisbon amid storm warnings in Portug…](https://www.theportugalnews.com/news/2026-11-10/web-summit-cancels-second-day-in-lisbon-amid-storm-warnings-in-portugal/1114275) |
-| 8 | Observador | 10 Nov 20:08 | +60 min | Ana Sanlez | [Web Summit cancela programação de quarta-feira devido ao mau tempo](https://observador.pt/2026/11/10/web-summit-cancela-programacao-de-quarta-feira-devido-ao-mau-tempo/) |
+| 5 | Observador | 10 Nov 19:46 | +37 min | live blog entry | [Web Summit cancela programação de quarta-feira devido ao mau tempo](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791150-scroll) |
+| 6 | RTP | 10 Nov 19:47 | +38 min | live blog entry | [Web Summit fecha portas esta quarta-feira devido ao mau tempo](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245) |
+| 7 | Notícias ao Minuto | 10 Nov 20:01 | +53 min | Lusa | [Web Summit cancela segundo dia devido ao mau tempo](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
+| 8 | The Portugal News | 10 Nov 20:05 | +56 min | not read | [Web Summit cancels second day in Lisbon amid storm warnings in Portug…](https://www.theportugalnews.com/news/2026-11-10/web-summit-cancels-second-day-in-lisbon-amid-storm-warnings-in-portugal/1114275) |
 | 9 | CNN Portugal | 10 Nov 20:15 | +66 min | Agência Lusa | [Tempestade Charles obriga ao cancelamento da Web Summit na quarta-fei…](https://cnnportugal.iol.pt/tempestade-charles/web-summit/tempestade-charles-obriga-ao-cancelamento-da-web-summit-na-quarta-feira/20261110/6af3796cd34e9ce6f1b43dff) |
 | 10 | Euronews | 10 Nov 20:29 | +80 min | Pascale Davies | [Web Summit Lisbon day 2 cancelled due to Storm Charles](https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles) |
 | 11 | Expresso | 10 Nov 20:39 | +91 min | not read | [Depressão “Charles”: Web Summit fecha as portas esta quarta-feira e r…](https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428) |
@@ -75,7 +77,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 00:34 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 00:36 UTC | | | | |
 
 ### The storm's track is further south than forecast (strongest winds south of Lisbon)
 
@@ -83,20 +85,23 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| 1 | RTP | 10 Nov 22:22 | unknown | Rádio e Televisão de Portugal | [22h IPMA depressão mudou a trajetória mais para sul](https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275) |
-| 2 | Observador | 10 Nov 23:16 | unknown | Rádio Observador | [23h. IPMA admite que Depressão Charles deverá entrar em Portugal Cont…](https://observador.pt/programas/noticiario/as-noticias-das-23h-2206/) |
+| 1 | Observador | 10 Nov 22:07 | unknown | live blog entry | [Modelos já apontam para uma trajetória mais a sul: entre Setúbal e Si…](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791172-scroll) |
+| 2 | RTP | 10 Nov 22:22 | unknown | Rádio e Televisão de Portugal | [22h IPMA depressão mudou a trajetória mais para sul](https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275) |
 
 Whom they quote at IPMA, as printed (role and outlet only):
 
+- **Observador**, live blog entry, 22:07:49: the latest runs of the ECMWF model (entry between Setúbal and Sines): models, not IPMA; nobody quoted
 - **RTP**, Antena 1's 22:00 bulletin, published 22:22: "IPMA" in the title; the bulletin is audio and was not listened to, so who speaks is not recorded
-- **RTP**, live blog entry, 23:08: "O IPMA já admite": the institute, no person or role named in the entry
-- **Observador**, Rádio Observador's 23:00 bulletin, published 23:16: a meteorologist of IPMA ("a meteorologista do Instituto Português do Mar e da Atmosfera"), in statements to Rádio Observador
+- **Observador**, live blog entry, 22:35:24 (time from the page's own data; confirmed at incident.conductor@'s request): "O IPMA já admite"; a meteorologist of IPMA, in statements to Rádio Observador: entry between the Lisbon region and Cabo de São Vicente. The earliest text we read that attributes the shift to IPMA through a named role
+- **RTP**, live blog entry, 23:08: "O IPMA já admite": the institute, no person or role named. Its opening sentence is word for word that of Observador's 22:35 entry
 - **Notícias ao Minuto**, live page entry, about 23:15 (printed as "41 minutes ago" at our 23:55:58 read; the page gives no clock time): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named
+- **Observador**, Rádio Observador's 23:00 bulletin, published 23:16: the same meteorologist of IPMA, in statements to Rádio Observador
 
 - VOST Portugal (a volunteers' association, not an authority) posted at 23:00 that the ECMWF model's 22:30 run showed the track shifting south: a model, not IPMA (in coverage.json, social.accounts).
-- On the wind: RTP's 23:08 entry says that if very strong winds form they would be felt south of Lisbon and not in the Lisbon region. No title we read says the wind is weaker than forecast; IPMA's red warnings for Lisbon were unchanged.
+- On the wind: Observador's 22:35 entry and RTP's 23:08 entry both say that if very strong winds form they would be felt south of Lisbon and not in the Lisbon region. No title or entry we read says the wind is weaker than forecast; IPMA's red warnings for Lisbon were unchanged.
 - Público's live headline, read by incident.conductor@ at 00:29, is not in our list: Público's live page was not among the URLs we could read with entry times.
 - An earlier Lusa piece (CNN Portugal, 20:07) on the several possible entry points of the storm is about the uncertainty, not the shift, and is outside this table (items from 21:00).
+- Correction (00:50 UTC, 11 November): our first version of this table had RTP's 22:22 bulletin first and Observador at 23:16. We had not found Observador's live blog (its address names another story). With its entries read, Observador is first at 22:07 on the models and at 22:35 on IPMA's word; the order of the two on IPMA's word depends on what Antena 1's 22:00 bulletin said, which we did not hear.
 
 Notes: the organisers' email to attendees went at 19:38 (no public URL; in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). Where the press is ahead of the primary time, the announcement was made in person before the page went up, or the primary time is itself only the first report. A title match can miss an item that reports the fact under another headline.
 
@@ -135,10 +140,10 @@ Among outlets with at least four items:
 |---|---|---|
 | Notícias ao Minuto | online | volume: the most items in the list; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 | CNN Portugal | news channel | video |
-| Observador | online daily | nothing stands out in this sample |
+| Observador | online daily | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)" |
 | Expresso | weekly, online daily | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
-| RTP | public broadcaster | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)" |
+| RTP | public broadcaster | nothing stands out in this sample |
 | Público | daily | own reporting: most items carry a reporter's by-line; links to the primary sources |
 | The Portugal News | English-language weekly in Portugal | coverage in English; (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | ECO | business daily (online) | first on "Web Summit calls off Day 2" |
