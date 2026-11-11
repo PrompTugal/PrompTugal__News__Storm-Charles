@@ -778,3 +778,7 @@ select, input, textarea, button { max-width: 100%; }
 @media print { .prov a:not([href^="http"])::after, .wx-src a:not([href^="http"])::after, .wx-group a:not([href^="http"])::after { content: none; } .prov a[data-out]::after { content: " <" attr(data-out) ">"; } }
 /* round 44, 05:36: in a row of one figure per hour the tinted hour is enough; the minute line ran through the figure. */
 .wx-cells .wx-now { display: none; }
+/* round 45 (design/round-45.md): a link in a document's table breaks between words first, so a narrow first column is not squeezed to
+   a few letters on a phone ("Visualis/ed"); and nothing prints a shadow (a shadow is two full-page masks a page in a PDF: the journalist's ask) */
+.doc article td a, .doc article th a { overflow-wrap: break-word; }
+@media print { .doc article, article.print-article, .card, .wx-tile, .wx-day, .ds-card, .wx-changes, .wx-cellmap { box-shadow: none !important; } }
