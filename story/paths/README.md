@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:27 UTC.
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:28 UTC.
 
 # Ten paths
 
@@ -14,7 +14,7 @@ Each path is told end to end from the record: the cast, the steps with their tim
 | 6 | [IPMA lowers a warning: from its message to the front page, the stories and the press](06-ipma-wind-downgrade.md) | told: 07:16 to 09:39 |
 | 7 | [Page views and a vault key travelling through the lane](07-page-views-and-the-key-lane.md) | told: 08:40 to 10:15 |
 | 8 | [A page for newcomers, read by four invented visitors before Dinis saw it](08-welcome-and-synthetic-visitors.md) | told: 09:50 to 10:15; Dinis's yes open |
-| 9 | A correction | to write |
+| 9 | [A correction: 77 cards, then 36, and a rule from it](09-a-correction.md) | told: 02:59 to 03:14 |
 | 10 | The night with nobody starting work | to write |
 
 The five not named by Dinis are the storyteller's choice for the arc, and may change as the record is read.
