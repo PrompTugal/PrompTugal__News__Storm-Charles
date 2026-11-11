@@ -106,3 +106,13 @@
 - **A home for every agent.** "A proper home, even a little logo, like we did with the storyboard and the book: a little identity ... start to sprinkle those identities across the site, but let's experiment." Each agent with "a timeline report: what they've done ... I should be able to see the work they do", the ontologist's above all: "the semantic graphs and how everything fits together".
 - **A CI agent, and the repository visualised.** "The little repo link at the top"; update the README and the guidance, "this is all open source"; "visualisations of the CI pipeline as it happens"; "each of the updates, who's been doing it and all the signatures"; "how all the agents are collaborating and pushing, the whole workflow"; "an easy way to see every single commit".
 - "Feel free to spin up more agents."
+
+## Dinis, 11 November 2026, ~02:50 UTC: the model budget, a Perplexity agent, an accountant, a reporter and a journalist on the project itself (close to his words)
+
+- **Budget**: "you can use up to $20 in budget. That's okay." (The team's model spend: the daily cap goes from 5 to 20 US dollars.)
+- **A Perplexity agent**: "I think you can create a Perplexity agent for this, because I'm quite interested in seeing what you can do. And have a page for it on the site."
+- **The open-weight models**: "maybe also a page for the other open-weight models that you are using, in terms of the usage here."
+- **An accountant agent**: "do we have an accountant agent? We should be able to map that out, so we start to connect the dots like we did with the other projects." (The reference: WS-148 in SGit-AI__Website__Web-Summit, `people/indi/accountant/`: every agent measures its tokens; the accountant finds the savings.)
+- **A reporter and a journalist on the project itself**: "do we have reporter and journalist agents reporting on the incident itself? ... meta reporter and meta journalist: reporting on how this project actually occurs and how it actually happened." (The reference: WS-212 and `team/reporter/BRIEF.md` in the same repository: traces per workflow, captured as it happens; then examples with pictures.)
+- **Read the main repository**: "a lot of these ideas have also been written on the main repo, so make sure you read that too."
+- **Memory that makes the next agent cheaper**: "when we create these reporters and journalists who are capturing information about the agent itself, the story and its evolution, this historical reference, and the brain and all this: we should make it much cheaper if another agent wanted to capture all this. The whole idea that **the librarian saves tokens** and makes it cheaper and implements memory in a much more effective way."
