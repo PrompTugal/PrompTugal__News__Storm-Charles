@@ -1,8 +1,8 @@
 {
   "about": "The grammar of entities/ on this site: the types of node, and the verbs an edge may carry, each with a distinct inverse. A node is just a node: what it is comes from its edges. There is no generic 'related to' or 'mentions' edge: the rows that mention a node are a query the page runs, not an edge. Each type lists its own vocabulary (the verbs its nodes may start); only the grammar is shared: {verb, to, label, source, read_utc, origin}. tools/entities-make.mjs refuses a node or an edge this file does not allow. Kept by incident.entities@web-summit.dinis.",
-  "version": 1,
+  "version": 2,
   "by": "incident.entities@web-summit.dinis",
-  "updated": "2026-11-11T02:20:00Z",
+  "updated": "2026-11-11T02:26:00Z",
   "every_edge": {
     "verb": "one of the verbs below",
     "to": "a node id: <type>/<id>",
@@ -22,55 +22,488 @@
     "ours": "this site's own summary, definition or calendar: not a claim about the storm"
   },
   "types": {
-    "body": { "what": "A public body that decides, warns or polices: an authority, the government, a ministry, a municipality.", "graph": "actor:<id>", "verbs": ["issued", "decided", "has_not_announced", "is_expected_to", "runs", "part_of", "relays_messages_of", "named"] },
-    "organisation": { "what": "An organiser or a company that is not a public body: Web Summit, its programmes, a bridge operator.", "graph": "actor:<id>", "verbs": ["decided", "has_not_announced", "is_expected_to", "consulted", "runs", "part_of", "held_at"] },
-    "service": { "what": "Something people use that can run, be restricted or stop: transport, schools, an airport, museums.", "graph": "actor:<id>", "verbs": ["decided", "has_not_announced", "is_expected_to", "serves", "part_of"] },
-    "role": { "what": "A public office or role, as that role: a minister, a mayor, a chief executive. Never a private person.", "graph": "actor:<id> where the decision graph has it", "verbs": ["holds_office_in", "decided", "works_for"] },
-    "place": { "what": "Somewhere: a city, a district, a region, a bridge, a venue, a cape.", "graph": "place:<IPMA area code> or actor:<id>", "verbs": ["located_in", "decided", "has_not_announced"] },
-    "day": { "what": "A calendar day (UTC; Lisbon is on UTC in November): what was decided, warned and observed that day.", "verbs": ["precedes"] },
-    "programme-day": { "what": "A day of an organiser's programme (Web Summit's Day 2), which is not the calendar day it falls on.", "verbs": ["falls_on", "part_of"] },
-    "hazard": { "what": "What the warnings warn of and the decisions give as their reason: the storm itself, wind, rain, the sea, flooding.", "verbs": ["named_by"] },
-    "warning": { "what": "A warning or communiqué from a body that warns (the same items the graph calls Warning).", "graph": "warning:<id>", "verbs": ["affects", "follows", "supersedes", "made_on", "in_force_on", "covers", "warns_of", "instance_of"] },
-    "decision": { "what": "Something an actor decided, said it expects, or has not yet announced (the same items the graph calls Decision).", "graph": "decision:<id>", "verbs": ["affects", "follows", "supersedes", "made_on", "in_force_on", "covers", "cites_hazard", "cites_risk_to", "cancels", "aims_to_hold", "restricts", "closes", "instance_of"] },
-    "term": { "what": "A word this site or an authority uses with a fixed meaning: fact, evidence, hypothesis, red warning, alert situation, lead time.", "verbs": ["kind_of", "used_by", "declared_by", "measured_on"] },
-    "outlet": { "what": "Where others report: a newspaper, a broadcaster, a wire. (Round 2.)", "graph": "actor:host:<host>", "verbs": [] },
-    "agent": { "what": "An agent of the team that keeps this site. (Round 2; the live pages are under /agents/.)", "graph": "agent:<name>", "verbs": [] }
+    "body": {
+      "what": "A public body that decides, warns or polices: an authority, the government, a ministry, a municipality.",
+      "graph": "actor:<id>",
+      "verbs": [
+        "issued",
+        "decided",
+        "has_not_announced",
+        "is_expected_to",
+        "runs",
+        "part_of",
+        "relays_messages_of",
+        "named"
+      ]
+    },
+    "organisation": {
+      "what": "An organiser or a company that is not a public body: Web Summit, its programmes, a bridge operator.",
+      "graph": "actor:<id>",
+      "verbs": [
+        "decided",
+        "has_not_announced",
+        "is_expected_to",
+        "consulted",
+        "runs",
+        "part_of",
+        "held_at",
+        "led_by"
+      ]
+    },
+    "service": {
+      "what": "Something people use that can run, be restricted or stop: transport, schools, an airport, museums.",
+      "graph": "actor:<id>",
+      "verbs": [
+        "decided",
+        "has_not_announced",
+        "is_expected_to",
+        "serves",
+        "part_of"
+      ]
+    },
+    "role": {
+      "what": "A public office or role, as that role: a minister, a mayor, a chief executive. Never a private person.",
+      "graph": "actor:<id> where the decision graph has it",
+      "verbs": [
+        "holds_office_in",
+        "decided",
+        "works_for",
+        "expects_landfall_near"
+      ]
+    },
+    "place": {
+      "what": "Somewhere: a city, a district, a region, a bridge, a venue, a cape.",
+      "graph": "place:<IPMA area code> or actor:<id>",
+      "verbs": [
+        "located_in",
+        "decided",
+        "has_not_announced"
+      ]
+    },
+    "day": {
+      "what": "A calendar day (UTC; Lisbon is on UTC in November): what was decided, warned and observed that day.",
+      "verbs": [
+        "precedes"
+      ]
+    },
+    "programme-day": {
+      "what": "A day of an organiser's programme (Web Summit's Day 2), which is not the calendar day it falls on.",
+      "verbs": [
+        "falls_on",
+        "part_of"
+      ]
+    },
+    "hazard": {
+      "what": "What the warnings warn of and the decisions give as their reason: the storm itself, wind, rain, the sea, flooding.",
+      "verbs": [
+        "named_by",
+        "observed_at"
+      ]
+    },
+    "warning": {
+      "what": "A warning or communiqué from a body that warns (the same items the graph calls Warning).",
+      "graph": "warning:<id>",
+      "verbs": [
+        "affects",
+        "follows",
+        "supersedes",
+        "made_on",
+        "in_force_on",
+        "covers",
+        "warns_of",
+        "instance_of",
+        "forecasts_passage_near"
+      ]
+    },
+    "decision": {
+      "what": "Something an actor decided, said it expects, or has not yet announced (the same items the graph calls Decision).",
+      "graph": "decision:<id>",
+      "verbs": [
+        "affects",
+        "follows",
+        "supersedes",
+        "made_on",
+        "in_force_on",
+        "covers",
+        "cites_hazard",
+        "cites_risk_to",
+        "cancels",
+        "aims_to_hold",
+        "restricts",
+        "closes",
+        "instance_of"
+      ]
+    },
+    "term": {
+      "what": "A word this site or an authority uses with a fixed meaning: fact, evidence, hypothesis, red warning, alert situation, lead time.",
+      "verbs": [
+        "kind_of",
+        "used_by",
+        "declared_by",
+        "measured_on"
+      ]
+    },
+    "outlet": {
+      "what": "Where others report: a newspaper, a broadcaster, a wire, as incident.media@ keeps them (research/media/outlets.json).",
+      "graph": "actor:outlet:<id>",
+      "verbs": [
+        "reported"
+      ]
+    },
+    "agent": {
+      "what": "An agent of the team that keeps this site, from the public keys in data/keys.json. The live pages are under /agents/.",
+      "graph": "agent:<name>",
+      "verbs": [
+        "member_of"
+      ]
+    }
   },
   "verbs": {
-    "issued": { "inverse": "issued_by", "reads": "issued", "inverse_reads": "was issued by", "to": ["warning"] },
-    "decided": { "inverse": "decided_by", "reads": "decided or announced", "inverse_reads": "was decided or announced by", "to": ["decision"] },
-    "has_not_announced": { "inverse": "awaited_from", "reads": "has not announced", "inverse_reads": "is awaited from", "to": ["decision"] },
-    "is_expected_to": { "inverse": "expected_of", "reads": "is expected to (a hypothesis, never a fact)", "inverse_reads": "is expected of", "to": ["decision"] },
-    "affects": { "inverse": "affected_by", "reads": "is addressed to or touches", "inverse_reads": "is touched by", "to": ["body", "organisation", "service", "place", "role"] },
-    "follows": { "inverse": "followed_by", "reads": "came after (time order only: it does not claim cause)", "inverse_reads": "was followed by", "to": ["decision", "warning"] },
-    "supersedes": { "inverse": "superseded_by", "reads": "replaces", "inverse_reads": "was replaced by", "to": ["decision", "warning"] },
-    "made_on": { "inverse": "day_of", "reads": "was made on", "inverse_reads": "is the day of", "to": ["day"] },
-    "in_force_on": { "inverse": "had_in_force", "reads": "is in force on", "inverse_reads": "had in force", "to": ["day"] },
-    "covers": { "inverse": "covered_by", "reads": "covers", "inverse_reads": "is covered by", "to": ["place"] },
-    "warns_of": { "inverse": "warned_of_by", "reads": "warns of", "inverse_reads": "is warned of by", "to": ["hazard"] },
-    "cites_hazard": { "inverse": "cited_as_reason_by", "reads": "gives as a reason", "inverse_reads": "is given as a reason by", "to": ["hazard"] },
-    "cites_risk_to": { "inverse": "risk_cited_by", "reads": "gives as a reason the disruption of", "inverse_reads": "has its disruption given as a reason by", "to": ["service"] },
-    "cancels": { "inverse": "cancelled_by", "reads": "calls off", "inverse_reads": "was called off by", "to": ["programme-day"] },
-    "aims_to_hold": { "inverse": "aimed_for_by", "reads": "aims to hold", "inverse_reads": "is aimed for by", "to": ["programme-day"] },
-    "restricts": { "inverse": "restricted_by", "reads": "restricts the use of", "inverse_reads": "is restricted by", "to": ["place", "service"] },
-    "closes": { "inverse": "closed_by", "reads": "closes", "inverse_reads": "is closed by", "to": ["place", "service"] },
-    "instance_of": { "inverse": "has_instance", "reads": "is a", "inverse_reads": "has as an instance", "to": ["term"] },
-    "kind_of": { "inverse": "has_kind", "reads": "is a kind of", "inverse_reads": "has as a kind", "to": ["term"] },
-    "used_by": { "inverse": "uses_term", "reads": "is used by", "inverse_reads": "uses the term", "to": ["body", "organisation", "agent"] },
-    "declared_by": { "inverse": "declares", "reads": "is declared by", "inverse_reads": "declares", "to": ["body"] },
-    "measured_on": { "inverse": "has_measure", "reads": "was measured on", "inverse_reads": "has, measured on it,", "to": ["warning", "decision"] },
-    "runs": { "inverse": "run_by", "reads": "runs", "inverse_reads": "is run by", "to": ["place", "service", "organisation"] },
-    "serves": { "inverse": "served_by", "reads": "serves", "inverse_reads": "is served by", "to": ["place"] },
-    "located_in": { "inverse": "contains", "reads": "is in", "inverse_reads": "contains", "to": ["place"] },
-    "part_of": { "inverse": "has_part", "reads": "is part of", "inverse_reads": "has as a part", "to": ["body", "organisation", "service"] },
-    "held_at": { "inverse": "hosts", "reads": "is held at", "inverse_reads": "hosts", "to": ["place"] },
-    "consulted": { "inverse": "consulted_by", "reads": "talked with, before deciding,", "inverse_reads": "was talked with by", "to": ["body"] },
-    "holds_office_in": { "inverse": "has_office", "reads": "holds office in", "inverse_reads": "has the office of", "to": ["body", "organisation"] },
-    "works_for": { "inverse": "employs", "reads": "works for", "inverse_reads": "has, working for it,", "to": ["body", "organisation"] },
-    "falls_on": { "inverse": "is_date_of", "reads": "falls on", "inverse_reads": "is the date of", "to": ["day"] },
-    "precedes": { "inverse": "preceded_by", "reads": "is the day before", "inverse_reads": "is the day after", "to": ["day"] },
-    "named": { "inverse": "named_by", "reads": "named", "inverse_reads": "was named by", "to": ["hazard"] },
-    "named_by": { "inverse": "named", "reads": "was named by", "inverse_reads": "named", "to": ["body"] },
-    "relays_messages_of": { "inverse": "has_messages_relayed_by", "reads": "relays the messages of", "inverse_reads": "has its messages relayed by", "to": ["body"] }
+    "issued": {
+      "inverse": "issued_by",
+      "reads": "issued",
+      "inverse_reads": "was issued by",
+      "to": [
+        "warning"
+      ]
+    },
+    "decided": {
+      "inverse": "decided_by",
+      "reads": "decided or announced",
+      "inverse_reads": "was decided or announced by",
+      "to": [
+        "decision"
+      ]
+    },
+    "has_not_announced": {
+      "inverse": "awaited_from",
+      "reads": "has not announced",
+      "inverse_reads": "is awaited from",
+      "to": [
+        "decision"
+      ]
+    },
+    "is_expected_to": {
+      "inverse": "expected_of",
+      "reads": "is expected to (a hypothesis, never a fact)",
+      "inverse_reads": "is expected of",
+      "to": [
+        "decision"
+      ]
+    },
+    "affects": {
+      "inverse": "affected_by",
+      "reads": "is addressed to or touches",
+      "inverse_reads": "is touched by",
+      "to": [
+        "body",
+        "organisation",
+        "service",
+        "place",
+        "role"
+      ]
+    },
+    "follows": {
+      "inverse": "followed_by",
+      "reads": "came after (time order only: it does not claim cause)",
+      "inverse_reads": "was followed by",
+      "to": [
+        "decision",
+        "warning"
+      ]
+    },
+    "supersedes": {
+      "inverse": "superseded_by",
+      "reads": "replaces",
+      "inverse_reads": "was replaced by",
+      "to": [
+        "decision",
+        "warning"
+      ]
+    },
+    "made_on": {
+      "inverse": "day_of",
+      "reads": "was made on",
+      "inverse_reads": "is the day of",
+      "to": [
+        "day"
+      ]
+    },
+    "in_force_on": {
+      "inverse": "had_in_force",
+      "reads": "is in force on",
+      "inverse_reads": "had in force",
+      "to": [
+        "day"
+      ]
+    },
+    "covers": {
+      "inverse": "covered_by",
+      "reads": "covers",
+      "inverse_reads": "is covered by",
+      "to": [
+        "place"
+      ]
+    },
+    "warns_of": {
+      "inverse": "warned_of_by",
+      "reads": "warns of",
+      "inverse_reads": "is warned of by",
+      "to": [
+        "hazard"
+      ]
+    },
+    "cites_hazard": {
+      "inverse": "cited_as_reason_by",
+      "reads": "gives as a reason",
+      "inverse_reads": "is given as a reason by",
+      "to": [
+        "hazard"
+      ]
+    },
+    "cites_risk_to": {
+      "inverse": "risk_cited_by",
+      "reads": "gives as a reason the disruption of",
+      "inverse_reads": "has its disruption given as a reason by",
+      "to": [
+        "service"
+      ]
+    },
+    "cancels": {
+      "inverse": "cancelled_by",
+      "reads": "calls off",
+      "inverse_reads": "was called off by",
+      "to": [
+        "programme-day"
+      ]
+    },
+    "aims_to_hold": {
+      "inverse": "aimed_for_by",
+      "reads": "aims to hold",
+      "inverse_reads": "is aimed for by",
+      "to": [
+        "programme-day"
+      ]
+    },
+    "restricts": {
+      "inverse": "restricted_by",
+      "reads": "restricts the use of",
+      "inverse_reads": "is restricted by",
+      "to": [
+        "place",
+        "service"
+      ]
+    },
+    "closes": {
+      "inverse": "closed_by",
+      "reads": "closes",
+      "inverse_reads": "is closed by",
+      "to": [
+        "place",
+        "service"
+      ]
+    },
+    "instance_of": {
+      "inverse": "has_instance",
+      "reads": "is a",
+      "inverse_reads": "has as an instance",
+      "to": [
+        "term"
+      ]
+    },
+    "kind_of": {
+      "inverse": "has_kind",
+      "reads": "is a kind of",
+      "inverse_reads": "has as a kind",
+      "to": [
+        "term"
+      ]
+    },
+    "used_by": {
+      "inverse": "uses_term",
+      "reads": "is used by",
+      "inverse_reads": "uses the term",
+      "to": [
+        "body",
+        "organisation",
+        "agent"
+      ]
+    },
+    "declared_by": {
+      "inverse": "declares",
+      "reads": "is declared by",
+      "inverse_reads": "declares",
+      "to": [
+        "body"
+      ]
+    },
+    "measured_on": {
+      "inverse": "has_measure",
+      "reads": "was measured on",
+      "inverse_reads": "has, measured on it,",
+      "to": [
+        "warning",
+        "decision"
+      ]
+    },
+    "runs": {
+      "inverse": "run_by",
+      "reads": "runs",
+      "inverse_reads": "is run by",
+      "to": [
+        "place",
+        "service",
+        "organisation"
+      ]
+    },
+    "serves": {
+      "inverse": "served_by",
+      "reads": "serves",
+      "inverse_reads": "is served by",
+      "to": [
+        "place"
+      ]
+    },
+    "located_in": {
+      "inverse": "contains",
+      "reads": "is in",
+      "inverse_reads": "contains",
+      "to": [
+        "place"
+      ]
+    },
+    "part_of": {
+      "inverse": "has_part",
+      "reads": "is part of",
+      "inverse_reads": "has as a part",
+      "to": [
+        "body",
+        "organisation",
+        "service"
+      ]
+    },
+    "held_at": {
+      "inverse": "hosts",
+      "reads": "is held at",
+      "inverse_reads": "hosts",
+      "to": [
+        "place"
+      ]
+    },
+    "consulted": {
+      "inverse": "consulted_by",
+      "reads": "talked with, before deciding,",
+      "inverse_reads": "was talked with by",
+      "to": [
+        "body"
+      ]
+    },
+    "holds_office_in": {
+      "inverse": "has_office",
+      "reads": "holds office in",
+      "inverse_reads": "has the office of",
+      "to": [
+        "body",
+        "organisation"
+      ]
+    },
+    "works_for": {
+      "inverse": "employs",
+      "reads": "works for",
+      "inverse_reads": "has, working for it,",
+      "to": [
+        "body",
+        "organisation"
+      ]
+    },
+    "falls_on": {
+      "inverse": "is_date_of",
+      "reads": "falls on",
+      "inverse_reads": "is the date of",
+      "to": [
+        "day"
+      ]
+    },
+    "precedes": {
+      "inverse": "preceded_by",
+      "reads": "is the day before",
+      "inverse_reads": "is the day after",
+      "to": [
+        "day"
+      ]
+    },
+    "named": {
+      "inverse": "named_by",
+      "reads": "named",
+      "inverse_reads": "was named by",
+      "to": [
+        "hazard"
+      ]
+    },
+    "named_by": {
+      "inverse": "named",
+      "reads": "was named by",
+      "inverse_reads": "named",
+      "to": [
+        "body"
+      ]
+    },
+    "relays_messages_of": {
+      "inverse": "has_messages_relayed_by",
+      "reads": "relays the messages of",
+      "inverse_reads": "has its messages relayed by",
+      "to": [
+        "body"
+      ]
+    },
+    "reported": {
+      "inverse": "reported_by",
+      "reads": "reported (it is where we read it)",
+      "inverse_reads": "was read in",
+      "to": [
+        "decision",
+        "warning"
+      ]
+    },
+    "member_of": {
+      "inverse": "has_member",
+      "reads": "is a member of",
+      "inverse_reads": "has as a member",
+      "to": [
+        "organisation"
+      ]
+    },
+    "led_by": {
+      "inverse": "leads",
+      "reads": "is led by",
+      "inverse_reads": "leads",
+      "to": [
+        "agent"
+      ]
+    },
+    "forecasts_passage_near": {
+      "inverse": "passage_forecast_by",
+      "reads": "names, for where the centre is most likely to pass,",
+      "inverse_reads": "is named, for where the centre is most likely to pass, by",
+      "to": [
+        "place"
+      ]
+    },
+    "expects_landfall_near": {
+      "inverse": "landfall_expected_by",
+      "reads": "said the storm should come ashore near",
+      "inverse_reads": "is where the storm should come ashore, as said by",
+      "to": [
+        "place"
+      ]
+    },
+    "observed_at": {
+      "inverse": "saw",
+      "reads": "was observed at",
+      "inverse_reads": "saw",
+      "to": [
+        "place"
+      ]
+    }
   }
 }

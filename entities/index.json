@@ -1,26 +1,220 @@
 {
  "about": "Every node of entities/: its id (its page is entities/<id>.html, its data entities/<id>.json), type, names, and the id of the same thing in data/graph/ when the graph has it. Made by tools/entities-make.mjs from entities/seed.json and the incident's data; the grammar is entities/ontology.json.",
  "by": "incident.entities@web-summit.dinis",
- "updated": "2026-11-11T02:20:00Z",
+ "updated": "2026-11-11T02:26:00Z",
  "incident": "2026-11-10-storm-charles",
  "counts": {
-  "nodes": 124,
-  "edges": 249,
+  "nodes": 175,
+  "edges": 336,
   "by_type": {
+   "agent": 16,
    "body": 15,
    "day": 4,
    "decision": 40,
    "hazard": 5,
-   "organisation": 5,
-   "place": 14,
+   "organisation": 6,
+   "outlet": 29,
+   "place": 17,
    "programme-day": 3,
    "role": 5,
    "service": 15,
-   "term": 11,
+   "term": 13,
    "warning": 7
   }
  },
  "nodes": [
+  {
+   "id": "agent/archivist",
+   "type": "agent",
+   "name": "incident.archivist@web-summit.dinis",
+   "also": [
+    "incident.archivist@"
+   ],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/board",
+   "type": "agent",
+   "name": "incident.board@web-summit.dinis",
+   "also": [
+    "incident.board@"
+   ],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/conductor",
+   "type": "agent",
+   "name": "incident.conductor@web-summit.dinis",
+   "also": [
+    "incident.conductor@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.conductor@web-summit.dinis",
+   "edges": 1,
+   "rows": 1
+  },
+  {
+   "id": "agent/designer",
+   "type": "agent",
+   "name": "incident.designer@web-summit.dinis",
+   "also": [
+    "incident.designer@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.designer@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/entities",
+   "type": "agent",
+   "name": "incident.entities@web-summit.dinis",
+   "also": [
+    "incident.entities@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.entities@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/graph",
+   "type": "agent",
+   "name": "incident.graph@web-summit.dinis",
+   "also": [
+    "incident.graph@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.graph@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/identity",
+   "type": "agent",
+   "name": "incident.identity@web-summit.dinis",
+   "also": [
+    "incident.identity@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.identity@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/labs",
+   "type": "agent",
+   "name": "incident.labs@web-summit.dinis",
+   "also": [
+    "incident.labs@"
+   ],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/librarian",
+   "type": "agent",
+   "name": "incident.librarian@web-summit.dinis",
+   "also": [
+    "incident.librarian@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.librarian@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/media",
+   "type": "agent",
+   "name": "incident.media@web-summit.dinis",
+   "also": [
+    "incident.media@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.media@web-summit.dinis",
+   "edges": 1,
+   "rows": 2
+  },
+  {
+   "id": "agent/observability",
+   "type": "agent",
+   "name": "incident.observability@web-summit.dinis",
+   "also": [
+    "incident.observability@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.observability@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/sources",
+   "type": "agent",
+   "name": "incident.sources@web-summit.dinis",
+   "also": [
+    "incident.sources@"
+   ],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/studio",
+   "type": "agent",
+   "name": "incident.studio@web-summit.dinis",
+   "also": [
+    "incident.studio@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.studio@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/weather",
+   "type": "agent",
+   "name": "incident.weather@web-summit.dinis",
+   "also": [
+    "incident.weather@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.weather@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/weatherwatch",
+   "type": "agent",
+   "name": "incident.weatherwatch@web-summit.dinis",
+   "also": [
+    "incident.weatherwatch@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.weatherwatch@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/wikipedia",
+   "type": "agent",
+   "name": "incident.wikipedia@web-summit.dinis",
+   "also": [
+    "incident.wikipedia@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.wikipedia@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
   {
    "id": "body/aemet",
    "type": "body",
@@ -38,7 +232,8 @@
    "also": [
     "Autoridade Marítima Nacional and the Port of Lisbon",
     "Port of Lisbon",
-    "the port"
+    "the port",
+    "AMN"
    ],
    "label": "evidence",
    "graph": "actor:amn",
@@ -76,7 +271,8 @@
    "name": "Câmara Municipal de Lisboa",
    "also": [
     "Lisbon City Council",
-    "Câmara de Lisboa"
+    "Câmara de Lisboa",
+    "CML"
    ],
    "label": "evidence",
    "graph": "actor:camara-lisboa",
@@ -294,7 +490,7 @@
    "also": [],
    "label": "evidence",
    "graph": "decision:ana-conditioned",
-   "edges": 2,
+   "edges": 3,
    "rows": 0
   },
   {
@@ -520,7 +716,7 @@
    "also": [],
    "label": "evidence",
    "graph": "decision:operators-possible-disruption",
-   "edges": 2,
+   "edges": 4,
    "rows": 0
   },
   {
@@ -686,7 +882,7 @@
    ],
    "label": "ours",
    "graph": null,
-   "edges": 0,
+   "edges": 4,
    "rows": 5
   },
   {
@@ -710,7 +906,9 @@
    "name": "Sea agitation",
    "also": [
     "sea agitation",
-    "rough sea"
+    "rough sea",
+    "agitação marítima",
+    "sea state"
    ],
    "label": "ours",
    "graph": null,
@@ -744,6 +942,19 @@
    "graph": null,
    "edges": 0,
    "rows": 3
+  },
+  {
+   "id": "organisation/incident-team",
+   "type": "organisation",
+   "name": "The incident team",
+   "also": [
+    "Dinis Cruz's incident team",
+    "incident team"
+   ],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 0
   },
   {
    "id": "organisation/lusoponte",
@@ -800,6 +1011,366 @@
    "graph": "actor:websummit",
    "edges": 9,
    "rows": 23
+  },
+  {
+   "id": "outlet/ap",
+   "type": "outlet",
+   "name": "Associated Press",
+   "also": [
+    "apnews.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:ap",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/bloomberg",
+   "type": "outlet",
+   "name": "Bloomberg",
+   "also": [
+    "bloomberg.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:bloomberg",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/cnn-portugal",
+   "type": "outlet",
+   "name": "CNN Portugal",
+   "also": [
+    "cnnportugal.iol.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:cnn-portugal",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "outlet/correio-da-manha",
+   "type": "outlet",
+   "name": "Correio da Manhã",
+   "also": [
+    "cmjornal.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:correio-da-manha",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/dn",
+   "type": "outlet",
+   "name": "Diário de Notícias",
+   "also": [
+    "DN",
+    "dn.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:dn",
+   "edges": 4,
+   "rows": 4
+  },
+  {
+   "id": "outlet/eco",
+   "type": "outlet",
+   "name": "ECO",
+   "also": [
+    "eco.sapo.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:eco",
+   "edges": 1,
+   "rows": 2
+  },
+  {
+   "id": "outlet/euronews",
+   "type": "outlet",
+   "name": "Euronews",
+   "also": [
+    "euronews.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:euronews",
+   "edges": 1,
+   "rows": 1
+  },
+  {
+   "id": "outlet/expresso",
+   "type": "outlet",
+   "name": "Expresso",
+   "also": [
+    "expresso.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:expresso",
+   "edges": 2,
+   "rows": 1
+  },
+  {
+   "id": "outlet/guardian",
+   "type": "outlet",
+   "name": "The Guardian",
+   "also": [
+    "theguardian.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:guardian",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/iol",
+   "type": "outlet",
+   "name": "IOL / AWAY / TVI",
+   "also": [
+    "TVI",
+    "iol.pt",
+    "tvi.iol.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:iol",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "outlet/jn",
+   "type": "outlet",
+   "name": "Jornal de Notícias",
+   "also": [
+    "JN",
+    "jn.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:jn",
+   "edges": 0,
+   "rows": 1
+  },
+  {
+   "id": "outlet/jornal-economico",
+   "type": "outlet",
+   "name": "Jornal Económico",
+   "also": [
+    "jornaleconomico.sapo.pt",
+    "jornaleconomico.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:jornal-economico",
+   "edges": 3,
+   "rows": 0
+  },
+  {
+   "id": "outlet/lusa",
+   "type": "outlet",
+   "name": "Lusa",
+   "also": [
+    "lusa.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:lusa",
+   "edges": 0,
+   "rows": 2
+  },
+  {
+   "id": "outlet/madeira-island-news",
+   "type": "outlet",
+   "name": "Madeira Island News",
+   "also": [
+    "madeiraislandnews.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:madeira-island-news",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/negocios",
+   "type": "outlet",
+   "name": "Jornal de Negócios",
+   "also": [
+    "Negócios",
+    "jornaldenegocios.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:negocios",
+   "edges": 17,
+   "rows": 1
+  },
+  {
+   "id": "outlet/noticias-ao-minuto",
+   "type": "outlet",
+   "name": "Notícias ao Minuto",
+   "also": [
+    "noticiasaominuto.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:noticias-ao-minuto",
+   "edges": 2,
+   "rows": 2
+  },
+  {
+   "id": "outlet/observador",
+   "type": "outlet",
+   "name": "Observador",
+   "also": [
+    "Rádio Observador",
+    "observador.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:observador",
+   "edges": 11,
+   "rows": 3
+  },
+  {
+   "id": "outlet/portugal-news",
+   "type": "outlet",
+   "name": "The Portugal News",
+   "also": [
+    "theportugalnews.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:portugal-news",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/portugal-resident",
+   "type": "outlet",
+   "name": "Portugal Resident",
+   "also": [
+    "portugalresident.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:portugal-resident",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/publico",
+   "type": "outlet",
+   "name": "Público",
+   "also": [
+    "publico.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:publico",
+   "edges": 2,
+   "rows": 1
+  },
+  {
+   "id": "outlet/renascenca",
+   "type": "outlet",
+   "name": "Renascença",
+   "also": [
+    "Rádio Renascença",
+    "rr.pt",
+    "rr.sapo.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:renascenca",
+   "edges": 0,
+   "rows": 1
+  },
+  {
+   "id": "outlet/rtp",
+   "type": "outlet",
+   "name": "RTP",
+   "also": [
+    "rtp.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:rtp",
+   "edges": 3,
+   "rows": 1
+  },
+  {
+   "id": "outlet/sabado",
+   "type": "outlet",
+   "name": "Sábado",
+   "also": [
+    "sabado.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:sabado",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/sapo",
+   "type": "outlet",
+   "name": "SAPO",
+   "also": [
+    "sapo.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:sapo",
+   "edges": 2,
+   "rows": 0
+  },
+  {
+   "id": "outlet/sic-noticias",
+   "type": "outlet",
+   "name": "SIC Notícias",
+   "also": [
+    "SIC",
+    "sicnoticias.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:sic-noticias",
+   "edges": 0,
+   "rows": 1
+  },
+  {
+   "id": "outlet/techcrunch",
+   "type": "outlet",
+   "name": "TechCrunch",
+   "also": [
+    "techcrunch.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:techcrunch",
+   "edges": 0,
+   "rows": 0
+  },
+  {
+   "id": "outlet/techtimes",
+   "type": "outlet",
+   "name": "Tech Times",
+   "also": [
+    "techtimes.com"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:techtimes",
+   "edges": 0,
+   "rows": 1
+  },
+  {
+   "id": "outlet/tek",
+   "type": "outlet",
+   "name": "TEK Notícias (SAPO)",
+   "also": [
+    "TEK Notícias",
+    "TEK",
+    "tek.sapo.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:tek",
+   "edges": 2,
+   "rows": 2
+  },
+  {
+   "id": "outlet/tsf",
+   "type": "outlet",
+   "name": "TSF",
+   "also": [
+    "tsf.pt"
+   ],
+   "label": "ours",
+   "graph": "actor:outlet:tsf",
+   "edges": 0,
+   "rows": 1
   },
   {
    "id": "place/25-de-abril-bridge",
@@ -918,6 +1489,36 @@
    "rows": 0
   },
   {
+   "id": "place/pico-alto",
+   "type": "place",
+   "name": "Pico Alto",
+   "also": [],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 1
+  },
+  {
+   "id": "place/pico-do-areeiro",
+   "type": "place",
+   "name": "Pico do Areeiro",
+   "also": [],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 1
+  },
+  {
+   "id": "place/santo-da-serra",
+   "type": "place",
+   "name": "Santo da Serra",
+   "also": [],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 1
+  },
+  {
    "id": "place/sines",
    "type": "place",
    "name": "Sines",
@@ -1025,7 +1626,7 @@
    ],
    "label": "ours",
    "graph": null,
-   "edges": 1,
+   "edges": 3,
    "rows": 1
   },
   {
@@ -1255,6 +1856,19 @@
    "rows": 2
   },
   {
+   "id": "term/cap",
+   "type": "term",
+   "name": "CAP message",
+   "also": [
+    "CAP",
+    "CAP messages"
+   ],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 3
+  },
+  {
    "id": "term/communique",
    "type": "term",
    "name": "Communiqué",
@@ -1370,6 +1984,19 @@
    "rows": 7
   },
   {
+   "id": "term/taf",
+   "type": "term",
+   "name": "TAF",
+   "also": [
+    "airport TAF",
+    "Airport TAF"
+   ],
+   "label": "ours",
+   "graph": null,
+   "edges": 0,
+   "rows": 2
+  },
+  {
    "id": "term/warning-level",
    "type": "term",
    "name": "Warning level",
@@ -1415,7 +2042,7 @@
    ],
    "label": "fact",
    "graph": "warning:ipma-communique-2",
-   "edges": 5,
+   "edges": 10,
    "rows": 1
   },
   {

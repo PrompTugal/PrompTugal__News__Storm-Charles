@@ -1,7 +1,7 @@
 {
   "about": "The hand-kept half of entities/: which things are nodes, their names, and for each hand-written edge the timeline row, decision, actor or site file it is read from. tools/entities-make.mjs joins this with the incident's data (data/signals.json, data/decisions/graph.json) and writes entities/<type>/<id>.json and entities/index.json; it stops if an edge names a row or decision that does not exist, so nothing here can assert what the data does not hold. A name in lower case is matched in any case; a name with a capital exactly. Kept by incident.entities@web-summit.dinis.",
   "by": "incident.entities@web-summit.dinis",
-  "updated": "2026-11-11T02:20:00Z",
+  "updated": "2026-11-11T02:26:00Z",
   "incident": "2026-11-10-storm-charles",
   "actors": {
     "ipma": {
@@ -49,7 +49,8 @@
       "name": "Câmara Municipal de Lisboa",
       "also": [
         "Lisbon City Council",
-        "Câmara de Lisboa"
+        "Câmara de Lisboa",
+        "CML"
       ]
     },
     "schools": {
@@ -119,7 +120,8 @@
       "name": "Autoridade Marítima Nacional",
       "also": [
         "Port of Lisbon",
-        "the port"
+        "the port",
+        "AMN"
       ]
     },
     "venue": {
@@ -476,6 +478,90 @@
       "verb": "restricts",
       "to": "place/tagus-bridges",
       "row": "s-1110T1425"
+    },
+    {
+      "from": "warning/ipma-communique-2",
+      "verb": "forecasts_passage_near",
+      "to": "place/sines",
+      "row": "s-1110T1707b"
+    },
+    {
+      "from": "warning/ipma-communique-2",
+      "verb": "forecasts_passage_near",
+      "to": "place/cabo-carvoeiro",
+      "row": "s-1110T1707b"
+    },
+    {
+      "from": "warning/ipma-communique-2",
+      "verb": "warns_of",
+      "to": "hazard/sea-agitation",
+      "decision": "ipma-communique-2"
+    },
+    {
+      "from": "warning/ipma-communique-2",
+      "verb": "warns_of",
+      "to": "hazard/heavy-rain",
+      "decision": "ipma-communique-2"
+    },
+    {
+      "from": "warning/ipma-communique-2",
+      "verb": "warns_of",
+      "to": "hazard/high-winds",
+      "decision": "ipma-communique-2"
+    },
+    {
+      "from": "decision/operators-possible-disruption",
+      "verb": "affects",
+      "to": "service/carris",
+      "decision": "operators-possible-disruption"
+    },
+    {
+      "from": "decision/operators-possible-disruption",
+      "verb": "affects",
+      "to": "service/carris-metropolitana",
+      "decision": "operators-possible-disruption"
+    },
+    {
+      "from": "decision/ana-conditioned",
+      "verb": "affects",
+      "to": "service/madeira-airport",
+      "decision": "ana-conditioned"
+    },
+    {
+      "from": "role/ipma-meteorologist",
+      "verb": "expects_landfall_near",
+      "to": "place/cabo-de-sao-vicente",
+      "row": "s-1110T2235"
+    },
+    {
+      "from": "role/ipma-meteorologist",
+      "verb": "expects_landfall_near",
+      "to": "place/lisbon",
+      "row": "s-1110T2235"
+    },
+    {
+      "from": "hazard/heavy-rain",
+      "verb": "observed_at",
+      "to": "place/areeiro",
+      "row": "s-1111T0146"
+    },
+    {
+      "from": "hazard/heavy-rain",
+      "verb": "observed_at",
+      "to": "place/santo-da-serra",
+      "row": "s-1111T0146"
+    },
+    {
+      "from": "hazard/heavy-rain",
+      "verb": "observed_at",
+      "to": "place/pico-do-areeiro",
+      "row": "s-1111T0146"
+    },
+    {
+      "from": "hazard/heavy-rain",
+      "verb": "observed_at",
+      "to": "place/pico-alto",
+      "row": "s-1111T0146"
     }
   ],
   "nodes": [
@@ -1117,7 +1203,9 @@
       "name": "Sea agitation",
       "also": [
         "sea agitation",
-        "rough sea"
+        "rough sea",
+        "agitação marítima",
+        "sea state"
       ],
       "summary": "One of the three things IPMA's communiqué no. 2 is about: rain, wind and sea agitation.",
       "summary_from": {
@@ -1328,6 +1416,150 @@
         "file": "CLAUDE.md"
       },
       "edges": []
+    },
+    {
+      "id": "place/santo-da-serra",
+      "name": "Santo da Serra",
+      "also": [],
+      "summary": "An IPMA station in Madeira: 124.4 mm of rain observed in six hours.",
+      "summary_from": {
+        "row": "s-1111T0146"
+      },
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/madeira",
+          "row": "s-1111T0146"
+        }
+      ]
+    },
+    {
+      "id": "place/pico-do-areeiro",
+      "name": "Pico do Areeiro",
+      "also": [],
+      "summary": "An IPMA station in Madeira: 123.9 mm of rain observed in six hours.",
+      "summary_from": {
+        "row": "s-1111T0146"
+      },
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/madeira",
+          "row": "s-1111T0146"
+        }
+      ]
+    },
+    {
+      "id": "place/pico-alto",
+      "name": "Pico Alto",
+      "also": [],
+      "summary": "An IPMA station in Madeira: 116.7 mm of rain observed in six hours.",
+      "summary_from": {
+        "row": "s-1111T0146"
+      },
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/madeira",
+          "row": "s-1111T0146"
+        }
+      ]
+    },
+    {
+      "id": "term/taf",
+      "name": "TAF",
+      "also": [
+        "airport TAF",
+        "Airport TAF"
+      ],
+      "summary": "The airport's forecast, issued for Lisbon airport; the row of 23:23 on Tuesday reads the first one covering Thursday. A weaker airport forecast is not a downgrade of IPMA's warning.",
+      "summary_from": {
+        "row": "s-1110T2323"
+      },
+      "edges": []
+    },
+    {
+      "id": "term/cap",
+      "name": "CAP message",
+      "also": [
+        "CAP",
+        "CAP messages"
+      ],
+      "summary": "IPMA's own warning message, read through MeteoAlarm: it carries the time IPMA sent each warning.",
+      "summary_from": {
+        "row": "s-1110T0718"
+      },
+      "edges": [
+        {
+          "verb": "used_by",
+          "to": "body/ipma",
+          "row": "s-1110T0718"
+        }
+      ]
+    },
+    {
+      "id": "organisation/incident-team",
+      "name": "The incident team",
+      "also": [
+        "Dinis Cruz's incident team",
+        "incident team"
+      ],
+      "summary": "The team of agents that builds and runs this site, at Dinis Cruz's word: only Dinis instructs.",
+      "summary_from": {
+        "file": "CLAUDE.md"
+      },
+      "edges": [
+        {
+          "verb": "led_by",
+          "to": "agent/conductor",
+          "file": "CLAUDE.md",
+          "says": "incident.conductor@web-summit.dinis (lead)"
+        }
+      ]
     }
-  ]
+  ],
+  "outlet_names": {
+    "dn": [
+      "DN"
+    ],
+    "jn": [
+      "JN"
+    ],
+    "negocios": [
+      "Negócios"
+    ],
+    "sic-noticias": [
+      "SIC"
+    ],
+    "tek": [
+      "TEK Notícias",
+      "TEK"
+    ],
+    "observador": [
+      "Rádio Observador"
+    ],
+    "iol": [
+      "TVI"
+    ],
+    "renascenca": [
+      "Rádio Renascença"
+    ],
+    "jornal-economico": [
+      "Jornal Económico"
+    ],
+    "portugal-news": [
+      "The Portugal News"
+    ],
+    "noticias-ao-minuto": [
+      "Notícias ao Minuto"
+    ]
+  },
+  "media_facts": {
+    "1-red-wind": "warning/ipma-red-wind",
+    "2-alert-situation": "decision/gov-alert",
+    "3-mayor": "decision/mayor-expects-closure",
+    "4-government-recommends": "decision/gov-recommends-suspend",
+    "5-day2-off": "decision/websummit-wednesday",
+    "6-red-rain-0900": "warning/ipma-red-rain-0900"
+  }
 }

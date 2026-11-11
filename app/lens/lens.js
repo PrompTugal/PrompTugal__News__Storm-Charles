@@ -28,12 +28,15 @@
         }).catch(function () { el.innerHTML = '<p class="pn-meta">No node at ' + esc(id) + ' yet.</p>' })
         return true
     }
+    function count() {
+        var lens = slot('lens'); if (!lens) return
+        var ents = document.querySelectorAll('a.ent:not(#panel a)'), ids = {}, outs = 0; [].forEach.call(ents, function (a) { ids[a.getAttribute('data-ent')] = 1 })
+        ;[].forEach.call(document.querySelectorAll('main a[href^="http"], .banner a[href^="http"], body > .wrap a[href^="http"]'), function (a) { if (a.host !== location.host) outs++ })
+        lens.innerHTML = '<p class="lens-count">On this page: ' + ents.length + ' linked name' + (ents.length === 1 ? '' : 's') + ' (' + Object.keys(ids).length + ' things), ' + outs + ' links that leave this site. With this panel open, a click on a linked name opens it under "This item". <a href="' + base() + 'entities/index.html">Every entity</a> · <a href="' + base() + 'entities/ontology.html">the grammar</a></p>'
+    }
     function start() {
-        var lens = slot('lens')
-        if (lens) {
-            var ents = document.querySelectorAll('main a.ent, .banner a.ent, body > .wrap a.ent'), ids = {}; [].forEach.call(ents, function (a) { ids[a.getAttribute('data-ent')] = 1 })
-            lens.innerHTML = '<p class="lens-count">On this page: ' + ents.length + ' linked name' + (ents.length === 1 ? '' : 's') + ' (' + Object.keys(ids).length + ' things), ' + document.querySelectorAll('a.out').length + ' links that leave this site. With this panel open, a click on a linked name opens it under "This item". <a href="' + base() + 'entities/index.html">Every entity</a> · <a href="' + base() + 'entities/ontology.html">the grammar</a></p>'
-        }
+        count()
+        [].forEach.call(document.querySelectorAll('#incident, [data-link-entities]'), live)
         document.addEventListener('click', function (ev) {
             if (ev.defaultPrevented || ev.button || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return
             var a = ev.target.closest && ev.target.closest('a[data-ent]'); if (!a) return
@@ -41,6 +44,44 @@
             ev.preventDefault(); P.openItem ? P.openItem(a.getAttribute('data-ent')) : show(a.getAttribute('data-ent'))
         })
     }
-    window.StormLens = { show: show }
+    // Pages drawn in the browser (the dashboard: app/storm.js) are not there when the build's linker runs: the same rule is applied
+    // here, from entities/index.json (a name with a capital exactly, a lower-case name in any case, the longest first, the first
+    // mention in each block), each time the drawing changes.
+    var SKIP = { A: 1, CODE: 1, PRE: 1, SVG: 1, BUTTON: 1, SCRIPT: 1, STYLE: 1, LABEL: 1, SUMMARY: 1, TIME: 1, TEXTAREA: 1, SELECT: 1 }
+    function live(el) {
+        index().then(function (ix) {
+            var by = {}, keys = []
+            Object.keys(ix).forEach(function (id) { var n = ix[id]; [n.name].concat(n.also || []).forEach(function (nm) { var k = nm.toLowerCase(); if (!by[k]) { by[k] = { id: id, type: n.type, name: nm, exact: nm !== k }; keys.push(k) } }) })
+            keys.sort(function (a, b) { return b.length - a.length })
+            var re; try { re = new RegExp('(?<![\\p{L}\\p{N}_@/.#-])(?:' + keys.map(function (k) { return k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') }).join('|') + ')(?![\\p{L}\\p{N}_]|[@/-][\\p{L}\\p{N}]|\\.[\\p{L}\\p{N}])', 'giu') } catch (e) { return }
+            var b = base(), busy = false
+            function pass() {
+                busy = true
+                var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: function (t) { for (var p = t.parentNode; p && p !== el; p = p.parentNode) if (SKIP[p.nodeName.toUpperCase()] || p.hidden) return NodeFilter.FILTER_REJECT; return /\S/.test(t.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT } }), texts = [], t
+                while ((t = w.nextNode())) texts.push(t)
+                var seen = new Map()
+                texts.forEach(function (t) {
+                    var block = t.parentNode.closest('p, li, td, th, dd, dt, h1, h2, h3, h4, div, section') || el, had = seen.get(block) || {}; seen.set(block, had)
+                    if (!had.init) { had.init = 1; [].forEach.call(block.querySelectorAll('a.ent'), function (a) { had[a.getAttribute('data-ent')] = 1 }) }
+                    var s = t.nodeValue, m, at = 0, frag = null; re.lastIndex = 0
+                    while ((m = re.exec(s))) {
+                        var got = m[0].replace(/\s+/g, ' '), c = by[got.toLowerCase()]
+                        if (!c || (c.exact && c.name !== got)) { re.lastIndex = m.index + 1; continue }
+                        if (had[c.id]) continue
+                        had[c.id] = 1; frag = frag || document.createDocumentFragment()
+                        frag.appendChild(document.createTextNode(s.slice(at, m.index)))
+                        var a = document.createElement('a'); a.className = 'ent ent-' + c.type; a.setAttribute('data-kind', 'entity'); a.setAttribute('data-ent', c.id); a.href = b + 'entities/' + c.id + '.html'; a.textContent = m[0]; frag.appendChild(a)
+                        at = m.index + m[0].length
+                    }
+                    if (frag) { frag.appendChild(document.createTextNode(s.slice(at))); t.parentNode.replaceChild(frag, t) }
+                })
+                count(); setTimeout(function () { busy = false }, 0)
+            }
+            var timer = null
+            new MutationObserver(function () { if (busy) return; clearTimeout(timer); timer = setTimeout(pass, 250) }).observe(el, { childList: true, subtree: true })
+            pass()
+        })
+    }
+    window.StormLens = { show: show, link: live }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start()
 })()

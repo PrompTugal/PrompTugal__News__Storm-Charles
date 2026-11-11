@@ -67,6 +67,26 @@ for (const e of G.edges) {
     for (const f of e.follows || []) if (decId[f]) n.edges.push({ verb: 'follows', to: decId[f], ...p() })
     n._days = { made: /^\d{4}-\d\d-\d\d/.test(e.at || '') ? e.at.slice(0, 10) : null, from: e.effect_from_utc?.slice(0, 10) || null, to: (e.effect_to_utc || e.effect_from_utc)?.slice(0, 10) || null }
 }
+// 2b. the outlets, as incident.media@ keeps them: the id is the media watch's (and the graph's actor:outlet:<id>); an outlet
+// "reported" each decision whose source address is on one of its hosts
+const hostOf = u => { try { return new URL(u).host.replace(/^www\./, '') } catch { return '' } }
+try {
+    const O = readJson(path.join(ROOT, 'research/media/outlets.json'))
+    for (const o of O.outlets) {
+        const id = `outlet/${o.id}`, page = fs.existsSync(path.join(ROOT, `research/media/outlets/${o.id}.md`)) ? `research/media/outlets/${o.id}.md` : null
+        add({ id, type: 'outlet', name: o.name, also: [...(seed.outlet_names?.[o.id] || []), ...(o.hosts || [])].filter(x => x !== o.name), summary: `${o.kind} (${o.lang}); ${o.seen?.items ?? 0} items read by the media watch.`, label: 'ours', summary_source: { url: SITE + 'research/media/outlets.json', read_utc: O.updated || null, origin: `research/media/outlets.json#/outlets/${o.id}`, taken_from_label: O.label || 'evidence' }, hosts: o.hosts || [], page, graph: `actor:outlet:${o.id}` })
+        for (const e of G.edges) { const h = hostOf(e.source); if (h && (o.hosts || []).some(x => h === x || h.endsWith('.' + x))) nodes.get(id).edges.push({ verb: 'reported', to: decId[e.id], ...prov({ decision: e.id }, id) }) }
+    }
+    // and, from the media watch's analysis (matched by title, so labelled hypothesis): which outlets carried each keyed fact, and how long after its primary source
+    const F = readJson(path.join(ROOT, 'research/media/first-on-each-fact.json'))
+    for (const f of F.facts) { const to = seed.media_facts?.[f.id]; if (!to) continue; for (const x of f.first_by_outlet || []) { const n = nodes.get('outlet/' + x.outlet); if (!n || !/^https:\/\//.test(x.url || '')) continue; n.edges.push({ verb: 'reported', to, label: 'hypothesis', source: x.url, read_utc: F.updated || null, says: short(`"${x.title}" (${x.via}, published ${String(x.published).slice(0, 16).replace('T', ' ')} UTC${x.minutes_after_primary != null ? `, ${Math.abs(x.minutes_after_primary)} minutes ${x.minutes_after_primary < 0 ? 'before the time we hold for' : 'after'} the primary source` : ''}; matched by title by incident.media@)`), origin: `research/media/first-on-each-fact.json#/facts/${f.id}` }) } }
+} catch (e) { if (e.code !== 'ENOENT') throw e }
+// 2c. the agents, from the public keys they added themselves
+for (const k of readJson(path.join(ROOT, 'data/keys.json')).keys) {
+    const role = (k.agent.match(/^incident\.([a-z-]+)@/) || [])[1]; if (!role || nodes.has('agent/' + role)) continue
+    add({ id: 'agent/' + role, type: 'agent', name: k.agent, also: [`incident.${role}@`], summary: k.role, label: 'ours', summary_source: { url: SITE + 'data/keys.json', read_utc: seed.updated, origin: `data/keys.json#${k.id}`, taken_from_label: 'ours' }, page: fs.existsSync(path.join(ROOT, `agents/${role}/README.md`)) ? `agents/${role}/README.md` : 'agents/README.md', graph: `agent:${k.agent}` })
+    nodes.get('agent/' + role).edges.push({ verb: 'member_of', to: 'organisation/incident-team', label: 'ours', source: SITE + 'data/keys.json', read_utc: seed.updated, says: short(k.role), origin: `data/keys.json#${k.id}` })
+}
 // 3. the hand-kept nodes (a seed entry for an existing node only adds edges)
 for (const s of seed.nodes) {
     if (nodes.has(s.id)) { if (s.name) die(`${s.id} is made from the decision graph: the seed may only add edges to it`) }
@@ -76,6 +96,7 @@ for (const s of seed.nodes) {
     }
     for (const e of s.edges || []) nodes.get(s.id).edges.push({ verb: e.verb, to: e.to, ...prov(e, `${s.id} ${e.verb} ${e.to}`) })
 }
+// (the team's node is in the seed; the agents' member_of edges were written before it existed, which step 5 checks)
 for (const e of seed.decision_edges) { const n = nodes.get(e.from); if (!n) die(`decision_edges: no node ${e.from}`); n.edges.push({ verb: e.verb, to: e.to, ...prov(e, `${e.from} ${e.verb} ${e.to}`) }) }
 // 4. decisions and warnings on their days
 for (const n of nodes.values()) {

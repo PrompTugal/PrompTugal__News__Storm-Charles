@@ -34,6 +34,7 @@ function pages() {
     const nlink = (id, from) => `[${t(byId.get(id).name)}](${from}${id}.md)`
     const rowLink = (id, up) => `[row ${id}](${up}${INC}timeline.md#${id})`
     const src = (e, up) => {
+        if (!e.row && !e.decision && /^research\/media\//.test(e.origin)) return `[${host(e.source)}](${u(e.source)}), read ${when(e.read_utc)} · from [the media watch's first on each fact](${up}research/media/first-on-each-fact.json)`
         const own = e.source.startsWith('https://storm-charles.promptugal.news/')
         const from = e.row ? rowLink(e.row, up) : e.decision ? `[decision ${e.decision}](${up}${INC}decisions.md)` : `\`${t(e.origin)}\``
         return `${own ? 'this site' : `[${host(e.source)}](${u(e.source)})`}${e.read_utc ? `, read ${when(e.read_utc)}` : e.read_note ? `, ${t(e.read_note)}` : ', time read in the row'} · from ${from}`
@@ -54,7 +55,7 @@ function pages() {
         out.push('---', `title: "${t(n.name).replace(/"/g, "'")}"`, `summary: "${t(n.summary).replace(/"/g, "'").slice(0, 200)}"`, '---', kept + `. A node of the [entities](../README.md): made from [its data](${n.id.split('/')[1]}.json), where every line names the row or decision it was taken from. Nothing is stated here for the first time.`, '', `# ${t(n.name)}`, '')
         out.push(`**${n.type}**: ${t(onto.types[n.type].what)} [All ${n.type} nodes](README.md).${names.length ? ` Also written: ${names.map(t).join('; ')}.` : ''}`, '')
         const ss = n.summary_source
-        if (n.summary) out.push(`${t(n.summary)} (${n.label === 'ours' ? `**our summary**${ss ? `, from ${ss.origin.includes('#s-') ? rowLink(ss.origin.split('#')[1], up) : `\`${t(ss.origin)}\``}, a row labelled ${ss.taken_from_label || 'ours'}` : ', no source: ours'}` : `**${n.label}**; ${ss.url.startsWith('https://storm-charles') ? 'this site' : `[${host(ss.url)}](${u(ss.url)})`}${ss.read_utc ? `, read ${when(ss.read_utc)}` : ''}`})`, '')
+        if (n.summary) out.push(`${t(n.summary)} (${n.label === 'ours' ? `**our summary**${ss ? (ss.origin.includes('#s-') ? `, from ${rowLink(ss.origin.split('#')[1], up)}, a row labelled ${ss.taken_from_label}` : `, from \`${t(ss.origin)}\``) : ', no source: ours'}` : `**${n.label}**; ${ss.url.startsWith('https://storm-charles') ? 'this site' : `[${host(ss.url)}](${u(ss.url)})`}${ss.read_utc ? `, read ${when(ss.read_utc)}` : ''}`})`, '')
         if (n.type === 'decision' || n.type === 'warning') out.push(`- Status: ${t(n.status)}${n.at ? `\n- Made: ${when(n.at)}` : ''}${n.effect_from_utc ? `\n- In effect: ${when(n.effect_from_utc)}${n.effect_to_utc ? ` to ${when(n.effect_to_utc)}` : ''}` : ''}`, '')
         const group = (list, key, title, line) => { const by = new Map(); for (const e of list) { if (!by.has(e[key])) by.set(e[key], []); by.get(e[key]).push(e) } for (const [verb, es] of by) { out.push(`## ${title(verb)}`, '', ...es.map(line), '') } }
         group(n.edges, 'verb', v => `${t(n.name).length > 60 ? 'It' : t(n.name)} ${onto.verbs[v].reads}`, e => `- ${nlink(e.to, up + 'entities/')} · **${e.label}** · "${t(e.says)}" · ${src(e, up)}`)
@@ -65,12 +66,13 @@ function pages() {
             if (!rs.length) out.push('## Rows that day', '', 'No timeline row is dated this day yet.', '')
         } else {
             const rs = rowsOf.get(n.id) || []
+            if (n.hosts?.length) { const cited = signals.items.filter(r => (r.sources || []).some(s => { const h = host(s.url || ''); return n.hosts.some(x => h === x || h.endsWith('.' + x)) })); out.push(`## Timeline rows read at it (${cited.length})`, '', cited.length ? rowTable(cited, up) : 'No timeline row gives one of its addresses as its source.', '') }
             out.push(`## Timeline rows that mention it (${rs.length})`, '', rs.length ? rowTable(rs, up) : 'No timeline row uses one of its names yet.', '')
         }
         const seen = new Map()
         for (const e of [...(ss && n.label !== 'ours' ? [{ source: ss.url, read_utc: ss.read_utc }] : []), ...n.edges, ...(incoming.get(n.id) || [])]) if (!e.source.startsWith('https://storm-charles.promptugal.news/') && !seen.has(e.source)) seen.set(e.source, e)
         out.push(`## Evidence (${seen.size} outside address${seen.size === 1 ? '' : 'es'})`, '', seen.size ? [...seen.values()].map(e => { const c = captures.get(e.source)?.[0]; return `- [${host(e.source)}](${u(e.source)})${e.read_utc ? `, read ${when(e.read_utc)}` : ''} · ${c?.id && fs.existsSync(path.join(OUT, `evidence/${c.id}.md`)) ? `[our capture](${up}evidence/${c.id}.md)` : 'our capture: not yet (incident.archivist@ keeps the captures)'}` }).join('\n') : 'Its statements come from this site\'s own files.', '')
-        out.push('## The same node elsewhere', '', n.graph ? `- In the graph: \`${n.graph}\` ([the graph](${up}app/graph/README.md), [its data](${up}data/graph/storm.json))` : '- The graph (data/graph/) has no node for this yet.', `- As data: [${n.id}.json](${n.id.split('/')[1]}.json) · [every node](${up}entities/index.json) · [the grammar](${up}entities/ontology.md)`, '')
+        out.push('## The same node elsewhere', '', n.graph ? `- In the graph: \`${n.graph}\` ([the graph](${up}app/graph/README.md), [its data](${up}data/graph/storm.json))` : '- The graph (data/graph/) has no node for this yet.', ...(n.page ? [`- Its page on this site: [${t(n.page.replace(/README\.md$/, ''))}](${up}${n.page})`] : []), `- As data: [${n.id}.json](${n.id.split('/')[1]}.json) · [every node](${up}entities/index.json) · [the grammar](${up}entities/ontology.md)`, '')
         write(`entities/${n.id}.md`, out.join('\n'))
     }
     // an index per type, the front index, the ontology as a page
