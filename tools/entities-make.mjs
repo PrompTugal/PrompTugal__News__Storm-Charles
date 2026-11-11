@@ -47,10 +47,12 @@ function prov(ref, what) {
 
 const nodes = new Map()
 const add = n => { if (nodes.has(n.id)) die(`two nodes with the id ${n.id}`); nodes.set(n.id, { edges: [], also: [], ...n }) }
-const actorId = {}
+const actorId = {}, unplaced = []
 // 1. the actors of the decision graph: the slug is the decision graph's own id, so one thing has one id here and in data/graph/
 for (const a of G.nodes) {
-    const s = seed.actors[a.id]; if (!s) die(`the decision graph has an actor ${a.id} that entities/seed.json does not place (type, name)`)
+    // an actor the seed has not placed yet gets its type from the researcher's kind and its name as written (without a bracket), and is listed
+    let s = seed.actors[a.id]
+    if (!s) { s = { type: { authority: 'body', government: 'body', municipality: 'body', transport: 'service', service: 'service', organiser: 'organisation', venue: 'place' }[a.kind] || 'organisation', name: a.name.replace(/\s*\(.*$/, ''), also: [] }; unplaced.push(`${a.id} (${a.kind} -> ${s.type}: ${s.name})`) }
     actorId[a.id] = `${s.type}/${a.id}`
     add({ id: actorId[a.id], type: s.type, name: s.name, also: [...new Set([a.name, ...(s.also || [])])].filter(x => x !== s.name), match: { none: [a.name].filter(x => /[(]/.test(x)) }, summary: a.role, label: a.label, summary_source: { url: a.source, read_utc: a.read || null, origin: `${INC}data/decisions/graph.json#/nodes/${a.id}` }, graph: `actor:${a.id}` })
 }
@@ -150,5 +152,6 @@ for (const [rel, obj] of files) {
 for (const t of Object.keys(onto.types)) { const d = path.join(ROOT, 'entities', t); if (fs.existsSync(d)) for (const f of fs.readdirSync(d)) if (f.endsWith('.json') && !wanted.has(`entities/${t}/${f}`)) { stale++; if (!CHECK) fs.unlinkSync(path.join(d, f)) } }
 const lonely = all.filter(n => !n.edges.length && !all.some(m => m.edges.some(e => e.to === n.id))).map(n => n.id)
 console.log(`entities-make: ${counts.nodes} nodes, ${counts.edges} edges (${Object.entries(counts.by_type).map(([t, c]) => `${t} ${c}`).join(', ')}); ${stale} file(s) ${CHECK ? 'stale' : 'written'}`)
+if (unplaced.length) console.log(`  placed by default (add to entities/seed.json actors to name them better): ${unplaced.join('; ')}`)
 if (lonely.length) console.log(`  no edge in or out yet: ${lonely.join(', ')}`)
 if (CHECK && stale) process.exit(1)
