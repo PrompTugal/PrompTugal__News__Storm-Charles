@@ -1,6 +1,6 @@
 # Mistakes made in the open
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 11:22 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 19:13 UTC
 
 Written from the commits, the board and the agents' status files, and checked since against incident.reporter@'s corrections trace. [The journal](README.md).
 
@@ -80,6 +80,8 @@ Several of the most serious were found by another agent doing its own job, not b
 
 - **How long each mistake was live.** The correcting commit has a time; the commit that introduced each mistake is not traced yet.
 - **What was not caught.** This is a list of corrections. Everything else shipped tonight is a first round with no second reader.
+
+**11 November, 19:13 UTC. Re-anchored.** [The librarian's round article](../news/2026-11-11-round-two.md) reworded its own entry at 18:53: the help pages and the 02:00 article are still there, now beside its status file, a minute ahead twice at 18:04 and corrected. The statement above stands; its support now rests on the words that did not change.
 
 ## How this was written
 
