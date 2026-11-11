@@ -167,7 +167,9 @@
             const ul = el('ul')
             for (const [e, id] of items.slice(0, 60)) { const m = G.byId.get(id); if (!m) continue
                 const eb = el('button', { type: 'button', class: 'linkish small-link', text: 'the link' }); eb.addEventListener('click', () => pickEdge(e))
-                ul.append(el('li', {}, [mark(m), ' ', nodeBtn(m), el('small', {}, [`${m.type}${e.lead_minutes != null ? ' · ' + D.dur(e.lead_minutes / 60) : ''} · ${e.label} · `, eb])])) }
+                // a Source in the list goes straight on to our capture of it, where there is one: item, source, capture, in one line
+                const mc = m.type === 'Source' ? G.captures[m.url || m.source] : null
+                ul.append(el('li', {}, [mark(m), ' ', nodeBtn(m), el('small', {}, [`${m.type}${e.lead_minutes != null ? ' · ' + D.dur(e.lead_minutes / 60) : ''} · ${e.label} · `, eb].concat(mc && mc.evidence ? [' · ', el('a', { href: BASE + 'evidence/' + mc.evidence + '.html', text: 'our capture' })] : mc && mc.why ? [' · no capture'] : []))])) }
             p.append(el('details', { open: '' }, [el('summary', {}, [el('b', { text: verb }), ` ${items.length}`]), ul]))
         }
     }
