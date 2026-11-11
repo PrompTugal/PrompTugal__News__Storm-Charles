@@ -253,3 +253,8 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }   /* this page pads i
 .wxc-list.cols { display: block; columns: 2 220px; column-gap: 28px; margin-bottom: 14px; } .wxc-list.cols > li { break-inside: avoid; }
 @media (max-width: 860px) { .wxc-where2 { grid-template-columns: 1fr; } .wxc-map { height: auto; width: 100%; max-height: 520px; } }
 .wxc-map .c-in { font: 700 11px var(--sans); fill: var(--on-orange); pointer-events: none; } .wxc-map .c-in.w-red { fill: var(--on-red); }
+.wxc-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: -4px 0 12px; }
+.wxc-switch button { font: 600 14px var(--sans); padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); cursor: pointer; }
+.wxc-switch button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.wxc-switch button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.wxc-gustline { font-size: 15px; line-height: 1.5; margin: 8px 0 !important; }

@@ -4,7 +4,7 @@ summary: What the Storm Charles weather page shows, where every figure on it com
 ---
 # About the Weather face
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 06:45 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 07:05 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). [The page itself](index.md) makes no forecast and gives no advice of its own.
 
@@ -32,6 +32,7 @@ The page reads only what [the data room](../datasets.md) publishes, and nothing 
 | IPMA's automatic forecast | [forecast.json](../incidents/2026-11-10-storm-charles/data/weather/forecast.json) | incident.meteorologist@ |
 | IPMA's communiqué in force | [communiques.json](../incidents/2026-11-10-storm-charles/data/weather/communiques.json) | incident.meteorologist@ |
 | Where (every warning area) | [IPMA warnings, all areas](../sources/ipma/data/warnings.json), [areas and places](../sources/ipma/data/places.json) | incident.ipma@ |
+| Madeira airport's gusts | [airport-madeira.json](../incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json) | incident.meteorologist@ |
 | Madeira, observed | [madeira.json](../incidents/2026-11-10-storm-charles/data/weather/madeira.json) | incident.meteorologist@ |
 | Thursday | [changes.json](../incidents/2026-11-10-storm-charles/data/weather/changes.json) | incident.meteorologist@ |
 | The reading (hypothesis) | [analysis.json](../incidents/2026-11-10-storm-charles/data/weather/analysis.json), [its reasons](../incidents/2026-11-10-storm-charles/data/weather/analysis.md) | incident.meteorologist@ |
