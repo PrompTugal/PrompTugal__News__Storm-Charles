@@ -10,7 +10,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
-import { execFileSync } from 'node:child_process'
+import { execFileSync, spawn } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
@@ -170,13 +170,17 @@ const mark = role => { if (!(role in MARKS)) { try { MARKS[role] = fs.readFileSy
 const byline = (html, u) => html.replace(/(>[^<]*?\bKept by )(incident\.([a-z-]+)@web-summit\.dinis)/g, (all, pre, who, role) => `${pre}<a class="by" href="${u}agents/index.html?who=${encodeURIComponent(who)}">${mark(role)}${who}</a>`)
 
 // ---------------------------------------------------------------- go
-fs.rmSync(OUT, { recursive: true, force: true })
+// the old output is moved aside and removed by a detached process: deleting 2,500 files in line cost 0.8 s of every local gate
+if (fs.existsSync(OUT)) {
+    const old = path.join(ROOT, `.site-old-${process.pid}`)
+    try { fs.renameSync(OUT, old); spawn('rm', ['-rf', old], { detached: true, stdio: 'ignore' }).unref() } catch { fs.rmSync(OUT, { recursive: true, force: true }) }
+}
 fs.mkdirSync(OUT, { recursive: true })
 const files = walk(ROOT)
 const pages = []
 for (const rel of files) {
     const src = path.join(ROOT, rel)
-    write(rel, fs.readFileSync(src))   // everything public in the repository is served as itself (the twins, the data, the app)
+    const dst = path.join(OUT, rel); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.copyFileSync(src, dst)   // everything public in the repository is served as itself (the twins, the data, the app)
 }
 // generators that take --out: they write only into _site/, never a tracked file (CLAUDE.md, "Building a page")
 const GENS = JSON.parse(fs.readFileSync(path.join(ROOT, 'admin/build/generators.json'), 'utf8'))
