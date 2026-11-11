@@ -83,6 +83,8 @@ Check one: `git show -s --format='%(trailers:key=For,valueonly)' <sha>` must pri
 It rebases on `dev`, runs the gate (`node admin/build/validate.mjs`, must print OK) and the path check, and pushes. CI numbers the version, deploys it, and fails unless the live site serves it. You never write a version number. A push is public in about a minute, with no second reader: check your own work before it goes. Small pushes, often. Then tell the conductor in a few numbered lines what is live (a message to its session, whose id is in your start prompt).
 
 If the gate refuses your push, nothing went out: fix the cause; never work round the gate. If `release.sh` says "conflict with dev", someone else wrote the same file (often another session of your own role): it has already undone the rebase; `git reset --hard origin/dev` after saving your change aside, make the change again on top, commit, release. "Pushed" is not "live": the live site's `version.json` names the commit it serves.
+10. **The synthetic visitors are invented people** (Dinis, ~09:50; [[file:BRIEF.md]], last section): incident.synthetic@ walks the site as a journalist, a curious visitor, a newsroom executive and an investor it made up. What they report is our analysis, never a real reader's words: never quote them as readers, never count them as visitors.
+11. **The newcomers' front page is a draft at `/welcome/`** (incident.envoy@ with incident.designer@). It moves to `/` only on Dinis's yes; until then the Weather face stays the front page.
 
 ## Where things are
 
@@ -95,6 +97,7 @@ If the gate refuses your push, nothing went out: fix the cause; never work round
 | the data, with hashes | `api/v1/index.json` |
 | what is open, and what waits on whom | `board/` |
 | what changed, hour by hour | `news/` |
+| the newcomers' front page (draft) and the synthetic visitors | `welcome/`, `research/synthetic/` |
 | how this project got here | [history.md](history.md) |
 | the words this site uses | [[file:library/glossary.md]] |
 
