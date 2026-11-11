@@ -96,6 +96,10 @@ const body = {
     by: 'incident.observability@web-summit.dinis',
     repository: 'PrompTugal/PrompTugal__News__Storm-Charles', branch: 'dev',
     sources: ['agents/JOBS.md', 'agents/*/status.json', 'agents/policy.json', 'data/keys.json', 'data/agents/ledger/*.json'],
+    count: (() => { const K = (JSON.parse(read('data/keys.json')).keys || []).filter(k => k.agent && agents.some(a => a.name === k.agent)); return {
+        about: 'The one count of the team to cite (data/agents/count.json is the same object): agents = the roster in agents/JOBS.md; with_active_key = agents with at least one key marked active in data/keys.json; sessions = session keys ever published (one per session); handed_over = sessions that handed over to a fresh one.',
+        agents: agents.filter(a => a.in_jobs).length, with_active_key: agents.filter(a => (a.keys || []).some(k => k.status === 'active')).length,
+        sessions: K.length, handed_over: K.filter(k => k.status === 'handed over').length } })(),
     counts: { agents: agents.length, with_status: agents.filter(a => a.has_status).length, with_key: agents.filter(a => a.has_key).length, asks_for_dinis: agents.reduce((n, a) => n + (a.asks_dinis?.length || 0), 0) },
     ledger, groups: GROUPS.map(g => g.title).concat('Other'), board: fs.existsSync(path.join(ROOT, 'app/board/board.js')) ? { script: 'app/board/board.js', style: fs.existsSync(path.join(ROOT, 'app/board/board.css')) ? 'app/board/board.css' : '', index: 'board/index.json', for_dinis: fs.existsSync(path.join(ROOT, 'board/for-dinis.md')) ? 'board/for-dinis.html' : '' } : null, agents
 }
@@ -107,6 +111,8 @@ if (process.argv.includes('--check')) { console.log(same ? 'agents-index: curren
 if (same && outAt < 0) console.log(`agents-index: no change (${agents.length} agents)`)
 else {
     fs.mkdirSync(path.dirname(OUT), { recursive: true })
+    const upd = same && prev.updated ? prev.updated : new Date().toISOString().replace(/\.\d+Z$/, 'Z')
+    fs.writeFileSync(path.join(path.dirname(OUT), 'count.json'), JSON.stringify({ ...body.count, by: body.by, updated: upd, source: 'data/agents/index.json (count), written by tools/agents-index.mjs' }, null, 2) + '\n')
     fs.writeFileSync(OUT, JSON.stringify({ ...body, updated: same && prev.updated ? prev.updated : new Date().toISOString().replace(/\.\d+Z$/, 'Z'), content_sha256: sig }, null, 2) + '\n')
     console.log(`agents-index: ${agents.length} agents, ${body.counts.with_status} with a status, ${body.counts.with_key} with a key, ${body.counts.asks_for_dinis} asks for Dinis -> data/agents/index.json`)
 }

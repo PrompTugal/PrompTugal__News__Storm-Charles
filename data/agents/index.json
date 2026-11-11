@@ -10,6 +10,13 @@
     "data/keys.json",
     "data/agents/ledger/*.json"
   ],
+  "count": {
+    "about": "The one count of the team to cite (data/agents/count.json is the same object): agents = the roster in agents/JOBS.md; with_active_key = agents with at least one key marked active in data/keys.json; sessions = session keys ever published (one per session); handed_over = sessions that handed over to a fresh one.",
+    "agents": 32,
+    "with_active_key": 29,
+    "sessions": 67,
+    "handed_over": 37
+  },
   "counts": {
     "agents": 32,
     "with_status": 30,
@@ -260,16 +267,14 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "40c68cf8b173404ef02c112d431642ed5d9f63c62052cafa5e192b8e904616fd",
-      "state": "fourth session (from 09:33 UTC): round 47 out (the newcomers' features page as parts made from plain markdown, design/landing.md; 'New here?' in the masthead when welcome/ exists); waiting on incident.envoy@'s words and incident.synthetic@'s findings",
-      "last_wake": "2026-11-11T09:53Z",
+      "status_sha256": "dcc572d55bc65752ada9a3dfbac81b59b688bdb67a807f8722611997e25cdcc9",
+      "state": "fourth session (from 09:33 UTC): round 48 out (the masthead's chip says 'Updated N min ago' from the build's time, not 'LIVE'; About leads to welcome/); waiting on Dinis's word on welcome/",
+      "last_wake": "2026-11-11T10:03Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
         "round 1: the home page as the weather presenter (warning tiles, the day hour by hour, sourced Thursday card); design/round-1.md",
         "round 2: the wind chart (warned, forecast, observed on one axis) and where (district by district); design/round-2.md",
-        "round 37: the masthead on a phone (99 px on the Weather page, was about 260); a one-page subsite has no second bar; design/round-37.md",
-        "02:44 check: 47 menu pages live at 390 and 1280; long unbroken strings in prose were widening five pages on a phone (ci, studies, the restructure): fixed in site.css",
         "round 42: shared parts (.wx-level, .wx-word, .wx-warn, .wx-sect), the masthead in two lines on a desk (97 px), design/HANDOVER.md",
         "second session, 03:05: its own key in data/keys.json (the first session's marked handed over); the menu: Journal and Reporter under About, CI's three pages moved from Team to About",
         "round 43: one hour grid for both faces (--hg-lab, --hg-col; now as a tinted hour and a line; before now behind the bars; a strip opens at now); design/round-43.md",
@@ -279,12 +284,14 @@
         "third session key made (record sha256:aeca8313882d093c), public half in data/keys.json; the second session's entry handed over",
         "round 45: the front page under IPMA's red rain at 390 and 1280, light and dark (ten notes for incident.weather@); a level in fixed words (design/level-words.md: 4 pages wrong as present fact, one fixed); the menu sweep clean (49 pages); table links and print shadows; design/round-45.md",
         "round 46: an inner page's first screen on a phone (design/round-46.md): the first paragraph of research/media/ from 645 px to about 360, of ROADMAP.html from 905 to about 525; the front page looked at 09:35 (clean; four of round 45's ten notes taken by incident.weather@); the menu sweep clean (51 a…",
-        "round 47: the features page for newcomers (Dinis, 09:50): front matter 'class: landing' draws a title, lead, buttons, figures, cards, steps and a pull quote from plain markdown (app/site.css; design/landing.md is the example and the contract); the masthead's 'New here?' (admin/build/build.mjs, when…"
+        "round 47: the features page for newcomers (Dinis, 09:50): front matter 'class: landing' draws a title, lead, buttons, figures, cards, steps and a pull quote from plain markdown (app/site.css; design/landing.md is the example and the contract); the masthead's 'New here?' (admin/build/build.mjs, when…",
+        "welcome/ with incident.envoy@'s draft at 390, 1280, 1680, light and dark (clean); the frame treats it as a front door (no subsite lit, no sub-bar, no trail); linked names in cards not bold; 'New here?' takes the version chip's place below 1440 px so the menu fits at 1280 (design/round-47.md, last s…",
+        "round 48: incident.synthetic@'s findings 2 and 6: the chip reads 'Updated N min ago' (the build's own time, counted on the reader's clock; grey after an hour) instead of a red LIVE; About's first entry is welcome/ (design/round-48.md)"
       ],
-      "done_total": 47,
+      "done_total": 49,
       "next": [
-        "welcome/ with incident.envoy@'s words: look at 390, 1280, 1680, light and dark; incident.synthetic@'s findings",
-        "the :09 wake: two minutes on / (overflow, errors, the communiqué line and the hour strip's offsets)",
+        "Dinis's word on moving welcome/ to /; incident.synthetic@'s second run",
+        "the :09 wake: two minutes on /",
         "the launch pass, on: air on the data room's front page, /studio/ again"
       ],
       "asks_dinis": [
@@ -2590,15 +2597,14 @@
       "job": "**Wikipedia on the storm**: every article and section in every language, their revisions as a dataset, the claims and citations of each, the languages compared, and this site measured against Wikipedia's values (verifiability, neutral point of view, no original research, reliable sources). BRIEF.md, 11 November.",
       "shared_row": false,
       "status_file": "agents/wikipedia/status.json",
-      "status_sha256": "87c4fe3bbea84e23a7000dacbefec2a633eada09b713d71af05540e75c7bd310",
+      "status_sha256": "e46514373edac704f1d5a689a8e40f8357cfc9f82d33f1e354df09a68bd7c37a",
       "state": "active: the second session (from 05:51 UTC on 11 November), taking over from HANDOVER.md; hourly re-read while the storm is live; reports only when changes.md touches our key facts",
-      "last_wake": "2026-11-11T08:50:08Z",
+      "last_wake": "2026-11-11T09:54:29Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
         "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
         "research/wikipedia/revisions.json and revisions/: 577 revisions, times, sizes and edit summaries only, no editors; sha256, footnotes and section bytes for every revision since 8 November",
-        "second read 01:53 UTC: appended to reads.json; no new revision on any of the 6 pages since 01:37",
         "02:02 UTC, after the conductor's messages: each claim carries our check at the primary source (18 verified, 2 press only, 4 not established, 37 not checked) and whether its footnote is a primary body or the press; the pt article's footnotes counted (46 marks, 36 sources: 5 primary, 31 press, 4 nami…",
         "the product name of a chatbot is withheld from two edit summaries (revisions 73412811, 73395114) and by the reader from now on; the earlier wording remains in git history (commits 1e744ad to d6a7d55), which no agent rewrites",
         "02:39 wake: third read. pt unchanged since 01:33. en (2 revisions, 02:03 and 02:22) and zh (1, 02:04) only extended the season chart's bars for Charles and Bruna to 11 November; the storm's sections are byte for byte the same, so no claim, comparison or relation changed. Claims moved to the new rev…",
@@ -2609,9 +2615,10 @@
         "05:51 UTC, the second session starts: its session key in data/keys.json (the first session's entry marked handed over); the store outside git refetched (582 revisions); eighth read: nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04), no 429; Wikidata did not answer (se…",
         "06:50 wake: ninth read. Nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04); no 429. Wikidata did not answer again (server lag): its answer of 05:47 was kept as last_answer, so the reader's change of 05:51 works",
         "07:49 wake: tenth read. Nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04: no edit in over four hours); no 429. Wikidata did not answer (server lag, the third read running); its answer of 05:47 is kept",
-        "08:50 wake: eleventh read. zh moved: 3 new revisions (08:28 to 08:45, to 95527097): a season summary map added, and the storm's lowest pressure changed from 995 to 994 hPa in the infobox and added to the season table, with no footnote (claim w-zh-01 and the pressure difference updated; claims now a…"
+        "08:50 wake: eleventh read. zh moved: 3 new revisions (08:28 to 08:45, to 95527097): a season summary map added, and the storm's lowest pressure changed from 995 to 994 hPa in the infobox and added to the season table, with no footnote (claim w-zh-01 and the pressure difference updated; claims now a…",
+        "09:54 wake: twelfth read. pt moved: 2 new revisions (09:48 and 09:58, to 73421349; 29,091 to 37,110 bytes), all in the Madeira section, almost all from the regional daily: 205 incidents to 09:00 with 542 responders and 216 vehicles (the 71-to-02:00 paragraph removed); civil protection's assistant c…"
       ],
-      "done_total": 22,
+      "done_total": 23,
       "next": [
         "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
         "keep the list of open changes in values.md and against.json current as rows are fixed",
@@ -2660,6 +2667,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T09:59:02Z",
-  "content_sha256": "0279a50b07fcb096bc85c5770be017c0f26b8a88400ca10305d7e0ae7f2b85f2"
+  "updated": "2026-11-11T10:05:16Z",
+  "content_sha256": "4571de60843563786c9c8a686a40f6c5b8994a51cc529bd1edc5a8d3e3a51914"
 }
