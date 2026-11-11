@@ -99,10 +99,12 @@ function link() {
     const CAND = /(?<![\p{L}\p{N}])(?:[A-ZÀ-Ý][\p{L}\p{N}]+(?:\s+(?:de|da|do|dos|das|of)(?=\s+[A-ZÀ-Ý]))?(?:\s+(?=[A-ZÀ-Ý]))?){2,5}|(?<![\p{L}\p{N}.@/-])[A-Z]{3,}(?![\p{L}\p{N}])/gu
     const files = []; (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); e.isDirectory() ? walk(f) : e.name.endsWith('.html') && files.push(f) } })(OUT)
     for (const f of files) {
-        const rel = path.relative(OUT, f).split(path.sep).join('/'), html = fs.readFileSync(f, 'utf8')
+        const rel = path.relative(OUT, f).split(path.sep).join('/')
+        if (rel.startsWith('view/')) continue   // the librarian's file viewers show a file as it is: its text is not linked
+        const html = fs.readFileSync(f, 'utf8')
         const up = rel === '404.html' ? '/' : '../'.repeat(rel.split('/').length - 1)
         const self = rel.startsWith('entities/') ? rel.slice(9).replace(/\.html$/, '') : null
-        const wantGaps = rel === 'index.html' || (rel.startsWith(INC) && !rel.includes('/data/'))
+        const wantGaps = rel === 'index.html' || rel.startsWith('data-room/') || (rel.startsWith(INC) && !rel.includes('/data/'))
         let i = 0, out = '', n = 0, inBody = false, skip = 0
         const stack = [], seen = new Set()
         const text = s => {
