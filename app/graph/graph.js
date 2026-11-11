@@ -66,16 +66,35 @@
             box.append(el('details', {}, [el('summary', {}, [el('span', { class: 'g-type' }, [el('i', { style: `--c:${COL[t]}` }), `${t}: ${ns.length}`])]), ul]))
         }
     }
+    const dur = h => { if (h == null) return ''; const m = Math.round(Math.abs(h) * 60), d = Math.floor(m / 1440), hh = Math.floor((m % 1440) / 60), mm = m % 60; return (d ? d + ' d ' : '') + (hh ? hh + ' h ' : '') + (mm || (!d && !hh) ? mm + ' min' : '').trim() }
+    const DAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    function line(rows) {
+        const ol = $('g-line')
+        let prev = null
+        for (const r of rows) {
+            // the gap from the two times themselves (to the minute), not from the rounded hours
+            const gap = prev === null ? null : Math.round((r.at_epoch - prev) / 60) / 60; prev = r.at_epoch
+            if (gap !== null) ol.append(el('li', { class: 'gap' }, [el('span', { text: gap === 0 ? 'at the same time' : '+ ' + dur(gap) })]))
+            const when = new Date(r.at_epoch * 1000), b = el('button', { type: 'button', text: r.what.length > 150 ? r.what.slice(0, 149) + '…' : r.what })
+            b.addEventListener('click', () => { const n = byId.get(r.id); if (n) { pick(n); g && g.focus(n.id); $('g-panel').scrollIntoView({ block: 'nearest', behavior: 'smooth' }) } })
+            let h = r.source; try { h = new URL(r.source).hostname.replace(/^www\./, '') } catch { }
+            ol.append(el('li', { class: 'ev ' + r.kind + (r.level ? ' ' + r.level : '') }, [
+                el('time', { datetime: r.at, text: `${DAY[when.getUTCDay()]} ${r.at.slice(11, 16)}` }),
+                el('div', {}, [el('b', { text: r.who || '' }), ' ', el('span', { class: 'lab ' + r.label, text: r.label }), el('br'), b,
+                    el('small', {}, [r.time_is + ' · ', el('a', { href: r.source, rel: 'noopener', text: h + ' ↗' }), r.h_before_effect != null ? ` · ${dur(r.h_before_effect)} ${r.h_before_effect < 0 ? 'after' : 'before'} it takes effect` : ''])]),
+                el('span', { class: 'ahead', text: r.h_before_red_starts == null ? '' : dur(r.h_before_red_starts) + (r.h_before_red_starts < 0 ? ' after red starts' : ' before red starts') })]))
+        }
+    }
     async function boot() {
         const msg = $('g-msg')
         try {
             const get = async u => { const r = await fetch(u, { cache: 'no-cache' }); if (!r.ok) throw new Error(u + ': HTTP ' + r.status); return r.json() }
-            const [s, more, d, w, sg] = await Promise.all([get(BASE + 'data/graph/storm.json'), get(BASE + 'data/graph/storm-elsewhere.json'), ...['decisions', 'warnings', 'signals'].map(t => get(BASE + `data/graph/tables/${t}.json`))])
+            const [s, more, tl, d, w, sg] = await Promise.all([get(BASE + 'data/graph/storm.json'), get(BASE + 'data/graph/storm-elsewhere.json'), get(BASE + 'data/graph/tables/timeline.json'), ...['decisions', 'warnings', 'signals'].map(t => get(BASE + `data/graph/tables/${t}.json`))])
             storm = { ...s, nodes: s.nodes.concat(more.nodes), edges: s.edges.concat(more.edges) }; for (const t of [d, w, sg]) for (const r of t.rows) tables[r.id] = r
             for (const n of storm.nodes) byId.set(n.id, n)
             for (const e of storm.edges) { (out.get(e.from) || out.set(e.from, []).get(e.from)).push(e); (inn.get(e.to) || inn.set(e.to, []).get(e.to)).push(e) }
             $('g-asof').textContent = `${storm.nodes.length} nodes, ${storm.edges.length} edges, data as of ${storm.as_of.replace('T', ' ').replace('Z', ' UTC')}`
-            chips(); list()
+            chips(); list(); line(tl.rows)
             const first = byId.get('decision:websummit-wednesday') || storm.nodes[0]; pick(first)
         } catch (e) { msg.textContent = 'The graph could not be read: ' + (e && e.message || e); return }
         try {

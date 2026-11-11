@@ -75,3 +75,18 @@ h2.sec { font-size: 1.05rem; margin: 26px 0 10px; }
 .g-list summary { cursor: pointer; }
 .g-list ul { margin: 8px 0 0; padding-left: 18px; font-size: .86rem; }
 .g-list li { margin: 3px 0; overflow-wrap: anywhere; }
+
+/* the lead-time line */
+.g-line { list-style: none; margin: 12px 0 0; padding: 0; }
+.g-line li.ev { display: grid; grid-template-columns: 5.2em minmax(0, 1fr) 11em; gap: 4px 14px; align-items: start; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--ink-2); border-radius: 8px; font-size: .9rem; }
+.g-line li.ev.warning { border-left-color: var(--yellow); }
+.g-line li.ev.warning.orange { border-left-color: var(--orange); }
+.g-line li.ev.warning.red { border-left-color: var(--red); }
+.g-line time { font: 600 .9rem var(--sans); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.g-line li.ev button { font: inherit; color: var(--ink); background: none; border: 0; padding: 0; margin: 2px 0; cursor: pointer; text-align: left; }
+.g-line li.ev button:hover { text-decoration: underline; }
+.g-line small { display: block; color: var(--ink-2); font-size: .8rem; overflow-wrap: anywhere; }
+.g-line .ahead { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: .84rem; }
+.g-line li.gap { margin: 0 0 0 2.4em; padding: 3px 0 3px 14px; border-left: 2px dashed var(--line-2); color: var(--ink-2); font-size: .8rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .g-line li.ev { grid-template-columns: 4.6em minmax(0, 1fr); } .g-line .ahead { grid-column: 2; text-align: left; } }
+@media (min-width: 901px) { .g-panel { max-height: min(72vh, 680px); overflow: auto; box-sizing: border-box; } .g-panel ul { max-height: none; } }

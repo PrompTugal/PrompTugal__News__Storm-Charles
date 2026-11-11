@@ -8,7 +8,8 @@
 - **A link** is one relation (decides, warns, reports, cites, precedes, affects, located-in, produced-by), with an arrow. Grey is a fact, amber is evidence, violet is a hypothesis. `precedes` is time order with a lead time in minutes: **order, not cause**.
 - **Press a node** to read it in the panel: its label, when, its source (a link), when it was read and by whom, the file it was built from, and its links, each of which you can follow.
 - **The chips** hide and show kinds of thing and labels. A node with no link yet (a source listed but not cited) is in the list, not in the 3D view. Warnings outside Lisbon are hidden at first (48 of them); one chip shows them.
-- **The same graph as a list** is under the 3D view, always: nothing here depends on WebGL.
+- **Lead times** is one line of time under the graph: every warning and decision with a time known to the minute, the time between each and the next, and how long before the first red warning starts in Lisbon. It is [tables/timeline.json](../../data/graph/tables/timeline.json), drawn. Order, not cause.
+- **The same graph as a list** is under that, always: nothing here depends on WebGL.
 
 What each kind of thing and relation means: [the ontology on one page](../../data/graph/README.md). Questions in SQL: [the query page](../../data/query/index.html).
 

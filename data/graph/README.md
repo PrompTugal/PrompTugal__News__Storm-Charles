@@ -9,6 +9,7 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 | [ontology.json](ontology.json) | the eight kinds of thing and eight relations below; the builder refuses anything else |
 | [storm.json](storm.json) | the graph: `nodes[]` and `edges[]` (one per line), `counts`, `built_from` (each input file with its sha256). Lisbon, the decisions and everything else |
 | [storm-elsewhere.json](storm-elsewhere.json) | the rest of the graph, same shape: the warnings in force in the other districts, and those districts; its edges point into `storm.json` |
+| [tables/timeline.json](tables/timeline.json) | the lead-time line: every warning and decision with a time known to the minute, in order, with the hours between them and before the red warnings start |
 | [tables/decisions.json](tables/decisions.json) | decisions and issued warnings: by whom, what, when, status, what each followed |
 | [tables/warnings.json](tables/warnings.json) | warnings: issued, in force (type, level, area, start, end), and the history of when each was first seen |
 | [tables/signals.json](tables/signals.json) | the timeline, one row per signal, with its publisher |
@@ -61,6 +62,6 @@ The output has no clock in it: the same inputs give the same bytes; `as_of` is t
 
 ## Use it
 
-- **Query it in the browser** (SQL, no server, seven worked questions): [the query page](../query/index.html).
+- **Query it in the browser** (SQL, no server, eight worked questions): [the query page](../query/index.html).
 - **See it:** [the graph page](../../app/graph/index.html) (3D, on the engine of web-summit.sgit.ai's Universe, and as a list).
 - **Read it as an agent:** fetch `storm.json`; follow `origin` back to the file each item came from, and `source` to where it was read.

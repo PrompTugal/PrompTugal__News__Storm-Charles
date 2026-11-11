@@ -1,6 +1,6 @@
 # Query the storm: how the page works
 
-[The query page](index.html) is a database that runs in your browser. It loads this site's JSON, builds seven tables in memory, and runs the SQL you write. There is no server behind it: nothing is uploaded, nothing is written, and the database is gone when the tab closes. Kept by incident.graph@web-summit.dinis. Not a warning service: it queries what was decided and warned, and when we read it.
+[The query page](index.html) is a database that runs in your browser. It loads this site's JSON, builds eight tables in memory, and runs the SQL you write. There is no server behind it: nothing is uploaded, nothing is written, and the database is gone when the tab closes. Kept by incident.graph@web-summit.dinis. Not a warning service: it queries what was decided and warned, and when we read it.
 
 ## The engine
 
@@ -12,6 +12,7 @@
 
 | Table | Rows are | From |
 |---|---|---|
+| `timeline` | the lead-time line: warnings and decisions in order, with the hours between them | [tables/timeline.json](../graph/tables/timeline.json) |
 | `decisions` | decisions and issued warnings: `by`, `decision`, `at`, `at_epoch`, `status`, `follows` | [tables/decisions.json](../graph/tables/decisions.json) |
 | `warnings` | warnings: `phase` is issued, in_force, cap (IPMA's own messages, with the time sent and what each replaced) or history; `level`, `area`, `starts`, `ends` | [tables/warnings.json](../graph/tables/warnings.json) |
 | `signals` | the timeline, with `publisher` | [tables/signals.json](../graph/tables/signals.json) |
@@ -21,7 +22,7 @@
 
 Every row has `label` (fact, evidence, hypothesis), `source` (URL), `read` (UTC) and `origin` (the file and place it came from). Times are UTC text (`2026-11-10T19:09Z`); `*_epoch` columns are the same time in seconds, present only when the time is known to the minute, so differences are plain arithmetic. [The ontology](../graph/README.md) says what each thing is.
 
-## The seven questions
+## The eight questions
 
 ### 1. What was decided, by whom and when?
 
@@ -54,7 +55,19 @@ WHERE d.kind = 'decision' AND d.at_epoch IS NOT NULL
 ORDER BY d.at_epoch;
 ```
 
-### 3. Which sources were fastest?
+### 3. How far ahead could we have known?
+
+One line of time: every warning and decision with a time known to the minute, in order. h_since_previous is the gap to the row above; h_before_red_starts is how long before the first red warning starts in Lisbon; h_before_effect is how long before the row's own effect starts. For IPMA's colour warnings the time is when IPMA sent the message, not when anyone read it. Order, not cause.
+
+```
+SELECT at, who, substr(what, 1, 90) AS what,
+       h_since_previous, h_before_red_starts, h_before_effect,
+       time_is, label, source
+FROM timeline
+ORDER BY n;
+```
+
+### 4. Which sources were fastest?
 
 Each publisher with a signal on the timeline: when its first signal came, how many it has, and how many hours that first signal was ahead of the start of the red warnings in Lisbon (the earliest start of a red warning in force for area LSB). Only signals whose source has a URL count; relayed signals without one are in the signals table with publisher empty.
 
@@ -69,7 +82,7 @@ GROUP BY a.id
 ORDER BY MIN(s.at_epoch);
 ```
 
-### 4. What followed what, and how long after?
+### 5. What followed what, and how long after?
 
 The graph as rows: every 'precedes' edge between two decisions or warnings, with its lead time in minutes where both times are known to the minute. This is the chain from IPMA's communiqué to Web Summit's decision. Order, not cause.
 
@@ -85,7 +98,7 @@ WHERE e.rel = 'precedes' AND e.lead_minutes IS NOT NULL
 ORDER BY b.at, a.at;
 ```
 
-### 5. What is still not announced, and what is only our hypothesis?
+### 6. What is still not announced, and what is only our hypothesis?
 
 Decisions that were due but not announced when last read, sources we could not read, and our own hypotheses (always labelled, never stated as fact), each with when it was last read.
 
@@ -96,7 +109,7 @@ WHERE status IN ('not_announced', 'expected', 'unknown')
 ORDER BY CASE status WHEN 'not_announced' THEN 0 WHEN 'unknown' THEN 1 ELSE 2 END, by_name;
 ```
 
-### 6. Which warnings changed, and how long before they started?
+### 7. Which warnings changed, and how long before they started?
 
 IPMA's own CAP messages for the Lisbon district (phase = 'cap'): every Update, when IPMA sent it, how many hours that was before the warning's start, and what it replaced. was_level and was_starts are filled only when the replaced message is still in the feed we read; replaced_sent is always IPMA's own time for the message it replaced. A negative h_before_start means the update came after the start.
 
@@ -111,7 +124,7 @@ WHERE w.phase = 'cap' AND w.msg_type = 'Update'
 ORDER BY w.at_epoch;
 ```
 
-### 7. Which decisions cite which warning?
+### 8. Which decisions cite which warning?
 
 Every decision the researcher linked to a warning it followed (the 'precedes' edges from a Warning to a Decision), with the minutes between them where both times are known to the minute. The link is the researcher's reading of the decision's own words or of the order of events; the label is the decision's. Order, not cause.
 

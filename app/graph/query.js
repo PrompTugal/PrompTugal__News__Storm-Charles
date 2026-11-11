@@ -10,7 +10,7 @@
     const ENGINE = 'https://newsroom.sgit.ai/assets/vendor/'
     const WASM_SHA256 = '38c14f6e379210bc942bdc4ebca44e7bfdb4318ecc1c72ca666a28fdce96670a'
     const root = document.getElementById('query'), BASE = root.dataset.base || '../graph/'
-    const TABLES = ['decisions', 'warnings', 'signals', 'sources', 'actors']
+    const TABLES = ['timeline', 'decisions', 'warnings', 'signals', 'sources', 'actors']
     const $ = id => document.getElementById(id)
     const el = (tag, props = {}, kids = []) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(props)) k === 'class' ? e.className = v : k === 'text' ? e.textContent = v : e.setAttribute(k, v); for (const k of [].concat(kids)) e.append(k); return e }
     const ms = t => t < 10 ? t.toFixed(1) + ' ms' : Math.round(t) + ' ms'

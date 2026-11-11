@@ -14,6 +14,12 @@
       "sql": "WITH first_warning AS (SELECT MIN(at_epoch) AS t FROM decisions WHERE kind = 'warning'),\n     red_wind AS (SELECT COALESCE(\n         (SELECT MIN(at_epoch) FROM warnings WHERE phase = 'cap' AND level = 'red' AND warning_type = 'Vento'),\n         (SELECT at_epoch FROM decisions WHERE id = 'warning:ipma-red-wind')) AS t)\nSELECT d.at, d.by_name AS decided_by, substr(d.decision, 1, 100) AS decision,\n       round((d.at_epoch - first_warning.t) / 3600.0, 1) AS h_after_first_warning,\n       round((d.at_epoch - red_wind.t) / 3600.0, 1) AS h_after_red_wind_sent,\n       d.label, d.source\nFROM decisions d, first_warning, red_wind\nWHERE d.kind = 'decision' AND d.at_epoch IS NOT NULL\nORDER BY d.at_epoch;"
     },
     {
+      "id": "lead-times",
+      "question": "How far ahead could we have known?",
+      "note": "One line of time: every warning and decision with a time known to the minute, in order. h_since_previous is the gap to the row above; h_before_red_starts is how long before the first red warning starts in Lisbon; h_before_effect is how long before the row's own effect starts. For IPMA's colour warnings the time is when IPMA sent the message, not when anyone read it. Order, not cause.",
+      "sql": "SELECT at, who, substr(what, 1, 90) AS what,\n       h_since_previous, h_before_red_starts, h_before_effect,\n       time_is, label, source\nFROM timeline\nORDER BY n;"
+    },
+    {
       "id": "fastest-sources",
       "question": "Which sources were fastest?",
       "note": "Each publisher with a signal on the timeline: when its first signal came, how many it has, and how many hours that first signal was ahead of the start of the red warnings in Lisbon (the earliest start of a red warning in force for area LSB). Only signals whose source has a URL count; relayed signals without one are in the signals table with publisher empty.",
