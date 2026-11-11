@@ -133,7 +133,8 @@
             if (a.has_status) H.push({ at: new Date(now).toISOString(), asks_dinis: (a.asks_dinis || []).length, last_wake: a.last_wake || '' })
             H.forEach((h, k) => { const from = Date.parse(h.at), to = k + 1 < H.length ? Date.parse(H[k + 1].at) - 1 : now; if (h.asks_dinis > 0 && to >= from) mark(R.dinis, from, to, h.asks_dinis) })
             for (const w of new Set(H.map(h => h.last_wake).filter(Boolean))) { const t = Date.parse(w), i = cell(t); if (isFinite(t) && i >= 0 && i < n) R.wake[i] = 1 }
-            R.total = R.push.reduce((x, y) => x + y, 0); R.wDinis = R.dinis.filter(Boolean).length * 10; R.wAgent = R.on.filter(x => x.size).length * 10
+            R.total = R.push.reduce((x, y) => x + y, 0); R.synced = items.length > 0 && a.has_status && !items.some(c => c.agent === a.name)   // the same rule as the stale asks
+            R.wDinis = R.dinis.filter(Boolean).length * 10; R.wAgent = R.on.filter(x => x.size).length * 10
             return R
         })
         return { rows, n, t0 }
@@ -146,13 +147,13 @@
             cells.push(`<g><title>${esc(tip)}</title><rect class="bg${R.dinis[i] ? ' dinis' : R.on[i].size ? ' agent' : ''}" x="${x}" y="0" width="${W}" height="${H}"/>${R.dinis[i] && R.on[i].size ? `<rect class="agent2" x="${x}" y="${H - 3}" width="${W}" height="3"/>` : ''}${R.push[i] ? `<rect class="p p${Math.min(3, R.push[i])}" x="${x + 0.6}" y="${H - 4 - Math.min(3, R.push[i]) * 4.5}" width="${W - 1.2}" height="${Math.min(3, R.push[i]) * 4.5}"/>` : ''}${R.wake[i] ? `<rect class="w" x="${x + 1.5}" y="0" width="${W - 3}" height="3"/>` : ''}</g>`)
         }
         const hours = []; for (let t = Math.ceil(R.t0 / 36e5) * 36e5; t < R.t0 + R.n * CELL; t += 36e5) hours.push(`<line class="h" x1="${(t - R.t0) / CELL * W}" x2="${(t - R.t0) / CELL * W}" y1="0" y2="${H}"/>`)
-        return `<svg class="ag-strip" viewBox="0 0 ${R.n * W} ${H}" preserveAspectRatio="none" role="img" aria-label="${esc(`${short(R.a.name)}: ${R.total} pushes; waiting on Dinis about ${R.wDinis} minutes; on other agents about ${R.wAgent} minutes`)}">${cells.join('')}${hours.join('')}</svg>`
+        return `<svg class="ag-strip" viewBox="0 0 ${R.n * W} ${H}" preserveAspectRatio="none" role="img" aria-label="${esc(`${short(R.a.name)}: ${R.synced ? 'its files arrive by sync from the old repository, pushes not counted here' : R.total + ' pushes'}; waiting on Dinis about ${R.wDinis} minutes; on other agents about ${R.wAgent} minutes`)}">${cells.join('')}${hours.join('')}</svg>`
     }
     function axis(N) { const out = []; for (let t = Math.ceil(N.t0 / 36e5) * 36e5; t < N.t0 + N.n * CELL; t += 36e5) out.push(`<span style="left:${(100 * (t - N.t0) / (N.n * CELL)).toFixed(2)}%">${hm(t).slice(0, 2)}</span>`); return `<div class="ag-axis" aria-hidden="true">${out.join('')}</div>` }
     const dur = m => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`
     function night(N, only) {
         const rows = only ? N.rows.filter(R => R.a.role === only) : N.rows
-        return `<div class="ag-night">${axis(N)}${rows.map(R => `<div class="row"><a class="nm" href="${only || !R.a.has_page ? `#${esc(R.a.role)}` : `${BASE}agents/${esc(R.a.role)}/index.html`}">${T(short(R.a.name).replace(/^incident\./, '').replace(/@$/, ''))}</a><span class="ag-note">${R.total} push${R.total === 1 ? '' : 'es'}${R.wDinis ? ` · on Dinis ${dur(R.wDinis)}` : ''}${R.wAgent ? ` · on agents ${dur(R.wAgent)}` : ''}</span>${strip(R)}</div>`).join('')}
+        return `<div class="ag-night">${axis(N)}${rows.map(R => `<div class="row"><a class="nm" href="${only || !R.a.has_page ? `#${esc(R.a.role)}` : `${BASE}agents/${esc(R.a.role)}/index.html`}">${T(short(R.a.name).replace(/^incident\./, '').replace(/@$/, ''))}</a><span class="ag-note">${R.synced ? 'files arrive by sync from the old repository; pushes not counted here' : `${R.total} push${R.total === 1 ? '' : 'es'}`}${R.wDinis ? ` · on Dinis ${dur(R.wDinis)}` : ''}${R.wAgent ? ` · on agents ${dur(R.wAgent)}` : ''}</span>${strip(R)}</div>`).join('')}
 <p class="ag-note ag-key"><i class="k p"></i>pushes (taller: more) <i class="k dinis"></i>an ask for Dinis was open <i class="k agent"></i>sent work for an agent that had not pushed since <i class="k w"></i>a wake (from its status file). Ten-minute cells, ${N.t0 === NIGHT0 ? 'from 21:00 UTC on Tuesday 10 November' : 'the last eight hours'} to now; hours in UTC; hover or press a cell for what was pushed. Derived from the commits and each status file's history (<a href="${BASE}data/agents/commits.json">data/agents/commits.json</a>, then GitHub's API and the files as served); "waiting" is our reading of those, not the agent's word.</p></div>`
     }
 
