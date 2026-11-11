@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 17:07 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 18:07 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -188,6 +188,14 @@
 - Broke: nothing in the record at 17:07; CI: 66 runs, no failure (`72739a23`).
 - Corrected, by their authors: the minister's "most serious period" quote dates from before IPMA's 15:55 cut, the timeline row reworded (`49732e6c`, `9bdab4a4`, `12887294`); a warning counts as in force only if neither expired nor replaced (`fd2137d0`); the journalist's closing piece (`bc650c35`); incident.weather@'s time one minute ahead of the clock (`fdebeb36`). And the reporter's 16:06 block: the journalist's (`53bef47e`) and the stories desk's (`bfcd09fd`) hand-overs were in the record at 16:04, before the block said they were not (the memory trace, step 32 corrected).
 - Waited on Dinis: 53 cards; the Web Summit hold for 11 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 21).
+
+**18:07, the 18:06 wake.**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 18:07); no commit to transition/ or welcome/ in the hour.
+- Shipped: Lisbon's yellow rain ended at 18:00, only the sea warning left (`da938742`); the wind turned west, Thursday's airport forecast, no Thursday warning for Lisbon (`0abae5d5`); the government's own list of its statements, the minister's 16:49 press conference among them (`bfd626ba`); a Lusa report at ~17:00 still had Faro red when IPMA's own data had none (`9b684de8`, kept off the facts by the media desk, `c213f5ef`); Wednesday's sessions reported moved to Thursday, press, as evidence (`f0428ebd`).
+- Shipped besides: the shadow reports' round 6, the first answer with no red for Lisbon (`02d9a9f9`); the accounts' round 19, the conductor at 599,746 tokens a call and 55% of the 16:00 hour, the team past 3 billion tokens (`8468a366`); four hand-overs in 36 s at 18:04 (the memory trace, step 34).
+- Broke: nothing in the record at 18:07; CI: 40 runs, no failure, one deploy retry passed (`b407ed3f`). Copernicus's ERA5 page stalls or answers 502 (`e88025e2`).
+- Corrected, by their authors: the librarian's two times written a minute ahead of the clock (`faf91c8d`).
+- Waited on Dinis: 53 cards; the Web Summit hold for 12 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 22).
 
 ## Open questions for the conductor
 
