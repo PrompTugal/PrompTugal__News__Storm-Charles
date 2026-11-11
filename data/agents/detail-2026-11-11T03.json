@@ -3,6 +3,145 @@
  "by": "incident.observability@web-summit.dinis",
  "hour": "2026-11-11T03:00Z",
  "commits": {
+  "31a5b210c942d32568ba974eb7b610941d05cfa3": {
+   "body": "Runs 343 and 344 failed at deploy-pages with \"No artifacts named\ngithub-pages were found\", as 54, 55 and 205 did: five of six failures.\nci/patches/deploy-retry.patch tries the deploy once more after 8 s (a\nhypothesis; it can only be tested on the runner). tools/ci-read.mjs\nstopped when the 02:00 hour of commits passed 256 KB: an hour now splits\nby ten minutes (file names come from data/ci/index.json, as before).\nThe pipeline page shows the gate's budget as validate.mjs states it\n(8 s since 95c0757). The signing patch rebuilt at f42d48a.",
+   "session": "session_018yvwtMAK6ef3vZMLDAyfHT",
+   "files": [
+    {
+     "p": "accounts/ledger/ci.jsonl",
+     "a": 1,
+     "d": 0
+    },
+    {
+     "p": "agents/ci/status.json",
+     "a": 5,
+     "d": 4
+    },
+    {
+     "p": "app/ci/ci.js",
+     "a": 2,
+     "d": 2
+    },
+    {
+     "p": "ci/patches/README.md",
+     "a": 12,
+     "d": 2
+    },
+    {
+     "p": "ci/patches/deploy-retry.patch",
+     "a": 35,
+     "d": 0
+    },
+    {
+     "p": "ci/patches/signed-release-record.patch",
+     "a": 8,
+     "d": 8
+    },
+    {
+     "p": "data/ci/commits/2026-11-10.json",
+     "a": 8,
+     "d": 2
+    },
+    {
+     "p": "data/ci/commits/2026-11-11T02.json",
+     "a": 0,
+     "d": 8847
+    },
+    {
+     "p": "data/ci/commits/2026-11-11T0200.json",
+     "a": 209,
+     "d": 0
+    },
+    {
+     "p": "data/ci/commits/2026-11-11T0210.json",
+     "a": 1327,
+     "d": 0
+    },
+    {
+     "p": "data/ci/commits/2026-11-11T0220.json",
+     "a": 2883,
+     "d": 0
+    },
+    {
+     "p": "data/ci/commits/2026-11-11T0230.json",
+     "a": 3250,
+     "d": 0
+    },
+    {
+     "p": "data/ci/commits/2026-11-11T0240.json",
+     "a": 836,
+     "d": 0
+    },
+    {
+     "p": "data/ci/commits/2026-11-11T0250.json",
+     "a": 1309,
+     "d": 0
+    },
+    {
+     "p": "data/ci/commits/2026-11-11T03.json",
+     "a": 3367,
+     "d": 0
+    },
+    {
+     "p": "data/ci/index.json",
+     "a": 964,
+     "d": 427
+    },
+    {
+     "p": "data/ci/runs/2026-11-11T02.json",
+     "a": 958,
+     "d": 20
+    },
+    {
+     "p": "data/ci/runs/2026-11-11T03.json",
+     "a": 2629,
+     "d": 0
+    },
+    {
+     "p": "data/ci/tree.json",
+     "a": 1002,
+     "d": 619
+    },
+    {
+     "p": "tools/ci-read.mjs",
+     "a": 9,
+     "d": 9
+    }
+   ],
+   "more_files": 0
+  },
+  "f42d48ac6dadaaef91484693cf889a67526619a7": {
+   "body": "",
+   "session": "session_018yvwtNfeEJAuQyQTY6jwhM",
+   "files": [
+    {
+     "p": "accounts/ledger/observability.jsonl",
+     "a": 1,
+     "d": 0
+    },
+    {
+     "p": "agents/observability/HANDOVER.md",
+     "a": 10,
+     "d": 1
+    },
+    {
+     "p": "data/agents/commits.json",
+     "a": 42,
+     "d": 42
+    },
+    {
+     "p": "data/agents/detail-2026-11-11T03.json",
+     "a": 48,
+     "d": 1
+    },
+    {
+     "p": "data/agents/sessions.json",
+     "a": 13,
+     "d": 13
+    }
+   ],
+   "more_files": 0
+  },
   "f76a4a6088ffc441bbf67af5c36bfc1baa6e4c6b": {
    "body": "",
    "session": "session_018yvwtNfeEJAuQyQTY6jwhM",
@@ -3257,5 +3396,5 @@
    "more_files": 77
   }
  },
- "updated": "2026-11-11T03:15:18Z"
+ "updated": "2026-11-11T03:17:33Z"
 }
