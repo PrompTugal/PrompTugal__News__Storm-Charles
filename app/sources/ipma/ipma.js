@@ -190,6 +190,7 @@
     }
 
     const VIEWS = { map: viewMap, warnings: viewWarnings, api: viewApi, browser: viewBrowser }
-    const start = () => document.querySelectorAll('.ipma[data-view]').forEach(root => { const f = VIEWS[root.dataset.view] || window.IPMA_VIEWS?.[root.dataset.view]; if (f) f(root, root.dataset.base || './', { J, esc, dhm, hm, prov, panel, el, spark, ms, TYPE_EN, DIR, BOX, LV }).catch(e => { root.innerHTML = `<p class="meta">This view could not be drawn (${esc(e.message)}). The data is in <a href="${esc(root.dataset.base || './')}data/">data/</a>.</p>` }) })
+    const start = () => document.querySelectorAll('.ipma[data-view]').forEach(root => { const f = VIEWS[root.dataset.view] || window.IPMA_VIEWS?.[root.dataset.view]; if (f && !root.dataset.mounted) { root.dataset.mounted = '1'; f(root, root.dataset.base || './', { J, esc, dhm, hm, prov, panel, el, spark, ms, TYPE_EN, DIR, BOX, LV }).catch(e => { root.innerHTML = `<p class="meta">This view could not be drawn (${esc(e.message)}). The data is in <a href="${esc(root.dataset.base || './')}data.html">the files</a>.</p>` }) } })
+    window.IPMA_START = start   // ipma-more.js registers its views after this file has run, then calls this
     document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', start) : start()
 })()

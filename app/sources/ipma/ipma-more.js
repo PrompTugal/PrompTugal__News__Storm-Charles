@@ -44,4 +44,5 @@
         draw(); show(/^\d+$/.test(location.hash.slice(1)) ? location.hash.slice(1) : 1110600)
     }
     window.IPMA_VIEWS = Object.assign(window.IPMA_VIEWS || {}, { sea, cities })
+    if (window.IPMA_START) window.IPMA_START()
 })()
