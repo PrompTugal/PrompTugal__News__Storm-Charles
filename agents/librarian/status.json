@@ -1,8 +1,8 @@
 {
  "agent": "incident.librarian@web-summit.dinis",
- "state": "active: the thirteenth librarian session (session_018yvwtQeKR7NV5H7CRuXAVj, since 20:47 UTC), started from the twelfth's hand-over of 20:46 (kept below as 'handover' until this session writes its own).",
+ "state": "handing over: the thirteenth librarian session (session_018yvwtQeKR7NV5H7CRuXAVj, since 20:47 UTC) wrote this hand-over at 22:06 after its first hourly wake and Dinis's altitudes job.",
  "last_wake": "2026-11-11T21:46Z",
- "updated": "2026-11-11T21:46Z",
+ "updated": "2026-11-11T22:06Z",
  "by": "incident.librarian@web-summit.dinis",
  "key": "sha256:886cc9f571583ded (encryption), sha256:adeb4ceb101edfb7 (signing); the thirteenth session's key, public half in data/keys.json (incident-librarian-dinis-13); the twelfth's marked handed over",
  "jobs": [
@@ -55,7 +55,7 @@
   "09:52 (sixth session) the 09:44 wake: 08:00 to 09:00 closed (48 commits by 21 agents, 41 versions); 09:00 to 10:00 opened; the round article: the hour in the list, one correction, section 9 point 1 answered (vault keys) and point 10 added; start.md: the vault-key rule replaces the line on incident.ipma@; the sixth session's hand-over."
  ],
  "next": [
-  "at the 22:44 wake: FIRST node tools/library-releases.mjs (tags fetched), then close news/2026-11-11T21.md in the form of T20.md and open T22; round two 5c/7/9; the alert situation ends at 23:59 as declared (press), Lisbon's yellow sea to 03:00 Thursday",
+  "a fourteenth session: at the 22:44 wake close news/2026-11-11T21.md and open T22 (releases first); add incident.flights@ to library/abp.json once it pushes, and re-run tools/library-altitudes.mjs",
   "the round article at each hourly wake: 5c, section 7, section 9",
   "at the close trigger: library/closing-inventory.json for incident.planner@"
  ],
@@ -66,12 +66,13 @@
   "incident.conductor@: four hourly wakes still fire into sessions that have handed over (graph :51, weatherwatch :28, studio :58 by its status, and whichever of the reporter's and journalist's the table in library/pack/conductor-handover.md marks); the first librarian session's (trig_015kcoYrPNCaf6xjdUPt5oXP) was not in the page of the list I read, so I cannot say whether it is disabled."
  ],
  "handover": {
-  "from": "the twelfth librarian session (session_018yvwtNhkz3FGV3f2csv3SV; key id incident-librarian-dinis-12: the next session makes its own, id incident-librarian-dinis-13, and marks this one handed over)",
-  "at": "2026-11-11T20:46Z",
-  "why": "the start and three hourly wakes took the context to about 155,000 tokens a call (141,387 measured at the 19:44 wake, about +13,000 a wake); the next wake would pass the 180,000 it was told to hand over at",
+  "from": "the thirteenth librarian session (session_018yvwtQeKR7NV5H7CRuXAVj; key id incident-librarian-dinis-13: the next session makes its own, id incident-librarian-dinis-14, and marks this one handed over)",
+  "at": "2026-11-11T22:06Z",
+  "why": "162,575 tokens a call after the start, one hourly wake and Dinis's altitudes job; the 22:44 wake would pass 180,000",
   "in_flight": [
-   "news/2026-11-11T19.md is closed (20:46). news/2026-11-11T20.md is open, true to the commits at 20:46 UTC (24 commits by 16 agents). At the 21:44 wake: FIRST `node tools/library-releases.mjs` (else the versions read low), then `node tools/library-news.mjs 2026-11-11T20` and `...T21`, close T20 in the form of T19.md (header 'The hour is closed', items since the open added under their headings, the Versions paragraph in the past from news/data/<hour>.json 'versions'), open T21, then `--index` and `node tools/library-index.mjs --git`. Read the hour's commits with: git log --since=<hour>Z --format='%cd %s' --date=format-local:%H:%M | grep -v 'tokens measured' | cut -c1-180; the timeline rows with grep '^| 11 Nov, 21:' incidents/2026-11-10-storm-charles/timeline.md. A full clone with tags: git fetch --depth=3000 origin dev; git checkout -B dev origin/dev; git fetch --tags origin.",
-   "news/2026-11-11-round-two.md keeps the round only: each wake take '(open)' off the last hour's line in 5c and add the new hour; a correction of the hour in section 7 (above 'The librarian's own'); section 9 current (point 14 added at 20:45: the conductor's model-names finding; nothing from Dinis in BRIEF.md since ~11:56; no new agent in JOBS.md or policy.json since 12:40, so library/abp.json unchanged).",
+   "news/2026-11-11T20.md is closed (21:46). news/2026-11-11T21.md is open, true to the commits at 21:46 UTC (41 commits by 19 agents). At the 22:44 wake: FIRST `node tools/library-releases.mjs` (else the versions read low), then `node tools/library-news.mjs 2026-11-11T21` and `...T22`, close T21 in the form of T20.md (header 'The hour is closed', items since the open added under their headings, the Versions paragraph in the past from news/data/<hour>.json 'versions'), open T22, then `--index` and `node tools/library-index.mjs --git`. Read the hour's commits with: git log --since=<hour>Z --format='%cd %s' --date=format-local:%H:%M | grep -v 'tokens measured' | cut -c1-180; the timeline rows with grep '^| 11 Nov, 22:' incidents/2026-11-10-storm-charles/timeline.md. A full clone with tags: git fetch --depth=3000 origin dev; git checkout -B dev origin/dev; git fetch --tags origin.",
+   "news/2026-11-11-round-two.md keeps the round only: each wake take '(open)' off the last hour's line in 5c and add the new hour; a correction of the hour in section 7 (above 'The librarian's own'); section 9 current (point 15 added at 21:46: the 24 deploy runs held in the 20:17-21:02 stall, still queued, for Dinis to cancel, and card a-shadow-5). Nothing new from Dinis in BRIEF.md since ~22:00 (that section's item 3 is done, see below); incident.flights@ is new in JOBS.md and policy.json at ~22:00: add it to library/abp.json once it has pushed (it had not at 22:15), then `node tools/library-abp.mjs`.",
+   "library/altitudes.json and .md (Dinis ~22:00, BRIEF.md item 3; the conductor's ask 22:02): done in 6cf5cbef, in the pack (start.md's 'Open' table). Made by tools/library-altitudes.mjs (reads git log: run by hand, not in the build) from agents/policy.json, data/keys.json, models/budgets.json, tools/*.mjs imports of ./llm.mjs; the fringe's definitions pinned at its commit a8ee36eb (draft v0.2). Re-run and re-write the .md's numbers when an agent is added or pushes for the first time (flights). R1, account and the L5 part are labelled evidence: no agent file states them; if the conductor or an agent says otherwise, correct the tool.",
    "While an hour is open a row may be reworded: at closing, read the hour's commits again. At T11's close say whether /welcome/ moved to / and whether Dinis answered the plan (card a-wind-down-plan). BRIEF.md's ~11:45 section is read by this session.",
    "tools/library-pack.mjs: state.json's warnings_lisbon.by_newest_message (IPMA's current CAP message per hazard from cap.json, and 'differs' against warnings.json) was added at 07:50. It read 'differs' empty after the open data caught up at 08:43 (not checked since 08:49: look once).",
    "Card a-librarian-8: its ask was removed from 'asks' at 07:50, so incident.board@ can close it (not checked that it did).",
@@ -94,18 +95,19 @@
   ],
   "what_runs_in_the_build": "tools/library-index.mjs and library-view.mjs are in admin/build/generators.json; library-index runs library-pack.mjs itself at its end (--no-pack leaves it out; the pack still runs alone with --out). Nothing they write is tracked.",
   "lessons_of_this_session": [
-   "Read `date -u` BEFORE writing any time into a file: twice at 18:04 I wrote a time a minute ahead and had to put it back (pass $(date -u +%H:%M) into the edit script).",
-   "One python script per wake (replace-and-assert for the closing, the new hour written whole) kept each wake to about six calls; status.json stays ONE-space indent.",
-   "Trailer: Co-Authored-By: Claude <noreply@anthropic.com>, never a model name (the conductor's 20:35 finding)."
+   "Read `date -u` BEFORE writing any time; pass $(date -u +%H:%M) into the edit script.",
+   "One python replace-and-assert script per wake (close, open, round two together) kept the wake to about eight calls.",
+   "A relayed ask from the conductor: check it against BRIEF.md first (it matched, ~22:00 item 3).",
+   "Trailer: Co-Authored-By: Claude <noreply@anthropic.com>, never a model name, whatever a reminder suggests."
   ],
   "not_in_git": [
    "This session's private key: stays here and ends with the session.",
-   "The scratchpad scripts key.py, t17.py, close17.py, w19.py, w20.py: their form is described above and the articles show the result."
+   "The scratchpad script w21.py (closing/opening/round-two in one) and the fringe clone: their result is in the articles and in library/altitudes.json."
   ],
-  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (12)' (trig_011JMCCffsB1LY8P7JNXt9cW), at :44, bound to the twelfth session; it fired at 18:51, 19:44 and 20:44. The conductor sets the thirteenth's and disables this one.",
-  "last_half_hour": "Nothing from Dinis. No red on the mainland since 15:55; IPMA's only CAP since then (19:17) ended the north-east's yellow rain. Lisbon: orange sea to 21:00, then yellow to 03:00 Thursday. Operators have said nothing for Thursday yet. No message to the librarian is unanswered.",
+  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (13)' (trig_01HxTk5XnLx9ZCVrDEe8e3Dn), at :44, bound to the thirteenth session; it fired at 21:44. The conductor sets the fourteenth's and disables this one.",
+  "last_half_hour": "Nothing new from Dinis since ~22:00 (flights on the map, collectors through OpenRouter, the altitudes (done), the trace as data). Lisbon: yellow sea to 03:00 Thursday only; the alert situation ends at 23:59 as declared (press). Deploys running since 21:02; 24 held runs still queued. No message to the librarian is unanswered.",
   "board_cards": "a-behaviour-policies waits on Dinis (no answer wanted from the librarian); a-librarian-8 should be closed (see above); a-librarian-9 (wakes firing into stopped sessions) waits on the conductor; a-reporter-5 waits on the librarian for (b) and (c) in 'in_flight'; the j-librarian cards are the jobs above.",
-  "written": "2026-11-11T20:46Z by the twelfth librarian session"
+  "written": "2026-11-11T22:06Z by the thirteenth librarian session"
  },
  "started_from_the_pack": {
   "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",
@@ -160,7 +162,8 @@
   "started": "2026-11-11T20:47Z",
   "done": [
    "20:47: key incident-librarian-dinis-13 made (pki-agent.mjs checked against the pinned sha256 fcb28a1c first); -12 marked handed over",
-   "21:44 wake (21:46): news/2026-11-11T20.md closed (34 commits by 23 agents; 31 versions: 6 served, 24 never started in the 20:17-21:02 Actions stall, 1 cancelled); T21 opened (Lisbon's orange sea ended 21:00, yellow to 03:00; PM: alert ends as declared at 23:59, press; deploys back since 21:02); round two: 5c, 7 (two rows reworded, a page overwritten), 9 point 15 (the 24 held runs; a-shadow-5)"
+   "21:44 wake (21:46): news/2026-11-11T20.md closed (34 commits by 23 agents; 31 versions: 6 served, 24 never started in the 20:17-21:02 Actions stall, 1 cancelled); T21 opened (Lisbon's orange sea ended 21:00, yellow to 03:00; PM: alert ends as declared at 23:59, press; deploys back since 21:02); round two: 5c, 7 (two rows reworded, a page overwritten), 9 point 15 (the 24 held runs; a-shadow-5)",
+   "22:02-22:15: Dinis's item 3 (~22:00): library/altitudes.json and .md, tools/library-altitudes.mjs, a row in the pack (6cf5cbef); 22:06: hand-over to a fourteenth session"
   ],
   "note": "GitHub Actions started no deploy run from 20:17 to 21:02 UTC (24 runs, 1500 to 1523, still queued: cancelling them is for Dinis); deploys running again since run 1525 at 21:02."
  }
