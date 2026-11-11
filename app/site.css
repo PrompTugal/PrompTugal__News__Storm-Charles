@@ -299,3 +299,27 @@ nav.top { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; whit
 .wx-cap a, .wx-times a { color: inherit; }
 nav.top { font-size: 13px; } .navg { gap: 9px; padding: 0 10px; }
 @media (max-width: 640px) { .brand { font-size: 14px; } .theme { font-size: 11px; } }
+
+/* ---- round 11 (incident.designer@): the district grid; the Decided band folds; the footer's small print. design/round-11.md ---- */
+footer.agent .cap { display: block; font-size: 11.5px; line-height: 1.45; margin-top: 6px; opacity: .9; }
+.wx-fold > summary { display: block; cursor: pointer; border-top: 1px solid var(--line); padding: 7px 16px; font-size: 13px; color: var(--focus); background: var(--surface); }
+.wx-fold > summary span { position: sticky; left: 16px; display: inline-block; max-width: min(900px, 100vw - 48px); }
+.wx-fold > summary::before { content: "+ "; font-family: var(--mono); } .wx-fold[open] > summary::before { content: "- "; }
+.wx-fold > summary::-webkit-details-marker { display: none; }
+.wx-gridwrap { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 18px; padding: 12px 16px 16px; border-top: 1px solid var(--line); align-items: start; }
+.wx-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.wx-cellmap { border: 1px solid var(--line); border-top: 4px solid var(--line-2); border-radius: 5px; padding: 5px 7px 6px; font-size: 12px; line-height: 1.5; min-height: 64px; background: var(--surface); min-width: 0; }
+.wx-cellmap.c-red { border-top-color: var(--red); } .wx-cellmap.c-orange { border-top-color: var(--orange); }
+.wx-cellmap.here { outline: 2px solid var(--accent); outline-offset: 1px; }
+.wx-cellmap b { display: block; font-size: 13px; line-height: 1.3; margin-bottom: 2px; }
+.wx-cellmap code { font: 400 10px/1 var(--mono); color: var(--ink-2); }
+.wx-cellmap span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wx-cellmap span i { font-style: normal; font-family: var(--mono); font-size: 11px; color: var(--ink-2); }
+.wx-cellmap .lvl { font-size: 10px; padding: 0 4px; }
+.wx-cellmap .none { color: var(--ink-2); }
+.wx-isles h3 { font-size: 13px; margin: 0 0 6px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+.wx-islerow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-bottom: 12px; }
+@media (max-width: 900px) { .wx-gridwrap { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) { .wx-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; } .wx-cellmap { padding: 4px; font-size: 10.5px; min-height: 58px; } .wx-cellmap b { font-size: 11px; } .wx-cellmap span i { display: none; } .wx-cellmap code { display: none; } }
+.wx-cellmap > span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wx-cellmap span.lvl { display: inline-block; overflow: visible; }
