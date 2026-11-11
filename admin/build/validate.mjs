@@ -38,6 +38,9 @@ for (const rel of tracked) {
     if (/-----BEGIN ([A-Z]+ )?PRIVATE KEY-----/.test(s) && !rel.startsWith('admin/build/validate')) fail(`${rel}: a private key`)
     if (/\bsk-or-v1-[0-9a-f]{20,}|\bghp_[A-Za-z0-9]{30,}|\bgithub_pat_[A-Za-z0-9_]{30,}|\bAKIA[0-9A-Z]{16}\b|\bsk-ant-[A-Za-z0-9-]{20,}/.test(s)) fail(`${rel}: a token`)
     if (/sgit_(write|admin)_[A-Za-z0-9]{8,}/.test(s)) fail(`${rel}: a vault write key (only public read keys are published)`)
+    if (/sgit_private_[a-z]+_[A-Za-z0-9]/.test(s) && !rel.startsWith('admin/build/validate') && rel !== 'SECURITY.md') fail(`${rel}: a vault key (sgit's private prefix)`)
+    if (/\b[a-z0-9]{20,64}:[a-z0-9]{8}\b/.test(s) && !rel.startsWith('admin/build/validate') && rel !== 'SECURITY.md') fail(`${rel}: looks like a vault key (<passphrase>:<vault id>)`)
+    if (/(^|\/)(vault-key-[^\/]*|[^\/]*\.vault-key|access-token\.json|[^\/]*\.key)$/.test(rel)) fail(`${rel}: a key file never goes in git`)
     if (rel.endsWith('.json')) { try { JSON.parse(s) } catch (e) { fail(`${rel}: invalid JSON (${e.message})`) } }
 }
 if (!tracked.length) warns.push('not a git checkout: the tracked-file checks were skipped')
