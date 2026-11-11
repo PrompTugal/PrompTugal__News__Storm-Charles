@@ -125,7 +125,7 @@ const srcName = s => typeof s === 'string' ? esc(s) : ''
 const conf = c => { const k = c.toLowerCase(), n = { high: 3, medium: 2, low: 1 }[k] || 0; return `<span class="br-conf">${esc(k)} <span aria-hidden="true">${'●'.repeat(n)}${'○'.repeat(3 - n)}</span></span>` }
 const html = `<div class="br">
 <header class="br-mast"><div class="br-mast-l"><p class="br-kick">PrompTugal News · storm-charles.promptugal.news · Decision brief</p><h1>Storm Charles: Portugal and Madeira</h1><p class="br-ed">Edition ${E.edition} · as of <time datetime="${esc(E.as_of)}">${hm(E.as_of)} UTC, Wednesday 11 November 2026</time> (Lisbon time) · ${esc(E.id)}</p></div>
-<div class="br-mast-r"><p class="br-notwarn"><b>Not an official warning.</b> IPMA issues the warnings and ANEPC the instructions. Not a warning service: no forecast or advice of ours.</p><p class="br-next"><b>Next edition:</b> ${esc(E.next)}</p><p class="br-live">Live: <a href="https://storm-charles.promptugal.news/">storm-charles.promptugal.news</a> · this brief: <a href="https://storm-charles.promptugal.news/brief/">/brief/</a></p></div></header>
+<div class="br-mast-r"><p class="br-notwarn"><b>Not an official warning.</b> IPMA issues the warnings and ANEPC the instructions. Not a warning service: no forecast or advice of ours.</p><p class="br-next"><b>Next edition:</b> ${esc(E.next)}</p><p class="br-live">Live: <a href="https://storm-charles.promptugal.news/">storm-charles.promptugal.news</a> · this brief: <a href="https://storm-charles.promptugal.news/brief/">/brief/</a></p><p class="br-pdf">PDF (A4 landscape): <a href="https://storm-charles.promptugal.news/brief/edition-${E.edition}.pdf">edition ${E.edition}</a> · <a href="https://storm-charles.promptugal.news/brief/brief-latest.pdf">the latest edition</a></p></div></header>
 <div class="br-key" aria-label="How to read it"><span>${lbl('fact')} read from the body that decides or warns</span><span>${lbl('evidence')} reported by others, with its source</span><span>${lbl('hypothesis')} our analysis, with its reasons</span><span>Times UTC = Lisbon time. Each figure: its source and the time read.</span></div>${E.change ? `<p class="br-change"><b>Edition ${E.edition}.</b> ${esc(E.change)}</p>` : ''}
 <div class="br-p1"><div class="br-left"><section class="br-lead">${E.lead.map(l => `<p class="br-i br-i-${esc(l.label)}">${lbl(l.label)} ${esc(l.text)} ${l.src.map(s => prov(s.name, s.url, s.read)).join(' · ')}</p>`).join('')}</section>
 ${map}</div>
@@ -153,7 +153,7 @@ const body = (n) => `# Storm Charles: decision brief, edition ${n}
 
 ${kept}
 
-This is edition ${n} of our decision brief, as of ${hm(E.as_of)} UTC on Wednesday 11 November 2026. The brief's words, as data: [edition-${n}.json](edition-${n}.json). Every edition: [the list](README.md#editions). A PDF is rendered from this page (A4 landscape) on request.
+This is edition ${n} of our decision brief, as of ${hm(E.as_of)} UTC on Wednesday 11 November 2026. The brief's words, as data: [edition-${n}.json](edition-${n}.json). Every edition: [the list](README.md#editions). The PDF, rendered from this page by CI (A4 landscape): [edition ${n}](https://storm-charles.promptugal.news/brief/edition-${n}.pdf), [the latest edition](https://storm-charles.promptugal.news/brief/brief-latest.pdf).
 
 ## Editions
 
