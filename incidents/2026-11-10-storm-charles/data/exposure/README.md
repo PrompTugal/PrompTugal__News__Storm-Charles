@@ -4,7 +4,7 @@
 
 Not a warning service: IPMA issues the warnings and ANEPC the instructions. These files say **where people live and what is there**, read at open sources, so a decision-maker can weigh IPMA's warnings against them. They are never a count of people harmed, and never a forecast of ours.
 
-Every file carries `source`, `read_utc`, `licence`, `method`, `confidence`, `by` and `updated`. Raw downloads (Kontur grid, DEM tiles, OSM export, INE extract) stay out of git: sha256s below; copies go to the datascience vault.
+Every file carries `source`, `read_utc`, `licence`, `method`, `confidence`, `by` and `updated`. Raw downloads (Kontur grid, DEM tiles, OSM export, INE extract) stay out of git: sha256s below; copies are in the datascience vault `yiqem57n` (private; its key sealed to the conductor through the lane at 12:01 UTC; the DEM tiles are not in it: re-download them from the public Copernicus bucket and check the sha256).
 
 | File | What | Label | Source and licence | Confidence | Refresh |
 |---|---|---|---|---|---|
