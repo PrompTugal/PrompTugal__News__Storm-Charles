@@ -1,8 +1,17 @@
 # Shadow reporting: findings so far
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 13:25 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 14:20 UTC
 
 The shadow desk's own reading of the rounds, shown on [the shadow page](index.md). Analysis, not fact.
+
+## What the 14:07 round adds
+
+Analysis, not fact.
+
+- **The 07:16 change reached one answer, seven hours on.** OpenAI's search model was the first to say IPMA had lowered Lisbon's wind to orange. Perplexity Sonar still served "red wind until 21:00" in English (read off a large weather site) and "red for rain and wind, 09:00 to 21:00" in Portuguese; in English it also gave the rain as orange while it was red.
+- **Worst-case figures outlive the warning.** One answer still offered a "sting jet" with gusts of 150 to 160 km/h, two hours after IPMA's communiqué no. 3 said the wind would be weaker and its text for Lisbon read 90 km/h. No answer has carried communiqué no. 3 or the 12:33 shortening yet.
+- **"Tomorrow (Wednesday, Nov 11)".** Sonar now writes the wrong date out, on Wednesday afternoon, while correctly adding that the summit returns on Thursday: the right news under the wrong word.
+- **The same engine, an hour apart:** the rain warning was "orange" at 13:09 and "red" at 14:08 from OpenAI's model citing the same IPMA page; the warning had not changed in between.
 
 ## What the 13:09 round shows (Wednesday, during the red rain warning)
 

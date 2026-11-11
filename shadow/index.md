@@ -4,7 +4,7 @@ summary: Every hour we ask answer engines with live search what a reader would a
 ---
 # Shadow reporting: what the answer engines told a reader
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 13:12 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 14:09 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and nothing an engine said is a fact here.
 
@@ -22,7 +22,16 @@ The idea is the SGit Newsroom's: "The shadow of an article is evidence. Who cite
 | **contradicts** | our record, or the calendar, says otherwise |
 | **unsupported** | outside our record, general information, or an omission we note |
 
-So far: **2** hour(s) asked, 10 paused (the account that pays the engines was out of credit: a gap, not silence), **46** answers, **163** statements: 80 matches, 29 behind us, 17 ahead: a lead, 12 contradicts, 25 unsupported. Spent on the engines: 0.31 US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
+So far: **3** hour(s) asked, 10 paused (the account that pays the engines was out of credit: a gap, not silence), **61** answers, **206** statements: 98 matches, 40 behind us, 21 ahead: a lead, 20 contradicts, 27 unsupported. Spent on the engines: 0.41 US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
+
+## What the 14:07 round adds
+
+Analysis, not fact.
+
+- **The 07:16 change reached one answer, seven hours on.** OpenAI's search model was the first to say IPMA had lowered Lisbon's wind to orange. Perplexity Sonar still served "red wind until 21:00" in English (read off a large weather site) and "red for rain and wind, 09:00 to 21:00" in Portuguese; in English it also gave the rain as orange while it was red.
+- **Worst-case figures outlive the warning.** One answer still offered a "sting jet" with gusts of 150 to 160 km/h, two hours after IPMA's communiqué no. 3 said the wind would be weaker and its text for Lisbon read 90 km/h. No answer has carried communiqué no. 3 or the 12:33 shortening yet.
+- **"Tomorrow (Wednesday, Nov 11)".** Sonar now writes the wrong date out, on Wednesday afternoon, while correctly adding that the summit returns on Thursday: the right news under the wrong word.
+- **The same engine, an hour apart:** the rain warning was "orange" at 13:09 and "red" at 14:08 from OpenAI's model citing the same IPMA page; the warning had not changed in between.
 
 ## What the 13:09 round shows (Wednesday, during the red rain warning)
 
@@ -73,6 +82,9 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 13:09 | OpenAI GPT-5 mini with web search (en) | Yes: tomorrow, Thursday 12 November, is listed as a conference day; Wednesday was cancelled; check the official site. | 2 matches, 1 unsupported | Web Summit's own page (Tuesday 19:09): Day 2 off, Day 3 "aims to proceed". Since about 12:00 Wednesday the press reports the organisers confirmed Thursday in a message to participants; a blog post titled "Announcement" (12:04) is reported, not read by us. [s-1110T1909](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1252](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1305](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 13:09 | Perplexity Sonar (en) | No: Day 2, Wednesday 11 November, is cancelled; the organisers aim to proceed with Day 3 on Thursday. | 1 matches, 1 behind us, 1 contradicts | 〃 |
 | 11 Nov, 13:09 | Perplexity Sonar (pt) | No: Wednesday 11 November is cancelled; the organisers intend to resume on Thursday. | 1 matches, 1 behind us, 1 contradicts | 〃 |
+| 11 Nov, 14:08 | OpenAI GPT-5 mini with web search (en) | Yes: scheduled to run tomorrow, Thursday 12 November; "some sessions" on Wednesday were cancelled; check for changes. | 1 matches, 1 contradicts | Web Summit's own page (Tuesday 19:09): Day 2 off, Day 3 "aims to proceed". The press since about 12:00 Wednesday: the organisers confirmed Thursday in a message to participants (not read by us at the organisers' page). [s-1110T1909](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1252](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1305](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 11 Nov, 14:07 | Perplexity Sonar (en) | Tomorrow "(Wednesday, Nov 11)" is cancelled; the conference returns on Thursday 12 November, its final day. | 2 matches, 1 contradicts | 〃 |
+| 11 Nov, 14:07 | Perplexity Sonar (pt) | No: Wednesday 11 November is cancelled; the event should continue on Thursday. | 1 behind us, 1 contradicts | 〃 |
 
 ### "What warnings are in force in Lisbon now?" · "Que avisos estão em vigor em Lisboa agora?"
 
@@ -94,6 +106,9 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 13:09 | OpenAI GPT-5 mini with web search (en) | Orange warnings for heavy rain, strong wind and rough seas; a national alert situation. | 1 matches, 1 contradicts, 1 unsupported | IPMA (CAP messages sent 12:33): in force at 13:09 in the Lisbon district: red rain to 15:00 (then yellow to 18:00), orange wind to 18:00 (gusts up to 90 km/h, 110 exposed), orange sea to 21:00. The wind has been orange, not red, since 07:16. The alert situation: to 23:59. [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T0738](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T0903](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 13:09 | Perplexity Sonar (en) | A list from three weather sites that disagree: red rain, red or orange wind, orange rain, orange and yellow sea; one site shows no alerts. | 1 matches, 1 behind us, 1 ahead: a lead, 1 unsupported | 〃 |
 | 11 Nov, 13:09 | Perplexity Sonar (pt) | Red warnings for heavy rain and for very strong wind (gusts 120 to 140 km/h, to 21:00); the alert situation to 23:59; tunnels and fenced gardens closed; both bridges at 60 km/h. | 3 matches, 2 behind us, 1 contradicts | 〃 |
+| 11 Nov, 14:08 | OpenAI GPT-5 mini with web search (en) | Red for heavy rain; "orange/red" for sea (waves 5 to 7 m) and for wind (gusts 120 to 140 km/h); city measures. | 2 matches, 1 behind us, 1 ahead: a lead | IPMA (messages of 12:33): in force at 14:07 in the Lisbon district: red rain to 15:00 (then yellow to 18:00), orange wind to 18:00 (gusts up to 90 km/h, 110 exposed), orange sea to 21:00. The alert situation to 23:59. [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T0738](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 11 Nov, 14:07 | Perplexity Sonar (en) | From one weather site: red wind until 21:00, orange rain until 18:00, orange sea until 21:00; other sites differ; one shows no alerts. | 1 matches, 1 ahead: a lead, 2 contradicts | 〃 |
+| 11 Nov, 14:07 | Perplexity Sonar (pt) | The alert situation to 23:59; red warnings for rain and for wind from 09:00 to 21:00; orange sea with waves of 6 to 10 metres; tunnels and gardens closed; both bridges at 60 km/h. | 2 matches, 1 behind us, 1 ahead: a lead, 2 contradicts | 〃 |
 
 ### "Will Storm Charles hit Lisbon?" · "A tempestade Charles vai atingir Lisboa?"
 
@@ -115,6 +130,9 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 13:09 | OpenAI GPT-5 mini with web search (en) | Yes: high-level wind and rain warnings today, worst from late morning to mid-afternoon; gusts up to 120 to 140 km/h in some warnings. | 2 matches, 2 behind us | IPMA's communiqué no. 3 (12:16): Charles passed north of Madeira and split into two low-pressure centres; the wind will be weaker than forecast on Tuesday; persistent, at times heavy rain. Observed: up to 17.9 mm in an hour at IPMA's Lisbon stations (11:00 to 12:00). [s-1111T1226](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1224](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 13:09 | Perplexity Sonar (en) | Yes, Lisbon is affected and under warnings; the centre may pass further south; wind may be less severe than feared, heavy rain remains. | 3 matches, 1 behind us | 〃 |
 | 11 Nov, 13:09 | Perplexity Sonar (pt) | Yes, it may hit Lisbon, under red or orange warning; the impact may be smaller than first forecast as the track moved south. | 2 matches, 1 behind us | 〃 |
+| 11 Nov, 14:08 | OpenAI GPT-5 mini with web search (en) | Yes, affecting Portugal today; the strongest winds a little weaker than feared; IPMA lowered some wind warnings for Lisbon to orange, rain alerts kept. | 2 matches, 1 behind us, 1 unsupported | IPMA's communiqué no. 3 (12:16): the low split into two centres, weaker wind than forecast, persistent rain. Observed at 13:00: heavy rain, 991 hPa and falling at the airport; 57.7 mm in six hours at one IPMA station in Lisbon. [s-1111T1226](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1325](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 11 Nov, 14:07 | Perplexity Sonar (en) | Yes, very likely affected; red warnings in force; the centre may pass south; a possible sting jet with gusts of 150 to 160 km/h in the wider area. | 1 matches, 1 behind us, 1 contradicts | 〃 |
+| 11 Nov, 14:08 | Perplexity Sonar (pt) | Yes, among the zones that may be affected; less impact in Lisbon than first forecast; red warning with gusts of 120 to 140 km/h "in several forecasts". | 1 matches, 2 behind us | 〃 |
 
 ### "Is the Lisbon metro running?" · "O metro de Lisboa está a funcionar?"
 
@@ -136,6 +154,9 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 13:09 | OpenAI GPT-5 mini with web search (en) | Yes, running, with possible delays or station exits closed; check the operator's status page. | 1 matches, 1 ahead: a lead | The mayor (Tuesday): the Metro runs on Wednesday. At 11:52 the Metro's own site carried no service notice (only the night shelters). Carris: six tram lines interrupted; Fertagus: normal. [metro-runs](../incidents/2026-11-10-storm-charles/data/decisions/graph.json), [s-1111T1157](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 13:09 | Perplexity Sonar (en) | Yes, running on all lines; Metro, Carris and Fertagus said they would keep services; stations open overnight as shelter. | 2 matches, 2 unsupported | 〃 |
 | 11 Nov, 13:09 | Perplexity Sonar (pt) | Yes, in normal conditions; the latest sources say it should run normally today. | 1 matches, 1 unsupported | 〃 |
+| 11 Nov, 14:08 | OpenAI GPT-5 mini with web search (en) | Yes, operating today; expect possible delays; check the live status page; some stations used as shelters. | 2 matches | The mayor (Tuesday): the Metro runs on Wednesday. At 11:52 the Metro's own site carried no service notice. [metro-runs](../incidents/2026-11-10-storm-charles/data/decisions/graph.json), [s-1111T1157](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 11 Nov, 14:08 | Perplexity Sonar (en) | Yes, scheduled to run, reports say normally, unless conditions worsen. | 1 matches | 〃 |
+| 11 Nov, 14:08 | Perplexity Sonar (pt) | Yes "in normal conditions", 06:30 to 01:00; offers to check today's disruptions. | 1 unsupported | 〃 |
 
 ### "What happened in Madeira?" · "O que aconteceu na Madeira?"
 
@@ -157,6 +178,9 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 13:09 | OpenAI GPT-5 mini with web search (en) | No answer again: it asked which event was meant and did not search. | 1 behind us | IPMA: red warnings ended 06:00; by 12:40 only yellow sea remains. Observed at Areeiro: 249.5 mm in six hours, 474.7 mm in twelve. The regional president (to 09:00): 205 occurrences, none serious, "479 milímetros de precipitação em 12 horas". [s-1111T0625](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T0727](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1007](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1240](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 11 Nov, 13:09 | Perplexity Sonar (en) | Storm Charles hit overnight: torrential rain, gusts about 130 km/h, floods, landslides, power cuts; 130 to 180 incidents; no deaths; schools closed until 13:00. | 4 matches, 2 behind us, 1 unsupported | 〃 |
 | 11 Nov, 13:09 | Perplexity Sonar (pt) | Charles after Bruna: red warning, gusts to 130 km/h, more than 240 mm in six hours and about 479 in twelve; 130 to over 200 incidents; a man swept by a stream rescued alive; closures. | 4 matches, 1 ahead: a lead | 〃 |
+| 11 Nov, 14:08 | OpenAI GPT-5 mini with web search (en) | No answer, third time: it asked whether the island, the river or the wine was meant. | 1 behind us | IPMA: red warnings ended 06:00; Areeiro 249.5 mm in six hours, 474.7 in twelve. Regional civil protection, as relayed by Lusa: 285 occurrences up to about 13:00. ANA at 11:00: 20 of 80 flights cancelled in advance. [s-1111T0727](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1007](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1407](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1338](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 11 Nov, 14:08 | Perplexity Sonar (en) | Charles: floods, landslides, power cuts, 16 flights cancelled; gusts above 130 km/h; more than 240 mm in six hours; "dozens to more than a hundred" incidents. | 1 matches, 2 behind us | 〃 |
+| 11 Nov, 14:08 | Perplexity Sonar (pt) | Charles: 210 occurrences to about 09:00; a man swept by a stream rescued alive; 479 litres per square metre in 12 hours; wind to 130 km/h; no deaths reported. | 2 matches, 1 behind us, 1 ahead: a lead | 〃 |
 
 ## Zoom in: one decision at a time
 
@@ -187,6 +211,25 @@ Every statement that is behind us or contradicts the record, newest first. Each 
 
 | Asked | Engine | The statement (our words) | Label | Against |
 |---|---|---|---|---|
+| 14:07 | Perplexity Sonar (pt): "A Web Summit realiza-se amanhã?" | "Tomorrow" read as Wednesday, at 14:07 on Wednesday | contradicts | about the engine; third round running [s-1111T1305](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:07 | Perplexity Sonar (pt): "A Web Summit realiza-se amanhã?" | Wednesday is cancelled; the event should continue on Thursday | behind us | Tuesday's articles; Thursday has been reported confirmed since about 12:00 [s-1110T1909](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1305](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:07 | Perplexity Sonar (en): "Is Web Summit on tomorrow?" | The answer writes "tomorrow (Wednesday, Nov 11, 2026)" at 14:07 on Wednesday 11 November | contradicts | about the engine: it now states the wrong date outright  |
+| 14:08 | OpenAI GPT-5 mini with web search (en): "Is Web Summit on tomorrow?" | Organisers were advised to cancel "some sessions" on Wednesday | contradicts | the whole of Day 2 did not take place; cited to a social network post (address withheld) [s-1110T1909](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:08 | Perplexity Sonar (pt): "O que aconteceu na Madeira?" | 210 occurrences to about 09:00, most in Funchal, Santa Cruz and Machico | behind us | 285 up to about 13:00, an hour before the answer [s-1111T1407](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1007](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:08 | Perplexity Sonar (en): "What happened in Madeira?" | Dozens to more than a hundred incidents | behind us | 285 up to about 13:00 (Lusa, relaying regional civil protection); 205 to 09:00 [s-1111T1407](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1007](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:08 | Perplexity Sonar (en): "What happened in Madeira?" | Electricity restored; 16 flights cancelled; schools closed | behind us | ANA's own figure at 11:00: 20 of 80 cancelled in advance at Madeira [s-1111T1338](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T0735](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:08 | OpenAI GPT-5 mini with web search (en): "What happened in Madeira?" | The engine did not search | behind us | three rounds, three questions back [s-1111T0727](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:07 | Perplexity Sonar (pt): "Que avisos estão em vigor em Lisboa agora?" | Red warnings for heavy rain and very strong wind, 09:00 to 21:00, for Lisbon and seven other districts | contradicts | at 14:07: red rain to 15:00 only; wind orange since 07:16; several of the districts named were lowered at 07:16 and 12:18 [s-1111T0738](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1234](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:07 | Perplexity Sonar (pt): "Que avisos estão em vigor em Lisboa agora?" | Orange sea warning, waves that may reach 6 to 10 metres | contradicts | the level matches; IPMA's text is 5 to 7 metres, up to 13 at the maximum [warnings.json](../incidents/2026-11-10-storm-charles/data/weather/warnings.json) |
+| 14:07 | Perplexity Sonar (pt): "Que avisos estão em vigor em Lisboa agora?" | 60 km/h on the Vasco da Gama and 25 de Abril bridges | behind us | Tuesday's entry; today 60 and 80 km/h, by the operator [s-1111T1255](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:07 | Perplexity Sonar (en): "What warnings are in force in Lisbon now?" | A red wind warning in force until 21:00 | contradicts | orange since 07:16, and to 18:00 since 12:33: seven hours stale on a large weather site, by the engine's reading of it [s-1111T0738](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:07 | Perplexity Sonar (en): "What warnings are in force in Lisbon now?" | An orange rain warning in force until 18:00 | contradicts | the rain warning in force at 14:07 is red, to 15:00 [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T0903](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:08 | OpenAI GPT-5 mini with web search (en): "What warnings are in force in Lisbon now?" | Wind: "orange/red", gusts up to about 120 to 140 km/h | behind us | orange; 90 km/h, 110 in exposed places, since 12:33 [s-1111T0738](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:08 | Perplexity Sonar (pt): "A tempestade Charles vai atingir Lisboa?" | Lisbon under red warning with gusts of 120 to 140 km/h in exposed places | behind us | Tuesday's wind warning [s-1111T0738](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:08 | Perplexity Sonar (pt): "A tempestade Charles vai atingir Lisboa?" | "May be affected": the future tense, five hours into the red rain warning | behind us | IPMA's Lisbon stations had measured 57.7 mm in six hours [s-1111T1325](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:07 | Perplexity Sonar (en): "Will Storm Charles hit Lisbon?" | The centre may pass south of Lisbon, between Sines and Cabo Carvoeiro; the track is still uncertain | behind us | answered as a forecast at 14:07, with the storm over Lisbon (991 hPa and falling at 13:00) and IPMA's communiqué no. 3 two hours old [s-1111T1226](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1325](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:07 | Perplexity Sonar (en): "Will Storm Charles hit Lisbon?" | A possible sting jet, gusts up to about 150 to 160 km/h in the broader alert area | contradicts | Tuesday's worst case, one of the cited pages dated today; IPMA's text for Lisbon since 12:33: up to 90 km/h, 110 exposed [s-1111T1226](../incidents/2026-11-10-storm-charles/timeline.md), [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md) |
+| 14:08 | OpenAI GPT-5 mini with web search (en): "Will Storm Charles hit Lisbon?" | Gusts around 100 to 120 km/h in exposed spots | behind us | 90, up to 110 km/h since 12:33 [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 13:10 | Perplexity Sonar (en): "Are trains and the Tagus bridges in Lisbon open during Storm Charles?" | The bridges are not reported closed | behind us | no speed limits mentioned: 60 km/h on the 25 de Abril and 80 km/h on the Vasco da Gama since 11:30, by the operator's notice [s-1111T1255](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 13:10 | Perplexity Sonar (en): "Is Storm Charles now expected to pass south of Lisbon?" | IPMA's baseline is still landfall between Sines and Cabo Carvoeiro | behind us | communiqué no. 2 (Tuesday 17:07); no. 3, published 12:16, says the low passed north of Madeira and split into two centres [s-1111T1226](../incidents/2026-11-10-storm-charles/timeline.md) |
 | 13:10 | Perplexity Sonar (en): "From what time is IPMA's red rain warning for Lisbon in force on Wednesday 11 November?" | IPMA's red rain warning for Lisbon runs 09:00 to 18:00 | behind us | right until 12:33, when IPMA shortened it to 15:00 (yellow 15:00 to 18:00); the answer came 37 minutes later, from a weather site that relays the warnings [s-1111T1247](../incidents/2026-11-10-storm-charles/timeline.md) |
@@ -252,43 +295,47 @@ Every statement that is behind us or contradicts the record, newest first. Each 
 | 13:09, OpenAI GPT-5 mini with web search | The operator's status page shows the network operating, with some exits or lifts out of service | a lead: the Metro's own live status page as a source for "is it running" (our researcher found no service notice on its site at 11:52; this page is another place to read) | [metrolisboa.pt](https://www.metrolisboa.pt/en/travel/line-and-lift-status/) |
 | 13:10, Perplexity Sonar | About 108 departures and 100 arrivals | a lead: the split is not in our record | [executivedigest.sapo.pt](https://executivedigest.sapo.pt/mau-tempo-mais-de-220-voos-cancelados-nos-aeroportos-de-lisboa-e-faro/), [dnoticias.pt](https://www.dnoticias.pt/2026/11/11/512542-aeroporto-continua-sem-voos-e-20-cancelamentos/) |
 | 13:10, Perplexity Sonar | TAP cancelled more than 130 flights at Lisbon today | a lead: to verify at TAP | [jornaleconomico.sapo.pt](https://jornaleconomico.sapo.pt/noticias/mais-de-130-voos-da-tap-cancelados-em-lisboa-pelo-charles/), [jornaleconomico.sapo.pt](https://jornaleconomico.sapo.pt/noticias/mais-de-200-voos-cancelados-no-aeroporto-de-lisboa/), [aeroin.net](https://aeroin.net/mais-de-220-voos-ja-foram-cancelados-hoje-em-aeroportos-de-portugal-por-causa-das-condicoes-meteorologicas/) |
+| 14:08, OpenAI GPT-5 mini with web search | The city reinforced its protection measures (its own news page); SMS alerts | a lead for the researcher: a second council page on its measures ("lisboa-reforca-medidas-de-protecao..."), bearing on camara-plan | [lisboa.pt](https://www.lisboa.pt/cidade-informa/noticias/detalhe/lisboa-reforca-medidas-de-protecao-devido-a-previsao-de-mau-tempo) |
+| 14:07, Perplexity Sonar | Other pages show a red rain warning; one site shows no alerts | the standing lead for incident.weatherwatch@: the same three sites disagreeing, third round | [qweather.com](https://www.qweather.com/en/severe-weather/lisbon-A7E44.html), [yr.no](https://www.yr.no/en/forecast/hourly-table/2-2267056/Portugal/Lisbon%20District/Lisbon%20District?i=0), [weather.com](https://weather.com/pt/lisbon/city/lisbon/localalerts?phenomena=TCW&significance=A&areaid=PT016&office=EUPT&etn=0224), [weather.com](https://weather.com/en-VC/pt/lisbon/city/lisbon/localalerts), [weather.com](https://weather.com/pt/lisbon/city/lisbon/localalerts?phenomena=TCW&significance=S&areaid=PT016&office=EUPT&etn=1109) |
+| 14:07, Perplexity Sonar | The council's traffic page shows no restrictions; the engine adds that this does not undo the tunnel closures | the 02:19 lead again: the council's own page still reads as empty | [lisboa.pt](https://www.lisboa.pt/cidade-informa/como-circulo/alteracoes-a-circulacao) |
+| 14:08, Perplexity Sonar | A man swept away by a stream in Funchal, rescued alive | the 13:09 lead again; not in our record | [rr.pt](https://rr.pt/noticia/pais/2026/11/11/mau-tempo-homem-arrastado-por-galgamento-de-ribeiro-resgatado-com-vida-na-madeira/493051/) |
 
 ## Which sources the engines lean on
 
 | Engine | Answers | Addresses used | Of them, a primary body's own page | Answers citing a primary body | Answers with no address |
 |---|---|---|---|---|---|
-| Perplexity Sonar | 36 | 284 | 19 (7%) | 12 | 0 |
-| OpenAI GPT-5 mini with web search | 10 | 21 | 15 (71%) | 8 | 2 |
+| Perplexity Sonar | 46 | 357 | 27 (8%) | 16 | 0 |
+| OpenAI GPT-5 mini with web search | 15 | 34 | 21 (62%) | 12 | 3 |
 
 The hosts used most (all engines, all runs; [sources.json](sources.json) has every host):
 
 | Host | Used in answers | Returned by search | Primary body? |
 |---|---|---|---|
-| observador.pt | 14 | 27 | no |
-| rtp.pt | 14 | 21 | no |
-| cnnportugal.iol.pt | 12 | 19 | no |
-| metrolisboa.pt | 11 | 36 | yes |
-| tvi.iol.pt | 11 | 20 | no |
-| euronews.com | 10 | 27 | no |
-| heraldnews.com | 10 | 16 | no |
-| executivedigest.sapo.pt | 8 | 12 | no |
-| eco.sapo.pt | 8 | 11 | no |
-| theportugalnews.com | 7 | 23 | no |
-| yr.no | 7 | 16 | no |
-| portugaldecoded.substack.com | 7 | 11 | no |
-| expresso.pt | 7 | 7 | no |
-| ground.news | 6 | 64 | no |
-| websummit.com | 6 | 52 | yes |
-| publico.pt | 5 | 17 | no |
-| madeiraislandnews.com | 5 | 17 | no |
-| 24noticias.sapo.pt | 5 | 7 | no |
-| sicnoticias.pt | 4 | 9 | no |
-| pt.euronews.com | 4 | 8 | no |
-| weather.com | 4 | 7 | no |
-| rr.pt | 4 | 7 | no |
-| tugadaily.com | 4 | 6 | no |
-| ipma.pt | 4 | 4 | yes |
-| irishtimes.com | 4 | 4 | no |
+| rtp.pt | 19 | 31 | no |
+| cnnportugal.iol.pt | 19 | 29 | no |
+| metrolisboa.pt | 18 | 54 | yes |
+| observador.pt | 17 | 38 | no |
+| tvi.iol.pt | 16 | 27 | no |
+| euronews.com | 13 | 33 | no |
+| heraldnews.com | 11 | 18 | no |
+| executivedigest.sapo.pt | 11 | 16 | no |
+| ground.news | 9 | 95 | no |
+| yr.no | 9 | 20 | no |
+| eco.sapo.pt | 9 | 14 | no |
+| websummit.com | 8 | 70 | yes |
+| theportugalnews.com | 8 | 25 | no |
+| portugaldecoded.substack.com | 8 | 12 | no |
+| expresso.pt | 8 | 8 | no |
+| weather.com | 7 | 11 | no |
+| pt.euronews.com | 7 | 11 | no |
+| sicnoticias.pt | 6 | 12 | no |
+| 24noticias.sapo.pt | 6 | 10 | no |
+| rr.pt | 6 | 9 | no |
+| publico.pt | 5 | 26 | no |
+| madeiraislandnews.com | 5 | 19 | no |
+| record.pt | 5 | 8 | no |
+| lisboa.pt | 5 | 6 | yes |
+| ipma.pt | 5 | 5 | yes |
 
 "Primary" means the host of a body that decides or warns, or of the organiser or operator for its own decision (IPMA, ANEPC, the government, Diário da República, Web Summit, the Metro, the city council, the maritime authority and a few more; the list is in [tools/shadow-index.mjs](../tools/shadow-index.mjs)). A count of addresses, not a judgement of anyone's journalism.
 
