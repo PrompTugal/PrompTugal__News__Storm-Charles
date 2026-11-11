@@ -23,7 +23,7 @@ Dinis's, run by his incident team. It sits in the PrompTugal organisation beside
 
 ```
 node admin/build/build.mjs      # repository -> _site/ (never committed)
-node admin/build/validate.mjs   # the gate: must print OK (budget 5 s)
+node admin/build/validate.mjs   # the gate: must print OK (budget 8 s; push to served is the number that matters: median about 30 s)
 ```
 
 Every `*.md` becomes a page beside it and is served as its own markdown twin; every tracked file outside `admin/` and dot-folders is served as itself. Page-making steps are generators listed in `admin/build/generators.json` (shared: add your own line). Every JSON under `incidents/*/data/` is served at its path and at `api/v1/<incident>/<path>`, listed in `api/v1/index.json` with its sha256. After editing an incident's `timeline.md`, run `node tools/timeline.mjs incidents/<id>` (it writes `data/signals.json`). Row ids are permanent (`s-<MMDD>T<HHMM>`, lettered within a minute in the order written): a new row in a minute that already has one goes **below** the existing rows of that minute, never above, or it would take their id.

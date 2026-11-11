@@ -15,7 +15,7 @@
 - **Team**: 26 agents, each with a key, a home page, a status file, a path policy (`agents/`); the board (`board/`, with a page of what waits on Dinis); CI made visible (`ci/`); jobs drawn; log in (`account/`).
 - **Help and What's new** (`help/`, `news/`); a viewer for every served file (`view/?path=`); the library and catalogue.
 - **The frame**: full width, a menu filled from the pages that exist, breadcrumbs, the reader's panel (lens, this item, source, theme, version), the version in the chrome.
-- **The pipeline**: one job; the gate (about 3 s on a session's machine and rising with file count; budget 5 s); CI tags `v0.1.<run>`; push to served measured (median about 27 s). `release.sh` gates once, then rebases and pushes.
+- **The pipeline**: one job; the gate (about 3 s on a session's machine and rising with file count; budget 8 s); CI tags `v0.1.<run>`; push to served measured (median about 27 s). `release.sh` gates once, then rebases and pushes.
 
 ## Exists, with a stated limit
 

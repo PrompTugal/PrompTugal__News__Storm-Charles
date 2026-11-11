@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// The gate: must print OK, and a red gate is no release. Budget: 5 seconds. It builds the site once, then checks:
+// The gate: must print OK, and a red gate is no release. Budget: 8 seconds (5 until 11 November 02:55, when the site passed 1,100 pages). It builds the site once, then checks:
 //   1. the repository stays fast: no tracked file over 256 KB, no binary, no raw capture, nothing from a key store;
 //   2. no secret: private keys, tokens, vault keys;
 //   3. every JSON parses; every incident has incident.json with a sourced headline;
@@ -61,7 +61,8 @@ for (const d of fs.readdirSync(path.join(ROOT, 'incidents'))) {
 
 // the built site: twins, links, assets
 const html = []
-const walk = d => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); e.isDirectory() ? walk(f) : f.endsWith('.html') && html.push(f) } }
+const built = new Set()   // every path in the built site, walked once: link targets are looked up here, not asked of the disk one by one
+const walk = d => { built.add(d); for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); if (e.isDirectory()) walk(f); else { built.add(f); if (f.endsWith('.html')) html.push(f) } } }
 walk(OUT)
 for (const f of html) {
     const rel = path.relative(OUT, f), s = fs.readFileSync(f, 'utf8')
@@ -74,7 +75,7 @@ for (const f of html) {
         if (/^(https?:|mailto:|#|data:)/.test(u) || rel === '404.html') continue
         const target = path.join(path.dirname(f), decodeURI(u.split('#')[0].split('?')[0]))
         if (!u.split('#')[0]) continue
-        if (!fs.existsSync(target)) fail(`${rel}: broken link ${u}`)
+        if (!built.has(target.replace(/\/+$/, ''))) fail(`${rel}: broken link ${u}`)
     }
 }
 const front = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8')
@@ -82,7 +83,7 @@ if (!/Not a warning service/.test(front)) fail('index.html: the "Not a warning s
 for (const need of ['api/v1/index.json', 'llms.txt', 'version.json', 'sitemap.xml', 'library/index.html', 'library/index.json', 'data/agents/index.json', 'data/graph/storm.json'])   if (!fs.existsSync(path.join(OUT, need))) fail(`_site/${need} missing`)
 
 const ms = Date.now() - t0
-if (ms > 5000) warns.push(`the gate took ${ms} ms: over its 5 s budget`)
+if (ms > 8000) warns.push(`the gate took ${ms} ms: over its 8 s budget`)
 for (const w of warns) console.log('WARN ' + w)
 if (errors.length) { for (const e of errors) console.log('FAIL ' + e); console.log(`RED: ${errors.length} problem(s), ${ms} ms`); process.exit(1) }
 console.log(`OK ${process.env.VERSION || 'local'}: ${html.length} pages, ${tracked.length} tracked files, ${ms} ms`)
