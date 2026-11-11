@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:17 UTC. Made by `story/make-cast.mjs` (the data: [cast.json](cast.json)).
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:30 UTC. Made by `story/make-cast.mjs` (the data: [cast.json](cast.json)).
 
 # The cast
 
@@ -14,25 +14,25 @@ Who is in the story of Storm Charles's site: one person who instructs, 35 agents
 
 | | Agent | Who it is | Owns | First commit (UTC) | Commits | Generations |
 |---|---|---|---|---|---|---|
-| 🎼 | **conductor@** | the lead: routes the work, talks with Dinis, keeps the timeline, the headline, the jobs and the brief | `incidents/*/timeline.md, incidents/*/decisions.md, incidents/*/incident.json, incidents/*/comms/, incidents/*/material/, incidents/*/data/signals.json, …` | 11/10 21:14 `77cdd51f` | 143 | **1** |
-| 🎨 | **designer@** | the look: tokens, parts and rules every page is drawn with, in rounds | `app/site.css, app/design/, design/` | 11/10 23:36 `876a31e2` | 76 | 1 → 2 → 3 → 4 → **5** |
+| 🎼 | **conductor@** | the lead: routes the work, talks with Dinis, keeps the timeline, the headline, the jobs and the brief | `incidents/*/timeline.md, incidents/*/decisions.md, incidents/*/incident.json, incidents/*/comms/, incidents/*/material/, incidents/*/data/signals.json, …` | 11/10 21:14 `77cdd51f` | 147 | **1** |
+| 🎨 | **designer@** | the look: tokens, parts and rules every page is drawn with, in rounds | `app/site.css, app/design/, design/` | 11/10 23:36 `876a31e2` | 80 | 1 → 2 → 3 → 4 → **5** |
 | 📰 | **media@** | the media watch: outlets, by-lines on public articles, coverage as data; the contribute page | `research/media/, contribute.md` | 11/10 23:38 `8b9392e6` | 32 | 1 → **2** |
 | 🗺️ | **weatherwatch@** | the map of the best weather sites, and who is covering the storm | `research/weather-sites/` | 11/10 23:38 `066df683` | 42 | 1 → 2 → **3** |
 | 📚 | **librarian@** | everything findable: the catalogue, the start pack for new agents, the glossary | `library/, docs/, tools/library-*.mjs, agents/policy.json, tools/policy-check.mjs, agents/*/policy.md, …` | 11/10 23:38 `72a73628` | 97 | 1 → 2 → 3 → 4 → 5 → 6 → **7** |
-| 🔭 | **observability@** | the window on the team: /agents/, every agent, its state, its last commit and wake, live | `admin-site/, app/agents/, data/agents/*.json, tools/agents-*.mjs, agents/*/README.md` | 11/10 23:38 `3d93ef4f` | 63 | 1 → 2 → 3 → **4** |
-| 🔑 | **identity@** | Dinis's login and his sealed lane to the conductor; the keys | `app/login/, account/, data/lanes.json, tools/lane-*.mjs, SECURITY.md` | 11/10 23:39 `b53673e7` | 28 | 1 → **2** |
+| 🔭 | **observability@** | the window on the team: /agents/, every agent, its state, its last commit and wake, live | `admin-site/, app/agents/, data/agents/*.json, tools/agents-*.mjs, agents/*/README.md` | 11/10 23:38 `3d93ef4f` | 66 | 1 → 2 → 3 → 4 → **5** |
+| 🔑 | **identity@** | Dinis's login and his sealed lane to the conductor; the keys | `app/login/, account/, data/lanes.json, tools/lane-*.mjs, SECURITY.md` | 11/10 23:39 `b53673e7` | 30 | 1 → 2 → **3** |
 | 🕸️ | **graph@** | ontologist and cartographer: one graph of the storm, and SQL in the browser | `data/graph/, app/graph/, tools/graph-*.mjs, data/query/` | 11/10 23:44 `9b42a2e6` | 34 | 1 → 2 → **3** |
 | 🎬 | **studio@** | animated explanations with small characters, played as storyboards | `studio/, app/studio/` | 11/11 00:38 `7fc709c8` | 26 | 1 → **2** |
 | 📖 | **wikipedia@** | Wikipedia on the storm: articles, revisions, claims, and this site measured by its values | `research/wikipedia/, tools/wikipedia-*.mjs` | 11/11 01:43 `1e744ad9` | 15 | 1 → **2** |
 | 🌦️ | **weather@** | the Weather face at /: the storm as a weather channel shows it, from our own JSON only | `weather/, app/weather/, tools/weather-*.mjs` | 11/11 02:10 `82fa4e5a` | 31 | 1 → **2** |
 | 🏷️ | **entities@** | the mini Wikipedia as data: a node and a page for every thing mentioned; the linker | `entities/, app/lens/, tools/entities-*.mjs` | 11/11 02:20 `747d8321` | 34 | 1 → 2 → **3** |
-| 🧭 | **sources@** | a section per source body, MeteoAlarm first: feeds, API, changes, licence | `sources/, app/sources/, tools/source-*.mjs` | 11/11 02:21 `ec7471fc` | 21 | **1** |
-| 🗄️ | **archivist@** | captures every outside page (screenshot, HTML, sha256) into vaults; the evidence pages | `evidence/, app/evidence/, tools/capture*.mjs, data/vaults.json` | 11/11 02:22 `b708dbed` | 24 | **1** |
+| 🧭 | **sources@** | a section per source body, MeteoAlarm first: feeds, API, changes, licence | `sources/, app/sources/, tools/source-*.mjs` | 11/11 02:21 `ec7471fc` | 22 | **1** |
+| 🗄️ | **archivist@** | captures every outside page (screenshot, HTML, sha256) into vaults; the evidence pages | `evidence/, app/evidence/, tools/capture*.mjs, data/vaults.json` | 11/11 02:22 `b708dbed` | 26 | **1** |
 | 📌 | **board@** | what is still open, each item tracked to its evidence | `board/, app/board/, tools/board-*.mjs` | 11/11 02:22 `13eb44ea` | 21 | 1 → **2** |
 | 🧪 | **labs@** | experiments: many timelines, decision views, lead times | `labs/, app/labs/, tools/labs-*.mjs` | 11/11 02:22 `22d1e0b2` | 14 | 1 → **2** |
 | ✍️ | **stories@** | data-driven stories from the data room only, every statement linked | `stories/, app/stories/, tools/stories-*.mjs` | 11/11 02:25 `e96857b6` | 35 | 1 → 2 → 3 → **4** |
 | 👥 | **shadow@** | shadow reporting: what other sources and answer engines say, compared with our record | `shadow/, app/shadow/, tools/shadow-*.mjs` | 11/11 02:26 `cae2457f` | 12 | **1** |
-| ⚙️ | **ci@** | the pipeline made visible: every run and commit, who pushed, what is signed | `ci/, app/ci/, tools/ci-*.mjs, data/ci/, README.md` | 11/11 02:27 `e94ded11` | 15 | 1 → **2** |
+| ⚙️ | **ci@** | the pipeline made visible: every run and commit, who pushed, what is signed | `ci/, app/ci/, tools/ci-*.mjs, data/ci/, README.md` | 11/11 02:27 `e94ded11` | 16 | 1 → **2** |
 | 💬 | **social@** | Bluesky and other public social sources, as data | `research/social/, app/social/, tools/social-*.mjs` | 11/11 02:30 `904f80d8` | 14 | 1 → **2** |
 | 📡 | **ipma@** | IPMA's open data: every endpoint mapped, read hourly, kept with diffs | `sources/ipma/, app/sources/ipma/, tools/ipma-*.mjs` | 11/11 02:30 `39c68b95` | 20 | 1 → **2** |
 | ⚖️ | **models@** | other models, measured: evals on checkable tasks, through the ledger | `models/, app/models/, tools/models-*.mjs, tools/llm.mjs` | 11/11 02:35 `4655fc5c` | 11 | **1** |
@@ -40,12 +40,12 @@ Who is in the story of Storm Charles's site: one person who instructs, 35 agents
 | 🧮 | **accountant@** | what the project costs: model spend, tokens per session, CI time | `accounts/, app/accounts/, tools/accounts-*.mjs` | 11/11 02:58 `5c6c532f` | 14 | 1 → **2** |
 | 🗞️ | **journalist@** | the project told: the story of how this was made, from the traces | `journal/, app/journal/, tools/journal-*.mjs` | 11/11 02:59 `641e2164` | 35 | 1 → 2 → 3 → **4** |
 | 🔎 | **perplexity@** | an answer engine used as a research tool: questions, answers, citations, cost | `research/perplexity/, app/perplexity/, tools/perplexity-*.mjs` | 11/11 03:01 `f24a7735` | 6 | **1** |
-| 🎙️ | **reporter@** | the project as it happens: a trace per workflow, from Dinis's word to a live page | `reporter/, tools/reporter-*.mjs` | 11/11 03:03 `4b5a93ac` | 26 | 1 → 2 → **3** |
+| 🎙️ | **reporter@** | the project as it happens: a trace per workflow, from Dinis's word to a live page | `reporter/, tools/reporter-*.mjs` | 11/11 03:03 `4b5a93ac` | 29 | 1 → 2 → 3 → **4** |
 | ✉️ | **envoy@** | outreach with Dinis: the letter, one-pagers, posts; the newcomers' front page | `outreach/, comms/, welcome/` | 11/11 09:35 `8d1efd8e` | 6 | **1** |
 | 🧍 | **synthetic@** | four invented visitors walk the site and say what they understood (a test instrument, not people) | `research/synthetic/` | 11/11 09:53 `76ccd12c` | 4 | **1** |
-| 📜 | **storyteller@** | the story of the team: the cast, the primitives, ten paths, the arc | `story/` | 11/11 10:13 `edc481e0` | 2 | **1** |
-| 🎞️ | **motion@** | small animations of the work: the flow format, the gallery at /flows/ | `app/flows/, flows/, data/flows/, tools/flows-*.mjs` | not yet | 0 | — |
-| 📺 | **broadcast@** | the news-channel wall at /broadcast/: the storm as a live channel shows it | `broadcast/, app/broadcast/, tools/broadcast-*.mjs` | not yet | 0 | — |
+| 📜 | **storyteller@** | the story of the team: the cast, the primitives, ten paths, the arc | `story/` | 11/11 10:13 `edc481e0` | 10 | **1** |
+| 🎞️ | **motion@** | small animations of the work: the flow format, the gallery at /flows/ | `app/flows/, flows/, data/flows/, tools/flows-*.mjs` | 11/11 10:20 `b144acec` | 4 | **1** |
+| 📺 | **broadcast@** | the news-channel wall at /broadcast/: the storm as a live channel shows it | `broadcast/, app/broadcast/, tools/broadcast-*.mjs` | 11/11 10:22 `9b6fe987` | 2 | **1** |
 | 🌀 | **meteorologist@** | the forecaster's reading of the storm; writes in the Web Summit site, the conductor syncs | `incidents/*/data/weather/` | not yet | 0 | — |
 | 🔬 | **researcher@** | checks the organiser's decisions and times; writes in the Web Summit site, the conductor syncs | `incidents/*/data/decisions/` | not yet | 0 | — |
 | 🛠️ | **dev@** | the watchers and the storm script (websummit.mjs, the blog poll); writes in the Web Summit site, the conductor syncs | `tools/websummit*, incidents/*/data/watch/, app/storm.js` | not yet | 0 | — |
@@ -67,7 +67,7 @@ Generations: one number per session key, in the order added; the bold one is the
 
 ## Reading it (the storyteller's)
 
-- The roles came in waves: the conductor alone on the evening of 10 November; seven between 23:36 and 23:44, on Dinis's direction of ~23:40 UTC (agents/JOBS.md) (the conductor's commits before trailers carry their names in the subject); twenty more between 00:38 and 03:03; then none for six hours, until envoy@ (09:35), synthetic@ (09:53), storyteller@ and motion@ (10:12) and broadcast@ (10:13) on Dinis's words of the morning. The arc (story/arc.md, next) will tell it.
+- The roles came in waves: the conductor alone on the evening of 10 November; seven between 23:36 and 23:44, on Dinis's direction of ~23:40 UTC (agents/JOBS.md) (the conductor's commits before trailers carry their names in the subject); twenty more between 00:38 and 03:03; then none for six hours, until envoy@ (09:35), synthetic@ (09:53), storyteller@ and motion@ (10:12) and broadcast@ (10:13) on Dinis's words of the morning. [The arc](arc.md) tells it.
 - The roles with the most generations are the ones that write the most and carry the most context: the librarian (7), the designer, observability, stories@ and the journalist (4 each).
 - Icons: an emoji for text, and a glyph name for each, which incident.motion@ draws as a small SVG (the list is in [primitives.md](primitives.md)).
 

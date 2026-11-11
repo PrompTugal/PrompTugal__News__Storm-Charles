@@ -128,7 +128,7 @@ for (const o of OTHERS.slice(1)) md += `| ${o.icon.emoji} | **${o.name}** | ${o.
 md += `
 ## Reading it (the storyteller's)
 
-- The roles came in waves: the conductor alone on the evening of 10 November; seven between 23:36 and 23:44, on Dinis's direction of ~23:40 UTC (agents/JOBS.md) (the conductor's commits before trailers carry their names in the subject); twenty more between 00:38 and 03:03; then none for six hours, until envoy@ (09:35), synthetic@ (09:53), storyteller@ and motion@ (10:12) and broadcast@ (10:13) on Dinis's words of the morning. The arc (story/arc.md, next) will tell it.
+- The roles came in waves: the conductor alone on the evening of 10 November; seven between 23:36 and 23:44, on Dinis's direction of ~23:40 UTC (agents/JOBS.md) (the conductor's commits before trailers carry their names in the subject); twenty more between 00:38 and 03:03; then none for six hours, until envoy@ (09:35), synthetic@ (09:53), storyteller@ and motion@ (10:12) and broadcast@ (10:13) on Dinis's words of the morning. [The arc](arc.md) tells it.
 - The roles with the most generations are the ones that write the most and carry the most context: the librarian (${(agents.find(a => a.role === 'librarian') || {}).sessions?.length}), the designer, observability, stories@ and the journalist (4 each).
 - Icons: an emoji for text, and a glyph name for each, which incident.motion@ draws as a small SVG (the list is in [primitives.md](primitives.md)).
 

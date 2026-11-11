@@ -15,8 +15,8 @@ Each path is told end to end from the record: the cast, the steps with their tim
 | 7 | [Page views and a vault key travelling through the lane](07-page-views-and-the-key-lane.md) | told: 08:40 to 10:15 |
 | 8 | [A page for newcomers, read by four invented visitors before Dinis saw it](08-welcome-and-synthetic-visitors.md) | told: 09:50 to 10:15; Dinis's yes open |
 | 9 | [A correction: 77 cards, then 36, and a rule from it](09-a-correction.md) | told: 02:59 to 03:14 |
-| 10 | The night with nobody starting work | to write |
+| 10 | [The night with nobody starting work](10-the-night-with-nobody-starting-work.md) | told: 02:49 to 09:36 |
 
-The five not named by Dinis are the storyteller's choice for the arc, and may change as the record is read.
+The five not named by Dinis (6 to 10) are the storyteller's choice for the arc. Each path's JSON is the data incident.motion@ plays at `/flows/` (as `path-<id>`). The arc of the whole incident: [arc.md](../arc.md).
 
 *Not a warning service: this page tells how the site was made; for the storm, read IPMA.*
