@@ -1,6 +1,6 @@
 # Hand-over: the Weather face (incident.weather@)
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 09:39 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 11:58 UTC
 
 For the next weather session, started by incident.conductor@ at Dinis Cruz's word. The first session ran 02:08 to 09:29 UTC on 11 November and is handed over because its context grew large, not because anything is broken. Read [CLAUDE.md](../../CLAUDE.md), [RESTRUCTURE.md](../../RESTRUCTURE.md), [design/README.md](../../design/README.md) and design/HANDOVER.md first, then this. The running record is [status.json](status.json).
 
@@ -90,3 +90,28 @@ By the files read at 09:22 there is **no red wind at 12:00**: wind is orange 09:
 - design/round-45.md's ten notes are all on the page. What changed in the shape: the band's heading is an `h2.wxc-h` (the page's title is the only h1); the band carries "Also in force" (the warnings in force below the highest level, each with its level written); `commLine` puts the communiqué's number, validity and last-seen time under the band (`commNow` picks it; the full sentence stays lower down); a rain or wind tile says "before IPMA's <level> <hazard> warning began" while its hour ended at or before the start of the warning in force; `hero(t, wide)` returns two sections and `render` puts the hour strip between them at 1,100 px and wider (`MQ`), after them on a phone; a bar's label is `i.wxc-bl`, sticky beside the row's name; the print rule gives the 24 hours the page's width.
 - When checking in a browser, block requests that leave localhost: the frame's page-view script (app/agents/obs.js, incident.observability@'s) sends an event to a lane outside the site on every page load, a local build included. It is not the face's (tools/weather-check.mjs checks app/weather/ only).
 - Kept outside git and gone with the session: the check scripts (a Playwright look at four views with positions, a strip and print photograph). Rewrite from "How to check" above; ten lines each.
+
+## Added by the third session (10:31 to about 11:58 UTC)
+
+The third session is handed over because its context passed about 200,000 tokens a call, not because anything is broken. Its session is session_018yvwtQYMVvhqjVntBCKjaa; its key is `incident-weather-dinis-3` in data/keys.json (mark it "handed over" when you add yours). Wakes: hourly at :25 (the routine "incident.weather@web-summit.dinis hourly (3)").
+
+**Due first: the 12:00 check at the 12:25 wake** (the six points above), then the 18:00 and 21:00 step-downs. At the 11:27 check (files read 11:26) everything read true: RED rain to 18:00, ORANGE wind to 21:00, next ORANGE sea 12:00 to 21:00, then YELLOW sea 21:00 to Thu 03:00; IPMA's two channels agree.
+
+**New on the page, top to bottom** (all in `hero` and `render`, app/weather/weather.js):
+
+- `changeLine(t)`, just under the band: "Wind lowered by IPMA from RED to ORANGE · message sent 07:16 UTC". Read from cap.json: a standing CAP message whose own `replaces` names a message for the same hazard at another level; shown only for a message sent today and while it still runs (weatherwatch@'s 09:40 review, point 1).
+- `summitLine(t)`: Web Summit's latest decision, the newest dated fact or evidence with `by: websummit` in decisions/graph.json, with its time, the time read, a link to its entry (`#d-<id>`) and to the data room. Its words are incident.json's `headline` when the headline cites the same source URL; otherwise the edge's own, cut to 170 characters. On the right: "New here? What this site is →" (/welcome/) and `ptnLine()`, "This site is one of the sources of PrompTugal.news" (Dinis ~10:32; the frame's top bar carries the big link on every page, so this stays small). designer@'s round 50 note 4; synthetic@'s run 3 point 5.
+- `nowTiles(t, 'line')`: on a desk only, one "Measured" line above the strip (airport wind or gust, the wettest station's last hour; age and source; dimmed past 90 min). weatherwatch@'s point 3.
+- `team(t)`, after the hours and the rest of the band, before Where: "The team at work" from incident.observability@'s `data/agents/now.json` (built on every push by tools/agents-now.mjs, never tracked; `FILES.team`, and allowed in tools/weather-check.mjs). The fields read are listed in the message to observability@ (11:58): `updated`, `counts`, `flags.commits_stale`, `flags.sources_window_hours`, `working[]`, `sources_read[]`, `public_posts_not_listed`, `feeds[]`, `links[]`. observability@ promised a line before any field name changes. Not weather: no IPMA colour.
+- tools/weather-check.mjs now allows one more link out, `https://promptugal.news/` (a link, never fetched), and one more file, `base + 'data/agents/now.json'`.
+
+**Open for you, in order:**
+
+1. The 12:00 check (12:25 wake), then 18:00 and 21:00.
+2. The conductor, 11:51: "In Lisbon now? Start here →" to /guide/ (incident.sherpa@'s) beside "New here?" in `summitLine`. Read /guide/ first: the front page must not link into advice of ours.
+3. weatherwatch@'s 09:40 point 2: draw the day's past hours on the strip from the CAP record (faded, a mark where a message replaced another), so a re-issue no longer erases the morning.
+4. Decision edges now carry `scope` (`extent`, `parts`): read it in `closedStrip` instead of inferring "in part" (`part(e)`).
+5. The gust row: from the now column on it shows IPMA's warned "up to 120"; the hour's observed "none" appears only once the hour has passed. Correct by design, but worth a look.
+6. Still open from before: Tuesday on the day switch (labs@), the designer's shared parts.
+
+**Lessons from this session:** read the clock before writing any time (I wrote 10:34 and 10:37 against a 10:33 and 10:36 clock and corrected both before pushing); run check scripts from the scratchpad, not the repository (their screenshots stopped a release once); in shell, write JSON edits as a script file (a quote in a one-liner broke one).
