@@ -1,0 +1,130 @@
+{
+ "about": "What we may build on today: for each open source in the meteorology lineage, one concrete thing this site could draw from it for Lisbon and Madeira this week, the size of the data, the attribution line to print, and what it needs first. From the licence rows (licences.json) and the probes (sources.json). Proposals, labelled as such: nothing here is built, and no imagery or model field is in git. Any model output shown follows the conductor's conditions (IPMA's warnings first; \"a model's output, read at <publisher>, evidence\"; no average, no pick). Not a warning service.",
+ "by": "incident.meteorology@web-summit.dinis",
+ "updated": "2026-11-11T03:00Z",
+ "label": "hypothesis (our proposals; the licences and sizes beside them are facts read at the source)",
+ "items": [
+  {
+   "id": "build-eumetsat-hour-old",
+   "title": "The storm from space, one hour behind",
+   "node": "obs-meteosat",
+   "licence": "lic-eumetsat-1h",
+   "what_we_could_draw": "One Meteosat picture an hour for the box from Madeira to Lisbon (28 to 44 N, 25 to 5 W): the airmass composite, where a deepening low shows as a dark dry slot curling into the cloud, and the infrared image; a strip of the last 24 hours that a reader can scrub, each frame stamped with its own time and \"one hour old or more\".",
+   "why_it_adds_value": "No Portuguese news site shows the storm itself with its time and its licence. The hour rule turns a restriction into a format: a dated record of what the storm looked like, not a live feed.",
+   "the_data": "EUMETView WMS, layers msg_fes:rgb_airmass and msg_fes:ir108 (also mtg_fd:li_afa, lightning flash area, and eps:m01_ascat_wind, winds over the sea measured by Metop), asked for a box and a time.",
+   "size": "An 800 × 640 JPEG of the box at 01:00 UTC on 11 November was 51,729 bytes (airmass) and 52,047 bytes (infrared), probed at 02:56 UTC and not kept. 24 frames a day is about 1.2 MB: a display vault, never git.",
+   "attribution_line": "\"Contains modified EUMETSAT Meteosat data 2026\" (EUMETSAT's own wording: \"[Contains modified] EUMETSAT [Meteosat/Metop] [data/product] [Year]\")",
+   "what_it_needs": "A person registers in EUMETSAT's user portal and accepts the licence for Meteosat level 1 data an hour old or more (no fee). Dinis lifts design rule 9 for this one source. The images go to a display vault (incident.archivist@). Never an image newer than one hour: that needs a broadcaster's licence. Whether a picture drawn by EUMETView counts as \"what we make\" or as their product is the one point to confirm with EUMETSAT.",
+   "lead": true
+  },
+  {
+   "id": "build-noaa-fields",
+   "title": "The model's own map, cut to our box: gusts and pressure from GFS",
+   "node": "model-gfs",
+   "licence": "lic-noaa",
+   "what_we_could_draw": "A small map of the Atlantic from Madeira to Lisbon with the pressure lines and the gust field of each GFS run, drawn by us from the numbers; and beside it the same hour from the four previous runs, so a reader sees the low move south or weaken from run to run (\"less wind for Lisbon?\" as five small maps).",
+   "why_it_adds_value": "Public domain: the only global model we may redraw, recolour, animate and republish with no condition. Every other site shows a picture of this data; we can show the data and how it changed.",
+   "the_data": "NOMADS grib filter: one variable, one level, one box, one time step per request (surface gust; mean sea level pressure; 10 m wind).",
+   "size": "1,702 bytes for the surface gust of one step over 32 to 40 N, 18 to 8 W (probed 02:29 UTC). Decoded to a grid of 33 × 41 values it is about 8 KB of JSON per step and variable: small enough for git. 4 runs a day.",
+   "attribution_line": "\"NOAA/NCEP GFS, run <HH> UTC <date>, read <time> UTC. Public domain.\" (credit is asked, not required)",
+   "what_it_needs": "A GRIB2 decoder outside the build (a tool that writes the small JSON; the build stays dependency-free). The conductor's conditions for any model output: IPMA's warnings first, \"a model's output, read at NOAA, evidence\", no pick, no average.",
+   "lead": true
+  },
+  {
+   "id": "build-airport-gusts",
+   "title": "Measured gusts at three airports, every half hour",
+   "node": "obs-airport-metar",
+   "licence": "lic-noaa",
+   "what_we_could_draw": "One strip for Lisbon, Madeira and Porto Santo airports: each METAR's wind and gust, with IPMA's warned gust for the same hour above it and the TAF below it.",
+   "why_it_adds_value": "The only open gust measurements for Portugal. Madeira (LPMA) reported 27 kt at 02:00 UTC and is not yet in the data room.",
+   "the_data": "NOAA Aviation Weather Center API: /api/data/metar?ids=LPPT,LPMA,LPPS&format=json and /api/data/taf.",
+   "size": "0.9 KB for two airports (probed 02:29 UTC).",
+   "attribution_line": "\"METAR and TAF issued in Portugal, read at NOAA Aviation Weather Center <time> UTC.\"",
+   "what_it_needs": "Nothing new: the data room already reads LPPT this way (incident.meteorologist@ has LPMA as a suggestion)."
+  },
+  {
+   "id": "build-ecmwf-spread",
+   "title": "How sure is the model: the spread of ECMWF's 51 runs",
+   "node": "model-ecmwf-ens",
+   "licence": "lic-ecmwf-open",
+   "what_we_could_draw": "For the grid cell nearest Lisbon and Funchal: the range of gusts across the 51 ensemble members, hour by hour, as a band; the single high-resolution run as a line inside it.",
+   "why_it_adds_value": "A single number hides the uncertainty that the forecasters are weighing. The band is the honest picture, and it is what IPMA's own charts page (ECMWF only) does not show.",
+   "the_data": "ECMWF open data, stream \"enfo\": the .index beside each file gives the byte range of each member's field, so only the gust fields are fetched.",
+   "size": "One global field is 0.3 to 0.5 MB (probed: 500,611 bytes); 51 members × the steps of one day is of the order of 100 MB to fetch per run, a few KB to keep once cut to two points.",
+   "attribution_line": "\"Copyright © 2026 European Centre for Medium-Range Weather Forecasts (ECMWF). Source: ECMWF open data, CC BY 4.0. Cut to two grid points by us.\"",
+   "what_it_needs": "A GRIB2 decoder outside the build; ECMWF asks for restraint (500 to 2000 simultaneous connections for everyone). The ensemble file layout was not probed in this pass."
+  },
+  {
+   "id": "build-icon-eu",
+   "title": "A second model at 7 km: ICON-EU maximum gusts",
+   "node": "model-icon",
+   "licence": "lic-dwd",
+   "what_we_could_draw": "The same small map as for GFS, from DWD's ICON-EU, which covers mainland Portugal and Madeira at about 7 km: the coast and the Tagus estuary begin to show.",
+   "why_it_adds_value": "A finer grid than any global model, under CC BY 4.0, from a body that publishes every field.",
+   "the_data": "opendata.dwd.de/weather/nwp/icon-eu/grib/<HH>/vmax_10m/: one file per hour of forecast.",
+   "size": "About 1.2 MB per file, bzip2 (probed); cut to our box, a few KB of JSON.",
+   "attribution_line": "\"Source: Deutscher Wetterdienst (ICON-EU, run <HH> UTC <date>), CC BY 4.0. Cut to the box and redrawn by us.\"",
+   "what_it_needs": "A GRIB2 decoder; only the latest runs stay on the server (about a day), so history must be copied as it is published."
+  },
+  {
+   "id": "build-point-models",
+   "title": "Six models for one place, as numbers",
+   "node": "data-open-meteo",
+   "licence": "lic-open-meteo",
+   "what_we_could_draw": "What charles.html already shows as a table, as a strip per model for Lisbon and Funchal: gust, mean wind, rain, pressure, hour by hour.",
+   "why_it_adds_value": "One request, plain JSON, no decoder: the fastest way to put models side by side.",
+   "the_data": "api.open-meteo.com/v1/forecast with models=…; each model's run time at /data/<model>/static/meta.json.",
+   "size": "18 KB for two places × six models × four variables × 48 hours (probed 02:49 UTC).",
+   "attribution_line": "\"Weather data by Open-Meteo.com (CC BY 4.0); models: ECMWF, NOAA, DWD, Météo-France, Met Office.\"",
+   "what_it_needs": "The free API is for non-commercial use, under 10,000 calls a day: a decision for Dinis if the site ever carries advertising."
+  },
+  {
+   "id": "build-metno-point",
+   "title": "A second official opinion for any point",
+   "node": "data-metno-api",
+   "licence": "lic-metno",
+   "what_we_could_draw": "For any place a reader picks (a parish, a bridge): MET Norway's point forecast, which outside the Nordic area is ECMWF's, post-processed.",
+   "why_it_adds_value": "A national service that serves the whole world as open data with a clear licence.",
+   "the_data": "api.met.no/weatherapi/locationforecast/2.0/complete?lat=…&lon=…",
+   "size": "3 KB gzipped per place (probed).",
+   "attribution_line": "\"Data from MET Norway (NLOD 2.0, CC BY 4.0).\"",
+   "what_it_needs": "An identifying User-Agent and caching, as their terms ask. Already in the data room for Lisbon."
+  },
+  {
+   "id": "build-ipma",
+   "title": "IPMA's own data, redrawn",
+   "node": "data-ipma-open",
+   "licence": "lic-ipma-open",
+   "what_we_could_draw": "What the site already draws: warnings by district and hour, stations, the automatic forecast (which IPMA says is statistical processing of ECMWF and AROME).",
+   "why_it_adds_value": "The primary source for Portugal; nobody else shows its changes over time.",
+   "the_data": "api.ipma.pt (mapped by incident.ipma@ under sources/ipma/).",
+   "size": "2 to 93 KB per file (incident.weatherwatch@'s reads).",
+   "attribution_line": "\"Fonte: IPMA\", on every use.",
+   "what_it_needs": "Non-profit use only, and the terms are silent on storing and changing: a person should ask IPMA (a draft for incident.media@'s outreach)."
+  },
+  {
+   "id": "build-waves",
+   "title": "The sea: waves from the regional model",
+   "node": "model-ibi-waves",
+   "licence": "lic-cmems",
+   "what_we_could_draw": "Significant wave height off Lisbon and Madeira beside IPMA's rough-sea warning (\"5 to 7 metres, up to 13 metres maximum\").",
+   "why_it_adds_value": "The sea state closes the port and floods the riverside; no page ties the wave forecast to the warning.",
+   "the_data": "Copernicus Marine, product IBI_ANALYSISFORECAST_WAV_005_005.",
+   "size": "Not probed: needs a free account.",
+   "attribution_line": "\"Generated using E.U. Copernicus Marine Service Information\", with the product's DOI.",
+   "what_it_needs": "A free account (a person registers); the licence document read in full (\"transform\" is unclear until then)."
+  },
+  {
+   "id": "build-ml-models",
+   "title": "What a machine-learned model made of it",
+   "node": "model-ecmwf-aifs",
+   "licence": "lic-ecmwf-open",
+   "what_we_could_draw": "ECMWF's AIFS beside its physics model IFS for the same hours: where the two agree and differ on the track of the low.",
+   "why_it_adds_value": "The open question in forecasting this year, shown on a real storm with real data, both under CC BY 4.0.",
+   "the_data": "ECMWF open data, aifs-single (61 steps in the 12 UTC run of 10 November).",
+   "size": "As for IFS: 0.3 to 0.5 MB per global field.",
+   "attribution_line": "\"Copyright © 2026 ECMWF. Source: ECMWF open data (AIFS and IFS), CC BY 4.0.\"",
+   "what_it_needs": "A GRIB2 decoder. AIFS publishes no gusts in its open output: pressure and mean wind only."
+  }
+ ]
+}

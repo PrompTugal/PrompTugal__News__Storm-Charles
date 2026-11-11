@@ -5,6 +5,7 @@
 // contain for the statement to stand), fetch the source once (curl; raw bytes kept OUTSIDE git under $METEO_CACHE or the OS temp
 // dir), and write back: read_utc, http, sha256 (of the bytes), state ("stated" when every expect phrase is on the page,
 // "not found in this read" otherwise, "not read" when the host did not answer 200) and a short quote around the first phrase.
+// `no_quote`: true keeps no excerpt (pages that carry people's names near the phrase: press, live blogs).
 // For "not stated" edges (`searched`: terms looked for) the state is "not stated" only when none of the terms is on the page.
 // An agent-run tool: it rewrites tracked JSON, so it is NOT a build generator. No model call. Standard library only.
 import fs from 'fs'; import path from 'path'; import os from 'os'; import crypto from 'crypto'; import { execFileSync } from 'child_process'
@@ -43,14 +44,14 @@ function stamp(it) {
     it.state = miss.length ? 'not found in this read' : 'stated'
     if (miss.length) it.found = it.expect.filter(p => !miss.includes(p))
     const i = find(t, it.expect.find(p => find(t, p) >= 0) ?? '\u0000')
-    if (i >= 0) { const a = Math.max(0, t.lastIndexOf(' ', Math.max(0, i - 110))), b = t.indexOf(' ', Math.min(t.length - 1, i + 170)); it.quote = t.slice(a, b < 0 ? t.length : b).trim().slice(0, 300) }
+    if (i >= 0 && !it.no_quote) { const a = Math.max(0, t.lastIndexOf(' ', Math.max(0, i - 110))), b = t.indexOf(' ', Math.min(t.length - 1, i + 170)); it.quote = t.slice(a, b < 0 ? t.length : b).trim().slice(0, 300) }
 }
 const files = [...fs.readdirSync(path.join(M, 'edges')).filter(f => f.endsWith('.json')).map(f => path.join(M, 'edges', f)), path.join(M, 'licences.json'), path.join(M, 'sources.json')].filter(f => fs.existsSync(f))
-let n = 0, bad = []
+let n = 0, bad = [], changed = [], pageChanged = 0
 for (const f of files) {
     const j = JSON.parse(fs.readFileSync(f, 'utf8')), items = j.edges || j.licences || j.sources || []
-    for (const it of items) { if (only && !JSON.stringify([it.id, it.from, it.to, it.source]).includes(only)) continue; stamp(it); n++; if (it.state && it.state !== 'stated' && it.state !== 'not stated') bad.push(`${path.basename(f)} ${it.id || it.from + ' ' + (it.verb || j.verb) + ' ' + it.to}: ${it.state} (${it.http}) ${it.source} found=${JSON.stringify(it.found || [])}`) }
+    for (const it of items) { const was = it.state, wasSha = it.sha256; if (only && !JSON.stringify([it.id, it.from, it.to, it.source]).includes(only)) continue; stamp(it); n++; if (was && was !== it.state) changed.push(`${it.id || it.from + ' ' + (it.verb || j.verb) + ' ' + it.to}: ${was} -> ${it.state} (${it.source})`); else if (wasSha && wasSha !== it.sha256) pageChanged++; if (it.state && it.state !== 'stated' && it.state !== 'not stated') bad.push(`${path.basename(f)} ${it.id || it.from + ' ' + (it.verb || j.verb) + ' ' + it.to}: ${it.state} (${it.http}) ${it.source} found=${JSON.stringify(it.found || [])}`) }
     j.updated = new Date().toISOString().slice(0, 16) + 'Z'
     fs.writeFileSync(f, JSON.stringify(j, null, 1) + '\n')
 }
-console.log(`${n} items stamped; ${bad.length} need a look`); for (const b of bad) console.log('  ' + b)
+console.log(`${n} items stamped; ${bad.length} need a look; ${changed.length} changed state; ${pageChanged} pages changed bytes with the statement still standing`); for (const c of changed) console.log('  CHANGED ' + c); for (const b of bad) console.log('  ' + b)

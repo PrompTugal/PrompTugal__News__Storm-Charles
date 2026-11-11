@@ -1,11 +1,12 @@
 # Where a forecast comes from
 
-> Kept by incident.meteorology@web-summit.dinis, 11 November 2026, 02:58 UTC
+> Kept by incident.meteorology@web-summit.dinis, 11 November 2026, 03:00 UTC
 
 Dinis: "I would like to understand where the data actually comes from: if a website has a visualisation, a forecast, a projection, where does it come from?" This section answers with a graph, down to the instruments: **what measures** the atmosphere, **what computes** a forecast from the measurements, **where the output can be fetched**, **who turns it into a warning**, and **what people look at**. Every line in the drawing above is a statement on the provider's own page, with the time we read it. Where a site does not say where its picture comes from, the line is absent and the site says "not stated": never guessed.
 
 - **[Storm Charles through the chain](charles.md)**: the same storm as each layer saw it, from our data room.
 - **[Licences: what we may manipulate](licences.md)**: for each source, may we read, store, show, transform it, and with what attribution.
+- **[What we may build on today](build-on.md)**: ten concrete things this site could draw from open sources, with the size and the attribution line of each.
 - **[Open sources we could use now](sources.md)**: APIs with no key, what each offers for Lisbon and Madeira this week, with small samples.
 - **As data**: [lineage.json](lineage.json) (the grammar), [graph.json](graph.json) (every node and edge in one file), [licences.json](licences.json), [sources.json](sources.json).
 
@@ -21,7 +22,7 @@ Not a warning service: this section explains and attributes. It makes no forecas
 ## What the reading found so far
 
 - **IPMA's public charts page offers one model: ECMWF.** IPMA's own page says it also runs AROME at 2.5 km over Portugal. Which model stands behind a given warning is not published: a forecaster decides.
-- **Most sites that name a source name the same three**: ECMWF, GFS and ICON. Thirteen of the sites read do not say where their picture comes from at all.
+- **Most sites that name a source name the same three**: ECMWF, GFS and ICON. Of the 106 sites in incident.weatherwatch@'s map, most that we could read do not say where their picture comes from at all (the list is below).
 - **The freest raw material is American**: GFS and everything on NOAA's servers is public domain. European open data (ECMWF, DWD, MET Norway) is CC BY 4.0: transform it, credit it, say what was changed.
 - **IPMA's open data is for non-profit use with the source named**, and its terms say nothing on storing or changing it: "unclear" until IPMA is asked (a person asks).
 - **Satellite pictures have a one-hour rule**: EUMETSAT's Meteosat data an hour old or more may be used for any purpose with attribution (not passing on the original numbers); newer than an hour, not on a public site without a broadcaster's licence.

@@ -1,7 +1,7 @@
 {
  "agent": "incident.meteorology@web-summit.dinis",
- "state": "active: round 3 live (the sea side: wave model, buoys, tides; ensembles; EUMETSAT's three licences; which model is behind which site)",
- "last_wake": "2026-11-11T02:55Z",
+ "state": "active: round 5 (all 106 of incident.weatherwatch@'s sites in the graph; 'What we may build on today'; MeteoAlarm's licence row points at incident.sources@'s statement); a re-read of every edge each three hours",
+ "last_wake": "2026-11-11T03:02Z",
  "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, ~02:20 UTC)",
  "done": [
   "session key made (record sha256:c5d0a303df53cf64, encryption sha256:162a3344a5c28014), public half in data/keys.json",
@@ -13,20 +13,20 @@
   "02:37Z round 1 live as v0.1.293 (94fd6bc)",
   "round 2 (3a7f61a): 144 edges, 125 stated on the page cited (ECMWF's fact sheet for what IFS assimilates; EUMETNET for MeteoAlarm; Météo-France's data portal for ARPEGE and AROME; AEMET for the storm-naming group); Weather Underground says its forecast input includes ECMWF and GFS; GraphCast's weights are CC BY 4.0 (README); each node page opens with its own small graph; charles.html opens with one storm in six layers",
   "round 3: 110 nodes, 152 edges (133 stated on the page cited, 13 not stated, 6 not read); EUMETSAT's licensing guide read in full (Core: CC BY 4.0; Meteosat level 1 an hour old or more: any purpose with attribution, no redistribution of the original numbers; newer than an hour: no public showing); Aurora MIT, FourCastNet BSD-3 (code); IPMA's site terms; ECMWF ensemble, GEFS, the IBI wave model, Instituto Hidrográfico's buoys and tide predictions; index: 'which model is behind which site' and 'what the reading found'",
-  "round 4: the six-model table on charles.html rebuilt to incident.conductor@'s conditions (IPMA's warnings for Lisbon and Madeira first, from warnings.json; six single models, each with its run time as Open-Meteo reported it, labelled 'a model's output, read at Open-Meteo, evidence'; no average, no pick; 'does not forecast'); IPMA's own statement that its automatic forecasts are statistical processing of ECMWF and AROME (api.ipma.pt); Open-Meteo's upstream services from its licence page (pointers from incident.weatherwatch@, each read by us)"
+  "round 4: the six-model table on charles.html rebuilt to incident.conductor@'s conditions (IPMA's warnings for Lisbon and Madeira first, from warnings.json; six single models, each with its run time as Open-Meteo reported it, labelled 'a model's output, read at Open-Meteo, evidence'; no average, no pick; 'does not forecast'); IPMA's own statement that its automatic forecasts are statistical processing of ECMWF and AROME (api.ipma.pt); Open-Meteo's upstream services from its licence page (pointers from incident.weatherwatch@, each read by us)",
+  "round 5: 177 nodes, 226 edges (150 stated on the page cited, 54 not stated, 22 not read); every one of the 106 sites has a node and a page (only what each says itself; press pages keep no excerpt); meteorology/build-on.json and build-on.html: ten proposals with size, attribution line and what each needs, led by EUMETSAT's hour-old imagery (an 800 × 640 picture of the box is about 52 KB, probed and not kept) and NOAA's public-domain GFS fields (1.7 KB per step for the box); the map draws only the sites that say something; tools/meteorology-read.mjs reports what changed state"
  ],
  "next": [
-  "the remaining weather sites from research/weather-sites (39 of 106 are in the graph)",
+  "03:00Z + 3 h: re-read every edge (node tools/meteorology-read.mjs --stale), report only what changed",
   "licences still unclear: Copernicus EMS products and Marine (the licence documents), Météo-France per data set, the Met Office's DataHub, FourCastNet's weights",
-  "not read: meteoblue (its model page moved), Renascença's tracker (403), zoom.earth and tempo.pt (their terms: not requested), AccuWeather and SIC (refused)",
-  "the reader's panel on the map (window.stormPanel) and questions as addresses: 'which sites draw ECMWF', 'what may we transform'",
-  "a scheduled re-read of every edge (the reader takes about two minutes) so a page that changes is noticed"
+  "22 addresses not read (refused, blocked, or not requested because of their terms): listed on the map page",
+  "if Dinis says yes to a build-on item: a GRIB decoder outside the build (GFS box to small JSON); a person registers with EUMETSAT"
  ],
  "asks": [
   "incident.entities@: node ids are stable (obs-, model-, data-, body-, svc-, site-); an entity-shaped file per node is served at meteorology/nodes/<id>.json",
   "incident.archivist@: the addresses the edges cite are in meteorology/graph.json (source, read_utc, sha256): candidates for Wayback captures",
   "incident.weatherwatch@: a lineage page and JSON per site is at meteorology/nodes/site-<your id>.md / .json (39 sites so far); your site pages can link there",
-  "incident.sources@: one licence table: meteorology/licences.json (22 rows; rows lic-ipma-open and lic-meteoalarm point at your and incident.ipma@'s full readings)"
+  "Dinis: two decisions on meteorology/build-on.html: (1) hour-old Meteosat pictures need a person to register with EUMETSAT and accept its licence, and design rule 9 lifted for that source; (2) GFS fields redrawn by us (public domain) need a GRIB decoder run outside the build"
  ],
  "findings": [
   "IPMA's public charts page offers one model in its selector: ECMWF; IPMA's own page says it runs AROME at 2.5 km and derives products from ECMWF's global model",
@@ -39,5 +39,5 @@
   "ECMWF open data: also at 0.1° from 20 October 2026; the portal is limited to 500 to 2000 simultaneous connections"
  ],
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:55Z"
+ "updated": "2026-11-11T03:02Z"
 }
