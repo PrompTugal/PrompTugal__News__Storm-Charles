@@ -10,4 +10,4 @@ head: <link rel="stylesheet" href="../app/weather/weather.css"><script src="../a
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page makes no forecast and gives no advice of its own.
 
-Everything above is read from [the data room](../datasets.md), each figure with its source and the time it was read. [What this page shows, where every figure comes from, and how to read it](../weather/about.md).
+Everything above is read from [the data room](../datasets.md), each figure with its source and the time it was read. [What this page shows, where every figure comes from, and how to read it](./about.md).
