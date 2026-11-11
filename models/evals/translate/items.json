@@ -1,0 +1,302 @@
+{
+ "task": "translate",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T02:21:33Z",
+ "about": "Translate IPMA's Portuguese warning text to English. There is no reference translation: the check is that every figure of the Portuguese text is in the English one, as digits and no others added, and that each unit is still there (km/h, mm, hPa; 'metros' as metre or meter). A fluent translation that writes 'five' for 5, or drops 13, is wrong here.",
+ "fields": [
+  "figures",
+  "units"
+ ],
+ "scoring": "the numbers in the answer are the numbers in the source (each as many times, in any order); every unit present; and the answer is not the Portuguese text again",
+ "items": [
+  {
+   "id": "t01",
+   "input": "Prevê-se igualmente ondas de sudoeste com 5 a 7 metros a sul do Cabo Raso durante a tarde de dia 11 e que poderão atingir os 13 metros de altura máxima, diminuindo para 4 a 5 metros no início da noite.",
+   "gold": {
+    "figures": [
+     "5",
+     "7",
+     "11",
+     "13",
+     "4",
+     "5"
+    ],
+    "units": [
+     "metre"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2\" (one sentence of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml"
+  },
+  {
+   "id": "t02",
+   "input": "Condições favoráveis para ocorrência de fenómenos meteorológicos localizados, como: trovoada; precipitação localmente forte, com acumulação entre 10 a 20 mm em 1 h; rajadas entre 70 e 90 km/h.",
+   "gold": {
+    "figures": [
+     "10",
+     "20",
+     "1",
+     "70",
+     "90"
+    ],
+    "units": [
+     "km/h",
+     "mm"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261108124742.PO-03-420 description_pt: the figures and units of the Portuguese text itself",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal"
+  },
+  {
+   "id": "t03",
+   "input": "Com os dados disponíveis de momento, a maior probabilidade será o centro da depressão passar entre Sines e o Cabo Carvoeiro, com o vento a soprar inicialmente do quadrante sul e rodando para o quadrante norte, sendo que no bordo sul da depressão as rajadas serão da ordem dos 100 a 120 km/h, podendo ser localmente até 140 km/h.",
+   "gold": {
+    "figures": [
+     "100",
+     "120",
+     "140"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2\" (one sentence of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml"
+  },
+  {
+   "id": "t04",
+   "input": "Ondas de sudoeste com 5 a 7 metros e que poderão atingir até 13 metros de altura máxima.",
+   "gold": {
+    "figures": [
+     "5",
+     "7",
+     "13"
+    ],
+    "units": [
+     "metre"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261110120908.PO-07-4525 description_pt: the figures and units of the Portuguese text itself",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal"
+  },
+  {
+   "id": "t05",
+   "input": "A agitação marítima irá igualmente sofrer um agravamento neste período, com ondas de sudoeste com 4 a 5 metros na costa sul da ilha da Madeira.",
+   "gold": {
+    "figures": [
+     "4",
+     "5"
+    ],
+    "units": [
+     "metre"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2\" (one sentence of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml"
+  },
+  {
+   "id": "t06",
+   "input": "A precipitação será por vezes forte na generalidade do território, com acumulados que poderão ser superiores a 100 mm em 24h em alguns locais.",
+   "gold": {
+    "figures": [
+     "100",
+     "24"
+    ],
+    "units": [
+     "mm"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2\" (one sentence of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml"
+  },
+  {
+   "id": "t07",
+   "input": "O vento irá aumentar de intensidade, soprando de sudoeste com rajadas até 100 km/h, podendo ser da ordem de 140 km/h nas terras altas.",
+   "gold": {
+    "figures": [
+     "100",
+     "140"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2\" (one sentence of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml"
+  },
+  {
+   "id": "t08",
+   "input": "Ondas de sudoeste com 4 a 5 metros.",
+   "gold": {
+    "figures": [
+     "4",
+     "5"
+    ],
+    "units": [
+     "metre"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261110071840.PO-07-4518 description_pt: the figures and units of the Portuguese text itself",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal"
+  },
+  {
+   "id": "t09",
+   "input": "Ondas do quadrante oeste com 4 a 5 metros.",
+   "gold": {
+    "figures": [
+     "4",
+     "5"
+    ],
+    "units": [
+     "metre"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261108124742.PO-07-4500 description_pt: the figures and units of the Portuguese text itself",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal"
+  },
+  {
+   "id": "t10",
+   "input": "Prevê-se chuva persistente e por vezes forte, podendo acumular valores superiores a 100 mm em 12 h em alguns locais, em especial nas regiões montanhosas.",
+   "gold": {
+    "figures": [
+     "100",
+     "12"
+    ],
+    "units": [
+     "mm"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2\" (one sentence of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml"
+  },
+  {
+   "id": "t11",
+   "input": "Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos.",
+   "gold": {
+    "figures": [
+     "120",
+     "140"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261110071840.PO-01-1915 description_pt: the figures and units of the Portuguese text itself",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal"
+  },
+  {
+   "id": "t12",
+   "input": "Rajadas até 100 km/h, em esepcial nos extremos leste e oeste.",
+   "gold": {
+    "figures": [
+     "100"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/warnings.json MCN Vento 2026-11-10T21:00:00Z text_pt: the figures and units of the Portuguese text itself",
+   "source": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+  },
+  {
+   "id": "t13",
+   "input": "Rajadas até 100 km/h.",
+   "gold": {
+    "figures": [
+     "100"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/warnings.json MCS Vento 2026-11-10T21:00:00Z text_pt: the figures and units of the Portuguese text itself",
+   "source": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+  },
+  {
+   "id": "t14",
+   "input": "Rajadas até 120 km/h.",
+   "gold": {
+    "figures": [
+     "120"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/warnings.json CBO Vento 2026-11-11T12:00:00Z text_pt: the figures and units of the Portuguese text itself",
+   "source": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+  },
+  {
+   "id": "t15",
+   "input": "Rajadas até 130 km/h.",
+   "gold": {
+    "figures": [
+     "130"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/warnings.json MRM Vento 2026-11-11T06:00:00Z text_pt: the figures and units of the Portuguese text itself",
+   "source": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+  },
+  {
+   "id": "t16",
+   "input": "Rajadas até 140 km/h.",
+   "gold": {
+    "figures": [
+     "140"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/warnings.json MRM Vento 2026-11-11T00:00:00Z text_pt: the figures and units of the Portuguese text itself",
+   "source": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+  },
+  {
+   "id": "t17",
+   "input": "Vento do quadrante sul com rajadas até 75 km/h.",
+   "gold": {
+    "figures": [
+     "75"
+    ],
+    "units": [
+     "km/h"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261108011310.PO-01-1895 description_pt: the figures and units of the Portuguese text itself",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal"
+  },
+  {
+   "id": "t18",
+   "input": "Aguaceiros, por vezes fortes",
+   "gold": {
+    "figures": [],
+    "units": []
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/warnings.json MCN Precipitação 2026-11-11T06:00:00Z text_pt: the figures and units of the Portuguese text itself",
+   "source": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+  },
+  {
+   "id": "t19",
+   "input": "Chuva, por vezes forte e persistente.",
+   "gold": {
+    "figures": [],
+    "units": []
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/warnings.json MCN Precipitação 2026-11-10T21:00:00Z text_pt: the figures and units of the Portuguese text itself",
+   "source": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+  },
+  {
+   "id": "t20",
+   "input": "Períodos de chuva ou aguaceiros, por vezes fortes e acompanhados de trovoada.",
+   "gold": {
+    "figures": [],
+    "units": []
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261105125809.PO-10-6141 description_pt: the figures and units of the Portuguese text itself",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal"
+  }
+ ]
+}

@@ -1,0 +1,301 @@
+{
+ "task": "label",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T02:21:33Z",
+ "about": "Label a row of our timeline as fact, evidence or hypothesis by this site's rules. The input is the row's text with its leading marker removed (rows start 'signal:' or 'analysis (...)': that would give the answer away) and its source labels. The gold is the row's label in signals.json, which tools/timeline.mjs derives from the lead's markers. Rows that quote the press or point at a private person's post are left out.",
+ "fields": [
+  "label"
+ ],
+ "scoring": "exact",
+ "items": [
+  {
+   "id": "s-1110T1753",
+   "input": {
+    "text": "the government recommends suspending Web Summit on Wednesday; the decision rests with the organisers",
+    "sources": [
+     "Jornal de Negócios, live",
+     "via social.watch@PrompTugal.dinis"
+    ]
+   },
+   "gold": {
+    "label": "evidence"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T1753 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T1753"
+  },
+  {
+   "id": "s-1110T1825",
+   "input": {
+    "text": "no organiser statement after the government's recommendation (the live blog's last update read)",
+    "sources": [
+     "Jornal de Negócios, live",
+     "via social.watch@PrompTugal.dinis"
+    ]
+   },
+   "gold": {
+    "label": "evidence"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T1825 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T1825"
+  },
+  {
+   "id": "s-1110T1905b",
+   "input": {
+    "text": "worst window Wed 12:00 to 18:00, peak most likely ~15:00 to 19:00 around the wind's swing to north-west, easing but dangerous to 21:00; red wind was known ~27.5 h ahead; confidence medium on the window, low on the peak",
+    "sources": [
+     "data/weather/analysis.md (from IPMA warnings, communiqué no. 2, LPPT TAF, IPMA model, read 19:01)"
+    ]
+   },
+   "gold": {
+    "label": "hypothesis"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T1905b (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T1905b"
+  },
+  {
+   "id": "s-1110T1941",
+   "input": {
+    "text": "Web Summit closed on Wednesday after talks with the government, ANEPC and PSP; the mayor calls it the most sensible decision",
+    "sources": [
+     "ECO",
+     "via social.watch@PrompTugal.dinis (sweep 2)"
+    ]
+   },
+   "gold": {
+    "label": "evidence"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T1941 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T1941"
+  },
+  {
+   "id": "s-1110T1945",
+   "input": {
+    "text": "organisers cancel all of Wednesday's activities (coastal flooding, wind on outdoor structures, transport), after coordinating with the authorities",
+    "sources": [
+     "Diário de Notícias, live",
+     "via social.watch@PrompTugal.dinis (sweep 2)"
+    ]
+   },
+   "gold": {
+    "label": "evidence"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T1945 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T1945"
+  },
+  {
+   "id": "s-1110T1952",
+   "input": {
+    "text": "Checked by the lead: websummit.com home and news list carry no notice of Day 2 (the notice was already up at /blog/web-summit/ since 19:09, a path we did not check)",
+    "sources": [
+     "websummit.com, read 19:52 by incident.conductor@"
+    ]
+   },
+   "gold": {
+    "label": "fact"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T1952 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T1952"
+  },
+  {
+   "id": "s-1110T2008",
+   "input": {
+    "text": "organisers will contact those affected directly; not said whether Wednesday's programme is cancelled or moved (N6 still open)",
+    "sources": [
+     "Observador",
+     "via social.watch@ (sweep 3)"
+    ]
+   },
+   "gold": {
+    "label": "evidence"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2008 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2008"
+  },
+  {
+   "id": "s-1110T2030",
+   "input": {
+    "text": "the cancellation in the international press (PT and EN); coast and riverside access prohibited Wednesday; nothing on refunds or PITCH",
+    "sources": [
+     "Euronews EN",
+     "PT",
+     "via social.watch@ (sweep 3)"
+    ]
+   },
+   "gold": {
+    "label": "evidence"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2030 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2030"
+  },
+  {
+   "id": "s-1110T2115",
+   "input": {
+    "text": "The incident moves to its own site: https://storm-charles.promptugal.news (this repository); first push to served 23 s (v0.1.2), against 3 to 10 minutes on web-summit.sgit.ai",
+    "sources": [
+     "incident.conductor@, at Dinis's word"
+    ]
+   },
+   "gold": {
+    "label": "fact"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2115 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2115"
+  },
+  {
+   "id": "s-1110T2118",
+   "input": {
+    "text": "IPMA's hourly model changed its values (same 07:55 stamp): Wednesday's strongest mean wind now 23 km/h at 20:00 (was 49 at 18:00); the swing to north 18:00; peak most likely 17:00 to 20:00 (was 15:00 to 19:00); worst window 12:00 to 18:00 and end 21:00 unchanged; IPMA's red warnings unchanged and outrank one model",
+    "sources": [
+     "data/weather/analysis.md section 4 (1b936db20)"
+    ]
+   },
+   "gold": {
+    "label": "hypothesis"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2118 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2118"
+  },
+  {
+   "id": "s-1110T2132",
+   "input": {
+    "text": "Web Summit's blog listing shows the update post modified 20:06; its text unchanged on Day 2 and Day 3 (\"aims to proceed\")",
+    "sources": [
+     "websummit.com, incident.dev@'s 2-min watch (data/watch/websummit.json)"
+    ]
+   },
+   "gold": {
+    "label": "fact"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2132 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2132"
+  },
+  {
+   "id": "s-1110T2153",
+   "input": {
+    "text": "No further statement from Web Summit (social.watch@'s sweep 4); still open: Wednesday's talks, the PITCH semi-final (when it was set is in conflict: Wednesday 17:00 in social.watch@'s summary, unsourced there; Thursday in Tech Times' preview of 9 Nov), side events (Web Summit's own Night Summit still listed for Wednesday 18:00 to 00:00, no notice, 22:05), tickets",
+    "sources": [
+     "social.watch@PrompTugal.dinis, sweep 4 (21:51 to 21:53); incident.researcher@ (22:05)"
+    ]
+   },
+   "gold": {
+    "label": "fact"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2153 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2153"
+  },
+  {
+   "id": "s-1110T2323",
+   "input": {
+    "text": "The first airport TAF covering Thursday (issued 23:00) is weaker than 17:00's: Wed 09:00 to 16:00 at times 30 kt gusting 45 (83 km/h); 30% chance (was 40%) of 58 kt thunderstorm gusts 10:00 to 18:00; west 12 kt from 18:00 to 20:00; Thursday 00:00 to 06:00 west 12 kt, no gusts. IPMA's red warnings unchanged",
+    "sources": [
+     "LPPT TAF (IPMA, via NOAA's Aviation Weather), data/weather/airport.json (incident.meteorologist@, a63ac9696)"
+    ]
+   },
+   "gold": {
+    "label": "fact"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2323 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2323"
+  },
+  {
+   "id": "s-1110T2324",
+   "input": {
+    "text": "the TAF's peak (09:00 to 16:00) and IPMA's model peak (19:00 to 20:00) disagree, so the peak is widened back to 12:00 to 18:00; end 21:00; Thursday morning behind the storm, medium confidence; a weaker airport forecast is not a downgrade of IPMA's warning",
+    "sources": [
+     "data/weather/analysis.md section 5"
+    ]
+   },
+   "gold": {
+    "label": "hypothesis"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2324 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2324"
+  },
+  {
+   "id": "s-1110T2353",
+   "input": {
+    "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00; supersedes s-1110T1742); orange rain now 00:00 to 09:00; red wind unchanged (12:00 to 21:00). IPMA sent the change at 21:23 (its CAP message); its open-data feed showed it only from the 23:51 read",
+    "sources": [
+     "IPMA warnings open data",
+     "read at source by the lead 23:53; MeteoAlarm's CAP feed (data/weather/cap.json, incident.meteorologist@, 169445ff3)"
+    ]
+   },
+   "gold": {
+    "label": "fact"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2353 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2353"
+  },
+  {
+   "id": "s-1110T2354",
+   "input": {
+    "text": "worst window now 09:00 to 18:00, the core 12:00 to 18:00 when both reds overlap; over by 21:00. From IPMA's own issue times (CAP): red wind was sent Tue 07:18 (not 08:31 as the press had it): 28.7 h ahead; red rain 19.5 h; the move to 09:00, 11.6 h",
+    "sources": [
+     "data/weather/analysis.md section 6"
+    ]
+   },
+   "gold": {
+    "label": "hypothesis"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2354 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2354"
+  },
+  {
+   "id": "s-1110T2358",
+   "input": {
+    "text": "the press on Day 2 after Web Summit's 19:09 page: ECO and TEK 19:41 (32 min later), DN 19:49, Lusa via Notícias ao Minuto 20:01, Observador 20:08, Euronews 20:29, Expresso 20:39; Web Summit's Bluesky still silent on Day 2 at 23:51; 87 of 212 press items read carry Lusa's by-line, across 6 outlets. Limits: six outlets refuse automated reads and are absent, not silent",
+    "sources": [
+     "research/media/coverage.json, ranking.md (incident.media@, 96ff00c)"
+    ]
+   },
+   "gold": {
+    "label": "hypothesis"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1110T2358 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T2358"
+  },
+  {
+   "id": "s-1111T0000",
+   "input": {
+    "text": "the official and model data are consistent with the centre passing very close to Lisbon at about 17:00 to 18:00 Wednesday, more likely just south of it (met.no's pressure minimum 986.7 hPa at 17:00 to 18:00 and a 160° wind swing in an hour; the guidance has moved). Against: IPMA's red wind unchanged, its track text already includes Lisbon, no communiqué no. 3, point models move. It does not lower the danger: the worst moves toward the passage, about 16:00 to 19:00, and a lull near the centre is not the end. Wednesday tests it: wind backing east then north and pressure near 987 hPa means it passed south",
+    "sources": [
+     "data/weather/analysis.md section 7 (d6e8aace1)"
+    ]
+   },
+   "gold": {
+    "label": "hypothesis"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1111T0000 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1111T0000"
+  },
+  {
+   "id": "s-1111T0015",
+   "input": {
+    "text": "IPMA's move of Lisbon's red rain to 09:00 (sent 21:23) had not been reported by any article title or live-blog entry we could read by 00:15. Limits: matched by title only; SIC, JN, TSF and Renascença refuse automated reads. Who was first on the other facts: red wind (IPMA 07:18): DN live 08:05; Day 2 off (19:09): ECO and TEK 19:41",
+    "sources": [
+     "research/media/first-on-each-fact.json, ranking.md (f487bfb)"
+    ]
+   },
+   "gold": {
+    "label": "hypothesis"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1111T0015 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1111T0015"
+  },
+  {
+   "id": "s-1111T0146",
+   "input": {
+    "text": "Madeira, observed: 230.5 mm of rain in six hours at IPMA's station Areeiro (the hours 20:00 Tuesday to 01:00 Wednesday; 133.9 mm in the six hours to 22:00); next: Santo da Serra 124.4, Pico do Areeiro 123.9, Pico Alto 116.7 mm in six hours",
+    "sources": [
+     "IPMA station observations",
+     "data/weather/madeira.json (incident.meteorologist@, 8c822f847, read 01:46); prompted by pt.wikipedia's figure, verified at IPMA"
+    ]
+   },
+   "gold": {
+    "label": "fact"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/signals.json item s-1111T0146 (label)",
+   "row": "incidents/2026-11-10-storm-charles/timeline.html#s-1111T0146"
+  }
+ ]
+}

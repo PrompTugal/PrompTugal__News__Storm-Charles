@@ -1,0 +1,294 @@
+{
+ "task": "extract-decision",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T02:21:33Z",
+ "about": "From a short official passage, say who decided and which hours the decision covers. The gold answer is the decision graph's own edge (kept by incident.researcher@): its decider and its effect window, which the graph fills 'only from the source's own words' and leaves null where the source gives no clock hours. So most answers here are null on purpose: the test is also whether a model invents hours.",
+ "fields": [
+  "decider",
+  "effect_from_utc",
+  "effect_to_utc"
+ ],
+ "scoring": "each field exact; an item is right when all three are. The model's one-line 'what' is published and not scored.",
+ "deciders": [
+  {
+   "id": "ipma",
+   "name": "IPMA (Instituto Português do Mar e da Atmosfera)"
+  },
+  {
+   "id": "anepc",
+   "name": "ANEPC (Autoridade Nacional de Emergência e Proteção Civil)"
+  },
+  {
+   "id": "government",
+   "name": "Government of Portugal (Council of Ministers)"
+  },
+  {
+   "id": "mai",
+   "name": "Ministry of Internal Administration (MAI)"
+  },
+  {
+   "id": "pm",
+   "name": "Prime Minister"
+  },
+  {
+   "id": "camara-lisboa",
+   "name": "Câmara Municipal de Lisboa (mayor, municipal civil protection)"
+  },
+  {
+   "id": "schools",
+   "name": "Schools (Ministry of Education)"
+  },
+  {
+   "id": "metro",
+   "name": "Metropolitano de Lisboa"
+  },
+  {
+   "id": "carris",
+   "name": "Carris"
+  },
+  {
+   "id": "cp",
+   "name": "CP (Comboios de Portugal) and Infraestruturas de Portugal"
+  },
+  {
+   "id": "lusoponte",
+   "name": "Lusoponte (25 de Abril and Vasco da Gama bridges)"
+  },
+  {
+   "id": "tunnels",
+   "name": "Lisbon road tunnels (city)"
+  },
+  {
+   "id": "ferries",
+   "name": "Transtejo Soflusa (Tagus ferries)"
+  },
+  {
+   "id": "rede-expressos",
+   "name": "Rede Expressos (intercity coaches)"
+  },
+  {
+   "id": "airport",
+   "name": "Lisbon airport (ANA, Humberto Delgado) and airlines"
+  },
+  {
+   "id": "amn",
+   "name": "Autoridade Marítima Nacional and the Port of Lisbon"
+  },
+  {
+   "id": "venue",
+   "name": "Venue operators: MEO Arena and FIL"
+  },
+  {
+   "id": "websummit",
+   "name": "Web Summit (the organisers)"
+  },
+  {
+   "id": "side-events",
+   "name": "Side events on Wednesday (e.g. Dear Gatekeepers Live, MEO Arena studio; Night Summit)"
+  },
+  {
+   "id": "fertagus",
+   "name": "Fertagus (trains across the 25 de Abril bridge)"
+  },
+  {
+   "id": "carris-metropolitana",
+   "name": "Carris Metropolitana"
+  },
+  {
+   "id": "flixbus",
+   "name": "FlixBus"
+  },
+  {
+   "id": "pitch",
+   "name": "PITCH (Web Summit's startup competition)"
+  },
+  {
+   "id": "night-summit",
+   "name": "Night Summit (Web Summit's own evening events)"
+  },
+  {
+   "id": "madeira-gov",
+   "name": "Governo Regional da Madeira"
+  },
+  {
+   "id": "madeira-prociv",
+   "name": "Serviço Regional de Proteção Civil (Madeira)"
+  },
+  {
+   "id": "madeira-airport",
+   "name": "Madeira airport (ANA) and airlines"
+  },
+  {
+   "id": "apram",
+   "name": "APRAM (Administração dos Portos da Madeira)"
+  },
+  {
+   "id": "aemet",
+   "name": "AEMET (Spain's meteorological agency)"
+  },
+  {
+   "id": "gnr",
+   "name": "GNR (Guarda Nacional Republicana)"
+  },
+  {
+   "id": "mmp",
+   "name": "Museus e Monumentos de Portugal (MMP)"
+  },
+  {
+   "id": "tap",
+   "name": "TAP Air Portugal"
+  },
+  {
+   "id": "csm",
+   "name": "Conselho Superior da Magistratura (courts)"
+  },
+  {
+   "id": "mj",
+   "name": "Ministry of Justice"
+  }
+ ],
+ "items": [
+  {
+   "id": "d01",
+   "published_at": "portugal.gov.pt (the Government's declaration)",
+   "lang": "pt",
+   "input": "Declarar a situação de alerta em todo o território do Continente, entre as 00h00 do dia 11 de novembro de 2026 e as 23h59 do dia 11 de novembro de 2026;",
+   "gold": {
+    "decider": "government",
+    "effect_from_utc": "2026-11-11T00:00Z",
+    "effect_to_utc": "2026-11-11T23:59Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/decisions/graph.json edge gov-alert (by, effect_from_utc, effect_to_utc; label fact)",
+   "source": "https://portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-todo-o-territorio-continental-1",
+   "read_utc": "2026-11-11T02:17:00Z"
+  },
+  {
+   "id": "d02",
+   "published_at": "feeds.meteoalarm.org (IPMA's CAP message)",
+   "lang": "pt",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110071840.PO-01-1915\nsent: 2026-11-10T07:18:40+00:00\nmsgType: Update\nevent: Aviso Vermelho Vento\nseverity: Extreme\nonset: 2026-11-11T12:00:00+00:00\nexpires: 2026-11-11T21:00:00+00:00\nareaDesc: Lisboa\ndescription: Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos.",
+   "gold": {
+    "decider": "ipma",
+    "effect_from_utc": "2026-11-11T12:00Z",
+    "effect_to_utc": "2026-11-11T21:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/decisions/graph.json edge ipma-red-wind (by, effect_from_utc, effect_to_utc; label fact)",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "d03",
+   "published_at": "feeds.meteoalarm.org (IPMA's CAP message)",
+   "lang": "pt",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110212300.PO-10-6290\nsent: 2026-11-10T21:23:00+00:00\nmsgType: Update\nevent: Aviso Vermelho Precipitação\nseverity: Extreme\nonset: 2026-11-11T09:00:00+00:00\nexpires: 2026-11-11T18:00:00+00:00\nareaDesc: Lisboa\ndescription: Precipitação forte e persistente.",
+   "gold": {
+    "decider": "ipma",
+    "effect_from_utc": "2026-11-11T09:00Z",
+    "effect_to_utc": "2026-11-11T18:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/decisions/graph.json edge ipma-red-rain-0900 (by, effect_from_utc, effect_to_utc; label fact)",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "d04",
+   "published_at": "feeds.meteoalarm.org (IPMA's CAP message)",
+   "lang": "pt",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110061454.MD-10-1232\nsent: 2026-11-10T06:14:54+00:00\nmsgType: Update\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-10T21:00:00+00:00\nexpires: 2026-11-11T06:00:00+00:00\nareaDesc: Madeira - Costa Sul",
+   "gold": {
+    "decider": "ipma",
+    "effect_from_utc": "2026-11-10T21:00Z",
+    "effect_to_utc": "2026-11-11T06:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261110061454.MD-10-1232 (onset, expires; the publisher of the warnings is IPMA)",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z",
+   "note": "no edge in the decision graph: the answer is the CAP message's own onset and expires"
+  },
+  {
+   "id": "d05",
+   "published_at": "feeds.meteoalarm.org (IPMA's CAP message)",
+   "lang": "pt",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110205239.MD-10-1237\nsent: 2026-11-10T20:52:39+00:00\nmsgType: Update\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-10T21:00:00+00:00\nexpires: 2026-11-11T06:00:00+00:00\nareaDesc: Madeira - Costa Norte",
+   "gold": {
+    "decider": "ipma",
+    "effect_from_utc": "2026-11-10T21:00Z",
+    "effect_to_utc": "2026-11-11T06:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261110205239.MD-10-1237 (onset, expires; the publisher of the warnings is IPMA)",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z",
+   "note": "no edge in the decision graph: the answer is the CAP message's own onset and expires"
+  },
+  {
+   "id": "d06",
+   "published_at": "ipma.pt (communiqué no. 2, issued 10 November 17:07)",
+   "lang": "pt",
+   "input": "Devido a esta situação foram emitidos avisos meteorológicos de nível VERMELHO e LARANJA, não se excluindo a possibilidade de agravamento em algumas regiões após as próximas atualizações dos modelos numéricos de previsão do tempo, aconselhando-se, por esse motivo, o seu acompanhamento.",
+   "gold": {
+    "decider": "ipma",
+    "effect_from_utc": null,
+    "effect_to_utc": null
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/decisions/graph.json edge ipma-communique-2 (by, effect_from_utc, effect_to_utc; label fact)",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml",
+   "read_utc": "2026-11-10T19:01:07Z"
+  },
+  {
+   "id": "d07",
+   "published_at": "websummit.com (the organisers' page 'Important event update')",
+   "lang": "en",
+   "input": "Web Summit will of course respect the Government's direction, and accordingly, Day 2 (Wednesday, November 11th) will not take place.",
+   "gold": {
+    "decider": "websummit",
+    "effect_from_utc": null,
+    "effect_to_utc": null
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/decisions/graph.json edge websummit-wednesday (by, effect_from_utc, effect_to_utc; label fact)",
+   "source": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+   "read_utc": "2026-11-10T20:59:00Z"
+  },
+  {
+   "id": "d08",
+   "published_at": "websummit.com (the organisers' page 'Important event update')",
+   "lang": "en",
+   "input": "Web Summit aims to proceed with Day 3 (Thursday, November 12) as planned, following the passing of Storm Charles.",
+   "gold": {
+    "decider": "websummit",
+    "effect_from_utc": null,
+    "effect_to_utc": null
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/decisions/graph.json edge websummit-thursday (by, effect_from_utc, effect_to_utc; label fact)",
+   "source": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+   "read_utc": "2026-11-10T20:59:00Z"
+  },
+  {
+   "id": "d09",
+   "published_at": "aemet.es (the warnings page)",
+   "lang": "es",
+   "input": "Aviso especial. Lluvias fuertes y persistentes, rachas muy fuertes y temporal marítimo",
+   "gold": {
+    "decider": "aemet",
+    "effect_from_utc": null,
+    "effect_to_utc": null
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/decisions/graph.json edge aemet-special (by, effect_from_utc, effect_to_utc; label fact)",
+   "source": "https://www.aemet.es/es/eltiempo/prediccion/avisos",
+   "read_utc": "2026-11-11T01:50:00Z"
+  },
+  {
+   "id": "d10",
+   "published_at": "metrolisboa.pt (the operator's notice on its contingency plan for homeless people)",
+   "lang": "pt",
+   "input": "durante as noites de 10 para 11 e de 11 para 12 de novembro",
+   "gold": {
+    "decider": "metro",
+    "effect_from_utc": null,
+    "effect_to_utc": null
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/decisions/graph.json edge metro-shelter (by, effect_from_utc, effect_to_utc; label fact)",
+   "source": "https://www.metrolisboa.pt/",
+   "read_utc": "2026-11-10T23:33:00Z"
+  }
+ ]
+}

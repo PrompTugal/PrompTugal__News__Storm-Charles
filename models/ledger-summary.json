@@ -1,0 +1,170 @@
+{
+ "about": "The model ledger's daily totals: every model call the incident team made through tools/llm.mjs, counted. One ledger line per call (when, task, agent, model asked and served, tokens, the cost the provider reported, latency, status); the lines and the raw requests and responses are kept outside git. No prompt or answer text here. The models named are the third-party models that were called.",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T02:34:40Z",
+ "currency": "USD",
+ "source": "tools/llm.mjs --summary (the ledger at ~/.incident-ledger/<day>.jsonl in this agent's session)",
+ "note": "A ledger lives in the session that made the calls: this file counts the calls made through this agent's wrapper. Other agents call through it by asking this agent (agents/models/ask.md).",
+ "days": [
+  {
+   "day": "2026-11-11",
+   "calls": 897,
+   "cost_usd": 0.71587,
+   "cap_usd": 5,
+   "tokens_in": 269864,
+   "tokens_out": 433248,
+   "by_model": {
+    "google/gemma-3-4b-it": {
+     "calls": 76,
+     "cost_usd": 0.001091,
+     "tokens_in": 23050,
+     "tokens_out": 4057
+    },
+    "openai/gpt-6-luna": {
+     "calls": 75,
+     "cost_usd": 0.005455,
+     "tokens_in": 20592,
+     "tokens_out": 6901
+    },
+    "qwen/qwen3.5-9b": {
+     "calls": 75,
+     "cost_usd": 0.026518,
+     "tokens_in": 22552,
+     "tokens_out": 150775
+    },
+    "google/gemma-4-31b-it": {
+     "calls": 67,
+     "cost_usd": 0.003216,
+     "tokens_in": 20572,
+     "tokens_out": 2914
+    },
+    "mistralai/ministral-8b-2512": {
+     "calls": 67,
+     "cost_usd": 0.002666,
+     "tokens_in": 19487,
+     "tokens_out": 3744
+    },
+    "openai/gpt-oss-20b": {
+     "calls": 67,
+     "cost_usd": 0.0045,
+     "tokens_in": 21817,
+     "tokens_out": 18620
+    },
+    "meta-llama/llama-4-maverick": {
+     "calls": 67,
+     "cost_usd": 0.006872,
+     "tokens_in": 18330,
+     "tokens_out": 2222
+    },
+    "deepseek/deepseek-v4.1-flash": {
+     "calls": 67,
+     "cost_usd": 0.026074,
+     "tokens_in": 20143,
+     "tokens_out": 33987
+    },
+    "google/gemini-3.5-flash-lite": {
+     "calls": 67,
+     "cost_usd": 0.01229,
+     "tokens_in": 19348,
+     "tokens_out": 2644
+    },
+    "mistralai/mistral-large-4-0": {
+     "calls": 67,
+     "cost_usd": 0.201556,
+     "tokens_in": 18709,
+     "tokens_out": 86561
+    },
+    "anthropic/claude-haiku-5.5": {
+     "calls": 67,
+     "cost_usd": 0.006526,
+     "tokens_in": 27356,
+     "tokens_out": 7713
+    },
+    "qwen/qwen3.5-397b-a17b": {
+     "calls": 67,
+     "cost_usd": 0.370543,
+     "tokens_in": 19831,
+     "tokens_out": 107880
+    },
+    "openai/gpt-6.1-terra": {
+     "calls": 67,
+     "cost_usd": 0.043544,
+     "tokens_in": 18054,
+     "tokens_out": 5186
+    },
+    "perplexity/sonar": {
+     "calls": 1,
+     "cost_usd": 0.005019,
+     "tokens_in": 23,
+     "tokens_out": 44
+    }
+   },
+   "by_agent": {
+    "incident.models@web-summit.dinis": {
+     "calls": 897,
+     "cost_usd": 0.71587,
+     "tokens_in": 269864,
+     "tokens_out": 433248
+    }
+   },
+   "by_task": {
+    "WS-214/models/smoke": {
+     "calls": 1,
+     "cost_usd": 0.000001,
+     "tokens_in": 16,
+     "tokens_out": 3
+    },
+    "WS-214/eval/extract-warning": {
+     "calls": 227,
+     "cost_usd": 0.137984,
+     "tokens_in": 63504,
+     "tokens_out": 82228
+    },
+    "WS-214/eval/extract-decision": {
+     "calls": 136,
+     "cost_usd": 0.125979,
+     "tokens_in": 100777,
+     "tokens_out": 74335
+    },
+    "WS-214/eval/label": {
+     "calls": 266,
+     "cost_usd": 0.209784,
+     "tokens_in": 79426,
+     "tokens_out": 139390
+    },
+    "WS-214/eval/translate": {
+     "calls": 266,
+     "cost_usd": 0.237103,
+     "tokens_in": 26118,
+     "tokens_out": 137248
+    },
+    "WS-214/models/ask-smoke": {
+     "calls": 1,
+     "cost_usd": 0.005019,
+     "tokens_in": 23,
+     "tokens_out": 44
+    }
+   },
+   "by_status": {
+    "ok": {
+     "calls": 897,
+     "cost_usd": 0.71587,
+     "tokens_in": 269864,
+     "tokens_out": 433248
+    }
+   },
+   "by_hour": {
+    "02:00": {
+     "calls": 897,
+     "cost_usd": 0.71587
+    }
+   }
+  }
+ ],
+ "total": {
+  "calls": 897,
+  "cost_usd": 0.71587,
+  "tokens_in": 269864,
+  "tokens_out": 433248
+ }
+}

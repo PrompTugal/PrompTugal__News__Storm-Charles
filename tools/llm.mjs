@@ -36,6 +36,7 @@ const day = (d = new Date()) => d.toISOString().slice(0, 10)
 const ledgerFile = (d = day()) => path.join(LEDGER_DIR, `${d}.jsonl`)
 export function readLedger(d = day()) { try { return fs.readFileSync(ledgerFile(d), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)) } catch { return [] } }
 export const spentToday = () => readLedger().reduce((s, l) => s + (l.cost_usd || 0), 0)
+export const spentBy = agent => readLedger().filter(l => l.agent === agent).reduce((s, l) => s + (l.cost_usd || 0), 0)
 
 function inRepo(p) { const r = path.relative(REPO, path.resolve(p)); return !r.startsWith('..') && !path.isAbsolute(r) }
 if (inRepo(LEDGER_DIR)) throw new Error(`llm.mjs: INCIDENT_LEDGER_DIR (${LEDGER_DIR}) is inside the repository; the ledger goes to the curated vault, not git`)
@@ -50,7 +51,8 @@ function writeRaw(rec) {
 function appendLedger(line) { fs.mkdirSync(LEDGER_DIR, { recursive: true }); fs.appendFileSync(ledgerFile(line.at.slice(0, 10)), JSON.stringify(line) + '\n') }
 
 // the one call. Returns { text, line } (line: the ledger line written); never throws for a provider error: it is recorded and returned
-export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_tokens = 2000, provider = 'openrouter', mock = false, extra = {} }) {
+// budget_usd (optional): this agent's own share of the day; the call is refused (and the refusal recorded) once the agent's lines reach it
+export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_tokens = 2000, provider = 'openrouter', mock = false, extra = {}, budget_usd = null }) {
     if (!task || !agent || !Array.isArray(messages)) throw new Error('call({ task, agent, messages }) needs all three')
     if (!model) throw new Error('call(): name the model (model:, --model or LLM_MODEL)')
     const at = new Date().toISOString(), id = `${at.replace(/[-:.]/g, '').slice(0, 15)}-${crypto.randomBytes(4).toString('hex')}`
@@ -59,7 +61,11 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
     const spent = spentToday()
     if (!mock && spent >= CAP) {
         const line = { ...base, status: 'refused_cap', spent_today_usd: +spent.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }
-        appendLedger(line); return { text: null, line }
+        appendLedger(line); return { text: null, line, response: null }
+    }
+    if (!mock && budget_usd != null) {
+        const mine = spentBy(agent)
+        if (mine >= budget_usd) { const line = { ...base, status: 'refused_budget', budget_usd, spent_by_agent_usd: +mine.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }; appendLedger(line); return { text: null, line, response: null } }
     }
     const t0 = Date.now(); let status = 'ok', response = null, error = null, text = null
     try {
@@ -79,12 +85,12 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
     const raw = writeRaw({ ...base, request, response, error, latency_ms: ms })
     const line = { ...base, model_served: response && response.model || null, status, tokens_in: u.prompt_tokens ?? 0, tokens_out: u.completion_tokens ?? 0, cost_usd: typeof u.cost === 'number' ? u.cost : 0, latency_ms: ms, ...raw, ...(error ? { error: String(error).slice(0, 200) } : {}) }
     appendLedger(line)
-    return { text, line }
+    return { text, line, response }   // response: the provider's whole answer (an answer engine's citations are in it); it is also in the raw store
 }
 
 export function summary(d = day()) {
     const L = readLedger(d), by = k => L.reduce((m, l) => { const v = l[k] || '?'; m[v] = m[v] || { calls: 0, cost_usd: 0, tokens_in: 0, tokens_out: 0 }; m[v].calls++; m[v].cost_usd += l.cost_usd || 0; m[v].tokens_in += l.tokens_in || 0; m[v].tokens_out += l.tokens_out || 0; return m }, {})
-    return { day: d, calls: L.length, cost_usd: +L.reduce((s, l) => s + (l.cost_usd || 0), 0).toFixed(6), cap_usd: CAP, by_model: by('model'), by_agent: by('agent'), by_status: by('status') }
+    return { day: d, calls: L.length, cost_usd: +L.reduce((s, l) => s + (l.cost_usd || 0), 0).toFixed(6), cap_usd: CAP, tokens_in: L.reduce((s, l) => s + (l.tokens_in || 0), 0), tokens_out: L.reduce((s, l) => s + (l.tokens_out || 0), 0), by_model: by('model'), by_agent: by('agent'), by_task: by('task'), by_status: by('status'), by_hour: L.reduce((m, l) => { const h = l.at.slice(11, 13) + ':00'; m[h] = m[h] || { calls: 0, cost_usd: 0 }; m[h].calls++; m[h].cost_usd += l.cost_usd || 0; return m }, {}) }
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

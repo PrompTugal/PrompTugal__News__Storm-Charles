@@ -1,0 +1,255 @@
+{
+ "task": "extract-warning",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T02:21:33Z",
+ "about": "Extract a warning from one of IPMA's CAP messages (Common Alerting Protocol, read through MeteoAlarm's public feed). The input is the message's fields as the meteorologist keeps them in cap.json (Portuguese event and description, times with offsets); the gold answer is the same record, normalised: type and level in English, times in UTC with Z. 'sent' is in the input and is not the start.",
+ "fields": [
+  "type",
+  "level",
+  "area",
+  "start_utc",
+  "end_utc"
+ ],
+ "scoring": "each field exact; an item is right when all five are",
+ "publisher_of_the_warnings": "IPMA (Instituto Português do Mar e da Atmosfera), via MeteoAlarm",
+ "items": [
+  {
+   "id": "w01",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110212300.PO-10-6288\nsent: 2026-11-10T21:23:00+00:00\nmsgType: Update\nevent: Aviso Laranja Precipitação\nseverity: Severe\nonset: 2026-11-11T00:00:00+00:00\nexpires: 2026-11-11T09:00:00+00:00\nareaDesc: Lisboa\ndescription: Precipitação por vezes forte e persistente.",
+   "gold": {
+    "type": "rain",
+    "level": "orange",
+    "area": "Lisboa",
+    "start_utc": "2026-11-11T00:00:00Z",
+    "end_utc": "2026-11-11T09:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json lisbon_messages identifier 2.49.0.0.620.0.PT.261110212300.PO-10-6288",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "w02",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110212300.PO-10-6290\nsent: 2026-11-10T21:23:00+00:00\nmsgType: Update\nevent: Aviso Vermelho Precipitação\nseverity: Extreme\nonset: 2026-11-11T09:00:00+00:00\nexpires: 2026-11-11T18:00:00+00:00\nareaDesc: Lisboa\ndescription: Precipitação forte e persistente.",
+   "gold": {
+    "type": "rain",
+    "level": "red",
+    "area": "Lisboa",
+    "start_utc": "2026-11-11T09:00:00Z",
+    "end_utc": "2026-11-11T18:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json lisbon_messages identifier 2.49.0.0.620.0.PT.261110212300.PO-10-6290",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "w03",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110212300.PO-10-6297\nsent: 2026-11-10T21:23:00+00:00\nmsgType: Alert\nevent: Aviso Amarelo Precipitação\nseverity: Moderate\nonset: 2026-11-10T21:24:00+00:00\nexpires: 2026-11-11T00:00:00+00:00\nareaDesc: Lisboa\ndescription: Precipitação por vezes forte e persistente.",
+   "gold": {
+    "type": "rain",
+    "level": "yellow",
+    "area": "Lisboa",
+    "start_utc": "2026-11-10T21:24:00Z",
+    "end_utc": "2026-11-11T00:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json lisbon_messages identifier 2.49.0.0.620.0.PT.261110212300.PO-10-6297",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "w04",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110120908.PO-07-4525\nsent: 2026-11-10T12:09:08+00:00\nmsgType: Update\nevent: Aviso Laranja Agitação Marítima\nseverity: Severe\nonset: 2026-11-11T12:00:00+00:00\nexpires: 2026-11-11T21:00:00+00:00\nareaDesc: Lisboa\ndescription: Ondas de sudoeste com 5 a 7 metros e que poderão atingir até 13 metros de altura máxima.",
+   "gold": {
+    "type": "coastal_event",
+    "level": "orange",
+    "area": "Lisboa",
+    "start_utc": "2026-11-11T12:00:00Z",
+    "end_utc": "2026-11-11T21:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json lisbon_messages identifier 2.49.0.0.620.0.PT.261110120908.PO-07-4525",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "w05",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110071840.PO-01-1915\nsent: 2026-11-10T07:18:40+00:00\nmsgType: Update\nevent: Aviso Vermelho Vento\nseverity: Extreme\nonset: 2026-11-11T12:00:00+00:00\nexpires: 2026-11-11T21:00:00+00:00\nareaDesc: Lisboa\ndescription: Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos.",
+   "gold": {
+    "type": "wind",
+    "level": "red",
+    "area": "Lisboa",
+    "start_utc": "2026-11-11T12:00:00Z",
+    "end_utc": "2026-11-11T21:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json lisbon_messages identifier 2.49.0.0.620.0.PT.261110071840.PO-01-1915",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "w06",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110071840.PO-07-4518\nsent: 2026-11-10T07:18:40+00:00\nmsgType: Update\nevent: Aviso Amarelo Agitação Marítima\nseverity: Moderate\nonset: 2026-11-11T21:00:00+00:00\nexpires: 2026-11-12T03:00:00+00:00\nareaDesc: Lisboa\ndescription: Ondas de sudoeste com 4 a 5 metros.",
+   "gold": {
+    "type": "coastal_event",
+    "level": "yellow",
+    "area": "Lisboa",
+    "start_utc": "2026-11-11T21:00:00Z",
+    "end_utc": "2026-11-12T03:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json lisbon_messages identifier 2.49.0.0.620.0.PT.261110071840.PO-07-4518",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "w07",
+   "input": "identifier: 2.49.0.0.620.0.PT.261108190331.PO-03-448\nsent: 2026-11-08T19:03:31+00:00\nmsgType: Update\nevent: Aviso Amarelo Trovoada\nseverity: Moderate\nonset: 2026-11-09T21:00:00+00:00\nexpires: 2026-11-10T15:00:00+00:00\nareaDesc: Lisboa\ndescription: Condições favoráveis para ocorrência de fenómenos meteorológicos localizados, como: trovoada; precipitação localmente forte, com acumulação entre 10 a 20 mm em 1 h; rajadas entre 70 e 90 km/h.",
+   "gold": {
+    "type": "thunderstorm",
+    "level": "yellow",
+    "area": "Lisboa",
+    "start_utc": "2026-11-09T21:00:00Z",
+    "end_utc": "2026-11-10T15:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json lisbon_messages identifier 2.49.0.0.620.0.PT.261108190331.PO-03-448",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "w08",
+   "input": "identifier: 2.49.0.0.620.0.PT.261108011310.PO-01-1895\nsent: 2026-11-08T01:13:10+00:00\nmsgType: Update\nevent: Aviso Amarelo Vento\nseverity: Moderate\nonset: 2026-11-08T18:00:00+00:00\nexpires: 2026-11-09T06:00:00+00:00\nareaDesc: Lisboa\ndescription: Vento do quadrante sul com rajadas até 75 km/h.",
+   "gold": {
+    "type": "wind",
+    "level": "yellow",
+    "area": "Lisboa",
+    "start_utc": "2026-11-08T18:00:00Z",
+    "end_utc": "2026-11-09T06:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json lisbon_messages identifier 2.49.0.0.620.0.PT.261108011310.PO-01-1895",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-10T23:51:47Z"
+  },
+  {
+   "id": "w09",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110212300.PO-10-6291\nsent: 2026-11-10T21:23:00+00:00\nmsgType: Update\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-11T09:00:00+00:00\nexpires: 2026-11-11T18:00:00+00:00\nareaDesc: Setúbal",
+   "gold": {
+    "type": "rain",
+    "level": "red",
+    "area": "Setúbal",
+    "start_utc": "2026-11-11T09:00:00Z",
+    "end_utc": "2026-11-11T18:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110212300.PO-10-6291",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  },
+  {
+   "id": "w10",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110212300.PO-10-6294\nsent: 2026-11-10T21:23:00+00:00\nmsgType: Alert\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-11T09:00:00+00:00\nexpires: 2026-11-11T18:00:00+00:00\nareaDesc: Beja",
+   "gold": {
+    "type": "rain",
+    "level": "red",
+    "area": "Beja",
+    "start_utc": "2026-11-11T09:00:00Z",
+    "end_utc": "2026-11-11T18:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110212300.PO-10-6294",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  },
+  {
+   "id": "w11",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110212300.PO-10-6295\nsent: 2026-11-10T21:23:00+00:00\nmsgType: Alert\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-11T09:00:00+00:00\nexpires: 2026-11-11T18:00:00+00:00\nareaDesc: Faro",
+   "gold": {
+    "type": "rain",
+    "level": "red",
+    "area": "Faro",
+    "start_utc": "2026-11-11T09:00:00Z",
+    "end_utc": "2026-11-11T18:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110212300.PO-10-6295",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  },
+  {
+   "id": "w12",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110205239.MD-10-1236\nsent: 2026-11-10T20:52:39+00:00\nmsgType: Update\nevent: Aviso Laranja Precipitação\nonset: 2026-11-10T21:00:00+00:00\nexpires: 2026-11-11T09:00:00+00:00\nareaDesc: Madeira - Porto Santo",
+   "gold": {
+    "type": "rain",
+    "level": "orange",
+    "area": "Madeira - Porto Santo",
+    "start_utc": "2026-11-10T21:00:00Z",
+    "end_utc": "2026-11-11T09:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110205239.MD-10-1236",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  },
+  {
+   "id": "w13",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110205239.MD-10-1237\nsent: 2026-11-10T20:52:39+00:00\nmsgType: Update\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-10T21:00:00+00:00\nexpires: 2026-11-11T06:00:00+00:00\nareaDesc: Madeira - Costa Norte",
+   "gold": {
+    "type": "rain",
+    "level": "red",
+    "area": "Madeira - Costa Norte",
+    "start_utc": "2026-11-10T21:00:00Z",
+    "end_utc": "2026-11-11T06:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110205239.MD-10-1237",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  },
+  {
+   "id": "w14",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110205239.MD-10-1238\nsent: 2026-11-10T20:52:39+00:00\nmsgType: Alert\nevent: Aviso Laranja Precipitação\nonset: 2026-11-11T06:00:00+00:00\nexpires: 2026-11-11T09:00:00+00:00\nareaDesc: Madeira - Costa Norte",
+   "gold": {
+    "type": "rain",
+    "level": "orange",
+    "area": "Madeira - Costa Norte",
+    "start_utc": "2026-11-11T06:00:00Z",
+    "end_utc": "2026-11-11T09:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110205239.MD-10-1238",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  },
+  {
+   "id": "w15",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110163001.PO-10-6271\nsent: 2026-11-10T16:30:01+00:00\nmsgType: Alert\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-11T12:00:00+00:00\nexpires: 2026-11-11T18:00:00+00:00\nareaDesc: Castelo Branco",
+   "gold": {
+    "type": "rain",
+    "level": "red",
+    "area": "Castelo Branco",
+    "start_utc": "2026-11-11T12:00:00Z",
+    "end_utc": "2026-11-11T18:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110163001.PO-10-6271",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  },
+  {
+   "id": "w16",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110163001.PO-10-6272\nsent: 2026-11-10T16:30:01+00:00\nmsgType: Alert\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-11T12:00:00+00:00\nexpires: 2026-11-11T18:00:00+00:00\nareaDesc: Leiria",
+   "gold": {
+    "type": "rain",
+    "level": "red",
+    "area": "Leiria",
+    "start_utc": "2026-11-11T12:00:00Z",
+    "end_utc": "2026-11-11T18:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110163001.PO-10-6272",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  },
+  {
+   "id": "w17",
+   "input": "identifier: 2.49.0.0.620.0.PT.261110163001.PO-10-6275\nsent: 2026-11-10T16:30:01+00:00\nmsgType: Alert\nevent: Aviso Vermelho Precipitação\nonset: 2026-11-11T12:00:00+00:00\nexpires: 2026-11-11T18:00:00+00:00\nareaDesc: Santarém",
+   "gold": {
+    "type": "rain",
+    "level": "red",
+    "area": "Santarém",
+    "start_utc": "2026-11-11T12:00:00Z",
+    "end_utc": "2026-11-11T18:00:00Z"
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json other_messages identifier 2.49.0.0.620.0.PT.261110163001.PO-10-6275",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:46:44Z"
+  }
+ ]
+}

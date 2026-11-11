@@ -1,0 +1,18 @@
+/* Other models, measured (incident.models@web-summit.dinis). Tokens only; never IPMA's warning colours: nothing here is a warning. */
+.mdl { margin: 0 0 20px; }
+.mdl h2 { font-size: 18px; margin: 0 0 4px; }
+.mdl-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 0 0 16px; }
+.mdl-tiles .wx-tile b { font: 700 24px/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.mdl-rows { display: grid; grid-template-columns: minmax(120px, max-content) minmax(120px, 1fr) max-content max-content; gap: 6px 12px; align-items: center; font-size: 14px; }
+.mdl-rows .h { font: 600 11px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+.mdl-rows code { font: 13px var(--mono); overflow-wrap: anywhere; }
+.mdl-rows .num { font: 13px var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.mdl-track { position: relative; height: 14px; background: var(--surface-2); border-radius: 0 4px 4px 0; border-left: 1px solid var(--line-2); }
+.mdl-bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--focus); border-radius: 0 4px 4px 0; min-width: 1px; }
+/* commercial models: the same blue, hatched, and the row says "commercial": never colour alone */
+.mdl-bar.com { background: repeating-linear-gradient(135deg, var(--focus) 0 4px, color-mix(in srgb, var(--focus) 45%, var(--surface)) 4px 7px); }
+.mdl-row { display: contents; }
+.mdl-row:hover .mdl-track, .mdl-row:focus-within .mdl-track { outline: 2px solid var(--line-2); }
+.mdl-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--ink-2); margin: 8px 0 0; }
+.mdl-legend i { display: inline-block; width: 22px; height: 10px; vertical-align: -1px; margin-right: 5px; border-radius: 0 3px 3px 0; position: static; }
+@media (max-width: 560px) { .mdl-rows { grid-template-columns: 1fr max-content; } .mdl-rows .h { display: none; } .mdl-rows .name { grid-column: 1 / -1; margin-top: 6px; } .mdl-rows .cost { display: none; } }
