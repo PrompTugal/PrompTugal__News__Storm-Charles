@@ -1,0 +1,512 @@
+{
+  "about": "A story as a small graph: claims, each with its label, who said it, when, and the rows and data fields that support it. The page is generated from this file by tools/stories-build.mjs; nothing here is new reporting. See stories/grammar.md. Every \"nothing announced\" here is a tripwire: its support expects the board card to be open or the decision edge to be not_announced, so the check fails, and the sentence is retold, when an answer arrives.",
+  "id": "what-nobody-has-said-yet",
+  "title": "What nobody has said yet",
+  "standfirst": "Day 2 is off and the storm has its warnings. What has no answer on Wednesday morning: whether Day 3 runs, what becomes of the lost day's talks, the PITCH semi-final, the side events and the tickets, and where the government's advice is written down. Each line here is an absence, with when and where it was last looked for.",
+  "state": "developing",
+  "incident": "2026-11-10-storm-charles",
+  "by": "incident.stories@web-summit.dinis",
+  "written_utc": "2026-11-11T08:01Z",
+  "updated": "2026-11-11T08:01Z",
+  "based_on_read_utc": "2026-11-11T07:38:35Z",
+  "warnings_in_force": {
+    "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
+    "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+    "list": "lisbon",
+    "levels": [
+      "red"
+    ]
+  },
+  "sections": [
+    {
+      "id": "said",
+      "title": "What was said",
+      "claims": [
+        "n1",
+        "n2"
+      ]
+    },
+    {
+      "id": "summit",
+      "title": "Five questions for the organisers",
+      "claims": [
+        "n3",
+        "n4",
+        "n5",
+        "n6",
+        "n7",
+        "n8",
+        "n9",
+        "n10"
+      ]
+    },
+    {
+      "id": "government",
+      "title": "One for the government",
+      "claims": [
+        "n11"
+      ]
+    },
+    {
+      "id": "city",
+      "title": "The city and its transport on Thursday",
+      "claims": [
+        "n12",
+        "n14"
+      ]
+    },
+    {
+      "id": "distance",
+      "title": "How we would know",
+      "claims": [
+        "n13",
+        "n15"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "n1",
+      "text": "At 19:09 on Tuesday Web Summit said Day 2 \"will not take place\", and gave one sentence on everything that follows from it: \"Web Summit will communicate directly with those impacted.\"",
+      "label": "fact",
+      "said_by": "Web Summit, \"Important event update\"",
+      "at_utc": "2026-11-10T19:09Z",
+      "read_utc": "2026-11-10T20:58Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1909"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=websummit-wednesday].decision",
+          "contains": [
+            "Day 2 (Wednesday, November 11th) will not take place"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=websummit-n6].note",
+          "contains": [
+            "Web Summit will communicate directly with those impacted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "text": "On Thursday the same page gives an aim and a promise of more: \"Web Summit aims to proceed with Day 3 (Thursday, November 12) as planned\", with \"further updates as soon as confirmed information becomes available\".",
+      "label": "fact",
+      "said_by": "Web Summit, \"Important event update\"",
+      "at_utc": "2026-11-10T19:09Z",
+      "read_utc": "2026-11-11T04:33Z",
+      "supports": [
+        {
+          "kind": "edge",
+          "id": "websummit-thursday"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=websummit-thursday].decision",
+          "contains": [
+            "aims to proceed with Day 3",
+            "further updates as soon as confirmed information becomes available"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/incident.json",
+          "field": "thursday",
+          "contains": [
+            "an aim, not yet a promise"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "text": "Does Day 3 go ahead? No confirmation had followed the aim when Web Summit's own pages were last read, at 04:33 on Wednesday, and none had reached the press or the organisers' public account by 07:33. The question is open on the board.",
+      "label": "fact",
+      "said_by": "incident.researcher@web-summit.dinis, the decision graph (an absence, as read)",
+      "at_utc": "2026-11-11T07:33Z",
+      "read_utc": "2026-11-11T07:35Z",
+      "supports": [
+        {
+          "kind": "edge",
+          "id": "websummit-thursday"
+        },
+        {
+          "kind": "data",
+          "file": "board/items/q-thursday-confirmed.json",
+          "field": "state",
+          "expect": "open"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=websummit-thursday].note",
+          "contains": [
+            "07:33Z: Bluesky (last post 17:36Z) and the press: nothing new"
+          ]
+        }
+      ],
+      "qualified_by": [
+        "n13"
+      ]
+    },
+    {
+      "id": "n4",
+      "text": "What happens to Wednesday's talks and speakers? Whether they are cancelled, moved to Thursday or put online has not been published anywhere this site can read.",
+      "label": "fact",
+      "said_by": "incident.researcher@web-summit.dinis, the decision graph (an absence, as read)",
+      "at_utc": "2026-11-11T07:33Z",
+      "read_utc": "2026-11-11T07:35Z",
+      "supports": [
+        {
+          "kind": "edge",
+          "id": "websummit-n6"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=websummit-n6].status",
+          "expect": "not_announced"
+        },
+        {
+          "kind": "data",
+          "file": "board/items/q-wednesday-talks.json",
+          "field": "state",
+          "expect": "open"
+        }
+      ],
+      "qualified_by": [
+        "n13"
+      ]
+    },
+    {
+      "id": "n5",
+      "text": "One sign from outside the organisers: at 21:41 on Tuesday a speaker said in public that Day 2 was cancelled and that his talks and press conference stayed on Thursday. A speaker's account is evidence; it settles nothing for anyone else.",
+      "label": "evidence",
+      "said_by": "a speaker, in public (as the timeline has it)",
+      "at_utc": "2026-11-10T21:41Z",
+      "read_utc": "2026-11-10T21:41Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T2141"
+        }
+      ]
+    },
+    {
+      "id": "n6",
+      "text": "Where and when does the PITCH semi-final run? Its session page still read \"November 11, 2026 • 5.00PM - 6.00PM Centre Stage\" when read at 02:55 on Wednesday, with no word of the storm: a slot on a day that will not take place. No new day, time or place has been announced.",
+      "label": "fact",
+      "said_by": "Web Summit's schedule pages, as read; incident.researcher@web-summit.dinis, the decision graph (an absence, as read)",
+      "at_utc": "2026-11-11T02:55Z",
+      "read_utc": "2026-11-11T07:35Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0255"
+        },
+        {
+          "kind": "edge",
+          "id": "pitch-semifinal"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=pitch-semifinal].status",
+          "expect": "not_announced"
+        },
+        {
+          "kind": "data",
+          "file": "board/items/q-pitch-semifinal.json",
+          "field": "state",
+          "expect": "open"
+        }
+      ],
+      "qualified_by": [
+        "n13"
+      ]
+    },
+    {
+      "id": "n7",
+      "text": "What happens to Wednesday's side events? Web Summit's own Night Summit was still listed for Wednesday evening, with no notice, when its page was last read at 01:36; one side event's own page showed no notice either.",
+      "label": "fact",
+      "said_by": "incident.researcher@web-summit.dinis, the decision graph (an absence, as read)",
+      "at_utc": "2026-11-11T01:36Z",
+      "read_utc": "2026-11-11T07:35Z",
+      "supports": [
+        {
+          "kind": "edge",
+          "id": "night-summit-wednesday"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=night-summit-wednesday].status",
+          "expect": "not_announced"
+        },
+        {
+          "kind": "edge",
+          "id": "side-events-wednesday"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=side-events-wednesday].status",
+          "expect": "not_announced"
+        },
+        {
+          "kind": "data",
+          "file": "board/items/q-side-events.json",
+          "field": "state",
+          "expect": "open"
+        }
+      ],
+      "qualified_by": [
+        "n13"
+      ]
+    },
+    {
+      "id": "n8",
+      "text": "The government's order for Wednesday suspends outdoor events and does not mention Web Summit or its side events: Despacho n.º 13773-A/2026, in force from 00:00 to 23:59 on 11 November.",
+      "label": "fact",
+      "said_by": "the Government of Portugal, Diário da República (Despacho n.º 13773-A/2026)",
+      "read_utc": "2026-11-11T02:28Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0228"
+        }
+      ]
+    },
+    {
+      "id": "n9",
+      "text": "What do ticket holders get for the lost day? No Web Summit page said anything about tickets, refunds or compensation when last read.",
+      "label": "fact",
+      "said_by": "incident.researcher@web-summit.dinis, the decision graph (an absence, as read)",
+      "at_utc": "2026-11-11T04:33Z",
+      "read_utc": "2026-11-11T07:35Z",
+      "supports": [
+        {
+          "kind": "edge",
+          "id": "websummit-n6"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=websummit-n6].status",
+          "expect": "not_announced"
+        },
+        {
+          "kind": "data",
+          "file": "board/items/q-tickets-refunds.json",
+          "field": "state",
+          "expect": "open"
+        }
+      ],
+      "qualified_by": [
+        "n13"
+      ]
+    },
+    {
+      "id": "n10",
+      "text": "The press had no more: the international reports of the cancellation on Tuesday evening carried nothing on refunds or on PITCH.",
+      "label": "evidence",
+      "said_by": "the international press, as the timeline has it",
+      "at_utc": "2026-11-10T20:30Z",
+      "read_utc": "2026-11-10T20:30Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T2030"
+        }
+      ]
+    },
+    {
+      "id": "n11",
+      "text": "Where is the government's advice, as a text? The organisers wrote that the government had \"formally advised\" against Day 2. The recommendation itself is known only as a press live blog reported it at 17:53, and the order read at source does not carry it: \"formally advised\" has no legal text and stays the organisers' own wording.",
+      "label": "fact",
+      "said_by": "incident.researcher@web-summit.dinis, reading the Diário da República; the recommendation is evidence (Jornal de Negócios' live blog)",
+      "at_utc": "2026-11-11T02:28Z",
+      "read_utc": "2026-11-11T02:28Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0228"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1753"
+        },
+        {
+          "kind": "data",
+          "file": "board/items/q-government-advice-text.json",
+          "field": "state",
+          "expect": "open"
+        }
+      ]
+    },
+    {
+      "id": "n12",
+      "text": "Thursday's transport: no notice for Thursday from the Metro, Carris, CP, the ferries or the bridges was found when the operators' sites were read late on Tuesday and again at 00:33 on Wednesday.",
+      "label": "fact",
+      "said_by": "incident.researcher@web-summit.dinis, the decision graph (an absence, as read)",
+      "at_utc": "2026-11-11T00:33Z",
+      "read_utc": "2026-11-11T00:33Z",
+      "supports": [
+        {
+          "kind": "edge",
+          "id": "transport-thursday"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=transport-thursday].status",
+          "expect": "not_announced"
+        }
+      ]
+    },
+    {
+      "id": "n14",
+      "text": "The city's own measures: a page titled \"Situação de Alerta: medidas excecionais em Lisboa\" was seen in a search, but the city's site refuses automated reads, so what it says is not in the data room. A person must read it.",
+      "label": "evidence",
+      "said_by": "incident.researcher@web-summit.dinis, the decision graph (a page seen by its title, not read)",
+      "at_utc": "2026-11-10T18:59Z",
+      "read_utc": "2026-11-10T18:59Z",
+      "supports": [
+        {
+          "kind": "edge",
+          "id": "camara-plan"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=camara-plan].status",
+          "expect": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "n13",
+      "text": "These absences are read from further away than they were. Since 05:25 on Wednesday no agent of this site reads websummit.com: its terms forbid automated access, and the hold stands until Dinis Cruz decides. Our last read of it was 04:33. An answer now reaches us through a person, the press or the organisers' public accounts, and still counts as answered only from the organisers' own channel.",
+      "label": "fact",
+      "said_by": "incident.conductor@web-summit.dinis (the hold); incident.sources@web-summit.dinis (the terms, as read)",
+      "at_utc": "2026-11-11T05:25Z",
+      "read_utc": "2026-11-11T07:35Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "websummit_hold.since",
+          "expect": "2026-11-11T05:25Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "websummit_hold.note",
+          "contains": [
+            "Our last read of websummit.com was 04:33Z"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "board/items/a-websummit-terms.json",
+          "field": "state",
+          "expect": "open"
+        },
+        {
+          "kind": "data",
+          "file": "board/items/q-thursday-confirmed.json",
+          "field": "history[at=2026-11-11T05:27:55Z].change",
+          "contains": [
+            "it still counts as answered only from the organisers' own channel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n15",
+      "text": "The last answer was missed for more than an hour while every page we watched was being read: the decision on Day 2 went up at 19:09 in the organisers' blog, outside the list we watched, and was seen at 20:58..",
+      "label": "fact",
+      "said_by": "incident.researcher@web-summit.dinis, the decision graph's lessons",
+      "at_utc": "2026-11-10T20:58Z",
+      "read_utc": "2026-11-11T07:35Z",
+      "qualified_by": [
+        "n13"
+      ],
+      "supports": [
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "lessons",
+          "contains": [
+            "we watched the sitemap, home and /news/ and saw it only at 20:58"
+          ]
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1909"
+        }
+      ]
+    }
+  ],
+  "not_known": [
+    {
+      "text": "What would close the question of Day 3: a Web Summit page after the storm that confirms Thursday, or changes it.",
+      "watch": "board/items/q-thursday-confirmed.json"
+    },
+    {
+      "text": "What would close the question of the talks: a Web Summit page, or its official account, saying what happens to Day 2's programme. A press report or one speaker's post moves nothing.",
+      "watch": "board/items/q-wednesday-talks.json"
+    },
+    {
+      "text": "What would close PITCH: a Web Summit page giving the semi-final's day, time and place after the closure.",
+      "watch": "board/items/q-pitch-semifinal.json"
+    },
+    {
+      "text": "What would close the side events: for Night Summit, a Web Summit page saying it is off, moved or on; for any other, its own organiser's page.",
+      "watch": "board/items/q-side-events.json"
+    },
+    {
+      "text": "What would close tickets: a Web Summit page, or its terms as the organiser points to them, stating what ticket holders get for Day 2.",
+      "watch": "board/items/q-tickets-refunds.json"
+    },
+    {
+      "text": "What would close the advice: the text on a government channel, or the government saying on the record that it was given by word only.",
+      "watch": "board/items/q-government-advice-text.json"
+    },
+    {
+      "text": "Whether any of this has been said directly to those affected (by email or in the event's app): the organisers said they would \"communicate directly\", and nothing sent directly is in the data room.",
+      "watch": "incidents/2026-11-10-storm-charles/data/decisions/graph.json"
+    }
+  ],
+  "record": [
+    {
+      "at_utc": "2026-11-11T08:01Z",
+      "what": "First telling: fifteen sentences on what had no answer at the 07:35 state of the decision graph and the board.",
+      "claims_added": [
+        "n1",
+        "n2",
+        "n3",
+        "n4",
+        "n5",
+        "n6",
+        "n7",
+        "n8",
+        "n9",
+        "n10",
+        "n11",
+        "n12",
+        "n14",
+        "n13",
+        "n15"
+      ]
+    }
+  ]
+}

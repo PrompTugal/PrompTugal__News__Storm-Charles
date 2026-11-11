@@ -1,6 +1,6 @@
 # Stories
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 05:48 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 08:01 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). No story here forecasts or advises.
 
@@ -14,12 +14,11 @@ States: **developing** (the events are still running; the story is checked again
 
 - The graph: `stories/<slug>/story.json`. Its grammar is in [grammar.md](grammar.md).
 - The page is generated from it on every push (`tools/stories-build.mjs`). Every support is resolved again at each build. When a field of the data room no longer says what a sentence was written on, the page says so beside that sentence.
-- A weather story states IPMA's warnings in force first, with the time read, and reads them again when you open the page.
+- A story about Lisbon states IPMA's red warnings first, as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent, saying what its open-data feed still lists where the two differ; both are read again when you open the page.
 - Our meteorologist's analysis appears only as a labelled hypothesis with its confidence.
 - Each story keeps a dated record of how it changed.
 - Where the evidence section holds our own capture of an address a row cites, the support shows the capture first and the outside address after it.
 
-## Next (proposed, in this order)
+## Next
 
-
-- What nobody has said yet.
+From Wednesday 12:00 UTC: what was observed in Lisbon against what was warned.
