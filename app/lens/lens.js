@@ -35,7 +35,7 @@
         lens.innerHTML = '<p class="lens-count">On this page: ' + ents.length + ' linked name' + (ents.length === 1 ? '' : 's') + ' (' + Object.keys(ids).length + ' things), ' + outs + ' links that leave this site. With this panel open, a click on a linked name opens it under "This item". <a href="' + base() + 'entities/index.html">Every entity</a> · <a href="' + base() + 'entities/ontology.html">the grammar</a></p>'
     }
     function start() {
-        count()
+        count();
         [].forEach.call(document.querySelectorAll('#incident, [data-link-entities]'), live)
         document.addEventListener('click', function (ev) {
             if (ev.defaultPrevented || ev.button || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return
