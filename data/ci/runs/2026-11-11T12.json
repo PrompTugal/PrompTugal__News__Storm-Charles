@@ -1,10 +1,10 @@
 {
  "about": "Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub's Actions API gave them. version: v<series>.<run number>, CI's own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit's time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. push_to_served_s: the run's own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T12:14:32Z",
+ "updated": "2026-11-11T12:18:47Z",
  "source": "https://api.github.com/repos/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs",
  "period": "2026-11-11T12",
- "count": 38,
+ "count": 50,
  "runs": [
   {
    "run": 1016,
@@ -1587,10 +1587,11 @@
    "pushed": "2026-11-11T12:13:59Z",
    "queued": "2026-11-11T12:14:11Z",
    "started": "2026-11-11T12:14:16Z",
-   "ended": null,
-   "result": "in progress",
+   "ended": "2026-11-11T12:14:47Z",
+   "result": "success",
    "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018577898",
    "queue_s": 5,
+   "run_s": 31,
    "steps": [
     {
      "step": "set up",
@@ -1634,7 +1635,8 @@
     }
    ],
    "p": 2,
-   "tag": null
+   "push_to_served_s": 44,
+   "tag": "v0.1.1052"
   },
   {
    "run": 1053,
@@ -1649,9 +1651,685 @@
    "pushed": "2026-11-11T12:14:11Z",
    "queued": "2026-11-11T12:14:21Z",
    "started": null,
+   "ended": "2026-11-11T12:14:45Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018601272",
+   "tag": null
+  },
+  {
+   "run": 1054,
+   "id": 43018656037,
+   "attempt": 1,
+   "version": "v0.1.1054",
+   "sha": "5b1a594a6d07505fa4efac9221166c13a571b8ee",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.labs@web-summit.dinis",
+   "what": "the 12:00 look: lead-times reads a lowered warning at its new level, stations opens on each station's own scale, known-w",
+   "pushed": "2026-11-11T12:14:31Z",
+   "queued": "2026-11-11T12:14:43Z",
+   "started": "2026-11-11T12:14:51Z",
+   "ended": "2026-11-11T12:15:14Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018656037",
+   "queue_s": 8,
+   "run_s": 23,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 42,
+   "tag": "v0.1.1054"
+  },
+  {
+   "run": 1055,
+   "id": 43018683333,
+   "attempt": 1,
+   "version": "v0.1.1055",
+   "sha": "72419d4e00a224f37d76d55e4d79d654d5cec7fa",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.sherpa@web-summit.dinis",
+   "what": "guide v5: synthetic@'s run 3, designer@'s folding notes, Metro de Lisboa not read",
+   "pushed": "2026-11-11T12:14:45Z",
+   "queued": "2026-11-11T12:14:55Z",
+   "started": "2026-11-11T12:15:19Z",
+   "ended": "2026-11-11T12:15:43Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018683333",
+   "queue_s": 24,
+   "run_s": 24,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 56,
+   "tag": "v0.1.1055"
+  },
+  {
+   "run": 1056,
+   "id": 43018797047,
+   "attempt": 1,
+   "version": "v0.1.1056",
+   "sha": "695994b4c4c688cdc051067f20244dc354225768",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.designer@web-summit.dinis",
+   "what": "the title lift also takes a \"Kept by\" line above the h1 (/studio/ 1,780 -> 201 px on a phone; 513 pages)",
+   "pushed": "2026-11-11T12:15:30Z",
+   "queued": "2026-11-11T12:15:39Z",
+   "started": "2026-11-11T12:15:47Z",
+   "ended": "2026-11-11T12:16:11Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018797047",
+   "queue_s": 8,
+   "run_s": 24,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 5,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 38,
+   "tag": "v0.1.1056"
+  },
+  {
+   "run": 1057,
+   "id": 43018812495,
+   "attempt": 1,
+   "version": "v0.1.1057",
+   "sha": "d327cde0e4a3ecf49f03a5d3fd044373e08623a2",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.synthetic@web-summit.dinis",
+   "what": "/guide/ run 4 on sherpa@'s v4; Metro today found in 18 s, row texts cut to 1-3 letters",
+   "pushed": "2026-11-11T12:15:42Z",
+   "queued": "2026-11-11T12:15:46Z",
+   "started": null,
+   "ended": "2026-11-11T12:15:52Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018812495",
+   "tag": null
+  },
+  {
+   "run": 1058,
+   "id": 43018822606,
+   "attempt": 1,
+   "version": "v0.1.1058",
+   "sha": "cd1e0372b2715eeb21ef9de5bdedb2aeb23d81b5",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.ci@web-summit.dinis",
+   "what": "ci/patches/brief-pdf.patch for the conductor (the brief's PDFs rendered in CI from a cache keyed on the page's inputs, s",
+   "pushed": "2026-11-11T12:15:47Z",
+   "queued": "2026-11-11T12:15:50Z",
+   "started": "2026-11-11T12:16:16Z",
+   "ended": "2026-11-11T12:16:37Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018822606",
+   "queue_s": 26,
+   "run_s": 21,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 48,
+   "tag": "v0.1.1058"
+  },
+  {
+   "run": 1059,
+   "id": 43018998121,
+   "attempt": 1,
+   "version": "v0.1.1059",
+   "sha": "0035a159b4d9b3ae991fe15e95efd9fa5c50674c",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.designer@web-summit.dinis",
+   "what": "round 59, the guide's four pages and the desk measured",
+   "pushed": "2026-11-11T12:16:55Z",
+   "queued": "2026-11-11T12:17:04Z",
+   "started": "2026-11-11T12:17:09Z",
+   "ended": "2026-11-11T12:17:32Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018998121",
+   "queue_s": 5,
+   "run_s": 23,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 34,
+   "tag": "v0.1.1059"
+  },
+  {
+   "run": 1060,
+   "id": 43019032087,
+   "attempt": 1,
+   "version": "v0.1.1060",
+   "sha": "e6df193e79ecd10ee5873da213b602859d832ec5",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.ci@web-summit.dinis",
+   "what": "brief-pdf.patch revised at the conductor's ask: the cache key is the brief's own files only (brief/** and its two tools)",
+   "pushed": "2026-11-11T12:17:09Z",
+   "queued": "2026-11-11T12:17:18Z",
+   "started": "2026-11-11T12:17:37Z",
+   "ended": "2026-11-11T12:17:58Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43019032087",
+   "queue_s": 19,
+   "run_s": 21,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 47,
+   "tag": "v0.1.1060"
+  },
+  {
+   "run": 1061,
+   "id": 43019130643,
+   "attempt": 1,
+   "version": "v0.1.1061",
+   "sha": "1a5f32d75b5c31c886108b8ad476de2894794a97",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.conductor@web-summit.dinis",
+   "what": "apply incident.ci@'s brief-pdf patch (PDFs rendered in CI, keyed on brief/ only, continue-on-error)",
+   "pushed": "2026-11-11T12:17:52Z",
+   "queued": "2026-11-11T12:18:01Z",
+   "started": "2026-11-11T12:18:06Z",
+   "ended": "2026-11-11T12:18:44Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43019130643",
+   "queue_s": 5,
+   "run_s": 38,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "Run actions/cache@v4",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "Brief PDFs, rendered (only when the brief changed)",
+     "s": 12,
+     "result": "success"
+    },
+    {
+     "step": "Brief PDFs, beside the page",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 48,
+   "tag": "v0.1.1061"
+  },
+  {
+   "run": 1062,
+   "id": 43019143718,
+   "attempt": 1,
+   "version": "v0.1.1062",
+   "sha": "516583a34fa26065f75e9987da4857bbfbfffa50",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.sherpa@web-summit.dinis",
+   "what": "guide v6: synthetic@'s run 4: IPMA's changes lead \"Changed today\", a label key, \"↑\" goes up",
+   "pushed": "2026-11-11T12:18:03Z",
+   "queued": "2026-11-11T12:18:07Z",
+   "started": null,
+   "ended": "2026-11-11T12:18:13Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43019143718",
+   "tag": null
+  },
+  {
+   "run": 1063,
+   "id": 43019156487,
+   "attempt": 1,
+   "version": "v0.1.1063",
+   "sha": "4720775fdd7008f4ada1af52dac4d228eab614ee",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.journalist@web-summit.dinis",
+   "what": "tokens measured",
+   "pushed": "2026-11-11T12:18:09Z",
+   "queued": "2026-11-11T12:18:12Z",
+   "started": null,
+   "ended": "2026-11-11T12:18:30Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43019156487",
+   "tag": null
+  },
+  {
+   "run": 1064,
+   "id": 43019195610,
+   "attempt": 1,
+   "version": "v0.1.1064",
+   "sha": "57114498148afe0555a6e28b0a4ea0430aaf8bde",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.transport@web-summit.dinis",
+   "what": "STCP buses running now (Porto, CC0) and Fertagus's own timed log on /transport/trains; round 12:17",
+   "pushed": "2026-11-11T12:18:19Z",
+   "queued": "2026-11-11T12:18:29Z",
+   "started": "2026-11-11T12:18:49Z",
+   "ended": null,
+   "result": "in progress",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43019195610",
+   "queue_s": 20,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "Run actions/cache@v4",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "Brief PDFs, beside the page",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "tag": null
+  },
+  {
+   "run": 1065,
+   "id": 43019241461,
+   "attempt": 1,
+   "version": "v0.1.1065",
+   "sha": "f01147e30195a76ca553e843536c6f3d6418fd57",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.transport@web-summit.dinis",
+   "what": "tokens measured",
+   "pushed": "2026-11-11T12:18:38Z",
+   "queued": "2026-11-11T12:18:47Z",
+   "started": "2026-11-11T12:19:19Z",
    "ended": null,
    "result": "queued",
-   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43018601272",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/43019241461",
+   "queue_s": 32,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": null,
+     "result": "in_progress"
+    },
+    {
+     "step": "version",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "gate",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "Run actions/cache@v4",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "Brief PDFs, rendered (only when the brief changed)",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "Brief PDFs, beside the page",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "upload",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "deploy",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "wait",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "deploy (2nd try)",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "tag",
+     "s": null,
+     "result": "pending"
+    },
+    {
+     "step": "measure",
+     "s": null,
+     "result": "pending"
+    }
+   ],
+   "p": 2,
    "tag": null
   }
  ]
