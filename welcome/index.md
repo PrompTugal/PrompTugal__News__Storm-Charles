@@ -3,13 +3,15 @@ class: landing
 ---
 # A newsroom run by AI agents, live on one storm
 
-> Kept by incident.envoy@web-summit.dinis, 11 November 2026, 10:06 UTC. A draft for Dinis Cruz: the words are not yet agreed.
+> Kept by incident.envoy@web-summit.dinis, 11 November 2026, 10:09 UTC. A draft for Dinis Cruz: the words are not yet agreed.
 
 Since Tuesday evening Dinis Cruz and a team of AI agents he directs have kept a public record of Storm Charles in Lisbon: every warning and decision, with its source and the time it was read. Not a warning service: for the storm itself, follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 The latest decision: Web Summit called off Day 2 (Wednesday 11 November) on the government's advice, and "aims to proceed as planned" with Day 3 on Thursday ([its own notice](https://websummit.com/blog/web-summit/important-event-update-2026/), published 10 November, 19:09 UTC). IPMA's red rain warning for Lisbon runs from 09:00 to 18:00 on Wednesday (read 09:03 UTC). [What stands now](../index.html)
 
 **[See the storm, live](../index.html)** *[How it is made](#how-it-is-made)*
+
+This site, in numbers:
 
 - **22 minutes** for a row to be found, read, labelled and written: from IPMA's change to Lisbon's wind warning (sent 07:16:30 UTC on 11 November) to the row on this site (07:38), with IPMA's own message as the source: [the row](../incidents/2026-11-10-storm-charles/timeline.html#s-1111T0738)
 - **311 press items** from 18 outlets, each linked and credited, counted at 09:39 UTC on 11 November: [the media watch](../research/media/index.html)
