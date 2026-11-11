@@ -1,32 +1,57 @@
 {
-  "agent": "incident.conductor@web-summit.dinis",
-  "state": "active: leads the incident and the site; 12 agents",
-  "last_wake": "2026-11-11T01:02:26Z",
-  "done": [
-    "first jobs routed to meteorologist, researcher, dev",
-    "ROADMAP.md from Dinis's direction (27d5ca7ae)",
-    "19:05 wake: timeline (19:01 no organiser decision; the meteorologist's labelled analysis), decisions, dev J2b/J4 and researcher J4 routed",
-    "19:52 to 20:00: the decision recorded (F8, F9), comms B, plan B for Thursday (proposed), lead times (analysis), service-piece material for Vicky's desk",
-    "20:03 wake: no new signals since sweep 2; jobs re-routed to Thursday and the open items",
-    "20:58 to 21:05: the primary source (Web Summit's page, 19:09) recorded; lead times recomputed; sweep 3 in the timeline; the lesson in README",
-    "00:00 to 01:00: IPMA's red rain moved to 09:00 (read at source); the IPMA meteorologist's spoken line on the track (quotes read at source); the alert's announcement time corrected to ~09:17; the Studio and incident.studio@ started (two animations live); the path policy check wired; CI no longer cancels a running deploy"
-  ],
-  "next": [
-    "signals: a field for the source's own time and one for our read time on every row (the studio's finding)",
-    "versions.json carried forward by the build (what was really served)",
-    "now.json from the librarian's draft"
-  ],
-  "asks": [
-    "Dinis: an SG/Send access token as an environment secret (never in chat): the feedback lane, your vaults and the page-view vaults need it",
-    "Dinis: identity's three decisions (SECURITY.html): 1. a new key on this site behind a passkey (recommended) or your pki.sgit.ai key; 2. a signed feedback message is your word for pages and content only, anything hard to undo is confirmed in session (recommended); 3. where the token lives, and may replies sit in this public repo as ciphertext sealed to your key until the bridge vault exists",
-    "Dinis: attach PrompTugal/PrompTugal__News__Storm-Charles (push) to the sessions of incident.meteorologist@, incident.researcher@ and incident.dev@ (their add_repo was refused); until then the conductor syncs their data",
-    "Dinis: outreach is drafts only (a person sends, no contact details in git): say if you want that changed",
-    "Dinis: the one-line CI fix on web-summit.sgit.ai (drop filter: blob:none; ~70 s a push) waits for your yes",
-    "Dinis: protect the branches on GitHub (main: only you merge; dev: no force-push): both are unprotected today (GitHub's API, read 23:58 UTC), so 'never push to main' is a rule only",
-    "Dinis: the 11 behaviour policies (agents/<role>/policy.md, index library/abp.md) are drafts until you agree them",
-    "Dinis: outreach: which drafts to send and when; are GitHub issues open and who triages; may our reader name the site in its User-Agent",
-    "Dinis: IPMA: is this site non-profit in IPMA's sense; a person to ask IPMA about the radar image and its logo; a person to register at EUMETSAT"
-  ],
-  "updated": "2026-11-11T01:03:00Z",
-  "by": "incident.conductor@web-summit.dinis"
+ "agent": "incident.conductor@web-summit.dinis",
+ "state": "leading; one session since 18:56 on 10 November (the longest and most expensive on the team: about 530,000 tokens of context a call); a hand-over file exists (library/pack/conductor-handover.md); whether a fresh conductor session takes over is Dinis's decision",
+ "last_wake": "2026-11-11T01:02:26Z",
+ "done": [
+  "first jobs routed to meteorologist, researcher, dev",
+  "ROADMAP.md from Dinis's direction (27d5ca7ae)",
+  "19:05 wake: timeline (19:01 no organiser decision; the meteorologist's labelled analysis), decisions, dev J2b/J4 and researcher J4 routed",
+  "19:52 to 20:00: the decision recorded (F8, F9), comms B, plan B for Thursday (proposed), lead times (analysis), service-piece material for Vicky's desk",
+  "20:03 wake: no new signals since sweep 2; jobs re-routed to Thursday and the open items",
+  "20:58 to 21:05: the primary source (Web Summit's page, 19:09) recorded; lead times recomputed; sweep 3 in the timeline; the lesson in README",
+  "00:00 to 01:00: IPMA's red rain moved to 09:00 (read at source); the IPMA meteorologist's spoken line on the track (quotes read at source); the alert's announcement time corrected to ~09:17; the Studio and incident.studio@ started (two animations live); the path policy check wired; CI no longer cancels a running deploy"
+ ],
+ "next": [
+  "signals: a field for the source's own time and one for our read time on every row (the studio's finding)",
+  "versions.json carried forward by the build (what was really served)",
+  "now.json from the librarian's draft"
+ ],
+ "asks": [
+  "Dinis: everything on board/for-dinis (the provider's credit first)",
+  "Dinis: disable the routines that still fire into handed-over sessions (designer trig_014AghNrMFBgZeARpdpaTXJH, graph trig_01Y4QWWm2DCrepNkHnfssRzE, weatherwatch trig_0165wYG8HQcC8XchLeVNJgq3, studio trig_0159QbXjCnkP4XEpJjQXJnBA): this session's permission check refused one such change",
+  "Dinis: whether a fresh conductor session takes over from library/pack/conductor-handover.md"
+ ],
+ "updated": "2026-11-11T04:15:00Z",
+ "by": "incident.conductor@web-summit.dinis",
+ "session": {
+  "id": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+  "started_at": "2026-11-10T18:56Z",
+  "started_by": "conductor@web-summit.dinis",
+  "started_by_session": "session_018yvwtMPVc6R9iMzkBcVpE2",
+  "on_whose_word": "Dinis Cruz",
+  "source": "BRIEF.md"
+ },
+ "wake": {
+  "routine": "incident.conductor@web-summit.dinis hourly",
+  "trigger": "trig_012AZvBa48JifCFBnhyToRUS",
+  "minute": 2,
+  "steps": [
+   "pull both repositories (this one and SGit-AI__Website__Web-Summit)",
+   "tools/sync-from-websummit.sh (the meteorologist, researcher and dev write there)",
+   "read social.watch's signals file in a shallow public clone of PrompTugal__News__Website",
+   "new timeline rows from what agents verified at source (a new row of a minute goes below the existing ones); node tools/timeline.mjs",
+   "headline only from a primary source; tell conductor@web-summit.dinis at once if Web Summit announces a decision",
+   "route asks; render the round article and the journal edition as PDFs for Dinis (admin/tools/render-pdf.cjs)",
+   "release; one line to Dinis"
+  ]
+ },
+ "in_flight": [
+  "hand-overs of long sessions to fresh ones started from the pack (nine done by 04:09; media, entities, meteorology next; weather after its 09:25 check)",
+  "scheduled checks of the front page at 05:25 and 09:25 UTC (into incident.weather@'s session)",
+  "the CAP poll restarted hourly by the meteorologist",
+  "model work paused since 02:54: the provider's account has no credit"
+ ],
+ "vault_keys_held": [
+  "x75qcmux (IPMA's data vault), stored outside git"
+ ]
 }
