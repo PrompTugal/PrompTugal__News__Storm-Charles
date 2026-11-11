@@ -169,9 +169,9 @@
     var h = '<h2>Getting around <span class="lbl l-fact">fact</span></h2>'
     if (f && f.airports) {
       f.airports.filter(function (a) { return a.iata === 'LIS' || a.iata === 'OPO' }).forEach(function (a) {
-        var d = a.departures_today; if (!d) return
+        var d = a.departures_today; if (!d || d.count == null) return
         var ls = a.live_snapshot
-        h += '<div class="bc-tl"><b>' + esc(a.iata === 'LIS' ? 'Lisbon airport' : 'Porto airport') + '</b>: <span class="bc-tn">' + esc(d.count) + '</span> airline departures seen since 00:00 UTC (at least)' +
+        h += '<div class="bc-tl"><b>' + esc(a.iata === 'LIS' ? 'Lisbon airport' : 'Porto airport') + '</b>: <span class="bc-tn">' + esc(d.count) + '</span> airline departures seen' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : ' in OpenSky\'s recent window') + ' (at least)' +
           (ls && a.iata === 'LIS' ? '; at ' + tm(ls.at, hm(ls.at)) + ' UTC, ' + esc(ls.on_ground) + ' airline aircraft seen on the ground and ' + esc(ls.airborne_low) + ' low in the air nearby' : '') +
           prov('OpenSky', d.source, d.read) + '</div>'
       })
