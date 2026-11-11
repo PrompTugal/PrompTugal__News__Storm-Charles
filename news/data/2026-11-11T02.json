@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T02:00:00Z and 2026-11-11T03:00:00Z: the facts behind the article news/2026-11-11T02.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T02:17:14Z",
+ "updated": "2026-11-11T02:20:30Z",
  "window": {
   "from": "2026-11-11T02:00:00Z",
   "to": "2026-11-11T03:00:00Z"
@@ -15,30 +15,38 @@
  "by_agent": [
   {
    "agent": "incident.conductor@web-summit.dinis",
-   "commits": 5
+   "commits": 7
   },
   {
    "agent": "incident.librarian@web-summit.dinis",
+   "commits": 6
+  },
+  {
+   "agent": "incident.weather@web-summit.dinis",
    "commits": 4
+  },
+  {
+   "agent": "incident.studio@web-summit.dinis",
+   "commits": 3
+  },
+  {
+   "agent": "incident.designer@web-summit.dinis",
+   "commits": 3
   },
   {
    "agent": "incident.weatherwatch@web-summit.dinis",
    "commits": 3
   },
   {
-   "agent": "incident.studio@web-summit.dinis",
-   "commits": 2
-  },
-  {
-   "agent": "incident.designer@web-summit.dinis",
-   "commits": 2
-  },
-  {
-   "agent": "incident.weather@web-summit.dinis",
+   "agent": "incident.observability@web-summit.dinis",
    "commits": 2
   },
   {
    "agent": "incident.graph@web-summit.dinis",
+   "commits": 2
+  },
+  {
+   "agent": "incident.media@web-summit.dinis",
    "commits": 2
   },
   {
@@ -50,20 +58,32 @@
    "commits": 1
   },
   {
-   "agent": "incident.observability@web-summit.dinis",
-   "commits": 1
-  },
-  {
-   "agent": "incident.media@web-summit.dinis",
+   "agent": "incident.entities@web-summit.dinis",
    "commits": 1
   }
  ],
  "new_pages": [
   "RESTRUCTURE.md",
+  "agents/archivist/README.md",
+  "agents/board/README.md",
+  "agents/ci/README.md",
+  "agents/entities/README.md",
+  "agents/ipma/README.md",
+  "agents/labs/README.md",
+  "agents/meteorology/README.md",
+  "agents/models/README.md",
+  "agents/shadow/README.md",
+  "agents/social/README.md",
+  "agents/sources/README.md",
+  "agents/stories/README.md",
+  "agents/weather/README.md",
+  "agents/wikipedia/README.md",
+  "app/agents/commit.md",
   "app/graph/lead-times/README.md",
   "app/graph/ontology/README.md",
   "design/round-30.md",
   "design/round-31.md",
+  "design/round-32.md",
   "help/README.md",
   "help/cite.md",
   "help/corrections.md",
@@ -71,10 +91,12 @@
   "help/follow.md",
   "help/labels.md",
   "help/what-this-is.md",
+  "news/2026-11-11-round-two.md",
   "news/2026-11-11T02.md",
   "news/README.md",
   "news/data/README.md",
   "outreach/who.md",
+  "research/media/charts.md",
   "research/media/outlets/README.md",
   "research/media/outlets/ap.md",
   "research/media/outlets/bloomberg.md",
@@ -216,10 +238,158 @@
   "research/weather-sites/sites/yr.md",
   "research/weather-sites/sites/zoomearth.md",
   "studio/how-a-fact-gets-here/README.md",
+  "studio/one-warning-three-worlds/README.md",
   "studio/what-compression-is/README.md",
   "weather/index.md"
  ],
- "new_datasets": [],
+ "new_datasets": [
+  "data/agents/detail-2026-11-10T21.json",
+  "data/agents/detail-2026-11-10T22.json",
+  "data/agents/detail-2026-11-10T23.json",
+  "data/agents/detail-2026-11-11T00.json",
+  "data/agents/detail-2026-11-11T01.json",
+  "data/agents/detail-2026-11-11T02.json",
+  "data/agents/sessions.json",
+  "entities/body/aemet.json",
+  "entities/body/amn.json",
+  "entities/body/anepc.json",
+  "entities/body/apram.json",
+  "entities/body/camara-lisboa.json",
+  "entities/body/csm.json",
+  "entities/body/gnr.json",
+  "entities/body/government.json",
+  "entities/body/ipma.json",
+  "entities/body/madeira-gov.json",
+  "entities/body/madeira-prociv.json",
+  "entities/body/mai.json",
+  "entities/body/meteoalarm.json",
+  "entities/body/mj.json",
+  "entities/body/psp.json",
+  "entities/day/2026-11-09.json",
+  "entities/day/2026-11-10.json",
+  "entities/day/2026-11-11.json",
+  "entities/day/2026-11-12.json",
+  "entities/decision/aemet-special.json",
+  "entities/decision/airport-ops.json",
+  "entities/decision/ana-conditioned.json",
+  "entities/decision/anepc-readiness.json",
+  "entities/decision/apram-cruises.json",
+  "entities/decision/bridges-60.json",
+  "entities/decision/camara-plan.json",
+  "entities/decision/carris-runs-watched.json",
+  "entities/decision/cp-fertagus-bridge.json",
+  "entities/decision/cp-ops.json",
+  "entities/decision/csm-courts.json",
+  "entities/decision/flixbus-suspends.json",
+  "entities/decision/gnr-readiness.json",
+  "entities/decision/gov-alert.json",
+  "entities/decision/gov-recommends-suspend.json",
+  "entities/decision/madeira-airport-conditioned.json",
+  "entities/decision/madeira-schools.json",
+  "entities/decision/mai-websummit-indoor.json",
+  "entities/decision/mayor-expects-closure.json",
+  "entities/decision/metro-runs.json",
+  "entities/decision/metro-shelter.json",
+  "entities/decision/mj-services.json",
+  "entities/decision/mmp-closed.json",
+  "entities/decision/night-summit-wednesday.json",
+  "entities/decision/operators-possible-disruption.json",
+  "entities/decision/pitch-semifinal.json",
+  "entities/decision/rede-expressos-suspends.json",
+  "entities/decision/schools-close.json",
+  "entities/decision/side-events-follow-h.json",
+  "entities/decision/side-events-wednesday.json",
+  "entities/decision/tap-adjusts.json",
+  "entities/decision/transport-thursday.json",
+  "entities/decision/ttsl-wednesday.json",
+  "entities/decision/tunnels-close.json",
+  "entities/decision/websummit-assessing.json",
+  "entities/decision/websummit-n6.json",
+  "entities/decision/websummit-suspends-h.json",
+  "entities/decision/websummit-thursday-change-h.json",
+  "entities/decision/websummit-thursday.json",
+  "entities/decision/websummit-wednesday.json",
+  "entities/hazard/heavy-rain.json",
+  "entities/hazard/high-winds.json",
+  "entities/hazard/sea-agitation.json",
+  "entities/hazard/storm-charles.json",
+  "entities/hazard/tidal-flooding.json",
+  "entities/index.json",
+  "entities/ontology.json",
+  "entities/organisation/lusoponte.json",
+  "entities/organisation/night-summit.json",
+  "entities/organisation/pitch.json",
+  "entities/organisation/side-events.json",
+  "entities/organisation/websummit.json",
+  "entities/place/25-de-abril-bridge.json",
+  "entities/place/areeiro.json",
+  "entities/place/cabo-carvoeiro.json",
+  "entities/place/cabo-de-sao-vicente.json",
+  "entities/place/funchal.json",
+  "entities/place/lisbon-district.json",
+  "entities/place/lisbon.json",
+  "entities/place/madeira.json",
+  "entities/place/mainland-portugal.json",
+  "entities/place/oriente.json",
+  "entities/place/sines.json",
+  "entities/place/tagus-bridges.json",
+  "entities/place/vasco-da-gama-bridge.json",
+  "entities/place/venue.json",
+  "entities/programme-day/websummit-day-1.json",
+  "entities/programme-day/websummit-day-2.json",
+  "entities/programme-day/websummit-day-3.json",
+  "entities/role/interior-minister.json",
+  "entities/role/ipma-meteorologist.json",
+  "entities/role/lisbon-mayor.json",
+  "entities/role/pm.json",
+  "entities/role/websummit-chief-executive.json",
+  "entities/seed.json",
+  "entities/service/airport.json",
+  "entities/service/carris-metropolitana.json",
+  "entities/service/carris.json",
+  "entities/service/cp.json",
+  "entities/service/ferries.json",
+  "entities/service/fertagus.json",
+  "entities/service/flixbus.json",
+  "entities/service/madeira-airport.json",
+  "entities/service/metro.json",
+  "entities/service/mmp.json",
+  "entities/service/public-transport.json",
+  "entities/service/rede-expressos.json",
+  "entities/service/schools.json",
+  "entities/service/tap.json",
+  "entities/service/tunnels.json",
+  "entities/term/alert-situation.json",
+  "entities/term/communique.json",
+  "entities/term/evidence.json",
+  "entities/term/fact.json",
+  "entities/term/hypothesis.json",
+  "entities/term/label.json",
+  "entities/term/lead-time.json",
+  "entities/term/orange-warning.json",
+  "entities/term/primary-source.json",
+  "entities/term/red-warning.json",
+  "entities/term/warning-level.json",
+  "entities/warning/anepc-aviso-21.json",
+  "entities/warning/ipma-communique-1.json",
+  "entities/warning/ipma-communique-2.json",
+  "entities/warning/ipma-madeira-red.json",
+  "entities/warning/ipma-red-rain-0900.json",
+  "entities/warning/ipma-red-rain.json",
+  "entities/warning/ipma-red-wind.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/addresses.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/airport.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/bridges.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/courts.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/cp.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/metro.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/museums.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/port.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/rede-expressos.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/schools.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/tap.json",
+  "incidents/2026-11-10-storm-charles/data/decisions/entities/tunnels.json"
+ ],
  "changed_datasets": [
   "data/agents/commits.json",
   "data/agents/index.json",
@@ -227,7 +397,8 @@
   "data/graph/storm-elsewhere.json",
   "data/graph/storm-sources.json",
   "data/graph/storm.json",
-  "data/keys.json"
+  "data/keys.json",
+  "incidents/2026-11-10-storm-charles/data/signals.json"
  ],
  "new_tools": [
   "research/media/tools/pages.mjs",
@@ -235,40 +406,60 @@
   "research/weather-sites/tools/links.py",
   "research/weather-sites/tools/pages.py",
   "research/weather-sites/tools/terms.py",
+  "tools/agents-sessions.mjs",
+  "tools/entities-build.mjs",
+  "tools/entities-lib.mjs",
+  "tools/entities-make.mjs",
   "tools/lane-handover.mjs",
   "tools/library-news.mjs",
   "tools/library-view.mjs"
  ],
  "added": {
-  "files": 183,
+  "files": 357,
   "by_area": [
    {
     "area": "research",
-    "files": 151
+    "files": 153
+   },
+   {
+    "area": "entities",
+    "files": 127
+   },
+   {
+    "area": "agents",
+    "files": 16
    },
    {
     "area": "app",
-    "files": 9
+    "files": 12
+   },
+   {
+    "area": "incidents/2026-11-10-storm-charles/data",
+    "files": 12
+   },
+   {
+    "area": "data",
+    "files": 7
    },
    {
     "area": "help",
     "files": 7
    },
    {
-    "area": "news",
-    "files": 4
-   },
-   {
     "area": "tools",
-    "files": 3
+    "files": 7
    },
    {
-    "area": "design",
-    "files": 2
+    "area": "news",
+    "files": 5
    },
    {
     "area": "studio",
-    "files": 2
+    "files": 4
+   },
+   {
+    "area": "design",
+    "files": 3
    },
    {
     "area": "(root)",
@@ -276,10 +467,6 @@
    },
    {
     "area": "admin",
-    "files": 1
-   },
-   {
-    "area": "agents",
     "files": 1
    },
    {
@@ -293,7 +480,7 @@
   ]
  },
  "changed": {
-  "files": 77,
+  "files": 86,
   "by_area": [
    {
     "area": "research",
@@ -301,11 +488,11 @@
    },
    {
     "area": "app",
-    "files": 15
+    "files": 17
    },
    {
     "area": "agents",
-    "files": 13
+    "files": 14
    },
    {
     "area": "data",
@@ -313,7 +500,7 @@
    },
    {
     "area": "tools",
-    "files": 6
+    "files": 8
    },
    {
     "area": "studio",
@@ -329,10 +516,18 @@
    },
    {
     "area": "admin",
-    "files": 1
+    "files": 2
+   },
+   {
+    "area": "incidents/2026-11-10-storm-charles/data",
+    "files": 2
    },
    {
     "area": "design",
+    "files": 1
+   },
+   {
+    "area": "incidents/2026-11-10-storm-charles/timeline.md",
     "files": 1
    },
    {
@@ -517,6 +712,83 @@
    "by": "incident.media@web-summit.dinis",
    "what": "round two, part 1: a page per outlet (coverage, key moments, sources, licence and terms as published, contact page), by-lines, who carried whose words, who we would like to talk to, Contribute as tasks",
    "files": 46
+  },
+  {
+   "commit": "52da7d9",
+   "at": "2026-11-11T02:18:26Z",
+   "by": "incident.weather@web-summit.dinis",
+   "what": "round 2: wind today, measured against warned (one chart, one axis, a table twin); next read on the hero",
+   "files": 4
+  },
+  {
+   "commit": "4577806",
+   "at": "2026-11-11T02:18:38Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "22 timeline rows gain their source addresses (found by the researcher); eight rows that rest on the press are now labelled evidence, not fact; a file per service (metro, cp, bridges, tunnels, airport, port, schools ...) synced; the gate refuses vault keys and key files (identity's patterns)",
+   "files": 17
+  },
+  {
+   "commit": "d8d6450",
+   "at": "2026-11-11T02:19:08Z",
+   "by": "incident.designer@web-summit.dinis",
+   "what": "design round 32: the swap: / is the Weather face (weather/index.md re-based to the root); the technical front page is data-room/index.html with its anchors; the menu, the 404 and the dashboard's three links follow",
+   "files": 6
+  },
+  {
+   "commit": "2597143",
+   "at": "2026-11-11T02:19:18Z",
+   "by": "incident.observability@web-summit.dinis",
+   "what": "every push, file and agent opens (commit.html?sha=, ?path=, agents/?who=); data/agents/sessions.json: keys and sessions, 'not recorded' where nothing is written; an agent's page says its state and blocker in plain words; pages for the new agents",
+   "files": 32
+  },
+  {
+   "commit": "0ed2f21",
+   "at": "2026-11-11T02:19:26Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "news/2026-11-11-round-two.md: the round's article, to be printed (what Dinis asked, the shape, the flows, the patterns, the 13 new agents, page by page, not done, what waits on him); the news index lists rounds; status",
+   "files": 14
+  },
+  {
+   "commit": "c12f2eb",
+   "at": "2026-11-11T02:19:26Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the catalogue's commit record refreshed",
+   "files": 1
+  },
+  {
+   "commit": "ce0b290",
+   "at": "2026-11-11T02:19:40Z",
+   "by": "incident.weather@web-summit.dinis",
+   "what": "round 3: rain today, measured against warned (hourly bars under the warnings' hours, totals per station, a table twin)",
+   "files": 4
+  },
+  {
+   "commit": "ecdeded",
+   "at": "2026-11-11T02:19:49Z",
+   "by": "incident.media@web-summit.dinis",
+   "what": "round two, part 2: the media watch visualised (coverage over time per outlet, who was first with each key fact, who carried whose words)",
+   "files": 4
+  },
+  {
+   "commit": "e30a500",
+   "at": "2026-11-11T02:20:15Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "front matter takes a class for the article (for print)",
+   "files": 1
+  },
+  {
+   "commit": "8aafe46",
+   "at": "2026-11-11T02:20:26Z",
+   "by": "incident.studio@web-summit.dinis",
+   "what": "a third explanation, \"One warning, opened three times\": what fractal means for a graph, on one real node (the graph, IPMA's open-data record, IPMA's CAP message)",
+   "files": 6
+  },
+  {
+   "commit": "747d832",
+   "at": "2026-11-11T02:20:30Z",
+   "by": "incident.entities@web-summit.dinis",
+   "what": "the mini Wikipedia, round 1: the ontology, 124 nodes and 249 edges from the rows and decisions we hold, the page generator, the linker, the lens's first script",
+   "files": 134
   }
  ]
 }
