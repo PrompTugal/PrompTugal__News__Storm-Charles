@@ -22,6 +22,7 @@ execFileSync(process.execPath, [path.join(ROOT, 'admin/build/build.mjs')], { std
 let tracked
 try { tracked = execFileSync('git', ['ls-files', '-z'], { cwd: ROOT }).toString().split('\0').filter(Boolean) }
 catch { tracked = [] }
+const future = []
 const MAX = 256 * 1024
 const BINARY_EXT = /\.(png|jpe?g|gif|webp|avif|bmp|ico|pdf|zip|gz|tgz|7z|rar|mp4|mov|webm|mp3|wav|woff2?|ttf|otf|psd|sqlite|db|bin|exe|dmg|pkl|parquet)$/i
 const FORBIDDEN = /(^|\/)(node_modules|_site|\.sg_vault|\.sg-send|raw|captures|screenshots)\//
@@ -43,6 +44,11 @@ for (const rel of tracked) {
     if (/(^|\/)(vault-key-[^\/]*|[^\/]*\.vault-key|access-token\.json|[^\/]*\.key)$/.test(rel)) fail(`${rel}: a key file never goes in git`)
     // the Weather face reads only what the data room publishes (RESTRUCTURE.md): no request leaves the site from its code
     if (/^app\/weather\/.*\.m?js$/.test(rel) && /(fetch|XMLHttpRequest|EventSource|WebSocket|import)\s*\(?\s*['"`](https?:)?\/\//.test(s)) fail(`${rel}: the Weather face must read only this site's own files (an outside address is requested)`)
+    // a time written ahead of the clock (six agents corrected such stamps on 11 November): "Kept by ... UTC" in markdown, "updated" in JSON
+    { const ahead = t => t && t - Date.now() > 10 * 60000
+      const MON = { January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 }
+      if (rel.endsWith('.md')) { const k = s.slice(0, 1500).match(/Kept by [^\n]*?(\d{1,2}) (January|February|March|April|May|June|July|August|September|October|November|December) (\d{4}),? (\d{2}):(\d{2}) UTC/); if (k && ahead(Date.UTC(+k[3], MON[k[2]], +k[1], +k[4], +k[5]))) future.push(rel) }
+      else if (rel.endsWith('.json')) { const u = s.slice(0, 4000).match(/"updated"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:\.\d+)?Z)"/); if (u && ahead(Date.parse(u[1].length === 17 ? u[1].replace('Z', ':00Z') : u[1]))) future.push(rel) } }
     if (rel.endsWith('.json')) { try { JSON.parse(s) } catch (e) { fail(`${rel}: invalid JSON (${e.message})`) } }
 }
 if (!tracked.length) warns.push('not a git checkout: the tracked-file checks were skipped')
@@ -82,6 +88,7 @@ const front = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8')
 if (!/Not a warning service/.test(front)) fail('index.html: the "Not a warning service" line is missing')
 for (const need of ['api/v1/index.json', 'llms.txt', 'version.json', 'sitemap.xml', 'library/index.html', 'library/index.json', 'data/agents/index.json', 'data/graph/storm.json'])   if (!fs.existsSync(path.join(OUT, need))) fail(`_site/${need} missing`)
 
+if (future.length) warns.push(`${future.length} file(s) carry a time ahead of the clock (read the clock before writing a time): ${future.slice(0, 8).join(', ')}${future.length > 8 ? ' ...' : ''}`)
 const ms = Date.now() - t0
 if (ms > 8000) warns.push(`the gate took ${ms} ms: over its 8 s budget`)
 for (const w of warns) console.log('WARN ' + w)
