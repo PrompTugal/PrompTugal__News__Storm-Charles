@@ -243,6 +243,22 @@
 
   // today, hour by hour: 24 columns, each the hour that STARTS at its label. A station's value labelled HH:00 is read as the hour ending
   // then (the meteorologist's inference, hour_label in lisbon-rain.json), so it sits in the column before its label.
+  // earlier today, from the record (weatherwatch@'s 09:40 review, point 2): IPMA's messages we kept (cap.json) for the hours already past,
+  // so a warning that ended or was re-issued no longer leaves the morning blank. Each message is drawn from its onset to its end, or to the
+  // time the message that replaced it was sent, whichever is first; never past now. A tick marks where a message replaced another. Facts
+  // read from IPMA's own messages; the record starts when our reads did (cap.json's first read), so earlier hours can look calmer than warned.
+  function capRecord(t, D0, D1) {
+    var msgs = (D.cap || {}).lisbon_messages || [], by = {}, repBy = {}, end = Math.min(t, D1), segs = [], marks = []
+    var parse = function (m) { var x = String(m.event_pt || '').match(/^Aviso\s+(\S+)\s+(.+)$/i), lv = x && LEVEL_PT[x[1].toLowerCase()]; return lv && ok(m.onset_utc) && ok(m.expires_utc) && ok(m.sent_utc) ? { type: x[2].trim(), level: lv, start: T(m.onset_utc), end: T(m.expires_utc), sent: T(m.sent_utc), id: m.identifier } : null }
+    msgs.forEach(function (m) { var w = parse(m); if (w) by[m.identifier] = w })
+    msgs.forEach(function (m) { (m.replaces || []).forEach(function (r) { if (r && r.identifier && by[m.identifier]) repBy[r.identifier] = by[m.identifier] }) })
+    Object.keys(by).forEach(function (id) {
+      var w = by[id], r = repBy[id], b = Math.min(w.end, r ? r.sent : Infinity, end), a = Math.max(w.start, D0)
+      if (b > a) segs.push({ type: w.type, level: w.level, a: a, b: b, w: w, cut: r && r.sent < w.end ? r : null })
+      if (r && r.sent >= D0 && r.sent < end && r.type === w.type && (r.level !== w.level || r.start !== w.start || r.end !== w.end)) marks.push({ type: w.type, at: r.sent, from: w, to: r })
+    })
+    return { segs: segs, marks: marks }
+  }
   function hours(t) {
     var off = dayOff, D0 = T(day(t) + 'T00:00:00Z') + off * 864e5, D1 = D0 + 864e5, H = 36e5, nowH = off ? -1 : Math.floor((t - D0) / H), ref = off ? D0 : t
     var ws = lisbonWarnings().filter(function (w) { return T(w.start_utc) < D1 && T(w.end_utc) > D0 })
@@ -254,6 +270,9 @@
 
     // 1. warned: one lane per type, IPMA's colours, the level written
     var types = []; ws.forEach(function (w) { if (types.indexOf(w.type) < 0) types.push(w.type) })
+    var rec = off ? { segs: [], marks: [] } : capRecord(t, D0, D1), wkey = function (ty, lv, a, b) { return ty + '|' + lv + '|' + a + '|' + b }, drawn = {}
+    ws.forEach(function (w) { drawn[wkey(w.type, w.level, T(w.start_utc), T(w.end_utc))] = 1 })
+    rec.segs.concat(rec.marks).forEach(function (x) { if (types.indexOf(x.type) < 0) types.push(x.type) })
     var order = ['Precipitação', 'Vento', 'Agitação Marítima']; types.sort(function (a, b) { return (order.indexOf(a) + 9) % 9 - (order.indexOf(b) + 9) % 9 })
     types.forEach(function (ty) {
       var bars = ws.filter(function (w) { return w.type === ty }).sort(function (a, b) { return T(a.start_utc) - T(b.start_utc) }).map(function (w) {
@@ -261,6 +280,15 @@
         return '<div role="cell" class="wxc-band w-' + esc(w.level) + (T(w.end_utc) <= t ? ' ended' : '') + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc(w.level + ' ' + (EN[ty] || ty) + ', ' + when(w.start_utc, ref) + ' to ' + when(w.end_utc, ref) + '. ' + (w.text_pt || '')) + '"><i class="wxc-bl"><b>' + esc(w.level) + '</b> <span>' + hm(Math.max(T(w.start_utc), D0)) + '–' + (T(w.end_utc) > D1 ? wd(w.end_utc) + ' ' : '') + hm(w.end_utc) + '</span></i></div>'
       }).join('')
       out += '<div role="row" class="wxc-row wxc-warn"><div role="rowheader" class="wxc-lab"><b>' + iconFor(ty) + esc(EN[ty] || ty) + '</b><i>' + (channels(t).differ.some(function (d) { return d.type === ty }) ? 'IPMA\'s newest message' : 'IPMA warning') + '</i></div>' + bars + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
+      var rs0 = rec.segs.filter(function (x) { return x.type === ty && !drawn[wkey(ty, x.level, x.w.start, x.w.end)] }), rm0 = rec.marks.filter(function (x) { return x.type === ty })
+      var span = function (w) { return w.level.toUpperCase() + ' ' + when(w.start, ref) + '–' + when(w.end, ref) }
+      if (rs0.length || rm0.length) out += '<div role="row" class="wxc-row wxc-warn wxc-rec"><div role="rowheader" class="wxc-lab"><b>earlier today</b><i>IPMA\'s messages kept</i></div>' + rs0.map(function (x) {
+        var a = Math.round((x.a - D0) / H), b = Math.round((x.b - D0) / H); if (b <= a) return ''
+        return '<div role="cell" class="wxc-band rec w-' + esc(x.level) + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc('IPMA\'s message sent ' + when(x.w.sent, ref) + ' UTC: ' + span(x.w) + ' ' + (EN[ty] || ty) + (x.cut ? '; replaced by the message sent ' + hm(x.cut.sent) + ' UTC' : '')) + '"><i class="wxc-bl"><b>' + esc(x.level) + '</b></i></div>'
+      }).join('') + rm0.map(function (x) {
+        var h = Math.floor((x.at - D0) / H), f = Math.round(100 * ((x.at - D0) / H - h))
+        return '<div role="cell" class="wxc-mark" style="grid-column:' + (h + 2) + '/' + (h + 3) + '" title="' + esc('IPMA\'s message sent ' + hm(x.at) + ' UTC replaced ' + span(x.from) + ' with ' + span(x.to) + ' (' + (EN[ty] || ty) + ')') + '"><i style="left:' + f + '%"></i><span class="sr">IPMA replaced ' + esc(span(x.from)) + ' with ' + esc(span(x.to)) + ' at ' + hm(x.at) + '</span></div>'
+      }).join('') + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : h < nowH ? ' past' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
       var df = channels(t).differ.filter(function (d) { return d.type === ty })[0]
       if (df && df.open.length) out += '<div role="row" class="wxc-row wxc-warn wxc-stale"><div role="rowheader" class="wxc-lab"><b>' + esc(EN[ty] || ty) + '</b><i>IPMA\'s open-data feed still lists</i></div>' + df.open.map(function (w) {
         var a = Math.max(0, Math.round((T(w.start_utc) - D0) / H)), b = Math.min(24, Math.round((T(w.end_utc) - D0) / H)); if (b <= a) return ''

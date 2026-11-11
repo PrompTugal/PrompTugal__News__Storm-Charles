@@ -4,7 +4,7 @@ summary: What the Storm Charles weather page shows, where every figure on it com
 ---
 # About the Weather face
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 11:56 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 12:05 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). [The page itself](index.md) makes no forecast and gives no advice of its own.
 
@@ -13,7 +13,7 @@ summary: What the Storm Charles weather page shows, where every figure on it com
 The Weather face of this site: Storm Charles (Lisbon and Madeira, 10 to 12 November 2026) as a weather channel would show it, for anyone. On [the page](index.md), drawn in the browser:
 
 - **Now**: the IPMA warnings in force in Lisbon this hour, the next ones, what the stations measured in the last hour, and the headline decision.
-- **Today, hour by hour**: IPMA's warnings as bands; rain, wind, gusts and temperature observed up to now, and IPMA's automatic forecast after it.
+- **Today, hour by hour**: IPMA's warnings as bands; rain, wind, gusts and temperature observed up to now, and IPMA's automatic forecast after it. Under each warning row, "earlier today" draws the hours already past from IPMA's messages we kept (cap.json), faded, with the level written: a warning that ended or was replaced still shows where it ran, and a dashed tick marks the time a message replaced another (hover for which). Our record of the messages starts on Tuesday at 23:51 UTC.
 - **Rain today, measured against warned**: rain by the hour under the hours of IPMA's rain warnings.
 - **Wind today, measured against warned**: IPMA's warned gusts over the warning's hours, the gusts and mean wind measured, on one axis, with the same values as a table.
 - **Our meteorologist's reading**: a hypothesis, dashed and labelled, closed until opened, never IPMA's forecast, and with no end time other than the warnings'.
