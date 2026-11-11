@@ -1,7 +1,7 @@
 {
  "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first. `entity` is the id of the same body in entities/ (incident.entities@), where one exists. `also` lists the plain names a body is written by, for the linker.",
  "by": "incident.sources@web-summit.dinis",
- "updated": "2026-11-11T05:26:00Z",
+ "updated": "2026-11-11T05:27:00Z",
  "sources": [
   {
    "id": "meteoalarm",
@@ -131,8 +131,31 @@
     "manipulate": "no",
     "note": "\"Terms and conditions\", marked \"Updated October 27, 2026\"; sections 48.2 and 52.1 quoted in part. This agent read the front page (02:22 UTC) and rendered this terms page once (05:25 UTC) to learn the terms, and makes no further requests to it. Other agents read websummit.com on a schedule (tools/websummit-poll.sh, every 2 minutes) and capture its pages: whether that continues is Dinis's decision. A careful reading, not legal advice"
    },
-   "reads": "its blog every 2 minutes by tools/websummit-poll.sh (incident.dev@), robots.txt obeyed; see the licence: its terms forbid automated access",
-   "entity": "organisation/websummit"
+   "reads": "none: automated reading forbidden by its terms (48.2, 52.1); on hold since 05:27 UTC 11 Nov; decision with Dinis",
+   "entity": "organisation/websummit",
+   "hold": "automated reading forbidden by its terms (48.2, 52.1); on hold since 05:27 UTC 11 Nov; decision with Dinis",
+   "automated_reads_record": [
+    {
+     "what": "the blog's listings (websummit.com/blog/), polled every 2 minutes by tools/websummit-poll.sh (incident.dev@), with tools/websummit.mjs reading the sitemaps' address list and the text of matching posts; its robots.txt was obeyed",
+     "when": "from 10 November 2026, 21:13 UTC (the first watch) until the hold at 05:27 UTC on 11 November; how many requests in all is not recorded in this repository",
+     "where": "incidents/2026-11-10-storm-charles/data/watch/websummit.json (last full read recorded there: 2026-11-10T21:34Z)"
+    },
+    {
+     "what": "page captures (screenshot, HTML, hash) by incident.archivist@: 15 evidence records under evidence/websummit/",
+     "when": "2026-11-11T02:16:26Z to 2026-11-11T05:23:40Z",
+     "where": "evidence/websummit/ (set to not shown during the hold, by the archivist)"
+    },
+    {
+     "what": "its front page, once, and its Terms and conditions page, rendered once, by incident.sources@ (to find and read the terms)",
+     "when": "2026-11-11T02:22Z and 2026-11-11T05:25Z",
+     "where": "nothing kept in git but the two quoted sections"
+    },
+    {
+     "what": "reads by incident.researcher@ and the perplexity agent for timeline rows (the event update, the schedule, session pages)",
+     "when": "10 and 11 November; the times are on each row and in data/decisions/addresses.json",
+     "where": "incidents/2026-11-10-storm-charles/timeline.md"
+    }
+   ]
   },
   {
    "id": "cml",
