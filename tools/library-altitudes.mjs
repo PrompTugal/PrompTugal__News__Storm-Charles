@@ -38,23 +38,33 @@ const RANK = { A0: 0, A1: 1, A2: 2, A3: 3, A4: 4 }
 const gens = J('admin/build/generators.json'), genSet = new Set([...(gens.before || []), ...(gens.after || [])])
 const wf = read('.github/workflows/deploy.yml')
 const ciRuns = new Set([...wf.matchAll(/node (tools\/[\w.-]+)/g)].map(m => m[1]))
-const ciPerms = Object.fromEntries([...wf.matchAll(/^\s{6}(contents|pages|id-token): (\w+)/gm)].map(m => [m[1], m[2]]))
+const jobsText = wf.split(/^jobs:\s*$/m)[1] || ''
+const ciJobs = {}   // per job: its permissions, whether it checks out (and keeps the token), whether it runs repository code
+for (const part of jobsText.split(/^(?=  [\w-]+:\s*$)/m)) {
+    const name = (part.match(/^  ([\w-]+):\s*$/m) || [])[1]; if (!name) continue
+    ciJobs[name] = { permissions: Object.fromEntries([...part.matchAll(/^\s{6}(contents|pages|id-token|actions|packages): (\w+)/gm)].map(m => [m[1], m[2]])),
+        checkout: /actions\/checkout/.test(part), keeps_token: /actions\/checkout/.test(part) && !/persist-credentials:\s*false/.test(part), runs_repo_code: /actions\/checkout/.test(part) }
+}
+const ciJobAltitude = j => { const p = j.permissions; return Object.entries(p).some(([k, v]) => v === 'write') ? 'A3' : 'A0' }
+const buildJob = Object.keys(ciJobs).find(n => /node admin\/build\/validate\.mjs/.test(jobsText.split(/^(?=  [\w-]+:\s*$)/m).find(p => p.startsWith(`  ${n}:`)) || '')) || 'build'
 const GRANTS = {
     session: { altitude: 'A4', label: 'fact for the librarian\'s own session (read at ' + at + '); evidence for the others (the same cloud environment, sessions started the same way)',
         holds: ['push to dev (the session\'s git credentials; admin/tools/release.sh)', 'the agent\'s private session key (~/.sg-send/keys, outside git)', 'every vault key the agent made or was given (outside git)',
             'the environment\'s credentials: the OpenRouter key (under two names), a GitHub token, an SG/Send token and cloud-provider credentials (names read, never values)',
             'the right to message other sessions, start sessions and set scheduled wakes (the session-control tools of Claude Code in the cloud); changes to the environment with the owner\'s approval'] },
-    ci: { altitude: 'A3', label: 'fact', from: '.github/workflows/deploy.yml',
-        holds: [`the job's GITHUB_TOKEN with contents: ${ciPerms.contents || '?'}, pages: ${ciPerms.pages || '?'}, id-token: ${ciPerms['id-token'] || '?'}`, /persist-credentials:\s*false/.test(wf) ? 'checkout does not keep the token' : 'actions/checkout keeps the token in .git/config for every later step (persist-credentials is not set to false): any step can push to any branch of this repository',
-            'no agent key, no vault key, no model key (no secrets.* in the workflow)'],
-        why: 'A3 in part: a durable write beyond the runner (push to this repository, deploy the site), but no session control, no memory and no keys of an agent' }
+    ci: { label: 'fact', from: '.github/workflows/deploy.yml (read per job)', build_job: buildJob,
+        jobs: Object.fromEntries(Object.entries(ciJobs).map(([n, j]) => [n, { ...j, altitude: ciJobAltitude(j),
+            why: ciJobAltitude(j) === 'A3' ? `A3 in part: a durable write beyond the runner (${Object.entries(j.permissions).filter(([, v]) => v === 'write').map(([k]) => k).join(', ')}), but no session control, no memory, no agent key${j.runs_repo_code ? '; and it runs repository code' : '; it runs no repository code'}`
+                : `A0: ${Object.keys(j.permissions).length ? Object.entries(j.permissions).map(([k, v]) => k + ': ' + v).join(', ') : 'the workflow\'s default (contents: read)'}${j.keeps_token ? ', but checkout keeps the token in .git/config' : j.checkout ? '; checkout keeps no credential (persist-credentials: false)' : ''}` }])),
+        secrets: /secrets\./.test(wf) ? 'the workflow names secrets' : 'no agent key, no vault key, no model key (no secrets.* in the workflow)' }
 }
+const ciAlt = () => (GRANTS.ci.jobs[buildJob] || {}).altitude || 'A3'
 const toolUnit = (t, agentGrant) => {
     const src = read(t), head = src.split('\n').slice(0, 12).join('\n')
     const mandate = /\ban A2 loop\b/.test(head) ? 'A2' : callsLlm.has(t) ? 'A1' : 'A0'
     const where = []
-    if (genSet.has(t)) where.push({ at: 'the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators', grant: 'session (the pushing agent\'s)', altitude: 'A4' }, { at: 'CI (GitHub Actions), every push', grant: 'ci', altitude: GRANTS.ci.altitude })
-    else if (ciRuns.has(t)) where.push({ at: 'CI (GitHub Actions), the deploy job', grant: 'ci', altitude: GRANTS.ci.altitude }, { at: 'its agent\'s session when it tests it', grant: 'session', altitude: agentGrant })
+    if (genSet.has(t)) where.push({ at: 'the session of every agent that pushes: admin/tools/release.sh runs the gate, which runs the build and its generators', grant: 'session (the pushing agent\'s)', altitude: 'A4' }, { at: `CI (GitHub Actions), the ${buildJob} job, every push`, grant: `ci.jobs.${buildJob}`, altitude: ciAlt() })
+    else if (ciRuns.has(t)) where.push({ at: `CI (GitHub Actions), the ${buildJob} job`, grant: `ci.jobs.${buildJob}`, altitude: ciAlt() }, { at: 'its agent\'s session when it tests it', grant: 'session', altitude: agentGrant })
     else where.push({ at: /\b(poll|loop)\b/i.test(head) && /\.sh$/.test(t) ? 'a background loop in its agent\'s session' : 'its agent\'s session (by hand or on its wake)', grant: 'session', altitude: agentGrant })
     const hosts = [...new Set([...src.matchAll(/https?:\/\/([a-z0-9.-]+\.[a-z]{2,})/gi)].map(m => m[1].toLowerCase()))].filter(h => !/(^|\.)w3\.org$|^schema\.org$|^json-schema\.org$|^example\.(com|org)$/.test(h))
     const ours = hosts.filter(h => /promptugal\.news$|sgit\.ai$|sgraph\.ai$/.test(h)), outside = hosts.filter(h => !ours.includes(h))
@@ -68,6 +78,7 @@ const toolUnit = (t, agentGrant) => {
     if (/\bsgit\b|sg-vault/.test(src)) untrusted.push('vault contents')
     if (mandate !== 'A0') untrusted.push('model answers (untrusted text), and prompts built from collected material')
     if (!untrusted.length) untrusted.push('the repository\'s files only (some written from web reads: untrusted at one remove)')
+    for (const w of where) w.crosses = RANK[w.altitude] > RANK[mandate]
     const g = where.reduce((m, w) => RANK[w.altitude] > RANK[m] ? w.altitude : m, 'A0')
     return { unit: t, mandate, where, untrusted, grant_altitude: g, crosses: RANK[g] > RANK[mandate], label: 'fact', from: t + (genSet.has(t) ? ', admin/build/generators.json' : '') + (ciRuns.has(t) ? ', .github/workflows/deploy.yml' : '') }
 }
@@ -138,14 +149,14 @@ const doc = {
     swarms,
     grants: GRANTS,
     corrections_to_compute_md: [
-        { what: 'CI is not at its own altitude yet: the deploy job holds contents: write (kept in .git/config by actions/checkout for every step), pages: write and id-token: write, and in that one job it runs the gate, every generator and, when the brief changed, Chromium installed from npm at run time. A0 work under an A3-part grant: crosses. The fix is two jobs: build and gate with contents: read, then deploy and tag in a job that runs no repository code (the workflow is incident.ci@\'s).', label: 'fact', from: '.github/workflows/deploy.yml' },
+        { what: 'CI was not at its own altitude at 22:11: one job held contents: write (kept in .git/config by checkout) while it ran the gate, the generators and npm\'s Chromium. Since fd90abcd (22:2x, incident.ci@\'s patch) it is three jobs: build (contents: read, no token kept: A0, runs the repository\'s code), deploy (pages and id-token write, no repository code) and tag (contents write, no repository code). The build job\'s units no longer cross in CI; they still cross in every pushing session.', label: 'fact', from: '.github/workflows/deploy.yml at fd90abcd; incident.ci@\'s message, 22:23' },
         { what: 'The generators in admin/build/generators.json run in every pushing agent\'s session (release.sh runs the gate, which builds): every agent runs the other agents\' generators under its own A4 grant. By count, the widest crossing.', label: 'fact', from: 'admin/tools/release.sh, admin/build/validate.mjs, admin/build/generators.json' },
         { what: 'graph, labs, studio, identity and weatherwatch use a headless browser on our own pages (local builds, our live site, our lanes), not on arbitrary web pages; the readers of outside pages in a browser are the researcher, meteorology (render: true) and the conductor.', label: 'fact', from: 'agents/<role>/status.json and README.md' },
         { what: 'The meteorologist, researcher and dev run on the Web-Summit repository\'s side: the grant there is that repository\'s push, not ours; their work arrives here under the conductor\'s commits.', label: 'fact', from: 'tools/sync-from-websummit.sh' },
         { what: 'An A2 now exists: tools/models-delegate.mjs, incident.models@\'s delegation loop (commit 9fff5fb7).', label: 'fact', from: 'tools/models-delegate.mjs' },
         { what: 'In the librarian\'s session, 10 environment variables named as keys or tokens hold credentials (names read, never values), against 17 counted in the conductor\'s: the sessions may not hold the same set.', label: 'fact', from: 'the librarian\'s session, at ' + at }
     ],
-    totals: { agents: out.length, units: units_all().length, crossing: units_all().filter(u => u.crosses).length, by_mandate: units_all().reduce((m, u) => (m[u.mandate] = (m[u.mandate] || 0) + 1, m), {}), in_ci_and_every_session: [...genSet].filter(t => fs.existsSync(path.join(ROOT, t))).length, io: count(a => a.io.level), calls_models_through_llm_mjs: out.filter(a => a.endpoints.some(e => e.id === 'M2')).map(a => a.agent), keyed: out.filter(a => a.key.active.length).length },
+    totals: { agents: out.length, units: units_all().length, crossing: units_all().filter(u => u.crosses).length, places_not_crossing: units_all().flatMap(u => u.where || []).filter(w => w.crosses === false).length, by_mandate: units_all().reduce((m, u) => (m[u.mandate] = (m[u.mandate] || 0) + 1, m), {}), in_ci_and_every_session: [...genSet].filter(t => fs.existsSync(path.join(ROOT, t))).length, io: count(a => a.io.level), calls_models_through_llm_mjs: out.filter(a => a.endpoints.some(e => e.id === 'M2')).map(a => a.agent), keyed: out.filter(a => a.key.active.length).length },
     agents: out
 }
 fs.writeFileSync(path.join(ROOT, 'library/altitudes.json'), JSON.stringify(doc, null, 1) + '\n')
