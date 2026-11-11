@@ -1,7 +1,7 @@
 {
  "about": "The router's table: which models answer which delegated task, and the JSON schema each answer must meet. tools/models-delegate.mjs reads it. Open-weight models first, chosen from round 1 of the evals (models/results.json: the cheapest models right on every item of that task, from the Llama, Qwen, DeepSeek, Mistral and Gemma families); one commercial model beside them for comparison, labelled as such. A delegated answer is evidence, labelled with the model's name, until the calling agent's own check passes.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T22:08:00Z",
+ "updated": "2026-11-11T22:14:00Z",
  "label": "hypothesis",
  "source": "models/results.json (round 1); Dinis, 11 November ~22:00 UTC (BRIEF.md): collectors through OpenRouter, open-source models, at least a couple",
  "budget": {
@@ -180,6 +180,35 @@
     }
    },
    "check": "never the labeller: flagged for the owner only when both open models disagree with the owner's label"
+  },
+  "match-fact": {
+   "for": "incident.media@: which of the team's facts (research/media/facts.json, each read on its primary source) a press headline reports, compared with its own patterns",
+   "prompt": "match-fact",
+   "models": [
+    "meta-llama/llama-4-maverick",
+    "google/gemma-4-31b-it"
+   ],
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "open_weight": false,
+    "why": "a commercial model for comparison (Dinis: \"from Gemini to different type of providers\"); never the one whose answer is used"
+   },
+   "evidence": {
+    "label": "17/20 for both on the nearest measured task (label); match-fact itself is not yet measured: the owner's patterns are the reference"
+   },
+   "schema": {
+    "type": "object",
+    "required": [
+     "fact"
+    ],
+    "properties": {
+     "fact": {
+      "type": "string",
+      "minLength": 1
+     }
+    }
+   },
+   "check": "the fact id must be one of the list or none; the owner's own pattern on the same headline is the reference, and a headline the models and the pattern disagree on is listed for the owner, never relabelled"
   }
  }
 }

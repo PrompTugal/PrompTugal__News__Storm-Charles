@@ -22,7 +22,7 @@ import os from 'node:os'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
-import { publishCall, emit, newSpanId } from './models-calls.mjs'
+import { publishCall, emit, spanIdOf } from './models-calls.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const REPO = path.resolve(HERE, '..')
@@ -86,8 +86,8 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
     // ledger. One line was written for the refusal itself; these are returned to the caller and not written. A new process tries once again.
     if (!mock && noCredit) return { text: null, line: { ...base, status: 'not_sent_account_out_of_credit', since: noCredit, tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }, response: null }
     // the A1 llm call as a span of the caller's trace (a loop's step), when the caller gives one
-    const span = { ...trace, span_id: trace.span_id || newSpanId() }
-    if (!mock && trace.trace_id) await emit({ trace_id: trace.trace_id, span_id: span.span_id, parent_span_id: trace.parent_span_id, parent_id: trace.parent_unit_id, flow: trace.flow || task, altitude: 'A1', role: 'llm call', phase: 'start', runner: agent, model })
+    const unit = `A1-${id}`, span = { ...trace, unit_id: unit, span_id: spanIdOf(unit) }
+    if (!mock && trace.trace_id) await emit({ trace_id: trace.trace_id, span_id: span.span_id, unit_id: unit, parent_span_id: trace.parent_span_id, parent_id: trace.parent_unit_id, flow: trace.flow || task, altitude: 'A1', role: 'llm call', phase: 'start', runner: agent, model })
     const t0 = Date.now(); let status = 'ok', response = null, error = null, text = null
     try {
         if (mock) response = { model: model + ' (mock)', choices: [{ message: { role: 'assistant', content: 'mock answer to: ' + String(messages.at(-1).content).slice(0, 80) }, finish_reason: 'stop' }], usage: { prompt_tokens: 12, completion_tokens: 8, cost: 0 } }
@@ -111,7 +111,7 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
     if (!mock) {
         const published = publishCall({ line, request, response, trace: span })
         if (published) line.published = published
-        if (trace.trace_id) await emit({ trace_id: trace.trace_id, span_id: span.span_id, parent_span_id: trace.parent_span_id, parent_id: trace.parent_unit_id, flow: trace.flow || task, altitude: 'A1', role: 'llm call', phase: 'end', runner: agent, model: line.model_served || model, valid: status === 'ok' })
+        if (trace.trace_id) await emit({ trace_id: trace.trace_id, span_id: span.span_id, unit_id: unit, parent_span_id: trace.parent_span_id, parent_id: trace.parent_unit_id, flow: trace.flow || task, altitude: 'A1', role: 'llm call', phase: 'end', runner: agent, model: line.model_served || model, valid: status === 'ok' })
     }
     return { text, line, response }   // response: the provider's whole answer (an answer engine's citations are in it); it is also in the raw store
 }

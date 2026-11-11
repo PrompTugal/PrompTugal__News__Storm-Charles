@@ -20,7 +20,8 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { call } from './llm.mjs'
 import { PROMPTS } from './models-prompts.mjs'
-import { emit, newTraceId, newSpanId } from './models-calls.mjs'
+import crypto from 'node:crypto'
+import { emit, traceIdOf, spanIdOf, unitOfAgent } from './models-calls.mjs'
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const J = f => JSON.parse(fs.readFileSync(path.join(REPO, f), 'utf8'))
@@ -55,7 +56,8 @@ function parse(text) {
 const figs = t => (String(t).match(/\d+(?:[.,]\d+)?/g) || []).map(x => x.replace(',', '.')).sort()
 const TASK_CHECK = {
     translate: (ans, it) => { const want = figs(it.input), got = figs(ans.en); const missing = want.filter(f => !got.includes(f)); return missing.length ? [`figures missing from the English: ${[...new Set(missing)].join(', ')}`] : [] },
-    'extract-decision': ans => DECIDERS.length && !DECIDERS.some(d => d.id === ans.decider) ? [`decider "${ans.decider}" is not in the list`] : [],
+    'match-fact': (ans, it) => Array.isArray(it.facts) && ans.fact !== 'none' && !it.facts.some(f => f.id === ans.fact) ? [`fact "${ans.fact}" is not in the list (or "none")`] : [],
+    'extract-decision': (ans, it) => (it.deciders || DECIDERS).length && !(it.deciders || DECIDERS).some(d => d.id === ans.decider) ? [`decider "${ans.decider}" is not in the list`] : [],
 }
 const norm = v => typeof v === 'string' ? v.trim().toLowerCase().replace(/:00z$/, 'z') : JSON.stringify(v)
 
@@ -65,12 +67,16 @@ export async function delegate({ task, input, agent, models = null, comparison =
     const it = typeof input === 'string' ? { input } : input
     if (!it || typeof it.input !== 'string' || !it.input.trim()) throw new Error('delegate(): the input is empty')
     const list = [...(models || T.models).map(m => ({ model: m, open_weight: ROSTER[m]?.open_weight ?? true })), ...(comparison && T.comparison ? [{ model: T.comparison.model, open_weight: false, comparison: true }] : [])]
-    trace_id = trace_id || newTraceId()
-    const loop = { trace_id, span_id: newSpanId(), parent_span_id, flow: `delegate/${task}` }
-    const loopUnit = `A2-${loop.span_id.slice(0, 12)}`
-    const ev = (phase, extra = {}) => emit({ ...loop, unit_id: loopUnit, altitude: 'A2', role: 'loop', phase, runner: agent, ...extra })
+    // ids as flow.mjs computes them: the loop is its own flow (unless the caller passes its trace), its unit A2-delegate-<task>-<run>,
+    // its parent the calling agent's unit A3-<agent> (or the span the caller names)
+    const run = `${new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15)}-${crypto.randomBytes(3).toString('hex')}`
+    const flow = `ws214-delegate-${task}-${run}`
+    trace_id = trace_id || traceIdOf(flow)
+    const loopUnit = `A2-delegate-${task}-${run}`
+    const loop = { trace_id, span_id: spanIdOf(loopUnit), parent_span_id: parent_span_id || spanIdOf(unitOfAgent(agent)), flow }
+    const ev = (phase, extra = {}) => emit({ ...loop, unit_id: loopUnit, parent_id: parent_span_id ? undefined : unitOfAgent(agent), altitude: 'A2', role: 'loop', phase, runner: agent, ...extra })
     await ev('start', { detail: { task, models: list.map(m => m.model), item: it.id || null, by: wake ? 'wake' : 'command', wake: wake || null } })
-    const messages0 = PROMPTS[T.prompt](it, { deciders: DECIDERS })
+    const messages0 = PROMPTS[T.prompt](it, { deciders: it.deciders || DECIDERS })   // a caller may give its own list of deciders (id, name)
     const out = []
     for (const m of list) {
         const [id, variant] = m.model.split('#'), extra = { temperature: 0, ...(ROSTER[m.model]?.extra || (variant === 'reasoning-off' ? { reasoning: { enabled: false } } : {})) }
@@ -113,7 +119,7 @@ export async function delegate({ task, input, agent, models = null, comparison =
 }
 function mockAnswer(task, it) {
     return { translate: { en: 'mock summary ' + figs(it.input).join(' ') }, 'extract-warning': { type: 'rain', level: 'yellow', area: 'Lisboa', start_utc: '2026-11-11T00:00:00Z', end_utc: '2026-11-11T09:00:00Z' },
-        'extract-decision': { decider: 'ipma', what: 'mock', effect_from_utc: null, effect_to_utc: null }, label: { label: 'evidence' } }[task]
+        'extract-decision': { decider: 'ipma', what: 'mock', effect_from_utc: null, effect_to_utc: null }, label: { label: 'evidence' }, 'match-fact': { fact: 'none' } }[task]
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

@@ -8,19 +8,27 @@
 //   - emit() writes a flow event in the fringe repository's schema (PrompTugal__News__Fringe, data/elastic-export-swarm-flows.json
 //     `fields`: trace_id, span_id, parent_span_id, unit_id, parent_id, flow, altitude, role, phase, environment, runner, person,
 //     model, key_fp, at, seq, valid): A1 llm call start/end from llm.mjs, A2 loop start/step/end from tools/models-delegate.mjs.
-//     Through incident.observability@'s tools/trace.mjs once it exists (its emit()); until then into the same hour file, `events`.
+//     Into the same hour file, `events`, with trace_id and span_id computed as flow.mjs and incident.observability@'s tools/trace.mjs
+//     compute them (sha256('trace:'+flow)[0:32], sha256('span:'+unit_id)[0:16]), so data/trace/ can take them unchanged. tools/trace.mjs runs
+//     its command line when imported, so it is not imported here: observability reads these files (asked 22:16 UTC).
 // Where: models/calls/ for incident.models@; any other agent's calls go to agents/<its role>/calls/ (its own folder, so it can
 // commit them) unless INCIDENT_CALLS_DIR says otherwise. INCIDENT_CALLS=off writes nothing (tests).
 //   node tools/models-calls.mjs --index      models/calls/index.json: every hour file in the repository, its counts and sha256
+//   node tools/models-calls.mjs --from-ledger [YYYY-MM-DD]   publish this agent's ledger lines that have no record yet, then the index
 import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
-import { fileURLToPath, pathToFileURL } from 'node:url'
+import { fileURLToPath } from 'node:url'
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ME = 'incident.models@web-summit.dinis'
 const MAX_BYTES = 240 * 1024
 export const sha256 = s => crypto.createHash('sha256').update(typeof s === 'string' ? s : JSON.stringify(s ?? null)).digest('hex')
+// ids as the fringe's abp/tools/flow.mjs computes them (and incident.observability@'s tools/trace.mjs): a trace per flow, a span per unit
+const hex = (s, n) => crypto.createHash('sha256').update(String(s)).digest('hex').slice(0, n)
+export const traceIdOf = flow => hex('trace:' + flow, 32)
+export const spanIdOf = unit => hex('span:' + unit, 16)
+export const unitOfAgent = agent => 'A3-' + agent
 export const newTraceId = () => crypto.randomBytes(16).toString('hex')
 export const newSpanId = () => crypto.randomBytes(8).toString('hex')
 const off = () => process.env.INCIDENT_CALLS === 'off'
@@ -83,19 +91,8 @@ export async function emit(e) {
         flow: e.flow, altitude: e.altitude, role: e.role, phase: e.phase, environment: ENVIRONMENT, runner: e.runner, person: PERSON,
         ...(e.model ? { model: e.model } : {}), key_fp: keyOf(e.runner), at: new Date(now).toISOString(), seq: now * 1000 + seqN,
         ...(e.valid != null ? { valid: e.valid } : {}), ...(e.detail ? { detail: e.detail } : {}) }
-    const trace = await traceTool()
-    if (trace) { try { await trace(ev); return 'tools/trace.mjs' } catch { /* fall through to our own file */ } }
     return add(e.runner, ev.at.slice(0, 19) + 'Z', 'events', ev)
 }
-let traceFn
-async function traceTool() {
-    if (traceFn !== undefined) return traceFn
-    const f = path.join(REPO, 'tools', 'trace.mjs')
-    traceFn = null
-    if (fs.existsSync(f)) { try { const m = await import(pathToFileURL(f).href); traceFn = typeof m.emit === 'function' ? m.emit : null } catch { traceFn = null } }
-    return traceFn
-}
-
 // models/calls/index.json: every hour file under models/calls/ and agents/*/calls/, with its counts
 export function buildIndex() {
     const roots = [path.join(REPO, 'models', 'calls'), ...fs.readdirSync(path.join(REPO, 'agents')).map(a => path.join(REPO, 'agents', a, 'calls'))].filter(d => fs.existsSync(d))
@@ -112,7 +109,26 @@ export function buildIndex() {
     return idx
 }
 
+// a call in the ledger that has no published record (made before this file existed, or its record lost): published from the ledger
+// line and the raw record (whose request and response give the two hashes); no trace, its parent unknown
+export async function fromLedger(day, agent = ME) {
+    const os = await import('node:os')
+    const LEDGER = process.env.INCIDENT_LEDGER_DIR || path.join(os.homedir(), '.incident-ledger'), RAW = process.env.INCIDENT_RAW_DIR || path.join(os.homedir(), '.incident-raw')
+    let lines = []; try { lines = fs.readFileSync(path.join(LEDGER, `${day}.jsonl`), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)) } catch { return 0 }
+    const have = new Set()
+    const dir = path.join(callsDir(agent), day)
+    if (fs.existsSync(dir)) for (const f of fs.readdirSync(dir)) { try { for (const c of JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).calls) have.add(c.id) } catch { } }
+    let n = 0
+    for (const line of lines.filter(l => l.agent === agent && l.provider !== 'mock' && !have.has(l.id))) {
+        let rec = null; try { rec = JSON.parse(fs.readFileSync(path.join(RAW, line.raw || ''), 'utf8')) } catch { }
+        publishCall({ line, request: rec?.request || null, response: rec?.response || null, trace: { by: 'unknown (published from the ledger)' } }); n++
+    }
+    return n
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+    const i = process.argv.indexOf('--from-ledger')
+    if (i >= 0) { const n = await fromLedger(process.argv[i + 1] || new Date().toISOString().slice(0, 10)); console.log(JSON.stringify({ published_from_ledger: n, totals: buildIndex().totals })); process.exit(0) }
     if (process.argv.includes('--index')) { const i = buildIndex(); console.log(JSON.stringify(i.totals)); process.exit(0) }
     console.error('usage: models-calls.mjs --index'); process.exit(2)
 }
