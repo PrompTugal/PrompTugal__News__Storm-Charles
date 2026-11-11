@@ -1,13 +1,13 @@
 # Público: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 25: 22 articles, 0 live, 1 video, 2 opinion |
-| First and last | 9 Nov 09:04 to 11 Nov 13:09 UTC |
-| Whose reporting | 18 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 13% |
+| Items we read | 26: 23 articles, 0 live, 1 video, 2 opinion |
+| First and last | 9 Nov 09:04 to 11 Nov 15:15 UTC |
+| Whose reporting | 19 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 13% |
 | Does best (from the counts) | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
@@ -24,7 +24,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 6 of 25 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 6 of 26 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -48,7 +48,7 @@ Through its own public page: [Ficha técnica ↗](https://www.publico.pt/nos/fic
 
 ## By-lines on this story, as printed
 
-Adriana Castro, Ana Sá Lopes, André Tavares Lourenço, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, Inês Duarte de Freitas, José Volta e Pinto, Leonor Alhinho, Madalena Grilo Teles, Miguel Dantas, Sara de Melo Rocha, Sérgio Aníbal, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Inês Duarte de Freitas (2), Adriana Castro, Ana Sá Lopes, André Tavares Lourenço, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Madalena Grilo Teles, Miguel Dantas, Sara de Melo Rocha, Sérgio Aníbal, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -79,3 +79,4 @@ Adriana Castro, Ana Sá Lopes, André Tavares Lourenço, Andrea Cunha Freitas, A
 | 11 Nov 12:30 | article | Sérgio Aníbal | [Tempestade Charles : queda forte, mas temporária, da economia é cenário provável ↗](https://www.publico.pt/2026/11/11/economia/noticia/tempestade-charles-queda-forte-temporaria-economia-cenario-provavel-2194576) |
 | 11 Nov 12:55 | video | Madalena Grilo Teles | [Na Madeira, o pior já passou: as imagens da passagem da depressão Charles ↗](https://www.publico.pt/2026/11/11/video/madeira-pior-ja-passou-imagens-passagem-depressao-charles-20261111-124650) |
 | 11 Nov 13:09 | opinion | André Tavares Lourenço | [A tempestade tem nome. A resposta não pode ser improvisada ↗](https://www.publico.pt/2026/11/11/azul/opiniao/tempestade-nome-resposta-nao-improvisada-2194563) |
+| 11 Nov 15:15 | article | Inês Duarte de Freitas | [Depressão Charles : serviços de entrega de comida estão quase todos suspensos ↗](https://www.publico.pt/2026/11/11/fugas/noticia/depressao-charles-servicos-entrega-comida-estao-quase-suspensos-2194593) |

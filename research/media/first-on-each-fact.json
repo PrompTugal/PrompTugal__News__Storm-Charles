@@ -2,7 +2,7 @@
  "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T14:38:43Z",
+ "updated": "2026-11-11T15:38:10Z",
  "lag_rule": "minutes_after_primary = whole minutes elapsed, truncated toward zero (19:09:00 to 19:41:31 is 32 minutes, not 33); seconds_after_primary carries the exact difference. Times are each page's own, to the second where the page gives seconds.",
  "shape_for_other_series": "To put another series (for example Wikipedia's first edit per fact) on the same axis: for each fact id here, a row {fact, series (e.g. \"wikipedia-pt\"), at (UTC), title or summary, url, via, seconds_after_primary, minutes_after_primary}. first-on-each-fact.json's facts[].first_by_outlet[] rows have that shape with `outlet` as the series and `published` as `at`.",
  "facts": [
@@ -186,7 +186,7 @@
    "primary_time": "2026-11-10T09:14:29Z",
    "primary_note": "no timed primary source for the spoken announcement: the reference is the earliest report we read (Diário de Notícias' live blog, 09:14:29). The government's page is dated 12:10 (fact 2)",
    "primary_label": "evidence",
-   "items_matched": 19,
+   "items_matched": 20,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -273,7 +273,7 @@
    "primary_time": "2026-11-10T12:10:00Z",
    "primary_note": "portugal.gov.pt's page is dated 12:10; the minister announced it in the morning, so the press is ahead of the page",
    "primary_label": "fact",
-   "items_matched": 21,
+   "items_matched": 22,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -847,7 +847,7 @@
     "So: three texts of the warning's change in four outlets, between 89 and 125 minutes after IPMA sent it; none we read says in words that the red rain warning is unchanged; two present it as a new warning.",
     "Added 10:52 UTC by the third session: DN's live page of 11 November, entry 09:14:37 \"Depressão dividiu-se em dois núcleos. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja\" (attributed to an IPMA meteorologist on SIC Notícias; says the alert dropped to orange). Its lead entry of 08:11:27 carries the same headline but not the fact: see not_matches. Observador stays first."
    ],
-   "items_matched": 5,
+   "items_matched": 8,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -912,6 +912,19 @@
      "url": "https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778369",
      "seconds_after_primary": 7530,
      "minutes_after_primary": 125
+    },
+    {
+     "rank": 6,
+     "outlet": "jornal-economico",
+     "published": "2026-11-11T15:36:05Z",
+     "via": "article",
+     "byline": [],
+     "byline_kind": "none",
+     "title": "Mau tempo: Aviso de chuva passa de vermelho para laranja em Leiria, Castelo Branco, Beja e Portalegre",
+     "url": "https://jornaleconomico.sapo.pt/noticias/mau-tempo-aviso-de-chuva-passa-de-vermelho-para-laranja-em-leiria-castelo-branco-beja-e-portalegre/",
+     "article": "A-5589594a",
+     "seconds_after_primary": 29975,
+     "minutes_after_primary": 499
     }
    ]
   },
@@ -959,7 +972,8 @@
    "primary_note": "IPMA's CAP batch sent 12:33:13 (nine messages), first seen in MeteoAlarm's Portugal feed at 12:46:20 by incident.meteorology@; IPMA's warnings page shows the same at 13:25 (timeline row s-1111T1247). Matched on titles; \"reduz ... alerta ... Lisboa\" is left out of the pattern because DN's live page keeps fact 12's headline on later entries",
    "primary_label": "fact",
    "notes": [
-    "Added 13:38 UTC by the third session."
+    "Added 13:38 UTC by the third session.",
+    "Read by hand at 14:39 UTC: DN's live blog of 11 November, entry 13:44:35 (modified 13:45:00), \"Lisboa e Setúbal em alerta vermelho para chuva só até às 15h00\": the text says IPMA, which had the two districts on red to 18:00, revised it. First in what we read, 71 minutes after IPMA's 12:33:13 batch."
    ],
    "items_matched": 1,
    "first_by_outlet": [
@@ -976,6 +990,18 @@
      "minutes_after_primary": 71
     }
    ]
+  },
+  {
+   "id": "17-santarem-rain-lowered",
+   "what": "IPMA lowers Santarém's rain warning from red to yellow and Leiria's from orange to yellow, 15:06 to 18:00; no change for Lisbon",
+   "primary_time": "2026-11-11T15:05:38Z",
+   "primary_note": "IPMA's CAP messages sent 15:05:38 (two), read from MeteoAlarm's Portugal feed (timeline row s-1111T1526). Matched on titles",
+   "primary_label": "fact",
+   "notes": [
+    "Added 15:38 UTC by the third session."
+   ],
+   "items_matched": 0,
+   "first_by_outlet": []
   }
  ]
 }

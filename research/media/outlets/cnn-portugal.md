@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 59: 18 articles, 0 live, 41 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 14:24 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 50 not read; wire share 67% |
+| Items we read | 66: 19 articles, 0 live, 47 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 15:26 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 57 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -21,11 +21,11 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:15 (article) | +66 min | 8 of 11 | [Tempestade Charles obriga ao cancelamento da Web Summit na quarta-fei… ↗](https://cnnportugal.iol.pt/tempestade-charles/web-summit/tempestade-charles-obriga-ao-cancelamento-da-web-summit-na-quarta-feira/20261110/6af3796cd34e9ce6f1b43dff) |
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 11 Nov 11:41 (video) | unknown | 4 of 4 | [Tempestade Charles mudou de trajetória: "Felizmente, enfraqueceu" ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-mudou-de-trajetoria-felizmente-enfraqueceu/6af449280cf2051820fb147a) |
 | IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 11 Nov 00:31 (video) | +115 min | 4 of 5 | [Algarve deverá ser a região mais afetada pela Charles. Tempestade che… ↗](https://cnnportugal.iol.pt/videos/algarve-devera-ser-a-regiao-mais-afetada-pela-charles-tempestade-chega-a-lisboa-com-menos-intensidade-do-que-o-previsto/6af3b07a0cf2aafa0453e19a) |
-| IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 08:53 (article) | +96 min | 2 of 5 | [Lisboa, Setúbal e Beja deixam de estar em aviso vermelho para vento m… ↗](https://cnnportugal.iol.pt/depressao-charles/tempestade-charles/lisboa-setubal-e-beja-deixam-de-estar-em-aviso-vermelho-para-vento-mas-passam-ao-nivel-maximo-de-alerta-para-chuva/20261111/6af42d3ad34e9ce6f1b43e73) |
+| IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 08:53 (article) | +96 min | 2 of 6 | [Lisboa, Setúbal e Beja deixam de estar em aviso vermelho para vento m… ↗](https://cnnportugal.iol.pt/depressao-charles/tempestade-charles/lisboa-setubal-e-beja-deixam-de-estar-em-aviso-vermelho-para-vento-mas-passam-ao-nivel-maximo-de-alerta-para-chuva/20261111/6af42d3ad34e9ce6f1b43e73) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 59 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 66 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -113,3 +113,10 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 14:23 | video | not read | [Tempestade Charles: Amadora ainda sem ocorrências graves, mas comandante alerta para as próximas ho… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-amadora-ainda-sem-ocorrencias-graves-mas-comandante-alerta-para-as-proximas-horas/6af46e740cf235b99ef509c3) |
 | 11 Nov 14:23 | video | not read | [Tempestade Charles: porque se dividiu o núcleo da depressão e que regiões podem ser afetadas? ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-porque-se-dividiu-o-nucleo-da-depressao-e-que-regioes-podem-ser-afetadas/6af46ee10cf235b99ef509c4) |
 | 11 Nov 14:24 | video | not read | [Tempestade Charles provoca centenas de cancelamentos de voos em Portugal. Lisboa é o aeroporto mais… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-provoca-centenas-de-cancelamentos-de-voos-em-portugal-lisboa-e-o-aeroporto-mais-afetado/6af46c7f0cf2051820fb1534) |
+| 11 Nov 14:48 | video | not read | [Pode faltar ao trabalho por causa da tempestade sem perder o salário? Saiba o que diz a lei ↗](https://cnnportugal.iol.pt/videos/pode-faltar-ao-trabalho-por-causa-da-tempestade-sem-perder-o-salario-saiba-o-que-diz-a-lei/6af46fe20cf2aafa0453e2b8) |
+| 11 Nov 14:48 | video | not read | [Tempestade Charles: Avenida Marginal pode ser cortada nas próximas horas, admite Isaltino Morais ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-avenida-marginal-pode-ser-cortada-nas-proximas-horas-admite-isaltino-morais/6af479550cf235b99ef509d2) |
+| 11 Nov 14:48 | video | not read | [Tempestade Charles: Porto teve uma manhã menos complicada do que o previsto ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-porto-teve-uma-manha-menos-complicada-do-que-o-previsto/6af479c40cf2cb2507aa851f) |
+| 11 Nov 14:48 | video | not read | [Tempestade Charles: empresas privadas não são obrigadas a dispensar trabalhadores ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-empresas-privadas-nao-sao-obrigadas-a-dispensar-trabalhadores/6af478f50cf2cb2507aa851e) |
+| 11 Nov 15:12 | video | not read | ["Este comportamento é revoltante". Comandante critica quem se aproxima de zonas perigosas durante a… ↗](https://cnnportugal.iol.pt/videos/este-comportamento-e-revoltante-comandante-critica-quem-se-aproxima-de-zonas-perigosas-durante-a-tempestade/6af47ac50cf235b99ef509d5) |
+| 11 Nov 15:18 | video | not read | [Tempestade Charles: o pior pode ainda estar para chegar ao Algarve ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-o-pior-pode-ainda-estar-para-chegar-ao-algarve/6af482990cf2aafa0453e2d1) |
+| 11 Nov 15:26 | article | not read | [MAI diz que estado de alerta termina à meia-noite e espera que quinta-feira retorne à normalidade ↗](https://cnnportugal.iol.pt/alerta/mau-tempo/mai-diz-que-estado-de-alerta-termina-a-meia-noite-e-espera-que-quinta-feira-retorne-a-normalidade/20261111/6af485f8d34e5a653d733c4a) |

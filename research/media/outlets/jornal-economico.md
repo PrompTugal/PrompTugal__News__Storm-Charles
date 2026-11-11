@@ -1,13 +1,13 @@
 # Jornal Económico: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | business weekly, online daily (pt) |
-| Items we read | 15: 15 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 13:23 to 11 Nov 14:24 UTC |
-| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 14 not read; wire share 0% |
+| Items we read | 17: 17 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 13:23 to 11 Nov 15:36 UTC |
+| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 16 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -17,10 +17,11 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:23 (article) | +23 min | 2 of 6 | [Web Summit deverá fechar na quarta-feira, anuncia autarquia de Lisboa ↗](https://jornaleconomico.sapo.pt/noticias/web-summit-fechada-na-quarta-feira-anuncia-autarquia-de-lisboa/) |
+| IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 15:36 (article) | +499 min | 6 of 6 | [Mau tempo: Aviso de chuva passa de vermelho para laranja em Leiria, C… ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-aviso-de-chuva-passa-de-vermelho-para-laranja-em-leiria-castelo-branco-beja-e-portalegre/) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 15 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 17 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -64,3 +65,5 @@ José Carlos Lourinho. A by-line is a public professional credit; nothing else a
 | 11 Nov 14:00 | article | not read | [Proteção Civil da Madeira registou 285 ocorrências até cerca das 13:00 ↗](https://jornaleconomico.sapo.pt/noticias/protecao-civil-da-madeira-registou-285-ocorrencias-ate-cerca-das-1300/) |
 | 11 Nov 14:17 | article | not read | [Depressão Charles: Saiba como acionar os seguros em caso de estragos ↗](https://jornaleconomico.sapo.pt/noticias/depressao-charles-saiba-como-acionar-os-seguros-em-caso-de-estragos/) |
 | 11 Nov 14:24 | article | not read | [Mau tempo: Dois mil clientes sem energia às 12h30, diz E-Redes ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-dois-mil-clientes-sem-energia-as-1230-diz-e-redes/) |
+| 11 Nov 15:18 | article | not read | [Mau tempo: Aumenta para oito as estradas condicionadas incluindo Eixo Norte-Sul em Lisboa ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-aumenta-para-oito-as-estradas-condicionadas-incluindo-eixo-norte-sul-em-lisboa/) |
+| 11 Nov 15:36 | article | not read | [Mau tempo: Aviso de chuva passa de vermelho para laranja em Leiria, Castelo Branco, Beja e Portaleg… ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-aviso-de-chuva-passa-de-vermelho-para-laranja-em-leiria-castelo-branco-beja-e-portalegre/) |

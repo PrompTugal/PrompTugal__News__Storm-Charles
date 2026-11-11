@@ -1,13 +1,13 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online (pt) |
-| Items we read | 123: 121 articles, 2 live, 0 video, 0 opinion |
-| First and last | 9 Nov 16:06 to 11 Nov 14:30 UTC |
-| Whose reporting | 6 with a reporter's by-line, 106 the agency's (Lusa), 11 the desk's, 0 not read; wire share 86% |
+| Items we read | 129: 127 articles, 2 live, 0 video, 0 opinion |
+| First and last | 9 Nov 16:06 to 11 Nov 15:30 UTC |
+| Whose reporting | 6 with a reporter's by-line, 111 the agency's (Lusa), 12 the desk's, 0 not read; wire share 86% |
 | Does best (from the counts) | volume: the most items in the list; first on "ANEPC's public warning on Charles (Aviso 21)"; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 
 ## Against the key moments
@@ -20,12 +20,12 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | ANEPC's public warning on Charles (Aviso 21) | 9 Nov 20:30 | 9 Nov 23:37 (article) | +187 min | 1 of 1 | [Mau tempo agrava-se "nos próximos dias": Os conselhos da Proteção Civ… ↗](https://www.noticiasaominuto.com/pais/3081340/mau-tempo-agrava-se-nos-proximos-dias-os-conselhos-da-protecao-civil) |
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:59 (article) | +101 min | 5 of 6 | [Oito distritos com aviso vermelho para vento na quarta-feira ↗](https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:01 (article) | +52 min | 7 of 11 | [Web Summit cancela segundo dia devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
-| IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:10 (article) | +114 min | 3 of 5 | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento ↗](https://www.noticiasaominuto.com/pais/3082238/mau-tempo-beja-lisboa-e-setubal-deixam-de-estar-sob-aviso-vermelho-para-o-vento) |
+| IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:10 (article) | +114 min | 3 of 6 | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento ↗](https://www.noticiasaominuto.com/pais/3082238/mau-tempo-beja-lisboa-e-setubal-deixam-de-estar-sob-aviso-vermelho-para-o-vento) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 123 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 107 items (the item's by-line names the agency).
+- **Links to primary sources:** 1 of 129 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 112 items (the item's by-line names the agency).
 - **It relayed RTP:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -178,3 +178,9 @@ Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Marilin
 | 11 Nov 14:08 | article | Lusa | [Charles provoca 538 ocorrências em 12 horas. Lisboa entre as piores ↗](https://www.noticiasaominuto.com/pais/3082468/charles-provoca-538-ocorrencias-em-12-horas-lisboa-entre-as-piores) |
 | 11 Nov 14:25 | article | Lusa | [Algarve é a zona mais afetada após divisão da depressão Charles ↗](https://www.noticiasaominuto.com/pais/3082478/mau-tempo-algarve-e-a-zona-mais-afetada-apos-divisao-da-depressao-charles-ipma) |
 | 11 Nov 14:30 | article | Lusa | [Seis estradas em Setúbal, Portalegre e Guarda com circulação condicionada ↗](https://www.noticiasaominuto.com/pais/3082473/mau-tempo-seis-estradas-nacionais-nos-distritos-de-setubal-portalegre-e-guarda-com-circulacao-condicionada) |
+| 11 Nov 14:52 | article | Lusa | [Loures regista cerca de 56 ocorrências e tem várias estradas cortadas ↗](https://www.noticiasaominuto.com/pais/3082498/mau-tempo-loures-regista-cerca-de-56-ocorrencias-e-tem-varias-estradas-cortadas) |
+| 11 Nov 14:53 | article | Lusa | [Algarve registou 19 ocorrências em duas horas ↗](https://www.noticiasaominuto.com/pais/3082492/mau-tempo-algarve-registou-19-ocorrencias-em-duas-horas-protecao-civil) |
+| 11 Nov 15:01 | article | Lusa | [Porto registou 11 ocorrências de infiltrações e "pequenas inundações" ↗](https://www.noticiasaominuto.com/pais/3082506/mau-tempo-porto-registou-11-ocorrencias-de-infiltracoes-e-pequenas-inundacoes-protecao-civil-c-audio) |
+| 11 Nov 15:06 | article | Lusa | [Aumenta para oito as estradas condicionadas, incluindo Eixo Norte-Sul ↗](https://www.noticiasaominuto.com/pais/3082507/mau-tempo-aumenta-para-oito-as-estradas-condicionadas-incluindo-eixo-norte-sul-em-lisboa) |
+| 11 Nov 15:22 | article | Lusa | [Excesso de zelo? "Não podemos responder só quando há uma desgraça" ↗](https://www.noticiasaominuto.com/pais/3082515/mau-tempo-mai-recusa-que-tenha-havido-excesso-de-zelo-e-diz-que-pais-tem-de-deixar-de-ser-reativo) |
+| 11 Nov 15:30 | article | Notícias ao Minuto | [Mau tempo: GNR atualiza vias interditadas e condicionadas. Confira ↗](https://www.noticiasaominuto.com/pais/3082518/gnr-atualiza-vias-interditas-e-condicionadas-devido-ao-mau-tempo-confira) |
