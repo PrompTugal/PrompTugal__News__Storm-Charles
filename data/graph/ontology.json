@@ -1,6 +1,6 @@
 {
   "about": "The ontology of an incident on this site: eight kinds of thing and nine relations, small enough to explain on one page (README.md beside this file). tools/graph-build.mjs reads it, builds data/graph/storm.json and data/graph/tables/*.json from the incident's JSON files, and refuses a node or edge this file does not allow. Kept by incident.graph@web-summit.dinis.",
-  "version": 3,
+  "version": 4,
   "written": "2026-11-10T23:50Z",
   "by": "incident.graph@web-summit.dinis",
   "every_item": {
@@ -199,7 +199,7 @@
   },
   "not_in_the_graph": "People. No private person is a node; journalists and officials are not modelled here (incident.media@ keeps by-lines on public articles in its own files). Forecast values and observations stay in weather/*.json: the graph links the dataset, not each number.",
   "not_a_warning_service": "The graph records what authorities decided and warned, and when we read it. It is not a forecast and gives no advice: follow IPMA and ANEPC.",
-  "updated": "2026-11-11T03:50Z",
+  "updated": "2026-11-11T05:55Z",
   "grammar": "Every edge is a verb with a distinct inverse (relations.<verb>.inverse); there is no generic 'related to' edge. The whole graph is never drawn: a view is the result of a question. A node opens into its own graph (a warning into IPMA's messages for it, a decision into what it followed and where it was read). After graphs.sgit.ai (meaning through connectivity) and Fractal Semantic Graphs.",
   "crossings": {
     "about": "How this graph joins the site's other graphs without copying them. Each world keeps its own kinds, verbs and ids; nothing of theirs becomes a node here. A crossing is a named edge with an inverse from a node of this graph to a thing in another world, written as <world>/<its own id> and opened on that world's own page. One thing has one id in each world and the entity id is the pivot: where the other world declares the same entity as this graph's node, the crossing is a fact; where the builder matched by host, it is a hypothesis and says why. Built into data/graph/crossings.json by tools/graph-build.mjs; never written by hand.",
@@ -220,7 +220,7 @@
         "what": "The weather data supply chain: bodies, observing systems, models, datasets, warning services and sites, with its own ten verbs (incident.meteorology@).",
         "index": "meteorology/lineage.json",
         "page": "meteorology/nodes/<id>.html",
-        "joined_by": "the host of a body's address"
+        "joined_by": "the joins it states on its own nodes: `entity` (the same thing), `of` (who publishes a site), `source` (the register's id); a body with none of these, by the host of its address"
       },
       "evidence": {
         "what": "Wayback: our own dated captures of outside pages and feeds (incident.archivist@).",
@@ -244,7 +244,23 @@
           "Actor"
         ],
         "to": "meteorology",
-        "what": "the same body in the weather data supply chain, where its models, observing systems and services are"
+        "what": "the same thing in the weather data supply chain (a body, or a warning service that is itself a body here), where its models, observing systems and services are"
+      },
+      "has-site": {
+        "inverse": "site-of",
+        "from": [
+          "Actor"
+        ],
+        "to": "meteorology",
+        "what": "a weather site this actor publishes, as the supply chain records it: what the site shows and where each picture on it comes from"
+      },
+      "publishes-as": {
+        "inverse": "published-by",
+        "from": [
+          "Actor"
+        ],
+        "to": "meteorology",
+        "what": "a dataset or warning service of this actor in the supply chain (joined through the actor's entry in the register of sources)"
       },
       "issued-through": {
         "inverse": "carries",

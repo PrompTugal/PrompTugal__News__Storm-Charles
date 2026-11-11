@@ -433,7 +433,21 @@ if (REG) REG.sources.forEach((r, i) => {
 // a warning goes through the one warning service its body issues alone (a service two bodies issue is nobody's own).
 const M_BODY = opt('meteorology/nodes/body.json'), M_SVC = opt('meteorology/nodes/warning-service.json'), M_ISS = opt('meteorology/edges/issues.json')
 const lineageOf = new Map()
+// the joins meteorology/ states on its own nodes (since 05:00 on 11 Nov): "entity" (the same thing as that entity), "of" (a
+// site: the entity that publishes it), "source" (the register's id of the body it belongs to). Each is its statement: a fact.
+const M_DIR = 'meteorology/nodes/', M_FILES = fs.existsSync(path.join(ROOT, M_DIR)) ? fs.readdirSync(path.join(ROOT, M_DIR)).filter(f => f.endsWith('.json')).sort() : []
+const regActor = new Map(cross.filter(c => c.rel === 'registered-as' && c.node).map(c => [c.node, c.from]))
+for (const f of M_FILES) { const F = J(M_DIR + f); (F.nodes || []).forEach((m, i) => {
+    const base = { to: 'meteorology/' + m.id, name: m.name, href: `meteorology/nodes/${m.id}.html`, label: 'fact', source: fileUrl(M_DIR + f), read: toZ(F.updated), origin: `/${M_DIR}${f}#/nodes/${i}` }
+    const viaEntity = id => id && nodes.has(entGraph.get(id)) ? entGraph.get(id) : null
+    let a
+    if ((a = viaEntity(m.entity))) { if (F.type === 'body' && !lineageOf.has(a)) lineageOf.set(a, m.id); crossing({ from: a, rel: 'in-lineage-as', ...base, why: `the supply chain states it is the same thing as the entity ${m.entity}, and the entity names this node` }) }
+    if ((a = viaEntity(m.of))) crossing({ from: a, rel: 'has-site', ...base, why: `the supply chain states that ${m.of} publishes this site, and the entity names this node` })
+    if (m.source && (a = regActor.get(m.source))) crossing({ from: a, rel: 'publishes-as', ...base, why: `the supply chain states it belongs to ${m.source} in the register of sources, which is this actor's entry` })
+}) }
+// a body there with no stated entity: joined by the host of its address, and labelled as our match
 if (M_BODY) M_BODY.nodes.forEach((b, i) => {
+    if (b.entity) return
     const [a, h] = actorByHosts([host(b.url)]); if (!a || lineageOf.has(a)) return
     lineageOf.set(a, b.id)
     crossing({ from: a, rel: 'in-lineage-as', to: 'meteorology/' + b.id, name: b.name, href: `meteorology/nodes/${b.id}.html`, label: 'hypothesis', why: `matched by host: the body's address there is on ${h}, this actor's own channel`, source: fileUrl('meteorology/nodes/body.json'), read: toZ(M_BODY.updated), origin: `/meteorology/nodes/body.json#/nodes/${i}` })
