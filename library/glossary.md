@@ -16,6 +16,7 @@ Not a warning service: follow IPMA, ANEPC and your local authorities.
 
 | Term | What it means here | Where |
 |---|---|---|
+| **Wayback** | Our own dated captures of the outside pages this site cites, under `evidence/`: a screenshot, the sha256 of what was served, the time read, whether it changed since. Not the Internet Archive's Wayback Machine; the name is borrowed. "Wayback for data" is the same for feeds (`evidence/data.json`). | [evidence/](../evidence/README.md) |
 | **primary source** | The body whose decision or warning it is, on its own channel: IPMA for a warning, the government for an alert, Web Summit for its programme. The front page's headline always comes from one, with the time it was published. | [incident.json](../incidents/2026-11-10-storm-charles/incident.json); the gate checks the headline has an https source and a time |
 | **source** | Any public place a value was read from, primary or not, given as a URL. Each one we use is listed with what it holds, how often it changes and whether it may be reused. | [sources.json](../incidents/2026-11-10-storm-charles/data/decisions/sources.json) |
 | **time read** | The UTC time at which we read the value from its source (`read_utc`, `read`, `read_at`). It is not the time the source published it, which is given separately when the source states it. | every record under [data/](../incidents/2026-11-10-storm-charles/data/README.md) |
