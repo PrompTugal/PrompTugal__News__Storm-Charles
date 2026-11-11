@@ -306,7 +306,7 @@
     var D1 = T(day(t) + 'T00:00:00Z') + 864e5, peak = {}, kinds = {}
     ;(W.instances || []).forEach(function (w) {
       if (w.gone_read_utc || !RANK[w.level]) return
-      var a = T(w.start + 'Z'), b = T(w.end + 'Z'); if (!(b > t && a < D1)) return
+      var a = T(w.start_utc || w.start + 'Z'), b = T(w.end_utc || w.end + 'Z'); if (!(b > t && a < D1)) return   // start_utc / end_utc are incident.ipma@'s reading (IPMA writes no zone); unconfirmed for the Azores
       if (!peak[w.area] || RANK[w.level] > RANK[peak[w.area]]) { peak[w.area] = w.level; kinds[w.area] = {} }
       if (w.level === peak[w.area]) kinds[w.area][EN[w.type] || w.type] = 1
     })
@@ -330,7 +330,7 @@
       '<p class="wxc-lead">' + lvl('red') + ' ' + count.red + ' areas · ' + lvl('orange') + ' ' + count.orange + ' · ' + lvl('yellow') + ' ' + count.yellow + ' <span class="meta">of IPMA\'s ' + areas.length + ' warning areas</span></p>' +
       '<div class="wxc-where2"><div class="wxc-scroll plain"><svg class="wxc-map" viewBox="0 0 ' + Wd + ' ' + Ht + '" role="img" aria-label="Mainland Portugal: each of IPMA\'s 18 district warning areas as a dot at a label spot, in the colour of its highest warning level for the rest of today, with the first letter of the level in the dot (R, O, Y). The same, with the level written, is the list beside it.">' + g + '</svg></div>' +
       '<div><h3>The mainland, highest first</h3><ul class="wxc-list tight cols">' + main.slice().sort(function (a, b) { return (RANK[peak[b.id]] || 0) - (RANK[peak[a.id]] || 0) || a.name.localeCompare(b.name) }).map(row).join('') + '</ul><h3>Madeira and the Azores</h3><ul class="wxc-list tight">' + isl.map(row).join('') + '</ul>' +
-      '<p class="meta">Each dot sits at a label spot (the mean of IPMA\'s forecast places in the area), not on a border: this is not a map of the districts\' shapes.</p></div></div>' +
+      '<p class="meta">Each dot sits at a label spot (the mean of IPMA\'s forecast places in the area), not on a border: this is not a map of the districts\' shapes. IPMA writes no time zone on its warnings; the hours are read as UTC, which is sure for the mainland and Madeira in winter and not confirmed for the Azores.</p></div></div>' +
       '<p>' + prov('areas', 'IPMA warnings, all areas (kept by incident.ipma@)', from.read_utc || W.updated) + ' · ' + prov('places', 'IPMA\'s areas and places', P.updated) + '</p></section>'
   }
 
