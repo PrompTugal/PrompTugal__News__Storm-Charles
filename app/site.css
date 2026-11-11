@@ -336,3 +336,25 @@ footer.agent .cap { display: block; font-size: 11.5px; line-height: 1.45; margin
 .banner h1 { font-size: clamp(24px, 3.5vw, 38px); max-width: 30em; }
 .banner .stand { font-size: 16px; margin-top: 8px; }
 @media (max-width: 640px) { .theme span { display: none; } header.top .wrap { row-gap: 5px; } }
+
+/* ---- round 13 (incident.designer@): the dashboard's headings (CSS only; app/storm.js is incident.dev@'s); print. design/round-13.md ---- */
+.incident { font-variant-numeric: tabular-nums; }
+.incident h2 { font-size: 21px; line-height: 1.25; margin: 2rem 0 .5rem; padding-top: .8rem; border-top: 3px solid var(--ink); }
+.incident h3 { font-size: 16px; margin: 1.2rem 0 .4rem; }
+.incident .inc-wait h2 { border-top: 0; padding-top: 0; }
+.incident table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+.incident th, .incident td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; vertical-align: top; }
+.incident th { background: var(--surface-2); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); }
+@media print {
+  :root { --paper: #fff; --surface: #fff; --surface-2: #f2f2f0; --ink: #000; --ink-2: #333; --line: #bbb; --line-2: #888; }
+  header.top nav, .theme, .live, .wx-changes, .wx-phases, .wx-now, .wx-past, .wx-side, .wx-nowtxt, .wx-state, script { display: none !important; }
+  header.top { background: none; color: #000; border-bottom: 2px solid #000; }
+  body { font-size: 11pt; } .wrap { max-width: none; padding: 0; }
+  .card, .wx-tile, .wx-cellmap, .wx-row { break-inside: avoid; }
+  .wx-scroll { overflow: visible; } .wx-strip { min-width: 0; --lab: 110px; } .wx-chart { min-width: 0; }
+  .wx-bar, .wx-d, .lvl, .wx-cell { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  details.wx-table, details.wx-fold { display: block; } details.wx-table > *:not(summary), details.wx-fold > *:not(summary) { display: revert; }
+  a { color: inherit; } .prov a::after, .wx-src a::after { content: " <" attr(href) ">"; font-size: 8pt; word-break: break-all; }
+  .grid { grid-template-columns: 1fr; }
+}
+@media print { .prov { white-space: normal; overflow-wrap: anywhere; } .wx-group .wx-track span:first-child { position: static; max-width: none; } .wx-lab { position: static; } .wx-where .wx-strip { --lab: 110px; } .wx-table table { display: table; } .wx-gridwrap { grid-template-columns: 1fr; } }
