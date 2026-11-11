@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // A second reader of each new press headline: which of the team's facts it reports, by open-weight models through OpenRouter, compared
-// with this desk's own patterns (proposed by incident.models@web-summit.dinis for incident.media@web-summit.dinis, 11 November 2026,
+// with this desk's own patterns (proposed by incident.models@web-summit.dinis for incident.media@web-summit.dinis, 11 November 2026; the matcher follows rank.mjs since 22:23 UTC,
 // WS-214; Dinis ~22:00 UTC, BRIEF.md: collectors through OpenRouter, open-source models). Run after the coverage read:
 //   node research/media/models-match.mjs [--files 2] [--max 15] [--dry] [--wake "hourly HH:MM"]
 // For each article in the newest coverage files (research/media/coverage/*.json) not yet read, its headline and publication time go to
@@ -22,7 +22,15 @@ const args = process.argv.slice(2), opt = (k, d) => { const i = args.indexOf(k);
 const FILES = +opt('--files', 2), MAX = +opt('--max', 15), DRY = args.includes('--dry'), WAKE = opt('--wake', process.env.INCIDENT_WAKE || null)
 const OUT = path.join(HERE, 'models-match.json')
 const facts = JSON.parse(fs.readFileSync(path.join(HERE, 'facts.json'), 'utf8')).facts
-const patternFact = t => facts.find(f => f.pattern && new RegExp(f.pattern, 'i').test(t))?.id || 'none'
+// The desk's own rule, as in tools/rank.mjs: each fact's window (from or primary_time, to until or the end of 12 November) and its
+// not_matches (read by hand); every fact whose pattern matches counts, not only the first. An item with no time is matched on the
+// pattern alone (rank.mjs does not rank it).
+const patternFacts = a => facts.filter(f => {
+    if (!f.pattern || !new RegExp(f.pattern, 'i').test(a.title)) return false
+    if (!a.published) return true
+    const t = a.published.replace(/\.\d+Z$/, 'Z'), from = f.from || f.primary_time || '', until = f.until || '2026-11-13T00:00:00Z'
+    return t >= from && t < until && !(f.not_matches || []).some(n => n.outlet === a.outlet && n.at === t)
+}).map(f => f.id)
 let out; try { out = JSON.parse(fs.readFileSync(OUT, 'utf8')) } catch { out = null }
 out = out || { about: "Each press headline read a second time by open-weight models through OpenRouter (research/media/models-match.mjs, task match-fact of models/delegate.json): which of the facts in facts.json it reports, compared with this desk's own pattern. The pattern is the reference; the models' answer is evidence, labelled with their names. Ids and urls only.", by: AGENT, updated: null, read: {} }
 
@@ -37,10 +45,10 @@ for (const a of todo) {
     if (seen) { out.read[a.id] = { ...seen, url: a.url, outlet: a.outlet, published: a.published, same_headline_as: seen.id || null, cost_usd: 0, calls: 0 }; if (seen.agree_with_pattern) agree++; continue }
     const r = await delegate({ task: 'match-fact', input: { id: a.id, input: a.title, published_at: a.published, facts: facts.map(f => ({ id: f.id, what: f.what })) }, agent: AGENT, wake: WAKE })
     cost += r.cost_usd
-    const ref = patternFact(a.title), open = r.models.filter(m => !m.comparison && m.valid), cmp = r.models.find(m => m.comparison)
-    const said = open.map(m => m.answer.fact), same = open.length >= 2 && said.every(v => v === ref)
+    const refs = patternFacts(a), ref = refs[0] || 'none', open = r.models.filter(m => !m.comparison && m.valid), cmp = r.models.find(m => m.comparison)
+    const said = open.map(m => m.answer.fact), same = open.length >= 2 && said.every(v => refs.length ? refs.includes(v) : v === 'none')
     if (same) agree++
-    out.read[a.id] = { url: a.url, outlet: a.outlet, published: a.published, at: r.at, trace_id: r.trace_id, label: 'evidence', pattern: ref,
+    out.read[a.id] = { url: a.url, outlet: a.outlet, published: a.published, at: r.at, trace_id: r.trace_id, label: 'evidence', pattern: ref, patterns: refs,
         models: Object.fromEntries(open.map(m => [m.model, m.answer.fact])), models_agree: open.length >= 2 && new Set(said).size === 1, agree_with_pattern: same,
         comparison: cmp ? { model: cmp.model, label: 'commercial, for comparison', fact: cmp.valid ? cmp.answer.fact : null } : null, cost_usd: r.cost_usd, calls: r.calls, title_sha256: tsha(a.title), id: a.id }
     byTitle.set(tsha(a.title), out.read[a.id])
