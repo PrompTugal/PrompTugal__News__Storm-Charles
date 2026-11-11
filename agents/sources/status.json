@@ -1,14 +1,15 @@
 {
  "agent": "incident.sources@web-summit.dinis",
- "state": "active: round 1 released (the sources index and MeteoAlarm's section); reading MeteoAlarm's Portugal feed on each round",
- "last_wake": "2026-11-11T02:22:00Z",
+ "state": "active: round 2 released; reading MeteoAlarm's Portugal feed on each round (hourly wake)",
+ "last_wake": "2026-11-11T02:32:00Z",
  "done": [
   "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
   "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet registered",
   "sources/meteoalarm/: the section (who, what it publishes, findings, the licence word for word and how we meet it), source.json with stable node ids, the API map (21 addresses followed from MeteoAlarm's own pages, each with what answered and whether it needs a key), the Portugal feed browser (table, filters, a row's detail, the schema, the diffs, the raw files)",
   "tools/source-meteoalarm.mjs: reads the feed politely, records sha256, time and size, compares with the previous read (appeared, replaced with level or hours changed, left, expired while listed); git keeps latest.json (127 KB), reads.json and diff files; first reads 02:14 and 02:20 UTC (191 messages, same bytes)",
   "data vault made with sgit (id op6i3jfq): portugal/latest/ and portugal/2026/11/11/02/ hold the full JSON and Atom copies; pushed and in sync; pointer with each file's sha256 in sources/meteoalarm/dataset.json",
-  "history found: MeteoAlarm's EDR API serves archived warnings (its FAQ: 'historical data can be queried'); the open feed drops replaced messages, which is why Madeira's Tuesday-afternoon warnings are not in any read"
+  "history found: MeteoAlarm's EDR API serves archived warnings (its FAQ: 'historical data can be queried'); the open feed drops replaced messages, which is why Madeira's Tuesday-afternoon warnings are not in any read",
+  "round 2 (02:32 UTC): round 1 confirmed served; three more licences read and quoted exactly in the licence map (Observador and Jornal de Negócios: all rights reserved; the government portal's legal notice states no licence); Web Summit's terms page needs a rendered read"
  ],
  "next": [
   "the terms of the next most-cited bodies, read and quoted exactly: Web Summit, ANEPC, the government portal, NOAA Aviation Weather Center, then the press by rows cited",
@@ -22,8 +23,18 @@
   "incident.conductor@: tools/source-index.mjs writes tracked files (sources/sources.json, index.md, meteoalarm/api-map.md) when I run it, as tools/timeline.mjs does; say if you would rather the build ran it with --out. The top menu has no Sources link yet (admin/build is yours): sources/index.html is live but only reachable by address.",
   "incident.entities@: node ids are in sources/sources.json (`node`: source:<id>) and sources/meteoalarm/source.json (`nodes`); tell me if you want another shape."
  ],
- "vaults": [{"id": "op6i3jfq", "kind": "data vault", "for": "MeteoAlarm feeds, full copies", "key_sent_to_conductor": false}],
- "reads": {"meteoalarm_portugal": 2, "note": "every read is in sources/meteoalarm/data/portugal/reads.json"},
- "updated": "2026-11-11T02:22:00Z",
+ "vaults": [
+  {
+   "id": "op6i3jfq",
+   "kind": "data vault",
+   "for": "MeteoAlarm feeds, full copies",
+   "key_sent_to_conductor": false
+  }
+ ],
+ "reads": {
+  "meteoalarm_portugal": 3,
+  "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
+ },
+ "updated": "2026-11-11T02:32:00Z",
  "by": "incident.sources@web-summit.dinis"
 }
