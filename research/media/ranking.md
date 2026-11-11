@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:38 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 225 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 01:37 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 230 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -77,7 +77,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 00:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 01:37 UTC | | | | |
 
 ### The storm's track is further south than forecast (strongest winds south of Lisbon)
 
@@ -87,6 +87,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 |---|---|---|---|---|---|
 | 1 | Observador | 10 Nov 22:07 | unknown | live blog entry | [Modelos já apontam para uma trajetória mais a sul: entre Setúbal e Si…](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791172-scroll) |
 | 2 | RTP | 10 Nov 22:22 | unknown | Rádio e Televisão de Portugal | [22h IPMA depressão mudou a trajetória mais para sul](https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275) |
+| 3 | Expresso | 10 Nov 23:54 | unknown | not read | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa…](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
 
 Whom they quote at IPMA, as printed (role and outlet only):
 
@@ -98,7 +99,7 @@ Whom they quote at IPMA, as printed (role and outlet only):
 - **Observador**, Rádio Observador's 23:00 bulletin, published 23:16: the same meteorologist of IPMA, in statements to Rádio Observador
 
 - VOST Portugal (a volunteers' association, not an authority) posted at 23:00 that the ECMWF model's 22:30 run showed the track shifting south: a model, not IPMA (in coverage.json, social.accounts).
-- On the wind: Observador's 22:35 entry and RTP's 23:08 entry both say that if very strong winds form they would be felt south of Lisbon and not in the Lisbon region. No title or entry we read says the wind is weaker than forecast; IPMA's red warnings for Lisbon were unchanged.
+- On the wind: Observador's 22:35 entry and RTP's 23:08 entry say that if very strong winds form they would be felt south of Lisbon. Two later headlines speak of less wind: Expresso, 23:54 ("muda trajetória para sul, com menos vento") and CNN Portugal, 00:31 (the storm reaches Lisbon "com menos intensidade"). Headlines are evidence of what the press reports, not of the weather: IPMA's red warnings for Lisbon were unchanged at our last read of the timeline.
 - Público's live headline, read by incident.conductor@ at 00:29, is not in our list: Público's live page was not among the URLs we could read with entry times.
 - An earlier Lusa piece (CNN Portugal, 20:07) on the several possible entry points of the storm is about the uncertainty, not the shift, and is outside this table (items from 21:00).
 - Correction (00:50 UTC, 11 November): our first version of this table had RTP's 22:22 bulletin first and Observador at 23:16. We had not found Observador's live blog (its address names another story). With its entries read, Observador is first at 22:07 on the models and at 22:35 on IPMA's word; the order of the two on IPMA's word depends on what Antena 1's 22:00 bulletin said, which we did not hear.
@@ -112,15 +113,15 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 | Outlet | Items | Reporter's by-line | Agency (Lusa) | Wire share | Desk | By-line not read | Items linking a primary source | Bodies linked |
 |---|---|---|---|---|---|---|---|---|
 | Notícias ao Minuto | 81 | 4 | 71 | 88% | 6 | 0 | 1 | IPMA |
-| CNN Portugal | 25 | 3 | 6 | 67% | 0 | 16 | 1 | Diário da República |
+| CNN Portugal | 26 | 3 | 6 | 67% | 0 | 17 | 1 | Diário da República |
 | Observador | 20 | 7 | 6 | 30% | 7 | 0 | 1 | IPMA |
-| Expresso | 17 | 0 | 0 | n/a | 0 | 17 | 0 |  |
+| Expresso | 19 | 0 | 0 | n/a | 0 | 19 | 0 |  |
 | Diário de Notícias | 17 | 16 | 1 | 6% | 0 | 0 | 1 | AMN, Lusoponte |
-| RTP | 15 | 0 | 0 | 0% | 15 | 0 | 0 |  |
+| RTP | 16 | 0 | 0 | 0% | 16 | 0 | 0 |  |
 | Público | 15 | 9 | 3 | 21% | 2 | 1 | 5 | ANEPC, Diário da República, IPMA |
 | The Portugal News | 12 | 0 | 0 | n/a | 0 | 12 | 0 |  |
 | ECO | 6 | 3 | 0 | 0% | 3 | 0 | 0 |  |
-| Correio da Manhã | 5 | 0 | 3 | 60% | 2 | 0 | 0 |  |
+| Correio da Manhã | 6 | 0 | 4 | 67% | 2 | 0 | 0 |  |
 | TEK Notícias (SAPO) | 4 | 4 | 0 | 0% | 0 | 0 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
 | Jornal de Negócios | 2 | 1 | 0 | 0% | 1 | 0 | 1 | Diário da República, Government, IPMA |
 | Euronews | 2 | 2 | 0 | 0% | 0 | 0 | 0 |  |
@@ -132,7 +133,7 @@ Among outlets with at least four items:
 
 - **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (33%), Diário de Notícias (6%), Observador (5%), CNN Portugal (4%).
 - **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (35%).
-- **The wire underneath:** 90 of 225 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **The wire underneath:** 91 of 230 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
