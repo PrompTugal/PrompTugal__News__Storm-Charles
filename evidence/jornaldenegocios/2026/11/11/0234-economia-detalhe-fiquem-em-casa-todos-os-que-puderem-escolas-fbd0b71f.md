@@ -24,6 +24,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the second screenshot | `a9e09f292b45f7a54ade8e1d6484213bb991ca11a4903b877e5e405114742805` (The same load with 3 fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.) |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | Press: all rights reserved by the publisher. The capture is kept privately; shown here are only the hash, the title, the time read and a short excerpt, with the link. |
+| Terms | the site's terms page: `https://www.jornaldenegocios.pt/institucional/detalhe/20150902-1659-33jn-1-3-disclaimer` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Negócios: Cotações, Mercados, Economia, Empresas Menu Jornal de Negócios INICIAR SESSÃO ASSINE 3 MESES/3€ Notificações Início Ao Minuto Premium Cotações Economia Empresas Mercados Poderosos 2026 O Poder de Fazer Acontecer Podcasts Opinião Weekend Empresite Caldeirão de Bolsa MUST…"

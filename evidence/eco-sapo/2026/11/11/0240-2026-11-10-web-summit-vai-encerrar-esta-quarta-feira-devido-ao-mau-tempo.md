@@ -24,6 +24,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the second screenshot | `830ebd0041f633133dbbda2fba5e92264e5e21abac54287c11bf454b60f5a5ac` (The same load with 3 fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.) |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | Press: all rights reserved by the publisher. The capture is kept privately; shown here are only the hash, the title, the time read and a short excerpt, with the link. |
+| Terms | the site's terms page: `https://eco.sapo.pt/termos-e-condicoes/` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Saltar os links da Barra SAPO MENU MAIL JORNAIS Categorias Jornais Notícias Desporto Cultura e Lifestyle Serviços e Classificados SAPO Mail Auto SAPO SAPO Emprego SAPO Blogs SAPO Promos SUPER CASA Nova APP SAPO Parceiros SAPO Subscrever: SMS Siga-nos: Entrar Assinatura premium Úl…"

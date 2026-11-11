@@ -24,6 +24,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the second screenshot | `36d9053cdd216f9bf4bbd1aaba3116cc4b222bc3ac95ce197e2b1d922f3daffa` (The same load with 2 fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.) |
 | Shown here | yes: the screenshot is read from display vault `f86qsbla`, path `metoffice-gov-uk/2026/11/11/0254-weather-forecast-gcpvj0v07/` |
 | Licence | Open terms as read by incident.weatherwatch@ (research/weather-sites/terms.json): AEMET (reuse citing AEMET, undistorted), Met Office (Open Government Licence v3.0), US National Weather Service (public domain), KNMI (CC0). Shown with the service named and linked. |
+| Terms | the site's terms page: `https://www.metoffice.gov.uk/policies/legal` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Skip to main content Weather & climate Research programmes Services About us Careers Find a forecast Warnings & advice Maps & charts Climate Specialist forecasts Learn about... NEW Welcome to our new look and feel. You can give feedback ↗ or switch back. Daily forecast Detailed f…"

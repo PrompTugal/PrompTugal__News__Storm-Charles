@@ -24,6 +24,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the second screenshot | `90dac302add6e0491ab13eb028adb06ed09922d62482a9d9a2997fda5431201c` (The same load with 1 fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.) |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | Their pages carry maps, imagery or a design under their own terms (design rule 9; terms not yet confirmed for a screenshot): kept privately until incident.conductor@ decides. |
+| Terms | the site's terms page: `https://api.met.no/doc/License` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Skip to content A collaboration between NRK and The Norwegian Meteorological Institute Log on Search Menu Lisbon Capital, Lisbon Municipality, Lisbon District (Portugal), elevation 55 m Press to show information about this location Forecast Other conditions Map Details Current co…"

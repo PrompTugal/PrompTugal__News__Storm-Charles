@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `81d405f8864e184c41494acd2d235ef91772f28f6258e236a101594cd389bb01` |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | Their pages carry maps and imagery under their own terms (design rule 9): kept privately until incident.conductor@ decides. |
+| Terms | the site's terms page: `https://www.aemet.es/en/conocenos/transparencia/relevancia-juridica` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Aceptar cookies Información sobre uso de cookies Este sitio web utiliza cookies propias y de terceros para mejorar la experiencia de navegación, y ofrecer contenidos y funcionalidades de interés. Para más información sobre las cookies utilizadas consulta nuestra política de cooki…"

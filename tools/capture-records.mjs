@@ -31,6 +31,13 @@ const utc = iso => `${+iso.slice(8, 10)} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', '
 const mdEsc = s => String(s || '').replace(/\s*\|\s*/g, ' · ').replace(/\[/g, '(').replace(/\]/g, ')').replace(/[*`]/g, '').replace(/\s+/g, ' ').trim()   // the build's markdown has no escapes
 const isRecord = n => /^\d{4}-.*\.json$/.test(n)
 
+// each site's terms page, where incident.weatherwatch@ has read it (research/weather-sites/terms.json): host -> {url, read}
+const TERMS = new Map()
+try {
+    const t = J(path.join(ROOT, 'research/weather-sites/terms.json')).sites, ad = J(path.join(ROOT, 'research/weather-sites/addresses.json')).addresses
+    for (const r of ad) { const x = t[r.id]; if (!x?.terms_url) continue; let h; try { h = new URL(r.url).hostname.replace(/^www\./, '') } catch { continue } if (!TERMS.has(h)) TERMS.set(h, { url: x.terms_url, read: x.read, read_by: 'incident.weatherwatch@web-summit.dinis' }) }
+} catch { /* the research files are another agent's: absent is fine */ }
+const termsOf = host => { const h = host.replace(/^www\./, ''); for (const [k, v] of TERMS) if (h === k || h.endsWith('.' + k)) return v; return null }
 // ---- 1. new captures -> vault working copies and records
 const existing = walk(EV, isRecord).map(J)
 const byId = new Map(existing.map(r => [r.id, r]))
@@ -82,6 +89,7 @@ for (const chain of chains.values()) {
 }
 
 // ---- 3. the records and their pages
+for (const r of all) { const t = termsOf(r.host); if (t) r.terms = t }
 const depth = id => '../'.repeat(id.split('/').length)
 for (const r of all) {
     const chain = chains.get(r.url), i = chain.indexOf(r)
@@ -115,7 +123,7 @@ ${r.captured ? `| sha256 of the HTML as served | \`${r.sha256_html || 'not kept'
 | sha256 of the visible text | \`${r.sha256_text}\` |
 ${r.sha256_screenshot ? `| sha256 of the screenshot | \`${r.sha256_screenshot}\` |\n` : ''}${r.clean ? `| sha256 of the second screenshot | \`${r.clean.sha256_screenshot}\` (${r.clean.what}) |\n` : ''}` : ''}| Shown here | ${r.shown ? `yes: the screenshot is read from display vault \`${r.vault.id}\`, path \`${r.vault.path}/\`` : r.captured ? 'no: the capture is kept privately; only the hash, title, time and a short excerpt are shown' : 'nothing to show'} |
 | Licence | ${mdEsc(r.licence)} |
-| Robots | ${mdEsc(r.robots)}; read as \`${r.client}\`, not logged in |
+${r.terms ? `| Terms | the site's terms page: \`${r.terms.url}\` (read ${r.terms.read} by ${r.terms.read_by}) |\n` : ''}| Robots | ${mdEsc(r.robots)}; read as \`${r.client}\`, not logged in |
 ${r.excerpt ? `\n**The first words on the page** (a short excerpt): "${mdEsc(r.excerpt)}…"\n` : ''}
 ${r.diff ? `## What changed since the capture before
 

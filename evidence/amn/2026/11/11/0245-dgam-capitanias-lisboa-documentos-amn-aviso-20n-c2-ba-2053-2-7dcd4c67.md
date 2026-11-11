@@ -22,6 +22,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the visible text | `4dff46784e7c7a4ca77c1990b471894e17ed00d1eea2b1e3eb8d79e2c22b84b4` |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | A public body’s public pages, shown as a dated record with the body named and linked. |
+| Terms | the site's terms page: `https://www.amn.pt/Paginas/InformacaoLegal.aspx` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | no robots.txt (404); read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 ## Every capture of this address

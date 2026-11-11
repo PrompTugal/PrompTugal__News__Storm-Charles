@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `b6f441be833658541c5474761ed58255672e7dcdb931ee6b7f779e86fc7a9cea` |
 | Shown here | yes: the screenshot is read from display vault `f86qsbla`, path `weather-gov/2026/11/11/0254-mapclick-php-lat-40-7146-lon-74-0071/` |
 | Licence | Open terms as read by incident.weatherwatch@ (research/weather-sites/terms.json): AEMET (reuse citing AEMET, undistorted), Met Office (Open Government Licence v3.0), US National Weather Service (public domain), KNMI (CC0). Shown with the service named and linked. |
+| Terms | the site's terms page: `https://www.weather.gov/disclaimer` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | no robots.txt (404); read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "HOME FORECAST PAST WEATHER SAFETY INFORMATION EDUCATION NEWS SEARCH ABOUT View Location Examples Your local forecast office is New York, NY News Headlines Precipitation Observers Wanted! Especially Northern Queens, Manhattan, and NE NJ Current conditions at New York City, Central…"

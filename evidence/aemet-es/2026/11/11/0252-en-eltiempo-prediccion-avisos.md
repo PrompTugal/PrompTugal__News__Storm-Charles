@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `4017353d42e3df1ef02966426bdd1948bbcc64a4f46eb4ed0cd8c71825454937` |
 | Shown here | yes: the screenshot is read from display vault `f86qsbla`, path `aemet-es/2026/11/11/0252-en-eltiempo-prediccion-avisos/` |
 | Licence | Open terms as read by incident.weatherwatch@ (research/weather-sites/terms.json): AEMET (reuse citing AEMET, undistorted), Met Office (Open Government Licence v3.0), US National Weather Service (public domain), KNMI (CC0). Shown with the service named and linked. |
+| Terms | the site's terms page: `https://www.aemet.es/en/conocenos/transparencia/relevancia-juridica` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Aceptar cookies Información sobre uso de cookies Este sitio web utiliza cookies propias y de terceros para mejorar la experiencia de navegación, y ofrecer contenidos y funcionalidades de interés. Para más información sobre las cookies utilizadas consulta nuestra política de cooki…"

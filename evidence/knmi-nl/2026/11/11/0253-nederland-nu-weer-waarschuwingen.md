@@ -24,6 +24,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the second screenshot | `47036afc63374b17c4762df23b0b9d1af8c25a4334161d4e02a1151532dadde3` (The same load with 1 fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.) |
 | Shown here | yes: the screenshot is read from display vault `f86qsbla`, path `knmi-nl/2026/11/11/0253-nederland-nu-weer-waarschuwingen/` |
 | Licence | Open terms as read by incident.weatherwatch@ (research/weather-sites/terms.json): AEMET (reuse citing AEMET, undistorted), Met Office (Open Government Licence v3.0), US National Weather Service (public domain), KNMI (CC0). Shown with the service named and linked. |
+| Terms | the site's terms page: `https://www.knmi.nl/copyright` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Naar de hoofd content English hoog contrast Home Nederland nu Klimaat Producten & diensten Kennis & uitleg Research Over het KNMI Zoek binnen de site Trefwoord Zoek Weer Seismologie Maritiem Luchtvaart Klimatologie Caribisch Nederland Home Nederland nu Weer Waarschuwingen Waarsch…"

@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `f5430053302fda22c4c2fa04563352512b742625e611545b7f4ce49a49f94db7` |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | Press: all rights reserved by the publisher. The capture is kept privately; shown here are only the hash, the title, the time read and a short excerpt, with the link. |
+| Terms | the site's terms page: `https://www.euronews.com/terms-and-conditions` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Ir para a navegação Ir para o conteúdo principal Ir para a pesquisa Ir para o rodapé Português Últimas Portugal Notícias UE Europa Mundo Business Next Viagens Cultura Terra Saúde Vídeos Mais Boletim informativo Eventos Podcasts Vídeos Africanews Iniciar sessão Direto PUBLICIDADE…"

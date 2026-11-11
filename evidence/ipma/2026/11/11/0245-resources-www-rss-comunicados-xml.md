@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `76a8d11048ecb0b199d6d422fdcb3fa74c5b631c2356c14f2fc4bf729e8e13e6` |
 | Shown here | yes: the screenshot is read from display vault `f86qsbla`, path `ipma/2026/11/11/0245-resources-www-rss-comunicados-xml/` |
 | Licence | A public body's public pages, shown as a dated record with IPMA named and linked. IPMA's open data (api.ipma.pt) asks that IPMA be cited as the source. |
+| Terms | the site's terms page: `https://www.ipma.pt/opencms/pt/siteinfo/index.html?page=index.xml` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | no robots.txt (404); read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "This XML file does not appear to have any style information associated with it. The document tree is shown below. <rss version="2.0"> <channel> <title>Instituto Português do Mar e da Atmosfera, I.P. - Comunicados</title> <link>https://www.ipma.pt</link> <description>Últimos Comun…"

@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `71f8c25459d6f2c6136f16c1b25fdb8464b054a285dd872f4d59a76adf306bc3` |
 | Shown here | yes: the screenshot is read from display vault `f86qsbla`, path `ipma/2026/11/11/0216-pt-otempo-comunicados/` |
 | Licence | A public body's public pages, shown as a dated record with IPMA named and linked. IPMA's open data (api.ipma.pt) asks that IPMA be cited as the source. |
+| Terms | the site's terms page: `https://www.ipma.pt/opencms/pt/siteinfo/index.html?page=index.xml` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | no robots.txt (404); read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Quem somos · Onde estamos · Conselho científico · Recrutamento · Formação@IPMA · Investigação · eBiblioteca · Enciclopédia · Contacto · EN Tempo Mar Sismos Clima Bivalves Pescas e aquacultura Aeronáutica Agricultura Saúde Navios Espaço Fogos Rurais Noticias gestão de bases de dad…"

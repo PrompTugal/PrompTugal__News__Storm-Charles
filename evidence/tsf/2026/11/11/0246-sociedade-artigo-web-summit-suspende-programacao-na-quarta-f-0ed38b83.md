@@ -24,6 +24,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the second screenshot | `1febe7cef71e063c600a40adc4f33f0d4faff7f4a01280426eaa94937ce00e89` (The same load with 1 fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.) |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | Press: all rights reserved by the publisher. The capture is kept privately; shown here are only the hash, the title, the time read and a short excerpt, with the link. |
+| Terms | the site's terms page: `https://www.tsf.pt/termos-e-condicoes` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Publicidade Publicidade Saltar para conteúdo JN TSF O Jogo Evasões Volta ao Mundo NM N-TV Delas ASSINAR JN > OUVIR EM DIRETO ÚLTIMAS PODCASTS FUTEBOL360 FÓRUM TSF POLÍTICA DESPORTO MUNDO JOGOS Pesquisar MENU SECÇÕES Últimas Mais Vistas Sociedade Política Desporto Futebol em diret…"

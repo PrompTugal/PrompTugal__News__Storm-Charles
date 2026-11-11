@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `2a20a917a6f3fd56e08ff59bf415ca3634f533cc26d6e21813ea21d2f6a29aec` |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | Press: all rights reserved by the publisher. The capture is kept privately; shown here are only the hash, the title, the time read and a short excerpt, with the link. |
+| Terms | the site's terms page: `https://www.euronews.com/terms-and-conditions` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Go to navigation Go to main content Go to search Go to footer English Latest EU News Europe World Business Next Travel Culture Earth Health Euroviews Videos More Newsletters Events Podcasts Videos Africanews Log In Live ADVERTISEMENT Next Tech News Web Summit Lisbon day 2 cancell…"

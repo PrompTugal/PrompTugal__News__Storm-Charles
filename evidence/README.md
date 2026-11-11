@@ -4,11 +4,11 @@ summary: Our dated captures of every outside page this site cites: a screenshot,
 ---
 ## Wayback: our captures of outside pages and feeds
 
-> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 02:54 UTC
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 02:56 UTC
 
 Every time this site cites an outside page, we keep what that page looked like at that moment: a screenshot, the HTML as served, and the sha256 of each. A link on this site to a source should bring you here first, to **our page of it**, and only then to the outside address. When we read a page again we record whether it still says the same thing.
 
-**89 addresses, 89 captures, 40 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
+**90 addresses, 90 captures, 41 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
 
 | Source | Page (our latest capture) | Last read | Captures | Since the one before | Shown |
 |---|---|---|---|---|---|
@@ -53,6 +53,7 @@ Every time this site cites an outside page, we keep what that page looked like a
 | powerhouse.indvstryclvb.com | [Indvstry Power House · Web Summit Lisbon 2026](indvstryclvb/2026/11/11/0228-websummit.md) `powerhouse.indvstryclvb.com/websummit` | 11 Nov 2026, 02:28 UTC | 1 | one capture | hash and excerpt |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [api.ipma.pt/open-data/forecast/warnings/warnings_www.json](ipma/2026/11/11/0223-open-data-forecast-warnings-warnings-www-json.md) `api.ipma.pt/open-data/forecast/warnings/warnings_www.json` | 11 Nov 2026, 02:23 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [api.ipma.pt/open-data/observation/meteorology/stations/observations.js](ipma/2026/11/11/0223-open-data-observation-meteorology-stations-observations-json.md) `api.ipma.pt/open-data/observation/meteorology/stations/observations.json` | 11 Nov 2026, 02:23 UTC | 1 | one capture | screenshot |
+| IPMA (Instituto Português do Mar e da Atmosfera) | [Instituto Português do Mar e da Atmosfera](ipma/2026/11/11/0256-front.md) `ipma.pt/` | 11 Nov 2026, 02:56 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [Instituto Português do Mar e da Atmosfera](ipma/2026/11/11/0216-pt-otempo-comunicados.md) `ipma.pt/pt/otempo/comunicados/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0216-pt-otempo-prev-sam.md) `ipma.pt/pt/otempo/prev-sam/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0253-pt-otempo-prev-sam-p-lsb.md) `ipma.pt/pt/otempo/prev-sam/?p=LSB` | 11 Nov 2026, 02:53 UTC | 1 | one capture | screenshot |

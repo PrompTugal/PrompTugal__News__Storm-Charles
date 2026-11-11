@@ -24,6 +24,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the second screenshot | `0031d68b1a30cb0967c0241563c1549196b1ab0dc01510b4606449df9ebffa86` (The same load with 1 fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.) |
 | Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
 | Licence | Press: all rights reserved by the publisher. The capture is kept privately; shown here are only the hash, the title, the time read and a short excerpt, with the link. |
+| Terms | the site's terms page: `https://observador.pt/termos-e-condicoes/` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Rádio Assinar o Observador Opinião Rádio Podcasts Newsletters Últimas Jogos Secções Estado de alerta: Observador temporariamente com leitura livre 1254,1 kWh poupados com a i CIÊNCIA / METEOROLOGIA Ativar alertas × Siga o tópico Meteorologia e receba um alerta assim que um novo a…"

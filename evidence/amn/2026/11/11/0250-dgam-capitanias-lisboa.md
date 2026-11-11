@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `2ab3014e7c1279f1f57b10c2845d5385accdb7a98fa3ce507ffab16e7d5f31cb` |
 | Shown here | yes: the screenshot is read from display vault `f86qsbla`, path `amn/2026/11/11/0250-dgam-capitanias-lisboa/` |
 | Licence | A public body’s public pages, shown as a dated record with the body named and linked. |
+| Terms | the site's terms page: `https://www.amn.pt/Paginas/InformacaoLegal.aspx` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | no robots.txt (404); read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "EMERGÊNCIA NO MAR 112 214 401 919 Contactos Pesquisa Media Center AUTORIDADE MARÍTIMA DGAM POLÍCIA MARÍTIMA CAPITANIAS ISN FARÓIS COMBATE À POLUIÇÃO ESCOLA Acessos Rápidos Vídeo Institucional ÉPOCA BALNEAR Capitania Online Avistamento de Orcas Informação Marítima Canal da denúnci…"

@@ -23,6 +23,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | sha256 of the screenshot | `025a07a3e6f72bc4e0458ead82fe0ac20ebed44b153f77eb5cea0abc889c0859` |
 | Shown here | yes: the screenshot is read from display vault `f86qsbla`, path `ipma/2026/11/11/0224-pt-otempo-prev-sam-timeline-jsp-print-true-reg-lsb/` |
 | Licence | A public body's public pages, shown as a dated record with IPMA named and linked. IPMA's open data (api.ipma.pt) asks that IPMA be cited as the source. |
+| Terms | the site's terms page: `https://www.ipma.pt/opencms/pt/siteinfo/index.html?page=index.xml` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
 | Robots | no robots.txt (404); read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
 **The first words on the page** (a short excerpt): "Avisos meteorológicos para Lisboa 06 12 18 00 06 12 18 00 06 12 18 12 nov 13 nov Agitação Marítima - Amarelo ( 10 Nov 21:24 - 11 Nov 06:00 ) Ondas do quadrante oeste com 4 a 5 metros. Agitação Marítima - Laranja ( 11 Nov 12:00 - 11 Nov 21:00 ) Ondas de sudoeste com 5 a 7 metros e…"
