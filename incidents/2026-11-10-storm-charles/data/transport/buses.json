@@ -2,7 +2,7 @@
  "about": "Buses and trams: each operator's own site, feed or open API first; the press only where the operator publishes nothing readable (those are the researcher's decisions, linked). Short excerpts with the link.",
  "mode": "buses",
  "by": "incident.transport@web-summit.dinis",
- "updated": "2026-11-11T14:42:50Z",
+ "updated": "2026-11-11T15:42:35Z",
  "not_a_warning_service": "Not a warning service. No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
  "sources_page": "transport/sources.md",
  "operators": [
@@ -13,11 +13,11 @@
    "label": "fact",
    "state": "disrupted (weather notices in force)",
    "counts": {
-    "active_notices": 105,
-    "weather_notices": 16,
-    "lines_named_in_weather_notices": 61,
+    "active_notices": 110,
+    "weather_notices": 18,
+    "lines_named_in_weather_notices": 75,
     "by_effect": {
-     "DETOUR": 30,
+     "DETOUR": 35,
      "SIGNIFICANT_DELAYS": 44,
      "MODIFIED_SERVICE": 7,
      "REDUCED_SERVICE": 3,
@@ -25,6 +25,13 @@
     }
    },
    "notices": [
+    {
+     "header": "Linhas 1120, 1121, 1523, 1529, 1530, 1601, 1604, 1605, 1606, 1607, 1725: Desvio de percurso",
+     "excerpt": "Devido ao corte da Rua Desembargador Faria, em Oeiras, as linhas 1120, 1121, 1523, 1529, 1530, 1601, 1604, 1605, 1606, 1607, 1725 sofrerão desvios.",
+     "effect": "DETOUR",
+     "from": "2026-11-11T14:00:00Z",
+     "to": "2026-11-11T23:59:59Z"
+    },
     {
      "header": "Linha 1247: Desvio de percurso",
      "excerpt": "Devido À queda de uma árvore, em Janas, a linha 1247 (Fontanelas - Portela de Sintra (Estação) via Janas) irá efetuar desvio de percurso.",
@@ -59,26 +66,19 @@
      "effect": "DETOUR",
      "from": "2026-11-11T10:00:00Z",
      "to": "2026-11-11T23:59:59Z"
-    },
-    {
-     "header": "Aviso Geral | Mau tempo",
-     "excerpt": "Devido ao mau tempo, registam-se diversos constrangimentos nas ruas da área metropolitana de Lisboa, o que poderá causar perturbações, atrasos e desvios no normal funcionamento de diversas linhas. Os passageiros poderão …",
-     "effect": "SIGNIFICANT_DELAYS",
-     "from": "2026-11-10T08:00:00Z",
-     "to": "2026-11-11T23:59:59Z"
     }
    ],
    "link": "https://www.carrismetropolitana.pt/",
    "source": "https://api.carrismetropolitana.pt/v2/alerts",
-   "read": "2026-11-11T14:42:21Z",
-   "sha256": "2b7ad99975164244aedf49be8b0dbb664818a862d0787ff167396f61a8dc0ff2",
+   "read": "2026-11-11T15:42:09Z",
+   "sha256": "48d2a641ba9a0da5c491bc19627e9c9d2cdfc26a9144c5c2fd698bf4abc4a5d1",
    "licence": "Carris Metropolitana's network data is published on dados.gov.pt under CC BY (TML); the API itself states no licence",
    "vehicles_now": {
     "label": "fact",
     "what": "buses reporting a position in the last five minutes, and the lines they run, at the time read (our hourly readings form the series)",
-    "at": "2026-11-11T14:42:23Z",
-    "vehicles": 675,
-    "lines": 394,
+    "at": "2026-11-11T15:42:12Z",
+    "vehicles": 688,
+    "lines": 378,
     "series": [
      {
       "at": "2026-11-11T12:06:46Z",
@@ -114,11 +114,16 @@
       "at": "2026-11-11T14:42:23Z",
       "vehicles": 675,
       "lines": 394
+     },
+     {
+      "at": "2026-11-11T15:42:12Z",
+      "vehicles": 688,
+      "lines": 378
      }
     ],
     "source": "https://api.carrismetropolitana.pt/v2/vehicles",
-    "read": "2026-11-11T14:42:23Z",
-    "sha256": "bba83fcef80fe55493b5dc916351febf6a76007d0be560b21598a0af88df8a51",
+    "read": "2026-11-11T15:42:12Z",
+    "sha256": "f5ec875f100cd0ad0c7fdded6c4b8048a812c72adee6ec5a1819c77aea4c7490",
     "baseline": {
      "label": "none",
      "note": "No normal-day figure yet; from tomorrow the series compares the same hour."
@@ -134,9 +139,9 @@
    "vehicles_now": {
     "label": "fact",
     "what": "buses reporting a position in the last five minutes, and the lines they run, at the time read (our hourly readings form the series)",
-    "at": "2026-11-11T14:42:25Z",
-    "vehicles": 202,
-    "lines": 58,
+    "at": "2026-11-11T15:42:14Z",
+    "vehicles": 198,
+    "lines": 55,
     "series": [
      {
       "at": "2026-11-11T12:17:04Z",
@@ -167,11 +172,16 @@
       "at": "2026-11-11T14:42:25Z",
       "vehicles": 202,
       "lines": 58
+     },
+     {
+      "at": "2026-11-11T15:42:14Z",
+      "vehicles": 198,
+      "lines": 55
      }
     ],
     "source": "https://broker.fiware.urbanplatform.portodigital.pt/v2/entities?q=vehicleType==bus&limit=1000",
-    "read": "2026-11-11T14:42:25Z",
-    "sha256": "ae3244dc16b28af6c1a30c672018c4201bc1d415141926efe1e33624edbc2e4a",
+    "read": "2026-11-11T15:42:14Z",
+    "sha256": "1c421ca165e1945dbde99b462cd100d9553548d27e3680ec35c3ef42619cade8",
     "baseline": {
      "label": "none",
      "note": "No normal-day figure yet; from tomorrow the series compares the same hour."
@@ -180,8 +190,8 @@
    "notices": [],
    "link": "https://www.stcp.pt/",
    "source": "https://dados.gov.pt/datasets/urban-platform-bus-location/",
-   "read": "2026-11-11T14:42:25Z",
-   "sha256": "ae3244dc16b28af6c1a30c672018c4201bc1d415141926efe1e33624edbc2e4a",
+   "read": "2026-11-11T15:42:14Z",
+   "sha256": "1c421ca165e1945dbde99b462cd100d9553548d27e3680ec35c3ef42619cade8",
    "licence": "CC0 (dados.gov.pt, published by STCP through Porto Digital's urban platform)"
   }
  ],
