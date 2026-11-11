@@ -1,18 +1,18 @@
 # The outlets covering Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:18 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:37 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | Outlet | Kind | Items read | First on | Wire share | Terms page read | AI crawlers disallowed in robots.txt | Readable by a plain bot |
 |---|---|---|---|---|---|---|---|
-| [Notícias ao Minuto](noticias-ao-minuto.md) | online | 157 | 1 | 89% | yes | 8 of 10 | yes |
-| [Observador](observador.md) | online daily | 80 | 6 | 17% | yes | 1 of 10 | yes |
-| [CNN Portugal](cnn-portugal.md) | news channel | 79 |  | 67% | not found | 1 of 10 | yes |
-| [RTP](rtp.md) | public broadcaster | 59 |  | 0% | yes | 0 of 10 | yes |
-| [Expresso](expresso.md) | weekly, online daily | 47 |  |  | refused (403) | not read | feed only |
-| [Correio da Manhã](correio-da-manha.md) | daily | 40 |  | 40% | yes | 3 of 10 | yes |
+| [Notícias ao Minuto](noticias-ao-minuto.md) | online | 159 | 1 | 89% | yes | 8 of 10 | yes |
+| [Observador](observador.md) | online daily | 84 | 6 | 18% | yes | 1 of 10 | yes |
+| [CNN Portugal](cnn-portugal.md) | news channel | 82 |  | 67% | not found | 1 of 10 | yes |
+| [RTP](rtp.md) | public broadcaster | 63 |  | 0% | yes | 0 of 10 | yes |
+| [Expresso](expresso.md) | weekly, online daily | 48 |  |  | refused (403) | not read | feed only |
+| [Correio da Manhã](correio-da-manha.md) | daily | 41 |  | 39% | yes | 3 of 10 | yes |
 | [Público](publico.md) | daily | 31 | 1 | 10% | yes | 10 of 10 | yes |
 | [Diário de Notícias](dn.md) | daily | 30 | 4 | 10% | yes | 0 of 10 | yes |
-| [Jornal Económico](jornal-economico.md) | business weekly, online daily | 24 |  | 0% | yes | 0 of 10 | yes |
+| [Jornal Económico](jornal-economico.md) | business weekly, online daily | 27 |  | 0% | yes | 0 of 10 | yes |
 | [ECO](eco.md) | business daily (online) | 20 | 1 | 0% | yes | 0 of 10 | yes |
 | [Portugal Resident](portugal-resident.md) | English-language weekly in Portugal | 8 |  | 0% | yes | 9 of 10 | yes |
 | [TEK Notícias (SAPO)](tek.md) | technology | 5 |  | 0% | not found | 0 of 10 | yes |
@@ -43,9 +43,9 @@ From by-lines, and from what an entry itself says. It does not see quotes or lin
 
 | Who | Verb | Whom | Items | How we know |
 |---|---|---|---|---|
-| [Notícias ao Minuto](noticias-ao-minuto.md) | published the wire of | [Lusa](lusa.md) | 139 | the item's by-line names the agency |
+| [Notícias ao Minuto](noticias-ao-minuto.md) | published the wire of | [Lusa](lusa.md) | 141 | the item's by-line names the agency |
+| [Observador](observador.md) | published the wire of | [Lusa](lusa.md) | 17 | the item's by-line names the agency |
 | [Correio da Manhã](correio-da-manha.md) | published the wire of | [Lusa](lusa.md) | 16 | the item's by-line names the agency |
-| [Observador](observador.md) | published the wire of | [Lusa](lusa.md) | 16 | the item's by-line names the agency |
 | [CNN Portugal](cnn-portugal.md) | published the wire of | [Lusa](lusa.md) | 6 | the item's by-line names the agency |
 | [Diário de Notícias](dn.md) | published the wire of | [Lusa](lusa.md) | 4 | the item's by-line names the agency |
 | [Público](publico.md) | published the wire of | [Lusa](lusa.md) | 4 | the item's by-line names the agency |

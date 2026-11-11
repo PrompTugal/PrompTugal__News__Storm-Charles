@@ -1,13 +1,13 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:18 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
-| Items we read | 59: 59 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 21:31 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 58 the desk's, 1 not read; wire share 0% |
+| Items we read | 63: 63 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:34 to 11 Nov 21:46 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 62 the desk's, 1 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -28,7 +28,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 59 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 63 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **Notícias ao Minuto relayed it:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -106,6 +106,10 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 21:04 | article | Rádio e Televisão de Portugal | [Depressão Charles. Centenas de voos foram cancelados ↗](https://www.rtp.pt/noticias/pais/depressao-charles-centenas-de-voos-foram-cancelados_v1778539) |
 | 11 Nov 21:27 | article | Rádio e Televisão de Portugal | [Tempestade Charles. Proteção Civil registou mais de 1630 ocorrências ↗](https://www.rtp.pt/noticias/pais/tempestade-charles-protecao-civil-registou-mais-de-1630-ocorrencias_v1778542) |
 | 11 Nov 21:31 | article | Rádio e Televisão de Portugal | [Depressão Charles. "Mais vale prevenir do que remediar", afirma Luís Montenegro ↗](https://www.rtp.pt/noticias/pais/depressao-charles-mais-vale-prevenir-do-que-remediar-afirma-luis-montenegro_e1778319) |
+| 11 Nov 21:31 | article | Rádio e Televisão de Portugal | [Tempestade Charles atinge regiões de Espanha ↗](https://www.rtp.pt/noticias/mundo/tempestade-charles-atinge-regioes-de-espanha_v1778544) |
+| 11 Nov 21:37 | article | Rádio e Televisão de Portugal | [Tempestade Charles. Investigadora do IPMA explica previsões meteorológicas ↗](https://www.rtp.pt/noticias/pais/tempestade-charles-investigadora-do-ipma-explica-previsoes-meteorologicas_v1778546) |
+| 11 Nov 21:46 | article | Rádio e Televisão de Portugal | [Mau tempo. MAI nega "excesso de cautela" e diz que podia ter havido "tragédia colossal" ↗](https://www.rtp.pt/noticias/pais/mau-tempo-mai-nega-excesso-de-cautela-e-diz-que-podia-ter-havido-tragedia-colossal_n1778536) |
+| 11 Nov 21:46 | article | Rádio e Televisão de Portugal | [Depressão Charles. Montenegro defende que "mais vale prevenir do que remediar" ↗](https://www.rtp.pt/noticias/pais/depressao-charles-montenegro-defende-que-mais-vale-prevenir-do-que-remediar_e1778319) |
 | no time | article | Rádio e Televisão de Portugal | [3h IPMA: depressão Charles vai atingir mais o sul do país ↗](https://www.rtp.pt/noticias/noticiario-antena1/3h-ipma-depressao-charles-vai-atingir-mais-o-sul-do-pais_a1_1778305) |
 | no time | article | Rádio e Televisão de Portugal | [2h Depressão Charles: proteção civil da Madeira regista mais de 50 ocorrências ↗](https://www.rtp.pt/noticias/noticiario-antena1/2h-depressao-charles-protecao-civil-da-madeira-regista-mais-de-50-ocorrencias_a1_1778302) |
 | no time | article | Rádio e Televisão de Portugal | [Portugal está em situação de alerta devido à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024) |

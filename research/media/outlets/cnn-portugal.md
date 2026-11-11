@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:18 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 79: 25 articles, 0 live, 54 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 20:24 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 70 not read; wire share 67% |
+| Items we read | 82: 27 articles, 0 live, 55 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 21:55 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 73 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -26,7 +26,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 79 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 82 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -134,3 +134,6 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 19:55 | article | not read | ["Excecional apetência": tempestade Charles passou e Montenegro faz um elogio especial a Luís Neves ↗](https://cnnportugal.iol.pt/tempestade-charles/mau-tempo/excecional-apetencia-tempestade-charles-passou-e-montenegro-faz-um-elogio-especial-a-luis-neves/20261111/6af4c847d34e5a653d733e3f) |
 | 11 Nov 19:56 | video | not read | ["Mais vale prevenir do que remediar": as declarações de Luís Montenegro ao país depois da passagem… ↗](https://cnnportugal.iol.pt/videos/mais-vale-prevenir-do-que-remediar-as-declaracoes-de-luis-montenegro-ao-pais-depois-da-passagem-da-tempestade-charles/6af4c66a0cf2aafa0453e37f) |
 | 11 Nov 20:24 | article | not read | [Choveu o que se esperava mas o vento foi menos intenso: IPMA garante que medidas se adequaram à gra… ↗](https://cnnportugal.iol.pt/ipma/medidas/choveu-o-que-se-esperava-mas-o-vento-foi-menos-intenso-ipma-garante-que-medidas-se-adequaram-a-gravidade-da-tempestade-charles/20261111/6af4cf0bd34e5a653d733e4c) |
+| 11 Nov 21:40 | article | not read | [Charles, o ministro "fragilizado" e os campeões do Totobola à segunda-feira ↗](https://cnnportugal.iol.pt/luis-neves/mau-tempo/henrique-machado-charles-o-ministro-fragilizado-e-os-campeoes-do-totobola-a-segunda-feira/20261111/6af4e118d34e9ce6f1b441d3) |
+| 11 Nov 21:54 | article | not read | [Vento, chuva e incerteza: as três razões que levaram o Governo a tomar as medidas para fazer face à… ↗](https://cnnportugal.iol.pt/maria-da-graca-carvalho/ministra-do-ambiente/vento-chuva-e-incerteza-as-tres-razoes-que-levaram-o-governo-a-tomar-as-medidas-para-fazer-face-a-tempestade-charles/20261111/6af4e459d34e9ce6f1b441d8) |
+| 11 Nov 21:55 | video | not read | ["Havia uma grande incerteza" por onde entrava a tempestade Charles e isso justificou as medidas apl… ↗](https://cnnportugal.iol.pt/videos/havia-uma-grande-incerteza-por-onde-entrava-a-tempestade-charles-e-isso-justificou-as-medidas-aplicadas/6af4e01e0cf2cb2507aa860f) |
