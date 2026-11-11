@@ -113,12 +113,17 @@ function outletNode(o, ctx) {
     const i = M_OUT.outlets.indexOf(o), s = o.seen || {}
     return node({ id: 'actor:outlet:' + o.id, type: 'Actor', kind: 'outlet', kind_in_source: o.kind || null, name: o.name, role: `${o.kind || 'outlet'} (${o.lang || '?'}); hosts: ${(o.hosts || []).join(', ')}`, lang: o.lang || null, coverage_items: s.items ?? null, coverage_first_published: s.first_published || null, coverage_last_published: s.last_published || null, wire_share: o.wire_share ?? null, label: 'fact', source: mediaUrl, read: M_OUT.updated, read_by: 'incident.media@web-summit.dinis', blocked: null, derived: true, origin: `research/media/outlets.json#/outlets/${i}` }).id
 }
-const derivedActor = h => { const o = outletOfHost(h); return o ? 'actor:outlet:' + o.id : 'actor:host:' + h }
+// a host of an official body in the register of sources (sources/registry.json, incident.sources@) is that body, named,
+// not a bare host: actor:<the register's id> (MeteoAlarm, agreed with incident.entities@ on 11 Nov, 03:42)
+const REG = opt('sources/registry.json')
+const regBody = h => { if (!REG) return null; const i = REG.sources.findIndex(r => r.group === 'official' && (r.hosts || []).some(x => { x = x.replace(/^www\./, ''); return h === x || h.endsWith('.' + x) })); return i < 0 ? null : [REG.sources[i], i] }
+const derivedActor = h => { const o = outletOfHost(h); if (o) return 'actor:outlet:' + o.id; const b = regBody(h); return b ? 'actor:' + b[0].id : 'actor:host:' + h }
 function publisher(url, ctx, asOutlet, kind = 'outlet') {
     const h = host(url); if (!h) return null
     const own = actorOfHost(h); if (own) return own
     if (!asOutlet || NOT_OUTLET.has(h)) return null
     const o = outletOfHost(h); if (o) return outletNode(o, ctx)
+    const rb = regBody(h); if (rb) return node({ id: 'actor:' + rb[0].id, type: 'Actor', kind: 'body', kind_in_source: rb[0].group, name: rb[0].name, role: rb[0].kind || null, label: 'fact', source: fileUrl('sources/registry.json'), read: toZ(REG.updated), read_by: 'incident.sources@web-summit.dinis', blocked: null, derived: true, origin: `/sources/registry.json#/sources/${rb[1]}` }).id
     return node({ id: 'actor:host:' + h, type: 'Actor', kind, kind_in_source: null, name: h, role: 'Publishes reports that this incident cites (derived from the host of the cited URLs).', label: 'fact', source: url, read: ctx.read, read_by: ctx.read_by || null, blocked: null, derived: true, origin: ctx.origin }).id
 }
 
@@ -412,7 +417,7 @@ const crossing = c => {
 }
 const actorByHosts = hs => { for (const h0 of hs || []) { const h = String(h0).replace(/^www\./, ''); const a = actorOfHost(h) || (nodes.has(derivedActor(h)) ? derivedActor(h) : null); if (a) return [a, h] } return [null, null] }
 // sources/: the register of outside bodies. Its entry names an entity; the entity names this graph's node.
-const REG = opt('sources/registry.json'), entGraph = new Map(((ENT && ENT.nodes) || []).filter(x => x.graph).map(x => [x.id, x.graph]))
+const entGraph = new Map(((ENT && ENT.nodes) || []).filter(x => x.graph).map(x => [x.id, x.graph]))
 const regCollide = []
 if (REG) REG.sources.forEach((r, i) => {
     if (r.node && nodes.has(r.node)) regCollide.push(r.node)
