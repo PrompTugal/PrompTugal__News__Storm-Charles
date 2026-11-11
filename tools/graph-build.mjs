@@ -67,6 +67,15 @@ for (const n of G.nodes) n.source = cleanUrl(n.source)
 for (const e of G.edges) { e.source = cleanUrl(e.source); if (e.corroborated_by) e.corroborated_by = e.corroborated_by.map(cleanUrl); for (const k of ['decision', 'note']) e[k] = cleanText(e[k]) }
 for (const s of SIG.items) { s.text = cleanText(s.text); for (const x of s.sources || []) { x.url = cleanUrl(x.url); x.label = cleanText(x.label) } }
 for (const x of (SITES ? SITES.sites : [])) x.url = cleanUrl(x.url)
+// the media watch keeps its whole items in six-hour parts (coverage.json `articles_files`, paths beside it) since
+// coverage.json passed 256 KB; its short rows in `articles` will be dropped when they no longer fit. Read the parts where
+// they are named, the short rows otherwise; each item remembers where it was read (origin). No by-line is carried on.
+if (M_COV) {
+    const parts = Array.isArray(M_COV.articles_files) ? M_COV.articles_files.filter(p => p && p.file && fs.existsSync(path.join(ROOT, 'research/media', p.file))) : []
+    M_COV.articles = parts.length
+        ? parts.flatMap(p => (J('research/media/' + p.file).articles || []).map((a, k) => ({ id: a.id, outlet: a.outlet, kind: a.kind, lang: a.lang, title: a.title, published: a.published, read: a.read, url: a.url, byline_kind: a.byline_kind, label: a.label, links_to_primary: a.links_to_primary, _origin: `research/media/${p.file}#/articles/${k}` })))
+        : (M_COV.articles || []).map((a, i) => ({ ...a, _origin: `research/media/coverage.json#/articles/${i}` }))
+}
 for (const a of (M_COV ? M_COV.articles : [])) { a.url = cleanUrl(a.url); a.title = cleanText(a.title) }
 for (const f of (M_FIRST ? M_FIRST.facts : [])) for (const x of f.first_by_outlet || []) { x.url = cleanUrl(x.url); x.title = cleanText(x.title) }
 
@@ -386,7 +395,7 @@ const timelineRows = lineRaw.map((r, i) => { const t = epoch(r.at); return { n: 
 // names, only the kind). first_on_fact: for each keyed fact, each outlet's first item on it and the minutes after the
 // primary source: the matching is by pattern, so every row is the media watch's analysis (hypothesis), not a fact.
 const outletActor = id => nodes.has('actor:outlet:' + id) ? 'actor:outlet:' + id : null
-const coverageRows = (M_COV ? M_COV.articles : []).filter(a => https(a.url)).map((a, i) => ({ id: 'coverage:' + (a.id || i), outlet: outletActor(a.outlet), outlet_name: actorName(outletActor(a.outlet)) || a.outlet, kind: a.kind || null, lang: a.lang || null, title: a.title || null, published: toZ(a.published) || null, published_epoch: epoch(toZ(a.published)), byline_kind: a.byline_kind || null, links_to_primary: (a.links_to_primary || []).length, label: a.label === 'fact' ? 'fact' : 'evidence', source: a.url, read: a.read || M_COV.updated, origin: `research/media/coverage.json#/articles/${i}` }))
+const coverageRows = (M_COV ? M_COV.articles : []).filter(a => https(a.url)).map((a, i) => ({ id: 'coverage:' + (a.id || i), outlet: outletActor(a.outlet), outlet_name: actorName(outletActor(a.outlet)) || a.outlet, kind: a.kind || null, lang: a.lang || null, title: a.title || null, published: toZ(a.published) || null, published_epoch: epoch(toZ(a.published)), byline_kind: a.byline_kind || null, links_to_primary: (a.links_to_primary || []).length, label: a.label === 'fact' ? 'fact' : 'evidence', source: a.url, read: a.read || M_COV.updated, origin: a._origin }))
     .sort((a, b) => (a.published || '9').localeCompare(b.published || '9') || a.id.localeCompare(b.id))
 const firstRows = (M_FIRST ? M_FIRST.facts : []).flatMap((f, i) => (f.first_by_outlet || []).filter(x => https(x.url)).map((x, k) => ({ id: `first:${f.id}:${x.outlet}`, fact: f.id, what: f.what, primary_time: toZ(f.primary_time) || null, primary_epoch: epoch(toZ(f.primary_time)), primary_label: f.primary_label || null, rank: x.rank ?? k + 1, outlet: outletActor(x.outlet), outlet_name: actorName(outletActor(x.outlet)) || x.outlet, published: toZ(x.published) || null, published_epoch: epoch(toZ(x.published)), minutes_after_primary: x.minutes_after_primary ?? null, via: x.via || null, title: x.title || null, url: x.url, label: 'hypothesis', source: x.url, read: M_FIRST.updated, read_by: 'incident.media@web-summit.dinis', origin: `research/media/first-on-each-fact.json#/facts/${i}/first_by_outlet/${k}` })))
 const TABLE_PART = Number(process.env.GRAPH_TABLE_PART) || 190 * 1024
