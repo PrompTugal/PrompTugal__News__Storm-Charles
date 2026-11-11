@@ -1,0 +1,358 @@
+{
+ "id": "decision-web-summit-terms-to-a-hold",
+ "schema": "sc-trace/1",
+ "size": "decision",
+ "title": "A decision without Dinis: Web Summit's terms read, and every automated read of its site stopped in under two minutes",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T06:09:29Z",
+ "captured_at": "2026-11-11T06:09:29Z",
+ "summary": [
+  "At 05:26:18 incident.sources@, on its hourly round of reading each source's terms, pushed what Web Summit's say: automated access to its websites and apps is forbidden, and so is copying, archiving, storing or summarising their content (sections 48.2 and 52.1, as that agent read them).",
+  "This site had polled the organiser's blog every two minutes, captured its pages, and ten timeline rows link to it. The agent stopped its own requests and put the choice to Dinis as an ask.",
+  "The conductor did not wait for him: an interim hold, by 05:27 (the card's time; the conductor made no commit for it, and three agents' commits name it). Within 1 min 56 s of the terms being pushed, the research checker, the source page, the board and the archive had each acted, in four commits by four agents.",
+  "What the hold costs is written on the card: an organisers' decision now reaches this site through the press, social accounts or a person, some minutes later; five open questions only Web Summit can answer are no longer re-read by any agent.",
+  "It is the first decision in the record taken to stop something rather than build something, and the first taken while Dinis was silent; it is marked interim, and the keep-or-continue choice is his (second on his list)."
+ ],
+ "rests_on": [
+  "board/items/a-websummit-terms.json",
+  "sources/registry.json",
+  "sources/README.md",
+  "agents/sources/status.json",
+  "agents/perplexity/status.json",
+  "agents/archivist/status.json",
+  "evidence/websummit/index.json",
+  "research/perplexity/hosts.json"
+ ],
+ "input": {
+  "kind": "a page read",
+  "what": "Web Summit's terms and conditions (updated 27 October 2026), read by incident.sources@ at 05:25 UTC on its hourly round"
+ },
+ "output": {
+  "kind": "a hold, and a card waiting on a person",
+  "what": "no automated read or capture of websummit.com by any agent; its captures kept privately and not shown (address, title, time and hashes stay); a card for Dinis: keep the hold, or continue",
+  "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-websummit-terms.json"
+ },
+ "status": "open: on hold by the conductor since 05:27; the choice waits on Dinis",
+ "duration": {
+  "from": "2026-11-11T05:26:18Z",
+  "to": null,
+  "note": "terms pushed to the research checker no longer requesting the site: 89 s; to the source page saying \"on hold\": 1 min 40 s; to a card for Dinis: 1 min 44 s; to the archive reading no further and showing no capture: 1 min 56 s; a wrong count in that commit corrected 13 s later; waiting on Dinis since 05:28:02"
+ },
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "steps": [
+  {
+   "actor": {
+    "name": "incident.sources@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a finding",
+   "sha": "dd54ba38a4c622616a0065e2ecaa4dbe97f848a8",
+   "in": "the hourly round: the feed read (unchanged) and the next source's terms page, most cited first",
+   "out": "\"Web Summit's terms read and quoted: automated access, archiving and summarising of its websites are forbidden (a decision for Dinis)\". Its status file puts the choice as an ask that starts \"Dinis:\": stop the automated reads and keep links and facts in our own words, or continue, knowing the terms; and says the agent itself makes no further request.",
+   "handoff": {
+    "to": "incident.conductor@ and Dinis Cruz",
+    "via": "the commit's For: trailer and an ask in agents/sources/status.json",
+    "evidence_of_handoff": "the next three steps name the conductor's hold within 89 s"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "sources/registry.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=sources/registry.json"
+    },
+    {
+     "type": "file",
+     "path": "agents/sources/status.json",
+     "section": "asks",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/sources/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "dd54ba38a4c622616a0065e2ecaa4dbe97f848a8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/dd54ba38a4c622616a0065e2ecaa4dbe97f848a8"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.549",
+     "run": 549,
+     "own_run": true,
+     "served_by": "2026-11-11T05:27:07Z",
+     "push_to_served_s": 45
+    }
+   ],
+   "n": 1,
+   "at": "2026-11-11T05:26:18Z",
+   "agent_trailer": "incident.sources@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "05:27 UTC by the card (\"On hold by the conductor since 05:27 UTC\"); between 05:26:18 and 05:27:47 by the commits around it",
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "an interim decision",
+   "in": "the finding, and no word from Dinis since ~02:50",
+   "out": "a hold on every automated read and capture of websummit.com, until Dinis decides; existing captures not shown",
+   "handoff": {
+    "to": "incident.perplexity@, incident.archivist@, incident.sources@, incident.board@",
+    "via": "not in the record (no commit of the conductor's carries it; a message between sessions is the likely way)",
+    "evidence_of_handoff": "879d9d4: \"the conductor's interim hold on websummit.com\"; the card: \"On hold by the conductor since 05:27 UTC\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-websummit-terms.json",
+     "section": "summary",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-websummit-terms.json"
+    },
+    {
+     "type": "commit",
+     "sha": "879d9d4c36e274b878979d78bc8bff706af1e323",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/879d9d4c36e274b878979d78bc8bff706af1e323"
+    }
+   ],
+   "n": 2
+  },
+  {
+   "actor": {
+    "name": "incident.perplexity@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "stop",
+   "sha": "879d9d4c36e274b878979d78bc8bff706af1e323",
+   "in": "the hold",
+   "out": "\"the conductor's interim hold on websummit.com: the checker no longer requests it; capture asks for its pages withdrawn; the page says so\". 89 seconds after the terms were pushed.",
+   "handoff": {
+    "to": "incident.conductor@ and incident.archivist@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "the archivist's commit 27 s later"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/perplexity/hosts.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/perplexity/hosts.json"
+    },
+    {
+     "type": "file",
+     "path": "research/perplexity/capture-asks.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/perplexity/capture-asks.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "879d9d4c36e274b878979d78bc8bff706af1e323",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/879d9d4c36e274b878979d78bc8bff706af1e323"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.553",
+     "run": 553,
+     "own_run": false,
+     "served_by": "2026-11-11T05:28:27Z",
+     "push_to_served_s": 37
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T05:27:47Z",
+   "agent_trailer": "incident.perplexity@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.archivist@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.sources@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "say so on the page",
+   "sha": "6f7cb6f91b37ab8eaed2e82df0ae618201bf6384",
+   "in": "the hold",
+   "out": "\"Web Summit on hold (its terms forbid automated reading; decision with Dinis); its page lists what this site read automatically and when\". Completed 69 seconds later with incident.dev@'s counts: \"244 poll reads, about 640 to 660 requests in all, estimated\" (e2ac764, 05:29:07).",
+   "handoff": {
+    "to": "the reader, and Dinis Cruz",
+    "via": "the Web Summit source page",
+    "evidence_of_handoff": "the page"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "sources/registry.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=sources/registry.json"
+    },
+    {
+     "type": "commit",
+     "sha": "e2ac7649f455d963dd0322de0fe56e8fc1fbffd6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/e2ac7649f455d963dd0322de0fe56e8fc1fbffd6"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "6f7cb6f91b37ab8eaed2e82df0ae618201bf6384",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6f7cb6f91b37ab8eaed2e82df0ae618201bf6384"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.557",
+     "run": 557,
+     "own_run": false,
+     "served_by": "2026-11-11T05:28:53Z",
+     "push_to_served_s": 37
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T05:27:58Z",
+   "agent_trailer": "incident.sources@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.board@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a card for Dinis",
+   "sha": "c82743cae5ce4a25d229e1f06273f28616cc34af",
+   "in": "the ask in the status file and the hold",
+   "out": "\"Web Summit's terms and the hold on automated reads as a card for Dinis (second on his list); the five questions only Web Summit can answer move from watching to open\". 76 seconds later the card also says what keeping the hold means for the screenshots already in the display vault (215890d, 05:29:18).",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "board/items/a-websummit-terms.json",
+    "evidence_of_handoff": "the card is open, waiting_on \"Dinis\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-websummit-terms.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-websummit-terms.json"
+    },
+    {
+     "type": "commit",
+     "sha": "215890d0effa2aff7763987d33e032fcc5b37543",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/215890d0effa2aff7763987d33e032fcc5b37543"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "c82743cae5ce4a25d229e1f06273f28616cc34af",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/c82743cae5ce4a25d229e1f06273f28616cc34af"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.557",
+     "run": 557,
+     "own_run": false,
+     "served_by": "2026-11-11T05:28:53Z",
+     "push_to_served_s": 37
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T05:28:02Z",
+   "agent_trailer": "incident.board@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.sources@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.archivist@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "stop, and withhold",
+   "sha": "96b5592738ba634eefe329ec16b3ca6fb7611b90",
+   "in": "the hold",
+   "out": "\"Web Summit hold: no further read of websummit.com; its captures kept privately and not shown (address, title, time and hashes stay)\". Corrected by the same agent 13 seconds later: \"the Web Summit hold covers 9 addresses (I had written 17)\" (a6b94b6, 05:28:27).",
+   "handoff": {
+    "to": "incident.conductor@",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "evidence/websummit/index.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "evidence/websummit/index.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=evidence/websummit/index.json"
+    },
+    {
+     "type": "commit",
+     "sha": "a6b94b6fccbfef318a8c0f122d6dd807eee886b6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a6b94b6fccbfef318a8c0f122d6dd807eee886b6"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "96b5592738ba634eefe329ec16b3ca6fb7611b90",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/96b5592738ba634eefe329ec16b3ca6fb7611b90"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.557",
+     "run": 557,
+     "own_run": true,
+     "served_by": "2026-11-11T05:28:53Z",
+     "push_to_served_s": 37
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T05:28:14Z",
+   "agent_trailer": "incident.archivist@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "state read 06:07 UTC",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "waiting",
+   "in": "one card: keep the hold, or continue",
+   "out": "no answer in the record",
+   "handoff": {
+    "to": "incident.conductor@ (to record the choice on the Web Summit source page)",
+    "via": "none yet",
+    "evidence_of_handoff": "the card is open"
+   },
+   "evidence": [],
+   "evidence_note": "no evidence of an answer: the card is open and BRIEF.md has not changed since 02:49:18",
+   "n": 7
+  }
+ ],
+ "counts": {
+  "steps": 7,
+  "steps_with_no_evidence": 1,
+  "person_steps": 1,
+  "agent_steps": 6
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.sources@web-summit.dinis",
+  "incident.conductor@web-summit.dinis",
+  "incident.perplexity@web-summit.dinis",
+  "incident.board@web-summit.dinis",
+  "incident.archivist@web-summit.dinis"
+ ]
+}

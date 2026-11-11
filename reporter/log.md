@@ -1,13 +1,13 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 05:08 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 06:09 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November; a team that grew from 4 agents to 26 (30 named by 03:00) turned each direction into pages within minutes.
 2. The first push here was at 21:14:33; by 04:37 incident.ci@ had counted 565 commits by 28 agents and 337 releases (6 runs failed, 174 cancelled by a newer push).
 3. The busiest hour was 02:00 to 03:00: Dinis's page-by-page review became a contract (RESTRUCTURE.md) in 45 s, thirteen new agents shipped in 35 minutes, and the home page was swapped at 02:19:08.
 4. What broke was mostly the machine under load (cancelled runs, a push race, the gate's budget) and clocks (five agents wrote times ahead of the clock); each was fixed in a commit that says so.
-5. What waits, waits on Dinis: 43 cards at 05:08, first among them the model provider's account out of credit (every call refused from 02:53:57; three empty hours in the shadow reports); the oldest is from 21:20 (attach the repository to three agents' sessions). He has not spoken in the record since ~02:50.
+5. What waits, waits on Dinis: 44 cards at 06:07, first among them the model provider's account out of credit (every call refused from 02:53:57; four empty hours in the shadow reports), second the hold the conductor put at 05:27 on reading Web Summit's site, whose terms forbid it; the oldest is from 21:20 (attach the repository to three agents' sessions). He has not spoken in the record since ~02:50; in that silence fourteen roles were taken over by fresh sessions within one hour.
 
 **Rests on:** [BRIEF.md](../BRIEF.md), [numbers.json](numbers.json) (from [data/ci/](../data/ci/index.json) and [board/items/](../board/README.md)), [the traces](traces/README.md), [agents/JOBS.md](../agents/JOBS.md), [REALITY.md](../REALITY.md), and for 10 November before 21:14 the commits of `team/incidents/` in SGit-AI__Website__Web-Summit. **How to read it:** times are UTC; a seven-letter code is a commit of this repository (`ws:` before it: of SGit-AI__Website__Web-Summit); "Dinis ~hh:mm" is BRIEF.md's own time for his words, which runs a few minutes later than the commit that records them. Counts are from numbers.json and stop at its sources' snapshot (03:38). Not a warning service: this is the project's record, not the storm's.
 
@@ -93,9 +93,17 @@
 - Corrected, mine: the outage trace said the first refusal was at 02:53:57, "five minutes after the cap was raised". incident.journalist@ found an earlier one on the evaluations page: five calls refused for credit in results pushed at 02:39:15, taken then for wrong answers (`273a1d3`, corrected by incident.models@ in `8ccd1ef`). 02:53:57 is the first refusal anyone timed; the account was at its edge before Dinis raised the cap. The trace says so in a corrections field and a step 13 added at the end (numbers unchanged).
 - Waited on Dinis: 43 cards; the provider's account for 2 h 3 min at 05:06.
 
+**06:09, the 06:06 wake (the third reporter session's first; it took over at 05:10).**
+- Asked: nothing new from Dinis; BRIEF.md has not changed since 02:49:18.
+- Decided without him: incident.sources@ read Web Summit's terms (`dd54ba3`, 05:26:18): automated access, archiving and summarising are forbidden. The conductor put an interim hold on every automated read; the research checker (`879d9d4`), the source page (`6f7cb6f`), a card for Dinis (`c82743c`) and the archive (`96b5592`) followed within 1 min 56 s. A new trace: [a decision without Dinis](traces/decision-web-summit-terms-to-a-hold.json).
+- Shipped in the hour by others: fourteen fresh sessions took over between 05:11 and 05:58 (the memory trace, step 20), one of which stood down within a minute (`05d2ba9`); the accounts' round 6 (`dd4b8f7`: eleven roles handed over, 53% to 84% less per call; 1.65 billion tokens measured, the conductor's session 28% of it); two timeline rows, both evidence (s-1111T0541, Madeira's count from Lusa, `22d5452`; s-1111T0522, the airport's 05:00 forecast, `cd853a5`); a fifth story, what the press had and when (`699fe59`); an eighth and a ninth journal piece, both told from traces (`b02ef99`, `12c22b2`); IPMA's nodes joined, not copied (`9b7d022`); the linker from about 650 ms to about 400 (`fb52d88`); the first impact headline from greater Lisbon noted by the weather watch (`51f7d25`).
+- Broke: the gate refused incident.observability@'s push when its commits file passed 256 KB (fixed in `927fd68`); the deploy retry had fired three times unseen by its own reader (runs 459, 520, 587, each saved by the second try; `167083f`); Wikidata did not answer at 05:51 (`27f1bf1`); the shadow reports' 06:00 hour is a fourth gap (`193b849`).
+- Corrected, by their authors: the archive's hold covers 9 addresses, not 17 (`a6b94b6`, 13 s after the first); the social desk's word match had missed seven posts (`b60a820`); the stories desk's times written ahead of the clock (`ad6cec9`); the accounts' round 5 hourly figures (`dd4b8f7`); start.md's gate budget, 8 s not 5 (`500dc71`). Not corrected: the conductor's commit of 05:51:41 is headed "06:02 wake" and reads IPMA "at 06:03" (`cd853a5`).
+- Waited on Dinis: 44 cards; the provider's account for 3 h 3 min at 06:07; the Web Summit hold for 39 min.
+
 ## Open questions for the conductor
 
 - *Answered 03:05 by the conductor: follow the commits; the "~" times are its estimates and stay.* **Brief times run later than their commits.** ~23:40 was committed 23:35:36; ~02:10 at 02:06:42; ~02:20 at 02:15:04; ~02:50 at 02:49:18. The traces follow the commits and keep the brief's time as a label.
-- **Clocks.** Five agents corrected times written ahead of the clock (wikipedia `f979e75`, sources `2730586`, media `2cc13cc`, ci `1f5cb62`, weather `002ed61`); the librarian too (`a83da41`); and the reporter, above. The gate warns on it since `271f7b9` (03:14:07).
+- **Clocks.** Five agents corrected times written ahead of the clock (wikipedia `f979e75`, sources `2730586`, media `2cc13cc`, ci `1f5cb62`, weather `002ed61`); the librarian too (`a83da41`); and the reporter, above. The gate warns on it since `271f7b9` (03:14:07). Since then: the stories desk (`ad6cec9`), and the conductor's own `cd853a5`, committed 05:51:41 and headed "06:02 wake".
 - **The board's opened times** are its reading of status files, not event times (the attach ask: 21:45 on the card, 21:20:07 in the commit).
 - **`For:` trailers** on many commits sit in the paragraph above the session's trailers, so git's own trailer parser does not see them; data/ci/ and the traces read the whole message.

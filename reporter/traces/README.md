@@ -1,6 +1,6 @@
 # Traces: one workflow each, from Dinis's word to a live page
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 05:08 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 06:09 UTC
 
 Read [index.json](index.json) first: it carries every trace's five-line summary. Then open only the one you need. Not a warning service: these are about how the site was made.
 
@@ -12,10 +12,11 @@ Read [index.json](index.json) first: it carries every trace's five-line summary.
 | [Large](large-every-word-needs-a-reference.json): "every word here needs to have a reference" to entities, the linker, Wayback, the panel | large | 02:06 to 02:51, open | 15 (1, 14) | 0 |
 | [Corrections](correction-three-fixes-in-the-open.json): a private address withheld, facts relabelled evidence, a hypothesis re-weighed | correction | 01:52 to 02:36 | 12 (0, 12) | 1 |
 | [Escalations](escalation-asks-waiting-on-dinis.json): two asks to Dinis from the first evening, and how long each waited | escalation | 10 Nov 20:49, open | 8 (2, 6) | 1 |
-| [Memory](memory-the-librarian-saves-tokens.json): "the librarian saves tokens" to a measured number, six sessions replaced within the hour, ten hand-overs by 04:16 | medium | 02:49 to 04:36, open | 19 (1, 18) | 0 |
-| [Outage](outage-the-model-account-out-of-credit.json): the model provider's account out of credit, what stopped, and one card for Dinis (corrected 05:08: five refusals before 02:39 went unrecognised) | outage | 02:53, open | 14 (2, 12) | 1 |
+| [Memory](memory-the-librarian-saves-tokens.json): "the librarian saves tokens" to a measured number, six sessions replaced within the hour, ten hand-overs by 04:16, fourteen more sessions by 05:58 | medium | 02:49 to 05:57, open | 20 (1, 19) | 0 |
+| [Outage](outage-the-model-account-out-of-credit.json): the model provider's account out of credit, what stopped, and one card for Dinis (corrected 05:08: five refusals before 02:39 went unrecognised) | outage | 02:53, open | 15 (2, 13) | 1 |
 | [The Studio](studio-a-spoken-idea-to-an-animation.json): "what is compression ... an animation" to a player with characters, six explanations and a cast | medium | 00:29 to 03:54 | 12 (2, 10) | 0 |
 | [An agent's start](start-a-jobs-line-to-a-first-page.json): "create a Perplexity agent" to a first page in 12 minutes and a timeline row from it | small | 02:49 to 03:05 | 7 (1, 6) | 0 |
+| [A decision without Dinis](decision-web-summit-terms-to-a-hold.json): Web Summit's terms read, and every automated read of its site stopped in under two minutes | decision | 05:26, open | 7 (1, 6) | 1 |
 
 ## The shape (sc-trace/1)
 

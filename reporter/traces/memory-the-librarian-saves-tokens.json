@@ -4,7 +4,7 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T05:08:00Z",
+ "updated": "2026-11-11T06:09:29Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
@@ -39,10 +39,10 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: ten hand-overs in eight roles by 04:16, measured at 53% to 84% less per call; the conductor's own session has not handed over in the record (it compacts: 110k after the second compaction, 04:36)",
+ "status": "open: fourteen more sessions took over between 05:11 and 05:58 (one stood down within a minute); the accounts' round 6 counts eleven roles handed over at 53% to 84% less per call; the conductor's own session has not handed over in the record (it compacts) and is 28% of the 1.65 billion tokens measured",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
-  "to": "2026-11-11T04:36:46Z",
+  "to": "2026-11-11T05:57:56Z",
   "note": "sentence recorded to pack: 5 min 37 s; to the first measured number: 8 min 44 s; to the first hand-over: 12 min 43 s; to the sixth: 47 min 49 s; to the ninth: 1 h 20 min 7 s"
  },
  "steps": [
@@ -938,6 +938,139 @@
    "for": [
     "incident.conductor@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "measure",
+   "sha": "dd4b8f78822a4666ccefae7bb6375bdc0ca88409",
+   "in": "the ledger lines of the fresh sessions; the conductor's word to the long sessions to write a hand-over note",
+   "out": "\"the accounts, round 6: eleven agents have handed over (53% to 84% less per call); the conductor's session is 28% of 1.65 billion tokens; round 5's hourly figures corrected\". Between 05:11:37 and 05:57:56 fourteen fresh sessions added a key and took over, in fourteen roles: the reporter (its third, 547f8d8), the journalist (its third, 12c22b2), entities (43a96c7), meteorology (dd65bb0), media (7108c5e), the accountant itself (8ca902e), social (4561b70), IPMA (07644dc), stories (195021d), the board (f5e0c8d), identity (8f8b2e8), CI (167083f), the librarian (its fifth, 839d053) and Wikipedia (27f1bf1). One did not stand: IPMA's second session stood down 54 seconds after it started, \"first session's key entry active again, incident-ipma-dinis-2 not used\" (05d2ba9, 05:46:04; the commit does not say why). The designer wrote its note and has not been replaced in the record (b8bdfec). The identity agent's key check learned from it within two minutes: \"knows a key made and not used ...: 48 keys, 0 problems\" (6a14ead).",
+   "handoff": {
+    "to": "every agent and the conductor",
+    "via": "accounts/index.md",
+    "evidence_of_handoff": "each fresh session's first commit adds its key to data/keys.json and marks the earlier entry handed over"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "accounts/index.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/index.md"
+    },
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "type": "commit",
+     "sha": "547f8d8bc5d01d78f108636d271cb410fdfd0416",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/547f8d8bc5d01d78f108636d271cb410fdfd0416"
+    },
+    {
+     "type": "commit",
+     "sha": "12c22b233b7c9d961dd7778bc73d2300bb7017d8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/12c22b233b7c9d961dd7778bc73d2300bb7017d8"
+    },
+    {
+     "type": "commit",
+     "sha": "43a96c7e0ccfef74c33c9bc79b2d40a002a0670a",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/43a96c7e0ccfef74c33c9bc79b2d40a002a0670a"
+    },
+    {
+     "type": "commit",
+     "sha": "dd65bb0744b5ec7159689fbbf5877020c0c19162",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/dd65bb0744b5ec7159689fbbf5877020c0c19162"
+    },
+    {
+     "type": "commit",
+     "sha": "7108c5e04f5e6c1eb84e5069b6b776e5b39109e4",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7108c5e04f5e6c1eb84e5069b6b776e5b39109e4"
+    },
+    {
+     "type": "commit",
+     "sha": "8ca902eb09866e57e5a4a98486fa93016785d8db",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8ca902eb09866e57e5a4a98486fa93016785d8db"
+    },
+    {
+     "type": "commit",
+     "sha": "4561b70e03336f6b0e26fd7ec47fa53688c93431",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4561b70e03336f6b0e26fd7ec47fa53688c93431"
+    },
+    {
+     "type": "commit",
+     "sha": "07644dc0587233a42d8d15fdacc0a95a7d53801d",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/07644dc0587233a42d8d15fdacc0a95a7d53801d"
+    },
+    {
+     "type": "commit",
+     "sha": "05d2ba9482d039589d7af32378dab3e6e851d863",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/05d2ba9482d039589d7af32378dab3e6e851d863"
+    },
+    {
+     "type": "commit",
+     "sha": "195021d63526f000a044bb935ee8159f98c3296c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/195021d63526f000a044bb935ee8159f98c3296c"
+    },
+    {
+     "type": "commit",
+     "sha": "f5e0c8df14f32fde1d6a61c62b4932248f692892",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f5e0c8df14f32fde1d6a61c62b4932248f692892"
+    },
+    {
+     "type": "commit",
+     "sha": "8f8b2e8591fdd29453613b6d02840f043471833d",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8f8b2e8591fdd29453613b6d02840f043471833d"
+    },
+    {
+     "type": "commit",
+     "sha": "167083f0354064ae413ad6b2cd2f84a74ca47c01",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/167083f0354064ae413ad6b2cd2f84a74ca47c01"
+    },
+    {
+     "type": "commit",
+     "sha": "839d053a4d60869828e37461a47935887b3ffc46",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/839d053a4d60869828e37461a47935887b3ffc46"
+    },
+    {
+     "type": "commit",
+     "sha": "27f1bf1ad3a7a7af3d4803579ef320194d379fe6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/27f1bf1ad3a7a7af3d4803579ef320194d379fe6"
+    },
+    {
+     "type": "commit",
+     "sha": "6a14ead3ebb7e30633a5bfb3419b7fc6569fa9a3",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6a14ead3ebb7e30633a5bfb3419b7fc6569fa9a3"
+    },
+    {
+     "type": "commit",
+     "sha": "b8bdfec370ce5713ec317620e13ae994cc42bde4",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b8bdfec370ce5713ec317620e13ae994cc42bde4"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "dd4b8f78822a4666ccefae7bb6375bdc0ca88409",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/dd4b8f78822a4666ccefae7bb6375bdc0ca88409"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.569",
+     "run": 569,
+     "own_run": true,
+     "served_by": "2026-11-11T05:39:53Z",
+     "push_to_served_s": 33
+    }
+   ],
+   "n": 20,
+   "at": "2026-11-11T05:39:18Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
   }
  ],
  "shape": {
@@ -947,10 +1080,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 19,
+  "steps": 20,
   "steps_with_no_evidence": 0,
   "person_steps": 1,
-  "agent_steps": 18
+  "agent_steps": 19
  },
  "people_acted": [
   "Dinis Cruz"
