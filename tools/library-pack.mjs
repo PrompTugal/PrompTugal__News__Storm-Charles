@@ -160,7 +160,7 @@ const cost = {
     packs: sizes.map(s => ({ ...s, tokens_estimated: tok(s.bytes), stands_for_tokens_estimated: tok(s.stands_for.bytes) }))
 }
 fs.writeFileSync(path.join(P, 'sizes.json'), JSON.stringify(cost, null, 1) + '\n')
-fs.writeFileSync(path.join(P, 'README.md'), `# The briefing pack: start an agent here, not from the whole repository
+fs.writeFileSync(path.join(P, 'README.md'), `# The briefing pack (the incident's brain): start an agent here, not from the whole repository
 
 > Kept by ${ME}, ${stamp}: written by [tools/library-pack.mjs](${view('tools/library-pack.mjs')}) on every push. Asked for by Dinis Cruz (11 November, about 02:50 UTC, [BRIEF.md](../../BRIEF.md)): "the librarian saves tokens and makes it cheaper and implements memory in a much more effective way". Back to [the library](../README.md).
 
@@ -182,7 +182,13 @@ Estimated saving on the reading alone: **${cost.saving_estimated.against_six} ag
 
 From the Web Summit team's own measurement ([token efficiency: the team's agents](https://web-summit.sgit.ai/people/indi/token-efficiency/index.html), 4 to 8 November 2026, by its accountant): 264 measured wakes from 37 agents cost 180.5 million tokens, **65% of it cache reads**, because every call re-reads the whole conversation. That is their finding (evidence). Our reading of it (a hypothesis until measured here): what an agent reads at its start is paid for again on each later call of the same session, so a start that is 40,000 to 70,000 bytes smaller is that much less to re-read on every call, not once (their accountant weighs a cache read at about a tenth of a fresh token). The rules that follow from their report are in [start.md](start.md), "Spend tokens well"; the policy itself: [token efficiency, one ABP for every agent](https://web-summit.sgit.ai/abp/token-efficiency/index.html).
 
-Not read: the main repository's board cards on the agents' brains (WS-190) and on the accountant (WS-148) are not served on its site, and the librarian's session was refused access to that repository; what is here comes from its two public pages above.
+## The incident's brain: what it is, and what it will never hold
+
+The Web Summit team calls this kind of thing a brain. Its rule, from card WS-190 in SGit-AI__Website__Web-Summit ("The brains on the command centres: how they are built, and what is public and what is private", 7 November 2026; open, for Dinis to confirm), **as relayed by the conductor** from its clone at 02:57 UTC on 11 November (the librarian could not read the card itself): the public brain "holds nothing that was not already public, because it is built only from" public files: "the brain only draws them as a map"; what a person captures for themselves stays on their side, "not in the repository, and not visible to anyone else". The rule we take: **a brain is a drawing of what is already public; building one never widens what is public.**
+
+This pack is the incident's public brain in that sense: start.md, state.json, history.md and the role packs are drawn only from files already served here, each named with its hash. It holds no session transcript, no private note, no key and nothing about people.
+
+On measuring, from card WS-148 ("An accountant agent for Indi's agents: every agent measures its tokens, and the accountant finds the savings", 4 November 2026), also **as relayed by the conductor**: one script "reads the agent's own session transcript and writes one line of numbers (fresh input, output, cache writes, cache reads ...) ... No message text." Its first ledger line was one long session: 397,000 tokens of fresh input, output and cache writes, and 20.9 million cache reads; "Re-reading a long session's context on every call is the largest cost, so a fresh session per wake is the first saving to test."
 
 ## The packs
 

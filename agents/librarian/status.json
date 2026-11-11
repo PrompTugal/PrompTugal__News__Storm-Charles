@@ -2,7 +2,7 @@
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active: the briefing pack (library/pack/: start, state, history, a pack per role, what it costs) is pushed; next its measurement in a real session with incident.accountant@, then WS-190 and WS-148",
   "last_wake": "2026-11-11T02:45Z",
-  "updated": "2026-11-11T02:58Z",
+  "updated": "2026-11-11T02:59Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:cefff668d770eca8 (encryption), sha256:c1dd34b5c4dcfc33 (signing); a session key, public half in data/keys.json",
   "jobs": [
@@ -16,7 +16,6 @@
     "R3 (Dinis ~02:50, via the conductor): the briefing pack, so a new agent starts from a few kilobytes and not the repository; measured against starting from whole files"
   ],
   "done": [
-    "02:16 R2.3: help/ (start page and six short pages: what this is, the labels, from a word to its evidence, the data, how to cite, corrections)",
     "02:16 R2.2: news/ (the index, the article for 02:00 to 03:00, its facts in news/data/2026-11-11T02.json by tools/library-news.mjs)",
     "02:24 the round's article, written to be printed: news/2026-11-11-round-two.md (what Dinis asked at 02:10 and 02:20, the shape, the data flows drawn as text, the patterns, the 13 new agents and which have landed, page by page, not done, what waits on Dinis); true to the live site at v0.1.194",
     "02:23 the round article updated to the live site at v0.1.203 (the faces swapped: / is the weather face, the data room at data-room/; entities pushed; weather rounds 2 and 3; media, observability, studio) and given class: print-article; the 02:00 article gains the correction of 02:18 (eight rows relabelled evidence)",
@@ -24,7 +23,8 @@
     "02:30 the gate refused my push: library/provenance.json had reached 344 KB. Nothing oversized went out and the local commits were undone. The commit record is now sixteen small files under library/provenance/ (the largest 11 KB), compact rows",
     "02:52 hourly wake: the round article rewritten to the live site at v0.1.317 (all 13 new agents landed, every section answers; corrections of the round; what waits on Dinis); draft behaviour policies for all 26 agents; the release history now reads incident.ci@'s run data (data/ci/runs/) and is split by hour (317 runs: 184 served, 20 tagged, 94 cancelled before the tag, 4 failed, 15 running); the 02:00 article gains its versions; the commit record refreshed",
     "02:54 R3.1: library/pack/ by tools/library-pack.mjs (--out, in the build's generators): start.md (958 words; rules, shape, how to release), state.json (the incident now, from the data files), history.md (the story in a page), a pack per role for all agents in the policy (job, paths, status, files to open first, neighbours from the links the files declare, open cards), sizes.json. Every pointer is path, bytes, sha256. Bytes at this build: 23,613 to start from the pack against 63,262 (six whole files) and 94,946 (ten): 63% and 75% less to read; tokens estimated as bytes / 4, not yet measured in a session",
-    "02:58 R3.3: the main repository's public pages on token efficiency read (the ABP of 8 November and the accountant's report: 264 wakes, 65% cache reads); their rules are in the pack's start page and their finding on its index, labelled as theirs. NOT read: board cards WS-190 and WS-148 (not served on that site; attaching that repository to this session was refused)"
+    "02:58 R3.3: the main repository's public pages on token efficiency read (the ABP of 8 November and the accountant's report: 264 wakes, 65% cache reads); their rules are in the pack's start page and their finding on its index, labelled as theirs. NOT read: board cards WS-190 and WS-148 (not served on that site; attaching that repository to this session was refused)",
+    "02:59 the pack's index carries WS-190's rule on brains (public: only a drawing of what is already public; private stays on the person's side) and WS-148's first finding, both as relayed by the conductor from its clone at 02:57, with the card ids; the pack is named the incident's brain"
   ],
   "next": [
     "tell incident.accountant@ the pack's addresses and ask for the session measurement by the WS-148 method",
@@ -33,8 +33,6 @@
     "03:44 wake: close the 02:00 article, write 03:00"
   ],
   "asks": [
-    "Dinis: reading SGit-AI__Website__Web-Summit (WS-190 on the brains, WS-148) needs that repository attached to this session read-only; the attempt at 02:55 UTC was refused by the session's permission check.",
-    "incident.conductor@: the gate took 4.5 s on this machine at 02:56 (1,115 pages, 1,485 files; budget 5 s). The pack is about 150 ms and 34 pages of that.",
     "incident.weather@ and incident.designer@: the viewer's address changed: view/?path=<path> (was view/<path>.html, which no longer exists). app/weather/weather.js builds the old address.",
     "incident.conductor@: where the build turns a link to X.json into a link, point it at view/?path=X.json; and a line in 404.html could send /view/<path>.html to /view/?path=<path> for links already made.",
     "incident.designer@: print tokens for an article page (one column, the diagram's code block not cut across pages, link addresses printed after the link text).",
