@@ -53,13 +53,18 @@ def centroid(g):
     if g['type'] == 'Point': return g['coordinates']
     pts = [p for poly in rings(g) for p in poly[0]]
     return [sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts)]
+import re
+# a private person is never named: keep a name only when it reads as an institution's
+INST = re.compile(r'(?i)hospita|centro|cl[ií]nica|unidade|instituto|maternidade|casa de sa[uú]de|sanat|cuf|lus[ií]adas|miseric[oó]rdia|ordem|funda[cç][aã]o|cruz vermelha|\bhpa\b|\buls\b|\bchu\b|policl[ií]nica|\bipo\b|psiqui|reabilita|urg[eê]ncia|consulta|servi[cç]o|cuidados|imagiologia|associa[cç][aã]o|ucsp|\bsams\b|\bluz\b|universidade|blocos|militar|pedi[aá]tric|oncolog')
 hosp = []
 for f in hf:
     p = f['properties']
     if p.get('amenity') != 'hospital' and p.get('healthcare') != 'hospital': continue
     x, y = centroid(f['geometry'])
     m = which_mun(x, y)
-    hosp.append({'osm': p['id'], 'name': p.get('name'), 'operator_type': p.get('operator_type'), 'healthcare_speciality': p.get('healthcare_speciality'),
+    nm = p.get('name')
+    withheld = bool(nm) and not INST.search(nm)
+    hosp.append({'osm': p['id'], 'name': None if withheld else nm, 'name_withheld': withheld, 'operator_type': p.get('operator_type'), 'healthcare_speciality': p.get('healthcare_speciality'),
                  'lat': round(y, 5), 'lon': round(x, 5), 'municipality': m, 'municipality_name': MUN.get(m, {}).get('name') if m else None,
                  'ipma_area': ipma_area(m) if m else None, 'in_lisbon_metro': m in AML})
 hosp.sort(key=lambda h: (h['municipality'] or 'zz', h['name'] or ''))
@@ -69,7 +74,7 @@ json.dump({'about': 'Hospitals mapped in OpenStreetMap in Portugal (amenity=hosp
   'source_name': 'OpenStreetMap via the Humanitarian OpenStreetMap Team export on HDX (hotosm_prt_health_facilities), snapshot 2026-11-03',
   'licence': 'ODbL 1.0: © OpenStreetMap contributors (https://www.openstreetmap.org/copyright)',
   'read_utc': read_utc, 'snapshot_utc': '2026-11-03',
-  'method': 'Features tagged hospital; polygons reduced to the mean of their outline points; municipality by point in polygon on Eurostat GISCO LAU 2021 parishes (1:1M generalised: points within ~100 m of a border can fall on the wrong side). operator_type (public/private) only where a mapper tagged it.',
+  'method': 'Features tagged hospital; polygons reduced to the mean of their outline points; municipality by point in polygon on Eurostat GISCO LAU 2021 parishes (1:1M generalised: points within ~100 m of a border can fall on the wrong side). operator_type (public/private) only where a mapper tagged it. A name that does not read as an institution\'s (it may be a private practitioner\'s) is withheld (name null, name_withheld true); the OSM id stays.',
   'confidence': 'MEDIUM: OSM is well mapped in Lisbon, but names, duplicates (a site and its buildings) and public/private tags are uneven.',
   'by': BY, 'updated': read_utc, 'count': len(hosp), 'hospitals': hosp}, open(f'{out}/hospitals.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 print('hospitals', len(hosp), 'in Lisbon metro', sum(h['in_lisbon_metro'] for h in hosp))
@@ -167,7 +172,7 @@ for i in range(7):
                       'residents_estimate': int(round(sum(p for _, _, p in hx), -1)),
                       'land_share': round(float(L.mean()), 2), 'low_land_0_5_to_5m_km2': round(float((Lo * A).sum()), 2),
                       'residents_on_low_land_estimate': int(round(sum(p * (hexlow(lo, la) or 0) for lo, la, p in hx), -1)),
-                      'hospitals_osm': [h['name'] or h['osm'] for h in hosp if s <= h['lat'] < n_ and w <= h['lon'] < e]})
+                      'hospitals_osm': [h['name'] or ('(name withheld) ' + h['osm']) for h in hosp if s <= h['lat'] < n_ and w <= h['lon'] < e]})
 json.dump({'about': 'Lisbon in 49 squares of 2 km (7 x 7, rows A to G from north, columns 1 to 7 from west, centred on 38.745 N, 9.16 W): residents, land 0.5 to 5 m above sea level, residents on it, and hospitals mapped in OSM. Residents are where people sleep, not where they are at a given hour.',
   'label': 'hypothesis: estimates from a population grid and a surface model; hospitals are evidence (OSM)',
   'source': 'https://data.humdata.org/dataset/kontur-population-portugal',
