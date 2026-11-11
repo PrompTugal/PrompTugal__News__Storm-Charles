@@ -1,0 +1,58 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T12:18:00Z",
+  "label": "Invented person; not user research",
+  "persona": "flight",
+  "run": "guide-5",
+  "start": "/guide/lisbon/",
+  "version_seen": "v0.1.1059",
+  "page_height_px": 12064,
+  "page_height_all_open_px": 29931,
+  "seconds_lost_to_length": 3,
+  "text_cut": "none (0 short ellipsis strings; scrollWidth 390)",
+  "steps": [
+    {"where": "/guide/lisbon/", "what": "In force now for Lisbon: RED rain until 18:00 UTC; orange wind, orange waves (FACT, IPMA read 11:26 UTC)", "seconds": 4, "px": 416},
+    {"where": "/guide/lisbon/", "what": "Jump row found after a small scroll", "seconds": 3, "px": 734},
+    {"where": "#flight", "what": "Tap 'I have a flight'; lands at scrollY 1927, card head 2014", "seconds": 2, "px": 2014},
+    {"where": "#flight", "what": "Airline decides; ANA heading; 208 cancelled by 09:20 (CNN, EVIDENCE); ANA conditioned (press, Tue 18:04)", "seconds": 8, "px": 2061},
+    {"where": "#flight", "what": "TAP rebooking to 17 Nov (EVIDENCE); 42 departures seen by OpenSky since 06:25 UTC (FACT, 12:06); a floor, not a total", "seconds": 7, "px": 2702},
+    {"where": "#flight Getting to the airport", "what": "Metro (announced by the mayor, EVIDENCE); Vasco da Gama 100 km/h; old green 'restrictions lifted' row; taxis not stated; airport board link", "seconds": 10, "px": 2874}
+  ],
+  "understood_10s": "Red rain until 18:00 UTC; one tap at 9 s to the flight card (now 640 px higher than guide-4).",
+  "understood_1min": "Airline decides; 42 departures since 06:25 UTC (FACT); TAP rebooking to 17 Nov; Metro said to run by the mayor; Vasco da Gama 100 km/h; taxis not stated. Done in 34 s, 1 tap.",
+  "looked_for": [
+    {"what": "Is my flight going?", "result": "found", "where": "/guide/lisbon/#flight 2061, 2702 px", "seconds": 22, "taps": 1},
+    {"what": "What does the airport say?", "result": "partly", "where": "/guide/lisbon/#flight 2303, 3440 px (ANA via press, Tue 18:04; board linked, bot check)", "seconds": 17, "taps": 1},
+    {"what": "Can I get to the airport?", "result": "found", "where": "/guide/lisbon/#flight 2874 to 3440 px", "seconds": 34, "taps": 1}
+  ],
+  "misread": [
+    "Green 'Restrictions lifted on both bridges by 22:29 Tuesday' (3239) under the newer 100 km/h limit (3111) reads for a second as 'bridges open, no limit'",
+    "'Lisbon airport (ANA)' heading over a CNN row (2173/2201) read as ANA's own count; 'by 09:20' no zone",
+    "'↑ The seven questions' jumps down to #gd-q at 10576, which lists four questions"
+  ],
+  "not_found": [
+    "ANA's own word dated today (latest Tue 18:04 UTC, through the press)",
+    "The jump row on the first screen (734 px, fold 664)"
+  ],
+  "advice_like": [],
+  "words_not_understood": ["ANA", "OpenSky's receivers", "A floor, not a total", "EVIDENCE vs FACT", "Humberto Delgado", "conditioned"],
+  "would_act": "At 34 s: takes the taxi and opens the airline app; in 20 minutes one tap back to the OpenSky count and bridges.",
+  "score": 4,
+  "score_reason": "Flight card 640 px higher and the Metro row names the mayor; jump row still under the fold and a superseded green bridge row in the airport block.",
+  "vs_guide4": [
+    {"finding": "Jump row just below the fold (734, fold 664)", "status": "not fixed"},
+    {"finding": "Superseded green bridge row in the airport card", "status": "not fixed"},
+    {"finding": "Metro airport row without the mayor's-word / no Metro notice caveat", "status": "partly"},
+    {"finding": "'↑ The seven questions' points down to the foot menu", "status": "not fixed"},
+    {"finding": "ANA heading over press row; 'by 09:20' no zone", "status": "not fixed"},
+    {"finding": "Standard 'follow IPMA and ANEPC; call 112'", "status": "held"}
+  ],
+  "findings": [
+    {"class": "minor", "what": "Jump row just below the fold", "where": "/guide/lisbon/", "measure": "734 px, fold 664; ~3 s", "change": "Shrink the banner or move the 'Not a warning service' line (617) below the row"},
+    {"class": "minor", "what": "Superseded green bridge row in the airport block", "where": "/guide/lisbon/#flight", "measure": "3239 under 3111, 10 h older", "change": "Only the newest row per bridge in the card; older to Deeper"},
+    {"class": "minor", "what": "'No Metro notice on metrolisboa.pt' not beside the Metro airport row", "where": "/guide/lisbon/#flight", "measure": "2942 vs 10701 (7,760 px)", "change": "One line under the Metro row"},
+    {"class": "minor", "what": "'↑ The seven questions' points down and miscounts", "where": "/guide/lisbon/", "measure": "1949, 3648, 7134, 9853 -> #gd-q 10576 (4 questions)", "change": "'↑ The questions' linking to the top jump row (734)"},
+    {"class": "minor", "what": "ANA heading over press rows; 'by 09:20' no zone", "where": "/guide/lisbon/#flight", "measure": "2173, 2201", "change": "'Lisbon airport (as reported)'; '09:20 (zone not stated)'"},
+    {"class": "held", "what": "Standard 'follow IPMA and ANEPC; call 112'", "where": "each card foot", "measure": "4 places", "change": "Editor's call"}
+  ]
+}
