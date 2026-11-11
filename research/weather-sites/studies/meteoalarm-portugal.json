@@ -1,0 +1,70 @@
+{
+ "id": "meteoalarm-portugal",
+ "site": "meteoalarm",
+ "site_page": "research/weather-sites/sites/meteoalarm.md",
+ "name": "MeteoAlarm: Portugal",
+ "country": "Europe",
+ "url": "https://www.meteoalarm.org/en/live/region/PT",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-10T23:48Z"
+ },
+ "capture": null,
+ "capture_note": "Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.",
+ "licence_for_showing_the_screenshot": "MeteoAlarm's maps, icons and layout belong to EUMETNET and are licensed to its participants only (its terms): the screenshot is not shown unless the archivist finds a basis; the link stands.",
+ "summary": "Every national service's warnings in one format: a map, a time bar and a list.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.617,
+   "y": 0.5,
+   "title": "The country by warning area",
+   "does_well": "Districts in yellow and orange on the mainland, Madeira in red, at the hour chosen.",
+   "fed_by": "our own redraw from IPMA's JSON (never a copy of this map)",
+   "part": "warning-map"
+  },
+  {
+   "n": 2,
+   "x": 0.148,
+   "y": 0.975,
+   "title": "Now, +24h, each day, animation",
+   "does_well": "A row of buttons under the validity window \"Tu 2026.11.10 23:00 - We 2026.11.11 02:00 (GMT+0)\".",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+   "part": "warning-over-time"
+  },
+  {
+   "n": 3,
+   "x": 0.833,
+   "y": 0.13,
+   "title": "Short-term and long-term hazards",
+   "does_well": "Tabs that separate wind, rain and coast from slower hazards.",
+   "fed_by": "warnings.json (type)",
+   "part": "warning-map"
+  },
+  {
+   "n": 4,
+   "x": 0.833,
+   "y": 0.199,
+   "title": "Filters by level and by hazard",
+   "does_well": "Two lists.",
+   "fed_by": "the same",
+   "part": "warning-map"
+  },
+  {
+   "n": 5,
+   "x": 0.833,
+   "y": 0.562,
+   "title": "One row per warning",
+   "does_well": "The hazard's pictogram on its level's colour, then the area: Lisboa appears three times, once per warning.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/cap.json (each message)",
+   "part": "what-to-expect"
+  }
+ ]
+}

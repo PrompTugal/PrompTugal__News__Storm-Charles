@@ -1,0 +1,88 @@
+{
+ "id": "bbc-lisbon",
+ "site": "bbc-weather",
+ "site_page": "research/weather-sites/sites/bbc-weather.md",
+ "name": "BBC Weather: Lisbon",
+ "country": "United Kingdom",
+ "url": "https://www.bbc.com/weather/2267057",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-10T23:48Z"
+ },
+ "capture": null,
+ "capture_note": "Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.",
+ "licence_for_showing_the_screenshot": "BBC terms: no reuse without permission. The screenshot is shown only if the archivist's reading of its terms allows; otherwise the frame stays empty and the link stands.",
+ "summary": "Dinis's reference for the weather face. One sentence, day tabs, an hour row, a map with a time bar. And, for Lisbon on the eve of IPMA's red warnings, no warning at all.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.047,
+   "y": 0.284,
+   "title": "The place, and nothing else, as the title",
+   "does_well": "\"Lisbon\" over a weather photograph; one button to keep it.",
+   "fed_by": "incidents/2026-11-10-storm-charles/incident.json (title, kicker)",
+   "part": "navigation"
+  },
+  {
+   "n": 2,
+   "x": 0.195,
+   "y": 0.356,
+   "title": "One sentence for the period",
+   "does_well": "\"Tonight: Thundery showers and a gentle breeze\", with the low. A whole forecast in six words.",
+   "fed_by": "incident.json (headline, standfirst); the sentence must come from the authority, see callout 7",
+   "part": "what-to-expect"
+  },
+  {
+   "n": 3,
+   "x": 0.648,
+   "y": 0.372,
+   "title": "Day tabs with high and low",
+   "does_well": "Eight days in a row; the selected day is joined to the card.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (daily.days) with each day's warning colour from warnings.json",
+   "part": "warning-over-time"
+  },
+  {
+   "n": 4,
+   "x": 0.188,
+   "y": 0.512,
+   "title": "The hour columns",
+   "does_well": "Hour, symbol, temperature, chance of rain, wind speed in a circle with its direction. Tap an hour for more.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (hourly)",
+   "part": "hour-by-hour"
+  },
+  {
+   "n": 5,
+   "x": 0.898,
+   "y": 0.632,
+   "title": "Last updated",
+   "does_well": "\"Last updated today at 23:02\", small, under the hours.",
+   "fed_by": "read_utc of each file",
+   "part": "times"
+  },
+  {
+   "n": 6,
+   "x": 0.5,
+   "y": 0.875,
+   "title": "A map with a play button and a week of time",
+   "does_well": "Rain over a satellite-style base map, a time bar from Wednesday to Tuesday, \"Long forecast\" and \"Pressure\" views.",
+   "fed_by": "none we may show (imagery.json): links to IPMA's radar and EUMETView, or our own warnings map",
+   "part": "warning-map"
+  },
+  {
+   "n": 7,
+   "x": 0.195,
+   "y": 0.309,
+   "title": "What is not there: any warning",
+   "does_well": "No banner, colour or word about IPMA's red wind and rain warnings for the next day; the sentence says \"a gentle breeze\". A model without the authority. Our page starts where this one is silent.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json, cap.json",
+   "part": "what-to-expect"
+  }
+ ]
+}

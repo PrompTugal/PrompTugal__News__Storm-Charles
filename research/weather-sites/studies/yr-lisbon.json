@@ -1,0 +1,70 @@
+{
+ "id": "yr-lisbon",
+ "site": "yr",
+ "site_page": "research/weather-sites/sites/yr.md",
+ "name": "Yr: Lisbon, hour by hour",
+ "country": "Norway",
+ "url": "https://www.yr.no/en/forecast/hourly-table/2-2267057/Portugal/Lisbon/Lisbon",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-10T23:48Z"
+ },
+ "capture": null,
+ "capture_note": "Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.",
+ "licence_for_showing_the_screenshot": "MET Norway data is NLOD / CC BY 4.0; the page design is Yr's. The archivist confirms before the screenshot is shown.",
+ "summary": "A foreign public service that shows the local authority's warnings, in English, above its own hours.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.5,
+   "y": 0.163,
+   "title": "Warnings with a status word",
+   "does_well": "Five banners for Lisboa: \"Ongoing: Yellow Coastal Event Warning\", \"Expected: Orange Rain Warning\", \"Expected: Red Rain Warning\", \"Expected: Red Wind Warning\", \"Expected: Orange Coastal Event Warning\". Each opens for the text.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (status from start_utc and end_utc against now)",
+   "part": "what-to-expect"
+  },
+  {
+   "n": 2,
+   "x": 0.5,
+   "y": 0.6,
+   "title": "The calm table",
+   "does_well": "Time, symbol, temperature, precipitation in mm, wind in m/s with an arrow. No decoration.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (hourly, second_models)",
+   "part": "hour-by-hour"
+  },
+  {
+   "n": 3,
+   "x": 0.684,
+   "y": 0.6,
+   "title": "Wind in words",
+   "does_well": "\"Fresh breeze from south east\": a reader who does not think in metres per second still understands. But the words describe the automatic mean wind under a red wind warning, and the page does not say so.",
+   "fed_by": "the warning's own text beside any model wording",
+   "part": "uncertainty"
+  },
+  {
+   "n": 4,
+   "x": 0.5,
+   "y": 0.938,
+   "title": "Sunrise and sunset",
+   "does_well": "One line under the table.",
+   "fed_by": "not held",
+   "part": "now"
+  },
+  {
+   "n": 5,
+   "x": 0.5,
+   "y": 0.977,
+   "title": "Previous day, next day",
+   "does_well": "Two buttons; the table is one day at a time.",
+   "fed_by": "our strip: Wednesday, then Thursday",
+   "part": "navigation"
+  }
+ ]
+}

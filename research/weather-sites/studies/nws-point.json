@@ -1,0 +1,70 @@
+{
+ "id": "nws-point",
+ "site": "nws",
+ "site_page": "research/weather-sites/sites/nws.md",
+ "name": "US National Weather Service: point forecast (New York)",
+ "country": "United States",
+ "url": "https://forecast.weather.gov/MapClick.php?lat=40.7146&lon=-74.0071",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-11T02:17Z"
+ },
+ "capture": null,
+ "capture_note": "Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.",
+ "licence_for_showing_the_screenshot": "US government work, public domain (third-party map tiles excepted): a screenshot may be shown.",
+ "summary": "Plain and complete: observed conditions at a named station, a strip of periods, a sentence for each with its numbers, and a box that says what the forecast is, when it was made and until when it is valid, with the forecaster's discussion one click away. No hazard was in force.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.5,
+   "y": 0.225,
+   "title": "Observed now, at a named station",
+   "does_well": "\"Current conditions at New York City, Central Park (KNYC)\", with coordinates, and \"Last update 10 Nov 8:51 pm EST\": an observation is tied to its station and time.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/stations.json, airport.json",
+   "part": "now"
+  },
+  {
+   "n": 2,
+   "x": 0.5,
+   "y": 0.388,
+   "title": "Nine periods in a strip",
+   "does_well": "Day and night as separate periods; the chance of rain printed on the picture; high or low; two or three words.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (daily)",
+   "part": "hour-by-hour"
+  },
+  {
+   "n": 3,
+   "x": 0.352,
+   "y": 0.65,
+   "title": "A sentence per period, with numbers",
+   "does_well": "\"Rain. High near 59. East wind 9 to 11 mph. Chance of precipitation is 100%. New precipitation amounts between a quarter and half of an inch possible.\" Ranges, not single values.",
+   "fed_by": "IPMA's descriptive forecast and warning texts (text_pt in warnings.json), quoted",
+   "part": "what-to-expect"
+  },
+  {
+   "n": 4,
+   "x": 0.805,
+   "y": 0.844,
+   "title": "About this forecast",
+   "does_well": "The point, \"Last Update\", \"Forecast Valid\" from and to, and the data as KML and XML: provenance in a box of its own.",
+   "fed_by": "read_utc, next_read_utc; api/v1 links",
+   "part": "times"
+  },
+  {
+   "n": 5,
+   "x": 0.105,
+   "y": 0.867,
+   "title": "The forecast discussion",
+   "does_well": "A link to the forecasters' own reasoning, in text, for this office.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/analysis.json (labelled hypothesis)",
+   "part": "uncertainty"
+  }
+ ]
+}

@@ -6,7 +6,7 @@ head: <script src="compare.js" defer></script>
 ---
 # Weather sites compared
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
 
 All 106 entries of [sites.json](sites.json) in one table. Click a column head to sort; type in the box to filter; a kind, a country or a map can be picked from the lists. Every site name opens our page about it; the licence cell opens the site's own terms page where we found one. "Data and models" is what the site itself says, where we read it. [Back to the ranking and the ten ideas](README.md).
 

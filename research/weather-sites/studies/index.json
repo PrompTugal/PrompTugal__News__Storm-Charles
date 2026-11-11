@@ -1,0 +1,605 @@
+{
+ "about": "Annotated studies of the best public-service weather pages (and BBC Weather, Dinis's reference): numbered callouts placed on the page as this agent drew and saw it (1280 x 1600 px, top of the page), each saying what the part does well and which of our data files would feed the same part. `cross` groups the same part across countries. Not studied: DWD's warnings page (it drew without its stylesheet in our browser, so there was nothing fair to annotate).",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "parts": {
+  "now": "The state now",
+  "warning-map": "The warning map",
+  "warning-over-time": "The warning over time",
+  "hour-by-hour": "Hour by hour",
+  "what-to-expect": "What to expect (the warning in words)",
+  "what-to-do": "What to do",
+  "uncertainty": "Uncertainty",
+  "times": "Issued, valid, next",
+  "data": "The same as data",
+  "navigation": "Finding your way"
+ },
+ "studies": [
+  {
+   "id": "aemet-warnings",
+   "name": "AEMET: meteorological warnings",
+   "country": "Spain",
+   "url": "https://www.aemet.es/en/eltiempo/prediccion/avisos",
+   "file": "aemet-warnings.json",
+   "callouts": 6,
+   "seen_utc": "2026-11-11T02:17Z",
+   "capture": null
+  },
+  {
+   "id": "metoffice-place",
+   "name": "Met Office: forecast for a place (London)",
+   "country": "United Kingdom",
+   "url": "https://www.metoffice.gov.uk/weather/forecast/gcpvj0v07",
+   "file": "metoffice-place.json",
+   "callouts": 6,
+   "seen_utc": "2026-11-11T02:17Z",
+   "capture": null
+  },
+  {
+   "id": "nws-point",
+   "name": "US National Weather Service: point forecast (New York)",
+   "country": "United States",
+   "url": "https://forecast.weather.gov/MapClick.php?lat=40.7146&lon=-74.0071",
+   "file": "nws-point.json",
+   "callouts": 5,
+   "seen_utc": "2026-11-11T02:17Z",
+   "capture": null
+  },
+  {
+   "id": "bbc-lisbon",
+   "name": "BBC Weather: Lisbon",
+   "country": "United Kingdom",
+   "url": "https://www.bbc.com/weather/2267057",
+   "file": "bbc-lisbon.json",
+   "callouts": 7,
+   "seen_utc": "2026-11-10T23:48Z",
+   "capture": null
+  },
+  {
+   "id": "meteofrance-vigilance",
+   "name": "Météo-France: Vigilance",
+   "country": "France",
+   "url": "https://vigilance.meteofrance.fr/fr",
+   "file": "meteofrance-vigilance.json",
+   "callouts": 8,
+   "seen_utc": "2026-11-10T23:48Z",
+   "capture": null
+  },
+  {
+   "id": "ipma-warnings-timeline",
+   "name": "IPMA: warnings on a timeline (Lisboa)",
+   "country": "Portugal",
+   "url": "https://www.ipma.pt/pt/otempo/prev-sam/?p=LSB",
+   "file": "ipma-warnings-timeline.json",
+   "callouts": 6,
+   "seen_utc": "2026-11-10T23:48Z",
+   "capture": null
+  },
+  {
+   "id": "ipma-hourly",
+   "name": "IPMA: hourly forecast for a place (Lisboa)",
+   "country": "Portugal",
+   "url": "https://www.ipma.pt/pt/otempo/prev.localidade.hora/#Lisboa&Lisboa",
+   "file": "ipma-hourly.json",
+   "callouts": 6,
+   "seen_utc": "2026-11-10T23:48Z",
+   "capture": null
+  },
+  {
+   "id": "yr-lisbon",
+   "name": "Yr: Lisbon, hour by hour",
+   "country": "Norway",
+   "url": "https://www.yr.no/en/forecast/hourly-table/2-2267057/Portugal/Lisbon/Lisbon",
+   "file": "yr-lisbon.json",
+   "callouts": 5,
+   "seen_utc": "2026-11-10T23:48Z",
+   "capture": null
+  },
+  {
+   "id": "meteoalarm-portugal",
+   "name": "MeteoAlarm: Portugal",
+   "country": "Europe",
+   "url": "https://www.meteoalarm.org/en/live/region/PT",
+   "file": "meteoalarm-portugal.json",
+   "callouts": 5,
+   "seen_utc": "2026-11-10T23:48Z",
+   "capture": null
+  },
+  {
+   "id": "knmi-warnings",
+   "name": "KNMI: warnings",
+   "country": "Netherlands",
+   "url": "https://www.knmi.nl/nederland-nu/weer/waarschuwingen",
+   "file": "knmi-warnings.json",
+   "callouts": 4,
+   "seen_utc": "2026-11-11T02:17Z",
+   "capture": null
+  }
+ ],
+ "cross": {
+  "now": [
+   {
+    "study": "metoffice-place",
+    "name": "Met Office: forecast for a place (London)",
+    "country": "United Kingdom",
+    "n": 2,
+    "title": "The next hour, very large",
+    "does_well": "\"NEXT HOUR 9°C Light rain\": the page answers \"what now\" before anything else."
+   },
+   {
+    "study": "nws-point",
+    "name": "US National Weather Service: point forecast (New York)",
+    "country": "United States",
+    "n": 1,
+    "title": "Observed now, at a named station",
+    "does_well": "\"Current conditions at New York City, Central Park (KNYC)\", with coordinates, and \"Last update 10 Nov 8:51 pm EST\": an observation is tied to its station and time."
+   },
+   {
+    "study": "yr-lisbon",
+    "name": "Yr: Lisbon, hour by hour",
+    "country": "Norway",
+    "n": 4,
+    "title": "Sunrise and sunset",
+    "does_well": "One line under the table."
+   },
+   {
+    "study": "knmi-warnings",
+    "name": "KNMI: warnings",
+    "country": "Netherlands",
+    "n": 1,
+    "title": "The state in one plain line",
+    "does_well": "\"Er zijn geen waarschuwingen\" (there are no warnings), as a line of text above the map, and again as a heading."
+   }
+  ],
+  "warning-map": [
+   {
+    "study": "aemet-warnings",
+    "name": "AEMET: meteorological warnings",
+    "country": "Spain",
+    "n": 3,
+    "title": "Hazards as a filter",
+    "does_well": "All, Wind, Rainfalls, Storms, Coastal: one click redraws the map for one hazard."
+   },
+   {
+    "study": "aemet-warnings",
+    "name": "AEMET: meteorological warnings",
+    "country": "Spain",
+    "n": 4,
+    "title": "The map by warning zone",
+    "does_well": "Zones smaller than provinces, in the four European colours; the red zone is visible at once among the orange."
+   },
+   {
+    "study": "bbc-lisbon",
+    "name": "BBC Weather: Lisbon",
+    "country": "United Kingdom",
+    "n": 6,
+    "title": "A map with a play button and a week of time",
+    "does_well": "Rain over a satellite-style base map, a time bar from Wednesday to Tuesday, \"Long forecast\" and \"Pressure\" views."
+   },
+   {
+    "study": "meteofrance-vigilance",
+    "name": "Météo-France: Vigilance",
+    "country": "France",
+    "n": 3,
+    "title": "One colour per département",
+    "does_well": "The whole country at a glance, with the Paris area enlarged in an inset."
+   },
+   {
+    "study": "meteofrance-vigilance",
+    "name": "Météo-France: Vigilance",
+    "country": "France",
+    "n": 5,
+    "title": "Maps per phenomenon",
+    "does_well": "A list of the hazards in force (\"Orages\"); choosing one redraws the map for it."
+   },
+   {
+    "study": "ipma-warnings-timeline",
+    "name": "IPMA: warnings on a timeline (Lisboa)",
+    "country": "Portugal",
+    "n": 4,
+    "title": "Every district with its highest level",
+    "does_well": "A list on the right: the district's name and a chip (\"Vermelho\", \"Laranja\"); the one shown is marked."
+   },
+   {
+    "study": "meteoalarm-portugal",
+    "name": "MeteoAlarm: Portugal",
+    "country": "Europe",
+    "n": 1,
+    "title": "The country by warning area",
+    "does_well": "Districts in yellow and orange on the mainland, Madeira in red, at the hour chosen."
+   },
+   {
+    "study": "meteoalarm-portugal",
+    "name": "MeteoAlarm: Portugal",
+    "country": "Europe",
+    "n": 3,
+    "title": "Short-term and long-term hazards",
+    "does_well": "Tabs that separate wind, rain and coast from slower hazards."
+   },
+   {
+    "study": "meteoalarm-portugal",
+    "name": "MeteoAlarm: Portugal",
+    "country": "Europe",
+    "n": 4,
+    "title": "Filters by level and by hazard",
+    "does_well": "Two lists."
+   },
+   {
+    "study": "knmi-warnings",
+    "name": "KNMI: warnings",
+    "country": "Netherlands",
+    "n": 2,
+    "title": "A quiet map",
+    "does_well": "The country with no colour at all when nothing is in force."
+   }
+  ],
+  "warning-over-time": [
+   {
+    "study": "aemet-warnings",
+    "name": "AEMET: meteorological warnings",
+    "country": "Spain",
+    "n": 1,
+    "title": "Three days, three dots, in the header",
+    "does_well": "Wed 11 red, Thu 12 orange, Fri 13 yellow: the highest level of each of the next three days sits beside the menu on every page of the site."
+   },
+   {
+    "study": "aemet-warnings",
+    "name": "AEMET: meteorological warnings",
+    "country": "Spain",
+    "n": 5,
+    "title": "A time bar with play",
+    "does_well": "Three day tabs (each \"00-24h\") and a play button that runs the map through time."
+   },
+   {
+    "study": "aemet-warnings",
+    "name": "AEMET: meteorological warnings",
+    "country": "Spain",
+    "n": 6,
+    "title": "The matrix: regions against time",
+    "does_well": "One row per region; the hazards in force as small icons framed in their level's colour; then one coloured cell per period across the three days. The whole country's next three days in one table. A feed icon on every row."
+   },
+   {
+    "study": "bbc-lisbon",
+    "name": "BBC Weather: Lisbon",
+    "country": "United Kingdom",
+    "n": 3,
+    "title": "Day tabs with high and low",
+    "does_well": "Eight days in a row; the selected day is joined to the card."
+   },
+   {
+    "study": "meteofrance-vigilance",
+    "name": "Météo-France: Vigilance",
+    "country": "France",
+    "n": 6,
+    "title": "A bar per hazard along the day",
+    "does_well": "Hours 0h to 0h across; one bar per phenomenon, coloured for the hours it applies. Floods link to the river service."
+   },
+   {
+    "study": "ipma-warnings-timeline",
+    "name": "IPMA: warnings on a timeline (Lisboa)",
+    "country": "Portugal",
+    "n": 1,
+    "title": "Eight hazards by 72 hours",
+    "does_well": "One row per hazard (thunder, sea state, rain, wind, snow, cold, heat, fog), one cell per hour for three days, green to red: when each hazard starts and stops, in one picture."
+   },
+   {
+    "study": "ipma-warnings-timeline",
+    "name": "IPMA: warnings on a timeline (Lisboa)",
+    "country": "Portugal",
+    "n": 2,
+    "title": "Days marked under the grid",
+    "does_well": "\"11 nov\", \"12 nov\", \"13 nov\" with hour ticks at 00, 06, 12, 18."
+   },
+   {
+    "study": "ipma-hourly",
+    "name": "IPMA: hourly forecast for a place (Lisboa)",
+    "country": "Portugal",
+    "n": 2,
+    "title": "The day tab carries the warning",
+    "does_well": "Under each day: min, max, wind, rain probability, and a label in the level's colour (\"Amarelo\", \"Vermelho\", \"Amarelo\")."
+   },
+   {
+    "study": "ipma-hourly",
+    "name": "IPMA: hourly forecast for a place (Lisboa)",
+    "country": "Portugal",
+    "n": 5,
+    "title": "The warnings as a row of the table",
+    "does_well": "\"Avisos Meteorológicos\": one cell per hour, yellow, then orange, then red from 09H to 21H. The best row on the page, placed last."
+   },
+   {
+    "study": "meteoalarm-portugal",
+    "name": "MeteoAlarm: Portugal",
+    "country": "Europe",
+    "n": 2,
+    "title": "Now, +24h, each day, animation",
+    "does_well": "A row of buttons under the validity window \"Tu 2026.11.10 23:00 - We 2026.11.11 02:00 (GMT+0)\"."
+   }
+  ],
+  "hour-by-hour": [
+   {
+    "study": "metoffice-place",
+    "name": "Met Office: forecast for a place (London)",
+    "country": "United Kingdom",
+    "n": 3,
+    "title": "Three chips, one of them the gust",
+    "does_well": "\"Feels like 7°\", \"Light rain ≥95%\", \"Max gust 19mph from the northeast\": the gust is named in the summary, in words, with its direction."
+   },
+   {
+    "study": "metoffice-place",
+    "name": "Met Office: forecast for a place (London)",
+    "country": "United Kingdom",
+    "n": 5,
+    "title": "The hourly table, gust on its own row",
+    "does_well": "Per hour: symbol, temperature, feels like, chance of rain, mean wind with arrow, and under it the gust. Mean wind and gust are never confused."
+   },
+   {
+    "study": "nws-point",
+    "name": "US National Weather Service: point forecast (New York)",
+    "country": "United States",
+    "n": 2,
+    "title": "Nine periods in a strip",
+    "does_well": "Day and night as separate periods; the chance of rain printed on the picture; high or low; two or three words."
+   },
+   {
+    "study": "bbc-lisbon",
+    "name": "BBC Weather: Lisbon",
+    "country": "United Kingdom",
+    "n": 4,
+    "title": "The hour columns",
+    "does_well": "Hour, symbol, temperature, chance of rain, wind speed in a circle with its direction. Tap an hour for more."
+   },
+   {
+    "study": "ipma-hourly",
+    "name": "IPMA: hourly forecast for a place (Lisboa)",
+    "country": "Portugal",
+    "n": 3,
+    "title": "Rain probability by three-hour block",
+    "does_well": "\"100%\" across the morning and afternoon of Wednesday, \"24%\" at the end."
+   },
+   {
+    "study": "ipma-hourly",
+    "name": "IPMA: hourly forecast for a place (Lisboa)",
+    "country": "Portugal",
+    "n": 4,
+    "title": "Mean wind, hour by hour",
+    "does_well": "An arrow, a figure in km/h and a direction per hour: 11 to 23 km/h. This is the automatic mean wind, not the gust the warning speaks of."
+   },
+   {
+    "study": "yr-lisbon",
+    "name": "Yr: Lisbon, hour by hour",
+    "country": "Norway",
+    "n": 2,
+    "title": "The calm table",
+    "does_well": "Time, symbol, temperature, precipitation in mm, wind in m/s with an arrow. No decoration."
+   }
+  ],
+  "what-to-expect": [
+   {
+    "study": "aemet-warnings",
+    "name": "AEMET: meteorological warnings",
+    "country": "Spain",
+    "n": 2,
+    "title": "The special notice, in words",
+    "does_well": "One line above the map: \"Aviso especial. Lluvias fuertes y persistentes, rachas muy fuertes y temporal marítimo.\" The forecasters' own headline before any colour."
+   },
+   {
+    "study": "nws-point",
+    "name": "US National Weather Service: point forecast (New York)",
+    "country": "United States",
+    "n": 3,
+    "title": "A sentence per period, with numbers",
+    "does_well": "\"Rain. High near 59. East wind 9 to 11 mph. Chance of precipitation is 100%. New precipitation amounts between a quarter and half of an inch possible.\" Ranges, not single values."
+   },
+   {
+    "study": "bbc-lisbon",
+    "name": "BBC Weather: Lisbon",
+    "country": "United Kingdom",
+    "n": 2,
+    "title": "One sentence for the period",
+    "does_well": "\"Tonight: Thundery showers and a gentle breeze\", with the low. A whole forecast in six words."
+   },
+   {
+    "study": "bbc-lisbon",
+    "name": "BBC Weather: Lisbon",
+    "country": "United Kingdom",
+    "n": 7,
+    "title": "What is not there: any warning",
+    "does_well": "No banner, colour or word about IPMA's red wind and rain warnings for the next day; the sentence says \"a gentle breeze\". A model without the authority. Our page starts where this one is silent."
+   },
+   {
+    "study": "ipma-warnings-timeline",
+    "name": "IPMA: warnings on a timeline (Lisboa)",
+    "country": "Portugal",
+    "n": 3,
+    "title": "Each warning as a bar with its sentence",
+    "does_well": "\"Vento - Vermelho [11 Nov 12:00 - 11 Nov 21:00]\" and under it \"Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos.\" Hazard, level, period, and what to expect."
+   },
+   {
+    "study": "yr-lisbon",
+    "name": "Yr: Lisbon, hour by hour",
+    "country": "Norway",
+    "n": 1,
+    "title": "Warnings with a status word",
+    "does_well": "Five banners for Lisboa: \"Ongoing: Yellow Coastal Event Warning\", \"Expected: Orange Rain Warning\", \"Expected: Red Rain Warning\", \"Expected: Red Wind Warning\", \"Expected: Orange Coastal Event Warning\". Each opens for the text."
+   },
+   {
+    "study": "meteoalarm-portugal",
+    "name": "MeteoAlarm: Portugal",
+    "country": "Europe",
+    "n": 5,
+    "title": "One row per warning",
+    "does_well": "The hazard's pictogram on its level's colour, then the area: Lisboa appears three times, once per warning."
+   }
+  ],
+  "what-to-do": [
+   {
+    "study": "meteofrance-vigilance",
+    "name": "Météo-France: Vigilance",
+    "country": "France",
+    "n": 4,
+    "title": "A legend of actions",
+    "does_well": "\"Vigilance absolue\", \"Soyez très vigilant\", \"Soyez attentif\", \"Pas de vigilance particulière\": each colour is what to do."
+   },
+   {
+    "study": "ipma-warnings-timeline",
+    "name": "IPMA: warnings on a timeline (Lisboa)",
+    "country": "Portugal",
+    "n": 6,
+    "title": "The criteria, linked",
+    "does_well": "\"Critérios de emissão\": what makes a warning yellow, orange or red."
+   },
+   {
+    "study": "knmi-warnings",
+    "name": "KNMI: warnings",
+    "country": "Netherlands",
+    "n": 3,
+    "title": "What it warns for",
+    "does_well": "One sentence listing the hazards KNMI warns about."
+   },
+   {
+    "study": "knmi-warnings",
+    "name": "KNMI: warnings",
+    "country": "Netherlands",
+    "n": 4,
+    "title": "What can I expect and what can I do",
+    "does_well": "One link per hazard: thunderstorms, heavy gusts and storm, snow, ice, heavy rain, cold, heat."
+   }
+  ],
+  "uncertainty": [
+   {
+    "study": "metoffice-place",
+    "name": "Met Office: forecast for a place (London)",
+    "country": "United Kingdom",
+    "n": 4,
+    "title": "Ten day tabs; the far ones marked BETA",
+    "does_well": "High and low per day; days eight to ten carry a \"BETA\" label: lower confidence is marked on the tab itself."
+   },
+   {
+    "study": "nws-point",
+    "name": "US National Weather Service: point forecast (New York)",
+    "country": "United States",
+    "n": 5,
+    "title": "The forecast discussion",
+    "does_well": "A link to the forecasters' own reasoning, in text, for this office."
+   },
+   {
+    "study": "ipma-hourly",
+    "name": "IPMA: hourly forecast for a place (Lisboa)",
+    "country": "Portugal",
+    "n": 6,
+    "title": "The caveat, in the notes",
+    "does_well": "The page explains that this automatic forecast may differ from the forecasters' descriptive forecast and from the warnings, which should be consulted. True and far from the numbers it qualifies."
+   },
+   {
+    "study": "yr-lisbon",
+    "name": "Yr: Lisbon, hour by hour",
+    "country": "Norway",
+    "n": 3,
+    "title": "Wind in words",
+    "does_well": "\"Fresh breeze from south east\": a reader who does not think in metres per second still understands. But the words describe the automatic mean wind under a red wind warning, and the page does not say so."
+   }
+  ],
+  "times": [
+   {
+    "study": "metoffice-place",
+    "name": "Met Office: forecast for a place (London)",
+    "country": "United Kingdom",
+    "n": 6,
+    "title": "When it was updated",
+    "does_well": "\"Updated: 1am on 11 November 2026\", directly under the table."
+   },
+   {
+    "study": "nws-point",
+    "name": "US National Weather Service: point forecast (New York)",
+    "country": "United States",
+    "n": 4,
+    "title": "About this forecast",
+    "does_well": "The point, \"Last Update\", \"Forecast Valid\" from and to, and the data as KML and XML: provenance in a box of its own."
+   },
+   {
+    "study": "bbc-lisbon",
+    "name": "BBC Weather: Lisbon",
+    "country": "United Kingdom",
+    "n": 5,
+    "title": "Last updated",
+    "does_well": "\"Last updated today at 23:02\", small, under the hours."
+   },
+   {
+    "study": "meteofrance-vigilance",
+    "name": "Météo-France: Vigilance",
+    "country": "France",
+    "n": 1,
+    "title": "Issued, and valid until",
+    "does_well": "\"émise le 10 novembre 2026 à 16h00 … valable jusqu'au 12 novembre 2026 à 00h00\": two times under the title."
+   },
+   {
+    "study": "meteofrance-vigilance",
+    "name": "Météo-France: Vigilance",
+    "country": "France",
+    "n": 2,
+    "title": "Today, tomorrow, and when the next map comes",
+    "does_well": "Two tabs; tomorrow's is grey and says \"Prochaine carte à 06h\"."
+   },
+   {
+    "study": "meteofrance-vigilance",
+    "name": "Météo-France: Vigilance",
+    "country": "France",
+    "n": 7,
+    "title": "The rhythm, stated",
+    "does_well": "\"Les cartes de vigilance météo sont actualisées au moins 2 fois par jour à 6h et 16h.\""
+   },
+   {
+    "study": "ipma-warnings-timeline",
+    "name": "IPMA: warnings on a timeline (Lisboa)",
+    "country": "Portugal",
+    "n": 5,
+    "title": "UTC, and the last update",
+    "does_well": "\"Toda a informação em horas UTC\" and \"Última atualização: terça, 10 de novembro de 2026 às 21:23\"."
+   },
+   {
+    "study": "ipma-hourly",
+    "name": "IPMA: hourly forecast for a place (Lisboa)",
+    "country": "Portugal",
+    "n": 1,
+    "title": "When it was made",
+    "does_well": "\"Informação em horas UTC. Última atualização: 2026-11-10 19:56:03 (UTC)\"."
+   }
+  ],
+  "data": [
+   {
+    "study": "meteofrance-vigilance",
+    "name": "Météo-France: Vigilance",
+    "country": "France",
+    "n": 8,
+    "title": "A PDF version",
+    "does_well": "The same card as a document to forward."
+   }
+  ],
+  "navigation": [
+   {
+    "study": "metoffice-place",
+    "name": "Met Office: forecast for a place (London)",
+    "country": "United Kingdom",
+    "n": 1,
+    "title": "Five views of one forecast",
+    "does_well": "Daily, Detailed, Map, Long range, UK: the same place at five depths, as tabs."
+   },
+   {
+    "study": "bbc-lisbon",
+    "name": "BBC Weather: Lisbon",
+    "country": "United Kingdom",
+    "n": 1,
+    "title": "The place, and nothing else, as the title",
+    "does_well": "\"Lisbon\" over a weather photograph; one button to keep it."
+   },
+   {
+    "study": "yr-lisbon",
+    "name": "Yr: Lisbon, hour by hour",
+    "country": "Norway",
+    "n": 5,
+    "title": "Previous day, next day",
+    "does_well": "Two buttons; the table is one day at a time."
+   }
+  ]
+ }
+}

@@ -1,6 +1,6 @@
 # RTP: live blog "Depressão Charles junta-se a Bruna. A evolução do mau tempo em Portugal"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · liveblog · Portugal
 

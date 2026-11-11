@@ -1,0 +1,79 @@
+{
+ "id": "ipma-hourly",
+ "site": "ipma-local",
+ "site_page": "research/weather-sites/sites/ipma-local.md",
+ "name": "IPMA: hourly forecast for a place (Lisboa)",
+ "country": "Portugal",
+ "url": "https://www.ipma.pt/pt/otempo/prev.localidade.hora/#Lisboa&Lisboa",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-10T23:48Z"
+ },
+ "capture": null,
+ "capture_note": "Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.",
+ "licence_for_showing_the_screenshot": "As IPMA above.",
+ "summary": "The page our hour strip should learn most from: day tabs that carry the warning colour, and an hourly table whose last row is the warnings themselves.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.805,
+   "y": 0.088,
+   "title": "When it was made",
+   "does_well": "\"Informação em horas UTC. Última atualização: 2026-11-10 19:56:03 (UTC)\".",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (hourly_runs)",
+   "part": "times"
+  },
+  {
+   "n": 2,
+   "x": 0.349,
+   "y": 0.249,
+   "title": "The day tab carries the warning",
+   "does_well": "Under each day: min, max, wind, rain probability, and a label in the level's colour (\"Amarelo\", \"Vermelho\", \"Amarelo\").",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (daily) + warnings.json",
+   "part": "warning-over-time"
+  },
+  {
+   "n": 3,
+   "x": 0.57,
+   "y": 0.367,
+   "title": "Rain probability by three-hour block",
+   "does_well": "\"100%\" across the morning and afternoon of Wednesday, \"24%\" at the end.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (hourly)",
+   "part": "hour-by-hour"
+  },
+  {
+   "n": 4,
+   "x": 0.57,
+   "y": 0.45,
+   "title": "Mean wind, hour by hour",
+   "does_well": "An arrow, a figure in km/h and a direction per hour: 11 to 23 km/h. This is the automatic mean wind, not the gust the warning speaks of.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (hourly); label it \"automatic, mean wind\"",
+   "part": "hour-by-hour"
+  },
+  {
+   "n": 5,
+   "x": 0.57,
+   "y": 0.56,
+   "title": "The warnings as a row of the table",
+   "does_well": "\"Avisos Meteorológicos\": one cell per hour, yellow, then orange, then red from 09H to 21H. The best row on the page, placed last.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json: on our strip this row goes first",
+   "part": "warning-over-time"
+  },
+  {
+   "n": 6,
+   "x": 0.57,
+   "y": 0.791,
+   "title": "The caveat, in the notes",
+   "does_well": "The page explains that this automatic forecast may differ from the forecasters' descriptive forecast and from the warnings, which should be consulted. True and far from the numbers it qualifies.",
+   "fed_by": "a one-line note beside our model rows",
+   "part": "uncertainty"
+  }
+ ]
+}

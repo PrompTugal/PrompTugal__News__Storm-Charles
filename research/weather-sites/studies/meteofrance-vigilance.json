@@ -1,0 +1,97 @@
+{
+ "id": "meteofrance-vigilance",
+ "site": "meteofrance-vigilance",
+ "site_page": "research/weather-sites/sites/meteofrance-vigilance.md",
+ "name": "Météo-France: Vigilance",
+ "country": "France",
+ "url": "https://vigilance.meteofrance.fr/fr",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-10T23:48Z"
+ },
+ "capture": null,
+ "capture_note": "Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.",
+ "licence_for_showing_the_screenshot": "Météo-France public data is under the French open licence (not re-read here): the archivist confirms before the screenshot is shown.",
+ "summary": "One card that carries everything a warning needs: when issued, until when valid, when the next comes, the map, a legend written as actions, and a bar per hazard along the day.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.367,
+   "y": 0.138,
+   "title": "Issued, and valid until",
+   "does_well": "\"émise le 10 novembre 2026 à 16h00 … valable jusqu'au 12 novembre 2026 à 00h00\": two times under the title.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/cap.json (sent_utc), communiques.json (validity)",
+   "part": "times"
+  },
+  {
+   "n": 2,
+   "x": 0.453,
+   "y": 0.177,
+   "title": "Today, tomorrow, and when the next map comes",
+   "does_well": "Two tabs; tomorrow's is grey and says \"Prochaine carte à 06h\".",
+   "fed_by": "next_read_utc of each file; IPMA's communiqué validity",
+   "part": "times"
+  },
+  {
+   "n": 3,
+   "x": 0.352,
+   "y": 0.325,
+   "title": "One colour per département",
+   "does_well": "The whole country at a glance, with the Paris area enlarged in an inset.",
+   "fed_by": "our own redraw from IPMA's JSON",
+   "part": "warning-map"
+  },
+  {
+   "n": 4,
+   "x": 0.352,
+   "y": 0.451,
+   "title": "A legend of actions",
+   "does_well": "\"Vigilance absolue\", \"Soyez très vigilant\", \"Soyez attentif\", \"Pas de vigilance particulière\": each colour is what to do.",
+   "fed_by": "IPMA's and ANEPC's own wording for each level, quoted",
+   "part": "what-to-do"
+  },
+  {
+   "n": 5,
+   "x": 0.734,
+   "y": 0.229,
+   "title": "Maps per phenomenon",
+   "does_well": "A list of the hazards in force (\"Orages\"); choosing one redraws the map for it.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (type)",
+   "part": "warning-map"
+  },
+  {
+   "n": 6,
+   "x": 0.406,
+   "y": 0.534,
+   "title": "A bar per hazard along the day",
+   "does_well": "Hours 0h to 0h across; one bar per phenomenon, coloured for the hours it applies. Floods link to the river service.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (start_utc, end_utc)",
+   "part": "warning-over-time"
+  },
+  {
+   "n": 7,
+   "x": 0.352,
+   "y": 0.578,
+   "title": "The rhythm, stated",
+   "does_well": "\"Les cartes de vigilance météo sont actualisées au moins 2 fois par jour à 6h et 16h.\"",
+   "fed_by": "how often each file is read (next_read_utc)",
+   "part": "times"
+  },
+  {
+   "n": 8,
+   "x": 0.806,
+   "y": 0.127,
+   "title": "A PDF version",
+   "does_well": "The same card as a document to forward.",
+   "fed_by": "the page's markdown twin and api/v1",
+   "part": "data"
+  }
+ ]
+}

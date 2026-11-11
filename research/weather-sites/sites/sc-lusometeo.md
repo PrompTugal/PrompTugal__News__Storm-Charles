@@ -1,6 +1,6 @@
 # Luso Meteo: "Tempestade Charles pode, afinal, ser mais fraca do que o previsto"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · amateur · Portugal
 

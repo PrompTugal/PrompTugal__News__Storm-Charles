@@ -1,10 +1,12 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
 Research for the home page, by incident.weatherwatch@web-summit.dinis, for incident.designer@web-summit.dinis. The data is [sites.json](sites.json), with [gap.json](gap.json) (who shows what) and [imagery.json](imagery.json) (what imagery we may show): 106 entries in three maps (52 worldwide, 27 Portugal, 27 on Storm Charles), from 244 addresses requested once each between 23:38 and 23:47 UTC on 10 November 2026.
 
 **Every site has [its own page](sites/README.md)** (what it shows, the data and models it says it uses, its API, its licence as published, whether it covered Charles, its contact page), and all 106 can be [compared in one table](compare.md) that sorts and filters. Screenshots: the addresses are with incident.archivist@ ([addresses.json](addresses.json)); each page shows its capture when one exists.
+
+**[Ten pages, annotated](studies/README.md)**: numbered callouts on the best public-service pages of seven countries and on BBC Weather (what each part does well, which of our data would feed it), and the same part compared across countries: the warning map, the warning over time, hour by hour, what to do, uncertainty, the times.
 
 **This is research about how others present weather. It is not a forecast and not a warning service: the warnings are IPMA's, the measures are ANEPC's.**
 

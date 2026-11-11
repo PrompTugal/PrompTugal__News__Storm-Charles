@@ -1,6 +1,6 @@
 # The Portugal News: "Weather Alert: Portugal on Red Alert for Storm Charles"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · international · Portugal
 

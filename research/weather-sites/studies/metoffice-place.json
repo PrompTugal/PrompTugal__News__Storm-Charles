@@ -1,0 +1,79 @@
+{
+ "id": "metoffice-place",
+ "site": "metoffice",
+ "site_page": "research/weather-sites/sites/metoffice.md",
+ "name": "Met Office: forecast for a place (London)",
+ "country": "United Kingdom",
+ "url": "https://www.metoffice.gov.uk/weather/forecast/gcpvj0v07",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-11T02:17Z"
+ },
+ "capture": null,
+ "capture_note": "Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.",
+ "licence_for_showing_the_screenshot": "Crown copyright; website material under the Open Government Licence v3.0 unless marked: a screenshot with the credit fits.",
+ "summary": "The new Met Office place page: the next hour in very large type, three chips, ten day tabs, an hourly table that gives the gust its own row. No UK warning was in force, so the warning banner was not seen.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.332,
+   "y": 0.207,
+   "title": "Five views of one forecast",
+   "does_well": "Daily, Detailed, Map, Long range, UK: the same place at five depths, as tabs.",
+   "fed_by": "our two faces: the weather face and the data room",
+   "part": "navigation"
+  },
+  {
+   "n": 2,
+   "x": 0.086,
+   "y": 0.325,
+   "title": "The next hour, very large",
+   "does_well": "\"NEXT HOUR 9°C Light rain\": the page answers \"what now\" before anything else.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/stations.json, airport.json (latest observation); warnings.json (in force now)",
+   "part": "now"
+  },
+  {
+   "n": 3,
+   "x": 0.25,
+   "y": 0.401,
+   "title": "Three chips, one of them the gust",
+   "does_well": "\"Feels like 7°\", \"Light rain ≥95%\", \"Max gust 19mph from the northeast\": the gust is named in the summary, in words, with its direction.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json (observed_airport_max_gust), warnings.json (the warning's own gust figure)",
+   "part": "hour-by-hour"
+  },
+  {
+   "n": 4,
+   "x": 0.5,
+   "y": 0.487,
+   "title": "Ten day tabs; the far ones marked BETA",
+   "does_well": "High and low per day; days eight to ten carry a \"BETA\" label: lower confidence is marked on the tab itself.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (daily.days)",
+   "part": "uncertainty"
+  },
+  {
+   "n": 5,
+   "x": 0.5,
+   "y": 0.706,
+   "title": "The hourly table, gust on its own row",
+   "does_well": "Per hour: symbol, temperature, feels like, chance of rain, mean wind with arrow, and under it the gust. Mean wind and gust are never confused.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/forecast.json (hourly); label the mean-wind row \"automatic\"",
+   "part": "hour-by-hour"
+  },
+  {
+   "n": 6,
+   "x": 0.141,
+   "y": 0.841,
+   "title": "When it was updated",
+   "does_well": "\"Updated: 1am on 11 November 2026\", directly under the table.",
+   "fed_by": "read_utc and next_read_utc of every file",
+   "part": "times"
+  }
+ ]
+}

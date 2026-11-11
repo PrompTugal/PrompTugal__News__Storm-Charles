@@ -1,0 +1,80 @@
+{
+ "id": "aemet-warnings",
+ "site": "aemet",
+ "site_page": "research/weather-sites/sites/aemet.md",
+ "name": "AEMET: meteorological warnings",
+ "country": "Spain",
+ "url": "https://www.aemet.es/en/eltiempo/prediccion/avisos",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T02:50Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-11T02:17Z"
+ },
+ "capture": null,
+ "capture_note": "Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.",
+ "licence_for_showing_the_screenshot": "AEMET allows reuse citing AEMET as the source without distorting the information (its legal notice): a screenshot with the credit fits.",
+ "summary": "The fullest warnings page we saw: the next three days' level in the header of every page, a special notice in words, a map with a hazard filter and a time bar, and under it a matrix of regions against time. On the night of Charles it showed red for Extremadura and Castilla y León.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.195,
+   "y": 0.153,
+   "title": "Three days, three dots, in the header",
+   "does_well": "Wed 11 red, Thu 12 orange, Fri 13 yellow: the highest level of each of the next three days sits beside the menu on every page of the site.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (highest level per day)",
+   "part": "warning-over-time"
+  },
+  {
+   "n": 2,
+   "x": 0.5,
+   "y": 0.247,
+   "title": "The special notice, in words",
+   "does_well": "One line above the map: \"Aviso especial. Lluvias fuertes y persistentes, rachas muy fuertes y temporal marítimo.\" The forecasters' own headline before any colour.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/communiques.json (the current communiqué's subject)",
+   "part": "what-to-expect"
+  },
+  {
+   "n": 3,
+   "x": 0.223,
+   "y": 0.419,
+   "title": "Hazards as a filter",
+   "does_well": "All, Wind, Rainfalls, Storms, Coastal: one click redraws the map for one hazard.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (type)",
+   "part": "warning-map"
+  },
+  {
+   "n": 4,
+   "x": 0.609,
+   "y": 0.475,
+   "title": "The map by warning zone",
+   "does_well": "Zones smaller than provinces, in the four European colours; the red zone is visible at once among the orange.",
+   "fed_by": "our own redraw from IPMA's JSON; district shapes from an open source",
+   "part": "warning-map"
+  },
+  {
+   "n": 5,
+   "x": 0.531,
+   "y": 0.694,
+   "title": "A time bar with play",
+   "does_well": "Three day tabs (each \"00-24h\") and a play button that runs the map through time.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (start_utc, end_utc)",
+   "part": "warning-over-time"
+  },
+  {
+   "n": 6,
+   "x": 0.68,
+   "y": 0.9,
+   "title": "The matrix: regions against time",
+   "does_well": "One row per region; the hazards in force as small icons framed in their level's colour; then one coloured cell per period across the three days. The whole country's next three days in one table. A feed icon on every row.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json; for us the rows are Lisbon's hazards and then the decisions (incidents/2026-11-10-storm-charles/data/decisions/graph.json)",
+   "part": "warning-over-time"
+  }
+ ],
+ "limits": "The cookie banner was not dismissed and takes the top 120 px of the frame."
+}
