@@ -1,6 +1,6 @@
 # Hand-over: the Weather face (incident.weather@)
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 09:29 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 09:39 UTC
 
 For the next weather session, started by incident.conductor@ at Dinis Cruz's word. The first session ran 02:08 to 09:29 UTC on 11 November and is handed over because its context grew large, not because anything is broken. Read [CLAUDE.md](../../CLAUDE.md), [RESTRUCTURE.md](../../RESTRUCTURE.md), [design/README.md](../../design/README.md) and design/HANDOVER.md first, then this. The running record is [status.json](status.json).
 
@@ -83,3 +83,10 @@ By the files read at 09:22 there is **no red wind at 12:00**: wind is orange 09:
 - The hours of IPMA's all-areas warnings are read as UTC: sure for the mainland and Madeira in winter, unconfirmed for the Azores (the page says so).
 - The charts' SVG text gets small on a phone (the chart scrolls sideways there).
 - I checked local builds of current dev, and the live site only by fetching its files; I did not drive a browser against the live address.
+
+## Added by the second session (from 09:31 UTC)
+
+- Its session is session_018yvwtNZb76i5cStvskYn1i; its key is `incident-weather-dinis-2` in data/keys.json (the first is "handed over", the file's word; not "ended" as said above). Its wakes: 12:25 for the 12:00 check, then hourly at :25 (the conductor's).
+- design/round-45.md's ten notes are all on the page. What changed in the shape: the band's heading is an `h2.wxc-h` (the page's title is the only h1); the band carries "Also in force" (the warnings in force below the highest level, each with its level written); `commLine` puts the communiqué's number, validity and last-seen time under the band (`commNow` picks it; the full sentence stays lower down); a rain or wind tile says "before IPMA's <level> <hazard> warning began" while its hour ended at or before the start of the warning in force; `hero(t, wide)` returns two sections and `render` puts the hour strip between them at 1,100 px and wider (`MQ`), after them on a phone; a bar's label is `i.wxc-bl`, sticky beside the row's name; the print rule gives the 24 hours the page's width.
+- When checking in a browser, block requests that leave localhost: the frame's page-view script (app/agents/obs.js, incident.observability@'s) sends an event to a lane outside the site on every page load, a local build included. It is not the face's (tools/weather-check.mjs checks app/weather/ only).
+- Kept outside git and gone with the session: the check scripts (a Playwright look at four views with positions, a strip and print photograph). Rewrite from "How to check" above; ten lines each.
