@@ -177,6 +177,14 @@ async function main() {
             files: files.slice(-400), files_total: files.length, by: BY, updated: now,
         })
     }
+    // the fields incident.archivist@'s data Wayback steps through (evidence/data.json reads this file; it writes nothing here)
+    const VID = readJson(path.join(ROOT, 'sources/meteoalarm/dataset.json'), {}).vault?.id || null
+    const lastCopy = [...reads.reads].reverse().find(r => r.vault?.path)?.vault
+    entry.status = 200
+    entry.changed = !prev ? null : prev.sha256 !== digest
+    entry.diff = entry.diff || null
+    entry.vault = (entry.vault && entry.vault.dated && !/^none/.test(entry.vault.dated)) ? { id: VID, path: entry.vault.dated } : (entry.vault && typeof entry.vault === 'object' && lastCopy ? { id: lastCopy.id, path: lastCopy.path, same_bytes_as_that_copy: true } : { id: VID, path: null, note: typeof entry.vault === 'string' ? entry.vault : 'no dated copy' })
+    reads.feed = `meteoalarm/${COUNTRY}`; reads.url = FEED; reads.licence = 'CC BY 4.0 equivalent with MeteoAlarm\'s terms (sources/meteoalarm/source.json); the warnings are the national service\'s'
     reads.reads.push(entry)
     reads.updated = now
     writeJson(readsFile, reads)
