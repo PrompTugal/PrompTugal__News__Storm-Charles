@@ -6,10 +6,21 @@ import json, sys
 d, when = sys.argv[1], sys.argv[2]
 BY = 'incident.weatherwatch@web-summit.dinis'; W, H = 1280, 1600
 D = 'incidents/2026-11-10-storm-charles/data/'
+CAPTURE = {  # from incident.archivist@ (206a7d7): the frame in the display vault, read in the browser with the published read key and checked against this sha256
+ 'aemet-warnings': ('aemet-es/2026/11/11/0252-en-eltiempo-prediccion-avisos', '2026-11-11T02:52:41Z', '0853b74ce35b97e3ba544f339ca51de7c9872c28af461a8f30c51bb46bc505ae'),
+ 'ipma-hourly': ('ipma/2026/11/11/0253-pt-otempo-prev-localidade-hora', '2026-11-11T02:53:07Z', '3eb704809470b4ab6329006c61cd6609d3ae86e0bb3e01b31146314aebe251fc'),
+ 'ipma-warnings-timeline': ('ipma/2026/11/11/0253-pt-otempo-prev-sam-p-lsb', '2026-11-11T02:53:19Z', 'bf64266ebc6b7dae5aecc60c766e24152effcabeb30b59ffbc49bba1d37d6c5c'),
+ 'knmi-warnings': ('knmi-nl/2026/11/11/0253-nederland-nu-weer-waarschuwingen', '2026-11-11T02:53:29Z', 'f8cf3d9b40d96b9d24973689372a86cea9bb41d637cd55de350894e31b1e1a7a'),
+ 'metoffice-place': ('metoffice-gov-uk/2026/11/11/0254-weather-forecast-gcpvj0v07', '2026-11-11T02:54:09Z', '625feda671f628d52b6721a76ae7954a79d8796867114520b962e4f67f2b18d1'),
+ 'nws-point': ('weather-gov/2026/11/11/0254-mapclick-php-lat-40-7146-lon-74-0071', '2026-11-11T02:54:21Z', '7ca5a3e22a86a57030648a6f849cb4b6c7704a79235a4a4b82b972085e5a26ae'),
+}
+COVERED = {'metoffice-place': 'metoffice-gov-uk/2026/11/11/0254-weather-forecast-gcpvj0v07'}   # captured and showable, but a consent panel covers the left half of the frame as served, over four of the six parts
+PRIVATE = {'bbc-lisbon': 'bbc/2026/11/11/0252-weather-2267057', 'meteoalarm-portugal': 'meteoalarm/2026/11/11/0253-en-live-region-pt', 'meteofrance-vigilance': 'meteofrance-fr/2026/11/11/0253-fr', 'yr-lisbon': 'yr-no/2026/11/11/0254-en-forecast-hourly-table-2-2267057-portugal-lisbon-lisbon'}
 def study(id_, site, name, country, url, seen, licence, summary, callouts, limits=None):
     doc = {'id': id_, 'site': site, 'site_page': f'research/weather-sites/sites/{site}.md', 'name': name, 'country': country, 'url': url, 'by': BY, 'updated': when,
-           'frame': {'viewport': [W, H], 'scale': 1, 'part': 'top of the page, no scrolling', 'seen_utc': seen},
-           'capture': None, 'capture_note': 'Requested from incident.archivist@: same address, 1280 x 1600 viewport, top of page. Until then the study page draws the callouts on an empty frame. No image is kept in git.',
+           'frame': {'viewport': [W, H], 'scale': 1, 'part': 'top of the page, no scrolling', 'seen_utc': seen, 'callouts_checked_against_capture': id_ in CAPTURE and id_ not in COVERED},
+           'capture': ({'evidence': CAPTURE[id_][0], 'evidence_page': f'evidence/{CAPTURE[id_][0]}.html', 'read_utc': CAPTURE[id_][1], 'sha256': CAPTURE[id_][2], 'vault': 'f86qsbla', 'path': CAPTURE[id_][0] + '/frame.jpg', 'by': 'incident.archivist@web-summit.dinis'} if id_ in CAPTURE and id_ not in COVERED else None),
+           'capture_note': ('The frame is read in the browser from the display vault with the published read key and checked against the sha256; no image is kept in git. The callouts were placed on this agent\'s own render and checked against this capture.' if id_ in CAPTURE and id_ not in COVERED else 'Captured by incident.archivist@ (evidence ' + COVERED[id_] + '; see evidence/' + COVERED[id_] + '.html): as served to a first-time visitor a cookie-consent panel covers the left half of the frame, over four of the six parts, so the frame here stays empty until a frame with notices hidden exists.' if id_ in COVERED else 'Captured by incident.archivist@ (evidence ' + PRIVATE.get(id_, 'none') + ') and kept privately: the site\'s terms do not clearly allow showing a screenshot, so the frame stays empty and the link stands.'),
            'licence_for_showing_the_screenshot': licence, 'summary': summary,
            'callouts': [{'n': k + 1, 'x': round(x / W, 3), 'y': round(y / H, 3), 'title': t, 'does_well': w, 'fed_by': f, 'part': p} for k, (x, y, t, w, f, p) in enumerate(callouts)]}
     if limits: doc['limits'] = limits
@@ -68,18 +79,18 @@ S.append(study('ipma-warnings-timeline', 'ipma-avisos', 'IPMA: warnings on a tim
  'The primary source for Lisbon: eight hazards against 72 hours, then every warning as a bar with its period and one sentence.', [
  (480, 265, 'Eight hazards by 72 hours', 'One row per hazard (thunder, sea state, rain, wind, snow, cold, heat, fog), one cell per hour for three days, green to red: when each hazard starts and stops, in one picture.', D + 'weather/warnings.json', 'warning-over-time'),
  (400, 357, 'Days marked under the grid', '"11 nov", "12 nov", "13 nov" with hour ticks at 00, 06, 12, 18.', 'the same', 'warning-over-time'),
- (540, 708, 'Each warning as a bar with its sentence', '"Vento - Vermelho [11 Nov 12:00 - 11 Nov 21:00]" and under it "Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos." Hazard, level, period, and what to expect.', D + 'weather/warnings.json (type, level, start_utc, end_utc, text_pt)', 'what-to-expect'),
+ (560, 690, 'Each warning as a bar with its sentence', '"Vento - Vermelho [11 Nov 12:00 - 11 Nov 21:00]" and under it "Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos." Hazard, level, period, and what to expect.', D + 'weather/warnings.json (type, level, start_utc, end_utc, text_pt)', 'what-to-expect'),
  (1040, 440, 'Every district with its highest level', 'A list on the right: the district\'s name and a chip ("Vermelho", "Laranja"); the one shown is marked.', 'warnings.json (red_and_orange_elsewhere)', 'warning-map'),
- (540, 795, 'UTC, and the last update', '"Toda a informação em horas UTC" and "Última atualização: terça, 10 de novembro de 2026 às 21:23".', 'read_utc; cap.json (sent_utc)', 'times'),
+ (300, 737, 'UTC, and the last update', '"Toda a informação em horas UTC" and "Última atualização: terça, 10 de novembro de 2026 às 21:23".', 'read_utc; cap.json (sent_utc)', 'times'),
  (990, 873, 'The criteria, linked', '"Critérios de emissão": what makes a warning yellow, orange or red.', 'a link; thresholds for the legend of our strip', 'what-to-do')]))
 S.append(study('ipma-hourly', 'ipma-local', 'IPMA: hourly forecast for a place (Lisboa)', 'Portugal', 'https://www.ipma.pt/pt/otempo/prev.localidade.hora/#Lisboa&Lisboa', '2026-11-10T23:48Z',
  'As IPMA above.',
  'The page our hour strip should learn most from: day tabs that carry the warning colour, and an hourly table whose last row is the warnings themselves.', [
  (1030, 141, 'When it was made', '"Informação em horas UTC. Última atualização: 2026-11-10 19:56:03 (UTC)".', D + 'weather/forecast.json (hourly_runs)', 'times'),
  (447, 398, 'The day tab carries the warning', 'Under each day: min, max, wind, rain probability, and a label in the level\'s colour ("Amarelo", "Vermelho", "Amarelo").', D + 'weather/forecast.json (daily) + warnings.json', 'warning-over-time'),
- (730, 587, 'Rain probability by three-hour block', '"100%" across the morning and afternoon of Wednesday, "24%" at the end.', D + 'weather/forecast.json (hourly)', 'hour-by-hour'),
+ (730, 572, 'Rain probability by three-hour block', '"100%" across the morning and afternoon of Wednesday, "24%" at the end.', D + 'weather/forecast.json (hourly)', 'hour-by-hour'),
  (730, 720, 'Mean wind, hour by hour', 'An arrow, a figure in km/h and a direction per hour: 11 to 23 km/h. This is the automatic mean wind, not the gust the warning speaks of.', D + 'weather/forecast.json (hourly); label it "automatic, mean wind"', 'hour-by-hour'),
- (730, 896, 'The warnings as a row of the table', '"Avisos Meteorológicos": one cell per hour, yellow, then orange, then red from 09H to 21H. The best row on the page, placed last.', D + 'weather/warnings.json: on our strip this row goes first', 'warning-over-time'),
+ (730, 878, 'The warnings as a row of the table', '"Avisos Meteorológicos": one cell per hour, yellow, then orange, then red from 09H to 21H. The best row on the page, placed last.', D + 'weather/warnings.json: on our strip this row goes first', 'warning-over-time'),
  (730, 1265, 'The caveat, in the notes', 'The page explains that this automatic forecast may differ from the forecasters\' descriptive forecast and from the warnings, which should be consulted. True and far from the numbers it qualifies.', 'a one-line note beside our model rows', 'uncertainty')]))
 S.append(study('yr-lisbon', 'yr', 'Yr: Lisbon, hour by hour', 'Norway', 'https://www.yr.no/en/forecast/hourly-table/2-2267057/Portugal/Lisbon/Lisbon', '2026-11-10T23:48Z',
  'MET Norway data is NLOD / CC BY 4.0; the page design is Yr\'s. The archivist confirms before the screenshot is shown.',
@@ -112,9 +123,9 @@ json.dump({'about': 'Annotated studies of the best public-service weather pages 
           open(f'{d}/studies/index.json', 'w'), indent=1, ensure_ascii=False); open(f'{d}/studies/index.json', 'a').write('\n')
 # the page
 m = ['---', 'title: Weather pages, annotated', 'summary: Ten weather pages from seven countries with numbered callouts: what each part does well and which of our data would feed it.',
-     'mount: <div id="ws-studies" class="card"><p class="meta">The annotated frames load here. The same content is in the text below.</p></div>', 'head: <script src="studies.js" defer></script>', '---',
+     'mount: <div id="ws-studies" class="card"><p class="meta">The annotated frames load here. The same content is in the text below.</p></div>', 'head: <script src="../../../app/evidence/vault-reader.js" defer></script><script src="studies.js" defer></script>', '---',
      '# Weather pages, annotated', '', f'> Kept by {BY}, {when} UTC', '',
-     f'{len(S)} pages from {len(set(s["country"] for s in S))} countries and services, each with numbered callouts on the page as we drew and saw it (1280 x 1600 px, the top of the page). At Dinis\'s word of 11 November, ~02:20 UTC: "take a screenshot of a website and then you start pointing". The screenshots themselves are with incident.archivist@ (a vault, never git); until a capture exists the frame is empty and the numbers stand where the parts are. Data: [index.json](index.json) and one file per study. [Back to the weather sites](../README.md).', '',
+     f'{len(S)} pages from {len(set(s["country"] for s in S))} countries and services, each with numbered callouts on the page as we drew and saw it (1280 x 1600 px, the top of the page). At Dinis\'s word of 11 November, ~02:20 UTC: "take a screenshot of a website and then you start pointing". The screenshots are incident.archivist@\'s captures: five are read in your browser from the display vault and checked against their sha256 (never kept in git), and each point was checked to sit on its part; the Met Office\'s is captured but half covered by a consent panel as served, so its frame waits for one with notices hidden; four are kept privately because the site\'s terms do not clearly allow showing them, and there the frame stays empty with the numbers where the parts are. Data: [index.json](index.json) and one file per study. [Back to the weather sites](../README.md).', '',
      '## The same part, across countries', '']
 for p, title in PARTS.items():
     if not cross[p]: continue
