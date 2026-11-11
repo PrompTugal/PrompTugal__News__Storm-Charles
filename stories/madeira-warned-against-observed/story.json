@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:31Z",
-  "updated": "2026-11-11T04:28Z",
-  "based_on_read_utc": "2026-11-11T03:23:31Z",
+  "updated": "2026-11-11T05:28Z",
+  "based_on_read_utc": "2026-11-11T04:23:17Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for Madeira's areas, resolved from the data room when the page is built and read again in the reader's browser.",
     "title": "IPMA's red warnings for Madeira",
@@ -190,11 +190,11 @@
     },
     {
       "id": "m6",
-      "text": "Measured: 230.8 mm of rain in six consecutive hourly values at IPMA's station Areeiro, the hours labelled 21:00 Tuesday to 02:00 Wednesday.",
+      "text": "Measured: 232.1 mm of rain in six consecutive hourly values at IPMA's station Areeiro, the hours labelled 22:00 Tuesday to 03:00 Wednesday.",
       "label": "fact",
       "said_by": "IPMA, station observations (station 1210973)",
-      "at_utc": "2026-11-11T02:00Z",
-      "read_utc": "2026-11-11T03:23:31Z",
+      "at_utc": "2026-11-11T03:00Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "row",
@@ -204,7 +204,7 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
           "field": "stations[id=1210973].max_6h_rain.mm",
-          "expect": 230.8,
+          "expect": 232.1,
           "read_field": "stations[id=1210973].read_utc"
         },
         {
@@ -212,8 +212,8 @@
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
           "field": "stations[id=1210973].max_6h_rain.hours_labelled",
           "expect": [
-            "2026-11-10T21:00Z",
-            "2026-11-11T02:00Z"
+            "2026-11-10T22:00Z",
+            "2026-11-11T03:00Z"
           ],
           "read_field": "stations[id=1210973].read_utc"
         }
@@ -221,11 +221,11 @@
     },
     {
       "id": "m7",
-      "text": "Hour by hour at Areeiro: 29.7 mm (labelled 20:00), 47.6 (21:00), 44.7 (22:00), 25.4 (23:00), 33.5 (00:00), 49.6 (01:00) and 30.0 mm (02:00). At the last hour we hold it had not stopped.",
+      "text": "Hour by hour at Areeiro: 29.7 mm (labelled 20:00), 47.6 (21:00), 44.7 (22:00), 25.4 (23:00), 33.5 (00:00), 49.6 (01:00), 30.0 (02:00) and 48.9 mm (03:00). At the last hour we hold it had not stopped.",
       "label": "fact",
       "said_by": "IPMA, station observations (station 1210973)",
-      "at_utc": "2026-11-11T02:00Z",
-      "read_utc": "2026-11-11T03:23:31Z",
+      "at_utc": "2026-11-11T03:00Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "data",
@@ -279,7 +279,14 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
-          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T03:00Z]",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T03:00Z].rain_mm",
+          "expect": 48.9,
+          "read_field": "stations[id=1210973].read_utc"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+          "field": "stations[id=1210973].hourly[time_utc=2026-11-11T04:00Z]",
           "note": "Not there at this read: when IPMA's next hour arrives the sentence is retold.",
           "absent": true
         }
@@ -287,17 +294,17 @@
     },
     {
       "id": "m8",
-      "text": "Four more stations measured over 100 mm in six hours: São Vicente 137.0, Santo da Serra 130.4, Pico do Areeiro 123.9 and Pico Alto 116.7 mm.",
+      "text": "Four more stations measured over 100 mm in six hours: São Vicente 141.5, Santo da Serra 130.4, Pico do Areeiro 123.9 and Pico Alto 116.7 mm.",
       "label": "fact",
       "said_by": "IPMA, station observations",
-      "at_utc": "2026-11-11T02:00Z",
-      "read_utc": "2026-11-11T02:38:08Z",
+      "at_utc": "2026-11-11T03:00Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
           "field": "stations[id=1210967].max_6h_rain.mm",
-          "expect": 137.0
+          "expect": 141.5
         },
         {
           "kind": "data",
@@ -321,11 +328,11 @@
     },
     {
       "id": "m9",
-      "text": "Against the communiqué: its figure was more than 100 mm in 12 hours in places, above all in the mountains. Five stations passed 100 mm in six hours, and Areeiro 230.8. The communiqué's wording has no upper figure, so the measurements fall inside its words, at more than twice its number in half its time at one station.",
+      "text": "Against the communiqué: its figure was more than 100 mm in 12 hours in places, above all in the mountains. Five stations passed 100 mm in six hours, and Areeiro 232.1. The communiqué's wording has no upper figure, so the measurements fall inside its words, at more than twice its number in half its time at one station.",
       "label": "fact",
       "derived": true,
       "said_by": "this desk, setting the communiqué beside the station values",
-      "read_utc": "2026-11-11T02:38:08Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "derived_from": [
         "m1",
         "m6",
@@ -477,7 +484,7 @@
   ],
   "not_known": [
     {
-      "text": "What fell after the hour labelled 02:00 on Wednesday: at the 03:23 read IPMA's station feed still ended at 02:00. The red rain window runs to 06:00.",
+      "text": "What fell after the hour labelled 03:00 on Wednesday: the next read. The red rain window runs to 06:00.",
       "watch": "incidents/2026-11-10-storm-charles/data/weather/madeira.json"
     },
     {
@@ -553,6 +560,18 @@
       "claims_added": [],
       "claims_changed": [
         "m13"
+      ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T05:28Z",
+      "what": "Retold on the read of 04:23:17 UTC (station hours to 03:00). Before: Areeiro 230.8 mm in the six values labelled 21:00 to 02:00; São Vicente 137.0. Now: Areeiro 232.1 mm (22:00 to 03:00), with 48.9 mm in the newest hour; São Vicente 141.5. IPMA's red warnings for Madeira are unchanged and run to 06:00.",
+      "claims_added": [],
+      "claims_changed": [
+        "m6",
+        "m7",
+        "m8",
+        "m9"
       ],
       "by": "incident.stories@web-summit.dinis"
     }

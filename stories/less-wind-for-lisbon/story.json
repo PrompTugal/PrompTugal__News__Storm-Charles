@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T04:28Z",
-  "based_on_read_utc": "2026-11-11T03:23:31Z",
+  "updated": "2026-11-11T05:28Z",
+  "based_on_read_utc": "2026-11-11T04:23:17Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first. Each is resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser when the page opens.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -182,7 +182,7 @@
       "text": "IPMA has published no communiqué no. 3: at the last read, no. 2 is still the newest text on Charles in its feed.",
       "label": "fact",
       "said_by": "IPMA's communiqués feed",
-      "read_utc": "2026-11-11T03:23:31Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "data",
@@ -204,7 +204,7 @@
       "label": "fact",
       "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
       "at_utc": "2026-11-10T07:18:40Z",
-      "read_utc": "2026-11-11T03:23:31Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "row",
@@ -263,7 +263,7 @@
       "text": "Since then IPMA has sent no message that lowers, shortens or lifts a Lisbon warning: the red wind warning is as it was sent at 07:18 on Tuesday.",
       "label": "fact",
       "said_by": "IPMA's warnings, as read",
-      "read_utc": "2026-11-11T03:23:31Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "data",
@@ -462,7 +462,7 @@
       "model": true,
       "said_by": "IPMA's automatic hourly forecast for Lisbon (a model's output, not a warning)",
       "at_utc": "2026-11-10T21:18:43Z",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "row",
@@ -497,7 +497,7 @@
       "model": true,
       "said_by": "MET Norway, Locationforecast 2.0 (a second model, never merged with IPMA)",
       "at_utc": "2026-11-11T01:19:09Z",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "data",
@@ -525,39 +525,55 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.met_no.updated_utc",
-          "expect": "2026-11-11T01:19:09Z",
+          "contains": [
+            "2026-11-11T01:19"
+          ],
           "read_field": "second_models.met_no.read_utc"
         }
       ]
     },
     {
       "id": "c16",
-      "text": "Open-Meteo's forecast for the same point is far lower: its strongest mean wind is 20.6 km/h and its strongest gust 52.6 km/h, both at 14:00, from the north-east.",
+      "text": "Open-Meteo's forecast for the same point is far lower, and moved between reads: its strongest mean wind is now 18.7 km/h and its strongest gust 53.6 km/h, both at 10:00, from the south-south-west. At 14:00 it has 16.1 km/h from the north-east.",
       "label": "evidence",
       "model": true,
       "said_by": "Open-Meteo, best match (a second model, never merged with IPMA)",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
-          "field": "second_models.open_meteo.rows[time_utc=2026-11-11T14:00Z].wind_mean_kmh",
-          "expect": 20.6,
+          "field": "second_models.open_meteo.rows[time_utc=2026-11-11T10:00Z].wind_mean_kmh",
+          "expect": 18.7,
           "read_field": "second_models.open_meteo.read_utc",
           "url_field": "second_models.open_meteo.source"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
-          "field": "second_models.open_meteo.rows[time_utc=2026-11-11T14:00Z].gust_kmh",
-          "expect": 52.6,
+          "field": "second_models.open_meteo.rows[time_utc=2026-11-11T10:00Z].gust_kmh",
+          "expect": 53.6,
+          "read_field": "second_models.open_meteo.read_utc"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+          "field": "second_models.open_meteo.rows[time_utc=2026-11-11T10:00Z].wind_from_deg",
+          "expect": 199,
+          "read_field": "second_models.open_meteo.read_utc"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+          "field": "second_models.open_meteo.rows[time_utc=2026-11-11T14:00Z].wind_mean_kmh",
+          "expect": 16.1,
           "read_field": "second_models.open_meteo.read_utc"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "second_models.open_meteo.rows[time_utc=2026-11-11T14:00Z].wind_from_deg",
-          "expect": 46,
+          "expect": 56,
           "read_field": "second_models.open_meteo.read_utc"
         }
       ]
@@ -596,12 +612,12 @@
     },
     {
       "id": "c18",
-      "text": "So the three models in the data room do not agree with each other: the strongest mean wind for Lisbon on Wednesday is 23.4, 58.3 or 20.6 km/h, at 20:00, 15:00 or 14:00, depending on which is read. None of these is a gust at an exposed place, which is what the warning's 120 km/h measures.",
+      "text": "So the three models in the data room do not agree with each other: the strongest mean wind for Lisbon on Wednesday is 23.4, 58.3 or 18.7 km/h, at 20:00, 15:00 or 10:00, depending on which is read. None of these is a gust at an exposed place, which is what the warning's 120 km/h measures.",
       "label": "evidence",
       "model": true,
       "derived": true,
       "said_by": "this desk, setting three files side by side",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "derived_from": [
         "c14",
         "c15",
@@ -773,7 +789,7 @@
       "text": "Nothing measured yet can test any of this: the red wind warning begins at 12:00 on Wednesday, and the observations we hold end before it.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T03:23:31Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "data",
@@ -809,7 +825,7 @@
       "label": "fact",
       "said_by": "Lisbon airport's METAR (issued by IPMA, read through NOAA's Aviation Weather)",
       "at_utc": "2026-11-10T11:00Z",
-      "read_utc": "2026-11-11T03:23:31Z",
+      "read_utc": "2026-11-11T04:23:17Z",
       "supports": [
         {
           "kind": "data",
@@ -964,6 +980,16 @@
         "c19"
       ],
       "claims_changed": [],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T05:28Z",
+      "what": "Checked against the read of 04:23:17 UTC: IPMA's red wind and red rain for Lisbon unchanged, the communiqué still no. 2. One model moved: Open-Meteo's strongest mean wind was 20.6 km/h (gust 52.6) at 14:00 from the north-east; it is now 18.7 km/h (gust 53.6) at 10:00 from the south-south-west. MET Norway's values and IPMA's hourly model are as before. The three still disagree.",
+      "claims_added": [],
+      "claims_changed": [
+        "c16",
+        "c18"
+      ],
       "by": "incident.stories@web-summit.dinis"
     }
   ]
