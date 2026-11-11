@@ -1,6 +1,6 @@
 /* The Studio's storyboard player (incident.studio@web-summit.dinis). Tokens only (design/README.md): no hex colour here;
    IPMA's warning colours are never used; a state is always said in words or by a pattern as well as by colour. */
-.sb { --U: 21px; --hatch: repeating-linear-gradient(135deg, var(--line-2) 0 2px, transparent 2px 7px); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px 12px; margin: 0 0 22px; }
+.sb { --U: 21px; --cap: 20px; --hatch: repeating-linear-gradient(135deg, var(--line-2) 0 2px, transparent 2px 7px); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px 12px; margin: 0 0 22px; }
 .sb:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .sb-title h2 { margin: 0; font-size: 22px; line-height: 1.2; }
 .sb-title .meta { margin: 4px 0 10px; max-width: 90ch; }
@@ -19,9 +19,9 @@
 .sb-lane + .sb-lane { border-top: 2px dashed var(--line-2); margin-top: 10px; padding-top: 10px; }
 .sb-lane h4 { margin: 0 0 6px; font: 700 12px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .07em; color: var(--ink-2); }
 .sb-cols { display: grid; grid-template-columns: minmax(120px, .55fr) minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "left centre right" "left held got"; gap: 8px 22px; align-items: end; }
-.sb-cols.has-door { grid-template-columns: minmax(120px, .55fr) minmax(0, 1fr) 26px minmax(0, 1fr); grid-template-areas: "left centre . right" "left held door got"; column-gap: 8px; }
+.sb-cols.has-door { grid-template-columns: minmax(120px, .55fr) minmax(0, 1fr) 48px minmax(0, 1fr); grid-template-areas: "left centre . right" "left held door got"; column-gap: 6px; }
 .sb-cols.no-left { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "centre right" "held got"; }
-.sb-cols.no-left.has-door { grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr); grid-template-areas: "centre . right" "held door got"; }
+.sb-cols.no-left.has-door { grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr); grid-template-areas: "centre . right" "held door got"; }
 .sb-left { grid-area: left; align-self: start; } .sb-centre { grid-area: centre; } .sb-right { grid-area: right; }
 .sb-held { grid-area: held; } .sb-got { grid-area: got; } .sb-door { grid-area: door; }
 
@@ -41,7 +41,7 @@
 .sb-left .sb-say { margin-top: 2px; }
 .sb-stage:not(.still) .sb-say { animation: sb-pop .28s ease-out both; }
 
-.sb-pile { position: relative; height: calc(var(--units) * var(--U) + 20px); display: flex; flex-direction: column; justify-content: flex-end; border-bottom: 2px solid var(--ink); padding-top: 20px; min-width: 0; }
+.sb-pile { position: relative; height: calc(var(--units) * var(--U) + var(--cap)); display: flex; flex-direction: column; justify-content: flex-end; border-bottom: 2px solid var(--ink); padding-top: var(--cap); min-width: 0; }
 .sb-cap { position: absolute; top: 0; left: 0; right: 0; font: 600 11px/1.25 var(--sans); color: var(--ink-2); }
 .sb-b { position: relative; flex: none; height: calc(var(--u) * var(--U)); box-sizing: border-box; display: flex; align-items: center; gap: 6px; padding: 0 6px; overflow: hidden; background: var(--surface); border: 1px solid var(--line-2); border-top-width: 0; font-size: 12px; line-height: 1.15; white-space: nowrap; }
 .sb-b:first-of-type { border-top-width: 1px; }
@@ -52,21 +52,24 @@
 .sb-b.k-file { background: var(--surface); border-left: 4px double var(--ink-2); }
 .sb-b.s-new { box-shadow: inset 0 0 0 2px var(--focus); }
 .sb-b.s-new em, .sb-b.s-read em { background: var(--sent-soft); color: var(--sent); }
+.sb-b.s-key { box-shadow: inset 0 0 0 2px var(--ink); font-weight: 600; } .sb-b.s-key em { background: var(--ink); color: var(--paper); }
 .sb-b.s-changed { box-shadow: inset 0 0 0 2px var(--ink); } .sb-b.s-changed em { background: var(--ink); color: var(--paper); }
 .sb-b.s-summary { border: 2px dashed var(--ink); background: var(--surface-2); }
 .sb-b.s-lost { border-style: dashed; color: var(--ink-2); background: transparent; } .sb-b.s-lost b { text-decoration: line-through; }
 .sb-b.s-saved { box-shadow: inset 4px 0 0 var(--ok); } .sb-b.s-saved em, .sb-b.s-doc em { background: var(--ok-soft); color: var(--ok); }
 .sb-b.s-doc { box-shadow: inset 0 0 0 2px var(--ok); }
-.sb-b.over { background-image: var(--hatch); color: var(--ink-2); }
+.sb-b.over { color: var(--ink-2); }
 /* what the model receives: read at full cost (solid, blue) or reused from the cache (hatched, grey), each with the word */
 .sb-b.r-read { background: var(--sent-soft); border-color: var(--sent); box-shadow: none; }
 .sb-b.r-cached { background-color: var(--surface); background-image: var(--hatch); color: var(--ink-2); box-shadow: none; }
 .sb-lintel { position: absolute; left: 0; right: 0; bottom: calc(var(--u) * var(--U)); border-top: 2px dotted var(--ink); z-index: 2; pointer-events: none; }
+.sb-lintel::before { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: calc((var(--units) - var(--u)) * var(--U)); background: var(--hatch); opacity: .8; }
 .sb-lintel i { position: absolute; right: 0; bottom: 2px; font: 700 10px/1 var(--sans); font-style: normal; background: var(--paper); color: var(--ink); padding: 1px 3px; }
-.sb-door { position: relative; height: calc(var(--units) * var(--U) + 20px); border-bottom: 2px solid var(--ink); }
-.sb-door span { position: absolute; left: 3px; right: 3px; bottom: 0; height: calc(var(--u) * var(--U)); border: 4px solid var(--ink); border-bottom: 0; border-radius: 4px 4px 0 0; background: var(--surface-2); }
-.sb-door::before { content: ""; position: absolute; left: 0; right: 0; top: 20px; bottom: 0; background: var(--hatch); opacity: .9; }
-.sb-door.blocked span { background: var(--surface); }
+.sb-door { position: relative; height: calc(var(--units) * var(--U) + var(--cap)); border-bottom: 2px solid var(--ink); }
+.sb-door span { position: absolute; left: 4px; right: 4px; bottom: 0; height: calc(var(--u) * var(--U)); box-sizing: border-box; border: 5px solid var(--ink); border-bottom: 0; border-radius: 5px 5px 0 0; background: var(--paper); }
+.sb-door span::after { content: "the door"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); white-space: nowrap; font: 700 10px/1 var(--sans); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); }
+.sb-door::before { content: ""; position: absolute; left: 0; right: 0; top: var(--cap); bottom: 0; background: var(--hatch); opacity: .9; }
+.sb-door.blocked span::after { content: "does not fit"; color: var(--ink); }
 .sb-got.blocked::after { content: "Too long for the window: this request cannot be sent as it is."; margin: auto 0; padding: 8px; border: 2px dashed var(--ink); font-size: 13px; background: var(--surface); }
 
 .sb-meters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 10px 0 0; }
@@ -96,6 +99,8 @@
 .sb-scenes button { font: 700 12px/1 var(--mono); padding: 6px 0; width: 28px; }
 .sb-keys { margin: 9px 0 0; font-size: 12.5px; }
 
+@media (min-width: 900px) { .sb-stage.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 14px; } .sb-stage.two .sb-lane + .sb-lane { border-top: 0; margin-top: 0; padding-top: 0; border-left: 2px dashed var(--line-2); padding-left: 14px; } }
+.sb-stage.two { --U: 19px; } .sb-stage.two .sb-b i { display: none; } .sb-stage.two .sb-lane { display: flex; flex-direction: column; } .sb-stage.two .sb-head { min-height: 96px; flex-direction: column; gap: 2px; } .sb-stage.two .sb-who { width: auto; display: flex; align-items: center; gap: 5px; text-align: left; } .sb-stage.two .sb-char { width: 40px; height: 45px; margin: 0; } .sb-stage.two .sb-say { font-size: 13px; padding: 5px 8px; margin: 0; }
 /* movement: only when the stage is not .still (reduced motion, or a step backwards) */
 @keyframes sb-progress { to { width: 100%; } }
 @keyframes sb-pop { from { opacity: 0; transform: translateY(5px) scale(.96); } }
@@ -113,19 +118,19 @@
 @media (prefers-reduced-motion: reduce) { .sb *, .sb *::before { animation: none !important; transition: none !important; } }
 
 @media (max-width: 700px) {
-  .sb { --U: 20px; padding: 10px 10px 10px; }
+  .sb { --U: 20px; --cap: 30px; padding: 10px 10px 10px; }
   .sb-title h2 { font-size: 19px; }
   .sb-stage { padding: 8px; }
   .sb-cols, .sb-cols.has-door { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "left left" "centre right" "held got"; gap: 6px 10px; }
-  .sb-cols.has-door { grid-template-columns: minmax(0, 1fr) 16px minmax(0, 1fr); grid-template-areas: "left left left" "centre . right" "held door got"; column-gap: 4px; }
-  .sb-cols.no-left.has-door { grid-template-columns: minmax(0, 1fr) 16px minmax(0, 1fr); }
+  .sb-cols.has-door { grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr); grid-template-areas: "left left left" "centre . right" "held door got"; column-gap: 4px; }
+  .sb-cols.no-left.has-door { grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr); }
   .sb-left.sb-head { flex-direction: row; min-height: 62px; }
   .sb-head { flex-direction: column; gap: 2px; min-height: 118px; }
   .sb-who { width: auto; display: flex; align-items: center; gap: 5px; text-align: left; }
   .sb-left .sb-who { flex-direction: column; gap: 0; width: 50px; text-align: center; }
   .sb-char { width: 40px; height: 45px; margin: 0; }
   .sb-say { font-size: 12.5px; padding: 5px 7px; margin-top: 0; }
-  .sb-b { font-size: 10.5px; padding: 0 4px; gap: 3px; } .sb-b i { display: none; } .sb-b em { font-size: 8.5px; padding: 2px 3px; }
+  .sb-b { font-size: 10.5px; padding: 0 4px; gap: 3px; } .sb-b i { display: none; } .sb-b em { font-size: 8.5px; padding: 2px 3px; } .sb-b.tall b { white-space: normal; }
   .sb-cap { font-size: 10px; }
   .sb-meters { gap: 5px; } .sb-meters div { padding: 5px 6px; } .sb-meters dt { font-size: 10.5px; } .sb-meters dd { font-size: 18px; } .sb-meters dd small { display: block; font-size: 10.5px; margin-top: 2px; }
   .sb-caption { font-size: 15.5px; min-height: 7.2em; }

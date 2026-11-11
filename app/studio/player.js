@@ -34,20 +34,22 @@
         lane.stack = (l.stack || []).map(b => blockOf(ch, b))
         lane.say = l.say || {}; lane.mood = l.mood || {}
         lane.files = l.files || null
+        lane.meters = l.meters !== undefined ? l.meters : sc.meters !== undefined ? sc.meters : ch.meters
+        lane.live = lane.stack.filter(b => b.state !== 'lost')   // a lost block is drawn to show what is missing; it is not held, counted or sent
         return lane
     }
     function normalise(a) {
         a.chapters = (a.chapters || []).map(ch => Object.assign({}, ch, { scenes: ch.scenes.map(sc => ({ caption: sc.caption, note: sc.note || '', dur: sc.dur, lanes: (sc.lanes || [sc]).map(l => laneOf(ch, sc, l)) })) }))
         if (a.simplifies && a.simplifies.length) a.chapters.push({ id: 'what-this-simplifies', title: 'What this simplifies', scenes: [{ caption: 'Every picture here leaves things out. These are the ones that matter.', list: a.simplifies, lanes: [] }] })
         for (const ch of a.chapters) {
-            const us = l => l.stack.reduce((n, b) => n + b.u, 0)
+            const us = l => l.live.reduce((n, b) => n + b.u, 0)
             ch.units = Math.max(4, ...ch.scenes.flatMap(sc => sc.lanes.map(l => Math.max(us(l), l.window || 0)))) + 1
             // what each request read at full cost and reused, summed over the requests so far in this chapter (per lane)
             const seen = [{}, {}, {}]
             ch.cache = ch.scenes.some(sc => sc.lanes.some(l => l.send && l.send.cached !== undefined))
             for (const sc of ch.scenes) sc.lanes.forEach((l, i) => {
                 if (l.send) {
-                    const cached = l.stack.slice(0, l.send.cached || 0).reduce((n, b) => n + b.u, 0), total = us(l)
+                    const cached = l.live.slice(0, l.send.cached || 0).reduce((n, b) => n + b.u, 0), total = us(l)
                     l.m = { n: l.send.n, read: total - cached, cached, total }
                     seen[i][l.send.n] = l.m
                 }
@@ -66,19 +68,19 @@
         return `<div class="sb-head sb-${slot}"><div class="sb-who">${window.StudioCast.draw(who, mood, lane.names[who])}<span>${esc(lane.names[who])}</span></div>${say ? `<p class="sb-say">${esc(say)}</p>` : ''}</div>`
     }
     function block(b, cls, i) {
-        const tag = { 'new': 'new', summary: 'summary', lost: 'lost', saved: 'saved', doc: 'from a file', changed: 'changed', cached: 'cached', read: 'read' }[b.state] || ''
-        return `<div class="sb-b k-${esc(b.kind || 'turn')} ${b.state ? 's-' + esc(b.state) : ''} ${cls || ''}" data-u="${b.u}" data-i="${i}" data-key="${esc(b.key)}"><b>${esc(b.label)}</b>${b.note ? `<i>${esc(b.note)}</i>` : ''}${tag ? `<em>${tag}</em>` : ''}</div>`
+        const tag = { 'new': 'new', summary: 'summary', lost: 'lost', saved: 'saved', doc: 'from a file', changed: 'changed', cached: 'cached', read: 'read', key: 'matters' }[b.state] || ''
+        return `<div class="sb-b k-${esc(b.kind || 'turn')} ${b.state ? 's-' + esc(b.state) : ''} ${b.u > 1 ? 'tall' : ''} ${cls || ''}" data-u="${b.u}" data-i="${i}" data-key="${esc(b.key)}"><b>${esc(b.label)}</b>${b.note ? `<i>${esc(b.note)}</i>` : ''}${tag ? `<em>${tag}</em>` : ''}</div>`
     }
     function drawLane(ch, lane, prev, animate) {
         const had = new Set(((prev && prev.stack) || []).map(b => b.key + '|' + b.state + '|' + b.u)), win = lane.window
-        let above = lane.stack.reduce((n, b) => n + b.u, 0)
+        let above = lane.live.reduce((n, b) => n + b.u, 0)
         const pile = lane.stack.map((b, i) => {
-            const over = win && above > win; above -= b.u
+            const over = win && b.state !== 'lost' && above > win; if (b.state !== 'lost') above -= b.u
             return block(b, (animate && !had.has(b.key + '|' + b.state + '|' + b.u) ? 'enter ' : '') + (over ? 'over' : ''), i)
         }).join('')
         const sendNew = lane.send && animate && !(prev && prev.send && prev.send.n === lane.send.n && (prev.send.cached || 0) === (lane.send.cached || 0))
         const blocked = lane.send && lane.send.blocked
-        const got = lane.send && !blocked ? lane.stack.map((b, i) => {
+        const got = lane.send && !blocked ? lane.live.map((b, i) => {
             const c = i < (lane.send.cached || 0)
             return block(Object.assign({}, b, { state: c ? 'cached' : 'read' }), c ? 'r-cached' : 'r-read', i)
         }).join('') : ''
@@ -92,7 +94,7 @@ ${ch.cache ? `<div class="reuse"><dt>This request, reused from the cache</dt><dd
         return `<section class="sb-lane${lane.title ? ' titled' : ''}">${lane.title ? `<h4>${esc(lane.title)}</h4>` : ''}
 <div class="sb-cols${win ? ' has-door' : ''}${lane.cast.left ? '' : ' no-left'}">
 ${head(lane, 'left')}${head(lane, 'centre')}${head(lane, 'right')}
-<div class="sb-pile sb-held" data-units="${ch.units}"><span class="sb-cap">${esc(lane.held || 'The conversation the app holds')}</span>${win ? `<span class="sb-lintel" data-u="${win}"><i>the window: ${win} blocks</i></span>` : ''}${pile}</div>
+<div class="sb-pile sb-held" data-units="${ch.units}"><span class="sb-cap">${esc(lane.held || 'The conversation ' + String(lane.names[lane.cast.centre] || 'the app').replace(/^[A-Z]/, c => c.toLowerCase()) + ' holds')}</span>${win ? `<span class="sb-lintel" data-u="${win}"><i>the window: ${win} blocks</i></span>` : ''}${pile}</div>
 ${win ? `<div class="sb-door${blocked ? ' blocked' : ''}" data-units="${ch.units}"><span data-u="${win}"></span></div>` : ''}
 <div class="sb-pile sb-got${sendNew ? ' arrive' : ''}${blocked ? ' blocked' : ''}" data-units="${ch.units}"><span class="sb-cap">${lane.send ? (blocked ? 'Request ' + lane.send.n + ': does not fit' : 'Request ' + lane.send.n + ': what the model receives') : 'Between requests the model holds nothing'}</span>${got}</div>
 </div>${meters}${files}</section>`

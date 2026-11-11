@@ -30,8 +30,10 @@ for (const a of anims) {
             const lanes = sc.lanes || [sc], extra = []
             for (const l of lanes) {
                 const pre = lanes.length > 1 && l.title ? `${l.title}: ` : ''
-                if (l.send && !l.send.blocked) { const tot = (l.stack || []).reduce((n, b) => n + U(b), 0), c = (l.stack || []).slice(0, l.send.cached || 0).reduce((n, b) => n + U(b), 0); extra.push(`${pre}request ${l.send.n} carries ${tot} blocks; ${tot - c} read at full cost${c ? `, ${c} reused from the cache` : ''}.`) }
-                if (l.files) extra.push(`${pre}on the file system: ${l.files.map(f => `${f.href ? `[${f.name}](${f.href})` : f.name}${f.size ? ` (${f.size})` : ''}`).join(', ')}.`)
+                if (l.send && l.send.blocked) extra.push(`${pre}request ${l.send.n} does not fit the window of ${l.window ?? sc.window ?? ch.window} blocks and cannot be sent.`)
+                if (l.send && !l.send.blocked) { const live = (l.stack || []).filter(b => !/:lost$/.test(typeof b === 'string' ? b : b.id) && b.state !== 'lost'), tot = live.reduce((n, b) => n + U(b), 0), c = live.slice(0, l.send.cached || 0).reduce((n, b) => n + U(b), 0); extra.push(`${pre}request ${l.send.n} carries ${tot} blocks; ${tot - c} read at full cost${c ? `, ${c} reused from the cache` : ''}.`) }
+                const lf = (l.files || []).filter(f => f.state || lanes.length === 1)   // side by side, only what a scene adds or reads; the full shelf is in the chapter's last scene
+                if (lf.length) extra.push(`${pre}${lf.some(f => f.state === 'read') ? 'read from the file system' : lf.some(f => f.state === 'new') ? 'written to the file system' : 'on the file system'}: ${lf.map(f => `${f.href ? `[${f.name}](${f.href})` : f.name}${f.size ? ` (${f.size})` : ''}`).join(', ')}.`)
                 for (const b of l.stack || []) { const k = (typeof b === 'string' ? b : b.id).split(':')[0]; if (!ch.blocks?.[k] && typeof b === 'string') problems.push(`${a.id} ${ci + 1}.${si + 1}: block "${k}" is not defined`) }
             }
             out.push(`${si + 1}. ${one(sc.caption)}${sc.note ? ` *${one(sc.note)}*` : ''}${extra.length ? `\n   ${extra.join(' ')}` : ''}`)

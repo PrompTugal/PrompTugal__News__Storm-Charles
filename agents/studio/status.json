@@ -1,19 +1,23 @@
 {
   "agent": "incident.studio@web-summit.dinis",
-  "state": "active: the Studio's player is live with chapters 1 and 2 of \"What compression is\"; chapters 3 to 6 next",
+  "state": "active: the Studio is live with the player and the whole first animation, \"What compression is\" (six chapters and what it simplifies); waiting for Dinis's review",
   "last_wake": "2026-11-11T00:30Z",
   "done": [
     "session key made (encryption sha256:a245b51b57e34f52, signing sha256:1450b77352b69c10), public half in data/keys.json",
     "the storyboard player (app/studio/player.js, studio.css) and five characters drawn here as inline SVG (app/studio/characters.js): chapters, numbered scenes, play, pause, previous, next, restart, speed, a caption per scene; keyboard; phone; light and dark from the tokens; reduced motion steps without tweening; mounted through the site's frame from studio/README.md",
     "animations are data: studio/animations/index.json and one JSON per animation (schema: studio/animations/README.md); app/studio/twin.mjs writes the text twin (every scene and caption, numbered) into studio/README.md, so the page reads without JavaScript",
-    "\"What compression is\", chapters 1 (a normal request, no cache) and 2 (the same, with a cache), and its \"what this simplifies\""
+    "\"What compression is\", all six chapters: a normal request with no cache; the same with a cache; the door (the window, and the middle replaced by a summary); what gets lost and why (one rule from turn 12); side by side with how this team works (this repository's files by name, link and measured size, read 00:39 UTC); the point. It ends with \"what this simplifies\" (eight items) and the files read for it",
+    "tested before each push in a headless browser at 1280 and 390 wide, light and dark, with reduced motion, the keyboard, and with JavaScript off (37 scenes read as numbered lists); no screenshot committed"
   ],
   "next": [
-    "chapters 3 (the door), 4 (what gets lost and why), 5 (side by side, how this team works, with this repository's files by name and measured size), 6 (the point)",
-    "a look by incident.designer@ at the player against the design rules"
+    "changes from Dinis's review",
+    "a look by incident.designer@ at the player against the design rules",
+    "file sizes in chapter 5 are a dated reading (00:39 UTC) and the files grow: re-read them when the animation is next edited, or have twin.mjs measure them",
+    "a second animation, when Dinis names one"
   ],
   "asks": [
-    "incident.conductor@: storyboard.sgit.ai could not be reached from this session (the gateway answered 502 to the connection, 00:30 UTC), and the book for The Ultimate Insider was not found from sgit.ai's front page (only the article of that name). The player's manner and the characters are therefore my own reading of Dinis's words in BRIEF.md, not modelled on either. If Dinis wants them closer, a link to the book or a few words on what the mini characters do would help."
+    "incident.conductor@: storyboard.sgit.ai could not be reached from this session (the gateway answered 502 to the connection, 00:30 UTC), and the book for The Ultimate Insider was not found from sgit.ai's front page (only the article of that name). The player's manner and the characters are therefore my own reading of Dinis's words in BRIEF.md, not modelled on either. If Dinis wants them closer, a link to the book or a few words on what the mini characters do would help.",
+    "incident.conductor@: my first commit (7fc709c) carries a Co-Authored-By trailer with a model name, the harness's default; CLAUDE.md says no model names in what we push. It is pushed and I do not rewrite history. Later commits carry the plain trailer the other agents use."
   ],
   "updated": "2026-11-11T00:42Z",
   "by": "incident.studio@web-summit.dinis"
