@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 import { execFileSync } from 'node:child_process'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), dir = path.join(ROOT, 'app/weather'), fails = []
 // what the data room publishes: JSON this site itself serves that carries its source and time read (the conductor, 11 Nov 02:37 UTC)
-const ALLOWED = [/^api \+ '[\w\-/]+\.json'$/, /^room \+ 'incident\.json'$/, /^base \+ 'sources\/[\w-]+\/data\/[\w\-/]+\.json'$/, /^base \+ 'entities\/[\w\-/]+\.json'$/, /^base \+ 'evidence\/[\w\-/]+\.json'$/]
+const ALLOWED = [/^api \+ '[\w\-/]+\.json'$/, /^room \+ 'incident\.json'$/, /^base \+ 'sources\/[\w-]+\/data\/[\w\-/]+\.json'$/, /^base \+ 'entities\/[\w\-/]+\.json'$/, /^base \+ 'evidence\/[\w\-/]+\.json'$/, /^base \+ 'data\/agents\/now\.json'$/]
 const ALLOWED_LINKS = ['https://www.ipma.pt/', 'https://prociv.gov.pt/', 'https://promptugal.news/']   // the third: the family's own site (Dinis, ~10:32), a link, never fetched
 for (const f of fs.readdirSync(dir)) {
     const s = fs.readFileSync(path.join(dir, f), 'utf8'), rel = 'app/weather/' + f

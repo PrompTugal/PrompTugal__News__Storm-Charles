@@ -300,3 +300,16 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }   /* this page pads i
 .wxc-hero-top { border-bottom: 0; padding-bottom: 0; }
 .wxc-hero-rest { padding-top: 0; }
 @media (min-width: 1100px) { .wxc-hero-rest { padding-top: clamp(12px, 1.6vw, 24px); border-top: 1px solid var(--line); } }
+
+/* the team at work (data/agents/now.json): not weather, so no IPMA colour; ink, lines and links only */
+.wxc-team { margin: 24px 0; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius, 8px); background: var(--surface); }
+.wxc-team .wxc-sub { margin-top: 0; }
+.wxc-team-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px 24px; }
+.wxc-team h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); margin: 8px 0 6px; }
+.wxc-team ul { list-style: none; margin: 0; padding: 0; }
+.wxc-team li { padding: 5px 0; border-top: 1px solid var(--line); font-size: 14.5px; overflow-wrap: anywhere; }
+.wxc-team li b { font-family: var(--mono); font-size: 13px; }
+.wxc-team code { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
+.wxc-team time { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.wxc-team-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 0 0 !important; font-weight: 600; }
+@media (max-width: 600px) { .wxc-team-cols > div:first-child li:nth-child(n+6) { display: none; } }

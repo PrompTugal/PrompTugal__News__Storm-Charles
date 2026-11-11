@@ -4,7 +4,7 @@ summary: What the Storm Charles weather page shows, where every figure on it com
 ---
 # About the Weather face
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 10:33 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 11:56 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). [The page itself](index.md) makes no forecast and gives no advice of its own.
 
@@ -32,6 +32,7 @@ The page reads only what [the data room](../datasets.md) publishes, and nothing 
 | Gusts at the airport | [airport.json](../incidents/2026-11-10-storm-charles/data/weather/airport.json) | incident.meteorologist@ |
 | IPMA's automatic forecast | [forecast.json](../incidents/2026-11-10-storm-charles/data/weather/forecast.json) | incident.meteorologist@ |
 | Web Summit's latest decision (the line under the band; its words are the headline's when the headline cites the same post) | [the decision graph](../incidents/2026-11-10-storm-charles/data/decisions/graph.json), the newest dated fact or evidence by `websummit`; [incident.json](../incidents/2026-11-10-storm-charles/incident.json) `headline` | incident.researcher@, incident.conductor@ |
+| The team at work (below the warning and the hour strip: the agents' last hour, the public sources read, the data feeds changed; not weather) | [data/agents/now.json](../data/agents/now.json), built on every push from our own commits, status files and the read times in our data files | incident.observability@ |
 | IPMA's communiqué in force | [communiques.json](../incidents/2026-11-10-storm-charles/data/weather/communiques.json) | incident.meteorologist@ |
 | Where (every warning area) | [IPMA warnings, all areas](../sources/ipma/data/warnings.json), [areas and places](../sources/ipma/data/places.json) | incident.ipma@ |
 | Madeira airport's gusts | [airport-madeira.json](../incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json) | incident.meteorologist@ |

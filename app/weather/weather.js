@@ -12,7 +12,8 @@
     incident: room + 'incident.json', signals: api + 'signals.json', warn: api + 'weather/warnings.json', cap: api + 'weather/cap.json', rain: api + 'weather/lisbon-rain.json',
     stations: api + 'weather/stations.json', forecast: api + 'weather/forecast.json', airport: api + 'weather/airport.json',
     madeira: api + 'weather/madeira.json', madAir: api + 'weather/airport-madeira.json', changes: api + 'weather/changes.json', analysis: api + 'weather/analysis.json', comm: api + 'weather/communiques.json', decisions: api + 'decisions/graph.json',
-    areas: base + 'sources/ipma/data/warnings.json', places: base + 'sources/ipma/data/places.json'
+    areas: base + 'sources/ipma/data/warnings.json', places: base + 'sources/ipma/data/places.json',
+    team: base + 'data/agents/now.json'
   }
   // where a reader lands for each file: the data room's own copy (one place to change when the data room's file viewer is live)
   // the data room's file viewer: one page, view/?path=<path>, and &at=<field>/<index>/<field> opens one value inside a JSON file
@@ -21,7 +22,8 @@
     incident: view('incident.json', 'headline'), signals: room + 'timeline.html', warn: view('data/weather/warnings.json', 'lisbon'), cap: view('data/weather/cap.json', 'lisbon_messages'), rain: view('data/weather/lisbon-rain.json', 'stations'),
     stations: view('data/weather/stations.json', 'stations'), forecast: view('data/weather/forecast.json', 'hourly'), airport: view('data/weather/airport.json', 'metars'),
     madeira: view('data/weather/madeira.json', 'stations'), madAir: view('data/weather/airport-madeira.json', 'metars'), changes: view('data/weather/changes.json', 'thursday'), analysis: room + 'data/weather/analysis.html', comm: view('data/weather/communiques.json', 'items'), decisions: view('data/decisions/graph.json'),
-    areas: base + 'view/?path=sources/ipma/data/warnings.json&at=instances', places: base + 'view/?path=sources/ipma/data/places.json&at=areas'
+    areas: base + 'view/?path=sources/ipma/data/warnings.json&at=instances', places: base + 'view/?path=sources/ipma/data/places.json&at=areas',
+    team: base + 'data/agents/now.json'
   }
   var dayOff = 0   // the hour strip's day: 0 today, 1 tomorrow (the reader's switch)
   var qNow = new URLSearchParams(location.search).get('now')   // ?now=2026-11-11T13:00Z shows the page as at that time (a check, not a forecast)
@@ -562,13 +564,33 @@
 
   var fold = function (key, title, sub, inner, open) { return inner ? '<details class="wxc-fold" data-k="' + key + '"' + (open ? ' open' : '') + '><summary><h2>' + title + '</h2> <span class="meta">' + sub + '</span></summary>' + inner + '</details>' : '' }
   var MQ = window.matchMedia ? window.matchMedia('(min-width: 1100px)') : null
+  // the team at work (Dinis, ~11:46 to 11:55, BRIEF.md): what the agents did in the last hour, which bodies' sources were read and which of
+  // our data feeds changed, from incident.observability@'s data/agents/now.json (built on every push from our own commits, status files
+  // and the read times in our data files; never a visitor's request). Below IPMA's warning: the warning stays first. Not weather: no IPMA colour.
+  function team(t) {
+    var J = D.team; if (!J || !J.working) return ''
+    var c = J.counts || {}, fl = J.flags || {}, win = fl.sources_window_hours || 1, short = function (a) { return String(a || '').replace(/^incident\./, '').replace(/@.*$/, '@') }
+    var cut = function (x, n) { x = String(x || ''); return x.length > n ? x.slice(0, n).replace(/\s+\S*$/, '') + '…' : x }
+    var seen = {}, work = J.working.slice().sort(function (a, b) { return T(b.at) - T(a.at) }).filter(function (w) { if (seen[w.agent]) return false; seen[w.agent] = 1; return ok(w.at) }).slice(0, 8)
+    var groups = {}; (J.sources_read || []).forEach(function (r) { var k = r.body + '|' + r.host, g = groups[k] || (groups[k] = { body: r.body, host: r.host, n: 0, last: null }); g.n++; if (ok(r.read_utc) && (!g.last || T(r.read_utc) > T(g.last))) g.last = r.read_utc })
+    var gs = Object.keys(groups).map(function (k) { return groups[k] }).sort(function (a, b) { return T(b.last) - T(a.last) })
+    var feeds = (J.feeds || []).filter(function (f) { return ok(f.changed) }).sort(function (a, b) { return T(b.changed) - T(a.changed) }).slice(0, 6)
+    var tm = function (x) { return '<time datetime="' + esc(x) + '">' + hm(x) + '</time>' }
+    return '<section class="wxc-team" aria-labelledby="wxc-team-h"><h2 class="wxc-sub" id="wxc-team-h">The team at work</h2>' +
+      '<p class="meta">What the agents behind this page did in the last hour, from our own records: ' + num(c.working) + ' agents at work, ' + num(c.commits_in_hour) + ' changes pushed, ' + num(c.sources_read) + ' reads of public sources' + (win > 1 ? ' (the last ' + win + ' hours: the last hour was thin)' : '') + ', ' + num(c.feeds) + ' data feeds. ' + prov('team', 'the team file', J.updated) + (fl.commits_stale ? ' <b>The newest change it holds is over an hour old.</b>' : '') + '</p>' +
+      '<div class="wxc-team-cols">' +
+      '<div><h3>Working now</h3><ul>' + work.map(function (w) { return '<li><b>' + esc(short(w.agent)) + '</b> <span>' + esc(cut(w.what, 90)) + '</span> <span class="prov">' + tm(w.at) + ' UTC · ' + ago(w.at, t) + (w.sha ? ' · <code>' + esc(String(w.sha).slice(0, 7)) + '</code>' : '') + '</span></li>' }).join('') + '</ul></div>' +
+      (gs.length ? '<div><h3>Sources read, the last ' + (win > 1 ? win + ' hours' : 'hour') + '</h3><ul>' + gs.map(function (g) { return '<li><b>' + esc(g.body) + '</b> <code>' + esc(g.host) + '</code> <span class="prov">' + g.n + (g.n === 1 ? ' read' : ' reads') + (g.last ? ', the latest ' + tm(g.last) + ' UTC' : '') + '</span></li>' }).join('') + (J.public_posts_not_listed ? '<li class="meta">' + num(J.public_posts_not_listed) + ' public social posts read, counted and not listed.</li>' : '') + '</ul></div>' : '') +
+      (feeds.length ? '<div><h3>Data feeds, the latest changed</h3><ul>' + feeds.map(function (f) { return '<li><a href="' + esc(base + f.api) + '"><code>' + esc(String(f.path).replace(/^[^/]+\//, '')) + '</code></a> <span class="prov">changed ' + tm(f.changed) + ' UTC · ' + ago(f.changed, t) + '</span></li>' }).join('') + '</ul></div>' : '') +
+      '</div><p class="wxc-team-links">' + (J.links || []).map(function (l) { return '<a href="' + esc(base + l.href) + '">' + esc(l.label) + ' →</a>' }).join(' ') + '</p></section>'
+  }
   function render() {
     var t = now(), sx = (el.querySelector('.wxc-scroll') || {}).scrollLeft, first = !el.querySelector('.wxc'), opened = {}
     el.querySelectorAll('details').forEach(function (d, i) { opened[d.dataset.k || (d.querySelector('summary') || {}).textContent + i] = d.open })
     var nextRead = D.warn && D.warn.next_read_utc
     // on a desk the hour strip comes straight after the band (the designer's round 45, note 2); on a phone the lists come first. The order in the page is the order read
     var wide = !!(MQ && MQ.matches), H = hero(t, wide)
-    el.innerHTML = '<div class="wxc">' + (wide ? H[0] + hours(t) + H[1] : H[0] + H[1] + hours(t)) + whereMap(t) + tomorrow(t) + '<div class="wxc-pair">' + latest(t) + madeira(t) + '</div>' +
+    el.innerHTML = '<div class="wxc">' + (wide ? H[0] + hours(t) + H[1] : H[0] + H[1] + hours(t)) + team(t) + whereMap(t) + tomorrow(t) + '<div class="wxc-pair">' + latest(t) + madeira(t) + '</div>' +
       fold('closed', 'What is closed and what runs', 'every entry: who, what, when, the source', closed(t)) +
       fold('charts', 'Rain and wind today, as charts', 'measured against warned', '<div class="wxc-pair even">' + rainChart(t) + windChart(t) + '</div>') +
       fold('madeira', 'Madeira, hour by hour', 'rain measured against warned, the last 24 hours read', madeiraHours(t)) +
