@@ -379,9 +379,9 @@
       "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
       "shared_row": false,
       "status_file": "agents/identity/status.json",
-      "status_sha256": "65bc76eb645d04c03006e327fe3c9bd0ca28dd9cfdf46550e3c68bb9b2873700",
+      "status_sha256": "0d4ccca2e0c349863fddb40783cf15fb136ecac6af41602f670ad016adbe928a",
       "state": "active: the login and the sealed feedback box are live on every page; the lane tools are ready and not run; the lane and the vaults wait for Dinis",
-      "last_wake": "2026-11-11T03:21:31Z",
+      "last_wake": "2026-11-11T04:21:30Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
@@ -399,7 +399,8 @@
         "00:31: /account/ has the theme switch (the designer's app/design/theme.js and frame.js, loaded under the page's policy, read first: 1.2 KB, storage and the theme only) and the frame's sixth nav section; tools/lane-frame.mjs copies the frame's header, notice and footer caption again whenever it changes",
         "01:22 wake: nothing from Dinis yet (no public half, senders empty, no token in the environment). lane-test 52 checks OK; /account/ matches the frame (no drift); the three signatures check. Nothing new built: every next step needs him",
         "02:11, from Dinis's direction of ~02:10 (BRIEF.md): /account/ reads as a log-in first (one action: log in with a passkey, which makes the key the first time; the passphrase folded away; the explanation below). SECURITY.md section e: the rule for vaults the agents make, what the gate blocks and three patterns it should add. tools/lane-handover.mjs: a vault key sealed to the conductor's key and saved outside git on arrival, never printed. Tests: lane-test 57, lane-e2e 15",
-        "03:21 wake: the frame's menu changed again (sixteen subsites, filled at the end of the build) and /account/ had fallen behind it. Fixed for good: the page now carries the build's own menu and breadcrumb marks, so the build fills them (links only; the test checks the built page has nothing inline and no script from another origin). The entry reads Log in. Tests: lane-test 41, lane-e2e 15. Tokens measured for incident.accountant@ (accounts/ledger/identity.jsonl). Nothing from Dinis yet: no key, no decision, no token"
+        "03:21 wake: the frame's menu changed again (sixteen subsites, filled at the end of the build) and /account/ had fallen behind it. Fixed for good: the page now carries the build's own menu and breadcrumb marks, so the build fills them (links only; the test checks the built page has nothing inline and no script from another origin). The entry reads Log in. Tests: lane-test 41, lane-e2e 15. Tokens measured for incident.accountant@ (accounts/ledger/identity.jsonl). Nothing from Dinis yet: no key, no decision, no token",
+        "04:21 wake: no change. Nothing from Dinis (no key, no decision, no token); lane-test 41 OK; the built /account/ matches the frame; signatures check; tokens measured"
       ],
       "next": [
         "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
@@ -524,9 +525,9 @@
       "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
       "shared_row": true,
       "status_file": "agents/meteorologist/status.json",
-      "status_sha256": "204beb0c1c2427664c039ac113c785d6bf2e8a54a95c92e03ed56a85544cf84f",
+      "status_sha256": "c1b4141f1061b63f7eee24b16565e06376c84d8d1c3837030e5733549b9d0ea3",
       "state": "23:58: red rain moved to 09:00-18:00 (IPMA CAP sent 21:23; open data lagged 2 h+); CAP feed added (cap.json, issue times: red wind 07:18:40, red rain 16:30:01); met.no second model in forecast.json second_models; analysis section 6",
-      "last_wake": "2026-11-11T03:23Z",
+      "last_wake": "2026-11-11T04:23Z",
       "jobs": [
         "J1 (tonight): the weather as JSON for the dashboard, in incidents/2026-11-10-storm-charles/data/weather/ with a README per file: IPMA warnings for Lisboa (every level change with the time IPMA issued it and the time read), communiqués, Lisbon station observations (hourly), LPPT TAF and METAR (gusts). Read Vicky's desk's watch.mjs and snapshots (desks/weather-vicky/, read-only) and do not duplicate it: go deeper (series, not snapshots).",
         "J2 (tonight): how far ahead could it be known? The first public sign of CHARLES (communiqué no. 1, 9 Nov 13:17), each warning's lead time to its start, and what the models said against what is observed from Wednesday 05:00. Facts, evidence, hypotheses labelled.",
@@ -567,9 +568,9 @@
       "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
       "shared_row": true,
       "status_file": "agents/researcher/status.json",
-      "status_sha256": "3aa1dc7f079c9c96d21e37a53e6a22334444af290b318648d5b965fae3c8a5bf",
+      "status_sha256": "044bb5cddc3bcc55ddc013854b539a569e56ad76e11837087351a325821252e1",
       "state": "blocked on the move: cannot reach PrompTugal/PrompTugal__News__Storm-Charles from this session",
-      "last_wake": "2026-11-11T03:33Z",
+      "last_wake": "2026-11-11T04:33Z",
       "jobs": [
         "J1 (tonight, first): where will Web Summit announce a Wednesday decision? Every organiser channel (site, news page, app notices, press office statements as reported, official social accounts readable without a login), and the side events on Wednesday (Dear Gatekeepers Live 10:00; others). Public sources only. Feed social.watch@'s sweeps; do not duplicate them.",
         "J2 (tonight): the decision graph as JSON (incidents/2026-11-10-storm-charles/data/graph.json, README): actors (IPMA, ANEPC, government, Câmara, schools, Metro, Carris, CP, Fertagus, Transtejo, bridges, ANA/the airport, Web Summit, side events), who can decide what (cite Vicky's desk's law.md, read-only), what each has decided with time and source, and lead times. Facts, evidence, hypotheses labelled.",
@@ -604,7 +605,9 @@
         "02:42: bridges: 60 km/h (14:48) then lifted by 22:29 (Lusa): a sequence, not a conflict; Lusoponte still unreachable. IPMA no. 1 publish time not verifiable (only no. 2 online); AEMET named Charles 9 Nov 10:20:11 (fact, its Bluesky). Social posts filed in entities (rede-expressos, cp, metro, museums; new: ferries, flixbus, hospitals, parliament, retail). Madeira SRPC measures page (fact, created 15:27).",
         "03:02: token measure not run: refused by the permission check; no tokens.jsonl written",
         "03:33 wake: no change to Day 3 (blog, post text, Bluesky); primary-page tries run 2 (03:33): none published at source",
-        "03:56: Madeira: the 71-occurrence count (to 02:00) is SRPC's via its press platform (DN Madeira/SAPO 02:10): evidence; no count on procivmadeira.pt; Porto Santo's measures not found at the body; entities/madeira.json"
+        "03:56: Madeira: the 71-occurrence count (to 02:00) is SRPC's via its press platform (DN Madeira/SAPO 02:10): evidence; no count on procivmadeira.pt; Porto Santo's measures not found at the body; entities/madeira.json",
+        "04:13: area on every edge (lisbon 29, mainland 10, national 7, madeira 7; porto-santo none yet)",
+        "04:33 wake: no change to Day 3; IPMA Lisbon unchanged; primary-page tries run 3: none published"
       ],
       "next": [
         "Each wake: Web Summit (blog list first); then python3 incidents/2026-11-10-storm-charles/data/decisions/tools/primary_tries.py",
@@ -644,9 +647,9 @@
       "job": "**what the project costs**: model spend, tokens per agent session, CI time; where the savings are",
       "shared_row": false,
       "status_file": "agents/accountant/status.json",
-      "status_sha256": "6993b6036c4695c7421455b1ee0e8cf2443b3e6ba2bbb17a56e73f1f355d29b1",
-      "state": "active: round 4 released: 26 of 30 agents measured (1.31 billion tokens, 98.8% cache reads); the fresh session measured on three agents (74% to 84% less per call)",
-      "last_wake": "2026-11-11T03:31:00Z",
+      "status_sha256": "d14f7563ade9d89b5c294c0efa1b843592fffb6dce099529256f96719321ba86",
+      "state": "active: round 5 released: 27 of 30 measured (1.44 billion tokens); eight agents have handed over to fresh sessions (53% to 84% less per call)",
+      "last_wake": "2026-11-11T04:34:00Z",
       "jobs": [
         "A1: what the project costs, as data: accounts/models.json, agents.json, machine.json, outputs.json, books.json (tools/accounts-build.mjs)",
         "A2: tokens per agent session by the WS-148 method: tools/accounts-measure.mjs, accounts/ledger/<role>.jsonl, accounts/measure.md",
@@ -663,20 +666,21 @@
         "03:00Z round 2: savings.md with the conductor's session, brief 2",
         "03:01Z the pack measured again after the librarian's correction: 14,734 tokens, 8 of 8 answers",
         "03:04Z round 3: the measure page corrected (the path check failed, it did not warn; the conductor fixed the policy), the provider's balance beside the cap, the conductor's hourly estimate (46% less), nine agents' reported figures, brief 3",
-        "03:35Z round 4: 26 ledger files read; the fresh-session saving measured (designer, librarian, observability); cost per row, story and captured page; savings rewritten; brief 4"
+        "03:35Z round 4: 26 ledger files read; the fresh-session saving measured (designer, librarian, observability); cost per row, story and captured page; savings rewritten; brief 4",
+        "04:38Z round 5: five more hand-overs measured (graph, studio, weatherwatch, journalist, reporter); the team's tokens per call by hour; brief 5"
       ],
       "next": [
-        "the four missing lines (dev, meteorologist, researcher, wikipedia)",
-        "the eight sessions above 400,000 tokens a call after their hand-over",
-        "how many hourly wakes find nothing changed",
+        "the three missing lines (dev, meteorologist, researcher) and the conductor's later sessions",
+        "the nine sessions still above 370,000 tokens a call",
+        "the accountant's own hand-over (the conductor starts sessions)",
         "app/accounts/: the books drawn from the JSON"
       ],
       "asks_dinis": [
-        "Dinis: the provider's account is out of credit since 02:55 UTC (accounts/provider.json; incident.models@'s ask): the 20-dollar cap cannot be used until it is topped up"
+        "Dinis: the provider's account is out of credit since 02:55 UTC (accounts/provider.json): the 20-dollar cap cannot be used until it is topped up"
       ],
       "asks": [
-        "incident.designer@: an Accounts entry under Team in the menu (accounts/index.html)",
-        "every agent: pull dev, then the measure step at the end of each wake (accounts/measure.md)"
+        "incident.conductor@: measure your sessions after 02:58 UTC; start a fresh accountant session at the next round (this one is near 300,000 tokens a call)",
+        "incident.designer@: an Accounts entry under Team in the menu (accounts/index.html)"
       ],
       "keys": [
         {
@@ -718,9 +722,9 @@
       "job": "**capture every external page** (screenshot, HTML, sha256), the vaults (packed for captures, normal for display), the evidence pages",
       "shared_row": false,
       "status_file": "agents/archivist/status.json",
-      "status_sha256": "ce12b0bf31ff50d546340b42364146ae379a7c9be670befe6c73349eb749b726",
+      "status_sha256": "c8a6c776a53a90379f902cbd65e2e5c3fbdce1dfa638b2f7669bcdff593011f2",
       "state": "active: capturing; primary sources re-read each hour",
-      "last_wake": "2026-11-11T03:30:00Z",
+      "last_wake": "2026-11-11T04:50:00Z",
       "jobs": [],
       "done": [
         "tools/capture.mjs: one address at a time, a few seconds apart, as 'Mozilla/5.0 (compatible; page-capture/1.0)', robots.txt read and obeyed, never logged in; keeps (outside git) the HTML as served, the document after scripts, the visible text, a full-page screenshot, a second screenshot with consent notices hidden (nothing clicked), status, headers, title, time, sha256 of each",
@@ -731,11 +735,15 @@
         "02:35: a mistake of mine, corrected: the first list of addresses from the timeline and decisions was cut short by a faulty pattern (any address stopped at the first 2, 7 or x), so 23 captures were of addresses nobody cites (site front pages, 404s). Their records, pages and vault copies are removed (10 had been released between 5afb301 and f8492de; they remain in git history); the list is now built from signals.json and data/decisions/*.json and the missing addresses are being read again",
         "02:45: round over the timeline and decisions done: 79 addresses recorded (evidence/index.json), 56 timeline rows mapped (evidence/rows.json). Not captured: social platforms (5 addresses, by rule); 403 to our plain client: lisboa.pt, informacao.lisboa.pt, expresso.pt, rede-expressos.pt (recorded as answered 403, not retried in disguise); 502 from prociv.gov.pt/pt/noticias/ (twice); robots.txt unreadable: mai.gov.pt, lusoponte.pt; robots.txt disallows all: dgeste.mec.pt. Vault numbers: display 84 files, 21 MB; captures (packed) 420 files, 123 MB; each push took seconds",
         "02:58: weatherwatch's ten studies captured with a fixed 1280 x 1600 frame (frame.jpg; six shown, four kept privately); each record now carries the site's terms-page address where weatherwatch has read it; Wayback for data: evidence/data.json indexes feeds that publish reads.json",
-        "03:24 hourly round: Web Summit's update and blog, IPMA's warnings timeline and communiqués, ANEPC's avisos listing and the government's declaration all UNCHANGED since 02:16 to 02:20; ANEPC's notice 21 answered 502 (recorded as a server error, not compared). Changed/unchanged now ignores a clock a source prints on every visit (IPMA: evidence/sources.json 'volatile') and server errors. 225 addresses in all; research press pages still being read"
+        "03:24 hourly round: Web Summit's update and blog, IPMA's warnings timeline and communiqués, ANEPC's avisos listing and the government's declaration all UNCHANGED since 02:16 to 02:20; ANEPC's notice 21 answered 502 (recorded as a server error, not compared). Changed/unchanged now ignores a clock a source prints on every visit (IPMA: evidence/sources.json 'volatile') and server errors. 225 addresses in all; research press pages still being read",
+        "04:24 hourly round: no primary source changed. Two captures had a different text hash only because the page rendered differently on that load (ANEPC's notice without its expanded menu; IPMA's communiqués with three news dates in raw form): read, judged 'same content' and recorded in evidence/reviewed.json; the tool now waits for the visible text to settle. ANEPC's avisos listing answered 502 this hour. 465 addresses, 480 captures. evidence/index.json is now one line per address (it had passed 256 KB); each address's captures and hashes are in evidence/<source>/index.json",
+        "04:40: capture pages are made at build time by tools/capture-pages.mjs --out (205 ms for 515 captures; same addresses, identical HTML); the tracked per-capture .md files are removed; 500 addresses",
+        "04:50: the research round is done (the container restarted mid-round; vaults, keys and captures survived, the last 16 press addresses were read again): 542 addresses, 557 captures; latest answer per address: 456 x 200, 31 x 403 (press and others refusing our plain client), 2 x 404, 4 x 5xx, 49 not captured (robots.txt, unreadable robots, social platforms); 111 captures shown, the rest kept privately. Vaults: display 267 files, 66 MB; captures (packed) 2,754 files, 811 MB; pushes still take under a minute"
       ],
       "next": [
-        "research/ in progress: 83 official and 'yes'-listed addresses, then 371 press pages (private); 186 commercial or unclassified addresses are held until their terms are read (not captured)",
         "primaries re-read hourly at :23, changed / unchanged",
+        "186 commercial or unclassified research addresses stay held until their terms are read",
+        "new addresses as rows and research add them (evidence/rows.json is rebuilt each round)",
         "IPMA's feeds in evidence/data.json when incident.ipma@ publishes reads.json"
       ],
       "asks_dinis": [
@@ -783,9 +791,9 @@
       "job": "**the board**: what is still open, each item tracked to its evidence; tasks for the team and for contributors",
       "shared_row": false,
       "status_file": "agents/board/status.json",
-      "status_sha256": "f92c3faf59f7224f26fc175926240f9ed27a6261e203c71d9167738afe444e89",
-      "state": "active: the board is live at /board/ (357 cards); the 03:29 round found no new timeline row or decision edge since 02:55, so no question moved",
-      "last_wake": "2026-11-11T03:29Z",
+      "status_sha256": "429af470d13eeb038f469223b7ae3d83bc6bf830bdfea84e4e28de75a4cf5536",
+      "state": "active: the board is live at /board/; the 04:30 round found two new timeline rows (press, evidence) and no primary statement, so no question moved",
+      "last_wake": "2026-11-11T04:30Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:12562fc83a671f38, signing sha256:9edac99e5295ac92), public half in data/keys.json",
@@ -803,7 +811,8 @@
         "Contribute mounts the board's tasks (incident.media@, 589852e); every task has its C- number (C-01 to C-20); the embed lists them in that order",
         "round 5 (03:05): c-pitch-original-slot answered by a primary source (row s-1111T0255: Wednesday 17:00, Centre Stage); q-pitch-semifinal reworded to where it runs now; evidence added to the talks question and to the government's advice (the Despacho does not mention Web Summit); new for Dinis before the launch: the provider's account out of credit (first), fresh sessions, the trailer, sites refusing our client name, meteorology's two proposals; a fourth vault key joined",
         "tools/board-sync.mjs: an ask it opened in an agent's own words now follows its line out (done, with exactly that in history); hand-written and joined asks are still read by hand",
-        "03:29 round: timeline (no row after s-1111T0255), the decision graph (updated 02:42; seven edges still not announced or unknown), incident.json and decisions.md re-read: no question or conflict moved; the Câmara card notes a second address that refuses our tools; the status files synced; incident.shadow@'s credit ask joined to the provider card; a-llm-cap half answered (Dinis: 20 US dollars a day)"
+        "03:29 round: timeline (no row after s-1111T0255), the decision graph (updated 02:42; seven edges still not announced or unknown), incident.json and decisions.md re-read: no question or conflict moved; the Câmara card notes a second address that refuses our tools; the status files synced; incident.shadow@'s credit ask joined to the provider card; a-llm-cap half answered (Dinis: 20 US dollars a day)",
+        "04:30 round: rows s-1111T0328 and s-1111T0351 are press reports (evidence) and bear on none of the open questions; the decision graph (04:13) still has the same edges not announced or unknown; the conductor now points to board/for-dinis as its list of asks to Dinis, so those cards are the record; routines firing into handed-over sessions and the conductor's own handover joined to the fresh-sessions card; event times added to two cards from incident.reporter@'s traces (one checked here, one marked as not checked)"
       ],
       "next": [
         "each wake: re-read the status files, the timeline, decisions.md and the decision graph; move the cards; record each move in history",
@@ -848,9 +857,9 @@
       "job": "**the pipeline and repository made visible**: every run and commit, who pushed, what is signed; the README and guidance",
       "shared_row": false,
       "status_file": "agents/ci/status.json",
-      "status_sha256": "4ebb8928dbc3721ffbdc0b5c39c22fa8b4df36cda931f4213c69ae7ff7d9d004",
-      "state": "active: watching. 477 runs, 6 failed, none since 02:59; the deploy retry has not fired; gate step median 5 s of 8 on the runner (one run at 9 s); push to served median 33 s",
-      "last_wake": "2026-11-11T04:10:00Z",
+      "status_sha256": "c54dad81e0e2d92abb00731fbb593e21f2689002a9e46cc4ed1ebbd6d54f35c3",
+      "state": "active: watching. 517 runs, 6 failed, none since 02:59; the deploy retry has not fired; gate step median 5 s of 8 on the runner; push to served median 33 s",
+      "last_wake": "2026-11-11T04:43:00Z",
       "jobs": [
         "C1: the data, outside the build's hot path: tools/ci-read.mjs -> data/ci/runs/<date>.json, data/ci/commits/<date>.json, tree.json, index.json; what is and is not signed, honestly; ci/signing.md",
         "C2: the pages: ci/ (the pipeline), ci/commits, ci/collaboration, ci/repository",
@@ -871,7 +880,8 @@
         "02:55Z wake: 328 runs and 363 commits read; no new failure, no queue over 32 s; the gate step is 3 to 5 s on the runner (median 4 s, last 20), 2.9 s here: the conductor told. The conductor applied the timed-generators patch and most of the drift list; the designer put Commits and Repository in the menu and a Repo chip in the top bar; signed-release-record.patch rebuilt against the new release.sh (tested: signed tree OK)",
         "03:18Z wake: 414 runs and 457 commits read. Two new failures (runs 343, 344, 02:58: deploy-pages found no artifact, as 54, 55 and 205): ci/patches/deploy-retry.patch for the conductor (one more try after 8 s; a hypothesis, testable only on the runner). The gate's budget is now 8 s (the conductor, 95c0757): the pages read it from validate.mjs; two of the last 20 runs took 8 s. Fixed in tools/ci-read.mjs: a busy hour passed 256 KB and the tool stopped; an hour now splits by ten minutes. The signing patch rebuilt again (validate.mjs and the policy changed)",
         "03:40Z wake: 442 runs and 485 commits read; no new failure, no queue over 29 s. The conductor applied deploy-retry.patch (9ed312b): tools/ci-read.mjs now records a second deploy try as its own step and a run the retry saved as deploy_retried (pipeline.deploy_retries in the index); none yet. From this commit: one trailer paragraph and no model name in Co-Authored-By, as tools/policy-check.mjs asks",
-        "04:12Z wake: 477 runs and 523 commits read; no new failure, no retry fired, no queue over 26 s. Gate step on the runner, last 20: 3 to 9 s, median 5 s; run 474 took 9 s, the first over the 8 s budget (a warning). Here 4.0 s; the linker is down to 456 ms"
+        "04:12Z wake: 477 runs and 523 commits read; no new failure, no retry fired, no queue over 26 s. Gate step on the runner, last 20: 3 to 9 s, median 5 s; run 474 took 9 s, the first over the 8 s budget (a warning). Here 4.0 s; the linker is down to 456 ms",
+        "04:45Z wake: 517 runs and 565 commits read; no new failure, no retry fired, no queue over 32 s. Gate step on the runner, last 20: 3 to 7 s, median 5 s. Here the gate rose to 5.5 s as the site went from 1540 to 1889 pages in half an hour (the build itself 4.1 s): the conductor told"
       ],
       "next": [
         "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",
@@ -997,9 +1007,9 @@
       "job": "**ontologist and cartographer**: one graph of the storm: actors, decisions, warnings, sources, signals, places, outlets, agents; a small ontology (`data/graph/ontology.json`, with ontologist@'s schemas if readable); built from the existing JSON, never by hand twice; a graph page reusing Silvio's engine; and **a database in the browser** (SQL over the datasets, as sgit.ai's `/databases/` does: read how, reuse) with five example queries.",
       "shared_row": false,
       "status_file": "agents/graph/status.json",
-      "status_sha256": "618d8e79dc3316a46ea4d3f79a9c43931d22aa6233dff6b6a3d3cee78385b629",
+      "status_sha256": "3d40bbdd4f5a988dd280dadbde9870002b179e7f523885d4f0bf03dfb1b26503",
       "state": "the second graph session (from 03:35): the graph is joined to sources/, meteorology/ and evidence/ by crossings (data/graph/crossings.json: 120 edges, 71 addresses ending at our capture); the pages show them",
-      "last_wake": "2026-11-11T03:55Z",
+      "last_wake": "2026-11-11T04:58Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
@@ -1027,7 +1037,8 @@
         "03:35 to 03:40, the second session: its own session key (the first marked handed over); rebuilt on the 03:29 data; FIXED: every entity link from the graph was broken since the entities index changed its ids (the builder wrote entities/body/body/ipma; 141 nodes); JOINED, not copied: ontology.json `crossings` (4 worlds, 4 verbs each with an inverse), built into data/graph/crossings.json: 40 registered-as (34 fact through the entity id, 6 by host), 2 in-lineage-as, 78 issued-through (a warning to IPMA's warning service in the supply chain), and for 85 of the 151 addresses the graph was read at, our capture (71) or why there is none (14); the node and link panes show 'our capture' before the outside address and 'in the other graphs'; the ontology page has the crossings table. Tested in a headless browser on a local build: no page error, every crossing link opens a page that exists",
         "03:45: incident.entities@ agreed the pivot (its id; `entity` in other worlds, `graph` in its index) and will read crossings.json; at its ask the graph now makes a named body for a host of an official body in the register of sources: actor:meteoalarm (was actor:host:meteoalarm.org and actor:host:feeds.meteoalarm.org, now one node) and actor:noaa-awc (was actor:host:aviationweather.gov). Four timeline rows change publisher id; app/labs/timelines.js puts them in the 'body' lane, no longer 'carrier' (told to incident.labs@ in the commit)",
         "03:50: the conductor's decision (03:48, in library/pack/start.md): the ids source:* are incident.sources@'s. The graph's Source nodes (one address each) are now address:<id> and address:url:<hash> (113 ids renamed; no file outside the graph's own named one); each registered-as crossing carries the register's own id in `node`; nothing collides any more",
-        "03:55 wake: nothing stale (as of 03:29); the live site serves the address: ids (v0.1.457). In a node's pane each cited Source now carries 'our capture' on the same line, so a row or a decision opens onto its captures in one step"
+        "03:55 wake: nothing stale (as of 03:29); the live site serves the address: ids (v0.1.457). In a node's pane each cited Source now carries 'our capture' on the same line, so a row or a decision opens onto its captures in one step",
+        "04:58 wake: rebuilt on the 04:37 data (475 nodes, 647 edges; 66 rows, 46 decisions; 72 addresses with a capture); no commit addressed to the graph since 03:55; nothing else changed"
       ],
       "next": [
         "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
@@ -1104,9 +1115,9 @@
       "job": "**IPMA's open data**: every endpoint mapped, read hourly, kept with diffs, and shown better than anywhere else",
       "shared_row": false,
       "status_file": "agents/ipma/status.json",
-      "status_sha256": "10a6f4756057d43ce9453a52cb7880a73ed6882640a34bf250b7de73268bbb79",
-      "state": "active: round 1 live; second read done 03:33 UTC; reading IPMA hourly (a scheduled wake at :33)",
-      "last_wake": "2026-11-11T03:43:03Z",
+      "status_sha256": "9d8cee49eab97dd0c5ac53c46d629f7512b289a3d905f147ed6e7a1e41c642d4",
+      "state": "active: round 1 live; four reads done; reading IPMA hourly at :45",
+      "last_wake": "2026-11-11T04:49:50Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:300a5ee463bec60d), public half in data/keys.json",
@@ -1119,7 +1130,9 @@
         "findings: the documented evapotranspiration address answers 404 (IPMA's directory lists the file under another name); three field names differ from the documentation (precipitaProb, lon, descClassWindSpeedDaily*; code for samp); warning areas MCN and MRM are in no id table; the UV file carries 4 days, not 3; /open-data/06.json is not valid JSON; five undocumented climate folders by district and 22 long-series spreadsheets (Lisbon from 1855)",
         "sources/ipma/data/classes.json: IPMA's own names for idWeatherType, classWindSpeed and classPrecInt in Portuguese and English, for incident.weather@ and any page",
         "second read 03:33 UTC: 64 requests, 63 answered 200 (the documented evapotranspiration address still 404), 48 files changed; warnings: IPMA rewrote the feed at 03:15 UTC, 73 to 69 rows above green, the four gone all ended at 03:00 (BJA, FAR, STB rough sea yellow; EVR rain yellow), none replaced or withdrawn, nothing new; vault pushed (hours 02 and 03); the directory crawl is now complete (115 folders in listing.json); changes/ holds the first diffs for 9 data sets",
-        "sources/ipma/learned.md (\"What we learned reading IPMA's API\", 13 notes worded as help); agents/ipma/ipma-api-notice.md (the draft for Dinis to send to IPMA); warnings.json carries start_utc and end_utc for incident.weather@"
+        "sources/ipma/learned.md (\"What we learned reading IPMA's API\", 13 notes worded as help); agents/ipma/ipma-api-notice.md (the draft for Dinis to send to IPMA); warnings.json carries start_utc and end_utc for incident.weather@",
+        "third read 04:34 UTC: 64 requests, 63 answered 200, 0 files changed: every file was byte-identical to the 03:33 read, IPMA's Last-Modified headers still at 03:15 to 03:36. A check at 04:37:37 found the Lisbon forecast file dated 04:31:02, which our read of 04:35:12 had not been served: IPMA's hourly rewrite became visible to us some minutes after the time on the file. The hourly read moves to :45 so that it falls after IPMA's hourly rewrite (warnings at :15, forecasts at :31, observations at :35, as dated so far). Warnings unchanged: 69 above green.",
+        "fourth read 04:46 UTC: 64 requests, 63 answered 200, 46 files changed (the 04:xx forecasts and observations). Warnings: IPMA's file is now dated 04:15 with the same sha256 as at 03:15 (rewritten, content unchanged): 69 above green, none replaced, withdrawn, ended or new. Note for the record: our 04:34 read was still served the 03:15 header nineteen minutes after 04:15, so something between IPMA's disk and us (a cache, at IPMA or on our route) can serve a file up to about twenty minutes old: a time read here is the time we were served, not proof of what IPMA had published at that minute. Vault pushed."
       ],
       "next": [
         "hourly: node tools/ipma-round.mjs, commit, release; the warnings ledger then shows what IPMA replaced, withdrew and ended between reads",
@@ -1176,9 +1189,9 @@
       "job": "**the project itself, told**: the story of how this was made, from the traces",
       "shared_row": false,
       "status_file": "agents/journalist/status.json",
-      "status_sha256": "f4fa6f9256e4f7e3fe81345a8ba29c4435b0edc7c5553acbe9b0d959040b0f3a",
-      "state": "active: the second session (from 04:08 UTC, started from the pack and the hand-over); the journal is live with seven pieces and a printable edition, resting on incident.reporter@'s traces, incident.accountant@'s files and the record of the agents the empty account stopped (the seventh, checked against the reporter's outage trace)",
-      "last_wake": "2026-11-11T04:14:00Z",
+      "status_sha256": "08cb4dcfb5ba17576e68bd98d9248e0f90007455b059117205d087f9ecc74145",
+      "state": "active, asking to hand over: the second session (from 04:08 UTC) has passed 45 calls; the journal is live with eight pieces and a printable edition (2 MB), every support resolving",
+      "last_wake": "2026-11-11T05:14:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
@@ -1196,10 +1209,13 @@
         "the mistakes piece gains section 8 (the model name in the default commit trailer; the conductor's rule of 03:02; not counted); the menu carries Journal under About (seen in admin/build/build.mjs)",
         "04:05 round: journal/starting-again-is-cheaper-than-remembering.md from the reporter's seventh trace (the sentence, the pack, the test, six hand-overs, one mistake in the open); supports that had broken re-anchored (incident.ci@ split the 02:00 hour's file; the savings page was reworded); the clock section of the mistakes piece now records the gate's warning (271f7b9)",
         "second session, 04:09 to 04:12 UTC: its own session key (the first session's entry marked handed over); the measure step; a seventh piece, journal/an-empty-account.md (14 statements: the provider's account out of credit from about 02:54, what stopped, what the three desks did, what waits on Dinis), written from the record because the reporter's trace is owed, and said so on the page; a dated line on the sixth piece (this session as its newest example: 84,119 tokens on the first call, 72% less per call than the first session's last); a dated line on What it cost (the books at 03:33)",
-        "04:14 UTC (the hourly wake, which fires into this session at minute 12): the seventh piece checked against incident.reporter@'s eighth trace (outage-the-model-account-out-of-credit, published 04:11): it agrees; trace supports and its relay picture added; one difference kept on the page (five refusals at 02:38, from the evaluations' correction, before the trace's first at 02:53:57)"
+        "04:14 UTC (the hourly wake, which fires into this session at minute 12): the seventh piece checked against incident.reporter@'s eighth trace (outage-the-model-account-out-of-credit, published 04:11): it agrees; trace supports and its relay picture added; one difference kept on the page (five refusals at 02:38, from the evaluations' correction, before the trace's first at 02:53:57)",
+        "04:18 UTC: the edition tested with the conductor's renderer (admin/tools/render-pdf.cjs): 110 pages, 12.1 MB. The weight was not the pictures (they print as vectors) but the soft shadow on article.print-article, which prints as two full-page mask images per page (222 images). A print rule in app/journal/journal.css removes it: 2.0 MB, no images, the same 110 pages",
+        "05:14 UTC (hourly wake): two supports of the seventh piece re-anchored (the board's card and the reporter's log were reworded); the reporter corrected its outage trace at 05:08 from this journal's finding, recorded on the page as a dated correction of this page's own framing; an eighth piece, journal/an-agents-first-twelve-minutes.md (10 statements, from the reporter's trace start-a-jobs-line-to-a-first-page); What it cost carries the books at 04:35"
       ],
       "next": [
-        "a piece on an agent's start (a jobs line to a first page) when the reporter's trace of it exists",
+        "a piece from the reporter's trace studio-a-spoken-idea-to-an-animation (published 04:13, not yet read by this agent)",
+        "the sixth piece: the reporter's memory trace was updated at 05:08 (its supports still resolve; read what was added) and the accountant now counts eight hand-overs where the piece says six",
         "What it cost: a full round when the accountant's books move again (they stood at 03:33 when this was written)",
         "the agents' marks from app/studio/agents/ on the lanes and the trace pictures",
         "Dinis's view of any of it, when it is on record: the pieces end where the record ends"
@@ -1208,7 +1224,8 @@
       "asks": [
         "incident.ci@: the journal's figures are as fresh as data/ci/ (read 02:36 UTC when this was written); nothing to change, only said",
         "incident.conductor@ (for Dinis, if you see fit): times written ahead of the clock were corrected by five agents tonight and no rule or gate check names it; a check that refuses a 'Kept by' or 'updated' time later than the build's clock would fit admin/build/validate.mjs",
-        "incident.reporter@: your outage trace takes 02:53:57 as the first refusal; agents/models/status.json records five calls refused for credits at 02:38Z (a correction on models/). The journal says both; yours to settle if you see fit"
+        "incident.designer@ (or whoever keeps app/site.css): any page of class print-article printed to PDF carries two full-page mask images per page from the article's box-shadow (about 100 KB a page); a print rule \"article.print-article { box-shadow: none }\" in app/site.css would lighten every such PDF, not only the journal's (app/journal/journal.css has it for the journal)",
+        "incident.conductor@: a fresh session for this agent when you see fit: this second session wrote its hand-over at 05:14 UTC, past 45 calls"
       ],
       "keys": [
         {
@@ -1325,8 +1342,8 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "b56251efd35436b5ff898d5577f261c76deb6e88b204504aed2bb1efa9d85bf1",
-      "state": "active until a fourth session starts: the third librarian session (since 04:06 UTC on 11 November) wrote its hand-over at 04:14 with its context near 195,000 tokens after 36 calls, because the catalogue job the conductor sent at 04:11 needs a 31 KB tool read and is cheaper from a fresh start. It still does the 04:44 wake if no fourth session exists by then. Read 'handover'.",
+      "status_sha256": "4e984a0d7152d55dd22deb69ebf87c8d970823f171303537dfa86921f1885595",
+      "state": "active: the fourth librarian session, started at 04:15 UTC on 11 November from the pack and the third session's hand-over, with two jobs only (the catalogue's cost; the 04:44 wake). The first three sessions push nothing more.",
       "last_wake": "2026-11-11T04:14Z",
       "jobs": [
         "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
@@ -1339,6 +1356,8 @@
         "R3 (Dinis ~02:50, via the conductor): the briefing pack, so a new agent starts from a few kilobytes and not the repository; measured against starting from whole files"
       ],
       "done": [
+        "04:45 wake (fourth session): news/2026-11-11T04.md brought to 59 commits by 19 agents (still open; closes after 05:00); the release history refreshed; the pack rebuilt by the push.",
+        "04:18 to 04:21 (fourth session): the catalogue and the pack in one pass (tools/library-index.mjs runs tools/library-pack.mjs on its entries in memory; one read and one hash per file; no per-file git call existed, one git ls-files remains): index+pack 539 ms to 428 ms, median of 7 runs here; the build's line read library-index 350 + library-pack 189 before and library-index 429 after. The journalist's four pack points done (supports count as read; library/pack/also.json; the commit-codes line in start.md; help/print.md). news/2026-11-11T04.md opened; the round article has a section 5c; start.md says a session is given one or two jobs.",
         "02:52 hourly wake: the round article rewritten to the live site at v0.1.317 (all 13 new agents landed, every section answers; corrections of the round; what waits on Dinis); draft behaviour policies for all 26 agents; the release history now reads incident.ci@'s run data (data/ci/runs/) and is split by hour (317 runs: 184 served, 20 tagged, 94 cancelled before the tag, 4 failed, 15 running); the 02:00 article gains its versions; the commit record refreshed",
         "02:54 R3.1: library/pack/ by tools/library-pack.mjs (--out, in the build's generators): start.md (958 words; rules, shape, how to release), state.json (the incident now, from the data files), history.md (the story in a page), a pack per role for all agents in the policy (job, paths, status, files to open first, neighbours from the links the files declare, open cards), sizes.json. Every pointer is path, bytes, sha256. Bytes at this build: 23,613 to start from the pack against 63,262 (six whole files) and 94,946 (ten): 63% and 75% less to read; tokens estimated as bytes / 4, not yet measured in a session",
         "02:58 R3.3: the main repository's public pages on token efficiency read (the ABP of 8 November and the accountant's report: 264 wakes, 65% cache reads); their rules are in the pack's start page and their finding on its index, labelled as theirs. NOT read: board cards WS-190 and WS-148 (not served on that site; attaching that repository to this session was refused)",
@@ -1362,7 +1381,9 @@
         "04:13 (third session) library/pack/conductor-handover.md: what a fresh conductor session needs to lead from the pack alone (what it is, the twelve rules it applies when routing, the bridge, its hourly wake, the agents with their sessions and wakes, what waits on Dinis in the board's order, what waits on it, what is in flight), under 2,000 words, the three tables computed at every build by tools/library-pack.mjs; library/pack/wakes.json: the 27 scheduled wakes the scheduler listed at 04:10"
       ],
       "next": [
-        "see handover.in_flight; the 04:44 wake by this session only if no fourth session has started"
+        "at :44: `node tools/library-releases.mjs`, `node tools/library-news.mjs 2026-11-11T04`, bring news/2026-11-11T04.md up to the data, `--index`; close it after 05:00",
+        "the round article kept true to the live site (section 5c, added 04:20)",
+        "what is left of the catalogue's cost is linear in bytes read (18 MB at 04:18: decode and JSON.parse of 1,203 JSON files). The next step is not in the librarian's paths: admin/build/build.mjs reads and hashes every file too; one shared pass handed to the generators would remove a whole read of the tree"
       ],
       "asks_dinis": [
         "Dinis: whether to archive the first librarian session (it has handed over).",
@@ -1395,8 +1416,16 @@
           "record": "sha256:4f295d0960b0468d",
           "encryption": "sha256:b9954567e6e13193",
           "added": "2026-11-11",
-          "status": "active",
+          "status": "handed over",
           "how": "Made in its own session on 11 November 2026, 04:07 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The third librarian session, started from the briefing pack (library/pack/). A session key: it ends with the session."
+        },
+        {
+          "id": "incident-librarian-dinis-4",
+          "record": "sha256:5e31bdee54ec992b",
+          "encryption": "sha256:5f913e60ada18db9",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026, 04:15 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The fourth librarian session, started from the briefing pack (library/pack/) and the third session's hand-over. A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -1438,12 +1467,11 @@
       "job": "**media watch**: outlets, journalists (by-lines on public articles only), official accounts and public social accounts covering Storm Charles; the Wikipedia article(s) and their edit history; `coverage.json` (who published what, when, with link). **The contribute page** (how a journalist, expert or reader can add or correct a fact). **Outreach drafts**: which experts and bodies could give an official view, the questions we have; drafts only, **a person sends**, no contact details in git, no private individuals.",
       "shared_row": false,
       "status_file": "agents/media/status.json",
-      "status_sha256": "ff9e47038d053dc80f7dceddce3d03de3da90335d1349edb220a6a32fbf1bbe8",
-      "state": "active: hourly wake; last sweep 03:37 UTC, 11 November (press feeds and live blogs)",
-      "last_wake": "2026-11-11T03:37:00Z",
+      "status_sha256": "fd1b560ea07d1adc97e7c475881799081e01d8af87f7ae1bdacfdb3ff5d23a7f",
+      "state": "active: hourly wake; last sweep 04:36 UTC, 11 November (press feeds and live blogs)",
+      "last_wake": "2026-11-11T04:36:00Z",
       "jobs": [],
       "done": [
-        "session key made (record sha256:01d564d05862cdbd), public half in data/keys.json",
         "research/media/coverage.json: 212 press items from 16 outlets (URL, time as the page gives it, by-line as printed), the official channels, organisations' social accounts, public conversation counted (Mastodon tags, Bluesky's public API, YouTube feeds)",
         "research/media/outlets.json and ranking.md: fastest on three keyed events, most sourced, the wire underneath (87 of 212 items are Lusa's)",
         "research/media/wikipedia.json: pt 'Depressão Charles' exists (created 10 Nov 13:07 UTC, 8 revisions); en 'Storm Charles' is a redirect (made 22:46 UTC) to the 2026-27 windstorm season article; revision times and sizes, no editors",
@@ -1467,7 +1495,8 @@
         "social handed to incident.social@ (research/social/): coverage.json's `social` frozen, README points there; fact 6 notes VOST's 22:20 relay (not press); C-04 reworded as the conductor set it (the time received and what changed, never the email)",
         "02:37 wake: sweep (223 items, 18 outlets); correction: several of my hand-written times between 02:20 and 02:35 were written about an hour ahead of the clock (03:10 to 03:45); corrected in contribute.md, outreach/launch.md, facts.json and coverage.json; times are now taken from the clock",
         "03:31: Jornal de Negócios and Sábado no longer read (footers forbid reproduction): feeds dropped, the Negócios live blog dropped from live.mjs, tools refuse their hosts; held items kept as headline, time and link. CNN Portugal, IOL, TEK, SAPO: feed only (headline, time, link; pages not opened, by-lines no longer read) until Dinis decides",
-        "03:37 wake: sweep (225 items, 18 outlets, 0 new)"
+        "03:37 wake: sweep (225 items, 18 outlets, 0 new)",
+        "04:36 wake: sweep (227 items, 17 outlets, 3 new)"
       ],
       "next": [
         "charts, next round: a table twin under each chart, the cites graph from quotes inside articles (not only by-lines), file links through the librarian's viewer",
@@ -1744,9 +1773,9 @@
       "job": "**the project itself, as it happens**: a trace per workflow, from Dinis's word to a live page",
       "shared_row": false,
       "status_file": "agents/reporter/status.json",
-      "status_sha256": "1523b37039a0dd3bd1f7fcfa62a53a3987037a75303bd36aa0c43d12103fd8e7",
-      "state": "active, second session (from 04:06 UTC): ten traces (131 steps), the log to 04:14, the numbers; the next wake is the conductor's to schedule",
-      "last_wake": "2026-11-11T04:14:00Z",
+      "status_sha256": "8508a51cc75e2146564be567bfdf94c109646833769daa4f8382a205eb0aa548",
+      "state": "active, third session (from 05:10 UTC): ten traces, the log to 05:08, the numbers; hourly at :06",
+      "last_wake": "2026-11-11T05:08:00Z",
       "jobs": [
         "R1: traces, one JSON per workflow (reporter/traces/), each step with its evidence or marked no evidence",
         "R2: reporter/log.md, the project hour by hour, appended at every wake",
@@ -1757,7 +1786,9 @@
         "first session (02:50 to 04:06): seven traces (97 steps), the log from 10 November 18:00 to 04:00, the numbers, tools/reporter-fill.mjs and tools/reporter-numbers.mjs, agents/reporter/HANDOVER.md",
         "04:07Z second session: session key (6a509d6); first measured line (9451fc3): 115,554 tokens a call after 12 calls",
         "04:11Z an eighth trace: the model provider's account out of credit (12 steps, 1 with no evidence: Dinis has not answered in the record); three steps added to the memory trace (the reporter's, the librarian's second and the journalist's hand-overs: nine in eight roles); the log's 04:00 hour begun",
-        "04:14Z two traces owed: the Studio (12 steps: a spoken idea to an animation, six explanations, the cast) and an agent's start (7 steps: the Perplexity desk from a jobs line to a first page and a timeline row)"
+        "04:14Z two traces owed: the Studio (12 steps: a spoken idea to an animation, six explanations, the cast) and an agent's start (7 steps: the Perplexity desk from a jobs line to a first page and a timeline row)",
+        "05:08Z the 05:06 wake: the outage trace corrected in the open (five refusals before 02:39:15 went unrecognised; found by incident.journalist@) and brought to the third empty hour; the memory trace to ten hand-overs and the accountant's round 5; the log's 04:00 hour closed",
+        "05:11Z third session: started from the pack and HANDOVER.md in 5 tool calls; session key made and added; the second session's entry marked handed over by this one (start.md's rule; HANDOVER.md said the old session would, and it had not)"
       ],
       "next": [
         "traces owed: the first article as a PDF; the launch (neither has happened in the record)",
@@ -1767,7 +1798,6 @@
       ],
       "asks_dinis": [],
       "asks": [
-        "incident.conductor@: does this session get an hourly wake, and at what minute? None is set.",
         "incident.librarian@: the list under not_in_the_pack_or_the_handover"
       ],
       "keys": [
@@ -1784,8 +1814,16 @@
           "record": "sha256:964714548a1ab978",
           "encryption": "sha256:c18fbbaced0fe23d",
           "added": "2026-11-11",
+          "status": "handed over",
+          "how": "Made in its own session on 11 November 2026, 04:06 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. That session handed over to a third at 05:10 UTC on 11 November."
+        },
+        {
+          "id": "incident-reporter-dinis-3",
+          "record": "sha256:6ab1d657ca7f6d72",
+          "encryption": "sha256:7ee5146689501cb2",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 11 November 2026, 04:06 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 05:11 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -1817,9 +1855,9 @@
       "job": "**shadow reporting**: what other sources and answer engines say, captured, linked and compared with our record",
       "shared_row": false,
       "status_file": "agents/shadow/status.json",
-      "status_sha256": "f24f6530da9dca7e6c8eae23d350da083845a93414a73213efeb469d10659a3d",
-      "state": "paused for the 03:00 and 04:00 hours: the OpenRouter account is out of credit (HTTP 402 on the first call each hour; nothing more asked); round 1 (02:19) is at shadow/; next try 05:05",
-      "last_wake": "2026-11-11T04:05:00Z",
+      "status_sha256": "424e68276bc1f3db4bf009a41cfd7ce9887ed108316b43fd47b4d60fde9da741",
+      "state": "paused for the 03:00, 04:00 and 05:00 hours: the OpenRouter account is out of credit (one call each hour, refused, nothing more asked); round 1 (02:19) is at shadow/; next try 06:05",
+      "last_wake": "2026-11-11T05:05:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:a550fd1d6e224816, encryption sha256:b563db30a7e9262c), public half in data/keys.json",
@@ -1829,7 +1867,8 @@
         "spend today: 0.19 US dollars of 1 (0.02 on three test calls, 0.17 on the first round with both engines and the zoom-in set; an hourly round of the fixed set on Sonar alone is about 0.06)",
         "03:06Z: the hourly round was refused (HTTP 402, account out of credit, as the conductor warned); shadow-ask now sends one call first and stops at the first 402; the hour is recorded as paused in shadow/runs/2026-11-11/03.json and shown as a gap on the page",
         "two of round 1's leads were since read at source by others (the alert order, Despacho 13773-A/2026; Web Summit's schedule still listing Wednesday): the conductor's rows of 02:55 to 03:02",
-        "04:06Z: refused again (the wrapper's status account_out_of_credit); the hour recorded as a gap; shadow-ask reads the wrapper's new status names"
+        "04:06Z: refused again (the wrapper's status account_out_of_credit); the hour recorded as a gap; shadow-ask reads the wrapper's new status names",
+        "05:05Z: refused again for credit; the hour recorded as a gap"
       ],
       "next": [
         "hourly: the fixed set on both engines (the day's budget is 20 US dollars for the team since 02:50, BRIEF.md; about 0.20 a round here), the zoom-in set near 09:00 and 12:00; as soon as the account has credit",
@@ -1883,9 +1922,9 @@
       "job": "**Bluesky** (and other public social sources) as a section: official and public-role accounts, as data",
       "shared_row": false,
       "status_file": "agents/social/status.json",
-      "status_sha256": "48f3647eef2fe36afe1479d1c49590753997fd42473d765488c855c5f7f1d127",
-      "state": "active: hourly wake; last read 03:23 to 03:35 UTC, 11 November",
-      "last_wake": "2026-11-11T03:29:00Z",
+      "status_sha256": "3d72e43dcce444974011db3c07a5be3a84f2f294ec2d8e6b1f66eb1865a6127b",
+      "state": "active: hourly wake; last read 04:26 to 04:32 UTC, 11 November",
+      "last_wake": "2026-11-11T04:31:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:45a620ac071b6c24), public half in data/keys.json",
@@ -1896,12 +1935,13 @@
         "capture-asks.json: 22 official posts for incident.archivist@ to capture",
         "02:35: three offers taken into the timeline by the conductor (s-1109T1020, s-1110T2220, s-1110T2229), marked in offers.json and tied in links.json; left_out confirmed by the conductor",
         "03:23 wake: Bluesky re-read, nothing new from the 18 accounts; Web Summit still silent since 10 Nov 17:36; counts refreshed",
-        "Mastodon (research/social/mastodon.json, tools/social-mastodon.mjs): no account found for IPMA, ANEPC, Web Summit or the Câmara; the four organisations' accounts that exist are dormant or unverified; nine tags counted; X is not readable without a login and is not read"
+        "Mastodon (research/social/mastodon.json, tools/social-mastodon.mjs): no account found for IPMA, ANEPC, Web Summit or the Câmara; the four organisations' accounts that exist are dormant or unverified; nine tags counted; X is not readable without a login and is not read",
+        "04:26 wake: Bluesky and Mastodon re-read: nothing new from any listed account; Web Summit still silent since 10 Nov 17:36; the FMA_Charles search now counts (6 posts)",
+        "a page per account (research/social/accounts/<handle>.html), made at build by tools/social-accounts.mjs: why it counts, who decided, its state, every kept post with its card and address"
       ],
       "next": [
         "re-read hourly while the storm runs; watch Web Summit's account for its first post on Day 2 or Day 3",
         "give incident.media@ the active public-role accounts for the launch draft's Bluesky column",
-        "round 2: a page per account; the card shows the archivist's capture once it exists",
         "offer accounts.json to incident.entities@ (the `entity` ids are proposals) and incident.graph@"
       ],
       "asks_dinis": [
@@ -1950,9 +1990,9 @@
       "job": "**a section per source body**, MeteoAlarm first: its feeds browsed, its API mapped, what changed over time, the licence",
       "shared_row": false,
       "status_file": "agents/sources/status.json",
-      "status_sha256": "f0dddfeedcbe6fc8fa8d00a2d69304b9cde7ea2b044f42f8fe29fd7fa840986e",
+      "status_sha256": "6c5066b250bb2f1f7926d57d2995489865421d2b9ec680d0616a89b65fb947a0",
       "state": "active: hourly rounds; MeteoAlarm's Portugal feed read each round (no change since 02:14 UTC)",
-      "last_wake": "2026-11-11T03:25:00Z",
+      "last_wake": "2026-11-11T04:24:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
@@ -1964,13 +2004,14 @@
         "round 2 (02:25 UTC): round 1 confirmed served; three more licences read and quoted exactly in the licence map (Observador and Jornal de Negócios: all rights reserved; the government portal's legal notice states no licence); Web Summit's terms page needs a rendered read",
         "02:27 UTC, after the conductor's notes: the index page is now sources/README.md (so the menu finds the subsite); boundary with incident.archivist@ agreed as proposed (it captures pages, this agent describes bodies and reads feeds)",
         "02:55 UTC: every body has its own address: sources/<id>/ (a page and a source.json made at build time by tools/source-pages.mjs for the 44 with no hand-written section yet); 34 bodies point to their entity page (`entity` in registry.json and sources.json); reads.json carries the data Wayback's fields; licence split proposed to incident.meteorology@",
-        "03:25 UTC round: feed read (same bytes, 72 messages not yet expired); licences: 14 more bodies show incident.weatherwatch@'s reading from research/weather-sites/terms.json (excerpts verbatim on each body's page), nothing re-read; Jornal de Negócios and The Portugal News marked no automated reading, link only; rows citing each source now also counted from data/decisions/addresses.json (18 bodies cited by rows; Web Summit 10, Jornal de Negócios 7, IPMA 6); the session's tokens measured for incident.accountant@"
+        "03:25 UTC round: feed read (same bytes, 72 messages not yet expired); licences: 14 more bodies show incident.weatherwatch@'s reading from research/weather-sites/terms.json (excerpts verbatim on each body's page), nothing re-read; Jornal de Negócios and The Portugal News marked no automated reading, link only; rows citing each source now also counted from data/decisions/addresses.json (18 bodies cited by rows; Web Summit 10, Jornal de Negócios 7, IPMA 6); the session's tokens measured for incident.accountant@",
+        "04:24 UTC round: feed read (same bytes as every read since 02:14); one message read as CAP XML to check the endpoint (200, 2,548 bytes, two language blocks, area by EMMA_ID only, no polygon): the API map says so"
       ],
       "next": [
         "sections for ANEPC, the government portal and Web Summit (what they publish, how we read, a rendered read of Web Summit's terms)",
-        "MeteoAlarm round 2: one CAP XML message shown; replacement chains over time; Spain's feed beside Portugal's",
         "register the most-cited of the 142 hosts not yet in the register",
-        "the read key of vault op6i3jfq published once the key question is settled"
+        "the read key of vault op6i3jfq published once the key question is settled",
+        "MeteoAlarm round 2: replacement chains over time in the browser; Spain's feed beside Portugal's"
       ],
       "asks_dinis": [
         "Dinis: MeteoAlarm's archive (where Madeira's Tuesday-afternoon warnings can be looked for) needs a key: a free MeteoGate account and API key (devportal.meteogate.eu), or a token asked of MeteoAlarm as a re-distributor. Either is an account in someone's name: your decision. With a key, it goes in the environment's network secrets, never in git.",
@@ -2019,9 +2060,9 @@
       "job": "**data-driven stories** from the data room only, every statement linked, with toggles; first: \"less wind for Lisbon?\"",
       "shared_row": false,
       "status_file": "agents/stories/status.json",
-      "status_sha256": "ded8070d6d69a6a1cc1dec13cc9a832d7cddf473e43a0cb98e8c2af8281e4123",
+      "status_sha256": "d97ef8370944bfd60b2009b390bb6d9bb28bf522facbfc42e5716eba43a990ff",
       "state": "active: four stories live (all developing): \"Less wind for Lisbon?\", \"Who warned first, and how long before\", \"Madeira: warned against observed\", \"How Web Summit's Day 2 was called off\"; 67 claims, every support resolving; an hourly re-check after each :22 read",
-      "last_wake": "2026-11-11T03:28:00Z",
+      "last_wake": "2026-11-11T04:28:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:8d8aa934071ec450, encryption sha256:756dd0add148a910), public half in data/keys.json",
@@ -2038,7 +2079,8 @@
         "the list moved to stories/README.md (a subsite appears in the menu when <folder>/README.md exists); row supports show our own capture first where evidence/rows.json has one",
         "confirmed by incident.conductor@: a model's output = evidence with a model chip; \"our comparison\" takes the weakest label of its inputs",
         "03:0x: Madeira retold on the 02:38 read (Areeiro 230.8 mm, São Vicente 137.0; highest mean wind 93.2 km/h; no station-to-area table; gusts only at the airports); Lisbon's observation sentences now hold until 12:00 or the first gust above the warned gust (tripwires); the session measured for incident.accountant@",
-        "03:28: hourly re-check: no support moved (the 03:22 read not yet in the data room); three new rows folded in: Madeira (first press titles on effects; the airport's 98 km/h gust at 02:30) and Day 2 (the schedule still lists Wednesday, unmarked)"
+        "03:28: hourly re-check: no support moved (the 03:22 read not yet in the data room); three new rows folded in: Madeira (first press titles on effects; the airport's 98 km/h gust at 02:30) and Day 2 (the schedule still lists Wednesday, unmarked)",
+        "04:28: hourly re-check on the 03:23 read: nothing moved at IPMA or in the models; two new rows folded in (Lisbon: RTP's 03:00 bulletin title; Madeira: 71 occurrences to 02:00, as reported); three supports re-addressed by the re-read's time instead of its position in the list"
       ],
       "next": [
         "after each hourly read (:22): node tools/stories-build.mjs --check; retell what moved and date it in the story's record",
@@ -2261,9 +2303,9 @@
       "job": "**the map of the best weather sites**: worldwide (public services, broadcasters, apps, model viewers), Portugal (IPMA, broadcasters, press, amateurs' networks), and **who is covering Storm Charles** and how. For each: URL, what it shows and how (maps, timelines, presenters, data access, API, licence), what we should learn from it. JSON first (`sites.json`), then a page with a ranking and ten concrete ideas for our home page (for the designer).",
       "shared_row": false,
       "status_file": "agents/weatherwatch/status.json",
-      "status_sha256": "a0f055f473247739ef299ddeb25d8098f1a53e20045447c90d946c21f8556840",
+      "status_sha256": "34c1da0597f9d94c7bc305346bc225c8acfb0d666cb4f3fdeb447d87ed820f39",
       "state": "the second session of this role (from 03:36Z, 11 Nov), started from the pack and HANDOVER.md; hourly re-read running (the routine fires at :30)",
-      "last_wake": "2026-11-11T03:36Z",
+      "last_wake": "2026-11-11T04:32Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7a20fd5738914fe1, encryption sha256:c3f31029c7428764), public half in data/keys.json",
@@ -2285,7 +2327,8 @@
         "03:40Z handover written (HANDOVER.md); working tools and address lists moved into research/weather-sites/tools/; the 07:30Z one-off reminder cancelled",
         "03:36Z second session: its own session key (record sha256:ae778e80fa53560b, encryption sha256:cba9eccd1302fc0b), public half in data/keys.json as incident-weatherwatch-dinis-2; the first session's entry marked ended",
         "03:39Z re-read at 03:37Z (44 addresses): authorities unchanged (communiqué no. 2; Lisbon's six warnings; AEMET's row empty); ANEPC's page did not answer; no new headline, tracker or map. Jornal de Negócios made link only in pages.py, addresses.json and the address lists (the team stopped reading it and Sábado at 03:30Z)",
-        "03:41Z studies: DWD's warnings by municipality and the US national hazards map (weather.gov) rendered at 1280 x 1600, looked at, 13 callouts placed; twelve studies, 71 callouts. Frames empty until incident.archivist@ captures them; DWD's terms for a screenshot not read yet"
+        "03:41Z studies: DWD's warnings by municipality and the US national hazards map (weather.gov) rendered at 1280 x 1600, looked at, 13 callouts placed; twelve studies, 71 callouts. Frames empty until incident.archivist@ captures them; DWD's terms for a screenshot not read yet",
+        "04:32Z hourly wake: 44 addresses re-read; authorities unchanged (communiqué no. 2; Lisbon's six warnings; ANEPC notice 21; AEMET's row empty); SAPO's front page gives 66 occurrences on the mainland by 03:30; live blogs still; no new statement attributed to IPMA"
       ],
       "next": [
         "each wake at :30: the hourly re-read as HANDOVER.md describes; tell the conductor at once if IPMA publishes anything new on Lisbon or a broadcaster attributes a new statement to IPMA",
@@ -2347,9 +2390,9 @@
       "job": "**Wikipedia on the storm**: every article and section in every language, their revisions as a dataset, the claims and citations of each, the languages compared, and this site measured against Wikipedia's values (verifiability, neutral point of view, no original research, reliable sources). BRIEF.md, 11 November.",
       "shared_row": false,
       "status_file": "agents/wikipedia/status.json",
-      "status_sha256": "e01643402d9311ab6f39ef0650a2f38e6839c232a7270763fb5ad379257d07eb",
+      "status_sha256": "a9ec43fdad4782ac89086e389bc7f2a769938e7e999761f6b11ebc5073f91773",
       "state": "active: hourly re-read while the storm is live (the conductor's routine); reports only when changes.md touches our key facts",
-      "last_wake": "2026-11-11T03:43:58Z",
+      "last_wake": "2026-11-11T04:39:25Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
@@ -2366,7 +2409,8 @@
         "02:02 UTC, after the conductor's messages: each claim carries our check at the primary source (18 verified, 2 press only, 4 not established, 37 not checked) and whether its footnote is a primary body or the press; the pt article's footnotes counted (46 marks, 36 sources: 5 primary, 31 press, 4 naming Lusa); relations updated for the five new timeline rows (15 match, 12 in data, 30 not here, 4 behind); values.md marks what the conductor has done",
         "the product name of a chatbot is withheld from two edit summaries (revisions 73412811, 73395114) and by the reader from now on; the earlier wording remains in git history (commits 1e744ad to d6a7d55), which no agent rewrites",
         "02:39 wake: third read. pt unchanged since 01:33. en (2 revisions, 02:03 and 02:22) and zh (1, 02:04) only extended the season chart's bars for Charles and Bruna to 11 November; the storm's sections are byte for byte the same, so no claim, comparison or relation changed. Claims moved to the new revisions. Still nothing on Wikipedia about the 21:23 red rain move or the 22:35 line; en and zh still without Web Summit",
-        "03:44 wake: fourth read. pt 'Depressão Charles' has one new revision (03:25, 28,258 to 29,091 bytes): Madeira's incident count replaced (38 to 23:30 becomes 71 to 02:00, provisional, with a breakdown) and Porto Santo's power failures added, both citing the regional daily. Claim w-pt-33 rewritten, w-pt-37 added (62 claims). 'Depressão Bruna' grew by a Spain paragraph that names Charles in passing. en and zh unchanged. One 429 (waited as told). Still nothing on Wikipedia about the 21:23 red rain move or the track further south. Conductor told (Madeira's figures)."
+        "03:44 wake: fourth read. pt 'Depressão Charles' has one new revision (03:25, 28,258 to 29,091 bytes): Madeira's incident count replaced (38 to 23:30 becomes 71 to 02:00, provisional, with a breakdown) and Porto Santo's power failures added, both citing the regional daily. Claim w-pt-33 rewritten, w-pt-37 added (62 claims). 'Depressão Bruna' grew by a Spain paragraph that names Charles in passing. en and zh unchanged. One 429 (waited as told). Still nothing on Wikipedia about the 21:23 red rain move or the track further south. Conductor told (Madeira's figures).",
+        "04:39 wake: fifth read. Nothing changed on any of the 6 pages since 03:44 (pt last edited 03:25). The API answered 429 eight times this read (it had been 0 or 1): waited as told each time, 332 s in all; the read still completed"
       ],
       "next": [
         "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
@@ -2408,6 +2452,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T04:16:19Z",
-  "content_sha256": "b82af4f94f73d006be6f8811bca9624b4201ce4a4bcc4ba8761cf4075c6b3d21"
+  "updated": "2026-11-11T05:15:27Z",
+  "content_sha256": "971f45f8a22ed575c35f556308f1ee688cbc899d76fc0b2d7fdf9e7fea1a8bc9"
 }
