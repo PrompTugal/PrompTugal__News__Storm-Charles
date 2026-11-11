@@ -1,0 +1,312 @@
+{
+  "about": "Edition 2 of storm-charles.promptugal.news's decision brief on Storm Charles: the words and judgements of this edition (the lead, what to watch, the authorities' decisions, sources compared). The figures (warnings, observations, flights, notices) are drawn by tools/brief-make.mjs from the incident's data files as they stood at the as-of time. Every item is labelled fact, evidence or hypothesis and carries its source and the time read. Not a warning service: IPMA issues the warnings and ANEPC the instructions.",
+  "by": "incident.brief@web-summit.dinis",
+  "updated": "2026-11-11T12:10:00Z",
+  "id": "SC-BRIEF-20261111-E2",
+  "edition": 2,
+  "as_of": "2026-11-11T12:05:00Z",
+  "next": "At the next big change: an IPMA message, Web Summit's word on Day 3, or the end of the storm; then an \"after the storm\" edition, forecast beside observations.",
+  "incident": "2026-11-10-storm-charles",
+  "lead": [
+    {
+      "label": "fact",
+      "text": "IPMA's red warnings now cover eight mainland districts, home to about 4.93 million residents (Census 2021), from 12:00 to 18:00: red rain in Lisbon, Setúbal, Beja, Faro, Leiria, Santarém, Castelo Branco and Portalegre, and red wind in Faro to 21:00 (gusts up to 120 km/h, possibly 140 km/h in exposed places). Residents are where people live, not where they are now.",
+      "src": [
+        {
+          "name": "IPMA warnings, open data",
+          "url": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json",
+          "read": "2026-11-11T11:26:40Z"
+        },
+        {
+          "name": "incident.datascience@, residents by hour (IPMA × INE)",
+          "url": "../incidents/2026-11-10-storm-charles/data/exposure/people-by-hour.json",
+          "read": "2026-11-11T11:51:13Z"
+        }
+      ]
+    },
+    {
+      "label": "fact",
+      "text": "In Lisbon the rain is heavy and steady (3 to 6.5 mm an hour at each city station, 07:00 to 10:00); the wind is far below the warning (the airport observed 17 km/h and no gust at 11:00). IPMA's wind warning for Lisbon is orange to 21:00.",
+      "src": [
+        {
+          "name": "IPMA station observations",
+          "url": "https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json",
+          "read": "2026-11-11T11:26:40Z"
+        },
+        {
+          "name": "Lisbon airport METAR",
+          "url": "https://aviationweather.gov/api/data/metar?ids=LPPT&hours=30&format=json",
+          "read": "2026-11-11T11:26:40Z"
+        }
+      ]
+    },
+    {
+      "label": "hypothesis",
+      "text": "Nine in ten of the ECMWF ensemble's 51 forecasts bring the centre near or south of Lisbon, crossing off Lisbon at about 15:00, close to a modelled high water at about 15:10: rain at high tide is the hour to watch. These are shares of forecasts, not the chance of it happening; IPMA's warnings decide.",
+      "src": [
+        {
+          "name": "ECMWF ensemble via Open-Meteo (incident.datascience@)",
+          "url": "../incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
+          "read": "2026-11-11T11:57:02Z"
+        },
+        {
+          "name": "tide model (Open-Meteo Marine)",
+          "url": "../incidents/2026-11-10-storm-charles/data/exposure/tides.json",
+          "read": "2026-11-11T11:52:44Z"
+        }
+      ]
+    }
+  ],
+  "watch": [
+    {
+      "at": "12:00",
+      "label": "fact",
+      "text": "In force from 12:00: orange sea for Lisbon, Setúbal, Beja and Faro (south-west waves 5 to 7 m, up to 13 m maximum, to 21:00), and red rain in four more districts (Leiria, Santarém, Castelo Branco, Portalegre).",
+      "src": "IPMA warnings"
+    },
+    {
+      "at": "12:00–16:00",
+      "label": "fact",
+      "text": "Lisbon airport's forecast (TAF 11:00): at times south 20 kt gusting 35 (65 km/h) in rain; a 30% chance of thunderstorms with 40 kt gusting 55 (102 km/h).",
+      "src": "Lisbon TAF"
+    },
+    {
+      "at": "12:00–15:00",
+      "label": "evidence",
+      "text": "CP suppresses four trains across the 25 de Abril bridge in the window it calls the most critical.",
+      "src": "CP, via the press"
+    },
+    {
+      "at": "13:00",
+      "label": "evidence",
+      "text": "Madeira's schools reopen (closed in the morning by the regional civil protection).",
+      "src": "SRPC Madeira, via the press"
+    },
+    {
+      "at": "about 15:00",
+      "label": "hypothesis",
+      "text": "The ensemble's median time for the centre to cross off Lisbon; high water at about 15:10 (1.25 m above mean sea level, a model). Model gusts at Lisbon in the ensemble: median 69 km/h, nine in ten below 85 km/h.",
+      "src": "ECMWF ensemble and tide model (incident.datascience@)"
+    },
+    {
+      "at": "16:00–18:00",
+      "label": "fact",
+      "text": "TAF: wind turning west-north-west 12 kt by 18:00, no significant weather.",
+      "src": "Lisbon TAF"
+    },
+    {
+      "at": "18:00",
+      "label": "fact",
+      "text": "Red rain warnings end in all eight districts.",
+      "src": "IPMA warnings"
+    },
+    {
+      "at": "18:00–21:00",
+      "label": "fact",
+      "text": "TAF: at times west-north-west 17 kt gusting 27 (50 km/h).",
+      "src": "Lisbon TAF"
+    },
+    {
+      "at": "21:00",
+      "label": "fact",
+      "text": "Lisbon's orange wind and orange sea warnings end; yellow sea (waves 4 to 5 m) to 03:00 Thursday. Faro's red wind ends.",
+      "src": "IPMA warnings"
+    },
+    {
+      "at": "Thu 00:00–12:00",
+      "label": "fact",
+      "text": "No IPMA warning for Lisbon above yellow on Thursday morning. IPMA's model: west wind, mean 15 to 24 km/h; showers, rain chance up to 92%.",
+      "src": "IPMA warnings and IPMA's hourly model (run 07:56)"
+    },
+    {
+      "at": "pending",
+      "label": "fact",
+      "text": "Web Summit's word on Day 3 (Thursday): it \"aims to proceed as planned\", an aim, not yet a decision.",
+      "src": "Web Summit, 10 Nov 19:09"
+    }
+  ],
+  "signs": [
+    {
+      "label": "hypothesis",
+      "text": "The wind's direction at the airport: backing toward east while the pressure falls fits a centre passing south of Lisbon; a swing to north-west with rising pressure would mean it has passed.",
+      "src": "incident.meteorologist@, 11:28"
+    },
+    {
+      "label": "hypothesis",
+      "text": "Thunderstorm cells (TCU or CB in the METAR): the TAF gives its strongest gusts only with thunderstorms, so a short, sharp spell is the case to watch, not a long blow.",
+      "src": "our reading of the TAF"
+    },
+    {
+      "label": "hypothesis",
+      "text": "Hourly rain above 6 mm at the city's stations around high water (about 15:10, modelled): the press reports the risk of rain and tide together hindering drainage in the big cities.",
+      "src": "tide model; CNN Portugal live, 08:27"
+    }
+  ],
+  "decided": [
+    {
+      "label": "fact",
+      "who": "Government of Portugal",
+      "what": "Alert situation for the whole mainland, Wednesday 00:00 to 23:59: schools and non-essential public services closed; outdoor events suspended.",
+      "when": "10 Nov 12:10",
+      "url": "https://portugal.gov.pt/",
+      "row": "s-1110T1210"
+    },
+    {
+      "label": "fact",
+      "who": "Web Summit",
+      "what": "Day 2 (Wednesday) will not take place, on the government's formal advice; Day 3 (Thursday) \"aims to proceed as planned\".",
+      "when": "10 Nov 19:09",
+      "url": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+      "row": "s-1110T1909"
+    },
+    {
+      "label": "evidence",
+      "who": "Lisbon City Council (mayor)",
+      "what": "All of Lisbon's road tunnels closed from midnight; parks, gardens and cultural facilities too.",
+      "when": "10 Nov 13:16 (press)",
+      "url": "../incidents/2026-11-10-storm-charles/data/decisions/entities/tunnels.json"
+    },
+    {
+      "label": "evidence",
+      "who": "CP and Infraestruturas de Portugal",
+      "what": "Four trains across the 25 de Abril bridge suppressed, 12:00 to 15:00.",
+      "when": "10 Nov 23:10 (press)",
+      "url": "../incidents/2026-11-10-storm-charles/data/decisions/entities/cp.json"
+    },
+    {
+      "label": "evidence",
+      "who": "Lusoponte",
+      "what": "Vasco da Gama bridge limited to 100 km/h because of the weather.",
+      "when": "11 Nov 09:24 (Lusa)",
+      "url": "../incidents/2026-11-10-storm-charles/timeline.md",
+      "row": "s-1111T0957"
+    },
+    {
+      "label": "evidence",
+      "who": "Carris (Lisbon buses and trams)",
+      "what": "Service kept with priority to essential journeys; trams 12E, 15E, 18E, 24E, 25E and 28E interrupted; Graça funicular closed since 10:40; Web Summit shuttles cancelled. Fertagus trains: normal service, confirmed at 10:40.",
+      "when": "read 11:52 at source (no update time on the page)",
+      "url": "https://www.carris.pt/viaje/alteracoes-de-servico/alerta-circulacao/",
+      "row": "s-1111T1157"
+    },
+    {
+      "label": "evidence",
+      "who": "Transtejo Soflusa",
+      "what": "River crossings between Lisbon and the south bank kept running from 05:00 (one crossing, Porto Brandão–Trafaria–Belém, reported suspended in the morning).",
+      "when": "10 Nov 18:57; 11 Nov 05:44 (press)",
+      "url": "../incidents/2026-11-10-storm-charles/data/decisions/entities/ferries.json"
+    },
+    {
+      "label": "evidence",
+      "who": "TAP Air Portugal",
+      "what": "Operations adjusted; tickets for travel to 11 Nov may be changed without penalty to flights up to 17 Nov.",
+      "when": "10 Nov 16:09 (press)",
+      "url": "../incidents/2026-11-10-storm-charles/data/decisions/entities/tap.json"
+    },
+    {
+      "label": "evidence",
+      "who": "Lisbon's hospitals",
+      "what": "Wednesday's scheduled activity rescheduled (which hospitals: not stated).",
+      "when": "10 Nov 18:29 (Lusa headline)",
+      "url": "../incidents/2026-11-10-storm-charles/data/decisions/entities/hospitals.json"
+    },
+    {
+      "label": "evidence",
+      "who": "Madeira's Regional Civil Protection (SRPC)",
+      "what": "Schools closed Wednesday morning, reopening from 13:00. 205 occurrences to 09:00, none classed as serious.",
+      "when": "10 Nov 11:26; 11 Nov 09:00 (press)",
+      "url": "../incidents/2026-11-10-storm-charles/data/decisions/entities/madeira.json"
+    }
+  ],
+  "compare": [
+    {
+      "topic": "Rain, Lisbon",
+      "official": "Red, 09:00–18:00: \"strong and persistent\"",
+      "models": "TAF: rain all afternoon, heavy with a 30% thunderstorm chance 12:00–16:00",
+      "obs": "3–6.5 mm an hour at the four city stations, 07:00–10:00; 15 to 24 mm in the five hours 06:00–10:00",
+      "press": "Heavy rain about 11:00–15:00, easing after about 18:00 (radio, 10:38)",
+      "agree": "agree",
+      "assessment": "What is observed matches the red rain warning in timing and character.",
+      "confidence": "HIGH"
+    },
+    {
+      "topic": "Wind, Lisbon",
+      "official": "Orange, 09:00–21:00: gusts up to 120 km/h (lowered from red at 07:16)",
+      "models": "TAF lowered twice: at times 65 km/h gusts, 30% chance of 102 km/h in thunderstorms; ECMWF ensemble gusts at Lisbon: median 69, 90th percentile 85 km/h",
+      "obs": "Airport 17 km/h, no gust (11:00); highest gust since Tuesday 67 km/h (Tue 11:00)",
+      "press": "Reports the lowered warning; some attribute more to IPMA than it wrote",
+      "agree": "differ",
+      "assessment": "So far far below the warning; the forecasts have come down toward the observations. Gusts near the warned strength would most likely come only in thunderstorms.",
+      "confidence": "LOW"
+    },
+    {
+      "topic": "Worst window",
+      "official": "Warnings overlap 12:00–18:00 (red rain, orange wind, orange sea)",
+      "models": "TAF: strongest groups 12:00–16:00, quieter from 16:00–18:00",
+      "obs": "Pressure 998 hPa at 11:00 and falling",
+      "press": "11:00–15:00 (radio)",
+      "agree": "mostly agree",
+      "assessment": "The early afternoon, to about 16:00, is the window the sources share; the peak hour within it is not known.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "topic": "Track of the centre",
+      "official": "Communiqué no. 2 (10 Nov 17:07): toward the mainland, \"high uncertainty in track and intensity\"",
+      "models": "ECMWF ensemble (51 forecasts): 49% south of Lisbon, 41% near, 10% north; median crossing about 15:00",
+      "obs": "Wind backing south-south-east to east-south-east with falling pressure",
+      "press": "Track moved south, toward the Algarve (radio, 10:38; not IPMA in writing)",
+      "agree": "mostly agree",
+      "assessment": "North of Lisbon is now the outlier; near or south, as the observed wind and Faro's red wind suggest. Which of the two is open.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "topic": "Sea and tide",
+      "official": "Orange sea, 12:00–21:00: waves 5–7 m, up to 13 m; yellow to 03:00",
+      "models": "IPMA's model: sea 3–3.5 m Thursday morning; tide model: high water about 15:10 (1.25 m), next about 03:10 Thursday",
+      "obs": "No gauge or buoy in our data; Instituto Hidrográfico's official table needs an account (not read)",
+      "press": "Rain at high tide may hinder drainage (live blog, 08:27)",
+      "agree": "no conflict",
+      "assessment": "High water falls inside the red rain window; the warning is the written word on the sea.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "topic": "Madeira",
+      "official": "Red rain to 06:00, then orange; orange wind to 12:00 (130 km/h in the mountains)",
+      "models": "n/a",
+      "obs": "249.5 mm in six hours at Areeiro (01:00–06:00); airport wind dropped from 89 km/h gusts at 07:00 to 13 km/h at 08:00",
+      "press": "Regional president: 479 mm somewhere on the island; 205 occurrences, none serious",
+      "agree": "agree",
+      "assessment": "The worst has passed Madeira; the risk now is what the rain left (slopes, streams), which only the regional civil protection can state.",
+      "confidence": "HIGH"
+    },
+    {
+      "topic": "End of the event",
+      "official": "Lisbon: rain to 18:00, wind and sea to 21:00, yellow sea to 03:00; nothing above yellow on Thursday",
+      "models": "TAF: no significant weather from about 18:00; showers on Thursday",
+      "obs": "n/a yet",
+      "press": "Easing after about 18:00",
+      "agree": "agree",
+      "assessment": "Thursday morning looks like showers and a westerly wind, not a storm; Web Summit's Day 3 word is still awaited.",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "gaps": [
+    {
+      "what": "Precedents: Leslie (2018), Elsa (2019) and later storms, highest gust, incidents, customers without power",
+      "who": "incident.datascience@ and incident.researcher@",
+      "state": "not yet in our data"
+    },
+    {
+      "what": "Tides, official: Instituto Hidrográfico's table for Lisbon, Cascais and Funchal",
+      "who": "incident.datascience@ (Instituto Hidrográfico)",
+      "state": "this edition uses a model (Open-Meteo Marine); IH's table needs an account and was not read"
+    },
+    {
+      "what": "Power cuts: customers without power",
+      "who": "incident.datascience@ (E-REDES)",
+      "state": "not yet in our data"
+    }
+  ],
+  "exposure": true,
+  "change": "What changed since edition 1 (11:40): who is exposed (residents under each level, hour by hour; Lisbon's municipalities and 49 squares), the ECMWF ensemble's shares of tracks, a modelled tide (high water about 15:10 at Lisbon, inside the red rain window), and Carris and Fertagus read at their own pages. IPMA's warnings are unchanged since 07:16."
+}
