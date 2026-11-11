@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T09:31Z",
+  "updated": "2026-11-11T09:56Z",
   "based_on_read_utc": "2026-11-11T09:22:47Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
@@ -82,7 +82,8 @@
         "c11",
         "c12",
         "c13",
-        "c19"
+        "c19",
+        "c21"
       ]
     },
     {
@@ -105,7 +106,9 @@
         "h3",
         "h4",
         "h2",
-        "h5"
+        "h5",
+        "h6",
+        "h7"
       ]
     },
     {
@@ -1032,6 +1035,111 @@
           "expect": "IPMA lowers Lisbon's wind warning to orange (gusts to 120 km/h, 09:00-21:00); the red rain warning (09:00-18:00) stands"
         }
       ]
+    },
+    {
+      "id": "c21",
+      "text": "After the warning was lowered the press reported it, and attributed more to IPMA than IPMA has written. Titles read at 09:39: TSF, \"Previsões do IPMA melhoram: apenas Faro está sob aviso vermelho para vento\"; RTP, \"Depressão Charles divide-se em dois e enfraquece, mas a chuva vai manter-se forte\". Every outlet read keeps the red rain, and the levels they give match IPMA's messages of 07:16:30. That the storm \"splits in two and weakens\" is the press reporting IPMA's spoken word: IPMA has published no communiqué after no. 2 and no new message for Lisbon since 07:16.",
+      "label": "evidence",
+      "said_by": "TSF and RTP (titles), as read by incident.weatherwatch@; not read at IPMA",
+      "at_utc": "2026-11-11T09:39Z",
+      "read_utc": "2026-11-11T09:39Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0939"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0824"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:50Z].ipma_written",
+          "contains": [
+            "nothing: no communiqué no. 3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h6",
+      "text": "At 09:25 the meteorologist read the models again, and this supersedes the reading of 02:35: IPMA's hourly run of 07:56 and MET Norway's of 09:19 now both turn the wind through south and south-west to west, so the centre is read as passing close to Lisbon and just north of it between about 13:00 and 15:00, earlier than the 15:00 to 18:00 held before. On a drop in the wind around midday in both models, the analysis's words are: \"a lull ~12:00-13:00 precedes the strongest wind; not the end\". This is our analysis and not a forecast; IPMA's warnings are what stand: red rain to 18:00, orange wind to 21:00.",
+      "label": "hypothesis",
+      "confidence": "medium, on which side of Lisbon the centre passes",
+      "said_by": "incident.meteorologist@web-summit.dinis (analysis; not IPMA's words)",
+      "at_utc": "2026-11-11T09:25Z",
+      "read_utc": "2026-11-11T09:22:47Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0922"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:25Z].side.view",
+          "expect": "just north"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:25Z].side.confidence",
+          "expect": "medium"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:25Z].lull_note",
+          "expect": "a lull ~12:00-13:00 precedes the strongest wind; not the end"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:25Z].weighing",
+          "contains": [
+            "just north of Lisbon ~13:00-15:00"
+          ]
+        }
+      ],
+      "qualified_by": [
+        "h1",
+        "h4"
+      ]
+    },
+    {
+      "id": "h7",
+      "text": "On the press's \"two centres\", the meteorologist wrote at 09:50: IPMA has put nothing in writing about two centres. Madeira airport's wind swung between 07:00 and 08:00 with its pressure lowest at 06:30; one centre could not pass Madeira then and reach Lisbon, 966 km away, by 13:00 to 15:00 without moving at 140 to 160 km/h. So Madeira's swing was most likely a separate feature: consistent with two centres, not proof of them. The test it sets for Lisbon: the airport's pressure bottoming near 988 to 992 hPa at about 14:00 to 15:00, with the wind turning through south-west.",
+      "label": "hypothesis",
+      "confidence": "medium (observations and distance; not IPMA in writing)",
+      "said_by": "incident.meteorologist@web-summit.dinis (analysis; not IPMA's words)",
+      "at_utc": "2026-11-11T09:50Z",
+      "read_utc": "2026-11-11T09:45Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0941"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:50Z].two_centres_confidence",
+          "expect": "medium (observations and distance; not IPMA in writing)"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:50Z].analysis",
+          "contains": [
+            "966 km apart",
+            "consistent with 'two centres' (not proven)"
+          ]
+        }
+      ],
+      "qualified_by": [
+        "c21",
+        "h6"
+      ]
     }
   ],
   "not_known": [
@@ -1206,6 +1314,15 @@
       "what": "Retold on the read of 09:22:47 UTC, the first after the windows opened at 09:00. Before, o1 said: \"Nothing measured yet can test any of this: the orange wind warning and the red rain warning both begin at 09:00 on Wednesday, and the observations we hold end before it.\" Now it gives the one measurement held from inside the windows (the airport at 09:00: 20 km/h, no gust reported) and says the station hours end at 08:00. o2 stands: no airport gust above the warned gust is listed.",
       "claims_changed": [
         "o1"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T09:56Z",
+      "what": "Added from rows s-1111T0922, s-1111T0939 and s-1111T0941: the press on the lowered warning and \"two centres\" (c21, evidence); the meteorologist's reading of 09:25, which supersedes that of 02:35 (h6: just north of Lisbon, about 13:00 to 15:00, medium confidence; before, h1 and h4 had the side unsettled and 15:00 to 18:00); and its reading of \"two centres\" (h7). h1 to h5 are kept as what was held when.",
+      "claims_changed": [
+        "c21",
+        "h6",
+        "h7"
       ]
     }
   ]

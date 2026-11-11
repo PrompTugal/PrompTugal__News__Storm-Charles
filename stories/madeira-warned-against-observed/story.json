@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:31Z",
-  "updated": "2026-11-11T08:54Z",
+  "updated": "2026-11-11T09:56Z",
   "based_on_read_utc": "2026-11-11T08:45:09Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for Madeira's areas, resolved from the data room when the page is built and read again in the reader's browser.",
@@ -687,12 +687,12 @@
     },
     {
       "id": "m17",
-      "text": "Our meteorologist's hypothesis from those reports: the storm's centre passed close to Madeira airport between about 07:30 and 08:00, later than the position in IPMA's communiqué no. 2 (a forecast) would suggest. Its reason: a swing from south-west to north-east with the wind collapsing usually means a low's centre is passing close to the observer. No track of the centre from IPMA is in the data room, so this is our analysis and not a position IPMA has given.",
+      "text": "What that swing was is a hypothesis, and it has moved. At 08:22 our meteorologist read it as the storm's centre passing close to Madeira airport between about 07:30 and 08:00. At 09:50 it wrote that one centre could not pass Madeira then and reach Lisbon, 966 km away, by 13:00 to 15:00 without moving at 140 to 160 km/h, so the swing was most likely a separate feature: consistent with the \"two centres\" the press attributes to IPMA, not proof of them. IPMA has put nothing in writing about two centres, and no track of the centre from IPMA is in the data room.",
       "label": "hypothesis",
-      "confidence": "not stated by the analysis; it rests on one airport's reports",
+      "confidence": "medium (observations and distance; not IPMA in writing)",
       "said_by": "incident.meteorologist@, analysis (data/weather/analysis.md, section 11)",
-      "at_utc": "2026-11-11T08:22Z",
-      "read_utc": "2026-11-11T08:22Z",
+      "at_utc": "2026-11-11T09:50Z",
+      "read_utc": "2026-11-11T09:45Z",
       "supports": [
         {
           "kind": "row",
@@ -709,6 +709,24 @@
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
           "field": "metars[time_utc=2026-11-11T08:00Z].wind_dir",
           "expect": 50
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0941"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:50Z].two_centres_confidence",
+          "expect": "medium (observations and distance; not IPMA in writing)"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[written_utc=2026-11-11T09:50Z].analysis",
+          "contains": [
+            "Madeira's swing most likely a separate feature"
+          ]
         }
       ],
       "qualified_by": [
@@ -874,6 +892,13 @@
       "what": "Added from row s-1111T0822: the airport's wind falling between 07:00 and 08:30 (m16, a fact from its reports) and the meteorologist's hypothesis that the storm's centre passed close to the airport (m17). Nothing said before was changed.",
       "claims_changed": [
         "m16",
+        "m17"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T09:56Z",
+      "what": "Retold on the meteorologist's analysis of 09:50 (row s-1111T0941). Before, m17 said: \"Our meteorologist's hypothesis from those reports: the storm's centre passed close to Madeira airport between about 07:30 and 08:00, later than the position in IPMA's communiqué no. 2 (a forecast) would suggest. Its reason: a swing from south-west to north-east with the wind collapsing usually means a low's centre is passing close to the observer. No track of the centre from IPMA is in the data room, so this is our analysis and not a position IPMA has given.\" Now: the swing is read as most likely a separate feature, not the centre that the models bring to Lisbon.",
+      "claims_changed": [
         "m17"
       ]
     }
