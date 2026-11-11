@@ -1,13 +1,13 @@
 # Observador: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online daily (pt) |
-| Items we read | 54: 51 articles, 2 live, 0 video, 1 opinion |
-| First and last | 10 Nov 07:32 to 11 Nov 15:00 UTC |
-| Whose reporting | 26 with a reporter's by-line, 8 the agency's (Lusa), 20 the desk's, 0 not read; wire share 15% |
+| Items we read | 57: 54 articles, 2 live, 0 video, 1 opinion |
+| First and last | 10 Nov 07:32 to 11 Nov 16:36 UTC |
+| Whose reporting | 28 with a reporter's by-line, 8 the agency's (Lusa), 21 the desk's, 0 not read; wire share 14% |
 | Does best (from the counts) | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; first on "IPMA moves Lisbon's red rain warning three hours earlier, to Wednesday 09:00"; first on "IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente"; first on "IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands"; a running live blog |
 
 ## Against the key moments
@@ -17,8 +17,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:34 (live entry) | +76 min | 2 of 6 | [IPMA coloca oito distritos sob aviso vermelho na quarta-feira ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790948-scroll) |
-| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:17 (live entry) | +2 min | 2 of 6 | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
-| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:17 (live entry) | -172 min | 2 of 6 | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:17 (live entry) | +2 min | 2 of 7 | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:17 (live entry) | -172 min | 2 of 7 | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:46 (live entry) | +37 min | 5 of 11 | [Web Summit cancela programação de quarta-feira devido ao mau tempo ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791150-scroll) |
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 22:07 (live entry) | unknown | 1 of 4 | [Modelos já apontam para uma trajetória mais a sul: entre Setúbal e Si… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791172-scroll) |
 | IPMA moves Lisbon's red rain warning three hours earlier, to Wednesday 09:00 | 10 Nov 21:23 | 11 Nov 08:46 (live entry) | +683 min | 1 of 1 | [Vento. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja. Mas ch… ↗](https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791224-scroll) |
@@ -27,7 +27,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 54 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 57 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 10 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -51,7 +51,7 @@ Through its own public page: [Ficha Técnica ↗](https://observador.pt/ficha-te
 
 ## By-lines on this story, as printed
 
-[Carla Jorge de Carvalho](../people/carla-jorge-de-carvalho.md) (4), [Paulo Ferreira](../people/paulo-ferreira.md) (4), [Bruno Vieira Amaral](../people/bruno-vieira-amaral.md) (3), [José Manuel Fernandes](../people/jose-manuel-fernandes.md) (3), Edgar Caetano (2), Filomena Martins (2), Helena Garrido (2), Miguel Santos Carrapatoso (2), Miguel Videira (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Mariana Lima Cunha, Martim Andrade, Miguel Viterbo Dias, Nelson Ferreira, Pedro Benevides, Ricardo Conceição, Teresa Freire. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+[Carla Jorge de Carvalho](../people/carla-jorge-de-carvalho.md) (4), [Paulo Ferreira](../people/paulo-ferreira.md) (4), [Bruno Vieira Amaral](../people/bruno-vieira-amaral.md) (3), [Filomena Martins](../people/filomena-martins.md) (3), [José Manuel Fernandes](../people/jose-manuel-fernandes.md) (3), Edgar Caetano (2), Helena Garrido (2), Miguel Santos Carrapatoso (2), Miguel Videira (2), Miguel Viterbo Dias (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Mariana Lima Cunha, Martim Andrade, Nelson Ferreira, Pedro Benevides, Ricardo Conceição, Teresa Freire. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -111,3 +111,6 @@ Through its own public page: [Ficha Técnica ↗](https://observador.pt/ficha-te
 | 11 Nov 14:25 | article | Rádio Observador | [Briefing da ANEPC sobre a depressão Charles ↗](https://observador.pt/programas/emissao-especial/briefing-da-anepc-sobre-a-depressao-charles/) |
 | 11 Nov 14:37 | article | Nelson Ferreira | [Com tanta tempestade, a culpa também é do árbitro? ↗](https://observador.pt/programas/e-o-campeao-e/com-tanta-tempestade-a-culpa-tambem-e-do-arbitro/) |
 | 11 Nov 15:00 | article | Rádio Observador, Paulo Ferreira | [Cuidado com burlas e oportunismo após a tempestade ↗](https://observador.pt/programas/boa-moeda-ma-moeda/cuidado-com-burlas-e-oportunismo-apos-a-tempestade/) |
+| 11 Nov 16:08 | article | Miguel Viterbo Dias | [Mau tempo. Com o PTRR no terreno, está o país preparado? ↗](https://observador.pt/programas/resposta-pronta/mau-tempo-com-o-ptrr-no-terreno-esta-o-pais-preparado/) |
+| 11 Nov 16:31 | article | Rádio Observador | [Depressão Charles. "Já estamos em fase de acalmia relativa" ↗](https://observador.pt/programas/resposta-pronta/depressao-charles-ja-estamos-em-fase-de-acalmia-relativa/) |
+| 11 Nov 16:36 | article | Filomena Martins, Rádio Observador | [Charles passa, mas a chuva fica. E o Atlântico prepara uma nova sequência de tempestades ↗](https://observador.pt/programas/quente-e-frio/charles-passa-mas-a-chuva-fica-e-o-atlantico-prepara-uma-nova-sequencia-de-tempestades/) |

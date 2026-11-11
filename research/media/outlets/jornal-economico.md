@@ -1,13 +1,13 @@
 # Jornal Económico: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | business weekly, online daily (pt) |
-| Items we read | 17: 17 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 13:23 to 11 Nov 15:36 UTC |
-| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 16 not read; wire share 0% |
+| Items we read | 19: 19 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 13:23 to 11 Nov 16:30 UTC |
+| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 18 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -21,7 +21,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 17 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 19 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -67,3 +67,5 @@ José Carlos Lourinho. A by-line is a public professional credit; nothing else a
 | 11 Nov 14:24 | article | not read | [Mau tempo: Dois mil clientes sem energia às 12h30, diz E-Redes ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-dois-mil-clientes-sem-energia-as-1230-diz-e-redes/) |
 | 11 Nov 15:18 | article | not read | [Mau tempo: Aumenta para oito as estradas condicionadas incluindo Eixo Norte-Sul em Lisboa ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-aumenta-para-oito-as-estradas-condicionadas-incluindo-eixo-norte-sul-em-lisboa/) |
 | 11 Nov 15:36 | article | not read | [Mau tempo: Aviso de chuva passa de vermelho para laranja em Leiria, Castelo Branco, Beja e Portaleg… ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-aviso-de-chuva-passa-de-vermelho-para-laranja-em-leiria-castelo-branco-beja-e-portalegre/) |
+| 11 Nov 15:47 | article | not read | [Luís Neves diz que “está à porta o período mais grave” da tempestade, principalmente no Algarve ↗](https://jornaleconomico.sapo.pt/noticias/luis-neves-diz-que-esta-a-porta-o-periodo-mais-grave-da-tempestade-principalmente-no-algarve/) |
+| 11 Nov 16:30 | article | not read | [Mau tempo: Sindicato critica Câmara de Miranda do Corvo por manter funcionários nas escolas ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-sindicato-critica-camara-de-miranda-do-corvo-por-manter-funcionarios-nas-escolas/) |

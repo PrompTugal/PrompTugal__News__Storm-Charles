@@ -1,13 +1,13 @@
 # Expresso: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | weekly, online daily (pt) |
-| Items we read | 37: 37 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:21 to 11 Nov 14:02 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 37 not read |
+| Items we read | 41: 41 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:21 to 11 Nov 15:57 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 41 not read |
 | Does best (from the counts) | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 
 ## Against the key moments
@@ -16,6 +16,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 11 Nov 15:57 (article) | +1843 min | 7 of 7 | [Situação de alerta não será prolongada: MAI recusa excesso de zelo e… ↗](https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-e-avisa-para-perigo-no-algarve-1d821b8b) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 11 Nov 15:57 (article) | +1667 min | 7 of 7 | [Situação de alerta não será prolongada: MAI recusa excesso de zelo e… ↗](https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-e-avisa-para-perigo-no-algarve-1d821b8b) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 14:41 (article) | +101 min | 6 of 6 | [Lisboa com túneis, jardins e equipamentos culturais encerrados, Web S… ↗](https://expresso.pt/tempestades/2026-11-10-lisboa-com-tuneis-jardins-e-equipamentos-culturais-encerrados-web-summit-em-duvida-medidas-serao-reavaliadas-dentro-de-24h-diz-moedas-2c217504) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:39 (article) | +90 min | 10 of 11 | [Depressão “Charles”: Web Summit fecha as portas esta quarta-feira e r… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428) |
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 23:54 (article) | unknown | 3 of 4 | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
@@ -23,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 37 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 41 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -82,5 +84,9 @@ Its public contact page was not found by our reader (start at [Expresso ↗](htt
 | 11 Nov 13:20 | article | not read | [Uma quarta feira de manhã como um domingo de inverno: “Antigamente também chovia e trabalhava-se, a… ↗](https://expresso.pt/tempestades/2026-11-11-uma-quarta-feira-de-manha-como-um-domingo-de-inverno-antigamente-tambem-chovia-e-trabalhava-se-agora-ficam-em-casa-40e23b48) |
 | 11 Nov 13:33 | article | not read | ["Não há respeito pela segurança destas pessoas": sindicato critica Moedas por colocar trabalhadores… ↗](https://expresso.pt/poder-local/2026-11-11-nao-ha-respeito-pela-seguranca-destas-pessoas-sindicato-critica-moedas-por-colocar-trabalhadores-a-limpar-estatua-durante-tempestade-ca697f63-1) |
 | 11 Nov 13:50 | article | not read | [Tempestade "Charles": congestionamento de trânsito em Lisboa não passou dos 6% esta manhã ↗](https://expresso.pt/tempestades/2026-11-11-tempestade-charles-congestionamento-de-transito-em-lisboa-nao-passou-dos-6-esta-manha-fb0acead) |
+| 11 Nov 13:57 | article | not read | [Serviço de entregas da Uber Eats ainda suspenso no Algarve ↗](https://expresso.pt/tempestades/2026-11-11-servico-de-entregas-da-uber-eats-ainda-suspenso-no-algarve-11d1b407) |
 | 11 Nov 13:57 | article | not read | [Serviço de entregas da Uber Eats suspenso em diferentes pontos do país ↗](https://expresso.pt/tempestades/2026-11-11-servico-de-entregas-da-uber-eats-suspenso-em-diferentes-pontos-do-pais-11d1b407) |
+| 11 Nov 14:02 | article | not read | [Tempestade Charles provoca danos no concelho de Cascais e Oeiras ↗](https://expresso.pt/sociedade/2026-11-11-tempestade-charles-provoca-danos-no-concelho-de-cascais-e-oeiras-bed42370) |
 | 11 Nov 14:02 | article | not read | [Tempestade Charles provoca danos no cocelho de Cascais e Oeiras ↗](https://expresso.pt/sociedade/2026-11-11-tempestade-charles-provoca-danos-no-cocelho-de-cascais-e-oeiras-bed42370) |
+| 11 Nov 15:17 | article | not read | [Tempestade ‘Charles” cancela metade dos voos nos aeroportos portugueses. Maioria são da TAP ↗](https://expresso.pt/economia/transportes/aviacao/2026-11-11-tempestade-charles-cancela-metade-dos-voos-nos-aeroportos-portugueses.-maioria-sao-da-tap-be48a846) |
+| 11 Nov 15:57 | article | not read | [Situação de alerta não será prolongada: MAI recusa excesso de zelo e avisa para perigo no Algarve ↗](https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-e-avisa-para-perigo-no-algarve-1d821b8b) |

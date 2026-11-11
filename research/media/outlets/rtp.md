@@ -1,13 +1,13 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
-| Items we read | 47: 47 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 15:11 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 46 the desk's, 1 not read; wire share 0% |
+| Items we read | 48: 48 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:34 to 11 Nov 16:30 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 47 the desk's, 1 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -17,8 +17,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:41 (live entry) | +83 min | 3 of 6 | [IPMA coloca oito distritos sob aviso vermelho na quarta-feira ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778038) |
-| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:18 (live entry) | +3 min | 3 of 6 | [Governo declara situação de alerta para quarta-feira ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047) |
-| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:18 (live entry) | -172 min | 3 of 6 | [Governo declara situação de alerta para quarta-feira ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047) |
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:18 (live entry) | +3 min | 3 of 7 | [Governo declara situação de alerta para quarta-feira ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:18 (live entry) | -172 min | 3 of 7 | [Governo declara situação de alerta para quarta-feira ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:47 (live entry) | +38 min | 6 of 11 | [Web Summit fecha portas esta quarta-feira devido ao mau tempo ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245) |
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 22:22 (article) | unknown | 2 of 4 | [22h IPMA depressão mudou a trajetória mais para sul ↗](https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275) |
 | IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 10 Nov 23:08 (live entry) | +32 min | 2 of 5 | [Tempestade terá mudado de trajetória ↗](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277) |
@@ -26,7 +26,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 47 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 48 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **Notícias ao Minuto relayed it:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -96,6 +96,7 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 13:18 | article | Rádio e Televisão de Portugal | [Charles fez estragos na Madeira. Homem retirado de escombros ↗](https://www.rtp.pt/noticias/pais/charles-fez-estragos-na-madeira-homem-retirado-de-escombros_v1778422) |
 | 11 Nov 13:19 | article | Rádio e Televisão de Portugal | [Lisboa com pouco movimento em dia de intempérie ↗](https://www.rtp.pt/noticias/pais/lisboa-com-pouco-movimento-em-dia-de-intemperie_v1778424) |
 | 11 Nov 13:23 | article | not read | ["Risco mantém-se". Proteção Civil conserva todos os alertas apesar de "impacto mais reduzido" ↗](https://www.rtp.pt/noticias/mundo/risco-mantem-se-protecao-civil-conserva-todos-os-alertas-apesar-de-impacto-mais-reduzido_e1778319) |
+| 11 Nov 13:54 | article | Rádio e Televisão de Portugal | [Centenas de voos cancelados à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/centenas-de-voos-cancelados-a-passagem-da-depressao-charles_v1778436) |
 | 11 Nov 13:54 | article | Rádio e Televisão de Portugal | [Centenas voos cancelados à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/centenas-voos-cancelados-a-passagem-da-depressao-charles_v1778436) |
 | 11 Nov 14:23 | article | Rádio e Televisão de Portugal | ["Risco mantém-se". Proteção Civil conserva todos os alertas apesar de "impacto mais reduzido" ↗](https://www.rtp.pt/noticias/pais/risco-mantem-se-protecao-civil-conserva-todos-os-alertas-apesar-de-impacto-mais-reduzido_e1778319) |
-| 11 Nov 15:11 | article | Rádio e Televisão de Portugal | [Depressão Charles. MAI rejeita excesso de zelo e avisa que "o período mais grave está aí à porta" ↗](https://www.rtp.pt/noticias/pais/depressao-charles-mai-rejeita-excesso-de-zelo-e-avisa-que-o-periodo-mais-grave-esta-ai-a-porta_e1778319) |
+| 11 Nov 16:30 | article | Rádio e Televisão de Portugal | [Depressão Charles. MAI rejeita excesso de zelo e avisa que "o período mais grave está aí à porta" ↗](https://www.rtp.pt/noticias/pais/depressao-charles-mai-rejeita-excesso-de-zelo-e-avisa-que-o-periodo-mais-grave-esta-ai-a-porta_e1778319) |

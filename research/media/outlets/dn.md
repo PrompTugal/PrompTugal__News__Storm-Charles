@@ -1,13 +1,13 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 26: 23 articles, 2 live, 0 video, 1 opinion |
-| First and last | 9 Nov 08:34 to 11 Nov 15:34 UTC |
-| Whose reporting | 23 with a reporter's by-line, 3 the agency's (Lusa), 0 the desk's, 0 not read; wire share 12% |
+| Items we read | 28: 24 articles, 2 live, 1 video, 1 opinion |
+| First and last | 9 Nov 08:34 to 11 Nov 16:09 UTC |
+| Whose reporting | 25 with a reporter's by-line, 3 the agency's (Lusa), 0 the desk's, 0 not read; wire share 11% |
 | Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; first on "IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places"; a running live blog; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
@@ -18,8 +18,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 |---|---|---|---|---|---|
 | IPMA names the storm Charles (communiqué no. 1) | 9 Nov 13:17 | 9 Nov 16:22 (article) | +185 min | 2 of 3 | [Bruna e Charles. Duas depressões colocam Portugal Continental sob chu… ↗](https://www.dn.pt/sociedade/bruna-e-charles-duas-depresses-colocam-portugal-continental-sob-chuva-e-vento-fortes) |
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:05 (live entry) | +47 min | 1 of 6 | [Distritos de Setúbal, Santarém, Lisboa, Leiria e Portalegre sob aviso… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:14 (live entry) | +0 min | 1 of 6 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:14 (live entry) | -175 min | 1 of 6 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:14 (live entry) | +0 min | 1 of 7 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:14 (live entry) | -175 min | 1 of 7 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:47 (live entry) | +47 min | 3 of 6 | ["Eu diria que tudo indica que a Web Summit não poderá funcionar amanh… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:45 (live entry) | +36 min | 4 of 11 | [Segundo dia da Web Summit cancelado ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:14 (live entry) | +118 min | 4 of 6 | [Depressão dividiu-se em dois núcleos. IPMA reduz nível de alerta para… ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
@@ -27,7 +27,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 2 of 26 items link to a body that decides or warns (AMN, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 2 of 28 items link to a body that decides or warns (AMN, Lusoponte). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -51,7 +51,7 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 
 ## By-lines on this story, as printed
 
-[Ricardo Simões Ferreira](../people/ricardo-simoes-ferreira.md) (4), [Sofia Fonseca](../people/sofia-fonseca.md) (4), [Susete Henriques](../people/susete-henriques.md) (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Adelaide Cabral, Alexandra Tavares-Teles, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Rui Frias, Tomás Gonçalves Pereira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+[Ricardo Simões Ferreira](../people/ricardo-simoes-ferreira.md) (4), [Sofia Fonseca](../people/sofia-fonseca.md) (4), [Susete Henriques](../people/susete-henriques.md) (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Rui Frias (2), Sónia Santos Pereira (2), Adelaide Cabral, Alexandra Tavares-Teles, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Reinaldo Rodrigues, Tomás Gonçalves Pereira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -83,3 +83,5 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 | 11 Nov 13:11 | article | Alexandra Tavares-Teles | [Depressão Charles: Porto ativa centro de coordenação e reforça apoio a pessoas sem-abrigo ↗](https://www.dn.pt/pol%C3%ADtica/depresso-charles-porto-ativa-centro-de-coordenao-e-refora-apoio-a-pessoas-sem-abrigo) |
 | 11 Nov 14:32 | live | Sofia Fonseca | [Depressão Charles dividiu-se em dois núcleos. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja ↗](https://www.dn.pt/sociedade/depresso-charles-dividiu-se-em-dois-ncleos-ipma-reduz-nvel-de-alerta-para-lisboa-setbal-e-beja) |
 | 11 Nov 15:34 | article | Rui Frias | [Faltas ao trabalho devido ao mau tempo: Luís Neves diz que "lei é para cumprir" e pede compreensão… ↗](https://www.dn.pt/sociedade/faltas-ao-trabalho-devido-ao-mau-tempo-lus-neves-diz-que-lei-para-cumprir-e-pede-compreenso-dos-patres) |
+| 11 Nov 16:03 | video | Reinaldo Rodrigues | [Tempestade Charles atinge Lisboa: "O período mais grave está à porta" ↗](https://www.dn.pt/videos-dn/tempestade-charles-atinge-lisboa-o-perodo-mais-grave-est-porta) |
+| 11 Nov 16:09 | article | Rui Frias | [Ministro rejeita excesso de zelo na prevenção da depressão Charles: "Não podemos responder só quand… ↗](https://www.dn.pt/sociedade/ministro-rejeita-excesso-de-zelo-na-preveno-da-depresso-charles-no-podemos-responder-s-quando-h-uma-desgraa) |

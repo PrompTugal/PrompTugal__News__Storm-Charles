@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 15:38 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 467 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 16:38 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 485 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -53,6 +53,7 @@ Primary source time: **10 Nov 09:14 UTC** (evidence: no timed primary source for
 | 4 | Público | 10 Nov 14:09 | +295 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | 5 | Jornal de Negócios | 11 Nov 00:09 | +894 min | live blog entry | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
 | 6 | ECO | 11 Nov 06:32 | +1278 min | not read | [Portugal em situação de alerta. Charles dirige-se para o continente](https://eco.sapo.pt/2026/11/11/portugal-em-situacao-de-alerta-charles-dirige-se-para-o-continente/) |
+| 7 | Expresso | 11 Nov 15:57 | +1843 min | not read | [Situação de alerta não será prolongada: MAI recusa excesso de zelo e…](https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-e-avisa-para-perigo-no-algarve-1d821b8b) |
 
 ### The government's alert situation: schools and non-essential public services closed on Wednesday
 
@@ -66,6 +67,7 @@ Primary source time: **10 Nov 12:10 UTC** (fact: portugal.gov.pt's page is dated
 | 4 | Jornal de Negócios | 10 Nov 09:35 | -155 min (before the page) | live blog entry | [Escolas e serviços públicos encerrados amanhã devido ao mau tempo, an…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
 | 5 | Público | 10 Nov 14:09 | +119 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | 6 | ECO | 11 Nov 06:32 | +1102 min | not read | [Portugal em situação de alerta. Charles dirige-se para o continente](https://eco.sapo.pt/2026/11/11/portugal-em-situacao-de-alerta-charles-dirige-se-para-o-continente/) |
+| 7 | Expresso | 11 Nov 15:57 | +1667 min | not read | [Situação de alerta não será prolongada: MAI recusa excesso de zelo e…](https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-e-avisa-para-perigo-no-algarve-1d821b8b) |
 
 ### Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday
 
@@ -182,7 +184,7 @@ Primary source time: **11 Nov 07:16 UTC** (fact: IPMA's CAP message PO-01-1932, 
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 15:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 16:38 UTC | | | | |
 
 - Added 13:38 UTC by the third session. Público's title "já confirmou o regresso amanhã" (article 12:00, updated 12:17) is earlier than the 12:04 post if its 12:00 is its first time: read by hand before saying who was first.
 
@@ -192,7 +194,7 @@ Primary source time: **11 Nov 12:16 UTC** (fact: IPMA, comunicados (https://www.
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 15:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 16:38 UTC | | | | |
 
 - Added 12:38 UTC by the third session.
 
@@ -202,7 +204,7 @@ Primary source time: **11 Nov 12:18 UTC** (fact: IPMA's CAP batch sent 12:18:03 
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 15:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 16:38 UTC | | | | |
 
 - Added 12:38 UTC by the third session. Candidate for a hand check: ECO's title "IPMA atualiza para oito os distritos em aviso vermelho" carries the time 11:38, before the 12:18:03 batch (a title changed after publication, or an earlier change: not checked).
 - 13:38 UTC: ECO's item is feed-only (its pages are not opened), so whether its 11:38:06 title was changed later cannot be read here; it stays outside the window and is not counted.
@@ -224,9 +226,19 @@ Primary source time: **11 Nov 15:05 UTC** (fact: IPMA's CAP messages sent 15:05:
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 15:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 16:38 UTC | | | | |
 
 - Added 15:38 UTC by the third session.
+
+### IPMA ends Lisbon's orange wind warning at 15:56 (was to 18:00) and lowers Faro's red rain and wind: no red warning remains on the mainland; Lisbon keeps yellow rain to 18:00 and orange sea to 21:00
+
+Primary source time: **11 Nov 15:55 UTC** (fact: IPMA's CAP batch sent 15:55:03 (14 messages), seen in MeteoAlarm's Portugal feed at 16:09; IPMA's warnings page agrees at 16:24 (timeline row s-1111T1609). Not an all-clear. Matched on titles).
+
+| # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
+|---|---|---|---|---|---|
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 16:38 UTC | | | | |
+
+- Added 16:38 UTC by the third session.
 
 Lags are whole minutes elapsed, truncated (19:09:00 to 19:41:31 is 32 minutes); the seconds are in the data. Notes: the organisers' email to attendees went at 19:38 (no public URL; in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). Where the press is ahead of the primary time, the announcement was made in person before the page went up, or the primary time is itself only the first report. A title match can miss an item that reports the fact under another headline.
 
@@ -237,15 +249,15 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 | Outlet | Items | Reporter's by-line | Agency (Lusa) | Wire share | Desk | By-line not read | Items linking a primary source | Bodies linked |
 |---|---|---|---|---|---|---|---|---|
 | Notícias ao Minuto | 129 | 6 | 111 | 86% | 12 | 0 | 1 | IPMA |
-| CNN Portugal | 66 | 3 | 6 | 67% | 0 | 57 | 1 | Diário da República |
-| Observador | 54 | 26 | 8 | 15% | 20 | 0 | 1 | IPMA |
-| RTP | 47 | 0 | 0 | 0% | 46 | 1 | 0 |  |
-| Expresso | 37 | 0 | 0 | n/a | 0 | 37 | 0 |  |
-| Público | 26 | 19 | 3 | 13% | 2 | 2 | 6 | ANEPC, Diário da República, IPMA |
-| Diário de Notícias | 26 | 23 | 3 | 12% | 0 | 0 | 2 | AMN, Lusoponte |
-| Correio da Manhã | 26 | 1 | 9 | 35% | 16 | 0 | 0 |  |
-| ECO | 17 | 3 | 0 | 0% | 3 | 11 | 0 |  |
-| Jornal Económico | 17 | 1 | 0 | 0% | 0 | 16 | 0 |  |
+| CNN Portugal | 68 | 3 | 6 | 67% | 0 | 59 | 1 | Diário da República |
+| Observador | 57 | 28 | 8 | 14% | 21 | 0 | 1 | IPMA |
+| RTP | 48 | 0 | 0 | 0% | 47 | 1 | 0 |  |
+| Expresso | 41 | 0 | 0 | n/a | 0 | 41 | 0 |  |
+| Público | 28 | 21 | 3 | 12% | 2 | 2 | 6 | ANEPC, Diário da República, IPMA |
+| Diário de Notícias | 28 | 25 | 3 | 11% | 0 | 0 | 2 | AMN, Lusoponte |
+| Correio da Manhã | 27 | 1 | 9 | 33% | 17 | 0 | 0 |  |
+| Jornal Económico | 19 | 1 | 0 | 0% | 0 | 18 | 0 |  |
+| ECO | 18 | 3 | 0 | 0% | 3 | 12 | 0 |  |
 | Portugal Resident | 7 | 7 | 0 | 0% | 0 | 0 | 0 |  |
 | TEK Notícias (SAPO) | 5 | 4 | 0 | 0% | 0 | 1 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
 | Euronews | 3 | 2 | 0 | 0% | 0 | 1 | 0 |  |
@@ -257,9 +269,9 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 Among outlets with at least four items:
 
-- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (60%), Público (23%), Diário de Notícias (8%), Observador (2%), CNN Portugal (2%).
-- **Highest share of items with a reporter's by-line:** Portugal Resident (100%), Diário de Notícias (88%), TEK Notícias (SAPO) (80%), Público (73%), Observador (48%).
-- **The wire underneath:** 140 of 467 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (60%), Público (21%), Diário de Notícias (7%), Observador (2%), CNN Portugal (1%).
+- **Highest share of items with a reporter's by-line:** Portugal Resident (100%), Diário de Notícias (89%), TEK Notícias (SAPO) (80%), Público (75%), Observador (49%).
+- **The wire underneath:** 140 of 485 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -273,8 +285,8 @@ Among outlets with at least four items:
 | Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
 | Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; first on "IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places"; a running live blog; own reporting: most items carry a reporter's by-line |
 | Correio da Manhã | daily | video |
-| ECO | business daily (online) | first on "Web Summit calls off Day 2" |
 | Jornal Económico | business weekly, online daily | nothing stands out in this sample |
+| ECO | business daily (online) | first on "Web Summit calls off Day 2" |
 | Portugal Resident | English-language weekly in Portugal | own reporting: most items carry a reporter's by-line; coverage in English |
 | TEK Notícias (SAPO) | technology | own reporting: most items carry a reporter's by-line; links to the primary sources |
 | Euronews | international broadcaster | coverage in English |
@@ -290,12 +302,12 @@ Reporters whose names are printed on the items in the list, by outlet, with the 
 
 - **Notícias ao Minuto:** Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias, Natacha Nunes Costa
 - **CNN Portugal:** Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva
-- **Observador:** Carla Jorge de Carvalho (4), Paulo Ferreira (4), Bruno Vieira Amaral (3), José Manuel Fernandes (3), Edgar Caetano (2), Filomena Martins (2), Helena Garrido (2), Miguel Santos Carrapatoso (2), Miguel Videira (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Mariana Lima Cunha, Martim Andrade, Miguel Viterbo Dias, Nelson Ferreira, Pedro Benevides, Ricardo Conceição, Teresa Freire
-- **Público:** Inês Duarte de Freitas (2), Adriana Castro, Ana Sá Lopes, André Tavares Lourenço, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Madalena Grilo Teles, Miguel Dantas, Sara de Melo Rocha, Sérgio Aníbal, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira
-- **Diário de Notícias:** Ricardo Simões Ferreira (4), Sofia Fonseca (4), Susete Henriques (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Adelaide Cabral, Alexandra Tavares-Teles, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Rui Frias, Tomás Gonçalves Pereira
+- **Observador:** Carla Jorge de Carvalho (4), Paulo Ferreira (4), Bruno Vieira Amaral (3), Filomena Martins (3), José Manuel Fernandes (3), Edgar Caetano (2), Helena Garrido (2), Miguel Santos Carrapatoso (2), Miguel Videira (2), Miguel Viterbo Dias (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Mariana Lima Cunha, Martim Andrade, Nelson Ferreira, Pedro Benevides, Ricardo Conceição, Teresa Freire
+- **Público:** Andréia Azevedo Soares (2), Inês Duarte de Freitas (2), Adriana Castro, Ana Sá Lopes, André Tavares Lourenço, Andrea Cunha Freitas, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, Joana Gonçalves, José Volta e Pinto, Leonor Alhinho, Madalena Grilo Teles, Miguel Dantas, Nuno Ferreira Santos, Sara de Melo Rocha, Sérgio Aníbal, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira
+- **Diário de Notícias:** Ricardo Simões Ferreira (4), Sofia Fonseca (4), Susete Henriques (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Rui Frias (2), Sónia Santos Pereira (2), Adelaide Cabral, Alexandra Tavares-Teles, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Reinaldo Rodrigues, Tomás Gonçalves Pereira
 - **Correio da Manhã:** Marta Mariano
-- **ECO:** Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira
 - **Jornal Económico:** José Carlos Lourinho
+- **ECO:** Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira
 - **Portugal Resident:** Natasha Donn (4), Michael Bruxo (2), Inês Lopes
 - **TEK Notícias (SAPO):** Gustavo Dias (2), Fátima Caçador, Francisca Andrade
 - **Euronews:** Pascale Davies (2)
