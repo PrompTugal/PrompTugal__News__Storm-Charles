@@ -1,0 +1,409 @@
+{
+  "about": "A story as a small graph: claims, each with its label, who said it, when, and the rows and data fields that support it. The page is generated from this file by tools/stories-build.mjs; nothing here is new reporting. See stories/grammar.md.",
+  "id": "how-day-2-was-called-off",
+  "title": "How Web Summit's Day 2 was called off",
+  "standfirst": "19:09 on Tuesday, and what led to it: a red warning before breakfast, a minister who said the venue was indoors, a mayor who said it could not run, water in a pavilion, a recommendation, and then a page on a path we were not watching.",
+  "state": "developing",
+  "incident": "2026-11-10-storm-charles",
+  "by": "incident.stories@web-summit.dinis",
+  "written_utc": "2026-11-11T02:33Z",
+  "updated": "2026-11-11T02:33Z",
+  "based_on_read_utc": "2026-11-11T02:22:46Z",
+  "warnings_in_force": {
+    "about": "The official warnings a story about the storm states first: resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser.",
+    "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+    "list": "lisbon",
+    "levels": [
+      "red"
+    ]
+  },
+  "sections": [
+    {
+      "id": "before",
+      "title": "Tuesday morning: the warning, and \"um local fechado\"",
+      "claims": [
+        "d1",
+        "d2",
+        "d3"
+      ]
+    },
+    {
+      "id": "afternoon",
+      "title": "Tuesday afternoon: the mayor, the water, the recommendation",
+      "claims": [
+        "d4",
+        "d5",
+        "d6",
+        "d7"
+      ]
+    },
+    {
+      "id": "decision",
+      "title": "19:09",
+      "claims": [
+        "d8",
+        "d9",
+        "d10",
+        "d13"
+      ]
+    },
+    {
+      "id": "after",
+      "title": "What it left open",
+      "claims": [
+        "d11",
+        "d12"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "d1",
+      "text": "At 07:18 on Tuesday IPMA sent the red wind warning for Lisbon, for Wednesday 12:00 to 21:00: the hours of Web Summit's second day.",
+      "label": "fact",
+      "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
+      "at_utc": "2026-11-10T07:18:40Z",
+      "read_utc": "2026-11-11T02:22:46Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T0718"
+        },
+        {
+          "kind": "edge",
+          "id": "ipma-red-wind"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "lisbon[type=Vento&level=red].sent_utc",
+          "expect": "2026-11-10T07:18:40Z"
+        }
+      ]
+    },
+    {
+      "id": "d2",
+      "text": "At 09:30 the Interior Minister, asked at the press conference that announced the alert situation, said \"a Web Summit é um local fechado\": if the organisers decided to keep the event, they could.",
+      "label": "evidence",
+      "said_by": "the Interior Minister, as reported by Observador's live blog",
+      "at_utc": "2026-11-10T09:30Z",
+      "read_utc": "2026-11-11T01:00Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T0930"
+        },
+        {
+          "kind": "edge",
+          "id": "mai-websummit-indoor"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T0917"
+        }
+      ]
+    },
+    {
+      "id": "d3",
+      "text": "At 12:45 the organisers were reported as following the alerts with ANEPC and PSP, with no sign of cancelling Wednesday.",
+      "label": "evidence",
+      "said_by": "Web Summit's organisers, as reported by Jornal de Negócios' live blog",
+      "at_utc": "2026-11-10T12:45Z",
+      "read_utc": "2026-11-10T18:58Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1245"
+        },
+        {
+          "kind": "edge",
+          "id": "websummit-assessing"
+        }
+      ]
+    },
+    {
+      "id": "d4",
+      "text": "At 13:19 Lisbon's mayor said \"Tudo indica que a Web Summit não poderá funcionar amanhã\", and that the decision was the Interior Ministry's and the organisers'.",
+      "label": "evidence",
+      "said_by": "Lisbon's mayor, as reported by Jornal Económico",
+      "at_utc": "2026-11-10T13:19Z",
+      "read_utc": "2026-11-10T18:45Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1319"
+        },
+        {
+          "kind": "edge",
+          "id": "mayor-expects-closure"
+        }
+      ]
+    },
+    {
+      "id": "d5",
+      "text": "Through the afternoon the storm was already at the venue, by the press's account: a thin audience at 15:19; at 17:07, water entering a pavilion between halls 4 and 5 and participants leaving early.",
+      "label": "evidence",
+      "said_by": "Jornal de Negócios, live blog",
+      "at_utc": "2026-11-10T17:07Z",
+      "read_utc": "2026-11-10T18:50Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1519"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1707"
+        }
+      ]
+    },
+    {
+      "id": "d6",
+      "text": "At 17:53 the government's position had changed: it recommended suspending Web Summit on Wednesday (\"Já emitimos a nossa recomendação de que os trabalhos desse evento possam suspender-se\"), and left the decision with the organisers. That is 8 hours 23 minutes after the minister's \"local fechado\".",
+      "label": "evidence",
+      "said_by": "the Government, as reported by Jornal de Negócios' live blog (no government page was found)",
+      "at_utc": "2026-11-10T17:53Z",
+      "read_utc": "2026-11-10T18:58Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1753"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=gov-recommends-suspend].decision",
+          "contains": [
+            "Já emitimos a nossa recomendação de que os trabalhos desse evento possam suspender-se"
+          ]
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T0930"
+        }
+      ]
+    },
+    {
+      "id": "d7",
+      "text": "For more than an hour nothing came from the organisers: no statement at 18:25, none at 18:53, and at 19:05 no decision on their home page, news list, sitemap or official Bluesky.",
+      "label": "fact",
+      "said_by": "this site's desks, reading Web Summit's channels (the 18:25 and 18:53 reads are of press pages: evidence)",
+      "at_utc": "2026-11-10T19:05Z",
+      "read_utc": "2026-11-10T19:05Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1825"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1853"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1905"
+        }
+      ]
+    },
+    {
+      "id": "d8",
+      "text": "At 19:09 Web Summit published \"Important event update\": \"Web Summit will of course respect the Government's direction, and accordingly, Day 2 (Wednesday, November 11th) will not take place.\" Its reasons: tidal flooding, disruption to public transport, high winds on external structures.",
+      "label": "fact",
+      "said_by": "Web Summit, \"Important event update\"",
+      "at_utc": "2026-11-10T19:09Z",
+      "read_utc": "2026-11-10T20:58Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1909"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "edges[id=websummit-wednesday].decision",
+          "contains": [
+            "Web Summit will of course respect the Government's direction, and accordingly, Day 2 (Wednesday, November 11th) will not take place."
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/incident.json",
+          "field": "headline.url",
+          "expect": "https://websummit.com/blog/web-summit/important-event-update-2026/"
+        }
+      ]
+    },
+    {
+      "id": "d9",
+      "text": "The page went up under /blog/web-summit/, which is not in the site's news list or its sitemap. Attendees were told by email at 19:38, as relayed to us; the press had it from 19:41.",
+      "label": "fact",
+      "said_by": "this site's record of where the notice was (the email and the press times are evidence)",
+      "at_utc": "2026-11-10T19:41Z",
+      "read_utc": "2026-11-10T20:58Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1909"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1938"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1941"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "lessons[0]",
+          "contains": [
+            "which is not in sitemap.xml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d10",
+      "text": "We missed it for an hour and three quarters. At 19:52 the lead checked websummit.com's home and news list and found no notice; the page had been up since 19:09 on a path we did not watch, and was read at source at 20:58.",
+      "label": "fact",
+      "said_by": "incident.conductor@web-summit.dinis, in the timeline, and incident.researcher@'s lesson in the decision graph",
+      "at_utc": "2026-11-10T20:58Z",
+      "read_utc": "2026-11-10T20:58Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1952"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "lessons[0]",
+          "contains": [
+            "saw it only at 20:58"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/incident.json",
+          "field": "headline.at",
+          "contains": [
+            "read at source 20:58"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d11",
+      "text": "On Thursday the organisers' own words are an aim: \"Web Summit aims to proceed with Day 3 (Thursday, November 12) as planned, following the passing of Storm Charles\". The press rendered it three ways: \"conforme planeado\" (RTP), \"if the weather allows\" (Diário de Notícias), and the page's own \"aims to proceed\".",
+      "label": "fact",
+      "said_by": "Web Summit, \"Important event update\" (the renderings are evidence: RTP, Diário de Notícias)",
+      "at_utc": "2026-11-10T19:09Z",
+      "read_utc": "2026-11-11T01:36Z",
+      "supports": [
+        {
+          "kind": "edge",
+          "id": "websummit-thursday"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1946"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1949"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/incident.json",
+          "field": "thursday",
+          "contains": [
+            "an aim, not yet a promise"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d12",
+      "text": "The post was modified at 20:06 with its text on Day 2 and Day 3 unchanged, and by 21:53 there was no further statement. Still unannounced then: what happens to Wednesday's talks, the PITCH semi-final, side events and tickets.",
+      "label": "fact",
+      "said_by": "Web Summit's blog listing, as watched; this site's desks",
+      "at_utc": "2026-11-10T21:53Z",
+      "read_utc": "2026-11-11T01:36Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T2132"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T2153"
+        },
+        {
+          "kind": "edge",
+          "id": "websummit-n6"
+        }
+      ]
+    },
+    {
+      "id": "d13",
+      "text": "Set in order: red wind warning 07:18; \"local fechado\" 09:30; the mayor 13:19; water in a pavilion 17:07; the government's recommendation 17:53; the organisers' page 19:09, 76 minutes after the recommendation and 11 hours 50 minutes after the warning.",
+      "label": "evidence",
+      "derived": true,
+      "said_by": "this desk, subtracting the times in the sentences it names",
+      "read_utc": "2026-11-11T02:22:46Z",
+      "derived_from": [
+        "d1",
+        "d2",
+        "d4",
+        "d5",
+        "d6",
+        "d8"
+      ],
+      "supports": []
+    }
+  ],
+  "not_known": [
+    {
+      "text": "What passed between the government, ANEPC, PSP and the organisers, and when: the organisers' page speaks of the government's \"direction\"; the only time we have for the recommendation is the first press report, 17:53.",
+      "watch": "incidents/2026-11-10-storm-charles/data/decisions/graph.json"
+    },
+    {
+      "text": "Why the minister's position at 09:30 and the government's at 17:53 differ: no source in the data room says. The red rain warning (sent 16:30) and the water at the venue (17:07) fall between them; nothing here says either was the reason."
+    },
+    {
+      "text": "What happens to Wednesday's talks, the PITCH semi-final, side events and tickets: unannounced at our last read.",
+      "watch": "incidents/2026-11-10-storm-charles/data/watch/websummit.json"
+    },
+    {
+      "text": "Whether Day 3 runs: the organisers' word is \"aims\". For that, the page itself and IPMA's warnings for Thursday.",
+      "watch": "incidents/2026-11-10-storm-charles/data/weather/changes.json"
+    },
+    {
+      "text": "The email to attendees has no public address: it is in this story only as relayed (evidence), at 19:38."
+    }
+  ],
+  "record": [
+    {
+      "at_utc": "2026-11-11T02:33Z",
+      "what": "First telling, on the timeline (made 02:23 UTC) and the decision graph (updated 02:25 UTC): 13 sentences.",
+      "claims_added": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "d9",
+        "d10",
+        "d11",
+        "d12",
+        "d13"
+      ],
+      "claims_changed": [],
+      "by": "incident.stories@web-summit.dinis"
+    }
+  ]
+}

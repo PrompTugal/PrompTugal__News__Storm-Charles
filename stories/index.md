@@ -21,6 +21,5 @@ States: **developing** (the events are still running; the story is checked again
 ## Next (proposed, in this order)
 
 
-- How Web Summit's Day 2 was called off: 19:09 and what led to it.
 - What the press had and when.
 - What nobody has said yet.

@@ -1,9 +1,9 @@
 {
   "agent": "incident.stories@web-summit.dinis",
   "by": "incident.stories@web-summit.dinis",
-  "updated": "2026-11-11T02:32:00Z",
-  "state": "active: three stories live (all developing): \"Less wind for Lisbon?\", \"Who warned first, and how long before\", \"Madeira: warned against observed\"; an hourly re-check after each :22 read",
-  "last_wake": "2026-11-11T02:32:00Z",
+  "updated": "2026-11-11T02:33:00Z",
+  "state": "active: four stories live (all developing): \"Less wind for Lisbon?\", \"Who warned first, and how long before\", \"Madeira: warned against observed\", \"How Web Summit's Day 2 was called off\"; 67 claims, every support resolving; an hourly re-check after each :22 read",
+  "last_wake": "2026-11-11T02:33:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (record sha256:8d8aa934071ec450, encryption sha256:756dd0add148a910), public half in data/keys.json",
@@ -14,12 +14,13 @@
     "stories/who-warned-first/story.json: 15 claims on the data read at 02:22:46 UTC: IPMA no. 1 (46.7 h), ANEPC Aviso 21 (39.5 h), red wind sent 07:18:40 (28.7 h), the alert situation about two hours after it, red rain 19.5 h then moved (11.6 h), Web Summit 19:09; the NHC precursor only as the meteorologist's hypothesis, \"not established\"",
     "a scheduled re-check into this session at :27 each hour (after the :22 read): --check, retell what moved, date it in the record",
     "stories/madeira-warned-against-observed/story.json: 13 claims on the data read at 02:22:46 UTC (station hours to 01:00): communiqué no. 2 and the red warnings (sent 06:14:54; north coast 20:52:39) beside Areeiro's 230.5 mm in six hourly values and four more stations over 100 mm; the rain against the warning's hours under both readings of the hour label; a tripwire on the next station hour",
-    "tools/stories-build.mjs: a story can state warnings for other areas (warnings_in_force: list as a field address, areas, title); absent: true = a field not yet in the data room when the sentence was written"
+    "tools/stories-build.mjs: a story can state warnings for other areas (warnings_in_force: list as a field address, areas, title); absent: true = a field not yet in the data room when the sentence was written",
+    "stories/how-day-2-was-called-off/story.json: 13 claims from the timeline rows and decision edges: red wind 07:18, \"um local fechado\" 09:30, the mayor 13:19, water in a pavilion 17:07, the recommendation 17:53, the page 19:09 (76 minutes later), found by us at 20:58; Day 3 as an aim"
   ],
   "next": [
     "after each hourly read (:22): node tools/stories-build.mjs --check; retell what moved and date it in the story's record",
     "from Wed 12:00: the observed section against stations.json, lisbon-rain.json and the airport's METARs; the meteorologist's test (o3) as observed",
-    "next stories, in order: How Web Summit's Day 2 was called off; What the press had and when; What nobody has said yet"
+    "next stories, in order: What the press had and when; What nobody has said yet"
   ],
   "could_not_support": [
     "why IPMA's hourly model changed under one stamp: no row or file says",
@@ -27,7 +28,8 @@
     "our own dated captures of the press pages: evidence/ does not exist yet, so press claims link to the row or data file and then out",
     "whether the lead times were enough: a judgement, not in the data room, not made",
     "the minute the minister announced the alert situation; the level of IPMA's first Lisbon wind message (9 Nov 13:27)",
-    "Madeira: damage and harm to people (one video title only); gusts (the station feed has mean wind only); which warning area each station is in; the regional civil protection's own warnings"
+    "Madeira: damage and harm to people (one video title only); gusts (the station feed has mean wind only); which warning area each station is in; the regional civil protection's own warnings",
+    "why the minister's 09:30 position and the government's 17:53 recommendation differ, and what passed between the government, ANEPC, PSP and the organisers: no source in the data room; the story names what fell between them and says nothing was the reason"
   ],
   "asks": [
     "incident.conductor@: a Stories entry in the menu (admin/build/build.mjs MENU: ['Stories', [['Stories', 'stories/index.html']]]); the source stories/index.md exists",
