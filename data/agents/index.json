@@ -10,10 +10,10 @@
     "data/agents/ledger/*.json"
   ],
   "counts": {
-    "agents": 11,
+    "agents": 12,
     "with_status": 11,
     "with_key": 8,
-    "asks_for_dinis": 29
+    "asks_for_dinis": 28
   },
   "ledger": [],
   "agents": [
@@ -136,9 +136,9 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "68132114c76ceaf0117298a717c30bffe0a62599c93a01cd1ccceebb50bdade6",
+      "status_sha256": "18a52ea6bc9c8daab86d81e00d6075e15739af8650be774de2917b3a070b00ac",
       "state": "active: design rounds on the home page",
-      "last_wake": "2026-11-11T00:26:12Z",
+      "last_wake": "2026-11-11T00:30:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
@@ -159,11 +159,12 @@
         "round 15: app/storm.js (shared): the now line in --focus, IPMA's levels in the warning tokens, the weather section links to the front page's drawings; design/round-15.md",
         "round 16: the data page as cards per family (size, last read, next read, links); design/round-16.md",
         "round 17: the 404 page (and its broken relative links at depth), quotes and lists on document pages; design/round-17.md",
-        "round 18: the 00:24 check of the front page against the latest data (nothing to fix); a review of ten pages by other agents; design/round-18.md"
+        "round 18: the 00:24 check of the front page against the latest data (nothing to fix); a review of ten pages by other agents; design/round-18.md",
+        "round 19: no inline scripts (app/design/theme.js, frame.js, front.js); the hero (headline and tiles side by side from 1440); design/round-19.md"
       ],
       "next": [
         "Dinis's page-by-page notes, when they come (through the conductor)",
-        "help the owners with the review's findings if asked; tiles beside the headline at 1440 and wider"
+        "style attributes to classes if a strict style policy is wanted; the 00:47 check of the front page against the latest data"
       ],
       "asks_dinis": [],
       "asks": [
@@ -194,7 +195,7 @@
       "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
       "shared_row": false,
       "status_file": "agents/identity/status.json",
-      "status_sha256": "b634eee070cb42a836e228a094def8fdc5a0657d92f4561c232f861a8c363f08",
+      "status_sha256": "20b5572b2499d4fe914ada395c41290f135d9d63096533764347c4d21a8e44f7",
       "state": "active: the login and the sealed feedback box are live on every page; the lane tools are ready and not run; the lane and the vaults wait for Dinis",
       "last_wake": "2026-11-11T00:21:31Z",
       "jobs": [],
@@ -220,8 +221,7 @@
       "asks_dinis": [
         "Dinis: three decisions, at the end of SECURITY.md: (1) a new key made on this site behind a passkey, or sign in with your pki.sgit.ai key; (2) how far a signed message from the feedback box carries (recommended: feedback on pages and content; anything hard to undo is confirmed in your session); (3) the SG/Send access token: as a secret in the conductor's environment, or typed only in your browser; and may replies sit in this repository as ciphertext sealed to your key until the bridge vault exists. Never paste a token or a key in chat.",
         "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
-        "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret).",
-        "Dinis: one more, small: /account/ is kept outside the site's frame so it can refuse inline and third-party script where your key is made. If you prefer it inside the frame like every other page, say so and the policy is dropped."
+        "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret)."
       ],
       "asks": [],
       "keys": [
@@ -382,9 +382,9 @@
       "job": "**ontologist and cartographer**: one graph of the storm: actors, decisions, warnings, sources, signals, places, outlets, agents; a small ontology (`data/graph/ontology.json`, with ontologist@'s schemas if readable); built from the existing JSON, never by hand twice; a graph page reusing Silvio's engine; and **a database in the browser** (SQL over the datasets, as sgit.ai's `/databases/` does: read how, reuse) with five example queries.",
       "shared_row": false,
       "status_file": "agents/graph/status.json",
-      "status_sha256": "c5db71e2d44f50111d60ff87d7193704a5d1e4c8995c8c007ff80fcecd8b307f",
+      "status_sha256": "6024667226c1e4b8433d2bf47244241aeeb43372896025d6fac445250dad8588",
       "state": "active: graph, tables, query page (eight questions), graph page with the lead-time line; the build rebuilds the graph on every push",
-      "last_wake": "2026-11-11T00:07Z",
+      "last_wake": "2026-11-11T00:29Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
@@ -399,7 +399,8 @@
         "two more questions on /data/query/: which warnings changed and how long before they started; which decisions cite which warning. Question 2 now measures from IPMA's own send time for the red wind (07:18Z)",
         "lead times: data/graph/tables/timeline.json (every warning and decision with a time known to the minute, in order, hours between, hours before the first red warning starts and before its own effect), drawn as one line on /app/graph/#lead-times and as the question 'How far ahead could we have known?' on /data/query/",
         "both hand-written pages carry the site's current nav (five sections), theme switch and the MeteoAlarm line in the footer; each page is now one empty mount element filled by its script, so the build can render it through the frame; the 3D stage's colours are tokens in graph.css",
-        "/data/query/ and /app/graph/ are README.md pages rendered through the build's frame (front matter: title, summary, mount, head); the two hand-written index.html and about.md are gone; URLs unchanged"
+        "/data/query/ and /app/graph/ are README.md pages rendered through the build's frame (front matter: title, summary, mount, head); the two hand-written index.html and about.md are gone; URLs unchanged",
+        "design rule 3 on the graph page (the designer's round 18): a decision is --focus blue; red, orange and yellow only on warnings that carry an IPMA level; every other kind is a grey, told apart by its shape; the stage follows the light and dark themes; no hex colour left in app/graph/. 'Kept by' lines on my markdown, by and updated on my JSON."
       ],
       "next": [
         "research/media/ when it lands: the outlets layer and 'who was first on each fact'",
@@ -535,6 +536,16 @@
     },
     {
       "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "name": "incident.studio@web-summit.dinis",
+      "role": "studio",
+      "owns": "`studio/`, `app/studio/`",
+      "job": "**the Studio**: animated explanations with small characters, played as storyboards. First: what compression is in an assistant (every request carries the whole context; without and with cache; the full door; what is lost), side by side with how this team works (documents, datasets, the library: a file system as the memory). BRIEF.md, 11 November.",
+      "shared_row": false
+    },
+    {
+      "in_jobs": true,
       "has_status": true,
       "has_key": true,
       "name": "incident.weatherwatch@web-summit.dinis",
@@ -580,6 +591,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T00:28:45Z",
-  "content_sha256": "d15290a1031d8163ed966218908a997d39ad8d51e8ad3f629fc91072b3c5c700"
+  "updated": "2026-11-11T00:30:40Z",
+  "content_sha256": "7d350d7b6d7adca6a3b4a5ca21a4d2891e608fa3051ff5322d0f0c43e37b1b33"
 }
