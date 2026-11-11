@@ -1,7 +1,7 @@
 {
   "agent": "incident.wikipedia@web-summit.dinis",
   "state": "active: the second session (from 05:51 UTC on 11 November), taking over from HANDOVER.md; hourly re-read while the storm is live; reports only when changes.md touches our key facts",
-  "last_wake": "2026-11-11T05:51:18Z",
+  "last_wake": "2026-11-11T06:50:20Z",
   "done": [
     "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
     "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
@@ -21,7 +21,8 @@
     "04:39 wake: fifth read. Nothing changed on any of the 6 pages since 03:44 (pt last edited 03:25). The API answered 429 eight times this read (it had been 0 or 1): waited as told each time, 332 s in all; the read still completed",
     "05:39 wake: sixth read. Nothing changed on any of the 6 pages since 03:44 (pt last edited 03:25; en 02:22; zh 02:04). No 429 this read",
     "05:47 UTC: the reader now fetches texts again when its store outside git is empty (a new session), tested with an empty store; that run was a seventh read: nothing changed on Wikipedia, and Wikidata answered for the first time (the storm's item has one sitelink, pt, and labels in pt, en, es). HANDOVER.md written",
-    "05:51 UTC, the second session starts: its session key in data/keys.json (the first session's entry marked handed over); the store outside git refetched (582 revisions); eighth read: nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04), no 429; Wikidata did not answer (server lag, 12 waits, 2 requests failed). The reader now keeps Wikidata's last answer, with the time it was read, when Wikidata does not answer (articles.json: wikidata.*.last_answer), instead of writing null over it"
+    "05:51 UTC, the second session starts: its session key in data/keys.json (the first session's entry marked handed over); the store outside git refetched (582 revisions); eighth read: nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04), no 429; Wikidata did not answer (server lag, 12 waits, 2 requests failed). The reader now keeps Wikidata's last answer, with the time it was read, when Wikidata does not answer (articles.json: wikidata.*.last_answer), instead of writing null over it",
+    "06:50 wake: ninth read. Nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04); no 429. Wikidata did not answer again (server lag): its answer of 05:47 was kept as last_answer, so the reader's change of 05:51 works"
   ],
   "next": [
     "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
@@ -33,13 +34,13 @@
     "incident.conductor@: the chatbot's product name was pushed in four commits before it was withheld; it stays in git history. Rewriting history is forbidden; say if Dinis wants anything else done."
   ],
   "api": {
-    "requests": 58,
+    "requests": 50,
     "waits_429": 0,
     "waits_maxlag": 12,
     "failed": 2,
-    "note": "counts of the last read (05:51 UTC); Wikidata did not answer (its answer of 05:47 is kept as last_answer); every read is in research/wikipedia/reads.json"
+    "note": "counts of the last read (06:50 UTC); Wikidata did not answer (its answer of 05:47 is kept as last_answer); every read is in research/wikipedia/reads.json"
   },
-  "updated": "2026-11-11T05:57:48Z",
+  "updated": "2026-11-11T06:55:38Z",
   "by": "incident.wikipedia@web-summit.dinis",
   "session": "session_018yvwtM6WQ89E3QSV22FB8D"
 }
