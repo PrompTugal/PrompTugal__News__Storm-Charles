@@ -179,3 +179,9 @@ As the lead reads it: a prominent link to https://promptugal.news on every page 
 To the conductor: "I just realized that the branding doesn't match. Can you ask the designer to ASAP fix that? So not only we should link that, this is part of that website ... this should be part of that family, especially because now ... we're going to be adding more websites. Now we're going to do one for the Fringe."
 
 As the lead reads it: storm-charles.promptugal.news takes PrompTugal News's brand (masthead, logo/wordmark, type, colours, footer: read from the live site https://promptugal.news, its assets/site.css and core.css, and Vicky Wang's newsroom's public design files; we read, we never write to them), as one site of a family that will grow (Lisbon Fringe next). IPMA's warning colours stay IPMA's; fact and hypothesis still never look alike; the Not-a-warning-service line stays. incident.designer@ does it first, as a family layer the next sites can reuse.
+
+## Dinis, 11 November, ~10:38 UTC: correction: no outside hand-over; one operator
+
+"Sorry, ignore that. The handover was for another team, for another session. This is for reference. I'm going to be the only one running this site. Ignore this. The other thing is about the fringe. So, which is not relevant to you. So you're going to be focused, and the people that you hand over are going to be [focused]."
+
+As the lead reads it: **withdrawn**: the public "join the hand-over" page and band (~10:36), and in the ~10:30 section the part about other accounts, other team members and their agent teams joining. Dinis is the only one running this site; the Fringe is another team's work. **Stands**: the wind-down plan (transition/PLAN.md, for Dinis), the exit interviews, the closing record, the storm conductor, nobody stopping before the hand-over, the promptugal.news brand and link.
