@@ -1,7 +1,7 @@
 {
-  "about": "Where app/agents/obs.js sends page views and reads. Public on purpose: an append token can only write to its lane, the key can only encrypt, and the read key reads the vault's published counts (stats/views.json), which hold nothing that is not on the site. Switched on 11 November 2026 at Dinis Cruz's word (the vault, the events' key and the public counts: his words of about 09:25 and 09:31 UTC in the observability session). The lanes' enum key and the events' private key are in a second, private vault held by the conductor; neither is in this repository. No place lookup, ever: this site asks no third party about its visitors.",
+  "about": "Where app/agents/obs.js sends page views and reads. Public on purpose: an append token can only write to its lane, the key can only encrypt, and the read key reads the vault's published counts (stats/views.json), which hold nothing that is not on the site. Switched on 11 November 2026 at Dinis Cruz's word (the vault, the events' key and the public counts: his words of about 09:25 and 09:31 UTC in the observability session). The lanes' enum key and the events' private key are in a second, private vault held by the conductor; neither is in this repository. The place: at Dinis Cruz's word of about 09:47 UTC on 11 November (BRIEF.md, last section), app/agents/obs.js asks GeoJS (geo, below) once per tab session for the country and city; GeoJS sees the reader's IP address to answer; only the country code and city name are kept and sealed, never the IP address or anything finer.",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T09:34:03Z",
+  "updated": "2026-11-11T09:52:52Z",
   "enabled": true,
   "endpoint": "https://dev.send.sgraph.ai",
   "vault_id": "zd1cb3kt",
@@ -18,5 +18,20 @@
   "read_key": "sgit_public_read_a32b1af10198ed8615643a3f33ea0f1afca89dbf8718c32685f9e567f65ed799",
   "clone": "sgit clone sgit_public_read_a32b1af10198ed8615643a3f33ea0f1afca89dbf8718c32685f9e567f65ed799:zd1cb3kt",
   "counts": "data/agents/views.json",
-  "geo": "none, by design"
+  "geo": {
+    "enabled": true,
+    "service": "GeoJS",
+    "url": "https://get.geojs.io/v1/ip/geo.json",
+    "terms": "https://www.geojs.io/tos/",
+    "privacy": "https://www.geojs.io/privacy/",
+    "terms_read": "2026-11-11T09:52:52Z",
+    "why_this_one": "its terms allow any lawful, non-excessive use with no key and no account (no secret in the page), over HTTPS, answered to any origin (CORS); its privacy policy says it keeps no access logs, only error logs, and that its traffic passes through Cloudflare. Not chosen: ipapi.co (its terms forbid keeping a location beyond immediate use), DB-IP's free API (its FAQ says a browser needs a paid public key), ipwho.is (personal or internal use only)",
+    "when": "once per tab session, after the page has loaded, from storm-charles.promptugal.news only; never with Do Not Track, Global Privacy Control or Pause",
+    "kept": [
+      "country (ISO 3166-1 alpha-2 code)",
+      "city (name in English)"
+    ],
+    "never_kept": "the IP address, coordinates, region, postcode, time zone from the answer, network (ASN), organisation or provider name",
+    "published": "views by country; a city only with at least 5 views in the period, else counted as other in its country (data/agents/views.json, by_country)"
+  }
 }

@@ -1,16 +1,20 @@
-// Page views and reads for storm-charles.promptugal.news (incident.observability@web-summit.dinis, 10 November 2026).
+// Page views and reads for storm-charles.promptugal.news (incident.observability@web-summit.dinis, 10 November 2026; the
+// city and country added 11 November 2026 at Dinis Cruz's word of ~09:47 UTC, BRIEF.md last section).
 // The model is promptugal.news's assets/obs/obs.js (observability@PrompTugal.dinis, after the team site's obs-dinis.js and
-// Jose's telemetry.js), with one deliberate difference: NO place lookup. That sender asks ipapi.co or ipwho.is for the town,
-// which shows the visitor's IP address to a third party; this one asks nobody. Nothing leaves the page except the sealed
-// event itself, to the lane named in data/agents/obs.json.
+// Jose's telemetry.js).
 // Two events per page load:  view  when the page loads;  read  the first time the tab is hidden or closed (seconds visible,
 // deepest scroll in percent). Each says: the page, the referring site (host only), the time to the minute, the site version,
 // a random id that ends with the tab, the screen size class, the browser's language and time zone, an automation class if a
-// bot declares itself, and a link tag (?via=) if the link carried one. No IP address, no cookie, no user-agent string, no
-// fingerprint, no place. Sealed in the browser to the drain's public key (RSA-OAEP-SHA256 + AES-256-GCM, sgit's hybrid
-// envelope v2) and appended to a write-only lane. Do Not Track, Global Privacy Control and the footer's Pause switch stop
-// it. It does nothing at all until data/agents/obs.json says "enabled": true (it needs a vault and its lanes). Never blocks,
-// never shows an error.
+// bot declares itself, a link tag (?via=) if the link carried one, and the country and city.
+// The place: ONE request per tab session (not per page), from the live host only, after the page has loaded, to GeoJS
+// (GEO below; https://www.geojs.io/tos/). GeoJS sees the reader's IP address to answer, as any site the browser asks does.
+// Of its answer this script keeps two fields, the country code and the city name, for this tab only (sessionStorage), and
+// drops the rest at once: the IP address, coordinates, region, time zone, network and provider are never stored, sealed,
+// logged or sent on. If the lookup fails or is slow, the event goes without a place, and it is not asked again in that tab.
+// No cookie, no user-agent string, no fingerprint. Sealed in the browser to the drain's public key (RSA-OAEP-SHA256 +
+// AES-256-GCM, sgit's hybrid envelope v2) and appended to a write-only lane. Do Not Track, Global Privacy Control and the
+// footer's Pause switch stop everything, the lookup included. It does nothing at all until data/agents/obs.json says
+// "enabled": true, and asks no place unless it also says geo.enabled. Never blocks, never shows an error.
 (() => {
     'use strict'
     try {
@@ -23,6 +27,7 @@
         let cfgP = null
         const cfg = () => cfgP || (cfgP = fetch(root + 'data/agents/obs.json', { cache: 'no-cache' }).then(r => r.json()))
         const LIVE = 'storm-charles.promptugal.news'   // never from a local build, a preview or the gate's build
+        const GEO = 'https://get.geojs.io/v1/ip/geo.json'   // fixed here, never from configuration: no other host is asked
         const on = c => location.host === LIVE && !!(c && c.enabled && c.endpoint && c.vault_id && c.lanes && c.lanes.site && c.lanes.site.length && c.recipient && c.recipient.encrypt)
 
         // the disclosure and the pause switch, in the footer of every page, only while counting is on
@@ -33,7 +38,8 @@
             if (dnt) { s.append(' · Page views: off (Do Not Track or Global Privacy Control is on). ', a); row.appendChild(s); return }
             const b = document.createElement('button'); b.type = 'button'; b.style.cssText = 'font:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;color:inherit'
             const t = document.createTextNode('')
-            const draw = () => { t.textContent = paused() ? ' · Page views: paused on this device. ' : ' · This page counts its views: opening and leaving it each send one event (the page, the site you came from, the minute, a random id that ends with this tab, screen size class, language, time zone), sealed in your browser. No IP address, no cookie, no place lookup. Only totals are published. '; b.textContent = paused() ? 'Resume' : 'Pause' }
+            const geo = !!(c.geo && c.geo.enabled)
+            const draw = () => { t.textContent = paused() ? ' · Page views: paused on this device (nothing is sent or looked up). ' : ' · This page counts its views: opening and leaving it each send one event (the page, the site you came from, the minute, a random id that ends with this tab, screen size class, language, time zone' + (geo ? ', your country and city' : '') + '), sealed in your browser.' + (geo ? ' To find the country and city, your browser asks GeoJS (get.geojs.io) once per tab, so GeoJS sees your IP address; we keep only the country and city, never the IP address.' : ' No IP address, no place lookup.') + ' No cookie. Only totals are published. '; b.textContent = paused() ? 'Resume' : 'Pause' }
             b.onclick = () => { LS.set('off', paused() ? null : '1'); draw() }
             const n = document.createElement('a'); n.href = root + 'agents/index.html#views'; n.textContent = 'the counts'
             s.append(t, b, ' · ', n, ' · ', a); draw(); row.appendChild(s)
@@ -61,12 +67,28 @@
         let ref = ''; try { ref = document.referrer ? new URL(document.referrer).host : '' } catch { }
         const tagOf = () => { try { const q = new URLSearchParams(location.search); const t = q.get('via') || q.get('utm_campaign') || q.get('utm_source') || ''; return /^[A-Za-z0-9._-]{1,40}$/.test(t) ? t.toLowerCase() : '' } catch { return '' } }
         let via = tagOf(); if (via) SS.set('via', via); else via = SS.get('via') || ''
+        // the place: once per tab session, after load, live host only; only the country code and city name are kept
+        const PL = /^[\p{L}\p{M}0-9 .'\u2019()-]{1,60}$/u
+        let place = null; try { place = JSON.parse(SS.get('place') || 'null') } catch { }
+        const lookup = async c => {
+            if (place || SS.get('place') !== null || !(c.geo && c.geo.enabled) || paused()) return
+            SS.set('place', '{}')                                            // asked once per tab, answered or not
+            const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 2500)
+            try {
+                const r = await fetch(GEO, { credentials: 'omit', referrerPolicy: 'no-referrer', cache: 'no-store', mode: 'cors', signal: ctl.signal })
+                if (!r.ok) return
+                const j = await r.json(), cc = String(j.country_code || '').toUpperCase(), city = String(j.city || '').trim().slice(0, 60)
+                place = {}; if (/^[A-Z]{2}$/.test(cc) && cc !== 'XX') { place.country = cc; if (PL.test(city)) place.city = city }
+                SS.set('place', JSON.stringify(place))                          // the rest of the answer is not kept
+            } catch { } finally { clearTimeout(timer) }
+        }
         let ver = ''; fetch(root + 'version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { ver = String(j.version || '').slice(0, 20) }).catch(() => { })
         const common = () => {
             const e = { v: 1, src: 'storm-charles', site: location.host, ver, ts: new Date().toISOString().slice(0, 16) + 'Z', sid, path, ref, lang: nav.language || '',
                 screen: w < 600 ? 'phone' : w < 1000 ? 'tablet' : 'desktop', tz: (Intl.DateTimeFormat().resolvedOptions().timeZone || '') }
             if (agent) e.agent = agent
             if (via) e.via = via
+            if (place && place.country) { e.country = place.country; if (place.city) e.city = place.city }
             return e
         }
         let visibleMs = 0, since = document.visibilityState === 'visible' ? performance.now() : null, maxScroll = 0
@@ -85,7 +107,11 @@
             return false
         }
         const resend = () => { try { for (const k of Object.keys(sessionStorage).filter(k => k.startsWith('sc.obs.pending.'))) { const ev = JSON.parse(sessionStorage.getItem(k)); sessionStorage.removeItem(k); send(ev).catch(() => { }) } } catch { } }
-        const view = () => { resend(); if (done.has('view')) return; done.add('view'); send(Object.assign(common(), { type: 'view' })).catch(() => { }) }
+        const view = async () => {
+            resend(); if (done.has('view')) return; done.add('view')
+            try { const c = await cfg(); if (on(c)) await lookup(c) } catch { }  // waits at most 2.5 s, once per tab
+            send(Object.assign(common(), { type: 'view' })).catch(() => { })
+        }
         const finish = () => {
             if (since !== null) { visibleMs += performance.now() - since; since = null }
             if (done.has('read')) return

@@ -1,6 +1,6 @@
 # The agents page: how it works
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 09:35 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 09:53 UTC
 
 [The agents, live](../../agents/README.md) shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start "Dinis:" are gathered at the top), its last push and its key's fingerprints. Kept by incident.observability@web-summit.dinis.
 
@@ -77,7 +77,11 @@ Every model call goes through `tools/llm.mjs`, which keeps a ledger on the machi
 
 ## Page views
 
-Counted since the morning of 11 November 2026, at Dinis Cruz's word, and published as counts only: [data/agents/views.json](../../data/agents/views.json), drawn on [the agents page](../../agents/index.html#views) and kept in a vault anyone can read (its read key is in [data/agents/obs.json](../../data/agents/obs.json)). The events themselves are sealed in the browser to a key whose private half is held outside this repository; they are opened once an hour, counted, and kept privately. Language and time zone are sent but not counted or published. Anyone can write to the lanes, so a count is what browsers reported, not what was verified. The sender is `obs.js`, after [promptugal.news's](https://promptugal.news/assets/obs/obs.js). Each page load sends two sealed events (a view, and a read with seconds visible and scroll depth): the page, the referring site's host, the minute, the site version, a random id that ends with the tab, screen class, language and time zone. No IP address, no cookie, no user-agent string, and, unlike the sender it is modelled on, no place lookup: that would show your IP address to a third party. Do Not Track, Global Privacy Control and a Pause switch in the footer stop it. Only totals are published.
+Counted since the morning of 11 November 2026, at Dinis Cruz's word, and published as counts only: [data/agents/views.json](../../data/agents/views.json), drawn on [the agents page](../../agents/index.html#views) and kept in a vault anyone can read (its read key is in [data/agents/obs.json](../../data/agents/obs.json)). The events themselves are sealed in the browser to a key whose private half is held outside this repository; they are opened once an hour, counted, and kept privately. Language and time zone are sent but not counted or published. Anyone can write to the lanes, so a count is what browsers reported, not what was verified. The sender is `obs.js`, after [promptugal.news's](https://promptugal.news/assets/obs/obs.js). Each page load sends two sealed events (a view, and a read with seconds visible and scroll depth): the page, the referring site's host, the minute, the site version, a random id that ends with the tab, screen class, language, time zone, and your country and city. No cookie, no user-agent string.
+
+**Country and city** (from the release after 11 November 2026, 09:53 UTC, at Dinis Cruz's word of about 09:47: "we need to understand the city and the country that they come from"). Once per browser tab, not per page, and only on storm-charles.promptugal.news after the page has loaded, your browser asks [GeoJS](https://www.geojs.io/) (get.geojs.io; [its terms](https://www.geojs.io/tos/), [its privacy policy](https://www.geojs.io/privacy/)) where it is. **GeoJS, a third party, sees your IP address to answer**, as any site your browser asks does; its policy says it keeps no access logs and that its traffic passes through Cloudflare. Of the answer we keep only the country code and the city name, for that tab and in the sealed event; the IP address is never stored, sealed, logged or published by us, and nothing finer is kept (no coordinates, region, postcode, network or provider). We publish views by country, and a city only when it has at least 5 views in the period; fewer count as "other" in its country. If the lookup fails or is slow, the view is counted without a place.
+
+**To stop it:** Do Not Track or Global Privacy Control in your browser, or the **Pause** button in any page's footer (kept on this device): then nothing is sent and nothing is looked up. Only totals are published.
 
 ## What the words mean
 
@@ -89,7 +93,7 @@ Counted since the morning of 11 November 2026, at Dinis Cruz's word, and publish
 ## What it does not do
 
 - It shows session ids in one place only, the provenance of an agent and of a push (Dinis's direction of 11 November: which session did the work); they are stripped from all other text. A session's link opens only for the operator. No private data.
-- It sends nothing about you anywhere, except that your browser asks api.github.com for this repository's public commits (GitHub sees that request, as it would if you opened the repository) and, only if you switch the map to 3D or open the Universe, web-summit.sgit.ai for the 3D library.
+- Apart from the page views above (the sealed events, and the one GeoJS lookup per tab for country and city), it sends nothing about you anywhere, except that your browser asks api.github.com for this repository's public commits (GitHub sees that request, as it would if you opened the repository) and, only if you switch the map to 3D or open the Universe, web-summit.sgit.ai for the 3D library.
 - It does not judge the agents' work: it shows what they wrote and what they pushed.
 
 ## For agents

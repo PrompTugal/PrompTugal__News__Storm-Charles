@@ -46,6 +46,7 @@ function clean(e, received) {
     const p = S(e.path, 200, /^\/[A-Za-z0-9._~\/@%+-]*$/); if (!p) return null
     const o = { type: e.type, received: new Date(received).toISOString(), ts: S(e.ts, 17, /^\d{4}-\d\d-\d\dT\d\d:\d\dZ$/), sid: S(e.sid, 8, /^[0-9a-f]{8}$/), path: p,
         ref: S(e.ref, 80, /^[A-Za-z0-9.:-]*$/), screen: S(e.screen, 8, /^(phone|tablet|desktop)$/), via: S(e.via, 40, /^[a-z0-9._-]*$/), agent: S(e.agent, 12, /^[a-z]*$/), ver: S(e.ver, 20, /^[A-Za-z0-9.]*$/) }
+    const cc = S(e.country, 2, /^[A-Z]{2}$/); if (cc) { o.country = cc; const city = S(e.city, 60, /^[\p{L}\p{M}0-9 .'\u2019()-]{1,60}$/u); if (city) o.city = city }   // never anything finer
     if (e.type === 'read') { o.visible_s = Math.max(0, Math.min(3600, Number(e.visible_s) || 0)); o.scroll = Math.max(0, Math.min(100, Number(e.scroll) || 0)) }
     return o
 }
@@ -73,12 +74,22 @@ for (const lane of new Set(entries.map(e => e.inbox))) {
 const ev = fs.readdirSync(path.join(DRAIN, 'events')).filter(f => f.endsWith('.jsonl')).sort().flatMap(f => fs.readFileSync(path.join(DRAIN, 'events', f), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)))
 const people = ev.filter(e => !e.agent), views = people.filter(e => e.type === 'view'), reads = people.filter(e => e.type === 'read')
 const tally = (list, key, n) => { const m = new Map(); for (const e of list) { const k = key(e); if (k) m.set(k, (m.get(k) || 0) + 1) } return [...m].sort((x, y) => y[1] - x[1] || (x[0] < y[0] ? -1 : 1)).slice(0, n).map(([k, c]) => ({ k, n: c })) }
+const CITY_MIN = 5   // a city is named only with at least this many views in the period; fewer count as "other" in its country
+const byCountry = list => {
+    const m = new Map()
+    for (const e of list) { const k = e.country || '', o = m.get(k) || { country: k || null, views: 0, c: new Map() }; o.views++; if (k) o.c.set(e.city || '', (o.c.get(e.city || '') || 0) + 1); m.set(k, o) }
+    return [...m.values()].sort((x, y) => y.views - x.views || (String(x.country) < String(y.country) ? -1 : 1)).map(o => {
+        const cities = [...o.c].filter(([k, n]) => k && n >= CITY_MIN).sort((x, y) => y[1] - x[1] || (x[0] < y[0] ? -1 : 1)).map(([city, views]) => ({ city, views }))
+        const other = o.views - cities.reduce((a, r) => a + r.views, 0)
+        return o.country ? { country: o.country, views: o.views, cities, other_or_unknown_city: other } : { country: null, note: 'no place: sent before the lookup existed, or it failed or was slow', views: o.views }
+    })
+}
 const median = a => { if (!a.length) return null; a = [...a].sort((x, y) => x - y); return a[Math.floor((a.length - 1) / 2)] }
 const hours = new Map()
 for (const e of views) { const h = e.received.slice(0, 13) + ':00Z', o = hours.get(h) || { hour: h, views: 0, s: new Set() }; o.views++; if (e.sid) o.s.add(e.sid); hours.set(h, o) }
 const now = new Date().toISOString().slice(0, 19) + 'Z'
 const out = {
-    about: 'Page views of storm-charles.promptugal.news, as counts only. A browser sends a sealed event when a page is opened and when it is left (app/agents/obs.js): no IP address, no cookie, no place lookup, nothing when Do Not Track or Global Privacy Control is on or when the reader pressed Pause. The events are opened by tools/agents-views.mjs and only these counts are published, here and in the vault named below. Anyone can write to the lanes, so a count is what was reported, not what was verified. A visit is one browser tab (a random id kept for that tab only). Automated browsers that say so are counted apart.',
+    about: 'Page views of storm-charles.promptugal.news, as counts only. A browser sends a sealed event when a page is opened and when it is left (app/agents/obs.js): the country and city from one lookup per tab at GeoJS (get.geojs.io, which sees the IP address to answer; the IP address is never kept), no cookie, nothing when Do Not Track or Global Privacy Control is on or when the reader pressed Pause. The events are opened by tools/agents-views.mjs and only these counts are published, here and in the vault named below. Anyone can write to the lanes, so a count is what was reported, not what was verified. A visit is one browser tab (a random id kept for that tab only). Automated browsers that say so are counted apart. A city is named only with at least ' + CITY_MIN + ' views in the period; fewer count in its country as other_or_unknown_city.',
     by: 'incident.observability@web-summit.dinis', updated: now,
     source: 'the append lanes of vault zd1cb3kt on https://dev.send.sgraph.ai', read_utc: now,
     vault: { id: 'zd1cb3kt', file: 'stats/views.json' },
@@ -89,6 +100,7 @@ const out = {
     by_referrer: tally(views, e => e.ref && e.ref !== 'storm-charles.promptugal.news' ? e.ref : '', 20).map(r => ({ host: r.k, views: r.n })),
     by_screen: tally(views, e => e.screen, 3).map(r => ({ screen: r.k, views: r.n })),
     by_via: tally(views, e => e.via, 20).map(r => ({ via: r.k, views: r.n })),
+    by_country: byCountry(views),
 }
 const text = JSON.stringify(out, null, 2) + '\n'
 fs.writeFileSync(path.join(ROOT, 'data/agents/views.json'), text)
