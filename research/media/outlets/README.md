@@ -20,6 +20,7 @@
 | [IOL / AWAY / TVI](iol.md) | broadcaster's portals | 1 |  | 0% | not found | 2 of 10 | yes |
 | [Bloomberg](bloomberg.md) | business wire (international) | 1 |  |  | refused (403) | 10 of 10 | feed only |
 | [Madeira Island News](madeira-island-news.md) | English-language news blog (Madeira) | 1 |  | 0% | not found | not read | yes |
+| [Diário de Notícias da Madeira](dnoticias.md) | regional daily (Madeira) | 1 |  | 0% | not found | not read | yes |
 | [Jornal de Notícias](jn.md) | daily | 0 |  |  | refused (403) | 2 of 10 | no |
 | [SIC Notícias](sic-noticias.md) | news channel | 0 |  |  | refused (403) | not read | no |
 | [TSF](tsf.md) | news radio | 0 |  |  | refused (403) | 2 of 10 | no |

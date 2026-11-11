@@ -69,7 +69,7 @@ for (const f of feedsCfg.feeds) {
     } catch (e) { console.error(`feed ${f.id}: ${e.message}`); f.last_status = 'error' }
     await sleep(500)
 }
-const NOT_PRESS = /amn\.pt|websummit\.com|ipma\.pt|prociv|portugal\.gov|mastodon|vivaldi\.net|bsky|github|promptugal|sgit\.ai|sgraph|wikipedia|metropolitano|carris|cp\.pt|fertagus|transtejo|ana\.pt|lisboa\.pt|infraestruturas|aviationweather|open-meteo|api\.|\.json$|youtube|x\.com|twitter|linkedin|instagram|facebook|reddit|threads/i
+const NOT_PRESS = /meteoalarm|amn\.pt|websummit\.com|ipma\.pt|prociv|portugal\.gov|mastodon|vivaldi\.net|bsky|github|promptugal|sgit\.ai|sgraph|wikipedia|metropolitano|carris|cp\.pt|fertagus|transtejo|ana\.pt|lisboa\.pt|infraestruturas|aviationweather|open-meteo|api\.|\.json$|youtube|x\.com|twitter|linkedin|instagram|facebook|reddit|threads/i
 for (const rel of [`${INCIDENT}/timeline.md`, `${INCIDENT}/decisions.md`, `${INCIDENT}/data/decisions/sources.json`, 'research/media/seeds.txt']) {
     const p = path.join(ROOT, rel); if (!fs.existsSync(p)) continue
     for (const u of fs.readFileSync(p, 'utf8').match(/https?:\/\/[^\s)"'<>\]\\]+/g) || []) {

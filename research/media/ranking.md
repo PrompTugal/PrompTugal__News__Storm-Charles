@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:37 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 223 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:37 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 222 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -173,12 +173,13 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 | IOL / AWAY / TVI | 1 | 0 | 0 | 0% | 1 | 0 | 0 |  |
 | Bloomberg | 1 | 0 | 0 | n/a | 0 | 1 | 0 |  |
 | Madeira Island News | 1 | 1 | 0 | 0% | 0 | 0 | 0 |  |
+| Diário de Notícias da Madeira | 1 | 1 | 0 | 0% | 0 | 0 | 0 |  |
 
 Among outlets with at least four items:
 
 - **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (33%), Diário de Notícias (6%), Observador (5%), CNN Portugal (4%).
 - **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (33%).
-- **The wire underneath:** 91 of 223 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **The wire underneath:** 91 of 222 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -200,6 +201,7 @@ Among outlets with at least four items:
 | IOL / AWAY / TVI | broadcaster's portals | nothing stands out in this sample |
 | Bloomberg | business wire (international) | coverage in English; (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | Madeira Island News | English-language news blog (Madeira) | coverage in English |
+| Diário de Notícias da Madeira | regional daily (Madeira) | nothing stands out in this sample |
 
 ## By-lines, as printed
 
@@ -216,6 +218,7 @@ Reporters whose names are printed on the items in the list, by outlet, with the 
 - **Euronews:** Pascale Davies (2)
 - **Jornal Económico:** José Carlos Lourinho
 - **Madeira Island News:** Tobi Hughes
+- **Diário de Notícias da Madeira:** Carolina Rodrigues
 
 ## How to read this
 
