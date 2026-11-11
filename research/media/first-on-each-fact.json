@@ -1,8 +1,8 @@
 {
- "about": "Who was first on each of six keyed facts (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
+ "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T00:03:52Z",
+ "updated": "2026-11-11T00:34:25Z",
  "facts": [
   {
    "id": "1-red-wind",
@@ -81,7 +81,7 @@
    "primary_time": "2026-11-10T12:10:00Z",
    "primary_note": "portugal.gov.pt's page is dated 12:10; the minister announced it in the morning, so the press is ahead of the page",
    "primary_label": "fact",
-   "items_matched": 6,
+   "items_matched": 8,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -131,6 +131,20 @@
      "url": "https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422",
      "article": "A-7cbf85c1",
      "minutes_after_primary": 120
+    },
+    {
+     "rank": 5,
+     "outlet": "rtp",
+     "published": "2026-11-11T00:18:55Z",
+     "via": "article",
+     "byline": [
+      "Rádio e Televisão de Portugal"
+     ],
+     "byline_kind": "desk",
+     "title": "Continente em situação de alerta devido à passagem da depressão Charlie",
+     "url": "https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289",
+     "article": "A-ede83028",
+     "minutes_after_primary": 729
     }
    ]
   },
@@ -400,6 +414,72 @@
    "primary_label": "fact",
    "items_matched": 0,
    "first_by_outlet": []
+  },
+  {
+   "id": "7-track-south",
+   "what": "The storm's track is further south than forecast (strongest winds south of Lisbon)",
+   "primary_time": null,
+   "primary_note": "primary time unknown: IPMA's own channels had not changed when incident.conductor@ read them at 00:29 UTC on 11 November; every report rests on what IPMA told broadcasters",
+   "primary_label": "unknown",
+   "quoted": [
+    {
+     "outlet": "rtp",
+     "item": "Antena 1's 22:00 bulletin, published 22:22",
+     "attribution_as_printed": "\"IPMA\" in the title; the bulletin is audio and was not listened to, so who speaks is not recorded"
+    },
+    {
+     "outlet": "rtp",
+     "item": "live blog entry, 23:08",
+     "attribution_as_printed": "\"O IPMA já admite\": the institute, no person or role named in the entry"
+    },
+    {
+     "outlet": "observador",
+     "item": "Rádio Observador's 23:00 bulletin, published 23:16",
+     "attribution_as_printed": "a meteorologist of IPMA (\"a meteorologista do Instituto Português do Mar e da Atmosfera\"), in statements to Rádio Observador"
+    },
+    {
+     "outlet": "noticias-ao-minuto",
+     "item": "live page entry, about 23:15 (printed as \"41 minutes ago\" at our 23:55:58 read; the page gives no clock time)",
+     "attribution_as_printed": "\"the latest information from IPMA, released by RTP Notícias\": relayed from RTP, no person or role named"
+    }
+   ],
+   "notes": [
+    "VOST Portugal (a volunteers' association, not an authority) posted at 23:00 that the ECMWF model's 22:30 run showed the track shifting south: a model, not IPMA (in coverage.json, social.accounts).",
+    "On the wind: RTP's 23:08 entry says that if very strong winds form they would be felt south of Lisbon and not in the Lisbon region. No title we read says the wind is weaker than forecast; IPMA's red warnings for Lisbon were unchanged.",
+    "Público's live headline, read by incident.conductor@ at 00:29, is not in our list: Público's live page was not among the URLs we could read with entry times.",
+    "An earlier Lusa piece (CNN Portugal, 20:07) on the several possible entry points of the storm is about the uncertainty, not the shift, and is outside this table (items from 21:00)."
+   ],
+   "items_matched": 3,
+   "first_by_outlet": [
+    {
+     "rank": 1,
+     "outlet": "rtp",
+     "published": "2026-11-10T22:22:02Z",
+     "via": "article",
+     "byline": [
+      "Rádio e Televisão de Portugal"
+     ],
+     "byline_kind": "desk",
+     "title": "22h IPMA depressão mudou a trajetória mais para sul",
+     "url": "https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275",
+     "article": "A-e0a37dc7",
+     "minutes_after_primary": null
+    },
+    {
+     "rank": 2,
+     "outlet": "observador",
+     "published": "2026-11-10T23:16:24Z",
+     "via": "article",
+     "byline": [
+      "Rádio Observador"
+     ],
+     "byline_kind": "desk",
+     "title": "23h. IPMA admite que Depressão Charles deverá entrar em Portugal Continental mais a sul do que inicialmente previsto",
+     "url": "https://observador.pt/programas/noticiario/as-noticias-das-23h-2206/",
+     "article": "A-f563acfe",
+     "minutes_after_primary": null
+    }
+   ]
   }
  ]
 }

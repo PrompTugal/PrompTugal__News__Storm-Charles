@@ -1,6 +1,6 @@
 # Media watch: who is covering Storm Charles
 
-> Kept by incident.media@web-summit.dinis for the incident team (WS-214), at Dinis Cruz's word of 10 November 2026, ~23:40 UTC: "a mapping for the social media, the media watch ... who are all the journalists, who is everybody covering". First read: 10 November, 23:45 UTC. **Everything here is evidence** (reported by others) or, where it ranks or compares, **analysis**; none of it is a fact about the storm. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:45 UTC. For the incident team (WS-214), at Dinis Cruz's word of 10 November 2026, ~23:40 UTC: "a mapping for the social media, the media watch ... who are all the journalists, who is everybody covering". First read: 10 November, 23:45 UTC. **Everything here is evidence** (reported by others) or, where it ranks or compares, **analysis**; none of it is a fact about the storm. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## What is here
 
@@ -8,9 +8,9 @@
 |---|---|
 | [coverage.json](coverage.json) | Every article, live blog and video page we could read: outlet, URL, title, the publication time the page itself gives (UTC), the by-line as printed, when we read it, the sha256 of our capture. Then `official` (the official channels) and `social` (organisations' accounts; public conversation, counted) |
 | [outlets.json](outlets.json) | Each outlet: counts, by-lines as printed, what it does best (derived from the counts) |
-| [ranking.md](ranking.md) | Who was first on each of six keyed facts; who is most sourced; the wire underneath |
-| [facts.json](facts.json), [first-on-each-fact.json](first-on-each-fact.json) | The six facts (primary time, where it comes from, the pattern that matches an item) and the table as data |
-| [live-entries.json](live-entries.json) | The timed entries inside three live blogs (Jornal de Negócios, Diário de Notícias, RTP), for the six facts only |
+| [ranking.md](ranking.md) | Who was first on each keyed fact (seven so far); who is most sourced; the wire underneath |
+| [facts.json](facts.json), [first-on-each-fact.json](first-on-each-fact.json) | The keyed facts (primary time, where it comes from, the pattern that matches an item) and the table as data |
+| [live-entries.json](live-entries.json) | The timed entries inside three live blogs (Jornal de Negócios, Diário de Notícias, RTP), for the keyed facts only |
 | [wikipedia.json](wikipedia.json) | The Wikipedia pages on the storm (pt, en) and their edit history: revision times and sizes, no editors' names |
 | [feeds.json](feeds.json), [seeds.txt](seeds.txt) | The public feeds and news sitemaps read; URLs that have scrolled out of a feed |
 | [tools/](tools/) | `harvest.mjs`, `live.mjs`, `social.mjs`, `wikipedia.mjs`, `rank.mjs`: no dependencies, re-runnable; this folder is built by them, not by hand |
@@ -19,6 +19,7 @@
 
 - **The press:** 214 items from 16 outlets, published between 9 November 08:34 and 11 November 00:01 UTC. 88 carry Lusa's by-line, 45 a reporter's, 35 the outlet's desk; on 46 the by-line could not be read. **Wire share: 52%** of the items whose by-line we read are Lusa's (per outlet: `wire_share` in [outlets.json](outlets.json)).
 - **Who was first, with the live blogs' entries timed** ([ranking.md](ranking.md)): the live blogs lead on five of the six facts. Diário de Notícias' live blog had the red wind warning at 08:05 and the schools closing at 09:14; Jornal de Negócios' had the mayor's line at 13:19 and is the only report we found of the government's recommendation before the decision (17:53). On Day 2, ECO and TEK (articles, 19:41), Negócios (19:42), DN (19:45) and RTP (19:47) are within six minutes of each other, 33 to 38 minutes after the organisers' page.
+- **The track moved south (a seventh fact, primary time unknown).** First in what we read: RTP's Antena 1 bulletin of 22:00 (published 22:22), then RTP's live blog at 23:08 ("O IPMA já admite"), Notícias ao Minuto's live page at about 23:15 (relaying RTP) and Rádio Observador's 23:00 bulletin (published 23:16), which quotes a meteorologist of IPMA. IPMA's own channels had not changed at 00:29, so every report rests on what IPMA told broadcasters. No title we read says the wind is weaker than forecast.
 - **Nobody had the 21:23 change.** IPMA moved Lisbon's red rain warning to 09:00 at 21:23 (its CAP message). By 00:15 UTC no article title and no live-blog entry we could read reported it. A title match can miss it inside a longer piece; it is still the one fact of the six where the press we read was behind the source by hours.
 - **Official accounts:** Web Summit's Bluesky account last posted at 17:36 ("wrap on Day 1"): **nothing there about Day 2 by 23:51**. The decision is on its website (and by email) only, of the channels readable without a login. IPMA and ANEPC have no account we could find on Bluesky or Mastodon; their websites are the channels (see `official`).
 - **Social, readable without a login:** on Bluesky, "depressão Charles" and "borrasca Charles" each fill the API's page of 100 posts since 9 November (59 and 70 accounts); "Storm Charles" 67 posts; "Web Summit" with "Charles" 18. On Mastodon the tags are small (4 to 8 posts each). VOST Portugal (a volunteers' association, not an authority) and Spain's AEMET are the organisations posting most about it; RTP Notícias has 7 videos on YouTube.

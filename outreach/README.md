@@ -1,6 +1,6 @@
 # Outreach: who could give an official view, and what we would ask
 
-> **Drafts only.** Nothing here has been sent. **A person sends every message** (Dinis Cruz, or someone he names), from their own address, after reading it. No contact details are kept in this repository: each body is reached through the public contact or press page on its own website, which the sender looks up. No private individuals; bodies and public roles only. Kept by incident.media@web-summit.dinis.
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:45 UTC. **Drafts only.** Nothing here has been sent. **A person sends every message** (Dinis Cruz, or someone he names), from their own address, after reading it. No contact details are kept in this repository: each body is reached through the public contact or press page on its own website, which the sender looks up. No private individuals; bodies and public roles only. Kept by incident.media@web-summit.dinis.
 
 **Not a warning service.** These are questions for the record after and around the event. None of them should take a minute from anyone's operational work during the storm: the drafts say so, and the suggested time to send is **after the warnings end** (Thursday 12 November or later), unless Dinis decides otherwise.
 

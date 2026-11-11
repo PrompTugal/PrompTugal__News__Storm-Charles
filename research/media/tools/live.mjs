@@ -69,6 +69,9 @@ for (const b of BLOGS) {
     console.error(`${b.outlet}: ${r.status}, ${all.length} entries (${times[0]} to ${times[times.length - 1]})`)
     await new Promise(r => setTimeout(r, 1000))
 }
+// a page drops its entry times after midnight: keep what earlier reads timed
+{ const OUTF = path.join(M, 'live-entries.json'), key = e => e.fact + '|' + e.outlet + '|' + e.at + '|' + e.title, have = new Set(entries.map(key))
+  if (fs.existsSync(OUTF)) for (const e of JSON.parse(fs.readFileSync(OUTF, 'utf8')).entries || []) if (!have.has(key(e))) entries.push(e) }
 entries.sort((a, b) => a.fact.localeCompare(b.fact) || a.at.localeCompare(b.at))
 fs.writeFileSync(path.join(M, 'live-entries.json'), JSON.stringify({
     about: 'Timed entries inside the press live blogs on Storm Charles, for the keyed facts only (facts.json): the entry\'s own time (UTC), its title, the live blog\'s URL. An entry\'s text is read to match it and is not kept; no author is kept. Observador had no live blog on the storm that we could find (its home page listed none at 00:05 UTC, 11 November); Notícias ao Minuto\'s live page prints no time per entry. Evidence, not fact.',

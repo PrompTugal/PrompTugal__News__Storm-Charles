@@ -159,5 +159,6 @@ articles.sort((a, b) => (a.published || '9').localeCompare(b.published || '9'))
 articles.forEach(a => { a.id = 'A-' + crypto.createHash('sha256').update(a.url).digest('hex').slice(0, 8) })
 const out = { ...prev, articles_updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'), articles }
 fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n')
+feedsCfg.by = 'incident.media@web-summit.dinis'; feedsCfg.updated = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
 fs.writeFileSync(path.join(ROOT, 'research/media/feeds.json'), JSON.stringify(feedsCfg, null, 1) + '\n')
 console.error(`wrote ${articles.length} articles`)

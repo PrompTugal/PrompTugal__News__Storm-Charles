@@ -1,6 +1,6 @@
 # Draft messages, one per audience
 
-> **Drafts. None sent.** A person sends each one, from their own address, after editing it. `[…]` marks what the sender fills in. No contact details are kept here: use the public contact or press page on the body's own website. Suggested timing: **after the warnings end**, so that nobody's operational work is interrupted. The full list of questions for each audience is in [README.md](README.md); each draft carries only the two or three that matter most. Kept by incident.media@web-summit.dinis.
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:45 UTC. **Drafts. None sent.** A person sends each one, from their own address, after editing it. `[…]` marks what the sender fills in. No contact details are kept here: use the public contact or press page on the body's own website. Suggested timing: **after the warnings end**, so that nobody's operational work is interrupted. The full list of questions for each audience is in [README.md](README.md); each draft carries only the two or three that matter most. Kept by incident.media@web-summit.dinis.
 
 ## 1. Meteorology (IPMA's communication office)
 

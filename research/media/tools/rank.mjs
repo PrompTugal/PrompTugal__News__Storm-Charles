@@ -44,10 +44,10 @@ const events = FACTS.map(e => {
     for (const l of LIVE.entries) if (l.fact === e.id) items.push({ outlet: l.outlet, published: l.at, via: 'live blog entry', byline: [], byline_kind: 'not kept', title: l.title, url: l.url })
     items.sort((x, y) => x.published.localeCompare(y.published))
     const firsts = new Map(); for (const it of items) if (!firsts.has(it.outlet)) firsts.set(it.outlet, it)
-    const rows = [...firsts.values()].map((r, i) => ({ rank: i + 1, ...r, minutes_after_primary: Math.round((Date.parse(r.published) - Date.parse(e.primary_time)) / 60000) }))
-    return { id: e.id, what: e.what, primary_time: e.primary_time, primary_note: e.primary_note, primary_label: e.primary_label, items_matched: items.length, first_by_outlet: rows }
+    const rows = [...firsts.values()].map((r, i) => ({ rank: i + 1, ...r, minutes_after_primary: e.primary_time ? Math.round((Date.parse(r.published) - Date.parse(e.primary_time)) / 60000) : null }))
+    return { id: e.id, what: e.what, primary_time: e.primary_time, primary_note: e.primary_note, primary_label: e.primary_label, quoted: e.quoted, notes: e.notes, items_matched: items.length, first_by_outlet: rows }
 })
-fs.writeFileSync(path.join(M, 'first-on-each-fact.json'), JSON.stringify({ about: 'Who was first on each of six keyed facts (facts.json), among the outlets we could read: each outlet\'s first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source\'s time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.', by: 'incident.media@web-summit.dinis', label: 'analysis', updated: now, facts: events }, null, 1) + '\n')
+fs.writeFileSync(path.join(M, 'first-on-each-fact.json'), JSON.stringify({ about: 'Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet\'s first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source\'s time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.', by: 'incident.media@web-summit.dinis', label: 'analysis', updated: now, facts: events }, null, 1) + '\n')
 
 // ---- per outlet
 const per = {}
@@ -80,6 +80,7 @@ for (const o of outletsFile.outlets) {
 }
 outletsFile.about = 'The outlets seen covering Storm Charles (Lisbon, 10 to 12 November 2026), each with what coverage.json shows of it: counts, the by-lines as printed on its articles (reporters in their public professional role only: a name and a count, nothing else), and what it does best, derived from those counts and not from reputation (analysis). Kept by incident.media@web-summit.dinis; written by research/media/tools/rank.mjs.'
 outletsFile.updated = now
+outletsFile.by = 'incident.media@web-summit.dinis'
 outletsFile.label = 'analysis (hypothesis) over evidence: the counts are of what we could read'
 fs.writeFileSync(path.join(M, 'outlets.json'), JSON.stringify(outletsFile, null, 1) + '\n')
 
@@ -102,13 +103,16 @@ const { articles, social, official, articles_updated } = cov
 fs.writeFileSync(path.join(M, 'coverage.json'), JSON.stringify({ ...header, articles_updated, official, social, articles }, null, 1) + '\n')
 
 // ---- ranking.md
+const NONE = e => `| | **none found**: no article title and no live-blog entry we could read reported it by ${hm(now)} UTC | | | | |\n`
 const link = (t, u) => `[${t.replace(/[\[\]|]/g, ' ').trim()}](${u})`
 const cut = (t, n = 70) => t.length > n ? t.slice(0, n - 1).trim() + '…' : t
-let md = `# Media watch: who is fastest, who is most sourced\n\n> **Label: analysis** (incident.media@web-summit.dinis), computed at ${hm(now)} UTC from [coverage.json](coverage.json): ${A.length} items from ${Object.keys(per).length} outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).\n\n## Who was first on each fact\n\nSix keyed facts ([facts.json](facts.json)). For each, each outlet's first item about it: an article (matched by its title) or a timed entry inside its live blog ([live-entries.json](live-entries.json): Jornal de Negócios, Diário de Notícias, RTP), in order of the time the page itself gives. As data: [first-on-each-fact.json](first-on-each-fact.json).\n`
+let md = `# Media watch: who is fastest, who is most sourced\n\n> Kept by incident.media@web-summit.dinis, ${now.slice(0, 10)}, ${now.slice(11, 16)} UTC. **Label: analysis**, computed from [coverage.json](coverage.json): ${A.length} items from ${Object.keys(per).length} outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).\n\n## Who was first on each fact\n\nThe keyed facts ([facts.json](facts.json)). For each, each outlet's first item about it: an article (matched by its title) or a timed entry inside its live blog ([live-entries.json](live-entries.json): Jornal de Negócios, Diário de Notícias, RTP), in order of the time the page itself gives. As data: [first-on-each-fact.json](first-on-each-fact.json).\n`
 for (const e of events) {
-    md += `\n### ${e.what}\n\nPrimary source time: **${hm(e.primary_time)} UTC** (${e.primary_label}: ${e.primary_note}).\n\n| # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |\n|---|---|---|---|---|---|\n`
-    for (const r of e.first_by_outlet.slice(0, 12)) md += `| ${r.rank} | ${oName(r.outlet)} | ${hm(r.published)} | ${r.minutes_after_primary >= 0 ? '+' + r.minutes_after_primary + ' min' : r.minutes_after_primary + ' min (before the page)'} | ${r.via === 'live blog entry' ? 'live blog entry' : r.byline.join(', ') || 'not read'} | ${link(cut(r.title), r.url)} |\n`
-    if (!e.first_by_outlet.length) md += `| | **none found**: no article title and no live-blog entry we could read reported it by ${hm(now)} UTC | | | | |\n`
+    md += `\n### ${e.what}\n\n${e.primary_time ? `Primary source time: **${hm(e.primary_time)} UTC** (${e.primary_label}: ${e.primary_note}).` : `**Primary source time: unknown** (${e.primary_note}).`}\n\n| # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |\n|---|---|---|---|---|---|\n`
+    for (const r of e.first_by_outlet.slice(0, 12)) md += `| ${r.rank} | ${oName(r.outlet)} | ${hm(r.published)} | ${r.minutes_after_primary === null ? 'unknown' : r.minutes_after_primary >= 0 ? '+' + r.minutes_after_primary + ' min' : r.minutes_after_primary + ' min (before the page)'} | ${r.via === 'live blog entry' ? 'live blog entry' : r.byline.join(', ') || 'not read'} | ${link(cut(r.title), r.url)} |\n`
+    if (!e.first_by_outlet.length) md += NONE(e)
+    if (e.quoted) md += `\nWhom they quote at IPMA, as printed (role and outlet only):\n\n${e.quoted.map(q => `- **${oName(q.outlet)}**, ${q.item}: ${q.attribution_as_printed}`).join('\n')}\n`
+    if (e.notes) md += `\n${e.notes.map(n => '- ' + n).join('\n')}\n`
 }
 md += `\nNotes: the organisers' email to attendees went at 19:38 (no public URL; in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). Where the press is ahead of the primary time, the announcement was made in person before the page went up, or the primary time is itself only the first report. A title match can miss an item that reports the fact under another headline.\n`
 const rows = outletsFile.outlets.filter(o => o.seen && o.seen.items).sort((a, b) => b.seen.items - a.seen.items)

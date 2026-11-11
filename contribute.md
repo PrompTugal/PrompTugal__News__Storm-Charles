@@ -1,5 +1,7 @@
 # Contribute: add or correct a fact
 
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:45 UTC.
+
 This site records Storm Charles (Lisbon, 10 to 12 November 2026) from public sources: what was decided or warned, by whom, when, and where we read it. If you are a journalist, a specialist (meteorology, civil protection, transport, event safety) or a reader, and something here is wrong, late or missing, this page says how to fix it and what we publish back.
 
 **Not a warning service.** For what to do now, follow [IPMA](https://www.ipma.pt/), [ANEPC](https://prociv.gov.pt/) and your local authorities. Nothing here is advice.
