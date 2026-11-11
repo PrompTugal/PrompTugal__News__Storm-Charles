@@ -1,6 +1,6 @@
 # Who we would like to talk to, and why
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:30 UTC. **Nobody here has been contacted.** A person sends every message (Dinis Cruz, or someone he names); the drafts are in [drafts](drafts.md). Bodies and public professional roles only. A reporter appears by the by-line printed on a public article about this storm, with the one question that article raises; nothing else about anyone is kept, and no contact details: each is reached through the body's or the outlet's own public contact page, linked from its page here. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:20 UTC. **Nobody here has been contacted.** A person sends every message (Dinis Cruz, or someone he names); the drafts are in [drafts](drafts.md). Bodies and public professional roles only. A reporter appears by the by-line printed on a public article about this storm, with the one question that article raises; nothing else about anyone is kept, and no contact details: each is reached through the body's or the outlet's own public contact page, linked from its page here. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 The order is by what an answer would change on this site: first the answers that turn evidence into fact.
 

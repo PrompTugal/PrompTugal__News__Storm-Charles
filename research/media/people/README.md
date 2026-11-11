@@ -1,8 +1,8 @@
 # By-lines on Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:32 UTC. The reporters whose names are printed on the articles in [the coverage list](../README.md), with their pieces on this story. **A by-line is a public professional credit, and that is all this page holds:** a name as printed, the outlet, the pieces. No contact details, no profile, no account. A reporter with three or more pieces here has a page listing them. A wrong or missing by-line: [tell us](../../../contribute.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:37 UTC. The reporters whose names are printed on the articles in [the coverage list](../README.md), with their pieces on this story. **A by-line is a public professional credit, and that is all this page holds:** a name as printed, the outlet, the pieces. No contact details, no profile, no account. A reporter with three or more pieces here has a page listing them. A wrong or missing by-line: [tell us](../../../contribute.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
-53 by-lines on 51 items. Agency copy (Lusa) and desk by-lines are counted on [each outlet's page](../outlets/README.md), not here.
+54 by-lines on 52 items. Agency copy (Lusa) and desk by-lines are counted on [each outlet's page](../outlets/README.md), not here.
 
 | By-line as printed | Outlet | Pieces | First among the outlets we read on | Latest piece |
 |---|---|---|---|---|
@@ -22,6 +22,7 @@
 | António Moura dos Santos | [Observador](../outlets/observador.md) | 1 |  | 10 Nov 23:14: [Os apelos de Montenegro aos portugueses: "Não subestimem" a tempestad… ↗](https://observador.pt/2026/11/10/os-apelos-de-montenegro-aos-portugueses-nao-subestimem-a-tempestade-charles-mas-tambem-nao-ha-razao-para-panico/) |
 | Bernardo Matias | [Notícias ao Minuto](../outlets/noticias-ao-minuto.md) | 1 |  | 10 Nov 18:00: [Mau tempo em Portugal. Evite estacionar e circular nestas zonas ↗](https://www.noticiasaominuto.com/auto/3081522/com-mau-tempo-previsto-nao-estacione-o-carro-nem-circule-nestes-locais) |
 | Carlos Pereira Fernandes | [Notícias ao Minuto](../outlets/noticias-ao-minuto.md) | 1 |  | 10 Nov 13:50: [Temporal abala desporto. Benfica adia Champions e Sporting fecha pavi… ↗](https://www.noticiasaominuto.com/desporto/3081673/temporal-abala-desporto-benfica-adia-champions-e-sporting-fecha-pavilhao) |
+| Carolina Rodrigues | [dnoticias.pt](../outlets/dnoticias.pt.md) | 1 |  | 10 Nov 22:00: ['Charles' já soma 14 ocorrências na Madeira ↗](https://www.dnoticias.pt/2026/11/10/512441-charles-ja-soma-14-ocorrencias-na-madeira/) |
 | Cecília Carmo | [Diário de Notícias](../outlets/dn.md) | 1 |  | 10 Nov 16:18: [Mau tempo adia jogos das seleções jovens, Benfica e Torreense ↗](https://www.dn.pt/desporto/mau-tempo-adia-jogos-das-selees-jovens-benfica-e-torreense) |
 | Cristiana Faria Moreira | [Público](../outlets/publico.md) | 1 |  | 10 Nov 14:09: [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | Cynthia Valente | [Diário de Notícias](../outlets/dn.md) | 1 |  | 10 Nov 16:44: [Escolas encerradas devido à depressão Charles: “Não havia outra alter… ↗](https://www.dn.pt/sociedade/escolas-encerradas-devido-depresso-charles-no-havia-outra-alternativa) |

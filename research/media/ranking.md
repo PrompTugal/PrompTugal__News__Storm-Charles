@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:33 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 218 items from 16 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:37 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 223 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -134,7 +134,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 02:33 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 02:37 UTC | | | | |
 
 - Outside the press: VOST Portugal (a volunteers' association, not an authority and not press) relayed the change on Bluesky at 22:20, 57 minutes after IPMA sent it (found by incident.social@: research/social/posts/2026-11-10.json, bsky-vost.pt-3mzyhxvwhry25). The finding for the press stands: no article title or live entry we could read reported it.
 
@@ -159,13 +159,13 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 |---|---|---|---|---|---|---|---|---|
 | Notícias ao Minuto | 81 | 4 | 71 | 88% | 6 | 0 | 1 | IPMA |
 | CNN Portugal | 26 | 3 | 6 | 67% | 0 | 17 | 1 | Diário da República |
-| Observador | 20 | 7 | 6 | 30% | 7 | 0 | 1 | IPMA |
+| Observador | 21 | 7 | 6 | 29% | 8 | 0 | 1 | IPMA |
 | Expresso | 19 | 0 | 0 | n/a | 0 | 19 | 0 |  |
+| RTP | 17 | 0 | 0 | 0% | 17 | 0 | 0 |  |
 | Diário de Notícias | 17 | 16 | 1 | 6% | 0 | 0 | 1 | AMN, Lusoponte |
-| RTP | 16 | 0 | 0 | 0% | 16 | 0 | 0 |  |
 | Público | 15 | 9 | 3 | 21% | 2 | 1 | 5 | ANEPC, Diário da República, IPMA |
+| Correio da Manhã | 7 | 0 | 4 | 57% | 3 | 0 | 0 |  |
 | ECO | 6 | 3 | 0 | 0% | 3 | 0 | 0 |  |
-| Correio da Manhã | 6 | 0 | 4 | 67% | 2 | 0 | 0 |  |
 | TEK Notícias (SAPO) | 4 | 4 | 0 | 0% | 0 | 0 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
 | Jornal de Negócios | 2 | 1 | 0 | 0% | 1 | 0 | 1 | Diário da República, Government, IPMA |
 | Euronews | 2 | 2 | 0 | 0% | 0 | 0 | 0 |  |
@@ -177,8 +177,8 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 Among outlets with at least four items:
 
 - **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (33%), Diário de Notícias (6%), Observador (5%), CNN Portugal (4%).
-- **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (35%).
-- **The wire underneath:** 91 of 218 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (33%).
+- **The wire underneath:** 91 of 223 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -188,11 +188,11 @@ Among outlets with at least four items:
 | CNN Portugal | news channel | video |
 | Observador | online daily | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; first on "IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente"; a running live blog |
 | Expresso | weekly, online daily | (by-lines not read: the pages refuse a bot or print none in their metadata) |
-| Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 | RTP | public broadcaster | nothing stands out in this sample |
+| Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 | Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line; links to the primary sources |
+| Correio da Manhã | daily | nothing stands out in this sample |
 | ECO | business daily (online) | first on "Web Summit calls off Day 2" |
-| Correio da Manhã | daily | the agency wire, fast and complete (most items are Lusa's) |
 | TEK Notícias (SAPO) | technology | own reporting: most items carry a reporter's by-line; links to the primary sources |
 | Jornal de Negócios | business daily | first on "Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday"; first on "The government recommends suspending Web Summit on Wednesday"; a running live blog |
 | Euronews | international broadcaster | coverage in English |

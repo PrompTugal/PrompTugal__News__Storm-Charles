@@ -5,7 +5,7 @@ head: <script src="app/board/board.js" defer></script>
 ---
 # Contribute: add or correct a fact
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 03:20 UTC.
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:37 UTC.
 
 This site records Storm Charles (Lisbon, 10 to 12 November 2026) from public sources. If you are a journalist, a specialist or a reader, here is **what you can do right now**: pick a task, open an issue with its number, and it goes in within minutes if it carries a source, two times and a label ([below](#what-a-good-contribution-carries)).
 
