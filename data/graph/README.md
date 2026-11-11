@@ -53,7 +53,9 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 
 **Not in the graph:** people. No private person is a node; journalists and officials are not modelled here. Forecast values and observations stay in `weather/*.json`: the graph links the dataset, not each number.
 
-**One hand-kept list:** `own_channels` in the ontology (seven hosts that are plainly an actor's own, two that are never outlets). Everything else is derived.
+**Two hand-kept lists**, both in the ontology: `own_channels` (seven hosts that are plainly an actor's own, two that are never outlets) and `public_posts` (below). Everything else is derived.
+
+**No private person is named or linked.** A personal post address on a social platform never enters the graph or a table: the builder keeps the host only, and stops with nothing written if one would reach an output. The exceptions are the researcher's listed official channels and the rows named in `public_posts`, each with its reason and who decided (today one: a public figure in a public role).
 
 ## Build
 

@@ -51,7 +51,11 @@ const M_OUT = opt('research/media/outlets.json'), M_COV = opt('research/media/co
 // channels the researcher lists (decisions/sources.json), it never enters the graph or a table: the builder keeps the
 // host only ("a public post on mastodon.social"), before anything is built. At the end every output is scanned again,
 // and one trace of such an address or of a fediverse handle (@name@host) stops the build with nothing written.
+const problems = []
 const OFFICIAL = new Set(S.sources.map(s => s.url))
+// the named exceptions (ontology.json, public_posts): the addresses on those timeline rows stay, and nowhere else
+const PUBLIC_ROWS = new Map(((ONT.public_posts || {}).rows || []).map(r => [r.row, r]))
+for (const [row, r] of PUBLIC_ROWS) { if (!r.reason || !r.decided_by) problems.push(`ontology public_posts: ${row} needs a reason and who decided`); const s = SIG.items.find(x => x.id === row); if (!s) problems.push(`ontology public_posts: no timeline row ${row}`); else for (const x of s.sources || []) if (https(x.url)) OFFICIAL.add(x.url) }
 const POST = [/\/@[^/?#]+/, /\/users\/[^/?#]+/, /\/u(ser)?\/[^/?#]+/, /\/profile\/[^/?#]+/, /^\/[^/?#]+\/status(es)?\//, /\/posts?\/[^/?#]+/, /\/comments\/[^/?#]+/, /\/p\/[^/?#]+/, /\/notice\/[^/?#]+/]
 const SOCIAL_HOST = /(^|\.)(x\.com|twitter\.com|bsky\.app|threads\.(net|com)|instagram\.com|facebook\.com|linkedin\.com|reddit\.com|tiktok\.com|tumblr\.com)$/
 const personalPost = u => { let x; try { x = new URL(u) } catch { return false } const h = x.hostname.replace(/^www\./, ''); return !OFFICIAL.has(u) && (/\/@[^/?#]+/.test(x.pathname) || (SOCIAL_HOST.test(h) && POST.some(re => re.test(x.pathname)))) }
@@ -66,7 +70,7 @@ for (const x of (SITES ? SITES.sites : [])) x.url = cleanUrl(x.url)
 for (const a of (M_COV ? M_COV.articles : [])) { a.url = cleanUrl(a.url); a.title = cleanText(a.title) }
 for (const f of (M_FIRST ? M_FIRST.facts : [])) for (const x of f.first_by_outlet || []) { x.url = cleanUrl(x.url); x.title = cleanText(x.title) }
 
-const nodes = new Map(), edges = new Map(), problems = []
+const nodes = new Map(), edges = new Map()
 const LABELS = new Set(Object.keys(ONT.labels))
 function node(n) {
     if (!ONT.types[n.type]) problems.push(`node ${n.id}: type ${n.type} is not in the ontology`)
@@ -372,7 +376,7 @@ for (const [name, [about, rows]] of Object.entries(TABLES)) {
 
 // the last check: no personal post address and no fediverse handle in anything about to be written
 for (const [rel, txt] of Object.entries(out)) {
-    for (const u of txt.match(/https:\/\/[^\s"'<>\\)]+/g) || []) if (personalPost(u)) problems.push(`${rel}: a personal post address would be written (${new URL(u).hostname}): withheld by rule, fix the builder`)
+    for (const u of txt.match(/https:\/\/[^\s"'<>\\)]+/g) || []) if (personalPost(u)) problems.push(`${rel}: a personal post address would be written (${new URL(u).hostname}): withheld by rule, or name the row in ontology.json public_posts with who decided`)
     if (HANDLE.test(txt)) problems.push(`${rel}: a fediverse handle would be written`); HANDLE.lastIndex = 0
 }
 if (problems.length) { for (const p of problems.slice(0, 40)) console.error('graph-build: ' + p); console.error(`graph-build: ${problems.length} problem(s); nothing written`); process.exit(1) }
