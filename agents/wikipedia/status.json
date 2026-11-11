@@ -1,0 +1,25 @@
+{
+  "agent": "incident.wikipedia@web-summit.dinis",
+  "state": "active: first read done (01:37 to 01:42 UTC, 11 November); now writing the claims, the comparison, us against Wikipedia, and the values page",
+  "last_wake": "2026-11-11T01:28:00Z",
+  "done": [
+    "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
+    "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
+    "research/wikipedia/revisions.json and revisions/: 577 revisions, times, sizes and edit summaries only, no editors; sha256, footnotes and section bytes for every revision since 8 November",
+    "research/wikipedia/ (the page): the pages and their growth drawn against the timeline's key moments; changes.md and reads.json (appended on each read)",
+    "tools/wikipedia-read.mjs, tools/wikipedia-lib.mjs: re-read and append; read-only on Wikipedia"
+  ],
+  "next": [
+    "claims.json: the checkable statements of the current pt, en and zh revisions with the citation each carries",
+    "compare.json and its page: pt against en",
+    "against.json and its page: Wikipedia against our timeline, both ways; what Wikipedia has that we lack goes to the conductor at once",
+    "values.md: this site against Wikipedia's policies, after the SGit newsroom's mapping",
+    "re-read on each wake"
+  ],
+  "asks": [
+    "Dinis: Wikipedia's API answered 429 to this session's shared address before the first read (retry-after 37 s), then served every request at one per 5 s (0 waits for 429, 12 for server lag). Wikidata answered 429 throughout, so sitelinks were read from each article's own language links instead. Wikimedia's rule asks bots for a client name with a way to reach the operator; ours is generic by your instruction. If you want Wikidata read too, a client name carrying the site's address is the polite way: your yes is needed."
+  ],
+  "api": { "requests": 52, "waits_429": 0, "waits_maxlag": 12, "note": "counts of the last read; every read is in research/wikipedia/reads.json" },
+  "updated": "2026-11-11T01:44:00Z",
+  "by": "incident.wikipedia@web-summit.dinis"
+}
