@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 19:09 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 20:43 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -39,12 +39,12 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 4. Shadow's leads checked 13:14: TAP states no cancellation count (its own weather alert went to the researcher, now a fact there); ANA's split now comes from its newsroom.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 
-## State at 19:09 UTC (fifth session)
+## State at 20:43 UTC (fifth session)
 
 - Bridges: Lusoponte normal on both bridges from 17:30. Row proposed 18:42.
 - TTSL: Trafaria–Porto Brandão–Belém **normalised**, vehicles and passengers (its update 19:01; row proposed 19:07, supersedes 14:40).
-- CP (weather notice, still "Atualização 18h00", valid 10–11/11), read 19:06: Douro Tua–Pocinho and Beira Baixa Santa Margarida–Tramagal interrupted; Campolide–Alcântara Terra suppressed. The four Intercidades over the 25 de Abril are no longer in it (no new time stamp; told the conductor, no row). CP's text is never published (its terms).
-- Fertagus normal (18:10). ANA's latest by-airport update still 11:55 UTC.
+- CP (weather notice, "Atualização 19h40", valid 10–11/11), read 20:42: Douro resumed; Beira Baixa interrupted Entroncamento–Abrantes; Campolide–Alcântara Terra suppressed (Carris 713/751 the alternative). Row proposed 20:43. CP's text is never published (its terms).
+- Fertagus 20:00: no relevant disruption expected to the end of today's service (row proposed 20:43). ANA's latest by-airport update still 11:55 UTC.
 - Thursday 12/11: no notice yet from CP, Fertagus, TTSL or Lusoponte: unknown (not stated). Watch each round.
 - A fresh session reads CP's notice body by rendering https://www.cp.pt/pt/detalhe-aviso/mau-tempo-10-11-novembro in Chromium (the reader keeps only titles and times).
 
