@@ -26,7 +26,7 @@ node admin/build/build.mjs      # repository -> _site/ (never committed)
 node admin/build/validate.mjs   # the gate: must print OK (budget 5 s)
 ```
 
-Every `*.md` becomes a page beside it and is served as its own markdown twin. Every JSON under `incidents/*/data/` is served at its path and at `api/v1/<incident>/<path>`, listed in `api/v1/index.json` with its sha256. After editing an incident's `timeline.md`, run `node tools/timeline.mjs incidents/<id>` (it writes `data/signals.json`).
+Every `*.md` becomes a page beside it and is served as its own markdown twin. Every JSON under `incidents/*/data/` is served at its path and at `api/v1/<incident>/<path>`, listed in `api/v1/index.json` with its sha256. After editing an incident's `timeline.md`, run `node tools/timeline.mjs incidents/<id>` (it writes `data/signals.json`). Row ids are permanent (`s-<MMDD>T<HHMM>`, lettered within a minute in the order written): a new row in a minute that already has one goes **below** the existing rows of that minute, never above, or it would take their id.
 
 ## Content rules
 

@@ -38,7 +38,7 @@ for (const line of md.split('\n')) {
     const sources = [...src.matchAll(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g)].map(([, label, url]) => ({ label, url }))
     const rest = plain(src.replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, '')).replace(/^[,;\s]+/, '')
     if (rest) sources.push({ label: rest, url: null })
-    rows.push({ at, approx: !!m[3], kind, label: /^analysis\b/i.test(raw) ? 'hypothesis' : signal ? 'evidence' : 'fact', key: /\*\*/.test(raw), decision: /^\**DECISION\b/.test(raw), text: plain(raw.replace(/^signal:\s*/i, '').replace(/^signal \(([^)]+)\):\s*/i, '($1) ')), sources })
+    rows.push({ at, approx: !!m[3], kind, label: /^analysis\b/i.test(raw) ? 'hypothesis' : signal ? 'evidence' : 'fact', key: /\*\*/.test(raw), decision: /^\**(DECISION|PRIMARY)\b/.test(raw) || (!signal && /declares an alert situation|IPMA (moved|raises)|IPMA red warning|recommends suspending/.test(raw)) || /recommends suspending Web Summit/.test(raw), text: plain(raw.replace(/^signal:\s*/i, '').replace(/^signal \(([^)]+)\):\s*/i, '($1) ')), sources })
 }
 rows.sort((a, b) => a.at.localeCompare(b.at))
 // a permanent id per row (the librarian's reading of "The wire as a graph"): the row's minute, plus a letter when a minute holds

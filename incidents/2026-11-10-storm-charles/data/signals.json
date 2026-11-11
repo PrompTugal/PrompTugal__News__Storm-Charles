@@ -1,7 +1,7 @@
 {
  "about": "The incident timeline as data, made from timeline.md by tools/timeline.mjs (never edit by hand; edit timeline.md). See README.md.",
  "source": "incidents/2026-11-10-storm-charles/timeline.md",
- "made_at": "2026-11-11T00:05Z",
+ "made_at": "2026-11-11T00:10Z",
  "items": [
   {
    "at": "2026-11-10T08:46Z",
@@ -29,7 +29,7 @@
    "kind": "official",
    "label": "fact",
    "key": false,
-   "decision": false,
+   "decision": true,
    "text": "The government declares an alert situation for the mainland on Wednesday, 00:00 to 23:59: schools and non-essential public services close; outdoor events suspended",
    "sources": [
     {
@@ -85,7 +85,7 @@
    "kind": "official",
    "label": "fact",
    "key": false,
-   "decision": false,
+   "decision": true,
    "text": "IPMA red warning for wind, Lisbon district, Wednesday 12:00 to 21:00 (first read by the newsroom)",
    "sources": [
     {
@@ -177,7 +177,7 @@
    "kind": "official",
    "label": "fact",
    "key": false,
-   "decision": false,
+   "decision": true,
    "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
    "sources": [
     {
@@ -209,7 +209,7 @@
    "kind": "signal",
    "label": "evidence",
    "key": true,
-   "decision": false,
+   "decision": true,
    "text": "the government recommends suspending Web Summit on Wednesday; the decision rests with the organisers",
    "sources": [
     {
@@ -381,7 +381,7 @@
    "kind": "official",
    "label": "fact",
    "key": true,
-   "decision": false,
+   "decision": true,
    "text": "PRIMARY: Web Summit's own page, \"Important event update\": \"Day 2 (Wednesday, November 11th) will not take place\"; \"Web Summit aims to proceed with Day 3 (Thursday, November 12) as planned, following the passing of Storm Charles\"; reasons: tidal flooding, disruption to public transport, high winds on external structures; \"Web Summit will communicate directly with those impacted\". Under /blog/web-summit/, not in the news list; we did not watch that path",
    "sources": [
     {
@@ -726,6 +726,27 @@
   {
    "at": "2026-11-10T23:53Z",
    "approx": false,
+   "kind": "official",
+   "label": "fact",
+   "key": true,
+   "decision": true,
+   "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00; supersedes s-1110T1742); orange rain now 00:00 to 09:00; red wind unchanged (12:00 to 21:00). IPMA sent the change at 21:23 (its CAP message); its open-data feed showed it only from the 23:51 read",
+   "sources": [
+    {
+     "label": "IPMA warnings open data",
+     "url": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
+    },
+    {
+     "label": "read at source by the lead 23:53; MeteoAlarm's CAP feed (data/weather/cap.json, incident.meteorologist@, 169445ff3)",
+     "url": null
+    }
+   ],
+   "id": "s-1110T2353",
+   "supersedes": "s-1110T1742"
+  },
+  {
+   "at": "2026-11-10T23:53Z",
+   "approx": false,
    "kind": "signal",
    "label": "evidence",
    "key": false,
@@ -741,28 +762,7 @@
      "url": null
     }
    ],
-   "id": "s-1110T2353"
-  },
-  {
-   "at": "2026-11-10T23:53Z",
-   "approx": false,
-   "kind": "official",
-   "label": "fact",
-   "key": true,
-   "decision": false,
-   "text": "IPMA moved Lisbon's red rain warning three hours earlier: Wednesday 09:00 to 18:00 (was 12:00 to 18:00; supersedes s-1110T1742); orange rain now 00:00 to 09:00; red wind unchanged (12:00 to 21:00). IPMA sent the change at 21:23 (its CAP message); its open-data feed showed it only from the 23:51 read",
-   "sources": [
-    {
-     "label": "IPMA warnings open data",
-     "url": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json"
-    },
-    {
-     "label": "read at source by the lead 23:53; MeteoAlarm's CAP feed (data/weather/cap.json, incident.meteorologist@, 169445ff3)",
-     "url": null
-    }
-   ],
-   "id": "s-1110T2353b",
-   "supersedes": "s-1110T1742"
+   "id": "s-1110T2353b"
   },
   {
    "at": "2026-11-10T23:54Z",
