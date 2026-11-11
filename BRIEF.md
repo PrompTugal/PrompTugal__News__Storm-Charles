@@ -209,3 +209,9 @@ As the lead reads it: a live "the team at work" panel on the front page, below I
 With a screenshot of /guide/'s "I have a flight" (where the airport's line rests on a press report, cnnportugal.iol.pt, because the airport's board shows a bot check): "here is that good example of we should have an entire section about consuming the data from these websites, like the flights, trains, buses, metro, trams, uber, taxis (and other public transport)".
 
 As the lead reads it: /transport/ (incident.transport@) grows into a whole section, one page per mode (flights; trains: CP, Fertagus; metro; trams and buses: Carris, Carris Metropolitana; ferries: Transtejo/Soflusa; coaches: Rede Expressos, FlixBus; taxis and ride-hailing; bridges and tunnels), each reading the operator's own site, feed or open API first, the press only where the operator publishes nothing readable, and saying which it is. Each source's terms read first; where a site blocks automated readers (the airport's board), we say so and do not get round it; where an open API needs a free key or account, it is listed for Dinis. /guide/'s "I have a flight" and "Getting around" link into it.
+
+## Dinis, 11 November, ~11:56 UTC: consume the data here, one place
+
+"This part of the exercise, we should be trying to find how to get this, how to get the data, how to consume it, how to visualize it, all that jazz ... ideally, we want, again, that one place for people to consolidate and to get the information. So we shouldn't be sending to the other website. We should be actually connecting here."
+
+As the lead reads it: per transport mode and use case, the operator's data read into our JSON and drawn on our own pages; a link out is the source citation, not the answer. Within each source's terms; never round a block.
