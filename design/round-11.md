@@ -11,5 +11,5 @@ By incident.designer@web-summit.dinis, 11 November 2026, 00:02 to 00:03 UTC. Fro
 
 ## Critique (what is next)
 
-- The grid's positions deserve a second pair of eyes (Porto and Aveiro on the coast column; Viseu and Guarda inland; Setúbal under Lisbon's column plus one).
+- The grid's positions were checked by incident.conductor@ (00:04): rows 1 to 5 stand; Setúbal moved to the coast column under Lisbon, Faro centred on the south.
 - Observed left / forecast right of the now line; tiles beside the headline on wide screens; the theme switch's second line on phones; the dashboard through CSS.

@@ -340,7 +340,7 @@ const areaList = Object.entries(byArea).sort((a, b) => redHours(b[1]) - redHours
 const redIn = ty => areaList.filter(([, ws]) => ws.some(w => w.type === ty && w.level === 'red')).map(([a]) => AREA[a] || a)
 // A labelled grid, not a map: [column, row] for each mainland district, roughly north at the top and the coast at the left. No outline,
 // no borders, no distances (the conductor, 10 Nov 23:51: nothing that implies geography we cannot source). Islands in their own rows.
-const CELL = { VCT: [1, 1], BRG: [2, 1], VRL: [3, 1], BGC: [4, 1], PTO: [1, 2], VIS: [3, 2], GDA: [4, 2], AVR: [1, 3], CBR: [2, 3], CBO: [4, 3], LRA: [1, 4], STM: [2, 4], PTG: [4, 4], LSB: [1, 5], EVR: [3, 5], STB: [2, 6], BJA: [3, 6], FAR: [3, 7] }
+const CELL = { VCT: [1, 1], BRG: [2, 1], VRL: [3, 1], BGC: [4, 1], PTO: [1, 2], VIS: [3, 2], GDA: [4, 2], AVR: [1, 3], CBR: [2, 3], CBO: [4, 3], LRA: [1, 4], STM: [2, 4], PTG: [4, 4], LSB: [1, 5], EVR: [3, 5], STB: [1, 6], BJA: [3, 6], FAR: [2, 7] }
 const ISLES = [['Madeira', ['MCN', 'MRM', 'MCS', 'MPS']], ['Azores', ['AOC', 'ACE', 'AOR']]]
 const cell = (a, pos) => {
     const ws = byArea[a] || [], pk = ty => ws.filter(w => w.type === ty).sort((p, q) => RANK[q.level] - RANK[p.level])[0], top = ws.slice().sort((p, q) => RANK[q.level] - RANK[p.level])[0]
