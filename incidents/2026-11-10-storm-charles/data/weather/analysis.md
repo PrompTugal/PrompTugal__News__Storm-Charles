@@ -354,7 +354,9 @@ These go into `gusts-vs-forecast.json` and `changes.json` as observed.
 
 **Hypothesis (low; one hour of data at one site, direction variable 090–150):** the airport wind has backed from SSE to ESE while the pressure falls. Wind backing ahead of a low usually means its centre passes to the south of the observer, which would cut against section 12 (centre just north). The TAF's later swing to 290° fits either side once it has passed. The test stays the same: the pressure minimum and the direction the wind turns through between 13:00 and 16:00.
 
-## 16. 12:25 UTC 11 Nov: the wind keeps backing, pressure falls fast, the heaviest rain hour so far
+## 16. 12:25 UTC 11 Nov: the wind keeps backing, pressure falls fast, the heaviest rain hour since the red warning began
+
+*Corrected 12:35 UTC: the heading said "the heaviest rain hour so far". Not true of the whole storm: Barreiro had 18.9 mm in the hour labelled 01:00 on 10 Nov, and Tapada da Ajuda 16.1 mm in the hour labelled 04:00 on 10 Nov (lisbon-rain.json). Found by incident.stories@web-summit.dinis.*
 
 **Facts** (airport.json and lisbon-rain.json, read 12:23:12 UTC):
 - LPPT METARs: 11:00 11009KT Q0998; 11:30 07013KT +RA Q0995; 12:00 08015KT visibility 2500 m, heavy rain and mist, Q0994, BECMG 14015KT. Pressure fell 4 hPa in the hour to 12:00 (999 at 10:00). Still no gust reported; the highest LPPT gust in the window is 36 kt (67 km/h), on Tuesday.
@@ -375,3 +377,13 @@ These go into `gusts-vs-forecast.json` and `changes.json` as observed.
 **Fact:** at 12:28:46 neither IPMA's open data nor the MeteoAlarm CAP feed shows a Lisbon warning change after 07:16:30 (wind lowered to orange, gusts to 120 km/h). Lisbon still reads red rain 09:00–18:00, orange wind 09:00–21:00 and orange sea 12:00–21:00. "Ajustados" may refer to that 07:16 change; if a new change follows the communiqué, MeteoAlarm has carried IPMA's changes 16–21 min late before, so the 5-minute poll should see it by about 12:40.
 
 **Analysis (medium-high):** the communiqué settles section 13 in writing: two centres, as the press reported. It also agrees with what Lisbon is seeing: no gust all morning and wind at the airport under 30 km/h. IPMA's own number, 70–90 km/h in the South, sits below Lisbon's orange threshold (gusts to 120 km/h) and near the airport's TAF (gusts about 65 km/h at times, a 30% chance of about 100 km/h). Rain stays the main hazard. Section 16's track (centre over or south of Lisbon) is not contradicted; the communiqué does not say where the centres go.
+
+## 18. 12:36 UTC 11 Nov: the warnings "ajustados": IPMA's CAP batch sent 12:18:03
+
+**Facts** (MeteoAlarm CAP feed, cap.json other_messages, read 12:35:31 UTC; weatherwatch saw the batch in the feed at 12:33):
+- IPMA sent a batch at 12:18:03, two minutes after communiqué no. 3 was edited. Of its red and orange messages: **rain lowered from red to orange, 12:19–18:00, for Castelo Branco, Leiria, Portalegre** (replacing messages sent 10 Nov 16:30:01) **and Beja** (replacing 21:23:00). **Faro keeps red rain, 12:19–18:00** (replacing 21:23:00). The batch's other messages (yellow) are not kept by cap.json.
+- **No message for Lisboa.** Lisbon still reads red rain 09:00–18:00, orange wind 09:00–21:00 (gusts to 120 km/h) and orange sea 12:00–21:00. Setúbal and Santarém, red rain on their last reads, had no message in the batch.
+- IPMA's open data (warnings_www.json) did not yet show the change at 12:35:31.
+- The 5-minute poll watches Lisbon and Madeira only, so it did not flag this batch. From this read on, cap.json also keeps orange messages for every district.
+
+**Analysis (medium):** IPMA lowered red rain only inland and in Beja, and kept it where the rain is falling now (Faro, and Lisbon, which had 11–18 mm in the last hour). Lisbon's red rain warning still stands, and so does its orange wind, although IPMA's own figure for the South (70–90 km/h) is now below Lisbon's threshold. A further Lisbon change this afternoon is possible; that is a judgement, not a statement from IPMA.
