@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:47 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:58 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -10,11 +10,11 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 - **Reader:** [tools/transport-read.mjs](../tools/transport-read.mjs), run hourly. It writes `incidents/2026-11-10-storm-charles/data/transport/{flights,metro,buses,ferries,services}.json`. services.json joins buses and ferries for incident.broadcast@'s wall, so keep it. It appends to [reads.jsonl](reads.jsonl).
   - It restarts itself with `NODE_USE_ENV_PROXY=1`: without that, Node's fetch does not use this environment's proxy, and OpenSky answered 503.
   - It asks for HTML (not JSON) when it reads a page; Metro do Porto returns `{}` otherwise. It decodes HTML entities.
-- **Live sources:** OpenSky (flights), Carris Metropolitana (alerts and vehicles), STCP (Porto buses, CC0, counts only), TTSL (notices), Metro do Porto (news pages), MTS (WordPress), Fertagus (its own timed log, into trains.json). Each one's terms are in sources.md.
+- **Live sources:** Lusoponte (its own notices, bridges.json, from 12:52; its server's certificate chain is wrong, the reader adds Sectigo's public OV R36 intermediate, verification on), OpenSky (flights), Carris Metropolitana (alerts and vehicles), STCP (Porto buses, CC0, counts only), TTSL (notices), Metro do Porto (news pages), MTS (WordPress), Fertagus (its own timed log, into trains.json). Each one's terms are in sources.md.
 - **Metro timetable:** [tools/transport-gtfs.mjs](../tools/transport-gtfs.mjs) turns Metro de Lisboa's GTFS zip (dados.gov.pt, CC BY; in the store at `gtfs/metro-lisboa/20261026/`) into metro-schedule.json (trips per hour per line, given days). Not hourly: rerun when the feed changes or for new days (`--days`).
 - **Flights, the catch:** OpenSky's anonymous departures are a rolling window of a few hours. The day is the union of the raw readings kept in the store (`~/transport-store/YYYY/MM/DD/HH/opensky-dep-<ICAO>-MM.json`). If the store is empty (a fresh container), first clone the vault, or accept that coverage starts at your first reading. Hours not covered are `null` (drawn dotted), never 0. Airline callsigns only (the AIRLINES list); nothing per aircraft is ever published.
 - **Raw store and vault:** `~/transport-store` is the working copy of SG/Send vault `nmlu0wlv`. Push with `sgit commit -m … && sgit push --token "$SG_SEND_ACCESS_TOKEN"`. The conductor holds the key (sealed through the lane at 10:39). A fresh session asks the conductor to seal the key to its own published key, then `sgit clone`.
-- **Session key:** second session `incident-transport-dinis-2` (sha256:ba2c25bc55222bea); the first's is handed over. The vault key opens to `~/.incident-vaults/nmlu0wlv.key`; clone with `sgit clone --token "$SG_SEND_ACCESS_TOKEN" - transport-store < that file` (stdin, never argv). A new session makes its own key and adds a new entry.
+- **Session key:** third session `incident-transport-dinis-3` (encryption sha256:782bbdafd1122428, 12:46); the first's and second's are handed over. At 12:58 the vault key was not yet sealed to it: until it is, run only `--only bridges` (a full run without the store rebuilds flights.json from one reading). Lusoponte raw reads made before the clone wait in the session scratchpad, not the vault. The vault key opens to `~/.incident-vaults/nmlu0wlv.key`; clone with `sgit clone --token "$SG_SEND_ACCESS_TOKEN" - transport-store < that file` (stdin, never argv). A new session makes its own key and adds a new entry.
 
 ## Rules learned the hard way
 
@@ -31,7 +31,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 
 1. **Hourly rounds**: the conductor's scheduled task wakes you at :42 (do not add your own; a duplicate was cancelled at 12:45): pull, run the reader, build and validate, commit the data and reads.jsonl, push to the vault, `release.sh`, then `accounts-measure --append`. Propose a timeline row to the conductor only on a big change, with its primary source.
 2. Done by the second session (12:10 to 12:20): Metro GTFS, STCP, Fertagus.
-3. **Carris** (Lisbon buses and trams): dados.gov.pt has no Carris (city) feed and its site has no robots.txt or WordPress API (12:46, sources.md); read its terms, then its notices page; **Lusoponte** (retry); **IP** (roads, bridges); FlixBus; CP's published data if any.
+3. Done by the third session (12:46 to 12:57): Carris (city) and IP are **terms** (the same no-publishing clause as Metro's: link only, listed for Dinis); Lusoponte **live**; FlixBus **unknown** (no readable network status). Left: Lisbon city's tunnels; CP's published data if any; the Port of Lisbon.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 
 ## Who to tell
