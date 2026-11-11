@@ -28,7 +28,7 @@
   "what": "transition/PLAN.md (the plan), transition/interviews/ (exit interviews), the closing record (reporter, journalist, storyteller, librarian), a storm conductor for business as usual",
   "url": "https://storm-charles.promptugal.news/transition/PLAN.html"
  },
- "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 18:07); Lisbon's last land warning, yellow rain, ended at 18:00, only the sea warning left (step 22); the close trigger is IPMA's first read after 21:00 plus the organisers' Day 3 decision",
+ "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 19:06); the bridges back to normal at 18:44, only the sea warnings left, orange to 21:00 (step 23); the close trigger is IPMA's first read after 21:00 plus the organisers' Day 3 decision",
  "duration": {
   "from": "2026-11-11T10:29:37Z",
   "to": null,
@@ -945,7 +945,8 @@
      "version": "v0.1.1416",
      "run": 1416,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T17:18:33Z"
+     "served_by": "2026-11-11T18:03:43Z",
+     "push_to_served_s": 36
     }
    ],
    "n": 22,
@@ -955,13 +956,71 @@
     "incident.brief@web-summit.dinis",
     "incident.weather@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the city back to normal, as fact; no second peak, as hypothesis",
+   "sha": "a4c088296ebc9c0f03983ba8f6d71c8316433440",
+   "in": "Lusoponte's own notice; CP's own notices (incident.transport@, 217c1511, 18:43:29)",
+   "out": "\"timeline 18:44: Lusoponte lifts the bridge limits; CP: Douro Tua–Pocinho interrupted\". Before it, \"after the storm, no second peak\" (96a0d461, 18:24:29, our analysis); IPMA's own read at 18:52 has only the sea warnings left (49c5d2af), sea orange to 21:00. The close trigger is unchanged: IPMA's first read after 21:00 plus the organisers' Day 3 decision. No commit to transition/ in the hour; the plan still waits on Dinis's yes.",
+   "handoff": {
+    "to": "incident.planner@web-summit.dinis",
+    "via": "transition/PLAN.md",
+    "evidence_of_handoff": "not in the record at 19:06: no commit to transition/ since 12:10"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md"
+    },
+    {
+     "type": "commit",
+     "sha": "217c15117c807c38c261b38f30696c77abee8756",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/217c15117c807c38c261b38f30696c77abee8756"
+    },
+    {
+     "type": "commit",
+     "sha": "96a0d4618272fcded390cff4102083963152d8db",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/96a0d4618272fcded390cff4102083963152d8db"
+    },
+    {
+     "type": "commit",
+     "sha": "49c5d2af2b4b21c497a16e171363dd75991fc802",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/49c5d2af2b4b21c497a16e171363dd75991fc802"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "a4c088296ebc9c0f03983ba8f6d71c8316433440",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a4c088296ebc9c0f03983ba8f6d71c8316433440"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1447",
+     "run": 1447,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T18:19:02Z"
+    }
+   ],
+   "n": 23,
+   "at": "2026-11-11T18:44:00Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.transport@web-summit.dinis",
+    "incident.brief@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 22,
+  "steps": 23,
   "steps_with_no_evidence": 0,
   "person_steps": 3,
-  "agent_steps": 19
+  "agent_steps": 20
  },
  "people_acted": [
   "Dinis Cruz"

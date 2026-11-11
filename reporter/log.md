@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 18:07 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 19:06 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -196,6 +196,14 @@
 - Broke: nothing in the record at 18:07; CI: 40 runs, no failure, one deploy retry passed (`b407ed3f`). Copernicus's ERA5 page stalls or answers 502 (`e88025e2`).
 - Corrected, by their authors: the librarian's two times written a minute ahead of the clock (`faf91c8d`).
 - Waited on Dinis: 53 cards; the Web Summit hold for 12 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 22).
+
+**19:06, the 19:06 wake.**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 19:06); no commit to transition/ or welcome/ in the hour.
+- Shipped: after the storm, no second peak, as hypothesis (`96a0d461`); Lusoponte lifts the bridge limits, CP's Douro line interrupted Tua to Pocinho (`a4c08829`, `217c1511`); IPMA's own read at 18:52, only the sea warnings left (`49c5d2af`), sea orange to 21:00 (`7f02b5ef`); VOST counts 1,602 occurrences from 15:00 to 17:00 and Lusa catches up on no red, as evidence (`a731753e`); no new CAP since 15:55 (`7ac2c3bb`).
+- Shipped besides: the shadow reports' round 7, five answers still give Lisbon's red rain three hours after it ended (`f15139e0`); the accounts' round 20, a mix not a rise, the shadow desk past 500,000 tokens a call (`d36077e9`); residents by hour as a frame part (`17a2b314`); one hand-over, transport's fifth session (the memory trace, step 35).
+- Broke: nothing in the record at 19:06; CI: 41 runs, no failure (`5a173011`).
+- Corrected, by their authors: the archivist's count of green districts, eleven not twelve (`47c5edeb`).
+- Waited on Dinis: 53 cards; the Web Summit hold for 13 h 39 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 23).
 
 ## Open questions for the conductor
 
