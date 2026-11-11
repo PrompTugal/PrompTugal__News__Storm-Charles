@@ -45,11 +45,12 @@ for (const f of fs.readdirSync('board/items').filter(f => f.endsWith('.json'))) 
   cards++;
   states[c.state] = (states[c.state] || 0) + 1;
   if (c.updated > boardUpdated) boardUpdated = c.updated;
-  if (c.opened_utc) H(hour(c.opened_utc)).cards_opened++;
+  const first = c.event_utc || c.opened_utc; // event_utc: when the matter was first written down, where incident.board@ knows it (since c83bd7c)
+  if (first) H(hour(first)).cards_opened++;
   const closed = (c.history || []).find(x => /→ (done|answered)|opened as done|opened already answered/.test(x.change || ''));
   if (closed) H(hour(closed.at)).cards_closed++;
 }
-sources.push({ figures: ['cards_opened', 'cards_closed'], file: 'board/items/*.json', by: 'incident.board@web-summit.dinis', as_of: boardUpdated, note: 'opened: the card\'s opened_utc, which is when the ask or job was first written down as the board read it, not when the card was made (the board began at 02:20 UTC on 11 November); closed: the history line that moved it to done or answered' });
+sources.push({ figures: ['cards_opened', 'cards_closed'], file: 'board/items/*.json', by: 'incident.board@web-summit.dinis', as_of: boardUpdated, note: 'opened: the card\'s event_utc where the board has one (the first commit of the ask), else its opened_utc, which is the board\'s reading, not the event; closed: the history line that moved it to done or answered' });
 
 const tree = read('data/ci/tree.json');
 const agentsIdx = read('data/agents/index.json');

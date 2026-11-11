@@ -1,0 +1,742 @@
+{
+ "id": "memory-the-librarian-saves-tokens",
+ "schema": "sc-trace/1",
+ "size": "medium",
+ "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T04:03:00Z",
+ "captured_at": "2026-11-11T04:03:00Z",
+ "summary": [
+  "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
+  "The measurement: a new agent orienting itself added 39,775 tokens to its context from ten whole files, 14,164 from three files of the pack (64% less). On eight questions the whole files scored 8 of 8, the pack 6 right and 2 partly; after the librarian added the two missing rules a second run scored 8 of 8 at 14,734 tokens (accounts/pack-test.json; the accountant marked the answers; sub-agents, not full sessions).",
+  "The accountant then measured the sessions themselves: 98.8% of 1.31 billion tokens was the context read again on every call; the six longest sessions were 61% of it. So the saving was not the pack alone but starting again from it.",
+  "Six agents did: the librarian handed over to a fresh session at 03:02, then designer, observability, graph, weatherwatch and studio by 03:37. Measured on three of them: 74% to 84% less per call. Each fresh session reported what the pack had not told it, and the pack was corrected five times from those reports.",
+  "One hand-over broke something: a fresh session working from a shallow clone rewrote the night's commit and session data; it restored them 3 minutes later and its tools now refuse a shallow clone. No person acted between the sentence and the sixth hand-over."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "accounts/pack-test.json",
+  "accounts/savings.md",
+  "accounts/measure.md",
+  "library/pack/start.md",
+  "library/pack/history.md",
+  "agents/librarian/status.json",
+  "agents/designer/status.json",
+  "agents/graph/HANDOVER.md",
+  "agents/weatherwatch/HANDOVER.md",
+  "agents/studio/HANDOVER.md",
+  "data/keys.json"
+ ],
+ "input": {
+  "kind": "a spoken sentence",
+  "what": "\"The whole idea that the librarian saves tokens and makes it cheaper and implements memory in a much more effective way.\" (BRIEF.md, ~02:50)"
+ },
+ "output": {
+  "kind": "a pack, a measurement, six fresh sessions",
+  "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
+  "url": "https://storm-charles.promptugal.news/accounts/"
+ },
+ "status": "open: the pack is corrected at each fresh start; the conductor's own session, the largest (327 million tokens when measured), has not handed over in the record",
+ "duration": {
+  "from": "2026-11-11T02:49:18Z",
+  "to": "2026-11-11T03:37:07Z",
+  "note": "sentence recorded to pack: 5 min 37 s; to the first measured number: 8 min 44 s; to the first hand-over: 12 min 43 s; to the sixth: 47 min 49 s"
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "\"~02:50\" in BRIEF.md; recorded at 02:49:18",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "a team of 26 agents, most in sessions hours long",
+   "out": "an accountant agent (\"do we have an accountant agent?\"); memory that makes the next agent cheaper; \"the librarian saves tokens\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~02:50 UTC: \"Memory that makes the next agent cheaper\"",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief and jobs",
+   "sha": "ab8008ef978592bda87b062143704713401467a0",
+   "in": "the sentence",
+   "out": "BRIEF.md; in JOBS: the accountant (\"what the project costs ... where the savings are\") and \"the briefing pack that makes a new agent cheap to start (librarian)\"",
+   "handoff": {
+    "to": "incident.librarian@ and a new incident.accountant@",
+    "via": "a message between sessions: not in the repository; a new session",
+    "evidence_of_handoff": "agents/JOBS.md, \"Round two, third part\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/JOBS.md",
+     "section": "Round two, third part",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/JOBS.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "ab8008ef978592bda87b062143704713401467a0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ab8008ef978592bda87b062143704713401467a0"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.322",
+     "run": 322,
+     "own_run": true,
+     "served_by": "2026-11-11T02:49:52Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T02:49:18Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "actor": {
+    "name": "incident.librarian@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first release",
+   "sha": "31712102b685b91fd1dc17b260e8207d6084e879",
+   "in": "the job; its own catalogue of every file",
+   "out": "library/pack/: start.md, state.json, history.md, a pack per role, and what each costs to read; built by a generator on every push",
+   "handoff": {
+    "to": "incident.accountant@web-summit.dinis",
+    "via": "the built files",
+    "evidence_of_handoff": "accounts/pack-test.json: \"pack_built_from: tools/library-pack.mjs at commit 3171210, built in the accountant's clone\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "tools/library-pack.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/library-pack.mjs"
+    },
+    {
+     "type": "file",
+     "path": "library/pack/start.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=library/pack/start.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "31712102b685b91fd1dc17b260e8207d6084e879",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/31712102b685b91fd1dc17b260e8207d6084e879"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.331",
+     "run": 331,
+     "own_run": true,
+     "served_by": "2026-11-11T02:55:33Z",
+     "push_to_served_s": 36
+    }
+   ],
+   "n": 3,
+   "at": "2026-11-11T02:54:55Z",
+   "agent_trailer": "incident.librarian@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "at": "2026-11-11T02:56:08Z",
+   "at_note": "run_at in accounts/pack-test.json",
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "measure",
+   "in": "the pack, 73 s old",
+   "out": "a test in a real session: two sub-agents start the same job, one from ten whole files (39,775 tokens added), one from three files of the pack (14,164); both answer eight questions: 8 of 8 from the whole files, 6 right and 2 partly from the pack (two rules were missing from it)",
+   "handoff": {
+    "to": "incident.librarian@web-summit.dinis",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "the librarian's next commit carries the number"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "accounts/pack-test.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/pack-test.json"
+    }
+   ],
+   "n": 4
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "first release",
+   "sha": "5c6c532f602392e995cc1c3cc349d063185c128e",
+   "in": "WS-148's method from the main site (every agent measures its tokens)",
+   "out": "the accounts, round 1: model spend 0.92 of 20 US dollars, CI, tokens by agent where measured, and the measuring tool every agent runs on its own session",
+   "handoff": {
+    "to": "every agent",
+    "via": "accounts/measure.md; the conductor's message backing it",
+    "evidence_of_handoff": "\"tokens measured\" commits from 26 of 30 agents by 03:33 (accounts/savings.md)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "accounts/measure.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/measure.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "5c6c532f602392e995cc1c3cc349d063185c128e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5c6c532f602392e995cc1c3cc349d063185c128e"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.342",
+     "run": 342,
+     "own_run": true,
+     "served_by": "2026-11-11T02:58:48Z",
+     "push_to_served_s": 45
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T02:58:02Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.librarian@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "round",
+   "sha": "e89408aeba05749646280d87d021bafda178e783",
+   "in": "the measurement",
+   "out": "the pack leads with it: \"64% less to read at the start, 25,611 tokens\", and gains \"the two rules its test found missing\"; the accountant's second run on the corrected pack: 14,734 tokens, 8 of 8",
+   "handoff": {
+    "to": "the next agent to start",
+    "via": "library/pack/start.md",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "library/pack/start.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=library/pack/start.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "e89408aeba05749646280d87d021bafda178e783",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/e89408aeba05749646280d87d021bafda178e783"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.350",
+     "run": 350,
+     "own_run": false,
+     "served_by": "2026-11-11T03:00:57Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T03:00:09Z",
+   "agent_trailer": "incident.librarian@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "finding",
+   "sha": "f409559226e0ecf58dde51a916503269f1676d1b",
+   "in": "the conductor's own token line",
+   "out": "\"the conductor's session measured (327 million tokens in 758 calls, 99.4% re-reading the context; the agents' reports are the largest thing it reads)\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "accounts/savings.md",
+    "evidence_of_handoff": "the hand-overs that follow; the conductor's decision to replace long sessions is not in the repository (its message to the reporter, 03:05, says \"after the accountant's measurement\")"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "accounts/savings.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/savings.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f409559226e0ecf58dde51a916503269f1676d1b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f409559226e0ecf58dde51a916503269f1676d1b"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.350",
+     "run": 350,
+     "own_run": false,
+     "served_by": "2026-11-11T03:00:57Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T03:00:19Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "fix",
+   "sha": "00ca42050429417aaed675631325e88f6ec37b85",
+   "in": "three agents whose token line the path check refused (ffa7bb3, 01ea58a, 92ffb01: \"measured but not pushed\")",
+   "out": "every agent owns its own line in accounts/ledger/<role>.jsonl; the accountant corrects its page (\"the path check failed, it did not warn\", 7a02b61)",
+   "handoff": {
+    "to": "every agent",
+    "via": "agents/policy.json",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/policy.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/policy.json"
+    },
+    {
+     "type": "commit",
+     "sha": "7a02b61",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7a02b61",
+     "note": "the measure page corrected"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "00ca42050429417aaed675631325e88f6ec37b85",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/00ca42050429417aaed675631325e88f6ec37b85"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.353",
+     "run": 353,
+     "own_run": true,
+     "served_by": "2026-11-11T03:01:22Z",
+     "push_to_served_s": 44
+    }
+   ],
+   "n": 8,
+   "at": "2026-11-11T03:00:36Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.accountant@web-summit.dinis",
+    "incident.meteorology@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.librarian@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "hand-over",
+   "sha": "067df08ecada070dc9b46fdbd3adf9d1903db9f8",
+   "in": "its own session, 94 million tokens when measured",
+   "out": "the first hand-over: \"handed over to a fresh session started from the pack\"; the second session's key 58 s later (7ce6e99), the first marked handed over",
+   "handoff": {
+    "to": "incident.librarian@ (a second session)",
+    "via": "a new session started by the conductor from the pack; the hand-over note in its status file",
+    "evidence_of_handoff": "agents/librarian/status.json, \"handover\"; data/keys.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/librarian/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/librarian/status.json"
+    },
+    {
+     "type": "commit",
+     "sha": "7ce6e99",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7ce6e99",
+     "note": "the second session's key"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "067df08ecada070dc9b46fdbd3adf9d1903db9f8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/067df08ecada070dc9b46fdbd3adf9d1903db9f8"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.363",
+     "run": 363,
+     "own_run": false,
+     "served_by": "2026-11-11T03:02:42Z",
+     "push_to_served_s": 28
+    }
+   ],
+   "n": 9,
+   "at": "2026-11-11T03:02:01Z",
+   "agent_trailer": "incident.librarian@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.librarian@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "feedback",
+   "sha": "b54daeacea8e0000f44f9165ee0f57eafe2f6a9b",
+   "in": "what its own fresh start had to find out",
+   "out": "\"the pack fixed from its first real start: where state.json and the role pack are, the clone, the key, the measure step\". Four more such corrections follow, one per fresh start: 8e8cd93 (03:18), 7eda565 (03:39), 0199c8b (03:42), 8a8c8a8 (03:56)",
+   "handoff": {
+    "to": "the next fresh session",
+    "via": "library/pack/start.md",
+    "evidence_of_handoff": "each commit names the session whose start it learned from"
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "sha": "8e8cd93",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8e8cd93"
+    },
+    {
+     "type": "commit",
+     "sha": "7eda565",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7eda565"
+    },
+    {
+     "type": "commit",
+     "sha": "0199c8b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/0199c8b"
+    },
+    {
+     "type": "commit",
+     "sha": "8a8c8a8",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8a8c8a8"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "b54daeacea8e0000f44f9165ee0f57eafe2f6a9b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b54daeacea8e0000f44f9165ee0f57eafe2f6a9b"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.385",
+     "run": 385,
+     "own_run": true,
+     "served_by": "2026-11-11T03:05:19Z",
+     "push_to_served_s": 52
+    }
+   ],
+   "n": 10,
+   "at": "2026-11-11T03:04:25Z",
+   "agent_trailer": "incident.librarian@web-summit.dinis",
+   "for": [
+    "incident.accountant@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.designer@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "hand-over",
+   "sha": "cf079f3c87796365ddf53b2fa16d43be03c7cbcb",
+   "in": "a session of 157 million tokens",
+   "out": "a fresh designer session; 30 s later (51eb8c5) \"what the fresh start needed that the pack did not say\" in its status. Observability follows at 03:06:59 (8494cb1)",
+   "handoff": {
+    "to": "incident.librarian@web-summit.dinis",
+    "via": "start_notes in its status file",
+    "evidence_of_handoff": "the librarian's 2df7f77 and 8e8cd93"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/designer/status.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/designer/status.json"
+    },
+    {
+     "type": "commit",
+     "sha": "8494cb1",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8494cb1",
+     "note": "observability's second session"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "cf079f3c87796365ddf53b2fa16d43be03c7cbcb",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/cf079f3c87796365ddf53b2fa16d43be03c7cbcb"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.391",
+     "run": 391,
+     "own_run": true,
+     "served_by": "2026-11-11T03:06:57Z",
+     "push_to_served_s": 32
+    }
+   ],
+   "n": 11,
+   "at": "2026-11-11T03:06:24Z",
+   "agent_trailer": "incident.designer@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.observability@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "mistake and fix",
+   "sha": "55398276cad312ea2b32f1173efad99ca6136d55",
+   "in": "a fresh session in a shallow clone",
+   "out": "\"correction: the night's commits and sessions restored (my first two pushes rewrote them from a shallow clone); the tools now refuse a shallow clone\"; the pack says so from 03:18 (8e8cd93)",
+   "handoff": {
+    "to": "incident.librarian@web-summit.dinis",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "the librarian's 8e8cd93: \"the pack from a second fresh start (observability's): the shallow clone ...\""
+   },
+   "evidence": [
+    {
+     "type": "commit",
+     "sha": "8e8cd93",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8e8cd93"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "55398276cad312ea2b32f1173efad99ca6136d55",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/55398276cad312ea2b32f1173efad99ca6136d55"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.401",
+     "run": 401,
+     "own_run": true,
+     "served_by": "2026-11-11T03:10:37Z",
+     "push_to_served_s": 45
+    }
+   ],
+   "n": 12,
+   "at": "2026-11-11T03:09:49Z",
+   "agent_trailer": "incident.observability@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "measure",
+   "sha": "f8b319fe176ca9dec5731c9da2af444084f71764",
+   "in": "the ledger lines of the sessions before and after",
+   "out": "round 4: 26 of 30 agents measured, 1.31 billion tokens, 98.8% the context re-read; \"the fresh session measured on three agents (74% to 84% less per call)\"; the six largest sessions 61% of the tokens (e3d4f3e)",
+   "handoff": {
+    "to": "every agent and the conductor",
+    "via": "accounts/savings.md; the agents page ranks sessions \"hand-over due\" (aec7766)",
+    "evidence_of_handoff": "the three hand-overs that follow within five minutes"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "accounts/savings.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/savings.md"
+    },
+    {
+     "type": "commit",
+     "sha": "aec7766",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/aec7766"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f8b319fe176ca9dec5731c9da2af444084f71764",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f8b319fe176ca9dec5731c9da2af444084f71764"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.430",
+     "run": 430,
+     "own_run": true,
+     "served_by": "2026-11-11T03:33:39Z",
+     "push_to_served_s": 38
+    }
+   ],
+   "n": 13,
+   "at": "2026-11-11T03:32:58Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.graph@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "hand-over",
+   "sha": "fe2c133398bbb358d348e61d0d023c95b942a84d",
+   "in": "the ranking",
+   "out": "agents/graph/HANDOVER.md; the fresh session takes the row at 03:36:18 (a8ae84e). weatherwatch (4041e5c 03:35:08, c197f9f 03:36:44) and studio (85779c5 03:35:18, 1fb0c5e 03:37:07) the same: six agents now run in a second session",
+   "handoff": {
+    "to": "three fresh sessions",
+    "via": "a HANDOVER.md each; new sessions started by the conductor",
+    "evidence_of_handoff": "the files; data/keys.json (first sessions marked handed over or ended)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/graph/HANDOVER.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/graph/HANDOVER.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/weatherwatch/HANDOVER.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/weatherwatch/HANDOVER.md"
+    },
+    {
+     "type": "file",
+     "path": "agents/studio/HANDOVER.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/studio/HANDOVER.md"
+    },
+    {
+     "type": "commit",
+     "sha": "1fb0c5e",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1fb0c5e",
+     "note": "the sixth"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "fe2c133398bbb358d348e61d0d023c95b942a84d",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/fe2c133398bbb358d348e61d0d023c95b942a84d"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.432",
+     "run": 432,
+     "own_run": true,
+     "served_by": "2026-11-11T03:35:26Z",
+     "push_to_served_s": 37
+    }
+   ],
+   "n": 14,
+   "at": "2026-11-11T03:34:46Z",
+   "agent_trailer": "incident.graph@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.studio@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "told",
+   "sha": "863d28febe2dce123df179ad8408d25574251441",
+   "in": "the whole loop",
+   "out": "a sixth explanation in the Studio, \"The hand-over\" (the sentence, the pack, the finding, five hand-overs measured), and measured figures put into \"What compression is\": Dinis's 00:30 idea, now with this team's own numbers",
+   "handoff": {
+    "to": "readers",
+    "via": "the Studio",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "studio/README.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=studio/README.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "863d28febe2dce123df179ad8408d25574251441",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/863d28febe2dce123df179ad8408d25574251441"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.460",
+     "run": 460,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T03:38:46Z"
+    }
+   ],
+   "n": 15,
+   "at": "2026-11-11T03:54:54Z",
+   "agent_trailer": "incident.studio@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis",
+    "incident.librarian@web-summit.dinis",
+    "incident.reporter@web-summit.dinis"
+   ]
+  }
+ ],
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
+ },
+ "counts": {
+  "steps": 15,
+  "steps_with_no_evidence": 0,
+  "person_steps": 1,
+  "agent_steps": 14
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.librarian@web-summit.dinis",
+  "incident.accountant@web-summit.dinis",
+  "incident.designer@web-summit.dinis",
+  "incident.observability@web-summit.dinis",
+  "incident.graph@web-summit.dinis",
+  "incident.studio@web-summit.dinis"
+ ]
+}

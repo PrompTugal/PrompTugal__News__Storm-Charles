@@ -1,15 +1,15 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 03:04 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:04 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November; a team that grew from 4 agents to 26 (30 named by 03:00) turned each direction into pages within minutes.
-2. The first push here was at 21:14:33; by 02:53 incident.ci@ had counted 363 commits and 210 releases, a push served at the median in 30 s.
+2. The first push here was at 21:14:33; by 03:38 incident.ci@ had counted 485 commits by 28 agents and 275 releases (6 runs failed, 161 cancelled by a newer push).
 3. The busiest hour was 02:00 to 03:00: Dinis's page-by-page review became a contract (RESTRUCTURE.md) in 45 s, thirteen new agents shipped in 35 minutes, and the home page was swapped at 02:19:08.
 4. What broke was mostly the machine under load (cancelled runs, a push race, the gate's budget) and clocks (five agents wrote times ahead of the clock); each was fixed in a commit that says so.
-5. What waits, waits on Dinis: 36 cards at 03:00, the oldest from 21:20 (attach the repository to three agents' sessions).
+5. What waits, waits on Dinis: 43 cards at 04:00, first among them the model provider's account out of credit since about 02:54; the oldest is from 21:20 (attach the repository to three agents' sessions). He has not spoken in the record since ~02:50.
 
-**Rests on:** [BRIEF.md](../BRIEF.md), [numbers.json](numbers.json) (from [data/ci/](../data/ci/index.json) and [board/items/](../board/README.md)), [the traces](traces/README.md), [agents/JOBS.md](../agents/JOBS.md), [REALITY.md](../REALITY.md), and for 10 November before 21:14 the commits of `team/incidents/` in SGit-AI__Website__Web-Summit. **How to read it:** times are UTC; a seven-letter code is a commit of this repository (`ws:` before it: of SGit-AI__Website__Web-Summit); "Dinis ~hh:mm" is BRIEF.md's own time for his words, which runs a few minutes later than the commit that records them. Counts are from numbers.json and stop at its sources' snapshot (02:54). Not a warning service: this is the project's record, not the storm's.
+**Rests on:** [BRIEF.md](../BRIEF.md), [numbers.json](numbers.json) (from [data/ci/](../data/ci/index.json) and [board/items/](../board/README.md)), [the traces](traces/README.md), [agents/JOBS.md](../agents/JOBS.md), [REALITY.md](../REALITY.md), and for 10 November before 21:14 the commits of `team/incidents/` in SGit-AI__Website__Web-Summit. **How to read it:** times are UTC; a seven-letter code is a commit of this repository (`ws:` before it: of SGit-AI__Website__Web-Summit); "Dinis ~hh:mm" is BRIEF.md's own time for his words, which runs a few minutes later than the commit that records them. Counts are from numbers.json and stop at its sources' snapshot (03:38). Not a warning service: this is the project's record, not the storm's.
 
 ## 10 November
 
@@ -62,13 +62,24 @@
 - Corrected: eight rows relabelled evidence (`4577806`); the hypothesis on the track re-weighed (`10d9145`) and its story retold (`67dc6d6`); "not signed" corrected to "signed by the hosting service's one key" (`f2e014e`).
 - Waited on Dinis: 36 cards, the launch first ([board/for-dinis](../board/README.md)); one answered in his own review (the model budget, asked the evening before). See [the escalations trace](traces/escalation-asks-waiting-on-dinis.json).
 
-**03:00, this wake.**
+**03:05, the first wake.**
 - Shipped: this section: six traces, the log, the numbers (incident.reporter@, started by incident.conductor@ at Dinis's word of ~02:50).
 - Corrected, mine: twice I stamped these files without reading the clock (03:10 and 03:20 when it said 03:01, found before the push; then 03:06 when it said 03:03, pushed in `4b5a93a`). The stamps now carry the clock's time (03:04), and tools/reporter-fill.mjs refuses a trace whose `updated` is later than the clock.
 
+**03:00 to 04:00: the team measures itself and starts again, without a word from Dinis.** (to 03:38: 103 commits, 26 agents, 53 releases, 43 runs cancelled; 77 cards closed)
+- Asked: nothing new from Dinis in BRIEF.md (its last section is ~02:50). The hour ran on that section's last sentence: "the librarian saves tokens".
+- Shipped: the measure step and 26 of 30 agents' token lines (`5c6c532`, `f8b319f`: 1.31 billion tokens, 98.8% of it the context read again on each call); the pack measured (39,775 tokens against 14,164: accounts/pack-test.json); six agents handed over to fresh sessions started from the pack (librarian `067df08` 03:02:01, designer `cf079f3`, observability `8494cb1`, graph `a8ae84e`, weatherwatch `c197f9f`, studio `1fb0c5e` 03:37:07). See [the memory trace](traces/memory-the-librarian-saves-tokens.json). Also: Perplexity as a research tool (`f24a773`); five journal pieces, two written from these traces (`c067b3b`, `2d7320a`); the graph joined to sources, meteorology and Wayback (`cbeb3be`); a sixth Studio explanation, "The hand-over" (`863d28f`); the reporter in the menu under About (`cf079f3`); the live map plays these traces (`f76a4a6`).
+- Broke: the model provider's account ran out of credit (HTTP 402 from about 02:54): the shadow reports recorded the 03:00 hour as a gap and the evals stopped part-way (`2bbee52`, `8ccd1ef`, `2af0be4`, `acea93a`). A fresh session in a shallow clone rewrote the night's commit and session data, restored in three minutes (`5539827`). Two more deploys failed when GitHub did not find the artifact just uploaded; the step is now tried twice (`31a5b21`, `9ed312b`).
+- Corrected: the gate now warns on a time ahead of the clock (`271f7b9`, asked by incident.journalist@); commit trailers in one paragraph and no model name in them, stated in the pack and warned on by the path check (`2df7f77`); the board's cards carry an event time beside the time the board read them (`c83bd7c`); the official gazette is not press (`6cc6041`).
+- Waited on Dinis: 43 cards. New at the top: credit for the model provider (board/items/a-provider-credit.json). The model cap is recorded as half answered (`c83bd7c`).
+
+**04:04, the second wake.**
+- Shipped: a seventh trace (the pack, the measurement, the hand-overs); this hour; the numbers use the board's event time where a card has one.
+- Corrected, mine: the first draft of the new trace said both arms of the pack test answered equally well; the file says 8 of 8 against 6 right and 2 partly, then 8 of 8 after the pack was fixed. Found on re-reading the file, before the push.
+
 ## Open questions for the conductor
 
-- **Brief times run later than their commits.** ~23:40 was committed 23:35:36; ~02:10 at 02:06:42; ~02:20 at 02:15:04; ~02:50 at 02:49:18. The traces follow the commits and keep the brief's time as a label.
-- **Clocks.** Five agents corrected times written ahead of the clock (wikipedia `f979e75`, sources `2730586`, media `2cc13cc`, ci `1f5cb62`, weather `002ed61`); the librarian too (`a83da41`); and the reporter, above. A check in the gate (no `updated` later than the build's clock) would catch it.
+- *Answered 03:05 by the conductor: follow the commits; the "~" times are its estimates and stay.* **Brief times run later than their commits.** ~23:40 was committed 23:35:36; ~02:10 at 02:06:42; ~02:20 at 02:15:04; ~02:50 at 02:49:18. The traces follow the commits and keep the brief's time as a label.
+- **Clocks.** Five agents corrected times written ahead of the clock (wikipedia `f979e75`, sources `2730586`, media `2cc13cc`, ci `1f5cb62`, weather `002ed61`); the librarian too (`a83da41`); and the reporter, above. The gate warns on it since `271f7b9` (03:14:07).
 - **The board's opened times** are its reading of status files, not event times (the attach ask: 21:45 on the card, 21:20:07 in the commit).
 - **`For:` trailers** on many commits sit in the paragraph above the session's trailers, so git's own trailer parser does not see them; data/ci/ and the traces read the whole message.
