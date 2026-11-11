@@ -140,13 +140,13 @@
     return '<p class="wxc-comm">IPMA <a href="' + esc(ROOM.comm) + '"><span lang="pt">' + esc(m ? m[0] : 'comunicado') + '</span></a> <span>· valid to ' + when(c.valid_to_utc, t) + ' UTC</span>' + (ok(c.last_seen_utc) ? ' <span>· last seen in IPMA\'s feed ' + when(c.last_seen_utc, t) + '</span>' : '') + '</p>'
   }
   // one line under the band (designer@'s round 50, note 4; synthetic@'s run 3, point 5): Web Summit's latest decision, with its time,
-  // and the way in for a newcomer. The decision is the newest dated fact or evidence of the organisers in the decision graph; its words are
+  // and the way in for a newcomer (and, the conductor's 11:51 ask, incident.sherpa@'s /guide/ for someone in Lisbon: sourced only, no advice of ours). The decision is the newest dated fact or evidence of the organisers in the decision graph; its words are
   // incident.json's headline when the headline cites the same source (the conductor's wording of that post), else the edge's own, cut short.
   function summitLine(t) {
     var G = D.decisions || {}, h = (D.incident || {}).headline || {}
     var es = (G.edges || []).filter(function (e) { return e.by === 'websummit' && /^(fact|evidence)$/.test(e.label) && e.status === 'happened' && ok(e.at) && T(e.at) <= t })
     es.sort(function (a, b) { return T(b.at) - T(a.at) || T(b.read) - T(a.read) })
-    var e = es[0], go = '<span class="wxc-go"><a class="wxc-new" href="' + esc(base + 'welcome/') + '">New here? What this site is →</a>' + ptnLine() + '</span>'
+    var e = es[0], go = '<span class="wxc-go"><a class="wxc-new" href="' + esc(base + 'welcome/') + '">New here? What this site is →</a><a class="wxc-new" href="' + esc(base + 'guide/') + '">In Lisbon now? Start here →</a>' + ptnLine() + '</span>'
     if (!e) return '<p class="wxc-summit">' + go + '</p>'
     var same = es.filter(function (x) { return x.at === e.at && x.source === e.source }), rd = same.map(function (x) { return x.read }).filter(ok).sort().pop()
     var txt = h.text && h.url === e.source ? h.text : String(e.decision).length > 170 ? String(e.decision).slice(0, 170).replace(/\s+\S*$/, '') + '…' : e.decision
