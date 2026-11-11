@@ -1,7 +1,7 @@
 {
- "about": "Annotated studies of the best public-service weather pages (and BBC Weather, Dinis's reference): numbered callouts placed on the page as this agent drew and saw it (1280 x 1600 px, top of the page), each saying what the part does well and which of our data files would feed the same part. `cross` groups the same part across countries. Not studied: DWD's warnings page (it drew without its stylesheet in our browser, so there was nothing fair to annotate).",
+ "about": "Annotated studies of the best public-service weather pages (and BBC Weather, Dinis's reference): numbered callouts placed on the page as this agent drew and saw it (1280 x 1600 px, top of the page), each saying what the part does well and which of our data files would feed the same part. `cross` groups the same part across countries. Still to study: a Met Office page and a KNMI page with a warning in force.",
  "by": "incident.weatherwatch@web-summit.dinis",
- "updated": "2026-11-11T03:15Z",
+ "updated": "2026-11-11T03:41:00Z",
  "parts": {
   "now": "The state now",
   "warning-map": "The warning map",
@@ -168,6 +168,26 @@
     "shown_as": "as served",
     "by": "incident.archivist@web-summit.dinis"
    }
+  },
+  {
+   "id": "nws-hazards-map",
+   "name": "US National Weather Service: the national hazards map (weather.gov)",
+   "country": "United States",
+   "url": "https://www.weather.gov/",
+   "file": "nws-hazards-map.json",
+   "callouts": 6,
+   "seen_utc": "2026-11-11T03:39Z",
+   "capture": null
+  },
+  {
+   "id": "dwd-warnings",
+   "name": "DWD: warnings by municipality (Germany)",
+   "country": "Germany",
+   "url": "https://www.dwd.de/DE/wetter/warnungen_gemeinden/warnWetter_node.html",
+   "file": "dwd-warnings.json",
+   "callouts": 7,
+   "seen_utc": "2026-11-11T03:39Z",
+   "capture": null
   }
  ],
  "cross": {
@@ -203,6 +223,22 @@
     "n": 1,
     "title": "The state in one plain line",
     "does_well": "\"Er zijn geen waarschuwingen\" (there are no warnings), as a line of text above the map, and again as a heading."
+   },
+   {
+    "study": "nws-hazards-map",
+    "name": "US National Weather Service: the national hazards map (weather.gov)",
+    "country": "United States",
+    "n": 5,
+    "title": "A legend of what is in force only",
+    "does_well": "Eighteen kinds of alert were listed at this read, each a link to its own list: the legend is built from the map, not printed whole."
+   },
+   {
+    "study": "dwd-warnings",
+    "name": "DWD: warnings by municipality (Germany)",
+    "country": "Germany",
+    "n": 1,
+    "title": "The state now, in the header",
+    "does_well": "\"KEINE UNWETTERWARNUNG\" (no severe-weather warning) sits in the top bar beside the temperature of the reader's place, on every page."
    }
   ],
   "warning-map": [
@@ -285,6 +321,30 @@
     "n": 2,
     "title": "A quiet map",
     "does_well": "The country with no colour at all when nothing is in force."
+   },
+   {
+    "study": "nws-hazards-map",
+    "name": "US National Weather Service: the national hazards map (weather.gov)",
+    "country": "United States",
+    "n": 4,
+    "title": "Everything in force, on one map",
+    "does_well": "Counties and marine zones are white until something is in force; a click on any of them opens the alerts for that place."
+   },
+   {
+    "study": "dwd-warnings",
+    "name": "DWD: warnings by municipality (Germany)",
+    "country": "Germany",
+    "n": 4,
+    "title": "The map, municipality by municipality",
+    "does_well": "Green where there is no warning, yellow for level 1: the areas are municipalities, far smaller than districts, with the main cities named."
+   },
+   {
+    "study": "dwd-warnings",
+    "name": "DWD: warnings by municipality (Germany)",
+    "country": "Germany",
+    "n": 5,
+    "title": "Kinds of hazard as buttons",
+    "does_well": "A column of icon buttons beside the map, ending in \"alle\" (all), redraws it for one kind of hazard; two more below for the coast."
    }
   ],
   "warning-over-time": [
@@ -483,6 +543,22 @@
     "n": 5,
     "title": "One row per warning",
     "does_well": "The hazard's pictogram on its level's colour, then the area: Lisboa appears three times, once per warning."
+   },
+   {
+    "study": "nws-hazards-map",
+    "name": "US National Weather Service: the national hazards map (weather.gov)",
+    "country": "United States",
+    "n": 1,
+    "title": "The national headline, in words",
+    "does_well": "\"Storm System to Move Across the Ohio Valley to the Mid-Atlantic and Northeast\", then two sentences and \"Read More\": the forecasters' own summary sits above every map."
+   },
+   {
+    "study": "dwd-warnings",
+    "name": "DWD: warnings by municipality (Germany)",
+    "country": "Germany",
+    "n": 7,
+    "title": "The situation, written and timed",
+    "does_well": "\"Beschreibung der Warnlage Deutschland\", issued Wednesday 11.11.2026, 04:01 local time: two sentences (ice, fog, light frost), signed by the forecasting centre in Offenbach."
    }
   ],
   "what-to-do": [
@@ -551,6 +627,14 @@
     "n": 3,
     "title": "Wind in words",
     "does_well": "\"Fresh breeze from south east\": a reader who does not think in metres per second still understands. But the words describe the automatic mean wind under a red wind warning, and the page does not say so."
+   },
+   {
+    "study": "dwd-warnings",
+    "name": "DWD: warnings by municipality (Germany)",
+    "country": "Germany",
+    "n": 6,
+    "title": "The levels in words, and a step before a warning",
+    "does_well": "Four levels named and numbered (Stufe 1 to 4, \"Wetterwarnungen\" to \"Warnungen vor extremem Unwetter\"), \"Keine Warnungen\" as its own colour, and a hatched \"Vorabinformation Unwetter\": advance information before a warning is issued."
    }
   ],
   "times": [
@@ -617,6 +701,22 @@
     "n": 1,
     "title": "When it was made",
     "does_well": "\"Informação em horas UTC. Última atualização: 2026-11-10 19:56:03 (UTC)\"."
+   },
+   {
+    "study": "nws-hazards-map",
+    "name": "US National Weather Service: the national hazards map (weather.gov)",
+    "country": "United States",
+    "n": 3,
+    "title": "The time is on the map",
+    "does_well": "\"Created: 11/11/26 at 03:38 UTC\" is drawn inside the image, so a copy of the map carries its own time."
+   },
+   {
+    "study": "dwd-warnings",
+    "name": "DWD: warnings by municipality (Germany)",
+    "country": "Germany",
+    "n": 2,
+    "title": "Last updated, and it refreshes itself",
+    "does_well": "\"Letzte Aktualisierung: Mi, 11. Nov, 03:39 Uhr\" above the map, with a ticked box \"Autom. Aktualisierung\"."
    }
   ],
   "data": [
@@ -627,6 +727,14 @@
     "n": 8,
     "title": "A PDF version",
     "does_well": "The same card as a document to forward."
+   },
+   {
+    "study": "nws-hazards-map",
+    "name": "US National Weather Service: the national hazards map (weather.gov)",
+    "country": "United States",
+    "n": 6,
+    "title": "The same as data, under the map",
+    "does_well": "\"Public Alerts in XML/CAP v1.2 and ATOM Formats\": one link, directly beneath the picture."
    }
   ],
   "navigation": [
@@ -653,6 +761,22 @@
     "n": 5,
     "title": "Previous day, next day",
     "does_well": "Two buttons; the table is one day at a time."
+   },
+   {
+    "study": "nws-hazards-map",
+    "name": "US National Weather Service: the national hazards map (weather.gov)",
+    "country": "United States",
+    "n": 2,
+    "title": "One row of doors",
+    "does_well": "Active alerts, forecast maps, radar, rivers and rainfall, air quality, satellite, current: seven words, each a view of the same country."
+   },
+   {
+    "study": "dwd-warnings",
+    "name": "DWD: warnings by municipality (Germany)",
+    "country": "Germany",
+    "n": 3,
+    "title": "A place first",
+    "does_well": "One search box above the map (\"Bitte Ort eingeben\"): the warning text is shown for the place typed or the area clicked."
    }
   ]
  }

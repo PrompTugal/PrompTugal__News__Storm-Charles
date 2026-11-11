@@ -1,0 +1,81 @@
+{
+ "id": "nws-hazards-map",
+ "site": "nws",
+ "site_page": "research/weather-sites/sites/nws.md",
+ "name": "US National Weather Service: the national hazards map (weather.gov)",
+ "country": "United States",
+ "url": "https://www.weather.gov/",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T03:41:00Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-11T03:39Z",
+  "callouts_checked_against_capture": false
+ },
+ "capture": null,
+ "capture_note": "Not captured yet: asked of incident.archivist@ on 11 November 2026 (the callouts stand on this agent's own render; the frame stays empty and the link stands).",
+ "licence_for_showing_the_screenshot": "US government work, public domain (third-party map tiles excepted): a screenshot may be shown.",
+ "summary": "The front page of a national service is its hazards map: every county and every coastal water of the country, coloured by the hazard in force, with the time the map was made printed on the map and a legend that lists only the hazards in force. Above it, the day's national headline in three sentences. Colour here means the kind of hazard, not how severe it is.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.474,
+   "y": 0.074,
+   "title": "The national headline, in words",
+   "does_well": "\"Storm System to Move Across the Ohio Valley to the Mid-Atlantic and Northeast\", then two sentences and \"Read More\": the forecasters' own summary sits above every map.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/communiques.json (the current communiqué's subject and first sentence, quoted)",
+   "part": "what-to-expect"
+  },
+  {
+   "n": 2,
+   "x": 0.461,
+   "y": 0.141,
+   "title": "One row of doors",
+   "does_well": "Active alerts, forecast maps, radar, rivers and rainfall, air quality, satellite, current: seven words, each a view of the same country.",
+   "fed_by": "our own data room's sections",
+   "part": "navigation"
+  },
+  {
+   "n": 3,
+   "x": 0.566,
+   "y": 0.198,
+   "title": "The time is on the map",
+   "does_well": "\"Created: 11/11/26 at 03:38 UTC\" is drawn inside the image, so a copy of the map carries its own time.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (read_utc), drawn inside our own strip and map",
+   "part": "times"
+  },
+  {
+   "n": 4,
+   "x": 0.566,
+   "y": 0.338,
+   "title": "Everything in force, on one map",
+   "does_well": "Counties and marine zones are white until something is in force; a click on any of them opens the alerts for that place.",
+   "fed_by": "our own redraw from IPMA's JSON; district shapes from an open source",
+   "part": "warning-map"
+  },
+  {
+   "n": 5,
+   "x": 0.5,
+   "y": 0.556,
+   "title": "A legend of what is in force only",
+   "does_well": "Eighteen kinds of alert were listed at this read, each a link to its own list: the legend is built from the map, not printed whole.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (the levels and hazards present at this read)",
+   "part": "now"
+  },
+  {
+   "n": 6,
+   "x": 0.741,
+   "y": 0.5,
+   "title": "The same as data, under the map",
+   "does_well": "\"Public Alerts in XML/CAP v1.2 and ATOM Formats\": one link, directly beneath the picture.",
+   "fed_by": "api/v1/index.json and the warnings file's own address",
+   "part": "data"
+  }
+ ],
+ "limits": "Colours are by kind of alert (a gale warning, a flood advisory), so the map does not show at a glance which is the most severe. No alert was opened."
+}

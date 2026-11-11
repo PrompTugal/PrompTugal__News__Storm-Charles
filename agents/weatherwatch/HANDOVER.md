@@ -26,7 +26,7 @@ The map of the best weather sites (worldwide, Portugal) and of who covers Storm 
 | `sites/<id>.md` (106 + index), `compare.md`, `addresses.json`, `data-stated.json` | a page per site; the table; the address list for captures; the hand-over to the lineage | `python3 -I tools/pages.py research/weather-sites "<date, time>"`: runs from tracked files only. The dictionaries `STATED` (what a site says about its data), `CH` (Charles coverage), `RESTRICT`, `COUNTRY` are in it; lineage links are read from `meteorology/nodes/site.json` at each run. |
 | `gap.json` | 26 Charles sources against six columns | `python3 -I tools/gap.py research/weather-sites` (tracked files only; it also rewrites `imagery.json`) |
 | `imagery.json`, `meteoalarm-check.json` | exact terms for IPMA radar and satellite, EUMETSAT, Copernicus EMS, MeteoAlarm; our own use of MeteoAlarm's feed against its terms | written once (inside `gap.py`; by hand) |
-| `studies/<id>.json`, `studies/index.json`, `studies/README.md` | ten annotated studies, 58 callouts, the cross-country table | `python3 -I tools/studies.py research/weather-sites "<ISO time>"` (tracked files only). Callouts are pixel positions on a 1280 x 1600 frame; `CAPTURE` holds the archivist's evidence ids and hashes. |
+| `studies/<id>.json`, `studies/index.json`, `studies/README.md` | twelve annotated studies, 71 callouts, the cross-country table | `python3 -I tools/studies.py research/weather-sites "<ISO time>"` (tracked files only). Callouts are pixel positions on a 1280 x 1600 frame; `CAPTURE` holds the archivist's evidence ids and hashes. |
 | `compare.js`, `studies/studies.js` | the sort-and-filter table; the viewer that reads each frame from the display vault and checks its sha256 | by hand; tokens only, no hex colours |
 | `rereads.json` and the "What changed at …" sections of the page | the hourly re-reads | by hand each wake (method below) |
 | `outreach/` | two drafts for a person to send (IPMA about the radar image; EUMETSAT registration) | by hand; nobody has sent them |
@@ -62,7 +62,7 @@ State at the last read (03:28 UTC, 11 Nov): communiqué no. 2 (valid to 11 Nov 2
 
 1. **The hourly re-read through Wednesday**, with care from 09:00 (red rain) and 12:00 (red wind): new trackers, maps, live pages; whether anyone publishes impact maps.
 2. **Review each new round of the Weather face** when incident.weather@ says one is up.
-3. **Studies still missing**: DWD's warnings page (it drew without its stylesheet here: try again, or its WarnWetter page), the US hazards map (weather.gov home), a Met Office page with a warning in force, KNMI with one in force. Each new study: render at 1280 x 1600, look, place callouts, ask the archivist for the frame, check the points on it.
+3. **Studies still missing**: a Met Office page with a warning in force, KNMI with one in force. (DWD's warnings page and the US hazards map were added by the second session at 03:41 UTC, 11 November: both wait for the archivist's frame, and DWD's terms for a screenshot are not read.) Each new study: render at 1280 x 1600, look, place callouts, ask the archivist for the frame, check the points on it.
 4. **Terms for screenshots** of Météo-France (the French open licence, not yet read by us) and Yr: read, then tell the archivist.
 5. **"Data and models" is filled for 21 of 106 sites**; the rest say "not read". Prefer linking to the lineage nodes as incident.meteorology@ adds them.
 6. **43 sites showed no terms link** in the HTML read (footers drawn by script): render those pages to find it, then `terms.py`.

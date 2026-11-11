@@ -1,0 +1,90 @@
+{
+ "id": "dwd-warnings",
+ "site": "dwd",
+ "site_page": "research/weather-sites/sites/dwd.md",
+ "name": "DWD: warnings by municipality (Germany)",
+ "country": "Germany",
+ "url": "https://www.dwd.de/DE/wetter/warnungen_gemeinden/warnWetter_node.html",
+ "by": "incident.weatherwatch@web-summit.dinis",
+ "updated": "2026-11-11T03:41:00Z",
+ "frame": {
+  "viewport": [
+   1280,
+   1600
+  ],
+  "scale": 1,
+  "part": "top of the page, no scrolling",
+  "seen_utc": "2026-11-11T03:39Z",
+  "callouts_checked_against_capture": false
+ },
+ "capture": null,
+ "capture_note": "Not captured yet: asked of incident.archivist@ on 11 November 2026 (the callouts stand on this agent's own render; the frame stays empty and the link stands).",
+ "licence_for_showing_the_screenshot": "The map prints \"Copyright: © Deutscher Wetterdienst\". DWD's own terms for showing a screenshot have not been read by us yet: until they are, the frame stays empty and only the link is given.",
+ "summary": "The state of the country in two words in the header of every page (\"KEINE UNWETTERWARNUNG\"), a map down to the municipality with the time it was last updated above it, a legend with the four levels in words, and under it the warning situation written out and timed by the forecasting centre. On this night it showed level 1 (yellow) over parts of the north and east and nothing higher.",
+ "callouts": [
+  {
+   "n": 1,
+   "x": 0.652,
+   "y": 0.016,
+   "title": "The state now, in the header",
+   "does_well": "\"KEINE UNWETTERWARNUNG\" (no severe-weather warning) sits in the top bar beside the temperature of the reader's place, on every page.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (Lisbon's highest level in force, in IPMA's words)",
+   "part": "now"
+  },
+  {
+   "n": 2,
+   "x": 0.497,
+   "y": 0.187,
+   "title": "Last updated, and it refreshes itself",
+   "does_well": "\"Letzte Aktualisierung: Mi, 11. Nov, 03:39 Uhr\" above the map, with a ticked box \"Autom. Aktualisierung\".",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (read_utc, next_read_utc)",
+   "part": "times"
+  },
+  {
+   "n": 3,
+   "x": 0.547,
+   "y": 0.161,
+   "title": "A place first",
+   "does_well": "One search box above the map (\"Bitte Ort eingeben\"): the warning text is shown for the place typed or the area clicked.",
+   "fed_by": "not ours yet: one district only (Lisbon)",
+   "part": "navigation"
+  },
+  {
+   "n": 4,
+   "x": 0.599,
+   "y": 0.328,
+   "title": "The map, municipality by municipality",
+   "does_well": "Green where there is no warning, yellow for level 1: the areas are municipalities, far smaller than districts, with the main cities named.",
+   "fed_by": "our own redraw from IPMA's JSON; IPMA warns by district",
+   "part": "warning-map"
+  },
+  {
+   "n": 5,
+   "x": 0.855,
+   "y": 0.244,
+   "title": "Kinds of hazard as buttons",
+   "does_well": "A column of icon buttons beside the map, ending in \"alle\" (all), redraws it for one kind of hazard; two more below for the coast.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/warnings.json (type)",
+   "part": "warning-map"
+  },
+  {
+   "n": 6,
+   "x": 0.629,
+   "y": 0.591,
+   "title": "The levels in words, and a step before a warning",
+   "does_well": "Four levels named and numbered (Stufe 1 to 4, \"Wetterwarnungen\" to \"Warnungen vor extremem Unwetter\"), \"Keine Warnungen\" as its own colour, and a hatched \"Vorabinformation Unwetter\": advance information before a warning is issued.",
+   "fed_by": "IPMA's own description of its four levels, quoted and linked",
+   "part": "uncertainty"
+  },
+  {
+   "n": 7,
+   "x": 0.625,
+   "y": 0.744,
+   "title": "The situation, written and timed",
+   "does_well": "\"Beschreibung der Warnlage Deutschland\", issued Wednesday 11.11.2026, 04:01 local time: two sentences (ice, fog, light frost), signed by the forecasting centre in Offenbach.",
+   "fed_by": "incidents/2026-11-10-storm-charles/data/weather/communiques.json (number, validity, subject)",
+   "part": "what-to-expect"
+  }
+ ],
+ "limits": "No severe-weather warning was in force in Germany, so levels 2 to 4 and a warning's own text were not seen. At the first attempt (11 November, about 02:50 UTC) this page drew without its stylesheet; this is the second."
+}
