@@ -1,0 +1,137 @@
+{
+  "by": "incident.storyteller@web-summit.dinis",
+  "updated": "2026-11-11T10:27:00Z",
+  "id": "welcome-and-synthetic-visitors",
+  "n": 8,
+  "title": "A page for newcomers, read by four invented visitors before Dinis saw it",
+  "named_by": "storyteller",
+  "span": "11 November, 09:50 to 10:15 UTC; open until Dinis says yes",
+  "summary": "At about 09:50 Dinis looked at the site and said the first page must be \"super clear\", for a journalist or anyone who does not know what this is; and asked to simulate four visitors. Three and a half minutes later a new agent, synthetic@, had written four invented people; it read the old front page first, so the draft would have something to be better than. The envoy drafted /welcome/ at 09:57, the designer framed it, the invented visitors read the draft, the envoy rewrote it from their findings, and a third run found the summit's decision in about 9 seconds. Twenty minutes, three readings, no person in the loop: the page waits at /welcome/ for Dinis's yes.",
+  "pause_min": 3,
+  "cast": [
+    "dinis",
+    "incident.conductor@web-summit.dinis",
+    "incident.synthetic@web-summit.dinis#1",
+    "incident.envoy@web-summit.dinis#1",
+    "incident.designer@web-summit.dinis#4",
+    "incident.reporter@web-summit.dinis#3",
+    "incident.journalist@web-summit.dinis#4",
+    "readers"
+  ],
+  "steps": [
+    {
+      "t": "2026-11-11T09:50:00Z",
+      "actor": "dinis",
+      "to": "incident.conductor@web-summit.dinis",
+      "verb": "instruct",
+      "what": "\"the first page has to be super clear ... like a normal website, a features website\"; \"I would like to simulate a journalist ... a normal visitor ... a newsroom exec and an investor\" (about 09:50)",
+      "file": "BRIEF.md"
+    },
+    {
+      "t": "2026-11-11T09:50:16Z",
+      "actor": "incident.conductor@web-summit.dinis",
+      "verb": "route",
+      "what": "at Dinis's word: a newcomers' front page (envoy with designer, at /welcome/ first) and a synthetic-visitors agent",
+      "commit": "45dc1bd9"
+    },
+    {
+      "t": "2026-11-11T09:53:46Z",
+      "actor": "incident.synthetic@web-summit.dinis#1",
+      "verb": "commit",
+      "what": "a new agent: its session key, and the four invented personas, written before any run (invented people: a test instrument, not user research)",
+      "commit": "76ccd12c",
+      "file": "research/synthetic/personas"
+    },
+    {
+      "t": "2026-11-11T09:57:52Z",
+      "actor": "incident.envoy@web-summit.dinis#1",
+      "verb": "write",
+      "what": "welcome/: a first draft (what this is, what you can do here, how it is made, what it is not); a draft for Dinis, not yet at /",
+      "commit": "94f2ed9a",
+      "file": "welcome/"
+    },
+    {
+      "t": "2026-11-11T09:58:03Z",
+      "actor": "incident.synthetic@web-summit.dinis#1",
+      "verb": "read",
+      "what": "run 1: the four read the old front page (/) first; ranked findings for /welcome/",
+      "commit": "0843a40e",
+      "file": "research/synthetic/findings.md"
+    },
+    {
+      "t": "2026-11-11T10:00:42Z",
+      "actor": "incident.designer@web-summit.dinis#4",
+      "verb": "write",
+      "what": "welcome/ is a front door in the frame (no subsite lit, no sub-bar, no trail)",
+      "commit": "c107c7e6"
+    },
+    {
+      "t": "2026-11-11T10:03:06Z",
+      "actor": "incident.synthetic@web-summit.dinis#1",
+      "verb": "read",
+      "what": "run 2 on the first /welcome/ draft (94f2ed9a): ranked findings",
+      "commit": "f93e8c7f",
+      "file": "research/synthetic/findings-run-2.md"
+    },
+    {
+      "t": "2026-11-11T10:04:03Z",
+      "actor": "incident.envoy@web-summit.dinis#1",
+      "verb": "correct",
+      "what": "welcome/ rewritten from the readers: the latest decision on the first screen, what a person checks and what goes live without one, the 22 minutes said plainly (run 2's findings 1, 4, 5)",
+      "commit": "4addc33e"
+    },
+    {
+      "t": "2026-11-11T10:05:46Z",
+      "actor": "incident.designer@web-summit.dinis#4",
+      "verb": "write",
+      "what": "round 49: welcome/'s first screen on a phone (both buttons inside 844 px)",
+      "commit": "a538dab1"
+    },
+    {
+      "t": "2026-11-11T10:07:45Z",
+      "actor": "incident.envoy@web-summit.dinis#1",
+      "verb": "write",
+      "what": "the figures labelled as the site's own (dcdac7ad); the agent count read from data/agents/count.json (32), not typed",
+      "commit": "f02d17d9"
+    },
+    {
+      "t": "2026-11-11T10:09:41Z",
+      "actor": "incident.reporter@web-summit.dinis#3",
+      "verb": "write",
+      "what": "a trace of the loop (\"a front page for newcomers, drafted, read by four invented visitors and rewritten in 14 minutes\")",
+      "commit": "0df5e0ab",
+      "file": "reporter/traces/loop-a-front-page-for-newcomers.json"
+    },
+    {
+      "t": "2026-11-11T10:09:58Z",
+      "actor": "incident.synthetic@web-summit.dinis#1",
+      "verb": "read",
+      "what": "run 3 on /welcome/ (v0.1.810 and later): the visitor finds the summit's decision in about 9 s",
+      "commit": "5b489d1b",
+      "file": "research/synthetic/findings-run-3.md"
+    },
+    {
+      "t": "2026-11-11T10:15:02Z",
+      "actor": "incident.journalist@web-summit.dinis#4",
+      "verb": "write",
+      "what": "the journal's twelfth piece, \"Read before he saw it\", from that trace",
+      "commit": "02590a4b"
+    }
+  ],
+  "pauses_note": "No pause of three minutes or more after the agents started: the loop turned every two to four minutes. Its one open step is Dinis's: the page moves to / only on his yes, and that is not in the record.",
+  "shows": [
+    "A loop with invented readers: draft, read by four personas, rewrite from their ranked findings, read again: three readings in twelve minutes, before the one real reader it was for.",
+    "The personas were written before the first run, and the old page was read first: the test was set before the thing it tested.",
+    "Words, frame and reading are three agents with three folders (welcome/, the frame, research/synthetic/); none edits another's, and each step is a commit."
+  ],
+  "reading": [
+    "The reporter's trace of the loop (10:09:41) and run 3 (10:09:58) were written in parallel: the trace closes on run 2's rewrite, and run 3 came 17 s after it.",
+    "Invented visitors are a tool, said so on every page they appear on; nothing here says what real readers think."
+  ],
+  "rests_on": [
+    "BRIEF.md, \"Dinis, 11 November, ~09:50 UTC\" (commit 45dc1bd9)",
+    "reporter/traces/loop-a-front-page-for-newcomers.json (incident.reporter@)",
+    "commits 45dc1bd9, 76ccd12c, 94f2ed9a, 0843a40e, c107c7e6, f93e8c7f, 4addc33e, a538dab1, dcdac7ad, f02d17d9, 5b489d1b, 0df5e0ab, 02590a4b",
+    "research/synthetic/ (personas, findings of runs 1 to 3)"
+  ]
+}
