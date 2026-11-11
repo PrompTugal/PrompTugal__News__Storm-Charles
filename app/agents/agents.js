@@ -10,7 +10,10 @@
     const HERE = document.currentScript.src
     // the live map (Angelo's engine, pinned; live-adapter.js feeds it): its own box after the cards, so a refresh never redraws it
     const liveBox = document.createElement('section'); liveBox.id = 'live'; liveBox.className = 'ag-live'
-    liveBox.innerHTML = `<h2 class="ag-h">Who talks to whom, live</h2><p class="ag-note">Each dot is an agent, beside the person who operates it; each pulse is a commit travelling to the agents named in its <code>For:</code> trailer, at its real moment (four minutes behind, so it plays in order); the faint flow shows how busy each pair has been. Drag the dial to look back. The engine is <a href="https://web-summit.sgit.ai/people/angelo/app/">the live map by dev.map@PrompTugal.angelo, of Angelo's team</a>, an unchanged copy pinned at <a href="${new URL('vendor/live-map@57636ac/pin.json', HERE).href}">commit 57636ac</a>; 3D uses the three.js bundle from Silvio's Universe, loaded from web-summit.sgit.ai only when switched on.</p><div id="ag-live-map"></div><p class="ag-note" data-ag-live-note></p>`
+    liveBox.innerHTML = `<h2 class="ag-h">Who talks to whom, live</h2><p class="ag-note">Each dot is an agent, beside the person who operates it; each pulse is a commit travelling to the agents named in its <code>For:</code> trailer, at its real moment (four minutes behind, so it plays in order); the faint flow shows how busy each pair has been. Drag the dial to look back. The engine is <a href="https://web-summit.sgit.ai/people/angelo/app/">the live map by dev.map@PrompTugal.angelo, of Angelo's team</a>, an unchanged copy pinned at <a href="${new URL('vendor/live-map@57636ac/pin.json', HERE).href}">commit 57636ac</a>; 3D uses the three.js bundle from Silvio's Universe, loaded from web-summit.sgit.ai only when switched on.</p><p><button type="button" class="ag-btn" data-ag-live>Show the live map</button></p><div id="ag-live-map"></div><p class="ag-note" data-ag-live-note></p>`
+    const startLive = () => { const b = liveBox.querySelector('[data-ag-live]'); if (b) b.parentNode.remove(); window.AgentsLive?.start() }
+    liveBox.querySelector('[data-ag-live]').onclick = startLive
+    document.addEventListener('lv-graph', () => { const b = liveBox.querySelector('[data-ag-live]'); if (b) b.parentNode.remove() }, true)
     el.insertAdjacentElement('afterend', liveBox)
     // the Universe (Silvio's engine, pinned; universe-adapter.js feeds it): opened on request, because it needs 1.6 MB of 3D libraries
     const uniBox = document.createElement('section'); uniBox.id = 'universe'; uniBox.className = 'ag-uni'
@@ -115,23 +118,25 @@
         return m < 30 ? ['now', 'active'] : m < 120 ? ['quiet', 'quiet'] : ['silent', 'silent']
     }
     const ul = (xs, cls = '') => xs?.length ? `<ul>${xs.map(x => `<li${cls ? ` class="${cls}"` : ''}>${T(x)}</li>`).join('')}</ul>` : ''
-    const fold = (title, xs, open = false, newestLast = false) => xs?.length ? `<details${open ? ' open' : ''}><summary>${esc(title)} (${xs.length})</summary>${ul(newestLast ? xs.slice().reverse() : xs)}</details>` : ''
+    const fold = (title, xs, open = false, newestLast = false) => xs?.length ? `<details data-k="${esc(title)}"${open ? ' open' : ''}><summary>${esc(title)} (${xs.length})</summary>${ul(newestLast ? xs.slice().reverse() : xs)}</details>` : ''
+    const section = (id, title, body, extra = '') => `<details class="ag-fold" id="${id}" data-k="sec"><summary>${esc(title)}${extra ? ` <span class="ag-note">${extra}</span>` : ''}</summary><div class="body">${body}</div></details>`
 
     function card(a, by) {
         const mine = by.get(a.name) || [], last = mine[0], [cls, word] = liveness(a, last)
         const k = (a.keys || [])[0]
-        return `<article class="ag-card" id="${esc(a.role)}">
-<h3>${T(short(a.name))}<span class="ag-pill ${cls}">${esc(word)}</span></h3>
-<div class="role">${T(a.role)}${a.shared_row ? '' : ''}</div>
+        const nAsk = (a.asks_dinis || []).length
+        return `<details class="ag-card" id="${esc(a.role)}" data-k="card">
+<summary><span class="nm">${T(short(a.name))}</span><span class="ag-pill ${cls}">${esc(word)}</span>${nAsk ? `<span class="n">${nAsk} ask${nAsk > 1 ? 's' : ''} for Dinis</span>` : ''}<span class="lp">${last ? `${esc(ago(last.at))}: ${T(last.what)}` : a.state ? T(a.state) : 'no push read'}</span></summary>
+<div class="body">
 ${a.state ? `<p><span class="lbl">Doing (its own words)</span>${T(a.state)}</p>` : `<p class="ag-note">${a.has_status ? 'No state written.' : `No status file yet (expected at <code>agents/${esc(a.role)}/status.json</code>).`}</p>`}
 <p><span class="lbl">Last push</span>${last ? `<a href="${esc(/^https:/.test(last.url) ? last.url : '#')}">${T(last.what)}</a><br><span class="ag-note">${esc(ago(last.at))} · ${esc(utc(last.at))} · ${mine.length} commit${mine.length > 1 ? 's' : ''} read${last.to.length ? ` · for ${T(last.to.map(short).join(', '))}` : ''}</span>` : '<span class="ag-note">No commit read from it on dev.</span>'}</p>
 ${a.last_wake ? `<p><span class="lbl">Last wake (its own file)</span>${esc(utc(a.last_wake))} · ${esc(ago(a.last_wake))}</p>` : ''}
 ${a.asks_dinis?.length ? `<p><span class="lbl">Asks Dinis</span></p>${ul(a.asks_dinis, 'ask')}` : ''}
 ${a.asks?.length ? `<p><span class="lbl">Asks the team</span></p>${ul(a.asks)}` : ''}
-${fold('Next', a.next, true)}${fold('Done', a.done, false, true)}${fold('Jobs routed to it', a.jobs)}
-${a.job ? `<details><summary>Its job (agents/JOBS.md)</summary><p>${T(a.job).replace(/\*\*/g, '')}</p><p><span class="lbl">Owns</span>${T(a.owns).replace(/`/g, '')}</p></details>` : ''}
-<details><summary>Key${k ? '' : ': none yet'}</summary>${k ? `<p>record <code>${T(k.record)}</code><br>encryption <code>${T(k.encryption)}</code><br><span class="ag-note">${T(k.status)}, added ${T(k.added)}; public half in <a href="${BASE}data/keys.json">data/keys.json</a></span></p>` : '<p class="ag-note">No public key in data/keys.json.</p>'}${a.status_file ? `<p class="ag-note"><a href="${BASE}${esc(a.status_file)}">${esc(a.status_file)}</a></p>` : ''}</details>
-</article>`
+${fold('Next', a.next)}${fold('Done', a.done, false, true)}${fold('Jobs routed to it', a.jobs)}
+${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>${T(a.job).replace(/\*\*/g, '')}</p><p><span class="lbl">Owns</span>${T(a.owns).replace(/`/g, '')}</p></details>` : ''}
+<details data-k="key"><summary>Key${k ? '' : ': none yet'}</summary>${k ? `<p>record <code>${T(k.record)}</code><br>encryption <code>${T(k.encryption)}</code><br><span class="ag-note">${T(k.status)}, added ${T(k.added)}; public half in <a href="${BASE}data/keys.json">data/keys.json</a></span></p>` : '<p class="ag-note">No public key in data/keys.json.</p>'}${a.status_file ? `<p class="ag-note"><a href="${BASE}${esc(a.status_file)}">${esc(a.status_file)}</a></p>` : ''}</details>
+</div></details>`
     }
 
     function flow(items) {
@@ -166,7 +171,8 @@ ${a.job ? `<details><summary>Its job (agents/JOBS.md)</summary><p>${T(a.job).rep
         const fresh = asks.filter(q => !q.old).length
         const live = idx.agents.map(a => liveness(a, (by.get(a.name) || [])[0])[0])
         const n = k => live.filter(x => x === k).length
-        const open = new Set([...el.querySelectorAll('details[open]')].map(d => d.closest('article')?.id + '|' + d.querySelector('summary')?.textContent.replace(/ \(\d+\)$/, '')))
+        const keyOf = d => (d.id || d.closest('[id]')?.id || '') + '|' + (d.dataset.k || '')
+        const all = [...el.querySelectorAll('details')], open = new Set(all.filter(d => d.open).map(keyOf))
         const hadDrawn = !!el.dataset.drawn
         // pipeline health: the last hour of the deploy workflow's runs (the same records as "Release speed" below)
         const hour = R.items.filter(r => Date.now() - Date.parse(r.pushed) < 36e5), okH = hour.filter(r => r.conclusion === 'success')
@@ -177,35 +183,26 @@ ${a.job ? `<details><summary>Its job (agents/JOBS.md)</summary><p>${T(a.job).rep
             : `<div class="ag-health${failedH ? ' bad' : ''}" id="health"><b>Pipeline, last hour</b><span><b>${hour.length}${R.items.length >= 100 && hour.length === R.items.length ? '+' : ''}</b> pushes</span><span><b>${okH.length}</b> deployed</span><span><b>${mServed != null ? mServed + ' s' : mRun != null ? '≤ ' + mRun + ' s' : 'n/a'}</b> median push to served${mServed != null ? ` (CI's measure, ${servedH.length} of ${okH.length} read so far)` : mRun != null ? ' (upper bound: push to run finished)' : ''}</span><span><b>${supH}</b> superseded</span><span class="${failedH ? 'ag-err' : ''}"><b>${failedH}</b> failed</span><a href="#releases">push by push</a></div>`
         el.innerHTML = `
 ${health}
-<div class="ag-sum">
-<div><b>${idx.agents.length}</b><span>agents in the team</span></div>
-<div><b>${n('now')}</b><span>active in the last 30 min</span></div>
-<div><b>${n('blocked')}</b><span>say they are blocked</span></div>
-<div><b>${n('none')}</b><span>not started yet</span></div>
-<div><b>${asks.length}</b><span>asks for Dinis</span></div>
-<div><b>${gh.items[0] ? esc(ago(gh.items[0].at)) : 'n/a'}</b><span>last push to dev</span></div>
-<div><b>${ver?.version ? esc(ver.version) : 'n/a'}</b><span>version served</span></div>
-</div>
+<p class="ag-line"><span><b>${idx.agents.length}</b> agents</span><span><b>${n('now')}</b> active in the last 30 min</span><span><b>${n('blocked')}</b> blocked</span><span><b>${n('none')}</b> not started</span><span>last push <b>${gh.items[0] ? esc(ago(gh.items[0].at)) : 'n/a'}</b></span><span>serving <b>${ver?.version ? esc(ver.version) : 'n/a'}</b></span></p>
 <section class="ag-asks" id="asks"><h2>Dinis: ${asks.length ? `${fresh} ask${fresh === 1 ? '' : 's'} only you can answer${asks.length > fresh ? `, and ${asks.length - fresh} that may be stale` : ''}` : 'nothing is waiting for you'}</h2>
-${asks.length ? `<ol>${asks.map(q => `<li${q.old ? ' class="old"' : ''}><a class="who" href="#${esc(q.role)}">${T(short(q.who))}${q.old ? ' · may be stale: its status file is synced from the old repository, and it has pushed nothing here' : ''}</a>${T(q.x.replace(/^Dinis\s*:\s*/i, ''))}</li>`).join('')}</ol>` : ''}</section>
-<h2 class="ag-h">The agents</h2>
+${(() => { const li = q => `<li><a class="who" href="#${esc(q.role)}">${T(short(q.who))}</a>${T(q.x.replace(/^Dinis\s*:\s*/i, ''))}</li>`, A = asks.filter(q => !q.old), B = asks.filter(q => q.old)
+            return (A.length ? `<ol>${A.slice(0, 6).map(li).join('')}</ol>` : '') + (A.length > 6 ? `<details data-k="more"><summary>${A.length - 6} more asks</summary><ol start="7">${A.slice(6).map(li).join('')}</ol></details>` : '') + (B.length ? `<details data-k="stale"><summary>${B.length} more that may be stale (status files synced from the old repository; those agents have pushed nothing here)</summary><ol class="old">${B.map(li).join('')}</ol></details>` : '') })()}</section>
+<h2 class="ag-h">The agents <span class="ag-note">one line each; open one for its state, asks, next, done, job and key</span></h2>
 <div class="ag-grid">${idx.agents.map(a => card(a, by)).join('')}</div>
 ${strangers.length ? `<p class="ag-note">Also pushing here, not in agents/JOBS.md: ${strangers.map(s => `<code>${T(s)}</code>`).join(', ')}.</p>` : ''}
-<h2 class="ag-h" id="flow">Who writes for whom (the commits' For: trailers)</h2>
-${flow(gh.items)}
-<h2 class="ag-h" id="releases">Release speed, push by push</h2>
-${releases(R, by, series, X)}
-<h2 class="ag-h" id="ledger">Model calls (the ledger)</h2>
-${led}
-<h2 class="ag-h" id="pushes">The last pushes</h2>
-<ul class="ag-feed">${gh.items.slice(0, 25).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(11, 16))}</time><code>${T(short(c.agent) || '?')}</code> <a href="${esc(/^https:/.test(c.url) ? c.url : '#')}">${T(c.what)}</a>${c.to.length ? ` <span class="ag-note">for ${T(c.to.map(short).join(', '))}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commits read.</li>'}</ul>
+${section('releases', 'Release speed, push by push', releases(R, by, series, X))}
+${section('flow', 'Who writes for whom', flow(gh.items), "the commits' For: trailers, as a table")}
+${section('ledger', 'Model calls (the ledger)', led)}
+${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 25).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(11, 16))}</time><code>${T(short(c.agent) || '?')}</code> <a href="${esc(/^https:/.test(c.url) ? c.url : '#')}">${T(c.what)}</a>${c.to.length ? ` <span class="ag-note">for ${T(c.to.map(short).join(', '))}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commits read.</li>'}</ul>`)}
 <p class="ag-note">Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. Roster, jobs, statuses and keys: <a href="${BASE}data/agents/index.json">data/agents/index.json</a> (written ${T(idx.updated || idx.generated_at)} from agents/JOBS.md, agents/*/status.json and data/keys.json), then each agent's own status.json as served now. Commits: ${gh.source === 'snapshot' ? `<a href="${BASE}data/agents/commits.json">the snapshot in data/agents/commits.json</a>, taken ${T(gh.snapshot_at)} <span class="ag-err">(GitHub's public API did not answer this browser${gh.error ? ': ' + T(gh.error) : ''}; without a login it allows 60 calls an hour per address, so pushes after the snapshot are missing until it does)</span>` : `<a href="https://github.com/${REPO}/commits/${BRANCH}">GitHub's public API</a>${gh.read ? `, read ${esc(new Date(gh.read).toISOString().slice(11, 19))} UTC${gh.cached ? ' (cached up to two minutes in this browser)' : ''}` : ''}${gh.error ? ` <span class="ag-err">(GitHub did not answer: ${T(gh.error)})</span>` : ''}`}. "Active", "quiet" (30 min to 2 h) and "silent" are derived from the last push or wake; "blocked" is the agent's own word. Session ids are never shown.</p>`
-        for (const d of el.querySelectorAll('details')) { const k = d.closest('article')?.id + '|' + d.querySelector('summary')?.textContent.replace(/ \(\d+\)$/, ''); if (hadDrawn) d.open = open.has(k) }
+        if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = open.has(keyOf(d))
+        else openHash()
         el.dataset.drawn = '1'
         document.dispatchEvent(new CustomEvent('agents-data', { detail: { idx, commits: gh.items } }))
         if (!hadDrawn) setTimeout(() => window.AgentsUniverse?.counts().catch(() => { }), 1500)
-        if (!hadDrawn && location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView()
     }
+    const openHash = () => { const t = location.hash && !/[?&=]/.test(location.hash) ? document.getElementById(location.hash.slice(1)) : null; if (!t) return; if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView() }
+    window.addEventListener('hashchange', openHash)
     draw(); setInterval(() => { if (!document.hidden) draw() }, 60e3)
     document.addEventListener('visibilitychange', () => { if (!document.hidden) draw() })
 })()

@@ -16,7 +16,8 @@
     const personOf = n => { const m = String(n).match(/@(?:web-summit|promptugal)\.([a-z0-9-]+)$/i); return m ? m[1].toLowerCase() : '' }
     const shortOf = n => String(n).split('@')[0].replace(/^incident\./, '')
     const want3d = () => /[?&]d3=1(&|$)/.test(location.hash) || /(^|[?&])d3=1(&|$)/.test(location.search.slice(1))
-    let host = null, o = null, engine = null, mapSig = '', evSig = '', busy = false
+    let host = null, o = null, engine = null, mapSig = '', evSig = '', busy = false, on = false, pending = null
+    const wanted = () => on || /^#live/.test(location.hash) || /(^|[?&])display=1(&|$)/.test(location.search.slice(1))
 
     function shape(idx, commits) {
         const n = new Map(), bump = (name, k) => { if (!personOf(name)) return; const a = n.get(name) || { commits: 0 }; a.commits += k; n.set(name, a) }
@@ -48,7 +49,7 @@
             const dx = p.x - g.C, dy = p.y - g.C, d = Math.hypot(dx, dy) || 1, t = g.doc.createElementNS(NS, 'text')
             t.setAttribute('x', (p.x + 20 * dx / d).toFixed(1)); t.setAttribute('y', (p.y + 20 * dy / d + 5).toFixed(1))
             t.setAttribute('text-anchor', Math.abs(dx) < 60 ? 'middle' : dx > 0 ? 'start' : 'end')
-            t.setAttribute('style', 'font:600 17px system-ui,sans-serif;fill:#BCCCDC;paint-order:stroke;stroke:#07111F;stroke-width:4px;pointer-events:none')
+            t.setAttribute('style', 'font:600 17px system-ui,sans-serif;fill:var(--rm-text-secondary);paint-order:stroke;stroke:var(--rm-bg);stroke-width:4px;pointer-events:none')
             t.textContent = shortOf(id) + (/@web-summit\.dinis$/i.test(id) ? '' : '@' + personOf(id)); g.layer.appendChild(t)
         }
     }
@@ -75,8 +76,11 @@
             if (old) setTimeout(() => URL.revokeObjectURL(old), 5 * 6e4)
         }
         // new agents or people: the graph is drawn again; otherwise the engine picks the new exchanges up on its own next read
+        // the map starts only when asked (its button, a #live address, or display mode): the page stays short and light
+        if (!wanted()) { pending = map; return }
         if (ms !== mapSig) { mapSig = ms; o.D = { collab: { map } }; show() }
     })
+    window.AgentsLive = { start() { on = true; if (pending && o) { mapSig = JSON.stringify([pending.people, pending.agents.map(a => a.id)]); o.D = { collab: { map: pending } }; pending = null; show() } } }
     document.addEventListener('lv-graph', labels, true)
-    window.addEventListener('hashchange', () => { if (/^#live/.test(location.hash)) show() })
+    window.addEventListener('hashchange', () => { if (/^#live/.test(location.hash)) { if (pending) window.AgentsLive.start(); else show() } })
 })()

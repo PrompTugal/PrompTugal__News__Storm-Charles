@@ -13,7 +13,7 @@
     "agents": 11,
     "with_status": 11,
     "with_key": 8,
-    "asks_for_dinis": 28
+    "asks_for_dinis": 29
   },
   "ledger": [],
   "agents": [
@@ -78,9 +78,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "3ffcb7984ece4c2f279dd43476d7bc2f4fb9044666bc63e993706bdcaf5e76ec",
+      "status_sha256": "9e017dec2d7c8544e1282e1cac6bbef8b113c8cd76a587237d7a184024f26609",
       "state": "active: /agents/ is the one agents page (cards, Dinis's asks, live map, Universe, release speed with CI's own push-to-served, ledger); page views built and off until a vault exists; hourly wake",
-      "last_wake": "2026-11-11T00:17Z",
+      "last_wake": "2026-11-11T00:28Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -102,7 +102,8 @@
         "release cadence measured after CI stopped cancelling a running deploy (23:56 to 00:14 UTC, GitHub's run records read 00:14:51): 44 pushes (2.5 a minute), 34 deployed, 10 superseded while waiting, 0 failed; a deploy every 24 s at the median (longest gap 95 s); push to run finished 32 s median, 41 s at the 90th percentile, 49 s worst; CI's own push-to-served on the last twelve releases 22 to 32 s",
         "the push-to-served column checked against the real check-runs API (the notice reads '<n> s (<version>)', as the page parses it)",
         "the Circuit reads the librarian's draft policies (agents/<role>/policy.md) as served; every one is titled and versioned DRAFT, not agreed, and a banner above the Universe says how many are drafts and that a draft is not a licence to operate; gaps and barriers stay on the policy pages",
-        "a pipeline-health strip at the top of /agents/: pushes, deployed, median push to served, superseded and failed in the last hour"
+        "a pipeline-health strip at the top of /agents/: pushes, deployed, median push to served, superseded and failed in the last hour",
+        "design round 18 applied: the live map's colours are the site's tokens in one mapping block (light and dark; no palette of its own; agent state in --ok, --wait, --bad, --focus); /agents/ in order of need: health, asks (six, the rest folded), one line per agent, everything else folded, the map and the Universe behind buttons: about 4,600 px on a phone, from 36,000"
       ],
       "next": [
         "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
@@ -135,9 +136,9 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "bc3369ee87bf4d37ad045e32e0889f891b9f8b3a6b4887605e88a885b0192abd",
+      "status_sha256": "68132114c76ceaf0117298a717c30bffe0a62599c93a01cd1ccceebb50bdade6",
       "state": "active: design rounds on the home page",
-      "last_wake": "2026-11-11T00:13:22Z",
+      "last_wake": "2026-11-11T00:26:12Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
@@ -157,16 +158,20 @@
         "round 14: the timeline as a page (labels, decisions, supersedes links, day dividers, a filter; reads without JavaScript); design/round-14.md",
         "round 15: app/storm.js (shared): the now line in --focus, IPMA's levels in the warning tokens, the weather section links to the front page's drawings; design/round-15.md",
         "round 16: the data page as cards per family (size, last read, next read, links); design/round-16.md",
-        "round 17: the 404 page (and its broken relative links at depth), quotes and lists on document pages; design/round-17.md"
+        "round 17: the 404 page (and its broken relative links at depth), quotes and lists on document pages; design/round-17.md",
+        "round 18: the 00:24 check of the front page against the latest data (nothing to fix); a review of ten pages by other agents; design/round-18.md"
       ],
       "next": [
         "Dinis's page-by-page notes, when they come (through the conductor)",
-        "a review of the other agents' pages against design/README.md; tiles beside the headline at 1440 and wider"
+        "help the owners with the review's findings if asked; tiles beside the headline at 1440 and wider"
       ],
       "asks_dinis": [],
       "asks": [
-        "incident.researcher@ (via the conductor): a day field on decision edges with no stated hours (today ALL_DAY in the build)",
-        "all agents building pages: read design/README.md (nine rules); hand-written pages need the MeteoAlarm footer line"
+        "incident.graph@ (via the conductor): decisions wear the site's red in app/graph/graph.css; red and orange are IPMA's levels only",
+        "incident.observability@: map agents.css's own palette onto the site's tokens; fold the long agents page on phones",
+        "incident.librarian@: the library page is 71,000 px tall on a phone: fold by section",
+        "incident.identity@: account/index.html lacks the footer's MeteoAlarm line",
+        "incident.researcher@: a day field on decision edges with no stated hours (today ALL_DAY in the build)"
       ],
       "keys": [
         {
@@ -189,9 +194,9 @@
       "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
       "shared_row": false,
       "status_file": "agents/identity/status.json",
-      "status_sha256": "37bc5bd7703f96cf92895e256b315cd682841709665f3b162d7b5f52a9ffdd4a",
+      "status_sha256": "b634eee070cb42a836e228a094def8fdc5a0657d92f4561c232f861a8c363f08",
       "state": "active: the login and the sealed feedback box are live on every page; the lane tools are ready and not run; the lane and the vaults wait for Dinis",
-      "last_wake": "",
+      "last_wake": "2026-11-11T00:21:31Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
@@ -203,7 +208,9 @@
         "checked: node tools/lane-test.mjs (21 checks, throwaway keys: accepted when signed by a named sender; refused when unsigned, a stranger's, expired, replayed, re-addressed, changed) and node tools/lane-e2e.mjs (15 checks in Chromium with a virtual passkey: make, seal, POST caught and opened, reply opened, no lane, passphrase, forget, no Content-Security-Policy error)",
         "the box is on every page (the conductor's line in the page frame, aeab8c5); /account/ brought in line with design/README.md (tokens only, the banner and cards, UTC times in monospace, light and dark, a phone)",
         "tools/lane-configure.mjs (opens the lane on the bridge vault; --dry-run calls nothing) and lane-drain.mjs rewritten to SG/Send's append-lane reference (https://sgit.ai/api/append-lanes.md, read 10 November 23:55 UTC); tools/lane-test.mjs is now 30 checks against a stand-in built from that reference",
-        "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says"
+        "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says",
+        "00:21 wake: nothing new from Dinis (no public half, no decision, no token). Tests re-run (lane-test 30, lane-e2e 15: OK); the pins still match pki.sgit.ai (lib v0.2.28; door.js and local.js unchanged). SECURITY.md, the pins and data/lanes.json now carry this agent's detached signature (agents/identity/signed.json, tools/lane-sign.mjs --check)",
+        "00:27, from the designer's review (round 18): /app/login/ now serves a page (the code, file by file); /account/ carries the frame's current nav, notice and footer (the MeteoAlarm line) and the reader's theme. It stays hand-written, not mounted through the frame: the frame has an inline script and other agents' scripts, and /account/ refuses both by its Content-Security-Policy. tools/lane-test.mjs fails if its nav, notice or footer drift from the frame"
       ],
       "next": [
         "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
@@ -213,7 +220,8 @@
       "asks_dinis": [
         "Dinis: three decisions, at the end of SECURITY.md: (1) a new key made on this site behind a passkey, or sign in with your pki.sgit.ai key; (2) how far a signed message from the feedback box carries (recommended: feedback on pages and content; anything hard to undo is confirmed in your session); (3) the SG/Send access token: as a secret in the conductor's environment, or typed only in your browser; and may replies sit in this repository as ciphertext sealed to your key until the bridge vault exists. Never paste a token or a key in chat.",
         "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
-        "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret)."
+        "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret).",
+        "Dinis: one more, small: /account/ is kept outside the site's frame so it can refuse inline and third-party script where your key is made. If you prefer it inside the frame like every other page, say so and the policy is dropped."
       ],
       "asks": [],
       "keys": [
@@ -291,9 +299,9 @@
       "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
       "shared_row": true,
       "status_file": "agents/meteorologist/status.json",
-      "status_sha256": "fd6165d6702d47a53574175c80924978457228a3a6f80a97beba9e467665a6bc",
+      "status_sha256": "c5e1b5fe43f19fe5113de23a9bc8a51194b33f6eef766fffe14e85686265f4e0",
       "state": "23:58: red rain moved to 09:00-18:00 (IPMA CAP sent 21:23; open data lagged 2 h+); CAP feed added (cap.json, issue times: red wind 07:18:40, red rain 16:30:01); met.no second model in forecast.json second_models; analysis section 6",
-      "last_wake": "2026-11-10T23:51Z",
+      "last_wake": "2026-11-11T00:23Z",
       "jobs": [
         "J1 (tonight): the weather as JSON for the dashboard, in incidents/2026-11-10-storm-charles/data/weather/ with a README per file: IPMA warnings for Lisboa (every level change with the time IPMA issued it and the time read), communiqués, Lisbon station observations (hourly), LPPT TAF and METAR (gusts). Read Vicky's desk's watch.mjs and snapshots (desks/weather-vicky/, read-only) and do not duplicate it: go deeper (series, not snapshots).",
         "J2 (tonight): how far ahead could it be known? The first public sign of CHARLES (communiqué no. 1, 9 Nov 13:17), each warning's lead time to its start, and what the models said against what is observed from Wednesday 05:00. Facts, evidence, hypotheses labelled.",
@@ -427,9 +435,9 @@
       "job": "**everything findable and linked**: every brief, document, dataset, decision and agent file on the site, catalogued with provenance (who wrote it, when, from what); the reading list from newsroom.sgit.ai (read its `/llms.txt` and the articles that bear on this site: story as a graph, provenance, corrections, agents' behaviour policies) with what each means for us; a glossary.",
       "shared_row": false,
       "status_file": "agents/librarian/status.json",
-      "status_sha256": "32a3fa4f85c513e247504f9a2e504389a23f04d9a10399b7fd67e6d2b973c4ea",
+      "status_sha256": "b9a0ac10e01459b6c523ffebddbba47816ae1a34dcb6b0549d0a3c8b7468be84",
       "state": "active: the catalogue (built into the served site on every push), the reading list, the standard comparison, the glossary, the release history, the path policy and its check, and 11 draft behaviour policies are pushed",
-      "last_wake": "2026-11-10T23:48Z",
+      "last_wake": "2026-11-11T00:26Z",
       "jobs": [
         "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
         "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
@@ -450,7 +458,8 @@
         "00:08 at the conductor's ask (23:56): a draft behaviour policy for each of the 11 agents in agents/policy.json (agents/<role>/policy.md; Reach, Mandate, Gap, Barriers, Licence to Operate, Provenance; each marked draft, not agreed by Dinis), generated by tools/library-abp.mjs from JOBS.md, policy.json, CLAUDE.md and library/abp.json; the index at library/abp.md. Measured for them: dev and main are both unprotected (branches API, 23:58)",
         "00:10 the gate refused my push: the tracked library/index.json had grown to 272 KB (over the 256 KB rule). Nothing oversized was pushed. The tracked copy is removed; the build makes index.json fresh into the served site on every push (--out); the tracked page library/README.md stays as a snapshot",
         "00:14 at the conductor's ask (00:00): tools/policy-check.mjs prints every change the conductor's catch-all rule alone allows as 'WARN conductor outside its own paths: ...' and, when the conductor releases, appends it once to agents/conductor/cross-folder.log.md for it to commit. Over the history so far: 2 such changes",
-        "00:17 library/README.md no longer tracked either: the conductor's build (d174650) renders the page the catalogue tool writes into the served site; the gate passes and /library/ is built locally"
+        "00:17 library/README.md no longer tracked either: the conductor's build (d174650) renders the page the catalogue tool writes into the served site; the gate passes and /library/ is built locally",
+        "00:30 from the designer's review (design/round-18.md, via the conductor): /library/ is a short index (one row per kind with its count, the gaps as counts); each kind's table is its own generated page under library/kinds/, and the gaps in full at library/kinds/gaps.md. index.json unchanged"
       ],
       "next": [
         "each wake: refresh library/releases-runs.json from the Actions API and rebuild the release history; refresh library/provenance.json",
@@ -571,6 +580,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T00:17:37Z",
-  "content_sha256": "21d11bfae357b5f7fb195ec97a3fe03623809ab54cc59600a1a2c0f5bfc504ef"
+  "updated": "2026-11-11T00:28:45Z",
+  "content_sha256": "d15290a1031d8163ed966218908a997d39ad8d51e8ad3f629fc91072b3c5c700"
 }

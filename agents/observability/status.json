@@ -1,9 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T00:17:36Z",
+  "updated": "2026-11-11T00:28:44Z",
   "state": "active: /agents/ is the one agents page (cards, Dinis's asks, live map, Universe, release speed with CI's own push-to-served, ledger); page views built and off until a vault exists; hourly wake",
-  "last_wake": "2026-11-11T00:17Z",
+  "last_wake": "2026-11-11T00:28Z",
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
     "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -25,7 +25,8 @@
     "release cadence measured after CI stopped cancelling a running deploy (23:56 to 00:14 UTC, GitHub's run records read 00:14:51): 44 pushes (2.5 a minute), 34 deployed, 10 superseded while waiting, 0 failed; a deploy every 24 s at the median (longest gap 95 s); push to run finished 32 s median, 41 s at the 90th percentile, 49 s worst; CI's own push-to-served on the last twelve releases 22 to 32 s",
     "the push-to-served column checked against the real check-runs API (the notice reads '<n> s (<version>)', as the page parses it)",
     "the Circuit reads the librarian's draft policies (agents/<role>/policy.md) as served; every one is titled and versioned DRAFT, not agreed, and a banner above the Universe says how many are drafts and that a draft is not a licence to operate; gaps and barriers stay on the policy pages",
-    "a pipeline-health strip at the top of /agents/: pushes, deployed, median push to served, superseded and failed in the last hour"
+    "a pipeline-health strip at the top of /agents/: pushes, deployed, median push to served, superseded and failed in the last hour",
+    "design round 18 applied: the live map's colours are the site's tokens in one mapping block (light and dark; no palette of its own; agent state in --ok, --wait, --bad, --focus); /agents/ in order of need: health, asks (six, the rest folded), one line per agent, everything else folded, the map and the Universe behind buttons: about 4,600 px on a phone, from 36,000"
   ],
   "next": [
     "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
