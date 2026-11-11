@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T14:53Z",
-  "based_on_read_utc": "2026-11-11T14:23:47Z",
+  "updated": "2026-11-11T15:53Z",
+  "based_on_read_utc": "2026-11-11T15:23:13Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -933,10 +933,10 @@
     },
     {
       "id": "o1",
-      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's eleven reports from 09:00 to 14:00 fall in two parts. Until 13:30 the wind was 17 to 28 km/h, backing from south-south-east through east-south-east to east-north-east and then east again, with no gust reported, heavy rain from 10:30 and visibility down to 1.5 km at 13:00. Then, between 13:30 and 14:00, the wind turned from east to south and rose from 17 to 54 km/h, gusting 74 km/h (40 knots), with heavy rain, wind shear reported on runway 20 and the temperature up 2 °C. The pressure fell from 1001 to 989 hPa and was still falling at 14:00. IPMA's newest station hour is the one labelled 13:00: seven stations in and around Lisbon measured between 5.9 and 26.2 mm of rain in it (Oeiras the most, the heaviest single hour at IPMA's Lisbon stations in the data room's record of the storm; Relógio 20.7; Lisbon's Geofísico 17.0), after 8.7 to 18.7 mm in the hour labelled 12:00; the strongest mean wind among them was 24.8 km/h, at Barreiro. At 12:33 IPMA cut the wind warning these are measured against to gusts up to 90 km/h, 110 in the most exposed places, until 18:00, and the red rain to 15:00. The 74 km/h gust is below the warned gust; the window is not over.",
+      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's thirteen reports from 09:00 to 15:00 fall in two parts. Until 13:30 the wind was 17 to 28 km/h, backing from south-south-east through east to east-north-east and then east again, with no gust reported, heavy rain from 10:30 and visibility down to 1.5 km at 13:00. Between 13:30 and 14:00 the wind turned from east to south and rose from 17 to 54 km/h, gusting 74 km/h (40 knots), with wind shear reported on runway 20 and the temperature up 2 °C; at 15:00 it was south-south-west 41 km/h gusting 61 km/h, the rain over and visibility above 10 km, wind shear still reported. The pressure fell from 1001 to 989 hPa by 14:00 and held at 989 to 15:00. IPMA's newest station hour is the one labelled 14:00: the rain fell to 1.2 to 6.8 mm at seven stations in and around Lisbon (Carnide the most), after 5.9 to 26.2 mm in the hour labelled 13:00 (Oeiras, the heaviest single hour at IPMA's Lisbon stations in the data room's record of the storm), and the strongest mean winds of the day came with it, from the south-west and south, up to 41.0 km/h at Oeiras. The 74 km/h gust is below the gust warned for its hour (90 km/h, 110 in the most exposed places, to 18:00). The red rain ended at 15:00 as set; yellow rain and the orange wind stand to 18:00, so the wind window is not over.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T14:23:47Z",
+      "read_utc": "2026-11-11T15:23:13Z",
       "supports": [
         {
           "kind": "data",
@@ -1107,39 +1107,66 @@
         },
         {
           "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T15:00Z].wind_kmh",
+          "expect": 41
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T15:00Z].wind_dir",
+          "expect": 210
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T15:00Z].gust_kmh",
+          "expect": 61
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T15:00Z].pressure_hpa",
+          "expect": 989
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T15:00Z].raw",
+          "contains": [
+            "9999",
+            "WS R20"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T14:30Z].pressure_hpa",
+          "expect": 989
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=6215302].hourly[time_utc=2026-11-11T14:00Z].rain_mm",
+          "expect": 6.8
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=1210762].hourly[time_utc=2026-11-11T14:00Z].rain_mm",
+          "expect": 1.2
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T14:00Z].rain_mm",
+          "expect": 5.6
+        },
+        {
+          "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
           "field": "stations[id=6215360].hourly[time_utc=2026-11-11T13:00Z].rain_mm",
           "expect": 26.2
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T13:00Z].rain_mm",
-          "expect": 20.7
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=1200535].hourly[time_utc=2026-11-11T13:00Z].rain_mm",
-          "expect": 17
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=1210762].hourly[time_utc=2026-11-11T13:00Z].rain_mm",
-          "expect": 15.8
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=6215302].hourly[time_utc=2026-11-11T13:00Z].rain_mm",
-          "expect": 14.4
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=7240919].hourly[time_utc=2026-11-11T13:00Z].rain_mm",
-          "expect": 12.3
         },
         {
           "kind": "data",
@@ -1149,43 +1176,41 @@
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T12:00Z].rain_mm",
-          "expect": 18.7
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
-          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T12:00Z].rain_mm",
-          "expect": 8.7
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T14:00Z].wind_mean_kmh",
+          "expect": 41
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T13:00Z].wind_mean_kmh",
-          "expect": 24.8
+          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T14:00Z].wind_dir",
+          "expect": "SW"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T15:00Z]",
+          "field": "metars[time_utc=2026-11-11T16:00Z]",
           "absent": true,
-          "note": "A tripwire: when the airport's 15:00 report arrives, this sentence is behind the data and is retold."
+          "note": "A tripwire: when the airport's 16:00 report arrives, this sentence is behind the data and is retold."
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
           "field": "latest_hour_utc",
-          "expect": "2026-11-11T13:00Z",
+          "expect": "2026-11-11T14:00Z",
           "note": "A tripwire: the next station hour."
         },
         {
           "kind": "row",
-          "id": "s-1111T1325"
+          "id": "s-1111T1425"
         },
         {
           "kind": "row",
-          "id": "s-1111T1425"
+          "id": "s-1111T1503"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1524"
         }
       ],
       "at_utc": "2026-11-11T13:00Z"
@@ -1479,13 +1504,13 @@
     },
     {
       "id": "h10",
-      "text": "Our data scientist read the 51 forecasts of ECMWF's ensemble at 11:57: the low crosses the line off Lisbon (9.5° W) north of the city in 10% of them, near it in 41% and south of it in 49%, the middle of them about 15:00; Lisbon's strongest model gust has a median of 69 km/h (10% of forecasts below 55, 10% above 85). These are shares of forecasts, not the chance of it happening; they lean the same way as the meteorologist's reading. Our analysis of a model, not a forecast; IPMA's warnings are what stand.",
+      "text": "Our data scientist read the 51 forecasts of ECMWF's ensemble again at 14:52: the low crosses the line off Lisbon (9.5° W) north of the city in 24% of them, near it in 47% and south of it in 29% (at 11:57: 10%, 41% and 49%), the middle of them about 15:00; Lisbon's strongest model gust has a median of 69 km/h (10% of forecasts below 55, 10% above 85). These are shares of forecasts, not the chance of it happening; they have moved towards the meteorologist's reading of 14:25 (h11). Our analysis of a model, not a forecast; IPMA's warnings are what stand.",
       "label": "hypothesis",
       "model": true,
       "confidence": "medium for the north, near and south split; low for gust values at a point (the file's own words)",
       "said_by": "incident.datascience@web-summit.dinis (analysis of ECMWF's ensemble via Open-Meteo)",
-      "at_utc": "2026-11-11T11:57Z",
-      "read_utc": "2026-11-11T11:57:02Z",
+      "at_utc": "2026-11-11T14:52:46Z",
+      "read_utc": "2026-11-11T15:23:13Z",
       "supports": [
         {
           "kind": "row",
@@ -1501,19 +1526,19 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "shares.north",
-          "expect": 0.1
+          "expect": 0.24
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "shares.near",
-          "expect": 0.41
+          "expect": 0.47
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "shares.south",
-          "expect": 0.49
+          "expect": 0.29
         },
         {
           "kind": "data",
@@ -1543,11 +1568,11 @@
     },
     {
       "id": "c22",
-      "text": "At 12:33:13 on Wednesday IPMA shortened Lisbon's warnings. Red rain now runs from 12:34 to 15:00 (it had run to 18:00), then yellow rain from 15:00 to 18:00. The orange wind warning runs from 12:34 to 18:00 (it had run to 21:00) and now reads \"Rajadas até 90 km/h, podendo atingir 110 km/h nos locais mais expostos\", where the message of 07:16:30 said gusts up to 120 km/h. No new message for the sea: its orange warning, 12:00 to 21:00, stands. IPMA's open-data feed had not caught up at 12:49:59.",
+      "text": "At 12:33:13 on Wednesday IPMA shortened Lisbon's warnings. Red rain now runs from 12:34 to 15:00 (it had run to 18:00), then yellow rain from 15:00 to 18:00. The orange wind warning runs from 12:34 to 18:00 (it had run to 21:00) and now reads \"Rajadas até 90 km/h, podendo atingir 110 km/h nos locais mais expostos\", where the message of 07:16:30 said gusts up to 120 km/h. No new message for the sea: its orange warning, 12:00 to 21:00, stands. The red rain ended at 15:00 as that message set it, and no newer message for Lisbon had been sent by the 15:23:13 read: yellow rain and the orange wind stand to 18:00, the orange sea to 21:00. IPMA's open-data feed caught up with the message of 12:33 at about 14:20, 1 hour 50 minutes later.",
       "label": "fact",
       "said_by": "IPMA's CAP messages, as carried by MeteoAlarm's feed",
       "at_utc": "2026-11-11T12:33:13Z",
-      "read_utc": "2026-11-11T12:49:59Z",
+      "read_utc": "2026-11-11T15:23:13Z",
       "supports": [
         {
           "kind": "data",
@@ -1612,17 +1637,25 @@
         {
           "kind": "row",
           "id": "s-1111T1247"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1425"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1503"
         }
       ]
     },
     {
       "id": "h11",
-      "text": "At 14:25 the meteorologist revised the reading again, revising the one of 12:25: with the airport's wind turning from east to south and rising to 54 km/h gusting 74, wind shear, and the temperature up 2 °C while the pressure still fell, a warm sector is arriving, and the centre is now more likely to pass just north of Lisbon, as read at 09:25. On that reading Lisbon is now in the strongest-wind sector (south to south-west), turning west to north-west once the pressure rises; the airport forecast has the wind from 290 degrees from 16:00 to 18:00. The pressure minimum and the turn to the west will test it. This is our analysis and not a forecast; IPMA's warnings are what stand.",
+      "text": "At 14:25 the meteorologist revised the reading again, revising the one of 12:25: with the airport's wind turning from east to south and rising to 54 km/h gusting 74, wind shear, and the temperature up 2 °C while the pressure still fell, a warm sector is arriving, and the centre is now more likely to pass just north of Lisbon, as read at 09:25. On that reading Lisbon is now in the strongest-wind sector (south to south-west), turning west to north-west once the pressure rises; the airport forecast has the wind from 290 degrees from 16:00 to 18:00. The pressure minimum and the turn to the west will test it. At 15:25 (analysis 22), with the airport's pressure steady at 989 hPa for an hour and the wind south-south-west, the meteorologist wrote that the centre is passing just north now; the worst rain was 12:00 to 14:30 and the strongest wind from 14:00, turning west to north-west from 16:00 to 18:00 by the airport forecast. This is our analysis and not a forecast; IPMA's warnings are what stand.",
       "label": "hypothesis",
       "confidence": "not stated in the analysis's summary (it revises the medium-confidence reading of 12:25)",
       "said_by": "incident.meteorologist@web-summit.dinis (analysis; not IPMA's words)",
       "at_utc": "2026-11-11T14:25Z",
-      "read_utc": "2026-11-11T14:23:47Z",
+      "read_utc": "2026-11-11T15:23:13Z",
       "supports": [
         {
           "kind": "row",
@@ -1642,6 +1675,18 @@
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "metars[time_utc=2026-11-11T14:00Z].wind_dir",
           "expect": 190
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+          "field": "updates[time_utc=2026-11-11T15:25Z].summary",
+          "contains": [
+            "centre passing just north now"
+          ]
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1524"
         }
       ],
       "qualified_by": [
@@ -1892,6 +1937,16 @@
         "o1",
         "o2",
         "c15",
+        "h11"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T15:53Z",
+      "what": "On the 15:23:13 read. c22: the red rain ended at 15:00 as set (before: the open-data feed had not caught up at 12:49:59; now: it caught up about 14:20, no newer message for Lisbon). o1 retold: before, eleven airport reports to 14:00 and the station hour labelled 13:00; now thirteen to 15:00 (south-south-west 41 km/h gusting 61, 989 hPa steady) and the hour labelled 14:00 (rain down to 1.2 to 6.8 mm, mean wind up to 41.0 km/h at Oeiras). h10 retold: ensemble shares north/near/south were 10/41/49%, now 24/47/29% (14:52 read). h11 adds analysis 22 (15:25: the centre passing just north now).",
+      "claims_changed": [
+        "c22",
+        "o1",
+        "h10",
         "h11"
       ]
     }
