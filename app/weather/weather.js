@@ -238,7 +238,12 @@
     var wet = null, windiest = null
     st.forEach(function (s) { var l = s.latest; if (!l) return; if (l.rain_mm != null && (!wet || l.rain_mm > wet.latest.rain_mm)) wet = s; if (l.wind_mean_kmh != null && (!windiest || l.wind_mean_kmh > windiest.latest.wind_mean_kmh)) windiest = s })
     ;((D.rain || {}).stations || []).forEach(function (s) { var l = (s.hourly || [])[s.hourly.length - 1]; if (l && l.rain_mm != null && (!wet || l.rain_mm > (wet.latest || wet._l).rain_mm)) wet = { name: s.name, _l: l, latest: l } })
-    var before = function (type, at) { var w = lisbonWarnings().filter(function (w) { return w.type === type && status(w, t) === 'in force' }).sort(function (a, b) { return RANK[b.level] - RANK[a.level] })[0]; return w && T(at) <= T(w.start_utc) ? 'before IPMA\'s ' + esc(w.level) + ' ' + esc((EN[w.type] || w.type).toLowerCase()) + ' warning began (' + when(w.start_utc, t) + ')' : '' }
+    // the observed hour (the hour to `at`) against IPMA's warnings: say which one covered it, if any; else, if one is in force now, that it began after
+    var before = function (type, at) {
+      var ws = lisbonWarnings().filter(function (w) { return w.type === type }), hi = function (a, b) { return RANK[b.level] - RANK[a.level] }
+      var c = ws.filter(function (w) { return T(w.start_utc) < T(at) && T(w.end_utc) > T(at) - 36e5 }).sort(hi)[0]
+      if (c) return 'during IPMA\'s ' + esc(c.level) + ' ' + esc((EN[c.type] || c.type).toLowerCase()) + ' warning (' + when(c.start_utc, t) + ' to ' + when(c.end_utc, t) + ')'
+      var w = ws.filter(function (w) { return status(w, t) === 'in force' }).sort(hi)[0]; return w && T(at) <= T(w.start_utc) ? 'before IPMA\'s ' + esc(w.level) + ' ' + esc((EN[w.type] || w.type).toLowerCase()) + ' warning began (' + when(w.start_utc, t) + ')' : '' }
     var tiles = []
     if (geo) tiles.push(['Temperature', num(geo.latest.temp_c, 1) + '<small>°C</small>', esc(geo.name) + ', the hour to ' + hm(geo.latest.time_utc), prov('stations', 'IPMA stations', geo.read_utc), T(geo.latest.time_utc)])
     if (wet) tiles.push(['Rain, the hour to ' + hm(wet.latest.time_utc), num(wet.latest.rain_mm, 1) + '<small>mm</small>', 'the wettest of IPMA\'s Lisbon stations: ' + esc(wet.name) + ', the hour to ' + hm(wet.latest.time_utc), prov('rain', 'IPMA stations', (D.rain || D.stations).read_utc), T(wet.latest.time_utc), before('Precipitação', wet.latest.time_utc)])
