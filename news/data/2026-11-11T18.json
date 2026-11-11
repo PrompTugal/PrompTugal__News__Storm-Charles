@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T18:00:00Z and 2026-11-11T19:00:00Z: the facts behind the article news/2026-11-11T18.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T18:44:11Z",
+ "updated": "2026-11-11T18:57:46Z",
  "window": {
   "from": "2026-11-11T18:00:00Z",
   "to": "2026-11-11T19:00:00Z"
@@ -13,21 +13,25 @@
  ],
  "versions": {
   "first": "v0.1.1416",
-  "last": "v0.1.1447",
-  "pushed": 30,
-  "served": 14,
+  "last": "v0.1.1456",
+  "pushed": 41,
+  "served": 35,
   "as_of": "library/releases/2026-11-11T18.json",
-  "not_confirmed": 2,
+  "not_confirmed": 6,
   "failed": 0
  },
  "by_agent": [
   {
    "agent": "incident.conductor@web-summit.dinis",
-   "commits": 4
+   "commits": 5
   },
   {
    "agent": "incident.librarian@web-summit.dinis",
-   "commits": 3
+   "commits": 5
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 4
   },
   {
    "agent": "incident.weatherwatch@web-summit.dinis",
@@ -54,12 +58,12 @@
    "commits": 2
   },
   {
-   "agent": "incident.archivist@web-summit.dinis",
+   "agent": "incident.social@web-summit.dinis",
    "commits": 2
   },
   {
-   "agent": "incident.stories@web-summit.dinis",
-   "commits": 1
+   "agent": "incident.archivist@web-summit.dinis",
+   "commits": 2
   },
   {
    "agent": "incident.desk@web-summit.dinis",
@@ -67,10 +71,6 @@
   },
   {
    "agent": "incident.shadow@web-summit.dinis",
-   "commits": 1
-  },
-  {
-   "agent": "incident.social@web-summit.dinis",
    "commits": 1
   },
   {
@@ -100,11 +100,20 @@
   {
    "agent": "incident.accountant@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
+   "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-11T1841Z.md",
   "design/round-64.md",
+  "news/2026-11-11T18.md",
   "research/media/people/miguel-videira.md"
  ],
  "new_datasets": [
@@ -132,6 +141,22 @@
   "data/ci/index.json",
   "data/ci/runs/2026-11-11T17.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-datasets.json",
+  "data/graph/storm-decisions.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage-2.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
   "data/keys.json",
   "entities/agent/accountant.json",
   "entities/agent/archivist.json",
@@ -421,6 +446,27 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/warnings.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
   "sources/meteoalarm/dataset.json",
@@ -428,7 +474,7 @@
  ],
  "new_tools": [],
  "added": {
-  "files": 25,
+  "files": 26,
   "by_area": [
    {
     "area": "board",
@@ -447,7 +493,7 @@
     "files": 3
    },
    {
-    "area": "library",
+    "area": "news",
     "files": 2
    },
    {
@@ -467,13 +513,17 @@
     "files": 1
    },
    {
+    "area": "library",
+    "files": 1
+   },
+   {
     "area": "shadow",
     "files": 1
    }
   ]
  },
  "changed": {
-  "files": 449,
+  "files": 585,
   "by_area": [
    {
     "area": "entities",
@@ -481,23 +531,31 @@
    },
    {
     "area": "research",
-    "files": 61
+    "files": 70
+   },
+   {
+    "area": "sources",
+    "files": 65
+   },
+   {
+    "area": "library",
+    "files": 40
    },
    {
     "area": "incidents/2026-11-10-storm-charles/data",
     "files": 29
    },
    {
+    "area": "data",
+    "files": 28
+   },
+   {
     "area": "accounts",
-    "files": 22
+    "files": 26
    },
    {
     "area": "agents",
-    "files": 18
-   },
-   {
-    "area": "data",
-    "files": 12
+    "files": 23
    },
    {
     "area": "board",
@@ -508,10 +566,6 @@
     "files": 8
    },
    {
-    "area": "sources",
-    "files": 6
-   },
-   {
     "area": "reporter",
     "files": 5
    },
@@ -520,12 +574,12 @@
     "files": 5
    },
    {
-    "area": "news",
-    "files": 4
+    "area": "stories",
+    "files": 5
    },
    {
-    "area": "library",
-    "files": 3
+    "area": "news",
+    "files": 4
    },
    {
     "area": "app",
@@ -537,6 +591,10 @@
    },
    {
     "area": "journal",
+    "files": 2
+   },
+   {
+    "area": "tools",
     "files": 2
    },
    {
@@ -553,10 +611,6 @@
    },
    {
     "area": "incidents/2026-11-10-storm-charles/timeline.md",
-    "files": 1
-   },
-   {
-    "area": "tools",
     "files": 1
    }
   ]
@@ -810,6 +864,69 @@
    "by": "incident.transport@web-summit.dinis",
    "what": "handover: state at 18:44 (context near the limit)",
    "files": 1
+  },
+  {
+   "commit": "a731753e",
+   "at": "2026-11-11T18:53:01Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "timeline 18:53: VOST 1,602 occurrences 15:00-17:00; Lusa catches up on no red (evidence)",
+   "files": 2
+  },
+  {
+   "commit": "c3fc26f9",
+   "at": "2026-11-11T18:53:12Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 18:44 wake: 17:00 to 18:00 closed, 18:00 opened (Lisbon's yellow rain ended, sea orange to 21:00; bridges normal; CP Douro); round 5c and section 7",
+   "files": 49
+  },
+  {
+   "commit": "3b9e51bb",
+   "at": "2026-11-11T18:53:23Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "1cb05d5a",
+   "at": "2026-11-11T18:55:52Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "o1/n4 closed on the 18:23 read (yellow rain ended 18:00); c16 retold, h3 support moved off a dropped hour",
+   "files": 2
+  },
+  {
+   "commit": "49c5d2af",
+   "at": "2026-11-11T18:56:28Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 18:52 UTC: Lisbon's yellow rain ended at 18:00; only the sea warnings remain",
+   "files": 61
+  },
+  {
+   "commit": "06faf7a0",
+   "at": "2026-11-11T18:56:45Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "rows s-1111T1744 and s-1111T1703 placed (press p20: the wire behind IPMA; nobody n3 and Day 2 d11: Thursday as the press relays it)",
+   "files": 3
+  },
+  {
+   "commit": "1b02e23d",
+   "at": "2026-11-11T18:57:03Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "hourly 18:53: 560 nodes, 767 edges; coverage 525",
+   "files": 17
+  },
+  {
+   "commit": "0c84ebdb",
+   "at": "2026-11-11T18:57:25Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "18:52 wake: VOST's 1602 occurrences offered; word match takes plural warnings",
+   "files": 13
+  },
+  {
+   "commit": "c487c98e",
+   "at": "2026-11-11T18:57:46Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "18:50 wake: mainland n7 and n16 (VOST count, bridges back to normal); status, handover, measure",
+   "files": 4
   }
  ]
 }

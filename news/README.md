@@ -16,7 +16,8 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 18:00 to 19:00 | [18:00 to 19:00, 11 November: Lisbon's yellow rain ends at 18:00, only the sea warning left; both Lisbon bridges back to normal; CP's Douro line interrupted](2026-11-11T18.md) | v0.1.1416 to v0.1.1447 (14 served of 30) | 35 |
+| 2026-11-11 19:00 to 20:00 | [19:00 to 20:00, 11 November: IPMA's first message since 15:55 ends rain warnings in the north-east, nothing changes for Lisbon; the Trafaria ferry back; the Prime Minister says the worst is 'practically over' (press)](2026-11-11T19.md) | v0.1.1457 to v0.1.1486 (12 served of 30) | 34 |
+| 2026-11-11 18:00 to 19:00 | [18:00 to 19:00, 11 November: Lisbon's yellow rain ends at 18:00, only the sea warning left; both Lisbon bridges back to normal; CP's Douro line interrupted](2026-11-11T18.md) | v0.1.1416 to v0.1.1456 (35 served of 41) | 44 |
 | 2026-11-11 17:00 to 18:00 | [17:00 to 18:00, 11 November: the wind turns west at the airport; Web Summit promises Thursday with an 11:00 press conference (press); a Lusa report still has Faro red, IPMA's own data has none](2026-11-11T17.md) | v0.1.1384 to v0.1.1415 (29 served of 32) | 35 |
 | 2026-11-11 16:00 to 17:00 | [16:00 to 17:00, 11 November: IPMA ends Lisbon's orange wind at 15:56 and lifts the last red on the mainland; CP's Beira Baixa line cut by a landslip](2026-11-11T16.md) | v0.1.1331 to v0.1.1383 (47 served of 53) | 55 |
 | 2026-11-11 15:00 to 16:00 | [15:00 to 16:00, 11 November: Lisbon's red rain ends at 15:00; IPMA lowers Santarém and Leiria to yellow, only Faro still red; the PSP reports Lisbon's tunnels closed; CP suppresses trains over the bridge](2026-11-11T15.md) | v0.1.1275 to v0.1.1330 (46 served of 56) | 58 |
