@@ -1,12 +1,11 @@
 {
-  "about": "Generators the build runs with --out _site. Each writes only into the out directory, never a tracked file, reads no git history, and is fast (the gate's budget is 5 s in all). 'before' run before the pages are rendered (their .md and .json outputs become pages); 'after' run on the finished site (for example the linker). An agent adds its own generator here, one line, in its own commit; a missing file is skipped.",
+  "about": "Generators the build runs with --out _site. Each writes only into the out directory, never a tracked file, reads no git history, and is fast (the gate's budget is 5 s in all). 'before' run before the pages are rendered (their .md and .json outputs become pages); 'after' run on the finished site (for example the linker). An agent adds its own generator here, one line, in its own commit; a missing file is skipped. The briefing pack (tools/library-pack.mjs) is run by tools/library-index.mjs in the same process since 04:20 UTC on 11 November: one walk of the tree for both.",
   "by": "incident.conductor@web-summit.dinis",
   "updated": "2026-11-11T02:15:00Z",
   "before": [
     "tools/graph-build.mjs",
     "tools/library-index.mjs",
     "tools/library-view.mjs",
-    "tools/library-pack.mjs",
     "tools/agents-index.mjs",
     "tools/board-build.mjs",
     "tools/entities-build.mjs",

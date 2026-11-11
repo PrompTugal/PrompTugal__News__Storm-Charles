@@ -42,7 +42,7 @@ function listFiles() {
     const walk = d => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { if (skip.has(e.name)) continue; const f = path.join(d, e.name); e.isDirectory() ? walk(f) : acc.push(path.relative(ROOT, f).split(path.sep).join('/')) } }
     walk(ROOT); return acc
 }
-const listNow = () => [...new Set([...listFiles().filter(f => fs.existsSync(path.join(ROOT, f))), ...GENERATED])].sort()
+const listNow = () => [...new Set([...listFiles().filter(f => fs.statSync(path.join(ROOT, f), { throwIfNoEntry: false })?.isFile()), ...GENERATED])].sort()
 let files = listNow()
 let fileSet = new Set(files)
 
@@ -136,7 +136,15 @@ const nearAuthor = s => { const m = s.match(CUE) || s.match(/^>\s*Dinis Cruz,/m)
 const datedOf = s => { const m = s.match(DATED); return m ? `${m[3]}-${p2(MONTHS[m[2]])}-${p2(m[1])}` + (m[4] ? `T${p2(m[4])}:${m[5]}Z` : '') : '' }
 const plain = s => s.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*`>]/g, '').replace(/\s+/g, ' ').trim()
 const cut = (s, n = 260) => s.length <= n ? s : s.slice(0, n).replace(/\s+\S*$/, '') + ' …'
+// a reference resolves by the folder it is written in, not the file: the answer is kept per (folder, reference), since the same
+// few addresses are written thousands of times (11 November: the catalogue's cost, at the conductor's word)
+const refMemo = new Map()
 const resolveRef = (from, ref) => {
+    const k = path.posix.dirname(from) + '\0' + ref
+    let r = refMemo.get(k); if (r === undefined) refMemo.set(k, r = resolveRef0(from, ref))
+    return r
+}
+const resolveRef0 = (from, ref) => {
     ref = ref.split('#')[0].split('?')[0]; if (!ref || /^[a-z]+:/i.test(ref)) return ''
     const cands = [path.posix.normalize(path.posix.join(path.posix.dirname(from), ref)), path.posix.normalize(ref.replace(/^\//, ''))]
     for (let c of cands) { if (fileSet.has(c)) return c; c = c.replace(/\/$/, ''); if (fileSet.has(c + '/README.md')) return c + '/README.md'; if (fileSet.has(c.replace(/\.html$/, '.md'))) return c.replace(/\.html$/, '.md') }
@@ -156,7 +164,10 @@ function read(f) {
         made_from: ['every file in this repository', 'library/provenance/ (who committed what)'],
         links_to: [], external_links: 0, commits: null, changed: '', ...urls(f)
     }
-    const buf = fs.readFileSync(path.join(ROOT, f)), text = buf.toString('utf8'), ext = path.extname(f).toLowerCase()
+    // each file is read once and hashed once; only markdown and JSON are decoded whole (a script or a stylesheet is catalogued by
+    // its first 30 lines, so 16 KB of it is decoded, not all of it)
+    const buf = fs.readFileSync(path.join(ROOT, f)), ext = path.extname(f).toLowerCase()
+    const text = ext === '.md' || ext === '.json' ? buf.toString('utf8') : buf.subarray(0, 16384).toString('utf8')
     const e = { path: f, kind: kindOf(f), title: '', what: '', by: '', by_from: '', dated: '', dated_from: '', made_from: [], links_to: [], external_links: 0, bytes: buf.length, sha256: sha(buf), ...urls(f) }
     if (ext === '.md') {
         let body = text, fm = {}
@@ -308,3 +319,10 @@ if (args.has('--check')) {
 const DEST = OUT_DIR || ROOT
 for (const [f, s] of targets) { fs.mkdirSync(path.dirname(path.join(DEST, f)), { recursive: true }); fs.writeFileSync(path.join(DEST, f), s) }
 console.log(`library-index: ${entries.length} files, ${Object.keys(counts).length} kinds, gaps: ${Object.entries(gaps).map(([k, v]) => `${k} ${v.length}`).join(', ')}${args.has('--git') ? '; commits read' : ''}`)
+
+// ---------------------------------------------------------------- the pack, in the same pass
+// The briefing pack (tools/library-pack.mjs) needs this catalogue and the size and sha256 of the files it points at. It used to run as
+// its own generator: a second process that parsed the 2.8 MB index.json just written and read and hashed its files again. It now
+// runs here, on the entries in memory: one walk of the tree, one read and one hash per file, for both. `--no-pack` leaves it out;
+// `node tools/library-pack.mjs --out DIR` still works alone (it then reads DIR/library/index.json).
+if (OUT_DIR && !args.has('--no-pack')) { globalThis.__libraryCatalogue = entries; await import('./library-pack.mjs') }

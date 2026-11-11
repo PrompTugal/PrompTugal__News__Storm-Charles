@@ -25,11 +25,13 @@ const J = f => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, f), 'ut
 const now = new Date(), iso = now.toISOString().replace(/\.\d+Z$/, 'Z'), stamp = `${iso.slice(0, 10)}, ${iso.slice(11, 16)} UTC`
 const statCache = new Map()
 const stat = f => { if (statCache.has(f)) return statCache.get(f); const v = stat0(f); statCache.set(f, v); return v }
-const stat0 = f => { try { const b = fs.readFileSync(path.join(fs.existsSync(path.join(ROOT, f)) ? ROOT : OUT, f)); return { bytes: b.length, sha256: crypto.createHash('sha256').update(b).digest('hex') } } catch { return null } }
+// the catalogue has already read and hashed every tracked file in this build: its numbers are used, and only a file it does not
+// hold (one written into the out directory by a generator) is read here
+const stat0 = f => { const c = catBy.get(f); if (c && c.sha256 && Number.isFinite(c.bytes)) return { bytes: c.bytes, sha256: c.sha256 }; try { const b = fs.readFileSync(path.join(fs.existsSync(path.join(ROOT, f)) ? ROOT : OUT, f)); return { bytes: b.length, sha256: crypto.createHash('sha256').update(b).digest('hex') } } catch { return null } }
 // measured by incident.accountant@ in a real session (accounts/pack-test.json, 11 November 02:56 UTC): the whole files came to
 // 2.39 bytes a token and the pack, which is dense JSON in part, to 1.62; so prose is estimated at bytes / 2.4 and JSON at bytes / 1.6
 const tok = (b, json) => Math.round(b / (json ? 1.6 : 2.4))
-const n = x => x.toLocaleString('en-GB')
+const n = x => String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ',')   // 12,345: the same as en-GB, without loading the locale data (20 ms)
 const cut = (s, k) => { s = String(s || '').replace(/\s+/g, ' ').trim(); return s.length <= k ? s : s.slice(0, k).replace(/\s+\S*$/, '') + ' …' }
 const cell = s => String(s ?? '').replace(/\|/g, '/').replace(/\n/g, ' ')
 const short = a => String(a).replace(/@web-summit\.dinis\b/g, '@')
@@ -39,7 +41,7 @@ const view = f => `../../view/index.html?path=${f}`
 const pointer = (f, stands) => { const s = stat(f); if (!s) return `\`${f}\` (not found at this build)`; stands.set(f, s.bytes); return `\`${f}\` (${n(s.bytes)} B, ${s.sha256.slice(0, 10)})` }
 const fill = (text, stands) => text.replace(/\[\[file:([^\]]+)\]\]/g, (_, f) => pointer(f, stands))
 const policy = J('agents/policy.json') || { agents: {}, everyone: { owns: [] } }
-const cat = (() => { try { return JSON.parse(fs.readFileSync(path.join(OUT, 'library/index.json'), 'utf8')).entries } catch { return [] } })()
+const cat = globalThis.__libraryCatalogue || (() => { try { return JSON.parse(fs.readFileSync(path.join(OUT, 'library/index.json'), 'utf8')).entries } catch { return [] } })()
 const rx = g => new RegExp('^' + g.split(/(\*\*|\*)/).map(p => p === '**' ? '.*' : p === '*' ? '[^/]*' : p.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('') + '$')
 const catBy = new Map(cat.map(e => [e.path, e]))
 const owners = Object.entries(policy.agents).map(([agent, r]) => ({ agent, role: r.role, res: [...(r.owns || []), `agents/${r.role}/**`].filter(g => g !== '**').map(rx) }))
