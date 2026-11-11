@@ -121,7 +121,7 @@ if (!NO_API) try {
     const bySha = new Map(commits.map(c => [c.sha, c]))
     runs = await pool(list.filter(r => r.path === '.github/workflows/deploy.yml'), 8, async r => {
         const old = prevRuns.get(r.id)
-        if (old && old.result !== 'in progress' && old.result !== 'queued' && old.attempt === r.run_attempt) return old
+        if (old && old.result !== 'in progress' && old.result !== 'queued' && old.attempt === r.run_attempt && (old.run < 418 || old.p === 2)) return old
         const done = r.status === 'completed', c = bySha.get(r.head_sha)
         const o = {
             run: r.run_number, id: r.id, attempt: r.run_attempt, version: `v${SERIES}.${r.run_number}`, sha: r.head_sha, branch: r.head_branch, event: r.event,
@@ -134,8 +134,15 @@ if (!NO_API) try {
             if (job) {
                 o.started = job.started_at ? iso(job.started_at) : null; o.queue_s = secs(r.created_at, job.started_at)
                 if (done && job.completed_at) { o.ended = iso(job.completed_at); o.run_s = secs(job.started_at, job.completed_at) }
-                o.steps = (job.steps || []).filter(s => !/^(Post |Complete job)/.test(s.name)).map(s => ({ step: (STEP.find(([re]) => re.test(s.name)) || [0, s.name])[1], s: secs(s.started_at, s.completed_at), result: s.conclusion || s.status }))
-                const bad = (job.steps || []).find(s => s.conclusion === 'failure'); if (bad) o.failed_step = (STEP.find(([re]) => re.test(bad.name)) || [0, bad.name])[1]
+                // since run 418 the workflow tries the deploy a second time when the first fails (ci/patches, applied 9ed312b):
+                // a skipped step is left out; the second try is its own step; a run the retry saved is "success" with deploy_retried
+                let deploys = 0
+                const stepName = s => { const n = (STEP.find(([re]) => re.test(s.name)) || [0, s.name])[1]; return n === 'deploy' && ++deploys > 1 ? 'deploy (2nd try)' : /^Wait before/.test(s.name) ? 'wait' : n }
+                o.steps = (job.steps || []).filter(s => !/^(Post |Complete job)/.test(s.name)).map(s => ({ step: stepName(s), s: secs(s.started_at, s.completed_at), result: s.conclusion || s.status })).filter(s => s.result !== 'skipped')
+                o.p = 2
+                const first = o.steps.find(s => s.step === 'deploy'), second = o.steps.find(s => s.step === 'deploy (2nd try)')
+                if (first?.result === 'failure' && second) o.deploy_retried = second.result
+                const bad = o.steps.filter(s => s.result === 'failure').at(-1); if (bad && r.conclusion === 'failure') o.failed_step = bad.step
                 if (done) {
                     const ann = await api(`/check-runs/${job.id}/annotations`)
                     const pts = ann.find(a => a.title === 'push-to-served'); if (pts) o.push_to_served_s = Number((pts.message.match(/^(\d+) s/) || [])[1] ?? NaN)
@@ -241,6 +248,7 @@ const index = {
         steps, slowest_step: steps.slice().sort((a, b) => b.median_s - a.median_s || b.max_s - a.max_s)[0] || null,
         gate: { budget_s: Number((fs.readFileSync(path.join(ROOT, 'admin/build/validate.mjs'), 'utf8').match(/over its (\d+) s budget/) || [0, 5])[1]), last_20_max_s: gate20.length ? Math.max(...gate20) : null, last_20_median_s: q(gate20.slice().sort((a, b) => a - b), .5), note: 'the step\'s seconds as GitHub timed them (whole seconds, node start included); the gate prints its own milliseconds in the run\'s log' },
         queue: { last_20_max_s: queue20.length ? Math.max(...queue20) : null, last_20_median_s: q(queue20.slice().sort((a, b) => a - b), .5) },
+        deploy_retries: runs.filter(r => r.deploy_retried).map(r => ({ run: r.run, at: r.queued, second_try: r.deploy_retried, result: r.result, push_to_served_s: r.push_to_served_s ?? null, url: r.url })),
         failures: runs.filter(r => r.result === 'failure').map(r => ({ run: r.run, at: r.queued, agent: short(r.agent), failed_step: r.failed_step || null, reason: r.reason || 'not recorded', url: r.url })),
         last: runs.slice(-12).reverse().map(r => ({ run: r.run, version: r.version, result: r.result, agent: short(r.agent), queued: r.queued, push_to_served_s: r.push_to_served_s ?? null, what: r.what }))
     },
