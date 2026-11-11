@@ -13,6 +13,8 @@ import { fileURLToPath } from 'node:url'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = path.join(ROOT, 'data/agents/commits.json'), REPO = 'PrompTugal/PrompTugal__News__Storm-Charles'
 const ref = process.argv[2] || 'origin/dev'
+// a shallow clone (a fresh session's is one) holds only the last few dozen commits: writing from it would replace the night with an hour
+if (execFileSync('git', ['-C', ROOT, 'rev-parse', '--is-shallow-repository']).toString().trim() === 'true') { console.error('this clone is shallow: run "git fetch --unshallow origin dev" first; nothing written'); process.exit(1) }
 const raw = execFileSync('git', ['-C', ROOT, 'log', ref, '-n', '1500', '--format=%H%x1f%cI%x1f%B%x1e'], { maxBuffer: 1 << 26 }).toString()
 const clean = s => s.replace(/https?:\/\/claude\.ai\/code\/session_[A-Za-z0-9]+/g, '').replace(/\bsession_[A-Za-z0-9]{8,}\b/g, '')
 const items = raw.split('\x1e').map(r => r.trim()).filter(Boolean).map(r => {

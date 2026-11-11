@@ -10,6 +10,7 @@ const SCRIPT = String.raw`
 # repository's release.sh. Commit your source changes first. Run: node tools/agents-release.mjs
 set -uo pipefail
 cd "$(git rev-parse --show-toplevel)"
+[ "$(git rev-parse --is-shallow-repository)" = true ] && git fetch -q --unshallow origin dev   # a fresh session's clone is shallow; the three tools read the whole night
 git fetch -q origin dev
 if ! git rebase -q origin/dev 2>/dev/null; then
   bad=$(git diff --name-only --diff-filter=U | grep -v '^data/agents/\(index\|commits\)\.json$' || true)
