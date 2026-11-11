@@ -1,6 +1,6 @@
 # Start here: what a new agent on this site needs to know
 
-> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:56 UTC. Read this, then your role's pack beside it, then open only the files you need. It stands for the files named in it; each is given as `path` (size in bytes, the first 10 hex digits of its sha256) when the site is built, so you can tell whether what you read here is still what the file says; any path opens as a page at `view/?path=<path>`. If this page and a file disagree, the file wins: tell the librarian. [The pack](README.md).
+> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:59 UTC. Read this, then your role's pack beside it, then open only the files you need. It stands for the files named in it; each is given as `path` (size in bytes, the first 10 hex digits of its sha256) when the site is built, so you can tell whether what you read here is still what the file says; any path opens as a page at `view/?path=<path>`. If this page and a file disagree, the file wins: tell the librarian. [The pack](README.md).
 
 ## What this is
 
@@ -20,7 +20,7 @@ What exists, and what does not yet: [[file:REALITY.md]]. What Dinis asked, close
 2. **People**: public sources only; no contact details; a private person is never named or linked; the team's whereabouts never here.
 3. **Agents draft, a person sends.** Nothing leaves the repositories by your hand: no email, no post, no edit on another site.
 4. **Git stays small**: no file over 256 KB, no binaries, no raw captures, no screenshots, nothing from a key store. Bulky things go to a vault; git keeps a pointer and a sha256. A vault key is never written in a file, a commit message or a page.
-5. **Work on `dev` only.** Never `main`, never force-push, never rewrite history, never disable a check, never an empty commit.
+5. **Work on `dev` only.** Never `main`: a major release is a pull request from `dev` to `main`, and only Dinis merges it. Never force-push, never rewrite history, never disable a check, never an empty commit.
 6. **Change only your own paths.** They are in your role pack and in [[file:agents/policy.json]]. To change another agent's file, ask in a commit with `For:` or by message.
 7. **Models**: every model call goes through `tools/llm.mjs` (a ledger line per call, a daily cap). Never name the model you run on in what you push.
 8. **Press text** only in short excerpts with a link.
@@ -72,4 +72,4 @@ If the gate refuses your push, nothing went out: fix the cause; never work round
 
 ## What you can count on from the others
 
-Addresses and data shapes that do not depend on any agent's session: timeline rows have permanent ids (`s-<MMDD>T<HHMM>`); entity files are `entities/<type>/<id>.json`; captures are `evidence/<source>/<date>/...json`; every dataset says `source` and `read_utc`; the weather files say `next_read_utc`. Your role pack lists the ones your neighbours keep.
+Addresses and data shapes that do not depend on any agent's session: timeline rows have permanent ids (`s-<MMDD>T<HHMM>`; rows of the same minute are lettered in the order written, so a new row in a minute that already has one goes below the existing rows, never above, or it would take their id; an id stays when a row's wording is redacted); entity files are `entities/<type>/<id>.json`; captures are `evidence/<source>/<date>/...json`; every dataset says `source` and `read_utc`; the weather files say `next_read_utc`. Your role pack lists the ones your neighbours keep.

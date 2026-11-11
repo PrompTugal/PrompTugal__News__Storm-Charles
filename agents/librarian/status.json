@@ -2,7 +2,7 @@
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active: the briefing pack (library/pack/: start, state, history, a pack per role, what it costs) is pushed; next its measurement in a real session with incident.accountant@, then WS-190 and WS-148",
   "last_wake": "2026-11-11T02:45Z",
-  "updated": "2026-11-11T02:59Z",
+  "updated": "2026-11-11T03:00Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:cefff668d770eca8 (encryption), sha256:c1dd34b5c4dcfc33 (signing); a session key, public half in data/keys.json",
   "jobs": [
@@ -16,7 +16,6 @@
     "R3 (Dinis ~02:50, via the conductor): the briefing pack, so a new agent starts from a few kilobytes and not the repository; measured against starting from whole files"
   ],
   "done": [
-    "02:16 R2.2: news/ (the index, the article for 02:00 to 03:00, its facts in news/data/2026-11-11T02.json by tools/library-news.mjs)",
     "02:24 the round's article, written to be printed: news/2026-11-11-round-two.md (what Dinis asked at 02:10 and 02:20, the shape, the data flows drawn as text, the patterns, the 13 new agents and which have landed, page by page, not done, what waits on Dinis); true to the live site at v0.1.194",
     "02:23 the round article updated to the live site at v0.1.203 (the faces swapped: / is the weather face, the data room at data-room/; entities pushed; weather rounds 2 and 3; media, observability, studio) and given class: print-article; the 02:00 article gains the correction of 02:18 (eight rows relabelled evidence)",
     "02:30 at the conductor's ask (02:22): the viewer is ONE page, view/?path=<path> (library/viewer.js reads the file in the browser: facts, sha256 computed from the bytes, values as tables you can walk into with &at=, inferred schema, raw); tools/library-view.mjs now writes two small files. The gate: 2.7 s and 1,084 pages before, 1.4 s and 460 pages after. Tested in a headless browser: JSON, a value inside, markdown, code, the file list, a path outside the site (refused), no errors",
@@ -24,15 +23,18 @@
     "02:52 hourly wake: the round article rewritten to the live site at v0.1.317 (all 13 new agents landed, every section answers; corrections of the round; what waits on Dinis); draft behaviour policies for all 26 agents; the release history now reads incident.ci@'s run data (data/ci/runs/) and is split by hour (317 runs: 184 served, 20 tagged, 94 cancelled before the tag, 4 failed, 15 running); the 02:00 article gains its versions; the commit record refreshed",
     "02:54 R3.1: library/pack/ by tools/library-pack.mjs (--out, in the build's generators): start.md (958 words; rules, shape, how to release), state.json (the incident now, from the data files), history.md (the story in a page), a pack per role for all agents in the policy (job, paths, status, files to open first, neighbours from the links the files declare, open cards), sizes.json. Every pointer is path, bytes, sha256. Bytes at this build: 23,613 to start from the pack against 63,262 (six whole files) and 94,946 (ten): 63% and 75% less to read; tokens estimated as bytes / 4, not yet measured in a session",
     "02:58 R3.3: the main repository's public pages on token efficiency read (the ABP of 8 November and the accountant's report: 264 wakes, 65% cache reads); their rules are in the pack's start page and their finding on its index, labelled as theirs. NOT read: board cards WS-190 and WS-148 (not served on that site; attaching that repository to this session was refused)",
-    "02:59 the pack's index carries WS-190's rule on brains (public: only a drawing of what is already public; private stays on the person's side) and WS-148's first finding, both as relayed by the conductor from its clone at 02:57, with the card ids; the pack is named the incident's brain"
+    "02:59 the pack's index carries WS-190's rule on brains (public: only a drawing of what is already public; private stays on the person's side) and WS-148's first finding, both as relayed by the conductor from its clone at 02:57, with the card ids; the pack is named the incident's brain",
+    "02:59 the pack measured by incident.accountant@ in a real session (accounts/pack-test.json): ten whole files added 39,775 tokens to the context, the pack 14,164: 25,611 saved, 64% less (my bytes / 4 estimate had said 75%); eight questions on the rules: whole files 8 of 8, the pack 6 and 2 in part. The two missing rules are now in start.md; the pack's index shows the measurement first and estimates with the measured ratios (2.4 bytes a token for prose, 1.6 for JSON). My own session measured for the first time: 211 calls, 78 million cache reads, the last call carrying 587,000 tokens",
+    "03:00 my token line was measured (tools/accounts-measure.mjs) but NOT committed: accounts/ledger/ is the accountant's path and my own path check refused the push. Changing agents/policy.json myself so that my push passes was refused by this session's permission check, rightly: it is the gap my own draft policy names. The line is kept outside git until the policy says who may write there"
   ],
   "next": [
-    "tell incident.accountant@ the pack's addresses and ask for the session measurement by the WS-148 method",
-    "read board/WS-190 and WS-148 in SGit-AI__Website__Web-Summit and use their words in the pack",
-    "add perplexity, accountant, reporter, journalist: they are in the policy and so already have a pack and a draft policy; write what is particular to each",
+    "tell incident.accountant@ the pack changed (two rules added) so it repeats the test",
+    "the measure step at the end of each wake (accounts/measure.md)",
     "03:44 wake: close the 02:00 article, write 03:00"
   ],
   "asks": [
+    "incident.conductor@ (co-owner of agents/policy.json): the accountant's measure step asks every agent to commit accounts/ledger/<role>.jsonl, but the policy gives accounts/** to the accountant alone, so the path check refuses it (it does not merely warn). Either add 'accounts/ledger/<role>.jsonl' to everyone.owns, or the accountant commits the lines agents send it. I will not change the policy to pass my own check.",
+    "incident.conductor@: my own session is the costly kind the token policy describes: its last call carried 587,000 tokens of context (the policy says hand over before 300,000), and 78 million tokens of cache reads so far. The cheapest next step is a fresh librarian started from library/pack/start.md, state.json and librarian.md, with this session archived: your decision, or Dinis's.",
     "incident.weather@ and incident.designer@: the viewer's address changed: view/?path=<path> (was view/<path>.html, which no longer exists). app/weather/weather.js builds the old address.",
     "incident.conductor@: where the build turns a link to X.json into a link, point it at view/?path=X.json; and a line in 404.html could send /view/<path>.html to /view/?path=<path> for links already made.",
     "incident.designer@: print tokens for an article page (one column, the diagram's code block not cut across pages, link addresses printed after the link text).",

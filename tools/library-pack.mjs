@@ -11,7 +11,7 @@
 //                                               catalogue). It writes only under <out>/library/pack/; no git history; no network.
 //
 // A pack is a pointer, not a copy: every line names the file it summarises, with its sha256, so an agent reads the pack and
-// opens only what it needs, and can tell when a summary has gone stale. Tokens are estimated as bytes / 4 and said to be so.
+// opens only what it needs, and can tell when a summary has gone stale. Tokens are estimated from bytes with the accountant's measured ratios, and the measured test is shown beside them.
 import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
@@ -26,7 +26,9 @@ const now = new Date(), iso = now.toISOString().replace(/\.\d+Z$/, 'Z'), stamp =
 const statCache = new Map()
 const stat = f => { if (statCache.has(f)) return statCache.get(f); const v = stat0(f); statCache.set(f, v); return v }
 const stat0 = f => { try { const b = fs.readFileSync(path.join(fs.existsSync(path.join(ROOT, f)) ? ROOT : OUT, f)); return { bytes: b.length, sha256: crypto.createHash('sha256').update(b).digest('hex') } } catch { return null } }
-const tok = b => Math.round(b / 4)
+// measured by incident.accountant@ in a real session (accounts/pack-test.json, 11 November 02:56 UTC): the whole files came to
+// 2.39 bytes a token and the pack, which is dense JSON in part, to 1.62; so prose is estimated at bytes / 2.4 and JSON at bytes / 1.6
+const tok = (b, json) => Math.round(b / (json ? 1.6 : 2.4))
 const n = x => x.toLocaleString('en-GB')
 const cut = (s, k) => { s = String(s || '').replace(/\s+/g, ' ').trim(); return s.length <= k ? s : s.slice(0, k).replace(/\s+\S*$/, '') + ' …' }
 const cell = s => String(s ?? '').replace(/\|/g, '/').replace(/\n/g, ' ')
@@ -138,7 +140,7 @@ ${neigh(readBy, 'of yours') || '- Nothing links to your files yet.'}
 
 ${cards.length ? cards.map(c => `- \`${c.id}\` (${c.kind}${c.state ? ', ' + c.state : ''}): ${cell(cut(c.title, 160))}${c.waiting_on ? `; waiting on ${cell(short(c.waiting_on))}` : ''}`).join('\n') + `\n\nEach card: \`board/items/<id>.json\`.` : 'None that name you as owner or wait on you.'}
 `
-    const tail = `\n## What this pack cost you\n\n${n(Buffer.byteLength(md))} bytes (about ${n(tok(Buffer.byteLength(md)))} tokens, estimated as bytes / 4). It points at ${stands.size} files of ${n([...stands.values()].reduce((a, b) => a + b, 0))} bytes; your own files are ${n(mineBytes)} bytes.\n`
+    const tail = `\n## What this pack cost you\n\n${n(Buffer.byteLength(md))} bytes (about ${n(tok(Buffer.byteLength(md)))} tokens, estimated at 2.4 bytes a token). It points at ${stands.size} files of ${n([...stands.values()].reduce((a, b) => a + b, 0))} bytes; your own files are ${n(mineBytes)} bytes.\n`
     fs.writeFileSync(path.join(P, role + '.md'), md + tail)
     sizes.push({ pack: role + '.md', role, agent, bytes: Buffer.byteLength(md + tail), stands_for: { files: stands.size, bytes: [...stands.values()].reduce((a, b) => a + b, 0) }, own_files: { files: mine.length, bytes: mineBytes } })
     roles.push(role)
@@ -151,13 +153,16 @@ const sum = l => l.reduce((a, f) => a + B(f), 0)
 const sz = k => (sizes.find(s => s.pack === k) || { bytes: 0 }).bytes
 const rolesSz = sizes.filter(s => s.role).map(s => s.bytes).sort((a, b) => a - b), median = rolesSz[Math.floor(rolesSz.length / 2)] || 0
 const startCost = sz('start.md') + sz('state.json') + median
+const startTok = tok(sz('start.md')) + tok(sz('state.json'), true) + tok(median)
+const measured = J('accounts/pack-test.json')
+const mArm = k => (measured?.arms || []).find(a => a.arm === k) || null
 const cost = {
-    about: 'What each part of the briefing pack costs to read, against the files it stands for. Bytes are measured; tokens are ESTIMATED as bytes / 4 (a rule of thumb for English and JSON; the real count depends on the model\'s tokenizer and is for incident.accountant@ to measure in a session). "Starting from whole files" is what the start prompts of 10 and 11 November asked each new agent to read: six to ten whole files.',
-    by: ME, updated: iso, made_by: 'tools/library-pack.mjs', token_rule: 'bytes / 4, an estimate, not a measurement',
-    start_from_the_pack: { reads: ['start.md', 'state.json', 'one role pack (the median)'], bytes: startCost, tokens_estimated: tok(startCost) },
+    about: 'What each part of the briefing pack costs to read, against the files it stands for. Bytes are measured at each build; tokens are estimated from them with ratios incident.accountant@ measured in a session, and that session\'s own figures are under "measured". "Starting from whole files" is what the start prompts of 10 and 11 November asked each new agent to read: six to ten whole files.',
+    by: ME, updated: iso, made_by: 'tools/library-pack.mjs', token_rule: 'prose: bytes / 2.4; JSON: bytes / 1.6 (ratios measured by incident.accountant@ in accounts/pack-test.json; still an estimate for any other file)', measured: measured ? { by: measured.by, run_at: measured.run_at, file: 'accounts/pack-test.json', whole_files_tokens: mArm('whole files')?.tokens_added_by_reading, pack_tokens: mArm('the pack')?.tokens_added_by_reading, tokens_saved_at_start: measured.result?.tokens_saved_at_start, less_to_read: measured.result?.less_to_read, answers: { whole_files: mArm('whole files')?.answers, pack: mArm('the pack')?.answers }, limits: measured.limits } : null,
+    start_from_the_pack: { reads: ['start.md', 'state.json', 'one role pack (the median)'], bytes: startCost, tokens_estimated: startTok },
     start_from_whole_files: { six: { files: whole.six, bytes: sum(whole.six), tokens_estimated: tok(sum(whole.six)) }, ten: { files: whole.ten, bytes: sum(whole.ten), tokens_estimated: tok(sum(whole.ten)) } },
-    saving_estimated: { against_six: `${Math.round(100 * (1 - startCost / (sum(whole.six) || 1)))}%`, against_ten: `${Math.round(100 * (1 - startCost / (sum(whole.ten) || 1)))}%`, note: 'Reading only. It does not count what an agent then opens from the pack\'s pointers, nor the tokens of the session\'s own tools and replies. Measured in a real session: not yet.' },
-    packs: sizes.map(s => ({ ...s, tokens_estimated: tok(s.bytes), stands_for_tokens_estimated: tok(s.stands_for.bytes) }))
+    saving_estimated: { against_six: `${Math.round(100 * (1 - startTok / (tok(sum(whole.six)) || 1)))}%`, against_ten: `${Math.round(100 * (1 - startTok / (tok(sum(whole.ten)) || 1)))}%`, note: 'In tokens, by the measured ratios. Reading only: it does not count what an agent then opens from the pack\'s pointers, nor the session\'s own floor (its harness and tools), which the pack cannot reduce.' },
+    packs: sizes.map(s => ({ ...s, tokens_estimated: tok(s.bytes, s.pack.endsWith('.json')), stands_for_tokens_estimated: tok(s.stands_for.bytes) }))
 }
 fs.writeFileSync(path.join(P, 'sizes.json'), JSON.stringify(cost, null, 1) + '\n')
 fs.writeFileSync(path.join(P, 'README.md'), `# The briefing pack (the incident's brain): start an agent here, not from the whole repository
@@ -168,15 +173,24 @@ fs.writeFileSync(path.join(P, 'README.md'), `# The briefing pack (the incident's
 
 ## What it costs
 
-Bytes are measured at this build. **Tokens are estimated as bytes / 4**; the real figure is for incident.accountant@ to measure in a session, and is **not yet** measured.
+**Measured** by incident.accountant@ in a real session${measured ? ` at ${String(measured.run_at).slice(11, 16)} UTC on ${String(measured.run_at).slice(0, 10)}` : ''} ([accounts/pack-test.json](../../view/index.html?path=accounts/pack-test.json)): the same job started twice, once from ten whole files and once from three files of this pack.
+
+${measured ? `| Started from | Bytes read | Tokens added to the context | Eight questions on the rules |
+|---|---|---|---|
+| ten whole files | ${n(mArm('whole files').bytes)} | **${n(mArm('whole files').tokens_added_by_reading)}** | ${mArm('whole files').answers.right} of ${mArm('whole files').answers.of} right |
+| the pack (start.md, state.json, one role pack) | ${n(mArm('the pack').bytes)} | **${n(mArm('the pack').tokens_added_by_reading)}** | ${mArm('the pack').answers.right} right, ${mArm('the pack').answers.partly} in part |
+
+**${n(measured.result.tokens_saved_at_start)} tokens saved at the start: ${Math.round(100 * measured.result.less_to_read)}% less to read**, and the same again on every later call of the session, because each call re-reads its context. The two answers the pack got only in part were two rules missing from start.md (who merges to main; where a new row of the same minute goes); both were added at 02:59 UTC, after the test. The test's limits, in the accountant's words: ${(measured.limits || []).join('; ')}. A session carries about 64,000 to 85,000 tokens before it reads anything (its harness and tools): the pack cannot reduce that part.` : '**Not yet measured.**'}
+
+**At this build** (the pack changes with every push; bytes are counted, tokens estimated with the ratios that test measured: about 2.4 bytes a token for prose, 1.6 for JSON):
 
 | To start an agent | Bytes | Tokens (estimated) |
 |---|---|---|
-| from the pack: start.md, state.json and one role pack (the median) | ${n(startCost)} | about ${n(tok(startCost))} |
+| from the pack: start.md, state.json and one role pack (the median) | ${n(startCost)} | about ${n(startTok)} |
 | from six whole files, as the first start prompts asked (${whole.six.map(f => f.split('/').pop()).join(', ')}) | ${n(sum(whole.six))} | about ${n(tok(sum(whole.six)))} |
 | from ten whole files, as the later ones did | ${n(sum(whole.ten))} | about ${n(tok(sum(whole.ten)))} |
 
-Estimated saving on the reading alone: **${cost.saving_estimated.against_six} against six files, ${cost.saving_estimated.against_ten} against ten**. It does not count what the agent then opens from the pointers, and a pack that misleads costs more than it saves: the test is whether an agent started from it does the job without re-reading the repository. The figures as data: [sizes.json](sizes.json).
+A pack that misleads costs more than it saves: the test is whether an agent started from it does the job without re-reading the repository. The figures as data: [sizes.json](sizes.json).
 
 ## Why the start matters more than its size
 
@@ -195,7 +209,7 @@ On measuring, from card WS-148 ("An accountant agent for Indi's agents: every ag
 | Pack | For | Bytes | Tokens (est.) | Stands for |
 |---|---|---|---|---|
 | [start.md](start.md) | every agent | ${n(sz('start.md'))} | ${n(tok(sz('start.md')))} | ${(s => `${s.files} files, ${n(s.bytes)} bytes`)(sizes.find(s => s.pack === 'start.md')?.stands_for || { files: 0, bytes: 0 })} |
-| [state.json](state.json) | every agent | ${n(sz('state.json'))} | ${n(tok(sz('state.json')))} | ${(s => `${s.files} files, ${n(s.bytes)} bytes`)(sizes.find(s => s.pack === 'state.json').stands_for)} |
+| [state.json](state.json) | every agent | ${n(sz('state.json'))} | ${n(tok(sz('state.json'), true))} | ${(s => `${s.files} files, ${n(s.bytes)} bytes`)(sizes.find(s => s.pack === 'state.json').stands_for)} |
 | [history.md](history.md) | when the past matters | ${n(sz('history.md'))} | ${n(tok(sz('history.md')))} | ${(s => `${s.files} files, ${n(s.bytes)} bytes`)(sizes.find(s => s.pack === 'history.md')?.stands_for || { files: 0, bytes: 0 })} |
 ${sizes.filter(s => s.role).map(s => `| [${s.role}.md](${s.role}.md) | ${short(s.agent)} | ${n(s.bytes)} | ${n(tok(s.bytes))} | its own ${s.own_files.files} files, ${n(s.own_files.bytes)} bytes; points at ${s.stands_for.files} |`).join('\n')}
 
