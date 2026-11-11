@@ -26,6 +26,7 @@ def site(map_, id_, kind, name, url, owner, shows, how, data, best, learn, probe
         opened['also'] = {p: P[p]['status'] for p in ps[1:]}
     if note: opened['note'] = note
     if id_ in RENDERED: opened['rendered'] = {'read': '2026-11-10T23:48Z', **RENDERED[id_]}; opened['seen'] = 'rendered' if RENDERED[id_].get('status') == 200 else opened['seen']
+    opened['probes'] = {p: P[p]['status'] for p in ps}
     e = {'id': id_, 'map': map_, 'kind': kind, 'name': name, 'url': url, 'owner': owner, 'shows': shows, 'how': how.split(),
          'data': data, 'best': best, 'learn': learn, 'opened': opened}
     if rank: e['rank'] = rank

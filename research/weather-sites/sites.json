@@ -1,6 +1,6 @@
 {
  "about": "Three maps of weather sites, for incident.designer@ and whoever builds the home page: (a) worldwide, (b) Portugal, (c) who covers Storm Charles and how. Kept by incident.weatherwatch@web-summit.dinis. Public sources only. This is research about how others present weather; it is not a forecast and not a warning service: warnings are IPMA's.",
- "updated": "2026-11-11T00:30Z",
+ "updated": "2026-11-11T02:12Z",
  "by": "incident.weatherwatch@web-summit.dinis",
  "method": "Each address was requested once from this session with a plain HTTP GET (no login, no script execution) between 23:38Z and 23:47Z on 10 November 2026. opened.status is the HTTP status; opened.read the UTC time; opened.seen says what the description rests on: \"rendered\" = also drawn in a headless browser at 23:48Z and looked at (opened.rendered.saw says what was seen; no image is kept); \"html\" = content read in the returned page; \"json\" = a data answer was read; \"shell\" = the page is drawn by script, only its shell and labels were read, and the description of the interactive part is general knowledge of the product, not an observation of this read; \"blocked\" = refused (401/403/429/bot check); \"failed\" = no answer or 404. Licence lines say \"read\" where the terms page was opened; otherwise they say so.",
  "fields": {
@@ -67,6 +67,14 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "UK warnings page with a day strip; \"No warnings\" for Tuesday 10 November, so the warning layout itself was not seen in use."
+    },
+    "probes": {
+     "metoffice": "200",
+     "metoffice-warnings": "200",
+     "metoffice-stormcentre": "200",
+     "metoffice-datapoint": "200",
+     "l-metoffice": "200",
+     "c-metoffice-surface": "200"
     }
    },
    "rank": 2
@@ -103,6 +111,12 @@
      "nws-api": "200",
      "l-nws": "200",
      "spc": "200"
+    },
+    "probes": {
+     "nws": "200",
+     "nws-api": "200",
+     "l-nws": "200",
+     "spc": "200"
     }
    },
    "rank": 5
@@ -133,7 +147,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "nhc": "200"
+    }
    }
   },
   {
@@ -163,6 +180,12 @@
     "read": "2026-11-10T23:38Z",
     "seen": "html",
     "also": {
+     "dwd-warnings": "200",
+     "dwd-opendata": "200",
+     "l-dwd": "200"
+    },
+    "probes": {
+     "dwd": "200",
      "dwd-warnings": "200",
      "dwd-opendata": "200",
      "l-dwd": "200"
@@ -203,6 +226,11 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "One card: \"Vigilance météorologique et crues\", issued 10 November 16:00, valid to 12 November 00:00 (Paris time); two tabs, \"Aujourd'hui\" and \"Demain\" (the second greyed with \"Prochaine carte à 06h\": it says when the next map comes); the map by département in four colours with the legend as actions (\"Soyez attentif\", \"Soyez très vigilant\", \"Vigilance absolue\"); \"cartes par phénomène\" as a list; under the map one bar per phenomenon along the hours of the day (0h to 0h); and the line \"updated at least twice a day, at 6h and 16h\"."
+    },
+    "probes": {
+     "vigilance": "200",
+     "meteofrance": "200",
+     "l-meteofrance": "200"
     }
    },
    "rank": 6
@@ -242,7 +270,16 @@
      "c-aemet-borrascas": "200",
      "c-aemet-avisos": "200"
     },
-    "note": "the 2026-2027 table lists Adam (16 Oct, AEMET) and Bruna (5 Nov, IPMA); the Charles row had no date or naming service filled in at 23:38Z"
+    "note": "the 2026-2027 table lists Adam (16 Oct, AEMET) and Bruna (5 Nov, IPMA); the Charles row had no date or naming service filled in at 23:38Z",
+    "probes": {
+     "aemet": "200",
+     "aemet-avisos": "200",
+     "aemet-borrascas": "200",
+     "aemet-opendata": "200",
+     "l-aemet": "200",
+     "c-aemet-borrascas": "200",
+     "c-aemet-avisos": "200"
+    }
    }
   },
   {
@@ -282,6 +319,13 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "Lisbon, hourly table for Wednesday 11 November: above the table, five warning banners for Lisboa in English, each starting with a status word (\"Ongoing: Yellow Coastal Event Warning\", \"Expected: Orange Rain Warning\", \"Expected: Red Rain Warning\", \"Expected: Red Wind Warning\", \"Expected: Orange Coastal Event Warning\"), each expandable; under them one row per hour: time, symbol, temperature, precipitation in mm, wind speed in m/s with an arrow, and the wind in words (\"Fresh breeze from south east\"). No gust column was shown. The automatic rows read 4 to 10 m/s for Lisbon under a banner carrying the red wind warning: the page does not comment on the difference."
+    },
+    "probes": {
+     "yr": "200",
+     "yr-lisbon": "200",
+     "metno-api": "200",
+     "metno-lisbon": "200",
+     "l-metno": "200"
     }
    },
    "rank": 1
@@ -313,6 +357,10 @@
     "seen": "html",
     "also": {
      "l-knmi": "200"
+    },
+    "probes": {
+     "knmi": "200",
+     "l-knmi": "200"
     }
    }
   },
@@ -339,7 +387,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "shell"
+    "seen": "shell",
+    "probes": {
+     "smhi": "200"
+    }
    }
   },
   {
@@ -368,6 +419,10 @@
     "read": "2026-11-10T23:38Z",
     "seen": "html",
     "also": {
+     "l-fmi": "200"
+    },
+    "probes": {
+     "fmi": "200",
      "l-fmi": "200"
     }
    }
@@ -399,6 +454,10 @@
     "seen": "shell",
     "also": {
      "jma-bosai": "200"
+    },
+    "probes": {
+     "jma": "200",
+     "jma-bosai": "200"
     }
    }
   },
@@ -426,7 +485,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "bom": "200"
+    }
    }
   },
   {
@@ -454,7 +516,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "eccc": "200"
+    }
    }
   },
   {
@@ -486,6 +551,9 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "Rendered, but only navigation text was captured; the time bar was not checked."
+    },
+    "probes": {
+     "meteoswiss": "200"
     }
    },
    "rank": 8
@@ -514,7 +582,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "meteireann": "200"
+    }
    }
   },
   {
@@ -545,7 +616,12 @@
      "ecmwf-opendata": "200",
      "l-ecmwf": "200"
     },
-    "note": "charts.ecmwf.int answered with a bot check; the open-data and licence pages were read"
+    "note": "charts.ecmwf.int answered with a bot check; the open-data and licence pages were read",
+    "probes": {
+     "ecmwf-charts": "200",
+     "ecmwf-opendata": "200",
+     "l-ecmwf": "200"
+    }
    }
   },
   {
@@ -573,6 +649,10 @@
     "read": "2026-11-10T23:38Z",
     "seen": "shell",
     "also": {
+     "l-eumetsat": "200"
+    },
+    "probes": {
+     "eumetsat-view": "200",
      "l-eumetsat": "200"
     }
    }
@@ -612,6 +692,13 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "Portugal: a map coloured by district (Madeira red; the mainland yellow and orange at 23:00 to 02:00), a time bar with buttons Now, +24h and each day to Saturday plus \"Animation\", filters by awareness level and hazard type, and a list of areas, one row per warning with the hazard pictogram on its colour."
+    },
+    "probes": {
+     "meteoalarm": "200",
+     "meteoalarm-pt": "200",
+     "meteoalarm-feed": "200",
+     "c-meteoalarm-pt-feed": "200",
+     "l-meteoalarm": "200"
     }
    },
    "rank": 7
@@ -640,7 +727,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "shell"
+    "seen": "shell",
+    "probes": {
+     "wmo-swic": "200"
+    }
    }
   },
   {
@@ -667,6 +757,11 @@
     "read": "2026-11-10T23:38Z",
     "seen": "shell",
     "also": {
+     "efas": "200",
+     "c-copernicus-act": "200"
+    },
+    "probes": {
+     "copernicus-ems": "200",
      "efas": "200",
      "c-copernicus-act": "200"
     }
@@ -697,6 +792,10 @@
     "read": "2026-11-10T23:38Z",
     "seen": "shell",
     "also": {
+     "l-gibs": "200"
+    },
+    "probes": {
+     "nasa-worldview": "200",
      "l-gibs": "200"
     }
    }
@@ -736,6 +835,13 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "Lisbon: a card \"Tonight\" with one sentence (\"Thundery showers and a gentle breeze\"), day tabs for eight days with high and low, an hour row (symbol, temperature, chance of precipitation, a wind circle with speed), \"Last updated today at 23:02\", then a rain map with a play button and a week-long time bar. No warning of any kind was shown for Lisbon on the eve of IPMA's red warnings: outside the UK the page carries no authority's warnings."
+    },
+    "probes": {
+     "bbc-weather": "200",
+     "bbc-lisbon": "200",
+     "l-bbc": "200",
+     "c-bbc-weather-news": "200",
+     "c-bbc-search": "200"
     }
    },
    "rank": 3
@@ -765,7 +871,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "weathercom": "200"
+    }
    }
   },
   {
@@ -790,7 +899,10 @@
    "opened": {
     "status": "403",
     "read": "2026-11-10T23:38Z",
-    "seen": "blocked"
+    "seen": "blocked",
+    "probes": {
+     "accuweather": "403"
+    }
    }
   },
   {
@@ -819,7 +931,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "meteoblue": "200"
+    }
    },
    "rank": 10
   },
@@ -849,6 +964,10 @@
     "seen": "html",
     "also": {
      "wu-pws-lisbon": "200"
+    },
+    "probes": {
+     "wunderground": "200",
+     "wu-pws-lisbon": "200"
     }
    }
   },
@@ -875,7 +994,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "foreca": "200"
+    }
    }
   },
   {
@@ -901,7 +1023,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "weatherandradar": "200"
+    }
    }
   },
   {
@@ -941,6 +1066,12 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "The gust layer over Portugal rendered as a full-screen map with place labels; no text about warnings."
+    },
+    "probes": {
+     "windy": "200",
+     "c-windy-lisbon": "200",
+     "c-windy-embed": "200",
+     "l-windy": "200"
     }
    },
    "rank": 4
@@ -971,6 +1102,10 @@
     "seen": "shell",
     "also": {
      "c-ventusky-embed": "200"
+    },
+    "probes": {
+     "ventusky": "200",
+     "c-ventusky-embed": "200"
     }
    }
   },
@@ -996,7 +1131,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "shell"
+    "seen": "shell",
+    "probes": {
+     "nullschool": "200"
+    }
    }
   },
   {
@@ -1027,7 +1165,11 @@
     "also": {
      "c-zoomearth-storms": "200"
     },
-    "note": "no page for Charles (it tracks tropical systems)"
+    "note": "no page for Charles (it tracks tropical systems)",
+    "probes": {
+     "zoomearth": "200",
+     "c-zoomearth-storms": "200"
+    }
    }
   },
   {
@@ -1057,6 +1199,11 @@
     "also": {
      "openmeteo-api": "200",
      "l-openmeteo": "200"
+    },
+    "probes": {
+     "openmeteo": "200",
+     "openmeteo-api": "200",
+     "l-openmeteo": "200"
     }
    },
    "rank": 9
@@ -1082,7 +1229,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "pirateweather": "200"
+    }
    }
   },
   {
@@ -1110,6 +1260,10 @@
     "read": "2026-11-10T23:38Z",
     "seen": "html",
     "also": {
+     "l-rainviewer": "200"
+    },
+    "probes": {
+     "rainviewer": "200",
      "l-rainviewer": "200"
     }
    }
@@ -1141,6 +1295,11 @@
     "also": {
      "lightningmaps": "200",
      "l-blitzortung": "200"
+    },
+    "probes": {
+     "blitzortung": "200",
+     "lightningmaps": "200",
+     "l-blitzortung": "200"
     }
    }
   },
@@ -1167,7 +1326,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "meteociel": "200"
+    }
    }
   },
   {
@@ -1192,7 +1354,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "wetterzentrale": "200"
+    }
    }
   },
   {
@@ -1218,7 +1383,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "tropicaltidbits": "200"
+    }
    }
   },
   {
@@ -1251,6 +1419,10 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "Guincho: a \"Live Wind\" strip of nearby stations with their current reading first (Cabo Raso, Cascais), then the table: columns every two hours for a week, rows for wind speed, gusts, direction, wave, period, temperature, cloud, rain, every cell coloured by its value; the same table repeated per model below, with the model run time (\"init\") on each."
+    },
+    "probes": {
+     "windguru": "200",
+     "windguru-guincho": "200"
     }
    }
   },
@@ -1277,7 +1449,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "windfinder": "200"
+    }
    }
   },
   {
@@ -1305,6 +1480,10 @@
     "seen": "html",
     "also": {
      "c-estofex": "200"
+    },
+    "probes": {
+     "estofex": "200",
+     "c-estofex": "200"
     }
    }
   },
@@ -1330,7 +1509,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "eswd": "200"
+    }
    }
   },
   {
@@ -1358,6 +1540,10 @@
     "seen": "html",
     "also": {
      "c-severeweathereu": "200"
+    },
+    "probes": {
+     "severeweathereu": "200",
+     "c-severeweathereu": "200"
     }
    }
   },
@@ -1383,7 +1569,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "fuberlin": "200"
+    }
    }
   },
   {
@@ -1408,7 +1597,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:38Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "mesonet": "200"
+    }
    }
   },
   {
@@ -1433,7 +1625,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:39Z",
-    "seen": "json"
+    "seen": "json",
+    "probes": {
+     "aviationweather": "200"
+    }
    }
   },
   {
@@ -1457,7 +1652,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:39Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "ogimet": "200"
+    }
    }
   },
   {
@@ -1486,6 +1684,11 @@
     "also": {
      "meteologix": "403",
      "weatherus": "403"
+    },
+    "probes": {
+     "kachelmann": "403",
+     "meteologix": "403",
+     "weatherus": "403"
     }
    }
   },
@@ -1511,7 +1714,10 @@
    "opened": {
     "status": "403",
     "read": "2026-11-10T23:38Z",
-    "seen": "blocked"
+    "seen": "blocked",
+    "probes": {
+     "wxcharts": "403"
+    }
    }
   },
   {
@@ -1536,7 +1742,10 @@
    "opened": {
     "status": "403",
     "read": "2026-11-10T23:38Z",
-    "seen": "blocked"
+    "seen": "blocked",
+    "probes": {
+     "netweather": "403"
+    }
    }
   },
   {
@@ -1561,7 +1770,10 @@
    "opened": {
     "status": "202",
     "read": "2026-11-10T23:38Z",
-    "seen": "blocked"
+    "seen": "blocked",
+    "probes": {
+     "pivotal": "202"
+    }
    }
   },
   {
@@ -1602,6 +1814,12 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "Home (updated 2026/11/10 23:31 UTC): tabs \"Hoje\", \"Amanhã\", \"Depois de Amanhã\", each with a warning triangle in the day's highest colour (red, red, yellow); the daily forecast map; the warnings map (mainland, Azores, Madeira); a \"Comunicados\" box; yesterday's extremes by station; small tiles for model charts, satellite, seismic activity."
+    },
+    "probes": {
+     "ipma": "200",
+     "ipma-en": "200",
+     "c-ipma-home": "200",
+     "l-ipma-api": "200"
     }
    },
    "rank": 1
@@ -1640,6 +1858,11 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "Lisboa, last update 10 November 21:23 UTC: eight hazard rows (thunder, sea state, rain, wind, snow, cold, heat, fog) by 72 hourly cells for 11, 12 and 13 November, coloured green, yellow, orange, red; under it each warning as a coloured bar with hazard, level, start and end and one line of text, e.g. \"Vento - Vermelho [11 Nov 12:00 - 11 Nov 21:00]: Rajadas até 120 km/h, podendo atingir 140 km/h nos locais mais expostos\" and \"Precipitação - Vermelho [11 Nov 09:00 - 11 Nov 18:00]\"; a district list on the right with each district's highest level; \"Toda a informação em horas UTC\"."
+    },
+    "probes": {
+     "ipma-avisos": "200",
+     "c-ipma-avisos-page": "200",
+     "ipma-api-warnings": "200"
     }
    },
    "rank": 2
@@ -1669,6 +1892,11 @@
     "read": "2026-11-10T23:39Z",
     "seen": "html",
     "also": {
+     "ipma-comunicados-rss": "200",
+     "c-ipma-comunicados": "200"
+    },
+    "probes": {
+     "ipma-comunicados": "200",
      "ipma-comunicados-rss": "200",
      "c-ipma-comunicados": "200"
     }
@@ -1704,6 +1932,10 @@
      "read": "2026-11-10T23:48Z",
      "status": 200,
      "saw": "Lisboa (updated 2026-11-10 19:56:03 UTC): ten day tabs, each with symbol, min and max, wind, rain probability and the day's warning colour as a label (\"Amarelo\", \"Vermelho\", \"Amarelo\"); under them one column per hour of Wednesday 11 with rows: symbol, probability of precipitation, temperature and felt temperature, mean wind in km/h with direction, sea state (height, direction, water temperature) and a last row, \"Avisos Meteorológicos\", one coloured cell per hour (yellow, then orange, then red from 09H to 21H). The mean wind row reads 11 to 23 km/h under the red cells; the page explains in its notes that this automatic forecast may differ from the forecasters' descriptive forecast and warnings, which should be consulted."
+    },
+    "probes": {
+     "ipma-lisboa": "200",
+     "ipma-api-daily": "200"
     }
    },
    "rank": 3
@@ -1743,6 +1975,17 @@
      "ipma-significativa": "200",
      "ipma-cartas": "200",
      "ipma-api-obs": "200"
+    },
+    "probes": {
+     "ipma-radar": "200",
+     "ipma-sat": "200",
+     "ipma-superficie": "200",
+     "ipma-dea": "200",
+     "ipma-mar": "200",
+     "ipma-descritiva": "200",
+     "ipma-significativa": "200",
+     "ipma-cartas": "200",
+     "ipma-api-obs": "200"
     }
    }
   },
@@ -1770,6 +2013,12 @@
     "read": "2026-11-10T23:39Z",
     "seen": "html",
     "also": {
+     "prociv-avisos": "200",
+     "c-prociv-avisos": "200",
+     "prociv-ocorrencias": "200"
+    },
+    "probes": {
+     "prociv": "200",
      "prociv-avisos": "200",
      "c-prociv-avisos": "200",
      "prociv-ocorrencias": "200"
@@ -1805,6 +2054,13 @@
      "vost": "200",
      "c-fogos-home": "200",
      "c-vost": "200"
+    },
+    "probes": {
+     "fogos": "200",
+     "fogos-api": "429",
+     "vost": "200",
+     "c-fogos-home": "200",
+     "c-vost": "200"
     }
    }
   },
@@ -1834,7 +2090,11 @@
     "also": {
      "hidrografico-boias": "404"
     },
-    "note": "the buoys page address we tried returned 404; home was read"
+    "note": "the buoys page address we tried returned 404; home was read",
+    "probes": {
+     "hidrografico": "200",
+     "hidrografico-boias": "404"
+    }
    }
   },
   {
@@ -1858,7 +2118,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:39Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "amn": "200"
+    }
    }
   },
   {
@@ -1887,7 +2150,11 @@
     "also": {
      "rtp-tempo": "404"
     },
-    "note": "rtp.pt/noticias/tempo returned 404: no standing weather page at that address"
+    "note": "rtp.pt/noticias/tempo returned 404: no standing weather page at that address",
+    "probes": {
+     "rtp": "200",
+     "rtp-tempo": "404"
+    }
    }
   },
   {
@@ -1913,6 +2180,10 @@
     "read": "2026-11-10T23:39Z",
     "seen": "blocked",
     "also": {
+     "c-sic-wf": "403"
+    },
+    "probes": {
+     "sicnoticias": "403",
      "c-sic-wf": "403"
     }
    }
@@ -1943,6 +2214,11 @@
     "also": {
      "tvi": "200",
      "c-cnn-meteo": "200"
+    },
+    "probes": {
+     "cnnportugal": "200",
+     "tvi": "200",
+     "c-cnn-meteo": "200"
     }
    }
   },
@@ -1970,6 +2246,10 @@
     "read": "2026-11-10T23:39Z",
     "seen": "html",
     "also": {
+     "publico-tempo": "200"
+    },
+    "probes": {
+     "publico": "200",
      "publico-tempo": "200"
     }
    }
@@ -2001,7 +2281,11 @@
     "also": {
      "observador-meteo": "404"
     },
-    "note": "the address we guessed for a weather section returned 404"
+    "note": "the address we guessed for a weather section returned 404",
+    "probes": {
+     "observador": "200",
+     "observador-meteo": "404"
+    }
    }
   },
   {
@@ -2027,6 +2311,10 @@
     "read": "2026-11-10T23:39Z",
     "seen": "blocked",
     "also": {
+     "c-expresso-wf": "403"
+    },
+    "probes": {
+     "expresso": "403",
      "c-expresso-wf": "403"
     }
    }
@@ -2055,6 +2343,20 @@
     "read": "2026-11-10T23:39Z",
     "seen": "html",
     "also": {
+     "dn": "200",
+     "cm": "200",
+     "negocios": "200",
+     "eco": "200",
+     "tsf": "200",
+     "renascenca": "200",
+     "lusa": "200",
+     "noticiasaominuto": "200",
+     "c-sapo": "200",
+     "c-dn": "200",
+     "c-lusa": "200"
+    },
+    "probes": {
+     "jn": "200",
      "dn": "200",
      "cm": "200",
      "negocios": "200",
@@ -2101,6 +2403,13 @@
      "tempopt-noticias": "200",
      "c-tempopt-noticias": "200",
      "c-tempopt-1": "200"
+    },
+    "probes": {
+     "tempopt": "200",
+     "tempopt-lisboa": "200",
+     "tempopt-noticias": "200",
+     "c-tempopt-noticias": "200",
+     "c-tempopt-1": "200"
     }
    },
    "rank": 5
@@ -2130,6 +2439,10 @@
     "read": "2026-11-10T23:39Z",
     "seen": "html",
     "also": {
+     "c-lusometeo": "200"
+    },
+    "probes": {
+     "lusometeo": "200",
      "c-lusometeo": "200"
     }
    },
@@ -2163,7 +2476,13 @@
      "c-meteopt-forum": "200",
      "c-meteopt-seguimento": "404"
     },
-    "note": "forum index read; the thread address we guessed returned 404"
+    "note": "forum index read; the thread address we guessed returned 404",
+    "probes": {
+     "meteopt": "200",
+     "meteopt-forum": "200",
+     "c-meteopt-forum": "200",
+     "c-meteopt-seguimento": "404"
+    }
    },
    "rank": 7
   },
@@ -2191,6 +2510,10 @@
     "read": "2026-11-10T23:39Z",
     "seen": "html",
     "also": {
+     "meteoalentejo": "200"
+    },
+    "probes": {
+     "meteoestrela": "200",
      "meteoalentejo": "200"
     }
    }
@@ -2221,6 +2544,12 @@
      "bestweather": "000",
      "troposfera": "000",
      "meteomoita": "200"
+    },
+    "probes": {
+     "meteotrasosmontes": "000",
+     "bestweather": "000",
+     "troposfera": "000",
+     "meteomoita": "200"
     }
    }
   },
@@ -2247,6 +2576,10 @@
     "read": "2026-11-10T23:39Z",
     "seen": "shell",
     "also": {
+     "c-sapo": "200"
+    },
+    "probes": {
+     "sapo-tempo": "200",
      "c-sapo": "200"
     }
    }
@@ -2279,7 +2612,13 @@
      "c-tpn-alert": "200",
      "portugalresident": "403"
     },
-    "note": "portugalresident.com refused our request (403)"
+    "note": "portugalresident.com refused our request (403)",
+    "probes": {
+     "theportugalnews": "200",
+     "c-theportugalnews": "200",
+     "c-tpn-alert": "200",
+     "portugalresident": "403"
+    }
    }
   },
   {
@@ -2303,7 +2642,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:39Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "beachcam": "200"
+    }
    }
   },
   {
@@ -2330,6 +2672,10 @@
     "seen": "html",
     "also": {
      "navlisboa": "200"
+    },
+    "probes": {
+     "ana": "200",
+     "navlisboa": "200"
     }
    }
   },
@@ -2354,7 +2700,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:39Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "dados-gov": "200"
+    }
    }
   },
   {
@@ -2380,6 +2729,12 @@
     "read": "2026-11-10T23:39Z",
     "seen": "blocked",
     "also": {
+     "eredes": "404",
+     "lisboa-aberta": "403",
+     "surfline": "403"
+    },
+    "probes": {
+     "snirh": "403",
      "eredes": "404",
      "lisboa-aberta": "403",
      "surfline": "403"
@@ -2412,6 +2767,10 @@
     "seen": "html",
     "also": {
      "ipma-api-warnings": "200"
+    },
+    "probes": {
+     "c-ipma-comunicados": "200",
+     "ipma-api-warnings": "200"
     }
    },
    "rank": 1
@@ -2438,7 +2797,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:41Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-prociv-avisos": "200"
+    }
    }
   },
   {
@@ -2464,7 +2826,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:40Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-meteoalarm-pt-feed": "200"
+    }
    }
   },
   {
@@ -2490,6 +2855,10 @@
     "read": "2026-11-10T23:40Z",
     "seen": "html",
     "also": {
+     "aemet-borrascas": "200"
+    },
+    "probes": {
+     "c-aemet-borrascas": "200",
      "aemet-borrascas": "200"
     }
    }
@@ -2527,6 +2896,10 @@
      "read": "2026-11-10T23:48Z",
      "status": 403,
      "saw": "The headless browser was refused (\"The request is blocked\"); the plain request had returned the page shell."
+    },
+    "probes": {
+     "c-rr-interativo": "200",
+     "c-rr-tag": "200"
     }
    },
    "rank": 2
@@ -2553,7 +2926,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:40Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-rtp-live": "200"
+    }
    },
    "rank": 3
   },
@@ -2579,7 +2955,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:40Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-publico-live": "200"
+    }
    },
    "rank": 4
   },
@@ -2604,7 +2983,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:40Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-publico-explainer": "200"
+    }
    }
   },
   {
@@ -2628,7 +3010,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:40Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-observador-live": "200"
+    }
    }
   },
   {
@@ -2655,7 +3040,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:40Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-observador-especial": "200"
+    }
    },
    "rank": 5
   },
@@ -2685,6 +3073,10 @@
     "seen": "html",
     "also": {
      "c-cm-percurso": "200"
+    },
+    "probes": {
+     "c-negocios-live": "200",
+     "c-cm-percurso": "200"
     }
    }
   },
@@ -2709,7 +3101,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:40Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-nam-live": "200"
+    }
    }
   },
   {
@@ -2735,6 +3130,10 @@
     "read": "2026-11-10T23:46Z",
     "seen": "html",
     "also": {
+     "c-renascenca": "200"
+    },
+    "probes": {
+     "c-rr-tag": "200",
      "c-renascenca": "200"
     }
    }
@@ -2762,6 +3161,11 @@
     "read": "2026-11-10T23:40Z",
     "seen": "html",
     "also": {
+     "c-eco-live": "200",
+     "eco": "200"
+    },
+    "probes": {
+     "c-eco-tag": "200",
      "c-eco-live": "200",
      "eco": "200"
     }
@@ -2792,6 +3196,10 @@
     "seen": "html",
     "also": {
      "c-jn-fecha": "200"
+    },
+    "probes": {
+     "c-jn-tudo": "200",
+     "c-jn-fecha": "200"
     }
    }
   },
@@ -2818,6 +3226,10 @@
     "read": "2026-11-10T23:40Z",
     "seen": "html",
     "also": {
+     "c-tsf-transportes": "200"
+    },
+    "probes": {
+     "c-tsf-trajeto": "200",
      "c-tsf-transportes": "200"
     }
    }
@@ -2848,6 +3260,11 @@
     "also": {
      "c-cnn-trajeto": "404",
      "c-cnn-tag": "404"
+    },
+    "probes": {
+     "c-cnn-meteo": "200",
+     "c-cnn-trajeto": "404",
+     "c-cnn-tag": "404"
     }
    }
   },
@@ -2875,6 +3292,10 @@
     "read": "2026-11-10T23:40Z",
     "seen": "html",
     "also": {
+     "c-cm-clima": "200"
+    },
+    "probes": {
+     "c-cm-percurso": "200",
      "c-cm-clima": "200"
     }
    }
@@ -2905,6 +3326,10 @@
     "seen": "html",
     "also": {
      "c-tempopt-noticias": "200"
+    },
+    "probes": {
+     "c-tempopt-1": "200",
+     "c-tempopt-noticias": "200"
     }
    }
   },
@@ -2930,7 +3355,10 @@
    "opened": {
     "status": "200",
     "read": "2026-11-10T23:40Z",
-    "seen": "html"
+    "seen": "html",
+    "probes": {
+     "c-lusometeo": "200"
+    }
    }
   },
   {
@@ -2956,6 +3384,11 @@
     "read": "2026-11-10T23:41Z",
     "seen": "json",
     "also": {
+     "c-wiki-pt-article": "429",
+     "c-wiki-pt": "200"
+    },
+    "probes": {
+     "c-wiki-pt-hist": "200",
      "c-wiki-pt-article": "429",
      "c-wiki-pt": "200"
     }
@@ -2986,6 +3419,10 @@
     "seen": "html",
     "also": {
      "c-wiki-en": "200"
+    },
+    "probes": {
+     "c-wiki-season": "200",
+     "c-wiki-en": "200"
     }
    }
   },
@@ -3012,6 +3449,10 @@
     "read": "2026-11-10T23:40Z",
     "seen": "html",
     "also": {
+     "c-euronews-1": "200"
+    },
+    "probes": {
+     "c-euronews": "200",
      "c-euronews-1": "200"
     }
    }
@@ -3040,6 +3481,10 @@
     "seen": "html",
     "also": {
      "c-elpais-1": "200"
+    },
+    "probes": {
+     "c-elpais": "200",
+     "c-elpais-1": "200"
     }
    }
   },
@@ -3066,6 +3511,10 @@
     "read": "2026-11-10T23:41Z",
     "seen": "html",
     "also": {
+     "c-theportugalnews": "200"
+    },
+    "probes": {
+     "c-tpn-alert": "200",
      "c-theportugalnews": "200"
     }
    }
@@ -3095,6 +3544,11 @@
     "also": {
      "c-bsky-search": "403",
      "c-bsky-ipma": "200"
+    },
+    "probes": {
+     "c-mastodon": "200",
+     "c-bsky-search": "403",
+     "c-bsky-ipma": "200"
     }
    }
   },
@@ -3121,6 +3575,15 @@
     "read": "2026-11-10T23:38Z",
     "seen": "html",
     "also": {
+     "c-bbc-search": "200",
+     "c-severeweathereu": "200",
+     "c-zoomearth-storms": "200",
+     "c-copernicus-act": "200",
+     "c-reuters": "401",
+     "c-guardian": "200"
+    },
+    "probes": {
+     "metoffice-stormcentre": "200",
      "c-bbc-search": "200",
      "c-severeweathereu": "200",
      "c-zoomearth-storms": "200",
