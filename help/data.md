@@ -8,7 +8,7 @@
 |---|---|
 | every dataset, with size and sha256 | [api/v1/index.json](../api/v1/index.json) (as a page: [The data](../datasets.html)) |
 | one dataset | `api/v1/<incident>/<path>`, for example `api/v1/2026-11-10-storm-charles/weather/warnings.json` |
-| any file shown as a page: its fields, a table of its values, who keeps it, its hash | `view/<the file's path>.html` |
+| any file shown as a page: its fields, a table of its values, who keeps it, its hash | `view/?path=<the file's path>` |
 | every file on the site, by kind, with who wrote it and what it was made from | [the library](../library/README.md) |
 | to ask questions of the data in your browser | [the query page](../data/query/README.md) |
 | the storm as one graph | [the graph](../app/graph/README.md) |

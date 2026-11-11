@@ -6,8 +6,8 @@
 //   node tools/library-index.mjs            count and report only: nothing is written. The catalogue and its page are not tracked
 //                                           (index.json outgrew git's 256 KB rule); the build makes both with --out on every push. Reads NO git history (CI's clone is
 //                                           shallow): authorship and dates come from each file's own header or front matter, and
-//                                           from library/provenance.json where its sha256 still matches the file.
-//   node tools/library-index.mjs --git      first refresh library/provenance.json from the commits (a full clone only; refuses a
+//                                           from library/provenance/ where its sha256 still matches the file.
+//   node tools/library-index.mjs --git      first refresh library/provenance/ from the commits (a full clone only; refuses a
 //                                           shallow one), then build. Run by the librarian before each release, never by CI.
 //   node tools/library-index.mjs --check    build in memory; exit 1 if the committed catalogue differs (stale).
 //   node tools/library-index.mjs --out DIR  write DIR/library/index.json and DIR/library/README.md ONLY: no tracked file is touched
@@ -27,7 +27,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SITE = 'https://storm-charles.promptugal.news/'
 const REPO = 'https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/blob/dev/'
 const ME = 'incident.librarian@web-summit.dinis'
-const GENERATED = new Set(['library/index.json', 'library/README.md', 'library/provenance.json'])
+const GENERATED = new Set(['library/index.json', 'library/README.md'])
 const args = new Set(process.argv.slice(2))
 const outAt = process.argv.indexOf('--out'), OUT_DIR = outAt > 0 ? path.resolve(process.argv[outAt + 1] || '') : ''
 if (outAt > 0 && (!process.argv[outAt + 1] || OUT_DIR === ROOT)) { console.error('library-index: --out needs a directory other than the repository root'); process.exit(2) }
@@ -42,11 +42,13 @@ function listFiles() {
     const walk = d => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { if (skip.has(e.name)) continue; const f = path.join(d, e.name); e.isDirectory() ? walk(f) : acc.push(path.relative(ROOT, f).split(path.sep).join('/')) } }
     walk(ROOT); return acc
 }
-const files = [...new Set([...listFiles().filter(f => fs.existsSync(path.join(ROOT, f))), ...GENERATED])].sort()
-const fileSet = new Set(files)
+const listNow = () => [...new Set([...listFiles().filter(f => fs.existsSync(path.join(ROOT, f))), ...GENERATED])].sort()
+let files = listNow()
+let fileSet = new Set(files)
 
 // ---------------------------------------------------------------- the commits' sidecar (only with --git)
 const PROV = path.join(ROOT, 'library/provenance.json')
+const PROV_DIR = path.join(ROOT, 'library/provenance')
 const agentOf = subject => (subject.match(/^([a-z][\w.-]*@[\w.-]+?):\s/i) || [, ''])[1]
 if (args.has('--git')) {
     if (git('rev-parse', '--is-shallow-repository').trim() !== 'false') { console.error('library-index: --git needs a full clone (this one is shallow); nothing written'); process.exit(2) }
@@ -57,18 +59,28 @@ if (args.has('--git')) {
     }
     const out = {}
     for (const f of files) {
-        if (GENERATED.has(f) || !per[f]) continue
+        if (GENERATED.has(f) || !per[f] || f.startsWith('library/provenance/')) continue
         const c = per[f], first = c[c.length - 1], last = c[0]
         out[f] = { sha256: sha(fs.readFileSync(path.join(ROOT, f))), commits: c.length, first_by: first.agent, first_at: first.at, last_by: last.agent, last_at: last.at, last_commit: last.h, agents: [...new Set(c.map(x => x.agent).filter(Boolean))].sort() }
     }
-    fs.mkdirSync(path.dirname(PROV), { recursive: true })
-    fs.writeFileSync(PROV, JSON.stringify({
-        about: 'Who committed each file and when, read from this repository\'s commits by tools/library-index.mjs --git in the librarian\'s full clone (CI never reads history). The agent is the commit subject\'s prefix ("<agent>: <what>"). An entry counts only while its sha256 still matches the file; a file changed since is listed under gaps in library/index.json until the next refresh.',
-        by: ME, head: git('rev-parse', '--short=10', 'HEAD').trim(), files: out
-    }, null, 1).replace(/\{\n\s+"sha256"[\s\S]*?\n\s+\}(?=,?\n)/g, m => m.replace(/\n\s*/g, ' ')) + '\n')   // one line per file: it grows with the tree
+    // sixteen small files, by the first hex digit of sha1(path): one file outgrew git's 256 KB rule at about 670 files (11 November)
+    const head = git('rev-parse', '--short=10', 'HEAD').trim(), shards = {}
+    for (const [f, r] of Object.entries(out)) (shards[crypto.createHash('sha1').update(f).digest('hex')[0]] ||= {})[f] = r
+    fs.rmSync(PROV_DIR, { recursive: true, force: true }); fs.mkdirSync(PROV_DIR, { recursive: true })
+    for (const x of '0123456789abcdef') {
+        const rows = shards[x] || {}, agents = [...new Set(Object.values(rows).flatMap(r => [r.first_by, r.last_by, ...r.agents]))].sort(), ix = a => agents.indexOf(a)
+        fs.writeFileSync(path.join(PROV_DIR, x + '.json'), `{\n "about": ${JSON.stringify(`Who committed each file and when: part ${x} of 16 (files whose path's sha1 begins with ${x}), read from this repository's commits by tools/library-index.mjs --git in the librarian's full clone (CI never reads history). The agent is the commit subject's prefix. A row holds only while the first 16 hex digits of the file's sha256 still match.`)},\n "by": "${ME}",\n "head": "${head}",\n "row": ["sha256, first 16 hex digits", "commits", "first by (index into agents)", "first at", "last by (index)", "last at", "last commit", "every agent (indexes)"],\n "agents": ${JSON.stringify(agents)},\n "files": {\n${Object.entries(rows).sort().map(([f, r]) => `  ${JSON.stringify(f)}: ${JSON.stringify([r.sha256.slice(0, 16), r.commits, ix(r.first_by), r.first_at, ix(r.last_by), r.last_at, r.last_commit, r.agents.map(ix)])}`).join(',\n')}\n }\n}\n`)
+    }
+    fs.rmSync(PROV, { force: true })
+    files = listNow(); fileSet = new Set(files)   // the record itself has just changed on disk
 }
 let prov = {}, provHead = ''
-try { const p = JSON.parse(fs.readFileSync(PROV, 'utf8')); prov = p.files || {}; provHead = p.head || '' } catch { }
+for (const x of '0123456789abcdef') {
+    try {
+        const p = JSON.parse(fs.readFileSync(path.join(PROV_DIR, x + '.json'), 'utf8')); provHead = p.head || provHead
+        for (const [f, r] of Object.entries(p.files || {})) prov[f] = { sha16: r[0], commits: r[1], first_by: p.agents[r[2]] || '', first_at: r[3], last_by: p.agents[r[4]] || '', last_at: r[5], last_commit: r[6], agents: r[7].map(i => p.agents[i]) }
+    } catch { }
+}
 
 // ---------------------------------------------------------------- what kind of thing a file is
 const KINDS = [
@@ -97,7 +109,6 @@ const KIND_ABOUT = {
 const GEN_ABOUT = {
     'library/index.json': ['The catalogue, for agents', 'Every file on this site: kind, what it is, who wrote it, when it changed, what it was made from, what links to it, sha256; and the gaps.'],
     'library/README.md': ['The library: everything on this site, and where it came from', 'The catalogue as a page, by kind, with the gaps listed.'],
-    'library/provenance.json': ['Who committed what', 'For each file: its commits\' agents, the first and the last commit, and the sha256 the record holds for.'],
 }
 const kindOf = f => (KINDS.find(([re]) => re.test(f)) || [, 'other'])[1]
 
@@ -140,7 +151,7 @@ const refsIn = (from, text) => {
 function read(f) {
     if (GENERATED.has(f)) return {   // never read back: the catalogue must not depend on its own last output
         path: f, kind: 'library', title: GEN_ABOUT[f][0], what: GEN_ABOUT[f][1], by: ME, by_from: 'generated', dated: '', dated_from: '', generated_by: 'tools/library-index.mjs',
-        made_from: f === 'library/provenance.json' ? ['the commits of this repository (read in a full clone)'] : ['every file in this repository', 'library/provenance.json'],
+        made_from: ['every file in this repository', 'library/provenance/ (who committed what)'],
         links_to: [], external_links: 0, commits: null, changed: '', ...urls(f)
     }
     const buf = fs.readFileSync(path.join(ROOT, f)), text = buf.toString('utf8'), ext = path.extname(f).toLowerCase()
@@ -183,7 +194,7 @@ function read(f) {
         const d = nearAuthor(lines.slice(0, 8).join('\n')); if (d) { e.dated = d; e.dated_from = 'header' }
     }
     const p = prov[f]
-    e.commits = p && p.sha256 === e.sha256 ? { n: p.commits, first_by: p.first_by, first_at: p.first_at, last_by: p.last_by, last_at: p.last_at, last_commit: p.last_commit, agents: p.agents } : null
+    e.commits = p && e.sha256.startsWith(p.sha16) ? { n: p.commits, first_by: p.first_by, first_at: p.first_at, last_by: p.last_by, last_at: p.last_at, last_commit: p.last_commit, agents: p.agents } : null
     e.changed = e.commits?.last_at || e.dated || ''
     return e
 }
@@ -198,7 +209,7 @@ const authored = e => !['repository', 'build'].includes(e.kind) || e.path === 'R
 const gaps = {
     no_author_in_file: real.filter(e => !e.by && authored(e)).map(e => ({ path: e.path, committed_by: e.commits?.agents || [] })),
     no_date_in_file: real.filter(e => !e.dated && ['brief', 'plan', 'record', 'decision log', 'dataset', 'analysis', 'research', 'reading', 'comms draft', 'material', 'agent file'].includes(e.kind)).map(e => e.path),
-    no_commit_record: real.filter(e => !e.commits).map(e => ({ path: e.path, why: prov[e.path] ? 'changed since the commits were last read' : 'new since the commits were last read' })),
+    no_commit_record: real.filter(e => !e.commits && !e.path.startsWith('library/provenance/')).map(e => ({ path: e.path, why: prov[e.path] ? 'changed since the commits were last read' : 'new since the commits were last read' })),
     datasets_naming_no_source: real.filter(e => e.kind === 'dataset' && !e.made_from.length && !/status\.json$/.test(e.path)).map(e => e.path),
     documents_nothing_links_to: real.filter(e => e.path.endsWith('.md') && !e.linked_from.length && e.path !== 'README.md' && e.path !== 'CLAUDE.md').map(e => e.path),
     older_than_their_sources: real.filter(e => ['comms draft', 'material', 'analysis', 'dataset'].includes(e.kind) && e.commits).flatMap(e => e.made_from.map(x => byPath[x]).filter(x => x && x.commits && ['decision log', 'dataset', 'comms draft', 'analysis', 'incident record'].includes(x.kind) && x.commits.last_at > e.commits.last_at).map(x => ({ path: e.path, why: `last changed ${e.commits.last_at.slice(5, 16).replace('T', ' ')}; its source ${x.path} changed ${x.commits.last_at.slice(5, 16).replace('T', ' ')}` }))),
@@ -213,7 +224,7 @@ const index = {
         kind: Object.fromEntries(ORDER.filter(k => counts[k]).map(k => [k, KIND_ABOUT[k]])),
         by: 'who the file itself says wrote or keeps it (by_from says where: header, front matter, its own fields); empty when it does not say',
         dated: 'the time the file gives for itself (dated_from says which field or the header); for a dataset, usually the time its sources were last read',
-        commits: 'from the commits, as recorded in library/provenance.json (first_by, last_by, last_at, the agents); null when the file changed after the commits were last read',
+        commits: 'from the commits, as recorded in library/provenance/ (first_by, last_by, last_at, the agents); null when the file changed after the commits were last read',
         changed: 'when it last changed: the last commit when known, else the file\'s own date',
         made_from: 'the sources its header or fields name: files here (paths) and URLs',
         links_to: 'files here that it links to anywhere in its text', linked_from: 'files here that link to it or name it as a source',
@@ -240,7 +251,7 @@ let md = `# The library: everything on this site, and where it came from
 
 Not a warning service: follow IPMA, ANEPC and your local authorities.
 
-**For agents:** [library/index.json](index.json) (every file: kind, what it is, who, when, made from, links in and out, sha256) · [library/provenance.json](provenance.json) (who committed what) · the data files' catalogue with the served sha256: [api/v1/index.json](../api/v1/index.json).
+**For agents:** [library/index.json](index.json) (every file: kind, what it is, who, when, made from, links in and out, sha256) · who committed what: library/provenance/ (sixteen small files, [0.json](provenance/0.json) to f.json) · the data files' catalogue with the served sha256: [api/v1/index.json](../api/v1/index.json).
 
 **Also here:** [the agents' behaviour policies](abp.md) (drafts, not agreed by Dinis) · [the release history](releases.md) (every version, what changed, whether it was served) · [the reading list](reading/README.md) (what newsroom.sgit.ai's articles mean for this site) · [the glossary](glossary.md) (fact, evidence, hypothesis and the other words this site uses). · [the path policy](../agents/policy.json) and its check, [tools/policy-check.mjs](../tools/policy-check.mjs) · a draft for the conductor: [the shape of now.json](drafts/now-json.md).
 
