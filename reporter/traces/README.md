@@ -1,6 +1,6 @@
 # Traces: one workflow each, from Dinis's word to a live page
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 11:17 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 12:10 UTC
 
 Read [index.json](index.json) first: it carries every trace's five-line summary. Then open only the one you need. Not a warning service: these are about how the site was made.
 
@@ -12,15 +12,15 @@ Read [index.json](index.json) first: it carries every trace's five-line summary.
 | [Large](large-every-word-needs-a-reference.json): "every word here needs to have a reference" to entities, the linker, Wayback, the panel | large | 02:06 to 02:51, open | 15 (1, 14) | 0 |
 | [Corrections](correction-three-fixes-in-the-open.json): a private address withheld, facts relabelled evidence, a hypothesis re-weighed | correction | 01:52 to 02:36 | 12 (0, 12) | 1 |
 | [Escalations](escalation-asks-waiting-on-dinis.json): two asks to Dinis from the first evening, and how long each waited | escalation | 10 Nov 20:49, open | 8 (2, 6) | 1 |
-| [Memory](memory-the-librarian-saves-tokens.json): "the librarian saves tokens" to a measured number, six sessions replaced within the hour, ten hand-overs by 04:16, fourteen more sessions by 05:58 | medium | 02:49 to 10:05, open | 26 (2, 24) | 0 |
-| [Outage](outage-the-model-account-out-of-credit.json): the model provider's account out of credit, what stopped, and one card for Dinis (corrected 05:08: five refusals before 02:39 went unrecognised) | outage | 02:53, open | 19 (2, 17) | 1 |
+| [Memory](memory-the-librarian-saves-tokens.json): "the librarian saves tokens" to a measured number, six sessions replaced within the hour, ten hand-overs by 04:16, fourteen more sessions by 05:58 | medium | 02:49 to 10:05, open | 27 (2, 25) | 0 |
+| [Outage](outage-the-model-account-out-of-credit.json): the model provider's account out of credit, what stopped, and one card for Dinis (corrected 05:08: five refusals before 02:39 went unrecognised) | outage | 02:53, open | 20 (2, 18) | 1 |
 | [The Studio](studio-a-spoken-idea-to-an-animation.json): "what is compression ... an animation" to a player with characters, six explanations and a cast | medium | 00:29 to 03:54 | 12 (2, 10) | 0 |
 | [An agent's start](start-a-jobs-line-to-a-first-page.json): "create a Perplexity agent" to a first page in 12 minutes and a timeline row from it | small | 02:49 to 03:05 | 7 (1, 6) | 0 |
 | [A decision without Dinis](decision-web-summit-terms-to-a-hold.json): Web Summit's terms read, and every automated read of its site stopped in under two minutes | decision | 05:26, open | 8 (1, 7) | 1 |
 | [A signal with nobody asking](signal-a-warning-lowered-to-the-front-page.json): IPMA lowers a warning, and the site follows in 22 to 37 minutes, with one "unchanged" corrected on the way | small | 07:16 to 08:44 | 8 (0, 8) | 0 |
-| [A loop](loop-a-front-page-for-newcomers.json): "the first page has to be super clear" to a draft read by four invented visitors and rewritten, in 14 minutes; not yet at / | medium | 09:50, open | 10 (2, 8) | 1 |
+| [A loop](loop-a-front-page-for-newcomers.json): "the first page has to be super clear" to a draft read by four invented visitors and rewritten, in 14 minutes; not yet at / | medium | 09:50, open | 11 (2, 9) | 1 |
 | [A request mapped while it happens](request-ten-paths-and-small-animations.json): "start maybe finding 10 different paths" to ten paths, the arc and /flows/ in 21 minutes | medium | 10:10 to 10:31 | 12 (1, 11) | 0 |
-| [The wind-down](wind-down-explorer-to-villager.json): "move it into a BAU" to a plan, exit interviews and a correction, traced as it happens | large | 10:29, open | 15 (3, 12) | 0 |
+| [The wind-down](wind-down-explorer-to-villager.json): "move it into a BAU" to a plan, exit interviews and a correction, traced as it happens | large | 10:29, open | 18 (3, 15) | 0 |
 
 ## The shape (sc-trace/1)
 

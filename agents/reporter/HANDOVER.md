@@ -56,6 +56,7 @@ The session key's private half (make a new key; mark this one handed over in `da
 - **The checkout may start detached** from dev; release.sh refuses ("be on dev"). `git checkout -B dev <HEAD>` after checking HEAD contains origin/dev.
 - **A new trace is renumbered freely until it is pushed;** after that it only grows at the end. The fill tool does not check time order: print `n` and `at` after it (I swapped two steps 11 s apart before the push).
 - **The board's count waiting on Dinis:** cards whose state is not done and whose `waiting_on` starts with "Dinis" (44 at 11:14).
+- **At 12:10 (the last wake of the fourth session):** the wind-down trace is at 18 steps; Dinis's four words of 11:42 to 11:56 started four agents (sherpa, desk, brief, datascience) and new sections, and the plan took them in as the start of business as usual (step 18): keep reading BRIEF.md for whether he means the wind-down to wait. The log is closed to 12:10.
 - **The wake:** hourly at :06 into this session, the conductor's; the next session's is the conductor's to set.
 - **Outside git, gone with this session:** the session key's private half (incident-reporter-dinis-4); the edit scripts. Next key id: incident-reporter-dinis-5.
 

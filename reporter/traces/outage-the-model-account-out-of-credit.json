@@ -4,7 +4,7 @@
  "size": "outage",
  "title": "Outage: the model provider's account out of credit; every call refused from 02:53:57 (five were refused before 02:39 and taken for wrong answers); what stopped and how the stop was written down",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T11:17:00Z",
+ "updated": "2026-11-11T12:10:13Z",
  "captured_at": "2026-11-11T04:09:00Z",
  "summary": [
   "Dinis (~02:50): \"you can use up to $20 in budget.\" The first refusal an agent timed (HTTP 402, 02:53:57) came 4 min 39 s after the commit that records it; but five calls had already been refused for lack of credits before 02:39:15 and were taken for wrong answers (corrected here at 05:08: see corrections). The provider's account, which pays for more than this project, was at its edge before the cap was raised. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
@@ -38,7 +38,7 @@
   "what": "one card for Dinis, ranked first before the launch; the three desks' pages each say runs are paused and why; a wrapper that stops at the first refusal",
   "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
  },
- "status": "open: waiting on Dinis (a top-up of the provider's account); nine empty hours in the shadow reports (03:00 to 11:00); his seven words of 10:10 to 10:38 do not mention it",
+ "status": "open: waiting on Dinis (a top-up of the provider's account); ten empty hours in the shadow reports (03:00 to 12:00); none of his eleven words since 10:10 mentions it",
  "duration": {
   "from": "2026-11-11T02:53:57Z",
   "to": null,
@@ -906,8 +906,11 @@
     {
      "filled": true,
      "type": "version",
-     "version": null,
-     "note": "no CI tag at or after this commit when the trace was filled"
+     "version": "v0.1.935",
+     "run": 935,
+     "own_run": true,
+     "served_by": "2026-11-11T11:14:54Z",
+     "push_to_served_s": 55
     }
    ],
    "sha": "c944059db11e8b7186e05e2f980d2a28ee976a9a",
@@ -918,13 +921,59 @@
     "incident.conductor@web-summit.dinis",
     "incident.accountant@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a tenth gap",
+   "sha": "d42f5cecb900fadaa154a0da08e50689ad32b941",
+   "in": "the 12:00 round due; nothing changed at the provider",
+   "out": "\"the 12:00 hour is a tenth recorded gap (the engines' account still out of credit)\". Dinis spoke four times in the hour (~11:42 to ~11:56: a decision brief like Watchfloor's and four new agents; the team at work on the front page; a transport section; one place to consume the data); none mentions the provider's account. The card is open, about 9 h 3 min after it opened.",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "the card (board/items/a-provider-credit.json)",
+    "evidence_of_handoff": "the card is open"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-provider-credit.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
+    },
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "d42f5cecb900fadaa154a0da08e50689ad32b941",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d42f5cecb900fadaa154a0da08e50689ad32b941"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": null,
+     "note": "no CI tag at or after this commit when the trace was filled"
+    }
+   ],
+   "n": 20,
+   "at": "2026-11-11T12:08:21Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 19,
+  "steps": 20,
   "steps_with_no_evidence": 1,
   "person_steps": 2,
-  "agent_steps": 17
+  "agent_steps": 18
  },
  "people_acted": [
   "Dinis Cruz"

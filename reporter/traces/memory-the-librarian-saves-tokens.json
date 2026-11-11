@@ -4,7 +4,7 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T11:17:00Z",
+ "updated": "2026-11-11T12:10:13Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
@@ -39,7 +39,7 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: one step per hour; nine hand-overs between 10:09 and 11:14; the wind-down makes the hand-over the way the incident ends",
+ "status": "open: one step per hour; five hand-overs between 11:19 and 12:09; 41 agents, 85 sessions at 11:53",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
   "to": "2026-11-11T10:05:23Z",
@@ -1461,7 +1461,8 @@
      "version": "v0.1.905",
      "run": 905,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T10:18:17Z"
+     "served_by": "2026-11-11T10:43:11Z",
+     "push_to_served_s": 38
     }
    ],
    "sha": "11b9f7a6dfe1ddcf2bfb29ee642bdbb5223aee10",
@@ -1472,6 +1473,53 @@
     "incident.conductor@web-summit.dinis",
     "incident.planner@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the accounts, and five hand-overs in an hour",
+   "sha": "23eff566f29c49801d11d1d1579d82a9b2511407",
+   "in": "the ledger lines",
+   "out": "\"the accounts, round 12: everyone but the conductor at 149,943 tokens a call in the 10:00 hour, the lowest yet\". Between 11:19 and 12:09 five sessions handed over to fresh ones: the journalist (its sixth, 1f14e599), the librarian (its ninth, 9d9757a7), the designer (its seventh, 1113686b), observability (its sixth, 9d2597c0) and weather (its fourth, cc6a598f, after its third wrote it was at about 223,000 tokens a call, a489a25f). Four new agents made their first keys in the same hour (sherpa, desk, brief, datascience). data/agents/count.json at 11:53:52: 41 agents, 85 sessions.",
+   "handoff": {
+    "to": "every agent",
+    "via": "accounts/ and data/keys.json",
+    "evidence_of_handoff": "the keys file"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "type": "file",
+     "path": "data/agents/count.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/agents/count.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "23eff566f29c49801d11d1d1579d82a9b2511407",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/23eff566f29c49801d11d1d1579d82a9b2511407"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.960",
+     "run": 960,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T11:24:15Z"
+    }
+   ],
+   "n": 27,
+   "at": "2026-11-11T11:41:40Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
   }
  ],
  "shape": {
@@ -1481,10 +1529,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 26,
+  "steps": 27,
   "steps_with_no_evidence": 0,
   "person_steps": 2,
-  "agent_steps": 24
+  "agent_steps": 25
  },
  "people_acted": [
   "Dinis Cruz"
