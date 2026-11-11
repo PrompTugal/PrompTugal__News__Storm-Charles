@@ -44,9 +44,10 @@
         else if (k === 'session') el('circle', { cx: 0, cy: 0, r: 10, class: 'fl-ring' }, grp)
         else if (k === 'outside') el('path', { d: 'M0 -11 L11 0 L0 11 L-11 0 Z' }, grp)
         else if (k === 'thing') el('path', { d: 'M-8 -10 H4 L8 -6 V10 H-8 Z' }, grp)
+        else if (k === 'machine') el('rect', { x: -10, y: -8, width: 20, height: 16, rx: 1 }, grp)
         else el('rect', { x: -10, y: -10, width: 20, height: 20, rx: 5 }, grp)
         if (k !== 'person') { const t = el('text', { x: 0, y: 3.5, 'text-anchor': 'middle', class: 'fl-mark' }, grp); t.textContent = m.slice(0, 3) }
-        const ti = el('title', {}, grp); ti.textContent = `${a.label} (${k})`
+        const ti = el('title', {}, grp); ti.textContent = `${a.emoji ? a.emoji + ' ' : ''}${a.label} (${k}${a.glyph ? ', ' + a.glyph : ''})`
         return grp
     }
 
@@ -57,6 +58,7 @@
         else if (e.url) out.push(`<a href="${esc(e.url)}" rel="noopener" target="_blank">${esc(e.run ? 'run ' + e.run : e.url.replace(/^https:\/\//, '').slice(0, 48))}</a>`)
         if (e.file) out.push(/\/$/.test(e.file) ? `<code>${esc(e.file)}</code>` : `<a href="${esc(BASE + 'view/?path=' + encodeURIComponent(e.file))}" target="_blank"><code>${esc(e.file)}</code></a>`)
         if (e.key) out.push(`key <code>${esc(e.key)}</code>`)
+        if (e.signal) out.push(`row <code>${esc(e.signal)}</code>`)
         if (e.note) out.push(esc(e.note))
         return out.join(' · ')
     }
@@ -94,7 +96,7 @@
             el('rect', { x: gx, y: 2, width: GAP - 4, height: H - 4, class: 'fl-pause' }, g0)
             const t = el('text', { x: gx + (GAP - 4) / 2, y: H - 6, 'text-anchor': 'middle', class: 'fl-pause-t' }, g0)
             t.textContent = p.minutes >= 90 ? Math.round(p.minutes / 6) / 10 + ' h' : p.minutes + "'"
-            const ti = el('title', {}, t); ti.textContent = `${p.minutes} minutes with no step on record (${hm(p.from)} to ${hm(p.to)} UTC)`
+            const ti = el("title", {}, t); ti.textContent = `${p.minutes} minutes, ${hm(p.from)} to ${hm(p.to)} UTC: ${p.why || "no step on record"}`
         })
         const gE = el('g', {}, svg), gS = el('g', {}, svg)
         const marks = steps.map((s, i) => {

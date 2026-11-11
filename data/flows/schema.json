@@ -4,12 +4,13 @@
   "title": "A flow of the team's work (flows/v1)",
   "description": "One small format for a flow: who took part (actors), what each did and when (steps, each with its evidence), who spoke to whom (edges, counted from the steps) and the gaps with nothing on record (pauses). Made by tools/flows-build.mjs from the record, or from a path of incident.storyteller@ (story/paths/*.md); drawn by app/flows/player.js. Documented in flows/README.md; the primitives agreed with story/primitives.md.",
   "by": "incident.motion@web-summit.dinis",
-  "updated": "2026-11-11T10:19:00Z",
+  "updated": "2026-11-11T10:24:00Z",
   "type": "object",
   "required": ["schema", "id", "kind", "title", "actors", "steps", "experiment"],
   "properties": {
     "schema": { "const": "flows/v1" },
     "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Permanent: the file is data/flows/<id>.json, the embed app/flows/embed.html?flow=<id>." },
+    "told_by": { "type": "string", "description": "For a path: the agent that told it." },
     "kind": { "enum": ["wake", "handover", "night", "path"], "description": "wake: one agent's wake end to end; handover: one session to the next; night: one agent by its sessions; path: a path told by incident.storyteller@." },
     "title": { "type": "string" },
     "summary": { "type": "string", "description": "One sentence: what the flow shows, with its counts and times." },
@@ -26,8 +27,10 @@
         "required": ["id", "kind", "label"],
         "properties": {
           "id": { "type": "string", "description": "a-<agent> for an agent, s-<agent>-<n> for its nth session, p-<name> for a person, o-<name> for an outside body, t-<name> for a thing (a file, a page, a data set, a key)." },
-          "kind": { "enum": ["person", "agent", "session", "outside", "thing"] },
-          "icon": { "type": "string", "description": "The shape drawn: person, agent, session, outside, page (a thing); the shape says the kind, never colour alone." },
+          "kind": { "enum": ["person", "agent", "session", "outside", "machine", "thing"] },
+          "icon": { "type": "string", "description": "The glyph (story/cast.json icon.glyph, or the kind); the view draws the kind's shape, never colour alone." },
+          "glyph": { "type": "string" },
+          "emoji": { "type": "string", "description": "The cast's emoji, shown in the tooltip." },
           "mark": { "type": "string", "maxLength": 3, "description": "Up to three letters inside the icon." },
           "label": { "type": "string" },
           "name": { "type": "string", "description": "An agent's full name." },
@@ -45,7 +48,7 @@
           "t": { "type": "string", "format": "date-time", "description": "UTC, as recorded." },
           "drawn": { "type": "string", "description": "Present when the time is not recorded and was drawn from a neighbouring fact; says how. Drawn steps are dashed in every view." },
           "actor": { "type": "string" },
-          "verb": { "enum": ["wakes", "reads", "writes", "commits", "addresses", "asks", "answers", "starts", "keys", "hands-over", "builds", "serves", "publishes", "uses", "finds", "decides", "ends"] },
+          "verb": { "enum": ["wake", "read", "write", "commit", "push", "release", "publish", "capture", "hand-over", "seal", "message", "ask", "answer", "instruct", "route", "correct", "pause"], "description": "The steps of story/primitives.md (incident.storyteller@): its words win." },
           "object": { "type": "string", "description": "What: a commit's subject, a file, a page, a sentence; short." },
           "to": { "type": "array", "items": { "type": "string" }, "description": "The actors it is addressed to or acts on (an arrow in the view)." },
           "files": { "type": "array", "items": { "type": "string" } },
@@ -70,6 +73,7 @@
         "file": { "type": "string", "description": "A tracked file (or folder, ending in /)." },
         "run": { "type": "integer", "description": "A CI run number." },
         "key": { "type": "string", "description": "An id in data/keys.json." },
+        "signal": { "type": "string", "description": "A timeline row id, s-<MMDD>T<HHMM>." },
         "note": { "type": "string", "description": "When nothing is on record: says so." }
       }
     }

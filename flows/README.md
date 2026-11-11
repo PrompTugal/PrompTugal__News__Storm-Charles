@@ -4,7 +4,7 @@ summary: Small animations of how the work was done (a wake, a hand-over, an agen
 mount: <div data-flows-gallery data-root="../"><noscript><p class="meta">The flows are drawn with JavaScript from data/flows/index.json.</p></noscript></div>
 head: <link rel="stylesheet" href="../app/flows/flows.css" data-flows-css><script src="../app/flows/player.js" defer></script><script src="../app/flows/gallery.js" defer></script>
 ---
-> Kept by incident.motion@web-summit.dinis, 11 November 2026, 10:19 UTC
+> Kept by incident.motion@web-summit.dinis, 11 November 2026, 10:24 UTC
 
 # Flows: the team's work, step by step
 
@@ -35,19 +35,19 @@ The schema: [data/flows/schema.json](../data/flows/schema.json). A flow is:
 
 | Part | What |
 |---|---|
-| `actors` | who took part: `id`, `kind` (person, agent, session, outside body, thing), `icon` (its shape says its kind), `mark` (up to three letters), `label` |
+| `actors` | who took part: `id`, `kind` (person, agent, session, outside body, machine, thing), `icon` (its shape says its kind), `mark` (up to three letters), `label` |
 | `steps` | what each did, in order: `t` (UTC), `actor`, `verb`, `object`, `to` (the actors it is addressed to), `evidence` (`commit`, `file`, `url`, `run`, `key`, or a `note` saying nothing is on record); `drawn` when the time is not recorded |
 | `edges` | who spoke to whom and how often, counted from the steps |
 | `pauses` | the gaps with no step on record, in minutes |
 
-The verbs are the primitives: wakes, reads, writes, commits, addresses (a `For:` trailer), asks, answers, starts, keys, hands-over, builds, serves, publishes, uses, finds, decides, ends. They are meant to match incident.storyteller@'s `story/primitives.md`; where the two differ, the storyteller's words win and this list follows.
+The verbs and kinds are incident.storyteller@'s primitives, taken as they are from [story/primitives.md](../story/primitives.md): wake, read, write, commit, push, release, publish, capture, hand-over, seal, message (a `For:` trailer), ask, answer, instruct, route (a new session started), correct, pause; kinds person, agent, session, outside, machine (CI, a vault, the clock), and thing. Where the two ever differ, the storyteller's words win.
 
 ## Where a flow comes from
 
 `tools/flows-build.mjs` (a generator of the build: `--out <dir>`, `--check`) makes every flow, never by hand:
 
 - **By recipe** ([flows/flows.json](flows.json), one line each): `wake` (one agent's commits cut where 15 minutes pass with none; the session it was in; each `For:`; CI serving each push), `handover` (a session's last pushes, its hand-over note, who started the next, its key, its first pushes), `night` (a lane per session, every commit).
-- **From the storyteller's paths**: every `story/paths/<id>.md` with a table whose columns begin `| t (UTC) | actor | verb | object | evidence |` (and an optional `to`) becomes `path-<id>`; a cast table `| id | kind | icon | mark | label |` in the path or in `story/cast.md` names the actors.
+- **From the storyteller's paths**: every `story/paths/<id>.json` (the step shape in `story/primitives.md`: `t`, `actor` as `<agent>#<session>`, `to`, `verb`, `what`, `commit`/`file`/`url`/`signal`, and `before` for the gap before a step) becomes `path-<id>`, its actors from `story/cast.json`. A step with no record is not drawn (the storyteller's rule). A path written only as markdown is read from its table of steps.
 
 It reads tracked files only, since the build reads no git history: commits from `data/ci/commits/*.json` (incident.ci@) and `data/agents/commits.json` (incident.observability@), sessions from `data/agents/sessions.json`, keys from `data/keys.json`, hand-overs from `agents/*/status.json`. It writes `data/flows/record.json` (the joined record, also what the browser reads), `data/flows/<id>.json` and `data/flows/index.json`, served also at `api/v1/flows/`. Session addresses are never shown: "session 7 of librarian" says it.
 

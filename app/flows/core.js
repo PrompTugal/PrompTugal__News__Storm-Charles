@@ -10,8 +10,9 @@
 (function (G) {
     'use strict'
     const SCHEMA = 'flows/v1'
-    const VERBS = ['wakes', 'reads', 'writes', 'commits', 'addresses', 'asks', 'answers', 'starts', 'keys', 'hands-over', 'builds', 'serves', 'publishes', 'uses', 'finds', 'decides', 'ends']
-    const KINDS = ['person', 'agent', 'session', 'outside', 'thing']
+    // the steps and kinds of story/primitives.md (incident.storyteller@'s words; where they differ, the storyteller's win)
+    const VERBS = ['wake', 'read', 'write', 'commit', 'push', 'release', 'publish', 'capture', 'hand-over', 'seal', 'message', 'ask', 'answer', 'instruct', 'route', 'correct', 'pause']
+    const KINDS = ['person', 'agent', 'session', 'outside', 'machine', 'thing']
     const REPO = 'https://github.com/PrompTugal/PrompTugal__News__Storm-Charles'
     const short = n => String(n || '').split('@')[0].replace(/^incident\./, '')
     const aid = n => 'a-' + short(n).replace(/[^a-z0-9]+/gi, '-').toLowerCase()
@@ -21,7 +22,7 @@
     const scrub = s => String(s || '').replace(/https?:\/\/claude\.ai\/code\/session_[A-Za-z0-9]+/g, '[a session]').replace(/session_[A-Za-z0-9]+/g, '[a session]')
     const commitEv = c => ({ commit: c.sha.slice(0, 8), url: REPO + '/commit/' + c.sha, ...(c.files && c.files.length ? { file: c.files[0] } : {}) })
     const agentActor = (name, extra = {}) => ({ id: aid(name), kind: 'agent', icon: 'agent', mark: short(name).slice(0, 2).toUpperCase(), label: short(name) + '@', name, ...extra })
-    const CI = { id: 'o-ci', kind: 'outside', icon: 'outside', mark: 'CI', label: 'CI', name: 'GitHub Actions (deploy.yml)', evidence: { file: '.github/workflows/deploy.yml' } }
+    const CI = { id: 'o-ci', kind: 'machine', icon: 'factory', mark: 'CI', label: 'CI', name: 'GitHub Actions (deploy.yml)', evidence: { file: '.github/workflows/deploy.yml' } }
     const SITE = { id: 't-site', kind: 'thing', icon: 'page', mark: 'www', label: 'the site', evidence: { url: 'https://storm-charles.promptugal.news/' } }
     const DINIS = { id: 'p-dinis', kind: 'person', icon: 'person', mark: 'DC', label: 'Dinis', evidence: { file: 'CLAUDE.md' } }
 
@@ -59,11 +60,11 @@
     }
     // a commit as steps: the agent commits; each For: is an "addresses" step to that agent; CI builds and serves it
     function commitSteps(c, actor, actors, opts = {}) {
-        const st = [{ t: c.at, actor, verb: 'commits', object: clip(c.what), files: c.files || [], n_files: c.n_files, evidence: commitEv(c) }]
-        for (const to of (c.to || [])) { if (!/@/.test(to) || to === c.agent) continue; actors.push(agentActor(to)); st.push({ t: c.at, actor, verb: 'addresses', object: 'For: ' + short(to) + '@', to: [aid(to)], evidence: { commit: c.sha.slice(0, 8), url: REPO + '/commit/' + c.sha } }) }
+        const st = [{ t: c.at, actor, verb: 'commit', object: clip(c.what), files: c.files || [], n_files: c.n_files, evidence: commitEv(c) }]
+        for (const to of (c.to || [])) { if (!/@/.test(to) || to === c.agent) continue; actors.push(agentActor(to)); st.push({ t: c.at, actor, verb: 'message', object: 'For: ' + short(to) + '@', to: [aid(to)], evidence: { commit: c.sha.slice(0, 8), url: REPO + '/commit/' + c.sha } }) }
         if (opts.ci && c.served) {
             actors.push(CI, SITE)
-            st.push({ t: c.at, actor: 'o-ci', verb: 'serves', object: c.served + (c.run ? ' (run ' + c.run + ')' : ''), to: ['t-site'], evidence: c.run ? { url: REPO + '/actions', file: 'data/ci/runs/', run: c.run } : { commit: c.sha.slice(0, 8), url: REPO + '/commit/' + c.sha } })
+            st.push({ t: c.at, actor: 'o-ci', verb: 'publish', object: c.served + (c.run ? ' (run ' + c.run + ')' : ''), to: ['t-site'], evidence: c.run ? { url: REPO + '/actions', file: 'data/ci/runs/', run: c.run } : { commit: c.sha.slice(0, 8), url: REPO + '/commit/' + c.sha } })
         }
         return st
     }
@@ -78,10 +79,10 @@
         if (!w) return null
         const me = agentActor(name), actors = [me], steps = []
         const sess = sessionAt(rec, name, w[0].at)
-        if (sess) { actors.push(sessActor(name, sess)); steps.push({ t: w[0].at, actor: sessActor(name, sess).id, verb: 'wakes', object: 'session ' + sess.n + ' of ' + short(name) + ' wakes (what woke it is not in the record)', to: [me.id], evidence: { file: 'data/agents/sessions.json' } }) }
+        if (sess) { actors.push(sessActor(name, sess)); steps.push({ t: w[0].at, actor: sessActor(name, sess).id, verb: 'wake', object: 'session ' + sess.n + ' of ' + short(name) + ' wakes (what woke it is not in the record)', to: [me.id], evidence: { file: 'data/agents/sessions.json' } }) }
         for (const c of w) steps.push(...commitSteps(c, me.id, actors, { ci: true }))
         const after = list[list.indexOf(w[w.length - 1]) + 1]
-        if (after) steps.push({ t: w[w.length - 1].at, actor: me.id, verb: 'ends', object: 'the wake ends; next commit ' + Math.round((ms(after.at) - ms(w[w.length - 1].at)) / 6e4) + ' min later', evidence: { commit: after.sha.slice(0, 8), url: REPO + '/commit/' + after.sha } })
+        if (after) steps.push({ t: w[w.length - 1].at, actor: me.id, verb: 'pause', object: 'the wake ends; next commit ' + Math.round((ms(after.at) - ms(w[w.length - 1].at)) / 6e4) + ' min later', evidence: { commit: after.sha.slice(0, 8), url: REPO + '/commit/' + after.sha } })
         return finish({ id: o.id || 'wake-' + short(name), kind: 'wake', title: o.title || 'A wake of ' + short(name) + '@, end to end', summary: o.summary || `${w.length} commits from ${w[0].at.slice(11, 16)} to ${w[w.length - 1].at.slice(11, 16)} UTC on ${w[0].at.slice(0, 10)}: what it wrote, whom it addressed, and CI serving each push.`, actors, steps, pause_min: 10, built_from: ['data/ci/commits/', 'data/agents/commits.json', 'data/agents/sessions.json'] }, rec)
     }
 
@@ -97,19 +98,19 @@
         const a = ss[i], b = ss[i + 1], me = agentActor(name), A = sessActor(name, a), B = sessActor(name, b)
         const actors = [me, A, B], steps = []
         const mine = byAgent(rec, name), inA = mine.filter(c => ms(c.at) >= ms(a.first) && ms(c.at) <= ms(a.last)), inB = mine.filter(c => ms(c.at) >= ms(b.first) && ms(c.at) <= ms(b.last))
-        for (const c of inA.slice(-3)) steps.push({ t: c.at, actor: A.id, verb: 'commits', object: clip(c.what), files: c.files || [], evidence: commitEv(c) })
+        for (const c of inA.slice(-3)) steps.push({ t: c.at, actor: A.id, verb: 'commit', object: clip(c.what), files: c.files || [], evidence: commitEv(c) })
         const ho = rec.handovers[name]
-        if (ho && ho.at && Math.abs(ms(ho.at) - ms(a.last)) < 3 * 36e5) steps.push({ t: ho.at.length === 17 ? ho.at.replace('Z', ':00Z') : ho.at, actor: A.id, verb: 'hands-over', object: clip(scrub(ho.why || 'writes its hand-over'), 140), to: [B.id], evidence: { file: ho.file } })
-        else steps.push({ t: a.last, actor: A.id, verb: 'hands-over', object: 'its last push (no hand-over note on record for this pair)', to: [B.id], evidence: { file: 'data/agents/sessions.json' } })
+        if (ho && ho.at && Math.abs(ms(ho.at) - ms(a.last)) < 3 * 36e5) steps.push({ t: ho.at.length === 17 ? ho.at.replace('Z', ':00Z') : ho.at, actor: A.id, verb: 'hand-over', object: clip(scrub(ho.why || 'writes its hand-over'), 140), to: [B.id], evidence: { file: ho.file } })
+        else steps.push({ t: a.last, actor: A.id, verb: 'hand-over', object: 'its last push (no hand-over note on record for this pair)', to: [B.id], evidence: { file: 'data/agents/sessions.json' } })
         const word = b.on_whose_word && b.on_whose_word !== 'not recorded' ? ', on ' + b.on_whose_word + "'s word (BRIEF.md, " + clip(b.brief_section || 'section not recorded', 40) + ')' : ''
         const key = (rec.keys[name] || []).find(k => k.n === b.n)
         if (b.started_by && b.started_by !== 'not recorded') {
             const by = agentActor(b.started_by); actors.push(by)
             const known = b.started_at && b.started_at !== 'not recorded'
-            steps.push({ t: known ? b.started_at : new Date((key && key.made_at ? ms(key.made_at) : ms(b.first) - 6e4) - 6e4).toISOString().replace('.000', ''), ...(known ? {} : { drawn: 'the start time is not recorded: drawn a minute before the new session\'s key' }), actor: by.id, verb: 'starts', object: 'starts session ' + b.n + ' of ' + short(name) + word, to: [B.id], evidence: { file: 'data/agents/starts.json' } })
+            steps.push({ t: known ? b.started_at : new Date((key && key.made_at ? ms(key.made_at) : ms(b.first) - 6e4) - 6e4).toISOString().replace('.000', ''), ...(known ? {} : { drawn: 'the start time is not recorded: drawn a minute before the new session\'s key' }), actor: by.id, verb: 'route', object: 'starts session ' + b.n + ' of ' + short(name) + word, to: [B.id], evidence: { file: 'data/agents/starts.json' } })
         }
-        if (key) steps.push({ t: key.made_at || new Date(ms(b.first) - 6e4).toISOString().replace('.000', ''), ...(key.made_at ? {} : { drawn: 'the key carries no time: drawn a minute before the first push' }), actor: B.id, verb: 'keys', object: 'makes its own session key (' + key.record + '); only the public half goes in data/keys.json', evidence: { file: 'data/keys.json', key: key.id } })
-        for (const c of inB.slice(0, 3)) steps.push({ t: c.at, actor: B.id, verb: 'commits', object: clip(c.what), files: c.files || [], evidence: commitEv(c) })
+        if (key) steps.push({ t: key.made_at || new Date(ms(b.first) - 6e4).toISOString().replace('.000', ''), ...(key.made_at ? {} : { drawn: 'the key carries no time: drawn a minute before the first push' }), actor: B.id, verb: 'write', object: 'its own session key (' + key.record + '): the public half written to data/keys.json', evidence: { file: 'data/keys.json', key: key.id } })
+        for (const c of inB.slice(0, 3)) steps.push({ t: c.at, actor: B.id, verb: 'commit', object: clip(c.what), files: c.files || [], evidence: commitEv(c) })
         const gap = Math.round((ms(b.first) - ms(a.last)) / 6e4)
         return finish({ id: o.id || 'handover-' + short(name) + '-' + a.n, kind: 'handover', title: o.title || `A hand-over: ${short(name)}@, session ${a.n} to ${b.n}`, summary: o.summary || `Session ${a.n}'s last pushes, its hand-over, the start of session ${b.n}, its key, its first pushes: ${gap} min from the last push to the next.`, actors, steps, pause_min: 15, built_from: ['data/agents/sessions.json', 'data/agents/starts.json', 'data/keys.json', 'agents/' + (rec.roles[name] || '?') + '/status.json', 'data/ci/commits/'] }, rec)
     }
@@ -121,11 +122,11 @@
         const cap = o.cap || 140
         for (const s of ss) actors.push(sessActor(name, s))
         const laneOf = t => { const s = sessionAt(rec, name, t); return s ? sessActor(name, s).id : (actors.push(me), me.id) }
-        for (const s of ss) { if (s.started_by && s.started_by !== 'not recorded' && s.first) { const by = agentActor(s.started_by); actors.push(by); steps.push({ t: new Date(ms(s.first) - 6e4).toISOString().replace('.000', ''), drawn: 'the start time is not recorded: drawn a minute before its first push', actor: by.id, verb: 'starts', object: 'starts session ' + s.n, to: [sessActor(name, s).id], evidence: { file: 'data/agents/sessions.json' } }) } }
-        if (list.length <= cap) for (const c of list) steps.push({ t: c.at, actor: laneOf(c.at), verb: 'commits', object: clip(c.what, 90), files: c.files || [], evidence: commitEv(c) })
+        for (const s of ss) { if (s.started_by && s.started_by !== 'not recorded' && s.first) { const by = agentActor(s.started_by); actors.push(by); steps.push({ t: new Date(ms(s.first) - 6e4).toISOString().replace('.000', ''), drawn: 'the start time is not recorded: drawn a minute before its first push', actor: by.id, verb: 'route', object: 'starts session ' + s.n, to: [sessActor(name, s).id], evidence: { file: 'data/agents/sessions.json' } }) } }
+        if (list.length <= cap) for (const c of list) steps.push({ t: c.at, actor: laneOf(c.at), verb: 'commit', object: clip(c.what, 90), files: c.files || [], evidence: commitEv(c) })
         else {
             const hours = new Map(); for (const c of list) { const k = c.at.slice(0, 13) + '|' + laneOf(c.at); (hours.get(k) || hours.set(k, []).get(k)).push(c) }
-            for (const [k, cs] of hours) steps.push({ t: cs[0].at, actor: k.split('|')[1], verb: 'commits', object: cs.length + ' commits in the hour from ' + k.slice(11, 13) + ':00; the first: ' + clip(cs[0].what, 70), evidence: commitEv(cs[0]), n: cs.length })
+            for (const [k, cs] of hours) steps.push({ t: cs[0].at, actor: k.split('|')[1], verb: 'commit', object: cs.length + ' commits in the hour from ' + k.slice(11, 13) + ':00; the first: ' + clip(cs[0].what, 70), evidence: commitEv(cs[0]), n: cs.length })
         }
         return finish({ id: o.id || 'night-' + short(name), kind: 'night', title: o.title || `${short(name)}@ over the night, by its sessions`, summary: o.summary || `${list.length} commits in ${ss.length} sessions from ${list[0].at.slice(11, 16)} on ${list[0].at.slice(0, 10)} to ${list[list.length - 1].at.slice(11, 16)} UTC on ${list[list.length - 1].at.slice(0, 10)}; a lane per session, the pauses between.`, actors, steps, pause_min: 30, built_from: ['data/ci/commits/', 'data/agents/commits.json', 'data/agents/sessions.json'] }, rec)
     }
@@ -152,6 +153,37 @@
         if (!steps.length) return null
         return finish({ id: 'path-' + id, kind: 'path', title: stripMd(title), summary: clip(stripMd(summary), 240), actors, steps, pause_min: 30, built_from: ['story/paths/' + id + '.md'] }, rec)
     }
+    // 4b. a path as incident.storyteller@ writes it (story/paths/<id>.json, the shape in story/primitives.md): steps
+    // { t, actor ("<agent>#<n>", "dinis", or a cast id), to, verb, what, commit | file | url | signal, before }, and its cast
+    // drawn from story/cast.json. "before" is the storyteller's word for the gap before a step: it becomes the pause's why.
+    function fromStory(p, castAll) {
+        const members = new Map(((castAll && castAll.members) || []).map(m => [m.id, m]))
+        const idOf = x => { const [who, n] = String(x).split('#'); const m = members.get(who); return n ? 's-' + short(who).replace(/[^a-z0-9]+/gi, '-') + '-' + n : (m && m.kind === 'agent') || /@/.test(who) ? aid(who) : (m && m.kind === 'person' ? 'p-' : m && m.kind === 'machine' ? 'm-' : 'o-') + who.replace(/[^a-z0-9]+/gi, '-') }
+        const actorOf = x => {
+            const [who, n] = String(x).split('#'), m = members.get(who) || {}, g = (m.icon && m.icon.glyph) || '', e = (m.icon && m.icon.emoji) || ''
+            if (n) return { id: idOf(x), kind: 'session', icon: 'session', glyph: g, emoji: e, mark: short(who).slice(0, 2).toUpperCase() + n, label: short(who) + '@ #' + n, of: aid(who) }
+            const kind = m.kind || (/@/.test(who) ? 'agent' : 'outside')
+            return { id: idOf(x), kind, icon: g || kind, glyph: g, emoji: e, mark: (/@/.test(who) ? short(who) : (m.name || who)).slice(0, 2).toUpperCase(), label: /@/.test(who) ? short(who) + '@' : (m.name || who) }
+        }
+        const actors = (p.cast || []).map(actorOf), steps = [], pauses = []
+        let prev = null
+        for (const st of p.steps || []) {
+            const ev = {}
+            if (st.commit) { ev.commit = String(st.commit).slice(0, 8); ev.url = REPO + '/commit/' + st.commit }
+            if (st.file) ev.file = st.file
+            if (st.url) ev.url = st.url
+            if (st.signal) ev.signal = st.signal
+            if (!Object.keys(ev).length) continue        // the storyteller's rule: a step with no record is not drawn
+            const to = [].concat(st.to || []).filter(Boolean)
+            for (const x of [st.actor, ...to]) if (!actors.some(a => a.id === idOf(x))) actors.push(actorOf(x))
+            if (prev && st.before) pauses.push({ from: prev, to: st.t, minutes: Math.round((ms(st.t) - ms(prev)) / 6e4), why: st.before })
+            steps.push({ t: st.t, actor: idOf(st.actor), verb: st.verb, object: clip(st.what, 160), ...(to.length ? { to: to.map(idOf) } : {}), evidence: ev })
+            prev = st.t
+        }
+        if (!steps.length) return null
+        return { id: 'path-' + p.id, kind: 'path', title: p.title, summary: clip(p.summary, 260), told_by: p.by, actors, steps, pauses, built_from: ['story/paths/' + p.id + '.json', 'story/cast.json'] }
+    }
+
     const slug = s => String(s || '').replace(/[`*@]/g, '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
     const stripMd = s => String(s || '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[`*]/g, '').trim()
     function normT(s, md) {
@@ -205,5 +237,5 @@
         return null
     }
 
-    G.FlowsCore = { SCHEMA, VERBS, KINDS, wake, handover, night, fromPath, check, make, wakesOf, short, scrub }
+    G.FlowsCore = { SCHEMA, VERBS, KINDS, wake, handover, night, fromPath, fromStory, finish: (f, rec) => finish(f, rec || {}), check, make, wakesOf, short, scrub }
 })(typeof globalThis !== 'undefined' ? globalThis : this)

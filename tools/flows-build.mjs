@@ -62,10 +62,18 @@ for (const spec of (read('flows/flows.json')?.flows || [])) {
     Object.assign(f, { id: spec.id, ...(spec.title ? { title: spec.title } : {}), ...(spec.summary ? { summary: spec.summary } : {}), recipe: { kind: spec.kind, agent: spec.agent, ...(spec.n ? { n: spec.n } : {}), ...(spec.at ? { at: spec.at } : {}) } })
     flows.push(f)
 }
-const castMd = text('story/cast.md'), cast = []
-if (castMd) { const tmp = F.fromPath(castMd + '\n\n| t | actor | verb | object | evidence |\n|---|---|---|---|---|\n| 00:00 | x | ends | x | cast |\n', 'cast', record, []); for (const a of tmp?.actors || []) if (a.id !== 'x') cast.push(a) }
-const castJson = read('story/cast.json'); for (const a of (castJson?.cast || castJson?.actors || [])) if (a.id) cast.push(a)
-for (const f of ls('story/paths').filter(f => f.endsWith('.md'))) {
+const cast = []
+const castAll = read('story/cast.json')
+for (const f of ls('story/paths').filter(f => f.endsWith('.json'))) {
+    const p = read('story/paths/' + f); if (!p || !Array.isArray(p.steps)) continue
+    p.id = f.replace(/\.json$/, '')   // the file's name, so the flow's id follows the path's number
+    const fl = F.fromStory(p, castAll); if (!fl) continue
+    // the storyteller's pauses (its 'before') are kept as they are; with none named, gaps of 30 minutes are drawn
+    if (!fl.pauses.length) delete fl.pauses
+    F.finish(fl, record)
+    fl.source = 'story/paths/' + f; flows.push(fl)
+}
+for (const f of ls('story/paths').filter(f => f.endsWith('.md') && f !== 'README.md' && !ls('story/paths').includes(f.replace(/\.md$/, '.json')))) {
     const id = f.replace(/\.md$/, ''), fl = F.fromPath(text('story/paths/' + f), id, record, cast)
     if (fl) { fl.source = 'story/paths/' + f; flows.push(fl) }
 }

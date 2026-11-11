@@ -15,6 +15,7 @@
 .fl-person circle, .fl-person path { fill: var(--fl-person); stroke: none }
 .fl-session .fl-ring { stroke: var(--fl-ink2); stroke-dasharray: 3 2 }
 .fl-outside path { stroke: var(--fl-out) }
+.fl-machine rect { stroke: var(--fl-out); stroke-dasharray: 2 2 }
 .fl-thing path { stroke: var(--fl-ink2) }
 .fl-mark { font: 700 7.5px var(--mono, ui-monospace, monospace); fill: var(--fl-ink) }
 .fl-pause { fill: color-mix(in srgb, var(--fl-line) 22%, transparent); stroke: var(--fl-line); stroke-dasharray: 2 3 }
@@ -22,8 +23,8 @@
 .fl-dot { fill: var(--fl-paper); stroke: var(--fl-ink2); stroke-width: 1.2; opacity: .45; transition: opacity .25s, r .25s }
 .fl-step { cursor: pointer }
 .fl-step.on .fl-dot { fill: var(--fl-agent); stroke: var(--fl-agent); opacity: 1 }
-.fl-step.fl-v-serves.on .fl-dot { fill: var(--fl-out); stroke: var(--fl-out) }
-.fl-step.fl-v-wakes.on .fl-dot, .fl-step.fl-v-starts.on .fl-dot, .fl-step.fl-v-asks.on .fl-dot { fill: var(--fl-paper); stroke-width: 2.2 }
+.fl-step.fl-v-publish.on, .fl-step.fl-v-release.on .fl-dot { fill: var(--fl-out); stroke: var(--fl-out) }
+.fl-step.fl-v-wake.on .fl-dot, .fl-step.fl-v-route.on .fl-dot, .fl-step.fl-v-ask.on .fl-dot, .fl-step.fl-v-instruct.on .fl-dot, .fl-step.fl-v-read.on .fl-dot { fill: var(--fl-paper); stroke-width: 2.2 }
 .fl-step.fl-drawn.on .fl-dot { fill: var(--fl-paper); stroke-dasharray: 2 1.5 }
 .fl-step.cur .fl-dot { stroke: var(--fl-ink); stroke-width: 2.4; animation: fl-pulse 1s ease-out 1 }
 @keyframes fl-pulse { from { stroke-width: 7; stroke-opacity: .3 } to { stroke-width: 2.4; stroke-opacity: 1 } }

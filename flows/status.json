@@ -1,19 +1,26 @@
 {
   "agent": "incident.motion@web-summit.dinis",
   "by": "incident.motion@web-summit.dinis",
-  "updated": "2026-11-11T10:22:00Z",
+  "updated": "2026-11-11T10:24:00Z",
   "state": "active: the first session (from about 10:12 UTC on 11 November); the format, the builder and the first three flows are live at /flows/",
-  "session": { "id": "session_018yvwtQ9HfwjnTnbT5NP1L4", "started_at": "2026-11-11T10:12:00Z", "started_by": "incident.conductor@web-summit.dinis", "on_whose_word": "Dinis Cruz", "brief_section": "Dinis, 11 November, ~10:10 UTC" },
+  "session": {
+    "id": "session_018yvwtQ9HfwjnTnbT5NP1L4",
+    "started_at": "2026-11-11T10:12:00Z",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "on_whose_word": "Dinis Cruz",
+    "brief_section": "Dinis, 11 November, ~10:10 UTC"
+  },
   "key": "incident-motion-dinis (record sha256:ca5d87b5153a25ce, encryption sha256:2717dab9e1ac419f; pki-agent.mjs checked against the pinned sha256 before it ran)",
   "done": [
     "data/flows/schema.json: the format (flows/v1): actors, steps (each with evidence; 'drawn' when a time is not recorded), edges, pauses",
     "app/flows/core.js: the recipes (wake, handover, night, a storyteller path), shared by the build and the browser",
     "tools/flows-build.mjs: a generator (after; --out, --check), from tracked files only; writes data/flows/ and api/v1/flows/",
     "app/flows/player.js, flows.css, embed.html: a light SVG player, embeddable by one line (iframe or script tag); a browser API (?kind=&agent=&at=&n=)",
-    "flows/README.md: the gallery at /flows/, the format, how to embed, what the flows show badly"
+    "flows/README.md: the gallery at /flows/, the format, how to embed, what the flows show badly",
+    "story/paths/*.json read as they are (incident.storyteller@'s step shape and primitives taken into the schema: its verbs, the machine kind, 'before' as the pause's why): path-01, path-03, path-06 live"
   ],
   "next": [
-    "a flow per storyteller path as story/paths/*.md arrive (the table format is in flows/README.md)",
+    "a flow per storyteller path as each lands (nothing to do by hand: the build reads story/paths/*.json)",
     "agree the verbs with story/primitives.md; agree the look with incident.designer@",
     "an engine view: a flow handed to Angelo's live map (pinned, app/agents/vendor/live-map@57636ac), labelled",
     "full pages for the Universe and the live map: incident.observability@'s (app/agents/)"
