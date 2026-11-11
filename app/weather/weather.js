@@ -11,7 +11,7 @@
   var FILES = {
     incident: room + 'incident.json', signals: api + 'signals.json', warn: api + 'weather/warnings.json', rain: api + 'weather/lisbon-rain.json',
     stations: api + 'weather/stations.json', forecast: api + 'weather/forecast.json', airport: api + 'weather/airport.json',
-    madeira: api + 'weather/madeira.json', changes: api + 'weather/changes.json', analysis: api + 'weather/analysis.json', decisions: api + 'decisions/graph.json'
+    madeira: api + 'weather/madeira.json', changes: api + 'weather/changes.json', analysis: api + 'weather/analysis.json', comm: api + 'weather/communiques.json', decisions: api + 'decisions/graph.json'
   }
   // where a reader lands for each file: the data room's own copy (one place to change when the data room's file viewer is live)
   // the data room's file viewer: one page, view/?path=<path>, and &at=<field>/<index>/<field> opens one value inside a JSON file
@@ -19,7 +19,7 @@
   var ROOM = {
     incident: view('incident.json', 'headline'), signals: room + 'timeline.html', warn: view('data/weather/warnings.json', 'lisbon'), rain: view('data/weather/lisbon-rain.json', 'stations'),
     stations: view('data/weather/stations.json', 'stations'), forecast: view('data/weather/forecast.json', 'hourly'), airport: view('data/weather/airport.json', 'metars'),
-    madeira: view('data/weather/madeira.json', 'stations'), changes: view('data/weather/changes.json', 'thursday'), analysis: room + 'data/weather/analysis.html', decisions: view('data/decisions/graph.json')
+    madeira: view('data/weather/madeira.json', 'stations'), changes: view('data/weather/changes.json', 'thursday'), analysis: room + 'data/weather/analysis.html', comm: view('data/weather/communiques.json', 'items'), decisions: view('data/decisions/graph.json')
   }
   var qNow = new URLSearchParams(location.search).get('now')   // ?now=2026-11-11T13:00Z shows the page as at that time (a check, not a forecast)
   var now = function () { var t = qNow ? Date.parse(qNow) : NaN; return isNaN(t) ? Date.now() : t }
@@ -90,6 +90,12 @@
     return D.warn ? '<ul class="wxc-days" aria-label="Highest IPMA warning level for Lisbon, by day">' + out.join('') + '</ul>' : ''
   }
 
+  function communique(t) {
+    var its = ((D.comm || {}).items || []).filter(function (c) { return ok(c.valid_to_utc) && T(c.valid_to_utc) > t && ok(c.issued_utc) && /continente|lisboa/i.test(c.title || '') }).sort(function (a, b) { return T(b.issued_utc) - T(a.issued_utc) })
+    var c = its[0]; if (!c) return ''
+    return '<p class="meta wxc-where">IPMA communiqué in force: <span lang="pt">' + esc(c.title) + '</span>. Issued ' + when(c.issued_utc, t) + ' UTC, valid to ' + when(c.valid_to_utc, t) + (ok(c.last_seen_utc) ? ', last seen in IPMA\'s feed ' + when(c.last_seen_utc, t) : '') + '. ' + prov('comm', 'IPMA communiqués', D.comm.read_utc) + '</p>'
+  }
+
   // the first screen. The largest thing is IPMA's highest level for Lisbon for the rest of today, in IPMA's colour with the word written;
   // then one line of what is measured now; then what is in force, what is closed, what comes next and the headline decision.
   function hero(t) {
@@ -119,7 +125,7 @@
       '</div><div>' +
       (next.length ? '<h2 class="wxc-sub">Next, as IPMA warns</h2><ul class="wxc-ws next">' + next.map(line).join('') + '</ul>' : '') +
       (h.text ? '<div class="wxc-decision flat"><p class="wxc-eyebrow">The decision ' + lbl(h.label || 'fact') + '</p><p class="wxc-dtext">' + esc(h.text) + '</p><p class="prov">' + esc(h.source || '') + ', ' + esc(h.at || '') + '. <a href="' + esc(sigUrl ? ROOM.signals + '#' + sigUrl.id : room + 'index.html') + '">In the data room</a></p></div>' : '') +
-      '</div></div>' + where + (D.warn ? '<p>' + wp + ' <span class="prov">(' + ago(D.warn.read_utc, t) + ')' + (ok(D.warn.next_read_utc) ? ' · next read ' + (T(D.warn.next_read_utc) > t ? 'at about ' : 'was due at ') + hm(D.warn.next_read_utc) + ' UTC' : '') + '</span></p>' : '') + '</section>'
+      '</div></div>' + where + communique(t) + (D.warn ? '<p>' + wp + ' <span class="prov">(' + ago(D.warn.read_utc, t) + ')' + (ok(D.warn.next_read_utc) ? ' · next read ' + (T(D.warn.next_read_utc) > t ? 'at about ' : 'was due at ') + hm(D.warn.next_read_utc) + ' UTC' : '') + '</span></p>' : '') + '</section>'
   }
 
   function nowTiles(t) {
@@ -191,8 +197,12 @@
       if (f && f.wind_mean_kmh != null) return cell(h, arrow(f.wind_dir) + '<b>' + num(f.wind_mean_kmh) + '</b><i>' + esc(f.wind_dir || '') + '</i>', 'auto', hm(f.time_utc) + ': IPMA automatic forecast, mean wind ' + f.wind_mean_kmh + ' km/h from ' + f.wind_dir + ' (a mean at one point; no gusts in this feed)')
       return cell(h, '', 'empty')
     }).join(''), 'wxc-wind')
-    if (ms.length) out += row('Gusts', 'km/h, observed at Lisbon airport (METAR): IPMA\'s stations report mean wind only', cols.map(function (h) {
-      var g = gustIn(h); return g ? cell(h, '<b>' + num(g.gust_kmh) + '</b>', 'obs', hm(g.time_utc) + ': gust ' + g.gust_kmh + ' km/h at Lisbon airport (METAR)') : cell(h, h < nowH ? '<i>none</i>' : '', h < nowH ? 'obs quiet' : 'empty', h < nowH ? 'no gust reported at the airport in this hour' : '')
+    var windWs = ws.filter(function (w) { return w.type === 'Vento' }), warnedAt = function (h) { var x = D0 + h * H, hit = null; windWs.forEach(function (w) { if (T(w.start_utc) <= x && T(w.end_utc) > x && (!hit || RANK[w.level] > RANK[hit.level])) hit = w }); var m = hit && String(hit.text_pt || '').match(/(\d+)\s*km\/h/); return m ? { w: hit, v: +m[1] } : null }
+    if (ms.length || windWs.length) out += row('Gusts', 'km/h, observed at Lisbon airport · then the figure in IPMA\'s wind warning', cols.map(function (h) {
+      var g = gustIn(h), wn = h >= nowH ? warnedAt(h) : null
+      if (g) return cell(h, '<b>' + num(g.gust_kmh) + '</b>', 'obs', hm(g.time_utc) + ': gust ' + g.gust_kmh + ' km/h at Lisbon airport (METAR)')
+      if (wn) return cell(h, '<i>up to</i><b>' + wn.v + '</b>', 'warned w-' + esc(wn.w.level), 'IPMA ' + wn.w.level + ' wind warning: ' + (wn.w.text_en || wn.w.text_pt))
+      return cell(h, h < nowH ? '<i>none</i>' : '', h < nowH ? 'obs quiet' : 'empty', h < nowH ? 'no gust reported at the airport in this hour' : '')
     }).join(''), 'wxc-gust')
     // 4. temperature
     out += row('Temperature', '°C, observed · then automatic forecast', cols.map(function (h) {
@@ -206,7 +216,7 @@
     return '<section class="wxc-sec" aria-labelledby="wxc-h-today"><h2 id="wxc-h-today">Today, hour by hour <span class="meta">' + esc(longDay(t)) + ', Lisbon</span></h2>' +
       '<div class="wxc-scroll" tabindex="0" role="group" aria-label="Today hour by hour: scrolls sideways"><div class="wxc-grid" role="table" aria-label="Lisbon today by the hour: IPMA warnings, rain, wind, gusts, temperature">' + out + '</div></div>' +
       '<ul class="wxc-legend"><li><span class="k k-warn"></span>IPMA\'s warning, in IPMA\'s colour, the level written</li><li><span class="k k-dec"></span>a decision, over the hours its source states (outlined: reported by others)</li><li><span class="k k-obs"></span>observed (a measurement)</li><li><span class="k k-auto"></span>IPMA\'s automatic forecast for one point in the city</li></ul>' +
-      '<p class="wxc-note"><b>Why the wind numbers look small beside a ' + (windW ? esc(windW.level) + ' ' : '') + 'wind warning.</b> The hourly numbers are mean wind: the wind averaged over an hour at one station, or a computer model\'s value for one point. A warning is about gusts, and is written by IPMA\'s forecasters for the whole district' + (windW ? ': <span lang="pt">' + esc(String(windW.text_pt).replace(/\.\s*$/, '')) + '</span>' : '') + '. The warning is IPMA\'s official statement for the district.</p>' +
+      '<p class="wxc-note"><b>Why the wind numbers look small beside a ' + (windW ? esc(windW.level) + ' ' : '') + 'wind warning.</b> The hourly numbers are mean wind: the wind averaged over an hour at one station, or a computer model\'s value for one point. IPMA\'s stations report mean wind only, so the gusts shown are Lisbon airport\'s own reports (METAR). A warning is about gusts, and is written by IPMA\'s forecasters for the whole district' + (windW ? ': <span lang="pt">' + esc(String(windW.text_pt).replace(/\.\s*$/, '')) + '</span>' : '') + '. The warning is IPMA\'s official statement for the district.</p>' +
       '<p>' + (D.warn ? prov('warn', 'IPMA warnings', D.warn.read_utc) + ' · ' : '') + (D.rain ? prov('rain', 'IPMA stations, rain', D.rain.read_utc) + ' · ' : '') + (D.stations ? prov('stations', 'IPMA stations, wind', D.stations.read_utc) + ' · ' : '') + (D.airport ? prov('airport', 'Lisbon airport (METAR)', D.airport.read_utc) + ' · ' : '') + (D.forecast && D.forecast.hourly ? prov('forecast', 'IPMA automatic forecast', D.forecast.hourly.read_utc) : '') + '</p></section>'
   }
 
