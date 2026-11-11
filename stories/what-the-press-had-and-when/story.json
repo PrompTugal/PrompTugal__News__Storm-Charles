@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T05:48Z",
-  "updated": "2026-11-11T07:57:40Z",
+  "updated": "2026-11-11T09:55Z",
   "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
@@ -138,6 +138,13 @@
       "at_utc": "2026-11-11T07:57:40Z",
       "what": "The box at the top is now drawn from both of IPMA's channels, as the front page draws it: the newest message for each kind of weather, and what the open-data feed still lists where the two differ (before, it was drawn from the open data alone and showed red wind after IPMA's 07:16 message had lowered it to orange).",
       "claims_changed": []
+    },
+    {
+      "at_utc": "2026-11-11T09:55Z",
+      "what": "Retold on the media desk's table of 09:39:39 UTC. Before, p12 said: \"No article title and no live-blog entry among the pages read reported that move by 00:15 on Wednesday, and the media desk's table still counted none when this was written.\" Now: the table counts one press text, Observador's live entry of 08:46:16 on Wednesday, 683 minutes after IPMA's message.",
+      "claims_changed": [
+        "p12"
+      ]
     }
   ],
   "claims": [
@@ -686,11 +693,11 @@
     },
     {
       "id": "p12",
-      "text": "No article title and no live-blog entry among the pages read reported that move by 00:15 on Wednesday, and the media desk's table still counted none when this was written.",
+      "text": "That move to 09:00 had not been reported in any article title or live-blog entry the media watch could read by 00:15 on Wednesday. The first press text it has since read that gives Lisbon's red rain from 09:00 is an entry in Observador's live blog at 08:46:16 on Wednesday: 11 hours 23 minutes after IPMA sent the change, and 14 minutes before the warning began. The entry presents the red rain as newly issued, not as moved.",
       "label": "hypothesis",
-      "confidence": "limited by method: matched by title only; six outlets refuse automated reads",
+      "confidence": "limited by method: the first text the media desk read, found by hand at 09:38; an earlier one it could not read may exist (some outlets refuse automated reads)",
       "said_by": "incident.media@web-summit.dinis (analysis)",
-      "at_utc": "2026-11-11T00:15Z",
+      "at_utc": "2026-11-11T08:46:16Z",
       "supports": [
         {
           "kind": "row",
@@ -700,18 +707,32 @@
           "kind": "data",
           "file": "research/media/first-on-each-fact.json",
           "field": "facts[id=6-red-rain-0900].items_matched",
-          "expect": 0
+          "expect": 1
         },
         {
           "kind": "data",
           "file": "research/media/first-on-each-fact.json",
-          "field": "facts[id=6-red-rain-0900].notes[0]",
-          "contains": [
-            "no article title or live entry we could read reported it"
-          ]
+          "field": "facts[id=6-red-rain-0900].first_by_outlet[rank=1].outlet",
+          "expect": "observador"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].first_by_outlet[rank=1].published",
+          "expect": "2026-11-11T08:46:16Z"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": 683
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0939"
         }
       ],
-      "read_utc": "2026-11-11T05:37:20Z"
+      "read_utc": "2026-11-11T09:39:39Z"
     },
     {
       "id": "p13",

@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:29Z",
-  "updated": "2026-11-11T08:54Z",
+  "updated": "2026-11-11T09:55Z",
   "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
@@ -369,12 +369,12 @@
     },
     {
       "id": "w10",
-      "text": "That move to 09:00 had not been reported in any article title or live-blog entry the media watch could read by 00:15 on Wednesday.",
+      "text": "That move to 09:00 had not been reported in any article title or live-blog entry the media watch could read by 00:15 on Wednesday. The first press text it has since read that gives Lisbon's red rain from 09:00 is an entry in Observador's live blog at 08:46:16 on Wednesday: 11 hours 23 minutes after IPMA sent the change, and 14 minutes before the warning began. The entry presents the red rain as newly issued, not as moved.",
       "label": "hypothesis",
-      "confidence": "limited by method: matched by title only; four outlets refuse automated reads",
+      "confidence": "limited by method: the first text the media desk read, found by hand at 09:38; an earlier one it could not read may exist (some outlets refuse automated reads)",
       "said_by": "incident.media@web-summit.dinis (analysis)",
-      "at_utc": "2026-11-11T00:15Z",
-      "read_utc": "2026-11-11T01:37:07Z",
+      "at_utc": "2026-11-11T08:46:16Z",
+      "read_utc": "2026-11-11T09:39:39Z",
       "supports": [
         {
           "kind": "row",
@@ -384,7 +384,29 @@
           "kind": "data",
           "file": "research/media/first-on-each-fact.json",
           "field": "facts[id=6-red-rain-0900].items_matched",
-          "expect": 0
+          "expect": 1
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].first_by_outlet[rank=1].outlet",
+          "expect": "observador"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].first_by_outlet[rank=1].published",
+          "expect": "2026-11-11T08:46:16Z"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": 683
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0939"
         }
       ]
     },
@@ -657,6 +679,13 @@
       "claims_changed": [
         "w15",
         "w16"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T09:55Z",
+      "what": "Retold on the media desk's table of 09:39:39 UTC. Before, w10 said: \"That move to 09:00 had not been reported in any article title or live-blog entry the media watch could read by 00:15 on Wednesday.\" Now: the table counts one press text, Observador's live entry of 08:46:16 on Wednesday, 683 minutes after IPMA's message.",
+      "claims_changed": [
+        "w10"
       ]
     }
   ]
