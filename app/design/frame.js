@@ -18,3 +18,6 @@ b.addEventListener('click',function(){set(!q.classList.contains('open'))});q.aft
 ;(function(){var e=document.querySelector('.live[data-built]');if(!e)return;var t=Date.parse(e.dataset.built);if(!t)return;
 function f(){var m=Math.max(0,Math.round((Date.now()-t)/6e4));e.lastChild.textContent=m<1?'just now':m<60?m+' min ago':m<1440?Math.floor(m/60)+' h '+(m%60)+' min ago':Math.floor(m/1440)+' d ago';e.classList.toggle('stale',m>=60)}
 f();setInterval(f,30000)})()
+// round 64: residents by hour (app/design/hours.js) loads only on a page that mounts <div data-hours-chart="...json">
+;(function(){if(!document.querySelector('[data-hours-chart]'))return;var c=document.querySelector('script[src*="app/design/frame.js"]');if(!c)return
+var s=document.createElement('script');s.src=c.src.replace('frame.js','hours.js');document.head.appendChild(s)})()

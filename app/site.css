@@ -904,3 +904,11 @@ footer.agent .ptn-foot a { font-weight: 700; }
 @media print { .conf > b { color: var(--ink); } }
 /* round 62: the zebra stripe is a :where() so a cell's own fill (a level cell, a state) wins; IPMA red on dark themes #e5324b -> #d42a42 (white on it 4.3 -> 5.0:1; on ink 3.7, on azulejo 3.4) */
 /* round 63: state tokens to 4.5:1 on the recessed band in every theme: --wait (light #595c64, archive #5f5244, azulejo #a3afc6), --ok light #17663a, --warn light #8a4f00 and archive #7a4800 */
+/* round 64: residents by hour (app/design/hours.js) */
+.hc { margin: 12px 0 18px; }
+.hc .hc-head { font: 600 18px/1.35 var(--serif, var(--sans)); margin: 0 0 6px; }
+.hc .hc-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 0; margin: 0 0 6px; font-size: 13px; color: var(--ink-2); }
+.hc .hc-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.hc .hc-legend svg rect.lv-red { fill: var(--red); } .hc .hc-legend svg rect.lv-orange { fill: var(--orange); } .hc .hc-legend svg rect.lv-yellow { fill: var(--yellow); }
+.hc .prov .conf { margin-left: 8px; }
+@media print { .hc .wx-scroll { overflow: visible; } .hc .wx-chart { min-width: 0; } .hc rect { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
