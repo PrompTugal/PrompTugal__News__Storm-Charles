@@ -72,7 +72,7 @@ const ask = {
     status: line.status, ...(line.error ? { error: line.error } : {}), cost_usd: line.cost_usd, tokens_in: line.tokens_in, tokens_out: line.tokens_out, latency_ms: line.latency_ms,
     raw: line.raw || null, raw_sha256: line.raw_sha256 || null, cited: response ? cited(response, text || '') : [], statements: [],
 }
-if (line.status !== 'ok') (run.refused = run.refused || []).push({ at: line.at, model: o.model, lang: o.lang, status: line.status, why: /credit/i.test(line.error || '') ? 'OpenRouter: the key had too little credit left for this call' : String(line.error || line.status).replace(/https?:\S+/g, '').slice(0, 120) })   // a refused call is recorded apart: it is not an answer
+if (line.status !== 'ok') (run.refused = run.refused || []).push({ at: line.at, model: o.model, lang: o.lang, status: line.status, why: /credit/i.test(line.error || '') ? 'OpenRouter: the account had too little credit left for this call' : String(line.error || line.status).replace(/https?:\S+/g, '').slice(0, 120) })   // a refused call is recorded apart: it is not an answer
 else run.asks.push(ask)
 run.updated = new Date().toISOString().slice(0, 19) + 'Z'
 fs.mkdirSync(path.dirname(runFile), { recursive: true }); fs.writeFileSync(runFile, JSON.stringify(run, null, 1) + '\n')

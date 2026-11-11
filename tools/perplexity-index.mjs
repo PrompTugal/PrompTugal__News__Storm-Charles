@@ -72,6 +72,10 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and **nothing an engine said is a fact here**: an answer is evidence about the engine. A statement becomes a *lead* only when this desk has read it at the body's own address, and a lead becomes a row in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md) only by incident.conductor@.
 
+**Runs are paused since 02:54 UTC on 11 November** for lack of credit on the OpenRouter account (not this desk's budget, not the key's limit): one model, three questions so far.
+
+**In one sentence:** ${S.wrong} wrong and ${S.unsupported} unsupported of ${S.statements} statements, ${S.confirmed} confirmed at a primary body, and it missed that the bridges' speed limit had been lifted, on a page it cited.
+
 ## What this is
 
 [The shadow desk](../../shadow/index.md) asks answer engines what a reader would ask, and measures what the reader is told. This desk does the other thing: it uses one engine, Perplexity (its Sonar models, through OpenRouter and [the team's one wrapper](../../agents/models/ask.md)), as a **tool to find things** the team has not found: the questions come from [the board](../../board/index.md)'s open questions and conflicts and from the "open" lists in [the decision data](../../incidents/2026-11-10-storm-charles/data/decisions/README.md). Then it shows honestly how good a tool it is: every statement in an answer is rewritten in our own words, and **each address the engine cited is opened by us**, one at a time, and the statement marked:
@@ -100,7 +104,7 @@ ${row('**All**', S)}
 
 ${HEAD}
 ${Object.entries(scorecard.by_model).map(([k, v]) => row('`' + k + '`', v)).join('\n')}
-${refused.length ? `\nNot yet compared: ${[...new Set(refused.map(x => '`' + x.model + '`'))].join(', ')}. ${refused.length} calls were refused by OpenRouter (HTTP 402 at ${t(refused[0].at)} UTC: the key had too little credit left for these models); nothing was spent on them. The comparison of Sonar variants on the same questions follows when the key is topped up.\n` : ''}
+${refused.length ? `\nNot yet compared: ${[...new Set(refused.map(x => '`' + x.model + '`'))].join(', ')}. ${refused.length} calls were refused by OpenRouter (HTTP 402 at ${t(refused[0].at)} UTC: the OpenRouter account's credit balance had run out; the key's own limit was fine); nothing was spent on them. The comparison of Sonar variants on the same questions follows when the account is topped up.\n` : ''}
 ### By language of the question
 
 ${HEAD}
@@ -110,7 +114,7 @@ ${Object.entries(scorecard.by_lang).map(([k, v]) => row(k === 'pt' ? 'Portuguese
 
 Only what we read ourselves at the body's own address. Each is a lead, not a row: incident.conductor@ decides.
 
-${leadList.length ? leadList.map(L => `- **${esc(L.title || L.id)}** ${L.what || ''} Address: [${short(L.address)}](${L.address}), read ${L.read_utc.slice(0, 10)} ${t(L.read_utc)} UTC (sha256 \`${(L.sha256 || '').slice(0, 16)}\`).${L.bears_on ? ' Bears on: ' + L.bears_on.join(', ') + '.' : ''} Found by: ${L.found_by.map(f => `run ${f.run.split('/').pop().replace('.json', '')}, ${f.lang === 'pt' ? 'Portuguese' : 'English'}`).join('; ')}.`).join('\n') : 'None yet.'}
+${leadList.length ? leadList.map(L => `- **${esc(L.title || L.id)}** ${L.what || ''} Address: [${short(L.address)}](${L.address}), read ${L.read_utc.slice(0, 10)} ${t(L.read_utc)} UTC (sha256 \`${(L.sha256 || '').slice(0, 16)}\`).${L.bears_on ? ' Bears on: ' + L.bears_on.join(', ') + '.' : ''} ${L.status ? 'Status: ' + L.status + '. ' : ''}Found by: ${L.found_by.map(f => `run ${f.run.split('/').pop().replace('.json', '')}, ${f.lang === 'pt' ? 'Portuguese' : 'English'}`).join('; ')}.`).join('\n') : 'None yet.'}
 
 ${notes}
 

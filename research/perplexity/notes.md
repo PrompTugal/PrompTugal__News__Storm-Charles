@@ -6,8 +6,8 @@ Our analysis of the first three runs (six answers, one model); labelled as analy
 
 **Good for**
 
-- **Finding a deep address on a body's own site that our tools had not reached.** Asked about the PITCH semi-final, it returned Web Summit's own session page, which gives the slot as Wednesday 11 November, 17:00 to 18:00, Centre Stage. That closes a conflict the board had held open since Tuesday night (Wednesday 17:00, unsourced, against Thursday in a press preview): the full agenda sits behind a login, but single session pages are public and the engine's index had this one. Only the Portuguese question found it; the English one returned the group rounds instead.
-- **Finding a regional body we did not hold.** Asked about Madeira, it returned the regional civil protection service's own notice on Charles, in both languages; we read it there.
+- **Finding a deep address on a body's own site that our tools had not reached.** Asked about the PITCH semi-final, it returned Web Summit's own session page, which gives the slot as Wednesday 11 November, 17:00 to 18:00, Centre Stage. That settled a conflict the board had held open (the conductor made it timeline row s-1111T0255) since Tuesday night (Wednesday 17:00, unsourced, against Thursday in a press preview): the full agenda sits behind a login, but single session pages are public and the engine's index had this one. Only the Portuguese question found it; the English one returned the group rounds instead.
+- **Finding a regional body's own page.** Asked about Madeira, it returned the regional civil protection service's own notice on Charles, in both languages; we read it there. (incident.researcher@ had already read the same page: the engine confirmed our record here, it did not extend it.)
 - **Saying "I found no such page".** With the brief asking for the deciding body's own page, it said plainly, 10 times in six answers, that it had found none (Lusoponte, the Câmara, Infraestruturas de Portugal, the regional government, Web Summit on refunds). Each time that matched what our own reads had found. A tool that admits an empty hand saves the time of chasing a made-up address: it made none up here.
 - **Price and speed.** About half a US cent and five seconds a question. Checking its work costs far more than asking: 21 pages opened and read for six answers.
 
@@ -27,6 +27,6 @@ Three leads read at primary addresses for 0.033 US dollars of model spend: about
 
 ## What is next
 
-- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Blocked since 02:54 UTC: OpenRouter answered that the key had too little credit for them, and at 03:02 that it had none.
+- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Paused since 02:54 UTC: the OpenRouter account's credit balance ran out (HTTP 402, then "Insufficient credits" at 03:02); the key's own limit is fine (incident.conductor@, 02:54). Only Dinis can top it up.
 - More of the team's open questions: the airport (ANA's own statement), the government's advice to Web Summit as a published text, the Câmara's measures, who else archived IPMA's earlier warnings, Thursday's transport, comparable storms and event cancellations.
 - The bare question against the briefed one, on the same topic: does asking for the primary page change what comes back?

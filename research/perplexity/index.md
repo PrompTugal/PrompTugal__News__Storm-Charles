@@ -6,9 +6,13 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 ---
 # Perplexity as a research tool
 
-> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 03:02 UTC
+> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 03:03 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and **nothing an engine said is a fact here**: an answer is evidence about the engine. A statement becomes a *lead* only when this desk has read it at the body's own address, and a lead becomes a row in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md) only by incident.conductor@.
+
+**Runs are paused since 02:54 UTC on 11 November** for lack of credit on the OpenRouter account (not this desk's budget, not the key's limit): one model, three questions so far.
+
+**In one sentence:** 0 wrong and 4 unsupported of 19 statements, 7 confirmed at a primary body, and it missed that the bridges' speed limit had been lifted, on a page it cited.
 
 ## What this is
 
@@ -43,7 +47,7 @@ So far: **3** runs, **6** answers, **19** statements checked: **7** confirmed at
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | `perplexity/sonar` | 6 | 19 | 7 | 8 | 4 | 0 | 10 | 90 | 28 | 0.0331 | 4.9 s |
 
-Not yet compared: `perplexity/sonar-pro`, `perplexity/sonar-reasoning-pro`. 7 calls were refused by OpenRouter (HTTP 402 at 02:53 UTC: the key had too little credit left for these models); nothing was spent on them. The comparison of Sonar variants on the same questions follows when the key is topped up.
+Not yet compared: `perplexity/sonar-pro`, `perplexity/sonar-reasoning-pro`. 7 calls were refused by OpenRouter (HTTP 402 at 02:53 UTC: the OpenRouter account's credit balance had run out; the key's own limit was fine); nothing was spent on them. The comparison of Sonar variants on the same questions follows when the account is topped up.
 
 ### By language of the question
 
@@ -56,9 +60,9 @@ Not yet compared: `perplexity/sonar-pro`, `perplexity/sonar-reasoning-pro`. 7 ca
 
 Only what we read ourselves at the body's own address. Each is a lead, not a row: incident.conductor@ decides.
 
-- **Madeira's civil protection published its own notice on Charles.** SRPC, IP-RAM's page "DEPRESSÃO CHARLES: MEDIDAS PREVENTIVAS", dated on the page "10 novembro 2026 3:27" (zone not stated): citing IPMA, worse weather in Madeira from Tuesday afternoon, the most critical rain between the end of the 10th and early morning of the 11th, south-westerly gusts up to 90 km/h and 130 km/h in the highlands, easing from Wednesday morning; expected effects listed (fallen trees, flash floods in urban areas). The service's home page also carries an English version. Address: [procivmadeira.pt](https://www.procivmadeira.pt/pt/10-noticias/2158-situacao-meteorologica-adversa-depressao-charles-medidas-preventivas.html), read 2026-11-11 02:55 UTC (sha256 `ef1982cc7c15099c`). Bears on: Madeira (the primary notice of the regional civil protection), board a-madeira-cap-earlier. Found by: run 2, English; run 2, Portuguese.
-- **Web Summit's schedule for Wednesday was still listed, unmarked, at 02:55 UTC.** The organiser's schedule page for 11 November lists sessions from 9.00AM across 62 pages with no word of the storm or the cancellation: a negative finding at the primary address, nine hours after Day 2 was called off. Address: [websummit.com](https://websummit.com/schedule/date/2026-11-11/page/1/), read 2026-11-11 02:55 UTC (sha256 `6a56dbb6885334ac`). Bears on: board q-wednesday-talks. Found by: run 3, Portuguese.
-- **The PITCH semi-final's slot was Wednesday 17:00 to 18:00, Centre Stage.** Web Summit's own session page for "PITCH semi-final" reads "November 11, 2026 • 5.00PM - 6.00PM Centre Stage" and carries no word of the storm or of a new slot. So the slot fell on the day that was called off; where it runs now is still unannounced. Address: [websummit.com](https://websummit.com/sessions/lis26/c739a1a1-3d8e-4a81-8648-53a0f5ea9013/pitch-semi-final/), read 2026-11-11 02:55 UTC (sha256 `6e0c10130e35e870`). Bears on: board c-pitch-original-slot (the conflict: Wednesday 17:00 or Thursday), board q-pitch-semifinal. Found by: run 3, Portuguese.
+- **Madeira's civil protection published its own notice on Charles.** SRPC, IP-RAM's page "DEPRESSÃO CHARLES: MEDIDAS PREVENTIVAS", dated on the page "10 novembro 2026 3:27" (zone not stated): citing IPMA, worse weather in Madeira from Tuesday afternoon, the most critical rain between the end of the 10th and early morning of the 11th, south-westerly gusts up to 90 km/h and 130 km/h in the highlands, easing from Wednesday morning; expected effects listed (fallen trees, flash floods in urban areas). The service's home page also carries an English version. Address: [procivmadeira.pt](https://www.procivmadeira.pt/pt/10-noticias/2158-situacao-meteorologica-adversa-depressao-charles-medidas-preventivas.html), read 2026-11-11 02:55 UTC (sha256 `ef1982cc7c15099c`). Bears on: Madeira (the primary notice of the regional civil protection), board a-madeira-cap-earlier. Status: already a fact in the record through incident.researcher@ (edge srpc-madeira-measures); this read confirms it. Found by: run 2, English; run 2, Portuguese.
+- **Web Summit's schedule for Wednesday was still listed, unmarked, at 02:55 UTC.** The organiser's schedule page for 11 November lists sessions from 9.00AM across 62 pages with no word of the storm or the cancellation: a negative finding at the primary address, nine hours after Day 2 was called off. Address: [websummit.com](https://websummit.com/schedule/date/2026-11-11/page/1/), read 2026-11-11 02:55 UTC (sha256 `6a56dbb6885334ac`). Bears on: board q-wednesday-talks. Status: taken by incident.conductor@ as timeline row s-1111T0255 (03:02 UTC). Found by: run 3, Portuguese.
+- **The PITCH semi-final's slot was Wednesday 17:00 to 18:00, Centre Stage.** Web Summit's own session page for "PITCH semi-final" reads "November 11, 2026 • 5.00PM - 6.00PM Centre Stage" and carries no word of the storm or of a new slot. So the slot fell on the day that was called off; where it runs now is still unannounced. Address: [websummit.com](https://websummit.com/sessions/lis26/c739a1a1-3d8e-4a81-8648-53a0f5ea9013/pitch-semi-final/), read 2026-11-11 02:55 UTC (sha256 `6e0c10130e35e870`). Bears on: board c-pitch-original-slot (the conflict: Wednesday 17:00 or Thursday), board q-pitch-semifinal. Status: taken by incident.conductor@ as timeline row s-1111T0255 (03:02 UTC). Found by: run 3, Portuguese.
 
 ## What it is good for here, and what it is not
 
@@ -66,8 +70,8 @@ Our analysis of the first three runs (six answers, one model); labelled as analy
 
 **Good for**
 
-- **Finding a deep address on a body's own site that our tools had not reached.** Asked about the PITCH semi-final, it returned Web Summit's own session page, which gives the slot as Wednesday 11 November, 17:00 to 18:00, Centre Stage. That closes a conflict the board had held open since Tuesday night (Wednesday 17:00, unsourced, against Thursday in a press preview): the full agenda sits behind a login, but single session pages are public and the engine's index had this one. Only the Portuguese question found it; the English one returned the group rounds instead.
-- **Finding a regional body we did not hold.** Asked about Madeira, it returned the regional civil protection service's own notice on Charles, in both languages; we read it there.
+- **Finding a deep address on a body's own site that our tools had not reached.** Asked about the PITCH semi-final, it returned Web Summit's own session page, which gives the slot as Wednesday 11 November, 17:00 to 18:00, Centre Stage. That settled a conflict the board had held open (the conductor made it timeline row s-1111T0255) since Tuesday night (Wednesday 17:00, unsourced, against Thursday in a press preview): the full agenda sits behind a login, but single session pages are public and the engine's index had this one. Only the Portuguese question found it; the English one returned the group rounds instead.
+- **Finding a regional body's own page.** Asked about Madeira, it returned the regional civil protection service's own notice on Charles, in both languages; we read it there. (incident.researcher@ had already read the same page: the engine confirmed our record here, it did not extend it.)
 - **Saying "I found no such page".** With the brief asking for the deciding body's own page, it said plainly, 10 times in six answers, that it had found none (Lusoponte, the Câmara, Infraestruturas de Portugal, the regional government, Web Summit on refunds). Each time that matched what our own reads had found. A tool that admits an empty hand saves the time of chasing a made-up address: it made none up here.
 - **Price and speed.** About half a US cent and five seconds a question. Checking its work costs far more than asking: 21 pages opened and read for six answers.
 
@@ -87,7 +91,7 @@ Three leads read at primary addresses for 0.033 US dollars of model spend: about
 
 ## What is next
 
-- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Blocked since 02:54 UTC: OpenRouter answered that the key had too little credit for them, and at 03:02 that it had none.
+- The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Paused since 02:54 UTC: the OpenRouter account's credit balance ran out (HTTP 402, then "Insufficient credits" at 03:02); the key's own limit is fine (incident.conductor@, 02:54). Only Dinis can top it up.
 - More of the team's open questions: the airport (ANA's own statement), the government's advice to Web Summit as a published text, the Câmara's measures, who else archived IPMA's earlier warnings, Thursday's transport, comparable storms and event cancellations.
 - The bare question against the briefed one, on the same topic: does asking for the primary page change what comes back?
 
