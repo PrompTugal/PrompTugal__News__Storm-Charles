@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 08:43 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 09:40 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,15 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 09:39 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 48 addresses; the site's CAP record read first. A look at our own front page under the red rain: [reviews/2026-11-11T0940.md](reviews/2026-11-11T0940.md).
+
+- **At the authorities** (facts): nothing newer than the CAP message of 07:16. Lisbon has four warnings: **red rain in force to 18:00, orange wind in force to 21:00**, orange sea from 12:00, yellow sea from 21:00. Still communiqué no. 2. ANEPC's notice 21 still the latest.
+- **In the coverage** (evidence): the press has caught up with the lowered wind, each outlet attributing it to IPMA and keeping the red rain: RTP "IPMA prevê desagravamento das condições de vento mas mantém-se gravidade da precipitação"; Observador "Vento. IPMA reduz nível de alerta em Lisboa, Setúbal e Beja"; TSF "apenas Faro está sob aviso vermelho para vento"; DN "IPMA revê alertas, mas mantém risco máximo de chuva". RTP also: "Depressão Charles divide-se em dois e enfraquece". Impacts in titles: 186 flights cancelled at Lisbon airport and two thousand customers without power (ECO, Jornal Económico).
+- **Who showed the orange wind first** (hypothesis, from hourly reads): IPMA's CAP 07:16; its open data by 08:43; no press page at 08:43; four outlets by 09:39.
+- No new tracker or map.
 
 ## What changed at the 08:43 UTC re-read (11 November)
 
