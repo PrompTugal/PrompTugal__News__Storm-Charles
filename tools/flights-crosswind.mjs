@@ -7,7 +7,7 @@
 // and ANA's own figures. Fact: the METAR and the counts. Hypothesis: which runway end the wind favours (ATC decides).
 import fs from 'node:fs'
 import path from 'node:path'
-import { BY, DATA, INCIDENT, NOT_WARNING, OPENSKY_CITE, fetchProv, writeJSON, sha256, iso } from './flights-common.mjs'
+import { BY, DATA, INCIDENT, NOT_WARNING, OPENSKY_CITE, fetchProv, writeJSON, sha256, iso, RAW_DIR } from './flights-common.mjs'
 
 const W = `incidents/${INCIDENT}/data`
 const FROM = '2026-11-10T18:00:00Z'
@@ -18,18 +18,26 @@ const AIRPORTS = [
 const sources = []
 const fileSrc = (p, what, read) => { const b = fs.readFileSync(p); sources.push({ path: p, what, sha256: sha256(b), bytes: b.length, read_utc: read || null }); return JSON.parse(b) }
 
-// Runway headings (true) from OurAirports' runways.csv
-const rw = await fetchProv('https://davidmegginson.github.io/ourairports-data/runways.csv', { kind: 'ourairports' })
-sources.push({ what: 'runway headings, degrees true (OurAirports, public domain)', ...rw.prov })
-const runways = {}
-if (rw.ok) {
-  const lines = rw.body.toString('utf8').split('\n'); const hdr = lines[0].replace(/"/g, '').split(',')
-  for (const l of lines.slice(1)) {
-    const c = l.replace(/"/g, '').split(','); const r = Object.fromEntries(hdr.map((h, i) => [h, c[i]]))
-    if (!AIRPORTS.some(a => a.icao === r.airport_ident) || r.closed === '1') continue
-    ;(runways[r.airport_ident] ||= []).push({ runway: `${r.le_ident}/${r.he_ident}`, length_m: Math.round(r.length_ft * 0.3048), ends: [{ end: r.le_ident, heading_true: Number(r.le_heading_degT) }, { end: r.he_ident, heading_true: Number(r.he_heading_degT) }] })
-  }
+// Runway headings (true) from OurAirports' runways.csv: fetched once (4 MB) and cached outside git with its provenance;
+// FLIGHTS_REFRESH_RUNWAYS=1 fetches again.
+const RWC = path.join(RAW_DIR, 'runways-cache.json')
+let rwCache = null
+try { if (!process.env.FLIGHTS_REFRESH_RUNWAYS) rwCache = JSON.parse(fs.readFileSync(RWC, 'utf8')) } catch {}
+if (!rwCache) {
+  const rw = await fetchProv('https://davidmegginson.github.io/ourairports-data/runways.csv', { kind: 'ourairports' })
+  const runways = {}
+  if (rw.ok) {
+    const lines = rw.body.toString('utf8').split('\n'); const hdr = lines[0].replace(/"/g, '').split(',')
+    for (const l of lines.slice(1)) {
+      const c = l.replace(/"/g, '').split(','); const r = Object.fromEntries(hdr.map((h, i) => [h, c[i]]))
+      if (!AIRPORTS.some(a => a.icao === r.airport_ident) || r.closed === '1') continue
+      ;(runways[r.airport_ident] ||= []).push({ runway: `${r.le_ident}/${r.he_ident}`, length_m: Math.round(r.length_ft * 0.3048), ends: [{ end: r.le_ident, heading_true: Number(r.le_heading_degT) }, { end: r.he_ident, heading_true: Number(r.he_heading_degT) }] })
+    }
+    rwCache = { prov: rw.prov, runways }; fs.mkdirSync(RAW_DIR, { recursive: true }); fs.writeFileSync(RWC, JSON.stringify(rwCache))
+  } else rwCache = { prov: rw.prov, runways }
 }
+sources.push({ what: 'runway headings, degrees true (OurAirports, public domain; read once, cached)', ...rwCache.prov })
+const runways = rwCache.runways
 // METARs: AWC for the newest (and any gap)
 const awc = await fetchProv(`https://aviationweather.gov/api/data/metar?ids=${AIRPORTS.map(a => a.icao).join(',')}&hours=60&format=json`, { kind: 'awc-metar' })
 sources.push({ what: 'METAR, IPMA\'s observations through the US NOAA Aviation Weather Center\'s public API (public domain)', ...awc.prov })
