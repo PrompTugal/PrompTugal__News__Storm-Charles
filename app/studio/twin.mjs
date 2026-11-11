@@ -14,7 +14,7 @@ const one = s => String(s).replace(/\s+/g, ' ').trim()
 out.push('---', 'title: Studio', `summary: ${one('Animated explanations, played as storyboards with small characters. The first: what compression is in a chat assistant, and how this team works so that it does not matter.')}`,
     'mount: <div id="studio" data-base="animations/"><noscript><p class="meta">The player needs JavaScript. The same, scene by scene as text, is below.</p></noscript></div>',
     'head: <link rel="stylesheet" href="../app/studio/studio.css"><script src="../app/studio/characters.js" defer></script><script src="../app/studio/player.js" defer></script>',
-    '---', '# Studio', '', `> Kept by incident.studio@web-summit.dinis, ${kept}`, '',
+    '---', `> Kept by incident.studio@web-summit.dinis, ${kept}`, '', '# Studio', '',
     'Where this site experiments with ways to show complex things: animations with small characters, played as storyboards, scene by scene. At Dinis Cruz\'s word ([BRIEF.md](../BRIEF.md), 11 November 2026). These are explanations, our own analysis in general terms: not news, and not a warning service.', '',
     '## The animations', '')
 const anims = ix.animations.map(a => JSON.parse(fs.readFileSync(path.join(DIR, a.file), 'utf8')))

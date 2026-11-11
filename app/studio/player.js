@@ -137,7 +137,7 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
         for (let U = Math.round(parseFloat(getComputedStyle(stage).getPropertyValue('--U'))) - 1; h.all > room && U >= 15; U--) { stage.style.setProperty('--U', U + 'px'); const n = tallest(); if (n.all >= h.all) { stage.style.setProperty('--U', (U + 1) + 'px'); break } h = n }   // stop when shorter blocks no longer help
         stage.style.minHeight = h.st + 'px'; cap.style.minHeight = h.cp + 'px'
     }
-    const caption = (ch, sc, i) => `<b>${esc(ch.title)} · scene ${i + 1} of ${ch.scenes.length}</b>${sc === ch.scenes[0] && ch.question ? `<strong>${esc(ch.question)}</strong> ` : ' '}${esc(sc.caption)}${sc.note ? ` <small>${esc(sc.note)}</small>` : ''}`
+    const caption = (ch, sc, i) => `<b>${esc(ch.title)} · scene ${i + 1} of ${ch.scenes.length}${ch.track || sc.list ? '' : ' <span>· blocks show size as an illustration, not a measurement</span>'}</b>${sc === ch.scenes[0] && ch.question ? `<strong>${esc(ch.question)}</strong> ` : ' '}${esc(sc.caption)}${sc.note ? ` <small>${esc(sc.note)}</small>` : ''}`
     function draw(animate) {
         const a = S.anim, ch = a.chapters[S.ch], sc = ch.scenes[S.sc], stage = root.querySelector('.sb-stage')
         const prev = S.prev && S.prev.ch === S.ch ? ch.scenes[S.prev.sc] : null
@@ -154,6 +154,7 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
         const hash = '#' + a.id + '/' + (S.ch + 1) + '/' + (S.sc + 1), link = root.querySelector('.sb-link')
         link.href = hash; link.textContent = 'Link to this scene'
         if (S.started) try { history.replaceState(null, '', hash) } catch (e) { }
+        if (!S.prev || S.prev.ch !== S.ch) unfold()
         S.prev = { ch: S.ch, sc: S.sc }
     }
     function go(ch, sc, animate) {
@@ -186,6 +187,19 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
     function setPlay() { const b = root.querySelector('[data-do=play]'); b.textContent = S.playing ? 'Pause' : 'Play'; b.setAttribute('aria-pressed', S.playing) }
     function speed() { S.speed = SPEEDS[(SPEEDS.indexOf(S.speed) + 1) % SPEEDS.length]; root.querySelector('[data-do=speed]').textContent = 'Speed ' + S.speed + '×'; if (S.playing) schedule() }
 
+    // the text twin below the player, folded by chapter with the current one open (without JavaScript it is simply all there)
+    function fold() {
+        for (const h2 of document.querySelectorAll('main.doc article h2')) {
+            let n = h2.nextElementSibling
+            while (n && n.tagName !== 'H2') {
+                if (n.tagName !== 'H3') { n = n.nextElementSibling; continue }
+                const d = document.createElement('details'), sm = document.createElement('summary'); d.className = 'sb-fold'; d.dataset.anim = h2.textContent.trim(); d.dataset.ch = n.textContent.trim(); sm.textContent = n.textContent
+                n.replaceWith(d); d.appendChild(sm); n = d.nextElementSibling
+                while (n && !/^H[23]$/.test(n.tagName)) { const next = n.nextElementSibling; d.appendChild(n); n = next }
+            }
+        }
+    }
+    function unfold() { const a = S.anim, ch = a.chapters[S.ch]; for (const d of document.querySelectorAll('details.sb-fold')) if (d.dataset.anim === a.title) d.open = d.dataset.ch === (S.ch + 1) + '. ' + ch.title || d.dataset.ch === ch.title }
     function frame() {
         const a = S.anim
         root.innerHTML = `<div class="sb" tabindex="0" role="group" aria-label="Storyboard: ${esc(a.title)}">
@@ -230,6 +244,7 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
         const item = S.list.find(x => x.id === id) || S.list[0]
         return getJSON(base + item.file).then(a => { clearTimeout(S.timer); S.playing = false; S.prev = null; S.anim = normalise(a); S.fit = ''; if (ch || sc) S.started = true; frame(); go(ch || 0, sc || 0, false) })
     }
+    fold()
     getJSON(base + 'index.json').then(ix => {
         S.list = ix.animations || []
         const h = decodeURIComponent(location.hash.slice(1)).split('/')

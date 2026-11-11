@@ -4,9 +4,9 @@ summary: Animated explanations, played as storyboards with small characters. The
 mount: <div id="studio" data-base="animations/"><noscript><p class="meta">The player needs JavaScript. The same, scene by scene as text, is below.</p></noscript></div>
 head: <link rel="stylesheet" href="../app/studio/studio.css"><script src="../app/studio/characters.js" defer></script><script src="../app/studio/player.js" defer></script>
 ---
-# Studio
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 00:55 UTC
 
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 00:53 UTC
+# Studio
 
 Where this site experiments with ways to show complex things: animations with small characters, played as storyboards, scene by scene. At Dinis Cruz's word ([BRIEF.md](../BRIEF.md), 11 November 2026). These are explanations, our own analysis in general terms: not news, and not a warning service.
 
