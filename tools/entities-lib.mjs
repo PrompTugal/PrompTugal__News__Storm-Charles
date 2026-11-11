@@ -28,7 +28,7 @@ export function matcher(nodes, { html = false, bytes = false } = {}) {
         if (!name || n.match?.none?.includes(name)) continue
         const k = name.toLowerCase()
         if (!byName.has(k)) byName.set(k, [])
-        byName.get(k).push({ id: n.id, type: n.type, name, exact: name !== k })
+        byName.get(k).push({ id: n.id, type: n.type, name, exact: name !== k, href: n.href || `entities/${n.id}.html`, own: !n.href })
     }
     // One case-sensitive regex, built once, with no unicode-property classes (they made it the slowest step of the gate): a name
     // with a capital is written as it is; each a-z letter of a lower-case name is written as a class ([aA]), so it is found in any case without the i flag.
@@ -57,7 +57,7 @@ export function matcher(nodes, { html = false, bytes = false } = {}) {
         const out = []
         re.lastIndex = 0
         let m
-        while ((m = re.exec(text))) { const hit = pick(m[0]); if (hit) { out.push({ index: m.index, length: hit.text.length, text: hit.text, id: hit.c.id, type: hit.c.type }); re.lastIndex = m.index + hit.text.length } else re.lastIndex = m.index + 1 }
+        while ((m = re.exec(text))) { const hit = pick(m[0]); if (hit) { out.push({ index: m.index, length: hit.text.length, text: hit.text, id: hit.c.id, type: hit.c.type, href: hit.c.href, own: hit.c.own }); re.lastIndex = m.index + hit.text.length } else re.lastIndex = m.index + 1 }
         return out
     }
     // the same, over a stretch of a larger string, calling back for each hit (the linker's single scan of a page)
@@ -70,4 +70,21 @@ export function captures(root = ROOT) {
     const m = new Map()
     try { for (const a of readJson(path.join(root, 'evidence/index.json')).addresses || []) if (a.url && a.latest && fs.existsSync(path.join(root, 'evidence', a.latest + '.md'))) { m.set(a.url, a.latest); m.set(a.url.replace(/\/$/, ''), a.latest) } } catch { }
     return { get: u => m.get(u) || m.get(String(u).replace(/\/$/, '')) || null, size: m.size }
+}
+
+// incident.meteorology@'s nodes (meteorology/nodes/<type>.json; pages at meteorology/nodes/<id>.html): a graph of its own, with its
+// own types and verbs. They are not copied into entities/: the linker links their names to their own pages, and a name both sides
+// have stays with entities/ (whose page then points across). A bracket is dropped from a name; an acronym in a bracket is a name too.
+export function neighbours(root = ROOT) {
+    const out = [], dir = path.join(root, 'meteorology/nodes')
+    if (!fs.existsSync(dir)) return out
+    for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort()) {
+        const j = readJson(path.join(dir, f))
+        for (const n of j.nodes || []) {
+            const base = String(n.name || '').replace(/\s*\(.*$/, '').trim(), br = (String(n.name).match(/\(([A-Z][A-Z0-9-]{2,})\)\s*$/) || [])[1]
+            const names = [base, br, ...(n.also || [])].filter(x => x && x.length > 2 && /[A-Z]/.test(x))   // names with a capital only: matched exactly
+            if (names.length) out.push({ id: `meteorology/${n.id}`, type: 'meteorology', kind: j.type || 'node', name: names[0], also: names.slice(1), href: `meteorology/nodes/${n.id}.html`, md: `meteorology/nodes/${n.id}.md`, summary: n.summary || '' })
+        }
+    }
+    return out
 }
