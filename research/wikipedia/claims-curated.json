@@ -1,11 +1,11 @@
 {
  "about": "Kept by hand by incident.wikipedia@web-summit.dinis: the checkable statements of each Wikipedia page on Storm Charles, in our own English (a paraphrase, never Wikipedia's wording), each with an anchor (a few words of the article, to find the sentence in the revision named) and how it stands against this site. tools/wikipedia-claims.mjs reads this file, finds each sentence in the stored revision, attaches the footnotes it carries, and writes claims.json, compare.json and against.json. rel: 'matches' = a timeline row says the same; 'in-data' = this site holds it in a data file but no timeline row; 'missing' = nowhere on this site; 'behind' = Wikipedia states what a later official change has overtaken, and we hold the change; 'differs' = a figure or time differs. verdict: what this team found when it went to the primary source for the statement ('verified at primary source', 'press only', 'not established at source', or 'not checked by us'), with the row or decision that holds the check. Wikipedia is a lead for us, never the source.",
  "by": "incident.wikipedia@web-summit.dinis",
- "updated": "2026-11-11T08:55:52Z",
+ "updated": "2026-11-11T10:01:29Z",
  "revisions": {
   "pt": {
    "page": "pt-8011202",
-   "oldid": 73420177
+   "oldid": 73421349
   },
   "en": {
    "page": "en-83624065",
@@ -758,24 +758,23 @@
    "lang": "pt",
    "topic": "madeira-impacts",
    "kind": "number",
-   "anchor": "foram registadas 71 ocorrências",
-   "statement": "Madeira's civil protection logged 71 incidents between 20:00 on 10 November and 02:00 on 11 November (a provisional count): 22 floodings, 13 landslides, seven fallen trees and others, with 193 responders and 72 vehicles; Machico had most, 20, then Santa Cruz 18. (Until the revision of 03:25 UTC on 11 November the article gave 38 incidents to 23:30.)",
+   "anchor": "aumentou para 205 até às 09h00",
+   "statement": "Madeira's civil protection counted 205 incidents linked to the storm up to 09:00 on 11 November, in a balance given by the president of the regional government: 542 mobilisations of responders and 216 of vehicles, and no serious incident. (Until the revision of 09:48 UTC on 11 November the article gave 71 incidents to 02:00 with a breakdown by kind and by municipality; that paragraph was removed. Before 03:25 UTC it gave 38 to 23:30.)",
    "figures": [
-    "71 incidents",
-    "20:00 to 02:00",
-    "13 landslides",
-    "193 responders",
-    "72 vehicles",
-    "Machico 20"
+    "205 incidents",
+    "to 09:00",
+    "542 responders",
+    "216 vehicles"
    ],
    "ours": {
     "rel": "differs",
     "signals": [
-     "s-1111T0233"
+     "s-1111T0541",
+     "s-1111T0735"
     ],
     "verdict": "not checked by us",
-    "verdict_note": "Our row has only a radio bulletin's title, 'more than 50 incidents', with no figure read at source. Wikipedia's 71 to 02:00 is from the regional daily quoting the civil protection platform: a lead for the researcher, not a fact.",
-    "note": "Wikipedia is ahead of our row: a later and exact count, with its hours and a breakdown."
+    "verdict_note": "Our rows hold 71 to 02:00, 99 (a news agency, 04:42) and 162 at 06:50, each as evidence from the press. Wikipedia's 205 to 09:00 is from the regional daily reporting the regional government's balance: a lead for the researcher, not a fact.",
+    "note": "Wikipedia is ahead of our rows: a later count."
    }
   },
   {
@@ -833,6 +832,118 @@
     "verdict": "not checked by us",
     "verdict_note": "Our row reports a front-page headline on the power cuts (title only). The measures the mayor confirmed are not on this site.",
     "note": "The article names the mayor; our claim gives the role."
+   }
+  },
+  {
+   "id": "w-pt-38",
+   "lang": "pt",
+   "topic": "track",
+   "kind": "who",
+   "anchor": "O sistema passou mais a sul da ilha",
+   "statement": "On the morning of 11 November the assistant commander of Madeira's regional civil protection said that, on the weather information available, the storm's most intense period had passed Madeira; the system passed further south of the island and weaker than first forecast; the streams' flows, up overnight, were back to normal, with the rescue services still mobilised.",
+   "figures": [
+    "morning of 11 Nov"
+   ],
+   "ours": {
+    "rel": "missing",
+    "note": "Not on this site as a statement by Madeira's civil protection. Our row s-1111T0822 holds an analysis (a hypothesis) that the centre passed close to Madeira airport between about 07:30 and 08:00: a different statement, not checked against this one. The article names the officer; our claim gives the role. This is about Madeira; it is not IPMA's statement of 22:35 on the mainland track (s-1110T2235), which the article's text still lacks.",
+    "verdict": "not checked by us"
+   }
+  },
+  {
+   "id": "w-pt-39",
+   "lang": "pt",
+   "topic": "madeira-impacts",
+   "kind": "number",
+   "anchor": "havia acumulado 355 mm de precipitação em 12 horas",
+   "statement": "By the records published up to 04:00 on 11 November, Chão do Areeiro had 355 mm of rain in 12 hours, 237.1 mm in six hours and 56.5 mm in one hour; six other stations passed the red threshold for six hours (São Vicente 143.2 mm, Santo da Serra 132.4, Pico do Areeiro 125, Pico Alto 119.7, Monte 88.4, Prazeres 78.5); gusts since midnight of 136 km/h at Chão do Areeiro, 126 at the airport, 122 at Caniçal and 108 at Pico Alto.",
+   "figures": [
+    "355 mm in 12 h",
+    "237.1 mm in 6 h",
+    "56.5 mm in 1 h",
+    "136 km/h",
+    "126 km/h"
+   ],
+   "ours": {
+    "rel": "matches",
+    "signals": [
+     "s-1111T0727"
+    ],
+    "verdict": "not checked by us",
+    "verdict_note": "Our row is our own reading of IPMA's station Areeiro: 249.5 mm in six hours at 07:27 (232.1 mm at our 04:23 read), close to Wikipedia's 237.1 mm to 04:00 but not the same figure or hour. The 12-hour total, the other stations and the gusts are not on this site; the regional daily's figures were not checked by us against IPMA's data.",
+    "note": "Same station and measure; different hours."
+   }
+  },
+  {
+   "id": "w-pt-40",
+   "lang": "pt",
+   "topic": "madeira-impacts",
+   "kind": "number",
+   "anchor": "referiu um acumulado de precipitação de 479 mm em 12 horas",
+   "statement": "In the balance given on the morning of 11 November, the president of Madeira's regional government spoke of 479 mm of rain in 12 hours during the storm, against 387 mm in the same reference period in the flood of 20 February 2010; the heaviest rain came at high tide, which slowed the streams' drainage.",
+   "figures": [
+    "479 mm in 12 h",
+    "387 mm (2010)"
+   ],
+   "ours": {
+    "rel": "missing",
+    "note": "Not on this site. The 479 mm is a figure quoted from a press conference by the regional daily, with no station named; it is above the 355 mm in 12 hours the same article gives for Chão do Areeiro to 04:00.",
+    "verdict": "not checked by us"
+   }
+  },
+  {
+   "id": "w-pt-41",
+   "lang": "pt",
+   "topic": "madeira-impacts",
+   "kind": "place",
+   "anchor": "foi resgatado com vida perto das 08h00",
+   "statement": "On the morning of 11 November a man of 78 was swept away when a stream overflowed in São Roque, Funchal; first given as missing, he was rescued alive near 08:00 by volunteer firefighters with the police, with signs of hypothermia and no serious injury (two footnotes: the regional public broadcaster and the regional daily).",
+   "figures": [
+    "near 08:00"
+   ],
+   "ours": {
+    "rel": "missing",
+    "note": "Not on this site. A private person, not named by Wikipedia or by us.",
+    "verdict": "not checked by us"
+   }
+  },
+  {
+   "id": "w-pt-42",
+   "lang": "pt",
+   "topic": "madeira-impacts",
+   "kind": "number",
+   "anchor": "estavam confirmados 16 voos cancelados numa consulta efectuada às 06h50",
+   "statement": "Funchal's bus operator suspended its service on the morning of 11 November because of the rain and the risk of streams overflowing; at Madeira airport 16 flights were confirmed cancelled at a check made at 06:50, and access to Funchal's centre was restricted for safety.",
+   "figures": [
+    "16 flights",
+    "06:50"
+   ],
+   "ours": {
+    "rel": "matches",
+    "signals": [
+     "s-1111T0735"
+    ],
+    "verdict": "not checked by us",
+    "verdict_note": "Our row reports the same 16 cancelled flights (the airport operator's site, read 06:50) and the closing of access to Funchal's centre (civil protection's communiqué, through a news agency), as evidence. The bus suspension is not on this site.",
+    "note": "The same figures at the same hour, from the press."
+   }
+  },
+  {
+   "id": "w-pt-43",
+   "lang": "pt",
+   "topic": "madeira-impacts",
+   "kind": "place",
+   "anchor": "três famílias foram obrigadas a abandonar as respectivas habitações",
+   "statement": "In Serra de Água (Ribeira Brava) three families had to leave their homes after a stream overflowed and flooded four houses when a culvert was blocked; the mayor confirmed they went to relatives and that nobody was hurt. The same revisions add: five incidents on Porto Santo confirmed by its council; the parish council's offices in Machico flooded to about one metre; power cuts in Santa Cruz, Machico and Santana after a high-voltage cable fell; roads closed in Machico and Porto Moniz.",
+   "figures": [
+    "three families",
+    "four houses",
+    "five incidents on Porto Santo"
+   ],
+   "ours": {
+    "rel": "missing",
+    "note": "None of these is on this site. Each has one footnote, the regional daily.",
+    "verdict": "not checked by us"
    }
   },
   {
@@ -1504,7 +1615,7 @@
    ],
    "label": "evidence (words said on air)",
    "patterns": {
-    "pt": "Cabo de São Vicente|Sagres|mais a sul",
+    "pt": "Cabo de São Vicente|Sagres|mais a sul do (país|continente|território)",
     "en": "São Vicente|Sagres|further south",
     "zh": "聖維森特|Sagres"
    },
@@ -1515,7 +1626,8 @@
    "claims": [
     "w-pt-05",
     "w-en-12"
-   ]
+   ],
+   "pattern_note": "Narrowed at the 09:54 UTC read of 11 November: 'mais a sul' alone matched the new sentence about the system passing south of Madeira (claim w-pt-38), which is not this fact. The Portuguese article still says nothing in its text about a landfall further south on the mainland; one new footnote (a public broadcaster's article, for the cancelled flights) has 'possível mudança de trajetória para sul' in its title only."
   }
  ]
 }

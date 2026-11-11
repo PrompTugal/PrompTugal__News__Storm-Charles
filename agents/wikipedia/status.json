@@ -1,7 +1,7 @@
 {
   "agent": "incident.wikipedia@web-summit.dinis",
   "state": "active: the second session (from 05:51 UTC on 11 November), taking over from HANDOVER.md; hourly re-read while the storm is live; reports only when changes.md touches our key facts",
-  "last_wake": "2026-11-11T08:50:08Z",
+  "last_wake": "2026-11-11T09:54:29Z",
   "done": [
     "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
     "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
@@ -24,7 +24,8 @@
     "05:51 UTC, the second session starts: its session key in data/keys.json (the first session's entry marked handed over); the store outside git refetched (582 revisions); eighth read: nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04), no 429; Wikidata did not answer (server lag, 12 waits, 2 requests failed). The reader now keeps Wikidata's last answer, with the time it was read, when Wikidata does not answer (articles.json: wikidata.*.last_answer), instead of writing null over it",
     "06:50 wake: ninth read. Nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04); no 429. Wikidata did not answer again (server lag): its answer of 05:47 was kept as last_answer, so the reader's change of 05:51 works",
     "07:49 wake: tenth read. Nothing changed on any of the 6 pages (pt last edited 03:25, en 02:22, zh 02:04: no edit in over four hours); no 429. Wikidata did not answer (server lag, the third read running); its answer of 05:47 is kept",
-    "08:50 wake: eleventh read. zh moved: 3 new revisions (08:28 to 08:45, to 95527097): a season summary map added, and the storm's lowest pressure changed from 995 to 994 hPa in the infobox and added to the season table, with no footnote (claim w-zh-01 and the pressure difference updated; claims now at the new revision). pt and en unchanged (03:25, 02:22). Nothing touches our key facts; no 429; Wikidata did not answer (the fourth read running)"
+    "08:50 wake: eleventh read. zh moved: 3 new revisions (08:28 to 08:45, to 95527097): a season summary map added, and the storm's lowest pressure changed from 995 to 994 hPa in the infobox and added to the season table, with no footnote (claim w-zh-01 and the pressure difference updated; claims now at the new revision). pt and en unchanged (03:25, 02:22). Nothing touches our key facts; no 429; Wikidata did not answer (the fourth read running)",
+    "09:54 wake: twelfth read. pt moved: 2 new revisions (09:48 and 09:58, to 73421349; 29,091 to 37,110 bytes), all in the Madeira section, almost all from the regional daily: 205 incidents to 09:00 with 542 responders and 216 vehicles (the 71-to-02:00 paragraph removed); civil protection's assistant commander saying the worst has passed and the system went south of the island, weaker than forecast; 355 mm in 12 hours at Chão do Areeiro to 04:00 and gusts of 136 km/h; the regional president's 479 mm in 12 hours against 387 mm in February 2010; a man of 78 rescued alive in Funchal; buses suspended, 16 flights cancelled, three families out of their homes, power cuts, roads closed. Claims: w-pt-33 rewritten, w-pt-38 to w-pt-43 added (68 claims), pt at the new revision. The pattern for our fact f-ipma-2235 narrowed (it matched the Madeira sentence, wrongly). en and zh unchanged; still nothing in the text on IPMA's mainland track further south or the 09:00 red rain. Known: changes.md's heading gives the size after the first new revision (31,677), not the last. Wikidata did not answer (the fifth read running)"
   ],
   "next": [
     "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
@@ -40,9 +41,9 @@
     "waits_429": 0,
     "waits_maxlag": 12,
     "failed": 2,
-    "note": "counts of the last read (08:50 UTC); Wikidata did not answer (its answer of 05:47 is kept as last_answer); every read is in research/wikipedia/reads.json"
+    "note": "counts of the last read (09:54 UTC); Wikidata did not answer (its answer of 05:47 is kept as last_answer); every read is in research/wikipedia/reads.json"
   },
-  "updated": "2026-11-11T08:55:52Z",
+  "updated": "2026-11-11T10:01:29Z",
   "by": "incident.wikipedia@web-summit.dinis",
   "session": "session_018yvwtM6WQ89E3QSV22FB8D"
 }
