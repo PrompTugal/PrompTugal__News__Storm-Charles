@@ -178,9 +178,11 @@
     var rank = function (c) { return /^ipma/.test(c.d.id || '') || c.d.by === 'ipma' || c.w ? 0 : kind(c.d.label) === 'fact' ? 1 : 2 }
     ch.sort(function (a, b) { return (rank(a) - rank(b)) || (T(b.t) - T(a.t)) })
     ch = ch.filter(function (c, i) { for (var j = 0; j < i; j++) if (Math.abs(T(ch[j].t) - T(c.t)) < 36e5 * 6 && alike(ch[j].d.decision, c.d.decision)) return false; return true })
-    var todayHtml = !ch.length ? '' : '<section class="gd-today" id="gd-today" aria-labelledby="gd-today-h"><h2 id="gd-today-h">Changed today <span class="meta">(published ' + esc(today) + ', UTC; IPMA\'s warning changes first, then other facts, then reports; newest first in each)</span></h2><ul class="gd-rows">' +
-      ch.slice(0, 3).map(function (c) { return rowCut(c.d, 140).replace('<li class="gd-row', '<li data-t="' + esc(c.t) + '" class="gd-row') }).join('') + '</ul>' +
-      (ch.length > 3 ? '<details class="gd-deep"><summary>' + (ch.length - 3) + ' more today</summary><ul class="gd-rows">' + ch.slice(3).map(function (c) { return rowCut(c.d, 140) }).join('') + '</ul></details>' : '') + '</section>'
+    // who said it, short: IPMA for its warnings, else the body named (cut), else the source's host
+    var chRow = function (c) { var d = c.d, who = c.w || /^ipma/.test(d.id || '') ? 'IPMA' : d.decided_by ? cut(String(d.decided_by).replace(/\s*\(.*$/, ''), 28) : host(asDec(d).address); return one(who, d) }
+    var todayHtml = !ch.length ? '' : '<section class="gd-today" id="gd-today" aria-labelledby="gd-today-h"><h2 id="gd-today-h">Changed today <span class="meta">(published ' + esc(today) + ', UTC; IPMA first, then facts, then reports)</span></h2><ul class="gd-short">' +
+      ch.slice(0, 3).map(chRow).join('') + '</ul>' +
+      (ch.length > 3 ? '<details class="gd-deep"><summary>' + (ch.length - 3) + ' more today</summary><ul class="gd-short">' + ch.slice(3).map(chRow).join('') + '</ul></details>' : '') + '</section>'
 
     // the path: pick your question
     var CASES = [['now-detail', 'What is happening now'], ['flight', 'I have a flight'], ['around', 'Getting around'], ['stranded', 'I\'m stranded: what is open?'], ['websummit', 'Web Summit'], ['madeira', 'Madeira'], ['press', 'I\'m a journalist']]
