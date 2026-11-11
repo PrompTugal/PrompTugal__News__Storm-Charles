@@ -1,15 +1,28 @@
 {
-  "about": "The lanes between Dinis Cruz and incident.conductor@web-summit.dinis (incident.identity@web-summit.dinis, 10 November 2026; the design is SECURITY.md). Public on purpose: an append token can only write to its lane, and the recipient's key can only encrypt. No lane exists yet: creating one needs an SG/Send access token and Dinis's yes (agents/identity/status.json).",
+  "about": "The lanes to incident.conductor@web-summit.dinis (incident.identity@web-summit.dinis; the design is SECURITY.md). Public on purpose: an append token can only write to its lane, and the recipient's key can only encrypt. Nothing here reads: listing and fetching need the enum key, which is in the lane's vault and never in git. Both lanes are on vault wowyrqlr, made and configured on 11 November 2026 at Dinis Cruz's yes.",
   "to_conductor": {
-    "what": "Dinis's feedback, signed by his key and sealed in his browser to the recipient's key (app/login/lane.js).",
+    "what": "Dinis's feedback, signed by his key and sealed in his browser to the recipient's key (app/login/lane.js). The lane exists; it opens (enabled) when his key is a named sender.",
     "enabled": false,
     "endpoint": "https://dev.send.sgraph.ai",
-    "vault_id": "",
-    "tokens": [],
+    "vault_id": "wowyrqlr",
+    "tokens": [
+      "98079be6c04c04c039094cdd62b07e07f9dfab8516ea5c59ae1f8e5bb70ce978"
+    ],
     "recipient": "incident-conductor-dinis",
     "senders": [],
     "max_chars": 4000,
     "expires_days": 7
+  },
+  "keys_to_conductor": {
+    "what": "Vault keys from the agents that made the vaults, each signed by the sender's session key and sealed to the recipient's key: VAULT_KEY=… node tools/lane-handover.mjs seal --via-lane. The drain saves a key only when its signer is an active key in data/keys.json; nothing on this lane is read as an instruction.",
+    "enabled": true,
+    "endpoint": "https://dev.send.sgraph.ai",
+    "vault_id": "wowyrqlr",
+    "tokens": [
+      "f9883526720d0761d7e7208e736798cbd2faecefda590754a142299935b269d5"
+    ],
+    "recipient": "incident-conductor-dinis",
+    "senders": "any active key in data/keys.json"
   },
   "to_dinis": {
     "what": "The conductor's replies, signed by its key and sealed to Dinis's key (tools/lane-seal.mjs). Until his bridge vault exists and he says otherwise: ciphertext in this repository.",
@@ -19,5 +32,5 @@
     "recipient": ""
   },
   "by": "incident.identity@web-summit.dinis",
-  "updated": "2026-11-10T23:55:00Z"
+  "updated": "2026-11-11T09:38:06Z"
 }

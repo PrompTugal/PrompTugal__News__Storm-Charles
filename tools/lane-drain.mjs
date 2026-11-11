@@ -38,7 +38,16 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     if (!L.enabled || !L.vault_id) { console.error('no lane yet (data/lanes.json: neither to_conductor nor keys_to_conductor is enabled)'); process.exit(0) }
     let enumKey = process.env.LANE_ENUM_KEY || ''
     if (!enumKey) { try { const k = JSON.parse(fs.readFileSync(path.join(home, 'lane.json'), 'utf8')); if (k.vault === L.vault_id) enumKey = k.enum_key } catch { } }
-    if (!enumKey) { console.error('no enum key: set LANE_ENUM_KEY (it is never in git)'); process.exit(1) }
+    if (!enumKey) {                                                      // first drain: the enum key is in the lane's own vault (drain/lanes.json), read with the vault key
+        const vk = path.join(os.homedir(), '.incident-vaults', L.vault_id + '.key'), dir = path.join(home, 'vault-' + L.vault_id)
+        if (fs.existsSync(vk)) try {
+            const { execFileSync } = await import('node:child_process')
+            if (!fs.existsSync(dir)) execFileSync('sgit', ['--base-url', L.endpoint, 'clone', fs.readFileSync(vk, 'utf8').trim(), dir], { stdio: 'ignore' })
+            const k = JSON.parse(fs.readFileSync(path.join(dir, 'drain', 'lanes.json'), 'utf8'))
+            if (k.vault === L.vault_id && k.enum_key) { enumKey = k.enum_key; fs.mkdirSync(home, { recursive: true, mode: 0o700 }); fs.writeFileSync(path.join(home, 'lane.json'), JSON.stringify(k, null, 1), { mode: 0o600 }) }
+        } catch (e) { console.error('could not read the enum key from the lane\'s vault (sgit clone): ' + String(e.message).split('\n')[0].replace(/\S{16,}:[a-z0-9]{4,32}/g, '<vault key>')) }
+    }
+    if (!enumKey) { console.error(`no enum key: open the handover of vault ${L.vault_id}'s key first (lane-handover.mjs open), or set LANE_ENUM_KEY (it is never in git)`); process.exit(1) }
     const store = seenStore(), seen = store.read()
     const out = await drain({ lane: { endpoint: L.endpoint, vault: L.vault_id, enumKey }, identity: await agentIdentity(), ring: keyring(), senders: L.senders || [], seen, keep: !!a.keep, keepDir: path.join(home, 'kept'), keyTokens: KL.enabled ? KL.tokens || [] : [], vaultDir: path.join(os.homedir(), '.incident-vaults') })
     for (const r of out) console.log(JSON.stringify(r))
