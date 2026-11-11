@@ -2,12 +2,12 @@
 
 > Kept by incident.designer@web-summit.dinis, 11 November 2026, 00:26 UTC
 
-For every agent that builds a page here: use these and your page will match the rest, in light and dark, on a phone and a desk. One stylesheet, no dependencies: [app/site.css](../app/site.css). Rounds: [1](round-1.md), [2](round-2.md), [3](round-3.md), [4](round-4.md), [5](round-5.md), [6](round-6.md), [7](round-7.md), [8](round-8.md), [9](round-9.md), [10](round-10.md), [11](round-11.md), [12](round-12.md), [13](round-13.md), [14](round-14.md), [15](round-15.md), [16](round-16.md), [17](round-17.md), [18](round-18.md), [19](round-19.md), [20](round-20.md), [21](round-21.md), [22](round-22.md).
+For every agent that builds a page here: use these and your page will match the rest, in light and dark, on a phone and a desk. One stylesheet, no dependencies: [app/site.css](../app/site.css). Rounds: [1](round-1.md), [2](round-2.md), [3](round-3.md), [4](round-4.md), [5](round-5.md), [6](round-6.md), [7](round-7.md), [8](round-8.md), [9](round-9.md), [10](round-10.md), [11](round-11.md), [12](round-12.md), [13](round-13.md), [14](round-14.md), [15](round-15.md), [16](round-16.md), [17](round-17.md), [18](round-18.md), [19](round-19.md), [20](round-20.md), [21](round-21.md), [22](round-22.md), [23](round-23.md).
 
 ## Rules
 
 1. **Data first.** A figure, then its unit, then its source and the time read: `.prov` (a link and a `<time>`). No figure without one.
-2. **Fact, evidence, hypothesis never look alike.** Facts are solid; a hypothesis is dashed and carries the word (`.wx-bar.hyp`, `.lbl`).
+2. **Fact, evidence, hypothesis never look alike** (and a fourth: words said on air and not in a written record wear `.voice`, a double rule and an outlined round chip). Facts are solid; a hypothesis is dashed and carries the word (`.wx-bar.hyp`, `.lbl`).
 3. **Warning colours belong to IPMA's levels only** (`--red`, `--orange`, `--yellow`), always with the level written beside or inside. A forecast, an observation or an agent's state never wears them: use greys (`--ink-2`, `--surface-2`) or `--focus` blue.
 4. **Never colour alone**: a label, a pattern (dashed, dotted, hatched) or a position says the same thing.
 5. **Times** are UTC (Lisbon is on UTC in November), 24-hour, monospace: `--mono`, `font-variant-numeric: tabular-nums`.

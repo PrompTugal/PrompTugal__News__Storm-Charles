@@ -113,8 +113,8 @@ aside .card + .card { margin-top: 16px; }
 .wx-lab { position: sticky; left: 0; z-index: 3; background: var(--surface); padding: 5px 8px 5px 16px; border-right: 1px solid var(--line-2); font-size: 13px; line-height: 1.25; display: flex; flex-direction: column; justify-content: center; }
 .wx-lab i { color: var(--ink-2); font-size: 11.5px; font-style: normal; }
 .wx-lab i[lang="pt"] { font-style: italic; }
-.wx-track { position: relative; min-height: 34px; background: repeating-linear-gradient(to right, transparent 0, transparent calc(100% / 24 - 1px), var(--line) calc(100% / 24 - 1px), var(--line) calc(100% / 24)); }
-.wx-hours .wx-track { display: grid; grid-template-columns: repeat(24, 1fr); min-height: 0; background: none; position: sticky; }
+.wx-track { position: relative; min-height: 34px; background: repeating-linear-gradient(to right, transparent 0, transparent calc(100% / var(--n, 24) - 1px), var(--line) calc(100% / var(--n, 24) - 1px), var(--line) calc(100% / var(--n, 24))); }
+.wx-hours .wx-track { display: grid; grid-template-columns: repeat(var(--n, 24), 1fr); min-height: 0; background: none; position: sticky; }
 .wx-hours span { font: 600 11px/22px var(--mono); color: var(--ink-2); padding-left: 3px; border-left: 1px solid var(--line-2); margin-left: -1px; }
 .wx-group { background: var(--surface-2); }
 .wx-group .wx-lab { background: var(--surface-2); text-transform: uppercase; letter-spacing: .06em; font-size: 11px; color: var(--ink-2); }
@@ -132,7 +132,7 @@ aside .card + .card { margin-top: 16px; }
 .wx-bar.hyp { background: transparent; color: var(--ink); border: 2px dashed var(--accent); box-shadow: none; }
 .wx-bar.hyp b { text-transform: uppercase; letter-spacing: .05em; font-size: 11px; color: var(--accent); margin-right: 4px; }
 .wx-bar.hyp.ease { border-color: var(--line-2); color: var(--ink-2); }
-.wx-cells .wx-track { display: grid; grid-template-columns: repeat(24, 1fr); }
+.wx-cells .wx-track { display: grid; grid-template-columns: repeat(var(--n, 24), 1fr); }
 .wx-cell { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3px 0; font: 12.5px/1.15 var(--mono); background: color-mix(in srgb, var(--ink) calc(var(--k, 0%) * .55), transparent); }
 .wx-cell b { font-weight: 700; } .wx-cell i { font-style: normal; font-size: 10.5px; color: var(--ink-2); }
 .wx-cells.rain .wx-cell { background: color-mix(in srgb, var(--rain) calc(var(--k, 0%) * .5), transparent); }
@@ -455,3 +455,14 @@ nav.top { font-size: 12.5px; letter-spacing: -.005em; }
 .navg b { font-size: 9.5px; letter-spacing: .07em; }
 @media (min-width: 1440px) { nav.top { font-size: 13.5px; } .navg { gap: 10px; padding: 0 12px; } .navg b { font-size: 10.5px; } }
 @media (max-width: 1270px) { nav.top { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); padding-right: 36px; } }
+
+/* ---- round 23 (incident.designer@): the next day as a strip; "said on air" as a form of its own. design/round-23.md ---- */
+.wx-bar.none { background: repeating-linear-gradient(135deg, transparent 0 5px, var(--hatch) 5px 6px); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); font-style: italic; }
+.voice { margin: 12px 0 0; max-width: 78ch; padding: 8px 0 8px 14px; border-left: 3px double var(--ink-2); }
+.voice figcaption { font-size: 13.5px; color: var(--ink-2); } .voice figcaption b { color: var(--ink); font-weight: 600; }
+.voice blockquote { margin: 6px 0 0; padding: 0 0 0 1.3em; font-size: 16px; font-style: italic; position: relative; quotes: "\201C" "\201D"; }
+.voice blockquote::before { content: open-quote; position: absolute; left: 0; top: -.05em; font: 700 1.6em/1 Georgia, serif; color: var(--ink-2); font-style: normal; }
+.voice blockquote::after { content: close-quote; }
+.voice .prov { display: block; white-space: normal; margin-top: 6px; }
+.lbl.l-voice { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink-2); border-radius: 999px; padding: 3px 8px; }
+.voice blockquote { font-size: 15px; margin-top: 3px; } .voice { padding-top: 4px; padding-bottom: 4px; }

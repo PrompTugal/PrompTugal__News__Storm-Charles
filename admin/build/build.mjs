@@ -326,6 +326,65 @@ ${rows.join('\n')}
 
 // round 2: one chart, one axis (km/h): what is warned, what the airport forecast says, what the airport observed
 const gw = gv?.forecast_ipma_red_wind_warning, gnum = String(gw?.gusts_kmh || '').match(/\d+/g)?.map(Number) || []
+// round 23: the next day on the same grammar (00:00 to 18:00): what touches it, what is decided for it, the forecasts (the airport's TAF,
+// IPMA's city model, and MET Norway's as a second, labelled model), and the meteorologist's view of its morning, dashed.
+const thuStrip = (() => {
+    const A = D1, B = D1 + 18 * 36e5, N = 18, R = [], hrs = [...Array(N)].map((_, h) => A + h * 36e5)
+    const pc = t => Math.max(0, Math.min(100, (T(t) - A) / (B - A) * 100)), inW = (a, b) => T(a) < B && T(b) > A
+    const br = ({ a, b, cls = '', text, title = '', style = '', href = '' }) => { const l = pc(a), r = pc(b); if (r <= l) return ''; const tag = href ? `a href="${esc(href)}"` : 'div'; return `<${tag} class="wx-bar ${cls}${T(a) < A ? ' cut-l' : ''}${T(b) > B ? ' cut-r' : ''}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%;${style}" title="${esc(title)}"><span>${text}</span></${href ? 'a' : 'div'}>` }
+    const rw = (label, sub, inner, cls = '') => R.push(`<div class="wx-row ${cls}"><div class="wx-lab"><b>${label}</b>${sub}</div><div class="wx-track">${inner}</div></div>`)
+    const hd = (label, sub) => R.push(`<div class="wx-row wx-group"><div class="wx-lab"><b>${label}</b></div><div class="wx-track"><span>${sub}</span></div></div>`)
+    const cl = f => hrs.map(t => { const c = f(t); return `<div class="wx-cell${c ? '' : ' empty'}"${c?.title ? ` title="${esc(c.title)}"` : ''}${c?.style ? ` style="${c.style}"` : ''}>${c ? c.text : ''}</div>` }).join('')
+    // warned
+    const ws = lis.filter(w => inW(w.start_utc, w.end_utc)), wt = [...new Set(ws.map(w => w.type))]
+    hd('Warned', `IPMA's warnings for the Lisbon district that touch the day: facts. ${ws.length ? '' : 'None above green at the last read. '}${warnProv}`)
+    for (const ty of wt) rw(esc(EN[ty] || ty), `<i lang="pt">${esc(ty)}</i>`, ws.filter(w => w.type === ty).map(w => br({ a: w.start_utc, b: w.end_utc, cls: 'w-' + esc(w.level), text: `<b>${esc(w.level)}</b> ${T(w.start_utc) < A ? 'to' : hm(w.start_utc) + ' to'} ${hm(w.end_utc)}`, title: `${w.level}: ${rng(w.start_utc, w.end_utc)}. ${w.text_pt || ''}` })).join(''))
+    if (!wt.length) rw('Lisbon', '<i>no warning above green</i>', '')
+    // decided: edges whose effect touches the day, and the edges named for the day with no hours
+    const NEXT_DAY = { '2026-11-12': ['websummit-thursday'] }
+    const ds = (dg?.edges || []).filter(e => e.status === 'happened' && e.by !== 'ipma' && ((ok(e.effect_from_utc) && T(e.effect_from_utc) < B && (!ok(e.effect_to_utc) ? false : T(e.effect_to_utc) > A + 6e4)) || (NEXT_DAY[NEXT] || []).includes(e.id)))
+    if (ds.length) {
+        hd('Decided', `Decisions for the day. Dotted, across the day: the source names the day but no hours. Each bar links to its source. <span class="prov"><a href="${base}data/decisions/graph.json">The decision graph</a>, updated ${hm(dg.updated)} UTC ${dm(dg.updated)}</span>`)
+        for (const e of ds) {
+            const stated = ok(e.effect_from_utc), who = String((dg.nodes || []).find(n => n.id === e.by)?.name || e.by).replace(/\s*\(.*$/, ''), made = /T\d\d:\d\d/.test(e.at || '') && ok(e.at) ? `${wd(e.at)} ${hm(e.at)}` : 'time not given'
+            rw(esc(who), `<i>${esc(e.label)} · ${esc(made)}</i>`, br({ a: stated ? e.effect_from_utc : A, b: stated ? e.effect_to_utc : B + 1, cls: 'dec d-' + esc(e.label) + (stated ? '' : ' d-nohours'), href: /^https:/.test(e.source || '') ? e.source : '', text: `<b>${esc(e.label)}</b> <i>${stated ? `${hm(e.effect_from_utc)} to ${hm(e.effect_to_utc)}` : 'hours not stated'}</i> ${esc(e.decision)}`, title: `${e.label}: ${e.decision}${e.note ? ' Note: ' + e.note : ''} Source read ${hm(e.read)} UTC ${dm(e.read)}.` }), 'wx-dec')
+        }
+    }
+    // the airport forecast
+    const tg = (taf?.groups || []).filter(g => ok(g.from_utc) && ok(g.to_utc) && inW(g.from_utc, g.to_utc) && g.wind_kmh != null)
+    if (taf) {
+        const ends = ok(taf.valid_to_utc) && T(taf.valid_to_utc) < B ? taf.valid_to_utc : ''
+        hd('Airport forecast', `TAF for Lisbon airport (LPPT), issued ${hm(taf.issue_utc)} UTC ${dm(taf.issue_utc)}${ends ? `; <b>it ends at ${hm(ends)}</b>: nothing is forecast here after that until a later TAF` : ''}. A point forecast for pilots. ${prov(taf.source, 'TAF LPPT', taf.read_utc)}`)
+        rw('Prevailing', '<i>mean wind, gusts (G), km/h</i>', tg.filter(g => !g.prob && g.change !== 'TEMPO').map(g => br({ a: g.from_utc, b: g.to_utc, cls: 'taf', text: gtxt(g), title: gttl(g), style: heat(g) })).join('') + (ends ? br({ a: ends, b: B, cls: 'none', text: 'no TAF yet', title: `The TAF read ends at ${hm(ends)}` }) : ''), 'wx-taf')
+        const tt2 = tg.filter(g => g.prob || g.change === 'TEMPO'); if (tt2.length) rw('At times', '<i>TEMPO, PROB</i>', tt2.map(g => br({ a: g.from_utc, b: g.to_utc, cls: 'taf', text: (g.prob ? `${g.prob}%: ` : '') + gtxt(g), title: gttl(g), style: heat(g) })).join(''), 'wx-taf')
+    }
+    // IPMA's city model
+    const hr2 = (fc?.hourly?.rows || []).filter(r => ok(r.time_utc) && T(r.time_utc) >= A && T(r.time_utc) < B), at = t => hr2.find(r => T(r.time_utc) === t)
+    if (hr2.length) {
+        hd('City model', `IPMA's hourly model forecast for Lisbon: mean wind only, this feed has no gusts. ${prov(fc.hourly.source, 'IPMA hourly forecast', fc.hourly.read_utc)}`)
+        rw('Mean wind', '<i>city model · km/h, from</i>', cl(t => { const r = at(t); return r && r.wind_mean_kmh != null ? { text: `<b>${Math.round(r.wind_mean_kmh)}</b><i>${esc(r.wind_dir || '')}</i>`, title: `${hm(r.time_utc)}: mean wind ${r.wind_mean_kmh} km/h from ${r.wind_dir}`, style: `--k:${Math.round(Math.min(1, r.wind_mean_kmh / 120) * 100)}%` } : null }), 'wx-cells')
+        rw('Rain', '<i>city model · IPMA intensity class</i>', cl(t => { const r = at(t); return r && r.rain_intensity_class != null ? { text: `<b>${esc(r.rain_intensity_class)}</b>${r.rain_prob_pct != null ? `<i>${esc(r.rain_prob_pct)}%</i>` : ''}`, title: `${hm(r.time_utc)}: rain intensity class ${r.rain_intensity_class}`, style: `--k:${Math.min(100, r.rain_intensity_class * 25)}%` } : null }), 'wx-cells rain')
+    }
+    // a second model, labelled as such
+    const mn = fc?.second_models?.met_no, mr = (mn?.rows || []).filter(r => ok(r.time_utc) && T(r.time_utc) >= A && T(r.time_utc) < B), ma = t => mr.find(r => T(r.time_utc) === t)
+    if (mr.length) {
+        hd('Second model', `${esc(mn.name || 'MET Norway')}: another forecaster's model for the same point, shown beside IPMA's, never instead of it. Model run ${hm(mn.updated_utc)} UTC ${dm(mn.updated_utc)}. ${esc(mn.licence || '')}. ${prov(mn.source, 'api.met.no', mn.read_utc)}`)
+        rw('Mean wind', '<i>met.no · km/h, gust (G)</i>', cl(t => { const r = ma(t); return r && r.wind_mean_kmh != null ? { text: `<b>${Math.round(r.wind_mean_kmh)}</b><i>${r.gust_kmh != null ? 'G' + Math.round(r.gust_kmh) : ''}</i>`, title: `${hm(r.time_utc)}: mean wind ${r.wind_mean_kmh} km/h${r.gust_kmh != null ? ', gust ' + r.gust_kmh : ''}${r.wind_from_deg != null ? ', from ' + Math.round(r.wind_from_deg) + '°' : ''}`, style: `--k:${Math.round(Math.min(1, (r.gust_kmh ?? r.wind_mean_kmh) / 120) * 100)}%` } : null }), 'wx-cells')
+        if (mr.some(r => r.rain_mm_next_1h != null)) rw('Rain', '<i>met.no · mm in the hour</i>', cl(t => { const r = ma(t); return r && r.rain_mm_next_1h != null ? { text: `<b>${r.rain_mm_next_1h}</b>`, title: `${hm(r.time_utc)}: ${r.rain_mm_next_1h} mm in the next hour`, style: `--k:${Math.round(Math.min(1, r.rain_mm_next_1h / 8) * 100)}%` } : null }), 'wx-cells rain')
+    }
+    // the meteorologist's view of the morning: a hypothesis, drawn as one
+    const tv = (an?.updates || []).filter(u => u.thursday_morning).slice(-1)[0]
+    if (tv) {
+        const v = tv.thursday_morning
+        hd('Our analysis', `A hypothesis by ${esc(an.by || 'the meteorologist')}, written ${hm(tv.written_utc)} UTC ${dm(tv.written_utc)}: not IPMA's words. <span class="prov"><a href="${base}data/weather/analysis.html">The reasons</a></span>`)
+        rw('The morning', `<i>confidence: ${esc(v.confidence || 'not stated')}</i>`, br({ a: A, b: A + 12 * 36e5, cls: 'hyp', text: `<b>hypothesis</b> ${esc(v.view || '')}`, title: String(v.why || '') }), 'wx-hyp')
+    }
+    return `<section class="card wx-day" id="thursday"><div class="wx-head"><h2>${esc(nextName)}, 00:00 to 18:00</h2><p class="meta">The same lanes as the day before, for the day after: what is warned, what is decided, what is forecast, and our analysis last and labelled. Lisbon time (UTC in November). ${esc(inc.thursday || '')}</p></div>
+<div class="wx-scroll" tabindex="0" role="group" aria-label="${esc(nextName)}, hour by hour to 18:00: scroll sideways"><div class="wx-strip" style="--n:${N}" data-d0="${A}" data-span="${B - A}">
+<div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hrs.map((_, h) => `<span>${String(h).padStart(2, '0')}</span>`).join('')}</div></div>
+${R.join('\n')}
+</div></div></section>`
+})()
 const chart = (() => {
     const W = 960, H = 290, ml = 40, mr = 14, mt = 14, mb = 30, X0 = D0 - 12 * 36e5, X1 = D1 + 6 * 36e5, YM = 150
     const x = t => ml + (Math.max(X0, Math.min(X1, T(t))) - X0) / (X1 - X0) * (W - ml - mr), y = v => mt + (1 - v / YM) * (H - mt - mb), f = n => n.toFixed(1)
@@ -416,6 +475,8 @@ const lede = `<p class="wx-lede">${reds.length ? `IPMA warns <b>${reds.map(w => 
 const gap = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'research/weather-sites/gap.json'), 'utf8')) } catch { return null } })()
 const gs = gap?.summary, gapHtml = gs && gs.press_pages_counted ? `<section class="card"><h2>What we measured</h2><p class="meta">One read of each page, ${esc(String(gap.about || '').match(/on (\d+ \w+ \d{4}) \(([^)]+)\)/)?.slice(1).join(', ') || dm(gap.updated))}: of <b>${esc(gs.press_pages_counted)}</b> press pages on Storm Charles, <b>${esc(gs.press_pages_with_no_link_to_ipma_or_anepc)}</b> had no link to ipma.pt or prociv.gov.pt; of <b>${esc(gs.assessed)}</b> pages assessed, <b>${esc(gs.by_column?.decisions?.yes ?? '?')}</b> showed the decisions as a list or table. A page may have changed since; it is a count, not a judgement of anyone's journalism. <a href="research/weather-sites/gap.json">gap.json</a> · <a href="research/weather-sites/index.html">the survey</a></p></section>` : ''
 const sky = `<section class="card"><h2>Radar and satellite</h2><p class="meta">Links only: we embed no radar or satellite image (their licences; <a href="research/weather-sites/imagery.json">what we read</a>). <a href="https://www.ipma.pt/pt/otempo/obs.radar/">Radar: IPMA</a> · <a href="https://view.eumetsat.int/">Satellite: EUMETView</a></p></section>`
+const spoken = (an?.updates || []).flatMap(u => u.press_quoting_ipma || []).filter(q => q && Array.isArray(q.quotes_pt) && q.quotes_pt.length && ok(q.read_utc))
+const voice = spoken.map(q => `<figure class="voice"><figcaption><span class="lbl l-voice">said on air</span> <b>${esc(q.who || '')}</b>, ${esc(q.outlet || '')}${ok(q.entry_utc) ? `, ${wd(q.entry_utc)} ${hm(q.entry_utc)}` : ''}. Spoken, as reported by the outlet: <b>not in IPMA's written record</b> (its warnings and communiqués).</figcaption>${q.quotes_pt.map(t => `<blockquote lang="pt">${esc(t)}</blockquote>`).join('')}<p class="prov">${q.url ? `<a href="${esc(q.url)}">${esc(q.outlet || 'source')}</a>` : esc(q.outlet || '')}, read ${hm(q.read_utc)} UTC ${dm(q.read_utc)}${q.note ? `. Our reading: ${esc(q.note)}` : ''}</p></figure>`).join('')
 const feed = (sig?.items || []).slice().sort((a, b) => T(b.at) - T(a.at)).slice(0, 14).map(s => {
     const src = (s.sources || []).find(x => x.url && /^https:/.test(x.url)), via = (s.sources || []).map(x => x.label).filter(Boolean).join('; ')
     return `<li><a class="when" href="${base}timeline.html${s.id ? '#' + esc(s.id) : ''}" title="This signal in the timeline"><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time></a><div><span class="lbl ${esc(s.kind)} l-${esc(s.label || '')}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via)}</span></div></li>`
@@ -429,13 +490,14 @@ const thuRows = [
     ...(tt?.groups || []).map(g => `<li><span>Airport, ${rng(g.from_utc, g.to_utc)}: <b>${gtxt(g)}</b></span>${prov(tt.source, `TAF LPPT ${hm(tt.taf_issue_utc)}`, tt.read_utc)}</li>`)
 ].join('')
 const front = `<section class="banner"><div class="wrap hero"><div class="hero-h"><p class="kicker">${esc(inc.kicker || 'Storm Charles · Lisbon')}</p><h1>${esc(inc.headline.text)}</h1>
-<p class="src"><span class="lbl official">decision · ${esc(inc.headline.label || 'fact')}</span> Source: <a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}.</p><p class="stand">${esc(inc.standfirst || '')}</p></div>
+<p class="src"><span class="lbl official">decision · ${esc(inc.headline.label || 'fact')}</span> Source: <a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}.</p><p class="stand">${esc(inc.standfirst || '')}</p>${voice}</div>
 <div class="hero-w"><section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
 ${lis.some(w => ok(w.sent_utc)) ? `<p class="wx-cap">The times IPMA sent each warning are read from IPMA's messages on <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes (last read ${hm(warn.read_utc)} UTC ${dm(warn.read_utc)}), not a live feed.</p>` : ''}</div></div></section>
 <div class="wrap">
 ${changed}
 ${strip.replace('<!--lede-->', lede)}
 ${chart}
+${thuStrip}
 <div class="grid">
 <section class="card"><h2>Latest signals</h2><ul class="feed">${feed || '<li class="meta">No signals yet.</li>'}</ul><p class="meta"><a href="${base}timeline.html">The whole timeline</a> · <a href="${base}decisions.html">Decisions</a></p></section>
 <aside>
