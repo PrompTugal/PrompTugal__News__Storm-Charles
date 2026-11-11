@@ -106,6 +106,7 @@ const prevRuns = new Map()
 for (const f of fs.existsSync(path.join(OUT, 'runs')) ? fs.readdirSync(path.join(OUT, 'runs')) : []) for (const r of readJ(path.join(OUT, 'runs', f))?.runs || []) prevRuns.set(r.id, r)
 const prevCommits = new Map()
 for (const f of fs.existsSync(path.join(OUT, 'commits')) ? fs.readdirSync(path.join(OUT, 'commits')) : []) for (const c of readJ(path.join(OUT, 'commits', f))?.commits || []) prevCommits.set(c.sha, c)
+const SPLIT_RUN = 1618   // the first run of the three-job workflow (fd90abcd)
 const STEP = [[/^Set up job/, 'set up'], [/checkout/i, 'checkout'], [/^Version/, 'version'], [/^Build and gate/, 'gate'], [/upload-pages/, 'upload'], [/deploy-pages/, 'deploy'], [/^Tag/, 'tag'], [/^Measure/, 'measure']]
 let runs = [...prevRuns.values()], apiOk = false, releases = null, apiError = ''
 if (!NO_API) try {
@@ -121,7 +122,7 @@ if (!NO_API) try {
     const bySha = new Map(commits.map(c => [c.sha, c]))
     runs = await pool(list.filter(r => r.path === '.github/workflows/deploy.yml'), 8, async r => {
         const old = prevRuns.get(r.id)
-        if (old && old.result !== 'in progress' && old.result !== 'queued' && old.attempt === r.run_attempt && (old.run < 418 || old.p === 2)) return old
+        if (old && old.result !== 'in progress' && old.result !== 'queued' && old.attempt === r.run_attempt && (old.run < 418 || old.p === 3 || (old.p === 2 && old.run < SPLIT_RUN))) return old
         const done = r.status === 'completed', c = bySha.get(r.head_sha)
         const o = {
             run: r.run_number, id: r.id, attempt: r.run_attempt, version: `v${SERIES}.${r.run_number}`, sha: r.head_sha, branch: r.head_branch, event: r.event,
@@ -130,23 +131,37 @@ if (!NO_API) try {
             result: done ? r.conclusion : r.status === 'in_progress' ? 'in progress' : 'queued', url: r.html_url
         }
         try {
-            const job = (await api(`/actions/runs/${r.id}/jobs`)).jobs[0]
+            // since run 1618 (fd90abcd, ci-altitudes.patch) a run is three jobs: build (contents: read), then deploy and tag beside
+            // each other; before, one job. The run's steps are read from every job, build's first; queue_s is build's pickup;
+            // gap_s is build's end to deploy's start (the second runner pickup the split costs); superseded: build passed and
+            // deploy was skipped because the commit was no longer dev's head (deploy-newest-only, 7080c767)
+            const all = (await api(`/actions/runs/${r.id}/jobs`)).jobs || []
+            const ORDER = { build: 0, deploy: 1, tag: 2 }
+            const jobs = all.length > 1 ? all.slice().sort((x, y) => (ORDER[x.name] ?? 9) - (ORDER[y.name] ?? 9)) : all
+            const job = jobs[0]
             if (job) {
                 o.started = job.started_at ? iso(job.started_at) : null; o.queue_s = secs(r.created_at, job.started_at)
-                if (done && job.completed_at) { o.ended = iso(job.completed_at); o.run_s = secs(job.started_at, job.completed_at) }
+                const ends = jobs.map(j => j.completed_at).filter(Boolean).sort()
+                if (done && ends.length) { o.ended = iso(ends.at(-1)); o.run_s = secs(job.started_at, ends.at(-1)) }
+                if (jobs.length > 1) {
+                    o.jobs = jobs.map(j => ({ job: j.name, queue_s: j.started_at && j.conclusion !== 'skipped' ? secs(j.created_at, j.started_at) : null, s: j.conclusion === 'skipped' ? null : secs(j.started_at, j.completed_at), result: j.conclusion || j.status }))
+                    const dj = jobs.find(j => j.name === 'deploy')
+                    if (dj?.started_at && dj.conclusion !== 'skipped' && job.completed_at) o.gap_s = secs(job.completed_at, dj.started_at)
+                    if (done && job.conclusion === 'success' && dj?.conclusion === 'skipped') o.superseded = true
+                }
                 // since run 418 the workflow tries the deploy a second time when the first fails (ci/patches, applied 9ed312b):
                 // a skipped step is left out; the second try is its own step; a run the retry saved is "success" with deploy_retried
                 let deploys = 0
                 const stepName = s => { const n = (STEP.find(([re]) => re.test(s.name)) || [0, s.name])[1]; return n === 'deploy' && ++deploys > 1 ? 'deploy (2nd try)' : /^Wait before/.test(s.name) ? 'wait' : n }
-                o.steps = (job.steps || []).filter(s => !/^(Post |Complete job)/.test(s.name)).map(s => ({ step: stepName(s), s: secs(s.started_at, s.completed_at), result: s.conclusion || s.status })).filter(s => s.result !== 'skipped')
-                o.p = 2
+                o.steps = jobs.flatMap(j => (j.steps || []).filter(s => !/^(Post |Complete job)/.test(s.name)).map(s => ({ step: j !== job && /^Set up job/.test(s.name) ? 'set up (' + j.name + ')' : stepName(s), s: secs(s.started_at, s.completed_at), result: s.conclusion || s.status }))).filter(s => s.result !== 'skipped')
+                o.p = jobs.length > 1 ? 3 : 2
                 const first = o.steps.find(s => s.step === 'deploy'), second = o.steps.find(s => s.step === 'deploy (2nd try)')
                 // the first try has continue-on-error, so GitHub's API reports its conclusion as "success" even when it failed:
                 // the second try only runs when the first failed, so its presence (not skipped) is the evidence
                 if (first && second && /^(success|failure)$/.test(second.result)) o.deploy_retried = second.result   // a run still going lists the step as pending
                 const bad = o.steps.filter(s => s.result === 'failure').at(-1); if (bad && r.conclusion === 'failure') o.failed_step = bad.step
                 if (done) {
-                    const ann = await api(`/check-runs/${job.id}/annotations`)
+                    const ann = (await Promise.all(jobs.filter(j => j.conclusion && j.conclusion !== 'skipped').map(j => api(`/check-runs/${j.id}/annotations`)))).flat()
                     const pts = ann.find(a => a.title === 'push-to-served'); if (pts) o.push_to_served_s = Number((pts.message.match(/^(\d+) s/) || [])[1] ?? NaN)
                     const errs = [...new Set(ann.filter(a => a.annotation_level === 'failure').map(a => clean(a.message).split('\n')[0].slice(0, 200)))]; if (errs.length) o.reason = errs.join(' | ')
                 }
@@ -172,7 +187,7 @@ for (const [i, c] of commits.entries()) {
 
 // ---------------------------------------------------------------- write: by day, by hour when a day is too big
 const about = {
-    runs: 'Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub\'s Actions API gave them. version: v<series>.<run number>, CI\'s own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit\'s time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. push_to_served_s: the run\'s own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.',
+    runs: 'Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub\'s Actions API gave them. version: v<series>.<run number>, CI\'s own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit\'s time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. jobs (from run 1618, three: build, deploy, tag): each job\'s queue_s, seconds and result; gap_s: build\'s end to deploy\'s start; superseded: build passed, deploy skipped (no longer dev\'s head). push_to_served_s: the run\'s own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.',
     commits: 'Commits on dev made on this day (UTC, committer time), oldest first, from a full clone. agent: the Agent: trailer (agent_from says where it was read); what: the subject without the agent; to: the For: trailers (a hand-off); folders: files changed per top-level folder; files: the paths (the first 40); outside: paths that are not the agent\'s own under agents/policy.json as it is today, with their owners; sig: the signature the commit object carries (kind, the key\'s fingerprint) and GitHub\'s verdict; run: the workflow run of this very commit; served: the run and version that first served it (its own, or a later one when its own was replaced), and lag_s from commit to served. No session ids. A commit: ' + WEB + '/commit/<sha>.'
 }
 // by day; a day over the size by hour; an hour over it by ten minutes (a busy hour here is fifty commits of forty paths each)
