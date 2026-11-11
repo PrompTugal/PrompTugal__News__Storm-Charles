@@ -2,7 +2,7 @@
    IPMA's red, orange and yellow are used only for IPMA's levels, always with the level written.
    Observed: solid --focus. IPMA's automatic forecast: outlined, grey. Our hypothesis: dashed --accent, and it says so. */
 main.doc:has(#wx) { padding-top: 0; }
-main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }
+main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }   /* this page pads its own sections (--pad) */
 .wxc { --pad: clamp(14px, 2.4vw, 40px); font-family: var(--sans); color: var(--ink); }
 .wxc p { margin: 0; }
 .wxc h2 { font-size: clamp(20px, 1.5vw + 12px, 28px); margin: 0 0 14px; letter-spacing: -.01em; }
@@ -96,7 +96,7 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }
 .wxc-band { z-index: 1; margin: 5px 1px; border-radius: 5px; display: flex; align-items: center; gap: 6px; padding: 0 8px; font-size: 13px; overflow: hidden; white-space: nowrap; color: var(--paper); }
 .wxc-band b { text-transform: uppercase; font-size: 12px; letter-spacing: .04em; }
 .wxc-band span { font-family: var(--mono); font-size: 12px; }
-.wxc-band.w-red { background: var(--red); color: white; } .wxc-band.w-orange { background: var(--orange); color: var(--on-orange); } .wxc-band.w-yellow { background: var(--yellow); color: var(--on-orange); }
+.wxc-band.w-red { background: var(--red); color: var(--on-red); } .wxc-band.w-orange { background: var(--orange); color: var(--on-orange); } .wxc-band.w-yellow { background: var(--yellow); color: var(--on-orange); }
 .wxc-band.ended { opacity: .55; }
 .wxc-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 10px 0; padding: 0; font-size: 13px; color: var(--ink-2); }
 .wxc-legend .k { display: inline-block; width: 22px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
@@ -176,7 +176,7 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }
 .wxc-chart .c-bar { fill: var(--rain); }
 .wxc-chart .c-val { fill: var(--ink); font: 600 11px var(--sans); }
 .wxc-chart .c-strip.w-red { fill: var(--red); } .wxc-chart .c-strip.w-orange { fill: var(--orange); } .wxc-chart .c-strip.w-yellow { fill: var(--yellow); }
-.wxc-chart .c-striplab { font: 700 12px var(--sans); fill: var(--on-orange); } .wxc-chart .c-striplab.w-red { fill: white; }
+.wxc-chart .c-striplab { font: 700 12px var(--sans); fill: var(--on-orange); } .wxc-chart .c-striplab.w-red { fill: var(--on-red); }
 .wxc-table table + table { margin-top: 14px; }
 .wxc-strip3 { background: var(--surface); border: 1px solid var(--line); border-left: 8px solid var(--ink); border-radius: 8px; padding: 10px 14px; display: grid; gap: 4px; margin: 0 0 10px; font-size: 16px; line-height: 1.45; }
 .wxc-strip3 b { margin-right: 6px; }
@@ -197,3 +197,36 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }
 .wxc-sec.wxc-hyp > details > summary h2 { display: inline; margin: 0; font-size: 20px; }
 .wxc-sec.wxc-hyp > details[open] > summary { margin-bottom: 12px; }
 .wxc-days { margin-top: 0; }
+
+/* round 7 (incident.designer@'s art direction, design/round-32.md): the level is the largest thing; one row of equal tiles; no dark block; about two screens, the rest folds */
+.wxc-hero { display: block; border-top: 0; background: var(--paper); padding-top: clamp(12px, 1.6vw, 24px); }
+.wxc-top { display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+.wxc-top .kicker { margin: 0; } .wxc-clock { font: 14px var(--mono); color: var(--ink-2); }
+.wxc-level { border-radius: 10px; padding: clamp(14px, 2vw, 28px) clamp(14px, 2.2vw, 32px); background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; }
+.wxc-level.w-red { background: var(--red); color: var(--on-red); border-color: transparent; } .wxc-level.w-orange { background: var(--orange); color: var(--on-orange); border-color: transparent; } .wxc-level.w-yellow { background: var(--yellow); color: var(--on-yellow, var(--on-orange)); border-color: transparent; }
+.wxc-hero .wxc-level h1 { margin: 0 0 6px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; font-size: inherit; letter-spacing: 0; line-height: 1; }
+.wxc-word { font-size: clamp(54px, 8vw, 132px); font-weight: 800; text-transform: uppercase; letter-spacing: -.03em; line-height: .9; }
+.wxc-h1b { font-size: clamp(19px, 1.4vw + 12px, 34px); font-weight: 600; letter-spacing: -.01em; line-height: 1.15; }
+.wxc-level .wxc-say { margin: 8px 0 0 !important; max-width: none; font-size: clamp(16px, .7vw + 13px, 24px); }
+.wxc-days { margin: 0 0 12px; }
+.wxc-hero .wxc-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 6px; }
+.wxc-hero .wxc-tile { justify-content: flex-start; }
+.wxc-hero-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(16px, 2.5vw, 44px); align-items: start; }
+.wxc-w-t > .meta { margin-top: 2px; font-size: 13px; }
+.wxc-fold { border-bottom: 1px solid var(--line); }
+.wxc-fold > summary { cursor: pointer; padding: 16px var(--pad); list-style-position: inside; }
+.wxc-fold > summary h2 { display: inline; font-size: clamp(18px, 1vw + 12px, 22px); margin: 0; }
+.wxc-fold > summary:hover h2 { text-decoration: underline; }
+.wxc-fold > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.wxc-fold > .wxc-sec > h2:first-child, .wxc-fold > .wxc-sec > h2 + .wxc-rec { display: none; }
+.wxc-fold > .wxc-sec, .wxc-fold .wxc-pair > .wxc-sec { padding-top: 4px; border-bottom: 0; }
+.wxc-fold .wxc-pair .wxc-sec > h2 { font-size: 18px; }
+@media (max-width: 860px) {
+  .wxc-hero-cols { grid-template-columns: 1fr; }
+  .wxc-hero .wxc-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .wxc-hero .wxc-tile { padding: 8px 10px; gap: 1px; } .wxc-hero .wxc-tile .meta, .wxc-hero .wxc-tile > p:last-child { display: none; }
+  .wxc-hero .wxc-big { font-size: 24px; } .wxc-hero .wxc-eyebrow { font-size: 10px; }
+}
+.wxc-age { font: 12px var(--mono); color: var(--ink-2); }
+.wxc-feed li > div > p:first-child { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 860px) { .wxc-ws.next .wxc-w-t { display: none; } .wxc-ws.next .wxc-w { padding: 6px 10px; } .wxc-ws { gap: 6px; } }
