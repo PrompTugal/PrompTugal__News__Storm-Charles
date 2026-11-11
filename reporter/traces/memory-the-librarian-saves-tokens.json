@@ -4,7 +4,7 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T08:08:51Z",
+ "updated": "2026-11-11T09:07:50Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
@@ -39,10 +39,10 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: nineteen roles handed over by 07:41 (the accounts' round 8); the average call flat at about 200,000 tokens since 05:00; four first sessions cannot be replaced until Dinis says how vault keys are held; the conductor's own session has not handed over in the record (it compacts)",
+ "status": "open: the average call falling again (175,178 tokens so far in the 08:00 hour, the accounts' round 9); second, third and fourth hand-overs are now routine; four first sessions cannot be replaced until Dinis says how vault keys are held; the conductor's own session has not handed over in the record (it compacts)",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
-  "to": "2026-11-11T07:59:19Z",
+  "to": "2026-11-11T08:53:17Z",
   "note": "sentence recorded to pack: 5 min 37 s; to the first measured number: 8 min 44 s; to the first hand-over: 12 min 43 s; to the sixth: 47 min 49 s; to the ninth: 1 h 20 min 7 s"
  },
  "steps": [
@@ -1193,11 +1193,79 @@
      "version": "v0.1.661",
      "run": 661,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T07:18:05Z"
+     "served_by": "2026-11-11T07:42:38Z",
+     "push_to_served_s": 56
     }
    ],
    "n": 22,
    "at": "2026-11-11T07:41:39Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "measure, corrected",
+   "sha": "8571200736dd576a631a85c732e4aee37e43fcac",
+   "in": "the ledger lines to 08:40",
+   "out": "\"the accounts, round 9: the average call falls again (184,632 at 07:00, 175,178 so far at 08:00) after five second hand-overs; round 8's reading corrected\". Round 8 had read the average as flat at about 200,000 (step 22 quotes it); the accountant corrects its own reading an hour later. Four more roles started again in the hour: the journalist (its fourth session, 8aaa7ce5, 08:18:05), observability (its third, cf2096fa, 08:18:21), entities (its third, 1f23aad1, 08:47:56) and stories (its fourth, 1b58b8e9, 08:53:17). A role now lasts about an hour to three hours before it starts again from its note.",
+   "handoff": {
+    "to": "every agent and the conductor",
+    "via": "accounts/index.md",
+    "evidence_of_handoff": "the four key entries in data/keys.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "accounts/index.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/index.md"
+    },
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "type": "commit",
+     "sha": "8aaa7ce5c77f5dec1409ecf81f26bbb2b5d45d7b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8aaa7ce5c77f5dec1409ecf81f26bbb2b5d45d7b"
+    },
+    {
+     "type": "commit",
+     "sha": "cf2096fa11328c82171c594d4384625839c3e785",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/cf2096fa11328c82171c594d4384625839c3e785"
+    },
+    {
+     "type": "commit",
+     "sha": "1f23aad17fec759a0ec209d21cccc20741628c33",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1f23aad17fec759a0ec209d21cccc20741628c33"
+    },
+    {
+     "type": "commit",
+     "sha": "1b58b8e933f3d862efb2e3a8eccf52000159dfc9",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1b58b8e933f3d862efb2e3a8eccf52000159dfc9"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "8571200736dd576a631a85c732e4aee37e43fcac",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8571200736dd576a631a85c732e4aee37e43fcac"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.700",
+     "run": 700,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T08:17:55Z"
+    }
+   ],
+   "n": 23,
+   "at": "2026-11-11T08:43:50Z",
    "agent_trailer": "incident.accountant@web-summit.dinis",
    "for": [
     "incident.conductor@web-summit.dinis"
@@ -1211,10 +1279,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 22,
+  "steps": 23,
   "steps_with_no_evidence": 0,
   "person_steps": 1,
-  "agent_steps": 21
+  "agent_steps": 22
  },
  "people_acted": [
   "Dinis Cruz"
