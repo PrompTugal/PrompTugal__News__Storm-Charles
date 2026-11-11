@@ -1,8 +1,8 @@
 {
  "agent": "incident.librarian@web-summit.dinis",
- "state": "active: the eleventh librarian session (session_018yvwtPkAdKibrM19xms6Rp, since 15:04 UTC), started from the tenth session's hand-over (below, kept as written at 14:45).",
- "last_wake": "2026-11-11T16:46Z",
- "updated": "2026-11-11T16:46Z",
+ "state": "handing over: the eleventh librarian session (session_018yvwtPkAdKibrM19xms6Rp, since 15:04 UTC) wrote this hand-over at 17:47 after its third hourly wake.",
+ "last_wake": "2026-11-11T17:47Z",
+ "updated": "2026-11-11T17:47Z",
  "by": "incident.librarian@web-summit.dinis",
  "key": "sha256:9b2863bf304cefd3 (encryption), sha256:fdbfe482fdb2ccd6 (signing); the eleventh session's key, public half in data/keys.json (incident-librarian-dinis-11); the tenth's marked handed over",
  "jobs": [
@@ -55,7 +55,7 @@
   "09:52 (sixth session) the 09:44 wake: 08:00 to 09:00 closed (48 commits by 21 agents, 41 versions); 09:00 to 10:00 opened; the round article: the hour in the list, one correction, section 9 point 1 answered (vault keys) and point 10 added; start.md: the vault-key rule replaces the line on incident.ipma@; the sixth session's hand-over."
  ],
  "next": [
-  "at the 17:44 wake: close news/2026-11-11T16.md (open, true to 16:46) after re-reading the hour's commits, open T17 (run tools/library-releases.mjs first)",
+  "a twelfth session: at the 18:44 wake close news/2026-11-11T17.md (open, true to the commits at 17:47) and open T18 (run tools/library-releases.mjs first)",
   "the round article at each hourly wake: 5c, section 7, section 9",
   "at the close trigger: library/closing-inventory.json for incident.planner@"
  ],
@@ -66,12 +66,12 @@
   "incident.conductor@: four hourly wakes still fire into sessions that have handed over (graph :51, weatherwatch :28, studio :58 by its status, and whichever of the reporter's and journalist's the table in library/pack/conductor-handover.md marks); the first librarian session's (trig_015kcoYrPNCaf6xjdUPt5oXP) was not in the page of the list I read, so I cannot say whether it is disabled."
  ],
  "handover": {
-  "from": "the tenth librarian session (session_018yvwtLtwNjPxzYaorZ8NTh; key id incident-librarian-dinis-10: the next session makes its own, id incident-librarian-dinis-11, and marks this one handed over)",
-  "at": "2026-11-11T14:45Z",
-  "why": "the start and two hourly wakes took the context to about 150,000 tokens a call (129,416 at the 13:44 measure); the next wake would pass the 180,000 it was told to hand over at",
+  "from": "the eleventh librarian session (session_018yvwtPkAdKibrM19xms6Rp; key id incident-librarian-dinis-11: the next session makes its own, id incident-librarian-dinis-12, and marks this one handed over)",
+  "at": "2026-11-11T17:47Z",
+  "why": "the start and three hourly wakes took the context to about 155,000 tokens a call (140,908 measured at the 16:44 wake, about +13,000 a wake); the next wake would pass the 180,000 it was told to hand over at",
   "in_flight": [
-   "news/2026-11-11T13.md is closed (14:45). news/2026-11-11T14.md is open, true to the commits at 14:45 UTC (49 commits by 24 agents). At the :44 wake: FIRST `node tools/library-releases.mjs` (else the versions read low), then `node tools/library-news.mjs 2026-11-11T14` and `...T15`, close T14 in the form of T13.md (header 'The hour is closed', items since the open added under their headings, the Versions paragraph in the past from news/data/<hour>.json versions), open T15, then `--index`. Read the hour's commits with: git log --since=<hour>Z --format='%cd %s' --date=format-local:%H:%M | grep -v 'tokens measured' | cut -c1-200. A full clone with tags: git fetch --depth=3000 origin dev; git checkout -B dev origin/dev; git fetch --tags origin.",
-   "news/2026-11-11-round-two.md keeps the round only: each wake take '(open)' off the last hour's line in 5c and add the new hour; a correction of the hour in section 7 (above 'The librarian's own'; Porto Santo added by the tenth); section 9 current (nothing from Dinis since ~11:56 in BRIEF.md at 14:44; no new agent in JOBS.md or policy.json since 12:40, so library/abp.json unchanged).",
+   "news/2026-11-11T16.md is closed (17:47). news/2026-11-11T17.md is open, true to the commits at 17:47 UTC (20 commits by 16 agents). At the 18:44 wake: FIRST `node tools/library-releases.mjs` (else the versions read low), then `node tools/library-news.mjs 2026-11-11T17` and `...T18`, close T17 in the form of T16.md (header 'The hour is closed', items since the open added under their headings, the Versions paragraph in the past from library/releases/<hour>.json counts), open T18, then `--index`. Read the hour's commits with: git log --since=<hour>Z --format='%cd %s' --date=format-local:%H:%M | grep -v 'tokens measured' | cut -c1-160. A full clone with tags: git fetch --depth=3000 origin dev; git checkout -B dev origin/dev; git fetch --tags origin.",
+   "news/2026-11-11-round-two.md keeps the round only: each wake take '(open)' off the last hour's line in 5c and add the new hour; a correction of the hour in section 7 (above 'The librarian's own'); section 9 current (nothing from Dinis since ~11:56 in BRIEF.md at 17:46; no new agent in JOBS.md or policy.json since 12:40, so library/abp.json unchanged).",
    "While an hour is open a row may be reworded: at closing, read the hour's commits again. At T11's close say whether /welcome/ moved to / and whether Dinis answered the plan (card a-wind-down-plan). BRIEF.md's ~11:45 section is read by this session.",
    "tools/library-pack.mjs: state.json's warnings_lisbon.by_newest_message (IPMA's current CAP message per hazard from cap.json, and 'differs' against warnings.json) was added at 07:50. It read 'differs' empty after the open data caught up at 08:43 (not checked since 08:49: look once).",
    "Card a-librarian-8: its ask was removed from 'asks' at 07:50, so incident.board@ can close it (not checked that it did).",
@@ -94,17 +94,18 @@
   ],
   "what_runs_in_the_build": "tools/library-index.mjs and library-view.mjs are in admin/build/generators.json; library-index runs library-pack.mjs itself at its end (--no-pack leaves it out; the pack still runs alone with --out). Nothing they write is tracked.",
   "lessons_of_this_session": [
-   "A whole open article rewritten in one here-document costs less than many small replaces, and keeps it true to the hour.",
-   "Guessed times crept into a status line once (13:12 for 13:07): take every time from date -u, also inside JSON strings."
+   "status.json is indented with ONE space: json.dumps(s, indent=1, ensure_ascii=False) + newline; the key commit of the eleventh rewrote it with two and the next commit put it back.",
+   "Put every trailer (Agent, Issue, For, Co-Authored-By) in one final paragraph with no blank line, or policy-check warns.",
+   "One python script per wake (replace-and-assert for the closing, a here-document for the new hour) kept each wake to about five calls."
   ],
   "not_in_git": [
    "This session's private key: stays here and ends with the session.",
-   "The scratchpad scripts (close12/close13.mjs: a replace-and-assert edit per article; round14.mjs): their form is described above and the articles show the result."
+   "The scratchpad scripts close14/15/16.py and round15/16.py: their form is described above and the articles show the result."
   ],
-  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (10)' (trig_01Jb5nkuo9P7fTvhnywayDpi), at :44, bound to the tenth session; it fired at 13:44 and 14:44. The conductor sets the eleventh's and disables this one.",
-  "last_half_hour": "Nothing from Dinis. IPMA unchanged since 12:33 (14:35); Lisbon's red rain due to end 15:00 — the 15:00 hour's article should say whether IPMA's timeline showed it end. Thursday is still evidence only (press relaying the organisers' message); the board keeps q-thursday-confirmed open. No message to the librarian is unanswered.",
+  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (11)' (trig_016HksrCo7fF5GPAAzzDXXCY), at :44, bound to the eleventh session; it fired at 15:44, 16:45 and 17:46. The conductor sets the twelfth's and disables this one.",
+  "last_half_hour": "Nothing from Dinis. No red on the mainland by IPMA's messages since 15:55; MeteoAlarm unchanged since 16:24 (17:24). Lisbon's yellow rain and IPMA's remaining warnings run to 18:00: the 18:00 article should say what IPMA's messages show after 18:00. Thursday: Web Summit's press conference at 11:00 is evidence only (press). No message to the librarian is unanswered.",
   "board_cards": "a-behaviour-policies waits on Dinis (no answer wanted from the librarian); a-librarian-8 should be closed (see above); a-librarian-9 (wakes firing into stopped sessions) waits on the conductor; a-reporter-5 waits on the librarian for (b) and (c) in 'in_flight'; the j-librarian cards are the jobs above.",
-  "written": "2026-11-11T14:45Z by the tenth librarian session"
+  "written": "2026-11-11T17:47Z by the eleventh librarian session"
  },
  "started_from_the_pack": {
   "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",
@@ -140,7 +141,8 @@
    "news/2026-11-11T14.md closed (62 commits by 28 agents; 49 versions: 14 served, 29 tagged, 6 not confirmed as read at 15:05); news/2026-11-11T15.md opened; round-two 5c and section 7",
    "status.json written back with one-space indent (the file's own form; the key commit had rewritten it with two)",
    "the 15:44 wake: T15 brought true to the hour (43 commits by 20 agents), round 5c and section 7; no change in BRIEF.md, JOBS.md or policy.json since 15:00, so abp.json unchanged",
-   "the 16:44 wake: T15 closed (58 commits by 26 agents; 56 versions, 46 served, 10 not confirmed), T16 opened (IPMA's 15:55 batch: no red on the mainland); round 5c and section 7; no change in BRIEF.md, JOBS.md or policy.json"
+   "the 16:44 wake: T15 closed (58 commits by 26 agents; 56 versions, 46 served, 10 not confirmed), T16 opened (IPMA's 15:55 batch: no red on the mainland); round 5c and section 7; no change in BRIEF.md, JOBS.md or policy.json",
+   "the 17:44 wake: T16 closed (55 commits by 26 agents; 53 versions, 47 served, 6 not confirmed), T17 opened (the wind west; Thursday's 11:00 press conference, press; a stale Lusa report of Faro red); round 5c and section 7 (the minister's quote re-dated); no change in BRIEF.md, JOBS.md or policy.json since 14:40"
   ],
   "lesson": "this file is indented with ONE space, not two: json.dumps(s, indent=1, ensure_ascii=False)"
  }

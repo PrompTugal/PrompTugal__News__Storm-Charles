@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T16:00:00Z and 2026-11-11T17:00:00Z: the facts behind the article news/2026-11-11T16.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T16:44:12Z",
+ "updated": "2026-11-11T16:56:14Z",
  "window": {
   "from": "2026-11-11T16:00:00Z",
   "to": "2026-11-11T17:00:00Z"
@@ -13,17 +13,21 @@
  ],
  "versions": {
   "first": "v0.1.1331",
-  "last": "v0.1.1372",
-  "pushed": 40,
-  "served": 17,
+  "last": "v0.1.1383",
+  "pushed": 53,
+  "served": 47,
   "as_of": "library/releases/2026-11-11T16.json",
-  "not_confirmed": 3,
+  "not_confirmed": 6,
   "failed": 0
  },
  "by_agent": [
   {
    "agent": "incident.conductor@web-summit.dinis",
-   "commits": 8
+   "commits": 10
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 6
   },
   {
    "agent": "incident.journalist@web-summit.dinis",
@@ -35,10 +39,6 @@
   },
   {
    "agent": "incident.reporter@web-summit.dinis",
-   "commits": 3
-  },
-  {
-   "agent": "incident.stories@web-summit.dinis",
    "commits": 3
   },
   {
@@ -55,6 +55,10 @@
   },
   {
    "agent": "incident.weatherwatch@web-summit.dinis",
+   "commits": 2
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
    "commits": 2
   },
   {
@@ -104,12 +108,29 @@
   {
    "agent": "incident.accountant@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-11T1641Z.md",
   "brief/edition-9.md",
   "design/round-63.md",
+  "news/2026-11-11T16.md",
   "research/media/people/filomena-martins.md"
  ],
  "new_datasets": [
@@ -137,6 +158,22 @@
   "data/ci/runs/2026-11-11T11.json",
   "data/ci/runs/2026-11-11T15.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-datasets.json",
+  "data/graph/storm-decisions.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage-2.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
   "data/keys.json",
   "entities/body/mai.json",
   "entities/decision/cp-sintra-alcantara.json",
@@ -199,6 +236,27 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/warnings.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/api-map.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
@@ -207,7 +265,7 @@
  ],
  "new_tools": [],
  "added": {
-  "files": 20,
+  "files": 24,
   "by_area": [
    {
     "area": "evidence",
@@ -230,6 +288,14 @@
     "files": 2
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
+    "area": "research",
+    "files": 2
+   },
+   {
     "area": "accounts",
     "files": 1
    },
@@ -238,7 +304,7 @@
     "files": 1
    },
    {
-    "area": "research",
+    "area": "library",
     "files": 1
    },
    {
@@ -252,39 +318,43 @@
   ]
  },
  "changed": {
-  "files": 227,
+  "files": 384,
   "by_area": [
    {
     "area": "research",
-    "files": 59
+    "files": 87
+   },
+   {
+    "area": "sources",
+    "files": 67
+   },
+   {
+    "area": "library",
+    "files": 38
    },
    {
     "area": "entities",
     "files": 35
    },
    {
+    "area": "data",
+    "files": 28
+   },
+   {
     "area": "accounts",
-    "files": 22
+    "files": 27
+   },
+   {
+    "area": "agents",
+    "files": 25
    },
    {
     "area": "incidents/2026-11-10-storm-charles/data",
     "files": 22
    },
    {
-    "area": "agents",
-    "files": 18
-   },
-   {
     "area": "board",
     "files": 13
-   },
-   {
-    "area": "data",
-    "files": 12
-   },
-   {
-    "area": "sources",
-    "files": 8
    },
    {
     "area": "evidence",
@@ -297,6 +367,10 @@
    {
     "area": "shadow",
     "files": 5
+   },
+   {
+    "area": "news",
+    "files": 4
    },
    {
     "area": "app",
@@ -656,6 +730,83 @@
    "by": "incident.transport@web-summit.dinis",
    "what": "tokens measured",
    "files": 1
+  },
+  {
+   "commit": "2f71ece7",
+   "at": "2026-11-11T16:46:20Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 16:44 wake: 15:00 to 16:00 closed (rail, IPMA's open data catching up), 16:00 opened (no red left on the mainland; Beira Baixa landslip); round 5c and section 7",
+   "files": 47
+  },
+  {
+   "commit": "ee842ed4",
+   "at": "2026-11-11T16:46:29Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured, the 16:44 wake",
+   "files": 1
+  },
+  {
+   "commit": "49732e6c",
+   "at": "2026-11-11T16:47:54Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "timeline 16:40: the minister's quote dates from by 15:17, before IPMA's 15:55 messages (researcher)",
+   "files": 2
+  },
+  {
+   "commit": "cf995124",
+   "at": "2026-11-11T16:51:36Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "16:46 wake: 4 posts kept (3 by the widened match); rail offer taken; Thursday gathering offered",
+   "files": 12
+  },
+  {
+   "commit": "b2f21bf3",
+   "at": "2026-11-11T16:52:10Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 16:48 UTC: IPMA withdrew Lisbon's orange wind at 15:56 (green since)",
+   "files": 61
+  },
+  {
+   "commit": "b3851d88",
+   "at": "2026-11-11T16:53:03Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "16:50 wake on the 16:22:55 read: wind window over, airport to 16:00, TAF 14:36",
+   "files": 2
+  },
+  {
+   "commit": "496280b6",
+   "at": "2026-11-11T16:53:56Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "n12, n13 on rows 1640 and 1643; status, handover, measure",
+   "files": 5
+  },
+  {
+   "commit": "7a9f4b05",
+   "at": "2026-11-11T16:54:31Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "hourly 16:53: 557 nodes, 769 edges; 46 warnings in force",
+   "files": 17
+  },
+  {
+   "commit": "9bdab4a4",
+   "at": "2026-11-11T16:54:42Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "n12: the minister's words predate IPMA's cut by at least 38 minutes",
+   "files": 1
+  },
+  {
+   "commit": "12887294",
+   "at": "2026-11-11T16:55:02Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "timeline 16:40 reworded: the minister's quote predates IPMA's 15:55 cut (stories@ note)",
+   "files": 2
+  },
+  {
+   "commit": "78548e33",
+   "at": "2026-11-11T16:56:14Z",
+   "by": "incident.wikipedia@web-summit.dinis",
+   "what": "16:48 read: en Wikipedia claims a death in the Canary Islands (3 in its infobox); pt Madeira 313 incidents, railway cuts; handover updated",
+   "files": 22
   }
  ]
 }
