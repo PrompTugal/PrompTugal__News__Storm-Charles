@@ -98,14 +98,14 @@ export function event({ at, unit, altitude, phase, name, parent, runner, environ
 const fileOf = (at, part = 1, role = '') => path.join(DIR, at.slice(0, 10), at.slice(11, 13) + (role ? '.' + role : '') + (part > 1 ? `-${part}` : '') + '.json');
 export const INDEX_EVENTS = 'ptnews-storm-trace', INDEX_UNITS = 'ptnews-storm-units';   // the fringe's Elastic takes only fringe|ptnews|websummit|swarm|agents-*
 const feed = (owner) => ({ index: INDEX_EVENTS, owner, id: 'seq', time: 'at', docs: 'docs',
-  about: "The Storm Charles team's trace (WS-214), in the fringe swarm-flows schema: storm-charles.promptugal.news/data/trace/README.html" });
+  about: "The Storm Charles team's trace (WS-214), in the fringe swarm-flows schema: https://storm-charles.promptugal.news/data/trace/" });
 const roleOf = (agent) => (/^incident\.([^@]+)@/.exec(agent) || [, agent.replace(/[^a-z0-9.-]/gi, '-')])[1];
 export function writeFeed(f, docs, owner) {
   const head = { elastic_feed: feed(owner), by: owner, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), flow: docs[0]?.flow, count: docs.length };
   fs.mkdirSync(path.dirname(f), { recursive: true });
   const body = JSON.stringify(head).slice(0, -1) + ',"docs":[\n' + docs.map(d => JSON.stringify(d)).join(',\n') + '\n]}\n';
-  const tail = (x) => x.slice(x.indexOf(',"docs":['));   // same docs: leave the file (and its "updated") as it was, so a re-run commits only new hours
-  try { const old = fs.readFileSync(f, 'utf8'); if (tail(old) === tail(body) && old.startsWith(JSON.stringify(head).slice(0, 20))) return old.length; } catch {}
+  // same header (but "updated") and docs: leave the file (and its "updated") as it was, so a re-run commits only new hours
+  try { const old = fs.readFileSync(f, 'utf8'); const bare = (x) => x.replace(/"updated":"[^"]*",/, ''); if (bare(old) === bare(body)) return old.length; } catch {}
   fs.writeFileSync(f, body);
   return body.length;
 }
