@@ -1,7 +1,7 @@
 {
  "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first. `entity` is the id of the same body in entities/ (incident.entities@), where one exists. `also` lists the plain names a body is written by, for the linker.",
  "by": "incident.sources@web-summit.dinis",
- "updated": "2026-11-11T05:27:00Z",
+ "updated": "2026-11-11T05:29:00Z",
  "sources": [
   {
    "id": "meteoalarm",
@@ -136,9 +136,14 @@
    "hold": "automated reading forbidden by its terms (48.2, 52.1); on hold since 05:27 UTC 11 Nov; decision with Dinis",
    "automated_reads_record": [
     {
-     "what": "the blog's listings (websummit.com/blog/), polled every 2 minutes by tools/websummit-poll.sh (incident.dev@), with tools/websummit.mjs reading the sitemaps' address list and the text of matching posts; its robots.txt was obeyed",
-     "when": "from 10 November 2026, 21:13 UTC (the first watch) until the hold at 05:27 UTC on 11 November; how many requests in all is not recorded in this repository",
-     "where": "incidents/2026-11-10-storm-charles/data/watch/websummit.json (last full read recorded there: 2026-11-10T21:34Z)"
+     "what": "the 2-minute poll by incident.dev@ (websummit-poll.sh, websummit.mjs --quick): 244 reads in seven runs, counted from its run logs; each read fetched robots.txt and /blog/, and post pages (up to 3) only at a run's first read or when a post changed. Requests were not logged one by one: about 490 to 510, estimated from the code. robots.txt was obeyed (it disallows /api/ only); the terms were not read before the poll started",
+     "when": "first request 2026-11-10T21:18:48Z, last 2026-11-11T05:27:31Z, stopped 05:27:38Z; short gaps at 00:16, 01:42 and 02:01",
+     "where": "as reported by incident.dev@ on 11 November, 05:28 UTC; the watch file: incidents/2026-11-10-storm-charles/data/watch/websummit.json"
+    },
+    {
+     "what": "full reads and hand-run reads by incident.dev@ while building the watch: about 12 full runs (the sitemap at first; from 21:01 robots.txt, sitemap.xml, 7 blog listings and up to 3 post pages each) and about 25 single requests (the sitemap, robots.txt, /blog/, category listings, the post page, two probes of /wp-json/ that answered 404 and two of /graphql that answered a redirect). About 150 requests, estimated, not logged one by one",
+     "when": "2026-11-10, 19:43 to 21:40 UTC",
+     "where": "as reported by incident.dev@ on 11 November, 05:28 UTC"
     },
     {
      "what": "page captures (screenshot, HTML, hash) by incident.archivist@: 15 evidence records under evidence/websummit/",
@@ -154,6 +159,11 @@
      "what": "reads by incident.researcher@ and the perplexity agent for timeline rows (the event update, the schedule, session pages)",
      "when": "10 and 11 November; the times are on each row and in data/decisions/addresses.json",
      "where": "incidents/2026-11-10-storm-charles/timeline.md"
+    },
+    {
+     "what": "in all, incident.dev@'s estimate: about 640 to 660 requests to websummit.com hosts, nearly all to robots.txt and /blog/. What the repository holds of its content: the blog posts' titles, excerpts and dates, the full text of the post \"Important event update\" (the watch file), and quotes in two commit messages of 10 November. Nothing has been removed: that waits for Dinis",
+     "when": "2026-11-10T19:43Z to 2026-11-11T05:27Z",
+     "where": "incidents/2026-11-10-storm-charles/data/watch/websummit.json"
     }
    ]
   },
