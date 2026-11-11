@@ -1,0 +1,119 @@
+/* The decision brief (incident.brief@web-summit.dinis, 11 November 2026). Tokens only: design/README.md.
+   IPMA's colours only for IPMA's levels; fact, evidence and hypothesis never look alike; prints as A4 landscape. */
+.br { --gap: 14px; font-size: 15px; line-height: 1.45; }
+.br + * { margin-top: 0; }
+.br a { color: var(--link); }
+.br-mast { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--gap); border-top: 4px double var(--ink); border-bottom: 1px solid var(--line-2); padding: 10px 0 12px; }
+.br-kick { font: 700 12px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; }
+.br-mast h1 { font-family: var(--serif); font-size: 34px; line-height: 1.1; margin: 0 0 6px; }
+.br-ed { font: 13px/1.4 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); margin: 0; }
+.br-mast-r p { margin: 0 0 6px; font-size: 13px; }
+.br-notwarn { border: 2px solid var(--ink); padding: 6px 8px; border-radius: var(--radius); background: var(--surface); }
+.br-key { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--ink-2); padding: 8px 0; border-bottom: 1px solid var(--line); }
+/* the three kinds: a word always, and a shape that differs (solid, double, dashed) */
+.br-l { display: inline-block; font: 700 10.5px/1.6 var(--sans); text-transform: uppercase; letter-spacing: .05em; padding: 0 6px; border-radius: 3px; vertical-align: 1px; white-space: nowrap; }
+.br-l-fact { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+.br-l-evidence { background: var(--surface); color: var(--ink); border: 3px double var(--ink-2); padding: 0 4px; line-height: 1.2; }
+.br-l-hypothesis { background: transparent; color: var(--ink-2); border: 1px dashed var(--ink-2); font-style: italic; }
+.br-i { border-left: 4px solid var(--ink); padding-left: 10px; }
+.br-i-evidence { border-left: 4px double var(--ink-2); }
+.br-i-hypothesis { border-left: 3px dashed var(--ink-2); font-style: italic; color: var(--ink-2); }
+.br-i-hypothesis .prov, .br-i-hypothesis .br-l { font-style: normal; }
+.br-lead { padding: 10px 0 4px; }
+.br-lead p { font-family: var(--serif); font-size: 19px; line-height: 1.38; margin: 0 0 10px; font-weight: 600; }
+.br-lead p.br-i-hypothesis { font-weight: 400; }
+.br .prov { white-space: normal; font: 11.5px/1.4 var(--sans); color: var(--ink-2); font-weight: 400; font-style: normal; }
+.br .prov time, .br time { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.br-p1 { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 18px; align-items: start; margin-top: 6px; }
+.br-side .br-sec { margin-top: 6px; }
+.br-sec { margin-top: 18px; }
+.br-sec h2 { font-family: var(--serif); font-size: 20px; margin: 0 0 8px; padding-top: 6px; border-top: 2px solid var(--ink); }
+.br-src { font-size: 12px; color: var(--ink-2); margin: 6px 0 0; }
+.br-items { list-style: none; padding: 0; margin: 0; }
+.br-items li { margin: 0 0 8px; }
+/* the figure: IPMA's warnings by district and hour */
+.br-fig { margin: 0; }
+.br-gridpos { position: relative; min-width: 640px; }
+.br-grid { border-collapse: collapse; width: 100%; table-layout: fixed; font: 11px/1.2 var(--sans); }
+.br-grid caption { text-align: left; font-size: 12.5px; color: var(--ink-2); padding: 0 0 6px; caption-side: top; }
+.br-grid th, .br-grid td { padding: 0; height: 17px; }
+.br-g-lab { width: 150px; text-align: left; font-weight: 600; padding-right: 6px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.br-g-win { width: 150px; text-align: left; padding-left: 6px !important; font: 10.5px/1.2 var(--mono); color: var(--ink-2); white-space: nowrap; }
+.br-g-h { font: 10px/1 var(--mono); color: var(--ink-2); text-align: left; font-weight: 400; }
+.br-grid td { border-left: 1px solid var(--line); background: var(--surface-2); }
+.br-grid td.br-g-thu { border-left: 2px solid var(--ink-2); }
+.br-grid td.br-g-win { background: none; border: 0; }
+.br-c span { display: block; text-align: center; font: 700 9px/17px var(--sans); }
+.br-c.w-red { background: var(--red); color: white; }
+.br-c.w-orange { background: var(--orange); color: var(--on-orange, black); }
+.br-c.w-yellow { background: var(--yellow); color: black; }
+.br-g-grp th { text-align: left; font: 700 11px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); padding: 8px 0 3px; }
+.br-g-here .br-g-lab { color: var(--ink); }
+.br-now { position: absolute; top: 34px; bottom: 0; left: calc(150px + (100% - 300px) * var(--now) / 100); border-left: 2px solid var(--focus); pointer-events: none; }
+.br-now span { position: absolute; top: -14px; left: -16px; font: 700 10px/1 var(--mono); color: var(--focus); background: var(--paper); padding: 1px 2px; }
+.br-fig figcaption, .br-map figcaption { font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+/* the map: dots at each district seat */
+.br-map { margin: 8px 0 0; }
+.br-map svg { width: 100%; max-width: 330px; height: auto; display: block; }
+.br-dot circle { stroke: var(--ink); stroke-width: 1; }
+.br-dot circle.w-red { fill: var(--red); } .br-dot circle.w-orange { fill: var(--orange); } .br-dot circle.w-yellow { fill: var(--yellow); }
+.br-dot circle.none { fill: var(--surface-2); stroke: var(--line-2); }
+.br-dot.here circle { stroke-width: 2.5; }
+.br-dot text { font: 10px var(--sans); fill: var(--ink); }
+.br-dot.here text { font-weight: 700; }
+/* what to watch */
+.br-watch { list-style: none; padding: 0; margin: 0; }
+.br-watch li { display: grid; grid-template-columns: 92px 1fr; gap: 8px; margin: 0 0 6px; font-size: 13.5px; }
+.br-watch time { font: 700 12px/1.6 var(--mono); }
+/* tables */
+.br table { display: table; overflow: visible; }
+.br-t { border-collapse: collapse; width: 100%; font-size: 13px; }
+.br-t th, .br-t td { border-bottom: 1px solid var(--line); padding: 5px 6px; text-align: left; vertical-align: top; }
+.br-t thead th { background: var(--surface-2); font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; }
+.br-t .num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.br-t tbody th { font-weight: 600; }
+.br-dec .br-when { font: 12px/1.4 var(--mono); white-space: nowrap; }
+.br-dec tr.br-i-hypothesis td { font-style: italic; }
+.br-cmp { min-width: 980px; font-size: 12.5px; }
+.br-cmp td.br-hyptd { font-style: italic; color: var(--ink-2); border-left: 2px dashed var(--ink-2); }
+.br-agree { font-weight: 700; white-space: nowrap; }
+.br-agree-no { text-decoration: underline wavy var(--ink-2); }
+.br-conf { display: inline-block; font: 700 11px/1.6 var(--sans); padding: 0 6px; border-radius: 3px; letter-spacing: .04em; }
+.br-conf-high { background: var(--ink); color: var(--paper); }
+.br-conf-medium { border: 1.5px solid var(--ink); color: var(--ink); }
+.br-conf-low { border: 1.5px dotted var(--ink-2); color: var(--ink-2); }
+.br-spark { white-space: nowrap; }
+.br-spark span { display: inline-block; min-width: 18px; margin-right: 2px; text-align: center; font: 10.5px/18px var(--mono); background: color-mix(in srgb, var(--focus) calc(var(--v) * 70%), var(--surface-2)); border-radius: 2px; }
+.br code { font-size: 11px; overflow-wrap: anywhere; }
+.br-half { }
+@media (min-width: 1000px), print { .br-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; } }
+@media (max-width: 820px) {
+  .br-mast, .br-p1 { grid-template-columns: minmax(0, 1fr); }
+  .br-mast h1 { font-size: 27px; }
+  .br-lead p { font-size: 17px; }
+}
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  .br { font-size: 10.5pt; }
+  .br-break { break-before: page; }
+  .br-t tr, .br-watch li, .br-items li { break-inside: avoid; }
+  .br-lead p { font-size: 11pt; margin-bottom: 5px; }
+  .br-mast { grid-template-columns: 1.5fr 1fr; }
+  .br-p1 { grid-template-columns: 1.2fr 1fr; }
+  .br-left .br-map svg { max-width: 205px; }
+  .br-left .br-map { display: grid; grid-template-columns: 205px 1fr; gap: 10px; align-items: end; }
+  .br-key { font-size: 8pt; padding: 4px 0; }
+  .br-cmp, .br-t { table-layout: auto; width: 100% !important; }
+  .br-watch li { grid-template-columns: 80px 1fr; margin-bottom: 3px; }
+  .br-grid th, .br-grid td { height: 15px; }
+  .br-c span { line-height: 15px; }
+  .br-sec { margin-top: 10px; }
+  .br-two .br-sec { margin-top: 0; }
+  .br-mast h1 { font-size: 24pt; }
+  .br-gridpos { min-width: 0; }
+  .wx-scroll { overflow: visible !important; }
+  .br-cmp { min-width: 0; font-size: 8.5pt; }
+  .br-watch li { font-size: 8.8pt; }
+  .br-c, .br-dot circle, .br-l-fact, .br-conf-high, .br-spark span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  main.doc + main.doc article > :not(h1):not(blockquote) { display: none; }
+}
