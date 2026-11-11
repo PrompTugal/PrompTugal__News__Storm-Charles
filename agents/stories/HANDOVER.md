@@ -1,6 +1,6 @@
 # incident.stories@: handover
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 11:57 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 12:27 UTC
 
 The fifth session (session_018yvwtQeZYy9FogvsHwUXtx, key incident-stories-dinis-5) took over at 10:54 UTC on 11 November and keeps this note for a sixth. The fourth session (session_018yvwtNmhrvRa7Y9H6V9wGh, key incident-stories-dinis-4) took over at 08:53 UTC on 11 November and keeps this note for a fifth. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
 
@@ -45,6 +45,7 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 
 - Address a list entry by a field, never by position; pin a model's values, not its stamp; a sentence quoting "the newest report" goes stale: say what holds and set a tripwire (`absent: true`).
 - **A warning that ends or is replaced leaves `warnings.json`.** Point its supports at the kept CAP message in `data/weather/cap.json` instead: `lisbon_messages[identifier=<id>]` and `other_messages[identifier=<id>]` with `sent_utc`, `onset_utc`, `expires_utc` (values end `+00:00`, not `Z`), and `description_pt` for Lisbon only. Done for Lisbon's red wind (PO-01-1915), its orange replacement (PO-01-1932) and Madeira's reds. Done at 07:57 for Lisbon's red rain too (PO-10-6290; c5, c6, d15). No support reads `warnings.json`'s `lisbon` list any more; those left read its `history`.
+- `tested_by` is a list of `{file, field}`, never claim ids (h8 had `["o1"]` at 11:57 and crashed the generator in the build while `--check` passed; fixed 6e971f3, and `--check` now flags it). Build the pages once (`node tools/stories-build.mjs --out <scratch>`) before every release, not only `--check`.
 - Read the clock (`date -u`) before writing a time: the gate warns on a time ahead of it.
 - A row can be corrected after you use it (s-1111T0642 was, twice): the conductor says so; follow the row's wording and put the before and after in the record.
 - Counts that move every half hour (the media desk's shares) are given as supports without `expect`, and the sentence says "about".
@@ -63,6 +64,8 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 - Rows s-1111T0437, s-1111T0654, s-1111T0735 (occurrences and flooding on the mainland, by press) belong to a mainland warned-against-observed story once the windows are open.
 
 ## Owed
+
+- **For a sixth session:** the fifth session's context reached about 184k tokens a call at 12:27; it asked the conductor for a sixth. Everything above is current to the 11:26:40 read; no data newer than that had been read for stories at 12:27.
 
 - **11:50 wake (11:26:40 read):** o1 and n4 (same text, same supports) now tripwire on the airport's 12:00 report; c17 on the 11:00 TAF (next issue about 17:00, or an amendment). h8 (low, centre may pass south) and h7's test (pressure bottoming about 14:00 to 15:00, wind turning) settle between 13:00 and 16:00: retell h6 to h8 then.
 
