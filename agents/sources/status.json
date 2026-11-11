@@ -21,7 +21,8 @@
   "08:25 UTC round: THE FEED CHANGED, the first real diff (diffs/2026/11/11/082450.json): 11 messages IPMA sent on 11 Nov at 07:16 UTC: the red wind warnings replaced by lower levels (Lisboa, Setúbal, Beja red to orange; Leiria, Santarém, Portalegre, Évora red to yellow; Guarda, Castelo Branco, Coimbra orange to yellow) and a new yellow thunderstorm warning for Faro; the ten replaced messages left the feed. They were not in our 07:27:44 read: the feed carried them more than eleven minutes after IPMA's sent time",
   "09:25 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired); nothing else this round",
   "09:30 UTC: agents/sources/HANDOVER.md written for a fresh sources session (what exists, the hourly round, the rules learnt, the vault, what is open with Dinis)",
-  "09:42 UTC: at Dinis's yes in this session (09:38 and 09:40 UTC), the key of vault op6i3jfq was sealed to incident.conductor@'s public key and appended to the conductor's key lane (tools/lane-handover.mjs seal --via-lane): key sent; nothing printed but the vault id"
+  "09:42 UTC: at Dinis's yes in this session (09:38 and 09:40 UTC), the key of vault op6i3jfq was sealed to incident.conductor@'s public key and appended to the conductor's key lane (tools/lane-handover.mjs seal --via-lane): key sent; nothing printed but the vault id",
+  "09:43 UTC: the conductor drained its key lane: vault op6i3jfq's key sent, held by the conductor since 09:43 UTC"
  ],
  "next": [
   "the government portal's section (communiqués, the alert declaration's address); ANEPC's occurrences map mapped (what the ArcGIS application calls)",
@@ -32,7 +33,8 @@
  "asks": [
   "Dinis: Web Summit's terms (updated 27 October 2026, sections 48.2 and 52.1) forbid any 'bot, script ... scraper, artificial intelligence agent or other automated means' on its websites and apps, and forbid archiving, storing or summarising their content. This site polls websummit.com's blog every 2 minutes (tools/websummit-poll.sh), captures its pages and has 10 timeline rows linking to it. Your decision: stop the automated reads and keep only links and facts stated in our own words with the time a person or agent saw them; or continue, knowing the terms. This agent makes no further requests there. Detail: sources/websummit/ (the licence).",
   "Dinis: MeteoAlarm's archive (where Madeira's Tuesday-afternoon warnings can be looked for) needs a key: a free MeteoGate account and API key (devportal.meteogate.eu), or a token asked of MeteoAlarm as a re-distributor. Either is an account in someone's name: your decision. With a key, it goes in the environment's network secrets, never in git.",
-  "incident.entities@: node ids are in sources/sources.json (`node`: source:<id>) and sources/meteoalarm/source.json (`nodes`); tell me if you want another shape."
+  "incident.entities@: node ids are in sources/sources.json (`node`: source:<id>) and sources/meteoalarm/source.json (`nodes`); tell me if you want another shape.",
+  "incident.identity@: one line for SECURITY.md section e, from the first handover: `sgit vault show-key` prints the key only when run inside the vault folder (`cd <vault> && sgit vault show-key .`; with a path argument from elsewhere it printed nothing here); take the 'Vault key:' field into VAULT_KEY through the environment, never the command line or the screen, then `node tools/lane-handover.mjs seal --via-lane`."
  ],
  "vaults": [
   {
@@ -42,13 +44,14 @@
    "key_sent_to_conductor": true,
    "sent_utc": "2026-11-11T09:42:00Z",
    "how": "sealed, through the conductor's key lane",
-   "read_key_published": false
+   "read_key_published": false,
+   "held_by_conductor_since": "2026-11-11T09:43:00Z"
   }
  ],
  "reads": {
   "meteoalarm_portugal": 12,
   "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
  },
- "updated": "2026-11-11T09:42:00Z",
+ "updated": "2026-11-11T09:43:00Z",
  "by": "incident.sources@web-summit.dinis"
 }
