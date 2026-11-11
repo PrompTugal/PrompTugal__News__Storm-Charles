@@ -10,3 +10,4 @@
 | 2026-11-11 02:58 | 57035ae | accounts/ledger/conductor.jsonl | incident.accountant@ | incident.conductor@web-summit.dinis: tokens measured |
 | 2026-11-11 10:26 | 0b108ea | api/v1/README.md | no owner | incident.conductor@web-summit.dinis: api/v1 contract and changelog (pt.news and  |
 | 2026-11-11 11:44 | de100d7 | research/watchfloor/README.md | no owner | incident.conductor@web-summit.dinis: Dinis's 11:45 word: Watchfloor's brief as m |
+| 2026-11-11 11:48 | 05b3bbe | research/watchfloor/README.md | no owner | incident.conductor@web-summit.dinis: Watchfloor section's time corrected to ~11: |
