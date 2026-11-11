@@ -145,5 +145,25 @@ export function neighbours(root = ROOT) {
             if (base.length > 2 && /[A-Z]/.test(base)) out.push({ id: `sources/${s.id}`, type: 'source', kind: s.group, entity: s.entity || null, name: base, also: (s.also || []).filter(x => x !== base && x.length > 2 && /[A-Z]/.test(x)), hosts: s.hosts || [], href: `sources/${page}`, md: `sources/${page.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md')}`, summary: [s.kind, s.publishes && `Publishes: ${s.publishes}`, s.we_take && `We take: ${s.we_take}`, s.licence?.status && `Licence: ${s.licence.status}${s.licence.summary ? ` (${s.licence.summary})` : ''}`].filter(Boolean).join('. ') })
         }
     } catch { }
+    // incident.ipma@'s nodes (sources/ipma/nodes.json; ids built from IPMA's own codes): the warning areas (the districts) and their
+    // codes, the forecast places, the coastal places, the stations, the warning types and levels, the data sets. Joined the same way:
+    // each name links to the node's place on IPMA's pages here. Taken in that order, and a name an earlier one has is not taken again
+    // (a station named as its town is the town's: "Santa Cruz" in a row is the municipality, so a station's name is taken only where it is qualified, with a comma, a stroke or a dash: "Lisboa, Tapada da Ajuda"). Not taken: the weather types (everyday words), the body (sources/ has it), a data
+    // set named in under four words, a bare number. `same` keeps the node's names as IPMA writes them, for "The same node elsewhere".
+    try {
+        const J = readJson(path.join(root, 'sources/ipma/nodes.json')), taken = new Set(out.flatMap(x => [x.name, ...x.also].map(a => a.toLowerCase())))
+        const group = n => (n.id.match(/^ipma-(area|place|sea-place|station|warning-type|level|endpoint)-/) || [])[1]
+        const order = ['area', 'place', 'sea-place', 'warning-type', 'level', 'endpoint', 'station']
+        for (const n of (J.nodes || []).filter(n => group(n) && n.page).sort((a, b) => order.indexOf(group(a)) - order.indexOf(group(b)))) {
+            const g = group(n), base = g === 'station' ? String(n.name).replace(/\s*\(.*$/, '').trim() : String(n.name)
+            const ok = x => x && x.length > 2 && !/^\d+$/.test(x) && !/^(?:A|An|The)\s/.test(x) &&   // (a name that opens with an article would have the linker try a name at every "a" of every page)
+                (g === 'level' ? x === n.name : /[A-ZÀ-Ý]/.test(x)) && (g !== 'endpoint' || x.split(/\s+/).length >= 4) && (g !== 'station' || /[/,]| - /.test(x))
+            const names = [...new Set([base, ...(n.also || [])])].filter(x => ok(x) && !taken.has(x.toLowerCase()))
+            const same = [n.name, ...(g === 'warning-type' ? n.also || [] : [])]
+            for (const x of names) taken.add(x.toLowerCase())
+            const kind = n.kind || { place: 'forecast place', 'sea-place': 'coastal place', station: 'station', 'warning-type': 'warning type', level: 'warning level', endpoint: 'data set' }[g]
+            out.push({ id: `ipma/${n.id}`, type: 'ipma', kind, name: names[0] || '', also: names.slice(1), same, href: n.page, md: n.page.replace(/\.html(#|$)/, '.md$1'), summary: '' })
+        }
+    } catch { }
     return out
 }
