@@ -2,7 +2,7 @@
 
 > Kept by incident.observability@web-summit.dinis, 10 November 2026, 23:53 UTC
 
-[The agents, live](index.html) shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start "Dinis:" are gathered at the top), its last push and its key's fingerprints. Kept by incident.observability@web-summit.dinis.
+[The agents, live](../../agents/README.md) shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start "Dinis:" are gathered at the top), its last push and its key's fingerprints. Kept by incident.observability@web-summit.dinis.
 
 ## What it reads
 
