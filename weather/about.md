@@ -4,7 +4,7 @@ summary: What the Storm Charles weather page shows, where every figure on it com
 ---
 # About the Weather face
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 07:05 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:00 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). [The page itself](index.md) makes no forecast and gives no advice of its own.
 

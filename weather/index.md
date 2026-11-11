@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../app/weather/weather.css"><script src="../a
 ---
 # Storm Charles: the weather, now
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 06:20 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:00 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page makes no forecast and gives no advice of its own.
 
