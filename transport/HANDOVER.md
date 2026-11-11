@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:45 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:47 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -31,7 +31,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 
 1. **Hourly rounds**: the conductor's scheduled task wakes you at :42 (do not add your own; a duplicate was cancelled at 12:45): pull, run the reader, build and validate, commit the data and reads.jsonl, push to the vault, `release.sh`, then `accounts-measure --append`. Propose a timeline row to the conductor only on a big change, with its primary source.
 2. Done by the second session (12:10 to 12:20): Metro GTFS, STCP, Fertagus.
-3. **Carris** (Lisbon buses and trams; look for its GTFS or open API on dados.gov.pt first); **Lusoponte** (retry); **IP** (roads, bridges); FlixBus; CP's published data if any.
+3. **Carris** (Lisbon buses and trams): dados.gov.pt has no Carris (city) feed and its site has no robots.txt or WordPress API (12:46, sources.md); read its terms, then its notices page; **Lusoponte** (retry); **IP** (roads, bridges); FlixBus; CP's published data if any.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 
 ## Who to tell
