@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:29Z",
-  "updated": "2026-11-11T07:57:40Z",
+  "updated": "2026-11-11T08:54Z",
   "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
@@ -44,6 +44,14 @@
         "w8",
         "w9",
         "w10"
+      ]
+    },
+    {
+      "id": "lowered",
+      "title": "The wind warning, which was lowered",
+      "claims": [
+        "w15",
+        "w16"
       ]
     },
     {
@@ -511,6 +519,65 @@
           "note": "The reasons against."
         }
       ]
+    },
+    {
+      "id": "w15",
+      "text": "The wind warning that came first was later lowered. On Wednesday at 07:16:30 IPMA sent eleven messages for the mainland: red to orange, 09:00 to 21:00, for Lisboa, Setúbal and Beja; red to yellow, 12:00 to 21:00, for Leiria, Santarém, Portalegre and Évora; orange to yellow for Guarda, Castelo Branco and Coimbra; and a new yellow thunderstorm warning for Faro. For Lisbon that was 1 hour 44 minutes before the new window opened, and it opened three hours earlier than the red one would have.",
+      "label": "fact",
+      "said_by": "IPMA, CAP messages read through MeteoAlarm",
+      "at_utc": "2026-11-11T07:16:30Z",
+      "read_utc": "2026-11-11T08:24:50Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0824"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].sent_utc",
+          "expect": "2026-11-11T07:16:30+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].event_pt",
+          "expect": "Aviso Laranja Vento"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111071630.PO-01-1932].onset_utc",
+          "expect": "2026-11-11T09:00:00+00:00"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0738"
+        }
+      ]
+    },
+    {
+      "id": "w16",
+      "text": "What stayed red after that change: on the mainland a red wind warning only for Faro (09:00 to 21:00), and red rain warnings in eight districts: Lisboa, Setúbal, Beja and Faro (09:00 to 18:00), Santarém, Leiria, Castelo Branco and Portalegre (12:00 to 18:00), as IPMA's open data had it when read at 08:47. Lisbon's red rain warning, sent on Tuesday at 21:23, was not touched.",
+      "label": "fact",
+      "said_by": "IPMA, open data and CAP messages",
+      "at_utc": "2026-11-11T08:15Z",
+      "read_utc": "2026-11-11T08:47Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0824"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261110212300.PO-10-6290].sent_utc",
+          "expect": "2026-11-10T21:23:00+00:00"
+        }
+      ],
+      "qualified_by": [
+        "w15"
+      ]
     }
   ],
   "not_known": [
@@ -583,6 +650,14 @@
       "at_utc": "2026-11-11T07:57:40Z",
       "what": "The box at the top is now drawn from both of IPMA's channels, as the front page draws it: the newest message for each kind of weather, and what the open-data feed still lists where the two differ (before, it was drawn from the open data alone and showed red wind after IPMA's 07:16 message had lowered it to orange).",
       "claims_changed": []
+    },
+    {
+      "at_utc": "2026-11-11T08:54Z",
+      "what": "Added from row s-1111T0824: the whole of IPMA's 07:16:30 change across the mainland (w15) and what stayed red after it (w16). Nothing said before was changed.",
+      "claims_changed": [
+        "w15",
+        "w16"
+      ]
     }
   ]
 }

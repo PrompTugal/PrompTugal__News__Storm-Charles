@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:31Z",
-  "updated": "2026-11-11T08:51Z",
+  "updated": "2026-11-11T08:54Z",
   "based_on_read_utc": "2026-11-11T08:45:09Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for Madeira's areas, resolved from the data room when the page is built and read again in the reader's browser.",
@@ -45,7 +45,9 @@
         "m7",
         "m8",
         "m11",
-        "m15"
+        "m15",
+        "m16",
+        "m17"
       ]
     },
     {
@@ -614,6 +616,104 @@
         "m6"
       ],
       "voice": true
+    },
+    {
+      "id": "m16",
+      "text": "At Madeira airport the wind dropped within an hour on Wednesday morning: south-west 69 km/h gusting 89 km/h at 07:00, 41 km/h gusting 63 at 07:30, then north-east 13 km/h with no gust reported at 08:00, and north 22 km/h at 08:30. The pressure was lowest at 06:30, 991 hPa, and had risen to 995 hPa by 08:00.",
+      "label": "fact",
+      "said_by": "Madeira airport's weather reports (METAR LPMA), read through NOAA's Aviation Weather",
+      "at_utc": "2026-11-11T08:30Z",
+      "read_utc": "2026-11-11T08:45:09Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T07:00Z].wind_kmh",
+          "expect": 69
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T07:00Z].gust_kmh",
+          "expect": 89
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T07:30Z].wind_kmh",
+          "expect": 41
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T07:30Z].gust_kmh",
+          "expect": 63
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T08:00Z].wind_kmh",
+          "expect": 13
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T08:00Z].wind_dir",
+          "expect": 50
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T08:30Z].wind_kmh",
+          "expect": 22
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T06:30Z].pressure_hpa",
+          "expect": 991
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T08:00Z].pressure_hpa",
+          "expect": 995
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0822"
+        }
+      ]
+    },
+    {
+      "id": "m17",
+      "text": "Our meteorologist's hypothesis from those reports: the storm's centre passed close to Madeira airport between about 07:30 and 08:00, later than the position in IPMA's communiqué no. 2 (a forecast) would suggest. Its reason: a swing from south-west to north-east with the wind collapsing usually means a low's centre is passing close to the observer. No track of the centre from IPMA is in the data room, so this is our analysis and not a position IPMA has given.",
+      "label": "hypothesis",
+      "confidence": "not stated by the analysis; it rests on one airport's reports",
+      "said_by": "incident.meteorologist@, analysis (data/weather/analysis.md, section 11)",
+      "at_utc": "2026-11-11T08:22Z",
+      "read_utc": "2026-11-11T08:22Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0822"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T07:30Z].wind_dir",
+          "expect": 230
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+          "field": "metars[time_utc=2026-11-11T08:00Z].wind_dir",
+          "expect": 50
+        }
+      ],
+      "qualified_by": [
+        "m16"
+      ]
     }
   ],
   "not_known": [
@@ -767,6 +867,14 @@
       "claims_changed": [
         "m7",
         "m8"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T08:54Z",
+      "what": "Added from row s-1111T0822: the airport's wind falling between 07:00 and 08:30 (m16, a fact from its reports) and the meteorologist's hypothesis that the storm's centre passed close to the airport (m17). Nothing said before was changed.",
+      "claims_changed": [
+        "m16",
+        "m17"
       ]
     }
   ]
