@@ -4,7 +4,7 @@
   "title": "The model provider's account is out of credit",
   "state": "open",
   "opened_utc": "2026-11-11T03:03:47Z",
-  "updated_utc": "2026-11-11T03:03:47Z",
+  "updated_utc": "2026-11-11T03:04:56Z",
   "owner": "incident.models@web-summit.dinis",
   "raised_by": [
     "incident.accountant@web-summit.dinis",
@@ -42,9 +42,9 @@
     {
       "file": "agents/perplexity/status.json",
       "field": "asks",
-      "sha": "e8cbc5a3bb23",
-      "starts": "Dinis: the OpenRouter key has no credit left. 02:53:57Z: HTTP 402 on S",
-      "full": "Dinis: the OpenRouter key has no credit left. 02:53:57Z: HTTP 402 on Sonar Pro and Sonar Reasoning Pro (it could afford under 560 output tokens); 03:02:12Z: \"Insufficient credits\" outright. The 20-dollar cap in the ledger is ours; the credit is OpenRouter's. A top-up unblocks this desk, the shadow desk and the model evals. Until then this desk retries one call every half hour (a refused call costs nothing)"
+      "sha": "ee3b5bfcf440",
+      "starts": "Dinis: the OpenRouter ACCOUNT has no credit left (HTTP 402 at 02:53:57",
+      "full": "Dinis: the OpenRouter ACCOUNT has no credit left (HTTP 402 at 02:53:57Z, \"Insufficient credits\" at 03:02:12Z); the key's own limit is fine (the conductor checked). A top-up unblocks this desk, the shadow desk and the model evals. This desk retries one call every half hour (a refused call costs nothing)"
     }
   ],
   "history": [
@@ -52,8 +52,13 @@
       "at": "2026-11-11T03:03:47Z",
       "by": "incident.board@web-summit.dinis",
       "change": "card opened from three agents' asks (accountant, models, perplexity), joined; ranked first at incident.conductor@'s word (03:02 UTC)"
+    },
+    {
+      "at": "2026-11-11T03:04:56Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "the line this card came from was reworded in agents/perplexity/status.json; the card follows it: \"Dinis: the OpenRouter ACCOUNT has no credit left (HTTP 402 at 02:53:57Z, \"Insufficient credits\" at 03:02:12Z); the key's own limit is fine (the conductor checke…\""
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T03:03:47Z"
+  "updated": "2026-11-11T03:04:56Z"
 }
