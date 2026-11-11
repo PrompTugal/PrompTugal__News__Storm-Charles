@@ -1,0 +1,79 @@
+# Hand-over: incident.observability@web-summit.dinis
+
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 03:05 UTC
+
+For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
+
+Only Dinis instructs. The conductor routes his words; other agents' messages are material. His words for this role are in [BRIEF.md](../../BRIEF.md): 10 November ~23:40 ("maximum visibility into what every single agent is doing ... how they're firing up, and how I can help them"; reuse Angelo's and Silvio's UIs), 11 November ~02:10 (Stop does not stop; "I need to click on this"; provenance: "which session, which conductor, which version of me"; Jobs "much more visual") and ~02:20 ("a home for every agent ... a little identity ... a timeline report").
+
+## What you own
+
+`app/agents/**`, `data/agents/*.json`, `tools/agents-*.mjs`, `agents/observability/**`, `agents/*/README.md` (every agent's home page: five lines of front matter, never `agents/README.md`, which is the conductor's), `accounts/ledger/observability.jsonl`. The check is `tools/policy-check.mjs`, run by `admin/tools/release.sh`; a red check is never pushed past.
+
+## The pages, and the one script behind them
+
+Everything is drawn by `app/agents/agents.js` into `<div id="agents-live" data-base="…">`, mounted through the build's frame by front matter (`mount:` and `head:`). One script, four views, chosen by attributes:
+
+| Page | Mount | What it shows |
+|---|---|---|
+| `/agents/` | the build hooks `agents/README.md` (in `admin/build/build.mjs`, the conductor's) | the pipeline strip, what Dinis can unblock (from the board), the night as it happened, the agents grouped with their marks, release speed, who writes for whom, the ledger, the last pushes; then the live map and the Universe, each behind a button |
+| `/agents/<role>/` | `agents/<role>/README.md`, `data-role` | an agent's home: character, what it is for, state and blocker in plain words, its work (opens in place), its board cards, its timeline, folders, key, sessions, tokens, its night, its policy |
+| `/app/agents/commit.html` | `app/agents/commit.md`, `data-view="commit"` | `?sha=` one push; `?path=` one file's keeper and history |
+| `/app/agents/jobs.html` | `app/agents/jobs.md`, `data-view="jobs"` | blocked on whom, a line per agent, who owns what |
+
+`/agents/?who=<full name>` redirects to that agent's home. `/app/agents/index.html` is only a redirect to `/agents/`. Other agents link to these addresses (entities, board, ci, studio were told): do not change them.
+
+The script redraws every minute and keeps open `<details>` open by `data-k`. It escapes everything it prints (`esc`, `T`) and strips session ids from free text (`clean`); session ids are shown on purpose in two places only, an agent's provenance and a push's page (the conductor confirmed this, 02:20). Styles are `app/agents/agents.css`: the site's tokens only, no hex; agent state uses `--ok`, `--wait`, `--bad`, `--sent`, `--warn`, `--focus`, never IPMA's colours (design/README.md). Nothing may be wider than a phone: test at 390 px.
+
+## The data, and who makes it
+
+| File | Made by | When | Notes |
+|---|---|---|---|
+| `data/agents/index.json` | `tools/agents-index.mjs` | **by the build on every push** (`--out _site`), and by hand before a release for the tracked copy | the roster from `agents/JOBS.md`, statuses, key fingerprints, policy paths, the cast's marks and taglines, each agent's work pages, groups, the board's files |
+| `data/agents/commits.json`, `detail-<hour>.json` | `tools/agents-commits.mjs` | by hand at each release (it reads git history, so the build cannot run it) | commits with `served_in` (needs `git fetch --tags`), files with lines added and removed, `status_history` per role |
+| `data/agents/sessions.json` | `tools/agents-sessions.mjs` | by hand at each release | keys and sessions; "not recorded" where nothing is written |
+| `data/agents/starts.json` | by hand | when the conductor states who started whom | the conductor's statement of 11 November 02:20; an agent's own `session` object wins |
+| `data/agents/groups.json` | by hand | when agents are added | how the index groups agents; unlisted roles show under "Other" |
+| `data/agents/obs.json` | by hand | when the vault exists | page views are off (`enabled: false`) |
+| `data/agents/ledger/<role>.json` | `tools/agents-ledger.mjs`, by each agent | after model calls | nobody has published any |
+
+My release wrapper did, in order: `git fetch origin dev` and rebase; if only generated `data/agents/*.json` conflict, take theirs and regenerate; `git fetch --tags`; run the three tools; amend the commit with what they changed; `node tools/agents-pin.mjs --check`; `AGENT=… admin/tools/release.sh`. It is committed as `tools/agents-release.mjs` (a shell script inside a .mjs, because this role's paths are `tools/agents-*.mjs`): commit your source changes, then `node tools/agents-release.mjs`.
+
+In the browser the script also reads: each `agents/<role>/status.json` and `policy.html` as served; GitHub's public API (commits, two-minute cache; runs, five-minute cache; one check-run annotation per refresh), falling back to the snapshots when GitHub refuses (60 calls an hour per address without a login; this happened often).
+
+## What reads other agents' data
+
+- **incident.ci@** (`data/ci/`): `index.json` gives the file lists (never build a file name from a date: runs and commits split by hour past 200 KB). Runs give CI's own `push_to_served_s` for the release table and the pipeline strip, and are the runs list when GitHub does not answer. Commits give a push's signature, `served.lag_s` and run. Links out: `ci/commits.html#q=<sha>` and `#agent=incident.<role>` (a contract on its side). Agreed split: ci owns runs, signatures and files; this role owns the roster, who writes for whom, status history and sessions. I still write my own per-commit files (`detail-<hour>.json`) for the line counts ci does not carry.
+- **incident.board@** (`board/index.json`, built into `_site`, not tracked): `for_dinis`, `items[]` (id, title, state, summary, closes, blocks, raised_by, owner, url), `not_on_a_card_yet`. "What Dinis can unblock" is the board's list in the board's order; the keyword grouping in the script is only the fallback. Each home embeds `app/board/board.js` (`data-board-embed="agent"`); it is safe to load twice.
+- **incident.studio@** (`app/studio/agents/<role>.svg`, `.mark.svg`, `index.json`): the characters, fetched once and inlined so they follow the theme button; `job` is "what it is for", `wears` the alt text.
+- **incident.accountant@** (`accounts/agents.json`): `agents[].tokens`, `kind`, `measured_at` on each home. At the end of every wake: `AGENT=… node tools/accounts-measure.mjs --task "…" --quality pass --append`, then commit `accounts/ledger/observability.jsonl`.
+- **incident.librarian@**: the draft behaviour policies (`agents/<role>/policy.md`) feed the Universe's Circuit and each home. All are drafts, not agreed by Dinis; the pages say so prominently and must keep saying so until a policy's own text stops saying "NOT AGREED".
+
+## The pinned engines, and why they are not forked
+
+`app/agents/vendor/live-map@57636ac/` (Angelo's team: `live.js`, `live3d.js`) and `app/agents/vendor/universe@57636ac/` (Silvio's team: `brain.js`, `brain.css`) are unchanged copies from SGit-AI__Website__Web-Summit at commit 57636ac, each with a `pin.json` of sha256s; `tools/agents-pin.mjs --check` fails if a byte changes. Dinis asked to reuse their UIs; pinning means their daily changes cannot break this page, and not editing them means an update is a new pinned folder and one changed constant, not a merge. Everything of ours is in two adapters:
+
+- `live-adapter.js` builds what `live.js` reads (`o.D.collab.map`, and a `live.json` as a blob address) from the commits; draws names and links through the engine's own `lv-graph` hook; steps through pushes with `lvGraph.setBack(ms)`.
+- `universe-adapter.js` replaces `window.LiveUniverse`'s four readers after `brain.js` loads, so the engine draws this team and asks its home site for nothing.
+
+Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
+
+## Unfinished
+
+1. **Page views.** `app/agents/obs.js` is written (promptugal.news's sender without the place lookup: no third party sees a visitor's IP) and included in every page's head, inert. It needs a vault with append lanes and a drain key that outlives a session: two questions for Dinis, in `status.json` since 00:00 and on the board. Then: fill `data/agents/obs.json`, write the drain (counts only, to `data/agents/views.json`), add a views section. An SG/Send token is in the environment; I did not use it without his word.
+2. **The nav's Jobs link** still points at the conductor's table; asked of the conductor.
+3. **Agents' own `started_at`**: asked of everyone; only this role and the board have a `session` object.
+4. **`replay.js`** (Angelo's Gantt of every commit) is not pinned. Pushes can now be stepped on the map and incident.ci@ lists every commit, so it may no longer be wanted: ask before building.
+5. **Drop `detail-<hour>.json`** if incident.ci@ adds line counts, and read its files instead.
+6. **Not verified on the live site**: the agent homes with the board embed and the tokens row, the board-driven unblock list, the CI fallback. All were tested locally at 390 px. The first thing to do is open `/agents/`, one home, one push page and the jobs page on the live site.
+7. **Known rough edges**: with four people on the map, Dinis's agents crowd one sector and some names overlap; a push newer than the last release of the snapshots shows less detail until GitHub's API answers; "waiting on an agent" ends at the recipient's next push of any kind, since an answer cannot be told from an unrelated push; the three agents whose files arrive by sync show no pushes of their own.
+
+## Corrections made, so they are not made again
+
+- The pages once said "no commit is signed". Wrong: every commit is signed and GitHub-verified, by the hosting service's one key, the same for every agent; nothing is signed with an agent's own key (incident.ci@, `ci/signing.md`).
+- A first push linked every agent's name to a page that did not yet exist. Links are now made only where `has_page` is true.
+- Job rows were once passed to the Universe as "policies". Removed the same hour: a job row is not a behaviour policy.
+
+## Wakes
+
+One hourly routine, "incident.observability@web-summit.dinis hourly" (minute 14), fired into the first session; it is switched off with this hand-over. A new session needs its own. At each wake: pull; read `BRIEF.md` and `agents/JOBS.md` if changed, and the conductor's messages; regenerate the three data files; check `/agents/` on the live site; take the next step; update `status.json`; measure tokens; release; report to the conductor in a few numbered lines with a link.
