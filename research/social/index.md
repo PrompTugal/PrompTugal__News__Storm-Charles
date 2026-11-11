@@ -6,17 +6,17 @@ head: <link rel="stylesheet" href="../../app/social/social.css"><script src="../
 ---
 # Social platforms and Storm Charles: Bluesky first
 
-> Kept by incident.social@web-summit.dinis, 11 November 2026, 05:37 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~02:10 UTC): "on Bluesky, this is really cool, I like that we can capture that and actually get data. So let's create a whole Bluesky bit". Last read of the accounts: 11 Nov, 05:35 UTC.
+> Kept by incident.social@web-summit.dinis, 11 November 2026, 05:40 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~02:10 UTC): "on Bluesky, this is really cool, I like that we can capture that and actually get data. So let's create a whole Bluesky bit". Last read of the accounts: 11 Nov, 05:40 UTC.
 
 **Everything here is evidence**: an account's own words, read at the address given, at the time given. A post by an outlet or a volunteers' association about a warning is a report or a relay, never the warning: the fact is on the body's own channel. Where we compare two times it is our analysis and says so. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
-## The read so far (11 Nov, 05:35 UTC)
+## The read so far (11 Nov, 05:40 UTC)
 
 - **The bodies that decide are not here.** We found no Bluesky account for IPMA, ANEPC, the government, the Câmara de Lisboa, Madeira's regional government, CP or TAP ([accounts.json](accounts.json), `not_on_bluesky`: where we looked). Their own sites are their channels.
-- **Web Summit has an account and did not use it for the decision.** Its last post is 10 Nov, 17:36 UTC: "That's a wrap on Day 1 of #WebSummit 2026 🇵🇹". Its page saying Day 2 will not take place went up at 19:09 UTC on 10 November ([`s-1110T1909`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909)); at our read (11 Nov, 05:33 UTC) the account had posted nothing since: 14 posts since 8 November, none on the weather, Wednesday or Thursday.
+- **Web Summit has an account and did not use it for the decision.** Its last post is 10 Nov, 17:36 UTC: "That's a wrap on Day 1 of #WebSummit 2026 🇵🇹". Its page saying Day 2 will not take place went up at 19:09 UTC on 10 November ([`s-1110T1909`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909)); at our read (11 Nov, 05:38 UTC) the account had posted nothing since: 14 posts since 8 November, none on the weather, Wednesday or Thursday.
 - **Who carried the warnings here:** VOST Portugal (a volunteers' association, not an authority) relayed IPMA's red wind warning for Lisbon 37 minutes after IPMA sent it, the red rain warning 15 minutes after, and the move of the red rain to 09:00 57 minutes after: the one change the press we read had not reported by 00:15 ([`s-1111T0015`](../../incidents/2026-11-10-storm-charles/timeline.html#s-1111T0015)). Lusa, the news agency, posted Web Summit's cancellation 53 minutes after the organisers' page.
 - **Foreign weather services spoke of it here before Portugal's could:** Spain's AEMET posted that the storm was named Charles at 10:20 UTC on 9 November (2 h 57 min before the time our timeline gives for IPMA's communiqué; offered to the conductor to check), and its posts are the most reposted of all we keep. The UK's Met Office posted on 10 November at 13:00.
-- **Kept:** 172 posts from 18 listed accounts since 8 November, 158 about the storm. **Counted, not kept:** "depressão Charles" 113; "tempestade Charles" 59; "Storm Charles" 76; "borrasca Charles" 160 public posts.
+- **Kept:** 179 posts from 18 listed accounts since 8 November, 165 about the storm. **Counted, not kept:** "depressão Charles" 113; "tempestade Charles" 59; "Storm Charles" 76; "borrasca Charles" 160 public posts.
 
 ## The key moments: who posted them here, and how long after
 
@@ -111,8 +111,8 @@ Each with the reason it counts as official or public-role, and who decided: [acc
 | [`eumetsat.int`](accounts/eumetsat.int.html) | EUMETSAT, Europe's weather-satellite agency | intergovernmental body | no | 3 | 0 | 10 Nov, 10:01 |
 | [`vost.pt`](accounts/vost.pt.html) | VOST Portugal, a volunteers' association for emergencies (not an authority) | volunteer organisation | no | 109 | 97 | 10 Nov, 23:09 |
 | [`metrolisboa.pt`](accounts/metrolisboa.pt.html) | Metropolitano de Lisboa (the handle is the operator's domain; the profile is empty) | transport operator | no | 0 | 0 | 2026-03-31 13:25 |
-| [`lusa.pt`](accounts/lusa.pt.html) | Agência Lusa, Portugal's news agency | press (wire) | no | 237 | 40 | 11 Nov, 05:28 |
-| [`publico.pt`](accounts/publico.pt.html) | Público | press | yes | 140 | 9 | 10 Nov, 23:35 |
+| [`lusa.pt`](accounts/lusa.pt.html) | Agência Lusa, Portugal's news agency | press (wire) | no | 239 | 46 | 11 Nov, 05:37 |
+| [`publico.pt`](accounts/publico.pt.html) | Público | press | yes | 140 | 10 | 10 Nov, 23:35 |
 | [`rr.pt`](accounts/rr.pt.html) | Renascença | press | no | 0 | 0 | 2026-05-03 17:01 |
 | [`lxparapessoas.pt`](accounts/lxparapessoas.pt.html) | LPP, Lisboa Para Pessoas (a Lisbon newspaper) | press (local) | no | 1 | 1 | 10 Nov, 16:22 |
 | [`euronews.com`](accounts/euronews.com.html) | Euronews | press | yes | 182 | 4 | 11 Nov, 04:18 |
@@ -145,13 +145,13 @@ Left out, for the conductor to decide (nothing of theirs is stored): `camaralisb
 
 **What a card shows:** who (and why the account counts), the time posted, the text, the timeline row it bears on and how, when we read it, the counters at that read, the content id, our record, and last the address on Bluesky, marked as leaving this site. Screenshots of the official posts are incident.archivist@'s (asked: the list is in [capture-asks.json](capture-asks.json)); when captured, the card will show our capture first.
 
-**The files:** [accounts.json](accounts.json) (the list, the reasons, where we looked and found nothing, who was left out), [posts.json](posts.json) (the index; [posts/](posts.json) holds one file per day: [2026-11-08](posts/2026-11-08.json), [2026-11-09](posts/2026-11-09.json), [2026-11-10](posts/2026-11-10.json), [2026-11-11](posts/2026-11-11.json)), [links.json](links.json) (post to timeline row), [offers.json](offers.json) (13 things the timeline lacks, offered to the conductor), [conversation.json](conversation.json) (the counts). The reader: [tools/social-read.mjs](../../tools/social-read.mjs); this page: [tools/social-page.mjs](../../tools/social-page.mjs).
+**The files:** [accounts.json](accounts.json) (the list, the reasons, where we looked and found nothing, who was left out), [posts.json](posts.json) (the index; [posts/](posts.json) holds one file per day: [2026-11-08](posts/2026-11-08.json), [2026-11-09](posts/2026-11-09.json), [2026-11-10](posts/2026-11-10.json), [2026-11-11](posts/2026-11-11.json)), [links.json](links.json) (post to timeline row), [offers.json](offers.json) (15 things the timeline lacks, offered to the conductor), [conversation.json](conversation.json) (the counts). The reader: [tools/social-read.mjs](../../tools/social-read.mjs); this page: [tools/social-page.mjs](../../tools/social-page.mjs).
 
 ## Limits
 
 - Bluesky is small in Portugal: silence here says where a body publishes, not that it was silent.
 - A post's time is the one it gives for itself; Bluesky's own indexing time is kept beside it (`indexed_utc`).
-- "About the storm" is a match on words. It can miss a post and keep a stray one.
+- "About the storm" is a match on words. It can miss a post and keep a stray one. **Correction, 11 November 05:45 UTC:** until then it missed posts that count occurrences without naming the weather (two by Lusa that night, four earlier); the words were widened and those posts are now kept.
 - Reuters' feed is longer than the six pages we read: its count since 8 November is a floor.
 
 A wrong account, a wrong time, an account that should be on the list or off it: [contribute](../../contribute.md).

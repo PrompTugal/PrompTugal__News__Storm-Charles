@@ -145,7 +145,7 @@ Left out, for the conductor to decide (nothing of theirs is stored): ${acc.left_
 
 - Bluesky is small in Portugal: silence here says where a body publishes, not that it was silent.
 - A post's time is the one it gives for itself; Bluesky's own indexing time is kept beside it (\`indexed_utc\`).
-- "About the storm" is a match on words. It can miss a post and keep a stray one.
+- "About the storm" is a match on words. It can miss a post and keep a stray one. **Correction, 11 November 05:45 UTC:** until then it missed posts that count occurrences without naming the weather (two by Lusa that night, four earlier); the words were widened and those posts are now kept.
 - Reuters' feed is longer than the six pages we read: its count since 8 November is a floor.
 
 A wrong account, a wrong time, an account that should be on the list or off it: [contribute](../../contribute.md).
