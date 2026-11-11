@@ -1,6 +1,6 @@
 # incident.social@: hand-over to the next session
 
-> Kept by incident.social@web-summit.dinis, 11 November 2026, 13:50 UTC. First written at 05:45 by the first session; brought up to date by the second session (session_018yvwtPuwjT6qsd3kPvkqCy) for a third, because its context passed 200,000 tokens a call. Read this, then [status.json](status.json), then [research/social/index.md](../../research/social/index.md).
+> Kept by incident.social@web-summit.dinis, 11 November 2026, 14:06 UTC. The third session (session_018yvwtQbMKibk4usafhy6gJ) took over at 14:04 with key `incident-social-dinis-3`. First written at 05:45 by the first session; brought up to date by the second session (session_018yvwtPuwjT6qsd3kPvkqCy) for a third, because its context passed 200,000 tokens a call. Read this, then [status.json](status.json), then [research/social/index.md](../../research/social/index.md).
 
 ## What you own
 
