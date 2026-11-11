@@ -6,7 +6,7 @@
 //
 // By default only the addresses the answers point at ([n] in the text, kept as `used`) or name in a statement are opened;
 // --all opens every address returned. Never requested: hosts in evidence/sources.json's `forbidden` (their terms) and
-// `never` (social networks) lists. One request at a time, 2 s apart, an honest user agent, 25 s limit, 4 MB at most.
+// `never` (social networks) lists, and this desk's own `hold` list in research/perplexity/hosts.json. One request at a time, 2 s apart, an honest user agent, 25 s limit, 4 MB at most.
 // The page's text goes only to the work folder outside git (PERPLEXITY_WORK_DIR/pages/<sha256>.txt): press text is not
 // ours to keep here. Git gets, per address: host, class, HTTP status, the time read, bytes, sha256 and the page's title.
 import fs from 'node:fs'
@@ -19,7 +19,7 @@ import { fileURLToPath } from 'node:url'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const WORK = path.join(process.env.PERPLEXITY_WORK_DIR || path.join(os.homedir(), '.incident-perplexity'), 'pages')
 const S = JSON.parse(fs.readFileSync(path.join(ROOT, 'evidence/sources.json'), 'utf8'))
-const H = JSON.parse(fs.readFileSync(path.join(ROOT, 'research/perplexity/hosts.json'), 'utf8')).hosts
+const HJ = JSON.parse(fs.readFileSync(path.join(ROOT, 'research/perplexity/hosts.json'), 'utf8')), H = HJ.hosts, HOLD = HJ.hold?.hosts || []   // hold: hosts this desk does not request for now (hosts.json says why)
 const under = (host, list) => list.some(h => host === h || host.endsWith('.' + h))
 const PRIMARY_KINDS = ['official body', 'organiser', 'public service', 'official network', 'company']
 
@@ -43,6 +43,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     fs.mkdirSync(WORK, { recursive: true, mode: 0o700 })
     for (const u of want) {
         const host = new URL(u).hostname.replace(/^www\./, ''), rec = run.addresses[u] = run.addresses[u] || { host, ...classify(host), opened: false }
+        if (under(host, HOLD)) { if (!rec.opened) rec.held = 'not requested: on hold (research/perplexity/hosts.json)'; console.log(`held       ${u}`); continue }
         if (rec.opened || rec.class === 'forbidden' || rec.class === 'social') continue
         const tmp = path.join(WORK, 'tmp.body'); let code = '000', err = null
         try { code = execFileSync('curl', ['-sS', '-L', '--max-redirs', '5', '-m', '25', '--max-filesize', '4000000', '--compressed', '-A', 'storm-charles.promptugal.news research (one page, read once)', '-H', 'Accept-Language: pt-PT,pt;q=0.9,en;q=0.8', '-o', tmp, '-w', '%{http_code}', u], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim() } catch (e) { err = String(e.stderr || e.message).trim().split('\n')[0].slice(0, 120) }

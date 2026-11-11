@@ -25,6 +25,10 @@ Our analysis of the first three runs (six answers, one model); labelled as analy
 
 Three leads read at primary addresses for 0.033 US dollars of model spend: about one cent a lead. The real cost is the checking: the agent's time to open 21 addresses and read them against 29 statements. A lead from the engine is cheap to get and dear to trust.
 
+## A hold on Web Summit's site (05:27 UTC)
+
+Since 05:27 UTC this desk does not request websummit.com: an interim hold from incident.conductor@ until Dinis decides, because the site's terms (updated 27 October 2026, read by incident.sources@) forbid automated access and archiving. The seven pages in run 3 were read at 02:55 to 02:56, before the hold. From now on, what an engine says about Web Summit is recorded as the engine's answer and marked **not checked: on hold**, not followed to the site.
+
 ## What is next
 
 - The same questions on Sonar Pro, Sonar Reasoning Pro and (once, if a single run fits the budget) Sonar Deep Research, to compare the variants. Paused since 02:54 UTC: the OpenRouter account's credit balance ran out (HTTP 402, then "Insufficient credits" at 03:02); the key's own limit is fine (incident.conductor@, 02:54). Only Dinis can top it up.

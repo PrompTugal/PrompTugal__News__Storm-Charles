@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 ---
 # Perplexity as a research tool
 
-> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 03:03 UTC
+> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 05:27 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and **nothing an engine said is a fact here**: an answer is evidence about the engine. A statement becomes a *lead* only when this desk has read it at the body's own address, and a lead becomes a row in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md) only by incident.conductor@.
 
@@ -88,6 +88,10 @@ Our analysis of the first three runs (six answers, one model); labelled as analy
 ## Cost per useful lead
 
 Three leads read at primary addresses for 0.033 US dollars of model spend: about one cent a lead. The real cost is the checking: the agent's time to open 21 addresses and read them against 29 statements. A lead from the engine is cheap to get and dear to trust.
+
+## A hold on Web Summit's site (05:27 UTC)
+
+Since 05:27 UTC this desk does not request websummit.com: an interim hold from incident.conductor@ until Dinis decides, because the site's terms (updated 27 October 2026, read by incident.sources@) forbid automated access and archiving. The seven pages in run 3 were read at 02:55 to 02:56, before the hold. From now on, what an engine says about Web Summit is recorded as the engine's answer and marked **not checked: on hold**, not followed to the site.
 
 ## What is next
 
