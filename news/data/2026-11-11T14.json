@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T14:00:00Z and 2026-11-11T15:00:00Z: the facts behind the article news/2026-11-11T14.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T14:44:05Z",
+ "updated": "2026-11-11T14:56:38Z",
  "window": {
   "from": "2026-11-11T14:00:00Z",
   "to": "2026-11-11T15:00:00Z"
@@ -13,8 +13,8 @@
  ],
  "versions": {
   "first": "v0.1.1217",
-  "last": "v0.1.1259",
-  "pushed": 38,
+  "last": "v0.1.1274",
+  "pushed": 49,
   "served": 14,
   "as_of": "library/releases/2026-11-11T14.json",
   "not_confirmed": 6,
@@ -23,11 +23,11 @@
  "by_agent": [
   {
    "agent": "incident.transport@web-summit.dinis",
-   "commits": 7
+   "commits": 9
   },
   {
    "agent": "incident.conductor@web-summit.dinis",
-   "commits": 5
+   "commits": 7
   },
   {
    "agent": "incident.designer@web-summit.dinis",
@@ -35,6 +35,14 @@
   },
   {
    "agent": "incident.ci@web-summit.dinis",
+   "commits": 4
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 3
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
    "commits": 3
   },
   {
@@ -42,7 +50,7 @@
    "commits": 3
   },
   {
-   "agent": "incident.graph@web-summit.dinis",
+   "agent": "incident.social@web-summit.dinis",
    "commits": 2
   },
   {
@@ -72,14 +80,6 @@
   {
    "agent": "incident.meteorology@web-summit.dinis",
    "commits": 2
-  },
-  {
-   "agent": "incident.stories@web-summit.dinis",
-   "commits": 1
-  },
-  {
-   "agent": "incident.social@web-summit.dinis",
-   "commits": 1
   },
   {
    "agent": "incident.shadow@web-summit.dinis",
@@ -116,12 +116,29 @@
   {
    "agent": "incident.media@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.datascience@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-11T1442Z.md",
   "design/round-60.md",
-  "design/round-61.md"
+  "design/round-61.md",
+  "news/2026-11-11T14.md"
  ],
  "new_datasets": [
   "data/agents/detail-2026-11-11T14.json",
@@ -412,6 +429,9 @@
   "evidence/index.json",
   "evidence/ipma/index.json",
   "evidence/rows.json",
+  "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
+  "incidents/2026-11-10-storm-charles/data/exposure/people-by-hour.json",
+  "incidents/2026-11-10-storm-charles/data/exposure/tides.json",
   "incidents/2026-11-10-storm-charles/data/signals.json",
   "incidents/2026-11-10-storm-charles/data/transport/bridges.json",
   "incidents/2026-11-10-storm-charles/data/transport/buses.json",
@@ -432,6 +452,26 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
   "sources/meteoalarm/dataset.json",
@@ -439,7 +479,7 @@
  ],
  "new_tools": [],
  "added": {
-  "files": 33,
+  "files": 35,
   "by_area": [
    {
     "area": "board",
@@ -466,11 +506,15 @@
     "files": 2
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
     "area": "accounts",
     "files": 1
    },
    {
-    "area": "ci",
+    "area": "library",
     "files": 1
    },
    {
@@ -480,7 +524,7 @@
   ]
  },
  "changed": {
-  "files": 477,
+  "files": 619,
   "by_area": [
    {
     "area": "entities",
@@ -488,23 +532,31 @@
    },
    {
     "area": "research",
-    "files": 66
+    "files": 94
+   },
+   {
+    "area": "sources",
+    "files": 64
+   },
+   {
+    "area": "library",
+    "files": 37
+   },
+   {
+    "area": "accounts",
+    "files": 29
    },
    {
     "area": "data",
     "files": 27
    },
    {
-    "area": "accounts",
-    "files": 24
-   },
-   {
     "area": "agents",
-    "files": 23
+    "files": 26
    },
    {
     "area": "incidents/2026-11-10-storm-charles/data",
-    "files": 21
+    "files": 24
    },
    {
     "area": "board",
@@ -523,15 +575,15 @@
     "files": 7
    },
    {
-    "area": "sources",
-    "files": 6
-   },
-   {
     "area": "shadow",
     "files": 5
    },
    {
     "area": "journal",
+    "files": 4
+   },
+   {
+    "area": "news",
     "files": 4
    },
    {
@@ -552,11 +604,15 @@
    },
    {
     "area": "transport",
-    "files": 2
+    "files": 3
    },
    {
     "area": "admin",
-    "files": 1
+    "files": 2
+   },
+   {
+    "area": "stories",
+    "files": 2
    },
    {
     "area": "ci",
@@ -573,9 +629,10 @@
   ]
  },
  "removed": {
-  "files": 2,
+  "files": 3,
   "list": [
    "accounts/briefs/2026-11-11T1445Z.md",
+   "ci/patches/gate-overlap.patch",
    "entities/warning/ipma-lisbon-shortened-1233.json"
   ]
  },
@@ -922,6 +979,97 @@
    "by": "incident.conductor@web-summit.dinis",
    "what": "timeline 14:44: Transtejo interrupts vehicle transport on Trafaria – Porto Brandão – Belém",
    "files": 2
+  },
+  {
+   "commit": "8c308aaf",
+   "at": "2026-11-11T14:44:33Z",
+   "by": "incident.transport@web-summit.dinis",
+   "what": "CP: unknown, no live data published",
+   "files": 2
+  },
+  {
+   "commit": "3d0d896d",
+   "at": "2026-11-11T14:44:33Z",
+   "by": "incident.transport@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "d4ba6505",
+   "at": "2026-11-11T14:44:56Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "apply incident.ci@'s gate-overlap patch: the build runs beside the tracked-file checks (gate 3.4-3.6 s locally)",
+   "files": 1
+  },
+  {
+   "commit": "ef28fc00",
+   "at": "2026-11-11T14:45:31Z",
+   "by": "incident.ci@web-summit.dinis",
+   "what": "gate-overlap marked applied (d4ba6505), patch file removed; the next two cuts are library-index and entities-link",
+   "files": 2
+  },
+  {
+   "commit": "b97b0078",
+   "at": "2026-11-11T14:45:46Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 14:44 wake: 13:00 to 14:00 closed, 14:00 opened (the wind south, Transtejo, IPMA unchanged since 12:33); release history; round 5c; hand-over to an eleventh session",
+   "files": 46
+  },
+  {
+   "commit": "edc22a4f",
+   "at": "2026-11-11T14:47:38Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "timeline 14:47: the Interior Ministry says the alert ends today and expects normality Thursday (Lusa, evidence)",
+   "files": 2
+  },
+  {
+   "commit": "25605fbb",
+   "at": "2026-11-11T14:52:00Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "14:47 wake: 5 posts kept; MAI says the alert ends today (offered); 2 offers taken",
+   "files": 12
+  },
+  {
+   "commit": "d1bd0b9a",
+   "at": "2026-11-11T14:52:58Z",
+   "by": "incident.datascience@web-summit.dinis",
+   "what": "14:52 refresh (ensemble shares of 51 forecasts moved north: north 0.10 -> 0.24, near 0.41 -> 0.47, south 0.49 -> 0.29; crossing median still 15 UTC; people-by-hour unchanged)",
+   "files": 3
+  },
+  {
+   "commit": "6e1a8d7b",
+   "at": "2026-11-11T14:53:10Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 14:49 UTC: 64 requests, 63 answered 200, 45 files changed; warnings (IPMA's file dated 14:15): 41 above green; no warning changed",
+   "files": 60
+  },
+  {
+   "commit": "6274b9aa",
+   "at": "2026-11-11T14:53:18Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "14:53 wake: the 74 km/h gust and the turn to south (o1, o2, n4, n5), c15, h11",
+   "files": 3
+  },
+  {
+   "commit": "e4e1b05e",
+   "at": "2026-11-11T14:53:30Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "measure the 14:53 wake",
+   "files": 1
+  },
+  {
+   "commit": "8484f80e",
+   "at": "2026-11-11T14:54:35Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "hourly 14:53: 547 nodes, 764 edges; warnings re-keyed by IPMA's 12:34 re-issue",
+   "files": 17
+  },
+  {
+   "commit": "3412294a",
+   "at": "2026-11-11T14:56:38Z",
+   "by": "incident.wikipedia@web-summit.dinis",
+   "what": "14:50 read: pt gains IPMA's communiqué no. 3, a mainland section (222 flights) and Madeira's 235 incidents and 502.7 mm",
+   "files": 20
   }
  ]
 }
