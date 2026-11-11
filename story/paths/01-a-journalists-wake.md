@@ -41,7 +41,7 @@ The longer pause is before the wake: the trace waited 2 min 57 s on dev for the 
 
 The record times the commit, the ledger and the run to the second; it does not time the reads inside the wake. The two read steps above are placed between the wake and the commit by the storyteller, and say so.
 
-The piece the journalist writes in this wake is itself about a path (path 6, being written): an outside signal reaching the front page with no person speaking. The journal is one level up from the reporter: the reporter traces the work, the journalist tells it from the traces, and this page tells the journalist.
+The piece the journalist writes in this wake is itself about a path ([path 6](06-ipma-wind-downgrade.md)): an outside signal reaching the front page with no person speaking. The journal is one level up from the reporter: the reporter traces the work, the journalist tells it from the traces, and this page tells the journalist.
 
 ## Rests on
 
@@ -51,6 +51,7 @@ The piece the journalist writes in this wake is itself about a path (path 6, bei
 - library/pack/wakes.json (the journalist's hourly wake at :12, read 04:10 UTC)
 - agents/journalist/status.json as committed in 26371572 (last_wake 08:14, the third session from about 05:15)
 - journal/nobody-asked.json as committed in 26371572 (8 claims, 13 supports)
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

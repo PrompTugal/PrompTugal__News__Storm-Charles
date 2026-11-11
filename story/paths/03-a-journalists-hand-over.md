@@ -53,6 +53,7 @@ The journalist's first hand-over, at 04:09, was on the conductor's word at 04:08
 - accounts/ledger/journalist.jsonl: the lines at 08:15:01 (session s-3bc2fe25665f) and 08:18:04 (session s-c97c7fa1ba3b)
 - agents/journalist/status.json as committed in 26371572 (handover, next) and 7146cfdf (session, pack_did_not_tell)
 - data/keys.json: incident-journalist-dinis-3 (handed over) and -4 (active)
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

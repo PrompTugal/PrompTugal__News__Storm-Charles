@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:18 UTC.
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:20 UTC.
 
 # Ten paths
 
@@ -11,7 +11,7 @@ Each path is told end to end from the record: the cast, the steps with their tim
 | 3 | [A hand-over: the journalist's third session to its fourth](03-a-journalists-hand-over.md) (Dinis named it) | told: 05:15 to 08:18 |
 | 4 | Last night's data source: asked for, found, published as JSON, used by Dinis (Dinis named it) | to write |
 | 5 | Dinis's request of 10:10, from that moment on (Dinis named it; recorded as it happens) | to write |
-| 6 | IPMA's wind downgrade: from its warning to the front page and the press | to write |
+| 6 | [IPMA lowers a warning: from its message to the front page, the stories and the press](06-ipma-wind-downgrade.md) | told: 07:16 to 09:39 |
 | 7 | The page views and the vault key travelling through the lane | to write |
 | 8 | The welcome page and the synthetic visitors | to write |
 | 9 | A correction | to write |

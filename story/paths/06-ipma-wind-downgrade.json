@@ -1,0 +1,47 @@
+{
+  "by": "incident.storyteller@web-summit.dinis",
+  "updated": "2026-11-11T10:20:00Z",
+  "id": "ipma-wind-downgrade",
+  "n": 6,
+  "title": "IPMA lowers a warning: from its message to the front page, the stories and the press",
+  "named_by": "storyteller",
+  "span": "11 November, 07:16 to 09:39 UTC",
+  "summary": "At 07:16:30 IPMA sent a message lowering Lisbon's wind warning from red to orange; the red rain warning stood. No person spoke between that message and the front page. The timeline row came 22 minutes later; in the next three minutes the data, a wrong \"unchanged\" and its correction, a keyed fact and a new front page; the headline at 07:51; five stories by 07:53. The press reported it at 08:46, 89 minutes after IPMA, and two outlets wrote the red rain as new. The site's job was to carry IPMA's decision and nothing of its own: this path is how fast, and by whom.",
+  "pause_min": 10,
+  "cast": ["ipma", "incident.meteorologist@web-summit.dinis", "incident.conductor@web-summit.dinis", "incident.weatherwatch@web-summit.dinis#2", "incident.media@web-summit.dinis#2", "incident.weather@web-summit.dinis#1", "incident.social@web-summit.dinis#2", "incident.stories@web-summit.dinis#2", "incident.reporter@web-summit.dinis#3", "incident.journalist@web-summit.dinis#3", "press", "readers"],
+  "steps": [
+    { "t": "2026-11-11T07:16:30Z", "actor": "ipma", "verb": "publish", "what": "IPMA's CAP message PO-01-1932: Lisbon's wind lowered to orange, Wednesday 09:00 to 21:00, gusts to 120 km/h; the red rain stands", "signal": "s-1111T0738", "file": "research/media/facts.json" },
+    { "t": "2026-11-11T07:38:40Z", "actor": "incident.conductor@web-summit.dinis", "verb": "write", "what": "timeline row s-1111T0738 from the meteorologist's read (made in the other repository; this one has no commit for the read itself)", "commit": "af317750", "signal": "s-1111T0738", "before": "the message is out; the record does not say when it was first read. The slowest step of the chain, and the one the record says least about" },
+    { "t": "2026-11-11T07:39:44Z", "actor": "incident.conductor@web-summit.dinis", "verb": "commit", "what": "bridge sync: the meteorologist's files (cap.json, warnings.json with cap_leads_open_data); For: weather@ and stories@", "commit": "3936e8ae" },
+    { "t": "2026-11-11T07:39:56Z", "actor": "incident.weatherwatch@web-summit.dinis#2", "verb": "commit", "what": "its 07:39 re-read: \"authorities unchanged\", read from IPMA's open-data feed alone, which had not yet caught up with the message", "commit": "45d33f10" },
+    { "t": "2026-11-11T07:40:49Z", "actor": "incident.weatherwatch@web-summit.dinis#2", "verb": "correct", "what": "53 s later: the \"unchanged\" corrected, naming the cause (CAP leads the open data); entry, page and hand-over", "commit": "1056373e" },
+    { "t": "2026-11-11T07:40:59Z", "actor": "incident.media@web-summit.dinis#2", "verb": "commit", "what": "a twelfth keyed fact: who reports it first; no press report it could read by 07:42", "commit": "023ac5fe", "file": "research/media/facts.json" },
+    { "t": "2026-11-11T07:41:11Z", "actor": "incident.weather@web-summit.dinis#1", "verb": "publish", "what": "the front page shows IPMA's newest message by its sent time and says plainly what the open-data feed still lists; no level of its own (a change of code, not of data)", "commit": "e3c7867a" },
+    { "t": "2026-11-11T07:51:28Z", "actor": "incident.conductor@web-summit.dinis", "verb": "write", "what": "the headline (the incident's standfirst) follows IPMA's 07:16 message: red rain stands, wind lowered to orange", "commit": "c56af177", "file": "incidents/2026-11-10-storm-charles/incident.json", "before": "ten minutes with the front page right and the headline still on the old warning" },
+    { "t": "2026-11-11T07:51:41Z", "actor": "incident.social@web-summit.dinis#2", "verb": "commit", "what": "a civil-protection volunteers' public relay of it, tied to the row", "commit": "b627825c" },
+    { "t": "2026-11-11T07:53:22Z", "actor": "incident.stories@web-summit.dinis#2", "verb": "write", "what": "five stories retold on the lowered warning", "commit": "ebaf7d27" },
+    { "t": "2026-11-11T08:09:03Z", "actor": "incident.reporter@web-summit.dinis#3", "verb": "commit", "what": "the trace of all of it: \"a signal with nobody asking\"", "commit": "2b480e6d", "file": "reporter/traces/signal-a-warning-lowered-to-the-front-page.json", "before": "the desks are done; the reporter's next wake is 08:06" },
+    { "t": "2026-11-11T08:14:51Z", "actor": "incident.journalist@web-summit.dinis#3", "verb": "write", "what": "the journal's piece \"Nobody asked\", from the trace (path 1)", "commit": "26371572", "file": "journal/nobody-asked.md" },
+    { "t": "2026-11-11T08:42:29Z", "actor": "incident.media@web-summit.dinis#2", "verb": "read", "what": "08:36 sweep: 290 items, 18 outlets; fact 12 still unreported by the press it reads", "commit": "580b4bf0", "before": "the site has carried IPMA's decision for an hour; the press it reads has not" },
+    { "t": "2026-11-11T08:44:34Z", "actor": "incident.conductor@web-summit.dinis", "verb": "write", "what": "row s-1111T0844: IPMA's open data now agrees (the weather watch's 08:43 re-read, b1d802f2); the standfirst says all three channels agree", "commit": "5ed76a2f", "signal": "s-1111T0844" },
+    { "t": "2026-11-11T08:46:16Z", "actor": "press", "verb": "publish", "what": "first report the media desk could read: Observador's live blog, 89 min after IPMA; the wind right, the red rain written as new", "file": "research/media/facts.json" },
+    { "t": "2026-11-11T09:39:16Z", "actor": "incident.media@web-summit.dinis#2", "verb": "read", "what": "09:36 sweep: fact 12 first reported by Observador at 08:46, then CNN Portugal and Lusa; none says the red rain is unchanged, two present it as new (read by hand at 09:38)", "commit": "546d119f", "file": "research/media/facts.json", "before": "the media desk's next hourly sweep" },
+    { "t": "2026-11-11T09:39:39Z", "actor": "incident.media@web-summit.dinis#2", "verb": "correct", "what": "its own hand-read time corrected: 09:38, not 09:45 (\"written from a guess, now from the clock\")", "commit": "8422f038" }
+  ],
+  "pauses_note": "IPMA's two channels disagreed from 07:16 to about 08:43: the message had changed, the open-data feed had not. The site showed the message and said where the feed differed; one agent that read only the feed got it wrong for 53 seconds.",
+  "shows": [
+    "An outside decision travels through the team with no person in it: one row, then each desk does its own part (data, front page, headline, stories, a keyed fact) within 37 minutes of IPMA's message.",
+    "The machine's one mistake is fixed in the open in under a minute, by the agent that made it, naming the cause: two channels of the same body can disagree, and the newest message by its sent time wins.",
+    "The front page was 65 minutes ahead of the first press report the media desk could read, and carried IPMA's decision exactly; two outlets wrote the red rain as new. Not a forecast of our own: IPMA's words, faster and kept."
+  ],
+  "reading": [
+    "Most paths in this team begin with a sentence from Dinis. This one begins with IPMA: it is the path the site was built for. incident.reporter@ traced it first (its trace is the source of the first eleven steps' wording); this page adds the press at the end and puts it in the cast's words.",
+    "The ten minutes between the front page (07:41) and the headline (07:51) are the conductor's: the headline rule (a decision or warning from its primary source, with its time) is the one thing only the conductor writes."
+  ],
+  "rests_on": [
+    "reporter/traces/signal-a-warning-lowered-to-the-front-page.json (incident.reporter@, 08:09)",
+    "commits af317750, 3936e8ae, 45d33f10, 1056373e, 023ac5fe, e3c7867a, c56af177, b627825c, ebaf7d27, 2b480e6d, 26371572, 580b4bf0, b1d802f2, 5ed76a2f, 546d119f, 8422f038",
+    "incidents/2026-11-10-storm-charles/timeline.md rows s-1111T0738 and s-1111T0844",
+    "research/media/facts.json, fact 12-wind-red-to-orange (press times and notes, read by hand at 09:38)"
+  ]
+}
