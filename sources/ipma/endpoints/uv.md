@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Ultraviolet index forecast
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 18:56 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 19:51 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -18,8 +18,8 @@ IPMA's name for it: *Previsão do Risco de Ultravioletas até 3 dias (Índice Ul
 | Format | JSON |
 | Shape | an array, one row per place and day |
 | IPMA says it updates | not stated |
-| IPMA's file dated (its Last-Modified header) | 2026-11-11 18:00 UTC |
-| We last read it | 2026-11-11 18:55 UTC, 1 file, 20100 bytes |
+| IPMA's file dated (its Last-Modified header) | 2026-11-11 19:00 UTC |
+| We last read it | 2026-11-11 19:50 UTC, 1 file, 20100 bytes |
 | More from IPMA | https://www.ipma.pt/pt/otempo/prev.uv/ |
 
 ## Fields
@@ -43,6 +43,6 @@ IPMA's name for it: *Previsão do Risco de Ultravioletas até 3 dias (Índice Ul
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [forecast/meteorology/uv/uv.json](https://api.ipma.pt/open-data/forecast/meteorology/uv/uv.json) | 200 | 20100 | `7845cab3b3b48b5e…` | 2026-11-11 18:00 | 2026-11-11 18:55 |
+| [forecast/meteorology/uv/uv.json](https://api.ipma.pt/open-data/forecast/meteorology/uv/uv.json) | 200 | 20100 | `7845cab3b3b48b5e…` | 2026-11-11 19:00 | 2026-11-11 19:50 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/uv.json](../changes/uv.json).
