@@ -46,7 +46,7 @@
         else if (k === 'thing') el('path', { d: 'M-8 -10 H4 L8 -6 V10 H-8 Z' }, grp)
         else if (k === 'machine') el('rect', { x: -10, y: -8, width: 20, height: 16, rx: 1 }, grp)
         else el('rect', { x: -10, y: -10, width: 20, height: 20, rx: 5 }, grp)
-        if (k !== 'person') { const t = el('text', { x: 0, y: 3.5, 'text-anchor': 'middle', class: 'fl-mark' }, grp); t.textContent = m.slice(0, 3) }
+        void m
         const ti = el('title', {}, grp); ti.textContent = `${a.emoji ? a.emoji + ' ' : ''}${a.label} (${k}${a.glyph ? ', ' + a.glyph : ''})`
         return grp
     }
@@ -69,25 +69,35 @@
         host.innerHTML = ''
         const steps = f.steps || [], actors = f.actors || [], N = steps.length
         const lane = new Map(actors.map((a, i) => [a.id, i]))
-        const LH = actors.length > 8 ? 24 : 30, LAB = 118, PADT = 10, H = PADT * 2 + actors.length * LH
-        // x: a column a step; a pause of 10 minutes or more is a hatched gap, its length written in it
+        // the lane names are HTML in a column that stays put (11 px and up on any screen); the lanes are an SVG drawn at
+        // one pixel to one pixel, as wide as the steps need, scrolling sideways inside its own box when the screen is narrow
         const gapAt = new Map(); for (const p of f.pauses || []) gapAt.set(p.to, p)
+        const LH = 30, PADT = 8, H = PADT * 2 + actors.length * LH
         const n = N + 1
-        const pauses = steps.filter((s, i) => i && gapAt.has(s.t) && steps[i - 1].t !== s.t).length, GAP = Math.min(34, Math.max(16, 120 / Math.max(1, pauses)))
-        const W = 640, col = Math.max(3, (W - LAB - 12 - pauses * GAP) / n)
-        const xs = []; let x = LAB + col / 2 + 4
+        const pauses = steps.filter((s, i) => i && gapAt.has(s.t) && steps[i - 1].t !== s.t).length, GAP = 40
+        const avail = Math.max(220, (host.clientWidth || 640) - 24 - 132)
+        const col = Math.max(9, (avail - 12 - pauses * GAP) / n)
+        const W = Math.ceil(Math.max(avail, n * col + pauses * GAP + 12))
+        const xs = []; let x = col / 2 + 6
         steps.forEach((s, i) => { if (i && gapAt.has(s.t) && steps[i - 1].t !== s.t) x += GAP; xs.push(x); x += col })
         const head = document.createElement('div'); head.className = 'fl-head'
         head.innerHTML = `<span class="fl-exp" title="An experiment: a view of the record, not a finished page">experiment</span> <b>${esc(f.title)}</b>`
         host.appendChild(head)
-        const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, class: 'fl-svg', role: 'img', 'aria-label': f.title + ': ' + N + ' steps' })
-        host.appendChild(svg)
+        const body = document.createElement('div'); body.className = 'fl-body'; host.appendChild(body)
+        const labs = document.createElement('div'); labs.className = 'fl-labs'; labs.style.paddingTop = PADT + 'px'; body.appendChild(labs)
+        actors.forEach(a => {
+            const r = document.createElement('div'); r.className = 'fl-labrow'; r.style.height = LH + 'px'
+            const ic = el('svg', { viewBox: '-12 -12 24 24', width: 20, height: 20, 'aria-hidden': 'true' }); icon(ic, a, 0, 0); r.appendChild(ic)
+            const t = document.createElement('span'); t.textContent = a.label || a.id; t.title = `${a.emoji ? a.emoji + ' ' : ''}${a.label} (${a.kind})`; r.appendChild(t)
+            labs.appendChild(r)
+        })
+        const sc = document.createElement('div'); sc.className = 'fl-scroll'; sc.tabIndex = 0; sc.setAttribute('aria-label', 'the lanes; scroll sideways'); body.appendChild(sc)
+        const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, class: 'fl-svg', role: 'img', 'aria-label': f.title + ': ' + N + ' steps' })
+        sc.appendChild(svg)
         const g0 = el('g', {}, svg)
         actors.forEach((a, i) => {
             const y = PADT + i * LH + LH / 2
-            el('line', { x1: LAB - 4, x2: W - 4, y1: y, y2: y, class: 'fl-lane fl-lane-' + a.kind }, g0)
-            icon(g0, a, 14, y)
-            const t = el('text', { x: 30, y: y + 4, class: 'fl-lab' }, g0); t.textContent = (a.label || a.id).slice(0, 15)
+            el('line', { x1: 0, x2: W, y1: y, y2: y, class: 'fl-lane fl-lane-' + a.kind }, g0)
         })
         // the pauses
         steps.forEach((s, i) => {
@@ -109,7 +119,7 @@
                 el('path', { d: `M${x - 3} ${y2 + (y2 > y ? -5 : 5)} L${x} ${y2} L${x + 3} ${y2 + (y2 > y ? -5 : 5)}`, class: 'fl-head-arrow' }, gE).dataset.i = i
                 line.dataset.i = i
             }
-            el('circle', { cx: x, cy: y, r: Math.min(5, Math.max(2.4, col / 2.2)), class: 'fl-dot' }, grp)
+            el('circle', { cx: x, cy: y, r: Math.min(6, Math.max(3.5, col / 2.4)), class: 'fl-dot' }, grp)
             grp.addEventListener('click', () => go(i, true))
             const e = s.evidence || {}, evT = [e.commit && 'commit ' + e.commit, e.file, e.signal && 'row ' + e.signal, e.key && 'key ' + e.key, e.run && 'run ' + e.run, !e.commit && e.url].filter(Boolean).join(' · ')
             const ti = el('title', {}, grp); ti.textContent = `${hm(s.t)} UTC${s.drawn ? ' (time drawn)' : ''} · ${s.verb}${s.said ? ' (' + s.said + ')' : ''} · ${s.object}\nevidence: ${evT || 'none'}`
@@ -132,6 +142,7 @@
             marks.forEach((m, j) => { m.classList.toggle('on', j <= at); m.classList.toggle('cur', j === at) })
             svg.querySelectorAll('.fl-edge,.fl-head-arrow').forEach(e => { const j = +e.dataset.i; e.classList.toggle('on', j <= at); e.classList.toggle('cur', j === at) })
             now.setAttribute('x1', xs[at]); now.setAttribute('x2', xs[at])
+            if (sc.scrollWidth > sc.clientWidth && (xs[at] < sc.scrollLeft + 20 || xs[at] > sc.scrollLeft + sc.clientWidth - 20)) sc.scrollLeft = Math.max(0, xs[at] - sc.clientWidth / 2)
             const s = steps[at]
             cap.innerHTML = `<time datetime="${esc(s.t)}">${esc(s.t.slice(0, 10))} ${esc(hm(s.t))} UTC</time>${s.drawn ? ' <span class="fl-dr" title="' + esc(s.drawn) + '">time drawn, not recorded</span>' : ''}<br><b>${esc(label(s.actor))}</b> <span class="fl-verb">${esc(s.verb)}</span>${s.said && s.said !== s.verb ? ' <span class="fl-said">(' + esc(s.said) + ')</span>' : ''}${s.to && s.to.length ? ' → <b>' + s.to.map(t => esc(label(t))).join(', ') + '</b>' : ''}: ${esc(s.object)}${s.files && s.files.length ? ' <span class="fl-files">' + s.files.slice(0, 3).map(x => '<code>' + esc(x) + '</code>').join(' ') + (s.n_files > 3 ? ' +' + (s.n_files - 3) : '') + '</span>' : ''}<br><span class="fl-ev">evidence: ${evHtml(s.evidence)}</span>`
             range.value = at; nOut.textContent = `step ${at + 1} of ${N}`

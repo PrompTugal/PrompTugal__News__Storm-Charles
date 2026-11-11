@@ -1,25 +1,30 @@
 /* Flows: the player's look (incident.motion@web-summit.dinis, 11 November 2026). The site's tokens (design/README.md), with
    system colours where a page embedding a flow has none: no hex colour. An agent's state never wears IPMA's warning colours. */
 .fl { --fl-ink: var(--ink, CanvasText); --fl-ink2: var(--ink-2, GrayText); --fl-line: var(--line, GrayText); --fl-paper: var(--surface, Canvas);
-  --fl-agent: var(--link, LinkText); --fl-person: var(--accent, CanvasText); --fl-out: var(--sent, GrayText); --fl-edge: var(--focus, LinkText);
+  --fl-agent: var(--link, LinkText); --fl-person: var(--ink, CanvasText); --fl-out: var(--ink-2, GrayText); --fl-edge: var(--line-2, GrayText); --fl-play: var(--link-2, LinkText);
   font: 14px/1.45 var(--sans, system-ui, sans-serif); color: var(--fl-ink); background: var(--fl-paper);
   border: 1px solid var(--fl-line); border-radius: var(--radius, 8px); padding: 10px 12px; max-width: 680px; box-sizing: border-box; outline-offset: 2px }
 .fl:focus-visible { outline: 2px solid var(--link-2, Highlight) }
 .fl-head { display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px; font-size: 15px }
 .fl-exp { font: 600 11px/1 var(--mono, ui-monospace, monospace); text-transform: uppercase; letter-spacing: .04em; border: 1px dashed var(--fl-ink2); color: var(--fl-ink2); border-radius: 999px; padding: 3px 7px; white-space: nowrap }
-.fl-svg { display: block; width: 100%; height: auto; overflow: visible }
+.fl-body { display: flex; align-items: flex-start }
+.fl-labs { flex: 0 0 132px; min-width: 0 }
+.fl-labrow { display: flex; align-items: center; gap: 6px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.fl-labrow span { overflow: hidden; text-overflow: ellipsis }
+.fl-labrow svg { flex: 0 0 20px }
+.fl-scroll { flex: 1 1 auto; min-width: 0; overflow-x: auto; overscroll-behavior-x: contain }
+.fl-scroll:focus-visible { outline: 2px solid var(--link-2, Highlight) }
+.fl-svg { display: block; max-width: none }
 .fl-lane { stroke: var(--fl-line); stroke-width: 1 }
 .fl-lane-session { stroke-dasharray: 3 3 }
-.fl-lab { font: 12px var(--sans, system-ui, sans-serif); fill: var(--fl-ink) }
 .fl-ic rect, .fl-ic path, .fl-ic circle { fill: var(--fl-paper); stroke: var(--fl-agent); stroke-width: 1.6 }
 .fl-person circle, .fl-person path { fill: var(--fl-person); stroke: none }
 .fl-session .fl-ring { stroke: var(--fl-ink2); stroke-dasharray: 3 2 }
 .fl-outside path { stroke: var(--fl-out) }
 .fl-machine rect { stroke: var(--fl-out); stroke-dasharray: 2 2 }
 .fl-thing path { stroke: var(--fl-ink2) }
-.fl-mark { font: 700 7.5px var(--mono, ui-monospace, monospace); fill: var(--fl-ink) }
 .fl-pause { fill: color-mix(in srgb, var(--fl-line) 22%, transparent); stroke: var(--fl-line); stroke-dasharray: 2 3 }
-.fl-pause-t { font: 10px var(--mono, ui-monospace, monospace); fill: var(--fl-ink2) }
+.fl-pause-t { font: 11px var(--mono, ui-monospace, monospace); fill: var(--fl-ink2) }
 .fl-dot { fill: var(--fl-paper); stroke: var(--fl-ink2); stroke-width: 1.2; opacity: .45; transition: opacity .25s, r .25s }
 .fl-step { cursor: pointer }
 .fl-step.on .fl-dot { fill: var(--fl-agent); stroke: var(--fl-agent); opacity: 1 }
@@ -32,10 +37,10 @@
 .fl-edge.fl-drawn { stroke-dasharray: 3 2 }
 .fl-head-arrow { fill: none; stroke: var(--fl-edge); stroke-width: 1.4; opacity: 0 }
 .fl-edge.on, .fl-head-arrow.on { opacity: .35 }
-.fl-edge.cur, .fl-head-arrow.cur { opacity: 1; stroke-width: 2 }
+.fl-edge.cur, .fl-head-arrow.cur { opacity: 1; stroke-width: 2; stroke: var(--fl-ink) }
 .fl-edge.cur { stroke-dasharray: 60; animation: fl-fly .5s linear 1 }
 @keyframes fl-fly { from { stroke-dashoffset: 60 } to { stroke-dashoffset: 0 } }
-.fl-now { stroke: var(--fl-edge); stroke-width: 1; stroke-dasharray: 1 3; transition: x1 .25s, x2 .25s }
+.fl-now { stroke: var(--fl-play); stroke-width: 1; stroke-dasharray: 1 3; transition: x1 .25s, x2 .25s }
 .fl-cap { min-height: 4.4em; margin: 6px 0 4px; font-size: 13.5px; overflow-wrap: anywhere }
 .fl-cap time, .fl-n, .fl-pause-t { font-family: var(--mono, ui-monospace, monospace); font-variant-numeric: tabular-nums }
 .fl-cap time { font-size: 12px; color: var(--fl-ink2) }

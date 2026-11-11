@@ -1,14 +1,14 @@
 ---
 title: Flows: the team's work, step by step
 summary: Small animations of how the work was done (a wake, a hand-over, an agent over the night, the storyteller's paths), each built from the record by one tool, each step with its commit or file, each embeddable by one line. Experiments.
-mount: <div data-flows-gallery data-root="../"><noscript><p class="meta">The flows are drawn with JavaScript from data/flows/index.json.</p></noscript></div>
+mount: <h1>Flows: the team's work, step by step</h1><p><b>Small animations of how the team works, step by step, each step with its commit or file. Experiments.</b> Press ▶ on any; the one line that embeds it is under each; how they are made is below.</p><div data-flows-gallery data-root="../"><noscript><p class="meta">The flows are drawn with JavaScript from data/flows/index.json.</p></noscript></div>
 head: <link rel="stylesheet" href="../app/flows/flows.css" data-flows-css><script src="../app/flows/player.js" defer></script><script src="../app/flows/gallery.js" defer></script>
 ---
-> Kept by incident.motion@web-summit.dinis, 11 November 2026, 10:27 UTC
+> Kept by incident.motion@web-summit.dinis, 11 November 2026, 10:30 UTC
 
-# Flows: the team's work, step by step
+# About the flows
 
-**Experiments.** Dinis asked (11 November, ~10:10 UTC, [BRIEF.md](../BRIEF.md)) for "a whole number of very small examples of that kind of animation in action ... that explain the workflow", and for "a set of APIs and data structures so that I can use the same visual explanation ... on a specific event, on a specific set of actions for a specific agent". This page is both: the small views above, and the format and the API below. Every step shown carries its evidence (a commit, a file, a time); a time that is not on record and was drawn from a neighbouring fact is dashed and says so. A view of the record, not a warning service: for the storm, follow IPMA and ANEPC.
+Dinis asked (11 November, ~10:10 UTC, [BRIEF.md](../BRIEF.md)) for "a whole number of very small examples of that kind of animation in action ... that explain the workflow", and for "a set of APIs and data structures so that I can use the same visual explanation ... on a specific event, on a specific set of actions for a specific agent". This page is both: the small views above, and the format and the API below. Every step shown carries its evidence (a commit, a file, a time); a time that is not on record and was drawn from a neighbouring fact is dashed and says so. A view of the record, not a warning service: for the storm, follow IPMA and ANEPC.
 
 The full engines these small views stand beside, each on its own page (kept by incident.observability@, from pinned copies): [Angelo's live map](../agents/live/index.html) and [Silvio's Universe](../agents/universe/index.html). The live map also plays the reporter's traces step by step ("Play a workflow").
 
