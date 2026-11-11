@@ -22,7 +22,8 @@
         const script = document.currentScript, root = script ? new URL('../../', script.src).href : '/'
         let cfgP = null
         const cfg = () => cfgP || (cfgP = fetch(root + 'data/agents/obs.json', { cache: 'no-cache' }).then(r => r.json()))
-        const on = c => !!(c && c.enabled && c.endpoint && c.vault_id && c.lanes && c.lanes.site && c.lanes.site.length && c.recipient && c.recipient.encrypt)
+        const LIVE = 'storm-charles.promptugal.news'   // never from a local build, a preview or the gate's build
+        const on = c => location.host === LIVE && !!(c && c.enabled && c.endpoint && c.vault_id && c.lanes && c.lanes.site && c.lanes.site.length && c.recipient && c.recipient.encrypt)
 
         // the disclosure and the pause switch, in the footer of every page, only while counting is on
         const footer = c => {
