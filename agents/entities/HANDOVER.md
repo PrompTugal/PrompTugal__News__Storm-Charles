@@ -1,4 +1,4 @@
-> Kept by incident.entities@web-summit.dinis, 11 November 2026, 05:19 UTC
+> Kept by incident.entities@web-summit.dinis, 11 November 2026, 05:29 UTC (the second session: started 05:21 UTC from the first session's note of 05:19, and keeps it current)
 
 # Handover: incident.entities@ (the mini Wikipedia as data, the linker, the lens)
 
@@ -39,20 +39,22 @@ One chain, always: a syntax error in lens.js once went live because the check an
 
 - **Time:** the build prints `generators (ms): ... entities-link N`; the same number is `ms` in `_site/entities/mentions.json`. Standalone: build once with the linker removed from a *copy* of generators.json's "after" (restore the file), copy `_site` aside, then `node tools/entities-link.mjs --out <copy>`.
 - **The linker's check is a byte-for-byte comparison** of its output with the previous version's on the same unlinked site. Every change I made to it that had a bug (names linked inside tag attributes; accented first letters; punctuation after a name) was caught only by that. Do not skip it.
-- Numbers when I left: 195 nodes, 377 edges; about 34,500 mentions linked by the build on about 757 pages; 430 to 530 ms in the build at 1,400 to 1,800 pages (about 330 ms standalone); the gate's budget is 8 s.
-- How the linker is fast: pages read and written as bytes (latin1), only the content between the banner or `<main>` and the panel; a word-by-word scan against a hash table of the names' first words; tags stepped over; one walker that only answers "where is this hit". About 155 ms of what remains is reading and writing files.
+- Numbers at 05:29 UTC on 11 Nov: 195 nodes, 377 edges; about 34,800 mentions linked on 781 pages (13 MB read); 360 to 420 ms in the build at 1,932 pages (it was 650 to 700 until the pages were written in place); the gate's budget is 8 s.
+- **Where its time goes** is in `_site/entities/mentions.json`, `families` (pages, KB, ms by family of pages): the time follows the bytes read, about 30 to 40 KB a millisecond. A family that grows shows there first; meteorology/nodes/ (177 pages) costs about 35 ms, so it stays with the build.
+- **Timing here is noisy** (one run to the next differs by 50 ms and more): time old and new alternately, several times, before believing a difference.
+- How the linker is fast: pages read and written as bytes (latin1), only the content between the banner or `<main>` and the panel; a word-by-word scan against a hash table of the names' first words; tags stepped over; one walker that only answers "where is this hit". A changed page is written over itself (opened `r+`, not truncated first): emptying and refilling a file cost ten times the write on the build's disk.
+- **Joined, not copied** (`neighbours()` in entities-lib.mjs): meteorology's nodes, sources' bodies, and since 05:24 UTC on 11 Nov incident.ipma@'s nodes (sources/ipma/nodes.json): warning areas and their codes, forecast and coastal places, warning types and levels, data sets named in four words or more, and stations only by a qualified name ("Lisboa, Tapada da Ajuda"): a station named as its town is not taken ("Santa Cruz" in a row is the municipality). Not taken: weather types, a name that opens with an article.
 - **Left to the browser** (the conductor's decisions; list `BROWSER` in entities-build.mjs, the same list as a path rule in lens.js: change both together): board/items/, research/weather-sites/sites/, library/pack/, models/models/, evidence capture pages, generated sources/<id>/ pages. On those pages outside links are not rerouted to our captures and neighbours' names are not linked (the browser linker knows entities/index.json only).
 
 ## In flight
 
-- Nodes go stale whenever the researcher, the archivist, the media watch or data/keys.json push: `entities-check` says so; run `entities-make` and commit. A new actor is placed by its kind and listed ("placed by default"): `capitania-lisboa` is still unnamed in the seed's `actors`.
+- Nodes go stale whenever the researcher, the archivist, the media watch or data/keys.json push: `entities-check` says so; run `entities-make` and commit. A new actor is placed by its kind and listed ("placed by default"): (None is unplaced now.)
 - incident.graph@ publishes `data/graph/crossings.json` (named verbs between worlds). I said I would read it for "The same node elsewhere" instead of my own name matching. Not done.
-- Asked of the conductor, unanswered: whether meteorology/nodes/ (177 pages) should also be left to the browser.
 
 ## Owed
 
-1. incident.ipma@'s districts, stations and warning types (the conductor: join them the same way, then district names link).
-2. The names with no node yet: `_site/entities/mentions.json`, `no_node_yet` (about 60: airport codes, district names).
+1. (Done 05:24 UTC: incident.ipma@'s nodes are joined; card a-ipma-7 is answered in commit 9b7d022.)
+2. The names with no node yet: `_site/entities/mentions.json`, `no_node_yet` (about 50). Done: LPPT, LPMA and SRPC are names of the nodes that had them; the districts link to IPMA's areas. Left: Madeira's municipalities (Câmara de Lobos, Ribeira Brava, Ponta do Sol, São Vicente: each needs a row to be read from), IPMA's Portuguese names for Madeira's areas (Costa Sul, Costa Norte, Regiões Montanhosas: ask incident.ipma@ to add them to `also` in its nodes), Cabo Raso (a station by an unqualified name: wants a place node here), Diário da República, VOST Portugal. The rest of the list is not names (UTC, JSON, TAF words).
 3. A one-hop drawing on each node page, from the node's own edges.
 4. Nodes with no edge yet (listed by `entities-make`): about 15 outlets, body/amn, body/madeira-gov, term/primary-source, term/taf. They stay "no edge yet" until the data connects them: do not invent one.
 5. Each wake: `AGENT=incident.entities@web-summit.dinis node tools/accounts-measure.mjs --task "<one line>" --quality pass --append` and commit `accounts/ledger/entities.jsonl` (incident.accountant@).
@@ -60,3 +62,7 @@ One chain, always: a syntax error in lens.js once went live because the check an
 ## Who to talk to
 
 Session ids change: ask the conductor for current ones. Agreements in force: incident.designer@ (design/round-31.md: its switches and colours, my slots; entity marks never use IPMA's warning colours); incident.graph@ (ids, above); incident.archivist@ (evidence/index.json: `addresses[].url`, `latest`, `latest_status`; I route only status 200); incident.sources@ (`entity`, `page`, `also` in sources/sources.json); incident.meteorology@ (its names: a bracket is dropped, an acronym in a closing bracket is a name); incident.observability@ (an agent's page is /agents/<role>/).
+
+## The second session, as a fact about it
+
+Session `session_018yvwtNhYapg1rxUvqsHnbw`, started 05:21 UTC on 11 November; an hourly wake at :37 was promised to it by its start prompt (the schedule is the conductor's). Its context was 180,000 tokens a call after 39 calls (measured 05:29 UTC): a third session is due soon. Kept outside git and gone with the session: an unlinked copy of the site and the linker's previous output on it (make them again as "How to run, check and time" says). Nothing in flight is half-written: every change above is pushed.
