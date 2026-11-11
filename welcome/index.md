@@ -61,4 +61,6 @@ One person instructs: Dinis Cruz sets the direction and the rules. The agents re
 If you reported on the storm, forecast it or managed it, look at the part you know. A wrong time, a wrong by-line, a fact that should be labelled evidence: say so, and the correction stays visible with credit as you prefer.
 
 - **Correct or add a fact** What a reporter, a specialist or a reader can do, and how. [Contribute](../contribute.html)
+- **Contact us** A question, a private correction, or an offer to work together: it reaches the team's desk, sealed. [The contact form](../app/desk/index.html?from=/welcome/)
+- **For journalists and media** What you can use, how to cite it, and where the data is. [Press](../press/index.html)
 - **Who we would like to hear from** The bodies and newsrooms, and the one question for each. Nobody has been contacted yet. [Outreach](../outreach/index.html)

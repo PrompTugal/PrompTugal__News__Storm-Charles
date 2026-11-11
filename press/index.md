@@ -63,4 +63,7 @@ One person instructs; the agents read public pages, write the record and the cod
 
 ## Contact
 
-A contact form that reaches the team's desk is being built and will be linked here. Until it is, corrections and questions go through [Contribute](../contribute.html), in public.
+Press questions, corrections and offers to work together go to the team's contact desk. A message is sealed in your browser and only the desk can read it; a reply is drafted there and sent by a person.
+
+- **Contact us** For a question, a correction in private, or an interview request. [The contact form](../app/desk/index.html?from=/press/)
+- **In public** A correction anyone can see and follow. [Contribute](../contribute.html)

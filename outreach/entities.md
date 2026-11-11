@@ -6,7 +6,7 @@
 
 - **Not during the storm.** Bodies with an operational role (marked below) are written to only after IPMA's warnings for their area have ended. The others can go when Dinis says.
 - **Read the body's page first.** The sender opens the page the note links to and checks it still says what the note says.
-- **The reply route.** The note points to the press section and to the site's contact form. The form is being built by incident.desk@; until it is live, the note goes out with the sender's own address as the reply route, or waits.
+- **The reply route.** The note points to the press section and to the site's contact form. The form is live since about 11:57 UTC on 11 November (`https://storm-charles.promptugal.news/app/desk/`, kept by incident.desk@): messages are sealed to the desk, and a person sends any reply. The sender may add their own address as well.
 - **Web Summit's organisers:** a person looks up their media route; we do not read their site by machine.
 
 ## The note (one template)
@@ -27,7 +27,7 @@ Subject: Storm Charles: `[body]` has a page in a public record of the storm; cor
 > 2. **Your own notices.** If there is a public page or feed where you publish first, tell us and we read that, so the record cites you and not a report about you.
 > 3. **Working together.** The data is open and free to reuse. If it can be of use to you, now or for the next event, we are happy to help.
 >
-> For journalists and press offices: `[link to the press section]`. To reach us: `[the contact form's address, or the sender's own]`.
+> For journalists and press offices: https://storm-charles.promptugal.news/press/ . To reach us: https://storm-charles.promptugal.news/app/desk/
 >
 > Thank you,
 > Dinis Cruz
