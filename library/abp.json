@@ -1,7 +1,7 @@
 {
  "about": "What is particular to each agent's behaviour policy: its business task where agents/JOBS.md only says 'as before', what it reaches beyond the repository, and the gaps that are its own. tools/library-abp.mjs joins this with agents/JOBS.md (the start brief), agents/policy.json (the paths), data/keys.json and CLAUDE.md to write agents/<role>/policy.md. Every line is the librarian's reading of the repository on 10 and 11 November 2026: an analysis, not agreed by Dinis, and not measured in any session but the librarian's own. The 17 entries added at 03:10 UTC on 11 November (weather to journalist) rest on each agent's line in agents/JOBS.md, its paths in agents/policy.json and its own status file only: what each agent says of itself, read by a sub-agent of the librarian's session and checked by the librarian. The entries for incident.envoy@ and incident.synthetic@ (both started at Dinis's word on 11 November, ~09:35 and ~09:50) were added at 09:55 UTC on 11 November from agents/JOBS.md, agents/policy.json, BRIEF.md and research/synthetic/personas/README.md.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T12:48Z",
+ "updated": "2026-11-11T22:50Z",
  "measured": {
   "branches": "GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`",
   "session": "the librarian's own session, 10 November 2026: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy"
@@ -506,6 +506,27 @@
     "**What is open only as an operator or authority states it** (agents/JOBS.md); a row shows its state beside the source's own words.",
     "Not a warning service: the guide points to IPMA, ANEPC and the operators; it gives no advice of its own.",
     "Where a source blocks automated readers (the airport's board) it says so and does not get round it (BRIEF.md, ~11:55)."
+   ]
+  },
+  "flights": {
+   "reach": [
+    "Flights on the map with the wind (Dinis, ~22:00; agents/JOBS.md): airline aircraft near Lisbon and Funchal, the Open-Meteo wind field, the airport's METAR and TAF on each runway end, ANA's figures, as replayable JSON snapshots.",
+    "Owns `flights/`, `incidents/*/data/flights/` and `tools/flights-*.mjs` (agents/policy.json). First push 22:03; crosswind.json at 22:11; the map's files for incident.designer@'s /flights/ map by 22:28; an hourly summary by an open-weight model through tools/llm.mjs, checked number by number (22:14)."
+   ],
+   "gap": [
+    "Positions from adsb.lol (ODbL), not OpenSky, whose terms forbid republishing identified positions (22:24; flights/sources.md); OpenSky's automated use waits on a licence, Dinis's to decide.",
+    "Airline flights only; no private aircraft, no person named. A paid flight-status plan and ANA's consent for its boards are Dinis's to decide (agents/flights/status.json).",
+    "Not a warning service: crosswind figures are METAR's own, not a judgement on safety."
+   ]
+  },
+  "aws": {
+   "reach": [
+    "Runners on AWS, mapped (Dinis, ~22:20; agents/JOBS.md): the runner MVP of agents/conductor/RUNNER.md on AWS (Bedrock AgentCore, Lambda, Fargate, CodeBuild), architecture first; GitHub Actions is built first, AWS after.",
+    "Owns `aws/` (agents/policy.json). Key 22:19; aws/README.md and aws/architecture.md at 22:27, every capability cited to AWS's documentation, ten items not confirmed listed."
+   ],
+   "gap": [
+    "Architecture only: no deployment and no AWS credentials (agents/aws/status.json); an account to test only if Dinis chooses to give one.",
+    "Its IAM policies, when written, are JSON in git for review, never applied from a session."
    ]
   }
  }

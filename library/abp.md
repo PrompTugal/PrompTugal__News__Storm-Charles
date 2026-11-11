@@ -1,8 +1,8 @@
 # The agents' behaviour policies (drafts)
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 12:48 UTC. **DRAFTS, NOT AGREED BY DINIS.** One Agent Behaviour Policy per incident agent, in the shape of [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/): Reach, Mandate, Gap, Barriers, Licence to Operate, Provenance. Built by [tools/library-abp.mjs](../tools/library-abp.mjs) from [agents/JOBS.md](../agents/JOBS.md), [agents/policy.json](../agents/policy.json), [CLAUDE.md](../CLAUDE.md) and [abp.json](abp.json). Back to [the library](README.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 22:50 UTC. **DRAFTS, NOT AGREED BY DINIS.** One Agent Behaviour Policy per incident agent, in the shape of [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/): Reach, Mandate, Gap, Barriers, Licence to Operate, Provenance. Built by [tools/library-abp.mjs](../tools/library-abp.mjs) from [agents/JOBS.md](../agents/JOBS.md), [agents/policy.json](../agents/policy.json), [CLAUDE.md](../CLAUDE.md) and [abp.json](abp.json). Back to [the library](README.md).
 
-**What is the same for all 41.** Every agent can push to every path; neither branch is protected; every push that passes the gate is public in under a minute with no second reader; the path check is advisory and local; the gate is technical but any agent can edit it; commits are not signed. The barriers that hold are rules each agent keeps. Measured: GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`. Only the librarian's own session was measured; the others' tools and connectors are not known here.
+**What is the same for all 43.** Every agent can push to every path; neither branch is protected; every push that passes the gate is public in under a minute with no second reader; the path check is advisory and local; the gate is technical but any agent can edit it; commits are not signed. The barriers that hold are rules each agent keeps. Measured: GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`. Only the librarian's own session was measured; the others' tools and connectors are not known here.
 
 | Agent | The first gap that is its own |
 |---|---|
@@ -47,3 +47,5 @@
 | [incident.brief@web-summit.dinis](../agents/brief/policy.md) | Not an official warning (its own role line): IPMA issues the warnings and ANEPC the instructions; every edition says so once. |
 | [incident.desk@web-summit.dinis](../agents/desk/policy.md) | Nothing a visitor writes is kept in git, a page or a log, or published, and no reply address either (CLAUDE.md); nobody reaches the conductor directly. |
 | [incident.sherpa@web-summit.dinis](../agents/sherpa/policy.md) | What is open only as an operator or authority states it (agents/JOBS.md); a row shows its state beside the source's own words. |
+| [incident.flights@web-summit.dinis](../agents/flights/policy.md) | Positions from adsb.lol (ODbL), not OpenSky, whose terms forbid republishing identified positions (22:24; flights/sources.md); OpenSky's automated use waits on a licence, Dinis's to decide. |
+| [incident.aws@web-summit.dinis](../agents/aws/policy.md) | Architecture only: no deployment and no AWS credentials (agents/aws/status.json); an account to test only if Dinis chooses to give one. |
