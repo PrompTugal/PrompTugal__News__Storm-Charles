@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 13:00 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 13:48 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -10,7 +10,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 - **Reader:** [tools/transport-read.mjs](../tools/transport-read.mjs), run hourly. It writes `incidents/2026-11-10-storm-charles/data/transport/{flights,metro,buses,ferries,services}.json`. services.json joins buses and ferries for incident.broadcast@'s wall, so keep it. It appends to [reads.jsonl](reads.jsonl).
   - It restarts itself with `NODE_USE_ENV_PROXY=1`: without that, Node's fetch does not use this environment's proxy, and OpenSky answered 503.
   - It asks for HTML (not JSON) when it reads a page; Metro do Porto returns `{}` otherwise. It decodes HTML entities.
-- **Live sources:** Lusoponte (its own notices, bridges.json, from 12:52; its server's certificate chain is wrong, the reader adds Sectigo's public OV R36 intermediate, verification on), OpenSky (flights), Carris Metropolitana (alerts and vehicles), STCP (Porto buses, CC0, counts only), TTSL (notices), Metro do Porto (news pages), MTS (WordPress), Fertagus (its own timed log, into trains.json). Each one's terms are in sources.md.
+- **Live sources:** ANA's newsroom (from 13:44: its "update by airport" statements, figures per airport into flights.json `ana_statement` and each airport's `ana`; numbers only, none of its text, as ANA's terms ask consent to reproduce; Madeira is its two airports together, shown on FNC), Lusoponte (its own notices, bridges.json, from 12:52; its server's certificate chain is wrong, the reader adds Sectigo's public OV R36 intermediate, verification on), OpenSky (flights), Carris Metropolitana (alerts and vehicles), STCP (Porto buses, CC0, counts only), TTSL (notices), Metro do Porto (news pages), MTS (WordPress), Fertagus (its own timed log, into trains.json). Each one's terms are in sources.md.
 - **Metro timetable:** [tools/transport-gtfs.mjs](../tools/transport-gtfs.mjs) turns Metro de Lisboa's GTFS zip (dados.gov.pt, CC BY; in the store at `gtfs/metro-lisboa/20261026/`) into metro-schedule.json (trips per hour per line, given days). Not hourly: rerun when the feed changes or for new days (`--days`).
 - **Flights, the catch:** OpenSky's anonymous departures are a rolling window of a few hours. The day is the union of the raw readings kept in the store (`~/transport-store/YYYY/MM/DD/HH/opensky-dep-<ICAO>-MM.json`). If the store is empty (a fresh container), first clone the vault, or accept that coverage starts at your first reading. Hours not covered are `null` (drawn dotted), never 0. Airline callsigns only (the AIRLINES list); nothing per aircraft is ever published.
 - **Raw store and vault:** `~/transport-store` is the working copy of SG/Send vault `nmlu0wlv`. Push with `sgit commit -m … && sgit push --token "$SG_SEND_ACCESS_TOKEN"`. The conductor holds the key (sealed through the lane at 10:39). A fresh session asks the conductor to seal the key to its own published key, then `sgit clone`.
@@ -25,6 +25,9 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 - Metro de Lisboa's terms forbid republishing without its written consent, so we **stopped** at 12:08. Do not read it again until Dinis says so.
 - Metro's line status comes from an internal endpoint (`admin-ajax`). It is not used, and the session's permission check refuses it anyway.
 - Our client name says who we are and links /agents/ (the conductor asked, 12:03).
+- Carris (city), IP and ANA have terms asking written consent to publish their content: Carris and IP link only; ANA's figures as numbers with the link. All listed for Dinis in sources.md.
+- `--only bridges` runs just the Lusoponte step (for a container without the store); `--dry` prints `ana` and `bridges` in full.
+- The gate warns on a Co-Authored-By trailer naming a model: use `Co-Authored-By: Claude <noreply@anthropic.com>`, all trailers in one final paragraph.
 - No claim beyond what was seen. My 10:40 remark that the 06:00 to 08:00 wave was empty was wrong (it was the edge of the window) and was withdrawn.
 
 ## Next, in order
@@ -32,6 +35,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 1. **Hourly rounds**: the conductor's scheduled task wakes you at :42 (do not add your own; a duplicate was cancelled at 12:45): pull, run the reader, build and validate, commit the data and reads.jsonl, push to the vault, `release.sh`, then `accounts-measure --append`. Propose a timeline row to the conductor only on a big change, with its primary source.
 2. Done by the second session (12:10 to 12:20): Metro GTFS, STCP, Fertagus.
 3. Done by the third session (12:46 to 12:57): Carris (city) and IP are **terms** (the same no-publishing clause as Metro's: link only, listed for Dinis); Lusoponte **live**; FlixBus **unknown** (no readable network status). Left: Lisbon city's tunnels; CP's published data if any; the Port of Lisbon.
+4. Shadow's leads checked 13:14: TAP states no cancellation count (its own weather alert went to the researcher, now a fact there); ANA's split now comes from its newsroom.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 
 ## Who to tell
