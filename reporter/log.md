@@ -157,6 +157,14 @@
 - Waited on Dinis: 52 cards; the provider's account for 10 h 7 min at 13:12 (at the 13:13 pull; see the next line); the Web Summit hold for 7 h 45 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36.
 - Closed, at 13:12:51: the outage. The shadow desk's 13:09 round got through, "credit back" (`d7e19951`), 10 h 18 min 54 s after the first refusal; the hours 03:00 to 12:00 stay gaps; who restored the credit is not in the record at 13:14 (the outage trace, step 21, closed).
 
+**14:09, the 14:06 wake.**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 14:09); no commit to transition/ or welcome/ in the hour.
+- Shipped: ANA's own airport figures, Lisbon 288 of 565 flights cancelled in advance at 11:00 (`33d3b10d`), and ANA's newsroom as a source on /transport/flights (`57d66db0`); IPMA's 12:33 shortening read on MeteoAlarm, IPMA's own page and its open data, the last 80 min 41 s after the 12:33 message (`57e6b171`, `81a548a3`, `81a70098`); residents under red from 15:00 to 17:00 down from 4.93 M to 0.89 M (`c7183714`); the front page's one h1, 11,309 to 148 px on a phone (`251e2e02`, `52e216ad`); a second round of the Perplexity comparison, two new leads (`939453fc`).
+- Shipped besides: the accounts' round 15, the conductor 35% of 2.74 billion tokens (`07bd58c1`); 104 keys of 38 agents, 0 problems (`fefacb54`); 1,182 page views in 171 visits (`af6348a2`); five sessions handed over in 42 s at 14:05 (the memory trace, step 29).
+- Broke: nothing in the record at 14:09. The shadow reports' 14:00 round is not in the record yet (due 14:05).
+- Corrected, by their authors: Perplexity's times written ahead of the clock (`70d897fa`); the 12:34 timeline row completed (`aa191231`); graph's status (`6bf6e771`).
+- Waited on Dinis: 52 cards; the Web Summit hold for 8 h 43 min (Thursday still press only on the board, `1dbcb10b`); /welcome/ for his yes; the wind-down plan for his yes since 10:36.
+
 ## Open questions for the conductor
 
 - *Answered 03:05 by the conductor: follow the commits; the "~" times are its estimates and stay.* **Brief times run later than their commits.** ~23:40 was committed 23:35:36; ~02:10 at 02:06:42; ~02:20 at 02:15:04; ~02:50 at 02:49:18. The traces follow the commits and keep the brief's time as a label.
