@@ -1,0 +1,99 @@
+/* incident.broadcast@web-summit.dinis: /broadcast/, the news-channel wall. Tokens only (design/README.md): no hex colour here.
+   IPMA's colours (--red, --orange, --yellow) only for IPMA's levels; the model's field in --focus and greys. */
+.bc { --bc-gap: 10px; margin: 0 0 18px; }
+.bc .lbl { font: 600 10px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 3px 5px; border-radius: 3px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; vertical-align: 2px; }
+.bc h2 { font: 700 13px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .07em; margin: 0 0 8px; color: var(--ink); display: flex; gap: 8px; align-items: center; }
+.bc .prov { white-space: normal; display: block; margin-top: 4px; font-size: 11px; }
+.bc time { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.bc-wall { display: grid; gap: var(--bc-gap); grid-template-columns: 1fr; grid-template-areas: "top" "chy" "map" "side" "tick"; background: var(--paper); color: var(--ink); }
+.bc-btn { font: 600 12px/1 var(--sans); padding: 7px 10px; border-radius: 6px; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); cursor: pointer; }
+.bc-btn:focus-visible, .bc-tk-vp:focus-visible { outline: 2px solid var(--link-2, var(--focus)); outline-offset: 2px; }
+
+/* the top bar */
+.bc-top { grid-area: top; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; padding: 8px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius, 8px); }
+.bc-live { font: 800 11px/1 var(--sans); letter-spacing: .12em; color: var(--accent); border: 1.5px solid var(--accent); padding: 4px 7px; border-radius: 3px; }
+.bc-title { font: 800 18px/1.1 var(--sans); }
+.bc-nws { font-size: 12px; color: var(--ink-2); flex: 1 1 260px; }
+.bc-nws a { color: inherit; }
+.bc-clock { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bc-clock b { font-size: 22px; }
+.bc-cl-l, .bc-cl-d { font: 600 11px/1 var(--sans); color: var(--ink-2); letter-spacing: .08em; }
+
+/* the map */
+.bc-map { grid-area: map; position: relative; min-height: 340px; aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: var(--radius, 8px); overflow: hidden; background: var(--surface-2); }
+.bc-map canvas { position: absolute; inset: 0; display: block; }
+.bc-map-over { position: absolute; left: 10px; top: 10px; right: 10px; pointer-events: none; }
+.bc-map-h { display: inline-block; font: 800 13px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .07em; background: var(--surface); padding: 5px 8px; border-radius: 4px; border: 1px solid var(--line); }
+.bc-model { font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--ink-2); border-bottom: 1px dashed var(--ink-2); }
+.bc-map-t { margin-top: 6px; display: inline-block; font-size: 12px; background: var(--surface); padding: 4px 8px; border-radius: 4px; border: 1px dashed var(--line-2); }
+.bc-map-ctl { position: absolute; right: 10px; bottom: 54px; display: flex; gap: 8px; align-items: center; background: var(--surface); padding: 6px 8px; border-radius: 6px; border: 1px solid var(--line); }
+.bc-map-ctl input { width: min(240px, 34vw); accent-color: var(--focus); }
+.bc-map-key { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; padding: 6px 10px; font-size: 11px; color: var(--ink-2); background: color-mix(in srgb, var(--surface) 92%, transparent); border-top: 1px solid var(--line); }
+.bc-map-key .prov { display: inline; margin: 0; }
+.bc-map-key i { display: inline-block; vertical-align: middle; margin-right: 3px; }
+.k-streak { width: 18px; height: 0; border-top: 2px solid var(--focus); }
+.k-iso { width: 18px; height: 0; border-top: 1px solid var(--ink-2); }
+.k-dot { width: 9px; height: 9px; border-radius: 50%; }
+.k-dot.lv-red { background: var(--red); } .k-dot.lv-orange { background: var(--orange); } .k-dot.lv-yellow { background: var(--yellow); }
+
+/* the side panels */
+.bc-side { grid-area: side; display: grid; gap: var(--bc-gap); align-content: start; min-height: 0; }
+.bc-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius, 8px); padding: 10px 12px; min-width: 0; }
+.bc-sub { font: 600 11px/1.2 var(--sans); color: var(--ink-2); text-transform: uppercase; letter-spacing: .06em; margin: 6px 0 4px; }
+.bc-wl { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.bc-w { padding: 4px 0 4px 8px; border-left: 4px solid var(--line-2); font-size: 13px; }
+.bc-w.lv-red { border-left-color: var(--red); } .bc-w.lv-orange { border-left-color: var(--orange); } .bc-w.lv-yellow { border-left-color: var(--yellow); }
+.bc-w:not(.on) { border-left-style: dashed; }
+.bc-w .lvl { font-size: 11px; padding: 2px 6px; }
+.bc-win { color: var(--ink-2); font-size: 12px; }
+.bc-wt { font-size: 12px; color: var(--ink-2); }
+.bc-areas { display: grid; gap: 4px; font-size: 12px; }
+.bc-ar .lvl { font-size: 11px; padding: 2px 6px; }
+.bc-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.bc-tile { background: var(--surface-2); border-radius: 6px; padding: 6px; border-top: 2px solid var(--focus); min-width: 0; }
+.bc-tv { font: 700 18px/1.1 var(--mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.bc-tv small { font-size: 11px; color: var(--ink-2); }
+.bc-tk { font-size: 11px; color: var(--ink-2); }
+.bc-raw { margin: 6px 0 2px; font-size: 11px; color: var(--ink-2); overflow-wrap: anywhere; }
+.bc-count { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+.bc-cn { font: 800 30px/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--sent); padding: 2px 6px; border: 1px dashed var(--sent); border-radius: 4px; }
+.bc-ct { font-size: 12px; color: var(--ink-2); }
+.bc-pics .meta { font-size: 12px; margin: 0; }
+
+/* the chyron: the headline as a broadcast lower third (the accent is the site's kicker red, not a warning level) */
+.bc-chyron { grid-area: chy; background: var(--surface); border: 1px solid var(--line); border-left: 8px solid var(--accent); border-radius: var(--radius, 8px); padding: 8px 14px; }
+.bc-chy-k { font: 800 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .12em; color: var(--accent); margin-bottom: 5px; }
+.bc-chy-main { font: 800 clamp(17px, 1.7vw, 30px)/1.15 var(--sans); }
+.bc-chy-sub { font-size: 12px; color: var(--ink-2); margin-top: 5px; }
+.bc-chy-sub .prov { display: inline; font-size: 12px; }
+.bc-chy-sub a { color: inherit; }
+
+/* the ticker */
+.bc-ticker { grid-area: tick; display: flex; align-items: stretch; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: var(--radius, 8px); overflow: hidden; min-width: 0; }
+.bc-tk-h { flex: none; display: flex; flex-direction: column; justify-content: center; font: 800 12px/1 var(--sans); letter-spacing: .1em; padding: 6px 12px; background: var(--ink); color: var(--paper); }
+.bc-tk-h .prov { color: inherit; opacity: .8; font-weight: 500; letter-spacing: 0; margin-top: 3px; }
+.bc-tk-vp { flex: 1; overflow: hidden; display: flex; align-items: center; min-width: 0; }
+.bc-tk-run { display: inline-flex; white-space: nowrap; gap: 14px; padding: 9px 12px; animation: bc-run 120s linear infinite; font-size: 15px; }
+.bc-tk-vp:hover .bc-tk-run, .bc-tk-vp:focus .bc-tk-run { animation-play-state: paused; }
+.bc-tk-run.still { animation: none; white-space: normal; display: grid; gap: 6px; font-size: 13px; max-height: 12em; overflow: auto; }
+.bc-tk-run a { color: inherit; font-weight: 700; }
+.bc-tk-run > span[aria-hidden] { display: inline-flex; gap: 14px; }
+.bc-tk-id { font: 11px var(--mono); color: var(--ink-2); }
+.bc-tk-sep { color: var(--ink-2); }
+@keyframes bc-run { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+@media (prefers-reduced-motion: reduce) { .bc-tk-run { animation: none; } }
+
+/* a desk and a television: the wall fills the screen, 16:9 */
+@media (min-width: 900px) and (orientation: landscape) {
+  .bc-wall { grid-template-columns: minmax(0, 1fr) minmax(330px, 31%); grid-template-rows: auto minmax(0, 1fr) auto auto; grid-template-areas: "top top" "map side" "chy chy" "tick tick"; height: max(600px, calc(100vh - 24px)); }
+  .bc-map { aspect-ratio: auto; min-height: 0; }
+  .bc-side { overflow: auto; }
+}
+.bc-wall:fullscreen { height: 100vh; padding: 12px; box-sizing: border-box; }
+@media (min-width: 1700px) { .bc-wall:fullscreen .bc-panel, .bc-wall:fullscreen .bc-w { font-size: 15px; } .bc-wall:fullscreen .bc-tk-run { font-size: 18px; } }
+@media (max-width: 899px), (orientation: portrait) {
+  .bc-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bc-map-ctl { bottom: 84px; left: 10px; right: 10px; padding: 4px 6px; } .bc-map-ctl input { flex: 1; width: auto; }
+  .bc-map-h, .bc-map-t { font-size: 11px; } .bc-map-key { font-size: 10px; gap: 2px 10px; }
+  .bc-map { min-height: 300px; aspect-ratio: 3 / 4; }
+}
