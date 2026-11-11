@@ -1,9 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T11:24:00Z",
-  "state": "fifth session: page views drained 11:24 UTC; /agents/live/ and /agents/universe/ live",
-  "last_wake": "2026-11-11T11:24:00Z",
+  "updated": "2026-11-11T11:53:00Z",
+  "state": "fifth session: the front-page panel data (data/agents/now.json) pushed for incident.weather@",
+  "last_wake": "2026-11-11T11:53:00Z",
   "session": {
     "id": "session_018yvwtMQ5aoHiSmnWrLz33S",
     "started_at": "2026-11-11T10:16Z",
@@ -72,7 +72,8 @@
     "11 Nov 09:25 Dinis, in this session: \"Yes create here the vault and then send the key to your conductor\". Made vault zd1cb3kt on dev.send.sgraph.ai for page views, with two append lanes, tested there and back (write, list, fetch, mark-processed; an unknown token and a missing enum key are both refused). The lanes' tokens and the enum key are in the vault itself (drain/lanes.json), so draining does not depend on one session. Key sent to incident.conductor@, sealed to its key (tools/lane-handover.mjs, by session message: the conductor has no append lane yet; the conductor opened it and holds a copy of the key since 09:29 UTC, by its own report. A correction: this line first said the message went at 09:32, a time written from a guess and ahead of the clock; it went at about 09:28). Page views stay off: the key the events are sealed to is not chosen",
     "11 Nov 09:36 page views on, at Dinis's words in this session (about 09:31: make the events' key here and send it to the conductor; publish the vault's read key on the site and put the stats there, as promptugal.news does). Vault zd1cb3kt is public to read: its read key is in data/agents/obs.json, and it holds only stats/views.json. The lanes' enum key (replaced: the first one sat in zd1cb3kt for some minutes and is now refused by the server) and the events' private key are in a second, private vault, j7z16ln1; its key was sent to incident.conductor@ sealed (tools/lane-handover.mjs, by session message; the conductor still has no append lane). tools/agents-views.mjs drains the lanes, keeps the opened events in the private vault and writes counts only to data/agents/views.json and the public vault; /agents/#views draws them. Tested with a real browser against the real lanes before release",
     "11 Nov 10:22 fifth session: the live map and the Universe each full size on a page of its own, at Dinis's word (~10:10): /agents/live/ and /agents/universe/ (agents/live/README.md, agents/universe/README.md; data-view=\"live\" and \"universe\" in app/agents/agents.js draw only that engine, as wide and tall as the screen, started without a button; Stop still gates the animation frames), linked from the top of /agents/; tested in Chromium at 390 px and 1440 px: no sideways scroll, both engines drew",
-    "11 Nov 11:24 hourly wake: page views drained (287 events opened, 0 refused; 141 views in 97 visits, 58 automated), data/agents/views.json republished; /agents/, /agents/live/ and /agents/universe/ serve 200 on the live host"
+    "11 Nov 11:24 hourly wake: page views drained (287 events opened, 0 refused; 141 views in 97 visits, 58 automated), data/agents/views.json republished; /agents/, /agents/live/ and /agents/universe/ serve 200 on the live host",
+    "11 Nov 11:53 the team at work, for the front page (Dinis ~11:46): tools/agents-now.mjs (an after generator) writes data/agents/now.json on every push (agents working in the last hour, sources read with their read times, social posts counted not listed, feeds from api/v1/index.json; every item with its source and time; no time ahead of the build); app/agents/now.js and now.css, demo at /app/agents/now.html; handed to incident.weather@, which draws it under IPMA's band"
   ],
   "next": [
     "in order: drain the page views each wake (tools/agents-views.mjs) and watch the counts for junk; the night's strip from incident.ci@'s commit files; the measured lines read live on each home"
