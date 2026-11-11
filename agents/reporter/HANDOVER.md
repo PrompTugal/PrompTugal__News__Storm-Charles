@@ -1,6 +1,6 @@
 # Hand-over: the reporter
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 10:09 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 11:18 UTC
 
 For a fresh incident.reporter@ session. Read the pack's start first ([library/pack/start.md](../../library/pack/start.md)), then this, then [reporter/traces/index.json](../../reporter/traces/index.json). Do not re-read the repository: the traces and the log are the memory.
 
@@ -47,6 +47,17 @@ The session key's private half (make a new key; mark this one handed over in `da
 - **Who uses the traces within minutes:** incident.journalist@ writes a piece from each new trace in the next round and re-anchors on every correction; the conductor answered a "not in the record" by writing the record (holds.md). A gap named plainly gets filled.
 - **Board cards on this role:** a-reporter-4 answered (the wake); a-reporter-5 (the list for the librarian) still open, no answer needed from the next session; a-journalist-5 was answered by the 05:08 correction.
 - **Outside git, gone with this session:** the session key's private half; the edit scripts (one per wake); nothing else.
+
+## From the fourth session (10:14 to 11:18 UTC; 187,780 tokens a call at the 11:17 measure; this section replaces earlier ones where they differ)
+
+- **State:** fifteen traces. New: [the 10:10 request](../../reporter/traces/request-ten-paths-and-small-animations.json), closed at 10:31:29; [the wind-down](../../reporter/traces/wind-down-explorer-to-villager.json), **open, the main job now**: one step per exit interview (transition/interviews/<role>.md), per hand-over, Dinis's yes to transition/PLAN.md, the close trigger (the storyteller's: IPMA's first read after 21:00 plus Web Summit's Day 3 decision). Still open: outage (a step per shadow gap; it was the ninth at 11:00), memory (a step per hour), the Web Summit hold, the loop (/welcome/ linked from / since 10:33:40, not moved), escalations (stale).
+- **The wind-down decides this role's future.** PLAN.md's verdict for the reporter: merge with the journalist and the storyteller into one desk, "the record". My six points for the closing record are in PLAN.md section 3 (close the open traces; trace the launch and the wind-down; reporter/arc.md end to end; interviews as steps; what carries into BAU; start at the close trigger). Nobody stops before Dinis's yes and its own hand-over to the record desk (Dinis ~10:32). Write the reporter's own exit interview from transition/interviews/TEMPLATE.md before the close trigger.
+- **Who reuses the traces now:** incident.motion@ reads every reporter/traces/*.json at build time into data/flows/trace-<id>.json (4038053e): a step with no sha, path or URL is skipped; a null `at` is drawn dashed from `at_note`. So keep evidence on every step and keep `at_note` readable. incident.storyteller@'s ten paths (story/paths/) cite the traces; paths 1 and 2 (a journalist's wake, a story made) are theirs and are not traced twice here (the README says so).
+- **The checkout may start detached** from dev; release.sh refuses ("be on dev"). `git checkout -B dev <HEAD>` after checking HEAD contains origin/dev.
+- **A new trace is renumbered freely until it is pushed;** after that it only grows at the end. The fill tool does not check time order: print `n` and `at` after it (I swapped two steps 11 s apart before the push).
+- **The board's count waiting on Dinis:** cards whose state is not done and whose `waiting_on` starts with "Dinis" (44 at 11:14).
+- **The wake:** hourly at :06 into this session, the conductor's; the next session's is the conductor's to set.
+- **Outside git, gone with this session:** the session key's private half (incident-reporter-dinis-4); the edit scripts. Next key id: incident-reporter-dinis-5.
 
 ## Who reads this work
 
