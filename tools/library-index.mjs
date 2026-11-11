@@ -3,8 +3,8 @@
 // information, all documents, all briefs should be on the site"; "provenance, where everything needs to be linked").
 // Repository -> library/index.json (for agents) and library/README.md (the page). Zero dependencies, tens of milliseconds.
 //
-//   node tools/library-index.mjs            rebuild the tracked page (library/README.md) from the files as they are; index.json is
-//                                           NOT written here (it is over git's 256 KB rule): the build makes it with --out. Reads NO git history (CI's clone is
+//   node tools/library-index.mjs            count and report only: nothing is written. The catalogue and its page are not tracked
+//                                           (index.json outgrew git's 256 KB rule); the build makes both with --out on every push. Reads NO git history (CI's clone is
 //                                           shallow): authorship and dates come from each file's own header or front matter, and
 //                                           from library/provenance.json where its sha256 still matches the file.
 //   node tools/library-index.mjs --git      first refresh library/provenance.json from the commits (a full clone only; refuses a
@@ -300,11 +300,11 @@ ${list(gaps.not_served_on_the_site)}
 `
 
 // ---------------------------------------------------------------- write (or check)
-// index.json is written only with --out (into the served site): it outgrew git's 256 KB rule at about 170 files, and the build
-// makes it fresh on every push. The page stays tracked as a snapshot, because the build renders the markdown it finds in the tree.
-const targets = OUT_DIR ? [['library/index.json', indexText], ['library/README.md', md]] : [['library/README.md', md]]
+// Neither output is tracked any more (11 November): the page too is written only with --out, and the build renders it from there.
+const targets = OUT_DIR ? [['library/index.json', indexText], ['library/README.md', md]] : []
 if (args.has('--check')) {
-    const stale = targets.filter(([f, s]) => !fs.existsSync(path.join(ROOT, f)) || fs.readFileSync(path.join(ROOT, f), 'utf8') !== s).map(([f]) => f)
+    if (!OUT_DIR) { console.log(`library-index: OK ${entries.length} files (nothing tracked to compare; --check --out DIR compares DIR)`); process.exit(0) }
+    const stale = targets.filter(([f, s]) => !fs.existsSync(path.join(OUT_DIR, f)) || fs.readFileSync(path.join(OUT_DIR, f), 'utf8') !== s).map(([f]) => f)
     if (stale.length) { console.log(`library-index: STALE ${stale.join(', ')} (run node tools/library-index.mjs)`); process.exit(1) }
     console.log(`library-index: OK ${entries.length} files`); process.exit(0)
 }
