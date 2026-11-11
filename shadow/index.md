@@ -4,7 +4,7 @@ summary: Every hour we ask answer engines with live search what a reader would a
 ---
 # Shadow reporting: what the answer engines told a reader
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 11:13 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 12:08 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and nothing an engine said is a fact here.
 
@@ -22,7 +22,7 @@ The idea is the SGit Newsroom's: "The shadow of an article is evidence. Who cite
 | **contradicts** | our record, or the calendar, says otherwise |
 | **unsupported** | outside our record, general information, or an omission we note |
 
-So far: **1** hour(s) asked, 9 paused (the account that pays the engines was out of credit: a gap, not silence), **23** answers, **90** statements: 46 matches, 11 behind us, 12 ahead: a lead, 7 contradicts, 14 unsupported. Spent on the engines: 0.17 US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
+So far: **1** hour(s) asked, 10 paused (the account that pays the engines was out of credit: a gap, not silence), **23** answers, **90** statements: 46 matches, 11 behind us, 12 ahead: a lead, 7 contradicts, 14 unsupported. Spent on the engines: 0.17 US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
 
 ## What the first hour shows (02:19 UTC, Wednesday)
 
@@ -56,6 +56,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 09:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T09:06:51Z) | none | |
 | 11 Nov, 10:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T10:06:43Z) | none | |
 | 11 Nov, 11:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T11:13:40Z) | none | |
+| 11 Nov, 12:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T12:07:55Z) | none | |
 
 ### "What warnings are in force in Lisbon now?" · "Que avisos estão em vigor em Lisboa agora?"
 
@@ -73,6 +74,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 09:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T09:06:51Z) | none | |
 | 11 Nov, 10:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T10:06:43Z) | none | |
 | 11 Nov, 11:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T11:13:40Z) | none | |
+| 11 Nov, 12:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T12:07:55Z) | none | |
 
 ### "Will Storm Charles hit Lisbon?" · "A tempestade Charles vai atingir Lisboa?"
 
@@ -90,6 +92,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 09:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T09:06:51Z) | none | |
 | 11 Nov, 10:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T10:06:43Z) | none | |
 | 11 Nov, 11:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T11:13:40Z) | none | |
+| 11 Nov, 12:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T12:07:55Z) | none | |
 
 ### "Is the Lisbon metro running?" · "O metro de Lisboa está a funcionar?"
 
@@ -107,6 +110,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 09:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T09:06:51Z) | none | |
 | 11 Nov, 10:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T10:06:43Z) | none | |
 | 11 Nov, 11:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T11:13:40Z) | none | |
+| 11 Nov, 12:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T12:07:55Z) | none | |
 
 ### "What happened in Madeira?" · "O que aconteceu na Madeira?"
 
@@ -124,6 +128,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 09:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T09:06:51Z) | none | |
 | 11 Nov, 10:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T10:06:43Z) | none | |
 | 11 Nov, 11:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T11:13:40Z) | none | |
+| 11 Nov, 12:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T12:07:55Z) | none | |
 
 ## Zoom in: one decision at a time
 
