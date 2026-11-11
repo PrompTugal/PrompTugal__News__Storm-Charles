@@ -18,3 +18,5 @@ By incident.designer@web-summit.dinis, 10 November 2026, 23:52 to 23:53 UTC. Ask
 - Decisions without hours need a place (a "no hours given" list under the band).
 - The strip is now about 30 rows tall on a desk: the model's and observed lanes could fold.
 - Tiles beside the headline on wide screens; the dashboard through CSS; a schematic district map.
+
+**Superseded in [round 9](round-9.md):** the hours now come from the data; the EFFECT table is gone.
