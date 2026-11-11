@@ -171,8 +171,8 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "d1597f532b66b985e8ffb053d61798ced1765dcd3f776a65cec3d4ad98a2f7ee",
-      "state": "seventh session: the team at work says the snapshot's age instead of an undercount past 20 min (flags.snapshot_age_min); next, the page-views lane",
+      "status_sha256": "3510722c5134d5d149797791d40f458f2f18d67caff4ed074d2f83a9ee51b838",
+      "state": "seventh session: page views drained 15:26 (284 views by people, 774 automated, 1,567 inferred), people vs counted apart now drawn on /agents/#views; next, the agents' map",
       "last_wake": "2026-11-11T11:53:00Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
@@ -566,9 +566,9 @@
       "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
       "shared_row": true,
       "status_file": "agents/meteorologist/status.json",
-      "status_sha256": "702ef23ffc389054571333e7f25ce5219de15ecad316c603524eb87654d56df8",
-      "state": "14:22 wake done: LPPT 14:00 S 29G40KT (74 km/h, window max, below warned), wind shear; Oeiras 26.2 mm/h, 73.4 mm in 6 h; centre now likely just north (analysis 21).",
-      "last_wake": "2026-11-11T14:23Z",
+      "status_sha256": "86be68ef6319c18edbef003de187f3636b0aa5f97b8f1501961483bd4accacf2",
+      "state": "15:22 wake done: rain eased (1-7 mm/h), wind SW strong (LPPT G33KT, max 40 kt at 14:00), 989 hPa steady: centre passing just north; Relógio 74.0 mm in 6 h; analysis 22.",
+      "last_wake": "2026-11-11T15:22Z",
       "jobs": [
         "J1 (tonight): the weather as JSON for the dashboard, in incidents/2026-11-10-storm-charles/data/weather/ with a README per file: IPMA warnings for Lisboa (every level change with the time IPMA issued it and the time read), communiqués, Lis…",
         "J2 (tonight): how far ahead could it be known? The first public sign of CHARLES (communiqué no. 1, 9 Nov 13:17), each warning's lead time to its start, and what the models said against what is observed from Wednesday 05:00. Facts, evidence…",
@@ -765,23 +765,23 @@
       "job": "**capture every external page** (screenshot, HTML, sha256), the vaults (packed for captures, normal for display), the evidence pages",
       "shared_row": false,
       "status_file": "agents/archivist/status.json",
-      "status_sha256": "66ea2d09d499c9fde192a3cfa16005a21ae856369aacc4f9a993c8398b231795",
+      "status_sha256": "b92cc69bed4fba30ce4b8e98118158925aac53cfdfb4f37c52b184ecfbfd736a",
       "state": "active: capturing; primary sources re-read each hour",
-      "last_wake": "2026-11-11T14:27:00Z",
+      "last_wake": "2026-11-11T15:28:00Z",
       "jobs": [],
       "done": [
         "tools/capture.mjs: one address at a time, a few seconds apart, as 'Mozilla/5.0 (compatible; page-capture/1.0)', robots.txt read and obeyed, never logged in; keeps (outside git) the HTML as served, the document after scripts, the visible te…",
         "tools/capture-records.mjs: captures -> the two vaults and evidence/<source>/<yyyy>/<mm>/<dd>/<hhmm>-<slug>.json + its page; evidence/index.json, index.md, rows.json (timeline row id -> evidence id); changed / unchanged against the capture …",
-        "07:27 hourly round: nothing changed in substance. IPMA's warnings timeline differs from 06:25 only in its time axis labels (read and marked same content); communiqués, ANEPC's listing and the government's declaration unchanged; ANEPC's not…",
         "08:24 hourly round: IPMA's warnings timeline for Lisbon CHANGED between 07:27 and 08:24 (ipma/2026/11/11/0727-pt-otempo-prev-sam -> ipma/2026/11/11/0824-pt-otempo-prev-sam): last update now reads 11 November 07:16; the Lisbon wind line rea…",
         "09:24 hourly round: IPMA's warnings timeline for Lisbon changed in one line since 08:24 (ipma/2026/11/11/0824-pt-otempo-prev-sam -> ipma/2026/11/11/0924-pt-otempo-prev-sam): the orange rain line (07:17 to 09:00) is no longer listed (its ow…",
         "10:23 hourly round: all five primaries answered 200 and are unchanged since 09:24. IPMA's timeline for Lisbon still lists rain red 09:00 to 18:00, wind orange 09:00 to 21:00, sea state orange 12:00 to 21:00 and yellow 21:00 to 03:00; last …",
         "11:27 hourly round: all five primaries answered 200 and are unchanged since 09:24; IPMA's timeline for Lisbon lists the same four warnings, last update 11 November 07:16, region label 'Lisboa Vermelho'",
         "12:24 hourly round: IPMA's communiqués page CHANGED (ipma/2026/11/11/1127-pt-otempo-comunicados -> ipma/2026/11/11/1224-pt-otempo-comunicados): communiqué no. 3 on CHARLES, edited 2026-11-11 12:16:26, replaces no. 2. IPMA's timeline for Li…",
         "13:25 hourly round: IPMA's timeline for Lisbon CHANGED (ipma/2026/11/11/1224-pt-otempo-prev-sam -> ipma/2026/11/11/1325-pt-otempo-prev-sam): last update 11 November 12:33; rain red now 12:34 to 15:00, then yellow 15:00 to 18:00; wind orang…",
-        "14:23 hourly round: nothing changed since 13:25. IPMA's timeline for Lisbon: red rain 12:34 to 15:00, yellow 15:00 to 18:00, wind orange to 18:00, sea state orange to 21:00 and yellow to 03:00, last update 12:33, label 'Lisboa Vermelho'. C…"
+        "14:23 hourly round: nothing changed since 13:25. IPMA's timeline for Lisbon: red rain 12:34 to 15:00, yellow 15:00 to 18:00, wind orange to 18:00, sea state orange to 21:00 and yellow to 03:00, last update 12:33, label 'Lisboa Vermelho'. C…",
+        "15:24 hourly round: IPMA's timeline for Lisbon CHANGED (ipma/2026/11/11/1423-pt-otempo-prev-sam -> ipma/2026/11/11/1524-pt-otempo-prev-sam): last update 11 November 15:05; no red line is listed for Lisbon any more; rain yellow 15:06 to 18:…"
       ],
-      "done_total": 23,
+      "done_total": 24,
       "next": [
         "primaries re-read hourly at :23, changed / unchanged",
         "186 commercial or unclassified research addresses stay held until their terms are read",
@@ -2702,23 +2702,23 @@
       "job": "**a section per source body**, MeteoAlarm first: its feeds browsed, its API mapped, what changed over time, the licence",
       "shared_row": false,
       "status_file": "agents/sources/status.json",
-      "status_sha256": "213766fc66a346eb03601c1b89a284e20af9b4c9ce8d2e52dcec1077e5f63955",
-      "state": "active: hourly rounds; MeteoAlarm's Portugal feed last changed at the 13:26 read (IPMA's messages sent 12:18 and 12:33 on 11 Nov)",
-      "last_wake": "2026-11-11T14:25:00Z",
+      "status_sha256": "33cf0796a1a0eea7a8635e7bd5bf4b9fc9848716f80d8b8973d4bda013f189d1",
+      "state": "active: hourly rounds; MeteoAlarm's Portugal feed last changed at the 15:24 read (IPMA's messages sent 15:05 on 11 Nov)",
+      "last_wake": "2026-11-11T15:24:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
         "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs…",
-        "09:30 UTC: agents/sources/HANDOVER.md written for a fresh sources session (what exists, the hourly round, the rules learnt, the vault, what is open with Dinis)",
         "09:42 UTC: at Dinis's yes in this session (09:38 and 09:40 UTC), the key of vault op6i3jfq was sealed to incident.conductor@'s public key and appended to the conductor's key lane (tools/lane-handover.mjs seal --via-lane): key sent; nothing…",
         "09:43 UTC: the conductor drained its key lane: vault op6i3jfq's key sent, held by the conductor since 09:43 UTC",
         "10:25 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired); the archivist asked how it wants the vault's read key",
         "11:28 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired). 10:26: the read key of vault op6i3jfq could not be printed here (this session's permission check refused it); the archivist lists the vault by id with no read…",
         "12:25 UTC round: feed read (the same bytes as 08:24; 46 of 192 not yet expired); the government portal's page lists what it publishes address by address (the alert declaration is its most cited address here, 14 times), from addresses alrea…",
         "13:26 UTC round: THE FEED CHANGED again (diffs/2026/11/11/132617.json: 2 appeared, 25 replaced, 21 left): IPMA's messages sent 11 Nov 12:18 and 12:33 UTC shorten and lower the warnings: Lisboa and Setúbal red rain now ends 15:00 (was 18:00…",
-        "14:25 UTC round: feed read (the same bytes as 13:26; 48 of 198 not yet expired); nothing else this round"
+        "14:25 UTC round: feed read (the same bytes as 13:26; 48 of 198 not yet expired); nothing else this round",
+        "15:24 UTC round: the feed changed (diffs/2026/11/11/152430.json): IPMA's messages sent 11 Nov 15:05 UTC lower Santarém's rain warning from red to yellow and Leiria's from orange to yellow (to 18:00); Lisboa's and Setúbal's red rain warning…"
       ],
-      "done_total": 25,
+      "done_total": 26,
       "next": [
         "MeteoAlarm: Spain's feed beside Portugal's",
         "register the most-cited of the hosts not yet in the register",
@@ -3419,6 +3419,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T15:24:13Z",
-  "content_sha256": "9b90a8a651576359f66065b8d3a154c9a3cd7a2e4e30d9ec52d0dac088887d4d"
+  "updated": "2026-11-11T15:27:49Z",
+  "content_sha256": "8ce09bde0dd7d0fc85a6ca90b6d63393bc70faf3423a74021c04bcd1d0bdbad4"
 }
