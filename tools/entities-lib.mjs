@@ -89,10 +89,11 @@ export function neighbours(root = ROOT) {
     }
     // incident.sources@'s bodies (sources/sources.json): a body that has no page of its own is on the sources page, under its group
     try {
-        const S = readJson(path.join(root, 'sources/sources.json')), anchor = { official: 'official-bodies', transport: 'transport-operators-and-venues', reference: 'reference-and-open-data', press: 'the-press', platform: 'platforms' }
+        const S = readJson(path.join(root, 'sources/sources.json'))
         for (const s of S.sources || []) {
-            const base = String(s.name || '').replace(/\s*\(.*$/, '').trim(), own = s.id === 'ipma' ? 'ipma/index.html' : (s.section && !s.section.startsWith('..') ? s.section : null)
-            if (base.length > 2 && /[A-Z]/.test(base) && !/ and | \/ /.test(base)) out.push({ id: `sources/${s.id}`, type: 'source', kind: s.group, name: base, also: [], hosts: s.hosts || [], href: own ? `sources/${own}` : `sources/index.html#${anchor[s.group] || ''}`, md: own ? `sources/${own.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md')}` : 'sources/README.md', summary: [s.kind, s.publishes && `Publishes: ${s.publishes}`, s.we_take && `We take: ${s.we_take}`, s.licence?.status && `Licence: ${s.licence.status}${s.licence.summary ? ` (${s.licence.summary})` : ''}`].filter(Boolean).join('. ') })
+            // every body has its own address, sources/<id>/ (made at build time), and `entity` where incident.sources@ matched a node here
+            const base = String(s.name || '').replace(/\s*\(.*$/, '').trim(), page = s.page || `${s.id}/index.html`
+            if (base.length > 2 && /[A-Z]/.test(base)) out.push({ id: `sources/${s.id}`, type: 'source', kind: s.group, entity: s.entity || null, name: base, also: [], hosts: s.hosts || [], href: `sources/${page}`, md: `sources/${page.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md')}`, summary: [s.kind, s.publishes && `Publishes: ${s.publishes}`, s.we_take && `We take: ${s.we_take}`, s.licence?.status && `Licence: ${s.licence.status}${s.licence.summary ? ` (${s.licence.summary})` : ''}`].filter(Boolean).join('. ') })
         }
     } catch { }
     return out
