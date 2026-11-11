@@ -1,0 +1,46 @@
+diff --git a/.github/workflows/deploy.yml b/.github/workflows/deploy.yml
+index 30afcfd0..b55799d5 100644
+--- a/.github/workflows/deploy.yml
++++ b/.github/workflows/deploy.yml
+@@ -30,6 +30,16 @@ jobs:
+       - uses: actions/checkout@v4
+         with:
+           fetch-depth: 1
++      - name: Still dev's newest push?
++        id: newest
++        # a run GitHub held back (20:17 to 21:02 on 11 November: 24 runs queued with no jobs) must never deploy an older commit
++        # over a newer one: if dev has moved on, this run builds and gates but does not deploy (the newer push's run deploys)
++        run: |
++          head=$(git ls-remote origin refs/heads/dev | cut -f1)
++          if [ -n "$head" ] && [ "$head" != "$GITHUB_SHA" ] && [ "$GITHUB_REF" = "refs/heads/dev" ]; then
++            echo "stale=1" >> "$GITHUB_OUTPUT"
++            echo "::notice title=superseded::$GITHUB_SHA is not dev's head ($head): built and gated, not deployed"
++          fi
+       - name: Version
+         run: |
+           echo "VERSION=v$(cat admin/series.txt).${{ github.run_number }}" >> "$GITHUB_ENV"
+@@ -61,9 +71,11 @@ jobs:
+         run: |
+           if ls .brief-pdf/*.pdf >/dev/null 2>&1; then cp .brief-pdf/*.pdf _site/brief/ && ls -l _site/brief/*.pdf; else echo "::warning title=brief-pdf::no PDF in this deploy"; fi
+       - uses: actions/upload-pages-artifact@v3
++        if: steps.newest.outputs.stale != '1'
+         with:
+           path: _site
+       - id: deployment
++        if: steps.newest.outputs.stale != '1'
+         uses: actions/deploy-pages@v4
+         continue-on-error: true   # 5 of the first 414 runs failed here with "No artifacts named github-pages were found" seconds after a good upload
+       - name: Wait before the second try
+@@ -73,10 +85,11 @@ jobs:
+         if: steps.deployment.outcome == 'failure'
+         uses: actions/deploy-pages@v4   # one more try; if this fails too the run is red, as before
+       - name: Tag the release
+-        if: github.event_name == 'push'
++        if: github.event_name == 'push' && steps.newest.outputs.stale != '1'
+         run: |
+           git tag "$VERSION" && git push -q origin "refs/tags/$VERSION" || echo "tag $VERSION not pushed"
+       - name: Measure push to served
++        if: steps.newest.outputs.stale != '1'
+         env:
+           PAGE_URL: ${{ steps.deployment.outputs.page_url || steps.deployment2.outputs.page_url }}
+         run: |

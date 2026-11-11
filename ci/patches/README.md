@@ -1,6 +1,6 @@
 # Patches for the conductor's files
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 15:20 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 21:22 UTC
 
 The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open one was checked with `git apply --check` at commit `f42d48a` (the signing patch rebuilt at 03:16 after `validate.mjs` and the policy changed).
 
@@ -12,6 +12,7 @@ The workflow, the build, the gate and the release script are incident.conductor@
 | brief-pdf.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`1a5f32d7`, 12:17 UTC; live from run 1061); the file is removed | the brief's PDFs are rendered in CI from the built page and served at `/brief/brief-latest.pdf` and `/brief/edition-<n>.pdf`, from a cache keyed on the page's inputs |
 | generators-together.patch | `admin/build/build.mjs` | **applied** by the conductor (`f9ff8bc9`, 12:35 UTC; live from run 1109); the file is removed. On the runner, the 20 runs after (1110 to 1138): gate median 5.5 s, max 7; the 17 before (1079 to 1108): median 6 s, max 10. Push to served median 40 s after, 43 s before (read 13:24 UTC, data/ci/runs) | the twelve "before" generators run side by side instead of one after another: the gate is about 1.2 s shorter here, same output |
 | gate-overlap.patch | `admin/build/validate.mjs` | **applied** by the conductor (`d4ba6505`, 14:45 UTC; gate 3.4 to 3.6 s on its machine at 2,406 pages); the file is removed. On the runner, the 20 runs after (1264 to 1285): gate median 5 s, max 8, three runs at 3 s; the 17 before (1240 to 1263): median 6 s, max 9. Push to served median 41.5 s after, 47 s before (read 15:19 UTC) | the gate starts the build as a child process and checks the tracked files while it runs (that scan reads only the repository, never `_site/`); the built-site checks `await` the build. A failing build still fails the gate (exit 1, "admin/build/build.mjs exited <code>"). Here, six runs each, interleaved: 4,153 to 5,013 ms today (median about 4,400), 3,601 to 5,057 ms with it (median about 3,860) |
+| [deploy-newest-only.patch](deploy-newest-only.patch) | `.github/workflows/deploy.yml` | **ready for the conductor** (21:22 UTC; `git apply --check` at `421af227`) | one step after checkout asks `git ls-remote` for dev's head: if dev has moved on, the run builds and gates (a broken commit is still red) but skips upload, deploy, tag and the live check, with a notice titled superseded; if the lookup fails it deploys as today. Why: from 20:17 to 21:02 on 11 November GitHub held runs 1500 to 1523 queued with no jobs; at 21:19 they are still queued. If GitHub ever starts one, it would deploy that older commit over the newest, and the live check would pass (v0.1.1500 is at least 1500). Tested here both ways (head: no output; an older sha: stale=1 and the notice) |
 
 ## Generators in-process: measured, and not recommended
 
