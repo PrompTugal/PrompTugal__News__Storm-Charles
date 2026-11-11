@@ -1,10 +1,10 @@
 {
  "about": "Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub's Actions API gave them. version: v<series>.<run number>, CI's own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit's time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. push_to_served_s: the run's own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T02:27:41Z",
+ "updated": "2026-11-11T02:29:40Z",
  "source": "https://api.github.com/repos/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs",
  "period": "2026-11-10",
- "count": 77,
+ "count": 76,
  "runs": [
   {
    "run": 1,
@@ -2187,34 +2187,6 @@
    ],
    "failed_step": "deploy",
    "reason": "Canceling since a higher priority waiting request for pages exists | Error: No artifacts named \"github-pages\" were found for this workflow run. Ensure artifacts are uploaded with actions/upload-artifact@v4 or later. | Error: No artifacts named \"github-pages\" were found for this workflow run. Ensure artifacts are uploaded with actions/upload-artifact@v4 or later.\n    at getArtifactMetadata (/home/runner/work/_actions/actions/deploy-pages/v4/src/internal/api-client.js:85:1)\n    at processTicksAndRejections (node:in | Fetching artifact metadata failed. Is githubstatus.com reporting issues with API requests, Pages, or Actions? Please re-run the deployment at a later time.",
-   "tag": null
-  },
-  {
-   "run": 38,
-   "id": 42926415524,
-   "attempt": 1,
-   "version": "v0.1.38",
-   "sha": "5576aac387417cc226b3596bd2c8faf3a29dad14",
-   "branch": "dev",
-   "event": "push",
-   "agent": "incident.librarian@web-summit.dinis",
-   "what": "the catalogue's commit record refreshed",
-   "pushed": "2026-11-10T23:48:52Z",
-   "queued": "2026-11-10T23:48:56Z",
-   "started": "2026-11-10T23:49:01Z",
-   "ended": "2026-11-10T23:49:03Z",
-   "result": "cancelled",
-   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42926415524",
-   "queue_s": 5,
-   "run_s": 2,
-   "steps": [
-    {
-     "step": "set up",
-     "s": 0,
-     "result": "cancelled"
-    }
-   ],
-   "reason": "Canceling since a higher priority waiting request for pages exists | The operation was canceled.",
    "tag": null
   },
   {
