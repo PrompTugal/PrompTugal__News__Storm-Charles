@@ -1,5 +1,5 @@
 {
- "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first. `entity` is the id of the same body in entities/ (incident.entities@), where one exists.",
+ "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first. `entity` is the id of the same body in entities/ (incident.entities@), where one exists. `also` lists the plain names a body is written by, for the linker.",
  "by": "incident.sources@web-summit.dinis",
  "updated": "2026-11-11T02:30:00Z",
  "sources": [
@@ -59,7 +59,11 @@
     "RSS"
    ],
    "reads": "every 5 to 30 minutes (refresh.py); hourly by incident.ipma@",
-   "entity": "body/ipma"
+   "entity": "body/ipma",
+   "also": [
+    "IPMA",
+    "Instituto Português do Mar e da Atmosfera"
+   ]
   },
   {
    "id": "anepc",
@@ -77,7 +81,11 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "body/anepc"
+   "entity": "body/anepc",
+   "also": [
+    "ANEPC",
+    "Proteção Civil"
+   ]
   },
   {
    "id": "government",
@@ -153,7 +161,10 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "body/aemet"
+   "entity": "body/aemet",
+   "also": [
+    "AEMET"
+   ]
   },
   {
    "id": "nhc",
@@ -169,7 +180,11 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "also": [
+    "NHC",
+    "National Hurricane Center"
+   ]
   },
   {
    "id": "noaa-awc",
@@ -189,7 +204,10 @@
    "formats": [
     "JSON"
    ],
-   "reads": "with every refresh.py run"
+   "reads": "with every refresh.py run",
+   "also": [
+    "Aviation Weather Center"
+   ]
   },
   {
    "id": "amn",
@@ -257,7 +275,11 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "service/cp"
+   "entity": "service/cp",
+   "also": [
+    "CP",
+    "Comboios de Portugal"
+   ]
   },
   {
    "id": "ttsl",
@@ -274,7 +296,11 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "service/ferries"
+   "entity": "service/ferries",
+   "also": [
+    "Transtejo Soflusa",
+    "TTSL"
+   ]
   },
   {
    "id": "rede-expressos",
@@ -309,7 +335,11 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "service/airport"
+   "entity": "service/airport",
+   "also": [
+    "ANA Aeroportos de Portugal",
+    "Lisbon airport"
+   ]
   },
   {
    "id": "lusoponte",
@@ -343,7 +373,13 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "also": [
+    "FIL",
+    "MEO Arena",
+    "Feira Internacional de Lisboa"
+   ],
+   "entity": "place/venue"
   },
   {
    "id": "met-no",
@@ -441,7 +477,11 @@
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
    "section": "../research/wikipedia/index.html",
-   "owner": "incident.wikipedia@web-summit.dinis"
+   "owner": "incident.wikipedia@web-summit.dinis",
+   "also": [
+    "Wikipedia",
+    "Wikidata"
+   ]
   },
   {
    "id": "lusa",
@@ -556,7 +596,11 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "outlet/dn"
+   "entity": "outlet/dn",
+   "also": [
+    "Diário de Notícias",
+    "DN"
+   ]
   },
   {
    "id": "cnnportugal",
@@ -574,7 +618,11 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "outlet/cnn-portugal"
+   "entity": "outlet/cnn-portugal",
+   "also": [
+    "CNN Portugal",
+    "TVI"
+   ]
   },
   {
    "id": "dnoticias",
@@ -719,7 +767,14 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "outlet/sapo"
+   "entity": "outlet/sapo",
+   "also": [
+    "SAPO",
+    "SAPO Tek",
+    "Jornal Económico",
+    "Executive Digest",
+    "24 Notícias"
+   ]
   },
   {
    "id": "rr",
@@ -736,7 +791,11 @@
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
    },
-   "entity": "outlet/renascenca"
+   "entity": "outlet/renascenca",
+   "also": [
+    "Renascença",
+    "Rádio Renascença"
+   ]
   },
   {
    "id": "tsf",
@@ -841,7 +900,10 @@
    "licence": {
     "status": "not read yet",
     "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
-   }
+   },
+   "also": [
+    "Mastodon"
+   ]
   },
   {
    "id": "youtube",

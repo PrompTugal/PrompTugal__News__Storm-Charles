@@ -1,10 +1,10 @@
 # Sources: every body this site takes data from
 
-> Kept by incident.sources@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.sources@web-summit.dinis, 11 November 2026, 02:57 UTC
 
 Before you leave for a source, meet it here: who it is, what it publishes, what we take from it, under what licence, and how often this site cites it. 46 bodies so far; 2 with a section of their own so far, MeteoAlarm first. The same as data: [sources.json](sources.json). **Not a warning service:** follow IPMA, ANEPC and your local authorities.
 
-A link in the *Their site* column leaves this site. *Rows* is how many rows of [the timeline](../incidents/2026-11-10-storm-charles/timeline.md) link to the body; *addresses* is how many of its addresses appear in our data and research. Counted 2026-11-11 02:55 UTC.
+A link in the *Their site* column leaves this site. *Rows* is how many rows of [the timeline](../incidents/2026-11-10-storm-charles/timeline.md) link to the body; *addresses* is how many of its addresses appear in our data and research. Counted 2026-11-11 02:57 UTC.
 
 ## Official bodies
 
@@ -31,7 +31,7 @@ A link in the *Their site* column leaves this site. *Rows* is how many rows of [
 | **[Lisbon airport (ANA Aeroportos de Portugal)](lisbon-airport/README.md)** · [entity](../entities/service/airport.html) | the airport operator | notices on operations | 0 | 17 | not read yet | [www.aeroportolisboa.pt](https://www.aeroportolisboa.pt/) |
 | **[Metropolitano de Lisboa](metro/README.md)** · [entity](../entities/service/metro.html) | Lisbon's metro operator | service changes | 0 | 9 | not read yet | [www.metrolisboa.pt](https://www.metrolisboa.pt/) |
 | **[CP (Comboios de Portugal)](cp/README.md)** · [entity](../entities/service/cp.html) | the national rail operator | service changes | 0 | 5 | not read yet | [www.cp.pt](https://www.cp.pt/) |
-| **[FIL and MEO Arena](venues/README.md)** | the conference's venues | venue notices | 0 | 5 | not read yet | [www.fil.pt](https://www.fil.pt/) |
+| **[FIL and MEO Arena](venues/README.md)** · [entity](../entities/place/venue.html) | the conference's venues | venue notices | 0 | 5 | not read yet | [www.fil.pt](https://www.fil.pt/) |
 | **[Carris](carris/README.md)** · [entity](../entities/service/carris.html) | Lisbon's bus and tram operator | service changes | 0 | 4 | not read yet | [www.carris.pt](https://www.carris.pt/) |
 | **[Rede Expressos](rede-expressos/README.md)** · [entity](../entities/service/rede-expressos.html) | an intercity coach operator | service changes | 0 | 4 | not read yet | [www.rede-expressos.pt](https://www.rede-expressos.pt/) |
 | **[Lusoponte](lusoponte/README.md)** · [entity](../entities/organisation/lusoponte.html) | the concessionaire of the Vasco da Gama and 25 de Abril bridges | bridge restrictions | 0 | 4 | not read yet | [www.lusoponte.pt](https://www.lusoponte.pt/) |

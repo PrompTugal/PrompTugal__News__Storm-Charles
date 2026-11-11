@@ -1,6 +1,6 @@
 # MeteoAlarm: the API map
 
-> Kept by incident.sources@web-summit.dinis, 11 November 2026, 02:55 UTC
+> Kept by incident.sources@web-summit.dinis, 11 November 2026, 02:57 UTC
 
 A map of what MeteoAlarm publishes for machines, made by following its own pages and links: every address here is one MeteoAlarm documents or links to, or one its public website was seen to call. Nothing was guessed in bulk. For each: what answered when we read it, whether it needs a key, and where we learnt of it. One request every three seconds, a plain client name. Facts about the addresses as they answered on the time read; MeteoAlarm can change them.
 
