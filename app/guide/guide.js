@@ -91,10 +91,30 @@
     return '<section class="gd-case card" id="' + id + '"><h2>' + q + '</h2>' + body + '</section>'
   }
 
+  // hospitals mapped in OpenStreetMap (incident.datascience@'s exposure/hospitals.json), by municipality the reader picks: no location asked, no outside request
+  var HOSP = null
+  function hospFold() {
+    if (!HOSP) return ''
+    var hs = (HOSP.hospitals || []).filter(function (h) { return h.in_lisbon_metro && !h.name_withheld && h.name }), by = {}
+    hs.forEach(function (h) { (by[h.municipality_name] = by[h.municipality_name] || []).push(h) })
+    var ms = Object.keys(by).sort(function (a, b) { return a.localeCompare(b, 'pt') })
+    return '<details class="gd-deep gd-hosp"><summary>Hospitals mapped near you (Lisbon area, by municipality)</summary>' +
+      '<p class="gd-ns-line"><b>Buildings mapped in OpenStreetMap, not a statement that any is open or has an emergency service.</b> In an emergency call <b>112</b>; the health service\'s line is SNS 24, <b>808 24 24 24</b> (<a href="https://www.sns24.gov.pt/" rel="noopener">sns24.gov.pt</a>).</p>' +
+      '<label class="gd-pick">Municipality <select id="gd-hm"><option value="">Choose…</option>' + ms.map(function (m) { return '<option>' + esc(m) + '</option>' }).join('') + '</select></label><ul class="gd-rows" id="gd-hl"></ul>' +
+      '<p class="meta">' + lbl('evidence') + ' ' + esc(HOSP.source_name || 'OpenStreetMap') + '; ' + esc(HOSP.licence || '') + '. ' + esc(String(HOSP.confidence || '')) + ' Kept by ' + esc(HOSP.by) + ', ' + tm(HOSP.updated) + ' UTC.</p></details>'
+  }
+  function hospWire() {
+    var sel = document.getElementById('gd-hm'), ul = document.getElementById('gd-hl'); if (!sel || !ul) return
+    sel.addEventListener('change', function () {
+      var m = sel.value, hs = (HOSP.hospitals || []).filter(function (h) { return h.in_lisbon_metro && !h.name_withheld && h.municipality_name === m })
+      ul.innerHTML = hs.map(function (h) { return '<li class="gd-row"><b>' + esc(h.name) + '</b>' + (h.operator_type ? ' <span class="meta">' + esc(h.operator_type) + '</span>' : '') + ' <span class="prov"><a href="https://www.openstreetmap.org/' + esc(h.osm) + '" rel="noopener">on the map (OpenStreetMap)</a></span></li>' }).join('')
+    })
+  }
+
   var ENT = ['airport', 'tap', 'metro', 'cp', 'ferries', 'bridges', 'tunnels', 'rede-expressos', 'flixbus', 'port', 'retail', 'museums', 'schools', 'courts', 'hospitals', 'parliament', 'madeira']
-  Promise.all([get('weather/warnings.json'), get('transport/services.json'), get('transport/flights.json'), get('decisions/graph.json'), get('transport/metro.json'), get('transport/buses.json'), get('transport/ferries.json'), fetch(base + 'incidents/' + inc + '/incident.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null }).catch(function () { return null })].concat(ENT.map(function (n) { return get('decisions/entities/' + n + '.json') }))).then(function (r) {
-    var W = r[0], S = r[1], F = r[2], G = r[3], MT = r[4], BU = r[5], FE = r[6], I = r[7], E = {}
-    ENT.forEach(function (n, i) { E[n] = r[8 + i] })
+  Promise.all([get('weather/warnings.json'), get('transport/services.json'), get('transport/flights.json'), get('decisions/graph.json'), get('transport/metro.json'), get('transport/buses.json'), get('transport/ferries.json'), get('exposure/hospitals.json'), fetch(base + 'incidents/' + inc + '/incident.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null }).catch(function () { return null })].concat(ENT.map(function (n) { return get('decisions/entities/' + n + '.json') }))).then(function (r) {
+    HOSP = r[7]; var W = r[0], S = r[1], F = r[2], G = r[3], MT = r[4], BU = r[5], FE = r[6], HO = r[7], I = r[8], E = {}
+    ENT.forEach(function (n, i) { E[n] = r[9 + i] })
     var edges = (G && G.edges) || []
     var edge = function (id) { for (var i = 0; i < edges.length; i++) if (edges[i].id === id) return edges[i]; return null }
     var out = ''
@@ -179,7 +199,7 @@
       '<p>Only what an authority or an operator has <b>stated</b>, with its source and time. We never infer that a place is open.</p><ul class="gd-short">' +
       short('Shops: Pingo Doce supermarkets', E.retail) + short('State museums and monuments', E.museums) + short('Schools (mainland)', E.schools, /^(?!.*Madeira)/) + short('Courts and registries', E.courts) + short('Hospitals (scheduled activity)', E.hospitals) + short('Parks, gardens, municipal culture (Lisbon city)', E.tunnels, /park|garden|cultur/i) + '</ul>' +
       '<div class="gd-ns-box"><b>Not stated</b> by any authority or operator in what we have read: cafés and restaurants, shopping malls, other supermarket chains, hotels, ride-hailing (Uber, Bolt), taxis, pharmacies. That means <i>we do not know</i>, not that they are closed: whether a place is open is the place\'s own word.</div>' +
-      (shelter && shelter.length ? '<p><b>Shelter stated by an operator:</b></p><ul class="gd-rows">' + shelter.map(row).join('') + '</ul>' : ''),
+      (shelter && shelter.length ? '<p><b>Shelter stated by an operator:</b></p><ul class="gd-rows">' + shelter.map(row).join('') + '</ul>' : '') + hospFold(),
       (govAlert ? '<h4>The government\'s measures for Wednesday</h4><ul class="gd-rows">' + row(govAlert) + '</ul>' : '') +
       entityBlock(E.retail, 'Shops') + entityBlock(E.museums, 'Museums and monuments') + entityBlock(E.schools, 'Schools') + entityBlock(E.courts, 'Courts') + entityBlock(E.hospitals, 'Hospitals') + entityBlock(E.parliament, 'Parliament') +
       '<p>Every decision and who made it: <a href="' + base + 'incidents/' + inc + '/decisions.html">the decisions</a>.</p>')
@@ -223,6 +243,7 @@
 
     if (document.querySelector('.contact-foot a')) out += '<p class="gd-contact">Missing something you need, or something wrong? <a href="' + esc(document.querySelector('.contact-foot a').getAttribute('href')) + '">Contact us</a>: the desk reads every message.</p>'
     el.innerHTML = out
+    hospWire()
     focus.forEach(function (id) { var n = document.getElementById(id); if (n && n.classList.contains('gd-case')) el.appendChild(n) })
     if (focus.length) {
       var jr = document.createElement('nav'); jr.className = 'gd-jump'; jr.setAttribute('aria-label', 'On this page')
