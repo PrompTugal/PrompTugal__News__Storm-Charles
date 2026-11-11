@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../app/weather/weather.css"><script src="../a
 ---
 # Storm Charles: the weather, now
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 04:05 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 04:30 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page makes no forecast and gives no advice of its own.
 
@@ -18,7 +18,7 @@ The Weather face of this site: Storm Charles (Lisbon and Madeira, 10 to 12 Novem
 - **Today, hour by hour**: IPMA's warnings as bands; rain, wind, gusts and temperature observed up to now, and IPMA's automatic forecast after it.
 - **Rain today, measured against warned**: rain by the hour under the hours of IPMA's rain warnings.
 - **Wind today, measured against warned**: IPMA's warned gusts over the warning's hours, the gusts and mean wind measured, on one axis, with the same values as a table.
-- **Our meteorologist's reading**: a hypothesis, dashed and labelled, never IPMA's forecast.
+- **Our meteorologist's reading**: a hypothesis, dashed and labelled, closed until opened, never IPMA's forecast, and with no end time other than the warnings'.
 - **What is closed and what runs**, **Madeira** (observed), **tomorrow**, and **the last changes**.
 
 ## Where every figure comes from
@@ -45,6 +45,6 @@ The page reads only what [the data room](../datasets.md) publishes, and nothing 
 - **Times** are UTC, which is Lisbon's time in November.
 - **Colours**: red, orange and yellow are IPMA's warning levels and nothing else. Blue is a measurement. Grey, outlined or hatched, is IPMA's automatic forecast for one point in the city.
 - **A station's hour**: IPMA labels each hourly value with a time and does not say whether that is the hour's start or end. We read it as the hour ending then (the reasons are in `lisbon-rain.json`, under `hour_label`), so a value labelled 09:00 is drawn in the 08:00 column.
-- **Mean wind is not a gust.** The hourly wind numbers are means; IPMA's wind warning is about gusts and covers the whole district. The warning is the one to follow.
-- **"Closed", "running with limits", "running"** group each body's own decision by its words; nothing is added. Fact: read on the body's own channel. Evidence: reported by others.
+- **Mean wind is not a gust.** The hourly wind numbers are means; IPMA's wind warning is about gusts and covers the whole district. The warning is IPMA's official statement for the district.
+- **"Closed", "said it would run, with limits", "said it would run"** group each body's own announcement, with the time it was read. It is a record, not a live service status. Fact: read on the body's own channel. Evidence: reported by others.
 - `?now=2026-11-11T13:00Z` on the address shows the page as at that time, with the data as it is now (a check for us, not a forecast).
