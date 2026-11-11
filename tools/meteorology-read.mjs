@@ -16,15 +16,16 @@ const only = arg('--only'), stale = !!arg('--stale')
 const UA = 'storm-charles.promptugal.news meteorology reader (public research; one request per address)'
 const got = {}
 function get(url, render) {
-    if (got[url]) return got[url]
-    const key = crypto.createHash('sha256').update((render ? 'render:' : '') + url).digest('hex').slice(0, 24), f = path.join(CACHE, key), meta = f + '.json'
-    if (!stale && fs.existsSync(f) && fs.existsSync(meta)) return got[url] = { ...JSON.parse(fs.readFileSync(meta, 'utf8')), buf: fs.readFileSync(f) }
+    const g = (render ? 'render:' : '') + url   // a rendered read and a plain one of the same address are two reads: one must not stand for the other
+    if (got[g]) return got[g]
+    const key = crypto.createHash('sha256').update(g).digest('hex').slice(0, 24), f = path.join(CACHE, key), meta = f + '.json'
+    if (!stale && fs.existsSync(f) && fs.existsSync(meta)) return got[g] = { ...JSON.parse(fs.readFileSync(meta, 'utf8')), buf: fs.readFileSync(f) }
     let http = 0
     if (render) { try { http = +execFileSync(process.execPath, [path.join(ROOT, 'tools/meteorology-render.mjs'), url, f], { stdio: ['ignore', 'pipe', 'ignore'], timeout: 70000 }).toString().trim() } catch { http = 0 } }
     else try { http = +execFileSync('curl', ['-sS', '-L', '--compressed', '-m', '40', '-A', UA, '-H', 'Accept-Language: en,pt;q=0.8', '-o', f, '-w', '%{http_code}', url], { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() } catch { http = 0 }
     const buf = fs.existsSync(f) ? fs.readFileSync(f) : Buffer.alloc(0)
     const m = { http, read_utc: new Date().toISOString().slice(0, 16) + 'Z', sha256: crypto.createHash('sha256').update(buf).digest('hex'), bytes: buf.length }
-    fs.writeFileSync(meta, JSON.stringify(m)); return got[url] = { ...m, buf }
+    fs.writeFileSync(meta, JSON.stringify(m)); return got[g] = { ...m, buf }
 }
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', nbsp: ' ', '#39': "'", '#x27': "'", ndash: '-', mdash: '-', eacute: 'é', oacute: 'ó', atilde: 'ã', ccedil: 'ç' }
 const text = buf => buf.toString('utf8').replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&(#?\w+);/g, (a, e) => ENT[e] ?? ' ').replace(/\\u003c[^\\]*\\u003e/g, ' ').replace(/\s+/g, ' ')
