@@ -1,7 +1,7 @@
 {
  "about": "The model ledger's daily totals: the model calls made through tools/llm.mjs, counted. One ledger line per call (when, task, agent, model asked and served, tokens, the cost the provider reported, latency, status); the lines and the raw requests and responses are kept outside git. No prompt or answer text here. The models named are the third-party models that were called.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T02:59:24Z",
+ "updated": "2026-11-11T03:06:05Z",
  "currency": "USD",
  "source": "tools/llm.mjs --summary (the ledger at ~/.incident-ledger/<day>.jsonl in this agent's session)",
  "shape": "days[]: one per UTC day of THIS agent's ledger { day, calls, cost_usd, cap_usd, tokens_in, tokens_out, by_model, by_agent, by_task, by_status, by_hour }, each by_* a map of name -> { calls, cost_usd, tokens_in, tokens_out } (by_hour: 'HH:00' -> { calls, cost_usd }). other_desks[]: one per other agent { desk, file, day?, calls?, cost_usd, by_model?, by_task? }; reported: true means the figure is the one that agent's status file gives, not a ledger summary. budgets: models/budgets.json as it stood. team_today_usd: this agent's last day plus other_desks. total: over days[] only.",
@@ -28,7 +28,7 @@
  "days": [
   {
    "day": "2026-11-11",
-   "calls": 4922,
+   "calls": 4927,
    "cost_usd": 0.872425,
    "cap_usd": 20,
    "tokens_in": 1039681,
@@ -83,7 +83,7 @@
      "tokens_out": 54808
     },
     "google/gemini-3.5-flash-lite": {
-     "calls": 330,
+     "calls": 335,
      "cost_usd": 0.012306,
      "tokens_in": 19361,
      "tokens_out": 2649
@@ -121,7 +121,7 @@
    },
    "by_agent": {
     "incident.models@web-summit.dinis": {
-     "calls": 4922,
+     "calls": 4927,
      "cost_usd": 0.872425,
      "tokens_in": 1039681,
      "tokens_out": 559894
@@ -171,7 +171,7 @@
      "tokens_out": 321
     },
     "WS-214/eval/warnings-in-force": {
-     "calls": 572,
+     "calls": 577,
      "cost_usd": 0.140888,
      "tokens_in": 730756,
      "tokens_out": 121028
@@ -207,18 +207,28 @@
      "cost_usd": 0,
      "tokens_in": 0,
      "tokens_out": 0
+    },
+    "account_out_of_credit": {
+     "calls": 5,
+     "cost_usd": 0,
+     "tokens_in": 0,
+     "tokens_out": 0
     }
    },
    "by_hour": {
     "02:00": {
      "calls": 4922,
      "cost_usd": 0.872425
+    },
+    "03:00": {
+     "calls": 5,
+     "cost_usd": 0
     }
    }
   }
  ],
  "total": {
-  "calls": 4922,
+  "calls": 4927,
   "cost_usd": 0.872425,
   "tokens_in": 1039681,
   "tokens_out": 559894

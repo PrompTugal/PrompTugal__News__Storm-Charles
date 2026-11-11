@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Translate, figures kept
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Translate IPMA's Portuguese warning text to English. There is no reference translation: the check is that every figure of the Portuguese text is in the English one, as digits and no others added, and that each unit is still there (km/h, mm, hPa; 'metros' as metre or meter). A fluent translation that writes 'five' for 5, or drops 13, is wrong here.
 
-Scoring: the numbers in the answer are the numbers in the source (each as many times, in any order); every unit present; and the answer is not the Portuguese text again. Last run 2026-11-11 02:57 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:59 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
+Scoring: the numbers in the answer are the numbers in the source (each as many times, in any order); every unit present; and the answer is not the Portuguese text again. Last run 2026-11-11 02:57 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 03:06 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 

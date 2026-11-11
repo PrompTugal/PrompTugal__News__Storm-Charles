@@ -5,7 +5,7 @@ summary: OpenAI: gpt-oss-20b as used on this site: what it is and its licence, e
 
 # OpenAI: gpt-oss-20b
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** One of [the models](index.md) in [Other models, measured](../index.md). The id we call it by: `openai/gpt-oss-20b` (through OpenRouter).
 
@@ -20,7 +20,7 @@ summary: OpenAI: gpt-oss-20b as used on this site: what it is and its licence, e
 
 ## Its use here, in one line
 
-**75 runs** on 5 tasks, **65 right**; 4 not answered (malformed, cut off, refused or a provider error); **42,262 tokens in, 45,376 out; 0.00942 US dollars**. Source: [results.json](../results.json), made 2026-11-11 02:59 UTC. It has written nothing on this site: every call was a test.
+**75 runs** on 5 tasks, **65 right**; 4 not answered (malformed, cut off, refused or a provider error); **42,262 tokens in, 45,376 out; 0.00942 US dollars**. Source: [results.json](../results.json), made 2026-11-11 03:06 UTC. It has written nothing on this site: every call was a test.
 
 ## Every job we gave it
 

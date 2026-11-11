@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Warnings in force at an hour
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Round 2, harder: all seventeen CAP messages this site holds for the Lisbon district (IPMA, through MeteoAlarm; 5 to 10 November, oldest first, most of them expired), and one question: which warnings are in force at a given hour of 11 or 12 November? The gold is not computed from the messages: it is IPMA's own warnings API as the meteorologist read it (warnings.json), filtered to the hour. A model has to compare times across seventeen messages, not copy a field. The start is not scored (IPMA's API and its CAP message give different starts for a warning already running); type, level and end are.
 
-Scoring: the set of warnings (type, level, end) equals the gold set exactly: none missing, none extra. Last run 2026-11-11 02:56 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:59 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
+Scoring: the set of warnings (type, level, end) equals the gold set exactly: none missing, none extra. Last run 2026-11-11 02:56 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 03:06 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 

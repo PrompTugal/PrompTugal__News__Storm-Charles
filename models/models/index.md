@@ -5,11 +5,11 @@ summary: A page for each model used on this site, the open-weight ones first: wh
 
 # The models, one by one
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](../index.md).
 
-Each model's page says what it is (its publisher, whether its weights are open, its licence as the publisher states it and what that allows), every job we gave it here, its scores with the items it got wrong, its tokens, cost and latency, and what we would use it for. "Open-weight" means OpenRouter's model list gives a Hugging Face address for the weights; the licence is read at that address (2026-11-11 02:52 UTC), and a licence tag is not legal advice: the linked text decides. Figures: [results.json](../results.json), made 2026-11-11 02:59 UTC.
+Each model's page says what it is (its publisher, whether its weights are open, its licence as the publisher states it and what that allows), every job we gave it here, its scores with the items it got wrong, its tokens, cost and latency, and what we would use it for. "Open-weight" means OpenRouter's model list gives a Hugging Face address for the weights; the licence is read at that address (2026-11-11 02:52 UTC), and a licence tag is not legal advice: the linked text decides. Figures: [results.json](../results.json), made 2026-11-11 03:06 UTC.
 
 ## Open-weight, small
 

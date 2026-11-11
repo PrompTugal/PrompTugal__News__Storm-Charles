@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Other models, measured
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.**
 
 ## The answer to "have we started using other models?"
 
-Yes. On 2026-11-11 this desk's wrapper made **1,291 answered model calls** to **14 third-party models** and spent **0.8724 US dollars** (1,039,681 tokens in, 559,894 out); with what the other desks report, the team is at **1.0624 of the day's 20 US dollars**. Source: [ledger-summary.json](ledger-summary.json), written 02:59 UTC. Before 02:21 UTC on 11 November the ledger held no call. A further 3,631 calls were refused or failed at the provider and cost nothing (3,557 of them 'Insufficient credits' on the OpenRouter account, from 02:55 UTC).
+Yes. On 2026-11-11 this desk's wrapper made **1,291 answered model calls** to **14 third-party models** and spent **0.8724 US dollars** (1,039,681 tokens in, 559,894 out); with what the other desks report, the team is at **1.0624 of the day's 20 US dollars**. Source: [ledger-summary.json](ledger-summary.json), written 03:06 UTC. Before 02:21 UTC on 11 November the ledger held no call. A further 3,636 calls were refused or failed at the provider and cost nothing (3,562 of them 'Insufficient credits' on the OpenRouter account; runs paused at 02:55 UTC for that reason, and the wrapper now stops at the first such answer).
 
 **Round 2 is partial.** Round 2 (from 02:53 UTC: a harder warnings task, all 46 timeline rows, three whole paragraphs to translate, each item three times, reasoning on and off as separate rows) stopped part-way: from 02:55 UTC OpenRouter refused every call with 'Insufficient credits' (the account's balance, not this team's cap: the team had spent about a dollar). Refused calls are not answers and are not in the results. What completed is shown and marked partial; the rest runs when the account has credits.
 
@@ -33,7 +33,7 @@ Every gold answer is copied by `tools/models-items.mjs` from the data room; none
 
 ## What we got
 
-Runs right out of runs asked, per task (an item asked three times counts three). Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:59 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
+Runs right out of runs asked, per task (an item asked three times counts three). Source for every figure on this page: [results.json](results.json) (made 2026-11-11 03:06 UTC from the runs) and [ledger-summary.json](ledger-summary.json).
 
 | Model, reasoning | Kind | [Warnings in force at an hour](warnings-in-force.md) | [Extract a decision](extract-decision.md) | [Label fact, evidence, hypothesis](label.md) | [Translate, figures kept](translate.md) | [Extract a warning](extract-warning.md) | All | Not answered | Cost per item, USD | Median latency, s |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -113,11 +113,11 @@ The label task doubles as a check of the timeline, and it found a gap in our lab
 
 ## The spend
 
-From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-11 02:59 UTC). Costs are what OpenRouter reported for each call. **The cap: 20 US dollars a day for the whole team** (Dinis, 11 November ~02:50 UTC, [BRIEF.md](../BRIEF.md); 5 before), kept as shares ([budgets.json](budgets.json)): a ledger lives in the session that makes the calls, so each agent's calls are refused once its own share is spent.
+From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-11 03:06 UTC). Costs are what OpenRouter reported for each call. **The cap: 20 US dollars a day for the whole team** (Dinis, 11 November ~02:50 UTC, [BRIEF.md](../BRIEF.md); 5 before), kept as shares ([budgets.json](budgets.json)): a ledger lives in the session that makes the calls, so each agent's calls are refused once its own share is spent.
 
 | By agent | Share of the day, USD | Calls | Spent, USD |
 |---|---|---|---|
-| incident.models@web-summit.dinis (this ledger) | 6 | 4922 | 0.8724 |
+| incident.models@web-summit.dinis (this ledger) | 6 | 4927 | 0.8724 |
 | incident.shadow@ (its own session's ledger; the figure its status file gives, 02:40 UTC: [agents/shadow/status.json](../agents/shadow/status.json)) | 1 | not given | 0.1900 |
 | **the team, today** | **20** | | **1.0624** |
 
@@ -126,13 +126,13 @@ From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-1
 | `WS-214/eval/translate` | 1041 | 29661 | 138359 | 0.2391 |
 | `WS-214/eval/label` | 2055 | 89938 | 139766 | 0.2124 |
 | `WS-214/eval/extract-warning` | 771 | 73440 | 84686 | 0.1433 |
-| `WS-214/eval/warnings-in-force` | 572 | 730756 | 121028 | 0.1409 |
+| `WS-214/eval/warnings-in-force` | 577 | 730756 | 121028 | 0.1409 |
 | `WS-214/eval/extract-decision` | 456 | 115387 | 75687 | 0.1311 |
 | `WS-214/models/ask-smoke` | 1 | 23 | 44 | 0.00502 |
 | `WS-214/models/probe-reasoning` | 24 | 460 | 321 | 0.00056 |
 | `WS-214/models/smoke` | 1 | 16 | 3 | 0.000001 |
 | `WS-214/models/credit-check` | 1 | 0 | 0 | 0 |
-| **all** | **4922** | **1039681** | **559894** | **0.8724** |
+| **all** | **4927** | **1039681** | **559894** | **0.8724** |
 
 | By model | Calls | Tokens in | Tokens out | USD |
 |---|---|---|---|---|
@@ -144,7 +144,7 @@ From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-1
 | `meta-llama/llama-4-maverick` | 327 | 115362 | 5657 | 0.0399 |
 | `google/gemma-4-31b-it` | 439 | 178156 | 26849 | 0.0321 |
 | `mistralai/ministral-8b-2512` | 327 | 147329 | 9559 | 0.0219 |
-| `google/gemini-3.5-flash-lite` | 330 | 19361 | 2649 | 0.0123 |
+| `google/gemini-3.5-flash-lite` | 335 | 19361 | 2649 | 0.0123 |
 | `anthropic/claude-haiku-5.5` | 439 | 50133 | 12431 | 0.0111 |
 | `openai/gpt-6-luna` | 447 | 78218 | 9772 | 0.0106 |
 | `openai/gpt-oss-20b` | 330 | 47437 | 50322 | 0.0103 |

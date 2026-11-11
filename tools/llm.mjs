@@ -43,6 +43,7 @@ export function readLedger(d = day()) { try { return fs.readFileSync(ledgerFile(
 export const spentToday = () => readLedger().reduce((s, l) => s + (l.cost_usd || 0), 0)
 export const spentBy = agent => readLedger().filter(l => l.agent === agent).reduce((s, l) => s + (l.cost_usd || 0), 0)
 
+let noCredit = null   // set to the time of the provider's first 402 in this process
 function inRepo(p) { const r = path.relative(REPO, path.resolve(p)); return !r.startsWith('..') && !path.isAbsolute(r) }
 if (inRepo(LEDGER_DIR)) throw new Error(`llm.mjs: INCIDENT_LEDGER_DIR (${LEDGER_DIR}) is inside the repository; the ledger goes to the curated vault, not git`)
 if (inRepo(RAW_DIR)) throw new Error(`llm.mjs: INCIDENT_RAW_DIR (${RAW_DIR}) is inside the repository; raw captures never go to git`)
@@ -73,6 +74,9 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
         const mine = spentBy(agent)
         if (mine >= budget_usd) { const line = { ...base, status: 'refused_budget', budget_usd, spent_by_agent_usd: +mine.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }; appendLedger(line); return { text: null, line, response: null } }
     }
+    // after one 'account out of credit' answer this process makes no further calls: each would be refused, and each refusal is noise in the
+    // ledger. One line was written for the refusal itself; these are returned to the caller and not written. A new process tries once again.
+    if (!mock && noCredit) return { text: null, line: { ...base, status: 'not_sent_account_out_of_credit', since: noCredit, tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }, response: null }
     const t0 = Date.now(); let status = 'ok', response = null, error = null, text = null
     try {
         if (mock) response = { model: model + ' (mock)', choices: [{ message: { role: 'assistant', content: 'mock answer to: ' + String(messages.at(-1).content).slice(0, 80) }, finish_reason: 'stop' }], usage: { prompt_tokens: 12, completion_tokens: 8, cost: 0 } }
@@ -83,6 +87,8 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
                 const r = await fetch(P.url, { method: 'POST', signal: c.signal, headers: { Authorization: `Bearer ${P.key() || 'missing'}`, 'Content-Type': 'application/json', 'X-Title': 'WS-214 incident team' }, body: JSON.stringify(request) })
                 const body = await r.text(); try { response = JSON.parse(body) } catch { response = { raw: body.slice(0, 4000) } }
                 if (!r.ok) { status = 'http_' + r.status; error = (response.error && response.error.message) || body.slice(0, 300) }
+                // 402 is the ACCOUNT's balance at the provider, not a model's error and not our cap: named as such, and this process sends no more
+                if (r.status === 402) { status = 'account_out_of_credit'; noCredit = at }
             } finally { clearTimeout(timer) }
         }
         if (response && response.choices) text = response.choices[0]?.message?.content ?? null

@@ -5,7 +5,7 @@ summary: Anthropic: Claude Haiku 5.5 as used on this site: what it is and its li
 
 # Anthropic: Claude Haiku 5.5
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** One of [the models](index.md) in [Other models, measured](../index.md). The id we call it by: `anthropic/claude-haiku-5.5` (through OpenRouter).
 
@@ -19,7 +19,7 @@ summary: Anthropic: Claude Haiku 5.5 as used on this site: what it is and its li
 
 ## Its use here, in one line
 
-**71 runs** on 5 tasks, **66 right**; 0 not answered (malformed, cut off, refused or a provider error); **40,324 tokens in, 10,434 out; 0.00916 US dollars**. Source: [results.json](../results.json), made 2026-11-11 02:59 UTC. It has written nothing on this site: every call was a test.
+**71 runs** on 5 tasks, **66 right**; 0 not answered (malformed, cut off, refused or a provider error); **40,324 tokens in, 10,434 out; 0.00916 US dollars**. Source: [results.json](../results.json), made 2026-11-11 03:06 UTC. It has written nothing on this site: every call was a test.
 
 ## Every job we gave it
 

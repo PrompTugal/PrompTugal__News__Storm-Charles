@@ -5,7 +5,7 @@ summary: OpenAI: GPT-6 Luna as used on this site: what it is and its licence, ev
 
 # OpenAI: GPT-6 Luna
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:59 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 03:06 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** One of [the models](index.md) in [Other models, measured](../index.md). The id we call it by: `openai/gpt-6-luna` (through OpenRouter).
 
@@ -19,7 +19,7 @@ summary: OpenAI: GPT-6 Luna as used on this site: what it is and its licence, ev
 
 ## Its use here, in one line
 
-**89 runs** on 5 tasks, **82 right**; 0 not answered (malformed, cut off, refused or a provider error); **73,120 tokens in, 8,880 out; 0.00958 US dollars**. Source: [results.json](../results.json), made 2026-11-11 02:59 UTC. It has written nothing on this site: every call was a test.
+**89 runs** on 5 tasks, **82 right**; 0 not answered (malformed, cut off, refused or a provider error); **73,120 tokens in, 8,880 out; 0.00958 US dollars**. Source: [results.json](../results.json), made 2026-11-11 03:06 UTC. It has written nothing on this site: every call was a test.
 
 ## Every job we gave it
 

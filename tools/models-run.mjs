@@ -48,7 +48,7 @@ async function one(task, doc, M, it) {
     // each row at the settings its roster line gives (extra), 4,000 tokens of room, temperature 0 where it is taken
     const { text, line, response } = await call({ task: `WS-214/eval/${task}`, agent: AGENT, model: M.id.split('#')[0], messages: PROMPTS[task](it, doc), max_tokens: 4000, budget_usd: BUDGET, extra: { temperature: 0, ...(M.extra || {}) } })
     const cut = response?.choices?.[0]?.finish_reason === 'length', ans = parse(text), okKeys = ans && KEYS[task].every(k => k in ans)
-    const kind = line.status !== 'ok' ? (line.status.startsWith('refused') ? 'not_run' : 'error') : okKeys ? 'answered' : cut ? 'cut_off' : (text && !ans && REFUSAL.test(text)) ? 'refused' : 'malformed'
+    const kind = line.status !== 'ok' ? (line.status.startsWith('refused') || line.status.includes('account_out_of_credit') ? 'not_run' : 'error') : okKeys ? 'answered' : cut ? 'cut_off' : (text && !ans && REFUSAL.test(text)) ? 'refused' : 'malformed'
     const fields = kind === 'answered' ? SCORE[task](ans, it) : Object.fromEntries(doc.fields.map(f => [f, false]))
     if (kind === 'not_run') { stop = true; console.error(`stopped: ${line.status} (${AGENT} at ${spentBy(AGENT).toFixed(3)} of ${BUDGET} USD)`) }
     return { kind, right: kind === 'answered' && Object.values(fields).every(Boolean), fields, answer: okKeys ? Object.fromEntries(Object.entries(ans).slice(0, 8).map(([k, v]) => [k, typeof v === 'string' ? v.slice(0, 900) : v])) : null,
@@ -73,6 +73,7 @@ for (const task of TASKS) {
         await pool(jobs, 5)
         for (const k of Object.keys(res.answers)) if (res.answers[k].kind === 'not_run') delete res.answers[k]
         const A = Object.values(res.answers), runs = A.length + Object.values(res.repeats).reduce((s, x) => s + x.length, 0), right = A.filter(x => x.right).length + Object.values(res.repeats).reduce((s, x) => s + x.filter(y => y.right).length, 0)
+        if (!A.length) return   // nothing answered (the provider refused): no file
         fs.writeFileSync(file, JSON.stringify({ task, model: id, by: AGENT, updated: new Date().toISOString().slice(0, 19) + 'Z', about: 'One model\'s answers to one task: the first run of each item in full (as parsed; right or wrong per field), the repeat runs as right or wrong with their cost. Raw requests and responses are in the raw store; raw_sha256 names each record.', items_updated: doc.updated, answers: res.answers, repeats: res.repeats }, null, 1) + '\n')
         if (jobs.length) console.log(task, id, `${right}/${runs} runs right`, `(${jobs.length} new calls)`)
     }), 8)
