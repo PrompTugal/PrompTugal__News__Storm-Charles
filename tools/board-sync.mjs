@@ -7,7 +7,8 @@
 //    names first) or a job (j-<role>-<n>). The card's words are the agent's own line; nothing is added to it.
 // 2. A card whose line was reworded (same agent, same list, mostly the same words) follows the new line.
 // 3. A job whose line has left its owner's "next" list moves to done, and its history says exactly that and no more.
-// 4. An ask whose every line is gone is NOT closed here: it is listed, for the board's keeper to read why (met, withdrawn, moved).
+// 4. An ask this tool opened (the agent's own words, nothing joined) follows its line out the same way. An ask written or joined
+//    by hand whose every line is gone is NOT closed here: it is listed, for the board's keeper to read why.
 import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
@@ -63,6 +64,8 @@ for (const c of Object.values(cards)) {
     if (!gone.length) continue
     if (gone.length < src.length) { c.sources = src.filter(s => live.has(key(s))); log(c, `no longer listed in ${[...new Set(gone.map(s => s.file))].join(', ')}; still listed in ${[...new Set(c.sources.map(s => s.file))].join(', ')}`); say(`${c.id}: one of its lines is gone, the card stays`); continue }
     if (c.kind === 'job') { const was = c.state; c.state = 'done'; c.waiting_on = ''; log(c, `${was} → done: the line is no longer in the "next" list of ${gone[0].file} (read ${NOW.slice(11, 16)} UTC); finished or dropped by its owner, whose status file says which`); say(`${c.id}: job left its owner's next list → done`) }
+    // an ask this tool opened in the agent's own words follows its line out: the owner took it off its list
+    else if (/^a-[a-z]+-\d+$/.test(c.id) && gone.every(g => g.full)) { const was = c.state; c.state = 'done'; c.waiting_on = ''; log(c, `${was} → done: its owner no longer lists it in ${gone[0].file} (read ${NOW.slice(11, 16)} UTC): met or withdrawn, the owner's status file says which`); say(`${c.id}: ask left its owner's list → done`) }
     else toRead.push(c.id)
 }
 

@@ -1,17 +1,18 @@
 {
   "id": "a-vault-keys-handover",
   "kind": "ask",
-  "title": "Three vault keys exist only inside two agents' sessions",
+  "title": "Four vault keys exist only inside three agents' sessions",
   "state": "open",
   "opened_utc": "2026-11-11T02:25:22Z",
-  "updated_utc": "2026-11-11T02:29:47Z",
+  "updated_utc": "2026-11-11T03:03:47Z",
   "owner": "incident.conductor@web-summit.dinis",
   "raised_by": [
     "incident.archivist@web-summit.dinis",
-    "incident.sources@web-summit.dinis"
+    "incident.sources@web-summit.dinis",
+    "incident.models@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "incident.archivist@ (two vaults: the captures and the display vault) and incident.sources@ (one data vault) made their vaults, but each session's permission check refused the command that reads the key back, so no key has been sent to the conductor as RESTRUCTURE.md requires. The keys exist only in those two session containers. Say how they should be handed over (allow that one read in those sessions, or another way you choose). Never in chat, never in a tracked file.",
+  "summary": "incident.archivist@ (two vaults: the captures and the display vault) and incident.sources@ (one data vault) made their vaults, but each session's permission check refused the command that reads the key back, so no key has been sent to the conductor as RESTRUCTURE.md requires. The keys exist only in those session containers. incident.models@ reports the same for the vault that holds the raw model calls. Say how they should be handed over (allow that one read in those sessions, or another way you choose). Never in chat, never in a tracked file.",
   "closes": "The conductor confirms it holds a copy of each of the three keys (by id only), and both agents' status files say so.",
   "blocks": "If either session's container is reclaimed, nobody can write to its vault again: the captures of every external page and a data set would have to be started over. The conductor holds no copy of any key.",
   "rank": 7,
@@ -39,6 +40,13 @@
       "sha": "15e39866de23",
       "starts": "Dinis: the key of vault op6i3jfq is held only in (session). This sessi",
       "full": "Dinis: the key of vault op6i3jfq is held only in (session). This session's permission check refused both reading the key from the creation log and piping `sgit vault show-key` into tools/lane-handover.mjs seal (the sealed handover of SECURITY.md section e); neither was worked around. To hand it to the conductor and publish a read key, a permission rule for that one command is needed, or the conductor makes the vault and this agent writes to it."
+    },
+    {
+      "file": "agents/models/status.json",
+      "field": "asks",
+      "sha": "b2c59cfd35e1",
+      "starts": "Dinis: the raw store's vault key is held only in this session (its per",
+      "full": "Dinis: the raw store's vault key is held only in this session (its permission layer refused reading the key out to send it); how do you want vault keys handed over"
     }
   ],
   "history": [
@@ -56,9 +64,14 @@
       "at": "2026-11-11T02:29:47Z",
       "by": "incident.board@web-summit.dinis",
       "change": "both agents reworded their lines; the card follows them (the keys are still held only in those two sessions)"
+    },
+    {
+      "at": "2026-11-11T03:03:47Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "a fourth key joined: incident.models@'s raw store (its ask, same refusal)"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T02:29:47Z",
+  "updated": "2026-11-11T03:03:47Z",
   "before_launch": true
 }

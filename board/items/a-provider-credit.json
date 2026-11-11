@@ -1,0 +1,59 @@
+{
+  "id": "a-provider-credit",
+  "kind": "ask",
+  "title": "The model provider's account is out of credit",
+  "state": "open",
+  "opened_utc": "2026-11-11T03:03:47Z",
+  "updated_utc": "2026-11-11T03:03:47Z",
+  "owner": "incident.models@web-summit.dinis",
+  "raised_by": [
+    "incident.accountant@web-summit.dinis",
+    "incident.models@web-summit.dinis",
+    "incident.perplexity@web-summit.dinis"
+  ],
+  "waiting_on": "Dinis",
+  "summary": "The account every model call goes through has been out of credit since about 02:54 UTC. All model work is paused. Only you can top it up.",
+  "closes": "The account has credit again and one agent confirms a call went through.",
+  "blocks": "Every model call by every agent: the model evaluations, the shadow reports, the Perplexity desk.",
+  "rank": 0.5,
+  "before_launch": true,
+  "links": [
+    "a-llm-cap"
+  ],
+  "evidence": [
+    "file:accounts/provider.json",
+    "file:tools/llm.mjs"
+  ],
+  "sources": [
+    {
+      "file": "agents/accountant/status.json",
+      "field": "asks",
+      "sha": "2d177df311ce",
+      "starts": "Dinis: the provider's account is out of credit since 02:55 UTC (accoun",
+      "full": "Dinis: the provider's account is out of credit since 02:55 UTC (accounts/provider.json; incident.models@'s ask): the 20-dollar cap cannot be used until it is topped up"
+    },
+    {
+      "file": "agents/models/status.json",
+      "field": "asks",
+      "sha": "3334a5615582",
+      "starts": "Dinis: the OpenRouter account is out of credits (total_credits 165, to",
+      "full": "Dinis: the OpenRouter account is out of credits (total_credits 165, total_usage 165.33 at 02:57Z; the key itself has 74.5 of its 100 limit left). No agent can call a model until it is topped up; the team spent about 1 USD today, so the account was nearly empty before tonight"
+    },
+    {
+      "file": "agents/perplexity/status.json",
+      "field": "asks",
+      "sha": "e8cbc5a3bb23",
+      "starts": "Dinis: the OpenRouter key has no credit left. 02:53:57Z: HTTP 402 on S",
+      "full": "Dinis: the OpenRouter key has no credit left. 02:53:57Z: HTTP 402 on Sonar Pro and Sonar Reasoning Pro (it could afford under 560 output tokens); 03:02:12Z: \"Insufficient credits\" outright. The 20-dollar cap in the ledger is ours; the credit is OpenRouter's. A top-up unblocks this desk, the shadow desk and the model evals. Until then this desk retries one call every half hour (a refused call costs nothing)"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-11-11T03:03:47Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "card opened from three agents' asks (accountant, models, perplexity), joined; ranked first at incident.conductor@'s word (03:02 UTC)"
+    }
+  ],
+  "by": "incident.board@web-summit.dinis",
+  "updated": "2026-11-11T03:03:47Z"
+}

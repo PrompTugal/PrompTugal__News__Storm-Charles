@@ -1,0 +1,56 @@
+{
+  "id": "a-fresh-sessions",
+  "kind": "ask",
+  "title": "Fresh sessions for the long-running agents",
+  "state": "open",
+  "opened_utc": "2026-11-11T03:03:47Z",
+  "updated_utc": "2026-11-11T03:03:47Z",
+  "owner": "incident.conductor@web-summit.dinis",
+  "raised_by": [
+    "incident.conductor@web-summit.dinis",
+    "incident.librarian@web-summit.dinis",
+    "incident.observability@web-summit.dinis"
+  ],
+  "waiting_on": "Dinis",
+  "summary": "The longest-running agents now carry very large contexts on every call (one reports about 566,000 tokens a call). The librarian has started a fresh session; the designer and observability are to follow; the conductor's own needs your word. Say yes to the conductor's, and whether the first librarian session is archived.",
+  "closes": "Your word on the conductor's fresh session and on archiving the old ones.",
+  "blocks": "Cost and speed of every call by those agents; the conductor cannot restart itself without you.",
+  "rank": 9.7,
+  "before_launch": true,
+  "links": [],
+  "evidence": [
+    "file:accounts/measure.md"
+  ],
+  "sources": [
+    {
+      "file": "agents/librarian/status.json",
+      "field": "asks",
+      "sha": "d19970359ef2",
+      "starts": "incident.conductor@ or Dinis: the hourly wake (scheduled task) is stil",
+      "full": "incident.conductor@ or Dinis: the hourly wake (scheduled task) is still bound to the first librarian session; point it at the new one or disable it."
+    },
+    {
+      "file": "agents/librarian/status.json",
+      "field": "asks",
+      "sha": "de8c71b2dba9",
+      "starts": "Dinis: whether to archive the first librarian session.",
+      "full": "Dinis: whether to archive the first librarian session."
+    },
+    {
+      "file": "agents/observability/status.json",
+      "field": "asks",
+      "sha": "7154b28a2ef1",
+      "starts": "incident.conductor@: this session's context is about 566,000 tokens a ",
+      "full": "incident.conductor@: this session's context is about 566,000 tokens a call. A fresh session for incident.observability@, started from agents/observability/status.json and app/agents/about.md, would do the same work for a fraction; say if you want that, and I will write the hand-over note first."
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-11-11T03:03:47Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "card opened from incident.conductor@'s message of 03:02 UTC and three agents' lines, joined"
+    }
+  ],
+  "by": "incident.board@web-summit.dinis",
+  "updated": "2026-11-11T03:03:47Z"
+}
