@@ -219,11 +219,19 @@ const order = { article: 0, section: 1, redirect: 2, mention: 3 }
 articles.sort((a, b) => (order[a.kind] ?? 9) - (order[b.kind] ?? 9) || a.lang.localeCompare(b.lang) || a.title.localeCompare(b.title))
 
 const count = k => articles.filter(a => a.kind === k).length
+// When Wikidata does not answer a read, its last answer is kept beside the note, with the time it was read, instead of being lost.
+function keepWikidata(which, now) {
+  const before = prevArticles.wikidata?.[which]
+  if (!now) return now
+  if (!now.not_read) return { ...now, read: new Date().toISOString().replace(/\.\d+Z$/, 'Z') }
+  const last = before?.not_read ? before.last_answer : before && before.item === now.item ? { labels: before.labels, sitelinks: before.sitelinks, read: before.read || null } : null
+  return last ? { ...now, last_answer: last } : now
+}
 writeJson('articles.json', {
   about: 'Every Wikipedia page about Storm Charles (Portuguese: depressão Charles), in every language we could find one: an article of its own, a section of a season article, a redirect, or a mention in a list. Found through Wikidata\'s sitelinks, the sitelinks of the season article, title checks and a phrase search per language (checked: what was asked and what was not found). Wikipedia is evidence here (a tertiary source written by volunteers), never a fact. No editor is named. Wikipedia\'s text is CC BY-SA 4.0.',
   by: AGENT, tool: 'tools/wikipedia-read.mjs', updated: read, label: 'evidence', licence: 'CC BY-SA 4.0 (Wikipedia\'s text); this file holds titles, addresses, times and sizes only',
   how_read: `MediaWiki action API, maxlag=5, one request every ${GAP / 1000} s, client "${UA}"; read-only`,
-  wikidata: { storm: storm ? { item: storm.qid, url: `https://www.wikidata.org/wiki/${storm.qid}`, labels: storm.labels, sitelinks: storm.links, not_read: storm.not_read } : null, season: season ? { item: season.qid, url: `https://www.wikidata.org/wiki/${season.qid}`, sitelinks: season.links?.length ?? null, not_read: season.not_read } : null },
+  wikidata: { storm: keepWikidata('storm', storm ? { item: storm.qid, url: `https://www.wikidata.org/wiki/${storm.qid}`, labels: storm.labels, sitelinks: storm.links, not_read: storm.not_read } : null), season: keepWikidata('season', season ? { item: season.qid, url: `https://www.wikidata.org/wiki/${season.qid}`, sitelinks: season.links?.length ?? null, not_read: season.not_read } : null) },
   season_pages: seasonPages,
   counts: { article: count('article'), section: count('section'), redirect: count('redirect'), mention: count('mention'), languages: [...new Set(articles.map(a => a.lang))].sort() },
   articles, checked,

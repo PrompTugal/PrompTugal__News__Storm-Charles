@@ -1,8 +1,8 @@
 # What changed on Wikipedia since the last read
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 05:45 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 05:51 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
 
-**Read 11 Nov, 05:45 UTC**; the read before was 11 Nov, 05:39 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
+**Read 11 Nov, 05:51 UTC**; the read before was 11 Nov, 05:45 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
 
 Nothing changed: no new revision on any of the 6 pages, and no new page.
 
@@ -10,6 +10,7 @@ Nothing changed: no new revision on any of the 6 pages, and no new page.
 
 | Read (UTC) | Pages | Changes | Requests | 429 waits |
 |---|---|---|---|---|
+| 11 Nov, 05:51 | 6 | none | 58 | 0 |
 | 11 Nov, 05:45 | 6 | none | 49 | 1 |
 | 11 Nov, 05:39 | 6 | none | 50 | 0 |
 | 11 Nov, 04:39 | 6 | none | 56 | 8 |
