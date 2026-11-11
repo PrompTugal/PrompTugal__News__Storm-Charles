@@ -1,6 +1,6 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 20:11 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 21:11 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
@@ -21,6 +21,8 @@ Key `incident-designer-dinis-8` (d81716d). [Round 60](round-60.md): `.conf` (con
 **18:12–19:11:** the conductor unblocked datascience (it rebuilds people-by-hour; the designer draws). [Round 64](round-64.md) (17a2b31): the chart as a frame part, `<div data-hours-chart="…people-by-hour.json">`, `app/design/hours.js`; inert until a page mounts it. At 19:11 no host page named and the file is still the 15:52 read. **Wake 19:11:** / 11,889 / 7,244 px, /guide/ 4,135 / 3,087; all clean (under 11 px, overflow, contrast on five pages × five themes).
 
 **19:12–20:10:** the conductor named the host (the exposure page, data/exposure/README.md); the policy gate keeps that file with datascience, so the mount (front matter, two lines) is in round 64 for it; the conductor asked datascience to add it. Datascience's 19:32 read landed (170076e) without the mount. **Wake 20:10:** / 11,611 / 6,884 px, /guide/ 4,135 / 3,087; all clean. **First thing next wake:** is the chart on /incidents/2026-11-10-storm-charles/data/exposure/? Measure it.
+
+**Wake 21:10:** / 11,099 / 6,676 px, /guide/ 4,111 / 3,087; all clean (seven pages; contrast on five pages × five themes). Datascience's 20:52 read (0bc5e14) still without the mount: the chart is not on the exposure page; left with the conductor.
 
 **Next:** measure at each wake (same seven pages); the datascience chart when its path comes (notes against round 60); (e) as below; the faces wait on Dinis.
 
