@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Weather warnings, up to 3 days
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 12:51 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 13:53 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -18,8 +18,8 @@ IPMA's name for it: *Avisos Meteorológicos até 3 dias*. Documented at [api.ipm
 | Format | JSON |
 | Shape | an array of rows, one per area, type and window; most rows are green (no warning) and say only that the type is watched |
 | IPMA says it updates | not stated |
-| IPMA's file dated (its Last-Modified header) | 2026-11-11 12:15 UTC |
-| We last read it | 2026-11-11 12:48 UTC, 1 file, 44551 bytes |
+| IPMA's file dated (its Last-Modified header) | 2026-11-11 13:15 UTC |
+| We last read it | 2026-11-11 13:50 UTC, 1 file, 44379 bytes |
 | IPMA's note | "Para mais informações sobre os Avisos Meteorológicos consulte o nosso Guia." |
 | More from IPMA | https://www.ipma.pt/pt/enciclopedia/otempo/sam/ |
 
@@ -47,6 +47,6 @@ IPMA's name for it: *Avisos Meteorológicos até 3 dias*. Documented at [api.ipm
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [forecast/warnings/warnings_www.json](https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json) | 200 | 44551 | `31034b0a12a91d70…` | 2026-11-11 12:15 | 2026-11-11 12:48 |
+| [forecast/warnings/warnings_www.json](https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json) | 200 | 44379 | `744d05856c5a57b7…` | 2026-11-11 13:15 | 2026-11-11 13:50 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/warnings.json](../changes/warnings.json). Our small files made from it: [data/warnings.json](../data.md#data/warnings.json).
