@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 18:44 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 19:09 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -14,7 +14,7 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 - **Metro timetable:** [tools/transport-gtfs.mjs](../tools/transport-gtfs.mjs) turns Metro de Lisboa's GTFS zip (dados.gov.pt, CC BY; in the store at `gtfs/metro-lisboa/20261026/`) into metro-schedule.json (trips per hour per line, given days). Not hourly: rerun when the feed changes or for new days (`--days`).
 - **Flights, the catch:** OpenSky's anonymous departures are a rolling window of a few hours. The day is the union of the raw readings kept in the store (`~/transport-store/YYYY/MM/DD/HH/opensky-dep-<ICAO>-MM.json`). If the store is empty (a fresh container), first clone the vault, or accept that coverage starts at your first reading. Hours not covered are `null` (drawn dotted), never 0. Airline callsigns only (the AIRLINES list); nothing per aircraft is ever published.
 - **Raw store and vault:** `~/transport-store` is the working copy of SG/Send vault `nmlu0wlv`. Push with `sgit commit -m … && sgit push --token "$SG_SEND_ACCESS_TOKEN"`. The conductor holds the key (sealed through the lane at 10:39). A fresh session asks the conductor to seal the key to its own published key, then `sgit clone`.
-- **Session key:** fourth session `incident-transport-dinis-4` (encryption sha256:949b9016db82288f, 14:05); the first three are handed over. The conductor sealed the vault key to it at 14:06 (a code for `node tools/lane-handover.mjs open <file>`); store cloned 14:07.
+- **Session key:** fifth session `incident-transport-dinis-5` (encryption sha256:a6babdb707ed6595, 19:05); the first four are handed over. The conductor sealed the vault key to it at 19:06 (`node tools/lane-handover.mjs open <file>`); store cloned 19:07.
 - **Catch:** `--only bridges` in a fresh container creates `~/transport-store` with its readings, and `sgit clone` then refuses the existing folder: move it aside, clone, copy the readings back (`cp -rn`). The vault key was sealed to it by the conductor (opened 12:57) and the store cloned. In a fresh container without the store, run only `--only bridges` until it is cloned (a full run without the store rebuilds flights.json from one reading). The vault key opens to `~/.incident-vaults/nmlu0wlv.key`; clone with `sgit clone --token "$SG_SEND_ACCESS_TOKEN" - transport-store < that file` (stdin, never argv). A new session makes its own key and adds a new entry.
 
 ## Rules learned the hard way
@@ -39,11 +39,13 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 4. Shadow's leads checked 13:14: TAP states no cancellation count (its own weather alert went to the researcher, now a fact there); ANA's split now comes from its newsroom.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 
-## State at 18:44 UTC (fourth session)
+## State at 19:09 UTC (fifth session)
 
-- Bridges: Lusoponte normal on both bridges from 17:30 (usual limits back). Row proposed 18:42.
-- CP (weather notice, update 18h00): Douro Tua–Pocinho and Beira Baixa Santa Margarida–Tramagal interrupted; Campolide–Alcântara Terra and four Intercidades over the 25 de Abril suppressed. Rows proposed 15:49, 16:42, 18:42. VOST's Linha do Norte item (Bobadela Sul–Alverca) is not in CP's notice. CP's text is never published (its terms): our words, in the conductor's rows, with the link.
-- Fertagus normal (18:10). ANA's latest by-airport update still 11:55 UTC. TTSL: Trafaria–Porto Brandão–Belém vehicles interrupted, passengers limited (14:40; row proposed).
+- Bridges: Lusoponte normal on both bridges from 17:30. Row proposed 18:42.
+- TTSL: Trafaria–Porto Brandão–Belém **normalised**, vehicles and passengers (its update 19:01; row proposed 19:07, supersedes 14:40).
+- CP (weather notice, still "Atualização 18h00", valid 10–11/11), read 19:06: Douro Tua–Pocinho and Beira Baixa Santa Margarida–Tramagal interrupted; Campolide–Alcântara Terra suppressed. The four Intercidades over the 25 de Abril are no longer in it (no new time stamp; told the conductor, no row). CP's text is never published (its terms).
+- Fertagus normal (18:10). ANA's latest by-airport update still 11:55 UTC.
+- Thursday 12/11: no notice yet from CP, Fertagus, TTSL or Lusoponte: unknown (not stated). Watch each round.
 - A fresh session reads CP's notice body by rendering https://www.cp.pt/pt/detalhe-aviso/mau-tempo-10-11-novembro in Chromium (the reader keeps only titles and times).
 
 ## Who to tell
