@@ -140,6 +140,9 @@ for (const rel of walkOut(OUT).sort()) {
 <main class="doc"><div class="wrap"><div class="incident" id="incident" data-dir="data/"><p class="meta">The dashboard needs JavaScript: it reads <a href="data/README.md">data/</a> and draws it here.</p></div></div></main>${body}`
         extraHead = `<script src="../../app/storm.js" defer></script>`
     }
+    // any page can mount an app through the frame: front matter `mount:` (the element, one line of HTML, placed above the text) and
+    // `head:` (its stylesheet and script tags, one line). The page then always has the site's nav, notice and footer
+    if (fm.mount) { body = `<main class="doc"><div class="wrap">${fm.mount}</div></main>` + body; extraHead += fm.head || '' }
     if (rel === 'agents/README.md') {   // the live agents page (incident.observability@'s app/agents/)
         body = `<main class="doc"><div class="wrap"><div id="agents-live" data-base="../"></div></div></main>` + body
         extraHead = `<link rel="stylesheet" href="../app/agents/agents.css"><script src="../app/agents/agents.js" defer></script>`
