@@ -1,6 +1,6 @@
 # Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:57 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 13:44 UTC
 
 Not a warning service. No advice of ours. **Your airline or operator decides whether your flight or service runs: its site or app has the latest.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -14,6 +14,7 @@ Our client name, on every request: `storm-charles.promptugal.news newsroom reade
 |---|---|---|---|---|---|
 | [OpenSky Network](https://openskynetwork.github.io/opensky-api/) | REST API (`/flights/departure`, `/states/all`), anonymous | Yes. Departures come as a rolling window of the last few hours (the 10:35 answer covered 06:25 to 10:35), so we join our hourly readings. Arrivals: batch at night. Past days: "You cannot access historical flights" | [API docs](https://openskynetwork.github.io/opensky-api/): "for research and non-commerical purposes"; cite the OpenSky paper (done on every page). Anonymous: "400 credits per day" for `/states/*`. The full terms page answered 403/503 from here: **a person should read it** | Departures seen per hour per airport (hours not covered drawn dotted); airline aircraft near each airport now | **live** |
 | OpenSky history | The same API with an account | Needs an account | As above | Today against the same weekday last week | **key for Dinis** (free account) |
+| [ANA's newsroom](https://en.newsroom.ana.pt/) (found by incident.perplexity@, passed on by the conductor 13:38) | Its "update by airport" statements (server-rendered; published time in the page) | Yes (13:38); [robots.txt](https://en.newsroom.ana.pt/robots.txt) disallows one folder only | [ANA's terms](https://www.ana.pt/en/corporate/home#modal-terms), "Intellectual property rights": reproducing or distributing its information "not permitted without prior consent from ANA" (read 13:39). So the figures only, as numbers, with ANA named and the link; none of its text | Per airport: movements scheduled, cancelled in advance, cancelled during the day, operated, at the time ANA states | **live** (13:44): `ana_statement` in flights.json and `ana` on each airport |
 | ANA airports' boards (aeroportolisboa.pt, aeroportomadeira.pt, …) | Their web pages | A 212-byte bot-check page; robots.txt allows the paths | Not reached | Departures and arrivals with status (cancelled, delayed) | **bot check**: ANA's permission or a feed; a person asks |
 | Airport weather (METAR, TAF) | The meteorologist's files | Yes | Public domain (US AWC) | Already on the site's weather pages | reused, not duplicated |
 
@@ -79,3 +80,4 @@ Only what an operator or an authority states. Ride-hailing apps (Uber, Bolt) pub
 5. Rede Expressos sits behind a protection service.
 6. Carris (Lisbon city): its terms forbid publishing without its written consent (as Metro's); ask for it.
 7. Infraestruturas de Portugal: the same clause (its terms frame it under "commercial use is excluded", so a person may read it as allowing a non-commercial newsroom; until then, link only).
+8. ANA: its terms ask consent to reproduce its information; we carry its newsroom's figures as numbers with the link and none of its text. Its consent would settle it.

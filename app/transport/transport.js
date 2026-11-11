@@ -8,7 +8,7 @@
   var room = base + 'incidents/' + inc + '/data/'
   var mode = el.getAttribute('data-mode') || 'hub'
   var MODES = [
-    { id: 'flights', name: 'Flights', page: 'flights', file: 'flights.json', ents: ['airport', 'tap'], ops: 'Lisbon, Porto, Faro and Funchal airports (OpenSky Network)' },
+    { id: 'flights', name: 'Flights', page: 'flights', file: 'flights.json', ents: ['airport', 'tap'], ops: 'Lisbon, Porto, Faro and Funchal airports (ANA\'s newsroom; OpenSky Network)' },
     { id: 'trains', name: 'Trains', page: 'trains', file: 'trains.json', ents: ['cp'], ops: 'CP, Fertagus' },
     { id: 'metro', name: 'Metro and light rail', page: 'metro', file: 'metro.json', sched: 'metro-schedule.json', ents: ['metro'], ops: 'Metro de Lisboa, Metro do Porto, MTS' },
     { id: 'buses', name: 'Buses and trams', page: 'buses', file: 'buses.json', ents: [], ops: 'Carris Metropolitana; Carris (city): its terms forbid republishing, link only' },
@@ -39,6 +39,13 @@
   function airport(a) {
     var d = a.departures_today || {}, l = a.live_snapshot || {}
     var s = '<section class="card tr-ap"><h2>' + esc(a.name) + ' <span class="meta">' + esc(a.iata) + ' · ' + esc(a.icao) + '</span></h2>'
+    if (a.ana && a.ana.label === 'fact') {
+      var n = a.ana
+      s += '<p class="tr-big"><b>' + (n.cancelled_in_advance + (n.cancelled_during_day || 0)) + '</b> of ' + n.scheduled + ' movements cancelled, at ' + tm(n.situation_at, hm(n.situation_at)) + ' UTC ' + lbl('fact') + '</p>' +
+        '<ul class="kv"><li>Scheduled <b>' + n.scheduled + '</b></li><li>Cancelled in advance <b>' + n.cancelled_in_advance + '</b></li><li>Cancelled during the day <b>' + (n.cancelled_during_day == null ? '?' : n.cancelled_during_day) + '</b></li><li>Operated by then <b>' + (n.operated == null ? '?' : n.operated) + '</b></li></ul>' +
+        '<p class="meta">Movements are departures and arrivals together' + (n.scope ? '; ' + esc(n.scope) : '') + '. Published ' + tm(n.published, dhm(n.published)) + ' UTC.</p>' +
+        '<p>' + prov('ANA, the airport operator, in its newsroom', n.link, n.read) + '</p>'
+    }
     if (d.label === 'fact') {
       s += '<p class="tr-big"><b>' + d.count + '</b> airline departures seen' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : '') + ' ' + lbl('fact') + '</p>' + bars(d.by_hour_utc || [])
       if (d.by_airline && d.by_airline.length) s += '<p class="meta">' + d.by_airline.slice(0, 6).map(function (x) { return esc(x.airline) + ' ' + x.n }).join(' · ') + (d.by_airline.length > 6 ? ' · …' : '') + '</p>'
@@ -112,7 +119,7 @@
     Promise.all([M.file ? get(room + 'transport/' + M.file) : Promise.resolve(null), M.sched ? get(room + 'transport/' + M.sched) : Promise.resolve(null)].concat(M.ents.map(function (e) { return get(room + 'decisions/entities/' + e + '.json') }))).then(function (r) {
       var d = r[0], ents = r.slice(2), h = note
       if (M.id === 'flights') {
-        h += d ? '<p class="meta">Updated ' + tm(d.updated) + ' UTC. ' + esc(d.attribution) + '. Airline flights only; nothing per aircraft is shown. Cancellations and diversions: the airports’ own boards show a bot check to automated readers, which we do not get round; the counts reported in the press are in the decisions below.</p><div class="tr-grid">' + d.airports.map(airport).join('') + '</div>' : '<p>' + lbl('none') + ' flights.json did not load.</p>'
+        h += d ? '<p class="meta">Updated ' + tm(d.updated) + ' UTC. ' + esc(d.attribution) + '. Airline flights only; nothing per aircraft is shown. Cancellations: ANA’s own figures from its newsroom where it has published them, at the time it states (its boards show a bot check to automated readers, which we do not get round). Diversions: no open source states them; the decisions below hold what the press reports.</p><div class="tr-grid">' + d.airports.map(airport).join('') + '</div>' : '<p>' + lbl('none') + ' flights.json did not load.</p>'
       } else if (d) {
         h += '<p class="meta">Updated ' + tm(d.updated) + ' UTC, from each operator’s own site, feed or open API. Short excerpts; the notice is one click away.</p><div class="tr-grid">' + d.operators.map(operator).join('') + '</div>'
       } else h += '<p>' + lbl('none') + ' Own sources for this mode: not read yet (' + esc(M.ops) + '). Until then, the decisions recorded by our researcher, below.</p>'

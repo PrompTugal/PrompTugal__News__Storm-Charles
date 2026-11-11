@@ -379,6 +379,45 @@ async function bridges() {
     return items
 }
 
+// ---------- ANA's own newsroom (en.newsroom.ana.pt): its "update by airport" statements, the airport operator's figures
+// (scheduled movements, cancelled in advance, operated, cancelled during the day). robots.txt disallows only one folder.
+// ANA's terms (ana.pt, "Intellectual property rights") do not allow reproducing its information without consent, so we
+// carry the figures as numbers with ANA named and the link, and copy none of its text. Times on its pages are Lisbon time.
+const ANA_AIRPORTS = { Lisbon: 'LIS', Porto: 'OPO', Faro: 'FAO', Madeira: 'FNC' }
+async function ana() {
+    const NR = 'https://en.newsroom.ana.pt/'
+    const home = await get('ana-newsroom-home', NR, { json: false })
+    if (home.rec.status !== 200 || !home.body) return { label: 'none', note: `ANA's newsroom did not answer (status ${home.rec.status})`, source: NR, read: home.rec.read }
+    const links = [...new Set([...home.body.matchAll(/href="((?:https:)?\/\/en\.newsroom\.ana\.pt\/news\/[^"]*(?:adverse-weather|update-by-airport)[^"]*\.html)"/g)].map(m => m[1].replace(/^\/\//, 'https://')))]
+    for (const url of links.slice(0, 2)) {
+        const p = await get('ana-newsroom-update', url, { json: false })
+        if (p.rec.status !== 200 || !p.body) continue
+        const pub = (/article:published_time" content="([^"]+)"/.exec(p.body) || [])[1]
+        const published = pub ? iso(Date.parse(pub)) : null
+        const title = strip((/<title>([\s\S]*?)<\/title>/.exec(p.body) || [])[1]).replace(/\s*[-|]\s*ANA.*$/i, '')
+        const text = strip(p.body.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' '))
+        const at = /situation at each airport at (\d{1,2}):(\d{2})/i.exec(text) || /Operational data updated at (\d{1,2}):(\d{2})/i.exec(text)
+        const d = published ? new Date(published) : null
+        const situation_at = at && d ? lisbonToUtc(d.getUTCFullYear(), d.getUTCMonth() + 1, d.getUTCDate(), +at[1], +at[2]) : null
+        const airports = {}
+        for (const [name, iata] of Object.entries(ANA_AIRPORTS)) {
+            const m = new RegExp(name + ':\\s*(\\d+) scheduled movements, of which (\\d+) were cancelled in advance and (\\d+) remained scheduled\\.\\s*([^.]*)\\.', 'i').exec(text)
+            if (!m) continue
+            const rest = m[4], num = re => { const x = re.exec(rest); return x ? +x[1] : null }
+            airports[iata] = {
+                scheduled: +m[1], cancelled_in_advance: +m[2], remained_scheduled: +m[3],
+                operated: /no movements had been operated/i.test(rest) ? 0 : num(/(\d+) movements? had been operated/i),
+                cancelled_during_day: /no additional cancellations/i.test(rest) ? 0 : num(/(\d+) additional cancellations?/i),
+                ...(iata === 'FNC' ? { scope: 'Madeira\'s airports together (Funchal and Porto Santo), as ANA gives them' } : {}),
+            }
+        }
+        if (!Object.keys(airports).length) continue
+        return { label: 'fact', operator: 'ANA Aeroportos de Portugal (the airport operator)', title, published, situation_at, airports, unit: 'aircraft movements (departures and arrivals together)', link: url, source: NR, read: p.rec.read, sha256: p.rec.sha256,
+            licence: 'ANA\'s terms do not allow reproducing its information without consent: the figures only, as numbers, with ANA named and the link; none of its text' }
+    }
+    return { label: 'none', note: 'ANA\'s newsroom answered; no "update by airport" statement with figures found among its newest', source: NR, read: home.rec.read }
+}
+
 // --only bridges: read and write just that mode (e.g. in a fresh container before the raw store is cloned, when a full run
 // would rebuild flights.json from this one reading and lose the day's coverage).
 if (arg('only', '') === 'bridges') {
@@ -391,6 +430,8 @@ if (arg('only', '') === 'bridges') {
     process.exit(0)
 }
 const fl = await flights()
+const an = await ana()
+if (an.label === 'fact') for (const a of fl) if (an.airports[a.iata]) a.ana = { ...an.airports[a.iata], situation_at: an.situation_at, published: an.published, link: an.link, read: an.read, label: 'fact' }
 const tr = await trains()
 const sv = await services()
 const mt = await metro()
@@ -398,15 +439,15 @@ const br = await bridges()
 const updated = iso(Date.now())
 const common = { by: BY, updated, not_a_warning_service: 'Not a warning service. No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. For warnings follow IPMA and ANEPC.', sources_page: 'transport/sources.md' }
 const flightsJ = {
-    about: 'Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network\'s public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations and diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.',
-    ...common, attribution: OPENSKY_CITE, airports: fl,
+    about: 'Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network\'s public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations: ANA\'s own figures (scheduled, cancelled, operated movements) from its newsroom where it has published them (ana_statement, and ana on each airport); diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.',
+    ...common, attribution: OPENSKY_CITE, ana_statement: an, airports: fl,
 }
 const servicesJ = {
     about: 'Each operator\'s current state from its own notices where an open, machine-readable source exists, with short excerpts and the link. Operators without an open source (Metro, CP, Fertagus, Carris, the bridges, the airport) are in the decisions kept by incident.researcher@ (data/decisions/entities/), linked from the page.',
     ...common, operators: sv,
     decisions_elsewhere: ['airport', 'tap', 'metro', 'cp', 'ferries', 'bridges', 'tunnels', 'rede-expressos', 'flixbus', 'port'].map(e => `incidents/2026-11-10-storm-charles/data/decisions/entities/${e}.json`),
 }
-if (DRY) { console.log(JSON.stringify({ bridges: br }, null, 1)); console.log(JSON.stringify({ flightsJ, servicesJ }, null, 1).slice(0, 1500)); process.exit(0) }
+if (DRY) { console.log(JSON.stringify({ ana: an, bridges: br })); console.log(JSON.stringify({ flightsJ, servicesJ }, null, 1).slice(0, 1500)); process.exit(0) }
 writeJ(path.join(OUT, 'flights.json'), flightsJ)
 writeJ(path.join(OUT, 'services.json'), servicesJ)
 const modeJ = (mode, title, operators, decisions) => ({ about: `${title}: each operator's own site, feed or open API first; the press only where the operator publishes nothing readable (those are the researcher's decisions, linked). Short excerpts with the link.`, mode, ...common, operators, decisions_elsewhere: decisions.map(e => `incidents/2026-11-10-storm-charles/data/decisions/entities/${e}.json`) })
