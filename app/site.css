@@ -829,7 +829,9 @@ select, input, textarea, button { max-width: 100%; }
 .doc article.landing > h2 ~ ul, .doc article.landing > ol { list-style: none; margin: 1.3rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
 .doc article.landing > h2 ~ ul > li, .doc article.landing > ol > li { margin: 0; padding: 18px 18px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
 .doc article.landing > h2 ~ ul > li > strong:first-child, .doc article.landing > ol > li > strong:first-child { display: block; font-size: 1.08rem; line-height: 1.25; color: var(--ink); margin-bottom: 5px; }
-.doc article.landing > h2 ~ ul > li a, .doc article.landing > ol > li a { font-weight: 600; }
+.doc article.landing > h2 ~ ul > li a:not(.ent), .doc article.landing > ol > li a:not(.ent) { font-weight: 600; }
+/* round 48: a linked name (the lens) inside a card, a figure or the title reads as plain text: only the card's own name is bold */
+.landing li a.ent, .landing > h1 a.ent, .landing li > strong a.ent { font-weight: inherit; }
 .doc article.landing > ol { counter-reset: lp; }
 .doc article.landing > ol > li { counter-increment: lp; border-top: 3px solid var(--link-2); border-radius: 0 0 12px 12px; }
 .doc article.landing > ol > li::before { content: counter(lp); display: block; font: 800 1.5rem/1 var(--sans); color: var(--link); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
@@ -845,4 +847,6 @@ select, input, textarea, button { max-width: 100%; }
 @media print { .landing p > strong > a { background: none; color: var(--ink); } }
 /* the masthead's way in for someone new: shown when welcome/ exists (admin/build/build.mjs) */
 a.ver.new { font-family: var(--sans); text-transform: none; color: var(--link); border-color: var(--link-2); }
-@media (max-width: 640px) { header.top:has(a.ver.new) a.ver:not(.new) { display: none; } }   /* on a phone it takes the version chip's place (the version is in the panel) */
+@media (max-width: 1439px) { header.top:has(a.ver.new) a.ver:not(.new):not([href*="repository"]):not(.repo) { display: none; } }   /* below 1440 it takes the version chip's place (the version is in the panel): at 1280 the two together cut 'Help' and 'About' off the menu */
+@media (max-width: 640px) { header.top:has(a.ver.new) a.ver:not(.new) { display: none; } }
+@media (max-width: 1439px) { header.top:has(a.ver.new) .brand-org { display: none; } }   /* and the brand's " · PrompTugal" gives its room to the menu (the footer names the organisation) */

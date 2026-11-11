@@ -109,10 +109,11 @@ function menu(rel, u, title) {
     if (!active) for (const s of MENU_LIVE) for (const [, t] of s[1]) { const d = dir(t); if (d && rel.startsWith(d) && d.length > best) { best = d.length; active = s } }
     if (!active) active = MENU_LIVE.find(([n]) => n === 'Data room') || MENU_LIVE[0]
     const here = active[1].find(([, t]) => t === rel)
+    const front = rel.startsWith('welcome/')   // the page for newcomers is a front door: no subsite is lit, no sub-bar, no trail (round 48)
     const a = ([label, t], cur) => `<a href="${u}${t}"${cur ? ' aria-current="page"' : ''}>${esc(label)}</a>`
-    const nav = `<nav class="sites" aria-label="Subsites">${MENU_LIVE.map(s => `<a href="${u}${s[1][0][1]}"${s === active ? ' aria-current="true"' : ''}>${esc(s[0])}</a>`).join('')}</nav>
-${active[1].length > 1 ? `<nav class="top" aria-label="${esc(active[0])}"><span class="navg"><b>${esc(active[0])}</b>${active[1].map(i => a(i, i[1] === rel)).join('')}</span></nav>` : ''}`
-    const crumbs = rel === 'index.html' ? '' : `<nav class="crumbs" aria-label="Where you are"><div class="wrap"><a href="${u}index.html">Storm Charles</a><span>›</span><a href="${u}${active[1][0][1]}">${esc(active[0])}</a>${here && here[1] === active[1][0][1] ? '' : `<span>›</span><b>${esc(here ? here[0] : title)}</b>`}</div></nav>`
+    const nav = `<nav class="sites" aria-label="Subsites">${MENU_LIVE.map(s => `<a href="${u}${s[1][0][1]}"${s === active && !front ? ' aria-current="true"' : ''}>${esc(s[0])}</a>`).join('')}</nav>
+${active[1].length > 1 && !front ? `<nav class="top" aria-label="${esc(active[0])}"><span class="navg"><b>${esc(active[0])}</b>${active[1].map(i => a(i, i[1] === rel)).join('')}</span></nav>` : ''}`
+    const crumbs = rel === 'index.html' || front ? '' : `<nav class="crumbs" aria-label="Where you are"><div class="wrap"><a href="${u}index.html">Storm Charles</a><span>›</span><a href="${u}${active[1][0][1]}">${esc(active[0])}</a>${here && here[1] === active[1][0][1] ? '' : `<span>›</span><b>${esc(here ? here[0] : title)}</b>`}</div></nav>`
     return { nav, crumbs }
 }
 const MENU_MARK = (rel, u, title) => `<!--menu:${Buffer.from(JSON.stringify([rel, u, title])).toString('base64')}-->`
