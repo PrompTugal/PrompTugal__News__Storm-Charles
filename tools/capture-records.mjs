@@ -30,7 +30,7 @@ const J = f => JSON.parse(fs.readFileSync(f, 'utf8'))
 const W = (f, data) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, data) }
 const utc = iso => `${+iso.slice(8, 10)} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+iso.slice(5, 7) - 1]} ${iso.slice(0, 4)}, ${iso.slice(11, 16)} UTC`
 const mdEsc = s => String(s || '').replace(/\s*\|\s*/g, ' · ').replace(/\[/g, '(').replace(/\]/g, ')').replace(/[*`]/g, '').replace(/\s+/g, ' ').trim()   // the build's markdown has no escapes
-const isRecord = n => /^\d{4}-.*\.json$/.test(n)
+const isRecord = n => /^\d{4}-.*\.json$/.test(n)   // <hhmm>-<slug>.json: never index.json
 
 // each site's terms page, where incident.weatherwatch@ has read it (research/weather-sites/terms.json): host -> {url, read}
 const TERMS = new Map()
@@ -96,6 +96,15 @@ for (const chain of chains.values()) {
     }
 }
 
+// a change read and judged by the archivist (evidence/reviewed.json): the hash differs, the content does not
+const REVIEWED = (() => { try { return J(path.join(EV, 'reviewed.json')).reviewed } catch { return {} } })()
+{ const same = new Map()   // a capture judged 'same content' is compared onward as the capture before it
+  for (const chain of chains.values()) { let base = null
+    for (const r of chain) { if (!r.captured || r.failed) continue
+        const rv = REVIEWED[r.id]; if (rv) r.review = rv; else delete r.review
+        if (rv?.verdict === 'same content' && base) same.set(r.id, base); else if (same.size && base && r.changed && r.previous && same.has(r.previous)) { const b = same.get(r.previous), tx = x => x.sha256_text_stable || x.sha256_text; if (tx(r) === tx(b)) { r.changed.text = false; delete r.diff } }
+        if (!(rv?.verdict === 'same content')) base = r } } }
+const realChange = x => !!(x.changed?.text && x.review?.verdict !== 'same content')
 // ---- 3. the records and their pages
 for (const r of all) { const t = termsOf(r.host); if (t) r.terms = t }
 const depth = id => '../'.repeat(id.split('/').length)
@@ -105,8 +114,8 @@ for (const r of all) {
     const jf = path.join(EV, r.id + '.json')
     if (!fs.existsSync(jf) || JSON.stringify({ ...J(jf), updated: 0 }) !== JSON.stringify({ ...JSON.parse(out), updated: 0 })) W(jf, out)
     const base = depth(r.id), name = path.basename(r.id)
-    const chg = r.failed ? r.failed : r.changed == null ? (r.captured ? 'the first capture of this address' : 'not captured') : r.changed.text ? `**changed** since ${utc(r.changed.since)} (the visible text differs)` : `unchanged since ${utc(r.changed.since)} (the same visible text)`
-    const rows = chain.map(x => `| ${x === r ? '**this one**' : `[${utc(x.read_utc)}](${base}evidence/${x.id}.md)`} | ${utc(x.read_utc)} | ${x.captured ? x.status : 'not captured'} | ${x.failed ? 'server error' : x.changed == null ? 'first' : x.changed.text ? 'changed' : 'unchanged'} | \`${(x.sha256_text || '').slice(0, 16)}\` |`).join('\n')
+    const chg = r.review?.verdict === 'same content' ? `the hash of the visible text differs from ${utc(r.changed.since)}, but read by the archivist: **same content**. ${mdEsc(r.review.why)}` : r.failed ? r.failed : r.changed == null ? (r.captured ? 'the first capture of this address' : 'not captured') : r.changed.text ? `**changed** since ${utc(r.changed.since)} (the visible text differs)` : `unchanged since ${utc(r.changed.since)} (the same visible text)`
+    const rows = chain.map(x => `| ${x === r ? '**this one**' : `[${utc(x.read_utc)}](${base}evidence/${x.id}.md)`} | ${utc(x.read_utc)} | ${x.captured ? x.status : 'not captured'} | ${x.failed ? 'server error' : x.changed == null ? 'first' : realChange(x) ? 'changed' : x.changed.text ? 'same content (rendered differently)' : 'unchanged'} | \`${(x.sha256_text || '').slice(0, 16)}\` |`).join('\n')
     const md = `---
 title: ${(r.title || r.host).replace(/"/g, "'").replace(/\n/g, ' ')} · as read ${utc(r.read_utc)}
 summary: Our capture of ${r.url} as it was at ${utc(r.read_utc)}: the screenshot, the hashes, earlier and later captures, then the link out.
@@ -159,12 +168,21 @@ The record as data: [${name}.json](${name}.json). All captures: [evidence](${bas
 // ---- 4. the index: by address, newest capture first
 const addresses = [...chains.entries()].map(([url, chain]) => {
     const end = chain[chain.length - 1], last = [...chain].reverse().find(x => x.captured && !x.failed) || end, src = sourceOf(new URL(url).hostname)
-    return { url, source: last.source, source_name: src.name, kind: src.kind, shown: !!src.show, title: [...chain].reverse().find(x => x.title)?.title || '', latest: last.id, latest_status: last.captured ? last.status : null, first_read: chain[0].read_utc, last_read: end.read_utc, changes: chain.filter(x => x.changed?.text).length,
-        captures: chain.map(x => ({ id: x.id, read_utc: x.read_utc, status: x.captured ? x.status : null, changed: x.changed == null ? null : x.changed.text, failed: x.failed ? true : undefined, sha256_text: x.sha256_text, sha256_screenshot: x.sha256_screenshot })) }
+    return { url, source: last.source, source_name: src.name, kind: src.kind, shown: !!src.show, title: [...chain].reverse().find(x => x.title)?.title || '', latest: last.id, latest_status: last.captured ? last.status : null, first_read: chain[0].read_utc, last_read: end.read_utc, changes: chain.filter(realChange).length,
+        captures: chain.map(x => ({ id: x.id, read_utc: x.read_utc, status: x.captured ? x.status : null, changed: x.changed == null ? null : realChange(x), rendered_differently: x.changed?.text && !realChange(x) ? true : undefined, failed: x.failed ? true : undefined, })) }
 }).sort((a, b) => a.source.localeCompare(b.source) || a.url.localeCompare(b.url))
-const index = { about: 'Every capture of an outside page kept for this site, by address. A record is at evidence/<id>.json and its page at evidence/<id>.html. The screenshots of sources that may be shown are in the display vault (data/vaults.json, a published read key); everything raw is in a private, packed vault. "changed" compares the visible text with the capture before.', by: BY, updated: now(), display_vault: vid('display'), counts: { addresses: addresses.length, captures: all.length, shown: all.filter(r => r.shown).length, changed: all.filter(r => r.changed?.text).length }, addresses }
+const index = { about: 'Every capture of an outside page kept for this site, by address. A record is at evidence/<id>.json and its page at evidence/<id>.html; the list of every capture of an address, with its hashes, is in evidence/<source>/index.json (source = the first part of the id). The screenshots of sources that may be shown are in the display vault (data/vaults.json, a published read key); everything raw is in a private, packed vault. "changed" compares the visible text with the capture before.', by: BY, updated: now(), display_vault: vid('display'), counts: { addresses: addresses.length, captures: all.length, shown: all.filter(r => r.shown).length, changed: all.filter(realChange).length }, addresses }
 const ixf = path.join(EV, 'index.json')
-if (!fs.existsSync(ixf) || JSON.stringify({ ...J(ixf), updated: 0 }) !== JSON.stringify({ ...index, updated: 0 })) W(ixf, JSON.stringify(index, null, 1) + '\n')
+// the main index carries one line per address (no per-capture list: that is in <source>/index.json), so it stays small
+const slim = { ...index, addresses: addresses.map(a => ({ url: a.url, source: a.source, shown: a.shown, title: (a.title || '').slice(0, 90), latest: a.latest, latest_status: a.latest_status, last_read: a.last_read, count: a.captures.length, changes: a.changes })) }
+if (!fs.existsSync(ixf) || JSON.stringify({ ...J(ixf), updated: 0 }) !== JSON.stringify({ ...slim, updated: 0 })) W(ixf, JSON.stringify(slim) + '\n')   // one line: this file must stay under 256 KB; the hashes are in each record and in <source>/index.json
+// per source: the same rows with every capture's hashes
+const bySource = new Map(); for (const a of addresses) { if (!bySource.has(a.source)) bySource.set(a.source, []); bySource.get(a.source).push(a) }
+for (const [sid, list] of bySource) {
+    const doc = { about: `Every capture of ${list[0].source_name}'s addresses, with the sha256 of each capture's visible text and screenshot.`, by: BY, updated: now(), source: sid, addresses: list.map(a => ({ ...a, captures: a.captures.map(c => ({ ...c, sha256_text: byId.get(c.id)?.sha256_text, sha256_screenshot: byId.get(c.id)?.sha256_screenshot })) })) }
+    const sf = path.join(EV, sid, 'index.json')
+    if (!fs.existsSync(sf) || JSON.stringify({ ...J(sf), updated: 0 }) !== JSON.stringify({ ...doc, updated: 0 })) W(sf, JSON.stringify(doc, null, 1) + '\n')
+}
 
 // ---- 5. timeline rows and decision files -> evidence ids (so a row can link to our page of its source)
 const never = h => [...SOURCES.never.hosts, ...SOURCES.forbidden.hosts].some(x => h === x || h.endsWith('.' + x))

@@ -1,0 +1,42 @@
+---
+title: Região Oeste espera que medidas tomadas após tempestade Kristin, ajudem se houver necessidade na depressão Charles · as read 11 Nov 2026, 03:31 UTC
+summary: Our capture of https://www.rtp.pt/noticias/pais/regiao-oeste-espera-que-medidas-tomadas-apos-tempestade-kristin-ajudem-se-houver-necessidade-na-depressao-charles_a1778151 as it was at 11 Nov 2026, 03:31 UTC: the screenshot, the hashes, earlier and later captures, then the link out.
+mount: <div id="evidence" data-id="rtp/2026/11/11/0331-noticias-pais-regiao-oeste-espera-que-medidas-tomadas-apos-t-d3458e31" data-base="../../../../../"><p class="meta">The picture needs JavaScript: it is read from the display vault and checked against the hash below. Everything else on this page is here without it.</p></div>
+head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><script src="../../../../../app/evidence/vault-reader.js" defer></script><script src="../../../../../app/evidence/evidence.js" defer></script>
+---
+## The record
+
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 04:25 UTC
+
+**Evidence** (a page reported by its own publisher, kept as we read it). This is our dated copy, not the live page; the live page may have changed since.
+
+| | |
+|---|---|
+| Address | `https://www.rtp.pt/noticias/pais/regiao-oeste-espera-que-medidas-tomadas-apos-tempestade-kristin-ajudem-se-houver-necessidade-na-depressao-charles_a1778151` |
+| Source | rtp.pt (press) |
+| Read | 11 Nov 2026, 03:31 UTC (`2026-11-11T03:31:03Z`) |
+| Answer | HTTP 200; served from a cache, age 0 s |
+| Title | Região Oeste espera que medidas tomadas após tempestade Kristin, ajudem se houver necessidade na depressão Charles |
+| Against the capture before | the first capture of this address |
+| sha256 of the HTML as served | `7e1de9a9c505f339ab2d2b98eea41305be8b476cefd9c4eb6aa883abab693500` |
+| sha256 of the visible text | `c6528577aca2e3f96d00b9f419b69af130cbad85e2e44be9196b7501b9de9522` |
+| sha256 of the screenshot | `7cb04eb70ef9e33a9df3e7f8414cbbbfa481ca69c279911ff4d2f3cda6cb0237` |
+| sha256 of the second screenshot | `1138d277bcd3f9379d2e17300b4ad60221365eac9dbc543d44ab46364f0110fe` (The same load with 1 fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.) |
+| Shown here | no: the capture is kept privately; only the hash, title, time and a short excerpt are shown |
+| Licence | Press: all rights reserved by the publisher. The capture is kept privately; shown here are only the hash, the title, the time read and a short excerpt, with the link. |
+| Terms | the site's terms page: `http://media.rtp.pt/rgpd/termos-e-condicoes/` (read 2026-11-11T02:15Z by incident.weatherwatch@web-summit.dinis) |
+| Robots | robots.txt has no rule for this address; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
+
+**The first words on the page** (a short excerpt): "Saltar para o conteúdo principal NOTÍCIAS DESPORTO TELEVISÃO RÁDIO RTP PLAY RTP PALCO RTP ZIG ZAG RTP ENSINA RTP ARQUIVOS Entrar EM DIRETO Depressão Charles junta-se a Bruna. A evolução do mau tempo em Portugal PAÍS EUROPA MUNDO CULTURA OPINIÃO VÍDEOS ÁUDIOS · RTP DESPORTO Abrir…"
+
+## Every capture of this address
+
+| Capture | Read | Answer | Against the one before | Text hash |
+|---|---|---|---|---|
+| **this one** | 11 Nov 2026, 03:31 UTC | 200 | first | `c6528577aca2e3f9` |
+
+## The outside address
+
+**This link leaves this site.** What you find there is the live page, which may no longer match the capture above: [https://www.rtp.pt/noticias/pais/regiao-oeste-espera-que-medidas-tomadas-apos-tempestade-kristin-ajudem-se-houver-necessidade-na-depressao-charles_a1778151](https://www.rtp.pt/noticias/pais/regiao-oeste-espera-que-medidas-tomadas-apos-tempestade-kristin-ajudem-se-houver-necessidade-na-depressao-charles_a1778151)
+
+The record as data: [0331-noticias-pais-regiao-oeste-espera-que-medidas-tomadas-apos-t-d3458e31.json](0331-noticias-pais-regiao-oeste-espera-que-medidas-tomadas-apos-t-d3458e31.json). All captures: [evidence](../../../../../evidence/README.md).

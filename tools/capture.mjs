@@ -112,7 +112,8 @@ export async function capture(browser, url, out, frame = null) {
         if (frame) { await sleep(1200); frameShot = await page.screenshot({ type: 'jpeg', quality: 78, timeout: 60000 }).catch(() => null) }
         // lazy content: walk down the page once, then back to the top
         await page.evaluate(async () => { const H = () => document.documentElement.scrollHeight; for (let y = 0; y < Math.min(H(), 30000); y += 800) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 120)) } window.scrollTo(0, 0) }).catch(() => {})
-        await sleep(600)
+        // wait until the visible text stops changing (menus and dates filled in by scripts), at most about 8 s
+        { let last = -1, same = 0; for (let k = 0; k < 10 && same < 2; k++) { const n = await page.evaluate(() => document.body ? document.body.innerText.length : 0).catch(() => 0); same = n === last ? same + 1 : 0; last = n; await sleep(800) } }
         const h = resp.headers()
         let raw = null; try { raw = await resp.body() } catch { raw = null }
         const dom = Buffer.from(await page.content(), 'utf8')

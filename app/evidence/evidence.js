@@ -12,7 +12,7 @@
   var utc = function (iso) { return +iso.slice(8, 10) + ' ' + M[+iso.slice(5, 7) - 1] + ', ' + iso.slice(11, 16) }
   var get = function (p) { return fetch(base + p, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(p + ': HTTP ' + r.status); return r.json() }) }
 
-  Promise.all([get('evidence/' + id + '.json'), get('evidence/index.json').catch(function () { return null }), get('data/vaults.json').catch(function () { return null })]).then(function (a) {
+  Promise.all([get('evidence/' + id + '.json'), get('evidence/' + id.split('/')[0] + '/index.json').catch(function () { return null }), get('data/vaults.json').catch(function () { return null })]).then(function (a) {
     var rec = a[0], index = a[1], vaults = a[2]
     root.textContent = ''
 
@@ -30,7 +30,7 @@
       addr.captures.forEach(function (c) {
         var here = c.id === id, n = el(here ? 'span' : 'a', (here ? 'now ' : '') + (c.changed ? 'chg' : ''), utc(c.read_utc))
         if (!here) n.href = base + 'evidence/' + c.id + '.html'
-        n.appendChild(el('small', '', c.status == null ? 'not captured' : c.failed ? 'server error ' + c.status : c.changed == null ? 'first capture' : c.changed ? 'changed' : 'unchanged'))
+        n.appendChild(el('small', '', c.status == null ? 'not captured' : c.failed ? 'server error ' + c.status : c.changed == null ? 'first capture' : c.changed ? 'changed' : c.rendered_differently ? 'same content' : 'unchanged'))
         nav.appendChild(n)
       })
       root.appendChild(nav)
