@@ -3,7 +3,7 @@
   "title": "One warning, opened three times",
   "summary": "What \"fractal\" means for a graph, shown on one real node: IPMA's red rain warning for Lisbon as a node in this site's graph, as a record in IPMA's open data, and as IPMA's own alert message. Three worlds, three vocabularies, one warning.",
   "by": "incident.studio@web-summit.dinis",
-  "updated": "2026-11-11T02:20:00Z",
+  "updated": "2026-11-11T02:25:00Z",
   "about": "The idea is Fractal Semantic Graphs (sgit.ai), which Dinis Cruz named as reading for this site on 11 November 2026 (BRIEF.md). The node and its records are quoted from this repository's files as read on 11 November, 02:18 UTC. A record of how one warning is kept, not the warning in force: for that, follow IPMA. Proposed by incident.conductor@web-summit.dinis.",
   "chapters": [
     {
@@ -16,7 +16,7 @@
             "id": "graph",
             "who": "agent",
             "name": "The storm's graph",
-            "does": "our words: 8 types, 8 verbs",
+            "does": "our words: 8 types, 9 verbs",
             "mood": "talk"
           },
           {
@@ -43,7 +43,7 @@
       },
       "scenes": [
         {
-          "caption": "A semantic graph is things joined by verbs. This site's graph of the storm has eight types of thing (Actor, Decision, Warning, Signal, Source, Place, Dataset, Agent) and eight verbs (decides, warns, reports, cites, precedes, affects, located-in, produced-by). That is its whole vocabulary: an Actor warns a Warning; a Warning precedes a Decision.",
+          "caption": "A semantic graph is things joined by verbs. This site's graph of the storm has eight types of thing (Actor, Decision, Warning, Signal, Source, Place, Dataset, Agent) and nine verbs (decides, warns, reports, cites, precedes, affects, located-in, produced-by, issued-as). That is its whole vocabulary: an Actor warns a Warning; a Warning precedes a Decision.",
           "at": 0,
           "cards": [
             {
@@ -218,7 +218,7 @@
             "id": "graph",
             "who": "agent",
             "name": "The storm's graph",
-            "does": "our words: 8 types, 8 verbs",
+            "does": "our words: 8 types, 9 verbs",
             "mood": "talk"
           },
           {
@@ -563,6 +563,12 @@
                 {
                   "k": "read",
                   "v": "2026-11-11T01:05Z, by incident.researcher@"
+                },
+                {
+                  "k": "issued-as",
+                  "v": "warning:cap:261110212300.PO-10-6290",
+                  "href": "../../app/graph/index.html?node=warning%3Aipma-red-rain-0900",
+                  "new": true
                 }
               ],
               "label": "fact",
@@ -668,7 +674,7 @@
             "id": "graph",
             "who": "agent",
             "name": "The storm's graph",
-            "does": "our words: 8 types, 8 verbs",
+            "does": "our words: 8 types, 9 verbs",
             "mood": "talk"
           },
           {
@@ -775,7 +781,7 @@
           ]
         },
         {
-          "caption": "Dinis's direction for this site (BRIEF.md, 11 November, about 02:10 UTC): \"It needs to be fractal: I should be able to connect until I arrive at the last source.\" Today these three levels exist as three files. The pages that let a reader click down through them are being built. This explanation shows the files as they are, not those pages.",
+          "caption": "Dinis's direction for this site (BRIEF.md, 11 November, about 02:10 UTC): \"It needs to be fractal: I should be able to connect until I arrive at the last source.\" The first step now exists as a stored link: in the graph, this warning is issued-as IPMA's message, an edge added on 11 November after this explanation showed it was missing, and any node opens as its own graph. The step into the open-data record, and the pages that show each level, are still being built.",
           "at": 3,
           "cards": [
             {
@@ -859,7 +865,7 @@
     }
   ],
   "simplifies": [
-    "Opening a node is drawn as one step. Today it is three files, and nothing stored links the node warning:ipma-red-rain-0900 to message …PO-10-6290: the graph holds the message as a second node (warning:cap:261110212300.PO-10-6290) with no edge between the two. You match them by the time sent (21:23) and the area. That missing edge is exactly what the restructure is for.",
+    "Opening a node is drawn as one step. When this was first made (02:18 UTC) nothing stored linked the node warning:ipma-red-rain-0900 to message …PO-10-6290: they were two nodes with no edge, matched by the time sent and the area. incident.graph@ then added the verb issued-as (inverse issue-of) and that edge (read 02:24 UTC). The earlier, superseded warning has no such edge: its message had left the feed. The record in weather/warnings.json is still reached by matching, not by a link.",
     "weather/cap.json is our record of IPMA's messages, under our own field names (sent_utc, msg_type, replaces). CAP's own element names differ a little (sent, msgType, references), and a CAP message carries much more than we keep.",
     "weather/warnings.json is likewise our reading of IPMA's open-data feed, with our field names and the time we read it added; sent_utc there comes from the CAP message, because the open data carries no issue time.",
     "Three levels and a word are shown. The idea has no fixed depth: a level could be opened further (the area into its municipalities, the Portuguese sentence into its terms), and sideways into other graphs.",
@@ -868,12 +874,12 @@
   ],
   "sources": [
     {
-      "name": "data/graph/storm.json (node warning:ipma-red-rain-0900 and its edges; 214 nodes, 238 edges as of 01:53 UTC)",
+      "name": "data/graph/storm.json (node warning:ipma-red-rain-0900 and its edges; 219 nodes, 271 edges as of 02:20 UTC)",
       "href": "../../data/graph/storm.json",
       "read": "11 November 2026, 02:18 UTC"
     },
     {
-      "name": "data/graph/ontology.json (eight types, eight verbs)",
+      "name": "data/graph/ontology.json (eight types, nine verbs, issued-as among them)",
       "href": "../../data/graph/ontology.json",
       "read": "11 November 2026, 02:18 UTC"
     },
