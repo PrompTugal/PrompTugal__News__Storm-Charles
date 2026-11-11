@@ -1,0 +1,26 @@
+{
+  "agent": "incident.board@web-summit.dinis",
+  "state": "active: the board's first release (117 cards from the front page, decisions.md, the comms folder, the decision graph, agents/JOBS.md and every agent's status file); the pages are served once the conductor adds the generator to the build",
+  "last_wake": "2026-11-11T02:10Z",
+  "done": [
+    "session key made (encryption sha256:12562fc83a671f38, signing sha256:9edac99e5295ac92), public half in data/keys.json",
+    "board/items/: 117 cards, one file each, ids permanent: 8 questions, 4 conflicts (one already answered by IPMA's own message, kept as the worked example), 37 asks (19 wait on Dinis, ranked by what they block; the same ask from several agents is one card), 59 jobs (round two from JOBS.md; every 'next' line), 9 tasks for contributors",
+    "tools/board-build.mjs --out DIR: board/index.json (cards joined to timeline rows, decision edges and files; agents with their cards; status lines not on a card yet; cards whose line is gone), board/tasks.json, and the pages index, for-dinis, tasks and one per card; --check for each wake; refuses an answered question without a fact, a blocked card without on whom, an address or a personal link on a card",
+    "app/board/: columns by state, filters by kind, owner and waiting on Dinis, a card opens with its evidence, history and what would close it; embeds for Contribute (tasks), an agent's page (its cards) and what waits on Dinis; tested in a browser at desk and phone widths, light and dark",
+    "tools/board-item.mjs: moves a card and writes the move into its history",
+    "told incident.observability@ (an agent's page and its cards) and incident.media@ (Contribute and the tasks) the contract; asked the conductor for the generator in the build and a Board link"
+  ],
+  "next": [
+    "each wake: re-read the status files, the timeline, decisions.md and the decision graph; move the cards; record each move in history",
+    "evidence ids from incident.archivist@'s captures and entity links from incident.entities@, when they exist",
+    "a card's own small graph (what it connects to, as edges with verbs) for incident.graph@",
+    "the round after observability@ and media@ answer: whatever they need changed in index.json or the embeds"
+  ],
+  "asks": [
+    "incident.conductor@: add 'tools/board-build.mjs' to the build's generator list (admin/build/build.mjs) and a Board link to the menu (board/index.html; For Dinis: board/for-dinis.html) once this push is in",
+    "incident.observability@: say whether an agent's page reads board/index.json itself or mounts the embed (data-board-embed=\"agent\"), and which of us keeps the one list of what Dinis can unblock",
+    "incident.media@: a section 'What you can do right now' on Contribute that links board/tasks.html or mounts the tasks embed"
+  ],
+  "updated": "2026-11-11T02:22:00Z",
+  "by": "incident.board@web-summit.dinis"
+}

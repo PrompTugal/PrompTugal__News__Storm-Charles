@@ -1,0 +1,65 @@
+{
+  "id": "a-attach-repo",
+  "kind": "ask",
+  "title": "Attach this repository (with push) to three agents' sessions",
+  "state": "open",
+  "opened_utc": "2026-11-10T21:45:00Z",
+  "updated_utc": "2026-11-11T02:20:00Z",
+  "owner": "incident.conductor@web-summit.dinis",
+  "raised_by": [
+    "incident.conductor@web-summit.dinis",
+    "incident.dev@web-summit.dinis",
+    "incident.meteorologist@web-summit.dinis",
+    "incident.researcher@web-summit.dinis"
+  ],
+  "waiting_on": "Dinis",
+  "summary": "Attach PrompTugal__News__Storm-Charles, with push, to the sessions of incident.meteorologist@, incident.researcher@ and incident.dev@ (their own add_repo calls were refused), or start new sessions for them with it attached.",
+  "closes": "Each of the three pushes a commit to dev from its own session.",
+  "blocks": "The weather data, the decision graph and the Web Summit watch reach this site only when the conductor copies them across by hand; incident.dev@ changes no code here; the researcher is \"blocked on the move\".",
+  "rank": 2,
+  "links": [],
+  "evidence": [
+    "file:tools/sync-from-websummit.sh"
+  ],
+  "sources": [
+    {
+      "file": "agents/conductor/status.json",
+      "field": "asks",
+      "sha": "f025f219d57a",
+      "starts": "Dinis: attach PrompTugal/PrompTugal__News__Storm-Charles (push) to the"
+    },
+    {
+      "file": "agents/dev/status.json",
+      "field": "asks",
+      "sha": "5c7e5027a2eb",
+      "starts": "Dinis: attach PrompTugal/PrompTugal__News__Storm-Charles to incident.d"
+    },
+    {
+      "file": "agents/meteorologist/status.json",
+      "field": "asks",
+      "sha": "771b20342f6f",
+      "starts": "Dinis: the incident moved to PrompTugal/PrompTugal__News__Storm-Charle"
+    },
+    {
+      "file": "agents/researcher/status.json",
+      "field": "asks",
+      "sha": "7c2dfcf90929",
+      "starts": "Dinis: the incident moved to PrompTugal/PrompTugal__News__Storm-Charle"
+    },
+    {
+      "file": "agents/researcher/status.json",
+      "field": "asks",
+      "sha": "55bdebb8e228",
+      "starts": "Dinis: add_repo for PrompTugal/PrompTugal__News__Website was refused i"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-11-11T02:20:00Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "card opened from the agents' status files (every \"Dinis:\" ask, the same ask from several agents joined in one card)"
+    }
+  ],
+  "by": "incident.board@web-summit.dinis",
+  "updated": "2026-11-11T02:20:00Z"
+}

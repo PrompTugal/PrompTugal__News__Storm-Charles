@@ -1,0 +1,69 @@
+/* The board (incident.board@web-summit.dinis). Tokens from app/site.css only: no hex colour here (design/README.md, rule 7).
+   States of things we run wear --ok, --warn, --sent, --wait; IPMA's warning colours are never used (rule 3).
+   Never colour alone (rule 4): every state and kind is also written, and a blocked card has a dashed edge. */
+#board { margin: 4px 0 18px; }
+.bd-bar { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: flex-end; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.bd-bar fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; min-width: 0; }
+.bd-bar legend { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); padding: 0 0 5px; }
+.bd-f { font: 500 13px/1 var(--sans); padding: 6px 9px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--paper); color: var(--ink); cursor: pointer; }
+.bd-f.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.bd-f.bd-fd { border-style: double; border-width: 3px; padding: 4px 9px; }
+.bd-bar select, .bd-bar input[type=search] { font: 13px/1.2 var(--sans); padding: 5px 8px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--paper); color: var(--ink); max-width: 100%; }
+.bd-check { font-size: 13px; color: var(--ink-2); display: inline-flex; align-items: center; gap: 4px; }
+.bd-go { margin: 0; font-size: 13.5px; flex: 1 1 260px; text-align: right; }
+.bd-note { margin: 8px 2px; }
+
+.bd-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(218px, 1fr)); gap: 12px; align-items: start; }
+.bd-col { background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px; min-width: 0; border-top: 3px solid var(--wait); }
+.bd-col.s-watching { border-top-color: var(--sent); }
+.bd-col.s-blocked { border-top-color: var(--warn); border-top-style: dashed; }
+.bd-col.s-answered, .bd-col.s-done { border-top-color: var(--ok); }
+.bd-col h2 { font: 700 13px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .07em; margin: 0 0 2px; }
+.bd-col h2 i { font: 600 12px/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); margin-left: 4px; font-style: normal; }
+.bd-says { font-size: 12px; line-height: 1.35; color: var(--ink-2); margin: 0 0 8px; min-height: 2.7em; }
+
+.bd-card { display: block; width: 100%; box-sizing: border-box; text-align: left; font: inherit; color: var(--ink); text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--line-2); border-radius: 6px; padding: 8px 9px; margin: 0 0 7px; cursor: pointer; }
+.bd-card:hover, .bd-card:focus-visible { border-color: var(--focus); outline: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--focus) 25%, transparent); }
+.bd-card.s-blocked { border-left-style: dashed; border-left-color: var(--warn); }
+.bd-card.s-watching { border-left-color: var(--sent); }
+.bd-card.s-answered, .bd-card.s-done { border-left-color: var(--ok); }
+.bd-card.s-done .bd-title { color: var(--ink-2); }
+.bd-top, .bd-foot { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; margin: 0; }
+.bd-title { display: block; font: 600 14px/1.3 var(--sans); margin: 5px 0 6px; overflow-wrap: anywhere; }
+.bd-owner, .bd-n { font: 12px/1.2 var(--mono); color: var(--ink-2); overflow-wrap: anywhere; }
+.bd-chip { font: 600 10.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .05em; padding: 3px 5px; border-radius: 3px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.k-question .bd-kind { background: var(--ink); color: var(--paper); }
+.k-conflict .bd-kind { background: transparent; box-shadow: inset 0 0 0 1.5px var(--ink); color: var(--ink); }
+.k-task-for-contributors .bd-kind { background: var(--sent-soft); color: var(--sent); }
+.bd-type { background: transparent; box-shadow: inset 0 0 0 1px var(--line-2); }
+.bd-wait { background: var(--warn-soft); color: var(--warn); white-space: normal; text-transform: none; letter-spacing: 0; font-weight: 600; font-size: 11.5px; }
+.bd-wait.bd-dinis { box-shadow: inset 0 0 0 1.5px var(--warn); }
+.bd-state.s-answered, .bd-state.s-done { background: var(--ok-soft); color: var(--ok); }
+.bd-state.s-blocked { background: var(--warn-soft); color: var(--warn); }
+.bd-state.s-watching { background: var(--sent-soft); color: var(--sent); }
+
+.bd-dialog { width: min(860px, calc(100vw - 24px)); max-height: calc(100vh - 40px); box-sizing: border-box; border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 20px 20px; background: var(--paper); color: var(--ink); overflow: auto; }
+.bd-dialog::backdrop { background: color-mix(in srgb, var(--ink) 45%, transparent); }
+.bd-x { float: right; font: 600 12px/1 var(--sans); padding: 6px 10px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--surface); color: var(--ink); cursor: pointer; }
+.bd-detail h2 { font-size: 21px; line-height: 1.25; margin: 8px 0 8px; }
+.bd-detail h3 { font: 700 12px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .07em; color: var(--ink-2); margin: 16px 0 5px; }
+.bd-detail p { margin: 0 0 6px; max-width: 78ch; }
+.bd-sum { font-size: 16px; line-height: 1.5; }
+.bd-answer { padding: 8px 10px; border-left: 3px solid var(--ok); background: var(--ok-soft); border-radius: 0 4px 4px 0; }
+.bd-evs, .bd-hist, .bd-sides { margin: 0; padding: 0; list-style: none; }
+.bd-ev { padding: 6px 0; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.45; }
+.bd-ev time, .bd-hist time { font: 12.5px/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); margin: 0 4px; }
+.bd-ev .lbl { display: inline-block; font: 600 10.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 3px 5px; border-radius: 3px; }
+.bd-evt { margin-right: 6px; }
+.bd-evt.bd-bad { background: var(--bad-soft); color: var(--bad); }
+.bd-st { font: 12px/1 var(--mono); color: var(--ink-2); }
+.bd-evtext { display: block; margin-top: 3px; }
+.bd-src { display: block; }
+.bd-ev { overflow-wrap: anywhere; }
+.bd-hist li, .bd-sides li { padding: 4px 0; font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+.bd-out::after { content: " ↗"; font-size: .85em; color: var(--ink-2); }
+.bd-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 8px; }
+.bd-embed { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px 10px; margin: 0 0 16px; }
+.bd-embed h2 { font-size: 18px; margin: 0 0 10px; }
+@media (max-width: 760px) { .bd-cols { grid-template-columns: 1fr; } .bd-says { min-height: 0; } .bd-go { text-align: left; } .bd-dialog { padding: 14px; } }
+@media print { .bd-bar, .bd-x { display: none; } }

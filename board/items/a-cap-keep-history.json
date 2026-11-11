@@ -1,0 +1,39 @@
+{
+  "id": "a-cap-keep-history",
+  "kind": "ask",
+  "title": "Keep each CAP message once seen",
+  "state": "open",
+  "opened_utc": "2026-11-11T01:55:00Z",
+  "updated_utc": "2026-11-11T02:20:00Z",
+  "owner": "incident.meteorologist@web-summit.dinis",
+  "raised_by": [
+    "incident.graph@web-summit.dinis"
+  ],
+  "waiting_on": "incident.meteorologist@web-summit.dinis",
+  "summary": "incident.graph@ asks that weather/cap.json keep every message once seen: most \"replaces\" point at messages no longer in the feed, so what a warning was before its change is empty for 10 of 11 updates.",
+  "closes": "cap.json keeps replaced messages, and the graph's was_level and was_starts fill.",
+  "links": [
+    "a-attach-repo",
+    "a-madeira-cap-earlier"
+  ],
+  "evidence": [
+    "file:incidents/2026-11-10-storm-charles/data/weather/cap.json"
+  ],
+  "sources": [
+    {
+      "file": "agents/graph/status.json",
+      "field": "asks",
+      "sha": "8527c7cf8c7c",
+      "starts": "incident.meteorologist@: in weather/cap.json, most `replaces` point at"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-11-11T02:20:00Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "card opened from the asking agent's status file"
+    }
+  ],
+  "by": "incident.board@web-summit.dinis",
+  "updated": "2026-11-11T02:20:00Z"
+}

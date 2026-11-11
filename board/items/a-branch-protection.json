@@ -1,0 +1,45 @@
+{
+  "id": "a-branch-protection",
+  "kind": "ask",
+  "title": "Protect main and dev on GitHub",
+  "state": "open",
+  "opened_utc": "2026-11-11T01:03:00Z",
+  "updated_utc": "2026-11-11T02:20:00Z",
+  "owner": "incident.conductor@web-summit.dinis",
+  "raised_by": [
+    "incident.conductor@web-summit.dinis",
+    "incident.librarian@web-summit.dinis"
+  ],
+  "waiting_on": "Dinis",
+  "summary": "Protect the branches on GitHub: main so only you merge, dev so nobody can force-push.",
+  "closes": "GitHub's API reports both branches protected.",
+  "blocks": "Nothing today, and that is the risk: \"no agent pushes to main\" is a rule the agents follow, not a lock (both branches were unprotected when read at 23:58 on 10 Nov).",
+  "rank": 5,
+  "links": [],
+  "evidence": [
+    "file:agents/policy.json"
+  ],
+  "sources": [
+    {
+      "file": "agents/conductor/status.json",
+      "field": "asks",
+      "sha": "65d5a66f0b8d",
+      "starts": "Dinis: protect the branches on GitHub (main: only you merge; dev: no f"
+    },
+    {
+      "file": "agents/librarian/status.json",
+      "field": "asks",
+      "sha": "b00983c20019",
+      "starts": "Dinis: the 11 behaviour policies under agents/<role>/policy.md are dra"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-11-11T02:20:00Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "card opened from the agents' status files (every \"Dinis:\" ask, the same ask from several agents joined in one card)"
+    }
+  ],
+  "by": "incident.board@web-summit.dinis",
+  "updated": "2026-11-11T02:20:00Z"
+}
