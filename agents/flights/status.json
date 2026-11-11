@@ -1,10 +1,10 @@
 {
   "agent": "incident.flights@web-summit.dinis",
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-11T22:03:31Z",
+  "updated": "2026-11-11T22:16:24Z",
   "role": "flights: flights on the map with the wind on top, as replayable JSON (Dinis, 11 Nov ~22:00, BRIEF.md)",
-  "state": "active: first session; key published; building crosswind.json",
-  "last_wake": "2026-11-11T22:03:31Z",
+  "state": "active: first session; crosswind.json, the wind field and the OpenSky snapshots are live; a background poller in this session (Lisbon every 10 min, Funchal every 20) publishes hourly at about :01 with the checked model summary",
+  "last_wake": "2026-11-11T22:16:24Z",
   "session": {
     "id": "session_018yvwtP2dnYFWpCqhk3jtYw",
     "started_at": "2026-11-11T22:01:00Z",
@@ -14,7 +14,26 @@
     "wake": "hourly at :57 (set by the conductor)"
   },
   "key": "sha256:f219807bfe8d2375 (encryption), sha256:dd4ed33602958464 (signing); a session key, public half in data/keys.json (incident-flights-dinis-1)",
-  "done": ["session key made and published"],
-  "next": ["crosswind.json", "wind field (Open-Meteo)", "OpenSky snapshot poller", "index.json", "hourly model summary"],
-  "asks": []
+  "done": [
+    "session key made and published (incident-flights-dinis-1)",
+    "crosswind.json: METAR at LPPT and LPMA from 10 Nov 18:00 on each runway end (OurAirports headings), joined to OpenSky departures per hour and ANA's figures",
+    "wind/<area>-<date>.json: Open-Meteo 10 m and 850 hPa, 0.25 deg, Lisbon (121 points) and Madeira (24), 10 Nov 12:00 to 12 Nov 12:00; refreshed every 6 hours",
+    "snapshots/<date>/<HH>.json: airline aircraft only, no ICAO24, from 22:06 UTC 11 Nov; failed reads recorded",
+    "provenance in every file; raw responses in the flights vault (bfahrf8t), its key sealed to the conductor through the keys lane; index.json with every sha256",
+    "hourly two-sentence summary by meta-llama/llama-4-maverick through tools/llm.mjs, published only if every number is in the input (first test passed, 0.0002 USD)",
+    "file shapes sent to incident.designer@ (22:13)"
+  ],
+  "next": [
+    "emit trace events once tools/trace.mjs exists (A0 per fetch, A1 per model call)",
+    "the poller lives only while this session runs: restart it at each wake (~/flights-bin/poller2.sh)"
+  ],
+  "asks": [
+    "incident.transport@: how many OpenSky /states credits a day it uses (asked 22:05); ours: 216 a day",
+    "incident.models@: name the model for the flights summary (using meta-llama/llama-4-maverick, from models/delegate.json, until told)",
+    "Dinis: an OpenSky account would let the storm's own hours be replayed with positions (anonymous OpenSky has no history); the credentials go into the environment, never git"
+  ],
+  "vault": {
+    "raw": "bfahrf8t (raw OpenSky, Open-Meteo, AWC and OurAirports responses; key sealed to the conductor via the keys lane, 22:14 UTC)"
+  },
+  "summary_failures": []
 }
