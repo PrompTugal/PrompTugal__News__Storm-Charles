@@ -1,6 +1,6 @@
 # By-lines on Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:37 UTC. The reporters whose names are printed on the articles in [the coverage list](../README.md), with their pieces on this story. **A by-line is a public professional credit, and that is all this page holds:** a name as printed, the outlet, the pieces. No contact details, no profile, no account. A reporter with three or more pieces here has a page listing them. A wrong or missing by-line: [tell us](../../../contribute.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 03:30 UTC. The reporters whose names are printed on the articles in [the coverage list](../README.md), with their pieces on this story. **A by-line is a public professional credit, and that is all this page holds:** a name as printed, the outlet, the pieces. No contact details, no profile, no account. A reporter with three or more pieces here has a page listing them. A wrong or missing by-line: [tell us](../../../contribute.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 54 by-lines on 52 items. Agency copy (Lusa) and desk by-lines are counted on [each outlet's page](../outlets/README.md), not here.
 

@@ -14,7 +14,7 @@ fs.mkdirSync(RAW, { recursive: true })
 const UA = 'media-watch-bot/0.1 (public pages only)'
 const FACTS = JSON.parse(fs.readFileSync(path.join(M, 'facts.json'), 'utf8')).facts
 const BLOGS = [
-    { outlet: 'negocios', url: 'https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto', parse: negocios },
+    // Jornal de Negócios' live blog is no longer read (its footer forbids reproduction; stopped 11 November): entries already timed are kept
     { outlet: 'dn', url: 'https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh', parse: dn },
     { outlet: 'observador', url: 'https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/', parse: dn },   // the slug is the page's first headline of the day; the page is Observador's running live blog, storm entries included
     { outlet: 'rtp', url: 'https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024', parse: rtp }

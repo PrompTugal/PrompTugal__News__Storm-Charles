@@ -50,6 +50,9 @@ function utc(s) {
 // ---- 1. candidates
 const cand = new Map()   // url -> { found_via, feed_title, feed_time }
 const FORBID = OUTLETS.filter(o => o.automated_reading).flatMap(o => o.hosts)   // terms forbid automated reading: no requests, ever
+const hostIn = (u, list) => { try { const h = new URL(u).hostname.replace(/^www\./, ''); return list.some(f => h === f || h.endsWith('.' + f)) } catch { return true } }
+const DROP = OUTLETS.filter(o => o.automated_reading && !o.keep_held).flatMap(o => o.hosts), FEED_ONLY = OUTLETS.filter(o => o.feed_only).flatMap(o => o.hosts)
+const dropHeld = u => hostIn(u, DROP), feedOnly = u => hostIn(u, FEED_ONLY)   // feed only: headline, time and link from the feed; the page is not opened
 const forbidden = u => { try { const h = new URL(u).hostname.replace(/^www\./, ''); return FORBID.some(f => h === f || h.endsWith('.' + f)) } catch { return true } }
 const add = (url, meta) => { url = unesc(url).split('#')[0].replace(/[?&]utm_[^#]*$/, ''); if (/^https?:\/\//.test(url) && !cand.has(url) && !forbidden(url)) cand.set(url, meta) }
 for (const f of feedsCfg.feeds) {
@@ -102,6 +105,7 @@ const IDX = path.join(RAW, 'index.json'); const idx = fs.existsSync(IDX) ? JSON.
 const FRESH = (+process.env.MEDIA_MAX_AGE_MIN || 45) * 60000
 for (const [url, c] of cand) {
     const host = new URL(url).hostname
+    if (feedOnly(url)) { const ft = utc(c.feed_time), old = prevBy.get(url); if (old) articles.push(old); else if (c.feed_title && ft) articles.push({ outlet: outletOf(host), url, kind: /\/videos?\//.test(url) ? 'video' : 'article', lang: null, title: c.feed_title, published: ft.at, published_from: "the outlet's feed (headline, time and link only: its pages are not opened)", byline: [], label: 'evidence', read: new Date().toISOString().replace(/\.\d+Z$/, 'Z'), found_via: c.found_via }); continue }
     let r, read
     const c0 = idx[url]
     if (c0 && Date.now() - Date.parse(c0.read) < FRESH && fs.existsSync(path.join(RAW, c0.sha.slice(0, 16) + '.html'))) { r = { status: c0.status, url: c0.final, text: fs.readFileSync(path.join(RAW, c0.sha.slice(0, 16) + '.html'), 'utf8') }; read = c0.read }
@@ -155,7 +159,7 @@ for (const [url, c] of cand) {
 // keep what an earlier run read and this one did not see (a feed scrolls)
 fs.writeFileSync(IDX, JSON.stringify(idx))
 const seen = new Set(articles.map(a => a.url))
-for (const a of prev.articles || []) if (!seen.has(a.url) && !forbidden(a.url) && !EXCLUDE.test(a.title) && !NOT_PRESS.test(a.url)) articles.push(a)
+for (const a of prev.articles || []) if (!seen.has(a.url) && !dropHeld(a.url) && !EXCLUDE.test(a.title) && !NOT_PRESS.test(a.url)) articles.push(a)
 { const key = a => a.outlet + '|' + a.title, dated = new Set(articles.filter(a => a.published).map(key)); for (let i = articles.length - 1; i >= 0; i--) if (!articles[i].published && dated.has(key(articles[i]))) articles.splice(i, 1) }
 articles.sort((a, b) => (a.published || '9').localeCompare(b.published || '9'))
 articles.forEach(a => { a.id = 'A-' + crypto.createHash('sha256').update(a.url).digest('hex').slice(0, 8) })
