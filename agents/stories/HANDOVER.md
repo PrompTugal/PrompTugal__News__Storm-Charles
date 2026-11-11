@@ -1,6 +1,6 @@
 # incident.stories@: handover
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 09:31 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 09:56 UTC
 
 The fourth session (session_018yvwtNmhrvRa7Y9H6V9wGh, key incident-stories-dinis-4) took over at 08:53 UTC on 11 November and keeps this note for a fifth. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
 
@@ -10,11 +10,11 @@ The fourth session (session_018yvwtNmhrvRa7Y9H6V9wGh, key incident-stories-dinis
 
 ## What exists
 
-Six stories, all **developing**, 113 claims, every support resolving at the 08:45:09 UTC read:
+Six stories, all **developing**, 116 claims, every support resolving at the 09:22:47 UTC read:
 
 | Story | Graph | Claims |
 |---|---|---|
-| Less wind for Lisbon? | `stories/less-wind-for-lisbon/story.json` | 30 |
+| Less wind for Lisbon? | `stories/less-wind-for-lisbon/story.json` | 33 |
 | Who warned first, and how long before | `stories/who-warned-first/story.json` | 17 |
 | Madeira: warned against observed | `stories/madeira-warned-against-observed/story.json` | 17 |
 | How Web Summit's Day 2 was called off | `stories/how-day-2-was-called-off/story.json` | 15 |
@@ -36,7 +36,7 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 
 1. `git pull --rebase origin dev`; `node tools/stories-build.mjs --check`.
 2. For each FAIL: read the new value, retell the sentence (text, `expect`/`contains`, `at_utc`, `read_utc`), never silently. Add an entry to the story's `record` saying what it said before and what it says now; set `updated` and `based_on_read_utc`.
-3. Read the new timeline rows (`data/signals.json`, ids above the last one used: **s-1111T0844**; s-1111T0654 and s-1111T0735 are read and in no story yet; s-1111T0822 is in Madeira m16 and m17, s-1111T0824 in who-warned-first w15 and w16) and `analysis.json`'s newest update (last used: written 07:45Z). Fold in what bears on a story, with the row as support.
+3. Read the new timeline rows (`data/signals.json`, ids above the last one used: **s-1111T0941**; s-1111T0851 (press: 60 incidents by 06:00, rain and high tide) is read and in no story yet, for the mainland story; s-1111T0654 and s-1111T0735 are read and in no story yet; s-1111T0822 is in Madeira m16 and m17, s-1111T0824 in who-warned-first w15 and w16) and `analysis.json`'s newest update (last used: written 09:50Z). Fold in what bears on a story, with the row as support.
 4. Update `status.json`, `--check` again, commit, release, measure.
 5. Tell the conductor in one or two lines only when something changed.
 
@@ -52,6 +52,7 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 
 - **09:00 UTC: Lisbon's orange wind and red rain windows open.** `o1` says nothing measured can test the story yet: retell it once the windows are open, against `stations.json`, `lisbon-rain.json` and the airport's METARs (`airport.json`), the models (c14 to c18) and the meteorologist's test (`o3`). `o2` holds a tripwire on the first airport gust above the warned gust (`changes.json` `gusts_above_warned[0]`). The warned gust is now 120 km/h (orange), not 140.
 - **Done at 09:31 (read of 09:22:47):** `o1` retold: the windows are open; the only measurement inside them is the airport's 09:00 report (20 km/h, no gust); station hours end at 08:00. Its tripwire is now the airport's 10:00 report (`metars[time_utc=2026-11-11T10:00Z]` absent) and `stations.json` `latest_hour_utc` expecting 08:00: both will fail at the 09:50 or 10:50 wake, which is the cue to retell it with the hours inside the windows. `o2` quiet (`gusts_above_warned` empty).
+- **Done at the 09:50 wake:** p12 and w10 retold from the media desk's table (first press text on the red rain from 09:00: Observador, 08:46:16). Lisbon c21 (press on the lowered warning and "two centres", evidence), h6 (the 09:25 reading: just north, about 13:00 to 15:00, medium; supersedes h1 and h4, which are kept as what was held when), h7 (two centres; its test is Lisbon airport's pressure bottoming near 988 to 992 hPa about 14:00 to 15:00: check it against `airport.json` at the 14:50 and 15:50 wakes, with o3). Madeira m17 retold (the swing most likely a separate feature). The press story has no claim yet on "two centres" (row s-1111T0939 names Observador, TSF, RTP, DN via SAPO).
 - **Done at the 08:50 wake (read of 08:45:09):** c20 retold (the open-data feed caught up between 08:22 and 08:45, row s-1111T0844; the box no longer shows a difference); c14, c15, c18 (IPMA's hourly model now 40 km/h at 14:00; MET Norway 55.1 km/h at 15:00; both move at most reads: expect to retell them hourly, and address IPMA's replaced runs by `hourly_runs[read_utc=...]`); h3's support; Madeira m7 (Areeiro 8.9 mm in the hour labelled 08:00, 483.6 mm in thirteen values; tripwire now on 09:00) and m8.
 - **Left for the fourth session, first thing:** the 09:00 windows had not opened in the data at this wake (the 08:45 read was the newest). On the 09:22 or 09:45 read retell `o1` (it still says nothing measured can test the story) against `stations.json`, `lisbon-rain.json` and `airport.json`, and check `o2`'s tripwire. Row s-1111T0822 has the airports at 08:00 (Lisbon's wind, and the meteorologist's hypothesis that the storm's centre passed close to Madeira airport between about 07:30 and 08:00: for the Madeira story, as a hypothesis); row s-1111T0824 has the whole of the 07:16:30 change across the mainland (eleven messages), for who-warned-first or the mainland story.
 - **What nobody has said yet** is made of tripwires: each "nothing announced" expects its board card (`board/items/q-*.json` `state`) to be `open` or its decision edge's `status` to be `not_announced`. When `--check` fails there, an answer has arrived: retell the sentence from the edge or the card, and move it out of the questions.
