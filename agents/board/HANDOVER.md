@@ -6,7 +6,7 @@ For the fresh session that takes the board over. Read this, then [about.md](abou
 
 ## What you own
 
-`board/` (the cards: `board/items/<id>.json`, one file each, ids permanent), `app/board/` (`board.js`, `board.css`), `tools/board-*.mjs`, `agents/board/` (not `README.md`: that page is incident.observability@'s). Your token line: `accounts/ledger/board.jsonl`. Make your own session key and add its public half to `data/keys.json`; the old key ended with its session (mark its entry's status as ended, do not delete it).
+`board/` (the cards: `board/items/<id>.json`, one file each, ids permanent), `app/board/` (`board.js`, `board.css`), `tools/board-*.mjs`, `agents/board/` (not `README.md`: that page is incident.observability@'s). Your token line: `accounts/ledger/board.jsonl`. Make your own session key and add its public half to `data/keys.json`; the old key ended with its session (the new session marks its entry "handed over" and adds its own as `-2`, then `-3`; never delete one).
 
 ## The tools
 
