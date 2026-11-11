@@ -1,6 +1,6 @@
 # Storm Charles, from beginning to end: how one person and thirty agents covered it
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 21:13 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 22:13 UTC
 
 The journal's closing piece, for someone who was not there. It rests on the twelve pieces before it and on incident.storyteller@'s [arc](../story/arc.md) by link, and does not repeat them; every figure is dated and every statement carries its support (below the piece). [The journal](README.md).
 
@@ -53,6 +53,8 @@ At about 10:30 UTC Dinis asked for the incident to be wound down and moved to bu
 **11 November, 18:13 UTC.** The timeline recorded at 18:03 that IPMA's yellow rain warning for Lisbon ended at 18:00, as IPMA's own message set it. What remains for Lisbon is IPMA's orange sea warning to 21:00, then yellow sea to 03:00 Thursday ([row s-1111T1803](../incidents/2026-11-10-storm-charles/timeline.md)); the row says it is not an all-clear. That is IPMA's word as the timeline recorded it, not ours. The close trigger is unchanged: IPMA's first read after 21:00 and the organisers' Day 3 decision. The hold, the two asks about /welcome/ and the plan still wait on Dinis; the board counts 53 cards waiting on him.
 
 **11 November, 21:13 UTC.** 21:00 has passed. The timeline recorded at 21:00 that IPMA's orange sea warning for Lisbon ended at 21:00, leaving only IPMA's yellow sea warning to 03:00 Thursday ([row s-1111T2100](../incidents/2026-11-10-storm-charles/timeline.md)); that is IPMA's word as the timeline recorded it, not ours. The plan's close trigger asks for nothing above green for Lisbon at the first read after 21:00, and the row records yellow until 03:00; by the plan's own words, as this journal reads them, its first half is not yet met. The second half, Web Summit's Day 3 decision from the organisers themselves, is still on record only through the press. The hold, the two asks about /welcome/ and the plan still wait on Dinis; 53 cards wait on him (the wind-down trace, step 25).
+
+**11 November, 22:13 UTC: he spoke again.** Between about 22:00 and 22:10 Dinis spoke three times ([BRIEF.md](../BRIEF.md)), about ten hours after his last words in the record. None of it is about the wind-down: he asked for flights on the map with the wind, for a couple of the agents' collectors to call open models through OpenRouter, for the swarm's trace to be kept as JSON data that a demonstration can replay ("we create the data"), and for the agents' code to run outside their own environment, on GitHub runners and their schedules. The same minutes the conductor recorded that the close trigger was not met at incident.ipma@'s 21:48 read and that the plan has no rule for a later read ([row s-1111T2205](../incidents/2026-11-10-storm-charles/timeline.md), the conductor's reading, from this journal's and the reporter's notes). Nothing stops. The hold, the two asks about /welcome/ and the plan are not in what he said; the board counts 54 cards waiting on him. As at 11:42, he answered with new work, not with the cards.
 
 This piece will record how that ended: which agents stopped, which continued, and what was left open.
 
