@@ -4,7 +4,7 @@ summary: Every hour we ask answer engines with live search what a reader would a
 ---
 # Shadow reporting: what the answer engines told a reader
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 04:06 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and nothing an engine said is a fact here.
 
@@ -22,7 +22,7 @@ The idea is the SGit Newsroom's: "The shadow of an article is evidence. Who cite
 | **contradicts** | our record, or the calendar, says otherwise |
 | **unsupported** | outside our record, general information, or an omission we note |
 
-So far: **1** hour(s) asked, 1 paused (the account that pays the engines was out of credit: a gap, not silence), **23** answers, **90** statements: 46 matches, 11 behind us, 12 ahead: a lead, 7 contradicts, 14 unsupported. Spent on the engines: 0.17 US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
+So far: **1** hour(s) asked, 2 paused (the account that pays the engines was out of credit: a gap, not silence), **23** answers, **90** statements: 46 matches, 11 behind us, 12 ahead: a lead, 7 contradicts, 14 unsupported. Spent on the engines: 0.17 US dollars (the day's limit is 1). Data: [runs/](runs/) (one file per hour), [leads.json](leads.json), [sources.json](sources.json), [cited.json](cited.json).
 
 ## What the first hour shows (02:19 UTC, Wednesday)
 
@@ -48,6 +48,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 02:19 | Perplexity Sonar (en) | No: Day 2 (Wednesday 11 November) will not take place; the summit continues on Thursday. | 2 matches, 1 ahead: a lead, 1 contradicts | 〃 |
 | 11 Nov, 02:19 | Perplexity Sonar (pt) | No: Wednesday 11 November is cancelled because of Storm Charles; it reopens on Thursday "as planned". | 3 matches, 1 contradicts | 〃 |
 | 11 Nov, 03:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T03:06:17Z) | none | |
+| 11 Nov, 04:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T04:06:03Z; one call sent, refused, nothing more asked) | none | |
 
 ### "What warnings are in force in Lisbon now?" · "Que avisos estão em vigor em Lisboa agora?"
 
@@ -57,6 +58,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 02:19 | Perplexity Sonar (en) | Red wind, red rain and orange coastal warnings (and a yellow coastal one); some weather sites show no alerts at all. | 2 matches, 3 behind us, 1 ahead: a lead, 1 unsupported | 〃 |
 | 11 Nov, 02:19 | Perplexity Sonar (pt) | A yellow rain warning 00:00 to 09:00; the alert situation all Wednesday; red wind and rain warnings issued for about 12:00 to 21:00; tunnels closed. | 2 matches, 1 behind us, 2 ahead: a lead, 1 contradicts, 1 unsupported | 〃 |
 | 11 Nov, 03:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T03:06:17Z) | none | |
+| 11 Nov, 04:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T04:06:03Z; one call sent, refused, nothing more asked) | none | |
 
 ### "Will Storm Charles hit Lisbon?" · "A tempestade Charles vai atingir Lisboa?"
 
@@ -66,6 +68,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 02:19 | Perplexity Sonar (en) | Yes, it will bring hazardous weather to Lisbon; whether the worst passes over the city depends on a track that may have moved south. | 4 matches, 1 behind us, 1 ahead: a lead | 〃 |
 | 11 Nov, 02:19 | Perplexity Sonar (pt) | Yes: heavy rain, very strong wind and flood risk in Lisbon, though perhaps a little weaker than first forecast as the track moved south. | 3 matches, 1 behind us, 2 ahead: a lead, 1 contradicts | 〃 |
 | 11 Nov, 03:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T03:06:17Z) | none | |
+| 11 Nov, 04:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T04:06:03Z; one call sent, refused, nothing more asked) | none | |
 
 ### "Is the Lisbon metro running?" · "O metro de Lisboa está a funcionar?"
 
@@ -75,6 +78,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 02:19 | Perplexity Sonar (en) | Yes, running, and expected to keep running normally despite the weather, unless conditions worsen. | 2 matches, 1 unsupported | 〃 |
 | 11 Nov, 02:19 | Perplexity Sonar (pt) | Yes in normal conditions (06:30 to 01:00); service reported as normal, some stations open overnight for homeless people. | 2 matches, 1 unsupported | 〃 |
 | 11 Nov, 03:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T03:06:17Z) | none | |
+| 11 Nov, 04:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T04:06:03Z; one call sent, refused, nothing more asked) | none | |
 
 ### "What happened in Madeira?" · "O que aconteceu na Madeira?"
 
@@ -84,6 +88,7 @@ Times are UTC (Lisbon is on UTC in November). "The record" is what the authoriti
 | 11 Nov, 02:19 | Perplexity Sonar (en) | Storm Bruna, at the weekend: flights grounded, cruise calls cancelled, 125 to 210 incidents, five to nine people displaced. Nothing on Charles. | 1 behind us, 3 unsupported | 〃 |
 | 11 Nov, 02:19 | Perplexity Sonar (pt) | Storm Bruna: rain, wind, floods; more than 100 then 125 then 210 incidents; five, later nine, displaced; a lifeguard missing at sea in Funchal. Nothing on Charles. | 1 behind us, 3 unsupported | 〃 |
 | 11 Nov, 03:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T03:06:17Z) | none | |
+| 11 Nov, 04:00 | none | not asked: paused: account out of credit (HTTP 402 at 2026-11-11T04:06:03Z; one call sent, refused, nothing more asked) | none | |
 
 ## Zoom in: one decision at a time
 
