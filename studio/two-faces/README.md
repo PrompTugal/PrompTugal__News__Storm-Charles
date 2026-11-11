@@ -4,7 +4,7 @@ summary: Why this site has two fronts: the Weather face, clean and for anyone, a
 mount: <div id="studio" data-base="../animations/" data-anim="two-faces"><noscript><p class="meta">The player needs JavaScript. The same explanation, scene by scene as text, is below.</p></noscript></div>
 head: <link rel="stylesheet" href="../../app/studio/studio.css"><script src="../../app/studio/characters.js" defer></script><script src="../../app/studio/player.js" defer></script>
 ---
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:37 UTC
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:42 UTC
 
 # Two faces
 
@@ -42,8 +42,8 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 
 **A clean page hides its workings. What stops it drifting from the evidence?**
 
-1. It fetches nothing from outside. Its script has one fetch, over a fixed list of twelve files, every one of them published by this site's data room. Whatever is on the page is in a file you can open. A small tool checks this before each push. *Counted in the script as read 02:38 UTC (eleven at 02:25; IPMA's communiqué was added since). The table of which file feeds which part is on the Weather page itself, under "Where every figure comes from".*
-   At work: the weather face. "One fetch, twelve files, all on this site.".
+1. It fetches nothing from outside. Its script has one fetch, over a fixed list of files, every one of them a file this site itself serves, carrying its source and the time read. Whatever is on the page is in a file you can open. A check in the site's gate fails the release if that stops being true. *Fourteen files when counted in the script at 02:42 UTC (eleven at 02:25); the list grows as the page does, and the rule does not. Which file feeds which part: the Weather face's own page about itself.*
+   At work: the weather face. "One fetch, fourteen files, all served by this site."; added: sources/ipma/data/warnings.json: warnings by area (the Where view); sources/ipma/data/places.json: the places.
 2. It makes no forecast of its own, and it does not let three different things look alike. What was measured is solid blue. IPMA's automatic forecast is grey and hatched. The meteorologist's reading is dashed and carries the word hypothesis.
    At work: the weather face. "Storm Charles as a weather channel would show it: now, today hour by hour, what is closed, tomorrow.".
 3. Red, orange and yellow mean IPMA's warning levels and nothing else, always with the level written. Nothing else on the page may wear them.
@@ -55,8 +55,8 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 
 ## What this simplifies
 
-- "Reads only the data room" is checked by a tool the Weather agent runs before each push (tools/weather-check.mjs: it fails if the page's script fetches anything outside its fixed list of the data room's files, or names an outside address other than the links to IPMA and ANEPC). It printed OK when run here at 02:33 UTC. It is not yet enforced by the site's gate.
-- Eleven of the twelve files are fetched from api/v1/; the headline's file, incident.json, is fetched from the incident's own folder. Both are this site's published files.
+- "Reads only the data room" is enforced: tools/weather-check.mjs runs in the site's gate (read in admin/build/validate.mjs at 02:42 UTC) and fails the release if the Weather script fetches anything but this site's own published files, or names an outside address other than the links to IPMA and ANEPC. When this was first made, at 02:27, no such check existed; the Weather agent wrote it after this explanation said so.
+- The rule was widened on 11 November from "the data room's files" to any JSON this site itself serves that carries its source and time read: the incident's data under api/v1/, incident.json, and a source's own data (sources/ipma/data/). Never an outside address.
 - The collectors are drawn as one character. They are several agents and scripts, and the files have different keepers: the weather files the meteorologist's agent, decisions/graph.json the researcher's, signals.json and incident.json the conductor's.
 - Dinis's direction goes further than what is built: the data is to move into vaults and the site is to read it from there ("it shouldn't come from here"). Today the files are in the repository and served by the site.
 - The Weather face was hours old when this was made and is changing by the hour. Its own page says what it shows; if this explanation and that page disagree, the page is right.
@@ -67,9 +67,9 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 
 - [BRIEF.md (Dinis, 11 November, ~02:10 UTC: two faces)](../../BRIEF.html), read 11 November 2026, 02:12 UTC
 - [RESTRUCTURE.md (the two faces, what each may read)](../../RESTRUCTURE.html), read 11 November 2026, 02:12 UTC
-- [weather/index.md (the Weather face's own account of itself)](../../weather/index.html), read 11 November 2026, 02:25 UTC
-- [app/weather/weather.js (one fetch; the list of twelve files)](../../app/weather/weather.js), read 11 November 2026, 02:25 UTC
+- [weather/about.md (the Weather face's own account of itself)](../../weather/about.html), read 11 November 2026, 02:42 UTC
+- [app/weather/weather.js (one fetch; fourteen files)](../../app/weather/weather.js), read 11 November 2026, 02:42 UTC
 - [weather/warnings.json (read from IPMA 02:22:46 UTC)](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json), read 11 November 2026, 02:25 UTC
-- [tools/weather-check.mjs (run here: OK)](../../tools/weather-check.mjs), read 11 November 2026, 02:33 UTC
+- [tools/weather-check.mjs, run in the gate (admin/build/validate.mjs)](../../tools/weather-check.mjs), read 11 November 2026, 02:42 UTC
 
 The data this page is drawn from: [animations/two-faces.json](../animations/two-faces.json).
