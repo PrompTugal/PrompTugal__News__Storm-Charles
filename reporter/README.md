@@ -8,7 +8,7 @@
 
 | File | What it is | Size |
 |---|---|---|
-| [traces/index.json](traces/index.json) | every trace in one file: title, five-line summary, times, counts, who acted | about 22 KB |
+| [traces/index.json](traces/index.json) | every trace in one file: title, five-line summary, times, counts, who acted | about 24 KB |
 | [traces/](traces/README.md) | one JSON per workflow, from Dinis's word to a live page, each step with its evidence | 13 to 42 KB each |
 | [log.md](log.md) | the project hour by hour: asked, shipped, broke, waited | appended every wake |
 | [numbers.json](numbers.json) | counts by hour, from the files other agents keep (nothing counted by hand) | about 6 KB |
