@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T10:58Z",
-  "updated": "2026-11-11T16:11Z",
-  "based_on_read_utc": "2026-11-11T15:23:13Z",
+  "updated": "2026-11-11T16:52Z",
+  "based_on_read_utc": "2026-11-11T16:22:55Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for the mainland's districts other than Lisbon (Lisbon's are in sentence n1), resolved from the data room when the page is built and read again in the reader's browser. Never a level of our own.",
     "title": "IPMA's red warnings for the other mainland districts",
@@ -178,11 +178,11 @@
     },
     {
       "id": "n2",
-      "text": "The wind was warned down twice on Wednesday. At 07:16:30 IPMA lowered Lisboa, Setúbal and Beja from red to orange, 09:00 to 21:00 (Lisbon: \"Rajadas até 120 km/h\"), and Leiria, Santarém, Portalegre and Évora from red to yellow. At 12:33:13 it cut Lisboa's, Setúbal's and Beja's orange to end at 18:00, Lisbon's now \"Rajadas até 90 km/h, podendo atingir 110 km/h nos locais mais expostos\". At 15:55:03 it ended the orange wind in Lisboa, Setúbal and Beja and the yellow in Santarém, Évora, Portalegre, Castelo Branco and Leiria at 15:56, and lowered Faro's red wind, 09:00 to 21:00, to orange to 18:00 (row s-1111T1609): no red wind warning remains on the mainland.",
+      "text": "The wind was warned down twice on Wednesday. At 07:16:30 IPMA lowered Lisboa, Setúbal and Beja from red to orange, 09:00 to 21:00 (Lisbon: \"Rajadas até 120 km/h\"), and Leiria, Santarém, Portalegre and Évora from red to yellow. At 12:33:13 it cut Lisboa's, Setúbal's and Beja's orange to end at 18:00, Lisbon's now \"Rajadas até 90 km/h, podendo atingir 110 km/h nos locais mais expostos\". At 15:55:03 it ended the orange wind in Lisboa, Setúbal and Beja and the yellow in Santarém, Évora, Portalegre, Castelo Branco and Leiria at 15:56, and lowered Faro's red wind, 09:00 to 21:00, to orange to 18:00 (row s-1111T1609; the message PO-01-1944 in the data room's copy from the 16:22:55 read; Faro's red message left the feed at 16:09:31): no red wind warning remains on the mainland.",
       "label": "fact",
       "said_by": "IPMA, warnings (CAP messages through MeteoAlarm)",
       "at_utc": "2026-11-11T15:55:03Z",
-      "read_utc": "2026-11-11T16:09:35Z",
+      "read_utc": "2026-11-11T16:22:55Z",
       "supports": [
         {
           "kind": "row",
@@ -227,13 +227,6 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
-          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110071840.PO-01-1921].left_feed_utc",
-          "absent": true,
-          "note": "A tripwire: when Faro's red wind message leaves the feed, this sentence is retold."
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
           "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111123313.PO-01-1939].expires_utc",
           "expect": "2026-11-11T18:00:00+00:00"
         },
@@ -264,6 +257,36 @@
         {
           "kind": "row",
           "id": "s-1111T1609"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261110071840.PO-01-1921].left_feed_utc",
+          "expect": "2026-11-11T16:09:31Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1944].event_pt",
+          "expect": "Aviso Laranja Vento"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1944].expires_utc",
+          "expect": "2026-11-11T18:00:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1946].expires_utc",
+          "expect": "2026-11-11T15:56:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "other_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1952].expires_utc",
+          "expect": "2026-11-11T15:56:00+00:00"
         }
       ]
     },
@@ -297,10 +320,10 @@
     },
     {
       "id": "n4",
-      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's thirteen reports from 09:00 to 15:00 fall in two parts. Until 13:30 the wind was 17 to 28 km/h, backing from south-south-east through east to east-north-east and then east again, with no gust reported, heavy rain from 10:30 and visibility down to 1.5 km at 13:00. Between 13:30 and 14:00 the wind turned from east to south and rose from 17 to 54 km/h, gusting 74 km/h (40 knots), with wind shear reported on runway 20 and the temperature up 2 °C; at 15:00 it was south-south-west 41 km/h gusting 61 km/h, the rain over and visibility above 10 km, wind shear still reported. The pressure fell from 1001 to 989 hPa by 14:00 and held at 989 to 15:00. IPMA's newest station hour is the one labelled 14:00: the rain fell to 1.2 to 6.8 mm at seven stations in and around Lisbon (Carnide the most), after 5.9 to 26.2 mm in the hour labelled 13:00 (Oeiras, the heaviest single hour at IPMA's Lisbon stations in the data room's record of the storm), and the strongest mean winds of the day came with it, from the south-west and south, up to 41.0 km/h at Oeiras. The 74 km/h gust is below the gust warned for its hour (90 km/h, 110 in the most exposed places, to 18:00). The red rain ended at 15:00 as set. At 15:55:03 IPMA ended the orange wind at 15:56, two hours early (row s-1111T1609, IPMA's messages as seen in MeteoAlarm's feed; the data room's copy did not hold them at the 15:23:13 read), so the wind window has closed (no gust above the warned gust in the reports read, to 15:00); yellow rain stands to 18:00, the orange sea to 21:00.",
+      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's fifteen reports from 09:00 to 16:00 fall in two parts. Until 13:30 the wind was 17 to 28 km/h, backing from south-south-east through east to east-north-east and then east again, with no gust reported, heavy rain from 10:30 and visibility down to 1.5 km at 13:00. Between 13:30 and 14:00 the wind turned from east to south and rose from 17 to 54 km/h, gusting 74 km/h (40 knots), with wind shear reported on runway 20 and the temperature up 2 °C; at 15:00 it was south-south-west 41 km/h gusting 61 km/h, the rain over and visibility above 10 km, wind shear still reported; at 15:30 and 16:00 south-south-west 37 and 39 km/h (gusting 61 at 15:30, no gust at 16:00), light rain and drizzle again and visibility 1.5 km. The pressure fell from 1001 to 989 hPa by 14:00 and held at 989 to 16:00. IPMA's newest station hour is the one labelled 15:00: the rain all but stopped (0.0 to 1.2 mm at seven stations, Relógio the most) and the mean wind eased to 17.6 to 36.7 km/h, all from the south-west, Relógio the strongest; before it, the hour labelled 14:00 had 1.2 to 6.8 mm and up to 41.0 km/h at Oeiras, the strongest mean wind of the day, and the hour labelled 13:00 5.9 to 26.2 mm (Oeiras, the heaviest single hour at IPMA's Lisbon stations in the data room's record of the storm). The 74 km/h gust is below the gust warned for its hour (90 km/h, 110 in the most exposed places). The red rain ended at 15:00 as set. At 15:55:03 IPMA ended the orange wind at 15:56, two hours early (its message, in the data room's copy from the 16:22:55 read). So the wind window is over: in the airport's reports inside it, from 09:00 to 15:30, no gust reached the warned gust, the strongest 74 km/h at 14:00. Yellow rain stands to 18:00, the orange sea to 21:00.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T16:09:35Z",
+      "read_utc": "2026-11-11T16:22:55Z",
       "supports": [
         {
           "kind": "data",
@@ -545,26 +568,6 @@
           "expect": 41
         },
         {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T14:00Z].wind_dir",
-          "expect": "SW"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T16:00Z]",
-          "absent": true,
-          "note": "A tripwire: when the airport's 16:00 report arrives, this sentence is behind the data and is retold."
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-          "field": "latest_hour_utc",
-          "expect": "2026-11-11T14:00Z",
-          "note": "A tripwire: the next station hour."
-        },
-        {
           "kind": "row",
           "id": "s-1111T1425"
         },
@@ -577,11 +580,97 @@
           "id": "s-1111T1524"
         },
         {
-          "kind": "row",
-          "id": "s-1111T1609"
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1945].sent_utc",
+          "expect": "2026-11-11T15:55:03+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+          "field": "lisbon_messages[identifier=2.49.0.0.620.0.PT.261111155503.PO-01-1945].expires_utc",
+          "expect": "2026-11-11T15:56:00+00:00"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T15:30Z].wind_kmh",
+          "expect": 37
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T15:30Z].gust_kmh",
+          "expect": 61
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T16:00Z].wind_kmh",
+          "expect": 39
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T16:00Z].wind_dir",
+          "expect": 210
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T16:00Z].pressure_hpa",
+          "expect": 989
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T16:00Z].visibility",
+          "expect": 1.55
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T15:00Z].rain_mm",
+          "expect": 1.2
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=1210766].hourly[time_utc=2026-11-11T15:00Z].rain_mm",
+          "expect": 0
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T15:00Z].wind_mean_kmh",
+          "expect": 36.7
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=7240919].hourly[time_utc=2026-11-11T15:00Z].wind_mean_kmh",
+          "expect": 17.6
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T14:00Z].wind_dir",
+          "expect": "SW"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T17:00Z]",
+          "absent": true
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "latest_hour_utc",
+          "expect": "2026-11-11T15:00Z"
         }
       ],
-      "at_utc": "2026-11-11T15:55:03Z"
+      "at_utc": "2026-11-11T16:00:00Z"
     },
     {
       "id": "n5",
@@ -633,11 +722,11 @@
     },
     {
       "id": "n6",
-      "text": "The airport's own forecast for pilots was lowered at 10:08, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms. It is a point forecast for the airport, not a public warning; IPMA's public warnings above are unchanged by it.",
+      "text": "The airport's own forecast for pilots was lowered at 10:08, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms. Amended at 14:36: 70 km/h gusts to 16:00, then west-north-west, at times gusting 50 km/h from 18:00 to 21:00, and no thunderstorm group. It is a point forecast for the airport, not a public warning; IPMA's public warnings above are unchanged by it.",
       "label": "fact",
       "said_by": "IPMA, the TAF for Lisbon airport (a point forecast for pilots, not a public warning)",
-      "at_utc": "2026-11-11T11:00Z",
-      "read_utc": "2026-11-11T11:26:40Z",
+      "at_utc": "2026-11-11T14:36:00Z",
+      "read_utc": "2026-11-11T16:22:55Z",
       "supports": [
         {
           "kind": "row",
@@ -651,19 +740,37 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "taf.issue_utc",
-          "expect": "2026-11-11T11:00Z"
+          "expect": "2026-11-11T14:36Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=TEMPO&gust_kt=35].gust_kmh",
-          "expect": 65
+          "field": "taf.raw",
+          "contains": "TAF AMD LPPT 111436Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[prob=30].gust_kmh",
-          "expect": 102
+          "field": "taf.groups[change=BASE].gust_kmh",
+          "expect": 70
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=BASE].to_utc",
+          "expect": "2026-11-11T16:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=BECMG&wind_dir=290].becoming_by_utc",
+          "expect": "2026-11-11T18:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=TEMPO&wind_dir=290].gust_kmh",
+          "expect": 50
         }
       ]
     },
@@ -981,6 +1088,15 @@
         "n1",
         "n2",
         "n4"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T16:52Z",
+      "what": "On the 16:22:55 read. n4 as Lisbon's o1. n2: Faro's red wind message left the feed at 16:09:31 (its tripwire); its replacement PO-01-1944 and the ends of Setúbal's and Beja's orange as supports. n6: the airport forecast amended at 14:36.",
+      "claims_changed": [
+        "n4",
+        "n2",
+        "n6"
       ]
     }
   ]
