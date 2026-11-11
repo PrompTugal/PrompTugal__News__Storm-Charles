@@ -14,6 +14,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const j2 = x => String(x).replace(/\.\d+Z$/, 'Z')
@@ -41,7 +42,7 @@ for (const m of fs.readFileSync(path.join(ROOT, 'agents/JOBS.md'), 'utf8').match
 for (const d of fs.readdirSync(path.join(ROOT, 'agents'), { withFileTypes: true })) if (d.isDirectory()) { try { const n = JSON.parse(fs.readFileSync(path.join(ROOT, 'agents', d.name, 'status.json'), 'utf8')).agent; if (n) get(n) } catch { } }
 // the conductor's statement of who started whom (data/agents/starts.json): used where an agent's own status file is silent
 let STARTS = { roles: {} }; try { STARTS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/agents/starts.json'), 'utf8')) } catch { }
-const keys = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/keys.json'), 'utf8')).keys || []
+const keys = readKeys().keys || []
 const agents = []
 for (const a of [...A.values()].sort((x, y) => (y.team - x.team) || x.agent.localeCompare(y.agent))) {
     let st = null; try { st = JSON.parse(fs.readFileSync(path.join(ROOT, 'agents', a.role, 'status.json'), 'utf8')) } catch { }

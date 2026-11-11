@@ -4,6 +4,7 @@
 // Not a build generator: it writes tracked files in story/ and is run by the storyteller, never by the build.
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
+import { readKeys } from '../tools/lane-keystore.mjs';   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const now = new Date().toISOString().replace(/\.\d+Z$/, 'Z');
 const BY = 'incident.storyteller@web-summit.dinis';
@@ -72,7 +73,7 @@ for (const l of log) {
   x.first ||= { commit: h, time: t.replace('+00:00', 'Z') }; x.last = { commit: h, time: t.replace('+00:00', 'Z') };
 }
 const policy = JSON.parse(fs.readFileSync('agents/policy.json', 'utf8')).agents;
-const keys = JSON.parse(fs.readFileSync('data/keys.json', 'utf8')).keys;
+const keys = readKeys().keys;
 const made = k => (k.how.match(/(\d{1,2}:\d{2}) UTC/) || [])[1] || null;
 
 const agents = AGENTS.map(([role, line, emoji, glyph, owns]) => {

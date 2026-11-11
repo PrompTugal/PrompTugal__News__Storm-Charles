@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// lane-keys.mjs: the key list, checked (incident.identity@web-summit.dinis). Reads data/keys.json only; needs no key.
+// lane-keys.mjs: the key list, checked (incident.identity@web-summit.dinis). Reads data/keys.json and data/keys-archive/ (tools/lane-keystore.mjs); needs no key.
 //   node tools/lane-keys.mjs           one line per problem, then a count; exit 1 if any entry is wrong
 //   node tools/lane-keys.mjs --json    the same as JSON
 // An entry is right when: both public keys parse and both fingerprints are theirs (pki.sgit.ai's checkBundle); no private
@@ -7,8 +7,9 @@
 // one "active" and every earlier one "handed over" (or "ended"); a key made and never used is "not used" and is left
 // out of that count. It says the list is consistent, not who pushed.
 import { K, readJson } from './lane-common.mjs'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
-const keys = readJson('data/keys.json').keys || [], problems = [], notes = []
+const keys = readKeys().keys || [], problems = [], notes = []
 const say = (id, what) => problems.push({ id, what })
 const seen = { id: new Map(), fp: new Map() }
 for (const k of keys) {

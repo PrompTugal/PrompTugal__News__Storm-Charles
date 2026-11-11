@@ -18,6 +18,7 @@ import path from 'node:path'
 import crypto from 'node:crypto'
 import { execFileSync, execFile } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const REPO = 'PrompTugal/PrompTugal__News__Storm-Charles', API = `https://api.github.com/repos/${REPO}`, WEB = `https://github.com/${REPO}`
@@ -245,7 +246,7 @@ const matrix = {}, standingBy = {}, outF = {}
 for (const c of commits) { const a = short(c.agent) || 'not stated', row = matrix[a] || (matrix[a] = {}); for (const [f, n] of Object.entries(c.folders)) row[f] = (row[f] || 0) + n; const s = standingBy[a] || (standingBy[a] = { commits: 0, files: 0, outside: 0, shared: 0, first: c.at, last: c.at }); s.commits++; s.files += c.n_files; s.outside += c.outside_n || 0; s.shared += c.shared_n || 0; s.last = c.at; const of = outF[a] || (outF[a] = {}); for (const p of outsideAll.get(c.sha) || []) of[folderOf(p)] = (of[folderOf(p)] || 0) + 1 }
 const flows = new Map(); for (const c of commits) for (const to of c.to) { const k = short(c.agent) + '\0' + short(to), f = flows.get(k) || { from: short(c.agent), to: short(to), n: 0, first: c.at, last: c.at, last_sha: '' }; f.n++; f.last = c.at; f.last_sha = c.sha.slice(0, 10); flows.set(k, f) }
 const cross = new Map(); for (const c of commits) for (const p of outsideAll.get(c.sha) || []) for (const ow of ownersOf(p).length ? ownersOf(p).map(short) : ['no owner']) { const k = short(c.agent) + '\0' + ow, f = cross.get(k) || { by: short(c.agent), owner: ow, paths: 0, commits: new Set(), example: p }; f.paths++; f.commits.add(c.sha); cross.set(k, f) }
-const keys = readJ(path.join(ROOT, 'data/keys.json'))?.keys || []
+const keys = (() => { try { return readKeys().keys } catch { return null } })() || []
 const sigKeys = count(commits.filter(c => c.sig.key), c => c.sig.key)
 const fin = runs.filter(r => r.result === 'success'), pts = fin.map(r => r.push_to_served_s).filter(n => Number.isFinite(n)).sort((a, b) => a - b)
 const q = (a, p) => a.length ? a[Math.min(a.length - 1, Math.floor(p * a.length))] : null

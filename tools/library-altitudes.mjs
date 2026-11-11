@@ -11,11 +11,12 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const J = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'))
 const at = process.argv.includes('--at') ? process.argv[process.argv.indexOf('--at') + 1] : new Date().toISOString().slice(0, 16) + 'Z'
 const FRINGE = { section_3_unchanged_at: '3256d3cafa8200a9ff5b46443400732fc474e0e5 (2026-11-11T22:05:57Z, read 22:09Z)', repo: 'https://github.com/PrompTugal/PrompTugal__News__Fringe', file: 'docs/where-agents-run.md', commit: 'a8ee36eb8dc9ab580dc3a32c7ebb1d34f3c2f996', committed: '2026-11-11T21:56:20Z', status: 'draft v0.2, for Dinis and Angelo to correct', read: '2026-11-11T22:05Z' }
-const policy = J('agents/policy.json').agents, keys = J('data/keys.json').keys, budgets = J('models/budgets.json').agents
+const policy = J('agents/policy.json').agents, keys = readKeys().keys, budgets = J('models/budgets.json').agents
 const glob = g => new RegExp('^' + g.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '\u0000').replace(/\*/g, '[^/]*').replace(/\u0000/g, '.*') + '$')
 const tools = fs.readdirSync(path.join(ROOT, 'tools')).filter(f => /\.(mjs|sh|py)$/.test(f)).map(f => 'tools/' + f)
 const callsLlm = new Set(tools.filter(t => t !== 'tools/llm.mjs' && /(from\s+['"]\.\/llm\.mjs['"]|import\(\s*['"]\.\/llm\.mjs)/.test(fs.readFileSync(path.join(ROOT, t), 'utf8'))))

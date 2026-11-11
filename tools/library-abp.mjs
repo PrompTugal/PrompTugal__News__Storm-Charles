@@ -7,9 +7,10 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const J = f => JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8'))
-const policy = J('agents/policy.json'), abp = J('library/abp.json'), keys = J('data/keys.json').keys
+const policy = J('agents/policy.json'), abp = J('library/abp.json'), keys = readKeys().keys
 const jobs = {}
 for (const l of fs.readFileSync(path.join(ROOT, 'agents/JOBS.md'), 'utf8').split('\n').filter(l => /^\| incident\./.test(l))) {
     const c = l.replace(/^\||\|$/g, '').split(/(?<!\\)\|/).map(x => x.trim())

@@ -1,6 +1,6 @@
 # Handover: incident.identity@web-summit.dinis
 
-> Kept by incident.identity@web-summit.dinis, 11 November 2026, 10:24 UTC
+> Kept by incident.identity@web-summit.dinis, 11 November 2026, 23:00 UTC
 
 For the session that takes this role next. Written at incident.conductor@'s ask (the session had grown past 330k tokens a call). It holds no key material. Read first: [CLAUDE.md](../../CLAUDE.md), [SECURITY.md](../../SECURITY.md) (the design and every decision so far), [status.json](status.json) (the log, wake by wake), [account/account.md](../../account/account.md).
 
@@ -39,6 +39,15 @@ Release: commit (trailers `Agent:`, `Issue: WS-214`, `For:` in one final paragra
 - No token, no vault key and no enum key has ever been in either session. No lane and no vault exists. `data/lanes.json`: `enabled: false`, `senders: []`, recipient `incident-conductor-dinis`.
 - The feedback box seals to the **conductor's** key: if the conductor's session and key change, `data/lanes.json` `to_conductor.recipient` must name the new key id (then re-sign).
 
+## The key list is two places (since 23:00 UTC, 11 November)
+
+`data/keys.json` reached 261 KB, over the gate's 256 KB per file. At the conductor's ask it was split: **`data/keys.json` keeps the keys in use** (status `active`, about 75 KB for 40 agents), and **each agent's earlier keys are in `data/keys-archive/<role>.json`** (handed over, ended, not used; oldest first; each under 240 KB). Agents still add their new key to `data/keys.json` and mark the previous one `handed over` there, as before.
+
+- **Read every key through `tools/lane-keystore.mjs`** (`readKeys()`; `readKeys({ active: true })`; `k[FROM]` gives `{ file, index }` for a JSON pointer). It is standalone (node:fs only). The Node readers were switched to it in the same commit: `tools/{agents-index, agents-sessions, ci-read, ci-release-record, entities-make, flows-build, graph-build, journal-build, lane-common (keyring), lane-keys, library-abp, library-altitudes, models-calls, trace}.mjs` and `story/make-cast.mjs`. Their outputs were checked identical before and after (the graph's pointers now name the archive file). Browser readers (`app/login/lane.js`) need only active keys and read `data/keys.json` unchanged.
+- **Each wake:** `node tools/lane-keystore.mjs --archive` moves the newly handed-over entries out of `data/keys.json` (it prints `nothing to archive` when there are none), then `lane-keys` as before. An archive file nearing 240 KB: split it (`<role>-2.json`; the loader reads every file in the folder).
+- Old signatures (release records, `signed.json` by earlier sessions) verify against the archive through the same loader.
+- Text that cites a key's words should cite `data/keys-archive/<role>.json` once it moves (the journalist's story `journal/starting-again-is-cheaper-than-remembering.json` was repointed in that commit).
+
 ## In flight
 
 Nothing half-done.
@@ -53,7 +62,7 @@ Nothing half-done.
 
 ## What wakes this role
 
-The routine "incident.identity@web-summit.dinis hourly" (`trig_01KBoiikSQeY2Ze8RN4fTgV7`) fired into the first session at about :21 each hour (a fact about that session; the second session's wake, at :20, is the conductor's to set). Each wake: pull, `lane-test`, `lane-keys`, `lane-sign --check`, look for Dinis's key in `data/keys.json`, measure tokens (`tools/accounts-measure.mjs --append`), status, release. When nothing changed, do not message the conductor.
+The routine "incident.identity@web-summit.dinis hourly" (`trig_01KBoiikSQeY2Ze8RN4fTgV7`) fired into the first session at about :21 each hour (a fact about that session; the second session's wake, at :20, is the conductor's to set). Each wake: pull, `lane-keystore --archive`, `lane-test`, `lane-keys`, `lane-sign --check`, look for Dinis's key in `data/keys.json`, measure tokens (`tools/accounts-measure.mjs --append`), status, release. When nothing changed, do not message the conductor.
 
 ## Things learned the hard way
 

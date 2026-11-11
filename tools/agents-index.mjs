@@ -12,6 +12,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const outAt = process.argv.indexOf('--out'), OUT = path.join(outAt > 0 ? path.resolve(process.argv[outAt + 1]) : ROOT, 'data/agents/index.json')
@@ -52,7 +53,7 @@ for (const d of fs.readdirSync(path.join(ROOT, 'agents'), { withFileTypes: true 
 }
 
 // 3. public keys: fingerprints only (the full public halves stay in data/keys.json)
-for (const k of JSON.parse(read('data/keys.json')).keys || []) {
+for (const k of readKeys().keys || []) {
     if (!k.agent) continue
     const a = add(k.agent)
     ;(a.keys ||= []).push({ id: k.id, record: k.bundle?.signing_fingerprint || '', encryption: k.bundle?.fingerprint || '', added: k.added || '', status: k.status || '', how: cut(clean(k.how || ''), 200) })
@@ -99,7 +100,7 @@ const body = {
     by: 'incident.observability@web-summit.dinis',
     repository: 'PrompTugal/PrompTugal__News__Storm-Charles', branch: 'dev',
     sources: ['agents/JOBS.md', 'agents/*/status.json', 'agents/policy.json', 'data/keys.json', 'data/agents/ledger/*.json'],
-    count: (() => { const K = (JSON.parse(read('data/keys.json')).keys || []).filter(k => k.agent && agents.some(a => a.name === k.agent)); return {
+    count: (() => { const K = (readKeys().keys || []).filter(k => k.agent && agents.some(a => a.name === k.agent)); return {
         about: 'The one count of the team to cite (data/agents/count.json is the same object): agents = the roster in agents/JOBS.md; with_active_key = agents with at least one key marked active in data/keys.json; sessions = session keys ever published (one per session); handed_over = sessions that handed over to a fresh one.',
         agents: agents.filter(a => a.in_jobs).length, with_active_key: agents.filter(a => (a.keys || []).some(k => k.status === 'active')).length,
         sessions: K.length, handed_over: K.filter(k => k.status === 'handed over').length } })(),

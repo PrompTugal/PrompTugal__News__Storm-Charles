@@ -16,6 +16,7 @@ import path from 'node:path'
 import crypto from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), DIR = path.join(ROOT, 'data/releases')
 const mode = process.argv[2]
@@ -25,7 +26,7 @@ const digest = () => {
     for (const l of ls.map(l => { const [meta, p] = l.split('\t'); return [p, meta.split(' ')[1]] }).filter(([p]) => !p.startsWith('data/releases/')).sort((a, b) => a[0] < b[0] ? -1 : 1)) h.update(l[0] + '\0' + l[1] + '\n')
     return 'sha256:' + h.digest('hex')
 }
-const keys = () => JSON.parse(fs.readFileSync(path.join(ROOT, 'data/keys.json'), 'utf8')).keys
+const keys = () => readKeys().keys
 const verify = (pem, bytes, sigB64) => { try { return crypto.verify('sha256', bytes, { key: pem, dsaEncoding: 'ieee-p1363' }, Buffer.from(sigB64, 'base64')) } catch { return false } }
 
 if (mode === '--digest') { console.log(digest()); process.exit(0) }

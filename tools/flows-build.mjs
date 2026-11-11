@@ -12,6 +12,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2), CHECK = args.includes('--check')
@@ -41,7 +42,7 @@ for (const a of (read('data/agents/sessions.json')?.agents || [])) {
     roles[a.agent] = a.role
     sessions[a.agent] = (Array.isArray(a.sessions) ? a.sessions : []).map(s => ({ n: s.n, first: s.first_commit?.at || null, last: s.last_commit?.at || null, commits: s.commits, started_by: s.started_by, started_at: s.started_at, on_whose_word: s.on_whose_word, brief_section: s.brief_section }))
 }
-for (const k of (read('data/keys.json')?.keys || [])) { const m = String(k.id || '').match(/-(\d+)$/); const h = String(k.how || '').match(/(\d{1,2}) November (2026),? (\d{2}):(\d{2}) UTC/); (keys[k.agent] ||= []).push({ id: k.id, n: m ? +m[1] : 1, made_at: h ? `2026-11-${h[1].padStart(2, '0')}T${h[3]}:${h[4]}:00Z` : null, record: k.bundle?.signing_fingerprint || k.bundle?.fingerprint || '', status: k.status || '', added: k.added || '' }) }
+for (const k of ((() => { try { return readKeys().keys } catch { return null } })() || [])) { const m = String(k.id || '').match(/-(\d+)$/); const h = String(k.how || '').match(/(\d{1,2}) November (2026),? (\d{2}):(\d{2}) UTC/); (keys[k.agent] ||= []).push({ id: k.id, n: m ? +m[1] : 1, made_at: h ? `2026-11-${h[1].padStart(2, '0')}T${h[3]}:${h[4]}:00Z` : null, record: k.bundle?.signing_fingerprint || k.bundle?.fingerprint || '', status: k.status || '', added: k.added || '' }) }
 for (const role of ls('agents')) {
     const s = read(`agents/${role}/status.json`); if (!s || !s.agent) continue
     roles[s.agent] ||= role

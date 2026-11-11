@@ -14,6 +14,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
+import { readKeys, FROM } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2), CHECK = args.includes('--check')
@@ -37,7 +38,7 @@ const slug = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u03
 
 const ONT = J('data/graph/ontology.json')
 const AREAS = J('data/graph/ref/ipma-areas.json')
-const KEYS = J('data/keys.json')
+const KEYS = readKeys()
 const G = J(DATA + 'decisions/graph.json'), S = J(DATA + 'decisions/sources.json'), SIG = J(DATA + 'signals.json'), W = J(DATA + 'weather/warnings.json')
 const incident = J(`${INC}/incident.json`)
 const opt = rel => fs.existsSync(path.join(ROOT, rel)) ? J(rel) : null
@@ -288,7 +289,7 @@ SIG.items.forEach((s, i) => {
 // ---------------------------------------------------------------- agents and datasets
 const agentId = name => 'agent:' + name
 const keysUrl = fileUrl('data/keys.json')
-KEYS.keys.forEach((k, i) => node({ id: agentId(k.agent), type: 'Agent', name: k.agent, role: k.role, team: 'incident', key_fingerprint: k.bundle && k.bundle.fingerprint || null, label: 'fact', source: keysUrl, read: SIG.made_at, origin: `data/keys.json#/keys/${i}` }))
+KEYS.keys.forEach((k, i) => { const at = k[FROM] || { file: 'data/keys.json', index: i }; node({ id: agentId(k.agent), type: 'Agent', name: k.agent, role: k.role, team: 'incident', key_fingerprint: k.bundle && k.bundle.fingerprint || null, label: 'fact', source: at.file === 'data/keys.json' ? keysUrl : fileUrl(at.file), read: SIG.made_at, origin: `${at.file}#/keys/${at.index}` }) })
 function agent(raw, ctx) {
     const name = String(raw).split(/[\s(]/)[0]; if (!/@/.test(name)) return null
     return node({ id: agentId(name), type: 'Agent', name, role: 'Named in the datasets as the reader or keeper of an item (derived).', team: /PrompTugal/.test(name) ? 'PrompTugal' : 'incident', key_fingerprint: null, label: 'fact', source: ctx.source, read: ctx.read, derived: true, origin: ctx.origin }).id

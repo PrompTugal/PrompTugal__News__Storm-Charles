@@ -5,6 +5,7 @@ import os from 'node:os'
 import path from 'node:path'
 import { webcrypto, createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 if (!globalThis.crypto) globalThis.crypto = webcrypto
 export const K = await import('../app/login/pki/keys.js')
 export const M = await import('../app/login/pki/message.js')
@@ -30,7 +31,7 @@ export async function agentIdentity() {
 }
 
 /** data/keys.json as { list, byFp: Map(signing fingerprint → bundle), byId }, active keys only. */
-export function keyring(keys = readJson('data/keys.json')) {
+export function keyring(keys = readKeys()) {
     const list = (keys.keys || []).filter(k => k.status === 'active' && k.bundle)
     const fix = k => ({ ...k.bundle, v: 1 })
     return { list, byFp: new Map(list.map(k => [k.bundle.signing_fingerprint, fix(k)])), byId: new Map(list.map(k => [k.id, { ...k, bundle: fix(k) }])) }

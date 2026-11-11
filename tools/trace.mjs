@@ -25,6 +25,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { readKeys } from './lane-keystore.mjs';   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = path.join(ROOT, 'data/trace');
@@ -67,7 +68,7 @@ const isConductor = (a) => a === `incident.conductor@${TEAM}`;
 
 // Keys from data/keys.json, each with the time it was made (from its "how", else the day it was added), for key_fp at a time.
 function loadKeys() {
-  const k = readJSON('data/keys.json', { keys: [] });
+  const k = (() => { try { return readKeys(); } catch { return { keys: [] }; } })();
   const by = {};
   for (const e of k.keys || []) {
     if (!e.agent || !e.bundle) continue;

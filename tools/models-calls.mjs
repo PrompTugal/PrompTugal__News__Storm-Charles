@@ -19,6 +19,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ME = 'incident.models@web-summit.dinis'
@@ -41,7 +42,7 @@ export function callsDir(agent) {
 }
 
 // the agent's active session key, from data/keys.json (its fingerprint only): the key_fp of its events
-const KEYS = (() => { try { return JSON.parse(fs.readFileSync(path.join(REPO, 'data', 'keys.json'), 'utf8')).keys || [] } catch { return [] } })()
+const KEYS = (() => { try { return readKeys().keys || [] } catch { return [] } })()
 export const keyOf = agent => process.env.INCIDENT_KEY_FP || KEYS.filter(k => k.agent === agent && k.status === 'active').at(-1)?.bundle?.fingerprint || null
 const ENVIRONMENT = process.env.INCIDENT_ENVIRONMENT || 'R1 Claude Code cloud'
 const PERSON = 'dinis'

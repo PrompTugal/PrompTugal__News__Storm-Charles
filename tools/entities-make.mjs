@@ -8,6 +8,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { ROOT, SITE, readJson, matcher, captures } from './entities-lib.mjs'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const CHECK = process.argv.includes('--check')
 const seed = readJson(path.join(ROOT, 'entities/seed.json')), onto = readJson(path.join(ROOT, 'entities/ontology.json'))
@@ -86,7 +87,7 @@ try {
     for (const f of F.facts) { const to = seed.media_facts?.[f.id]; if (!to) continue; for (const x of f.first_by_outlet || []) { const n = nodes.get('outlet/' + x.outlet); if (!n || !/^https:\/\//.test(x.url || '')) continue; n.edges.push({ verb: 'reported', to, label: 'hypothesis', source: x.url, read_utc: F.updated || null, says: short(`"${x.title}" (${x.via}, published ${String(x.published).slice(0, 16).replace('T', ' ')} UTC${x.minutes_after_primary != null ? `, ${Math.abs(x.minutes_after_primary)} minutes ${x.minutes_after_primary < 0 ? 'before the time we hold for' : 'after'} the primary source` : ''}; matched by title by incident.media@)`), origin: `research/media/first-on-each-fact.json#/facts/${f.id}` }) } }
 } catch (e) { if (e.code !== 'ENOENT') throw e }
 // 2c. the agents, from the public keys they added themselves
-for (const k of readJson(path.join(ROOT, 'data/keys.json')).keys) {
+for (const k of readKeys().keys) {
     const role = (k.agent.match(/^incident\.([a-z-]+)@/) || [])[1]; if (!role || nodes.has('agent/' + role)) continue
     add({ id: 'agent/' + role, type: 'agent', name: k.agent, also: [`incident.${role}@`], summary: k.role, label: 'ours', summary_source: { url: SITE + 'data/keys.json', read_utc: seed.updated, origin: `data/keys.json#${k.id}`, taken_from_label: 'ours' }, page: fs.existsSync(path.join(ROOT, `agents/${role}/README.md`)) ? `agents/${role}/README.md` : 'agents/README.md', graph: `agent:${k.agent}` })
     nodes.get('agent/' + role).edges.push({ verb: 'member_of', to: 'organisation/incident-team', label: 'ours', source: SITE + 'data/keys.json', read_utc: seed.updated, says: short(k.role), origin: `data/keys.json#${k.id}` })

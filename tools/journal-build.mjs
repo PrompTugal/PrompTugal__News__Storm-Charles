@@ -25,6 +25,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readKeys } from './lane-keystore.mjs'   // data/keys.json and data/keys-archive/ (the key list was split on 11 November)
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2), CHECK = args.includes('--check')
@@ -208,7 +209,7 @@ function figLedger(fig) {
 function figNow() {
     const rows = []
     const add = (what, v, file) => v !== undefined && v !== null && rows.push(`| ${what} | ${v} | [${file}](../view/index.html?path=${file}) |`)
-    const t = CI.totals || {}, p = (CI.pipeline || {}).push_to_served_s || {}, pol = J('agents/policy.json'), keys = J('data/keys.json')
+    const t = CI.totals || {}, p = (CI.pipeline || {}).push_to_served_s || {}, pol = J('agents/policy.json'), keys = has('data/keys.json') ? readKeys() : undefined
     add('Commits on dev', t.commits, 'data/ci/index.json'); add('First commit (UTC)', t.first_commit, 'data/ci/index.json'); add('Last commit in the run data (UTC)', t.last_commit, 'data/ci/index.json')
     add('Workflow runs', t.runs, 'data/ci/index.json')
     if (t.by_result) add('Runs by result', Object.entries(t.by_result).map(([k, v]) => `${v} ${k}`).join(', '), 'data/ci/index.json')
