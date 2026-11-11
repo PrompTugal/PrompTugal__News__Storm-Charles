@@ -181,7 +181,7 @@ for (const rel of walkOut(OUT).sort()) {
     const [fm, md] = frontMatter(fs.readFileSync(path.join(OUT, rel), 'utf8'))   // the served copy (a generator may have refreshed it)
     const htmlRel = rel.replace(/(^|\/)README\.md$/, '$1index.html').replace(/\.md$/, '.html')
     const title = fm.title || titleOf(md, rel)
-    let body = `<main class="doc"><div class="wrap"><article>${markdown(md)}</article></div></main>`
+    let body = `<main class="doc"><div class="wrap"><article${/^[a-z][a-z0-9 -]*$/.test(fm.class || '') ? ` class="${fm.class}"` : ''}>${markdown(md)}</article></div></main>`
     let extraHead = ''
     const m = rel.match(/^incidents\/([^/]+)\/README\.md$/)
     if (m && INC[m[1]]) {
