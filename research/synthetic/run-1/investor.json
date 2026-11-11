@@ -1,0 +1,48 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T09:55:30Z",
+  "label": "Invented person; not user research",
+  "persona": "investor",
+  "run": 1,
+  "start": "/",
+  "steps": [
+    {"url": "https://storm-charles.promptugal.news/", "seconds": 25, "note": "Weather face; red IPMA block @162px fills the fold (900 of 5757px); no line on what the site is or who makes it beyond the 57px strip; clicks About"},
+    {"url": "https://storm-charles.promptugal.news/BRIEF.html", "seconds": 30, "note": "About is a log of Dinis's instructions (9279px); purpose fragments at ~300 and ~1600px; at ~8500px Dinis says the newcomer page is missing; clicks Team"},
+    {"url": "https://storm-charles.promptugal.news/agents/index.html", "seconds": 30, "note": "69 pushes/h, 44s median push to served, 32 agents at ~200px; then 40 asks for Dinis @295px incl. model credit out, Web Summit terms, IPMA non-profit terms; read as risks; clicks Launch draft"},
+    {"url": "https://storm-charles.promptugal.news/outreach/launch.html", "seconds": 20, "note": "Outreach plan to reporters, data journalists, meteorologists; no investor or buyer group; no business words; clicks Labs"},
+    {"url": "https://storm-charles.promptugal.news/labs/index.html", "seconds": 15, "note": "Visual experiments with verdicts; craft, not a product; clicks Help"},
+    {"url": "https://storm-charles.promptugal.news/help/index.html", "seconds": 10, "note": "Question table; first row 'What this site is' @497px; clicks it"},
+    {"url": "https://storm-charles.promptugal.news/help/what-this-is.html", "seconds": 20, "note": "Clearest statement (~300px): a record of the storm built by software agents with a named operator, Dinis Cruz; nothing on business or next; 6 clicks from /"},
+    {"url": "https://web-summit.sgit.ai/investors/", "seconds": 40, "note": "Pack: company My Feeds, services and customised agentic teams, no projections on purpose, Start here of 4 links; no mention of Storm Charles"},
+    {"url": "https://web-summit.sgit.ai/investors/story/index.html", "seconds": 30, "note": "Proof that it ships is PrompTugal.news (H2 @1515px); Storm Charles and the incident site not mentioned"}
+  ],
+  "understood_10s": "A weather warning dashboard for Lisbon; nothing visible about AI agents, publishing technology or a company.",
+  "understood_1min": "An AI-agent team builds a live, sourced record of a storm very fast (69 pushes an hour, 44 s to served, 32 agents); unclear whether product, demo or one-off; three open risks seen on the Team page.",
+  "looked_for": [
+    {"what": "What is new here, in one line", "result": "partly", "where": "/help/what-this-is.html ~300px; fragments in /BRIEF.html ~300 and ~1600px", "clicks": 6},
+    {"what": "Who is behind it", "result": "partly", "where": "Dinis Cruz named in About and every footer; no company, no link to the pack", "clicks": 1},
+    {"what": "How big, and what next", "result": "not_found", "where": "none of the 7 pages; the only 'next' is the outreach launch draft", "clicks": 6}
+  ],
+  "lost": [
+    "/ reads as a warning service; the red block dominates the 'Not a warning service' strip",
+    "About opens an internal instruction log, not an about page",
+    "Team leads with 40 blocking asks, read as a risk register",
+    "No link from the site to the company or the investor pack"
+  ],
+  "words_not_understood": ["conductor@", "the faces", "Data room", "Weather face", "Studio", "Panel", "vaults", "SG/Send", "append lane", "sealed", "gate", "superseded", "METAR", "Comunicado", "ANEPC", "the graph", "llms.txt", "markdown twin", "entities", "row ids"],
+  "pack_comparison": "No link either way: the pack's index and story never name Storm Charles; the site never links to the pack, My Feeds or web-summit.sgit.ai. Compatible stories (agentic team shipping in public, sourced claims, named operator), but the pack's proof is PrompTugal.news while the site is a stronger live proof the pack does not cite. The pack has what the front door lacks: one paragraph on who, what is sold and to whom, the company, a 4-link Start here, 'no projections, on purpose', a feedback route. The site has what the pack lacks: measured speed, a visible 32-agent team, an incident as a repeatable use case.",
+  "would_act": "Meeting: one screen saying what an agentic team did with a storm, that the team and method are for sale, the company, a link to the pack, and the measured numbers. Invest: a second incident or a buyer, a cost per incident, and answers on the data-licence risks the Team page lists.",
+  "score": 2,
+  "score_reason": "Impressive engineering in plain sight, but the front door is a weather dashboard and the business story lives on another site that does not mention it.",
+  "findings": [
+    {"class": "blocking", "what": "No statement of what this is, for whom, by whom on /", "where": "/", "measure": "nothing above the 900px fold of 5757px but the 57px strip; clear version 6 clicks away at /help/what-this-is.html", "change": "Ship the planned newcomer front page (/welcome/) naming the agentic team, Dinis Cruz and the storm as live example"},
+    {"class": "costly", "what": "No link between site and investor pack or company, either way", "where": "7 site pages; /investors/ and /investors/story/", "measure": "0 links to web-summit.sgit.ai; 0 mentions of Storm Charles in the pack pages read", "change": "Add a 'who makes this, the company' line linking the pack; ask investors@web-summit.dinis to cite Storm Charles as proof"},
+    {"class": "costly", "what": "About is an internal brief", "where": "/BRIEF.html", "measure": "9279px; purpose at ~300 and ~1600px; newcomer-page admission at ~8500px", "change": "Point About to a short about page (what, who, two faces, next); Brief one level down"},
+    {"class": "costly", "what": "Team page leads with risks without context", "where": "/agents/ H2 @295px", "measure": "asks 1, 2, 6: model credit out, Web Summit terms, IPMA non-profit terms", "change": "Lead with pipeline and team; move the asks below or behind For Dinis"},
+    {"class": "costly", "what": "Strongest numbers buried", "where": "/agents/ ~200px", "measure": "69 pushes/h, 44s median push to served, 32 agents; absent from /", "change": "A 'how this was made' band on the newcomer page, each figure with source and time"},
+    {"class": "minor", "what": "'What next' and 'template for the next incident' not said publicly", "where": "7 pages walked", "measure": "0 mentions", "change": "One sentence on the about/newcomer page linking ROADMAP"},
+    {"class": "minor", "what": "Jargon in first-level navigation and Team page", "where": "nav, /agents/", "measure": "Studio, Panel, Data room, conductor, superseded unexplained", "change": "One-line glosses or a glossary link"},
+    {"class": "held", "what": "Launch plan has no investor or partner group", "where": "/outreach/launch.html @806px", "measure": "0 occurrences of invest, business, revenue, market", "change": "Dinis's call"},
+    {"class": "held", "what": "Team page makes an outside request to api.github.com", "where": "/agents/", "measure": "seen by the walker as an external host", "change": "Gate owner to confirm it is intended"}
+  ]
+}

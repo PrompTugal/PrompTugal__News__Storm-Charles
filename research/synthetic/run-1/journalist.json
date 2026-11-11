@@ -1,0 +1,46 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T09:54:48Z",
+  "label": "Invented person; not user research",
+  "persona": "journalist",
+  "run": 1,
+  "start": "/",
+  "steps": [
+    {"url": "/", "seconds": 30, "note": "Red IPMA rain warning block; nothing about AI agents or who runs it above the 800 px fold; footer line at bottom of 5793 px page"},
+    {"url": "/BRIEF.html", "seconds": 20, "note": "Nav 'About' opens the internal brief (9279 px); left after first screen"},
+    {"url": "/help/index.html", "seconds": 15, "note": "Useful table; 'What this site is' at 497 px, 'How to cite us' at 651 px"},
+    {"url": "/help/what-this-is.html", "seconds": 20, "note": "Clear: sourced record, agents with a named human operator, not a warning service"},
+    {"url": "/help/cite.html", "seconds": 25, "note": "Cite the source first (348 px); citation needs URL, version, UTC, sha256 (505 px); no page content licence"},
+    {"url": "/agents/index.html", "seconds": 20, "note": "Looked for a contact; page leads with 'What Dinis can unblock: 40 things' at 295 px; no contact"},
+    {"url": "/stories/index.html", "seconds": 25, "note": "Six stories; Day 2 story at 490 px; 'What the press had and when' at 1419 px"},
+    {"url": "/stories/how-day-2-was-called-off/index.html", "seconds": 60, "note": "Labelled sentences with sources and times; header 'Written 02:33 UTC on the data read at 07:38 UTC' looks reversed"},
+    {"url": "/help/corrections.html", "seconds": 15, "note": "'We do not publish contact details here'; contribute page being set up; gave up on a contact"}
+  ],
+  "understood_10s": "A weather dashboard: Lisbon under an IPMA red rain warning. Did not see this was the 'AI agents' project from the email; no byline above the fold.",
+  "understood_1min": "After Help: a public, sourced record of Storm Charles decisions and warnings built by AI agents for a named person, Dinis Cruz; careful labels and sources; unclear what PrompTugal is.",
+  "looked_for": [
+    {"what": "Is there a story / what this is", "result": "partly", "where": "/help/what-this-is.html, /stories/", "clicks": 3},
+    {"what": "How to cite it", "result": "found", "where": "/help/cite.html, 'Cite the source first' at 348 px", "clicks": 4},
+    {"what": "A human to call for comment", "result": "not_found", "where": "/help/corrections.html says no contact details; /agents/ has none", "clicks": 6}
+  ],
+  "lost": [
+    "Nav 'About' opens the internal brief, not an about page",
+    "Team page reads as an internal ops board ('account out of credit', terms questions)",
+    "Story header times look reversed (written 02:33, data read 07:38)",
+    "'UTC (Lisbon time)' needed a second look"
+  ],
+  "words_not_understood": ["ANEPC", "METAR", "CAP", "MeteoAlarm", "data room", "two faces", "markdown twin", "sha256", "incident.conductor@web-summit.dinis", "superseded", "Panel", "Labs", "Studio", "evidence (as a label)"],
+  "would_act": "Would write a paragraph and cite IPMA plus the site for the collection; would not run it without a human to quote, and found no one to call.",
+  "score": 3,
+  "score_reason": "Trustworthy and citable once found, but About misdirects and there is no one to call, which a reporter needs before running it.",
+  "findings": [
+    {"class": "blocking", "what": "No way to reach a human for comment", "where": "/help/corrections.html, /agents/", "measure": "6 clicks, not found; corrections page says no contact details, contribute page 'being set up'", "change": "A press line (role-based address or form, answered by a person) on About and Help, within the first 800 px"},
+    {"class": "costly", "what": "Nav 'About' opens BRIEF.html, an internal memo", "where": "nav, every page", "measure": "9279 px page of voice-memo notes", "change": "Point About to /help/what-this-is.html or a new about page; keep the brief one level down"},
+    {"class": "costly", "what": "Home does not say who makes it or that agents make it", "where": "/", "measure": "nothing above 800 px fold; footer line only, page 5793 px", "change": "One line under the masthead: a sourced record kept by AI agents for Dinis Cruz, with a 'What this is' link"},
+    {"class": "costly", "what": "Team page opens with the owner's to-do list", "where": "/agents/", "measure": "'What Dinis can unblock: 40 things' at 295 px, item 1 'account out of credit'", "change": "Lead with what the team is and who is accountable; keep For Dinis on its own tab"},
+    {"class": "minor", "what": "Story timestamps look reversed", "where": "/stories/how-day-2-was-called-off/", "measure": "header ~330 px: written 02:33 UTC, data read 07:38 UTC; index says told 07:57", "change": "Show one updated time and the data read time, consistent with the index"},
+    {"class": "minor", "what": "Jargon without gloss", "where": "/, /help/, story", "measure": "ANEPC, METAR, CAP, data room, evidence-as-label", "change": "Expand on first use or link to the glossary"},
+    {"class": "minor", "what": "No content licence for pages", "where": "/help/cite.html", "measure": "Licences at 1009 px, stated as a known gap", "change": "State a content licence"},
+    {"class": "held", "what": "Team page requests api.github.com from the browser", "where": "/agents/", "measure": "walker external_hosts: api.github.com", "change": "Team to confirm this is intended outside the Weather face"}
+  ]
+}

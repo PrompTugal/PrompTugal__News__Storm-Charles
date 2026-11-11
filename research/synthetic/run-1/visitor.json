@@ -1,0 +1,42 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T09:54:22Z",
+  "label": "Invented person; not user research",
+  "persona": "visitor",
+  "run": 1,
+  "start": "/",
+  "steps": [
+    {"url": "/", "seconds": 15, "note": "Screen 1: big RED 'IPMA warning in force in Lisbon now', rain to 18:00, orange wind to 21:00. 'Web Summit' only in the eyebrow at 111 px."},
+    {"url": "/", "seconds": 20, "note": "Screen 2: 'Closed or suspended today', Web Summit one link among eight at 1053 px, with 'read Tue 20:59'."},
+    {"url": "/#d-websummit-wednesday", "seconds": 15, "note": "Tap jumps to 8364 px: card 'Day 2 (Wednesday 11 Nov) will not take place' at 8648 px. Answer found, orientation lost. Scrolling instead reaches 'THE DECISION FACT' at 1593 px (screen 3)."},
+    {"url": "/stories/index.html", "seconds": 20, "note": "First story 'How Web Summit's Day 2 was called off' at 597 px."},
+    {"url": "/stories/how-day-2-was-called-off/index.html", "seconds": 20, "note": "Screen 1 is file/API links (522-894 px); first narrative heading at 1231 px. Gives up."},
+    {"url": "/", "seconds": 15, "note": "Looks for whether people are OK: nothing on injuries, attendees or damage; only a homeless contingency plan at 11093 px."}
+  ],
+  "understood_10s": "There is a red rain warning in Lisbon now, orange wind; nothing yet on whether Web Summit is on.",
+  "understood_1min": "Web Summit Day 2 (Wednesday) is called off on the government's advice; Day 3 (Thursday) aims to proceed; schools, tunnels, coaches and some trains closed; metro and buses said they would run.",
+  "looked_for": [
+    {"what": "Is Web Summit on today?", "result": "found", "where": "/ at 1593 px (screen 3), or the 'Web Summit' link at 1053 px to a card at 8648 px", "clicks": 1},
+    {"what": "What is happening now?", "result": "found", "where": "/ screen 1 (red rain, orange wind) and screen 2 (closures)", "clicks": 0},
+    {"what": "Are people OK?", "result": "not_found", "where": "nothing on /, /stories/ or the Day 2 story", "clicks": 2}
+  ],
+  "lost": [
+    "The 'Web Summit' link at 1053 px jumps 7311 px down into a card list with no way back up.",
+    "'read Tue 20:59' beside today's closures made him doubt the information was still current.",
+    "The Day 2 story opens with a screen of JSON/CAP/API links before any narrative.",
+    "Ten-item navigation plus version, Repo and Panel: unclear which is 'the news'."
+  ],
+  "words_not_understood": ["IPMA", "ANEPC", "Comunicado nº2", "in force", "UTC", "METAR", "fact / evidence / hypothesis", "data room", "read Tue 20:59", "Capitania", "Repo", "Panel", "Labs", "Studio", "v0.1.780", "IPMA's automatic forecast", "warning area"],
+  "would_act": "Would share a link whose first screen says 'Web Summit: Wednesday cancelled, Thursday aims to go ahead' with a time; would come back tomorrow morning if he knew it would say first whether Day 3 is on.",
+  "score": 3,
+  "score_reason": "The weather is unmistakable in five seconds, but the summit answer waits on screen 3 and 'are people OK' is not answered anywhere he looked.",
+  "findings": [
+    {"class": "costly", "what": "Summit decision below the fold on a page whose title band says Web Summit", "where": "/", "measure": "eyebrow 'Web Summit' at 111 px; decision text at 1593 px (screen 3 of 664 px)", "change": "One line in screen 1 under the date: 'Web Summit: Day 2 (Wed) called off; Day 3 (Thu) aims to proceed', with source and time, linking to the decision."},
+    {"class": "costly", "what": "No answer, and no 'nothing reported' line, on whether people are OK", "where": "/, /stories/, /stories/how-day-2-was-called-off/", "measure": "no injuries/casualties/occurrences found in 0-9553 px of /; only a homeless plan at 11093 px", "change": "Primary-source occurrence counts if published (e.g. ANEPC), labelled; otherwise state the absence ('no figures on injuries or damage read yet'), no advice of our own."},
+    {"class": "costly", "what": "'Web Summit' link in the closures paragraph jumps far down with no way back", "where": "/ link #d-websummit-wednesday", "measure": "1053 px to 8364 px (7311 px jump)", "change": "Show the one-line decision inline or expand in place; add 'back to top' on cards."},
+    {"class": "minor", "what": "'read Tue 20:59' beside today's closures reads as stale", "where": "/", "measure": "983-1293 px", "change": "Lead with 'announced Tue 19:09'; keep 'read' times in the detail card."},
+    {"class": "minor", "what": "Story opens with file and API links before the narrative", "where": "/stories/how-day-2-was-called-off/", "measure": "source links 522-894 px; first narrative heading 1231 px", "change": "Move the source block below the first section on phone widths."},
+    {"class": "minor", "what": "Unglossed jargon in the first screens", "where": "/", "measure": "IPMA/ANEPC at 76 px, Comunicado nº2 at 351 px; 'UTC = Lisbon' only at ~2100 px", "change": "Gloss on first use (Portugal's weather service, civil protection); put 'UTC = Lisbon time' beside the date at 111 px."},
+    {"class": "held", "what": "Ten-item navigation plus Repo, Panel and version on a phone", "where": "/", "measure": "6-34 px", "change": "Seen, not judged: serves other personas."}
+  ]
+}

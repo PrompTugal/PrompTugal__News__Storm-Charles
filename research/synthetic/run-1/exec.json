@@ -1,0 +1,181 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T09:54:54Z",
+  "label": "Invented person; not user research",
+  "persona": "exec",
+  "run": 1,
+  "start": "/",
+  "steps": [
+    {
+      "url": "/",
+      "seconds": 25,
+      "note": "Red IPMA block at 162 px, disclaimer 57 px, hour grid 478 px; nothing says what the site is"
+    },
+    {
+      "url": "/BRIEF.html",
+      "seconds": 20,
+      "note": "About = raw brief of instructions to agents; read top 1,700 of 9,279 px"
+    },
+    {
+      "url": "/help/index.html",
+      "seconds": 15,
+      "note": "Picked What this site is (497 px)"
+    },
+    {
+      "url": "/help/what-this-is.html",
+      "seconds": 25,
+      "note": "First plain answer: record of the storm by software agents with a named operator"
+    },
+    {
+      "url": "/agents/index.html",
+      "seconds": 25,
+      "note": "Pipeline numbers; What Dinis can unblock at 295 px incl. terms doubts and provider out of credit"
+    },
+    {
+      "url": "/help/cite.html",
+      "seconds": 20,
+      "note": "Licences at 1,009 px: Apache-2.0 data and code, no content licence (known gap)"
+    },
+    {
+      "url": "/accounts/index.html",
+      "seconds": 25,
+      "note": "Model spend 1.06 of 20 USD cap; provider out of credit; tokens not converted to money"
+    },
+    {
+      "url": "/data-room/index.html",
+      "seconds": 15,
+      "note": "Labelled headline DECISION · FACT with source time at 197 px; 11-item sub-nav"
+    },
+    {
+      "url": "/contribute.html",
+      "seconds": 20,
+      "note": "Issue or PR routes at 2,623 px; checks at 3,036 px; merged by agents, main only by Dinis"
+    },
+    {
+      "url": "/studio/index.html",
+      "seconds": 15,
+      "note": "Six animated explanations; H1 at 868 px; no time to watch"
+    }
+  ],
+  "understood_10s": "A serious storm dashboard for Lisbon with official warning colours; not that it is an AI-agent newsroom demo or a template.",
+  "understood_1min": "After About and Help: one named person runs a team of AI coding agents collecting official decisions and warnings with sources and times, published as pages and JSON, labelled fact, evidence, hypothesis.",
+  "looked_for": [
+    {
+      "what": "What is this and who runs it",
+      "result": "found",
+      "where": "/help/what-this-is.html first paragraph; not on / or About",
+      "clicks": 3
+    },
+    {
+      "what": "Could we reuse it and what would it cost",
+      "result": "partly",
+      "where": "/accounts/ running costs only; no offer, price or reuse page",
+      "clicks": 6
+    },
+    {
+      "what": "Risk: accuracy, licensing, AI policy",
+      "result": "partly",
+      "where": "/contribute.html 3,036 px (checks); /help/cite.html 1,009 px (no content licence); no AI policy page",
+      "clicks": 5
+    }
+  ],
+  "lost": [
+    "About opens the raw brief, read as internal notes",
+    "Team page shows terms doubts (Web Summit, IPMA) near the top: a red flag for a publisher",
+    "Team item 7 questions whether GitHub issues are open while Contribute says use them",
+    "Provider out of credit since 02:55 UTC made her doubt the site is updating"
+  ],
+  "words_not_understood": [
+    "IPMA",
+    "ANEPC",
+    "METAR",
+    "two faces",
+    "markdown twin",
+    "sha256",
+    "conductor",
+    "vault",
+    "cache reads",
+    "weighted tokens",
+    "superseded",
+    "fractal",
+    "Panel",
+    "Labs",
+    "Ontology",
+    "Lead times"
+  ],
+  "would_act": "Forward /help/what-this-is.html as interesting, not ready. A call or pilot needs a For newsrooms page (offer, owner, cost, how to start), a stated AI and editorial policy, a content licence, and a contact route other than GitHub.",
+  "score": 2,
+  "score_reason": "The rigour is what her newsroom wants, but nothing speaks to a publisher, and the visible risk signals come before any offer.",
+  "findings": [
+    {
+      "class": "blocking",
+      "what": "No page answers \"could my newsroom use this?\"; the template aim appears nowhere on 10 pages walked",
+      "where": "/, /BRIEF.html, /help/",
+      "measure": "0 links to a newsroom or reuse page from /, About or Help",
+      "change": "A short For newsrooms page linked from / and About: what you get, who runs it, cost, how to start for your own event"
+    },
+    {
+      "class": "costly",
+      "what": "About opens the raw brief, not an about page",
+      "where": "/BRIEF.html",
+      "measure": "9,279 px of dated instructions; plain answer 2 clicks away at /help/what-this-is.html",
+      "change": "Point About at what-this-is, brief one link below"
+    },
+    {
+      "class": "costly",
+      "what": "Home page gives no clue what the site is or who makes it",
+      "where": "/",
+      "measure": "Above the 900 px fold: warning block (162 px), disclaimer (57 px), hour grid (478 px); no project line",
+      "change": "One line under the masthead naming the project, the agents and the operator, linking What this is"
+    },
+    {
+      "class": "costly",
+      "what": "Legal doubts are the first thing read on Team",
+      "where": "/agents/index.html",
+      "measure": "What Dinis can unblock at 295 px; items 2, 4, 6 on Web Summit, other sites and IPMA terms",
+      "change": "Short explainer above the board; state the current answer beside each item"
+    },
+    {
+      "class": "costly",
+      "what": "No stated AI or editorial policy",
+      "where": "footers; /contribute.html",
+      "measure": "Human review described only at 3,036 px of /contribute.html",
+      "change": "A Help page: How AI is used here (tasks, human checks, models logged, corrections)"
+    },
+    {
+      "class": "costly",
+      "what": "No content licence for the pages",
+      "where": "/help/cite.html",
+      "measure": "Licences at 1,009 px: a known gap",
+      "change": "State a content licence or say reuse needs permission"
+    },
+    {
+      "class": "minor",
+      "what": "Contradiction on the contact route",
+      "where": "/contribute.html vs /agents/index.html",
+      "measure": "Contribute 2,623 px says open an issue; Team item 7 asks whether issues are open",
+      "change": "Confirm and say so on both"
+    },
+    {
+      "class": "minor",
+      "what": "Cost shown only as tokens, no money figure",
+      "where": "/accounts/index.html",
+      "measure": "Tokens are not converted to money; 1.92 billion tokens",
+      "change": "Add a labelled estimated monthly cost for a buyer"
+    },
+    {
+      "class": "minor",
+      "what": "Studio title below its cards",
+      "where": "/studio/index.html",
+      "measure": "H1 at 868 px",
+      "change": "H1 and one purpose line above the cards"
+    },
+    {
+      "class": "held",
+      "what": "Team page requests api.github.com",
+      "where": "/agents/index.html",
+      "measure": "external_hosts: api.github.com",
+      "change": "For the team: check against the outside-requests rule"
+    }
+  ]
+}

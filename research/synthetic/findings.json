@@ -1,0 +1,194 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T09:58:03Z",
+  "label": "Invented people; not user research; never quote them as real readers.",
+  "run": 1,
+  "walked": "2026-11-11T09:52Z/09:56Z",
+  "start": "/",
+  "site_version_seen": "v0.1.779-v0.1.781",
+  "do_not_track": true,
+  "scores": {
+    "journalist": 3,
+    "visitor": 3,
+    "exec": 2,
+    "investor": 2
+  },
+  "findings": [
+    {
+      "rank": 1,
+      "class": "blocking",
+      "what": "/ never says what this is, who makes it (AI agents), or who it is for",
+      "personas": [
+        "exec",
+        "investor",
+        "journalist"
+      ],
+      "measure": "/ above 800-900 px fold of 5,793 px; framing only in 57 px strip; explanation at /help/what-this-is.html 3-6 clicks in",
+      "change": "First screen of /welcome/: what, who, for whom, live proof",
+      "for": [
+        "envoy",
+        "designer"
+      ]
+    },
+    {
+      "rank": 2,
+      "class": "costly",
+      "what": "'About' opens /BRIEF.html, a 9,279 px internal brief",
+      "personas": [
+        "journalist",
+        "exec",
+        "investor"
+      ],
+      "measure": "nav About -> /BRIEF.html",
+      "change": "Point About at /welcome/ (or /help/what-this-is.html until it ships)",
+      "for": [
+        "conductor"
+      ]
+    },
+    {
+      "rank": 3,
+      "class": "blocking",
+      "what": "No person or route for the press; contact routes contradict",
+      "personas": [
+        "journalist",
+        "exec"
+      ],
+      "measure": "6 clicks, none found; /contribute.html says GitHub issue, Team item 7 asks if issues are open",
+      "change": "One public project press route (Dinis's call), same wording everywhere",
+      "for": [
+        "conductor",
+        "envoy"
+      ]
+    },
+    {
+      "rank": 4,
+      "class": "blocking",
+      "what": "No 'could my newsroom/event use this' page; live numbers only on /agents/; site and investor pack not linked either way",
+      "personas": [
+        "exec",
+        "investor"
+      ],
+      "measure": "0 links to web-summit.sgit.ai on 7 pages; pack never names Storm Charles",
+      "change": "'For newsrooms and events' section on /welcome/, numbers band, links both ways",
+      "for": [
+        "envoy",
+        "designer",
+        "conductor"
+      ]
+    },
+    {
+      "rank": 5,
+      "class": "costly",
+      "what": "On a phone the Web Summit decision is on screen 3; 'are people OK' never answered",
+      "personas": [
+        "visitor"
+      ],
+      "measure": "decision at 1,593 px (664 px screens); anchor jump of 7,311 px to 8,364 px",
+      "change": "Summit's latest decision with source and time on screen 1; 'no reports in the sources we read' where true",
+      "for": [
+        "envoy",
+        "designer"
+      ]
+    },
+    {
+      "rank": 6,
+      "class": "costly",
+      "what": "Team page opens with 'What Dinis can unblock' (out of credit, terms doubts)",
+      "personas": [
+        "journalist",
+        "exec",
+        "investor"
+      ],
+      "measure": "/agents/ at 295 px",
+      "change": "Open /agents/ with what the team does; asks to their own page",
+      "for": [
+        "conductor"
+      ]
+    },
+    {
+      "rank": 7,
+      "class": "costly",
+      "what": "No content licence, no AI/editorial policy page",
+      "personas": [
+        "exec",
+        "journalist"
+      ],
+      "measure": "/help/cite.html: no content licence yet",
+      "change": "Short policy-and-licence page linked from /welcome/",
+      "for": [
+        "conductor",
+        "envoy"
+      ]
+    },
+    {
+      "rank": 8,
+      "class": "minor",
+      "what": "Jargon on the newcomer path",
+      "personas": [
+        "all"
+      ],
+      "measure": "IPMA, ANEPC, METAR, CAP, UTC, data room, two faces, markdown twin, sha256, vault, Panel, Labs, Studio, superseded",
+      "change": "Plain names once; internal words off the newcomer path",
+      "for": [
+        "envoy",
+        "designer"
+      ]
+    },
+    {
+      "rank": 9,
+      "class": "minor",
+      "what": "Stale-looking 'read Tue 20:59'; Day 2 story times look reversed; story opens with JSON/CAP/API links",
+      "personas": [
+        "visitor",
+        "journalist"
+      ],
+      "measure": "first narrative heading at 1,231 px",
+      "change": "Fix the header times; lead stories with words",
+      "for": [
+        "stories owner"
+      ]
+    },
+    {
+      "rank": 10,
+      "class": "held",
+      "what": "/agents/ makes a browser request to api.github.com",
+      "personas": [
+        "journalist",
+        "exec",
+        "investor"
+      ],
+      "measure": "confirmed by incident.synthetic@ 09:56 UTC",
+      "change": "Gate owner to say whether allowed",
+      "for": [
+        "ci",
+        "conductor"
+      ]
+    },
+    {
+      "rank": 11,
+      "class": "held",
+      "what": "Header says LIVE while /accounts/ says provider out of credit since 02:55 UTC",
+      "personas": [
+        "exec"
+      ],
+      "measure": "/accounts/",
+      "change": "Conductor's call on what LIVE means",
+      "for": [
+        "conductor"
+      ]
+    }
+  ],
+  "five_changes": [
+    "First screen of /welcome/: what, who (AI agents for Dinis Cruz), for whom, live proof, the summit's latest decision with source and time",
+    "About -> /welcome/, not BRIEF.html",
+    "One public press route, said the same way everywhere",
+    "'For newsrooms and events' section, measured numbers, links both ways with the investor pack",
+    "/agents/ opens with what the team does; a short policy-and-licence page"
+  ],
+  "walks": [
+    "run-1/journalist.json",
+    "run-1/visitor.json",
+    "run-1/exec.json",
+    "run-1/investor.json"
+  ]
+}
