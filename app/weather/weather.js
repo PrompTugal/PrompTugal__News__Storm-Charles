@@ -145,7 +145,7 @@
     ;((D.rain || {}).stations || []).forEach(function (s) { var l = (s.hourly || [])[s.hourly.length - 1]; if (l && l.rain_mm != null && (!wet || l.rain_mm > (wet.latest || wet._l).rain_mm)) wet = { name: s.name, _l: l, latest: l } })
     var tiles = []
     if (geo) tiles.push(['Temperature', num(geo.latest.temp_c, 1) + '<small>°C</small>', esc(geo.name) + ', the hour to ' + hm(geo.latest.time_utc), prov('stations', 'IPMA stations', geo.read_utc), T(geo.latest.time_utc)])
-    if (wet) tiles.push(['Rain, last hour', num(wet.latest.rain_mm, 1) + '<small>mm</small>', 'the wettest of IPMA\'s Lisbon stations: ' + esc(wet.name) + ', the hour to ' + hm(wet.latest.time_utc), prov('rain', 'IPMA stations', (D.rain || D.stations).read_utc), T(wet.latest.time_utc)])
+    if (wet) tiles.push(['Rain, the hour to ' + hm(wet.latest.time_utc), num(wet.latest.rain_mm, 1) + '<small>mm</small>', 'the wettest of IPMA\'s Lisbon stations: ' + esc(wet.name) + ', the hour to ' + hm(wet.latest.time_utc), prov('rain', 'IPMA stations', (D.rain || D.stations).read_utc), T(wet.latest.time_utc)])
     if (windiest) tiles.push(['Wind, hourly mean', arrow(windiest.latest.wind_dir) + num(windiest.latest.wind_mean_kmh) + '<small>km/h ' + esc(windiest.latest.wind_dir || '') + '</small>', 'the windiest station: ' + esc(windiest.name) + ', the hour to ' + hm(windiest.latest.time_utc) + '. A mean, not a gust', prov('stations', 'IPMA stations', windiest.read_utc), T(windiest.latest.time_utc)])
     if (gv) tiles.unshift([(gv.gust_kmh != null ? 'Gust' : 'Wind') + ' at the airport, ' + hm(gv.time_utc), (gv.gust_kmh != null ? 'gust ' + num(gv.gust_kmh) : num(gv.wind_kmh)) + '<small>km/h</small>', (gv.gust_kmh != null ? 'mean ' + num(gv.wind_kmh) + ' km/h. ' : 'no gust reported. ') + 'Pressure ' + num(gv.pressure_hpa) + ' hPa. Lisbon airport\'s own report (METAR)', prov('airport', 'METAR LPPT', gv.read_utc), T(gv.time_utc)])
     if (!tiles.length) return ''
@@ -159,6 +159,7 @@
     var ws = lisbonWarnings().filter(function (w) { return T(w.start_utc) < D1 && T(w.end_utc) > D0 })
     var cols = []; for (var i = 0; i < 24; i++) cols.push(i)
     var cell = function (h, inner, cls, title) { return '<div role="cell" class="wxc-c' + (h === nowH ? ' now' : h < nowH ? ' past' : '') + (cls ? ' ' + cls : '') + '"' + (title ? ' title="' + esc(title) + '"' : '') + '>' + inner + '</div>' }
+    var notYet = function (h) { return cell(h, '<i>not read</i>', 'empty notyet', 'no measurement for this hour has been read yet (IPMA\'s stations arrive an hour or more behind)') }
     var row = function (label, sub, cells, cls) { return '<div role="row" class="wxc-row' + (cls ? ' ' + cls : '') + '"><div role="rowheader" class="wxc-lab"><b>' + label + '</b>' + (sub ? '<i>' + sub + '</i>' : '') + '</div>' + cells + '</div>' }
     var out = row('Hour', 'UTC = Lisbon', cols.map(function (h) { return cell(h, '<b>' + ('0' + h).slice(-2) + '</b>' + (h === nowH ? '<i>now</i>' : '')) }).join(''), 'wxc-head')
 
@@ -193,6 +194,7 @@
     out += row(ICON.rain + 'Rain', 'mm in the hour, observed · then IPMA\'s automatic forecast: chance, and intensity class as height', cols.map(function (h) {
       var o = obsAt(rs, h, 'rain_mm'), f = fAt(h)
       if (o) return cell(h, '<span class="wxc-bar" style="height:' + Math.round(4 + 40 * o.v / maxRain) + 'px"></span><b>' + num(o.v, o.v < 10 ? 1 : 0) + '</b>', 'obs', ('0' + h).slice(-2) + ':00 to ' + ('0' + (h + 1)).slice(-2) + ':00: ' + o.v + ' mm at ' + o.s + ' (the wettest of ' + rs.length + ' stations)')
+      if (h < nowH) return notYet(h)
       if (f && (f.rain_intensity_class != null || f.rain_prob_pct != null)) return cell(h, '<span class="wxc-bar auto" style="height:' + (f.rain_intensity_class != null ? 6 + 12 * f.rain_intensity_class : 4) + 'px"></span><b>' + (f.rain_prob_pct != null ? f.rain_prob_pct + '%' : '&nbsp;') + '</b>', 'auto', hm(f.time_utc) + ': IPMA automatic forecast' + (f.rain_prob_pct != null ? ', chance of rain ' + f.rain_prob_pct + '%' : '') + (f.rain_intensity_en ? ', intensity "' + f.rain_intensity_en + '" (IPMA\'s daily scale, assumed to apply to the hourly feed)' : f.rain_intensity_class != null ? ', intensity class ' + f.rain_intensity_class : '') + (f.weather_type_en ? '; ' + f.weather_type_en : ''))
       return cell(h, '', 'empty')
     }).join(''), 'wxc-rain')
@@ -203,6 +205,7 @@
     out += row(ICON.wind + 'Wind', 'km/h, hourly mean, observed · then IPMA\'s automatic forecast', cols.map(function (h) {
       var o = obsAt(ss, h, 'wind_mean_kmh'), f = fAt(h)
       if (o) return cell(h, arrow(o.r.wind_dir) + '<b>' + num(o.v) + '</b><i>' + esc(o.r.wind_dir || '') + '</i>', 'obs', ('0' + h).slice(-2) + ':00 to ' + ('0' + (h + 1)).slice(-2) + ':00: mean wind ' + o.v + ' km/h from ' + o.r.wind_dir + ' at ' + o.s + ' (the windiest of ' + ss.length + ' stations)')
+      if (h < nowH) return notYet(h)
       if (f && f.wind_mean_kmh != null) return cell(h, arrow(f.wind_dir) + '<b>' + num(f.wind_mean_kmh) + '</b><i>' + esc(f.wind_dir || '') + '</i>', 'auto', hm(f.time_utc) + ': IPMA automatic forecast, mean wind ' + f.wind_mean_kmh + ' km/h from ' + f.wind_dir + ' (a mean at one point; no gusts in this feed)')
       return cell(h, '', 'empty')
     }).join(''), 'wxc-wind')
@@ -217,6 +220,7 @@
     out += row('Temperature', '°C, observed · then automatic forecast', cols.map(function (h) {
       var o = obsAt(ss, h, 'temp_c'), f = fAt(h)
       if (o) return cell(h, '<b>' + num(o.v) + '°</b>', 'obs', o.v + ' °C at ' + o.s)
+      if (h < nowH) return notYet(h)
       if (f && f.temp_c != null) return cell(h, '<b>' + num(f.temp_c) + '°</b>', 'auto', hm(f.time_utc) + ': IPMA automatic forecast ' + f.temp_c + ' °C')
       return cell(h, '', 'empty')
     }).join(''), 'wxc-temp')
