@@ -1,0 +1,44 @@
+flowchart LR
+  subgraph A3["A3 · agents (Claude Code, cloud, scheduled wakes)"]
+    AG["incident agent<br/>e.g. flights@, transport@<br/>holds: its key, push to dev"]
+  end
+
+  subgraph GH["GitHub · runner repo (Dinis creates it)"]
+    direction TB
+    WF["workflow_dispatch: run.yml<br/>inputs: mode, task, packet_url, packet_sha256,<br/>reply_to, trace_id, parent_span_id<br/>NO schedule"]
+    subgraph MODES["one job, one of three modes"]
+      direction LR
+      M0["A0 compute<br/>tasks/&lt;task&gt;.mjs<br/>fetch → parse → JSON"]
+      M1["A1 LLM call<br/>prompts/&lt;task&gt;.md<br/>one OpenRouter call"]
+      M2["A2 loop<br/>fetch → ask → check → retry<br/>at most 4 steps, then stop"]
+    end
+    SEAL["seal result to reply_to's public key<br/>(data/keys.json at a pinned commit)<br/>sign with the runner's own key"]
+    LOGS[("Actions logs<br/>metadata only:<br/>no raw content, no secrets")]
+    WF --> MODES --> SEAL
+    MODES -.-> LOGS
+  end
+
+  subgraph SECRETS["runner secrets: the whole grant"]
+    S1["LANE_APPEND_TOKEN<br/>write-only"]
+    S2["RUNNER_SIGNING_KEY<br/>public half on the keys page"]
+    S3["OPENROUTER_RUNNER_KEY<br/>own credit limit; A1 and A2 only"]
+  end
+
+  LANE[("append lane<br/>dev.send.sgraph.ai<br/>write-only for the runner;<br/>sealed: only reply_to opens it")]
+  OR["OpenRouter<br/>open-weight models"]
+  EL[("Elastic")]
+  GIT[("Storm-Charles repo · dev<br/>results JSON, trace events")]
+  SRC["public sources<br/>OpenSky, Open-Meteo, IPMA …"]
+
+  AG -- "1. commit packet JSON (inputs only, never code)" --> GIT
+  AG -- "2. dispatch run (actions:write on the runner repo only)" --> WF
+  M0 -- "allowed hosts only" --> SRC
+  M2 --> SRC
+  M1 --> OR
+  M2 --> OR
+  OR -. "every call already lands" .-> EL
+  SECRETS -.-> MODES
+  SEAL -- "3. append sealed result" --> LANE
+  LANE -- "4. drain, open with own key,<br/>check signature + schema" --> AG
+  AG -- "5. commit result + flow events<br/>(fringe schema: A0/A1/A2 spans)" --> GIT
+  GIT -. "elastic_feed" .-> EL
