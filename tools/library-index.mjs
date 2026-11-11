@@ -224,7 +224,9 @@ const index = {
 const indexText = JSON.stringify(index, null, 1) + '\n'
 
 // ---------------------------------------------------------------- the page
-const rel = f => path.posix.relative('library', f)
+let BASE = 'library'   // the folder of the page being written: links are relative to it
+const rel = f => path.posix.relative(BASE, f)
+const slug = k => k.replace(/\s+/g, '-')
 const cell = s => String(s ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ')
 const link = f => byPath[f]?.served === false ? `[\`${f}\`](${REPO}${f})` : `[\`${f}\`](${rel(f)})`
 const short = a => a.replace(/@web-summit\.dinis$/, '@')
@@ -241,67 +243,48 @@ Not a warning service: follow IPMA, ANEPC and your local authorities.
 
 **Also here:** [the agents' behaviour policies](abp.md) (drafts, not agreed by Dinis) · [the release history](releases.md) (every version, what changed, whether it was served) · [the reading list](reading/README.md) (what newsroom.sgit.ai's articles mean for this site) · [the glossary](glossary.md) (fact, evidence, hypothesis and the other words this site uses). · [the path policy](../agents/policy.json) and its check, [tools/policy-check.mjs](../tools/policy-check.mjs) · a draft for the conductor: [the shape of now.json](drafts/now-json.md).
 
-**How to read a row.** *By* is who the file itself says wrote or keeps it; the agents named in its commits follow when they differ. *Changed* is the last commit (UTC) when it is known, else the date the file gives for itself. *Made from* is the sources its own header names.
-
 | Kind | Files | What it is |
 |---|---|---|
-${ORDER.filter(k => counts[k]).map(k => `| [${k}](#${k.replace(/\s+/g, '-')}) | ${counts[k]} | ${KIND_ABOUT[k]} |`).join('\n')}
+${ORDER.filter(k => counts[k]).map(k => `| [${k}](kinds/${slug(k)}.md) | ${counts[k]} | ${KIND_ABOUT[k]} |`).join('\n')}
 `
+// one page per kind (library/kinds/<kind>.md): the index stays short enough for a phone (the designer's review, design/round-18.md)
+const kindPages = []
+BASE = 'library/kinds'
 for (const k of ORDER.filter(k => counts[k])) {
-    md += `\n## ${k}\n\n${KIND_ABOUT[k]}\n\n| File | What it is | By | Changed | Made from |\n|---|---|---|---|---|\n`
+    let t = `# The library: ${k} (${counts[k]})\n\n> Kept by ${ME}. Built by [\`tools/library-index.mjs\`](../../tools/library-index.mjs) on every push; nobody writes it by hand. ${KIND_ABOUT[k]} Back to [the library](../README.md) · every kind as data: [index.json](../index.json).\n\n*By* is who the file itself says wrote or keeps it (the agents in its commits follow when they differ); *Changed* is the last commit (UTC) when known, else the file's own date; *Made from* is the sources its header names.\n\n| File | What it is | By | Changed | Made from |\n|---|---|---|---|---|\n`
     for (const e of entries.filter(e => e.kind === k)) {
         const from = e.generated_by ? link(e.generated_by) : e.made_from.slice(0, 6).map(src).join(', ') + (e.made_from.length > 6 ? `, and ${e.made_from.length - 6} more` : '')
-        md += `| ${link(e.path)}${e.api ? ` ([api](${e.api.replace(SITE, '../')}))` : ''} | ${cell(e.title && e.title !== path.basename(e.path) ? `**${e.title}.** ` : '')}${cell(cut(e.what, 200))} | ${cell(who(e))} | ${cell(when(e.changed))} | ${from} |\n`
+        t += `| ${link(e.path)}${e.api ? ` ([api](${e.api.replace(SITE, '../../')}))` : ''} | ${cell(e.title && e.title !== path.basename(e.path) ? `**${e.title}.** ` : '')}${cell(cut(e.what, 200))} | ${cell(who(e))} | ${cell(when(e.changed))} | ${from} |\n`
     }
+    kindPages.push([`library/kinds/${slug(k)}.md`, t])
 }
+// the gaps in full, on their own page; the index keeps the counts and the short lists
+const GAPS = [
+    ['no_author_in_file', 'Files that do not say who wrote them', 'For the file\'s owner: a first line "> Kept by <agent>, <date>, <time> UTC", or "by" in JSON.'],
+    ['no_date_in_file', 'Records and datasets that give no date of their own', 'For the owner: the time in the header line, or "updated" in JSON.'],
+    ['datasets_naming_no_source', 'Datasets that name no source in their own fields', 'Their values may each carry a source inside; the file as a whole names none at the top.'],
+    ['documents_nothing_links_to', 'Documents nothing links to', '"Everything linked" (Dinis, 10 November): these are reachable only from this catalogue.'],
+    ['older_than_their_sources', 'Older than the sources they were made from', '"Corrections must propagate": a draft, an analysis or a derived dataset whose named source was committed after it. It may still be right; someone should look.'],
+    ['no_commit_record', 'Files with no commit record yet', `The commits are read in the librarian's clone, not in CI${provHead ? ` (last at commit \`${provHead}\`)` : ''}; a file new or changed since shows here until the next read.`],
+    ['not_served_on_the_site', 'Not served on the site', 'In the repository only (the build skips `admin/` and dot files); the links go to GitHub.'],
+]
 const list = a => a.length ? a.map(x => `- ${link(typeof x === 'string' ? x : x.path)}${x.why ? `: ${x.why}` : ''}${x.committed_by?.length ? ` (commits: ${x.committed_by.map(short).join(', ')})` : ''}`).join('\n') : '- None.'
+const anchor = t => t.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-')
+kindPages.push(['library/kinds/gaps.md', `# The library: gaps, in full\n\n> Kept by ${ME}. Built by [\`tools/library-index.mjs\`](../../tools/library-index.mjs) on every push. What the catalogue could not establish from the files themselves; each is for the file's owner to close, and the librarian does not edit others' files. Back to [the library](../README.md).\n` + GAPS.map(([k, t, why]) => `\n## ${t} (${gaps[k].length})\n\n${why}\n\n${list(gaps[k])}\n`).join('')])
+BASE = 'library'
 md += `
 ## Gaps
 
-What the catalogue could not establish from the files themselves. Each is for the file's owner to close (a line in its header: who, when, from what); the librarian does not edit others' files.
+What the catalogue could not establish from the files themselves. Each is for the file's owner to close; the librarian does not edit others' files. A list of up to five is given here; the rest is on [the gaps page](kinds/gaps.md).
 
-### Files that do not say who wrote them
-
-${list(gaps.no_author_in_file)}
-
-### Records and datasets that give no date of their own
-
-${list(gaps.no_date_in_file)}
-
-### Datasets that name no source in their own fields
-
-Their values may each carry a source inside; the file as a whole names none at the top.
-
-${list(gaps.datasets_naming_no_source)}
-
-### Documents nothing links to
-
-"Everything linked" (Dinis, 10 November): these are reachable only from this catalogue.
-
-${list(gaps.documents_nothing_links_to)}
-
-### Older than the sources they were made from
-
-"Corrections must propagate": a draft, an analysis or a derived dataset whose named source was committed after it. It may still be right; someone should look.
-
-${list(gaps.older_than_their_sources)}
-
-### Files with no commit record yet
-
-The commits are read in the librarian's clone, not in CI${provHead ? ` (last at commit \`${provHead}\`)` : ''}; a file new or changed since shows here until the next read.
-
-${list(gaps.no_commit_record)}
-
-### Not served on the site
-
-In the repository only (the build skips \`admin/\` and dot files); the links go to GitHub.
-
-${list(gaps.not_served_on_the_site)}
+| Gap | Files | |
+|---|---|---|
+${GAPS.map(([k, t, why]) => `| [${t}](kinds/gaps.md#${anchor(`${t} (${gaps[k].length})`)}) | ${gaps[k].length} | ${gaps[k].length && gaps[k].length <= 5 ? gaps[k].map(x => link(typeof x === 'string' ? x : x.path)).join(', ') : cell(why)} |`).join('\n')}
 `
 
 // ---------------------------------------------------------------- write (or check)
 // Neither output is tracked any more (11 November): the page too is written only with --out, and the build renders it from there.
-const targets = OUT_DIR ? [['library/index.json', indexText], ['library/README.md', md]] : []
+const targets = OUT_DIR ? [['library/index.json', indexText], ['library/README.md', md], ...kindPages] : []
 if (args.has('--check')) {
     if (!OUT_DIR) { console.log(`library-index: OK ${entries.length} files (nothing tracked to compare; --check --out DIR compares DIR)`); process.exit(0) }
     const stale = targets.filter(([f, s]) => !fs.existsSync(path.join(OUT_DIR, f)) || fs.readFileSync(path.join(OUT_DIR, f), 'utf8') !== s).map(([f]) => f)
