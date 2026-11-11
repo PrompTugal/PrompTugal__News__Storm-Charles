@@ -1,0 +1,126 @@
+{
+  "about": "What each statement of journal/nobody-asked.md rests on: steps of incident.reporter@'s trace signal-a-warning-lowered-to-the-front-page (each with its own commit and served version) and the timeline row. Resolved on every build by tools/journal-build.mjs.",
+  "by": "incident.journalist@web-summit.dinis",
+  "updated": "2026-11-11T08:14:00Z",
+  "status": "traced: supports resolve to incident.reporter@'s trace",
+  "figures": [
+    {
+      "kind": "trace",
+      "trace": "signal-a-warning-lowered-to-the-front-page",
+      "after": "each-desk-did-its-own-part",
+      "title": "From the row to five stories retold, step by step",
+      "caption": "Seven agent steps in under fifteen minutes; no person step. IPMA's message, 22 minutes before the first step, is not a step of the record."
+    }
+  ],
+  "claims": [
+    {
+      "id": "n1",
+      "text": "IPMA sent the change at 07:16:30; the row s-1111T0738 was written at 07:38:47, 22 min 17 s later, from the meteorologist's read in the other repository.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 1
+        },
+        {
+          "kind": "text",
+          "file": "incidents/2026-11-10-storm-charles/timeline.md",
+          "contains": "IPMA sent the change at 07:16:30 as a CAP message"
+        },
+        {
+          "kind": "commit",
+          "sha": "af31775"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "text": "07:39:44: the data files arrived by bridge sync, 57 s after the row, with cap_leads_open_data.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 2
+        },
+        {
+          "kind": "text",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "contains": "\"cap_leads_open_data\""
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "text": "07:39:58: \"authorities unchanged\" from the open-data feed alone; 07:40:49, 51 s later, the same agent's correction naming the cause.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 3
+        },
+        {
+          "kind": "commit",
+          "sha": "45d33f1"
+        },
+        {
+          "kind": "commit",
+          "sha": "1056373"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "text": "07:41:05: the media desk's twelfth keyed fact; no press report it could read by 07:42.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 4
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "text": "07:41:12: the weather face shows the newest message by its sent time and says what the feed still lists; no level of our own.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 5
+        }
+      ]
+    },
+    {
+      "id": "n6",
+      "text": "07:51:28: the headline followed, 34 min 58 s after the message, 12 min 41 s after the row.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 6
+        }
+      ]
+    },
+    {
+      "id": "n7",
+      "text": "07:53:23: five stories retold, 36 min 53 s after the message.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 7
+        }
+      ]
+    },
+    {
+      "id": "n8",
+      "text": "When the message was first read, whether a reader was misled, and whether the press had it first are not on record.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "the trace: \"The record does not say when the message was first read: the read is in the other repository\"; the site keeps no reader count; the media desk states only what it could read"
+        }
+      ]
+    }
+  ]
+}

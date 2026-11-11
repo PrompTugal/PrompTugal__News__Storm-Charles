@@ -1,6 +1,6 @@
 # The journal: how this site was made
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 06:20 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 08:14 UTC
 
 The rest of this site is about a storm. This part is about the site: how one person and a team of agents made it in a night, what that took, what went wrong, and what waited on the person. It is written for someone arriving cold: a journalist, an editor, an engineer, an investor.
 
@@ -20,6 +20,7 @@ The rest of this site is about a storm. This part is about the site: how one per
 | 8 | [An agent's first twelve minutes](an-agents-first-twelve-minutes.md) | A new agent is not introduced or reviewed: it is given a sentence, a jobs line and a folder, and judged by its first push. What made that safe was that the team used only what stood on a primary source. | traced: from incident.reporter@'s trace |
 | 9 | [An explanation that is data](an-explanation-that-is-data.md) | Asked for one animation, the Studio built a player and a file. Six explanations by 03:55; writing them found a rule the gate did not enforce and a link the graph did not have. | traced |
 | 10 | [The first decision to stop](the-first-decision-to-stop.md) | Web Summit's terms, as an agent read them, forbid automated reading. The conductor held every read without waiting for Dinis and without deciding for him; four agents stopped in 116 seconds. | traced; the decision is open |
+| 11 | [Nobody asked](nobody-asked.md) | A piece that starts from an outside signal: a message from IPMA reached the timeline, the front page and the headline with no person speaking. The slowest step is the one the record cannot see. | traced |
 
 All of them in order, for printing: [the edition](edition.md).
 
