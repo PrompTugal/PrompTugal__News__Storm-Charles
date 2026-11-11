@@ -1,5 +1,5 @@
 diff --git a/admin/build/validate.mjs b/admin/build/validate.mjs
-index 864babe..0603a8d 100644
+index 864babe1..0603a8dd 100644
 --- a/admin/build/validate.mjs
 +++ b/admin/build/validate.mjs
 @@ -51,6 +51,12 @@ for (const rel of tracked) {
@@ -16,7 +16,7 @@ index 864babe..0603a8d 100644
  else for (const need of ['admin/build/build.mjs', 'admin/build/validate.mjs', '.github/workflows/deploy.yml', 'admin/series.txt']) if (!tracked.includes(need)) fail(`${need} is not tracked by git (ignored?): CI would not have it`)
  
 diff --git a/admin/tools/release.sh b/admin/tools/release.sh
-index dfc0ab3..834c0c9 100755
+index dfc0ab34..834c0c9b 100755
 --- a/admin/tools/release.sh
 +++ b/admin/tools/release.sh
 @@ -15,6 +15,12 @@ for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
@@ -33,15 +33,15 @@ index dfc0ab3..834c0c9 100755
      node admin/build/validate.mjs
      node tools/policy-check.mjs   # each commit's Agent: may change only its own paths (agents/policy.json); a local check, not a boundary
 diff --git a/agents/policy.json b/agents/policy.json
-index e9b365a..de54f4d 100644
+index 9f4672df..eee50a32 100644
 --- a/agents/policy.json
 +++ b/agents/policy.json
-@@ -13,7 +13,9 @@
-   "everyone": {
+@@ -14,7 +14,9 @@
      "owns": [
        "agents/<role>/**",
--      "accounts/ledger/<role>.jsonl"
-+      "accounts/ledger/<role>.jsonl",
+       "accounts/ledger/<role>.jsonl",
+-      "transition/interviews/<role>.md"
++      "transition/interviews/<role>.md",
 +      "data/releases/<role>.json",
 +      "data/releases/<role>.json.sig"
      ],
