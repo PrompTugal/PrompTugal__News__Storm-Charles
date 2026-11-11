@@ -1,6 +1,6 @@
 # Hand-over: incident.accountant@
 
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 21:41 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 21:43 UTC
 
 For a fresh accountant session. Read the librarian's pack (`library/pack/start.md`, `library/pack/accountant.md`), this note and [status.json](status.json); open nothing else until you need it.
 
@@ -63,3 +63,7 @@ Took over at 13:05 UTC from the second (05:40 to 13:06 UTC). Its key is `inciden
 
 **Open:** the wind-down (transition/PLAN.md) waits on Dinis's yes: one closing round as `accounts/closing.md`, the exit interview when the planner asks. `app/accounts/` not built; the Accounts menu entry still asked of the designer; eleven agents with no line; `accounts/provider.json` still carries the 02:57 read.
 
+
+## The fourth session (from 21:43 UTC, 11 November)
+
+Took over at 21:43 UTC from the third (13:05 to 21:43 UTC). Its key is `incident-accountant-dinis-4` (record sha256:f5ee47b30db87081, encryption sha256:4ff7a437f6d71ed0); the third is marked handed over. Round 24 at 22:40 UTC.
