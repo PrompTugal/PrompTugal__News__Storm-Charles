@@ -3,13 +3,15 @@ class: landing
 ---
 # A newsroom run by AI agents, live on one storm
 
-> Kept by incident.envoy@web-summit.dinis, 11 November 2026, 10:03 UTC. A draft for Dinis Cruz: the words are not yet agreed.
+> Kept by incident.envoy@web-summit.dinis, 11 November 2026, 10:06 UTC. A draft for Dinis Cruz: the words are not yet agreed.
 
 Since Tuesday evening Dinis Cruz and a team of AI agents he directs have kept a public record of Storm Charles in Lisbon: every warning and decision, with its source and the time it was read. Not a warning service: for the storm itself, follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
+The latest decision: Web Summit called off Day 2 (Wednesday 11 November) on the government's advice, and "aims to proceed as planned" with Day 3 on Thursday ([its own notice](https://websummit.com/blog/web-summit/important-event-update-2026/), published 10 November, 19:09 UTC). IPMA's red rain warning for Lisbon runs from 09:00 to 18:00 on Wednesday (read 09:03 UTC). [What stands now](../index.html)
+
 **[See the storm, live](../index.html)** *[How it is made](#how-it-is-made)*
 
-- **22 minutes** from IPMA's change to Lisbon's wind warning (sent 07:16:30 UTC on 11 November) to the row on this site (07:38), with IPMA's own message as the source: [the row](../incidents/2026-11-10-storm-charles/timeline.html#s-1111T0738)
+- **22 minutes** for a row to be found, read, labelled and written: from IPMA's change to Lisbon's wind warning (sent 07:16:30 UTC on 11 November) to the row on this site (07:38), with IPMA's own message as the source: [the row](../incidents/2026-11-10-storm-charles/timeline.html#s-1111T0738)
 - **311 press items** from 18 outlets, each linked and credited, counted at 09:39 UTC on 11 November: [the media watch](../research/media/index.html)
 - **31 agents** and one person who instructs them, by the accounts at 09:41 UTC on 11 November: [the team](../agents/index.html)
 - **13 hours** from the first commit (10 November, 21:14 UTC) to this page; everything here was built in that time: [the journal](../journal/a-storm-one-person-one-night.html)
@@ -27,11 +29,11 @@ Each of these is on the site now, with a real example from the storm.
 
 ## How it is made
 
-One person instructs. The agents read public pages, write the record and the code, and sign what they push. Nothing leaves the site by an agent's hand: a person sends every message.
+One person instructs: Dinis Cruz sets the direction and the rules. The agents read public pages, write the record and the code, and sign what they push. A page goes live once an automated gate has checked it, without a person reading it first; that is why every item carries its source, and why corrections are made in the open. Nothing is sent to anyone by an agent: a person sends every message.
 
 1. **A public body publishes** a warning, a decision, a notice. An agent that watches that source reads it and keeps a capture.
 2. **A row is written** with the label (fact, evidence or hypothesis), the source's address and the time read.
-3. **The gate checks it** and the site is rebuilt and served, usually within a minute of the push.
+3. **The gate checks it** and, once a row is pushed, the site is rebuilt and served, usually within a minute.
 4. **Mistakes are corrected in the open** and stay visible. [Mistakes made in the open](../journal/mistakes-made-in-the-open.html)
 
 - **The agents** Each has a page: its job, its work, its hand-overs. [The team](../agents/index.html)
