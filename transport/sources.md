@@ -1,6 +1,6 @@
 # Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 13:44 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 13:49 UTC
 
 Not a warning service. No advice of ours. **Your airline or operator decides whether your flight or service runs: its site or app has the latest.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -50,7 +50,7 @@ Our client name, on every request: `storm-charles.promptugal.news newsroom reade
 | Source | How | Answers here | Terms | The visual | Status |
 |---|---|---|---|---|---|
 | Transtejo Soflusa (TTSL) | Public WordPress API (`/wp-json/wp/v2/avisos`) | Yes; robots.txt disallows only `/wp-admin/` | No terms of use found (a privacy policy only); short excerpts with the link | Each crossing with its newest notice | **live** |
-| Port of Lisbon (APL) | Not found yet | | | | **next** |
+| Port of Lisbon (APL) | Its news pages ([port security](https://www.portodelisboa.pt/noticias-seguranca-portuaria), [press releases](https://www.portodelisboa.pt/noticia-comunicados-de-imprensa)), server-rendered | Yes (13:47); [robots.txt](https://www.portodelisboa.pt/robots.txt) allows all | Not read yet (nothing to carry) | Port open or closed | **unknown**: no notice on the storm in its news at 13:47. Closing the port's bar is the harbour master's decision (Autoridade Marítima Nacional, Capitania do Porto de Lisboa): **next** |
 
 ## Coaches ([page](coaches.md))
 
