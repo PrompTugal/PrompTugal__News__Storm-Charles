@@ -1,0 +1,189 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T10:00:38Z",
+  "label": "Invented person; not user research",
+  "persona": "visitor",
+  "run": 2,
+  "start": "/welcome/",
+  "steps": [
+    {
+      "url": "/welcome/",
+      "what": "Reads H1 \"A newsroom run by AI agents, live on one storm\" and intro; first \"Web Summit\" as context",
+      "seconds": 25,
+      "px_from_top": 446
+    },
+    {
+      "url": "/welcome/",
+      "what": "Screen 2: \"See the storm, live\" button and four site tiles; nothing on the summit or people",
+      "seconds": 20,
+      "px_from_top": 677
+    },
+    {
+      "url": "/entities/organisation/websummit.html",
+      "what": "Web Summit link at 446 px; walker could not read the page (script error); not judged",
+      "seconds": 0,
+      "px_from_top": null
+    },
+    {
+      "url": "/",
+      "what": "Taps See the storm, live; red IPMA rain box, orange wind",
+      "seconds": 15,
+      "px_from_top": 170
+    },
+    {
+      "url": "/",
+      "what": "Scrolls past closures (Web Summit read Tue 20:59 at 1053 px) to THE DECISION FACT: Day 2 called off, Day 3 aims to proceed",
+      "seconds": 25,
+      "px_from_top": 1593
+    },
+    {
+      "url": "/",
+      "what": "Looks for whether people are OK; nothing on /welcome/ or / screens 1-3",
+      "seconds": 15,
+      "px_from_top": null
+    }
+  ],
+  "first_mention_web_summit": {
+    "page": "/welcome/",
+    "px": 446
+  },
+  "summit_decision": {
+    "on_welcome": false,
+    "page": "/",
+    "px": 1593,
+    "clicks": 1
+  },
+  "understood_10s": "A site about AI agents keeping a newsroom on the storm; the storm hit Lisbon in Web Summit week; not a warning service. Not whether the summit is on.",
+  "understood_1min": "After one tap and 2.4 screens on /: Day 2 (Wednesday) called off on government advice, Day 3 (Thursday) aims to proceed.",
+  "looked_for": [
+    {
+      "what": "Is Web Summit on today?",
+      "result": "found (late)",
+      "where": "not on /welcome/; / THE DECISION FACT at ~1593 px",
+      "clicks": 1
+    },
+    {
+      "what": "What is happening now?",
+      "result": "partly",
+      "where": "/welcome/ only says the storm reached Lisbon; / screen 1 red rain, orange wind",
+      "clicks": 1
+    },
+    {
+      "what": "Are people OK?",
+      "result": "not found",
+      "where": "/welcome/ 0-5224 px; / screens 1-3",
+      "clicks": 1
+    }
+  ],
+  "lost": [
+    "Shared link opens a page about how the site is made; thinks it is the wrong link",
+    "Breadcrumb Storm Charles > Data room and an 11-link sub-bar (Graph, Ontology, Query...) read as technical",
+    "Screen-2 tiles (22 minutes, 311 press items, 31 agents) look like storm figures but are about the site",
+    "On /: read Tue 20:59 beside Web Summit reads as yesterday"
+  ],
+  "words_not_understood": [
+    "AI agents",
+    "commit",
+    "Data room",
+    "Ontology",
+    "Lead times",
+    "Query",
+    "Entities",
+    "sha256",
+    "API",
+    "hash",
+    "primary source",
+    "fact / evidence / hypothesis",
+    "tokens",
+    "IPMA",
+    "ANEPC",
+    "UTC",
+    "Comunicado nº2",
+    "in force",
+    "Panel"
+  ],
+  "would_act": "A first screen saying Web Summit Day 2 called off, Day 3 aims to go ahead, with the source time; would not forward /welcome/ as it is about the agents, not the summit.",
+  "score": 2,
+  "score_reason": "The newcomers page explains the site well but not the question he came with, and adds one tap before the same 2.4 screens of scrolling as run 1.",
+  "vs_run1": [
+    {
+      "finding": "Summit decision below the fold on / (1593 px)",
+      "status": "not fixed (and one tap further from the shared link)"
+    },
+    {
+      "finding": "Are people OK: no answer or nothing-reported line",
+      "status": "not fixed"
+    },
+    {
+      "finding": "Web Summit link jumps 7,300 px down /",
+      "status": "not fixed"
+    },
+    {
+      "finding": "read Tue 20:59 reads as stale",
+      "status": "not fixed"
+    },
+    {
+      "finding": "Story page opens with file links",
+      "status": "not re-walked"
+    },
+    {
+      "finding": "Jargon unglossed (IPMA, ANEPC, UTC)",
+      "status": "not fixed"
+    },
+    {
+      "finding": "Ten-item navigation (held)",
+      "status": "not fixed; /welcome/ adds an 11-link sub-bar"
+    }
+  ],
+  "findings": [
+    {
+      "class": "blocking",
+      "what": "/welcome/ never states the summit decision",
+      "where": "/welcome/",
+      "measure": "0 mentions of Day 2/Thursday in 5,224 px; Web Summit only at 446 px as context; decision first at / ~1593 px after 1 tap",
+      "change": "One line under the H1: Today: Web Summit Day 2 (Wed) called off on the government advice; Day 3 (Thu) aims to proceed (Web Summit, 10 Nov 19:09 UTC), linking to the decision row"
+    },
+    {
+      "class": "costly",
+      "what": "Newcomer link leads with the method, not the storm",
+      "where": "/welcome/",
+      "measure": "H1 at 220 px about AI agents; See the storm, live at 677 px, just below screen 1",
+      "change": "Move See the storm, live and IPMA current Lisbon level into screen 1, above the team paragraph"
+    },
+    {
+      "class": "costly",
+      "what": "Decision on / still on screen 3",
+      "where": "/",
+      "measure": "~1593 px",
+      "change": "One-line summit status at the top of / screen 1"
+    },
+    {
+      "class": "costly",
+      "what": "Are people OK still unanswered",
+      "where": "/welcome/, / screens 1-3",
+      "measure": "no line on injuries, attendees or damage",
+      "change": "Labelled ANEPC line if published, else No injury or damage figures read from ANEPC yet (no advice of our own)"
+    },
+    {
+      "class": "minor",
+      "what": "/welcome/ framed under Data room with 11-link sub-bar",
+      "where": "/welcome/",
+      "measure": "sub-bar at 77 px, breadcrumb at 143 px",
+      "change": "No data-room sub-bar; breadcrumb Storm Charles > New here?"
+    },
+    {
+      "class": "minor",
+      "what": "Site tiles read as storm figures",
+      "where": "/welcome/",
+      "measure": "~700-1100 px",
+      "change": "Small heading About this site above the tiles"
+    },
+    {
+      "class": "held",
+      "what": "Web Summit entity page linked from /welcome/ not judged (walker script error)",
+      "where": "/entities/organisation/websummit.html",
+      "measure": "n/a",
+      "change": "Re-walk with a fixed walker"
+    }
+  ]
+}

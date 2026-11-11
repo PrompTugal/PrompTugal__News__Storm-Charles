@@ -1,0 +1,215 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T10:01:17Z",
+  "label": "Invented person; not user research",
+  "persona": "exec",
+  "run": 2,
+  "start": "/welcome/",
+  "steps": [
+    {
+      "url": "/welcome/",
+      "what": "H1 211 px, lede names Dinis Cruz and AI agents (390 px), buttons 614 px, four figures 700 px; read to the end (2,931 px)",
+      "seconds": 70,
+      "px": 211
+    },
+    {
+      "url": "/welcome/#how-it-is-made",
+      "what": "one person instructs, agents write and sign, gate checks, mistakes visible",
+      "seconds": 20,
+      "px": 1583
+    },
+    {
+      "url": "/accounts/index.html",
+      "what": "model spend 1.06 of 20 USD cap; provider out of credit since 02:55 UTC; tokens not converted to money",
+      "seconds": 40,
+      "px": 538
+    },
+    {
+      "url": "/agents/index.html",
+      "what": "32 agents; What Dinis can unblock: terms doubts at items 2 and 4",
+      "seconds": 25,
+      "px": 295
+    },
+    {
+      "url": "/outreach/index.html",
+      "what": "drafts to bodies and journalists; nothing for a newsroom wanting to use it",
+      "seconds": 25,
+      "px": 3695
+    },
+    {
+      "url": "/help/cite.html",
+      "what": "Licences: content licence still a known gap",
+      "seconds": 30,
+      "px": 1009
+    },
+    {
+      "url": "/board/index.html",
+      "what": "47,352 px, H1 at 28,631 px; closed",
+      "seconds": 10,
+      "px": 28631
+    }
+  ],
+  "understood_10s": "An experiment: one man and a team of AI agents keeping a sourced public record of a storm in Lisbon; not a warning service.",
+  "understood_1min": "The method (source, time read, labels, open corrections), the proof points (22 minutes, 311 press items) and the outputs (pages, stories, JSON API); not that it is offered as a template.",
+  "looked_for": [
+    {
+      "what": "What is this and who runs it",
+      "result": "found",
+      "where": "/welcome/ H1 211 px, lede 390 px",
+      "clicks": 0
+    },
+    {
+      "what": "Could we reuse it, and what it would cost",
+      "result": "partly",
+      "where": "/welcome/ Take the data ~1,460 px; /accounts/ 538 px (spend vs cap, tokens not money); no reuse offer or contact",
+      "clicks": 1
+    },
+    {
+      "what": "Risk: accuracy, licensing, AI policy",
+      "result": "partly",
+      "where": "/welcome/ How it is made 1,583 px; /help/cite.html 1,009 px licence gap; /agents/ 295 px terms doubts",
+      "clicks": 4
+    }
+  ],
+  "lost": [
+    "31 agents, 1 editor and a person sends every message suggest human approval of each row; How it is made describes only an automated gate",
+    "Agent count 31 on welcome, 32 on Team, 27 of 31 on Accounts",
+    "Welcome filed under Data room (breadcrumb 151 px)",
+    "Board 47,352 px tall with H1 at 28,631 px",
+    "About still opens /BRIEF.html",
+    "Draft notice: the words are not yet agreed (349 px)"
+  ],
+  "words_not_understood": [
+    "by-line (for agents)",
+    "capture",
+    "hash",
+    "sha256",
+    "gate",
+    "sign what they push",
+    "weighted tokens",
+    "cache reads",
+    "Panel",
+    "Labs",
+    "Ontology",
+    "Lead times",
+    "IPMA",
+    "ANEPC"
+  ],
+  "would_act": "Forwards /welcome/ to her editor-in-chief as worth a 30-minute call; takes the call only with a reuse block for newsrooms, a stated AI and editorial policy, and a content licence.",
+  "score": 3,
+  "score_reason": "The welcome page answers what this is and who runs it in ten seconds and shows the rigour she wants; it never speaks to a publisher who would reuse it, and licence and terms doubts are unchanged.",
+  "vs_run1": [
+    {
+      "finding": "1 blocking: no could-my-newsroom-use-this page",
+      "status": "partly"
+    },
+    {
+      "finding": "2 costly: About goes to the raw brief",
+      "status": "not fixed"
+    },
+    {
+      "finding": "3 costly: / gives no clue what the site is",
+      "status": "partly"
+    },
+    {
+      "finding": "4 costly: legal doubts first on Team",
+      "status": "not fixed"
+    },
+    {
+      "finding": "5 costly: no AI or editorial policy",
+      "status": "partly"
+    },
+    {
+      "finding": "6 costly: no content licence",
+      "status": "not fixed"
+    },
+    {
+      "finding": "7 minor: contact route contradiction",
+      "status": "partly"
+    },
+    {
+      "finding": "8 minor: cost only in tokens",
+      "status": "not fixed"
+    },
+    {
+      "finding": "9 minor: Studio title below cards",
+      "status": "not checked"
+    },
+    {
+      "finding": "10 held: Team requests api.github.com",
+      "status": "not fixed"
+    }
+  ],
+  "findings": [
+    {
+      "class": "costly",
+      "what": "No reuse offer for a newsroom",
+      "where": "/welcome/",
+      "measure": "0 of 5 sections address using it for your own incident; template aim absent",
+      "change": "Add a section: Could this work for your newsroom? What it took, what you get, how to start, who to write to"
+    },
+    {
+      "class": "costly",
+      "what": "Human review implied, not stated",
+      "where": "/welcome/ 700 px, ~1,620 px, ~1,800 px",
+      "measure": "1 editor and a person sends every message vs gate rebuilds within a minute",
+      "change": "One sentence: what a person checks and what goes live without one"
+    },
+    {
+      "class": "costly",
+      "what": "Content licence still missing",
+      "where": "/help/cite.html",
+      "measure": "1,009 px, a known gap",
+      "change": "State one and link it from welcome Take the data"
+    },
+    {
+      "class": "costly",
+      "what": "Cost not in money",
+      "where": "/accounts/",
+      "measure": "538 px, tokens are not converted to money",
+      "change": "A welcome line with running cost in USD, labelled measured or estimated"
+    },
+    {
+      "class": "costly",
+      "what": "About still the raw brief; welcome filed under Data room",
+      "where": "nav About; /welcome/ breadcrumb",
+      "measure": "About -> /BRIEF.html; breadcrumb 151 px",
+      "change": "Point About at /welcome/; remove the Data room crumb"
+    },
+    {
+      "class": "minor",
+      "what": "Agent count differs",
+      "where": "/welcome/, /agents/, /accounts/",
+      "measure": "31 vs 32 vs 27 of 31",
+      "change": "One source and one time read"
+    },
+    {
+      "class": "minor",
+      "what": "Board unusable from welcome",
+      "where": "/board/",
+      "measure": "47,352 px, H1 at 28,631 px",
+      "change": "H1 and a short summary at the top"
+    },
+    {
+      "class": "minor",
+      "what": "Terms doubts unchanged on Team",
+      "where": "/agents/",
+      "measure": "295 px, items 2 and 4",
+      "change": "As run 1 finding 4"
+    },
+    {
+      "class": "held",
+      "what": "Draft notice on welcome",
+      "where": "/welcome/",
+      "measure": "349 px",
+      "change": "Remove when the words are agreed"
+    },
+    {
+      "class": "held",
+      "what": "Team page requests api.github.com",
+      "where": "/agents/",
+      "measure": "external_hosts",
+      "change": "For the team, against the outside-requests rule"
+    }
+  ]
+}

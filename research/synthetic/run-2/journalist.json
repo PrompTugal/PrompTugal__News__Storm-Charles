@@ -1,0 +1,211 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T10:02:09Z",
+  "label": "Invented person; not user research",
+  "persona": "journalist",
+  "run": 2,
+  "start": "/welcome/",
+  "steps": [
+    {
+      "url": "/welcome/",
+      "what": "H1 at 211 px names AI agents; lede names Dinis Cruz; four figures at 700 px; scrolled to Tell us what is wrong (2471 px)",
+      "seconds": 50,
+      "px_from_top": 211
+    },
+    {
+      "url": "/research/media/ranking.html",
+      "what": "Who was first, from welcome 1233 px; refusing outlets named at 329 px; read the Day 2 entry (3566 px) of an 11465 px page",
+      "seconds": 35,
+      "px_from_top": 1233
+    },
+    {
+      "url": "/contribute.html",
+      "what": "Looking for a contact, from welcome ~2560 px; 19 task cards first, H1 at 1015 px; only route a GitHub issue (1681 px)",
+      "seconds": 40,
+      "px_from_top": 2560
+    },
+    {
+      "url": "/outreach/index.html",
+      "what": "Drafts only, nothing sent, no contact details kept",
+      "seconds": 20,
+      "px_from_top": 2560
+    },
+    {
+      "url": "/help/index.html",
+      "what": "Nav Help; How to cite us at 651 px",
+      "seconds": 10,
+      "px_from_top": 0
+    },
+    {
+      "url": "/help/cite.html",
+      "what": "Cite the source first 348 px; citation fields 505 px; Licences 1009 px: Apache-2.0 for data and code, no content licence for pages",
+      "seconds": 25,
+      "px_from_top": 651
+    },
+    {
+      "url": "/agents/index.html",
+      "what": "From welcome the team (781 px); opens on What Dinis can unblock: 40 things at 295 px; says 32 agents vs 31 on welcome",
+      "seconds": 15,
+      "px_from_top": 781
+    },
+    {
+      "url": "/stories/how-day-2-was-called-off/index.html",
+      "what": "Via /stories/ (490 px); FACT/EVIDENCE per sentence from 833 px; header still Written 02:33 on data read 07:38",
+      "seconds": 45,
+      "px_from_top": 490
+    }
+  ],
+  "understood_10s": "This is the AI-agents newsroom from the email, directed by one named person, a public sourced record, not a warning service; all above the fold of /welcome/.",
+  "understood_1min": "Has a lead (22-minute IPMA-to-site lag, 311 press items, who-was-first ranking), knows who directs it and what it is not; still does not know what PrompTugal is.",
+  "looked_for": [
+    {
+      "what": "Is there a story / what is this",
+      "result": "found",
+      "where": "/welcome/ H1 211 px, lede ~400 px; hook /research/media/ranking.html",
+      "clicks": 0
+    },
+    {
+      "what": "Can I cite it, and how",
+      "result": "found",
+      "where": "/help/cite.html 348 px; not linked from /welcome/",
+      "clicks": 2
+    },
+    {
+      "what": "Who do I call for comment",
+      "result": "not found",
+      "where": "/contribute.html GitHub issue 1681 px; /outreach/ nothing sent, no contact",
+      "clicks": 2
+    }
+  ],
+  "lost": [
+    "Tell us what is wrong on /welcome/ is corrections only; Contribute opens with 19 task cards",
+    "/welcome/ sits under Data room in breadcrumb and nav",
+    "Draft note under the H1: can she quote it?",
+    "31 agents on welcome vs 32 on Team",
+    "the team link leads to an ops board (40 things)",
+    "Story header times still read as reversed"
+  ],
+  "words_not_understood": [
+    "1 editor",
+    "incident.envoy@web-summit.dinis",
+    "Data room",
+    "Labs",
+    "Studio",
+    "Panel",
+    "Repo",
+    "METAR",
+    "CAP",
+    "superseded",
+    "markdown twin",
+    "sha256 (why needed)"
+  ],
+  "would_act": "Write: yes (AI agents timed the press against IPMA; ranking page and Day 2 story). Cite: yes, authorities for facts, site for the collection. Call: blocked, no press contact; a GitHub issue is not a deadline route.",
+  "score": 4,
+  "score_reason": "The welcome page answers what this is and who is behind it in ten seconds and leads to a story; still nobody to call.",
+  "vs_run1": [
+    {
+      "finding": "1 blocking: no way to reach a human",
+      "status": "not fixed"
+    },
+    {
+      "finding": "2 costly: About goes to BRIEF.html",
+      "status": "partly"
+    },
+    {
+      "finding": "3 costly: home says nothing about agents above the fold",
+      "status": "partly"
+    },
+    {
+      "finding": "4 costly: Team page opens with owner to-do list",
+      "status": "not fixed"
+    },
+    {
+      "finding": "5 minor: story timestamps look reversed",
+      "status": "not fixed"
+    },
+    {
+      "finding": "6 minor: jargon without gloss",
+      "status": "partly"
+    },
+    {
+      "finding": "7 minor: no content licence",
+      "status": "partly"
+    },
+    {
+      "finding": "8 held: Team page calls api.github.com",
+      "status": "not fixed"
+    }
+  ],
+  "findings": [
+    {
+      "class": "blocking",
+      "what": "No press contact",
+      "where": "/welcome/ 2471 px; /contribute.html 1681 px; /outreach/",
+      "measure": "2 clicks, not found",
+      "change": "One press line on /welcome/ within 800 px: a role-based address or form answered by a person, with expected response time"
+    },
+    {
+      "class": "costly",
+      "what": "the team link leads to an ops board",
+      "where": "/welcome/ 781 px -> /agents/ 295 px",
+      "measure": "1 click, opens on 40 things for Dinis",
+      "change": "Link to an outsider team page (who is accountable, what agents do); ops board one level down"
+    },
+    {
+      "class": "costly",
+      "what": "Draft note under the H1 reads as do-not-quote",
+      "where": "/welcome/ ~350 px",
+      "measure": "in first screen",
+      "change": "Agree the words or move the note to the end"
+    },
+    {
+      "class": "costly",
+      "what": "/welcome/ does not link How to cite us",
+      "where": "/welcome/ Take the data 1467 px",
+      "measure": "2 clicks instead of 1",
+      "change": "Add a Cite this line linking /help/cite.html"
+    },
+    {
+      "class": "minor",
+      "what": "/welcome/ filed under Data room",
+      "where": "breadcrumb 141 px, nav highlight",
+      "measure": "1 page",
+      "change": "Top level or under Help"
+    },
+    {
+      "class": "minor",
+      "what": "31 agents vs 32 agents",
+      "where": "/welcome/ 700 px vs /agents/",
+      "measure": "minutes apart",
+      "change": "Label as snapshot or read live"
+    },
+    {
+      "class": "minor",
+      "what": "Contribute H1 below 19 task cards",
+      "where": "/contribute.html",
+      "measure": "H1 at 1015 px",
+      "change": "H1 and the three ways in first"
+    },
+    {
+      "class": "minor",
+      "what": "Story header times look reversed",
+      "where": "/stories/how-day-2-was-called-off/ ~330 px",
+      "measure": "Written 02:33, data read 07:38",
+      "change": "One updated time and the data read time"
+    },
+    {
+      "class": "minor",
+      "what": "About still opens BRIEF.html",
+      "where": "nav 0 px every page",
+      "measure": "1 click",
+      "change": "Point About at /welcome/"
+    },
+    {
+      "class": "held",
+      "what": "/agents/ requests api.github.com",
+      "where": "/agents/",
+      "measure": "walker external_hosts",
+      "change": "Team to judge; not the Weather face"
+    }
+  ]
+}
