@@ -86,8 +86,8 @@ const up = rel => '../'.repeat(rel.split('/').length - 1) || './'
 // RESTRUCTURE.md). A page is listed only when its source exists in the repository, so a section appears the push its owner ships it.
 const INCP = 'incidents/2026-11-10-storm-charles/'
 const MENU = [
-    ['Weather', [['Storm Charles', 'weather/index.html']]],
-    ['Data room', [['Front page', 'index.html'], ['Dashboard', INCP + 'index.html'], ['Timeline', INCP + 'timeline.html'], ['Decisions', INCP + 'decisions.html'], ['Data', 'datasets.html'], ['Query', 'data/query/index.html'], ['Graph', 'app/graph/index.html'], ['Library', 'library/index.html']]],
+    ['Weather', [['Storm Charles', 'index.html'], ['The same page at /weather/', 'weather/index.html']]],
+    ['Data room', [['Front page', 'data-room/index.html'], ['Dashboard', INCP + 'index.html'], ['Timeline', INCP + 'timeline.html'], ['Decisions', INCP + 'decisions.html'], ['Data', 'datasets.html'], ['Query', 'data/query/index.html'], ['Graph', 'app/graph/index.html'], ['Library', 'library/index.html']]],
     ['Sources', [['Sources', 'sources/index.html'], ['IPMA', 'sources/ipma/index.html'], ['MeteoAlarm', 'sources/meteoalarm/index.html']]],
     ['Evidence', [['Evidence', 'evidence/index.html']]],
     ['Entities', [['Entities', 'entities/index.html']]],
@@ -100,7 +100,7 @@ const MENU = [
     ['About', [['Brief', 'BRIEF.html'], ['Restructure', 'RESTRUCTURE.html'], ['Design', 'design/index.html'], ['LLMs', 'llms.txt']]]
 ]
 const HAS_LENS_CSS = fs.existsSync(path.join(ROOT, 'app/lens/lens.css')), HAS_LENS_JS = fs.existsSync(path.join(ROOT, 'app/lens/lens.js'))
-const GENERATED = new Set(['index.html', 'datasets.html', 'llms.txt', 'library/index.html'])
+const GENERATED = new Set(['index.html', 'data-room/index.html', 'datasets.html', 'llms.txt', 'library/index.html'])
 const hasPage = t => GENERATED.has(t) || fs.existsSync(path.join(ROOT, t)) || fs.existsSync(path.join(ROOT, t.replace(/index\.html$/, 'README.md'))) || fs.existsSync(path.join(ROOT, t.replace(/\.html$/, '.md')))
 const MENU_LIVE = MENU.map(([name, items]) => [name, items.filter(([, t]) => hasPage(t))]).filter(([, items]) => items.length)
 function menu(rel, u) {
@@ -614,9 +614,25 @@ ${gapHtml}
 ${where}
 <p class="meta wx-foot"><a href="${base}index.html">The live dashboard</a> (the decision graph, the weather, the timeline) · <a href="${base}data/weather/analysis.html">The meteorologist's analysis</a> (labelled as analysis)</p></div>
 <script src="app/design/front.js?v=${encodeURIComponent(VERSION)}" defer></script>`
-write('index.html', page({ rel: 'index.html', title: 'Storm Charles: what is decided, what is warned, what is known', body: front, twin: 'index.md' }))
-write('index.md', `# Storm Charles, Lisbon, November 2026\n\n**${inc.headline.text}** Source: [${inc.headline.source}](${inc.headline.url}), ${inc.headline.at}.\n\n${inc.standfirst || ''}\n\nNot a warning service: follow IPMA, ANEPC and your local authorities.\n\n- [The live dashboard](${base}README.md)\n- [The timeline](${base}timeline.md)\n- [The decisions](${base}decisions.md)\n- [The data, for agents](api/v1/index.json) and [llms.txt](llms.txt)\n`)
-pages.push({ rel: 'index.html', md: 'index.md', title: 'Storm Charles' })
+// THE SWAP (incident.designer@, design/round-32.md; RESTRUCTURE.md): the technical front page is the data room's (data-room/index.html);
+// `/` is the Weather face (incident.weather@'s weather/index.md, the same mount, its addresses re-based to the root).
+const reroot = h => h.replace(/\b(href|src)="(?!https?:|#|\/|mailto:|data:|\.\.\/)([^"]*)"/g, '$1="../$2"')
+write('data-room/index.html', page({ rel: 'data-room/index.html', title: 'The data room: what is decided, what is warned, what is known', body: reroot(front), twin: 'index.md' }))
+write('data-room/index.md', (`# Storm Charles, Lisbon, November 2026\n\n**${inc.headline.text}** Source: [${inc.headline.source}](${inc.headline.url}), ${inc.headline.at}.\n\n${inc.standfirst || ''}\n\nNot a warning service: follow IPMA, ANEPC and your local authorities.\n\n- [The live dashboard](${base}README.md)\n- [The timeline](${base}timeline.md)\n- [The decisions](${base}decisions.md)\n- [The data, for agents](api/v1/index.json) and [llms.txt](llms.txt)\n`).replace(/\]\((?!https?:|#|\/|mailto:)/g, '](../'))
+pages.push({ rel: 'data-room/index.html', md: 'data-room/index.md', title: 'The data room' })
+{
+    const wf = path.join(ROOT, 'weather/index.md')
+    if (fs.existsSync(wf)) {
+        const [fm, md] = frontMatter(fs.readFileSync(wf, 'utf8'))
+        const toRoot = h => h.replace(/\b(href|src)="\.\.\//g, '$1="').replace(/\b(href|src)="(?!https?:|#|\/|mailto:|data:|app\/|incidents\/|data\/|research\/|agents\/|api\/|design\/|library\/|studio\/|data-room\/|sources\/|evidence\/|entities\/|labs\/|board\/|help\/|news\/|account\/|[A-Za-z-]+\.(?:html|json|txt|md)")([^"]*)"/g, '$1="weather/$2"').replace(/data-base="\.\.\/"/g, 'data-base="./"').replace(/data-base=""/g, 'data-base="./"')
+        const body = `<main class="doc"><div class="wrap">${toRoot(fm.mount || '')}</div></main><main class="doc"><div class="wrap"><article>${toRoot(markdown(md))}</article></div></main>`
+        write('index.html', page({ rel: 'index.html', title: fm.title || 'Storm Charles: the weather, now', desc: fm.summary || '', body, twin: 'weather/index.md', extraHead: toRoot(fm.head || '') }))
+        pages.push({ rel: 'index.html', md: 'weather/index.md', title: fm.title || 'Storm Charles: the weather' })
+    } else {   // no Weather face in the repository: the root sends the reader to the data room, in the frame
+        write('index.html', page({ rel: 'index.html', title: 'Storm Charles', body: `<main class="doc"><div class="wrap"><article><h1>Storm Charles</h1><p><a href="data-room/index.html">The data room</a>: what is decided, what is warned, what is known.</p></article></div></main>`, twin: 'data-room/index.md' }))
+        pages.push({ rel: 'index.html', md: 'data-room/index.md', title: 'Storm Charles' })
+    }
+}
 
 // datasets page, llms.txt, sitemap, version, 404
 const dsTable = `| File | Bytes | What it is |\n|---|---|---|\n` + datasets.map(x => `| [${x.incident}/${x.path}](${x.url}) | ${x.bytes} | ${x.about.replace(/\|/g, '/').replace(/\n/g, ' ').slice(0, 220)} |`).join('\n')
@@ -660,6 +676,6 @@ write('llms.txt', `# Storm Charles (storm-charles.promptugal.news)\n\n> Storm Ch
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(p => `<url><loc>${SITE}${p.rel.replace(/index\.html$/, '')}</loc></url>`).join('\n')}\n</urlset>\n`)
 write('version.json', JSON.stringify({ version: VERSION, commit: process.env.GITHUB_SHA || '', pushed_at: process.env.PUSHED_AT || '', built_at: builtAt }, null, 2) + '\n')
 write('version.txt', VERSION + '\n')
-write('404.html', page({ rel: '404.html', title: 'Not found', body: `<main class="doc nf"><div class="wrap"><article><p class="kicker">404</p><h1>No page at this address</h1><p class="nf-path" id="nf-path"></p><p>Pages here are files in a public repository, so an address can change when a file moves. The facts have not gone: every row of the timeline and every dataset keeps its own address.</p><ul class="nf-go"><li><a href="/"><b>The front page</b><span>what is warned, what is decided, hour by hour</span></a></li><li><a href="/${base}timeline.html"><b>The timeline</b><span>every signal and decision, each with its source</span></a></li><li><a href="/datasets.html"><b>The data</b><span>every file, its size and when it was read</span></a></li><li><a href="/library/index.html"><b>The library</b><span>the catalogue of everything on this site</span></a></li><li><a href="/llms.txt"><b>For agents</b><span>llms.txt and the API catalogue</span></a></li></ul><p class="meta">Not a warning service: for the weather itself, <a href="https://www.ipma.pt/">IPMA</a> and <a href="https://prociv.gov.pt/">ANEPC</a>.</p></article></div></main>` }))
+write('404.html', page({ rel: '404.html', title: 'Not found', body: `<main class="doc nf"><div class="wrap"><article><p class="kicker">404</p><h1>No page at this address</h1><p class="nf-path" id="nf-path"></p><p>Pages here are files in a public repository, so an address can change when a file moves. The facts have not gone: every row of the timeline and every dataset keeps its own address.</p><ul class="nf-go"><li><a href="/"><b>The weather</b><span>what is warned now, in a page for anyone</span></a></li><li><a href="/data-room/index.html"><b>The data room</b><span>what is warned, what is decided, hour by hour, with every source</span></a></li><li><a href="/${base}timeline.html"><b>The timeline</b><span>every signal and decision, each with its source</span></a></li><li><a href="/datasets.html"><b>The data</b><span>every file, its size and when it was read</span></a></li><li><a href="/library/index.html"><b>The library</b><span>the catalogue of everything on this site</span></a></li><li><a href="/llms.txt"><b>For agents</b><span>llms.txt and the API catalogue</span></a></li></ul><p class="meta">Not a warning service: for the weather itself, <a href="https://www.ipma.pt/">IPMA</a> and <a href="https://prociv.gov.pt/">ANEPC</a>.</p></article></div></main>` }))
 write('.nojekyll', '')
 console.log(`build: ${pages.length} pages, ${datasets.length} datasets, ${files.length} files, ${Date.now() - t0} ms -> _site/ (${VERSION})`)
