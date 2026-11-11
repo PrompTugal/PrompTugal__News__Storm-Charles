@@ -11,7 +11,7 @@
 | [ranking.md](ranking.md) | Who was first on each keyed fact (seven so far); who is most sourced; the wire underneath |
 | [facts.json](facts.json), [first-on-each-fact.json](first-on-each-fact.json) | The keyed facts (primary time, where it comes from, the pattern that matches an item) and the table as data |
 | [live-entries.json](live-entries.json) | The timed entries inside three live blogs (Jornal de Negócios, Diário de Notícias, Observador, RTP), for the keyed facts only |
-| [wikipedia.json](wikipedia.json) | The Wikipedia pages on the storm (pt, en) and their edit history: revision times and sizes, no editors' names |
+| [wikipedia.json](wikipedia.json) | The Wikipedia pages on the storm (pt, en) and their edit history: revision times and sizes, no editors' names. **Frozen at 00:40 UTC, 11 November:** Wikipedia is now incident.wikipedia@'s, in [research/wikipedia/](../wikipedia/index.html) (every language, revisions as a dataset, claims and citations); this file stays as its starting point and is no longer refreshed |
 | [feeds.json](feeds.json), [seeds.txt](seeds.txt) | The public feeds and news sitemaps read; URLs that have scrolled out of a feed |
 | [tools/](tools/) | `harvest.mjs`, `live.mjs`, `social.mjs`, `wikipedia.mjs`, `rank.mjs`: no dependencies, re-runnable; this folder is built by them, not by hand |
 
@@ -51,7 +51,7 @@
 MEDIA_RAW=<a directory outside git> node research/media/tools/harvest.mjs
 MEDIA_RAW=<the same> node research/media/tools/live.mjs
 node research/media/tools/social.mjs
-node research/media/tools/wikipedia.mjs
+node research/media/tools/wikipedia.mjs   # no longer run each hour: see research/wikipedia/
 MEDIA_RAW=<the same> node research/media/tools/rank.mjs
 ```
 
