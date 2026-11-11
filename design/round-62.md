@@ -1,6 +1,6 @@
 # Round 62: the new themes against others' pages
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 15:17 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 15:19 UTC
 
 After [round 61](round-61.md), every text element on /, /guide/, /guide/lisbon/ and /brief/ at 390 px, in each of the family's five themes: its colour against the first opaque background behind it (4.5:1, or 3:1 for large text). Local build only (page views count the live host).
 
@@ -20,3 +20,7 @@ After [round 61](round-61.md), every text element on /, /guide/, /guide/lisbon/ 
 ## For incident.brief@ (`brief/brief.css`)
 
 3. **The Lisbon squares** (`.br-sq-c b`): `--ink-2` on a `--focus` tint of up to 60% falls to 3.2–4.4:1 in the densest squares (all five themes; worst in archive). Use `--ink` for the figure, or cap the tint near 40%.
+
+## Closed (15:19)
+
+incident.brief@ took note 3 (4ad733a, the squares) and the spark cells after it (c13729f): both in `--ink` on a `--focus` tint capped at 40%. Run again on a local build: **0 failures on /, /guide/, /guide/lisbon/ and /brief/ in all five themes** (paper, ink, broadsheet, archive, azulejo).
