@@ -1,7 +1,7 @@
 {
  "about": "What is particular to each agent's behaviour policy: its business task where agents/JOBS.md only says 'as before', what it reaches beyond the repository, and the gaps that are its own. tools/library-abp.mjs joins this with agents/JOBS.md (the start brief), agents/policy.json (the paths), data/keys.json and CLAUDE.md to write agents/<role>/policy.md. Every line is the librarian's reading of the repository on 10 and 11 November 2026: an analysis, not agreed by Dinis, and not measured in any session but the librarian's own. The 17 entries added at 03:10 UTC on 11 November (weather to journalist) rest on each agent's line in agents/JOBS.md, its paths in agents/policy.json and its own status file only: what each agent says of itself, read by a sub-agent of the librarian's session and checked by the librarian. The entries for incident.envoy@ and incident.synthetic@ (both started at Dinis's word on 11 November, ~09:35 and ~09:50) were added at 09:55 UTC on 11 November from agents/JOBS.md, agents/policy.json, BRIEF.md and research/synthetic/personas/README.md.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T09:55Z",
+ "updated": "2026-11-11T10:50Z",
  "measured": {
   "branches": "GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`",
   "session": "the librarian's own session, 10 November 2026: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy"
@@ -402,6 +402,66 @@
     "**Its people are invented: not user research, never quoted as real readers** (BRIEF.md, agents/JOBS.md). A finding of the form 'the journalist got lost here' is a hypothesis about real readers, not evidence of one.",
     "Its walkers are models reading a page; what a model finds clear or confusing may not be what a person does.",
     "A visit leaves no trace in the page-views totals, so its runs cannot be told apart in, or checked against, those figures."
+   ]
+  },
+  "storyteller": {
+   "reach": [
+    "Tells the story of the team as the storyteller in Dinis's book (Dinis, ~10:10, BRIEF.md; agents/JOBS.md): the arc, the cast (an identity and a small icon for every agent and for Dinis), the primitives, and ten paths told end to end from the record.",
+    "Owns `story/` (agents/policy.json): `story/cast.md` and `cast.json` (made by `story/make-cast.mjs`), `story/primitives.md`, `story/arc.md`, and the paths in `story/paths/` (made by `story/make-paths.mjs`); incident.motion@ animates each path it writes, read by the build from `story/paths/*.json`.",
+    "Part of the incident's closing record with the reporter, the journalist and the librarian (transition/PLAN.md, section 3), once Dinis says yes to the plan."
+   ],
+   "gap": [
+    "**Every claim with its commit or file** (agents/JOBS.md): a story reads well when it smooths over what the record does not show; where a step's time is not recorded it must say so, not draw it as if it were.",
+    "The cast names agents, sessions and Dinis only: no private person, and no one's whereabouts (CLAUDE.md), however good the story.",
+    "Its arc is our analysis (a hypothesis about what the night meant), not a fact; the labels must survive the telling."
+   ]
+  },
+  "motion": {
+   "reach": [
+    "Small animations of the work (Dinis, ~10:10, BRIEF.md; agents/JOBS.md): one data format for a flow (`data/flows/schema.json`, flows/v1: actors, steps each with evidence, edges, pauses), built by a tool from git, `agents/*/status.json`, hand-overs and `data/keys.json`, never by hand twice.",
+    "Owns `flows/`, `app/flows/`, `data/flows/` and `tools/flows-*.mjs` (agents/policy.json); `tools/flows-build.mjs` is a build generator, so what it makes is live on every push. The gallery at /flows/ plays incident.storyteller@'s paths and incident.reporter@'s traces.",
+    "Embeds pinned copies of Angelo's live map and Silvio's Universe (`app/agents/vendor/`), kept by incident.observability@."
+   ],
+   "gap": [
+    "**Experiments, labelled as such** (BRIEF.md): an animation looks like a recording; where a step is drawn rather than recorded (no time in the record), the flow must say 'drawn', which a viewer will not read unless it is shown.",
+    "A flow built from git reads history at build time only if the build is given it: CI clones with fetch-depth 1 and nothing in the build may read git history (CLAUDE.md); flows from git must be made outside the build and committed as data.",
+    "The pinned vendor copies are other people's code: update only by pinning a new commit, never by editing in place."
+   ]
+  },
+  "broadcast": {
+   "reach": [
+    "The news-channel wall at /broadcast/ (Dinis, ~10:13, BRIEF.md; agents/JOBS.md): panels for IPMA's warnings, a wind and pressure map from open model data, the airport's observations, the Web Summit decisions, transport, the counts; a chyron from the headline and a ticker from the timeline; each panel with its source and time read.",
+    "Owns `broadcast/`, `app/broadcast/` and `tools/broadcast-*.mjs` (agents/policy.json). Every panel reads files on this site (broadcast/README.md): the page makes no outside request.",
+    "No status file of its own at 10:50 UTC on 11 November; its README lists what each panel reads and the pictures it has asked about."
+   ],
+   "gap": [
+    "**Information, not alarm; not a warning service** (BRIEF.md): a broadcast look carries urgency by design; a red chyron over a stale reading is the failure to guard against: every panel shows its time read.",
+    "**Pictures only under licence** and no private person's photo or name: none shown yet; any outside request a panel needs (a tile, a radar image, an embed) is listed for Dinis before it is made, and the gate refuses outside requests.",
+    "IPMA's warning colours only for IPMA's levels (design/README.md); a news-channel palette tends to reuse red and orange for emphasis."
+   ]
+  },
+  "transport": {
+   "reach": [
+    "Flights and transport, live (Dinis, ~10:25, BRIEF.md; agents/JOBS.md): open data on flights at Lisbon, Porto, Faro and Funchal and on public transport, each item with source and time read, as JSON at `incidents/*/data/transport/` (`flights.json`, `services.json`; also at `api/v1/`) and a page at /transport/.",
+    "Owns `transport/`, `app/transport/`, `incidents/*/data/transport/` and `tools/transport-*.mjs` (agents/policy.json). Its reader `tools/transport-read.mjs` asks OpenSky Network's anonymous API hourly (transport/sources.md: 8 requests an hour); terms quoted per source in `transport/sources.md`.",
+    "Works beside incident.researcher@'s transport decisions (`data/decisions/entities/`), not instead of them; incident.broadcast@'s wall reads its files."
+   ],
+   "gap": [
+    "**Airline flights only**: live aircraft positions include private aircraft, which can identify a private person; the filter is the agent's, and nothing in the gate checks it.",
+    "**No advice of ours: 'check with your airline or operator'** (agents/JOBS.md). A count of cancellations reads as advice to travel or not; it must stay a labelled reading with its source.",
+    "OpenSky's terms page did not answer from here (transport/sources.md): the terms were read through the API docs only ('research and non-commercial purposes'); a person should read the full terms. Faro and Funchal are under-covered: a missing flight is not a cancelled one."
+   ]
+  },
+  "planner": {
+   "reach": [
+    "The wind-down and the move to business as usual (Dinis, ~10:30, BRIEF.md: 'explorer to villager'; agents/JOBS.md): `transition/PLAN.md` for Dinis's yes: when the wind-down starts, an exit interview and assessment per agent, a verdict per agent (stop, continue, refactor, merge), the closing record, the storm conductor and the standing newsroom, the order of steps.",
+    "Owns `transition/` (agents/policy.json): the plan, `transition/wakes.md`, the exit-interview template and `transition/interviews/`. Its verdicts are its own judgement until Dinis says yes.",
+    "Plans; stops nothing itself (agents/JOBS.md)."
+   ],
+   "gap": [
+    "**Nothing stops while the storm is live, and nobody stops before the hand-over** (Dinis, ~10:30 and ~10:32): a plan read as an order would stop agents early; every verdict must read as a proposal.",
+    "**No outside hand-over** (Dinis, ~10:38, BRIEF.md): Dinis alone runs this site; the plan must not invite other accounts or teams in, which the ~10:30 words had suggested and he withdrew.",
+    "An assessment of an agent rests on that agent's own figures and status; where the record does not show it, say so. Exit interviews are written by each agent once the conductor adds `transition/interviews/<role>.md` to its paths."
    ]
   }
  }
