@@ -61,7 +61,16 @@
   box.innerHTML = '<p class="meta">Loading the flights map…</p>'
   Promise.all([get(IDX), get(BASE + 'coast.json')]).then(function (r) {
     var idx = r[0], coast = r[1]
-    if (idx.snapshots || idx.wind_hours) return Promise.all([idx.runways ? file(idx.runways) : null, idx.crosswind ? file(idx.crosswind) : null, idx.movements ? file(idx.movements) : null]).then(function (x) { build(idx, coast, x[0], x[1], x[2]) })
+    if (idx.snapshots || idx.wind_hours) {
+      // round 68: incident.flights@'s map files (3d3aec6) carry two areas; this map is Lisbon's
+      var lis = function (x) { return !x.area || x.area === 'lisbon' }
+      idx.snapshots = (idx.snapshots || []).filter(lis); idx.wind_hours = (idx.wind_hours || []).filter(lis)
+      return Promise.all([idx.runways ? file(idx.runways) : null, idx.crosswind ? file(idx.crosswind) : null, idx.movements ? file(idx.movements) : null]).then(function (x) {
+        var rw = x[0] && (Array.isArray(x[0]) ? x[0] : x[0].runways || []).filter(function (r) { return !r.airport || r.airport === 'LPPT' })
+        var mv = x[2], ana = mv && mv.ana_day ? (mv.ana_day.LPPT || mv.ana_day) : null
+        build(idx, coast, rw, x[1], mv, ana)
+      })
+    }
     return normalise(idx).then(function (n) { build(n.idx, coast, n.runways, n.cross, n.moves, n.ana) })
   }).catch(function (e) { box.innerHTML = '<p class="meta">The flights map could not be read (' + esc(e.message) + ').</p>' })
 
@@ -117,7 +126,7 @@
         })
         al.innerHTML = as
         var n = al.children.length
-        cap.innerHTML = (sd ? n + ' airline aircraft in the air in this box at ' + esc(hm(sd.t)) + ' UTC ' + prov(sd) : 'No aircraft positions for ' + esc(day(t) + ' ' + hm(t)) + ' UTC' + (snaps.length ? ': snapshots begin ' + esc(day(snaps[0].t) + ' ' + hm(snaps[0].t)) + ' UTC (OpenSky keeps no history for anonymous reads)' : '')) + (wd ? '<br>Wind arrows: ' + esc(wd.model || 'model') + ' for ' + esc(hm(wd.t)) + ' UTC, pointing where the wind goes; longer is stronger ' + prov(wd) : '')
+        cap.innerHTML = (sd ? n + ' airline aircraft in the air in this box at ' + esc(hm(sd.t)) + ' UTC ' + prov(sd) : 'No aircraft positions for ' + esc(day(t) + ' ' + hm(t)) + ' UTC' + (snaps.length ? ': snapshots begin ' + esc(day(snaps[0].t) + ' ' + hm(snaps[0].t)) + ' UTC (OpenSky keeps no history for anonymous reads)' : '')) + (wd ? '<br>Wind arrows: ' + esc(wd.model || 'model') + (wd.forecast === true ? ' (forecast)' : wd.forecast === false ? ' (model analysis)' : '') + ' for ' + esc(hm(wd.t)) + ' UTC, pointing where the wind goes; longer is stronger ' + prov(wd) : '')
         al.querySelectorAll('.fm-plane').forEach(function (el) {
           function pick() { picked = el.getAttribute('data-id'); var a = (sd.aircraft || []).filter(function (x) { return x.id === picked })[0]; al.querySelectorAll('.fm-plane').forEach(function (o) { o.classList.toggle('on', o === el) })
             var txt = (a.callsign || a.id) + ': ' + (a.alt_ft != null ? Math.round(a.alt_ft) + ' ft, ' : '') + (a.gs_kt != null ? Math.round(a.gs_kt) + ' kt, ' : '') + 'track ' + Math.round(a.track_deg || 0) + '°, at ' + hm(sd.t) + ' UTC'
