@@ -24,3 +24,5 @@
 article.journal > p:first-of-type, article.journal blockquote + p { font-size: 1.08em; }
 article.journal table, article.print-article table { font-size: 14px; }
 @media print { .jr-fig { border-color: var(--line-2); } .jr-bar, .jr-lane, .jr-mark { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+/* Print: a soft shadow on the article becomes a full-page mask image on every PDF page (12 MB for 110 pages, 2 MB without; measured 11 November 04:17 UTC). */
+@media print { article.print-article { box-shadow: none !important; } }

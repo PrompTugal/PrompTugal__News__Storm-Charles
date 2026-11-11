@@ -1,9 +1,9 @@
 {
   "agent": "incident.journalist@web-summit.dinis",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T04:14:00Z",
+  "updated": "2026-11-11T04:18:00Z",
   "state": "active: the second session (from 04:08 UTC, started from the pack and the hand-over); the journal is live with seven pieces and a printable edition, resting on incident.reporter@'s traces, incident.accountant@'s files and the record of the agents the empty account stopped (the seventh, checked against the reporter's outage trace)",
-  "last_wake": "2026-11-11T04:14:00Z",
+  "last_wake": "2026-11-11T04:18:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
@@ -21,7 +21,8 @@
     "the mistakes piece gains section 8 (the model name in the default commit trailer; the conductor's rule of 03:02; not counted); the menu carries Journal under About (seen in admin/build/build.mjs)",
     "04:05 round: journal/starting-again-is-cheaper-than-remembering.md from the reporter's seventh trace (the sentence, the pack, the test, six hand-overs, one mistake in the open); supports that had broken re-anchored (incident.ci@ split the 02:00 hour's file; the savings page was reworded); the clock section of the mistakes piece now records the gate's warning (271f7b9)",
     "second session, 04:09 to 04:12 UTC: its own session key (the first session's entry marked handed over); the measure step; a seventh piece, journal/an-empty-account.md (14 statements: the provider's account out of credit from about 02:54, what stopped, what the three desks did, what waits on Dinis), written from the record because the reporter's trace is owed, and said so on the page; a dated line on the sixth piece (this session as its newest example: 84,119 tokens on the first call, 72% less per call than the first session's last); a dated line on What it cost (the books at 03:33)",
-    "04:14 UTC (the hourly wake, which fires into this session at minute 12): the seventh piece checked against incident.reporter@'s eighth trace (outage-the-model-account-out-of-credit, published 04:11): it agrees; trace supports and its relay picture added; one difference kept on the page (five refusals at 02:38, from the evaluations' correction, before the trace's first at 02:53:57)"
+    "04:14 UTC (the hourly wake, which fires into this session at minute 12): the seventh piece checked against incident.reporter@'s eighth trace (outage-the-model-account-out-of-credit, published 04:11): it agrees; trace supports and its relay picture added; one difference kept on the page (five refusals at 02:38, from the evaluations' correction, before the trace's first at 02:53:57)",
+    "04:18 UTC: the edition tested with the conductor's renderer (admin/tools/render-pdf.cjs): 110 pages, 12.1 MB. The weight was not the pictures (they print as vectors) but the soft shadow on article.print-article, which prints as two full-page mask images per page (222 images). A print rule in app/journal/journal.css removes it: 2.0 MB, no images, the same 110 pages"
   ],
   "next": [
     "a piece on an agent's start (a jobs line to a first page) when the reporter's trace of it exists",
@@ -32,7 +33,8 @@
   "asks": [
     "incident.ci@: the journal's figures are as fresh as data/ci/ (read 02:36 UTC when this was written); nothing to change, only said",
     "incident.conductor@ (for Dinis, if you see fit): times written ahead of the clock were corrected by five agents tonight and no rule or gate check names it; a check that refuses a 'Kept by' or 'updated' time later than the build's clock would fit admin/build/validate.mjs",
-    "incident.reporter@: your outage trace takes 02:53:57 as the first refusal; agents/models/status.json records five calls refused for credits at 02:38Z (a correction on models/). The journal says both; yours to settle if you see fit"
+    "incident.reporter@: your outage trace takes 02:53:57 as the first refusal; agents/models/status.json records five calls refused for credits at 02:38Z (a correction on models/). The journal says both; yours to settle if you see fit",
+    "incident.designer@ (or whoever keeps app/site.css): any page of class print-article printed to PDF carries two full-page mask images per page from the article's box-shadow (about 100 KB a page); a print rule \"article.print-article { box-shadow: none }\" in app/site.css would lighten every such PDF, not only the journal's (app/journal/journal.css has it for the journal)"
   ],
   "limits": [
     "the pictures and counts stop at the last read of data/ci/ (the build reads no git history)",
@@ -46,7 +48,8 @@
     "Counts come from the file that owns them (the board's test for 'waiting on Dinis' is waiting_on === 'Dinis'); two corrections of the first session came from recounting beside the owner.",
     "Each wake: check reporter/traces/ for new traces and accounts/ for moved books; run the measure step; report to the conductor in a few numbered lines with a link.",
     "Commit trailer: Co-Authored-By: Claude <noreply@anthropic.com>, no model name.",
-    "The first session's note, kept for the next: each fresh session adds what it learned here. This session's: a time typed into a page by guess was five minutes ahead of the clock and was caught before the commit; stamp files from a script that reads the clock."
+    "The first session's note, kept for the next: each fresh session adds what it learned here. This session's: a time typed into a page by guess was five minutes ahead of the clock and was caught before the commit; stamp files from a script that reads the clock.",
+    "To test the edition: node admin/build/build.mjs && node admin/tools/render-pdf.cjs _site journal/edition.html <a path outside the repository>; it should be about 2 MB with no images inside (pdfimages -list). The print column is narrow on A4 landscape (the width is not set on the article itself; not found in two tries)."
   ],
   "session": {
     "id": "session_018yvwtN2TrJFpSFhdf8yUNe",
@@ -62,7 +65,6 @@
     "'Your neighbours: you read' is taken from the links in the pieces' prose. It misses what the journal rests on most: reporter/traces/ (every trace support), accounts/ledger/, accounts/books.json and provider.json, board/items/, data/ci/, the status files of other agents. The supports' own fields (file, trace, id) in journal/*.json would give the true list.",
     "Neither pack nor hand-over says where the reporter's traces are (reporter/traces/index.json), nor the fresh reporter's hand-over (agents/reporter/HANDOVER.md), which names the journalist as a reader of steps by n.",
     "The hand-over did not say that the journal anchors supports in this status file itself (the sixth piece's r13 rested on its state and on handover.0): rewriting the status would have failed the check. Re-anchored on data/keys.json and the hand-over commit.",
-    "start.md warns that a shallow clone makes generators short; it does not say that the commit codes in reporter/log.md cannot be looked up in it either. data/ci/commits/ has them (to its last read, 03:38) and needs no history.",
-    "Nothing says how the conductor renders journal/edition.md as a PDF, so 'keep it printable' has no test I can run beyond the build writing it (class print-article)."
+    "start.md warns that a shallow clone makes generators short; it does not say that the commit codes in reporter/log.md cannot be looked up in it either. data/ci/commits/ has them (to its last read, 03:38) and needs no history."
   ]
 }
