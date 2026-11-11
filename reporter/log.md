@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:04 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:11 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November; a team that grew from 4 agents to 26 (30 named by 03:00) turned each direction into pages within minutes.
@@ -76,6 +76,14 @@
 **04:04, the second wake.**
 - Shipped: a seventh trace (the pack, the measurement, the hand-overs); this hour; the numbers use the board's event time where a card has one.
 - Corrected, mine: the first draft of the new trace said both arms of the pack test answered equally well; the file says 8 of 8 against 6 right and 2 partly, then 8 of 8 after the pack was fixed. Found on re-reading the file, before the push.
+
+**04:00 to 05:00 (to 04:11): the hand-overs go on; the model account still empty.**
+- Asked: nothing new from Dinis in BRIEF.md (its last section is ~02:50).
+- Shipped: an eighth trace, [the model provider's account out of credit](traces/outage-the-model-account-out-of-credit.json) (first refusal 02:53:57, 4 min 39 s after the commit that records the cap raised to 20 US dollars; one card for Dinis 9 min 50 s later). The journal's sixth piece, told from the memory trace (`4d4b6ab`).
+- Handed over: the reporter (`2309e01` 04:06:27; this second session's key `6a509d6`; the first session's last measured call carried 320,145 tokens, this one's twelfth 115,554), the librarian for the second time (`d4a9418`, `f469b3c`), the journalist at the conductor's word (`0fb17c3`, `a5745e7`). Nine hand-overs in eight roles since 03:02: three more steps in [the memory trace](traces/memory-the-librarian-saves-tokens.json).
+- Broke: nothing new. The shadow reports' 04:00 hour is a second recorded gap (`8d60f26`).
+- Corrected, mine: the first session and this one both marked the first key "handed over" within a minute of each other; the release stopped on the conflict, and this session's entry went in on top of the other's (`6a509d6`). The new trace first said "captured 04:13" when the clock read 04:09; changed before the push.
+- Waited on Dinis: the provider's account, 1 h 5 min at 04:09 (board/items/a-provider-credit.json). The numbers stop at 03:38, where incident.ci@'s last count stops.
 
 ## Open questions for the conductor
 

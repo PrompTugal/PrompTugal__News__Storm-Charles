@@ -1,18 +1,19 @@
 {
   "agent": "incident.reporter@web-summit.dinis",
   "by": "incident.reporter@web-summit.dinis",
-  "updated": "2026-11-11T04:05:00Z",
-  "state": "active: seven traces, the log to 04:00, the numbers; hourly while the storm is live; a hand-over note is ready (agents/reporter/HANDOVER.md) if the conductor wants a fresh session",
-  "last_wake": "2026-11-11T04:02:00Z",
+  "updated": "2026-11-11T04:11:00Z",
+  "state": "active, second session (from 04:06 UTC): eight traces, the log to 04:11, the numbers; working through the traces owed",
+  "last_wake": "2026-11-11T04:11:00Z",
   "session": {
-    "id": "not recorded here (the commit's own session trailer carries it)",
-    "started_at": "2026-11-11T02:50:00Z",
+    "id": "session_018yvwtLTf6oLBFtDW3cuSBV",
+    "started_at": "2026-11-11T04:06:00Z",
     "started_by": "incident.conductor@web-summit.dinis",
     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
     "on_whose_word": "Dinis Cruz",
-    "source": "BRIEF.md, Dinis, 11 November 2026, ~02:50 UTC"
+    "takes_over_from": "session_018yvwtPscqgDXjyU4vzfiwQ (the first reporter session, 02:50 to 04:06 UTC; handed over at about 320,000 tokens a call)",
+    "scheduled_wake": "none set by this session: the pack says the new session's schedule is the conductor's to set"
   },
-  "key": "sha256:809eafd1180698c7 (encryption), sha256:5ce9748677f2bdb2 (signing); a session key, public half in data/keys.json",
+  "key": "sha256:c18fbbaced0fe23d (encryption), sha256:964714548a1ab978 (signing); a session key, public half in data/keys.json as incident-reporter-dinis-2; the first session's entry is marked handed over",
   "jobs": [
     "R1: traces, one JSON per workflow (reporter/traces/), each step with its evidence or marked no evidence",
     "R2: reporter/log.md, the project hour by hour, appended at every wake",
@@ -20,19 +21,34 @@
     "R4: cheap for the next reader: a five-line summary and the files each rests on; traces/index.json for the briefing pack"
   ],
   "done": [
-    "02:53Z session key made; public half in data/keys.json",
-    "03:02Z six traces (82 steps, 3 marked no evidence): the whole arc, small (the Metro), medium (the new home page to the swap), large (every word a reference), corrections, escalations; tools/reporter-fill.mjs fills and checks them",
-    "03:02Z reporter/log.md from 10 November 18:00 to 03:00; reporter/numbers.json by hour (tools/reporter-numbers.mjs)",
-    "read first: BRIEF, RESTRUCTURE, REALITY, JOBS, data/ci, data/agents, the board, the design rounds named in the traces; WS-212 and team/reporter/ and team/incidents/ in SGit-AI__Website__Web-Summit (a shallow public clone outside this repository)",
-    "03:04Z first release pushed (4b5a93a); a stamp written ahead of the clock corrected in the open, and a check added so a trace cannot carry a time later than the clock",
-    "04:05Z second wake: a seventh trace (memory: the pack, the accountant's measurement, six hand-overs); the log's 03:00 hour; numbers by the board's event_utc; HANDOVER.md"
+    "first session (02:50 to 04:06): seven traces (97 steps), the log from 10 November 18:00 to 04:00, the numbers, tools/reporter-fill.mjs and tools/reporter-numbers.mjs, agents/reporter/HANDOVER.md",
+    "04:07Z second session: session key (6a509d6); first measured line (9451fc3): 115,554 tokens a call after 12 calls",
+    "04:11Z an eighth trace: the model provider's account out of credit (12 steps, 1 with no evidence: Dinis has not answered in the record); three steps added to the memory trace (the reporter's, the librarian's second and the journalist's hand-overs: nine in eight roles); the log's 04:00 hour begun"
   ],
   "next": [
-    "each hour: the log, the numbers, new traces as workflows finish",
-    "traces owed: the model provider's credit running out (what stopped, how long it waits on Dinis); the Studio (a spoken idea to an animation); an agent's start (a jobs line to a first page); the first article as a PDF; the launch",
-    "send incident.board@ the first commit of each ask the traces identify (event_utc)"
+    "traces owed: the Studio (a spoken idea to an animation); an agent's start (a jobs line to a first page); the first article as a PDF; the launch",
+    "each wake: the log, the numbers, the hand-overs as they continue (in the memory trace), the outage trace until the account has credit",
+    "send incident.board@ the first commit of each ask the traces identify (event_utc)",
+    "hand over when the measure step shows about 300,000 tokens a call"
   ],
+  "not_in_the_pack_or_the_handover": {
+    "for": "incident.librarian@web-summit.dinis",
+    "what": "what this session had to find out for itself in its first ten minutes, starting from start.md, reporter.md, state.json, HANDOVER.md and traces/index.json",
+    "items": [
+      "Who marks the earlier key entry \"handed over\": the start prompt told the new session to; the old session did it too, a minute earlier (2309e01). Both changed the same lines of data/keys.json and the new session's first release stopped on the conflict. The pack says the entry stays and carries that word, not which session writes it.",
+      "The scheduled wake: HANDOVER.md says \"set your own\"; start.md says the new session's schedule is the conductor's to set. HANDOVER.md does not say at what minute the old session's wake fired, which start.md asks a hand-over to say.",
+      "A trace's steps are read by number (incident.journalist@ reads steps[] by n), so an open trace may only grow at the end. Nothing states it as a contract; the role pack lists the journalist as reading only reporter/traces/README.md.",
+      "The values of a trace's size (arc, small, medium, large, correction, escalation) are not listed as open or closed anywhere. This session added \"outage\" after checking that no tool or script in the repository branches on the value.",
+      "tools/reporter-fill.mjs needs the tags fetched again at each wake, not once: a commit of the last minutes has no tag in the clone yet and its step's version is written as null without a warning.",
+      "reporter/numbers.json can only reach as far as incident.ci@'s last count (03:38 when read at 04:10); neither file says when the next count is due.",
+      "The measure step's number is at totals.context_per_call.last in the ledger line; start.md gives it as context_per_call.last.",
+      "The role pack cuts board card titles at the first full stop or colon: a-reporter-3 reads \"For; waiting on incident.observability@\" and j-reporter-1 \"Incident.reporter@: each hour\", so the card files had to be opened to know what is asked.",
+      "A one-line script given to node inside single quotes breaks on an apostrophe (\"Dinis Cruz's\"); HANDOVER.md warns about backticks in here-documents, the cure is the same: write the script to a file outside the repository.",
+      "state.json was not needed (as start.md says for a role that counts the project); the start prompt named it among the files to read. About 2,800 tokens."
+    ]
+  },
   "asks": [
-    "incident.conductor@: this session carries the same cost the accountant measured in others; agents/reporter/HANDOVER.md is written so a fresh reporter can start from it and the pack whenever you choose"
+    "incident.conductor@: does this session get an hourly wake, and at what minute? None is set.",
+    "incident.librarian@: the list under not_in_the_pack_or_the_handover"
   ]
 }

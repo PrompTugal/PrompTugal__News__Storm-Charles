@@ -4,13 +4,13 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T04:03:00Z",
+ "updated": "2026-11-11T04:10:00Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
   "The measurement: a new agent orienting itself added 39,775 tokens to its context from ten whole files, 14,164 from three files of the pack (64% less). On eight questions the whole files scored 8 of 8, the pack 6 right and 2 partly; after the librarian added the two missing rules a second run scored 8 of 8 at 14,734 tokens (accounts/pack-test.json; the accountant marked the answers; sub-agents, not full sessions).",
   "The accountant then measured the sessions themselves: 98.8% of 1.31 billion tokens was the context read again on every call; the six longest sessions were 61% of it. So the saving was not the pack alone but starting again from it.",
-  "Six agents did: the librarian handed over to a fresh session at 03:02, then designer, observability, graph, weatherwatch and studio by 03:37. Measured on three of them: 74% to 84% less per call. Each fresh session reported what the pack had not told it, and the pack was corrected five times from those reports.",
+  "Six agents did within the hour: the librarian handed over to a fresh session at 03:02, then designer, observability, graph, weatherwatch and studio by 03:37; then the reporter, the librarian a second time and the journalist by 04:09 (nine hand-overs, eight roles). Measured on three of the first six: 74% to 84% less per call. Each fresh session reported what the pack had not told it, and the pack was corrected five times from those reports.",
   "One hand-over broke something: a fresh session working from a shallow clone rewrote the night's commit and session data; it restored them 3 minutes later and its tools now refuse a shallow clone. No person acted between the sentence and the sixth hand-over."
  ],
  "rests_on": [
@@ -25,7 +25,10 @@
   "agents/graph/HANDOVER.md",
   "agents/weatherwatch/HANDOVER.md",
   "agents/studio/HANDOVER.md",
-  "data/keys.json"
+  "data/keys.json",
+  "agents/reporter/HANDOVER.md",
+  "accounts/ledger/reporter.jsonl",
+  "agents/journalist/status.json"
  ],
  "input": {
   "kind": "a spoken sentence",
@@ -36,11 +39,11 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: the pack is corrected at each fresh start; the conductor's own session, the largest (327 million tokens when measured), has not handed over in the record",
+ "status": "open: nine hand-overs in eight roles by 04:09; the pack is corrected at each fresh start; the conductor's own session, the largest (327 million tokens when measured), has not handed over in the record",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
-  "to": "2026-11-11T03:37:07Z",
-  "note": "sentence recorded to pack: 5 min 37 s; to the first measured number: 8 min 44 s; to the first hand-over: 12 min 43 s; to the sixth: 47 min 49 s"
+  "to": "2026-11-11T04:09:25Z",
+  "note": "sentence recorded to pack: 5 min 37 s; to the first measured number: 8 min 44 s; to the first hand-over: 12 min 43 s; to the sixth: 47 min 49 s; to the ninth: 1 h 20 min 7 s"
  },
  "steps": [
   {
@@ -713,6 +716,161 @@
     "incident.librarian@web-summit.dinis",
     "incident.reporter@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.reporter@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "hand-over",
+   "sha": "2309e01c2902b27d1adbb4a2d92583a97702a11d",
+   "in": "its own measured line: 320,145 tokens of context on the last of 72 calls (accounts/ledger/reporter.jsonl, 04:05:18), and the hand-over note it had written at 04:05",
+   "out": "\"the first reporter session's key marked handed over (a fresh session carries on from agents/reporter/HANDOVER.md and the pack); this session pushes nothing more\". The second session's key followed 51 s later (6a509d6, 04:07:18); its first measured line, 12 calls in, carried 115,554 tokens a call. This trace is written by that second session from here on.",
+   "handoff": {
+    "to": "a fresh incident.reporter@ session",
+    "via": "agents/reporter/HANDOVER.md, the pack, and a start prompt from the conductor (not in the repository)",
+    "evidence_of_handoff": "data/keys.json: incident-reporter-dinis \"handed over\", incident-reporter-dinis-2 \"active\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/reporter/HANDOVER.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/reporter/HANDOVER.md"
+    },
+    {
+     "type": "file",
+     "path": "accounts/ledger/reporter.jsonl",
+     "section": "the lines of 04:05:18 and 04:07:30",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/ledger/reporter.jsonl"
+    },
+    {
+     "type": "commit",
+     "sha": "6a509d6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6a509d6"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "2309e01c2902b27d1adbb4a2d92583a97702a11d",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2309e01c2902b27d1adbb4a2d92583a97702a11d"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.469",
+     "run": 469,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T03:38:46Z"
+    }
+   ],
+   "n": 16,
+   "at": "2026-11-11T04:06:27Z",
+   "agent_trailer": "incident.reporter@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.librarian@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "hand-over",
+   "sha": "d4a941805f4968dd05b84de40ce4aa836dab8b36",
+   "in": "its second session, begun at 03:02, the one that had corrected the pack from each fresh start",
+   "out": "\"the second session's hand-over (context 248,109 after 95 calls; a third session asked of the conductor before 04:44)\"; the third session's key 95 s later (f469b3c, 04:07:47). The first role to hand over twice: a session lasted 64 minutes.",
+   "handoff": {
+    "to": "a third incident.librarian@ session",
+    "via": "agents/librarian/status.json (handover)",
+    "evidence_of_handoff": "f469b3c: \"the third session's key (public half); the second session's entry marked handed over\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/librarian/status.json",
+     "section": "handover",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/librarian/status.json"
+    },
+    {
+     "type": "commit",
+     "sha": "f469b3c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f469b3c"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "d4a941805f4968dd05b84de40ce4aa836dab8b36",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d4a941805f4968dd05b84de40ce4aa836dab8b36"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.469",
+     "run": 469,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T03:38:46Z"
+    }
+   ],
+   "n": 17,
+   "at": "2026-11-11T04:06:12Z",
+   "agent_trailer": "incident.librarian@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.journalist@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "hand-over",
+   "sha": "0fb17c3ae69f6f37d5ac35545cbe2a374eaed386",
+   "in": "\"the conductor's word, 04:08\"; it had just published a sixth piece, \"Starting again is cheaper than remembering\", told from this trace (4d4b6ab, 04:07:33)",
+   "out": "\"handed over to a fresh session ...: this session's key marked handed over; a hand-over note in the status file; the sixth piece says so; nothing more is pushed from this session\"; the second session's key ten seconds later (a5745e7, 04:09:25). Nine hand-overs in eight roles since 03:02.",
+   "handoff": {
+    "to": "a fresh incident.journalist@ session",
+    "via": "agents/journalist/status.json (handover)",
+    "evidence_of_handoff": "a5745e7: \"a second session takes over: its session key's public half\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/journalist/status.json",
+     "section": "handover",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/journalist/status.json"
+    },
+    {
+     "type": "commit",
+     "sha": "4d4b6ab",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4d4b6ab"
+    },
+    {
+     "type": "commit",
+     "sha": "a5745e7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a5745e7"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "0fb17c3ae69f6f37d5ac35545cbe2a374eaed386",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/0fb17c3ae69f6f37d5ac35545cbe2a374eaed386"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.475",
+     "run": 475,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T03:38:46Z"
+    }
+   ],
+   "n": 18,
+   "at": "2026-11-11T04:09:15Z",
+   "agent_trailer": "incident.journalist@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.journalist@web-summit.dinis"
+   ]
   }
  ],
  "shape": {
@@ -722,10 +880,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 15,
+  "steps": 18,
   "steps_with_no_evidence": 0,
   "person_steps": 1,
-  "agent_steps": 14
+  "agent_steps": 17
  },
  "people_acted": [
   "Dinis Cruz"
@@ -737,6 +895,8 @@
   "incident.designer@web-summit.dinis",
   "incident.observability@web-summit.dinis",
   "incident.graph@web-summit.dinis",
-  "incident.studio@web-summit.dinis"
+  "incident.studio@web-summit.dinis",
+  "incident.reporter@web-summit.dinis",
+  "incident.journalist@web-summit.dinis"
  ]
 }

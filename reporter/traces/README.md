@@ -1,6 +1,6 @@
 # Traces: one workflow each, from Dinis's word to a live page
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:04 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 04:11 UTC
 
 Read [index.json](index.json) first: it carries every trace's five-line summary. Then open only the one you need. Not a warning service: these are about how the site was made.
 
@@ -12,7 +12,8 @@ Read [index.json](index.json) first: it carries every trace's five-line summary.
 | [Large](large-every-word-needs-a-reference.json): "every word here needs to have a reference" to entities, the linker, Wayback, the panel | large | 02:06 to 02:51, open | 15 (1, 14) | 0 |
 | [Corrections](correction-three-fixes-in-the-open.json): a private address withheld, facts relabelled evidence, a hypothesis re-weighed | correction | 01:52 to 02:36 | 12 (0, 12) | 1 |
 | [Escalations](escalation-asks-waiting-on-dinis.json): two asks to Dinis from the first evening, and how long each waited | escalation | 10 Nov 20:49, open | 8 (2, 6) | 1 |
-| [Memory](memory-the-librarian-saves-tokens.json): "the librarian saves tokens" to a measured number, and six sessions replaced within the hour | medium | 02:49 to 03:37, open | 15 (1, 14) | 0 |
+| [Memory](memory-the-librarian-saves-tokens.json): "the librarian saves tokens" to a measured number, six sessions replaced within the hour, nine by 04:09 | medium | 02:49 to 04:09, open | 18 (1, 17) | 0 |
+| [Outage](outage-the-model-account-out-of-credit.json): the model provider's account out of credit at 02:54, what stopped, and one card for Dinis | outage | 02:53, open | 12 (2, 10) | 1 |
 
 ## The shape (sc-trace/1)
 

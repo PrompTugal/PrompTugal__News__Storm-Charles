@@ -1,0 +1,559 @@
+{
+ "id": "outage-the-model-account-out-of-credit",
+ "schema": "sc-trace/1",
+ "size": "outage",
+ "title": "Outage: the model provider's account ran out of credit at 02:54, five minutes after the cap was raised; what stopped and how the stop was written down",
+ "by": "incident.reporter@web-summit.dinis",
+ "updated": "2026-11-11T04:09:00Z",
+ "captured_at": "2026-11-11T04:09:00Z",
+ "summary": [
+  "Dinis (~02:50): \"you can use up to $20 in budget.\" Four minutes 39 seconds after the commit that records it, the first model call was refused (HTTP 402, 02:53:57): the provider's account, which pays for more than this project, was empty. The cap is what the team may spend; the balance is what the account can pay. Nobody had been reading the second.",
+  "What stopped: every call through tools/llm.mjs. Three desks: the model evaluations (round 2 run in part), the shadow reports (the 03:00 and 04:00 hours are gaps) and the Perplexity desk (one round, then none). What did not stop: the site, the pipeline and the other agents; the team had spent about 1 US dollar of the 20.",
+  "The stop was noticed by three agents separately within about two minutes and raised as four asks to Dinis; incident.board@ joined them into one card (a-provider-credit, opened 03:03:47), ranked first at the conductor's word: nine minutes 50 seconds from the first refusal to a single line a person can act on.",
+  "The code learned in three commits: shadow-ask stops at the first 402 (02:55:22, 85 s after the first refusal); the shared wrapper names the refusal and sends no more (03:06:15); shadow-ask reads the wrapper's statuses (04:06:20). Before the wrapper's fix, the evaluations' ledger had taken 3,557 refused calls, all before 03:00, at no cost.",
+  "Open when captured (04:09): no top-up in the record; the card has waited on Dinis for 1 h 5 min. Only he can close it. Not evidenced: whether he has seen it; and the conductor's check that the key's own limit was fine, which is known only from two agents' status lines."
+ ],
+ "rests_on": [
+  "BRIEF.md",
+  "accounts/provider.json",
+  "models/ledger-summary.json",
+  "models/budgets.json",
+  "research/perplexity/ledger-summary.json",
+  "shadow/runs/2026-11-11/03.json",
+  "shadow/runs/2026-11-11/04.json",
+  "board/items/a-provider-credit.json",
+  "agents/models/status.json",
+  "agents/perplexity/status.json",
+  "agents/shadow/status.json",
+  "agents/accountant/status.json"
+ ],
+ "input": {
+  "kind": "a refusal from outside",
+  "what": "HTTP 402 from the model provider on a call by incident.perplexity@ at 02:53:57 UTC (agents/perplexity/status.json); \"Insufficient credits\" in the provider's words at 03:02:12"
+ },
+ "output": {
+  "kind": "a card waiting on a person, and pages that say they are paused",
+  "what": "one card for Dinis, ranked first before the launch; the three desks' pages each say runs are paused and why; a wrapper that stops at the first refusal",
+  "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
+ },
+ "status": "open: waiting on Dinis (a top-up of the provider's account); the shadow desk tries one call each hour (next 05:05), the Perplexity desk one each half hour",
+ "duration": {
+  "from": "2026-11-11T02:53:57Z",
+  "to": null,
+  "note": "first refusal to the first code that stops on it: 85 s; to the provider's figures on a page: 8 min 23 s; to one card for Dinis: 9 min 50 s; to the shared wrapper stopping at the first refusal: 12 min 18 s; waiting on Dinis since 03:03:47"
+ },
+ "shape": {
+  "step": "n, at (UTC; for a commit step, the committer time), at_note, actor {name, kind: person|agent|ci}, in, out, handoff {to, via, evidence_of_handoff}, kind, sha (a commit of this repository unless repo says otherwise), agent_trailer, for[] (the commit's For: trailers), evidence[] (commit | version | file | url), evidence_note",
+  "evidence": "commit {sha, url}; version {version, run, own_run, served_by, push_to_served_s}: the first CI tag at or after the commit; file {path, section?}; url {url, read_utc}. Entries with \"filled\": true are written by tools/reporter-fill.mjs from git and data/ci/runs/. evidence: [] with evidence_note means the record holds none.",
+  "handoffs": "Messages between sessions are not in the repository. A hand-off by message is evidenced only by the commit's For: trailer, a status line, or a later file that says so; the step says which.",
+  "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp.",
+  "names": "The provider (OpenRouter) and the third-party models called through the ledger are named because they are the subject here."
+ },
+ "steps": [
+  {
+   "at": null,
+   "at_note": "\"~02:50\" in BRIEF.md; recorded at 02:49:18",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "voice brief",
+   "in": "a daily cap of 5 US dollars on model calls, set by incident.dev@ \"until you say\" on the first evening",
+   "out": "\"you can use up to $20 in budget. That's okay.\"; a Perplexity agent; a page for the open-weight models",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "spoken, in his session with the conductor",
+    "evidence_of_handoff": "BRIEF.md"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "Dinis, 11 November 2026, ~02:50 UTC: \"Budget\"",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    }
+   ],
+   "n": 1
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "brief written down",
+   "sha": "ab8008ef978592bda87b062143704713401467a0",
+   "in": "the spoken direction",
+   "out": "BRIEF.md: \"the daily cap goes from 5 to 20 US dollars\"; a Perplexity agent started",
+   "handoff": {
+    "to": "incident.models@ and a new incident.perplexity@",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "the commits that follow: models/budgets.json (03:00:00) and research/perplexity/ (round 1)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "BRIEF.md",
+     "section": "~02:50 UTC",
+     "url": "https://storm-charles.promptugal.news/view/?path=BRIEF.md"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "ab8008ef978592bda87b062143704713401467a0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ab8008ef978592bda87b062143704713401467a0"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.322",
+     "run": 322,
+     "own_run": true,
+     "served_by": "2026-11-11T02:49:52Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 2,
+   "at": "2026-11-11T02:49:18Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": []
+  },
+  {
+   "at": "2026-11-11T02:53:57Z",
+   "at_note": "the agent's own reading of its ledger, as its status file gives it; not a commit time",
+   "actor": {
+    "name": "incident.perplexity@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "refusal received",
+   "in": "its first round: three questions to an answer engine with search, six answers so far (0.03 US dollars)",
+   "out": "the first refused call: \"HTTP 402 at 02:53:57Z\"; seven of its thirteen calls that day were refused",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "a message between sessions: not in the repository",
+    "evidence_of_handoff": "agents/perplexity/status.json: \"the key's own limit is fine (the conductor checked)\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "agents/perplexity/status.json",
+     "section": "asks",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/perplexity/status.json"
+    },
+    {
+     "type": "file",
+     "path": "research/perplexity/ledger-summary.json",
+     "section": "by_status: ok 6, http_402 7",
+     "url": "https://storm-charles.promptugal.news/view/?path=research/perplexity/ledger-summary.json"
+    }
+   ],
+   "n": 3
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "tool change",
+   "sha": "2bbee5260f6947667f368cc6d6fd3cd0ce21e976",
+   "in": "the same refusal, met on its own calls",
+   "out": "\"shadow-ask stops at the first HTTP 402 (account out of credit) and records the pause for that hour\"; \"One call is sent first so a refusal for credit shows before the rest are asked.\"",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "tools/shadow-ask.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/shadow-ask.mjs"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "2bbee5260f6947667f368cc6d6fd3cd0ce21e976",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2bbee5260f6947667f368cc6d6fd3cd0ce21e976"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.332",
+     "run": 332,
+     "own_run": true,
+     "served_by": "2026-11-11T02:55:57Z",
+     "push_to_served_s": 33
+    }
+   ],
+   "n": 4,
+   "at": "2026-11-11T02:55:22Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.models@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "partial result, and an ask",
+   "sha": "8ccd1ef7205917fe57b2166094fe46964bc9e867",
+   "in": "the new cap, and a second round of evaluations under way when the refusals began",
+   "out": "the cap as shares (models/budgets.json: 6 for the evaluations, 4 for the Perplexity desk, 1 for shadow, 1 for any other agent); \"round 2 built and run in part (the provider refused calls for lack of credits from 02:55Z)\"; \"Refused calls are removed from the results.\" Its ledger for the day: 4,927 calls, 1,291 answered (0.87 US dollars), 3,557 refused with 402, all before 03:00. Its ask: \"Dinis: the OpenRouter account is out of credits (total_credits 165, total_usage 165.33 at 02:57Z; the key itself has 74.5 of its 100 limit left)\"",
+   "handoff": {
+    "to": "Dinis, through the status file's asks; incident.accountant@ by message",
+    "via": "agents/models/status.json (asks)",
+    "evidence_of_handoff": "accounts/provider.json names the ask as its source"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "models/budgets.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=models/budgets.json"
+    },
+    {
+     "type": "file",
+     "path": "models/ledger-summary.json",
+     "section": "days[0].by_status and by_hour",
+     "url": "https://storm-charles.promptugal.news/view/?path=models/ledger-summary.json"
+    },
+    {
+     "type": "file",
+     "path": "agents/models/status.json",
+     "section": "asks",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/models/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "8ccd1ef7205917fe57b2166094fe46964bc9e867",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8ccd1ef7205917fe57b2166094fe46964bc9e867"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.350",
+     "run": 350,
+     "own_run": false,
+     "served_by": "2026-11-11T03:00:57Z",
+     "push_to_served_s": 31
+    }
+   ],
+   "n": 5,
+   "at": "2026-11-11T03:00:00Z",
+   "agent_trailer": "incident.models@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the figures on a page",
+   "sha": "7a02b612183ddbc4e2894a37b8f8b683f96e7388",
+   "in": "incident.models@'s reading of the provider's own figures at 02:57",
+   "out": "accounts/provider.json, \"the provider's account beside the cap\": credits 165 US dollars, usage 165.33, balance -0.33; \"The account covers more than this project: its usage is not this team's spend (about 1 US dollar today)\". Reported by the provider and read by another agent, and labelled so.",
+   "handoff": {
+    "to": "Dinis, through its own ask; the accounts page",
+    "via": "agents/accountant/status.json (asks)",
+    "evidence_of_handoff": "board/items/a-provider-credit.json lists it among its sources"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "accounts/provider.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=accounts/provider.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "7a02b612183ddbc4e2894a37b8f8b683f96e7388",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7a02b612183ddbc4e2894a37b8f8b683f96e7388"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.367",
+     "run": 367,
+     "own_run": false,
+     "served_by": "2026-11-11T03:03:07Z",
+     "push_to_served_s": 27
+    }
+   ],
+   "n": 6,
+   "at": "2026-11-11T03:02:20Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.perplexity@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "record kept apart",
+   "sha": "1ea0c72196c3c996a4718785421dd78b71262e9d",
+   "in": "refused calls sitting among its answers",
+   "out": "\"a refused call is recorded apart from the answers; status and the page say so\"; 74 seconds later its page \"says runs are paused (the account's credit, not the key's limit)\" (04f20b2). It retries one call every half hour: \"a refused call costs nothing\".",
+   "handoff": {
+    "to": "incident.conductor@web-summit.dinis",
+    "via": "the commit's For: trailer",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "research/perplexity/index.md",
+     "url": "https://storm-charles.promptugal.news/research/perplexity/index.html"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "1ea0c72196c3c996a4718785421dd78b71262e9d",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/1ea0c72196c3c996a4718785421dd78b71262e9d"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.369",
+     "run": 369,
+     "own_run": false,
+     "served_by": "2026-11-11T03:03:34Z",
+     "push_to_served_s": 44
+    }
+   ],
+   "n": 7,
+   "at": "2026-11-11T03:02:42Z",
+   "agent_trailer": "incident.perplexity@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.board@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "one card for a person",
+   "sha": "7826f170de8aab1bdda3fd6ae9fdc490cb40bbc0",
+   "in": "the same ask in three status files (a fourth, incident.shadow@'s, joined later)",
+   "out": "a-provider-credit: \"card opened from three agents' asks (accountant, models, perplexity), joined; ranked first at incident.conductor@'s word (03:02 UTC)\". Waiting on Dinis; it closes when \"The account has credit again and one agent confirms a call went through.\"",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "board/for-dinis, first in its order",
+    "evidence_of_handoff": "board/items/a-provider-credit.json (rank 0.5, before_launch true)"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "board/items/a-provider-credit.json",
+     "section": "history",
+     "url": "https://storm-charles.promptugal.news/view/?path=board/items/a-provider-credit.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "7826f170de8aab1bdda3fd6ae9fdc490cb40bbc0",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7826f170de8aab1bdda3fd6ae9fdc490cb40bbc0"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.384",
+     "run": 384,
+     "own_run": true,
+     "served_by": "2026-11-11T03:04:56Z",
+     "push_to_served_s": 38
+    }
+   ],
+   "n": 8,
+   "at": "2026-11-11T03:04:14Z",
+   "agent_trailer": "incident.board@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.models@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "tool change",
+   "sha": "2af0be41ed7a667b1fb79c418ca670293c841444",
+   "in": "a wrapper that had passed 3,557 refusals through one by one",
+   "out": "\"the wrapper names the provider's 402 (account out of credit) and sends no more after the first; the pause said on models/\". In the hour after, its ledger holds five calls, each stopped with the new status.",
+   "handoff": {
+    "to": "every agent that calls a model (the wrapper is shared; incident.models@ alone may change it)",
+    "via": "tools/llm.mjs",
+    "evidence_of_handoff": "8d60f26: \"shadow-ask reads the wrapper's out-of-credit statuses\""
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "tools/llm.mjs",
+     "url": "https://storm-charles.promptugal.news/view/?path=tools/llm.mjs"
+    },
+    {
+     "type": "file",
+     "path": "models/ledger-summary.json",
+     "section": "by_status.account_out_of_credit: 5; by_hour 03:00: 5 calls",
+     "url": "https://storm-charles.promptugal.news/view/?path=models/ledger-summary.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "2af0be41ed7a667b1fb79c418ca670293c841444",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2af0be41ed7a667b1fb79c418ca670293c841444"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.391",
+     "run": 391,
+     "own_run": false,
+     "served_by": "2026-11-11T03:06:57Z",
+     "push_to_served_s": 32
+    }
+   ],
+   "n": 9,
+   "at": "2026-11-11T03:06:15Z",
+   "agent_trailer": "incident.models@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a gap recorded as a gap",
+   "sha": "acea93aefeb4a8a00a140bb7554393183b333f8d",
+   "in": "the 03:00 round due",
+   "out": "shadow/runs/2026-11-11/03.json: no answers, \"paused: account out of credit (HTTP 402 at 2026-11-11T03:06:17Z)\", spent 0; \"the page shows a paused hour\"",
+   "handoff": {
+    "to": "incident.conductor@ and incident.accountant@",
+    "via": "the commit's For: trailers",
+    "evidence_of_handoff": "the commit"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "shadow/runs/2026-11-11/03.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=shadow/runs/2026-11-11/03.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "acea93aefeb4a8a00a140bb7554393183b333f8d",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/acea93aefeb4a8a00a140bb7554393183b333f8d"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.395",
+     "run": 395,
+     "own_run": false,
+     "served_by": "2026-11-11T03:07:32Z",
+     "push_to_served_s": 34
+    }
+   ],
+   "n": 10,
+   "at": "2026-11-11T03:06:43Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.shadow@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "a second gap",
+   "sha": "8d60f267fe87f4b9668beb2873fc310f92e42085",
+   "in": "the 04:00 round due; nothing changed at the provider",
+   "out": "shadow/runs/2026-11-11/04.json: \"one call sent, refused, nothing more asked\"; the status file: \"next try 05:05\" and \"Dinis: the OpenRouter account needs credit (the conductor has asked): until then the hourly table has gaps\"",
+   "handoff": {
+    "to": "Dinis Cruz",
+    "via": "agents/shadow/status.json (asks) and the card",
+    "evidence_of_handoff": "agents/shadow/status.json"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "shadow/runs/2026-11-11/04.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=shadow/runs/2026-11-11/04.json"
+    },
+    {
+     "type": "file",
+     "path": "agents/shadow/status.json",
+     "section": "state, asks",
+     "url": "https://storm-charles.promptugal.news/view/?path=agents/shadow/status.json"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "8d60f267fe87f4b9668beb2873fc310f92e42085",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8d60f267fe87f4b9668beb2873fc310f92e42085"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.469",
+     "run": 469,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T03:38:46Z"
+    }
+   ],
+   "n": 11,
+   "at": "2026-11-11T04:06:20Z",
+   "agent_trailer": "incident.shadow@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ]
+  },
+  {
+   "at": null,
+   "at_note": "not yet: open when captured",
+   "actor": {
+    "name": "Dinis Cruz",
+    "kind": "person"
+   },
+   "kind": "waiting on a person",
+   "in": "one card, first on board/for-dinis since 03:03:47",
+   "out": "nothing in the record yet: no top-up, no answer in BRIEF.md",
+   "handoff": {
+    "to": "the three desks",
+    "via": "none yet",
+    "evidence_of_handoff": "none"
+   },
+   "evidence": [],
+   "evidence_note": "No evidence, and none could exist yet: the record holds no word from Dinis on the account, and page views are not recorded, so whether he has seen the card is not known.",
+   "n": 12
+  }
+ ],
+ "counts": {
+  "steps": 12,
+  "steps_with_no_evidence": 1,
+  "person_steps": 2,
+  "agent_steps": 10
+ },
+ "people_acted": [
+  "Dinis Cruz"
+ ],
+ "agents_acted": [
+  "incident.conductor@web-summit.dinis",
+  "incident.perplexity@web-summit.dinis",
+  "incident.shadow@web-summit.dinis",
+  "incident.models@web-summit.dinis",
+  "incident.accountant@web-summit.dinis",
+  "incident.board@web-summit.dinis"
+ ]
+}
