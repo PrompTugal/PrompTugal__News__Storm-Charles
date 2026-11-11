@@ -34,6 +34,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Capture | Read | Answer | Against the one before | Text hash |
 |---|---|---|---|---|
 | **this one** | 11 Nov 2026, 02:54 UTC | 200 | first | `267c8259ac3df780` |
+| [11 Nov 2026, 03:01 UTC](../../../../../evidence/metoffice-gov-uk/2026/11/11/0301-weather-forecast-gcpvj0v07.md) | 11 Nov 2026, 03:01 UTC | 200 | unchanged | `267c8259ac3df780` |
 
 ## The outside address
 

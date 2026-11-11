@@ -57,7 +57,7 @@ for (const f of walk(IN, n => n === 'capture.json').sort()) {
     }
     if (c.captured) {
         fs.cpSync(dir, path.join(CV, c.id), { recursive: true })
-        if (rec.shown) for (const n of ['screenshot.jpg', 'screenshot-clean.jpg', 'frame.jpg', 'capture.json']) if (fs.existsSync(path.join(dir, n))) { fs.mkdirSync(path.join(DV, c.id), { recursive: true }); fs.copyFileSync(path.join(dir, n), path.join(DV, c.id, n)) }
+        if (rec.shown) for (const n of ['screenshot.jpg', 'screenshot-clean.jpg', 'frame.jpg', 'frame-clean.jpg', 'capture.json']) if (fs.existsSync(path.join(dir, n))) { fs.mkdirSync(path.join(DV, c.id), { recursive: true }); fs.copyFileSync(path.join(dir, n), path.join(DV, c.id, n)) }
     }
     byId.set(rec.id, rec); added++
 }

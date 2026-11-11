@@ -133,15 +133,17 @@ export async function capture(browser, url, out, frame = null) {
             document.documentElement.style.setProperty('overflow', 'auto', 'important'); document.body.style.setProperty('overflow', 'auto', 'important')
             return n
         }).catch(() => 0)
-        let clean = null, cleanText = ''
+        let clean = null, cleanText = '', frameClean = null
         if (hidden) {
             await sleep(300)
+            if (frame) { await page.evaluate(() => window.scrollTo(0, 0)).catch(() => {}); await sleep(300); frameClean = await page.screenshot({ type: 'jpeg', quality: 78, timeout: 60000 }).catch(() => null) }
             clean = await page.screenshot({ type: 'jpeg', quality: 78, fullPage: dims.h <= 16000, clip: dims.h > 16000 ? { x: 0, y: 0, width: 1280, height: clipH } : undefined, timeout: 60000 }).catch(() => null)
             cleanText = (await page.evaluate(() => document.body ? document.body.innerText : '').catch(() => '')).replace(/\s+/g, ' ').trim()
         }
         fs.mkdirSync(dir, { recursive: true })
         if (clean) fs.writeFileSync(path.join(dir, 'screenshot-clean.jpg'), clean)
         if (frameShot) fs.writeFileSync(path.join(dir, 'frame.jpg'), frameShot)
+        if (frameClean) fs.writeFileSync(path.join(dir, 'frame-clean.jpg'), frameClean)
         if (raw) fs.writeFileSync(path.join(dir, 'raw.html'), raw)
         fs.writeFileSync(path.join(dir, 'dom.html'), dom); fs.writeFileSync(path.join(dir, 'text.txt'), text); fs.writeFileSync(path.join(dir, 'screenshot.jpg'), shot)
         const chain = []; for (let r = resp.request().redirectedFrom(); r; r = r.redirectedFrom()) chain.unshift(r.url())
@@ -151,7 +153,7 @@ export async function capture(browser, url, out, frame = null) {
             title, sha256_html: raw ? sha(raw) : null, sha256_dom: sha(dom), sha256_text: sha(text), sha256_screenshot: sha(shot),
             bytes: { html: raw ? raw.length : null, dom: dom.length, text: Buffer.byteLength(text), screenshot: shot.length },
             screenshot: { format: 'jpeg', quality: 78, width: 1280, height: clipH, page_height: dims.h, cut: dims.h > 16000 },
-            frame: frameShot ? { sha256: sha(frameShot), bytes: frameShot.length, width: 1280, height: frame[1], what: 'The top of the page as the viewport showed it on load, before any scrolling.' } : undefined,
+            frame: frameShot ? { sha256: sha(frameShot), bytes: frameShot.length, width: 1280, height: frame[1], what: 'The top of the page as the viewport showed it on load, before any scrolling.', clean: frameClean ? { sha256: sha(frameClean), bytes: frameClean.length, what: 'The same frame with ' + hidden + ' fixed overlay element(s) hidden by us (a consent notice): nothing was clicked or accepted.' } : undefined } : undefined,
             clean: clean ? { sha256_screenshot: sha(clean), bytes: clean.length, hidden, what: 'The same load with ' + hidden + ' fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.' } : undefined,
             excerpt: (cleanText || text).slice(0, 280),
         })
