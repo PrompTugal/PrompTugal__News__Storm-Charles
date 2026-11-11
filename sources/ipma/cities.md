@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # The cities: IPMA's forecast, as issued, beside what was observed
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:42 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 03:42 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -46,12 +46,12 @@ IPMA forecasts five days for 35 places (the district capitals, the islands, and 
 | Porto Santo | 19.1 to 24.1 °C, rain 100%, wind Strong NW | 18.8 to 23.6 °C, rain 2%, wind Moderate W | 18.6 to 23.7 °C, rain 43%, wind Moderate NW | 18.1 to 23.1 °C, rain 20%, wind Moderate NW | 18 to 22.7 °C, rain 2%, wind Weak W |
 | Vila do Porto | 16.8 to 20.1 °C, rain 57%, wind Moderate NW | 16.9 to 21.6 °C, rain 98%, wind Moderate W | 17.1 to 20.3 °C, rain 22%, wind Moderate NW | 17 to 21.2 °C, rain 33%, wind Moderate W | 18.5 to 21.1 °C, rain 76%, wind Moderate SW |
 | Ponta Delgada | 15.7 to 19.5 °C, rain 98%, wind Moderate NW | 16.3 to 21 °C, rain 90%, wind Moderate NW | 16.3 to 20.6 °C, rain 47%, wind Moderate NW | 17 to 20.7 °C, rain 63%, wind Moderate W | 18 to 20.7 °C, rain 92%, wind Moderate SW |
-| Angra do Heroísmo | 14.9 to 18.2 °C, rain 100%, wind Moderate NW | 15.4 to 19.9 °C, rain 92%, wind Moderate W | 15.9 to 19.8 °C, rain 88%, wind Moderate NW | 16.2 to 19.3 °C, rain 86%, wind Moderate SW | 18.9 to 20.9 °C, rain 98%, wind Moderate SW |
+| Angra do Heroísmo | 15 to 19 °C, rain 100%, wind Moderate NW (2 versions) | 16 to 21 °C, rain 92%, wind Moderate W (2 versions) | 15.9 to 19.8 °C, rain 88%, wind Moderate NW | 16.2 to 19.3 °C, rain 86%, wind Moderate SW | 18.9 to 20.9 °C, rain 98%, wind Moderate SW |
 | Santa Cruz da Graciosa | 15.8 to 19 °C, rain 98%, wind Moderate NW | 16.1 to 20.1 °C, rain 88%, wind Moderate W | 16.9 to 19.6 °C, rain 60%, wind Moderate W | 16.7 to 20.6 °C, rain 73%, wind Moderate SW | 18 to 21.6 °C, rain 96%, wind Moderate SW |
 | Velas | 15.7 to 19.1 °C, rain 88%, wind Moderate NW | 15.6 to 19.7 °C, rain 100%, wind Moderate W | 16.5 to 19.8 °C, rain 92%, wind Moderate W | 16.1 to 21 °C, rain 71%, wind Moderate SW | 18.4 to 21.7 °C, rain 94%, wind Moderate SW |
 | Madalena | 16.1 to 19.4 °C, rain 100%, wind Moderate NW | 15 to 20.9 °C, rain 96%, wind Moderate W | 16.7 to 20.4 °C, rain 80%, wind Moderate NW | 16.2 to 21.4 °C, rain 80%, wind Moderate SW | 18.7 to 22.5 °C, rain 98%, wind Moderate SW |
-| Horta | 15.6 to 20.2 °C, rain 80%, wind Moderate NW | 16.2 to 21.1 °C, rain 100%, wind Moderate NW | 16.8 to 21.2 °C, rain 82%, wind Moderate NW | 16.5 to 20.9 °C, rain 84%, wind Moderate SW | 18.7 to 21.7 °C, rain 98%, wind Moderate SW |
-| Santa Cruz das Flores | 15 to 18.3 °C, rain 60%, wind Moderate NW | 15.5 to 20.5 °C, rain 100%, wind Moderate W | 16.5 to 20.8 °C, rain 55%, wind Moderate W | 16.9 to 21 °C, rain 96%, wind Moderate SW | 18.9 to 21.7 °C, rain 98%, wind Moderate SW |
+| Horta | 15 to 20 °C, rain 80%, wind Moderate NW (2 versions) | 16.2 to 21.1 °C, rain 100%, wind Moderate NW | 16.8 to 21.2 °C, rain 82%, wind Moderate NW | 16.5 to 20.9 °C, rain 84%, wind Moderate SW | 18.7 to 21.7 °C, rain 98%, wind Moderate SW |
+| Santa Cruz das Flores | 15 to 19 °C, rain 60%, wind Moderate NW (2 versions) | 16 to 20 °C, rain 100%, wind Moderate W (2 versions) | 16.5 to 20.8 °C, rain 55%, wind Moderate W | 16.9 to 21 °C, rain 96%, wind Moderate SW | 18.9 to 21.7 °C, rain 98%, wind Moderate SW |
 | Vila do Corvo | 16 to 19 °C, rain 10%, wind Moderate NW | 16.9 to 20.2 °C, rain 96%, wind Moderate W | 17.2 to 20.4 °C, rain 49%, wind Moderate W | 17.2 to 20.5 °C, rain 92%, wind Moderate SW | 19.1 to 20.8 °C, rain 96%, wind Moderate SW |
 
-Data: [data/cities.json](data/cities.json), [data/observed-daily.json](data/observed-daily.json) · the data sets: [endpoints/city-daily.md](endpoints/city-daily.md), [endpoints/observations.md](endpoints/observations.md). Source: IPMA's per-place daily forecast files, read 2026-11-11 02:15 UTC.
+Data: [data/cities.json](data/cities.json), [data/observed-daily.json](data/observed-daily.json) · the data sets: [endpoints/city-daily.md](endpoints/city-daily.md), [endpoints/observations.md](endpoints/observations.md). Source: IPMA's per-place daily forecast files, read 2026-11-11 03:33 UTC.

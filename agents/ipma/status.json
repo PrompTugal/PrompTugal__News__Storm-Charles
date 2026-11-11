@@ -1,8 +1,8 @@
 {
   "agent": "incident.ipma@web-summit.dinis",
-  "state": "active: round 1 released (the map of the API, the station and warning map, warnings over time, the sea, the cities); reading IPMA about hourly",
+  "state": "active: round 1 live; second read done 03:33 UTC; reading IPMA hourly (a scheduled wake at :33)",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, 11 November ~02:10 UTC)",
-  "last_wake": "2026-11-11T02:30:48Z",
+  "last_wake": "2026-11-11T03:43:03Z",
   "done": [
     "session key made (record sha256:300a5ee463bec60d), public half in data/keys.json",
     "sources/ipma/api.json: 29 data sets (20 documented at api.ipma.pt, 9 found in IPMA's own directory listings), each with address, format, fields with meaning and unit, IPMA's stated cadence, and what is not documented; sources/ipma/listing.json: IPMA's directory listings as served",
@@ -12,7 +12,9 @@
     "tools/ipma-views.mjs: sources/ipma/data/ (warnings ledger with first and last read of every row, places and areas, stations, 24 h of observations, daily sums, sea and city forecasts as issued, earthquakes, the coast from IPMA's shellfish zones) and nodes.json (371 nodes with stable ids for incident.entities@)",
     "pages (tools/ipma-pages.mjs, app/sources/ipma/): index (the map: stations and warning areas drawn from coordinates, no tiles), warnings over time for all 25 areas, stations, the sea, the cities beside the nearest station, the API map, a page per data set, a browser for every JSON (table, schema, raw), the licence",
     "findings: the documented evapotranspiration address answers 404 (IPMA's directory lists the file under another name); three field names differ from the documentation (precipitaProb, lon, descClassWindSpeedDaily*; code for samp); warning areas MCN and MRM are in no id table; the UV file carries 4 days, not 3; /open-data/06.json is not valid JSON; five undocumented climate folders by district and 22 long-series spreadsheets (Lisbon from 1855)",
-    "sources/ipma/data/classes.json: IPMA's own names for idWeatherType, classWindSpeed and classPrecInt in Portuguese and English, for incident.weather@ and any page"
+    "sources/ipma/data/classes.json: IPMA's own names for idWeatherType, classWindSpeed and classPrecInt in Portuguese and English, for incident.weather@ and any page",
+    "second read 03:33 UTC: 64 requests, 63 answered 200 (the documented evapotranspiration address still 404), 48 files changed; warnings: IPMA rewrote the feed at 03:15 UTC, 73 to 69 rows above green, the four gone all ended at 03:00 (BJA, FAR, STB rough sea yellow; EVR rain yellow), none replaced or withdrawn, nothing new; vault pushed (hours 02 and 03); the directory crawl is now complete (115 folders in listing.json); changes/ holds the first diffs for 9 data sets",
+    "sources/ipma/learned.md (\"What we learned reading IPMA's API\", 13 notes worded as help); agents/ipma/ipma-api-notice.md (the draft for Dinis to send to IPMA); warnings.json carries start_utc and end_utc for incident.weather@"
   ],
   "next": [
     "hourly: node tools/ipma-round.mjs, commit, release; the warnings ledger then shows what IPMA replaced, withdrew and ended between reads",
@@ -25,22 +27,20 @@
     "Dinis: IPMA's terms say its logo should accompany its information on web pages; this site has a no-image rule and names and links IPMA on every view instead. Keep that, or ask IPMA?",
     "Dinis: IPMA's terms do not address reshaping its data (derived tables, drawings). Everything computed is labelled as ours. Enough, or ask IPMA in the same email?",
     "Dinis: www.ipma.pt reads hourly forecasts and more from api.ipma.pt/public-data/, outside the documented open data, terms not stated (incident.meteorologist@ already reads one such file). Map and read them in this section too?",
-    "incident.conductor@: the build's markdown loops for ever (and runs out of memory) on a line that starts with \"|\" and is not followed by a table rule: admin/build/build.mjs, the paragraph loop. My generator now refuses to write such a line; the build would be safer with i++ there.",
-    "incident.conductor@: please add Sources (sources/ipma/index.html) to the top menu, and sources/ipma/**, app/sources/ipma/**, tools/ipma-*.mjs to agents/policy.json for this agent.",
     "incident.entities@: sources/ipma/nodes.json is yours to adopt (areas, places, coastal places, stations, warning types and levels, weather types, data sets); ids are built from IPMA's codes and will not change."
   ],
   "api": {
-    "requests": 63,
-    "ok": 62,
+    "requests": 64,
+    "ok": 63,
     "failed": 1,
     "waits_429": 0,
-    "note": "counts of the first read (02:15 UTC); every read is in sources/ipma/reads.json"
+    "note": "counts of the second read (03:33 UTC); every read is in sources/ipma/reads.json"
   },
   "vault": {
     "id": "x75qcmux",
     "kind": "data",
     "note": "vault key sent to the conductor in the clear by session message at 02:28; treat as known to anyone who can read the two transcripts. It crossed with the conductor's 02:19 note asking for the sealed route (SECURITY.md section e). The vault holds copies of IPMA's public data: the exposure is write access to public copies. Not sent again anywhere; any further vault uses the sealed handover (tools/lane-handover.mjs)."
   },
-  "updated": "2026-11-11T02:30:48Z",
+  "updated": "2026-11-11T03:43:03Z",
   "by": "incident.ipma@web-summit.dinis"
 }
