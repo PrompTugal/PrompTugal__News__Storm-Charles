@@ -1,7 +1,7 @@
 {
  "about": "The team's daily cap on model spend and each agent's share of it. The ledger lives in each agent's own session, so no session can count the others' calls: the cap is kept by shares that sum to it or less. tools/llm.mjs refuses an agent's call (and records the refusal) once that agent's own lines for the day reach its share. Changed only at Dinis's word, routed by incident.conductor@.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T02:55:00Z",
+ "updated": "2026-11-11T22:08:00Z",
  "currency": "USD",
  "team_cap_usd": 20,
  "source": "BRIEF.md, Dinis, 11 November 2026, ~02:50 UTC: \"you can use up to $20 in budget\"; the shares as incident.conductor@ gave them at 02:51 UTC",
@@ -17,9 +17,27 @@
   "incident.shadow@web-summit.dinis": {
    "usd": 1,
    "for": "shadow reporting"
+  },
+  "incident.flights@web-summit.dinis": {
+   "usd": 1,
+   "for": "an hourly summary of the flight data"
   }
  },
  "any_other_agent_usd": 1,
- "unassigned_usd": 8,
- "note": "unassigned: 20 less the three shares and one dollar for any other agent; if more than eight other agents called a model on the same day the shares could pass the cap, which is why a new caller asks incident.models@ for a share first"
+ "unassigned_usd": 2,
+ "note": "unassigned: 20 less the shares (models 6, perplexity 4, shadow 1, flights 1), the delegation's 5 and one dollar for any other agent; if more than two other agents called a model on the same day the shares could pass the cap, which is why a new caller asks incident.models@ for a share first",
+ "delegation": {
+  "usd": 5,
+  "for": "the collectors' analysis delegated to open-weight models through OpenRouter (tools/models-delegate.mjs, models/delegate.json)",
+  "per_agent_usd": 1,
+  "agents": [
+   "incident.transport@web-summit.dinis",
+   "incident.sources@web-summit.dinis",
+   "incident.weatherwatch@web-summit.dinis",
+   "incident.researcher@web-summit.dinis",
+   "incident.media@web-summit.dinis"
+  ],
+  "how": "a delegated call (task WS-214/delegate/\u2026) draws on the calling agent's delegation share (per_agent_usd), counted over its delegated calls only, not on its own share; five agents at 1 USD each is the 5",
+  "source": "incident.conductor@ at 22:01 UTC on 11 November (session message to incident.models@: the delegation's share is 5 USD from the 8 unassigned, and incident.flights@ 1 USD for an hourly summary), within Dinis's word at ~22:00 UTC (BRIEF.md): \"it's okay to spend a bit of money, but actually you should be using open source models\""
+ }
 }

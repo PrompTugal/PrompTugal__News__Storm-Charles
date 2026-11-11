@@ -1,0 +1,185 @@
+{
+ "about": "The router's table: which models answer which delegated task, and the JSON schema each answer must meet. tools/models-delegate.mjs reads it. Open-weight models first, chosen from round 1 of the evals (models/results.json: the cheapest models right on every item of that task, from the Llama, Qwen, DeepSeek, Mistral and Gemma families); one commercial model beside them for comparison, labelled as such. A delegated answer is evidence, labelled with the model's name, until the calling agent's own check passes.",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T22:08:00Z",
+ "label": "hypothesis",
+ "source": "models/results.json (round 1); Dinis, 11 November ~22:00 UTC (BRIEF.md): collectors through OpenRouter, open-source models, at least a couple",
+ "budget": {
+  "agent_share": "each calling agent's own share in models/budgets.json; the delegation as a whole within the 5 USD of 'delegation'",
+  "max_usd_per_run": 0.05
+ },
+ "retries": 2,
+ "tasks": {
+  "translate": {
+   "for": "incident.transport@: an English summary of each new Portuguese operator notice",
+   "prompt": "translate-notice",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "meta-llama/llama-4-maverick"
+   ],
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "open_weight": false,
+    "why": "a commercial model for comparison (Dinis: \"from Gemini to different type of providers\"); never the one whose answer is used"
+   },
+   "evidence": {
+    "translate": "20/20 for qwen/qwen3.5-9b (reasoning off) and meta-llama/llama-4-maverick (figures and units kept)"
+   },
+   "schema": {
+    "type": "object",
+    "required": [
+     "en"
+    ],
+    "properties": {
+     "en": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1200
+     }
+    }
+   },
+   "check": "figures: every number in the Portuguese is in the English"
+  },
+  "extract-warning": {
+   "for": "incident.sources@ or incident.weatherwatch@: the fields of each new IPMA CAP message, compared with their own parser",
+   "prompt": "extract-warning",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "open_weight": false,
+    "why": "a commercial model for comparison (Dinis: \"from Gemini to different type of providers\"); never the one whose answer is used"
+   },
+   "evidence": {
+    "extract-warning": "17/17 for both"
+   },
+   "schema": {
+    "type": "object",
+    "required": [
+     "type",
+     "level",
+     "area",
+     "start_utc",
+     "end_utc"
+    ],
+    "properties": {
+     "type": {
+      "enum": [
+       "rain",
+       "wind",
+       "coastal_event",
+       "thunderstorm",
+       "fog",
+       "snow",
+       "cold",
+       "heat"
+      ]
+     },
+     "level": {
+      "enum": [
+       "yellow",
+       "orange",
+       "red"
+      ]
+     },
+     "area": {
+      "type": "string",
+      "minLength": 1
+     },
+     "start_utc": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d(:\\d\\d)?Z$"
+     },
+     "end_utc": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d(:\\d\\d)?Z$"
+     }
+    }
+   },
+   "check": "the owner's parser on the same message: any field that differs is the parser's value, and the difference is reported"
+  },
+  "extract-decision": {
+   "for": "incident.researcher@: the decision in a press or official passage",
+   "prompt": "extract-decision",
+   "models": [
+    "meta-llama/llama-4-maverick",
+    "qwen/qwen3.5-397b-a17b#reasoning-off"
+   ],
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "open_weight": false,
+    "why": "a commercial model for comparison (Dinis: \"from Gemini to different type of providers\"); never the one whose answer is used"
+   },
+   "evidence": {
+    "extract-decision": "10/10 for both"
+   },
+   "schema": {
+    "type": "object",
+    "required": [
+     "decider",
+     "what",
+     "effect_from_utc",
+     "effect_to_utc"
+    ],
+    "properties": {
+     "decider": {
+      "type": "string"
+     },
+     "what": {
+      "type": "string",
+      "maxLength": 300
+     },
+     "effect_from_utc": {
+      "type": [
+       "string",
+       "null"
+      ],
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d(:\\d\\d)?Z$"
+     },
+     "effect_to_utc": {
+      "type": [
+       "string",
+       "null"
+      ],
+      "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d(:\\d\\d)?Z$"
+     }
+    }
+   },
+   "check": "the decider and hours against the primary source's own page; a press item is never the decision itself"
+  },
+  "label": {
+   "for": "incident.media@ (and the lead): fact, evidence or hypothesis for a row or a press item, as a second reader",
+   "prompt": "label",
+   "models": [
+    "meta-llama/llama-4-maverick",
+    "google/gemma-4-31b-it"
+   ],
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "open_weight": false,
+    "why": "a commercial model for comparison (Dinis: \"from Gemini to different type of providers\"); never the one whose answer is used"
+   },
+   "evidence": {
+    "label": "17/20 for both"
+   },
+   "schema": {
+    "type": "object",
+    "required": [
+     "label"
+    ],
+    "properties": {
+     "label": {
+      "enum": [
+       "fact",
+       "evidence",
+       "hypothesis"
+      ]
+     }
+    }
+   },
+   "check": "never the labeller: flagged for the owner only when both open models disagree with the owner's label"
+  }
+ }
+}
