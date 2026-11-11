@@ -6,6 +6,9 @@
 //   - ONE LEDGER LINE per call goes to <INCIDENT_LEDGER_DIR, default ~/.incident-ledger>/<UTC date>.jsonl, not git: when, task, agent, provider,
 //     model asked and served, tokens in and out, the cost the provider reported, latency, status, the day's cap, and the raw
 //     record's name and sha256. No prompt or answer text in the ledger: that stays in the raw store (press text may not be ours to publish);
+//   - ONE PUBLISHED RECORD per call (tools/models-calls.mjs, from 11 November 22:10 UTC): models/calls/<date>/<HH>.json (another agent's in
+//     agents/<role>/calls/), text-free: the ledger line's fields, the sha256 of the request and of the response, and the parent (trace:);
+//     with trace: { trace_id, parent_span_id, flow }, the A1 llm call's start and end as flow events in the fringe's schema;
 //   - a DAILY CAP (LLM_DAILY_CAP_USD, default 20 from 11 November; each agent's share of it in models/budgets.json): a call is refused, and the refusal recorded, once the day's ledger reaches it.
 // Key: OPEN_ROUTER_KEY from the environment only (as admin/tools/xray-search.mjs). Until Dinis adds it (ROADMAP question 2), run
 // with --mock (a canned answer, no network) or a dummy key (the call is made, refused 401, and recorded as an error).
@@ -19,6 +22,7 @@ import os from 'node:os'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
+import { publishCall, emit, newSpanId } from './models-calls.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const REPO = path.resolve(HERE, '..')
@@ -41,7 +45,10 @@ const day = (d = new Date()) => d.toISOString().slice(0, 10)
 const ledgerFile = (d = day()) => path.join(LEDGER_DIR, `${d}.jsonl`)
 export function readLedger(d = day()) { try { return fs.readFileSync(ledgerFile(d), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)) } catch { return [] } }
 export const spentToday = () => readLedger().reduce((s, l) => s + (l.cost_usd || 0), 0)
-export const spentBy = agent => readLedger().filter(l => l.agent === agent).reduce((s, l) => s + (l.cost_usd || 0), 0)
+export const spentBy = (agent, delegated = null) => readLedger().filter(l => l.agent === agent && (delegated == null || isDelegated(l.task) === delegated)).reduce((s, l) => s + (l.cost_usd || 0), 0)
+// a delegated call (tools/models-delegate.mjs) draws on the agent's delegation share (models/budgets.json delegation.per_agent_usd), not its own
+export const isDelegated = task => String(task || '').startsWith('WS-214/delegate/')
+export const delegationShareOf = agent => BUDGETS.delegation && (BUDGETS.delegation.agents || []).includes(agent) || agent === 'incident.models@web-summit.dinis' ? BUDGETS.delegation?.per_agent_usd ?? null : null
 
 let noCredit = null   // set to the time of the provider's first 402 in this process
 function inRepo(p) { const r = path.relative(REPO, path.resolve(p)); return !r.startsWith('..') && !path.isAbsolute(r) }
@@ -58,7 +65,7 @@ function appendLedger(line) { fs.mkdirSync(LEDGER_DIR, { recursive: true }); fs.
 
 // the one call. Returns { text, line } (line: the ledger line written); never throws for a provider error: it is recorded and returned
 // budget_usd (optional): this agent's own share of the day; the call is refused (and the refusal recorded) once the agent's lines reach it
-export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_tokens = 2000, provider = 'openrouter', mock = false, extra = {}, budget_usd = null }) {
+export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_tokens = 2000, provider = 'openrouter', mock = false, extra = {}, budget_usd = null, trace = {} }) {
     if (!task || !agent || !Array.isArray(messages)) throw new Error('call({ task, agent, messages }) needs all three')
     if (!model) throw new Error('call(): name the model (model:, --model or LLM_MODEL)')
     const at = new Date().toISOString(), id = `${at.replace(/[-:.]/g, '').slice(0, 15)}-${crypto.randomBytes(4).toString('hex')}`
@@ -67,16 +74,20 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
     const spent = spentToday()
     if (!mock && spent >= CAP) {
         const line = { ...base, status: 'refused_cap', spent_today_usd: +spent.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }
-        appendLedger(line); return { text: null, line, response: null }
+        appendLedger(line); if (!mock) publishCall({ line, request, response: null, trace }); return { text: null, line, response: null }
     }
-    if (budget_usd == null) budget_usd = shareOf(agent)   // the agent's share of the day, unless the caller sets a smaller one
+    const delegated = isDelegated(task) && delegationShareOf(agent) != null
+    if (budget_usd == null) budget_usd = delegated ? delegationShareOf(agent) : shareOf(agent)   // the agent's share of the day (or its delegation share), unless the caller sets a smaller one
     if (!mock && budget_usd != null) {
-        const mine = spentBy(agent)
-        if (mine >= budget_usd) { const line = { ...base, status: 'refused_budget', budget_usd, spent_by_agent_usd: +mine.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }; appendLedger(line); return { text: null, line, response: null } }
+        const mine = delegated ? spentBy(agent, true) : spentBy(agent, delegationShareOf(agent) != null ? false : null)
+        if (mine >= budget_usd) { const line = { ...base, status: 'refused_budget', budget_usd, spent_by_agent_usd: +mine.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }; appendLedger(line); if (!mock) publishCall({ line, request, response: null, trace }); return { text: null, line, response: null } }
     }
     // after one 'account out of credit' answer this process makes no further calls: each would be refused, and each refusal is noise in the
     // ledger. One line was written for the refusal itself; these are returned to the caller and not written. A new process tries once again.
     if (!mock && noCredit) return { text: null, line: { ...base, status: 'not_sent_account_out_of_credit', since: noCredit, tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }, response: null }
+    // the A1 llm call as a span of the caller's trace (a loop's step), when the caller gives one
+    const span = { ...trace, span_id: trace.span_id || newSpanId() }
+    if (!mock && trace.trace_id) await emit({ trace_id: trace.trace_id, span_id: span.span_id, parent_span_id: trace.parent_span_id, parent_id: trace.parent_unit_id, flow: trace.flow || task, altitude: 'A1', role: 'llm call', phase: 'start', runner: agent, model })
     const t0 = Date.now(); let status = 'ok', response = null, error = null, text = null
     try {
         if (mock) response = { model: model + ' (mock)', choices: [{ message: { role: 'assistant', content: 'mock answer to: ' + String(messages.at(-1).content).slice(0, 80) }, finish_reason: 'stop' }], usage: { prompt_tokens: 12, completion_tokens: 8, cost: 0 } }
@@ -97,6 +108,11 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
     const raw = writeRaw({ ...base, request, response, error, latency_ms: ms })
     const line = { ...base, model_served: response && response.model || null, status, tokens_in: u.prompt_tokens ?? 0, tokens_out: u.completion_tokens ?? 0, cost_usd: typeof u.cost === 'number' ? u.cost : 0, latency_ms: ms, ...raw, ...(error ? { error: String(error).slice(0, 200) } : {}) }
     appendLedger(line)
+    if (!mock) {
+        const published = publishCall({ line, request, response, trace: span })
+        if (published) line.published = published
+        if (trace.trace_id) await emit({ trace_id: trace.trace_id, span_id: span.span_id, parent_span_id: trace.parent_span_id, parent_id: trace.parent_unit_id, flow: trace.flow || task, altitude: 'A1', role: 'llm call', phase: 'end', runner: agent, model: line.model_served || model, valid: status === 'ok' })
+    }
     return { text, line, response }   // response: the provider's whole answer (an answer engine's citations are in it); it is also in the raw store
 }
 
