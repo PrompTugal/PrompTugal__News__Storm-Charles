@@ -1,4 +1,4 @@
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:27 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:24 UTC
 
 # The swarm's trace, as data
 

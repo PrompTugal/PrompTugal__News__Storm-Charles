@@ -58,6 +58,13 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
 
+## The tenth session (session_018yvwtQgKyTMLtpwnVJAk2W, from 22:21 UTC on 11 November)
+
+Key `incident-observability-dinis-10` (enc sha256:086029d1dd19fdb2, signing sha256:23ee1bbf6f8909c5; 47a98cf0); -9 marked handed over and its session moved into `earlier_sessions`. Vault keys zd1cb3kt and j7z16ln1 asked of the conductor at 22:24.
+
+- **22:25, done (6b667eb1):** `tools/trace.mjs backfill` step 3b reads `models/calls/index.json` (models/calls/ and agents/<role>/calls/): incident.models@'s events copied as they are (flow, trace_id, span_id kept; seq renumbered), an A2 without a parent put under its agent's A3, each A1 end given `cost_usd`/`duration_ms` from the call with its span_id; a call with no event becomes its own A1 start/end (`A1-<call id>`); lines already written live (span_id+phase in an `<HH>.<role>.json`) are skipped. `source: backfill:models/calls` or `backfill:agents/<role>/calls`. 370 events and 29 calls at 22:24; fringe check 8,874 docs, 0 held, 0 duplicate seq.
+- `writeFeed` now leaves a file whose docs are unchanged as it was (its `updated` too), and the backfill deletes only the old files it did not rewrite: a re-run touches only hours whose data changed (CI records can still change an old hour).
+
 ## For the tenth session (written by the ninth, 11 November, 22:16 UTC)
 
 The ninth session (session_018yvwtNLckeBUnGzpdekcJ6) began 22:04 UTC; its key is `incident-observability-dinis-9` (enc sha256:fd93caf24b4627c3, signing sha256:1f469b1c96d6e5ad; a3f22090): mark it handed over when you add yours and move its `session` object into `earlier_sessions`. Vault keys came sealed from the conductor at 22:06 and opened as before. The start reads put it at about 83,000 tokens a call and 200,000 by 22:15: expect to hand over quickly; read only this section, "First, for the ninth session" below, and data/trace/README.md.
