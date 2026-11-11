@@ -45,7 +45,7 @@ for (const f of walk(path.join(D, 'frames')).filter(f => f.endsWith('.json')).so
     if (!fr.t) continue
     const ac = fr.rows.map(r => obj(r, F)); const ot = fr.others.map(r => obj(r, OF))
     n.snapshots += write(`map/snapshots/${fr.t.slice(0, 10)}/${fr.t.slice(11, 13)}${fr.t.slice(14, 16)}-${h.area}.json`, {
-      by: BY, updated: h.updated, t: fr.t, area: h.area, area_def: h.area_def, label: 'fact', measured: true,
+      by: BY, updated: h.updated, t: fr.t, area: h.area, area_def: h.area_def, cadence_min: h.cadence_min ?? null, label: 'fact', measured: true,
       source: fr.request.url, read_utc: fr.request.read, licence: ADSBLOL_CITE,
       method: `One adsb.lol frame of ${h.area_def.name}. aircraft: airline flights; id is the callsign (never the ICAO24 address or a registration). others: every other aircraft as an anonymous position (ADS-B emitter category only: no callsign, address, registration or type), ${fr.other} this time; ${fr.withheld_by_owner_request} withheld at their owners' request and not shown. Every position here was measured (measured: true); anything drawn between two frames is a drawing, a hypothesis. Made from ${path.relative(root, f)}, which holds the request's status, bytes and sha256.`,
       not_a_warning_service: NOT_WARNING,
@@ -54,7 +54,7 @@ for (const f of walk(path.join(D, 'frames')).filter(f => f.endsWith('.json')).so
       others: ot
     })
     const key = `${h.area}|${fr.t.slice(0, 13)}`
-    const T = tracks[key] ||= { area: h.area, area_def: h.area_def, hour: fr.t.slice(0, 13) + ':00:00Z', airlines: {}, frames: 0, from: f, ac: {} }
+    const T = tracks[key] ||= { area: h.area, area_def: h.area_def, cadence_min: h.cadence_min ?? null, hour: fr.t.slice(0, 13) + ':00:00Z', airlines: {}, frames: 0, from: f, ac: {} }
     T.frames++; Object.assign(T.airlines, h.airlines)
     for (const a of ac) (T.ac[a.callsign] ||= { callsign: a.callsign, airline: a.airline, type: a.type, points: [] }).points.push([fr.t, a.lat, a.lon, a.alt_ft, a.gs_kt, a.track_deg, a.vrate_fpm, a.on_ground])
   }
@@ -66,7 +66,7 @@ for (const T of Object.values(tracks)) {
     return { callsign: a.callsign, airline: a.airline, airline_name: T.airlines[a.airline] || null, type: a.type, first_seen: a.points[0][0], last_seen: L[0], points_seen: a.points.length, now: { t: L[0], lat: L[1], lon: L[2], alt_ft: L[3], gs_kt: L[4], track_deg: L[5], vrate_fpm: L[6], on_ground: L[7], phase: phaseOf(L[7], L[3], L[6]) }, points: a.points }
   }).sort((x, y) => x.callsign.localeCompare(y.callsign))
   nTracks += write(`tracks/${T.area}/${T.hour.slice(0, 10)}/${T.hour.slice(11, 13)}.json`, {
-    by: BY, updated: now, label: 'fact', area: T.area, area_def: T.area_def, hour: T.hour, frames: T.frames, licence: ADSBLOL_CITE,
+    by: BY, updated: now, label: 'fact', area: T.area, area_def: T.area_def, cadence_min: T.cadence_min, hour: T.hour, frames: T.frames, licence: ADSBLOL_CITE,
     method: `Each airline flight adsb.lol showed in ${T.area_def.name} during the hour, with every point measured in our frames (${path.relative(root, T.from).replace(/-\d+\.json$/, '.json')}): one point per frame it was in, nothing in between. A line drawn between two points is a drawing (hypothesis), not a path flown. now: the last point in the hour. phase: ${PHASE_RULE}`,
     not_a_warning_service: NOT_WARNING,
     point_fields: ['t', 'lat', 'lon', 'alt_ft', 'gs_kt', 'track_deg', 'vrate_fpm', 'on_ground'],

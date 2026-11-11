@@ -22,6 +22,7 @@ export const AREAS = {
   lisbon: { name: 'Lisbon and the Atlantic approaches: within 250 nautical miles (463 km) of 38.75 N, 9.20 W (LPPT is 8 km north of the centre)', lat: 38.75, lon: -9.2, dist_nm: 250, legacy_dist_nm: 40, legacy_name: 'Lisbon area: within 40 nautical miles (74 km) of 38.75 N, 9.20 W (LPPT is 8 km north of the centre)' },
   funchal: { name: 'Madeira and its approaches: within 150 nautical miles (278 km) of 32.75 N, 16.85 W (LPMA, Funchal)', lat: 32.75, lon: -16.85, dist_nm: 150, legacy_dist_nm: 30, legacy_name: 'Madeira: within 30 nautical miles (56 km) of 32.75 N, 16.85 W (LPMA, Funchal)' }
 }
+export const CADENCE_MIN = { lisbon: 5, funchal: 20 }   // must match agents/flights/bin/poller.sh
 export const FIELDS = ['callsign', 'airline', 'type', 'lat', 'lon', 'alt_ft', 'on_ground', 'gs_kt', 'track_deg', 'vrate_fpm', 'pos_age_s']
 export const OTHER_FIELDS = ['category', 'lat', 'lon', 'alt_ft', 'on_ground', 'gs_kt', 'track_deg']
 const NEAR = { lisbon: { icao: 'LPPT', box: [38.524, -9.384, 39.024, -8.884] }, funchal: { icao: 'LPMA', box: [32.448, -17.024, 32.948, -16.524] } }
@@ -66,6 +67,7 @@ const blank = () => ({
   not_a_warning_service: NOT_WARNING, attribution: ADSBLOL_CITE, licence: 'ODbL 1.0',
   fields: FIELDS, other_fields: OTHER_FIELDS,
   units: { alt_ft: 'feet, barometric (geometric when barometric is absent); null on the ground', gs_kt: 'knots', track_deg: 'degrees true, clockwise from north', vrate_fpm: 'feet per minute, + climbing', pos_age_s: 'seconds since the position was received', category: 'ADS-B emitter category (A1 light, A2 small, A3 large, A4 B757, A5 heavy, A7 rotorcraft, B1 glider, B6 drone, C1-C3 surface; null not sent)' },
+  cadence_min: CADENCE_MIN[area], cadence: `one frame every ${CADENCE_MIN[area]} minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)`,
   airlines: {}, frames: []
 })
 let file; let doc
@@ -75,6 +77,7 @@ for (let part = 1; ; part++) {
   const est = Buffer.byteLength(pretty(doc)) + Buffer.byteLength(pretty(frame)) + 2048
   if (est < 240 * 1024 || !doc.frames.length) break
 }
+doc.cadence_min = CADENCE_MIN[area]; doc.cadence = `one frame every ${CADENCE_MIN[area]} minutes (a missed or failed poll leaves a gap; each frame's t is when it was read)`
 doc.frames.push(frame); doc.frames.sort((x, y) => (x.t || x.request.read).localeCompare(y.t || y.request.read))
 for (const a of air) doc.airlines[a.airline] = AIRLINES[a.airline]
 doc.updated = iso(Date.now())

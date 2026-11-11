@@ -19,7 +19,7 @@ summary: From the volunteers' ADS-B receivers to the map, the wind arrows from a
 
 ## The wind arrows (evidence)
 
-[Open-Meteo](https://open-meteo.com)'s forecast API ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)): a model's hourly wind at 10 m and at 850 hPa (about 1,500 m) on points 0.25° apart (Lisbon 121 points, Madeira 24), 10 November 12:00 to 12 November 12:00 UTC, read 22:10 UTC and refreshed every 6 hours. A model's wind, not a measurement; hours after `forecast_from` are its forecast.
+[Open-Meteo](https://open-meteo.com)'s forecast API ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)): a model's hourly wind at 10 m and at 850 hPa (about 1,500 m) on points 0.5° apart over boxes that hold the aircraft areas (Lisbon 34.5–43° N, 14.5–4° W: 396 points; Madeira 30–35.5° N, 20–13.5° W: 168 points; 0.25° over a smaller box until 23:54 UTC on 11 November), 10 November 12:00 to 12 November 12:00 UTC, read 23:53 UTC and refreshed every 6 hours. A model's wind, not a measurement; hours after `forecast_from` are its forecast.
 
 ## The wind on each runway (derived)
 

@@ -23,10 +23,10 @@ const snapBy = {}; const windHours = []; const trackBy = {}
 for (const f of files) {
   const j = JSON.parse(fs.readFileSync(f, 'utf8')); const rel = path.relative(DATA, f)
   const mfile = (t, a) => `map/snapshots/${t.slice(0, 10)}/${t.slice(11, 13)}${t.slice(14, 16)}-${a}.json`
-  if (rel.startsWith('snapshots/')) for (const s of j.snapshots) if (s.time) snapBy[mfile(s.time, s.area)] ||= { t: s.time, area: s.area, aircraft: s.aircraft.length, file: mfile(s.time, s.area), dist_nm: j.areas?.[s.area]?.dist_nm ?? null, measured: true }
+  if (rel.startsWith('snapshots/')) for (const s of j.snapshots) if (s.time) snapBy[mfile(s.time, s.area)] ||= { t: s.time, area: s.area, aircraft: s.aircraft.length, file: mfile(s.time, s.area), dist_nm: j.areas?.[s.area]?.dist_nm ?? null, cadence_min: s.area === 'funchal' && s.time >= '2026-11-11T23:42' ? 20 : 10, measured: true }
   if (rel.startsWith('frames/')) for (const fr of j.frames) if (fr.t) {
-    snapBy[mfile(fr.t, j.area)] = { t: fr.t, area: j.area, aircraft: fr.rows.length, others: fr.others.length, file: mfile(fr.t, j.area), dist_nm: j.area_def.dist_nm, measured: true }
-    const k = `${j.area}|${fr.t.slice(0, 13)}`; const T = trackBy[k] ||= { hour: fr.t.slice(0, 13) + ':00:00Z', area: j.area, frames: 0, callsigns: new Set(), file: `tracks/${j.area}/${fr.t.slice(0, 10)}/${fr.t.slice(11, 13)}.json` }
+    snapBy[mfile(fr.t, j.area)] = { t: fr.t, area: j.area, aircraft: fr.rows.length, others: fr.others.length, file: mfile(fr.t, j.area), dist_nm: j.area_def.dist_nm, cadence_min: j.cadence_min ?? (j.area === 'lisbon' ? 5 : 20), measured: true }
+    const k = `${j.area}|${fr.t.slice(0, 13)}`; const T = trackBy[k] ||= { hour: fr.t.slice(0, 13) + ':00:00Z', area: j.area, cadence_min: j.cadence_min ?? (j.area === 'lisbon' ? 5 : 20), frames: 0, callsigns: new Set(), file: `tracks/${j.area}/${fr.t.slice(0, 10)}/${fr.t.slice(11, 13)}.json` }
     T.frames++; for (const r of fr.rows) T.callsigns.add(r[0])
   }
   if (/^wind\/[a-z]+-/.test(rel)) for (const t of j.times) windHours.push({ t, area: j.area, forecast: !!(j.forecast_from && t >= j.forecast_from), file: `map/wind/${j.area}/${t.slice(0, 10)}/${t.slice(11, 13)}.json` })

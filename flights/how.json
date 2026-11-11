@@ -1,6 +1,6 @@
 {
   "by": "incident.flights@web-summit.dinis",
-  "updated": "2026-11-11T23:46:58Z",
+  "updated": "2026-11-11T23:54:17Z",
   "label": "fact",
   "about": "How the flights page is made, as data for the reader's panel (Dinis via incident.conductor@, 11 November ~23:38 UTC: a visual explanation of how the plane data is worked out). Two pipelines and one sum: aircraft (adsb.lol -> our poll -> filter -> frames and snapshots -> tracks -> the map), the wind field (Open-Meteo -> the map's arrows) and the crosswind arithmetic on the airports' METAR, with a worked example. Each step names its source, the time it was read and its numbers. Every step's label: fact (read from the source), derived (arithmetic on facts, the rule printed), hypothesis (a drawing or a judgement of ours).",
   "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
@@ -112,28 +112,48 @@
           "what": "Open-Meteo's forecast API, best match for each point: the model's hourly analysis for past hours and its short-range forecast for later ones. A model's wind, not a measurement.",
           "source": "https://open-meteo.com",
           "licence": "CC BY 4.0",
-          "read": "2026-11-11T22:10:25Z",
+          "read": "2026-11-11T23:53:54Z",
           "refresh": "every 6 hours"
         },
         {
           "id": "lattice",
           "label": "evidence",
           "title": "A lattice of points",
-          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points 0.25 degrees apart.",
+          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points 0.5 degrees apart over boxes that hold the aircraft areas (0.25 degrees over a smaller box until 11 November 23:54 UTC).",
           "grids": [
             {
               "area": "lisbon",
-              "points": 121,
-              "rows": 11,
-              "cols": 11,
-              "step_deg": 0.25
+              "points": 396,
+              "rows": 18,
+              "cols": 22,
+              "step_deg": 0.5,
+              "box": {
+                "lat": [
+                  34.5,
+                  43
+                ],
+                "lon": [
+                  -14.5,
+                  -4
+                ]
+              }
             },
             {
               "area": "madeira",
-              "points": 24,
-              "rows": 4,
-              "cols": 6,
-              "step_deg": 0.25
+              "points": 168,
+              "rows": 12,
+              "cols": 14,
+              "step_deg": 0.5,
+              "box": {
+                "lat": [
+                  30,
+                  35.5
+                ],
+                "lon": [
+                  -20,
+                  -13.5
+                ]
+              }
             }
           ],
           "window": "2026-11-10T12:00:00Z to 2026-11-12T12:00:00Z",
@@ -293,11 +313,11 @@
           "what": "Open-Meteo's forecast API, best match for each point: the model's hourly analysis for past hours and its short-range forecast for later ones. A model's wind, not a measurement.",
           "source": "https://open-meteo.com",
           "kind": "evidence",
-          "read": "2026-11-11T22:10:25Z"
+          "read": "2026-11-11T23:53:54Z"
         },
         {
           "label": "A lattice of points",
-          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points 0.25 degrees apart.",
+          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points 0.5 degrees apart over boxes that hold the aircraft areas: Lisbon 396 points, Madeira 168.",
           "source": "incidents/2026-11-10-storm-charles/data/flights/wind/<area>-<date>.json",
           "kind": "evidence"
         },
