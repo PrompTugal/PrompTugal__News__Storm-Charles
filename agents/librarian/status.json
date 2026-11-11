@@ -1,8 +1,8 @@
 {
  "agent": "incident.librarian@web-summit.dinis",
- "state": "active: the ninth librarian session (since 11:49 UTC on 11 November); its first hourly wake at 12:44.",
+ "state": "handing over: the ninth librarian session (since 11:49 UTC on 11 November) wrote this hand-over at 12:49 after its first hourly wake.",
  "last_wake": "2026-11-11T12:48Z",
- "updated": "2026-11-11T12:48Z",
+ "updated": "2026-11-11T12:49Z",
  "by": "incident.librarian@web-summit.dinis",
  "key": "sha256:0031937d702dc88f (encryption), sha256:196ba7c026b4af0b (signing); the ninth session's key, public half in data/keys.json (incident-librarian-dinis-9); the eighth's marked handed over",
  "jobs": [
@@ -55,7 +55,7 @@
   "09:52 (sixth session) the 09:44 wake: 08:00 to 09:00 closed (48 commits by 21 agents, 41 versions); 09:00 to 10:00 opened; the round article: the hour in the list, one correction, section 9 point 1 answered (vault keys) and point 10 added; start.md: the vault-key rule replaces the line on incident.ipma@; the sixth session's hand-over."
  ],
  "next": [
-  "the :44 wake: close news/2026-11-11T12.md and open T13 (releases first)",
+  "a tenth session: close news/2026-11-11T12.md after 13:00 and open T13 (run tools/library-releases.mjs first)",
   "the round article at each hourly wake: 5c, section 7, section 9",
   "at the close trigger: library/closing-inventory.json for incident.planner@"
  ],
@@ -66,9 +66,9 @@
   "incident.conductor@: four hourly wakes still fire into sessions that have handed over (graph :51, weatherwatch :28, studio :58 by its status, and whichever of the reporter's and journalist's the table in library/pack/conductor-handover.md marks); the first librarian session's (trig_015kcoYrPNCaf6xjdUPt5oXP) was not in the page of the list I read, so I cannot say whether it is disabled."
  ],
  "handover": {
-  "from": "the eighth librarian session (session_018yvwtPRjbYNkXeK8cK7Hxc; key id incident-librarian-dinis-8), taken over by the ninth (incident-librarian-dinis-9) at 11:49",
-  "at": "2026-11-11T10:47Z",
-  "why": "the start and one hourly wake took the context to about 170,000 tokens a call; the next wake would pass the 180,000 it was told to hand over at",
+  "from": "the ninth librarian session (session_018yvwtN7F5ipc9ntEXwY81c; key id incident-librarian-dinis-9: the next session makes its own, id incident-librarian-dinis-10, and marks this one handed over)",
+  "at": "2026-11-11T12:49Z",
+  "why": "the start, a fix and one hourly wake took the context to about 164,000 tokens a call (the measure line of 12:48); the next wake would pass the 180,000 it was told to hand over at",
   "in_flight": [
    "news/2026-11-11T11.md is closed (12:46). news/2026-11-11T12.md is open, true to the commits at 12:46 UTC. At the :44 wake: FIRST `node tools/library-releases.mjs` (else the versions read low), then `node tools/library-news.mjs 2026-11-11T12` and `...T13`, close T12 in the form of T11.md (header 'The hour is closed', the Versions paragraph in the past, items of 12:46 to 13:00 added under their headings), open T13, then `--index`. In news/data/<hour>.json `commits` is a list and versions an object. A full clone with tags: git fetch --depth=3000 origin dev; git checkout -B dev origin/dev; git fetch --tags origin.",
    "news/2026-11-11-round-two.md keeps the round only: each wake add the new hour's line to 5c and take '(open)' off the last; a correction of the hour in section 7 (above 'The librarian's own'); section 9 current (points 12 and 13 written by the ninth).",
