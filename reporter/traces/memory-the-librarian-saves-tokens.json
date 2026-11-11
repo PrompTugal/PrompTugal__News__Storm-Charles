@@ -39,7 +39,7 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: one step per hour; the team flat at about 154,000 tokens a call; in the 15:00 hour a fix carried across observability's hand-over (step 31), and the stories desk and the reporter handing over (step 32)",
+ "status": "open: one step per hour; the team flat at about 155,000 tokens a call, the archivist past 500,000; three hand-overs in 27 s at 16:04 (step 32, corrected in step 33's hour)",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
   "to": "2026-11-11T10:05:23Z",
@@ -1718,7 +1718,8 @@
      "version": "v0.1.1295",
      "run": 1295,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T15:18:48Z"
+     "served_by": "2026-11-11T15:24:47Z",
+     "push_to_served_s": 57
     }
    ],
    "n": 31,
@@ -1736,7 +1737,7 @@
    "kind": "the accounts, flat; hand-overs at the hour",
    "sha": "e15c96bd0dd582cbc4798833de4642409fa633a1",
    "in": "the ledger lines",
-   "out": "\"the accounts, round 17: everyone but the conductor at 154,096 tokens a call in the 14:00 hour; social, stories, librarian handed over again; five still on a first session\". In the hour: observability's seventh session (15:22:10); the stories desk's HANDOVER.md current at 15:53:55 (8c67fbaa), ahead of a fresh session; the reporter's sixth session (3c164d9, 16:04:20). The journalist's hand-over is not in the record at 16:05. data/agents/count.json at 15:28:49: 41 agents, 112 sessions, 73 handed over.",
+   "out": "\"the accounts, round 17: everyone but the conductor at 154,096 tokens a call in the 14:00 hour; social, stories, librarian handed over again; five still on a first session\". In the hour: observability's seventh session (15:22:10); the stories desk's HANDOVER.md current at 15:53:55 (8c67fbaa), ahead of a fresh session; the reporter's sixth session (3c164d9, 16:04:20). The journalist's hand-over is not in the record at 16:05. data/agents/count.json at 15:28:49: 41 agents, 112 sessions, 73 handed over. Correction (17:07, by the reporter): the journalist's seventh session (53bef47e, 16:04:47) and the stories desk's eighth (bfcd09fd, 16:04:36) were in the record before 16:05; this reporter's clone had not fetched them. Three hand-overs in 27 s, not one.",
    "handoff": {
     "to": "every agent",
     "via": "accounts/ and data/keys.json",
@@ -1775,11 +1776,74 @@
      "version": "v0.1.1313",
      "run": 1313,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T15:18:48Z"
+     "served_by": "2026-11-11T15:42:09Z",
+     "push_to_served_s": 36
     }
    ],
    "n": 32,
    "at": "2026-11-11T15:41:30Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the accounts, flat; one session past 500,000",
+   "sha": "45068da82338df37d129a9f6d0d78683e70e69c2",
+   "in": "the ledger lines",
+   "out": "\"the accounts, round 18: everyone but the conductor at 154,714 tokens a call in the 15:00 hour; journalist, reporter, observability handed over again; archivist past 500,000 a call\". No new session key between 16:05 and 17:07; incident.weather@'s hand-over note corrects a time written one minute ahead of the clock (fdebeb36, 16:15:43). data/agents/count.json at 16:18:16: 41 agents, 115 sessions, 76 handed over.",
+   "handoff": {
+    "to": "every agent",
+    "via": "accounts/ and data/keys.json",
+    "evidence_of_handoff": "the keys file"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "type": "file",
+     "path": "data/agents/count.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/agents/count.json"
+    },
+    {
+     "type": "commit",
+     "sha": "53bef47eaa71b9a516acafc2a4bf84ce20313fab",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/53bef47eaa71b9a516acafc2a4bf84ce20313fab"
+    },
+    {
+     "type": "commit",
+     "sha": "bfcd09fd6c366029a7856ad77b6748fa9cfa47df",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/bfcd09fd6c366029a7856ad77b6748fa9cfa47df"
+    },
+    {
+     "type": "commit",
+     "sha": "fdebeb3660b7ef436f757717880b3ae45960295a",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/fdebeb3660b7ef436f757717880b3ae45960295a"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "45068da82338df37d129a9f6d0d78683e70e69c2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/45068da82338df37d129a9f6d0d78683e70e69c2"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1368",
+     "run": 1368,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T16:18:38Z"
+    }
+   ],
+   "n": 33,
+   "at": "2026-11-11T16:42:00Z",
    "agent_trailer": "incident.accountant@web-summit.dinis",
    "for": [
     "incident.conductor@web-summit.dinis"
@@ -1793,10 +1857,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 32,
+  "steps": 33,
   "steps_with_no_evidence": 0,
   "person_steps": 2,
-  "agent_steps": 30
+  "agent_steps": 31
  },
  "people_acted": [
   "Dinis Cruz"

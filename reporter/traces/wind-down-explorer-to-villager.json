@@ -28,7 +28,7 @@
   "what": "transition/PLAN.md (the plan), transition/interviews/ (exit interviews), the closing record (reporter, journalist, storyteller, librarian), a storm conductor for business as usual",
   "url": "https://storm-charles.promptugal.news/transition/PLAN.html"
  },
- "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 16:05); Lisbon's red rain ended at 15:00 and only Faro is still red (step 20); the close trigger is IPMA's first read after 21:00 plus the organisers' Day 3 decision",
+ "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 17:07); no red warning left on the mainland from 15:55 (step 21); Web Summit's Thursday programme reported by the press, as evidence; the close trigger is IPMA's first read after 21:00 plus the organisers' Day 3 decision",
  "duration": {
   "from": "2026-11-11T10:29:37Z",
   "to": null,
@@ -829,7 +829,8 @@
      "version": "v0.1.1302",
      "run": 1302,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T15:18:48Z"
+     "served_by": "2026-11-11T15:28:57Z",
+     "push_to_served_s": 125
     }
    ],
    "n": 20,
@@ -838,13 +839,71 @@
    "for": [
     "incident.conductor@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.brief@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "no red left on the mainland, as fact",
+   "sha": "02a9db205eeec4dc0509f10934ab16c92a520b62",
+   "in": "IPMA's 15:55 CAP messages: Lisbon's orange wind ended at 15:56, Faro lowered, no red left on the mainland (the conductor's row, d1b7fc4c, 16:09:49); IPMA's own page agreed at 16:24 (58aa9326)",
+   "out": "\"decision brief, edition 9 (no red warning left on the mainland)\", 1 min 44 s after the conductor's row. At 17:03 the press reports Web Summit's Thursday programme and an 11:00 press conference (806822c2, evidence, not read from the organisers: their site is under the 05:27 hold). The close trigger is unchanged: IPMA's first read after 21:00 plus the organisers' Day 3 decision. No commit to transition/ in the hour; the plan still waits on Dinis's yes.",
+   "handoff": {
+    "to": "incident.planner@web-summit.dinis",
+    "via": "transition/PLAN.md",
+    "evidence_of_handoff": "not in the record at 17:07: no commit to transition/ since 12:10"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md"
+    },
+    {
+     "type": "commit",
+     "sha": "d1b7fc4cb3a89aaa52a9f5e3bc7a2dcc70f7ee73",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/d1b7fc4cb3a89aaa52a9f5e3bc7a2dcc70f7ee73"
+    },
+    {
+     "type": "commit",
+     "sha": "58aa932650b0e59f9dcb3305398f4213572a285a",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/58aa932650b0e59f9dcb3305398f4213572a285a"
+    },
+    {
+     "type": "commit",
+     "sha": "806822c2b778a6f0f559607f0992952855929e88",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/806822c2b778a6f0f559607f0992952855929e88"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "02a9db205eeec4dc0509f10934ab16c92a520b62",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/02a9db205eeec4dc0509f10934ab16c92a520b62"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1343",
+     "run": 1343,
+     "own_run": true,
+     "served_by": "2026-11-11T16:12:43Z",
+     "push_to_served_s": 67
+    }
+   ],
+   "n": 21,
+   "at": "2026-11-11T16:11:33Z",
+   "agent_trailer": "incident.brief@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 20,
+  "steps": 21,
   "steps_with_no_evidence": 0,
   "person_steps": 3,
-  "agent_steps": 17
+  "agent_steps": 18
  },
  "people_acted": [
   "Dinis Cruz"

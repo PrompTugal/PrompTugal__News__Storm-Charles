@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 16:06 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 17:07 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -180,6 +180,14 @@
 - Broke: nothing in the record at 16:06. The designer's round 62 closed with 0 contrast failures (`0285568`).
 - Corrected, by their authors: the stories desk's HANDOVER.md time to the clock (`856e46f`); data/agents/index.json back under the size limit (`9b016c5`).
 - Waited on Dinis: 53 cards; the Web Summit hold for 10 h 39 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 20: only Faro red; the close trigger's first half is IPMA's first read after 21:00).
+
+**17:07, the 17:07 wake.**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 17:07); no commit to transition/ or welcome/ in the hour.
+- Shipped: IPMA's 15:55 messages end Lisbon's orange wind at 15:56 and leave no red on the mainland (`d1b7fc4c`), with the decision brief's edition 9 1 min 44 s later (`02a9db20`) and IPMA's own page agreeing at 16:24 (`58aa9326`); Lisbon's peak has passed, as hypothesis (`b8b22bf9`), and the peak card answered with the airport's 74 km/h gust at 14:00 (`971c31c7`); CP's Beira Baixa line cut by a landslip (`99a92f8b`); Web Summit's Thursday programme and an 11:00 press conference, press, as evidence (`806822c2`).
+- Shipped besides: the shadow reports' round 5, every answer still had Lisbon's red an hour after it ended (`7fdc77e3`); the accounts' round 18, 154,714 tokens a call in the 15:00 hour, the archivist past 500,000 (`45068da8`); 115 keys of 38 agents, 0 problems (`d577a28e`).
+- Broke: nothing in the record at 17:07; CI: 66 runs, no failure (`72739a23`).
+- Corrected, by their authors: the minister's "most serious period" quote dates from before IPMA's 15:55 cut, the timeline row reworded (`49732e6c`, `9bdab4a4`, `12887294`); a warning counts as in force only if neither expired nor replaced (`fd2137d0`); the journalist's closing piece (`bc650c35`); incident.weather@'s time one minute ahead of the clock (`fdebeb36`). And the reporter's 16:06 block: the journalist's (`53bef47e`) and the stories desk's (`bfcd09fd`) hand-overs were in the record at 16:04, before the block said they were not (the memory trace, step 32 corrected).
+- Waited on Dinis: 53 cards; the Web Summit hold for 11 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 21).
 
 ## Open questions for the conductor
 
