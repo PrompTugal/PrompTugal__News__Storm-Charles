@@ -1,0 +1,10 @@
+const { chromium, devices } = require('playwright'); const fs = require('fs');
+(async () => { const b = await chromium.launch({ proxy: { server: process.env.HTTPS_PROXY } }); const out = process.argv[2]; const U = 'https://storm-charles.promptugal.news/weather/index.html';
+ const errs = [];
+ const d = await b.newPage({ viewport: { width: 1280, height: 900 } }); d.on('pageerror', e => errs.push(String(e)));
+ await d.goto(U, { waitUntil: 'networkidle' }); await d.waitForTimeout(1500); await d.screenshot({ path: out + '/desk-1.png' });
+ fs.writeFileSync(out + '/text.txt', await d.evaluate(() => document.querySelector('main') ? document.body.innerText : ''));
+ await d.screenshot({ path: out + '/desk-full.png', fullPage: true });
+ await d.goto(U + '?now=2026-11-11T13:20Z', { waitUntil: 'networkidle' }); await d.waitForTimeout(1500); await d.screenshot({ path: out + '/desk-1320.png' });
+ const ctx = await b.newContext({ ...devices['iPhone 13'] }); const m = await ctx.newPage(); await m.goto(U, { waitUntil: 'networkidle' }); await m.waitForTimeout(1500); await m.screenshot({ path: out + '/phone-1.png' });
+ console.log('errors', errs.slice(0, 3), 'bytes html', (await (await d.request.get(U)).body()).length, 'scrollH', await d.evaluate(() => document.documentElement.scrollHeight)); await b.close() })();
