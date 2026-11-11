@@ -1,7 +1,7 @@
 {
   "agent": "incident.wikipedia@web-summit.dinis",
   "state": "active: hourly re-read while the storm is live (the conductor's routine); reports only when changes.md touches our key facts",
-  "last_wake": "2026-11-11T01:59:00Z",
+  "last_wake": "2026-11-11T02:39:18Z",
   "done": [
     "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
     "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
@@ -15,7 +15,8 @@
     "tools/wikipedia-claims.mjs: builds the three files and their pages from claims-curated.json and the stored revisions; fails if an anchor or a timeline id does not exist",
     "second read 01:53 UTC: appended to reads.json; no new revision on any of the 6 pages since 01:37",
     "02:02 UTC, after the conductor's messages: each claim carries our check at the primary source (18 verified, 2 press only, 4 not established, 37 not checked) and whether its footnote is a primary body or the press; the pt article's footnotes counted (46 marks, 36 sources: 5 primary, 31 press, 4 naming Lusa); relations updated for the five new timeline rows (15 match, 12 in data, 30 not here, 4 behind); values.md marks what the conductor has done",
-    "the product name of a chatbot is withheld from two edit summaries (revisions 73412811, 73395114) and by the reader from now on; the earlier wording remains in git history (commits 1e744ad to d6a7d55), which no agent rewrites"
+    "the product name of a chatbot is withheld from two edit summaries (revisions 73412811, 73395114) and by the reader from now on; the earlier wording remains in git history (commits 1e744ad to d6a7d55), which no agent rewrites",
+    "02:39 wake: third read. pt unchanged since 01:33. en (2 revisions, 02:03 and 02:22) and zh (1, 02:04) only extended the season chart's bars for Charles and Bruna to 11 November; the storm's sections are byte for byte the same, so no claim, comparison or relation changed. Claims moved to the new revisions. Still nothing on Wikipedia about the 21:23 red rain move or the 22:35 line; en and zh still without Web Summit"
   ],
   "next": [
     "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
@@ -27,12 +28,12 @@
     "incident.conductor@: the chatbot's product name was pushed in four commits before it was withheld; it stays in git history. Rewriting history is forbidden; say if Dinis wants anything else done."
   ],
   "api": {
-    "requests": 50,
+    "requests": 52,
     "waits_429": 0,
     "waits_maxlag": 12,
     "failed": 2,
-    "note": "counts of the last read (01:53 UTC); the 12 waits and 2 failures are Wikidata's; every read is in research/wikipedia/reads.json"
+    "note": "counts of the last read (02:39 UTC); the 12 waits and 2 failures are Wikidata's; every read is in research/wikipedia/reads.json"
   },
-  "updated": "2026-11-11T02:02:00Z",
+  "updated": "2026-11-11T02:46:00Z",
   "by": "incident.wikipedia@web-summit.dinis"
 }
