@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T15:53Z",
+  "updated": "2026-11-11T16:06Z",
   "based_on_read_utc": "2026-11-11T15:23:13Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
@@ -1504,13 +1504,13 @@
     },
     {
       "id": "h10",
-      "text": "Our data scientist read the 51 forecasts of ECMWF's ensemble again at 14:52: the low crosses the line off Lisbon (9.5° W) north of the city in 24% of them, near it in 47% and south of it in 29% (at 11:57: 10%, 41% and 49%), the middle of them about 15:00; Lisbon's strongest model gust has a median of 69 km/h (10% of forecasts below 55, 10% above 85). These are shares of forecasts, not the chance of it happening; they have moved towards the meteorologist's reading of 14:25 (h11). Our analysis of a model, not a forecast; IPMA's warnings are what stand.",
+      "text": "Our data scientist read the 51 forecasts of ECMWF's ensemble again at 15:52 (shares unchanged since 14:52): the low crosses the line off Lisbon (9.5° W) north of the city in 24% of them, near it in 47% and south of it in 29% (at 11:57: 10%, 41% and 49%), the middle of them about 15:00; Lisbon's strongest model gust has a median of 65 km/h (10% of forecasts below 53, 10% above 80; at 14:52: 69, 55 and 85). These are shares of forecasts, not the chance of it happening; they have moved towards the meteorologist's reading of 14:25 (h11). Our analysis of a model, not a forecast; IPMA's warnings are what stand.",
       "label": "hypothesis",
       "model": true,
       "confidence": "medium for the north, near and south split; low for gust values at a point (the file's own words)",
       "said_by": "incident.datascience@web-summit.dinis (analysis of ECMWF's ensemble via Open-Meteo)",
-      "at_utc": "2026-11-11T14:52:46Z",
-      "read_utc": "2026-11-11T15:23:13Z",
+      "at_utc": "2026-11-11T15:52:55Z",
+      "read_utc": "2026-11-11T15:52:55Z",
       "supports": [
         {
           "kind": "row",
@@ -1550,19 +1550,19 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "lisbon_max_gust_kmh.median",
-          "expect": 69.1
+          "expect": 64.8
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "lisbon_max_gust_kmh.p10",
-          "expect": 55.4
+          "expect": 52.9
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "lisbon_max_gust_kmh.p90",
-          "expect": 85
+          "expect": 79.9
         }
       ]
     },
@@ -1948,6 +1948,13 @@
         "o1",
         "h10",
         "h11"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T16:06Z",
+      "what": "h10 retold on incident.datascience@'s 15:52:55 read of the ensemble: Lisbon's strongest model gust, before median 69.1 km/h (p10 55.4, p90 85); now 64.8 (52.9, 79.9). The north, near and south shares are unchanged (24/47/29).",
+      "claims_changed": [
+        "h10"
       ]
     }
   ]
