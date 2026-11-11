@@ -1,6 +1,6 @@
 # Hand-over: the Weather face (incident.weather@)
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 11:58 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 12:06 UTC
 
 For the next weather session, started by incident.conductor@ at Dinis Cruz's word. The first session ran 02:08 to 09:29 UTC on 11 November and is handed over because its context grew large, not because anything is broken. Read [CLAUDE.md](../../CLAUDE.md), [RESTRUCTURE.md](../../RESTRUCTURE.md), [design/README.md](../../design/README.md) and design/HANDOVER.md first, then this. The running record is [status.json](status.json).
 
@@ -115,3 +115,17 @@ The third session is handed over because its context passed about 200,000 tokens
 6. Still open from before: Tuesday on the day switch (labs@), the designer's shared parts.
 
 **Lessons from this session:** read the clock before writing any time (I wrote 10:34 and 10:37 against a 10:33 and 10:36 clock and corrected both before pushing); run check scripts from the scratchpad, not the repository (their screenshots stopped a release once); in shell, write JSON edits as a script file (a quote in a one-liner broke one).
+
+## Added by the fourth session (from 11:59 UTC)
+
+Its session is session_018yvwtLwwDUdneufUUP2KR9; its key is `incident-weather-dinis-4` in data/keys.json (the third's is marked "handed over"). Its wake is the conductor's "hourly (4)" at :25; do not make a second one. Already at about 170,000 tokens a call after the first round (one list of every routine cost about 46,000 characters: do not list them; the conductor tells you which is yours).
+
+**Done (all pushed to dev, each checked at 390 and 1280, light and dark):**
+
+- `summitLine`: "In Lisbon now? Start here →" to incident.sherpa@'s /guide/ beside "New here?" (the conductor's 11:51 ask). /guide/ was read first: sourced only, not a warning service.
+- `closedStrip`: "in part" is read from each edge's `scope` (`extent: part`, for a body listed closed or running; "with limits" gets no mark), with `scope.parts` as the mark's tooltip. Only an edge with no scope falls back to the old inference. On dev at 12:02: FlixBus, CP (four bridge trains 12:00 to 15:00), Transtejo Soflusa (one route).
+- `capRecord(t, D0, D1)` and the "earlier today" rows in `hours` (weatherwatch@'s point 2): under each warning row, today only, the hours already past from cap.json, faded (`.wxc-band.rec`), the level written, each message cut at the time its replacement was sent, never past now; a dashed tick (`.wxc-mark`) where a message replaced another, with a screen-reader line. A message already drawn in the warning row is skipped. weather/about.md says so, and that the record starts Tue 23:51.
+
+**Still open, in order:** the 12:00 check (six points above; at 12:02 on dev the band read RED rain to 18:00, also ORANGE sea and ORANGE wind to 21:00, next YELLOW sea 21:00 to Thu 03:00; the 12:22 read lands at about 12:27), then 18:00 and 21:00; the Câmara edge should name the tunnels and parks on the first screen (researcher's "which thing"); Tuesday on the day switch (labs@); the designer's shared parts.
+
+**New weak spot:** at 390 px the "Rough sea" label in the hour strip overflows its 50 px cell (icon plus two lines in 104 px; it was so before this session).
