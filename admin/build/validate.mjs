@@ -41,6 +41,8 @@ for (const rel of tracked) {
     if (/sgit_private_[a-z]+_[A-Za-z0-9]/.test(s) && !rel.startsWith('admin/build/validate') && rel !== 'SECURITY.md') fail(`${rel}: a vault key (sgit's private prefix)`)
     if (/\b[a-z0-9]{20,64}:[a-z0-9]{8}\b/.test(s) && !rel.startsWith('admin/build/validate') && rel !== 'SECURITY.md') fail(`${rel}: looks like a vault key (<passphrase>:<vault id>)`)
     if (/(^|\/)(vault-key-[^\/]*|[^\/]*\.vault-key|access-token\.json|[^\/]*\.key)$/.test(rel)) fail(`${rel}: a key file never goes in git`)
+    // the Weather face reads only what the data room publishes (RESTRUCTURE.md): no request leaves the site from its code
+    if (/^app\/weather\/.*\.m?js$/.test(rel) && /(fetch|XMLHttpRequest|EventSource|WebSocket|import)\s*\(?\s*['"`](https?:)?\/\//.test(s)) fail(`${rel}: the Weather face must read only this site's own files (an outside address is requested)`)
     if (rel.endsWith('.json')) { try { JSON.parse(s) } catch (e) { fail(`${rel}: invalid JSON (${e.message})`) } }
 }
 if (!tracked.length) warns.push('not a git checkout: the tracked-file checks were skipped')
