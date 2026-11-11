@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 10:40 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 11:34 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,15 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 11:33 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 48 addresses; MeteoAlarm's feed of IPMA's CAP messages read first (11:33).
+
+- **At the authorities** (facts): nothing changed. No CAP message for Lisbon after 07:16:30. **Red rain in force to 18:00, orange wind in force to 21:00**, orange sea from 12:00, yellow sea from 21:00. Still communiqué no. 2. ANEPC's notice 21 still the latest.
+- **In the coverage** (evidence): two lines now run side by side. The government's: RTP's live page is retitled "'O mais complicado ainda vai acontecer'. Gabinete de crise do Governo segue efeitos da depressão Charles", ECO's "Governo insiste na prevenção e avisa que tempestade ainda não chegou". And the lowered wind: CNN Portugal "IPMA prevê desagravamento da intensidade do vento: 'A depressão acabou por mudar as suas características'"; [Público](https://www.publico.pt/2026/11/11/azul/noticia/depressao-charles-devera-entrar-lisboa-vento-menos-intenso-2194549) "deverá entrar pela Grande Lisboa, com vento menos intenso". Counts in titles: 189 occurrences on the mainland by 11:00 (Observador, citing civil protection), 235 in Madeira (SAPO).
+- **Our front page** (v0.1.947, rendered 11:33): two of the three points of [the 09:40 review](reviews/2026-11-11T0940.md) are taken (the lowered wind with its sent time; a "Measured" line on the first screen). The strip still shows only the warnings in the current file, so the morning's history is not on it.
+- No new tracker or map.
 
 ## What changed at the 10:39 UTC re-read (11 November)
 
