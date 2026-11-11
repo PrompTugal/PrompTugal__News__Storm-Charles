@@ -74,7 +74,7 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 
 **Runs were paused from 02:54 to 13:30 UTC on 11 November** for lack of credit on the OpenRouter account; they resumed at 13:30.
 
-**In one sentence:** of ${S.statements} statements, ${S.confirmed} confirmed at a primary body, ${S.press} press only, ${S.unsupported} unsupported and ${S.wrong} wrong; the wrong ones are the instructive ones: it said a government page records advice to Web Summit that the page does not contain; it said ANA had published nothing while citing the page that lists ANA's statement; and it joined two unrelated paragraphs of one page into a fact about MeteoAlarm's archive.
+**In one sentence:** of ${S.statements} statements, ${S.confirmed} confirmed at a primary body, ${S.press} press only, ${S.unsupported} unsupported and ${S.wrong} wrong; it is a good finder of addresses and a poor witness: it said a government page records advice to Web Summit that the page does not contain, twice said ANA had published nothing while citing the page that lists ANA's statement, and at 17:48 on Wednesday could not say that the bridges' limits had been lifted the night before.
 
 ## What this is
 

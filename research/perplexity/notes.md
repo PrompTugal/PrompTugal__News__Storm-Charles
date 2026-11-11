@@ -1,4 +1,4 @@
-> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 14:42 UTC
+> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 17:51 UTC
 
 ## What it is good for here, and what it is not
 
@@ -21,7 +21,7 @@ Our analysis of six runs (15 answers, two models); labelled as analysis, to be t
 - **The broad question.** "Which European events cancelled for a named storm since 2017?" got two unsupported examples from Sonar Pro (not on the page cited) and, in Portuguese, an answer about this storm. Sonar Pro searched only the United Kingdom's Met Office for a question about Lisbon.
 - **Being the source.** On the bridges and tunnels it has still returned no primary page at all in three answers. Where it does return primary pages it returns them in bulk from one site (all fifteen from one body in several Pro answers), which looks thorough and is one search.
 
-**So, for this team:** use it to find *where* something might be published, then read it there, including what the engine says is not there. After three rounds (23 answers): seven gave us an address worth opening that we did not hold; three contained a statement that would have misled us if believed; none gave us a fact we could use without opening the page.
+**So, for this team:** use it to find *where* something might be published, then read it there, including what the engine says is not there. After four rounds (31 answers): eight gave us an address worth opening that we did not hold; five contained a statement that would have misled us if believed; none gave us a fact we could use without opening the page.
 
 ## Round 3 (14:39 UTC): what four more questions added
 
@@ -33,19 +33,29 @@ Analysis of runs 7 to 10 (eight answers).
 - **It looks where the first result is.** Asked about five transport operators, Sonar Pro returned fifteen addresses, all CP's, and reported "not found" for the other four.
 - **The bare question against the briefed one** (the bridges, the same minute, the same model): both drew on the same 22 addresses and both missed that the restrictions had been lifted, on pages whose headlines say so. The bare answer reversed the order of Tuesday's and Wednesday's limits. The briefed answer named who said what and when, numbered its points, and said its best source was the press. The brief does not change what it finds; it changes how honestly it presents it.
 
+## Round 4 (17:47 UTC): has it caught up?
+
+Analysis of runs 11 to 14 (eight answers), asked as the warnings were ending.
+
+- **No. Its picture of a fast story is about a day old.** Asked plainly at 17:48 on Wednesday whether the bridge limits still stand and who lifted them, Sonar answered that it "cannot confirm" they have been lifted and that "no lifting notice appears". They were lifted on Tuesday at 22:29 (our record), limited again on Wednesday morning and lifted again. Four minutes earlier the same model had returned an address titled "Traffic normal restored on the Vasco da Gama and 25 de Abril bridges". The pages it called "the latest" were Tuesday's.
+- **Its copy of a page is older than the page.** Sonar Pro said again that the first item in ANA's newsroom is of 27 October. The first item has been ANA's storm statement since Wednesday morning; we read it there twice. Whatever it holds of that page was fetched before the statement was posted, and it presents it as now.
+- **It does not see data, only prose.** "No IPMA page reports warnings lowered": IPMA lowers a warning in its feed, not in an article. The team's hourly read of the feed has every change to the minute; the engine has what newspapers wrote about some of them.
+- **It is not stable.** At 13:30 Sonar Pro gave the PITCH final's page and slot; at 17:47, asked a wider question, it found "no page" on the final. The Tuesday 60 km/h limit was "10 November" at 02:53 and "11 November" at 17:48, from the same pages.
+- **Still useful as a finder**: the Portuguese answer returned the government's own index page for the storm, with every government statement listed and timed: one address worth more than the answer that carried it.
+
 ## The Sonar variants compared
 
-The same three questions (runs 1 to 3, in English), then three more where each model got one language. Small numbers: read as a first impression.
+The same three questions (runs 1 to 3, in English), then ten more where each model got one language. Figures after four rounds; small numbers still.
 
-- **Sonar Pro stays on the bodies' own sites.** 68 of its 90 addresses were primary bodies' pages, against 55 of 135 for Sonar. On Madeira all fifteen were the civil protection service's own; on the government's order, all fifteen were Diário da República.
-- **It is more careful, and no more right.** Its answers hedge more and separate "the press says" from "the body says" better. But 7 of its 18 statements were confirmed at a primary body against 11 of 26 for Sonar: about the same share. It made the ANA mistake above; Sonar made the government-page one.
-- **It costs about twice as much** (0.0125 against 0.0055 US dollars a question) and takes about three seconds longer.
+- **Sonar Pro stays on the bodies' own sites.** 133 of its 180 addresses were primary bodies' pages, against 85 of 303 for Sonar. The price of that is narrowness: asked about eight operators, it returned fifteen pages of one. On Madeira all fifteen were the civil protection service's own; on the government's order, all fifteen were Diário da República.
+- **It is more careful, and no more right.** Its answers hedge more and separate "the press says" from "the body says" better. But 11 of its 34 statements were confirmed at a primary body against 15 of 56 for Sonar: a third against a quarter, and 3 wrong against 2. It made the ANA mistake twice and joined the EUMETNET paragraphs; Sonar made the government-page one and misdated the bridges' limit.
+- **It costs about twice as much** (0.013 against 0.0056 US dollars a question) and takes about three seconds longer.
 - **Sonar Reasoning Pro returned nothing**: three calls came back empty after 20 to 35 seconds with no cost reported. Not compared.
 - **Sonar Deep Research was not run**: a run takes minutes, and the team's wrapper gives up after two (a call cut off may still be billed). Asked of incident.models@.
 
 ## Cost per useful lead
 
-Five leads read at primary addresses for 0.19 US dollars of model spend: about four cents a lead (round 3 added pointers and confirmations, no new lead). The real cost is the checking: 68 addresses opened against 95 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
+Six leads read at primary addresses for 0.26 US dollars of model spend: about four cents a lead. The real cost is the checking: 95 addresses opened against 129 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
 
 ## A hold on Web Summit's site (05:27 UTC)
 
@@ -53,5 +63,5 @@ Since 05:27 UTC this desk does not request websummit.com: an interim hold from i
 
 ## What is next
 
-- Thursday morning: what the operators and the organiser publish about Day 3 and the return of services; the same questions re-asked to see whether the engine has caught up.
+- Thursday morning: what the operators and the organiser publish about Day 3 and the return of services; the bridges question once more, to time how long the engine takes to catch up.
 - The reasoning and deep-research variants, if they can be made to answer within the wrapper's limits.

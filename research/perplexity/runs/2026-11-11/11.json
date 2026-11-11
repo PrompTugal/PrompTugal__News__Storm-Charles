@@ -1,0 +1,550 @@
+{
+ "about": "One research run: an open question of the incident team put to Perplexity (its Sonar models, through OpenRouter and tools/llm.mjs), the answer split into statements in our own words, and each statement checked by opening the address the engine cited. An engine's answer is evidence about the engine, not about the storm; nothing here is a fact until it is read at the body that decides or warns. The answers' full text is not here (raw store, outside git: the raw name and sha256 point to it).",
+ "by": "incident.perplexity@web-summit.dinis",
+ "date": "2026-11-11",
+ "n": 11,
+ "id": "thursday-services",
+ "topic": "Thursday 12 November: what the operators and ANA say",
+ "from": [
+  "board/items/q-thursday-transport.json"
+ ],
+ "updated": "2026-11-11T17:50:59Z",
+ "asks": [
+  {
+   "k": 1,
+   "at": "2026-11-11T17:47:14Z",
+   "lang": "en",
+   "question": "After Storm Charles crossed Portugal on Wednesday 11 November 2026: what have ANA (airports), TAP, CP, Fertagus, Metro de Lisboa, Carris, Transtejo Soflusa and Rede Expressos themselves said about services on Thursday 12 November 2026? Give each operator's own page and the time it was published; say plainly where you found only press.",
+   "model": "perplexity/sonar-pro",
+   "model_served": "perplexity/sonar-pro",
+   "settings": {
+    "brief": "the research brief (tools/perplexity-ask.mjs, BRIEF) with the time of asking",
+    "max_tokens": 800,
+    "search_context": "the engine's default"
+   },
+   "status": "ok",
+   "cost_usd": 0.0131769,
+   "tokens_in": 187,
+   "tokens_out": 450,
+   "latency_ms": 8383,
+   "raw": "2026-11-11/20261111T174714-aed81399.json",
+   "raw_sha256": "bfb251bf3fb4a405",
+   "cited": [
+    {
+     "n": 1,
+     "host": "ana.pt",
+     "used": true,
+     "url": "https://www.ana.pt/en/content-topic/find-flights?page="
+    },
+    {
+     "n": 2,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en/taxonomy/term/40?language=es&page=69"
+    },
+    {
+     "n": 3,
+     "host": "en.newsroom.ana.pt",
+     "used": true,
+     "url": "https://en.newsroom.ana.pt/news/"
+    },
+    {
+     "n": 4,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/"
+    },
+    {
+     "n": 5,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en/content-topic/airlines-0"
+    },
+    {
+     "n": 6,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/lisbon-airport.html"
+    },
+    {
+     "n": 7,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/folders/publications-caaa-614cf.html"
+    },
+    {
+     "n": 8,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en"
+    },
+    {
+     "n": 9,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/feed"
+    },
+    {
+     "n": 10,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/azores-airports.html"
+    },
+    {
+     "n": 11,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/newsletter/"
+    },
+    {
+     "n": 12,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en/content-topic/find-flights?language=en&page=1"
+    },
+    {
+     "n": 13,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/assets/"
+    },
+    {
+     "n": 14,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/traffic.html"
+    },
+    {
+     "n": 15,
+     "host": "en.newsroom.ana.pt",
+     "used": false,
+     "url": "https://en.newsroom.ana.pt/photos/?page=2"
+    }
+   ],
+   "statements": [
+    {
+     "i": 1,
+     "kind": "claim",
+     "s": "ANA's flights page says adverse weather is affecting some flights and advises passengers to check with their airline and allow extra time.",
+     "cites": [
+      1
+     ],
+     "check": "primary",
+     "at": "https://www.ana.pt/en/content-topic/find-flights?page=",
+     "read_utc": "2026-11-11T17:48:28Z",
+     "note": "Read at ana.pt at 17:48: the notice is still there, word for word as at 13:34."
+    },
+    {
+     "i": 2,
+     "kind": "claim",
+     "s": "That page was last updated on 11 November at 12:16 UTC and gives no plan for Thursday.",
+     "cites": [
+      1
+     ],
+     "check": "not-found",
+     "at": "https://www.ana.pt/en/content-topic/find-flights?page=",
+     "read_utc": "2026-11-11T17:48:28Z",
+     "note": "No 12:16 on the page. It gives no plan for Thursday: true."
+    },
+    {
+     "i": 3,
+     "kind": "none-found",
+     "s": "It found no statement about Thursday by TAP, CP, Fertagus, Metro de Lisboa, Carris, Transtejo Soflusa or Rede Expressos.",
+     "cites": [],
+     "check": "said-none",
+     "note": "All fifteen addresses it returned are ANA's: it searched one body for eight. Consistent with the board's open question all the same."
+    },
+    {
+     "i": 4,
+     "kind": "claim",
+     "s": "ANA's newsroom's latest item is unrelated: Porto's winter schedule, dated 27 October 2026.",
+     "cites": [
+      3
+     ],
+     "check": "wrong",
+     "at": "https://en.newsroom.ana.pt/news/",
+     "read_utc": "2026-11-11T17:48:31Z",
+     "note": "The newsroom's first item is \"Adverse weather conditions: update by airport – 11 November\" (our lead of 13:35, now a timeline row); the 27 October item is second. The same mistake, on the same page, as four hours earlier: the engine's copy of the page is older than the page."
+    }
+   ]
+  },
+  {
+   "k": 2,
+   "at": "2026-11-11T17:47:22Z",
+   "lang": "pt",
+   "question": "Depois da passagem da depressão Charles por Portugal na quarta-feira, 11 de novembro de 2026: o que disseram a própria ANA (aeroportos), a TAP, a CP, a Fertagus, o Metro de Lisboa, a Carris, a Transtejo Soflusa e a Rede Expressos sobre os serviços na quinta-feira, 12 de novembro de 2026? Indique a página de cada operador e a hora de publicação; diga claramente onde só encontrou imprensa.",
+   "model": "perplexity/sonar",
+   "model_served": "perplexity/sonar",
+   "settings": {
+    "brief": "the research brief (tools/perplexity-ask.mjs, BRIEF) with the time of asking",
+    "max_tokens": 800,
+    "search_context": "the engine's default"
+   },
+   "status": "ok",
+   "cost_usd": 0.0059697,
+   "tokens_in": 226,
+   "tokens_out": 800,
+   "latency_ms": 7389,
+   "raw": "2026-11-11/20261111T174722-1aa8dfde.json",
+   "raw_sha256": "785a3f085c7d7060",
+   "cited": [
+    {
+     "n": 1,
+     "host": "lisboasecreta.co",
+     "used": false,
+     "url": "https://lisboasecreta.co/en/storm-charles-lisbon-whats-closed/"
+    },
+    {
+     "n": 2,
+     "host": "cp.pt",
+     "used": false,
+     "url": "https://www.cp.pt/info/en/web/cp/w/tickets-lisbon"
+    },
+    {
+     "n": 3,
+     "host": "webcammadeira.com",
+     "used": false,
+     "url": "https://www.webcammadeira.com/en-US/news/madeira-weather-storm-watch-wednesday-november-11-2026"
+    },
+    {
+     "n": 4,
+     "host": "cp.pt",
+     "used": false,
+     "url": "https://www.cp.pt/info/en/lisbon"
+    },
+    {
+     "n": 5,
+     "host": "expresso.pt",
+     "used": true,
+     "url": "https://expresso.pt/economia/transportes/aviacao/2026-11-11-tempestade-charles-cancela-metade-dos-voos-nos-aeroportos-portugueses.-maioria-sao-da-tap-be48a846"
+    },
+    {
+     "n": 6,
+     "host": "cp.pt",
+     "used": false,
+     "url": "https://www.cp.pt/passageiros/en/train-times/Prices/lisbon-tickets"
+    },
+    {
+     "n": 7,
+     "host": "metrolisboa.pt",
+     "used": false,
+     "url": "https://www.metrolisboa.pt/en/"
+    },
+    {
+     "n": 8,
+     "host": "visitlisbonguide.com",
+     "used": false,
+     "url": "https://visitlisbonguide.com/getting-around/"
+    },
+    {
+     "n": 9,
+     "host": "executivedigest.sapo.pt",
+     "used": true,
+     "url": "https://executivedigest.sapo.pt/depressao-charles-o-que-abre-o-que-fecha-e-como-vai-funcionar-o-pais-esta-quarta-feira-guia-completo/"
+    },
+    {
+     "n": 10,
+     "host": "madeiraislandnews.com",
+     "used": false,
+     "url": "https://www.madeiraislandnews.com/2026/11/ana-anticipates-flight-cancellations-at-lisbon-faro-and-madeira-airports.html"
+    },
+    {
+     "n": 11,
+     "host": "ana.co.jp",
+     "used": false,
+     "url": "https://www.ana.co.jp/en/id/plan-book/routes/international-route-information/"
+    },
+    {
+     "n": 12,
+     "host": "heraldnews.com",
+     "used": true,
+     "url": "https://www.heraldnews.com/story/news/local/ojornal/2026/11/10/portugal-braces-for-storm-charles-as-schools-services-shut-down/92710458007/"
+    },
+    {
+     "n": 13,
+     "host": "expresso.pt",
+     "used": true,
+     "url": "https://expresso.pt/tempestades/2026-11-10-carris-transtejo-e-metro-de-lisboa-mantem-servicos-ligacoes-ferroviarias-poderao-ter-constrangimentos-autocarros-de-longo-curso-suspensos-67c0b5cf"
+    },
+    {
+     "n": 14,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en/content-topic/find-flights?language=es&page=1"
+    },
+    {
+     "n": 15,
+     "host": "ana.pt",
+     "used": false,
+     "url": "https://www.ana.pt/en"
+    }
+   ],
+   "statements": [
+    {
+     "i": 1,
+     "kind": "claim",
+     "s": "ANA said at 11:00 on 11 November that Lisbon, Faro and Madeira airports were operating with constraints and cancellations; found in Expresso, which says ANA sent it to newsrooms.",
+     "cites": [
+      5
+     ],
+     "check": "unreadable",
+     "at": "https://expresso.pt/economia/transportes/aviacao/2026-11-11-tempestade-charles-cancela-metade-dos-voos-nos-aeroportos-portugueses.-maioria-sao-da-tap-be48a846",
+     "read_utc": "2026-11-11T17:48:34Z",
+     "note": "Expresso answered 403 to our reader. The substance matches ANA's own statement, which we hold from ANA's newsroom; the engine again did not find that page."
+    },
+    {
+     "i": 2,
+     "kind": "claim",
+     "s": "TAP adjusted its operation and allowed changes without penalty for travel up to 17 November; press only.",
+     "cites": [
+      5,
+      12
+     ],
+     "check": "unreadable",
+     "at": "https://expresso.pt/economia/transportes/aviacao/2026-11-11-tempestade-charles-cancela-metade-dos-voos-nos-aeroportos-portugueses.-maioria-sao-da-tap-be48a846",
+     "read_utc": "2026-11-11T17:48:34Z",
+     "note": "Not readable at the first address; not on the second (O Jornal). A briefing site read in round 4 says the same of TAP. Press only at best."
+    },
+    {
+     "i": 3,
+     "kind": "claim",
+     "s": "CP said on 10 November there could be disruption on 10 and 11 November and offered refunds or free exchanges on long-distance and regional tickets.",
+     "cites": [
+      13
+     ],
+     "check": "unreadable",
+     "at": "https://expresso.pt/tempestades/2026-11-10-carris-transtejo-e-metro-de-lisboa-mantem-servicos-ligacoes-ferroviarias-poderao-ter-constrangimentos-autocarros-de-longo-curso-suspensos-67c0b5cf",
+     "read_utc": "2026-11-11T17:48:41Z",
+     "note": "Expresso answered 403. Executive Digest's guide, which we read, says CP allows refunds and exchanges."
+    },
+    {
+     "i": 4,
+     "kind": "claim",
+     "s": "Fertagus, Metro de Lisboa, Carris and Transtejo Soflusa were reported on 10 November as keeping their services on Wednesday, with warnings; some Metro stations open overnight as shelter.",
+     "cites": [
+      13
+     ],
+     "check": "press",
+     "at": "https://executivedigest.sapo.pt/depressao-charles-o-que-abre-o-que-fecha-e-como-vai-funcionar-o-pais-esta-quarta-feira-guia-completo/",
+     "read_utc": "2026-11-11T17:48:36Z",
+     "note": "Read in Executive Digest's guide (returned, not cited): Metro, Carris and Fertagus run with warnings. The overnight shelter is still not found at any address we could read."
+    },
+    {
+     "i": 5,
+     "kind": "none-found",
+     "s": "It found no page of any operator about Thursday 12 November.",
+     "cites": [],
+     "check": "said-none",
+     "note": "Consistent with the board's open question q-thursday-transport."
+    }
+   ]
+  }
+ ],
+ "addresses": {
+  "https://www.ana.pt/en/content-topic/find-flights?page=": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": true,
+   "read_utc": "2026-11-11T17:48:28Z",
+   "http": 200,
+   "bytes": 289985,
+   "sha256": "61398ebfebc714881d38ec30a20195665acd878f372362dd5679b83a15de8252",
+   "title": "Find Flights | Lisbon Airport",
+   "text_chars": 38430
+  },
+  "https://www.ana.pt/en/taxonomy/term/40?language=es&page=69": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/news/": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": true,
+   "read_utc": "2026-11-11T17:48:31Z",
+   "http": 200,
+   "bytes": 79343,
+   "sha256": "1bea13cf8f47629876e8964301b8bc91020260608126472d80ea90e9161a4e66",
+   "title": "News - ANA-Aeroportos de Portugal",
+   "text_chars": 1985
+  },
+  "https://en.newsroom.ana.pt/": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en/content-topic/airlines-0": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/lisbon-airport.html": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/folders/publications-caaa-614cf.html": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/feed": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/azores-airports.html": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/newsletter/": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://www.ana.pt/en/content-topic/find-flights?language=en&page=1": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/assets/": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/traffic.html": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://en.newsroom.ana.pt/photos/?page=2": {
+   "host": "en.newsroom.ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  },
+  "https://lisboasecreta.co/en/storm-charles-lisbon-whats-closed/": {
+   "host": "lisboasecreta.co",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.cp.pt/info/en/web/cp/w/tickets-lisbon": {
+   "host": "cp.pt",
+   "class": "primary",
+   "source": "transport",
+   "opened": false
+  },
+  "https://www.webcammadeira.com/en-US/news/madeira-weather-storm-watch-wednesday-november-11-2026": {
+   "host": "webcammadeira.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.cp.pt/info/en/lisbon": {
+   "host": "cp.pt",
+   "class": "primary",
+   "source": "transport",
+   "opened": false
+  },
+  "https://expresso.pt/economia/transportes/aviacao/2026-11-11-tempestade-charles-cancela-metade-dos-voos-nos-aeroportos-portugueses.-maioria-sao-da-tap-be48a846": {
+   "host": "expresso.pt",
+   "class": "press",
+   "source": "press",
+   "opened": true,
+   "read_utc": "2026-11-11T17:48:34Z",
+   "http": 403,
+   "bytes": 773,
+   "sha256": "52ffd253e568a4fd959f790669df26ee95f20d82c7953ba58c4031aa494a2ce3",
+   "title": "expresso.pt",
+   "text_chars": 55
+  },
+  "https://www.cp.pt/passageiros/en/train-times/Prices/lisbon-tickets": {
+   "host": "cp.pt",
+   "class": "primary",
+   "source": "transport",
+   "opened": false
+  },
+  "https://www.metrolisboa.pt/en/": {
+   "host": "metrolisboa.pt",
+   "class": "primary",
+   "source": "transport",
+   "opened": false
+  },
+  "https://visitlisbonguide.com/getting-around/": {
+   "host": "visitlisbonguide.com",
+   "class": "other",
+   "opened": false
+  },
+  "https://executivedigest.sapo.pt/depressao-charles-o-que-abre-o-que-fecha-e-como-vai-funcionar-o-pais-esta-quarta-feira-guia-completo/": {
+   "host": "executivedigest.sapo.pt",
+   "class": "press",
+   "opened": true,
+   "read_utc": "2026-11-11T17:48:36Z",
+   "http": 200,
+   "bytes": 276457,
+   "sha256": "149f65c2ec8f0e9622a8a1e92cc37b2c28cda2ab97c228c3271cbc3fdc13ea59",
+   "title": "Depressão Charles: o que abre, o que fecha e como vai funcionar o país esta quarta-feira. Guia completo",
+   "text_chars": 15705
+  },
+  "https://www.madeiraislandnews.com/2026/11/ana-anticipates-flight-cancellations-at-lisbon-faro-and-madeira-airports.html": {
+   "host": "madeiraislandnews.com",
+   "class": "press",
+   "source": "press",
+   "opened": false
+  },
+  "https://www.ana.co.jp/en/id/plan-book/routes/international-route-information/": {
+   "host": "ana.co.jp",
+   "class": "other",
+   "opened": false
+  },
+  "https://www.heraldnews.com/story/news/local/ojornal/2026/11/10/portugal-braces-for-storm-charles-as-schools-services-shut-down/92710458007/": {
+   "host": "heraldnews.com",
+   "class": "press",
+   "opened": true,
+   "read_utc": "2026-11-11T17:48:39Z",
+   "http": 200,
+   "bytes": 200012,
+   "sha256": "d7ac625bae86a568b1089e5566b77ee0e2136e8f4a0f9fac7653ded907dd6ba7",
+   "title": "Portugal braces for Storm Charles as schools, services shut down",
+   "text_chars": 6677
+  },
+  "https://expresso.pt/tempestades/2026-11-10-carris-transtejo-e-metro-de-lisboa-mantem-servicos-ligacoes-ferroviarias-poderao-ter-constrangimentos-autocarros-de-longo-curso-suspensos-67c0b5cf": {
+   "host": "expresso.pt",
+   "class": "press",
+   "source": "press",
+   "opened": true,
+   "read_utc": "2026-11-11T17:48:41Z",
+   "http": 403,
+   "bytes": 773,
+   "sha256": "322cd1d8159dc1d69d062d844dada4b25271a68096098eff97460714c8524b0d",
+   "title": "expresso.pt",
+   "text_chars": 55
+  },
+  "https://www.ana.pt/en/content-topic/find-flights?language=es&page=1": {
+   "host": "ana.pt",
+   "class": "primary",
+   "source": "companies",
+   "opened": false
+  }
+ },
+ "checked_by": "incident.perplexity@web-summit.dinis"
+}
