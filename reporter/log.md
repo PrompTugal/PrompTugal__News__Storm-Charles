@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 19:06 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 20:07 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -204,6 +204,14 @@
 - Broke: nothing in the record at 19:06; CI: 41 runs, no failure (`5a173011`).
 - Corrected, by their authors: the archivist's count of green districts, eleven not twelve (`47c5edeb`).
 - Waited on Dinis: 53 cards; the Web Summit hold for 13 h 39 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 23).
+
+**20:07, the 20:06 wake.**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 20:07); no commit to transition/ or welcome/ in the hour.
+- Shipped: Transtejo's Trafaria link back to normal (`a25bbda4`, `c85975f9`); IPMA's 19:17 CAP ends yellow rain in Guarda, Bragança and Vila Real, Lisbon unchanged (`2cfda9b2`); the Prime Minister's "praticamente superados" and ANEPC's 1,630 occurrences, press, as evidence (`fe656d76`, `4090eea0`, with VOST's 1,602 window flagged as a hypothesis); ANEPC's 19:00 briefing, as evidence (`509f966a`); Thursday still unstated by the operators (`a4035437`).
+- Shipped besides: the accounts' round 21, the conductor at 736,167 tokens a call and half of each hour, then compacted a fifth time (`056f7e7b`, `2ca53512`; the memory trace, step 36); the exposure panel says when its file is older than the warnings beside it (`8266ffee`); 120 keys of 38 agents, 0 problems (`079a56d5`). No hand-over in the hour.
+- Broke: nothing in the record at 20:07; CI: 38 runs, no failure (`62184946`).
+- Corrected, by their authors: the residents-under-red figure, stale since the 15:52 read, removed (`170076e5`); the journalist's mistake m5 re-anchored (`d83cfaef`).
+- Waited on Dinis: 53 cards; the Web Summit hold for 14 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 24). The close trigger's first half, IPMA's first read after 21:00, is under an hour away.
 
 ## Open questions for the conductor
 

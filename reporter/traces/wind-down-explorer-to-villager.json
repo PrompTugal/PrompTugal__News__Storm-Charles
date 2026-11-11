@@ -28,7 +28,7 @@
   "what": "transition/PLAN.md (the plan), transition/interviews/ (exit interviews), the closing record (reporter, journalist, storyteller, librarian), a storm conductor for business as usual",
   "url": "https://storm-charles.promptugal.news/transition/PLAN.html"
  },
- "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 19:06); the bridges back to normal at 18:44, only the sea warnings left, orange to 21:00 (step 23); the close trigger is IPMA's first read after 21:00 plus the organisers' Day 3 decision",
+ "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 20:07); the Prime Minister says the worst is practically over, as evidence, the ferries and bridges back (step 24); the close trigger's first half, IPMA's first read after 21:00, is under an hour away",
  "duration": {
   "from": "2026-11-11T10:29:37Z",
   "to": null,
@@ -1004,7 +1004,8 @@
      "version": "v0.1.1447",
      "run": 1447,
      "own_run": false,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T18:19:02Z"
+     "served_by": "2026-11-11T18:45:31Z",
+     "push_to_served_s": 78
     }
    ],
    "n": 23,
@@ -1014,13 +1015,70 @@
     "incident.transport@web-summit.dinis",
     "incident.brief@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the government says the worst is past, as evidence",
+   "sha": "fe656d76b435a4e71d81b90787451a8d10210aa5",
+   "in": "the press: the Prime Minister quoted by Observador; ANEPC's count reported by RTP",
+   "out": "\"19:35 row: Montenegro 'praticamente superados' (Observador), ANEPC 1,630 (RTP); evidence\". Beside it, as fact from the operators: Transtejo's Trafaria link back to normal (a25bbda4, 19:07:45); IPMA's 19:17 CAP ends yellow rain in three northern districts, Lisbon unchanged, sea warnings only (2cfda9b2). Thursday is still unstated by the operators (a4035437). The close trigger is unchanged: IPMA's first read after 21:00 plus the organisers' Day 3 decision. No commit to transition/ in the hour; the plan still waits on Dinis's yes.",
+   "handoff": {
+    "to": "incident.planner@web-summit.dinis",
+    "via": "transition/PLAN.md",
+    "evidence_of_handoff": "not in the record at 20:07: no commit to transition/ since 12:10"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md"
+    },
+    {
+     "type": "commit",
+     "sha": "a25bbda4cf02b4787e4bb8121e1c5b446c440327",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a25bbda4cf02b4787e4bb8121e1c5b446c440327"
+    },
+    {
+     "type": "commit",
+     "sha": "2cfda9b252b197fc06a41755103db8d8c93c4024",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2cfda9b252b197fc06a41755103db8d8c93c4024"
+    },
+    {
+     "type": "commit",
+     "sha": "a4035437a3d50405064a71cb5700d192db4f7bd6",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/a4035437a3d50405064a71cb5700d192db4f7bd6"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "fe656d76b435a4e71d81b90787451a8d10210aa5",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/fe656d76b435a4e71d81b90787451a8d10210aa5"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1480",
+     "run": 1480,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T19:18:10Z"
+    }
+   ],
+   "n": 24,
+   "at": "2026-11-11T19:35:38Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.weatherwatch@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 23,
+  "steps": 24,
   "steps_with_no_evidence": 0,
   "person_steps": 3,
-  "agent_steps": 20
+  "agent_steps": 21
  },
  "people_acted": [
   "Dinis Cruz"
