@@ -5,7 +5,7 @@
     'use strict'
     const D = window.StormData, { el, TYPES, SHAPE, SHAPE_WORD } = D
     const root = document.getElementById('ontology'), BASE = root.dataset.base, NS = 'http://www.w3.org/2000/svg'
-    root.innerHTML = '<p class="kicker">The ontology, drawn</p><h1>Eight kinds of thing, eight verbs, each with its inverse</h1>' +
+    root.innerHTML = '<p class="kicker">The ontology, drawn</p><h1 id="o-h1">The kinds of thing and the verbs between them, each verb with its inverse</h1>' +
         '<p class="meta" id="o-note">Reading…</p>' +
         '<div class="g-layout"><div class="o-stage"><svg id="o-svg" viewBox="0 0 760 560" role="img" aria-label="The kinds of thing and the verbs between them"></svg></div>' +
         '<aside class="g-panel" id="o-panel" aria-live="polite"><p class="meta">Press a kind of thing or a verb.</p></aside></div>' +
@@ -70,6 +70,7 @@
         try {
             G = await D.load(BASE)
             $('o-note').textContent = `${G.ont.grammar} Every node and edge carries label, source, read and origin. Below: only the arrows the graph actually has now (${G.storm.nodes.length} things, ${G.storm.edges.length} links, as of ${D.when(G.storm.as_of)}).`
+            $('o-h1').textContent = `${D.TYPES.length} kinds of thing, ${Object.keys(G.ont.relations).length} verbs, each with its inverse`
             draw(); const h = decodeURIComponent(location.hash.slice(1)); if (G.ont.relations[h]) showVerb(h); else showType(G.ont.types[h] ? h : 'Decision')
             addEventListener('hashchange', () => { const x = decodeURIComponent(location.hash.slice(1)); if (G.ont.relations[x]) showVerb(x); else if (G.ont.types[x]) showType(x) })
         } catch (e) { $('o-note').textContent = 'The ontology could not be read: ' + (e && e.message || e) }

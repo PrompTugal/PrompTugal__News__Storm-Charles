@@ -216,6 +216,18 @@ if (CAP) {
         edge({ from: id, to: place('LSB', { source: src, read: readAt, origin }), rel: 'located-in', label: 'fact', source: src, read: readAt, origin })
         capRows.push({ id, m, level, type, sent, starts, ends, src, readAt, origin, replaces: rep0 ? capId(rep0.identifier) : null, replaces_sent: rep0 ? toZ(rep0.sent_utc) : null })
     })
+    // issued-as: the same warning, opened into IPMA's own message for it. A warning the researcher recorded matches a
+    // message of the same level and type whose start is the warning's effect start; a warning in force matches the
+    // message with the same type, level, start and end. No match, no edge (the message may have left the feed).
+    const TYPE_WORD = [[/wind|vento/, 'Vento'], [/rain|precip|chuva/, 'Precipitação'], [/sea|agita|mar[ií]t|wave/, 'Agitação Marítima'], [/thunder|trovoada/, 'Trovoada'], [/snow|neve/, 'Neve'], [/fog|nevoeiro/, 'Nevoeiro']]
+    const same = (a, b) => epoch(toZ(a)) !== null && epoch(toZ(a)) === epoch(toZ(b))
+    const issuedAs = (from, r) => edge({ from, to: r.id, rel: 'issued-as', label: 'fact', source: r.src, read: r.readAt, origin: r.origin })
+    for (const e of G.edges.filter(isWarning)) {
+        const level = (e.id.match(/red|orange|yellow/) || [])[0], type = (TYPE_WORD.find(([re]) => re.test(e.id)) || [])[1]
+        if (!level || !type || !e.effect_from_utc) continue
+        for (const r of capRows) if (r.level === level && r.type === type && same(r.starts, e.effect_from_utc)) issuedAs(idOf.get(e.id), r)
+    }
+    for (const id of inForce) { const n = nodes.get(id); if (n.area !== 'LSB') continue; for (const r of capRows) if (r.level === n.level && r.type === n.warning_type && same(r.starts, n.starts) && same(r.ends, n.ends)) issuedAs(id, r) }
     for (const r of capRows) if (r.replaces && have.has(r.replaces)) {
         const a = epoch(toZ(have.get(r.replaces).sent_utc)), b = epoch(r.sent)
         edge({ from: r.replaces, to: r.id, rel: 'precedes', lead_minutes: a !== null && b !== null ? Math.round((b - a) / 60) : null, label: 'fact', source: r.src, read: r.readAt, origin: r.origin + '/replaces' })

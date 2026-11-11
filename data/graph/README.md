@@ -8,7 +8,7 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 
 | File | What |
 |---|---|
-| [ontology.json](ontology.json) | the eight kinds of thing and eight verbs below, each with its inverse; the builder refuses anything else |
+| [ontology.json](ontology.json) | the eight kinds of thing and nine verbs below, each with its inverse; the builder refuses anything else |
 | [storm.json](storm.json) | the graph: `nodes[]` and `edges[]` (one per line), `counts`, `built_from` (each input file with its sha256). Lisbon, the decisions and everything else |
 | [storm-sources.json](storm-sources.json) | part of the graph, same shape: every Source and Dataset, with the `cites` and `produced-by` edges that touch them; its edges point into `storm.json` |
 | [storm-elsewhere.json](storm-elsewhere.json) | the rest of the graph, same shape: the warnings in force in the other districts, and those districts; its edges point into `storm.json` |
@@ -48,6 +48,7 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 | `affects` | `affected-by` | Decision or Warning, Actor | the actors a decision touches (the researcher's `to`) |
 | `located-in` | `contains` | Warning or Place, Place | a warning's area |
 | `produced-by` | `produces` | Dataset or Source, Agent or Actor | who made it |
+| `issued-as` | `issue-of` | Warning, Warning | the same warning, opened: a warning as recorded (or in force) and the body's own message that carries it (IPMA's CAP message, with the time sent) |
 
 **Labels.** A *fact* was read on the channel of the body that decides or warns. *Evidence* is reported by others, with its source. A *hypothesis* is our analysis, with its reasons, never stated as fact. A derived item takes the label of the item it came from; an outlet, a place, a dataset or an agent is a fact about the file or URL that names it.
 

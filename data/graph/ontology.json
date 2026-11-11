@@ -1,5 +1,5 @@
 {
-  "about": "The ontology of an incident on this site: eight kinds of thing and eight relations, small enough to explain on one page (README.md beside this file). tools/graph-build.mjs reads it, builds data/graph/storm.json and data/graph/tables/*.json from the incident's JSON files, and refuses a node or edge this file does not allow. Kept by incident.graph@web-summit.dinis.",
+  "about": "The ontology of an incident on this site: eight kinds of thing and nine relations, small enough to explain on one page (README.md beside this file). tools/graph-build.mjs reads it, builds data/graph/storm.json and data/graph/tables/*.json from the incident's JSON files, and refuses a node or edge this file does not allow. Kept by incident.graph@web-summit.dinis.",
   "version": 1,
   "written": "2026-11-10T23:50Z",
   "by": "incident.graph@web-summit.dinis",
@@ -158,6 +158,16 @@
         "Actor"
       ],
       "what": "who made it: a dataset by the agent that keeps it, a source by the actor whose channel it is"
+    },
+    "issued-as": {
+      "inverse": "issue-of",
+      "from": [
+        "Warning"
+      ],
+      "to": [
+        "Warning"
+      ],
+      "what": "the same warning, opened: a warning as the researcher recorded it (or as it stands in force) and the body's own message that carries it (IPMA's CAP message, with the time IPMA sent it). The step from a warning to its issue"
     }
   },
   "own_channels": {
@@ -189,6 +199,6 @@
   },
   "not_in_the_graph": "People. No private person is a node; journalists and officials are not modelled here (incident.media@ keeps by-lines on public articles in its own files). Forecast values and observations stay in weather/*.json: the graph links the dataset, not each number.",
   "not_a_warning_service": "The graph records what authorities decided and warned, and when we read it. It is not a forecast and gives no advice: follow IPMA and ANEPC.",
-  "updated": "2026-11-11T02:12Z",
+  "updated": "2026-11-11T02:21Z",
   "grammar": "Every edge is a verb with a distinct inverse (relations.<verb>.inverse); there is no generic 'related to' edge. The whole graph is never drawn: a view is the result of a question. A node opens into its own graph (a warning into IPMA's messages for it, a decision into what it followed and where it was read). After graphs.sgit.ai (meaning through connectivity) and Fractal Semantic Graphs."
 }

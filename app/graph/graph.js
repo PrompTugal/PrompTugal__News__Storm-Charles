@@ -35,13 +35,13 @@
     const lisbon = n => !(n.type === 'Warning' && n.phase === 'in_force' && n.area !== 'LSB') && !(n.type === 'Place' && n.code !== 'LSB' && n.code !== 'PT-mainland')
     const PRESETS = [
         { id: 'decided-on-warning', q: 'Who decided what, on whose warning?', say: 'Every decision that happened and every warning issued, who made each, and what followed what.',
-          run: () => { const core = ofType('Decision', 'Warning').filter(n => n.phase !== 'in_force' && (n.status === 'happened' || n.type === 'Warning')).map(n => n.id); return around(core, 1, ['decides', 'warns', 'precedes']) } },
+          run: () => { const core = ofType('Decision', 'Warning').filter(n => n.phase !== 'in_force' && (n.status === 'happened' || n.type === 'Warning')).map(n => n.id); return around(core, 1, ['decides', 'warns', 'precedes', 'issued-as']) } },
         { id: 'last-hour', q: 'What changed in the last hour?', say: 'Everything dated or read in the hour before the newest input, and what each is linked to.',
           run: () => { const end = Date.parse(G.storm.as_of), t = n => Date.parse(n.at || '') || 0; const core = G.storm.nodes.filter(n => lisbon(n) && n.type !== 'Dataset' && n.type !== 'Agent' && n.type !== 'Source' && end - t(n) <= 3600e3 && end - t(n) >= 0).map(n => n.id); return around(core, 1) } },
         { id: 'open', q: 'What is still not announced?', say: 'Decisions that were due and not announced when last read, our hypotheses (never stated as fact), and who owes each.',
           run: () => around(ofType('Decision').filter(n => ['not_announced', 'expected', 'unknown'].includes(n.status)).map(n => n.id), 1, ['decides', 'precedes']) },
         { id: 'warnings-lisbon', q: 'What did IPMA warn for Lisbon, and when?', say: 'IPMA\'s own messages for the Lisbon district (with the time IPMA sent each), the warnings in force, and what replaced what.',
-          run: () => around(ofType('Warning').filter(n => n.area === 'LSB' || n.phase === 'issued').map(n => n.id), 1, ['warns', 'precedes', 'located-in']) },
+          run: () => around(ofType('Warning').filter(n => n.area === 'LSB' || n.phase === 'issued').map(n => n.id), 1, ['warns', 'precedes', 'issued-as', 'located-in']) },
         { id: 'who-reported', q: 'Who reported what?', say: 'The outlets and bodies that published each signal and each reported decision.',
           run: () => { const es = G.storm.edges.filter(e => e.rel === 'reports'); return new Set(es.flatMap(e => [e.from, e.to])) } },
         { id: 'where-read', q: 'Where was each decision read?', say: 'Each decision and the addresses it was read at or is corroborated by, with whose channel each address is.',
