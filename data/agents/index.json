@@ -14,8 +14,8 @@
     "about": "The one count of the team to cite (data/agents/count.json is the same object): agents = the roster in agents/JOBS.md; with_active_key = agents with at least one key marked active in data/keys.json; sessions = session keys ever published (one per session); handed_over = sessions that handed over to a fresh one.",
     "agents": 41,
     "with_active_key": 38,
-    "sessions": 111,
-    "handed_over": 72
+    "sessions": 112,
+    "handed_over": 73
   },
   "counts": {
     "agents": 41,
@@ -171,8 +171,8 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "948293f313fcbb6515f3a36e0110a51894e80de8c61e9fe9f9b9d230305dfb12",
-      "state": "fifth session: the front-page panel data (data/agents/now.json) pushed for incident.weather@",
+      "status_sha256": "d1597f532b66b985e8ffb053d61798ced1765dcd3f776a65cec3d4ad98a2f7ee",
+      "state": "seventh session: the team at work says the snapshot's age instead of an undercount past 20 min (flags.snapshot_age_min); next, the page-views lane",
       "last_wake": "2026-11-11T11:53:00Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
@@ -249,8 +249,16 @@
           "record": "sha256:ef293918e203848b",
           "encryption": "sha256:bf0204799ea364ad",
           "added": "2026-11-11",
+          "status": "handed over",
+          "how": "Made in its own session on 11 November 2026, 11:55 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The sixth observability session, started from agents/observability/HANDOVER.md. A session key: it ends with the session. That session handed over to a seventh at about 15:21 UTC on 11 November."
+        },
+        {
+          "id": "incident-observability-dinis-7",
+          "record": "sha256:022fd17e12b49400",
+          "encryption": "sha256:c8bb8156036177d7",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 11 November 2026, 11:55 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The sixth observability session, started from agents/observability/HANDOVER.md. A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 15:21 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, checked before it ran). The seventh observability session, started from agents/observability/HANDOVER.md. A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -404,23 +412,23 @@
       "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
       "shared_row": false,
       "status_file": "agents/identity/status.json",
-      "status_sha256": "14fc43f14ec2f6e862c281a44d74d8b8a9ab71561122dd6c39b527dd1fcca493",
+      "status_sha256": "411a9bce952404de299f7df64afa283810eaa0219a8c5c0bad05a8c52f002ff8",
       "state": "the conductor's append lane for vault keys is open (vault wowyrqlr, data/lanes.json keys_to_conductor). Dinis's feedback lane exists on the same vault and stays off until his key is a named sender. The login and the sealed feedback box are live as before",
-      "last_wake": "2026-11-11T14:21:33Z",
+      "last_wake": "2026-11-11T15:21:32Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
         "SECURITY.md: the design for the login, the feedback lane, the reverse path and the two vaults; what is public, what a stolen token or key allows, what we will not build",
-        "09:34: at the conductor's message of 09:30 (Dinis in BRIEF.md: \"The keys and vaults are created by the specific agent and then sent to you via your append lane\"): made an empty vault for the lane with sgit (wowyrqlr on dev.send.sgraph.ai; …",
         "09:39: Dinis said yes in this session. Vault wowyrqlr pushed, two append lanes configured (lane-configure.mjs, the real server), data/lanes.json publishes the endpoint, the vault id, the two write-only tokens and the recipient key id, and …",
         "09:41: the lane is live end to end since 09:40 UTC, by the conductor's report: it opened the sealed line (the key of vault wowyrqlr stored) and its drain read one entry and saved one vault key, never printed. It drains at each wake; the se…",
         "10:23: third session started ([session]): its own session key incident-identity-dinis-3 (record sha256:4576d54b573c363f, encryption sha256:c3f77eedf6884139; pki-agent.mjs checked against fcb28a1c...02ab), the second session's entry marked …",
         "11:25: wake: 82 keys of 34 agents, 0 problems (since 10:22: new session keys of transport, planner, stories, media, librarian, designer, weather, journalist, each with the entry before marked handed over where there was one); no private ha…",
         "12:22: wake: 93 keys of 38 agents, 0 problems (since 11:24: new session keys of labs, transport, weather, datascience, observability, brief, designer, desk, librarian, sherpa, journalist; earlier entries marked handed over); no private hal…",
         "13:23: wake: 104 keys of 38 agents, 0 problems (since 12:22: new session keys of reporter, entities, ipma, accountant, librarian, wikipedia, transport, ci, board, weather, stories; earlier entries marked handed over); no private half in an…",
-        "14:21: wake: 110 keys of 38 agents, 0 problems (since 13:23: new session keys of graph, social, stories, transport, designer, weatherwatch; earlier entries marked handed over); no private half in any tracked file; signed.json unchanged and…"
+        "14:21: wake: 110 keys of 38 agents, 0 problems (since 13:23: new session keys of graph, social, stories, transport, designer, weatherwatch; earlier entries marked handed over); no private half in any tracked file; signed.json unchanged and…",
+        "15:21: wake: 111 keys of 38 agents, 0 problems (since 14:21, by diffing data/keys.json: incident-librarian-dinis-11 added, -10 handed over; the 14:21 line checked the same way: weatherwatch-4 was new as written); no private half in any tra…"
       ],
-      "done_total": 28,
+      "done_total": 29,
       "next": [
         "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
         "when a token is in the environment and he says yes: the bridge vault (sgit), then SG_SEND_TOKEN and LANE_VAULT_KEY in the environment and node tools/lane-configure.mjs; the data vault; their keys sealed to him",
@@ -1021,9 +1029,9 @@
       "job": "**the pipeline and repository made visible**: every run and commit, who pushed, what is signed; the README and guidance",
       "shared_row": false,
       "status_file": "agents/ci/status.json",
-      "status_sha256": "66a0580247bf563af47047818d2f46b97b2e1681fa11e2c75a9d1f4a33661f00",
+      "status_sha256": "b7feaf3afa5954460a2db1c2edaf48bedb5291c9b128a263037a43fcec5c6350",
       "state": "handing over to a third session at the conductor's word (context past 220k tokens a call): agents/ci/HANDOVER.md",
-      "last_wake": "2026-11-11T14:20:00Z",
+      "last_wake": "2026-11-11T15:18:00Z",
       "jobs": [
         "C1: the data, outside the build's hot path: tools/ci-read.mjs -> data/ci/runs/<date>.json, data/ci/commits/<date>.json, tree.json, index.json; what is and is not signed, honestly; ci/signing.md",
         "C2: the pages: ci/ (the pipeline), ci/commits, ci/collaboration, ci/repository",
@@ -1034,16 +1042,16 @@
       "done": [
         "02:19Z session key made (record sha256:815a07d3a9d80692), public half in data/keys.json",
         "02:22Z tools/ci-read.mjs: 204 runs and 224 commits read (GitHub's Actions API and a full clone) into data/ci/ (day files, each under 256 KB; a finished run is never asked for twice)",
-        "10:19Z wake: 830 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 106 runs since 09:18 (nearly three times the hour before): 79 served, 26 replaced; gate on the runner median 5 s, max 11 s (81 runs since the fast…",
         "11:25Z wake: 939 runs, 6 failed (none since 02:59); a fifth deploy retry (run 867, 10:32, second try passed); 108 runs since 10:18: 63 served, 45 replaced; gate on the runner last-20 median 6 s (5 s until now), max 11 s this hour; push to …",
         "12:15Z wake: 1,055 runs, 6 failed (none since 02:59), 5 deploy retries (none new since 10:32); 115 runs since 11:24: 71 served, 42 replaced; gate on the runner median 6 s, max 9 s; push to served median 42 s, max 77 s; queue max 41 s; ci/p…",
         "12:20Z wake: brief-pdf.patch applied by the conductor (1a5f32d7, key narrowed to brief/** and its two tools at its ask); the three PDFs served at 12:18:38 UTC; on the runner a miss costs 12 s (run 1061), a hit under 1 s (run 1064); watchin…",
         "12:33Z wake: at the conductor's ask, where the gate's time goes at 2,297 pages (ci/patches/README.md) and a cut: ci/patches/generators-together.patch (the twelve before-generators side by side: gate 6.0 to 6.5 s down to 4.7 to 5.6 s here, …",
         "12:38Z wake: generators-together applied by the conductor (f9ff8bc9, run 1109): on the runner three runs so far at 5, 5, 6 s (median 6 before): too few to call; HANDOVER.md rewritten for a third session (context past 220k a call); the wake…",
         "13:22Z wake: 64 runs since 12:40 (44 ok, 20 replaced), no failure, no retry; gate last-20 median 6 s, max 8; push to served median 52 s this hour (max 96), queue max 48 s; generators-together on the runner: 20 runs after, gate median 5.5 s…",
-        "14:20Z wake: 52 runs since 13:22 (42 ok, 10 replaced), no failure; deploy retry fired on run 1232 (14:10), second try passed (the sixth); gate last-20 median 5 s, max 8; push to served median 44 s (max 88), queue max 61 s; brief PDFs: 42 r…"
+        "14:20Z wake: 52 runs since 13:22 (42 ok, 10 replaced), no failure; deploy retry fired on run 1232 (14:10), second try passed (the sixth); gate last-20 median 5 s, max 8; push to served median 44 s (max 88), queue max 61 s; brief PDFs: 42 r…",
+        "15:18Z wake: 49 runs since 14:20 (40 ok, 9 replaced), no failure, no new retry; gate last-20 median 5 s; gate-overlap (d4ba6505, run 1264) on the runner: 20 runs after median 5 s (max 8) vs 6 s (max 9) for 17 before, push to served 41.5 vs…"
       ],
-      "done_total": 29,
+      "done_total": 30,
       "next": [
         "read the next twenty runs after run 1109 and tell the conductor the gate before and after generators-together; then remove ci/patches/generators-together.patch and mark its README row applied",
         "on Dinis's yes: the conductor applies ci/patches/signed-release-record.patch; /ci/ then shows signed or unsigned per push, verified in the reader's browser",
@@ -3411,6 +3419,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T15:20:12Z",
-  "content_sha256": "0e7e7b69f4f404fffa4ab8d33763d99026066b21c32063cd052d767e2395d06f"
+  "updated": "2026-11-11T15:23:39Z",
+  "content_sha256": "3ceef7624a55822eab9d402f326505dd460c31a4e789b1c22b0baab10e171ccb"
 }

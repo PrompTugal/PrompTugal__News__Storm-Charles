@@ -61,7 +61,11 @@ const recent = all.filter(c => NOW - ms(c.at) <= HOUR)
 const byAgent = new Map()   // one row per agent: its newest push, every For: of the hour, how many pushes
 for (const c of recent) { const a = byAgent.get(c.agent); if (!a) byAgent.set(c.agent, { ...short(c), for: new Set(c.for), commits: 1, woke: woke.get(c.agent) || null }); else { a.commits++; c.for.forEach(x => a.for.add(x)) } }
 const working = [...byAgent.values()].filter(a => a.agent).map(a => ({ ...a, for: [...a.for] })).sort((a, b) => b.at.localeCompare(a.at))
-const stale = !recent.length
+// The snapshots are refreshed at releases, not at builds: past STALE_MIN minutes the hour's count undercounts, so say so (additive flags).
+const STALE_MIN = 20
+const snapAt = [snapA?.updated, ciIdx?.updated].filter(x => typeof x === 'string' && Number.isFinite(ms(x)) && ms(x) <= NOW).sort().pop() || null
+const snapshotAge = snapAt ? Math.floor((NOW - ms(snapAt)) / 60e3) : null
+const stale = !recent.length || snapshotAge == null || snapshotAge > STALE_MIN
 const latest = (stale ? all.slice(0, 12) : recent.slice(0, 12)).map(short)
 const wokeHour = [...woke].filter(([, w]) => NOW - ms(w) <= HOUR).map(([agent, at]) => ({ agent, role: roleOf(agent), at, source: `agents/${roleOf(agent)}/status.json` })).sort((a, b) => b.at.localeCompare(a.at))
 
@@ -133,11 +137,11 @@ const feedsAll = (cat?.datasets || []).filter(d => typeof d.url === 'string' && 
 
 const BUILT = new Date(NOW).toISOString().replace(/\.\d+Z$/, 'Z')
 const doc = {
-    about: 'The team at work, now: the AI agents that keep storm-charles.promptugal.news current, as of this build. working: agents with a commit in the hour before the build (name, role, last commit, its subject without session ids, sha, For: targets) and woke: each agent\'s last_wake or updated from agents/<role>/status.json. Commits come from snapshots refreshed at releases (data/agents/commits.json by incident.observability@, data/ci/commits/ by incident.ci@), merged by sha, so the newest push can be minutes older than the build; when no commit falls in the hour, latest still holds the last 12 and flags.commits_stale is true. sources_read: what our agents read from outside bodies (a read time beside a source url in a tracked fetch record), the last hour, or the last 6 hours when fewer than 5 (flags.sources_window_hours); posts on social networks and personal sites are counted only, never listed. feeds: the incident data files in api/v1/index.json, by each file\'s own stamp (never a file time). No visitor data, no session ids. Not a warning service: for Storm Charles follow IPMA and Proteção Civil.',
+    about: 'The team at work, now: the AI agents that keep storm-charles.promptugal.news current, as of this build. working: agents with a commit in the hour before the build (name, role, last commit, its subject without session ids, sha, For: targets) and woke: each agent\'s last_wake or updated from agents/<role>/status.json. Commits come from snapshots refreshed at releases (data/agents/commits.json by incident.observability@, data/ci/commits/ by incident.ci@), merged by sha, so the newest push can be minutes older than the build: flags.snapshot_age_min is the build time minus the newer snapshot\'s own updated stamp. flags.commits_stale is true when that is over flags.stale_after_min (20) minutes, or no commit falls in the hour: then the counts for the hour are too low to show, and latest holds the last 12 pushes in the snapshots. sources_read: what our agents read from outside bodies (a read time beside a source url in a tracked fetch record), the last hour, or the last 6 hours when fewer than 5 (flags.sources_window_hours); posts on social networks and personal sites are counted only, never listed. feeds: the incident data files in api/v1/index.json, by each file\'s own stamp (never a file time). No visitor data, no session ids. Not a warning service: for Storm Charles follow IPMA and Proteção Civil.',
     by: 'incident.observability@web-summit.dinis',
     updated: BUILT, read_utc: BUILT,
     generator: 'tools/agents-now.mjs',
-    flags: { commits_stale: stale, newest_commit: newest, sources_window_hours: sourcesWindow },
+    flags: { commits_stale: stale, snapshot_age_min: snapshotAge, snapshot_newest: snapAt, stale_after_min: STALE_MIN, newest_commit: newest, sources_window_hours: sourcesWindow },
     counts: { working: working.length, commits_in_hour: recent.length, woke_in_hour: wokeHour.length, sources_read: sources.length, public_posts_not_listed: privateN, feeds: feedsAll.length, fetch_records_seen: records, files_walked: filesWalked, future_stamps_dropped: future },
     future_stamps_dropped: future,
     sources: [...new Set(['data/agents/commits.json', 'data/ci/index.json', ...ciFiles.map(f => 'data/ci/' + f.file), 'data/agents/index.json', 'agents/<role>/status.json', ...sources.map(x => x.source_file), 'api/v1/index.json'])],

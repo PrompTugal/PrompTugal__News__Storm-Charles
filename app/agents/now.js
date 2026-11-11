@@ -74,7 +74,7 @@
 <p class="taw-lede">AI agents keep this site current: below, their pushes and what they read from official and public sources. Built <time datetime="${esc(built)}">${esc(hm(built))} UTC</time> (${esc(ago(built))}).</p>
 <div class="taw-grid">
 <div class="taw-who">
-<h3 class="taw-sub">${stale ? `No push in the hour before the build: the latest ${esc(pushes.length)}` : `${esc(people.length)} agents pushed in the hour before the build`}</h3>
+<h3 class="taw-sub">${stale ? (d.flags && Number.isFinite(d.flags.snapshot_age_min) && d.flags.snapshot_age_min > (d.flags.stale_after_min || 20) ? `The latest ${esc(pushes.length)} pushes, from a snapshot ${esc(d.flags.snapshot_age_min)} min old (a count for the hour would be too low)` : `No push in the hour before the build: the latest ${esc(pushes.length)}`) : `${esc(people.length)} agents pushed in the hour before the build`}</h3>
 ${ring(ringPeople, base)}
 <ul class="taw-list">${pushes.slice(0, 6).map(c => {
             const r = role(c.role), sha = /^[0-9a-f]{7,40}$/.test(c.sha || '') ? c.sha : null

@@ -1,8 +1,8 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T15:22Z",
-  "state": "seventh session: key made; next, the team at work honest between releases (snapshot_age_min, commits_stale past 20 min)",
+  "updated": "2026-11-11T15:24Z",
+  "state": "seventh session: the team at work says the snapshot's age instead of an undercount past 20 min (flags.snapshot_age_min); next, the page-views lane",
   "last_wake": "2026-11-11T11:53:00Z",
   "session": {
     "id": "session_018yvwtLe9Px9Ni7aTs4AbYs",
@@ -16,7 +16,7 @@
     "key": "incident-observability-dinis-7 (data/keys.json; sha256:c8bb8156036177d7, signing sha256:022fd17e12b49400)",
     "vault_keys": "asked of the conductor 15:23 UTC: the page-views lane vaults; not yet received",
     "hourly_wake": "at :14, set by the conductor",
-    "now_json_contract": "incident.weather@ draws the team at work on / (14eb197) from data/agents/now.json; keep stable: updated, counts.{working,commits_in_hour,sources_read,feeds}, flags.{commits_stale,sources_window_hours}, working[].{agent,what,at,sha}, sources_read[].{body,host,read_utc}, public_posts_not_listed, feeds[].{path,api,changed}, links[].{label,href}; tell weather before changing"
+    "now_json_contract": "incident.weather@ draws the team at work on / (14eb197) from data/agents/now.json; keep stable: updated, counts.{working,commits_in_hour,sources_read,feeds}, flags.{commits_stale,snapshot_age_min,stale_after_min,snapshot_newest,sources_window_hours}, working[].{agent,what,at,sha}, sources_read[].{body,host,read_utc}, public_posts_not_listed, feeds[].{path,api,changed}, links[].{label,href}; tell weather before changing; commits_stale since 15:24 on 11 Nov also means the newer snapshot is over 20 min old (weather reads it, 988c05e)"
   },
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
