@@ -41,27 +41,76 @@ export function matcher(nodes, { html = false, bytes = false } = {}) {
     for (const [k, list] of byName) for (const c of list) if (c.exact && !loose.has(enc(k)) && !forms.has(enc(c.name))) forms.set(enc(c.name), c)
     const names = [...loose.keys()].map(n => [n, true]).concat([...forms.keys()].map(n => [n, false]))
     if (!names.length) return { find: () => [], names: byName }
-    // the names as one trie, so each position in the text is tried against a few branches, not against every name
+    // Words first: the text is read word by word, and only a word that begins some name is tried further, against a small
+    // regex (a trie of the names that begin with that word; every a-z letter a class, so the longest wins and pick() then holds
+    // a name with a capital to its exact writing). One regex over all the names cost a try at every character of every page.
     const piece = ch => ch === ' ' ? '\\s+' : (ch === "'" || ch === enc('’')) ? (html ? `(?:&#39;|'|${enc('’')})` : `(?:'|${enc('’')})`) : ch.replace(/[.*+?^${}()|[\]\\\/-]/g, '\\$&')
-    const trie = { kids: new Map(), end: false }
-    for (const [nm, any] of names) { let t = trie; for (const ch of nm.split(enc('’')).flatMap((x, i) => i ? [enc('’'), ...x] : [...x])) { const k = /^[A-Za-z]$/.test(ch) ? `[${ch.toLowerCase()}${ch.toUpperCase()}]` : piece(ch);   // every a-z letter is a class, so all names share one trie and the longest wins; pick() then holds a name with a capital to its exact writing
-            if (!t.kids.has(k)) t.kids.set(k, { kids: new Map(), end: false }); t = t.kids.get(k) } t.end = true }
     const emit = t => { const alts = [...t.kids].map(([k, v]) => k + emit(v)); if (!alts.length) return ''; const body = alts.length === 1 && !t.end ? alts[0] : `(?:${alts.join('|')})`; return t.end ? (alts.length === 1 ? `(?:${alts[0]})?` : body + '?') : body }
-    const re = new RegExp(`(?<!${bytes ? '[A-Za-z0-9_@/.#-]|[\\xc3-\\xc9][\\x80-\\xbf]' : `[${L}_@/.#-]`})${emit(trie)}(?![${L}_]|[@/-][${L}]|\\.[${L}])`, 'g')
+    const WORD = bytes ? /(?:[A-Za-z0-9]|[\xc3-\xc9][\x80-\xbf])+/g : /[A-Za-z0-9À-ÖØ-öø-ÿ]+/g, FIRST = new RegExp('^(?:' + WORD.source + ')')
+    const lowA = s => s.replace(/[A-Z]/g, c => c.toLowerCase())
+    const tries = new Map()
+    for (const [nm] of names) {
+        const key = lowA((nm.match(FIRST) || [''])[0]); if (!key) continue   // a-z only: an accented byte keeps its code
+        if (!tries.has(key)) tries.set(key, { kids: new Map(), end: false })
+        let t = tries.get(key)
+        for (const ch of nm.split(enc('’')).flatMap((x, i) => i ? [enc('’'), ...x] : [...x])) { const k = /^[A-Za-z]$/.test(ch) ? `[${ch.toLowerCase()}${ch.toUpperCase()}]` : piece(ch); if (!t.kids.has(k)) t.kids.set(k, { kids: new Map(), end: false }); t = t.kids.get(k) }
+        t.end = true
+    }
+    const byWord = new Map([...tries].map(([key, t]) => [key, new RegExp(`(?<!${bytes ? '[A-Za-z0-9_@/.#-]|[\\xc3-\\xc9][\\x80-\\xbf]' : `[${L}_@/.#-]`})${emit(t)}(?![${L}_]|[@/-][${L}]|\\.[${L}])`, 'y')]))
     const curly = enc('’'), norm = s => s.replace(/&#39;/g, "'").split(curly).join("'").replace(/\s+/g, ' ')
     const low = s => s.replace(/[A-Z]/g, c => c.toLowerCase())
     const one = s => forms.get(s) || loose.get(low(s)) || (s = norm(s), forms.get(s) || loose.get(low(s)))
     // the hit for a match, or for its longest beginning that is a name written as it must be ("Government of portugal" -> "Government")
     const pick = s => { for (;;) { const c = one(s); if (c) return { c, text: s }; const cut = s.search(/\s+\S*$/); if (cut <= 0) return null; s = s.slice(0, cut) } }
-    function find(text) {
-        const out = []
-        re.lastIndex = 0
-        let m
-        while ((m = re.exec(text))) { const hit = pick(m[0]); if (hit) { out.push({ index: m.index, length: hit.text.length, text: hit.text, id: hit.c.id, type: hit.c.type, href: hit.c.href, own: hit.c.own }); re.lastIndex = m.index + hit.text.length } else re.lastIndex = m.index + 1 }
-        return out
+    // every hit in text[from, to), in order, to `each(index, text as written, node)`; `each` may use find
+    // For pages (bytes): the words are found by a loop over the character codes, and a word is only cut out and looked up when
+    // a hash of its letters is that of some name's first word (a table), so nearly every word costs one pass over its letters.
+    const gate = new Uint8Array(65536)   // a hash of a name's first word (a-z lower-cased) -> seen
+    const lc = c => c >= 65 && c <= 90 ? c + 32 : c
+    const byHash = new Map()   // the full hash -> the regexes of the first words with that hash (nearly always one)
+    for (const [key, re] of byWord) { let h = 0; for (let k = 0; k < key.length; k++) h = (h * 31 + lc(key.charCodeAt(k))) | 0; gate[h & 0xffff] = 1; if (!byHash.has(h)) byHash.set(h, []); byHash.get(h).push(re) }
+    const memo = new Map()   // what was matched -> its hit (the same few hundred writings recur)
+    function scanBytes(text, from, to, each) {
+        let i = from
+        while (i < to) {
+            let c = text.charCodeAt(i)
+            if (!((c >= 97 && c <= 122) || (c >= 65 && c <= 90) || (c >= 48 && c <= 57) || (c >= 0xc3 && c <= 0xc9))) {
+                if (c === 60 && html) { const gt = text.indexOf('>', i); i = gt < 0 ? to : gt + 1 } else i++   // a tag is stepped over whole: no name is linked inside one
+                continue
+            }
+            const start = i; let h = 0
+            for (;;) {
+                h = (h * 31 + (c >= 65 && c <= 90 ? c + 32 : c)) | 0
+                if (c >= 0xc3 && c <= 0xc9) { i++; h = (h * 31 + text.charCodeAt(i)) | 0 }
+                c = text.charCodeAt(++i)
+                if (!((c >= 97 && c <= 122) || (c >= 65 && c <= 90) || (c >= 48 && c <= 57) || (c >= 0xc3 && c <= 0xc9))) break
+            }
+            if (!gate[h & 0xffff]) continue
+            const res = byHash.get(h); if (!res) continue
+            let m = null; for (const re of res) { re.lastIndex = start; if ((m = re.exec(text))) break }
+            if (!m) continue
+            let hit = memo.get(m[0]); if (hit === undefined) { hit = pick(m[0]); memo.set(m[0], hit) }
+            if (!hit) continue
+            i = start + hit.text.length
+            each(start, hit.text, hit.c)
+        }
     }
-    // the same, over a stretch of a larger string, calling back for each hit (the linker's single scan of a page)
-    function scan(text, from, to, each) { re.lastIndex = from; let m; while ((m = re.exec(text)) && m.index < to) { const hit = pick(m[0]), next = hit ? m.index + hit.text.length : m.index + 1; if (hit) each(m.index, hit.text, hit.c); re.lastIndex = next } }   // (each may use find)
+    function scan(text, from, to, each) {
+        if (bytes) return scanBytes(text, from, to, each)
+        let pos = from
+        for (;;) {
+            WORD.lastIndex = pos
+            const w = WORD.exec(text); if (!w || w.index >= to) return
+            pos = w.index + w[0].length
+            const re = byWord.get(lowA(w[0])); if (!re) continue
+            re.lastIndex = w.index
+            const m = re.exec(text); if (!m) continue
+            const hit = pick(m[0]); if (!hit) continue
+            pos = w.index + hit.text.length
+            each(w.index, hit.text, hit.c)
+        }
+    }
+    function find(text) { const out = []; scan(text, 0, text.length, (index, txt, c) => out.push({ index, length: txt.length, text: txt, id: c.id, type: c.type, href: c.href, own: c.own })); return out }
     return { find, scan, names: byName }
 }
 

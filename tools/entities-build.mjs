@@ -111,13 +111,15 @@ function link() {
     const CLOSE = Object.fromEntries([...RAW].map(n => [n, new RegExp('</' + n, 'gi')]))
     const TAG = /<(\/?)([a-zA-Z][\w:-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/y
     const CAP = loadCaptures()
-    const stats = { pages: 0, pages_linked: 0, linked: 0, outside_marked: 0, outside_to_evidence: 0, by_node: {}, by_page: {} }
+    const BROWSER = [['board/items/', /^board\/items\//], ['research/weather-sites/sites/', /^research\/weather-sites\/sites\//], ['library/pack/', /^library\/pack\//], ['models/models/', /^models\/models\//], ['evidence/<source>/ (captures)', /^evidence\/[^/]+\//], ['sources/<id>/ (generated)', /^sources\/(?!ipma\/|meteoalarm\/)[^/]+\//]]
+    const stats = { left_to_the_browser: {}, pages: 0, pages_linked: 0, linked: 0, outside_marked: 0, outside_to_evidence: 0, by_node: {}, by_page: {} }
     const gaps = new Map(), known = new Set([...M.names.keys()])
     const CAND = /(?<![\p{L}\p{N}])(?:[A-ZÀ-Ý][\p{L}\p{N}]+(?:\s+(?:de|da|do|dos|das|of)(?=\s+[A-ZÀ-Ý]))?(?:\s+(?=[A-ZÀ-Ý]))?){2,5}|(?<![\p{L}\p{N}.@/-])[A-Z]{3,}(?![\p{L}\p{N}])/gu
     const files = []; (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); e.isDirectory() ? walk(f) : e.name.endsWith('.html') && files.push(f) } })(OUT)
     for (const f of files) {
         const rel = path.relative(OUT, f).split(path.sep).join('/')
-        if (rel.startsWith('board/items/')) { stats.left_to_the_browser = (stats.left_to_the_browser || 0) + 1; continue }   // a third of the bytes: linked in the browser by app/lens/lens.js (the conductor's decision, 11 Nov)
+        // families that are mostly generated lists are linked in the browser by app/lens/lens.js, not here (the conductor's decisions, 11 Nov, for the gate's budget)
+        const fam = BROWSER.find(([, re]) => re.test(rel)); if (fam) { stats.left_to_the_browser[fam[0]] = (stats.left_to_the_browser[fam[0]] || 0) + 1; continue }
         if (rel.startsWith('view/')) continue   // the librarian's file viewers show a file as it is: its text is not linked
         const html = fs.readFileSync(f, 'latin1')
         const up = rel === '404.html' ? '/' : '../'.repeat(rel.split('/').length - 1)

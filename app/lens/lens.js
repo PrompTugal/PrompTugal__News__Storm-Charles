@@ -36,8 +36,8 @@
     }
     function start() {
         count();
-        // the board's item pages are left unlinked by the build (to keep the gate fast) and linked here
-        [].forEach.call(document.querySelectorAll('#incident, [data-link-entities]' + (/\/board\/items\//.test(location.pathname) ? ', main' : '')), live)
+        // families of generated pages are left unlinked by the build (to keep the gate fast: tools/entities-build.mjs BROWSER) and linked here
+        [].forEach.call(document.querySelectorAll('#incident, [data-link-entities]' + (/\/(board\/items|research\/weather-sites\/sites|library\/pack|models\/models|evidence\/[^/]+|sources\/(?!ipma\/|meteoalarm\/)[^/]+)\//.test(location.pathname) ? ', main' : '')), live)
         document.addEventListener('click', function (ev) {
             if (ev.defaultPrevented || ev.button || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return
             var a = ev.target.closest && ev.target.closest('a[data-ent]'); if (!a) return
