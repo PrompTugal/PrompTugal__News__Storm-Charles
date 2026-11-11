@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:31Z",
-  "updated": "2026-11-11T03:00Z",
+  "updated": "2026-11-11T03:28Z",
   "based_on_read_utc": "2026-11-11T02:38:08Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for Madeira's areas, resolved from the data room when the page is built and read again in the reader's browser.",
@@ -388,12 +388,16 @@
     },
     {
       "id": "m11",
-      "text": "The wind cannot be set against its warning from IPMA's stations: their feed gives mean wind, not gusts. The highest hourly mean in it is 93.2 km/h at Areeiro, labelled 02:00 on Wednesday. Gusts are reported only at the airports: Madeira airport's 01:00 report had 32 knots gusting 42.",
+      "text": "The wind cannot be set against its warning from IPMA's stations: their feed gives mean wind, not gusts. The highest hourly mean in it is 93.2 km/h at Areeiro, labelled 02:00 on Wednesday. Gusts are reported only at the airports: at 02:30 Madeira airport reported 67 km/h gusting 98 km/h, the highest gust in the last 30 hours of its reports. The airport is a point on the south-east coast, not a warning area.",
       "label": "fact",
       "said_by": "IPMA, station observations",
-      "at_utc": "2026-11-11T02:00Z",
+      "at_utc": "2026-11-11T02:30Z",
       "read_utc": "2026-11-11T02:38:08Z",
       "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0238"
+        },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
@@ -445,11 +449,15 @@
     },
     {
       "id": "m13",
-      "text": "The first item on damage we saw on a national front page was a video title from Correio da Manhã, read at 01:29 on Wednesday: \"Inundações e derrocadas em Machico na Madeira devido à chegada da depressão Charles\". The video was not watched; the data room holds nothing else on damage.",
+      "text": "On damage the data room holds titles only. A Correio da Manhã video title read at 01:29: \"Inundações e derrocadas em Machico na Madeira devido à chegada da depressão Charles\". RTP's 02:00 radio bulletin is titled \"proteção civil da Madeira regista mais de 50 ocorrências\", and a SAPO front-page headline reports power cuts on Porto Santo. No figure has been read at Madeira's civil protection itself.",
       "label": "evidence",
-      "said_by": "Correio da Manhã / CMTV (a video title)",
-      "read_utc": "2026-11-11T01:29Z",
+      "said_by": "Correio da Manhã / CMTV, RTP Antena 1, SAPO (titles; neither video nor bulletin was watched or heard)",
+      "read_utc": "2026-11-11T02:33Z",
       "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0233"
+        },
         {
           "kind": "data",
           "file": "research/weather-sites/rereads.json",
@@ -459,7 +467,8 @@
           ],
           "url_field": "rereads[read=2026-11-11T01:29Z].changed_in_the_coverage[who=Correio da Manhã / CMTV].source"
         }
-      ]
+      ],
+      "at_utc": "2026-11-11T02:33Z"
     }
   ],
   "not_known": [
@@ -483,7 +492,7 @@
       "watch": "incidents/2026-11-10-storm-charles/data/weather/cap.json"
     },
     {
-      "text": "Damage and harm to people: the data room holds one video title and no official count. Nothing is said here about either."
+      "text": "Damage and harm to people: the data room holds three press titles and no official count read at source. Nothing is said here about either beyond those titles."
     },
     {
       "text": "The regional civil protection service's own warnings: not in the data room."
@@ -521,6 +530,16 @@
         "m8",
         "m9",
         "m11"
+      ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T03:28Z",
+      "what": "Two new timeline rows folded in (s-1111T0233, s-1111T0238): the first press titles on effects (\"mais de 50 ocorrências\", power cuts on Porto Santo; titles only, nothing read at the regional civil protection) and Madeira airport's 02:30 report, 67 km/h gusting 98 km/h. Before, the gust sentence quoted the 01:00 report (32 knots gusting 42) and the damage sentence one video title. No station value moved: the 03:22 read is not in the data room yet.",
+      "claims_added": [],
+      "claims_changed": [
+        "m11",
+        "m13"
       ],
       "by": "incident.stories@web-summit.dinis"
     }
