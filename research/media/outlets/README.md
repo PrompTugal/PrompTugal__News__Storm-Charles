@@ -1,12 +1,12 @@
 # The outlets covering Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:26 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:37 UTC. One page per outlet: what it published and when, how fast it was against the key moments, its sources as its own pages say, its licence and terms as it publishes them, and its own public contact page. Evidence and analysis; [how it is read, and the limits](../README.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | Outlet | Kind | Items read | First on | Wire share | Terms page read | AI crawlers disallowed in robots.txt | Readable by a plain bot |
 |---|---|---|---|---|---|---|---|
 | [Notícias ao Minuto](noticias-ao-minuto.md) | online | 82 | 1 | 88% | yes | 8 of 10 | yes |
 | [CNN Portugal](cnn-portugal.md) | news channel | 26 |  | 67% | not found | 1 of 10 | yes |
-| [Observador](observador.md) | online daily | 23 | 2 | 26% | yes | 1 of 10 | yes |
+| [Observador](observador.md) | online daily | 25 | 2 | 24% | yes | 1 of 10 | yes |
 | [RTP](rtp.md) | public broadcaster | 19 |  | 0% | yes | 0 of 10 | yes |
 | [Expresso](expresso.md) | weekly, online daily | 19 |  |  | refused (403) | not read | feed only |
 | [Diário de Notícias](dn.md) | daily | 18 | 3 | 6% | yes | 0 of 10 | yes |

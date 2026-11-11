@@ -1,8 +1,8 @@
 # By-lines on Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:26 UTC. The reporters whose names are printed on the articles in [the coverage list](../README.md), with their pieces on this story. **A by-line is a public professional credit, and that is all this page holds:** a name as printed, the outlet, the pieces. No contact details, no profile, no account. A reporter with three or more pieces here has a page listing them. A wrong or missing by-line: [tell us](../../../contribute.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:37 UTC. The reporters whose names are printed on the articles in [the coverage list](../README.md), with their pieces on this story. **A by-line is a public professional credit, and that is all this page holds:** a name as printed, the outlet, the pieces. No contact details, no profile, no account. A reporter with three or more pieces here has a page listing them. A wrong or missing by-line: [tell us](../../../contribute.md). Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
-54 by-lines on 53 items. Agency copy (Lusa) and desk by-lines are counted on [each outlet's page](../outlets/README.md), not here.
+55 by-lines on 54 items. Agency copy (Lusa) and desk by-lines are counted on [each outlet's page](../outlets/README.md), not here.
 
 | By-line as printed | Outlet | Pieces | First among the outlets we read on | Latest piece |
 |---|---|---|---|---|
@@ -53,6 +53,7 @@
 | Nuno Mandeiro | [CNN Portugal](../outlets/cnn-portugal.md) | 1 |  | 10 Nov 21:00: [Falta justificada sem perda de remuneração. O que acontece se o mau t… ↗](https://cnnportugal.iol.pt/trabalhadores/trabalho/falta-justificada-sem-perda-de-remuneracao-o-que-acontece-se-o-mau-tempo-nao-o-deixar-ir-trabalhar/20261110/6af349ded34e9ce6f1b43d8b) |
 | Nuno Vinha | [Diário de Notícias](../outlets/dn.md) | 1 |  | 10 Nov 16:22: [Tempestades: REN e E-Redes acionaram planos de crise. Em que consiste… ↗](https://www.dn.pt/sociedade/tempestades-ren-e-e-redes-acionaram-planos-de-crise-em-que-consistem) |
 | Pedro Barros Costa | [Jornal de Negócios](../outlets/negocios.md) | 1 |  | 10 Nov 00:00: [Pingo Doce fecha supermercados devido à depressão Charles. Continente… ↗](https://www.jornaldenegocios.pt/empresas/comercio/detalhe/pingo-doce-fecha-supermercados-devido-a-depressao-charles-continente-mantem-lojas-abertas) |
+| Pedro Benevides | [Observador](../outlets/observador.md) | 1 |  | 11 Nov 05:03: [A tempestade pode custar-lhe um dia de salário? ↗](https://observador.pt/programas/a-hist-ria-do-dia/a-tempestade-pode-custar-lhe-um-dia-de-salario/) |
 | Pedro Filipe Silva | [CNN Portugal](../outlets/cnn-portugal.md) | 1 |  | 10 Nov 18:19: ["O Jamor já matou pessoas": este é um dos pontos críticos com a chega… ↗](https://cnnportugal.iol.pt/rio-jamor/oeiras/o-jamor-ja-matou-pessoas-este-e-um-dos-pontos-criticos-com-a-chegada-do-mau-tempo-a-lisboa/20261110/6af3601bd34e5a653d733a51) |
 | Ricardo Conceição | [Observador](../outlets/observador.md) | 1 |  | 10 Nov 19:25: [Ficar em casa na tempestade causa problemas com o chefe? ↗](https://observador.pt/programas/e-o-vencedor-e/ficar-em-casa-na-tempestade-causa-problemas-com-o-chefe/) |
 | Shrikesh Laxmidas | [ECO](../outlets/eco.md) | 1 |  | 10 Nov 20:32: [A ‘Wet Summit’ dominada por Charles e China ↗](https://eco.sapo.pt/opiniao/a-wet-summit-dominada-por-charles-e-china/) |

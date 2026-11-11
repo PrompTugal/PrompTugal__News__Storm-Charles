@@ -1,13 +1,13 @@
 # Observador: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:26 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online daily (pt) |
-| Items we read | 23: 21 articles, 1 live, 0 video, 1 opinion |
-| First and last | 10 Nov 07:32 to 11 Nov 03:14 UTC |
-| Whose reporting | 7 with a reporter's by-line, 6 the agency's (Lusa), 10 the desk's, 0 not read; wire share 26% |
+| Items we read | 25: 23 articles, 1 live, 0 video, 1 opinion |
+| First and last | 10 Nov 07:32 to 11 Nov 05:03 UTC |
+| Whose reporting | 8 with a reporter's by-line, 6 the agency's (Lusa), 11 the desk's, 0 not read; wire share 24% |
 | Does best (from the counts) | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; first on "IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente"; a running live blog |
 
 ## Against the key moments
@@ -25,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 23 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 25 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 7 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -49,7 +49,7 @@ Through its own public page: [Ficha Técnica ↗](https://observador.pt/ficha-te
 
 ## By-lines on this story, as printed
 
-Ana Sanlez, António Moura dos Santos, Edgar Caetano, Filomena Martins, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Martim Andrade, Miguel Santos Carrapatoso, Ricardo Conceição. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Ana Sanlez, António Moura dos Santos, Edgar Caetano, Filomena Martins, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -78,3 +78,5 @@ Ana Sanlez, António Moura dos Santos, Edgar Caetano, Filomena Martins, Hugo For
 | 11 Nov 01:18 | article | Rádio Observador | [1h. Depressão Charles preocupa terras afetadas por Kristin em janeiro ↗](https://observador.pt/programas/noticiario/as-noticias-da-1h-2442/) |
 | 11 Nov 02:13 | article | Rádio Observador | [2h. Depressão Charles. Ponto mais crítico na Madeira é às 4 da manhã ↗](https://observador.pt/programas/noticiario/as-noticias-das-2h-2465/) |
 | 11 Nov 03:14 | article | Rádio Observador | [3h. Depressão Bruna causa mais de mil ocorrências em Portugal Continental, sobretudo em Lisboa ↗](https://observador.pt/programas/noticiario/as-noticias-das-3h-2492/) |
+| 11 Nov 04:15 | article | Rádio Observador | [4h. Depressão Charles. Primeiro-ministro coordena diretamente centro de crise ↗](https://observador.pt/programas/noticiario/as-noticias-das-4h-2456/) |
+| 11 Nov 05:03 | article | Pedro Benevides | [A tempestade pode custar-lhe um dia de salário? ↗](https://observador.pt/programas/a-hist-ria-do-dia/a-tempestade-pode-custar-lhe-um-dia-de-salario/) |

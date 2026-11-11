@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:26 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 229 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 05:37 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 231 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -134,7 +134,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 05:26 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 05:37 UTC | | | | |
 
 - Outside the press: VOST Portugal (a volunteers' association, not an authority and not press) relayed the change on Bluesky at 22:20, 57 minutes after IPMA sent it (found by incident.social@: research/social/posts/2026-11-10.json, bsky-vost.pt-3mzyhxvwhry25). The finding for the press stands: no article title or live entry we could read reported it.
 
@@ -159,7 +159,7 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 |---|---|---|---|---|---|---|---|---|
 | Notícias ao Minuto | 82 | 4 | 72 | 88% | 6 | 0 | 1 | IPMA |
 | CNN Portugal | 26 | 3 | 6 | 67% | 0 | 17 | 1 | Diário da República |
-| Observador | 23 | 7 | 6 | 26% | 10 | 0 | 1 | IPMA |
+| Observador | 25 | 8 | 6 | 24% | 11 | 0 | 1 | IPMA |
 | RTP | 19 | 0 | 0 | 0% | 19 | 0 | 0 |  |
 | Expresso | 19 | 0 | 0 | n/a | 0 | 19 | 0 |  |
 | Diário de Notícias | 18 | 17 | 1 | 6% | 0 | 0 | 2 | AMN, Lusoponte |
@@ -178,8 +178,8 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 Among outlets with at least four items:
 
 - **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (33%), Diário de Notícias (11%), Observador (4%), CNN Portugal (4%).
-- **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (30%).
-- **The wire underneath:** 92 of 229 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (32%).
+- **The wire underneath:** 92 of 231 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -209,7 +209,7 @@ Reporters whose names are printed on the items in the list, by outlet, with the 
 
 - **Notícias ao Minuto:** Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias
 - **CNN Portugal:** Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva
-- **Observador:** Ana Sanlez, António Moura dos Santos, Edgar Caetano, Filomena Martins, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Martim Andrade, Miguel Santos Carrapatoso, Ricardo Conceição
+- **Observador:** Ana Sanlez, António Moura dos Santos, Edgar Caetano, Filomena Martins, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição
 - **Diário de Notícias:** Ricardo Simões Ferreira (4), David Pereira (2), Margarida Vaqueiro Lopes (2), Sofia Fonseca (2), Sónia Santos Pereira (2), Susete Henriques (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha
 - **Público:** Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sónia Sapage, Victor Ferreira
 - **ECO:** Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira
