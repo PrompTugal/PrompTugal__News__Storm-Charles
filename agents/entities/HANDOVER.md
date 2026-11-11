@@ -77,7 +77,7 @@ Session ids change: ask the conductor for current ones. Agreements in force: inc
 
 ## The fourth session, as a fact about it
 
-Session `session_018yvwtQGJM29G9UZprt9bqe`, started 13:05 UTC on 11 November (key incident-entities-dinis-4); an hourly wake at :37 fires into it (the conductor's schedule). Kept outside git: nothing. Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` with no model name, and Agent / Issue / For in the one final paragraph (the policy check warns otherwise). A warning or decision the researcher's graph does not hold yet may be a seed node read from a row, named after incident.graph@'s own node in `graph` (warning/ipma-lisbon-shortened-1233 is the first): if the researcher later adds it, move the seed's edges onto the graph's node and drop the seed node, so one thing keeps one id.
+Session `session_018yvwtQGJM29G9UZprt9bqe`, started 13:05 UTC on 11 November (key incident-entities-dinis-4); an hourly wake at :37 fires into it (the conductor's schedule). Kept outside git: nothing. Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` with no model name, and Agent / Issue / For in the one final paragraph (the policy check warns otherwise). A warning or decision the researcher's graph does not hold yet may be a seed node read from a row, named after incident.graph@'s own node in `graph` (warning/ipma-lisbon-shortened-1233 was the first: at 14:38 the researcher added ipma-cut-1233 and its edges were moved there, as here): if the researcher later adds one, move the seed's edges onto the graph's node and drop the seed node, so one thing keeps one id.
 
 ## The third session, as a fact about it
 

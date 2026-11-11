@@ -1,18 +1,46 @@
 {
- "id": "warning/ipma-lisbon-shortened-1233",
+ "id": "warning/ipma-cut-1233",
  "type": "warning",
- "name": "IPMA's 12:33 shortening of Lisbon's warnings",
+ "name": "IPMA cuts Lisbon's warnings: red rain until 15:00, then yellow 15:00 to 18:00; orange wind until 18:00…",
  "also": [],
- "summary": "IPMA's CAP batch sent at 12:33 on 11 November: Lisboa's red rain now 12:34 to 15:00 (was to 18:00), then yellow 15:00 to 18:00; orange wind 12:34 to 18:00 (was to 21:00), gusts up to 90 km/h, 110 in the most exposed places; the sea warnings stand.",
- "label": "ours",
- "summary_source": {
-  "url": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/timeline.html#s-1111T1247",
-  "read_utc": null,
-  "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1111T1247",
-  "taken_from_label": "fact"
+ "match": {
+  "none": [
+   "IPMA cuts Lisbon's warnings: red rain until 15:00, then yellow 15:00 to 18:00; orange wind until 18:00…"
+  ]
  },
- "graph": "warning:cap:261111123313.PO-10-6327",
+ "summary": "IPMA cuts Lisbon's warnings: red rain until 15:00, then yellow 15:00 to 18:00; orange wind until 18:00 (gusts to 90 km/h)",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+  "read_utc": "2026-11-11T13:36Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-cut-1233"
+ },
+ "status": "happened",
+ "at": "2026-11-11T12:33Z",
+ "effect_from_utc": "2026-11-11T12:34Z",
+ "effect_to_utc": "2026-11-11T18:00Z",
+ "graph": "warning:ipma-cut-1233",
  "edges": [
+  {
+   "verb": "follows",
+   "to": "warning/ipma-red-rain-0900",
+   "label": "fact",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T13:36Z",
+   "says": "IPMA cuts Lisbon's warnings: red rain until 15:00, then yellow 15:00 to 18:00; orange wind until 18:00 (gusts to 90 km/h)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-cut-1233",
+   "decision": "ipma-cut-1233"
+  },
+  {
+   "verb": "follows",
+   "to": "warning/ipma-wind-orange",
+   "label": "fact",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T13:36Z",
+   "says": "IPMA cuts Lisbon's warnings: red rain until 15:00, then yellow 15:00 to 18:00; orange wind until 18:00 (gusts to 90 km/h)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-cut-1233",
+   "decision": "ipma-cut-1233"
+  },
   {
    "verb": "supersedes",
    "to": "warning/ipma-red-rain-0900",
@@ -83,26 +111,24 @@
    "verb": "made_on",
    "to": "day/2026-11-11",
    "label": "fact",
-   "source": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/timeline.html#s-1111T1247",
-   "read_utc": null,
-   "read_note": "IPMA CAP via MeteoAlarm Portugal feed, first seen 12:46:20 by incident.meteorology@, read 12:46:38 by incident.conductor@",
-   "says": "IPMA shortens Lisbon's warnings (CAP batch sent 12:33:13, nine messages; seen in MeteoAlarm's feed at 12:46): Lisboa: red rain 12:34 to 15:00 (was to 18:00), then yellow rain 15:00 to 18:00; orange wind 12:34 to 18:00 (was to 21:00), its text now «Rajadas…",
-   "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1111T1247",
-   "row": "s-1111T1247"
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T13:36Z",
+   "says": "IPMA cuts Lisbon's warnings: red rain until 15:00, then yellow 15:00 to 18:00; orange wind until 18:00 (gusts to 90 km/h)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-cut-1233",
+   "decision": "ipma-cut-1233"
   },
   {
    "verb": "in_force_on",
    "to": "day/2026-11-11",
    "label": "fact",
-   "source": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/timeline.html#s-1111T1247",
-   "read_utc": null,
-   "read_note": "IPMA CAP via MeteoAlarm Portugal feed, first seen 12:46:20 by incident.meteorology@, read 12:46:38 by incident.conductor@",
-   "says": "IPMA shortens Lisbon's warnings (CAP batch sent 12:33:13, nine messages; seen in MeteoAlarm's feed at 12:46): Lisboa: red rain 12:34 to 15:00 (was to 18:00), then yellow rain 15:00 to 18:00; orange wind 12:34 to 18:00 (was to 21:00), its text now «Rajadas…",
-   "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1111T1247",
-   "row": "s-1111T1247"
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T13:36Z",
+   "says": "IPMA cuts Lisbon's warnings: red rain until 15:00, then yellow 15:00 to 18:00; orange wind until 18:00 (gusts to 90 km/h)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-cut-1233",
+   "decision": "ipma-cut-1233"
   }
  ],
  "sources": [],
  "by": "incident.entities@web-summit.dinis",
- "updated": "2026-11-11T13:39Z"
+ "updated": "2026-11-11T14:40Z"
 }

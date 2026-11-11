@@ -1,16 +1,16 @@
 {
  "about": "Every node of entities/: its id (its page is entities/<id>.html, its data entities/<id>.json), type, names, and the id of the same thing in data/graph/ when the graph has it. Made by tools/entities-make.mjs from entities/seed.json and the incident's data; the grammar is entities/ontology.json.",
  "by": "incident.entities@web-summit.dinis",
- "updated": "2026-11-11T13:39Z",
+ "updated": "2026-11-11T14:40Z",
  "incident": "2026-11-10-storm-charles",
  "counts": {
-  "nodes": 240,
-  "edges": 511,
+  "nodes": 243,
+  "edges": 528,
   "by_type": {
    "agent": 38,
    "body": 17,
    "day": 4,
-   "decision": 66,
+   "decision": 69,
    "hazard": 5,
    "organisation": 8,
    "outlet": 31,
@@ -261,7 +261,7 @@
    "label": "ours",
    "graph": "agent:incident.meteorology@web-summit.dinis",
    "edges": 1,
-   "rows": 1
+   "rows": 2
   },
   {
    "id": "agent/models",
@@ -514,8 +514,8 @@
    ],
    "label": "fact",
    "graph": "actor:anepc",
-   "edges": 4,
-   "rows": 17
+   "edges": 5,
+   "rows": 19
   },
   {
    "id": "body/apram",
@@ -540,7 +540,7 @@
    ],
    "label": "evidence",
    "graph": "actor:camara-lisboa",
-   "edges": 3,
+   "edges": 4,
    "rows": 0
   },
   {
@@ -590,7 +590,7 @@
    "label": "fact",
    "graph": "actor:government",
    "edges": 2,
-   "rows": 9
+   "rows": 10
   },
   {
    "id": "body/ipma",
@@ -602,7 +602,7 @@
    "label": "fact",
    "graph": "actor:ipma",
    "edges": 9,
-   "rows": 53
+   "rows": 54
   },
   {
    "id": "body/madeira-gov",
@@ -717,7 +717,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 17
+   "rows": 18
   },
   {
    "id": "day/2026-11-11",
@@ -734,7 +734,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 35
+   "rows": 36
   },
   {
    "id": "day/2026-11-12",
@@ -808,9 +808,19 @@
    "type": "decision",
    "name": "ANA's balance at 11:00: Lisbon 288 of 565 planned movements cancelled in advance, plus 22 cancelled during…",
    "also": [],
-   "label": "evidence",
+   "label": "fact",
    "graph": "decision:ana-movements-1100",
    "edges": 2,
+   "rows": 0
+  },
+  {
+   "id": "decision/anepc-count-1200",
+   "type": "decision",
+   "name": "Occurrence count, mainland: 530 from 00:00 to 12:00 (falling trees and other usual situations); special…",
+   "also": [],
+   "label": "evidence",
+   "graph": "decision:anepc-count-1200",
+   "edges": 3,
    "rows": 0
   },
   {
@@ -861,6 +871,16 @@
    "label": "evidence",
    "graph": "decision:bridges-60",
    "edges": 5,
+   "rows": 0
+  },
+  {
+   "id": "decision/bridges-60-80-wed",
+   "type": "decision",
+   "name": "Speed reduced on both bridges: 60 km/h on the 25 de Abril, 80 km/h on the Vasco da Gama",
+   "also": [],
+   "label": "evidence",
+   "graph": "decision:bridges-60-80-wed",
+   "edges": 2,
    "rows": 0
   },
   {
@@ -1015,8 +1035,18 @@
    "name": "IP (its own alert, dated 10 Nov): rail traffic runs with restrictions, including speed limits in the…",
    "also": [],
    "label": "fact",
-   "graph": null,
+   "graph": "decision:ip-rail-restrictions",
    "edges": 4,
+   "rows": 0
+  },
+  {
+   "id": "decision/lisbon-count-1200",
+   "type": "decision",
+   "name": "Occurrence count, Lisbon: 144 from 00:00 to 12:00 (128 floods); 59 active, 85 closed",
+   "also": [],
+   "label": "evidence",
+   "graph": "decision:lisbon-count-1200",
+   "edges": 3,
    "rows": 0
   },
   {
@@ -1295,7 +1325,7 @@
    "name": "TAP's site alert: \"Dias 10 e 11 de novembro - Condições meteorológicas adversas em todo o território…",
    "also": [],
    "label": "fact",
-   "graph": null,
+   "graph": "decision:tap-alert",
    "edges": 2,
    "rows": 0
   },
@@ -1433,7 +1463,7 @@
    "label": "ours",
    "graph": null,
    "edges": 4,
-   "rows": 24
+   "rows": 25
   },
   {
    "id": "hazard/high-winds",
@@ -1448,7 +1478,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 37
+   "rows": 38
   },
   {
    "id": "hazard/sea-agitation",
@@ -1478,7 +1508,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 26
+   "rows": 27
   },
   {
    "id": "hazard/tidal-flooding",
@@ -1512,7 +1542,7 @@
    "name": "Infraestruturas de Portugal",
    "also": [],
    "label": "fact",
-   "graph": null,
+   "graph": "actor:ip",
    "edges": 1,
    "rows": 0
   },
@@ -1523,7 +1553,7 @@
    "also": [],
    "label": "evidence",
    "graph": "actor:lusoponte",
-   "edges": 5,
+   "edges": 6,
    "rows": 3
   },
   {
@@ -1567,7 +1597,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 1
+   "rows": 2
   },
   {
    "id": "organisation/websummit",
@@ -1625,7 +1655,7 @@
    ],
    "label": "ours",
    "graph": "actor:outlet:cnn-portugal",
-   "edges": 13,
+   "edges": 15,
    "rows": 8
   },
   {
@@ -1724,7 +1754,7 @@
    ],
    "label": "ours",
    "graph": "actor:outlet:iol",
-   "edges": 13,
+   "edges": 15,
    "rows": 0
   },
   {
@@ -1763,7 +1793,7 @@
    "label": "ours",
    "graph": "actor:outlet:lusa",
    "edges": 1,
-   "rows": 10
+   "rows": 11
   },
   {
    "id": "outlet/madeira-island-news",
@@ -2050,7 +2080,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 46
+   "rows": 48
   },
   {
    "id": "place/lisbon-district",
@@ -2082,7 +2112,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 18
+   "rows": 20
   },
   {
    "id": "place/mainland-portugal",
@@ -2344,7 +2374,7 @@
    "label": "fact",
    "graph": "actor:airport",
    "edges": 4,
-   "rows": 11
+   "rows": 12
   },
   {
    "id": "service/carris",
@@ -2546,7 +2576,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 14
+   "rows": 15
   },
   {
    "id": "term/communique",
@@ -2581,7 +2611,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 9
+   "rows": 11
   },
   {
    "id": "term/fact",
@@ -2594,7 +2624,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 5
+   "rows": 6
   },
   {
    "id": "term/hypothesis",
@@ -2607,7 +2637,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 8
+   "rows": 9
   },
   {
    "id": "term/label",
@@ -2619,7 +2649,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 11
+   "rows": 12
   },
   {
    "id": "term/lead-time",
@@ -2736,13 +2766,13 @@
    "rows": 3
   },
   {
-   "id": "warning/ipma-lisbon-shortened-1233",
+   "id": "warning/ipma-cut-1233",
    "type": "warning",
-   "name": "IPMA's 12:33 shortening of Lisbon's warnings",
+   "name": "IPMA cuts Lisbon's warnings: red rain until 15:00, then yellow 15:00 to 18:00; orange wind until 18:00…",
    "also": [],
-   "label": "ours",
-   "graph": "warning:cap:261111123313.PO-10-6327",
-   "edges": 8,
+   "label": "fact",
+   "graph": "warning:ipma-cut-1233",
+   "edges": 10,
    "rows": 0
   },
   {
