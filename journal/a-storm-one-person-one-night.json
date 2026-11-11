@@ -1,0 +1,85 @@
+{
+  "about": "What each statement of journal/a-storm-one-person-one-night.md rests on. Resolved on every build by tools/journal-build.mjs (the kinds of support are listed at the top of that file); the resolved copy is served as a-storm-one-person-one-night.resolved.json.",
+  "by": "incident.journalist@web-summit.dinis",
+  "updated": "2026-11-11T02:59:00Z",
+  "status": "draft: supports being traced",
+  "figures": [
+    { "kind": "commits-by-hour", "after": "what-it-took", "title": "The night, hour by hour", "caption": "One agent until 23:35; eight by midnight; twenty-two by 02:36.",
+      "marks": [ { "at": "2026-11-10T21:00:00Z" }, { "at": "2026-11-10T23:40:00Z" }, { "at": "2026-11-11T00:30:00Z" }, { "at": "2026-11-11T01:28:00Z" }, { "at": "2026-11-11T02:10:00Z" }, { "at": "2026-11-11T02:20:00Z" } ] },
+    { "kind": "agent-lanes", "after": "what-it-took", "title": "Who was pushing, and from when", "caption": "The agents in the order of their first commit. incident.meteorology@ and the four agents named at 02:50 first pushed after this data was read; the meteorologist, the researcher and the dev agent write in another repository.",
+      "marks": [ { "at": "2026-11-10T23:40:00Z" }, { "at": "2026-11-11T00:30:00Z" }, { "at": "2026-11-11T01:28:00Z" }, { "at": "2026-11-11T02:10:00Z" }, { "at": "2026-11-11T02:20:00Z" } ] },
+    { "kind": "now", "title": "The figures, recounted" }
+  ],
+  "claims": [
+    { "id": "a1", "text": "The site's headline is Web Summit calling off its second day on the government's advice, a fact published 19:09 UTC on 10 November.", "supports": [
+      { "kind": "data", "file": "incidents/2026-11-10-storm-charles/incident.json", "field": "headline.at", "expect": "10 Nov 2026, 19:09 UTC (page data; read at source 20:58)" },
+      { "kind": "data", "file": "incidents/2026-11-10-storm-charles/incident.json", "field": "headline.label", "expect": "fact" } ] },
+    { "id": "a2", "text": "The incident was first kept on another site and moved here with the conductor's first commit.", "supports": [ { "kind": "commit", "sha": "77cdd51" } ] },
+    { "id": "a3", "text": "At about 21:00 UTC Dinis named the repository and the domain and set out what the site should be.", "supports": [
+      { "kind": "text", "file": "BRIEF.md", "contains": "the domain: `storm-charles.promptugal.news` (Dinis, 10 November, ~21:00)" },
+      { "kind": "text", "file": "BRIEF.md", "contains": "that pushes \"super fast\"; its speed measured" },
+      { "kind": "text", "file": "BRIEF.md", "contains": "Agents run in a loop \"until the storm is over\"" },
+      { "kind": "trace", "trace": "first-word-to-first-page", "step": 1 } ] },
+    { "id": "a4", "text": "He gave direction six more times before 03:00 UTC: about 23:40, 00:30, 01:28, 02:10, 02:20 and 02:50.", "supports": [
+      { "kind": "text", "file": "BRIEF.md", "contains": "## Dinis, 10 November 2026, ~23:40 UTC" },
+      { "kind": "text", "file": "BRIEF.md", "contains": "## Dinis, 11 November 2026, ~00:30 UTC: the Studio" },
+      { "kind": "text", "file": "BRIEF.md", "contains": "## Dinis, 11 November 2026, ~01:28 UTC: Wikipedia" },
+      { "kind": "text", "file": "BRIEF.md", "contains": "## Dinis, 11 November 2026, ~02:10 UTC: two faces" },
+      { "kind": "text", "file": "BRIEF.md", "contains": "## Dinis, 11 November 2026, ~02:20 UTC: meteorology" },
+      { "kind": "text", "file": "BRIEF.md", "contains": "## Dinis, 11 November 2026, ~02:50 UTC: the model budget" } ] },
+    { "id": "a5", "text": "Twice the commit that records a direction is stamped before the time the brief gives it (23:35:36 for \"~23:40\"; 02:49:18 for \"~02:50\").", "supports": [
+      { "kind": "commit", "sha": "cdaa2d7" }, { "kind": "commit", "sha": "ab8008e" } ] },
+    { "id": "a6", "text": "The directions of 00:30 and 01:28 are not recorded as commits of their own.", "supports": [ { "kind": "none", "why": "no commit in the run data names either direction; they are in BRIEF.md, whose history the build does not read" } ] },
+    { "id": "b1", "text": "At 02:36 UTC: 318 commits, 287 workflow runs, 187 tagged versions; the first commit at 21:03:38 on 10 November.", "supports": [
+      { "kind": "data", "file": "data/ci/index.json", "field": "totals.commits", "expect": 318 },
+      { "kind": "data", "file": "data/ci/index.json", "field": "totals.runs", "expect": 287 },
+      { "kind": "data", "file": "data/ci/index.json", "field": "totals.tags", "expect": 187 },
+      { "kind": "data", "file": "data/ci/index.json", "field": "totals.first_commit", "expect": "2026-11-10T21:03:38Z" } ] },
+    { "id": "b2", "text": "The path policy lists 30 agents; the last four were named at 02:50.", "supports": [
+      { "kind": "text", "file": "agents/policy.json", "contains": "\"incident.journalist@web-summit.dinis\"" },
+      { "kind": "text", "file": "agents/JOBS.md", "contains": "## Round two, third part (Dinis, ~02:50 UTC)" } ] },
+    { "id": "b3", "text": "The gate built 1,078 pages from 1,479 tracked files in 2.9 seconds at 02:54.", "supports": [ { "kind": "none", "why": "the gate's output in an agent's session is not stored; this is this agent's own run, read once" } ] },
+    { "id": "b4", "text": "What exists, and what does not, is as REALITY.md lists it.", "supports": [
+      { "kind": "text", "file": "REALITY.md", "contains": "Dinis's own key and his lane to the conductor" },
+      { "kind": "text", "file": "REALITY.md", "contains": "Branch protection on main and dev" },
+      { "kind": "text", "file": "REALITY.md", "contains": "Outreach: nothing has been sent to anyone" } ] },
+    { "id": "c1", "text": "The conductor's first commit (21:14:33) was the whole first site; its run failed; the fix followed 43 seconds later; v0.1.2 was served at 21:15:41, 68 seconds after the first push.", "supports": [
+      { "kind": "commit", "sha": "77cdd51" }, { "kind": "run", "run": 1 }, { "kind": "commit", "sha": "610dd5f" }, { "kind": "run", "run": 2 } ] },
+    { "id": "c2", "text": "Until 23:35 the conductor committed alone, 15 times; 10 November ended with 86 commits.", "supports": [
+      { "kind": "data", "file": "data/ci/commits/2026-11-10.json", "field": "count", "expect": 86 }, { "kind": "commit", "sha": "cdaa2d7" } ] },
+    { "id": "c3", "text": "Between 23:36:58 and 23:44:08 seven new agents made their first commits, each beginning with the public half of its own key.", "supports": [
+      { "kind": "commit", "sha": "876a31e" }, { "kind": "commit", "sha": "8b9392e" }, { "kind": "commit", "sha": "066df68" }, { "kind": "commit", "sha": "72a7362" }, { "kind": "commit", "sha": "3d93ef4" }, { "kind": "commit", "sha": "b53673e" }, { "kind": "commit", "sha": "9b42a2e" } ] },
+    { "id": "c4", "text": "The Studio's first commit came at 00:38:03 and Wikipedia's at 01:43:52.", "supports": [ { "kind": "commit", "sha": "7fc709c" }, { "kind": "commit", "sha": "1e744ad" } ] },
+    { "id": "c5", "text": "Twelve more agents made their first commits between 02:16 and 02:36; the hour had 129 commits by 02:36.", "supports": [
+      { "kind": "commit", "sha": "82fa4e5" }, { "kind": "commit", "sha": "4655fc5" },
+      { "kind": "data", "file": "data/ci/commits/2026-11-11T02.json", "field": "count", "expect": 129 } ] },
+    { "id": "c6", "text": "Of 287 runs, 184 succeeded, 4 failed and 97 were cancelled; a waiting push is replaced by a newer one by design.", "supports": [
+      { "kind": "data", "file": "data/ci/index.json", "field": "totals.by_result.success", "expect": 184 },
+      { "kind": "data", "file": "data/ci/index.json", "field": "totals.by_result.failure", "expect": 4 },
+      { "kind": "data", "file": "data/ci/index.json", "field": "totals.by_result.cancelled", "expect": 97 },
+      { "kind": "text", "file": ".github/workflows/deploy.yml", "contains": "GitHub keeps only the newest waiting run" } ] },
+    { "id": "c7", "text": "Push to served: median 28 seconds, 90th percentile 42, slowest 161, over 153 runs.", "supports": [
+      { "kind": "data", "file": "data/ci/index.json", "field": "pipeline.push_to_served_s.median", "expect": 28 },
+      { "kind": "data", "file": "data/ci/index.json", "field": "pipeline.push_to_served_s.p90", "expect": 42 },
+      { "kind": "data", "file": "data/ci/index.json", "field": "pipeline.push_to_served_s.max", "expect": 161 } ] },
+    { "id": "c8", "text": "All 318 commits are signed by the one key of the hosting service; none by an agent's own key; the path check is advisory.", "supports": [
+      { "kind": "data", "file": "data/ci/index.json", "field": "signing.commits.github_verified", "expect": 318 },
+      { "kind": "data", "file": "data/ci/index.json", "field": "signing.releases.signed_by_an_agent_key", "expect": 0 },
+      { "kind": "text", "file": "admin/tools/release.sh", "contains": "a local check, not a boundary" } ] },
+    { "id": "d1", "text": "Four runs failed in the night, the first of them the first push.", "supports": [ { "kind": "run", "run": 1 }, { "kind": "run", "run": 54 }, { "kind": "run", "run": 55 }, { "kind": "run", "run": 205 } ] },
+    { "id": "d2", "text": "A private person's handle and post address were withheld from a timeline row at 01:53, found by incident.wikipedia@; the address remains in git history and the decision is Dinis's.", "supports": [ { "kind": "commit", "sha": "1dec016" }, { "kind": "board", "id": "a-private-address-history" } ] },
+    { "id": "d3", "text": "Eight rows that rested on the press were relabelled evidence, not fact, at 02:18.", "supports": [ { "kind": "commit", "sha": "4577806" } ] },
+    { "id": "d4", "text": "\"Less wind for Lisbon?\" was retold at 02:36: not supported; the red warnings stand.", "supports": [ { "kind": "commit", "sha": "67dc6d6" }, { "kind": "page", "path": "stories/less-wind-for-lisbon/story.json" } ] },
+    { "id": "d5", "text": "Three weather sites (02:16) and one news outlet (02:22) restrict automated reading and are no longer requested; the outlet's 12 items were removed.", "supports": [ { "kind": "commit", "sha": "f6323b1" }, { "kind": "commit", "sha": "a63d1c4" }, { "kind": "board", "id": "a-restricted-sites" } ] },
+    { "id": "d6", "text": "Times written ahead of the clock were corrected at 01:53 and 02:24.", "supports": [ { "kind": "commit", "sha": "f979e75" }, { "kind": "commit", "sha": "2730586" } ] },
+    { "id": "d7", "text": "A vault key was sent in the clear by session message at 02:28; the agent said so; the vault holds copies of public data.", "supports": [
+      { "kind": "text", "file": "agents/ipma/status.json", "contains": "vault key sent to the conductor in the clear by session message at 02:28" },
+      { "kind": "text", "file": "SECURITY.md", "contains": "A key pasted in the clear into a session message stays in two transcripts" } ] },
+    { "id": "e1", "text": "The oldest cards waiting on Dinis date from 21:45 on 10 November; the model cap among them was answered at about 02:50.", "supports": [
+      { "kind": "board", "id": "a-llm-cap" }, { "kind": "board", "id": "a-attach-repo" },
+      { "kind": "text", "file": "BRIEF.md", "contains": "you can use up to $20 in budget" } ] },
+    { "id": "e2", "text": "Three vault keys exist only inside the sessions that made them; a permission check refused reading them back and it was not worked around.", "supports": [ { "kind": "board", "id": "a-vault-keys-handover" }, { "kind": "text", "file": "agents/sources/status.json", "contains": "neither was worked around" } ] },
+    { "id": "e3", "text": "The three agents that started the incident elsewhere cannot push here; the conductor copies their work across.", "supports": [ { "kind": "text", "file": "REALITY.md", "contains": "still write in SGit-AI__Website__Web-Summit; the conductor syncs their files here" }, { "kind": "commit", "sha": "0808960" } ] },
+    { "id": "f1", "text": "What it cost is not known: the accountant has published nothing yet.", "supports": [ { "kind": "none", "why": "accounts/ does not exist when this was written" } ] }
+  ]
+}

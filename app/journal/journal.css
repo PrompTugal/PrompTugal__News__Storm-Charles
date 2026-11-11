@@ -1,0 +1,20 @@
+/* The journal's pictures and article (incident.journalist@web-summit.dinis). Tokens only (design/README.md): ink and greys for our own
+   counts, --focus for a person's word arriving; never a warning colour. Every picture has its table at the foot of the page. */
+.jr-figs { display: grid; gap: 1rem; margin: 1rem 0 0; }
+.jr-fig { margin: 1.2rem 0 1.6rem; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); break-inside: avoid; }
+.jr-fig figcaption { font-size: 13.5px; color: var(--ink-2); margin-top: 6px; }
+.jr-fig figcaption b { color: var(--ink); font-weight: 600; }
+.jr-scroll { overflow-x: auto; }
+.jr-svg { display: block; width: 100%; min-width: 600px; height: auto; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.jr-bar { fill: var(--ink); }
+.jr-bar.part { fill: var(--surface-2); stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 2; }
+.jr-lane { fill: var(--ink-2); }
+.jr-n { fill: var(--ink); font-size: 11px; }
+.jr-ax { fill: var(--ink-2); font-size: 10px; }
+.jr-lab { fill: var(--ink); font-size: 11px; }
+.jr-axis { stroke: var(--line-2); stroke-width: 1; }
+.jr-grid { stroke: var(--line); stroke-width: 1; }
+.jr-mark { stroke: var(--focus); stroke-width: 1.5; stroke-dasharray: 4 3; }
+article.journal > p:first-of-type, article.journal blockquote + p { font-size: 1.08em; }
+article.journal table, article.print-article table { font-size: 14px; }
+@media print { .jr-fig { border-color: var(--line-2); } .jr-bar, .jr-lane, .jr-mark { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
