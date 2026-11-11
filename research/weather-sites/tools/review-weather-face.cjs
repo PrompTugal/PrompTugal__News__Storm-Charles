@@ -1,5 +1,5 @@
 const { chromium, devices } = require('playwright'); const fs = require('fs');
-(async () => { const b = await chromium.launch({ proxy: { server: process.env.HTTPS_PROXY } }); const out = process.argv[2]; const U = 'https://storm-charles.promptugal.news/weather/index.html';
+(async () => { const b = await chromium.launch({ proxy: { server: process.env.HTTPS_PROXY } }); const out = process.argv[2]; const U = 'https://storm-charles.promptugal.news/';
  const errs = [];
  const d = await b.newPage({ viewport: { width: 1280, height: 900 } }); d.on('pageerror', e => errs.push(String(e)));
  await d.goto(U, { waitUntil: 'networkidle' }); await d.waitForTimeout(1500); await d.screenshot({ path: out + '/desk-1.png' });

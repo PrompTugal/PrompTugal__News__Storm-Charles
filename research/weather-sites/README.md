@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 04:33 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 05:40 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,14 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 05:39 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 44 addresses. A look at our own front page under the orange rain: [reviews/2026-11-11T0540.md](reviews/2026-11-11T0540.md).
+
+- **At the authorities, nothing** (facts): IPMA's communiqué no. 2 and Lisbon's six warnings unchanged (the orange rain is in force to 09:00); ANEPC's notice 21 still the latest; AEMET's row empty.
+- **In the coverage** (evidence): RTP's 05:00 bulletin is headed "Depressão Charles põe nove distritos de Portugal Continental sob aviso vermelho"; SAPO has "mais de uma centena de ocorrências" and 99 in Madeira; a CMTV video title reports a flooded school in Paço de Arcos, the first impact headline from greater Lisbon seen here; El País reports red warnings in the Canaries, Extremadura and Castilla y León. The live blogs have not moved since about 01:00.
+- No new tracker or map.
 
 ## What changed at the 04:32 UTC re-read (11 November)
 
