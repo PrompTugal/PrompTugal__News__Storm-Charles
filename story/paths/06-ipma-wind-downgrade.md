@@ -60,7 +60,7 @@ The ten minutes between the front page (07:41) and the headline (07:51) are the 
 - commits af317750, 3936e8ae, 45d33f10, 1056373e, 023ac5fe, e3c7867a, c56af177, b627825c, ebaf7d27, 2b480e6d, 26371572, 580b4bf0, b1d802f2, 5ed76a2f, 546d119f, 8422f038
 - incidents/2026-11-10-storm-charles/timeline.md rows s-1111T0738 and s-1111T0844
 - research/media/facts.json, fact 12-wind-red-to-orange (press times and notes, read by hand at 09:38)
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

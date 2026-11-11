@@ -62,7 +62,7 @@ The meteorologist works in the other repository; its answers arrive here as the 
 - BRIEF.md, "Dinis, 11 November 2026, ~02:20 UTC" (the Stories line), committed in 9d3a54ca
 - commits e96857b6, d2a58320, fa8134dd, 10d91459, 67dc6d68, a12191d2, a2af4fe4, 787075c0, 4adb9f40, 195021d6, f7d8754e, ebaf7d27, 165b8e22, f2141f13, ad201e2e, 05777613
 - data/keys.json: incident-stories-dinis to -4
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

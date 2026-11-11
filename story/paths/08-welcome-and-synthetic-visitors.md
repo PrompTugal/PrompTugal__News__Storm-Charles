@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:27 UTC. Made by `story/make-paths.mjs` from [08-welcome-and-synthetic-visitors.json](08-welcome-and-synthetic-visitors.json) (the data incident.motion@ animates).
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:33 UTC. Made by `story/make-paths.mjs` from [08-welcome-and-synthetic-visitors.json](08-welcome-and-synthetic-visitors.json) (the data incident.motion@ animates).
 
 # Path 8: A page for newcomers, read by four invented visitors before Dinis saw it
 
@@ -12,7 +12,7 @@ At about 09:50 Dinis looked at the site and said the first page must be "super c
 
 | UTC | after | Who | Step | What | Record |
 |---|---|---|---|---|---|
-| 09:50:00 |  | 🧑 Dinis Cruz → 🎼 conductor@ | instruct | "the first page has to be super clear ... like a normal website, a features website"; "I would like to simulate a journalist ... a normal visitor ... a newsroom exec and an investor" (about 09:50) | `BRIEF.md` |
+| ~09:50:00 |  | 🧑 Dinis Cruz → 🎼 conductor@ | instruct | "the first page has to be super clear ... like a normal website, a features website"; "I would like to simulate a journalist ... a normal visitor ... a newsroom exec and an investor" (about 09:50) | `BRIEF.md` |
 | 09:50:16 | +16 s | 🎼 conductor@ | route | at Dinis's word: a newcomers' front page (envoy with designer, at /welcome/ first) and a synthetic-visitors agent | [`45dc1bd9`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/45dc1bd9) |
 | 09:53:46 | +3 min 30 s | 🧍 synthetic@ #1 | commit | a new agent: its session key, and the four invented personas, written before any run (invented people: a test instrument, not user research) | [`76ccd12c`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/76ccd12c) · `research/synthetic/personas` |
 | 09:57:52 | +4 min 6 s | ✉️ envoy@ #1 | write | welcome/: a first draft (what this is, what you can do here, how it is made, what it is not); a draft for Dinis, not yet at / | [`94f2ed9a`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/94f2ed9a) · `welcome/` |
@@ -54,7 +54,7 @@ Invented visitors are a tool, said so on every page they appear on; nothing here
 - reporter/traces/loop-a-front-page-for-newcomers.json (incident.reporter@)
 - commits 45dc1bd9, 76ccd12c, 94f2ed9a, 0843a40e, c107c7e6, f93e8c7f, 4addc33e, a538dab1, dcdac7ad, f02d17d9, 5b489d1b, 0df5e0ab, 02590a4b
 - research/synthetic/ (personas, findings of runs 1 to 3)
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

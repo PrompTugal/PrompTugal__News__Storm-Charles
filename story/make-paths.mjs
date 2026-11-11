@@ -37,7 +37,7 @@ for (const f of files) {
   for (const s of p.steps) {
     const g = prev ? secs(s.t) - secs(prev.t) : null;
     if (g !== null && g >= (p.pause_min || 10) * 60 && s.verb !== 'pause') pauses.push(`${ts(prev.t)} → ${ts(s.t)} (${gap(g).slice(1)}): ${s.before || 'nothing on record between these two steps'}`);
-    md += `| ${ts(s.t)} | ${g === null ? '' : gap(g)} | ${who(s.actor)}${s.to ? ' → ' + who(s.to) : ''} | ${s.verb} | ${s.what.replace(/\|/g, '/')} | ${rec(s)} |\n`;
+    md += `| ${s.placed ? '~' + ts(s.t) : ts(s.t)} | ${g === null ? '' : gap(g)} | ${who(s.actor)}${s.to ? ' → ' + who(s.to) : ''} | ${s.verb} | ${s.what.replace(/\|/g, '/')} | ${rec(s)} |\n`;
     prev = s;
   }
   const total = secs(p.steps.at(-1).t) - secs(p.steps[0].t);
@@ -45,7 +45,7 @@ for (const f of files) {
   md += `## The pauses\n\n${pauses.length ? pauses.map(x => '- ' + x).join('\n') : '- None of ' + (p.pause_min || 10) + ' minutes or more.'}${p.pauses_note ? '\n\n' + p.pauses_note : ''}\n\n`;
   md += `## What this shows\n\n${p.shows.map(x => '- ' + x).join('\n')}\n\n`;
   if (p.reading?.length) md += `## Reading it (the storyteller's)\n\n${p.reading.join('\n\n')}\n\n`;
-  md += `## Rests on\n\n${p.rests_on.map(x => '- ' + x).join('\n')}\n- Times: a commit's author time (git \`%aI\`), to the second; CI's times from \`data/ci/runs/\`; a time marked approximate is the storyteller's placing between two timed steps.\n\n`;
+  md += `## Rests on\n\n${p.rests_on.map(x => '- ' + x).join('\n')}\n- Times: a commit's author time (git \`%aI\`), to the second; CI's times from \`data/ci/runs/\`; a time with ~ is placed by the storyteller (the step's \`placed\` field says why), drawn dashed by motion@.\n\n`;
   md += `[All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)\n\n*Not a warning service: this page tells how the site was made; for the storm, read IPMA.*\n`;
   fs.writeFileSync(`${DIR}/${f.replace(/\.json$/, '.md')}`, md);
   index.push({ n: p.n, title: p.title, file: f.replace(/\.json$/, '.md'), span: p.span, named_by: p.named_by });

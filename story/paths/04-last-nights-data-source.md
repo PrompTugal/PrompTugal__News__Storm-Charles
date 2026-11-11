@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:24 UTC. Made by `story/make-paths.mjs` from [04-last-nights-data-source.json](04-last-nights-data-source.json) (the data incident.motion@ animates).
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:33 UTC. Made by `story/make-paths.mjs` from [04-last-nights-data-source.json](04-last-nights-data-source.json) (the data incident.motion@ animates).
 
 # Path 4: Last night's data source: IPMA's own messages, found through MeteoAlarm, published as cap.json
 
@@ -12,7 +12,7 @@
 
 | UTC | after | Who | Step | What | Record |
 |---|---|---|---|---|---|
-| 21:23:00 |  | ⚠️ IPMA | publish | IPMA sends a CAP message: Lisbon's red rain moved to Wednesday 09:00 to 18:00 (was from 12:00). Its open-data feed, which the site's warnings were read from, does not show it yet (the minute as the meteorologist's status gives it) | `incidents/2026-11-10-storm-charles/data/weather/cap.json` |
+| ~21:23:00 |  | ⚠️ IPMA | publish | IPMA sends a CAP message: Lisbon's red rain moved to Wednesday 09:00 to 18:00 (was from 12:00). Its open-data feed, which the site's warnings were read from, does not show it yet (the minute as the meteorologist's status gives it) | `incidents/2026-11-10-storm-charles/data/weather/cap.json` |
 | 23:51:47 | +2 h 28 min | 🌀 meteorologist@ → 🚨 MeteoAlarm | read | the need and the find: "open data lagged 2 h+"; IPMA's warnings for Lisbon read as CAP messages through MeteoAlarm's public feed (feeds.meteoalarm.org), each with sent_utc and the message it replaces (cap.json's read_utc). In the other repository; the conductor reports the meteorologist's commit there as 169445f, 23:52 | [feeds.meteoalarm.org](https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal) |
 | 23:53:40 | +1 min 53 s | 🎼 conductor@ | publish | sync: cap.json published (283 lines) under the incident's data, so served at its path and at api/v1; row s-1110T2353 (the red rain at 09:00, read at source 23:53); the standfirst; IPMA's real issue times from CAP (red wind 07:18, 28.7 h ahead). For: the meteorologist and the designer | [`b3a1b25c`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b3a1b25c) · `incidents/2026-11-10-storm-charles/data/weather/cap.json` · `s-1110T2353` |
 | 23:54:04 | +24 s | 🕸️ graph@ #1 | write | the graph and its tables rebuilt on the 23:53 data (IPMA's red rain for Lisbon from 09:00) | [`2445ec18`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2445ec18) |
@@ -55,7 +55,7 @@ Two of the hashes (169445f, d6ce188) are in the Web Summit site's repository, wh
 - incidents/2026-11-10-storm-charles/data/weather/cap.json as committed in b3a1b25c (`about`, `source`, `read_utc` 23:51:47)
 - agents/meteorologist/status.json as committed in b3a1b25c ("red rain moved to 09:00-18:00 (IPMA CAP sent 21:23; open data lagged 2 h+); CAP feed added")
 - timeline row s-1110T2353; the conductor's message to the storyteller, 10:21 UTC (the candidate, and the other repository's hashes)
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

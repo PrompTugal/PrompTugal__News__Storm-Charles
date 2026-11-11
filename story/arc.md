@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:30 UTC. For a newcomer: the whole incident in a page, with links into the [ten paths](paths/README.md). Who everyone is: [the cast](cast.md); the words used: [the primitives](primitives.md).
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:33 UTC. For a newcomer: the whole incident in a page, with links into the [ten paths](paths/README.md). Who everyone is: [the cast](cast.md); the words used: [the primitives](primitives.md).
 
 # The arc: one person, thirty-odd agents, one night
 
@@ -50,6 +50,10 @@ Read across the night, the work matured in layers, each built on the one before:
 4. **The explanation** (09:28 onwards): a page for newcomers, invented readers to test it, a news-channel wall, and this story with its animations (paths 5 and 8).
 
 The release numbers show the pace: v0.1.1 at 21:14, v0.1.77 by midnight, v0.1.347 by 03:00, v0.1.602 by 06:00, v0.1.718 by 09:00, v0.1.857 by 10:29 (CI's tags; [data/ci/index.json](../data/ci/index.json)).
+
+## The turn: towards the close (10:30)
+
+At about 10:30 Dinis asked for the incident to be wound down once the storm ends, and moved to business as usual: "explorer to villager". A new agent, incident.planner@, writes the plan: an exit interview, an assessment and a verdict for every agent (stop, continue, refactor, merge), and a closing record made by the reporter, the journalist, the storyteller and the librarian. At ~10:32 he added that nobody stops until the hand-over is done, and a big link to promptugal.news on every page; at ~10:35, that the brand must match it. The storm itself is not over: IPMA's red rain runs to 18:00 and the orange wind to 21:00 (as BRIEF.md read them at 10:30), so the coverage goes on. This page is the spine of that closing record; it ends here for now, and will follow the plan (BRIEF.md, ~10:30 to ~10:35; commits bda392be, 9fea08ec, 348bf2e0).
 
 ## Where to go next
 

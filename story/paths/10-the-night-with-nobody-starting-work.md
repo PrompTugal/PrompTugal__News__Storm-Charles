@@ -54,7 +54,7 @@ The counts per hour are the storyteller's, from git: a commit is counted by its 
 - reporter/traces/outage-the-model-account-out-of-credit.json; reporter/traces/decision-web-summit-terms-to-a-hold.json; reporter/traces/memory-the-librarian-saves-tokens.json
 - commits ab8008ef, 2bbee526, 4b5a93ac, 0fb17c3a, dd54ba38, 879d9d4c, c82743ca, 96b55927, 8ca902eb, 4561b70e, 07644dc0, 195021d6, f5e0c8df, 8f8b2e85, 167083f0, cbfb680c, 18d9f8aa, 77d28513, 8d1efd8e
 - git log, commits per hour (counted by the storyteller); data/keys.json (the sessions and their status)
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

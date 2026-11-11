@@ -46,7 +46,7 @@ Dinis is in the cast because the 36 cards were questions for him: the piece's su
 - commits 641e2164, 855ac669, d762cf8f, 2d7320a2, 271f7b91, 7ac60926
 - data/ci/runs/2026-11-11T02.json (v0.1.345 served) and 2026-11-11T03.json (v0.1.380 cancelled)
 - journal/a-storm-one-person-one-night.md (the dated note, "Corrected at 03:03 UTC"); journal/mistakes-made-in-the-open.md (the 03:03 row)
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

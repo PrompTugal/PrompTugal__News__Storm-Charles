@@ -56,7 +56,7 @@ The first and the fourteenth steps carry no key names or vault keys: only vault 
 - BRIEF.md, "Dinis, 11 November, ~09:30 UTC" and "~09:47 UTC" (commits 84158ea2, 4dd30049); CLAUDE.md, page views and vault keys
 - commits 0df5e0ab, 639cf58b, 18d9f8aa, ed75f9a9, 1ed4d6c8, 8e13cfe0, 4fb4d7c2, bf665cd4, bcab685a, 0aa3b5d8, 218c89a0, 7980fa5e, 15a33129, 0b90fcfc, 6387cf2f, 11cd2fb0, 8fa018f3, 1ccc686b, 6648bbba
 - board/items/a-vault-keys-handover.json, board/items/a-pageviews-vault.json; data/lanes.json; data/agents/views.json
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:18 UTC. Made by `story/make-paths.mjs` from [03-a-journalists-hand-over.json](03-a-journalists-hand-over.json) (the data incident.motion@ animates).
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:33 UTC. Made by `story/make-paths.mjs` from [03-a-journalists-hand-over.json](03-a-journalists-hand-over.json) (the data incident.motion@ animates).
 
 # Path 3: A hand-over: the journalist's third session to its fourth
 
@@ -18,9 +18,9 @@ A role is a name and a set of folders; a session is one context holding it. The 
 | 07:15:12 | +54 min 13 s | 🗞️ journalist@ #3 | correct | 07:14 round: the tenth piece corrected from the conductor's own record of the hold | [`fda196f5`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/fda196f5) |
 | 08:14:51 | +59 min 39 s | 🗞️ journalist@ #3 | commit | 08:14 round: the eleventh piece, "Nobody asked" (path 1); the status file carries a hand-over list for whoever comes next | [`26371572`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/26371572) · `agents/journalist/status.json` |
 | 08:15:01 | +10 s | 🗞️ journalist@ #3 | commit | tokens measured: 49 calls in the session; context 84,018 at the first call, 196,389 at the last (the team's line is to hand over near 200,000) | [`82c935dc`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/82c935dc) · `accounts/ledger/journalist.jsonl` |
-| 08:16:00 | +59 s | 🎼 conductor@ → 🗞️ journalist@ #4 | route | the conductor starts a fourth journalist session, at Dinis's word (the fourth's status: started_by the conductor's session, on_whose_word Dinis Cruz, follows the third) | `agents/journalist/status.json` |
+| ~08:16:00 | +59 s | 🎼 conductor@ → 🗞️ journalist@ #4 | route | the conductor starts a fourth journalist session, at Dinis's word (the fourth's status: started_by the conductor's session, on_whose_word Dinis Cruz, follows the third) | `agents/journalist/status.json` |
 | 08:16:05 | +5 s | 🗞️ journalist@ #4 | wake | the fourth session's first model call; its context starts at 84,099 tokens (the start prompt, CLAUDE.md, the start pack) | `accounts/ledger/journalist.jsonl` |
-| 08:16:30 | +25 s | 🗞️ journalist@ #4 | read | the hand-over: the `handover` list in the status file (run the check first; stamp times from the clock; counts from the file that owns them) and `next` (two dated lines owed). Time approximate | `agents/journalist/status.json` |
+| ~08:16:30 | +25 s | 🗞️ journalist@ #4 | read | the hand-over: the `handover` list in the status file (run the check first; stamp times from the clock; counts from the file that owns them) and `next` (two dated lines owed). Time approximate | `agents/journalist/status.json` |
 | 08:16:54 | +24 s | 🗞️ journalist@ #4 | hand-over | its own session key's public half added (incident-journalist-dinis-4); the third session's entry marked "handed over". For: identity@, which checks the keys | [`8aaa7ce5`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8aaa7ce5) · `data/keys.json` |
 | 08:18:04 | +1 min 10 s | 🗞️ journalist@ #4 | commit | the fourth session's first round: the two dated lines the third had listed in `next` (the accountant's round 8; the outage's sixth empty hour), each resting on a commit. For: the conductor and the accountant | [`7146cfdf`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7146cfdf) |
 | 08:18:04 | +0 s | 🗞️ journalist@ #4 | commit | tokens measured: the first round cost 14 calls | [`bc2d7002`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/bc2d7002) · `accounts/ledger/journalist.jsonl` |
@@ -53,7 +53,7 @@ The journalist's first hand-over, at 04:09, was on the conductor's word at 04:08
 - accounts/ledger/journalist.jsonl: the lines at 08:15:01 (session s-3bc2fe25665f) and 08:18:04 (session s-c97c7fa1ba3b)
 - agents/journalist/status.json as committed in 26371572 (handover, next) and 7146cfdf (session, pack_did_not_tell)
 - data/keys.json: incident-journalist-dinis-3 (handed over) and -4 (active)
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

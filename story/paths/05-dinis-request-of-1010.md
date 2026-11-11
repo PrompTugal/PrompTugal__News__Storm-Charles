@@ -1,21 +1,22 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:31 UTC. Made by `story/make-paths.mjs` from [05-dinis-request-of-1010.json](05-dinis-request-of-1010.json) (the data incident.motion@ animates).
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:33 UTC. Made by `story/make-paths.mjs` from [05-dinis-request-of-1010.json](05-dinis-request-of-1010.json) (the data incident.motion@ animates).
 
 # Path 5: Dinis's request of 10:10, from that moment on (open, recorded as it happens)
 
 *Named by Dinis (BRIEF.md, ~10:10). 11 November, from 10:10 UTC; open.*
 
-At about 10:10 Dinis asked the conductor for the story of the agents, told as in his book, with small animations, "even this request ... map out everything that's going to happen from this request". This path is that request, recorded by one of the agents it created (the storyteller tells it; the reporter traces it too, from the outside, in reporter/traces/request-ten-paths-and-small-animations.json). In its first fourteen minutes: the brief written, two agents started, the Universe and the live map given their own pages, the cast and the primitives pushed, motion's format and first animations live, and five of the ten paths told; by 10:30 all ten and the arc. It stays open: it grows one step per move, and Dinis's answer on path 4 and his yes on path 8 are still to come.
+At about 10:10 Dinis asked the conductor for the story of the agents, told as in his book, with small animations, "even this request ... map out everything that's going to happen from this request". This path is that request, recorded by one of the agents it created (the storyteller tells it; the reporter traces it too, from the outside, in reporter/traces/request-ten-paths-and-small-animations.json). In its first fourteen minutes: the brief written, two agents started, the Universe and the live map given their own pages, the cast and the primitives pushed, motion's format and first animations live, and five of the ten paths told; by 10:30 all ten and the arc. At about 10:30 Dinis turned the incident towards its close, and this story became the spine of its closing record. It stays open: it grows one step per move, and Dinis's answer on path 4 and his yes on path 8 are still to come.
 
-**Cast:** 🧑 Dinis Cruz · 🎼 conductor@ · 📜 storyteller@ #1 · 🎞️ motion@ · 🔭 observability@ #4 · 🎙️ reporter@ #4 · 🏭 CI · 👀 readers
+**Cast:** 🧑 Dinis Cruz · 🎼 conductor@ · 📜 storyteller@ #1 · 🎞️ motion@ · 🔭 observability@ #4 · 🎙️ reporter@ #4 · 🏭 CI · 👀 readers · 🎨 designer@ #5 · 📺 broadcast@ · ✈️ transport@ · incident.planner@web-summit.dinis
 
 ## The steps
 
 | UTC | after | Who | Step | What | Record |
 |---|---|---|---|---|---|
-| 10:10:00 |  | 🧑 Dinis Cruz → 🎼 conductor@ | instruct | "Start maybe finding 10 different paths"; "we gave an identity to each agent ... we should have the same thing here"; "you need a little icon for me" (in his session with the conductor, about 10:10) | `BRIEF.md` |
+| ~10:10:00 |  | 🧑 Dinis Cruz → 🎼 conductor@ | instruct | "Start maybe finding 10 different paths"; "we gave an identity to each agent ... we should have the same thing here"; "you need a little icon for me" (in his session with the conductor, about 10:10) | `BRIEF.md` |
 | 10:10:37 | +37 s | 🎼 conductor@ | route | BRIEF.md gains the section "Dinis, 11 November, ~10:10 UTC"; JOBS gains storyteller@ and motion@; policy.json gives each its folders | [`f4071e9c`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f4071e9c) · `agents/JOBS.md` |
 | 10:11:53 | +1 min 16 s | 🔭 observability@ #4 | write | its hand-over takes the request's own part for it: the Universe and the live map, each on its own page | [`65b29a34`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/65b29a34) |
-| 10:12:38 | +45 s | 📜 storyteller@ #1 | wake | the storyteller's session starts: its key made (record sha256:01efced5750df04a) with the pinned pki-agent.mjs; it reads BRIEF, JOBS, the book's cast and day chapters | `data/keys.json` |
+| 10:12:27 | +34 s | 🎼 conductor@ | route | Dinis's next ask, ~10:13: a news-channel wall; incident.broadcast@ started | [`062940a1`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/062940a1) |
+| ~10:12:38 | +11 s | 📜 storyteller@ #1 | wake | the storyteller's session starts: its key made (record sha256:01efced5750df04a) with the pinned pki-agent.mjs; it reads BRIEF, JOBS, the book's cast and day chapters | `data/keys.json` |
 | 10:13:14 | +36 s | 📜 storyteller@ #1 | commit | its session key's public half and its status file: a new agent in the record | [`edc481e0`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/edc481e0) |
 | 10:15:40 | +2 min 26 s | 📜 storyteller@ #1 | publish | the cast (Dinis, 35 agents with their generations, outside bodies and machines; an emoji and a glyph each) and the primitives; For: motion@ | [`8862c581`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8862c581) · `story/cast.md` |
 | 10:16:21 | +41 s | 🎙️ reporter@ #4 | write | a trace of this request, open; the existing traces pointed out to the storyteller and motion | [`3d984657`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/3d984657) · `reporter/traces/request-ten-paths-and-small-animations.json` |
@@ -25,13 +26,19 @@ At about 10:10 Dinis asked the conductor for the story of the agents, told as in
 | 10:20:49 | +37 s | 🎞️ motion@ | publish | motion's first push: one small format for a flow (data/flows/schema.json), the player, and the first three small animations (a journalist's wake, a hand-over, an agent's night) | [`b144acec`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b144acec) · `data/flows/schema.json` |
 | 10:21:36 | +47 s | 🎼 conductor@ → 📜 storyteller@ #1 | answer | on path 4: it cannot place Dinis's data source with certainty either, has asked him, and gives the best candidate (a session message; not in the repository) | — |
 | 10:22:07 | +31 s | 🔭 observability@ #4 | publish | the live map and the Universe, each full size on its own page (/agents/live/, /agents/universe/) | [`e73737c5`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/e73737c5) |
-| 10:22:17 | +10 s | 📜 storyteller@ #1 | publish | path 2: a story made | [`22115c19`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/22115c19) |
+| 10:22:08 | +1 s | 📺 broadcast@ | publish | /broadcast/, the news-channel wall, first version | [`9b6fe987`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/9b6fe987) |
+| 10:22:17 | +9 s | 📜 storyteller@ #1 | publish | path 2: a story made | [`22115c19`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/22115c19) |
 | 10:24:14 | +1 min 57 s | 📜 storyteller@ #1 | publish | path 4: last night's data source, as our reading, Dinis's step open; For: the conductor | [`468b7c46`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/468b7c46) |
 | 10:24:15 | +1 s | 🎞️ motion@ | answer | "the storyteller's paths play as they are (story/paths/*.json); its primitives taken into the schema": the format agreed, in a commit | [`bed1fa94`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/bed1fa94) |
-| 10:26:31 | +2 min 16 s | 📜 storyteller@ #1 | publish | path 7: page views and a vault key through the lane | [`246ccb1e`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/246ccb1e) |
+| 10:24:25 | +10 s | 🎼 conductor@ | route | Dinis's ask of ~10:25: flights and transport; incident.transport@ started | [`44c65e23`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/44c65e23) |
+| 10:25:39 | +1 min 14 s | 🎞️ motion@ | answer | a placed time on a storyteller step is drawn dashed (its ask of 10:24, taken by the storyteller as a "placed" field) | [`7e00a0a2`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/7e00a0a2) |
+| 10:26:00 | +21 s | 🎨 designer@ #5 | read | round 52: a first look at /flows/, five notes for motion@ | [`8e1f5e76`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/8e1f5e76) |
+| 10:26:31 | +31 s | 📜 storyteller@ #1 | publish | path 7: page views and a vault key through the lane | [`246ccb1e`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/246ccb1e) |
 | 10:27:26 | +55 s | 📜 storyteller@ #1 | publish | path 8: a page for newcomers, read by four invented visitors | [`524d3176`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/524d3176) |
-| 10:28:26 | +1 min | 📜 storyteller@ #1 | publish | path 9: a correction | [`522e67e5`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/522e67e5) |
-| 10:30:41 | +2 min 15 s | 📜 storyteller@ #1 | publish | path 10 and the arc: the ten paths told, the whole incident in a page | [`6a43c78a`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6a43c78a) |
+| 10:27:38 | +12 s | 🎞️ motion@ | publish | the reporter's traces play as they are: 14 trace flows beside the paths | [`4038053e`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4038053e) |
+| 10:28:26 | +48 s | 📜 storyteller@ #1 | publish | path 9: a correction | [`522e67e5`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/522e67e5) |
+| 10:29:32 | +1 min 6 s | 🧑 Dinis Cruz → 🎼 conductor@ | instruct | ~10:30: wind the incident down to business as usual ("explorer to villager"); incident.planner@ writes the plan; the storyteller's arc to be the spine of the closing record (the conductor's message, 10:30). The commit is the conductor's writing of it into BRIEF.md | [`bda392be`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/bda392be) |
+| 10:30:41 | +1 min 9 s | 📜 storyteller@ #1 | publish | path 10 and the arc: the ten paths told, the whole incident in a page | [`6a43c78a`](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/6a43c78a) |
 
 From the first step to the last: 20 min 41 s.
 
@@ -59,7 +66,7 @@ The time of Dinis's words is the brief's "~10:10"; the conductor's commit is 37 
 - commits f4071e9c, 65b29a34, edc481e0, 8862c581, 3d984657, f54ad5e5, f61d3db0, b144acec, e73737c5, 22115c19, 468b7c46, bed1fa94
 - reporter/traces/request-ten-paths-and-small-animations.json (incident.reporter@, open)
 - the storyteller's session: the reporter's message (queued 10:17:20) and the conductor's (queued 10:21:36)
-- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time marked approximate is the storyteller's placing between two timed steps.
+- Times: a commit's author time (git `%aI`), to the second; CI's times from `data/ci/runs/`; a time with ~ is placed by the storyteller (the step's `placed` field says why), drawn dashed by motion@.
 
 [All the paths](README.md) · [the cast](../cast.md) · [the primitives](../primitives.md)
 

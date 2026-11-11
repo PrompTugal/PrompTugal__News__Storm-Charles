@@ -1,12 +1,12 @@
 {
   "by": "incident.storyteller@web-summit.dinis",
-  "updated": "2026-11-11T10:31:00Z",
+  "updated": "2026-11-11T10:33:00Z",
   "id": "dinis-request-of-1010",
   "n": 5,
   "title": "Dinis's request of 10:10, from that moment on (open, recorded as it happens)",
   "named_by": "dinis",
   "span": "11 November, from 10:10 UTC; open",
-  "summary": "At about 10:10 Dinis asked the conductor for the story of the agents, told as in his book, with small animations, \"even this request ... map out everything that's going to happen from this request\". This path is that request, recorded by one of the agents it created (the storyteller tells it; the reporter traces it too, from the outside, in reporter/traces/request-ten-paths-and-small-animations.json). In its first fourteen minutes: the brief written, two agents started, the Universe and the live map given their own pages, the cast and the primitives pushed, motion's format and first animations live, and five of the ten paths told; by 10:30 all ten and the arc. It stays open: it grows one step per move, and Dinis's answer on path 4 and his yes on path 8 are still to come.",
+  "summary": "At about 10:10 Dinis asked the conductor for the story of the agents, told as in his book, with small animations, \"even this request ... map out everything that's going to happen from this request\". This path is that request, recorded by one of the agents it created (the storyteller tells it; the reporter traces it too, from the outside, in reporter/traces/request-ten-paths-and-small-animations.json). In its first fourteen minutes: the brief written, two agents started, the Universe and the live map given their own pages, the cast and the primitives pushed, motion's format and first animations live, and five of the ten paths told; by 10:30 all ten and the arc. At about 10:30 Dinis turned the incident towards its close, and this story became the spine of its closing record. It stays open: it grows one step per move, and Dinis's answer on path 4 and his yes on path 8 are still to come.",
   "pause_min": 3,
   "cast": [
     "dinis",
@@ -16,7 +16,11 @@
     "incident.observability@web-summit.dinis#4",
     "incident.reporter@web-summit.dinis#4",
     "ci-runner",
-    "readers"
+    "readers",
+    "incident.designer@web-summit.dinis#5",
+    "incident.broadcast@web-summit.dinis",
+    "incident.transport@web-summit.dinis",
+    "incident.planner@web-summit.dinis"
   ],
   "steps": [
     {
@@ -25,7 +29,8 @@
       "to": "incident.conductor@web-summit.dinis",
       "verb": "instruct",
       "what": "\"Start maybe finding 10 different paths\"; \"we gave an identity to each agent ... we should have the same thing here\"; \"you need a little icon for me\" (in his session with the conductor, about 10:10)",
-      "file": "BRIEF.md"
+      "file": "BRIEF.md",
+      "placed": "the brief says ~10:10"
     },
     {
       "t": "2026-11-11T10:10:37Z",
@@ -43,11 +48,19 @@
       "commit": "65b29a34"
     },
     {
+      "t": "2026-11-11T10:12:27Z",
+      "actor": "incident.conductor@web-summit.dinis",
+      "verb": "route",
+      "what": "Dinis's next ask, ~10:13: a news-channel wall; incident.broadcast@ started",
+      "commit": "062940a1"
+    },
+    {
       "t": "2026-11-11T10:12:38Z",
       "actor": "incident.storyteller@web-summit.dinis#1",
       "verb": "wake",
       "what": "the storyteller's session starts: its key made (record sha256:01efced5750df04a) with the pinned pki-agent.mjs; it reads BRIEF, JOBS, the book's cast and day chapters",
-      "file": "data/keys.json"
+      "file": "data/keys.json",
+      "placed": "the key's own time, 10:12:38"
     },
     {
       "t": "2026-11-11T10:13:14Z",
@@ -116,6 +129,13 @@
       "commit": "e73737c5"
     },
     {
+      "t": "2026-11-11T10:22:08Z",
+      "actor": "incident.broadcast@web-summit.dinis",
+      "verb": "publish",
+      "what": "/broadcast/, the news-channel wall, first version",
+      "commit": "9b6fe987"
+    },
+    {
       "t": "2026-11-11T10:22:17Z",
       "actor": "incident.storyteller@web-summit.dinis#1",
       "verb": "publish",
@@ -137,6 +157,27 @@
       "commit": "bed1fa94"
     },
     {
+      "t": "2026-11-11T10:24:25Z",
+      "actor": "incident.conductor@web-summit.dinis",
+      "verb": "route",
+      "what": "Dinis's ask of ~10:25: flights and transport; incident.transport@ started",
+      "commit": "44c65e23"
+    },
+    {
+      "t": "2026-11-11T10:25:39Z",
+      "actor": "incident.motion@web-summit.dinis",
+      "verb": "answer",
+      "what": "a placed time on a storyteller step is drawn dashed (its ask of 10:24, taken by the storyteller as a \"placed\" field)",
+      "commit": "7e00a0a2"
+    },
+    {
+      "t": "2026-11-11T10:26:00Z",
+      "actor": "incident.designer@web-summit.dinis#5",
+      "verb": "read",
+      "what": "round 52: a first look at /flows/, five notes for motion@",
+      "commit": "8e1f5e76"
+    },
+    {
       "t": "2026-11-11T10:26:31Z",
       "actor": "incident.storyteller@web-summit.dinis#1",
       "verb": "publish",
@@ -151,11 +192,26 @@
       "commit": "524d3176"
     },
     {
+      "t": "2026-11-11T10:27:38Z",
+      "actor": "incident.motion@web-summit.dinis",
+      "verb": "publish",
+      "what": "the reporter's traces play as they are: 14 trace flows beside the paths",
+      "commit": "4038053e"
+    },
+    {
       "t": "2026-11-11T10:28:26Z",
       "actor": "incident.storyteller@web-summit.dinis#1",
       "verb": "publish",
       "what": "path 9: a correction",
       "commit": "522e67e5"
+    },
+    {
+      "t": "2026-11-11T10:29:32Z",
+      "actor": "dinis",
+      "verb": "instruct",
+      "what": "~10:30: wind the incident down to business as usual (\"explorer to villager\"); incident.planner@ writes the plan; the storyteller's arc to be the spine of the closing record (the conductor's message, 10:30). The commit is the conductor's writing of it into BRIEF.md",
+      "commit": "bda392be",
+      "to": "incident.conductor@web-summit.dinis"
     },
     {
       "t": "2026-11-11T10:30:41Z",
