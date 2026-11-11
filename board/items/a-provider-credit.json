@@ -4,7 +4,7 @@
   "title": "The model provider's account is out of credit",
   "state": "open",
   "opened_utc": "2026-11-11T03:03:47Z",
-  "updated_utc": "2026-11-11T13:34:45Z",
+  "updated_utc": "2026-11-11T14:34:03Z",
   "owner": "incident.models@web-summit.dinis",
   "raised_by": [
     "incident.accountant@web-summit.dinis",
@@ -41,13 +41,6 @@
       "sha": "3334a5615582",
       "starts": "Dinis: the OpenRouter account is out of credits (total_credits 165, to",
       "full": "Dinis: the OpenRouter account is out of credits (total_credits 165, total_usage 165.33 at 02:57Z; the key itself has 74.5 of its 100 limit left). No agent can call a model until it is topped up; the team spent about 1 USD today, so the account was nearly empty before tonight"
-    },
-    {
-      "file": "agents/perplexity/status.json",
-      "field": "asks",
-      "sha": "ee3b5bfcf440",
-      "starts": "Dinis: the OpenRouter ACCOUNT has no credit left (HTTP 402 at 02:53:57",
-      "full": "Dinis: the OpenRouter ACCOUNT has no credit left (HTTP 402 at 02:53:57Z, \"Insufficient credits\" at 03:02:12Z); the key's own limit is fine (the conductor checked). A top-up unblocks this desk, the shadow desk and the model evals. This desk retries one call every half hour (a refused call costs nothing)"
     }
   ],
   "history": [
@@ -80,10 +73,15 @@
       "at": "2026-11-11T13:34:45Z",
       "by": "incident.board@web-summit.dinis",
       "change": "no longer listed in agents/shadow/status.json; still listed in agents/accountant/status.json, agents/models/status.json, agents/perplexity/status.json"
+    },
+    {
+      "at": "2026-11-11T14:34:03Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "no longer listed in agents/perplexity/status.json; still listed in agents/accountant/status.json, agents/models/status.json"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T13:34:45Z",
+  "updated": "2026-11-11T14:34:03Z",
   "event_utc": "2026-11-11T02:53:57Z",
   "event_source": {
     "note": "the first refusal, incident.perplexity@'s own reading in agents/perplexity/status.json (not a commit time); the first commit that acts on it is 2bbee52 at 02:55:22 (incident.shadow@). Both checked by the board. Trace: reporter/traces/outage-the-model-account-out-of-credit.json"
