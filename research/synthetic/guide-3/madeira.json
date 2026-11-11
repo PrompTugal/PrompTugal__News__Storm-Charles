@@ -1,0 +1,64 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T12:06:00Z",
+  "label": "Invented person; not user research",
+  "persona": "madeira",
+  "run": "guide-3",
+  "start": "/guide/",
+  "version_seen": "v0.1.1030",
+  "page_height_px": 16668,
+  "page_height_with_madeira_deeper_px": 19735,
+  "seconds_lost_to_length": 28,
+  "steps": [
+    {"n":1,"where":"/guide/","what":"Lisbon top line: RED rain until 18:00 UTC, orange wind and waves; FACT, read 11:26 UTC","seconds":5,"px":380},
+    {"n":2,"where":"/guide/ Changed today","what":"Madeira rainfall briefing and occurrence count; no Madeira decision","seconds":18,"px":1124},
+    {"n":3,"where":"/guide/ tiles","what":"Tile 6 Madeira","seconds":26,"px":1939},
+    {"n":4,"where":"#madeira","what":"Lead: closed, access to Funchal's centre this morning (pub. 07:25 UTC, EVIDENCE)","seconds":33,"px":12243,"taps":1},
+    {"n":5,"where":"#madeira","what":"Decisions stated: 16 Madeira airport flights cancelled; ANA conditioned","seconds":45,"px":12484},
+    {"n":6,"where":"#madeira","what":"SRPC measures page; 205 occurrences, none serious","seconds":62,"px":13197},
+    {"n":7,"where":"#madeira","what":"No orange or red IPMA warning for Madeira in force or ahead, read 11:26 UTC","seconds":70,"px":13467},
+    {"n":8,"where":"#madeira","what":"Not stated: roads, buses, shops, Funchal's centre since this morning","seconds":78,"px":13600},
+    {"n":9,"where":"#madeira Deeper","what":"Madeira schools closed Wed morning, reopening 13:00; 12th of 13","seconds":105,"px":16375,"taps":2},
+    {"n":10,"where":"/guide/ top","what":"Shares Lisbon top line with family","seconds":115,"px":380}
+  ],
+  "understood_10s": "Lisbon red rain until 18:00 UTC with orange wind and waves; nothing on Madeira on the first screen.",
+  "understood_1min": "Funchal centre closed this morning, 16 Madeira flights cancelled, 205 occurrences none serious, no orange or red warning for Madeira now; no school answer yet.",
+  "looked_for": [
+    {"what":"What is in force in Madeira","result":"found","where":"#madeira 13467 px","seconds":70,"taps":1},
+    {"what":"Madeira decisions: schools, Funchal flights, roads","result":"partly","where":"flights #madeira 12484 px (45 s, 1 tap); schools only in Deeper 16375 px, 12th of 13 (105 s, 2 taps); roads: not-stated line ~13600 px","seconds":105,"taps":2},
+    {"what":"Lisbon for family","result":"found","where":"/guide/ first screen ~380 px","seconds":5,"taps":0}
+  ],
+  "misread": [
+    "Lead 'closed' on Funchal's centre (pub. 07:25) read as closed now; corrected only by the not-stated line 1,300 px lower",
+    "'Decisions stated' without schools read as: no Madeira school decision exists",
+    "Past red Madeira warning in Deeper (16560 px) unmarked as past"
+  ],
+  "not_found": [
+    "Madeira top line at the head of #madeira",
+    "Schools in Madeira's visible 'Decisions stated'",
+    "Schools Thursday and Porto Santo ferry in the not-stated list",
+    "Line that the mainland alert does not cover Madeira",
+    "Madeira tile near the first screen (now 1939 px)"
+  ],
+  "advice_like": [],
+  "words_not_understood": ["SRPC", "conditioned", "l/m²"],
+  "would_act": "Would share the Lisbon top line and Madeira's 'no orange or red' line; would act on schools if 'reopening 13:00' were in Decisions stated.",
+  "score": 3.5,
+  "score_reason": "Madeira now leads with closure and flights and ends with clear 'not stated' and 'no warning' lines, but schools are still 12th in a collapsed list and the tile moved lower.",
+  "vs_guide2": [
+    {"finding":"Madeira decisions only in Deeper, statistics first","status":"partly"},
+    {"finding":"No Madeira headline and no not-stated line","status":"partly"},
+    {"finding":"Section-4 Schools row not marked mainland","status":"fixed"},
+    {"finding":"Warnings near expiry shown as plain ORANGE","status":"fixed"},
+    {"finding":"Funchal centre 'closed this morning' may be stale","status":"partly"},
+    {"finding":"Madeira tile below the fold","status":"not fixed (worse: 708 to 1939 px)"}
+  ],
+  "findings": [
+    {"class":"costly","what":"Madeira schools decision absent from #madeira's visible Decisions stated","where":"#madeira Deeper, 12th of 13","measure":"16375 px; ~105 s, 2 taps","change":"Add the SRPC schools row to Decisions stated"},
+    {"class":"costly","what":"Madeira tile pushed down by Changed today","where":"/guide/ tiles","measure":"1939 px (was 708); ~8 s lost","change":"Tiles or a Madeira jump above Changed today"},
+    {"class":"minor","what":"No Madeira top line; in-force answer is the 7th block","where":"#madeira","measure":"13467 px, ~70 s","change":"Open #madeira with 'In force now for Madeira: ...'"},
+    {"class":"minor","what":"Not-stated list omits schools Thursday and Porto Santo ferry; no mainland-alert note","where":"#madeira","measure":"~13600 px","change":"Name them; say the mainland alert does not cover Madeira"},
+    {"class":"minor","what":"Past red Madeira warning in Deeper unmarked","where":"#madeira Deeper","measure":"16560 px","change":"Mark ended/past"},
+    {"class":"held","what":"Lead closed tag on a 07:25 report","where":"#madeira","measure":"12243 px","change":"'closed (as of 07:25 UTC)'"}
+  ]
+}
