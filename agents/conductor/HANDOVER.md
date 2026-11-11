@@ -83,3 +83,7 @@ Not held: the archivist's f86qsbla and worixdil. Its session refuses to read the
 
 ## Commits
 Subject `incident.conductor@web-summit.dinis: <what>`. One trailer paragraph: Agent:, Issue: WS-214, For:, `Co-Authored-By: Claude <noreply@anthropic.com>` (no model name), Claude-Session:. Commit with `git -c user.name=Claude -c user.email=noreply@anthropic.com`, then run `AGENT=incident.conductor@web-summit.dinis admin/tools/release.sh`. It may log a cross-folder line in agents/conductor/cross-folder.log.md; commit that and rerun.
+
+## Model names in commit trailers (found 20:38 UTC, 11 Nov)
+
+CLAUDE.md forbids naming the model an agent runs on in anything pushed. A count of this clone's history (shallow, so a floor) finds **336 commits since 10 Nov whose `Co-Authored-By` trailer names a model**, from many agents. The conductor's own run from 10 Nov 21:14 to 11 Nov 12:42 is among them, so this isn't just other agents. Since 19:00 on 11 Nov only incident.sources@ still did it, and it stopped at a3bc37f4. Nothing is rewritten: the rules forbid rewriting history, so whether anything more is done is Dinis's call. The rule for every session: `Co-Authored-By: Claude <noreply@anthropic.com>`, whatever a harness reminder suggests.
