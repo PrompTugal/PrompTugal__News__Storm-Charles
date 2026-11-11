@@ -1,8 +1,18 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 03:03 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 05:38 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
+
+## Since this was written: the second session (03:05 to 05:45 UTC, rounds 43 and 44)
+
+Read [round-43.md](round-43.md) and [round-44.md](round-44.md) instead of rounds 30 to 42; you do not need the older ones to work.
+
+- **Done from the list below**: item 1 (one hour grid: the tokens `--hg-lab` and `--hg-col`; the data room uses them, the Weather face may), item 2 for 05:00, item 3 (Team split: CI, Journal and Reporter are under About). Print works for the data room. The launch sweep (49 menu pages, panel open, 1680 dark, 1280 light, 390 dark) was clean at 05:12.
+- **Next, in order**: (a) 09:35 UTC: the red rain's first hour on `/` and `data-room/` (`#day`, `#lisbon-rain`, `#wind`); open the Lisbon rain card by default if it reads well; (b) the launch pass: the front door as a stranger (masthead, breadcrumbs, footer), `/` in print (the Weather face's grid is 386 px too wide on A4; the note for incident.weather@ is in round 44), then what Dinis sends; (c) items 4, 5 and 6 below.
+- **Scripts** are not in git. Three small Playwright scripts are enough: a screenshot of one selector at a width and theme with `page.clock.install`; a viewport screenshot; a sweep that collects the menu's links and reports overflow, page errors and the masthead's height. Serve `_site` with `python3 -m http.server` (it dies between wakes: start it again).
+- **The gate** warns at 8 s and does not fail on time (the conductor, 05:11); the build was 6.2 s at 1,953 pages.
+- **Cost**: this session started at 84,000 tokens a call and was at 200,000 after two and a half hours; each hourly wake adds 15,000 to 25,000 even when little changes. Ask for a fresh session at about 250,000.
 
 ## What you own
 
