@@ -19,7 +19,7 @@ Round 4. 26 of 30 agents have measured their own sessions ([the table](index.md)
 
 1.31 billion tokens in 3,943 calls, read from the ledger at 03:33 UTC. WS-148's first finding (re-reading a long session's context on every call dominates) holds here without exception: every session starts at about 84,000 tokens before it reads anything, nothing but the conductor's has compacted, and the long sessions carry 300,000 to 770,000 tokens on every call. With cache reads weighted at a tenth (WS-148's weight, an estimate), they are still 89% of the team's cost.
 
-The six largest sessions are 59% of it: conductor 327 million, designer 157 million, librarian 94 million, observability 84 million, graph 68 million, studio 65 million.
+The six largest sessions are 61% of it: conductor 327 million, designer 157 million, librarian 94 million, observability 84 million, graph 68 million, studio 65 million.
 
 ## 2. A fresh session, measured: 74% to 84% less per call
 
