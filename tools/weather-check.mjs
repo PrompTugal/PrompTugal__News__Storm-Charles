@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+// The Weather face's own rule, checked (incident.weather@web-summit.dinis): app/weather/ reads only what the data room publishes.
+//   1. every fetch() in app/weather/*.js takes its address from the FILES table, and FILES holds only api/v1/<incident>/... and
+//      incidents/<incident>/incident.json, built from the page's own base;
+//   2. no http(s) address appears in app/weather/ other than the links out to IPMA and ANEPC (links, never fetched);
+//   3. no hex colour in app/weather/*.css (tokens only), and no <img>, url() or @import (nothing loaded from elsewhere).
+// Run: node tools/weather-check.mjs   (prints OK or the failures; exit 1 on a failure). It writes nothing.
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), dir = path.join(ROOT, 'app/weather'), fails = []
+const ALLOWED_LINKS = ['https://www.ipma.pt/', 'https://prociv.gov.pt/']
+for (const f of fs.readdirSync(dir)) {
+    const s = fs.readFileSync(path.join(dir, f), 'utf8'), rel = 'app/weather/' + f
+    for (const [u] of s.matchAll(/https?:\/\/[^\s"'<>)]+/g)) if (!ALLOWED_LINKS.includes(u)) fails.push(`${rel}: an outside address: ${u}`)
+    if (f.endsWith('.js')) {
+        const fetches = [...s.matchAll(/\bfetch\s*\(([^,)]*)/g)].map(m => m[1].trim())
+        for (const a of fetches) if (a !== 'FILES[k]') fails.push(`${rel}: fetch(${a}): every fetch must take its address from FILES`)
+        if (/XMLHttpRequest|WebSocket|EventSource|sendBeacon|importScripts|\bimport\s*\(/.test(s)) fails.push(`${rel}: a network call other than fetch(FILES[k])`)
+        const m = s.match(/var FILES = \{([\s\S]*?)\n  \}/)
+        if (!m) fails.push(`${rel}: no FILES table`)
+        else for (const [, v] of m[1].matchAll(/:\s*([^,\n]+)/g)) if (!/^(api \+ '[\w\-/.]+\.json'|room \+ 'incident\.json')$/.test(v.trim())) fails.push(`${rel}: FILES entry not under the data room: ${v.trim()}`)
+        if (!/var api = base \+ 'api\/v1\/' \+ inc \+ '\/', room = base \+ 'incidents\/' \+ inc \+ '\/'/.test(s)) fails.push(`${rel}: api and room must be built from the page's own base`)
+        if (/<img\b|new Image\(/.test(s)) fails.push(`${rel}: an image: the Weather face draws with SVG and CSS from data`)
+    }
+    if (f.endsWith('.css')) {
+        if (/#[0-9a-fA-F]{3,8}\b/.test(s.replace(/\/\*[\s\S]*?\*\//g, ''))) fails.push(`${rel}: a hex colour: tokens only`)
+        if (/url\(|@import/.test(s)) fails.push(`${rel}: url() or @import: nothing is loaded from elsewhere`)
+    }
+}
+if (fails.length) { for (const x of fails) console.log('FAIL ' + x); process.exit(1) }
+console.log('OK weather-check: app/weather/ fetches only the data room\'s files, links out only to IPMA and ANEPC, tokens only')

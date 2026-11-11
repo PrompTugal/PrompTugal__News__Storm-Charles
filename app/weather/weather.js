@@ -179,7 +179,7 @@
       if (f && f.wind_mean_kmh != null) return cell(h, arrow(f.wind_dir) + '<b>' + num(f.wind_mean_kmh) + '</b><i>' + esc(f.wind_dir || '') + '</i>', 'auto', hm(f.time_utc) + ': IPMA automatic forecast, mean wind ' + f.wind_mean_kmh + ' km/h from ' + f.wind_dir + ' (a mean at one point; no gusts in this feed)')
       return cell(h, '', 'empty')
     }).join(''), 'wxc-wind')
-    if (ms.length) out += row('Gusts', 'km/h, observed at Lisbon airport', cols.map(function (h) {
+    if (ms.length) out += row('Gusts', 'km/h, observed at Lisbon airport (METAR): IPMA\'s stations report mean wind only', cols.map(function (h) {
       var g = gustIn(h); return g ? cell(h, '<b>' + num(g.gust_kmh) + '</b>', 'obs', hm(g.time_utc) + ': gust ' + g.gust_kmh + ' km/h at Lisbon airport (METAR)') : cell(h, h < nowH ? '<i>none</i>' : '', h < nowH ? 'obs quiet' : 'empty', h < nowH ? 'no gust reported at the airport in this hour' : '')
     }).join(''), 'wxc-gust')
     // 4. temperature
@@ -275,15 +275,24 @@
   // our meteorologist's reading: a hypothesis, never a forecast of ours stated as fact. Dashed, and it says so.
   function reading(t) {
     var A = D.analysis; if (!A) return ''
-    var ups = A.updates || [], win = null, hyp = null, conf = null
-    ups.forEach(function (u) { if (u.worst_window_utc) win = u; if (u.hypothesis) hyp = u; if (u.hypothesis_confidence) conf = u.hypothesis_confidence })
-    win = win || A.wednesday_lisbon; if (!win && !hyp) return ''
+    // the newest dated update that states the reading (its `stands`, or its `hypothesis`); an older one it supersedes is not shown here
+    var ups = A.updates || [], cur = null, win = null
+    ups.forEach(function (u) { if (typeof u.stands === 'string' || typeof u.hypothesis === 'string') cur = u; if (u.worst_window_utc) win = u })
+    win = win || A.wednesday_lisbon; if (!cur && !win) return ''
     var list = function (a) { return (a || []).map(function (x) { return '<li>' + esc(x) + '</li>' }).join('') }
-    return '<section class="wxc-sec wxc-hyp" aria-labelledby="wxc-h-read"><details><summary><h2 id="wxc-h-read">Our meteorologist\'s reading ' + lbl('hypothesis') + '</h2> <span class="meta">analysis, not IPMA\'s forecast: open to read it</span></summary>' +
-      '<p class="wxc-hyp-say">This is analysis by the team\'s meteorologist agent from the published data. It is not IPMA\'s forecast and not advice: IPMA\'s warnings above are the official statement, and only their end times are end times.</p>' +
-      (win && win.worst_window_utc ? '<p class="wxc-hyp-line">Worst of the day in Lisbon: about <b>' + hm(win.worst_window_utc[0]) + ' to ' + hm(win.worst_window_utc[1]) + '</b>' + (win.confidence ? ' <span class="meta">(confidence in the window: ' + esc(win.confidence.window) + '; in the peak hour and strength: ' + esc(win.confidence.peak_hour_and_strength) + ')</span>' : '') + '</p>' : '') +
-      (hyp ? '<p class="wxc-hyp-line">' + esc(hyp.hypothesis) + ' <span class="meta">(confidence: ' + esc(conf || hyp.confidence || 'not stated') + ')</span></p><details class="in"><summary>The reasons for and against</summary><div class="wxc-two"><div><h3>For</h3><ul>' + list(hyp['for']) + '</ul></div><div><h3>Against</h3><ul>' + list(hyp.against) + '</ul></div></div></details>' : '') +
-      '<p>' + prov('analysis', 'the analysis, with its reasons', (hyp || win).written_utc || A.written_utc) + '</p></details></section>'
+    var ins = cur && cur.inputs_changed ? Object.keys(cur.inputs_changed).map(function (k) { return '<li><b>' + esc(k.replace(/_/g, ' ')) + ':</b> ' + esc(cur.inputs_changed[k]) + '</li>' }).join('') : ''
+    var wr = (cur || win).written_utc || A.written_utc, stand = null
+    lisbonWarnings().forEach(function (w) { if (T(w.end_utc) > t && (!stand || RANK[w.level] > RANK[stand])) stand = w.level })
+    var cap = function (x) { x = String(x); return x.charAt(0).toUpperCase() + x.slice(1) }
+    return '<section class="wxc-sec wxc-hyp" aria-labelledby="wxc-h-read"><details data-k="reading"><summary><h2 id="wxc-h-read">Our meteorologist\'s reading ' + lbl('hypothesis') + '</h2> <span class="meta">analysis written ' + when(wr, t) + ' UTC, not IPMA\'s forecast: open to read it</span></summary>' +
+      '<p class="wxc-hyp-say">This is analysis by the team\'s meteorologist agent from the published data, written ' + when(wr, t) + ' UTC. It is not IPMA\'s forecast and not advice. <b>' + (stand ? 'IPMA\'s ' + esc(stand) + ' warnings for Lisbon stand' : 'IPMA\'s warnings are what stands') + '</b>: they are the official statement, and only their end times are end times.</p>' +
+      (cur ? '<p class="wxc-hyp-line">' + esc(cap(cur.stands || cur.hypothesis)) + (cur.confidence ? ' <span class="meta">(confidence: ' + esc(cur.confidence) + ')</span>' : '') + '</p>' : '') +
+      (cur && cur.weighing ? '<p class="wxc-hyp-line">' + esc(cur.weighing.charAt(0).toUpperCase() + cur.weighing.slice(1)) + '.</p>' : '') +
+      (win && win.worst_window_utc ? '<p class="wxc-hyp-line">The hours it weighs most for Lisbon: about <b>' + hm(win.worst_window_utc[0]) + ' to ' + hm(win.worst_window_utc[1]) + '</b>' + (win.confidence ? ' <span class="meta">(confidence in the window: ' + esc(win.confidence.window) + '; in the peak hour and strength: ' + esc(win.confidence.peak_hour_and_strength) + ')</span>' : '') + '. IPMA\'s warnings run longer.</p>' : '') +
+      (cur && (cur['for'] || cur.against) ? '<details class="in"><summary>The reasons for and against</summary><div class="wxc-two"><div><h3>For</h3><ul>' + list(cur['for']) + '</ul></div><div><h3>Against</h3><ul>' + list(cur.against) + '</ul></div></div></details>' : '') +
+      (ins ? '<details class="in"><summary>What it weighed</summary><ul>' + ins + '</ul></details>' : '') +
+      (cur && cur.supersedes ? '<p class="meta">Supersedes: ' + esc(cur.supersedes) + '.</p>' : '') +
+      '<p>' + prov('analysis', 'the analysis, with its reasons', wr).replace(', read ', ', written ') + '</p></details></section>'
   }
 
   function madeira(t) {
