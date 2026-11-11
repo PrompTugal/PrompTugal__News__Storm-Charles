@@ -192,8 +192,11 @@
       f.airports.filter(function (a) { return a.iata === 'LIS' || a.iata === 'OPO' }).forEach(function (a) {
         var d = a.departures_today; if (!d || d.count == null) return
         var ls = a.live_snapshot
+        // OpenSky readings paused (incident.transport@, 22:41: its terms ask a written licence for automated use): the last counts, as of when they froze
+        var frozen = d.frozen_at || d.paused || f.opensky_paused ? (d.frozen_at || d.read) : null
         h += '<div class="bc-tl"><b>' + esc(a.iata === 'LIS' ? 'Lisbon airport' : 'Porto airport') + '</b>: <span class="bc-tn">' + esc(d.count) + '</span> airline departures seen' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : ' in OpenSky\'s recent window') + ' (at least)' +
-          (ls && a.iata === 'LIS' && (ls.on_ground || ls.airborne_low) ? '; at ' + tm(ls.at, hm(ls.at)) + ' UTC, ' + esc(ls.on_ground) + ' airline aircraft seen on the ground and ' + esc(ls.airborne_low) + ' low in the air nearby' : '') +
+          (frozen ? '; <span class="bc-frozen">as of ' + tm(frozen, hm(frozen)) + ' UTC, readings paused</span>' : '') +
+          (!frozen && ls && ls.label === 'fact' && a.iata === 'LIS' && (ls.on_ground || ls.airborne_low) ? '; at ' + tm(ls.at, hm(ls.at)) + ' UTC, ' + esc(ls.on_ground) + ' airline aircraft seen on the ground and ' + esc(ls.airborne_low) + ' low in the air nearby' : '') +
           prov('OpenSky', d.source, d.read) + '</div>'
       })
       h += '<div class="meta">Counts are what OpenSky\'s receivers saw: a floor, not a tally, and not compared with a normal day. Faro and Funchal are under-covered and not shown.</div>'
