@@ -4,7 +4,7 @@ summary: Every commit carries a signature GitHub verifies, but it is the hosting
 mount: <div id="ci" data-base="../" data-view="signing"><p class="meta">This page draws itself from <a href="../data/ci/index.json">data/ci/index.json</a> and needs JavaScript. The same as a file: <a href="../data/ci/index.json">data/ci/index.json</a>, under signing.</p></div>
 head: <link rel="stylesheet" href="../app/ci/ci.css"><script src="../app/ci/ci.js" defer></script>
 ---
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:35 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:36 UTC
 
 # Signatures: what is signed, what is not, and a proposal
 
@@ -25,21 +25,18 @@ head: <link rel="stylesheet" href="../app/ci/ci.css"><script src="../app/ci/ci.j
 
 ## The proposal: a signed release record per push (hypothesis: the smallest change that closes the gap)
 
-One small file per push, signed by the pushing agent with the key it already has, checked by the gate.
+One small file per agent, signed by the pushing agent with the key it already has, checked by the gate. The tool exists and is tested ([tools/ci-release-record.mjs](../tools/ci-release-record.mjs)); it is called by nothing until Dinis says yes. The hooks are a patch, not applied: [ci/patches/](patches/index.html).
 
-1. **`release.sh` writes and signs a record** just before it pushes, as one extra commit-free step: `data/releases/<agent-role>.json`, replaced each time:
-   `{ "agent", "parent": <origin/dev sha it rebased on>, "tree": <git tree sha of HEAD>, "commits": [shas being pushed], "at", "key": <signing fingerprint> }`
-   then `pki-agent.mjs sign data/releases/<role>.json` (the pinned copy), which writes `<role>.json.sig` beside it, and amends both into the agent's last commit before the push. The tree sha names the content exactly; the signature names the agent's key.
-   One file per agent, not per release, so two agents pushing at once never conflict and the tree stays small; the history of the file is the history of that agent's releases.
-2. **The gate verifies** (about 10 ms, no network, no git history): for each `data/releases/*.json`, the signature checks against that agent's public key in data/keys.json, and the newest record's `tree` equals the tree being built less the record itself. A record that does not verify is a red gate. A push with no record passes with a WARN at first, and fails after a date Dinis sets.
-3. **CI copies the pushing agent's record and signature into the site** next to `version.json` (`release.json`, `release.json.sig`), so a reader, or another agent, can check with `sgit pki verify` who released the version they are looking at. /ci/ then shows "signed by <agent>, verified" on every run and commit instead of "not signed".
-4. **Later, not now**: the tag. CI could create an annotated tag whose message is the record and its signature; it stays unsigned by git's own measure, but carries the agent's signature in its body. A signature by CI itself would need a key in the repository's secrets, which only Dinis can add.
+1. **`release.sh` signs before it pushes.** After the rebase, the tool computes a digest of the tree (sha256 over every tracked path and its git blob sha, leaving out `data/releases/`), writes `data/releases/<role>.json` (`agent`, `tree_digest`, `base`, `updated`, `key`) and signs the file's bytes with the agent's own session key: `<role>.json.sig`, the same format `pki-agent.mjs sign` and `sgit pki sign` write (ECDSA P-256), so `sgit pki verify` checks it. Both ride in the agent's last commit. One file per agent, replaced each time: two agents pushing at once never conflict, and the file's history is that agent's releases.
+2. **The gate verifies** (about 40 ms, one `git ls-files`, no network, no history): every record's signature against that agent's public key in data/keys.json. A record that does not verify is a red gate. A tree that no record names is **unsigned**: a warning at first, shown as "unsigned" on these pages, and a failure only from a date Dinis sets (the conductor's recommendation: warn-only for the first day).
+3. **The site serves the records** as it serves every file (`/data/releases/<role>.json` and `.sig`), so a reader or another agent can check who released the tree they are looking at. /ci/ then shows "signed by <agent>, verified" on a run and a commit.
+4. **Later, not now**: the tag. CI could make an annotated tag whose message carries the record and its signature. A signature by CI itself would need a key in the repository's secrets, which only Dinis can add.
 
-**What it costs**: one file and one signature per push (about 1 KB), about ten lines in `release.sh` and twenty in `validate.mjs` (both the conductor's: a patch can follow on his word), and each agent keeping its session key for the life of its session, as now.
+**What it costs**: two small files per agent (about 1 KB), six lines in `release.sh`, five in `validate.mjs`, two in `agents/policy.json`; each agent keeps its session key for the life of its session, as now.
 
-**What it does not prove**: that the agent is the model or session it says it is; only that whoever pushed held that agent's private key. A session key ends with its session, so an agent that restarts publishes a new key, and old records stay verifiable only while the old public key stays in data/keys.json (marked ended, never removed).
+**What it does not prove**: that the agent is the model or session it says it is; only that whoever pushed held that agent's private key. A session key ends with its session, so an agent that restarts publishes a new key; an old record stays checkable only while the old public key stays in data/keys.json (marked ended, never removed). And only the newest push's record names the tree being served: an earlier agent's record still verifies as a statement about an earlier tree.
 
-**To decide (Dinis)**: yes or no to the record; whether an unsigned push should fail the gate, and from when.
+**To decide (Dinis)**: yes or no to the record; from when an unsigned push fails the gate.
 
 ## The other CI pages
 
@@ -47,5 +44,5 @@ One small file per push, signed by the pushing agent with the key it already has
 - [Every commit](commits.html): filter by agent, folder and hour
 - [Collaboration](collaboration.html): who pushes where, and for whom
 - [The repository](repository.html): the tree as a map
-- [Signatures](signing.html): what is signed, what is not, and a proposal
+- [Signatures](signing.html): what is signed, what is not, and a proposal; [the patches](patches/index.html)
 - The repository itself: https://github.com/PrompTugal/PrompTugal__News__Storm-Charles (Apache-2.0)

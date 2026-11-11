@@ -1,6 +1,6 @@
 # Storm Charles: a newsroom for people, a data source for agents
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:40 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:31 UTC
 
 **Live: https://storm-charles.promptugal.news**
 

@@ -4,7 +4,7 @@ summary: The tree of this site's repository: the size and owner of every folder,
 mount: <div id="ci" data-base="../" data-view="repository"><p class="meta">This page draws itself from <a href="../data/ci/index.json">data/ci/index.json</a> and needs JavaScript. The same as a file: <a href="../data/ci/tree.json">data/ci/tree.json</a>.</p></div>
 head: <link rel="stylesheet" href="../app/ci/ci.css"><script src="../app/ci/ci.js" defer></script>
 ---
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:35 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:25 UTC
 
 # The repository as a map
 

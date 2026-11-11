@@ -1,0 +1,48 @@
+diff --git a/admin/build/validate.mjs b/admin/build/validate.mjs
+index 330348c..eab7ab4 100644
+--- a/admin/build/validate.mjs
++++ b/admin/build/validate.mjs
+@@ -43,6 +43,12 @@ for (const rel of tracked) {
+     if (/(^|\/)(vault-key-[^\/]*|[^\/]*\.vault-key|access-token\.json|[^\/]*\.key)$/.test(rel)) fail(`${rel}: a key file never goes in git`)
+     if (rel.endsWith('.json')) { try { JSON.parse(s) } catch (e) { fail(`${rel}: invalid JSON (${e.message})`) } }
+ }
++// the signed release record (ci/signing.md, tools/ci-release-record.mjs): a record whose signature does not verify against its agent's
++// key in data/keys.json fails the gate; a tree no record names is "unsigned": a WARN for now (Dinis sets the date it becomes a failure)
++if (tracked.length && fs.existsSync(path.join(ROOT, 'tools/ci-release-record.mjs'))) {
++    let out = ''; try { out = execFileSync(process.execPath, [path.join(ROOT, 'tools/ci-release-record.mjs'), '--check']).toString() } catch (e) { out = String(e.stdout || e.message) }
++    for (const l of out.split('\n')) { if (l.startsWith('FAIL ')) fail(l.slice(5)); else if (l.startsWith('WARN ')) warns.push(l.slice(5)); else if (l.trim()) console.log(l) }
++}
+ if (!tracked.length) warns.push('not a git checkout: the tracked-file checks were skipped')
+ else for (const need of ['admin/build/build.mjs', 'admin/build/validate.mjs', '.github/workflows/deploy.yml', 'admin/series.txt']) if (!tracked.includes(need)) fail(`${need} is not tracked by git (ignored?): CI would not have it`)
+ 
+diff --git a/admin/tools/release.sh b/admin/tools/release.sh
+index 1738f9a..d7e633a 100755
+--- a/admin/tools/release.sh
++++ b/admin/tools/release.sh
+@@ -12,6 +12,11 @@ for attempt in 1 2 3 4 5; do
+   git fetch -q origin dev
+   git rebase -q origin/dev || { echo "release.sh: conflict with dev; resolve by hand"; git rebase --abort; exit 1; }
+   [ "$(git rev-list --count origin/dev..HEAD)" = 0 ] && { echo "release.sh: nothing to push"; exit 0; }
++  # the signed release record (ci/signing.md): this agent's own key signs the digest of the tree it is about to push; the record
++  # rides in its last commit. No key on this machine: the push goes unsigned and the gate says so. SIGN_RELEASE=0 skips it.
++  if [ "${SIGN_RELEASE:-1}" = 1 ] && AGENT="$AGENT" node tools/ci-release-record.mjs --write; then
++    git add data/releases 2>/dev/null && { git diff --cached --quiet || git commit -q --amend --no-edit; }
++  fi
+   node admin/build/validate.mjs
+   node tools/policy-check.mjs   # each commit's Agent: may change only its own paths (agents/policy.json); a local check, not a boundary
+   if git push -q origin HEAD:dev; then echo "pushed $(git rev-parse --short HEAD) by $AGENT; CI numbers, deploys and times it"; exit 0; fi
+diff --git a/agents/policy.json b/agents/policy.json
+index 20534f7..874f360 100644
+--- a/agents/policy.json
++++ b/agents/policy.json
+@@ -12,7 +12,9 @@
+   },
+   "everyone": {
+     "owns": [
+-      "agents/<role>/**"
++      "agents/<role>/**",
++      "data/releases/<role>.json",
++      "data/releases/<role>.json.sig"
+     ],
+     "shared": [
+       "data/keys.json",

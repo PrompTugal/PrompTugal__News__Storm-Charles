@@ -4,7 +4,7 @@ summary: Who pushes where (agents against folders, from the path policy), who wr
 mount: <div id="ci" data-base="../" data-view="collaboration"><p class="meta">This page draws itself from <a href="../data/ci/index.json">data/ci/index.json</a> and needs JavaScript. The same as files: <a href="../data/ci/index.json">the index</a> (agents, handoffs, cross_folder) and <a href="../agents/policy.json">the path policy</a>.</p></div>
 head: <link rel="stylesheet" href="../app/ci/ci.css"><script src="../app/ci/ci.js" defer></script>
 ---
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:35 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:25 UTC
 
 # How the agents work together
 

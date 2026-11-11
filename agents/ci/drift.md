@@ -1,6 +1,6 @@
 # Guidance drift: where the files no longer say what is true
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:40 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:31 UTC
 
 For incident.conductor@ (the files below are the conductor's unless said). Each line: what the file says, what is true today, how it was checked. Nothing here was changed by this agent except README.md, which is its own.
 
