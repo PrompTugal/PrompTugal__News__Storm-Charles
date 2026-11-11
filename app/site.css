@@ -75,8 +75,8 @@ footer.agent .wrap { padding-top: 14px; padding-bottom: 24px; }
 
 /* ---- round 1 (incident.designer@): the home page as the weather presenter. See design/round-1.md ---- */
 :root { --rain: #1d5fd1; --hatch: rgba(22,24,29,.16); --on-orange: #111; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme]) { --red: #e5324b; --orange: #f08a1c; --yellow: #e6c229; --rain: #7aa7ff; --hatch: rgba(236,238,242,.2); } }
-:root[data-theme="dark"], :root[data-theme="ink"] { --red: #e5324b; --orange: #f08a1c; --yellow: #e6c229; --rain: #7aa7ff; --hatch: rgba(236,238,242,.2); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) { --red: #d42a42; --orange: #f08a1c; --yellow: #e6c229; --rain: #7aa7ff; --hatch: rgba(236,238,242,.2); } }
+:root[data-theme="dark"], :root[data-theme="ink"] { --red: #d42a42; --orange: #f08a1c; --yellow: #e6c229; --rain: #7aa7ff; --hatch: rgba(236,238,242,.2); }
 .banner .stand { margin: 10px 0 0; max-width: 78ch; font-size: 17px; }
 .banner .lbl, .feed .lbl { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 3px 6px; border-radius: 3px; background: var(--surface-2); color: var(--ink-2); margin-right: 6px; white-space: nowrap; }
 .banner .lbl.official { background: var(--ok-soft); color: var(--ok); }
@@ -213,7 +213,7 @@ a { text-underline-offset: 2px; }
 .doc article h3 { font-size: 17px; margin: 1.3em 0 .4em; }
 .doc article > p, .doc article > ul, .doc article > ol, .doc article > blockquote { max-width: 86ch; }
 .doc article li { margin: .2em 0; }
-.doc tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
+:where(.doc tbody tr:nth-child(even)) td { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
 .doc th { white-space: nowrap; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); }
 .doc td:first-child { font-family: var(--mono); font-size: 13px; }
 .doc td code, .doc p code, .doc li code { background: var(--surface-2); padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
@@ -556,7 +556,7 @@ header.top .wrap { row-gap: 4px; }
 :root[data-theme="azulejo"] {
   --paper: #000000; --surface: #0a0a0a; --surface-2: #151515; --ink: #d6d6d6; --ink-2: #8f8f8f; --line: #232323; --line-2: #333333;
   --accent: #e0606b; --focus: #8fb0e6; --ok: #6fbf8f; --ok-soft: #0f2117; --bad: #e08a82; --bad-soft: #2a1413; --warn: #d9a659; --warn-soft: #241b0d;
-  --sent: #8fb0e6; --sent-soft: #101a2b; --wait: #808080; --warm: #d98a4d; --red: #e5324b; --orange: #f08a1c; --yellow: #e6c229; --rain: #8fb0e6; --hatch: rgba(214,214,214,.18);
+  --sent: #8fb0e6; --sent-soft: #101a2b; --wait: #808080; --warm: #d98a4d; --red: #d42a42; --orange: #f08a1c; --yellow: #e6c229; --rain: #8fb0e6; --hatch: rgba(214,214,214,.18);
 }
 :root[data-theme="contrast"] {
   --paper: #ffffff; --surface: #ffffff; --surface-2: #ededed; --ink: #000000; --ink-2: #222222; --line: #6b6b6b; --line-2: #000000;
@@ -902,3 +902,4 @@ footer.agent .ptn-foot a { font-weight: 700; }
 .wx-chart .count { fill: var(--ink-2); font: 11px var(--mono); }
 .wx-chart rect.lv-red { fill: var(--red); } .wx-chart rect.lv-orange { fill: var(--orange); } .wx-chart rect.lv-yellow { fill: var(--yellow); }
 @media print { .conf > b { color: var(--ink); } }
+/* round 62: the zebra stripe is a :where() so a cell's own fill (a level cell, a state) wins; IPMA red on dark themes #e5324b -> #d42a42 (white on it 4.3 -> 5.0:1; on ink 3.7, on azulejo 3.4) */
