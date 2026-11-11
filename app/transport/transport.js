@@ -54,6 +54,7 @@
     var s = '<section class="card tr-op"><h2>' + esc(o.operator) + '</h2>'
     if (o.label === 'none') return s + '<p>' + lbl('none') + ' ' + esc(o.note) + '</p></section>'
     s += '<p class="tr-state">' + lbl(o.label) + ' ' + esc(o.state) + '</p>' + (o.kind ? '<p class="meta">Read from: ' + esc(o.kind) + '</p>' : '') + (o.line_status ? '<p class="meta">' + lbl(o.line_status.label) + ' Line status: ' + esc(o.line_status.note) + '</p>' : '') + (o.note ? '<p class="meta">' + esc(o.note) + '</p>' : '')
+    if (o.vehicles_now) { var vn = o.vehicles_now; s += '<p class="tr-big"><b>' + vn.vehicles + '</b> buses running now, on ' + vn.lines + ' lines ' + lbl('fact') + '</p><p class="meta">Reporting a position in the five minutes before ' + tm(vn.at, hm(vn.at)) + ' UTC. ' + (vn.series && vn.series.length > 1 ? 'Our readings: ' + vn.series.slice(-8).map(function (p) { return hm(p.at) + ' ' + p.vehicles }).join(' · ') + '. ' : '') + esc(vn.baseline.note) + '</p>' }
     if (o.counts) s += '<ul class="kv"><li>Notices in force <b>' + o.counts.active_notices + '</b></li><li>Of them, for the weather <b>' + o.counts.weather_notices + '</b></li>' +
       Object.keys(o.counts.by_effect || {}).map(function (k) { return '<li>' + esc(k.toLowerCase().replace(/_/g, ' ')) + ' <b>' + o.counts.by_effect[k] + '</b></li>' }).join('') + '</ul>'
     if (o.notices && o.notices.length) s += '<ul class="feed">' + o.notices.slice(0, 4).map(function (n) {

@@ -6,11 +6,11 @@ head: <link rel="stylesheet" href="../app/transport/transport.css"><script src="
 ---
 # Metro and light rail
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:05 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:12 UTC
 
 **Not a warning service.** No advice of ours: **check with your airline or operator** before you travel. For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). [All transport](index.md).
 
-- **Metro de Lisboa:** its own news, through its site's public WordPress API. Its live line status is loaded by the page from an internal endpoint (not a published feed) and is not read; Metro's line-status API needs a registered key: **listed for Dinis**.
+- **Metro de Lisboa:** not read. Its [terms of use](https://www.metrolisboa.pt/termos-e-condicoes-de-utilizacao/) allow its content for personal information only and forbid publishing it without its written consent; asking for that consent, and for its line-status API key, is on Dinis's list. Its timetable is open (GTFS on dados.gov.pt, CC BY): the scheduled trains per hour are next. Its decisions as the press reported them are below (evidence).
 - **Metro do Porto:** its own news pages (the day of a notice, not its time).
 - **MTS:** its own news, through its site's public WordPress API.
 - Where an operator says nothing readable, the researcher's decisions (mostly press reports, labelled evidence) stand in, below.

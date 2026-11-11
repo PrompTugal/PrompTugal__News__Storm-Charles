@@ -1,41 +1,78 @@
-# Transport: the open sources, their terms, and whether they answer
+# Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:05 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:12 UTC
 
 Not a warning service. No advice of ours: **check with your airline or operator.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
-Each source below: what it gives, its terms as quoted from its own pages (with the page), whether it answered from this environment on 11 November at about 10:25 to 10:40 UTC, and how often we ask. The reader is [tools/transport-read.mjs](../tools/transport-read.mjs); what it writes is at [data/transport/](../incidents/2026-11-10-storm-charles/data/transport/README.md); the page is [/transport/](index.md).
+The aim (Dinis, ~11:56): the operators' own data read into our JSON and drawn on our pages, with links kept as the source citation. Within each source's terms. A block is never got round. Status is one of: **live** (read hourly into our JSON), **next** (open, not built yet), **bot check** (the site blocks automated readers), **terms** (its terms forbid republishing), or **key for Dinis** (an open API that needs a free key or account).
 
-## In use
+Our client name, on every request: `storm-charles.promptugal.news newsroom reader (+https://storm-charles.promptugal.news/agents/; a few requests an hour)`. We never pose as a browser. The reader is [tools/transport-read.mjs](../tools/transport-read.mjs). Raw responses go to a private vault; git keeps their sha256 ([reads.jsonl](reads.jsonl)). Checked from this environment on 11 November between 10:25 and 12:10 UTC.
 
-| Source | Gives | Terms (quoted, with the page) | Answers from here | How often |
-|---|---|---|---|---|
-| [OpenSky Network REST API](https://openskynetwork.github.io/opensky-api/rest.html) (anonymous) | Departures detected today per airport (`/flights/departure`), live state vectors in a box (`/states/all`) | [API docs](https://openskynetwork.github.io/opensky-api/): "The API lets you retrieve live airspace information for research and non-commerical purposes." "If you want to retrieve live flight information for commercial purposes, please contact us". Publications "(including web pages …)" cite the OpenSky paper (Schäfer, Strohmeier, Lenders, Martinovic, Wilhelm, IPSN 2014), which every page and file here does. Anonymous: "400 credits per day" for `/states/*`, "Only the most recent state vectors are available", "Time resolution is 10 seconds"; arrivals "are updated by a batch process at night". | Yes (`/states/all`, `/flights/departure` for today). Past days: **no** ("You cannot access historical flights"). Arrivals for today: empty (batch at night). **Departures for today come as a rolling window of the last few hours, not the whole day** (found at 11:37: the 10:35 answer covered 06:25 to 10:35, the 11:37 answer 08:40 to 11:37), so the reader joins every reading of the day from the private store, each flight once. The terms page itself (opensky-network.org/about/terms-of-use) answered 403/503 from here: **read through the API docs only**; a person should read the full terms. | Hourly: 8 requests (4 airports × 2), about 100 of the 400 daily credits |
-| [Carris Metropolitana open API](https://github.com/carrismetropolitana/api) `/v2/alerts` | Service alerts (cause, effect, period, lines, text) for the buses of the Lisbon area outside the city | The repository describes "an open-source service that provides network information in JSON"; its open-data page ([carrismetropolitana.pt/opendata](https://www.carrismetropolitana.pt/opendata)) is a JavaScript app and showed no licence text to our reader. **Licence: not stated where we could read it.** We publish counts, the header and a short excerpt with the link. | Yes (82 KB, 96 alerts at 10:25) | Hourly, 1 request |
-| [Metro de Lisboa](https://www.metrolisboa.pt/) news, through the site's public WordPress API (`/wp-json/wp/v2/posts`) | The operator's own notices (title, excerpt, publish time) | [robots.txt](https://www.metrolisboa.pt/robots.txt) is empty: nothing disallowed. No terms of use found for the notices. Short excerpts with the link. | Yes (with our plain client name; a request with curl's default name got 403 at 10:25) | Hourly, 1 request |
-| [Metro do Porto](https://www.metrodoporto.pt/) news pages | The operator's own notices (title, day, text) from its home page's news links | [robots.txt](https://www.metrodoporto.pt/robots.txt) disallows nothing. Short excerpts with the link. | Yes | Hourly, up to 3 requests |
-| [MTS](https://www.mts.pt/) news, through the site's public WordPress API | The operator's own notices | [robots.txt](https://www.mts.pt/robots.txt): "Disallow:" (nothing). Short excerpts with the link. | Yes | Hourly, 1 request |
-| [Transtejo Soflusa (TTSL)](https://ttsl.pt/passageiros/avisos-alteracoes-de-servico/) notices, through the site's public WordPress API (`/wp-json/wp/v2/avisos`) | The operator's own service notices for the Tagus ferries, with publish and update times | [robots.txt](https://ttsl.pt/robots.txt) disallows only `/wp-admin/`. No terms of use for the notices found. Short excerpts with the link. | Yes | Hourly, 1 request |
+## Flights ([page](flights.md))
 
-## Read elsewhere on this site (reused, not duplicated)
+| Source | How | Answers here | Terms | The visual | Status |
+|---|---|---|---|---|---|
+| [OpenSky Network](https://openskynetwork.github.io/opensky-api/) | REST API (`/flights/departure`, `/states/all`), anonymous | Yes. Departures come as a rolling window of the last few hours (the 10:35 answer covered 06:25 to 10:35), so we join our hourly readings. Arrivals: batch at night. Past days: "You cannot access historical flights" | [API docs](https://openskynetwork.github.io/opensky-api/): "for research and non-commerical purposes"; cite the OpenSky paper (done on every page). Anonymous: "400 credits per day" for `/states/*`. The full terms page answered 403/503 from here: **a person should read it** | Departures seen per hour per airport (hours not covered drawn dotted); airline aircraft near each airport now | **live** |
+| OpenSky history | The same API with an account | Needs an account | As above | Today against the same weekday last week | **key for Dinis** (free account) |
+| ANA airports' boards (aeroportolisboa.pt, aeroportomadeira.pt, …) | Their web pages | A 212-byte bot-check page; robots.txt allows the paths | Not reached | Departures and arrivals with status (cancelled, delayed) | **bot check**: ANA's permission or a feed; a person asks |
+| Airport weather (METAR, TAF) | The meteorologist's files | Yes | Public domain (US AWC) | Already on the site's weather pages | reused, not duplicated |
 
-- **Decisions** on the airport, TAP, Metro, CP, ferries, bridges, tunnels, Rede Expressos, FlixBus and the port: kept by incident.researcher@ in [data/decisions/entities/](../incidents/2026-11-10-storm-charles/data/decisions/entities/), mostly read through the press (labelled evidence there). The page shows the latest of each, as recorded there.
-- **Airport weather** (METAR and TAF, LPPT and LPMA): the meteorologist's [airport.json](../incidents/2026-11-10-storm-charles/data/weather/airport.json) and [airport-madeira.json](../incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json).
+## Trains ([page](trains.md))
 
-## Tried, and not usable from here (listed for the conductor)
+| Source | How | Answers here | Terms | The visual | Status |
+|---|---|---|---|---|---|
+| CP (cp.pt) | The site is a JavaScript app; its data comes from an API keyed inside the app (not a published one) | The pages answer; no open feed | Not read; we do not use an app's internal key | Line by line: trains running, suppressed, delayed | **next**: look for CP's or IP's published data (dados.gov.pt has no CP GTFS today); else a person asks CP |
+| Fertagus (fertagus.pt) | Its site (250 KB, server-rendered) | Yes | [robots.txt](https://www.fertagus.pt/robots.txt) to be read with its notices page | Its notices, and whether the bridge crossing runs | **next** |
+| Infraestruturas de Portugal | Its site's train-times pages | Not tried yet | To read | Trains per line from the network manager | **next** |
 
-| Source | What happened | What would open it |
-|---|---|---|
-| ANA airports' departure and arrival boards (aeroportolisboa.pt, aeroportomadeira.pt, …) | A 212-byte bot-check page instead of the board (robots.txt itself allows the paths). Not worked around. | ANA's permission or a data feed; a person asks |
-| OpenSky history (a normal-day baseline) | "You cannot access historical flights" for anonymous readers | A free OpenSky account (client credentials, through the environment's credentials, never in git); a person registers. Until then the baseline is our own readings from today on |
-| Metro de Lisboa's live line status | On metrolisboa.pt it is loaded by the page from an internal site endpoint, not a published feed: not read. Its published line-status API (api.metrolisboa.pt) needs a registered key | A key from Metro's developer portal: **listed for Dinis** |
-| CP (cp.pt) | A JavaScript app; no open notices feed found | Not yet looked further |
-| Fertagus (fertagus.pt) | The home page answers (250 KB); no notices feed found yet | Next round |
-| Rede Expressos | Its site sits behind a protection service (Cloudflare); not read | The operator's permission or a feed |
-| Lusoponte (bridges) | Did not connect from here | Next round |
-| Ride-hailing (Uber, Bolt) | No open service data; we do not read their apps | Only operators' or authorities' statements |
-| Eurocontrol | Public pages answer; the network-operations data (NOP) needs an account | A person asks |
+## Metro and light rail ([page](metro.md))
 
-## Rules this follows
+| Source | How | Answers here | Terms | The visual | Status |
+|---|---|---|---|---|---|
+| Metro de Lisboa's site (news, notices) | Public WordPress API | Yes with our client name (curl's default name got 403 at 10:25); [robots.txt](https://www.metrolisboa.pt/robots.txt) is empty | [Its terms](https://www.metrolisboa.pt/termos-e-condicoes-de-utilizacao/), clause 3: content "só podem ser utilizados para informação pessoal"; none of it may be "publicado … sem o prévio consentimento escrito do ML" | Its notices | **terms**: stopped at 12:08; Metro's consent is a question for Dinis |
+| Metro de Lisboa's live line status | Loaded by its page from an internal site endpoint; the published API (api.metrolisboa.pt) needs a key | Internal endpoint: not used | As above | The four lines, each with its state | **key for Dinis** |
+| Metro de Lisboa's timetable (GTFS) | [dados.gov.pt](https://dados.gov.pt/datasets/?q=gtfs) "GTFS do Metropolitano de Lisboa", updated 26 Oct 2026 | Yes | **CC BY** (dados.gov.pt) | Trains scheduled per hour per line today: the normal day to set beside the reports | **next** |
+| Metro do Porto | Its news pages (server-rendered) | Yes; robots.txt disallows nothing | No terms of use found (a privacy policy only); short excerpts with the link | Its notices | **live** |
+| MTS (light rail, Almada and Seixal) | Public WordPress API | Yes; robots.txt disallows nothing | No terms of use found (a privacy policy only); short excerpts with the link | Its notices | **live** |
 
-Airline flights only: a movement counts only when its callsign's prefix is on a list of airlines; nothing per aircraft is published (no callsign, registration, address, position or track), so nothing can identify a private person. Raw responses go to a store outside git, then a private vault; git keeps their sha256 ([reads.jsonl](reads.jsonl)). Facts are labelled facts, our readings hypotheses; no cancellation or diversion is stated unless a source states it.
+## Buses and trams ([page](buses.md))
+
+| Source | How | Answers here | Terms | The visual | Status |
+|---|---|---|---|---|---|
+| Carris Metropolitana alerts | Open API `/v2/alerts` (GTFS-realtime alerts as JSON) | Yes | Its network data is **CC BY** on dados.gov.pt (TML); the API states no licence | Notices in force, those for the weather, the lines named | **live** |
+| Carris Metropolitana vehicles | Open API `/v2/vehicles` | Yes (about 670 buses at 12:06) | As above. Counts only | Buses running now, on how many lines, hour by hour from our readings | **live** |
+| Carris (Lisbon's buses, trams, lifts) | Its site; an open API not found yet | The site answers | To read | Lines and trams running | **next** |
+| STCP (Porto buses) | Real-time positions on dados.gov.pt (Porto Digital) | To try | **CC0** | Buses running now in Porto | **next** |
+
+## Ferries and the port ([page](ferries.md))
+
+| Source | How | Answers here | Terms | The visual | Status |
+|---|---|---|---|---|---|
+| Transtejo Soflusa (TTSL) | Public WordPress API (`/wp-json/wp/v2/avisos`) | Yes; robots.txt disallows only `/wp-admin/` | No terms of use found (a privacy policy only); short excerpts with the link | Each crossing with its newest notice | **live** |
+| Port of Lisbon (APL) | Not found yet | | | | **next** |
+
+## Coaches ([page](coaches.md))
+
+| Source | How | Answers here | Terms | The visual | Status |
+|---|---|---|---|---|---|
+| Rede Expressos | Its site | Behind a protection service (Cloudflare) | Not reached | Routes running or suspended | **bot check** |
+| FlixBus | Its site | Not tried yet | To read | | **next** |
+
+## Taxis and ride-hailing ([page](taxis.md))
+
+Only what an operator or an authority states. Ride-hailing apps (Uber, Bolt) publish no open service data, and we do not read their apps. Status: **none found yet**.
+
+## Bridges and tunnels ([page](bridges.md))
+
+| Source | How | Answers here | Terms | The visual | Status |
+|---|---|---|---|---|---|
+| Lusoponte (25 de Abril, Vasco da Gama) | Its site | Did not connect from here | | Each bridge: open, limited, closed | **next** (retry; else the press via the researcher) |
+| Infraestruturas de Portugal, Lisbon city (tunnels) | Their sites | Not tried yet | | | **next** |
+
+## For Dinis (listed, not worked around)
+
+1. ANA's flight boards: a bot check. Ask ANA for permission or a feed.
+2. A free OpenSky account, for past days (a normal-day baseline). The credentials go into the environment, never git.
+3. Metro de Lisboa: its terms forbid republishing without written consent (ask for it), and its line-status API needs a key.
+4. OpenSky's full terms page did not answer from here: a person reads it.
+5. Rede Expressos sits behind a protection service.

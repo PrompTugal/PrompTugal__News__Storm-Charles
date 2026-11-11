@@ -29,7 +29,7 @@ if ((process.env.HTTPS_PROXY || process.env.https_proxy) && !process.env.NODE_US
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = path.join(ROOT, 'incidents/2026-11-10-storm-charles/data/transport')
 const BY = 'incident.transport@web-summit.dinis'
-const UA = 'newsroom-reader/1.0 (reads public open data; a few requests an hour)'
+const UA = 'storm-charles.promptugal.news newsroom reader (+https://storm-charles.promptugal.news/agents/; a few requests an hour)'
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i < 0 ? d : (process.argv[i + 1] && !process.argv[i + 1].startsWith('--') ? process.argv[i + 1] : true) }
 const STORE = path.resolve(arg('store', process.env.TRANSPORT_STORE || path.join(os.homedir(), 'transport-store')))
 const DRY = !!arg('dry', false)
@@ -161,7 +161,18 @@ async function services() {
             counts: { active_notices: active.length, weather_notices: weather.length, lines_named_in_weather_notices: lines.size, by_effect: effects },
             notices: [...new Map(weather.map(a => [tx(a.header_text) + '|' + tx(a.description_text), a])).values()].slice(0, 6).map(a => ({ header: excerpt(tx(a.header_text), 120), excerpt: excerpt(tx(a.description_text)), effect: a.effect, from: a.active_period?.[0]?.start ? iso(a.active_period[0].start * 1000) : null, to: a.active_period?.[0]?.end ? iso(a.active_period[0].end * 1000) : null })),
             link: 'https://www.carrismetropolitana.pt/', source: cmUrl, read: cm.rec.read, sha256: cm.rec.sha256,
+            licence: 'Carris Metropolitana\'s network data is published on dados.gov.pt under CC BY (TML); the API itself states no licence',
         })
+        // Live vehicles: how many buses report a position now (counts only; public buses, no person).
+        const vUrl = 'https://api.carrismetropolitana.pt/v2/vehicles'
+        const v = await get('carris-metropolitana-vehicles', vUrl)
+        if (Array.isArray(v.data)) {
+            const tnow = Date.now() / 1000, fresh = v.data.filter(x => tnow - (x.timestamp || 0) < 300)
+            const lines = new Set(fresh.map(x => x.line_id).filter(Boolean))
+            let prev = []; try { prev = (JSON.parse(fs.readFileSync(path.join(OUT, 'buses.json'), 'utf8')).operators || []).find(o => o.id === 'carris-metropolitana')?.vehicles_now?.series || [] } catch { }
+            const point = { at: v.rec.read, vehicles: fresh.length, lines: lines.size }
+            items[items.length - 1].vehicles_now = { label: 'fact', what: 'buses reporting a position in the last five minutes, and the lines they run, at the time read (our hourly readings form the series)', ...point, series: [...prev.filter(p => p.at !== point.at), point].slice(-96), source: vUrl, read: v.rec.read, sha256: v.rec.sha256, baseline: { label: 'none', note: 'No normal-day figure yet; from tomorrow the series compares the same hour.' } }
+        }
     } else items.push({ id: 'carris-metropolitana', operator: 'Carris Metropolitana', mode: 'bus', label: 'none', note: `did not answer (status ${cm.rec.status})`, source: cmUrl, read: cm.rec.read })
 
     // Transtejo/Soflusa (TTSL): the operator's own notices, its public WordPress API (robots.txt allows it).
@@ -186,15 +197,12 @@ const wpNotices = (arr, days = 7) => (Array.isArray(arr) ? arr : []).filter(a =>
 const PT_MONTHS = { janeiro: 1, fevereiro: 2, 'março': 3, abril: 4, maio: 5, junho: 6, julho: 7, agosto: 8, setembro: 9, outubro: 10, novembro: 11, dezembro: 12 }
 async function metro() {
     const ops = []
-    // Metro de Lisboa: its own news, through the site's public WordPress API (robots.txt is empty: nothing disallowed).
-    const mlUrl = 'https://www.metrolisboa.pt/wp-json/wp/v2/posts?per_page=8&_fields=id,date_gmt,modified_gmt,link,title,excerpt'
-    const ml = await get('metrolisboa-posts', mlUrl)
-    ops.push(Array.isArray(ml.data) ? {
-        id: 'metro-lisboa', operator: 'Metropolitano de Lisboa (Lisbon metro)', label: 'fact', kind: "operator's own site (public WordPress API)",
-        state: 'see the operator\'s notices below (last seven days, newest first)', notices: wpNotices(ml.data),
-        line_status: { label: 'none', note: 'The live line status on metrolisboa.pt is loaded by the page from an internal site endpoint, not a published feed; not read. Metro\'s published line-status API (api.metrolisboa.pt) needs a registered key: listed for Dinis.' },
-        link: 'https://www.metrolisboa.pt/', source: 'https://www.metrolisboa.pt/wp-json/wp/v2/posts', read: ml.rec.read, sha256: ml.rec.sha256,
-    } : { id: 'metro-lisboa', operator: 'Metropolitano de Lisboa', label: 'none', note: `did not answer (status ${ml.rec.status})`, source: mlUrl, read: ml.rec.read })
+    // Metro de Lisboa: NOT read. Its terms (https://www.metrolisboa.pt/termos-e-condicoes-de-utilizacao/, clause 3, read
+    // 11 Nov 12:08 UTC): content "só podem ser utilizados para informação pessoal" and none of it may be "publicado ... sem o
+    // prévio consentimento escrito do ML". So we do not republish it; a person asks ML (listed for Dinis).
+    ops.push({ id: 'metro-lisboa', operator: 'Metropolitano de Lisboa (Lisbon metro)', label: 'none', kind: 'not read: the operator\'s terms',
+        note: 'Metro de Lisboa\'s terms of use allow its content for personal information only and forbid publishing it without its written consent, so we do not read it into this page. Its decisions as reported by the press are below (evidence). Asking Metro for consent, or for its line-status API key, is on Dinis\'s list.',
+        terms: 'https://www.metrolisboa.pt/termos-e-condicoes-de-utilizacao/', link: 'https://www.metrolisboa.pt/', read: iso(Date.now()) })
     // Metro do Porto: its own news, server-rendered on its site (robots.txt disallows nothing).
     const mpUrl = 'https://www.metrodoporto.pt/'
     const mp = await get('metrodoporto-home', mpUrl, { json: false })
