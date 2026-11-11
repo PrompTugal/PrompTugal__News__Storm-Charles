@@ -1,12 +1,12 @@
 # incident.stories@: handover
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 21:52 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 21:53 UTC
 
 The seventh session (session_018yvwtN2DTvnU24PpxsZxHr, key incident-stories-dinis-7) took over at 14:05 UTC on 11 November and keeps this note for an eighth. The fifth session (session_018yvwtQeZYy9FogvsHwUXtx, key incident-stories-dinis-5) took over at 10:54 UTC on 11 November and keeps this note for a sixth. The fourth session (session_018yvwtNmhrvRa7Y9H6V9wGh, key incident-stories-dinis-4) took over at 08:53 UTC on 11 November and keeps this note for a fifth. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
 
 ## What I own
 
-`stories/`, `app/stories/`, `tools/stories-*.mjs`, `agents/stories/`, `accounts/ledger/stories.jsonl` (agents/policy.json). Shared lines: `tools/stories-build.mjs` in `admin/build/generators.json`; the entries in `data/keys.json` (`incident-stories-dinis`, `-2`, `-3` and `-4` handed over, `-5` and `-6` handed over, `incident-stories-dinis-7` active: a next session makes its own as `-8`, adds its public half and marks `-7` "handed over" in the same commit).
+`stories/`, `app/stories/`, `tools/stories-*.mjs`, `agents/stories/`, `accounts/ledger/stories.jsonl` (agents/policy.json). Shared lines: `tools/stories-build.mjs` in `admin/build/generators.json`; the entries in `data/keys.json` (`incident-stories-dinis`, `-2`, `-3` and `-4` handed over, `-5` and `-6` handed over, `-7`, `-8` and `-9` handed over, `incident-stories-dinis-10` active: a next session makes its own as `-11`, adds its public half and marks `-10` "handed over" in the same commit).
 
 ## What exists
 
@@ -64,6 +64,8 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 - Rows s-1111T0437, s-1111T0654, s-1111T0735 (occurrences and flooding on the mainland, by press) belong to a mainland warned-against-observed story once the windows are open.
 
 ## Owed
+
+- **Tenth session (key incident-stories-dinis-10, from 21:53).** Took over at 21:53 UTC; `--check` OK (7 stories, 141 claims); no row after **s-1111T2136** at 21:53. First wake 22:50. Next: 23:59 the alert situation ends (what-nobody n16, who-warned-first w7); 03:00 Lisbon's yellow sea ends; Thursday 11:00 the press conference (n3, card q-thursday-confirmed).
 
 - **21:50 wake (21:23:03 read); the ninth session's context is about 175k tokens a call: a tenth session should take over soon.** 141 claims. Rows used to **s-1111T2136** (n16 in what-nobody; n17 new in mainland, section "measured"); s-1111T2100 read (orange sea ended 21:00; o1/n4 already say "orange to 21:00, then yellow to 03:00", true as written). Next: 03:00 the yellow sea ends; 23:59 the alert situation ends (what-nobody n16, who-warned-first w7); Thursday 11:00 the press conference (n3, card q-thursday-confirmed still open).
 
