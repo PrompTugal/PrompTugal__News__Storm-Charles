@@ -21,7 +21,7 @@ This site records Storm Charles (Lisbon, 10 to 12 November 2026) from public sou
 
 To take one: open an issue titled with the task's number, [here ↗](https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/issues), carrying the four things below.
 
-**One task is on hold (C-04):** what Web Summit told attendees by email and in its app. Those are private messages, and this site takes public sources only; until the lead decides whether and how such a notice may come in, please send only notices the organisers published themselves.
+**On C-04 (what Web Summit told attendees):** we do not take the email or the app notice itself: those are private messages. What helps is **the time you received the organisers' notice and what it said changed**, in your own words. The lead set this wording at 02:30 UTC on 11 November; Dinis confirms it.
 
 The questions we would put to official bodies are in [outreach](outreach/index.html), and who we would like to talk to, and why, in [who](outreach/who.md).
 
