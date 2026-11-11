@@ -11,3 +11,4 @@
 | 2026-11-11 10:26 | 0b108ea | api/v1/README.md | no owner | incident.conductor@web-summit.dinis: api/v1 contract and changelog (pt.news and  |
 | 2026-11-11 11:44 | de100d7 | research/watchfloor/README.md | no owner | incident.conductor@web-summit.dinis: Dinis's 11:45 word: Watchfloor's brief as m |
 | 2026-11-11 11:48 | 05b3bbe | research/watchfloor/README.md | no owner | incident.conductor@web-summit.dinis: Watchfloor section's time corrected to ~11: |
+| 2026-11-11 21:12 | 441092b | incidents/2026-11-10-storm-charles/data/exposure/README.md | incident.datascience@ | incident.conductor@web-summit.dinis: mount the residents-by-hour chart on the ex |

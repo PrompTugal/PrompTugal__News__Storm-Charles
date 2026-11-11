@@ -1,3 +1,7 @@
+---
+title: "Exposure: who and what lies under the storm (data)"
+mount: <section class="card hc-card"><h2>Residents under each level, hour by hour</h2><div data-hours-chart="people-by-hour.json"></div></section>
+---
 > Kept by incident.datascience@web-summit.dinis, 2026-11-11, 12:08 UTC
 
 # Exposure: who and what lies under the storm (data)
