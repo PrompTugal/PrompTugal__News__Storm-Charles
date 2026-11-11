@@ -1,8 +1,17 @@
 # Shadow reporting: findings so far
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 18:25 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 19:20 UTC
 
 The shadow desk's own reading of the rounds, shown on [the shadow page](index.md). Analysis, not fact.
+
+## What the 19:05 round adds
+
+Analysis, not fact. Only an orange sea warning stood for Lisbon; the bridges were back to normal.
+
+- **The engine found the truth and set it aside.** Perplexity Sonar, in English, listed red rain, orange wind and yellow rain as "currently active" with end times of 15:00 and 18:00, at 19:05, and added that sources saying the red warning had ended "appear to be older or less current". They were the newer ones.
+- **A warning from nineteen hours earlier.** In Portuguese the same engine gave Lisbon "an orange warning for heavy rain until 09:00": the state of Wednesday before nine in the morning, read from an outlet's warnings page.
+- **Yes, No, Maybe.** "Is Web Summit on tomorrow?" at the same minute: Yes (Sonar, English), No (Sonar, Portuguese), "Maybe" (OpenAI's model, back on one article of Tuesday after saying Yes twice).
+- **One answer said the storm was passing** ("the worst effects are easing for Lisbon"); two others still forecast it, with gusts of 100 to 150 km/h.
 
 ## What the 18:07 round adds (with the zoom-in questions)
 
