@@ -1,0 +1,2524 @@
+{
+ "about": "Which of our agents does what in the fringe repository's definitions of where agents run: each agent's altitude (A3) with the A2 loops, A1 LLM calls and A0 compute it runs, its runtime (R1-R5), model endpoints (M1-M4), I/O level (L0-L5), account and key. Every item labelled: fact (read from the agent's own files or ours), evidence (read elsewhere, or inferred from what it does: the reason given). The definitions are the fringe's; the mapping is the librarian's. At Dinis's word, ~22:00 UTC, 11 November (BRIEF.md item 3).",
+ "by": "incident.librarian@web-summit.dinis",
+ "updated": "2026-11-11T22:05Z",
+ "made_by": "tools/library-altitudes.mjs",
+ "definitions": {
+  "repo": "https://github.com/PrompTugal/PrompTugal__News__Fringe",
+  "file": "docs/where-agents-run.md",
+  "commit": "a8ee36eb8dc9ab580dc3a32c7ebb1d34f3c2f996",
+  "committed": "2026-11-11T21:56:20Z",
+  "status": "draft v0.2, for Dinis and Angelo to correct",
+  "read": "2026-11-11T22:05Z"
+ },
+ "swarms": [
+  {
+   "id": "A4-incident",
+   "what": "the incident team: incident.conductor@web-summit.dinis and the agents below, at Dinis Cruz's word",
+   "control_plane": "incident.conductor@ (starts the sessions, sets each wake)",
+   "label": "fact",
+   "from": "CLAUDE.md, agents/JOBS.md"
+  },
+  {
+   "id": "A4-newsroom",
+   "what": "Vicky Wang's newsroom desks (PrompTugal)",
+   "crossing": "we feed her desks material on her conductor's inbox or in commits addressed For: her agents; we read her public files and never write to them",
+   "label": "fact",
+   "from": "CLAUDE.md, \"Whose it is\""
+  },
+  {
+   "id": "A4-fringe",
+   "what": "the fringe swarm (conductor.fringe@PrompTugal.dinis), PrompTugal/PrompTugal__News__Fringe",
+   "crossing": "its definitions are read here (this file); nothing of ours is written there",
+   "label": "evidence",
+   "from": "https://github.com/PrompTugal/PrompTugal__News__Fringe"
+  }
+ ],
+ "totals": {
+  "agents": 42,
+  "io": {
+   "L5": 24,
+   "L4": 14,
+   "L4, elsewhere": 3,
+   "not yet seen": 1
+  },
+  "calls_models_through_llm_mjs": [
+   "incident.models@web-summit.dinis",
+   "incident.shadow@web-summit.dinis",
+   "incident.perplexity@web-summit.dinis"
+  ],
+  "keyed": 38
+ },
+ "agents": [
+  {
+   "agent": "incident.conductor@web-summit.dinis",
+   "role": "conductor",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/conductor/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none of its own named; it starts and wakes the other A3 sessions, which is the swarm's control plane (A4)",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/sync-from-websummit.sh",
+     "tools/timeline.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "249 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T22:00Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-conductor-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.designer@web-summit.dinis",
+   "role": "designer",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/designer/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "130 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:13Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-designer-dinis-8"
+    ],
+    "handed_over": 7,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.observability@web-summit.dinis",
+   "role": "observability",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/observability/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/agents-commits.mjs",
+     "tools/agents-index.mjs",
+     "tools/agents-ledger.mjs",
+     "tools/agents-now.mjs",
+     "tools/agents-pin.mjs",
+     "tools/agents-release.mjs",
+     "tools/agents-sessions.mjs",
+     "tools/agents-views.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "94 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:17Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-observability-dinis-8"
+    ],
+    "handed_over": 7,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.identity@web-summit.dinis",
+   "role": "identity",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/identity/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/lane-common.mjs",
+     "tools/lane-configure.mjs",
+     "tools/lane-drain.mjs",
+     "tools/lane-e2e.mjs",
+     "tools/lane-frame.mjs",
+     "tools/lane-handover.mjs",
+     "tools/lane-keys.mjs",
+     "tools/lane-open.mjs",
+     "tools/lane-seal.mjs",
+     "tools/lane-sign.mjs",
+     "tools/lane-test.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "41 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:21Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-identity-dinis-3"
+    ],
+    "handed_over": 2,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "role": "weatherwatch",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/weatherwatch/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "67 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:35Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-weatherwatch-dinis-5"
+    ],
+    "handed_over": 3,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.media@web-summit.dinis",
+   "role": "media",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/media/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "47 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:43Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-media-dinis-4"
+    ],
+    "handed_over": 3,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
+   "role": "librarian",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/librarian/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/library-abp.mjs",
+     "tools/library-altitudes.mjs",
+     "tools/library-index.mjs",
+     "tools/library-news.mjs",
+     "tools/library-pack.mjs",
+     "tools/library-reading.mjs",
+     "tools/library-releases.mjs",
+     "tools/library-view.mjs",
+     "tools/policy-check.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "138 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:47Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-librarian-dinis-13"
+    ],
+    "handed_over": 12,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
+   "role": "graph",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/graph/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/graph-build.mjs",
+     "tools/graph-places.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "50 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:54Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-graph-dinis-4"
+    ],
+    "handed_over": 3,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.meteorologist@web-summit.dinis",
+   "role": "meteorologist",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/meteorologist/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4, elsewhere",
+    "label": "evidence",
+    "why": "its session pushes to SGit-AI__Website__Web-Summit (team/incidents/); the conductor copies its data and status here with tools/sync-from-websummit.sh, so here its work arrives under the conductor's commits"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "started before this repository, on the Web-Summit incident; the account is not stated in its files"
+   },
+   "key": {
+    "active": [],
+    "label": "fact",
+    "why": "no key in data/keys.json (its session cannot push here)"
+   }
+  },
+  {
+   "agent": "incident.researcher@web-summit.dinis",
+   "role": "researcher",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/researcher/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4, elsewhere",
+    "label": "evidence",
+    "why": "its session pushes to SGit-AI__Website__Web-Summit (team/incidents/); the conductor copies its data and status here with tools/sync-from-websummit.sh, so here its work arrives under the conductor's commits"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "started before this repository, on the Web-Summit incident; the account is not stated in its files"
+   },
+   "key": {
+    "active": [],
+    "label": "fact",
+    "why": "no key in data/keys.json (its session cannot push here)"
+   }
+  },
+  {
+   "agent": "incident.dev@web-summit.dinis",
+   "role": "dev",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/dev/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/websummit-poll.sh",
+     "tools/websummit.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4, elsewhere",
+    "label": "evidence",
+    "why": "its session pushes to SGit-AI__Website__Web-Summit (team/incidents/); the conductor copies its data and status here with tools/sync-from-websummit.sh, so here its work arrives under the conductor's commits"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "started before this repository, on the Web-Summit incident; the account is not stated in its files"
+   },
+   "key": {
+    "active": [],
+    "label": "fact",
+    "why": "no key in data/keys.json (its session cannot push here)"
+   }
+  },
+  {
+   "agent": "incident.studio@web-summit.dinis",
+   "role": "studio",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/studio/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "26 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T03:55Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-studio-dinis-2"
+    ],
+    "handed_over": 1,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "role": "wikipedia",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/wikipedia/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/wikipedia-claims.mjs",
+     "tools/wikipedia-lib.mjs",
+     "tools/wikipedia-read.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "27 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:55Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-wikipedia-dinis-3"
+    ],
+    "handed_over": 2,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.weather@web-summit.dinis",
+   "role": "weather",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/weather/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/weather-check.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "61 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T16:27Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-weather-dinis-5"
+    ],
+    "handed_over": 4,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "role": "ipma",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/ipma/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/ipma-pages.mjs",
+     "tools/ipma-read.mjs",
+     "tools/ipma-round.mjs",
+     "tools/ipma-views.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "37 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:52Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-ipma-dinis-3"
+    ],
+    "handed_over": 2,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.sources@web-summit.dinis",
+   "role": "sources",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/sources/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/source-index.mjs",
+     "tools/source-meteoalarm.mjs",
+     "tools/source-pages.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "35 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:24Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-sources-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.archivist@web-summit.dinis",
+   "role": "archivist",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/archivist/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/capture-pages.mjs",
+     "tools/capture-records.mjs",
+     "tools/capture.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "39 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:25Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-archivist-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.entities@web-summit.dinis",
+   "role": "entities",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/entities/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/entities-build.mjs",
+     "tools/entities-check.mjs",
+     "tools/entities-lib.mjs",
+     "tools/entities-link.mjs",
+     "tools/entities-make.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "55 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:38Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-entities-dinis-4"
+    ],
+    "handed_over": 3,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.labs@web-summit.dinis",
+   "role": "labs",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/labs/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/labs-check.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "16 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T12:14Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-labs-dinis-3"
+    ],
+    "handed_over": 2,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.board@web-summit.dinis",
+   "role": "board",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/board/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/board-build.mjs",
+     "tools/board-item.mjs",
+     "tools/board-sync.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "40 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:37Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-board-dinis-4"
+    ],
+    "handed_over": 3,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "role": "social",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/social/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/social-accounts.mjs",
+     "tools/social-mastodon.mjs",
+     "tools/social-page.mjs",
+     "tools/social-read.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "28 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:50Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-social-dinis-3"
+    ],
+    "handed_over": 2,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.meteorology@web-summit.dinis",
+   "role": "meteorology",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/meteorology/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/meteorology-build.mjs",
+     "tools/meteorology-read.mjs",
+     "tools/meteorology-render.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "20 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:01Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-meteorology-dinis-2"
+    ],
+    "handed_over": 1,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "role": "stories",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/stories/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/stories-build.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "74 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:53Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-stories-dinis-10"
+    ],
+    "handed_over": 9,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.models@web-summit.dinis",
+   "role": "models",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/models/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "tools/llm.mjs calls (OpenRouter, M2): the evals",
+      "share_usd_a_day": 6,
+      "label": "fact",
+      "from": "models/budgets.json"
+     },
+     {
+      "what": "tools/models-ask.mjs calls tools/llm.mjs (M2)",
+      "label": "fact",
+      "from": "tools/models-ask.mjs"
+     },
+     {
+      "what": "tools/models-report.mjs calls tools/llm.mjs (M2)",
+      "label": "fact",
+      "from": "tools/models-report.mjs"
+     },
+     {
+      "what": "tools/models-run.mjs calls tools/llm.mjs (M2)",
+      "label": "fact",
+      "from": "tools/models-run.mjs"
+     },
+     {
+      "what": "tools/llm.mjs itself: the one wrapper every A1 call of the team goes through (ledger line, daily cap)",
+      "label": "fact",
+      "from": "tools/llm.mjs (owned by incident.models@ and incident.dev@ in agents/policy.json)"
+     }
+    ],
+    "A0_compute": [
+     "tools/models-items.mjs",
+     "tools/models-prompts.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    },
+    {
+     "id": "M2",
+     "label": "fact",
+     "why": "OpenRouter through tools/llm.mjs"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "11 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T09:32Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-models-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.shadow@web-summit.dinis",
+   "role": "shadow",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/shadow/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "tools/llm.mjs calls (OpenRouter, M2): shadow reporting",
+      "share_usd_a_day": 1,
+      "label": "fact",
+      "from": "models/budgets.json"
+     },
+     {
+      "what": "tools/shadow-ask.mjs calls tools/llm.mjs (M2)",
+      "label": "fact",
+      "from": "tools/shadow-ask.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/shadow-index.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    },
+    {
+     "id": "M2",
+     "label": "fact",
+     "why": "OpenRouter through tools/llm.mjs"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "23 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:07Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-shadow-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.ci@web-summit.dinis",
+   "role": "ci",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/ci/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/ci-read.mjs",
+     "tools/ci-release-record.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "35 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:21Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-ci-dinis-3"
+    ],
+    "handed_over": 2,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.perplexity@web-summit.dinis",
+   "role": "perplexity",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/perplexity/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "tools/llm.mjs calls (OpenRouter, M2): research through an answer engine with search",
+      "share_usd_a_day": 4,
+      "label": "fact",
+      "from": "models/budgets.json"
+     },
+     {
+      "what": "tools/perplexity-ask.mjs calls tools/llm.mjs (M2)",
+      "label": "fact",
+      "from": "tools/perplexity-ask.mjs"
+     },
+     {
+      "what": "tools/perplexity-status.mjs calls tools/llm.mjs (M2)",
+      "label": "fact",
+      "from": "tools/perplexity-status.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/perplexity-check.mjs",
+     "tools/perplexity-index.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    },
+    {
+     "id": "M2",
+     "label": "fact",
+     "why": "OpenRouter through tools/llm.mjs"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "14 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T17:52Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-perplexity-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.accountant@web-summit.dinis",
+   "role": "accountant",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/accountant/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/accounts-build.mjs",
+     "tools/accounts-measure.mjs",
+     "tools/accounts-round.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "32 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:43Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-accountant-dinis-4"
+    ],
+    "handed_over": 3,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.reporter@web-summit.dinis",
+   "role": "reporter",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/reporter/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/reporter-fill.mjs",
+     "tools/reporter-numbers.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "55 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:10Z), pushed to dev behind the gate; its own files also speak of vaults, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-reporter-dinis-7"
+    ],
+    "handed_over": 6,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.journalist@web-summit.dinis",
+   "role": "journalist",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/journalist/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/journal-build.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "68 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:14Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-journalist-dinis-7"
+    ],
+    "handed_over": 6,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.envoy@web-summit.dinis",
+   "role": "envoy",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/envoy/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "11 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T12:24Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-envoy-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.synthetic@web-summit.dinis",
+   "role": "synthetic",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/synthetic/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "12 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T12:29Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-synthetic-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.storyteller@web-summit.dinis",
+   "role": "storyteller",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/storyteller/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "16 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T10:40Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-storyteller-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.motion@web-summit.dinis",
+   "role": "motion",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/motion/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/flows-build.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "8 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T11:48Z), pushed to dev behind the gate; its own files also speak of lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-motion-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.broadcast@web-summit.dinis",
+   "role": "broadcast",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/broadcast/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/broadcast-coast.mjs",
+     "tools/broadcast-field.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "8 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T19:31Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-broadcast-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.transport@web-summit.dinis",
+   "role": "transport",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/transport/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/transport-gtfs.mjs",
+     "tools/transport-read.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "63 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:43Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-transport-dinis-5"
+    ],
+    "handed_over": 4,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.planner@web-summit.dinis",
+   "role": "planner",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/planner/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "7 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T11:49Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-planner-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.datascience@web-summit.dinis",
+   "role": "datascience",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/datascience/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/ds-ensemble.mjs",
+     "tools/ds-exposure.mjs",
+     "tools/ds-tides.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "15 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:52Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-datascience-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.brief@web-summit.dinis",
+   "role": "brief",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/brief/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/brief-make.mjs",
+     "tools/brief-pdf.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "25 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:06Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-brief-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.desk@web-summit.dinis",
+   "role": "desk",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/desk/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": [
+     "tools/desk-drain.mjs"
+    ]
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L5",
+    "label": "evidence",
+    "why": "16 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T21:08Z), pushed to dev behind the gate; its own files also speak of vaults and lanes, read as L5 (git, vaults, lanes, wakes)"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-desk-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.sherpa@web-summit.dinis",
+   "role": "sherpa",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/sherpa/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "L4",
+    "label": "fact",
+    "why": "18 commits here by it (its Agent: trailer or its name in the subject) (the latest 2026-11-11T12:43Z), pushed to dev behind the gate"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [
+     "incident-sherpa-dinis"
+    ],
+    "handed_over": 0,
+    "label": "fact",
+    "from": "data/keys.json"
+   }
+  },
+  {
+   "agent": "incident.flights@web-summit.dinis",
+   "role": "flights",
+   "altitude": {
+    "value": "A3",
+    "label": "fact",
+    "why": "a loop with an environment: memory (agents/flights/status.json), a wake, a reach beyond its sandbox (fringe §3)"
+   },
+   "inside": {
+    "A2_loops": [
+     {
+      "what": "none named in its files; a sub-agent its session starts would be an A2 loop, and none is recorded in git",
+      "label": "evidence"
+     }
+    ],
+    "A1_calls": [
+     {
+      "what": "no tools/llm.mjs call: its only model calls are its own session's (M1)",
+      "label": "evidence",
+      "from": "models/budgets.json has no share for it; no tool it owns imports tools/llm.mjs"
+     }
+    ],
+    "A0_compute": []
+   },
+   "runtime": {
+    "value": "R1",
+    "label": "evidence",
+    "why": "Claude Code in the cloud: every session the conductor starts is a cloud session (session_... ids in the status files); the agent's own files do not name the runtime"
+   },
+   "endpoints": [
+    {
+     "id": "M1",
+     "label": "evidence",
+     "why": "its own session's model (not named here: CLAUDE.md)"
+    }
+   ],
+   "io": {
+    "level": "not yet seen",
+    "label": "evidence",
+    "why": "no commit by it read here yet"
+   },
+   "account": {
+    "value": "Dinis Cruz's Claude account, through the conductor",
+    "label": "evidence",
+    "why": "the conductor starts each session from Dinis's; no agent file states the account"
+   },
+   "key": {
+    "active": [],
+    "label": "fact",
+    "why": "no key in data/keys.json"
+   }
+  }
+ ]
+}
