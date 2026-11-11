@@ -155,7 +155,7 @@
         var base = root.dataset.base || '', what = root.dataset.boardEmbed, who = root.dataset.agent || ''
         load(base).then(function (data) {
             var list, head, more
-            if (what === 'tasks') { list = data.items.filter(function (i) { return i.kind === 'task-for-contributors' && !CLOSED[i.state] }); head = 'What you can do right now (' + list.length + ')'; more = link(base + 'board/tasks.html', 'All the tasks, with what a good answer carries') }
+            if (what === 'tasks') { list = data.items.filter(function (i) { return i.kind === 'task-for-contributors' && !CLOSED[i.state] }); list.sort(function (x, y) { return (x.contribute_id || 'C-99').localeCompare(y.contribute_id || 'C-99') }); head = 'What you can do right now (' + list.length + ')'; more = link(base + 'board/tasks.html', 'All the tasks, with what a good answer carries') }
             else if (what === 'dinis') { var by = {}; data.items.forEach(function (i) { by[i.id] = i }); list = data.for_dinis.map(function (id) { return by[id] }); head = 'Waiting on Dinis (' + list.length + ')'; more = link(base + 'board/for-dinis.html', 'The list for Dinis, most blocking first') }
             else { list = data.items.filter(function (i) { return !CLOSED[i.state] && (i.owner === who || (i.raised_by || []).indexOf(who) >= 0 || i.waiting_on === who) }); head = 'On the board (' + list.length + ')'; more = link(base + 'board/index.html', 'The whole board') }
             root.textContent = ''
