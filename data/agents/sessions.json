@@ -1,9 +1,9 @@
 {
- "about": "Agent provenance for storm-charles.promptugal.news: for every agent that has committed here, its key and its sessions, from what is written down (commit trailers, status files, data/keys.json). \"not recorded\" means exactly that: the fact is not in the repository; nothing is guessed. A session link opens only for the operator. Commits are not signed: the agent is named in the commit's Agent: trailer, by whoever pushed it.",
+ "about": "Agent provenance for storm-charles.promptugal.news: for every agent that has committed here, its key and its sessions, from what is written down (commit trailers, status files, data/keys.json). \"not recorded\" means exactly that: the fact is not in the repository; nothing is guessed. A session link opens only for the operator. Every commit carries a signature GitHub verifies, but made with one key, the hosting service's, the same for every agent (incident.ci@, data/ci/index.json, signing); nothing is signed with an agent's own key yet, so the agent is named by the commit's Agent: trailer, a statement in text.",
  "by": "incident.observability@web-summit.dinis",
  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
  "branch": "dev",
- "head": "ce3f7c3c52e8b7124c08782d65b14cce02ad643c",
+ "head": "5f49ff14f97871c05f97b223a05841977744856a",
  "how_to_record": "An agent records its own start in agents/<role>/status.json: \"session\": { \"id\", \"started_at\" (UTC), \"started_by\" (agent), \"started_by_session\", \"on_whose_word\", \"source\" (where that is written) }.",
  "address_pattern": {
   "agent_page": "agents/<role>/index.html, where <role> is the part of the name between \"incident.\" and \"@\"",
@@ -13,9 +13,9 @@
  },
  "counts": {
   "agents": 26,
-  "sessions": 18,
-  "sessions_with_a_recorded_start": 18,
-  "agents_without_a_key": 8
+  "sessions": 19,
+  "sessions_with_a_recorded_start": 19,
+  "agents_without_a_key": 7
  },
  "agents": [
   {
@@ -35,20 +35,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 3,
+   "commits": 4,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtPjTTJWWpfgwZeancy",
      "url": "https://claude.ai/code/session_018yvwtPjTTJWWpfgwZeancy",
-     "commits": 3,
+     "commits": 4,
      "first_commit": {
       "sha": "b708dbed2ceaaf66a9c6d3d27fffab5379744083",
       "at": "2026-11-11T02:22:31Z"
      },
      "last_commit": {
-      "sha": "ce3f7c3c52e8b7124c08782d65b14cce02ad643c",
-      "at": "2026-11-11T02:26:58Z"
+      "sha": "c804301458f74c36bd05d4544f0ed4be5a6284e7",
+      "at": "2026-11-11T02:29:34Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -76,20 +76,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 2,
+   "commits": 3,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtLnUwKTTfNU5tKBiqR",
      "url": "https://claude.ai/code/session_018yvwtLnUwKTTfNU5tKBiqR",
-     "commits": 2,
+     "commits": 3,
      "first_commit": {
       "sha": "13eb44eaed534fbc2e4e86212be5f6a4ed18ec25",
       "at": "2026-11-11T02:23:14Z"
      },
      "last_commit": {
-      "sha": "53b6ba3e27d233a97023f3510f7415ce207a4ab6",
-      "at": "2026-11-11T02:26:21Z"
+      "sha": "7660be244378b3bda53fa1983f8dee3783ddd979",
+      "at": "2026-11-11T02:29:49Z"
      },
      "started_at": "2026-11-11T02:10Z",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -106,19 +106,40 @@
    "team": true,
    "page": "agents/ci/index.html",
    "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
-   "keys": "not recorded",
-   "commits": 0,
+   "keys": [
+    {
+     "id": "incident-ci-dinis",
+     "record": "sha256:815a07d3a9d80692",
+     "encryption": "sha256:c3f625a55509acc1",
+     "added": "2026-11-11",
+     "status": "active",
+     "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 1,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded",
-   "start_as_told": {
-    "session_id": "not recorded",
-    "started_at": "not recorded",
-    "started_by": "incident.conductor@web-summit.dinis",
-    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
-    "on_whose_word": "Dinis Cruz",
-    "brief_section": "11 November 2026, ~02:20 UTC",
-    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:20 UTC"
-   }
+   "sessions": [
+    {
+     "id": "session_018yvwtMAK6ef3vZMLDAyfHT",
+     "url": "https://claude.ai/code/session_018yvwtMAK6ef3vZMLDAyfHT",
+     "commits": 1,
+     "first_commit": {
+      "sha": "e94ded1172a3a24a16475e6386fd48e6276c0748",
+      "at": "2026-11-11T02:28:32Z"
+     },
+     "last_commit": {
+      "sha": "e94ded1172a3a24a16475e6386fd48e6276c0748",
+      "at": "2026-11-11T02:28:32Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~02:20 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:20 UTC"
+    }
+   ]
   },
   {
    "agent": "incident.conductor@web-summit.dinis",
@@ -137,20 +158,20 @@
      "operator_key": "sha256:db7f79fdd87e030a"
     }
    ],
-   "commits": 74,
+   "commits": 75,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtQ4XRqTiSE3vjVq9KD",
      "url": "https://claude.ai/code/session_018yvwtQ4XRqTiSE3vjVq9KD",
-     "commits": 74,
+     "commits": 75,
      "first_commit": {
       "sha": "77cdd51fc101109920aeb4308704823711d0f356",
       "at": "2026-11-10T21:14:33Z"
      },
      "last_commit": {
-      "sha": "dcae09a87c01584ab34cfc66375a4715a6ed3188",
-      "at": "2026-11-11T02:25:01Z"
+      "sha": "10d91459d4e7152aa9c1ccd0771a27a2fa4ce1dc",
+      "at": "2026-11-11T02:30:07Z"
      },
      "started_at": "not recorded",
      "started_by": "conductor@web-summit.dinis",
@@ -178,20 +199,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 36,
+   "commits": 37,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtQkhemqpDQRF7VtAN2",
      "url": "https://claude.ai/code/session_018yvwtQkhemqpDQRF7VtAN2",
-     "commits": 36,
+     "commits": 37,
      "first_commit": {
       "sha": "876a31e26fde4d49e3bd32e6012f6f11e9da66b6",
       "at": "2026-11-10T23:36:58Z"
      },
      "last_commit": {
-      "sha": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
-      "at": "2026-11-11T02:19:08Z"
+      "sha": "9cadd57f479e52fa3413d3cbe9e222938836d6fc",
+      "at": "2026-11-11T02:28:37Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -239,20 +260,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 2,
+   "commits": 5,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtPekvw1VMwtPXd7yi7",
      "url": "https://claude.ai/code/session_018yvwtPekvw1VMwtPXd7yi7",
-     "commits": 2,
+     "commits": 5,
      "first_commit": {
       "sha": "747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e",
       "at": "2026-11-11T02:20:30Z"
      },
      "last_commit": {
-      "sha": "6c7cb2415abb085f3a609f8244609865c127d1bb",
-      "at": "2026-11-11T02:23:46Z"
+      "sha": "69f59e7408012555f1fb363163f68339ea03bca2",
+      "at": "2026-11-11T02:30:13Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -382,20 +403,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 2,
+   "commits": 3,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtLm195KWcUuYeRHn8M",
      "url": "https://claude.ai/code/session_018yvwtLm195KWcUuYeRHn8M",
-     "commits": 2,
+     "commits": 3,
      "first_commit": {
       "sha": "22d1e0b2c7d4a7bc0d4f6dcca7a431d778960adb",
       "at": "2026-11-11T02:22:49Z"
      },
      "last_commit": {
-      "sha": "d172ea89cd9623c3c8aafedc8a197da10e985680",
-      "at": "2026-11-11T02:23:54Z"
+      "sha": "680dbbe78fba8dc805296fbbf0fd1082c53e74f4",
+      "at": "2026-11-11T02:28:52Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -565,20 +586,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 21,
+   "commits": 22,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtNqSbr9KU2d6ovMWcm",
      "url": "https://claude.ai/code/session_018yvwtNqSbr9KU2d6ovMWcm",
-     "commits": 21,
+     "commits": 22,
      "first_commit": {
       "sha": "3d93ef4fd941959eeb82cbbb469877294ea37f1e",
       "at": "2026-11-10T23:38:37Z"
      },
      "last_commit": {
-      "sha": "650a8a7e1706981fffd7deb1843c921ca28e1d01",
-      "at": "2026-11-11T02:26:11Z"
+      "sha": "d448538b2978e37c2ac999d1006a73b79c0e47f9",
+      "at": "2026-11-11T02:27:33Z"
      },
      "started_at": "2026-11-10T23:35Z",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -687,20 +708,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 4,
+   "commits": 6,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtMmyTKYfQRk5pMazCA",
      "url": "https://claude.ai/code/session_018yvwtMmyTKYfQRk5pMazCA",
-     "commits": 4,
+     "commits": 6,
      "first_commit": {
       "sha": "ec7471fc124e21f6e8c6cf200f52ae0185850625",
       "at": "2026-11-11T02:21:55Z"
      },
      "last_commit": {
-      "sha": "e906e6a428c16b83ebb7251234dc842874feab27",
-      "at": "2026-11-11T02:25:43Z"
+      "sha": "aa42b17d8951b2e1f76c5849279311965ffbc51e",
+      "at": "2026-11-11T02:28:42Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -728,20 +749,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 3,
+   "commits": 4,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtM72QS9oqV5Eq9HvRF",
      "url": "https://claude.ai/code/session_018yvwtM72QS9oqV5Eq9HvRF",
-     "commits": 3,
+     "commits": 4,
      "first_commit": {
       "sha": "e96857b64a31dc1dc9bc419374166ad03dae316f",
       "at": "2026-11-11T02:26:45Z"
      },
      "last_commit": {
-      "sha": "fa8134ddd26759892b3a088b24b8293b214f5da8",
-      "at": "2026-11-11T02:26:45Z"
+      "sha": "123779e4ac7aed793a665cb8cb74b7919402a795",
+      "at": "2026-11-11T02:29:57Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -769,20 +790,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 11,
+   "commits": 14,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtLqxneDnR4p11VDywD",
      "url": "https://claude.ai/code/session_018yvwtLqxneDnR4p11VDywD",
-     "commits": 11,
+     "commits": 14,
      "first_commit": {
       "sha": "7fc709c8b75fa45f121497972b1b5f99cd4af2a7",
       "at": "2026-11-11T00:38:03Z"
      },
      "last_commit": {
-      "sha": "d174462bb046a9632aa9bf200191e7ea37edaccd",
-      "at": "2026-11-11T02:24:47Z"
+      "sha": "5f49ff14f97871c05f97b223a05841977744856a",
+      "at": "2026-11-11T02:30:28Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -810,20 +831,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 7,
+   "commits": 8,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtQpLvbJSGYz3qLMq86",
      "url": "https://claude.ai/code/session_018yvwtQpLvbJSGYz3qLMq86",
-     "commits": 7,
+     "commits": 8,
      "first_commit": {
       "sha": "82fa4e5a997531f9e93c67a157ae42457e744abe",
       "at": "2026-11-11T02:16:19Z"
      },
      "last_commit": {
-      "sha": "5c9f623dcb7cadb79734a8d65cb096bd1d8f4348",
-      "at": "2026-11-11T02:26:38Z"
+      "sha": "3041602a3b191dbdeb579519f343930332b4865e",
+      "at": "2026-11-11T02:27:42Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -917,5 +938,5 @@
    ]
   }
  ],
- "updated": "2026-11-11T02:27:33Z"
+ "updated": "2026-11-11T02:30:36Z"
 }

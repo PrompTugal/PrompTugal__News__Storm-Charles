@@ -79,7 +79,11 @@
             c = { read: Date.now(), items: (j.workflow_runs || []).map(r => ({ n: r.run_number, sha: r.head_sha, status: r.status, conclusion: r.conclusion || '', pushed: r.head_commit?.timestamp || r.created_at, started: r.run_started_at || r.created_at, ended: r.updated_at, url: r.html_url })) }
             try { localStorage.setItem(RCACHE, JSON.stringify(c)) } catch { }
             return c
-        } catch (e) { return c ? { ...c, error: e.message } : { read: 0, items: [], error: e.message } }
+        } catch (e) {
+            if (c) return { ...c, error: e.message }
+            const cr = await ciRuns().catch(() => []), I = await ciIndex()
+            return cr.length ? { read: Date.parse(I?.updated) || Date.now(), from_ci: I?.updated || '', error: e.message, items: cr.slice().reverse().map(r => ({ n: r.run, sha: r.sha, status: r.result, conclusion: r.result === 'success' || r.result === 'failure' || r.result === 'cancelled' ? r.result : '', pushed: r.pushed, started: r.started, ended: r.ended, url: r.url })) } : { read: 0, items: [], error: e.message }
+        }
     }
     // CI's own measured push-to-served, from the notice the workflow's last step prints (title "push-to-served"): two public
     // API reads per release, kept for good in this browser once read (a finished run never changes); one new release per
@@ -87,7 +91,9 @@
     const EX = 'sc-agents-served-v1'
     const exactAll = () => { try { return JSON.parse(localStorage.getItem(EX)) || {} } catch { return {} } }
     async function exact(R) {
-        const have = exactAll(), r = R.items.find(r => r.conclusion === 'success' && !(r.sha in have)); if (!r) return have
+        const have = exactAll()
+        try { for (const r of await ciRuns()) if (r.result === 'success' && r.push_to_served_s != null && have[r.sha] == null) have[r.sha] = r.push_to_served_s } catch { }
+        const r = R.from_ci ? null : R.items.find(r => r.conclusion === 'success' && !(r.sha in have)); if (!r) return have
         try {
             const res = await fetch(`https://api.github.com/repos/${REPO}/commits/${r.sha}/check-runs?per_page=20`, { headers: { Accept: 'application/vnd.github+json' } })
             if (!res.ok || +(res.headers.get('x-ratelimit-remaining') || 0) < 20) return have
@@ -100,6 +106,14 @@
         } catch { }
         return have
     }
+    // incident.ci@'s data (data/ci/, a snapshot refreshed each time it wakes): each run with CI's own push-to-served, each commit
+    // with its signature and the release that served it. Used for what only it has (signatures, exact figures, steps) and as the
+    // fallback when GitHub does not answer this browser.
+    let ciIdx = null; const ciFiles = new Map()
+    const ciIndex = () => ciIdx || (ciIdx = getJSON(`${BASE}data/ci/index.json?t=${Math.floor(Date.now() / 12e4)}`).catch(() => null))
+    const ciFile = f => { if (!ciFiles.has(f)) ciFiles.set(f, getJSON(`${BASE}data/ci/${f}?t=${Math.floor(Date.now() / 12e4)}`).catch(() => null)); return ciFiles.get(f) }
+    async function ciRuns() { const I = await ciIndex(); if (!I) return []; const fs = ((I.files || {}).runs || []).slice(-2); return (await Promise.all(fs.map(f => ciFile(f.file)))).flatMap(j => (j && j.runs) || []) }
+    async function ciCommit(sha, at) { const I = await ciIndex(); if (!I) return null; const fs = ((I.files || {}).commits || []).filter(f => !at || (at >= f.from && at <= f.to)); for (const f of fs.length ? fs : ((I.files || {}).commits || [])) { const j = await ciFile(f.file), c = j && (j.commits || []).find(x => x.sha === sha); if (c) return c } return null }
     const secs = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 1000)
     function releases(R, by, series, X = {}) {
         if (!R.items.length) return `<p class="ag-note">${R.error ? `<span class="ag-err">GitHub did not answer (${T(R.error)}).</span> ` : ''}No run records read. Each run's own summary on GitHub carries CI's measured "push to served".</p>`
@@ -110,7 +124,7 @@
         return `<div class="ag-sum"><div><b>${q(0.5) ?? 'n/a'} s</b><span>median, push to run finished</span></div><div><b>${q(0.9) ?? 'n/a'} s</b><span>slowest tenth, at least</span></div><div><b>${done[0] ?? 'n/a'} s</b><span>fastest</span></div><div><b>${n('success')}</b><span>deployed</span></div><div><b>${n('cancelled')}</b><span>superseded by a newer push</span></div><div><b>${n('failure')}</b><span>failed</span></div></div>
 <table class="ag-flow"><thead><tr><th>Release</th><th>Pushed (UTC)</th><th>By</th><th>Result</th><th>Push to run finished</th><th>Push to served (CI's measure)</th></tr></thead><tbody>${R.items.slice(0, 20).map(r => { const s = secs(r.pushed, r.ended), ok = r.conclusion === 'success'
             return `<tr><td><a href="${esc(/^https:/.test(r.url) ? r.url : '#')}"><code>v${esc(series)}.${esc(r.n)}</code></a></td><td>${esc(String(r.pushed).slice(11, 19))}</td><td><code>${T(short(who.get(r.sha) || '') || '?')}</code></td><td>${ok ? 'deployed' : r.conclusion === 'cancelled' ? 'superseded' : r.conclusion === 'failure' ? '<span class="ag-err">failed</span>' : T(r.status)}</td><td class="n">${ok && s > 0 ? `<span class="bar" style="width:${Math.min(120, s)}px"></span>${s} s` : ''}</td><td class="n">${X[r.sha] != null ? `<b>${esc(X[r.sha])} s</b>` : ''}</td></tr>` }).join('')}</tbody></table>
-<p class="ag-note">From the last ${R.items.length} runs of the deploy workflow on dev (GitHub's public API, read ${esc(new Date(R.read).toISOString().slice(11, 19))} UTC, cached five minutes). "Push to run finished" is the commit's time to the end of its CI run: it includes the build, the gate, the deploy and CI's own wait until the site serves the new version, so it is an upper bound on push-to-served, a few seconds above it. "Push to served" is CI's own measure, printed by the workflow's last step as a notice and read here from the public check-runs API: one release per refresh, kept in this browser, so the column fills in over a few minutes and is empty for runs older than the notice. A newer push waits for the run in progress, and only the newest waiting push is deployed ("superseded" marks the ones skipped).</p>`
+<p class="ag-note">From the last ${R.items.length} runs of the deploy workflow on dev (${R.from_ci ? `incident.ci@'s snapshot of ${T(R.from_ci)}, because GitHub's API did not answer this browser` : `GitHub's public API, read ${esc(new Date(R.read).toISOString().slice(11, 19))} UTC, cached five minutes`}). Every run with its steps, queue time and failures: <a href="${BASE}ci/index.html">the pipeline, by incident.ci@</a>. "Push to run finished" is the commit's time to the end of its CI run: it includes the build, the gate, the deploy and CI's own wait until the site serves the new version, so it is an upper bound on push-to-served, a few seconds above it. "Push to served" is CI's own measure, printed by the workflow's last step as a notice and taken from incident.ci@'s run records (data/ci/) and, for runs newer than its snapshot, from the public check-runs API, one release per refresh. A newer push waits for the run in progress, and only the newest waiting push is deployed ("superseded" marks the ones skipped).</p>`
     }
     async function ledger(idx) {
         const files = await Promise.all((idx.ledger || []).map(f => getJSON(`${BASE}${f}?t=${Math.floor(Date.now() / 6e4)}`).catch(() => null)))
@@ -216,6 +230,9 @@ ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do nex
         if (!served) { try { const R = await runs(), ver = await getJSON(`${BASE}version.json?t=${Date.now()}`).catch(() => null), series = String(ver?.version || 'v0.1.0').replace(/^v/, '').split('.').slice(0, 2).join('.')
             const asc = R.items.slice().sort((a, b) => a.n - b.n), i = asc.findIndex(r => r.sha === C.sha), hit = i >= 0 ? asc.slice(i).find(r => r.conclusion === 'success') : null
             if (hit) { served = `v${series}.${hit.n}`; servedFrom = hit.sha === C.sha ? "CI's run for this push" : "its own run was superseded; the next run that deployed" } } catch { } }
+        const ci = await ciCommit(C.sha, C.at).catch(() => null)
+        if (!served && ci && ci.served) { served = ci.served.version; servedFrom = ci.served.with_its_own_run ? "CI's run for this push" : 'its own run was superseded; the next run that deployed' }
+        const sig = ci && ci.sig ? (ci.sig.kind === 'none' ? 'no signature' : `signed (${T(ci.sig.kind)}), ${ci.sig.github && ci.sig.github.verified ? 'verified by GitHub' : 'not verified by GitHub'}, by the key <code>${T(ci.sig.key)}</code>: the hosting service's key, the same for every agent, not this agent's own key`) : ''
         const files = d ? d.files : api ? (api.files || []).map(f => ({ p: f.filename, a: f.additions, d: f.deletions })) : [], more = d ? d.more_files : 0
         const msg = api ? String(api.commit?.message || '') : ''
         const body = d ? d.body : msg.split('\n').slice(1).filter(l => !/^(Agent|Issue|For|Co-Authored-By|Claude-Session):/i.test(l)).join('\n').trim()
@@ -234,7 +251,10 @@ ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do nex
 <dt>Served in</dt><dd>${served ? `<a href="https://github.com/${REPO}/releases/tag/${esc(served)}"><code>${T(served)}</code></a> <span class="ag-note">the first release that contains it (${esc(servedFrom)})</span>` : `${NR} <span class="ag-note">no deployed run was found for it yet (still building, or GitHub did not answer)</span>`}</dd>
 <dt>Session</dt><dd>${session ? `<code>${esc(session)}</code> <span class="ag-note">from the commit's Claude-Session trailer; <a href="${esc(agentHref(C.agent, idx) || '#')}#provenance">the agent's sessions</a></span>` : NR}</dd>
 <dt>Issue</dt><dd>${nr(C.issue)}</dd>
-<dt>Commit</dt><dd><a href="https://github.com/${REPO}/commit/${esc(C.sha)}"><code>${esc(C.sha.slice(0, 12))}</code> on GitHub (the full diff)</a> <span class="ag-note">not signed: the agent is named by its Agent: trailer</span></dd>
+<dt>Commit</dt><dd><a href="https://github.com/${REPO}/commit/${esc(C.sha)}"><code>${esc(C.sha.slice(0, 12))}</code> on GitHub (the full diff)</a> </dd>
+<dt>Signature</dt><dd>${sig || NR + ' <span class="ag-note">not in incident.ci@\'s snapshot yet</span>'} <span class="ag-note">So the agent is named by the commit's Agent: trailer, a statement in text; nothing is signed with an agent's own key yet (<a href="${BASE}ci/signing.html">incident.ci@'s account and proposal</a>).</span></dd>
+${ci && ci.served && ci.served.lag_s != null ? `<dt>Push to served</dt><dd>${esc(ci.served.lag_s)} s <span class="ag-note">from this push to the site serving it (incident.ci@'s figure)</span></dd>` : ''}
+<dt>In CI</dt><dd><a href="${BASE}ci/commits.html#q=${esc(C.sha.slice(0, 12))}">this push in incident.ci@'s list of every commit</a>${ci && ci.run ? ` <span class="ag-note">its own run ${esc(ci.run.run)}: ${T(ci.run.result)}</span>` : ''}</dd>
 </dl>
 ${body ? `<h3>What it says it did</h3><p class="ag-body">${T(body).replace(/\n/g, '<br>')}</p>` : ''}
 <h3>What changed: ${files.length + more} file${files.length + more === 1 ? '' : 's'}, +${add} −${del} lines</h3>
@@ -464,7 +484,8 @@ ${owns.length ? `<p class="ag-chips">${owns.map(g => { const top = g.replace(/\*
 <dt>Operator</dt><dd>${nr(P.operator)}</dd>
 ${keys.length ? keys.map(k => `<dt>Key</dt><dd>record <code>${nr(k.record)}</code> · encryption <code>${nr(k.encryption)}</code><br><span class="ag-note">${nr(k.status)}, added ${nr(k.added)}. ${nr(k.how)}</span><br><span class="ag-note">operator's key it says it is linked to: ${nr(k.operator_key)} · <a href="${fileHref('data/keys.json')}">data/keys.json</a> (public halves only)</span></dd>`).join('') : `<dt>Key</dt><dd>${NR} <span class="ag-note">no public key for it in data/keys.json</span></dd>`}
 ${sess.length ? sess.map(x => `<dt>Session</dt><dd><code>${esc(x.id)}</code> <span class="ag-note">(the link opens only for the operator)</span><br>${x.commits} push${x.commits === 1 ? '' : 'es'}, first <a href="${commitHref(x.first_commit)}">${esc(utc(x.first_commit.at))}</a>, last <a href="${commitHref(x.last_commit)}">${esc(utc(x.last_commit.at))}</a><br>started ${nr(x.started_at)} · by ${x.started_by && x.started_by !== 'not recorded' ? who(x.started_by, idx) : NR} · from session ${x.started_by_session && x.started_by_session !== 'not recorded' ? `<code>${esc(x.started_by_session)}</code>` : NR}<br>on whose word: ${nr(x.on_whose_word)}<br><span class="ag-note">source: ${nr(x.source)}</span></dd>`).join('') : `<dt>Session</dt><dd>${NR} <span class="ag-note">no commit here carries its name with a Claude-Session trailer</span></dd>`}
-<dt>Signed?</dt><dd><span class="ag-note">No commit is signed yet: the agent is named by the commit's Agent: trailer, written by whoever pushed it. Its key signs nothing so far.</span></dd>
+<dt>Signed?</dt><dd><span class="ag-note">Every commit here carries a signature that GitHub verifies, but it is made with one key, the hosting service's, the same for every agent. Nothing is signed with this agent's own key yet, so "this agent pushed it" rests on the commit's Agent: trailer, a statement in text (<a href="${BASE}ci/signing.html">incident.ci@'s account and proposal</a>).</span></dd>
+<dt>In CI</dt><dd><a href="${BASE}ci/commits.html#agent=${esc(short(a.name).replace(/@$/, ''))}">all its commits, with files, signatures and runs, in incident.ci@'s list</a></dd>
 </dl>
 <p class="ag-note">From <a href="${fileHref('data/agents/sessions.json')}">data/agents/sessions.json</a> (written ${T(provenance.updated || '')} from the commits' trailers, the status files and data/keys.json). "Not recorded" means the fact is not written in the repository; nothing is guessed. An agent records its own start in its status file's "session" object.</p>
 ${section('history', 'Its status through the night', H.length ? `<ul class="ag-feed">${H.slice().reverse().slice(0, 30).map(h => `<li><time datetime="${esc(h.at)}">${esc(String(h.at).slice(5, 16).replace('T', ' '))}</time>${h.blocked ? '<b>blocked</b> · ' : ''}${h.asks_dinis} ask${h.asks_dinis === 1 ? '' : 's'} for Dinis${h.last_wake ? ` · said its last wake was ${T(h.last_wake)}` : ''}</li>`).join('')}</ul><p class="ag-note">Each time its status file changed in what it asks of Dinis, whether it calls itself blocked, or its last wake (as of the snapshot of ${T(gh.snapshot_at || '')}).</p>` : `<p class="ag-note">No history of its status file in the snapshot.</p>`)}

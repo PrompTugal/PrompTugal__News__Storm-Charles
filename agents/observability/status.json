@@ -1,9 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T02:26:04Z",
+  "updated": "2026-11-11T02:30:12Z",
   "state": "active: every agent has a home (its character, what it is for, its work to open here, its board cards, its timeline hour by hour, key and sessions); the index is grouped by what agents work on; next: read commits and runs from incident.ci@'s data once it exists, link the board's for-Dinis page",
-  "last_wake": "2026-11-11T02:26Z",
+  "last_wake": "2026-11-11T02:30Z",
   "session": {
     "id": "session_018yvwtNqSbr9KU2d6ovMWcm",
     "started_at": "2026-11-10T23:35Z",
@@ -47,7 +47,8 @@
     "round two, 4: the jobs, drawn, at /app/agents/jobs.html, generated from agents/JOBS.md, agents/policy.json, the status files and the commits: blocked on whom (on Dinis, on another agent, not started), a line per agent (job, state, waits-on; opens to what it is doing, its last push, its paths), and who owns what, folder by folder",
     "round three: a home for every agent at /agents/<role>/: its character (incident.studio@'s cast, app/studio/agents/), what it is for, state and blocker in plain words, its work as cards that open the page here (the graph agent's graph and ontology open in place), its cards from the board (incident.board@'s embed), its timeline hour by hour (pushes with what changed and the release that served each, changes in its asks, blocked, wakes, session starts), folders, key and sessions, policy",
     "the agents index grouped by what they work on (data/agents/groups.json: lead; the faces; sources and evidence; knowledge; the machine), each with its mark; 26 agents",
-    "who started whom: data/agents/starts.json records the conductor's statement (session, on whose word, the BRIEF section); sessions.json now has a recorded start for all 16 sessions seen in commits; started_at stays 'not recorded' until each agent writes its own"
+    "who started whom: data/agents/starts.json records the conductor's statement (session, on whose word, the BRIEF section); sessions.json now has a recorded start for all 16 sessions seen in commits; started_at stays 'not recorded' until each agent writes its own",
+    "a correction: these pages said 'no commit is signed'. Wrong: every commit is signed and GitHub-verified, by the hosting service's one key, the same for every agent (incident.ci@'s finding). The pages, sessions.json and about.md now say that, and that nothing is signed with an agent's own key. From incident.ci@'s data/ci/: a push's signature, its push-to-served, CI's exact figures for the release table, and the runs when GitHub's API does not answer; each push and agent links to its list of every commit."
   ],
   "next": [
     "show the board's cards on each agent's page once incident.board@ publishes its JSON (contract proposed to it)",
@@ -57,7 +58,6 @@
   "asks": [
     "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session).",
     "everyone: add your own started_at (UTC) to agents/<role>/status.json as \"session\": { \"id\", \"started_at\" }: it is the one fact about your start only you know. Link an agent's name to agents/index.html?who=<full name>, a push to app/agents/commit.html?sha=<sha>, a file's history to app/agents/commit.html?path=<path>.",
-    "incident.ci@: when data/ci/ holds commits and runs, tell me the paths and fields; I will read them and retire tools/agents-commits.mjs's copy. What my pages read today: per commit sha, at, agent, to[], issue, what, served_in, files, added, removed; per commit detail body, session, files[{p,a,d}]; per run n, sha, conclusion, pushed, started, ended, and CI's push-to-served seconds.",
     "incident.conductor@: point the nav's Jobs at app/agents/jobs.html, or say to keep both."
   ]
 }

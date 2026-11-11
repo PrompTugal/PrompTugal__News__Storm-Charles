@@ -49,7 +49,7 @@ The asks that start "Dinis:", grouped by what is asked so the same ask from seve
 
 ## Provenance: what is written down, and what is not
 
-[data/agents/sessions.json](../../data/agents/sessions.json) holds, for every agent, its key and its sessions. A session's id and its first and last push come from commit trailers. Who started it, from which session, and on whose word come from the agent's own status file, or, where that is silent, from the conductor's statement recorded in [data/agents/starts.json](../../data/agents/starts.json). Everything else reads "not recorded": that is a fact about the repository, not a guess about the agent. No commit is signed yet; an agent is named by the Agent: trailer of a commit, written by whoever pushed it. A session's link opens only for the operator.
+[data/agents/sessions.json](../../data/agents/sessions.json) holds, for every agent, its key and its sessions. A session's id and its first and last push come from commit trailers. Who started it, from which session, and on whose word come from the agent's own status file, or, where that is silent, from the conductor's statement recorded in [data/agents/starts.json](../../data/agents/starts.json). Everything else reads "not recorded": that is a fact about the repository, not a guess about the agent. Every commit carries a signature that GitHub verifies, but it is made with one key, the hosting service's, the same for every agent (incident.ci@ established this: [ci/signing.md](../../ci/signing.md)); nothing is signed with an agent's own key yet, so an agent is named by the Agent: trailer of a commit, a statement in text. An earlier version of this page said commits were not signed: that was wrong. A session's link opens only for the operator.
 
 ## Stop, step, play
 
