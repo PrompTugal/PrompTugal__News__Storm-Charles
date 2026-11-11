@@ -1,7 +1,7 @@
 {
   "agent": "incident.entities@web-summit.dinis",
-  "state": "active: round 1 live through the build's generator slots (pages before, the linker after); the lens fills the designer's panel",
-  "last_wake": "2026-11-11T02:23:00Z",
+  "state": "active: round 3 pushed (service pages with the researcher's files, outside links through our captures, role/operator); 179 nodes, 341 edges",
+  "last_wake": "2026-11-11T02:30:00Z",
   "done": [
     "session key made (encryption sha256:f7eaaf5aa9755aef, signing sha256:1c95636ab25862f2), public half in data/keys.json",
     "entities/ontology.json: 13 types, 35 verbs each with a distinct inverse, each type with its own verbs; no 'related to' and no 'mentions' edge (the rows that mention a node are a query the page runs)",
@@ -12,7 +12,11 @@
     "app/lens/lens.css and lens.js: the marks, and window.StormLens.mount/show for the panel's Lens and This item",
     "tools/entities-link.mjs: the linker as the build's 'after' step (admin/build/generators.json, the conductor's slots); the librarian's file viewers (view/) are left as they are",
     "app/lens/ reworked to the designer's panel (app/design/panel.js): the switches and the colours of fact, evidence, hypothesis and outside links are the designer's; lens.js fills the Lens slot with what was linked on the page and opens a clicked name's node in This item (window.StormLens.show, called by stormPanel.openItem); checked in a browser, no console error",
-    "measured on dev at 1,085 pages: 11,991 mentions linked on 447 pages, 2,366 outside links marked, 83 names with no node yet (entities/mentions.json, made on every build); the gate 3.0 s of its 5 s (the linker about 0.6 s)"
+    "measured on dev at 1,085 pages: 11,991 mentions linked on 447 pages, 2,366 outside links marked, 83 names with no node yet (entities/mentions.json, made on every build); the gate 3.0 s of its 5 s (the linker about 0.6 s)",
+    "round 3: ids agreed with incident.graph@ (its builder reads entities/index.json and sets `entity` on its nodes; my pages open the node in the graph with ?node=); hooks agreed with incident.designer@ (design/round-31.md)",
+    "round 3: 11 nodes carry the researcher's one-file-per-service data (metro, cp, the Tagus bridges, tunnels, airport, schools, Rede Expressos, TAP, museums, courts, Madeira's ports): every decision with its status, when published, when in effect, label, time read and address; what is still open; each try at the primary page",
+    "round 3: evidence: a node's sources[] holds incident.archivist@'s evidence ids for its addresses; the Evidence section of each page links our capture first; the linker sends 305 outside links to evidence/<id>.html (data-out keeps the address); pages under evidence/ keep their own way out",
+    "round 3: role/operator (Dinis Cruz, in that role only, at the conductor's relay of his yes): operates the team, instructs the conductor, both from CLAUDE.md"
   ],
   "next": [
     "round 2: outlets (from the hosts the rows cite) and agents (from data/keys.json) as nodes; the names with no node yet (entities/mentions.json: TAF, CAP, RTP, Rádio Observador, Porto Santo, ...)",
@@ -20,10 +24,7 @@
     "the dashboard is drawn in the browser (app/storm.js): link its names there from entities/index.json, in the lens script",
     "evidence ids in each node's sources[] once incident.archivist@ publishes evidence/index.json"
   ],
-  "asks": [
-    "incident.graph@: confirm the shared ids (my node's graph field is your node id; your Warning/Decision split is copied from tools/graph-build.mjs).",
-    "incident.archivist@: the shape of evidence/index.json (I read items[].url and items[].id, and link evidence/<id>.html when it exists; an outside link then goes to our capture first, with data-out keeping the address)."
-  ],
-  "updated": "2026-11-11T02:23:00Z",
+  "asks": [],
+  "updated": "2026-11-11T02:30:00Z",
   "by": "incident.entities@web-summit.dinis"
 }

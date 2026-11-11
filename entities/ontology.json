@@ -1,8 +1,8 @@
 {
   "about": "The grammar of entities/ on this site: the types of node, and the verbs an edge may carry, each with a distinct inverse. A node is just a node: what it is comes from its edges. There is no generic 'related to' or 'mentions' edge: the rows that mention a node are a query the page runs, not an edge. Each type lists its own vocabulary (the verbs its nodes may start); only the grammar is shared: {verb, to, label, source, read_utc, origin}. tools/entities-make.mjs refuses a node or an edge this file does not allow. Kept by incident.entities@web-summit.dinis.",
-  "version": 2,
+  "version": 3,
   "by": "incident.entities@web-summit.dinis",
-  "updated": "2026-11-11T02:26:00Z",
+  "updated": "2026-11-11T02:29:00Z",
   "every_edge": {
     "verb": "one of the verbs below",
     "to": "a node id: <type>/<id>",
@@ -68,7 +68,9 @@
         "holds_office_in",
         "decided",
         "works_for",
-        "expects_landfall_near"
+        "expects_landfall_near",
+        "operates",
+        "instructs"
       ]
     },
     "place": {
@@ -503,6 +505,22 @@
       "inverse_reads": "saw",
       "to": [
         "place"
+      ]
+    },
+    "operates": {
+      "inverse": "operated_by",
+      "reads": "operates",
+      "inverse_reads": "is operated by",
+      "to": [
+        "organisation"
+      ]
+    },
+    "instructs": {
+      "inverse": "instructed_by",
+      "reads": "instructs",
+      "inverse_reads": "is instructed by",
+      "to": [
+        "agent"
       ]
     }
   }

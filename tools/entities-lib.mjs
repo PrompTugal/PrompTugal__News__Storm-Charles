@@ -48,3 +48,10 @@ export function matcher(nodes, { html = false } = {}) {
     }
     return { find, names: byName }
 }
+
+// incident.archivist@'s captures: an outside address -> the id of our latest capture of it (its page is evidence/<id>.html)
+export function captures(root = ROOT) {
+    const m = new Map()
+    try { for (const a of readJson(path.join(root, 'evidence/index.json')).addresses || []) if (a.url && a.latest && fs.existsSync(path.join(root, 'evidence', a.latest + '.md'))) { m.set(a.url, a.latest); m.set(a.url.replace(/\/$/, ''), a.latest) } } catch { }
+    return { get: u => m.get(u) || m.get(String(u).replace(/\/$/, '')) || null, size: m.size }
+}

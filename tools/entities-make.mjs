@@ -7,7 +7,7 @@
 // Every edge takes its label, source and time read from the row or decision it names: an edge that names none is refused.
 import fs from 'node:fs'
 import path from 'node:path'
-import { ROOT, SITE, readJson, matcher } from './entities-lib.mjs'
+import { ROOT, SITE, readJson, matcher, captures } from './entities-lib.mjs'
 
 const CHECK = process.argv.includes('--check')
 const seed = readJson(path.join(ROOT, 'entities/seed.json')), onto = readJson(path.join(ROOT, 'entities/ontology.json'))
@@ -122,6 +122,9 @@ for (const n of nodes.values()) {
         const k = name.toLowerCase(); if (nameOwner.has(k) && nameOwner.get(k) !== n.id) die(`the name "${name}" belongs to both ${nameOwner.get(k)} and ${n.id}`); nameOwner.set(k, n.id)
     }
 }
+// 5b. the researcher's one file per service (everything decided about it, what is still open, each try at the primary page)
+for (const [k, id] of Object.entries(seed.service_files || {})) { const f = `${INC}data/decisions/entities/${k}.json`; if (fs.existsSync(path.join(ROOT, f)) && nodes.has(id)) nodes.get(id).dossier = f }
+const CAP = captures()
 // 6. write
 const all = [...nodes.values()].sort((a, b) => a.id < b.id ? -1 : 1)
 const files = new Map()
@@ -129,7 +132,7 @@ for (const n of all) {
     const seen = new Set()
     n.edges = n.edges.filter(e => { const k = `${e.verb}|${e.to}|${e.origin}`; if (seen.has(k)) return false; seen.add(k); return true })
     const { id, type, name, also, match, summary, label, summary_source, graph, edges, ...rest } = n
-    files.set(`entities/${n.id}.json`, { id, type, name, also, ...(match?.none?.length ? { match } : {}), summary, label, summary_source, ...rest, graph, edges, sources: [], by: seed.by, updated: seed.updated })
+    files.set(`entities/${n.id}.json`, { id, type, name, also, ...(match?.none?.length ? { match } : {}), summary, label, summary_source, ...rest, graph, edges, sources: [...new Set([summary_source?.url, ...edges.map(e => e.source)].map(u => u && CAP.get(u)).filter(Boolean))].sort(), by: seed.by, updated: seed.updated })
 }
 const M = matcher(all), mentions = {}
 for (const r of signals.items) for (const id of new Set(M.find(r.text).map(h => h.id))) mentions[id] = (mentions[id] || 0) + 1

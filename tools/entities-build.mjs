@@ -8,7 +8,7 @@
 // It reads the tracked entities/**.json and the incident's data; it writes only under --out, never a tracked file.
 import fs from 'node:fs'
 import path from 'node:path'
-import { ROOT, readJson, esc, loadNodes, matcher } from './entities-lib.mjs'
+import { ROOT, readJson, esc, loadNodes, matcher, captures as loadCaptures } from './entities-lib.mjs'
 
 const arg = k => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : null }
 const OUT = arg('--out'); if (!OUT) { console.error('entities-build: --out <dir> is required'); process.exit(1) }
@@ -46,8 +46,7 @@ function pages() {
     const incoming = new Map()
     for (const n of nodes) for (const e of n.edges) { if (!incoming.has(e.to)) incoming.set(e.to, []); incoming.get(e.to).push({ ...e, from: n.id }) }
     const rowTable = (rs, up) => rs.length ? ['| When (UTC) | Label | What the row says |', '|---|---|---|', ...rs.slice().sort((a, b) => a.at < b.at ? 1 : -1).map(r => `| [${when(r.at)}](${up}${INC}timeline.md#${r.id}) | ${r.label}${r.decision ? ', decision' : ''} | ${t(r.text).slice(0, 300)}${r.text.length > 300 ? '…' : ''} |`)].join('\n') : ''
-    let evidence = null; try { evidence = readJson(path.join(OUT, 'evidence/index.json')) } catch { }
-    const captures = new Map(); for (const c of evidence?.items || evidence?.evidence || evidence?.captures || []) if (c.url) { if (!captures.has(c.url)) captures.set(c.url, []); captures.get(c.url).push(c) }
+    const CAP = loadCaptures()
 
     for (const n of nodes) {
         const up = '../../', here = '../', out = []
@@ -56,6 +55,13 @@ function pages() {
         out.push(`**${n.type}**: ${t(onto.types[n.type].what)} [All ${n.type} nodes](README.md).${names.length ? ` Also written: ${names.map(t).join('; ')}.` : ''}`, '')
         const ss = n.summary_source
         if (n.summary) out.push(`${t(n.summary)} (${n.label === 'ours' ? `**our summary**${ss ? (ss.origin.includes('#s-') ? `, from ${rowLink(ss.origin.split('#')[1], up)}, a row labelled ${ss.taken_from_label}` : `, from \`${t(ss.origin)}\``) : ', no source: ours'}` : `**${n.label}**; ${ss.url.startsWith('https://storm-charles') ? 'this site' : `[${host(ss.url)}](${u(ss.url)})`}${ss.read_utc ? `, read ${when(ss.read_utc)}` : ''}`})`, '')
+        if (n.dossier) {
+            const D = readJson(path.join(ROOT, n.dossier)), did = new Map(nodes.filter(x => x.type === 'decision' || x.type === 'warning').map(x => [x.id.split('/')[1], x.id]))
+            out.push(`## Everything decided about it, as it stands`, '', `From the researcher's file for this service, [${t(n.dossier.split('/').pop())}](${up}${n.dossier}) (updated ${when(D.updated)}); the decision graph is the source of truth.`, '', '| Decision | Status | Published | In effect | Label | Read | Where |', '|---|---|---|---|---|---|---|',
+                ...D.decisions.map(d => `| ${did.has(d.edge) ? `[${t(d.decision).slice(0, 160)}](${up}entities/${did.get(d.edge)}.md)` : t(d.decision).slice(0, 160)}${d.note ? ` *${t(d.note).slice(0, 220)}* ` : ''} | ${t(d.status).replace(/_/g, ' ')} | ${when(d.published_utc) || 'not stated'} | ${d.effect_from_utc ? `${when(d.effect_from_utc)}${d.effect_to_utc ? ` to ${when(d.effect_to_utc)}` : ''}` : t(d.effect_note || 'not stated')} | ${d.label} | ${when(d.read)} | [${host(d.address)}](${u(d.address)}) |`), '')
+            if (D.open?.length) out.push('### Still open', '', ...D.open.map(x => `- ${t(x)}`), '')
+            if (D.tries?.length) out.push(`### Each try at the primary page (${D.tries.length})`, '', '| When (UTC) | Address | Answer | What was found |', '|---|---|---|---|', ...D.tries.slice().sort((a, b2) => a.at < b2.at ? 1 : -1).slice(0, 30).map(x => `| ${when(x.at)} | [${host(x.url)}](${u(x.url)}) | ${x.http ?? ''} | ${t(x.result)}${x.corrected ? ` (corrected: ${t(x.corrected)})` : ''} |`), '')
+        }
         if (n.type === 'decision' || n.type === 'warning') out.push(`- Status: ${t(n.status)}${n.at ? `\n- Made: ${when(n.at)}` : ''}${n.effect_from_utc ? `\n- In effect: ${when(n.effect_from_utc)}${n.effect_to_utc ? ` to ${when(n.effect_to_utc)}` : ''}` : ''}`, '')
         const group = (list, key, title, line) => { const by = new Map(); for (const e of list) { if (!by.has(e[key])) by.set(e[key], []); by.get(e[key]).push(e) } for (const [verb, es] of by) { out.push(`## ${title(verb)}`, '', ...es.map(line), '') } }
         group(n.edges, 'verb', v => `${t(n.name).length > 60 ? 'It' : t(n.name)} ${onto.verbs[v].reads}`, e => `- ${nlink(e.to, up + 'entities/')} · **${e.label}** · "${t(e.says)}" · ${src(e, up)}`)
@@ -71,8 +77,8 @@ function pages() {
         }
         const seen = new Map()
         for (const e of [...(ss && n.label !== 'ours' ? [{ source: ss.url, read_utc: ss.read_utc }] : []), ...n.edges, ...(incoming.get(n.id) || [])]) if (!e.source.startsWith('https://storm-charles.promptugal.news/') && !seen.has(e.source)) seen.set(e.source, e)
-        out.push(`## Evidence (${seen.size} outside address${seen.size === 1 ? '' : 'es'})`, '', seen.size ? [...seen.values()].map(e => { const c = captures.get(e.source)?.[0]; return `- [${host(e.source)}](${u(e.source)})${e.read_utc ? `, read ${when(e.read_utc)}` : ''} · ${c?.id && fs.existsSync(path.join(OUT, `evidence/${c.id}.md`)) ? `[our capture](${up}evidence/${c.id}.md)` : 'our capture: not yet (incident.archivist@ keeps the captures)'}` }).join('\n') : 'Its statements come from this site\'s own files.', '')
-        out.push('## The same node elsewhere', '', n.graph ? `- In the graph: \`${n.graph}\` ([the graph](${up}app/graph/README.md), [its data](${up}data/graph/storm.json))` : '- The graph (data/graph/) has no node for this yet.', ...(n.page ? [`- Its page on this site: [${t(n.page.replace(/README\.md$/, ''))}](${up}${n.page})`] : []), `- As data: [${n.id}.json](${n.id.split('/')[1]}.json) · [every node](${up}entities/index.json) · [the grammar](${up}entities/ontology.md)`, '')
+        out.push(`## Evidence (${seen.size} outside address${seen.size === 1 ? '' : 'es'})`, '', seen.size ? [...seen.values()].map(e => { const c = CAP.get(e.source); return `- ${host(e.source)}${e.read_utc ? `, read ${when(e.read_utc)}` : ''} · ${c ? `[our capture of it](${up}evidence/${c}.md) (the page as we read it, its hash, then the way out)` : `no capture of ours yet · [the address itself](${u(e.source)})`}` }).join('\n') : 'Its statements come from this site\'s own files.', '')
+        out.push('## The same node elsewhere', '', n.graph ? `- In the graph: \`${n.graph}\` ([open it there](${up}app/graph/index.html?node=${encodeURIComponent(n.graph)}), [its data](${up}data/graph/storm.json))` : '- The graph (data/graph/) has no node for this yet.', ...(n.page ? [`- Its page on this site: [${t(n.page.replace(/README\.md$/, ''))}](${up}${n.page})`] : []), `- As data: [${n.id}.json](${n.id.split('/')[1]}.json) · [every node](${up}entities/index.json) · [the grammar](${up}entities/ontology.md)`, '')
         write(`entities/${n.id}.md`, out.join('\n'))
     }
     // an index per type, the front index, the ontology as a page
@@ -94,8 +100,7 @@ function link() {
     const VOID = new Set(['br', 'hr', 'img', 'input', 'meta', 'link', 'wbr', 'source', 'col', 'area', 'base', 'embed', 'track'])
     const BLOCK = new Set(['p', 'li', 'td', 'th', 'dd', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'figcaption', 'div', 'section', 'article', 'aside', 'main'])
     const TAG = /<(\/?)([a-zA-Z][\w:-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/y
-    let evidence = null; try { evidence = readJson(path.join(OUT, 'evidence/index.json')) } catch { }
-    const captures = new Map(); for (const c of evidence?.items || evidence?.evidence || evidence?.captures || []) if (c.url && c.id && fs.existsSync(path.join(OUT, `evidence/${c.id}.html`))) captures.set(c.url, c.id)
+    const CAP = loadCaptures()
     const stats = { pages: 0, pages_linked: 0, linked: 0, outside_marked: 0, outside_to_evidence: 0, by_node: {}, by_page: {} }
     const gaps = new Map()
     const CAND = /(?<![\p{L}\p{N}])(?:[A-ZÀ-Ý][\p{L}\p{N}]+(?:\s+(?:de|da|do|dos|das|of)(?=\s+[A-ZÀ-Ý]))?(?:\s+(?=[A-ZÀ-Ý]))?){2,5}|(?<![\p{L}\p{N}.@/-])[A-Z]{3,}(?![\p{L}\p{N}])/gu
@@ -139,7 +144,7 @@ function link() {
             if (name === 'a' && inBody && !skip) {
                 const href = (attrs.match(/\shref="(https?:\/\/[^"]+)"/) || [])[1]
                 if (href && !href.startsWith('https://storm-charles.promptugal.news/')) {
-                    const cap = captures.get(href.replace(/&amp;/g, '&'))
+                    const cap = rel.startsWith('evidence/') ? null : CAP.get(href.replace(/&amp;/g, '&'))
                     tag = /\sclass="/.test(tag) ? tag.replace(/\sclass="/, ' class="out ') : tag.replace(/^<a/i, '<a class="out"')
                     tag = tag.replace(/^<a/i, '<a data-kind="out"')
                     if (cap) { tag = tag.replace(/\shref="[^"]+"/, ` href="${up}evidence/${cap}.html" data-out="${href}"`); stats.outside_to_evidence++ }
