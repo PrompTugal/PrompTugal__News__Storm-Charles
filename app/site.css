@@ -878,3 +878,19 @@ a.live.stale::before { background: var(--line-2); }
 .feed li.feed-more .feed { margin-top: 4px; }
 .feed li.feed-more .feed li:first-child { border-top: 1px solid var(--line); }
 @media print { .feed li.feed-more > details > summary { display: none; } .feed li.feed-more > details > :not(summary) { display: block; } }
+
+/* Round 53: the link to PrompTugal.news on every page (Dinis, ~10:32, BRIEF.md): a strip above the masthead and a line atop the footer. Site tokens only; never IPMA's colours. */
+aside.ptn { background: var(--surface-2); color: var(--ink); border-bottom: 1px solid var(--line); font: 14px/1.4 var(--sans); }
+aside.ptn .wrap { display: flex; align-items: center; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; padding-top: 7px; padding-bottom: 7px; }
+aside.ptn a { color: var(--link); }
+aside.ptn .ptn-a b { font-weight: 700; }
+aside.ptn .ptn-go { font-weight: 700; white-space: nowrap; text-decoration: none; border: 1px solid var(--link); border-radius: 999px; padding: 3px 12px; }
+aside.ptn .ptn-go:hover, aside.ptn .ptn-go:focus-visible { background: var(--link-soft); }
+@media (max-width: 1060px) { aside.ptn .ptn-d { display: none; } }
+aside.ptn .ptn-p { display: none; }
+@media (max-width: 520px) { aside.ptn .ptn-w { display: none; } aside.ptn .ptn-p { display: inline; } }
+@media (max-width: 760px) { aside.ptn .wrap { padding-top: 6px; padding-bottom: 6px; } aside.ptn .ptn-go { padding: 2px 10px; } }
+footer.agent .ptn-foot { font-size: 15px; color: var(--ink); margin: 0 0 10px; padding: 0 0 10px; border-bottom: 1px solid var(--line); }
+footer.agent .ptn-foot a { font-weight: 700; }
+@media print { aside.ptn .ptn-go { border: 0; padding: 0; } }
+@media (max-width: 520px) { aside.ptn .ptn-go { display: none; } aside.ptn .ptn-t::after { content: " →"; color: var(--link); } }
