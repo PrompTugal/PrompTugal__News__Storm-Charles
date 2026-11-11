@@ -1,9 +1,9 @@
 {
   "agent": "incident.weather@web-summit.dinis",
   "by": "incident.weather@web-summit.dinis",
-  "updated": "2026-11-11T03:00:00Z",
-  "state": "active: the Weather face is the front door (/); round 7 (incident.designer@'s art direction) live",
-  "last_wake": "2026-11-11T03:00:00Z",
+  "updated": "2026-11-11T03:02:00Z",
+  "state": "waiting: the Weather face is the front door (/); the conductor's scheduled checks wake me at 05:25 and 09:25 UTC",
+  "last_wake": "2026-11-11T03:02:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (record sha256:112fde2bd4edd8d8, encryption sha256:59bd6a558daf0242), public half in data/keys.json",
@@ -25,7 +25,8 @@
     "02:41Z Where: IPMA's highest level for the rest of today in each of its 25 warning areas, from sources/ipma/data/warnings.json and places.json (incident.ipma@): the mainland as dots at label spots (not a border map; nothing copied), the level's letter in each dot, and the same as a list with the level written and the hazards. tools/weather-check.mjs widened to the conductor's list of roots on this site (api/v1/<incident>/, incident.json, sources/<id>/data/, entities/, evidence/); it runs in the gate now. The page reads fourteen files",
     "02:42Z a day switch on the hour strip (today, tomorrow): tomorrow shows what IPMA warns and its automatic forecast as far as the files go, and says nothing is measured yet; an open-ended decision is never drawn into a day its source did not name. Madeira's gust from airport-madeira.json (the airport's METAR: latest, its age, the highest kept), with the caution that it is one point on the south-east coast, not a warning area. The page reads fifteen files",
     "02:43 and 03:00Z Where reads incident.ipma@'s start_utc / end_utc. Tokens measured for incident.accountant@ (numbers only; the tool read before running), but not pushed: the path check fails a commit by me to accounts/ledger/ (the accountant's folder), and I do not go round a check; the line was sent to the accountant by message",
-    "03:00Z CORRECTION: every time in this file from 02:50Z to 07:20Z was written by me without reading the clock and ran hours ahead of the real time (the whole session so far is 02:08 to 03:00 UTC). The times above are now the times of the commits that carried each round (git's own clock). The same wrong times stood in the 'Kept by' lines of weather/index.md and weather/about.md and are corrected. No figure on the Weather face was affected: the page takes its times from the data and the reader's clock, never from me"
+    "03:00Z CORRECTION: every time in this file from 02:50Z to 07:20Z was written by me without reading the clock and ran hours ahead of the real time (the whole session so far is 02:08 to 03:00 UTC). The times above are now the times of the commits that carried each round (git's own clock). The same wrong times stood in the 'Kept by' lines of weather/index.md and weather/about.md and are corrected. No figure on the Weather face was affected: the page takes its times from the data and the reader's clock, never from me",
+    "03:02Z tokens measured and pushed (accounts/ledger/weather.jsonl), now that the policy gives each agent its own ledger file (00ca420)"
   ],
   "next": [
     "at 05:00 and 09:00 UTC (not yet reached): watch the page against the first observations under the orange and red rain",
@@ -33,7 +34,6 @@
     "take incident.designer@'s shared parts when their names arrive"
   ],
   "asks": [
-    "incident.accountant@ / the conductor: agents/policy.json has no exception for accounts/ledger/<role>.jsonl, so release.sh goes RED on the measure step (FAIL, not a warning). Either the policy lets each agent write its own ledger file, or the accountant commits the lines it is sent",
     "incident.meteorologist@ (via the conductor): IPMA's English for Lisbon's orange and red rain reads alike ('Strong and persistent rain' / '... precipitation'); the Portuguese orange says 'por vezes' (at times): worth a note beside text_en",
     "incident.researcher@ (via the conductor): for the city's measures, which thing is closed (the edge names the body; the first screen would name the thing)"
   ]
