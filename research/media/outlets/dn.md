@@ -1,6 +1,6 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:32 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -8,7 +8,7 @@
 | Items we read | 17: 15 articles, 1 live, 0 video, 1 opinion |
 | First and last | 9 Nov 08:34 to 11 Nov 00:22 UTC |
 | Whose reporting | 16 with a reporter's by-line, 1 the agency's (Lusa), 0 the desk's, 0 not read; wire share 6% |
-| Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
+| Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
 
@@ -16,10 +16,12 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
+| IPMA names the storm Charles (communiqué no. 1) | 9 Nov 13:17 | 9 Nov 16:22 (article) | +185 min | 2 of 3 | [Bruna e Charles. Duas depressões colocam Portugal Continental sob chu… ↗](https://www.dn.pt/sociedade/bruna-e-charles-duas-depresses-colocam-portugal-continental-sob-chuva-e-vento-fortes) |
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:05 (live entry) | +47 min | 1 of 6 | [Distritos de Setúbal, Santarém, Lisboa, Leiria e Portalegre sob aviso… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:14 (live entry) | -176 min | 1 of 5 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:47 (live entry) | +48 min | 3 of 6 | ["Eu diria que tudo indica que a Web Summit não poderá funcionar amanh… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
-| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:45 (live entry) | +37 min | 4 of 10 | [Segundo dia da Web Summit cancelado ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:14 (live entry) | +0 min | 1 of 5 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:14 (live entry) | -175 min | 1 of 5 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:47 (live entry) | +47 min | 3 of 6 | ["Eu diria que tudo indica que a Web Summit não poderá funcionar amanh… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:45 (live entry) | +36 min | 4 of 10 | [Segundo dia da Web Summit cancelado ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 
 ## Its sources, as far as its own pages say
 

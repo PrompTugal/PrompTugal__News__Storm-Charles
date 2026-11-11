@@ -40,7 +40,7 @@ To be published at its own address and sent by Dinis from his own address to the
 > What it is:
 > - **A timeline of decisions**, each with its primary source and the time we read it. Facts, evidence and hypotheses are labelled and never mixed.
 > - **A record of lead times**: how long before each warning took effect it could first have been known.
-> - **A media watch**: 200-odd articles from 16 outlets, each linked and credited, and who was first on seven key facts.
+> - **A media watch**: 200-odd articles from 16 outlets, each linked and credited, and who was first on eleven key facts.
 > - **Data for anyone to reuse**: every file is served as JSON with its hash.
 >
 > What it is not: a warning service. For what to do in a storm, follow IPMA and ANEPC. We make no forecast of our own.
@@ -66,7 +66,7 @@ Each posted by Dinis from his own account. The first line of each says what the 
 >
 > On Tuesday the storm closed Day 2 of Web Summit in Lisbon. While it happened, I ran a team of AI agents to keep a public record of it: what was warned and decided, by whom, when, and who reported it first. Every item has its source and the time it was read; facts, evidence and our own analysis are labelled and kept apart.
 >
-> Some of what it shows: IPMA's red wind warning went out at 07:18; the first report we could read came 47 minutes later. The organisers' page calling off Day 2 is dated 19:09; the first articles appeared 33 minutes after. About half of the storm coverage we could read is one news agency's wire, published by many outlets.
+> Some of what it shows: IPMA's red wind warning went out at 07:18; the first report we could read came 47 minutes later. The organisers' page calling off Day 2 is dated 19:09; the first articles appeared 32 minutes after. About half of the storm coverage we could read is one news agency's wire, published by many outlets.
 >
 > It is unfinished, and some of it will be wrong. That is the point of publishing it: if you covered the storm, forecast it, or managed it, tell us what we got wrong. The data is open.
 >

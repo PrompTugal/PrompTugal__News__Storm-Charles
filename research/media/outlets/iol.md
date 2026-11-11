@@ -1,6 +1,6 @@
 # IOL / AWAY / TVI: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:32 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -16,7 +16,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
-| IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:46 (article) | +89 min | 4 of 6 | [Alerta vermelho: IPMA admite cenário semelhante ao da tempestade Kris… ↗](https://away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelhante-ao-da-tempestade-kristin-e-aponta-lisboa-como-uma-das-regioes-mais-atingidas/20261110/6af2d9fd0cf2cb2507aa81b4) |
+| IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:46 (article) | +88 min | 4 of 6 | [Alerta vermelho: IPMA admite cenário semelhante ao da tempestade Kris… ↗](https://away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelhante-ao-da-tempestade-kristin-e-aponta-lisboa-como-uma-das-regioes-mais-atingidas/20261110/6af2d9fd0cf2cb2507aa81b4) |
 
 ## Its sources, as far as its own pages say
 

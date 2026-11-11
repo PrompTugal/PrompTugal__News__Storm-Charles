@@ -2,8 +2,96 @@
  "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T02:21:01Z",
+ "updated": "2026-11-11T02:32:16Z",
+ "lag_rule": "minutes_after_primary = whole minutes elapsed, truncated toward zero (19:09:00 to 19:41:31 is 32 minutes, not 33); seconds_after_primary carries the exact difference. Times are each page's own, to the second where the page gives seconds.",
+ "shape_for_other_series": "To put another series (for example Wikipedia's first edit per fact) on the same axis: for each fact id here, a row {fact, series (e.g. \"wikipedia-pt\"), at (UTC), title or summary, url, via, seconds_after_primary, minutes_after_primary}. first-on-each-fact.json's facts[].first_by_outlet[] rows have that shape with `outlet` as the series and `published` as `at`.",
  "facts": [
+  {
+   "id": "8-storm-named",
+   "what": "IPMA names the storm Charles (communiqué no. 1)",
+   "primary_time": "2026-11-09T13:17:00Z",
+   "primary_note": "IPMA's special communiqué no. 1, 9 November 13:17 (the timeline's row; data/weather/communiques.json)",
+   "primary_label": "fact",
+   "notes": [
+    "Our read of 9 November is thin: feeds scroll, and our first read was at 23:45 on 10 November. An outlet missing here may simply have scrolled out."
+   ],
+   "items_matched": 3,
+   "first_by_outlet": [
+    {
+     "rank": 1,
+     "outlet": "publico",
+     "published": "2026-11-09T15:08:14Z",
+     "via": "article",
+     "byline": [
+      "PÚBLICO"
+     ],
+     "byline_kind": "desk",
+     "title": "IPMA dá nome à depressão Charles e prevê avisos laranja com chuva e vento forte",
+     "url": "https://www.publico.pt/2026/11/09/azul/noticia/ipma-nome-depressao-charles-preve-avisos-laranja-chuva-vento-forte-2194295",
+     "article": "A-40e8466d",
+     "seconds_after_primary": 6674,
+     "minutes_after_primary": 111
+    },
+    {
+     "rank": 2,
+     "outlet": "dn",
+     "published": "2026-11-09T16:22:40Z",
+     "via": "article",
+     "byline": [
+      "André Certã"
+     ],
+     "byline_kind": "named",
+     "title": "Bruna e Charles. Duas depressões colocam Portugal Continental sob chuva e vento fortes",
+     "url": "https://www.dn.pt/sociedade/bruna-e-charles-duas-depresses-colocam-portugal-continental-sob-chuva-e-vento-fortes",
+     "article": "A-515d259c",
+     "seconds_after_primary": 11140,
+     "minutes_after_primary": 185
+    },
+    {
+     "rank": 3,
+     "outlet": "noticias-ao-minuto",
+     "published": "2026-11-09T18:14:35Z",
+     "via": "article",
+     "byline": [
+      "Lusa"
+     ],
+     "byline_kind": "agency",
+     "title": "Depressão Charles ameaça Madeira com chuva forte e rajadas de 130 km/h",
+     "url": "https://www.noticiasaominuto.com/pais/3081224/mau-tempo-protecao-civil-da-madeira-alerta-para-agravamento-devido-a-passagem-do-charles",
+     "article": "A-5acfc2da",
+     "seconds_after_primary": 17855,
+     "minutes_after_primary": 297
+    }
+   ]
+  },
+  {
+   "id": "9-anepc-aviso-21",
+   "what": "ANEPC's public warning on Charles (Aviso 21)",
+   "primary_time": "2026-11-09T20:30:00Z",
+   "primary_note": "ANEPC's Aviso 21, 9 November 20:30 (the timeline's row, read on prociv.gov.pt)",
+   "primary_label": "fact",
+   "notes": [
+    "Our read of 9 November is thin (see fact 8)."
+   ],
+   "items_matched": 1,
+   "first_by_outlet": [
+    {
+     "rank": 1,
+     "outlet": "noticias-ao-minuto",
+     "published": "2026-11-09T23:37:22Z",
+     "via": "article",
+     "byline": [
+      "Notícias ao Minuto"
+     ],
+     "byline_kind": "desk",
+     "title": "Mau tempo agrava-se \"nos próximos dias\": Os conselhos da Proteção Civil",
+     "url": "https://www.noticiasaominuto.com/pais/3081340/mau-tempo-agrava-se-nos-proximos-dias-os-conselhos-da-protecao-civil",
+     "article": "A-511d8043",
+     "seconds_after_primary": 11242,
+     "minutes_after_primary": 187
+    }
+   ]
+  },
   {
    "id": "1-red-wind",
    "what": "IPMA's red wind warning for Wednesday",
@@ -21,6 +109,7 @@
      "byline_kind": "not kept",
      "title": "Distritos de Setúbal, Santarém, Lisboa, Leiria e Portalegre sob aviso vermelho para vento forte e chuva",
      "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
+     "seconds_after_primary": 2844,
      "minutes_after_primary": 47
     },
     {
@@ -32,7 +121,8 @@
      "byline_kind": "not kept",
      "title": "IPMA coloca oito distritos sob aviso vermelho na quarta-feira",
      "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790948-scroll",
-     "minutes_after_primary": 77
+     "seconds_after_primary": 4593,
+     "minutes_after_primary": 76
     },
     {
      "rank": 3,
@@ -43,6 +133,7 @@
      "byline_kind": "not kept",
      "title": "IPMA coloca oito distritos sob aviso vermelho na quarta-feira",
      "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778038",
+     "seconds_after_primary": 4980,
      "minutes_after_primary": 83
     },
     {
@@ -57,7 +148,8 @@
      "title": "Alerta vermelho: IPMA admite cenário semelhante ao da tempestade Kristin e aponta Lisboa como uma das regiões mais atingidas",
      "url": "https://away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelhante-ao-da-tempestade-kristin-e-aponta-lisboa-como-uma-das-regioes-mais-atingidas/20261110/6af2d9fd0cf2cb2507aa81b4",
      "article": "A-f680416c",
-     "minutes_after_primary": 89
+     "seconds_after_primary": 5333,
+     "minutes_after_primary": 88
     },
     {
      "rank": 5,
@@ -71,7 +163,8 @@
      "title": "Oito distritos com aviso vermelho para vento na quarta-feira",
      "url": "https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira",
      "article": "A-0bfd9287",
-     "minutes_after_primary": 102
+     "seconds_after_primary": 6115,
+     "minutes_after_primary": 101
     },
     {
      "rank": 6,
@@ -82,7 +175,85 @@
      "byline_kind": "not kept",
      "title": "Oito distritos de Portugal continental com aviso vermelho para vento na quarta-feira",
      "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+     "seconds_after_primary": 8760,
      "minutes_after_primary": 146
+    }
+   ]
+  },
+  {
+   "id": "10-alert-announced",
+   "what": "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)",
+   "primary_time": "2026-11-10T09:14:29Z",
+   "primary_note": "no timed primary source for the spoken announcement: the reference is the earliest report we read (Diário de Notícias' live blog, 09:14:29). The government's page is dated 12:10 (fact 2)",
+   "primary_label": "evidence",
+   "items_matched": 12,
+   "first_by_outlet": [
+    {
+     "rank": 1,
+     "outlet": "dn",
+     "published": "2026-11-10T09:14:29Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Escolas e serviços públicos não essenciais serão encerrados amanhã. \"Vai ser grave\", avisa ministro",
+     "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
+     "seconds_after_primary": 0,
+     "minutes_after_primary": 0
+    },
+    {
+     "rank": 2,
+     "outlet": "observador",
+     "published": "2026-11-10T09:17:23Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Escolas e serviços públicos não-essenciais encerrados na quarta-feira, anuncia ministro Luís Neves. \"Fiquem em casa todos os que puderem\"",
+     "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll",
+     "seconds_after_primary": 174,
+     "minutes_after_primary": 2
+    },
+    {
+     "rank": 3,
+     "outlet": "publico",
+     "published": "2026-11-10T14:09:32Z",
+     "via": "article",
+     "byline": [
+      "Cristiana Faria Moreira",
+      "Lusa"
+     ],
+     "byline_kind": "named",
+     "title": "Creches e escolas públicas e privadas fecham na quarta-feira devido à tempestade Charles : directores avisam famílias",
+     "url": "https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422",
+     "article": "A-7cbf85c1",
+     "seconds_after_primary": 17703,
+     "minutes_after_primary": 295
+    },
+    {
+     "rank": 4,
+     "outlet": "negocios",
+     "published": "2026-11-11T00:09:00Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Continente em situação de alerta devido à passagem da depressão Charlie",
+     "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+     "seconds_after_primary": 53671,
+     "minutes_after_primary": 894
+    },
+    {
+     "rank": 5,
+     "outlet": "rtp",
+     "published": "2026-11-11T00:18:55Z",
+     "via": "article",
+     "byline": [
+      "Rádio e Televisão de Portugal"
+     ],
+     "byline_kind": "desk",
+     "title": "Continente em situação de alerta devido à passagem da depressão Charlie",
+     "url": "https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289",
+     "article": "A-ede83028",
+     "seconds_after_primary": 54266,
+     "minutes_after_primary": 904
     }
    ]
   },
@@ -103,7 +274,8 @@
      "byline_kind": "not kept",
      "title": "Escolas e serviços públicos não essenciais serão encerrados amanhã. \"Vai ser grave\", avisa ministro",
      "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
-     "minutes_after_primary": -176
+     "seconds_after_primary": -10531,
+     "minutes_after_primary": -175
     },
     {
      "rank": 2,
@@ -114,7 +286,8 @@
      "byline_kind": "not kept",
      "title": "Escolas e serviços públicos não-essenciais encerrados na quarta-feira, anuncia ministro Luís Neves. \"Fiquem em casa todos os que puderem\"",
      "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll",
-     "minutes_after_primary": -173
+     "seconds_after_primary": -10357,
+     "minutes_after_primary": -172
     },
     {
      "rank": 3,
@@ -125,6 +298,7 @@
      "byline_kind": "not kept",
      "title": "Escolas e serviços públicos encerrados amanhã devido ao mau tempo, anuncia MAI",
      "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+     "seconds_after_primary": -9300,
      "minutes_after_primary": -155
     },
     {
@@ -140,7 +314,8 @@
      "title": "Creches e escolas públicas e privadas fecham na quarta-feira devido à tempestade Charles : directores avisam famílias",
      "url": "https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422",
      "article": "A-7cbf85c1",
-     "minutes_after_primary": 120
+     "seconds_after_primary": 7172,
+     "minutes_after_primary": 119
     },
     {
      "rank": 5,
@@ -154,7 +329,8 @@
      "title": "Continente em situação de alerta devido à passagem da depressão Charlie",
      "url": "https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289",
      "article": "A-ede83028",
-     "minutes_after_primary": 729
+     "seconds_after_primary": 43735,
+     "minutes_after_primary": 728
     }
    ]
   },
@@ -175,6 +351,7 @@
      "byline_kind": "not kept",
      "title": "Moedas: \"Tudo indica que a Web Summit não poderá funcionar amanhã\"",
      "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+     "seconds_after_primary": 1140,
      "minutes_after_primary": 19
     },
     {
@@ -189,6 +366,7 @@
      "title": "Web Summit deverá fechar na quarta-feira, anuncia autarquia de Lisboa",
      "url": "https://jornaleconomico.sapo.pt/noticias/web-summit-fechada-na-quarta-feira-anuncia-autarquia-de-lisboa/",
      "article": "A-4c13b9a2",
+     "seconds_after_primary": 1393,
      "minutes_after_primary": 23
     },
     {
@@ -200,7 +378,8 @@
      "byline_kind": "not kept",
      "title": "\"Eu diria que tudo indica que a Web Summit não poderá funcionar amanhã\", admite autarca de Lisboa, mas decisão cabe ao MAI",
      "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
-     "minutes_after_primary": 48
+     "seconds_after_primary": 2859,
+     "minutes_after_primary": 47
     },
     {
      "rank": 4,
@@ -214,6 +393,7 @@
      "title": "Tempestade Charles encerra túneis em Lisboa e coloca Web Summit em dúvida",
      "url": "https://www.publico.pt/2026/11/10/sociedade/noticia/tempestade-charles-encerra-tuneis-lisboa-coloca-web-summit-duvida-2194442",
      "article": "A-fb2de4b9",
+     "seconds_after_primary": 3607,
      "minutes_after_primary": 60
     },
     {
@@ -228,7 +408,8 @@
      "title": "Depressão Charles: Web Summit sob dúvida, pontes do Tejo com limite de 60 km/h e túneis de Lisboa fechados",
      "url": "https://tek.sapo.pt/noticias/ciencia/artigos/depressao-charles-web-summit-sob-duvida-pontes-do-tejo-com-limite-de-60-km-h-e-tuneis-de-lisboa-fechados/",
      "article": "A-5ec6356c",
-     "minutes_after_primary": 86
+     "seconds_after_primary": 5147,
+     "minutes_after_primary": 85
     },
     {
      "rank": 6,
@@ -240,6 +421,7 @@
      "title": "Lisboa com túneis, jardins e equipamentos culturais encerrados, Web Summit em dúvida: \"Medidas serão reavaliadas dentro de 24h\", diz Moedas",
      "url": "https://expresso.pt/tempestades/2026-11-10-lisboa-com-tuneis-jardins-e-equipamentos-culturais-encerrados-web-summit-em-duvida-medidas-serao-reavaliadas-dentro-de-24h-diz-moedas-2c217504",
      "article": "A-d52455d2",
+     "seconds_after_primary": 6084,
      "minutes_after_primary": 101
     }
    ]
@@ -261,6 +443,7 @@
      "byline_kind": "not kept",
      "title": "Governo recomenda suspensão da Web Summit na quarta-feira",
      "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+     "seconds_after_primary": 0,
      "minutes_after_primary": 0
     }
    ]
@@ -285,7 +468,8 @@
      "title": "Web Summit encerrada esta quarta-feira devido ao mau tempo",
      "url": "https://eco.sapo.pt/2026/11/10/web-summit-vai-encerrar-esta-quarta-feira-devido-ao-mau-tempo/",
      "article": "A-4438fb2f",
-     "minutes_after_primary": 33
+     "seconds_after_primary": 1951,
+     "minutes_after_primary": 32
     },
     {
      "rank": 2,
@@ -299,7 +483,8 @@
      "title": "Web Summit cede às pressões e fecha portas no segundo dia por causa do mau tempo",
      "url": "https://tek.sapo.pt/noticias/negocios/artigos/web-summit-cede-as-pressoes-e-fecha-portas-no-segundo-dia-por-causa-do-mau-tempo/",
      "article": "A-6b13b29b",
-     "minutes_after_primary": 33
+     "seconds_after_primary": 1977,
+     "minutes_after_primary": 32
     },
     {
      "rank": 3,
@@ -310,6 +495,7 @@
      "byline_kind": "not kept",
      "title": "Após recomendação do Governo, Paddy suspende Web Summit na quarta-feira",
      "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+     "seconds_after_primary": 1980,
      "minutes_after_primary": 33
     },
     {
@@ -321,7 +507,8 @@
      "byline_kind": "not kept",
      "title": "Segundo dia da Web Summit cancelado",
      "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
-     "minutes_after_primary": 37
+     "seconds_after_primary": 2197,
+     "minutes_after_primary": 36
     },
     {
      "rank": 5,
@@ -332,6 +519,7 @@
      "byline_kind": "not kept",
      "title": "Web Summit cancela programação de quarta-feira devido ao mau tempo",
      "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791150-scroll",
+     "seconds_after_primary": 2247,
      "minutes_after_primary": 37
     },
     {
@@ -343,6 +531,7 @@
      "byline_kind": "not kept",
      "title": "Web Summit fecha portas esta quarta-feira devido ao mau tempo",
      "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245",
+     "seconds_after_primary": 2280,
      "minutes_after_primary": 38
     },
     {
@@ -357,7 +546,8 @@
      "title": "Web Summit cancela segundo dia devido ao mau tempo",
      "url": "https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo",
      "article": "A-cf267d89",
-     "minutes_after_primary": 53
+     "seconds_after_primary": 3156,
+     "minutes_after_primary": 52
     },
     {
      "rank": 8,
@@ -371,6 +561,7 @@
      "title": "Tempestade Charles obriga ao cancelamento da Web Summit na quarta-feira",
      "url": "https://cnnportugal.iol.pt/tempestade-charles/web-summit/tempestade-charles-obriga-ao-cancelamento-da-web-summit-na-quarta-feira/20261110/6af3796cd34e9ce6f1b43dff",
      "article": "A-bab4e4f9",
+     "seconds_after_primary": 3960,
      "minutes_after_primary": 66
     },
     {
@@ -385,6 +576,7 @@
      "title": "Web Summit Lisbon day 2 cancelled due to Storm Charles",
      "url": "https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles",
      "article": "A-55130ccc",
+     "seconds_after_primary": 4815,
      "minutes_after_primary": 80
     },
     {
@@ -397,18 +589,10 @@
      "title": "Depressão “Charles”: Web Summit fecha as portas esta quarta-feira e reabre na quinta",
      "url": "https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428",
      "article": "A-c46117b5",
-     "minutes_after_primary": 91
+     "seconds_after_primary": 5456,
+     "minutes_after_primary": 90
     }
    ]
-  },
-  {
-   "id": "6-red-rain-0900",
-   "what": "IPMA moves Lisbon's red rain warning three hours earlier, to Wednesday 09:00",
-   "primary_time": "2026-11-10T21:23:00Z",
-   "primary_note": "IPMA's CAP message sent 21:23 (data/weather/cap.json); its open-data feed showed it from the 23:51 read",
-   "primary_label": "fact",
-   "items_matched": 0,
-   "first_by_outlet": []
   },
   {
    "id": "7-track-south",
@@ -466,6 +650,7 @@
      "byline_kind": "not kept",
      "title": "Modelos já apontam para uma trajetória mais a sul: entre Setúbal e Sines, com impactos no Algarve",
      "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791172-scroll",
+     "seconds_after_primary": null,
      "minutes_after_primary": null
     },
     {
@@ -480,6 +665,7 @@
      "title": "22h IPMA depressão mudou a trajetória mais para sul",
      "url": "https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275",
      "article": "A-e0a37dc7",
+     "seconds_after_primary": null,
      "minutes_after_primary": null
     },
     {
@@ -492,7 +678,77 @@
      "title": "Depressão Charles muda trajetória para sul, com menos vento em Lisboa e Norte mais resguardado",
      "url": "https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b",
      "article": "A-54a875a2",
+     "seconds_after_primary": null,
      "minutes_after_primary": null
+    }
+   ]
+  },
+  {
+   "id": "6-red-rain-0900",
+   "what": "IPMA moves Lisbon's red rain warning three hours earlier, to Wednesday 09:00",
+   "primary_time": "2026-11-10T21:23:00Z",
+   "primary_note": "IPMA's CAP message sent 21:23 (data/weather/cap.json); its open-data feed showed it from the 23:51 read",
+   "primary_label": "fact",
+   "items_matched": 0,
+   "first_by_outlet": []
+  },
+  {
+   "id": "11-meteorologist-line",
+   "what": "IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente",
+   "primary_time": "2026-11-10T22:35:24Z",
+   "primary_note": "a spoken statement to Rádio Observador; the reference is the earliest text we read (Observador's live blog, 22:35:24). IPMA's own channels had not changed at 00:29 on 11 November (fact 7)",
+   "primary_label": "evidence",
+   "items_matched": 5,
+   "first_by_outlet": [
+    {
+     "rank": 1,
+     "outlet": "observador",
+     "published": "2026-11-10T22:35:24Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "\"Se houver ventos muito, muito fortes\", não serão em Lisboa, mas \"mais a sul\"",
+     "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791177-scroll",
+     "seconds_after_primary": 0,
+     "minutes_after_primary": 0
+    },
+    {
+     "rank": 2,
+     "outlet": "rtp",
+     "published": "2026-11-10T23:08:00Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Tempestade terá mudado de trajetória",
+     "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277",
+     "seconds_after_primary": 1956,
+     "minutes_after_primary": 32
+    },
+    {
+     "rank": 3,
+     "outlet": "expresso",
+     "published": "2026-11-10T23:54:37Z",
+     "via": "article",
+     "byline": [],
+     "byline_kind": "none",
+     "title": "Depressão Charles muda trajetória para sul, com menos vento em Lisboa e Norte mais resguardado",
+     "url": "https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b",
+     "article": "A-54a875a2",
+     "seconds_after_primary": 4753,
+     "minutes_after_primary": 79
+    },
+    {
+     "rank": 4,
+     "outlet": "cnn-portugal",
+     "published": "2026-11-11T00:31:00Z",
+     "via": "video",
+     "byline": [],
+     "byline_kind": "none",
+     "title": "Algarve deverá ser a região mais afetada pela Charles. Tempestade chega a Lisboa \"com menos intensidade do que o previsto\"",
+     "url": "https://cnnportugal.iol.pt/videos/algarve-devera-ser-a-regiao-mais-afetada-pela-charles-tempestade-chega-a-lisboa-com-menos-intensidade-do-que-o-previsto/6af3b07a0cf2aafa0453e19a",
+     "article": "A-7cf0661b",
+     "seconds_after_primary": 6936,
+     "minutes_after_primary": 115
     }
    ]
   }

@@ -1,6 +1,6 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:32 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -8,7 +8,7 @@
 | Items we read | 81: 80 articles, 1 live, 0 video, 0 opinion |
 | First and last | 9 Nov 16:06 to 11 Nov 00:00 UTC |
 | Whose reporting | 4 with a reporter's by-line, 71 the agency's (Lusa), 6 the desk's, 0 not read; wire share 88% |
-| Does best (from the counts) | volume: the most items in the list; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
+| Does best (from the counts) | volume: the most items in the list; first on "ANEPC's public warning on Charles (Aviso 21)"; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 
 ## Against the key moments
 
@@ -16,8 +16,10 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
-| IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:59 (article) | +102 min | 5 of 6 | [Oito distritos com aviso vermelho para vento na quarta-feira ↗](https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira) |
-| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:01 (article) | +53 min | 7 of 10 | [Web Summit cancela segundo dia devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
+| IPMA names the storm Charles (communiqué no. 1) | 9 Nov 13:17 | 9 Nov 18:14 (article) | +297 min | 3 of 3 | [Depressão Charles ameaça Madeira com chuva forte e rajadas de 130 km/h ↗](https://www.noticiasaominuto.com/pais/3081224/mau-tempo-protecao-civil-da-madeira-alerta-para-agravamento-devido-a-passagem-do-charles) |
+| ANEPC's public warning on Charles (Aviso 21) | 9 Nov 20:30 | 9 Nov 23:37 (article) | +187 min | 1 of 1 | [Mau tempo agrava-se "nos próximos dias": Os conselhos da Proteção Civ… ↗](https://www.noticiasaominuto.com/pais/3081340/mau-tempo-agrava-se-nos-proximos-dias-os-conselhos-da-protecao-civil) |
+| IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:59 (article) | +101 min | 5 of 6 | [Oito distritos com aviso vermelho para vento na quarta-feira ↗](https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira) |
+| Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:01 (article) | +52 min | 7 of 10 | [Web Summit cancela segundo dia devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
 
 ## Its sources, as far as its own pages say
 

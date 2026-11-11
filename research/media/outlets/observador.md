@@ -1,6 +1,6 @@
 # Observador: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:32 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -8,7 +8,7 @@
 | Items we read | 20: 18 articles, 1 live, 0 video, 1 opinion |
 | First and last | 10 Nov 07:32 to 11 Nov 00:16 UTC |
 | Whose reporting | 7 with a reporter's by-line, 6 the agency's (Lusa), 7 the desk's, 0 not read; wire share 30% |
-| Does best (from the counts) | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; a running live blog |
+| Does best (from the counts) | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; first on "IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente"; a running live blog |
 
 ## Against the key moments
 
@@ -16,10 +16,12 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
-| IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:34 (live entry) | +77 min | 2 of 6 | [IPMA coloca oito distritos sob aviso vermelho na quarta-feira ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790948-scroll) |
-| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:17 (live entry) | -173 min | 2 of 5 | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
+| IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:34 (live entry) | +76 min | 2 of 6 | [IPMA coloca oito distritos sob aviso vermelho na quarta-feira ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790948-scroll) |
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 09:17 (live entry) | +2 min | 2 of 5 | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
+| The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:17 (live entry) | -172 min | 2 of 5 | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:46 (live entry) | +37 min | 5 of 10 | [Web Summit cancela programação de quarta-feira devido ao mau tempo ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791150-scroll) |
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 22:07 (live entry) | unknown | 1 of 3 | [Modelos já apontam para uma trajetória mais a sul: entre Setúbal e Si… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791172-scroll) |
+| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 10 Nov 22:35 (live entry) | +0 min | 1 of 4 | ["Se houver ventos muito, muito fortes", não serão em Lisboa, mas "mai… ↗](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791177-scroll) |
 
 ## Its sources, as far as its own pages say
 

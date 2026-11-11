@@ -37,6 +37,7 @@ for (const a of A) a.byline_kind = kindOf(a.byline || [])
 const FACTS = J(path.join(M, 'facts.json')).facts
 const LIVE = fs.existsSync(path.join(M, 'live-entries.json')) ? J(path.join(M, 'live-entries.json')) : { entries: [], blogs: [] }
 const oName = id => (outletsFile.outlets.find(o => o.id === id) || {}).name || id
+FACTS.sort((a, b) => (a.primary_time || a.from || '').localeCompare(b.primary_time || b.from || ''))
 const events = FACTS.map(e => {
     const from = e.from || e.primary_time, until = e.until || '2026-11-11T12:00:00Z', re = new RegExp(e.pattern, 'i')
     const items = []
@@ -44,10 +45,10 @@ const events = FACTS.map(e => {
     for (const l of LIVE.entries) if (l.fact === e.id) items.push({ outlet: l.outlet, published: l.at, via: 'live blog entry', byline: [], byline_kind: 'not kept', title: l.title, url: l.url })
     items.sort((x, y) => x.published.localeCompare(y.published))
     const firsts = new Map(); for (const it of items) if (!firsts.has(it.outlet)) firsts.set(it.outlet, it)
-    const rows = [...firsts.values()].map((r, i) => ({ rank: i + 1, ...r, minutes_after_primary: e.primary_time ? Math.round((Date.parse(r.published) - Date.parse(e.primary_time)) / 60000) : null }))
+    const rows = [...firsts.values()].map((r, i) => ({ rank: i + 1, ...r, seconds_after_primary: e.primary_time ? Math.round((Date.parse(r.published) - Date.parse(e.primary_time)) / 1000) : null, minutes_after_primary: e.primary_time ? Math.trunc((Date.parse(r.published) - Date.parse(e.primary_time)) / 60000) : null }))
     return { id: e.id, what: e.what, primary_time: e.primary_time, primary_note: e.primary_note, primary_label: e.primary_label, quoted: e.quoted, notes: e.notes, items_matched: items.length, first_by_outlet: rows }
 })
-fs.writeFileSync(path.join(M, 'first-on-each-fact.json'), JSON.stringify({ about: 'Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet\'s first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source\'s time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.', by: 'incident.media@web-summit.dinis', label: 'analysis', updated: now, facts: events }, null, 1) + '\n')
+fs.writeFileSync(path.join(M, 'first-on-each-fact.json'), JSON.stringify({ about: 'Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet\'s first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source\'s time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.', by: 'incident.media@web-summit.dinis', label: 'analysis', updated: now, lag_rule: J(path.join(M, 'facts.json')).lag_rule, shape_for_other_series: J(path.join(M, 'facts.json')).shape_for_other_series, facts: events }, null, 1) + '\n')
 
 // ---- per outlet
 const per = {}
@@ -115,7 +116,7 @@ for (const e of events) {
     if (e.quoted) md += `\nWhom they quote at IPMA, as printed (role and outlet only):\n\n${e.quoted.map(q => `- **${oName(q.outlet)}**, ${q.item}: ${q.attribution_as_printed}`).join('\n')}\n`
     if (e.notes) md += `\n${e.notes.map(n => '- ' + n).join('\n')}\n`
 }
-md += `\nNotes: the organisers' email to attendees went at 19:38 (no public URL; in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). Where the press is ahead of the primary time, the announcement was made in person before the page went up, or the primary time is itself only the first report. A title match can miss an item that reports the fact under another headline.\n`
+md += `\nLags are whole minutes elapsed, truncated (19:09:00 to 19:41:31 is 32 minutes); the seconds are in the data. Notes: the organisers' email to attendees went at 19:38 (no public URL; in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). Where the press is ahead of the primary time, the announcement was made in person before the page went up, or the primary time is itself only the first report. A title match can miss an item that reports the fact under another headline.\n`
 const rows = outletsFile.outlets.filter(o => o.seen && o.seen.items).sort((a, b) => b.seen.items - a.seen.items)
 md += `\n## Most sourced\n\nTwo measures, both countable from the pages: **whose reporting it is** (a reporter's by-line, the agency wire, or the outlet's desk) and **whether the page links to a primary source** (IPMA, ANEPC, the government, the Câmara, an operator, the organiser). A link is not the same as sourcing: broadcasters quote officials on air without linking, and agency copy names its sources in the text. Read the columns as what they are.\n\n| Outlet | Items | Reporter's by-line | Agency (Lusa) | Wire share | Desk | By-line not read | Items linking a primary source | Bodies linked |\n|---|---|---|---|---|---|---|---|---|\n`
 for (const o of rows) md += `| ${o.name} | ${o.seen.items} | ${o.seen.byline_named} | ${o.seen.byline_agency} | ${o.wire_share === null ? 'n/a' : Math.round(o.wire_share * 100) + '%'} | ${o.seen.byline_desk} | ${o.seen.byline_not_read} | ${o.seen.items_linking_primary_sources} | ${o.seen.primary_bodies_linked.join(', ') || ''} |\n`

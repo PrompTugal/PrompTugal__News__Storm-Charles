@@ -1,6 +1,6 @@
 # Jornal de Negócios: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:21 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 02:32 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -17,6 +17,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Fact | Primary source time | Its first item (UTC) | After the primary | Place | Item |
 |---|---|---|---|---|---|
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 09:44 (live entry) | +146 min | 6 of 6 | [Oito distritos de Portugal continental com aviso vermelho para vento… ↗](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
+| The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 11 Nov 00:09 (live entry) | +894 min | 4 of 5 | [Continente em situação de alerta devido à passagem da depressão Charl… ↗](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
 | The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:35 (live entry) | -155 min | 3 of 5 | [Escolas e serviços públicos encerrados amanhã devido ao mau tempo, an… ↗](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:19 (live entry) | +19 min | 1 of 6 | [Moedas: "Tudo indica que a Web Summit não poderá funcionar amanhã" ↗](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
 | The government recommends suspending Web Summit on Wednesday | 10 Nov 17:53 | 10 Nov 17:53 (live entry) | +0 min | 1 of 1 | [Governo recomenda suspensão da Web Summit na quarta-feira ↗](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
