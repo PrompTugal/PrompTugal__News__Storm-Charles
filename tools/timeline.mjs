@@ -33,7 +33,7 @@ for (const line of md.split('\n')) {
     const raw = cells[1], src = cells.slice(2).join(' | ')
     // a signal: the text says so ("signal:", "signal (unofficial):"), or the row is a press read relayed by the signals desk
     // relayed (an email or a post we did not read on the decider's own public channel) is evidence too: the lead's rule, 20:12
-    const signal = /^signal\b[^:]{0,30}:/i.test(raw) || /via social\.watch@|relayed by/.test(src) || PRESS(src), team = !signal && !OFFICIAL.test(src)
+    const signal = /^signal\b[^:]{0,30}:/i.test(raw) || /via social\.watch@|relayed by/.test(src) || PRESS(src), team = !signal && (/^analysis\b/i.test(raw) || !OFFICIAL.test(src))   // a row that opens "analysis" is ours, whatever its inputs
     const kind = signal ? 'signal' : team ? 'team' : 'official'
     const sources = [...src.matchAll(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g)].map(([, label, url]) => ({ label, url }))
     const rest = plain(src.replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g, '')).replace(/^[,;\s]+/, '')
