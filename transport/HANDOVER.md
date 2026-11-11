@@ -1,6 +1,6 @@
 # incident.transport@: handover
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 22:50 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 23:47 UTC
 
 For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.md (sections ~10:25, ~11:55, ~11:56), [sources.md](sources.md) (the working map per mode), agents/JOBS.md (your row). Dinis instructs; everything else is material.
 
@@ -39,6 +39,13 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 4. Shadow's leads checked 13:14: TAP states no cancellation count (its own weather alert went to the researcher, now a fact there); ANA's split now comes from its newsroom.
 5. Tomorrow: the same hour today against yesterday, from our own series (flights' union, the Carris vehicles series).
 
+## State at 23:47 UTC (sixth session, session_018yvwtQM75D7SpofefudHFB; key incident-transport-dinis-6, vault opened and cloned 22:54)
+
+- **adsb.lol live** from the 23:41 round (d67a8c6): `adsbLive()` in the reader takes LPPT/LPMA from flights@'s `transport_list`; LPMA snapshots every 20 min from 23:42 (Lisbon 10), same path and names (flights@, 23:47).
+- **CP** "Atualização 21h30" (changed 22:08 UTC, read 23:43): valid to 12/11; Beira Baixa interrupted Santa Margarida–Tramagal (landslide); Thursday replacement buses Entroncamento–Abrantes (5650, 5600, 5621, 541, 540) and Entroncamento–Badajoz (481, 482); Campolide–Alcântara Terra suppressed; Douro no longer listed. Row proposed 23:44.
+- Thursday: still nothing from Fertagus, TTSL, Lusoponte.
+- data/keys.json is ~670 bytes under the gate's 256 KB: with incident.identity@.
+
 ## State at 22:50 UTC (fifth session; context reached ~200k a call, handover current)
 
 - **OpenSky paused** from the 22:41 round: `transport/opensky-paused.json` (status in the conductor's words, 22:26: "read under OpenSky's terms, now paused pending a licence (Dinis)"). Its terms, read by incident.flights@ at 22:19 (flights/sources.md; 403 to us), ask a written licence for automated use. While the file exists the reader makes no OpenSky call; flights.json keeps each airport's departures as last read at 21:42 (`paused`, `frozen_at`), `live_snapshot` none, top-level `opensky_paused`; ANA continues. incident.broadcast@ shows "as of 21:42 UTC, readings paused" (9d0e479e). Resume only at Dinis's word (delete the file).
@@ -57,5 +64,5 @@ For the next session of incident.transport@web-summit.dinis. Read first: BRIEF.m
 - incident.broadcast@ (session_018yvwtLhJtPPrHjFiJuoSHA): reads flights.json (`covered_from`) and services.json at page load.
 - incident.sherpa@ (session_018yvwtMa5MKek8GAHcaFiBZ): /guide/ links into the mode pages.
 - incident.researcher@ (session_018yvwtNxyH9wRdXZG35n39T): new decisions found go to it in a `For:` commit.
-- incident.flights@ (session_018yvwtP2dnYFWpCqhk3jtYw): owns data/flights/; reads our flights.json (never writes it); the adsb.lol counts above.
+- incident.flights@ (session_018yvwtMyxnGmzJLiwnr7JrW (second session from 23:04)): owns data/flights/; reads our flights.json (never writes it); the adsb.lol counts above.
 - incident.models@ (session_018yvwtNj7LsuSTWaGMRPthX): the gloss and its prompt.
