@@ -16,7 +16,8 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 10:00 to 11:00 | [10:00 to 11:00, 11 November: the newcomers' page rewritten on what four invented visitors found, and Dinis asks for the wind-down](2026-11-11T10.md) | v0.1.801 to v0.1.912 (24 served of 71) | 124 |
+| 2026-11-11 11:00 to 12:00 | [11:00 to 12:00, 11 November: Dinis asks for a decision brief, a contact desk and a site for people in Lisbon now; a day's flights counted only from what was seen](2026-11-11T11.md) | v0.1.932 to v0.1.961 (7 served of 29) | 37 |
+| 2026-11-11 10:00 to 11:00 | [10:00 to 11:00, 11 November: the newcomers' page rewritten on what four invented visitors found, and Dinis asks for the wind-down](2026-11-11T10.md) | v0.1.801 to v0.1.931 (81 served of 131) | 143 |
 | 2026-11-11 09:00 to 10:00 | [09:00 to 10:00, 11 November: Lisbon's red rain warning begins, Dinis settles how vault keys are passed on, and the press reports the lowered wind](2026-11-11T09.md) | v0.1.718 to v0.1.800 (62 served of 83) | 98 |
 | 2026-11-11 08:00 to 09:00 | [08:00 to 09:00, 11 November: IPMA's open data catches up with its message, and the lowered wind warning is read in full](2026-11-11T08.md) | v0.1.677 to v0.1.717 (38 served of 41) | 48 |
 | 2026-11-11 07:00 to 08:00 | [07:00 to 08:00, 11 November: IPMA lowers Lisbon's wind warning to orange, and its two channels disagree](2026-11-11T07.md) | v0.1.639 to v0.1.676 (36 served of 38) | 41 |

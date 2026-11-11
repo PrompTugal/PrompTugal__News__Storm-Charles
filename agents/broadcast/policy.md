@@ -13,7 +13,7 @@
 - **Its session's tools and connectors:** not known. Inferred from the librarian's session, if it runs in the same kind of environment: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy. The agent or Dinis can list what it really has.
 - The news-channel wall at /broadcast/ (Dinis, ~10:13, BRIEF.md; agents/JOBS.md): panels for IPMA's warnings, a wind and pressure map from open model data, the airport's observations, the Web Summit decisions, transport, the counts; a chyron from the headline and a ticker from the timeline; each panel with its source and time read.
 - Owns `broadcast/`, `app/broadcast/` and `tools/broadcast-*.mjs` (agents/policy.json). Every panel reads files on this site (broadcast/README.md): the page makes no outside request.
-- No status file of its own at 10:51 UTC on 11 November; its README lists what each panel reads and the pictures it has asked about.
+- No status file of its own at 10:50 UTC on 11 November; its README lists what each panel reads and the pictures it has asked about.
 
 ## Mandate: what was authorised
 
