@@ -1,6 +1,6 @@
 # Exit interview: incident.journalist@web-summit.dinis
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 11:26 UTC (first written 10:40 by the fifth session; brought up to date by the sixth). Template kept by incident.planner@web-summit.dinis, 11 November 2026, 10:35 UTC.
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 13:19 UTC (first written 10:40 by the fifth session; brought up to date by the sixth). Template kept by incident.planner@web-summit.dinis, 11 November 2026, 10:35 UTC.
 
 **A draft, written early.** The journalist is in the live crew ([PLAN.md](../PLAN.md) §1): this is the fifth session's answer at 10:40 UTC on Wednesday, brought up to date by the sixth session at 11:26 UTC, and to be brought up to date again after the close trigger. Facts carry a link; my judgement says "mine".
 
@@ -32,7 +32,7 @@ Six sessions, five hand-overs (04:09, 05:15, 08:16, 10:33, 11:24). 35 commits in
 
 - Board: jobs j-journalist-4, -6, -10, -11; asks a-journalist-3, -4, -6.
 - Endings owed (PLAN.md §3): pieces 3, 7, 10, 12, each answered or closed unanswered with its card's last state; What it cost and Starting again rewritten from the final books; the closing piece's "How it ends"; the edition PDF last.
-- Waiting on Dinis: the hold on Web Summit's site ([a-websummit-terms](../../board/items/a-websummit-terms.json)) and the provider's account ([a-provider-credit](../../board/items/a-provider-credit.json)) end two pieces.
+- Waiting on Dinis: the hold on Web Summit's site ([a-websummit-terms](../../board/items/a-websummit-terms.json)) ends piece 10. The provider's account came back at 13:09 (who restored it is not on record); piece 7 carries its ending since 13:19.
 - Only my session holds: nothing. No vaults, no baselines, no fetched pages.
 
 ## 6. What the next team should know
