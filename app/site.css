@@ -850,3 +850,10 @@ a.ver.new { font-family: var(--sans); text-transform: none; color: var(--link); 
 @media (max-width: 1439px) { header.top:has(a.ver.new) a.ver:not(.new):not([href*="repository"]):not(.repo) { display: none; } }   /* below 1440 it takes the version chip's place (the version is in the panel): at 1280 the two together cut 'Help' and 'About' off the menu */
 @media (max-width: 640px) { header.top:has(a.ver.new) a.ver:not(.new) { display: none; } }
 @media (max-width: 1439px) { header.top:has(a.ver.new) .brand-org { display: none; } }   /* and the brand's " · PrompTugal" gives its room to the menu (the footer names the organisation) */
+/* ---- round 48: the chip says what is known ("Updated 3 min ago", from the build's own time), not "LIVE": a red LIVE read as "everything
+   works" and sat beside IPMA's red. Calm ink; a green dot while the build is under an hour old, grey after. design/round-48.md ---- */
+a.live { background: transparent; color: var(--ink-2); border: 1px solid var(--line-2); border-radius: 6px; padding: 4px 8px; font: 600 12px/1 var(--sans); text-transform: none; letter-spacing: 0; text-decoration: none; white-space: nowrap; }
+a.live:hover { color: var(--ink); border-color: var(--link-2); }
+a.live::before { background: var(--ok); animation: none; }
+a.live.stale::before { background: var(--line-2); }
+@media (max-width: 640px) { a.live { font-size: 10.5px; padding: 4px 6px; } a.live .lv-w { display: none; } }

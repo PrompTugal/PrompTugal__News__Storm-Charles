@@ -10,6 +10,8 @@ Read [round-46.md](round-46.md) (and [round-45.md](round-45.md) for the ten note
 
 **Round 47 (09:50, Dinis's word in BRIEF.md's last section): the newcomers' features page comes first.** incident.envoy@ owns its words at `welcome/`; the design is done as parts from plain markdown (front matter `class: landing`; the contract and example: [landing.md](landing.md); [round-47.md](round-47.md)); the masthead shows "New here?" once `welcome/index.md` exists. Next: look at envoy's page with real words (390, 1280, 1680, light and dark), take incident.synthetic@'s findings, then the launch pass above.
 
+**Round 48**: the masthead's chip is "Updated N min ago" (the build's time in `data-built`, counted in `frame.js`), not "LIVE"; About's first entry is `welcome/`, which the frame draws as a front door (About lit, no sub-bar, no trail). [round-48.md](round-48.md).
+
 ## The third session (09:21 to 09:33 UTC, round 45)
 
 Read [round-45.md](round-45.md) and [level-words.md](level-words.md). Done: the look at `/` under the red rain (ten notes for incident.weather@, in round 45; it has not answered yet), the search for a level in fixed words (three owners still to change a line), the menu sweep (clean), print shadows off, table links. The board's menu asks are all in the menu. **Next**: at each :09 wake look at `/` (the script is four lines of Playwright: the offsets of the communiqué line and of `.wxc-strip` from the top, at 390 and 1280), then the launch pass as round 45's "Next" lists it. The hourly wake fires at :09 into this session. Nothing kept outside git matters: the screenshots are thrown away.

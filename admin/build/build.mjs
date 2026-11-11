@@ -19,6 +19,7 @@ const t0 = Date.now()
 const SKIP = new Set(['.git', '.github', '_site', 'node_modules', 'admin'])
 const SITE = 'https://storm-charles.promptugal.news/'
 const VERSION = process.env.VERSION || 'local'
+const BUILT = new Date().toISOString()   // when this build ran: version.json's built_at, and the masthead's "Updated" chip (round 48)
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
 const write = (rel, data) => { const f = path.join(OUT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, data) }
 const walk = (dir, acc = []) => { for (const e of fs.readdirSync(dir, { withFileTypes: true })) { if (SKIP.has(e.name) || e.name.startsWith('.')) continue; const f = path.join(dir, e.name); e.isDirectory() ? walk(f, acc) : acc.push(path.relative(ROOT, f)) } return acc }
@@ -97,7 +98,7 @@ const MENU = [
     ['Studio', [['Studio', 'studio/index.html'], ['Cast', 'studio/cast/index.html']]],
     ['Team', [['Agents', 'agents/index.html'], ['Jobs', 'app/agents/jobs.html'], ['Jobs, the table', 'agents/JOBS.html'], ['Board', 'board/index.html'], ['For Dinis', 'board/for-dinis.html'], ['Accounts', 'accounts/index.html'], ['Log in', 'account/index.html'], ['Contribute', 'contribute.html'], ['Launch draft', 'outreach/launch.html']]],
     ['Help', [['Help', 'help/index.html'], ["What's new", 'news/index.html']]],
-    ['About', [['Brief', 'BRIEF.html'], ['Restructure', 'RESTRUCTURE.html'], ['Journal', 'journal/index.html'], ['Reporter', 'reporter/index.html'], ['CI', 'ci/index.html'], ['Commits', 'ci/commits.html'], ['Repository', 'ci/repository.html'], ['Design', 'design/index.html'], ['LLMs', 'llms.txt']]]
+    ['About', [['What this is', 'welcome/index.html'], ['Brief', 'BRIEF.html'], ['Restructure', 'RESTRUCTURE.html'], ['Journal', 'journal/index.html'], ['Reporter', 'reporter/index.html'], ['CI', 'ci/index.html'], ['Commits', 'ci/commits.html'], ['Repository', 'ci/repository.html'], ['Design', 'design/index.html'], ['LLMs', 'llms.txt']]]
 ]
 const REPO = 'https://github.com/PrompTugal/PrompTugal__News__Storm-Charles'
 let MENU_LIVE = null
@@ -109,9 +110,9 @@ function menu(rel, u, title) {
     if (!active) for (const s of MENU_LIVE) for (const [, t] of s[1]) { const d = dir(t); if (d && rel.startsWith(d) && d.length > best) { best = d.length; active = s } }
     if (!active) active = MENU_LIVE.find(([n]) => n === 'Data room') || MENU_LIVE[0]
     const here = active[1].find(([, t]) => t === rel)
-    const front = rel.startsWith('welcome/')   // the page for newcomers is a front door: no subsite is lit, no sub-bar, no trail (round 48)
+    const front = rel.startsWith('welcome/')   // the page for newcomers is a front door: About is lit (it leads here), no sub-bar, no trail (round 48)
     const a = ([label, t], cur) => `<a href="${u}${t}"${cur ? ' aria-current="page"' : ''}>${esc(label)}</a>`
-    const nav = `<nav class="sites" aria-label="Subsites">${MENU_LIVE.map(s => `<a href="${u}${s[1][0][1]}"${s === active && !front ? ' aria-current="true"' : ''}>${esc(s[0])}</a>`).join('')}</nav>
+    const nav = `<nav class="sites" aria-label="Subsites">${MENU_LIVE.map(s => `<a href="${u}${s[1][0][1]}"${s === active ? ' aria-current="true"' : ''}>${esc(s[0])}</a>`).join('')}</nav>
 ${active[1].length > 1 && !front ? `<nav class="top" aria-label="${esc(active[0])}"><span class="navg"><b>${esc(active[0])}</b>${active[1].map(i => a(i, i[1] === rel)).join('')}</span></nav>` : ''}`
     const crumbs = rel === 'index.html' || front ? '' : `<nav class="crumbs" aria-label="Where you are"><div class="wrap"><a href="${u}index.html">Storm Charles</a><span>›</span><a href="${u}${active[1][0][1]}">${esc(active[0])}</a>${here && here[1] === active[1][0][1] ? '' : `<span>›</span><b>${esc(here ? here[0] : title)}</b>`}</div></nav>`
     return { nav, crumbs }
@@ -139,7 +140,7 @@ ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 ${extraHead}
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b><span class="brand-org"> · PrompTugal</span></a><span class="live">Live</span>${HAS_WELCOME ? `<a class="ver new" href="${u}welcome/index.html" title="What this site is, for someone new to it">New here?</a>` : ''}<a class="ver" href="${u}${HAS_NEWS ? 'news/index.html' : 'version.json'}" title="This version: what changed, what was built, when">${esc(VERSION)}</a>${HAS_CI_REPO ? `<a class="ver" href="${u}ci/repository.html" title="The repository this site is built from: its map here, then GitHub">Repo</a>` : `<a class="ver repo" href="${REPO}" title="The repository this site is built from (leaves this site)">Repo</a>`}<button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
+<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b><span class="brand-org"> · PrompTugal</span></a><a class="live" data-built="${BUILT}" href="${u}${HAS_NEWS ? 'news/index.html' : 'version.json'}" title="When this site was last built from its sources (${BUILT.slice(0, 16).replace('T', ' ')} UTC). Every figure on a page carries the time its own source was read."><span class="lv-w">Updated </span><span>${BUILT.slice(11, 16)} UTC</span></a>${HAS_WELCOME ? `<a class="ver new" href="${u}welcome/index.html" title="What this site is, for someone new to it">New here?</a>` : ''}<a class="ver" href="${u}${HAS_NEWS ? 'news/index.html' : 'version.json'}" title="This version: what changed, what was built, when">${esc(VERSION)}</a>${HAS_CI_REPO ? `<a class="ver" href="${u}ci/repository.html" title="The repository this site is built from: its map here, then GitHub">Repo</a>` : `<a class="ver repo" href="${REPO}" title="The repository this site is built from (leaves this site)">Repo</a>`}<button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
 ${MENU_MARK(rel, u, title)}</div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a><span class="nt-more"> and your local authorities. We aggregate public sources, each with its source and the time we read it</span>.</div></div>
 <!--crumbs--><div class="shell" id="shell"><div class="shell-main">
@@ -252,7 +253,7 @@ for (const d of incidents) for (const rel of files.filter(f => f.startsWith(`inc
     write(`api/v1/${d}/${sub}`, buf)
     datasets.push({ incident: d, path: sub, url: `api/v1/${d}/${sub}`, source_file: rel, bytes: buf.length, sha256: crypto.createHash('sha256').update(buf).digest('hex'), about: about.slice(0, 400) })
 }
-const builtAt = new Date().toISOString()
+const builtAt = BUILT
 const catalog = {
     about: 'The data behind storm-charles.promptugal.news, for agents and people: every file with its size and sha256. Inside each file, every value carries its source and the UTC time it was read; facts, evidence and hypotheses are labelled. Refreshed by the incident agents at least hourly while the storm runs. Not a warning service: follow IPMA and ANEPC.',
     version: VERSION, built_at: builtAt, site: SITE, licence: 'Our own data: Apache-2.0 (the repository\'s licence). Quoted sources keep their own terms; each item links its source.',

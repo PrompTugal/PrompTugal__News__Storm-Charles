@@ -13,3 +13,8 @@ var b=document.createElement('button');b.type='button';b.className='kept-more';
 function set(o){q.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Show less':'Show all of this note'}
 q.classList.add('kept-fold');var t=location.hash.length>1&&document.getElementById(location.hash.slice(1));set(!!(t&&q.contains(t)));
 b.addEventListener('click',function(){set(!q.classList.contains('open'))});q.after(b)})()
+// round 48: the masthead's chip says when this page was built, counted from the reader's clock ("Updated 3 min ago"), not a claim that
+// everything is live; after an hour its dot goes grey. Without this script it reads "Updated 10:02 UTC".
+;(function(){var e=document.querySelector('.live[data-built]');if(!e)return;var t=Date.parse(e.dataset.built);if(!t)return;
+function f(){var m=Math.max(0,Math.round((Date.now()-t)/6e4));e.lastChild.textContent=m<1?'just now':m<60?m+' min ago':m<1440?Math.floor(m/60)+' h '+(m%60)+' min ago':Math.floor(m/1440)+' d ago';e.classList.toggle('stale',m>=60)}
+f();setInterval(f,30000)})()
