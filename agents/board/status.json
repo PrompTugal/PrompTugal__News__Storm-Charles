@@ -1,7 +1,7 @@
 {
   "agent": "incident.board@web-summit.dinis",
-  "state": "active: the board is live at /board/ (182 cards); round 2 synced it to every agent's status file as of 02:28 UTC",
-  "last_wake": "2026-11-11T02:28Z",
+  "state": "active: the board is live at /board/ (223 cards); round 3 took in the conductor's decisions, Contribute's C- numbers and the agents-page contract",
+  "last_wake": "2026-11-11T02:40Z",
   "done": [
     "session key made (encryption sha256:12562fc83a671f38, signing sha256:9edac99e5295ac92), public half in data/keys.json",
     "board/items/: one card per file, ids permanent. Round 1 (02:20): 117 cards from the front page, decisions.md, the comms folder, the decision graph, JOBS.md and every status file. Round 2 (02:28): 182 cards after the sync to 39 new commits: 8 questions, 4 conflicts (one answered by IPMA's own message, kept as the worked example), asks (the same ask from several agents is one card; those to Dinis ranked by what they block), jobs, 9 tasks for contributors",
@@ -10,20 +10,22 @@
     "tools/board-item.mjs: moves a card and writes the move into its history",
     "told incident.observability@ (an agent's page and its cards) and incident.media@ (Contribute and the tasks) the contract; asked the conductor for the generator in the build and a Board link",
     "tools/board-sync.mjs: each wake's mechanical part (new status lines become cards in the agent's own words; a reworded line keeps its card; a job that left its owner's next list moves to done; an ask whose line is gone is listed to be read by hand, never closed by the tool)",
-    "round 2: five new cards for Dinis written by hand from several agents' lines (three vault keys held only in two sessions; sites whose terms forbid automated reading; a key for MeteoAlarm's archive; the launch; the five themes); three cards closed from the tree (the generator and the menu entry; every agent has its page; Contribute and Media in the menu)"
+    "round 2: five new cards for Dinis written by hand from several agents' lines (three vault keys held only in two sessions; sites whose terms forbid automated reading; a key for MeteoAlarm's archive; the launch; the five themes); three cards closed from the tree (the generator and the menu entry; every agent has its page; Contribute and Media in the menu)",
+    "round 3: board/tasks.json in the shape Contribute reads (id, contribute_id C-01..C-13 kept as incident.media@ published them, group, title, why, best_placed, done_when, links, status); 11 new task cards from Contribute; C-04 (what attendees were told by email and app) opened as blocked on the conductor: not a public source",
+    "round 3: agreed with incident.observability@: its agent pages mount the board's embed (live since its 650a8a7); the board owns the one list of what Dinis can unblock; board/index.json carries by_agent and each card's url; agent names on cards link to agents/index.html?who=; board.js is safe to load more than once",
+    "round 3: For Dinis re-sorted at the conductor's direction: what stands before the launch first (9), then the rest; the conductor's decisions recorded on their cards (model names in history: closed; licence cases, the gate's time, the sources tool: done; menu entries moved to waiting on the designer)"
   ],
   "next": [
     "each wake: re-read the status files, the timeline, decisions.md and the decision graph; move the cards; record each move in history",
     "evidence ids from incident.archivist@'s captures and entity links from incident.entities@, when they exist",
-    "a card's own small graph (what it connects to, as edges with verbs) for incident.graph@",
-    "the round after observability@ and media@ answer: whatever they need changed in index.json or the embeds"
+    "a card's own small graph (what it connects to, as edges with verbs) for incident.graph@"
   ],
   "asks": [
-    "incident.observability@: say whether an agent's page reads board/index.json itself or mounts the embed (data-board-embed=\"agent\"), and which of us keeps the one list of what Dinis can unblock",
-    "incident.media@: a section 'What you can do right now' on Contribute that links board/tasks.html or mounts the tasks embed",
-    "incident.conductor@: 'For Dinis' (board/for-dinis.html) as a second entry under Board in the menu, if you agree"
+    "incident.conductor@: Contribute's task C-04 asks attendees for the organisers' email and app notices; the rule here is public sources only. Decide whether such a notice may come in and how it is labelled (card t-what-attendees-were-told, blocked on you)",
+    "incident.media@: read board/tasks.json for Contribute's tables and drop your copy; give C- numbers to the seven tasks that have none (contribute_id null)",
+    "incident.designer@: 'For Dinis' (board/for-dinis.html) under Board in the menu (the conductor sent it to you at 02:24)"
   ],
-  "updated": "2026-11-11T02:30:00Z",
+  "updated": "2026-11-11T02:40:00Z",
   "by": "incident.board@web-summit.dinis",
   "session": {
     "id": "session_018yvwtLnUwKTTfNU5tKBiqR",

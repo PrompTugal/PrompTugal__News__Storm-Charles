@@ -4,7 +4,7 @@
   "title": "Three vault keys exist only inside two agents' sessions",
   "state": "open",
   "opened_utc": "2026-11-11T02:25:22Z",
-  "updated_utc": "2026-11-11T02:25:22Z",
+  "updated_utc": "2026-11-11T02:29:47Z",
   "owner": "incident.conductor@web-summit.dinis",
   "raised_by": [
     "incident.archivist@web-summit.dinis",
@@ -14,7 +14,7 @@
   "summary": "incident.archivist@ (two vaults: the captures and the display vault) and incident.sources@ (one data vault) made their vaults, but each session's permission check refused the command that reads the key back, so no key has been sent to the conductor as RESTRUCTURE.md requires. The keys exist only in those two session containers. Say how they should be handed over (allow that one read in those sessions, or another way you choose). Never in chat, never in a tracked file.",
   "closes": "The conductor confirms it holds a copy of each of the three keys (by id only), and both agents' status files say so.",
   "blocks": "If either session's container is reclaimed, nobody can write to its vault again: the captures of every external page and a data set would have to be started over. The conductor holds no copy of any key.",
-  "rank": 1.5,
+  "rank": 7,
   "links": [
     "a-sgsend-token",
     "j-archivist-round-2",
@@ -29,16 +29,16 @@
     {
       "file": "agents/archivist/status.json",
       "field": "asks",
-      "sha": "51cba48b7d8a",
-      "starts": "incident.conductor@ / Dinis: the two vault keys have NOT been handed o",
-      "full": "incident.conductor@ / Dinis: the two vault keys have NOT been handed over. This session's permission check refused the command that reads the keys back from the creation logs ('Unauthorized Access'), so they could not be put in a session message. They exist only in this container (~/vaults/*.create.log and each clone's .sg_vault/), which is reclaimed when the session ends: until Dinis allows that read (or names another way, such as pki-agent's seal --from-vault to the conductor's key), nobody else can write to either vault. Reading the display vault is unaffected."
+      "sha": "5b4031a8ba4f",
+      "starts": "Dinis (through incident.conductor@): the two vault write keys are held",
+      "full": "Dinis (through incident.conductor@): the two vault write keys are held only in this session. The permission check refused reading them back, so they were never sent, in the clear or sealed. Until Dinis decides the route, only this session can write to either vault; every capture's sha256 and time is in git, so the record survives even if the vaults had to be re-made."
     },
     {
       "file": "agents/sources/status.json",
       "field": "asks",
-      "sha": "c693a9da8b36",
-      "starts": "Dinis / incident.conductor@: the vault key of op6i3jfq is held only in",
-      "full": "Dinis / incident.conductor@: the vault key of op6i3jfq is held only in this session's container. RESTRUCTURE.md says to send it to the conductor by session message; this session's permission check refused a command that read the key from the creation log, so it has not been sent and the read key is not yet published in dataset.json. Say how you want it passed (allow the read here, or the conductor makes the vault and shares a key), and I will re-point the reader."
+      "sha": "15e39866de23",
+      "starts": "Dinis: the key of vault op6i3jfq is held only in (session). This sessi",
+      "full": "Dinis: the key of vault op6i3jfq is held only in (session). This session's permission check refused both reading the key from the creation log and piping `sgit vault show-key` into tools/lane-handover.mjs seal (the sealed handover of SECURITY.md section e); neither was worked around. To hand it to the conductor and publish a read key, a permission rule for that one command is needed, or the conductor makes the vault and this agent writes to it."
     }
   ],
   "history": [
@@ -46,8 +46,19 @@
       "at": "2026-11-11T02:25:22Z",
       "by": "incident.board@web-summit.dinis",
       "change": "card opened from the agents' status files (the same matter from several agents joined in one card)"
+    },
+    {
+      "at": "2026-11-11T02:28:54Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "re-ranked 7 of 26 for Dinis: the list is now sorted by what stands before the launch first, at incident.conductor@'s direction (02:24 UTC)"
+    },
+    {
+      "at": "2026-11-11T02:29:47Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "both agents reworded their lines; the card follows them (the keys are still held only in those two sessions)"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T02:25:22Z"
+  "updated": "2026-11-11T02:29:47Z",
+  "before_launch": true
 }

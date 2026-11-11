@@ -72,6 +72,7 @@ const items = fs.readdirSync(DIR).filter(f => f.endsWith('.json')).sort().map(f 
     if (mail.length) problems.push(`${it.id}: something that looks like an address (${mail.length}): cards carry no contact details`)
     if (/\+?\d[\d ()-]{8,}\d/.test(text.replace(/\d{4}-\d\d-\d\d(T[\d:.]+Z?)?/g, '').replace(/\d\d:\d\d(:\d\d)?/g, '').replace(/"sha":\s*"[0-9a-f]+"/g, '').replace(/\d{1,2} \d{3}/g, ''))) notes.push(`${it.id}: a long number: check it is not a phone number`)
     if (/(bsky\.app\/profile|mastodon|twitter\.com|x\.com|facebook\.com|instagram\.com|linkedin\.com\/in)\//i.test(text)) problems.push(`${it.id}: a link to a personal or social address: write "a public post" and keep the address out`)
+    it.url = `board/items/${it.id}.html`
     it.evidence_resolved = (it.evidence || []).map(resolve)
     for (const e of it.evidence_resolved) if (e.type === 'unresolved') notes.push(`${it.id}: evidence ${e.id} does not resolve`)
     return it
@@ -128,14 +129,18 @@ const index = {
     states: STATE_SAYS, kinds: KIND_SAYS,
     counts: { cards: items.length, by_state: count('state', STATES), by_kind: count('kind', KINDS), waiting_on_dinis: items.filter(i => i.waiting_on === 'Dinis' && openNow(i)).length, asks_to_dinis: dinis.length },
     for_dinis: dinis.map(i => i.id),
+    by_agent: Object.fromEntries(Object.values(agents).map(a => [a.name, { owns: a.owns, raised: a.raised, waited_on: a.waited_on, open: [...new Set([...a.owns, ...a.raised, ...a.waited_on])].filter(id => openNow(byId[id])).length }])),
     agents: Object.values(agents).sort((a, b) => a.name.localeCompare(b.name)),
     not_on_a_card_yet: unfiled,
     cards_whose_source_line_is_gone: stale,
     items
 }
-const tasksJson = { about: 'What a reader could do now for the Storm Charles record: validate, send public data, research. How to send it: contribute.html. Made from board/items/t-*.json.', by: ME, updated: made, how: 'contribute.html', tasks: tasks.map(({ id, title, state, task_type, summary, closes, where_we_look, links, updated_utc }) => ({ id, title, state, task_type, summary, closes, where_we_look: where_we_look || [], helps_close: links || [], updated_utc, page: `board/items/${id}.html` })) }
+const GROUP = { 'send public data': 'data', validate: 'validate', research: 'research' }
+const tasksJson = { about: 'What a reader could do now for the Storm Charles record. One list for the Contribute page (incident.media@) and anyone else: id is the card\'s permanent id on the board, contribute_id the number Contribute prints (C-01 ...; null until incident.media@ gives one). status: open, claimed or done. How to send an answer: contribute.html. Made from board/items/t-*.json.', by: ME, updated: made, how: 'contribute.html', groups: { data: 'Send us data', validate: 'Validate', research: 'Research' },
+    tasks: tasks.sort((a, b) => (a.contribute_id || 'C-99').localeCompare(b.contribute_id || 'C-99') || a.id.localeCompare(b.id)).map(i => ({ id: i.id, contribute_id: i.contribute_id || null, group: GROUP[i.task_type] || 'research', title: i.title, why: i.summary, best_placed: i.best_placed || '', done_when: i.closes, links: [`board/items/${i.id}.html`, ...(i.links || []).map(l => `board/items/${l}.html`)], where_we_look: i.where_we_look || [], helps_close: i.links || [], status: ['done', 'answered'].includes(i.state) ? 'done' : i.claimed_by ? 'claimed' : 'open', state: i.state, waiting_on: i.waiting_on || '', evidence: i.evidence || [], by: i.by, updated: i.updated_utc, page: `board/items/${i.id}.html` })) }
 
 // ---------------------------------------------------------------- the pages, as markdown
+const who = (a, up) => /@web-summit\.dinis$/.test(a || '') ? `[${t(short(a))}](${up}agents/index.html?who=${encodeURIComponent(a)})` : t(short(a))
 const t = s => String(s ?? '').replace(/\|/g, '/').replace(/\[/g, '(').replace(/\]/g, ')').replace(/\s+/g, ' ').trim()   // safe inside a link's text
 const kept = `> Kept by ${ME}, ${new Date(made).toLocaleDateString('en-GB', { timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric' })}, ${made.slice(11, 16)} UTC`
 const cardLine = (i, up) => `- [${t(i.title)}](${up}items/${i.id}.md) · ${i.kind} · **${i.state}**${i.waiting_on ? ` · waiting on ${t(short(i.waiting_on))}` : ''} · ${t(short(i.owner))}`
@@ -176,9 +181,9 @@ summary: Only what waits on Dinis Cruz, most blocking first, each in one plain s
 
 ${kept}
 
-${dinis.length} things wait on you, the one that blocks the most first. Each line is the ask in one sentence; the card behind it says who raised it, what it blocks and what would close it. [The whole board](index.md).
+${dinis.length} things wait on you: first what stands before the launch, then the rest, each group with the most blocking first. Each line is the ask in one sentence; the card behind it says who raised it, what it blocks and what would close it. [The whole board](index.md).
 
-${dinis.map((i, n) => `${n + 1}. **${t(i.title).replace(/[.?]$/, m => m === '?' ? '?' : '')}${/\?$/.test(i.title) ? '' : '.'}** ${t(i.summary)}${i.blocks ? ` *Blocks:* ${t(i.blocks)}` : ''}${i.unblocks.length ? ` *Cards behind it:* ${i.unblocks.map(id => `[${id}](items/${id}.md)`).join(', ')}.` : ''} Raised by ${(i.raised_by || []).map(short).map(t).join(', ') || t(short(i.owner))}. [The card](items/${i.id}.md)`).join('\n')}
+${[['Before the launch', dinis.filter(i => i.before_launch)], ['After that', dinis.filter(i => !i.before_launch)]].filter(g => g[1].length).map(([h, l]) => `## ${h}\n\n${l.map(i => { const n = dinis.indexOf(i); return `${n + 1}. **${t(i.title).replace(/[.?]$/, m => m === '?' ? '?' : '')}${/\?$/.test(i.title) ? '' : '.'}** ${t(i.summary)}${i.blocks ? ` *Blocks:* ${t(i.blocks)}` : ''}${i.unblocks.length ? ` *Cards behind it:* ${i.unblocks.map(id => `[${id}](items/${id}.md)`).join(', ')}.` : ''} Raised by ${(i.raised_by || []).map(short).map(t).join(', ') || t(short(i.owner))}. [The card](items/${i.id}.md)` }).join('\n')}`).join('\n\n')}
 
 ## Agents that say they are blocked
 
@@ -197,7 +202,7 @@ ${kept}
 
 ${tasks.filter(i => !['done', 'answered'].includes(i.state)).length} things a reader could do now. Each helps close a card on [the board](index.md). How to send what you find, and what we publish back: [Contribute](../contribute.md). We take public sources only: an address anyone can open, the time it was published and the time you read it (UTC). No private messages, no contact details, nothing about private people.
 
-${['validate', 'send public data', 'research'].map(ty => { const l = tasks.filter(i => i.task_type === ty && !['done', 'answered'].includes(i.state)); return l.length ? `## ${ty[0].toUpperCase() + ty.slice(1)}\n\n${l.map(i => `- **[${t(i.title)}](items/${i.id}.md)**: ${t(i.summary)} *A good answer:* ${t(i.closes)}`).join('\n')}` : '' }).filter(Boolean).join('\n\n')}
+${['validate', 'send public data', 'research'].map(ty => { const l = tasks.filter(i => i.task_type === ty && !['done', 'answered'].includes(i.state)); return l.length ? `## ${ty[0].toUpperCase() + ty.slice(1)}\n\n${l.map(i => `- **${i.contribute_id ? i.contribute_id + ' · ' : ''}[${t(i.title)}](items/${i.id}.md)**: ${t(i.summary)}${i.best_placed ? ` *Best placed:* ${t(i.best_placed)}.` : ''} *A good answer:* ${t(i.closes)}${i.state === 'blocked' ? ` *(Held: waiting on ${t(short(i.waiting_on))}.)*` : ''}`).join('\n')}` : '' }).filter(Boolean).join('\n\n')}
 
 Not a warning service: for the weather itself, IPMA and ANEPC.
 `
@@ -216,7 +221,7 @@ summary: ${t(i.summary).slice(0, 200)}
 
 ${`> Kept by ${ME}, ${new Date(i.updated_utc).toLocaleDateString('en-GB', { timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric' })}, ${i.updated_utc.slice(11, 16)} UTC`}
 
-**${i.kind}** · state: **${i.state}** (${STATE_SAYS[i.state]})${i.waiting_on ? ` · waiting on **${t(short(i.waiting_on))}**` : ''} · owner: ${t(short(i.owner))}${(i.raised_by || []).length ? ` · raised by ${i.raised_by.map(short).map(t).join(', ')}` : ''} · opened ${hm(i.opened_utc)} UTC · card \`${i.id}\` on [the board](../index.md#${i.id})
+**${i.kind}** · state: **${i.state}** (${STATE_SAYS[i.state]})${i.waiting_on ? ` · waiting on **${who(i.waiting_on, up)}**` : ''} · owner: ${who(i.owner, up)}${(i.raised_by || []).length ? ` · raised by ${i.raised_by.map(a => who(a, up)).join(', ')}` : ''} · opened ${hm(i.opened_utc)} UTC · card \`${i.id}\` on [the board](../index.md#${i.id})
 
 ${t(i.summary)}
 ${i.answer ? `\n## The answer\n\n**${t(i.answer.text)}** (${t(i.answer.label || '')}; recorded ${hm(i.answer.at)} UTC by ${t(short(i.answer.by))})\n\n${(i.answer.evidence || []).map(resolve).map(e => evLine(e, up)).join('\n')}\n` : ''}${i.blocks || i.unblocks.length ? `\n## What it blocks\n\n${t(i.blocks || '')}${i.unblocks.length ? `\n\nCards behind this one:\n\n${i.unblocks.map(l => cardLine(byId[l], '../')).join('\n')}` : ''}\n` : ''}

@@ -21,6 +21,7 @@
     function time(t) { var e = el('time', '', hm(t) + ' UTC'); e.dateTime = t; return e }
     function chip(cls, text) { return el('span', 'bd-chip ' + cls, text) }
     function load(base) { return fetch(base + 'board/index.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('board/index.json: ' + r.status); return r.json() }) }
+    function agentLink(base, a) { return /@web-summit\.dinis$/.test(a || '') ? link(base + 'agents/index.html?who=' + encodeURIComponent(a), short(a)) : el('span', '', short(a)) }
     function itemHref(base, id) { return base + 'board/items/' + id + '.html' }
 
     function evidence(base, e) {
@@ -39,7 +40,7 @@
         var b = el(open ? 'button' : 'a', 'bd-card k-' + it.kind + ' s-' + it.state)
         if (open) { b.type = 'button'; b.addEventListener('click', function () { open(it.id) }) } else b.href = itemHref(base, it.id)
         b.dataset.id = it.id
-        add(b, add(el('span', 'bd-top'), chip('bd-kind', KIND_NAME[it.kind] || it.kind), it.task_type ? chip('bd-type', it.task_type) : null, open ? null : chip('bd-state', it.state)),
+        add(b, add(el('span', 'bd-top'), chip('bd-kind', KIND_NAME[it.kind] || it.kind), it.contribute_id ? chip('bd-type', it.contribute_id) : null, it.task_type ? chip('bd-type', it.task_type) : null, open ? null : chip('bd-state', it.state)),
             el('span', 'bd-title', it.title),
             add(el('span', 'bd-foot'), el('span', 'bd-owner', short(it.owner)), it.waiting_on ? chip('bd-wait' + (it.waiting_on === 'Dinis' ? ' bd-dinis' : ''), 'waiting on ' + short(it.waiting_on)) : null,
                 (it.evidence_resolved || []).length ? el('span', 'bd-n', it.evidence_resolved.length + ' evidence') : null))
@@ -51,7 +52,8 @@
         var d = el('div', 'bd-detail')
         add(d, add(el('p', 'bd-top'), chip('bd-kind', KIND_NAME[it.kind] || it.kind), chip('bd-state s-' + it.state, it.state), it.waiting_on ? chip('bd-wait' + (it.waiting_on === 'Dinis' ? ' bd-dinis' : ''), 'waiting on ' + short(it.waiting_on)) : null),
             el('h2', '', it.title), el('p', 'bd-sum', it.summary))
-        add(d, add(el('p', 'meta'), 'Owner: ' + short(it.owner), (it.raised_by || []).length ? ' · raised by ' + it.raised_by.map(short).join(', ') : '', ' · opened ', time(it.opened_utc), ' · updated ', time(it.updated_utc), ' · ', el('code', '', it.id)))
+        var rb = el('span'); (it.raised_by || []).forEach(function (a, i) { add(rb, i ? ', ' : ' · raised by ', agentLink(base, a)) })
+        add(d, add(el('p', 'meta'), 'Owner: ', agentLink(base, it.owner), rb, ' · opened ', time(it.opened_utc), ' · updated ', time(it.updated_utc), ' · ', el('code', '', it.id)))
         if (it.answer) add(d, el('h3', '', 'The answer'), add(el('p', 'bd-answer'), el('strong', '', it.answer.text), ' ', it.answer.label ? el('span', 'lbl l-' + it.answer.label, it.answer.label) : null))
         if (it.blocks) add(d, el('h3', '', 'What it blocks'), el('p', '', it.blocks))
         if ((it.unblocks || []).length) { var ub = el('div', 'bd-links'); it.unblocks.forEach(function (id) { if (byId[id]) add(ub, cardFace(base, byId[id], open)) }); add(d, el('h3', '', 'Cards behind this one (' + it.unblocks.length + ')'), ub) }
@@ -149,6 +151,7 @@
 
     // ------------------------------------------------------------ the small embeds
     function embed(root) {
+        if (root.dataset.boardDone) return; root.dataset.boardDone = '1'   // safe to load and run more than once
         var base = root.dataset.base || '', what = root.dataset.boardEmbed, who = root.dataset.agent || ''
         load(base).then(function (data) {
             var list, head, more
@@ -166,8 +169,9 @@
         if (!document.querySelector('link[href*="app/board/board.css"]')) {   // an embed brings its own stylesheet
             var any = document.querySelector('[data-board-embed]'); if (any) { var c = document.createElement('link'); c.rel = 'stylesheet'; c.href = (any.dataset.base || '') + 'app/board/board.css'; document.head.appendChild(c) }
         }
-        var b = document.getElementById('board'); if (b) board(b)
+        var b = document.getElementById('board'); if (b && !b.dataset.boardDone) { b.dataset.boardDone = '1'; board(b) }
         Array.prototype.forEach.call(document.querySelectorAll('[data-board-embed]'), embed)
     }
+    window.BoardEmbeds = { scan: start }   // a page that redraws itself can call this after adding [data-board-embed] elements
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start()
 })()
