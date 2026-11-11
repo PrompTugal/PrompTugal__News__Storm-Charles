@@ -1,20 +1,22 @@
 # What changed on Wikipedia since the last read
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 11:49 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 12:50 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
 
-**Read 11 Nov, 11:49 UTC**; the read before was 11 Nov, 10:48 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
+**Read 11 Nov, 12:50 UTC**; the read before was 11 Nov, 11:49 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
 
-## pt: Depressão Charles (article): 1 new revision, 39744 to 39827 bytes
+## en: 2026–27 European windstorm season (section): 1 new revision, 82195 to 82195 bytes (the storm's section: 12198 to 12198)
 
 | UTC | Bytes | Edit summary (the editor's words, CC BY-SA 4.0) | Revision |
 |---|---|---|---|
-| 11 Nov, 11:49 | 39827 | [[Wikipédia:Robôs/robô]]: Arquivamento de 4 URLs | [73422228](https://pt.wikipedia.org/w/index.php?title=Depress%C3%A3o_Charles&oldid=73422228) |
+| 11 Nov, 12:37 | 82195 | /* Storm Charles */ | [1385019325](https://en.wikipedia.org/w/index.php?title=2026%E2%80%9327_European_windstorm_season&oldid=1385019325) |
 
+- **new page found**: vi: Mùa bão ở châu Âu 2026–27 (section)
 
 ## The reads so far
 
 | Read (UTC) | Pages | Changes | Requests | 429 waits |
 |---|---|---|---|---|
+| 11 Nov, 12:50 | 7 | en: new revisions (1); vi: new page found | 64 | 2 |
 | 11 Nov, 11:49 | 6 | pt: new revisions (1) | 54 | 0 |
 | 11 Nov, 10:48 | 6 | pt: new revisions (1); pt: new revisions (1) | 52 | 0 |
 | 11 Nov, 09:54 | 6 | pt: new revisions (2) | 51 | 0 |
