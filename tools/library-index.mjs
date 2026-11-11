@@ -69,15 +69,17 @@ if (args.has('--git')) {
     fs.rmSync(PROV_DIR, { recursive: true, force: true }); fs.mkdirSync(PROV_DIR, { recursive: true })
     for (const x of '0123456789abcdef') {
         const rows = shards[x] || {}, agents = [...new Set(Object.values(rows).flatMap(r => [r.first_by, r.last_by, ...r.agents]))].sort(), ix = a => agents.indexOf(a)
-        fs.writeFileSync(path.join(PROV_DIR, x + '.json'), `{\n "about": ${JSON.stringify(`Who committed each file and when: part ${x} of 16 (files whose path's sha1 begins with ${x}), read from this repository's commits by tools/library-index.mjs --git in the librarian's full clone (CI never reads history). The agent is the commit subject's prefix. A row holds only while the first 16 hex digits of the file's sha256 still match.`)},\n "by": "${ME}",\n "head": "${head}",\n "row": ["sha256, first 16 hex digits", "commits", "first by (index into agents)", "first at", "last by (index)", "last at", "last commit", "every agent (indexes)"],\n "agents": ${JSON.stringify(agents)},\n "files": {\n${Object.entries(rows).sort().map(([f, r]) => `  ${JSON.stringify(f)}: ${JSON.stringify([r.sha256.slice(0, 16), r.commits, ix(r.first_by), r.first_at, ix(r.last_by), r.last_at, r.last_commit, r.agents.map(ix)])}`).join(',\n')}\n }\n}\n`)
+        fs.writeFileSync(path.join(PROV_DIR, x + '.json'), `{\n "about": ${JSON.stringify(`Who committed each file and when: part ${x} of 16 (files whose path's sha1 begins with ${x}), read from this repository's commits by tools/library-index.mjs --git in the librarian's full clone (CI never reads history). The agent is the commit subject's prefix. A row holds only while the first 16 hex digits of the file's sha256 still match.`)},\n "by": "${ME}",\n "row": ["sha256, first 16 hex digits", "commits", "first by (index into agents)", "first at", "last by (index)", "last at", "last commit", "every agent (indexes)"],\n "agents": ${JSON.stringify(agents)},\n "files": {\n${Object.entries(rows).sort().map(([f, r]) => `  ${JSON.stringify(f)}: ${JSON.stringify([r.sha256.slice(0, 16), r.commits, ix(r.first_by), r.first_at, ix(r.last_by), r.last_at, r.last_commit, r.agents.map(ix)])}`).join(',\n')}\n }\n}\n`)
     }
     fs.rmSync(PROV, { force: true })
+    fs.writeFileSync(path.join(PROV_DIR, 'head.json'), JSON.stringify({ about: 'The commit at which the commit record beside this file (0.json to f.json) was last read. Kept apart so that a part whose files did not change stays byte for byte the same.', by: ME, head }, null, 1) + '\n')
     files = listNow(); fileSet = new Set(files)   // the record itself has just changed on disk
 }
 let prov = {}, provHead = ''
+try { provHead = JSON.parse(fs.readFileSync(path.join(PROV_DIR, 'head.json'), 'utf8')).head || '' } catch { }
 for (const x of '0123456789abcdef') {
     try {
-        const p = JSON.parse(fs.readFileSync(path.join(PROV_DIR, x + '.json'), 'utf8')); provHead = p.head || provHead
+        const p = JSON.parse(fs.readFileSync(path.join(PROV_DIR, x + '.json'), 'utf8'))
         for (const [f, r] of Object.entries(p.files || {})) prov[f] = { sha16: r[0], commits: r[1], first_by: p.agents[r[2]] || '', first_at: r[3], last_by: p.agents[r[4]] || '', last_at: r[5], last_commit: r[6], agents: r[7].map(i => p.agents[i]) }
     } catch { }
 }
