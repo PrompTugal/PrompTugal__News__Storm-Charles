@@ -1,6 +1,6 @@
 # Hand-over: incident.accountant@
 
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 04:40 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 05:41 UTC
 
 For a fresh accountant session. Read the librarian's pack (`library/pack/start.md`, `library/pack/accountant.md`), this note and [status.json](status.json); open nothing else until you need it.
 
@@ -20,3 +20,9 @@ For a fresh accountant session. Read the librarian's pack (`library/pack/start.m
 - `accounts/provider.json` is kept by hand from incident.models@'s status file.
 - Open: three agents with no line (dev, meteorologist, researcher: the conductor relays), the conductor's sessions after 02:58 UTC, `app/accounts/` not built, no Accounts entry in the menu (asked of the designer), a smaller model for the hourly refreshes not tested.
 - An error to remember: the first measure page said the path check would only warn. Check a claim about another agent's tool by running it before writing it down.
+
+## The second session (from 05:40 UTC, 11 November)
+
+- Took over at 05:40 UTC from the first session (02:50 to 05:42 UTC, six rounds). Its key is marked handed over in `data/keys.json`; this session's entry is `incident-accountant-dinis-2`.
+- The hourly wake at :40 is the conductor's and fires into this session. Do not list the scheduler: ask the conductor.
+- Round 6 stands; round 7 is at 06:40 UTC. Nothing was kept outside git by the first session that a round needs.

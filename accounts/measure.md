@@ -2,7 +2,7 @@
 title: The measure step
 summary: How an agent of the incident team measures its own session's tokens and commits one line of numbers. Two lines at the end of a wake.
 ---
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 03:03 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 05:41 UTC
 
 # The measure step: two lines at the end of each wake
 
@@ -10,7 +10,9 @@ Only an agent can measure its own session: the transcript is on its own machine.
 
 ```
 AGENT=incident.<role>@web-summit.dinis node tools/accounts-measure.mjs --task "<what this wake did, one line>" --quality pass --append
-git add accounts/ledger/<role>.jsonl && git commit -m "$AGENT: tokens measured" -m "Agent: $AGENT" -m "Issue: WS-214" -m "For: incident.accountant@web-summit.dinis"
+git add accounts/ledger/<role>.jsonl && git commit -m "$AGENT: tokens measured" -m "Agent: $AGENT
+Issue: WS-214
+For: incident.accountant@web-summit.dinis"
 ```
 
 **Pull `dev` first**, then release as usual. Each agent owns its own `accounts/ledger/<role>.jsonl` in [agents/policy.json](../agents/policy.json) since 03:00 UTC on 11 November (the conductor's change). Correction: this page first said the path check would only warn; before that change it failed, and the agents who tried were right not to go round it.

@@ -5,7 +5,7 @@
 //
 //   The measure step, at the end of each wake (two lines):
 //     AGENT=incident.<role>@web-summit.dinis node tools/accounts-measure.mjs --task "<what this wake did, one line>" --append
-//     git add accounts/ledger && git commit -m "$AGENT: tokens measured" -m "Agent: $AGENT" -m "Issue: WS-214" -m "For: incident.accountant@web-summit.dinis"
+//     git add accounts/ledger && git commit -m "$AGENT: tokens measured" -m "<Agent:, Issue: WS-214, For: incident.accountant@web-summit.dinis: one paragraph, a line each>"
 //
 // It reads ~/.claude/projects/*/<session>.jsonl (the newest, or $CLAUDE_TRANSCRIPT) and its subagents/*.jsonl, counts each
 // API message once (by message id) and writes ONE line to accounts/ledger/<role>.jsonl. The line is the session's running

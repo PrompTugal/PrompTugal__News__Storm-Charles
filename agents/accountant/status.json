@@ -1,17 +1,19 @@
 {
   "agent": "incident.accountant@web-summit.dinis",
   "by": "incident.accountant@web-summit.dinis",
-  "updated": "2026-11-11T05:42:00Z",
-  "state": "active: round 6 released: 27 of 30 measured (1.65 billion tokens); eleven agents have handed over to fresh sessions; a fresh accountant session is due (the conductor starts it)",
-  "last_wake": "2026-11-11T05:37:00Z",
+  "updated": "2026-11-11T05:40:48Z",
+  "state": "active: the second session took over at 05:40 UTC (round 6 stands: 27 of 30 measured, 1.65 billion tokens); round 7 at the 06:40 wake",
+  "last_wake": "2026-11-11T05:40:48Z",
   "session": {
-    "started_at": "2026-11-11T02:50:41Z",
+    "id": "session_018yvwtPb9tY4ycm7mpt9Hfs",
+    "started_at": "2026-11-11T05:40:00Z",
     "started_by": "incident.conductor@web-summit.dinis",
     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
     "on_whose_word": "Dinis Cruz",
-    "source": "BRIEF.md, 11 November 2026, ~02:50 UTC"
+    "took_over_from": "session_018yvwtQ4skp9ZXDUQUxvvsV (the first session, 02:50 to 05:42 UTC; its key is marked handed over)",
+    "wake": "hourly at :40, set by the conductor"
   },
-  "key": "sha256:7740387a11cc72c6 (encryption), sha256:ca96a65cc0f549ff (signing); a session key, public half in data/keys.json",
+  "key": "sha256:e1bfc8c65a6afbaa (encryption), sha256:d0b6426e069787a4 (signing); a session key, public half in data/keys.json (incident-accountant-dinis-2)",
   "jobs": [
     "A1: what the project costs, as data: accounts/models.json, agents.json, machine.json, outputs.json, books.json (tools/accounts-build.mjs)",
     "A2: tokens per agent session by the WS-148 method: tools/accounts-measure.mjs, accounts/ledger/<role>.jsonl, accounts/measure.md",
@@ -30,16 +32,16 @@
     "03:04Z round 3: the measure page corrected (the path check failed, it did not warn; the conductor fixed the policy), the provider's balance beside the cap, the conductor's hourly estimate (46% less), nine agents' reported figures, brief 3",
     "03:35Z round 4: 26 ledger files read; the fresh-session saving measured (designer, librarian, observability); cost per row, story and captured page; savings rewritten; brief 4",
     "04:38Z round 5: five more hand-overs measured (graph, studio, weatherwatch, journalist, reporter); the team's tokens per call by hour; brief 5",
-    "05:42Z round 6: three more hand-overs measured (media, meteorology, entities); the conductor at 970 calls; the hourly figures of round 5 corrected; brief 6"
+    "05:42Z round 6: three more hand-overs measured (media, meteorology, entities); the conductor at 970 calls; the hourly figures of round 5 corrected; brief 6",
+    "05:41Z the second session started from the pack and handover.md: a new session key, the first one marked handed over; the measure page's example commit now gives the trailers in one paragraph (the librarian's ask)"
   ],
   "next": [
+    "round 7 at 06:40 UTC: the ledgers since 05:42, brief 7, who hands over next",
     "the three missing lines (dev, meteorologist, researcher)",
     "the nine sessions still above 330,000 tokens a call",
-    "the hand-over to a fresh accountant (agents/accountant/handover.md)",
     "app/accounts/: the books drawn from the JSON"
   ],
   "asks": [
-    "incident.conductor@: start the fresh accountant session (agreed after this round)",
     "incident.designer@: an Accounts entry under Team in the menu (accounts/index.html)",
     "Dinis: the provider's account is out of credit since 02:55 UTC (accounts/provider.json): the 20-dollar cap cannot be used until it is topped up"
   ],
