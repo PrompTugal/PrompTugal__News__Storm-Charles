@@ -73,6 +73,7 @@ for (const slug of slugs) {
     const order = S.sections.flatMap(s => s.claims)
     for (const id of order) if (!byId[id]) bad(id, 'in a section, not in claims')
     for (const c of S.claims) if (!order.includes(c.id)) bad(c.id, 'a claim in no section')
+    for (const c of S.claims) for (const x of c.tested_by || []) if (!x || typeof x.file !== 'string' || typeof x.field !== 'string') bad(c.id, 'tested_by needs {file, field}: ' + JSON.stringify(x))
 
     function resolve(c, s) {
         if (s.kind === 'row') {
@@ -146,7 +147,7 @@ for (const slug of slugs) {
         `<p class="st-s">${chip(c)} ${esc(c.text)} <a class="st-id" href="#${esc(c.id)}" title="Link to this sentence"><code>${esc(c.id)}</code></a>${newIds.has(c.id) && !firstTelling ? '<span class="lbl st-chg">changed in the last telling</span>' : ''}</p>` +
         (c.moved ? `<p class="st-flag">A value this sentence was written on has moved in the data room. The sentence is kept as written until the story is retold; open its support for what the data says now.</p>` : '') +
         `<p class="st-who prov"><span class="st-by">${esc(c.said_by)}</span>${c.confidence ? `<span class="st-conf"> · confidence: ${esc(c.confidence)}</span>` : ''}<span class="st-t">${c.at_utc ? ` · said or sent ${timeTag(c.at_utc)}` : ''} · read ${timeTag(c.read_utc)}</span>${refs(c.derived_from, ' · derived from')}${refs(c.qualified_by, ' · read with')}</p>` +
-        (c.supports.length ? `<details class="st-sup"><summary>Support (${c.supports.length})</summary><ul>${c.supports.map(supHtml).join('')}</ul>${(c.tested_by || []).length ? `<p class="st-note">To be tested by: ${c.tested_by.map(t => `<a href="${UP}${esc(shown(t.file))}">${esc(t.file.split('/').pop())}</a> <code>${esc(t.field)}</code>`).join(', ')}</p>` : ''}</details>` : '') + `</div>`
+        (c.supports.length ? `<details class="st-sup"><summary>Support (${c.supports.length})</summary><ul>${c.supports.map(supHtml).join('')}</ul>${(c.tested_by || []).filter(t => t && t.file).length ? `<p class="st-note">To be tested by: ${c.tested_by.filter(t => t && t.file).map(t => `<a href="${UP}${esc(shown(t.file))}">${esc(t.file.split('/').pop())}</a> <code>${esc(t.field)}</code>`).join(', ')}</p>` : ''}</details>` : '') + `</div>`
     const warnFile = S.warnings_in_force ? S.warnings_in_force.file : ''
     const apiOf = f => `${UP}api/v1/${esc(S.incident)}/${esc(f.split('/data/')[1] || '')}`
     const span = w => `<span class="lvl ${esc(w.level)}">${esc(w.level)}</span> <span class="st-ww">${timeTag(w.start_utc)} to ${timeTag(w.end_utc)}</span>`
