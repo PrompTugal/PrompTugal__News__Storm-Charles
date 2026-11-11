@@ -158,6 +158,18 @@
       out += '<div role="row" class="wxc-row wxc-warn"><div role="rowheader" class="wxc-lab"><b>' + iconFor(ty) + esc(EN[ty] || ty) + '</b><i>IPMA warning</i></div>' + bars + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
     })
 
+    // 1b. decided: the decisions whose source states hours, on the same axis as the warnings (no other site draws this). Ink, never a
+    // warning colour: solid for a fact, outlined for evidence; a decision with a start and no stated end runs on, open, and says so.
+    var dd = decided()
+    if (dd) (dd.G.edges || []).filter(function (e) { return e.label !== 'hypothesis' && e.by !== 'ipma' && e.status === 'happened' && ok(e.effect_from_utc) && dd.nodes[e.by] && !/^madeira|^apram/.test(e.by) }).forEach(function (e) {
+      var a0 = T(e.effect_from_utc), open = !ok(e.effect_to_utc), b0 = open ? D1 : T(e.effect_to_utc) + (/T23:59/.test(e.effect_to_utc) ? 6e4 : 0); if (a0 >= D1 || b0 <= D0) return
+      var a = Math.max(0, Math.round((a0 - D0) / H)), b = Math.min(24, Math.round((b0 - D0) / H)); if (b <= a) return
+      var word = e.state ? String(e.state).replace(/_/g, ' ') : 'decided', hrs = hm(Math.max(a0, D0)) + (open ? ', end not stated' : '–' + hm(e.effect_to_utc))
+      out += '<div role="row" class="wxc-row wxc-warn wxc-dec"><div role="rowheader" class="wxc-lab"><b>' + esc(short(dd.nodes[e.by])) + '</b><i>decided · ' + esc(e.label) + '</i></div>' +
+        '<a role="cell" href="#d-' + esc(e.id) + '" class="wxc-band d-' + esc(e.label) + (open ? ' open' : '') + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc(e.decision + ' (' + hrs + ')') + '"><b>' + esc(word) + '</b> <span>' + hrs + '</span> <em>' + esc(String(e.decision).slice(0, 90)) + '</em></a>' +
+        cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
+    })
+
     // 2. rain: observed (the wettest of the Lisbon stations each hour), then IPMA's automatic forecast (chance and intensity class)
     var rs = (D.rain || {}).stations || [], fr = ((D.forecast || {}).hourly || {}).rows || []
     var fAt = function (h) { var x = D0 + h * H; return fr.filter(function (r) { return T(r.time_utc) === x })[0] }
@@ -193,7 +205,7 @@
     var windW = ws.filter(function (w) { return w.type === 'Vento' }).sort(function (a, b) { return RANK[b.level] - RANK[a.level] })[0]
     return '<section class="wxc-sec" aria-labelledby="wxc-h-today"><h2 id="wxc-h-today">Today, hour by hour <span class="meta">' + esc(longDay(t)) + ', Lisbon</span></h2>' +
       '<div class="wxc-scroll" tabindex="0" role="group" aria-label="Today hour by hour: scrolls sideways"><div class="wxc-grid" role="table" aria-label="Lisbon today by the hour: IPMA warnings, rain, wind, gusts, temperature">' + out + '</div></div>' +
-      '<ul class="wxc-legend"><li><span class="k k-warn"></span>IPMA\'s warning, in IPMA\'s colour, the level written</li><li><span class="k k-obs"></span>observed (a measurement)</li><li><span class="k k-auto"></span>IPMA\'s automatic forecast for one point in the city</li></ul>' +
+      '<ul class="wxc-legend"><li><span class="k k-warn"></span>IPMA\'s warning, in IPMA\'s colour, the level written</li><li><span class="k k-dec"></span>a decision, over the hours its source states (outlined: reported by others)</li><li><span class="k k-obs"></span>observed (a measurement)</li><li><span class="k k-auto"></span>IPMA\'s automatic forecast for one point in the city</li></ul>' +
       '<p class="wxc-note"><b>Why the wind numbers look small beside a ' + (windW ? esc(windW.level) + ' ' : '') + 'wind warning.</b> The hourly numbers are mean wind: the wind averaged over an hour at one station, or a computer model\'s value for one point. A warning is about gusts, and is written by IPMA\'s forecasters for the whole district' + (windW ? ': <span lang="pt">' + esc(String(windW.text_pt).replace(/\.\s*$/, '')) + '</span>' : '') + '. The warning is IPMA\'s official statement for the district.</p>' +
       '<p>' + (D.warn ? prov('warn', 'IPMA warnings', D.warn.read_utc) + ' · ' : '') + (D.rain ? prov('rain', 'IPMA stations, rain', D.rain.read_utc) + ' · ' : '') + (D.stations ? prov('stations', 'IPMA stations, wind', D.stations.read_utc) + ' · ' : '') + (D.airport ? prov('airport', 'Lisbon airport (METAR)', D.airport.read_utc) + ' · ' : '') + (D.forecast && D.forecast.hourly ? prov('forecast', 'IPMA automatic forecast', D.forecast.hourly.read_utc) : '') + '</p></section>'
   }
