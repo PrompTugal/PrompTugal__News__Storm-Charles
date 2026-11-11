@@ -1,13 +1,13 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 11:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online (pt) |
-| Items we read | 107: 105 articles, 2 live, 0 video, 0 opinion |
-| First and last | 9 Nov 16:06 to 11 Nov 10:32 UTC |
-| Whose reporting | 6 with a reporter's by-line, 92 the agency's (Lusa), 9 the desk's, 0 not read; wire share 86% |
+| Items we read | 112: 110 articles, 2 live, 0 video, 0 opinion |
+| First and last | 9 Nov 16:06 to 11 Nov 11:28 UTC |
+| Whose reporting | 6 with a reporter's by-line, 95 the agency's (Lusa), 11 the desk's, 0 not read; wire share 85% |
 | Does best (from the counts) | volume: the most items in the list; first on "ANEPC's public warning on Charles (Aviso 21)"; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 
 ## Against the key moments
@@ -24,8 +24,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 107 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 93 items (the item's by-line names the agency).
+- **Links to primary sources:** 1 of 112 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 96 items (the item's by-line names the agency).
 - **It relayed RTP:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -162,3 +162,8 @@ Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Marilin
 | 11 Nov 10:10 | article | Lusa | [IPMA prevê desagravamento da intensidade do vento ↗](https://www.noticiasaominuto.com/pais/3082279/urgente-mau-tempo-ipma-preve-desagravamento-da-intensidade-do-vento) |
 | 11 Nov 10:23 | article | Lusa | [Madeira sinalizou 210 ocorrências até às 09h00 ↗](https://www.noticiasaominuto.com/pais/3082286/mau-tempo-madeira-sinalizou-210-ocorrencias-com-maior-incidencia-no-funchal-santa-cruz-e-machico-c-audio) |
 | 11 Nov 10:32 | article | Lusa | [Quatro estradas camarárias em Castro Verde encerradas ao trânsito ↗](https://www.noticiasaominuto.com/pais/3082290/mau-tempo-quatro-estradas-camararias-em-castro-verde-encerradas-ao-transito) |
+| 11 Nov 10:46 | article | Lusa | [Santa Cruz, Câmara de Lobos e Machico entre os mais afetados na Madeira ↗](https://www.noticiasaominuto.com/pais/3082304/mau-tempo-santa-cruz-camara-de-lobos-e-machico-entre-os-mais-afetados-na-madeira) |
+| 11 Nov 10:57 | article | Notícias ao Minuto | [7 estratégias para acalmar as crianças durante a tempestade ↗](https://www.noticiasaominuto.com/lifestyle/3082314/7-estrategias-para-acalmar-as-criancas-durante-a-tempestade) |
+| 11 Nov 11:12 | article | Lusa | [Governo insiste que prevenção continua a ser chave. Tempestade não chegou ↗](https://www.noticiasaominuto.com/pais/3082324/mau-tempo-governo-insiste-que-prevencao-continua-a-ser-chave-e-avisa-que-tempestade-ainda-nao-chegou) |
+| 11 Nov 11:26 | article | Notícias ao Minuto | [As imagens da passagem da depressão Charles na Madeira: Veja ↗](https://www.noticiasaominuto.com/pais/3082326/as-imagens-da-passagem-da-depressao-charles-na-madeira-ora-veja) |
+| 11 Nov 11:28 | article | Lusa | [Lisboa com 50 ocorrências durante a noite, sobretudo inundações ↗](https://www.noticiasaominuto.com/pais/3082340/mau-tempo-lisboa-com-50-ocorrencias-durante-a-noite-sobretudo-inundacoes-sapadores) |

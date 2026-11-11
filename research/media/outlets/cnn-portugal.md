@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 11:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 41: 13 articles, 0 live, 28 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 10:35 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 32 not read; wire share 67% |
+| Items we read | 44: 14 articles, 0 live, 30 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 11:27 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 35 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -24,7 +24,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 41 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 44 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -94,3 +94,6 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 10:34 | video | not read | [Tempestade Charles: lojas fechadas e ruas quase desertas em Portalegre. "Não tenho receio", diz com… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-lojas-fechadas-e-ruas-quase-desertas-em-portalegre-nao-tenho-receio-diz-comerciante-que-decidiu-abrir/6af42ee90cf2cb2507aa8401) |
 | 11 Nov 10:34 | video | not read | [Tempestade Charles em Faro: estas são as três horas de maior preocupação ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-em-faro-estas-sao-as-tres-horas-de-maior-preocupacao/6af4356b0cf2cb2507aa8410) |
 | 11 Nov 10:35 | video | not read | [Tempestade na Madeira provocou 210 ocorrências. Autoridades alertam para risco de deslizamentos de… ↗](https://cnnportugal.iol.pt/videos/tempestade-na-madeira-provocou-210-ocorrencias-autoridades-alertam-para-risco-de-deslizamentos-de-terra/6af435480cf2051820fb1432) |
+| 11 Nov 11:06 | article | not read | [IPMA prevê desagravamento da intensidade do vento: "A depressão acabou por mudar as suas caracterís… ↗](https://cnnportugal.iol.pt/depressao-charles/mau-tempo/ipma-preve-desagravamento-da-intensidade-do-vento-a-depressao-acabou-por-mudar-as-suas-caracteristicas/20261111/6af44066d34e9ce6f1b43eac) |
+| 11 Nov 11:27 | video | not read | [Tempestade Charles arrasta pedras gigantes e inunda casas na Madeira. As imagens da destruição ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-arrasta-pedras-gigantes-e-inunda-casas-na-madeira-as-imagens-da-destruicao/6af447c40cf2cb2507aa8443) |
+| 11 Nov 11:27 | video | not read | [Tempestade Charles: mais de 200 voos cancelados no aeroporto de Lisboa durante a manhã ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-mais-de-200-voos-cancelados-no-aeroporto-de-lisboa-durante-a-manha/6af4484d0cf2aafa0453e201) |

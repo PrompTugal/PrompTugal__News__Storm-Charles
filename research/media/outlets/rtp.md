@@ -1,13 +1,13 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 11:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
-| Items we read | 29: 29 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 10:35 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 29 the desk's, 0 not read; wire share 0% |
+| Items we read | 32: 32 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:34 to 11 Nov 11:31 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 32 the desk's, 0 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -26,7 +26,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 29 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 32 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **Notícias ao Minuto relayed it:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -81,3 +81,6 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 09:29 | article | Rádio e Televisão de Portugal | [Depressão Charles divide-se em dois e enfraquece, mas a chuva vai manter-se forte ↗](https://www.rtp.pt/noticias/pais/depressao-charles-divide-se-em-dois-e-enfraquece-mas-a-chuva-vai-manter-se-forte_n1778371) |
 | 11 Nov 09:46 | article | Rádio e Televisão de Portugal | [9h Tempestade Charles está a perder força ↗](https://www.rtp.pt/noticias/noticiario-antena1/9h-tempestade-charles-esta-a-perder-forca_a1_1778372) |
 | 11 Nov 10:35 | article | Rádio e Televisão de Portugal | [Portugal em alerta. IPMA prevê desagravamento das condições de vento mas mantém-se gravidade da pre… ↗](https://www.rtp.pt/noticias/pais/portugal-em-alerta-ipma-preve-desagravamento-das-condicoes-de-vento-mas-mantem-se-gravidade-da-precipitacao_e1778319) |
+| 11 Nov 11:22 | article | Rádio e Televisão de Portugal | [11h Faro é o único distrito que mantém o aviso vermelho ↗](https://www.rtp.pt/noticias/noticiario-antena1/11h-faro-e-o-unico-distrito-que-mantem-o-aviso-vermelho_a1_1778398) |
+| 11 Nov 11:25 | article | Rádio e Televisão de Portugal | [Governo pede prevenção e avisa que pico da tempestade ainda não chegou ↗](https://www.rtp.pt/noticias/politica/governo-pede-prevencao-e-avisa-que-pico-da-tempestade-ainda-nao-chegou_n1778401) |
+| 11 Nov 11:31 | article | Rádio e Televisão de Portugal | ["O mais complicado ainda vai acontecer". Gabinete de crise do Governo segue efeitos da depressão Ch… ↗](https://www.rtp.pt/noticias/pais/o-mais-complicado-ainda-vai-acontecer-gabinete-de-crise-do-governo-segue-efeitos-da-depressao-charles_e1778319) |

@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 345 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 11:37 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 362 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -182,16 +182,16 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 | Outlet | Items | Reporter's by-line | Agency (Lusa) | Wire share | Desk | By-line not read | Items linking a primary source | Bodies linked |
 |---|---|---|---|---|---|---|---|---|
-| Notícias ao Minuto | 107 | 6 | 92 | 86% | 9 | 0 | 1 | IPMA |
-| Observador | 43 | 18 | 8 | 19% | 17 | 0 | 1 | IPMA |
-| CNN Portugal | 41 | 3 | 6 | 67% | 0 | 32 | 1 | Diário da República |
-| RTP | 29 | 0 | 0 | 0% | 29 | 0 | 0 |  |
+| Notícias ao Minuto | 112 | 6 | 95 | 85% | 11 | 0 | 1 | IPMA |
+| Observador | 46 | 21 | 8 | 17% | 17 | 0 | 1 | IPMA |
+| CNN Portugal | 44 | 3 | 6 | 67% | 0 | 35 | 1 | Diário da República |
+| RTP | 32 | 0 | 0 | 0% | 32 | 0 | 0 |  |
 | Expresso | 28 | 0 | 0 | n/a | 0 | 28 | 0 |  |
 | Diário de Notícias | 23 | 21 | 2 | 9% | 0 | 0 | 2 | AMN, Lusoponte |
-| Público | 20 | 13 | 3 | 17% | 2 | 2 | 6 | ANEPC, Diário da República, IPMA |
+| Público | 21 | 14 | 3 | 16% | 2 | 2 | 6 | ANEPC, Diário da República, IPMA |
+| Correio da Manhã | 15 | 1 | 5 | 33% | 9 | 0 | 0 |  |
 | ECO | 14 | 3 | 0 | 0% | 3 | 8 | 0 |  |
-| Correio da Manhã | 14 | 1 | 4 | 29% | 9 | 0 | 0 |  |
-| Jornal Económico | 8 | 1 | 0 | 0% | 0 | 7 | 0 |  |
+| Jornal Económico | 9 | 1 | 0 | 0% | 0 | 8 | 0 |  |
 | Portugal Resident | 5 | 5 | 0 | 0% | 0 | 0 | 0 |  |
 | TEK Notícias (SAPO) | 4 | 4 | 0 | 0% | 0 | 0 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
 | Jornal de Negócios | 2 | 1 | 0 | 0% | 1 | 0 | 1 | Diário da República, Government, IPMA |
@@ -203,9 +203,9 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 Among outlets with at least four items:
 
-- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (30%), Diário de Notícias (9%), CNN Portugal (2%), Observador (2%).
-- **Highest share of items with a reporter's by-line:** Portugal Resident (100%), TEK Notícias (SAPO) (100%), Diário de Notícias (91%), Público (65%), Observador (42%).
-- **The wire underneath:** 115 of 345 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (29%), Diário de Notícias (9%), CNN Portugal (2%), Observador (2%).
+- **Highest share of items with a reporter's by-line:** Portugal Resident (100%), TEK Notícias (SAPO) (100%), Diário de Notícias (91%), Público (67%), Observador (46%).
+- **The wire underneath:** 119 of 362 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -217,9 +217,9 @@ Among outlets with at least four items:
 | RTP | public broadcaster | nothing stands out in this sample |
 | Expresso | weekly, online daily | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
-| Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line; links to the primary sources |
-| ECO | business daily (online) | first on "Web Summit calls off Day 2" |
+| Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
 | Correio da Manhã | daily | video |
+| ECO | business daily (online) | first on "Web Summit calls off Day 2" |
 | Jornal Económico | business weekly, online daily | nothing stands out in this sample |
 | Portugal Resident | English-language weekly in Portugal | own reporting: most items carry a reporter's by-line; coverage in English |
 | TEK Notícias (SAPO) | technology | own reporting: most items carry a reporter's by-line; links to the primary sources |
@@ -235,12 +235,12 @@ Among outlets with at least four items:
 Reporters whose names are printed on the items in the list, by outlet, with the number of items. A by-line is a public professional credit; nothing else about anyone is kept. A wrong or missing by-line: [tell us](../../contribute.md).
 
 - **Notícias ao Minuto:** Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias, Natacha Nunes Costa
-- **Observador:** Carla Jorge de Carvalho (5), Bruno Vieira Amaral (3), Paulo Ferreira (3), Edgar Caetano (2), Filomena Martins (2), José Manuel Fernandes (2), Ana Sanlez, António Moura dos Santos, Helena Garrido, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Leonor Riso, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição, Teresa Freire
+- **Observador:** Carla Jorge de Carvalho (5), Bruno Vieira Amaral (3), Paulo Ferreira (3), Edgar Caetano (2), Filomena Martins (2), José Manuel Fernandes (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Helena Garrido, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição, Teresa Freire
 - **CNN Portugal:** Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva
 - **Diário de Notícias:** Ricardo Simões Ferreira (4), Sofia Fonseca (4), Susete Henriques (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Tomás Gonçalves Pereira
-- **Público:** Adriana Castro, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira
-- **ECO:** Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira
+- **Público:** Adriana Castro, Ana Sá Lopes, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira
 - **Correio da Manhã:** Marta Mariano
+- **ECO:** Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira
 - **Jornal Económico:** José Carlos Lourinho
 - **Portugal Resident:** Natasha Donn (3), Michael Bruxo (2)
 - **TEK Notícias (SAPO):** Gustavo Dias (2), Fátima Caçador, Francisca Andrade

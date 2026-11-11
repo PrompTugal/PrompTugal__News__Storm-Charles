@@ -1,14 +1,14 @@
 # Público: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 11:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 20: 19 articles, 0 live, 0 video, 1 opinion |
-| First and last | 9 Nov 09:04 to 11 Nov 10:39 UTC |
-| Whose reporting | 13 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 17% |
-| Does best (from the counts) | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line; links to the primary sources |
+| Items we read | 21: 20 articles, 0 live, 0 video, 1 opinion |
+| First and last | 9 Nov 09:04 to 11 Nov 10:51 UTC |
+| Whose reporting | 14 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 16% |
+| Does best (from the counts) | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
 
@@ -24,7 +24,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 6 of 20 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 6 of 21 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -48,7 +48,7 @@ Through its own public page: [Ficha técnica ↗](https://www.publico.pt/nos/fic
 
 ## By-lines on this story, as printed
 
-Adriana Castro, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Adriana Castro, Ana Sá Lopes, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -74,3 +74,4 @@ Adriana Castro, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cris
 | 11 Nov 07:14 | article | not read | [Despertador: Charles causou ventos de 130 km/hora na Madeira e dirige-se para o continente ↗](https://www.publico.pt/2026/11/11/newsletter/despertador) |
 | 11 Nov 08:14 | article | Carlos Dias | [Tempestade: Alqueva tem capacidade para receber 900 milhões de metros cúbicos de água ↗](https://www.publico.pt/2026/11/11/azul/noticia/tempestade-alqueva-capacidade-receber-900-milhoes-metros-cubicos-agua-2194513) |
 | 11 Nov 10:39 | article | Andréia Azevedo Soares | [Depressão Charles deverá entrar pela Grande Lisboa, com vento menos intenso ↗](https://www.publico.pt/2026/11/11/azul/noticia/depressao-charles-devera-entrar-lisboa-vento-menos-intenso-2194549) |
+| 11 Nov 10:51 | article | Ana Sá Lopes | [Depressão Charles . Hugo Soares “manda” o Parlamento trabalhar ↗](https://www.publico.pt/2026/11/11/politica/noticia/depressao-charles-hugo-soares-manda-parlamento-trabalhar-2194536) |
