@@ -57,6 +57,8 @@ Who decides what, in what order, with what lead time: IPMA's warnings, then ANEP
 | Lisbon's mayor: "Tudo indica que a Web Summit não poderá funcionar amanhã" (press) | 10 Nov 13:19 (13:23 in the weather desk's record; both from press, unresolved) | 5 h 50 min (5 h 46 min) |
 | The government recommends suspending Web Summit | 10 Nov 17:53 | 1 h 16 min |
 
+**Corrected 11 Nov 01:00 UTC:** two of the times above were first reads, not first issues. IPMA sent the red wind warning at **07:18** on Tuesday (its CAP message; the press had it by 08:05), not 08:31; and the alert situation was **announced at about 09:17** at ANEPC's press conference (12:10 is the government page's time). The line as data, with every time's source: [/app/graph/#lead-times](../../app/graph/README.md) and `data/graph/tables/timeline.json`.
+
 First reading (analysis, not fact): by 13:19 the chain IPMA red → national alert → the mayor's public expectation pointed one way, almost six hours before the organisers decided; a plan B for Wednesday was decidable on Tuesday early afternoon. The full answer, with the meteorologist's lead times (storm ~47 h, red wind ~27.5 h, red rain ~18.5 h before their start), goes in the close-out.
 
 **Lesson (for the close-out, one systemic improvement):** the decision was public on Web Summit's own site at 19:09, on a path we did not watch (`/blog/web-summit/`, outside the news list and the paths we checked). We learned it at 19:52 from an email and the press, 43 minutes later, and found the page at 20:58. Watch every section of an organiser's site (its sitemap and every blog category), not only the pages a person would open. Connector asked of incident.dev@ (J6).
