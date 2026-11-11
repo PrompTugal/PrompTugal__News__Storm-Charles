@@ -1,7 +1,7 @@
 {
  "task": "translate",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T02:21:33Z",
+ "updated": "2026-11-11T02:53:20Z",
  "about": "Translate IPMA's Portuguese warning text to English. There is no reference translation: the check is that every figure of the Portuguese text is in the English one, as digits and no others added, and that each unit is still there (km/h, mm, hPa; 'metros' as metre or meter). A fluent translation that writes 'five' for 5, or drops 13, is wrong here.",
  "fields": [
   "figures",
@@ -297,6 +297,75 @@
    },
    "gold_from": "incidents/2026-11-10-storm-charles/data/weather/cap.json identifier 2.49.0.0.620.0.PT.261105125809.PO-10-6141 description_pt: the figures and units of the Portuguese text itself",
    "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal"
+  },
+  {
+   "id": "p01",
+   "input": "O arquipélago da Madeira irá sentir o agravamento do estado do tempo entre o final do dia de hoje, dia 10, e a manhã de dia 11. Prevê-se chuva persistente e por vezes forte, podendo acumular valores superiores a 100 mm em 12 h em alguns locais, em especial nas regiões montanhosas. O vento irá aumentar de intensidade, soprando de sudoeste com rajadas até 100 km/h, podendo ser da ordem de 140 km/h nas terras altas. A agitação marítima irá igualmente sofrer um agravamento neste período, com ondas de sudoeste com 4 a 5 metros na costa sul da ilha da Madeira.",
+   "gold": {
+    "figures": [
+     "10",
+     "11",
+     "100",
+     "12",
+     "100",
+     "140",
+     "4",
+     "5"
+    ],
+    "units": [
+     "km/h",
+     "mm",
+     "metre"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2\" (a paragraph of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml",
+   "read_utc": "2026-11-10T19:01:07Z"
+  },
+  {
+   "id": "p02",
+   "input": "Com os dados disponíveis de momento, a maior probabilidade será o centro da depressão passar entre Sines e o Cabo Carvoeiro, com o vento a soprar inicialmente do quadrante sul e rodando para o quadrante norte, sendo que no bordo sul da depressão as rajadas serão da ordem dos 100 a 120 km/h, podendo ser localmente até 140 km/h. A precipitação será por vezes forte na generalidade do território, com acumulados que poderão ser superiores a 100 mm em 24h em alguns locais. Prevê-se igualmente ondas de sudoeste com 5 a 7 metros a sul do Cabo Raso durante a tarde de dia 11 e que poderão atingir os 13 metros de altura máxima, diminuindo para 4 a 5 metros no início da noite.",
+   "gold": {
+    "figures": [
+     "100",
+     "120",
+     "140",
+     "100",
+     "24",
+     "5",
+     "7",
+     "11",
+     "13",
+     "4",
+     "5"
+    ],
+    "units": [
+     "km/h",
+     "mm",
+     "metre"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2\" (a paragraph of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml",
+   "read_utc": "2026-11-10T19:01:07Z"
+  },
+  {
+   "id": "p03",
+   "input": "Prevê-se que a depressão BRUNA provoque um aumento significativo da intensidade do vento a partir da madrugada de domingo, dia 8, com rajadas que poderão atingir os 90 km/h em todos os Grupos do Arquipélago. Prevê-se também um aumento da agitação marítima, nas ilhas dos Grupos Central e Oriental, com ondas de noroeste que poderão atingir os 6 metros de altura significativa.",
+   "gold": {
+    "figures": [
+     "8",
+     "90",
+     "6"
+    ],
+    "units": [
+     "km/h",
+     "metre"
+    ]
+   },
+   "gold_from": "incidents/2026-11-10-storm-charles/data/weather/communiques.json \"Depressão BRUNA - Açores - COMUNICADO Nº3\" (a paragraph of text_pt): the figures and units of the Portuguese text itself",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml",
+   "read_utc": "2026-11-10T19:01:07Z"
   }
  ]
 }

@@ -70,9 +70,8 @@ const LEVEL = { Amarelo: 'yellow', Laranja: 'orange', Vermelho: 'red' }
 {
     const strip = t => t.replace(/^analysis \([^)]*\):\s*/i, '').replace(/^\((unofficial[^)]*)\)\s*/i, '').replace(/^(PRIMARY|DECISION|Public):\s*/i, '')
     const ok = r => !/Mastodon|private person/i.test(r.text + r.sources.map(s => s.label).join(' '))
-    const rows = signals.items.filter(ok), H = rows.filter(r => r.label === 'hypothesis').slice(0, 7)
-    const F = rows.filter(r => r.label === 'fact' && r.kind === 'official').slice(-5).concat(rows.filter(r => r.label === 'fact' && r.kind === 'team').slice(-2))
-    const E = rows.filter(r => r.label === 'evidence' && !/["“]/.test(r.text)).slice(-6)
+    // every row that is ours to show: all hypotheses and facts, and the evidence rows that do not quote the press
+    const rows = signals.items.filter(ok), H = rows.filter(r => r.label === 'hypothesis'), F = rows.filter(r => r.label === 'fact'), E = rows.filter(r => r.label === 'evidence' && !/["“]/.test(r.text))
     const items = [...H, ...F, ...E].sort((a, b) => a.id.localeCompare(b.id)).map(r => ({ id: r.id, input: { text: strip(r.text), sources: r.sources.map(s => s.label) }, gold: { label: r.label },
         gold_from: `incidents/${INC}/data/signals.json item ${r.id} (label)`, row: `incidents/${INC}/timeline.html#${r.id}` }))
     out('label', {
@@ -93,8 +92,31 @@ const LEVEL = { Amarelo: 'yellow', Laranja: 'orange', Vermelho: 'red' }
     const units = t => ['km/h', 'mm', 'hPa'].filter(u => t.includes(u)).concat(/metros/.test(t) ? ['metre'] : [])
     const items = [...texts].sort((a, b) => figs(b[0]).length - figs(a[0]).length || a[0].localeCompare(b[0])).slice(0, 20).map(([t, m], i) => ({ id: `t${String(i + 1).padStart(2, '0')}`, input: t,
         gold: { figures: figs(t), units: units(t) }, gold_from: `incidents/${INC}/data/${m.from}: the figures and units of the Portuguese text itself`, source: m.source, read_utc: m.read_utc }))
+    // round 2: whole paragraphs of the communiqués (several figures, dates and units in one text). Sentences that give an hour as '00 UTC' are
+    // left out: a correct translation may write 00:00, and the figures check would call that wrong.
+    const para = (c, from, to) => { const t = c.text_pt, i = t.indexOf(from), j = t.indexOf(to, i); if (i < 0 || j < 0) throw new Error('paragraph not found: ' + from); return t.slice(i, j).trim() }
+    const c3 = comm.items[1]
+    const P = [[c2, 'O arquipélago da Madeira irá sentir', 'Em Portugal continental'], [c2, 'Com os dados disponíveis de momento', 'O arquipélago dos Açores'], [c3, 'Prevê-se que a depressão BRUNA provoque', 'Face a esta situação']]
+    P.forEach(([c, a, b], i) => { const t = para(c, a, b); items.push({ id: `p${String(i + 1).padStart(2, '0')}`, input: t, gold: { figures: figs(t), units: units(t) }, gold_from: `incidents/${INC}/data/weather/communiques.json "${c.title}" (a paragraph of text_pt): the figures and units of the Portuguese text itself`, source: c.source, read_utc: c.read_utc }) })
     out('translate', {
         about: "Translate IPMA's Portuguese warning text to English. There is no reference translation: the check is that every figure of the Portuguese text is in the English one, as digits and no others added, and that each unit is still there (km/h, mm, hPa; 'metros' as metre or meter). A fluent translation that writes 'five' for 5, or drops 13, is wrong here.",
         fields: ['figures', 'units'], scoring: 'the numbers in the answer are the numbers in the source (each as many times, in any order); every unit present; and the answer is not the Portuguese text again', items,
+    })
+}
+
+// ---- (e) warnings-in-force (round 2): all seventeen CAP messages for Lisbon -> the warnings in force at a given hour
+{
+    const M = cap.lisbon_messages.map(m => ({ ...m, areas: ['Lisboa'] })).sort((a, b) => a.sent_utc.localeCompare(b.sent_utc) || a.identifier.localeCompare(b.identifier))
+    const text = M.map(capText).join('\n\n')
+    const PT = { 'Precipitação': 'rain', 'Vento': 'wind', 'Agitação Marítima': 'coastal_event', 'Trovoada': 'thunderstorm' }
+    const hours = ['11T02', '11T05', '11T06', '11T08', '11T09', '11T11', '11T12', '11T17', '11T18', '11T20', '11T21', '12T02', '12T03'].map(h => `2026-11-${h}:00:00Z`)
+    const items = hours.map((at, i) => {
+        const t = Date.parse(at), on = warn.lisbon.filter(w => Date.parse(w.start_utc) <= t && t < Date.parse(w.end_utc))
+        return { id: `f${String(i + 1).padStart(2, '0')}`, at_utc: at, messages: M.length, input: text, gold: { in_force: on.map(w => ({ type: PT[w.type], level: w.level, end_utc: w.end_utc })).sort((a, b) => (a.type + a.end_utc).localeCompare(b.type + b.end_utc)) },
+            gold_from: `incidents/${INC}/data/weather/warnings.json lisbon (IPMA's own warnings API as read ${warn.read_utc}): the warnings whose start is at or before ${at} and whose end is after it`, source: warn.source, read_utc: warn.read_utc }
+    })
+    out('warnings-in-force', {
+        about: "Round 2, harder: all seventeen CAP messages this site holds for the Lisbon district (IPMA, through MeteoAlarm; 5 to 10 November, oldest first, most of them expired), and one question: which warnings are in force at a given hour of 11 or 12 November? The gold is not computed from the messages: it is IPMA's own warnings API as the meteorologist read it (warnings.json), filtered to the hour. A model has to compare times across seventeen messages, not copy a field. The start is not scored (IPMA's API and its CAP message give different starts for a warning already running); type, level and end are.",
+        fields: ['in_force'], scoring: 'the set of warnings (type, level, end) equals the gold set exactly: none missing, none extra', items,
     })
 }

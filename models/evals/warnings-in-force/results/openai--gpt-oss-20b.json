@@ -1,0 +1,137 @@
+{
+ "task": "warnings-in-force",
+ "model": "openai/gpt-oss-20b",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T02:55:37Z",
+ "about": "One model's answers to one task: the first run of each item in full (as parsed; right or wrong per field), the repeat runs as right or wrong with their cost. Raw requests and responses are in the raw store; raw_sha256 names each record.",
+ "items_updated": "2026-11-11T02:53:20Z",
+ "answers": {
+  "f02": {
+   "kind": "answered",
+   "right": true,
+   "fields": {
+    "in_force": true
+   },
+   "answer": {
+    "in_force": [
+     {
+      "type": "coastal_event",
+      "level": "yellow",
+      "end_utc": "2026-11-11T06:00:00Z"
+     },
+     {
+      "type": "rain",
+      "level": "orange",
+      "end_utc": "2026-11-11T09:00:00Z"
+     }
+    ]
+   },
+   "model_served": "openai/gpt-oss-20b",
+   "cost_usd": 0.0003972672,
+   "latency_ms": 17941,
+   "tokens_in": 2554,
+   "tokens_out": 2319,
+   "reasoning_tokens": 1388,
+   "at": "2026-11-11T02:54:43Z",
+   "raw_sha256": "ab5810a2fe19d1a3"
+  },
+  "f01": {
+   "kind": "cut_off",
+   "right": false,
+   "fields": {
+    "in_force": false
+   },
+   "answer": null,
+   "model_served": "openai/gpt-oss-20b",
+   "cost_usd": 0.0006302538,
+   "latency_ms": 36103,
+   "tokens_in": 2554,
+   "tokens_out": 4000,
+   "reasoning_tokens": 2962,
+   "at": "2026-11-11T02:54:43Z",
+   "raw_sha256": "adc0dbea559dc011"
+  },
+  "f04": {
+   "kind": "answered",
+   "right": true,
+   "fields": {
+    "in_force": true
+   },
+   "answer": {
+    "in_force": [
+     {
+      "type": "rain",
+      "level": "orange",
+      "end_utc": "2026-11-11T09:00:00Z"
+     }
+    ]
+   },
+   "model_served": "openai/gpt-oss-20b",
+   "cost_usd": 0.0004698936,
+   "latency_ms": 21914,
+   "tokens_in": 2554,
+   "tokens_out": 2843,
+   "reasoning_tokens": 2076,
+   "at": "2026-11-11T02:55:01Z",
+   "raw_sha256": "2a5cd04208b14a9a"
+  }
+ },
+ "repeats": {
+  "f01": [
+   {
+    "kind": "answered",
+    "right": true,
+    "same_answer": false,
+    "cost_usd": 0.00110476575,
+    "latency_ms": 4775,
+    "tokens_in": 2567,
+    "tokens_out": 3078,
+    "raw_sha256": "4a7a416d1a6a72f6"
+   },
+   {
+    "kind": "answered",
+    "right": true,
+    "same_answer": false,
+    "cost_usd": 0.0004245714,
+    "latency_ms": 21468,
+    "tokens_in": 2554,
+    "tokens_out": 2516,
+    "raw_sha256": "11d9df1f894cda00"
+   }
+  ],
+  "f04": [
+   {
+    "kind": "cut_off",
+    "right": false,
+    "same_answer": false,
+    "cost_usd": 0.0006302538,
+    "latency_ms": 32129,
+    "tokens_in": 2554,
+    "tokens_out": 4000,
+    "raw_sha256": "89fa3667e62e09fd"
+   }
+  ],
+  "f02": [
+   {
+    "kind": "cut_off",
+    "right": false,
+    "same_answer": false,
+    "cost_usd": 0.0006302538,
+    "latency_ms": 31365,
+    "tokens_in": 2554,
+    "tokens_out": 4000,
+    "raw_sha256": "babb1fe0e9771712"
+   },
+   {
+    "kind": "cut_off",
+    "right": false,
+    "same_answer": false,
+    "cost_usd": 0.0006302538,
+    "latency_ms": 30747,
+    "tokens_in": 2554,
+    "tokens_out": 4000,
+    "raw_sha256": "8e46c16e2662564b"
+   }
+  ]
+ }
+}

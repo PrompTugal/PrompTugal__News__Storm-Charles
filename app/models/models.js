@@ -18,11 +18,11 @@
       var r = per(m.id); if (!r) return
       var pct = r.asked ? 100 * r.right / r.asked : 0, kind = m.open_weight ? 'open-weight' : 'commercial'
       var tip = m.id + ' (' + kind + ', ' + m.size + '): ' + r.right + ' of ' + r.asked + ' right; ' + usd(r.cost_per_item_usd) + ' USD per item; median ' + (r.latency_ms_median / 1000).toFixed(1) + ' s'
-      h += '<div class="mdl-row" role="row" title="' + esc(tip) + '"><span class="name" role="cell"><code>' + esc(m.id.split('/')[1]) + '</code> <span class="meta">' + kind + '</span></span>' +
+      h += '<div class="mdl-row" role="row" title="' + esc(tip) + '"><span class="name" role="cell"><code>' + esc(m.id.split('/')[1]) + '</code> <span class="meta">' + kind + (m.reasoning ? '; reasoning: ' + esc(String(m.reasoning).replace(/ \(.*/, '')) : '') + '</span></span>' +
         '<span class="mdl-track" role="cell" tabindex="0" aria-label="' + esc(tip) + '"><span class="mdl-bar' + (m.open_weight ? '' : ' com') + '" style="width:' + pct.toFixed(1) + '%"></span></span>' +
         '<span class="num" role="cell">' + r.right + '/' + r.asked + '</span><span class="num cost" role="cell">' + usd(r.cost_per_item_usd) + '</span></div>'
     })
-    return h + '</div><p class="mdl-legend"><span><i class="mdl-bar"></i>open-weight</span><span><i class="mdl-bar com"></i>commercial (API only)</span><span>bar: share of items with every field right</span></p><p>' + prov('results.json', 'results.json', R.updated) + '</p></section>'
+    return h + '</div><p class="mdl-legend"><span><i class="mdl-bar"></i>open-weight</span><span><i class="mdl-bar com"></i>commercial (API only)</span><span>bar: share of runs with every field right</span></p><p>' + prov('results.json', 'results.json', R.updated) + '</p></section>'
   }
 
   Promise.all([get('results.json'), view === 'index' ? get('ledger-summary.json') : null]).then(function (d) {
@@ -30,13 +30,13 @@
     if (view === 'index') {
       var day = L.days[L.days.length - 1] || { calls: 0, cost_usd: 0, cap_usd: 5, by_model: {} }, items = Object.keys(R.tasks).reduce(function (s, k) { return s + R.tasks[k].items }, 0)
       var tile = function (b, t, s) { return '<div class="wx-tile"><b>' + esc(b) + '</b><p>' + esc(t) + '</p><p class="meta">' + s + '</p></div>' }
-      h += '<div class="mdl-tiles">' + tile(day.calls, 'model calls on ' + day.day, prov('ledger-summary.json', 'the ledger\'s summary', L.updated)) +
+      h += '<div class="mdl-tiles">' + tile((day.by_status && day.by_status.ok ? day.by_status.ok.calls : day.calls), 'answered model calls on ' + day.day, prov('ledger-summary.json', 'the ledger\'s summary', L.updated)) +
         tile(Object.keys(day.by_model).length, 'third-party models called', prov('ledger-summary.json', 'the ledger\'s summary', L.updated)) +
         tile(usd(day.cost_usd) + ' USD', 'spent, of a ' + day.cap_usd + ' USD daily cap', prov('ledger-summary.json', 'the ledger\'s summary', L.updated)) +
         tile(items, 'checkable items in ' + Object.keys(R.tasks).length + ' tasks', prov('results.json', 'results.json', R.updated)) + '</div>'
-      h += rows('All four tasks together', 'Each model\'s right answers over every item it was asked. A measurement on small samples, not a ranking to quote.', R, R.models, function (id) { return R.overall[id] })
+      h += rows('All tasks together', 'Each row\'s right runs over every run it was asked (an item asked three times counts three; rows were not all asked the same items: round 2 is partial). A measurement on small samples, not a ranking to quote.', R, R.models, function (id) { return R.overall[id] })
     } else if (R.tasks[task]) {
-      h += rows(R.tasks[task].title, R.tasks[task].items + ' items; an item is right when every scored field is. Scoring: ' + esc(R.tasks[task].scoring) + '.', R, R.models, function (id) { return R.tasks[task].models[id] })
+      h += rows(R.tasks[task].title, R.tasks[task].items + ' items; a run is right when every scored field is. Scoring: ' + esc(R.tasks[task].scoring) + '.', R, R.models, function (id) { return R.tasks[task].models[id] })
     }
     el.innerHTML = h
   }).catch(function (e) { el.insertAdjacentHTML('beforeend', '<p class="meta">The chart could not be drawn (' + esc(e.message) + '); the tables below hold the same figures.</p>') })

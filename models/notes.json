@@ -1,9 +1,9 @@
 {
- "about": "The hand-written parts of models/: what each task takes and is scored against, and this agent's reading of the first round. The reading is a hypothesis from small samples (67 items); tools/models-report.mjs puts it on the pages beside the figures.",
+ "about": "The hand-written parts of models/: what each task takes and is scored against, and this agent's reading. The reading is a hypothesis from small samples; tools/models-report.mjs puts it on the pages beside the figures.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T03:00:00Z",
+ "updated": "2026-11-11T03:05:00Z",
  "label": "hypothesis",
- "how_to_read": "With 10 to 20 items a task, one item is 5 to 10 points: a model at 17 of 20 and one at 16 of 20 are not told apart by this. What the round does show: the first task is too easy to separate anything (every model, every item); the smallest models fall away as soon as a rule has to be applied rather than a field copied; and the price for the same answers differs by a factor of about a hundred, mostly because some models reason at length by default.",
+ "how_to_read": "With 10 to 20 items a task, one item is 5 to 10 points: a model at 17 of 20 and one at 16 of 20 are not told apart by this. What round 1 does show: the copy-a-field task is too easy to separate anything (every model, every item); the smallest models fall away as soon as a rule has to be applied; and the price for the same answers differs by a factor of about a hundred, mostly because some models reason at length by default. **Round 2 is partial.** Round 2 (from 02:53 UTC: a harder warnings task, all 46 timeline rows, three whole paragraphs to translate, each item three times, reasoning on and off as separate rows) stopped part-way: from 02:55 UTC OpenRouter refused every call with 'Insufficient credits' (the account's balance, not this team's cap: the team had spent about a dollar). Refused calls are not answers and are not in the results. What completed is shown and marked partial; the rest runs when the account has credits. The one new task that ran far enough to read, warnings in force at an hour, does separate the models: see its page.",
  "tasks": {
   "extract-warning": {
    "input": "An IPMA CAP message (event, onset, expires, area and description in Portuguese), as kept in `weather/cap.json`",
@@ -24,6 +24,11 @@
    "input": "IPMA's Portuguese warning text, or one sentence of its communiqué no. 2 (`weather/cap.json`, `warnings.json`, `communiques.json`)",
    "gold": "The figures and units of the Portuguese text itself; there is no reference translation",
    "reading": "Nine of thirteen models kept every figure and unit in all 20 texts, the 4-billion-parameter one among them. The failures were not mistranslations: one small model answered with nested JSON instead of a sentence (0 of 20 by our format rule, though the figures were in it), and the models that reason by default ran out of 4,000 tokens before answering on some of the longer sentences. What this check cannot see: whether the English is right. A wrong word with the right numbers passes. That needs a second check (a back-translation compared by a person, or IPMA's own English pages where they exist)."
+  },
+  "warnings-in-force": {
+   "input": "All seventeen CAP messages held for the Lisbon district, oldest first, and one hour of 11 or 12 November (`weather/cap.json`)",
+   "gold": "The warnings in force at that hour by IPMA's own warnings API as read (`weather/warnings.json`): type, level, end",
+   "reading": "Partial: the account ran out of credits while this task was running, so only three rows have all 13 items three times, and several have a handful. What there is: this task separates models that the copy-a-field task could not. `google/gemma-4-31b-it` got the same 11 of 13 in each of three runs; `meta-llama/llama-4-maverick`, its equal on every round-1 task, got 1 or 2 of 13; the small models got none. Where a row was asked with reasoning on, it did better than the same model with it off (DeepSeek V4.1 Flash 11 of 11 on, 5 of the 8 items it reached off; Gemma 4 10 of 10 on) at three to four times the price per item and 7 to 23 seconds instead of 1 to 2. These are counts from an unfinished run: enough to say the task is worth finishing, not to rank."
   }
  },
  "use": [
@@ -50,7 +55,7 @@
   {
    "job": "Anything in a loop, every few minutes",
    "pick": "not the models that reason by default (`qwen/qwen3.5-397b-a17b`, `mistralai/mistral-large-4-0`, `qwen/qwen3.5-9b`) at their default settings:",
-   "why": "for the same answers they took 10 to 30 seconds an item and the two large ones cost more than the other eleven models together. Asked not to reason (the rows marked `#reasoning-off`), the two Qwen models cost about a fifteenth as much and did as well or better on extraction and translation (the small one went from 15 to 20 of 20 on translation, having stopped running out of tokens), and worse on labelling (16 to 12 and 12 to 10 of 20): the reasoning buys something only where a rule has to be weighed. Mistral's provider refused the setting."
+   "why": "for the same answers they took 10 to 30 seconds an item and the two large ones cost more than the other eleven models together. Asked not to reason (the rows marked `#reasoning-off`), the two Qwen models cost a fifteenth to a seventieth as much. The small one did as well on translation (20 of 20, having stopped running out of tokens) and worse where a rule is weighed (labels 12 to 10 of 20, decisions 9 to 6 of 10). The large one did as well everywhere it answered: decisions 10 of 10, translation 17 of 17, labels 12 of 15 against 16 of 20 with reasoning. **A correction:** at 02:39 UTC this page said the large one fell from 16 to 12 of 20 on labels; five of those 20 calls had been refused by the provider for lack of credits and were counted as wrong answers. They are now left out. Mistral Large 4, GPT-OSS 20B and Gemini 3.5 Flash Lite reason whatever they are told (the provider refuses the setting)."
   },
   {
    "job": "What other sources and answer engines say (the shadow report)",
@@ -59,7 +64,7 @@
   }
  ],
  "own_data": "The label task doubles as a check of the timeline, and it found a gap in our labels rather than a wrong label: on three rows most models disagree with the lead's label, and all three are things we counted or observed ourselves (s-1110T2358, s-1111T0015, s-1110T2153). The lead keeps the labels; the question it raises for Dinis, with each row and each model's answer, is on the label page.",
- "more_would_buy": "**The budget.** This agent planned at most 2 of the day's 5 US dollars and the first round used about 0.72. What more would buy: the whole round again costs about 0.70 as run, or about 0.15 without the two models that reason at length. So 1 more dollar buys the harder versions of all four tasks (three to four times the items) on the eleven cheaper models; 5 dollars buys those on every model plus each item three times over, which is what turns '17 of 20' into a figure with an error bar; a frontier commercial model on the full set is about 0.50 to 2 dollars a round on its own.",
+ "more_would_buy": "**The budget.** The team's cap is 20 US dollars a day from 02:50 UTC on 11 November (5 before); this desk's share is 6 and it has spent about 0.87. Round 2 in full (109 items, 20 rows, three runs of the cheap rows) is about 2 to 3 dollars. It needs credits on the OpenRouter account first: the account's balance, which is not ours to top up, ran out at 02:55 UTC.",
  "which_about": "For the other agents: which model to call for which job on this site, from round 1. Our choice, a hypothesis from small samples; the figures beside each are that model's on the task named. Every call through tools/models-ask.mjs or tools/llm.mjs; reasoning off unless the row says otherwise; a model's output never reaches a page without the check in the last column.",
  "which": [
   {
@@ -101,7 +106,7 @@
    "job": "The same, when the row is hard and a few seconds do not matter",
    "task": "label",
    "model": "deepseek/deepseek-v4.1-flash",
-   "use": "`deepseek/deepseek-v4.1-flash`, reasoning on",
+   "use": "`deepseek/deepseek-v4.1-flash`, reasoning on (its default)",
    "check": "as above. Reasoning on is what it costs here: about twenty times the price of the row above for the same 17 of 20"
   }
  ],
@@ -114,5 +119,22 @@
    "s-1111T0015",
    "s-1110T2153"
   ]
- }
+ },
+ "per_100": "So a second reader on every row of a 100-row timeline costs under one US cent on the two large open-weight models that answer without reasoning (Gemma 4 31B, Llama 4 Maverick), and 30 to 60 cents on the two that reason at length by default. Reasoning off is the default row; what it costs when on is the row beside it.",
+ "per_model": {
+  "google/gemma-3-4b-it": "Translation at volume and nothing else. It kept every figure in all 20 warning texts for 0.0005 US dollars per 100, and copied CAP fields perfectly; it got 8 of 20 labels and 3 of 10 decisions (it invents hours and deciders), and none of the harder warnings items it reached. A 4-billion-parameter model: usable where a mechanical check (the figures check) stands behind every output.",
+  "openai/gpt-oss-20b": "A reasonable small model for extraction where a second model checks it: 9 of 10 decisions, 20 of 20 translations, 15 of 20 labels. It always reasons (the provider will not turn it off), so it is slower than its size suggests (2 to 20 seconds), and on the harder warnings task it ran out of tokens on 4 of the 8 calls it got to make. Apache 2.0, so it could be run on our own machine: the one small model here where that is both allowed without conditions and worth testing.",
+  "mistralai/ministral-8b-2512": "Not for our jobs as asked. It answers fast and cheaply but did not follow the output format on translation (nested JSON instead of a sentence: 0 of 20 by our rule, though the figures were there), invented hours on two decisions, and got none of the 13 harder warnings items in any of three runs.",
+  "qwen/qwen3.5-9b": "With reasoning off: translation only (20 of 20). With reasoning on it is better where a rule is weighed (decisions 9 of 10 against 6) but takes 20 to 30 seconds an item and runs out of tokens on longer texts. For the same money and time a larger model that does not reason does better.",
+  "google/gemma-4-31b-it": "Our default open-weight model for this site's jobs. 10 of 10 decisions, 20 of 20 translations, 17 of 20 labels, and the only row to finish the harder warnings task well without reasoning (11 of 13, the same in three runs), at about a third of a cent per 100 items and under 2 seconds. Apache 2.0. Every output still passes its check (a second model, the figures check) before use.",
+  "meta-llama/llama-4-maverick": "Equal to Gemma 4 on the round-1 tasks (10 of 10, 20 of 20, 17 of 20) and fast, so a good second reader beside it. But on the harder warnings task (compare times across seventeen messages) it got 1 or 2 of 13: not for anything that needs several records weighed at once. Meta's own licence, not a standard open-source one.",
+  "deepseek/deepseek-v4.1-flash": "The open-weight model to call when a row or a text is hard and a few seconds do not matter: with reasoning on (its default) it got 10 of 10 decisions, 20 of 20 translations, 17 of 20 labels and all 11 of the harder warnings items it reached. That costs about twenty times Gemma 4 per label. With reasoning off it was asked only part of one task before the credits ran out. MIT licence.",
+  "qwen/qwen3.5-397b-a17b": "Only with reasoning off. At its default it reasons at great length: the dearest row here (half a US cent an item, 10 to 25 seconds) and it ran out of tokens on 4 of 20 translations. With reasoning off it matched the best on decisions (10 of 10) and translation (17 of 17 answered) at a fourteenth to a seventieth of the price. Nothing it does here is not done as well by Gemma 4 for less.",
+  "mistralai/mistral-large-4-0": "Accurate (10 of 10 decisions, 17 of 20 labels, 19 of 20 translations) and dear for it: it reasons on every call and the provider refuses to turn that off, so it cost about a third of a US cent an item and 5 to 7 seconds. No job here needs it over Gemma 4 or DeepSeek. Its licence is Mistral's own: open weights, with conditions for anyone selling it as a service.",
+  "openai/gpt-6-luna": "A cheap commercial second reader: 20 of 20 translations, 16 of 20 labels, 9 of 10 decisions (it named the Government as the decider of Web Summit's own decision), and 8 of the 9 harder warnings items it reached. About the price of the open-weight models. No reason to prefer it to them here, and no reason to avoid it as the second opinion from a different maker.",
+  "google/gemini-3.5-flash-lite": "The commercial model we would pair with Gemma 4 as the second opinion on decisions: 10 of 10, 20 of 20 translations, 17 of 20 labels, under a second. It always reasons a little (the provider will not turn it off). It was not reached on the harder task before the credits ran out.",
+  "anthropic/claude-haiku-5.5": "Accurate on extraction and translation (10 of 10, 20 of 20) and the most cautious on labels (15 of 20: it calls our own checks evidence). A sound second reader at about a cent per 100 rows. One harder warnings item reached, right in each of three runs: too little to say more.",
+  "openai/gpt-6.1-terra": "The largest commercial model here, and on these small jobs no better than the cheap ones (10 of 10, 20 of 20, 16 of 20) at seven to ten times their price. Its place would be the tasks that are still hard for the others; the harder task did not reach it before the credits ran out."
+ },
+ "round_2": "Round 2 (from 02:53 UTC: a harder warnings task, all 46 timeline rows, three whole paragraphs to translate, each item three times, reasoning on and off as separate rows) stopped part-way: from 02:55 UTC OpenRouter refused every call with 'Insufficient credits' (the account's balance, not this team's cap: the team had spent about a dollar). Refused calls are not answers and are not in the results. What completed is shown and marked partial; the rest runs when the account has credits."
 }

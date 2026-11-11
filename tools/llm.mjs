@@ -6,7 +6,7 @@
 //   - ONE LEDGER LINE per call goes to <INCIDENT_LEDGER_DIR, default ~/.incident-ledger>/<UTC date>.jsonl, not git: when, task, agent, provider,
 //     model asked and served, tokens in and out, the cost the provider reported, latency, status, the day's cap, and the raw
 //     record's name and sha256. No prompt or answer text in the ledger: that stays in the raw store (press text may not be ours to publish);
-//   - a DAILY CAP (LLM_DAILY_CAP_USD, default 5): a call is refused, and the refusal recorded, once the day's ledger reaches it.
+//   - a DAILY CAP (LLM_DAILY_CAP_USD, default 20 from 11 November; each agent's share of it in models/budgets.json): a call is refused, and the refusal recorded, once the day's ledger reaches it.
 // Key: OPEN_ROUTER_KEY from the environment only (as admin/tools/xray-search.mjs). Until Dinis adds it (ROADMAP question 2), run
 // with --mock (a canned answer, no network) or a dummy key (the call is made, refused 401, and recorded as an error).
 // A prototype until the incident site's repository exists; then it moves there with the raw store on the data lane (J2).
@@ -26,7 +26,12 @@ const REPO = path.resolve(HERE, '..')
 // estate's agents keep out of what they push; until the vault exists (J2) it lives beside the raw store
 const LEDGER_DIR = process.env.INCIDENT_LEDGER_DIR || path.join(os.homedir(), '.incident-ledger')
 const RAW_DIR = process.env.INCIDENT_RAW_DIR || path.join(os.homedir(), '.incident-raw')
-const CAP = +(process.env.LLM_DAILY_CAP_USD || 5)
+// the team's daily cap: 20 US dollars from 11 November ~02:50 UTC (Dinis, BRIEF.md: "you can use up to $20 in budget"); 5 before. The
+// ledger lives in each agent's own session, so a session can only count its own lines: the team's cap is kept by giving each agent a
+// share (models/budgets.json, shares that sum to the cap or less) and refusing an agent's call once its own lines reach its share.
+const BUDGETS = (() => { try { return JSON.parse(fs.readFileSync(path.join(REPO, 'models', 'budgets.json'), 'utf8')) } catch { return {} } })()
+const CAP = +(process.env.LLM_DAILY_CAP_USD || BUDGETS.team_cap_usd || 20)
+export const shareOf = agent => BUDGETS.agents?.[agent]?.usd ?? BUDGETS.any_other_agent_usd ?? null
 const DEFAULT_MODEL = process.env.LLM_MODEL || ''   // no model named in the code: the caller names it (--model, LLM_MODEL or model:)
 const PROVIDERS = {
     openrouter: { url: 'https://openrouter.ai/api/v1/chat/completions', key: () => process.env.OPEN_ROUTER_KEY || process.env.OPENROUTER_API_KEY }   // either name (incident.shadow@'s ask, 02:40Z),
@@ -63,6 +68,7 @@ export async function call({ task, agent, model = DEFAULT_MODEL, messages, max_t
         const line = { ...base, status: 'refused_cap', spent_today_usd: +spent.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }
         appendLedger(line); return { text: null, line, response: null }
     }
+    if (budget_usd == null) budget_usd = shareOf(agent)   // the agent's share of the day, unless the caller sets a smaller one
     if (!mock && budget_usd != null) {
         const mine = spentBy(agent)
         if (mine >= budget_usd) { const line = { ...base, status: 'refused_budget', budget_usd, spent_by_agent_usd: +mine.toFixed(4), tokens_in: 0, tokens_out: 0, cost_usd: 0, latency_ms: 0 }; appendLedger(line); return { text: null, line, response: null } }

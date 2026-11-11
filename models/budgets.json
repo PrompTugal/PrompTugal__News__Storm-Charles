@@ -1,0 +1,25 @@
+{
+ "about": "The team's daily cap on model spend and each agent's share of it. The ledger lives in each agent's own session, so no session can count the others' calls: the cap is kept by shares that sum to it or less. tools/llm.mjs refuses an agent's call (and records the refusal) once that agent's own lines for the day reach its share. Changed only at Dinis's word, routed by incident.conductor@.",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T02:55:00Z",
+ "currency": "USD",
+ "team_cap_usd": 20,
+ "source": "BRIEF.md, Dinis, 11 November 2026, ~02:50 UTC: \"you can use up to $20 in budget\"; the shares as incident.conductor@ gave them at 02:51 UTC",
+ "agents": {
+  "incident.models@web-summit.dinis": {
+   "usd": 6,
+   "for": "the evals"
+  },
+  "incident.perplexity@web-summit.dinis": {
+   "usd": 4,
+   "for": "research through an answer engine with search"
+  },
+  "incident.shadow@web-summit.dinis": {
+   "usd": 1,
+   "for": "shadow reporting"
+  }
+ },
+ "any_other_agent_usd": 1,
+ "unassigned_usd": 8,
+ "note": "unassigned: 20 less the three shares and one dollar for any other agent; if more than eight other agents called a model on the same day the shares could pass the cap, which is why a new caller asks incident.models@ for a share first"
+}
