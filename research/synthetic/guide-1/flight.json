@@ -1,0 +1,164 @@
+{
+ "by": "incident.synthetic@web-summit.dinis",
+ "updated": "2026-11-11T11:53:15Z",
+ "label": "Invented person; not user research",
+ "persona": "flight",
+ "run": "guide-1",
+ "start": "/guide/",
+ "version_seen": "v0.1.983",
+ "steps": [
+  {
+   "n": 1,
+   "url": "/guide/",
+   "what": "Banner: RED rain warning until 18:00 UTC, orange wind; menu item '2 I have a flight' on first screen",
+   "seconds": 4,
+   "px": 446
+  },
+  {
+   "n": 2,
+   "url": "/guide/#flight",
+   "what": "'Check with your airline'; ANA limited, 208 cancelled at Lisbon by 09:20 (EVIDENCE, read 10:34 UTC); TAP rebooking (read 01:50 UTC)",
+   "seconds": 15,
+   "px": 1794
+  },
+  {
+   "n": 3,
+   "url": "/guide/#flight",
+   "what": "Airport's own board linked, not quoted (bot check)",
+   "seconds": 4,
+   "px": 2211
+  },
+  {
+   "n": 4,
+   "url": "/guide/#around",
+   "what": "Looks for airport access: Metro row about Thursday; bridges and tunnels running (read 02:42/06:35 UTC); no airport road or metro-to-airport row",
+   "seconds": 15,
+   "px": 2624
+  },
+  {
+   "n": 5,
+   "url": "https://www.aeroportolisboa.pt/",
+   "what": "Leaves the site for the airport board",
+   "seconds": 5,
+   "px": 2211
+  },
+  {
+   "n": 6,
+   "url": "/transport/",
+   "what": "Second visit via Deeper: '38 airline departures seen since 06:25 UTC' FACT, updated 11:38 UTC",
+   "seconds": 20,
+   "px": 604
+  }
+ ],
+ "understood_10s": "A red rain warning is in force for Lisbon until 18:00 UTC and there is a flight section one tap away.",
+ "understood_1min": "Lisbon airport is reported limited (208 cancellations by 09:20, press, read 10:34 UTC); only the airline can say about her flight; bridges and tunnels were reported running overnight; nothing on the road or metro to the airport.",
+ "looked_for": [
+  {
+   "what": "Is my flight going?",
+   "result": "partly",
+   "where": "/guide/#flight 1839-2211 px",
+   "seconds": 19,
+   "taps": 1
+  },
+  {
+   "what": "What does the airport say?",
+   "result": "partly",
+   "where": "/guide/#flight 1951 px (via press), 2211 px (board linked, not quoted)",
+   "seconds": 23,
+   "taps": 1
+  },
+  {
+   "what": "Can I get to the airport / is the road open?",
+   "result": "not found",
+   "where": "/guide/#around 2624-3230 px",
+   "seconds": 38,
+   "taps": 1
+  }
+ ],
+ "misread": [
+  "'Lisbon airport (ANA) limited' taken as ANA's own words; it is a CNN Portugal report labelled EVIDENCE after the text",
+  "'by 09:20' has no time zone",
+  "Metro row 'not announced ... Thursday' read as Metro not running today",
+  "Bridges 'running' read as current; read at 02:42 UTC",
+  "TAP rebooking read as latest; read at 01:50 UTC"
+ ],
+ "not_found": [
+  "Airport access: metro red line to Aeroporto, airport road, taxis at LIS",
+  "OpenSky departures count on the guide's flight card (only on /transport/, 2 taps)",
+  "A last-updated time for the flight section"
+ ],
+ "advice_like": [
+  {
+   "quote": "Check with your airline. Only your airline can say whether your flight goes.",
+   "px": 1839
+  },
+  {
+   "quote": "go to the operator before you set off",
+   "px": 2547
+  },
+  {
+   "quote": "Ask the place itself.",
+   "px": 5265
+  }
+ ],
+ "words_not_understood": [
+  "ANA",
+  "limited (as a status)",
+  "EVIDENCE vs FACT",
+  "Deeper"
+ ],
+ "would_act": "Gets in the taxi and checks her airline app; would act with more confidence if the guide showed departures seen and the airport access status with times.",
+ "score": 3,
+ "score_reason": "Flight section is one tap and honest, but airport access is absent and the freshest flight signal is buried two taps deep.",
+ "findings": [
+  {
+   "class": "costly",
+   "what": "No airport-access row (road, metro red line, taxis at LIS)",
+   "where": "/guide/#around 2451-3500 px",
+   "measure": "not found at 38 s",
+   "change": "Add 'To the airport' as stated by the operators, or 'not stated in what we have read'"
+  },
+  {
+   "class": "costly",
+   "what": "OpenSky departures count not on the guide's flight card",
+   "where": "/transport/ 604 px",
+   "measure": "2 taps, about 20 s",
+   "change": "Show 'N airline departures seen since HH:MM UTC (OpenSky), updated HH:MM' in #flight"
+  },
+  {
+   "class": "minor",
+   "what": "ANA row reads as ANA's own word",
+   "where": "/guide/#flight 1951 px",
+   "measure": "EVIDENCE pill after two lines",
+   "change": "Lead with the source or put the label first"
+  },
+  {
+   "class": "minor",
+   "what": "'by 09:20' without time zone",
+   "where": "/guide/#flight 1951 px",
+   "measure": "next to 'read 10:34 UTC'",
+   "change": "'by 09:20 UTC'"
+  },
+  {
+   "class": "minor",
+   "what": "Metro row is about Thursday, reads as not running today",
+   "where": "/guide/#around 2624 px",
+   "measure": "misread at a glance",
+   "change": "Today's Metro status first; Thursday on its own line"
+  },
+  {
+   "class": "minor",
+   "what": "Old reads look current",
+   "where": "/guide/#flight 2070, #around 3111 px",
+   "measure": "read 9-10 h earlier",
+   "change": "Mark reads older than ~6 h"
+  },
+  {
+   "class": "held",
+   "what": "Imperatives in the site's voice",
+   "where": "1839, 2547 px",
+   "measure": "3 instances",
+   "change": "Editor's call: attribute or keep as referral"
+  }
+ ]
+}

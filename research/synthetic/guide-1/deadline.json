@@ -1,0 +1,58 @@
+{
+  "by": "incident.synthetic@web-summit.dinis",
+  "updated": "2026-11-11T11:53:02Z",
+  "label": "Invented person; not user research",
+  "persona": "deadline",
+  "run": "guide-1",
+  "start": "/guide/",
+  "version_seen": "v0.1.982",
+  "device": "mobile 390x664",
+  "steps": [
+    {"url": "/guide/", "what": "headline: RED rain until 18:00 UTC, orange wind; IPMA read 11:26 UTC", "seconds": 5, "px": 170},
+    {"url": "/guide/#now-detail", "what": "IPMA levels in IPMA's words; government alert situation FACT", "seconds": 20, "px": 1333},
+    {"url": "/guide/#flight", "what": "208 cancelled at Lisbon by 09:20 (EVIDENCE, cnnportugal, read 10:34)", "seconds": 10, "px": 1951},
+    {"url": "/guide/#around", "what": "operator rows, mostly EVIDENCE, read 00:33-06:35 UTC; Metro row misread", "seconds": 30, "px": 2651},
+    {"url": "/guide/#websummit", "what": "Day 3 aims to proceed (tagged running); Day 2 cancelled; not-yet-announced list", "seconds": 25, "px": 6022},
+    {"url": "/guide/#press", "what": "one paragraph; cite the source, and us for the record; no changelog", "seconds": 10, "px": 8784},
+    {"url": "/incidents/2026-11-10-storm-charles/timeline.html", "what": "top rows: IPMA warnings unchanged at 11:28; page 28,953 px", "seconds": 60, "px": 0}
+  ],
+  "understood_10s": "Red rain in Lisbon until 18:00 UTC, orange wind; source IPMA read 11:26 UTC; not a warning service.",
+  "understood_1min": "All IPMA levels for Lisbon; nationwide alert situation for 11 Nov; 208 Lisbon cancellations by 09:20 (press); summit Day 2 off, Day 3 aims to proceed.",
+  "looked_for": [
+    {"what": "what stands now, with source and time", "result": "found", "where": "/guide/ 170 px and 807-1650 px", "seconds": 25, "taps": 1},
+    {"what": "what changed since this morning", "result": "partly", "where": "timeline.html top rows (1 tap from /guide/ 1730 px); not on /guide/", "seconds": 90, "taps": 2},
+    {"what": "Web Summit status", "result": "found", "where": "/guide/#websummit 6022 and 6265 px", "seconds": 15, "taps": 1}
+  ],
+  "misread": [
+    "Metro row (2651 px) 'not announced Thursday 12 Nov transport' first read as Metro not running today; today's Metro status absent",
+    "'Parks, gardens, municipal culture (Lisbon city) running' (4898 px) carries the road-tunnels text; read as parks open, contradicting the alert situation",
+    "Day 3 tagged 'running' (6022 px) while the quote says 'aims to proceed'; nearly filed as confirmed",
+    "operator rows show only time read, so 'read Tue 10 Nov 23:33' on CP looked stale with no publish time",
+    "FACT/EVIDENCE key only at 9396 px, the bottom"
+  ],
+  "not_found": [
+    "a 'changed since morning' summary on /guide/",
+    "today's Metro and Carris status",
+    "a ready citation line for the site in #press",
+    "authority occurrence totals on /guide/"
+  ],
+  "advice_like": [
+    {"quote": "go to the operator before you set off", "px": 2547},
+    {"quote": "(12:00 to 15:00 forecast: heavy rain, strong wind)", "px": 2769},
+    {"quote": "timeline.html: the centre may pass south of Lisbon ... the pressure minimum and the wind's turn between 13:00 and 16:00 will settle it. Our analysis, not a forecast", "px": 1491}
+  ],
+  "words_not_understood": ["Panel", "CAP", "communiqué no. 2", "signal / official / team (timeline kinds)", "Deeper"],
+  "would_act": "Files now from the headline, alert situation and summit rows, citing IPMA, the government and websummit.com directly; returns at 18:00 UTC.",
+  "score": 4,
+  "score_reason": "What stands now and the summit are fast and citable; 'since this morning' is missing from the guide and two rows would have put errors in his copy.",
+  "findings": [
+    {"class": "costly", "what": "no 'what changed since morning' on /guide/", "where": "/guide/; timeline 28,953 px", "measure": "90 s, 2 taps, no summary", "change": "short 'Changed today (UTC)' list in #press or under section 1, from decision rows"},
+    {"class": "costly", "what": "mis-joined row: parks/gardens shows tunnels text, status running", "where": "/guide/ 4898 px", "measure": "contradicts alert situation at 1333 px", "change": "fix row mapping; 'not stated' if no park source"},
+    {"class": "costly", "what": "Day 3 status 'running' overstates 'aims to proceed'", "where": "/guide/ 6022 px", "measure": "near-miss in copy", "change": "status 'planned' / 'aims to proceed'"},
+    {"class": "minor", "what": "Metro row reads as 'not announced' about today", "where": "/guide/ 2651 px", "measure": "read twice", "change": "today's Metro status in row; Thursday line only in Thursday note"},
+    {"class": "minor", "what": "operator rows lack published time", "where": "/guide/ 2547-3700 px", "measure": "staleness unclear", "change": "add 'published' where known"},
+    {"class": "minor", "what": "unattributed 'forecast' inside CP row", "where": "/guide/ 2769 px", "measure": "advice/forecast-like", "change": "attribute in-row or drop"},
+    {"class": "minor", "what": "label key only at the bottom", "where": "/guide/ 9396 px", "measure": "14 screens down", "change": "one-line key under headline box"},
+    {"class": "held", "what": "storm-track hypothesis near top of timeline", "where": "timeline.html 1491 px", "measure": "labelled, but forecast in substance", "change": "editorial call for meteorologist/conductor"}
+  ]
+}

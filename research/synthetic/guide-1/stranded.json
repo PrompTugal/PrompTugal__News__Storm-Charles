@@ -1,0 +1,27 @@
+{"by":"incident.synthetic@web-summit.dinis","updated":"2026-11-11T11:52:51Z","label":"Invented person; not user research","persona":"stranded","run":"guide-1","start":"/guide/","version_seen":"v0.1.983",
+"steps":[
+{"n":1,"url":"/guide/","what":"Headline RED rain until 18:00 UTC; menu item 'I'm stranded: what is open?' on first screen","seconds":5,"px":[170,572]},
+{"n":2,"url":"/guide/#stranded","what":"Pingo Doce closed, state museums closed, schools","seconds":15,"px":[4030,4200]},
+{"n":3,"url":"/guide/#stranded","what":"Courts, hospitals, Parks 'running' with tunnel text, 'not stated' list","seconds":17,"px":[4898,5265]},
+{"n":4,"url":"/guide/#stranded","what":"Shelter: Metro stations for homeless people","seconds":5,"px":[5346]},
+{"n":5,"url":"/guide/#around","what":"Metro row 'not announced' about Thursday; CP; start of ferries; time out","seconds":18,"px":[2452,2624]}],
+"understood_10s":"A red rain warning is in force until 18:00 UTC and there is a section for stranded people one tap away.",
+"understood_1min":"Supermarkets and state museums closed, nothing stated open, cafés/malls/taxis unknown; Metro today unknown.",
+"looked_for":[
+{"what":"Is anything open (café, mall, place to wait)","result":"partly","where":"/guide/#stranded 4200-5265 px","seconds":37,"taps":1},
+{"what":"Getting across town (metro, buses, Uber)","result":"partly","where":"/guide/#around 2624 px; not-stated line at 3713 px not reached","seconds":60,"taps":2},
+{"what":"Where to go","result":"not found","where":"/guide/#stranded 5346 px (homeless shelter only)","seconds":42,"taps":1}],
+"misread":["Metro 'not announced' (Thursday row) read as today's Metro status unclear/not running","'Parks, gardens, municipal culture running' with tunnel text read as parks open","Homeless-shelter 'running' row briefly read as stations open to wait in","Did not notice most rows read about 9 h earlier"],
+"not_found":["Metro status today","Any place stated open to wait","Ride-hailing/taxi status near the top","A summary line at the top of #stranded"],
+"advice_like":[{"quote":"go to the operator before you set off","px":2547},{"quote":"Ask the place itself.","px":5265},{"quote":"Check with your airline.","px":1839},{"quote":"(12:00 to 15:00 forecast: heavy rain, strong wind)","px":2860}],
+"words_not_understood":["IPMA","ANEPC","alert situation","EVIDENCE","Transtejo Soflusa","Fertagus","Rede Expressos"],
+"would_act":"A today Metro status line and any place stated open; otherwise asks hotel reception.",
+"score":3,"score_reason":"Right section one tap away and 'not stated' is honest, but Metro today and anywhere open are missing or mislabelled.",
+"findings":[
+{"class":"costly","what":"Metro row shows Thursday's 'not announced', nothing for today","where":"/guide/#around 2624 px","measure":"2 taps, 60 s, unresolved","change":"Separate today's Metro status (or 'Today: not stated') from Thursday"},
+{"class":"costly","what":"Parks row badge 'running' paired with road-tunnel text","where":"/guide/#stranded 4898 px","measure":"misread as parks open","change":"Fix row matching; move parks to 'not stated' if no statement"},
+{"class":"costly","what":"Buses/Fertagus/ride-hailing/taxis 'not stated' line at bottom of #around","where":"/guide/#around 3713 px","measure":"1089 px below Metro row; not reached in 60 s","change":"Put the not-stated line first in #around"},
+{"class":"minor","what":"No summary line at top of #stranded","where":"/guide/#stranded 4030-5265 px","measure":"~32 s to learn nothing is stated open","change":"One-line summary under the heading, only if true of what was read"},
+{"class":"minor","what":"Homeless shelter block readable as a waiting place for travellers","where":"/guide/#stranded 4949-5346 px","measure":"brief misread","change":"Label the block 'Shelter for homeless people'"},
+{"class":"minor","what":"Press-quoted forecast in CP row without forecaster named","where":"/guide/#around ~2860 px","measure":"reads as site's own forecast","change":"Attribute or drop the parenthesis"},
+{"class":"held","what":"Read times ~9 h old not noticed","where":"/guide/#stranded rows","measure":"read 02:42 UTC","change":"Add relative age beside UTC time"}]}
