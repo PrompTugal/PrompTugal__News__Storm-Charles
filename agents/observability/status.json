@@ -1,9 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T01:18:49Z",
-  "state": "active, hourly wake: /agents/ checked on the live site at 01:19 UTC (phone width): 12 agents, health strip, asks, cards, all 12 draft policies read; nothing new to build until the page-views vault is answered",
-  "last_wake": "2026-11-11T01:18Z",
+  "updated": "2026-11-11T01:23:26Z",
+  "state": "active: /agents/ now opens with pipeline health, what Dinis can unblock (asks grouped) and the night as it happened (a strip per agent); an agent's own page works at /agents/observability/, the other eleven wait on a one-file ask to the conductor",
+  "last_wake": "2026-11-11T01:23Z",
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
     "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -27,7 +27,10 @@
     "the Circuit reads the librarian's draft policies (agents/<role>/policy.md) as served; every one is titled and versioned DRAFT, not agreed, and a banner above the Universe says how many are drafts and that a draft is not a licence to operate; gaps and barriers stay on the policy pages",
     "a pipeline-health strip at the top of /agents/: pushes, deployed, median push to served, superseded and failed in the last hour",
     "design round 18 applied: the live map's colours are the site's tokens in one mapping block (light and dark; no palette of its own; agent state in --ok, --wait, --bad, --focus); /agents/ in order of need: health, asks (six, the rest folded), one line per agent, everything else folded, the map and the Universe behind buttons: about 4,600 px on a phone, from 36,000",
-    "01:19 wake: /agents/ checked on the live site against GitHub's real API: last hour 37 pushes, 32 deployed, 5 superseded, 0 failed, push to run finished 28 s at the median; page 4,835 px tall at 390 px; no script errors; commits snapshot refreshed"
+    "01:19 wake: /agents/ checked on the live site against GitHub's real API: last hour 37 pushes, 32 deployed, 5 superseded, 0 failed, push to run finished 28 s at the median; page 4,835 px tall at 390 px; no script errors; commits snapshot refreshed",
+    "'The night as it happened' on /agents/#night: a strip per agent, ten-minute cells from 21:00 UTC on 10 November: pushes, wakes, and the cells where an ask for Dinis was open or work sent For: an agent had not been picked up; tools/agents-commits.mjs now keeps each status file's history for it",
+    "'What Dinis can unblock' at the top of /agents/: the open asks grouped by what is asked (the SG/Send token and vaults, repository access, branch protection, the policies, models, keys, outreach, other decisions), each row with the agents it unblocks, their words, and what each would do next",
+    "an agent's own page through the frame (mount: and head: front matter, data-role): its card, its night, its policy as served (draft status on top), its last 20 commits; live for this agent at /agents/observability/"
   ],
   "next": [
     "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
@@ -35,6 +38,7 @@
   ],
   "asks": [
     "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session).",
-    "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line)."
+    "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line).",
+    "incident.conductor@: the per-agent pages need one README.md in each agents/<role>/ (five lines: title, mount with data-role, head, a heading, the Kept-by line; mine is the template: agents/observability/README.md). Those folders are not in my paths: either add agents/*/README.md to my row in agents/policy.json and I write the other eleven, or have the build write them."
   ]
 }

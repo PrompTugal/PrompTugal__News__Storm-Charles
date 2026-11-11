@@ -7,6 +7,7 @@
 // Refreshes every minute. Everything shown is escaped; session ids are stripped; only https links are made.
 (() => {
     const el = document.getElementById('agents-live'); if (!el) return
+    const ROLE = el.dataset.role || ''   // set on an agent's own page (/agents/<role>/): its card, strip, policy and commits only
     const HERE = document.currentScript.src
     // the live map (Angelo's engine, pinned; live-adapter.js feeds it): its own box after the cards, so a refresh never redraws it
     const liveBox = document.createElement('section'); liveBox.id = 'live'; liveBox.className = 'ag-live'
@@ -14,18 +15,18 @@
     const startLive = () => { const b = liveBox.querySelector('[data-ag-live]'); if (b) b.parentNode.remove(); window.AgentsLive?.start() }
     liveBox.querySelector('[data-ag-live]').onclick = startLive
     document.addEventListener('lv-graph', () => { const b = liveBox.querySelector('[data-ag-live]'); if (b) b.parentNode.remove() }, true)
-    el.insertAdjacentElement('afterend', liveBox)
+    if (!ROLE) el.insertAdjacentElement('afterend', liveBox)
     // the Universe (Silvio's engine, pinned; universe-adapter.js feeds it): opened on request, because it needs 1.6 MB of 3D libraries
     const uniBox = document.createElement('section'); uniBox.id = 'universe'; uniBox.className = 'ag-uni'
     uniBox.innerHTML = `<h2 class="ag-h">The team as a Universe: map, circuit and Talk</h2><p class="ag-note">The same team in <a href="https://web-summit.sgit.ai/">the Universe by dashboard@web-summit.silvio, of Silvio's team</a>: a 3D <b>Map</b> (people, agents, the folders each may write), the <b>Circuit</b> (each agent through its behaviour policy to what it reaches) and <b>Talk</b> (who talks to whom, from the commits' <code>For:</code> trailers). The engine is an unchanged copy pinned at <a href="${new URL('vendor/universe@57636ac/pin.json', HERE).href}">commit 57636ac</a>, reading this site's data through one adapter. The policies it shows are the librarian's drafts (<a href="${el.dataset.base || "../../"}library/abp.html">all of them</a>).</p><p class="ag-draft" data-ag-draft><b>Draft policies, not agreed by Dinis.</b> A draft is not a licence to operate: where the Circuit says "a written policy", read "a written draft".</p><p class="ag-note">Opening it loads 1.6 MB of 3D libraries from web-summit.sgit.ai (checked against a pinned hash).</p><p><button type="button" class="ag-btn" data-ag-uni>Open the Universe</button> <span class="ag-note" data-ag-uni-note></span></p><div id="ag-universe"></div><p class="ag-note">The dark stage and its colours are the Universe's own theme, as its authors made it: it does not follow this site's light and dark.</p>`
-    liveBox.insertAdjacentElement('afterend', uniBox)
-    for (const f of ['live-adapter.js', 'universe-adapter.js']) { const s = document.createElement('script'); s.src = new URL(f, HERE).href; s.async = false; document.head.appendChild(s) }
+    if (!ROLE) liveBox.insertAdjacentElement('afterend', uniBox)
+    if (!ROLE) for (const f of ['live-adapter.js', 'universe-adapter.js']) { const s = document.createElement('script'); s.src = new URL(f, HERE).href; s.async = false; document.head.appendChild(s) }
     const openUni = () => { const b = uniBox.querySelector('[data-ag-uni]'); if (!window.AgentsUniverse || b.hidden) return; b.hidden = true; window.AgentsUniverse.open(uniBox.querySelector('#ag-universe'), uniBox.querySelector('[data-ag-uni-note]')).then(() => { if (!uniBox.querySelector('.bm')) b.hidden = false }) }
     uniBox.querySelector('[data-ag-uni]').onclick = openUni
     document.addEventListener('agents-universe', e => { const d = e.detail, n = uniBox.querySelector('[data-ag-draft]'); if (!n) return
         n.innerHTML = d.policies ? (d.drafts ? `<b>${d.drafts} of ${d.policies} behaviour policies are drafts, not agreed by Dinis</b> (${d.policies} of ${d.agents} agents have one). A draft is not a licence to operate: where the Circuit says "a written policy", read "a written draft".` : `${d.policies} of ${d.agents} agents have an agreed behaviour policy.`) : `<b>0 of ${d.agents} agents have a behaviour policy.</b>` })
     const BASE = el.dataset.base || '../../', REPO = 'PrompTugal/PrompTugal__News__Storm-Charles', BRANCH = 'dev'
-    const GH = `https://api.github.com/repos/${REPO}/commits?sha=${BRANCH}&per_page=100`, CACHE = 'sc-agents-commits-v1', TTL = 120e3
+    const GH = `https://api.github.com/repos/${REPO}/commits?sha=${BRANCH}&per_page=100`, CACHE = 'sc-agents-commits-v2', TTL = 120e3
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
     const clean = s => String(s ?? '').replace(/https?:\/\/claude\.ai\/code\/session_[A-Za-z0-9]+/g, '[session]').replace(/\bsession_[A-Za-z0-9]{8,}\b/g, '[session]')
     const T = s => esc(clean(s))
@@ -51,7 +52,8 @@
         let snap = null; try { snap = await getJSON(`${BASE}data/agents/commits.json?t=${Math.floor(Date.now() / 6e4)}`) } catch { }
         if (!api && !snap) return c ? { ...c, cached: true, error } : { read: 0, items: [], error }
         const have = new Set((api || []).map(x => x.sha)), items = (api || []).concat((snap?.items || []).filter(x => !have.has(x.sha))).sort((a, b) => Date.parse(b.at) - Date.parse(a.at))
-        const out = { read: Date.now(), items, error, source: api ? 'github' : 'snapshot', snapshot_at: snap?.updated || snap?.read_at || '' }
+        for (const c of items) if (!c.url) c.url = `https://github.com/${REPO}/commit/${c.sha}`
+        const out = { read: Date.now(), items, error, source: api ? 'github' : 'snapshot', snapshot_at: snap?.updated || snap?.read_at || '', hist: snap?.status_history || {} }
         if (api) try { localStorage.setItem(CACHE, JSON.stringify(out)) } catch { }
         return out
     }
@@ -110,6 +112,72 @@
 <p class="ag-note">Counts each agent published from its own ledger (<code>tools/agents-ledger.mjs</code>); an agent that made calls and has not run it is missing here. ${live.length ? '' : 'Only mock calls so far. '}No model names, prompts or answers are published.</p>`
     }
 
+    // ---- "The night as it happened": one strip per agent on a shared axis, ten-minute cells ----
+    // pushes: its commits in the cell. Waiting on Dinis: its status file held an ask for him (from the file's history in
+    // data/agents/commits.json, then the file as served now). Waiting on an agent: it pushed work For: an agent that has not
+    // pushed since. Wakes: the last_wake times its status file has given. All derived from commits and status files; nothing typed.
+    const CELL = 6e5, NIGHT0 = Date.parse('2026-11-10T21:00:00Z')
+    function nightData(idx, items, hist) {
+        const now = Date.now(), t0 = now - NIGHT0 > 9 * 36e5 ? Math.floor((now - 8 * 36e5) / CELL) * CELL : NIGHT0, n = Math.max(1, Math.ceil((now - t0) / CELL))
+        const cell = t => Math.floor((t - t0) / CELL), nextBy = new Map()
+        const asc = items.slice().sort((a, b) => Date.parse(a.at) - Date.parse(b.at))
+        for (const c of asc) { if (!nextBy.has(c.agent)) nextBy.set(c.agent, []); nextBy.get(c.agent).push(Date.parse(c.at)) }
+        const rows = idx.agents.map(a => {
+            const R = { a, n, t0, push: new Array(n).fill(0), dinis: new Array(n).fill(0), on: Array.from({ length: n }, () => new Set()), wake: new Array(n).fill(0), what: Array.from({ length: n }, () => []) }
+            const mark = (arr, from, to, v) => { for (let i = Math.max(0, cell(from)); i <= Math.min(n - 1, cell(to)); i++) typeof v === 'function' ? v(i) : arr[i] = Math.max(arr[i], v) }
+            for (const c of asc) if (c.agent === a.name) {
+                const t = Date.parse(c.at), i = cell(t); if (i >= 0 && i < n) { R.push[i]++; R.what[i].push(c.what) }
+                for (const to of c.to) { if (to === a.name) continue; const nx = (nextBy.get(to) || []).find(x => x > t); mark(null, t, nx ? nx - 1 : now, k => R.on[k].add(short(to))) }
+            }
+            const H = (hist[a.role] || []).slice()
+            if (a.has_status) H.push({ at: new Date(now).toISOString(), asks_dinis: (a.asks_dinis || []).length, last_wake: a.last_wake || '' })
+            H.forEach((h, k) => { const from = Date.parse(h.at), to = k + 1 < H.length ? Date.parse(H[k + 1].at) - 1 : now; if (h.asks_dinis > 0 && to >= from) mark(R.dinis, from, to, h.asks_dinis) })
+            for (const w of new Set(H.map(h => h.last_wake).filter(Boolean))) { const t = Date.parse(w), i = cell(t); if (isFinite(t) && i >= 0 && i < n) R.wake[i] = 1 }
+            R.total = R.push.reduce((x, y) => x + y, 0); R.wDinis = R.dinis.filter(Boolean).length * 10; R.wAgent = R.on.filter(x => x.size).length * 10
+            return R
+        })
+        return { rows, n, t0 }
+    }
+    const hm = t => new Date(t).toISOString().slice(11, 16)
+    function strip(R) {
+        const W = 6, H = 22, cells = []
+        for (let i = 0; i < R.n; i++) {
+            const x = i * W, tip = `${hm(R.t0 + i * CELL)} to ${hm(R.t0 + (i + 1) * CELL)} UTC: ${R.push[i]} push${R.push[i] === 1 ? '' : 'es'}${R.dinis[i] ? `; waiting on Dinis (${R.dinis[i]} ask${R.dinis[i] > 1 ? 's' : ''})` : ''}${R.on[i].size ? `; sent work for ${[...R.on[i]].join(', ')}, not yet picked up` : ''}${R.wake[i] ? '; a wake' : ''}${R.what[i].length ? ': ' + R.what[i].slice(0, 3).map(clean).join(' | ') : ''}`
+            cells.push(`<g><title>${esc(tip)}</title><rect class="bg${R.dinis[i] ? ' dinis' : R.on[i].size ? ' agent' : ''}" x="${x}" y="0" width="${W}" height="${H}"/>${R.dinis[i] && R.on[i].size ? `<rect class="agent2" x="${x}" y="${H - 3}" width="${W}" height="3"/>` : ''}${R.push[i] ? `<rect class="p p${Math.min(3, R.push[i])}" x="${x + 0.6}" y="${H - 4 - Math.min(3, R.push[i]) * 4.5}" width="${W - 1.2}" height="${Math.min(3, R.push[i]) * 4.5}"/>` : ''}${R.wake[i] ? `<rect class="w" x="${x + 1.5}" y="0" width="${W - 3}" height="3"/>` : ''}</g>`)
+        }
+        const hours = []; for (let t = Math.ceil(R.t0 / 36e5) * 36e5; t < R.t0 + R.n * CELL; t += 36e5) hours.push(`<line class="h" x1="${(t - R.t0) / CELL * W}" x2="${(t - R.t0) / CELL * W}" y1="0" y2="${H}"/>`)
+        return `<svg class="ag-strip" viewBox="0 0 ${R.n * W} ${H}" preserveAspectRatio="none" role="img" aria-label="${esc(`${short(R.a.name)}: ${R.total} pushes; waiting on Dinis about ${R.wDinis} minutes; on other agents about ${R.wAgent} minutes`)}">${cells.join('')}${hours.join('')}</svg>`
+    }
+    function axis(N) { const out = []; for (let t = Math.ceil(N.t0 / 36e5) * 36e5; t < N.t0 + N.n * CELL; t += 36e5) out.push(`<span style="left:${(100 * (t - N.t0) / (N.n * CELL)).toFixed(2)}%">${hm(t).slice(0, 2)}</span>`); return `<div class="ag-axis" aria-hidden="true">${out.join('')}</div>` }
+    const dur = m => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`
+    function night(N, only) {
+        const rows = only ? N.rows.filter(R => R.a.role === only) : N.rows
+        return `<div class="ag-night">${axis(N)}${rows.map(R => `<div class="row"><a class="nm" href="${only ? '#' : `${BASE}agents/${esc(R.a.role)}/index.html`}">${T(short(R.a.name).replace(/^incident\./, '').replace(/@$/, ''))}</a><span class="ag-note">${R.total} push${R.total === 1 ? '' : 'es'}${R.wDinis ? ` · on Dinis ${dur(R.wDinis)}` : ''}${R.wAgent ? ` · on agents ${dur(R.wAgent)}` : ''}</span>${strip(R)}</div>`).join('')}
+<p class="ag-note ag-key"><i class="k p"></i>pushes (taller: more) <i class="k dinis"></i>an ask for Dinis was open <i class="k agent"></i>sent work for an agent that had not pushed since <i class="k w"></i>a wake (from its status file). Ten-minute cells, ${N.t0 === NIGHT0 ? 'from 21:00 UTC on Tuesday 10 November' : 'the last eight hours'} to now; hours in UTC; hover or press a cell for what was pushed. Derived from the commits and each status file's history (<a href="${BASE}data/agents/commits.json">data/agents/commits.json</a>, then GitHub's API and the files as served); "waiting" is our reading of those, not the agent's word.</p></div>`
+    }
+
+    // ---- "What Dinis can unblock": the open asks, the same ask from several agents as one row ----
+    const THEMES = [
+        ['The SG/Send token and the vaults', /sg\/?send|vault|append lane|\blane\b/i],
+        ['Attach a repository, or session access', /add_repo|attach|cannot reach|can't reach|read-only|permission check|credentials? for/i],
+        ['Protect the branches', /branch protection|protect(ed)? (main|dev|branch)|protected: false/i],
+        ['Agree the behaviour policies', /polic(y|ies)|ABP|licen[cs]e to operate/i],
+        ['Models, the OpenRouter key and the spend cap', /openrouter|open_router|daily (spend )?cap|\bmodels?\b|ledger/i],
+        ['Login, keys and identity', /passkey|login|sign(ed|ing)? |\bkey\b|identity|pki/i],
+        ['Outreach: a person sends', /outreach|send(s)? (it|them|the)|contact|journalist|expert/i],
+    ]
+    function unblock(asks, idx) {
+        const G = new Map()
+        for (const q of asks) { const th = (THEMES.find(([, rx]) => rx.test(q.x)) || ['Decisions only Dinis can make'])[0]; if (!G.has(th)) G.set(th, []); G.get(th).push(q) }
+        const next = new Map(idx.agents.map(a => [a.name, (a.next || [])[0] || '']))
+        const rows = [...G].map(([th, qs]) => ({ th, qs, who: [...new Set(qs.map(q => q.who))], fresh: qs.filter(q => !q.old).length })).sort((a, b) => (b.fresh > 0) - (a.fresh > 0) || b.who.length - a.who.length || b.qs.length - a.qs.length)
+        return rows.map(r => `<details class="ag-un${r.fresh ? '' : ' old'}" data-k="un-${esc(r.th)}" id="un-${esc(r.th.toLowerCase().replace(/[^a-z]+/g, '-'))}">
+<summary><b>${esc(r.th)}</b><span class="ag-note">unblocks ${r.who.length} agent${r.who.length > 1 ? 's' : ''}: ${r.who.map(w => T(short(w).replace(/^incident\./, '').replace(/@$/, ''))).join(', ')}${r.fresh ? '' : ' · may be stale'}</span></summary>
+<ul>${r.qs.map(q => `<li${q.old ? ' class="old"' : ''}><a class="who" href="${BASE}agents/${esc(q.role)}/index.html">${T(short(q.who))}${q.old ? ' · may be stale' : ''}</a>${T(q.x.replace(/^Dinis\s*:\s*/i, ''))}</li>`).join('')}</ul>
+${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do next (their own words)</p><ul>${r.who.filter(w => next.get(w)).map(w => `<li><code>${T(short(w))}</code> ${T(next.get(w))}</li>`).join('')}</ul>` : ''}
+</details>`).join('')
+    }
+
     const liveness = (a, last) => {
         if (!a.has_status && !last) return ['none', 'not started']
         if (/^blocked/i.test(a.state || '')) return ['blocked', 'blocked']
@@ -128,6 +196,7 @@
         return `<details class="ag-card" id="${esc(a.role)}" data-k="card">
 <summary><span class="nm">${T(short(a.name))}</span><span class="ag-pill ${cls}">${esc(word)}</span>${nAsk ? `<span class="n">${nAsk} ask${nAsk > 1 ? 's' : ''} for Dinis</span>` : ''}<span class="lp">${last ? `${esc(ago(last.at))}: ${T(last.what)}` : a.state ? T(a.state) : 'no push read'}</span></summary>
 <div class="body">
+${ROLE ? '' : `<p class="ag-note"><a href="${BASE}agents/${esc(a.role)}/index.html">Its own page</a>: its night, its policy, its last 20 commits.</p>`}
 ${a.state ? `<p><span class="lbl">Doing (its own words)</span>${T(a.state)}</p>` : `<p class="ag-note">${a.has_status ? 'No state written.' : `No status file yet (expected at <code>agents/${esc(a.role)}/status.json</code>).`}</p>`}
 <p><span class="lbl">Last push</span>${last ? `<a href="${esc(/^https:/.test(last.url) ? last.url : '#')}">${T(last.what)}</a><br><span class="ag-note">${esc(ago(last.at))} · ${esc(utc(last.at))} · ${mine.length} commit${mine.length > 1 ? 's' : ''} read${last.to.length ? ` · for ${T(last.to.map(short).join(', '))}` : ''}</span>` : '<span class="ag-note">No commit read from it on dev.</span>'}</p>
 ${a.last_wake ? `<p><span class="lbl">Last wake (its own file)</span>${esc(utc(a.last_wake))} · ${esc(ago(a.last_wake))}</p>` : ''}
@@ -174,6 +243,8 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         const keyOf = d => (d.id || d.closest('[id]')?.id || '') + '|' + (d.dataset.k || '')
         const all = [...el.querySelectorAll('details')], open = new Set(all.filter(d => d.open).map(keyOf))
         const hadDrawn = !!el.dataset.drawn
+        const N = nightData(idx, gh.items, gh.hist || {})
+        if (ROLE) return drawRole(idx, gh, by, N, keyOf, open, hadDrawn)
         // pipeline health: the last hour of the deploy workflow's runs (the same records as "Release speed" below)
         const hour = R.items.filter(r => Date.now() - Date.parse(r.pushed) < 36e5), okH = hour.filter(r => r.conclusion === 'success')
         const medOf = a => { a = a.filter(x => x != null && x > 0).sort((p, q) => p - q); return a.length ? a[Math.floor(a.length / 2)] : null }
@@ -184,9 +255,11 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         el.innerHTML = `
 ${health}
 <p class="ag-line"><span><b>${idx.agents.length}</b> agents</span><span><b>${n('now')}</b> active in the last 30 min</span><span><b>${n('blocked')}</b> blocked</span><span><b>${n('none')}</b> not started</span><span>last push <b>${gh.items[0] ? esc(ago(gh.items[0].at)) : 'n/a'}</b></span><span>serving <b>${ver?.version ? esc(ver.version) : 'n/a'}</b></span></p>
-<section class="ag-asks" id="asks"><h2>Dinis: ${asks.length ? `${fresh} ask${fresh === 1 ? '' : 's'} only you can answer${asks.length > fresh ? `, and ${asks.length - fresh} that may be stale` : ''}` : 'nothing is waiting for you'}</h2>
-${(() => { const li = q => `<li><a class="who" href="#${esc(q.role)}">${T(short(q.who))}</a>${T(q.x.replace(/^Dinis\s*:\s*/i, ''))}</li>`, A = asks.filter(q => !q.old), B = asks.filter(q => q.old)
-            return (A.length ? `<ol>${A.slice(0, 6).map(li).join('')}</ol>` : '') + (A.length > 6 ? `<details data-k="more"><summary>${A.length - 6} more asks</summary><ol start="7">${A.slice(6).map(li).join('')}</ol></details>` : '') + (B.length ? `<details data-k="stale"><summary>${B.length} more that may be stale (status files synced from the old repository; those agents have pushed nothing here)</summary><ol class="old">${B.map(li).join('')}</ol></details>` : '') })()}</section>
+<section class="ag-asks" id="asks"><h2>What Dinis can unblock: ${asks.length ? `${fresh} open ask${fresh === 1 ? '' : 's'}${asks.length > fresh ? `, and ${asks.length - fresh} that may be stale` : ''}, in ${new Set(asks.map(q => (THEMES.find(([, rx]) => rx.test(q.x)) || ['x'])[0])).size} groups` : 'nothing is waiting for you'}</h2>
+${unblock(asks, idx)}
+${asks.length ? `<p class="ag-note">Grouped by what is asked (by keyword, so read a row before acting on it); each row opens to the agents' own words and what each would do next. "May be stale": from a status file synced from the old repository, by an agent that has pushed nothing here.</p>` : ''}</section>
+<h2 class="ag-h" id="night">The night as it happened</h2>
+${night(N)}
 <h2 class="ag-h">The agents <span class="ag-note">one line each; open one for its state, asks, next, done, job and key</span></h2>
 <div class="ag-grid">${idx.agents.map(a => card(a, by)).join('')}</div>
 ${strangers.length ? `<p class="ag-note">Also pushing here, not in agents/JOBS.md: ${strangers.map(s => `<code>${T(s)}</code>`).join(', ')}.</p>` : ''}
@@ -200,6 +273,25 @@ ${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 
         el.dataset.drawn = '1'
         document.dispatchEvent(new CustomEvent('agents-data', { detail: { idx, commits: gh.items } }))
         if (!hadDrawn) setTimeout(() => window.AgentsUniverse?.counts().catch(() => { }), 1500)
+    }
+    // an agent's own page: its card (open), its strip, its policy (the built page's article, same site), its last 20 commits
+    let policyHtml = null
+    async function drawRole(idx, gh, by, N, keyOf, open, hadDrawn) {
+        const a = idx.agents.find(x => x.role === ROLE)
+        if (!a) { el.innerHTML = `<p class="ag-note">No agent with the role "${esc(ROLE)}" in <a href="${BASE}agents/JOBS.html">the jobs table</a>.</p>`; return }
+        if (policyHtml === null) { policyHtml = ''; try { const r = await fetch(`${BASE}agents/${encodeURIComponent(ROLE)}/policy.html`, { cache: 'no-cache' }); if (r.ok) { const art = new DOMParser().parseFromString(await r.text(), 'text/html').querySelector('article'); if (art) { for (const x of art.querySelectorAll('script,style,link,iframe')) x.remove(); for (const l of art.querySelectorAll('a[href]')) { const h = l.getAttribute('href'); if (!/^(https:|#)/.test(h)) l.setAttribute('href', `${BASE}agents/${ROLE}/${h}`) } policyHtml = art.innerHTML } } } catch { } }
+        const mine = by.get(a.name) || [], draft = /NOT AGREED/i.test(policyHtml)
+        el.innerHTML = `<p class="ag-note"><a href="${BASE}agents/index.html">All the agents</a> · <a href="${BASE}agents/${esc(ROLE)}/status.json">its status file</a> · <a href="${BASE}agents/JOBS.html">the jobs</a></p>
+<div class="ag-grid">${card(a, by).replace('<details class="ag-card"', '<details open class="ag-card"')}</div>
+<h2 class="ag-h">Its night</h2>
+${night(N, ROLE)}
+<h2 class="ag-h">Its behaviour policy</h2>
+${policyHtml ? `${draft ? '<p class="ag-draft"><b>A draft, not agreed by Dinis.</b> A draft is not a licence to operate.</p>' : ''}<details class="ag-fold" data-k="policy" id="policy"><summary>Read the policy${draft ? ' (draft)' : ''}</summary><div class="body ag-policy">${policyHtml}</div></details><p class="ag-note">As served at <a href="${BASE}agents/${esc(ROLE)}/policy.html">agents/${esc(ROLE)}/policy.html</a>; kept by the librarian's generator, not by this page.</p>` : `<p class="ag-note">No behaviour policy at agents/${esc(ROLE)}/policy.md.</p>`}
+<h2 class="ag-h">Its last ${Math.min(20, mine.length)} commits</h2>
+<ul class="ag-feed">${mine.slice(0, 20).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(5, 16).replace('T', ' '))}</time><a href="${esc(/^https:/.test(c.url) ? c.url : '#')}">${T(c.what)}</a>${c.to.length ? ` <span class="ag-note">for ${T(c.to.map(short).join(', '))}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commit of its own read on dev.</li>'}</ul>
+<p class="ag-note">Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. Its status file as served now; commits from ${gh.source === 'snapshot' ? `the snapshot of ${T(gh.snapshot_at)} (GitHub's API did not answer this browser)` : "GitHub's public API"}. Session ids are never shown.</p>`
+        if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = open.has(keyOf(d))
+        el.dataset.drawn = '1'
     }
     const openHash = () => { const t = location.hash && !/[?&=]/.test(location.hash) ? document.getElementById(location.hash.slice(1)) : null; if (!t) return; if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView() }
     window.addEventListener('hashchange', openHash)

@@ -25,6 +25,18 @@ Under the map, "Open the Universe" starts [the Universe by dashboard@web-summit.
 
 The Circuit reads each agent's behaviour policy from `agents/<role>/policy.md` (the librarian's, listed in [library/abp.md](../../library/abp.md)). While a policy's own text says it is not agreed by Dinis, the adapter titles it "DRAFT policy, not agreed", and a banner above the Universe counts the drafts: a draft is not a licence to operate. The engine's own wording ("a written policy") cannot be changed without forking it. Gaps and barriers are not passed to the engine; they are on each policy's page. The "Web Summit" layer is empty here.
 
+## The night as it happened
+
+One strip per agent on a shared axis of ten-minute cells, from 21:00 UTC on Tuesday 10 November (later, the last eight hours). A bar is the agent's pushes in that cell. A cell is tinted when the agent was waiting: on Dinis (its status file held an ask starting "Dinis:" at that time) or on another agent (it had pushed work `For:` an agent that had not pushed since). A green tick is a wake its status file recorded. All of it is derived from the commits and from each status file's history (`tools/agents-commits.mjs` keeps both in [data/agents/commits.json](../../data/agents/commits.json)); "waiting" is this page's reading of those, not something an agent said.
+
+## What Dinis can unblock
+
+The asks that start "Dinis:", grouped by what is asked so the same ask from several agents is one row. The grouping is by keyword: read a row before acting on it. Each row lists the agents it unblocks, their own words, and the first item of each one's "next".
+
+## Each agent's own page
+
+`/agents/<role>/` shows one agent: its card, its night, its behaviour policy as served (with its draft status on top) and its last 20 commits. It is the same script, mounted through the site's frame with `data-role`.
+
 ## Release speed
 
 "Release speed, push by push" lists the runs of the deploy workflow from GitHub's public API (cached five minutes): when the commit was pushed, by whom, whether it was deployed, superseded by a newer push, or failed, and the seconds from the push to the end of its run. That is an upper bound on push-to-served, a few seconds above it; CI's exact figure is in each run's summary on GitHub.

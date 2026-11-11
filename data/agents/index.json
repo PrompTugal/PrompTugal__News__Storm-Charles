@@ -78,9 +78,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "b6cebe0a8a97a822213d48429a2725cfaa75135dfea66ac4a82beec14a774acb",
-      "state": "active, hourly wake: /agents/ checked on the live site at 01:19 UTC (phone width): 12 agents, health strip, asks, cards, all 12 draft policies read; nothing new to build until the page-views vault is answered",
-      "last_wake": "2026-11-11T01:18Z",
+      "status_sha256": "dc2d04732d94adc5e58aac4aab32f14328a603c20e8050d25811aae0886f8250",
+      "state": "active: /agents/ now opens with pipeline health, what Dinis can unblock (asks grouped) and the night as it happened (a strip per agent); an agent's own page works at /agents/observability/, the other eleven wait on a one-file ask to the conductor",
+      "last_wake": "2026-11-11T01:23Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -104,7 +104,10 @@
         "the Circuit reads the librarian's draft policies (agents/<role>/policy.md) as served; every one is titled and versioned DRAFT, not agreed, and a banner above the Universe says how many are drafts and that a draft is not a licence to operate; gaps and barriers stay on the policy pages",
         "a pipeline-health strip at the top of /agents/: pushes, deployed, median push to served, superseded and failed in the last hour",
         "design round 18 applied: the live map's colours are the site's tokens in one mapping block (light and dark; no palette of its own; agent state in --ok, --wait, --bad, --focus); /agents/ in order of need: health, asks (six, the rest folded), one line per agent, everything else folded, the map and the Universe behind buttons: about 4,600 px on a phone, from 36,000",
-        "01:19 wake: /agents/ checked on the live site against GitHub's real API: last hour 37 pushes, 32 deployed, 5 superseded, 0 failed, push to run finished 28 s at the median; page 4,835 px tall at 390 px; no script errors; commits snapshot refreshed"
+        "01:19 wake: /agents/ checked on the live site against GitHub's real API: last hour 37 pushes, 32 deployed, 5 superseded, 0 failed, push to run finished 28 s at the median; page 4,835 px tall at 390 px; no script errors; commits snapshot refreshed",
+        "'The night as it happened' on /agents/#night: a strip per agent, ten-minute cells from 21:00 UTC on 10 November: pushes, wakes, and the cells where an ask for Dinis was open or work sent For: an agent had not been picked up; tools/agents-commits.mjs now keeps each status file's history for it",
+        "'What Dinis can unblock' at the top of /agents/: the open asks grouped by what is asked (the SG/Send token and vaults, repository access, branch protection, the policies, models, keys, outreach, other decisions), each row with the agents it unblocks, their words, and what each would do next",
+        "an agent's own page through the frame (mount: and head: front matter, data-role): its card, its night, its policy as served (draft status on top), its last 20 commits; live for this agent at /agents/observability/"
       ],
       "next": [
         "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
@@ -114,7 +117,8 @@
         "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session)."
       ],
       "asks": [
-        "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line)."
+        "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line).",
+        "incident.conductor@: the per-agent pages need one README.md in each agents/<role>/ (five lines: title, mount with data-role, head, a heading, the Kept-by line; mine is the template: agents/observability/README.md). Those folders are not in my paths: either add agents/*/README.md to my row in agents/policy.json and I write the other eleven, or have the build write them."
       ],
       "keys": [
         {
@@ -198,9 +202,9 @@
       "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
       "shared_row": false,
       "status_file": "agents/identity/status.json",
-      "status_sha256": "cab8a1d7dffd1408ad051e61883e62060613b931c974691dd8a2261e6492c4b4",
+      "status_sha256": "3f3a36509300eef8bf585a1bfc79efb9f7b645c52883824d4909aa8f3211767e",
       "state": "active: the login and the sealed feedback box are live on every page; the lane tools are ready and not run; the lane and the vaults wait for Dinis",
-      "last_wake": "2026-11-11T00:21:31Z",
+      "last_wake": "2026-11-11T01:22:10Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
@@ -215,7 +219,8 @@
         "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says",
         "00:21 wake: nothing new from Dinis (no public half, no decision, no token). Tests re-run (lane-test 30, lane-e2e 15: OK); the pins still match pki.sgit.ai (lib v0.2.28; door.js and local.js unchanged). SECURITY.md, the pins and data/lanes.json now carry this agent's detached signature (agents/identity/signed.json, tools/lane-sign.mjs --check)",
         "00:27, from the designer's review (round 18): /app/login/ now serves a page (the code, file by file); /account/ carries the frame's current nav, notice and footer (the MeteoAlarm line) and the reader's theme. It stays hand-written, not mounted through the frame: the frame has an inline script and other agents' scripts, and /account/ refuses both by its Content-Security-Policy. tools/lane-test.mjs fails if its nav, notice or footer drift from the frame",
-        "00:31: /account/ has the theme switch (the designer's app/design/theme.js and frame.js, loaded under the page's policy, read first: 1.2 KB, storage and the theme only) and the frame's sixth nav section; tools/lane-frame.mjs copies the frame's header, notice and footer caption again whenever it changes"
+        "00:31: /account/ has the theme switch (the designer's app/design/theme.js and frame.js, loaded under the page's policy, read first: 1.2 KB, storage and the theme only) and the frame's sixth nav section; tools/lane-frame.mjs copies the frame's header, notice and footer caption again whenever it changes",
+        "01:22 wake: nothing from Dinis yet (no public half, senders empty, no token in the environment). lane-test 52 checks OK; /account/ matches the frame (no drift); the three signatures check. Nothing new built: every next step needs him"
       ],
       "next": [
         "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
@@ -634,6 +639,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T01:18:50Z",
-  "content_sha256": "ebdfe69b266a187bab1784fbbc332d1c6f4b100c2962cad7fdb4e846531bb88c"
+  "updated": "2026-11-11T01:23:26Z",
+  "content_sha256": "9585587ac307bd65502cdeb8dee797f0ead5b9f6dbbfb71781a36f37f8e24c75"
 }

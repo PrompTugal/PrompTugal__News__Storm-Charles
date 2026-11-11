@@ -92,3 +92,23 @@ details.ag-fold .ag-h { display: none; }
 .ag-asks details { margin-top: 6px; } .ag-asks details summary { cursor: pointer; font-weight: 600; }
 .ag-live > .ag-h, .ag-uni > .ag-h { font-size: 16px; margin: 0 0 6px; }
 .ag-live, .ag-uni { margin: 10px 0 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 10px 14px; }
+
+/* the night as it happened: one strip per agent, ten-minute cells; states of things we run, in the site's tokens */
+.ag-night { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 22px 12px 8px; }
+.ag-axis { position: relative; height: 0; font: 11px/1 var(--mono); color: var(--ink-2); }
+.ag-axis span { position: absolute; top: -14px; transform: translateX(-50%); }
+.ag-night .row { margin: 0 0 8px; }
+.ag-night .row .nm { font: 700 13px/1.3 var(--mono); margin-right: 8px; }
+.ag-strip { display: block; width: 100%; height: 22px; }
+.ag-strip .bg { fill: var(--surface-2); } .ag-strip .bg.dinis { fill: var(--warn-soft); } .ag-strip .bg.agent, .ag-strip .agent2 { fill: var(--sent-soft); }
+.ag-strip .p { fill: var(--focus); } .ag-strip .w { fill: var(--ok); } .ag-strip .h { stroke: var(--line-2); stroke-width: .5; vector-effect: non-scaling-stroke; }
+.ag-key .k { display: inline-block; width: 12px; height: 10px; margin: 0 4px 0 10px; vertical-align: -1px; border: 1px solid var(--line-2); }
+.ag-key .k:first-child { margin-left: 0; }
+.ag-key .k.p { background: var(--focus); } .ag-key .k.dinis { background: var(--warn-soft); } .ag-key .k.agent { background: var(--sent-soft); } .ag-key .k.w { background: var(--ok); height: 4px; vertical-align: 5px; }
+/* what Dinis can unblock: one row per kind of ask */
+.ag-un { border-top: 1px solid var(--line-2); padding: 8px 0; }
+.ag-un > summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; }
+.ag-un.old > summary b { color: var(--ink-2); font-weight: 600; }
+.ag-un ul { margin: 6px 0; padding-left: 20px; } .ag-un li { margin: 6px 0; overflow-wrap: anywhere; } .ag-un li.old { color: var(--ink-2); }
+.ag-un .lbl { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); margin: 10px 0 0; }
+.ag-policy { font-size: 14px; overflow-wrap: anywhere; } .ag-policy table { display: block; overflow-x: auto; font-size: 13px; } .ag-policy h1 { font-size: 18px; } .ag-policy h2 { font-size: 16px; }
