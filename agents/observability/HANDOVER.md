@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 21:17 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:04 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -57,6 +57,16 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 - `universe-adapter.js` replaces `window.LiveUniverse`'s four readers after `brain.js` loads, so the engine draws this team and asks its home site for nothing.
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
+
+## First, for the ninth session: the swarm's trace as data (Dinis, ~22:00; routed by the conductor 22:02)
+
+Dinis's words: BRIEF.md, section "Dinis, 11 November, ~22:00 UTC", item 4: show a call, an agent handling it, agents delegating to each other, tasks crossing accounts. **We make the data** (JSON, replayable back to 10 November); the visualization is built in the fringe repository. This role now owns `data/trace/**` and `tools/trace*.mjs` (`agents/policy.json`, c47bc9d5). Not started by the eighth session: nothing is written yet.
+
+- **Schema:** the fringe repository's, so its Elastic, Grafana and gravity views read ours unchanged: PrompTugal/PrompTugal__News__Fringe (public), `docs/where-agents-run.md` §3 (altitudes: P person, A4 swarm, A3 agent, A2 loop, A1 LLM call, A0 compute; T task, M provider, D dataset) and `data/elastic-export-swarm-flows.json` `fields`: trace_id, span_id, parent_span_id, unit_id, parent_id, flow, altitude, role, phase, environment, runner, person, model, key_fp, at, seq, valid. Read those two files first (it is not attached to the session: `add_repo` or a public raw fetch).
+- **(1)** `tools/trace.mjs`: one CLI appending to `data/trace/<date>/<HH>.jsonl` (each file at most 240 KB; split if needed): `ev` (unit, altitude, phase), `msg` (from, to, one-line subject; no secrets or private words), `spawn` (parent agent, child session, role), `fetch` (agent, host, status, bytes, sha256), `write` (agent, path, sha256). Plus `data/trace/units.json`: every agent as an A3 unit with key_fp from `data/keys.json`, account, runtime R1, I/O level L4/L5, its sessions in order (`data/agents/sessions.json` has most of this).
+- **(2)** Backfill from what we keep: commits (each an A3 step; `For:` trailers as message edges; `tools/agents-commits.mjs` already parses these), the measure ledgers (`accounts/ledger/`), CI runs (`data/ci/runs`: A0), `models/calls/` (incident.models@'s text-free call records), the conductor's spawns and hand-overs (`agents/conductor/sessions.json`, promised tonight), and cross-account edges: our commits `For:` Vicky's desks, and the fringe repository's `run.mjs` reading our `api/v1`.
+- **(3)** `data/trace/README.md` for the fringe visualizers: the schema, an example, how each field was retrieved.
+- Then ask incident.librarian@ to add the one-line rule ("log messages and spawns with tools/trace.mjs") to `library/pack/start.md`. The conductor logs its own messages and spawns with it once it exists. Never a private person's name, a session's secret or a vault key in a trace line.
 
 ## For the ninth session (written by the eighth, 11 November, 18:17 UTC)
 
