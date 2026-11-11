@@ -2,7 +2,7 @@
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active: the fourth librarian session, started at 04:15 UTC on 11 November from the pack and the third session's hand-over, with two jobs only (the catalogue's cost; the 04:44 wake). The first three sessions push nothing more.",
   "last_wake": "2026-11-11T04:14Z",
-  "updated": "2026-11-11T04:21Z",
+  "updated": "2026-11-11T04:45Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:b9954567e6e13193 (encryption), sha256:4f295d0960b0468d (signing); the third session's key, public half in data/keys.json (id incident-librarian-dinis-3); the first two sessions' entries stay listed, marked handed over",
   "jobs": [
@@ -16,6 +16,7 @@
     "R3 (Dinis ~02:50, via the conductor): the briefing pack, so a new agent starts from a few kilobytes and not the repository; measured against starting from whole files"
   ],
   "done": [
+    "04:45 wake (fourth session): news/2026-11-11T04.md brought to 59 commits by 19 agents (still open; closes after 05:00); the release history refreshed; the pack rebuilt by the push.",
     "04:18 to 04:21 (fourth session): the catalogue and the pack in one pass (tools/library-index.mjs runs tools/library-pack.mjs on its entries in memory; one read and one hash per file; no per-file git call existed, one git ls-files remains): index+pack 539 ms to 428 ms, median of 7 runs here; the build's line read library-index 350 + library-pack 189 before and library-index 429 after. The journalist's four pack points done (supports count as read; library/pack/also.json; the commit-codes line in start.md; help/print.md). news/2026-11-11T04.md opened; the round article has a section 5c; start.md says a session is given one or two jobs.",
     "02:52 hourly wake: the round article rewritten to the live site at v0.1.317 (all 13 new agents landed, every section answers; corrections of the round; what waits on Dinis); draft behaviour policies for all 26 agents; the release history now reads incident.ci@'s run data (data/ci/runs/) and is split by hour (317 runs: 184 served, 20 tagged, 94 cancelled before the tag, 4 failed, 15 running); the 02:00 article gains its versions; the commit record refreshed",
     "02:54 R3.1: library/pack/ by tools/library-pack.mjs (--out, in the build's generators): start.md (958 words; rules, shape, how to release), state.json (the incident now, from the data files), history.md (the story in a page), a pack per role for all agents in the policy (job, paths, status, files to open first, neighbours from the links the files declare, open cards), sizes.json. Every pointer is path, bytes, sha256. Bytes at this build: 23,613 to start from the pack against 63,262 (six whole files) and 94,946 (ten): 63% and 75% less to read; tokens estimated as bytes / 4, not yet measured in a session",
@@ -56,7 +57,7 @@
     "at": "2026-11-11T04:14Z",
     "why": "its context reached about 195,000 tokens after 36 calls (one page of the scheduler's list was about 55,000 characters), and the conductor's catalogue job is cheaper from a fresh start",
     "in_flight": [
-      "news/2026-11-11T04.md is open (written 04:20 from the commits read at 04:18). At the :44 wake: `node tools/library-news.mjs 2026-11-11T04`, bring the article up to news/data/2026-11-11T04.json, then `--index`; close it after 05:00 in the form of T03.md. A full clone with tags is needed.",
+      "news/2026-11-11T04.md is open, true to the commits at 04:44 (tools/../scratchpad scripts are gone with the session: edit the article by hand from news/data/2026-11-11T04.json). At the 05:44 wake: run library-news for T04 once more, close it in the form of T03.md, open news/2026-11-11T05.md, then --index. A full clone with tags is needed.",
       "library/pack/conductor-handover.md is live (v0.1.484): its prose is tracked, its three tables are computed in tools/library-pack.mjs (the block after `const board`). It must stay under 2,000 words (the build prints a warning; 1,903 at 04:14). Waiting on the conductor: its hourly wake's real steps and its own scheduled wake, both marked 'not written down'. library/pack/wakes.json is a reading of 04:10: do NOT list the scheduler again unless the conductor says wakes changed (a page is about 55,000 characters); ask the conductor for the changes instead.",
       "news/2026-11-11-round-two.md is true to the live site at 02:45 (v0.1.317); the conductor re-renders it as a PDF for Dinis each hour, so update it as agents land (four since: perplexity, accountant, reporter, journalist).",
       "the accountant will repeat the pack test now that start.md has the two rules it found missing; put any new result on the pack's index (tools/library-pack.mjs reads accounts/pack-test.json).",
