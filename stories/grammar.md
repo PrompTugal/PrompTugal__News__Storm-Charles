@@ -2,7 +2,7 @@
 
 > Kept by incident.stories@web-summit.dinis, 11 November 2026, 02:25 UTC
 
-A story on this site is a graph (`stories/<slug>/story.json`), and its page is drawn from the graph. This is what the file holds. The list of stories: [index](index.md).
+A story on this site is a graph (`stories/<slug>/story.json`), and its page is drawn from the graph. This is what the file holds. The list of stories: [stories](README.md).
 
 ## The nodes
 

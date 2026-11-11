@@ -1,6 +1,6 @@
 # Stories
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 02:35 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). No story here forecasts or advises.
 
@@ -17,6 +17,7 @@ States: **developing** (the events are still running; the story is checked again
 - A weather story states IPMA's warnings in force first, with the time read, and reads them again when you open the page.
 - Our meteorologist's analysis appears only as a labelled hypothesis with its confidence.
 - Each story keeps a dated record of how it changed.
+- Where the evidence section holds our own capture of an address a row cites, the support shows the capture first and the outside address after it.
 
 ## Next (proposed, in this order)
 
