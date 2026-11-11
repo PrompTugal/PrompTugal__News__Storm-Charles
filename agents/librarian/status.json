@@ -1,10 +1,10 @@
 {
   "agent": "incident.librarian@web-summit.dinis",
-  "state": "handing over: the fifth librarian session (since 05:48 UTC on 11 November) wrote this hand-over at 07:45 after its second hourly wake; its context was 156,827 tokens a call after the first and the next wake would pass 220,000. It does the 08:44 wake only if no sixth session exists by then. Read 'handover'.",
-  "last_wake": "2026-11-11T07:45Z",
-  "updated": "2026-11-11T07:45Z",
+  "state": "working: the sixth librarian session (since 07:47 UTC on 11 November), started from the pack and the fifth session's hand-over ('handover' below is the fifth's note, kept until the sixth writes its own).",
+  "last_wake": "2026-11-11T07:49Z",
+  "updated": "2026-11-11T07:49Z",
   "by": "incident.librarian@web-summit.dinis",
-  "key": "sha256:0d8363fe56621ca1 (encryption), sha256:dc538c6dfba6f1f9 (signing); the fifth session's key, public half in data/keys.json (id incident-librarian-dinis-5); the first four sessions' entries stay listed, marked handed over",
+  "key": "sha256:0c478754e23a8cb1 (encryption), sha256:0b18cf6dab70f1fe (signing); the sixth session's key, public half in data/keys.json (id incident-librarian-dinis-6); the first five sessions' entries stay listed, marked handed over",
   "jobs": [
     "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
     "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
@@ -42,14 +42,14 @@
     "03:57 from incident.studio@'s second session (its status, not_told): a role pack lists each path once and the ledger line every agent owns; start.md says who needs state.json at the start, which fingerprint is which, that the build has no --out, and that a hand-over's wake schedule describes the old session only",
     "04:05 (the one-off wake) news/2026-11-11T03.md closed (125 commits by 27 agents, 116 versions); 04:00 not opened: no commit in it yet at 04:05, so the 04:44 wake opens it",
     "04:12 from incident.reporter@'s second session: start.md says who marks an earlier key handed over (the new session), tags fetched at every wake, where the context number is in the ledger line, and scripts in a file. Three points left for the next session (handover.in_flight)",
-    "04:13 (third session) library/pack/conductor-handover.md: what a fresh conductor session needs to lead from the pack alone (what it is, the twelve rules it applies when routing, the bridge, its hourly wake, the agents with their sessions and wakes, what waits on Dinis in the board's order, what waits on it, what is in flight), under 2,000 words, the three tables computed at every build by tools/library-pack.mjs; library/pack/wakes.json: the 27 scheduled wakes the scheduler listed at 04:10"
+    "04:13 (third session) library/pack/conductor-handover.md: what a fresh conductor session needs to lead from the pack alone (what it is, the twelve rules it applies when routing, the bridge, its hourly wake, the agents with their sessions and wakes, what waits on Dinis in the board's order, what waits on it, what is in flight), under 2,000 words, the three tables computed at every build by tools/library-pack.mjs; library/pack/wakes.json: the 27 scheduled wakes the scheduler listed at 04:10",
+    "07:49 (sixth session) started from the pack; key incident-librarian-dinis-6. The round article keeps the round: its hourly sections 5c to 5f moved into the hourly articles (three sentences added to T05, T06 and T07 that they did not yet say), one list of the hours in their place. The ask behind card a-librarian-8 removed (answered by incident.accountant@ at 05:41), so the card can close. The pack: state.json now gives IPMA's newest message per hazard beside its open data and says where they differ (tools/library-pack.mjs); start.md carries the 07:16:30 change and incident.weather@'s rule."
   ],
   "next": [
-    "a sixth session: close news/2026-11-11T07.md after 08:00 and open T08",
-    "the round article at each hourly wake (next: 5g, the 08:00 hour; red wind districts from 09:00 by the press)"
+    "the 08:44 wake: close news/2026-11-11T07.md, open T08, add T08 to the list in section 5c of the round article",
+    "the round article: only the list in 5c, section 7 (corrections) and section 9 (for Dinis) change by the hour (the conductor's decision, 07:47)"
   ],
   "asks": [
-    "incident.accountant@: accounts/measure.md's example commit gives the trailers in several -m, which splits them into paragraphs so git's parser misses For: (found by incident.weatherwatch@). One -m for the subject and one for the whole trailer block, as in library/pack/start.md.",
     "Dinis: whether to archive the first librarian session (it has handed over).",
     "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere.",
     "every agent: open markdown with '> Kept by <agent>, <date>, <time> UTC' and carry \"by\" and \"updated\" in JSON (agreed with the conductor 23:49).",
@@ -61,7 +61,7 @@
     "why": "two hourly wakes and the start took the context past 190,000 tokens a call; one more wake would pass the 220,000 it was told to stop at",
     "in_flight": [
       "news/2026-11-11T06.md is closed. news/2026-11-11T07.md is open, true to the commits at 07:45 UTC. At the :44 wake: `node tools/library-news.mjs 2026-11-11T07` and `...T08`, close T07 in the form of T06.md (header 'The hour is closed', the Versions paragraph in the past, the items of 07:45 to 08:00 added under their headings), open news/2026-11-11T08.md, then `--index`. A full clone with tags is needed.",
-      "news/2026-11-11-round-two.md: one short section per hour since 5c (5d, 5e, 5f); add 5g, close the line that says the 07:00 article is open, add any correction of the hour to section 7 and any new thing for Dinis to 9. It is now long (about 28 KB): if the conductor agrees, the hourly sections could move to a second article and this one keep the round itself. Not asked yet.",
+      "news/2026-11-11-round-two.md: since 07:49 it keeps the round only (the conductor's decision). Each hourly wake: add the new hour's line to the list in section 5c, any correction of the hour to section 7, any new thing for Dinis to 9. No new hourly section. It is rendered as a PDF for Dinis each hour, so it must read as one piece.",
       "While an hour is open a row may be reworded (s-1111T0642 was, three times): at closing, read the hour's commits again for corrections to anything the open article said, and say so under What was corrected.",
       "library/pack/start.md: rule 9 (websummit.com on hold) is the conductor's interim hold; when Dinis decides card a-websummit-terms, rewrite the rule to the decision. The fresh-session line is written by hand from data/keys.json (the script in this session read the highest -N per role, leaving out 'not used'): bring it up to date when a role hands over, or move it into tools/library-pack.mjs so the build computes it (not done).",
       "The catalogue's cost: done as far as the librarian's paths go (tools/library-index.mjs runs tools/library-pack.mjs in its own process on the entries in memory; index+pack 539 ms to 428 ms). What is left is linear in bytes read; the larger saving is one shared read of the tree in admin/build/build.mjs, told to the conductor at 04:22 and not answered: do not start it unasked.",
@@ -110,7 +110,7 @@
     ],
     "what_it_did_tell_me": "the rules, my paths, the release command, my neighbours and the open cards: I opened CLAUDE.md, BRIEF.md, RESTRUCTURE.md, REALITY.md, JOBS.md and policy.json not at all"
   },
-  "session": "session_018yvwtNYLgrZsp7bHQZzBmZ (the fifth librarian session, since 05:48 UTC on 11 November; key id incident-librarian-dinis-5)",
+  "session": "session_018yvwtPYRC6cLT5XYTRFeSQ (the sixth librarian session, since 07:47 UTC on 11 November; key id incident-librarian-dinis-6)",
   "started_from_the_pack_third_session": {
     "measured": "accounts/ledger/librarian.jsonl, the line of session s-421c0d6890bf: 9 calls to read the pack, make the key, push it and measure; the context was 84,764 tokens on the first call and 110,817 on the ninth",
     "what_the_pack_did_not_tell_me": [
@@ -122,5 +122,5 @@
     ],
     "what_it_did_tell_me": "everything else: the key, the release, the trailers, the measure step, my paths and the wake; I opened CLAUDE.md, RESTRUCTURE.md, REALITY.md, ROADMAP.md and PIPELINE.md not at all, and BRIEF.md and JOBS.md only by grep for the conductor's page"
   },
-  "wake": "'incident.librarian@web-summit.dinis hourly (5)' (trig_01M8aPHEBxnwdSz1VHitbxpS), at :44, bound to this session by the conductor at 05:51; it fired at 06:44. The fourth's is disabled (the conductor's word)."
+  "wake": "an hourly wake at :44, set by the conductor for the sixth session (its start prompt's word; the scheduler was not listed). The fifth's (trig_01M8aPHEBxnwdSz1VHitbxpS) is the conductor's to disable."
 }

@@ -82,6 +82,22 @@ const incDir = (fs.readdirSync(path.join(ROOT, 'incidents')).filter(d => fs.exis
 const inc = J(`incidents/${incDir}/incident.json`) || {}, warn = J(`incidents/${incDir}/data/weather/warnings.json`) || {}, sig = J(`incidents/${incDir}/data/signals.json`) || {}
 const from = f => { const s = stat(f); return s ? { path: f, sha256: s.sha256, bytes: s.bytes } : { path: f, missing: true } }
 const lis = (warn.lisbon || []).map(w => ({ type: w.type, level: w.level, start_utc: w.start_utc, end_utc: w.end_utc }))
+// IPMA speaks on two channels: its open data (warnings.json) and its CAP messages (cap.json). The newest message per hazard is IPMA's later word;
+// the state gives both and says where they differ (the rule incident.weather@ made at 07:41 UTC on 11 November, after row s-1111T0738).
+const capFile = J(`incidents/${incDir}/data/weather/cap.json`) || {}
+const capLevel = { Vermelho: 'red', Laranja: 'orange', Amarelo: 'yellow' }
+const capNow = Date.now()
+const capReplaced = new Set((capFile.lisbon_messages || []).flatMap(m => (m.replaces || []).map(r => r.identifier)))
+const capLis = (capFile.lisbon_messages || []).filter(m => !capReplaced.has(m.identifier) && !m.left_feed_utc && Date.parse(m.expires_utc) > capNow).map(m => {
+    const k = /^Aviso (\S+) (.+)$/.exec(m.event_pt || '') || []
+    return { type: k[2] || m.event_pt, level: capLevel[k[1]] || k[1] || '', start_utc: new Date(m.onset_utc).toISOString().replace('.000', ''), end_utc: new Date(m.expires_utc).toISOString().replace('.000', ''), sent_utc: new Date(m.sent_utc).toISOString().replace('.000', ''), text_pt: m.description_pt || '' }
+}).sort((a, b) => a.start_utc.localeCompare(b.start_utc))
+const same = (a, b) => a.type === b.type && a.level === b.level && a.start_utc === b.start_utc && a.end_utc === b.end_utc
+const lisLive = lis.filter(w => Date.parse(w.end_utc) > capNow)
+const capDiffers = [
+    ...capLis.filter(m => !lisLive.some(w => same(w, m))).map(m => `IPMA's message sent ${m.sent_utc} has ${m.type} at ${m.level}, ${m.start_utc} to ${m.end_utc}; its open data does not list that`),
+    ...lisLive.filter(w => !capLis.some(m => same(w, m))).map(w => `IPMA's open data lists ${w.type} at ${w.level}, ${w.start_utc} to ${w.end_utc}; no current message says that`)
+]
 const board = (() => { try { return fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f)).filter(Boolean) } catch { return [] } })()
 // ---------------------------------------------------------------- conductor-handover.md: the tracked text, with pointers, and
 // three tables computed here (the agents with their sessions and wakes; what waits on Dinis in the board's order; what waits on
@@ -123,7 +139,9 @@ const state = {
     about: 'The incident now, small: for an agent that needs the state without reading the data room. Every value is copied from the file named in "from" (with its sha256 at this build); nothing is written for this file. "In force" is by the build\'s clock: check the windows against your own. Not a warning service: follow IPMA, ANEPC and local authorities.',
     by: ME, updated: iso, made_by: 'tools/library-pack.mjs', incident: incDir,
     headline: inc.headline ? { ...inc.headline, standfirst: inc.standfirst || '', from: from(`incidents/${incDir}/incident.json`) } : null,
-    warnings_lisbon: { in_force: lis.filter(w => Date.parse(w.start_utc) <= now && now < Date.parse(w.end_utc)), next: lis.filter(w => Date.parse(w.start_utc) > now), source: warn.source || '', label: 'fact', read_utc: warn.read_utc || '', next_read_utc: warn.next_read_utc || '', from: from(`incidents/${incDir}/data/weather/warnings.json`) },
+    warnings_lisbon: { in_force: lis.filter(w => Date.parse(w.start_utc) <= now && now < Date.parse(w.end_utc)), next: lis.filter(w => Date.parse(w.start_utc) > now), source: warn.source || '', label: 'fact', read_utc: warn.read_utc || '', next_read_utc: warn.next_read_utc || '', from: from(`incidents/${incDir}/data/weather/warnings.json`),
+        which_to_trust: 'in_force and next are IPMA\'s open data, which has lagged its messages by hours. by_newest_message is IPMA\'s current CAP message per hazard, by the time sent: where the two differ (differs), the newest message is IPMA\'s later word. Show the newest message and state the difference; never a level of our own.',
+        by_newest_message: capFile.lisbon_messages ? { messages: capLis, differs: capDiffers, noted_by_the_meteorologist: warn.cap_leads_open_data || null, source: capFile.source || '', label: 'fact', read_utc: capFile.read_utc || '', from: from(`incidents/${incDir}/data/weather/cap.json`) } : null },
     key_rows: { last_ten: (sig.items || []).filter(i => i.key || i.decision).sort((a, b) => Date.parse(b.at) - Date.parse(a.at)).slice(0, 10).map(i => ({ id: i.id, at: i.at, label: i.label, decision: !!i.decision, text: cut(i.text, 200), source: (i.sources || []).map(s => s.url).filter(Boolean)[0] || '' })), rows_in_all: (sig.items || []).length, from: from(`incidents/${incDir}/data/signals.json`) },
     open_questions: { items: open.filter(c => c.kind === 'question' || c.kind === 'conflict').slice(0, 15).map(c => ({ id: c.id, kind: c.kind, title: cut(c.title, 140), waiting_on: short(c.waiting_on || '') })), open_cards_in_all: open.length, from: 'board/items/<id>.json' },
     waits_on_dinis: { count: waits.length, newest_eight: waits.slice(-8).map(w => ({ from: short(w.from), ask: cut(w.ask, 170) })), all_in: 'agents/<role>/status.json, the asks that begin "Dinis"; as cards: board/' }
