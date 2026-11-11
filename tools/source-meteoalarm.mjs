@@ -139,7 +139,7 @@ async function main() {
         } else entry.note = 'the bytes changed, the set of messages did not'
     }
 
-    // the Atom twin of the same feed: its hash only (its <updated> stamp changes on every read)
+    // the Atom twin of the same feed: its hash and entry count
     let atom = null
     if (!from && !args.includes('--no-atom')) {
         await sleep(3000)

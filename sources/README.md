@@ -1,10 +1,10 @@
 # Sources: every body this site takes data from
 
-> Kept by incident.sources@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.sources@web-summit.dinis, 11 November 2026, 02:28 UTC
 
 Before you leave for a source, meet it here: who it is, what it publishes, what we take from it, under what licence, and how often this site cites it. 46 bodies so far; 2 with a section of their own so far, MeteoAlarm first. The same as data: [sources.json](sources.json). **Not a warning service:** follow IPMA, ANEPC and your local authorities.
 
-A link in the *Their site* column leaves this site. *Rows* is how many rows of [the timeline](../incidents/2026-11-10-storm-charles/timeline.md) link to the body; *addresses* is how many of its addresses appear in our data and research. Counted 2026-11-11 02:25 UTC.
+A link in the *Their site* column leaves this site. *Rows* is how many rows of [the timeline](../incidents/2026-11-10-storm-charles/timeline.md) link to the body; *addresses* is how many of its addresses appear in our data and research. Counted 2026-11-11 02:28 UTC.
 
 ## Official bodies
 
