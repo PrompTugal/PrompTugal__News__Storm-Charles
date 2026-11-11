@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:36 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 222 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 00:38 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 225 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -77,7 +77,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 00:36 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 00:38 UTC | | | | |
 
 ### The storm's track is further south than forecast (strongest winds south of Lisbon)
 
@@ -112,8 +112,8 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 | Outlet | Items | Reporter's by-line | Agency (Lusa) | Wire share | Desk | By-line not read | Items linking a primary source | Bodies linked |
 |---|---|---|---|---|---|---|---|---|
 | Notícias ao Minuto | 81 | 4 | 71 | 88% | 6 | 0 | 1 | IPMA |
-| CNN Portugal | 24 | 3 | 6 | 67% | 0 | 15 | 1 | Diário da República |
-| Observador | 18 | 6 | 6 | 33% | 6 | 0 | 1 | IPMA |
+| CNN Portugal | 25 | 3 | 6 | 67% | 0 | 16 | 1 | Diário da República |
+| Observador | 20 | 7 | 6 | 30% | 7 | 0 | 1 | IPMA |
 | Expresso | 17 | 0 | 0 | n/a | 0 | 17 | 0 |  |
 | Diário de Notícias | 17 | 16 | 1 | 6% | 0 | 0 | 1 | AMN, Lusoponte |
 | RTP | 15 | 0 | 0 | 0% | 15 | 0 | 0 |  |
@@ -130,9 +130,9 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 Among outlets with at least four items:
 
-- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (33%), Diário de Notícias (6%), Observador (6%), CNN Portugal (4%).
-- **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (33%).
-- **The wire underneath:** 90 of 222 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (33%), Diário de Notícias (6%), Observador (5%), CNN Portugal (4%).
+- **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (60%), ECO (50%), Observador (35%).
+- **The wire underneath:** 90 of 225 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -140,7 +140,7 @@ Among outlets with at least four items:
 |---|---|---|
 | Notícias ao Minuto | online | volume: the most items in the list; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 | CNN Portugal | news channel | video |
-| Observador | online daily | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)" |
+| Observador | online daily | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; a running live blog |
 | Expresso | weekly, online daily | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 | RTP | public broadcaster | nothing stands out in this sample |
@@ -161,7 +161,7 @@ Reporters whose names are printed on the items in the list, by outlet, with the 
 
 - **Notícias ao Minuto:** Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias
 - **CNN Portugal:** Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva
-- **Observador:** Ana Sanlez, António Moura dos Santos, Filomena Martins, Hugo Fortunato de Oliveira, João Adrião, Judite França, Miguel Santos Carrapatoso, Ricardo Conceição
+- **Observador:** Ana Sanlez, António Moura dos Santos, Edgar Caetano, Filomena Martins, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Martim Andrade, Miguel Santos Carrapatoso, Ricardo Conceição
 - **Diário de Notícias:** Ricardo Simões Ferreira (3), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, David Pereira, Filipe Alves, Leonardo Ralha, Nuno Vinha, Sofia Fonseca, Susete Henriques
 - **Público:** Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sónia Sapage, Victor Ferreira
 - **ECO:** Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira
