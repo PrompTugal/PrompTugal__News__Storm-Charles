@@ -1,15 +1,15 @@
 {
  "about": "Kept by hand by incident.wikipedia@web-summit.dinis: the checkable statements of each Wikipedia page on Storm Charles, in our own English (a paraphrase, never Wikipedia's wording), each with an anchor (a few words of the article, to find the sentence in the revision named) and how it stands against this site. tools/wikipedia-claims.mjs reads this file, finds each sentence in the stored revision, attaches the footnotes it carries, and writes claims.json, compare.json and against.json. rel: 'matches' = a timeline row says the same; 'in-data' = this site holds it in a data file but no timeline row; 'missing' = nowhere on this site; 'behind' = Wikipedia states what a later official change has overtaken, and we hold the change; 'differs' = a figure or time differs. verdict: what this team found when it went to the primary source for the statement ('verified at primary source', 'press only', 'not established at source', or 'not checked by us'), with the row or decision that holds the check. Wikipedia is a lead for us, never the source.",
  "by": "incident.wikipedia@web-summit.dinis",
- "updated": "2026-11-11T15:56:15Z",
+ "updated": "2026-11-11T16:55:39Z",
  "revisions": {
   "pt": {
    "page": "pt-8011202",
-   "oldid": 73423834
+   "oldid": 73424505
   },
   "en": {
    "page": "en-83624065",
-   "oldid": 1385019325
+   "oldid": 1385050859
   },
   "zh": {
    "page": "zh-9562628",
@@ -100,6 +100,10 @@
   {
    "id": "canaries",
    "title": "The Canary Islands"
+  },
+  {
+   "id": "deaths",
+   "title": "Deaths"
   },
   {
    "id": "bruna",
@@ -768,13 +772,13 @@
    "lang": "pt",
    "topic": "madeira-impacts",
    "kind": "number",
-   "anchor": "foram registadas 291 ocorrências",
-   "statement": "Madeira's regional civil protection counted 291 incidents linked to the storm between 20:00 on 10 November and 14:00 on 11 November: 79 landslides, 72 floodings, 47 fallen trees, ten collapsed structures; 732 mobilisations of responders and 304 of vehicles; Funchal 75, Santa Cruz 67. (Until the revision of 15:01 UTC on 11 November the article gave 235 to 11:00; before 14:48 UTC, 205 to 09:00; before 09:48 UTC, 71 to 02:00; before 03:25 UTC, 38 to 23:30.)",
+   "anchor": "foram registadas 313 ocorrências",
+   "statement": "Madeira's regional civil protection counted 313 incidents linked to the storm between 20:00 on 10 November and 16:00 on 11 November: 84 landslides, 76 floodings, 48 fallen trees, 11 collapsed structures; 779 mobilisations of responders and 328 of vehicles; Funchal 75, Santa Cruz 67. (Earlier counts in the article: 291 to 14:00 until 16:34 UTC; 235 to 11:00 until 15:01; 205 to 09:00 until 14:48; 71 to 02:00 until 09:48; 38 to 23:30 until 03:25.)",
    "figures": [
-    "291 incidents",
-    "to 14:00",
-    "732 responders",
-    "304 vehicles"
+    "313 incidents",
+    "to 16:00",
+    "779 responders",
+    "328 vehicles"
    ],
    "ours": {
     "rel": "differs",
@@ -783,7 +787,7 @@
      "s-1111T0735"
     ],
     "verdict": "not checked by us",
-    "verdict_note": "Our rows hold 71 to 02:00, 99 and 162 at 06:50, each as evidence from the press. Wikipedia's 291 to 14:00 is from the regional daily reporting civil protection's count: a lead for the researcher, not a fact.",
+    "verdict_note": "Our rows hold 71 to 02:00, 99 and 162 at 06:50, each as evidence from the press. Wikipedia's 313 to 16:00 is from the regional daily reporting civil protection's count: a lead for the researcher, not a fact.",
     "note": "Wikipedia is ahead of our rows: a later count."
    }
   },
@@ -1585,6 +1589,44 @@
     "note": "Not on this site. Cited to the regional daily.",
     "verdict": "not checked by us"
    }
+  },
+  {
+   "id": "w-pt-50",
+   "lang": "pt",
+   "topic": "transport",
+   "kind": "event",
+   "anchor": "confirmou a interrupção da circulação ferroviária na [[Linha da Beira Baixa]]",
+   "statement": "On the afternoon of 11 November the national railway confirmed the Beira Baixa line interrupted between Santa Margarida and Tramagal by a landslip, Lisbon urban trains suppressed between Campolide and Alcântara-Terra, and four Intercity trains over the 25 de Abril bridge suppressed as a precaution. Cited to RTP.",
+   "figures": [
+    "Beira Baixa line",
+    "4 Intercity trains"
+   ],
+   "ours": {
+    "rel": "matches",
+    "signals": [
+     "s-1111T1549",
+     "s-1111T1643"
+    ],
+    "verdict": "not checked by us",
+    "note": "Our rows read CP's own notice (13:30 and 16:31 updates)."
+   }
+  },
+  {
+   "id": "w-en-23",
+   "lang": "en",
+   "topic": "deaths",
+   "kind": "number",
+   "anchor": "At least one person has died in the [[Canary Islands]]",
+   "statement": "From 16:40 UTC on 11 November the English section says at least one person has died in the Canary Islands, and its infobox gives 3 fatalities in the same revision. The sentence cites a bare link to an English-language Canarian news site; the infobox figure has no footnote.",
+   "figures": [
+    "at least 1 death",
+    "3 (infobox)"
+   ],
+   "ours": {
+    "rel": "missing",
+    "note": "No death is on this site: no row of ours reports one, in Portugal, Madeira or the Canaries. A lead to check at the authorities (Spain's 112 Canarias, the Canary government), not a fact; the page disagrees with itself (1 in the text, 3 in the infobox).",
+    "verdict": "not checked by us"
+   }
   }
  ],
  "differences": [
@@ -1673,6 +1715,17 @@
    "what": "Lisbon's red rain warning: both say 12:00 to 18:00.",
    "reading": "Both are behind IPMA, which moved it to 09:00 to 18:00 at 21:23 UTC on 10 November (our row s-1110T2353, from IPMA's CAP message).",
    "label": "fact"
+  },
+  {
+   "id": "d-08",
+   "topic": "deaths",
+   "kind": "different figure",
+   "claims": [
+    "w-en-23"
+   ],
+   "what": "Deaths: English (from 16:40 UTC on 11 November) says 'at least one' in the Canary Islands in its text and 3 in its infobox; Portuguese, Chinese and Vietnamese report none (the Vietnamese infobox: 'no information yet').",
+   "reading": "The English infobox and text disagree within one revision; neither figure is from an authority. A hypothesis about the page, not a finding about the storm.",
+   "label": "hypothesis"
   }
  ],
  "our_facts": [
