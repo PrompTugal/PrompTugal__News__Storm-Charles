@@ -103,6 +103,8 @@ export function writeFeed(f, docs, owner) {
   const head = { elastic_feed: feed(owner), by: owner, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), flow: docs[0]?.flow, count: docs.length };
   fs.mkdirSync(path.dirname(f), { recursive: true });
   const body = JSON.stringify(head).slice(0, -1) + ',"docs":[\n' + docs.map(d => JSON.stringify(d)).join(',\n') + '\n]}\n';
+  const tail = (x) => x.slice(x.indexOf(',"docs":['));   // same docs: leave the file (and its "updated") as it was, so a re-run commits only new hours
+  try { const old = fs.readFileSync(f, 'utf8'); if (tail(old) === tail(body) && old.startsWith(JSON.stringify(head).slice(0, 20))) return old.length; } catch {}
   fs.writeFileSync(f, body);
   return body.length;
 }
@@ -270,6 +272,48 @@ function backfill() {
     }
   }
 
+  // 3b. The team's third-party model calls (incident.models@'s text-free records, models/calls/index.json: models/calls/<date>/<HH>.json and
+  //     agents/<role>/calls/<date>/<HH>.json). Their events are already in the fringe fields (A2 loop, A1 llm call): copied as they are
+  //     (their flow, trace_id, span_id kept; seq renumbered with the rest), an A2 with no parent put under its agent's A3, and each A1 end
+  //     given cost_usd/duration_ms from the call with its span_id. A call with no event becomes an A1 start/end of its own. Lines an agent
+  //     wrote live (same span_id and phase in an <HH>.<role>.json) are skipped.
+  let nModelEv = 0, nModelCalls = 0;
+  const liveSeen = new Set();
+  if (fs.existsSync(DIR)) for (const d of fs.readdirSync(DIR).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)))
+    for (const f of fs.readdirSync(path.join(DIR, d)).filter(f => /^\d{2}\.[^.]+(-\d+)?\.json$/.test(f)))
+      for (const x of readDocs(path.join(DIR, d, f))) if (x.span_id) liveSeen.add(x.span_id + '|' + x.phase);
+  for (const mf of readJSON('models/calls/index.json', { files: [] }).files || []) {
+    if (!mf.path || mf.date < since.slice(0, 10)) continue;
+    const src = `backfill:${mf.path.startsWith('models/') ? 'models/calls' : mf.path.split('/').slice(0, 3).join('/')}`;
+    const hf = readJSON(mf.path, { calls: [], events: [] });
+    const bySpan = {}; for (const c of hf.calls || []) if (c.span_id) bySpan[c.span_id] = c;
+    const spans = new Set();
+    for (const e0 of hf.events || []) {
+      if (!e0.at || e0.at < since || liveSeen.has(e0.span_id + '|' + e0.phase)) continue;
+      const e = { ...e0, source: src };
+      spans.add(e.span_id);
+      if (e.altitude === 'A2' && !e.parent_id && e.runner) { e.parent_id = unitOf(fullName(e.runner)); e.parent_span_id = spanIdOf(e.parent_id); }
+      const c = bySpan[e.span_id];
+      if (c && e.altitude === 'A1' && e.phase === 'end') { if (c.cost_usd != null) e.cost_usd = c.cost_usd; if (c.latency_ms != null) e.duration_ms = c.latency_ms; }
+      if (e.runner) agents.add(fullName(e.runner));
+      ev.push(e); nModelEv++;
+    }
+    for (const c of hf.calls || []) {
+      if ((c.span_id && spans.has(c.span_id)) || !c.at || c.at < since) continue;
+      const agent = fullName(c.agent || hf.by);
+      const unit = c.span_id ? `A1-${c.span_id.slice(0, 12)}` : `A1-${c.id}`;
+      const parent = c.parent?.unit_id || unitOf(agent);
+      if (liveSeen.has(spanIdOf(unit) + '|end')) continue;
+      const t0 = Date.parse(c.at), t1 = t0 + (c.latency_ms || 0);
+      const common = { unit, altitude: 'A1', parent, runner: agent, environment: envOf(agent), key_fp: keyAt(keys, agent, t0), model: c.model_served || c.model_asked,
+        item: c.id, note: c.task ? `task ${c.task}` : undefined, source: src };
+      const pair = [event({ ...common, at: iso(t0), phase: 'start', name: `llm call ${c.provider || ''}`.trim() }),
+        event({ ...common, at: iso(t1), phase: 'end', name: `llm call ${c.status || ''}`.trim(), valid: c.status === 'ok', cost_usd: c.cost_usd, duration_ms: c.latency_ms })];
+      for (const x of pair) { if (c.span_id) x.span_id = c.span_id; if (c.parent?.unit_id && c.parent.span_id) x.parent_span_id = c.parent.span_id; if (c.trace_id) x.trace_id = c.trace_id; ev.push(x); }
+      agents.add(agent); nModelCalls++;
+    }
+  }
+
   // 4. Spawns and hand-overs: the conductor's record (agents/conductor/sessions.json), then the sessions each agent stated it was
   //    started by (data/agents/sessions.json: started_by / started_at, only where written down).
   const cond = readJSON('agents/conductor/sessions.json', {});
@@ -294,20 +338,21 @@ function backfill() {
   seqLast = 0; for (const e of ev) e.seq = nextSeq(Date.parse(e.at));
   // Rewrite this role's backfill files (<HH>.json, <HH>-<n>.json); agents' live files (<HH>.<role>.json) are left as they are.
   const mine = /^\d{2}(-\d+)?\.json$/;
+  const stale = new Set();   // removed after the write unless rewritten (an unchanged file is left untouched by writeFeed)
   if (fs.existsSync(DIR)) for (const d of fs.readdirSync(DIR).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d))) {
-    for (const f of fs.readdirSync(path.join(DIR, d))) if (mine.test(f) || f.endsWith('.jsonl')) fs.unlinkSync(path.join(DIR, d, f));
+    for (const f of fs.readdirSync(path.join(DIR, d))) if (mine.test(f) || f.endsWith('.jsonl')) stale.add(path.join(DIR, d, f));
   }
   const byHour = {}; for (const e of ev) (byHour[e.at.slice(0, 13)] ||= []).push(e);
   let files = 0, bytes = 0;
   for (const [h, list] of Object.entries(byHour)) {
     let part = 1, cur = [], size = 400;
-    const flush = () => { bytes += writeFeed(fileOf(h + ':00:00Z', part), cur, BY); files++; cur = []; size = 400; part++; };
+    const flush = () => { const fp = fileOf(h + ':00:00Z', part); stale.delete(fp); bytes += writeFeed(fp, cur, BY); files++; cur = []; size = 400; part++; };
     for (const e of list) { const l = JSON.stringify(e).length + 2; if (size + l > PART_MAX) flush(); cur.push(e); size += l; }
     if (cur.length) flush();
   }
-  const liveLines = { length: 0 };
+  for (const f of stale) fs.unlinkSync(f);
   const u = units(agents);
-  console.log(`trace backfill since ${since}: ${nCommits} commits, ${nMsgs} messages, ${nRuns} CI runs, ${nA1} A1 aggregates, ${nSpawns} spawns; agents' live files left as they are; ${ev.length} lines in ${files} files (${Math.round(bytes / 1024)} KB); ${u.count} units`);
+  console.log(`trace backfill since ${since}: ${nCommits} commits, ${nMsgs} messages, ${nRuns} CI runs, ${nA1} A1 aggregates, ${nModelEv} model-call events and ${nModelCalls} calls without one (models/calls), ${nSpawns} spawns; agents' live files left as they are; ${ev.length} lines in ${files} files (${Math.round(bytes / 1024)} KB); ${u.count} units`);
 }
 
 // ---------- index.json: every file, its lines, first and last time, sha256 (so a visualizer fetches only what it needs) ----------

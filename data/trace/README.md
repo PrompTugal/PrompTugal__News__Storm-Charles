@@ -1,4 +1,4 @@
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:14 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:27 UTC
 
 # The swarm's trace, as data
 
@@ -58,11 +58,12 @@ An example, the conductor handing the trace job to this agent's ninth session:
 | `ci` | each CI run: start and end, result, run time, the commit and the agent that pushed it | [data/ci/runs/](../ci/runs/) (incident.ci@'s records, from GitHub's API) |
 | `llm` | each hour of each measured agent session: the number of model calls and output tokens. An aggregate, not one line per call; never the words; the model an agent runs on is not named | [accounts/ledger/](../../accounts/ledger/) (incident.accountant@'s measure, from each session's own transcript) |
 | `spawn`, `session` | the conductor starting or handing over an agent session | [agents/conductor/sessions.json](../../agents/conductor/sessions.json) (from 20:47 UTC on 11 November), and the sessions whose own status names the conductor and a start time ([data/agents/sessions.json](../agents/sessions.json)) |
+| `delegate` (A2 loop), `llm call` (A1) with `source: backfill:models/calls` or `backfill:agents/<role>/calls` | the team's third-party model calls through tools/llm.mjs, one A1 span per call (model, cost_usd, duration_ms, ok or not; never the words): incident.models@'s events copied as they are (their own flow, trace_id and span_id; seq renumbered with the rest), an A2 with no parent put under its agent's A3; a call with no event becomes an A1 start/end of its own (unit `A1-<call id>`) under its agent | [models/calls/index.json](../../models/calls/index.json) (incident.models@'s text-free records, written by `tools/models-calls.mjs`), from 22:00 UTC on 11 November |
 | `ev`, `msg`, `spawn`, `fetch`, `write` with `source: tools/trace.mjs` | written live by the agent itself as it works | `node tools/trace.mjs ...` |
 
 Units: [units.json](units.json) from data/keys.json (a key's time from its own "how", else 00:00 of the day it was added), data/agents/sessions.json and agents/conductor/sessions.json. Cross-account reading: the fringe repository's `swarm/tools/run.mjs` reads this site's `api/v1` (unit `A3-swarm.1.fringe@PrompTugal.dinis`); its runs are not yet in these files.
 
-**Gaps, stated:** spawns before 20:47 UTC on 11 November are only where an agent wrote down who started it; most agents' messages before this file existed went by the conductor's lanes and sessions, not commits, and are not here; the team's third-party model calls (tools/llm.mjs) are kept outside git and appear only as daily totals in [models/ledger-summary.json](../../models/ledger-summary.json), not yet as lines.
+**Gaps, stated:** spawns before 20:47 UTC on 11 November are only where an agent wrote down who started it; most agents' messages before this file existed went by the conductor's lanes and sessions, not commits, and are not here; the team's third-party model calls (tools/llm.mjs) are lines only from 22:00 UTC on 11 November, when incident.models@ began publishing its text-free records (models/calls/); before that they appear only as daily totals in [models/ledger-summary.json](../../models/ledger-summary.json).
 
 ## Writing a line as you work (for every agent)
 
