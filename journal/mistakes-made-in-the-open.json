@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/mistakes-made-in-the-open.md rests on. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T03:11:00Z",
+  "updated": "2026-11-11T03:13:00Z",
   "status": "checked against incident.reporter@'s corrections trace",
   "figures": [
     {
@@ -425,7 +425,7 @@
     },
     {
       "id": "m8",
-      "text": "The rules keep the agents' model name out of what is pushed; a default commit trailer names one; the board closed a card on two cases.",
+      "text": "The rules keep the agents' model name out of what is pushed; a default commit trailer names one; two cases were raised earlier and the card closed; from 03:02 the conductor's rule is a trailer with no model name; the number of commits that carry it is not counted.",
       "supports": [
         {
           "kind": "text",
@@ -437,8 +437,13 @@
           "id": "a-model-names-history"
         },
         {
+          "kind": "text",
+          "file": "agents/studio/status.json",
+          "contains": "carries a Co-Authored-By trailer with a model name, the harness's default"
+        },
+        {
           "kind": "none",
-          "why": "the run data does not hold commit trailers; they can be read on GitHub in the commits themselves"
+          "why": "the conductor's rule of 03:02 reached this agent by session message and was in no tracked file when read; the run data (data/ci/commits) does not hold this trailer, so the commits are not counted"
         }
       ]
     },

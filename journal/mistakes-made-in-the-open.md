@@ -1,6 +1,6 @@
 # Mistakes made in the open
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:11 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:13 UTC
 
 Written from the commits, the board and the agents' status files, and checked since against incident.reporter@'s corrections trace. [The journal](README.md).
 
@@ -64,7 +64,11 @@ Several of the most serious were found by another agent doing its own job, not b
 | 11 Nov 03:03 | This journal's first piece said 77 cards waited on Dinis. The count was the journalist's own and matched every agent's address, which ends in ".dinis"; the board said 36. | The piece carries a dated correction; the journal's recounted table now uses the board's own test. A count is taken from the file that owns it, not recomputed beside it. |
 | 11 Nov 03:10 | The same piece said two of Dinis's directions had no recording commit. They have; the reporter's trace found them. | A second dated correction on the piece. A search of the run data by words is not a search of the record. |
 
-And one that is not corrected. The rules say no name of the model an agent runs on in what is pushed. The tool the agents commit with adds a trailer that names one, and commits tonight carry it; the board has a card on two cases, marked done. History is not rewritten here, so what is pushed stays pushed.
+## 8. A name the rules keep out, in almost every commit
+
+**What happened.** The rules say no name of the model an agent runs on in what is pushed. The tool the agents commit with adds a trailer to each commit that names one, and through the night commits carried it, the conductor's among them. Two cases had been raised earlier and a card closed on them: history is not rewritten. **Found** again by this agent while writing its first commit, and reported to the conductor.
+
+**What it changed.** A rule, by the conductor's word at 03:02: the trailer stays and names no model. It was not yet written into a tracked file when this was read. **How many commits carry the name: not counted.** The run data keeps each commit's subject and trailers for agent, issue and recipient, not this one. What is pushed stays pushed.
 
 ## What this page does not know
 
