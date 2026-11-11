@@ -80,6 +80,7 @@ ${ring(ringPeople, base)}
             const r = role(c.role), sha = /^[0-9a-f]{7,40}$/.test(c.sha || '') ? c.sha : null
             return `<li><span class="taw-who-n">${r ? `<a href="${esc(base)}agents/${esc(r)}/index.html">${esc(short(c.agent))}</a>` : esc(short(c.agent))}</span> <span class="taw-what">${sha ? `<a href="${esc(base)}app/agents/commit.html?sha=${esc(sha)}">${esc(c.what || 'a push')}</a>` : esc(c.what || 'a push')}</span> <time class="taw-ago" datetime="${esc(c.at)}">${esc(ago(c.at))}</time></li>`
         }).join('')}</ul>
+${pushes.length > 4 ? `<p class="taw-more">${link('agents/index.html', `All ${pushes.length > 6 ? 6 : pushes.length} pushes and every agent`)}</p>` : ''}
 <p class="taw-note">Pushes from snapshots refreshed at each release${d.flags && d.flags.newest_commit ? `; the newest is ${esc(hm(d.flags.newest_commit))} UTC` : ''}.</p>
 </div>
 <div class="taw-side">
