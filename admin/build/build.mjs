@@ -466,8 +466,40 @@ pages.push({ rel: 'index.html', md: 'index.md', title: 'Storm Charles' })
 // datasets page, llms.txt, sitemap, version, 404
 const dsTable = `| File | Bytes | What it is |\n|---|---|---|\n` + datasets.map(x => `| [${x.incident}/${x.path}](${x.url}) | ${x.bytes} | ${x.about.replace(/\|/g, '/').replace(/\n/g, ' ').slice(0, 220)} |`).join('\n')
 const dsMd = `# The data\n\nEvery file behind this site, for people and agents, with its size; the sha256 of each is in [api/v1/index.json](api/v1/index.json). Inside each file, every value carries its source and the UTC time it was read. Facts, evidence and hypotheses are labelled. Refreshed at least hourly while the storm runs.\n\n${dsTable}\n`
-write('datasets.md', dsMd)
-write('datasets.html', page({ rel: 'datasets.html', title: 'The data', body: `<main class="doc"><div class="wrap"><article>${markdown(dsMd)}</article></div></main>`, twin: 'datasets.md' }))
+// the data page as cards, one per family (incident.designer@, design/round-16.md): what it is, each file's size, when it was last read
+// or written and when it is next read (from the file's own top-level fields), and links to the JSON, its README, the query page and the catalogue.
+const FAMILIES = [
+    ['weather', 'Weather', `incidents/${d0}/data/weather/`, "IPMA's warnings, communiqués, observations and forecasts for Lisbon; the airport's TAF and METARs; the labelled analysis. Kept by incident.meteorologist@."],
+    ['decisions', 'Decisions', `incidents/${d0}/data/decisions/`, 'Who decided what, when, and what it followed: the decision graph and every source used. Kept by incident.researcher@.'],
+    ['signals', 'Signals and watches', `incidents/${d0}/data/`, 'The timeline as data (every row with its id, label, kind and sources) and the watch on the organisers\' pages. Kept by incident.conductor@ and incident.dev@.'],
+    ['graph', 'The graph', 'data/graph/', 'One graph of the storm (actors, decisions, warnings, sources, signals, places) and its ontology. Kept by incident.graph@.'],
+    ['media', 'Media watch', 'research/media/', 'Who covers the storm: outlets, coverage, who was first on each fact, the Wikipedia article. Kept by incident.media@.'],
+    ['weather-sites', 'Weather sites', 'research/weather-sites/', 'The survey of weather sites, the gap count, the imagery licences, the MeteoAlarm terms check. Kept by incident.weatherwatch@.'],
+    ['agents', 'Agents', 'data/agents/', 'Every agent: what it is doing, its commits, the page views. Kept by incident.observability@.']
+]
+const STAMP = ['read_utc', 'as_of', 'updated', 'made_at', 'checked', 'generated_at', 'generated', 'built_at', 'written_utc']
+const kb = n => n < 1024 ? `${n} B` : `${(n / 1024).toFixed(n < 10240 ? 1 : 0)} KB`
+const fams = FAMILIES.map(([id, title, dir, what]) => {
+    const abs = path.join(OUT, dir); let names = []
+    try { names = fs.readdirSync(abs).filter(f => f.endsWith('.json') && !fs.statSync(path.join(abs, f)).isDirectory()).sort() } catch { }
+    const rowsF = names.map(f => {
+        const buf = fs.readFileSync(path.join(abs, f)); let j = {}; try { j = JSON.parse(buf) } catch { }
+        const k = STAMP.find(s => typeof j[s] === 'string' && ok(j[s].length === 10 ? j[s] + 'T00:00Z' : j[s])), nested = k ? '' : Object.values(j).map(v => v && typeof v === 'object' && !Array.isArray(v) && typeof v.read_utc === 'string' && ok(v.read_utc) ? v.read_utc : '').filter(Boolean).sort().pop() || '', at = k ? j[k] : nested
+        return { f, href: dir + f, bytes: buf.length, at, how: k || (nested ? 'read_utc, inside' : ''), next: typeof j.next_read_utc === 'string' && ok(j.next_read_utc) ? j.next_read_utc : '', about: typeof j.about === 'string' ? j.about : '' }
+    })
+    const has = f => fs.existsSync(path.join(OUT, f))
+    return { id, title, dir, what, rowsF, readme: has(dir + 'index.html') ? dir + 'index.html' : '', total: rowsF.reduce((n, r) => n + r.bytes, 0), latest: rowsF.map(r => r.at).filter(a => a.length > 10).sort().pop() || '', next: rowsF.map(r => r.next).filter(Boolean).sort()[0] || '' }
+}).filter(f => f.rowsF.length)
+const stamp = t => t ? (t.length > 10 ? `${hm(t)} UTC ${dm(t)}` : dm(t + 'T00:00Z')) : 'not stated'
+const dsCards = `<main class="doc ds"><div class="wrap"><article><h1>The data</h1><p>Every file behind this site, for people and agents. Inside each file, every value carries its source and the UTC time it was read; facts, evidence and hypotheses are labelled. Each file's sha256 is in <a href="api/v1/index.json">the catalogue</a>; <a href="llms.txt">llms.txt</a> says how to use it; <a href="data/query/index.html">the query page</a> runs SQL over the same files in the browser. Times below are each file's own stamp (when it was last read at its source, or written).</p>
+<nav class="ds-jump">${fams.map(f => `<a href="#ds-${f.id}">${esc(f.title)} <i>${f.rowsF.length}</i></a>`).join('')}</nav></article>
+${fams.map(f => `<section class="card ds-card" id="ds-${f.id}"><header><h2>${esc(f.title)}</h2><p class="ds-facts"><span><b>${f.rowsF.length}</b> files</span><span><b>${kb(f.total)}</b></span><span>last read or written <b>${esc(stamp(f.latest))}</b></span>${f.next ? `<span>next read <b>${esc(stamp(f.next))}</b></span>` : ''}</p></header><p>${esc(f.what)}</p>
+<div class="wx-scroll"><table><thead><tr><th>File</th><th>Size</th><th>Last read or written</th><th>Next read</th><th>What it holds</th></tr></thead><tbody>${f.rowsF.map(r => `<tr><td><a href="${esc(r.href)}">${esc(r.f)}</a></td><td>${kb(r.bytes)}</td><td>${esc(stamp(r.at))}${r.how ? ` <small>${esc(r.how)}</small>` : ''}</td><td>${r.next ? esc(stamp(r.next)) : ''}</td><td>${esc(r.about.slice(0, 260))}${r.about.length > 260 ? '…' : ''}</td></tr>`).join('')}</tbody></table></div>
+<p class="meta">${f.readme ? `<a href="${esc(f.readme)}">What the fields mean</a> · ` : ''}${f.id === 'graph' && fs.existsSync(path.join(OUT, 'data/graph/ontology.json')) ? '<a href="data/graph/ontology.json">The ontology</a> · ' : ''}<a href="data/query/index.html">Query it</a> · <a href="api/v1/index.json">Catalogue (sha256)</a> · folder <code>${esc(f.dir)}</code></p></section>`).join('\n')}
+</div></main>`
+const dsMdCards = `# The data\n\nEvery file behind this site, for people and agents. Inside each file, every value carries its source and the UTC time it was read. Facts, evidence and hypotheses are labelled. The sha256 of each incident file is in [api/v1/index.json](api/v1/index.json).\n\n${fams.map(f => `## ${f.title}\n\n${f.what}\n\n| File | Bytes | Last read or written | Next read |\n|---|---|---|---|\n${f.rowsF.map(r => `| [${r.f}](${r.href}) | ${r.bytes} | ${r.at || 'not stated'} | ${r.next} |`).join('\n')}\n`).join('\n')}`
+write('datasets.md', dsMdCards)
+write('datasets.html', page({ rel: 'datasets.html', title: 'The data', body: dsCards, twin: 'datasets.md' }))
 pages.push({ rel: 'datasets.html', md: 'datasets.md', title: 'The data' })
 write('llms.txt', `# Storm Charles (storm-charles.promptugal.news)\n\n> Storm Charles, Lisbon, 10 to 12 November 2026: the decisions (Web Summit, the government, transport), IPMA's warnings and observations, and the public signals, each with its source and the UTC time read. A data source for agents and people. Not a warning service: follow IPMA and ANEPC.\n\n## Data (JSON; start here)\n\n- [The catalogue](${SITE}api/v1/index.json): every file, its size, sha256 and what it holds\n${datasets.map(x => `- [${x.incident}/${x.path}](${SITE}${x.url})`).join('\n')}\n\n## Pages (each has a markdown twin: the same path with .md)\n\n${pages.map(p => `- [${p.title}](${SITE}${p.md})`).join('\n')}\n\n## Rules of the data\n\n- Every item: source URL, time read (UTC); label: fact (the body that decides or warns), evidence (reported by others), hypothesis (our analysis, with its reasons).\n- Times are UTC; Lisbon is on UTC in November.\n- Version: ${VERSION}, built ${builtAt}.\n`)
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(p => `<url><loc>${SITE}${p.rel.replace(/index\.html$/, '')}</loc></url>`).join('\n')}\n</urlset>\n`)
