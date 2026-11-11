@@ -4,7 +4,7 @@ summary: You read "Web Summit" on this site. Follow it down: the word, its entit
 mount: <div id="studio" data-base="../animations/" data-anim="follow-a-word"><noscript><p class="meta">The player needs JavaScript. The same explanation, scene by scene as text, is below.</p></noscript></div>
 head: <link rel="stylesheet" href="../../app/studio/studio.css"><script src="../../app/studio/characters.js" defer></script><script src="../../app/studio/player.js" defer></script>
 ---
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:29 UTC
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:59 UTC
 
 # Follow a word to its source
 
@@ -39,8 +39,8 @@ Below: the same storyboard as plain text, every scene in order with its caption.
    At work: our capture. [s-1110T1909](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909) (fact) "PRIMARY: Web Summit's own page, "Important event update": "Day 2 (Wednesday, November 11th) will not take place" …". "Important event update".
 2. Two levels give two times for the same reading: the row says 20:58, the entity's edge says 20:59. Two agents read the page a minute apart, and each wrote down its own time. Nothing was tidied to make them agree.
    At work: the row that says so. (fact) "Web Summit decided: Day 2 (Wednesday 11 Nov) will not take place.". [s-1110T1909](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909) (fact) "PRIMARY: Web Summit's own page, "Important event update": "Day 2 (Wednesday, November 11th) will not take place" …".
-3. Most of the timeline cannot be walked this far yet. Its 51 rows cite 70 addresses: 24 have a capture, 43 are not captured yet, and 3 never will be, because they are on a social platform or under terms that forbid automated reading. Where there is no capture, the record says so and why.
-   At work: our capture. "Timeline rows to captures, as read 02:29 UTC".
+3. Not every row can be walked this far. The timeline's 56 rows cite 75 addresses: 54 have a capture, 15 are not captured yet, and 6 never will be, because they are on a social platform or under terms that forbid automated reading. Where there is no capture, the record says so and why. *Counted at 02:59 UTC. Half an hour earlier, minutes after captures began, it was 24 of 70.*
+   At work: our capture. "Timeline rows to captures, as read 02:59 UTC".
 4. And one link is still indirect. The entity's own list of sources is empty: you get from Web Summit to the capture through the row, not straight from the entity. The chain holds; it is one step longer than it will be.
    At work: its entity. [organisation/websummit](../../entities/organisation/websummit.html) (fact) "Decides whether Wednesday's programme runs, changes or is suspended.". [s-1110T1909](../../incidents/2026-11-10-storm-charles/timeline.html#s-1110T1909) (fact) "PRIMARY: Web Summit's own page, "Important event update": "Day 2 (Wednesday, November 11th) will not take place" …".
 5. Dinis's words for what this is for (BRIEF.md): "I should be able to connect until I arrive at the last source. And the last source should be a page about the evidence that we have." For this one word, tonight, you can.
@@ -52,7 +52,7 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 - The steps are drawn as clicks. The files and their pages exist (entities/, evidence/, the timeline); whether every word on every page is already a link to its entity was not checked here, and the linking is spreading page by page.
 - A capture proves what an address served to us at one moment, by its hash. It does not prove the page said the same thing earlier, or to someone else, or that what it says is true.
 - The raw capture (the HTML as served) is in a private vault; the site shows the screenshot only where the source's terms allow, otherwise the hash, the title and a short excerpt. This page's screenshot is shown.
-- The counts are as read on 11 November 2026, 02:29 UTC, minutes after the first captures. They will be out of date within the hour; evidence/rows.json is right.
+- The counts are as read on 11 November 2026, 02:59 UTC, and they move as captures are made (24 of 70 at 02:29; 54 of 75 half an hour later). evidence/rows.json is right.
 - The decision quoted is a record of what Web Summit published on 10 November. For what Web Summit says now, go to Web Summit.
 
 ## Read for this
