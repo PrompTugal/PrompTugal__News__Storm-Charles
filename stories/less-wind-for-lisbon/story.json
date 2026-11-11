@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T16:53Z",
-  "based_on_read_utc": "2026-11-11T16:22:55Z",
+  "updated": "2026-11-11T17:51Z",
+  "based_on_read_utc": "2026-11-11T17:23:17Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -601,33 +601,13 @@
     },
     {
       "id": "c15",
-      "text": "MET Norway's forecast for Lisbon, at its update of 13:17 on Wednesday, has the strongest mean wind of the afternoon at 46.4 km/h at 14:00, from the south-south-west, and the lowest pressure, 988.8 hPa, in the same hour; then 39.2 km/h from the south-west at 15:00, turning west by 16:00 and north-west by 17:00 as the wind eases. At its update of 08:21 it had 55.1 km/h at 15:00. This block carries no gusts. Measured at the airport at 14:00: 54 km/h from the south, gusting 74, and 989 hPa, close to the model's hour (our comparison). The feed has since dropped the hours before 16:00; its 16:00 and 17:00 rows still read west and north-west.",
+      "text": "MET Norway's forecast for Lisbon, at its update of 13:17 on Wednesday, has the strongest mean wind of the afternoon at 46.4 km/h at 14:00, from the south-south-west, and the lowest pressure, 988.8 hPa, in the same hour; then 39.2 km/h from the south-west at 15:00, turning west by 16:00 and north-west by 17:00 as the wind eases. At its update of 08:21 it had 55.1 km/h at 15:00. This block carries no gusts (it has since updated, at 17:20). Measured at the airport at 14:00: 54 km/h from the south, gusting 74, and 989 hPa, close to the model's hour (our comparison). The feed has since dropped the hours it covered.",
       "label": "evidence",
       "model": true,
       "said_by": "MET Norway, Locationforecast 2.0 (a second model, never merged with IPMA)",
       "at_utc": "2026-11-11T13:17:23Z",
-      "read_utc": "2026-11-11T16:22:55Z",
+      "read_utc": "2026-11-11T17:23:17Z",
       "supports": [
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
-          "field": "second_models.met_no.rows[time_utc=2026-11-11T16:00Z].wind_from_deg",
-          "expect": 279.8,
-          "read_field": "second_models.met_no.read_utc"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
-          "field": "second_models.met_no.rows[time_utc=2026-11-11T17:00Z].wind_from_deg",
-          "expect": 303.7,
-          "read_field": "second_models.met_no.read_utc"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
-          "field": "second_models.met_no.updated_utc",
-          "expect": "2026-11-11T13:17:17Z"
-        },
         {
           "kind": "row",
           "id": "s-1111T1425"
@@ -649,6 +629,12 @@
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "metars[time_utc=2026-11-11T14:00Z].pressure_hpa",
           "expect": 989
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+          "field": "second_models.met_no.updated_utc",
+          "expect": "2026-11-11T17:20:16Z"
         }
       ]
     },
@@ -701,11 +687,11 @@
     },
     {
       "id": "c17",
-      "text": "The airport's forecast, written by IPMA for pilots, held through the night and was then lowered. The one issued at 05:00 on Wednesday kept 30 knots gusting 45 (83 km/h) at times to 18:00. The amendment of 10:08 cut that to 20 knots gusting 35 (65 km/h) at times to 16:00, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms in the same hours, and the wind turning west-north-west between 16:00 and 18:00. The airport measured 74 km/h at 14:00, above the 65 it had at times. The amendment of 14:36 has 23 knots gusting 38 (70 km/h) to 16:00, the wind becoming west-north-west by 18:00, at times gusting 27 knots (50 km/h) from 18:00 to 21:00; the thunderstorm group is gone.",
+      "text": "The airport's forecast, written by IPMA for pilots, held through the night and was then lowered. The one issued at 05:00 on Wednesday kept 30 knots gusting 45 (83 km/h) at times to 18:00. The amendment of 10:08 cut that to 20 knots gusting 35 (65 km/h) at times to 16:00, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms in the same hours, and the wind turning west-north-west between 16:00 and 18:00. The airport measured 74 km/h at 14:00, above the 65 it had at times. The amendment of 14:36 has 23 knots gusting 38 (70 km/h) to 16:00, the wind becoming west-north-west by 18:00, at times gusting 27 knots (50 km/h) from 18:00 to 21:00; the thunderstorm group is gone. The forecast issued at 17:00, the first to cover all of Thursday, has west-north-west 24 km/h from 18:00, turning south-west by 02:00, showers at times, and gusts of 27 knots (50 km/h) at times from 10:00 to 18:00 on Thursday.",
       "label": "fact",
       "said_by": "IPMA, the TAF for Lisbon airport (a point forecast for pilots, not a public warning)",
-      "at_utc": "2026-11-11T14:36:00Z",
-      "read_utc": "2026-11-11T16:22:55Z",
+      "at_utc": "2026-11-11T17:00:00Z",
+      "read_utc": "2026-11-11T17:23:17Z",
       "supports": [
         {
           "kind": "row",
@@ -722,44 +708,46 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T14:00Z].gust_kmh",
+          "expect": 74
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "taf.issue_utc",
-          "expect": "2026-11-11T14:36Z"
+          "expect": "2026-11-11T17:00Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "taf.raw",
-          "contains": "TAF AMD LPPT 111436Z"
+          "contains": "TAF LPPT 111700Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=BASE].gust_kmh",
-          "expect": 70
+          "field": "taf.groups[change=BASE].wind_dir",
+          "expect": 290
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=BASE].to_utc",
-          "expect": "2026-11-11T16:00Z"
+          "field": "taf.groups[change=BECMG].becoming_by_utc",
+          "expect": "2026-11-12T02:00Z"
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=BECMG&wind_dir=290].becoming_by_utc",
-          "expect": "2026-11-11T18:00Z"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=TEMPO&wind_dir=290].gust_kmh",
+          "field": "taf.groups[change=TEMPO&wind_dir=230].gust_kmh",
           "expect": 50
         },
         {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T14:00Z].gust_kmh",
-          "expect": 74
+          "kind": "row",
+          "id": "s-1111T1611"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1724"
         }
       ]
     },
@@ -940,10 +928,10 @@
     },
     {
       "id": "o1",
-      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's fifteen reports from 09:00 to 16:00 fall in two parts. Until 13:30 the wind was 17 to 28 km/h, backing from south-south-east through east to east-north-east and then east again, with no gust reported, heavy rain from 10:30 and visibility down to 1.5 km at 13:00. Between 13:30 and 14:00 the wind turned from east to south and rose from 17 to 54 km/h, gusting 74 km/h (40 knots), with wind shear reported on runway 20 and the temperature up 2 °C; at 15:00 it was south-south-west 41 km/h gusting 61 km/h, the rain over and visibility above 10 km, wind shear still reported; at 15:30 and 16:00 south-south-west 37 and 39 km/h (gusting 61 at 15:30, no gust at 16:00), light rain and drizzle again and visibility 1.5 km. The pressure fell from 1001 to 989 hPa by 14:00 and held at 989 to 16:00. IPMA's newest station hour is the one labelled 15:00: the rain all but stopped (0.0 to 1.2 mm at seven stations, Relógio the most) and the mean wind eased to 17.6 to 36.7 km/h, all from the south-west, Relógio the strongest; before it, the hour labelled 14:00 had 1.2 to 6.8 mm and up to 41.0 km/h at Oeiras, the strongest mean wind of the day, and the hour labelled 13:00 5.9 to 26.2 mm (Oeiras, the heaviest single hour at IPMA's Lisbon stations in the data room's record of the storm). The 74 km/h gust is below the gust warned for its hour (90 km/h, 110 in the most exposed places). The red rain ended at 15:00 as set. At 15:55:03 IPMA ended the orange wind at 15:56, two hours early (its message, in the data room's copy from the 16:22:55 read). So the wind window is over: in the airport's reports inside it, from 09:00 to 15:30, no gust reached the warned gust, the strongest 74 km/h at 14:00. Yellow rain stands to 18:00, the orange sea to 21:00.",
+      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's seventeen reports from 09:00 to 17:00 fall in two parts. Until 13:30 the wind was 17 to 28 km/h, backing from south-south-east through east to east-north-east and then east again, with no gust reported, heavy rain from 10:30 and visibility down to 1.5 km at 13:00. Between 13:30 and 14:00 the wind turned from east to south and rose from 17 to 54 km/h, gusting 74 km/h (40 knots), with wind shear reported on runway 20 and the temperature up 2 °C; at 15:00 it was south-south-west 41 km/h gusting 61 km/h, the rain over and visibility above 10 km, wind shear still reported; at 15:30 and 16:00 south-south-west 37 and 39 km/h (gusting 61 at 15:30, no gust at 16:00), light rain and drizzle again and visibility 1.5 km. Then the wind turned: west 22 km/h at 16:30 and west-north-west 20 km/h gusting 43 km/h at 17:00, no rain reported. The pressure fell from 1001 to 989 hPa by 14:00 and held at 989 to 16:00, then rose: 990 hPa at 16:30, 991 at 17:00. IPMA's newest station hour is the one labelled 16:00: 0.0 to 1.2 mm (Oeiras the most) and mean winds of 13.0 to 29.9 km/h (Relógio the strongest), from the west at Oeiras, Amoreiras and Almada; the hour labelled 15:00 had 0.0 to 1.2 mm and up to 36.7 km/h, all from the south-west; the hour labelled 14:00 had 1.2 to 6.8 mm and up to 41.0 km/h at Oeiras, the strongest mean wind of the day, and the hour labelled 13:00 5.9 to 26.2 mm (Oeiras, the heaviest single hour at IPMA's Lisbon stations in the data room's record of the storm). The 74 km/h gust is below the gust warned for its hour (90 km/h, 110 in the most exposed places). The red rain ended at 15:00 as set. At 15:55:03 IPMA ended the orange wind at 15:56, two hours early (its message, in the data room's copy from the 16:22:55 read). So the wind window is over: in the airport's reports inside it, from 09:00 to 15:30, no gust reached the warned gust, the strongest 74 km/h at 14:00. Yellow rain stands to 18:00, the orange sea to 21:00.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T16:22:55Z",
+      "read_utc": "2026-11-11T17:23:17Z",
       "supports": [
         {
           "kind": "data",
@@ -1278,24 +1266,82 @@
           "expect": "SW"
         },
         {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T17:00Z]",
-          "absent": true
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-          "field": "latest_hour_utc",
-          "expect": "2026-11-11T15:00Z"
-        },
-        {
           "kind": "row",
           "id": "s-1111T1611"
         },
         {
           "kind": "row",
           "id": "s-1111T1624"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T16:30Z].wind_dir",
+          "expect": 260
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T16:30Z].pressure_hpa",
+          "expect": 990
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T17:00Z].wind_dir",
+          "expect": 290
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T17:00Z].gust_kmh",
+          "expect": 43
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T17:00Z].pressure_hpa",
+          "expect": 991
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T16:00Z].rain_mm",
+          "expect": 1.2
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=1210580].hourly[time_utc=2026-11-11T16:00Z].wind_mean_kmh",
+          "expect": 29.9
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=1210773].hourly[time_utc=2026-11-11T16:00Z].wind_mean_kmh",
+          "expect": 13
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[id=6215360].hourly[time_utc=2026-11-11T16:00Z].wind_dir",
+          "expect": "W"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1724"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T18:00Z]",
+          "absent": true
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "latest_hour_utc",
+          "expect": "2026-11-11T16:00Z"
         }
       ],
       "at_utc": "2026-11-11T16:00:00Z"
@@ -1552,7 +1598,7 @@
     },
     {
       "id": "h9",
-      "text": "At 12:25 the meteorologist revised the reading again, now with medium confidence: the airport's wind backing to east-north-east while the pressure fell 4 hPa in an hour puts Lisbon on the storm's north side, so the centre is likely over or just south of Lisbon about 13:00 to 15:00, not just north of it as read at 09:25. Lisbon's strongest wind may come after the centre passes, from the north-west or west, and rain is now the main hazard. Its test: the wind turning through north to north-west would mean the centre passed south. This is our analysis and not a forecast; IPMA's warnings are what stand.",
+      "text": "At 12:25 the meteorologist revised the reading again, now with medium confidence: the airport's wind backing to east-north-east while the pressure fell 4 hPa in an hour puts Lisbon on the storm's north side, so the centre is likely over or just south of Lisbon about 13:00 to 15:00, not just north of it as read at 09:25. Lisbon's strongest wind may come after the centre passes, from the north-west or west, and rain is now the main hazard. Its test: the wind turning through north to north-west would mean the centre passed south. Not borne out: the airport's wind went from south-south-west to west and west-north-west (16:30, 17:00), and the meteorologist's analysis 25 (high confidence) has the centre passing just north. This is our analysis and not a forecast; IPMA's warnings are what stand.",
       "label": "hypothesis",
       "confidence": "medium (the wind's backing and the pressure fall at one airport, and the models)",
       "said_by": "incident.meteorologist@web-summit.dinis (analysis; not IPMA's words)",
@@ -1574,6 +1620,16 @@
           "contains": [
             "centre now likely over or just south of Lisbon (medium)"
           ]
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1724"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T16:30Z].wind_dir",
+          "expect": 260
         }
       ],
       "qualified_by": [
@@ -1751,7 +1807,7 @@
     },
     {
       "id": "h11",
-      "text": "At 14:25 the meteorologist revised the reading again, revising the one of 12:25: with the airport's wind turning from east to south and rising to 54 km/h gusting 74, wind shear, and the temperature up 2 °C while the pressure still fell, a warm sector is arriving, and the centre is now more likely to pass just north of Lisbon, as read at 09:25. On that reading Lisbon is now in the strongest-wind sector (south to south-west), turning west to north-west once the pressure rises; the airport forecast has the wind from 290 degrees from 16:00 to 18:00. The pressure minimum and the turn to the west will test it. At 15:25 (analysis 22), with the airport's pressure steady at 989 hPa for an hour and the wind south-south-west, the meteorologist wrote that the centre is passing just north now; the worst rain was 12:00 to 14:30 and the strongest wind from 14:00, turning west to north-west from 16:00 to 18:00 by the airport forecast. This is our analysis and not a forecast; IPMA's warnings are what stand.",
+      "text": "At 14:25 the meteorologist revised the reading again, revising the one of 12:25: with the airport's wind turning from east to south and rising to 54 km/h gusting 74, wind shear, and the temperature up 2 °C while the pressure still fell, a warm sector is arriving, and the centre is now more likely to pass just north of Lisbon, as read at 09:25. On that reading Lisbon is now in the strongest-wind sector (south to south-west), turning west to north-west once the pressure rises; the airport forecast has the wind from 290 degrees from 16:00 to 18:00. The pressure minimum and the turn to the west will test it. At 15:25 (analysis 22), with the airport's pressure steady at 989 hPa for an hour and the wind south-south-west, the meteorologist wrote that the centre is passing just north now; the worst rain was 12:00 to 14:30 and the strongest wind from 14:00, turning west to north-west from 16:00 to 18:00 by the airport forecast. At about 17:24 (analysis 25, high confidence) it wrote that the centre passed just north, closest about 14:30 to 16:30; the airport's wind turned west by 16:30 and the pressure rose from 17:00. This is our analysis and not a forecast; IPMA's warnings are what stand.",
       "label": "hypothesis",
       "confidence": "not stated in the analysis's summary (it revises the medium-confidence reading of 12:25)",
       "said_by": "incident.meteorologist@web-summit.dinis (analysis; not IPMA's words)",
@@ -1788,6 +1844,10 @@
         {
           "kind": "row",
           "id": "s-1111T1524"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1724"
         }
       ],
       "qualified_by": [
@@ -2080,6 +2140,17 @@
     {
       "at_utc": "2026-11-11T16:53Z",
       "what": "o1: rows s-1111T1611 and s-1111T1624 added as supports; text unchanged."
+    },
+    {
+      "at_utc": "2026-11-11T17:51Z",
+      "what": "On the 17:23:17 read. o1: before, to the airport's 16:00 and the station hour 15:00; now to 17:00 (the wind turned west and west-north-west, 991 hPa rising) and the hour labelled 16:00. c17: the forecast of 17:00 for Thursday (before: the 14:36 amendment was newest). c15: MET Norway updated at 17:20. h11: analysis 25 (centre passed just north, closest 14:30 to 16:30). h9: before, its test open; now not borne out.",
+      "claims_changed": [
+        "o1",
+        "c17",
+        "c15",
+        "h11",
+        "h9"
+      ]
     }
   ]
 }
