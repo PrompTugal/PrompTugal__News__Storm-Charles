@@ -1,13 +1,13 @@
 # Expresso: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 11:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 12:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | weekly, online daily (pt) |
-| Items we read | 28: 28 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:21 to 11 Nov 09:47 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 28 not read |
+| Items we read | 29: 29 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:21 to 11 Nov 11:34 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 29 not read |
 | Does best (from the counts) | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 
 ## Against the key moments
@@ -18,12 +18,12 @@ Its first item on each keyed fact, and its place among the outlets we could read
 |---|---|---|---|---|---|
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 14:41 (article) | +101 min | 6 of 6 | [Lisboa com túneis, jardins e equipamentos culturais encerrados, Web S… ↗](https://expresso.pt/tempestades/2026-11-10-lisboa-com-tuneis-jardins-e-equipamentos-culturais-encerrados-web-summit-em-duvida-medidas-serao-reavaliadas-dentro-de-24h-diz-moedas-2c217504) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:39 (article) | +90 min | 10 of 11 | [Depressão “Charles”: Web Summit fecha as portas esta quarta-feira e r… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428) |
-| The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 23:54 (article) | unknown | 3 of 3 | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
+| The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 10 Nov 23:54 (article) | unknown | 3 of 4 | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
 | IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 10 Nov 23:54 (article) | +79 min | 3 of 5 | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa… ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 28 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 29 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -61,7 +61,6 @@ Its public contact page was not found by our reader (start at [Expresso ↗](htt
 | 10 Nov 18:46 | article | not read | [Escolas e tribunais encerrados, transportes suspensos, eventos cancelados: país pára à espera da te… ↗](https://expresso.pt/tempestades/2026-11-10-escolas-e-tribunais-encerrados-transportes-suspensos-eventos-cancelados-pais-para-a-espera-da-tempestade-charles-d744d844) |
 | 10 Nov 19:03 | article | not read | [Montenegro avisa para "horas difíceis", mas garante que país está "mais preparado"; Governo acionou… ↗](https://expresso.pt/tempestades/2026-11-10-montenegro-avisa-para-horas-dificeis-mas-garante-que-pais-esta-mais-preparado-governo-acionou-centro-de-crise-71ae5f16) |
 | 10 Nov 19:04 | article | not read | [Depressão Charles adia concerto de Luísa Sobral em Lisboa ↗](https://expresso.pt/blitz/noticias/2026-11-10-depressao-charles-adia-concerto-de-luisa-sobral-em-lisboa-4555232b) |
-| 10 Nov 20:18 | article | not read | [Carris, Transtejo e Metro de Lisboa mantêm serviços, CP suprime quatro comboios de Lisboa para o Su… ↗](https://expresso.pt/tempestades/2026-11-10-carris-transtejo-e-metro-de-lisboa-mantem-servicos-cp-suprime-quatro-comboios-de-lisboa-para-o-sul-autocarros-de-longo-curso-suspensos-67c0b5cf) |
 | 10 Nov 20:39 | article | not read | [Depressão “Charles”: Web Summit fecha as portas esta quarta-feira e reabre na quinta ↗](https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428) |
 | 10 Nov 22:03 | article | not read | [Especialista aponta as horas mais críticas da passagem da tempestade Charles por Portugal ↗](https://expresso.pt/tempestades/2026-11-10-video-o-pico-da-tempestade-charles-chega-ao-final-da-tarde-especialista-alerta-para-horas-criticas-em-portugal-a98fdc36) |
 | 10 Nov 23:47 | article | not read | [Depressão Charles chega à Madeira com chuva e vento fortes (veja as imagens) ↗](https://expresso.pt/curtas/2026-11-10-video-depressao-charles-chega-a-madeira-com-chuva-e-vento-fortes--veja-as-imagens--85beb1ff) |
@@ -75,3 +74,5 @@ Its public contact page was not found by our reader (start at [Expresso ↗](htt
 | 11 Nov 07:15 | article | not read | [A tempestade Charles e Moedas deseja um Natal sem tendas no Rossio ↗](https://expresso.pt/podcasts/lei-da-paridade/2026-11-11-a-tempestade-charles-e-moedas-deseja-um-natal-sem-tendas-no-rossio-645118e3) |
 | 11 Nov 08:38 | article | not read | [Há muita água nas estradas da região de Lisboa ↗](https://expresso.pt/tempestades/2026-11-11-video-ha-muita-agua-nas-estradas-da-regiao-de-lisboa-3703ff58) |
 | 11 Nov 09:47 | article | not read | [Depressão Charles: regulador dos seguros recomenda verificar cobertura e conservar provas em caso d… ↗](https://expresso.pt/tempestades/2026-11-11-depressao-charles-regulador-dos-seguros-recomenda-verificar-cobertura-e-conservar-provas-em-caso-de-danos-f54a7abb) |
+| 11 Nov 10:48 | article | not read | [Madeira escapou à tragédia: tempestade Charles trouxe mais chuva do que em 2010, mas sem ocorrência… ↗](https://expresso.pt/tempestades/2026-11-11-madeira-escapou-a-tragedia-tempestade-charles-trouxe-mais-chuva-do-que-em-2010-mas-sem-ocorrencias-graves-5eda2a45) |
+| 11 Nov 11:34 | article | not read | [Madeira teve chuva forte e ventos de 130 km/h: pico da tempestade já passou e alerta baixou (veja a… ↗](https://expresso.pt/curtas/2026-11-11-video-madeira-teve-chuva-forte-e-ventos-de-130-km-h-pico-da-tempestade-ja-passou-e-alerta-baixou--veja-as-imagens--5260821f) |

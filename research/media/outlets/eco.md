@@ -1,13 +1,13 @@
 # ECO: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 11:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 12:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | business daily (online) (pt) |
-| Items we read | 14: 13 articles, 0 live, 0 video, 1 opinion |
-| First and last | 10 Nov 17:34 to 11 Nov 09:03 UTC |
-| Whose reporting | 3 with a reporter's by-line, 0 the agency's (Lusa), 3 the desk's, 8 not read; wire share 0% |
+| Items we read | 15: 14 articles, 0 live, 0 video, 1 opinion |
+| First and last | 10 Nov 17:34 to 11 Nov 11:38 UTC |
+| Whose reporting | 3 with a reporter's by-line, 0 the agency's (Lusa), 3 the desk's, 9 not read; wire share 0% |
 | Does best (from the counts) | first on "Web Summit calls off Day 2" |
 
 ## Against the key moments
@@ -22,7 +22,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 14 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 15 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -65,3 +65,4 @@ Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira. A by-line is a public p
 | 11 Nov 06:22 | article | not read | [Depressão Charles. O que fecha, o que fica aberto e como se deve proteger? ↗](https://eco.sapo.pt/descodificador/depressao-charles-o-que-fecha-o-que-fica-aberto-e-como-se-deve-proteger/) |
 | 11 Nov 06:32 | article | not read | [Portugal em situação de alerta. Charles dirige-se para o continente ↗](https://eco.sapo.pt/2026/11/11/portugal-em-situacao-de-alerta-charles-dirige-se-para-o-continente/) |
 | 11 Nov 09:03 | article | not read | [Charles, a prevenção ‘à alemã’ e o que isso revela ↗](https://eco.sapo.pt/opiniao/charles-a-prevencao-a-alema-e-o-que-isso-revela/) |
+| 11 Nov 11:38 | article | not read | [IPMA atualiza para oito os distritos em aviso vermelho. Veja o que muda ↗](https://eco.sapo.pt/2026/11/11/ipma-atualiza-para-oito-os-distritos-em-aviso-vermelho-veja-o-que-muda/) |

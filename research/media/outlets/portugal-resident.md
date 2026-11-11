@@ -1,13 +1,13 @@
 # Portugal Resident: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 11:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 12:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | English-language weekly in Portugal (en) |
-| Items we read | 5: 5 articles, 0 live, 0 video, 0 opinion |
-| First and last | 11 Nov 08:28 to 11 Nov 10:26 UTC |
-| Whose reporting | 5 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 0 not read; wire share 0% |
+| Items we read | 6: 6 articles, 0 live, 0 video, 0 opinion |
+| First and last | 11 Nov 08:28 to 11 Nov 11:46 UTC |
+| Whose reporting | 6 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 0 not read; wire share 0% |
 | Does best (from the counts) | own reporting: most items carry a reporter's by-line; coverage in English |
 
 ## Against the key moments
@@ -20,7 +20,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 5 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 6 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -43,7 +43,7 @@ Its public contact page was not found by our reader (start at [Portugal Resident
 
 ## By-lines on this story, as printed
 
-[Natasha Donn](../people/natasha-donn.md) (3), Michael Bruxo (2). A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+[Natasha Donn](../people/natasha-donn.md) (4), Michael Bruxo (2). A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -54,3 +54,4 @@ Its public contact page was not found by our reader (start at [Portugal Resident
 | 11 Nov 09:38 | article | Michael Bruxo | [Storm Charles puts dampener on Portugal’s Magusto celebrations ↗](https://www.portugalresident.com/storm-charles-disrupts-magusto-celebrations-portugal/) |
 | 11 Nov 10:17 | article | Natasha Donn | [Depression Charles “loses conditions needed to intensify” ↗](https://www.portugalresident.com/depression-charles-loses-conditions-needed-to-intensify/) |
 | 11 Nov 10:26 | article | Michael Bruxo | [Storm forces suspension of scheduled healthcare across Algarve ↗](https://www.portugalresident.com/storm-charles-suspends-scheduled-healthcare-algarve/) |
+| 11 Nov 11:46 | article | Natasha Donn | [Government keeps all prohibitions and warnings in place, stressing ‘storm hasn’t arrived yet’ ↗](https://www.portugalresident.com/government-keeps-all-prohibitions-and-warnings-in-place-stressing-storm-hasnt-arrived-yet/) |
