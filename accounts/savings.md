@@ -2,11 +2,11 @@
 title: Where the savings are
 summary: The largest costs first, what each agent could change, and the saving, measured or estimated and said to be which.
 ---
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 21:41 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 22:47 UTC
 
 # Where the savings are
 
-Round 23. 30 of 41 agents have measured their own sessions ([the table](index.md), [the lines](ledger/)); twenty-two of them have since handed over to a fresh session, so the first saving is measured on this team and not only estimated. The tables in items 1 and 5 to 7 are as read at 03:33 UTC; the team's total at 21:41 UTC is 3.30 billion tokens in 12,009 calls. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money.
+Round 24. 30 of 43 agents have measured their own sessions ([the table](index.md), [the lines](ledger/)); twenty-two of them have since handed over to a fresh session, so the first saving is measured on this team and not only estimated. The tables in items 1 and 5 to 7 are as read at 03:33 UTC; the team's total at 22:47 UTC is 3.44 billion tokens in 12,686 calls. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money.
 
 ## 1. Re-reading the session's context on every call is almost the whole cost (measured, 26 sessions)
 
@@ -70,10 +70,13 @@ Twenty-one agents have handed over to a fresh session of themselves since 03:03 
   | 16:00 | 286,043 | 356 | 165,545 | 570,237 | 59% |
   | 17:00 | 332,393 | 177 | 216,413 | 644,089 | 53% |
   | 18:00 | 278,685 | 292 | 160,125 | 718,503 | 55% |
-  | 19:00 (the conductor to 19:42, its fifth compaction before 19:24) | 238,132 | 246 | 181,084 | 372,643 | 43% |
-  | 20:00 | not known | 128 without it | 206,148 | no line since 19:42 | |
+  | 19:00 (the conductor's fifth compaction before 19:24) | 233,426 | 258 | 186,746 | 337,288 | 45% |
+  | 20:00 | 195,928 | 202 | 204,191 | 178,111 | 29% |
+  | 21:00 | 228,268 | 328 | 178,459 | 305,106 | 53% |
+  | 22:00 (not final; the conductor's line to 22:05) | 206,423 | 324 | 196,779 | 419,962 | 9% |
 
   The hand-overs hold for the 28 other agents (170,000 to 194,000 a call since 06:00); the team's figure has risen since 06:00 because one session has grown from 346,000 to 692,000 tokens a call.
+- **As read at 22:47 UTC:** the rows above, with the conductor's line to 22:05 (2,854 calls, 1.26 billion tokens, 36.7%; 436,404 on its last call, up from 128,704 at 19:42: about 130,000 an hour since its fifth compaction). **Models handed over at Dinis's word (BRIEF.md, about 22:00 UTC):** its first session's last hour 399,728 a call, the second session 213,346 on average (47% less) over 122 calls in its first 32 minutes, 309,050 on its last; it grew fast (the delegation loop) and handed over again at 22:34 (its commit). In the 22:00 hour so far the rest made 173 calls at 157,146; the 21:00 hour settled at 178,459 without the conductor (328 calls with it). Still on their first session and held for Dinis: archivist 546,445, shadow 541,123 (no line since 21:07), sources 519,411, perplexity 409,543 (none since 17:51).
 - **As read at 21:41 UTC:** the rows above. Without the conductor, the five first-session agents were 29% of the 20:00 hour's tokens on 15 of its 128 calls (506,088 a call); the rest 166,332. Sources passed half a million (500,679); shadow 541,123 and archivist 541,115 now level; perplexity 409,543 (no line since 17:51), models 403,575 (none since 09:31). Hand-overs since 20:41: librarian's thirteenth, 151,695 to 94,997 (37% less); board, media and reporter have new session keys and no line yet. No line from the conductor since 19:42.
 - **As read at 20:41 UTC:** the rows above. A quiet hour: 223 calls at 19:00 against 1,025 at 10:00, 38 filed so far for 20:00. Split of 19:00: the handed-over agents 143 calls at 148,394, the five first-session agents 12 at 507,495, the conductor 68 at 372,643. No hand-over since 19:41. Next to hand over (held for Dinis): archivist 532,967, shadow 517,440 (no line since 19:07), sources 489,041, perplexity 409,543 (none since 17:51), models 403,575 (none since 09:31); then media's third session, 249,038. The conductor: 128,704 at 19:42, no line since.
 - **Added 19:44 UTC:** the conductor's line to 19:42: a fifth compaction just before 19:24 brought its last call to 128,704 tokens (2,635 calls, 1.21 billion tokens, 37.2% of 3.24 billion). Re-ranked, next to hand over: archivist 527,371, shadow 517,440, sources 484,055, perplexity 409,543, models 403,575 (held for Dinis, the conductor's word at 19:43); then media's third session, 240,802. The conductor grew about 100,000 a call an hour after its last compaction; at that rate it is back above 500,000 by about 23:00.
