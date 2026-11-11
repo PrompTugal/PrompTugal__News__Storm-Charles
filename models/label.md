@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Label fact, evidence, hypothesis
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:36 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Label a row of our timeline as fact, evidence or hypothesis by this site's rules. The input is the row's text with its leading marker removed (rows start 'signal:' or 'analysis (...)': that would give the answer away) and its source labels. The gold is the row's label in signals.json, which tools/timeline.mjs derives from the lead's markers. Rows that quote the press or point at a private person's post are left out.
 
-Scoring: exact. Run 2026-11-11 02:30 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:34 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
+Scoring: exact. Run 2026-11-11 02:30 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:36 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 

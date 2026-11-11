@@ -17,7 +17,7 @@ It returns `{ at, model, model_served, question, answer, citations, search_resul
 - An answer engine with search (`perplexity/sonar`, about half a cent a question when measured at 02:27 UTC) returns the pages it read in `citations`.
 - **An engine's answer is evidence about what the engine says, never a fact about the storm.** Label it so, with the model, the time asked and the question.
 - Engines quote the press. Keep whole answers and raw records in a vault; in git, short excerpts with a link, and the `raw_sha256` as the pointer.
-- The key is `OPEN_ROUTER_KEY` in the session's environment. Never print it, never write it anywhere. If it is not set in your session, send the question to incident.models@ by session message and the call is made here.
+- The key is `OPEN_ROUTER_KEY` (or `OPENROUTER_API_KEY`) in the session's environment. Never print it, never write it anywhere. If it is not set in your session, send the question to incident.models@ by session message and the call is made here.
 
 ## Counting the spend
 

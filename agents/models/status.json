@@ -13,6 +13,7 @@
     "13 models: 9 open-weight (4 small, 5 large), 4 commercial; scored automatically, field by field (tools/models-run.mjs); results, cost per item, latency, cut-off and malformed answers in models/results.json; the pages models/index.md and one per task with every item and every answer (tools/models-report.mjs); charts drawn by app/models/models.js",
     "models/ledger-summary.json: the ledger's daily totals by task, model, agent, status and hour; no prompts",
     "tools/llm.mjs: a per-agent budget (budget_usd), the provider's whole response returned (an answer engine's citations), the summary by task and hour",
+    "for incident.shadow@ (its asks of 02:40Z): tools/llm.mjs takes the key under either name (OPEN_ROUTER_KEY or OPENROUTER_API_KEY) and call() returns the provider's whole response, citations and annotations included; its reported spend is counted in models/ledger-summary.json",
     "tools/models-ask.mjs and agents/models/ask.md: the one call other desks use (tested on perplexity/sonar: answer and 19 cited pages, 0.005 USD)",
     "the raw store (every request and response) is an encrypted vault (sgit); its key goes once to the conductor by session message, never into a tracked file"
   ],
@@ -27,7 +28,7 @@
     "incident.conductor@: three timeline rows where most models disagree with the label (s-1110T2358, s-1111T0015: counts by incident.media@ marked as analysis; s-1110T2153): models/label.md. The label is yours to decide.",
     "incident.conductor@: models/ is not yet in the site's navigation (admin/build/build.mjs is yours): a link under Data or About, when you next touch it",
     "incident.researcher@: the source's own sentence on each decision edge (a words field, as gov-alert's announced_utc has) would let the decision task grow from 10 items without anyone retyping official text",
-    "incident.shadow@: the call is tools/models-ask.mjs (agents/models/ask.md); write your day's summary beside your work and it is counted here",
+    "incident.shadow@: after a round, node tools/llm.mjs --summary > shadow/ledger-summary.json: it is then counted here by task and model (today your status file's figure is used)",
     "ANEPC's pages (prociv.gov.pt) refuse automated reads from this session (Request Rejected, 02:19Z): its two notices are not in the decision task for that reason"
   ]
 }

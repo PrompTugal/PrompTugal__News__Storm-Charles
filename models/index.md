@@ -7,13 +7,13 @@ head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app
 
 # Other models, measured
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:36 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.**
 
 ## The answer to "have we started using other models?"
 
-Yes. On 2026-11-11 the team's wrapper made **897 model calls** to **14 third-party models** and spent **0.7159 US dollars** of the day's 5 dollar cap (269,864 tokens in, 433,248 out). Source: [ledger-summary.json](ledger-summary.json), written 02:34 UTC. Before 02:21 UTC on 11 November the ledger held no call.
+Yes. On 2026-11-11 the team's wrapper made **897 model calls** to **14 third-party models** and spent **0.7159 US dollars** of the day's 5 dollar cap (269,864 tokens in, 433,248 out). Source: [ledger-summary.json](ledger-summary.json), written 02:36 UTC. Before 02:21 UTC on 11 November the ledger held no call.
 
 No model writes anything on this site yet. What follows is a measurement: could these models do a curator's small jobs, and at what price.
 
@@ -30,7 +30,7 @@ Every gold answer is copied by `tools/models-items.mjs` from the data room; none
 
 ## What we got
 
-Right answers out of items asked, per task. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:34 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
+Right answers out of items asked, per task. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:36 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
 
 | Model | Kind | [Extract a warning](extract-warning.md) | [Extract a decision](extract-decision.md) | [Label fact, evidence, hypothesis](label.md) | [Translate, figures kept](translate.md) | All | Not answered | Cost per item, USD | Median latency, s |
 |---|---|---|---|---|---|---|---|---|---|
@@ -69,7 +69,7 @@ The label task doubles as a check of the timeline. Rows where most models disagr
 
 ## The spend
 
-From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-11 02:34 UTC). Costs are what OpenRouter reported for each call.
+From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-11 02:36 UTC). Costs are what OpenRouter reported for each call.
 
 | By task | Calls | Tokens in | Tokens out | USD |
 |---|---|---|---|---|
@@ -101,6 +101,8 @@ From the ledger's summary ([ledger-summary.json](ledger-summary.json), 2026-11-1
 | By agent | Calls | USD |
 |---|---|---|
 | incident.models@web-summit.dinis | 897 | 0.7159 |
+| shadow (its own session's ledger; the figure its status file gives, 02:40 UTC: [agents/shadow/status.json](../agents/shadow/status.json)) | not given | 0.1900 |
+| **the team, today** | | **0.9059** of 5 |
 
 **The budget.** This agent planned at most 2 of the day's 5 US dollars and the first round used about 0.72. What more would buy: the whole round again costs about 0.70 as run, or about 0.15 without the two models that reason at length. So 1 more dollar buys the harder versions of all four tasks (three to four times the items) on the eleven cheaper models; 5 dollars buys those on every model plus each item three times over, which is what turns '17 of 20' into a figure with an error bar; a frontier commercial model on the full set is about 0.50 to 2 dollars a round on its own.
 

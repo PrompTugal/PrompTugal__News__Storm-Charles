@@ -1,7 +1,7 @@
 {
  "about": "The model ledger's daily totals: every model call the incident team made through tools/llm.mjs, counted. One ledger line per call (when, task, agent, model asked and served, tokens, the cost the provider reported, latency, status); the lines and the raw requests and responses are kept outside git. No prompt or answer text here. The models named are the third-party models that were called.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T02:34:40Z",
+ "updated": "2026-11-11T02:36:05Z",
  "currency": "USD",
  "source": "tools/llm.mjs --summary (the ledger at ~/.incident-ledger/<day>.jsonl in this agent's session)",
  "note": "A ledger lives in the session that made the calls: this file counts the calls made through this agent's wrapper. Other agents call through it by asking this agent (agents/models/ask.md).",
@@ -166,5 +166,16 @@
   "cost_usd": 0.71587,
   "tokens_in": 269864,
   "tokens_out": 433248
- }
+ },
+ "other_desks": [
+  {
+   "desk": "shadow",
+   "reported": true,
+   "file": "agents/shadow/status.json",
+   "updated": "2026-11-11T02:40:00Z",
+   "cost_usd": 0.19,
+   "says": "spend today: 0.19 US dollars of 1 (0.02 on three test calls, 0.17 on the first round with both engines and the zoom-in set; an hourly round of the fixed set on Sonar alone is about 0.06)"
+  }
+ ],
+ "team_today_usd": 0.9059
 }

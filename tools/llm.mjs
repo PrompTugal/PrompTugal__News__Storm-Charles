@@ -29,7 +29,7 @@ const RAW_DIR = process.env.INCIDENT_RAW_DIR || path.join(os.homedir(), '.incide
 const CAP = +(process.env.LLM_DAILY_CAP_USD || 5)
 const DEFAULT_MODEL = process.env.LLM_MODEL || ''   // no model named in the code: the caller names it (--model, LLM_MODEL or model:)
 const PROVIDERS = {
-    openrouter: { url: 'https://openrouter.ai/api/v1/chat/completions', key: () => process.env.OPEN_ROUTER_KEY },
+    openrouter: { url: 'https://openrouter.ai/api/v1/chat/completions', key: () => process.env.OPEN_ROUTER_KEY || process.env.OPENROUTER_API_KEY }   // either name (incident.shadow@'s ask, 02:40Z),
 }
 
 const day = (d = new Date()) => d.toISOString().slice(0, 10)

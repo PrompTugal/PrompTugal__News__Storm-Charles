@@ -52,6 +52,19 @@ const led = { about: "The model ledger's daily totals: every model call the inci
     note: 'A ledger lives in the session that made the calls: this file counts the calls made through this agent\'s wrapper. Other agents call through it by asking this agent (agents/models/ask.md).',
     days: days.map(d => { const s = summary(d); return { ...s, by_model: round(s.by_model), by_agent: round(s.by_agent), by_task: round(s.by_task), by_status: round(s.by_status), by_hour: round(s.by_hour) } }) }
 led.total = { calls: led.days.reduce((s, d) => s + d.calls, 0), cost_usd: +led.days.reduce((s, d) => s + d.cost_usd, 0).toFixed(6), tokens_in: led.days.reduce((s, d) => s + d.tokens_in, 0), tokens_out: led.days.reduce((s, d) => s + d.tokens_out, 0) }
+// other desks' own summaries (their ledgers live in their sessions): <folder>/ledger-summary.json as tools/llm.mjs --summary writes it;
+// where a desk has written none, what its status file says it spent, named as that
+led.other_desks = []
+for (const d of fs.readdirSync(REPO, { withFileTypes: true }).filter(d => d.isDirectory() && !['models', '_site', 'node_modules'].includes(d.name) && !d.name.startsWith('.'))) {
+    const f = path.join(REPO, d.name, 'ledger-summary.json'); if (!fs.existsSync(f)) continue
+    try { const s = JSON.parse(fs.readFileSync(f, 'utf8')); led.other_desks.push({ desk: d.name, file: `${d.name}/ledger-summary.json`, day: s.day, calls: s.calls, cost_usd: s.cost_usd, by_model: s.by_model, by_task: s.by_task }) } catch {}
+}
+for (const a of fs.readdirSync(path.join(REPO, 'agents'))) {
+    if (a === 'models' || led.other_desks.some(o => o.desk === a)) continue
+    try { const st = JSON.parse(fs.readFileSync(path.join(REPO, 'agents', a, 'status.json'), 'utf8')), line = (st.done || []).map(String).find(x => /^spend today: [\d.]+ US dollars/.test(x))
+        if (line) led.other_desks.push({ desk: a, reported: true, file: `agents/${a}/status.json`, updated: st.updated, cost_usd: +line.match(/^spend today: ([\d.]+)/)[1], says: line }) } catch {}
+}
+led.team_today_usd = +((led.days.at(-1)?.cost_usd || 0) + led.other_desks.reduce((s, o) => s + (o.cost_usd || 0), 0)).toFixed(4)
 W('models/ledger-summary.json', JSON.stringify(led, null, 1) + '\n')
 const today = led.days.at(-1) || { calls: 0, cost_usd: 0, cap_usd: 5, tokens_in: 0, tokens_out: 0, by_task: {}, by_model: {}, by_agent: {} }
 
@@ -90,6 +103,8 @@ const sourceLine = `Source for every figure on this page: [results.json](results
     for (const [k, v] of Object.entries(today.by_model).sort((a, b) => b[1].cost_usd - a[1].cost_usd)) L.push(`| \`${k}\` | ${v.calls} | ${v.tokens_in} | ${v.tokens_out} | ${usd(v.cost_usd)} |`)
     L.push('', '| By agent | Calls | USD |', '|---|---|---|')
     for (const [k, v] of Object.entries(today.by_agent)) L.push(`| ${k} | ${v.calls} | ${usd(v.cost_usd)} |`)
+    for (const o of led.other_desks) L.push(`| ${o.desk} (its own session's ledger${o.reported ? `; the figure its status file gives, ${String(o.updated).slice(11, 16)} UTC` : ''}: [${o.file}](../${o.file})) | ${o.calls ?? 'not given'} | ${usd(o.cost_usd)} |`)
+    L.push(`| **the team, today** | | **${usd(led.team_today_usd)}** of ${today.cap_usd} |`)
     L.push('', notes.more_would_buy, '')
     L.push('## The models', '', `Read from [OpenRouter's public model list](${roster.source}) at ${roster.read_utc.slice(0, 16).replace('T', ' ')} UTC. "Open-weight" here means that list gives a Hugging Face address for the weights.`, '')
     L.push('| Model | Name | Kind | Weights | List price in, out (USD per million tokens) |', '|---|---|---|---|---|')
