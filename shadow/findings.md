@@ -1,8 +1,19 @@
 # Shadow reporting: findings so far
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 17:20 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 18:25 UTC
 
 The shadow desk's own reading of the rounds, shown on [the shadow page](index.md). Analysis, not fact.
+
+## What the 18:07 round adds (with the zoom-in questions)
+
+Analysis, not fact. At 18:00 Lisbon's last rain warning ended; only an orange sea warning stood.
+
+- **Three hours after it ended, red is still the answer.** Five answers still gave Lisbon a red warning as current. One listed its own end times (15:00, 18:00), all past, and called the warnings in force. One still offered a sting jet and gusts of 120 to 140 km/h "from midday through late afternoon", at 18:06, when the highest gust measured at the airport had been 74 km/h.
+- **Citing the primary source is not being right.** OpenAI's model was nearly right at 17:07 with no address; at 18:07 it cited IPMA's own warnings page for Lisbon and said red for rain and red or orange for wind.
+- **A right answer can decay.** Asked for the hours of the red rain warning, Sonar had them right at 02:19 and 13:09; at 18:07 it gave "12:00 to 18:00, according to the latest updates", calling the true window "earlier".
+- **An answer that contradicts itself:** in Portuguese, Web Summit is not on "today nor tomorrow, Wednesday" and resumes "only tomorrow, Thursday".
+- **Late arrivals.** IPMA's 474.7 mm in twelve hours at Areeiro reached an answer ten hours after it was measured; ANA's own count of cancellations (310 at Lisbon) seven hours after ANA published it; both through the press.
+- **The engines read our neighbours' repository.** One answer cited two files in PrompTugal News's public repository as evidence that Thursday's programme is on.
 
 ## What the 17:07 round adds
 
