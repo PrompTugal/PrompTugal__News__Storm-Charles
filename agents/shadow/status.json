@@ -1,19 +1,21 @@
 {
   "agent": "incident.shadow@web-summit.dinis",
   "by": "incident.shadow@web-summit.dinis",
-  "updated": "2026-11-11T02:40:00Z",
-  "state": "active: round 1 of shadow reporting is at shadow/ (one hour, 23 answers, 90 statements compared); hourly rounds follow while the day's 1 US dollar lasts",
-  "last_wake": "2026-11-11T02:10:00Z",
+  "updated": "2026-11-11T03:10:00Z",
+  "state": "paused for the 03:00 hour: the OpenRouter account is out of credit (HTTP 402 on the first call; nothing more was asked); round 1 (02:19) is at shadow/; next try 04:05",
+  "last_wake": "2026-11-11T03:06:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (record sha256:a550fd1d6e224816, encryption sha256:b563db30a7e9262c), public half in data/keys.json",
     "02:19Z round 1: five fixed questions in Portuguese and English and eight zoom-in questions on decisions in the graph, asked of Perplexity Sonar and (English, fixed set) OpenAI's GPT-5 mini with web search, all through tools/llm.mjs; shadow/runs/2026-11-11/02.json: 23 answers, 90 statements in our words, each labelled against the timeline and the graph (46 match, 11 behind us, 12 ahead as leads, 7 contradict, 14 unsupported)",
     "tools/shadow-ask.mjs (asks, keeps the cited addresses, full text only outside git) and tools/shadow-index.mjs (shadow/index.md, leads.json, sources.json, cited.json)",
     "shadow/news-apis.md: GDELT's terms read at source (open, redistribution with citation); ten others listed with their terms, none signed up for",
-    "spend today: 0.19 US dollars of 1 (0.02 on three test calls, 0.17 on the first round with both engines and the zoom-in set; an hourly round of the fixed set on Sonar alone is about 0.06)"
+    "spend today: 0.19 US dollars of 1 (0.02 on three test calls, 0.17 on the first round with both engines and the zoom-in set; an hourly round of the fixed set on Sonar alone is about 0.06)",
+    "03:06Z: the hourly round was refused (HTTP 402, account out of credit, as the conductor warned); shadow-ask now sends one call first and stops at the first 402; the hour is recorded as paused in shadow/runs/2026-11-11/03.json and shown as a gap on the page",
+    "two of round 1's leads were since read at source by others (the alert order, Despacho 13773-A/2026; Web Summit's schedule still listing Wednesday): the conductor's rows of 02:55 to 03:02"
   ],
   "next": [
-    "hourly: the fixed set on Perplexity Sonar (Portuguese and English); the second engine and the zoom-in set again around 09:00 and 12:00 (when the red warnings start), as the dollar allows: about 13 more hourly rounds",
+    "hourly: the fixed set on both engines (the day's budget is 20 US dollars for the team since 02:50, BRIEF.md; about 0.20 a round here), the zoom-in set near 09:00 and 12:00; as soon as the account has credit",
     "tools/shadow-gdelt.mjs: titles and links for the storm from GDELT's open files, with the citation",
     "app/shadow/: the hour-by-hour table as a view that reads the run files, once there are several hours"
   ],
@@ -21,6 +23,11 @@
     "incident.conductor@: a line for Shadow in the top menu (Research), shadow/index.html; and the leads in shadow/leads.json routed to incident.researcher@",
     "incident.archivist@: shadow/cited.json lists every address an engine pointed a reader at (133 so far), candidates for capture",
     "incident.models@: tools/llm.mjs reads OPEN_ROUTER_KEY, this environment sets OPENROUTER_API_KEY (the shadow tool maps one to the other in its own process); and call() returns only the text: returning the raw record's citations or annotations would save reading the raw store",
-    "Dinis: what more than 1 US dollar a day would buy: about 0.20 a round for both engines on every question in both languages, so 5 dollars is a full round every hour of the day; a third engine with search (a Gemini model, about 0.015 a question) for about 2 more"
-  ]
+    "Dinis: the OpenRouter account needs credit (the conductor has asked): until then the hourly table has gaps"
+  ],
+  "spend": {
+    "day": "2026-11-11",
+    "this_agent_usd": 0.19,
+    "source": "tools/llm.mjs ledger (0.1885: 0.0225 test calls, 0.1661 the 02:19 round); nothing spent at 03:06 (refused 402)"
+  }
 }
