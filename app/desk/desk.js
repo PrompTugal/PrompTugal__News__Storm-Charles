@@ -36,32 +36,33 @@
         return ''
     }
 
-    const status = h('p', { class: 'desk-status', role: 'status', 'aria-live': 'polite' })
+    const status = h('p', { class: 'desk-status', role: 'status', 'aria-live': 'polite', tabindex: '-1' })
     const kindBox = h('fieldset', { class: 'desk-kinds' }, h('legend', { text: 'What is it about?' }))
-    KINDS.forEach(([v, label, hint], i) => kindBox.append(h('label', {}, h('input', { type: 'radio', name: 'kind', value: v, checked: i === 0 || null }), ' ', h('b', { text: label }), hint ? h('span', { class: 'meta', text: ' ' + hint }) : '')))
+    KINDS.forEach(([v, label, hint], i) => kindBox.append(h('label', { class: 'desk-kind' }, h('input', { type: 'radio', name: 'kind', value: v, checked: i === 0 || null }), h('span', { class: 'desk-kind-t' }, h('b', { text: label }), hint ? h('span', { class: 'desk-kind-h', text: hint }) : ''))))
     const about = h('input', { type: 'text', id: 'desk-about', maxlength: '300', value: fromPage(), placeholder: 'e.g. /incidents/2026-11-10-storm-charles/ or row s-1111T0930', autocomplete: 'off' })
-    const text = h('textarea', { id: 'desk-text', rows: '8', maxlength: '4000', required: true, placeholder: 'For a correction: what is wrong, what is right, and where you read it (a link).' })
+    const text = h('textarea', { id: 'desk-text', rows: '6', maxlength: '4000', required: true, placeholder: 'For a correction: what is wrong, what is right, and where you read it (a link).' })
     const count = h('span', { class: 'meta desk-count', text: '0 / 4000' })
-    text.addEventListener('input', () => { count.textContent = `${text.value.length} / 4000` })
+    text.addEventListener('input', () => { count.textContent = `${text.value.length} / 4000`; text.style.height = 'auto'; text.style.height = Math.min(text.scrollHeight + 2, 600) + 'px' })
     const reply = h('input', { type: 'text', id: 'desk-reply', maxlength: '200', autocomplete: 'email', placeholder: 'optional: an email address, only if you want an answer' })
     const trap = h('input', { type: 'text', name: 'website', tabindex: '-1', autocomplete: 'off', 'aria-hidden': 'true' })   // left empty by people
     const send = h('button', { type: 'submit', class: 'desk-send', text: 'Seal and send' })
     const what = h('a', { href: '#what-happens-to-your-message', text: 'what happens to it' })
     const form = h('form', { class: 'desk card', novalidate: true },
-        h('p', { class: 'desk-intro' }, h('b', { text: 'Write to the desk.' }), ' Your message is sealed in your browser and read only by the desk, the agent that answers for Dinis Cruz\'s incident team; it is never published. Messages are read about once an hour (at seven minutes past); a person on the team writes any reply, so an answer can take longer than that. ', what, '.'),
+        h('p', { class: 'desk-urgent' }, h('b', { text: 'Not an emergency line.' }), ' In an emergency, call 112. For warnings, follow IPMA and ANEPC.'),
+        h('p', { class: 'desk-intro' }, 'Sealed in your browser, read only by the desk (the team\'s agent for messages), never published. Read about once an hour, at seven minutes past; a person writes any reply, so it can take longer. ', what, '.'),
         kindBox,
         h('label', { for: 'desk-about', class: 'desk-l' }, h('b', { text: 'Which page or item' }), h('span', { class: 'meta', text: ' (optional; filled in with the page you came from)' })), about,
         h('label', { for: 'desk-text', class: 'desk-l' }, h('b', { text: 'Your message' })), text, count,
         h('label', { for: 'desk-reply', class: 'desk-l' }, h('b', { text: 'Where to reply' }), h('span', { class: 'meta', text: ' (optional; sealed with your message, used only to answer it, never published or shared)' })), reply,
         h('div', { class: 'desk-trap', 'aria-hidden': 'true' }, h('label', { text: 'Leave this empty' }), trap),
-        h('p', { class: 'desk-row' }, send, ' ', h('span', { class: 'meta', text: 'Not an emergency line: in an emergency call 112. For warnings follow IPMA and ANEPC.' })),
+        h('p', { class: 'desk-row' }, send),
         status)
     mountEl.replaceChildren(form)
 
     let cfg = null
     const config = () => cfg || (cfg = fetch(base + 'desk/lane.json', { cache: 'no-cache' }).then(r => r.json()))
     const ready = c => !!(c && c.enabled && c.endpoint && c.vault_id && (c.lanes || []).length && c.recipient && c.recipient.encrypt)
-    const say = (t, cls = '') => { status.textContent = t; status.className = 'desk-status ' + cls }
+    const say = (t, cls = '', focus = false) => { status.textContent = t; status.className = 'desk-status ' + cls; if (focus) { status.focus({ preventScroll: true }); status.scrollIntoView({ block: 'center', behavior: 'smooth' }) } }
     if (location.host !== LIVE) { send.disabled = true; say(`This form sends only from ${LIVE}; this copy (${location.host || 'a file'}) is a preview, and nothing typed here goes anywhere.`, 'wait') }
     else config().then(c => { if (!ready(c)) { send.disabled = true; say('The desk is closed for now: nothing can be sent.', 'wait') } }).catch(() => { })
 
@@ -88,8 +89,8 @@
             }
             if (!ok) throw new Error('not written')
             text.value = ''; reply.value = ''; count.textContent = '0 / 4000'
-            say('Sent, sealed. Thank you. The desk reads its messages about once an hour, at seven minutes past; a person on the team answers if you left an address and an answer is needed. Your message is never published.', 'ok')
-        } catch { say('It could not be sent just now (the vault server did not take it). Your words are still in the box: please try again in a few minutes.', 'bad') }
+            say('Sent, sealed. Thank you. The desk reads its messages about once an hour, at seven minutes past; a person on the team answers if you left an address and an answer is needed. Your message is never published.', 'ok', true)
+        } catch { say('It could not be sent just now (the vault server did not take it). Your words are still in the box: please try again in a few minutes.', 'bad', true) }
         finally { send.disabled = false }
     })
 })()

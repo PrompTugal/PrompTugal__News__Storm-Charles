@@ -2,7 +2,6 @@
 .desk { display: grid; gap: 8px; max-width: 720px; padding: 16px; }
 .desk-kinds { border: 1px solid var(--line); border-radius: var(--radius, 6px); padding: 8px 12px; margin: 0; display: grid; gap: 6px; }
 .desk-kinds legend { font-weight: 600; padding: 0 4px; }
-.desk-kinds label { cursor: pointer; }
 .desk-l { margin-top: 8px; }
 .desk input[type=text], .desk textarea { width: 100%; box-sizing: border-box; font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius, 6px); padding: 8px; }
 .desk textarea { resize: vertical; min-height: 9em; }
@@ -17,3 +16,11 @@
 .desk-status.wait { border-color: var(--wait); background: var(--wait-soft, var(--surface-2)); }
 .desk-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .desk-intro { margin: 0 0 4px; }
+.desk-kinds { border: 0; padding: 0; gap: 8px; }
+.desk-kind { display: flex; gap: 12px; align-items: flex-start; min-height: 44px; box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius, 6px); background: var(--surface); cursor: pointer; }
+.desk-kind:has(input:checked) { border: 2px solid var(--ink); padding: 9px 11px; }
+.desk-kind input { width: 20px; height: 20px; margin: 2px 0 0; flex: none; accent-color: var(--link); }
+.desk-kind-t { display: grid; gap: 2px; }
+.desk-kind-h { color: var(--ink-2); font-size: 14px; }
+.desk-urgent { margin: 0; padding: 8px 10px; border-left: 3px solid var(--accent); background: var(--surface-2); }
+.desk-status:focus { outline: none; }
