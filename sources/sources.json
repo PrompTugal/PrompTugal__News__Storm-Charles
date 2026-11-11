@@ -1,0 +1,1461 @@
+{
+ "about": "Every outside body this site takes data from or cites, official bodies first. For each: who (bodies only, no people, no contact details), what it publishes, what we take, its hosts, the licence as published (or that we have not read it yet), and how often we cite it: timeline_rows (rows of the incident timeline with a link to one of its hosts) and addresses_in_data_and_research (how many of its addresses appear in incidents/ and research/). Counted from this repository at the time made; the register is sources/registry.json. Node ids (`node`) are stable.",
+ "made_by": "tools/source-index.mjs",
+ "by": "incident.sources@web-summit.dinis",
+ "updated": "2026-11-11T02:20:44Z",
+ "counts": {
+  "sources": 46,
+  "with_a_section": 2,
+  "licence_read": 1,
+  "hosts_cited_but_not_registered": 86
+ },
+ "sources": [
+  {
+   "id": "meteoalarm",
+   "node": "source:meteoalarm",
+   "name": "MeteoAlarm",
+   "group": "official",
+   "kind": "EUMETNET's system that carries Europe's national weather warnings",
+   "hosts": [
+    "feeds.meteoalarm.org",
+    "www.meteoalarm.org",
+    "meteoalarm.org",
+    "api.meteoalarm.org"
+   ],
+   "publishes": "each national service's warnings as CAP messages: JSON and Atom feeds per country (open); an EDR API with the archive, MQTT, metadata (token or MeteoGate key)",
+   "we_take": "the time IPMA issued each warning, and which message it replaced",
+   "licence": {
+    "status": "read",
+    "summary": "CC BY 4.0 equivalent, with additional requirements (name the national service, keep the time of issue, link www.meteoalarm.org, publish the disclaimer; real time if operational)",
+    "url": "https://www.meteoalarm.org/en/live/page/terms-and-conditions",
+    "read_utc": "2026-11-11T02:15:31Z",
+    "access": "yes, open feeds",
+    "manipulate": "yes, with conditions",
+    "detail": "meteoalarm/source.json"
+   },
+   "section": "meteoalarm/index.html",
+   "formats": [
+    "JSON",
+    "Atom XML",
+    "CAP 1.2 XML",
+    "GeoJSON"
+   ],
+   "reads": "about hourly by tools/source-meteoalarm.mjs; about every 5 to 30 minutes by the meteorologist's refresh.py",
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1110T0718"
+    ],
+    "addresses_in_data_and_research": 88
+   }
+  },
+  {
+   "id": "ipma",
+   "node": "source:ipma",
+   "name": "IPMA (Instituto Português do Mar e da Atmosfera)",
+   "group": "official",
+   "kind": "Portugal's national meteorological service: it issues the warnings",
+   "hosts": [
+    "api.ipma.pt",
+    "www.ipma.pt"
+   ],
+   "publishes": "warnings, forecasts, station observations, communiqués, sea state (open data as JSON; RSS)",
+   "we_take": "the warnings in force, the hour-by-hour forecast for Lisbon, the stations' observations, the communiqués",
+   "licence": {
+    "status": "kept by incident.ipma@",
+    "note": "see sources/ipma/ (incident.ipma@'s section). The earlier check (research/weather-sites/meteoalarm-check.json) records that IPMA asks for the source to be named."
+   },
+   "section": null,
+   "owner": "incident.ipma@web-summit.dinis",
+   "formats": [
+    "JSON",
+    "RSS"
+   ],
+   "reads": "every 5 to 30 minutes (refresh.py); hourly by incident.ipma@",
+   "section_planned": "ipma/index.html",
+   "cited": {
+    "timeline_rows": 4,
+    "row_ids": [
+     "s-1110T2353",
+     "s-1111T0146",
+     "s-1109T1317",
+     "s-1110T1707b"
+    ],
+    "addresses_in_data_and_research": 157
+   }
+  },
+  {
+   "id": "anepc",
+   "node": "source:anepc",
+   "name": "ANEPC (Autoridade Nacional de Emergência e Proteção Civil)",
+   "group": "official",
+   "kind": "Portugal's civil protection authority",
+   "hosts": [
+    "prociv.gov.pt",
+    "www.prociv.gov.pt"
+   ],
+   "publishes": "notices to the population, states of alert, occurrences",
+   "we_take": "its notices and the state of alert",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1109T2030"
+    ],
+    "addresses_in_data_and_research": 23
+   }
+  },
+  {
+   "id": "government",
+   "node": "source:government",
+   "name": "The Government of Portugal",
+   "group": "official",
+   "kind": "the government portal and the Ministry of Internal Administration",
+   "hosts": [
+    "portugal.gov.pt",
+    "www.portugal.gov.pt",
+    "www.mai.gov.pt"
+   ],
+   "publishes": "communiqués, declarations (the alert situation)",
+   "we_take": "the declaration of the alert situation and its terms",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 19
+   }
+  },
+  {
+   "id": "websummit",
+   "node": "source:websummit",
+   "name": "Web Summit",
+   "group": "official",
+   "kind": "the organiser of the conference held in Lisbon on these days",
+   "hosts": [
+    "websummit.com"
+   ],
+   "publishes": "its event updates, schedule and blog",
+   "we_take": "its statements on what goes ahead, moves or is cancelled",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "reads": "its blog every 2 minutes by tools/websummit-poll.sh (incident.dev@), robots.txt obeyed",
+   "section": null,
+   "cited": {
+    "timeline_rows": 2,
+    "row_ids": [
+     "s-1110T1909",
+     "s-1110T2353b"
+    ],
+    "addresses_in_data_and_research": 280
+   }
+  },
+  {
+   "id": "cml",
+   "node": "source:cml",
+   "name": "Câmara Municipal de Lisboa",
+   "group": "official",
+   "kind": "Lisbon's city council",
+   "hosts": [
+    "informacao.lisboa.pt",
+    "www.lisboa.pt"
+   ],
+   "publishes": "municipal notices (closures, civil protection in the city)",
+   "we_take": "its notices",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 5
+   }
+  },
+  {
+   "id": "aemet",
+   "node": "source:aemet",
+   "name": "AEMET (Agencia Estatal de Meteorología)",
+   "group": "official",
+   "kind": "Spain's national meteorological service",
+   "hosts": [
+    "www.aemet.es"
+   ],
+   "publishes": "warnings and forecasts for Spain",
+   "we_take": "nothing directly yet: cited in research (what Wikipedia attributes to it)",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 8
+   }
+  },
+  {
+   "id": "nhc",
+   "node": "source:nhc",
+   "name": "NHC (US National Hurricane Center, NOAA)",
+   "group": "official",
+   "kind": "the US centre for tropical cyclones",
+   "hosts": [
+    "www.nhc.noaa.gov"
+   ],
+   "publishes": "tropical weather outlooks and advisories",
+   "we_take": "nothing directly yet: cited in research",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 4
+   }
+  },
+  {
+   "id": "noaa-awc",
+   "node": "source:noaa-awc",
+   "name": "NOAA Aviation Weather Center",
+   "group": "official",
+   "kind": "a US public service that redistributes the world's aviation reports",
+   "hosts": [
+    "aviationweather.gov"
+   ],
+   "publishes": "TAF and METAR as JSON (for Lisbon airport, IPMA's own forecast and the airport's observations)",
+   "we_take": "LPPT's TAF and METAR",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "formats": [
+    "JSON"
+   ],
+   "reads": "with every refresh.py run",
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 84
+   }
+  },
+  {
+   "id": "amn",
+   "node": "source:amn",
+   "name": "Autoridade Marítima Nacional",
+   "group": "official",
+   "kind": "Portugal's maritime authority",
+   "hosts": [
+    "www.amn.pt"
+   ],
+   "publishes": "notices on ports and bars (open, conditioned, closed)",
+   "we_take": "the state of the ports and bars",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 4
+   }
+  },
+  {
+   "id": "metro",
+   "node": "source:metro",
+   "name": "Metropolitano de Lisboa",
+   "group": "transport",
+   "kind": "Lisbon's metro operator",
+   "hosts": [
+    "www.metrolisboa.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "service changes",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 4
+   }
+  },
+  {
+   "id": "carris",
+   "node": "source:carris",
+   "name": "Carris",
+   "group": "transport",
+   "kind": "Lisbon's bus and tram operator",
+   "hosts": [
+    "www.carris.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "service changes",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 4
+   }
+  },
+  {
+   "id": "cp",
+   "node": "source:cp",
+   "name": "CP (Comboios de Portugal)",
+   "group": "transport",
+   "kind": "the national rail operator",
+   "hosts": [
+    "www.cp.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "service changes",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 3
+   }
+  },
+  {
+   "id": "ttsl",
+   "node": "source:ttsl",
+   "name": "Transtejo Soflusa",
+   "group": "transport",
+   "kind": "the Tagus ferry operator",
+   "hosts": [
+    "www.ttsl.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "ferry suspensions",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 3
+   }
+  },
+  {
+   "id": "rede-expressos",
+   "node": "source:rede-expressos",
+   "name": "Rede Expressos",
+   "group": "transport",
+   "kind": "an intercity coach operator",
+   "hosts": [
+    "www.rede-expressos.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "service changes",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 2
+   }
+  },
+  {
+   "id": "lisbon-airport",
+   "node": "source:lisbon-airport",
+   "name": "Lisbon airport (ANA Aeroportos de Portugal)",
+   "group": "transport",
+   "kind": "the airport operator",
+   "hosts": [
+    "www.aeroportolisboa.pt",
+    "www.ana.pt"
+   ],
+   "publishes": "flight information, notices",
+   "we_take": "notices on operations",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 5
+   }
+  },
+  {
+   "id": "lusoponte",
+   "node": "source:lusoponte",
+   "name": "Lusoponte",
+   "group": "transport",
+   "kind": "the concessionaire of the Vasco da Gama and 25 de Abril bridges",
+   "hosts": [
+    "www.lusoponte.pt"
+   ],
+   "publishes": "traffic notices",
+   "we_take": "bridge restrictions",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 2
+   }
+  },
+  {
+   "id": "venues",
+   "node": "source:venues",
+   "name": "FIL and MEO Arena",
+   "group": "transport",
+   "kind": "the conference's venues",
+   "hosts": [
+    "www.fil.pt",
+    "www.meoarena.pt"
+   ],
+   "publishes": "venue notices",
+   "we_take": "venue notices",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 5
+   }
+  },
+  {
+   "id": "met-no",
+   "node": "source:met-no",
+   "name": "MET Norway",
+   "group": "official",
+   "kind": "Norway's meteorological institute (an open forecast API for any point)",
+   "hosts": [
+    "api.met.no",
+    "www.yr.no"
+   ],
+   "publishes": "point forecasts as JSON",
+   "we_take": "a second model's wind and rain for Lisbon, for comparison only (not a forecast of ours)",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "formats": [
+    "JSON"
+   ],
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 4
+   }
+  },
+  {
+   "id": "open-meteo",
+   "node": "source:open-meteo",
+   "name": "Open-Meteo",
+   "group": "reference",
+   "kind": "an open weather API over public models",
+   "hosts": [
+    "api.open-meteo.com",
+    "open-meteo.com"
+   ],
+   "publishes": "model forecasts as JSON",
+   "we_take": "a model's hourly wind and rain for Lisbon, for comparison only",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "formats": [
+    "JSON"
+   ],
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 7
+   }
+  },
+  {
+   "id": "eumetsat",
+   "node": "source:eumetsat",
+   "name": "EUMETSAT",
+   "group": "official",
+   "kind": "Europe's weather-satellite organisation",
+   "hosts": [
+    "www.eumetsat.int",
+    "view.eumetsat.int",
+    "user.eumetsat.int"
+   ],
+   "publishes": "satellite imagery and its licence",
+   "we_take": "links only; no image is embedded (research/weather-sites/imagery.json)",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 10
+   }
+  },
+  {
+   "id": "copernicus-ems",
+   "node": "source:copernicus-ems",
+   "name": "Copernicus Emergency Management Service",
+   "group": "official",
+   "kind": "the EU's emergency mapping service",
+   "hosts": [
+    "mapping.emergency.copernicus.eu",
+    "emergency.copernicus.eu"
+   ],
+   "publishes": "rapid-mapping activations",
+   "we_take": "nothing directly yet: cited in research",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 4
+   }
+  },
+  {
+   "id": "wikipedia",
+   "node": "source:wikipedia",
+   "name": "Wikipedia and Wikidata",
+   "group": "reference",
+   "kind": "the encyclopaedia; read by incident.wikipedia@",
+   "hosts": [
+    "pt.wikipedia.org",
+    "en.wikipedia.org",
+    "zh.wikipedia.org",
+    "fr.wikipedia.org",
+    "es.wikipedia.org",
+    "www.wikidata.org"
+   ],
+   "publishes": "articles, their revisions and footnotes (API)",
+   "we_take": "the articles on the storm, their revisions and claims, compared with this site",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": "../research/wikipedia/index.html",
+   "owner": "incident.wikipedia@web-summit.dinis",
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 667
+   }
+  },
+  {
+   "id": "lusa",
+   "node": "source:lusa",
+   "name": "Lusa",
+   "group": "press",
+   "kind": "Portugal's news agency",
+   "hosts": [
+    "www.lusa.pt"
+   ],
+   "publishes": "agency copy, carried by most outlets",
+   "we_take": "named where an outlet credits it",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 1
+   }
+  },
+  {
+   "id": "jornaldenegocios",
+   "node": "source:jornaldenegocios",
+   "name": "Jornal de Negócios",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.jornaldenegocios.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 6,
+    "row_ids": [
+     "s-1110T1245",
+     "s-1110T1519",
+     "s-1110T1707",
+     "s-1110T1753",
+     "s-1110T1825",
+     "s-1110T1942"
+    ],
+    "addresses_in_data_and_research": 54
+   }
+  },
+  {
+   "id": "observador",
+   "node": "source:observador",
+   "name": "Observador",
+   "group": "press",
+   "kind": "a Portuguese online daily",
+   "hosts": [
+    "observador.pt"
+   ],
+   "publishes": "articles, live blogs",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 4,
+    "row_ids": [
+     "s-1110T0917",
+     "s-1110T0930",
+     "s-1110T2008",
+     "s-1110T2235"
+    ],
+    "addresses_in_data_and_research": 75
+   }
+  },
+  {
+   "id": "noticiasaominuto",
+   "node": "source:noticiasaominuto",
+   "name": "Notícias ao Minuto",
+   "group": "press",
+   "kind": "a Portuguese online outlet",
+   "hosts": [
+    "www.noticiasaominuto.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 90
+   }
+  },
+  {
+   "id": "rtp",
+   "node": "source:rtp",
+   "name": "RTP",
+   "group": "press",
+   "kind": "Portugal's public broadcaster",
+   "hosts": [
+    "www.rtp.pt"
+   ],
+   "publishes": "articles, broadcasts",
+   "we_take": "short excerpts with a link; words said on air are marked as such",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1110T1946"
+    ],
+    "addresses_in_data_and_research": 56
+   }
+  },
+  {
+   "id": "dn",
+   "node": "source:dn",
+   "name": "Diário de Notícias",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.dn.pt",
+    "dinheirovivo.dn.pt",
+    "dnbrasil.dn.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 2,
+    "row_ids": [
+     "s-1110T1945",
+     "s-1110T1949"
+    ],
+    "addresses_in_data_and_research": 38
+   }
+  },
+  {
+   "id": "cnnportugal",
+   "node": "source:cnnportugal",
+   "name": "CNN Portugal / TVI",
+   "group": "press",
+   "kind": "a Portuguese broadcaster",
+   "hosts": [
+    "cnnportugal.iol.pt",
+    "away.iol.pt"
+   ],
+   "publishes": "articles, broadcasts",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1110T0846"
+    ],
+    "addresses_in_data_and_research": 41
+   }
+  },
+  {
+   "id": "dnoticias",
+   "node": "source:dnoticias",
+   "name": "Diário de Notícias da Madeira",
+   "group": "press",
+   "kind": "Madeira's daily",
+   "hosts": [
+    "www.dnoticias.pt",
+    "dnoticias.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 37
+   }
+  },
+  {
+   "id": "publico",
+   "node": "source:publico",
+   "name": "Público",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.publico.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1111T0029"
+    ],
+    "addresses_in_data_and_research": 32
+   }
+  },
+  {
+   "id": "expresso",
+   "node": "source:expresso",
+   "name": "Expresso",
+   "group": "press",
+   "kind": "a Portuguese weekly",
+   "hosts": [
+    "expresso.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 27
+   }
+  },
+  {
+   "id": "theportugalnews",
+   "node": "source:theportugalnews",
+   "name": "The Portugal News",
+   "group": "press",
+   "kind": "an English-language weekly in Portugal",
+   "hosts": [
+    "www.theportugalnews.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 21
+   }
+  },
+  {
+   "id": "eco",
+   "node": "source:eco",
+   "name": "ECO",
+   "group": "press",
+   "kind": "a Portuguese economic outlet",
+   "hosts": [
+    "eco.sapo.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1110T1941"
+    ],
+    "addresses_in_data_and_research": 17
+   }
+  },
+  {
+   "id": "euronews",
+   "node": "source:euronews",
+   "name": "Euronews",
+   "group": "press",
+   "kind": "a European broadcaster",
+   "hosts": [
+    "www.euronews.com",
+    "pt.euronews.com",
+    "l.euronews.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1110T2030"
+    ],
+    "addresses_in_data_and_research": 16
+   }
+  },
+  {
+   "id": "cmjornal",
+   "node": "source:cmjornal",
+   "name": "Correio da Manhã",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.cmjornal.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 12
+   }
+  },
+  {
+   "id": "sapo",
+   "node": "source:sapo",
+   "name": "SAPO and the outlets it hosts (Tek, Jornal Económico, Executive Digest, 24 Notícias, O Digital)",
+   "group": "press",
+   "kind": "a Portuguese portal",
+   "hosts": [
+    "tek.sapo.pt",
+    "jornaleconomico.sapo.pt",
+    "executivedigest.sapo.pt",
+    "24noticias.sapo.pt",
+    "odigital.sapo.pt",
+    "tempo.sapo.pt",
+    "sapo.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 2,
+    "row_ids": [
+     "s-1110T1425",
+     "s-1110T1319"
+    ],
+    "addresses_in_data_and_research": 31
+   }
+  },
+  {
+   "id": "rr",
+   "node": "source:rr",
+   "name": "Rádio Renascença",
+   "group": "press",
+   "kind": "a Portuguese radio",
+   "hosts": [
+    "rr.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 10
+   }
+  },
+  {
+   "id": "tsf",
+   "node": "source:tsf",
+   "name": "TSF",
+   "group": "press",
+   "kind": "a Portuguese news radio",
+   "hosts": [
+    "www.tsf.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 5
+   }
+  },
+  {
+   "id": "jn",
+   "node": "source:jn",
+   "name": "Jornal de Notícias",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.jn.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 5
+   }
+  },
+  {
+   "id": "elpais",
+   "node": "source:elpais",
+   "name": "El País",
+   "group": "press",
+   "kind": "a Spanish daily",
+   "hosts": [
+    "elpais.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 5
+   }
+  },
+  {
+   "id": "madeiraislandnews",
+   "node": "source:madeiraislandnews",
+   "name": "Madeira Island News",
+   "group": "press",
+   "kind": "an English-language outlet on Madeira",
+   "hosts": [
+    "www.madeiraislandnews.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1110T2352"
+    ],
+    "addresses_in_data_and_research": 2
+   }
+  },
+  {
+   "id": "bluesky",
+   "node": "source:bluesky",
+   "name": "Bluesky",
+   "group": "platform",
+   "kind": "a public social network with an open API; read by incident.social@",
+   "hosts": [
+    "bsky.app",
+    "api.bsky.app",
+    "public.api.bsky.app"
+   ],
+   "publishes": "public posts (AT Protocol API)",
+   "we_take": "posts by official and public-role accounts; a private person is never named or linked",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "owner": "incident.social@web-summit.dinis",
+   "section": null,
+   "section_planned": "../research/social/index.html",
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 54
+   }
+  },
+  {
+   "id": "mastodon",
+   "node": "source:mastodon",
+   "name": "Mastodon servers",
+   "group": "platform",
+   "kind": "public federated social servers",
+   "hosts": [
+    "mastodon.social",
+    "masto.pt",
+    "social.vivaldi.net"
+   ],
+   "publishes": "public posts",
+   "we_take": "posts by public-role accounts; a private person is never named or linked",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 1,
+    "row_ids": [
+     "s-1110T2141"
+    ],
+    "addresses_in_data_and_research": 23
+   }
+  },
+  {
+   "id": "youtube",
+   "node": "source:youtube",
+   "name": "YouTube",
+   "group": "platform",
+   "kind": "a video platform",
+   "hosts": [
+    "www.youtube.com"
+   ],
+   "publishes": "broadcasts and channels of bodies and outlets",
+   "we_take": "links to official broadcasts",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": null,
+   "cited": {
+    "timeline_rows": 0,
+    "row_ids": [],
+    "addresses_in_data_and_research": 12
+   }
+  }
+ ],
+ "not_yet_registered": [
+  {
+   "host": "portugaldecoded.substack.com",
+   "addresses": 8
+  },
+  {
+   "host": "www.estrelladigital.es",
+   "addresses": 6
+  },
+  {
+   "host": "mirametv.com",
+   "addresses": 6
+  },
+  {
+   "host": "www.tempo.pt",
+   "addresses": 5
+  },
+  {
+   "host": "www.metoffice.gov.uk",
+   "addresses": 4
+  },
+  {
+   "host": "postal.pt",
+   "addresses": 4
+  },
+  {
+   "host": "www.clickorlando.com",
+   "addresses": 4
+  },
+  {
+   "host": "www.windy.com",
+   "addresses": 3
+  },
+  {
+   "host": "lusometeo.com",
+   "addresses": 3
+  },
+  {
+   "host": "www.razaoautomovel.com",
+   "addresses": 3
+  },
+  {
+   "host": "localnoticias.pt",
+   "addresses": 3
+  },
+  {
+   "host": "powerhouse.indvstryclvb.com",
+   "addresses": 2
+  },
+  {
+   "host": "x.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.instagram.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.linkedin.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.bloomberg.com",
+   "addresses": 2
+  },
+  {
+   "host": "feeds.feedburner.com",
+   "addresses": 2
+  },
+  {
+   "host": "sicnoticias.pt",
+   "addresses": 2
+  },
+  {
+   "host": "www.bbc.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.weather.gov",
+   "addresses": 2
+  },
+  {
+   "host": "vigilance.meteofrance.fr",
+   "addresses": 2
+  },
+  {
+   "host": "www.meteoswiss.admin.ch",
+   "addresses": 2
+  },
+  {
+   "host": "www.meteoblue.com",
+   "addresses": 2
+  },
+  {
+   "host": "fogos.pt",
+   "addresses": 2
+  },
+  {
+   "host": "www.lusometeo.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.meteopt.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.rainviewer.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.netweather.tv",
+   "addresses": 2
+  },
+  {
+   "host": "cadenaser.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.rtve.es",
+   "addresses": 2
+  },
+  {
+   "host": "www.yahoo.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.indexjournal.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.tiempo.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.infobae.com",
+   "addresses": 2
+  },
+  {
+   "host": "es.headtopics.com",
+   "addresses": 2
+  },
+  {
+   "host": "vozpopuli.com",
+   "addresses": 2
+  },
+  {
+   "host": "www.gnr.pt",
+   "addresses": 1
+  },
+  {
+   "host": "www.techtimes.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.dgeste.mec.pt",
+   "addresses": 1
+  },
+  {
+   "host": "www.portugalresident.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.sabado.pt",
+   "addresses": 1
+  },
+  {
+   "host": "www.theguardian.com",
+   "addresses": 1
+  },
+  {
+   "host": "techcrunch.com",
+   "addresses": 1
+  },
+  {
+   "host": "apnews.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.earthdata.nasa.gov",
+   "addresses": 1
+  },
+  {
+   "host": "www.dwd.de",
+   "addresses": 1
+  },
+  {
+   "host": "www.knmi.nl",
+   "addresses": 1
+  },
+  {
+   "host": "www.smhi.se",
+   "addresses": 1
+  },
+  {
+   "host": "en.ilmatieteenlaitos.fi",
+   "addresses": 1
+  },
+  {
+   "host": "www.jma.go.jp",
+   "addresses": 1
+  },
+  {
+   "host": "www.bom.gov.au",
+   "addresses": 1
+  },
+  {
+   "host": "weather.gc.ca",
+   "addresses": 1
+  },
+  {
+   "host": "www.met.ie",
+   "addresses": 1
+  },
+  {
+   "host": "charts.ecmwf.int",
+   "addresses": 1
+  },
+  {
+   "host": "severeweather.wmo.int",
+   "addresses": 1
+  },
+  {
+   "host": "worldview.earthdata.nasa.gov",
+   "addresses": 1
+  },
+  {
+   "host": "weather.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.accuweather.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.wunderground.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.foreca.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.weatherandradar.co.uk",
+   "addresses": 1
+  },
+  {
+   "host": "www.ventusky.com",
+   "addresses": 1
+  },
+  {
+   "host": "earth.nullschool.net",
+   "addresses": 1
+  },
+  {
+   "host": "zoom.earth",
+   "addresses": 1
+  },
+  {
+   "host": "pirateweather.net",
+   "addresses": 1
+  },
+  {
+   "host": "www.lightningmaps.org",
+   "addresses": 1
+  },
+  {
+   "host": "www.meteociel.fr",
+   "addresses": 1
+  },
+  {
+   "host": "www.wetterzentrale.de",
+   "addresses": 1
+  },
+  {
+   "host": "www.tropicaltidbits.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.windguru.cz",
+   "addresses": 1
+  },
+  {
+   "host": "www.windfinder.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.estofex.org",
+   "addresses": 1
+  },
+  {
+   "host": "eswd.eu",
+   "addresses": 1
+  },
+  {
+   "host": "www.severe-weather.eu",
+   "addresses": 1
+  },
+  {
+   "host": "www.met.fu-berlin.de",
+   "addresses": 1
+  },
+  {
+   "host": "mesonet.agron.iastate.edu",
+   "addresses": 1
+  },
+  {
+   "host": "www.ogimet.com",
+   "addresses": 1
+  },
+  {
+   "host": "kachelmannwetter.com",
+   "addresses": 1
+  },
+  {
+   "host": "wxcharts.com",
+   "addresses": 1
+  },
+  {
+   "host": "www.pivotalweather.com",
+   "addresses": 1
+  }
+ ]
+}

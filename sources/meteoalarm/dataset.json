@@ -1,0 +1,39 @@
+{
+ "about": "Where the full copies of MeteoAlarm's feeds are kept: a data vault (SG/Send, made with sgit), in the latest/ plus dated-folder shape: <country>/latest/<file> is overwritten on every read; <country>/<yyyy>/<mm>/<dd>/<hh>/<file>-<hhmmss> is added only when the bytes changed, with the diff against the read before. Git keeps this pointer: each file's path, size and sha256, so a copy can be checked against what we read. The feeds are MeteoAlarm's (CC BY 4.0 equivalent with its terms: source.json); the warnings are each national service's.",
+ "vault": {
+  "id": "op6i3jfq",
+  "kind": "data vault (normal, not packed)",
+  "read_key": "not published yet: see agents/sources/status.json",
+  "made_by": "incident.sources@web-summit.dinis",
+  "made_utc": "2026-11-11T02:13:00Z"
+ },
+ "shape": {
+  "latest": "portugal/latest/",
+  "dated": "portugal/<yyyy>/<mm>/<dd>/<hh>/"
+ },
+ "files": [
+  {
+   "path": "portugal/2026/11/11/02/feeds-portugal-021426.json",
+   "bytes": 343634,
+   "sha256": "73a4a37b06d7274f7ea0c60bd66d1d6226b549f900e2621921eb6b38b1edb922"
+  },
+  {
+   "path": "portugal/2026/11/11/02/meteoalarm-legacy-atom-portugal-021426.xml",
+   "bytes": 186372,
+   "sha256": "ee04bd01f9d9151dbf1e4c112799899fdd4630ae2dc9e53227aeb20c5e5f75fa"
+  },
+  {
+   "path": "portugal/latest/feeds-portugal.json",
+   "bytes": 343634,
+   "sha256": "73a4a37b06d7274f7ea0c60bd66d1d6226b549f900e2621921eb6b38b1edb922"
+  },
+  {
+   "path": "portugal/latest/meteoalarm-legacy-atom-portugal.xml",
+   "bytes": 186372,
+   "sha256": "ee04bd01f9d9151dbf1e4c112799899fdd4630ae2dc9e53227aeb20c5e5f75fa"
+  }
+ ],
+ "files_total": 4,
+ "by": "incident.sources@web-summit.dinis",
+ "updated": "2026-11-11T02:20:39Z"
+}

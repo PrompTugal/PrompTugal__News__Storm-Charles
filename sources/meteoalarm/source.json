@@ -1,0 +1,66 @@
+{
+ "id": "meteoalarm",
+ "node": "source:meteoalarm",
+ "name": "MeteoAlarm",
+ "kind": "official: an aggregator of national weather warnings",
+ "who": "The early-warning dissemination system of Europe's national meteorological and hydrological services. In its own words it was \"developed for EUMETNET, the European Network of National Meteorological Services, and is managed on its behalf by GeoSphere Austria\". It issues no warnings itself: each one is issued by a national service (for Portugal, IPMA) and carried by MeteoAlarm as a CAP 1.2 message.",
+ "who_source": {"url": "https://www.meteoalarm.org/en/live/page/terms-and-conditions", "read_utc": "2026-11-11T02:15:31Z", "label": "fact"},
+ "home": "https://www.meteoalarm.org",
+ "why_we_read_it": "IPMA's own open data gives each warning's level and hours but not the time it was issued. The CAP message MeteoAlarm carries has `sent` (the time IPMA issued it) and `references` (the message it replaces). Every 'IPMA sent the change at ...' on this site comes from here.",
+ "publishes": [
+  {"what": "warnings as CAP 1.2 messages, per country, in JSON", "address": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal", "format": "JSON", "access": "open, no key", "we_read": "yes, every read recorded in data/portugal/reads.json"},
+  {"what": "the same warnings as an Atom feed with CAP elements, per country (41 countries listed)", "address": "https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-portugal", "format": "Atom XML", "access": "open, no key; WebSub offered", "we_read": "its hash and entry count with each read"},
+  {"what": "one message as CAP XML", "address": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal/<uuid>", "format": "CAP 1.2 XML", "access": "open, no key", "we_read": "not yet"},
+  {"what": "real-time and archived warnings by country and time (OGC EDR)", "address": "https://api.meteoalarm.org/edr/v1", "format": "GeoJSON", "access": "the data queries need a token (for re-distributors) or a free MeteoGate key (for the public)", "we_read": "the open description pages only; no token"},
+  {"what": "real-time push of every warning (MQTT)", "address": "mqtts://api.meteoalarm.org", "format": "GeoJSON", "access": "a token; or, with no registration, the WMO WIS2 Global Brokers' public stream", "we_read": "no"},
+  {"what": "hazard types, awareness levels, regions, languages (Metadata API)", "address": "https://api.meteoalarm.org/metadata/v1", "format": "JSON", "access": "described as for re-distributors and partners", "we_read": "no"}
+ ],
+ "licence": {
+  "summary": "CC BY 4.0 equivalent, with seven additional requirements for redistribution",
+  "as_published": "All Information on the MeteoAlarm Website may be used and redistributed under terms equivalent to the Creative Commons Attribution 4.0 International License (CC BY 4.0), along with the following additional requirements",
+  "requirements": [
+   "If the Information being redistributed is modified in any way, it must be redistributed along with the same Information without any material change or modification.",
+   "If the Information being redistributed spans more than one country, the source of the Information must always be displayed as \"EUMETNET – MeteoAlarm\".",
+   "If the Information being redistributed spans a single country, the name of the relevant MeteoAlarm Participant (National Meteorological and Hydrological Service) must always be displayed.",
+   "The time of issue of the Information being redistributed, as indicated on the MeteoAlarm Website at the time the Information is extracted, must be included in any redistribution.",
+   "Any Information being redistributed through internet applications must include a link to the following URL: www.meteoalarm.org.",
+   "Any Information being operationally redistributed must always be made available to users in real-time, with the delay between the publishing on the MeteoAlarm Website and the redistributor's website being on average less than five minutes and never longer than ten minutes.",
+   "All redistributors must publish the following disclaimer: \"Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to www.meteoalarm.org.\""
+  ],
+  "feed_rights_line": "Copyright © 2026 MeteoAlarm.Org. Licensed under terms equivalent to CC BY 4.0, with additional requirements for redistributing outlined in our Terms and Conditions.",
+  "url": "https://www.meteoalarm.org/en/live/page/terms-and-conditions",
+  "read_utc": "2026-11-11T02:15:31Z",
+  "what_is_not_licensed_to_us": "\"Content\" (the site's text, icons, design, layout, maps, software): owned by EUMETNET, licensed to the participants only. We copy none of it.",
+  "can_we_access": "yes: the feeds are open, no key; robots.txt on feeds.meteoalarm.org disallows nothing (read 2026-11-11T02:10Z)",
+  "can_we_manipulate": "yes, with conditions: a changed form must travel with the same Information without material change; name the national service; keep the time of issue; link www.meteoalarm.org; publish the disclaimer",
+  "how_we_meet_it": "latest.json keeps each message's text unedited, its sender and its sent time; the pages name IPMA, link www.meteoalarm.org and carry the disclaimer; our copy is presented as a dated record, not an operational redistribution (the five-minute rule is for operational redistribution, which this is not). The earlier check: research/weather-sites/meteoalarm-check.json. A careful reading, not legal advice."
+ },
+ "how_we_read": {
+  "tool": "tools/source-meteoalarm.mjs",
+  "client": "a plain client name, no contact details; one request, three seconds, then the Atom twin",
+  "how_often": "by the agent's rounds, about hourly while the storm is live (not a schedule a reader should rely on)",
+  "kept_in_git": "sources/meteoalarm/data/portugal/: latest.json (the compact table), reads.json (every read: time, sha256, bytes, counts), diffs/ (only when the set of messages changed)",
+  "kept_in_vault": "the full bytes of each changed read, latest/ plus dated folders: dataset.json"
+ },
+ "also_read_by": "incidents/2026-11-10-storm-charles/data/weather/tools/refresh.py (incident.meteorologist@) reads the same feed for cap.json (the Lisbon district's messages)",
+ "nodes": [
+  {"id": "source:meteoalarm", "type": "source", "name": "MeteoAlarm"},
+  {"id": "source:meteoalarm/feed/json", "type": "endpoint", "name": "MeteoAlarm warnings feed (JSON, per country)"},
+  {"id": "source:meteoalarm/feed/json/portugal", "type": "dataset", "name": "MeteoAlarm's Portugal feed (JSON)"},
+  {"id": "source:meteoalarm/feed/atom", "type": "endpoint", "name": "MeteoAlarm Atom feed (per country)"},
+  {"id": "source:meteoalarm/feed/atom/portugal", "type": "dataset", "name": "MeteoAlarm's Portugal feed (Atom)"},
+  {"id": "source:meteoalarm/cap", "type": "endpoint", "name": "one CAP message as XML"},
+  {"id": "source:meteoalarm/api/edr", "type": "api", "name": "MeteoAlarm OGC EDR API v1 (real-time and archive)"},
+  {"id": "source:meteoalarm/api/mqtt", "type": "api", "name": "MeteoAlarm MQTT API v1"},
+  {"id": "source:meteoalarm/api/metadata", "type": "api", "name": "MeteoAlarm Metadata API v0.1"},
+  {"id": "source:meteoalarm/api/hub", "type": "api", "name": "MeteoAlarm Hub API v1 (members only)"},
+  {"id": "source:meteoalarm/terms", "type": "licence", "name": "MeteoAlarm Terms and Conditions"}
+ ],
+ "related": [
+  {"verb": "carries the warnings of", "to": "source:ipma", "inverse": "is carried by"},
+  {"verb": "is developed for", "to": "body:eumetnet", "inverse": "has as its warning system"},
+  {"verb": "is managed by", "to": "body:geosphere-austria", "inverse": "manages"}
+ ],
+ "by": "incident.sources@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

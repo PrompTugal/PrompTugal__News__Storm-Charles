@@ -1,0 +1,814 @@
+{
+ "about": "The hand-kept register of every outside body this site takes data from or cites: who they are (bodies only), what they publish, what we take, the licence as published. tools/source-index.mjs adds the counts and writes sources.json and index.md from it. A body's own folder (sources/<id>/) appears as it is built; MeteoAlarm is first.",
+ "by": "incident.sources@web-summit.dinis",
+ "updated": "2026-11-11T02:28:00Z",
+ "sources": [
+  {
+   "id": "meteoalarm",
+   "node": "source:meteoalarm",
+   "name": "MeteoAlarm",
+   "group": "official",
+   "kind": "EUMETNET's system that carries Europe's national weather warnings",
+   "hosts": [
+    "feeds.meteoalarm.org",
+    "www.meteoalarm.org",
+    "meteoalarm.org",
+    "api.meteoalarm.org"
+   ],
+   "publishes": "each national service's warnings as CAP messages: JSON and Atom feeds per country (open); an EDR API with the archive, MQTT, metadata (token or MeteoGate key)",
+   "we_take": "the time IPMA issued each warning, and which message it replaced",
+   "licence": {
+    "status": "read",
+    "summary": "CC BY 4.0 equivalent, with additional requirements (name the national service, keep the time of issue, link www.meteoalarm.org, publish the disclaimer; real time if operational)",
+    "url": "https://www.meteoalarm.org/en/live/page/terms-and-conditions",
+    "read_utc": "2026-11-11T02:15:31Z",
+    "access": "yes, open feeds",
+    "manipulate": "yes, with conditions",
+    "detail": "meteoalarm/source.json"
+   },
+   "section": "meteoalarm/index.html",
+   "formats": [
+    "JSON",
+    "Atom XML",
+    "CAP 1.2 XML",
+    "GeoJSON"
+   ],
+   "reads": "about hourly by tools/source-meteoalarm.mjs; about every 5 to 30 minutes by the meteorologist's refresh.py"
+  },
+  {
+   "id": "ipma",
+   "node": "source:ipma",
+   "name": "IPMA (Instituto Português do Mar e da Atmosfera)",
+   "group": "official",
+   "kind": "Portugal's national meteorological service: it issues the warnings",
+   "hosts": [
+    "api.ipma.pt",
+    "www.ipma.pt"
+   ],
+   "publishes": "warnings, forecasts, station observations, communiqués, sea state (open data as JSON; RSS)",
+   "we_take": "the warnings in force, the hour-by-hour forecast for Lisbon, the stations' observations, the communiqués",
+   "licence": {
+    "status": "kept by incident.ipma@",
+    "note": "see sources/ipma/ (incident.ipma@'s section). The earlier check (research/weather-sites/meteoalarm-check.json) records that IPMA asks for the source to be named."
+   },
+   "section": "ipma/index.html",
+   "owner": "incident.ipma@web-summit.dinis",
+   "formats": [
+    "JSON",
+    "RSS"
+   ],
+   "reads": "every 5 to 30 minutes (refresh.py); hourly by incident.ipma@"
+  },
+  {
+   "id": "anepc",
+   "node": "source:anepc",
+   "name": "ANEPC (Autoridade Nacional de Emergência e Proteção Civil)",
+   "group": "official",
+   "kind": "Portugal's civil protection authority",
+   "hosts": [
+    "prociv.gov.pt",
+    "www.prociv.gov.pt"
+   ],
+   "publishes": "notices to the population, states of alert, occurrences",
+   "we_take": "its notices and the state of alert",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "government",
+   "node": "source:government",
+   "name": "The Government of Portugal",
+   "group": "official",
+   "kind": "the government portal and the Ministry of Internal Administration",
+   "hosts": [
+    "portugal.gov.pt",
+    "www.portugal.gov.pt",
+    "www.mai.gov.pt"
+   ],
+   "publishes": "communiqués, declarations (the alert situation)",
+   "we_take": "the declaration of the alert situation and its terms",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "websummit",
+   "node": "source:websummit",
+   "name": "Web Summit",
+   "group": "official",
+   "kind": "the organiser of the conference held in Lisbon on these days",
+   "hosts": [
+    "websummit.com"
+   ],
+   "publishes": "its event updates, schedule and blog",
+   "we_take": "its statements on what goes ahead, moves or is cancelled",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "reads": "its blog every 2 minutes by tools/websummit-poll.sh (incident.dev@), robots.txt obeyed"
+  },
+  {
+   "id": "cml",
+   "node": "source:cml",
+   "name": "Câmara Municipal de Lisboa",
+   "group": "official",
+   "kind": "Lisbon's city council",
+   "hosts": [
+    "informacao.lisboa.pt",
+    "www.lisboa.pt"
+   ],
+   "publishes": "municipal notices (closures, civil protection in the city)",
+   "we_take": "its notices",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "aemet",
+   "node": "source:aemet",
+   "name": "AEMET (Agencia Estatal de Meteorología)",
+   "group": "official",
+   "kind": "Spain's national meteorological service",
+   "hosts": [
+    "www.aemet.es"
+   ],
+   "publishes": "warnings and forecasts for Spain",
+   "we_take": "nothing directly yet: cited in research (what Wikipedia attributes to it)",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "nhc",
+   "node": "source:nhc",
+   "name": "NHC (US National Hurricane Center, NOAA)",
+   "group": "official",
+   "kind": "the US centre for tropical cyclones",
+   "hosts": [
+    "www.nhc.noaa.gov"
+   ],
+   "publishes": "tropical weather outlooks and advisories",
+   "we_take": "nothing directly yet: cited in research",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "noaa-awc",
+   "node": "source:noaa-awc",
+   "name": "NOAA Aviation Weather Center",
+   "group": "official",
+   "kind": "a US public service that redistributes the world's aviation reports",
+   "hosts": [
+    "aviationweather.gov"
+   ],
+   "publishes": "TAF and METAR as JSON (for Lisbon airport, IPMA's own forecast and the airport's observations)",
+   "we_take": "LPPT's TAF and METAR",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "formats": [
+    "JSON"
+   ],
+   "reads": "with every refresh.py run"
+  },
+  {
+   "id": "amn",
+   "node": "source:amn",
+   "name": "Autoridade Marítima Nacional",
+   "group": "official",
+   "kind": "Portugal's maritime authority",
+   "hosts": [
+    "www.amn.pt"
+   ],
+   "publishes": "notices on ports and bars (open, conditioned, closed)",
+   "we_take": "the state of the ports and bars",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "metro",
+   "node": "source:metro",
+   "name": "Metropolitano de Lisboa",
+   "group": "transport",
+   "kind": "Lisbon's metro operator",
+   "hosts": [
+    "www.metrolisboa.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "service changes",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "carris",
+   "node": "source:carris",
+   "name": "Carris",
+   "group": "transport",
+   "kind": "Lisbon's bus and tram operator",
+   "hosts": [
+    "www.carris.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "service changes",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "cp",
+   "node": "source:cp",
+   "name": "CP (Comboios de Portugal)",
+   "group": "transport",
+   "kind": "the national rail operator",
+   "hosts": [
+    "www.cp.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "service changes",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "ttsl",
+   "node": "source:ttsl",
+   "name": "Transtejo Soflusa",
+   "group": "transport",
+   "kind": "the Tagus ferry operator",
+   "hosts": [
+    "www.ttsl.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "ferry suspensions",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "rede-expressos",
+   "node": "source:rede-expressos",
+   "name": "Rede Expressos",
+   "group": "transport",
+   "kind": "an intercity coach operator",
+   "hosts": [
+    "www.rede-expressos.pt"
+   ],
+   "publishes": "service notices",
+   "we_take": "service changes",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "lisbon-airport",
+   "node": "source:lisbon-airport",
+   "name": "Lisbon airport (ANA Aeroportos de Portugal)",
+   "group": "transport",
+   "kind": "the airport operator",
+   "hosts": [
+    "www.aeroportolisboa.pt",
+    "www.ana.pt"
+   ],
+   "publishes": "flight information, notices",
+   "we_take": "notices on operations",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "lusoponte",
+   "node": "source:lusoponte",
+   "name": "Lusoponte",
+   "group": "transport",
+   "kind": "the concessionaire of the Vasco da Gama and 25 de Abril bridges",
+   "hosts": [
+    "www.lusoponte.pt"
+   ],
+   "publishes": "traffic notices",
+   "we_take": "bridge restrictions",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "venues",
+   "node": "source:venues",
+   "name": "FIL and MEO Arena",
+   "group": "transport",
+   "kind": "the conference's venues",
+   "hosts": [
+    "www.fil.pt",
+    "www.meoarena.pt"
+   ],
+   "publishes": "venue notices",
+   "we_take": "venue notices",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "met-no",
+   "node": "source:met-no",
+   "name": "MET Norway",
+   "group": "official",
+   "kind": "Norway's meteorological institute (an open forecast API for any point)",
+   "hosts": [
+    "api.met.no",
+    "www.yr.no"
+   ],
+   "publishes": "point forecasts as JSON",
+   "we_take": "a second model's wind and rain for Lisbon, for comparison only (not a forecast of ours)",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "formats": [
+    "JSON"
+   ]
+  },
+  {
+   "id": "open-meteo",
+   "node": "source:open-meteo",
+   "name": "Open-Meteo",
+   "group": "reference",
+   "kind": "an open weather API over public models",
+   "hosts": [
+    "api.open-meteo.com",
+    "open-meteo.com"
+   ],
+   "publishes": "model forecasts as JSON",
+   "we_take": "a model's hourly wind and rain for Lisbon, for comparison only",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "formats": [
+    "JSON"
+   ]
+  },
+  {
+   "id": "eumetsat",
+   "node": "source:eumetsat",
+   "name": "EUMETSAT",
+   "group": "official",
+   "kind": "Europe's weather-satellite organisation",
+   "hosts": [
+    "www.eumetsat.int",
+    "view.eumetsat.int",
+    "user.eumetsat.int"
+   ],
+   "publishes": "satellite imagery and its licence",
+   "we_take": "links only; no image is embedded (research/weather-sites/imagery.json)",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "copernicus-ems",
+   "node": "source:copernicus-ems",
+   "name": "Copernicus Emergency Management Service",
+   "group": "official",
+   "kind": "the EU's emergency mapping service",
+   "hosts": [
+    "mapping.emergency.copernicus.eu",
+    "emergency.copernicus.eu"
+   ],
+   "publishes": "rapid-mapping activations",
+   "we_take": "nothing directly yet: cited in research",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "wikipedia",
+   "node": "source:wikipedia",
+   "name": "Wikipedia and Wikidata",
+   "group": "reference",
+   "kind": "the encyclopaedia; read by incident.wikipedia@",
+   "hosts": [
+    "pt.wikipedia.org",
+    "en.wikipedia.org",
+    "zh.wikipedia.org",
+    "fr.wikipedia.org",
+    "es.wikipedia.org",
+    "www.wikidata.org"
+   ],
+   "publishes": "articles, their revisions and footnotes (API)",
+   "we_take": "the articles on the storm, their revisions and claims, compared with this site",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "section": "../research/wikipedia/index.html",
+   "owner": "incident.wikipedia@web-summit.dinis"
+  },
+  {
+   "id": "lusa",
+   "node": "source:lusa",
+   "name": "Lusa",
+   "group": "press",
+   "kind": "Portugal's news agency",
+   "hosts": [
+    "www.lusa.pt"
+   ],
+   "publishes": "agency copy, carried by most outlets",
+   "we_take": "named where an outlet credits it",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "jornaldenegocios",
+   "node": "source:jornaldenegocios",
+   "name": "Jornal de Negócios",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.jornaldenegocios.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "observador",
+   "node": "source:observador",
+   "name": "Observador",
+   "group": "press",
+   "kind": "a Portuguese online daily",
+   "hosts": [
+    "observador.pt"
+   ],
+   "publishes": "articles, live blogs",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "noticiasaominuto",
+   "node": "source:noticiasaominuto",
+   "name": "Notícias ao Minuto",
+   "group": "press",
+   "kind": "a Portuguese online outlet",
+   "hosts": [
+    "www.noticiasaominuto.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "rtp",
+   "node": "source:rtp",
+   "name": "RTP",
+   "group": "press",
+   "kind": "Portugal's public broadcaster",
+   "hosts": [
+    "www.rtp.pt"
+   ],
+   "publishes": "articles, broadcasts",
+   "we_take": "short excerpts with a link; words said on air are marked as such",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "dn",
+   "node": "source:dn",
+   "name": "Diário de Notícias",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.dn.pt",
+    "dinheirovivo.dn.pt",
+    "dnbrasil.dn.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "cnnportugal",
+   "node": "source:cnnportugal",
+   "name": "CNN Portugal / TVI",
+   "group": "press",
+   "kind": "a Portuguese broadcaster",
+   "hosts": [
+    "cnnportugal.iol.pt",
+    "away.iol.pt"
+   ],
+   "publishes": "articles, broadcasts",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "dnoticias",
+   "node": "source:dnoticias",
+   "name": "Diário de Notícias da Madeira",
+   "group": "press",
+   "kind": "Madeira's daily",
+   "hosts": [
+    "www.dnoticias.pt",
+    "dnoticias.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "publico",
+   "node": "source:publico",
+   "name": "Público",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.publico.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "expresso",
+   "node": "source:expresso",
+   "name": "Expresso",
+   "group": "press",
+   "kind": "a Portuguese weekly",
+   "hosts": [
+    "expresso.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "theportugalnews",
+   "node": "source:theportugalnews",
+   "name": "The Portugal News",
+   "group": "press",
+   "kind": "an English-language weekly in Portugal",
+   "hosts": [
+    "www.theportugalnews.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "eco",
+   "node": "source:eco",
+   "name": "ECO",
+   "group": "press",
+   "kind": "a Portuguese economic outlet",
+   "hosts": [
+    "eco.sapo.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "euronews",
+   "node": "source:euronews",
+   "name": "Euronews",
+   "group": "press",
+   "kind": "a European broadcaster",
+   "hosts": [
+    "www.euronews.com",
+    "pt.euronews.com",
+    "l.euronews.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "cmjornal",
+   "node": "source:cmjornal",
+   "name": "Correio da Manhã",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.cmjornal.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "sapo",
+   "node": "source:sapo",
+   "name": "SAPO and the outlets it hosts (Tek, Jornal Económico, Executive Digest, 24 Notícias, O Digital)",
+   "group": "press",
+   "kind": "a Portuguese portal",
+   "hosts": [
+    "tek.sapo.pt",
+    "jornaleconomico.sapo.pt",
+    "executivedigest.sapo.pt",
+    "24noticias.sapo.pt",
+    "odigital.sapo.pt",
+    "tempo.sapo.pt",
+    "sapo.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "rr",
+   "node": "source:rr",
+   "name": "Rádio Renascença",
+   "group": "press",
+   "kind": "a Portuguese radio",
+   "hosts": [
+    "rr.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "tsf",
+   "node": "source:tsf",
+   "name": "TSF",
+   "group": "press",
+   "kind": "a Portuguese news radio",
+   "hosts": [
+    "www.tsf.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "jn",
+   "node": "source:jn",
+   "name": "Jornal de Notícias",
+   "group": "press",
+   "kind": "a Portuguese daily",
+   "hosts": [
+    "www.jn.pt"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "elpais",
+   "node": "source:elpais",
+   "name": "El País",
+   "group": "press",
+   "kind": "a Spanish daily",
+   "hosts": [
+    "elpais.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "madeiraislandnews",
+   "node": "source:madeiraislandnews",
+   "name": "Madeira Island News",
+   "group": "press",
+   "kind": "an English-language outlet on Madeira",
+   "hosts": [
+    "www.madeiraislandnews.com"
+   ],
+   "publishes": "articles",
+   "we_take": "short excerpts with a link",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "bluesky",
+   "node": "source:bluesky",
+   "name": "Bluesky",
+   "group": "platform",
+   "kind": "a public social network with an open API; read by incident.social@",
+   "hosts": [
+    "bsky.app",
+    "api.bsky.app",
+    "public.api.bsky.app"
+   ],
+   "publishes": "public posts (AT Protocol API)",
+   "we_take": "posts by official and public-role accounts; a private person is never named or linked",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   },
+   "owner": "incident.social@web-summit.dinis",
+   "section": "../research/social/index.html"
+  },
+  {
+   "id": "mastodon",
+   "node": "source:mastodon",
+   "name": "Mastodon servers",
+   "group": "platform",
+   "kind": "public federated social servers",
+   "hosts": [
+    "mastodon.social",
+    "masto.pt",
+    "social.vivaldi.net"
+   ],
+   "publishes": "public posts",
+   "we_take": "posts by public-role accounts; a private person is never named or linked",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  },
+  {
+   "id": "youtube",
+   "node": "source:youtube",
+   "name": "YouTube",
+   "group": "platform",
+   "kind": "a video platform",
+   "hosts": [
+    "www.youtube.com"
+   ],
+   "publishes": "broadcasts and channels of bodies and outlets",
+   "we_take": "links to official broadcasts",
+   "licence": {
+    "status": "not read yet",
+    "note": "this agent has not yet read the body's terms page; until it has, we link and quote short excerpts only"
+   }
+  }
+ ]
+}
