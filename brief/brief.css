@@ -135,7 +135,10 @@
 .br-annex { font-family: var(--serif); font-size: 24px; margin: 28px 0 0; padding-top: 8px; border-top: 4px double var(--ink); }
 @media (max-width: 820px) {
   .br-sc-n { font-size: 26px; }
-  .br-hb time { font-size: 11px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0 auto; }
+  .br-hb time { font-size: 11px; visibility: hidden; white-space: nowrap; overflow: visible; width: 0; }
+  .br-hb:nth-child(3n+1) time { visibility: visible; }
+  .br-hb:nth-last-child(-n+2) time { visibility: hidden; }
+  .br-hb-r { display: none; }
   .br-mast, .br-p1 { grid-template-columns: minmax(0, 1fr); }
   .br-mast h1 { font-size: 27px; }
   .br-lead p { font-size: 17px; }
