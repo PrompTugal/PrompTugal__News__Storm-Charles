@@ -1,6 +1,6 @@
 # Patches for the conductor's files
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 03:40 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 12:14 UTC
 
 The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open one was checked with `git apply --check` at commit `f42d48a` (the signing patch rebuilt at 03:16 after `validate.mjs` and the policy changed).
 
@@ -9,6 +9,7 @@ The workflow, the build, the gate and the release script are incident.conductor@
 | generators-timed.patch | `admin/build/build.mjs` | **applied** by the conductor (`444257a`, 02:4x UTC); the file is removed | the build prints each generator's milliseconds on one line, so every CI log shows where the gate's budget goes |
 | deploy-retry.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`9ed312b`, 03:19 UTC; live from run 418); the file is removed. The second try has not fired yet (read 03:40): `data/ci/index.json`, `pipeline.deploy_retries` | when `deploy-pages` fails, wait 8 s and try once more; a second failure is a red run, as today |
 | [signed-release-record.patch](signed-release-record.patch) | `admin/tools/release.sh`, `admin/build/validate.mjs`, `agents/policy.json` | **waits for Dinis's yes** | each push carries a record signed with the pushing agent's own key; the gate verifies it ([the proposal](../signing.html)) |
+| [brief-pdf.patch](brief-pdf.patch) | `.github/workflows/deploy.yml` | **ready for the conductor** (12:20 UTC, at incident.brief@'s ask); not yet run on the runner | the brief's PDFs are rendered in CI from the built page and served at `/brief/brief-latest.pdf` and `/brief/edition-<n>.pdf`, from a cache keyed on the page's inputs |
 
 ## Generators in-process: measured, and not recommended
 
@@ -24,6 +25,19 @@ The conductor asked for a patch that runs the build's generators inside the buil
 - Plain import looks 1.4 s faster only because the linker silently did nothing: `tools/entities-link.mjs` is one line that imports `tools/entities-build.mjs` again with `--link`, and a module already imported is not run twice. The gate stayed green while 880 pages lost their links. Several generators also call `process.exit` on their normal path. So importing is not safe without changing other agents' tools.
 - **Where the time is** (one line from the timed build): graph-build 114 ms, library-index 268, library-view 40, agents-index 53, board-build 191, entities-build 164, stories-build 44, **entities-link 806**. The generators are about 1.7 s of a 3.1 s gate; the linker alone is a quarter of the gate and grows with every page.
 - **What would help**, in order: the linker working on the pages in memory before they are written instead of rereading and rewriting 880 files (its owner: incident.entities@); library-index reading each file once; and the timed line above, so the next slow generator is seen the push it lands.
+
+## The brief's PDFs: what the patch adds
+
+incident.brief@ asked for /brief/ as a PDF (Dinis's decision brief, BRIEF.md ~11:45). A PDF is a binary, so it is never in git; the gate only checks tracked files, so a PDF added to `_site/` after the gate needs no change to `validate.mjs`. The patch adds four steps between the gate and the upload, all `continue-on-error`: none can turn a run red.
+
+1. **The key**: `node tools/brief-pdf.mjs --inputs` prints the sha256 of the 14 files the page is drawn from (incident.brief@'s list: `brief/**`, the build, the frame and its styles, its own two tools).
+2. **The cache** (`actions/cache@v4`, path `.brief-pdf`, key `brief-pdf-v1-<sha256>`). Every deploy replaces the whole site, so a push that skipped the render would drop the PDFs: the cache is what lets a push that does not touch the brief still serve them.
+3. **The render, only on a miss**: installs Playwright and its Chromium, runs `tools/brief-pdf.mjs --site _site --out .brief-pdf`. If nothing was rendered the folder is removed, so an empty result is never cached and the next push tries again.
+4. **The copy** into `_site/brief/`, or a warning on the run ("no PDF in this deploy").
+
+**What it costs, honestly.** Measured here: the render is 3.8 s for three PDFs (0.44 to 0.57 MB each; 1.5 MB more in the artifact). Not measured, because only the runner can: the cache restore and its save step (expected a second or two on every push), and the Chromium install on a miss (expected 20 to 40 s, only on a push that changes one of the 14 inputs: `admin/build/build.mjs` and the frame are among them, so a build change also re-renders). The first runs after it is applied will say; this agent reads them (`data/ci/runs/`, the steps are named "Brief PDFs, ...") and reports the numbers. If the miss is too slow, the runner already has Chrome: `tools/brief-pdf.mjs` could launch that through `playwright-core` and skip the download (incident.brief@'s file).
+
+**To undo**: revert the commit; the cache expires by itself after seven days unused.
 
 ## The signed release record: what the patch wires in
 

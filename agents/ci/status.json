@@ -1,9 +1,9 @@
 {
   "agent": "incident.ci@web-summit.dinis",
   "by": "incident.ci@web-summit.dinis",
-  "updated": "2026-11-11T11:25:00Z",
+  "updated": "2026-11-11T12:15:00Z",
   "state": "second session (from 05:45 UTC), taking over from agents/ci/HANDOVER.md: watching the pipeline each hour at :17",
-  "last_wake": "2026-11-11T11:25:00Z",
+  "last_wake": "2026-11-11T12:15:00Z",
   "started_by": "incident.conductor@web-summit.dinis, at Dinis Cruz's word (BRIEF.md, 11 November ~02:20)",
   "key": "sha256:0f94b62eb1d9353a (encryption), sha256:7d21184584221853 (signing); a session key, public half in data/keys.json as incident-ci-dinis-2; the first session's (incident-ci-dinis) is marked handed over",
   "jobs": [
@@ -36,7 +36,8 @@
     "08:18Z wake: 685 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 39 runs since 07:18: 37 served, 2 replaced; gate on the runner median 5 s, max 8 s; push to served median 41 s, max 103 s; queue max 42 s; gate here 5.1 s at 2,011 pages; signing patch still applies",
     "09:19Z wake: 724 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 38 runs since 08:18: 35 served, 3 replaced; gate on the runner median 5 s, max 9 s (once over the budget); push to served median 38 s, max 61 s; queue max 28 s; the conductor's faster build (2c23f1dd, 09:16, run 724): gate here 4.6 s at 2,040 pages (5.1 s an hour ago at 2,011), on the runner one run so far at 4 s: to be measured over the next hour; signing patch still applies",
     "10:19Z wake: 830 runs, 6 failed (none since 02:59), 4 deploy retries (none new since 05:46); 106 runs since 09:18 (nearly three times the hour before): 79 served, 26 replaced; gate on the runner median 5 s, max 11 s (81 runs since the faster build 2c23f1dd: 52 at 5 s or less, 3 over 7 s: no visible gain on the runner, the site grew to 2,099 pages); push to served median 42 s, max 73 s; queue last-20 median 16 s, max 37 s; gate here 5.2 s; signing patch still applies",
-    "11:25Z wake: 939 runs, 6 failed (none since 02:59); a fifth deploy retry (run 867, 10:32, second try passed); 108 runs since 10:18: 63 served, 45 replaced; gate on the runner last-20 median 6 s (5 s until now), max 11 s this hour; push to served median 47 s, max 86 s; queue last-20 median 13 s, max 50 s this hour; gate here 5.0 s at 2,190 pages; ci/patches/signed-release-record.patch rebuilt (agents/policy.json gained transition/interviews/<role>.md; the fourth rebuild) and applies at dev's head"
+    "11:25Z wake: 939 runs, 6 failed (none since 02:59); a fifth deploy retry (run 867, 10:32, second try passed); 108 runs since 10:18: 63 served, 45 replaced; gate on the runner last-20 median 6 s (5 s until now), max 11 s this hour; push to served median 47 s, max 86 s; queue last-20 median 13 s, max 50 s this hour; gate here 5.0 s at 2,190 pages; ci/patches/signed-release-record.patch rebuilt (agents/policy.json gained transition/interviews/<role>.md; the fourth rebuild) and applies at dev's head",
+    "12:15Z wake: 1,055 runs, 6 failed (none since 02:59), 5 deploy retries (none new since 10:32); 115 runs since 11:24: 71 served, 42 replaced; gate on the runner median 6 s, max 9 s; push to served median 42 s, max 77 s; queue max 41 s; ci/patches/brief-pdf.patch written at incident.brief@'s ask (the brief's PDFs rendered in CI from a cache, never failing a deploy; render 3.8 s here; not yet run on the runner): ready for the conductor; signing patch still applies"
   ],
   "next": [
     "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",
