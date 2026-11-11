@@ -1,7 +1,7 @@
 {
- "about": "The models under test, cheapest first within each group. open_weight: OpenRouter's public model list gives a Hugging Face weights id for it (weights: that address); the others are commercial, API only. Prices are OpenRouter's list prices at the time read, in US dollars per million tokens; what each call really cost is in the ledger. size is our rough grouping (small: about 20 billion parameters or fewer, or a provider's cheapest tier).",
+ "about": "The models under test, cheapest first within each group. open_weight: OpenRouter's public model list gives a Hugging Face weights id for it (weights: that address); the others are commercial, API only. Prices are OpenRouter's list prices at the time read, in US dollars per million tokens; what each call really cost is in the ledger. size is our rough grouping (small: about 20 billion parameters or fewer, or a provider's cheapest tier). An id with '#reasoning-off' is the same model asked not to reason (OpenRouter's reasoning setting, enabled: false): a second row, to see what the reasoning buys. mistralai/mistral-large-4-0 was asked too and its provider refused the setting (67 calls, each an error at no cost, 02:38 UTC): it has no second row.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T02:19:00Z",
+ "updated": "2026-11-11T02:45:00Z",
  "source": "https://openrouter.ai/api/v1/models",
  "read_utc": "2026-11-11T02:19:00Z",
  "models": [
@@ -46,6 +46,22 @@
    "listed": "2026-03-10"
   },
   {
+   "id": "qwen/qwen3.5-9b#reasoning-off",
+   "name": "Qwen: Qwen3.5-9B (asked not to reason)",
+   "open_weight": true,
+   "weights": "https://huggingface.co/Qwen/Qwen3.5-9B",
+   "size": "small",
+   "usd_per_million_in": 0.17,
+   "usd_per_million_out": 0.25,
+   "listed": "2026-03-10",
+   "variant_of": "qwen/qwen3.5-9b",
+   "extra": {
+    "reasoning": {
+     "enabled": false
+    }
+   }
+  },
+  {
    "id": "google/gemma-4-31b-it",
    "name": "Google: Gemma 4 31B",
    "open_weight": true,
@@ -84,6 +100,22 @@
    "usd_per_million_in": 0.6,
    "usd_per_million_out": 3.6,
    "listed": "2026-02-16"
+  },
+  {
+   "id": "qwen/qwen3.5-397b-a17b#reasoning-off",
+   "name": "Qwen: Qwen3.5 397B A17B (asked not to reason)",
+   "open_weight": true,
+   "weights": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+   "size": "large",
+   "usd_per_million_in": 0.6,
+   "usd_per_million_out": 3.6,
+   "listed": "2026-02-16",
+   "variant_of": "qwen/qwen3.5-397b-a17b",
+   "extra": {
+    "reasoning": {
+     "enabled": false
+    }
+   }
   },
   {
    "id": "mistralai/mistral-large-4-0",

@@ -51,7 +51,7 @@ for (const task of TASKS) {
             if (stop) return
             if (spentBy(AGENT) >= BUDGET) { stop = true; console.error(`stopped: ${AGENT} has spent its ${BUDGET} USD for today`); return }
             // each model at its own defaults (a model that reasons by default may reason); 4000 tokens of room, temperature 0 where it is taken
-            const { text, line, response } = await call({ task: `WS-214/eval/${task}`, agent: AGENT, model, messages: PROMPTS[task](it, doc), max_tokens: 4000, extra: { temperature: 0 } })
+            const { text, line, response } = await call({ task: `WS-214/eval/${task}`, agent: AGENT, model: model.split('#')[0], messages: PROMPTS[task](it, doc), max_tokens: 4000, extra: { temperature: 0, ...(ROSTER.find(m => m.id === model)?.extra || {}) } })   // a roster id may carry a variant after '#', with its own extra settings
             const cut = response?.choices?.[0]?.finish_reason === 'length'
             const ans = parse(text), okKeys = ans && KEYS[task].every(k => k in ans)
             const kind = line.status !== 'ok' ? (line.status.startsWith('refused') ? 'not_run' : 'error') : okKeys ? 'answered' : cut ? 'cut_off' : (text && !ans && REFUSAL.test(text)) ? 'refused' : 'malformed'

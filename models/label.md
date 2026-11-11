@@ -1,19 +1,19 @@
 ---
 title: Models: label fact, evidence, hypothesis
-summary: 20 items from the data room, 13 models: every item, the answer it is scored against, and each model's answer marked right or wrong.
+summary: 20 items from the data room, 15 models: every item, the answer it is scored against, and each model's answer marked right or wrong.
 mount: <div id="models" data-view="task" data-task="label" data-base="./"><p class="meta">The chart is drawn in the browser from <a href="results.json">results.json</a>; the same figures are in the table below.</p></div>
 head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app/models/models.js" defer></script>
 ---
 
 # Label fact, evidence, hypothesis
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:36 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:39 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 Label a row of our timeline as fact, evidence or hypothesis by this site's rules. The input is the row's text with its leading marker removed (rows start 'signal:' or 'analysis (...)': that would give the answer away) and its source labels. The gold is the row's label in signals.json, which tools/timeline.mjs derives from the lead's markers. Rows that quote the press or point at a private person's post are left out.
 
-Scoring: exact. Run 2026-11-11 02:30 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:36 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
+Scoring: exact. Run 2026-11-11 02:38 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:39 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 
@@ -36,10 +36,12 @@ The rules:
 | `openai/gpt-oss-20b` | open-weight, small | **15/20** | 15 | 0 | 0 | 0 | 0 | 0.000065 | 1.8 | 5.1 |
 | `mistralai/ministral-8b-2512` | open-weight, small | **14/20** | 14 | 0 | 0 | 0 | 0 | 0.000035 | 0.5 | 0.8 |
 | `qwen/qwen3.5-9b` | open-weight, small | **12/20** | 12 | 1 | 5 | 0 | 0 | 0.00040 | 26.0 | 51.2 |
+| `qwen/qwen3.5-9b#reasoning-off` | open-weight, small | **10/20** | 10 | 0 | 0 | 0 | 0 | 0.000027 | 0.6 | 10.7 |
 | `google/gemma-4-31b-it` | open-weight, large | **17/20** | 17 | 0 | 0 | 0 | 0 | 0.000034 | 0.4 | 0.6 |
 | `meta-llama/llama-4-maverick` | open-weight, large | **17/20** | 17 | 0 | 0 | 0 | 0 | 0.000079 | 0.5 | 0.6 |
 | `deepseek/deepseek-v4.1-flash` | open-weight, large | **17/20** | 17 | 0 | 1 | 0 | 0 | 0.00076 | 3.0 | 22.8 |
 | `qwen/qwen3.5-397b-a17b` | open-weight, large | **16/20** | 16 | 1 | 1 | 0 | 0 | 0.00471 | 11.4 | 44.8 |
+| `qwen/qwen3.5-397b-a17b#reasoning-off` | open-weight, large | **12/20** | 12 | 0 | 0 | 0 | 5 | 0.00010 | 1.1 | 1.3 |
 | `mistralai/mistral-large-4-0` | open-weight, large | **17/20** | 17 | 0 | 1 | 0 | 0 | 0.00333 | 5.6 | 19.2 |
 | `openai/gpt-6-luna` | commercial, small | **16/20** | 16 | 0 | 0 | 0 | 0 | 0.000074 | 2.1 | 4.0 |
 | `google/gemini-3.5-flash-lite` | commercial, small | **17/20** | 17 | 0 | 0 | 0 | 0 | 0.00010 | 0.7 | 0.9 |
@@ -50,28 +52,28 @@ The rules:
 
 ## Item by item
 
-| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b | gemma-4-31b-it | llama-4-maverick | deepseek-v4.1-flash | qwen3.5-397b-a17b | mistral-large-4-0 | gpt-6-luna | gemini-3.5-flash-lite | claude-haiku-5.5 | gpt-6.1-terra |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [s-1110T1753](#s-1110t1753) | 12/13 | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1825](#s-1110t1825) | 11/13 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1905b](#s-1110t1905b) | 12/13 | right | **no** | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1941](#s-1110t1941) | 12/13 | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1945](#s-1110t1945) | 11/13 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T1952](#s-1110t1952) | 12/13 | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T2008](#s-1110t2008) | 12/13 | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T2030](#s-1110t2030) | 11/13 | **no** | right | right | right | right | right | right | **no** | right | right | right | right | right |
-| [s-1110T2115](#s-1110t2115) | 9/13 | right | right | right | **no** | right | right | right | right | right | **no** | right | **no** | **no** |
-| [s-1110T2118](#s-1110t2118) | 8/13 | **no** | **no** | right | **no** | right | **no** | right | right | right | right | **no** | right | right |
-| [s-1110T2132](#s-1110t2132) | 11/13 | right | right | **no** | **no** | right | right | right | right | right | right | right | right | right |
-| [s-1110T2153](#s-1110t2153) | 3/13 | **no** | right | **no** | **no** | **no** | right | right | **no** | **no** | **no** | **no** | **no** | **no** |
-| [s-1110T2323](#s-1110t2323) | 9/13 | right | right | right | **no** | right | right | **no** | right | right | right | right | **no** | **no** |
-| [s-1110T2324](#s-1110t2324) | 13/13 | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T2353](#s-1110t2353) | 13/13 | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1110T2354](#s-1110t2354) | 10/13 | **no** | **no** | right | **no** | right | right | right | right | right | right | right | right | right |
-| [s-1110T2358](#s-1110t2358) | 0/13 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** |
-| [s-1111T0000](#s-1111t0000) | 13/13 | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [s-1111T0015](#s-1111t0015) | 2/13 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | right | **no** | right |
-| [s-1111T0146](#s-1111t0146) | 13/13 | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b | qwen3.5-9b#reasoning-off | gemma-4-31b-it | llama-4-maverick | deepseek-v4.1-flash | qwen3.5-397b-a17b | qwen3.5-397b-a17b#reasoning-off | mistral-large-4-0 | gpt-6-luna | gemini-3.5-flash-lite | claude-haiku-5.5 | gpt-6.1-terra |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [s-1110T1753](#s-1110t1753) | 14/15 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1825](#s-1110t1825) | 13/15 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1905b](#s-1110t1905b) | 14/15 | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1941](#s-1110t1941) | 14/15 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1945](#s-1110t1945) | 13/15 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T1952](#s-1110t1952) | 13/15 | **no** | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2008](#s-1110t2008) | 13/15 | **no** | right | right | right | right | right | right | right | right | **no** | right | right | right | right | right |
+| [s-1110T2030](#s-1110t2030) | 12/15 | **no** | right | right | right | right | right | right | right | **no** | **no** | right | right | right | right | right |
+| [s-1110T2115](#s-1110t2115) | 10/15 | right | right | right | **no** | **no** | right | right | right | right | right | right | **no** | right | **no** | **no** |
+| [s-1110T2118](#s-1110t2118) | 9/15 | **no** | **no** | right | **no** | **no** | right | **no** | right | right | right | right | right | **no** | right | right |
+| [s-1110T2132](#s-1110t2132) | 11/15 | right | right | **no** | **no** | **no** | right | right | right | right | **no** | right | right | right | right | right |
+| [s-1110T2153](#s-1110t2153) | 3/15 | **no** | right | **no** | **no** | **no** | **no** | right | right | **no** | **no** | **no** | **no** | **no** | **no** | **no** |
+| [s-1110T2323](#s-1110t2323) | 10/15 | right | right | right | **no** | **no** | right | right | **no** | right | right | right | right | right | **no** | **no** |
+| [s-1110T2324](#s-1110t2324) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2353](#s-1110t2353) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [s-1110T2354](#s-1110t2354) | 10/15 | **no** | **no** | right | **no** | **no** | right | right | right | right | **no** | right | right | right | right | right |
+| [s-1110T2358](#s-1110t2358) | 0/15 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** |
+| [s-1111T0000](#s-1111t0000) | 14/15 | right | right | right | right | right | right | right | right | right | **no** | right | right | right | right | right |
+| [s-1111T0015](#s-1111t0015) | 2/15 | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | **no** | right | **no** | right |
+| [s-1111T0146](#s-1111t0146) | 14/15 | right | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right |
 
 ### s-1110T1753
 
@@ -88,10 +90,12 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 | `gpt-oss-20b` | evidence | right |
 | `ministral-8b-2512` | evidence | right |
 | `qwen3.5-9b` | evidence | right |
+| `qwen3.5-9b#reasoning-off` | evidence | right |
 | `gemma-4-31b-it` | evidence | right |
 | `llama-4-maverick` | evidence | right |
 | `deepseek-v4.1-flash` | evidence | right |
 | `qwen3.5-397b-a17b` | evidence | right |
+| `qwen3.5-397b-a17b#reasoning-off` | evidence | right |
 | `mistral-large-4-0` | evidence | right |
 | `gpt-6-luna` | evidence | right |
 | `gemini-3.5-flash-lite` | evidence | right |
@@ -113,10 +117,12 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 | `gpt-oss-20b` | evidence | right |
 | `ministral-8b-2512` | fact | **wrong** (label) |
 | `qwen3.5-9b` | evidence | right |
+| `qwen3.5-9b#reasoning-off` | evidence | right |
 | `gemma-4-31b-it` | evidence | right |
 | `llama-4-maverick` | evidence | right |
 | `deepseek-v4.1-flash` | evidence | right |
 | `qwen3.5-397b-a17b` | evidence | right |
+| `qwen3.5-397b-a17b#reasoning-off` | evidence | right |
 | `mistral-large-4-0` | evidence | right |
 | `gpt-6-luna` | evidence | right |
 | `gemini-3.5-flash-lite` | evidence | right |
@@ -138,10 +144,12 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 | `gpt-oss-20b` | fact | **wrong** (label) |
 | `ministral-8b-2512` | hypothesis | right |
 | `qwen3.5-9b` | hypothesis | right |
+| `qwen3.5-9b#reasoning-off` | hypothesis | right |
 | `gemma-4-31b-it` | hypothesis | right |
 | `llama-4-maverick` | hypothesis | right |
 | `deepseek-v4.1-flash` | hypothesis | right |
 | `qwen3.5-397b-a17b` | hypothesis | right |
+| `qwen3.5-397b-a17b#reasoning-off` | hypothesis | right |
 | `mistral-large-4-0` | hypothesis | right |
 | `gpt-6-luna` | hypothesis | right |
 | `gemini-3.5-flash-lite` | hypothesis | right |
@@ -163,10 +171,12 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 | `gpt-oss-20b` | evidence | right |
 | `ministral-8b-2512` | evidence | right |
 | `qwen3.5-9b` | evidence | right |
+| `qwen3.5-9b#reasoning-off` | evidence | right |
 | `gemma-4-31b-it` | evidence | right |
 | `llama-4-maverick` | evidence | right |
 | `deepseek-v4.1-flash` | evidence | right |
 | `qwen3.5-397b-a17b` | evidence | right |
+| `qwen3.5-397b-a17b#reasoning-off` | evidence | right |
 | `mistral-large-4-0` | evidence | right |
 | `gpt-6-luna` | evidence | right |
 | `gemini-3.5-flash-lite` | evidence | right |
@@ -188,10 +198,12 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 | `gpt-oss-20b` | evidence | right |
 | `ministral-8b-2512` | fact | **wrong** (label) |
 | `qwen3.5-9b` | evidence | right |
+| `qwen3.5-9b#reasoning-off` | evidence | right |
 | `gemma-4-31b-it` | evidence | right |
 | `llama-4-maverick` | evidence | right |
 | `deepseek-v4.1-flash` | evidence | right |
 | `qwen3.5-397b-a17b` | evidence | right |
+| `qwen3.5-397b-a17b#reasoning-off` | evidence | right |
 | `mistral-large-4-0` | evidence | right |
 | `gpt-6-luna` | evidence | right |
 | `gemini-3.5-flash-lite` | evidence | right |
@@ -213,10 +225,12 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 | `gpt-oss-20b` | fact | right |
 | `ministral-8b-2512` | fact | right |
 | `qwen3.5-9b` | fact | right |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | fact | right |
 | `llama-4-maverick` | fact | right |
 | `deepseek-v4.1-flash` | fact | right |
 | `qwen3.5-397b-a17b` | fact | right |
+| `qwen3.5-397b-a17b#reasoning-off` | fact | right |
 | `mistral-large-4-0` | fact | right |
 | `gpt-6-luna` | fact | right |
 | `gemini-3.5-flash-lite` | fact | right |
@@ -238,10 +252,12 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 | `gpt-oss-20b` | evidence | right |
 | `ministral-8b-2512` | evidence | right |
 | `qwen3.5-9b` | evidence | right |
+| `qwen3.5-9b#reasoning-off` | evidence | right |
 | `gemma-4-31b-it` | evidence | right |
 | `llama-4-maverick` | evidence | right |
 | `deepseek-v4.1-flash` | evidence | right |
 | `qwen3.5-397b-a17b` | evidence | right |
+| `qwen3.5-397b-a17b#reasoning-off` | (error) This request requires more credits, or fewer max_tokens. You requested up to 4000 tokens, but can only afford 3675. To increase, visit https://openrouter.ai/wor | **error** |
 | `mistral-large-4-0` | evidence | right |
 | `gpt-6-luna` | evidence | right |
 | `gemini-3.5-flash-lite` | evidence | right |
@@ -263,10 +279,12 @@ Scored against: `{"label":"evidence"}`, from `incidents/2026-11-10-storm-charles
 | `gpt-oss-20b` | evidence | right |
 | `ministral-8b-2512` | evidence | right |
 | `qwen3.5-9b` | evidence | right |
+| `qwen3.5-9b#reasoning-off` | evidence | right |
 | `gemma-4-31b-it` | evidence | right |
 | `llama-4-maverick` | evidence | right |
 | `deepseek-v4.1-flash` | evidence | right |
 | `qwen3.5-397b-a17b` |  | **malformed** |
+| `qwen3.5-397b-a17b#reasoning-off` | (error) This request requires more credits, or fewer max_tokens. You requested up to 4000 tokens, but can only afford 3675. To increase, visit https://openrouter.ai/wor | **error** |
 | `mistral-large-4-0` | evidence | right |
 | `gpt-6-luna` | evidence | right |
 | `gemini-3.5-flash-lite` | evidence | right |
@@ -288,10 +306,12 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 | `gpt-oss-20b` | fact | right |
 | `ministral-8b-2512` | fact | right |
 | `qwen3.5-9b` |  | **cut off** |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | fact | right |
 | `llama-4-maverick` | fact | right |
 | `deepseek-v4.1-flash` | fact | right |
 | `qwen3.5-397b-a17b` | fact | right |
+| `qwen3.5-397b-a17b#reasoning-off` | fact | right |
 | `mistral-large-4-0` | fact | right |
 | `gpt-6-luna` | evidence | **wrong** (label) |
 | `gemini-3.5-flash-lite` | fact | right |
@@ -313,10 +333,12 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 | `gpt-oss-20b` | fact | **wrong** (label) |
 | `ministral-8b-2512` | hypothesis | right |
 | `qwen3.5-9b` |  | **cut off** |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | hypothesis | right |
 | `llama-4-maverick` | fact | **wrong** (label) |
 | `deepseek-v4.1-flash` | hypothesis | right |
 | `qwen3.5-397b-a17b` | hypothesis | right |
+| `qwen3.5-397b-a17b#reasoning-off` | hypothesis | right |
 | `mistral-large-4-0` | hypothesis | right |
 | `gpt-6-luna` | hypothesis | right |
 | `gemini-3.5-flash-lite` | fact | **wrong** (label) |
@@ -338,10 +360,12 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 | `gpt-oss-20b` | fact | right |
 | `ministral-8b-2512` | evidence | **wrong** (label) |
 | `qwen3.5-9b` |  | **cut off** |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | fact | right |
 | `llama-4-maverick` | fact | right |
 | `deepseek-v4.1-flash` | fact | right |
 | `qwen3.5-397b-a17b` | fact | right |
+| `qwen3.5-397b-a17b#reasoning-off` | evidence | **wrong** (label) |
 | `mistral-large-4-0` | fact | right |
 | `gpt-6-luna` | fact | right |
 | `gemini-3.5-flash-lite` | fact | right |
@@ -363,10 +387,12 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 | `gpt-oss-20b` | fact | right |
 | `ministral-8b-2512` | evidence | **wrong** (label) |
 | `qwen3.5-9b` |  | **cut off** |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | hypothesis | **wrong** (label) |
 | `llama-4-maverick` | fact | right |
 | `deepseek-v4.1-flash` | fact | right |
 | `qwen3.5-397b-a17b` |  | **cut off** |
+| `qwen3.5-397b-a17b#reasoning-off` | evidence | **wrong** (label) |
 | `mistral-large-4-0` |  | **cut off** |
 | `gpt-6-luna` | hypothesis | **wrong** (label) |
 | `gemini-3.5-flash-lite` | hypothesis | **wrong** (label) |
@@ -388,10 +414,12 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 | `gpt-oss-20b` | fact | right |
 | `ministral-8b-2512` | fact | right |
 | `qwen3.5-9b` |  | **cut off** |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | fact | right |
 | `llama-4-maverick` | fact | right |
 | `deepseek-v4.1-flash` |  | **cut off** |
 | `qwen3.5-397b-a17b` | fact | right |
+| `qwen3.5-397b-a17b#reasoning-off` | fact | right |
 | `mistral-large-4-0` | fact | right |
 | `gpt-6-luna` | fact | right |
 | `gemini-3.5-flash-lite` | fact | right |
@@ -413,10 +441,12 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 | `gpt-oss-20b` | hypothesis | right |
 | `ministral-8b-2512` | hypothesis | right |
 | `qwen3.5-9b` | hypothesis | right |
+| `qwen3.5-9b#reasoning-off` | hypothesis | right |
 | `gemma-4-31b-it` | hypothesis | right |
 | `llama-4-maverick` | hypothesis | right |
 | `deepseek-v4.1-flash` | hypothesis | right |
 | `qwen3.5-397b-a17b` | hypothesis | right |
+| `qwen3.5-397b-a17b#reasoning-off` | hypothesis | right |
 | `mistral-large-4-0` | hypothesis | right |
 | `gpt-6-luna` | hypothesis | right |
 | `gemini-3.5-flash-lite` | hypothesis | right |
@@ -438,10 +468,12 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 | `gpt-oss-20b` | fact | right |
 | `ministral-8b-2512` | fact | right |
 | `qwen3.5-9b` | fact | right |
+| `qwen3.5-9b#reasoning-off` | fact | right |
 | `gemma-4-31b-it` | fact | right |
 | `llama-4-maverick` | fact | right |
 | `deepseek-v4.1-flash` | fact | right |
 | `qwen3.5-397b-a17b` | fact | right |
+| `qwen3.5-397b-a17b#reasoning-off` | fact | right |
 | `mistral-large-4-0` | fact | right |
 | `gpt-6-luna` | fact | right |
 | `gemini-3.5-flash-lite` | fact | right |
@@ -463,10 +495,12 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 | `gpt-oss-20b` | fact | **wrong** (label) |
 | `ministral-8b-2512` | hypothesis | right |
 | `qwen3.5-9b` |  | **malformed** |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | hypothesis | right |
 | `llama-4-maverick` | hypothesis | right |
 | `deepseek-v4.1-flash` | hypothesis | right |
 | `qwen3.5-397b-a17b` | hypothesis | right |
+| `qwen3.5-397b-a17b#reasoning-off` | (error) This request requires more credits, or fewer max_tokens. You requested up to 4000 tokens, but can only afford 3675. To increase, visit https://openrouter.ai/wor | **error** |
 | `mistral-large-4-0` | hypothesis | right |
 | `gpt-6-luna` | hypothesis | right |
 | `gemini-3.5-flash-lite` | hypothesis | right |
@@ -488,10 +522,12 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 | `gpt-oss-20b` | evidence | **wrong** (label) |
 | `ministral-8b-2512` | evidence | **wrong** (label) |
 | `qwen3.5-9b` | evidence | **wrong** (label) |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | fact | **wrong** (label) |
 | `llama-4-maverick` | fact | **wrong** (label) |
 | `deepseek-v4.1-flash` | evidence | **wrong** (label) |
 | `qwen3.5-397b-a17b` | fact | **wrong** (label) |
+| `qwen3.5-397b-a17b#reasoning-off` | evidence | **wrong** (label) |
 | `mistral-large-4-0` | fact | **wrong** (label) |
 | `gpt-6-luna` | fact | **wrong** (label) |
 | `gemini-3.5-flash-lite` | fact | **wrong** (label) |
@@ -513,10 +549,12 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 | `gpt-oss-20b` | hypothesis | right |
 | `ministral-8b-2512` | hypothesis | right |
 | `qwen3.5-9b` | hypothesis | right |
+| `qwen3.5-9b#reasoning-off` | hypothesis | right |
 | `gemma-4-31b-it` | hypothesis | right |
 | `llama-4-maverick` | hypothesis | right |
 | `deepseek-v4.1-flash` | hypothesis | right |
 | `qwen3.5-397b-a17b` | hypothesis | right |
+| `qwen3.5-397b-a17b#reasoning-off` | (error) This request requires more credits, or fewer max_tokens. You requested up to 4000 tokens, but can only afford 2704. To increase, visit https://openrouter.ai/wor | **error** |
 | `mistral-large-4-0` | hypothesis | right |
 | `gpt-6-luna` | hypothesis | right |
 | `gemini-3.5-flash-lite` | hypothesis | right |
@@ -538,10 +576,12 @@ Scored against: `{"label":"hypothesis"}`, from `incidents/2026-11-10-storm-charl
 | `gpt-oss-20b` | fact | **wrong** (label) |
 | `ministral-8b-2512` | fact | **wrong** (label) |
 | `qwen3.5-9b` | fact | **wrong** (label) |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | fact | **wrong** (label) |
 | `llama-4-maverick` | fact | **wrong** (label) |
 | `deepseek-v4.1-flash` | fact | **wrong** (label) |
 | `qwen3.5-397b-a17b` | fact | **wrong** (label) |
+| `qwen3.5-397b-a17b#reasoning-off` | (error) This request requires more credits, or fewer max_tokens. You requested up to 4000 tokens, but can only afford 3245. To increase, visit https://openrouter.ai/wor | **error** |
 | `mistral-large-4-0` | fact | **wrong** (label) |
 | `gpt-6-luna` | fact | **wrong** (label) |
 | `gemini-3.5-flash-lite` | hypothesis | right |
@@ -563,10 +603,12 @@ Scored against: `{"label":"fact"}`, from `incidents/2026-11-10-storm-charles/dat
 | `gpt-oss-20b` | fact | right |
 | `ministral-8b-2512` | fact | right |
 | `qwen3.5-9b` | fact | right |
+| `qwen3.5-9b#reasoning-off` | evidence | **wrong** (label) |
 | `gemma-4-31b-it` | fact | right |
 | `llama-4-maverick` | fact | right |
 | `deepseek-v4.1-flash` | fact | right |
 | `qwen3.5-397b-a17b` | fact | right |
+| `qwen3.5-397b-a17b#reasoning-off` | fact | right |
 | `mistral-large-4-0` | fact | right |
 | `gpt-6-luna` | fact | right |
 | `gemini-3.5-flash-lite` | fact | right |

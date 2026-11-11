@@ -1,19 +1,19 @@
 ---
 title: Models: extract a decision
-summary: 10 items from the data room, 13 models: every item, the answer it is scored against, and each model's answer marked right or wrong.
+summary: 10 items from the data room, 15 models: every item, the answer it is scored against, and each model's answer marked right or wrong.
 mount: <div id="models" data-view="task" data-task="extract-decision" data-base="./"><p class="meta">The chart is drawn in the browser from <a href="results.json">results.json</a>; the same figures are in the table below.</p></div>
 head: <link rel="stylesheet" href="../app/models/models.css"><script src="../app/models/models.js" defer></script>
 ---
 
 # Extract a decision
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:36 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 02:39 UTC
 
 **Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing here is a forecast or advice.** Part of [Other models, measured](index.md).
 
 From a short official passage, say who decided and which hours the decision covers. The gold answer is the decision graph's own edge (kept by incident.researcher@): its decider and its effect window, which the graph fills 'only from the source's own words' and leaves null where the source gives no clock hours. So most answers here are null on purpose: the test is also whether a model invents hours.
 
-Scoring: each field exact; an item is right when all three are. The model's one-line 'what' is published and not scored.. Run 2026-11-11 02:27 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:36 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
+Scoring: each field exact; an item is right when all three are. The model's one-line 'what' is published and not scored.. Run 2026-11-11 02:38 UTC. Source for every figure on this page: [results.json](results.json) (made 2026-11-11 02:39 UTC from the runs below) and [ledger-summary.json](ledger-summary.json).
 
 ## The instruction
 
@@ -68,10 +68,12 @@ mj: Ministry of Justice
 | `openai/gpt-oss-20b` | open-weight, small | **9/10** | 9 | 10 | 10 | 0 | 0 | 0 | 0 | 0.00011 | 2.3 | 14.6 |
 | `mistralai/ministral-8b-2512` | open-weight, small | **8/10** | 10 | 8 | 9 | 0 | 0 | 0 | 0 | 0.000078 | 0.9 | 1.0 |
 | `qwen/qwen3.5-9b` | open-weight, small | **9/10** | 10 | 9 | 10 | 0 | 0 | 0 | 0 | 0.00041 | 30.3 | 99.5 |
+| `qwen/qwen3.5-9b#reasoning-off` | open-weight, small | **6/10** | 8 | 8 | 9 | 0 | 0 | 0 | 0 | 0.000073 | 1.6 | 12.3 |
 | `google/gemma-4-31b-it` | open-weight, large | **10/10** | 10 | 10 | 10 | 0 | 0 | 0 | 0 | 0.000100 | 1.1 | 1.8 |
 | `meta-llama/llama-4-maverick` | open-weight, large | **10/10** | 10 | 10 | 10 | 0 | 0 | 0 | 0 | 0.00021 | 0.9 | 1.4 |
 | `deepseek/deepseek-v4.1-flash` | open-weight, large | **10/10** | 10 | 10 | 10 | 0 | 0 | 0 | 0 | 0.00049 | 3.0 | 9.1 |
 | `qwen/qwen3.5-397b-a17b` | open-weight, large | **9/10** | 9 | 9 | 9 | 0 | 1 | 0 | 0 | 0.00608 | 15.8 | 65.3 |
+| `qwen/qwen3.5-397b-a17b#reasoning-off` | open-weight, large | **10/10** | 10 | 10 | 10 | 0 | 0 | 0 | 0 | 0.00044 | 2.0 | 2.6 |
 | `mistralai/mistral-large-4-0` | open-weight, large | **10/10** | 10 | 10 | 10 | 0 | 0 | 0 | 0 | 0.00328 | 6.9 | 13.2 |
 | `openai/gpt-6-luna` | commercial, small | **9/10** | 9 | 10 | 10 | 0 | 0 | 0 | 0 | 0.00012 | 2.6 | 4.9 |
 | `google/gemini-3.5-flash-lite` | commercial, small | **10/10** | 10 | 10 | 10 | 0 | 0 | 0 | 0 | 0.00036 | 0.8 | 1.0 |
@@ -82,18 +84,18 @@ mj: Ministry of Justice
 
 ## Item by item
 
-| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b | gemma-4-31b-it | llama-4-maverick | deepseek-v4.1-flash | qwen3.5-397b-a17b | mistral-large-4-0 | gpt-6-luna | gemini-3.5-flash-lite | claude-haiku-5.5 | gpt-6.1-terra |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [d01](#d01) | 13/13 | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [d02](#d02) | 13/13 | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [d03](#d03) | 13/13 | right | right | right | right | right | right | right | right | right | right | right | right | right |
-| [d04](#d04) | 12/13 | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [d05](#d05) | 12/13 | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [d06](#d06) | 9/13 | **no** | right | **no** | **no** | right | right | right | **no** | right | right | right | right | right |
-| [d07](#d07) | 10/13 | **no** | **no** | right | right | right | right | right | right | right | **no** | right | right | right |
-| [d08](#d08) | 12/13 | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [d09](#d09) | 12/13 | **no** | right | right | right | right | right | right | right | right | right | right | right | right |
-| [d10](#d10) | 11/13 | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right |
+| Item | Right | gemma-3-4b-it | gpt-oss-20b | ministral-8b-2512 | qwen3.5-9b | qwen3.5-9b#reasoning-off | gemma-4-31b-it | llama-4-maverick | deepseek-v4.1-flash | qwen3.5-397b-a17b | qwen3.5-397b-a17b#reasoning-off | mistral-large-4-0 | gpt-6-luna | gemini-3.5-flash-lite | claude-haiku-5.5 | gpt-6.1-terra |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [d01](#d01) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [d02](#d02) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [d03](#d03) | 15/15 | right | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [d04](#d04) | 13/15 | **no** | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right |
+| [d05](#d05) | 13/15 | **no** | right | right | right | **no** | right | right | right | right | right | right | right | right | right | right |
+| [d06](#d06) | 10/15 | **no** | right | **no** | **no** | **no** | right | right | right | **no** | right | right | right | right | right | right |
+| [d07](#d07) | 12/15 | **no** | **no** | right | right | right | right | right | right | right | right | right | **no** | right | right | right |
+| [d08](#d08) | 14/15 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [d09](#d09) | 14/15 | **no** | right | right | right | right | right | right | right | right | right | right | right | right | right | right |
+| [d10](#d10) | 12/15 | **no** | right | **no** | right | **no** | right | right | right | right | right | right | right | right | right | right |
 
 ### d01
 
@@ -111,10 +113,12 @@ Scored against: `{"decider":"government","effect_from_utc":"2026-11-11T00:00Z","
 | `gpt-oss-20b` | {"decider":"government","what":"Declare alert situation in all continental territory","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `ministral-8b-2512` | {"decider":"government","what":"Declare alert status across mainland Portugal","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `qwen3.5-9b` | {"decider":"government","what":"Alert declared for mainland Portugal","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"government","what":"Alert declared across the mainland territory","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `gemma-4-31b-it` | {"decider":"government","what":"Declare alert situation in the entire Continental territory","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `llama-4-maverick` | {"decider":"government","what":"declare a state of alert across mainland Portugal","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `deepseek-v4.1-flash` | {"decider":"government","what":"Declares an alert situation across mainland Portugal","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `qwen3.5-397b-a17b` | {"decider":"government","what":"Declare alert situation in Continental territory","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"government","what":"Declare alert situation for the entire Continental territory","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `mistral-large-4-0` | {"decider":"government","what":"Alert situation declared for mainland Portugal","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `gpt-6-luna` | {"decider":"government","what":"Declared an alert situation across mainland Portugal.","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
 | `gemini-3.5-flash-lite` | {"decider":"government","what":"Declare a state of alert across the Portuguese mainland","effect_from_utc":"2026-11-11T00:00Z","effect_to_utc":"2026-11-11T23:59Z"} | right |
@@ -145,10 +149,12 @@ Scored against: `{"decider":"ipma","effect_from_utc":"2026-11-11T12:00Z","effect
 | `gpt-oss-20b` | {"decider":"ipma","what":"Red Wind Warning for Lisbon, gusts up to 140 km/h","effect_from_utc":"2026-11-11T12:00:00Z","effect_to_utc":"2026-11-11T21:00:00Z"} | right |
 | `ministral-8b-2512` | {"decider":"ipma","what":"Issue Red Wind Warning (Extreme)","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
 | `qwen3.5-9b` | {"decider":"ipma","what":"Extreme Red Wind Warning for Lisbon","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"ipma","what":"Extreme wind warning (Red) for Lisbon with gusts up to 140 km/h","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
 | `gemma-4-31b-it` | {"decider":"ipma","what":"Extreme wind warning (Red Alert) for Lisbon","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
 | `llama-4-maverick` | {"decider":"ipma","what":"Red wind warning","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
 | `deepseek-v4.1-flash` | {"decider":"ipma","what":"Red wind warning for Lisbon: gusts up to 120 km/h, reaching 140 km/h in exposed places","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
 | `qwen3.5-397b-a17b` | {"decider":"ipma","what":"Red wind warning for Lisbon","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"ipma","what":"Red wind warning for gusts up to 120 km/h, potentially reaching 140 km/h in exposed areas.","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
 | `mistral-large-4-0` | {"decider":"ipma","what":"Red wind warning for Lisbon","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
 | `gpt-6-luna` | {"decider":"ipma","what":"Red wind warning for Lisbon: gusts up to 120 km/h, reaching 140 km/h in the most exposed places.","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
 | `gemini-3.5-flash-lite` | {"decider":"ipma","what":"Red wind warning for Lisbon","effect_from_utc":"2026-11-11T12:00Z","effect_to_utc":"2026-11-11T21:00Z"} | right |
@@ -179,10 +185,12 @@ Scored against: `{"decider":"ipma","effect_from_utc":"2026-11-11T09:00Z","effect
 | `gpt-oss-20b` | {"decider":"ipma","what":"Red warning for strong persistent precipitation in Lisbon","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `ministral-8b-2512` | {"decider":"ipma","what":"Issue Red Alert for Extreme Rainfall in Lisbon","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `qwen3.5-9b` | {"decider":"ipma","what":"Extreme precipitation alert","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"ipma","what":"Extreme red alert for strong and persistent rain in Lisbon","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `gemma-4-31b-it` | {"decider":"ipma","what":"Red warning for heavy and persistent precipitation in Lisbon","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `llama-4-maverick` | {"decider":"ipma","what":"Red warning for heavy and persistent rain","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `deepseek-v4.1-flash` | {"decider":"ipma","what":"Red warning for heavy and persistent precipitation in Lisbon.","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `qwen3.5-397b-a17b` | {"decider":"ipma","what":"Red alert for strong precipitation","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"ipma","what":"Red warning for strong and persistent precipitation in Lisbon","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `mistral-large-4-0` | {"decider":"ipma","what":"Red warning for extreme heavy persistent precipitation in Lisbon","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `gpt-6-luna` | {"decider":"ipma","what":"Extreme red warning for heavy and persistent rainfall in Lisbon.","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
 | `gemini-3.5-flash-lite` | {"decider":"ipma","what":"Red warning for heavy and persistent precipitation in Lisbon","effect_from_utc":"2026-11-11T09:00Z","effect_to_utc":"2026-11-11T18:00Z"} | right |
@@ -211,10 +219,12 @@ Scored against: `{"decider":"ipma","effect_from_utc":"2026-11-10T21:00Z","effect
 | `gpt-oss-20b` | {"decider":"ipma","what":"Red warning for heavy precipitation in Madeira - Costa Sul","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `ministral-8b-2512` | {"decider":"ipma","what":"Red Alert for precipitation issued for Madeira - Costa Sul","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `qwen3.5-9b` | {"decider":"ipma","what":"Red rain warning","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"madeira-prociv","what":"Red alert for precipitation in South Coast of Madeira","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | **wrong** (decider) |
 | `gemma-4-31b-it` | {"decider":"ipma","what":"Red warning for precipitation in Madeira - Costa Sul","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `llama-4-maverick` | {"decider":"ipma","what":"Red warning for rain","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `deepseek-v4.1-flash` | {"decider":"ipma","what":"Red warning for heavy precipitation (rain) for Madeira - Costa Sul","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `qwen3.5-397b-a17b` | {"decider":"ipma","what":"Red warning for precipitation","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"ipma","what":"Red warning for precipitation issued for Madeira - Costa Sul","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `mistral-large-4-0` | {"decider":"ipma","what":"Red warning for precipitation","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `gpt-6-luna` | {"decider":"ipma","what":"Issued a red rainfall warning for Madeira's south coast.","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `gemini-3.5-flash-lite` | {"decider":"ipma","what":"Issued Red precipitation warning for Madeira - Costa Sul","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
@@ -243,10 +253,12 @@ Scored against: `{"decider":"ipma","effect_from_utc":"2026-11-10T21:00Z","effect
 | `gpt-oss-20b` | {"decider":"ipma","what":"Red precipitation warning for Madeira North Coast","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `ministral-8b-2512` | {"decider":"ipma","what":"Red Alert for precipitation issued for Madeira - Costa Norte","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `qwen3.5-9b` | {"decider":"ipma","what":"Red rain warning","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"madeira-prociv","what":"Red alert for precipitation in North Coast of Madeira","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | **wrong** (decider) |
 | `gemma-4-31b-it` | {"decider":"ipma","what":"Red precipitation warning for Madeira - Costa Norte","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `llama-4-maverick` | {"decider":"ipma","what":"Red warning for rain","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `deepseek-v4.1-flash` | {"decider":"ipma","what":"Red warning for precipitation in Madeira - Costa Norte","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `qwen3.5-397b-a17b` | {"decider":"ipma","what":"Red warning for precipitation","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"ipma","what":"Red warning for precipitation issued for Madeira - Costa Norte","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `mistral-large-4-0` | {"decider":"ipma","what":"Red warning for precipitation (Madeira north coast)","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `gpt-6-luna` | {"decider":"ipma","what":"Red rainfall warning for Madeira's north coast.","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
 | `gemini-3.5-flash-lite` | {"decider":"ipma","what":"Red precipitation warning for Madeira - Costa Norte","effect_from_utc":"2026-11-10T21:00Z","effect_to_utc":"2026-11-11T06:00Z"} | right |
@@ -269,10 +281,12 @@ Scored against: `{"decider":"ipma","effect_from_utc":null,"effect_to_utc":null}`
 | `gpt-oss-20b` | {"decider":"ipma","what":"Issued red and orange meteorological warnings","effect_from_utc":null,"effect_to_utc":null} | right |
 | `ministral-8b-2512` | {"decider":"ipma","what":"Issued Red and Orange meteorological warnings for Storm Charles","effect_from_utc":"2026-11-10T17:07Z","effect_to_utc":null} | **wrong** (effect_from_utc) |
 | `qwen3.5-9b` | {"decider":"ipma","what":"Issued red and orange weather warnings","effect_from_utc":"2026-11-10T17:07Z","effect_to_utc":null} | **wrong** (effect_from_utc) |
+| `qwen3.5-9b#reasoning-off` | {"decider":"ipma","what":"Red and Orange weather warnings issued for Storm Charles","effect_from_utc":"2026-11-10T17:00Z","effect_to_utc":null} | **wrong** (effect_from_utc) |
 | `gemma-4-31b-it` | {"decider":"ipma","what":"Issued red and orange weather warnings","effect_from_utc":null,"effect_to_utc":null} | right |
 | `llama-4-maverick` | {"decider":"ipma","what":"issued weather warnings of RED and ORANGE level","effect_from_utc":null,"effect_to_utc":null} | right |
 | `deepseek-v4.1-flash` | {"decider":"ipma","what":"Issued red and orange weather warnings","effect_from_utc":null,"effect_to_utc":null} | right |
 | `qwen3.5-397b-a17b` |  | **cut off** |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"ipma","what":"Red and orange weather warnings issued with possible aggravation","effect_from_utc":null,"effect_to_utc":null} | right |
 | `mistral-large-4-0` | {"decider":"ipma","what":"Issued red and orange weather warnings","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gpt-6-luna` | {"decider":"ipma","what":"Red and orange weather warnings were issued; worsening in some regions remains possible, so monitor updates.","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gemini-3.5-flash-lite` | {"decider":"ipma","what":"issued red and orange weather warnings due to Storm Charles","effect_from_utc":null,"effect_to_utc":null} | right |
@@ -295,10 +309,12 @@ Scored against: `{"decider":"websummit","effect_from_utc":null,"effect_to_utc":n
 | `gpt-oss-20b` | {"decider":"government","what":"Day 2 of Web Summit will not take place","effect_from_utc":null,"effect_to_utc":null} | **wrong** (decider) |
 | `ministral-8b-2512` | {"decider":"websummit","what":"Day 2 (Wednesday, November 11) cancelled","effect_from_utc":null,"effect_to_utc":null} | right |
 | `qwen3.5-9b` | {"decider":"websummit","what":"Day 2 cancelled","effect_from_utc":null,"effect_to_utc":null} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"websummit","what":"Day 2 of Web Summit cancelled","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gemma-4-31b-it` | {"decider":"websummit","what":"Day 2 of Web Summit will not take place","effect_from_utc":null,"effect_to_utc":null} | right |
 | `llama-4-maverick` | {"decider":"websummit","what":"cancel Day 2","effect_from_utc":null,"effect_to_utc":null} | right |
 | `deepseek-v4.1-flash` | {"decider":"websummit","what":"Day 2 (Wednesday, 11 November) will not take place","effect_from_utc":null,"effect_to_utc":null} | right |
 | `qwen3.5-397b-a17b` | {"decider":"websummit","what":"Web Summit Day 2 will not take place","effect_from_utc":null,"effect_to_utc":null} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"websummit","what":"Day 2 (Wednesday, November 11th) will not take place","effect_from_utc":null,"effect_to_utc":null} | right |
 | `mistral-large-4-0` | {"decider":"websummit","what":"Day 2 (Wednesday, November 11th) will not take place","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gpt-6-luna` | {"decider":"government","what":"Day 2 of Web Summit (Wednesday, November 11) will not take place.","effect_from_utc":null,"effect_to_utc":null} | **wrong** (decider) |
 | `gemini-3.5-flash-lite` | {"decider":"websummit","what":"Cancellation of Day 2 of the event following the Government's direction","effect_from_utc":null,"effect_to_utc":null} | right |
@@ -321,10 +337,12 @@ Scored against: `{"decider":"websummit","effect_from_utc":null,"effect_to_utc":n
 | `gpt-oss-20b` | {"decider":"websummit","what":"Proceed with Day 3 as planned","effect_from_utc":null,"effect_to_utc":null} | right |
 | `ministral-8b-2512` | {"decider":"websummit","what":"Event will proceed as planned on Thursday, November 12, despite Storm Charles","effect_from_utc":null,"effect_to_utc":null} | right |
 | `qwen3.5-9b` | {"decider":"websummit","what":"Web Summit proceeds with Day 3 as planned","effect_from_utc":null,"effect_to_utc":null} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"websummit","what":"Web Summit proceeds with Day 3 as planned","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gemma-4-31b-it` | {"decider":"websummit","what":"Proceed with Day 3 as planned","effect_from_utc":null,"effect_to_utc":null} | right |
 | `llama-4-maverick` | {"decider":"websummit","what":"proceed with Day 3 as planned","effect_from_utc":null,"effect_to_utc":null} | right |
 | `deepseek-v4.1-flash` | {"decider":"websummit","what":"Day 3 to proceed as planned after Storm Charles","effect_from_utc":null,"effect_to_utc":null} | right |
 | `qwen3.5-397b-a17b` | {"decider":"websummit","what":"Web Summit aims to proceed with Day 3 as planned","effect_from_utc":null,"effect_to_utc":null} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"websummit","what":"Web Summit aims to proceed with Day 3 (Thursday, November 12) as planned.","effect_from_utc":null,"effect_to_utc":null} | right |
 | `mistral-large-4-0` | {"decider":"websummit","what":"Aims to proceed with Day 3 (Thursday, November 12) as planned","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gpt-6-luna` | {"decider":"websummit","what":"Web Summit aims to proceed with Day 3 as planned following Storm Charles.","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gemini-3.5-flash-lite` | {"decider":"websummit","what":"Proceed with Day 3 (Thursday, November 12) as planned","effect_from_utc":null,"effect_to_utc":null} | right |
@@ -347,10 +365,12 @@ Scored against: `{"decider":"aemet","effect_from_utc":null,"effect_to_utc":null}
 | `gpt-oss-20b` | {"decider":"aemet","what":"Strong and persistent rains, very strong gusts and maritime storm","effect_from_utc":null,"effect_to_utc":null} | right |
 | `ministral-8b-2512` | {"decider":"aemet","what":"Special warning for strong and persistent rain, very strong wind gusts, and maritime storm","effect_from_utc":null,"effect_to_utc":null} | right |
 | `qwen3.5-9b` | {"decider":"aemet","what":"Special warning for strong persistent rain, very strong gusts, and maritime squall.","effect_from_utc":null,"effect_to_utc":null} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"aemet","what":"Strong and persistent rain, very strong gusts and stormy sea","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gemma-4-31b-it` | {"decider":"aemet","what":"Special warning for heavy persistent rain, strong gusts and sea storm","effect_from_utc":null,"effect_to_utc":null} | right |
 | `llama-4-maverick` | {"decider":"aemet","what":"Special warning for heavy and persistent rain, very strong gusts and rough sea","effect_from_utc":null,"effect_to_utc":null} | right |
 | `deepseek-v4.1-flash` | {"decider":"aemet","what":"Special warning for heavy and persistent rain, very strong gusts and maritime storm","effect_from_utc":null,"effect_to_utc":null} | right |
 | `qwen3.5-397b-a17b` | {"decider":"aemet","what":"Special warning for strong persistent rains, very strong gusts and maritime storm","effect_from_utc":null,"effect_to_utc":null} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"aemet","what":"Special warning for heavy and persistent rain, very strong gusts and maritime storm","effect_from_utc":null,"effect_to_utc":null} | right |
 | `mistral-large-4-0` | {"decider":"aemet","what":"Special warning for heavy persistent rain, very strong gusts and maritime storm","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gpt-6-luna` | {"decider":"aemet","what":"Warned of heavy, persistent rain, very strong gusts, and rough seas.","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gemini-3.5-flash-lite` | {"decider":"aemet","what":"Issued an aviso especial for heavy, persistent rain, very strong gusts, and maritime storm.","effect_from_utc":null,"effect_to_utc":null} | right |
@@ -373,10 +393,12 @@ Scored against: `{"decider":"metro","effect_from_utc":null,"effect_to_utc":null}
 | `gpt-oss-20b` | {"decider":"metro","what":"Notice on contingency plan for homeless people","effect_from_utc":null,"effect_to_utc":null} | right |
 | `ministral-8b-2512` | {"decider":"metro","what":"Activate contingency plan for homeless people during nights of 10–11 and 11–12 November","effect_from_utc":"2026-11-10T00:00Z","effect_to_utc":"2026-11-12T00:00Z"} | **wrong** (effect_from_utc, effect_to_utc) |
 | `qwen3.5-9b` | {"decider":"metro","what":"Contingency plan for homeless people during storm nights","effect_from_utc":null,"effect_to_utc":null} | right |
+| `qwen3.5-9b#reasoning-off` | {"decider":"metro","what":"Contingency plan for homeless people during nights of 10 to 11 and 11 to 12 November","effect_from_utc":"2026-11-10T00:00Z","effect_to_utc":"2026-11-13T00:00Z"} | **wrong** (effect_from_utc, effect_to_utc) |
 | `gemma-4-31b-it` | {"decider":"metro","what":"Contingency plan for homeless people during the nights","effect_from_utc":null,"effect_to_utc":null} | right |
 | `llama-4-maverick` | {"decider":"metro","what":"activate contingency plan for homeless people","effect_from_utc":null,"effect_to_utc":null} | right |
 | `deepseek-v4.1-flash` | {"decider":"metro","what":"Contingency plan for homeless people during the nights of 10-11 and 11-12 November","effect_from_utc":null,"effect_to_utc":null} | right |
 | `qwen3.5-397b-a17b` | {"decider":"metro","what":"Contingency plan for homeless people","effect_from_utc":null,"effect_to_utc":null} | right |
+| `qwen3.5-397b-a17b#reasoning-off` | {"decider":"metro","what":"Contingency plan for homeless people activated during the nights of November 10 to 11 and 11 to 12.","effect_from_utc":null,"effect_to_utc":null} | right |
 | `mistral-large-4-0` | {"decider":"metro","what":"Contingency plan for homeless people during the nights of 10-11 and 11-12 November","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gpt-6-luna` | {"decider":"metro","what":"Activated its contingency plan for homeless people.","effect_from_utc":null,"effect_to_utc":null} | right |
 | `gemini-3.5-flash-lite` | {"decider":"metro","what":"Contingency plan for homeless people","effect_from_utc":null,"effect_to_utc":null} | right |

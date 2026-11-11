@@ -1,18 +1,18 @@
 {
  "about": "The model ledger's daily totals: every model call the incident team made through tools/llm.mjs, counted. One ledger line per call (when, task, agent, model asked and served, tokens, the cost the provider reported, latency, status); the lines and the raw requests and responses are kept outside git. No prompt or answer text here. The models named are the third-party models that were called.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T02:36:05Z",
+ "updated": "2026-11-11T02:39:07Z",
  "currency": "USD",
  "source": "tools/llm.mjs --summary (the ledger at ~/.incident-ledger/<day>.jsonl in this agent's session)",
  "note": "A ledger lives in the session that made the calls: this file counts the calls made through this agent's wrapper. Other agents call through it by asking this agent (agents/models/ask.md).",
  "days": [
   {
    "day": "2026-11-11",
-   "calls": 897,
-   "cost_usd": 0.71587,
+   "calls": 1098,
+   "cost_usd": 0.730982,
    "cap_usd": 5,
-   "tokens_in": 269864,
-   "tokens_out": 433248,
+   "tokens_in": 308465,
+   "tokens_out": 438545,
    "by_model": {
     "google/gemma-3-4b-it": {
      "calls": 76,
@@ -27,10 +27,10 @@
      "tokens_out": 6901
     },
     "qwen/qwen3.5-9b": {
-     "calls": 75,
-     "cost_usd": 0.026518,
-     "tokens_in": 22552,
-     "tokens_out": 150775
+     "calls": 142,
+     "cost_usd": 0.028722,
+     "tokens_in": 42755,
+     "tokens_out": 153578
     },
     "google/gemma-4-31b-it": {
      "calls": 67,
@@ -69,7 +69,7 @@
      "tokens_out": 2644
     },
     "mistralai/mistral-large-4-0": {
-     "calls": 67,
+     "calls": 134,
      "cost_usd": 0.201556,
      "tokens_in": 18709,
      "tokens_out": 86561
@@ -81,10 +81,10 @@
      "tokens_out": 7713
     },
     "qwen/qwen3.5-397b-a17b": {
-     "calls": 67,
-     "cost_usd": 0.370543,
-     "tokens_in": 19831,
-     "tokens_out": 107880
+     "calls": 134,
+     "cost_usd": 0.383451,
+     "tokens_in": 38229,
+     "tokens_out": 110374
     },
     "openai/gpt-6.1-terra": {
      "calls": 67,
@@ -101,10 +101,10 @@
    },
    "by_agent": {
     "incident.models@web-summit.dinis": {
-     "calls": 897,
-     "cost_usd": 0.71587,
-     "tokens_in": 269864,
-     "tokens_out": 433248
+     "calls": 1098,
+     "cost_usd": 0.730982,
+     "tokens_in": 308465,
+     "tokens_out": 438545
     }
    },
    "by_task": {
@@ -115,28 +115,28 @@
      "tokens_out": 3
     },
     "WS-214/eval/extract-warning": {
-     "calls": 227,
-     "cost_usd": 0.137984,
-     "tokens_in": 63504,
-     "tokens_out": 82228
+     "calls": 278,
+     "cost_usd": 0.143341,
+     "tokens_in": 73440,
+     "tokens_out": 84686
     },
     "WS-214/eval/extract-decision": {
-     "calls": 136,
-     "cost_usd": 0.125979,
-     "tokens_in": 100777,
-     "tokens_out": 74335
+     "calls": 166,
+     "cost_usd": 0.131139,
+     "tokens_in": 115387,
+     "tokens_out": 75687
     },
     "WS-214/eval/label": {
-     "calls": 266,
-     "cost_usd": 0.209784,
-     "tokens_in": 79426,
-     "tokens_out": 139390
+     "calls": 326,
+     "cost_usd": 0.212353,
+     "tokens_in": 89938,
+     "tokens_out": 139766
     },
     "WS-214/eval/translate": {
-     "calls": 266,
-     "cost_usd": 0.237103,
-     "tokens_in": 26118,
-     "tokens_out": 137248
+     "calls": 326,
+     "cost_usd": 0.239129,
+     "tokens_in": 29661,
+     "tokens_out": 138359
     },
     "WS-214/models/ask-smoke": {
      "calls": 1,
@@ -147,25 +147,37 @@
    },
    "by_status": {
     "ok": {
-     "calls": 897,
-     "cost_usd": 0.71587,
-     "tokens_in": 269864,
-     "tokens_out": 433248
+     "calls": 1023,
+     "cost_usd": 0.730982,
+     "tokens_in": 308465,
+     "tokens_out": 438545
+    },
+    "http_400": {
+     "calls": 67,
+     "cost_usd": 0,
+     "tokens_in": 0,
+     "tokens_out": 0
+    },
+    "http_402": {
+     "calls": 8,
+     "cost_usd": 0,
+     "tokens_in": 0,
+     "tokens_out": 0
     }
    },
    "by_hour": {
     "02:00": {
-     "calls": 897,
-     "cost_usd": 0.71587
+     "calls": 1098,
+     "cost_usd": 0.730982
     }
    }
   }
  ],
  "total": {
-  "calls": 897,
-  "cost_usd": 0.71587,
-  "tokens_in": 269864,
-  "tokens_out": 433248
+  "calls": 1098,
+  "cost_usd": 0.730982,
+  "tokens_in": 308465,
+  "tokens_out": 438545
  },
  "other_desks": [
   {
@@ -177,5 +189,5 @@
    "says": "spend today: 0.19 US dollars of 1 (0.02 on three test calls, 0.17 on the first round with both engines and the zoom-in set; an hourly round of the fixed set on Sonar alone is about 0.06)"
   }
  ],
- "team_today_usd": 0.9059
+ "team_today_usd": 0.921
 }

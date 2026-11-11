@@ -1,7 +1,7 @@
 {
  "about": "Other models, measured: the same checkable tasks run on several models through tools/llm.mjs (OpenRouter), scored automatically against answers copied from this site's own data room. Small samples: read the counts, not the percentages. accuracy = items with every field right / items asked.",
  "by": "incident.models@web-summit.dinis",
- "updated": "2026-11-11T02:36:05Z",
+ "updated": "2026-11-11T02:39:07Z",
  "models": [
   {
    "id": "google/gemma-3-4b-it",
@@ -44,6 +44,22 @@
    "listed": "2026-03-10"
   },
   {
+   "id": "qwen/qwen3.5-9b#reasoning-off",
+   "name": "Qwen: Qwen3.5-9B (asked not to reason)",
+   "open_weight": true,
+   "weights": "https://huggingface.co/Qwen/Qwen3.5-9B",
+   "size": "small",
+   "usd_per_million_in": 0.17,
+   "usd_per_million_out": 0.25,
+   "listed": "2026-03-10",
+   "variant_of": "qwen/qwen3.5-9b",
+   "extra": {
+    "reasoning": {
+     "enabled": false
+    }
+   }
+  },
+  {
    "id": "google/gemma-4-31b-it",
    "name": "Google: Gemma 4 31B",
    "open_weight": true,
@@ -82,6 +98,22 @@
    "usd_per_million_in": 0.6,
    "usd_per_million_out": 3.6,
    "listed": "2026-02-16"
+  },
+  {
+   "id": "qwen/qwen3.5-397b-a17b#reasoning-off",
+   "name": "Qwen: Qwen3.5 397B A17B (asked not to reason)",
+   "open_weight": true,
+   "weights": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+   "size": "large",
+   "usd_per_million_in": 0.6,
+   "usd_per_million_out": 3.6,
+   "listed": "2026-02-16",
+   "variant_of": "qwen/qwen3.5-397b-a17b",
+   "extra": {
+    "reasoning": {
+     "enabled": false
+    }
+   }
   },
   {
    "id": "mistralai/mistral-large-4-0",
@@ -149,7 +181,7 @@
    "items_file": "models/evals/extract-warning/items.json",
    "results_file": "models/evals/extract-warning/results.json",
    "page": "models/extract-warning.md",
-   "run_utc": "2026-11-11T02:25:39Z",
+   "run_utc": "2026-11-11T02:38:12Z",
    "models": {
     "google/gemma-3-4b-it": {
      "asked": 17,
@@ -243,6 +275,29 @@
      "tokens_in": 4934,
      "tokens_out": 24892
     },
+    "qwen/qwen3.5-9b#reasoning-off": {
+     "asked": 17,
+     "right": 17,
+     "accuracy": 1,
+     "by_field": {
+      "type": 17,
+      "level": 17,
+      "area": 17,
+      "start_utc": 17,
+      "end_utc": 17
+     },
+     "answered": 17,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.000703,
+     "cost_per_item_usd": 0.0000414,
+     "latency_ms_median": 1304,
+     "latency_ms_p90": 2200,
+     "tokens_in": 4968,
+     "tokens_out": 1277
+    },
     "google/gemma-4-31b-it": {
      "asked": 17,
      "right": 17,
@@ -334,6 +389,29 @@
      "latency_ms_p90": 21183,
      "tokens_in": 4934,
      "tokens_out": 21258
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "asked": 17,
+     "right": 17,
+     "accuracy": 1,
+     "by_field": {
+      "type": 17,
+      "level": 17,
+      "area": 17,
+      "start_utc": 17,
+      "end_utc": 17
+     },
+     "answered": 17,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.004654,
+     "cost_per_item_usd": 0.0002738,
+     "latency_ms_median": 2189,
+     "latency_ms_p90": 2544,
+     "tokens_in": 4968,
+     "tokens_out": 1181
     },
     "mistralai/mistral-large-4-0": {
      "asked": 17,
@@ -464,7 +542,7 @@
    "items_file": "models/evals/extract-decision/items.json",
    "results_file": "models/evals/extract-decision/results.json",
    "page": "models/extract-decision.md",
-   "run_utc": "2026-11-11T02:27:50Z",
+   "run_utc": "2026-11-11T02:38:25Z",
    "models": {
     "google/gemma-3-4b-it": {
      "asked": 10,
@@ -550,6 +628,27 @@
      "tokens_in": 7285,
      "tokens_out": 24731
     },
+    "qwen/qwen3.5-9b#reasoning-off": {
+     "asked": 10,
+     "right": 6,
+     "accuracy": 0.6,
+     "by_field": {
+      "decider": 8,
+      "effect_from_utc": 8,
+      "effect_to_utc": 9
+     },
+     "answered": 10,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.000727,
+     "cost_per_item_usd": 0.0000727,
+     "latency_ms_median": 1563,
+     "latency_ms_p90": 12322,
+     "tokens_in": 7305,
+     "tokens_out": 656
+    },
     "google/gemma-4-31b-it": {
      "asked": 10,
      "right": 10,
@@ -633,6 +732,27 @@
      "latency_ms_p90": 65313,
      "tokens_in": 7285,
      "tokens_out": 16207
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "asked": 10,
+     "right": 10,
+     "accuracy": 1,
+     "by_field": {
+      "decider": 10,
+      "effect_from_utc": 10,
+      "effect_to_utc": 10
+     },
+     "answered": 10,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.004433,
+     "cost_per_item_usd": 0.0004433,
+     "latency_ms_median": 1964,
+     "latency_ms_p90": 2582,
+     "tokens_in": 7305,
+     "tokens_out": 696
     },
     "mistralai/mistral-large-4-0": {
      "asked": 10,
@@ -751,7 +871,7 @@
    "items_file": "models/evals/label/items.json",
    "results_file": "models/evals/label/results.json",
    "page": "models/label.md",
-   "run_utc": "2026-11-11T02:30:41Z",
+   "run_utc": "2026-11-11T02:38:37Z",
    "models": {
     "google/gemma-3-4b-it": {
      "asked": 20,
@@ -829,6 +949,25 @@
      "tokens_in": 5661,
      "tokens_out": 44719
     },
+    "qwen/qwen3.5-9b#reasoning-off": {
+     "asked": 20,
+     "right": 10,
+     "accuracy": 0.5,
+     "by_field": {
+      "label": 10
+     },
+     "answered": 20,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.000544,
+     "cost_per_item_usd": 0.0000272,
+     "latency_ms_median": 554,
+     "latency_ms_p90": 10744,
+     "tokens_in": 6022,
+     "tokens_out": 262
+    },
     "google/gemma-4-31b-it": {
      "asked": 20,
      "right": 17,
@@ -904,6 +1043,25 @@
      "latency_ms_p90": 44783,
      "tokens_in": 5742,
      "tokens_out": 28708
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "asked": 20,
+     "right": 12,
+     "accuracy": 0.6,
+     "by_field": {
+      "label": 12
+     },
+     "answered": 15,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 5,
+     "cost_usd": 0.002024,
+     "cost_per_item_usd": 0.0001012,
+     "latency_ms_median": 1100,
+     "latency_ms_p90": 1270,
+     "tokens_in": 4490,
+     "tokens_out": 114
     },
     "mistralai/mistral-large-4-0": {
      "asked": 20,
@@ -1013,7 +1171,7 @@
    "items_file": "models/evals/translate/items.json",
    "results_file": "models/evals/translate/results.json",
    "page": "models/translate.md",
-   "run_utc": "2026-11-11T02:33:10Z",
+   "run_utc": "2026-11-11T02:38:45Z",
    "models": {
     "google/gemma-3-4b-it": {
      "asked": 20,
@@ -1095,6 +1253,26 @@
      "tokens_in": 1868,
      "tokens_out": 46080
     },
+    "qwen/qwen3.5-9b#reasoning-off": {
+     "asked": 20,
+     "right": 20,
+     "accuracy": 1,
+     "by_field": {
+      "figures": 20,
+      "units": 20
+     },
+     "answered": 20,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 0,
+     "cost_usd": 0.000229,
+     "cost_per_item_usd": 0.0000115,
+     "latency_ms_median": 704,
+     "latency_ms_p90": 1811,
+     "tokens_in": 1908,
+     "tokens_out": 608
+    },
     "google/gemma-4-31b-it": {
      "asked": 20,
      "right": 20,
@@ -1174,6 +1352,26 @@
      "latency_ms_p90": 43470,
      "tokens_in": 1870,
      "tokens_out": 41707
+    },
+    "qwen/qwen3.5-397b-a17b#reasoning-off": {
+     "asked": 20,
+     "right": 17,
+     "accuracy": 0.85,
+     "by_field": {
+      "figures": 17,
+      "units": 17
+     },
+     "answered": 17,
+     "malformed": 0,
+     "cut_off": 0,
+     "refused": 0,
+     "errors": 3,
+     "cost_usd": 0.001797,
+     "cost_per_item_usd": 0.0000898,
+     "latency_ms_median": 1383,
+     "latency_ms_p90": 1868,
+     "tokens_in": 1635,
+     "tokens_out": 503
     },
     "mistralai/mistral-large-4-0": {
      "asked": 20,
@@ -1319,6 +1517,16 @@
    "latency_ms_median": 26035,
    "not_answered": 11
   },
+  "qwen/qwen3.5-9b#reasoning-off": {
+   "tasks": 4,
+   "asked": 67,
+   "right": 53,
+   "accuracy": 0.791,
+   "cost_usd": 0.002203,
+   "cost_per_item_usd": 0.0000329,
+   "latency_ms_median": 704,
+   "not_answered": 0
+  },
   "google/gemma-4-31b-it": {
    "tasks": 4,
    "asked": 67,
@@ -1358,6 +1566,16 @@
    "cost_per_item_usd": 0.0055305,
    "latency_ms_median": 15823,
    "not_answered": 7
+  },
+  "qwen/qwen3.5-397b-a17b#reasoning-off": {
+   "tasks": 4,
+   "asked": 67,
+   "right": 56,
+   "accuracy": 0.836,
+   "cost_usd": 0.012908,
+   "cost_per_item_usd": 0.0001927,
+   "latency_ms_median": 1383,
+   "not_answered": 8
   },
   "mistralai/mistral-large-4-0": {
    "tasks": 4,
