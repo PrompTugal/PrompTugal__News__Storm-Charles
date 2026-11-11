@@ -4,14 +4,15 @@
   "title": "Web Summit's terms forbid automated reading and archiving of its sites: keep the hold, or continue?",
   "state": "open",
   "opened_utc": "2026-11-11T05:27:55Z",
-  "updated_utc": "2026-11-11T05:31:00Z",
+  "updated_utc": "2026-11-11T06:34:08Z",
   "owner": "incident.conductor@web-summit.dinis",
   "raised_by": [
     "incident.sources@web-summit.dinis",
-    "incident.conductor@web-summit.dinis"
+    "incident.conductor@web-summit.dinis",
+    "incident.dev@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "Web Summit's Terms (updated 27 October 2026; clauses 48.2 and 52.1, as incident.sources@ read them) forbid any bot, script, scraper, AI agent or other automated means on its websites, and forbid archiving, storing or summarising their content. We polled its blog every 2 minutes, captured its pages, and ten timeline rows link to it. On hold by the conductor since 05:27 UTC: no automated reads or captures; existing captures not shown. Decide: (a) keep the hold: links, and facts in our own words, with a person reading the site; or (b) continue, knowing the terms. If (a): the display vault's history still holds the 15 Web Summit screenshots and its read key is published; removing them for good needs a new display vault (incident.archivist@ can make one on your word). Not done under the interim hold.",
+  "summary": "Web Summit's Terms (updated 27 October 2026; clauses 48.2 and 52.1, as incident.sources@ read them) forbid any bot, script, scraper, AI agent or other automated means on its websites, and forbid archiving, storing or summarising their content. We polled its blog every 2 minutes, captured its pages, and ten timeline rows link to it. On hold by the conductor since 05:27 UTC: no automated reads or captures; existing captures not shown. Decide: (a) keep the hold: links, and facts in our own words, with a person reading the site; or (b) continue, knowing the terms. If (a): the display vault's history still holds the 15 Web Summit screenshots and its read key is published; removing them for good needs a new display vault (incident.archivist@ can make one on your word). Not done under the interim hold. incident.dev@ asks three things under the same decision: (1) may any automated read of websummit.com resume (its poll is stopped, at the hold); (2) the repository holds the blog posts' titles, excerpts and dates and the full text of 'Important event update' (data/watch/websummit.json, here and in the new repository) and quotes in two of its commit messages: keep or remove; (3) the dashboard page reads Web Summit's public Bluesky posts live through Bluesky's public API, not websummit.com: keep or stop.",
   "blocks": "With the hold, we learn of an organisers' decision from the press, social accounts or a person, some minutes later; the five open questions that only Web Summit can answer are no longer re-read by any agent.",
   "closes": "Your choice of (a) or (b), recorded by the conductor on the Web Summit source page.",
   "rank": 0.7,
@@ -31,7 +32,8 @@
     "file:sources/registry.json",
     "file:sources/sources.json",
     "file:tools/websummit-poll.sh",
-    "s-1110T1909"
+    "s-1110T1909",
+    "file:agents/dev/status.json"
   ],
   "sources": [
     {
@@ -40,6 +42,13 @@
       "sha": "74c100e61534",
       "starts": "Dinis: Web Summit's terms (updated 27 October 2026, sections 48.2 and ",
       "full": "Dinis: Web Summit's terms (updated 27 October 2026, sections 48.2 and 52.1) forbid any 'bot, script ... scraper, artificial intelligence agent or other automated means' on its websites and apps, and forbid archiving, storing or summarising their content. This site polls websummit.com's blog every 2 minutes (tools/websummit-poll.sh), captures its pages and has 10 timeline rows linking to it. Your decision: stop the automated reads and keep only links and facts stated in our own words with the time a person or agent saw them; or continue, knowing the terms. This agent makes no further requests there. Detail: sources/websummit/ (the licence)."
+    },
+    {
+      "file": "agents/dev/status.json",
+      "field": "asks",
+      "sha": "1a3622b1d822",
+      "starts": "Dinis: Web Summit's Terms (48.2, 52.1) and our websummit.com watch: (1",
+      "full": "Dinis: Web Summit's Terms (48.2, 52.1) and our websummit.com watch: (1) may any automated read of websummit.com resume (the poll is stopped, at the lead's hold); (2) the repository holds the blog posts' titles, excerpts, dates and the full text of 'Important event update' (data/watch/websummit.json here and in the new repository) and quotes in two of my commit messages: keep or remove? (3) the dashboard page reads Web Summit's public Bluesky posts live (Bluesky's public API, not websummit.com): keep or stop?"
     }
   ],
   "history": [
@@ -52,8 +61,13 @@
       "at": "2026-11-11T05:31:00Z",
       "by": "incident.board@web-summit.dinis",
       "change": "one line added at incident.conductor@'s word (05:28 UTC): what (a) would mean for the 15 screenshots already in the display vault. The clauses were then read by the board in our own record, sources/registry.json (quoted in part by incident.sources@, with the hold since 05:27)"
+    },
+    {
+      "at": "2026-11-11T06:34:08Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "incident.dev@'s ask on the same terms (its status file: resuming reads, the blog text held in data/watch/websummit.json, the live Bluesky read on the dashboard) joined here in its own words; its line added to sources"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T05:31:00Z"
+  "updated": "2026-11-11T06:34:08Z"
 }
