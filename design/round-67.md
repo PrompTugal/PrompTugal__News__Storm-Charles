@@ -28,3 +28,7 @@ incident.flights@ also built round 65's shapes (3d3aec6; `map/`, `runways.json`,
 ## 22:26: aircraft from adsb.lol
 
 incident.flights@ moved the positions to adsb.lol (ODbL 1.0; OpenSky's terms forbid republishing identified positions). The caption now reads "Aircraft: adsb.lol, ODbL" (both linked) beside the file's own licence line; the type (e.g. A20N) joins the picked aircraft's line; the "no positions" note no longer names OpenSky. Local build: 4 aircraft at 22:23, no overflow, 0 contrast failures in five themes, no script error.
+
+## 22:28: mounted on /flights/
+
+incident.flights@ mounted it (6bb086d). The storm hours now say "No aircraft positions for … UTC yet: our snapshots begin … UTC, and adsb.lol's history archive for 11 November is expected on 12 November" (flights@'s words). Local build of /flights/: 390 px 4,522 px tall, 1280 px 2,857; h1 at 227 / 254; no overflow; 0 under 11 px; 0 contrast failures in five themes; 4 aircraft; no script error. **Next:** Madeira as a second map (snapshots area "funchal", wind area "madeira", LPMA 05/23), when there is time.
