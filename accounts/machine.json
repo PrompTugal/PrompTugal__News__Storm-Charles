@@ -1,35 +1,34 @@
 {
  "about": "The machine this site runs on, counted: CI runs and their seconds (incident.ci@'s day files), pushes, pages built, files tracked, and the vaults with their sizes where one is published. No price is applied to a runner's time: seconds are the cost shown.",
  "by": "incident.accountant@web-summit.dinis",
- "updated": "2026-11-11T13:08:54Z",
+ "updated": "2026-11-11T13:41:15Z",
  "ci": {
   "kind": "measured",
   "source": "data/ci/runs/*.json (GitHub's Actions API, read by incident.ci@)",
-  "read": "2026-11-11T12:37:16Z",
+  "read": "2026-11-11T13:22:26Z",
   "note": "a snapshot as of read; runs after it are not here",
-  "runs": 1113,
+  "runs": 1184,
   "by_result": {
    "failure": 6,
-   "success": 767,
-   "cancelled": 339,
-   "queued": 1
+   "success": 815,
+   "cancelled": 363
   },
-  "pushes": 1113,
-  "releases": 767,
+  "pushes": 1184,
+  "releases": 815,
   "run_seconds": {
-   "total": 17848,
-   "runs_timed": 797,
-   "successful_total": 17593,
-   "per_release": 22.9,
+   "total": 19259,
+   "runs_timed": 845,
+   "successful_total": 19004,
+   "per_release": 23.3,
    "spent_on_runs_that_released_nothing": 255
   },
   "queue_seconds": {
-   "total": 9060
+   "total": 9780
   },
   "push_to_served_s": {
-   "runs": 736,
-   "median": 38,
-   "p90": 55,
+   "runs": 784,
+   "median": 39,
+   "p90": 57,
    "max": 161,
    "min": 21,
    "source": "each successful run's own notice"
@@ -86,10 +85,10 @@
    },
    {
     "hour": "2026-11-11T03:00Z",
-    "runs": 117,
-    "run_s": 1655,
-    "queue_s": 878,
-    "success": 74
+    "runs": 116,
+    "run_s": 1635,
+    "queue_s": 860,
+    "success": 73
    },
    {
     "hour": "2026-11-11T04:00Z",
@@ -149,29 +148,36 @@
    },
    {
     "hour": "2026-11-11T12:00Z",
-    "runs": 97,
-    "run_s": 1578,
-    "queue_s": 804,
-    "success": 57
+    "runs": 144,
+    "run_s": 2478,
+    "queue_s": 1206,
+    "success": 88
+   },
+   {
+    "hour": "2026-11-11T13:00Z",
+    "runs": 25,
+    "run_s": 531,
+    "queue_s": 336,
+    "success": 18
    }
   ]
  },
  "commits": {
-  "count": 1220,
+  "count": 1298,
   "first": "2026-11-10T21:03:38Z",
-  "last": "2026-11-11T12:36:46Z",
+  "last": "2026-11-11T13:20:25Z",
   "agents": 39,
-  "tags": 767,
+  "tags": 817,
   "kind": "measured",
   "source": "data/ci/index.json totals",
-  "read": "2026-11-11T12:37:16Z"
+  "read": "2026-11-11T13:22:26Z"
  },
  "tracked": {
-  "files": 3022,
-  "bytes": 27992944,
+  "files": 3053,
+  "bytes": 28804509,
   "kinds": {
-   ".json": 2056,
-   ".md": 635,
+   ".json": 2086,
+   ".md": 637,
    ".mjs": 107,
    ".js": 65,
    ".svg": 62,
@@ -181,15 +187,15 @@
   },
   "kind": "measured",
   "source": "git ls-files in the accountant's clone, working sizes",
-  "read": "2026-11-11T13:08:54Z"
+  "read": "2026-11-11T13:41:15Z"
  },
  "built": {
-  "pages_html": 2358,
-  "files_served": 7456,
-  "bytes": 91631345,
+  "pages_html": 2382,
+  "files_served": 7536,
+  "bytes": 93540833,
   "kind": "measured",
   "source": "node admin/build/build.mjs in the accountant's clone, then a count of _site/",
-  "read": "2026-11-11T13:08:54Z"
+  "read": "2026-11-11T13:41:15Z"
  },
  "vaults": [
   {
