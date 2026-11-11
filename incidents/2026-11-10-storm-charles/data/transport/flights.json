@@ -1,7 +1,7 @@
 {
  "about": "Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network's public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations and diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.",
  "by": "incident.transport@web-summit.dinis",
- "updated": "2026-11-11T10:35:42Z",
+ "updated": "2026-11-11T11:38:50Z",
  "not_a_warning_service": "Not a warning service. No advice of ours: check with your airline or operator. For warnings follow IPMA and ANEPC.",
  "sources_page": "transport/sources.md",
  "attribution": "The OpenSky Network, https://opensky-network.org (M. Schäfer, M. Strohmeier, V. Lenders, I. Martinovic, M. Wilhelm, \"Bringing Up OpenSky: A Large-scale ADS-B Sensor Network for Research\", IPSN 2014)",
@@ -12,33 +12,40 @@
    "name": "Lisbon (Humberto Delgado)",
    "departures_today": {
     "label": "fact",
-    "what": "airline departures OpenSky's receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)",
-    "count": 29,
+    "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
+    "count": 38,
+    "covered_from": "2026-11-11T06:25:03Z",
     "by_hour_utc": [
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
      1,
      1,
      6,
-     13,
-     8
+     16,
+     10,
+     4
     ],
+    "window_note": "The first covered hour may be partial. Counts are a floor: what OpenSky's receivers saw.",
     "by_airline": [
      {
       "airline": "TAP Air Portugal",
-      "n": 19
+      "n": 22
      },
      {
       "airline": "Ryanair",
-      "n": 3
+      "n": 5
      },
      {
       "airline": "Delta",
-      "n": 1
+      "n": 2
+     },
+     {
+      "airline": "Eurowings",
+      "n": 2
      },
      {
       "airline": "Azul",
@@ -63,12 +70,16 @@
      {
       "airline": "Turkish Airlines",
       "n": 1
+     },
+     {
+      "airline": "easyJet Europe",
+      "n": 1
      }
     ],
     "other_operators_not_counted": 1,
     "source": "https://opensky-network.org/api/flights/departure?airport=LPPT",
-    "read": "2026-11-11T10:35:18Z",
-    "sha256": "aee15122472f795afd14296e588bfc5449ec803918685afdb3661ee5a10b4ff7"
+    "read": "2026-11-11T11:38:28Z",
+    "sha256": "4a9ecfdde37a881443c48474d6a1bde4ddada6c36eca70804a4a7a78da21a2d0"
    },
    "arrivals_today": {
     "label": "none",
@@ -77,13 +88,13 @@
    "live_snapshot": {
     "label": "fact",
     "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
-    "at": "2026-11-11T10:35:20Z",
-    "on_ground": 5,
-    "airborne_low": 2,
+    "at": "2026-11-11T11:38:28Z",
+    "on_ground": 2,
+    "airborne_low": 1,
     "other_operators_not_counted": 0,
     "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
-    "read": "2026-11-11T10:35:21Z",
-    "sha256": "a1f4439daa1bfd702b044edc1e0f3a03c7532a3a5393d7e2e9a9df7a3fd4e0ad"
+    "read": "2026-11-11T11:38:31Z",
+    "sha256": "9e99797c6f110137220b575f4df3be0c66fae7e90cff925a25f21dcecf043612"
    },
    "baseline": {
     "label": "none",
@@ -100,28 +111,35 @@
    "name": "Porto (Francisco Sá Carneiro)",
    "departures_today": {
     "label": "fact",
-    "what": "airline departures OpenSky's receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)",
-    "count": 7,
+    "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
+    "count": 14,
+    "covered_from": "2026-11-11T08:44:29Z",
     "by_hour_utc": [
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
      2,
      3,
-     2
+     4,
+     5
     ],
+    "window_note": "The first covered hour may be partial. Counts are a floor: what OpenSky's receivers saw.",
     "by_airline": [
      {
       "airline": "Ryanair",
-      "n": 2
+      "n": 5
      },
      {
       "airline": "easyJet Europe",
+      "n": 3
+     },
+     {
+      "airline": "Transavia France",
       "n": 2
      },
      {
@@ -133,14 +151,18 @@
       "n": 1
      },
      {
-      "airline": "Transavia France",
+      "airline": "KLM",
+      "n": 1
+     },
+     {
+      "airline": "Turkish Airlines",
       "n": 1
      }
     ],
     "other_operators_not_counted": 0,
     "source": "https://opensky-network.org/api/flights/departure?airport=LPPR",
-    "read": "2026-11-11T10:35:23Z",
-    "sha256": "1ce468c3c03edb41b6cfa1335db58d28b921b05bd7b1411e18645fa776e7cc61"
+    "read": "2026-11-11T11:38:33Z",
+    "sha256": "e8db9b4da86df201d2cfec39a2dd31b4c1323303a427e84818b058a6c696ba92"
    },
    "arrivals_today": {
     "label": "none",
@@ -149,13 +171,13 @@
    "live_snapshot": {
     "label": "fact",
     "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
-    "at": "2026-11-11T10:35:18Z",
+    "at": "2026-11-11T11:38:24Z",
     "on_ground": 3,
-    "airborne_low": 1,
-    "other_operators_not_counted": 0,
+    "airborne_low": 2,
+    "other_operators_not_counted": 2,
     "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
-    "read": "2026-11-11T10:35:25Z",
-    "sha256": "909de10f5b7153b1bffd54142b4b50de9103ec4efcf2cc6616b738e8a6ed8282"
+    "read": "2026-11-11T11:38:35Z",
+    "sha256": "667a365085ec5828c81d8f753461da9fef6a6a2f546e410e360335df2914c7ba"
    },
    "baseline": {
     "label": "none",
@@ -172,25 +194,28 @@
    "name": "Faro",
    "departures_today": {
     "label": "fact",
-    "what": "airline departures OpenSky's receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)",
+    "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
     "count": 0,
+    "covered_from": "2026-11-11T08:15:33Z",
     "by_hour_utc": [
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
      0,
      0,
      0,
      0
     ],
+    "window_note": "The first covered hour may be partial. Counts are a floor: what OpenSky's receivers saw.",
     "by_airline": [],
     "other_operators_not_counted": 1,
     "source": "https://opensky-network.org/api/flights/departure?airport=LPFR",
-    "read": "2026-11-11T10:35:27Z",
+    "read": "2026-11-11T11:38:37Z",
     "sha256": "a0e491083c5f6dc22f6f1d23d5399c191ad186dd632203227235e6808f246da5"
    },
    "arrivals_today": {
@@ -200,13 +225,13 @@
    "live_snapshot": {
     "label": "fact",
     "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
-    "at": "2026-11-11T10:35:20Z",
+    "at": "2026-11-11T11:38:35Z",
     "on_ground": 0,
     "airborne_low": 0,
     "other_operators_not_counted": 0,
     "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
-    "read": "2026-11-11T10:35:29Z",
-    "sha256": "feb71a898118ecf692011b96e644a7dc23c6f90c9f3dae8ff8ba7eaaec59c79a"
+    "read": "2026-11-11T11:38:39Z",
+    "sha256": "4d5f9d880749c39da3c51f5d79cab0998d437c18557cd255ea839378624ba866"
    },
    "baseline": {
     "label": "none",
@@ -223,25 +248,28 @@
    "name": "Funchal (Madeira, Cristiano Ronaldo)",
    "departures_today": {
     "label": "fact",
-    "what": "airline departures OpenSky's receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)",
+    "what": "airline departures OpenSky's receivers detected leaving this airport, in our readings today (OpenSky's anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)",
     "count": 0,
+    "covered_from": null,
     "by_hour_utc": [
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
-     0,
-     0
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
     ],
+    "window_note": "The first covered hour may be partial. Counts are a floor: what OpenSky's receivers saw.",
     "by_airline": [],
     "other_operators_not_counted": 0,
     "source": "https://opensky-network.org/api/flights/departure?airport=LPMA",
-    "read": "2026-11-11T10:35:31Z",
+    "read": "2026-11-11T11:38:41Z",
     "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
    },
    "arrivals_today": {
@@ -251,13 +279,13 @@
    "live_snapshot": {
     "label": "fact",
     "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
-    "at": "2026-11-11T10:35:28Z",
+    "at": "2026-11-11T11:38:38Z",
     "on_ground": 0,
     "airborne_low": 0,
     "other_operators_not_counted": 0,
     "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
-    "read": "2026-11-11T10:35:33Z",
-    "sha256": "1d54aa5ec83a62b7421da49f3a908f8bb708606aa09372e8b1e24070613da213"
+    "read": "2026-11-11T11:38:43Z",
+    "sha256": "168b3cbd5a2f9a8143c9a8602cde7deaed6887b730aacdbf29706b403c9fc50c"
    },
    "baseline": {
     "label": "none",

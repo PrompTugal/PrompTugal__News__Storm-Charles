@@ -83,7 +83,22 @@ async function flights() {
         const depUrl = `${OPENSKY}/flights/departure?airport=${ap.icao}&begin=${b}&end=${e}`
         const dep = await get(`opensky-dep-${ap.icao}`, depUrl)
         const hours = Array(24).fill(0); let airline = 0, other = 0; const byAirline = {}
-        const list = Array.isArray(dep.data) ? dep.data : []
+        // OpenSky's anonymous answer covers only the last few hours (a rolling window), not the whole day. So the day is the
+        // union of every reading kept today in the private store, each flight once (aircraft address + first seen, held in
+        // memory only, never written to git).
+        const seen = new Map(), dayDir = path.join(STORE, ...iso(now).slice(0, 10).split('-'))
+        const addAll = arr => { for (const f of Array.isArray(arr) ? arr : []) if (f && f.firstSeen >= b) seen.set(f.icao24 + ':' + f.firstSeen, f) }
+        let fromRead = Infinity
+        try {
+            for (const h of fs.readdirSync(dayDir)) for (const fn of fs.readdirSync(path.join(dayDir, h))) {
+                if (!fn.startsWith(`opensky-dep-${ap.icao}-`)) continue
+                try { const arr = JSON.parse(fs.readFileSync(path.join(dayDir, h, fn), 'utf8')); if (Array.isArray(arr)) { addAll(arr); for (const f of arr) fromRead = Math.min(fromRead, f.firstSeen) } } catch { }
+            }
+        } catch { }
+        addAll(dep.data)
+        if (Array.isArray(dep.data)) for (const f of dep.data) fromRead = Math.min(fromRead, f.firstSeen)
+        const list = [...seen.values()]
+        const covFrom = isFinite(fromRead) ? fromRead * 1000 : null, covHour = covFrom ? new Date(covFrom).getUTCHours() : null
         for (const f of list) {
             const a = airlineOf(f.callsign)
             if (!a) { other++; continue }
@@ -103,8 +118,10 @@ async function flights() {
         out.push({
             icao: ap.icao, iata: ap.iata, name: ap.name,
             departures_today: depOk ? {
-                label: 'fact', what: 'airline departures OpenSky\'s receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)',
-                count: airline, by_hour_utc: hours.slice(0, new Date(now).getUTCHours() + 1),
+                label: 'fact', what: 'airline departures OpenSky\'s receivers detected leaving this airport, in our readings today (OpenSky\'s anonymous answer covers only the last few hours, so hours before our first reading reaches back are not covered: null), by the hour of first detection (UTC)',
+                count: airline, covered_from: covFrom ? iso(covFrom) : null,
+                by_hour_utc: hours.slice(0, new Date(now).getUTCHours() + 1).map((n, h) => covHour == null || h < covHour ? null : n),
+                window_note: 'The first covered hour may be partial. Counts are a floor: what OpenSky\'s receivers saw.',
                 by_airline: Object.entries(byAirline).sort((x, y) => y[1] - x[1]).map(([k, n]) => ({ airline: AIRLINES[k], n })),
                 other_operators_not_counted: other,
                 source: `https://opensky-network.org/api/flights/departure?airport=${ap.icao}`, read: dep.rec.read, sha256: dep.rec.sha256,

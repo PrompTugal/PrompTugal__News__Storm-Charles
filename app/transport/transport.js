@@ -18,16 +18,18 @@
   var get = function (u) { return fetch(u, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null }).catch(function () { return null }) }
 
   function bars(h) {
-    var max = Math.max.apply(null, h.concat([1]))
-    return '<div class="tr-bars" role="img" aria-label="Departures by hour, UTC: ' + h.map(function (n, i) { return i + 'h ' + n }).join(', ') + '">' +
-      h.map(function (n, i) { return '<span class="tr-bar" title="' + String(i).padStart(2, '0') + ':00 UTC: ' + n + '"><i style="height:' + Math.round(100 * n / max) + '%"></i><b>' + (n || '') + '</b><small>' + String(i).padStart(2, '0') + '</small></span>' }).join('') + '</div>'
+    var max = Math.max.apply(null, h.filter(function (n) { return n != null }).concat([1]))
+    var say = function (n) { return n == null ? 'not covered' : n }
+    return '<div class="tr-bars" role="img" aria-label="Departures by hour, UTC: ' + h.map(function (n, i) { return i + 'h ' + say(n) }).join(', ') + '">' +
+      h.map(function (n, i) { return '<span class="tr-bar' + (n == null ? ' tr-nc' : '') + '" title="' + String(i).padStart(2, '0') + ':00 UTC: ' + say(n) + '"><i style="height:' + (n == null ? 100 : Math.round(100 * n / max)) + '%"></i><b>' + (n == null ? '' : n || '') + '</b><small>' + String(i).padStart(2, '0') + '</small></span>' }).join('') + '</div>' +
+      (h.some(function (n) { return n == null }) ? '<p class="meta">Dotted hours: not covered by our readings (OpenSky\'s anonymous answer reaches back only a few hours), not zero.</p>' : '')
   }
 
   function airport(a) {
     var d = a.departures_today || {}, l = a.live_snapshot || {}
     var s = '<section class="card tr-ap"><h2>' + esc(a.name) + ' <span class="meta">' + esc(a.iata) + ' · ' + esc(a.icao) + '</span></h2>'
     if (d.label === 'fact') {
-      s += '<p class="tr-big"><b>' + d.count + '</b> airline departures seen since 00:00 UTC ' + lbl('fact') + '</p>' + bars(d.by_hour_utc || [])
+      s += '<p class="tr-big"><b>' + d.count + '</b> airline departures seen' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : '') + ' ' + lbl('fact') + '</p>' + bars(d.by_hour_utc || [])
       if (d.by_airline && d.by_airline.length) s += '<p class="meta">' + d.by_airline.slice(0, 6).map(function (x) { return esc(x.airline) + ' ' + x.n }).join(' · ') + (d.by_airline.length > 6 ? ' · …' : '') + '</p>'
       s += '<p>' + prov('OpenSky Network', 'https://opensky-network.org/', d.read) + '</p>'
     } else s += '<p>' + lbl('none') + ' ' + esc(d.note || 'No reading') + '</p>'
