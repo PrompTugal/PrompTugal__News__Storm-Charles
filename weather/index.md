@@ -4,9 +4,9 @@ summary: Storm Charles in Lisbon and Madeira as a weather channel would show it:
 mount: <div id="wx" data-base="../" data-incident="2026-11-10-storm-charles"><p class="meta">This page draws itself from the data room's files and needs JavaScript. The same facts, as pages: <a href="../incidents/2026-11-10-storm-charles/index.html">the dashboard</a>, <a href="../incidents/2026-11-10-storm-charles/timeline.html">the timeline</a>, <a href="../datasets.html">the data</a>.</p></div>
 head: <link rel="stylesheet" href="../app/weather/weather.css"><script src="../app/weather/weather.js" defer></script>
 ---
-# Storm Charles: the weather, now
+## About this page
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:00 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 13:19 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page makes no forecast and gives no advice of its own.
 
