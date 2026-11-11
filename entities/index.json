@@ -1,16 +1,16 @@
 {
  "about": "Every node of entities/: its id (its page is entities/<id>.html, its data entities/<id>.json), type, names, and the id of the same thing in data/graph/ when the graph has it. Made by tools/entities-make.mjs from entities/seed.json and the incident's data; the grammar is entities/ontology.json.",
  "by": "incident.entities@web-summit.dinis",
- "updated": "2026-11-11T17:41Z",
+ "updated": "2026-11-11T18:38Z",
  "incident": "2026-11-10-storm-charles",
  "counts": {
-  "nodes": 251,
-  "edges": 566,
+  "nodes": 254,
+  "edges": 577,
   "by_type": {
    "agent": 38,
-   "body": 17,
+   "body": 18,
    "day": 4,
-   "decision": 74,
+   "decision": 76,
    "hazard": 5,
    "organisation": 8,
    "outlet": 32,
@@ -261,7 +261,7 @@
    "label": "ours",
    "graph": "agent:incident.meteorology@web-summit.dinis",
    "edges": 1,
-   "rows": 6
+   "rows": 7
   },
   {
    "id": "agent/models",
@@ -515,7 +515,7 @@
    "label": "fact",
    "graph": "actor:anepc",
    "edges": 5,
-   "rows": 19
+   "rows": 20
   },
   {
    "id": "body/apram",
@@ -590,7 +590,19 @@
    "label": "fact",
    "graph": "actor:government",
    "edges": 2,
-   "rows": 13
+   "rows": 14
+  },
+  {
+   "id": "body/ifcn-madeira",
+   "type": "body",
+   "name": "IFCN",
+   "also": [
+    "Madeira's forests and nature institute"
+   ],
+   "label": "evidence",
+   "graph": null,
+   "edges": 1,
+   "rows": 0
   },
   {
    "id": "body/ipma",
@@ -602,7 +614,7 @@
    "label": "fact",
    "graph": "actor:ipma",
    "edges": 11,
-   "rows": 62
+   "rows": 65
   },
   {
    "id": "body/madeira-gov",
@@ -650,7 +662,7 @@
    "label": "ours",
    "graph": "actor:meteoalarm",
    "edges": 1,
-   "rows": 4
+   "rows": 5
   },
   {
    "id": "body/mj",
@@ -686,7 +698,7 @@
    ],
    "label": "evidence",
    "graph": "actor:rsb-lisboa",
-   "edges": 1,
+   "edges": 2,
    "rows": 0
   },
   {
@@ -751,7 +763,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 15
+   "rows": 17
   },
   {
    "id": "decision/a1-vialonga",
@@ -759,7 +771,7 @@
    "name": "A1 restricted from 15:00 southbound at Vialonga (left lane closed), plus an access ramp closed",
    "also": [],
    "label": "evidence",
-   "graph": null,
+   "graph": "decision:a1-vialonga",
    "edges": 3,
    "rows": 0
   },
@@ -1140,6 +1152,16 @@
    "rows": 0
   },
   {
+   "id": "decision/madeira-trails-thursday",
+   "type": "decision",
+   "name": "All 41 Madeira walking trails stay closed on Thursday",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
+   "edges": 2,
+   "rows": 0
+  },
+  {
    "id": "decision/mai-alert-ends-midnight",
    "type": "decision",
    "name": "The Interior Minister: the alert situation ends at midnight as planned; the government expects the country…",
@@ -1266,6 +1288,16 @@
    "also": [],
    "label": "evidence",
    "graph": "decision:rsb-lisbon-count-1000",
+   "edges": 3,
+   "rows": 0
+  },
+  {
+   "id": "decision/rsb-lisbon-count-1630",
+   "type": "decision",
+   "name": "Occurrence count, Lisbon: 275 since 00:00, 75 still active at 16:30, no victims; mostly floods",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
    "edges": 3,
    "rows": 0
   },
@@ -1513,7 +1545,7 @@
    "label": "ours",
    "graph": null,
    "edges": 4,
-   "rows": 32
+   "rows": 35
   },
   {
    "id": "hazard/high-winds",
@@ -1528,7 +1560,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 46
+   "rows": 48
   },
   {
    "id": "hazard/sea-agitation",
@@ -1558,7 +1590,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 27
+   "rows": 29
   },
   {
    "id": "hazard/tidal-flooding",
@@ -1660,7 +1692,7 @@
    "label": "fact",
    "graph": "actor:websummit",
    "edges": 9,
-   "rows": 36
+   "rows": 37
   },
   {
    "id": "outlet/24-noticias",
@@ -1705,7 +1737,7 @@
    ],
    "label": "ours",
    "graph": "actor:outlet:cnn-portugal",
-   "edges": 20,
+   "edges": 22,
    "rows": 10
   },
   {
@@ -1804,7 +1836,7 @@
    ],
    "label": "ours",
    "graph": "actor:outlet:iol",
-   "edges": 20,
+   "edges": 22,
    "rows": 0
   },
   {
@@ -1843,7 +1875,7 @@
    "label": "ours",
    "graph": "actor:outlet:lusa",
    "edges": 1,
-   "rows": 14
+   "rows": 15
   },
   {
    "id": "outlet/madeira-island-news",
@@ -1903,7 +1935,7 @@
    "label": "ours",
    "graph": "actor:outlet:observador",
    "edges": 14,
-   "rows": 7
+   "rows": 8
   },
   {
    "id": "outlet/portugal-news",
@@ -1965,7 +1997,7 @@
    "label": "ours",
    "graph": "actor:outlet:rtp",
    "edges": 3,
-   "rows": 6
+   "rows": 7
   },
   {
    "id": "outlet/sabado",
@@ -2140,7 +2172,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 57
+   "rows": 61
   },
   {
    "id": "place/lisbon-district",
@@ -2357,7 +2389,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 4
+   "rows": 5
   },
   {
    "id": "role/ipma-meteorologist",
@@ -2636,7 +2668,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 22
+   "rows": 25
   },
   {
    "id": "term/communique",
@@ -2649,7 +2681,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 15
+   "rows": 16
   },
   {
    "id": "term/diario-da-republica",
@@ -2684,7 +2716,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 12
+   "rows": 15
   },
   {
    "id": "term/hypothesis",
@@ -2697,7 +2729,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 13
+   "rows": 14
   },
   {
    "id": "term/label",
@@ -2761,7 +2793,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 14
+   "rows": 15
   },
   {
    "id": "term/taf",
@@ -2841,7 +2873,7 @@
    "name": "IPMA ends Lisbon's orange wind warning at 15:56; yellow rain to 18:00 remains; orange sea to 21:00, then…",
    "also": [],
    "label": "fact",
-   "graph": null,
+   "graph": "warning:ipma-cut-1555",
    "edges": 3,
    "rows": 0
   },
@@ -2851,7 +2883,7 @@
    "name": "No red warning left for Lisbon: yellow rain and orange wind 15:06 to 18:00; orange sea to 21:00, then yellow…",
    "also": [],
    "label": "fact",
-   "graph": null,
+   "graph": "warning:ipma-lisbon-1506",
    "edges": 3,
    "rows": 0
   },
