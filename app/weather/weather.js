@@ -88,11 +88,13 @@
   // SENT after everything the open data lists for that hazard, and the two differ, the page shows the newest message and says plainly
   // what the open-data feed still lists. Otherwise the open data is shown.
   var LEVEL_PT = { amarelo: 'yellow', laranja: 'orange', vermelho: 'red' }
+  // CAP identifiers are compared without punctuation other than dots: the 15:55 message names the 12:33 one as "...123313.-PO-01-1939" (a stray "-")
+  function idk(x) { return String(x || '').replace(/[^0-9A-Za-z.]/g, '') }
   function channels(t) {
     var open = ((D.warn || {}).lisbon || []).filter(function (w) { return RANK[w.level] && ok(w.start_utc) && ok(w.end_utc) })
     var msgs = (D.cap || {}).lisbon_messages || [], replaced = {}, out = { list: open, differ: [] }
-    msgs.forEach(function (m) { (m.replaces || []).forEach(function (r) { if (r && r.identifier) replaced[r.identifier] = 1 }) })
-    var cur = msgs.filter(function (m) { return !replaced[m.identifier] && !m.left_feed_utc && ok(m.onset_utc) && ok(m.expires_utc) && ok(m.sent_utc) }).map(function (m) {
+    msgs.forEach(function (m) { (m.replaces || []).forEach(function (r) { if (r && r.identifier) replaced[idk(r.identifier)] = 1 }) })
+    var cur = msgs.filter(function (m) { return !replaced[idk(m.identifier)] && !m.left_feed_utc && ok(m.onset_utc) && ok(m.expires_utc) && ok(m.sent_utc) }).map(function (m) {
       var x = String(m.event_pt || '').match(/^Aviso\s+(\S+)\s+(.+)$/i), lv = x && LEVEL_PT[x[1].toLowerCase()]
       return lv ? { type: x[2].trim(), level: lv, start_utc: iso(m.onset_utc), end_utc: iso(m.expires_utc), text_pt: m.description_pt, text_en: m.text_en, text_en_by: m.text_en_by, sent_utc: iso(m.sent_utc), read_utc: m.last_seen_utc || m.read_utc, via: 'cap', id: m.identifier } : null
     }).filter(Boolean)
@@ -175,13 +177,13 @@
   function changeLine(t) {
     var msgs = (D.cap || {}).lisbon_messages || [], by = {}, replaced = {}
     var parse = function (m) { var x = String(m.event_pt || '').match(/^Aviso\s+(\S+)\s+(.+)$/i); return x && LEVEL_PT[x[1].toLowerCase()] ? { level: LEVEL_PT[x[1].toLowerCase()], type: x[2].trim() } : null }
-    msgs.forEach(function (m) { by[m.identifier] = m; (m.replaces || []).forEach(function (r) { if (r && r.identifier) replaced[r.identifier] = 1 }) })
+    msgs.forEach(function (m) { by[idk(m.identifier)] = m; (m.replaces || []).forEach(function (r) { if (r && r.identifier) replaced[idk(r.identifier)] = 1 }) })
     var out = []
     msgs.forEach(function (m) {
-      if (replaced[m.identifier] || m.left_feed_utc || !ok(m.sent_utc) || !ok(m.expires_utc) || T(m.expires_utc) <= t || T(m.sent_utc) > t || day(iso(m.sent_utc)) !== day(t)) return
+      if (replaced[idk(m.identifier)] || m.left_feed_utc || !ok(m.sent_utc) || !ok(m.expires_utc) || T(m.expires_utc) <= t || T(m.sent_utc) > t || day(iso(m.sent_utc)) !== day(t)) return
       var n = parse(m); if (!n) return
       ;(m.replaces || []).forEach(function (r) {
-        var o = r && by[r.identifier] && parse(by[r.identifier]); if (!o || o.type !== n.type || o.level === n.level) return
+        var o = r && by[idk(r.identifier)] && parse(by[idk(r.identifier)]); if (!o || o.type !== n.type || o.level === n.level) return
         out.push('<b>' + esc(EN[n.type] || n.type) + '</b> ' + (RANK[n.level] < RANK[o.level] ? 'lowered' : 'raised') + ' by IPMA from ' + lvl(o.level) + ' to ' + lvl(n.level) + ' <span class="prov">message sent ' + when(iso(m.sent_utc), t) + ' UTC · <a href="' + esc(ROOM.cap) + '">the CAP record</a></span>')
       })
     })
@@ -268,8 +270,8 @@
   function capRecord(t, D0, D1) {
     var msgs = (D.cap || {}).lisbon_messages || [], by = {}, repBy = {}, end = Math.min(t, D1), segs = [], marks = []
     var parse = function (m) { var x = String(m.event_pt || '').match(/^Aviso\s+(\S+)\s+(.+)$/i), lv = x && LEVEL_PT[x[1].toLowerCase()]; return lv && ok(m.onset_utc) && ok(m.expires_utc) && ok(m.sent_utc) ? { type: x[2].trim(), level: lv, start: T(m.onset_utc), end: T(m.expires_utc), sent: T(m.sent_utc), id: m.identifier } : null }
-    msgs.forEach(function (m) { var w = parse(m); if (w) by[m.identifier] = w })
-    msgs.forEach(function (m) { (m.replaces || []).forEach(function (r) { if (r && r.identifier && by[m.identifier]) repBy[r.identifier] = by[m.identifier] }) })
+    msgs.forEach(function (m) { var w = parse(m); if (w) by[idk(m.identifier)] = w })
+    msgs.forEach(function (m) { (m.replaces || []).forEach(function (r) { if (r && r.identifier && by[idk(m.identifier)]) repBy[idk(r.identifier)] = by[idk(m.identifier)] }) })
     Object.keys(by).forEach(function (id) {
       var w = by[id], r = repBy[id], b = Math.min(w.end, r ? r.sent : Infinity, end), a = Math.max(w.start, D0)
       if (b > a) segs.push({ type: w.type, level: w.level, a: a, b: b, w: w, cut: r && r.sent < w.end ? r : null })
