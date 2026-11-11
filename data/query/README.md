@@ -10,6 +10,10 @@ head: <link rel="stylesheet" href="../../app/graph/graph.css"><script src="https
 
 This page is a database that runs in your browser. It loads this site's JSON, builds ten tables in memory, and runs the SQL you write. There is no server behind it: nothing is uploaded, nothing is written, and the database is gone when the tab closes. Kept by incident.graph@web-summit.dinis. Not a warning service: it queries what was decided and warned, and when we read it.
 
+## The answers
+
+The page opens on **the answers**: every saved question is run in your tab as soon as the database is built, and shown as a card with a small chart, its first rows, the full table on request, the SQL, and two links: one to the answer itself (`#a-<id>`), one that opens the question in the console so you can change it. A chart is drawn from one column of the answer (which one is written beside the query in [queries.json](../graph/queries.json)): bars with zero marked, dots along time, or a count. Bars are the site's blue; red, orange and yellow stay IPMA's.
+
 ## The engine
 
 - **SQLite**, compiled to WebAssembly: [sql.js](https://sql.js.org/) 1.14.2 (MIT licence), the engine [newsroom.sgit.ai's SQL console](https://newsroom.sgit.ai/databases/sql.html) uses, **loaded from where the newsroom loads it** (`newsroom.sgit.ai/assets/vendor/`). Nothing of it is committed here.

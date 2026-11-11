@@ -24,8 +24,8 @@ window.StormData = (function () {
     const when = t => t ? t.replace('T', ' ').replace(/(:\d\d)?Z$/, m => (m.length > 1 ? m.slice(0, 3) : '') + ' UTC') : ''
     const dur = h => { if (h == null) return ''; const m = Math.round(Math.abs(h) * 60), d = Math.floor(m / 1440), hh = Math.floor((m % 1440) / 60), mm = m % 60; return ((d ? d + ' d ' : '') + (hh ? hh + ' h ' : '') + (mm || (!d && !hh) ? mm + ' min' : '')).trim() }
     const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, '') } catch { return u } }
-    // a link that leaves this site says so
-    const outLink = (u, text) => el('a', { href: u, rel: 'noopener', class: 'out', title: 'Leaves this site: ' + u, text: (text || hostOf(u)) + ' ↗' })
+    // a link that leaves this site says so: its title names where it goes, and the site's lens marks it with an arrow
+    const outLink = (u, text) => el('a', { href: u, rel: 'noopener', class: 'out', title: 'Leaves this site: ' + u, text: text || hostOf(u) })
     const nodeHref = (base, id) => base + 'app/graph/index.html?node=' + encodeURIComponent(id)
     const originHref = (base, storm, o) => { if (!o) return null; return base + (o.startsWith('/') ? o.slice(1) : storm.origin_base + o).split('#')[0] }
     const short = (s, n = 90) => s && s.length > n ? s.slice(0, n - 1) + '…' : s

@@ -19,7 +19,8 @@
         "<div><b id=\"m-asof\">–</b><span>newest input</span><em id=\"m-asof-s\">data as of</em></div>\n" +
         "</div>\n" +
         "<p id=\"q-status\" class=\"meta\" role=\"status\">Starting the database: this needs JavaScript and WebAssembly. Without them, the same data is in the files listed at the foot of this page.</p>\n" +
-        "<h2 class=\"sec\">Nine questions</h2>\n" +
+        "<h2 class=\"sec\" id=\"answers\">The answers</h2>\n<p class=\"meta\">Every saved question, answered now from the tables in this tab: a small chart, the first rows, and a link to the answer. Open any in the console below to change it.</p>\n<nav class=\"q-toc\" id=\"q-toc\" aria-label=\"The questions\"></nav>\n<div id=\"q-answers\"></div>\n" +
+        "<h2 class=\"sec\" id=\"console\">Ask your own: start from a question and change it</h2>\n" +
         "<div class=\"q-examples\" id=\"q-examples\"></div>\n" +
         "<p id=\"q-note\"></p>\n" +
         "<label for=\"q-sql\" class=\"meta\">SQL (SQLite). Tables: timeline, decisions, warnings, signals, sources, actors, first_on_fact, coverage, nodes, edges.</label>\n" +
@@ -37,7 +38,7 @@
     const kb = n => Math.round(n / 1024) + ' KB'
     const hex = buf => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('')
     const conv = v => v === null || v === undefined ? null : typeof v === 'boolean' ? (v ? 1 : 0) : typeof v === 'object' ? JSON.stringify(v) : v
-    let db = null, examples = [], schema = []
+    let db = null, examples = [], schema = [], quietRun = false
 
     async function getJSON(u) { const r = await fetch(u, { cache: 'no-cache' }); if (!r.ok) throw new Error(u + ': HTTP ' + r.status); const t = await r.text(); return [JSON.parse(t), t.length] }
 
@@ -74,11 +75,13 @@
             $('m-engine').textContent = ms(tEngine); $('m-data').textContent = kb(bytes); $('m-data-s').textContent = `${files.length} files, ${ms(tData)}`
             $('m-tables').textContent = schema.length + ' tables'; $('m-tables-s').textContent = `${rows} rows, ${ms(tTables)}`
             $('m-asof').textContent = (storm.as_of || '').slice(11, 16) + ' UTC'; $('m-asof-s').textContent = 'data as of ' + (storm.as_of || '').slice(0, 10)
-            drawSchema(); $('q-run').disabled = false
+            drawSchema(); $('q-run').disabled = false; answers(storm.as_of)
             status.textContent = `Ready: ${schema.length} tables, ${rows} rows. Pick a question or write SQL (Ctrl+Enter runs it).`
             window.__tools = Object.assign(window.__tools || {}, { sql: { run: exec, schema: () => schema.map(t => ({ ...t })), examples: () => examples.map(e => ({ ...e })) } })
             const h = location.hash.startsWith('#q=') ? decodeURIComponent(location.hash.slice(3)) : null
-            if (h) { $('q-sql').value = h; run() } else pick((new URLSearchParams(location.search).get('example')) || examples[0].id)
+            const ex = new URLSearchParams(location.search).get('example')
+            if (h) { $('q-sql').value = h; run() } else pick(ex || examples[0].id, true)
+            if (h || ex) $('console').scrollIntoView(); else if (location.hash.startsWith('#a-')) { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView() }
             document.dispatchEvent(new CustomEvent('tool:ready', { detail: { tool: 'sql' } }))
         } catch (e) { status.textContent = 'The console could not start: ' + (e && e.message || e) + '. The same data, as files: the tables linked below.'; status.classList.add('bad') }
     }
@@ -91,11 +94,11 @@
         const box = $('q-examples'); box.textContent = ''
         for (const e of examples) { const b = el('button', { type: 'button', 'data-id': e.id, text: e.question }); b.addEventListener('click', () => pick(e.id)); box.append(b) }
     }
-    function pick(id) {
+    function pick(id, quiet) {
         const e = examples.find(x => x.id === id) || examples[0]
         $('q-sql').value = e.sql; $('q-note').textContent = e.note
         document.querySelectorAll('#q-examples button').forEach(b => b.setAttribute('aria-pressed', b.dataset.id === e.id ? 'true' : 'false'))
-        if (db) run()
+        quietRun = !!quiet; if (db) run()
     }
     function cell(v) {
         const td = el('td')
@@ -103,7 +106,7 @@
         if (typeof v === 'number') { td.className = 'num'; td.textContent = String(v); return td }
         const s = String(v)
         if (/^\d{4}-\d\d-\d\d(T[\d:]+Z)?$/.test(s)) { td.className = 'time'; td.textContent = s.replace('T', ' ').replace('Z', ''); td.title = s + ' (UTC)'; return td }
-        if (/^https:\/\/[^\s"<>]+$/.test(s)) { let h = s; try { h = new URL(s).hostname.replace(/^www\./, '') } catch { } td.append(el('a', { href: s, rel: 'noopener', title: s, text: h + ' ↗' })) }
+        if (/^https:\/\/[^\s"<>]+$/.test(s)) { let h = s; try { h = new URL(s).hostname.replace(/^www\./, '') } catch { } td.append(el('a', { href: s, rel: 'noopener', class: 'out', title: 'Leaves this site: ' + s, text: h })) }
         else if (/^(fact|evidence|hypothesis)$/.test(s)) td.append(el('span', { class: 'lab ' + s, text: s }))
         else td.textContent = s
         return td
@@ -118,8 +121,62 @@
             if (!r.columns.length) { out.append(el('p', { class: 'meta', text: 'The statement ran and returned no rows.' })); return }
             const table = el('table', {}, [el('thead', {}, el('tr', {}, r.columns.map(c => el('th', { scope: 'col', text: c })))), el('tbody', {}, r.rows.slice(0, 500).map(row => el('tr', {}, row.map(cell))))])
             out.append(table)
-            try { history.replaceState(null, '', '#q=' + encodeURIComponent(sql)) } catch { }
+            if (!quietRun) try { history.replaceState(null, '', '#q=' + encodeURIComponent(sql)) } catch { }
+            quietRun = false
         } catch (e) { info.textContent = 'SQLite says: ' + (e && e.message || e); info.classList.add('bad') }
+    }
+    // ---------------------------------------------------------------- the answers: every saved question, run and drawn
+    // A chart here is plain HTML: one bar per row of one numeric column (zero marked, negative bars to the left), dots
+    // along time, or a count by one column. Bars are the site's blue: never IPMA's colours. Each has its number beside it.
+    const col = (r, name) => r.columns.indexOf(name)
+    const num = v => v === null || v === '' || isNaN(+v) ? null : +v
+    function bars(r, c) {
+        const li = col(r, c.label), l2 = c.label2 ? col(r, c.label2) : -1, gi = c.group ? col(r, c.group) : -1, vi = col(r, c.value)
+        const rows = r.rows.filter(x => num(x[vi]) !== null).slice(0, 14); if (li < 0 || vi < 0 || !rows.length) return null
+        const lo = Math.min(0, ...rows.map(x => +x[vi])), hi = Math.max(0, ...rows.map(x => +x[vi])), span = hi - lo || 1, zero = (0 - lo) / span * 100
+        const box = el('div', { class: 'q-bars', role: 'img', 'aria-label': c.say }); let last = null
+        for (const x of rows) {
+            if (gi >= 0 && x[gi] !== last) { last = x[gi]; box.append(el('div', { class: 'grp', text: String(x[gi]) })) }
+            const v = +x[vi], w = Math.abs(v) / span * 100, left = v < 0 ? zero - w : zero
+            const name = String(x[li] ?? '') + (l2 >= 0 && x[l2] ? ' · ' + x[l2] : '')
+            box.append(el('div', { class: 'row' }, [el('span', { class: 'name', title: name, text: name.length > 44 ? name.slice(0, 43) + '…' : name }), el('span', { class: 'track' }, [el('i', { class: 'zero', style: `left:${zero}%` }), el('b', { style: `left:${left}%;width:${Math.max(w, 0.6)}%` })]), el('span', { class: 'val', text: `${v} ${c.unit || ''}` })]))
+        }
+        if (r.rows.length > rows.length) box.append(el('p', { class: 'meta', text: `The first ${rows.length} of ${r.rows.length} rows are drawn; the table has them all.` }))
+        return box
+    }
+    function times(r, c) {
+        const ti = col(r, c.time), li = col(r, c.label); if (ti < 0) return null
+        const pts = r.rows.map(x => ({ t: Date.parse(x[ti]), at: x[ti], name: li >= 0 ? String(x[li] ?? '') : '' })).filter(p => p.t && /T/.test(String(p.at))); if (pts.length < 2) return null
+        const lo = Math.min(...pts.map(p => p.t)), hi = Math.max(...pts.map(p => p.t)), span = hi - lo || 1
+        const box = el('div', { class: 'q-times', role: 'img', 'aria-label': c.say }), track = el('div', { class: 'track' })
+        for (const p of pts) track.append(el('i', { style: `left:${(p.t - lo) / span * 100}%`, title: `${p.at.slice(5, 16).replace('T', ' ')} ${p.name}` }))
+        box.append(track, el('div', { class: 'ends' }, [el('span', { text: pts[0].at.slice(5, 16).replace('T', ' ') + ' UTC' }), el('span', { text: `${pts.length} with a time` }), el('span', { text: pts[pts.length - 1].at.slice(5, 16).replace('T', ' ') + ' UTC' })]))
+        return box
+    }
+    function counts(r, c) {
+        const bi = col(r, c.by); if (bi < 0) return null
+        const m = new Map(); for (const x of r.rows) m.set(String(x[bi]), (m.get(String(x[bi])) || 0) + 1)
+        return bars({ columns: ['k', 'n'], rows: [...m].map(([k, n]) => [k, n]) }, { label: 'k', value: 'n', unit: '', say: c.say })
+    }
+    function answers(asOf) {
+        const box = $('q-answers'), toc = $('q-toc'); box.textContent = ''; toc.textContent = ''
+        examples.forEach((e, i) => {
+            const id = 'a-' + e.id; toc.append(el('a', { href: '#' + id, text: `${i + 1}. ${e.question}` }))
+            const card = el('section', { class: 'q-card', id })
+            card.append(el('h3', {}, [el('a', { href: '#' + id, text: `${i + 1}. ${e.question}` })]))
+            try {
+                const r = exec(e.sql), c = e.chart || {}
+                const chart = c.type === 'bars' ? bars(r, c) : c.type === 'times' ? times(r, c) : c.type === 'count' ? counts(r, c) : null
+                if (chart) card.append(el('p', { class: 'meta', text: c.say }), chart)
+                const shown = r.rows.slice(0, 5), tbl = rows => el('table', {}, [el('thead', {}, el('tr', {}, r.columns.map(k => el('th', { scope: 'col', text: k })))), el('tbody', {}, rows.map(row => el('tr', {}, row.map(cell))))])
+                card.append(el('div', { class: 'q-out', tabindex: '0' }, [tbl(shown)]))
+                if (r.rows.length > shown.length) { const d = el('details', {}, [el('summary', { text: `All ${r.rows.length} rows` })]); d.addEventListener('toggle', () => { if (d.open && !d.querySelector('table')) d.append(el('div', { class: 'q-out', tabindex: '0' }, [tbl(r.rows)])) }, { once: false }); card.append(d) }
+                const open = el('a', { href: '?example=' + encodeURIComponent(e.id) + '#console', text: 'Open in the console and change it' })
+                card.append(el('p', { class: 'meta' }, [`${r.rows.length} row${r.rows.length === 1 ? '' : 's'}, from the tables as of ${(asOf || '').replace('T', ' ').replace('Z', ' UTC')}. ${e.note} `, open, ' · ', el('a', { href: '#' + id, text: 'link to this answer' })]))
+                card.append(el('details', {}, [el('summary', { text: 'The SQL' }), el('pre', {}, [el('code', { text: e.sql })])]))
+            } catch (x) { card.append(el('p', { class: 'meta bad', text: 'SQLite says: ' + (x && x.message || x) })) }
+            box.append(card)
+        })
     }
     function drawSchema() {
         const box = $('q-schema'); box.textContent = ''

@@ -1,61 +1,123 @@
 {
-  "about": "The worked queries of the query page (/data/query/): each answers a real question about Storm Charles from the tables built by tools/graph-build.mjs. SQL for SQLite. Kept by incident.graph@web-summit.dinis. Not a warning service.",
+  "about": "The worked queries of the query page (/data/query/): each answers a real question about Storm Charles from the tables built by tools/graph-build.mjs. SQL for SQLite. Kept by incident.graph@web-summit.dinis. Not a warning service. Each query may carry `chart`: how its answer is drawn on the page (bars of one numeric column, dots along time, or a count by one column).",
   "by": "incident.graph@web-summit.dinis",
-  "updated": "2026-11-11T00:52Z",
+  "updated": "2026-11-11T02:31Z",
   "queries": [
     {
       "id": "decided",
       "question": "What was decided, by whom and when?",
       "note": "Every decision that has happened, oldest first. read_after_min is how long after the decision we read it at its source (empty when the decision's time is known only to the day). The label says whether it was read on the decider's own channel (fact) or reported by others (evidence).",
-      "sql": "SELECT at, by_name AS decided_by, decision, label,\n       (read_epoch - at_epoch) / 60 AS read_after_min,\n       source\nFROM decisions\nWHERE kind = 'decision' AND status = 'happened'\nORDER BY at IS NULL, at;"
+      "sql": "SELECT at, by_name AS decided_by, decision, label,\n       (read_epoch - at_epoch) / 60 AS read_after_min,\n       source\nFROM decisions\nWHERE kind = 'decision' AND status = 'happened'\nORDER BY at IS NULL, at;",
+      "chart": {
+        "type": "times",
+        "time": "at",
+        "label": "decided_by",
+        "say": "When each decision was made (those with a time known to the minute)."
+      }
     },
     {
       "id": "after-first-warning",
       "question": "How long after the first warning was each decision?",
       "note": "Two clocks: hours since IPMA's first communiqué named the storm, and hours since IPMA sent its red wind warning for Lisbon (IPMA's own time, from its CAP message; if that file has none, the time we first read the warning). Time order, not cause.",
-      "sql": "WITH first_warning AS (SELECT MIN(at_epoch) AS t FROM decisions WHERE kind = 'warning'),\n     red_wind AS (SELECT COALESCE(\n         (SELECT MIN(at_epoch) FROM warnings WHERE phase = 'cap' AND level = 'red' AND warning_type = 'Vento'),\n         (SELECT at_epoch FROM decisions WHERE id = 'warning:ipma-red-wind')) AS t)\nSELECT d.at, d.by_name AS decided_by, substr(d.decision, 1, 100) AS decision,\n       round((d.at_epoch - first_warning.t) / 3600.0, 1) AS h_after_first_warning,\n       round((d.at_epoch - red_wind.t) / 3600.0, 1) AS h_after_red_wind_sent,\n       d.label, d.source\nFROM decisions d, first_warning, red_wind\nWHERE d.kind = 'decision' AND d.at_epoch IS NOT NULL\nORDER BY d.at_epoch;"
+      "sql": "WITH first_warning AS (SELECT MIN(at_epoch) AS t FROM decisions WHERE kind = 'warning'),\n     red_wind AS (SELECT COALESCE(\n         (SELECT MIN(at_epoch) FROM warnings WHERE phase = 'cap' AND level = 'red' AND warning_type = 'Vento'),\n         (SELECT at_epoch FROM decisions WHERE id = 'warning:ipma-red-wind')) AS t)\nSELECT d.at, d.by_name AS decided_by, substr(d.decision, 1, 100) AS decision,\n       round((d.at_epoch - first_warning.t) / 3600.0, 1) AS h_after_first_warning,\n       round((d.at_epoch - red_wind.t) / 3600.0, 1) AS h_after_red_wind_sent,\n       d.label, d.source\nFROM decisions d, first_warning, red_wind\nWHERE d.kind = 'decision' AND d.at_epoch IS NOT NULL\nORDER BY d.at_epoch;",
+      "chart": {
+        "type": "bars",
+        "label": "decided_by",
+        "value": "h_after_red_wind_sent",
+        "unit": "h",
+        "say": "Hours after IPMA sent the red wind warning."
+      }
     },
     {
       "id": "lead-times",
       "question": "How far ahead could we have known?",
       "note": "One line of time: every warning and decision with a time known to the minute, in order. h_since_previous is the gap to the row above; h_before_red_starts is how long before the first red warning starts in Lisbon; h_before_effect is how long before the row's own effect starts. For IPMA's colour warnings the time is when IPMA sent the message, not when anyone read it. Order, not cause.",
-      "sql": "SELECT at, who, substr(what, 1, 90) AS what,\n       h_since_previous, h_before_red_starts, h_before_effect,\n       time_is, label, source\nFROM timeline\nORDER BY n;"
+      "sql": "SELECT at, who, substr(what, 1, 90) AS what,\n       h_since_previous, h_before_red_starts, h_before_effect,\n       time_is, label, source\nFROM timeline\nORDER BY n;",
+      "chart": {
+        "type": "bars",
+        "label": "who",
+        "value": "h_before_red_starts",
+        "unit": "h",
+        "say": "Hours before the first red warning starts in Lisbon."
+      }
     },
     {
       "id": "fastest-sources",
       "question": "Which sources were fastest?",
       "note": "Each publisher with a signal on the timeline: when its first signal came, how many it has, and how many hours that first signal was ahead of the start of the red warnings in Lisbon (the earliest start of a red warning in force for area LSB). Only signals whose source has a URL count; relayed signals without one are in the signals table with publisher empty.",
-      "sql": "WITH red AS (SELECT MIN(starts_epoch) AS t FROM warnings WHERE phase = 'in_force' AND area = 'LSB' AND level = 'red')\nSELECT a.name AS publisher, a.kind, COUNT(*) AS signals,\n       MIN(s.at) AS first_signal,\n       round((red.t - MIN(s.at_epoch)) / 3600.0, 1) AS h_before_red_starts,\n       MIN(s.source) AS a_source\nFROM signals s JOIN actors a ON a.id = s.publisher, red\nGROUP BY a.id\nORDER BY MIN(s.at_epoch);"
+      "sql": "WITH red AS (SELECT MIN(starts_epoch) AS t FROM warnings WHERE phase = 'in_force' AND area = 'LSB' AND level = 'red')\nSELECT a.name AS publisher, a.kind, COUNT(*) AS signals,\n       MIN(s.at) AS first_signal,\n       round((red.t - MIN(s.at_epoch)) / 3600.0, 1) AS h_before_red_starts,\n       MIN(s.source) AS a_source\nFROM signals s JOIN actors a ON a.id = s.publisher, red\nGROUP BY a.id\nORDER BY MIN(s.at_epoch);",
+      "chart": {
+        "type": "bars",
+        "label": "publisher",
+        "value": "h_before_red_starts",
+        "unit": "h",
+        "say": "Hours before the red warnings start that each publisher's first signal came."
+      }
     },
     {
       "id": "first-on-fact",
       "question": "Who was first on each fact?",
       "note": "For each keyed fact (IPMA's red wind warning, the alert situation, Web Summit's decision and others), the three outlets that had it first and how many minutes after the primary source published it. From the media watch (research/media/): the match is by pattern on titles and live-blog entries, so this is analysis, labelled hypothesis, and only outlets whose feeds could be read are counted. An outlet we did not read may have been earlier. A negative number means the outlet published before the time we hold for the primary source.",
-      "sql": "SELECT what AS fact, primary_time, rank, outlet_name AS outlet,\n       published, minutes_after_primary AS min_after_primary,\n       via, substr(title, 1, 70) AS title, label, source\nFROM first_on_fact\nWHERE rank <= 3\nORDER BY primary_epoch IS NULL, primary_epoch, rank;"
+      "sql": "SELECT what AS fact, primary_time, rank, outlet_name AS outlet,\n       published, minutes_after_primary AS min_after_primary,\n       via, substr(title, 1, 70) AS title, label, source\nFROM first_on_fact\nWHERE rank <= 3\nORDER BY primary_epoch IS NULL, primary_epoch, rank;",
+      "chart": {
+        "type": "bars",
+        "label": "outlet",
+        "group": "fact",
+        "value": "min_after_primary",
+        "unit": "min",
+        "say": "Minutes after the primary source (negative: before the time we hold for it)."
+      }
     },
     {
       "id": "chain",
       "question": "What followed what, and how long after?",
       "note": "The graph as rows: every 'precedes' edge between two decisions or warnings, with its lead time in minutes where both times are known to the minute. This is the chain from IPMA's communiqué to Web Summit's decision. Order, not cause.",
-      "sql": "SELECT a.at AS earlier_at, substr(a.name, 1, 70) AS earlier,\n       e.lead_minutes,\n       b.at AS later_at, substr(b.name, 1, 70) AS later,\n       e.label, e.source\nFROM edges e\nJOIN nodes a ON a.id = e.\"from\"\nJOIN nodes b ON b.id = e.\"to\"\nWHERE e.rel = 'precedes' AND e.lead_minutes IS NOT NULL\nORDER BY b.at, a.at;"
+      "sql": "SELECT a.at AS earlier_at, substr(a.name, 1, 70) AS earlier,\n       e.lead_minutes,\n       b.at AS later_at, substr(b.name, 1, 70) AS later,\n       e.label, e.source\nFROM edges e\nJOIN nodes a ON a.id = e.\"from\"\nJOIN nodes b ON b.id = e.\"to\"\nWHERE e.rel = 'precedes' AND e.lead_minutes IS NOT NULL\nORDER BY b.at, a.at;",
+      "chart": {
+        "type": "bars",
+        "label": "later",
+        "value": "lead_minutes",
+        "unit": "min",
+        "say": "Minutes between an item and the one it followed."
+      }
     },
     {
       "id": "open",
       "question": "What is still not announced, and what is only our hypothesis?",
       "note": "Decisions that were due but not announced when last read, sources we could not read, and our own hypotheses (always labelled, never stated as fact), each with when it was last read.",
-      "sql": "SELECT status, label, by_name AS who, decision, read AS last_read, source\nFROM decisions\nWHERE status IN ('not_announced', 'expected', 'unknown')\nORDER BY CASE status WHEN 'not_announced' THEN 0 WHEN 'unknown' THEN 1 ELSE 2 END, by_name;"
+      "sql": "SELECT status, label, by_name AS who, decision, read AS last_read, source\nFROM decisions\nWHERE status IN ('not_announced', 'expected', 'unknown')\nORDER BY CASE status WHEN 'not_announced' THEN 0 WHEN 'unknown' THEN 1 ELSE 2 END, by_name;",
+      "chart": {
+        "type": "count",
+        "by": "status",
+        "say": "How many, by status."
+      }
     },
     {
       "id": "warnings-changed",
       "question": "Which warnings changed, and how long before they started?",
       "note": "IPMA's own CAP messages for the Lisbon district (phase = 'cap'): every Update, when IPMA sent it, how many hours that was before the warning's start, and what it replaced. was_level and was_starts are filled only when the replaced message is still in the feed we read; replaced_sent is always IPMA's own time for the message it replaced. A negative h_before_start means the update came after the start.",
-      "sql": "SELECT w.at AS sent, w.warning_type, w.level, w.starts, w.ends,\n       round((w.starts_epoch - w.at_epoch) / 3600.0, 1) AS h_before_start,\n       w.replaces_sent AS replaced_sent,\n       p.level AS was_level, p.starts AS was_starts,\n       w.label, w.source\nFROM warnings w LEFT JOIN warnings p ON p.id = w.replaces\nWHERE w.phase = 'cap' AND w.msg_type = 'Update'\nORDER BY w.at_epoch;"
+      "sql": "SELECT w.at AS sent, w.warning_type, w.level, w.starts, w.ends,\n       round((w.starts_epoch - w.at_epoch) / 3600.0, 1) AS h_before_start,\n       w.replaces_sent AS replaced_sent,\n       p.level AS was_level, p.starts AS was_starts,\n       w.label, w.source\nFROM warnings w LEFT JOIN warnings p ON p.id = w.replaces\nWHERE w.phase = 'cap' AND w.msg_type = 'Update'\nORDER BY w.at_epoch;",
+      "chart": {
+        "type": "bars",
+        "label": "warning_type",
+        "label2": "level",
+        "value": "h_before_start",
+        "unit": "h",
+        "say": "Hours before its own start that IPMA sent each update."
+      }
     },
     {
       "id": "decisions-cite-warnings",
       "question": "Which decisions cite which warning?",
       "note": "Every decision the researcher linked to a warning it followed (the 'precedes' edges from a Warning to a Decision), with the minutes between them where both times are known to the minute. The link is the researcher's reading of the decision's own words or of the order of events; the label is the decision's. Order, not cause.",
-      "sql": "SELECT b.at AS decided_at, substr(b.name, 1, 80) AS decision,\n       a.at AS warning_at, substr(a.name, 1, 80) AS warning,\n       e.lead_minutes, e.label, e.source\nFROM edges e\nJOIN nodes a ON a.id = e.\"from\" AND a.type = 'Warning'\nJOIN nodes b ON b.id = e.\"to\" AND b.type = 'Decision'\nWHERE e.rel = 'precedes'\nORDER BY b.at IS NULL, b.at, a.at;"
+      "sql": "SELECT b.at AS decided_at, substr(b.name, 1, 80) AS decision,\n       a.at AS warning_at, substr(a.name, 1, 80) AS warning,\n       e.lead_minutes, e.label, e.source\nFROM edges e\nJOIN nodes a ON a.id = e.\"from\" AND a.type = 'Warning'\nJOIN nodes b ON b.id = e.\"to\" AND b.type = 'Decision'\nWHERE e.rel = 'precedes'\nORDER BY b.at IS NULL, b.at, a.at;",
+      "chart": {
+        "type": "bars",
+        "label": "decision",
+        "value": "lead_minutes",
+        "unit": "min",
+        "say": "Minutes from the warning to the decision."
+      }
     }
   ]
 }
