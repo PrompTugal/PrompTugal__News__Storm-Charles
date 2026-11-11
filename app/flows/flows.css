@@ -1,0 +1,59 @@
+/* Flows: the player's look (incident.motion@web-summit.dinis, 11 November 2026). The site's tokens (design/README.md), with
+   system colours where a page embedding a flow has none: no hex colour. An agent's state never wears IPMA's warning colours. */
+.fl { --fl-ink: var(--ink, CanvasText); --fl-ink2: var(--ink-2, GrayText); --fl-line: var(--line, GrayText); --fl-paper: var(--surface, Canvas);
+  --fl-agent: var(--link, LinkText); --fl-person: var(--accent, CanvasText); --fl-out: var(--sent, GrayText); --fl-edge: var(--focus, LinkText);
+  font: 14px/1.45 var(--sans, system-ui, sans-serif); color: var(--fl-ink); background: var(--fl-paper);
+  border: 1px solid var(--fl-line); border-radius: var(--radius, 8px); padding: 10px 12px; max-width: 680px; box-sizing: border-box; outline-offset: 2px }
+.fl:focus-visible { outline: 2px solid var(--link-2, Highlight) }
+.fl-head { display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px; font-size: 15px }
+.fl-exp { font: 600 11px/1 var(--mono, ui-monospace, monospace); text-transform: uppercase; letter-spacing: .04em; border: 1px dashed var(--fl-ink2); color: var(--fl-ink2); border-radius: 999px; padding: 3px 7px; white-space: nowrap }
+.fl-svg { display: block; width: 100%; height: auto; overflow: visible }
+.fl-lane { stroke: var(--fl-line); stroke-width: 1 }
+.fl-lane-session { stroke-dasharray: 3 3 }
+.fl-lab { font: 12px var(--sans, system-ui, sans-serif); fill: var(--fl-ink) }
+.fl-ic rect, .fl-ic path, .fl-ic circle { fill: var(--fl-paper); stroke: var(--fl-agent); stroke-width: 1.6 }
+.fl-person circle, .fl-person path { fill: var(--fl-person); stroke: none }
+.fl-session .fl-ring { stroke: var(--fl-ink2); stroke-dasharray: 3 2 }
+.fl-outside path { stroke: var(--fl-out) }
+.fl-thing path { stroke: var(--fl-ink2) }
+.fl-mark { font: 700 7.5px var(--mono, ui-monospace, monospace); fill: var(--fl-ink) }
+.fl-pause { fill: color-mix(in srgb, var(--fl-line) 22%, transparent); stroke: var(--fl-line); stroke-dasharray: 2 3 }
+.fl-pause-t { font: 10px var(--mono, ui-monospace, monospace); fill: var(--fl-ink2) }
+.fl-dot { fill: var(--fl-paper); stroke: var(--fl-ink2); stroke-width: 1.2; opacity: .45; transition: opacity .25s, r .25s }
+.fl-step { cursor: pointer }
+.fl-step.on .fl-dot { fill: var(--fl-agent); stroke: var(--fl-agent); opacity: 1 }
+.fl-step.fl-v-serves.on .fl-dot { fill: var(--fl-out); stroke: var(--fl-out) }
+.fl-step.fl-v-wakes.on .fl-dot, .fl-step.fl-v-starts.on .fl-dot, .fl-step.fl-v-asks.on .fl-dot { fill: var(--fl-paper); stroke-width: 2.2 }
+.fl-step.fl-drawn.on .fl-dot { fill: var(--fl-paper); stroke-dasharray: 2 1.5 }
+.fl-step.cur .fl-dot { stroke: var(--fl-ink); stroke-width: 2.4; animation: fl-pulse 1s ease-out 1 }
+@keyframes fl-pulse { from { stroke-width: 7; stroke-opacity: .3 } to { stroke-width: 2.4; stroke-opacity: 1 } }
+.fl-edge { stroke: var(--fl-edge); stroke-width: 1.4; opacity: 0; transition: opacity .3s }
+.fl-edge.fl-drawn { stroke-dasharray: 3 2 }
+.fl-head-arrow { fill: none; stroke: var(--fl-edge); stroke-width: 1.4; opacity: 0 }
+.fl-edge.on, .fl-head-arrow.on { opacity: .35 }
+.fl-edge.cur, .fl-head-arrow.cur { opacity: 1; stroke-width: 2 }
+.fl-edge.cur { stroke-dasharray: 60; animation: fl-fly .5s linear 1 }
+@keyframes fl-fly { from { stroke-dashoffset: 60 } to { stroke-dashoffset: 0 } }
+.fl-now { stroke: var(--fl-edge); stroke-width: 1; stroke-dasharray: 1 3; transition: x1 .25s, x2 .25s }
+.fl-cap { min-height: 4.4em; margin: 6px 0 4px; font-size: 13.5px; overflow-wrap: anywhere }
+.fl-cap time, .fl-n, .fl-pause-t { font-family: var(--mono, ui-monospace, monospace); font-variant-numeric: tabular-nums }
+.fl-cap time { font-size: 12px; color: var(--fl-ink2) }
+.fl-verb { font: 600 12px var(--mono, ui-monospace, monospace); border: 1px solid var(--fl-line); border-radius: 4px; padding: 0 4px }
+.fl-dr { font-size: 11px; border: 1px dashed var(--fl-ink2); border-radius: 999px; padding: 0 6px; color: var(--fl-ink2) }
+.fl-files code, .fl-ev code { font-size: 11.5px }
+.fl-ev { font-size: 12.5px; color: var(--fl-ink2) }
+.fl-ev a, .fl-foot a { color: var(--link, LinkText) }
+.fl-bar { display: flex; gap: 6px; align-items: center; flex-wrap: wrap }
+.fl-bar button { font: 13px var(--mono, ui-monospace, monospace); min-width: 34px; min-height: 30px; border: 1px solid var(--fl-line); background: var(--surface-2, ButtonFace); color: var(--fl-ink); border-radius: 6px; cursor: pointer }
+.fl-bar button[aria-pressed=true] { border-color: var(--fl-edge) }
+.fl-bar input[type=range] { flex: 1 1 120px; min-width: 100px; accent-color: var(--link, LinkText) }
+.fl-n { font-size: 12px; color: var(--fl-ink2); min-width: 7.5em }
+.fl-foot { margin-top: 6px; font-size: 12.5px; color: var(--fl-ink2) }
+.fl-src { display: block; margin-top: 2px }
+.fl-wait, .fl-err { margin: 0; color: var(--fl-ink2) }
+@media (prefers-reduced-motion: reduce) { .fl * { animation: none !important; transition: none !important } }
+/* the gallery */
+.fl-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 16px; margin: 12px 0 }
+.fl-gallery .fl { max-width: none }
+.fl-card h3 { margin: 0 0 4px; font-size: 16px }
+.fl-card .fl-embed { font: 11.5px var(--mono, ui-monospace, monospace); color: var(--fl-ink2); overflow-wrap: anywhere; margin: 6px 0 0 }

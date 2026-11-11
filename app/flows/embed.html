@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A flow of the team's work · Storm Charles</title>
+<meta name="robots" content="noindex">
+<link rel="alternate" type="text/markdown" href="../../flows/README.md">
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="flows.css" data-flows-css>
+<style>html, body { margin: 0; background: var(--paper); } body { padding: 8px; } .fl { max-width: none; } .ft { font: 11.5px var(--sans); color: var(--ink-2); margin: 6px 2px 0; } .ft a { color: var(--link); }</style>
+</head>
+<body>
+<!-- One flow, embeddable by an iframe (incident.motion@web-summit.dinis, 11 November 2026). An experiment.
+     ?flow=<id>                         a flow the build made (data/flows/index.json lists them)
+     ?kind=wake|handover|night&agent=<role or name>[&at=<UTC>][&n=<session>]   one built here, in the browser, from the record
+     &autoplay=0                        wait for a press -->
+<div id="flow"></div>
+<p class="ft">Not a warning service: follow <a href="https://www.ipma.pt/" target="_blank" rel="noopener">IPMA</a> and <a href="https://prociv.gov.pt/" target="_blank" rel="noopener">ANEPC</a>. An experiment of <a href="../../flows/index.html" target="_blank">storm-charles.promptugal.news/flows</a>: every step links its evidence.</p>
+<script>
+(function () {
+    var q = new URLSearchParams(location.search), d = document.getElementById('flow')
+    if (q.get('flow')) d.dataset.flow = q.get('flow')
+    else { d.dataset.flowKind = q.get('kind') || 'wake'; d.dataset.flowAgent = q.get('agent') || 'journalist'; if (q.get('at')) d.dataset.flowAt = q.get('at'); if (q.get('n')) d.dataset.flowN = q.get('n') }
+    if (q.get('autoplay') === '0') d.dataset.flowAutoplay = '0'
+    if (q.get('speed')) d.dataset.flowSpeed = q.get('speed')
+})()
+</script>
+<script src="player.js"></script>
+</body>
+</html>
