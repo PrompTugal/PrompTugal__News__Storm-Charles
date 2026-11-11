@@ -3,7 +3,7 @@
   "title": "How a fact gets onto this site",
   "summary": "From a body deciding something to a row you can cite: a source publishes, a collector reads it and notes when, a curator labels it, it becomes a row with a permanent id, the build serves it. With two real cases from Storm Charles's timeline.",
   "by": "incident.studio@web-summit.dinis",
-  "updated": "2026-11-11T00:58:00Z",
+  "updated": "2026-11-11T02:00:00Z",
   "about": "How this site's own pipeline works, shown with two rows of the Storm Charles timeline exactly as they were written (10 November 2026). A record of how rows were made, not a warning: for warnings in force, follow IPMA and ANEPC. Proposed by incident.conductor@web-summit.dinis.",
   "chapters": [
     {
@@ -134,7 +134,7 @@
           }
         },
         {
-          "caption": "It becomes a row in the timeline, and the row gets an id made from its time. The id is permanent: it is how people and agents cite the row. A row is not rewritten when the world changes; a new row says which one it supersedes.",
+          "caption": "It becomes a row in the timeline, and the row gets an id made from its time. The id is permanent: it is how people and agents cite the row. What a row said is not rewritten when the world changes; a new row says which one it supersedes.",
           "at": 3,
           "cards": [
             {
@@ -616,12 +616,12 @@
       },
       "scenes": [
         {
-          "caption": "A row already in the timeline, read on Tuesday at 17:42: IPMA's red rain warning for Lisbon, Wednesday 12:00 to 18:00. A fact, as read then.",
+          "caption": "A row already in the timeline: IPMA's red rain warning for Lisbon, Wednesday 12:00 to 18:00. IPMA sent it at 16:30; the weather desk first read it at 17:42, and the row is filed at the time it was read. A fact, as read then.",
           "at": 3,
           "cards": [
             {
               "title": "IPMA, rain warning for Lisbon",
-              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00 (IPMA sent it at 16:30:01, by its CAP message; 17:42 is when the weather desk first read it)",
               "fields": [
                 {
                   "k": "Source",
@@ -646,7 +646,7 @@
           "cards": [
             {
               "title": "IPMA, rain warning for Lisbon",
-              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00 (IPMA sent it at 16:30:01, by its CAP message; 17:42 is when the weather desk first read it)",
               "fields": [
                 {
                   "k": "Source",
@@ -691,7 +691,7 @@
           "cards": [
             {
               "title": "IPMA, rain warning for Lisbon",
-              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00 (IPMA sent it at 16:30:01, by its CAP message; 17:42 is when the weather desk first read it)",
               "fields": [
                 {
                   "k": "Source",
@@ -742,7 +742,7 @@
           "cards": [
             {
               "title": "IPMA, rain warning for Lisbon",
-              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00 (IPMA sent it at 16:30:01, by its CAP message; 17:42 is when the weather desk first read it)",
               "fields": [
                 {
                   "k": "Source",
@@ -795,12 +795,12 @@
           }
         },
         {
-          "caption": "A new row, with its own id, that names the row it supersedes. The old row is not edited and not deleted: it is what was true as read at 17:42, and anyone who cited it can still find it, now marked superseded and pointing to the new one.",
+          "caption": "A new row, with its own id, that names the row it supersedes. The old row is not deleted and what it said is not rewritten: it is what was true as read at 17:42, and anyone who cited it can still find it, now marked superseded and pointing to the new one.",
           "at": 3,
           "cards": [
             {
               "title": "IPMA, rain warning for Lisbon",
-              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00",
+              "text": "IPMA raises Lisbon's rain warning to red, Wednesday 12:00 to 18:00 (IPMA sent it at 16:30:01, by its CAP message; 17:42 is when the weather desk first read it)",
               "fields": [
                 {
                   "k": "Source",
@@ -960,23 +960,24 @@
     "A row's time is not always the same kind of time. The Web Summit row is filed at the time the page was published (19:09), which the page's data gave. The row for IPMA's change is filed at the time we read it (23:53), with IPMA's send time (21:23) in its text. The row's text says which; a field for each would be better, and is not there yet.",
     "\"Fact\" means read from the body that decides or warns, on its own channel. It does not mean the thing will turn out so: a warning is a fact about what was warned, and it can be changed by the body that issued it, as case 2 shows.",
     "The build is drawn as one machine. It is a build script, a tool that writes data/signals.json from timeline.md, a gate, and a deploy; the order and the checks are in CLAUDE.md.",
-    "The two cases are quoted from the timeline's rows as they stood on 11 November 2026, 00:50 UTC. If a row is corrected later, the row is right and this animation is out of date."
+    "Rows do gain notes. After this animation was first made, the 17:42 row was given the time IPMA sent that warning (16:30:01); what the row said was warned did not change. So \"not rewritten\" means the claim, not every character.",
+    "The two cases are quoted from the timeline's rows as they stood on 11 November 2026, 01:59 UTC. If a row is corrected later, the row is right and this animation is out of date."
   ],
   "sources": [
     {
       "name": "timeline.md, rows s-1110T1909, s-1110T1952, s-1110T1742, s-1110T2353, s-1110T2354",
       "href": "../incidents/2026-11-10-storm-charles/timeline.html",
-      "read": "11 November 2026, 00:50 UTC"
+      "read": "11 November 2026, 01:59 UTC"
     },
     {
       "name": "data/signals.json (the same rows: label, kind, supersedes)",
       "href": "../incidents/2026-11-10-storm-charles/data/signals.json",
-      "read": "11 November 2026, 00:50 UTC"
+      "read": "11 November 2026, 01:59 UTC"
     },
     {
       "name": "incident.json (the headline and its time)",
       "href": "../incidents/2026-11-10-storm-charles/incident.json",
-      "read": "11 November 2026, 00:50 UTC"
+      "read": "11 November 2026, 01:59 UTC"
     },
     {
       "name": "CLAUDE.md (the content rules: fact, evidence, hypothesis; permanent row ids; the headline)",
