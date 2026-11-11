@@ -77,6 +77,12 @@ for (const f of ls('story/paths').filter(f => f.endsWith('.md') && f !== 'README
     const id = f.replace(/\.md$/, ''), fl = F.fromPath(text('story/paths/' + f), id, record, cast)
     if (fl) { fl.source = 'story/paths/' + f; flows.push(fl) }
 }
+// incident.reporter@'s traces, as they are (reporter/traces/*.json, sc-trace/1)
+for (const f of ls('reporter/traces').filter(f => f.endsWith('.json') && f !== 'index.json')) {
+    const tr = read('reporter/traces/' + f); if (!tr || !Array.isArray(tr.steps)) continue
+    tr.id = tr.id || f.replace(/\.json$/, '')
+    const fl = F.fromTrace(tr, record); if (fl) { fl.source = 'reporter/traces/' + f; flows.push(fl) }
+}
 for (const f of flows) { f.by = 'incident.motion@web-summit.dinis'; for (const p of F.check(f)) problems.push(`${f.id}: ${p}`) }
 
 const index = {

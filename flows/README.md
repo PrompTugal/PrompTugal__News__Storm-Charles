@@ -4,13 +4,15 @@ summary: Small animations of how the work was done (a wake, a hand-over, an agen
 mount: <div data-flows-gallery data-root="../"><noscript><p class="meta">The flows are drawn with JavaScript from data/flows/index.json.</p></noscript></div>
 head: <link rel="stylesheet" href="../app/flows/flows.css" data-flows-css><script src="../app/flows/player.js" defer></script><script src="../app/flows/gallery.js" defer></script>
 ---
-> Kept by incident.motion@web-summit.dinis, 11 November 2026, 10:24 UTC
+> Kept by incident.motion@web-summit.dinis, 11 November 2026, 10:27 UTC
 
 # Flows: the team's work, step by step
 
 **Experiments.** Dinis asked (11 November, ~10:10 UTC, [BRIEF.md](../BRIEF.md)) for "a whole number of very small examples of that kind of animation in action ... that explain the workflow", and for "a set of APIs and data structures so that I can use the same visual explanation ... on a specific event, on a specific set of actions for a specific agent". This page is both: the small views above, and the format and the API below. Every step shown carries its evidence (a commit, a file, a time); a time that is not on record and was drawn from a neighbouring fact is dashed and says so. A view of the record, not a warning service: for the storm, follow IPMA and ANEPC.
 
-The full engines these small views stand beside: Angelo's live map and Silvio's Universe, pinned copies used by [the agents page](../agents/index.html) (kept by incident.observability@).
+The full engines these small views stand beside, each on its own page (kept by incident.observability@, from pinned copies): [Angelo's live map](../agents/live/index.html) and [Silvio's Universe](../agents/universe/index.html). The live map also plays the reporter's traces step by step ("Play a workflow").
+
+Hover a step (or tap it) and its evidence shows: the commit, the file, the row. My status: [agents/motion/status.json](../agents/motion/status.json).
 
 ## Ask for any flow
 
@@ -36,7 +38,7 @@ The schema: [data/flows/schema.json](../data/flows/schema.json). A flow is:
 | Part | What |
 |---|---|
 | `actors` | who took part: `id`, `kind` (person, agent, session, outside body, machine, thing), `icon` (its shape says its kind), `mark` (up to three letters), `label` |
-| `steps` | what each did, in order: `t` (UTC), `actor`, `verb`, `object`, `to` (the actors it is addressed to), `evidence` (`commit`, `file`, `url`, `run`, `key`, or a `note` saying nothing is on record); `drawn` when the time is not recorded |
+| `steps` | what each did, in order: `t` (UTC), `actor`, `verb`, `said` (a trace's own word), `object`, `to` (the actors it is addressed to), `evidence` (`commit`, `file`, `url`, `run`, `key`, or a `note` saying nothing is on record); `drawn` when the time is not recorded |
 | `edges` | who spoke to whom and how often, counted from the steps |
 | `pauses` | the gaps with no step on record, in minutes |
 
@@ -48,6 +50,7 @@ The verbs and kinds are incident.storyteller@'s primitives, taken as they are fr
 
 - **By recipe** ([flows/flows.json](flows.json), one line each): `wake` (one agent's commits cut where 15 minutes pass with none; the session it was in; each `For:`; CI serving each push), `handover` (a session's last pushes, its hand-over note, who started the next, its key, its first pushes), `night` (a lane per session, every commit).
 - **From the storyteller's paths**: every `story/paths/<id>.json` (the step shape in `story/primitives.md`: `t`, `actor` as `<agent>#<session>`, `to`, `verb`, `what`, `commit`/`file`/`url`/`signal`, and `before` for the gap before a step) becomes `path-<id>`, its actors from `story/cast.json`. A step with no record is not drawn (the storyteller's rule). A path written only as markdown is read from its table of steps.
+- **From the reporter's traces**: every `reporter/traces/<id>.json` (sc-trace/1, kept by incident.reporter@) becomes `trace-<id>`, as it is: a step's own word for what happened is kept (`said`), its verb is the nearest primitive, and a step with no commit, file or address is not drawn. The same files feed the live map's "Play a workflow".
 
 It reads tracked files only, since the build reads no git history: commits from `data/ci/commits/*.json` (incident.ci@) and `data/agents/commits.json` (incident.observability@), sessions from `data/agents/sessions.json`, keys from `data/keys.json`, hand-overs from `agents/*/status.json`. It writes `data/flows/record.json` (the joined record, also what the browser reads), `data/flows/<id>.json` and `data/flows/index.json`, served also at `api/v1/flows/`. Session addresses are never shown: "session 7 of librarian" says it.
 

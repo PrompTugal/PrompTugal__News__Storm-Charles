@@ -184,6 +184,40 @@
         return { id: 'path-' + p.id, kind: 'path', title: p.title, summary: clip(p.summary, 260), told_by: p.by, actors, steps, pauses, built_from: ['story/paths/' + p.id + '.json', 'story/cast.json'] }
     }
 
+    // 4c. a trace of incident.reporter@ (reporter/traces/<id>.json, sc-trace/1): steps { at, at_note, actor {name, kind},
+    // kind (its own words), in, out, sha, handoff {to, via}, evidence [{sha, path, url, at, version, run}] }. Its words are
+    // kept (step.said); the verb is the nearest primitive, read from them. Nothing of the trace is changed.
+    const VERB_OF = [[/hand-?over/, 'hand-over'], [/wake|round/, 'wake'], [/ask|card for|waiting on a person/, 'ask'], [/answer/, 'answer'], [/direction|voice|brief|instruct/, 'instruct'], [/correct|fix|mistake|re-weighed|retold/, 'correct'], [/release|swap/, 'release'], [/front page|page|publish|headline|menu|frame|viewer/, 'publish'], [/new agent|agent made|assign|route|starts/, 'route'], [/research|read|found|finding|feedback|readers|look|review/, 'read'], [/gap|wait|stop|withhold|refusal/, 'pause'], [/push|commit|record|row|fact|data|build|measure|plan|draft|write|cast|check|rule/, 'commit']]
+    function fromTrace(tr, rec) {
+        const actors = [], steps = []
+        const idOf = n => /@/.test(n) ? aid(n) : 'p-' + String(n).toLowerCase().replace(/[^a-z0-9]+/g, '-')
+        const add = (n, kind) => { const id = idOf(n); if (!actors.some(a => a.id === id)) actors.push(/@/.test(n) ? agentActor(n) : { id, kind: kind || 'person', icon: kind || 'person', mark: String(n).split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(), label: String(n).split(' ')[0] }); return id }
+        const full = x => { x = x.trim().replace(/@$/, '@web-summit.dinis'); return /^incident\.[a-z-]+@web-summit\.dinis$/.test(x) ? x : /^[a-z-]+@$/.test(x) ? 'incident.' + x + 'web-summit.dinis' : x }
+        let last = null
+        for (const st of tr.steps || []) {
+            const a = st.actor || {}; if (!a.name) continue
+            const evs = st.evidence || [], e0 = evs.find(e => e.sha) || evs[0] || {}
+            const ev = {}, sha = st.sha || e0.sha
+            if (sha) { ev.commit = String(sha).slice(0, 8); ev.url = REPO + '/commit/' + sha }
+            if (e0.path) ev.file = e0.path
+            if (!sha && e0.url) ev.url = e0.url
+            if (e0.run) ev.run = e0.run
+            if (!Object.keys(ev).length) continue
+            let t = st.at || e0.at || null, drawn = null
+            if (!t) { const m = String(st.at_note || '').match(/(\d{2}):(\d{2})(?::(\d{2}))?/), day = (last || tr.updated || '2026-11-11').slice(0, 10); if (m) { t = `${day}T${m[1]}:${m[2]}:${m[3] || '00'}Z`; drawn = 'from the trace\'s note: ' + st.at_note } }
+            if (!t) continue
+            const said = String(st.kind || ''), low = said.toLowerCase()
+            let verb = (VERB_OF.find(([re]) => re.test(low)) || [null, sha ? 'commit' : 'write'])[1]
+            if (verb === 'instruct' && a.kind !== 'person') verb = 'write'
+            const me = add(a.name, a.kind)
+            const to = st.handoff && st.handoff.to ? String(st.handoff.to).split(/,| and /).map(full).filter(x => /@/.test(x)).map(x => add(x)) : []
+            steps.push({ t, ...(drawn ? { drawn } : {}), actor: me, verb, said, object: clip(st.out || st.in || said, 160), ...(to.length ? { to } : {}), evidence: ev })
+            last = t
+        }
+        if (!steps.length) return null
+        return finish({ id: 'trace-' + tr.id, kind: 'trace', title: tr.title, summary: clip(tr.summary, 260), told_by: tr.by, actors, steps, pause_min: 20, built_from: ['reporter/traces/' + tr.id + '.json'] }, rec)
+    }
+
     const slug = s => String(s || '').replace(/[`*@]/g, '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
     const stripMd = s => String(s || '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[`*]/g, '').trim()
     function normT(s, md) {
@@ -237,5 +271,5 @@
         return null
     }
 
-    G.FlowsCore = { SCHEMA, VERBS, KINDS, wake, handover, night, fromPath, fromStory, finish: (f, rec) => finish(f, rec || {}), check, make, wakesOf, short, scrub }
+    G.FlowsCore = { SCHEMA, VERBS, KINDS, wake, handover, night, fromPath, fromStory, fromTrace, finish: (f, rec) => finish(f, rec || {}), check, make, wakesOf, short, scrub }
 })(typeof globalThis !== 'undefined' ? globalThis : this)

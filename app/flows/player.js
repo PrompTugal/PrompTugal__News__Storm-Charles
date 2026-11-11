@@ -111,7 +111,8 @@
             }
             el('circle', { cx: x, cy: y, r: Math.min(5, Math.max(2.4, col / 2.2)), class: 'fl-dot' }, grp)
             grp.addEventListener('click', () => go(i, true))
-            const ti = el('title', {}, grp); ti.textContent = `${hm(s.t)} UTC · ${s.verb} · ${s.object}`
+            const e = s.evidence || {}, evT = [e.commit && 'commit ' + e.commit, e.file, e.signal && 'row ' + e.signal, e.key && 'key ' + e.key, e.run && 'run ' + e.run, !e.commit && e.url].filter(Boolean).join(' · ')
+            const ti = el('title', {}, grp); ti.textContent = `${hm(s.t)} UTC${s.drawn ? ' (time drawn)' : ''} · ${s.verb}${s.said ? ' (' + s.said + ')' : ''} · ${s.object}\nevidence: ${evT || 'none'}`
             return grp
         })
         const now = el('line', { x1: 0, x2: 0, y1: 2, y2: H - 2, class: 'fl-now' }, svg)
@@ -132,7 +133,7 @@
             svg.querySelectorAll('.fl-edge,.fl-head-arrow').forEach(e => { const j = +e.dataset.i; e.classList.toggle('on', j <= at); e.classList.toggle('cur', j === at) })
             now.setAttribute('x1', xs[at]); now.setAttribute('x2', xs[at])
             const s = steps[at]
-            cap.innerHTML = `<time datetime="${esc(s.t)}">${esc(s.t.slice(0, 10))} ${esc(hm(s.t))} UTC</time>${s.drawn ? ' <span class="fl-dr" title="' + esc(s.drawn) + '">time drawn, not recorded</span>' : ''}<br><b>${esc(label(s.actor))}</b> <span class="fl-verb">${esc(s.verb)}</span>${s.to && s.to.length ? ' → <b>' + s.to.map(t => esc(label(t))).join(', ') + '</b>' : ''}: ${esc(s.object)}${s.files && s.files.length ? ' <span class="fl-files">' + s.files.slice(0, 3).map(x => '<code>' + esc(x) + '</code>').join(' ') + (s.n_files > 3 ? ' +' + (s.n_files - 3) : '') + '</span>' : ''}<br><span class="fl-ev">evidence: ${evHtml(s.evidence)}</span>`
+            cap.innerHTML = `<time datetime="${esc(s.t)}">${esc(s.t.slice(0, 10))} ${esc(hm(s.t))} UTC</time>${s.drawn ? ' <span class="fl-dr" title="' + esc(s.drawn) + '">time drawn, not recorded</span>' : ''}<br><b>${esc(label(s.actor))}</b> <span class="fl-verb">${esc(s.verb)}</span>${s.said && s.said !== s.verb ? ' <span class="fl-said">(' + esc(s.said) + ')</span>' : ''}${s.to && s.to.length ? ' → <b>' + s.to.map(t => esc(label(t))).join(', ') + '</b>' : ''}: ${esc(s.object)}${s.files && s.files.length ? ' <span class="fl-files">' + s.files.slice(0, 3).map(x => '<code>' + esc(x) + '</code>').join(' ') + (s.n_files > 3 ? ' +' + (s.n_files - 3) : '') + '</span>' : ''}<br><span class="fl-ev">evidence: ${evHtml(s.evidence)}</span>`
             range.value = at; nOut.textContent = `step ${at + 1} of ${N}`
         }
         const speed = +host.dataset.flowSpeed || Math.max(350, Math.min(1600, 40000 / Math.max(1, N)))

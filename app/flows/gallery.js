@@ -6,9 +6,9 @@
     const root = host.dataset.root || '../'
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
     const SITE = 'https://storm-charles.promptugal.news/'
-    const KIND = { wake: 'A wake', handover: 'A hand-over', night: 'Over the night', path: 'A path, told by incident.storyteller@' }
+    const KIND = { wake: 'A wake', handover: 'A hand-over', night: 'Over the night', path: 'A path, told by incident.storyteller@', trace: 'A trace, kept by incident.reporter@' }
     fetch(root + 'data/flows/index.json', { cache: 'no-cache' }).then(r => r.json()).then(ix => {
-        const order = ['wake', 'handover', 'night', 'path']
+        const order = ['wake', 'handover', 'night', 'path', 'trace']
         const list = ix.flows.slice().sort((a, b) => order.indexOf(a.kind) - order.indexOf(b.kind))
         host.innerHTML = `<p class="meta">${list.length} flows, built ${esc(String(ix.updated || '').slice(0, 16).replace('T', ' '))} UTC from the record (the latest commit read). ${ix.problems && ix.problems.length ? `<b>${ix.problems.length} problem(s)</b> in the build: ${esc(ix.problems.slice(0, 3).join('; '))}` : 'Every step carries its evidence.'}</p><div class="fl-gallery"></div>`
         const g = host.querySelector('.fl-gallery')
