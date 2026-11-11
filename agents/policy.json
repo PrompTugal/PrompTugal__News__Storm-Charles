@@ -1,456 +1,468 @@
 {
-  "about": "Who may change which paths in this repository: the Owns column of agents/JOBS.md as globs, with the owners incident.conductor@ gave on 10 November 2026 (23:51 UTC) for the paths JOBS.md did not cover. Checked by tools/policy-check.mjs over the commits about to be pushed. A local check (CI's clone is shallow and the tool lives in the repository it checks): it catches mistakes, it is a setting an agent could skip, not a boundary.",
-  "by": "incident.librarian@web-summit.dinis (drafted, at incident.conductor@'s ask; the owners are the conductor's decisions)",
-  "updated": "2026-11-11T11:48:53Z",
-  "source": "agents/JOBS.md",
-  "glob": "* matches within one path segment, ** across segments; <role> is the committing agent's own role",
-  "rules": {
-    "owns": "the agent may change these paths",
-    "shared": "a path with more than one writer: the check warns and does not fail",
-    "everyone": "every agent may change these",
-    "unassigned": "paths no agent owns yet: a change warns, until the conductor names an owner"
+ "about": "Who may change which paths in this repository: the Owns column of agents/JOBS.md as globs, with the owners incident.conductor@ gave on 10 November 2026 (23:51 UTC) for the paths JOBS.md did not cover. Checked by tools/policy-check.mjs over the commits about to be pushed. A local check (CI's clone is shallow and the tool lives in the repository it checks): it catches mistakes, it is a setting an agent could skip, not a boundary.",
+ "by": "incident.librarian@web-summit.dinis (drafted, at incident.conductor@'s ask; the owners are the conductor's decisions)",
+ "updated": "2026-11-11T11:48:53Z",
+ "source": "agents/JOBS.md",
+ "glob": "* matches within one path segment, ** across segments; <role> is the committing agent's own role",
+ "rules": {
+  "owns": "the agent may change these paths",
+  "shared": "a path with more than one writer: the check warns and does not fail",
+  "everyone": "every agent may change these",
+  "unassigned": "paths no agent owns yet: a change warns, until the conductor names an owner"
+ },
+ "everyone": {
+  "owns": [
+   "agents/<role>/**",
+   "accounts/ledger/<role>.jsonl",
+   "transition/interviews/<role>.md"
+  ],
+  "shared": [
+   "data/keys.json",
+   "admin/build/generators.json"
+  ]
+ },
+ "agents": {
+  "incident.conductor@web-summit.dinis": {
+   "role": "conductor",
+   "owns": [
+    "incidents/*/timeline.md",
+    "incidents/*/decisions.md",
+    "incidents/*/incident.json",
+    "incidents/*/comms/**",
+    "incidents/*/material/**",
+    "incidents/*/data/signals.json",
+    "agents/JOBS.md",
+    "agents/README.md",
+    "agents/*/status.json",
+    "BRIEF.md",
+    "ROADMAP.md",
+    "admin/tools/**",
+    ".github/**",
+    "tools/timeline.mjs",
+    "tools/sync-from-websummit.sh",
+    "admin/build/**",
+    "CLAUDE.md",
+    "REALITY.md",
+    "BRIEF-CORRECTIONS.md",
+    "PIPELINE.md",
+    "LICENSE",
+    "CNAME",
+    ".gitignore",
+    "admin/series.txt",
+    "incidents/*/README.md",
+    "incidents/*/data/README.md",
+    "agents/policy.json",
+    "RESTRUCTURE.md",
+    "admin/build/generators.json"
+   ],
+   "shared": [
+    "incidents/*/data/weather/**",
+    "incidents/*/data/decisions/**",
+    "incidents/*/data/watch/**",
+    "tools/websummit*",
+    "tools/llm.mjs",
+    "app/storm.js",
+    "**"
+   ],
+   "note": "agents/*/status.json: the conductor writes each agent's jobs (agents/README.md). The data folders and incident.dev@'s files are shared only while the conductor copies them across for agents whose sessions cannot push here (tools/sync-from-websummit.sh): the librarian's reading of the commits so far, for the conductor to confirm or remove. The conductor integrates: any other path it touches is 'shared' (a warning, never a pass in silence), so every such change shows in the check's output."
   },
-  "everyone": {
-    "owns": [
-      "agents/<role>/**",
-      "accounts/ledger/<role>.jsonl",
-      "transition/interviews/<role>.md"
-    ],
-    "shared": [
-      "data/keys.json",
-      "admin/build/generators.json"
-    ]
+  "incident.designer@web-summit.dinis": {
+   "role": "designer",
+   "owns": [
+    "app/site.css",
+    "app/design/**",
+    "design/**"
+   ],
+   "shared": [
+    "admin/build/build.mjs",
+    "app/storm.js"
+   ],
+   "note": "admin/build/build.mjs: the page frame and the front-page block only; the file is the conductor's."
   },
-  "agents": {
-    "incident.conductor@web-summit.dinis": {
-      "role": "conductor",
-      "owns": [
-        "incidents/*/timeline.md",
-        "incidents/*/decisions.md",
-        "incidents/*/incident.json",
-        "incidents/*/comms/**",
-        "incidents/*/material/**",
-        "incidents/*/data/signals.json",
-        "agents/JOBS.md",
-        "agents/README.md",
-        "agents/*/status.json",
-        "BRIEF.md",
-        "ROADMAP.md",
-        "admin/tools/**",
-        ".github/**",
-        "tools/timeline.mjs",
-        "tools/sync-from-websummit.sh",
-        "admin/build/**",
-        "CLAUDE.md",
-        "REALITY.md",
-        "BRIEF-CORRECTIONS.md",
-        "PIPELINE.md",
-        "LICENSE",
-        "CNAME",
-        ".gitignore",
-        "admin/series.txt",
-        "incidents/*/README.md",
-        "incidents/*/data/README.md",
-        "agents/policy.json",
-        "RESTRUCTURE.md",
-        "admin/build/generators.json"
-      ],
-      "shared": [
-        "incidents/*/data/weather/**",
-        "incidents/*/data/decisions/**",
-        "incidents/*/data/watch/**",
-        "tools/websummit*",
-        "tools/llm.mjs",
-        "app/storm.js",
-        "**"
-      ],
-      "note": "agents/*/status.json: the conductor writes each agent's jobs (agents/README.md). The data folders and incident.dev@'s files are shared only while the conductor copies them across for agents whose sessions cannot push here (tools/sync-from-websummit.sh): the librarian's reading of the commits so far, for the conductor to confirm or remove. The conductor integrates: any other path it touches is 'shared' (a warning, never a pass in silence), so every such change shows in the check's output."
-    },
-    "incident.designer@web-summit.dinis": {
-      "role": "designer",
-      "owns": [
-        "app/site.css",
-        "app/design/**",
-        "design/**"
-      ],
-      "shared": [
-        "admin/build/build.mjs",
-        "app/storm.js"
-      ],
-      "note": "admin/build/build.mjs: the page frame and the front-page block only; the file is the conductor's."
-    },
-    "incident.observability@web-summit.dinis": {
-      "role": "observability",
-      "owns": [
-        "admin-site/**",
-        "app/agents/**",
-        "data/agents/*.json",
-        "tools/agents-*.mjs",
-        "agents/*/README.md"
-      ]
-    },
-    "incident.identity@web-summit.dinis": {
-      "role": "identity",
-      "owns": [
-        "app/login/**",
-        "account/**",
-        "data/lanes.json",
-        "tools/lane-*.mjs",
-        "SECURITY.md"
-      ]
-    },
-    "incident.weatherwatch@web-summit.dinis": {
-      "role": "weatherwatch",
-      "owns": [
-        "research/weather-sites/**"
-      ]
-    },
-    "incident.media@web-summit.dinis": {
-      "role": "media",
-      "owns": [
-        "research/media/**",
-        "contribute.md"
-      ]
-    },
-    "incident.librarian@web-summit.dinis": {
-      "role": "librarian",
-      "owns": [
-        "library/**",
-        "docs/**",
-        "tools/library-*.mjs",
-        "agents/policy.json",
-        "tools/policy-check.mjs",
-        "agents/*/policy.md",
-        "news/**",
-        "help/**"
-      ],
-      "note": "agents/policy.json and tools/policy-check.mjs: given by the conductor on 10 November, 23:51 UTC; not yet in JOBS.md.",
-      "shared": [
-        "agents/policy.json"
-      ]
-    },
-    "incident.graph@web-summit.dinis": {
-      "role": "graph",
-      "owns": [
-        "data/graph/**",
-        "app/graph/**",
-        "tools/graph-*.mjs",
-        "data/query/**"
-      ]
-    },
-    "incident.meteorologist@web-summit.dinis": {
-      "role": "meteorologist",
-      "owns": [
-        "incidents/*/data/weather/**"
-      ]
-    },
-    "incident.researcher@web-summit.dinis": {
-      "role": "researcher",
-      "owns": [
-        "incidents/*/data/decisions/**"
-      ]
-    },
-    "incident.dev@web-summit.dinis": {
-      "role": "dev",
-      "owns": [
-        "tools/websummit*",
-        "incidents/*/data/watch/**",
-        "app/storm.js"
-      ]
-    },
-    "incident.studio@web-summit.dinis": {
-      "role": "studio",
-      "owns": [
-        "studio/**",
-        "app/studio/**",
-        "agents/studio/**"
-      ],
-      "shared": [],
-      "note": "The Studio: animations and explanations (BRIEF.md, 11 November)."
-    },
-    "incident.wikipedia@web-summit.dinis": {
-      "role": "wikipedia",
-      "owns": [
-        "research/wikipedia/**",
-        "tools/wikipedia-*.mjs",
-        "agents/wikipedia/**"
-      ],
-      "shared": [],
-      "note": "Wikipedia on the storm, in every language; the comparison; this site against Wikipedia's values (BRIEF.md, 11 November)."
-    },
-    "incident.weather@web-summit.dinis": {
-      "role": "weather",
-      "owns": [
-        "weather/**",
-        "app/weather/**",
-        "tools/weather-*.mjs",
-        "agents/weather/**"
-      ],
-      "shared": [],
-      "note": "The Weather face: the channel-style front of the site; reads only the data room's published JSON."
-    },
-    "incident.ipma@web-summit.dinis": {
-      "role": "ipma",
-      "owns": [
-        "sources/ipma/**",
-        "app/sources/ipma/**",
-        "tools/ipma-*.mjs",
-        "agents/ipma/**"
-      ],
-      "shared": [],
-      "note": "IPMA's open data: every endpoint mapped, read, kept and visualised."
-    },
-    "incident.sources@web-summit.dinis": {
-      "role": "sources",
-      "owns": [
-        "sources/**",
-        "app/sources/**",
-        "tools/source-*.mjs",
-        "agents/sources/**"
-      ],
-      "shared": [],
-      "note": "A section per source body (MeteoAlarm first): endpoints, feeds, diffs over time, licences. sources/ipma/ is incident.ipma@'s."
-    },
-    "incident.archivist@web-summit.dinis": {
-      "role": "archivist",
-      "owns": [
-        "evidence/**",
-        "app/evidence/**",
-        "tools/capture*.mjs",
-        "data/vaults.json",
-        "agents/archivist/**"
-      ],
-      "shared": [],
-      "note": "Captures of every external page (screenshot, hash), the vaults, the evidence pages."
-    },
-    "incident.entities@web-summit.dinis": {
-      "role": "entities",
-      "owns": [
-        "entities/**",
-        "app/lens/**",
-        "tools/entities-*.mjs",
-        "agents/entities/**"
-      ],
-      "shared": [],
-      "note": "The mini Wikipedia as data: a node and a page for every thing a page mentions; the linker."
-    },
-    "incident.labs@web-summit.dinis": {
-      "role": "labs",
-      "owns": [
-        "labs/**",
-        "app/labs/**",
-        "tools/labs-*.mjs",
-        "agents/labs/**"
-      ],
-      "shared": [],
-      "note": "Experiments: timelines, decision views, weather views."
-    },
-    "incident.board@web-summit.dinis": {
-      "role": "board",
-      "owns": [
-        "board/**",
-        "app/board/**",
-        "tools/board-*.mjs",
-        "agents/board/**"
-      ],
-      "shared": [],
-      "note": "The board: open questions as tracked items, tasks for the team and for contributors."
-    },
-    "incident.social@web-summit.dinis": {
-      "role": "social",
-      "owns": [
-        "research/social/**",
-        "app/social/**",
-        "tools/social-*.mjs",
-        "agents/social/**"
-      ],
-      "shared": [],
-      "note": "Bluesky and other public social sources: official and public-role accounts, as data."
-    },
-    "incident.meteorology@web-summit.dinis": {
-      "role": "meteorology",
-      "owns": [
-        "meteorology/**",
-        "app/meteorology/**",
-        "tools/meteorology-*.mjs",
-        "agents/meteorology/**"
-      ],
-      "shared": [],
-      "note": "Meteorology down to the raw material: where every forecast and picture comes from, and under what licence."
-    },
-    "incident.stories@web-summit.dinis": {
-      "role": "stories",
-      "owns": [
-        "stories/**",
-        "app/stories/**",
-        "tools/stories-*.mjs",
-        "agents/stories/**"
-      ],
-      "shared": [],
-      "note": "Data-driven stories built only from the data room; every statement linked."
-    },
-    "incident.models@web-summit.dinis": {
-      "role": "models",
-      "owns": [
-        "models/**",
-        "app/models/**",
-        "tools/models-*.mjs",
-        "tools/llm.mjs",
-        "agents/models/**"
-      ],
-      "shared": [],
-      "note": "Other models through the ledger: evals on checkable tasks, spend, what each is good for."
-    },
-    "incident.shadow@web-summit.dinis": {
-      "role": "shadow",
-      "owns": [
-        "shadow/**",
-        "app/shadow/**",
-        "tools/shadow-*.mjs",
-        "agents/shadow/**"
-      ],
-      "shared": [],
-      "note": "Shadow reporting: what other sources and answer engines say about the storm, captured and compared with our record."
-    },
-    "incident.ci@web-summit.dinis": {
-      "role": "ci",
-      "owns": [
-        "ci/**",
-        "app/ci/**",
-        "tools/ci-*.mjs",
-        "data/ci/**",
-        "README.md",
-        "agents/ci/**"
-      ],
-      "shared": [],
-      "note": "The pipeline and the repository made visible: every run, every commit, who pushed, what was signed."
-    },
-    "incident.perplexity@web-summit.dinis": {
-      "role": "perplexity",
-      "owns": [
-        "research/perplexity/**",
-        "app/perplexity/**",
-        "tools/perplexity-*.mjs",
-        "agents/perplexity/**"
-      ],
-      "shared": [],
-      "note": "Perplexity as a research tool on the storm: what it finds, what it cites, what it costs; a page for it."
-    },
-    "incident.accountant@web-summit.dinis": {
-      "role": "accountant",
-      "owns": [
-        "accounts/**",
-        "app/accounts/**",
-        "tools/accounts-*.mjs",
-        "agents/accountant/**"
-      ],
-      "shared": [],
-      "note": "What the project costs: model spend from the ledger, tokens per agent session, CI time; where the savings are."
-    },
-    "incident.reporter@web-summit.dinis": {
-      "role": "reporter",
-      "owns": [
-        "reporter/**",
-        "tools/reporter-*.mjs",
-        "agents/reporter/**"
-      ],
-      "shared": [],
-      "note": "The project itself, captured as it happens: traces per workflow from Dinis's word to a live page."
-    },
-    "incident.journalist@web-summit.dinis": {
-      "role": "journalist",
-      "owns": [
-        "journal/**",
-        "app/journal/**",
-        "tools/journal-*.mjs",
-        "agents/journalist/**"
-      ],
-      "shared": [],
-      "note": "The project itself, told: how this site was made by one person and a team of agents, from the reporter's traces."
-    },
-    "incident.envoy@web-summit.dinis": {
-      "role": "envoy",
-      "owns": [
-        "outreach/**",
-        "comms/**",
-        "welcome/**",
-        "press/**"
-      ]
-    },
-    "incident.synthetic@web-summit.dinis": {
-      "role": "synthetic",
-      "owns": [
-        "research/synthetic/**"
-      ]
-    },
-    "incident.storyteller@web-summit.dinis": {
-      "role": "storyteller",
-      "owns": [
-        "story/**"
-      ]
-    },
-    "incident.motion@web-summit.dinis": {
-      "role": "motion",
-      "owns": [
-        "app/flows/**",
-        "flows/**",
-        "data/flows/**",
-        "tools/flows-*.mjs"
-      ]
-    },
-    "incident.broadcast@web-summit.dinis": {
-      "role": "broadcast",
-      "owns": [
-        "broadcast/**",
-        "app/broadcast/**",
-        "tools/broadcast-*.mjs"
-      ]
-    },
-    "incident.transport@web-summit.dinis": {
-      "role": "transport",
-      "owns": [
-        "transport/**",
-        "app/transport/**",
-        "incidents/*/data/transport/**",
-        "tools/transport-*.mjs"
-      ]
-    },
-    "incident.planner@web-summit.dinis": {
-      "role": "planner",
-      "owns": [
-        "transition/**"
-      ]
-    },
-    "incident.datascience@web-summit.dinis": {
-      "role": "datascience",
-      "owns": [
-        "datascience/**",
-        "incidents/*/data/exposure/**",
-        "tools/ds-*.mjs"
-      ]
-    },
-    "incident.brief@web-summit.dinis": {
-      "role": "brief",
-      "owns": [
-        "brief/**",
-        "tools/brief-*.mjs"
-      ]
-    },
-    "incident.desk@web-summit.dinis": {
-      "role": "desk",
-      "owns": [
-        "desk/**",
-        "app/desk/**",
-        "tools/desk-*.mjs"
-      ]
-    },
-    "incident.sherpa@web-summit.dinis": {
-      "role": "sherpa",
-      "owns": [
-        "guide/**",
-        "app/guide/**"
-      ]
-    }
+  "incident.observability@web-summit.dinis": {
+   "role": "observability",
+   "owns": [
+    "admin-site/**",
+    "app/agents/**",
+    "data/agents/*.json",
+    "tools/agents-*.mjs",
+    "agents/*/README.md",
+    "data/trace/**",
+    "tools/trace-*.mjs",
+    "tools/trace.mjs"
+   ]
   },
-  "unassigned": []
+  "incident.identity@web-summit.dinis": {
+   "role": "identity",
+   "owns": [
+    "app/login/**",
+    "account/**",
+    "data/lanes.json",
+    "tools/lane-*.mjs",
+    "SECURITY.md"
+   ]
+  },
+  "incident.weatherwatch@web-summit.dinis": {
+   "role": "weatherwatch",
+   "owns": [
+    "research/weather-sites/**"
+   ]
+  },
+  "incident.media@web-summit.dinis": {
+   "role": "media",
+   "owns": [
+    "research/media/**",
+    "contribute.md"
+   ]
+  },
+  "incident.librarian@web-summit.dinis": {
+   "role": "librarian",
+   "owns": [
+    "library/**",
+    "docs/**",
+    "tools/library-*.mjs",
+    "agents/policy.json",
+    "tools/policy-check.mjs",
+    "agents/*/policy.md",
+    "news/**",
+    "help/**"
+   ],
+   "note": "agents/policy.json and tools/policy-check.mjs: given by the conductor on 10 November, 23:51 UTC; not yet in JOBS.md.",
+   "shared": [
+    "agents/policy.json"
+   ]
+  },
+  "incident.graph@web-summit.dinis": {
+   "role": "graph",
+   "owns": [
+    "data/graph/**",
+    "app/graph/**",
+    "tools/graph-*.mjs",
+    "data/query/**"
+   ]
+  },
+  "incident.meteorologist@web-summit.dinis": {
+   "role": "meteorologist",
+   "owns": [
+    "incidents/*/data/weather/**"
+   ]
+  },
+  "incident.researcher@web-summit.dinis": {
+   "role": "researcher",
+   "owns": [
+    "incidents/*/data/decisions/**"
+   ]
+  },
+  "incident.dev@web-summit.dinis": {
+   "role": "dev",
+   "owns": [
+    "tools/websummit*",
+    "incidents/*/data/watch/**",
+    "app/storm.js"
+   ]
+  },
+  "incident.studio@web-summit.dinis": {
+   "role": "studio",
+   "owns": [
+    "studio/**",
+    "app/studio/**",
+    "agents/studio/**"
+   ],
+   "shared": [],
+   "note": "The Studio: animations and explanations (BRIEF.md, 11 November)."
+  },
+  "incident.wikipedia@web-summit.dinis": {
+   "role": "wikipedia",
+   "owns": [
+    "research/wikipedia/**",
+    "tools/wikipedia-*.mjs",
+    "agents/wikipedia/**"
+   ],
+   "shared": [],
+   "note": "Wikipedia on the storm, in every language; the comparison; this site against Wikipedia's values (BRIEF.md, 11 November)."
+  },
+  "incident.weather@web-summit.dinis": {
+   "role": "weather",
+   "owns": [
+    "weather/**",
+    "app/weather/**",
+    "tools/weather-*.mjs",
+    "agents/weather/**"
+   ],
+   "shared": [],
+   "note": "The Weather face: the channel-style front of the site; reads only the data room's published JSON."
+  },
+  "incident.ipma@web-summit.dinis": {
+   "role": "ipma",
+   "owns": [
+    "sources/ipma/**",
+    "app/sources/ipma/**",
+    "tools/ipma-*.mjs",
+    "agents/ipma/**"
+   ],
+   "shared": [],
+   "note": "IPMA's open data: every endpoint mapped, read, kept and visualised."
+  },
+  "incident.sources@web-summit.dinis": {
+   "role": "sources",
+   "owns": [
+    "sources/**",
+    "app/sources/**",
+    "tools/source-*.mjs",
+    "agents/sources/**"
+   ],
+   "shared": [],
+   "note": "A section per source body (MeteoAlarm first): endpoints, feeds, diffs over time, licences. sources/ipma/ is incident.ipma@'s."
+  },
+  "incident.archivist@web-summit.dinis": {
+   "role": "archivist",
+   "owns": [
+    "evidence/**",
+    "app/evidence/**",
+    "tools/capture*.mjs",
+    "data/vaults.json",
+    "agents/archivist/**"
+   ],
+   "shared": [],
+   "note": "Captures of every external page (screenshot, hash), the vaults, the evidence pages."
+  },
+  "incident.entities@web-summit.dinis": {
+   "role": "entities",
+   "owns": [
+    "entities/**",
+    "app/lens/**",
+    "tools/entities-*.mjs",
+    "agents/entities/**"
+   ],
+   "shared": [],
+   "note": "The mini Wikipedia as data: a node and a page for every thing a page mentions; the linker."
+  },
+  "incident.labs@web-summit.dinis": {
+   "role": "labs",
+   "owns": [
+    "labs/**",
+    "app/labs/**",
+    "tools/labs-*.mjs",
+    "agents/labs/**"
+   ],
+   "shared": [],
+   "note": "Experiments: timelines, decision views, weather views."
+  },
+  "incident.board@web-summit.dinis": {
+   "role": "board",
+   "owns": [
+    "board/**",
+    "app/board/**",
+    "tools/board-*.mjs",
+    "agents/board/**"
+   ],
+   "shared": [],
+   "note": "The board: open questions as tracked items, tasks for the team and for contributors."
+  },
+  "incident.social@web-summit.dinis": {
+   "role": "social",
+   "owns": [
+    "research/social/**",
+    "app/social/**",
+    "tools/social-*.mjs",
+    "agents/social/**"
+   ],
+   "shared": [],
+   "note": "Bluesky and other public social sources: official and public-role accounts, as data."
+  },
+  "incident.meteorology@web-summit.dinis": {
+   "role": "meteorology",
+   "owns": [
+    "meteorology/**",
+    "app/meteorology/**",
+    "tools/meteorology-*.mjs",
+    "agents/meteorology/**"
+   ],
+   "shared": [],
+   "note": "Meteorology down to the raw material: where every forecast and picture comes from, and under what licence."
+  },
+  "incident.stories@web-summit.dinis": {
+   "role": "stories",
+   "owns": [
+    "stories/**",
+    "app/stories/**",
+    "tools/stories-*.mjs",
+    "agents/stories/**"
+   ],
+   "shared": [],
+   "note": "Data-driven stories built only from the data room; every statement linked."
+  },
+  "incident.models@web-summit.dinis": {
+   "role": "models",
+   "owns": [
+    "models/**",
+    "app/models/**",
+    "tools/models-*.mjs",
+    "tools/llm.mjs",
+    "agents/models/**"
+   ],
+   "shared": [],
+   "note": "Other models through the ledger: evals on checkable tasks, spend, what each is good for."
+  },
+  "incident.shadow@web-summit.dinis": {
+   "role": "shadow",
+   "owns": [
+    "shadow/**",
+    "app/shadow/**",
+    "tools/shadow-*.mjs",
+    "agents/shadow/**"
+   ],
+   "shared": [],
+   "note": "Shadow reporting: what other sources and answer engines say about the storm, captured and compared with our record."
+  },
+  "incident.ci@web-summit.dinis": {
+   "role": "ci",
+   "owns": [
+    "ci/**",
+    "app/ci/**",
+    "tools/ci-*.mjs",
+    "data/ci/**",
+    "README.md",
+    "agents/ci/**"
+   ],
+   "shared": [],
+   "note": "The pipeline and the repository made visible: every run, every commit, who pushed, what was signed."
+  },
+  "incident.perplexity@web-summit.dinis": {
+   "role": "perplexity",
+   "owns": [
+    "research/perplexity/**",
+    "app/perplexity/**",
+    "tools/perplexity-*.mjs",
+    "agents/perplexity/**"
+   ],
+   "shared": [],
+   "note": "Perplexity as a research tool on the storm: what it finds, what it cites, what it costs; a page for it."
+  },
+  "incident.accountant@web-summit.dinis": {
+   "role": "accountant",
+   "owns": [
+    "accounts/**",
+    "app/accounts/**",
+    "tools/accounts-*.mjs",
+    "agents/accountant/**"
+   ],
+   "shared": [],
+   "note": "What the project costs: model spend from the ledger, tokens per agent session, CI time; where the savings are."
+  },
+  "incident.reporter@web-summit.dinis": {
+   "role": "reporter",
+   "owns": [
+    "reporter/**",
+    "tools/reporter-*.mjs",
+    "agents/reporter/**"
+   ],
+   "shared": [],
+   "note": "The project itself, captured as it happens: traces per workflow from Dinis's word to a live page."
+  },
+  "incident.journalist@web-summit.dinis": {
+   "role": "journalist",
+   "owns": [
+    "journal/**",
+    "app/journal/**",
+    "tools/journal-*.mjs",
+    "agents/journalist/**"
+   ],
+   "shared": [],
+   "note": "The project itself, told: how this site was made by one person and a team of agents, from the reporter's traces."
+  },
+  "incident.envoy@web-summit.dinis": {
+   "role": "envoy",
+   "owns": [
+    "outreach/**",
+    "comms/**",
+    "welcome/**",
+    "press/**"
+   ]
+  },
+  "incident.synthetic@web-summit.dinis": {
+   "role": "synthetic",
+   "owns": [
+    "research/synthetic/**"
+   ]
+  },
+  "incident.storyteller@web-summit.dinis": {
+   "role": "storyteller",
+   "owns": [
+    "story/**"
+   ]
+  },
+  "incident.motion@web-summit.dinis": {
+   "role": "motion",
+   "owns": [
+    "app/flows/**",
+    "flows/**",
+    "data/flows/**",
+    "tools/flows-*.mjs"
+   ]
+  },
+  "incident.broadcast@web-summit.dinis": {
+   "role": "broadcast",
+   "owns": [
+    "broadcast/**",
+    "app/broadcast/**",
+    "tools/broadcast-*.mjs"
+   ]
+  },
+  "incident.transport@web-summit.dinis": {
+   "role": "transport",
+   "owns": [
+    "transport/**",
+    "app/transport/**",
+    "incidents/*/data/transport/**",
+    "tools/transport-*.mjs"
+   ]
+  },
+  "incident.planner@web-summit.dinis": {
+   "role": "planner",
+   "owns": [
+    "transition/**"
+   ]
+  },
+  "incident.datascience@web-summit.dinis": {
+   "role": "datascience",
+   "owns": [
+    "datascience/**",
+    "incidents/*/data/exposure/**",
+    "tools/ds-*.mjs"
+   ]
+  },
+  "incident.brief@web-summit.dinis": {
+   "role": "brief",
+   "owns": [
+    "brief/**",
+    "tools/brief-*.mjs"
+   ]
+  },
+  "incident.desk@web-summit.dinis": {
+   "role": "desk",
+   "owns": [
+    "desk/**",
+    "app/desk/**",
+    "tools/desk-*.mjs"
+   ]
+  },
+  "incident.sherpa@web-summit.dinis": {
+   "role": "sherpa",
+   "owns": [
+    "guide/**",
+    "app/guide/**"
+   ]
+  },
+  "incident.flights@web-summit.dinis": {
+   "role": "flights",
+   "owns": [
+    "flights/**",
+    "incidents/*/data/flights/**",
+    "tools/flights-*.mjs",
+    "agents/flights/**"
+   ]
+  }
+ },
+ "unassigned": []
 }

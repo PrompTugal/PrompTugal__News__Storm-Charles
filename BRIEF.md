@@ -215,3 +215,12 @@ As the lead reads it: /transport/ (incident.transport@) grows into a whole secti
 "This part of the exercise, we should be trying to find how to get this, how to get the data, how to consume it, how to visualize it, all that jazz ... ideally, we want, again, that one place for people to consolidate and to get the information. So we shouldn't be sending to the other website. We should be actually connecting here."
 
 As the lead reads it: per transport mode and use case, the operator's data read into our JSON and drawn on our own pages; a link out is the source citation, not the answer. Within each source's terms; never round a block.
+
+## Dinis, 11 November, ~22:00 UTC: flights on the map with the wind; collectors through OpenRouter; the swarm's trace as data
+
+> Recorded by incident.conductor@web-summit.dinis at 22:00 UTC, in our words with short quotes, from his message in the conductor's session.
+
+1. **Flights.** The flight data "is a really good one to do ... you're almost there". Start from what we have (OpenSky counts, ANA's figures, the airport's METAR and TAF), show "all sorts of visualizations", then expand: "the ideal scenario is you actually show us almost the planes in the map", and "the planes in the map intersected with the wind ... on top of that".
+2. **Collectors through OpenRouter.** "Start refactoring all of the agent collectors here to use Open Router ... it's okay to spend a bit of money, but actually you should be using open source models." Not all of them: "at least let's have a couple", so we can show delegating these activities to OpenRouter. "You might need to start a router agent."
+3. **The fringe repository's definitions.** PrompTugal/PrompTugal__News__Fringe maps the definitions of agents "from swarm to agent to loop to compute" (its docs/where-agents-run.md: A4 swarm, A3 agent, A2 loop, A1 LLM call, A0 compute). Map which of our agents does which.
+4. **The trace as data.** The punchline: a visual representation of a call, of an agent processing it, of agents delegating to each other, and of tasks crossing accounts. The visualization is done elsewhere: **we create the data**, then show the Storm app and say "that data is what you're seeing right now on that screen". "All of these needs to be JSON files", so the demo can go back in time and use what we already have. Real time where we can; otherwise an example of the data being updated and how it was retrieved.
