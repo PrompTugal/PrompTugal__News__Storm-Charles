@@ -1,6 +1,6 @@
 # Ventusky
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · model-viewer · Czechia
 
@@ -28,6 +28,8 @@ The press already uses this embed; two embeds with two models side by side is Ob
 ## Data and models it says it uses
 
 Observador's two embeds of it request the models "gfs" and "ecmwf_hres" (read in the embed addresses).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-ventusky.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

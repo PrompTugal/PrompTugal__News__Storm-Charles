@@ -1,6 +1,6 @@
 # Público: "O que precisa de saber sobre a depressão Charles"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · explainer · Portugal
 

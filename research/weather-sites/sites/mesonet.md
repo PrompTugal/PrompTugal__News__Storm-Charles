@@ -1,6 +1,6 @@
 # Iowa Environmental Mesonet
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · archive · United States
 
@@ -28,6 +28,8 @@ Lisbon airport's past METARs for the after-study.
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-mesonet.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

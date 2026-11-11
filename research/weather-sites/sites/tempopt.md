@@ -1,6 +1,6 @@
 # tempo.pt (Meteored)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · commercial · Portugal
 
@@ -28,6 +28,8 @@ These are forecasts by a private outlet: evidence for us, never the headline. Th
 ## Data and models it says it uses
 
 Not stated on the pages read; its articles name models and IPMA in prose.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-tempopt.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

@@ -1,6 +1,6 @@
 # ECMWF charts and open data
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · model-viewer · International
 
@@ -28,6 +28,8 @@ Show a spread, not one line, for Lisbon's gusts where we have several models; sa
 ## Data and models it says it uses
 
 Its own models: IFS and AIFS (read on its open-data page).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-ecmwf.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

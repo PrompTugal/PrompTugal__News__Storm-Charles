@@ -1,6 +1,6 @@
 # earth.nullschool.net
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · model-viewer · Japan
 
@@ -28,6 +28,8 @@ One field, no chrome: restraint.
 ## Data and models it says it uses
 
 GFS (product knowledge; not read in this pass).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-nullschool.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

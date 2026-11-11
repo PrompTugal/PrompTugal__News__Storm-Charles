@@ -1,6 +1,6 @@
 # Windy
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · model-viewer · Czechia
 
@@ -30,6 +30,8 @@ If we show a moving map, embed it with its credit rather than copy it; keep it b
 ## Data and models it says it uses
 
 Model switch on the map: ECMWF, GFS, ICON, AROME and others (product knowledge; the model list was not read in this pass). Observador's embeds name GFS and ECMWF.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-windy.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

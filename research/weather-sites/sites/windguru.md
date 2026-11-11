@@ -1,6 +1,6 @@
 # Windguru
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · specialist · Czechia
 
@@ -30,6 +30,8 @@ Colour the cells of our hour strip by threshold (IPMA's yellow/orange/red gust c
 ## Data and models it says it uses
 
 Named on the page per table: GFS 13 km, GFS-Wave 16 km, IFS-HRES 9 km, IFS-WAM 9 km, ICON 7 and 13 km, WRF 3 and 9 km, Zephr-HD 2.6 km, GDPS 15 km and others, each with its run time ("init"); live readings from named local stations (seen in the rendered page).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-windguru.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

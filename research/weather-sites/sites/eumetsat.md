@@ -1,6 +1,6 @@
 # EUMETSAT EUMETView
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · satellite · International
 
@@ -28,6 +28,8 @@ One satellite frame with its time, linked to the source, says "where is it now" 
 ## Data and models it says it uses
 
 Its own satellites: Meteosat (including the third generation: the default EUMETView layers were MTG lightning, precipitation rate and infrared), Metop (read in EUMETView and its licensing guide).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-eumetsat.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

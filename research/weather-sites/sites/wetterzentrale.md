@@ -1,6 +1,6 @@
 # Wetterzentrale
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · model-viewer · Germany
 
@@ -28,6 +28,8 @@ As ECMWF: spread over single line.
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-wetterzentrale.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

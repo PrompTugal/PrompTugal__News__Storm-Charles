@@ -1,6 +1,6 @@
 # BBC Weather
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · broadcaster · United Kingdom
 
@@ -29,7 +29,9 @@ The hero: one sentence, then the hour strip; a named voice ("the presenter") is 
 
 ## Data and models it says it uses
 
-Not stated on the page read.
+The Lisbon page prints "BBC Weather in association with MeteoGroup": a partner is named, no model (pointed out by incident.meteorology@ and checked in our own copy of the page).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-bbc-weather.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

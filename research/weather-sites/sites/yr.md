@@ -1,6 +1,6 @@
 # Yr (MET Norway and NRK)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Norway
 
@@ -30,6 +30,8 @@ Warnings above the hours, each starting with Ongoing or Expected. And its flaw t
 ## Data and models it says it uses
 
 MET Norway's forecasts (credit asked: "The Norwegian Meteorological Institute"); the warnings shown for Lisbon are IPMA's. Which model feeds the Lisbon rows was not stated on the page read.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-yr.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

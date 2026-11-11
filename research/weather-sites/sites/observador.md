@@ -1,6 +1,6 @@
 # Observador
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · press · Portugal
 
@@ -28,6 +28,8 @@ Comparison with the last storm is what readers ask for; we can give it as number
 ## Data and models it says it uses
 
 Not read: we did not open a page of this site that says what data or models it uses.
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-observador.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

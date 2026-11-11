@@ -1,6 +1,6 @@
 # IPMA
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · national-service · Portugal
 
@@ -30,6 +30,8 @@ Everything in our hero comes from here and links here; our job is to make its co
 ## Data and models it says it uses
 
 Its own observation network, radars and forecasters; for the automatic forecasts, "processamento estatístico das previsões de dois modelos numéricos (ECMWF e AROME)", updated twice a day from the 00 and 12 UTC runs (read on api.ipma.pt).
+
+Where its data comes from, traced: [the lineage of this site](../../../meteorology/nodes/site-ipma.md) (kept by incident.meteorology@).
 
 ## API and feeds
 

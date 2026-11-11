@@ -6,7 +6,7 @@ head: <script src="compare.js" defer></script>
 ---
 # Weather sites compared
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:50 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:55 UTC
 
 All 106 entries of [sites.json](sites.json) in one table. Click a column head to sort; type in the box to filter; a kind, a country or a map can be picked from the lists. Every site name opens our page about it; the licence cell opens the site's own terms page where we found one. "Data and models" is what the site itself says, where we read it. [Back to the ranking and the ten ideas](README.md).
 
@@ -33,11 +33,11 @@ All 106 entries of [sites.json](sites.json) in one table. Click a column head to
 | [WMO Severe Weather Information Centre](sites/wmo-swic.md) | Worldwide | warnings-aggregator | International | not read | [yes](sites/wmo-swic.md#api-and-feeds) | [per issuing service](https://wmo.int/disclaimer) | per issuing service | drawn by script |
 | [Copernicus Emergency Management Service](sites/copernicus-ems.md) | Worldwide | emergency-mapping | Europe | not read | [yes](sites/copernicus-ems.md#api-and-feeds) | Copernicus open data, attribution | yes with attribution | drawn by script |
 | [NASA Worldview / GIBS](sites/nasa-worldview.md) | Worldwide | satellite | United States | not read | [yes](sites/nasa-worldview.md#api-and-feeds) | open (NASA data policy) | yes with credit | drawn by script |
-| [BBC Weather](sites/bbc-weather.md) | Worldwide | broadcaster | United Kingdom | Not stated on the page read. | [no](sites/bbc-weather.md#api-and-feeds) | [BBC terms: no reuse without permission; link and short quotation only](https://www.bbc.co.uk/usingthebbc/terms/) | no | drawn in a headless browser and looked at |
+| [BBC Weather](sites/bbc-weather.md) | Worldwide | broadcaster | United Kingdom | The Lisbon page prints "BBC Weather in association with MeteoGroup": a partner is named,… | [no](sites/bbc-weather.md#api-and-feeds) | [BBC terms: no reuse without permission; link and short quotation only](https://www.bbc.co.uk/usingthebbc/terms/) | no | drawn in a headless browser and looked at |
 | [The Weather Channel (weather.com)](sites/weathercom.md) | Worldwide | commercial | United States | not read | [no](sites/weathercom.md#api-and-feeds) | all rights reserved | no | content read in the returned page |
 | [AccuWeather](sites/accuweather.md) | Worldwide | commercial | United States | not read | [paid](sites/accuweather.md#api-and-feeds) | all rights reserved | no | refused |
 | [meteoblue](sites/meteoblue.md) | Worldwide | commercial | Switzerland | not read | [paid](sites/meteoblue.md#api-and-feeds) | all rights reserved; attribution required for the free tier | limited | content read in the returned page |
-| [Weather Underground](sites/wunderground.md) | Worldwide | commercial | United States | not read | [no](sites/wunderground.md#api-and-feeds) | all rights reserved | no | content read in the returned page |
+| [Weather Underground](sites/wunderground.md) | Worldwide | commercial | United States | Its /about/data page lists "ECMWF, GFS, and NAM" as forecast input, as read by… | [no](sites/wunderground.md#api-and-feeds) | all rights reserved | no | content read in the returned page |
 | [Foreca](sites/foreca.md) | Worldwide | commercial | Finland | not read | [paid](sites/foreca.md#api-and-feeds) | [all rights reserved](https://www.foreca.com/terms-and-conditions) | no | content read in the returned page |
 | [Weather & Radar](sites/weatherandradar.md) | Worldwide | commercial | Germany | not read | [no](sites/weatherandradar.md#api-and-feeds) | [all rights reserved](https://www.weatherandradar.co.uk/imprint) | no | content read in the returned page |
 | [Windy](sites/windy.md) | Worldwide | model-viewer | Czechia | Model switch on the map: ECMWF, GFS, ICON, AROME and others (product knowledge; the model… | [paid](sites/windy.md#api-and-feeds) | [all rights reserved; embed allowed as provided](https://api.windy.com/webcams/terms) | embed only | drawn in a headless browser and looked at |
