@@ -37,7 +37,10 @@ const sleep = ms => new Promise(r => setTimeout(r, ms))
 const sha = b => crypto.createHash('sha256').update(b).digest('hex')
 const iso = d => new Date(d).toISOString().replace(/\.\d+Z$/, 'Z')
 const writeJ = (f, j) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, JSON.stringify(j, null, 1) + '\n') }
-const strip = h => String(h || '').replace(/<[^>]+>/g, ' ').replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&[a-z]+;/g, ' ').replace(/\s+/g, ' ').trim()
+const ACC = { acute: '́', grave: '̀', tilde: '̃', circ: '̂', uml: '̈', cedil: '̧', ring: '̊' }
+const NAMED = { nbsp: ' ', amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', laquo: '«', raquo: '»', ndash: '–', mdash: '—', hellip: '…', rsquo: '’', lsquo: '‘', ldquo: '“', rdquo: '”', ordm: 'º', ordf: 'ª', euro: '€', deg: '°', middot: '·', bull: '•' }
+const ent = (_, n) => { if (n[0] === '#') return String.fromCodePoint(n[1] === 'x' || n[1] === 'X' ? parseInt(n.slice(2), 16) : +n.slice(1)); if (NAMED[n]) return NAMED[n]; const m = /^([A-Za-z])(acute|grave|tilde|circ|uml|cedil|ring)$/.exec(n); return m ? (m[1] + ACC[m[2]]).normalize('NFC') : ' ' }
+const strip = h => String(h || '').replace(/<[^>]+>/g, ' ').replace(/&(#\d+|#[xX][0-9a-fA-F]+|[A-Za-z]+);/g, ent).replace(/\s+/g, ' ').trim()
 const excerpt = (t, n = 220) => { t = strip(t); if (t.length <= n) return t; const cut = t.slice(0, n); return cut.slice(0, Math.max(cut.lastIndexOf(' '), n - 30)) + ' …' }
 
 const OPENSKY = 'https://opensky-network.org/api'
@@ -55,10 +58,11 @@ const airlineOf = cs => { const m = /^([A-Z]{3})\d/.exec(String(cs || '').trim()
 
 const reads = []
 async function get(name, url, { json = true } = {}) {
+    // returns { data (parsed JSON or null), rec, body }
     const t0 = Date.now(), read = iso(t0)
     let status = 0, body = '', err = null
     try {
-        const r = await fetch(url, { headers: { 'user-agent': UA, accept: 'application/json' }, signal: AbortSignal.timeout(45000) })
+        const r = await fetch(url, { headers: { 'user-agent': UA, accept: json ? 'application/json' : 'text/html,application/xhtml+xml' }, signal: AbortSignal.timeout(45000) })
         status = r.status; body = await r.text()
     } catch (e) { err = String(e.cause?.code || e.message) }
     const h = body ? sha(body) : null
@@ -70,9 +74,9 @@ async function get(name, url, { json = true } = {}) {
     const rec = { name, url, read, status, bytes: body.length, sha256: h, ms: Date.now() - t0, ...(err ? { error: err } : {}) }
     reads.push(rec)
     let data = null
-    if (json && status === 200) { try { data = JSON.parse(body) } catch { rec.error = 'not JSON' } }
+    if (json && status === 200) { try { data = JSON.parse(body.replace(/^\uFEFF/, '')) } catch { rec.error = 'not JSON' } }
     await sleep(1500)
-    return { data, rec }
+    return { data, rec, body }
 }
 
 async function flights() {
@@ -176,8 +180,53 @@ async function services() {
     return items
 }
 
+// ---------- metro: each operator's own notices
+const wpNotices = (arr, days = 7) => (Array.isArray(arr) ? arr : []).filter(a => Date.parse((a.modified_gmt || a.date_gmt) + 'Z') >= Date.now() - days * 86400e3)
+    .map(a => ({ title: strip(a.title?.rendered), excerpt: excerpt(a.excerpt?.rendered || a.content?.rendered), published: a.date_gmt + 'Z', updated: (a.modified_gmt || a.date_gmt) + 'Z', link: a.link }))
+const PT_MONTHS = { janeiro: 1, fevereiro: 2, 'março': 3, abril: 4, maio: 5, junho: 6, julho: 7, agosto: 8, setembro: 9, outubro: 10, novembro: 11, dezembro: 12 }
+async function metro() {
+    const ops = []
+    // Metro de Lisboa: its own news, through the site's public WordPress API (robots.txt is empty: nothing disallowed).
+    const mlUrl = 'https://www.metrolisboa.pt/wp-json/wp/v2/posts?per_page=8&_fields=id,date_gmt,modified_gmt,link,title,excerpt'
+    const ml = await get('metrolisboa-posts', mlUrl)
+    ops.push(Array.isArray(ml.data) ? {
+        id: 'metro-lisboa', operator: 'Metropolitano de Lisboa (Lisbon metro)', label: 'fact', kind: "operator's own site (public WordPress API)",
+        state: 'see the operator\'s notices below (last seven days, newest first)', notices: wpNotices(ml.data),
+        line_status: { label: 'none', note: 'The live line status on metrolisboa.pt is loaded by the page from an internal site endpoint, not a published feed; not read. Metro\'s published line-status API (api.metrolisboa.pt) needs a registered key: listed for Dinis.' },
+        link: 'https://www.metrolisboa.pt/', source: 'https://www.metrolisboa.pt/wp-json/wp/v2/posts', read: ml.rec.read, sha256: ml.rec.sha256,
+    } : { id: 'metro-lisboa', operator: 'Metropolitano de Lisboa', label: 'none', note: `did not answer (status ${ml.rec.status})`, source: mlUrl, read: ml.rec.read })
+    // Metro do Porto: its own news, server-rendered on its site (robots.txt disallows nothing).
+    const mpUrl = 'https://www.metrodoporto.pt/'
+    const mp = await get('metrodoporto-home', mpUrl, { json: false })
+    if (mp.rec.status === 200) {
+        const ids = [...new Set([...mp.body.matchAll(/href="\/pages\/630\?news_id=(\d+)"/g)].map(m => +m[1]))].sort((a, b) => b - a).slice(0, 2)
+        const notices = []
+        for (const id of ids) {
+            const u = `https://www.metrodoporto.pt/pages/630?news_id=${id}`
+            const n = await get(`metrodoporto-news-${id}`, u, { json: false })
+            if (n.rec.status !== 200) continue
+            const flat = strip(n.body.replace(/<(style|script)[\s\S]*?<\/\1>/g, '').replace(/<[^>]+>/g, ' | ')).replace(/(\s*\|\s*)+/g, ' | ')
+            const m = /\| ([^|]{10,200}) \| (\d{1,2}) \| ([A-Za-zçÇ]+) \| (20\d\d) \| \1 \| ([^|]{20,})/.exec(flat)
+            if (!m) continue
+            const mo = PT_MONTHS[m[3].toLowerCase()]
+            notices.push({ title: m[1].trim(), excerpt: excerpt(m[5]), published: mo ? `${m[4]}-${String(mo).padStart(2, '0')}-${String(m[2]).padStart(2, '0')}` : null, link: u })
+        }
+        ops.push({ id: 'metro-porto', operator: 'Metro do Porto', label: 'fact', kind: "operator's own site (its news pages)", state: notices.length ? 'see the operator\'s newest notices below' : 'no notice found on its home page', notices, link: mpUrl, source: mpUrl, read: mp.rec.read, sha256: mp.rec.sha256, note: 'Metro do Porto gives the day of a notice, not its time.' })
+    } else ops.push({ id: 'metro-porto', operator: 'Metro do Porto', label: 'none', note: `did not answer (status ${mp.rec.status})`, source: mpUrl, read: mp.rec.read })
+    // Metro Transportes do Sul (MTS, the light rail south of the Tagus): its public WordPress API (robots.txt disallows nothing).
+    const mtsUrl = 'https://www.mts.pt/wp-json/wp/v2/posts?per_page=6&_fields=id,date_gmt,modified_gmt,link,title,excerpt'
+    const mts = await get('mts-posts', mtsUrl)
+    ops.push(Array.isArray(mts.data) ? {
+        id: 'mts', operator: 'Metro Transportes do Sul (MTS, light rail, Almada and Seixal)', label: 'fact', kind: "operator's own site (public WordPress API)",
+        state: wpNotices(mts.data).length ? 'see the operator\'s notices below' : 'no notice in the last seven days', notices: wpNotices(mts.data),
+        link: 'https://www.mts.pt/', source: 'https://www.mts.pt/wp-json/wp/v2/posts', read: mts.rec.read, sha256: mts.rec.sha256,
+    } : { id: 'mts', operator: 'MTS', label: 'none', note: `did not answer (status ${mts.rec.status})`, source: mtsUrl, read: mts.rec.read })
+    return ops
+}
+
 const fl = await flights()
 const sv = await services()
+const mt = await metro()
 const updated = iso(Date.now())
 const common = { by: BY, updated, not_a_warning_service: 'Not a warning service. No advice of ours: check with your airline or operator. For warnings follow IPMA and ANEPC.', sources_page: 'transport/sources.md' }
 const flightsJ = {
@@ -192,7 +241,10 @@ const servicesJ = {
 if (DRY) { console.log(JSON.stringify({ flightsJ, servicesJ }, null, 1).slice(0, 4000)); process.exit(0) }
 writeJ(path.join(OUT, 'flights.json'), flightsJ)
 writeJ(path.join(OUT, 'services.json'), servicesJ)
+const modeJ = (mode, title, operators, decisions) => ({ about: `${title}: each operator's own site, feed or open API first; the press only where the operator publishes nothing readable (those are the researcher's decisions, linked). Short excerpts with the link.`, mode, ...common, operators, decisions_elsewhere: decisions.map(e => `incidents/2026-11-10-storm-charles/data/decisions/entities/${e}.json`) })
+const MODES = { metro: modeJ('metro', 'Metro and light rail', mt, ['metro']), buses: modeJ('buses', 'Buses and trams', sv.filter(o => o.mode === 'bus'), []), ferries: modeJ('ferries', 'Ferries', sv.filter(o => o.mode === 'ferry'), ['ferries']) }
+for (const [m, j] of Object.entries(MODES)) writeJ(path.join(OUT, m + '.json'), j)
 fs.mkdirSync(path.join(ROOT, 'transport'), { recursive: true })
 fs.appendFileSync(path.join(ROOT, 'transport/reads.jsonl'), reads.map(r => JSON.stringify({ ...r, url: r.url.replace(/begin=\d+&end=\d+/, 'begin=…&end=…') })).join('\n') + '\n')
-for (const f of ['flights.json', 'services.json']) { const s = fs.statSync(path.join(OUT, f)).size; if (s > 256 * 1024) { console.error(`${f} is ${s} bytes, over 256 KB`); process.exit(1) } }
-console.log(`transport: ${fl.map(a => `${a.iata} dep ${a.departures_today.count ?? '—'} live ${a.live_snapshot.on_ground ?? '—'}/${a.live_snapshot.airborne_low ?? '—'}`).join(' · ')} · ${sv.map(s => `${s.id} ${s.label}`).join(' · ')} · store ${STORE}`)
+for (const f of ['flights.json', 'services.json', 'metro.json', 'buses.json', 'ferries.json']) { const s = fs.statSync(path.join(OUT, f)).size; if (s > 256 * 1024) { console.error(`${f} is ${s} bytes, over 256 KB`); process.exit(1) } }
+console.log(`transport: ${fl.map(a => `${a.iata} dep ${a.departures_today.count ?? '—'} live ${a.live_snapshot.on_ground ?? '—'}/${a.live_snapshot.airborne_low ?? '—'}`).join(' · ')} · ${[...sv, ...mt].map(s => `${s.id} ${s.label}${s.notices ? ' ' + s.notices.length : ''}`).join(' · ')} · store ${STORE}`)

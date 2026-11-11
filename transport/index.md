@@ -1,20 +1,21 @@
 ---
-title: Storm Charles: flights and transport
-summary: Flights at Lisbon, Porto, Faro and Funchal as open data shows them (airline flights only, counts only), the operators' own notices for buses and ferries, and the transport decisions recorded by our researcher. Each item with its source and the time read. Not a warning service: check with your airline or operator.
-mount: <div id="tr" class="tr" data-base="../" data-incident="2026-11-10-storm-charles"><p class="meta">This page draws itself from the data room's files and needs JavaScript. The same facts as data: <a href="../incidents/2026-11-10-storm-charles/data/transport/flights.json">flights.json</a>, <a href="../incidents/2026-11-10-storm-charles/data/transport/services.json">services.json</a>.</p></div>
+title: Storm Charles: transport
+summary: Flights, trains, metro, buses and trams, ferries, coaches, taxis, bridges and tunnels during Storm Charles, read from each operator's own site, feed or open API first, the press only where the operator publishes nothing readable, and saying which. Each item with its source and the time read. Not a warning service: check with your airline or operator.
+mount: <div id="tr" class="tr" data-base="../" data-incident="2026-11-10-storm-charles" data-mode="hub"><p class="meta">This page draws itself from the data room's files and needs JavaScript. The pages: <a href="flights.html">flights</a>, <a href="trains.html">trains</a>, <a href="metro.html">metro</a>, <a href="buses.html">buses and trams</a>, <a href="ferries.html">ferries</a>, <a href="coaches.html">coaches</a>, <a href="taxis.html">taxis</a>, <a href="bridges.html">bridges and tunnels</a>.</p></div>
 head: <link rel="stylesheet" href="../app/transport/transport.css"><script src="../app/transport/transport.js" defer></script>
 ---
-# Storm Charles: flights and transport
+# Storm Charles: transport
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 11:45 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:05 UTC
 
 **Not a warning service.** No advice of ours: **check with your airline or operator** before you travel. For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
-How to read it:
+One page per way of getting around: [flights](flights.md), [trains](trains.md), [metro and light rail](metro.md), [buses and trams](buses.md), [ferries and the port](ferries.md), [coaches](coaches.md), [taxis and ride-hailing](taxis.md), [bridges and tunnels](bridges.md).
 
-- **Flights** are what [OpenSky Network](https://opensky-network.org/)'s volunteer receivers saw: airline departures detected at each airport, by hour (UTC), in our readings today. OpenSky's anonymous answer reaches back only a few hours, so we join our hourly readings; hours before the first one reaches are shown dotted, as not covered, never as zero, and a snapshot of airline aircraft near each airport. Facts about what was *seen*; a count is a floor, not a total. Coverage is thinner at Faro and Funchal. Airline flights only: nothing about a single aircraft is shown.
-- **Cancellations and diversions** are stated only where a source states them. No open source does yet; the airport's own boards are behind a bot check. The decisions on airports and airlines are in the researcher's list below.
-- **Buses and ferries** are the operators' own open notices (Carris Metropolitana, Transtejo Soflusa), quoted in short excerpts with the link.
-- **Decisions** (Metro, CP, bridges, the airport, TAP and others) are kept by incident.researcher@, mostly read through the press: evidence, labelled.
+How each page reads:
 
-Sources, their terms and what does not answer from here: [sources](sources.md). Read hourly by [tools/transport-read.mjs](../tools/transport-read.mjs). OpenSky data: M. Schäfer, M. Strohmeier, V. Lenders, I. Martinovic, M. Wilhelm, "Bringing Up OpenSky: A Large-scale ADS-B Sensor Network for Research", IPSN 2014.
+1. **The operator's own site, feed or open API first**, read hourly by [tools/transport-read.mjs](../tools/transport-read.mjs), with the time read and a short excerpt and link. Labelled fact.
+2. **The press only where the operator publishes nothing we can read**: those items are the decisions recorded by incident.researcher@, labelled evidence, with the outlet named.
+3. **What blocks us is said, never got round**: a site that shows a bot check to automated readers (the airports' boards) is named as such; an open API that needs a free key or account is listed for Dinis.
+
+Each source's terms, what answers from here, and what is listed for Dinis: [sources](sources.md). As data: `api/v1/2026-11-10-storm-charles/transport/` (flights.json, metro.json, buses.json, ferries.json; services.json joins buses and ferries for the broadcast wall).

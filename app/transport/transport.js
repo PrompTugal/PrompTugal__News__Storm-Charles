@@ -6,7 +6,18 @@
   var el = document.getElementById('tr'); if (!el) return
   var base = el.getAttribute('data-base') || '../', inc = el.getAttribute('data-incident')
   var room = base + 'incidents/' + inc + '/data/'
-  var ENT = ['airport', 'tap', 'metro', 'cp', 'ferries', 'bridges', 'tunnels', 'rede-expressos', 'flixbus', 'port']
+  var mode = el.getAttribute('data-mode') || 'hub'
+  var MODES = [
+    { id: 'flights', name: 'Flights', page: 'flights', file: 'flights.json', ents: ['airport', 'tap'], ops: 'Lisbon, Porto, Faro and Funchal airports (OpenSky Network)' },
+    { id: 'trains', name: 'Trains', page: 'trains', file: null, ents: ['cp'], ops: 'CP, Fertagus' },
+    { id: 'metro', name: 'Metro and light rail', page: 'metro', file: 'metro.json', ents: ['metro'], ops: 'Metro de Lisboa, Metro do Porto, MTS' },
+    { id: 'buses', name: 'Buses and trams', page: 'buses', file: 'buses.json', ents: [], ops: 'Carris Metropolitana; Carris (next)' },
+    { id: 'ferries', name: 'Ferries and the port', page: 'ferries', file: 'ferries.json', ents: ['ferries', 'port'], ops: 'Transtejo Soflusa' },
+    { id: 'coaches', name: 'Coaches', page: 'coaches', file: null, ents: ['rede-expressos', 'flixbus'], ops: 'Rede Expressos, FlixBus' },
+    { id: 'taxis', name: 'Taxis and ride-hailing', page: 'taxis', file: null, ents: [], ops: 'only what operators or authorities state' },
+    { id: 'bridges', name: 'Bridges and tunnels', page: 'bridges', file: null, ents: ['bridges', 'tunnels'], ops: 'Lusoponte, Infraestruturas de Portugal, the city' }
+  ]
+  var M = MODES.filter(function (m) { return m.id === mode })[0]
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] }) }
   var T = function (t) { if (!t) return NaN; t = String(t); if (/T\d\d:\d\d$/.test(t)) t += ':00'; if (!/Z|[+-]\d\d:?\d\d$/.test(t)) t += 'Z'; return Date.parse(t) }
   var hm = function (t) { var d = new Date(T(t)); return isNaN(d) ? '?' : d.toISOString().slice(11, 16) }
@@ -42,37 +53,58 @@
   function operator(o) {
     var s = '<section class="card tr-op"><h2>' + esc(o.operator) + '</h2>'
     if (o.label === 'none') return s + '<p>' + lbl('none') + ' ' + esc(o.note) + '</p></section>'
-    s += '<p class="tr-state">' + lbl(o.label) + ' ' + esc(o.state) + '</p>'
+    s += '<p class="tr-state">' + lbl(o.label) + ' ' + esc(o.state) + '</p>' + (o.kind ? '<p class="meta">Read from: ' + esc(o.kind) + '</p>' : '') + (o.line_status ? '<p class="meta">' + lbl(o.line_status.label) + ' Line status: ' + esc(o.line_status.note) + '</p>' : '') + (o.note ? '<p class="meta">' + esc(o.note) + '</p>' : '')
     if (o.counts) s += '<ul class="kv"><li>Notices in force <b>' + o.counts.active_notices + '</b></li><li>Of them, for the weather <b>' + o.counts.weather_notices + '</b></li>' +
       Object.keys(o.counts.by_effect || {}).map(function (k) { return '<li>' + esc(k.toLowerCase().replace(/_/g, ' ')) + ' <b>' + o.counts.by_effect[k] + '</b></li>' }).join('') + '</ul>'
     if (o.notices && o.notices.length) s += '<ul class="feed">' + o.notices.slice(0, 4).map(function (n) {
-      return '<li>' + ftm(n.updated || n.from) + '<div><b>' + esc(n.title || n.header) + '</b><span class="via">“' + esc(n.excerpt) + '”' + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</span></div></li>'
+      return '<li>' + ftm(n.updated || n.published || n.from) + '<div><b>' + esc(n.title || n.header) + '</b><span class="via">“' + esc(n.excerpt) + '”' + (n.link ? ' <a href="' + esc(n.link) + '" rel="noopener">the notice</a>' : '') + '</span></div></li>'
     }).join('') + '</ul>'
     return s + '<p>' + prov(o.operator.split(' (')[0] + "'s own data", o.link || o.source, o.read) + '</p></section>'
   }
 
-  function decisions(list) {
+  function latest(e) { return e && e.decisions ? e.decisions.slice().sort(function (a, b) { return (T(b.published_utc) || 0) - (T(a.published_utc) || 0) })[0] : null }
+  function decisions(ents, names, title) {
     var rows = []
-    list.forEach(function (e, i) {
-      if (!e || !e.decisions) return
-      var last = e.decisions.slice().sort(function (a, b) { return (T(b.published_utc) || 0) - (T(a.published_utc) || 0) })[0]
-      if (last) rows.push({ ent: ENT[i], d: last })
-    })
+    ents.forEach(function (e, i) { if (!e || !e.decisions) return; e.decisions.forEach(function (d) { rows.push({ ent: names[i], d: d }) }) })
     rows.sort(function (a, b) { return (T(b.d.published_utc) || 0) - (T(a.d.published_utc) || 0) })
-    return '<section class="card"><h2>Decisions on transport, as recorded by our researcher</h2><p class="meta">The latest decision recorded for each operator in <a href="' + base + 'incidents/' + inc + '/data/decisions/entities/">data/decisions/entities/</a>. Mostly read through the press, so mostly evidence.</p><ul class="feed">' +
-      rows.map(function (r) { return '<li>' + ftm(r.d.published_utc) + '<div>' + lbl(r.d.label) + '<b>' + esc(r.d.decision) + '</b><span class="via">' + esc(r.d.decided_by || '') + ' · ' + prov('source', r.d.address, r.d.read) + ' · <a href="' + base + 'incidents/' + inc + '/data/decisions/entities/' + r.ent + '.json">' + esc(r.ent) + '.json</a></span></div></li>' }).join('') + '</ul></section>'
+    if (!rows.length) return ''
+    return '<section class="card tr-dec"><h2>' + esc(title || 'Decisions recorded by our researcher') + '</h2><p class="meta">From the researcher’s list (data/decisions/entities/), mostly read through the press because the operator publishes nothing we can read: so mostly evidence, labelled.</p><ul class="feed">' +
+      rows.slice(0, 8).map(function (r) { return '<li>' + ftm(r.d.published_utc) + '<div>' + lbl(r.d.label) + '<b>' + esc(r.d.decision) + '</b><span class="via">' + esc(r.d.decided_by || '') + ' · ' + prov('source', r.d.address, r.d.read) + ' · <a href="' + room + 'decisions/entities/' + r.ent + '.json">' + esc(r.ent) + '.json</a></span></div></li>' }).join('') + '</ul></section>'
+  }
+  var note = '<p class="tr-note"><b>Not a warning service.</b> No advice of ours: check with your airline or operator. Each item says where it was read and when.</p>'
+  var dataLine = function (files) { return '<p class="meta">As data: ' + files.map(function (f) { return '<a href="' + room + 'transport/' + f + '">' + f + '</a>' }).join(', ') + ' (also under <a href="' + base + 'api/v1/index.json">api/v1</a>). Sources and their terms: <a href="' + base + 'transport/sources.html">transport/sources</a>.</p>' }
+
+  function hub() {
+    var files = MODES.map(function (m) { return m.file ? get(room + 'transport/' + m.file) : Promise.resolve(null) })
+    var entNames = [].concat.apply([], MODES.map(function (m) { return m.ents }))
+    Promise.all(files.concat(entNames.map(function (e) { return get(room + 'decisions/entities/' + e + '.json') }))).then(function (r) {
+      var data = r.slice(0, MODES.length), ents = {}; entNames.forEach(function (e, i) { ents[e] = r[MODES.length + i] })
+      var h = note + '<div class="tr-grid">' + MODES.map(function (m, i) {
+        var d = data[i], line = ''
+        if (m.id === 'flights' && d) line = d.airports.filter(function (a) { return a.departures_today && a.departures_today.count }).map(function (a) { return esc(a.iata) + ' ' + a.departures_today.count + ' departures seen' + (a.departures_today.covered_from ? ' since ' + hm(a.departures_today.covered_from) : '') }).join(' · ') + ' ' + lbl('fact')
+        else if (d && d.operators) line = d.operators.map(function (o) { return esc(o.operator.split(' (')[0]) + (o.label === 'none' ? ': no answer' : (o.notices && o.notices.length ? ': ' + o.notices.length + ' notice' + (o.notices.length > 1 ? 's' : '') : ': no recent notice')) }).join(' · ')
+        else line = 'Own sources: not read yet.'
+        var lt = m.ents.map(function (e) { return latest(ents[e]) }).filter(Boolean).sort(function (a, b) { return (T(b.published_utc) || 0) - (T(a.published_utc) || 0) })[0]
+        return '<section class="card tr-mode"><h2><a href="' + m.page + '.html">' + esc(m.name) + '</a></h2><p class="meta">' + esc(m.ops) + '</p><p>' + line + '</p>' +
+          (lt ? '<p class="meta">Latest decision recorded: ' + lbl(lt.label) + ' ' + esc(lt.decision) + ' (' + tm(lt.published_utc) + ' UTC)</p>' : '') + (d ? '<p class="prov">Read ' + tm(d.updated) + ' UTC</p>' : '') + '</section>'
+      }).join('') + '</div>' + dataLine(MODES.filter(function (m) { return m.file }).map(function (m) { return m.file }))
+      el.innerHTML = h
+    })
   }
 
-  Promise.all([get(room + 'transport/flights.json'), get(room + 'transport/services.json')].concat(ENT.map(function (e) { return get(room + 'decisions/entities/' + e + '.json') }))).then(function (r) {
-    var f = r[0], sv = r[1], ents = r.slice(2), h = ''
-    h += '<p class="tr-note"><b>Not a warning service.</b> No advice of ours: check with your airline or operator. Counts are what open sources saw, not totals.</p>'
-    h += '<h2 class="tr-h">Flights</h2>'
-    if (f) h += '<p class="meta">Updated ' + tm(f.updated) + ' UTC. ' + esc(f.attribution) + '. Airline flights only; nothing per aircraft is shown.</p><div class="tr-grid">' + f.airports.map(airport).join('') + '</div>'
-    else h += '<p>' + lbl('none') + ' flights.json did not load.</p>'
-    h += '<h2 class="tr-h">Buses, ferries, trains</h2>'
-    if (sv) h += '<p class="meta">Updated ' + tm(sv.updated) + ' UTC, from the operators’ own open data. Short excerpts; the notice is one click away.</p><div class="tr-grid">' + sv.operators.map(operator).join('') + '</div>'
-    h += decisions(ents)
-    h += '<p class="meta">As data: <a href="' + room + 'transport/flights.json">flights.json</a>, <a href="' + room + 'transport/services.json">services.json</a> (also under <a href="' + base + 'api/v1/index.json">api/v1</a>). Sources and their terms: <a href="' + base + 'transport/sources.html">transport/sources</a>.</p>'
-    el.innerHTML = h
-  })
+  function page() {
+    Promise.all([M.file ? get(room + 'transport/' + M.file) : Promise.resolve(null)].concat(M.ents.map(function (e) { return get(room + 'decisions/entities/' + e + '.json') }))).then(function (r) {
+      var d = r[0], ents = r.slice(1), h = note
+      if (M.id === 'flights') {
+        h += d ? '<p class="meta">Updated ' + tm(d.updated) + ' UTC. ' + esc(d.attribution) + '. Airline flights only; nothing per aircraft is shown. Cancellations and diversions: the airports’ own boards show a bot check to automated readers, which we do not get round; the counts reported in the press are in the decisions below.</p><div class="tr-grid">' + d.airports.map(airport).join('') + '</div>' : '<p>' + lbl('none') + ' flights.json did not load.</p>'
+      } else if (d) {
+        h += '<p class="meta">Updated ' + tm(d.updated) + ' UTC, from each operator’s own site, feed or open API. Short excerpts; the notice is one click away.</p><div class="tr-grid">' + d.operators.map(operator).join('') + '</div>'
+      } else h += '<p>' + lbl('none') + ' Own sources for this mode: not read yet (' + esc(M.ops) + '). Until then, the decisions recorded by our researcher, below.</p>'
+      h += decisions(ents, M.ents)
+      if (M.file) h += dataLine([M.file])
+      h += '<p class="meta"><a href="index.html">All transport</a></p>'
+      el.innerHTML = h
+    })
+  }
+  if (M) page(); else hub()
 })()
