@@ -29,6 +29,9 @@
   var lvl = function (l) { return '<span class="lvl ' + esc(l) + '">' + esc(l) + '</span>' }
   var SAFE = '<p class="gd-safe">For warnings and what to do, follow <a href="https://www.ipma.pt/" rel="noopener">IPMA</a> and <a href="https://prociv.gov.pt/" rel="noopener">ANEPC</a>; in an emergency call <b>112</b>.</p>'
   var now = Date.now()
+  // a focused page (guide/lisbon/, guide/stranded/, guide/media/) renders only its cases, folds open; the rest link to /guide/
+  var focus = (el.getAttribute('data-focus') || '').split(',').filter(Boolean)
+  var shown = function (id) { return !focus.length || focus.indexOf(id) >= 0 }
 
   // a warning is "in force" by the reader's clock against IPMA's own start and end
   function warnLine(w) {
@@ -65,14 +68,16 @@
     return '<li><b>' + esc(name) + '</b> ' + stateChip(d.state || d.status) + ' ' + esc(String(d.decision).slice(0, 140)) + (String(d.decision).length > 140 ? '…' : '') + ' ' + lbl(d.label) + ' ' + prov(host(d.address), d.address, d.read) + '</li>'
   }
   function sect(id, q, simple, deep, open) {
+    if (!shown(id)) return ''
+    if (focus.length && el.getAttribute('data-open') !== 'no') open = true
     return '<section class="gd-case card" id="' + id + '"><h2>' + q + '</h2><div class="gd-simple">' + simple + '</div>' +
       '<details class="gd-deep"' + (open ? ' open' : '') + '><summary>Deeper: every source, with its time</summary>' + deep + '</details>' + SAFE + '</section>'
   }
 
   var ENT = ['airport', 'tap', 'metro', 'cp', 'ferries', 'bridges', 'tunnels', 'rede-expressos', 'flixbus', 'port', 'retail', 'museums', 'schools', 'courts', 'hospitals', 'parliament', 'madeira']
-  Promise.all([get('weather/warnings.json'), get('transport/services.json'), get('transport/flights.json'), get('decisions/graph.json')].concat(ENT.map(function (n) { return get('decisions/entities/' + n + '.json') }))).then(function (r) {
-    var W = r[0], S = r[1], F = r[2], G = r[3], E = {}
-    ENT.forEach(function (n, i) { E[n] = r[4 + i] })
+  Promise.all([get('weather/warnings.json'), get('transport/services.json'), get('transport/flights.json'), get('decisions/graph.json'), fetch(base + 'incidents/' + inc + '/incident.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null }).catch(function () { return null })].concat(ENT.map(function (n) { return get('decisions/entities/' + n + '.json') }))).then(function (r) {
+    var W = r[0], S = r[1], F = r[2], G = r[3], I = r[4], E = {}
+    ENT.forEach(function (n, i) { E[n] = r[5 + i] })
     var edges = (G && G.edges) || []
     var edge = function (id) { for (var i = 0; i < edges.length; i++) if (edges[i].id === id) return edges[i]; return null }
     var out = ''
@@ -94,7 +99,7 @@
 
     // the path: pick your question
     var CASES = [['now-detail', 'What is happening now'], ['flight', 'I have a flight'], ['around', 'Getting around'], ['stranded', 'I\'m stranded: what is open?'], ['websummit', 'Web Summit'], ['madeira', 'Madeira'], ['press', 'I\'m a journalist']]
-    out += '<nav class="gd-paths" aria-label="Choose your question">' + CASES.map(function (c, i) { return '<a href="#' + c[0] + '"><span class="gd-n">' + (i + 1) + '</span>' + esc(c[1]) + '</a>' }).join('') + '</nav>'
+    out += '<nav class="gd-paths" aria-label="Choose your question">' + CASES.map(function (c, i) { return '<a href="' + (shown(c[0]) ? '' : base + 'guide/index.html') + '#' + c[0] + '"' + (focus.length && shown(c[0]) ? ' aria-current="true"' : '') + '><span class="gd-n">' + (i + 1) + '</span>' + esc(c[1]) + '</a>' }).join('') + '</nav>'
 
     // (1) deeper
     var govAlert = edge('gov-alert')
@@ -166,6 +171,7 @@
 
     // (7) journalists
     out += sect('press', '7 · I\'m a journalist',
+      (I && I.headline ? '<div class="gd-lead"><p class="meta">The incident\'s headline, as our lead keeps it</p><p><b>' + esc(I.headline.text) + '</b> ' + lbl(I.headline.label) + '</p>' + prov(I.headline.source, I.headline.url, null) + '<p class="meta">Published: ' + esc(I.headline.at) + '</p>' + (I.standfirst ? '<p>' + esc(I.standfirst) + '</p><p class="meta">Kept by ' + esc(I.lead) + ', updated ' + tm(I.updated) + ' UTC</p>' : '') + '</div>' : '') +
       '<p>Who we are, how this is made, and how to reach us: <a href="' + base + 'welcome/index.html">the newcomers\' page</a> (incident.envoy@, with its media section). Every claim here links to its source; cite the source, and us for the record.</p>',
       '<ul class="gd-links"><li><a href="' + base + 'incidents/' + inc + '/timeline.html">The timeline</a>: every warning and decision, with its permanent row id</li>' +
       '<li><a href="' + base + 'incidents/' + inc + '/decisions.html">The decisions</a>: who decided what, labelled fact, evidence or hypothesis</li>' +
@@ -175,6 +181,8 @@
       '<li><a href="' + base + 'help/cite.html">How to cite</a></li></ul>')
 
     el.innerHTML = out
+    focus.forEach(function (id) { var n = document.getElementById(id); if (n && n.classList.contains('gd-case')) el.appendChild(n) })
+    if (focus.length) { var nv = el.querySelector('.gd-paths'); if (nv) { var h = document.createElement('h2'); h.className = 'gd-other'; h.textContent = 'Other questions'; el.appendChild(h); el.appendChild(nv) } }
     if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView() }
   })
 })()
