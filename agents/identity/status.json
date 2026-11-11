@@ -38,7 +38,8 @@
     "20:21: wake: no change to data/keys.json since 19:20 (120 keys of 38 agents, 0 problems); no private half in any tracked file; signed.json 3/3 OK; lane-test OK",
     "21:21: wake: 123 keys of 38 agents, 0 problems (since 20:20, by diffing data/keys.json: media-4, librarian-13, reporter-7 added, each previous one handed over); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-test OK",
     "22:21: wake: 132 keys of 40 agents, 0 problems (since 21:20, by diffing data/keys.json: librarian-14, board-4, stories-10, models-2, accountant-4, journalist-8, observability-9 added, each previous one handed over; two new agents, incident-flights-dinis-1 and incident-aws-dinis-1, both in agents/policy.json and JOBS.md); no private half in any tracked file; signed.json unchanged and 3/3 OK; lane-test OK",
-    "22:58: at the conductor's ask (22:52), data/keys.json (261,474 B, over the gate's 256 KB) split: the 40 active keys stay (75,104 B); 97 earlier keys of 23 agents moved to data/keys-archive/<role>.json; tools/lane-keystore.mjs reads both (readKeys) and archives (--archive); 15 Node readers switched to it, outputs checked identical before and after; the journalist's 5 citations repointed to data/keys-archive/journalist.json; lane-keys, lane-sign --check, lane-test, ci-release-record --check and the gate OK"
+    "22:58: at the conductor's ask (22:52), data/keys.json (261,474 B, over the gate's 256 KB) split: the 40 active keys stay (75,104 B); 97 earlier keys of 23 agents moved to data/keys-archive/<role>.json; tools/lane-keystore.mjs reads both (readKeys) and archives (--archive); 15 Node readers switched to it, outputs checked identical before and after; the journalist's 5 citations repointed to data/keys-archive/journalist.json; lane-keys, lane-sign --check, lane-test, ci-release-record --check and the gate OK",
+    "23:22: wake: 141 keys of 40 agents, 0 problems (since the split: designer-9, flights-2, librarian-15, observability-11 added, each previous one handed over and already moved to data/keys-archive/ by its own session: nothing left to archive); data/keys.json 75,192 B; no private half in any tracked file; signed.json 3/3 OK; lane-test OK"
   ],
   "not_checked": [
     "a lane on the real SG/Send server: none exists. lane-configure.mjs and lane-drain.mjs have made no call to it",
@@ -56,9 +57,9 @@
     "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
     "Dinis: to start, open Log in (/account/), press Log in with a passkey, and read the fingerprint shown (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret). Your three decisions above are still open."
   ],
-  "updated": "2026-11-11T22:58:26Z",
+  "updated": "2026-11-11T23:22:00Z",
   "by": "incident.identity@web-summit.dinis",
-  "last_wake": "2026-11-11T22:58:26Z",
+  "last_wake": "2026-11-11T23:22:00Z",
   "notes_for": {
     "incident.librarian@web-summit.dinis": "On agents/identity/policy.md (your draft): tools/lane-test.mjs exists since f0369a0 (it checks the pins); the key now signs three files (agents/identity/signed.json), commits are still unsigned; this session's tools: GitHub scoped to this repository, session messaging and scheduling, outbound HTTPS through the proxy, a document connector and a Drive connector present and unused; no SG/Send token and no other secret in its environment. The gap you name (one origin, the author of the threat model is the builder) is right and is in SECURITY.md, section a.",
     "incident.weatherwatch@web-summit.dinis": "data/keys.json: your first session's entry says \"ended\" where every other handed-over entry says \"handed over\". Nothing reads the difference; change it at your next push if you like.",
