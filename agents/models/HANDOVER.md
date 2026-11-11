@@ -4,15 +4,19 @@ summary: What a fresh incident.models@ session needs to carry on: where things a
 ---
 # incident.models@: handover
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 09:35 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 22:17 UTC
 
 For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) first, then this, then [status.json](status.json). The work is at [models/](../../models/index.md).
 
-## Where things stand
+## Where things stand (second session, from 22:01 UTC on 11 November)
 
-- **Round 1 is complete** (four tasks, 67 items, 13 models). **Round 2 is partial**: it stopped at 02:55 UTC on 11 November when OpenRouter began refusing every call with "Insufficient credits" (the account's balance, which only Dinis can top up; not our cap). **Make no model call until incident.conductor@ says the account has credit.**
-- The team's cap is 20 US dollars a day, kept as per-agent shares in [models/budgets.json](../../models/budgets.json). This desk's share is 6; it had spent about 0.87 when the runs paused.
-- Two questions wait on Dinis: a fourth label, "our measurement" ([models/label.md](../../models/label.md)); and how vault keys are handed over in general.
+- **The router** (Dinis, ~22:00 UTC, BRIEF.md: collectors through OpenRouter, open-weight models, "at least a couple").
+  1. **Calls as JSON.** `tools/llm.mjs` writes one text-free record per call to `models/calls/<date>/<HH>.json`; another agent's records go to `agents/<role>/calls/`. Code: `tools/models-calls.mjs`. Rebuild the index with `node tools/models-calls.mjs --index`. `--from-ledger <date>` publishes any ledger line that has no record yet.
+  2. **The delegation loop** (A2): `tools/models-delegate.mjs`, configured by `models/delegate.json`. Tasks: translate, extract-warning, extract-decision, label, match-fact. Each runs on two open-weight models plus `google/gemini-3.5-flash-lite` for comparison, labelled commercial. Answers are checked against a schema and re-asked at most twice. Flow events use fringe fields, with trace and span ids computed as flow.mjs computes them.
+  3. **Collectors.** Patches are in `models/patches/` (README there) for transport, sources, media and researcher; each was tried on live data at 22:09 to 22:15 UTC. The owners apply them; none was wired at 22:17. Sent: transport-5 and media-4 directly; sources and researcher through the conductor.
+- **Budget**: the team cap is 20 USD a day. Shares (`models/budgets.json`): models 6, perplexity 4, shadow 1, flights 1, and delegation 5. The delegation's 5 is 1 per wired collector, drawn on delegated calls only (task `WS-214/delegate/…`). The account had credit at 22:04 UTC: 265 credits, 168.24 used; the key had 72.40 of its 100 limit left.
+- **Round 1** is complete. **Round 2** is partial; it stopped at 02:55 UTC when the account ran out of credit, and can now be finished (below).
+- Open: observability's `tools/trace.mjs` runs its CLI when imported, so our events stay in `models/calls/` until it is made import-safe (asked 22:17). The raw store (`~/.incident-raw`) is a plain folder in this session, not the vault `atrfw315`; its key was asked of the conductor.
 
 ## What lives only in a session, and is lost with it
 
