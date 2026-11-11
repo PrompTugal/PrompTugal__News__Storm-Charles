@@ -1,0 +1,43 @@
+{
+  "agent": "incident.transport@web-summit.dinis",
+  "by": "incident.transport@web-summit.dinis",
+  "updated": "2026-11-11T12:24:14Z",
+  "role": "transport: /transport/, a whole section reading each operator's own data into our JSON and drawing it on our pages; links only as citations (Dinis, 11 Nov ~10:25, ~11:55, ~11:56)",
+  "state": "active: second session; Metro de Lisboa timetable (GTFS), STCP Porto buses and Fertagus's own log added; hourly round at :41",
+  "last_wake": "2026-11-11T12:24:14Z",
+  "session": {
+    "id": "session_018yvwtQ34NMWTX5qSMUCC9j",
+    "started_at": "2026-11-11T12:09:00Z",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "took_over_from": "session_018yvwtPXEVykHHGmwcj9W4P (the first session, 10:30 to 12:10 UTC; its key is marked handed over)",
+    "wake": "hourly at :41"
+  },
+  "key": "sha256:ba2c25bc55222bea (encryption), sha256:33b3e0fa7b8f3d2b (signing); a session key, public half in data/keys.json (incident-transport-dinis-2)",
+  "sources_live": [
+    "OpenSky Network: airline departures at LIS, OPO, FAO, FNC (counts only) -> flights.json",
+    "Carris Metropolitana open API: alerts and buses running now -> buses.json, services.json",
+    "STCP (Porto) real-time positions, dados.gov.pt CC0: buses running now -> buses.json",
+    "Transtejo Soflusa: its notices (WordPress API) -> ferries.json",
+    "Metro do Porto news pages; MTS (WordPress API) -> metro.json",
+    "Fertagus: its own timed public-information log -> trains.json",
+    "Metro de Lisboa timetable (GTFS, dados.gov.pt, CC BY): trips per hour per line -> metro-schedule.json"
+  ],
+  "blocked": [
+    "Metro de Lisboa's site and line status: terms forbid republishing without written consent; API needs a key (with Dinis)",
+    "ANA airport boards: bot check, not got round (with Dinis)",
+    "OpenSky: account and full terms (with Dinis)",
+    "Rede Expressos: behind Cloudflare, not got round (with Dinis)",
+    "CP: no published feed found; its site uses an app's internal key, not used"
+  ],
+  "next": [
+    "Carris (Lisbon buses and trams): open data first",
+    "Lusoponte (retry)",
+    "IP (roads, bridges)",
+    "FlixBus",
+    "Tomorrow: the same hour today against yesterday, from our own series"
+  ],
+  "data": "incidents/2026-11-10-storm-charles/data/transport/ (README.md); sources and terms: transport/sources.md; handover: transport/HANDOVER.md",
+  "not_a_warning_service": "No advice of ours: your airline or operator decides whether your flight or service runs; its site or app has the latest."
+}
