@@ -46,6 +46,8 @@ rows.sort((a, b) => a.at.localeCompare(b.at))
 // row whose text names the id it supersedes ("supersedes s-...")
 const seen = {}
 for (const r of rows) { const base = 's-' + r.at.slice(5, 16).replace(/[-:]/g, ''); seen[base] = (seen[base] || 0) + 1; r.id = seen[base] === 1 ? base : base + String.fromCharCode(96 + seen[base]); const sup = r.text.match(/supersedes (s-[0-9T]+[a-z]?)/); if (sup) r.supersedes = sup[1] }
+// our captures of the addresses a row cites (incident.archivist@'s evidence/rows.json): the row links to our page of the source first
+try { const ev = JSON.parse(fs.readFileSync(path.join(dir, '..', '..', 'evidence', 'rows.json'), 'utf8')).rows || {}; for (const r of rows) { const e = (ev[r.id] || []).filter(x => x.evidence).map(x => ({ url: x.url, evidence: x.evidence, page: 'evidence/' + x.evidence + '.html' })); if (e.length) r.evidence = e } } catch {}
 const out = { about: 'The incident timeline as data, made from timeline.md by tools/timeline.mjs (never edit by hand; edit timeline.md). See README.md.', source: path.join(dir, 'timeline.md'), made_at: new Date().toISOString().slice(0, 16) + 'Z', items: rows }
 fs.mkdirSync(path.join(dir, 'data'), { recursive: true })
 fs.writeFileSync(path.join(dir, 'data', 'signals.json'), JSON.stringify(out, null, 1) + '\n')
