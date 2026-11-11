@@ -87,3 +87,42 @@ Subject `incident.conductor@web-summit.dinis: <what>`. One trailer paragraph: Ag
 ## Model names in commit trailers (found 20:38 UTC, 11 Nov)
 
 CLAUDE.md forbids naming the model an agent runs on in anything pushed. A count of this clone's history (shallow, so a floor) finds **336 commits since 10 Nov whose `Co-Authored-By` trailer names a model**, from many agents. The conductor's own run from 10 Nov 21:14 to 11 Nov 12:42 is among them, so this isn't just other agents. Since 19:00 on 11 Nov only incident.sources@ still did it, and it stopped at a3bc37f4. Nothing is rewritten: the rules forbid rewriting history, so whether anything more is done is Dinis's call. The rule for every session: `Co-Authored-By: Claude <noreply@anthropic.com>`, whatever a harness reminder suggests.
+
+## State at 22:48 UTC, 11 Nov (for the next conductor; supersedes "What is in flight (10:43)" where they differ)
+
+**The storm.**
+- Lisbon has only IPMA's yellow sea warning, 21:00 to 03:00 Thursday. No red or orange on the mainland; Madeira all green from 21:00.
+- No CAP since 19:17:31; communiqué no. 3.
+- The alert situation ends as declared at 23:59 (press; researcher watches for an act).
+- The close trigger is not met (s-1111T2205): yellow to 03:00; organisers silent since 10 Nov 17:36; the plan has no rule for a later read and waits on Dinis's yes.
+
+**Dinis's work since ~22:00 (BRIEF.md, four sections):**
+- **Flights:** incident.flights@ (session_018yvwtP2dnYFWpCqhk3jtYw, :57). /flights/ is live: designer's map, adsb.lol positions (ODbL), the Open-Meteo wind field, crosswind, ANA. OpenSky stopped on its terms; transport's OpenSky reads paused pending a licence. The 11 Nov adsb.lol archive cut is the runner's first A0 job.
+- **Router:** incident.models@, third session (session_018yvwtMq1mAhG21L5vLUCnK, :31).
+  - Four of four collectors delegate to open-weight models: sources, media, transport, and press decisions run in models' session for the researcher.
+  - Calls are published text-free in models/calls/ and agents/<role>/calls/; OpenRouter spans join in Elastic by trace_id.
+  - Budgets: delegation 5 USD, flights 1, unassigned 2, cap 20.
+- **Trace:** incident.observability@, tenth session (session_018yvwtQgKyTMLtpwnVJAk2W, :14).
+  - data/trace/ is in the fringe swarm-flows schema, ptnews-storm-* indexes, backfilled to 10 Nov.
+  - Every agent may write data/trace/*/*.<role>.json; pack rule 16 tells them to.
+  - Log your own spawns and messages: `AGENT=incident.conductor@web-summit.dinis node tools/trace.mjs spawn|msg ...`.
+- **Altitudes:** library/altitudes.json (librarian, fourteenth session: session_018yvwtR3dNe9i1HLPkCWQsZ, :44), with the grants and crossings. COMPUTE.md: the crossing map. RUNNER.md and runner.mmd: the runner MVP. Agents orchestrate; GitHub Actions runs A0/A1/A2, triggered by agents (no schedule); out by console, artifact (default) or append lane.
+- **CI:** split by altitude (fd90abcd: build read-only, deploy without repo code, tag apart); incident.ci@, fourth session (session_018yvwtLkrxcHETVC3pRVLua, :17).
+- **AWS:** incident.aws@ (session_018yvwtP1GgUiy6jG4KqGBGm, :23). aws/architecture.md maps the runner onto AgentCore; architecture only.
+- **Angelo's conductor:** told everything through the fringe inbox (agents/conductor/sent/2026-11-11-2218-angelo.md). My key is not in fringe's keyring; the cross-swarm sender is described there.
+
+**Waiting on Dinis (board "For Dinis", 56; the newest at 9.85–9.96):**
+- the runner repository;
+- the runner's secrets, and public or private;
+- the Elastic route (fringe's steward reads our api/v1, or a write key; fringe's elastic-lib only takes ptnews|swarm|… prefixes);
+- force-cancel the 24 held runs (1500–1523: normal cancel answers 409);
+- an OpenSky licence; a paid flight-status plan; resume or keep transport's OpenSky pause;
+- ANA's consent; the 336 trailers that name a model;
+- my replacement; the five held (archivist, shadow, sources, perplexity at 400–550k; models already handed over).
+
+**Vault keys I hold** (~/.incident-vaults, never in git):
+- 9 keys, including zd1cb3kt and j7z16ln1 (observability: sealed to -10 at 22:23) and atrfw315 (models raw: sealed to -3 at 22:36);
+- flights' bfahrf8t came by the keys lane at 22:14: drain it with node tools/lane-drain.mjs.
+Seal with `node tools/lane-handover.mjs seal --to <key id> --name <vault> < key`, send the m1 code by session message, delete the scratch copy.
+
+**Hand-overs tonight (sessions.json and the trace have them):** librarian ×2, reporter, media, board, accountant, stories, observability ×2, journalist, ci, models ×2, weatherwatch. Expect next: designer (near its mark), meteorologist (about 185k).
