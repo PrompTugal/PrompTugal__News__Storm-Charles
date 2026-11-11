@@ -42,7 +42,7 @@ for (const f of walk(IN, n => n === 'capture.json').sort()) {
         id: c.id, url: c.url, final_url: c.final_url !== c.url ? c.final_url : undefined, redirects: c.redirects, host: c.host, source: src.id, source_name: src.name, kind: src.kind,
         read_utc: c.read_utc, captured: c.captured, why: c.why, status: c.status, headers: c.headers, title: c.title || '',
         sha256_html: c.sha256_html, sha256_dom: c.sha256_dom, sha256_text: c.sha256_text, sha256_screenshot: c.sha256_screenshot,
-        bytes: c.bytes, screenshot: c.screenshot, clean: c.clean, rendered: c.rendered, note: c.note, diff: undefined,
+        bytes: c.bytes, screenshot: c.screenshot, clean: c.clean, frame: c.frame, rendered: c.rendered, note: c.note, diff: undefined,
         shown: !!(src.show && c.captured && c.sha256_screenshot), licence: src.licence, excerpt: c.excerpt ? c.excerpt.slice(0, 280) : undefined,
         vault: src.show && c.captured && c.sha256_screenshot ? { id: vid('display'), path: c.id } : null,
         capture_vault: c.captured ? { id: vid('capture'), path: c.id, files: fs.readdirSync(dir).sort() } : null,
@@ -50,7 +50,7 @@ for (const f of walk(IN, n => n === 'capture.json').sort()) {
     }
     if (c.captured) {
         fs.cpSync(dir, path.join(CV, c.id), { recursive: true })
-        if (rec.shown) for (const n of ['screenshot.jpg', 'screenshot-clean.jpg', 'capture.json']) if (fs.existsSync(path.join(dir, n))) { fs.mkdirSync(path.join(DV, c.id), { recursive: true }); fs.copyFileSync(path.join(dir, n), path.join(DV, c.id, n)) }
+        if (rec.shown) for (const n of ['screenshot.jpg', 'screenshot-clean.jpg', 'frame.jpg', 'capture.json']) if (fs.existsSync(path.join(dir, n))) { fs.mkdirSync(path.join(DV, c.id), { recursive: true }); fs.copyFileSync(path.join(dir, n), path.join(DV, c.id, n)) }
     }
     byId.set(rec.id, rec); added++
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // capture.mjs: what an outside page looked like when we read it.
-//   node tools/capture.mjs <url> [<url> ...] [--list file.json] [--out DIR] [--gap 4] [--force]
+//   node tools/capture.mjs <url> [<url> ...] [--list file.json] [--out DIR] [--gap 4] [--frame 1280x1600]
 // For each address, one at a time and a few seconds apart, with a plain client name:
 //   1. robots.txt of the host is read and obeyed (a disallowed address is recorded as "not captured: robots", never fetched);
 //   2. the page is loaded in the pre-installed Chromium (never logged in, no paywall or consent wall bypassed: what a
@@ -78,7 +78,7 @@ export function allowed(u) {
 }
 
 // ---- one capture
-export async function capture(browser, url, out) {
+export async function capture(browser, url, out, frame = null) {
     const u = new URL(url), src = sourceOf(u.hostname)
     const hh = u.hostname.replace(/^www\./, '')
     if (SOURCES.never.hosts.some(x => hh === x || hh.endsWith('.' + x))) return { url: u.href, host: u.hostname, captured: false, never: true, why: 'a social platform: never captured (CLAUDE.md, People)' }
@@ -90,7 +90,7 @@ export async function capture(browser, url, out) {
     const dir = path.join(out, id)
     const rec = { id, url: u.href, host: u.hostname, source: src.id, read_utc: iso, client: CLIENT, robots: rb.why, by: BY }
     if (!rb.ok) { rec.captured = false; rec.why = rb.why; fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, 'capture.json'), JSON.stringify(rec, null, 2) + '\n'); return rec }
-    const ctx = await browser.newContext({ userAgent: CLIENT, viewport: { width: 1280, height: 900 }, locale: 'pt-PT', timezoneId: 'UTC', acceptDownloads: false, serviceWorkers: 'block' })
+    const ctx = await browser.newContext({ userAgent: CLIENT, viewport: { width: 1280, height: frame ? frame[1] : 900 }, locale: 'pt-PT', timezoneId: 'UTC', acceptDownloads: false, serviceWorkers: 'block' })
     const page = await ctx.newPage()
     try {
         let resp = null, navErr = null
@@ -107,6 +107,9 @@ export async function capture(browser, url, out) {
         }
         await page.waitForLoadState('load', { timeout: 20000 }).catch(() => {})
         await page.waitForLoadState('networkidle', { timeout: 8000 }).catch(() => {})
+        // --frame: the top of the page exactly as the viewport shows it, before any scrolling (for annotated studies)
+        let frameShot = null
+        if (frame) { await sleep(1200); frameShot = await page.screenshot({ type: 'jpeg', quality: 78, timeout: 60000 }).catch(() => null) }
         // lazy content: walk down the page once, then back to the top
         await page.evaluate(async () => { const H = () => document.documentElement.scrollHeight; for (let y = 0; y < Math.min(H(), 30000); y += 800) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 120)) } window.scrollTo(0, 0) }).catch(() => {})
         await sleep(600)
@@ -138,6 +141,7 @@ export async function capture(browser, url, out) {
         }
         fs.mkdirSync(dir, { recursive: true })
         if (clean) fs.writeFileSync(path.join(dir, 'screenshot-clean.jpg'), clean)
+        if (frameShot) fs.writeFileSync(path.join(dir, 'frame.jpg'), frameShot)
         if (raw) fs.writeFileSync(path.join(dir, 'raw.html'), raw)
         fs.writeFileSync(path.join(dir, 'dom.html'), dom); fs.writeFileSync(path.join(dir, 'text.txt'), text); fs.writeFileSync(path.join(dir, 'screenshot.jpg'), shot)
         const chain = []; for (let r = resp.request().redirectedFrom(); r; r = r.redirectedFrom()) chain.unshift(r.url())
@@ -147,6 +151,7 @@ export async function capture(browser, url, out) {
             title, sha256_html: raw ? sha(raw) : null, sha256_dom: sha(dom), sha256_text: sha(text), sha256_screenshot: sha(shot),
             bytes: { html: raw ? raw.length : null, dom: dom.length, text: Buffer.byteLength(text), screenshot: shot.length },
             screenshot: { format: 'jpeg', quality: 78, width: 1280, height: clipH, page_height: dims.h, cut: dims.h > 16000 },
+            frame: frameShot ? { sha256: sha(frameShot), bytes: frameShot.length, width: 1280, height: frame[1], what: 'The top of the page as the viewport showed it on load, before any scrolling.' } : undefined,
             clean: clean ? { sha256_screenshot: sha(clean), bytes: clean.length, hidden, what: 'The same load with ' + hidden + ' fixed overlay element(s) hidden by us (a cookie or consent notice): nothing was clicked or accepted.' } : undefined,
             excerpt: (cleanText || text).slice(0, 280),
         })
@@ -158,9 +163,10 @@ export async function capture(browser, url, out) {
 // ---- command line
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
     const args = process.argv.slice(2), urls = []
-    let out = DEFAULT_OUT, gap = 4
+    let out = DEFAULT_OUT, gap = 4, frame = null
     for (let i = 0; i < args.length; i++) {
         if (args[i] === '--out') out = path.resolve(args[++i])
+        else if (args[i] === '--frame') frame = args[++i].split(/[x,]/).map(Number)
         else if (args[i] === '--gap') gap = Math.max(2, +args[++i])
         else if (args[i] === '--list') urls.push(...JSON.parse(fs.readFileSync(args[++i], 'utf8')).map(x => typeof x === 'string' ? x : x.url))
         else urls.push(args[i])
@@ -172,7 +178,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     let n = 0
     for (const url of urls) {
         if (n++) await sleep(gap * 1000)
-        let rec; try { rec = await capture(browser, url, out) } catch (e) { rec = { url, captured: false, why: String(e.message).split('\n')[0] } }
+        let rec; try { rec = await capture(browser, url, out, frame) } catch (e) { rec = { url, captured: false, why: String(e.message).split('\n')[0] } }
         console.log(JSON.stringify({ id: rec.id, url: rec.url, captured: rec.captured, status: rec.status, title: rec.title, text: rec.sha256_text?.slice(0, 12), why: rec.why }))
     }
     await browser.close()

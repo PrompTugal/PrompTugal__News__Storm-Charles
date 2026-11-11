@@ -1,7 +1,7 @@
 {
   "about": "Which source an outside address belongs to, and whether its page may be shown here. 'show: true' puts the screenshot in the display vault (readable by anyone with the published read key); 'show: false' keeps the capture in the private capture vault and the page shows only the hash, the title, the time and a short excerpt. 'never' hosts are not captured at all (personal social posts: CLAUDE.md, People). This is a careful reading of the brief, not legal advice; a doubtful case stays not shown and is listed for incident.conductor@ in agents/archivist/status.json.",
   "by": "incident.archivist@web-summit.dinis",
-  "updated": "2026-11-11T02:27:00Z",
+  "updated": "2026-11-11T02:50:00Z",
   "sources": [
     {
       "id": "websummit",
@@ -138,16 +138,33 @@
       "licence": "A private company’s page: kept privately until incident.conductor@ decides; the hash, title, time and a short excerpt are shown."
     },
     {
+      "id": "met-open",
+      "name": "Meteorological services with open terms",
+      "kind": "official body",
+      "hosts": [
+        "aemet.es",
+        "metoffice.gov.uk",
+        "weather.gov",
+        "knmi.nl"
+      ],
+      "show": true,
+      "by_host": true,
+      "licence": "Open terms as read by incident.weatherwatch@ (research/weather-sites/terms.json): AEMET (reuse citing AEMET, undistorted), Met Office (Open Government Licence v3.0), US National Weather Service (public domain), KNMI (CC0). Shown with the service named and linked."
+    },
+    {
       "id": "met-other",
       "name": "Other meteorological bodies",
       "kind": "official body",
       "hosts": [
-        "aemet.es",
-        "eumetsat.int"
+        "eumetsat.int",
+        "meteofrance.fr",
+        "meteofrance.com",
+        "yr.no",
+        "dwd.de"
       ],
       "show": false,
       "by_host": true,
-      "licence": "Their pages carry maps and imagery under their own terms (design rule 9): kept privately until incident.conductor@ decides."
+      "licence": "Their pages carry maps, imagery or a design under their own terms (design rule 9; terms not yet confirmed for a screenshot): kept privately until incident.conductor@ decides."
     },
     {
       "id": "press",
