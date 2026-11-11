@@ -1,6 +1,6 @@
 # Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 14:44 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 15:43 UTC
 
 Not a warning service. No advice of ours. **Your airline or operator decides whether your flight or service runs: its site or app has the latest.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -69,7 +69,7 @@ Only what an operator or an authority states. Ride-hailing apps (Uber, Bolt) pub
 |---|---|---|---|---|---|
 | Lusoponte (25 de Abril, Vasco da Gama) | Its own notices ("destaques") on [lusoponte.pt](https://www.lusoponte.pt/): the homepage lists them newest first; each notice page carries an "Atualização" time (Lisbon) | Yes (12:49). Its server sends the wrong intermediate certificate, so strict clients fail where browsers fetch the right one; the reader adds Sectigo's public intermediate (OV R36, from the leaf's own AIA address) and verification stays on. [robots.txt](https://www.lusoponte.pt/robots.txt) allows all | No terms of use found (a privacy and a cookie policy only): short excerpts with the link | Its newest notices: speed limits, closures | **live** (12:52): [bridges.json](../incidents/2026-11-10-storm-charles/data/transport/bridges.json) |
 | Infraestruturas de Portugal (roads) | Its site: news and alerts | Yes (12:54) | **terms** (as above): link only | Roads and bridges it manages | **terms**: link only |
-| Lisbon city (tunnels) | Its site | Not tried yet | | | **next** |
+| Lisbon city (tunnels) | dados.gov.pt: the city's "Condicionamentos de Trânsito" (EMEL's road restrictions, CSV) | Yes, but stale: newest row 16 Oct 2024 (file last modified Feb 2025), planned works only, no tunnel named; dados.cm-lisboa.pt answers a bot challenge (403) | CC BY (dados.gov.pt) | None today | **unknown** (checked 15:43 UTC, 11 Nov): the city publishes no live tunnel or road-closure status we can read. Tunnel closures as reported stay with the researcher (decisions/entities/tunnels.json) |
 
 ## For Dinis (listed, not worked around)
 
