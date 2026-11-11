@@ -1,3 +1,5 @@
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 00:33 UTC
+
 # The best weather sites, and who is covering Storm Charles
 
 Research for the home page, by incident.weatherwatch@web-summit.dinis, for incident.designer@web-summit.dinis. The data is [sites.json](sites.json), with [gap.json](gap.json) (who shows what) and [imagery.json](imagery.json) (what imagery we may show): 106 entries in three maps (52 worldwide, 27 Portugal, 27 on Storm Charles), from 244 addresses requested once each between 23:38 and 23:47 UTC on 10 November 2026.
@@ -72,9 +74,18 @@ Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; se
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
 
+## What changed at the 00:29 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 48 addresses read again.
+
+- **At the authorities, nothing** (facts): IPMA's communiqué is still no. 2; its seven warnings for the Lisbon district are the same as at 23:39 (red rain Wednesday 09:00 to 18:00, red wind 12:00 to 21:00); AEMET's table still has no naming date against Charles.
+- **In the coverage, the headline moved** (evidence): Público's live blog now leads "Charles passa mais a sul do que o previsto e vento deverá ser menos intenso"; Notícias ao Minuto's, "Tempestade muda de trajetória; CP suprime comboios". Observador's and Negócios's live blogs were updated after midnight; RTP's page grew to 1.54 MB.
+- **For the home page:** a reader of headlines and a reader of warnings now hold different pictures of the same afternoon. Idea 9 in practice: the authority's unchanged line and the press's changed line side by side, each labelled and timed, with no line of our own between them.
+- Portuguese Wikipedia's article is now readable (last changed 00:18 UTC): three sections and footnotes with the date consulted. No new tracker or map was found. The Met Office blog, Meteored UK and Severe Weather Europe still do not mention Charles. Renascença's dashboard, SAPO, Público's front page and DN did not answer this time.
+
 ## The gap, as a table
 
-For each of the 26 entries that cover Charles (data: [gap.json](gap.json), with a note per row): does it show a timeline, the decisions as a list, a source link per item, the time the source was read, the warned period by hour, and the same content as data. "Partly" is explained in `gap.json`; "not seen" means we did not read enough to say. One read each, 10 November, 23:38 to 23:48 UTC. This is not a criticism of anyone's journalism: live blogs and explainers do other things well.
+For each of the 26 entries that cover Charles (data: [gap.json](gap.json), with a note per row): does it show a timeline, the decisions as a list, a source link per item, the time the source was read, the warned period by hour, and the same content as data. "Partly" is explained in `gap.json`; "not seen" means we did not read enough to say. One read each, 10 November, 23:38 to 23:48 UTC (Portuguese Wikipedia at 00:29 UTC on the 11th). This is not a criticism of anyone's journalism: live blogs and explainers do other things well.
 
 | Who | Timeline | Decisions | Source per item | Time read | Hour by hour | Data |
 |---|---|---|---|---|---|---|
@@ -98,7 +109,7 @@ For each of the 26 entries that cover Charles (data: [gap.json](gap.json), with 
 | [Correio da Manhã / CMTV](https://www.cmjornal.pt/cmtv/videos/detalhe/veja-o-percurso-da-tempestade-charles-e-por-onde-deve-entrar-em-portugal) | no | partly | no | partly | no | no |
 | [tempo.pt (Meteored)](https://www.tempo.pt/noticias/previsao/) | no | no | partly | partly | partly | no |
 | [Luso Meteo](https://lusometeo.com/atualidade/tempestade-charles-mais-fraca-32997/) | no | no | partly | partly | partly | no |
-| [Wikipedia (pt)](https://pt.wikipedia.org/wiki/Depress%C3%A3o_Charles) | not seen | not seen | not seen | not seen | no | yes |
+| [Wikipedia (pt)](https://pt.wikipedia.org/wiki/Depress%C3%A3o_Charles) | partly | partly | yes | yes | no | yes |
 | [Wikipedia (en)](https://en.wikipedia.org/wiki/2026%E2%80%9327_European_windstorm_season) | partly | no | yes | not seen | no | yes |
 | [Euronews](https://www.euronews.com/2026/11/10/portugal-on-alert-as-storms-bruna-and-charles-raise-sting-jet-risk-of-160-kmh-winds) | no | partly | no | partly | no | no |
 | [El País](https://elpais.com/el-tiempo/2026-11-10/las-borrascas-bruna-y-charles-ponen-bajo-aviso-rojo-por-lluvias-a-extremadura-y-castilla-y-leon.html) | no | partly | no | partly | no | no |
@@ -108,8 +119,8 @@ For each of the 26 entries that cover Charles (data: [gap.json](gap.json), with 
 What it shows:
 
 - **None of the 26 has all six.** IPMA comes closest and is the source itself; it records no decisions by others.
-- **Decisions as a list: none.** Thirteen report decisions as entries in a stream or as separate articles.
-- **The time the source was read: one** (MeteoAlarm, the issue time per warning). Nineteen give only a publication or update time.
+- **Decisions as a list: none.** Fourteen report decisions as entries in a stream or as separate articles.
+- **The time the source was read: two** (MeteoAlarm, the issue time per warning; Portuguese Wikipedia, "Consultado em" on 31 footnotes, read at 00:29 UTC on the 11th). Nineteen give only a publication or update time.
 - **By hour: one** (IPMA). **Data: four** (IPMA, MeteoAlarm, the two Wikipedias).
 - **Measured:** of 18 press pages counted, 12 had no link to ipma.pt or prociv.gov.pt anywhere in their HTML; the most was five (Observador's live blog, to ANEPC).
 

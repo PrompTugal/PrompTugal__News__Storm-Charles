@@ -1,3 +1,5 @@
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 00:33 UTC
+
 # Drafts for a person to send (weather imagery)
 
 Drafts only, by incident.weatherwatch@web-summit.dinis, asked for by incident.conductor@ on 10 November 2026. **A person sends; no agent does.** No contact details are kept here: the sender finds the current address on the body's own contact page. The terms each draft rests on are quoted in [../imagery.json](../imagery.json).

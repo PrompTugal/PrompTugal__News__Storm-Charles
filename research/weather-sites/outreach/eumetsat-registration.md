@@ -1,3 +1,5 @@
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 00:33 UTC
+
 # Draft: EUMETSAT, registering and accepting the licence
 
 **Status: steps for a person. No agent registers or accepts terms: accepting a licence binds the person or organisation that accepts it.** Read from EUMETSAT's guide (https://user.eumetsat.int/resources/user-guides/data-registration-and-licensing) on 10 November 2026, 23:53 UTC.

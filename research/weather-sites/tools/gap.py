@@ -28,7 +28,7 @@ G = {
  'sc-cm': (N, P, N, P, N, N, 0, 'Video of the path; closures as articles.'),
  'sc-tempopt': (N, N, P, P, P, N, 0, 'Its own forecasts, some hour-specific for Lisbon, by named forecasters; models named in prose (articles themselves not opened one by one).'),
  'sc-lusometeo': (N, N, P, P, P, N, 0, 'Its own analysis with interactive maps.'),
- 'sc-wikipedia-pt': (U, U, U, U, N, Y, None, 'The article answered 429; only its revision list was read. Wikipedia\'s API and licence make it data.'),
+ 'sc-wikipedia-pt': (P, P, Y, Y, N, Y, None, 'Read at the 00:29Z re-read (the first read answered 429): sections on the storm\'s evolution, on warnings and preventive measures, and on observed impacts; footnotes throughout, 31 of them with the date consulted ("Consultado em"); three links to ipma.pt; last changed 00:18Z on 11 November. Open API and licence.'),
  'sc-wikipedia-en': (P, N, Y, U, N, Y, None, 'A section in the season article, with footnotes; access dates in the references were not checked.'),
  'sc-euronews': (N, P, N, P, N, N, 0, 'Articles in English.'),
  'sc-elpais': (N, P, N, P, N, N, 0, 'Articles on the Spanish side.'),
@@ -48,7 +48,8 @@ all_six = [r['id'] for r in real if all(r[c] == Y for c in COLS)]
 press = [r for r in real if r['links_to_ipma_or_anepc'] is not None]
 doc = {
  'about': 'The gap analysis: for each of the 27 entries of the Storm Charles map in sites.json, whether it shows the six things this site is built on. Kept by incident.weatherwatch@web-summit.dinis. Judgements from one read of each page on 10 November 2026 (23:38Z to 23:48Z); a page may have changed since. Not a criticism of anyone\'s journalism: live blogs and explainers do other things well (see sites.json, "best").',
- 'updated': '2026-11-10T23:58Z',
+ 'updated': '2026-11-11T00:33Z',
+ 'by': 'incident.weatherwatch@web-summit.dinis',
  'columns': {
   'timeline': 'events in time order on one page, each with its time',
   'decisions': 'what was decided, by whom and when, as a list or table (not only as items in a stream): "partly" = decisions reported as entries or articles',
@@ -71,6 +72,7 @@ T = '2026-11-10T23:53Z'
 imagery = {
  'about': 'Imagery we may show: the reuse terms as read on each owner\'s own page, with the page\'s address, and a verdict for the designer: hotlink (load the owner\'s image or tiles in our page), copy (serve our own copy: never in git, so not available to us now) or link only. Kept by incident.weatherwatch@web-summit.dinis. This is a careful reading of public terms, not legal advice; where the terms are silent the verdict says so and the decision is Dinis\'s.',
  'updated': '2026-11-10T23:58Z',
+ 'by': 'incident.weatherwatch@web-summit.dinis',
  'short_answer': 'No radar exists that we may hotlink without asking: IPMA\'s radar is the only one for Portugal and its terms allow non-profit use with source, logo and link but say nothing on hotlinking. For satellite, EUMETSAT allows Meteosat images one hour old or more for any purpose with attribution (after accepting a free licence in its user portal); newer than one hour on a public site needs a paid licence. MeteoAlarm\'s warnings may be redrawn by us under its conditions; its own map images may not be copied. Safest now: a text link "IPMA radar" and "EUMETView" with the time; best next: our own warnings map from IPMA\'s JSON; then ask IPMA (a person sends).',
  'sources': [
   {'id': 'ipma-radar', 'what': 'IPMA radar mosaic and single radars', 'page': 'https://www.ipma.pt/pt/otempo/obs.radar/', 'credit_on_page': 'copyright © IPMA',

@@ -1,17 +1,54 @@
 {
   "about": "Does this site's use of IPMA's warnings meet MeteoAlarm's Terms and Conditions (https://www.meteoalarm.org/en/live/page/terms-and-conditions, last updated 15/03/2024, read 2026-11-10T23:53Z)? Checked by incident.weatherwatch@web-summit.dinis at the conductor's request. The terms apply to what we take from MeteoAlarm's feed (data/weather/cap.json and what is written from it); warnings.json comes from api.ipma.pt and falls under IPMA's own terms. A careful reading, not legal advice.",
+  "by": "incident.weatherwatch@web-summit.dinis",
+  "updated": "2026-11-10T23:59Z",
   "checked": "2026-11-10T23:59Z",
   "what_we_take_from_meteoalarm": "incidents/2026-11-10-storm-charles/data/weather/cap.json (17 CAP messages for the Lisbon district, read by data/weather/tools/refresh.py from https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal), served at its path and under api/v1/; the sent times in timeline.md and on the home page come from it.",
   "requirements": [
-    {"term": "the relevant national service named (single country)", "met": "yes", "where": "cap.json says \"IPMA's warnings\"; the pages name IPMA throughout"},
-    {"term": "the time of issue included", "met": "yes", "where": "cap.json: sent_utc on every message; the timeline quotes it (\"IPMA sent the change at 21:23\")"},
-    {"term": "a link to www.meteoalarm.org in internet applications", "met": "no", "where": "cap.json's source is the feed address (feeds.meteoalarm.org), not www.meteoalarm.org; the served home page and incident page contain no mention of MeteoAlarm at all (0 matches in their HTML at 23:58Z), although the home page shows times taken from its feed. datasets.html mentions it once.", "fix": "add \"via MeteoAlarm (EUMETNET)\" with a link to https://www.meteoalarm.org wherever a CAP sent time is shown, and a meteoalarm field in cap.json"},
-    {"term": "the disclaimer sentence published", "met": "no", "where": "not on any page or in cap.json", "fix": "publish, on the pages that show CAP-derived content and in cap.json: \"Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to www.meteoalarm.org.\""},
-    {"term": "if operationally redistributed: real time, delay on average under five minutes and never over ten", "met": "no", "where": "cap.json is refreshed by an agent's run and a commit, about every 30 minutes (read 23:53:38Z, next_read_utc 00:22Z). The message IPMA sent at 21:23Z entered cap.json at the 23:51Z read: about two and a half hours later.", "fix": "either (a) present cap.json as a dated record, not a live service (it already carries read_utc; say so in words next to it and keep the disclaimer), which is the reading under which the rule for \"operational\" redistribution does not bind; or (b) refresh it every five minutes by a scheduled job. The browser cannot read the feed itself: the feed sends no Access-Control-Allow-Origin header (checked 23:58Z)."},
-    {"term": "if modified, redistributed along with the same Information without material change", "met": "yes, as read", "where": "cap.json keeps IPMA's own event and description text in Portuguese, unedited, for one district; it is a selection, not a rewording. English summaries on the pages sit beside links to the source."},
-    {"term": "MeteoAlarm's own Content (maps, icons, design) not copied", "met": "yes", "where": "none is used"}
+    {
+      "term": "the relevant national service named (single country)",
+      "met": "yes",
+      "where": "cap.json says \"IPMA's warnings\"; the pages name IPMA throughout"
+    },
+    {
+      "term": "the time of issue included",
+      "met": "yes",
+      "where": "cap.json: sent_utc on every message; the timeline quotes it (\"IPMA sent the change at 21:23\")"
+    },
+    {
+      "term": "a link to www.meteoalarm.org in internet applications",
+      "met": "no",
+      "where": "cap.json's source is the feed address (feeds.meteoalarm.org), not www.meteoalarm.org; the served home page and incident page contain no mention of MeteoAlarm at all (0 matches in their HTML at 23:58Z), although the home page shows times taken from its feed. datasets.html mentions it once.",
+      "fix": "add \"via MeteoAlarm (EUMETNET)\" with a link to https://www.meteoalarm.org wherever a CAP sent time is shown, and a meteoalarm field in cap.json"
+    },
+    {
+      "term": "the disclaimer sentence published",
+      "met": "no",
+      "where": "not on any page or in cap.json",
+      "fix": "publish, on the pages that show CAP-derived content and in cap.json: \"Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to www.meteoalarm.org.\""
+    },
+    {
+      "term": "if operationally redistributed: real time, delay on average under five minutes and never over ten",
+      "met": "no",
+      "where": "cap.json is refreshed by an agent's run and a commit, about every 30 minutes (read 23:53:38Z, next_read_utc 00:22Z). The message IPMA sent at 21:23Z entered cap.json at the 23:51Z read: about two and a half hours later.",
+      "fix": "either (a) present cap.json as a dated record, not a live service (it already carries read_utc; say so in words next to it and keep the disclaimer), which is the reading under which the rule for \"operational\" redistribution does not bind; or (b) refresh it every five minutes by a scheduled job. The browser cannot read the feed itself: the feed sends no Access-Control-Allow-Origin header (checked 23:58Z)."
+    },
+    {
+      "term": "if modified, redistributed along with the same Information without material change",
+      "met": "yes, as read",
+      "where": "cap.json keeps IPMA's own event and description text in Portuguese, unedited, for one district; it is a selection, not a rewording. English summaries on the pages sit beside links to the source."
+    },
+    {
+      "term": "MeteoAlarm's own Content (maps, icons, design) not copied",
+      "met": "yes",
+      "where": "none is used"
+    }
   ],
-  "lacking": ["a link to www.meteoalarm.org", "the disclaimer sentence", "the ten-minute delay (or words saying cap.json is a dated record, not a live feed)"],
+  "lacking": [
+    "a link to www.meteoalarm.org",
+    "the disclaimer sentence",
+    "the ten-minute delay (or words saying cap.json is a dated record, not a live feed)"
+  ],
   "owners": "cap.json and refresh.py: incident.meteorologist@; the pages: incident.conductor@ and incident.designer@. This agent changed none of them.",
   "ipma_terms_for_warnings_json": "IPMA asks that the source always be named (met: \"IPMA\" and a link to api.ipma.pt on every item) and that its logo be used, with a link to its site, when its information is included in web pages: the logo is not on our pages. Whether to add it is the designer's and Dinis's call."
 }

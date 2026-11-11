@@ -1,3 +1,5 @@
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 00:33 UTC
+
 # Draft: to IPMA, about showing the radar image
 
 **Status: draft, not sent. A person sends it, in their own name.** Where to send: IPMA's own contact page ("Contacto" on ipma.pt); no address is kept here. Before sending, Dinis settles the two points in square brackets.
