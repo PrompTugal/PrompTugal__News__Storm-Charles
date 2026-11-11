@@ -1,6 +1,6 @@
 # ABP: incident.datascience@web-summit.dinis
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 10:50 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.datascience@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 11:52 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.datascience@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
 
 **Phase: explorer.** This policy observes and recommends; it blocks nothing. Label: the Reach and Barriers name their evidence; the Gap is our analysis.
 
@@ -11,7 +11,8 @@
 - **The public site:** every push to `dev` that passes the gate is live at storm-charles.promptugal.news in under a minute. Nobody reads it first.
 - **Its key:** none in `data/keys.json`.
 - **Its session's tools and connectors:** not known. Inferred from the librarian's session, if it runs in the same kind of environment: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy. The agent or Dinis can list what it really has.
-
+- Data science (Dinis, ~11:45, BRIEF.md; agents/JOBS.md): the gap map against Watchfloor's decision brief (research/watchfloor/README.md), then new open data sets, each read at its own source with its licence: people exposed by district and hour (Kontur/INE on IPMA's warning areas), the ECMWF ensemble, tides, low land, hospitals, power; and how to communicate them, in layers from simple to deep.
+- Owns `datascience/`, `incidents/*/data/exposure/` and `tools/ds-*.mjs` (agents/policy.json). First push 11:48 UTC: `datascience/gaps.md`, every data point of the brief marked have, partly or missing, with its open source, licence, effort and whether this session's network reached it.
 
 ## Mandate: what was authorised
 
@@ -23,7 +24,9 @@
 
 ## Gap: capabilities within Reach beyond authority
 
-
+- **Not a warning service**: exposure figures are data we hold, never advice; IPMA issues the warnings, ANEPC the instructions.
+- Watchfloor's figures are theirs, credited, never copied: every point is read at its own open source (datascience/gaps.md says so itself).
+- A model of exposure is a hypothesis with its reasons and method, not a fact; the labels of CLAUDE.md apply to every derived figure.
 - Write anywhere in the repository, not only its own paths: the path check warns or refuses in `release.sh`, and a plain `git push` does not run it.
 - Change the gate, the workflow or the path policy in the same push as the change they would have refused.
 - Push to `main`, force-push or rewrite history on `dev`: neither branch is protected.

@@ -1,10 +1,10 @@
 {
  "agent": "incident.librarian@web-summit.dinis",
- "state": "handing over: the eighth librarian session (since 10:48 UTC on 11 November) wrote this hand-over at 11:46 after its first hourly wake.",
- "last_wake": "2026-11-11T11:46Z",
- "updated": "2026-11-11T11:46Z",
+ "state": "active: the ninth librarian session (since 11:49 UTC on 11 November), started from the pack and the eighth's hand-over.",
+ "last_wake": "2026-11-11T11:53Z",
+ "updated": "2026-11-11T11:53Z",
  "by": "incident.librarian@web-summit.dinis",
- "key": "sha256:2a7ad8572f6c00ae (encryption), sha256:97b7a5786ce154c2 (signing); the eighth session's key, public half in data/keys.json (incident-librarian-dinis-8); the seventh's marked handed over",
+ "key": "sha256:0031937d702dc88f (encryption), sha256:196ba7c026b4af0b (signing); the ninth session's key, public half in data/keys.json (incident-librarian-dinis-9); the eighth's marked handed over",
  "jobs": [
   "L1: library/index.json and library/README.md: everything on this site catalogued (path, kind, what, who, when, made from, links), built by tools/library-index.mjs; no git history read in CI",
   "L2: library/reading/: the reading list from newsroom.sgit.ai (/llms.txt) and the estate's repository standard, with what each means for this site",
@@ -16,6 +16,7 @@
   "R3 (Dinis ~02:50, via the conductor): the briefing pack, so a new agent starts from a few kilobytes and not the repository; measured against starting from whole files"
  ],
  "done": [
+  "11:53 (ninth session): started from the pack; session key made (the tool checked against the pinned sha256 first; id incident-librarian-dinis-9, the eighth marked handed over); incident.datascience@ in library/abp.json after its first push (11:48, datascience/gaps.md), its policy rebuilt; brief@, desk@, sherpa@ had not pushed at 11:53",
   "11:46 wake (eighth session): news/2026-11-11T10.md closed (143 commits by 29 agents, 131 versions; /welcome/ still a draft, the wind-down plan still waits on Dinis); T11 opened (Dinis's ~11:45 word: a decision brief, the contact desk, 'Are you in Lisbon right now?', four new agents; flights counted only from what was seen); the round article: 5c, a correction in 7 (the transport window), section 9 point 12; the pack's start page rule 15 (the contact desk); 41 policies (four new agents get JOBS-only drafts); release history and the commit record refreshed; the hand-over",
   "10:50 (eighth session): started from the pack; session key made (the tool checked against the pinned sha256 first; id incident-librarian-dinis-8, the seventh marked handed over); incident.storyteller@, incident.motion@, incident.broadcast@, incident.transport@ and incident.planner@ in library/abp.json, their draft policies written (37 policies; every page now lists transition/interviews/<role>.md in its paths, read from agents/policy.json); the pack's start page gains rules 12 (the wind-down waits on Dinis; nobody stops while the storm is live or before its hand-over), 13 (the ~10:38 correction: no outside hand-over, Dinis alone runs this site) and 14 (the PrompTugal News family: link and brand); its fresh-session line refreshed from data/keys.json",
   "10:47 wake (seventh session): news/2026-11-11T09.md closed (98 commits, 83 versions); T10 opened; the round article: the hour in 5c, a correction in 7, section 9 point 11 (the wind-down); release history and the commit record refreshed; the hand-over",
@@ -79,7 +80,7 @@
    "the accountant will repeat the pack test now that start.md has the two rules it found missing; put any new result on the pack's index (tools/library-pack.mjs reads accounts/pack-test.json).",
    "library/abp.json: the 17 entries added at 03:10 rest on what each agent says of itself (JOBS.md, policy.json, its status); read each against its own files and the gate when there is time. Three findings to pass on: tools/llm.mjs is listed under both incident.models@ and incident.dev@ in agents/policy.json; README.md under both the conductor and incident.ci@; incident.ci@'s status gives the gate's budget as 5 s where CLAUDE.md says 8.",
    "From incident.reporter@'s second session, still not done: (b) unwritten contracts need a line in the owner's README, which the pack then picks up; (c) say in each role pack whether the role needs state.json at the start. (a), the card title cut, is done: titles are cut at a length.",
-   "library/abp.json has all 37 agents up to incident.planner@ (the eighth added storyteller, motion, broadcast, transport, planner at 10:50). NOT yet in it: incident.datascience@, incident.brief@, incident.desk@, incident.sherpa@ (Dinis ~11:45; their policies are JOBS-only drafts): add each from agents/JOBS.md, agents/policy.json and its own README once it has pushed, then `node tools/library-abp.mjs`.",
+   "library/abp.json has 38 agents (the ninth added incident.datascience@ at 11:53). NOT yet in it: incident.brief@, incident.desk@, incident.sherpa@ (none had pushed at 11:53): add each from agents/JOBS.md, agents/policy.json and its own files once it has pushed, then `node tools/library-abp.mjs`.",
    "library/pack/start.md rules 12 (the wind-down waits on Dinis), 13 (the 10:38 correction), 14 (the PrompTugal News family) were added at 10:50 and 15 (the contact desk) at 11:45. When Dinis answers the plan or moves /welcome/ to /, rewrite rules 11 and 12. The fresh-session line was refreshed at 10:50 (computed from data/keys.json: highest -N per role, leaving out 'not used').",
    "For incident.synthetic@ (said in commit 58f19d48): its personas files carried 09:58 ahead of their 09:53:46 commit.",
    "For incident.planner@ (its message of 10:52; PLAN.md 5d81e23 takes in the library's part): at the close trigger, library/closing-inventory.json: library/index.json grouped by agent (files kept, last touched). The librarian's verdict in the plan: continue, plus the incident template incidents/_template/ with the conductor."
