@@ -1,7 +1,7 @@
 {
   "agent": "incident.graph@web-summit.dinis",
-  "state": "active: graph, tables, query page (eight questions), graph page with the lead-time line; the build rebuilds the graph on every push",
-  "last_wake": "2026-11-11T01:55Z",
+  "state": "active: round 1 of Dinis's 02:10 direction on the graph pages is pushed (questions first, controls, edge pane, ontology drawn, lead times as a page); round 2 next",
+  "last_wake": "2026-11-11T02:16Z",
   "done": [
     "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
     "data/graph/ontology.json and its README: 8 kinds of thing, 8 relations, every node and edge with label, source, read, origin",
@@ -20,13 +20,15 @@
     "the media layer (research/media/): 28 outlets as Actors (cited hosts merged into them), tables first_on_fact (32 rows) and coverage (225 items; titles with links, the kind of by-line, never a name), and the question 'Who was first on each fact?' on /data/query/",
     "01:52 wake: storm.json would have been 247 KB of 256 on the new data (40 decisions, 92 sources), so the graph is now three files: storm.json (166 KB), storm-sources.json (Sources and Datasets with their edges, 85 KB), storm-elsewhere.json (68 KB); both pages load all three",
     "no private person named or linked: the builder withholds any personal post address before building (keeps the host only; the researcher's official channels are the exception), redacts fediverse handles in text, and stops with nothing written if either would reach an output. data/graph/ regenerated from the redacted timeline: no trace of the two addresses or handles remains",
-    "ontology public_posts: the allow-list for a post address, keyed by timeline row, each with a reason and who decided (first: s-1110T2141, the conductor's decision); the default stays withhold"
+    "ontology public_posts: the allow-list for a post address, keyed by timeline row, each with a reason and who decided (first: s-1110T2141, the conductor's decision); the default stays withhold",
+    "round 1 of Dinis's 02:10 direction: /app/graph/ starts from a question (eight presets, or 'everything about' any actor, place or agent within 1 to 3 steps; each answer has an address), filters by kind, verb and label, three layouts, press a node to read it and bring in its links, hide it or open it as its own graph, press a link to read the link; the answer as a list with every item linked; /app/graph/ontology/ draws the ontology (verbs with inverses); /app/graph/lead-times/ is its own page with every cell a link"
   ],
   "next": [
-    "the keyed facts (research/media/facts.json) joined to the graph's own warning and decision nodes, so 'first on a fact' is an edge (outlet reports decision)",
-    "coverage.json is 150 KB for 225 items: split by day before it reaches 256 KB",
-    "SPARQL parked at the conductor's word",
-    "the graph page: text labels on the main nodes"
+    "round 2: the query page 'does something': saved questions with their answers as tables and small charts, each linkable",
+    "round 2: zoom deeper (a warning into IPMA's messages for it, a decision into its evidence, a day into its rows) with each zoom's own small vocabulary",
+    "entities: read entities/index.json when incident.entities@ publishes it; each node links to its entity page first (ids proposed to entities@ at 02:15)",
+    "the designer's right-hand panel: call openItem(id) when it lands, in place of my own pane",
+    "the keyed facts of the media watch joined to the graph's own nodes"
   ],
   "asks": [
     "Dinis: git history (earlier commits and CI tags) still holds a private person's post address in data/graph/; nothing here rewrites history. The conductor has it for you.",
@@ -34,6 +36,6 @@
     "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels); a `channel` field on each node in decisions/graph.json would remove the list.",
     "ontologist@'s schemas were not readable from this session (its repository is not attached)."
   ],
-  "updated": "2026-11-11T01:55Z",
+  "updated": "2026-11-11T02:16Z",
   "by": "incident.graph@web-summit.dinis"
 }

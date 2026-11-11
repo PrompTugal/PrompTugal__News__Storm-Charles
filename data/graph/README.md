@@ -8,7 +8,7 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 
 | File | What |
 |---|---|
-| [ontology.json](ontology.json) | the eight kinds of thing and eight relations below; the builder refuses anything else |
+| [ontology.json](ontology.json) | the eight kinds of thing and eight verbs below, each with its inverse; the builder refuses anything else |
 | [storm.json](storm.json) | the graph: `nodes[]` and `edges[]` (one per line), `counts`, `built_from` (each input file with its sha256). Lisbon, the decisions and everything else |
 | [storm-sources.json](storm-sources.json) | part of the graph, same shape: every Source and Dataset, with the `cites` and `produced-by` edges that touch them; its edges point into `storm.json` |
 | [storm-elsewhere.json](storm-elsewhere.json) | the rest of the graph, same shape: the warnings in force in the other districts, and those districts; its edges point into `storm.json` |
@@ -38,16 +38,16 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 | **Dataset** | a JSON file of the incident | the files under the incident's `data/` |
 | **Agent** | an agent or desk that reads sources and keeps datasets | `data/keys.json`; `read_by` in the datasets |
 
-| Relation | From, to | Meaning |
-|---|---|---|
-| `decides` | Actor, Decision | the actor made (or owes) the decision |
-| `warns` | Actor, Warning | the body issued the warning |
-| `reports` | Actor, Signal or Decision or Warning | the actor published it |
-| `cites` | Decision or Warning or Signal, Source | it was read at this URL, or is corroborated by it |
-| `precedes` | Decision or Warning, Decision or Warning | time order between two linked items, with `lead_minutes` when both times are known to the minute. **Order, not cause** |
-| `affects` | Decision or Warning, Actor | whom the decision touches |
-| `located-in` | Warning or Place, Place | a warning's area; a district in the mainland |
-| `produced-by` | Dataset or Source, Agent or Actor | who keeps a dataset; whose channel a source is |
+| Verb | Its inverse | From, to | Meaning |
+|---|---|---|---|
+| `decides` | `decided-by` | Actor, Decision | the actor made (or owes) this decision |
+| `warns` | `warned-by` | Actor, Warning | the body issued this warning |
+| `reports` | `reported-by` | Actor, Signal or Decision or Warning | the actor published it |
+| `cites` | `cited-by` | Decision or Warning or Signal, Source | the item was read at this URL (or is corroborated by it) |
+| `precedes` | `follows` | Decision or Warning, Decision or Warning | time order between two linked items, with `lead_minutes` when both times are known to the minute. **Order, not cause** |
+| `affects` | `affected-by` | Decision or Warning, Actor | the actors a decision touches (the researcher's `to`) |
+| `located-in` | `contains` | Warning or Place, Place | a warning's area |
+| `produced-by` | `produces` | Dataset or Source, Agent or Actor | who made it |
 
 **Labels.** A *fact* was read on the channel of the body that decides or warns. *Evidence* is reported by others, with its source. A *hypothesis* is our analysis, with its reasons, never stated as fact. A derived item takes the label of the item it came from; an outlet, a place, a dataset or an agent is a fact about the file or URL that names it.
 
@@ -70,5 +70,7 @@ The output has no clock in it: the same inputs give the same bytes; `as_of` is t
 ## Use it
 
 - **Query it in the browser** (SQL, no server, nine worked questions): [the query page](../query/index.html).
+- **See the ontology drawn:** [kinds of thing as shapes, verbs as arrows, each with its inverse](../../app/graph/ontology/index.html).
+- **Lead times:** [one line of time, every cell a link](../../app/graph/lead-times/index.html).
 - **See it:** [the graph page](../../app/graph/index.html) (3D, on the engine of web-summit.sgit.ai's Universe, and as a list).
 - **Read it as an agent:** fetch `storm.json`; follow `origin` back to the file each item came from, and `source` to where it was read.

@@ -13,6 +13,7 @@
 //       { style: () => ({ background, outline, link, linkMuted, linkPicked, linkHypothesis }),   // read from tokens; called again by restyle()
 //         colourOf(node) -> colour, shapeOf(node) -> a key of StormGraph.SHAPES, onPick(node), tip(node) -> string })
 //   g.show(predicate)   which nodes are drawn      g.focus(id)   fly to one      g.fit()   all in view
+//   g.layout(place)     pin axes per node (by time, by kind), or g.layout(null) for the forces alone;  opts.onPickLink(link)
 //   g.restyle()         re-read the colours (after a theme change)              g.fg      the 3d-force-graph instance
 //   StormGraph.fromStorm(storm)   data/graph/storm.json -> { nodes, links } for mount
 //   StormGraph.icon(shape)        the same shape as an <svg> element (fill: currentColor), for a legend
@@ -82,6 +83,8 @@ window.StormGraph = (function () {
             .linkDirectionalParticles(l => l.label === 'hypothesis' ? 3 : 0).linkDirectionalParticleWidth(1.6).linkDirectionalParticleSpeed(0.006)
             .linkLabel(l => `<div class="g-tip">${esc(l.rel || '')}${l.lead_minutes != null ? ' · ' + l.lead_minutes + ' min' : ''}<small>${esc(l.label || '')}</small></div>`)
             .onNodeClick(n => { api.focus(n.id); if (opts.onPick) opts.onPick(n) })
+            .onLinkClick(l => { if (opts.onPickLink) opts.onPickLink(l) })
+            .linkHoverPrecision(5)
             .graphData({ nodes: all.nodes.slice(), links: all.links.slice() })
         fg.d3Force('charge').strength(-45); fg.d3Force('link').distance(30)
         // fit once the layout has roughly settled, and again when it stops, unless the reader has already picked a node
@@ -93,9 +96,9 @@ window.StormGraph = (function () {
         const relink = () => fg.linkColor(linkCol).linkWidth(fg.linkWidth())
         const api = {
             fg,
-            show(keep) {
+            show(keep, keepLink) {
                 const nodes = all.nodes.filter(keep), ids = new Set(nodes.map(n => n.id)), id = x => typeof x === 'object' ? x.id : x
-                fg.graphData({ nodes, links: all.links.filter(l => ids.has(id(l.source)) && ids.has(id(l.target))) })
+                fg.graphData({ nodes, links: all.links.filter(l => ids.has(id(l.source)) && ids.has(id(l.target)) && (!keepLink || keepLink(l))) })
             },
             focus(id) {
                 const n = fg.graphData().nodes.find(x => x.id === id); if (!n) return false
@@ -104,6 +107,11 @@ window.StormGraph = (function () {
                 fg.cameraPosition({ x: (n.x || 1) * k, y: (n.y || 1) * k, z: (n.z || 1) * k }, n, 1100); return true
             },
             fit() { picked = null; relink(); fg.zoomToFit(900, 40) },
+            // a layout: place(node) -> { x?, y?, z? } to pin those axes for that node, or null to let the forces place it
+            layout(place) {
+                for (const n of all.nodes) { const p = place ? place(n) : null; n.fx = p && p.x != null ? p.x : undefined; n.fy = p && p.y != null ? p.y : undefined; n.fz = p && p.z != null ? p.z : undefined }
+                picked = null; fitted = 0; fg.d3ReheatSimulation(); setTimeout(fit, 1500); setTimeout(fit, 3500)
+            },
             restyle() { S = opts.style(); sprites.clear(); fg.backgroundColor(S.background).nodeThreeObject(obj); relink() }
         }
         return api

@@ -67,6 +67,7 @@
   },
   "relations": {
     "decides": {
+      "inverse": "decided-by",
       "from": [
         "Actor"
       ],
@@ -76,6 +77,7 @@
       "what": "the actor made (or owes) this decision"
     },
     "warns": {
+      "inverse": "warned-by",
       "from": [
         "Actor"
       ],
@@ -85,6 +87,7 @@
       "what": "the body issued this warning"
     },
     "reports": {
+      "inverse": "reported-by",
       "from": [
         "Actor"
       ],
@@ -96,6 +99,7 @@
       "what": "the actor published it: an outlet reporting a decision, a body publishing on its own channel"
     },
     "cites": {
+      "inverse": "cited-by",
       "from": [
         "Decision",
         "Warning",
@@ -107,6 +111,7 @@
       "what": "the item was read at this URL (or is corroborated by it)"
     },
     "precedes": {
+      "inverse": "follows",
       "from": [
         "Decision",
         "Warning"
@@ -121,6 +126,7 @@
       }
     },
     "affects": {
+      "inverse": "affected-by",
       "from": [
         "Decision",
         "Warning"
@@ -131,6 +137,7 @@
       "what": "the actors a decision touches (the researcher's `to`)"
     },
     "located-in": {
+      "inverse": "contains",
       "from": [
         "Warning",
         "Place"
@@ -141,6 +148,7 @@
       "what": "a warning's area; a district inside mainland Portugal"
     },
     "produced-by": {
+      "inverse": "produces",
       "from": [
         "Dataset",
         "Source"
@@ -181,5 +189,6 @@
   },
   "not_in_the_graph": "People. No private person is a node; journalists and officials are not modelled here (incident.media@ keeps by-lines on public articles in its own files). Forecast values and observations stay in weather/*.json: the graph links the dataset, not each number.",
   "not_a_warning_service": "The graph records what authorities decided and warned, and when we read it. It is not a forecast and gives no advice: follow IPMA and ANEPC.",
-  "updated": "2026-11-11T01:55Z"
+  "updated": "2026-11-11T02:12Z",
+  "grammar": "Every edge is a verb with a distinct inverse (relations.<verb>.inverse); there is no generic 'related to' edge. The whole graph is never drawn: a view is the result of a question. A node opens into its own graph (a warning into IPMA's messages for it, a decision into what it followed and where it was read). After graphs.sgit.ai (meaning through connectivity) and Fractal Semantic Graphs."
 }

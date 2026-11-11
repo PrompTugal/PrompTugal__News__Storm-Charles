@@ -2,24 +2,26 @@
 title: The graph of the storm
 summary: One graph of Storm Charles: actors, decisions, warnings, signals, sources, places, datasets and agents, each node and link with its label, its source and the time read. Built from the incident's JSON.
 mount: <div id="graph" data-base="../../"><p class="meta">This needs JavaScript. The same data, as files: <a href="../../data/graph/index.html">data/graph/</a>.</p></div>
-head: <link rel="stylesheet" href="graph.css"><script src="engine.js" defer></script><script src="graph.js" defer></script>
+head: <link rel="stylesheet" href="graph.css"><script src="engine.js" defer></script><script src="common.js" defer></script><script src="graph.js" defer></script>
 ---
 ## How this page works
 
-> Kept by incident.graph@web-summit.dinis, 11 November 2026, 00:29 UTC
+> Kept by incident.graph@web-summit.dinis, 11 November 2026, 02:14 UTC
 
 This page draws [data/graph/storm.json](../../data/graph/storm.json): actors, decisions, warnings, signals, sources, places, datasets and agents, and the links between them. Kept by incident.graph@web-summit.dinis. Not a warning service: it records what was decided and warned, and when we read it.
 
 ## What you see
 
-- **A node** is one thing; its **shape** is its kind (the chips above the graph show each shape). Its size is the number of its links. Colour says little, on purpose: a decision is blue; red, orange and yellow are IPMA's warning levels and appear only on a warning that has one; everything else is grey.
-- **A link** is one relation (decides, warns, reports, cites, precedes, affects, located-in, produced-by), with an arrow. A plain line is a fact, a fainter line is evidence, and a hypothesis carries moving dots. `precedes` is time order with a lead time in minutes: **order, not cause**.
-- **Press a node** to read it in the panel: its label, when, its source (a link), when it was read and by whom, the file it was built from, and its links, each of which you can follow.
-- **The chips** hide and show kinds of thing and labels. A node with no link yet (a source listed but not cited) is in the list, not in the 3D view. Warnings outside Lisbon are hidden at first (48 of them); one chip shows them.
-- **Lead times** is one line of time under the graph: every warning and decision with a time known to the minute, the time between each and the next, and how long before the first red warning starts in Lisbon. It is [tables/timeline.json](../../data/graph/tables/timeline.json), drawn. Order, not cause.
-- **The same graph as a list** is under that, always: nothing here depends on WebGL.
+The whole graph is never drawn first. The page **starts from a question**, and what is drawn is that question's answer.
 
-What each kind of thing and relation means: [the ontology on one page](../../data/graph/README.md). Questions in SQL: [the query page](../../data/query/index.html).
+- **1. Start from a question.** Eight ready questions ("Who decided what, on whose warning?", "What changed in the last hour?", "What is still not announced?" ...), or "Everything about" any actor, place or agent within one, two or three steps. Each has its own address (`?q=<question>` or `?node=<id>`), so an answer can be linked.
+- **2. Change what is shown.** Hide or show a kind of thing, a verb (decides, warns, reports, cites, precedes, affects, located-in, produced-by) or a label (fact, evidence, hypothesis). Three layouts: by links; in order of time, left to right; in lanes by kind.
+- **Press a node** to read it in the pane: its label, when, its source (a link that leaves the site is marked), when it was read and by whom, the file it was built from, and its links grouped by verb (incoming links are named by the verb's inverse: decided-by, follows). Pressing also brings in what the node is linked to. From the pane: **open it as its own graph**, bring in its links, or hide it.
+- **Press a link** to read the link itself: the verb, its inverse, its label, source and time read.
+- **A node** is one thing; its **shape** is its kind. Colour says little, on purpose: a decision is blue; red, orange and yellow are IPMA's warning levels and appear only on a warning that has one; everything else is grey. A hypothesis link carries moving dots.
+- **3. The same answer as a list**, always, with every item linked: nothing here depends on WebGL.
+
+Beside this page: [the ontology, drawn](ontology/index.html), [lead times](lead-times/index.html) (one line of time, every cell a link), and [the query page](../../data/query/index.html). What each kind of thing and verb means in words: [data/graph/](../../data/graph/README.md).
 
 ## The engine
 
@@ -51,4 +53,4 @@ StormGraph.icon('diamond')   // the same shape as an <svg>, for a legend
 
 ## For an agent
 
-Read [storm.json](../../data/graph/storm.json) directly: `nodes[]`, `edges[]` (`from`, `to`, `rel`), each with `label`, `source`, `read`, `origin`. On the page, after the `tool:ready` event, `window.__tools.graph.focus(id)` selects a node.
+Read [storm.json](../../data/graph/storm.json) directly: `nodes[]`, `edges[]` (`from`, `to`, `rel`), each with `label`, `source`, `read`, `origin`. On the page, after the `tool:ready` event: `window.__tools.graph.questions()`, `.ask(id)`, `.about(nodeId, depth)`, `.open(nodeId)`, `.shown()`.
