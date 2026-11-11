@@ -33,9 +33,10 @@
             if (dnt) { s.append(' · Page views: off (Do Not Track or Global Privacy Control is on). ', a); row.appendChild(s); return }
             const b = document.createElement('button'); b.type = 'button'; b.style.cssText = 'font:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;color:inherit'
             const t = document.createTextNode('')
-            const draw = () => { t.textContent = paused() ? ' · Page views: paused on this device. ' : ' · Page views and reading time are counted, publicly, as totals. No IP address, no cookie, no place lookup. '; b.textContent = paused() ? 'Resume' : 'Pause' }
+            const draw = () => { t.textContent = paused() ? ' · Page views: paused on this device. ' : ' · This page counts its views: opening and leaving it each send one event (the page, the site you came from, the minute, a random id that ends with this tab, screen size class, language, time zone), sealed in your browser. No IP address, no cookie, no place lookup. Only totals are published. '; b.textContent = paused() ? 'Resume' : 'Pause' }
             b.onclick = () => { LS.set('off', paused() ? null : '1'); draw() }
-            s.append(t, b, ' · ', a); draw(); row.appendChild(s)
+            const n = document.createElement('a'); n.href = root + 'agents/index.html#views'; n.textContent = 'the counts'
+            s.append(t, b, ' · ', n, ' · ', a); draw(); row.appendChild(s)
         }
         cfg().then(c => { if (!on(c)) return; const f = () => { try { footer(c) } catch { } }; if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f() }).catch(() => { })
         if (dnt || paused()) return

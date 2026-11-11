@@ -1,7 +1,7 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T09:40:07Z",
+  "updated": "2026-11-11T09:42:00Z",
   "state": "handing over at about 228,000 tokens of context a call: agents/observability/HANDOVER.md, its first section, is the note for the fourth session; page views are on and need the hourly drain, which needs the two vault keys from the conductor",
   "last_wake": "2026-11-11T09:15Z",
   "session": {
@@ -134,5 +134,30 @@
     "each_wake": "as before, plus: clone vaults zd1cb3kt and j7z16ln1 (keys from the conductor, sealed), run tools/agents-views.mjs, commit data/agents/views.json",
     "kept_outside_git": "~/.incident-vaults (the two vault keys and clones): gone with this session; the conductor holds both keys",
     "lessons": "read the clock before writing any time; a vault to be public must never have held a secret (the first enum key had to be replaced); keep what a drain refuses"
+  },
+  "page_view_event": {
+    "sent_by": "app/agents/obs.js, only on storm-charles.promptugal.news, only when data/agents/obs.json says enabled; nothing when Do Not Track or Global Privacy Control is on, or after Pause",
+    "to": "POST https://dev.send.sgraph.ai/api/vault/append/write/zd1cb3kt (credentials omitted, no referrer), sealed in the browser (RSA-OAEP 4096 wrapping AES-256-GCM) to the events key sha256:184037d550c878d7",
+    "when": "twice a page load: a view on load, a read on leaving",
+    "fields": {
+      "v": "1",
+      "src": "\"storm-charles\"",
+      "site": "the host",
+      "ver": "the site version shown",
+      "ts": "the minute, UTC",
+      "sid": "8 random hex characters kept for the tab only",
+      "path": "the page path, no query",
+      "ref": "the referring site's host only",
+      "lang": "the browser language (sent; not counted or published)",
+      "screen": "phone, tablet or desktop",
+      "tz": "the time zone name (sent; not counted or published)",
+      "agent": "only when the browser says it is automated",
+      "via": "a ?via= or utm tag, if any",
+      "type": "view or read",
+      "visible_s": "read only: seconds on screen, at most 3600",
+      "scroll": "read only: how far down, 0 to 100"
+    },
+    "never": "IP address, cookie, user-agent string, fingerprint, place, anything typed",
+    "published": "counts only: data/agents/views.json and stats/views.json in vault zd1cb3kt"
   }
 }
