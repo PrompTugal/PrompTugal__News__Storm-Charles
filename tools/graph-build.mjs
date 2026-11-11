@@ -42,6 +42,9 @@ const G = J(DATA + 'decisions/graph.json'), S = J(DATA + 'decisions/sources.json
 const incident = J(`${INC}/incident.json`)
 const opt = rel => fs.existsSync(path.join(ROOT, rel)) ? J(rel) : null
 const CAP = opt(DATA + 'weather/cap.json'), SITES = opt('research/weather-sites/sites.json')
+// the media watch (incident.media@): the outlets, what each published and when, and who was first on each keyed fact.
+// By-lines are not carried into the graph or its tables: no person is a node or a column here (only the kind of by-line).
+const M_OUT = opt('research/media/outlets.json'), M_COV = opt('research/media/coverage.json'), M_FIRST = opt('research/media/first-on-each-fact.json')
 
 const nodes = new Map(), edges = new Map(), problems = []
 const LABELS = new Set(Object.keys(ONT.labels))
@@ -79,10 +82,19 @@ const NOT_OUTLET = new Set(ONT.own_channels.not_outlets)
 // sub-domains of an actor's host are its channel too (api.ipma.pt and ipma.pt)
 const actorOfHost = h => { if (!h) return null; if (ownHost.has(h)) return ownHost.get(h); for (const [k, v] of ownHost) if (h.endsWith('.' + k) || k.endsWith('.' + h)) return v; return null }
 // an outlet: a host that is nobody's own channel, cited by evidence or by a signal
+// an outlet the media watch knows, by host (its own host or a sub-domain of it; the longest match wins)
+const outletOfHost = h => { let best = null, len = 0; for (const o of (M_OUT ? M_OUT.outlets : [])) for (const x of o.hosts || []) if ((h === x || h.endsWith('.' + x)) && x.length > len) { best = o; len = x.length } return best }
+const mediaUrl = SITE + 'research/media/outlets.json'
+function outletNode(o, ctx) {
+    const i = M_OUT.outlets.indexOf(o), s = o.seen || {}
+    return node({ id: 'actor:outlet:' + o.id, type: 'Actor', kind: 'outlet', kind_in_source: o.kind || null, name: o.name, role: `${o.kind || 'outlet'} (${o.lang || '?'}); hosts: ${(o.hosts || []).join(', ')}`, lang: o.lang || null, coverage_items: s.items ?? null, coverage_first_published: s.first_published || null, coverage_last_published: s.last_published || null, wire_share: o.wire_share ?? null, label: 'fact', source: mediaUrl, read: M_OUT.updated, read_by: 'incident.media@web-summit.dinis', blocked: null, derived: true, origin: `research/media/outlets.json#/outlets/${i}` }).id
+}
+const derivedActor = h => { const o = outletOfHost(h); return o ? 'actor:outlet:' + o.id : 'actor:host:' + h }
 function publisher(url, ctx, asOutlet, kind = 'outlet') {
     const h = host(url); if (!h) return null
     const own = actorOfHost(h); if (own) return own
     if (!asOutlet || NOT_OUTLET.has(h)) return null
+    const o = outletOfHost(h); if (o) return outletNode(o, ctx)
     return node({ id: 'actor:host:' + h, type: 'Actor', kind, kind_in_source: null, name: h, role: 'Publishes reports that this incident cites (derived from the host of the cited URLs).', label: 'fact', source: url, read: ctx.read, read_by: ctx.read_by || null, blocked: null, derived: true, origin: ctx.origin }).id
 }
 
@@ -198,6 +210,9 @@ if (SITES) SITES.sites.forEach((x, i) => {
     if (a) edge({ from: sid, to: a, rel: 'produced-by', label: 'fact', source: x.url, read: readAt, origin })
 })
 
+// ---------------------------------------------------------------- the media watch: every outlet seen covering the storm
+if (M_OUT) for (const o of M_OUT.outlets) outletNode(o, {})
+
 // ---------------------------------------------------------------- signals (signals.json)
 const signalRows = []
 SIG.items.forEach((s, i) => {
@@ -290,10 +305,10 @@ const warningRows = [
 ]
 const sourceRows = N.filter(n => n.type === 'Source').map(n => {
     const c = cited.get(n.id) || [], times = c.map(x => x.at).filter(t => epoch(t) !== null).sort()
-    const p = actorOfHost(n.host) || (nodes.has('actor:host:' + n.host) ? 'actor:host:' + n.host : null)
+    const p = actorOfHost(n.host) || (nodes.has(derivedActor(n.host)) ? derivedActor(n.host) : null)
     return { id: n.id, url: n.url, host: n.host, publisher: p, publisher_name: actorName(p), publisher_kind: p ? nodes.get(p).kind : null, holds: n.holds, changes: n.changes, machine_readable: n.machine_readable, status: n.status, reuse: n.reuse, coverage: n.coverage || null, coverage_name: n.coverage_name || null, cited_by: c.length, first_cited_item_at: times[0] || null, first_cited_item_epoch: epoch(times[0]), label: n.label, source: n.source, read: n.read, read_epoch: epoch(n.read), read_by: n.read_by || null, origin: n.origin }
 })
-const actorRows = N.filter(n => n.type === 'Actor').map(n => ({ id: n.id, name: n.name, kind: n.kind, kind_in_source: n.kind_in_source, role: n.role, decisions: EDG.filter(e => e.from === n.id && e.rel === 'decides').length, warnings: EDG.filter(e => e.from === n.id && e.rel === 'warns').length, reports: EDG.filter(e => e.from === n.id && e.rel === 'reports').length, blocked: n.blocked ? JSON.stringify(n.blocked) : null, label: n.label, source: n.source, read: n.read, read_by: n.read_by, origin: n.origin }))
+const actorRows = N.filter(n => n.type === 'Actor').map(n => ({ id: n.id, name: n.name, kind: n.kind, kind_in_source: n.kind_in_source, role: n.role, lang: n.lang || null, coverage_items: n.coverage_items ?? null, coverage_first_published: n.coverage_first_published || null, coverage_first_epoch: epoch(n.coverage_first_published), wire_share: n.wire_share ?? null, decisions: EDG.filter(e => e.from === n.id && e.rel === 'decides').length, warnings: EDG.filter(e => e.from === n.id && e.rel === 'warns').length, reports: EDG.filter(e => e.from === n.id && e.rel === 'reports').length, blocked: n.blocked ? JSON.stringify(n.blocked) : null, label: n.label, source: n.source, read: n.read, read_by: n.read_by, origin: n.origin }))
 // the lead-time line: every warning and decision with a time known to the minute, in order, with the hours between
 // them and the hours before the first red warning starts in Lisbon. IPMA's own messages (cap) give the time a warning
 // was SENT; where they exist, the researcher's rows for the same IPMA colour warnings (time first read) are left out.
@@ -305,7 +320,16 @@ const lineRaw = [
 ].sort((a, b) => epoch(a.at) - epoch(b.at) || a.id.localeCompare(b.id))
 const h1 = s => s === null ? null : Math.round(s / 360) / 10
 const timelineRows = lineRaw.map((r, i) => { const t = epoch(r.at); return { n: i + 1, id: r.id, kind: r.kind, who: r.who, what: r.what, at: r.at, at_epoch: t, time_is: r.time_is, h_since_previous: i ? h1(t - epoch(lineRaw[i - 1].at)) : null, h_since_first: h1(t - epoch(lineRaw[0].at)), h_before_red_starts: redStarts === null ? null : h1(redStarts - t), effect_from: r.effect_from || null, effect_from_epoch: epoch(r.effect_from), h_before_effect: epoch(r.effect_from) === null ? null : h1(epoch(r.effect_from) - t), level: r.level, status: r.status, label: r.label, source: r.source, read: r.read, origin: r.origin } })
+// the media watch as tables. coverage: one row per item an outlet published (evidence: it was published; no by-line
+// names, only the kind). first_on_fact: for each keyed fact, each outlet's first item on it and the minutes after the
+// primary source: the matching is by pattern, so every row is the media watch's analysis (hypothesis), not a fact.
+const outletActor = id => nodes.has('actor:outlet:' + id) ? 'actor:outlet:' + id : null
+const coverageRows = (M_COV ? M_COV.articles : []).filter(a => https(a.url)).map((a, i) => ({ id: 'coverage:' + (a.id || i), outlet: outletActor(a.outlet), outlet_name: actorName(outletActor(a.outlet)) || a.outlet, kind: a.kind || null, lang: a.lang || null, title: a.title || null, published: toZ(a.published) || null, published_epoch: epoch(toZ(a.published)), byline_kind: a.byline_kind || null, links_to_primary: (a.links_to_primary || []).length, label: a.label === 'fact' ? 'fact' : 'evidence', source: a.url, read: a.read || M_COV.updated, origin: `research/media/coverage.json#/articles/${i}` }))
+    .sort((a, b) => (a.published || '9').localeCompare(b.published || '9') || a.id.localeCompare(b.id))
+const firstRows = (M_FIRST ? M_FIRST.facts : []).flatMap((f, i) => (f.first_by_outlet || []).filter(x => https(x.url)).map((x, k) => ({ id: `first:${f.id}:${x.outlet}`, fact: f.id, what: f.what, primary_time: toZ(f.primary_time) || null, primary_epoch: epoch(toZ(f.primary_time)), primary_label: f.primary_label || null, rank: x.rank ?? k + 1, outlet: outletActor(x.outlet), outlet_name: actorName(outletActor(x.outlet)) || x.outlet, published: toZ(x.published) || null, published_epoch: epoch(toZ(x.published)), minutes_after_primary: x.minutes_after_primary ?? null, via: x.via || null, title: x.title || null, url: x.url, label: 'hypothesis', source: x.url, read: M_FIRST.updated, read_by: 'incident.media@web-summit.dinis', origin: `research/media/first-on-each-fact.json#/facts/${i}/first_by_outlet/${k}` })))
 const TABLES = {
+    ...(firstRows.length ? { first_on_fact: ['Who was first on each keyed fact: for each fact (IPMA\'s red wind, the alert, Web Summit\'s decision ...), each outlet\'s first item on it and the minutes after the primary source. From incident.media@\'s first-on-each-fact.json; the matching is by pattern, so each row is analysis (labelled hypothesis). Only outlets whose feeds could be read are here.', firstRows] } : {}),
+    ...(coverageRows.length ? { coverage: ['What each outlet published on the storm and when (one row per item; the title as published, with its link; the kind of by-line, never a name). The item\'s URL is its source. From incident.media@\'s coverage.json.', coverageRows] } : {}),
     timeline: ['The lead-time line: every warning and decision with a time known to the minute, in order: hours since the previous one, since the first, before the first red warning starts in Lisbon (h_before_red_starts) and before its own effect starts (h_before_effect). For IPMA\'s colour warnings the time is when IPMA sent the message (CAP). Order, not cause.', timelineRows],
     signals: ['The timeline as rows: one per signal, with who published it (publisher) where the source has a URL.', signalRows],
     decisions: ['Decisions and issued warnings: who (by), what, when (at, at_epoch in seconds when known to the minute), status, and what each followed.', decisionRows],

@@ -16,6 +16,8 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 | [tables/warnings.json](tables/warnings.json) | warnings: issued, in force (type, level, area, start, end), and the history of when each was first seen |
 | [tables/signals.json](tables/signals.json) | the timeline, one row per signal, with its publisher |
 | [tables/sources.json](tables/sources.json) | every URL read, its publisher, how often it is cited |
+| [tables/first_on_fact.json](tables/first_on_fact.json) | who was first on each keyed fact, per outlet, with the minutes after the primary source (from the media watch; analysis, labelled hypothesis) |
+| [tables/coverage.json](tables/coverage.json) | what each outlet published on the storm and when (from the media watch; no by-line names) |
 | [tables/actors.json](tables/actors.json) | bodies, operators, the organiser, outlets |
 | [ref/ipma-areas.json](ref/ipma-areas.json) | IPMA's warning areas by code (names and coordinates), from IPMA's own list |
 | [queries.json](queries.json) | the worked SQL queries of the query page |
@@ -64,6 +66,6 @@ The output has no clock in it: the same inputs give the same bytes; `as_of` is t
 
 ## Use it
 
-- **Query it in the browser** (SQL, no server, eight worked questions): [the query page](../query/index.html).
+- **Query it in the browser** (SQL, no server, nine worked questions): [the query page](../query/index.html).
 - **See it:** [the graph page](../../app/graph/index.html) (3D, on the engine of web-summit.sgit.ai's Universe, and as a list).
 - **Read it as an agent:** fetch `storm.json`; follow `origin` back to the file each item came from, and `source` to where it was read.

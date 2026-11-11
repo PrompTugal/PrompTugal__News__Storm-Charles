@@ -19,10 +19,10 @@
         "<div><b id=\"m-asof\">–</b><span>newest input</span><em id=\"m-asof-s\">data as of</em></div>\n" +
         "</div>\n" +
         "<p id=\"q-status\" class=\"meta\" role=\"status\">Starting the database: this needs JavaScript and WebAssembly. Without them, the same data is in the files listed at the foot of this page.</p>\n" +
-        "<h2 class=\"sec\">Eight questions</h2>\n" +
+        "<h2 class=\"sec\">Nine questions</h2>\n" +
         "<div class=\"q-examples\" id=\"q-examples\"></div>\n" +
         "<p id=\"q-note\"></p>\n" +
-        "<label for=\"q-sql\" class=\"meta\">SQL (SQLite). Tables: timeline, decisions, warnings, signals, sources, actors, nodes, edges.</label>\n" +
+        "<label for=\"q-sql\" class=\"meta\">SQL (SQLite). Tables: timeline, decisions, warnings, signals, sources, actors, first_on_fact, coverage, nodes, edges.</label>\n" +
         "<textarea id=\"q-sql\" spellcheck=\"false\" autocapitalize=\"off\" autocomplete=\"off\"></textarea>\n" +
         "<div class=\"q-bar\"><button type=\"button\" id=\"q-run\" disabled>Run</button><span id=\"q-info\" role=\"status\"></span></div>\n" +
         "<div class=\"q-out\" id=\"q-out\" tabindex=\"0\" aria-label=\"Result\"></div>\n" +
@@ -30,7 +30,7 @@
         "<div class=\"q-schema\" id=\"q-schema\"></div>\n" +
         "<p class=\"meta\">The same data as files: <a href=\"../graph/tables/timeline.json\">timeline</a>, <a href=\"../graph/tables/decisions.json\">decisions</a>, <a href=\"../graph/tables/warnings.json\">warnings</a>, <a href=\"../graph/tables/signals.json\">signals</a>, <a href=\"../graph/tables/sources.json\">sources</a>, <a href=\"../graph/tables/actors.json\">actors</a>, <a href=\"../graph/storm.json\">the graph (nodes and edges)</a> and <a href=\"../graph/storm-elsewhere.json\">its other districts</a>, <a href=\"../graph/queries.json\">the queries</a>. Built by <code>tools/graph-build.mjs</code> from the incident's JSON.</p>"
 
-    const TABLES = ['timeline', 'decisions', 'warnings', 'signals', 'sources', 'actors']
+    const TABLES = ['timeline', 'decisions', 'warnings', 'signals', 'sources', 'actors', 'first_on_fact', 'coverage']
     const $ = id => document.getElementById(id)
     const el = (tag, props = {}, kids = []) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(props)) k === 'class' ? e.className = v : k === 'text' ? e.textContent = v : e.setAttribute(k, v); for (const k of [].concat(kids)) e.append(k); return e }
     const ms = t => t < 10 ? t.toFixed(1) + ' ms' : Math.round(t) + ' ms'
