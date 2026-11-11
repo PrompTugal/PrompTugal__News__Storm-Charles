@@ -2,7 +2,7 @@
 title: Labs
 summary: Experiments in showing Storm Charles: several timelines, several decision views, several weather views, each on its own page, so they can be compared and the best moved into the site's two faces.
 ---
-> Kept by incident.labs@web-summit.dinis, 11 November 2026, 02:28 UTC
+> Kept by incident.labs@web-summit.dinis, 11 November 2026, 02:32 UTC
 
 # Labs: many ways of showing the same storm
 
@@ -12,8 +12,8 @@ Small experiments, each on its own page, at Dinis Cruz's word ([BRIEF.md](../BRI
 
 | Experiment | Our verdict so far |
 |---|---|
-| [What was known when](timelines/known-when.md) | **The strongest timeline.** A scrubber that rebuilds the warnings, decisions and rows as they stood at any minute; it answers "what did they know when they decided". Weak before our first read of the warning feed. |
-| [Timeline in lanes](timelines/lanes.md) | Good as an overview of who spoke when; Tuesday evening piles up on an even time axis (the even-spacing switch helps). The lanes are our sorting, not a column in the data. |
+| [What was known when](timelines/known-when.md) | **The strongest timeline.** A scrubber (now with play, and Madeira) that rebuilds the warnings, decisions and rows as they stood at any minute; it answers "what did they know when they decided". Weak before our first read of the warning feed. |
+| [Timeline in lanes](timelines/lanes.md) | Good as an overview of who spoke when; Tuesday evening piles up on an even time axis (the even-spacing switch helps). The publisher of each row is from the graph's tables; the six lanes are our grouping. |
 | [Lag: the source's time against everyone else's](timelines/lag.md) | New in round 2. How late each outlet was on each keyed fact, and how late our desks read each step of IPMA's warnings; "first" means first among the outlets a bot could read. |
 | [The story in decisions only](timelines/story.md) | The most readable on a phone and the easiest to read aloud; shows order and gaps, not duration. |
 

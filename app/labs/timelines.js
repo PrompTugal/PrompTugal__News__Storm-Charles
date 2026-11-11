@@ -3,29 +3,27 @@
   'use strict'
   var L = window.Labs, h = L.h, s = L.s, T = L.T, H = L.H
 
-  // The lane of a timeline row. signals.json has no actor field: this sorting is ours (a keyword match on the row's source and
-  // first words), and the page says so.
-  var LANES = [['ipma', 'IPMA', 'warnings, communiqués, forecasts'], ['civil', 'ANEPC and government', 'civil protection, ministers'], ['ws', 'Web Summit', 'the organisers\' own pages'], ['press', 'Press and public posts', 'reported by others'], ['team', 'Our team', 'what we did, when'], ['hyp', 'Our analysis', 'hypotheses, never fact']]
-  function laneOf(x) {
+  // The lane of a timeline row: who published its source, from incident.graph@'s table (data/graph/tables/signals.json, joined on
+  // the row id) and the kind of that actor (tables/actors.json). The grouping into six lanes is ours; the publisher is the data's.
+  var LANES = [['body', 'Bodies that warn and decide', 'IPMA, ANEPC, the government'], ['carrier', 'Carriers of official data', 'MeteoAlarm, aviation weather'], ['organiser', 'Web Summit', 'the organisers\' own pages'], ['outlet', 'Press and public posts', 'reported by others'], ['team', 'Our team', 'this site, or no public address'], ['hyp', 'Our analysis', 'hypotheses, never fact']]
+  function laneOf(x, pub, actors) {
     if (x.label === 'hypothesis') return 'hyp'
-    if (x.kind === 'team') return 'team'
-    var src = (x.sources || []).map(function (q) { return (q.label || '') + ' ' + (q.url || '') }).join(' ')
-    if (x.kind === 'official') {
-      if (/websummit/i.test(src)) return 'ws'
-      if (/ANEPC|prociv|gov\.pt|Government/i.test(src + ' ' + x.text.slice(0, 40))) return 'civil'
-      return 'ipma'
-    }
-    return 'press'
+    if (!pub || /promptugal\.news/.test(pub) || x.kind === 'team') return 'team'
+    var a = actors[pub]; if (a && a.kind === 'organiser') return 'organiser'
+    if (a && a.kind === 'body') return 'body'
+    if (/^actor:host:/.test(pub)) return x.kind === 'official' ? 'carrier' : 'outlet'
+    return a && a.kind === 'outlet' ? 'outlet' : x.kind === 'official' ? 'body' : 'outlet'
   }
 
   L.exp('timelines/lanes', {
-    needs: ['signals'],
+    needs: ['signals', 'sigtab', 'actors'],
     setup: function (c) {
       L.choice(c.tools, 'axis', [['time', 'Even time'], ['order', 'Even spacing (in order)']], c.state, c.redraw)
       L.choice(c.tools, 'span', [['all', 'All'], ['tue', 'Tue 10 from 12:00'], ['last', 'Last 8 h']], c.state, c.redraw)
     },
     draw: function (c) {
-      var rows = c.data.signals.items.map(function (x) { return { x: x, t: T(x.at), lane: laneOf(x), id: L.signalItem(x) } }).sort(function (a, b) { return a.t - b.t })
+      var pubs = {}, actors = {}; c.data.sigtab.rows.forEach(function (r) { pubs[r.id] = r.publisher }); c.data.actors.rows.forEach(function (a) { actors[a.id] = a })
+      var rows = c.data.signals.items.map(function (x) { var pub = pubs['signal:' + x.id]; return { x: x, t: T(x.at), pub: (actors[pub] || {}).name || (pub ? pub.replace(/^actor:(host:|outlet:)?/, '') : 'no public address'), lane: laneOf(x, pub, actors), id: L.signalItem(x, (actors[pub] || {}).name || pub) } }).sort(function (a, b) { return a.t - b.t })
       var tMax = rows[rows.length - 1].t
       if (c.state.span === 'tue') rows = rows.filter(function (r) { return r.t >= T('2026-11-10T12:00Z') })
       if (c.state.span === 'last') rows = rows.filter(function (r) { return r.t >= tMax - 8 * H })
@@ -53,13 +51,13 @@
         l.rows.forEach(function (r) {
           var cy = l.y + 7 + R + r.k * ROWH, d = L.dot(r.px, cy, r.x.decision ? R - 1.5 : R - 1, r.x.label, r.x.decision)
           if (r.x.key) d.classList.add('key')
-          d.appendChild(s('title', { text: L.dhm(r.t) + ' · ' + r.x.label + ' · ' + r.x.text }))
+          d.appendChild(s('title', { text: L.dhm(r.t) + ' · ' + r.pub + ' · ' + r.x.label + ' · ' + r.x.text }))
           g.appendChild(L.mark(d, r.id, L.dhm(r.t) + ', ' + r.x.label + ': ' + r.x.text.slice(0, 80)))
         })
       })
       c.el.appendChild(g)
       c.el.appendChild(L.legend(L.LABELS.concat([['lg-fact', 'thick ring: a key row']])))
-      c.el.appendChild(h('p', { class: 'meta', text: rows.length + ' rows of the timeline. The lane is our sorting, by a keyword match on each row\'s source; the timeline itself has no actor column.' }))
+      c.el.appendChild(h('p', { class: 'meta', text: rows.length + ' rows of the timeline. Who published each row\'s source comes from the graph\'s table of signals (incident.graph@), joined on the row id; grouping the publishers into six lanes is ours.' }))
     }
   })
 
@@ -72,33 +70,42 @@
       var out = h('output', {}), rg = h('input', { type: 'range', min: 0, max: (t1 - t0) / 60e3, step: 1, 'aria-label': 'The minute to rebuild' })
       function set(t) { c.state.t = Math.min(t1, Math.max(t0, t)); rg.value = (c.state.t - t0) / 60e3; out.textContent = L.dhm(c.state.t) + ' UTC'; c.redraw() }
       rg.addEventListener('input', function () { set(t0 + rg.value * 60e3) })
-      var times = rows.map(function (x) { return T(x.at) }).concat(d.cap.lisbon_messages.map(function (m) { return T(m.sent_utc) }), d.graph.edges.map(function (e) { return T(e.at) })).filter(function (t) { return !isNaN(t) }).sort(function (a, b) { return a - b })
+      var times = rows.map(function (x) { return T(x.at) }).concat(d.cap.lisbon_messages.concat(d.cap.other_messages.filter(function (m) { return /Madeira/.test(m.areas.join()) })).map(function (m) { return T(m.sent_utc) }), d.graph.edges.map(function (e) { return T(e.at) })).filter(function (t) { return !isNaN(t) }).sort(function (a, b) { return a - b })
       var step = function (dir) { return function () { var t = dir > 0 ? times.find(function (x) { return x > c.state.t }) : times.slice().reverse().find(function (x) { return x < c.state.t }); if (t != null) set(t) } }
       c.tools.appendChild(h('div', { class: 'scrub' }, h('button', { type: 'button', text: '◀ previous change', on: { click: step(-1) } }), rg, h('button', { type: 'button', text: 'next change ▶', on: { click: step(1) } }), out))
       var jumps = h('fieldset', { class: 'lab-choice' }, h('legend', { text: 'Jump to' }))
       ;[['2026-11-10T07:18Z', 'red wind sent'], ['2026-11-10T09:17Z', 'alert announced'], ['2026-11-10T17:53Z', 'PM recommends'], ['2026-11-10T19:09Z', 'Web Summit decides'], ['2026-11-10T21:23Z', 'red rain moved']].forEach(function (j) { jumps.appendChild(h('button', { type: 'button', text: j[1], on: { click: function () { set(T(j[0])) } } })) })
       c.tools.appendChild(jumps)
+      L.choice(c.tools, 'where', [['lisbon', 'Lisbon'], ['madeira', 'Madeira']], c.state, c.redraw)
+      // play: one hour of the storm every second, stopping at the end; nothing plays by itself
+      var timer = null, play = h('button', { type: 'button', text: '▶ play', 'aria-pressed': 'false', on: { click: function () {
+        if (timer) { clearInterval(timer); timer = null } else { if (c.state.t >= t1) set(t0); timer = setInterval(function () { if (c.state.t >= t1) { clearInterval(timer); timer = null; play.textContent = '▶ play'; play.setAttribute('aria-pressed', 'false'); return } set(c.state.t + 10 * 60e3) }, 166) }
+        play.textContent = timer ? '❚❚ pause' : '▶ play'; play.setAttribute('aria-pressed', String(!!timer))
+      } } })
+      c.tools.querySelector('.scrub').insertBefore(play, c.tools.querySelector('.scrub').firstChild)
       rg.value = (c.state.t - t0) / 60e3; out.textContent = L.dhm(c.state.t) + ' UTC'
     },
     draw: function (c) {
       var d = c.data, t = c.state.t, nodes = {}; d.graph.nodes.forEach(function (n) { nodes[n.id] = n })
-      // the CAP messages for Lisbon that stood at t: sent by then, and not replaced by a message sent by then
-      var msgs = d.cap.lisbon_messages, replaced = {}
-      msgs.forEach(function (m) { if (T(m.sent_utc) <= t) (m.replaces || []).forEach(function (r) { replaced[r.identifier] = m }) })
-      var stood = msgs.filter(function (m) { return T(m.sent_utc) <= t && !replaced[m.identifier] && T(m.expires_utc) > t })
-      var TYPES = [['wind', 'Wind'], ['rain', 'Rain'], ['sea', 'Sea'], ['thunder', 'Thunder']]
-      var lab = 70, W = Math.max(c.W - 22, 640), a0 = T('2026-11-09T12:00Z'), a1 = T('2026-11-12T06:00Z'), sc = L.scale(a0, a1, lab, W - 12), top = 40, RH = 26
-      var g = L.svg(W, top + TYPES.length * RH + 22, 'IPMA warnings for Lisbon as they stood at the chosen minute')
-      L.axis(g, sc, top, top + TYPES.length * RH)
-      TYPES.forEach(function (ty, i) {
-        var y = top + i * RH; g.appendChild(s('text', { x: 4, y: y + 17, class: 'lane-name', text: ty[1] })); g.appendChild(s('line', { x1: lab, x2: W - 12, y1: y + RH, y2: y + RH, class: 'lane-line' }))
-        stood.filter(function (m) { return L.wtype(m.event_pt) === ty[0] }).forEach(function (m) {
-          var xa = sc(Math.max(a0, T(m.onset_utc))), xb = sc(Math.min(a1, T(m.expires_utc))), lv = L.level(m.event_pt)
-          L.mark(L.levelBar(g, xa, y + 4, xb - xa, RH - 8, lv, lv.toUpperCase() + ' ' + L.dhm(T(m.onset_utc)) + ' to ' + L.dhm(T(m.expires_utc))), L.capItem(m), m.event_pt)
+      // the CAP messages that stood at t: sent by then, and not replaced by a message sent by then
+      var mad = c.state.where === 'madeira', TYPE = { wind: 'Wind', rain: 'Rain', sea: 'Sea', thunder: 'Thunder', other: 'Other' }
+      var pairs = mad ? [].concat.apply([], d.cap.other_messages.filter(function (m) { return /Madeira/.test(m.areas.join()) }).map(function (m) { return m.areas.map(function (a) { return { m: m, row: a.replace('Madeira - ', '') + ' · ' + TYPE[L.wtype(m.event_pt)].toLowerCase() } }) })) : d.cap.lisbon_messages.map(function (m) { return { m: m, row: TYPE[L.wtype(m.event_pt)] } })
+      var replaced = {}
+      pairs.forEach(function (q) { if (T(q.m.sent_utc) <= t) (q.m.replaces || []).forEach(function (r) { replaced[r.identifier] = 1 }) })
+      var stood = pairs.filter(function (q) { return T(q.m.sent_utc) <= t && !replaced[q.m.identifier] && T(q.m.expires_utc) > t })
+      var ROWS = mad ? Object.keys(pairs.reduce(function (o, q) { o[q.row] = 1; return o }, {})).sort() : ['Wind', 'Rain', 'Sea', 'Thunder'], TYPES = ROWS
+      var lab = mad ? (c.phone ? 150 : 230) : 70, W = Math.max(c.W - 22, mad ? 760 : 640), a0 = T('2026-11-09T12:00Z'), a1 = T('2026-11-12T06:00Z'), sc = L.scale(a0, a1, lab, W - 12), top = 40, RH = mad ? 20 : 26
+      var g = L.svg(W, top + ROWS.length * RH + 22, 'IPMA warnings as they stood at the chosen minute')
+      L.axis(g, sc, top, top + ROWS.length * RH)
+      ROWS.forEach(function (row, i) {
+        var y = top + i * RH; g.appendChild(s('text', { x: 4, y: y + RH / 2 + 4, class: mad ? 't-lab' : 'lane-name', text: row })); g.appendChild(s('line', { x1: lab, x2: W - 12, y1: y + RH, y2: y + RH, class: 'lane-line' }))
+        stood.filter(function (q) { return q.row === row }).forEach(function (q) {
+          var m = q.m, xa = sc(Math.max(a0, T(m.onset_utc))), xb = sc(Math.min(a1, T(m.expires_utc))), lv = L.level(m.event_pt)
+          L.mark(L.levelBar(g, xa, y + 3, xb - xa, RH - 6, lv, lv.toUpperCase() + ' ' + L.dhm(T(m.onset_utc)) + ' to ' + L.dhm(T(m.expires_utc))), L.capItem(m), m.event_pt)
         })
       })
       var xt = sc(t); g.appendChild(s('line', { x1: xt, x2: xt, y1: top - 12, y2: top + TYPES.length * RH + 4, class: 'readline' })); g.appendChild(s('text', { x: xt + 4, y: top + TYPES.length * RH + 16, class: 'readline-t', text: 'the chosen minute' }))
-      c.el.appendChild(h('h3', { text: 'IPMA\'s warnings for Lisbon, as they stood at ' + L.dhm(t) })); c.el.appendChild(g)
+      c.el.appendChild(h('h3', { text: 'IPMA\'s warnings for ' + (mad ? 'Madeira, by area' : 'Lisbon') + ', as they stood at ' + L.dhm(t) })); c.el.appendChild(g)
       c.el.appendChild(L.legend([['lg-red', 'IPMA red'], ['lg-orange', 'IPMA orange'], ['lg-yellow', 'IPMA yellow']]))
       if (t < T(d.cap.reads_utc[0])) c.el.appendChild(h('p', { class: 'meta', text: 'Before our first read of the feed (' + L.dhm(T(d.cap.reads_utc.slice().sort()[0])) + ') this is rebuilt from the messages that were still in the feed then: a warning replaced and dropped before that read is missing here.' }))
       // decisions and rows by then

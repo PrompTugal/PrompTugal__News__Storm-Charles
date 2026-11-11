@@ -7,7 +7,7 @@
   'use strict'
   var NS = 'http://www.w3.org/2000/svg'
   var DATA = 'incidents/2026-11-10-storm-charles/data/'
-  var FILES = { signals: 'signals.json', graph: 'decisions/graph.json', warnings: 'weather/warnings.json', cap: 'weather/cap.json', stations: 'weather/stations.json', rain: 'weather/lisbon-rain.json', madeira: 'weather/madeira.json', forecast: 'weather/forecast.json', airport: 'weather/airport.json', analysis: 'weather/analysis.json', first: '/research/media/first-on-each-fact.json' }
+  var FILES = { signals: 'signals.json', graph: 'decisions/graph.json', warnings: 'weather/warnings.json', cap: 'weather/cap.json', stations: 'weather/stations.json', rain: 'weather/lisbon-rain.json', madeira: 'weather/madeira.json', forecast: 'weather/forecast.json', airport: 'weather/airport.json', analysis: 'weather/analysis.json', sigtab: '/data/graph/tables/signals.json', actors: '/data/graph/tables/actors.json', first: '/research/media/first-on-each-fact.json' }
   var H = 3600e3, DAY = 24 * H
   var exps = {}, items = new Map(), root = '', panel = null
 
@@ -60,21 +60,21 @@
   function levelBar(g, x, y, w, ht, lv, text) {
     var b = s('g', { class: 'lv lv-' + lv }); w = Math.max(w, 2)
     b.appendChild(s('rect', { x: x, y: y, width: w, height: ht, rx: 2 }))
-    if (w > 30) b.appendChild(s('text', { x: x + 4, y: y + ht / 2 + 4, text: (w > 150 && text ? text : lv.toUpperCase()), class: 'lv-t' }))
+    if (w > 30) b.appendChild(s('text', { x: x + 4, y: y + ht / 2 + 4, text: (text && w > text.length * 6.4 + 8 ? text : lv.toUpperCase()), class: 'lv-t' }))
     g.appendChild(b); return b
   }
 
   // ---- items: everything a mark can open
   function reg(it) { items.set(it.id, it); return it.id }
   function host(u) { try { return new URL(u).host.replace(/^www\./, '') } catch (e) { return u } }
-  function signalItem(x) {
-    return reg({ id: x.id, type: 'timeline row', label: x.label, title: x.text, when: x.at, approx: x.approx, facts: [['Kind', x.kind + (x.decision ? ', a decision' : '') + (x.key ? ', key row' : '')], x.supersedes ? ['Supersedes', x.supersedes] : null], sources: x.sources || [], file: DATA + 'signals.json', page: 'incidents/2026-11-10-storm-charles/timeline.html#' + x.id, pageName: 'this row on the timeline' })
+  function signalItem(x, publisher) {
+    return reg({ id: x.id, type: 'timeline row', label: x.label, title: x.text, when: x.at, approx: x.approx, evidence: x.evidence, facts: [publisher ? ['Published by', publisher] : null, ['Kind', x.kind + (x.decision ? ', a decision' : '') + (x.key ? ', key row' : '')], x.supersedes ? ['Supersedes', x.supersedes] : null], sources: x.sources || [], file: DATA + 'signals.json', page: 'incidents/2026-11-10-storm-charles/timeline.html#' + x.id, pageName: 'this row on the timeline' })
   }
   function edgeItem(e, nodes) {
     var n = nodes[e.by] || {}, id = 'edge:' + e.id
     var src = [{ label: e.source ? host(e.source) : 'no source address recorded', url: e.source || null }]
     if (e.announced_utc && e.announced_utc.source) src.push({ label: 'announced: ' + host(e.announced_utc.source), url: e.announced_utc.source })
-    return reg({ id: id, type: 'decision edge', label: e.label, title: e.decision, when: e.at, facts: [['By', n.name || e.by], ['Status', e.status], e.follows && e.follows.length ? ['Follows', e.follows.join(', ')] : null, e.effect_from_utc || e.effect_to_utc ? ['In effect', (e.effect_from_utc ? dhm(T(e.effect_from_utc)) : 'start not stated') + ' to ' + (e.effect_to_utc ? dhm(T(e.effect_to_utc)) : 'end not stated')] : null, e.effect_note ? ['Effect, as stated', e.effect_note] : null, e.reasons ? ['Reasons', e.reasons.join(' · ')] : null, e.against ? ['Against', e.against.join(' · ')] : null, e.note ? ['Note', e.note] : null], sources: src, read: e.read, by: e.read_by, file: DATA + 'decisions/graph.json', page: 'incidents/2026-11-10-storm-charles/decisions.html', pageName: 'the decisions page' })
+    return reg({ id: id, type: 'decision edge', label: e.label, title: e.decision, when: e.at, evidence: e.evidence, facts: [['By', n.name || e.by], ['Status', e.status], e.state ? ['State of the service', String(e.state).replace('_', ' ')] : null, e.follows && e.follows.length ? ['Follows', e.follows.join(', ')] : null, e.effect_from_utc || e.effect_to_utc ? ['In effect', (e.effect_from_utc ? dhm(T(e.effect_from_utc)) : 'start not stated') + ' to ' + (e.effect_to_utc ? dhm(T(e.effect_to_utc)) : 'end not stated')] : null, e.effect_note ? ['Effect, as stated', e.effect_note] : null, e.reasons ? ['Reasons', e.reasons.join(' · ')] : null, e.against ? ['Against', e.against.join(' · ')] : null, e.note ? ['Note', e.note] : null], sources: src, read: e.read, by: e.read_by, file: DATA + 'decisions/graph.json', page: 'incidents/2026-11-10-storm-charles/decisions.html', pageName: 'the decisions page' })
   }
   function capItem(m, file) {
     return reg({ id: 'cap:' + m.identifier, type: 'IPMA warning (CAP message)', label: 'fact', title: m.event_pt + (m.areas ? ', ' + m.areas.join(', ') : ', Lisboa'), when: m.sent_utc, whenName: 'Sent', facts: [['In force', dhm(T(m.onset_utc)) + ' to ' + dhm(T(m.expires_utc))], ['Message', m.msg_type + ' ' + m.identifier], m.description_pt ? ['IPMA\'s words', m.description_pt] : null, m.replaces && m.replaces.length ? ['Replaces', m.replaces.map(function (r) { return r.identifier.split('.').pop() + ' (sent ' + dhm(T(r.sent_utc)) + ')' }).join(', ')] : null, m.status ? ['In the feed', m.status] : null], sources: [{ label: 'IPMA through MeteoAlarm\'s feed', url: m.source }], read: m.read_utc, file: DATA + (file || 'weather/cap.json') })
@@ -101,7 +101,7 @@
       h('p', { class: 'lab-when' }, (it.whenName || 'When') + ': ', h('time', { datetime: it.when || '', text: (it.approx ? 'about ' : '') + when(it.when) }), isNaN(t) ? '' : ' UTC'),
       h('dl', { class: 'lab-kv' }, (it.facts || []).filter(Boolean).map(function (f) { return [h('dt', { text: f[0] }), h('dd', { text: f[1] })] })),
       h('h4', { text: 'Where is the evidence?' }),
-      h('ul', { class: 'lab-src' }, (it.sources || []).map(function (x) { return h('li', {}, x.url ? h('a', { href: x.url, rel: 'noopener', text: x.label || host(x.url) }) : (x.label || 'no source recorded'), x.url ? h('span', { class: 'lab-out', text: ' leaves this site (' + host(x.url) + ')' }) : null) })),
+      h('ul', { class: 'lab-src' }, (Array.isArray(it.evidence) ? it.evidence : []).filter(function (v) { return v && v.page }).map(function (v) { return h('li', { class: 'lab-cap' }, h('a', { href: root + v.page, text: 'Our capture of ' + host(v.url || '') }), h('span', { class: 'lab-out', text: ' on this site: what the page looked like when we read it, with its hash' })) }).concat((it.sources || []).map(function (x) { return h('li', {}, x.url ? h('a', { href: x.url, rel: 'noopener', text: x.label || host(x.url) }) : (x.label || 'no source recorded'), x.url ? h('span', { class: 'lab-out', text: ' leaves this site (' + host(x.url) + ')' }) : null) }))),
       h('p', { class: 'prov' }, it.read ? ['Read ', h('time', { datetime: it.read, text: dhm(T(it.read)) + ' UTC' }), it.by ? ' by ' + it.by : ''] : 'Time read: not recorded on this item'),
       h('p', { class: 'lab-links' }, it.page ? [h('a', { href: root + it.page, text: 'Open ' + (it.pageName || 'its page') }), ' · '] : null, it.file ? h('a', { href: root + it.file, text: 'The file behind it' }) : null, ' · ', h('code', { text: it.id }))
     ])

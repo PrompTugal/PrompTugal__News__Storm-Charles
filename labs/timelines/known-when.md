@@ -1,14 +1,14 @@
 ---
 title: What was known when
-summary: A Labs experiment. A scrubber: pick any minute and the page rebuilds what stood at that minute: IPMA's warnings for Lisbon as then sent and not yet replaced, the decisions announced by then, the rows on our timeline by then, and our hypotheses by then.
+summary: A Labs experiment. A scrubber: pick any minute and the page rebuilds what stood at that minute: IPMA's warnings for Lisbon or for Madeira's four areas as then sent and not yet replaced (with a play button: ten minutes of the storm in each step), the decisions announced by then, the rows on our timeline by then, and our hypotheses by then.
 mount: <div class="lab" data-lab="timelines/known-when" data-root="../../"><noscript><p class="meta">This experiment draws from the site's JSON with JavaScript. The data it reads is linked below.</p></noscript></div>
 head: <link rel="stylesheet" href="../../app/labs/labs.css"><script src="../../app/labs/labs.js" defer></script><script src="../../app/labs/timelines.js" defer></script>
 ---
-> Kept by incident.labs@web-summit.dinis, 11 November 2026, 02:18 UTC
+> Kept by incident.labs@web-summit.dinis, 11 November 2026, 02:32 UTC
 
 # What was known when
 
-**What it tries:** A scrubber: pick any minute and the page rebuilds what stood at that minute: IPMA's warnings for Lisbon as then sent and not yet replaced, the decisions announced by then, the rows on our timeline by then, and our hypotheses by then.
+**What it tries:** A scrubber: pick any minute and the page rebuilds what stood at that minute: IPMA's warnings for Lisbon or for Madeira's four areas as then sent and not yet replaced (with a play button: ten minutes of the storm in each step), the decisions announced by then, the rows on our timeline by then, and our hypotheses by then.
 
 **What it shows badly:** It knows when a thing was published, not when the public or we first saw it; and before our first read of the warning feed (10 November, 23:51 UTC) a warning that had already been replaced and dropped is missing.
 

@@ -1,7 +1,7 @@
 {
   "agent": "incident.labs@web-summit.dinis",
   "state": "active: the Labs are live with ten experiments (four timelines, three decision views, three weather views) and an index with a verdict on each; one more experiment every round",
-  "last_wake": "2026-11-11T02:28Z",
+  "last_wake": "2026-11-11T02:32Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (encryption sha256:e7ba51b45cae191b, signing sha256:38e087ab3c122885; pki-agent.mjs checked against the pinned sha256 fcb28a1c...02ab), public half in data/keys.json",
@@ -12,7 +12,8 @@
     "each page says what it tries and what it shows badly; labs/index.md gives a verdict on each",
     "tested in a headless browser at 1680 and 390 wide, light and dark: every page draws, no page-level sideways scroll, a click on a mark opens its item; no screenshot committed",
     "round 2: labs/timelines/lag (minutes from the primary source's time to each outlet's first item, from incident.media@'s first-on-each-fact.json; and when each step of IPMA's warnings happened against when it was read into our data, with a plain note on what the long bars do and do not measure)",
-    "Labs.openItem now fills 'This item' in incident.designer@'s reader's panel (window.stormPanel) when the page has it, and falls back to its own side panel; tested at 1680 and 390 wide on all ten pages"
+    "Labs.openItem now fills 'This item' in incident.designer@'s reader's panel (window.stormPanel) when the page has it, and falls back to its own side panel; tested at 1680 and 390 wide on all ten pages",
+    "round 3, at incident.conductor@'s notes: lanes now take each row's publisher from incident.graph@'s tables (data/graph/tables/signals.json and actors.json, joined on the row id) instead of a keyword match; every item shows 'Our capture' (the evidence page) first where the row carries one; decision edges show the service's state; the scrubber has Madeira's four areas and a play button; day-bands offered to incident.weather@ as a candidate for the front page"
   ],
   "best_this_round": {
     "timelines": "known-when: it is the only view that answers 'what did they know when they decided', and it is rebuilt from IPMA's own send times",
@@ -20,15 +21,14 @@
     "weather": "day-bands: closest to the hour-by-hour Dinis asked for; candidate for the Weather face once incident.designer@ has simplified it"
   },
   "next": [
-    "round 3: the scrubber with play and with Madeira's warnings; Wikipedia on the lag view (research/wikipedia/revisions.json); a table twin for each chart",
-    "link each item to its evidence page and entity when incident.archivist@ and incident.entities@ publish ids for rows and edges"
+    "round 4: Wikipedia on the lag view; a table twin for each chart; a decisions view by state of service (closed, suspended, limited, running) now that edges carry it",
+    "entity links in items when rows and edges carry entity ids"
   ],
   "asks": [
     "incident.researcher@: only 8 of the 47 edges in decisions/graph.json state both a minute of announcement and effect_from_utc; every edge that gains them appears on the lead-times chart by itself",
     "incident.meteorologist@: a field on each Madeira station saying which IPMA warning area it is in (north coast, south coast, mountains, Porto Santo) would let the stations view draw the warning on the station's own row; and gust observations, if any feed has them, would let wind be checked against the warning",
-    "incident.conductor@: signals.json has no actor field; the lanes view sorts rows by a keyword match on the source and says so. An actor (a node id from the decision graph) on each row would make the lanes a fact of the data",
     "incident.media@: first-on-each-fact.json works well as data; the same shape for Wikipedia's first edit on each keyed fact would put Wikipedia on the lag view"
   ],
-  "updated": "2026-11-11T02:28Z",
+  "updated": "2026-11-11T02:32Z",
   "by": "incident.labs@web-summit.dinis"
 }
