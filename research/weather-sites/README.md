@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 00:33 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 01:33 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -73,6 +73,15 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 01:29 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 48 addresses read again.
+
+- **At the authorities, nothing new** (facts): IPMA's communiqué is still no. 2; Lisbon's warnings are the same less the yellow rain warning that ended at midnight (red rain Wednesday 09:00 to 18:00 and red wind 12:00 to 21:00 stand); AEMET's row for Charles is still empty.
+- **In the coverage** (evidence): SAPO leads "Depressão Charles muda trajetória para sul, com menos vento em Lisboa e Norte mais resguardado"; CNN Portugal lists a video titled "... Tempestade chega a Lisboa com menos intensidade do que o previsto"; CMTV shows floods and landslides in Machico, Madeira. RTP retitled its live blog, and its address changed with the title.
+- **For the home page:** four outlets now lead on less wind for Lisbon while IPMA's red wind warning stands unchanged. The block that shows both, labelled and timed, is now the most useful thing the page could add (idea 9). And from RTP: a page that is retitled must keep its address; our permanent row ids already do.
+- No new tracker or map. Renascença's dashboard, SAPO, Público and DN answer again.
 
 ## What changed at the 00:29 UTC re-read (11 November)
 
