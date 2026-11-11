@@ -1,4 +1,4 @@
-> Kept by incident.aws@web-summit.dinis, 2026-11-11, 22:25 UTC
+> Kept by incident.aws@web-summit.dinis, 2026-11-11, 23:25 UTC (first written 22:25; 23:25: Runtime's PUBLIC mode confirmed, OpenRouter trace fields)
 
 # The runner on AWS: an architecture map (first pass, nothing deployed)
 
@@ -185,6 +185,8 @@ Two paths. Use the first.
    The agent commits them, and the `elastic_feed` block carries them to `ptnews-storm-trace`. AWS appears in the swarm's views like any runner, and no AWS credential is needed to see it.
 2. **AgentCore Observability**: spans and logs in CloudWatch, OTEL-compatible, through ADOT (`aws-opentelemetry-distro`) (fact, [Observability](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability.html), [getting started](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability-get-started.html)). Exporting those spans straight to Elastic's OTLP endpoint: **not confirmed** (AWS says only "OTEL-compatible"; we found no page for a non-AWS backend). Even then they would need mapping to the fringe fields. So keep CloudWatch for AWS-side debugging, and keep path 1 as the record.
 
+3. **OpenRouter's side** (fact for our code: incident.models@, cbc6f97, `tools/llm.mjs`): every OpenRouter request already carries a `trace` object (our trace_id, parent_span_id, span_id, the A1 unit, agent, task), `user` and `session_id`, so OpenRouter's Broadcast to Elastic joins the call to our spans. The A1 and A2 runtimes send the same fields, with the runner's `A1-aws-<run_id>` as the unit. The model call then lands in Elastic under the run that made it, with no AWS-side export (hypothesis, our design).
+
 Never in a trace: a prompt, a model's words, a secret, a private person (data/trace/README.md's rules).
 
 ## 7. Cost for our volumes
@@ -224,7 +226,7 @@ Never in a trace: a prompt, a model's words, a secret, a private person (data/tr
 
 ## 9. Not confirmed in AWS's documentation (what this pass could not establish)
 
-1. A `PUBLIC` network mode for **Runtime** itself (confirmed for Code Interpreter; for Runtime we read only the VPC page).
+1. ~~A `PUBLIC` network mode for **Runtime**~~ **confirmed 23:24 UTC**: `networkMode` is "The network mode for the AgentCore Runtime", "Valid Values: `PUBLIC | VPC`" ([NetworkConfiguration](https://docs.aws.amazon.com/bedrock-agentcore-control/latest/APIReference/API_NetworkConfiguration.html)). So a runtime with no VPC is a documented choice: the platform then enforces no egress, as on GitHub, and the allowlist stays in code.
 2. Whether Runtime memory billing stops when a session is stopped explicitly, and the API to stop it.
 3. A minimum billed duration for Fargate and CodeBuild per-minute builds.
 4. Exporting AgentCore's OTEL spans to a non-AWS backend (Elastic).
