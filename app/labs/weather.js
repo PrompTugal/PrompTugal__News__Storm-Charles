@@ -13,7 +13,7 @@
   // ---- warned against observed, every station on one time axis
   L.exp('weather/stations', {
     needs: ['rain', 'madeira', 'cap'],
-    setup: function (c) { L.choice(c.tools, 'scale', [['shared', 'One scale for all'], ['own', 'Each station its own']], c.state, c.redraw) },
+    setup: function (c) { L.choice(c.tools, 'scale', [['own', 'Each station its own'], ['shared', 'One scale for all']], c.state, c.redraw) },
     draw: function (c) {
       var d = c.data, lab = c.phone ? 110 : 230, W = Math.max(c.W - 22, c.phone ? 880 : 760)
       var groups = [

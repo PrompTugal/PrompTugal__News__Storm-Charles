@@ -54,7 +54,8 @@
   }
 
   // ---- IPMA's levels (the only place warning colours are used; the level is always written)
-  function level(str) { var m = String(str || '').match(/vermelho|red|laranja|orange|amarelo|yellow/i); if (!m) return null; var w = m[0].toLowerCase(); return /verm|red/.test(w) ? 'red' : /lar|ora/.test(w) ? 'orange' : 'yellow' }
+  // a change "from red to orange" (or "de vermelho para laranja") is at the level it goes to, not the first word named
+  function level(str) { str = String(str || ''); var ch = str.match(/(?:from|de)\s+(?:vermelho|red|laranja|orange|amarelo|yellow)\s+(?:to|para)\s+(vermelho|red|laranja|orange|amarelo|yellow)/i); if (ch) str = ch[1]; var m = str.match(/vermelho|red|laranja|orange|amarelo|yellow/i); if (!m) return null; var w = m[0].toLowerCase(); return /verm|red/.test(w) ? 'red' : /lar|ora/.test(w) ? 'orange' : 'yellow' }
   function wtype(str) { str = String(str || ''); return /vento|wind/i.test(str) ? 'wind' : /precip|rain|chuva/i.test(str) ? 'rain' : /mar[ií]tima|sea|ondas/i.test(str) ? 'sea' : /trovoada|thunder/i.test(str) ? 'thunder' : 'other' }
   // a warning window: a bar in IPMA's colour with the level written in it (rule 3 and 4)
   function levelBar(g, x, y, w, ht, lv, text) {

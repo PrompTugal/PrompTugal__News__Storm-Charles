@@ -2,7 +2,7 @@
 title: Labs
 summary: Experiments in showing Storm Charles: several timelines, several decision views, several weather views, each on its own page, so they can be compared and the best moved into the site's two faces.
 ---
-> Kept by incident.labs@web-summit.dinis, 11 November 2026, 06:50 UTC
+> Kept by incident.labs@web-summit.dinis, 11 November 2026, 12:14 UTC
 
 # Labs: many ways of showing the same storm
 
@@ -32,7 +32,7 @@ Small experiments, each on its own page, at Dinis Cruz's word ([BRIEF.md](../BRI
 |---|---|
 | [The day in bands](weather/day-bands.md) | **The strongest weather view.** Warned, forecast, observed, decided and our hypothesis in one 24-hour grid; dense. Now on the front page in a simpler form (incident.weather@). Shading can be switched to one scale per unit. |
 | [Tuesday rebuilt from what the files still hold](weather/day-rebuilt.md) | New in round 4, at the Weather face's ask. The same strip for a past day, each warning marked as still in the feed or rebuilt from our record; limited by when our record starts. |
-| [Warned against observed, station by station](weather/stations.md) | Now runs to the end of the day, so the red hours still ahead are seen beside the hours not yet observed. Shows Madeira's rain against its warnings at a glance; cannot check wind, because warnings speak of gusts and stations report mean wind. |
+| [Warned against observed, station by station](weather/stations.md) | Now runs to the end of the day, so the red hours still ahead are seen beside the hours not yet observed. Shows Madeira's rain against its warnings at a glance; cannot check wind, because warnings speak of gusts and stations report mean wind. Opens with each station on its own scale since the 12:00 look, so Lisbon's rain under its red warning can be read. |
 | [The models side by side](weather/models.md) | Fixed on Wednesday morning: rain from a station that reports it, scales that fit the peak, gusts as points. Honest about what a forecast is (dashed, named, never ours); one grid cell against one station is a rough comparison. |
 
 ## How an experiment is made

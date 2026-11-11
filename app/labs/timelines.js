@@ -74,7 +74,10 @@
       var step = function (dir) { return function () { var t = dir > 0 ? times.find(function (x) { return x > c.state.t }) : times.slice().reverse().find(function (x) { return x < c.state.t }); if (t != null) set(t) } }
       c.tools.appendChild(h('div', { class: 'scrub' }, h('button', { type: 'button', text: '◀ previous change', on: { click: step(-1) } }), rg, h('button', { type: 'button', text: 'next change ▶', on: { click: step(1) } }), out))
       var jumps = h('fieldset', { class: 'lab-choice' }, h('legend', { text: 'Jump to' }))
-      ;[['2026-11-10T07:18Z', 'red wind sent'], ['2026-11-10T09:17Z', 'alert announced'], ['2026-11-10T17:53Z', 'PM recommends'], ['2026-11-10T19:09Z', 'Web Summit decides'], ['2026-11-10T21:23Z', 'red rain moved']].forEach(function (j) { jumps.appendChild(h('button', { type: 'button', text: j[1], on: { click: function () { set(T(j[0])) } } })) })
+      ;[['2026-11-10T07:18Z', 'red wind sent'], ['2026-11-10T09:17Z', 'alert announced'], ['2026-11-10T17:53Z', 'PM recommends'], ['2026-11-10T19:09Z', 'Web Summit decides'], ['2026-11-10T21:23Z', 'red rain moved']].concat(
+        // later turns are taken from the data, not written here: the wind change from the graph, the last read of IPMA's feed from cap.json
+        d.graph.edges.filter(function (e) { return e.id === 'ipma-wind-orange' && e.at }).map(function (e) { return [e.at, 'wind changed'] }),
+        d.cap.read_utc ? [[d.cap.read_utc, 'latest read']] : []).forEach(function (j) { jumps.appendChild(h('button', { type: 'button', text: j[1], on: { click: function () { set(T(j[0])) } } })) })
       c.tools.appendChild(jumps)
       L.choice(c.tools, 'where', [['lisbon', 'Lisbon'], ['madeira', 'Madeira']], c.state, c.redraw)
       // play: one hour of the storm every second, stopping at the end; nothing plays by itself
