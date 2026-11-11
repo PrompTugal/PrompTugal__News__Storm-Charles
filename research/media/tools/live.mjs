@@ -17,6 +17,7 @@ const BLOGS = [
     // Jornal de Negócios' live blog is no longer read (its footer forbids reproduction; stopped 11 November): entries already timed are kept
     { outlet: 'dn', url: 'https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh', parse: dn },
     { outlet: 'observador', url: 'https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/', parse: dn },   // the slug is the page's first headline of the day; the page is Observador's running live blog, storm entries included
+    { outlet: 'observador', url: 'https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/', parse: dn },   // Observador's live page of 11 November (found 07:40 UTC in its feed)
     { outlet: 'rtp', url: 'https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024', parse: rtp },
     { outlet: 'rtp', url: 'https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319', parse: rtp }   // RTP's live page of 11 November (found 06:38 UTC in its feed)
 ]
@@ -46,6 +47,16 @@ function rtp(html) {
     for (const m of html.matchAll(/<a href="([^"]+#article_content_\d+)"[^>]*title="([^"]*)">\s*<div class="live-moments-block">[\s\S]{0,300}?datetime="([^"]+)"[^>]*pub-data="publicado (\d\d):(\d\d), (\d+) Novembro 2026"/g)) {
         if (seen.has(m[1])) continue; seen.add(m[1])
         out.push({ at: `2026-11-${m[6].padStart(2, '0')}T${m[4]}:${m[5]}:00Z`, modified: m[3], title: ent(m[2]), body: '', url: m[1], time_from: 'the entry\'s "publicado" time (Lisbon = UTC)' })
+    }
+    // the entries themselves (each an <article id='article_content_N'>): the 11 November page lists only a few in its moments block
+    const base = (html.match(/<link rel="canonical" href="([^"]+)"/) || [])[1] || ''
+    for (const blk of html.split("<article id='article_content_").slice(1)) {
+        const id = (blk.match(/^(\d+)'/) || [])[1]; if (!id) continue
+        const head = blk.slice(0, 6000), url = base + '#article_content_' + id; if (seen.has(url)) continue
+        const p = head.match(/pub-data="publicado (?:(\d\d):(\d\d), (\d+) Novembro 2026|(\d+) Novembro 2026, (\d\d):(\d\d))"/)
+        const h = head.match(/<h2 itemprop="headline">([\s\S]*?)<\/h2>/); if (!p || !h || !base) continue
+        const [hh, mm, d] = p[1] ? [p[1], p[2], p[3]] : [p[5], p[6], p[4]]
+        seen.add(url); out.push({ at: `2026-11-${d.padStart(2, '0')}T${hh}:${mm}:00Z`, title: ent(h[1].replace(/<[^>]+>/g, '').trim()), body: '', url, time_from: 'the entry\'s "publicado" time (Lisbon = UTC)' })
     }
     return out
 }

@@ -1,13 +1,13 @@
 # Jornal Económico: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 06:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | business weekly, online daily (pt) |
-| Items we read | 1: 1 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 13:23 to 10 Nov 13:23 UTC |
-| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 0 not read; wire share 0% |
+| Items we read | 3: 3 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 13:23 to 11 Nov 07:33 UTC |
+| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 2 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -20,7 +20,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 1 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 3 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -50,3 +50,5 @@ José Carlos Lourinho. A by-line is a public professional credit; nothing else a
 | Published (UTC) | Kind | By-line as printed | Item |
 |---|---|---|---|
 | 10 Nov 13:23 | article | José Carlos Lourinho | [Web Summit deverá fechar na quarta-feira, anuncia autarquia de Lisboa ↗](https://jornaleconomico.sapo.pt/noticias/web-summit-fechada-na-quarta-feira-anuncia-autarquia-de-lisboa/) |
+| 11 Nov 07:01 | article | not read | [País prepara-se para a tempestade Charles. Montenegro diz que Portugal está preparado ↗](https://jornaleconomico.sapo.pt/noticias/pais-prepara-se-para-a-tempestade-charles-montenegro-diz-que-portugal-esta-preparado/) |
+| 11 Nov 07:33 | article | not read | [🔴 Tempestade ‘Charles’ em Portugal. Acompanhe aqui todas as incidências ↗](https://jornaleconomico.sapo.pt/noticias/%f0%9f%94%b4-tempestade-charles-em-portugal-acompanhe-aqui-todas-as-incidencias/) |

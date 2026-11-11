@@ -2,7 +2,7 @@
  "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T06:37:51Z",
+ "updated": "2026-11-11T07:38:58Z",
  "lag_rule": "minutes_after_primary = whole minutes elapsed, truncated toward zero (19:09:00 to 19:41:31 is 32 minutes, not 33); seconds_after_primary carries the exact difference. Times are each page's own, to the second where the page gives seconds.",
  "shape_for_other_series": "To put another series (for example Wikipedia's first edit per fact) on the same axis: for each fact id here, a row {fact, series (e.g. \"wikipedia-pt\"), at (UTC), title or summary, url, via, seconds_after_primary, minutes_after_primary}. first-on-each-fact.json's facts[].first_by_outlet[] rows have that shape with `outlet` as the series and `published` as `at`.",
  "facts": [
@@ -186,7 +186,7 @@
    "primary_time": "2026-11-10T09:14:29Z",
    "primary_note": "no timed primary source for the spoken announcement: the reference is the earliest report we read (Diário de Notícias' live blog, 09:14:29). The government's page is dated 12:10 (fact 2)",
    "primary_label": "evidence",
-   "items_matched": 13,
+   "items_matched": 18,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -214,6 +214,18 @@
     },
     {
      "rank": 3,
+     "outlet": "rtp",
+     "published": "2026-11-10T09:18:00Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Governo declara situação de alerta para quarta-feira",
+     "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047",
+     "seconds_after_primary": 211,
+     "minutes_after_primary": 3
+    },
+    {
+     "rank": 4,
      "outlet": "publico",
      "published": "2026-11-10T14:09:32Z",
      "via": "article",
@@ -229,7 +241,7 @@
      "minutes_after_primary": 295
     },
     {
-     "rank": 4,
+     "rank": 5,
      "outlet": "negocios",
      "published": "2026-11-11T00:09:00Z",
      "via": "live blog entry",
@@ -239,21 +251,6 @@
      "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
      "seconds_after_primary": 53671,
      "minutes_after_primary": 894
-    },
-    {
-     "rank": 5,
-     "outlet": "rtp",
-     "published": "2026-11-11T00:18:55Z",
-     "via": "article",
-     "byline": [
-      "Rádio e Televisão de Portugal"
-     ],
-     "byline_kind": "desk",
-     "title": "Continente em situação de alerta devido à passagem da depressão Charlie",
-     "url": "https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289",
-     "article": "A-ede83028",
-     "seconds_after_primary": 54266,
-     "minutes_after_primary": 904
     },
     {
      "rank": 6,
@@ -276,7 +273,7 @@
    "primary_time": "2026-11-10T12:10:00Z",
    "primary_note": "portugal.gov.pt's page is dated 12:10; the minister announced it in the morning, so the press is ahead of the page",
    "primary_label": "fact",
-   "items_matched": 15,
+   "items_matched": 20,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -304,6 +301,18 @@
     },
     {
      "rank": 3,
+     "outlet": "rtp",
+     "published": "2026-11-10T09:18:00Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Governo declara situação de alerta para quarta-feira",
+     "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047",
+     "seconds_after_primary": -10320,
+     "minutes_after_primary": -172
+    },
+    {
+     "rank": 4,
      "outlet": "negocios",
      "published": "2026-11-10T09:35:00Z",
      "via": "live blog entry",
@@ -315,7 +324,7 @@
      "minutes_after_primary": -155
     },
     {
-     "rank": 4,
+     "rank": 5,
      "outlet": "publico",
      "published": "2026-11-10T14:09:32Z",
      "via": "article",
@@ -329,21 +338,6 @@
      "article": "A-7cbf85c1",
      "seconds_after_primary": 7172,
      "minutes_after_primary": 119
-    },
-    {
-     "rank": 5,
-     "outlet": "rtp",
-     "published": "2026-11-11T00:18:55Z",
-     "via": "article",
-     "byline": [
-      "Rádio e Televisão de Portugal"
-     ],
-     "byline_kind": "desk",
-     "title": "Continente em situação de alerta devido à passagem da depressão Charlie",
-     "url": "https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289",
-     "article": "A-ede83028",
-     "seconds_after_primary": 43735,
-     "minutes_after_primary": 728
     },
     {
      "rank": 6,
@@ -665,7 +659,7 @@
     "Correction (00:50 UTC, 11 November): our first version of this table had RTP's 22:22 bulletin first and Observador at 23:16. We had not found Observador's live blog (its address names another story). With its entries read, Observador is first at 22:07 on the models and at 22:35 on IPMA's word; the order of the two on IPMA's word depends on what Antena 1's 22:00 bulletin said, which we did not hear.",
     "Público: an article first published at 11:38 on 10 November (its address is about flooded roads) now carries the headline \"Depressão Charles passa mais a sul do que o previsto e vento deverá ser menos intenso\". The page gives its first publication time, not when the headline changed, so it cannot be placed in this table; it is the Público headline incident.conductor@ read at 00:29."
    ],
-   "items_matched": 7,
+   "items_matched": 9,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -727,7 +721,7 @@
    "primary_time": "2026-11-10T22:35:24Z",
    "primary_note": "a spoken statement to Rádio Observador; the reference is the earliest text we read (Observador's live blog, 22:35:24). IPMA's own channels had not changed at 00:29 on 11 November (fact 7)",
    "primary_label": "evidence",
-   "items_matched": 6,
+   "items_matched": 8,
    "first_by_outlet": [
     {
      "rank": 1,

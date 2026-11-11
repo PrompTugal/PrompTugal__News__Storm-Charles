@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 06:37 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 247 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:38 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 267 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -49,9 +49,9 @@ Primary source time: **10 Nov 09:14 UTC** (evidence: no timed primary source for
 |---|---|---|---|---|---|
 | 1 | Diário de Notícias | 10 Nov 09:14 | +0 min | live blog entry | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "…](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | 2 | Observador | 10 Nov 09:17 | +2 min | live blog entry | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira…](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
-| 3 | Público | 10 Nov 14:09 | +295 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
-| 4 | Jornal de Negócios | 11 Nov 00:09 | +894 min | live blog entry | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
-| 5 | RTP | 11 Nov 00:18 | +904 min | Rádio e Televisão de Portugal | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
+| 3 | RTP | 10 Nov 09:18 | +3 min | live blog entry | [Governo declara situação de alerta para quarta-feira](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047) |
+| 4 | Público | 10 Nov 14:09 | +295 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
+| 5 | Jornal de Negócios | 11 Nov 00:09 | +894 min | live blog entry | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
 | 6 | ECO | 11 Nov 06:32 | +1278 min | not read | [Portugal em situação de alerta. Charles dirige-se para o continente](https://eco.sapo.pt/2026/11/11/portugal-em-situacao-de-alerta-charles-dirige-se-para-o-continente/) |
 
 ### The government's alert situation: schools and non-essential public services closed on Wednesday
@@ -62,9 +62,9 @@ Primary source time: **10 Nov 12:10 UTC** (fact: portugal.gov.pt's page is dated
 |---|---|---|---|---|---|
 | 1 | Diário de Notícias | 10 Nov 09:14 | -175 min (before the page) | live blog entry | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "…](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | 2 | Observador | 10 Nov 09:17 | -172 min (before the page) | live blog entry | [Escolas e serviços públicos não-essenciais encerrados na quarta-feira…](https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll) |
-| 3 | Jornal de Negócios | 10 Nov 09:35 | -155 min (before the page) | live blog entry | [Escolas e serviços públicos encerrados amanhã devido ao mau tempo, an…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
-| 4 | Público | 10 Nov 14:09 | +119 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
-| 5 | RTP | 11 Nov 00:18 | +728 min | Rádio e Televisão de Portugal | [Continente em situação de alerta devido à passagem da depressão Charl…](https://www.rtp.pt/noticias/pais/continente-em-situacao-de-alerta-devido-a-passagem-da-depressao-charlie_n1778289) |
+| 3 | RTP | 10 Nov 09:18 | -172 min (before the page) | live blog entry | [Governo declara situação de alerta para quarta-feira](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047) |
+| 4 | Jornal de Negócios | 10 Nov 09:35 | -155 min (before the page) | live blog entry | [Escolas e serviços públicos encerrados amanhã devido ao mau tempo, an…](https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto) |
+| 5 | Público | 10 Nov 14:09 | +119 min | Cristiana Faria Moreira, Lusa | [Creches e escolas públicas e privadas fecham na quarta-feira devido à…](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | 6 | ECO | 11 Nov 06:32 | +1102 min | not read | [Portugal em situação de alerta. Charles dirige-se para o continente](https://eco.sapo.pt/2026/11/11/portugal-em-situacao-de-alerta-charles-dirige-se-para-o-continente/) |
 
 ### Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday
@@ -136,7 +136,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 06:37 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 07:38 UTC | | | | |
 
 - Outside the press: VOST Portugal (a volunteers' association, not an authority and not press) relayed the change on Bluesky at 22:20, 57 minutes after IPMA sent it (found by incident.social@: research/social/posts/2026-11-10.json, bsky-vost.pt-3mzyhxvwhry25). The finding for the press stands: no article title or live entry we could read reported it.
 
@@ -159,19 +159,19 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 | Outlet | Items | Reporter's by-line | Agency (Lusa) | Wire share | Desk | By-line not read | Items linking a primary source | Bodies linked |
 |---|---|---|---|---|---|---|---|---|
-| Notícias ao Minuto | 85 | 4 | 75 | 88% | 6 | 0 | 1 | IPMA |
-| CNN Portugal | 28 | 3 | 6 | 67% | 0 | 19 | 1 | Diário da República |
-| Observador | 25 | 8 | 6 | 24% | 11 | 0 | 1 | IPMA |
-| RTP | 20 | 0 | 0 | 0% | 20 | 0 | 0 |  |
-| Expresso | 20 | 0 | 0 | n/a | 0 | 20 | 0 |  |
+| Notícias ao Minuto | 88 | 4 | 78 | 89% | 6 | 0 | 1 | IPMA |
+| CNN Portugal | 31 | 3 | 6 | 67% | 0 | 22 | 1 | Diário da República |
+| Observador | 29 | 9 | 6 | 21% | 14 | 0 | 2 | IPMA, MAI |
+| RTP | 23 | 0 | 0 | 0% | 23 | 0 | 0 |  |
+| Expresso | 22 | 0 | 0 | n/a | 0 | 22 | 0 |  |
+| Público | 18 | 11 | 3 | 19% | 2 | 2 | 5 | ANEPC, Diário da República, IPMA |
 | Diário de Notícias | 18 | 17 | 1 | 6% | 0 | 0 | 2 | AMN, Lusoponte |
-| Público | 16 | 10 | 3 | 20% | 2 | 1 | 5 | ANEPC, Diário da República, IPMA |
 | ECO | 13 | 3 | 0 | 0% | 3 | 7 | 0 |  |
-| Correio da Manhã | 9 | 0 | 4 | 44% | 5 | 0 | 0 |  |
+| Correio da Manhã | 10 | 0 | 4 | 40% | 6 | 0 | 0 |  |
 | TEK Notícias (SAPO) | 4 | 4 | 0 | 0% | 0 | 0 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
+| Jornal Económico | 3 | 1 | 0 | 0% | 0 | 2 | 0 |  |
 | Jornal de Negócios | 2 | 1 | 0 | 0% | 1 | 0 | 1 | Diário da República, Government, IPMA |
 | Euronews | 2 | 2 | 0 | 0% | 0 | 0 | 0 |  |
-| Jornal Económico | 1 | 1 | 0 | 0% | 0 | 0 | 0 |  |
 | IOL / AWAY / TVI | 1 | 0 | 0 | 0% | 1 | 0 | 0 |  |
 | Bloomberg | 1 | 0 | 0 | n/a | 0 | 1 | 0 |  |
 | Madeira Island News | 1 | 1 | 0 | 0% | 0 | 0 | 0 |  |
@@ -179,9 +179,9 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 Among outlets with at least four items:
 
-- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (31%), Diário de Notícias (11%), Observador (4%), CNN Portugal (4%).
-- **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (63%), Observador (32%), ECO (23%).
-- **The wire underneath:** 95 of 247 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (28%), Diário de Notícias (11%), Observador (7%), CNN Portugal (3%).
+- **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (61%), Observador (31%), ECO (23%).
+- **The wire underneath:** 98 of 267 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -192,14 +192,14 @@ Among outlets with at least four items:
 | Observador | online daily | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; first on "IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente"; a running live blog |
 | RTP | public broadcaster | nothing stands out in this sample |
 | Expresso | weekly, online daily | (by-lines not read: the pages refuse a bot or print none in their metadata) |
+| Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
 | Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; own reporting: most items carry a reporter's by-line |
-| Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line; links to the primary sources |
 | ECO | business daily (online) | first on "Web Summit calls off Day 2" |
 | Correio da Manhã | daily | video |
 | TEK Notícias (SAPO) | technology | own reporting: most items carry a reporter's by-line; links to the primary sources |
+| Jornal Económico | business weekly, online daily | nothing stands out in this sample |
 | Jornal de Negócios | business daily | first on "Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday"; first on "The government recommends suspending Web Summit on Wednesday"; a running live blog |
 | Euronews | international broadcaster | coverage in English |
-| Jornal Económico | business weekly, online daily | nothing stands out in this sample |
 | IOL / AWAY / TVI | broadcaster's portals | nothing stands out in this sample |
 | Bloomberg | business wire (international) | coverage in English; (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | Madeira Island News | English-language news blog (Madeira) | coverage in English |
@@ -211,14 +211,14 @@ Reporters whose names are printed on the items in the list, by outlet, with the 
 
 - **Notícias ao Minuto:** Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias
 - **CNN Portugal:** Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva
-- **Observador:** Ana Sanlez, António Moura dos Santos, Edgar Caetano, Filomena Martins, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição
+- **Observador:** Edgar Caetano (2), Ana Sanlez, António Moura dos Santos, Filomena Martins, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição
+- **Público:** Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira
 - **Diário de Notícias:** Ricardo Simões Ferreira (4), David Pereira (2), Margarida Vaqueiro Lopes (2), Sofia Fonseca (2), Sónia Santos Pereira (2), Susete Henriques (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha
-- **Público:** Adriana Castro, Andrea Cunha Freitas, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sónia Sapage, Tiago Orato, Victor Ferreira
 - **ECO:** Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira
 - **TEK Notícias (SAPO):** Gustavo Dias (2), Fátima Caçador, Francisca Andrade
+- **Jornal Económico:** José Carlos Lourinho
 - **Jornal de Negócios:** Pedro Barros Costa
 - **Euronews:** Pascale Davies (2)
-- **Jornal Económico:** José Carlos Lourinho
 - **Madeira Island News:** Tobi Hughes
 - **Diário de Notícias da Madeira:** Carolina Rodrigues
 
