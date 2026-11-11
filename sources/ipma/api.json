@@ -1,0 +1,1858 @@
+{
+ "about": "The map of IPMA's open data API: every endpoint IPMA documents at https://api.ipma.pt/ and every file its directory lists under /open-data/, with the address, the format, each field's meaning and unit, how often IPMA says it changes, and what the documentation does not say. Meanings are our English for IPMA's Portuguese; where a field carries 'ipma', that is IPMA's own wording, quoted. 'doc_differs' marks a field whose name in the responses is not the name in the documentation. What we observed (hashes, sizes, times, changes) is in latest.json, reads.json and changes/.",
+ "source": "https://api.ipma.pt/",
+ "base": "https://api.ipma.pt/open-data/",
+ "documentation_read_utc": "2026-11-11T02:12Z",
+ "by": "incident.ipma@web-summit.dinis",
+ "updated": "2026-11-11T02:20:40Z",
+ "label": "fact: read from IPMA's documentation and responses; \"not_documented\" and \"observed_note\" are our observations of what was and was not there",
+ "groups": {
+  "warnings": "Warnings",
+  "forecast": "Forecasts",
+  "sea": "The sea",
+  "observations": "Observations",
+  "seismic": "Earthquakes",
+  "climate": "Climate, by municipality",
+  "tables": "Id tables and files",
+  "undocumented": "Listed, not documented"
+ },
+ "general": {
+  "times": {
+   "ipma_says": "As previsões são apresentadas em horas UTC. No continente e na Região Autónoma da Madeira a hora legal é igual à UTC, no horário de inverno.",
+   "note": "No time in any response carries a zone, except the climate CSVs (+00:00)."
+  },
+  "nodata": "-99.0 (stated for the observations)",
+  "cors": "the responses carry Access-Control-Allow-Origin: *",
+  "authentication": "none: no key, no registration",
+  "beyond": "www.ipma.pt itself reads other addresses under https://api.ipma.pt/public-data/ (hourly forecasts, for example). They are not documented, the /public-data/ path is outside the open-data documentation and its terms for reuse are not stated: not mapped here until Dinis says so."
+ },
+ "endpoints": [
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "warnings",
+   "group": "warnings",
+   "title": "Weather warnings, up to 3 days",
+   "title_pt": "Avisos Meteorológicos até 3 dias",
+   "url": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json",
+   "shape": "an array of rows, one per area, type and window; most rows are green (no warning) and say only that the type is watched",
+   "fields": [
+    {
+     "name": "idAreaAviso",
+     "type": "string",
+     "unit": null,
+     "meaning": "the warning area (a district, an island group, or a part of Madeira)",
+     "node": "area"
+    },
+    {
+     "name": "awarenessTypeName",
+     "type": "string",
+     "unit": null,
+     "meaning": "what the warning is about",
+     "node": "warning-type",
+     "ipma": "parâmetro do aviso (e.g. \"Trovoada\", \"Agitação Marítima\", \"Precipitação\", \"Vento\", \"Nevoeiro\", \"Neve\", \"Tempo Frio\", \"Tempo Quente\")"
+    },
+    {
+     "name": "awarenessLevelID",
+     "type": "string",
+     "unit": null,
+     "meaning": "the level: green, yellow, orange, red",
+     "node": "level",
+     "ipma": "só existem avisos para níveis diferentes de \"green\""
+    },
+    {
+     "name": "startTime",
+     "type": "date-time, no zone",
+     "unit": null,
+     "meaning": "start of the warning's window"
+    },
+    {
+     "name": "endTime",
+     "type": "date-time, no zone",
+     "unit": null,
+     "meaning": "end of the warning's window"
+    },
+    {
+     "name": "text",
+     "type": "string",
+     "unit": null,
+     "meaning": "the warning's text, in Portuguese",
+     "ipma": "preenchido apenas quando o aviso é amarelo, laranja ou vermelho"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated",
+    "observed": "see latest.json and changes/warnings.json: the Last-Modified header moves when IPMA rewrites the file"
+   },
+   "ipma_says": "Para mais informações sobre os Avisos Meteorológicos consulte o nosso Guia.",
+   "more": "https://www.ipma.pt/pt/enciclopedia/otempo/sam/",
+   "not_documented": [
+    "no time of issue: a row does not say when the warning was issued or changed (the file's Last-Modified header is the nearest thing)",
+    "the time zone of startTime and endTime (the documentation says forecasts are in UTC; for warnings it says nothing)",
+    "the areas MCN, MRM (in the feed) are in no id table: distrits-islands.json has MCS and MPS only",
+    "no identifier for a warning: a changed warning is a different row, not an update of the same one"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "city-daily",
+   "group": "forecast",
+   "title": "Daily forecast up to 5 days, by place",
+   "title_pt": "Previsão Meteorológica Diária até 5 dias agregada por Local",
+   "url": "https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/{globalIdLocal}.json",
+   "params": {
+    "globalIdLocal": {
+     "from": "places",
+     "meaning": "every globalIdLocal in distrits-islands.json"
+    }
+   },
+   "shape": "{owner, country, globalIdLocal, dataUpdate, data: [one object per day]}",
+   "fields": [
+    {
+     "name": "forecastDate",
+     "type": "date",
+     "unit": null,
+     "meaning": "the day the forecast is for",
+     "ipma": "data da previsão"
+    },
+    {
+     "name": "dataUpdate",
+     "type": "date-time, no zone",
+     "unit": null,
+     "meaning": "when IPMA rewrote the file",
+     "ipma": "data de atualização do ficheiro (taxa de atualização horária)"
+    },
+    {
+     "name": "globalIdLocal",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the place: an id from the list of district capitals and islands",
+     "node": "place"
+    },
+    {
+     "name": "idWeatherType",
+     "type": "integer",
+     "unit": null,
+     "meaning": "code of the significant weather: see the weather-type table",
+     "node": "weather-type"
+    },
+    {
+     "name": "tMin",
+     "type": "string or number",
+     "unit": "°C",
+     "meaning": "minimum temperature of the day",
+     "ipma": "temperatura mínima diária"
+    },
+    {
+     "name": "tMax",
+     "type": "string or number",
+     "unit": "°C",
+     "meaning": "maximum temperature of the day",
+     "ipma": "temperatura máxima diária"
+    },
+    {
+     "name": "classWindSpeed",
+     "type": "integer",
+     "unit": null,
+     "meaning": "class of wind strength: see the wind-class table",
+     "node": "wind-class"
+    },
+    {
+     "name": "predWindDir",
+     "type": "string",
+     "unit": null,
+     "meaning": "prevailing wind direction (N, NE, E, SE, S, SW, W, NW)"
+    },
+    {
+     "name": "precipitaProb",
+     "type": "string",
+     "unit": "%",
+     "meaning": "probability of precipitation",
+     "ipma": "probabilidade da precipitação",
+     "doc_differs": "the documentation names this field probPrecipita; the responses carry precipitaProb"
+    },
+    {
+     "name": "classPrecInt",
+     "type": "integer",
+     "unit": null,
+     "meaning": "class of precipitation intensity: see the precipitation-class table; absent on some days",
+     "node": "precipitation-class"
+    },
+    {
+     "name": "latitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "latitude of the place"
+    },
+    {
+     "name": "longitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "longitude of the place"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "taxa de atualização horária; the model runs twice a day: \"a corrida das 00UTC (disponibilizada em regra a partir das 10:00) e das 12UTC (disponibilizada em regra a partir das 20:00)\"",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "Os dados de previsão são obtidos automaticamente através de processamento estatístico das previsões de dois modelos numéricos (ECMWF e AROME). Apenas estão disponíveis dados diários.",
+   "not_documented": [
+    "tMin and tMax are strings with one decimal here and whole numbers in the day files",
+    "which model run a file comes from (dataUpdate is the file's rewrite time, hourly)"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "day-forecast",
+   "group": "forecast",
+   "title": "Daily forecast up to 3 days, all places for one day",
+   "title_pt": "Previsão Meteorológica Diária até 3 dias, informação agregada por dia",
+   "url": "https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day{idDay}.json",
+   "params": {
+    "idDay": {
+     "values": [
+      0,
+      1,
+      2
+     ],
+     "meaning": "0 today, 1 tomorrow, 2 the day after"
+    }
+   },
+   "shape": "{owner, country, forecastDate, dataUpdate, data: [one object per place]}",
+   "fields": [
+    {
+     "name": "forecastDate",
+     "type": "date",
+     "unit": null,
+     "meaning": "the day the forecast is for",
+     "ipma": "data da previsão"
+    },
+    {
+     "name": "dataUpdate",
+     "type": "date-time, no zone",
+     "unit": null,
+     "meaning": "when IPMA rewrote the file",
+     "ipma": "data de atualização do ficheiro (taxa de atualização horária)"
+    },
+    {
+     "name": "globalIdLocal",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the place: an id from the list of district capitals and islands",
+     "node": "place"
+    },
+    {
+     "name": "idWeatherType",
+     "type": "integer",
+     "unit": null,
+     "meaning": "code of the significant weather: see the weather-type table",
+     "node": "weather-type"
+    },
+    {
+     "name": "tMin",
+     "type": "string or number",
+     "unit": "°C",
+     "meaning": "minimum temperature of the day",
+     "ipma": "temperatura mínima diária"
+    },
+    {
+     "name": "tMax",
+     "type": "string or number",
+     "unit": "°C",
+     "meaning": "maximum temperature of the day",
+     "ipma": "temperatura máxima diária"
+    },
+    {
+     "name": "classWindSpeed",
+     "type": "integer",
+     "unit": null,
+     "meaning": "class of wind strength: see the wind-class table",
+     "node": "wind-class"
+    },
+    {
+     "name": "predWindDir",
+     "type": "string",
+     "unit": null,
+     "meaning": "prevailing wind direction (N, NE, E, SE, S, SW, W, NW)"
+    },
+    {
+     "name": "precipitaProb",
+     "type": "string",
+     "unit": "%",
+     "meaning": "probability of precipitation",
+     "ipma": "probabilidade da precipitação",
+     "doc_differs": "the documentation names this field probPrecipita; the responses carry precipitaProb"
+    },
+    {
+     "name": "classPrecInt",
+     "type": "integer",
+     "unit": null,
+     "meaning": "class of precipitation intensity: see the precipitation-class table; absent on some days",
+     "node": "precipitation-class"
+    },
+    {
+     "name": "latitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "latitude of the place"
+    },
+    {
+     "name": "longitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "longitude of the place"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "taxa de atualização horária",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "Apenas estão disponíveis dados diários.",
+   "not_documented": [
+    "27 places are listed here; distrits-islands.json lists 35"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "sea-forecast",
+   "group": "sea",
+   "title": "Sea state forecast up to 3 days, by day",
+   "title_pt": "Previsão do Estado do Mar até 3 dias, informação agregada por dia",
+   "url": "https://api.ipma.pt/open-data/forecast/oceanography/daily/hp-daily-sea-forecast-day{idDay}.json",
+   "params": {
+    "idDay": {
+     "values": [
+      0,
+      1,
+      2
+     ],
+     "meaning": "0 today, 1 tomorrow, 2 the day after"
+    }
+   },
+   "shape": "{owner, country, forecastDate, dataUpdate, data: [one object per coastal place]}",
+   "fields": [
+    {
+     "name": "globalIdLocal",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the coastal place: an id from sea-locations.json",
+     "node": "sea-place"
+    },
+    {
+     "name": "totalSeaMin",
+     "type": "number",
+     "unit": "m",
+     "meaning": "daily minimum of significant wave height",
+     "ipma": "mínimo diário da altura significativa das ondas, em metros"
+    },
+    {
+     "name": "totalSeaMax",
+     "type": "number",
+     "unit": "m",
+     "meaning": "daily maximum of significant wave height"
+    },
+    {
+     "name": "waveHighMin",
+     "type": "string",
+     "unit": "m",
+     "meaning": "daily minimum of swell height",
+     "ipma": "mínimo diário da altura da ondulação (swell) em metros"
+    },
+    {
+     "name": "waveHighMax",
+     "type": "string",
+     "unit": "m",
+     "meaning": "daily maximum of swell height"
+    },
+    {
+     "name": "wavePeriodMin",
+     "type": "string",
+     "unit": "s",
+     "meaning": "daily minimum of the swell's peak period"
+    },
+    {
+     "name": "wavePeriodMax",
+     "type": "string",
+     "unit": "s",
+     "meaning": "daily maximum of the swell's peak period"
+    },
+    {
+     "name": "predWaveDir",
+     "type": "string",
+     "unit": null,
+     "meaning": "prevailing wave direction (N, NE, E, SE, S, SW, W, NW)"
+    },
+    {
+     "name": "sstMin",
+     "type": "string",
+     "unit": "°C",
+     "meaning": "daily minimum of sea surface temperature"
+    },
+    {
+     "name": "sstMax",
+     "type": "string",
+     "unit": "°C",
+     "meaning": "daily maximum of sea surface temperature"
+    },
+    {
+     "name": "latitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "latitude of the place"
+    },
+    {
+     "name": "longitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "longitude of the place"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "taxa de atualização horária",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "Apenas estão disponíveis dados diários.",
+   "not_documented": [
+    "which wave model and run"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "uv",
+   "group": "forecast",
+   "title": "Ultraviolet index forecast",
+   "title_pt": "Previsão do Risco de Ultravioletas até 3 dias (Índice Ultravioleta)",
+   "url": "https://api.ipma.pt/open-data/forecast/meteorology/uv/uv.json",
+   "shape": "an array, one row per place and day",
+   "fields": [
+    {
+     "name": "data",
+     "type": "date",
+     "unit": null,
+     "meaning": "the day"
+    },
+    {
+     "name": "globalIdLocal",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the place",
+     "node": "place"
+    },
+    {
+     "name": "iUv",
+     "type": "string",
+     "unit": "UV index",
+     "meaning": "the index: >= 11 extreme, >= 8 very high, >= 6 high, >= 3 moderate, >= 1 low"
+    },
+    {
+     "name": "intervaloHora",
+     "type": "string",
+     "unit": null,
+     "meaning": "the hours of the maximum",
+     "ipma": "intervalo de horas relativo ao valor máximo de UV"
+    },
+    {
+     "name": "idPeriodo",
+     "type": "integer",
+     "unit": null,
+     "meaning": "an internal code of the period",
+     "ipma": "código interno do período"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated",
+    "observed": "see latest.json"
+   },
+   "more": "https://www.ipma.pt/pt/otempo/prev.uv/",
+   "not_documented": [
+    "the title says up to 3 days; the file read on 11 November carried 4 days",
+    "intervaloHora was empty in every row read"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "fire-risk",
+   "group": "forecast",
+   "title": "Fire risk forecast up to 3 days, by municipality",
+   "title_pt": "Previsão do Risco de Incêndio até 3 dias, informação agregada por dia",
+   "url": "https://api.ipma.pt/open-data/forecast/meteorology/rcm/rcm-d{idDay}.json",
+   "params": {
+    "idDay": {
+     "values": [
+      0,
+      1,
+      2
+     ],
+     "meaning": "0 today, 1 tomorrow, 2 the day after"
+    }
+   },
+   "shape": "{dataPrev, dataRun, fileDate, local: {<DICO>: {data: {rcm}, dico, latitude, longitude}}}",
+   "fields": [
+    {
+     "name": "dataPrev",
+     "type": "date",
+     "unit": null,
+     "meaning": "the day the forecast is for"
+    },
+    {
+     "name": "dataRun",
+     "type": "date",
+     "unit": null,
+     "meaning": "the day of the model run"
+    },
+    {
+     "name": "fileDate",
+     "type": "date-time, no zone",
+     "unit": null,
+     "meaning": "when the file was rewritten"
+    },
+    {
+     "name": "dico",
+     "type": "string",
+     "unit": null,
+     "meaning": "the municipality: the DICO code of the official administrative map (CAOP, DGT)",
+     "node": "municipality"
+    },
+    {
+     "name": "rcm",
+     "type": "integer",
+     "unit": null,
+     "meaning": "fire risk: 1 low, 2 moderate, 3 high, 4 very high, 5 maximum",
+     "ipma": "1 - Risco reduzido, 2 - Risco moderado, 3 - Risco Elevado, 4 - Risco muito elevado, 5 - Risco máximo"
+    },
+    {
+     "name": "latitude",
+     "type": "number",
+     "unit": "°",
+     "meaning": "a point of the municipality"
+    },
+    {
+     "name": "longitude",
+     "type": "number",
+     "unit": "°",
+     "meaning": "a point of the municipality"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "taxa de atualização horária",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "Apenas estão disponíveis dados diários.",
+   "not_documented": [
+    "what the point of each municipality is (a centroid, the seat, a station)"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "observations",
+   "group": "observations",
+   "title": "Station observations, hourly, last 24 hours",
+   "title_pt": "Observação Meteorológica de Estações (dados horários, últimas 24 horas)",
+   "url": "https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json",
+   "shape": "{<YYYY-mm-ddThh:mi>: {<idEstacao>: {values}}}: 24 hours, every station",
+   "fields": [
+    {
+     "name": "(key) YYYY-mm-ddThh:mi",
+     "type": "date-time, no zone",
+     "unit": null,
+     "meaning": "the hour of the observation",
+     "ipma": "data/hora da observação"
+    },
+    {
+     "name": "(key) idEstacao",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the station",
+     "node": "station"
+    },
+    {
+     "name": "intensidadeVentoKM",
+     "type": "number",
+     "unit": "km/h",
+     "meaning": "wind speed at 10 m",
+     "ipma": "intensidade do vento registada a 10 metros de altura (km/h)"
+    },
+    {
+     "name": "intensidadeVento",
+     "type": "number",
+     "unit": "m/s",
+     "meaning": "wind speed at 10 m"
+    },
+    {
+     "name": "idDireccVento",
+     "type": "integer",
+     "unit": null,
+     "meaning": "class of the prevailing wind direction at 10 m: 0 none, 1 or 9 N, 2 NE, 3 E, 4 SE, 5 S, 6 SW, 7 W, 8 NW"
+    },
+    {
+     "name": "temperatura",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "air temperature at 1.5 m, mean of the hour"
+    },
+    {
+     "name": "precAcumulada",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "precipitation at 1.5 m, accumulated in the hour",
+     "ipma": "precipitação registada a 1.5 metros de altura, valor acumulado da hora (mm)"
+    },
+    {
+     "name": "humidade",
+     "type": "number",
+     "unit": "%",
+     "meaning": "relative humidity at 1.5 m, mean of the hour"
+    },
+    {
+     "name": "pressao",
+     "type": "number",
+     "unit": "hPa",
+     "meaning": "pressure reduced to mean sea level, mean of the hour"
+    },
+    {
+     "name": "radiacao",
+     "type": "number",
+     "unit": "kJ/m²",
+     "meaning": "solar radiation"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "Taxa de atualização horária.",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "valor \"-99.0\" = nodata",
+   "not_documented": [
+    "the hour label's convention: whether a label is the hour starting or ending at that time, and its time zone (incident.meteorologist@ infers hour ending, UTC: incidents/2026-11-10-storm-charles/data/weather/madeira.json, hour_label)",
+    "no gusts: wind is the mean speed only; warnings are issued on gusts",
+    "a station can be null or absent in an hour"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "GeoJSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "obs-surface",
+   "group": "observations",
+   "title": "Station observations, last 3 hours, with coordinates",
+   "title_pt": "Observação Meteorológica de Estações, últimas 3 horas",
+   "url": "https://api.ipma.pt/open-data/observation/meteorology/stations/obs-surface.geojson",
+   "shape": "FeatureCollection of points, one per station and hour",
+   "fields": [
+    {
+     "name": "geometry.coordinates",
+     "type": "[longitude, latitude]",
+     "unit": "°",
+     "meaning": "where the station is"
+    },
+    {
+     "name": "time",
+     "type": "date-time, no zone",
+     "unit": null,
+     "meaning": "the hour of the observation"
+    },
+    {
+     "name": "idEstacao",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the station",
+     "node": "station"
+    },
+    {
+     "name": "localEstacao",
+     "type": "string",
+     "unit": null,
+     "meaning": "the station's name"
+    },
+    {
+     "name": "descDirVento",
+     "type": "string",
+     "unit": null,
+     "meaning": "the wind direction as letters"
+    },
+    {
+     "name": "intensidadeVentoKM",
+     "type": "number",
+     "unit": "km/h",
+     "meaning": "wind speed at 10 m",
+     "ipma": "intensidade do vento registada a 10 metros de altura (km/h)"
+    },
+    {
+     "name": "intensidadeVento",
+     "type": "number",
+     "unit": "m/s",
+     "meaning": "wind speed at 10 m"
+    },
+    {
+     "name": "idDireccVento",
+     "type": "integer",
+     "unit": null,
+     "meaning": "class of the prevailing wind direction at 10 m: 0 none, 1 or 9 N, 2 NE, 3 E, 4 SE, 5 S, 6 SW, 7 W, 8 NW"
+    },
+    {
+     "name": "temperatura",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "air temperature at 1.5 m, mean of the hour"
+    },
+    {
+     "name": "precAcumulada",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "precipitation at 1.5 m, accumulated in the hour",
+     "ipma": "precipitação registada a 1.5 metros de altura, valor acumulado da hora (mm)"
+    },
+    {
+     "name": "humidade",
+     "type": "number",
+     "unit": "%",
+     "meaning": "relative humidity at 1.5 m, mean of the hour"
+    },
+    {
+     "name": "pressao",
+     "type": "number",
+     "unit": "hPa",
+     "meaning": "pressure reduced to mean sea level, mean of the hour"
+    },
+    {
+     "name": "radiacao",
+     "type": "number",
+     "unit": "kJ/m²",
+     "meaning": "solar radiation"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "Taxa de atualização horária.",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "valor \"-99.0\" = nodata",
+   "not_documented": [
+    "the hour label's convention, as for observations.json"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "seismic",
+   "group": "seismic",
+   "title": "Seismic events, last 30 days",
+   "title_pt": "Informação sismicidade, Arq. Açores, Continente e Arq. Madeira",
+   "url": "https://api.ipma.pt/open-data/observation/seismic/{idArea}.json",
+   "params": {
+    "idArea": {
+     "values": [
+      3,
+      7
+     ],
+     "meaning": "3 the Azores; 7 the mainland and Madeira"
+    }
+   },
+   "shape": "{idArea, country, owner, updateDate, lastSismicActivityDate, data: [events]}",
+   "fields": [
+    {
+     "name": "time",
+     "type": "date-time",
+     "unit": "UTC",
+     "meaning": "time of the event",
+     "ipma": "data hora (TU) do evento sismico"
+    },
+    {
+     "name": "obsRegion",
+     "type": "string",
+     "unit": null,
+     "meaning": "the region, as a direction from a named place"
+    },
+    {
+     "name": "local",
+     "type": "string or null",
+     "unit": null,
+     "meaning": "the place of the epicentre, when felt"
+    },
+    {
+     "name": "lat",
+     "type": "string",
+     "unit": "°",
+     "meaning": "latitude of the epicentre"
+    },
+    {
+     "name": "lon",
+     "type": "string",
+     "unit": "°",
+     "meaning": "longitude of the epicentre",
+     "doc_differs": "the documentation names this field long; the responses carry lon"
+    },
+    {
+     "name": "magnitud",
+     "type": "string",
+     "unit": null,
+     "meaning": "magnitude"
+    },
+    {
+     "name": "magType",
+     "type": "string",
+     "unit": null,
+     "meaning": "type of magnitude"
+    },
+    {
+     "name": "depth",
+     "type": "integer",
+     "unit": "km (unit not stated)",
+     "meaning": "depth"
+    },
+    {
+     "name": "degree",
+     "type": "string or null",
+     "unit": null,
+     "meaning": "intensity degree, when felt"
+    },
+    {
+     "name": "sensed",
+     "type": "boolean or null",
+     "unit": null,
+     "meaning": "whether it was felt (not documented)"
+    },
+    {
+     "name": "dataUpdate",
+     "type": "date-time",
+     "unit": null,
+     "meaning": "when the event was updated"
+    },
+    {
+     "name": "sismoId, shakemapid, shakemapref, googlemapref, tensorRef, source",
+     "type": "string",
+     "unit": null,
+     "meaning": "identifiers and links (not documented)"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "Atualização é horária.",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "Integra 30 dias de informação",
+   "not_documented": [
+    "the unit of depth",
+    "sensed, sismoId, shakemapid, shakemapref, googlemapref, tensorRef, source, updateDate, lastSismicActivityDate"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "CSV",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "climate-precipitation",
+   "group": "climate",
+   "title": "Daily precipitation by municipality",
+   "title_pt": "Precipitação diária por concelho",
+   "url": "https://api.ipma.pt/open-data/observation/climate/precipitation/prec-p1d-continental-obssup-idw-concelhos-20d.csv",
+   "shape": "one line per municipality and day, 20 days",
+   "fields": [
+    {
+     "name": "time",
+     "type": "date-time with +00:00",
+     "unit": null,
+     "meaning": "the day"
+    },
+    {
+     "name": "zname",
+     "type": "string",
+     "unit": null,
+     "meaning": "the municipality's name"
+    },
+    {
+     "name": "zid",
+     "type": "string",
+     "unit": null,
+     "meaning": "the municipality: DICO code",
+     "node": "municipality"
+    },
+    {
+     "name": "mean_maxprate",
+     "type": "number",
+     "unit": "mm/h",
+     "meaning": "mean over the municipality of the maximum precipitation rate of the day"
+    },
+    {
+     "name": "std_maxprate",
+     "type": "number",
+     "unit": "mm/h",
+     "meaning": "std over the municipality of the maximum precipitation rate of the day"
+    },
+    {
+     "name": "min_maxprate",
+     "type": "number",
+     "unit": "mm/h",
+     "meaning": "min over the municipality of the maximum precipitation rate of the day"
+    },
+    {
+     "name": "max_maxprate",
+     "type": "number",
+     "unit": "mm/h",
+     "meaning": "max over the municipality of the maximum precipitation rate of the day"
+    },
+    {
+     "name": "percentile_25_maxprate",
+     "type": "number",
+     "unit": "mm/h",
+     "meaning": "percentile 25 over the municipality of the maximum precipitation rate of the day"
+    },
+    {
+     "name": "median_maxprate",
+     "type": "number",
+     "unit": "mm/h",
+     "meaning": "median over the municipality of the maximum precipitation rate of the day"
+    },
+    {
+     "name": "percentile_75_maxprate",
+     "type": "number",
+     "unit": "mm/h",
+     "meaning": "percentile 75 over the municipality of the maximum precipitation rate of the day"
+    },
+    {
+     "name": "mean_tp",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "mean over the municipality of the total precipitation of the day"
+    },
+    {
+     "name": "std_tp",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "std over the municipality of the total precipitation of the day"
+    },
+    {
+     "name": "min_tp",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "min over the municipality of the total precipitation of the day"
+    },
+    {
+     "name": "max_tp",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "max over the municipality of the total precipitation of the day"
+    },
+    {
+     "name": "percentile_25_tp",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "percentile 25 over the municipality of the total precipitation of the day"
+    },
+    {
+     "name": "median_tp",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "median over the municipality of the total precipitation of the day"
+    },
+    {
+     "name": "percentile_75_tp",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "percentile 75 over the municipality of the total precipitation of the day"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "Taxa de atualização diária.",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "Valores diários obtidos através do processo de interpolação com recurso aos dados das estações meteorológicas automáticas da rede do IPMA. Valores dos últimos 20 dias.",
+   "not_documented": [
+    "the mainland only (the file name says continental)"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "CSV",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "climate-temperature",
+   "group": "climate",
+   "title": "Daily air temperature by municipality",
+   "title_pt": "Temperatura do ar diária por concelho",
+   "url": "https://api.ipma.pt/open-data/observation/climate/temperature/t2m-p1d-continental-obssup-idw-concelhos-20d.csv",
+   "shape": "one line per municipality and day, 20 days",
+   "fields": [
+    {
+     "name": "time",
+     "type": "date-time with +00:00",
+     "unit": null,
+     "meaning": "the day"
+    },
+    {
+     "name": "zname",
+     "type": "string",
+     "unit": null,
+     "meaning": "the municipality's name"
+    },
+    {
+     "name": "zid",
+     "type": "string",
+     "unit": null,
+     "meaning": "the municipality: DICO code",
+     "node": "municipality"
+    },
+    {
+     "name": "mean_maxt2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "mean over the municipality of the maximum air temperature of the day"
+    },
+    {
+     "name": "std_maxt2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "std over the municipality of the maximum air temperature of the day"
+    },
+    {
+     "name": "min_maxt2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "min over the municipality of the maximum air temperature of the day"
+    },
+    {
+     "name": "max_maxt2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "max over the municipality of the maximum air temperature of the day"
+    },
+    {
+     "name": "percentile_25_maxt2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "percentile 25 over the municipality of the maximum air temperature of the day"
+    },
+    {
+     "name": "median_maxt2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "median over the municipality of the maximum air temperature of the day"
+    },
+    {
+     "name": "percentile_75_maxt2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "percentile 75 over the municipality of the maximum air temperature of the day"
+    },
+    {
+     "name": "mean_meant2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "mean over the municipality of the mean air temperature of the day"
+    },
+    {
+     "name": "std_meant2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "std over the municipality of the mean air temperature of the day"
+    },
+    {
+     "name": "min_meant2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "min over the municipality of the mean air temperature of the day"
+    },
+    {
+     "name": "max_meant2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "max over the municipality of the mean air temperature of the day"
+    },
+    {
+     "name": "percentile_25_meant2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "percentile 25 over the municipality of the mean air temperature of the day"
+    },
+    {
+     "name": "median_meant2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "median over the municipality of the mean air temperature of the day"
+    },
+    {
+     "name": "percentile_75_meant2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "percentile 75 over the municipality of the mean air temperature of the day"
+    },
+    {
+     "name": "mean_mint2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "mean over the municipality of the minimum air temperature of the day"
+    },
+    {
+     "name": "std_mint2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "std over the municipality of the minimum air temperature of the day"
+    },
+    {
+     "name": "min_mint2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "min over the municipality of the minimum air temperature of the day"
+    },
+    {
+     "name": "max_mint2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "max over the municipality of the minimum air temperature of the day"
+    },
+    {
+     "name": "percentile_25_mint2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "percentile 25 over the municipality of the minimum air temperature of the day"
+    },
+    {
+     "name": "median_mint2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "median over the municipality of the minimum air temperature of the day"
+    },
+    {
+     "name": "percentile_75_mint2m",
+     "type": "number",
+     "unit": "°C",
+     "meaning": "percentile 75 over the municipality of the minimum air temperature of the day"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "Taxa de atualização diária.",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "Valores diários obtidos através do processo de interpolação com recurso aos dados das estações meteorológicas automáticas da rede do IPMA. Valores dos últimos 20 dias.",
+   "not_documented": [
+    "the mainland only (the file name says continental)"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "CSV",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "climate-evapotranspiration",
+   "group": "climate",
+   "title": "Daily reference evapotranspiration by municipality",
+   "title_pt": "Evapotranspiração de referência diária por concelho",
+   "url": "https://api.ipma.pt/open-data/observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv",
+   "shape": "one line per municipality and day, 20 days",
+   "fields": [
+    {
+     "name": "time",
+     "type": "date-time with +00:00",
+     "unit": null,
+     "meaning": "the day"
+    },
+    {
+     "name": "zname",
+     "type": "string",
+     "unit": null,
+     "meaning": "the municipality's name"
+    },
+    {
+     "name": "zid",
+     "type": "string",
+     "unit": null,
+     "meaning": "the municipality: DICO code",
+     "node": "municipality"
+    },
+    {
+     "name": "mean_et0",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "mean over the municipality of reference evapotranspiration of the day"
+    },
+    {
+     "name": "std_et0",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "std over the municipality of reference evapotranspiration of the day"
+    },
+    {
+     "name": "min_et0",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "min over the municipality of reference evapotranspiration of the day"
+    },
+    {
+     "name": "max_et0",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "max over the municipality of reference evapotranspiration of the day"
+    },
+    {
+     "name": "percentile_25_et0",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "percentile 25 over the municipality of reference evapotranspiration of the day"
+    },
+    {
+     "name": "median_et0",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "median over the municipality of reference evapotranspiration of the day"
+    },
+    {
+     "name": "percentile_75_et0",
+     "type": "number",
+     "unit": "mm",
+     "meaning": "percentile 75 over the municipality of reference evapotranspiration of the day"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "Taxa de atualização diária.",
+    "observed": "see latest.json"
+   },
+   "ipma_says": "Valores diários obtidos através do processo de interpolação com recurso aos dados das estações meteorológicas automáticas da rede do IPMA. Valores dos últimos 20 dias.",
+   "not_documented": [
+    "the mainland only (the file name says continental)"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "GeoJSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "bivalves",
+   "group": "sea",
+   "title": "Shellfish harvesting bans by production zone",
+   "title_pt": "Interdições à apanha nas Zonas de Produção de Moluscos Bivalves",
+   "url": "https://api.ipma.pt/open-data/observation/biology/bivalves/CI_SNMB.geojson",
+   "shape": "FeatureCollection of zone polygons (3.4 MB), with the bulletin's number and publication_date at the top",
+   "fields": [
+    {
+     "name": "publication_date",
+     "type": "date",
+     "unit": null,
+     "meaning": "when the bulletin was published"
+    },
+    {
+     "name": "snmb_reference, cd_decision, bulletin_name",
+     "type": "string",
+     "unit": null,
+     "meaning": "the bulletin (not documented)"
+    },
+    {
+     "name": "name",
+     "type": "string",
+     "unit": null,
+     "meaning": "the zone's name"
+    },
+    {
+     "name": "code",
+     "type": "string",
+     "unit": null,
+     "meaning": "the zone's code",
+     "node": "shellfish-zone",
+     "doc_differs": "the documentation names this field samp; the responses carry code"
+    },
+    {
+     "name": "zone_type",
+     "type": "string",
+     "unit": null,
+     "meaning": "LITORAL (coastal) or EST_LAG (estuary or lagoon)"
+    },
+    {
+     "name": "region_name",
+     "type": "string",
+     "unit": null,
+     "meaning": "the region"
+    },
+    {
+     "name": "representative_point",
+     "type": "WKT point",
+     "unit": "°",
+     "meaning": "a point at the centre of the zone"
+    },
+    {
+     "name": "status",
+     "type": "string",
+     "unit": null,
+     "meaning": "OPEN, PARTIAL_OPEN, CLOSED or NOINFO"
+    },
+    {
+     "name": "interdictions",
+     "type": "object",
+     "unit": null,
+     "meaning": "species open and closed: scientific name, common name, sanitary class A, B or C"
+    },
+    {
+     "name": "geometry",
+     "type": "MultiPolygon",
+     "unit": "°",
+     "meaning": "the zone's outline"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated (the latest bulletin)",
+    "observed": "see latest.json"
+   },
+   "more": "https://www.ipma.pt/pt/bivalves",
+   "ipma_says": "Últimas permissões/interdições publicadas para a apanha e comercialização de moluscos bivalves, equinodermes, tunicados e gastrópodes marinhos vivos."
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "places",
+   "group": "tables",
+   "title": "Places: district capitals and islands",
+   "title_pt": "Lista de identificadores para as capitais distrito e ilhas",
+   "url": "https://api.ipma.pt/open-data/distrits-islands.json",
+   "fields": [
+    {
+     "name": "globalIdLocal",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the place's id",
+     "node": "place"
+    },
+    {
+     "name": "local",
+     "type": "string",
+     "unit": null,
+     "meaning": "the place's name"
+    },
+    {
+     "name": "idRegiao",
+     "type": "integer",
+     "unit": null,
+     "meaning": "1 the mainland, 2 Madeira, 3 the Azores"
+    },
+    {
+     "name": "idDistrito",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the district (DICO)",
+     "node": "district"
+    },
+    {
+     "name": "idConcelho",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the municipality within the district (DICO)"
+    },
+    {
+     "name": "idAreaAviso",
+     "type": "string",
+     "unit": null,
+     "meaning": "the warning area the place belongs to",
+     "node": "area"
+    },
+    {
+     "name": "latitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "latitude of the place"
+    },
+    {
+     "name": "longitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "longitude of the place"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated",
+    "observed": "see latest.json (the Last-Modified header is years old)"
+   },
+   "ipma_says": "Foram incluídos alguns locais de previsão não capitais de distrito, como por exemplo: Penhas Douradas, Sagres, Sines, ..."
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "sea-places",
+   "group": "tables",
+   "title": "Coastal places",
+   "title_pt": "Lista de identificadores para as regiões costeiras",
+   "url": "https://api.ipma.pt/open-data/sea-locations.json",
+   "fields": [
+    {
+     "name": "globalIdLocal",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the coastal place's id",
+     "node": "sea-place"
+    },
+    {
+     "name": "local",
+     "type": "string",
+     "unit": null,
+     "meaning": "its name"
+    },
+    {
+     "name": "idLocal",
+     "type": "integer",
+     "unit": null,
+     "meaning": "another id of the place"
+    },
+    {
+     "name": "idRegiao",
+     "type": "integer",
+     "unit": null,
+     "meaning": "1 the mainland, 2 Madeira, 3 the Azores"
+    },
+    {
+     "name": "idAreaAviso",
+     "type": "string",
+     "unit": null,
+     "meaning": "the warning area",
+     "node": "area"
+    },
+    {
+     "name": "latitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "latitude of the place"
+    },
+    {
+     "name": "longitude",
+     "type": "string (decimal degrees)",
+     "unit": "°",
+     "meaning": "longitude of the place"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated",
+    "observed": "see latest.json (the Last-Modified header is years old)"
+   }
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "stations",
+   "group": "tables",
+   "title": "Weather stations",
+   "title_pt": "Lista de identificadores das estações meteorológicas",
+   "url": "https://api.ipma.pt/open-data/observation/meteorology/stations/stations.json",
+   "fields": [
+    {
+     "name": "properties.idEstacao",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the station's id",
+     "node": "station"
+    },
+    {
+     "name": "properties.localEstacao",
+     "type": "string",
+     "unit": null,
+     "meaning": "the station's name"
+    },
+    {
+     "name": "geometry.coordinates",
+     "type": "[longitude, latitude]",
+     "unit": "°",
+     "meaning": "where the station is"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated",
+    "observed": "see latest.json (the Last-Modified header is years old)"
+   },
+   "not_documented": [
+    "altitude, district, the instruments at each station, the owner of the station"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "weather-types",
+   "group": "tables",
+   "title": "Weather types",
+   "title_pt": "Lista de identificadores do tempo significativo",
+   "url": "https://api.ipma.pt/open-data/weather-type-classe.json",
+   "fields": [
+    {
+     "name": "idWeatherType",
+     "type": "integer",
+     "unit": null,
+     "meaning": "the code",
+     "node": "weather-type"
+    },
+    {
+     "name": "descWeatherTypeEN",
+     "type": "string",
+     "unit": null,
+     "meaning": "in English"
+    },
+    {
+     "name": "descWeatherTypePT",
+     "type": "string",
+     "unit": null,
+     "meaning": "in Portuguese"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated",
+    "observed": "see latest.json (the Last-Modified header is years old)"
+   }
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "wind-classes",
+   "group": "tables",
+   "title": "Wind strength classes",
+   "title_pt": "Lista de classes relativa à intensidade vento",
+   "url": "https://api.ipma.pt/open-data/wind-speed-daily-classe.json",
+   "fields": [
+    {
+     "name": "classWindSpeed",
+     "type": "string",
+     "unit": null,
+     "meaning": "the class",
+     "node": "wind-class"
+    },
+    {
+     "name": "descClassWindSpeedDailyEN",
+     "type": "string",
+     "unit": null,
+     "meaning": "in English",
+     "doc_differs": "documented as descClassWindSpeedEN"
+    },
+    {
+     "name": "descClassWindSpeedDailyPT",
+     "type": "string",
+     "unit": null,
+     "meaning": "in Portuguese",
+     "doc_differs": "documented as descClassWindSpeedPT"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated",
+    "observed": "see latest.json (the Last-Modified header is years old)"
+   },
+   "not_documented": [
+    "the speeds each class stands for"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "JSON",
+   "read": "get",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "precipitation-classes",
+   "group": "tables",
+   "title": "Precipitation intensity classes",
+   "title_pt": "Lista de classes relativa à intensidade precipitação",
+   "url": "https://api.ipma.pt/open-data/precipitation-classe.json",
+   "fields": [
+    {
+     "name": "classPrecInt",
+     "type": "string",
+     "unit": null,
+     "meaning": "the class",
+     "node": "precipitation-class"
+    },
+    {
+     "name": "descClassPrecIntEN",
+     "type": "string",
+     "unit": null,
+     "meaning": "in English"
+    },
+    {
+     "name": "descClassPrecIntPT",
+     "type": "string",
+     "unit": null,
+     "meaning": "in Portuguese"
+    }
+   ],
+   "cadence": {
+    "ipma_says": "not stated",
+    "observed": "see latest.json (the Last-Modified header is years old)"
+   },
+   "not_documented": [
+    "the amounts each class stands for"
+   ]
+  },
+  {
+   "documented": true,
+   "format": "ZIP of SVG",
+   "read": "head",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "icons",
+   "group": "tables",
+   "title": "Weather symbols (SVG, zipped)",
+   "title_pt": "Simbologia Estados do Tempo",
+   "url": "https://api.ipma.pt/open-data/forecast/meteorology/icons_ipma_weather.zip",
+   "fields": [],
+   "shape": "four icons per weather type: w_ic_d_{idWeatherType}.svg (day), w_ic_n_ (night), and an animated version of each",
+   "cadence": {
+    "ipma_says": "not stated"
+   },
+   "note": "Not downloaded and not used on this site: only its headers are read. Imagery here is used only under its licence.",
+   "observed_note": "Documented at this address, which answered 404 Not Found on 11 November 2026 (02:11 UTC). IPMA's own directory lists the file under another name, ending concelhos-20d.csv: see \"Daily reference evapotranspiration by municipality (the address IPMA's directory lists)\". The reader keeps asking both and records each answer."
+  },
+  {
+   "documented": false,
+   "format": "ZIP of SVG",
+   "read": "head",
+   "doc_url": "https://api.ipma.pt/",
+   "id": "climate-evapotranspiration-listed",
+   "group": "climate",
+   "title": "Daily reference evapotranspiration by municipality (the address IPMA's directory lists)",
+   "title_pt": "Simbologia Estados do Tempo",
+   "url": "https://api.ipma.pt/open-data/observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-concelhos-20d.csv",
+   "fields": [],
+   "shape": "four icons per weather type: w_ic_d_{idWeatherType}.svg (day), w_ic_n_ (night), and an animated version of each",
+   "cadence": {
+    "ipma_says": "not stated"
+   },
+   "note": "Not downloaded and not used on this site: only its headers are read. Imagery here is used only under its licence.",
+   "observed_note": "The file as IPMA's directory lists it. The documentation gives the name with \"20d\" and \"concelhos\" the other way round, and that address answers 404."
+  },
+  {
+   "id": "climate-evapotranspiration-districts",
+   "group": "undocumented",
+   "documented": false,
+   "title": "Climate series by district: reference evapotranspiration",
+   "url": "https://api.ipma.pt/open-data/observation/climate/evapotranspiration/",
+   "format": "a folder per mainland district, files per municipality",
+   "read": "listing",
+   "fields": [],
+   "shape": "not read: listed only (sources/ipma/listing.json)",
+   "folders": [
+    "aveiro",
+    "beja",
+    "braga",
+    "braganca",
+    "castelo-branco",
+    "coimbra",
+    "evora",
+    "faro",
+    "guarda",
+    "leiria",
+    "lisboa",
+    "portalegre",
+    "porto",
+    "santarem",
+    "setubal",
+    "viana-do-castelo",
+    "vila-real",
+    "viseu"
+   ],
+   "observed_note": "Listed in IPMA's directory, not in the documentation. Eighteen folders, one per mainland district. The files are not downloaded yet: the names, sizes and dates IPMA lists are in listing.json.",
+   "cadence": {
+    "ipma_says": "not documented"
+   }
+  },
+  {
+   "id": "climate-mpdsi-districts",
+   "group": "undocumented",
+   "documented": false,
+   "title": "Climate series by district: a drought index (the folder is named mpdsi)",
+   "url": "https://api.ipma.pt/open-data/observation/climate/mpdsi/",
+   "format": "a folder per mainland district, files per municipality",
+   "read": "listing",
+   "fields": [],
+   "shape": "not read: listed only (sources/ipma/listing.json)",
+   "folders": [
+    "aveiro",
+    "beja",
+    "braga",
+    "braganca",
+    "castelo-branco",
+    "coimbra",
+    "evora",
+    "faro",
+    "guarda",
+    "leiria",
+    "lisboa",
+    "portalegre",
+    "porto",
+    "santarem",
+    "setubal",
+    "viana-do-castelo",
+    "vila-real",
+    "viseu"
+   ],
+   "observed_note": "Listed in IPMA's directory, not in the documentation. Eighteen folders, one per mainland district. The files are not downloaded yet: the names, sizes and dates IPMA lists are in listing.json.",
+   "cadence": {
+    "ipma_says": "not documented"
+   }
+  },
+  {
+   "id": "climate-precipitation-total-districts",
+   "group": "undocumented",
+   "documented": false,
+   "title": "Climate series by district: total precipitation",
+   "url": "https://api.ipma.pt/open-data/observation/climate/precipitation-total/",
+   "format": "a folder per mainland district, files per municipality",
+   "read": "listing",
+   "fields": [],
+   "shape": "not read: listed only (sources/ipma/listing.json)",
+   "folders": [
+    "aveiro",
+    "beja",
+    "braga",
+    "braganca",
+    "castelo-branco",
+    "coimbra",
+    "evora",
+    "faro",
+    "guarda",
+    "leiria",
+    "lisboa",
+    "portalegre",
+    "porto",
+    "santarem",
+    "setubal",
+    "viana-do-castelo",
+    "vila-real",
+    "viseu"
+   ],
+   "observed_note": "Listed in IPMA's directory, not in the documentation. Eighteen folders, one per mainland district. The files are not downloaded yet: the names, sizes and dates IPMA lists are in listing.json.",
+   "cadence": {
+    "ipma_says": "not documented"
+   }
+  },
+  {
+   "id": "climate-temperature-max-districts",
+   "group": "undocumented",
+   "documented": false,
+   "title": "Climate series by district: maximum temperature",
+   "url": "https://api.ipma.pt/open-data/observation/climate/temperature-max/",
+   "format": "a folder per mainland district, files per municipality",
+   "read": "listing",
+   "fields": [],
+   "shape": "not read: listed only (sources/ipma/listing.json)",
+   "folders": [
+    "aveiro",
+    "beja",
+    "braga",
+    "braganca",
+    "castelo-branco",
+    "coimbra",
+    "evora",
+    "faro",
+    "guarda",
+    "leiria",
+    "lisboa",
+    "portalegre",
+    "porto",
+    "santarem",
+    "setubal",
+    "viana-do-castelo",
+    "vila-real",
+    "viseu"
+   ],
+   "observed_note": "Listed in IPMA's directory, not in the documentation. Eighteen folders, one per mainland district. The files are not downloaded yet: the names, sizes and dates IPMA lists are in listing.json.",
+   "cadence": {
+    "ipma_says": "not documented"
+   }
+  },
+  {
+   "id": "climate-temperature-min-districts",
+   "group": "undocumented",
+   "documented": false,
+   "title": "Climate series by district: minimum temperature",
+   "url": "https://api.ipma.pt/open-data/observation/climate/temperature-min/",
+   "format": "a folder per mainland district, files per municipality",
+   "read": "listing",
+   "fields": [],
+   "shape": "not read: listed only (sources/ipma/listing.json)",
+   "folders": [
+    "aveiro",
+    "beja",
+    "braga",
+    "braganca",
+    "castelo-branco",
+    "coimbra",
+    "evora",
+    "faro",
+    "guarda",
+    "leiria",
+    "lisboa",
+    "portalegre",
+    "porto",
+    "santarem",
+    "setubal",
+    "viana-do-castelo",
+    "vila-real",
+    "viseu"
+   ],
+   "observed_note": "Listed in IPMA's directory, not in the documentation. Eighteen folders, one per mainland district. The files are not downloaded yet: the names, sizes and dates IPMA lists are in listing.json.",
+   "cadence": {
+    "ipma_says": "not documented"
+   }
+  },
+  {
+   "id": "climate-long-series",
+   "group": "undocumented",
+   "documented": false,
+   "title": "Monthly and daily long series (spreadsheets), Lisbon from 1855",
+   "url": "https://api.ipma.pt/open-data/observation/climate/monthly-long-series/",
+   "format": "XLSX and XLS",
+   "read": "listing",
+   "fields": [],
+   "shape": "not read: listed only (22 files, such as tmintmaxdaily_1855-2018_Lisbon-Geofisico.xlsx and precdaily_1863-2018_Lisbon-Geofisico_28072020.xls)",
+   "observed_note": "Listed in IPMA's directory, not in the documentation. Binary spreadsheets: not downloaded; a vault could hold them if Dinis wants them read.",
+   "cadence": {
+    "ipma_says": "not documented"
+   }
+  },
+  {
+   "id": "district-06",
+   "group": "undocumented",
+   "documented": false,
+   "title": "A list of place ids for district 06 (Coimbra)",
+   "url": "https://api.ipma.pt/open-data/06.json",
+   "format": "JSON (invalid)",
+   "read": "get",
+   "fields": [],
+   "shape": "{owner, country, district, nut, data: [{ids}]}",
+   "observed_note": "Listed in IPMA's directory (dated 27 February 2018), not in the documentation. Its \"data\" is a set of bare numbers in braces, which is not valid JSON.",
+   "cadence": {
+    "ipma_says": "not documented"
+   }
+  },
+  {
+   "id": "zones-geopackage",
+   "group": "undocumented",
+   "documented": false,
+   "title": "zonas.gpkg (a GeoPackage, 61 MB as listed)",
+   "url": "https://api.ipma.pt/open-data/zonas.gpkg",
+   "format": "GeoPackage",
+   "read": "head",
+   "fields": [],
+   "shape": "not read",
+   "observed_note": "Listed in IPMA's directory (dated 19 June 2024), not in the documentation. Not downloaded: only its headers are read.",
+   "cadence": {
+    "ipma_says": "not documented"
+   }
+  }
+ ]
+}

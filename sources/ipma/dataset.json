@@ -1,0 +1,269 @@
+{
+ "about": "Where IPMA's full responses are kept: a data vault (SG/Send, made with sgit), never git. latest/ is overwritten by each read; a dated folder per hour (UTC) keeps every file that changed in that hour, a <file>.diff.json beside it saying what changed, and a manifest.json with the sha256 of every file as read in that hour. Anyone with the read key can read the vault; nobody can write to it with that key.",
+ "by": "incident.ipma@web-summit.dinis",
+ "updated": "2026-11-11T02:29:57Z",
+ "source": "https://api.ipma.pt/open-data/",
+ "shape": {
+  "latest": "ipma/latest/<path under open-data/>",
+  "dated": "ipma/<yyyy>/<mm>/<dd>/<hh>/<path>",
+  "diff": "ipma/<yyyy>/<mm>/<dd>/<hh>/<path>.diff.json",
+  "manifest": "ipma/<yyyy>/<mm>/<dd>/<hh>/manifest.json and ipma/latest/manifest.json"
+ },
+ "vault": {
+  "kind": "data vault (normal, not packed)",
+  "id": "x75qcmux",
+  "server": "https://dev.send.sgraph.ai",
+  "read_key": "sgit_private_read_8872060d921c489642755e3d625ec731c9f876f9adbf3d71efa6b248963f8147",
+  "how_to_read": "sgit clone <read_key>:<id> (read-only)",
+  "pushed_utc": "2026-11-11T02:30:01Z",
+  "head": "obj-cas-imm-90b9e0b95f59"
+ },
+ "hours": [
+  "2026/11/11/02"
+ ],
+ "latest": {
+  "read_utc": "2026-11-11T02:15:20Z",
+  "files": {
+   "distrits-islands.json": {
+    "sha256": "fe67afbdef8527b704b5d15044441787a8fb281a2b80111472004cf05f5d3cd9",
+    "bytes": 10071
+   },
+   "sea-locations.json": {
+    "sha256": "fe0ffd2801bb86206c8ae1ab676d019d998965aaffe81fcd880fc0855c1bf4f3",
+    "bytes": 2268
+   },
+   "observation/meteorology/stations/stations.json": {
+    "sha256": "2d539b3686cc2c4997c72f10a295f363cebf09f283d079716a4ae08ea94f071f",
+    "bytes": 49864
+   },
+   "weather-type-classe.json": {
+    "sha256": "8727e4e98344696bbb086680cebd165b3d5d52ec19f96ec781bde5c69efe1a16",
+    "bytes": 4954
+   },
+   "wind-speed-daily-classe.json": {
+    "sha256": "c747a9932e4c866165568585ffc6b1754b94ab5858e0ddd8e1085fbaba17867c",
+    "bytes": 644
+   },
+   "precipitation-classe.json": {
+    "sha256": "208d4a1c7c9f2e4336af82040375ab463e0f7074fe641912b2a20821b49b482c",
+    "bytes": 578
+   },
+   "forecast/warnings/warnings_www.json": {
+    "sha256": "7c725226ef7c3e973c9039e247d1ec1fc43399af63b5d918d3e7e0e28c1ccd53",
+    "bytes": 51516
+   },
+   "forecast/meteorology/cities/daily/1010500.json": {
+    "sha256": "0521fb8ab3fef11df7111436da504b8d99bddf768d5ca27218896d2b19628194",
+    "bytes": 1197
+   },
+   "forecast/meteorology/cities/daily/1020500.json": {
+    "sha256": "0b17a75756987288e83570116bce5a5c599aff71fe4e59d13d475333c927f232",
+    "bytes": 1194
+   },
+   "forecast/meteorology/cities/daily/1030300.json": {
+    "sha256": "2cec71e647ef5d28905153e165b0742297d26ee1909fa0867f97f29ca4c8a301",
+    "bytes": 1194
+   },
+   "forecast/meteorology/cities/daily/1030800.json": {
+    "sha256": "174ac776dab60719a9c491abd2727b299dcd7c879c90cca8500ab3125ae39fcc",
+    "bytes": 1194
+   },
+   "forecast/meteorology/cities/daily/1040200.json": {
+    "sha256": "fa2dc0a5c97c71964b2d039baa9df406e77e8b35ac7aabe23163b7df0c7a3779",
+    "bytes": 1191
+   },
+   "forecast/meteorology/cities/daily/1050200.json": {
+    "sha256": "7e6ea0fac3ea07476f50a362284223bc13d9af6f433ac48781055550df87d64e",
+    "bytes": 1195
+   },
+   "forecast/meteorology/cities/daily/1060300.json": {
+    "sha256": "a925614512758ea1aff42c6e2d778e1fa3d9da39d38f3306e98ae391c201a9fe",
+    "bytes": 1194
+   },
+   "forecast/meteorology/cities/daily/1070500.json": {
+    "sha256": "20dcd8209c867827bcbdb92f6a79c23e52047898ae375753842b3fbbd3d5f457",
+    "bytes": 1195
+   },
+   "forecast/meteorology/cities/daily/1080500.json": {
+    "sha256": "eee4c979bef44c10b48a9bb78cc8c37f5aee1c1fd44b5db5722887fe90615029",
+    "bytes": 1189
+   },
+   "forecast/meteorology/cities/daily/1081505.json": {
+    "sha256": "dc5f957bfc46a0bc866f7493d107d8cfa4933538656c7896792d9e2f01c81209",
+    "bytes": 1191
+   },
+   "forecast/meteorology/cities/daily/1081100.json": {
+    "sha256": "a60e2607e5fe44d8b132bb0b08d250124e3f035f7bbf4b8cd7ffaa84ad6136c4",
+    "bytes": 1189
+   },
+   "forecast/meteorology/cities/daily/1080800.json": {
+    "sha256": "776974670070789a29e687c33f2eeed36573c06ba64eee728950e7fc5896765c",
+    "bytes": 1189
+   },
+   "forecast/meteorology/cities/daily/1090700.json": {
+    "sha256": "976698e38a6cae831d51e788303b729be7e24aee7e7ade80506a386c03a23930",
+    "bytes": 1188
+   },
+   "forecast/meteorology/cities/daily/1090821.json": {
+    "sha256": "fd1e0e23ec638e01a2f8d6443f998c257dae516dfb4f9301545e26ada830df89",
+    "bytes": 1186
+   },
+   "forecast/meteorology/cities/daily/1100900.json": {
+    "sha256": "b7c7aacb2cd4c0fb1a807b805d6291764be7a1a806426f700bf49aed142e9cd1",
+    "bytes": 1196
+   },
+   "forecast/meteorology/cities/daily/1110600.json": {
+    "sha256": "38a94e422d9f89ee7f3e80a84806ba8f049d73c9f026e46335304e600549fa67",
+    "bytes": 1192
+   },
+   "forecast/meteorology/cities/daily/1121400.json": {
+    "sha256": "16a4bfb3a724c13d9c8d3b0a555dc8000228e71df74b9db692b24fd428b3fa96",
+    "bytes": 1194
+   },
+   "forecast/meteorology/cities/daily/1131200.json": {
+    "sha256": "c233db12c6499469ffdf9d2b566e79a883aefc6cb37247d21d3def6b4d75027f",
+    "bytes": 1194
+   },
+   "forecast/meteorology/cities/daily/1141600.json": {
+    "sha256": "a962d576c98f9d98c779d49987aa0fb42fd7ffe852147513017c0e86429af08e",
+    "bytes": 1194
+   },
+   "forecast/meteorology/cities/daily/1151200.json": {
+    "sha256": "b0385421eb12be2cc624bd0f82cc37b1b259ff8ece4aae309df2d000faca4bd1",
+    "bytes": 1192
+   },
+   "forecast/meteorology/cities/daily/1151300.json": {
+    "sha256": "67117a9990a342b72e446746b97b9974c56e3362d132eda45cb771ea5f416378",
+    "bytes": 1191
+   },
+   "forecast/meteorology/cities/daily/1160900.json": {
+    "sha256": "919a883078ee7c5e38e532722eb55807e1a86709cf7f85161b6d15a6fd16baae",
+    "bytes": 1194
+   },
+   "forecast/meteorology/cities/daily/1171400.json": {
+    "sha256": "04f71af01fbfdcb65276a25a325c69d83f347f9146d774b853b6c0d9f4c38a91",
+    "bytes": 1191
+   },
+   "forecast/meteorology/cities/daily/1182300.json": {
+    "sha256": "31e5e0ca432c8748a87088514e82ef155ef9ff4de27d4cb9d9ff2f3ee3c30179",
+    "bytes": 1192
+   },
+   "forecast/meteorology/cities/daily/2310300.json": {
+    "sha256": "42ff7c87f47fbd5e43e67f74a90ad43a8b01350a1908ca8aa827ead144b8dbb5",
+    "bytes": 1156
+   },
+   "forecast/meteorology/cities/daily/2320100.json": {
+    "sha256": "f1ee598fe40000eac50da87e5040fcebc0c6b6f4fa78474251c75b35b4774dea",
+    "bytes": 1119
+   },
+   "forecast/meteorology/cities/daily/3410100.json": {
+    "sha256": "0836d819f47ba028be1cf21408e2b77107a4d920d405deac275f95bf00ebd120",
+    "bytes": 1139
+   },
+   "forecast/meteorology/cities/daily/3420300.json": {
+    "sha256": "76594bf95e067dfba8441249af6732b32501d291056e4da786a0254027b00fa5",
+    "bytes": 1178
+   },
+   "forecast/meteorology/cities/daily/3430100.json": {
+    "sha256": "a3c0a0274c2eaa80c44482cb9fdde604f9e7243798232615336e3b4ddcb9dd34",
+    "bytes": 1198
+   },
+   "forecast/meteorology/cities/daily/3440100.json": {
+    "sha256": "d8605ef3a9a8b7c2dc187c5ecc34c5158372a2f1e3c2e5ab8de982e48a144786",
+    "bytes": 1177
+   },
+   "forecast/meteorology/cities/daily/3450200.json": {
+    "sha256": "ea5bf66c44c762d2e8325e7de85d8be20ca37c81010f619a5f4e6bd2678f37a5",
+    "bytes": 1196
+   },
+   "forecast/meteorology/cities/daily/3460200.json": {
+    "sha256": "49801c5c1657dcb094f95701fcd87b5c2b3d86d0e5d86e8b2f0244620f4d902e",
+    "bytes": 1198
+   },
+   "forecast/meteorology/cities/daily/3470100.json": {
+    "sha256": "0b7342daf6870be722744813263e9f584aec7c11365b2ad767b75f8069bcd65b",
+    "bytes": 1198
+   },
+   "forecast/meteorology/cities/daily/3480200.json": {
+    "sha256": "fba63cd2346510390aae628d4f4fcaa8a744f27b955ead3c2aa993c50b2e0c3b",
+    "bytes": 1158
+   },
+   "forecast/meteorology/cities/daily/3490100.json": {
+    "sha256": "096dc18ecfdf4c13c416373a8aed160f350122befd85cb61459fe3a15d357e68",
+    "bytes": 1157
+   },
+   "forecast/meteorology/cities/daily/hp-daily-forecast-day0.json": {
+    "sha256": "7d888803edde38f0390d1da70afee3a350ce25baec606d6a938074807586d366",
+    "bytes": 6894
+   },
+   "forecast/meteorology/cities/daily/hp-daily-forecast-day1.json": {
+    "sha256": "d4beefc52dc1e75c60a400ab357fb5dbcfa3ddbb750110f96e111df85afbef1c",
+    "bytes": 6870
+   },
+   "forecast/meteorology/cities/daily/hp-daily-forecast-day2.json": {
+    "sha256": "cfb3b6db74c3d7147ab10ba3d2c48d64677ffa161d6d972cd49843ae6f6c310c",
+    "bytes": 6842
+   },
+   "forecast/oceanography/daily/hp-daily-sea-forecast-day0.json": {
+    "sha256": "75c57c8332fade80a78bccbc0ef5e77d42a9fa808c8469266eb30e7499abcac9",
+    "bytes": 3276
+   },
+   "forecast/oceanography/daily/hp-daily-sea-forecast-day1.json": {
+    "sha256": "f174b324ecac13d8d49ff966c847a645ca7ea09c2338f0a61a951e12d9369b27",
+    "bytes": 3275
+   },
+   "forecast/oceanography/daily/hp-daily-sea-forecast-day2.json": {
+    "sha256": "45cd675ece567b9b633d0c74b4ce29e81c6c05fcb8c28d2cebb3bdfc494621bf",
+    "bytes": 3273
+   },
+   "forecast/meteorology/uv/uv.json": {
+    "sha256": "41613bd890e6e05f68405eb2918073cfa6c1595aaafb3201eded548a4c8794f4",
+    "bytes": 16080
+   },
+   "forecast/meteorology/rcm/rcm-d0.json": {
+    "sha256": "1608a5c04baa87f5996274229b87703292bec24c1a01b394464687072eba9ec7",
+    "bytes": 24302
+   },
+   "forecast/meteorology/rcm/rcm-d1.json": {
+    "sha256": "ecd3d0f2ac9518ebb18146c447268ab45da4b07b8c9d86a677fe733a44de4b7b",
+    "bytes": 24302
+   },
+   "forecast/meteorology/rcm/rcm-d2.json": {
+    "sha256": "36f366390549591725df1c1c0fa48995189aece74a8b930d05d8d556f2cef61d",
+    "bytes": 24302
+   },
+   "observation/meteorology/stations/observations.json": {
+    "sha256": "7b92c17557a5d3c4dfdd773a1a506f0dfc4fb3ba8751074a2c3f2ee56e8f8124",
+    "bytes": 1072647
+   },
+   "observation/meteorology/stations/obs-surface.geojson": {
+    "sha256": "05018d0d9bb28dad508aa2ceaa58dcd918af16cd985ec5dae2fd5889d10158a0",
+    "bytes": 440787
+   },
+   "observation/seismic/3.json": {
+    "sha256": "da1f028e15b85b0636ef8e9376b3212ac2a438a8ede0b56d251287a62b8ee158",
+    "bytes": 36651
+   },
+   "observation/seismic/7.json": {
+    "sha256": "e8da1a77e17880cb67ec0f253d72c73066b4e8daaea6d1b9e125cedddd816805",
+    "bytes": 109377
+   },
+   "observation/climate/precipitation/prec-p1d-continental-obssup-idw-concelhos-20d.csv": {
+    "sha256": "a1dcc3525c7e3666d4ed68ed8f54f692fc018bec5e97bb7cee400c14147ec6e3",
+    "bytes": 632591
+   },
+   "observation/climate/temperature/t2m-p1d-continental-obssup-idw-concelhos-20d.csv": {
+    "sha256": "5bdbf20ed49955e4872cde642f5bbb0b19c6eb8e4c8b0a051ec563b0117da050",
+    "bytes": 894755
+   },
+   "observation/biology/bivalves/CI_SNMB.geojson": {
+    "sha256": "1f5ee7e1f1445d9be42cee1a81d081d5d1d6602f55424ef6526b5990be66b6bf",
+    "bytes": 3411715
+   },
+   "06.json": {
+    "sha256": "d3541da8f4ae41bf5b46244ea418c6a6fdf9dd08876643a2a901709a4631146b",
+    "bytes": 277
+   }
+  }
+ }
+}

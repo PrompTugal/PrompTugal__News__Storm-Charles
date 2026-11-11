@@ -1,0 +1,141 @@
+{
+ "about": "IPMA as a source for this site: who it is, what it publishes as open data, its terms exactly as published, and how we read it. The map of its API is api.json; what we hold is latest.json.",
+ "id": "ipma",
+ "node": "ipma",
+ "by": "incident.ipma@web-summit.dinis",
+ "updated": "2026-11-11T02:23:10Z",
+ "who": {
+  "name": "Instituto Português do Mar e da Atmosfera, I. P.",
+  "short": "IPMA",
+  "kind": "body: the Portuguese state's institute for the sea and the atmosphere; it issues the weather warnings",
+  "ipma_says": "O Instituto Português do Mar e da Atmosfera, I. P. (IPMA, I. P.), é um instituto público, integrado na administração indireta do Estado, dotado de autonomia administrativa e financeira e património próprio.",
+  "site": "https://www.ipma.pt/",
+  "api": "https://api.ipma.pt/",
+  "source": "https://api.ipma.pt/",
+  "read_utc": "2026-11-11T02:12Z"
+ },
+ "publishes": {
+  "summary": "Weather warnings, daily forecasts by place, the sea state forecast, the UV index, fire risk by municipality, hourly station observations, seismic events, daily climate series by municipality, shellfish harvesting bans, and the id tables that tie them together.",
+  "ipma_says": "Este sistema de informações, API, suporta o serviço de assinatura de dados meteorológicos e oceanográficos produzidos no IPMA.",
+  "forecasts": "Os dados de previsão são obtidos automaticamente através de processamento estatístico das previsões de dois modelos numéricos (ECMWF e AROME), sendo atualizados duas vezes por dia, nomeadamente a corrida das 00UTC (disponibilizada em regra a partir das 10:00) e das 12UTC (disponibilizada em regra a partir das 20:00).",
+  "formats": [
+   "JSON",
+   "GeoJSON",
+   "CSV",
+   "ZIP (SVG icons)",
+   "XLSX and GeoPackage (listed, not documented)"
+  ],
+  "map": "api.json",
+  "listing": "listing.json"
+ },
+ "licence": {
+  "url": "https://api.ipma.pt/#legal",
+  "read_utc": "2026-11-11T02:12Z",
+  "named_licence": "not stated",
+  "summary": "IPMA's terms allow copying and using the information free of charge, for personal or public use, provided the use is neither for profit nor offensive, and require the source to be named always. No named open licence (such as a Creative Commons licence) is stated. The terms also say IPMA's logo should accompany its information on web pages, and IPMA asks users of the API to tell it, by email, that they use it and why.",
+  "excerpts": [
+   {
+    "pt": "O Utilizador pode copiar, importar ou utilizar gratuitamente informações ou símbolos nacionais existentes neste site para uso pessoal ou público desde que dessa utilização não decorram finalidades lucrativas ou ofensivas.",
+    "en": "The user may copy, import or use, free of charge, information or national symbols on this site for personal or public use, provided that use has no profit-making or offensive purpose."
+   },
+   {
+    "pt": "O Utilizador deve referir, sempre, a fonte de informação.",
+    "en": "The user must always name the source of the information."
+   },
+   {
+    "pt": "O logo-símbolo do sítio de internet do IPMA deve ser utilizado sempre que um Utilizador pretenda incluir informação disponibilizada pelo sítio de internet em páginas de hiper-documentos",
+    "en": "The logo of IPMA's website must be used whenever a user means to include information made available by the site in hypertext pages."
+   },
+   {
+    "pt": "O conteúdo deste sítio de internet é protegido por Direitos de Autor e Direitos Conexos e Direitos de Propriedade Industrial ao abrigo das leis portuguesas e da União Europeia e outras convenções internacionais, não podendo ser utilizado fora das condições admitidas neste sitio de internet.",
+    "en": "The content of this site is protected by copyright, related rights and industrial property rights under Portuguese and European Union law and international conventions, and may not be used outside the conditions this site allows."
+   },
+   {
+    "pt": "O IPMA solicita ainda que seja enviado um email [...] a informar da sua utilização deste serviço e do seu propósito para efeitos de estatística e melhoria do serviço.",
+    "en": "IPMA also asks that an email be sent [to the address on its page] saying that you use this service and for what purpose, for statistics and to improve the service."
+   },
+   {
+    "pt": "O material contido neste sítio de internet é constituído por informações de carácter geral e meramente indicativo",
+    "en": "The material on this site is information of a general and merely indicative nature."
+   },
+   {
+    "pt": "O IPMA reserva-se no direito de alterar este site, bem como o seu acesso, sem qualquer aviso prévio, não se responsabilizando por eventuais danos ou prejuízos [...] em virtude da falta de continuidade ou disponibilidade do serviço.",
+    "en": "IPMA reserves the right to change this site and access to it without notice, and takes no responsibility for loss caused by the service being interrupted or unavailable."
+   }
+  ],
+  "answers": [
+   {
+    "q": "Can we read it?",
+    "a": "yes",
+    "basis": "the API is public, without a key; IPMA publishes it \"com o objetivo de melhorar o acesso do público à informação\""
+   },
+   {
+    "q": "Can we copy and republish it?",
+    "a": "yes, for personal or public use that is not for profit and not offensive",
+    "basis": "\"copiar, importar ou utilizar gratuitamente ... para uso pessoal ou público desde que ... não decorram finalidades lucrativas ou ofensivas\""
+   },
+   {
+    "q": "Can we reshape it (tables, drawings, sums)?",
+    "a": "not stated",
+    "basis": "the terms speak of copying, importing and using; they say nothing of changing or deriving. We mark every computed figure as ours and keep IPMA's values beside it."
+   },
+   {
+    "q": "Must we name IPMA?",
+    "a": "yes, always",
+    "basis": "\"O Utilizador deve referir, sempre, a fonte de informação.\""
+   },
+   {
+    "q": "Must we show IPMA's logo?",
+    "a": "the terms say the logo \"deve ser utilizado\" on web pages that include its information",
+    "basis": "the sentence quoted above; this site carries no images, so it names and links IPMA instead: open for Dinis"
+   },
+   {
+    "q": "Is commercial use allowed?",
+    "a": "no",
+    "basis": "\"desde que dessa utilização não decorram finalidades lucrativas\""
+   },
+   {
+    "q": "Is there a named open licence?",
+    "a": "not stated",
+    "basis": "no licence name or version appears on the page"
+   },
+   {
+    "q": "Is there a rate limit?",
+    "a": "not stated",
+    "basis": "none is given; we send one request every few seconds, about once an hour"
+   },
+   {
+    "q": "Does this cover the icons (the zip of weather symbols)?",
+    "a": "not stated separately",
+    "basis": "the icons are offered on the same page; we do not download or use them"
+   },
+   {
+    "q": "Does this cover /public-data/ (the addresses www.ipma.pt itself reads)?",
+    "a": "not stated",
+    "basis": "those addresses are not in the documentation; we do not map or read them here"
+   }
+  ],
+  "our_use": [
+   "Every page of this section names IPMA and links the exact file each figure came from, with the UTC time we read it.",
+   "Nothing here is sold; the site is a public, non-commercial record.",
+   "IPMA's values are shown as IPMA's. What we compute (sums, pairings, nearest stations) is marked as ours, in the data and on the page.",
+   "No IPMA image, icon or map is copied: the drawings are ours, from IPMA's coordinates.",
+   "The full responses are kept privately (a data store), with their hashes in git, so any figure can be checked against what IPMA served."
+  ],
+  "open": [
+   "Dinis: IPMA asks API users to email it saying they use the service and why. An agent does not send email: a person would. Do you want to send it (or have the conductor draft it)?",
+   "Dinis: IPMA's terms say its logo should accompany its information on web pages. This site has a no-image rule and names and links IPMA instead. Keep that, or ask IPMA?",
+   "Dinis: reshaping (derived tables, drawings) is not addressed by the terms. We label everything computed. Enough, or ask IPMA with the email above?",
+   "Dinis: www.ipma.pt reads hourly forecasts and more from https://api.ipma.pt/public-data/, outside the documented open data, terms not stated. incident.meteorologist@ already reads one such file. Map and read them here too?"
+  ]
+ },
+ "how_we_read": {
+  "tool": "tools/ipma-read.mjs",
+  "client": "a plain client name, no key",
+  "pace": "one request every 3 seconds; about 63 requests a pass; about once an hour while the storm runs",
+  "method": "GET, read-only; HEAD only for the two large binary files",
+  "kept_in_git": "sha256, size, time read and IPMA's Last-Modified for every file (latest.json), every read (reads.json), what changed (changes/)",
+  "kept_outside_git": "the full responses: latest/ and <yyyy>/<mm>/<dd>/<hh>/ with a diff beside each changed file and a manifest per hour (dataset.json)",
+  "first_read_utc": "2026-11-11T02:15:31Z"
+ }
+}

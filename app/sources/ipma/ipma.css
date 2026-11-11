@@ -1,0 +1,108 @@
+/* The IPMA section (sources/ipma/). Tokens only (design/README.md): IPMA's warning colours for IPMA's levels, with the
+   level written; observations and everything of ours in --focus blue or greys. Kept by incident.ipma@web-summit.dinis. */
+.ipma { margin: 0 0 22px; }
+.ipma .ip-mono, .ipma time { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.ip-bar { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin: 0 0 12px; font-size: 13px; color: var(--ink-2); }
+.ip-seg { display: inline-flex; border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; }
+.ip-seg button { font: 600 13px/1 var(--sans); padding: 8px 11px; border: 0; border-left: 1px solid var(--line-2); background: var(--surface); color: var(--ink); cursor: pointer; }
+.ip-seg button:first-child { border-left: 0; }
+.ip-seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.ip-seg button:focus-visible, .ip-bar-w:focus-visible, .ip-sel:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.ip-key { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ip-sw { display: inline-block; width: 26px; height: 12px; border-radius: 3px; }
+.ip-sw.gone { border: 1.5px dashed var(--ink-2); background: repeating-linear-gradient(135deg, var(--hatch) 0 2px, transparent 2px 6px); }
+.ip-sw.now { width: 2px; height: 16px; background: var(--focus); border-radius: 0; }
+.ip-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: 16px; align-items: start; }
+.ip-item { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto; font-size: 14px; }
+.ip-item h3 { font-size: 14px; margin: 14px 0 6px; }
+@media (max-width: 900px) { .ip-cols { grid-template-columns: minmax(0, 1fr); } .ip-item { position: static; max-height: none; } }
+
+/* the map */
+.ip-maps { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+.ip-map { margin: 0; padding: 10px; }
+.ip-map figcaption { font-size: 13px; color: var(--ink-2); margin: 0 0 4px; }
+.ip-map svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ip-mainland { grid-row: span 2; }
+@media (max-width: 620px) { .ip-maps { grid-template-columns: minmax(0, 1fr); } .ip-mainland { grid-row: auto; } }
+.ip-muni { fill: var(--line-2); opacity: .7; }
+.ip-coast { fill: none; stroke: var(--ink-2); stroke-width: 1; opacity: .55; stroke-linejoin: round; }
+.ip-st { cursor: pointer; }
+.ip-st circle, .ip-kc { fill: color-mix(in srgb, var(--focus) calc(18% + var(--f, 0%) * .82), var(--surface)); stroke: var(--focus); stroke-width: 1; }
+.ip-st.nd circle { fill: none; stroke: var(--ink-2); stroke-dasharray: 2 2; opacity: .6; }
+.ip-arrow { stroke: var(--focus); stroke-width: 1.6; fill: none; stroke-linecap: round; }
+.ip-st:hover circle, .ip-st:focus-visible circle { stroke: var(--ink); stroke-width: 2.5; }
+.ip-st:focus-visible, .ip-area:focus-visible { outline: none; }
+.ip-area { cursor: pointer; }
+.ip-area rect { fill: var(--surface); stroke: var(--ink-2); stroke-width: 1; }
+.ip-area text { font: 700 10.5px/1 var(--mono); text-anchor: middle; fill: var(--ink); }
+.ip-area .ip-lvl { font: 700 8.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .04em; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+.ip-area.lv-yellow rect { fill: var(--yellow); } .ip-area.lv-yellow text:first-of-type { fill: #111; }
+.ip-area.lv-orange rect { fill: var(--orange); } .ip-area.lv-orange text:first-of-type { fill: var(--on-orange); }
+.ip-area.lv-red rect { fill: var(--red); } .ip-area.lv-red text:first-of-type { fill: #fff; }
+.ip-area:hover rect, .ip-area:focus-visible rect { stroke: var(--focus); stroke-width: 3; }
+
+/* the item panel */
+.ip-wl { list-style: none; margin: 0; padding: 0; }
+.ip-wl li { padding: 9px 0; border-top: 1px solid var(--line); line-height: 1.45; }
+.ip-wl li:first-child { border-top: 0; }
+.ip-wl li.gone { opacity: .78; }
+.ip-wl li.gone .lvl { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink-2); border: 0; outline: 1px dashed var(--surface); outline-offset: -2px; }
+.ip-wl i[lang] { color: var(--ink-2); }
+.ip-wl .prov { white-space: normal; }
+.ip-spark { display: grid; gap: 6px; margin: 8px 0 12px; }
+.ip-sp { display: grid; grid-template-columns: 118px minmax(0, 1fr) 96px; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-2); }
+.ip-sp svg { width: 100%; height: 32px; background: var(--surface-2); border-radius: 3px; }
+.ip-sp path { fill: none; stroke: var(--focus); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.ip-sp rect { fill: var(--rain); }
+.ip-sp i { font-style: normal; text-align: right; }
+
+/* tables */
+.ip-t { border-collapse: collapse; width: 100%; font-size: 13px; }
+.ip-t th { text-align: left; background: var(--surface-2); color: var(--ink-2); font-weight: 600; padding: 6px 8px; position: sticky; top: 0; white-space: nowrap; }
+.ip-t td { padding: 6px 8px; border-top: 1px solid var(--line); vertical-align: top; }
+.ip-t i[lang] { color: var(--ink-2); font-size: 12.5px; }
+.ip-item .wx-scroll { max-height: 300px; overflow: auto; }
+.ip-bad { color: var(--bad); border-color: var(--bad); }
+.ip-out::after { content: " ↗"; color: var(--ink-2); }
+.ip-grp-card { margin-top: 14px; }
+.ip-tiles { padding: 0 0 4px; }
+.ip-big { font: 700 30px/1.1 var(--sans); font-variant-numeric: tabular-nums; }
+.ip-pre { font: 12px/1.5 var(--mono); background: var(--surface-2); padding: 12px; border-radius: 6px; overflow: auto; max-height: 560px; white-space: pre; margin: 0; }
+.ip-sel { font: 14px var(--sans); padding: 6px 8px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--surface); color: var(--ink); max-width: 100%; }
+.ip-br { min-height: 120px; }
+.ip-ch li { grid-template-columns: 96px minmax(0, 1fr); font-size: 14px; }
+.ip-ch .prov { white-space: normal; }
+.ip-d { margin: 4px 0 0; font-size: 13px; }
+.ip-d summary { cursor: pointer; color: var(--focus); }
+.ip-d ul { margin: 6px 0; padding-left: 18px; max-height: 260px; overflow: auto; }
+.ip-d li { display: list-item; padding: 2px 0; border: 0; overflow-wrap: anywhere; }
+
+/* the warnings over time */
+.ip-tl { padding: 0; overflow: hidden; }
+.ip-strip { --lab: 168px; min-width: 1100px; }
+.ip-strip .wx-lab a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.ip-strip .wx-lab a:hover { text-decoration: underline; }
+.ip-grp { padding: 5px 16px; font: 600 11px/1.4 var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); border-top: 1px solid var(--line-2); position: sticky; left: 0; }
+.ip-axis .wx-track { min-height: 26px; }
+.ip-tick { position: absolute; top: 5px; font: 11.5px/1.3 var(--mono); color: var(--ink-2); padding-left: 4px; white-space: nowrap; }
+.ip-tick b { color: var(--ink); }
+.ip-bar-w { border: 0; cursor: pointer; text-align: left; font: 500 12px/1.15 var(--sans); }
+.ip-bar-w.gone { background: repeating-linear-gradient(135deg, var(--hatch) 0 2px, transparent 2px 6px); color: var(--ink); border: 1.5px dashed var(--ink-2); box-shadow: none; }
+.ip-bar-w.gone b { text-transform: uppercase; letter-spacing: .05em; font-size: 11px; margin-right: 4px; }
+.ip-now { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--focus); z-index: 2; pointer-events: none; }
+.ip-nil { position: sticky; left: calc(var(--lab) + 10px); display: inline-block; padding-top: 8px; font-size: 12px; color: var(--ink-2); }
+.ip-none .wx-track { min-height: 30px; }
+.ip-foot .prov { white-space: normal; }
+
+/* the sea and the cities (ipma-more.js) */
+.ipm-card { padding: 0; overflow: hidden; }
+.ipm-t th[scope="row"] { background: var(--surface); font-weight: 600; position: sticky; left: 0; z-index: 1; min-width: 150px; white-space: normal; border-top: 1px solid var(--line); }
+.ipm-t tbody tr[data-p] { cursor: pointer; }
+.ipm-t tbody tr[data-p]:hover td, .ipm-t tbody tr[data-p]:focus-visible td { background: var(--surface-2); }
+.ipm-t td { min-width: 150px; line-height: 1.45; }
+.ipm-grp th { background: var(--surface-2); text-transform: uppercase; letter-spacing: .06em; font-size: 11px; color: var(--ink-2); position: static; }
+.ipm-range { display: inline-block; position: relative; width: 84px; height: 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 4px; margin-right: 8px; vertical-align: middle; }
+.ipm-range i { position: absolute; top: 0; bottom: 0; background: var(--focus); border-radius: 3px; }
+.ipm-rain i { background: var(--rain); opacity: .75; }
+.ipm-arrow { vertical-align: -2px; margin-right: 3px; }
+.ipm-arrow path { fill: none; stroke: var(--ink-2); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
