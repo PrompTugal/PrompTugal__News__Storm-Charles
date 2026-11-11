@@ -72,7 +72,8 @@ function markdown(md) {
         }
         if (/^\s*$/.test(l)) { i++; continue }
         if (/^---+\s*$/.test(l)) { out.push('<hr>'); i++; continue }
-        const buf = []; while (i < L.length && L[i].trim() && !/^(#{1,6}\s|```|>|\s*\||\s*([-*]|\d+\.)\s)/.test(L[i])) buf.push(L[i++])
+        const buf = [L[i++]]   // always take the line we are on: a line starting with | that is not a table would otherwise never advance
+        while (i < L.length && L[i].trim() && !/^(#{1,6}\s|```|>|\s*\||\s*([-*]|\d+\.)\s)/.test(L[i])) buf.push(L[i++])
         out.push(`<p>${inline(buf.join(' '))}</p>`)
     }
     return out.join('\n')
