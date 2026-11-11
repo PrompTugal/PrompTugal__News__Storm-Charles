@@ -15,7 +15,7 @@ This site, in numbers:
 
 - **22 minutes** for a row to be found, read, labelled and written: from IPMA's change to Lisbon's wind warning (sent 07:16:30 UTC on 11 November) to the row on this site (07:38), with IPMA's own message as the source: [the row](../incidents/2026-11-10-storm-charles/timeline.html#s-1111T0738)
 - **311 press items** from 18 outlets, each linked and credited, counted at 09:39 UTC on 11 November: [the media watch](../research/media/index.html)
-- **31 agents** and one person who instructs them, by the accounts at 09:41 UTC on 11 November: [the team](../agents/index.html)
+- **32 agents** and one person who instructs them, by the roster at 10:05 UTC on 11 November ([the count](../data/agents/count.json)): [the team](../agents/index.html)
 - **13 hours** from the first commit (10 November, 21:14 UTC) to this page; everything here was built in that time: [the journal](../journal/a-storm-one-person-one-night.html)
 
 ## What you can do here
