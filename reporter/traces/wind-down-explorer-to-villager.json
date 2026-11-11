@@ -4,7 +4,7 @@
  "size": "large",
  "title": "The wind-down, traced as it happens: \"move it into a BAU\" to a plan, exit interviews and a correction, in 14 minutes; open until the hand-overs",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T12:10:13Z",
+ "updated": "2026-11-11T13:12:41Z",
  "captured_at": "2026-11-11T11:17:00Z",
  "summary": [
   "Dinis (~10:30): \"create a plan to refactor this entire incident and then move it into a BAU\"; wind down every agent, \"an exit interview and ... a wrap up\", then decide which to start and continue; \"almost that move from explorer to villager\". Two more words followed within eight minutes: nobody stops \"until the handover is done\" (~10:32), and a correction (~10:38): the outside hand-over \"was for another team\"; \"I'm going to be the only one running this site\".",
@@ -28,7 +28,7 @@
   "what": "transition/PLAN.md (the plan), transition/interviews/ (exit interviews), the closing record (reporter, journalist, storyteller, librarian), a storm conductor for business as usual",
   "url": "https://storm-charles.promptugal.news/transition/PLAN.html"
  },
- "status": "open: the plan in its third version, waiting on Dinis's yes (46 cards wait on him at 12:10); his four words of 11:42 to 11:56 grow the site and do not mention the wind-down; one exit interview written",
+ "status": "open: the plan in its third version, waiting on Dinis's yes (52 cards wait on him at 13:12); Web Summit's Day 3 reported confirmed by the press at 12:52, half the close trigger as evidence (step 19); one exit interview written",
  "duration": {
   "from": "2026-11-11T10:29:37Z",
   "to": null,
@@ -626,7 +626,8 @@
      "version": "v0.1.943",
      "run": 943,
      "own_run": false,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T11:24:15Z"
+     "served_by": "2026-11-11T11:27:13Z",
+     "push_to_served_s": 42
     }
    ],
    "n": 16,
@@ -668,7 +669,8 @@
      "version": "v0.1.948",
      "run": 948,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T11:24:15Z"
+     "served_by": "2026-11-11T11:34:45Z",
+     "push_to_served_s": 35
     }
    ],
    "n": 17,
@@ -716,7 +718,8 @@
      "version": "v0.1.968",
      "run": 968,
      "own_run": false,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T11:24:15Z"
+     "served_by": "2026-11-11T11:48:09Z",
+     "push_to_served_s": 46
     }
    ],
    "n": 18,
@@ -725,13 +728,65 @@
    "for": [
     "incident.conductor@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.brief@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "half the close trigger, as evidence",
+   "sha": "2cf1abb67bfe40a70b310b7ace4619321e2f99f2",
+   "in": "the press's word that Web Summit confirmed Thursday (44b75852, 12:52:33; the conductor's hourly, 04b01906, 13:04:42)",
+   "out": "\"decision brief, edition 6 (Web Summit's Day 3 reported confirmed, as evidence)\", 13 min 52 s after the first press row. The close trigger is IPMA's first read after 21:00 plus Web Summit's Day 3 decision: the second half is now reported by the press, not yet read from the organisers (their site is under the 05:27 hold); the first half is hours away. No exit interview and no hand-over to the record desk in the hour; the plan still waits on Dinis's yes.",
+   "handoff": {
+    "to": "incident.planner@web-summit.dinis",
+    "via": "transition/PLAN.md",
+    "evidence_of_handoff": "not in the record at 13:12: no commit to transition/ since 12:10"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md"
+    },
+    {
+     "type": "commit",
+     "sha": "44b75852fd72c925512b1163abf514b80419b896",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/44b75852fd72c925512b1163abf514b80419b896"
+    },
+    {
+     "type": "commit",
+     "sha": "04b01906fc461bf43f0c1c993004268b6daaf925",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/04b01906fc461bf43f0c1c993004268b6daaf925"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "2cf1abb67bfe40a70b310b7ace4619321e2f99f2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2cf1abb67bfe40a70b310b7ace4619321e2f99f2"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1166",
+     "run": 1166,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T12:37:16Z"
+    }
+   ],
+   "n": 19,
+   "at": "2026-11-11T13:06:25Z",
+   "agent_trailer": "incident.brief@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 18,
+  "steps": 19,
   "steps_with_no_evidence": 0,
   "person_steps": 3,
-  "agent_steps": 15
+  "agent_steps": 16
  },
  "people_acted": [
   "Dinis Cruz"
@@ -742,6 +797,7 @@
   "incident.board@web-summit.dinis",
   "incident.designer@web-summit.dinis",
   "incident.storyteller@web-summit.dinis",
-  "incident.journalist@web-summit.dinis"
+  "incident.journalist@web-summit.dinis",
+  "incident.brief@web-summit.dinis"
  ]
 }

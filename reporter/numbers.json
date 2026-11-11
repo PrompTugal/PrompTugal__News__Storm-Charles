@@ -1,7 +1,7 @@
 {
  "about": "The project counted by hour (UTC), from the data other agents keep: commits, agents active and hand-offs (incident.ci@), runs and releases (incident.ci@), cards opened and closed (incident.board@). Each figure's source file and that file's own time are in sources: a figure knows nothing after its source's as_of, so the last hour is always short. Pages by hour are not recorded anywhere (not_recorded); now holds the latest whole-site counts. Written by tools/reporter-numbers.mjs; nothing here is counted by hand.",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T11:35:04Z",
+ "updated": "2026-11-11T12:37:16Z",
  "updated_note": "the newest of the sources' own times (the tool reads no clock, so the same sources always give the same file)",
  "sources": [
   {
@@ -12,7 +12,7 @@
    ],
    "file": "data/ci/commits/*.json",
    "by": "incident.ci@web-summit.dinis",
-   "as_of": "2026-11-11T11:24:15Z",
+   "as_of": "2026-11-11T12:37:16Z",
    "note": "agents_active: distinct Agent: trailers on the hour's commits (agents that write in another repository and are synced by the conductor do not count); handoffs_for: For: trailers"
   },
   {
@@ -25,7 +25,7 @@
    ],
    "file": "data/ci/runs/*.json",
    "by": "incident.ci@web-summit.dinis",
-   "as_of": "2026-11-11T11:24:15Z",
+   "as_of": "2026-11-11T12:37:16Z",
    "note": "a release is a run that succeeded (it deployed and tagged a version); cancelled: a newer push replaced it while it waited; by the hour the run was queued"
   },
   {
@@ -35,7 +35,7 @@
    ],
    "file": "board/items/*.json",
    "by": "incident.board@web-summit.dinis",
-   "as_of": "2026-11-11T11:35:04Z",
+   "as_of": "2026-11-11T12:34:11Z",
    "note": "opened: the card's event_utc where the board has one (the first commit of the ask), else its opened_utc, which is the board's reading, not the event; closed: the history line that moved it to done or answered"
   },
   {
@@ -45,7 +45,7 @@
    ],
    "file": "data/ci/tree.json",
    "by": "incident.ci@web-summit.dinis",
-   "as_of": "2026-11-11T11:24:15Z"
+   "as_of": "2026-11-11T12:37:16Z"
   },
   {
    "figures": [
@@ -54,7 +54,7 @@
    ],
    "file": "data/agents/index.json",
    "by": "incident.observability@web-summit.dinis",
-   "as_of": "2026-11-11T11:53:52Z"
+   "as_of": "2026-11-11T12:21:42Z"
   },
   {
    "figures": [
@@ -62,7 +62,7 @@
    ],
    "file": "data/agents/sessions.json",
    "by": "incident.observability@web-summit.dinis",
-   "as_of": "2026-11-11T11:53:57Z"
+   "as_of": "2026-11-11T12:21:50Z"
   },
   {
    "figures": [
@@ -71,7 +71,7 @@
    ],
    "file": "data/ci/index.json",
    "by": "incident.ci@web-summit.dinis",
-   "as_of": "2026-11-11T11:24:15Z"
+   "as_of": "2026-11-11T12:37:16Z"
   }
  ],
  "by_hour": [
@@ -197,8 +197,8 @@
    "commits": 125,
    "agents_active": 27,
    "handoffs_for": 184,
-   "runs": 116,
-   "releases": 73,
+   "runs": 117,
+   "releases": 74,
    "runs_cancelled": 43,
    "runs_failed": 0,
    "push_to_served_median_s": 37,
@@ -249,8 +249,8 @@
    "commits": 41,
    "agents_active": 21,
    "handoffs_for": 55,
-   "runs": 39,
-   "releases": 37,
+   "runs": 38,
+   "releases": 36,
    "runs_cancelled": 2,
    "runs_failed": 0,
    "push_to_served_median_s": 40,
@@ -298,53 +298,67 @@
   },
   {
    "hour": "2026-11-11T11Z",
-   "commits": 9,
-   "agents_active": 5,
-   "handoffs_for": 18,
-   "runs": 7,
-   "releases": 7,
-   "runs_cancelled": 0,
+   "commits": 92,
+   "agents_active": 33,
+   "handoffs_for": 122,
+   "runs": 84,
+   "releases": 58,
+   "runs_cancelled": 26,
    "runs_failed": 0,
-   "push_to_served_median_s": 39,
-   "cards_opened": 4,
+   "push_to_served_median_s": 42,
+   "cards_opened": 16,
    "cards_closed": 16
+  },
+  {
+   "hour": "2026-11-11T12Z",
+   "commits": 103,
+   "agents_active": 24,
+   "handoffs_for": 135,
+   "runs": 97,
+   "releases": 57,
+   "runs_cancelled": 39,
+   "runs_failed": 0,
+   "push_to_served_median_s": 44,
+   "cards_opened": 31,
+   "cards_closed": 7
   }
  ],
  "now": {
-  "files": 2761,
-  "bytes": 24629052,
+  "files": 2989,
+  "bytes": 27071418,
   "agents": 41,
-  "asks_for_dinis": 47,
-  "sessions": 86,
+  "asks_for_dinis": 49,
+  "sessions": 93,
   "totals": {
-   "commits": 1034,
+   "commits": 1220,
    "first_commit": "2026-11-10T21:03:38Z",
-   "last_commit": "2026-11-11T11:23:07Z",
-   "runs": 939,
+   "last_commit": "2026-11-11T12:36:46Z",
+   "runs": 1113,
    "by_result": {
     "failure": 6,
-    "success": 659,
-    "cancelled": 274
+    "success": 767,
+    "cancelled": 339,
+    "queued": 1
    },
-   "agents": 35,
-   "tags": 660,
+   "agents": 39,
+   "tags": 767,
    "github_releases": 0
   },
   "push_to_served_s": {
-   "runs": 628,
-   "median": 37,
+   "runs": 736,
+   "median": 38,
    "p90": 55,
    "max": 161,
    "min": 21,
    "source": "each successful run's own notice"
   },
-  "cards": 497,
+  "cards": 540,
   "cards_by_state": {
-   "open": 233,
-   "done": 235,
+   "open": 267,
+   "done": 242,
    "blocked": 7,
    "answered": 3,
-   "watching": 19
+   "watching": 21
   }
  },
  "not_recorded": [

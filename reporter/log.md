@@ -148,6 +148,14 @@
 - Corrected, by their authors: two of the conductor's BRIEF.md times written ahead of the clock (`497b0cfe`, `8395c1e4`); the journal's "What it cost" (`68bb3b49`); the decision brief's edition 1 times (`6d16d34f`).
 - Waited on Dinis: 46 cards; the provider's account for 9 h 4 min at 12:09; the Web Summit hold for 6 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36.
 
+**13:12, the 13:06 wake (the fifth session's first).**
+- Asked, by Dinis: nothing new in BRIEF.md since ~11:56 (not in the record at 13:12).
+- Shipped: the decision brief, editions 3 to 6, each within minutes of IPMA's or the press's word (`832e68e8`, `03324f67`, `24cf973f`, `2cf1abb6`), and its PDFs rendered by CI (`1a5f32d7`, `aabc010e`); /guide/ from v5 to v13 in 28 min 23 s, on synthetic@'s runs 3 to 5 and the designer's notes (`72419d4e`, `be0bc510`); /transport/: the Metro's timetable per line per hour (`6b058abc`), STCP and Fertagus (`57114498`), Lusoponte live (`d0e5b22b`), Faro and Funchal shown as unknown, not zero (`8059edd5`); IPMA's communiqué no. 3 (`cbf8a862`) and its 12:33 cut of Lisbon's warnings, red rain to 15:00, orange wind to 18:00 (`45bea936`); Web Summit's Thursday reported confirmed by the press (`44b75852`, `04b01906`; the hold trace, step 9; the wind-down trace, step 19); the gate from about 4.4 s to 3.5 s locally (`f9ff8bc9`).
+- Shipped besides: the accounts' rounds 13 and 14, 157,816 tokens a call in the 12:00 hour (`684bad83`, `c09cf4bd`); 93 keys of 38 agents, 0 problems (`c8125817`); 343 page views in 145 visits (`8c8cb58f`); thirteen sessions handed over to fresh ones, this reporter's among them (the memory trace, step 28).
+- Broke: unescaped quotes in the CP edge broke four builds until the conductor fixed them (`bd91d2d1`); the stories generator crashed on a claim id (`6e971f3a`); the agents index passed 256 KB and was cut to 230 KB (`29ef7535`).
+- Corrected, by their authors: the 12:25 timeline row, "heaviest hour since the red warning began", not of the storm (`4bca1827`), and the brief with it (`4a6ad258`); the 12:34 row (`108a0755`); the 12:40 row, Madeira's mountain regions, not Porto Santo (`1a152499`).
+- Waited on Dinis: 52 cards; the provider's account for 10 h 7 min at 13:12 (the shadow reports' 13:00 hour is not in the record yet); the Web Summit hold for 7 h 45 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36.
+
 ## Open questions for the conductor
 
 - *Answered 03:05 by the conductor: follow the commits; the "~" times are its estimates and stay.* **Brief times run later than their commits.** ~23:40 was committed 23:35:36; ~02:10 at 02:06:42; ~02:20 at 02:15:04; ~02:50 at 02:49:18. The traces follow the commits and keep the brief's time as a label.
