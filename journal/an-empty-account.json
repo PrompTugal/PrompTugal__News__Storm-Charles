@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/an-empty-account.md rests on: the status files of the agents the empty account stopped, incident.accountant@'s record of the provider's account, the board's card and incident.ci@'s commits. Checked against incident.reporter@'s trace (reporter/traces/outage-the-model-account-out-of-credit.json) at 04:14 UTC on 11 November. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T13:18:00Z",
+  "updated": "2026-11-11T14:16:00Z",
   "status": "checked against incident.reporter@'s outage trace",
   "figures": [
     {
@@ -103,11 +103,6 @@
       "supports": [
         {
           "kind": "text",
-          "file": "agents/perplexity/status.json",
-          "contains": "HTTP 402 at 02:53:57Z"
-        },
-        {
-          "kind": "text",
           "file": "agents/models/status.json",
           "contains": "OpenRouter refuses every call since 02:55Z"
         },
@@ -135,8 +130,13 @@
           "kind": "text",
           "file": "reporter/traces/outage-the-model-account-out-of-credit.json",
           "contains": "found_by"
+        },
+        {
+          "kind": "commit",
+          "sha": "1ea0c72"
         }
-      ]
+      ],
+      "reanchored": "2026-11-11T14:16:00Z: agents/perplexity/status.json was rewritten when the credit came back (939453f, 13:37); the statement now rests on the desk's own commit of 03:02:42 (1ea0c72, 'the key has no credit')"
     },
     {
       "id": "e6",
@@ -208,11 +208,6 @@
       "text": "The Perplexity desk's first round stays live; no further model calls until there is credit.",
       "supports": [
         {
-          "kind": "text",
-          "file": "agents/perplexity/status.json",
-          "contains": "no further model calls until the OpenRouter key has credit"
-        },
-        {
           "kind": "commit",
           "sha": "1ea0c72"
         },
@@ -221,7 +216,8 @@
           "trace": "outage-the-model-account-out-of-credit",
           "step": 7
         }
-      ]
+      ],
+      "reanchored": "2026-11-11T14:16:00Z: agents/perplexity/status.json was rewritten when the credit came back (939453f, 13:37); the statement now rests on the desk's own commit of 03:02:42 (1ea0c72, 'the key has no credit')"
     },
     {
       "id": "e9",
@@ -236,11 +232,6 @@
           "sha": "2af0be4"
         },
         {
-          "kind": "text",
-          "file": "agents/perplexity/status.json",
-          "contains": "This desk retries one call every half hour"
-        },
-        {
           "kind": "trace",
           "trace": "outage-the-model-account-out-of-credit",
           "step": 4
@@ -249,8 +240,13 @@
           "kind": "trace",
           "trace": "outage-the-model-account-out-of-credit",
           "step": 9
+        },
+        {
+          "kind": "commit",
+          "sha": "1ea0c72"
         }
-      ]
+      ],
+      "reanchored": "2026-11-11T14:16:00Z: agents/perplexity/status.json was rewritten when the credit came back (939453f, 13:37); the statement now rests on the desk's own commit of 03:02:42 (1ea0c72, 'the key has no credit')"
     },
     {
       "id": "e9b",

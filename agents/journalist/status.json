@@ -1,9 +1,9 @@
 {
   "agent": "incident.journalist@web-summit.dinis",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T13:19:00Z",
-  "state": "active: the sixth session (from 11:24); thirteen pieces, the closing piece first and open until the hand-over; 637 supports, 0 problems at 13:19",
-  "last_wake": "2026-11-11T13:19:00Z",
+  "updated": "2026-11-11T14:17:00Z",
+  "state": "active: the sixth session (from 11:24), hand-over brought up to date at 14:17 (about 170k tokens a call); thirteen pieces, the closing piece first and open until the hand-over; 636 supports, 0 problems at 14:17",
+  "last_wake": "2026-11-11T14:17:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
@@ -38,16 +38,17 @@
     "10:34: told incident.planner@ (send_message) what the journal gives the closing record: the closing piece, the two cost pieces rewritten from the final round, section 9, endings for pieces 3, 7, 10, 12, the journal's exit interview, the edition last",
     "11:23 (the 11:12 wake): an-empty-account e12 re-anchored to commits f44d22e and a8c2cf7 (the reporter's log rewritten at 11:18); What it cost: a dated correction from the accountant's round 11 (the 10:14 'falling' wrong with the conductor's line in); Mistakes section 9 extended; the closing piece brought to round 11, Dinis's ~10:38 correction, the wind-down trace and the close trigger; draft exit interview at transition/interviews/journalist.md (10:40)",
     "12:17 wake (sixth session): dated lines from the reporter's 12:06 traces on piece 7 (tenth empty hour at 12:00), piece 12 (two doors on the front page at 12:01; no yes at 12:10) and the closing piece (Dinis's four words of ~11:42 to ~11:56, his view of the agents' live view, none on the wind-down); exit interview brought up to date at 11:25",
-    "13:19 wake: piece 7 ended (the outage closed at 13:12:51, credit back, who restored it not on record); piece 10 and the closing piece: Web Summit's Thursday through the press at 13:04, as evidence, the hold standing; What it cost's round-11 claim re-anchored on its commit (11b9f7a) after savings.md moved"
+    "13:19 wake: piece 7 ended (the outage closed at 13:12:51, credit back, who restored it not on record); piece 10 and the closing piece: Web Summit's Thursday through the press at 13:04, as evidence, the hold standing; What it cost's round-11 claim re-anchored on its commit (11b9f7a) after savings.md moved",
+    "14:17 wake: five supports (pieces 1 of the closing record x15, 7 e5/e8/e9, 8 a9) re-anchored on incident.perplexity@'s commit 1ea0c72 after its status file was rewritten at 13:37 when the credit came back; dated on piece 7"
   ],
   "next": [
-    "FIRST: transition/PLAN.md §3 is the journal's part (deadline Thursday, after the close trigger); the closing piece's 'How it ends' to the hand-over; rewrite What it cost and Starting again from the final books; endings for 3, 7, 10, 12; bring transition/interviews/journalist.md up to date; edition PDF last",
-    "the hourly round as before (handover): the check, new traces, the accountant's round, commits For: this agent",
-    "the twelfth piece is open: when Dinis says yes or no to /welcome/ (the trace's step 9), write the ending; Dinis's words of ~10:10 (BRIEF.md) name 'a wake of a journalist, end to end' and 'the handover of journalists' as paths for incident.storyteller@ and incident.motion@: they may read journal/*.json and this file; answer their asks",
-    "the tenth piece rests on the open card board/items/a-websummit-terms.json: when Dinis answers or the card is reworded, re-anchor and write the ending",
-    "What it cost: carries the books at 08:44 (round 9) in dated lines; a full rewrite of the page's body (still the books of 03:02) when Dinis or the conductor wants one",
-    "the agents' marks from app/studio/agents/ on the lanes and the trace pictures",
-    "Dinis's view of any of it, when it is on record: the pieces end where the record ends"
+    "FIRST (seventh session): the hourly round: pull; node tools/journal-build.mjs --check; re-anchor what failed on a commit (git log -S fails in this shallow clone: find the agent's commit in data/ci/commits/<hour>.json by agent and time); reporter/traces/*.json status lines for the open pieces; commits For: this agent; measure; release; report to the conductor",
+    "endings still open (status.closing_record.endings_state): piece 10 (the hold on Web Summit's site; Thursday reached through the press at 13:04 as evidence), piece 12 (/welcome/, no yes), piece 3 (cards waiting on Dinis). Piece 7 ended at 13:12 (credit back, by whom not on record)",
+    "after the close trigger (IPMA's first read after 21:00 UTC Wednesday + Web Summit's Day 3 decision; PLAN.md §1): the closing piece's 'How it ends' written through (it carries dated lines at 12:16 and 13:18 under the 10:35 body); endings for 3, 7, 10, 12 stated as answered or closed unanswered with each card's last state",
+    "after the accountant's closing round (accounts/closing.md, PLAN.md §3): rewrite the bodies of What it cost and Starting again once, keep every correction as a dated list at the foot",
+    "the edition PDF last (node admin/build/build.mjs && node admin/tools/render-pdf.cjs _site journal/edition.html <outside the repo>); the closing piece is already first in journal/index.json",
+    "transition/interviews/journalist.md: brought up to date at 11:25 and 13:18; once more after the close trigger (sessions, ledger totals, verdict)",
+    "Dinis's view of any of it, when it is on record: his ~11:46 words on the agents' live view are in the closing piece (12:16 line)"
   ],
   "asks": [
     "incident.ci@: the journal's figures are as fresh as data/ci/ (read 02:36 UTC when this was written); nothing to change, only said",
@@ -75,7 +76,8 @@
     "A figure for an hour still running is a reading of its first calls: say 'so far' and how many calls, and draw no conclusion from it (the 08:17 'found its floor' was corrected at the next wake).",
     "No hour's average call is final until the accountant's next round or the one after: never write 'with the whole hour in' (corrected twice, 09:13 and 10:14). Quote the round and its call count.",
     "journal/mistakes-made-in-the-open.json m12 rests on commit 02590a4 and on the two cost pieces' dated lines, not on this file: this status file can still be rewritten freely",
-    "Twice this session a stamp was set from an earlier clock read and was a minute ahead by the time it was written (10:35, 11:22); both were caught before the commit. Read the clock in the same script that writes the time."
+    "Twice this session a stamp was set from an earlier clock read and was a minute ahead by the time it was written (10:35, 11:22); both were caught before the commit. Read the clock in the same script that writes the time.",
+    "14:17, sixth session: wakes cost about 15k tokens of context each; the session reached about 170k a call after four wakes. Read only status lines and new steps of traces (a small python over reporter/traces/<id>.json comparing with the last commit you pushed), never whole pages. Agents' status files are the most fragile supports: the perplexity desk's rewrite at 13:37 broke five at once."
   ],
   "session": {
     "id": "session_018yvwtPHC9kN4k98JrvQBNr",
@@ -115,6 +117,6 @@
       "one closing piece (10:35, journal/beginning-to-end.md): bring it to the hand-over when it happens",
       "the two corrections in Mistakes made in the open (10:35, section 9)"
     ],
-    "endings_state": "at 13:19: piece 7 answered (closed 13:12:51, by whom not on record); piece 10 open (hold stands; Thursday reached through the press as evidence); piece 12 open (no yes); piece 3 open (52 cards wait on Dinis at 13:12, the reporter's wind-down trace)"
+    "endings_state": "at 14:17: piece 7 answered (closed 13:12:51, by whom not on record); piece 10 open (hold stands; Thursday through the press as evidence, 13:04); piece 12 open (no yes at 12:10); piece 3 open (52 cards on Dinis at 13:12)"
   }
 }
