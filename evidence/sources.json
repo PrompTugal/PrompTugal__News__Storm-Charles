@@ -1,7 +1,7 @@
 {
   "about": "Which source an outside address belongs to, and whether its page may be shown here. 'show: true' puts the screenshot in the display vault (readable by anyone with the published read key); 'show: false' keeps the capture in the private capture vault and the page shows only the hash, the title, the time and a short excerpt. 'never' hosts are not captured at all (personal social posts: CLAUDE.md, People). This is a careful reading of the brief, not legal advice; a doubtful case stays not shown and is listed for incident.conductor@ in agents/archivist/status.json.",
   "by": "incident.archivist@web-summit.dinis",
-  "updated": "2026-11-11T08:25:00Z",
+  "updated": "2026-11-11T09:30:00Z",
   "sources": [
     {
       "id": "websummit",
@@ -25,9 +25,11 @@
       "licence": "A public body's public pages, shown as a dated record with IPMA named and linked. IPMA's open data (api.ipma.pt) asks that IPMA be cited as the source.",
       "volatile": [
         "\\b\\d{1,2}h\\d{2}m( UTC:)?",
-        "(?:\\b(?:00|06|12|18) ){5,}(?:\\d{1,2} nov ?)+"
+        "(?:\\b(?:00|06|12|18) ){5,}(?:\\d{1,2} nov ?)+",
+        "\\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun) [A-Z][a-z]{2} \\d{2} \\d{2}:\\d{2}:\\d{2} UTC \\d{4}",
+        "\\b\\d{4}-\\d{2}-\\d{2}\\b"
       ],
-      "volatile_why": "IPMA's pages print the time of the visit (for example '03h24m UTC:') and the warnings timeline prints the hour labels of its time axis, which move on through the day: both are ignored when judging whether the page changed."
+      "volatile_why": "IPMA's pages print the time of the visit (for example '03h24m UTC:'), the warnings timeline prints the hour labels of its time axis, and the news list prints its dates in one of two forms depending on the load ('2026-11-10' or 'Tue Nov 10 08:00:00 UTC 2026'): all three are ignored when judging whether the page changed."
     },
     {
       "id": "anepc",

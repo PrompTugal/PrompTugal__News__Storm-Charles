@@ -82,12 +82,13 @@ for (const r of byId.values()) {
     if (!src.show) r.licence = src.licence
     if (src.no_text) { delete r.excerpt; if (r.diff) { delete r.diff.added_text; delete r.diff.removed_text } }
 }
+const REVIEWED0 = (() => { try { return J(path.join(EV, 'reviewed.json')).reviewed } catch { return {} } })()
 // ---- 2. the chain of each address: earlier and later captures, changed or unchanged
 const all = [...byId.values()].sort((a, b) => a.read_utc.localeCompare(b.read_utc) || a.id.localeCompare(b.id))
 const chains = new Map()
 for (const r of all) { if (!chains.has(r.url)) chains.set(r.url, []); chains.get(r.url).push(r) }
 for (const chain of chains.values()) {
-    let prev = null
+    let prev = null, seen = new Set()   // seen: the text hashes this address has shown since its last real change (a page may alternate between two renderings)
     for (const r of chain) {
         if (!r.captured) { r.previous = prev ? prev.id : null; continue }
         r.previous = prev ? prev.id : null
@@ -97,7 +98,9 @@ for (const chain of chains.values()) {
         const vol = sourceOf(r.host).volatile
         if (vol && !r.sha256_text_stable) { try { let t = fs.readFileSync(path.join(CV, r.id, 'text.txt'), 'utf8'); for (const re of vol) t = t.replace(new RegExp(re, 'g'), ''); r.sha256_text_stable = crypto.createHash('sha256').update(t.replace(/\s+/g, ' ').trim()).digest('hex'); r.ignored = sourceOf(r.host).volatile_why } catch { /* no private copy here */ } }
         const tx = x => x.sha256_text_stable || x.sha256_text
-        r.changed = prev ? { text: tx(r) !== tx(prev), html: r.sha256_html !== prev.sha256_html, screenshot: r.sha256_screenshot !== prev.sha256_screenshot, status: r.status !== prev.status, since: prev.read_utc } : null
+        const known = seen.has(tx(r)), judgedSame = REVIEWED0[r.id]?.verdict === 'same content'
+        if (!prev || known || judgedSame) seen.add(tx(r)); else seen = new Set([tx(r)])
+        r.changed = prev ? { text: !known, html: r.sha256_html !== prev.sha256_html, screenshot: r.sha256_screenshot !== prev.sha256_screenshot, status: r.status !== prev.status, since: prev.read_utc } : null
         // what changed, in words: sentences of the visible text present in one capture and not the other (from the private copies)
         if (!r.changed?.text) delete r.diff
         if (r.changed?.text && !r.diff) {
