@@ -21,8 +21,53 @@ import { fileURLToPath } from 'node:url'
 import { spawnSync } from 'node:child_process'
 
 // Node's own fetch reads HTTPS_PROXY only with NODE_USE_ENV_PROXY=1 (Node >= 22.21): run again with it where a proxy is set.
-if ((process.env.HTTPS_PROXY || process.env.https_proxy) && !process.env.NODE_USE_ENV_PROXY) {
-    const r = spawnSync(process.execPath, ['--no-warnings', ...process.argv.slice(1)], { stdio: 'inherit', env: { ...process.env, NODE_USE_ENV_PROXY: '1' } })
+// Lusoponte's server sends the wrong intermediate certificate (its leaf is signed by Sectigo's "Public Server Authentication CA OV R36",
+// it sends another), so verification fails where a browser would fetch the right one from the leaf's AIA address. We add that public
+// intermediate (fetched from http://crt.sectigo.com/SectigoPublicServerAuthenticationCAOVR36.crt, 11 Nov 12:49 UTC; it chains to
+// Sectigo's "Public Server Authentication Root R46", already trusted) as an extra CA. Verification stays on for every host.
+const SECTIGO_OV_R36 = `-----BEGIN CERTIFICATE-----
+MIIGTDCCBDSgAwIBAgIQLBo8dulD3d3/GRsxiQrtcTANBgkqhkiG9w0BAQwFADBf
+MQswCQYDVQQGEwJHQjEYMBYGA1UEChMPU2VjdGlnbyBMaW1pdGVkMTYwNAYDVQQD
+Ey1TZWN0aWdvIFB1YmxpYyBTZXJ2ZXIgQXV0aGVudGljYXRpb24gUm9vdCBSNDYw
+HhcNMjEwMzIyMDAwMDAwWhcNMzYwMzIxMjM1OTU5WjBgMQswCQYDVQQGEwJHQjEY
+MBYGA1UEChMPU2VjdGlnbyBMaW1pdGVkMTcwNQYDVQQDEy5TZWN0aWdvIFB1Ymxp
+YyBTZXJ2ZXIgQXV0aGVudGljYXRpb24gQ0EgT1YgUjM2MIIBojANBgkqhkiG9w0B
+AQEFAAOCAY8AMIIBigKCAYEApkMtJ3R06jo0fceI0M52B7K+TyMeGcv2BQ5AVc3j
+lYt76TvHIu/nNe22W/RJXX9rWUD/2GE6GF5x0V4bsY7K3IeJ8E7+KzG/TGboySfD
+u+F52jqQBbY62ofhYjMeiAbLI02+FqwHeM8uIrUtcX8b2RCxF358TB0NHVccAXZc
+FYgZndZCeXxjuca7pJJ20LLUnXtgXcjAE1vY4WvbReW0W6mkeZyNGdmpTcFs5Y+s
+yy6LtE5Zocji9J9NlNnReox2RWVyEXpA1ChZ4gqN+ZpVSIQ0HBorVFbBKyhdZyEX
+gZgNSNtBRwxqwIzJePJhYd4ZUhO1vk+/uP3nwDk0p95q/j7naXNCSvESnrHPypaB
+WRK066nKfPRPi9m9kIOhMdYfS8giFRTcdgL24Ycilj7ecAK9Trh0VbjwouJ4WH+x
+bt47u68ZFCD/ac55I0DNHkCpaPruj6e9Rmr7K46wZDAYXuEAqB7tGG/jd6JAA+H2
+O44CV98NRsU213f1kScIZntNAgMBAAGjggGBMIIBfTAfBgNVHSMEGDAWgBRWc1hk
+lfmSGrASKgRieaFAFYghSTAdBgNVHQ4EFgQU42Z0u3BojSxdTg6mSo+bNyKcgpIw
+DgYDVR0PAQH/BAQDAgGGMBIGA1UdEwEB/wQIMAYBAf8CAQAwHQYDVR0lBBYwFAYI
+KwYBBQUHAwEGCCsGAQUFBwMCMBsGA1UdIAQUMBIwBgYEVR0gADAIBgZngQwBAgIw
+VAYDVR0fBE0wSzBJoEegRYZDaHR0cDovL2NybC5zZWN0aWdvLmNvbS9TZWN0aWdv
+UHVibGljU2VydmVyQXV0aGVudGljYXRpb25Sb290UjQ2LmNybDCBhAYIKwYBBQUH
+AQEEeDB2ME8GCCsGAQUFBzAChkNodHRwOi8vY3J0LnNlY3RpZ28uY29tL1NlY3Rp
+Z29QdWJsaWNTZXJ2ZXJBdXRoZW50aWNhdGlvblJvb3RSNDYucDdjMCMGCCsGAQUF
+BzABhhdodHRwOi8vb2NzcC5zZWN0aWdvLmNvbTANBgkqhkiG9w0BAQwFAAOCAgEA
+BZXWDHWC3cubb/e1I1kzi8lPFiK/ZUoH09ufmVOrc5ObYH/XKkWUexSPqRkwKFKr
+7r8OuG+p7VNB8rifX6uopqKAgsvZtZsq7iAFw04To6vNcxeBt1Eush3cQ4b8nbQR
+MQLChgEAqwhuXp9P48T4QEBSksYav7+aFjNySsLYlPzNqVM3RNwvBdvp6vgDtGwc
+xlKQZVuuNVIaoYyls8swhxDeSHKpRdxRauTLZ+pl+wGvy0pnrLEJGSz9mOEmfbod
+e/XopR2NGqaHJ6bIjyxPu6UtyQGI26En7UAEozACrHz06Nx2jTAY9E6NeB6XuobE
+wLK025ZRmvglcURG1BrV24tGHHTgxCe8M3oGlpUSMTKQ2dkgljZVYt+gKdFtWELZ
+MuRdi+X3XsrR8LFz+aLUiDRfQqhmw3RxjIyVKvvu9UPYY1nsvxYmFnUSeM+2q1z/
+iPUry+xDY9MC6+IhleKT094VKdFVp7LXH42+wvU+17lRolQ2mK2N/nBLVBwaIhib
+QXw4VYKwB86Bc6eS6iqsc94KEgD/U4VsjmgfhK+Xp4NM+VYzTTa3QeV3p8xOM0cw
+q1p8oZFA+OBcz3FYWpDIe5j0NWKlw9hXsTyPY/HeZUV59akskSOSRSmDfe8wJDPX
+58uB9/7lud0G3x0pxQAcffP0ayKavNwDTw4UfJ34cEw=
+-----END CERTIFICATE-----`
+if (!process.env.TRANSPORT_READ_CHILD) {
+    const extra = path.join(os.tmpdir(), 'transport-read-ca.pem')
+    let base = ''; try { if (process.env.NODE_EXTRA_CA_CERTS) base = fs.readFileSync(process.env.NODE_EXTRA_CA_CERTS, 'utf8') } catch {}
+    fs.writeFileSync(extra, base.trimEnd() + '\n' + SECTIGO_OV_R36 + '\n')
+    const env = { ...process.env, TRANSPORT_READ_CHILD: '1', NODE_EXTRA_CA_CERTS: extra }
+    if (process.env.HTTPS_PROXY || process.env.https_proxy) env.NODE_USE_ENV_PROXY = '1'
+    const r = spawnSync(process.execPath, ['--no-warnings', ...process.argv.slice(1)], { stdio: 'inherit', env })
     process.exit(r.status ?? 1)
 }
 
@@ -291,10 +336,65 @@ async function trains() {
     return items
 }
 
+// ---------- bridges: Lusoponte's own notices ("destaques") on its site. robots.txt allows everything; no terms of use found
+// (a privacy and a cookie policy only): short excerpts with the link. The homepage lists the notices newest first; we read the
+// first three and keep those dated in the last three days. Its "Atualização: 11 de novembro, 11h30" line is Lisbon time.
+const EN_MONTHS = { january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9, october: 10, november: 11, december: 12 }
+async function bridges() {
+    const items = [], LP = 'https://www.lusoponte.pt'
+    const home = await get('lusoponte-home', LP + '/', { json: false })
+    if (home.rec.status !== 200 || !home.body) {
+        items.push({ id: 'lusoponte', operator: 'Lusoponte (25 de Abril and Vasco da Gama bridges)', mode: 'bridge', label: 'none', note: `its site did not answer (status ${home.rec.status}${home.rec.error ? ', ' + home.rec.error : ''})`, source: LP + '/', read: home.rec.read })
+        return items
+    }
+    const slugs = [...new Set([...home.body.matchAll(/<h3>\s*<a href="(\/destaques\/[a-z0-9-]+)"/g)].map(m => m[1]))].slice(0, 3)
+    const notices = []; let lastRead = home.rec
+    for (const sl of slugs) {
+        const p = await get('lusoponte-destaque', LP + sl, { json: false }); lastRead = p.rec
+        if (p.rec.status !== 200 || !p.body) continue
+        const art = p.body.slice(p.body.indexOf('news-article-row'), p.body.indexOf('Outros destaques') > 0 ? p.body.indexOf('Outros destaques') : undefined)
+        const title = strip((/<h1>([\s\S]*?)<\/h1>/.exec(art) || [])[1])
+        const dm = /<time>\s*([A-Za-z]+) (\d{1,2})\w{0,2}, (\d{4})\s*<\/time>/.exec(art)
+        const day = dm && EN_MONTHS[dm[1].toLowerCase()] ? [+dm[3], EN_MONTHS[dm[1].toLowerCase()], +dm[2]] : null
+        const bodyHtml = art.slice(Math.max(0, art.indexOf('template-simplepage-text')))
+        let text = strip(bodyHtml.replace(/^[^>]*>/, ''))
+        const up = /Atualiza[çc][ãa]o:\s*(\d{1,2}) de ([a-zç]+),?\s*(\d{1,2})h(\d{2})/i.exec(text)
+        const updated = up && day && PT_MONTHS[up[2].toLowerCase()] ? lisbonToUtc(day[0], PT_MONTHS[up[2].toLowerCase()], +up[1], +up[3], +up[4]) : null
+        if (up) text = text.slice(up.index + up[0].length).trim()
+        if (!day) continue
+        const dayIso = `${day[0]}-${String(day[1]).padStart(2, '0')}-${String(day[2]).padStart(2, '0')}`
+        notices.push({ title, published_day: dayIso, updated, ...(up ? { updated_local: `${up[1]} ${Object.keys(EN_MONTHS)[PT_MONTHS[up[2].toLowerCase()] - 1].replace(/^./, c => c.toUpperCase())}, ${up[3].padStart(2, '0')}:${up[4]} Lisbon time` } : {}), excerpt: excerpt(text, 400), link: LP + sl, read: p.rec.read, sha256: p.rec.sha256 })
+    }
+    const since = Date.now() - 3 * 86400e3
+    const keep = notices.filter(n => Date.parse(n.updated || n.published_day + 'T23:59:59Z') >= since)
+    const latest = keep[0]
+    items.push({
+        id: 'lusoponte', operator: 'Lusoponte (25 de Abril and Vasco da Gama bridges)', mode: 'bridge', label: keep.length ? 'fact' : 'none',
+        state: latest ? `its newest notice${latest.updated_local ? ', updated ' + latest.updated_local : ''}: ${latest.title}` : 'no notice in the last three days on its site',
+        notices: keep.map(n => ({ title: n.title, excerpt: n.excerpt, published: n.updated || null, published_day: n.published_day, link: n.link, read: n.read, sha256: n.sha256 })),
+        link: LP + '/', source: LP + '/', read: home.rec.read, sha256: home.rec.sha256, kind: 'its own notices ("destaques") on its site; short excerpts, the notice one click away',
+        licence: 'No terms of use found (a privacy and a cookie policy only); robots.txt allows all: short excerpts with the link',
+        ...(keep.length ? {} : { note: 'its site answered; no notice dated in the last three days' }),
+    })
+    return items
+}
+
+// --only bridges: read and write just that mode (e.g. in a fresh container before the raw store is cloned, when a full run
+// would rebuild flights.json from this one reading and lose the day's coverage).
+if (arg('only', '') === 'bridges') {
+    const br = await bridges(), updated = iso(Date.now())
+    const j = { about: 'Bridges and tunnels: each operator\'s own site, feed or open API first; the press only where the operator publishes nothing readable (those are the researcher\'s decisions, linked). Short excerpts with the link.', mode: 'bridges', by: BY, updated, not_a_warning_service: 'Not a warning service. No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. For warnings follow IPMA and ANEPC.', sources_page: 'transport/sources.md', operators: br, decisions_elsewhere: ['bridges', 'tunnels'].map(e => `incidents/2026-11-10-storm-charles/data/decisions/entities/${e}.json`) }
+    if (DRY) { console.log(JSON.stringify(j, null, 1)); process.exit(0) }
+    writeJ(path.join(OUT, 'bridges.json'), j)
+    fs.appendFileSync(path.join(ROOT, 'transport/reads.jsonl'), reads.map(r => JSON.stringify(r)).join('\n') + '\n')
+    console.log(`transport (bridges only): ${br.map(s => `${s.id} ${s.label}${s.notices ? ' ' + s.notices.length : ''}`).join(' · ')} · store ${STORE}`)
+    process.exit(0)
+}
 const fl = await flights()
 const tr = await trains()
 const sv = await services()
 const mt = await metro()
+const br = await bridges()
 const updated = iso(Date.now())
 const common = { by: BY, updated, not_a_warning_service: 'Not a warning service. No advice of ours. Your airline or operator decides whether your flight or service runs: its site or app has the latest. For warnings follow IPMA and ANEPC.', sources_page: 'transport/sources.md' }
 const flightsJ = {
@@ -306,13 +406,13 @@ const servicesJ = {
     ...common, operators: sv,
     decisions_elsewhere: ['airport', 'tap', 'metro', 'cp', 'ferries', 'bridges', 'tunnels', 'rede-expressos', 'flixbus', 'port'].map(e => `incidents/2026-11-10-storm-charles/data/decisions/entities/${e}.json`),
 }
-if (DRY) { console.log(JSON.stringify({ flightsJ, servicesJ }, null, 1).slice(0, 4000)); process.exit(0) }
+if (DRY) { console.log(JSON.stringify({ bridges: br }, null, 1)); console.log(JSON.stringify({ flightsJ, servicesJ }, null, 1).slice(0, 1500)); process.exit(0) }
 writeJ(path.join(OUT, 'flights.json'), flightsJ)
 writeJ(path.join(OUT, 'services.json'), servicesJ)
 const modeJ = (mode, title, operators, decisions) => ({ about: `${title}: each operator's own site, feed or open API first; the press only where the operator publishes nothing readable (those are the researcher's decisions, linked). Short excerpts with the link.`, mode, ...common, operators, decisions_elsewhere: decisions.map(e => `incidents/2026-11-10-storm-charles/data/decisions/entities/${e}.json`) })
-const MODES = { metro: modeJ('metro', 'Metro and light rail', mt, ['metro']), buses: modeJ('buses', 'Buses and trams', sv.filter(o => o.mode === 'bus'), []), ferries: modeJ('ferries', 'Ferries', sv.filter(o => o.mode === 'ferry'), ['ferries']), trains: modeJ('trains', 'Trains', tr, ['cp']) }
+const MODES = { metro: modeJ('metro', 'Metro and light rail', mt, ['metro']), buses: modeJ('buses', 'Buses and trams', sv.filter(o => o.mode === 'bus'), []), ferries: modeJ('ferries', 'Ferries', sv.filter(o => o.mode === 'ferry'), ['ferries']), trains: modeJ('trains', 'Trains', tr, ['cp']), bridges: modeJ('bridges', 'Bridges and tunnels', br, ['bridges', 'tunnels']) }
 for (const [m, j] of Object.entries(MODES)) writeJ(path.join(OUT, m + '.json'), j)
 fs.mkdirSync(path.join(ROOT, 'transport'), { recursive: true })
 fs.appendFileSync(path.join(ROOT, 'transport/reads.jsonl'), reads.map(r => JSON.stringify({ ...r, url: r.url.replace(/begin=\d+&end=\d+/, 'begin=…&end=…') })).join('\n') + '\n')
-for (const f of ['flights.json', 'services.json', 'metro.json', 'buses.json', 'ferries.json', 'trains.json']) { const s = fs.statSync(path.join(OUT, f)).size; if (s > 256 * 1024) { console.error(`${f} is ${s} bytes, over 256 KB`); process.exit(1) } }
-console.log(`transport: ${fl.map(a => `${a.iata} dep ${a.departures_today.count ?? '—'} live ${a.live_snapshot.on_ground ?? '—'}/${a.live_snapshot.airborne_low ?? '—'}`).join(' · ')} · ${[...sv, ...mt, ...tr].map(s => `${s.id} ${s.label}${s.notices ? ' ' + s.notices.length : ''}`).join(' · ')} · store ${STORE}`)
+for (const f of ['flights.json', 'services.json', 'metro.json', 'buses.json', 'ferries.json', 'trains.json', 'bridges.json']) { const s = fs.statSync(path.join(OUT, f)).size; if (s > 256 * 1024) { console.error(`${f} is ${s} bytes, over 256 KB`); process.exit(1) } }
+console.log(`transport: ${fl.map(a => `${a.iata} dep ${a.departures_today.count ?? '—'} live ${a.live_snapshot.on_ground ?? '—'}/${a.live_snapshot.airborne_low ?? '—'}`).join(' · ')} · ${[...sv, ...mt, ...tr, ...br].map(s => `${s.id} ${s.label}${s.notices ? ' ' + s.notices.length : ''}`).join(' · ')} · store ${STORE}`)

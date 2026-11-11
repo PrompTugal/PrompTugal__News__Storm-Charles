@@ -1,6 +1,6 @@
 # Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:46 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:55 UTC
 
 Not a warning service. No advice of ours. **Your airline or operator decides whether your flight or service runs: its site or app has the latest.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -41,7 +41,7 @@ Our client name, on every request: `storm-charles.promptugal.news newsroom reade
 |---|---|---|---|---|---|
 | Carris Metropolitana alerts | Open API `/v2/alerts` (GTFS-realtime alerts as JSON) | Yes | Its network data is **CC BY** on dados.gov.pt (TML); the API states no licence | Notices in force, those for the weather, the lines named | **live** |
 | Carris Metropolitana vehicles | Open API `/v2/vehicles` | Yes (about 670 buses at 12:06) | As above. Counts only | Buses running now, on how many lines, hour by hour from our readings | **live** |
-| Carris (Lisbon's buses, trams, lifts) | Its site; no open feed: dados.gov.pt has no Carris (city) GTFS or real-time set (searched 12:46; only the city's 2023 bus-speed challenges, CC BY) | The site answers; no robots.txt (404), no WordPress API | To read: its terms and a notices page first | Lines and trams running | **next**: its own notices page, after its terms |
+| Carris (Lisbon's buses, trams, lifts) | Its site; no open feed: dados.gov.pt has no Carris (city) GTFS or real-time set (searched 12:46; only the city's 2023 bus-speed challenges, CC BY) | The site answers; no robots.txt (404), no WordPress API | [Its terms](https://www.carris.pt/a-carris/termos-e-condicoes/), clause 2.1: content "só podem ser utilizados para informação pessoal"; 2.2: none of it may be "reproduzido, publicado … sem o prévio consentimento escrito da CARRIS" (read 12:48) | Lines and trams running | **terms**: link only to its [service changes](https://www.carris.pt/viaje/alteracoes-de-servico/) page; its consent is a question for Dinis |
 | STCP (Porto buses) | Real-time positions on dados.gov.pt (Porto Digital's urban platform, NGSI) | Yes (170 buses at 12:13) | **CC0** | Buses running now in Porto | **live** (12:15): counts only, in buses.json and services.json |
 
 ## Ferries and the port ([page](ferries.md))
@@ -66,7 +66,7 @@ Only what an operator or an authority states. Ride-hailing apps (Uber, Bolt) pub
 
 | Source | How | Answers here | Terms | The visual | Status |
 |---|---|---|---|---|---|
-| Lusoponte (25 de Abril, Vasco da Gama) | Its site | Did not connect from here | | Each bridge: open, limited, closed | **next** (retry; else the press via the researcher) |
+| Lusoponte (25 de Abril, Vasco da Gama) | Its own notices ("destaques") on [lusoponte.pt](https://www.lusoponte.pt/): the homepage lists them newest first; each notice page carries an "Atualização" time (Lisbon) | Yes (12:49). Its server sends the wrong intermediate certificate, so strict clients fail where browsers fetch the right one; the reader adds Sectigo's public intermediate (OV R36, from the leaf's own AIA address) and verification stays on. [robots.txt](https://www.lusoponte.pt/robots.txt) allows all | No terms of use found (a privacy and a cookie policy only): short excerpts with the link | Its newest notices: speed limits, closures | **live** (12:52): [bridges.json](../incidents/2026-11-10-storm-charles/data/transport/bridges.json) |
 | Infraestruturas de Portugal, Lisbon city (tunnels) | Their sites | Not tried yet | | | **next** |
 
 ## For Dinis (listed, not worked around)
@@ -76,3 +76,4 @@ Only what an operator or an authority states. Ride-hailing apps (Uber, Bolt) pub
 3. Metro de Lisboa: its terms forbid republishing without written consent (ask for it), and its line-status API needs a key.
 4. OpenSky's full terms page did not answer from here: a person reads it.
 5. Rede Expressos sits behind a protection service.
+6. Carris (Lisbon city): its terms forbid publishing without its written consent (as Metro's); ask for it.

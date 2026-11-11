@@ -11,11 +11,11 @@
     { id: 'flights', name: 'Flights', page: 'flights', file: 'flights.json', ents: ['airport', 'tap'], ops: 'Lisbon, Porto, Faro and Funchal airports (OpenSky Network)' },
     { id: 'trains', name: 'Trains', page: 'trains', file: 'trains.json', ents: ['cp'], ops: 'CP, Fertagus' },
     { id: 'metro', name: 'Metro and light rail', page: 'metro', file: 'metro.json', sched: 'metro-schedule.json', ents: ['metro'], ops: 'Metro de Lisboa, Metro do Porto, MTS' },
-    { id: 'buses', name: 'Buses and trams', page: 'buses', file: 'buses.json', ents: [], ops: 'Carris Metropolitana; Carris (next)' },
+    { id: 'buses', name: 'Buses and trams', page: 'buses', file: 'buses.json', ents: [], ops: 'Carris Metropolitana; Carris (city): its terms forbid republishing, link only' },
     { id: 'ferries', name: 'Ferries and the port', page: 'ferries', file: 'ferries.json', ents: ['ferries', 'port'], ops: 'Transtejo Soflusa' },
     { id: 'coaches', name: 'Coaches', page: 'coaches', file: null, ents: ['rede-expressos', 'flixbus'], ops: 'Rede Expressos, FlixBus' },
     { id: 'taxis', name: 'Taxis and ride-hailing', page: 'taxis', file: null, ents: [], ops: 'only what operators or authorities state' },
-    { id: 'bridges', name: 'Bridges and tunnels', page: 'bridges', file: null, ents: ['bridges', 'tunnels'], ops: 'Lusoponte, Infraestruturas de Portugal, the city' }
+    { id: 'bridges', name: 'Bridges and tunnels', page: 'bridges', file: 'bridges.json', ents: ['bridges', 'tunnels'], ops: 'Lusoponte (its own notices); Infraestruturas de Portugal, the city (next)' }
   ]
   var M = MODES.filter(function (m) { return m.id === mode })[0]
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] }) }
