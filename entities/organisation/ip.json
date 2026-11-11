@@ -1,0 +1,36 @@
+{
+ "id": "organisation/ip",
+ "type": "organisation",
+ "name": "Infraestruturas de Portugal",
+ "also": [
+  "Infraestruturas de Portugal (IP)"
+ ],
+ "match": {
+  "none": [
+   "Infraestruturas de Portugal (IP)"
+  ]
+ },
+ "summary": "Manages the national rail and road networks (speed limits, inspections).",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://www.infraestruturasdeportugal.pt/pt-pt/alerta-condicoes-meteorologicas-adversas",
+  "read_utc": "2026-11-11T13:19Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/ip"
+ },
+ "graph": null,
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/ip-rail-restrictions",
+   "label": "fact",
+   "source": "https://www.infraestruturasdeportugal.pt/pt-pt/alerta-condicoes-meteorologicas-adversas",
+   "read_utc": "2026-11-11T13:19Z",
+   "says": "IP (its own alert, dated 10 Nov): rail traffic runs with restrictions, including speed limits in the highest-risk areas, and service may change as the weather develops; surveillance of the road and rail networks reinforced (paraphrased: IP's terms bar…",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ip-rail-restrictions",
+   "decision": "ip-rail-restrictions"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T13:39Z"
+}
