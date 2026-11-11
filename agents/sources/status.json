@@ -1,7 +1,7 @@
 {
  "agent": "incident.sources@web-summit.dinis",
  "state": "active: hourly rounds; MeteoAlarm's Portugal feed last changed at the 08:24 read (IPMA's messages sent 07:16:30 on 11 Nov)",
- "last_wake": "2026-11-11T10:25:00Z",
+ "last_wake": "2026-11-11T11:28:00Z",
  "done": [
   "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
   "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet registered",
@@ -23,7 +23,8 @@
   "09:30 UTC: agents/sources/HANDOVER.md written for a fresh sources session (what exists, the hourly round, the rules learnt, the vault, what is open with Dinis)",
   "09:42 UTC: at Dinis's yes in this session (09:38 and 09:40 UTC), the key of vault op6i3jfq was sealed to incident.conductor@'s public key and appended to the conductor's key lane (tools/lane-handover.mjs seal --via-lane): key sent; nothing printed but the vault id",
   "09:43 UTC: the conductor drained its key lane: vault op6i3jfq's key sent, held by the conductor since 09:43 UTC",
-  "10:25 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired); the archivist asked how it wants the vault's read key"
+  "10:25 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired); the archivist asked how it wants the vault's read key",
+  "11:28 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired). 10:26: the read key of vault op6i3jfq could not be printed here (this session's permission check refused it); the archivist lists the vault by id with no read key until the conductor supplies it or Dinis allows the read"
  ],
  "next": [
   "the government portal's section (communiqués, the alert declaration's address); ANEPC's occurrences map mapped (what the ArcGIS application calls)",
@@ -32,6 +33,7 @@
   "the read key of vault op6i3jfq into data/vaults.json (incident.archivist@'s file): ask the archivist how it wants it"
  ],
  "asks": [
+  "Dinis: the read key of vault op6i3jfq (public by design; it lets the site's pages read the full feed copies) is not published: this session's permission check refused printing it from the creation log. Either the conductor, who holds the vault key since 09:43, passes the read key to incident.archivist@ for data/vaults.json, or you allow that one read here.",
   "Dinis: Web Summit's terms (updated 27 October 2026, sections 48.2 and 52.1) forbid any 'bot, script ... scraper, artificial intelligence agent or other automated means' on its websites and apps, and forbid archiving, storing or summarising their content. This site polls websummit.com's blog every 2 minutes (tools/websummit-poll.sh), captures its pages and has 10 timeline rows linking to it. Your decision: stop the automated reads and keep only links and facts stated in our own words with the time a person or agent saw them; or continue, knowing the terms. This agent makes no further requests there. Detail: sources/websummit/ (the licence).",
   "Dinis: MeteoAlarm's archive (where Madeira's Tuesday-afternoon warnings can be looked for) needs a key: a free MeteoGate account and API key (devportal.meteogate.eu), or a token asked of MeteoAlarm as a re-distributor. Either is an account in someone's name: your decision. With a key, it goes in the environment's network secrets, never in git.",
   "incident.entities@: node ids are in sources/sources.json (`node`: source:<id>) and sources/meteoalarm/source.json (`nodes`); tell me if you want another shape.",
@@ -50,9 +52,9 @@
   }
  ],
  "reads": {
-  "meteoalarm_portugal": 13,
+  "meteoalarm_portugal": 14,
   "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
  },
- "updated": "2026-11-11T10:25:00Z",
+ "updated": "2026-11-11T11:28:00Z",
  "by": "incident.sources@web-summit.dinis"
 }
