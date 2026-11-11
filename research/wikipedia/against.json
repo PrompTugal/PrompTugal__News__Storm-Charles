@@ -2,7 +2,7 @@
  "about": "This site against Wikipedia, both ways. wikipedia_to_us: for each Wikipedia claim, the timeline row (by permanent id) that says the same, the data file that holds it, or that it is missing here. us_to_wikipedia: for each of our key facts, whether each language has the subject, whether it has our time, the revision in which it first appeared and whom it cites. Every relation is our analysis of two bodies of evidence; a pattern match on wikitext finds the subject, not agreement.",
  "by": "incident.wikipedia@web-summit.dinis",
  "tool": "tools/wikipedia-claims.mjs",
- "updated": "2026-11-11T19:02:38Z",
+ "updated": "2026-11-11T19:55:39Z",
  "attribution": "Wikipedia's text is by Wikipedia's contributors, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Each statement here is our own English paraphrase; the anchor is a few words of the article, quoted to find the sentence; the exact revision is linked.",
  "revisions": {
   "pt": {
@@ -15,10 +15,10 @@
   },
   "en": {
    "page": "2026–27 European windstorm season",
-   "revision": 1385065432,
-   "url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
-   "revision_at": "2026-11-11T18:12:55Z",
-   "latest_revision": 1385065432,
+   "revision": 1385074505,
+   "url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
+   "revision_at": "2026-11-11T19:15:29Z",
+   "latest_revision": 1385074505,
    "stale": false
   },
   "zh": {
@@ -49,15 +49,15 @@
   "about": "What this team found when it went to the primary source for a Wikipedia statement. Wikipedia is a lead for us, never the source.",
   "counts": {
    "verified at primary source": 18,
-   "not checked by us": 54,
-   "not established at source": 4,
+   "not checked by us": 57,
+   "not established at source": 3,
    "press only": 2
   },
   "footnote_kinds": {
-   "primary": 12,
-   "press": 56,
+   "primary": 14,
+   "press": 55,
    "primary and press": 3,
-   "no footnote": 7
+   "no footnote": 8
   },
   "not_established": [
    {
@@ -71,10 +71,6 @@
    {
     "claim": "w-pt-23",
     "why": "No such notice was found on the environment agency's own site by incident.researcher@ (01:45 to 01:50 UTC on 11 November). The figure rests on the radio report Wikipedia cites."
-   },
-   {
-    "claim": "w-en-04",
-    "why": "The Hurricane Center's own archived outlooks label the low AL94 on 6 November (11:37 UTC), not 7; and no source read says it became Charles (data/weather/analysis.md, section 8b, a hypothesis)."
    }
   ]
  },
@@ -112,16 +108,16 @@
    }
   },
   "en": {
-   "footnote_marks": 156,
-   "distinct_sources": 114,
-   "primary": 3,
-   "press": 111,
+   "footnote_marks": 164,
+   "distinct_sources": 116,
+   "primary": 4,
+   "press": 112,
    "with_a_Lusa_byline": 0,
    "lusa_share_of_press": 0,
    "note": "whole page for an article; for a season article, the whole season page, not only the storm's section. A wire is counted only where the footnote itself gives it as author or agency: a newspaper relaying the wire without saying so cannot be seen from the footnote.",
    "by_outlet": {
+    "The Independent": 7,
     "Met Office": 6,
-    "The Independent": 6,
     "BBC News": 5,
     "Météo-France": 3,
     "Focus Online": 3,
@@ -134,9 +130,11 @@
     "Meteociel": 2,
     "The Irish Times": 2,
     "TheJournal.ie": 2,
+    "Anadolu Agency": 2,
     "Institute of Meteorology, Free University of Berlin": 2,
     "meteo365.es": 2,
     "To Vima": 2,
+    "Proto Thema": 2,
     "The Olive Press": 2,
     "Danish Meteorological Institute": 1,
     "Servizio Meteorologico": 1,
@@ -164,13 +162,11 @@
     "Bailiwick Express": 1,
     "www.express.co.uk": 1,
     "Waterford Live": 1,
-    "Anadolu Agency": 1,
     "Bloomberg News / Insurance Journal": 1,
     "Météo Paris": 1,
     "UK Tides": 1,
     "nltimes.nl": 1,
     "Wikifarmer": 1,
-    "Proto Thema": 1,
     "Parapolitika": 1,
     "Madeira Island News": 1,
     "MitKat Advisory": 1,
@@ -182,12 +178,8 @@
     "Tenerife Weekly": 1,
     "Teneriffa News": 1,
     "Portugal.fr / IPMA": 1,
-    "ClickOrlando": 1,
-    "WESH": 1,
-    "Yahoo News": 1,
-    "Index-Journal": 1,
-    "Meteored España": 1,
-    "Voces de Cuenca": 1,
+    "National Hurricane Center": 1,
+    "Barna News": 1,
     "ipma.pt": 1,
     "Infobae": 1,
     "Estrella Digital": 1,
@@ -198,6 +190,9 @@
     "Vozpópuli": 1,
     "Mirametv": 1,
     "Diario de Avisos": 1,
+    "UA.News": 1,
+    "UNN": 1,
+    "Channel NewsAsia": 1,
     "canarianweekly.com": 1,
     "www.highlandweather.info": 1
    }
@@ -255,7 +250,7 @@
  "counts": {
   "matches": 19,
   "in-data": 12,
-  "missing": 40,
+  "missing": 42,
   "behind": 6,
   "differs": 1
  },
@@ -300,7 +295,9 @@
    "w-vi-02",
    "w-pt-48",
    "w-pt-49",
-   "w-en-23"
+   "w-en-23",
+   "w-en-24",
+   "w-en-25"
   ],
   "in_our_data_but_no_timeline_row": [
    "w-pt-07",
@@ -1846,111 +1843,100 @@
   },
   {
    "our_check": "not checked by us",
-   "our_check_note": "The Hurricane Center's archived outlooks were read by incident.meteorologist@ (analysis.md, section 8b): a low expected from 2 November, the chance rising to 50% by 4 November. These exact figures were not compared one by one.",
-   "footnote_kind": "press",
+   "footnote_kind": "primary",
    "footnote_wire": [],
    "claim": "w-en-01",
    "lang": "en",
    "topic": "origin",
-   "statement": "The storm began as a non-tropical low over the western subtropical Atlantic, formed on a weakening front a few hundred miles south of Bermuda in early November.",
+   "statement": "The storm began in early November as a non-tropical Atlantic low south of Bermuda. (Rewritten for the revision of 19:15 UTC on 11 November, which replaced the section's origin paragraphs; the earlier claim is in git history.)",
    "relation": "missing",
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
-   "files": [
-    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
-   ],
+   "files": [],
    "wikipedia_first_seen": {
-    "revision": 1384920191,
-    "at": "2026-11-10T20:32:52Z",
-    "url": "https://en.wikipedia.org/w/index.php?oldid=1384920191"
+    "revision": 1385074505,
+    "at": "2026-11-11T19:15:29Z",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1385074505"
    },
    "cites": [
-    "ClickOrlando"
+    "National Hurricane Center"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
    "our_check": "not checked by us",
-   "our_check_note": "The Hurricane Center's archived outlooks were read by incident.meteorologist@ (analysis.md, section 8b): a low expected from 2 November, the chance rising to 50% by 4 November. These exact figures were not compared one by one.",
-   "footnote_kind": "press",
+   "footnote_kind": "primary",
    "footnote_wire": [],
    "claim": "w-en-02",
    "lang": "en",
    "topic": "origin",
-   "statement": "The US National Hurricane Center began following it in its outlooks on 3 November, at a 10% chance of development within 48 hours and 30% within seven days.",
+   "statement": "The US National Hurricane Center briefly monitored it as Invest 94L (AL94) for possible subtropical development (cited to the Center's outlook page, dated 7 November). (Rewritten for the revision of 19:15 UTC on 11 November, which replaced the section's origin paragraphs; the earlier claim is in git history.)",
    "relation": "missing",
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
-   "files": [
-    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
-   ],
+   "files": [],
    "wikipedia_first_seen": {
-    "revision": 1384920191,
-    "at": "2026-11-10T20:32:52Z",
-    "url": "https://en.wikipedia.org/w/index.php?oldid=1384920191"
+    "revision": 1385074505,
+    "at": "2026-11-11T19:15:29Z",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1385074505"
    },
    "cites": [
-    "ClickOrlando"
+    "National Hurricane Center"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
    "our_check": "not checked by us",
-   "our_check_note": "The Hurricane Center's archived outlooks were read by incident.meteorologist@ (analysis.md, section 8b): a low expected from 2 November, the chance rising to 50% by 4 November. These exact figures were not compared one by one.",
    "footnote_kind": "press",
    "footnote_wire": [],
    "claim": "w-en-03",
    "lang": "en",
    "topic": "origin",
-   "statement": "By 6 November the Center had lowered both chances to 20%, saying the low might only briefly become subtropical before another low absorbed it.",
+   "statement": "Numerical models forecast rapid deepening to near 980 hPa as it neared Macaronesia and Iberia. (Rewritten for the revision of 19:15 UTC on 11 November, which replaced the section's origin paragraphs; the earlier claim is in git history.)",
    "relation": "missing",
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
-   "files": [
-    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
-   ],
+   "files": [],
+   "note": "Our analysis row quotes a model minimum of 986.7 hPa (s-1111T0000, a hypothesis); 980 hPa is not on this site.",
    "wikipedia_first_seen": {
-    "revision": 1384920191,
-    "at": "2026-11-10T20:32:52Z",
-    "url": "https://en.wikipedia.org/w/index.php?oldid=1384920191"
+    "revision": 1385074505,
+    "at": "2026-11-11T19:15:29Z",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1385074505"
    },
    "cites": [
-    "Yahoo News"
+    "Barna News"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
-   "our_check": "not established at source",
-   "our_check_note": "The Hurricane Center's own archived outlooks label the low AL94 on 6 November (11:37 UTC), not 7; and no source read says it became Charles (data/weather/analysis.md, section 8b, a hypothesis).",
+   "our_check": "not checked by us",
    "footnote_kind": "press",
    "footnote_wire": [],
    "claim": "w-en-04",
    "lang": "en",
-   "topic": "origin",
-   "statement": "On 7 November the Center's outlook labelled the low Invest 94L, several hundred miles south-south-east of Bermuda.",
+   "topic": "other-measures",
+   "statement": "The national government closed all public schools, universities and non-essential municipal operations on 11 November and advised residents to stay indoors (cited to Channel NewsAsia). (Rewritten for the revision of 19:15 UTC on 11 November, which replaced the section's origin paragraphs; the earlier claim is in git history.)",
    "relation": "missing",
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
-   "files": [
-    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
-   ],
-   "note": "A hidden note left in the wikitext by an editor says the sources do not state that 94L became Charles and asks for it to be checked. Wikipedia itself marks this as unverified.",
+   "files": [],
+   "note": "A press summary, not read at the government; \"all\" is not established on this site.",
    "wikipedia_first_seen": {
-    "revision": 1384920191,
-    "at": "2026-11-10T20:32:52Z",
-    "url": "https://en.wikipedia.org/w/index.php?oldid=1384920191"
+    "revision": 1385073829,
+    "at": "2026-11-11T19:10:06Z",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1385073829"
    },
    "cites": [
-    "Index-Journal"
+    "Channel NewsAsia"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -1960,21 +1946,21 @@
    "claim": "w-en-05",
    "lang": "en",
    "topic": "origin",
-   "statement": "Charles kept its subtropical origins as it crossed the Atlantic under the subtropical jet, leaving heavy rain from near Bermuda onward. Footnoted to a Spanish weather site (Meteored); until the revision of 18:12 UTC on 11 November the sentence named it in the text (\"According to the Spanish weather service Meteored\"), an edit whose summary says it removes reference to any particular medium.",
+   "statement": "Tracking east-north-east under the subtropical jet, it kept hybrid features (strong core convection, a warm core) before meeting an upper trough. (Rewritten for the revision of 19:15 UTC on 11 November, which replaced the section's origin paragraphs; the earlier claim is in git history.)",
    "relation": "missing",
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
    "files": [],
    "wikipedia_first_seen": {
-    "revision": 1384920191,
-    "at": "2026-11-10T20:32:52Z",
-    "url": "https://en.wikipedia.org/w/index.php?oldid=1384920191"
+    "revision": 1385074505,
+    "at": "2026-11-11T19:15:29Z",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1385074505"
    },
    "cites": [
-    "Meteored España"
+    "Barna News"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2014,7 +2000,7 @@
    "cites": [
     "ipma.pt"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2040,7 +2026,7 @@
    "cites": [
     "Infobae"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2078,7 +2064,7 @@
     "url": "https://en.wikipedia.org/w/index.php?oldid=1384920191"
    },
    "cites": [],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2111,7 +2097,7 @@
    "cites": [
     "Euronews"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2151,7 +2137,7 @@
    "cites": [
     "Portugal Decoded"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2212,7 +2198,7 @@
    "cites": [
     "Portugal Decoded"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2252,7 +2238,7 @@
    "cites": [
     "Portugal Decoded"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2283,7 +2269,7 @@
    "cites": [
     "Euronews"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2335,7 +2321,7 @@
    "cites": [
     "Portugal Decoded"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2360,7 +2346,7 @@
     "Estrella Digital",
     "sextaNoticias, via Headtopics"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2384,7 +2370,7 @@
    "cites": [
     "Vozpópuli"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2416,7 +2402,7 @@
    "cites": [
     "Estrella Digital"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2441,7 +2427,7 @@
    "cites": [
     "Estrella Digital"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2466,7 +2452,7 @@
    "cites": [
     "Mirametv"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2490,7 +2476,7 @@
    "cites": [
     "Mirametv"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2513,7 +2499,7 @@
     "url": "https://en.wikipedia.org/w/index.php?oldid=1384920191"
    },
    "cites": [],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2536,7 +2522,7 @@
     "url": "https://en.wikipedia.org/w/index.php?oldid=1384438816"
    },
    "cites": [],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   },
   {
@@ -2842,7 +2828,56 @@
    "cites": [
     "canarianweekly.com"
    ],
-   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385065432",
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
+   "label": "our analysis of evidence"
+  },
+  {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
+   "claim": "w-en-24",
+   "lang": "en",
+   "topic": "transport",
+   "statement": "Over 200 flights cancelled, 184 at Lisbon airport alone; 18 harbour entrances closed to navigation; ANEPC logged at least 538 incidents on the mainland, concentrated in Greater Lisbon, the Setúbal peninsula, Alentejo and the Algarve (from 19:15 UTC on 11 November; press citations: Anadolu, Channel NewsAsia, others).",
+   "relation": "missing",
+   "means": "nowhere on this site",
+   "timeline": [],
+   "decisions": [],
+   "files": [],
+   "note": "Our rows hold 222 cancelled by 09:20 and a later press count (s-1111T1037, s-1111T1236); the 538 ANEPC figure and the 18 harbours are not on this site. Leads, not read at ANA or ANEPC.",
+   "wikipedia_first_seen": {
+    "revision": 1385073829,
+    "at": "2026-11-11T19:10:06Z",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1385073829"
+   },
+   "cites": [
+    "The Independent",
+    "Anadolu Agency"
+   ],
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
+   "label": "our analysis of evidence"
+  },
+  {
+   "our_check": "not checked by us",
+   "footnote_kind": "no footnote",
+   "footnote_wire": [],
+   "claim": "w-en-25",
+   "lang": "en",
+   "topic": "pressure",
+   "statement": "From 19:15 UTC on 11 November the English infobox and season table give a lowest pressure of 987 hPa, with no footnote.",
+   "relation": "missing",
+   "means": "nowhere on this site",
+   "timeline": [],
+   "decisions": [],
+   "files": [],
+   "note": "No measured minimum read by us; our hypothesis row quotes a model 986.7 hPa (s-1111T0000).",
+   "wikipedia_first_seen": {
+    "revision": 1385074505,
+    "at": "2026-11-11T19:15:29Z",
+    "url": "https://en.wikipedia.org/w/index.php?oldid=1385074505"
+   },
+   "cites": [],
+   "revision_url": "https://en.wikipedia.org/w/index.php?oldid=1385074505",
    "label": "our analysis of evidence"
   }
  ],
