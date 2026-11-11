@@ -12,7 +12,7 @@ export const M = await import('../app/login/pki/message.js')
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 export const readJson = rel => JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8'))
 export const sha256hex = s => createHash('sha256').update(s).digest('hex')
-const FLAGS = new Set(['no-seen', 'keep', 'inbox', 'dry-run'])                 // these take no value
+const FLAGS = new Set(['no-seen', 'keep', 'inbox', 'dry-run', 'via-lane'])                 // these take no value
 export const args = argv => { const o = { _: [] }; for (let i = 0; i < argv.length; i++) { const a = argv[i]; if (a.startsWith('--')) { const k = a.slice(2), n = argv[i + 1]; if (FLAGS.has(k) || n === undefined || n.startsWith('--')) o[k] = true; else { o[k] = n; i++ } } else o._.push(a) } return o }
 
 /** This agent's identity from sgit's key store (PKI_KEY_DIR, or the only key in ~/.sg-send/keys). Never printed. */

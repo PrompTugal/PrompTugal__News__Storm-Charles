@@ -41,7 +41,7 @@ Release: commit (trailers `Agent:`, `Issue: WS-214`, `For:` in one final paragra
 
 ## In flight
 
-Nothing half-done. The working tree was clean and pushed when this was written.
+**The conductor's append lane for vault keys** (asked by the conductor at 09:30 UTC, 11 November, on Dinis's word in BRIEF.md). An empty vault for it exists: `wowyrqlr` on dev.send.sgraph.ai, made by the second session with sgit; its key is in that session's container only (`~/.incident-lane/create.log`, 0600) and **is lost if the session ends before the lane is configured** (then make a new vault; the empty one holds nothing). Configuring the lanes on the server was refused by the session's permission check and waits for Dinis's yes in the session itself. The tools are ready and checked against the stand-in: `lane-configure.mjs` (two lanes: feedback, keys), `lane-handover.mjs seal --via-lane`, `lane-drain.mjs`. The steps after his yes are in status.json `next`.
 
 ## What waits on Dinis
 

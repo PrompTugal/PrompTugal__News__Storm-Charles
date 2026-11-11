@@ -15,7 +15,7 @@ import path from 'node:path'
 import { K, M, ROOT, sha256hex, judge, looksSecret, lane as laneCall } from './lane-common.mjs'
 import { drain } from './lane-drain.mjs'
 import { configure, writeKeyOf } from './lane-configure.mjs'
-import { sealKey, openKey } from './lane-handover.mjs'
+import { sealKey, openKey, sendKey } from './lane-handover.mjs'
 
 const TEST_VAULT_KEY = ['throwawaypassphrase000000', 'testvlt1'].join(':')   // joined here: the gate refuses a vault key written out in a tracked file
 let n = 0, failed = 0
@@ -137,6 +137,16 @@ const sealed = async (from, to, over = {}) => (await M.sealMessage(await M.compo
     ok(out.some(r => /too large/.test(r.reasons.join())) && fs.readdirSync(keepDir).length === 4, 'an oversized payload is not opened; the ciphertext of the rest is kept outside git')
     ok((await drain({ lane: L, identity: conductor, ring, senders, seen })).length === 0, 'drained messages are marked processed')
     ok((await laneCall(endpoint, 'mark-processed', vaultId, { inbox: t1, file_ids: [out[0].file_id] }, { 'x-sgraph-vault-enum-key': rec.enum_key })).missing.length === 1, 'marking again is safe (missing, not an error)')
+    // 4b. a vault key through the lane for keys (lane-handover.mjs seal --via-lane, then the drain): saved, never printed
+    const vdir = fs.mkdtempSync(path.join(os.tmpdir(), 'lane-vaults-')), KL = { enabled: true, endpoint, vault_id: vaultId, tokens: [t2] }
+    await sendKey({ code: (await sealKey({ vaultKey: TEST_VAULT_KEY, from: stranger, toBundle: conductor.bundle })).code, L: KL })
+    await sendKey({ code: (await sealKey({ vaultKey: TEST_VAULT_KEY, from: await K.generate('unknown'), toBundle: conductor.bundle })).code, L: KL })
+    await write(t2, (await sealed(dinis, conductor)).enc)
+    const kd = await drain({ lane: L, identity: conductor, ring, senders, seen, keyTokens: [t2], vaultDir: vdir })
+    ok(kd.length === 3 && kd.filter(r => r.saved).length === 1 && kd.find(r => r.saved).vault === 'testvlt1' && !JSON.stringify(kd).includes('throwawaypass') && fs.readdirSync(vdir).length === 1 && (fs.statSync(path.join(vdir, 'testvlt1.key')).mode & 0o077) === 0, 'a vault key sent through the lane is saved by the drain (0600), not printed; one from an unknown key is not saved')
+    ok(!kd.some(r => r.accept), 'nothing on the lane for keys is taken as Dinis\'s word, even a message he signed')
+    ok(await refused(() => sendKey({ code: 'm1.x', L: { enabled: false } })) === undefined && await sendKey({ code: 'x', L: { enabled: false } }).then(() => false, () => true), 'with no lane for keys, a sender is told so and nothing is sent')
+    fs.rmSync(vdir, { recursive: true, force: true })
     fs.rmSync(keepDir, { recursive: true, force: true }); server.close()
 }
 console.log(failed ? `RED: ${failed} of ${n} checks failed` : `OK lane: ${n} checks, throwaway keys, ${Date.now() - t0} ms`)
