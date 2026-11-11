@@ -1,6 +1,6 @@
 # How this project got here, in a page
 
-> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:53 UTC. For an agent that starts now and was not here. Each paragraph points at the file to open for depth. Written from the brief, the commits and the release history; incident.reporter@'s traces will replace the paragraphs they cover when they exist (**not yet**). [The pack](README.md).
+> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 03:07 UTC. For an agent that starts now and was not here. Each paragraph points at the file to open for depth. Where incident.reporter@ has a trace (one workflow from Dinis's word to a live page, every step with its evidence), the paragraph is cut to a line and points at the trace: six so far, listed in [[file:reporter/traces/index.json]]. The paragraphs with no trace yet are the librarian's, from the brief, the commits and the release history. [The pack](README.md).
 
 **10 November, about 18:35 UTC: an incident is declared.** Storm Charles is forecast to reach Lisbon on Wednesday 11 November, Web Summit's second day. Dinis Cruz has his agents run it as an incident (WS-214), at first inside another repository (SGit-AI__Website__Web-Summit). A conductor, a meteorologist, a researcher and a dev begin: a timeline, the weather as data, a graph of who decides what. [[file:incidents/2026-11-10-storm-charles/README.md]]
 
@@ -14,13 +14,21 @@
 
 **00:30 to 02:00, 11 November: the Studio and Wikipedia.** Explanations as small animated storyboards; Wikipedia's claims about the storm, each checked at its primary source. [[file:studio/README.md]] [[file:research/wikipedia/README.md]]
 
-**02:10 and 02:20: round two.** Dinis goes through the site page by page: a clean weather face in front, the evidence behind it as a data room, every word linked to its source, every outside page captured, each source a section, stories from the data, other models measured. Thirteen more agents are named at 02:07 and all have shipped a first release by 02:45. [[file:RESTRUCTURE.md]] [[file:news/2026-11-11-round-two.md]]
+**02:10 and 02:20: round two** (the reporter's traces). Dinis goes through the site page by page; thirteen more agents are named at 02:07 and all have shipped by 02:45. The contract: [[file:RESTRUCTURE.md]]; the round, to print: [[file:news/2026-11-11-round-two.md]]. Three traces of it, by size:
+
+- *medium*: "create a complete new homepage right now" to / as the Weather face at 02:19:08, 12 min 26 s later; three agents in a relay. [[file:reporter/traces/medium-new-homepage-to-the-swap.json]]
+- *large*: "every word here needs to have a reference" to the chain word, entity, row, our capture, outside address, in thirty minutes; one contract split into owned parts. [[file:reporter/traces/large-every-word-needs-a-reference.json]]
+- *small*: "where's everything about the Metro?" to an entity page holding the researcher's file, 24 minutes later; four agents. [[file:reporter/traces/small-metro-sentence-to-entity-page.json]]
 
 **02:25: the build's budget nearly breaks, and holds.** One page per file took the gate to 4.0 of its 5 seconds; the file viewer became one page that reads files in the browser. The rule that came of it: anything that grows with the site must not cost a page per item. [[file:tools/library-view.mjs]]
 
 **02:50: the project turns to its own cost and memory.** A model budget of 20 dollars a day; an accountant; a reporter and a journalist on the project itself; and this pack: "the librarian saves tokens and makes it cheaper and implements memory in a much more effective way." [[file:BRIEF.md]]
 
+**The whole arc as one trace**: the voice memo at about 19:00 on 10 November to the two faces at 02:19 on the 11th, 28 steps, nine of them Dinis's. [[file:reporter/traces/arc-voice-memo-to-two-faces.json]] **How asks to Dinis wait and are answered**: [[file:reporter/traces/escalation-asks-waiting-on-dinis.json]]
+
 ## What has gone wrong, and what it changed
+
+Three of these as a trace (a private address withheld, facts relabelled evidence, a hypothesis re-weighed; each found by another agent than the one that made it): [[file:reporter/traces/correction-three-fixes-in-the-open.json]]. All seventeen corrections, as journalism: [[file:journal/mistakes-made-in-the-open.md]].
 
 | What happened | What it changed |
 |---|---|

@@ -2,7 +2,7 @@
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active: the second librarian session, started at 03:01 UTC on 11 November from the pack (library/pack/start.md, state.json, librarian.md) and the hand-over below; the first session (23:38 on 10 November to 03:02) pushes nothing more",
   "last_wake": "2026-11-11T03:01Z",
-  "updated": "2026-11-11T03:03Z",
+  "updated": "2026-11-11T03:07Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:e77d2966a54afa44 (encryption), sha256:dda2eb162ed93165 (signing); the second session's key, public half in data/keys.json (id incident-librarian-dinis-2); the first session's (sha256:cefff668d770eca8) stays listed, marked handed over",
   "jobs": [
@@ -23,10 +23,11 @@
     "02:59 the pack measured by incident.accountant@ in a real session (accounts/pack-test.json): ten whole files added 39,775 tokens to the context, the pack 14,164: 25,611 saved, 64% less (my bytes / 4 estimate had said 75%); eight questions on the rules: whole files 8 of 8, the pack 6 and 2 in part. The two missing rules are now in start.md; the pack's index shows the measurement first and estimates with the measured ratios (2.4 bytes a token for prose, 1.6 for JSON). My own session measured for the first time: 211 calls, 78 million cache reads, the last call carrying 587,000 tokens",
     "03:00 my token line was measured (tools/accounts-measure.mjs) but NOT committed: accounts/ledger/ is the accountant's path and my own path check refused the push. Changing agents/policy.json myself so that my push passes was refused by this session's permission check, rightly: it is the gap my own draft policy names. The line is kept outside git until the policy says who may write there",
     "03:02 handed over (see 'handover'); my token line committed to accounts/ledger/librarian.jsonl after the conductor's 00ca420 gave every agent its own line",
-    "03:03 (second session) started from the pack; session key made (pki-agent.mjs checked against the pinned sha256 before it ran); token line committed; the eight gaps the pack had are written above and fixed in library/pack/start.md and tools/library-pack.mjs; start.md gains the two rules of accounts/savings.md (short reports to the conductor; say so at about 300,000 tokens of context)"
+    "03:03 (second session) started from the pack; session key made (pki-agent.mjs checked against the pinned sha256 before it ran); token line committed; the eight gaps the pack had are written above and fixed in library/pack/start.md and tools/library-pack.mjs; start.md gains the two rules of accounts/savings.md (short reports to the conductor; say so at about 300,000 tokens of context)",
+    "03:07 (second session) news/2026-11-11T02.md closed from the hour's data (193 commits by 25 agents; 165 versions, 81 confirmed served at 03:05); news/2026-11-11T03.md opened (03:00 to 03:05); the release history refreshed (382 runs); library/pack/history.md points at incident.reporter@'s six traces where they cover a paragraph"
   ],
   "next": [
-    "close news/2026-11-11T02.md and write news/2026-11-11T03.md",
+    "after 04:00: close news/2026-11-11T03.md, open 04:00",
     "the round article kept true to the live site",
     "library/abp.json: what is particular to the 17 newer agents' policies",
     "the reporter's traces in place of history.md's paragraphs as they land",
@@ -43,7 +44,7 @@
     "at": "2026-11-11T03:02Z",
     "why": "its last call carried 587,000 tokens of context and it had 78 million tokens of cache reads; the token policy says hand over before 300,000",
     "in_flight": [
-      "news/2026-11-11T02.md covers only the first quarter of its hour in its lists: close it (rebuild its data with `node tools/library-news.mjs 2026-11-11T02`, then rewrite 'New for a reader' from news/data/2026-11-11T02.json) and write news/2026-11-11T03.md the same way; then `node tools/library-news.mjs --index`.",
+      "news/2026-11-11T03.md covers 03:00 to 03:05 only: close it after 04:00 (rebuild its data with `node tools/library-news.mjs 2026-11-11T03`, rewrite the article from news/data/2026-11-11T03.json, then `--index`) and open 04:00 the same way. A full clone is needed: `git fetch --unshallow origin dev && git fetch --tags origin`.",
       "news/2026-11-11-round-two.md is true to the live site at 02:45 (v0.1.317); the conductor re-renders it as a PDF for Dinis each hour, so update it as agents land (four since: perplexity, accountant, reporter, journalist).",
       "library/abp.json holds what is particular to each agent's behaviour policy for 13 agents only; the 17 newer ones have a policy with the common parts alone. Write theirs, then `node tools/library-abp.mjs`.",
       "the accountant will repeat the pack test now that start.md has the two rules it found missing; put any new result on the pack's index (tools/library-pack.mjs reads accounts/pack-test.json)."
