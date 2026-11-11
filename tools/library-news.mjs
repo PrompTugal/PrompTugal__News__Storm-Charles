@@ -17,13 +17,17 @@ const ME = 'incident.librarian@web-summit.dinis'
 const git = (...a) => execFileSync('git', a, { cwd: ROOT, maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'ignore'] }).toString()
 const arg = process.argv[2]
 if (arg === '--index') {
+    const rounds = fs.readdirSync(path.join(ROOT, 'news')).filter(f => /^\d{4}-\d\d-\d\d-[\w-]+\.md$/.test(f)).sort().reverse().map(f => {
+        const t = fs.readFileSync(path.join(ROOT, 'news', f), 'utf8'), h1 = (t.split('\n').find(l => /^# /.test(l)) || '# ' + f).slice(2)
+        return `- **[${h1}](${f})** (${f.slice(0, 10)})`
+    })
     const arts = fs.readdirSync(path.join(ROOT, 'news')).filter(f => /^\d{4}-\d\d-\d\dT\d\d\.md$/.test(f)).sort().reverse().map(f => {
         const t = fs.readFileSync(path.join(ROOT, 'news', f), 'utf8'), w = f.slice(0, 13)
         const lines = t.split('\n'), h1 = (lines.find(l => /^# /.test(l)) || '# ' + w).slice(2), para = lines.find((l, i) => i > 0 && l.trim() && !/^(#|>|\||-|\*\*Not)/.test(l)) || ''
         let d = {}; try { d = JSON.parse(fs.readFileSync(path.join(ROOT, 'news/data', w + '.json'), 'utf8')) } catch { }
         return `| ${w.slice(0, 10)} ${w.slice(11)}:00 to ${String(+w.slice(11) + 1).padStart(2, '0')}:00 | [${h1.replace(/\|/g, '/')}](${f}) | ${d.versions ? `${d.versions.first} to ${d.versions.last} (${d.versions.served} served of ${d.versions.pushed})` : ''} | ${d.commits ? d.commits.length : ''} |`
     })
-    fs.writeFileSync(path.join(ROOT, 'news/README.md'), `# What is new\n\n> Kept by ${ME}. One article per release window (an hour, while the storm runs): what is new for a reader, what changed in the data, what was corrected, each with links. The list is written by [tools/library-news.mjs](../tools/library-news.mjs); the articles by the librarian, from each window's data in [news/data/](data/README.md). Back to [Help](../help/README.md).\n\nEvery push is a version (\`v0.1.<n>\`, shown on each page and at \`/version.json\`). Which versions were really served, one line each: [the release history](../library/releases.md) (as data: [releases.json](../library/releases.json)).\n\nNot a warning service: follow IPMA, ANEPC and your local authorities.\n\n| Window (UTC) | Article | Versions | Commits |\n|---|---|---|---|\n${arts.join('\n')}\n`)
+    fs.writeFileSync(path.join(ROOT, 'news/README.md'), `# What is new\n\n> Kept by ${ME}. One article per release window (an hour, while the storm runs): what is new for a reader, what changed in the data, what was corrected, each with links. The list is written by [tools/library-news.mjs](../tools/library-news.mjs); the articles by the librarian, from each window's data in [news/data/](data/README.md). Back to [Help](../help/README.md).\n\nEvery push is a version (\`v0.1.<n>\`, shown on each page and at \`/version.json\`). Which versions were really served, one line each: [the release history](../library/releases.md) (as data: [releases.json](../library/releases.json)).\n\nNot a warning service: follow IPMA, ANEPC and your local authorities.\n\n## The rounds\n\nOne article per round of direction: what was asked, the shape chosen, the patterns, what is live and what is not. Written to be printed.\n\n${rounds.join('\n') || '- None yet.'}\n\n## Hour by hour\n\n| Window (UTC) | Article | Versions | Commits |\n|---|---|---|---|\n${arts.join('\n')}\n`)
     console.log(`library-news: index of ${arts.length} article(s)`); process.exit(0)
 }
 if (!/^\d{4}-\d\d-\d\dT\d\d$/.test(arg || '')) { console.error('library-news: give a window, e.g. 2026-11-11T02, or --index'); process.exit(2) }

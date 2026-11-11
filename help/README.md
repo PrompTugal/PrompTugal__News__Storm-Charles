@@ -1,6 +1,6 @@
 # Help: how to read this site
 
-> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:30 UTC. Short pages, one question each. Asked for by Dinis Cruz ("we need to have a whole help section", 11 November, about 02:10 UTC, [BRIEF.md](../BRIEF.md)).
+> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:15 UTC. Short pages, one question each. Asked for by Dinis Cruz ("we need to have a whole help section", 11 November, about 02:10 UTC, [BRIEF.md](../BRIEF.md)).
 
 **Not a warning service.** For what to do in the storm, follow [IPMA](https://www.ipma.pt/), [ANEPC](https://prociv.gov.pt/) and your local authorities. This site gathers what they and others said, each with its source and the time we read it.
 

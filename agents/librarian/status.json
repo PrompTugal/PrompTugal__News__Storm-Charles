@@ -2,7 +2,7 @@
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active, round two (Dinis's direction of 02:10, via the conductor): the viewer pages, help/ and news/ are pushed; the 02:00 article is completed when the hour closes",
   "last_wake": "2026-11-11T02:11Z",
-  "updated": "2026-11-11T02:42Z",
+  "updated": "2026-11-11T02:24Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:cefff668d770eca8 (encryption), sha256:c1dd34b5c4dcfc33 (signing); a session key, public half in data/keys.json",
   "jobs": [
@@ -15,16 +15,15 @@
     "R2.3: help/: how to read the site, short pages"
   ],
   "done": [
-    "00:10 the gate refused my push: the tracked library/index.json had grown to 272 KB (over the 256 KB rule). Nothing oversized was pushed. The tracked copy is removed; the build makes index.json fresh into the served site on every push (--out); the tracked page library/README.md stays as a snapshot",
-    "00:14 at the conductor's ask (00:00): tools/policy-check.mjs prints every change the conductor's catch-all rule alone allows as 'WARN conductor outside its own paths: ...' and, when the conductor releases, appends it once to agents/conductor/cross-folder.log.md for it to commit. Over the history so far: 2 such changes",
     "00:17 library/README.md no longer tracked either: the conductor's build (d174650) renders the page the catalogue tool writes into the served site; the gate passes and /library/ is built locally",
     "00:30 from the designer's review (design/round-18.md, via the conductor): /library/ is a short index (one row per kind with its count, the gaps as counts); each kind's table is its own generated page under library/kinds/, and the gaps in full at library/kinds/gaps.md. index.json unchanged",
     "00:48 hourly wake: the catalogue's commit record refreshed; the release history rebuilt from the Actions API read at 00:45 (130 runs: 88 served, 3 tagged, 36 cancelled before the tag, 3 failed); a draft behaviour policy for the new incident.studio@ (12 now); /library/ and its per-kind pages checked live on v0.1.130. Nothing added to the reading list this wake",
     "01:50 hourly wake: 267 files catalogued (a new kind, studio); the commit record refreshed; the release history rebuilt from the Actions API read at 01:46 (158 runs: 113 served, 3 tagged, 38 cancelled before the tag, 3 failed, 1 running); a draft behaviour policy for the new incident.wikipedia@ (13 now). Nothing added to the reading list or the glossary this wake",
-    "02:20 R2.1: tools/library-view.mjs --out <dir> writes view/<path>.md for every served file (277 now) plus view/README.md and view/index.json; tested inside the build locally: 415 pages, the gate OK in 1.1 s. Address pattern: view/<path>.html",
-    "02:42 R2.1 wired: tools/library-view.mjs added to admin/build/generators.json (the build now writes a viewer page per file: 667 pages, the gate OK in 1.4 s)",
-    "02:42 R2.3: help/ (start page and six short pages: what this is, the labels, from a word to its evidence, the data, how to cite, corrections)",
-    "02:42 R2.2: news/ (the index, the article for 02:00 to 03:00, its facts in news/data/2026-11-11T02.json by tools/library-news.mjs)"
+    "02:14 R2.1: tools/library-view.mjs --out <dir> writes view/<path>.md for every served file (277 now) plus view/README.md and view/index.json; tested inside the build locally: 415 pages, the gate OK in 1.1 s. Address pattern: view/<path>.html",
+    "02:16 R2.1 wired: tools/library-view.mjs added to admin/build/generators.json (the build now writes a viewer page per file: 667 pages, the gate OK in 1.4 s)",
+    "02:16 R2.3: help/ (start page and six short pages: what this is, the labels, from a word to its evidence, the data, how to cite, corrections)",
+    "02:16 R2.2: news/ (the index, the article for 02:00 to 03:00, its facts in news/data/2026-11-11T02.json by tools/library-news.mjs)",
+    "02:24 the round's article, written to be printed: news/2026-11-11-round-two.md (what Dinis asked at 02:10 and 02:20, the shape, the data flows drawn as text, the patterns, the 13 new agents and which have landed, page by page, not done, what waits on Dinis); true to the live site at v0.1.194"
   ],
   "next": [
     "at the next wake: read the Actions runs, rebuild the release history, complete the 02:00 article (versions served, 02:15 to 03:00) and write 03:00",
@@ -32,6 +31,8 @@
     "each wake: refresh library/provenance.json"
   ],
   "asks": [
+    "incident.conductor@: the round-two article is in for the PDF: news/2026-11-11-round-two.html. It has no class for print: the build's front matter has no 'class' key (only title, summary, mount, head); the site's own @media print rules apply.",
+    "incident.designer@: print tokens for an article page (one column, the diagram's code block not cut across pages, link addresses printed after the link text).",
     "incident.conductor@: the version chip can link to news/ (index) and library/releases.html (every version); and where the build turns a link to X.json into a link, point it at view/X.json.html.",
     "incident.designer@: the panel's Source accordion opens view/<path>.html for the file at <path> (list as data: view/index.json).",
     "Dinis: the 11 behaviour policies under agents/<role>/policy.md are drafts until you agree them (index: /library/abp.html). Two things only you can change: neither dev nor main is protected on GitHub, and no session's connectors are listed anywhere.",

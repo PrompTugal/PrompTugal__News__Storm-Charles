@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T02:00:00Z and 2026-11-11T03:00:00Z: the facts behind the article news/2026-11-11T02.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T02:15:42Z",
+ "updated": "2026-11-11T02:17:14Z",
  "window": {
   "from": "2026-11-11T02:00:00Z",
   "to": "2026-11-11T03:00:00Z"
@@ -18,23 +18,31 @@
    "commits": 5
   },
   {
+   "agent": "incident.librarian@web-summit.dinis",
+   "commits": 4
+  },
+  {
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "commits": 3
+  },
+  {
    "agent": "incident.studio@web-summit.dinis",
    "commits": 2
   },
   {
-   "agent": "incident.librarian@web-summit.dinis",
+   "agent": "incident.designer@web-summit.dinis",
    "commits": 2
   },
   {
-   "agent": "incident.weatherwatch@web-summit.dinis",
+   "agent": "incident.weather@web-summit.dinis",
+   "commits": 2
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
    "commits": 2
   },
   {
    "agent": "incident.wikipedia@web-summit.dinis",
-   "commits": 1
-  },
-  {
-   "agent": "incident.designer@web-summit.dinis",
    "commits": 1
   },
   {
@@ -44,11 +52,61 @@
   {
    "agent": "incident.observability@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.media@web-summit.dinis",
+   "commits": 1
   }
  ],
  "new_pages": [
   "RESTRUCTURE.md",
+  "app/graph/lead-times/README.md",
+  "app/graph/ontology/README.md",
   "design/round-30.md",
+  "design/round-31.md",
+  "help/README.md",
+  "help/cite.md",
+  "help/corrections.md",
+  "help/data.md",
+  "help/follow.md",
+  "help/labels.md",
+  "help/what-this-is.md",
+  "news/2026-11-11T02.md",
+  "news/README.md",
+  "news/data/README.md",
+  "outreach/who.md",
+  "research/media/outlets/README.md",
+  "research/media/outlets/ap.md",
+  "research/media/outlets/bloomberg.md",
+  "research/media/outlets/cnn-portugal.md",
+  "research/media/outlets/correio-da-manha.md",
+  "research/media/outlets/dn.md",
+  "research/media/outlets/eco.md",
+  "research/media/outlets/euronews.md",
+  "research/media/outlets/expresso.md",
+  "research/media/outlets/guardian.md",
+  "research/media/outlets/iol.md",
+  "research/media/outlets/jn.md",
+  "research/media/outlets/jornal-economico.md",
+  "research/media/outlets/lusa.md",
+  "research/media/outlets/madeira-island-news.md",
+  "research/media/outlets/negocios.md",
+  "research/media/outlets/noticias-ao-minuto.md",
+  "research/media/outlets/observador.md",
+  "research/media/outlets/portugal-news.md",
+  "research/media/outlets/portugal-resident.md",
+  "research/media/outlets/publico.md",
+  "research/media/outlets/renascenca.md",
+  "research/media/outlets/rtp.md",
+  "research/media/outlets/sabado.md",
+  "research/media/outlets/sapo.md",
+  "research/media/outlets/sic-noticias.md",
+  "research/media/outlets/techcrunch.md",
+  "research/media/outlets/techtimes.md",
+  "research/media/outlets/tek.md",
+  "research/media/outlets/tsf.md",
+  "research/media/people/README.md",
+  "research/media/people/ricardo-simoes-ferreira.md",
   "research/weather-sites/compare.md",
   "research/weather-sites/sites/README.md",
   "research/weather-sites/sites/accuweather.md",
@@ -158,36 +216,58 @@
   "research/weather-sites/sites/yr.md",
   "research/weather-sites/sites/zoomearth.md",
   "studio/how-a-fact-gets-here/README.md",
-  "studio/what-compression-is/README.md"
+  "studio/what-compression-is/README.md",
+  "weather/index.md"
  ],
  "new_datasets": [],
  "changed_datasets": [
   "data/agents/commits.json",
-  "data/agents/index.json"
+  "data/agents/index.json",
+  "data/graph/ontology.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/keys.json"
  ],
  "new_tools": [
+  "research/media/tools/pages.mjs",
+  "research/media/tools/terms.mjs",
   "research/weather-sites/tools/links.py",
   "research/weather-sites/tools/pages.py",
+  "research/weather-sites/tools/terms.py",
   "tools/lane-handover.mjs",
+  "tools/library-news.mjs",
   "tools/library-view.mjs"
  ],
  "added": {
-  "files": 122,
+  "files": 183,
   "by_area": [
    {
     "area": "research",
-    "files": 113
+    "files": 151
    },
    {
     "area": "app",
+    "files": 9
+   },
+   {
+    "area": "help",
+    "files": 7
+   },
+   {
+    "area": "news",
+    "files": 4
+   },
+   {
+    "area": "tools",
+    "files": 3
+   },
+   {
+    "area": "design",
     "files": 2
    },
    {
     "area": "studio",
-    "files": 2
-   },
-   {
-    "area": "tools",
     "files": 2
    },
    {
@@ -199,44 +279,52 @@
     "files": 1
    },
    {
-    "area": "design",
+    "area": "agents",
+    "files": 1
+   },
+   {
+    "area": "outreach",
+    "files": 1
+   },
+   {
+    "area": "weather",
     "files": 1
    }
   ]
  },
  "changed": {
-  "files": 56,
+  "files": 77,
   "by_area": [
    {
     "area": "research",
-    "files": 14
-   },
-   {
-    "area": "agents",
-    "files": 11
+    "files": 20
    },
    {
     "area": "app",
-    "files": 11
+    "files": 15
+   },
+   {
+    "area": "agents",
+    "files": 13
+   },
+   {
+    "area": "data",
+    "files": 8
+   },
+   {
+    "area": "tools",
+    "files": 6
    },
    {
     "area": "studio",
     "files": 5
    },
    {
-    "area": "tools",
-    "files": 5
-   },
-   {
     "area": "(root)",
-    "files": 3
+    "files": 4
    },
    {
     "area": "account",
-    "files": 2
-   },
-   {
-    "area": "data",
     "files": 2
    },
    {
@@ -249,6 +337,10 @@
    },
    {
     "area": "library",
+    "files": 1
+   },
+   {
+    "area": "outreach",
     "files": 1
    }
   ]
@@ -362,6 +454,69 @@
    "by": "incident.studio@web-summit.dinis",
    "what": "the Studio, round two (Dinis, 02:10): a page per explanation and the Studio as their index; a full-screen button; the script beside the stage",
    "files": 12
+  },
+  {
+   "commit": "fb7bc0d",
+   "at": "2026-11-11T02:16:05Z",
+   "by": "incident.designer@web-summit.dinis",
+   "what": "design round 31: the panel's hooks (slot, show, openItem, openSource); a link to a .json, .md or .txt file of this site opens in the panel; the frame loads app/lens/ when it exists",
+   "files": 5
+  },
+  {
+   "commit": "82fa4e5",
+   "at": "2026-11-11T02:16:19Z",
+   "by": "incident.weather@web-summit.dinis",
+   "what": "its session key (public half)",
+   "files": 1
+  },
+  {
+   "commit": "a92c425",
+   "at": "2026-11-11T02:16:19Z",
+   "by": "incident.weather@web-summit.dinis",
+   "what": "the Weather face, round 1, at weather/ (now, today hour by hour, the reading as a hypothesis, closed and running, Madeira, Thursday, the last changes), read only from the data room",
+   "files": 4
+  },
+  {
+   "commit": "f6323b1",
+   "at": "2026-11-11T02:16:23Z",
+   "by": "incident.weatherwatch@web-summit.dinis",
+   "what": "weather-sites: terms.json, each site's own terms page with its sentences about reuse; three sites restrict automated reading or AI use: no longer requested, link only",
+   "files": 114
+  },
+  {
+   "commit": "2d246d4",
+   "at": "2026-11-11T02:16:27Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "the graph answers questions (presets, filters by kind and verb, layouts, node and edge panes, a node as its own graph); the ontology drawn; lead times as its own page",
+   "files": 15
+  },
+  {
+   "commit": "e8255df",
+   "at": "2026-11-11T02:16:44Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "help/ (how to read the site, six short pages), news/ (the 02:00 to 03:00 article and its data, tools/library-news.mjs), the viewer added to the build's generators; status",
+   "files": 14
+  },
+  {
+   "commit": "482ea0c",
+   "at": "2026-11-11T02:16:45Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the catalogue's commit record refreshed",
+   "files": 1
+  },
+  {
+   "commit": "129a0f7",
+   "at": "2026-11-11T02:17:07Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "the builder joins entities/index.json when it exists: a node with an entity carries entity \"<type>/<id>\" and links to its page",
+   "files": 2
+  },
+  {
+   "commit": "045b92e",
+   "at": "2026-11-11T02:17:14Z",
+   "by": "incident.media@web-summit.dinis",
+   "what": "round two, part 1: a page per outlet (coverage, key moments, sources, licence and terms as published, contact page), by-lines, who carried whose words, who we would like to talk to, Contribute as tasks",
+   "files": 46
   }
  ]
 }

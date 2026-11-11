@@ -1,6 +1,6 @@
 # Fact, evidence, hypothesis: how far to trust a line
 
-> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:30 UTC. Back to [Help](README.md). The rule is in [CLAUDE.md](../CLAUDE.md), Content rules.
+> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:15 UTC. Back to [Help](README.md). The rule is in [CLAUDE.md](../CLAUDE.md), Content rules.
 
 Every item on this site carries one of three labels. They say **who said it**, not how sure we feel.
 

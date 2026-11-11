@@ -6,6 +6,14 @@ Every push is a version (`v0.1.<n>`, shown on each page and at `/version.json`).
 
 Not a warning service: follow IPMA, ANEPC and your local authorities.
 
+## The rounds
+
+One article per round of direction: what was asked, the shape chosen, the patterns, what is live and what is not. Written to be printed.
+
+- **[Round two: what Dinis asked at 02:10 and 02:20, the shape we chose, and what is live](2026-11-11-round-two.md)** (2026-11-11)
+
+## Hour by hour
+
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 02:00 to 03:00 | [02:00 to 03:00, 11 November: every file gets a page that shows it, a page for each of 106 weather sites, and the plan for two faces](2026-11-11T02.md) |  | 15 |
+| 2026-11-11 02:00 to 03:00 | [02:00 to 03:00, 11 November: every file gets a page that shows it, a page for each of 106 weather sites, and the plan for two faces](2026-11-11T02.md) |  | 24 |
