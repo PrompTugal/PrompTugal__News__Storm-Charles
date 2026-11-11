@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # IPMA's warnings, area by area, over time
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 04:37 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 04:49 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -14,7 +14,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 
 Each bar above is one row of IPMA's warnings feed: an area, a type, a level, a window. IPMA's feed carries **no time of issue and no identifier**, so when IPMA changes a warning the old row disappears and a new one appears. We keep every row we have read, with the first and last read that carried it, and pair a row that went with the row that took its place (same area and type, overlapping window, first seen in that same read). "Replaced" is that pairing, ours; the rows are IPMA's.
 
-Reads so far: 3, from 2026-11-11 02:19 to 2026-11-11 04:34 UTC. Warnings issued before our first read are marked "already there"; their earlier history (with the times IPMA sent them, from MeteoAlarm's CAP messages) is in [the meteorologist's record](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json).
+Reads so far: 4, from 2026-11-11 02:19 to 2026-11-11 04:46 UTC. Warnings issued before our first read are marked "already there"; their earlier history (with the times IPMA sent them, from MeteoAlarm's CAP messages) is in [the meteorologist's record](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json).
 
 ## In the feed now (69)
 
@@ -99,4 +99,4 @@ Reads so far: 3, from 2026-11-11 02:19 to 2026-11-11 04:34 UTC. Warnings issued 
 | Faro (FAR) | Agitação Marítima | **yellow** | 2026-11-10 21:24 | 2026-11-11 03:00 | Ondas do quadrante oeste com 4 a 5 metros na costa ocidental, sendo ondas de sudoeste com 4 metros na costa sul do barlavento. | 2026-11-11 02:19 (already there) | ended, by 2026-11-11 03:39 |
 | Setúbal (STB) | Agitação Marítima | **yellow** | 2026-11-10 21:24 | 2026-11-11 03:00 | Ondas do quadrante oeste com 4 a 5 metros. | 2026-11-11 02:19 (already there) | ended, by 2026-11-11 03:39 |
 
-Data: [data/warnings.json](data/warnings.json) (every row, with ids of ours) · what changed read by read: [changes/warnings.json](changes/warnings.json) · the feed's page: [endpoints/warnings.md](endpoints/warnings.md). Source: [warnings_www.json](https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json), read 2026-11-11 04:34 UTC.
+Data: [data/warnings.json](data/warnings.json) (every row, with ids of ours) · what changed read by read: [changes/warnings.json](changes/warnings.json) · the feed's page: [endpoints/warnings.md](endpoints/warnings.md). Source: [warnings_www.json](https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json), read 2026-11-11 04:46 UTC.

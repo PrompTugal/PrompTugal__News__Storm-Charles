@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Fire risk forecast up to 3 days, by municipality
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 04:37 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 04:49 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -20,7 +20,7 @@ IPMA's name for it: *Previsão do Risco de Incêndio até 3 dias, informação a
 | `{idDay}` | 0 today, 1 tomorrow, 2 the day after: 0, 1, 2 |
 | IPMA says it updates | taxa de atualização horária |
 | IPMA's file dated (its Last-Modified header) | 2026-11-11 00:05 UTC |
-| We last read it | 2026-11-11 04:36 UTC, 3 files, 72906 bytes |
+| We last read it | 2026-11-11 04:48 UTC, 3 files, 72906 bytes |
 | IPMA's note | "Apenas estão disponíveis dados diários." |
 
 ## Fields
@@ -45,8 +45,8 @@ IPMA's name for it: *Previsão do Risco de Incêndio até 3 dias, informação a
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [forecast/meteorology/rcm/rcm-d0.json](https://api.ipma.pt/open-data/forecast/meteorology/rcm/rcm-d0.json) | 200 | 24302 | `1608a5c04baa87f5…` | 2026-11-11 00:05 | 2026-11-11 04:36 |
-| [forecast/meteorology/rcm/rcm-d1.json](https://api.ipma.pt/open-data/forecast/meteorology/rcm/rcm-d1.json) | 200 | 24302 | `ecd3d0f2ac9518eb…` | 2026-11-11 00:05 | 2026-11-11 04:36 |
-| [forecast/meteorology/rcm/rcm-d2.json](https://api.ipma.pt/open-data/forecast/meteorology/rcm/rcm-d2.json) | 200 | 24302 | `36f3663905495917…` | 2026-11-11 00:05 | 2026-11-11 04:36 |
+| [forecast/meteorology/rcm/rcm-d0.json](https://api.ipma.pt/open-data/forecast/meteorology/rcm/rcm-d0.json) | 200 | 24302 | `1608a5c04baa87f5…` | 2026-11-11 00:05 | 2026-11-11 04:48 |
+| [forecast/meteorology/rcm/rcm-d1.json](https://api.ipma.pt/open-data/forecast/meteorology/rcm/rcm-d1.json) | 200 | 24302 | `ecd3d0f2ac9518eb…` | 2026-11-11 00:05 | 2026-11-11 04:48 |
+| [forecast/meteorology/rcm/rcm-d2.json](https://api.ipma.pt/open-data/forecast/meteorology/rcm/rcm-d2.json) | 200 | 24302 | `36f3663905495917…` | 2026-11-11 00:05 | 2026-11-11 04:48 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: no change seen yet between two of our reads. Our small files made from it: [data/places.json](../data.md#data/places.json).

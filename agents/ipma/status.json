@@ -1,8 +1,8 @@
 {
   "agent": "incident.ipma@web-summit.dinis",
-  "state": "active: round 1 live; three reads done; reading IPMA hourly, moved from :33 to :45 (see the third read)",
+  "state": "active: round 1 live; four reads done; reading IPMA hourly at :45",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, 11 November ~02:10 UTC)",
-  "last_wake": "2026-11-11T04:37:53Z",
+  "last_wake": "2026-11-11T04:49:50Z",
   "done": [
     "session key made (record sha256:300a5ee463bec60d), public half in data/keys.json",
     "sources/ipma/api.json: 29 data sets (20 documented at api.ipma.pt, 9 found in IPMA's own directory listings), each with address, format, fields with meaning and unit, IPMA's stated cadence, and what is not documented; sources/ipma/listing.json: IPMA's directory listings as served",
@@ -15,7 +15,8 @@
     "sources/ipma/data/classes.json: IPMA's own names for idWeatherType, classWindSpeed and classPrecInt in Portuguese and English, for incident.weather@ and any page",
     "second read 03:33 UTC: 64 requests, 63 answered 200 (the documented evapotranspiration address still 404), 48 files changed; warnings: IPMA rewrote the feed at 03:15 UTC, 73 to 69 rows above green, the four gone all ended at 03:00 (BJA, FAR, STB rough sea yellow; EVR rain yellow), none replaced or withdrawn, nothing new; vault pushed (hours 02 and 03); the directory crawl is now complete (115 folders in listing.json); changes/ holds the first diffs for 9 data sets",
     "sources/ipma/learned.md (\"What we learned reading IPMA's API\", 13 notes worded as help); agents/ipma/ipma-api-notice.md (the draft for Dinis to send to IPMA); warnings.json carries start_utc and end_utc for incident.weather@",
-    "third read 04:34 UTC: 64 requests, 63 answered 200, 0 files changed: every file was byte-identical to the 03:33 read, IPMA's Last-Modified headers still at 03:15 to 03:36. A check at 04:37:37 found the Lisbon forecast file dated 04:31:02, which our read of 04:35:12 had not been served: IPMA's hourly rewrite became visible to us some minutes after the time on the file. The hourly read moves to :45 so that it falls after IPMA's hourly rewrite (warnings at :15, forecasts at :31, observations at :35, as dated so far). Warnings unchanged: 69 above green."
+    "third read 04:34 UTC: 64 requests, 63 answered 200, 0 files changed: every file was byte-identical to the 03:33 read, IPMA's Last-Modified headers still at 03:15 to 03:36. A check at 04:37:37 found the Lisbon forecast file dated 04:31:02, which our read of 04:35:12 had not been served: IPMA's hourly rewrite became visible to us some minutes after the time on the file. The hourly read moves to :45 so that it falls after IPMA's hourly rewrite (warnings at :15, forecasts at :31, observations at :35, as dated so far). Warnings unchanged: 69 above green.",
+    "fourth read 04:46 UTC: 64 requests, 63 answered 200, 46 files changed (the 04:xx forecasts and observations). Warnings: IPMA's file is now dated 04:15 with the same sha256 as at 03:15 (rewritten, content unchanged): 69 above green, none replaced, withdrawn, ended or new. Note for the record: our 04:34 read was still served the 03:15 header nineteen minutes after 04:15, so something between IPMA's disk and us (a cache, at IPMA or on our route) can serve a file up to about twenty minutes old: a time read here is the time we were served, not proof of what IPMA had published at that minute. Vault pushed."
   ],
   "next": [
     "hourly: node tools/ipma-round.mjs, commit, release; the warnings ledger then shows what IPMA replaced, withdrew and ended between reads",
@@ -35,13 +36,13 @@
     "ok": 63,
     "failed": 1,
     "waits_429": 0,
-    "note": "counts of the third read (04:34 UTC); every read is in sources/ipma/reads.json"
+    "note": "counts of the fourth read (04:46 UTC); every read is in sources/ipma/reads.json"
   },
   "vault": {
     "id": "x75qcmux",
     "kind": "data",
     "note": "vault key sent to the conductor in the clear by session message at 02:28; treat as known to anyone who can read the two transcripts. It crossed with the conductor's 02:19 note asking for the sealed route (SECURITY.md section e). The vault holds copies of IPMA's public data: the exposure is write access to public copies. Not sent again anywhere; any further vault uses the sealed handover (tools/lane-handover.mjs)."
   },
-  "updated": "2026-11-11T04:37:53Z",
+  "updated": "2026-11-11T04:49:50Z",
   "by": "incident.ipma@web-summit.dinis"
 }
