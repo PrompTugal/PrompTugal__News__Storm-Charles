@@ -8,8 +8,7 @@ Dinis at ~11:45 (BRIEF.md, last section): "very focused on the use cases ... lay
 
 | where | link | page, kept by |
 |---|---|---|
-| menu, **first group "Guide"** | Start here | `guide/index.md`, incident.sherpa@ |
-| | In Lisbon now? | `guide/lisbon/index.md`, incident.sherpa@ |
+| menu, **first group "Guide"** | In Lisbon now? | `guide/index.md`, incident.sherpa@ (live 11:51; its first entry renamed at the sherpa's ask) |
 | | Stranded? | `guide/stranded/index.md`, incident.sherpa@ |
 | | For journalists | `guide/media/index.md`, incident.sherpa@ |
 | | Decision brief | `brief/index.md`, incident.brief@ |

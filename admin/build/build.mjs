@@ -92,7 +92,7 @@ const INCP = 'incidents/2026-11-10-storm-charles/'
 // journalists' way in and incident.brief@'s decision brief. Each appears only once its page is built (designer, round 58).
 const HAS_CONTACT = fs.existsSync(path.join(ROOT, 'contact/index.md'))   // incident.desk@'s "Contact us": the frame links it on every page
 const MENU = [
-    ['Guide', [['Start here', 'guide/index.html'], ['In Lisbon now?', 'guide/lisbon/index.html'], ['Stranded?', 'guide/stranded/index.html'], ['For journalists', 'guide/media/index.html'], ['Decision brief', 'brief/index.html']]],
+    ['Guide', [['In Lisbon now?', 'guide/index.html'], ['Stranded?', 'guide/stranded/index.html'], ['For journalists', 'guide/media/index.html'], ['Decision brief', 'brief/index.html']]],
     ['Weather', [['Storm Charles', 'index.html']]],
     ['Stories', [['Stories', 'stories/index.html']]],
     ['Data room', [['Front page', 'data-room/index.html'], ['Dashboard', INCP + 'index.html'], ['Timeline', INCP + 'timeline.html'], ['Decisions', INCP + 'decisions.html'], ['Data', 'datasets.html'], ['Query', 'data/query/index.html'], ['Graph', 'app/graph/index.html'], ['Ontology', 'app/graph/ontology/index.html'], ['Lead times', 'app/graph/lead-times/index.html'], ['Entities', 'entities/index.html'], ['Library', 'library/index.html']]],
