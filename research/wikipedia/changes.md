@@ -1,15 +1,22 @@
 # What changed on Wikipedia since the last read
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 22:51 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 23:49 UTC (written by tools/wikipedia-read.mjs on each read; the history of reads is [reads.json](reads.json))
 
-**Read 11 Nov, 22:51 UTC**; the read before was 11 Nov, 21:48 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
+**Read 11 Nov, 23:49 UTC**; the read before was 11 Nov, 22:51 UTC. Wikipedia is evidence here, never a fact; its text is CC BY-SA 4.0 and each revision is linked. No editor is named.
 
-Nothing changed: no new revision on any of the 8 pages, and no new page.
+## pt: Temporada de tempestades na Europa de 2026–2027 (mention): 2 new revisions, 15049 to 15126 bytes
+
+| UTC | Bytes | Edit summary (the editor's words, CC BY-SA 4.0) | Revision |
+|---|---|---|---|
+| 11 Nov, 22:57 | 15043 | /* Resumo da temporada */ Charles: 3 mortes | [73427904](https://pt.wikipedia.org/w/index.php?title=Temporada_de_tempestades_na_Europa_de_2026%E2%80%932027&oldid=73427904) |
+| 11 Nov, 23:46 | 15126 | /* */ | [73428220](https://pt.wikipedia.org/w/index.php?title=Temporada_de_tempestades_na_Europa_de_2026%E2%80%932027&oldid=73428220) |
+
 
 ## The reads so far
 
 | Read (UTC) | Pages | Changes | Requests | 429 waits |
 |---|---|---|---|---|
+| 11 Nov, 23:49 | 8 | pt: new revisions (2) | 61 | 1 |
 | 11 Nov, 22:51 | 8 | none | 56 | 0 |
 | 11 Nov, 21:48 | 8 | pt: new revisions (1); pt: new revisions (2) | 58 | 0 |
 | 11 Nov, 20:49 | 8 | none | 56 | 0 |

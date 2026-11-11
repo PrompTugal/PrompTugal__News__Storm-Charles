@@ -3,7 +3,7 @@ title: What Wikipedia states about Storm Charles, claim by claim
 ---
 # What Wikipedia states, claim by claim
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 22:57 UTC (written by tools/wikipedia-claims.mjs from claims-curated.json and the revisions named below)
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 23:56 UTC (written by tools/wikipedia-claims.mjs from claims-curated.json and the revisions named below)
 
 The 81 checkable statements of the current revisions (51 pt, 25 en, 3 zh, 2 vi): a time, a number, a place, who decided what; each with the footnote it carries and the revision in which it first appeared. Data: [claims.json](claims.json). 8 statements carry no footnote.
 
