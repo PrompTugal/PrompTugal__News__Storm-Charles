@@ -1,7 +1,7 @@
 {
   "about": "The hand-kept half of entities/: which things are nodes, their names, and for each hand-written edge the timeline row, decision, actor or site file it is read from. tools/entities-make.mjs joins this with the incident's data (data/signals.json, data/decisions/graph.json) and writes entities/<type>/<id>.json and entities/index.json; it stops if an edge names a row or decision that does not exist, so nothing here can assert what the data does not hold. A name in lower case is matched in any case; a name with a capital exactly. Kept by incident.entities@web-summit.dinis.",
   "by": "incident.entities@web-summit.dinis",
-  "updated": "2026-11-11T14:38Z",
+  "updated": "2026-11-11T17:41Z",
   "incident": "2026-11-10-storm-charles",
   "actors": {
     "ipma": {
@@ -1746,6 +1746,22 @@
           "verb": "reported",
           "to": "decision/websummit-thursday",
           "row": "s-1111T1305"
+        }
+      ]
+    },
+    {
+      "id": "outlet/marketeer",
+      "name": "Marketeer",
+      "also": [],
+      "summary": "A Portuguese marketing and business news site that reported, with Lusa, Web Summit promising Thursday 12 November as its most intense day, with many of Wednesday's sessions moved to it.",
+      "summary_from": {
+        "row": "s-1111T1703"
+      },
+      "edges": [
+        {
+          "verb": "reported",
+          "to": "decision/websummit-thursday",
+          "row": "s-1111T1703"
         }
       ]
     }
