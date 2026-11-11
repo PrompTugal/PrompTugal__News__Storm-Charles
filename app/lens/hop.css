@@ -1,0 +1,19 @@
+/* The one-hop drawing on a node page (incident.entities@web-summit.dinis; drawn by app/lens/hop.js). Tokens only (design/README.md).
+   The label of an edge is its line's style as well as its colour, never colour alone: fact solid, evidence dashed, hypothesis dotted,
+   ours (this site's own summary or calendar) thin. No IPMA warning colour is used here. */
+figure.ent-hop { margin: 14px 0 22px; padding: 0; }
+figure.ent-hop svg { display: block; width: 100%; height: auto; max-width: 760px; font: 12px/1 var(--sans); }
+figure.ent-hop figcaption { font: 12.5px/1.45 var(--sans); color: var(--ink-2); margin-top: 6px; max-width: 760px; }
+.ent-hop .box { fill: var(--surface); stroke: var(--line-2); stroke-width: 1; }
+.ent-hop .here .box { fill: var(--surface-2); stroke: var(--ink); stroke-width: 1.5; }
+.ent-hop text { fill: var(--ink); }
+.ent-hop .here text { font-weight: 600; }
+.ent-hop .verb, .ent-hop .kind, .ent-hop .more { fill: var(--ink-2); font-size: 11px; }
+.ent-hop .verb { font-weight: 600; }
+.ent-hop a:hover .box, .ent-hop a:focus-visible .box { stroke: var(--focus); stroke-width: 2; }
+.ent-hop a:focus-visible { outline: none; }
+.ent-hop path { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.ent-hop path.l-fact { stroke: var(--ok); stroke-width: 1.6; }
+.ent-hop path.l-evidence { stroke: var(--sent); stroke-width: 1.6; stroke-dasharray: 6 4; }
+.ent-hop path.l-hypothesis { stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 1.5 4; stroke-linecap: round; }
+.ent-hop .key path { stroke-width: 1.6; }
