@@ -82,6 +82,7 @@
   // unit(name, feed, entity, re): the newest word on top (the operator's own notice if it has one, else the newest decision), two lines at most;
   // the time read and the sources on one small line that opens everything: the feed's notices, every decision, what is still unanswered
   function unit(name, o, e, re) {
+    var full = ''; if (name.indexOf('|') > 0) { full = name.split('|')[1]; name = name.split('|')[0] }
     var ds = standing(e, re), notices = (o && o.label !== 'none' && o.notices) || [], n = notices[0], d = ds[0]
     var notRead = o && o.label === 'none'
     if (!n && !d) return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(name) + '</b> <span class="gd-ns">' + (notRead ? 'we do not read this site' : 'not stated') + '</span></div><p class="gd-c-t">' + (notRead ? esc(cut(o.note, 140)) : 'in what we have read') + '</p></li>'
@@ -91,7 +92,7 @@
     var read = n ? o.read : d.read, count = notices.length + ds.length
     return '<li class="gd-c"><div class="gd-c-h"><b>' + esc(name) + '</b> ' + head + (notRead ? ' <span class="gd-ns">we do not read this site</span>' : '') + '</div><p class="gd-c-t">' + text + '</p>' +
       '<details class="gd-src"><summary><span class="gd-c-r">' + (!n && kind(d.label) === 'evidence' ? esc(host(d.address)) + ', ' : '') + 'read ' + shortT(read) + '</span> · <span class="gd-src-a">' + (count > 1 ? count + ' sources' : 'the source') + '</span></summary>' +
-      (notRead ? '<p class="meta">' + esc(o.note || '') + '</p>' : '') +
+      (full ? '<p class="gd-src-h gd-full">' + esc(full) + '</p>' : '') + (notRead ? '<p class="meta">' + esc(o.note || '') + '</p>' : '') +
       (notices.length ? '<p class="gd-src-h">The operator\'s own notices</p><ul class="gd-sub">' + notices.map(noticeLi).join('') + '</ul>' + prov(host(o.source), o.source, o.read) : '') +
       (o && o.line_status && o.line_status.label === 'none' ? '<p class="meta">Live line status: <span class="gd-ns">not read</span> (not a published feed).</p>' : '') +
       (ds.length ? '<p class="gd-src-h">Decisions' + (n ? ', as reported' : '') + '</p><ul class="gd-sub">' + ds.map(decLi).join('') + '</ul>' : '') +
@@ -188,7 +189,7 @@
     out += sect('now-detail', '1 · What is happening now',
       '<ul class="gd-ws">' + (lis.length ? lis.map(warnLine).join('') : '<li>No warning above green for Lisbon in IPMA\'s feed.</li>') + '</ul>' +
       '<p class="meta">IPMA\'s warnings for the Lisbon district, in its own words (its English text). ' + prov('IPMA open data', W && W.source, W && W.read_utc) + '</p>' +
-      (govAlert ? '<p><b>The government\'s alert situation</b> ' + lbl(govAlert.label) + ' ' + esc(govAlert.decision) + ' ' + prov(host((govAlert.at || {}).source), (govAlert.at || {}).source, (govAlert.at || {}).read) + '</p>' : ''),
+      (govAlert ? '<p class="gd-clamp"><b>The government\'s alert situation</b> ' + lbl(govAlert.label) + ' ' + esc(govAlert.decision) + ' ' + prov(host((govAlert.at || {}).source), (govAlert.at || {}).source, (govAlert.at || {}).read) + '</p>' : ''),
       '<p>Every change of every warning, as we read it: <a href="' + base + 'incidents/' + inc + '/timeline.html">the timeline</a>. The weather, drawn from IPMA\'s data: <a href="' + base + 'index.html">the Weather face</a>. The warning history:</p>' +
       '<ul class="gd-rows">' + ((W && W.history) || []).slice(-8).reverse().map(function (h) { return '<li class="gd-row">' + lbl(h.kind) + '<span class="gd-txt">' + esc(h.event) + '</span>' + prov(host(h.source), h.source, h.read_utc, h.at_utc) + '</li>' }).join('') + '</ul>')
 
@@ -199,8 +200,8 @@
     var nf = newest([E.airport, E.tap]); LINES.flight = 'Your airline decides. ' + (nf ? nf.decision : '')
     out += sect('flight', '2 · I have a flight',
       '<p class="gd-big"><b>Your airline decides whether your flight goes</b>: its site or app has the latest.</p>' +
-      '<ul class="gd-short">' + short('Lisbon airport (ANA)', E.airport) + short('TAP Air Portugal', E.tap) + depLine(lisF) + '</ul>' +
-      '<h4>Getting to the airport</h4><ul class="gd-short">' + short('Metro (the red line serves the airport)', E.metro, /\brun/i) + short('Bridges', E.bridges) + '</ul>' +
+      '<ul class="gd-short">' + short('Lisbon airport|Lisbon airport (Humberto Delgado), operated by ANA', E.airport) + short('TAP|TAP Air Portugal', E.tap) + depLine(lisF) + '</ul>' +
+      '<h4>Getting to the airport</h4><ul class="gd-short">' + short('Metro|Metropolitano de Lisboa (its red line serves the airport)', E.metro, /\brun/i) + short('Bridges|25 de Abril and Vasco da Gama bridges (Lusoponte)', E.bridges) + '</ul>' +
       '<p class="meta">Taxis, ride-hailing and the airport\'s buses: <span class="gd-ns">not stated</span> in what we have read.</p>' +
       '<p class="meta">The airport\'s own departures board: <a href="https://www.aeroportolisboa.pt/en/lis/flights-destinations/find-flights/real-time-departures" rel="noopener">aeroportolisboa.pt</a> (it shows a bot check to our readers, so we cannot quote it).</p>',
       entityBlock(E.airport, 'Airports (ANA)') + entityBlock(E.tap, 'TAP Air Portugal') +
@@ -217,15 +218,15 @@
     out += sect('around', '3 · Getting around',
       '<p class="gd-ns-line">' + notStated([['Carris (Lisbon city buses)', E.carris], ['Fertagus', E.fertagus]], ['taxis', 'ride-hailing']) + '</p>' +
       '<p class="meta">One row per operator: its own notice where we read one (fact), else its newest decision as reported (evidence). Each operator decides its own service: its site has the latest.</p><ul class="gd-short">' +
-      unit('Metro (Metropolitano de Lisboa)', feed('metro-lisboa'), E.metro, /^(?!.*(shelter|homeless))/i) +
-      unit('Carris (Lisbon city buses)', null, E.carris) +
-      unit('Carris Metropolitana (buses around Lisbon)', feed('carris-metropolitana'), null) +
-      unit('Trains (CP)', null, E.cp) +
-      unit('Fertagus (trains over the 25 de Abril bridge)', feed('fertagus'), E.fertagus) +
-      unit('Ferries (Transtejo Soflusa)', feed('ttsl'), E.ferries) +
-      unit('Bridges (25 de Abril, Vasco da Gama)', null, E.bridges) +
-      unit('Road tunnels (Lisbon city)', null, E.tunnels, /tunnel/i) +
-      unit('Intercity coaches (Rede Expressos)', null, E['rede-expressos']) +
+      unit('Metro|Metropolitano de Lisboa', feed('metro-lisboa'), E.metro, /^(?!.*(shelter|homeless))/i) +
+      unit('Carris|Carris, Lisbon city buses and trams', null, E.carris) +
+      unit('Carris Metropolitana|Carris Metropolitana, buses around Lisbon outside the city', feed('carris-metropolitana'), null) +
+      unit('CP trains|CP (Comboios de Portugal)', null, E.cp) +
+      unit('Fertagus|Fertagus, trains over the 25 de Abril bridge', feed('fertagus'), E.fertagus) +
+      unit('Ferries|Transtejo Soflusa (TTSL), the Tagus ferries', feed('ttsl'), E.ferries) +
+      unit('Bridges|25 de Abril and Vasco da Gama bridges (Lusoponte)', null, E.bridges) +
+      unit('Road tunnels|Lisbon city road tunnels (Câmara Municipal de Lisboa)', null, E.tunnels, /tunnel/i) +
+      unit('Coaches|Rede Expressos, intercity coaches', null, E['rede-expressos']) +
       unit('FlixBus', null, E.flixbus) + '</ul>' +
       (thu ? '<p><b>Thursday:</b> ' + stateChip(stateOf(thu)) + ' ' + esc(thu.decision) + ' ' + lbl(thu.label) + '</p>' : ''),
       '<p>Every source is in its row. Mode by mode, with charts: <a href="' + base + 'transport/index.html">transport</a> (incident.transport@).</p>')
@@ -236,9 +237,9 @@
     LINES.stranded = cl.length ? 'Stated closed: ' + cl.join(', ') + '. Cafés, malls, hotels: not stated.' : 'What authorities and operators have stated is open or closed.'
     out += sect('stranded', '4 · I\'m stranded: where can I go, what is open?',
       '<p>Only what an authority or an operator has <b>stated</b>, with its source and time. We never infer that a place is open.</p><ul class="gd-short">' +
-      short('Shops: Pingo Doce supermarkets', E.retail) + short('State museums and monuments', E.museums) + short('Schools (mainland)', E.schools, /^(?!.*Madeira)/) + short('Courts and registries', E.courts) + short('Hospitals (scheduled activity)', E.hospitals) + short('Parks, gardens, municipal culture (Lisbon city)', E.tunnels, /park|garden|cultur/i) + '</ul>' +
+      short('Pingo Doce|Pingo Doce supermarkets (Jerónimo Martins)', E.retail) + short('Museums|State museums and monuments (Museus e Monumentos de Portugal)', E.museums) + short('Schools (mainland)', E.schools, /^(?!.*Madeira)/) + short('Courts|Courts and registries', E.courts) + short('Hospitals|Lisbon hospitals, scheduled activity', E.hospitals) + short('Parks|Lisbon city parks, gardens and municipal culture', E.tunnels, /park|garden|cultur/i) + '</ul>' +
       '<div class="gd-ns-box"><b>Not stated</b> by any authority or operator in what we have read: cafés and restaurants, shopping malls, other supermarket chains, hotels, ride-hailing (Uber, Bolt), taxis, pharmacies. That means <i>we do not know</i>, not that they are closed: whether a place is open is the place\'s own word.</div>' +
-      (shelter && shelter.length ? '<p><b>Shelter stated by an operator:</b></p><ul class="gd-rows">' + shelter.map(function (d) { return row(d).replace(/<span class="gd-st[^"]*">[^<]*<\/span>/, '<span class="gd-st">shelter at night</span>') }).join('') + '</ul>' : '') + hospFold(),
+      (shelter && shelter.length ? '<p><b>Shelter stated by an operator:</b></p><ul class="gd-rows">' + shelter.slice(0, 1).map(function (d) { return rowCut(d, 120).replace(/<span class="gd-st[^"]*">[^<]*<\/span>/, '<span class="gd-st">shelter at night</span>') }).join('') + '</ul>' : '') + hospFold(),
       (govAlert ? '<h4>The government\'s measures for Wednesday</h4><ul class="gd-rows">' + row(govAlert) + '</ul>' : '') +
       entityBlock(E.retail, 'Shops') + entityBlock(E.museums, 'Museums and monuments') + entityBlock(E.schools, 'Schools') + entityBlock(E.courts, 'Courts') + entityBlock(E.hospitals, 'Hospitals') + entityBlock(E.parliament, 'Parliament') +
       '<p>Every decision and who made it: <a href="' + base + 'incidents/' + inc + '/decisions.html">the decisions</a>.</p>')
@@ -287,6 +288,7 @@
     if (document.querySelector('.contact-foot a')) out += '<p class="gd-contact">Missing something you need, or something wrong? <a href="' + esc(document.querySelector('.contact-foot a').getAttribute('href')) + '">Contact us</a>: the desk reads every message.' + (shown('press') ? ' Citing: <a href="' + base + 'help/cite.html">how to cite</a>.' : '') + '</p>'
     el.innerHTML = out
     hospWire()
+    el.querySelectorAll('.gd-clamp').forEach(function (c) { c.setAttribute('tabindex', '0'); c.setAttribute('title', 'Tap to read it all'); var t = function () { c.classList.toggle('gd-open-all') }; c.addEventListener('click', function (e) { if (e.target.tagName !== 'A') t() }); c.addEventListener('keydown', function (e) { if (e.key === 'Enter') t() }) })
     focus.forEach(function (id) { var n = document.getElementById(id); if (n && n.classList.contains('gd-case')) el.appendChild(n) })
     if (focus.length) {
       var jr = document.createElement('nav'); jr.className = 'gd-jump'; jr.setAttribute('aria-label', 'On this page')
