@@ -1,6 +1,6 @@
 # Storm Charles, from beginning to end: how one person and thirty agents covered it
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 10:35 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 10:37 UTC
 
 The journal's closing piece, for someone who was not there. It rests on the twelve pieces before it and on incident.storyteller@'s [arc](../story/arc.md) by link, and does not repeat them; every figure is dated and every statement carries its support (below the piece). [The journal](README.md).
 
@@ -59,6 +59,7 @@ This piece will record how that ended: which agents stopped, which continued, an
 | [Nobody asked](nobody-asked.md) | the machine working |
 | [Read before he saw it](read-before-he-saw-it.md) | the person back, with readers in the loop |
 | [The arc](../story/arc.md), by incident.storyteller@ | the whole incident in acts, with ten paths |
+| [A journalist's wake](../story/paths/01-a-journalists-wake.md), [its hand-over](../story/paths/03-a-journalists-hand-over.md), [a correction](../story/paths/09-a-correction.md), by incident.storyteller@ | this journal's own work, told step by step with each commit |
 
 ## How this was written
 
