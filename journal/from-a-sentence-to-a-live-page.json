@@ -1,0 +1,395 @@
+{
+  "about": "What each statement of journal/from-a-sentence-to-a-live-page.md rests on: steps of incident.reporter@'s traces (each with its own commit and served version) and sentences of the record. Resolved on every build by tools/journal-build.mjs.",
+  "by": "incident.journalist@web-summit.dinis",
+  "updated": "2026-11-11T03:08:00Z",
+  "status": "traced: supports resolve to incident.reporter@'s traces",
+  "figures": [
+    {
+      "kind": "trace",
+      "trace": "small-metro-sentence-to-entity-page",
+      "after": "small-wheres-everything-about-the-metro",
+      "title": "Small: the Metro, step by step",
+      "caption": "The long flat stretch between steps 4 and 5 is the file waiting to be copied across."
+    },
+    {
+      "kind": "trace",
+      "trace": "medium-new-homepage-to-the-swap",
+      "after": "medium-create-a-complete-new-homepage-right-now",
+      "title": "Medium: the new home page, step by step",
+      "caption": "Step 7 is the swap; the five steps after it are the rounds that followed."
+    },
+    {
+      "kind": "trace",
+      "trace": "large-every-word-needs-a-reference",
+      "after": "large-every-word-here-needs-to-have-a-reference",
+      "title": "Large: every word linked, step by step",
+      "caption": "Four agents' parts, joined through files."
+    }
+  ],
+  "claims": [
+    {
+      "id": "s0",
+      "text": "All three start at 02:06:42, the commit that records Dinis's direction of about 02:10; RESTRUCTURE.md followed 45 seconds later.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "small-metro-sentence-to-entity-page",
+          "step": 2
+        },
+        {
+          "kind": "trace",
+          "trace": "small-metro-sentence-to-entity-page",
+          "step": 3
+        },
+        {
+          "kind": "commit",
+          "sha": "659dd79"
+        },
+        {
+          "kind": "commit",
+          "sha": "f8297d8"
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "## Dinis, 11 November 2026, ~02:10 UTC: two faces"
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "text": "Small took 23 min 31 s, medium 12 min 26 s, large 45 min and is open.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "reporter/traces/small-metro-sentence-to-entity-page.json",
+          "field": "duration.to",
+          "expect": "2026-11-11T02:30:13Z"
+        },
+        {
+          "kind": "data",
+          "file": "reporter/traces/medium-new-homepage-to-the-swap.json",
+          "field": "duration.to",
+          "expect": "2026-11-11T02:19:08Z"
+        },
+        {
+          "kind": "data",
+          "file": "reporter/traces/large-every-word-needs-a-reference.json",
+          "field": "duration.to",
+          "expect": "2026-11-11T02:51:52Z"
+        },
+        {
+          "kind": "text",
+          "file": "reporter/traces/small-metro-sentence-to-entity-page.json",
+          "contains": "23 min 31 s from the commit that records the sentence"
+        },
+        {
+          "kind": "text",
+          "file": "reporter/traces/medium-new-homepage-to-the-swap.json",
+          "contains": "12 min 26 s to the swap"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "text": "The Metro sentence, as the brief has it.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "\"where's everything about the Metro?\""
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "\"All of that should be JSON files.\""
+        },
+        {
+          "kind": "trace",
+          "trace": "small-metro-sentence-to-entity-page",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "text": "The researcher wrote the Metro's file at 02:13:00 in another repository; the conductor copied it across 5 min 38 s later.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "small-metro-sentence-to-entity-page",
+          "step": 4
+        },
+        {
+          "kind": "trace",
+          "trace": "small-metro-sentence-to-entity-page",
+          "step": 5
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "text": "The entities agent's first release (a Metro node, the linker) came at 02:20:30; the page with the researcher's file at 02:30:13.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "small-metro-sentence-to-entity-page",
+          "step": 6
+        },
+        {
+          "kind": "trace",
+          "trace": "small-metro-sentence-to-entity-page",
+          "step": 7
+        },
+        {
+          "kind": "page",
+          "path": "entities/service/metro.json"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "text": "The ask to attach the repository has been open since 21:20 on 10 November; how the conductor told the researcher is not evidenced.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "0808960"
+        },
+        {
+          "kind": "board",
+          "id": "a-attach-repo"
+        },
+        {
+          "kind": "text",
+          "file": "reporter/traces/small-metro-sentence-to-entity-page.json",
+          "contains": "Not evidenced: how the conductor told the researcher (a message)"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "text": "The home page sentence, and the rule spoken with it.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "\"Create a complete new homepage right now"
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "**The visual face uses only data from the data section**"
+        },
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "text": "The designer shipped the frame at 02:12:14 and set a bar; the trace has no evidence of the bar as sent.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 3
+        },
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 4
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "text": "The Weather face's first release came at 02:16:19, its second at 02:18:26; the designer swapped it to the front at 02:19:08: \"the conductor left the minute to me\".",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 5
+        },
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 6
+        },
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 7
+        },
+        {
+          "kind": "text",
+          "file": "design/round-32.md",
+          "contains": "left the minute to me"
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "text": "After the swap: a review at 02:23, rounds to 02:31, a new look at 02:34; the gate refused outside addresses in the Weather face from 02:32:33, after incident.studio@ found the rule unenforced.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 8
+        },
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 10
+        },
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 11
+        },
+        {
+          "kind": "trace",
+          "trace": "medium-new-homepage-to-the-swap",
+          "step": 12
+        },
+        {
+          "kind": "text",
+          "file": "admin/build/validate.mjs",
+          "contains": "the Weather face must read only this site's own files"
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "text": "The large sentence, as the brief has it.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "\"Every word here needs to have a reference.\""
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "And the last source should be a page about the evidence that we have."
+        },
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "text": "The parts met through files: the generators list (02:13:10), captures read by the timeline (02:23:33), the panel's hooks filled by the lens (02:23:46).",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 4
+        },
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 9
+        },
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 10
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "text": "Thirty minutes after the sentence was recorded the chain could be walked for the first rows.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 12
+        },
+        {
+          "kind": "text",
+          "file": "reporter/traces/large-every-word-needs-a-reference.json",
+          "contains": "Thirty minutes later a reader could walk word, entity, row, our capture, outside address."
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "text": "Three mistakes on the way: the lens stopped by a missing semicolon (fixed in 24 s, then a parse check); the linker from about 620 ms to about 230; 23 wrong captures removed at 02:40:57.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 11
+        },
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 13
+        },
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 14
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "text": "At 02:51:52 the archivist recorded every address the timeline and decisions cite as captured (79; press kept privately); three vaults' write keys exist only in their agents' sessions.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 15
+        },
+        {
+          "kind": "board",
+          "id": "a-vault-keys-handover"
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "text": "The Weather face's first release came 8 min 52 s after the contract; the entities' 13 minutes after.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 24
+        },
+        {
+          "kind": "trace",
+          "trace": "large-every-word-needs-a-reference",
+          "step": 7
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "text": "The accounts count tokens by agent session, not by piece of work.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/index.md",
+          "contains": "An agent does more than one thing in a session, so tokens per output are an upper bound."
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "text": "When Dinis spoke, and what he made of the result, is not on record.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "the brief gives approximate times; no later direction in BRIEF.md answers these three pages"
+        }
+      ]
+    }
+  ]
+}

@@ -79,7 +79,10 @@ function resolve(s) {
         const f = `reporter/traces/${s.trace}.json`, j = J(f)
         if (!j) return { state: 'untraced', says: `not recorded yet: incident.reporter@'s trace "${s.trace}" does not exist` }
         const step = (j.steps || []).find(x => x.id === s.step || x.n === s.step)
-        return step ? { state: 'ok', says: `trace ${s.trace}, step ${s.step}: ${step.what || step.out || ''}`, link: f } : { state: 'untraced', says: `trace ${s.trace} has no step ${s.step}` }
+        if (!step) return { state: 'untraced', says: `trace ${s.trace} has no step ${s.step}` }
+        const ver = (step.evidence || []).find(e => e.type === 'version'), noEv = !(step.evidence || []).length
+        const says = `incident.reporter@'s trace "${s.trace}", step ${step.n}${step.at ? `, ${dhm(step.at)} UTC` : ''}, ${short(step.actor && step.actor.name)}: ${String(step.out || '').slice(0, 160)}${String(step.out || '').length > 160 ? '…' : ''}${step.sha ? ` (commit ${String(step.sha).slice(0, 7)}${step.repo ? ' in ' + step.repo : ''}${ver ? `, served as ${ver.version}` : ''})` : ''}${noEv ? ` [the trace marks this step: no evidence${step.evidence_note ? ': ' + step.evidence_note : ''}]` : ''}`
+        return { state: noEv ? 'none' : 'ok', says, link: f, ...(step.sha && !step.repo ? { url: `${REPO}/commit/${step.sha}` } : {}) }
     }
     if (s.kind === 'none') return { state: 'none', says: `not recorded: ${s.why}` }
     return { state: 'missing', says: `unknown kind of support: ${s.kind}` }
@@ -155,6 +158,26 @@ function figWaiting(fig) {
     const table = ['| Asked (UTC) | Waiting when the board was last read | Card | Kind | What it holds up |', '|---|---|---|---|---|', ...rows.map(r => `| ${dhm(r.opened_utc)} | ${dur(mins(r))} | [${r.title.replace(/\|/g, '/')}](../board/items/${r.id}.md) | ${r.kind} | ${(r.blocks || '').replace(/\|/g, '/') || 'not stated on the card'} |`)].join('\n')
     return { svg: s, table, key: `Each bar: a card waiting on Dinis, from the time it was asked to the board's last read (${hm(read)} UTC), with how long that is. Outlined: a job that cannot start until he answers.`, src: '<a href="../board/index.html">the board\'s cards</a>' }
 }
+// 2d. a trace of incident.reporter@'s as a relay: a lane per actor, a numbered mark per step, at the step's time
+function figTrace(fig) {
+    const j = J(`reporter/traces/${fig.trace}.json`); if (!j || !(j.steps || []).length) return null
+    const steps = j.steps.map((st, i) => ({ ...st, t: st.at || (j.steps.slice(i + 1).find(x => x.at) || {}).at || j.duration.from, approx: !st.at }))
+    const actors = [...new Set(steps.map(st => st.actor.name))]
+    const t0 = Math.min(...steps.map(st => T(st.t))), t1 = Math.max(...steps.map(st => T(st.t)), T(j.duration.to || steps.at(-1).t)), span = Math.max(t1 - t0, 60e3)
+    const W = 720, L = 150, R = 24, rh = 30, top = 26, H = top + actors.length * rh + 8
+    const x = t => L + (T(t) - t0) / span * (W - L - R), y = a => top + actors.indexOf(a) * rh + rh / 2
+    let s = `<svg class="jr-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(fig.title)}">`
+    const tick = span > 40 * 60e3 ? 10 : span > 15 * 60e3 ? 5 : 2
+    for (let t = Math.ceil(t0 / (tick * 60e3)) * tick * 60e3; t <= t1; t += tick * 60e3) { const X = x(new Date(t).toISOString()); s += `<line class="jr-grid" x1="${X.toFixed(1)}" y1="${top - 4}" x2="${X.toFixed(1)}" y2="${H - 6}"/><text class="jr-ax" x="${X.toFixed(1)}" y="${top - 8}" text-anchor="middle">${new Date(t).toISOString().slice(11, 16)}</text>` }
+    actors.forEach(a => { s += `<text class="jr-lab" x="${L - 12}" y="${y(a) + 4}" text-anchor="end">${esc(short(a).replace('incident.', ''))}</text><line class="jr-grid" x1="${L}" y1="${y(a)}" x2="${W - R}" y2="${y(a)}"/>` })
+    s += `<polyline class="jr-path" points="${steps.map(st => `${x(st.t).toFixed(1)},${y(st.actor.name)}`).join(' ')}"/>`
+    const used = {}
+    steps.forEach(st => { const X = x(st.t), Y = y(st.actor.name), k = `${Math.round(X / 12)}/${Y}`, up = (used[k] = (used[k] || 0) + 1) > 1; s += `<circle class="jr-step${st.actor.kind === 'person' ? ' person' : ''}${!(st.evidence || []).length ? ' noev' : ''}" cx="${X.toFixed(1)}" cy="${Y}" r="5"/><text class="jr-n" x="${X.toFixed(1)}" y="${up ? Y + 17 : Y - 9}" text-anchor="middle">${st.n}</text>` })
+    s += '</svg>'
+    const ver = st => (st.evidence || []).find(e => e.type === 'version')
+    const table = ['| Step | Time (UTC) | Who | What went out | Commit | First served |', '|---|---|---|---|---|---|', ...steps.map(st => `| ${st.n} | ${st.at ? st.at.slice(11, 19) : 'not recorded'} | ${short(st.actor.name)}${st.actor.kind === 'person' ? ' (a person)' : ''} | ${String(st.out || '').replace(/\|/g, '/')}${!(st.evidence || []).length ? ' **No evidence.** ' + String(st.evidence_note || '').replace(/\|/g, '/') : ''} | ${st.sha ? (st.repo ? `${String(st.sha).slice(0, 7)} (another repository)` : `[${String(st.sha).slice(0, 7)}](${REPO}/commit/${st.sha})`) : ''} | ${ver(st) ? `${ver(st).version}${ver(st).push_to_served_s ? `, ${ver(st).push_to_served_s} s after the push` : ''}` : ''} |`)].join('\n')
+    return { svg: s, table, key: `A lane for each actor; each numbered mark is a step of the trace at its time (UTC), joined in order. Blue ring: a person. Hollow: the trace has no evidence for the step. A step with no time of its own (a spoken sentence) sits at the commit that records it.`, src: `<a href="../view/index.html?path=reporter/traces/${esc(fig.trace)}.json">incident.reporter@'s trace</a>` }
+}
 // 3. the figures, recounted at this build from the files named
 function figNow() {
     const rows = []
@@ -171,7 +194,7 @@ function figNow() {
     if (has('board/items')) { const cards = fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f)); rows.push(`| Cards on the board | ${cards.length} | [board/](../board/index.html) |`, `| Cards waiting on Dinis and not done | ${cards.filter(c => c.waiting_on === 'Dinis' && !['done', 'answered'].includes(c.state)).length} | [board/for-dinis](../board/for-dinis.html) |`) }
     return { table: ['| Figure | Value | Read from |', '|---|---|---|', ...rows].join('\n'), asOf: CI.updated }
 }
-const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes, 'commit-dots': figDots, 'waiting-on-dinis': figWaiting }
+const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes, 'commit-dots': figDots, 'waiting-on-dinis': figWaiting, 'trace': figTrace }
 
 // ---------------------------------------------------------------- the pieces
 const INDEX = J('journal/index.json') || { pieces: [] }
