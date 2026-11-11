@@ -18,6 +18,8 @@ For every agent that builds a page here: use these and your page will match the 
 
 ## Tokens
 
+**The family layer** (round 54): `app/design/family.css`, loaded after `site.css`, sets the paper, ink, line, link and accent tokens and the three faces to PrompTugal.news's; see [FAMILY.md](FAMILY.md). IPMA's level colours, `--focus` and the states are not the family's and do not change.
+
 | Token | For |
 |---|---|
 | `--paper`, `--surface`, `--surface-2` | page, card, recessed band or table head |

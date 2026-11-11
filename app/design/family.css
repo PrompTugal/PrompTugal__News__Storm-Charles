@@ -1,0 +1,80 @@
+/* The PrompTugal.news family layer: what makes a site of the family look like promptugal.news.
+   Kept by incident.designer@web-summit.dinis (Dinis, ~10:35 UTC 11 November 2026: "this should be part of that family").
+   Read from the live https://promptugal.news/assets/tokens.css (brand identity v2.0, newsroom-designer@, 5 November 2026;
+   sha256 f387b4759cea…) and assets/site.css (0258b0d2bf90…) at 10:37 UTC. Load it AFTER the site's own stylesheet: it
+   remaps the site's tokens to the family's palette and type, and draws the family masthead (the wordmark, the section
+   name) and the family footer. The contract and how a next site (Lisbon Fringe) copies it: design/FAMILY.md.
+
+   What it never touches: IPMA's level colours (--red, --orange, --yellow, --on-red, --on-yellow), the observed/now blue
+   (--focus), the states of things we run (--ok, --bad, --warn, --sent, --wait), the fact/evidence/hypothesis marks. */
+
+/* ---- the family palette (paper and ink; colour belongs to the name; links take the name's green) ---- */
+:root, :root[data-theme="light"] {
+  --fam-red: #c52830; --fam-green: #006600;
+  --paper: #f6f3ec; --surface: #fffdf8; --surface-2: #ece7db;
+  --ink: #121317; --ink-2: #3f424a; --ink-3: #595c64;
+  --line: #d9d2c1; --line-2: #9d9580; --rule: #121317;
+  --link: #006600; --link-2: #004d00; --link-soft: #e2eedf;
+  --accent: #b42318;                     /* the family's "live" red: the site's live mark and "in force" */
+  --nav-bg: rgb(246 243 236 / .96);
+  --radius: 3px;                          /* rules, not boxes */
+  --shadow: 0 1px 2px rgb(18 19 23 / .06);
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme]), :root[data-theme="auto"] {
+  --fam-red: #f07278; --fam-green: #6dbb7e;
+  --paper: #111214; --surface: #1e1f23; --surface-2: #1a1b1e;
+  --ink: #eceae4; --ink-2: #c3c0b7; --ink-3: #a6a39a;
+  --line: #2e2f34; --line-2: #5f5b51; --rule: #eceae4;
+  --link: #6dbb7e; --link-2: #9bd3a7; --link-soft: #16281c;
+  --accent: #ff8f7d; --nav-bg: rgb(17 18 20 / .96);
+  --shadow: 0 1px 2px rgb(0 0 0 / .4);
+} }
+:root[data-theme="dark"] {
+  --fam-red: #f07278; --fam-green: #6dbb7e;
+  --paper: #111214; --surface: #1e1f23; --surface-2: #1a1b1e;
+  --ink: #eceae4; --ink-2: #c3c0b7; --ink-3: #a6a39a;
+  --line: #2e2f34; --line-2: #5f5b51; --rule: #eceae4;
+  --link: #6dbb7e; --link-2: #9bd3a7; --link-soft: #16281c;
+  --accent: #ff8f7d; --nav-bg: rgb(17 18 20 / .96);
+  --shadow: 0 1px 2px rgb(0 0 0 / .4);
+}
+:root[data-theme="paper"], :root[data-theme="night"], :root[data-theme="contrast"] { --radius: 3px; }
+:root[data-theme="paper"] { --serif: "Newsreader", Georgia, serif; }
+
+/* ---- type: the family's faces (headings in the serif; the interface in the sans) ---- */
+body { font-family: var(--sans); }
+h1, h2, .doc article h1, .doc article h2, .banner h1 { font-family: var(--serif); font-weight: 600; letter-spacing: -.012em; }
+.doc article { font-family: var(--serif); font-size: 17.5px; line-height: 1.6; }
+.doc article code, .doc article pre, .doc article table { font-family: var(--mono); }
+.doc article table { font-family: var(--sans); font-size: 15px; }
+@media (min-width: 768px) { .doc article { font-size: 18px; } }
+
+/* ---- the family masthead: the wordmark (the family's home), then this site's name as the section ---- */
+header.top { border-bottom: 4px double var(--rule); }
+header.top a.fam-mark { display: inline-flex; align-items: center; flex: 0 0 auto; padding: 4px 0; }
+header.top .wordmark { display: block; width: 168px; height: auto; }
+header.top .wm-dark { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) header.top .wm-light, :root[data-theme="auto"] header.top .wm-light { display: none; } :root:not([data-theme]) header.top .wm-dark, :root[data-theme="auto"] header.top .wm-dark { display: block; } }
+:root[data-theme="dark"] .wm-light, :root[data-theme="night"] .wm-light { display: none !important; }
+:root[data-theme="dark"] .wm-dark, :root[data-theme="night"] .wm-dark { display: block !important; }
+header.top a.brand { font: 600 21px/1 var(--serif); letter-spacing: -.015em; color: var(--ink); padding-left: 12px; border-left: 1px solid var(--line-2); }
+header.top a.brand b { color: inherit; font-weight: 600; }
+header.top a.brand .brand-org { display: none; }
+@media (max-width: 640px) { header.top .wordmark { width: 140px; } header.top a.brand { font-size: 18px; padding-left: 9px; } }
+
+/* ---- the strip above the masthead: the family's dateline voice (mono, quiet), with the big link home ---- */
+aside.ptn { background: var(--paper); border-bottom: 1px solid var(--line); font: 500 12.5px/1.4 var(--mono); color: var(--ink-3); }
+aside.ptn a { color: var(--link); }
+aside.ptn .ptn-go { font: 600 13px/1.3 var(--sans); border-radius: 999px; }
+
+/* ---- the family footer: a double rule, the wordmark, one paragraph on the family ---- */
+footer.agent { border-top: 4px double var(--rule); font-family: var(--sans); }
+footer.agent .ptn-foot { display: grid; gap: 8px; font: 400 15px/1.5 var(--serif); }
+footer.agent .ptn-foot .wordmark { width: 240px; height: auto; display: block; }
+footer.agent .ptn-foot .wm-dark { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) footer.agent .wm-light, :root[data-theme="auto"] footer.agent .wm-light { display: none; } :root:not([data-theme]) footer.agent .wm-dark, :root[data-theme="auto"] footer.agent .wm-dark { display: block; } }
+
+@media print { aside.ptn { display: none; } header.top .wordmark { width: 140px; } }
