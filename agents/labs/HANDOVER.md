@@ -1,4 +1,4 @@
-> Kept by incident.labs@web-summit.dinis, 11 November 2026, 06:50 UTC
+> Kept by incident.labs@web-summit.dinis, 11 November 2026, 09:15 UTC
 
 # Handover: incident.labs@web-summit.dinis
 
@@ -24,7 +24,7 @@ Many small experiments in showing this incident, each on its own page, so he can
 ```
 node admin/build/build.mjs && node tools/labs-check.mjs      # 12 experiments, 1680 and 390 wide; --only <area/name>; --url <site> for the served one
 ```
-It serves `_site/` itself, counts marks, checks nothing is wider than the screen (also with an item and the table open), clicks a mark and reads the item. It does not look: after a change of data, take a screenshot and read it (the 06:50 look found three faults the check passed). Release: commit, then `AGENT=incident.labs@web-summit.dinis admin/tools/release.sh`; then check the served page, not only the local one. End of each wake: `node tools/accounts-measure.mjs --task "..." --quality pass --append`, commit `accounts/ledger/labs.jsonl` with `For: incident.accountant@web-summit.dinis`.
+It serves `_site/` itself, counts marks, checks nothing is wider than the screen (also with an item and the table open), clicks a mark and reads the item. It does not look: after a change of data, take a screenshot and read it (the 06:50 look found three faults the check passed, the 09:15 look a fourth). The screenshot script was a scratch file: Playwright, `page.locator('.lab').screenshot()` at 1500 wide. Release: commit, then `AGENT=incident.labs@web-summit.dinis admin/tools/release.sh`; then check the served page, not only the local one. End of each wake: `node tools/accounts-measure.mjs --task "..." --quality pass --append`, commit `accounts/ledger/labs.jsonl` with `For: incident.accountant@web-summit.dinis`.
 
 ## The experiments and their state (twelve, all passing at 06:50 UTC; each has a table twin from `twin()` in labs.js)
 
@@ -49,7 +49,7 @@ Nothing half-done in the tree: everything written is pushed.
 
 ## Owed (in order)
 
-1. **After 09:00 and 12:00 UTC on 11 November** (Lisbon's red rain, then red wind): run the check and look at day-bands, stations and models as the observed hours fill in. Known risk: the shared rain scale on stations is set by Madeira (49.6 mm in an hour).
+1. **The 12:00 UTC look on 11 November** (Lisbon's wind warning, orange since IPMA lowered it at 07:16, with the red rain to 18:00): pull dev, build, run the check, then take screenshots of day-bands, stations and models and read them. The 09:12 look (data read 08:45) found day-bands, stations, state and lead-times right, and models wrong: it named a "red wind warning" in fixed words. Now every level, hour and figure of a warning comes from `warnings.json`. Things to watch at 12:00: airport gusts reappearing as points on models (none since Tuesday 15:00); the observed rain against the two models' peak (18 to 20 mm in the hour, forecast for 12:00 to 14:00); Lisbon's bars on stations are small on the shared scale, which Madeira sets (58 mm in an hour): consider making "each station its own" the default.
 2. **Wikipedia on the lag view**, when the first edit per keyed fact is published in the shape `first-on-each-fact.json` describes (`shape_for_other_series`); not there at 06:50.
 3. A keyboard order check on the SVG marks themselves (the table twin is the linear path meanwhile).
 4. models against day-bands: one labels a forecast "hypothesis", the other "fact with a note". Choose one.
@@ -63,4 +63,4 @@ Nothing half-done in the tree: everything written is pushed.
 
 ## What waits on Dinis
 
-His choice between the experiments: nothing else. No vault was created, so there is no key to hand over. No routine or scheduled task wakes this agent: it wakes only on a message.
+His choice between the experiments: nothing else. No vault was created, so there is no key to hand over. One one-shot wake from incident.conductor@ fired into the second session at 09:12 UTC on 11 November; there is no recurring wake. The second session carried about 200,000 tokens a call when it wrote this.

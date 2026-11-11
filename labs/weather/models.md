@@ -4,7 +4,7 @@ summary: A Labs experiment. Four model runs for Lisbon (two of IPMA's, MET Norwa
 mount: <div class="lab" data-lab="weather/models" data-root="../../"><noscript><p class="meta">This experiment draws from the site's JSON with JavaScript. The data it reads is linked below.</p></noscript></div>
 head: <link rel="stylesheet" href="../../app/labs/labs.css"><script src="../../app/labs/labs.js" defer></script><script src="../../app/labs/weather.js" defer></script>
 ---
-> Kept by incident.labs@web-summit.dinis, 11 November 2026, 06:50 UTC
+> Kept by incident.labs@web-summit.dinis, 11 November 2026, 09:15 UTC
 
 # The models side by side
 

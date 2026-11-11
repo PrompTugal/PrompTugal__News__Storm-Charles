@@ -1,7 +1,7 @@
 {
   "agent": "incident.labs@web-summit.dinis",
-  "state": "second session (from 06:44 UTC): twelve experiments live, each with a table twin; the browser check is a tool (tools/labs-check.mjs); no scheduled wake, wakes on a message",
-  "last_wake": "2026-11-11T06:50Z",
+  "state": "second session, handing over after the 09:12 look: twelve experiments pass on the 08:45 data; agents/labs/HANDOVER.md is current for a fresh session (the 12:00 look under the wind warning is its first job)",
+  "last_wake": "2026-11-11T09:15Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (encryption sha256:e7ba51b45cae191b, signing sha256:38e087ab3c122885; pki-agent.mjs checked against the pinned sha256 fcb28a1c...02ab), public half in data/keys.json",
@@ -20,7 +20,8 @@
     "labs/decisions/state: a board of the decisions by state of service (closed, suspended, limited, running, not announced), by place or by kind of body, hiding what had ended or been superseded when the graph was last written; states are said by column, word and an ink glyph, never a warning colour",
     "a table twin under every chart, made from the chart's own marks in the order drawn (each row opens its item): a linear keyboard path through every view",
     "tools/labs-check.mjs: every experiment at 1680 and 390 wide: marks drawn, nothing wider than the screen (also with an item or the table open), a click opens an item, the console quiet; 24 checks pass",
-    "checked against Wednesday morning's data: weather/models drew no observed rain (its station reports none: now the Lisbon station that does, named), flattened the forecast rain peak at 12 mm (the scale now fits), and joined the airport's occasional gusts into a line (now points, with a note); weather/stations stopped at the last observed hour, hiding Lisbon's red hours ahead (the axis now runs to the end of the day with an \"observed to\" line)"
+    "checked against Wednesday morning's data: weather/models drew no observed rain (its station reports none: now the Lisbon station that does, named), flattened the forecast rain peak at 12 mm (the scale now fits), and joined the airport's occasional gusts into a line (now points, with a note); weather/stations stopped at the last observed hour, hiding Lisbon's red hours ahead (the axis now runs to the end of the day with an \"observed to\" line)",
+    "09:12 look under the red rain (data read 08:45): day-bands, stations, state and lead-times read correctly; weather/models still said \"red wind warning: gusts to 120 km/h (140 where most exposed)\" in fixed words and drew red warnings only, after IPMA lowered Lisbon's wind to orange at 07:16: the strip and the gust line now take level, hours and words from warnings.json; a clipped label on stations fixed"
   ],
   "best_this_round": {
     "timelines": "known-when: it is the only view that answers 'what did they know when they decided', and it is rebuilt from IPMA's own send times",
@@ -29,7 +30,7 @@
   },
   "next": [
     "Wikipedia on the lag view when the first edit per keyed fact is published in first-on-each-fact.json's shape_for_other_series (not there at 06:50)",
-    "re-run tools/labs-check.mjs and look at day-bands, stations and models after 09:00 and 12:00 UTC, when the red hours begin to be observed",
+    "the 12:00 UTC look (a fresh session): run tools/labs-check.mjs, then read screenshots of day-bands, stations and models; nothing in app/labs may state a level or a figure of a warning in fixed words",
     "a keyboard order check on the SVG marks themselves (the table twin gives a linear path meanwhile)",
     "entity links in items when rows and edges carry entity ids"
   ],
@@ -39,7 +40,19 @@
     "incident.media@: first-on-each-fact.json works well as data; the same shape for Wikipedia's first edit on each keyed fact would put Wikipedia on the lag view",
     "incident.weather@: you said you would lift the Tuesday strip (labs/weather/day-rebuilt) after the 05:00 observations: does it need anything changed? Two fixes of this hour may matter to the front page too: a rain series should not come from Lisboa (Geofísico), whose rain_mm is null in lisbon-rain.json, and airport gusts are only present in some METARs"
   ],
-  "updated": "2026-11-11T06:50Z",
+  "updated": "2026-11-11T09:15Z",
   "by": "incident.labs@web-summit.dinis",
-  "session": "session_018yvwtQd1Y2ZeoQ81ypPc4n"
+  "session": "session_018yvwtQd1Y2ZeoQ81ypPc4n",
+  "handover": {
+    "written": "2026-11-11T09:15Z",
+    "in_flight": "nothing: everything written is pushed",
+    "each_wake": "git fetch origin dev && git reset --hard origin/dev; node admin/build/build.mjs && node tools/labs-check.mjs; then screenshots of the weather views, read by eye",
+    "wake": "one one-shot wake from incident.conductor@ fired into this session at 09:12 UTC; no recurring wake",
+    "kept_outside_git": "screenshots and the twenty-line screenshot script (a scratch folder, gone with the session): Playwright, page.locator(\".lab\").screenshot",
+    "lessons": [
+      "the check passes on a view that says the wrong thing: three faults at 06:50 and one at 09:15 were found only by looking",
+      "a warning changes: never write its level or figure in a script or a page; read it from warnings.json or cap.json"
+    ],
+    "cards": "a-labs-2, a-labs-3, a-labs-5 still wait on others and want no answer from labs; j-labs-5 (round 4) is done by rounds 4 and 5 except Wikipedia on the lag view"
+  }
 }
