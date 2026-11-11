@@ -107,5 +107,5 @@ fs.writeFileSync(path.join(ROOT, 'data/agents/views.json'), text)
 fs.mkdirSync(path.join(PUB, 'stats'), { recursive: true }); fs.writeFileSync(path.join(PUB, 'stats', 'views.json'), text)
 
 // 3. both vaults: commit and push (sgit skips an empty commit)
-if (!NOPUSH) for (const d of [DRAIN, PUB]) { try { execFileSync('sgit', ['commit', 'page views drained ' + now], { cwd: d, stdio: 'ignore', timeout: 300000 }); execFileSync('sgit', ['push'], { cwd: d, stdio: 'ignore', timeout: 300000 }) } catch (e) { console.error('agents-views: the vault in ' + path.basename(d) + ' was not pushed: ' + String(e.message).slice(0, 120)); process.exitCode = 1 } }
+if (!NOPUSH) for (const d of [DRAIN, PUB]) { try { execFileSync('sgit', ['commit', 'page views drained ' + now], { cwd: d, stdio: 'ignore', timeout: 300000 }); execFileSync('sgit', [...(process.env.SG_SEND_ACCESS_TOKEN ? ['--token', process.env.SG_SEND_ACCESS_TOKEN] : []), 'push'], { cwd: d, stdio: 'ignore', timeout: 300000 }) } catch (e) { console.error('agents-views: the vault in ' + path.basename(d) + ' was not pushed: ' + String(e.message).slice(0, 120)); process.exitCode = 1 } }
 console.log(`agents-views: ${entries.length} pending, ${opened} opened, ${refused} refused; ${views.length} views in ${out.totals.visits} visits, ${out.totals.automated} automated -> data/agents/views.json`)

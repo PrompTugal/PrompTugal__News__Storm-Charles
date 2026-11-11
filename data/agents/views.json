@@ -1,27 +1,66 @@
 {
-  "about": "Page views of storm-charles.promptugal.news, as counts only. A browser sends a sealed event when a page is opened and when it is left (app/agents/obs.js): no IP address, no cookie, no place lookup, nothing when Do Not Track or Global Privacy Control is on or when the reader pressed Pause. The events are opened by tools/agents-views.mjs and only these counts are published, here and in the vault named below. Anyone can write to the lanes, so a count is what was reported, not what was verified. A visit is one browser tab (a random id kept for that tab only). Automated browsers that say so are counted apart.",
+  "about": "Page views of storm-charles.promptugal.news, as counts only. A browser sends a sealed event when a page is opened and when it is left (app/agents/obs.js): the country and city from one lookup per tab at GeoJS (get.geojs.io, which sees the IP address to answer; the IP address is never kept), no cookie, nothing when Do Not Track or Global Privacy Control is on or when the reader pressed Pause. The events are opened by tools/agents-views.mjs and only these counts are published, here and in the vault named below. Anyone can write to the lanes, so a count is what was reported, not what was verified. A visit is one browser tab (a random id kept for that tab only). Automated browsers that say so are counted apart. A city is named only with at least 5 views in the period; fewer count in its country as other_or_unknown_city.",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T09:39:39Z",
+  "updated": "2026-11-11T09:56:57Z",
   "source": "the append lanes of vault zd1cb3kt on https://dev.send.sgraph.ai",
-  "read_utc": "2026-11-11T09:39:39Z",
+  "read_utc": "2026-11-11T09:56:57Z",
   "vault": {
     "id": "zd1cb3kt",
     "file": "stats/views.json"
   },
   "since": "2026-11-11T09:37:51.121Z",
-  "until": "2026-11-11T09:38:13.777Z",
+  "until": "2026-11-11T09:55:52.410Z",
   "totals": {
-    "views": 0,
-    "visits": 0,
-    "pages": 0,
-    "reads": 0,
-    "median_visible_s": null,
-    "automated": 4,
-    "refused_this_run": 0
+    "views": 5,
+    "visits": 5,
+    "pages": 2,
+    "reads": 4,
+    "median_visible_s": 41,
+    "automated": 42,
+    "refused_this_run": 2
   },
-  "by_hour": [],
-  "by_path": [],
+  "by_hour": [
+    {
+      "hour": "2026-11-11T09:00Z",
+      "views": 5,
+      "visits": 5
+    }
+  ],
+  "by_path": [
+    {
+      "path": "/",
+      "views": 3,
+      "median_visible_s": 48
+    },
+    {
+      "path": "/index.html",
+      "views": 2,
+      "median_visible_s": 17
+    }
+  ],
   "by_referrer": [],
-  "by_screen": [],
-  "by_via": []
+  "by_screen": [
+    {
+      "screen": "phone",
+      "views": 4
+    },
+    {
+      "screen": "desktop",
+      "views": 1
+    }
+  ],
+  "by_via": [],
+  "by_country": [
+    {
+      "country": null,
+      "note": "no place: sent before the lookup existed, or it failed or was slow",
+      "views": 4
+    },
+    {
+      "country": "IT",
+      "views": 1,
+      "cities": [],
+      "other_or_unknown_city": 1
+    }
+  ]
 }
