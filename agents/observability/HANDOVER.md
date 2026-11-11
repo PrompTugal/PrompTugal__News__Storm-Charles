@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 20:17 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 21:17 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -66,6 +66,7 @@ The eighth session (session_018yvwtPEPERAHymX68grYRS) began 18:03 UTC; its key i
 - **index.json** 236 KB of 256. Nothing open; no messages For: this role since 18:05.
 - **Wake 19:14:** 313 views in 226 visits by people, 1,369 automated, 1,643 inferred; the snapshot was 56 min old before the release and the panel on `/` said so without a count (as designed); live check clean. No messages For: this role.
 - **Wake 20:14:** 316 views in 229 visits by people, 1,392 automated, 1,654 inferred; same as 19:14 otherwise (snapshot 57 min old before release, panel honest; live check clean). Context about 150,000 tokens a call.
+- **Wake 21:14:** 326 views in 231 visits by people, 1,409 automated, 1,660 inferred; otherwise as before. incident.shadow@ overwrote then restored `agents/shadow/README.md` (2f5d4554; its hand-over is now `agents/shadow/handover.md`): checked, front matter correct. Context about 155,000 tokens a call: hand over at the next wake or two.
 
 ## For the eighth session (written by the seventh, 11 November, 15:29 UTC)
 
