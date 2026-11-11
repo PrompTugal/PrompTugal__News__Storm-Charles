@@ -1,14 +1,16 @@
 {
   "agent": "incident.board@web-summit.dinis",
-  "state": "active: the board's first release (117 cards from the front page, decisions.md, the comms folder, the decision graph, agents/JOBS.md and every agent's status file); the pages are served once the conductor adds the generator to the build",
-  "last_wake": "2026-11-11T02:10Z",
+  "state": "active: the board is live at /board/ (182 cards); round 2 synced it to every agent's status file as of 02:28 UTC",
+  "last_wake": "2026-11-11T02:28Z",
   "done": [
     "session key made (encryption sha256:12562fc83a671f38, signing sha256:9edac99e5295ac92), public half in data/keys.json",
-    "board/items/: 117 cards, one file each, ids permanent: 8 questions, 4 conflicts (one already answered by IPMA's own message, kept as the worked example), 37 asks (19 wait on Dinis, ranked by what they block; the same ask from several agents is one card), 59 jobs (round two from JOBS.md; every 'next' line), 9 tasks for contributors",
+    "board/items/: one card per file, ids permanent. Round 1 (02:20): 117 cards from the front page, decisions.md, the comms folder, the decision graph, JOBS.md and every status file. Round 2 (02:28): 182 cards after the sync to 39 new commits: 8 questions, 4 conflicts (one answered by IPMA's own message, kept as the worked example), asks (the same ask from several agents is one card; those to Dinis ranked by what they block), jobs, 9 tasks for contributors",
     "tools/board-build.mjs --out DIR: board/index.json (cards joined to timeline rows, decision edges and files; agents with their cards; status lines not on a card yet; cards whose line is gone), board/tasks.json, and the pages index, for-dinis, tasks and one per card; --check for each wake; refuses an answered question without a fact, a blocked card without on whom, an address or a personal link on a card",
     "app/board/: columns by state, filters by kind, owner and waiting on Dinis, a card opens with its evidence, history and what would close it; embeds for Contribute (tasks), an agent's page (its cards) and what waits on Dinis; tested in a browser at desk and phone widths, light and dark",
     "tools/board-item.mjs: moves a card and writes the move into its history",
-    "told incident.observability@ (an agent's page and its cards) and incident.media@ (Contribute and the tasks) the contract; asked the conductor for the generator in the build and a Board link"
+    "told incident.observability@ (an agent's page and its cards) and incident.media@ (Contribute and the tasks) the contract; asked the conductor for the generator in the build and a Board link",
+    "tools/board-sync.mjs: each wake's mechanical part (new status lines become cards in the agent's own words; a reworded line keeps its card; a job that left its owner's next list moves to done; an ask whose line is gone is listed to be read by hand, never closed by the tool)",
+    "round 2: five new cards for Dinis written by hand from several agents' lines (three vault keys held only in two sessions; sites whose terms forbid automated reading; a key for MeteoAlarm's archive; the launch; the five themes); three cards closed from the tree (the generator and the menu entry; every agent has its page; Contribute and Media in the menu)"
   ],
   "next": [
     "each wake: re-read the status files, the timeline, decisions.md and the decision graph; move the cards; record each move in history",
@@ -17,10 +19,18 @@
     "the round after observability@ and media@ answer: whatever they need changed in index.json or the embeds"
   ],
   "asks": [
-    "incident.conductor@: add 'tools/board-build.mjs' to the build's generator list (admin/build/build.mjs) and a Board link to the menu (board/index.html; For Dinis: board/for-dinis.html) once this push is in",
     "incident.observability@: say whether an agent's page reads board/index.json itself or mounts the embed (data-board-embed=\"agent\"), and which of us keeps the one list of what Dinis can unblock",
-    "incident.media@: a section 'What you can do right now' on Contribute that links board/tasks.html or mounts the tasks embed"
+    "incident.media@: a section 'What you can do right now' on Contribute that links board/tasks.html or mounts the tasks embed",
+    "incident.conductor@: 'For Dinis' (board/for-dinis.html) as a second entry under Board in the menu, if you agree"
   ],
-  "updated": "2026-11-11T02:22:00Z",
-  "by": "incident.board@web-summit.dinis"
+  "updated": "2026-11-11T02:30:00Z",
+  "by": "incident.board@web-summit.dinis",
+  "session": {
+    "id": "session_018yvwtLnUwKTTfNU5tKBiqR",
+    "started_at": "2026-11-11T02:10Z",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "source": "the conductor's start message to this session (BRIEF.md, Dinis's direction of 02:10; agents/JOBS.md, round two)"
+  }
 }

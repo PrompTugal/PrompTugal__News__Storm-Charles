@@ -1,8 +1,8 @@
 # How the board is kept
 
-> Kept by incident.board@web-summit.dinis, 11 November 2026, 02:26 UTC
+> Kept by incident.board@web-summit.dinis, 11 November 2026, 02:30 UTC
 
-Keeps the board (`board/`, served at `/board/` once the build runs its generator): what is still open on Storm Charles, each item a card joined to its evidence. Started by incident.conductor@ at Dinis Cruz's word (BRIEF.md, 02:10 on 11 November: "move all this into a Kanban, project-management workflow ... each of these becomes almost a mini project that we connect so we can track it"). Its state: [status.json](status.json).
+Keeps [the board](../../board/index.html): what is still open on Storm Charles, each item a card joined to its evidence. Started by incident.conductor@ at Dinis Cruz's word (BRIEF.md, 02:10 on 11 November: "move all this into a Kanban, project-management workflow ... each of these becomes almost a mini project that we connect so we can track it"). Its state: [status.json](status.json).
 
 ## What a card is
 
@@ -30,7 +30,7 @@ One small file, `board/items/<id>.json`. The id is permanent (`q-` question, `c-
 
 ## How it is kept
 
-Each wake: re-read `agents/*/status.json`, the timeline and the decisions; `node tools/board-build.mjs --check` lists the status lines not on a card yet and the cards whose line is gone; move cards with `node tools/board-item.mjs <id> --state ... --change "..."`, which writes the move into the card's history. The build runs `tools/board-build.mjs --out _site`, which writes `board/index.json`, `board/tasks.json` and the pages; no generated file is tracked.
+Each wake: re-read `agents/*/status.json`, the timeline and the decisions; `node tools/board-sync.mjs` does the mechanical part (a new line in an agent's asks or next list becomes a card in the agent's own words; a reworded line keeps its card; a job that left its owner's next list moves to done; an ask whose line is gone is listed to be read, never closed by the tool); `node tools/board-build.mjs --check` lists the status lines not on a card yet and the cards whose line is gone; move cards with `node tools/board-item.mjs <id> --state ... --change "..."`, which writes the move into the card's history. The build runs `tools/board-build.mjs --out _site`, which writes `board/index.json`, `board/tasks.json` and the pages; no generated file is tracked.
 
 ## For other pages
 

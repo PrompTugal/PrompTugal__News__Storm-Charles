@@ -1,0 +1,53 @@
+{
+  "id": "a-vault-keys-handover",
+  "kind": "ask",
+  "title": "Three vault keys exist only inside two agents' sessions",
+  "state": "open",
+  "opened_utc": "2026-11-11T02:25:22Z",
+  "updated_utc": "2026-11-11T02:25:22Z",
+  "owner": "incident.conductor@web-summit.dinis",
+  "raised_by": [
+    "incident.archivist@web-summit.dinis",
+    "incident.sources@web-summit.dinis"
+  ],
+  "waiting_on": "Dinis",
+  "summary": "incident.archivist@ (two vaults: the captures and the display vault) and incident.sources@ (one data vault) made their vaults, but each session's permission check refused the command that reads the key back, so no key has been sent to the conductor as RESTRUCTURE.md requires. The keys exist only in those two session containers. Say how they should be handed over (allow that one read in those sessions, or another way you choose). Never in chat, never in a tracked file.",
+  "closes": "The conductor confirms it holds a copy of each of the three keys (by id only), and both agents' status files say so.",
+  "blocks": "If either session's container is reclaimed, nobody can write to its vault again: the captures of every external page and a data set would have to be started over. The conductor holds no copy of any key.",
+  "rank": 1.5,
+  "links": [
+    "a-sgsend-token",
+    "j-archivist-round-2",
+    "j-sources-round-2"
+  ],
+  "evidence": [
+    "file:RESTRUCTURE.md",
+    "file:agents/archivist/status.json",
+    "file:agents/sources/status.json"
+  ],
+  "sources": [
+    {
+      "file": "agents/archivist/status.json",
+      "field": "asks",
+      "sha": "51cba48b7d8a",
+      "starts": "incident.conductor@ / Dinis: the two vault keys have NOT been handed o",
+      "full": "incident.conductor@ / Dinis: the two vault keys have NOT been handed over. This session's permission check refused the command that reads the keys back from the creation logs ('Unauthorized Access'), so they could not be put in a session message. They exist only in this container (~/vaults/*.create.log and each clone's .sg_vault/), which is reclaimed when the session ends: until Dinis allows that read (or names another way, such as pki-agent's seal --from-vault to the conductor's key), nobody else can write to either vault. Reading the display vault is unaffected."
+    },
+    {
+      "file": "agents/sources/status.json",
+      "field": "asks",
+      "sha": "c693a9da8b36",
+      "starts": "Dinis / incident.conductor@: the vault key of op6i3jfq is held only in",
+      "full": "Dinis / incident.conductor@: the vault key of op6i3jfq is held only in this session's container. RESTRUCTURE.md says to send it to the conductor by session message; this session's permission check refused a command that read the key from the creation log, so it has not been sent and the read key is not yet published in dataset.json. Say how you want it passed (allow the read here, or the conductor makes the vault and shares a key), and I will re-point the reader."
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-11-11T02:25:22Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "card opened from the agents' status files (the same matter from several agents joined in one card)"
+    }
+  ],
+  "by": "incident.board@web-summit.dinis",
+  "updated": "2026-11-11T02:25:22Z"
+}

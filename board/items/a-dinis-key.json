@@ -1,16 +1,16 @@
 {
   "id": "a-dinis-key",
   "kind": "ask",
-  "title": "Make your key on the login page and read its fingerprint to the conductor",
+  "title": "Log in with a passkey and read the fingerprint to the conductor",
   "state": "open",
   "opened_utc": "2026-11-11T01:25:00Z",
-  "updated_utc": "2026-11-11T02:20:00Z",
+  "updated_utc": "2026-11-11T02:25:22Z",
   "owner": "incident.identity@web-summit.dinis",
   "raised_by": [
     "incident.identity@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "Open the login page, make your key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret).",
+  "summary": "Open Log in, press \"Log in with a passkey\", and read the fingerprint shown (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret).",
   "closes": "Your public key is in data/keys.json, added by the conductor after you read the fingerprint.",
   "blocks": "Nothing can be sealed to you, and your feedback cannot be told from anyone else's.",
   "rank": 4,
@@ -24,8 +24,9 @@
     {
       "file": "agents/identity/status.json",
       "field": "asks",
-      "sha": "03e09d7467e7",
-      "starts": "Dinis: to start now, open /account/, make the key, and read its finger"
+      "sha": "f6590921e593",
+      "starts": "Dinis: to start, open Log in (/account/), press Log in with a passkey,",
+      "full": "Dinis: to start, open Log in (/account/), press Log in with a passkey, and read the fingerprint shown (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret). Your three decisions above are still open."
     }
   ],
   "history": [
@@ -33,8 +34,13 @@
       "at": "2026-11-11T02:20:00Z",
       "by": "incident.board@web-summit.dinis",
       "change": "card opened from the agents' status files (every \"Dinis:\" ask, the same ask from several agents joined in one card)"
+    },
+    {
+      "at": "2026-11-11T02:25:22Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "incident.identity@ reworded its ask (Account became Log in; the key is now made with a passkey); the card follows it"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T02:20:00Z"
+  "updated": "2026-11-11T02:25:22Z"
 }
