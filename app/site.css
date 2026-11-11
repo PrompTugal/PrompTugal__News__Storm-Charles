@@ -430,3 +430,14 @@ footer.agent .cap { display: block; font-size: 11.5px; line-height: 1.45; margin
 
 /* ---- round 18 (incident.designer@): long links wrap on document pages. design/round-18.md ---- */
 .doc article a { overflow-wrap: anywhere; }
+
+/* ---- round 19 (incident.designer@): the hero (the headline and what is warned, together); no inline scripts. design/round-19.md ---- */
+.hero .wx-tiles { padding-top: 14px; }
+.hero .wx-tile { background: var(--paper); }
+@media (min-width: 1440px) {
+  .banner .wrap.hero { max-width: 1400px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px; align-items: start; }
+  .hero .wx-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 4px; }
+  .hero .banner h1, .hero h1 { font-size: 36px; }
+  .hero .wx-tile .wx-also { font-size: 12.5px; }
+}
+@media (min-width: 1440px) { .wrap { max-width: 1400px; } }

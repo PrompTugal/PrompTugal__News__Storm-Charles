@@ -91,7 +91,7 @@ function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)} · Storm Charles</title>
 <meta name="description" content="${esc(desc || 'Storm Charles, Lisbon, November 2026: the decisions, the warnings and the signals, each with its source and the time read; and the data, for people and agents.')}">
-<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script src="${u}app/design/theme.js"></script>
 <link rel="stylesheet" href="${u}app/site.css">
 ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 <link rel="alternate" type="application/json" href="${u}api/v1/index.json" title="The data, for agents">
@@ -105,7 +105,7 @@ ${extraHead}
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
 ${body}
 <footer class="agent"><div class="wrap">Built and run by Dinis Cruz's incident team of Claude Code agents (see <a href="${u}agents/index.html">Agents</a>), with a named human operator. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. <span class="cap">The times IPMA sent its warnings come through <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes, not a live feed.</span> ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
-<script>(function(){var b=document.getElementById('theme');if(!b)return;var r=document.documentElement,o=['auto','light','dark'];function cur(){return r.dataset.theme||'auto'}function show(){b.innerHTML='<span>Theme: </span>'+cur()}b.hidden=false;show();b.addEventListener('click',function(){var n=o[(o.indexOf(cur())+1)%3];if(n==='auto')delete r.dataset.theme;else r.dataset.theme=n;try{n==='auto'?localStorage.removeItem('theme'):localStorage.setItem('theme',n)}catch(e){}show()})})()</script>
+<script src="${u}app/design/frame.js"></script>
 </body>
 </html>
 `
@@ -428,12 +428,12 @@ const thuRows = [
     td ? `<li><span>Day forecast: <b>${esc(td.tMin)} to ${esc(td.tMax)} °C</b>, rain probability ${esc(Math.round(td.precipitaProb))}%, wind from ${esc(td.predWindDir)}</span>${prov(td.source, 'IPMA daily', td.read_utc)}</li>` : '',
     ...(tt?.groups || []).map(g => `<li><span>Airport, ${rng(g.from_utc, g.to_utc)}: <b>${gtxt(g)}</b></span>${prov(tt.source, `TAF LPPT ${hm(tt.taf_issue_utc)}`, tt.read_utc)}</li>`)
 ].join('')
-const front = `<section class="banner"><div class="wrap"><p class="kicker">${esc(inc.kicker || 'Storm Charles · Lisbon')}</p><h1>${esc(inc.headline.text)}</h1>
-<p class="src"><span class="lbl official">decision · ${esc(inc.headline.label || 'fact')}</span> Source: <a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}.</p><p class="stand">${esc(inc.standfirst || '')}</p></div></section>
+const front = `<section class="banner"><div class="wrap hero"><div class="hero-h"><p class="kicker">${esc(inc.kicker || 'Storm Charles · Lisbon')}</p><h1>${esc(inc.headline.text)}</h1>
+<p class="src"><span class="lbl official">decision · ${esc(inc.headline.label || 'fact')}</span> Source: <a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}.</p><p class="stand">${esc(inc.standfirst || '')}</p></div>
+<div class="hero-w"><section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
+${lis.some(w => ok(w.sent_utc)) ? `<p class="wx-cap">The times IPMA sent each warning are read from IPMA's messages on <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes (last read ${hm(warn.read_utc)} UTC ${dm(warn.read_utc)}), not a live feed.</p>` : ''}</div></div></section>
 <div class="wrap">
 ${changed}
-<section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
-${lis.some(w => ok(w.sent_utc)) ? `<p class="wx-cap">The times IPMA sent each warning are read from IPMA's messages on <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes (last read ${hm(warn.read_utc)} UTC ${dm(warn.read_utc)}), not a live feed.</p>` : ''}
 ${strip.replace('<!--lede-->', lede)}
 ${chart}
 <div class="grid">
@@ -446,19 +446,7 @@ ${gapHtml}
 </aside></div>
 ${where}
 <p class="meta wx-foot"><a href="${base}index.html">The live dashboard</a> (the decision graph, the weather, the timeline) · <a href="${base}data/weather/analysis.html">The meteorologist's analysis</a> (labelled as analysis)</p></div>
-<script>
-(function(){var s=document.getElementById('wx-strip');if(!s)return;var d0=+s.dataset.d0,D=864e5;s=document;
-function dur(ms){var m=Math.round(ms/6e4),h=Math.floor(m/60);return (h?h+' h ':'')+(m%60)+' min'}
-function tick(){var now=Date.now(),p=(now-d0)/D*100;
-s.querySelectorAll('.wx-now').forEach(function(n){n.remove()});
-s.querySelectorAll('.wx-past,.wx-side').forEach(function(n){n.remove()});
-if(p>=0&&p<=100)s.querySelectorAll('.wx-strip .wx-track').forEach(function(t){var n=document.createElement('i');n.className='wx-now';n.style.left=p+'%';t.appendChild(n);if(t.parentNode.classList.contains('wx-group')||t.parentNode.classList.contains('obs'))return;var q=document.createElement('i');q.className='wx-past';q.style.width=p+'%';t.appendChild(q);if(t.parentNode.classList.contains('wx-hours')){var a=document.createElement('i');a.className='wx-side l';a.style.right=(100-p)+'%';a.textContent='before now';var c=document.createElement('i');c.className='wx-side r';c.style.left=p+'%';c.textContent='still to come';t.appendChild(a);t.appendChild(c)}});
-var gl=document.getElementById('wx-gnow');if(gl){var a=+gl.dataset.x0,b=+gl.dataset.x1,q=(now-a)/(b-a);if(q>=0&&q<=1){var gx=+gl.dataset.l+q*(gl.dataset.r-gl.dataset.l);gl.setAttribute('x1',gx);gl.setAttribute('x2',gx);var sc=gl.closest('.wx-scroll');if(sc&&!sc.dataset.set){sc.dataset.set=1;sc.scrollLeft=q*sc.scrollWidth-sc.clientWidth*.3}}}
-var z=new Date(now).toISOString().slice(11,16),x=document.getElementById('wx-nowtxt');if(x)x.textContent=p<0?'Now '+z+' UTC: the day starts in '+dur(d0-now)+'.':p<=100?'Now '+z+' UTC: the line in the strip.':'This day is over.';
-document.querySelectorAll('.wx-state').forEach(function(e){var a=+e.dataset.from,b=+e.dataset.to;e.innerHTML=now<a?'<b>Expected</b> starts in '+dur(a-now):now<b?'<b>In force</b> '+dur(b-now)+' left':'<b>Ended</b>';e.className='wx-state '+(now<a?'pre':now<b?'on':'post')});document.querySelectorAll('.wx-phases li').forEach(function(e){e.classList.toggle('now',now>=+e.dataset.from&&now<+e.dataset.to);e.classList.toggle('past',now>=+e.dataset.to)})}
-var ch=document.getElementById('wx-changes');if(ch&&innerWidth<=640)ch.open=false;
-tick();setInterval(tick,3e4)})();
-</script>`
+<script src="app/design/front.js" defer></script>`
 write('index.html', page({ rel: 'index.html', title: 'Storm Charles: what is decided, what is warned, what is known', body: front, twin: 'index.md' }))
 write('index.md', `# Storm Charles, Lisbon, November 2026\n\n**${inc.headline.text}** Source: [${inc.headline.source}](${inc.headline.url}), ${inc.headline.at}.\n\n${inc.standfirst || ''}\n\nNot a warning service: follow IPMA, ANEPC and your local authorities.\n\n- [The live dashboard](${base}README.md)\n- [The timeline](${base}timeline.md)\n- [The decisions](${base}decisions.md)\n- [The data, for agents](api/v1/index.json) and [llms.txt](llms.txt)\n`)
 pages.push({ rel: 'index.html', md: 'index.md', title: 'Storm Charles' })
@@ -505,6 +493,6 @@ write('llms.txt', `# Storm Charles (storm-charles.promptugal.news)\n\n> Storm Ch
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(p => `<url><loc>${SITE}${p.rel.replace(/index\.html$/, '')}</loc></url>`).join('\n')}\n</urlset>\n`)
 write('version.json', JSON.stringify({ version: VERSION, commit: process.env.GITHUB_SHA || '', pushed_at: process.env.PUSHED_AT || '', built_at: builtAt }, null, 2) + '\n')
 write('version.txt', VERSION + '\n')
-write('404.html', page({ rel: '404.html', title: 'Not found', body: `<main class="doc nf"><div class="wrap"><article><p class="kicker">404</p><h1>No page at this address</h1><p class="nf-path" id="nf-path"></p><p>Pages here are files in a public repository, so an address can change when a file moves. The facts have not gone: every row of the timeline and every dataset keeps its own address.</p><ul class="nf-go"><li><a href="/"><b>The front page</b><span>what is warned, what is decided, hour by hour</span></a></li><li><a href="/${base}timeline.html"><b>The timeline</b><span>every signal and decision, each with its source</span></a></li><li><a href="/datasets.html"><b>The data</b><span>every file, its size and when it was read</span></a></li><li><a href="/library/index.html"><b>The library</b><span>the catalogue of everything on this site</span></a></li><li><a href="/llms.txt"><b>For agents</b><span>llms.txt and the API catalogue</span></a></li></ul><p class="meta">Not a warning service: for the weather itself, <a href="https://www.ipma.pt/">IPMA</a> and <a href="https://prociv.gov.pt/">ANEPC</a>.</p></article></div></main><script>(function(){var e=document.getElementById('nf-path');if(e)e.textContent=location.pathname})()</script>` }))
+write('404.html', page({ rel: '404.html', title: 'Not found', body: `<main class="doc nf"><div class="wrap"><article><p class="kicker">404</p><h1>No page at this address</h1><p class="nf-path" id="nf-path"></p><p>Pages here are files in a public repository, so an address can change when a file moves. The facts have not gone: every row of the timeline and every dataset keeps its own address.</p><ul class="nf-go"><li><a href="/"><b>The front page</b><span>what is warned, what is decided, hour by hour</span></a></li><li><a href="/${base}timeline.html"><b>The timeline</b><span>every signal and decision, each with its source</span></a></li><li><a href="/datasets.html"><b>The data</b><span>every file, its size and when it was read</span></a></li><li><a href="/library/index.html"><b>The library</b><span>the catalogue of everything on this site</span></a></li><li><a href="/llms.txt"><b>For agents</b><span>llms.txt and the API catalogue</span></a></li></ul><p class="meta">Not a warning service: for the weather itself, <a href="https://www.ipma.pt/">IPMA</a> and <a href="https://prociv.gov.pt/">ANEPC</a>.</p></article></div></main>` }))
 write('.nojekyll', '')
 console.log(`build: ${pages.length} pages, ${datasets.length} datasets, ${files.length} files, ${Date.now() - t0} ms -> _site/ (${VERSION})`)
