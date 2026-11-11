@@ -105,7 +105,7 @@ for (const [agent, r] of Object.entries(policy.agents)) {
 
 ${abpTask[role] ? cell(abpTask[role]) : jobs[role] ? cell(jobs[role].job) : '*not recorded in agents/JOBS.md*'} (from ${P1('agents/JOBS.md')})
 
-**You may change:** ${[...new Set(r.owns || [])].map(g => `\`${g}\``).join(', ')}, \`agents/${role}/**\`, and your own entry in \`data/keys.json\`${(r.shared || []).length ? `; shared with others, with a warning: ${r.shared.map(g => `\`${g}\``).join(', ')}` : ''}. (from ${P1('agents/policy.json')})
+**You may change:** ${[...new Set([...(r.owns || []), ...((policy.everyone || {}).owns || []).map(g => g.replace(/<role>/g, role))])].map(g => `\`${g}\``).join(', ')}, and your own entry in \`data/keys.json\`${(r.shared || []).length ? `; shared with others, with a warning: ${r.shared.map(g => `\`${g}\``).join(', ')}` : ''}. (from ${P1('agents/policy.json')})
 
 **Your draft behaviour policy** (not agreed by Dinis): ${fs.existsSync(path.join(ROOT, `agents/${role}/policy.md`)) ? P1(`agents/${role}/policy.md`) : '*not written yet*'}
 
