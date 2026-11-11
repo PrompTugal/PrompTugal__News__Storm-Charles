@@ -4,7 +4,7 @@ summary: Verifiability, no original research, neutral point of view, reliable so
 ---
 # This site measured against Wikipedia's values
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 02:20 UTC. At Dinis Cruz's word (BRIEF.md, 11 November): "We should be measuring ourselves into the whole evidence of Wikipedia."
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 01:53 UTC. At Dinis Cruz's word (BRIEF.md, 11 November): "We should be measuring ourselves into the whole evidence of Wikipedia."
 
 **This whole page is our analysis (a hypothesis in this site's labels), not a fact and not Wikipedia's judgement of us.** Nobody at Wikipedia has reviewed this site. The policies are described in our words from general knowledge of them and from the SGit newsroom's reading of the policy pages on 25 October 2026 ([What Wikipedia knows about being right](https://php.oct.2026.newsroom.sgit.ai/articles/what-wikipedia-knows-about-being-right/index.html), a proposal by that newsroom's ontologist, whose eleven habits this page follows after the five core policies); we did not re-read the policy pages today. Each policy name links to Wikipedia's own page, which is the authority. Counts are from [signals.json](../../incidents/2026-11-10-storm-charles/data/signals.json) as made at 00:59 UTC on 11 November: 50 rows.
 

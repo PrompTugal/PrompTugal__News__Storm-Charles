@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="growth.css"><script src="growth.js" defer></s
 ---
 # Wikipedia and Storm Charles
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 02:25 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~01:28 UTC): "a complete section with a separate folder, separate data set, for Wikipedia, to track everything that's there that is related to this storm". Built on incident.media@'s first read ([research/media/wikipedia.json](../media/wikipedia.json)).
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 01:53 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~01:28 UTC): "a complete section with a separate folder, separate data set, for Wikipedia, to track everything that's there that is related to this storm". Built on incident.media@'s first read ([research/media/wikipedia.json](../media/wikipedia.json)).
 
 **Everything here is evidence.** Wikipedia is a tertiary source written by volunteers: what it states is reported here as what Wikipedia states, with the exact revision, never as a fact about the storm. Where we compare or judge, it is our analysis and says so. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
