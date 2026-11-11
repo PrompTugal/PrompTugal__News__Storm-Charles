@@ -1,8 +1,17 @@
 # Shadow reporting: findings so far
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 16:20 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 17:20 UTC
 
 The shadow desk's own reading of the rounds, shown on [the shadow page](index.md). Analysis, not fact.
+
+## What the 17:07 round adds
+
+Analysis, not fact. By now IPMA had ended Lisbon's orange wind early (15:56) and no red warning stood anywhere on the mainland.
+
+- **The first answer with no red, and no address.** OpenAI's search model listed Lisbon's warnings with every window and no red: yellow rain to 18:00, orange sea to 21:00, yellow sea after. It was IPMA's 12:33 text to the letter, including an orange wind that IPMA had ended 71 minutes earlier, and it gave no source address at all, only "the local weather service feed".
+- **Perplexity Sonar still served red rain, two hours after it ended,** in both languages, with an orange wind "until 21:00" in Portuguese (a window replaced at 12:33) and gusts of 120 km/h in English.
+- **One engine, one minute, two languages, two answers.** "Is Web Summit on tomorrow?": Yes in English (Thursday, resumes, confirmed: its first fully right answer), No in Portuguese ("amanhã (quarta-feira)").
+- **Engines stop answering.** OpenAI's model answered "Will Storm Charles hit Lisbon?" with a question back, after answering it five rounds running; "What happened in Madeira?" has had a question back six times out of six.
 
 ## What the 16:07 round adds
 
