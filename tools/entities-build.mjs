@@ -113,7 +113,7 @@ function link() {
     const CAP = loadCaptures()
     const BROWSER = [['board/items/', /^board\/items\//], ['research/weather-sites/sites/', /^research\/weather-sites\/sites\//], ['library/pack/', /^library\/pack\//], ['models/models/', /^models\/models\//], ['evidence/<source>/ (captures)', /^evidence\/[^/]+\//], ['sources/<id>/ (generated)', /^sources\/(?!ipma\/|meteoalarm\/)[^/]+\//]]
     const stats = { left_to_the_browser: {}, pages: 0, pages_linked: 0, linked: 0, outside_marked: 0, outside_to_evidence: 0, by_node: {}, by_page: {} }
-    const gaps = new Map(), known = new Set([...M.names.keys()])
+    const fams = {}, gaps = new Map(), known = new Set([...M.names.keys()])
     const CAND = /(?<![\p{L}\p{N}])(?:[A-ZÀ-Ý][\p{L}\p{N}]+(?:\s+(?:de|da|do|dos|das|of)(?=\s+[A-ZÀ-Ý]))?(?:\s+(?=[A-ZÀ-Ý]))?){2,5}|(?<![\p{L}\p{N}.@/-])[A-Z]{3,}(?![\p{L}\p{N}])/gu
     const files = []; (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); e.isDirectory() ? walk(f) : e.name.endsWith('.html') && files.push(f) } })(OUT)
     for (const f of files) {
@@ -121,7 +121,7 @@ function link() {
         // families that are mostly generated lists are linked in the browser by app/lens/lens.js, not here (the conductor's decisions, 11 Nov, for the gate's budget)
         const fam = BROWSER.find(([, re]) => re.test(rel)); if (fam) { stats.left_to_the_browser[fam[0]] = (stats.left_to_the_browser[fam[0]] || 0) + 1; continue }
         if (rel.startsWith('view/')) continue   // the librarian's file viewers show a file as it is: its text is not linked
-        const html = fs.readFileSync(f, 'latin1')
+        const f0 = performance.now(), html = fs.readFileSync(f, 'latin1')
         const up = rel === '404.html' ? '/' : '../'.repeat(rel.split('/').length - 1)
         const self = rel.startsWith('entities/') ? rel.slice(9).replace(/\.html$/, '') : null
         const wantGaps = rel === 'index.html' || rel.startsWith('data-room/') || (rel.startsWith(INC) && !rel.includes('/data/'))
@@ -186,9 +186,15 @@ function link() {
         })
         walk(to - 1)
         if (n) { stats.pages_linked++; stats.by_page[rel] = n; stats.linked += n }
-        if (parts.length) { parts.push(html.slice(last)); fs.writeFileSync(f, parts.join(''), 'latin1') }
+        // Written over the file in place (opened r+, not truncated first): on the build's disk, emptying a file and filling it again
+        // cost about 0.12 ms a page, ten times the write itself (measured 11 Nov: 1,932 pages, 220 to 290 ms against 25 to 30 ms).
+        // The linker only adds to a page; if a page ever came out shorter, the rest is cut off.
+        if (parts.length) { parts.push(html.slice(last)); const b = Buffer.from(parts.join(''), 'latin1'), fd = fs.openSync(f, 'r+'); try { fs.writeSync(fd, b, 0, b.length, 0); if (b.length < html.length) fs.ftruncateSync(fd, b.length) } finally { fs.closeSync(fd) } }
+        // where the time goes, by family of pages: the linker's time follows the bytes it reads, so a family that grows shows here first
+        const fk = rel.startsWith('meteorology/nodes/') ? 'meteorology/nodes/' : rel.includes('/') ? rel.slice(0, rel.indexOf('/') + 1) : '(top)', F = fams[fk] || (fams[fk] = { pages: 0, kb: 0, ms: 0 })
+        F.pages++; F.kb += html.length / 1024; F.ms += performance.now() - f0
     }
     const noNode = [...gaps].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, 150).map(([text, count]) => ({ text, count }))
-    write('entities/mentions.json', JSON.stringify({ about: 'What the linker did on this build: mentions of known names linked (the first in each paragraph), by node and by page; outside links marked; and capitalised names on the front page and the incident\'s pages that no node has yet (a rough list: sentence openings are in it too). Made by tools/entities-build.mjs --link; not a tracked file.', by: 'incident.entities@web-summit.dinis', updated: index.updated, nodes: nodes.length, edges: index.counts.edges, ms: Date.now() - t0, ...stats, no_node_yet: { distinct: noNode.length, mentions: noNode.reduce((s, x) => s + x.count, 0), items: noNode } }, null, 1) + '\n')
-    console.log(`entities-build --link: ${stats.linked} mentions linked on ${stats.pages_linked} of ${stats.pages} pages; ${stats.outside_marked} outside links marked; ${noNode.length} names with no node yet; ${Date.now() - t0} ms`)
+    write('entities/mentions.json', JSON.stringify({ about: 'What the linker did on this build: mentions of known names linked (the first in each paragraph), by node and by page; outside links marked; and capitalised names on the front page and the incident\'s pages that no node has yet (a rough list: sentence openings are in it too). Made by tools/entities-build.mjs --link; not a tracked file.', by: 'incident.entities@web-summit.dinis', updated: index.updated, nodes: nodes.length, edges: index.counts.edges, ms: Date.now() - t0, families: Object.fromEntries(Object.entries(fams).sort((a, b) => b[1].kb - a[1].kb).map(([k, v]) => [k, { pages: v.pages, kb: Math.round(v.kb), ms: Math.round(v.ms) }])), ...stats, no_node_yet: { distinct: noNode.length, mentions: noNode.reduce((s, x) => s + x.count, 0), items: noNode } }, null, 1) + '\n')
+    console.log(`entities-build --link: ${stats.linked} mentions linked on ${stats.pages_linked} of ${stats.pages} pages; ${stats.outside_marked} outside links marked; ${noNode.length} names with no node yet; ${Math.round(Object.values(fams).reduce((s, v) => s + v.kb, 0))} KB read, the largest ${Object.entries(fams).sort((a, b) => b[1].kb - a[1].kb).slice(0, 3).map(([k, v]) => `${k} ${Math.round(v.kb)} KB ${Math.round(v.ms)} ms`).join(', ')}; ${Date.now() - t0} ms`)
 }
