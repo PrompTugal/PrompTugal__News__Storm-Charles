@@ -2,13 +2,13 @@
 // incident.broadcast@web-summit.dinis: the wind and pressure field behind the /broadcast/ map. One request to Open-Meteo's
 // forecast API (CC BY 4.0; its "best match" of national and ECMWF models) for a 2-degree grid over the north-east Atlantic,
 // every 3 hours. A model's field, not an observation and not a warning: the page says so.
-// Usage: node tools/broadcast-field.mjs [--out broadcast/data/field.json] [--from 2026-11-10T18:00] [--to 2026-11-12T12:00]
+// Usage: node tools/broadcast-field.mjs [--out broadcast/data/field.json] [--from 2026-11-10T18:00] [--to 2026-11-12T18:00]
 // Run by an agent (not by the build: the build makes no outside request); commit the file it writes.
 import fs from 'node:fs'
 import crypto from 'node:crypto'
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d }
 const out = arg('--out', 'broadcast/data/field.json')
-const from = arg('--from', '2026-11-10T18:00'), to = arg('--to', '2026-11-12T12:00')
+const from = arg('--from', '2026-11-10T18:00'), to = arg('--to', '2026-11-12T18:00')
 const G = { w: -32, e: 2, s: 30, n: 52, step: 2 }
 const lons = [], lats = []
 for (let y = G.n; y >= G.s; y -= G.step) lats.push(y)

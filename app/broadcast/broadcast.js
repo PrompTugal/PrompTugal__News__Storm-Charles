@@ -9,7 +9,7 @@
   var FILES = {
     incident: room + 'incident.json', signals: api + 'signals.json', warn: api + 'weather/warnings.json', airport: api + 'weather/airport.json',
     areas: base + 'sources/ipma/data/warnings.json', places: base + 'sources/ipma/data/places.json',
-    field: base + 'broadcast/data/field.json', coast: base + 'broadcast/data/coast.json'
+    field: base + 'broadcast/data/field.json', decisions: api + 'decisions/graph.json', coast: base + 'broadcast/data/coast.json'
   }
   var D = {}
   var qNow = new URLSearchParams(location.search).get('now')
@@ -40,10 +40,11 @@
         '<button type="button" class="bc-btn" id="bc-fs">Full screen</button></header>' +
       '<section class="bc-map" id="bc-map" aria-label="a model\'s wind and pressure over the Atlantic"><canvas id="bc-cv"></canvas>' +
         '<div class="bc-map-over"><div class="bc-map-h">Wind and pressure · <span class="bc-model">a model, not an observation</span></div><div class="bc-map-t" id="bc-mt"></div></div>' +
-        '<div class="bc-map-ctl"><button type="button" class="bc-btn" id="bc-play" aria-pressed="false">Play the model\'s hours</button><input type="range" id="bc-slide" min="0" max="0" value="0" aria-label="model hour"></div>' +
+        '<div class="bc-map-ctl"><span class="bc-views" role="group" aria-label="map view"><button type="button" class="bc-btn" data-v="atlantic" aria-pressed="true">Atlantic</button><button type="button" class="bc-btn" data-v="lisbon" aria-pressed="false">Lisbon</button><button type="button" class="bc-btn" data-v="madeira" aria-pressed="false">Madeira</button></span><button type="button" class="bc-btn" id="bc-play" aria-pressed="false">Play the model\'s hours</button><input type="range" id="bc-slide" min="0" max="0" value="0" aria-label="model hour"></div>' +
         '<div class="bc-map-key" id="bc-mk"></div></section>' +
       '<aside class="bc-side">' +
         '<section class="bc-panel" id="bc-warn"></section>' +
+        '<section class="bc-panel" id="bc-ws"></section>' +
         '<section class="bc-panel" id="bc-air"></section>' +
         '<section class="bc-panel" id="bc-count"></section>' +
         '<section class="bc-panel bc-pics" id="bc-pics"></section>' +
@@ -69,7 +70,7 @@
   Promise.all(Object.keys(FILES).map(function (k) {
     return fetch(FILES[k], { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json() }).then(function (j) { D[k] = j }).catch(function () { D[k] = null })
   })).then(function () {
-    chyron(); ticker(); warnings(); airport(); counts(); pictures(); map()
+    chyron(); ticker(); warnings(); websummit(); airport(); counts(); pictures(); map()
   })
 
   // ---------- the chyron: the headline (a decision or warning from its primary source, with its time)
@@ -124,6 +125,25 @@
       }).join('') + '</div>' + prov('IPMA open data, as we keep it', view('sources/ipma/data/warnings.json', 'now'), a.now.read_utc)
     }
     box.innerHTML = h
+  }
+
+  // ---------- Web Summit: the organisers' decisions as the decisions graph keeps them (what happened, what is not announced, our hypotheses)
+  function websummit () {
+    var box = document.getElementById('bc-ws'), g = D.decisions
+    var h = '<h2>Web Summit</h2>'
+    if (!g || !g.edges) { box.innerHTML = h + '<p class="meta">The decisions could not be read.</p>'; return }
+    var e = g.edges.filter(function (x) { return x.by === 'websummit' && x.status !== 'superseded' })
+    var rank = { happened: 0, not_announced: 1, expected: 2 }
+    e.sort(function (a, b) { var r = (rank[a.status] == null ? 3 : rank[a.status]) - (rank[b.status] == null ? 3 : rank[b.status]); return r || (T(b.at || 0) || 0) - (T(a.at || 0) || 0) })
+    var STATUS = { happened: 'decided', not_announced: 'not announced', expected: 'our expectation' }
+    h += '<ul class="bc-dl">' + e.slice(0, 4).map(function (x) {
+      var hyp = x.label === 'hypothesis', txt = String(x.decision || '').replace(/^HYPOTHESIS:\s*/, '')
+      return '<li class="bc-d' + (hyp ? ' hyp' : '') + '">' + lbl(x.label) + ' <span class="bc-dst">' + esc(STATUS[x.status] || x.status) + (x.at ? ' · ' + tm(x.at) + ' UTC' : '') + '</span>' +
+        '<div class="bc-dt">' + esc(cut(txt, 190)) + '</div>' +
+        (x.source ? prov(cut(x.source.replace(/^https?:\/\/(www\.)?/, '').split('/')[0], 40), x.source, x.read) : (x.reasons ? '<span class="prov">our analysis: ' + esc(cut(x.reasons[0], 120)) + '</span>' : '')) + '</li>'
+    }).join('') + '</ul>'
+    if (g.websummit_hold) h += '<div class="meta">We have not read websummit.com since ' + tm(g.websummit_hold.since, hm(g.websummit_hold.since)) + ' UTC (its terms); its own updates reach us through the press and the authorities.</div>'
+    box.innerHTML = h + prov('the decisions graph', view('incidents/' + inc + '/data/decisions/graph.json', 'edges'), g.updated)
   }
 
   // ---------- Lisbon airport (LPPT): the latest METAR
@@ -182,6 +202,16 @@
     if (tNow >= times[times.length - 1]) pos = times.length - 1
     slide.value = String(Math.round(pos * 6))
     var playing = false
+    // the views: the storm over the Atlantic, Lisbon closer in, Madeira closer in (w, h: degrees shown; pw, ph on a phone)
+    var VIEWS = { atlantic: { cx: -14, cy: 41, w: 30, h: 20, pcx: -11, pw: 18, ph: 22 }, lisbon: { cx: -9, cy: 39.2, w: 10, h: 7, pcx: -9, pw: 6, ph: 8 }, madeira: { cx: -16.9, cy: 33, w: 9, h: 5.2, pcx: -16.9, pw: 5, ph: 5.6 } }
+    var mapView = 'atlantic'
+    Array.prototype.forEach.call(document.querySelectorAll('.bc-views [data-v]'), function (b) {
+      b.onclick = function () {
+        mapView = b.getAttribute('data-v')
+        Array.prototype.forEach.call(document.querySelectorAll('.bc-views [data-v]'), function (o) { o.setAttribute('aria-pressed', String(o === b)) })
+        size(); label(); if (reduce) draw()
+      }
+    })
     var areas = ((D.places && D.places.areas) || []).filter(function (p) { return p.label_at })
     var peaks = (D.areas && D.areas.now && D.areas.now.by_area) || {}
     var col = {}
@@ -192,8 +222,8 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       // fit the box, centred on the storm side: west -30, east 0, south 31, north 51
       // fill the canvas (cover), never showing beyond the model's grid: the storm side, west -30, east 0, south 31, north 51
-      var s = Math.max(Wpx / 30, Hpx / (20 * k)), cx = -14, cy = 41
-      if (Wpx / Hpx < 1.1) { cx = -11; s = Math.max(Wpx / 18, Hpx / (22 * k)) }   // a phone: closer in
+      var V = VIEWS[mapView], phone = Wpx / Hpx < 1.1
+      var s = Math.max(Wpx / (phone ? V.pw : V.w), Hpx / ((phone ? V.ph : V.h) * k)), cx = phone ? V.pcx : V.cx, cy = V.cy
       s = Math.max(s, Wpx / (E0 - W0), Hpx / ((N0 - S0) * k))
       var hw = Wpx / 2 / s, hh = Hpx / 2 / (k * s)
       cx = Math.min(E0 - hw, Math.max(W0 + hw, cx)); cy = Math.min(N0 - hh, Math.max(S0 + hh, cy))
@@ -224,8 +254,8 @@
       var c = document.createElement('canvas'); c.width = cv.width; c.height = cv.height; var x = c.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0)
       x.fillStyle = col['--surface-2']; x.fillRect(0, 0, Wpx, Hpx)
       if (C && C.rings) {
-        x.fillStyle = col['--surface']; x.strokeStyle = col['--line-2']; x.lineWidth = 1
-        C.rings.forEach(function (r) { x.beginPath(); r.forEach(function (q, j) { if (j) x.lineTo(X(q[0]), Y(q[1])); else x.moveTo(X(q[0]), Y(q[1])) }); x.closePath(); x.fill(); x.stroke() })
+        x.fillStyle = col['--paper']; x.strokeStyle = col['--ink-2']; x.lineWidth = 1.2
+        C.rings.forEach(function (r) { x.beginPath(); r.forEach(function (q, j) { if (j) x.lineTo(X(q[0]), Y(q[1])); else x.moveTo(X(q[0]), Y(q[1])) }); x.closePath(); x.fill(); x.globalAlpha = 0.7; x.stroke(); x.globalAlpha = 1 })
       }
       // isobars every 4 hPa: marching squares on a finer grid sampled from the field
       var p = pos, n = 4, gx = (cols - 1) * n + 1, gy = (rows - 1) * n + 1, P = new Array(gx * gy)
@@ -260,7 +290,7 @@
         x.beginPath(); x.arc(lx, ly, c3 ? 4.5 : 2.5, 0, 7); x.fillStyle = c3 || col['--line-2']; x.fill(); if (c3) { x.strokeStyle = col['--surface']; x.lineWidth = 1.5; x.stroke() }
       })
       // Lisbon and Funchal
-      ;[['Lisbon', -9.14, 38.72], ['Funchal', -16.91, 32.65]].forEach(function (pl) {
+      ;[['Lisbon', -9.14, 38.72], ['Funchal', -16.91, 32.65], ['Porto Santo', -16.34, 33.06]].forEach(function (pl) {
         var px = X(pl[1]), py = Y(pl[2]); x.fillStyle = col['--ink']; x.font = '700 12px ' + (cssv('--sans') || 'sans-serif'); x.fillText(pl[0], px + 8, py + 4)
       })
       bg = c; bgPos = Math.round(pos * 6)
@@ -280,7 +310,7 @@
     function step () {
       fade(0)
       tctx.lineWidth = 1.2; tctx.strokeStyle = col['--focus']; tctx.globalAlpha = 0.85; tctx.beginPath()
-      var sp = 0.045 * view.s / 10
+      var sp = 0.045 * Math.min(view.s, 40) / 10
       particles.forEach(function (q) {
         var lon = LON(q.x), lat = LAT(q.y), u = at('u', lon, lat, pos), v = at('v', lon, lat, pos)
         if (u == null || q.age > 90) { q.x = Math.random() * Wpx; q.y = Math.random() * Hpx; q.age = 0; return }
@@ -303,10 +333,11 @@
     function label () {
       var i0 = Math.floor(pos), tt = pos - i0, t = times[i0] + ((times[Math.min(times.length - 1, i0 + 1)] - times[i0]) * tt)
       var tl = Math.round(t / 36e5) * 36e5
-      var lw = at('u', -9.14, 38.72, pos), lv = at('v', -9.14, 38.72, pos), lp = at('p', -9.14, 38.72, pos)
+      var pt = mapView === 'madeira' ? ['Funchal', -16.91, 32.65] : ['Lisbon', -9.14, 38.72]
+      var lw = at('u', pt[1], pt[2], pos), lv = at('v', pt[1], pt[2], pos), lp = at('p', pt[1], pt[2], pos)
       var spd = lw == null ? null : Math.round(Math.hypot(lw, lv) * 3.6)
       document.getElementById('bc-mt').innerHTML = 'Model hour <b>' + tm(tl, dayhm(tl)) + ' UTC</b>' + (Math.abs(tl - now()) < 90 * 60e3 ? ' · now' : tl > now() ? ' · ahead' : ' · past') +
-        (spd != null ? ' · Lisbon in the model: ' + spd + ' km/h mean, ' + Math.round(lp) + ' hPa' : '')
+        (spd != null ? ' · ' + pt[0] + ' in the model: ' + spd + ' km/h mean, ' + Math.round(lp) + ' hPa' : '')
     }
     document.getElementById('bc-mk').innerHTML = '<span><i class="k-streak"></i> wind at 10 m (model)</span><span><i class="k-iso"></i> pressure, every 4 hPa (model)</span>' +
       '<span><i class="k-dot lv-red"></i><i class="k-dot lv-orange"></i><i class="k-dot lv-yellow"></i> IPMA areas at their highest level today (red, orange, yellow)</span>' +
