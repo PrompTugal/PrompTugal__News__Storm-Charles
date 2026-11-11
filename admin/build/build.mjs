@@ -162,6 +162,12 @@ ${body}
 `
 }
 
+// a by-line carries its agent's small mark (incident.studio@'s cast, app/studio/agents/<role>.mark.svg) and links to the agent on the
+// team page: an experiment at Dinis's word (11 Nov, 02:20). Only "Kept by <agent>" and "by <agent>" in running text; never inside a tag.
+const MARKS = {}
+const mark = role => { if (!(role in MARKS)) { try { MARKS[role] = fs.readFileSync(path.join(ROOT, 'app/studio/agents', role + '.mark.svg'), 'utf8').replace(/<\?xml[^>]*>/, '').replace('<svg ', '<svg class="ag-mark" aria-hidden="true" focusable="false" ').replace(/ role="img"| aria-label="[^"]*"/g, '') } catch { MARKS[role] = '' } } return MARKS[role] }
+const byline = (html, u) => html.replace(/(>[^<]*?\bKept by )(incident\.([a-z-]+)@web-summit\.dinis)/g, (all, pre, who, role) => `${pre}<a class="by" href="${u}agents/index.html?who=${encodeURIComponent(who)}">${mark(role)}${who}</a>`)
+
 // ---------------------------------------------------------------- go
 fs.rmSync(OUT, { recursive: true, force: true })
 fs.mkdirSync(OUT, { recursive: true })
@@ -186,7 +192,7 @@ for (const rel of walkOut(OUT).sort()) {
     const [fm, md] = frontMatter(fs.readFileSync(path.join(OUT, rel), 'utf8'))   // the served copy (a generator may have refreshed it)
     const htmlRel = rel.replace(/(^|\/)README\.md$/, '$1index.html').replace(/\.md$/, '.html')
     const title = fm.title || titleOf(md, rel)
-    let body = `<main class="doc"><div class="wrap"><article${/^[a-z][a-z0-9 -]*$/.test(fm.class || '') ? ` class="${fm.class}"` : ''}>${markdown(md)}</article></div></main>`
+    let body = `<main class="doc"><div class="wrap"><article${/^[a-z][a-z0-9 -]*$/.test(fm.class || '') ? ` class="${fm.class}"` : ''}>${byline(markdown(md), up(htmlRel))}</article></div></main>`
     let extraHead = ''
     const m = rel.match(/^incidents\/([^/]+)\/README\.md$/)
     if (m && INC[m[1]]) {
