@@ -1,7 +1,7 @@
 {
   "agent": "incident.archivist@web-summit.dinis",
   "state": "active: capturing; primary sources re-read each hour",
-  "last_wake": "2026-11-11T09:30:00Z",
+  "last_wake": "2026-11-11T10:27:00Z",
   "session_key": "record sha256:1767bd4a70295162 (encryption sha256:d3f6afe074c9293c); public half in data/keys.json",
   "vaults": [
     {
@@ -37,7 +37,8 @@
     "06:24 hourly round: IPMA's warnings timeline for Lisbon CHANGED between 05:23 and 06:25 (evidence ipma/2026/11/11/0523-pt-otempo-prev-sam -> ipma/2026/11/11/0625-pt-otempo-prev-sam): the yellow sea-state warning for Lisbon (10 Nov 21:24 to 11 Nov 06:00) is no longer listed, and in the page's list of regions Madeira's north coast, mountain regions and south coast read Laranja where they read Vermelho. IPMA's communiqués, ANEPC's avisos listing and the government's declaration unchanged; ANEPC's notice 21 answered 502. Reported to the conductor",
     "07:27 hourly round: nothing changed in substance. IPMA's warnings timeline differs from 06:25 only in its time axis labels (read and marked same content); communiqués, ANEPC's listing and the government's declaration unchanged; ANEPC's notice 21 answered 502 for the second hour running (the 05:24 capture is the one linked)",
     "08:24 hourly round: IPMA's warnings timeline for Lisbon CHANGED between 07:27 and 08:24 (ipma/2026/11/11/0727-pt-otempo-prev-sam -> ipma/2026/11/11/0824-pt-otempo-prev-sam): last update now reads 11 November 07:16; the Lisbon wind line reads orange 09:00 to 21:00 (gusts to 120 km/h) where it read red 12:00 to 21:00; the orange rain line starts 07:17; Évora reads orange in the list of regions. Reported to the conductor at once. Communiqués and the government's declaration unchanged; ANEPC's listing same content; ANEPC's notice 21 answered 502 for the third hour. The timeline's moving hour-axis labels are now ignored when comparing",
-    "09:24 hourly round: IPMA's warnings timeline for Lisbon changed in one line since 08:24 (ipma/2026/11/11/0824-pt-otempo-prev-sam -> ipma/2026/11/11/0924-pt-otempo-prev-sam): the orange rain line (07:17 to 09:00) is no longer listed (its own end time). Now listed for Lisbon: rain red 09:00 to 18:00; wind orange 09:00 to 21:00; sea state orange 12:00 to 21:00 and yellow 21:00 to 03:00; last update 11 November 07:16; region label 'Lisboa Vermelho'. ANEPC's notice 21 answered 200 again, same content as before; communiqués, ANEPC's listing and the government's declaration unchanged. The comparison no longer calls a page changed when it returns to a rendering already seen since its last real change"
+    "09:24 hourly round: IPMA's warnings timeline for Lisbon changed in one line since 08:24 (ipma/2026/11/11/0824-pt-otempo-prev-sam -> ipma/2026/11/11/0924-pt-otempo-prev-sam): the orange rain line (07:17 to 09:00) is no longer listed (its own end time). Now listed for Lisbon: rain red 09:00 to 18:00; wind orange 09:00 to 21:00; sea state orange 12:00 to 21:00 and yellow 21:00 to 03:00; last update 11 November 07:16; region label 'Lisboa Vermelho'. ANEPC's notice 21 answered 200 again, same content as before; communiqués, ANEPC's listing and the government's declaration unchanged. The comparison no longer calls a page changed when it returns to a rendering already seen since its last real change",
+    "10:23 hourly round: all five primaries answered 200 and are unchanged since 09:24. IPMA's timeline for Lisbon still lists rain red 09:00 to 18:00, wind orange 09:00 to 21:00, sea state orange 12:00 to 21:00 and yellow 21:00 to 03:00; last update 11 November 07:16; region label 'Lisboa Vermelho'"
   ],
   "next": [
     "primaries re-read hourly at :23, changed / unchanged",
@@ -46,6 +47,6 @@
     "IPMA's feeds in evidence/data.json when incident.ipma@ publishes reads.json"
   ],
   "asks": [
-    "Dinis (through incident.conductor@): the two vault write keys are held only in this session. The permission check refused reading them back, so they were never sent, in the clear or sealed. Until Dinis decides the route, only this session can write to either vault; every capture's sha256 and time is in git, so the record survives even if the vaults had to be re-made."
+    "Dinis: the two vault write keys (display f86qsbla, captures worixdil) are still held only in this session. Three attempts to hand them over were refused by this session's permission check (reading the key back; sealing it with tools/lane-handover.mjs, twice), the last after his 'Yes please continue' at about 09:35. The conductor's lane for keys is open; what is missing is a permission rule in this session for that one command, or Dinis running it himself. Nothing was ever sent or sealed."
   ]
 }
