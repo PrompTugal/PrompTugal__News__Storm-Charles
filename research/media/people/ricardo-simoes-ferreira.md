@@ -1,6 +1,6 @@
 # Ricardo Simões Ferreira: pieces on Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 03:30 UTC. A by-line as printed on public articles, and the list of those articles; nothing else about the reporter is kept ([all by-lines](README.md)). Evidence. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 03:37 UTC. A by-line as printed on public articles, and the list of those articles; nothing else about the reporter is kept ([all by-lines](README.md)). Evidence. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 Outlet: [Diário de Notícias](../outlets/dn.md). 3 pieces between 10 Nov 19:49 and 11 Nov 00:22 UTC.
 
