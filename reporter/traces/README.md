@@ -1,6 +1,6 @@
 # Traces: one workflow each, from Dinis's word to a live page
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 03:04 UTC
 
 Read [index.json](index.json) first: it carries every trace's five-line summary. Then open only the one you need. Not a warning service: these are about how the site was made.
 

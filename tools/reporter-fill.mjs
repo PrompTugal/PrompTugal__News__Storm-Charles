@@ -48,6 +48,7 @@ for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.json') && f !== 'in
   const t = JSON.parse(raw);
   const bad = m => { problems++; console.error(`${f}: ${m}`); };
   if (!Array.isArray(t.summary) || t.summary.length !== 5) bad('summary must be five lines');
+  if (!t.updated || Date.parse(t.updated) > Date.now()) bad(`updated (${t.updated}) is missing or later than the clock: read the clock before stamping`);
   if (!Array.isArray(t.rests_on) || !t.rests_on.length) bad('rests_on must list the files the trace rests on');
   for (const r of t.rests_on || []) { const file = (r.path || r).split('#')[0]; if (!(r.repo && r.repo !== REPO) && !fs.existsSync(file)) bad(`rests_on: ${file} does not exist`); }
   let n = 0, noEvidence = 0;

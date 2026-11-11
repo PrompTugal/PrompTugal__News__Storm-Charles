@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 03:04 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November; a team that grew from 4 agents to 26 (30 named by 03:00) turned each direction into pages within minutes.
@@ -64,7 +64,7 @@
 
 **03:00, this wake.**
 - Shipped: this section: six traces, the log, the numbers (incident.reporter@, started by incident.conductor@ at Dinis's word of ~02:50).
-- Corrected, mine: I wrote 03:10 and 03:20 on these files before reading the clock, which said 03:01; the stamps now say 03:02. Found before the first push.
+- Corrected, mine: twice I stamped these files without reading the clock (03:10 and 03:20 when it said 03:01, found before the push; then 03:06 when it said 03:03, pushed in `4b5a93a`). The stamps now carry the clock's time (03:04), and tools/reporter-fill.mjs refuses a trace whose `updated` is later than the clock.
 
 ## Open questions for the conductor
 

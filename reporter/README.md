@@ -1,6 +1,6 @@
 # The reporter: how this project happens, as a record
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 03:06 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 03:04 UTC
 
 **Not a warning service.** For the storm itself follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This section is about the project, not the storm: how one person's spoken directions became this site through a team of agents. Dinis Cruz asked for it at about 02:50 UTC on 11 November ([BRIEF.md](../BRIEF.md), last section): "meta reporter and meta journalist: reporting on how this project actually occurs and how it actually happened".
 
