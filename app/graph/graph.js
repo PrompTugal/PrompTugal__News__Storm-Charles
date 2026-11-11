@@ -108,8 +108,8 @@
         const msg = $('g-msg')
         try {
             const get = async u => { const r = await fetch(u, { cache: 'no-cache' }); if (!r.ok) throw new Error(u + ': HTTP ' + r.status); return r.json() }
-            const [s, more, tl, d, w, sg] = await Promise.all([get(BASE + 'data/graph/storm.json'), get(BASE + 'data/graph/storm-elsewhere.json'), get(BASE + 'data/graph/tables/timeline.json'), ...['decisions', 'warnings', 'signals'].map(t => get(BASE + `data/graph/tables/${t}.json`))])
-            storm = { ...s, nodes: s.nodes.concat(more.nodes), edges: s.edges.concat(more.edges) }; for (const t of [d, w, sg]) for (const r of t.rows) tables[r.id] = r
+            const [s, src, more, tl, d, w, sg] = await Promise.all([get(BASE + 'data/graph/storm.json'), get(BASE + 'data/graph/storm-sources.json'), get(BASE + 'data/graph/storm-elsewhere.json'), get(BASE + 'data/graph/tables/timeline.json'), ...['decisions', 'warnings', 'signals'].map(t => get(BASE + `data/graph/tables/${t}.json`))])
+            storm = { ...s, nodes: s.nodes.concat(src.nodes, more.nodes), edges: s.edges.concat(src.edges, more.edges) }; for (const t of [d, w, sg]) for (const r of t.rows) tables[r.id] = r
             for (const n of storm.nodes) byId.set(n.id, n)
             for (const e of storm.edges) { (out.get(e.from) || out.set(e.from, []).get(e.from)).push(e); (inn.get(e.to) || inn.set(e.to, []).get(e.to)).push(e) }
             $('g-asof').textContent = `${storm.nodes.length} nodes, ${storm.edges.length} edges, data as of ${storm.as_of.replace('T', ' ').replace('Z', ' UTC')}`
