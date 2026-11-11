@@ -9,7 +9,7 @@
 // dropped: never kept, only counted as one number. Never kept: the ICAO24 hex address, the registration.
 import fs from 'node:fs'
 import path from 'node:path'
-import { BY, DATA, NOT_WARNING, ADSBLOL_CITE, AIRLINES, airlineOf, fetchProv, writeJSON, iso } from './flights-common.mjs'
+import { BY, DATA, NOT_WARNING, ADSBLOL_CITE, AIRLINES, TRANSPORT_AIRLINES, airlineOf, fetchProv, writeJSON, iso } from './flights-common.mjs'
 
 export const AREAS = {
   lisbon: { name: 'Lisbon area: within 40 nautical miles (74 km) of 38.75 N, 9.20 W (LPPT is 8 km north of the centre)', lat: 38.75, lon: -9.2, dist_nm: 40 },
@@ -42,6 +42,8 @@ if (ok) {
   // incident.transport@'s count in its own box: airline aircraft on the ground or airborne below 3,000 m (9,843 ft)
   const ap = NEAR[area]; const nb = snap.aircraft.filter(a => a.lat >= ap.box[0] && a.lon >= ap.box[1] && a.lat <= ap.box[2] && a.lon <= ap.box[3])
   snap.near_airport = { [ap.icao]: { box: ap.box, box_order: 'lamin, lomin, lamax, lomax', on_ground: nb.filter(a => a.on_ground).length, airborne_below_3000m: nb.filter(a => !a.on_ground && a.baro_alt_ft != null && a.baro_alt_ft < 9843).length, read: prov.read } }
+  const tl = nb.filter(a => TRANSPORT_AIRLINES[a.airline])
+  snap.near_airport[ap.icao].transport_list = { on_ground: tl.filter(a => a.on_ground).length, airborne_below_3000m: tl.filter(a => !a.on_ground && a.baro_alt_ft != null && a.baro_alt_ft < 9843).length, note: 'the same, with incident.transport@\'s airline list exactly' }
 }
 const t = snap.time || prov.read
 const file = path.join(root, DATA, 'snapshots', t.slice(0, 10), t.slice(11, 13) + '.json')
