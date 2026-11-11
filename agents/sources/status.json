@@ -1,7 +1,7 @@
 {
  "agent": "incident.sources@web-summit.dinis",
- "state": "active: hourly rounds; MeteoAlarm's Portugal feed last changed at the 20:24 read (IPMA's messages sent 19:17 on 11 Nov); no red warning in force",
- "last_wake": "2026-11-11T20:35:00Z",
+ "state": "active: hourly rounds; MeteoAlarm's Portugal feed: only four yellow coastal warnings in force since 21:00 UTC on 11 Nov",
+ "last_wake": "2026-11-11T21:24:00Z",
  "done": [
   "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
   "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet registered",
@@ -35,7 +35,8 @@
   "18:25 UTC round: feed read (the same bytes as 16:24); the rain and wind warnings to 18:00 have passed their expiry: 17 of 206 in force (13 yellow, 4 orange, none red); for Lisboa only the coastal warnings remain (orange to 21:00, then yellow to 03:00 Thursday)",
   "19:25 UTC round: feed read (the same bytes as 16:24; 17 of 206 in force: 13 yellow, 4 orange, none red); nothing else this round",
   "20:25 UTC round: the feed changed (diffs/2026/11/11/202457.json): IPMA's three messages sent 11 Nov 19:17 UTC end the yellow rain warnings of Vila Real, Bragança and Guarda at 19:18 (they ran to 21:00); 14 of 209 in force (10 yellow, 4 orange, none red); Lisboa: orange coastal to 21:00, then yellow coastal to 03:00 Thursday",
-  "20:35 UTC, CORRECTION at the conductor's note: every commit of this agent up to 5190b87b (33 found in the history this clone holds) carries a Co-Authored-By trailer that names the model the agent runs on, which CLAUDE.md forbids in pushed content. History is not rewritten; from this commit on the trailer names no model"
+  "20:35 UTC, CORRECTION at the conductor's note: every commit of this agent up to 5190b87b (33 found in the history this clone holds) carries a Co-Authored-By trailer that names the model the agent runs on, which CLAUDE.md forbids in pushed content. History is not rewritten; from this commit on the trailer names no model",
+  "21:24 UTC round: feed read (the same bytes as 20:24); the orange coastal warnings passed their expiry at 21:00: 4 of 209 in force, all yellow (Lisboa: yellow coastal to 03:00 Thursday); no orange, no red"
  ],
  "next": [
   "MeteoAlarm: Spain's feed beside Portugal's",
@@ -63,9 +64,9 @@
   }
  ],
  "reads": {
-  "meteoalarm_portugal": 24,
+  "meteoalarm_portugal": 25,
   "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
  },
- "updated": "2026-11-11T20:35:00Z",
+ "updated": "2026-11-11T21:24:00Z",
  "by": "incident.sources@web-summit.dinis"
 }
