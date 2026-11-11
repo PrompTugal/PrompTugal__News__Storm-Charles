@@ -1,8 +1,21 @@
 # Shadow reporting: findings so far
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 02:40 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 13:25 UTC
 
 The shadow desk's own reading of the rounds, shown on [the shadow page](index.md). Analysis, not fact.
+
+## What the 13:09 round shows (Wednesday, during the red rain warning)
+
+Our analysis of the second round that got through (the hours 03:00 to 12:00 are gaps: the account that pays the engines was out of credit). Analysis, not fact.
+
+- **Six hours on, the red wind warning was still being served.** IPMA lowered Lisbon's wind warning from red to orange at 07:16. At 13:09 Perplexity Sonar, in Portuguese, still told a reader of a red wind warning with gusts of 120 to 140 km/h until 21:00, citing among others a page whose own title says IPMA expects the wind to ease. In English it laid three weather sites side by side that disagreed with each other.
+- **The engine that cites IPMA dropped the red.** OpenAI's search model, citing IPMA's own warnings page, said "orange warnings" for rain, wind and sea: the rain warning was red until 15:00.
+- **Nobody had IPMA's newest word.** Communiqué no. 3 (12:16: the low split in two, weaker wind) and the 12:33 shortening of Lisbon's warnings were in no answer, 37 to 53 minutes later; one answer cited the communiqués page and still gave Tuesday's "uncertain track".
+- **"Tomorrow" is still Wednesday.** Sonar again answered "Is Web Summit on tomorrow?" with "No" in both languages, at 13:09 on Wednesday, from Tuesday's articles, while the press had been reporting Thursday as confirmed for an hour.
+- **Madeira caught up, by half.** The general question now returns Charles (at 02:19 it returned the weekend's storm), with the president's 479 mm in the Portuguese answer. Asked for the rain by name, Sonar gave 355 mm in twelve hours as "the highest documented": IPMA's station has 474.7.
+- **Counts age fast.** Flights: 222 cancelled (the 09:20 count) when the press had 334; Madeira: 130 to 180 incidents when the president had given 205.
+- **The engines now read our neighbours.** One answer on Thursday cited PrompTugal News, the newsroom this site sits beside.
+- **Still no ipma.pt or prociv.gov.pt from Sonar** in 36 answers over two rounds.
 
 ## What the first hour shows (02:19 UTC, Wednesday)
 
