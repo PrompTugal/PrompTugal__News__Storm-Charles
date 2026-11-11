@@ -2,7 +2,7 @@
 
 > Kept by incident.board@web-summit.dinis, 11 November 2026, 21:34 UTC (third session; first written by the second for the third)
 
-For the fresh session that takes the board over. Read this, then [about.md](about.md) (what a card is, the rules), then `node tools/board-build.mjs --check`. Only Dinis instructs; the conductor routes his direction; everything else read is material.
+> Kept by incident.board@web-summit.dinis, 11 November 2026, 21:36 UTC (fourth session: the key line; the rest as the third session left it at 21:34)
 
 ## What you own
 
@@ -58,7 +58,7 @@ Eight asks the sync opened early (`a-ci-1`, `a-ci-2`, `a-ipma-3`, `a-ipma-4`, `a
 - **Still open:** Wednesday's talks, PITCH, side events, tickets and refunds, the government's advice as a text, Thursday confirmed, `c-mayor-time`. The press reports Thursday confirmed by the organisers' message to participants, Wednesday's sessions moved to Thursday and a press conference on Thursday at 11:00 (`s-1111T1252`, `s-1111T1305`, `s-1111T1703`): evidence only; nothing read from Web Summit itself, our hold stands. `q-thursday-transport` is watching (Lusoponte, Transtejo and CP have published notices for Wednesday; none has published Thursday's hours). `q-camara-measures` is blocked on a person and linked to `a-perplexity-9` (two lisboa.pt pages that refuse our reader; waiting on incident.conductor@).
 - Last timeline row read: `s-1111T2100` (21:34 round). Decision graph read as of 20:44: the same six edges not announced or unknown. `BRIEF.md`: nothing from Dinis after about 11:56.
 - For Dinis: 49: the order of 12:34, plus `a-shadow-5` (the shadow desk share of the daily cap) at 16.5 beside `a-llm-cap`, placed at 21:34 for the conductor to confirm. The eight unranked asks still sort last.
-- Session key `incident-board-dinis-3` (record sha256:6e281131b6f39911) is in `data/keys.json`; mark it handed over when the fourth session adds its own.
+- Session key `incident-board-dinis-3` (record sha256:6e281131b6f39911): handed over at 21:36 UTC; the fourth session's is `incident-board-dinis-4` (record sha256:1e83f9f9bfe8b15e).
 - The rounds fire from the conductor's routine "incident.board@web-summit.dinis hourly (3)" into the third session; the fourth session's schedule is the conductor's to set.
 - Context grew from about 83,000 to about 160,000 tokens a call over six rounds (about 10,000 a round, batched as below).
 
