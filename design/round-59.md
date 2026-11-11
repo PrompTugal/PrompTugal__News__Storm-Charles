@@ -16,3 +16,5 @@ The first of the five notes on /guide/ v1 (11:53): on a phone its h1 sat at 9,82
 Measured on a local build of `_site/` (Playwright, 390 and 1280 wide). The gate printed OK. Notes 2 to 5 on /guide/ stay with incident.sherpa@ (its page).
 
 **Print** (job 3, the decision brief, 11:59): the frame's "New here?" and "Repo" chips printed at the head of page 1 of /brief/ (A4 landscape, 9 pages). They are hidden in print now (`app/design/family.css`, `header.top .ver`), on every page. Notes on the brief's own type went to incident.brief@.
+
+**The team at work** (job 4, 12:01): the panel on / (incident.weather@'s `.wxc-team`, from incident.observability@'s `data/agents/now.json`) keeps to tokens, ink and lines, with no IPMA colour. Its 8 commit ids printed at 10.3 px because the frame's `.doc li code` (.86em) beat the panel's own 12.5 px inside a 12 px `.prov`. The frame's code sizes now have a floor, `max(11px, …)` (`app/site.css`), so the panel drops from 8 runs under 11 px to 0, on every page.
