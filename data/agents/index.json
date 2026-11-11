@@ -12,15 +12,15 @@
   ],
   "count": {
     "about": "The one count of the team to cite (data/agents/count.json is the same object): agents = the roster in agents/JOBS.md; with_active_key = agents with at least one key marked active in data/keys.json; sessions = session keys ever published (one per session); handed_over = sessions that handed over to a fresh one.",
-    "agents": 32,
-    "with_active_key": 29,
-    "sessions": 67,
+    "agents": 35,
+    "with_active_key": 30,
+    "sessions": 68,
     "handed_over": 37
   },
   "counts": {
-    "agents": 32,
-    "with_status": 30,
-    "with_key": 29,
+    "agents": 35,
+    "with_status": 31,
+    "with_key": 30,
     "asks_for_dinis": 44
   },
   "ledger": [],
@@ -267,16 +267,14 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "dcc572d55bc65752ada9a3dfbac81b59b688bdb67a807f8722611997e25cdcc9",
-      "state": "fourth session (from 09:33 UTC): round 48 out (the masthead's chip says 'Updated N min ago' from the build's time, not 'LIVE'; About leads to welcome/); waiting on Dinis's word on welcome/",
-      "last_wake": "2026-11-11T10:03Z",
+      "status_sha256": "74c0f0775d3dd7151d0ac406eba9a7309b129b844cedba81587bf65e1ddebf6e",
+      "state": "fourth session (from 09:33 UTC): round 50 out (the 10:09 look at /: clean, the strip in a desk's first screen now; welcome/'s decision note at body size; 'About' no longer cut at 1440); waiting on Dinis's word on welcome/",
+      "last_wake": "2026-11-11T10:11Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
         "round 1: the home page as the weather presenter (warning tiles, the day hour by hour, sourced Thursday card); design/round-1.md",
         "round 2: the wind chart (warned, forecast, observed on one axis) and where (district by district); design/round-2.md",
-        "round 42: shared parts (.wx-level, .wx-word, .wx-warn, .wx-sect), the masthead in two lines on a desk (97 px), design/HANDOVER.md",
-        "second session, 03:05: its own key in data/keys.json (the first session's marked handed over); the menu: Journal and Reporter under About, CI's three pages moved from Team to About",
         "round 43: one hour grid for both faces (--hg-lab, --hg-col; now as a tinted hour and a line; before now behind the bars; a strip opens at now); design/round-43.md",
         "03:20 sweep: 49 menu pages at 390 and 1280, one too wide on a phone (research/weather-sites/studies: a select and a plain table), fixed in site.css",
         "round 44 (04:10): a long bar's words stay in view when a strip is scrolled; both faces checked with the orange in force; the data room prints on a page; design/round-44.md",
@@ -286,13 +284,15 @@
         "round 46: an inner page's first screen on a phone (design/round-46.md): the first paragraph of research/media/ from 645 px to about 360, of ROADMAP.html from 905 to about 525; the front page looked at 09:35 (clean; four of round 45's ten notes taken by incident.weather@); the menu sweep clean (51 a…",
         "round 47: the features page for newcomers (Dinis, 09:50): front matter 'class: landing' draws a title, lead, buttons, figures, cards, steps and a pull quote from plain markdown (app/site.css; design/landing.md is the example and the contract); the masthead's 'New here?' (admin/build/build.mjs, when…",
         "welcome/ with incident.envoy@'s draft at 390, 1280, 1680, light and dark (clean); the frame treats it as a front door (no subsite lit, no sub-bar, no trail); linked names in cards not bold; 'New here?' takes the version chip's place below 1440 px so the menu fits at 1280 (design/round-47.md, last s…",
-        "round 48: incident.synthetic@'s findings 2 and 6: the chip reads 'Updated N min ago' (the build's own time, counted on the reader's clock; grey after an hour) instead of a red LIVE; About's first entry is welcome/ (design/round-48.md)"
+        "round 48: incident.synthetic@'s findings 2 and 6: the chip reads 'Updated N min ago' (the build's own time, counted on the reader's clock; grey after an hour) instead of a red LIVE; About's first entry is welcome/ (design/round-48.md)",
+        "round 49: after incident.synthetic@'s run 2: the paragraph between the lead and the buttons is a compact 'latest' note; on a phone the main button went from 779 px to 573 px and the decision from 538 to 401 (design/round-49.md)",
+        "round 50: / at 10:10 (clean; incident.weather@ took notes 1, 2 and 4 of round 45: the hour strip begins at 453 px on a desk); from incident.synthetic@'s run 3: the decision note at body size, 'About' whole at 1440 (the chip gives way below 1600 px); a note for incident.weather@ (the summit's decisi…"
       ],
-      "done_total": 49,
+      "done_total": 51,
       "next": [
-        "Dinis's word on moving welcome/ to /; incident.synthetic@'s second run",
-        "the :09 wake: two minutes on /",
-        "the launch pass, on: air on the data room's front page, /studio/ again"
+        "Dinis's word on moving welcome/ to /",
+        "the launch pass, on: air on the data room's front page, /studio/ again",
+        "the :09 wake: two minutes on /"
       ],
       "asks_dinis": [
         "Dinis: the five themes of the sgit.ai sites, if there is a canonical set"
@@ -857,6 +857,24 @@
     },
     {
       "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.broadcast@web-summit.dinis",
+      "role": "broadcast",
+      "owns": "`broadcast/`, `app/broadcast/`, `tools/broadcast-*.mjs`",
+      "job": "**the news-channel wall** (Dinis, 11 Nov ~10:13, BRIEF.md): `/broadcast/`, Storm Charles as a live news channel shows it: split panels (IPMA's warnings, an animated wind and pressure map from open model data, pictures we may show, airport observations, counts), a chyron from the headline and a ticker from the timeline; each panel with its source and time read. Information, not alarm; not a warning service. Pictures only under licence; outside requests listed for Dinis before any is made.",
+      "shared_row": false,
+      "policy_owns": [
+        "broadcast/**",
+        "app/broadcast/**",
+        "tools/broadcast-*.mjs"
+      ],
+      "group": "Other",
+      "work": []
+    },
+    {
+      "in_jobs": true,
       "has_status": true,
       "has_key": true,
       "has_page": true,
@@ -1264,15 +1282,14 @@
       "job": "**the project itself, told**: the story of how this was made, from the traces",
       "shared_row": false,
       "status_file": "agents/journalist/status.json",
-      "status_sha256": "9ba9aec637a467b48add4f15a387ad8ad8789fe419896d453a61f30df4e9b55d",
-      "state": "active: the fourth session (from 08:16 UTC); the journal is live with eleven pieces and a printable edition, every support resolving (492 supports)",
-      "last_wake": "2026-11-11T09:13:00Z",
+      "status_sha256": "06a01cb162be2b8cb78893418c08b188fd9818058cd0249fec4b5e67953ee584",
+      "state": "active: the fourth session (from 08:16 UTC); the journal is live with twelve pieces and a printable edition, every support resolving",
+      "last_wake": "2026-11-11T10:14:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
         "journal/README.md: the index, how to read a piece, how the journal differs from What's new",
         "journal/a-storm-one-person-one-night.md with its supports as data (journal/a-storm-one-person-one-night.json): 32 statements, 78 supports (commits, runs, sentences of the brief, board cards, data fields), 3 said to be not recorded, 1 waiting for a trace",
-        "the mistakes piece gains section 8 (the model name in the default commit trailer; the conductor's rule of 03:02; not counted); the menu carries Journal under About (seen in admin/build/build.mjs)",
         "04:05 round: journal/starting-again-is-cheaper-than-remembering.md from the reporter's seventh trace (the sentence, the pack, the test, six hand-overs, one mistake in the open); supports that had broken re-anchored (incident.ci@ split the 02:00 hour's file; the savings page was reworded); the clock…",
         "second session, 04:09 to 04:12 UTC: its own session key (the first session's entry marked handed over); the measure step; a seventh piece, journal/an-empty-account.md (14 statements: the provider's account out of credit from about 02:54, what stopped, what the three desks did, what waits on Dinis),…",
         "04:14 UTC (the hourly wake, which fires into this session at minute 12): the seventh piece checked against incident.reporter@'s eighth trace (outage-the-model-account-out-of-credit, published 04:11): it agrees; trace supports and its relay picture added; one difference kept on the page (five refusa…",
@@ -1283,10 +1300,12 @@
         "07:15 UTC (hourly wake, fired 07:13): three supports that I had anchored at 06:20 on hourly sentences broke and now rest on commits only; dated lines for the accountant's round 7 (eighteen hand-overs, 1.71 billion tokens) on What it cost and the sixth piece, which also records the first limit of a …",
         "08:14 UTC (hourly wake, fired 08:13): the check passed untouched (the commit anchors held through the accountant's round 8 and the reporter's 08:06 log); an eleventh piece, journal/nobody-asked.md (8 statements, from the reporter's trace signal-a-warning-lowered-to-the-front-page). Edition: 153 pag…",
         "fourth session, 08:16 to 08:17 UTC: its own session key (the third session's entry marked handed over); dated lines resting on commits for the accountant's round 8 (dc768fd) on What it cost and the sixth piece, and for the outage's sixth empty hour (2b480e6) on An empty account; noted on the page t…",
-        "09:13 UTC (hourly wake, fired 09:12): one support of Nobody asked re-anchored (n2 rested on a field of warnings.json that existed only while IPMA's channels disagreed; now the commit 3936e8a); the piece's ending from the reporter's step 8 (the channels agree, row s-1111T0844, 1 h 28 min 4 s); a cor…"
+        "09:13 UTC (hourly wake, fired 09:12): one support of Nobody asked re-anchored (n2 rested on a field of warnings.json that existed only while IPMA's channels disagreed; now the commit 3936e8a); the piece's ending from the reporter's step 8 (the channels agree, row s-1111T0844, 1 h 28 min 4 s); a cor…",
+        "10:14 UTC (hourly wake, fired 10:12): a twelfth piece, journal/read-before-he-saw-it.md (10 statements, from the reporter's open trace loop-a-front-page-for-newcomers); Dinis's first words in 6 h 41 min carried in dated lines on What waited on the human, Starting again (the vault-key limit answered…"
       ],
-      "done_total": 24,
+      "done_total": 25,
       "next": [
+        "the twelfth piece is open: when Dinis says yes or no to /welcome/ (the trace's step 9), write the ending; Dinis's words of ~10:10 (BRIEF.md) name 'a wake of a journalist, end to end' and 'the handover of journalists' as paths for incident.storyteller@ and incident.motion@: they may read journal/*.json and this file; answer their asks",
         "the tenth piece rests on the open card board/items/a-websummit-terms.json: when Dinis answers or the card is reworded, re-anchor and write the ending",
         "What it cost: carries the books at 08:44 (round 9) in dated lines; a full rewrite of the page's body (still the books of 03:02) when Dinis or the conductor wants one",
         "the agents' marks from app/studio/agents/ on the lanes and the trace pictures",
@@ -1823,6 +1842,25 @@
     },
     {
       "in_jobs": true,
+      "has_status": false,
+      "has_key": false,
+      "has_page": false,
+      "name": "incident.motion@web-summit.dinis",
+      "role": "motion",
+      "owns": "`flows/`, `app/flows/`, `data/flows/`, `tools/flows-*.mjs`",
+      "job": "**small animations of the work** (Dinis, 11 Nov ~10:10, BRIEF.md): one small data format for a flow (actors, steps, edges, times, each step with its commit or file), built by a tool from git, `agents/*/status.json`, hand-overs and `data/keys.json`, never by hand twice; served at `data/flows/` and `api/v1/`; small embeddable animations on the pinned copies of Angelo's live map and Silvio's Universe (`app/agents/vendor/`); a gallery at `/flows/`, one per path from storyteller@, each embeddable by one line. Experiments, labelled.",
+      "shared_row": false,
+      "policy_owns": [
+        "app/flows/**",
+        "flows/**",
+        "data/flows/**",
+        "tools/flows-*.mjs"
+      ],
+      "group": "Other",
+      "work": []
+    },
+    {
+      "in_jobs": true,
       "has_status": true,
       "has_key": true,
       "has_page": true,
@@ -1900,9 +1938,9 @@
       "job": "**the project itself, as it happens**: a trace per workflow, from Dinis's word to a live page",
       "shared_row": false,
       "status_file": "agents/reporter/status.json",
-      "status_sha256": "a16cab0d099b147598deb0c3b31953df99305d7322c04399b3576f7a6394b627",
-      "state": "active, third session (from 05:10 UTC): twelve traces, the log to 09:07, the numbers; hourly at :06 (trig_014Kj9wgkKUZ4jReygeGnicj, the conductor's)",
-      "last_wake": "2026-11-11T09:07:50Z",
+      "status_sha256": "aaa18d19ba3656d2a57d201939e442d74d399da03ff3bf77d4a658f74aee9a59",
+      "state": "active, third session (from 05:10 UTC): thirteen traces, the log to 10:09, the numbers; hourly at :06 (trig_014Kj9wgkKUZ4jReygeGnicj, the conductor's); HANDOVER.md current at 10:09 for a fourth session",
+      "last_wake": "2026-11-11T10:09:20Z",
       "jobs": [
         "R1: traces, one JSON per workflow (reporter/traces/), each step with its evidence or marked no evidence",
         "R2: reporter/log.md, the project hour by hour, appended at every wake",
@@ -1919,9 +1957,10 @@
         "06:09Z the 06:06 wake: a new trace (decision-web-summit-terms-to-a-hold, 7 steps); the outage trace to a fourth empty hour (step 15); the memory trace to fourteen more sessions (step 20); the log's hour; the numbers. a-reporter-4 answered by the conductor (the wake fires here): it can close.",
         "07:08Z the 07:06 wake: the outage trace to a fifth empty hour (step 16); the memory trace step 21 (round 7 corrected to eighteen; why IPMA's second session stood down); the hold's trace step 8 and a correction from agents/conductor/holds.md; the log's hour; the numbers",
         "08:08Z the 08:06 wake: a new trace (signal-a-warning-lowered-to-the-front-page, 7 steps, no person in it); the outage trace to a sixth empty hour (step 17); the memory trace step 22 (round 8); the log's hour; the numbers",
-        "09:07Z the 09:06 wake: the signal trace step 8 (IPMA's channels agree, 08:44); the memory trace step 23 (round 9); no outage step (the shadow desk's 09:00 round not yet in the record); the log's hour; the numbers"
+        "09:07Z the 09:06 wake: the signal trace step 8 (IPMA's channels agree, 08:44); the memory trace step 23 (round 9); no outage step (the shadow desk's 09:00 round not yet in the record); the log's hour; the numbers",
+        "10:09Z the 10:06 wake: Dinis spoke again (~09:30 to ~09:50); a new trace (loop-a-front-page-for-newcomers, 9 steps); the memory trace steps 24 and 25 (the vault-key answer, IPMA's second session back); the outage trace step 18 (seventh and eighth gaps); the log's hour and its first and fifth lines;…"
       ],
-      "done_total": 10,
+      "done_total": 11,
       "next": [
         "traces owed: the first article as a PDF; the launch (neither has happened in the record)",
         "each wake: the log, the numbers, the hand-overs as they continue (in the memory trace), the outage trace until the account has credit",
@@ -1987,9 +2026,9 @@
       "job": "**shadow reporting**: what other sources and answer engines say, captured, linked and compared with our record",
       "shared_row": false,
       "status_file": "agents/shadow/status.json",
-      "status_sha256": "ec55dfcc46abcfa8c111ba82e0232043ec1d3897526953f1711c44a770f48f3b",
-      "state": "paused for the 03:00 to 09:00 hours: the OpenRouter account is out of credit (one call each hour, refused, nothing more asked); the 09:00 start of the red rain warning was not measured; round 1 (02:19) is at shadow/; next try 10:05",
-      "last_wake": "2026-11-11T09:06:00Z",
+      "status_sha256": "4038ba3165a0ef0229ce4758c156ef208e3d0c265e7d747200ce82be7720ab27",
+      "state": "paused for the 03:00 to 10:00 hours: the OpenRouter account is out of credit (one call each hour, refused, nothing more asked); the 09:00 start of the red rain warning was not measured; round 1 (02:19) is at shadow/; next try 11:05",
+      "last_wake": "2026-11-11T10:06:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:a550fd1d6e224816, encryption sha256:b563db30a7e9262c), public half in data/keys.json",
@@ -2000,7 +2039,7 @@
         "03:06Z: the hourly round was refused (HTTP 402, account out of credit, as the conductor warned); shadow-ask now sends one call first and stops at the first 402; the hour is recorded as paused in shadow/runs/2026-11-11/03.json and shown as a gap on the page",
         "two of round 1's leads were since read at source by others (the alert order, Despacho 13773-A/2026; Web Summit's schedule still listing Wednesday): the conductor's rows of 02:55 to 03:02",
         "04:06Z: refused again (the wrapper's status account_out_of_credit); the hour recorded as a gap; shadow-ask reads the wrapper's new status names",
-        "05:05Z to 09:06Z, hourly: refused again for credit; each hour recorded as a gap"
+        "05:05Z to 10:06Z, hourly: refused again for credit; each hour recorded as a gap"
       ],
       "done_total": 9,
       "next": [
@@ -2299,6 +2338,49 @@
           "path": "stories/"
         }
       ]
+    },
+    {
+      "in_jobs": true,
+      "has_status": true,
+      "has_key": true,
+      "has_page": false,
+      "name": "incident.storyteller@web-summit.dinis",
+      "role": "storyteller",
+      "owns": "`story/`",
+      "job": "**the story of the team** (Dinis, 11 Nov ~10:10, BRIEF.md): as the storyteller in his book (the-ultimate-insider.book.sgit.ai): the arc, the cast (an identity and a small icon for every agent, and for Dinis), the primitives (who, what, where, when: agent, session, wake, commit, file, page, data source, hand-over, key, ask), and ten paths told end to end from the record (a journalist's wake; a story made; a hand-over; a data source asked for, found, published, used; Dinis's own request of 10:10). Each claim with its commit or file. Writes what motion@ animates.",
+      "shared_row": false,
+      "status_file": "agents/storyteller/status.json",
+      "status_sha256": "f0ccddf3c29710ae29b7f7960c8cb22cdd595bfb13aed1f5699740deee54b3bc",
+      "state": "",
+      "last_wake": "",
+      "jobs": [],
+      "done": [
+        "session key made; public half in data/keys.json (sha256:04179652db3e2fa9)"
+      ],
+      "done_total": 1,
+      "next": [
+        "cast",
+        "primitives",
+        "paths",
+        "arc"
+      ],
+      "asks_dinis": [],
+      "asks": [],
+      "keys": [
+        {
+          "id": "incident-storyteller-dinis",
+          "record": "sha256:01efced5750df04a",
+          "encryption": "sha256:04179652db3e2fa9",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026, 10:12 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+        }
+      ],
+      "policy_owns": [
+        "story/**"
+      ],
+      "group": "Other",
+      "work": []
     },
     {
       "in_jobs": true,
@@ -2667,6 +2749,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T10:05:16Z",
-  "content_sha256": "4571de60843563786c9c8a686a40f6c5b8994a51cc529bd1edc5a8d3e3a51914"
+  "updated": "2026-11-11T10:15:22Z",
+  "content_sha256": "98a1ee5e1f18f3658fb564c3c78d07e3fd92544a04fe157da9c8c6cc9deef901"
 }

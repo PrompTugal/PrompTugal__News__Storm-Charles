@@ -3,7 +3,7 @@
  "by": "incident.observability@web-summit.dinis",
  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
  "branch": "dev",
- "head": "4addc33e5669630ce5d61de02c1637c71d2ba728",
+ "head": "a9c590a5c94ab8623d20af531ac888569d92aa9e",
  "how_to_record": "An agent records its own start in agents/<role>/status.json: \"session\": { \"id\", \"started_at\" (UTC), \"started_by\" (agent), \"started_by_session\", \"on_whose_word\", \"source\" (where that is written) }.",
  "address_pattern": {
   "agent_page": "agents/<role>/index.html, where <role> is the part of the name between \"incident.\" and \"@\"",
@@ -12,13 +12,13 @@
   "file": "app/agents/commit.html?path=<path in the repository>"
  },
  "counts": {
-  "agents": 32,
-  "sessions": 67,
+  "agents": 35,
+  "sessions": 68,
   "agents_with_more_than_one_session": 21,
   "sessions_stated_that_do_not_push_here": 3,
   "sessions_measured": 65,
   "sessions_with_a_recorded_start": 46,
-  "agents_without_a_key": 3
+  "agents_without_a_key": 5
  },
  "agents": [
   {
@@ -302,6 +302,17 @@
    ]
   },
   {
+   "agent": "incident.broadcast@web-summit.dinis",
+   "role": "broadcast",
+   "team": true,
+   "page": "not recorded",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
    "agent": "incident.ci@web-summit.dinis",
    "role": "ci",
    "team": true,
@@ -430,20 +441,20 @@
      "operator_key": "sha256:db7f79fdd87e030a"
     }
    ],
-   "commits": 140,
+   "commits": 143,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtQ4XRqTiSE3vjVq9KD",
      "url": "https://claude.ai/code/session_018yvwtQ4XRqTiSE3vjVq9KD",
-     "commits": 140,
+     "commits": 143,
      "first_commit": {
       "sha": "77cdd51fc101109920aeb4308704823711d0f356",
       "at": "2026-11-10T21:14:33Z"
      },
      "last_commit": {
-      "sha": "7d59f97d0aaa0da9a1f741950ce545dba6573cb2",
-      "at": "2026-11-11T10:03:48Z"
+      "sha": "062940a12c743f2d6f28e187cee76940d419041c",
+      "at": "2026-11-11T10:12:28Z"
      },
      "started_at": "2026-11-10T18:56Z",
      "started_by": "conductor@web-summit.dinis",
@@ -513,7 +524,7 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 70,
+   "commits": 75,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
@@ -647,14 +658,14 @@
     {
      "id": "session_018yvwtLcywtNyhkSURQtnxK",
      "url": "https://claude.ai/code/session_018yvwtLcywtNyhkSURQtnxK",
-     "commits": 9,
+     "commits": 14,
      "first_commit": {
       "sha": "7f2e34d6023764c72ef4a980dbcd30e794669ccd",
       "at": "2026-11-11T09:35:09Z"
      },
      "last_commit": {
-      "sha": "cf269b628d48a4f7e69d4ce8c0d9c5b7ae409101",
-      "at": "2026-11-11T10:03:18Z"
+      "sha": "5fce3220a1fb036de1e5cb0e3b1aeb0af0c31cab",
+      "at": "2026-11-11T10:12:46Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -664,17 +675,17 @@
      "source": "data/agents/starts.json: incident.conductor@'s statements to incident.observability@ (session messages, 11 November 2026, 02:20 and 03:16 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 10 November 2026, ~23:40 UTC",
      "n": 4,
      "measured": {
-      "at": "2026-11-11T10:03:08Z",
-      "calls": 63,
+      "at": "2026-11-11T10:11:38Z",
+      "calls": 78,
       "context_per_call": {
        "first": 84209,
-       "median": 140719,
-       "largest": 195839,
-       "last": 195839
+       "median": 155196,
+       "largest": 217559,
+       "last": 217559
       },
       "compactions": 0,
       "first_call": "2026-11-11T09:33:27Z",
-      "last_call": "2026-11-11T10:02:46Z",
+      "last_call": "2026-11-11T10:11:14Z",
       "source": "accounts/ledger/designer.jsonl, the latest line of the measured session that began before this session's first push (matched by time: a ledger line carries no session address)"
      },
      "takes_over_from": {
@@ -687,7 +698,7 @@
       "context_per_call": {
        "before": 191173,
        "after": 84209,
-       "now": 195839
+       "now": 217559
       }
      }
     }
@@ -899,20 +910,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 4,
+   "commits": 6,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtP6k6ER4tTYGUMQRcH",
      "url": "https://claude.ai/code/session_018yvwtP6k6ER4tTYGUMQRcH",
-     "commits": 4,
+     "commits": 6,
      "first_commit": {
       "sha": "8d1efd8eed8ab1771a275448ea4bb944309d1ac6",
       "at": "2026-11-11T09:35:57Z"
      },
      "last_commit": {
-      "sha": "4addc33e5669630ce5d61de02c1637c71d2ba728",
-      "at": "2026-11-11T10:04:04Z"
+      "sha": "f02d17d95ca3599afdc0d37b754c2f4b23bf9010",
+      "at": "2026-11-11T10:07:45Z"
      },
      "started_at": "not recorded",
      "started_by": "not recorded",
@@ -1361,7 +1372,7 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 33,
+   "commits": 35,
    "commits_without_a_session_trailer": 1,
    "sessions": [
     {
@@ -1495,14 +1506,14 @@
     {
      "id": "session_018yvwtQt1vn9jd81W6Faovj",
      "url": "https://claude.ai/code/session_018yvwtQt1vn9jd81W6Faovj",
-     "commits": 5,
+     "commits": 7,
      "first_commit": {
       "sha": "8aaa7ce5c77f5dec1409ecf81f26bbb2b5d45d7b",
       "at": "2026-11-11T08:18:05Z"
      },
      "last_commit": {
-      "sha": "b52b5c5c74ee9418ac100e81b7749b2ce15d653c",
-      "at": "2026-11-11T09:13:57Z"
+      "sha": "a9c590a5c94ab8623d20af531ac888569d92aa9e",
+      "at": "2026-11-11T10:15:04Z"
      },
      "started_at": "2026-11-11T08:16:00Z",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -1512,17 +1523,17 @@
      "source": "agents/journalist/status.json, its \"session\" object",
      "n": 4,
      "measured": {
-      "at": "2026-11-11T09:13:57Z",
-      "calls": 24,
+      "at": "2026-11-11T10:15:03Z",
+      "calls": 34,
       "context_per_call": {
        "first": 84099,
-       "median": 125346,
-       "largest": 144059,
-       "last": 144059
+       "median": 130538,
+       "largest": 170393,
+       "last": 170393
       },
       "compactions": 0,
       "first_call": "2026-11-11T08:16:05Z",
-      "last_call": "2026-11-11T09:13:49Z",
+      "last_call": "2026-11-11T10:14:51Z",
       "source": "accounts/ledger/journalist.jsonl, the latest line of the measured session that began before this session's first push (matched by time: a ledger line carries no session address)"
      },
      "takes_over_from": {
@@ -1535,7 +1546,7 @@
       "context_per_call": {
        "before": 196389,
        "after": 84099,
-       "now": 144059
+       "now": 170393
       }
      }
     }
@@ -2347,6 +2358,17 @@
    ]
   },
   {
+   "agent": "incident.motion@web-summit.dinis",
+   "role": "motion",
+   "team": true,
+   "page": "not recorded",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
    "agent": "incident.observability@web-summit.dinis",
    "role": "observability",
    "team": true,
@@ -2390,7 +2412,7 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 60,
+   "commits": 62,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
@@ -2530,14 +2552,14 @@
     {
      "id": "session_018yvwtP3xfmDdrSBWr9ZGBQ",
      "url": "https://claude.ai/code/session_018yvwtP3xfmDdrSBWr9ZGBQ",
-     "commits": 9,
+     "commits": 11,
      "first_commit": {
       "sha": "b74025691bb6c21118a0f453298c5ce7634d63c8",
       "at": "2026-11-11T09:49:47Z"
      },
      "last_commit": {
-      "sha": "0f9de911e1f6f07a1e2366d554e4e4214237531b",
-      "at": "2026-11-11T10:00:53Z"
+      "sha": "65b29a349a0c647639944bf0658b232cb632af15",
+      "at": "2026-11-11T10:11:53Z"
      },
      "started_at": "2026-11-11T09:48Z",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -2547,17 +2569,17 @@
      "source": "this session's start brief from the conductor (09:48 UTC); BRIEF.md, last section (~09:47 UTC): city and country for page views",
      "n": 4,
      "measured": {
-      "at": "2026-11-11T09:54:52Z",
-      "calls": 44,
+      "at": "2026-11-11T10:15:20Z",
+      "calls": 92,
       "context_per_call": {
        "first": 83519,
-       "median": 125306,
-       "largest": 161695,
-       "last": 161695
+       "median": 164246,
+       "largest": 208388,
+       "last": 208388
       },
       "compactions": 0,
       "first_call": "2026-11-11T09:48:33Z",
-      "last_call": "2026-11-11T09:54:49Z",
+      "last_call": "2026-11-11T10:15:17Z",
       "source": "accounts/ledger/observability.jsonl, the latest line of the measured session that began before this session's first push (matched by time: a ledger line carries no session address)"
      },
      "takes_over_from": {
@@ -2570,7 +2592,7 @@
       "context_per_call": {
        "before": 225073,
        "after": 83519,
-       "now": 161695
+       "now": 208388
       }
      }
     }
@@ -2667,7 +2689,7 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 24,
+   "commits": 26,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
@@ -2754,14 +2776,14 @@
     {
      "id": "session_018yvwtNL6EvG11QLDPJdRAn",
      "url": "https://claude.ai/code/session_018yvwtNL6EvG11QLDPJdRAn",
-     "commits": 10,
+     "commits": 12,
      "first_commit": {
       "sha": "547f8d8bc5d01d78f108636d271cb410fdfd0416",
       "at": "2026-11-11T05:11:37Z"
      },
      "last_commit": {
-      "sha": "d058ffb94e62d79d1cf4c6297d40d1b16b7fb536",
-      "at": "2026-11-11T09:07:55Z"
+      "sha": "61394ba3615a873af7c23d0a49ad01ea3ce71f61",
+      "at": "2026-11-11T10:09:43Z"
      },
      "started_at": "2026-11-11T05:10:00Z",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -2771,17 +2793,17 @@
      "source": "agents/reporter/status.json, its \"session\" object",
      "n": 3,
      "measured": {
-      "at": "2026-11-11T09:07:54Z",
-      "calls": 39,
+      "at": "2026-11-11T10:09:41Z",
+      "calls": 47,
       "context_per_call": {
        "first": 83930,
-       "median": 147881,
-       "largest": 189985,
-       "last": 189985
+       "median": 152736,
+       "largest": 220210,
+       "last": 220210
       },
       "compactions": 0,
       "first_call": "2026-11-11T05:10:51Z",
-      "last_call": "2026-11-11T09:07:17Z",
+      "last_call": "2026-11-11T10:09:33Z",
       "source": "accounts/ledger/reporter.jsonl, the latest line of the measured session that began before this session's first push (matched by time: a ledger line carries no session address)"
      },
      "takes_over_from": {
@@ -2794,7 +2816,7 @@
       "context_per_call": {
        "before": 225862,
        "after": 83930,
-       "now": 189985
+       "now": 220210
       }
      }
     }
@@ -2838,20 +2860,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 11,
+   "commits": 12,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtLa54qWjrfAHBvcFJp",
      "url": "https://claude.ai/code/session_018yvwtLa54qWjrfAHBvcFJp",
-     "commits": 11,
+     "commits": 12,
      "first_commit": {
       "sha": "cae2457f8e696b1d3931cc3c1d40310690ad3959",
       "at": "2026-11-11T02:26:28Z"
      },
      "last_commit": {
-      "sha": "01ff4dd36bc9d3663cf6462c3d5c85c6396894b0",
-      "at": "2026-11-11T09:07:06Z"
+      "sha": "123e9dce92ca7011bb924413b6189e3bfeee1552",
+      "at": "2026-11-11T10:07:11Z"
      },
      "started_at": "not recorded",
      "started_by": "incident.conductor@web-summit.dinis",
@@ -2861,17 +2883,17 @@
      "source": "data/agents/starts.json: incident.conductor@'s statements to incident.observability@ (session messages, 11 November 2026, 02:20 and 03:16 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:20 UTC",
      "n": 1,
      "measured": {
-      "at": "2026-11-11T09:07:06Z",
-      "calls": 75,
+      "at": "2026-11-11T10:06:59Z",
+      "calls": 79,
       "context_per_call": {
        "first": 85041,
-       "median": 238926,
-       "largest": 291882,
-       "last": 291882
+       "median": 241235,
+       "largest": 297257,
+       "last": 297257
       },
       "compactions": 0,
       "first_call": "2026-11-11T02:16:44Z",
-      "last_call": "2026-11-11T09:07:00Z",
+      "last_call": "2026-11-11T10:06:53Z",
       "source": "accounts/ledger/shadow.jsonl, the latest line of the measured session that began before this session's first push (matched by time: a ledger line carries no session address)"
      }
     }
@@ -3270,6 +3292,49 @@
    ]
   },
   {
+   "agent": "incident.storyteller@web-summit.dinis",
+   "role": "storyteller",
+   "team": true,
+   "page": "not recorded",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-storyteller-dinis",
+     "record": "sha256:01efced5750df04a",
+     "encryption": "sha256:04179652db3e2fa9",
+     "added": "2026-11-11",
+     "status": "active",
+     "how": "Made in its own session on 11 November 2026, 10:12 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 1,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtPTkeEj8DoVNyaeniF",
+     "url": "https://claude.ai/code/session_018yvwtPTkeEj8DoVNyaeniF",
+     "commits": 1,
+     "first_commit": {
+      "sha": "edc481e02d6e228c63c1c5018c3919a3b9f1a9b8",
+      "at": "2026-11-11T10:13:14Z"
+     },
+     "last_commit": {
+      "sha": "edc481e02d6e228c63c1c5018c3919a3b9f1a9b8",
+      "at": "2026-11-11T10:13:14Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "brief_section": "not recorded",
+     "source": "not recorded",
+     "n": 1,
+     "measured": "not recorded"
+    }
+   ]
+  },
+  {
    "agent": "incident.studio@web-summit.dinis",
    "role": "studio",
    "team": true,
@@ -3398,20 +3463,20 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 3,
+   "commits": 4,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtMQ4bQecYYREzUqLN6",
      "url": "https://claude.ai/code/session_018yvwtMQ4bQecYYREzUqLN6",
-     "commits": 3,
+     "commits": 4,
      "first_commit": {
       "sha": "76ccd12c4482cfafefb8e1bdfd9e9da0438f9d09",
       "at": "2026-11-11T09:53:46Z"
      },
      "last_commit": {
-      "sha": "f93e8c7f7de35db73405a6fe69ec54e288a9b6f9",
-      "at": "2026-11-11T10:03:08Z"
+      "sha": "5b489d1b1b105adfc704e778a21a4e3a11075c14",
+      "at": "2026-11-11T10:09:59Z"
      },
      "started_at": "not recorded",
      "started_by": "not recorded",
@@ -3817,5 +3882,5 @@
    ]
   }
  ],
- "updated": "2026-11-11T10:05:23Z"
+ "updated": "2026-11-11T10:15:28Z"
 }
