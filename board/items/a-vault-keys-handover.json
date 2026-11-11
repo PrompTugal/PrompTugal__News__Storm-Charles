@@ -1,10 +1,10 @@
 {
   "id": "a-vault-keys-handover",
   "kind": "ask",
-  "title": "Four vault keys exist only inside three agents' sessions",
+  "title": "Two vault write keys are still held only in incident.archivist@'s session",
   "state": "open",
   "opened_utc": "2026-11-11T02:25:22Z",
-  "updated_utc": "2026-11-11T09:34:44Z",
+  "updated_utc": "2026-11-11T10:34:52Z",
   "owner": "incident.conductor@web-summit.dinis",
   "raised_by": [
     "incident.archivist@web-summit.dinis",
@@ -13,7 +13,7 @@
     "incident.accountant@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "incident.archivist@ (two vaults: the captures and the display vault) and incident.sources@ (one data vault) made their vaults, but each session's permission check refused the command that reads the key back, so no key has been sent to the conductor as RESTRUCTURE.md requires. The keys exist only in those session containers. incident.models@ reports the same for the vault that holds the raw model calls. Say how they should be handed over (allow that one read in those sessions, or another way you choose). Never in chat, never in a tracked file. incident.accountant@ adds the cost of waiting: the sessions of ipma, archivist, sources and models pay 362,000 to 387,000 tokens a call until it is settled how a vault key reaches a fresh session (the conductor holds this).",
+  "summary": "As incident.archivist@ says it at this read: the two vault write keys (the display vault and the captures vault) are still held only in its session. Three attempts to hand them over were refused by that session's permission check (reading the key back; sealing it with tools/lane-handover.mjs, twice), the last after Dinis's 'Yes please continue' at about 09:35. The conductor's lane for keys is open; what is missing is a permission rule in that session for that one command, or Dinis running it himself. Nothing was ever sent or sealed. incident.sources@ no longer lists its ask about its own vault's key. incident.accountant@ adds the cost of waiting: sessions that cannot be replaced until their key has moved pay 362,000 to 387,000 tokens a call.",
   "closes": "The conductor confirms it holds a copy of each of the three keys (by id only), and both agents' status files say so.",
   "blocks": "If either session's container is reclaimed, nobody can write to its vault again: the captures of every external page and a data set would have to be started over. The conductor holds no copy of any key.",
   "rank": 7,
@@ -30,25 +30,18 @@
   ],
   "sources": [
     {
-      "file": "agents/archivist/status.json",
-      "field": "asks",
-      "sha": "5b4031a8ba4f",
-      "starts": "Dinis (through incident.conductor@): the two vault write keys are held",
-      "full": "Dinis (through incident.conductor@): the two vault write keys are held only in this session. The permission check refused reading them back, so they were never sent, in the clear or sealed. Until Dinis decides the route, only this session can write to either vault; every capture's sha256 and time is in git, so the record survives even if the vaults had to be re-made."
-    },
-    {
-      "file": "agents/sources/status.json",
-      "field": "asks",
-      "sha": "15e39866de23",
-      "starts": "Dinis: the key of vault op6i3jfq is held only in (session). This sessi",
-      "full": "Dinis: the key of vault op6i3jfq is held only in (session). This session's permission check refused both reading the key from the creation log and piping `sgit vault show-key` into tools/lane-handover.mjs seal (the sealed handover of SECURITY.md section e); neither was worked around. To hand it to the conductor and publish a read key, a permission rule for that one command is needed, or the conductor makes the vault and this agent writes to it."
-    },
-    {
       "file": "agents/accountant/status.json",
       "field": "asks",
       "sha": "d2d729616d41",
       "starts": "Dinis: how a vault key reaches a fresh session (the conductor holds th",
       "full": "Dinis: how a vault key reaches a fresh session (the conductor holds this): ipma, archivist, sources and models pay 362,000 to 387,000 tokens a call until it is settled"
+    },
+    {
+      "file": "agents/archivist/status.json",
+      "field": "asks",
+      "sha": "f3de6f9839e1",
+      "starts": "Dinis: the two vault write keys (display f86qsbla, captures worixdil) ",
+      "full": "Dinis: the two vault write keys (display f86qsbla, captures worixdil) are still held only in this session. Three attempts to hand them over were refused by this session's permission check (reading the key back; sealing it with tools/lane-handover.mjs, twice), the last after his 'Yes please continue' at about 09:35. The conductor's lane for keys is open; what is missing is a permission rule in this session for that one command, or Dinis running it himself. Nothing was ever sent or sealed."
     }
   ],
   "history": [
@@ -86,10 +79,20 @@
       "at": "2026-11-11T09:34:44Z",
       "by": "incident.board@web-summit.dinis",
       "change": "answered in part by Dinis's words of about 09:30 UTC (BRIEF.md, the conductor's commit 84158ea): the route is the conductor's append lane; the card stays open while the asking agents' status files still list it"
+    },
+    {
+      "at": "2026-11-11T10:34:31Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "no longer listed in agents/archivist/status.json, agents/sources/status.json; still listed in agents/accountant/status.json"
+    },
+    {
+      "at": "2026-11-11T10:34:52Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "incident.archivist@ reworded its ask (the lane is open; a permission rule for one command, or Dinis runs it): title and summary follow its line; incident.sources@'s line left its status file; Dinis's word of about 09:47 (BRIEF.md: the conductor gives vault keys to fresh sessions) noted"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T09:34:44Z",
+  "updated": "2026-11-11T10:34:52Z",
   "before_launch": true,
   "partly_answered": {
     "text": "The route is answered (Dinis, about 09:30 UTC on 11 November, as written in BRIEF.md): \"The keys and vaults are created by the specific agent and then sent to you via your append lane.\" Each agent makes its own vaults and keys; the conductor's copy travels through the conductor's append lane, not by session message. Still open, as the asking agents say it: their sessions' permission checks refused the command that reads the key back.",
