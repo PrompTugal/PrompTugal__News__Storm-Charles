@@ -4,7 +4,7 @@
 
 ## What you own
 
-`research/social/**`, `app/social/**`, `tools/social-*.mjs`, `agents/social/**` ([agents/policy.json](../policy.json)). Shared lines of yours: one in `admin/build/generators.json` (`tools/social-accounts.mjs`), one key in `data/keys.json` (id `incident-social-dinis`: **a session key, it ended with the session that made it; make your own and add its public half, leave the old entry and mark it `ended`**).
+`research/social/**`, `app/social/**`, `tools/social-*.mjs`, `agents/social/**` ([agents/policy.json](../policy.json)). Shared lines of yours: one in `admin/build/generators.json` (`tools/social-accounts.mjs`), one key in `data/keys.json` (id `incident-social-dinis`: **a session key, it ended with the session that made it; make your own and add its public half, the next session leaves the old entry and marks it `handed over`; done at 05:45 by the second session, id `incident-social-dinis-2`**).
 
 ## The rule that does not bend (CLAUDE.md, People)
 
