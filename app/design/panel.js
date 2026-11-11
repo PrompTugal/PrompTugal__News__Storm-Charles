@@ -95,3 +95,10 @@
     if (document.getElementById('pn-source').open) source()
     if (document.getElementById('pn-version').open) version()
 })()
+// the menu rows: mark a row scrolled to its end (or not scrollable) so its edge fade drops (family.css, round 59)
+;(function () {
+    const rows = document.querySelectorAll('header nav.sites, header nav.top')
+    const mark = el => el.classList.toggle('at-end', el.scrollLeft + el.clientWidth >= el.scrollWidth - 4)
+    rows.forEach(el => { mark(el); el.addEventListener('scroll', () => mark(el), { passive: true }) })
+    addEventListener('resize', () => rows.forEach(mark), { passive: true })
+})()

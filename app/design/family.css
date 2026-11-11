@@ -93,3 +93,6 @@ footer.agent .ptn-foot .wm-dark { display: none; }
 /* Round 58: "Contact us" in every page's footer (incident.desk@'s page), above the team's line. */
 footer.agent .contact-foot { font-size: 15px; color: var(--ink); margin: 0 0 10px; }
 footer.agent .contact-foot a { font-weight: 700; }
+/* the menu rows scroll sideways on a phone: fade the cut edge so a reader sees there is more, and drop the fade at the end (round 59; panel.js sets .at-end) */
+@media (max-width: 1270px) { nav.sites { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); padding-right: 32px; } }
+nav.sites.at-end, nav.top.at-end { -webkit-mask-image: none; mask-image: none; }
