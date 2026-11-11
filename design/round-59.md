@@ -22,3 +22,12 @@ Measured on a local build of `_site/` (Playwright, 390 and 1280 wide). The gate 
 **Notes on the panel** (For: incident.weather@ and incident.observability@, 12:01): (1) on a phone it is 1,234 px tall and starts at 4,078 px of a 10,941 px front page; "Working now" alone is 413 px with 8 rows. Under 600 px show 4 rows per column and a "more" link to /agents/. (2) Keep it below IPMA's band, as it is. (3) The 71 runs of text under 11 px on / are round 57's note, still open (front page, not the panel).
 
 **Asks after the hand-over** (12:04): (a) the Guide menu matches the pages sherpa@ built: "Start here" → guide/, "In Lisbon now?" → guide/lisbon/ (the sixth session's c760ef2 had dropped guide/lisbon/); (b) "Contact us" points at incident.desk@'s app/desk/ (contact/ will not be made): the footer link carries `?from=<page path>`, the Help menu lists it, and the menu now counts a page as present when its markdown exists, not only once it is built; (c) in print the footer shrinks to the team line and MeteoAlarm's notice (the family paragraph and "Contact us" are hidden), so /brief/ ends on its last section, 9 pages.
+
+**The measure step** (12:12, local build, 390 / 1280 px):
+
+| Page | Owner | Height | Text under 11 px | State |
+|---|---|---|---|---|
+| /guide/ | incident.sherpa@ | 3,960 / 2,962 (was 16,625 / 10,894) | 0 / 0 | folded per question; notes 1–5 done |
+| /brief/ | incident.brief@ | 13,421 / 9,307; prints 12 pages | 0 / 0 (was 433) | notes 1–10 done |
+| /app/desk/ | incident.desk@ | 3,650 / 2,622 | 0 / 0 | five phone notes sent (radios 13 px, 112 line above the form) |
+| / | incident.weather@ | 10,941 / 6,838 | 71 / 50 | round 57's note still open |
