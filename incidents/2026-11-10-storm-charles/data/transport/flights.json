@@ -1,0 +1,272 @@
+{
+ "about": "Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network's public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations and diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.",
+ "by": "incident.transport@web-summit.dinis",
+ "updated": "2026-11-11T10:35:42Z",
+ "not_a_warning_service": "Not a warning service. No advice of ours: check with your airline or operator. For warnings follow IPMA and ANEPC.",
+ "sources_page": "transport/sources.md",
+ "attribution": "The OpenSky Network, https://opensky-network.org (M. Schäfer, M. Strohmeier, V. Lenders, I. Martinovic, M. Wilhelm, \"Bringing Up OpenSky: A Large-scale ADS-B Sensor Network for Research\", IPSN 2014)",
+ "airports": [
+  {
+   "icao": "LPPT",
+   "iata": "LIS",
+   "name": "Lisbon (Humberto Delgado)",
+   "departures_today": {
+    "label": "fact",
+    "what": "airline departures OpenSky's receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)",
+    "count": 29,
+    "by_hour_utc": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     6,
+     13,
+     8
+    ],
+    "by_airline": [
+     {
+      "airline": "TAP Air Portugal",
+      "n": 19
+     },
+     {
+      "airline": "Ryanair",
+      "n": 3
+     },
+     {
+      "airline": "Delta",
+      "n": 1
+     },
+     {
+      "airline": "Azul",
+      "n": 1
+     },
+     {
+      "airline": "Wizz Air Malta",
+      "n": 1
+     },
+     {
+      "airline": "Luxair",
+      "n": 1
+     },
+     {
+      "airline": "Vueling",
+      "n": 1
+     },
+     {
+      "airline": "Etihad",
+      "n": 1
+     },
+     {
+      "airline": "Turkish Airlines",
+      "n": 1
+     }
+    ],
+    "other_operators_not_counted": 1,
+    "source": "https://opensky-network.org/api/flights/departure?airport=LPPT",
+    "read": "2026-11-11T10:35:18Z",
+    "sha256": "aee15122472f795afd14296e588bfc5449ec803918685afdb3661ee5a10b4ff7"
+   },
+   "arrivals_today": {
+    "label": "none",
+    "note": "OpenSky updates arrivals by a batch process at night; anonymous readers cannot see past days. Not available today."
+   },
+   "live_snapshot": {
+    "label": "fact",
+    "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
+    "at": "2026-11-11T10:35:20Z",
+    "on_ground": 5,
+    "airborne_low": 2,
+    "other_operators_not_counted": 0,
+    "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
+    "read": "2026-11-11T10:35:21Z",
+    "sha256": "a1f4439daa1bfd702b044edc1e0f3a03c7532a3a5393d7e2e9a9df7a3fd4e0ad"
+   },
+   "baseline": {
+    "label": "none",
+    "note": "No normal-day baseline yet: OpenSky gives past days only to registered users (listed for the conductor). From tomorrow this file can compare with our own readings of earlier days."
+   },
+   "coverage_caveat": {
+    "label": "hypothesis",
+    "text": "OpenSky depends on volunteers' receivers. Coverage is thinner at Faro and Funchal than at Lisbon and Porto, so a low or zero count may mean flights were not seen, not that none flew. A count is a floor, not a total."
+   }
+  },
+  {
+   "icao": "LPPR",
+   "iata": "OPO",
+   "name": "Porto (Francisco Sá Carneiro)",
+   "departures_today": {
+    "label": "fact",
+    "what": "airline departures OpenSky's receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)",
+    "count": 7,
+    "by_hour_utc": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     3,
+     2
+    ],
+    "by_airline": [
+     {
+      "airline": "Ryanair",
+      "n": 2
+     },
+     {
+      "airline": "easyJet Europe",
+      "n": 2
+     },
+     {
+      "airline": "Luxair",
+      "n": 1
+     },
+     {
+      "airline": "Eurowings",
+      "n": 1
+     },
+     {
+      "airline": "Transavia France",
+      "n": 1
+     }
+    ],
+    "other_operators_not_counted": 0,
+    "source": "https://opensky-network.org/api/flights/departure?airport=LPPR",
+    "read": "2026-11-11T10:35:23Z",
+    "sha256": "1ce468c3c03edb41b6cfa1335db58d28b921b05bd7b1411e18645fa776e7cc61"
+   },
+   "arrivals_today": {
+    "label": "none",
+    "note": "OpenSky updates arrivals by a batch process at night; anonymous readers cannot see past days. Not available today."
+   },
+   "live_snapshot": {
+    "label": "fact",
+    "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
+    "at": "2026-11-11T10:35:18Z",
+    "on_ground": 3,
+    "airborne_low": 1,
+    "other_operators_not_counted": 0,
+    "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
+    "read": "2026-11-11T10:35:25Z",
+    "sha256": "909de10f5b7153b1bffd54142b4b50de9103ec4efcf2cc6616b738e8a6ed8282"
+   },
+   "baseline": {
+    "label": "none",
+    "note": "No normal-day baseline yet: OpenSky gives past days only to registered users (listed for the conductor). From tomorrow this file can compare with our own readings of earlier days."
+   },
+   "coverage_caveat": {
+    "label": "hypothesis",
+    "text": "OpenSky depends on volunteers' receivers. Coverage is thinner at Faro and Funchal than at Lisbon and Porto, so a low or zero count may mean flights were not seen, not that none flew. A count is a floor, not a total."
+   }
+  },
+  {
+   "icao": "LPFR",
+   "iata": "FAO",
+   "name": "Faro",
+   "departures_today": {
+    "label": "fact",
+    "what": "airline departures OpenSky's receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)",
+    "count": 0,
+    "by_hour_utc": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "by_airline": [],
+    "other_operators_not_counted": 1,
+    "source": "https://opensky-network.org/api/flights/departure?airport=LPFR",
+    "read": "2026-11-11T10:35:27Z",
+    "sha256": "a0e491083c5f6dc22f6f1d23d5399c191ad186dd632203227235e6808f246da5"
+   },
+   "arrivals_today": {
+    "label": "none",
+    "note": "OpenSky updates arrivals by a batch process at night; anonymous readers cannot see past days. Not available today."
+   },
+   "live_snapshot": {
+    "label": "fact",
+    "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
+    "at": "2026-11-11T10:35:20Z",
+    "on_ground": 0,
+    "airborne_low": 0,
+    "other_operators_not_counted": 0,
+    "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
+    "read": "2026-11-11T10:35:29Z",
+    "sha256": "feb71a898118ecf692011b96e644a7dc23c6f90c9f3dae8ff8ba7eaaec59c79a"
+   },
+   "baseline": {
+    "label": "none",
+    "note": "No normal-day baseline yet: OpenSky gives past days only to registered users (listed for the conductor). From tomorrow this file can compare with our own readings of earlier days."
+   },
+   "coverage_caveat": {
+    "label": "hypothesis",
+    "text": "OpenSky depends on volunteers' receivers. Coverage is thinner at Faro and Funchal than at Lisbon and Porto, so a low or zero count may mean flights were not seen, not that none flew. A count is a floor, not a total."
+   }
+  },
+  {
+   "icao": "LPMA",
+   "iata": "FNC",
+   "name": "Funchal (Madeira, Cristiano Ronaldo)",
+   "departures_today": {
+    "label": "fact",
+    "what": "airline departures OpenSky's receivers detected leaving this airport since 00:00 UTC today, by the hour of first detection (UTC)",
+    "count": 0,
+    "by_hour_utc": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "by_airline": [],
+    "other_operators_not_counted": 0,
+    "source": "https://opensky-network.org/api/flights/departure?airport=LPMA",
+    "read": "2026-11-11T10:35:31Z",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+   },
+   "arrivals_today": {
+    "label": "none",
+    "note": "OpenSky updates arrivals by a batch process at night; anonymous readers cannot see past days. Not available today."
+   },
+   "live_snapshot": {
+    "label": "fact",
+    "what": "airline aircraft OpenSky saw within about 25 km of the airport at the time read: on the ground, and airborne below 3,000 m",
+    "at": "2026-11-11T10:35:28Z",
+    "on_ground": 0,
+    "airborne_low": 0,
+    "other_operators_not_counted": 0,
+    "source": "https://opensky-network.org/api/states/all (bounding box around the airport)",
+    "read": "2026-11-11T10:35:33Z",
+    "sha256": "1d54aa5ec83a62b7421da49f3a908f8bb708606aa09372e8b1e24070613da213"
+   },
+   "baseline": {
+    "label": "none",
+    "note": "No normal-day baseline yet: OpenSky gives past days only to registered users (listed for the conductor). From tomorrow this file can compare with our own readings of earlier days."
+   },
+   "coverage_caveat": {
+    "label": "hypothesis",
+    "text": "OpenSky depends on volunteers' receivers. Coverage is thinner at Faro and Funchal than at Lisbon and Porto, so a low or zero count may mean flights were not seen, not that none flew. A count is a floor, not a total."
+   }
+  }
+ ]
+}
