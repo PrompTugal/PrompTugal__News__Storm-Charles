@@ -14,11 +14,12 @@
     madeira: api + 'weather/madeira.json', changes: api + 'weather/changes.json', analysis: api + 'weather/analysis.json', decisions: api + 'decisions/graph.json'
   }
   // where a reader lands for each file: the data room's own copy (one place to change when the data room's file viewer is live)
-  var view = base + 'view/incidents/' + inc + '/'
+  // the data room's file viewer: one page, view/?path=<path>, and &at=<field>/<index>/<field> opens one value inside a JSON file
+  var view = function (file, at) { return base + 'view/?path=' + encodeURIComponent('incidents/' + inc + '/' + file).replace(/%2F/g, '/') + (at ? '&at=' + at : '') }
   var ROOM = {
-    incident: view + 'incident.json.html', signals: room + 'timeline.html', warn: view + 'data/weather/warnings.json.html', rain: view + 'data/weather/lisbon-rain.json.html',
-    stations: view + 'data/weather/stations.json.html', forecast: view + 'data/weather/forecast.json.html', airport: view + 'data/weather/airport.json.html',
-    madeira: view + 'data/weather/madeira.json.html', changes: view + 'data/weather/changes.json.html', analysis: room + 'data/weather/analysis.html', decisions: view + 'data/decisions/graph.json.html'
+    incident: view('incident.json', 'headline'), signals: room + 'timeline.html', warn: view('data/weather/warnings.json', 'lisbon'), rain: view('data/weather/lisbon-rain.json', 'stations'),
+    stations: view('data/weather/stations.json', 'stations'), forecast: view('data/weather/forecast.json', 'hourly'), airport: view('data/weather/airport.json', 'metars'),
+    madeira: view('data/weather/madeira.json', 'stations'), changes: view('data/weather/changes.json', 'thursday'), analysis: room + 'data/weather/analysis.html', decisions: view('data/decisions/graph.json')
   }
   var qNow = new URLSearchParams(location.search).get('now')   // ?now=2026-11-11T13:00Z shows the page as at that time (a check, not a forecast)
   var now = function () { var t = qNow ? Date.parse(qNow) : NaN; return isNaN(t) ? Date.now() : t }
@@ -343,7 +344,7 @@
     var item = function (e) {
       var n = nodes[e.by], who = String(n.name).replace(/\s*\(.*$/, ''), hrs = ok(e.effect_from_utc) ? (ok(e.effect_to_utc) ? when(e.effect_from_utc, t) + ' to ' + when(e.effect_to_utc, t) : 'from ' + when(e.effect_from_utc, t)) : ''
       var txt = String(e.decision); if (txt.length > 170) txt = txt.slice(0, 168).replace(/\s+\S*$/, '') + '…'
-      return '<li id="d-' + esc(e.id) + '"><p><b>' + esc(who) + '</b> ' + lbl(e.label) + (hrs ? ' <span class="wxc-st">' + hrs + '</span>' : '') + '</p><p>' + esc(txt) + '</p><p class="prov">' + (/T\d\d:\d\d/.test(e.at || '') ? 'decided ' + when(e.at, t) + ' UTC · ' : '') + 'read ' + (ok(e.read) ? when(e.read, t) + ' UTC' : 'time not recorded') + ' · <a href="' + esc(ROOM.decisions) + '">in the data room</a> (' + esc(e.id) + ')</p></li>'
+      return '<li id="d-' + esc(e.id) + '"><p><b>' + esc(who) + '</b> ' + lbl(e.label) + (hrs ? ' <span class="wxc-st">' + hrs + '</span>' : '') + '</p><p>' + esc(txt) + '</p><p class="prov">' + (/T\d\d:\d\d/.test(e.at || '') ? 'decided ' + when(e.at, t) + ' UTC · ' : '') + 'read ' + (ok(e.read) ? when(e.read, t) + ' UTC' : 'time not recorded') + ' · <a href="' + esc(view('data/decisions/graph.json', 'edges/' + (G.edges || []).indexOf(e))) + '">in the data room</a> (' + esc(e.id) + ')</p></li>'
     }
     var col = function (title, sub, list, cls) { return list.length ? '<div class="wxc-col ' + cls + '"><h3>' + title + ' <span class="meta">' + list.length + '</span></h3><p class="meta">' + sub + '</p><ul class="wxc-list">' + list.map(item).join('') + '</ul></div>' : '' }
     return '<section class="wxc-sec" aria-labelledby="wxc-h-closed"><h2 id="wxc-h-closed">What is closed and what runs <span class="meta">Lisbon and the mainland, as each body announced</span></h2><p class="meta wxc-rec">Each entry is the data room\'s record of what the body announced, with the time it was read. It is not a live service status and not our view.</p><div class="wxc-cols">' +
