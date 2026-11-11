@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), DIR = path.join(ROOT, 'research/social')
 const J = f => JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8'))
 const acc = J('accounts.json'), ix = J('posts.json'), conv = J('conversation.json'), links = J('links.json').links, offers = J('offers.json').offers
+const masto = J('mastodon.json')
 const INC = 'incidents/2026-11-10-storm-charles', sig = JSON.parse(fs.readFileSync(path.join(ROOT, INC, 'data/signals.json'), 'utf8')).items
 const posts = ix.days.flatMap(d => J(d.file).posts), byId = Object.fromEntries(posts.map(p => [p.id, p])), rows = Object.fromEntries(sig.map(r => [r.id, r]))
 const A = Object.fromEntries(acc.accounts.map(a => [a.handle, a]))
@@ -41,12 +42,12 @@ const storm = posts.filter(p => p.about_storm)
 const data = `<div id="social" data-base="./" data-signals="../../${INC}/data/signals.json" data-timeline="../../${INC}/timeline.html"><p class="meta">The time axis, the cards and the counts are drawn here from <a href="posts.json">posts.json</a>, <a href="accounts.json">accounts.json</a>, <a href="conversation.json">conversation.json</a> and the timeline's <a href="../../${INC}/data/signals.json">signals.json</a>. Without JavaScript, read the tables below or those files.</p></div>`
 
 const md = `---
-title: Bluesky and Storm Charles
+title: Social platforms and Storm Charles: Bluesky, Mastodon
 summary: What official bodies, organisations and news outlets posted on Bluesky about Storm Charles, on one time axis against the timeline; the public conversation as counts only; what the official accounts did not post.
 mount: ${data}
 head: <link rel="stylesheet" href="../../app/social/social.css"><script src="../../app/social/social.js" defer></script>
 ---
-# Bluesky and Storm Charles
+# Social platforms and Storm Charles: Bluesky first
 
 > Kept by incident.social@web-summit.dinis, ${+now.slice(8, 10)} November 2026, ${now.slice(11, 16)} UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~02:10 UTC): "on Bluesky, this is really cool, I like that we can capture that and actually get data. So let's create a whole Bluesky bit". Last read of the accounts: ${hm(lastRead)} UTC.
 
@@ -89,6 +90,24 @@ Posts by anyone that match a search, since 8 November: how many, from how many a
 |---|---|---|---|---|---|
 ${convRows.join('\n')}
 
+## Mastodon
+
+Read the same way ([mastodon.json](mastodon.json), read ${hm(masto.updated)} UTC; the reader: [tools/social-mastodon.mjs](../../tools/social-mastodon.mjs)). **No body that decides or warns here has an account we could find**, and neither has Web Summit: ${masto.not_found.who.join(', ')}. The organisations' accounts that exist are dormant or unverified:
+
+| Account | Who | What shows it is theirs | Posts in all | Last post (day) |
+|---|---|---|---|---|
+${masto.accounts.map(a => `| \`${a.acct}@${a.server}\` | ${a.who} | ${a.verified_links?.length ? 'verified link: ' + a.verified_links.join(', ') : 'nothing verified'} | ${a.posts_total ?? '?'} | ${a.last_post_day || 'never'} |`).join('\n')}
+
+So there is nothing official to put on the time axis from Mastodon. The public conversation under the storm's tags, as counts only (each server sees only what reached it):
+
+| Server | Tag | Posts since 8 Nov | Distinct accounts | Of them automated | Languages |
+|---|---|---|---|---|---|
+${masto.tags.map(t => `| ${t.server} | ${t.tag} | ${t.posts} | ${t.distinct_accounts} | ${t.automated} | ${Object.entries(t.languages).map(([l, n]) => `${l === 'und' ? 'none declared' : l} ${n}`).join(', ')} |`).join('\n')}
+
+## X
+
+Not readable without logging in: the organisers' and the authorities' profiles answer with an empty page to a client that is not logged in (incident.researcher@'s read, \`data/decisions/sources.json\`, \`platforms_without_login\`). We do not log in and we keep nothing from it. If a body's post on X matters, it is cited from where the body or the press quotes it.
+
 ## The accounts read
 
 Each with the reason it counts as official or public-role, and who decided: [accounts.json](accounts.json). "Kept" is what we store: every post for the organisers, the posts about the storm for the others (matched by words: a few are about other weather, and say so by their text).
@@ -128,7 +147,6 @@ Left out, for the conductor to decide (nothing of theirs is stored): ${acc.left_
 - A post's time is the one it gives for itself; Bluesky's own indexing time is kept beside it (\`indexed_utc\`).
 - "About the storm" is a match on words. It can miss a post and keep a stray one.
 - Reuters' feed is longer than the six pages we read: its count since 8 November is a floor.
-- Mastodon's official accounts and X (only what reads without a login) are next; not here yet.
 
 A wrong account, a wrong time, an account that should be on the list or off it: [contribute](../../contribute.md).
 `

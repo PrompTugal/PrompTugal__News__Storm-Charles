@@ -157,7 +157,7 @@ writeJ(path.join(DIR, 'posts.json'), {
 
 // ---- 2. the public conversation: counted, never kept
 if (DO_CNT) {
-    const QUERIES = ['"depressão Charles"', '"tempestade Charles"', '"Storm Charles"', '"borrasca Charles"', '"tempête Charles"', '#FMA_Charles', '"Web Summit" Charles', '"Web Summit" cancelled', '"Web Summit" cancelada']
+    const QUERIES = ['"depressão Charles"', '"tempestade Charles"', '"Storm Charles"', '"borrasca Charles"', '"tempête Charles"', 'FMA_Charles', '"Web Summit" Charles', '"Web Summit" cancelled', '"Web Summit" cancelada']
     const prev = readJ(path.join(DIR, 'conversation.json'), { queries: [] })
     const out = []
     for (const q of QUERIES) {

@@ -1,0 +1,288 @@
+{
+ "about": "Mastodon and Storm Charles. `accounts`: the organisations' accounts we found by name, each with what shows (or does not show) that it is the organisation's, and when it last posted. `tags`: the public conversation under each tag as COUNTS only (per UTC hour, per declared language, how many distinct accounts): no post, text, handle or address of a private person is kept. Each server sees only the posts that reached it: a tag's count on one server is not the whole network.",
+ "by": "incident.social@web-summit.dinis",
+ "updated": "2026-11-11T03:28:50Z",
+ "since": "2026-11-08T00:00:00Z",
+ "label": "evidence",
+ "api": [
+  "https://<server>/api/v1/accounts/lookup?acct=<name>",
+  "https://<server>/api/v1/timelines/tag/<tag>?limit=40 (and the next page its Link header gives)"
+ ],
+ "not_found": {
+  "about": "Looked for by name on mastodon.social and masto.pt (api/v2/search, accounts): no account for these. Absent from a search is not proof of absence.",
+  "read_utc": "2026-11-11T03:28:50Z",
+  "who": [
+   "IPMA",
+   "ANEPC (civil protection)",
+   "Web Summit",
+   "the Câmara de Lisboa",
+   "VOST Portugal",
+   "AEMET",
+   "Met Office",
+   "Météo-France",
+   "Copernicus",
+   "MeteoAlarm",
+   "Euronews"
+  ]
+ },
+ "left_out": [
+  {
+   "what": "an automated account relaying EUMETSAT, on a science server",
+   "why_left_out": "says itself that it is unofficial"
+  }
+ ],
+ "accounts": [
+  {
+   "platform": "mastodon",
+   "server": "mastodon.social",
+   "acct": "eumetsat",
+   "who": "EUMETSAT (as the account names itself)",
+   "kind": "intergovernmental body",
+   "why": "names itself EUMETSAT; no verified link to eumetsat.int on the profile: unverified",
+   "url": "https://mastodon.social/@eumetsat",
+   "status": 200,
+   "read_utc": "2026-11-11T03:27:50Z",
+   "label": "evidence",
+   "posts_total": 48,
+   "last_post_day": "2026-11-09",
+   "verified_links": [],
+   "automated": false,
+   "posted_since_8_nov": true
+  },
+  {
+   "platform": "mastodon",
+   "server": "fediscience.org",
+   "acct": "ECMWF",
+   "who": "ECMWF (as the account names itself)",
+   "kind": "intergovernmental body",
+   "why": "on a science server; no verified link read",
+   "url": "https://fediscience.org/@ECMWF",
+   "status": 200,
+   "read_utc": "2026-11-11T03:27:53Z",
+   "label": "evidence",
+   "posts_total": 6,
+   "last_post_day": "2024-02-06",
+   "verified_links": [],
+   "automated": false,
+   "posted_since_8_nov": false
+  },
+  {
+   "platform": "mastodon",
+   "server": "masto.pt",
+   "acct": "Publico",
+   "who": "Público (as the account names itself)",
+   "kind": "press",
+   "why": "on masto.pt; no verified link read",
+   "url": "https://masto.pt/@Publico",
+   "status": 200,
+   "read_utc": "2026-11-11T03:27:57Z",
+   "label": "evidence",
+   "posts_total": 41,
+   "last_post_day": "2022-12-29",
+   "verified_links": [],
+   "automated": false,
+   "posted_since_8_nov": false
+  },
+  {
+   "platform": "mastodon",
+   "server": "masto.pt",
+   "acct": "Lusa",
+   "who": "Lusa (as the account names itself)",
+   "kind": "press (wire)",
+   "why": "on masto.pt; no verified link read",
+   "url": "https://masto.pt/@Lusa",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:00Z",
+   "label": "evidence",
+   "posts_total": 8,
+   "last_post_day": "2022-12-22",
+   "verified_links": [],
+   "automated": false,
+   "posted_since_8_nov": false
+  }
+ ],
+ "tags": [
+  {
+   "server": "mastodon.social",
+   "tag": "#stormcharles",
+   "url": "https://mastodon.social/tags/stormcharles",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:07Z",
+   "posts": 7,
+   "distinct_accounts": 7,
+   "automated": 0,
+   "languages": {
+    "en": 3,
+    "nl": 3,
+    "pt": 1
+   },
+   "per_hour": {
+    "2026-11-10T09:00Z": 1,
+    "2026-11-10T10:00Z": 1,
+    "2026-11-10T15:00Z": 1,
+    "2026-11-10T16:00Z": 1,
+    "2026-11-10T20:00Z": 3
+   }
+  },
+  {
+   "server": "mastodon.social",
+   "tag": "#tempestadecharles",
+   "url": "https://mastodon.social/tags/tempestadecharles",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:13Z",
+   "posts": 4,
+   "distinct_accounts": 3,
+   "automated": 0,
+   "languages": {
+    "pt": 4
+   },
+   "per_hour": {
+    "2026-11-10T09:00Z": 2,
+    "2026-11-10T10:00Z": 1,
+    "2026-11-10T22:00Z": 1
+   }
+  },
+  {
+   "server": "mastodon.social",
+   "tag": "#depressaocharles",
+   "url": "https://mastodon.social/tags/depressaocharles",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:20Z",
+   "posts": 4,
+   "distinct_accounts": 3,
+   "automated": 0,
+   "languages": {
+    "pt": 3,
+    "en": 1
+   },
+   "per_hour": {
+    "2026-11-10T15:00Z": 1,
+    "2026-11-10T20:00Z": 2,
+    "2026-11-10T22:00Z": 1
+   }
+  },
+  {
+   "server": "mastodon.social",
+   "tag": "#borrascacharles",
+   "url": "https://mastodon.social/tags/borrascacharles",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:26Z",
+   "posts": 10,
+   "distinct_accounts": 4,
+   "automated": 2,
+   "languages": {
+    "es": 9,
+    "en": 1
+   },
+   "per_hour": {
+    "2026-11-10T07:00Z": 1,
+    "2026-11-10T11:00Z": 2,
+    "2026-11-10T18:00Z": 1,
+    "2026-11-10T20:00Z": 3,
+    "2026-11-10T21:00Z": 1,
+    "2026-11-10T23:00Z": 2
+   }
+  },
+  {
+   "server": "mastodon.social",
+   "tag": "#websummit",
+   "url": "https://mastodon.social/tags/websummit",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:30Z",
+   "posts": 4,
+   "distinct_accounts": 4,
+   "automated": 0,
+   "languages": {
+    "en": 3,
+    "pt": 1
+   },
+   "per_hour": {
+    "2026-11-10T12:00Z": 1,
+    "2026-11-10T18:00Z": 1,
+    "2026-11-10T20:00Z": 1,
+    "2026-11-10T21:00Z": 1
+   },
+   "note": "a general tag: only posts whose text is about the storm are counted"
+  },
+  {
+   "server": "masto.pt",
+   "tag": "#depressaocharles",
+   "url": "https://masto.pt/tags/depressaocharles",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:37Z",
+   "posts": 4,
+   "distinct_accounts": 3,
+   "automated": 0,
+   "languages": {
+    "pt": 3,
+    "en": 1
+   },
+   "per_hour": {
+    "2026-11-10T15:00Z": 1,
+    "2026-11-10T20:00Z": 2,
+    "2026-11-10T22:00Z": 1
+   }
+  },
+  {
+   "server": "masto.pt",
+   "tag": "#tempestadecharles",
+   "url": "https://masto.pt/tags/tempestadecharles",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:43Z",
+   "posts": 4,
+   "distinct_accounts": 3,
+   "automated": 0,
+   "languages": {
+    "pt": 4
+   },
+   "per_hour": {
+    "2026-11-10T09:00Z": 2,
+    "2026-11-10T10:00Z": 1,
+    "2026-11-10T22:00Z": 1
+   }
+  },
+  {
+   "server": "masto.pt",
+   "tag": "#mautempo",
+   "url": "https://masto.pt/tags/mautempo",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:46Z",
+   "posts": 9,
+   "distinct_accounts": 3,
+   "automated": 0,
+   "languages": {
+    "pt": 9
+   },
+   "per_hour": {
+    "2026-11-10T11:00Z": 1,
+    "2026-11-10T12:00Z": 1,
+    "2026-11-10T13:00Z": 1,
+    "2026-11-10T15:00Z": 1,
+    "2026-11-10T20:00Z": 1,
+    "2026-11-10T21:00Z": 1,
+    "2026-11-10T22:00Z": 2,
+    "2026-11-11T00:00Z": 1
+   },
+   "note": "a general tag: only posts whose text is about the storm are counted"
+  },
+  {
+   "server": "masto.pt",
+   "tag": "#websummit",
+   "url": "https://masto.pt/tags/websummit",
+   "status": 200,
+   "read_utc": "2026-11-11T03:28:50Z",
+   "posts": 2,
+   "distinct_accounts": 2,
+   "automated": 0,
+   "languages": {
+    "en": 1,
+    "pt": 1
+   },
+   "per_hour": {
+    "2026-11-10T12:00Z": 1,
+    "2026-11-10T21:00Z": 1
+   },
+   "note": "a general tag: only posts whose text is about the storm are counted"
+  }
+ ]
+}
