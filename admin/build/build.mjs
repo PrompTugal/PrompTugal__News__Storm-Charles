@@ -540,14 +540,14 @@ const grid = areaList.length ? `<div class="wx-gridwrap"><div class="wx-grid" ro
 <div class="wx-isles">${ISLES.filter(([, as]) => as.some(a => byArea[a])).map(([n, as]) => `<div><h3>${n}</h3><div class="wx-islerow">${as.filter(a => byArea[a] || n === 'Madeira').map(a => cell(a)).join('')}</div></div>`).join('')}<p class="meta">A labelled grid, not a map: roughly north at the top and the coast at the left; no borders, no distances. Each cell: the highest red or orange warning of each type on the day and its hours (yellow is not in this feed). ${prov(els?.source, 'IPMA warnings', els?.read_utc)}</p></div></div>` : ''
 const where = areaList.length ? `<section class="card wx-day wx-where" id="where"><div class="wx-head"><h2>Where: ${esc(dayName)}, district by district</h2><p class="meta">${Object.keys(LANE).map(ty => { const r = redIn(ty); return r.length ? `<b>Red ${esc((EN[ty] || ty).toLowerCase())}</b> in ${r.length}: ${esc(r.join(', '))}.` : '' }).filter(Boolean).join(' ')} Every district IPMA has under red or orange on the day (yellow is not shown here); most red hours first. In each row, top to bottom: wind, rain, sea. ${prov(els?.source, 'IPMA warnings', els?.read_utc)}. Names from <a href="https://api.ipma.pt/open-data/distrits-islands.json">IPMA's list of districts and islands</a>, IPMA's area code beside each; MCN and MRM are not in that list and are named by us.</p></div>
 ${grid}
-<div class="wx-scroll" tabindex="0" role="group" aria-label="Warnings by district: scroll sideways"><div class="wx-strip" data-d0="${D0}">
+<details class="wx-more"><summary>Show hour by hour, district by district (${areaList.length} rows)</summary><div class="wx-scroll" tabindex="0" role="group" aria-label="Warnings by district: scroll sideways"><div class="wx-strip" data-d0="${D0}">
 <div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hours.map((_, h) => `<span>${String(h).padStart(2, '0')}</span>`).join('')}</div></div>
 ${areaList.map(([a, ws]) => {
     const peak = ty => ws.filter(w => w.type === ty).sort((p, q) => RANK[q.level] - RANK[p.level])[0]
     const sub = Object.keys(LANE).map(ty => { const p = peak(ty); return p ? `${(EN[ty] || ty).toLowerCase().replace(' state', '')} ${p.level}` : '' }).filter(Boolean).join(' · ')
     return `<div class="wx-row wx-drow${a === 'LSB' ? ' here' : ''}"><div class="wx-lab"><b>${esc(AREA[a] || a)} <code>${esc(a)}</code></b><i>${esc(sub)}</i></div><div class="wx-track">${ws.map(w => { const l = pct(w.start_utc), r = pct(w.end_utc); return r > l ? `<i class="wx-d w-${esc(w.level)}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%;top:${4 + (LANE[w.type] ?? 3) * 9}px" title="${esc(`${AREA[a] || a}: ${EN[w.type] || w.type}, ${w.level}, ${rng(w.start_utc, w.end_utc)}. ${w.text_pt || ''}`)}"></i>` : '' }).join('')}</div></div>`
 }).join('\n')}
-</div></div></section>` : ''
+</div></div></details></section>` : ''
 
 // our English for IPMA's exact sentences (shown only when the sentence matches exactly; IPMA's Portuguese stays the quote)
 const GLOSS = {
@@ -579,7 +579,7 @@ const gap = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 're
 const gs = gap?.summary, gapHtml = gs && gs.press_pages_counted ? `<section class="card"><h2>What we measured</h2><p class="meta">One read of each page, ${esc(String(gap.about || '').match(/on (\d+ \w+ \d{4}) \(([^)]+)\)/)?.slice(1).join(', ') || dm(gap.updated))}: of <b>${esc(gs.press_pages_counted)}</b> press pages on Storm Charles, <b>${esc(gs.press_pages_with_no_link_to_ipma_or_anepc)}</b> had no link to ipma.pt or prociv.gov.pt; of <b>${esc(gs.assessed)}</b> pages assessed, <b>${esc(gs.by_column?.decisions?.yes ?? '?')}</b> showed the decisions as a list or table. A page may have changed since; it is a count, not a judgement of anyone's journalism. <a href="research/weather-sites/gap.json">gap.json</a> · <a href="research/weather-sites/index.html">the survey</a></p></section>` : ''
 const sky = `<section class="card"><h2>Radar and satellite</h2><p class="meta">Links only: we embed no radar or satellite image (their licences; <a href="research/weather-sites/imagery.json">what we read</a>). <a href="https://www.ipma.pt/pt/otempo/obs.radar/">Radar: IPMA</a> · <a href="https://view.eumetsat.int/">Satellite: EUMETView</a></p></section>`
 const spoken = (an?.updates || []).flatMap(u => u.press_quoting_ipma || []).filter(q => q && Array.isArray(q.quotes_pt) && q.quotes_pt.length && ok(q.read_utc))
-const voice = spoken.map(q => `<figure class="voice"><figcaption><span class="lbl l-voice">said on air</span> <b>${esc(q.who || '')}</b>, ${esc(q.outlet || '')}${ok(q.entry_utc) ? `, ${wd(q.entry_utc)} ${hm(q.entry_utc)}` : ''}. Spoken, as reported by the outlet: <b>not in IPMA's written record</b> (its warnings and communiqués).</figcaption>${q.quotes_pt.map(t => `<blockquote lang="pt">${esc(t)}</blockquote>`).join('')}<p class="prov">${q.url ? `<a href="${esc(q.url)}">${esc(q.outlet || 'source')}</a>` : esc(q.outlet || '')}, read ${hm(q.read_utc)} UTC ${dm(q.read_utc)}${q.note ? `. Our reading: ${esc(q.note)}` : ''}</p></figure>`).join('')
+const voice = spoken.map(q => `<details class="voice"><summary><span class="lbl l-voice">said on air</span> <b>${esc(q.who || '')}</b>, ${esc(q.outlet || '')}${ok(q.entry_utc) ? `, ${wd(q.entry_utc)} ${hm(q.entry_utc)}` : ''}. Spoken, as reported by the outlet: <b>not in IPMA's written record</b> (its warnings and communiqués).</summary>${q.quotes_pt.map(t => `<blockquote lang="pt">${esc(t)}</blockquote>`).join('')}<p class="prov">${q.url ? `<a href="${esc(q.url)}">${esc(q.outlet || 'source')}</a>` : esc(q.outlet || '')}, read ${hm(q.read_utc)} UTC ${dm(q.read_utc)}${q.note ? `. Our reading: ${esc(q.note)}` : ''}</p></details>`).join('')
 const feed = (sig?.items || []).slice().sort((a, b) => T(b.at) - T(a.at)).slice(0, 14).map(s => {
     const src = (s.sources || []).find(x => x.url && /^https:/.test(x.url)), via = (s.sources || []).map(x => x.label).filter(Boolean).join('; ')
     return `<li><a class="when" href="${base}timeline.html${s.id ? '#' + esc(s.id) : ''}" title="This signal in the timeline"><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time></a><div><span class="lbl ${esc(s.kind)} l-${esc(s.label || '')}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via)}</span></div></li>`
@@ -597,14 +597,15 @@ const front = `<section class="banner"><div class="wrap hero"><div class="hero-h
 <div class="hero-w"><section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
 ${lis.some(w => ok(w.sent_utc)) ? `<p class="wx-cap">The times IPMA sent each warning are read from IPMA's messages on <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes (last read ${hm(warn.read_utc)} UTC ${dm(warn.read_utc)}), not a live feed.</p>` : ''}</div></div></section>
 <div class="wrap">
+<nav class="ds-jump wx-jump" aria-label="On this page">${[['#wx-changes', 'Changed'], ['#day', 'The day, hour by hour'], ['#lisbon-rain', 'Lisbon: warned and fallen'], ['#wind', 'Wind'], ['#madeira', 'Madeira'], ['#thursday', esc(nextName.split(' ')[0])], ['#signals', 'Signals'], ['#where', 'Where']].map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}</nav>
 ${changed}
-${madeira}
-${lisbonRain}
 ${strip.replace('<!--lede-->', lede)}
+${lisbonRain}
 ${chart}
+${madeira}
 ${thuStrip}
 <div class="grid">
-<section class="card"><h2>Latest signals</h2><ul class="feed">${feed || '<li class="meta">No signals yet.</li>'}</ul><p class="meta"><a href="${base}timeline.html">The whole timeline</a> · <a href="${base}decisions.html">Decisions</a></p></section>
+<section class="card" id="signals"><h2>Latest signals</h2><ul class="feed">${feed || '<li class="meta">No signals yet.</li>'}</ul><p class="meta"><a href="${base}timeline.html">The whole timeline</a> · <a href="${base}decisions.html">Decisions</a></p></section>
 <aside>
 <section class="card"><h2>${esc(nextName)}</h2><ul class="kv src">${thuRows}</ul><p class="meta">${esc(inc.thursday || '')}</p></section>
 ${sky}

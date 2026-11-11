@@ -87,6 +87,9 @@
             box.innerHTML = '<dl class="pn-dl"><dt>Version</dt><dd><a href="' + esc(base) + 'version.json">' + esc(v.version) + '</a>' + (v.version !== panel.dataset.version ? ' <span class="pn-meta">(this page was built as ' + esc(panel.dataset.version) + ': reload for the latest)</span>' : '') + '</dd>' + (v.commit ? '<dt>Commit</dt><dd><code>' + esc(String(v.commit).slice(0, 10)) + '</code></dd>' : '') + (v.pushed_at ? '<dt>Pushed</dt><dd>' + esc(String(v.pushed_at).replace('T', ' ').slice(0, 19)) + ' UTC</dd>' : '') + (v.built_at ? '<dt>Built</dt><dd>' + esc(String(v.built_at).replace('T', ' ').slice(0, 19)) + ' UTC</dd>' : '') + '</dl>'
         }).catch(function () { })
     }
+    // a link to a part inside a folded block opens the fold first
+    function unfold() { var t = location.hash.length > 1 && document.getElementById(location.hash.slice(1)); for (var d = t && t.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true }
+    window.addEventListener('hashchange', unfold); unfold()
     if (document.getElementById('pn-source').open) source()
     if (document.getElementById('pn-version').open) version()
 })()
