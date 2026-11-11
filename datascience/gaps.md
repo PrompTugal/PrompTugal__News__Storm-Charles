@@ -1,4 +1,4 @@
-> Kept by incident.datascience@web-summit.dinis, 2026-11-11, 11:47 UTC
+> Kept by incident.datascience@web-summit.dinis, 2026-11-11, 11:47 UTC; status updated 11:59 UTC
 
 # The gap map: Watchfloor's decision brief against what we hold
 
@@ -16,19 +16,19 @@ Legend: **have** (we read it at the source and serve it), **partly** (some of it
 | 2 | IPMA communiqués and their wording (p1) | **have** | `data/weather/communiques.json` · meteorologist@ | IPMA | IPMA | – | ok |
 | 3 | What the authorities decided (p3) | **have** | `data/decisions/` · researcher@; timeline · conductor@ | primary pages of each body | quoted in short excerpts | – | ok |
 | 4 | Storm centre's track from two model runs (p1 map) | **missing** | – · datascience@ (with meteorology@) | ECMWF open data (IFS HRES/ENS, AIFS) mean-sea-level pressure minimum per step | CC BY 4.0 | M (GRIB2 decoding without GDAL here) | data.ecmwf.int ok |
-| 5 | Ensemble "crossings" and three scenarios with shares of 50 members (p1, p2) | **missing** | – · datascience@ | ECMWF ENS 50 members (open data); per-member gusts at a point via Open-Meteo's ensemble API (ecmwf_ifs025) as the cheap first step | CC BY 4.0 (ECMWF; Open-Meteo) | M | ok (both) |
+| 5 | Ensemble "crossings" and three scenarios with shares of 50 members (p1, p2) | **have (first step)**: `data/exposure/ensemble.json` | datascience@ | ECMWF ENS 50 members (open data); per-member gusts at a point via Open-Meteo's ensemble API (ecmwf_ifs025) as the cheap first step | CC BY 4.0 (ECMWF; Open-Meteo) | M | ok (both) |
 | 6 | Model wind under each warning area vs the warning window (p6) | **partly** | `broadcast/data/field.json` (Open-Meteo best-match field) · broadcast@; IPMA point forecast · meteorologist@ | Open-Meteo / ECMWF ENS sampled at warning-area centroids | CC BY 4.0 | S–M | ok |
 | 7 | Experimental AI forecast (WeatherNext) (p2) | **missing** | – | not open in this session; listed, not pursued | proprietary | – | – |
 | 8 | Signs to watch at an IPMA station (p2) | **have** | `data/weather/stations.json`, `airport.json` (METAR gusts) · meteorologist@ | IPMA observations; METAR | IPMA; public | – | ok |
 | 9 | Sources compared with confidence levels (p4) | **partly** | `data/weather/analysis.md`, `gusts-vs-forecast.json` · meteorologist@ | ours: a table across warnings × models × observations; needs #5 | ours (hypotheses labelled) | M | – |
 | 10 | Madeira: zones, warnings, flights, ferries, schools (p5) | **have** (warnings, decisions) / **missing** (people) | `madeira.json`, `airport-madeira.json`, `entities/madeira.json` | + Kontur on Madeira warning areas (#11) | as #11 | S once #11 exists | ok |
-| 11 | **People under each level, by district and hour** (p1, p6, p7) | **missing → filling** | `data/exposure/people-by-area.json`, `people-by-hour.json` · datascience@ | Kontur Population 2023-11-01 (H3 grid, from INE/GHSL/Meta/Microsoft) on IPMA warning areas (districts; Madeira and Azores zones) | CC BY 4.0 (Kontur via HDX) | M | ok (S3 object) |
-| 12 | Aged 65+ and under 15, by district and municipality (p7) | **missing → filling** | `data/exposure/ages.json` · datascience@ | INE Census 2021 (indicator API, by municipality, age groups) | INE: free reuse with credit | M | ine.pt json API ok; tabulae.ine.pt blocked |
-| 13 | Lisbon metro municipalities: people, 65+, land 0.5–5 m (p7) | **missing → filling** | `data/exposure/lisbon-municipalities.json` · datascience@ | Kontur + INE + DEM (#16) on municipality boundaries | CC BY 4.0 + INE + DEM licence | M | geoBoundaries ok (ADM1); municipalities: GISCO LAU / CAOP to try |
-| 14 | Lisbon sector by sector: 2 km squares, residents (p8) | **missing → filling** | `data/exposure/lisbon-grid.json` · datascience@ | Kontur aggregated to our own 2 km grid | CC BY 4.0 | S after #11 | ok |
-| 15 | Public hospitals named, per square (p8) | **partly** | `data/decisions/entities/hospitals.json` (decisions only) · researcher@; → `data/exposure/hospitals.json` · datascience@ | OpenStreetMap (HOT export on HDX, or healthsites.io export) | ODbL (attribution "© OpenStreetMap contributors") | S | overpass-api.de blocked; HDX/HOT S3 ok |
-| 16 | **Land 0.5–5 m above sea level**, Lisbon area (p7, p8) | **missing → filling** | `data/exposure/low-land.json` · datascience@ | Copernicus DEM GLO-30 (COG on AWS); Mapzen/Terrarium terrain tiles as fallback | Copernicus DEM: free licence with credit "© DLR e.V. 2010–2014 and © Airbus 2014–2018, provided under COPERNICUS by the EU and ESA"; Terrarium: various open, credit | M | both ok |
-| 17 | **Tides: high water times and heights**, Lisbon, Cascais, Funchal (p8) | **missing → filling** | `data/exposure/tides.json` · datascience@ | Instituto Hidrográfico (hidrografico.pt, tide tables / previsão de marés) | IH terms (read, credit, no redistribution of tables beyond the day's values) | S–M | hidrografico.pt ok |
+| 11 | **People under each level, by district and hour** (p1, p6, p7) | **have** | `data/exposure/population.json`, `people-by-hour.json` · datascience@ (INE Census 2021 counts used for areas; Kontur for squares) | Kontur Population 2023-11-01 (H3 grid, from INE/GHSL/Meta/Microsoft) on IPMA warning areas (districts; Madeira and Azores zones) | CC BY 4.0 (Kontur via HDX) | M | ok (S3 object) |
+| 12 | Aged 65+ and under 15, by district and municipality (p7) | **have** | `data/exposure/population.json` · datascience@ | INE Census 2021 (indicator API, by municipality, age groups) | INE: free reuse with credit | M | ine.pt json API ok; tabulae.ine.pt blocked |
+| 13 | Lisbon metro municipalities: people, 65+, land 0.5–5 m (p7) | **have** | `data/exposure/lisbon-municipalities.json` · datascience@ | Kontur + INE + DEM (#16) on municipality boundaries | CC BY 4.0 + INE + DEM licence | M | geoBoundaries ok (ADM1); municipalities: GISCO LAU / CAOP to try |
+| 14 | Lisbon sector by sector: 2 km squares, residents (p8) | **have** | `data/exposure/lisbon-grid.json` · datascience@ | Kontur aggregated to our own 2 km grid | CC BY 4.0 | S after #11 | ok |
+| 15 | Public hospitals named, per square (p8) | **have** | `data/exposure/hospitals.json` (365, OSM) · datascience@; decisions in `data/decisions/entities/hospitals.json` · researcher@ | OpenStreetMap (HOT export on HDX, or healthsites.io export) | ODbL (attribution "© OpenStreetMap contributors") | S | overpass-api.de blocked; HDX/HOT S3 ok |
+| 16 | **Land 0.5–5 m above sea level**, Lisbon area (p7, p8) | **have** (estimate, LOW–MEDIUM) | `data/exposure/lisbon-municipalities.json`, `lisbon-grid.json` · datascience@ | Copernicus DEM GLO-30 (COG on AWS); Mapzen/Terrarium terrain tiles as fallback | Copernicus DEM: free licence with credit "© DLR e.V. 2010–2014 and © Airbus 2014–2018, provided under COPERNICUS by the EU and ESA"; Terrarium: various open, credit | M | both ok |
+| 17 | **Tides: high water times and heights**, Lisbon, Cascais, Funchal (p8) | **partly** (a model, not IH's table) | `data/exposure/tides.json` (Open-Meteo Marine) · datascience@ | Instituto Hidrográfico (hidrografico.pt, tide tables / previsão de marés) | IH terms (read, credit, no redistribution of tables beyond the day's values) | S–M | hidrografico.pt ok |
 | 18 | Movement: bridges, tunnels, coaches, ferries, trains, airport (p8) | **have** | `data/transport/`, `entities/*` · transport@, researcher@ | operators' pages | short excerpts | – | ok |
 | 19 | Power: customers without power (annex, p8) | **missing** | – · datascience@ to list; researcher@ for press | E-REDES outage page/API (press until then) | E-REDES terms; unknown | M | e-redes.pt redirects; to test |
 | 20 | Incidents: ANEPC counts; Madeira Civil Protection (p7) | **partly** (press counts in timeline) | timeline · conductor@ | ANEPC occurrences (prociv.gov.pt open feed) | ANEPC; public | S–M | to test |
@@ -37,7 +37,7 @@ Legend: **have** (we read it at the source and serve it), **partly** (some of it
 | 23 | Small multiples: map every 3 h with people under red (p6) | **missing** | → brief@ and designer@ from #11 | ours, from `people-by-hour.json` | – | M | – |
 | 24 | A live version linked by QR code (p1) | **have** (the site) | conductor@, brief@ | – | – | – | – |
 
-**Biggest gaps (filling now, in this order):** 11 people by area and hour → 12 ages → 17 tides → 15 hospitals → 16 low land → 14 Lisbon squares → 5 ensemble shares.
+**Filled at 11:59 UTC** (see [the exposure data](../incidents/2026-11-10-storm-charles/data/exposure/README.md)): 11, 12, 13, 14, 15, 16; 5 as a first step (crossings along 9.5 W, not a full track); 17 from a model. **Still missing:** 4 (track maps), 19 power, 20 ANEPC counts as data, 21 precedents table, 23 small multiples (brief@ and designer@ from people-by-hour.json). How to show it: [layers.md](layers.md).
 
 ## 2. New data points we can consume (beyond the brief)
 
@@ -55,6 +55,7 @@ Legend: **have** (we read it at the source and serve it), **partly** (some of it
 ## 3. Blocked or needs a person (for the conductor)
 
 - **overpass-api.de** (and two mirrors): no route from this session. Worked with the HOT/HDX OSM export instead (same data, ODbL, date-stamped).
+- **Instituto Hidrográfico's tide tables**: digital only, through its online shop (loja.hidrografico.pt), which needs an account; its geomar app needs a login. Not worked around: tides.json is a model until someone with an account decides.
 - **tabulae.ine.pt** and **download.geofabrik.de**: no route. Not needed if the INE indicator API holds.
 - **WeatherNext**: not open data; not pursued.
 - No key or account was used or needed for anything above.
