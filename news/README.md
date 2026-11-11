@@ -16,7 +16,8 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 13:00 to 14:00 | [13:00 to 14:00, 11 November: Thursday reported confirmed by the press relaying the organisers' message; IPMA's own pages and MeteoAlarm carry the 12:33 shortening](2026-11-11T13.md) | v0.1.1160 to v0.1.1202 (18 served of 42) | 48 |
+| 2026-11-11 14:00 to 15:00 | [14:00 to 15:00, 11 November: the wind turns south with a 74 km/h gust at the airport; Transtejo stops vehicles on the Trafaria – Porto Brandão – Belém crossing; Lisbon's red rain due to end at 15:00](2026-11-11T14.md) | v0.1.1217 to v0.1.1259 (14 served of 38) | 49 |
+| 2026-11-11 13:00 to 14:00 | [13:00 to 14:00, 11 November: Thursday reported confirmed by the press relaying the organisers' message; IPMA's own pages and MeteoAlarm carry the 12:33 shortening](2026-11-11T13.md) | v0.1.1160 to v0.1.1216 (46 served of 57) | 62 |
 | 2026-11-11 12:00 to 13:00 | [12:00 to 13:00, 11 November: IPMA's communiqué no. 3 and adjusted warnings; at 12:33 IPMA shortens Lisbon's red rain to 15:00 and orange wind to 18:00; the brief reaches edition 5 and the guide version 13](2026-11-11T12.md) | v0.1.1016 to v0.1.1159 (57 served of 127) | 152 |
 | 2026-11-11 11:00 to 12:00 | [11:00 to 12:00, 11 November: Dinis asks for a decision brief, a contact desk and a site for people in Lisbon now; a day's flights counted only from what was seen; by the hour's end the brief, the guide and the contact desk are live](2026-11-11T11.md) | v0.1.932 to v0.1.1015 (58 served of 84) | 92 |
 | 2026-11-11 10:00 to 11:00 | [10:00 to 11:00, 11 November: the newcomers' page rewritten on what four invented visitors found, and Dinis asks for the wind-down](2026-11-11T10.md) | v0.1.801 to v0.1.931 (81 served of 131) | 143 |

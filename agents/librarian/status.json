@@ -1,8 +1,8 @@
 {
  "agent": "incident.librarian@web-summit.dinis",
- "state": "active: the tenth librarian session (session_018yvwtLtwNjPxzYaorZ8NTh) since 13:05 UTC on 11 November, carrying on from the ninth's hand-over (kept below under handover until replaced).",
- "last_wake": "2026-11-11T13:45Z",
- "updated": "2026-11-11T13:45Z",
+ "state": "handing over: the tenth librarian session (session_018yvwtLtwNjPxzYaorZ8NTh, since 13:05 UTC) wrote this hand-over at 14:45 after its second hourly wake.",
+ "last_wake": "2026-11-11T14:45Z",
+ "updated": "2026-11-11T14:45Z",
  "by": "incident.librarian@web-summit.dinis",
  "key": "sha256:340d5803140f06d7 (encryption), sha256:8fdcba03544e2d1f (signing); the tenth session's key, public half in data/keys.json (incident-librarian-dinis-10); the ninth's marked handed over",
  "jobs": [
@@ -55,7 +55,7 @@
   "09:52 (sixth session) the 09:44 wake: 08:00 to 09:00 closed (48 commits by 21 agents, 41 versions); 09:00 to 10:00 opened; the round article: the hour in the list, one correction, section 9 point 1 answered (vault keys) and point 10 added; start.md: the vault-key rule replaces the line on incident.ipma@; the sixth session's hand-over."
  ],
  "next": [
-  "at the :44 wake: library-releases, then close news/2026-11-11T13.md in the form of T12.md (re-read the hour's commits) and open T14, --index",
+  "an eleventh session: close news/2026-11-11T14.md after 15:00 and open T15 (run tools/library-releases.mjs first)",
   "the round article at each hourly wake: 5c, section 7, section 9",
   "at the close trigger: library/closing-inventory.json for incident.planner@"
  ],
@@ -66,12 +66,12 @@
   "incident.conductor@: four hourly wakes still fire into sessions that have handed over (graph :51, weatherwatch :28, studio :58 by its status, and whichever of the reporter's and journalist's the table in library/pack/conductor-handover.md marks); the first librarian session's (trig_015kcoYrPNCaf6xjdUPt5oXP) was not in the page of the list I read, so I cannot say whether it is disabled."
  ],
  "handover": {
-  "from": "the ninth librarian session (session_018yvwtN7F5ipc9ntEXwY81c; key id incident-librarian-dinis-9: the next session makes its own, id incident-librarian-dinis-10, and marks this one handed over)",
-  "at": "2026-11-11T12:49Z",
-  "why": "the start, a fix and one hourly wake took the context to about 164,000 tokens a call (the measure line of 12:48); the next wake would pass the 180,000 it was told to hand over at",
+  "from": "the tenth librarian session (session_018yvwtLtwNjPxzYaorZ8NTh; key id incident-librarian-dinis-10: the next session makes its own, id incident-librarian-dinis-11, and marks this one handed over)",
+  "at": "2026-11-11T14:45Z",
+  "why": "the start and two hourly wakes took the context to about 150,000 tokens a call (129,416 at the 13:44 measure); the next wake would pass the 180,000 it was told to hand over at",
   "in_flight": [
-   "news/2026-11-11T12.md is closed (13:07, tenth session). news/2026-11-11T13.md is open, true to the commits at 13:07 UTC. At the :44 wake: FIRST `node tools/library-releases.mjs` (else the versions read low), then `node tools/library-news.mjs 2026-11-11T13` and `...T14`, close T13 in the form of T12.md (header 'The hour is closed', the Versions paragraph in the past), open T14, then `--index`. A full clone with tags: git fetch --depth=3000 origin dev; git checkout -B dev origin/dev; git fetch --tags origin.",
-   "news/2026-11-11-round-two.md keeps the round only: each wake add the new hour's line to 5c and take '(open)' off the last; a correction of the hour in section 7 (above 'The librarian's own'); section 9 current (points 12 and 13 written by the ninth).",
+   "news/2026-11-11T13.md is closed (14:45). news/2026-11-11T14.md is open, true to the commits at 14:45 UTC (49 commits by 24 agents). At the :44 wake: FIRST `node tools/library-releases.mjs` (else the versions read low), then `node tools/library-news.mjs 2026-11-11T14` and `...T15`, close T14 in the form of T13.md (header 'The hour is closed', items since the open added under their headings, the Versions paragraph in the past from news/data/<hour>.json versions), open T15, then `--index`. Read the hour's commits with: git log --since=<hour>Z --format='%cd %s' --date=format-local:%H:%M | grep -v 'tokens measured' | cut -c1-200. A full clone with tags: git fetch --depth=3000 origin dev; git checkout -B dev origin/dev; git fetch --tags origin.",
+   "news/2026-11-11-round-two.md keeps the round only: each wake take '(open)' off the last hour's line in 5c and add the new hour; a correction of the hour in section 7 (above 'The librarian's own'; Porto Santo added by the tenth); section 9 current (nothing from Dinis since ~11:56 in BRIEF.md at 14:44; no new agent in JOBS.md or policy.json since 12:40, so library/abp.json unchanged).",
    "While an hour is open a row may be reworded: at closing, read the hour's commits again. At T11's close say whether /welcome/ moved to / and whether Dinis answered the plan (card a-wind-down-plan). BRIEF.md's ~11:45 section is read by this session.",
    "tools/library-pack.mjs: state.json's warnings_lisbon.by_newest_message (IPMA's current CAP message per hazard from cap.json, and 'differs' against warnings.json) was added at 07:50. It read 'differs' empty after the open data caught up at 08:43 (not checked since 08:49: look once).",
    "Card a-librarian-8: its ask was removed from 'asks' at 07:50, so incident.board@ can close it (not checked that it did).",
@@ -94,17 +94,17 @@
   ],
   "what_runs_in_the_build": "tools/library-index.mjs and library-view.mjs are in admin/build/generators.json; library-index runs library-pack.mjs itself at its end (--no-pack leaves it out; the pack still runs alone with --out). Nothing they write is tracked.",
   "lessons_of_this_session": [
-   "Print counts, not data objects: a debug print of a list dumped 33 KB into the context.",
-   "A start plus one wake fits in about 30 calls and reaches about 165,000 tokens a call."
+   "A whole open article rewritten in one here-document costs less than many small replaces, and keeps it true to the hour.",
+   "Guessed times crept into a status line once (13:12 for 13:07): take every time from date -u, also inside JSON strings."
   ],
   "not_in_git": [
    "This session's private key: stays here and ends with the session.",
-   "A full clone with tags; the scratchpad scripts (edit1.mjs, wake0845.mjs, wake0945.mjs, ship.sh): their form is described above and the articles show the result."
+   "The scratchpad scripts (close12/close13.mjs: a replace-and-assert edit per article; round14.mjs): their form is described above and the articles show the result."
   ],
-  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (8)' (trig_01Kmo7fDDKD3g7YFTEhBP5kG), at :44, bound to the eighth session; it fired at 11:44. The eighth session set no wake and did not list the scheduler. The conductor sets the ninth's and disables this one.",
-  "last_half_hour": "Dinis spoke at about 11:45 (BRIEF.md, last section): Watchfloor's decision brief as a model; four new agents (datascience, brief, desk, sherpa); the contact desk rule in CLAUDE.md; a journalists' section and outreach (envoy). No message to the librarian is unanswered.",
+  "scheduled_wakes": "'incident.librarian@web-summit.dinis hourly (10)' (trig_01Jb5nkuo9P7fTvhnywayDpi), at :44, bound to the tenth session; it fired at 13:44 and 14:44. The conductor sets the eleventh's and disables this one.",
+  "last_half_hour": "Nothing from Dinis. IPMA unchanged since 12:33 (14:35); Lisbon's red rain due to end 15:00 — the 15:00 hour's article should say whether IPMA's timeline showed it end. Thursday is still evidence only (press relaying the organisers' message); the board keeps q-thursday-confirmed open. No message to the librarian is unanswered.",
   "board_cards": "a-behaviour-policies waits on Dinis (no answer wanted from the librarian); a-librarian-8 should be closed (see above); a-librarian-9 (wakes firing into stopped sessions) waits on the conductor; a-reporter-5 waits on the librarian for (b) and (c) in 'in_flight'; the j-librarian cards are the jobs above.",
-  "written": "2026-11-11T11:46Z by the eighth librarian session (session_018yvwtPRjbYNkXeK8cK7Hxc; key id incident-librarian-dinis-8: the next session makes its own, id incident-librarian-dinis-9, and marks this one handed over), because the start and one wake took the context past 160,000 tokens a call; the next wake would pass 180,000."
+  "written": "2026-11-11T14:45Z by the tenth librarian session"
  },
  "started_from_the_pack": {
   "measured": "accounts/ledger/librarian.jsonl, the line of session s-4084864ddf45: 13 calls to read the pack, make the key and measure; the context was 84,024 tokens on the first call (before any reading) and 116,216 on the thirteenth, against 587,000 on the first session's last call",

@@ -1,78 +1,78 @@
 # The release history: every version, what changed, and whether it was served
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 13:22 UTC. Built by [tools/library-releases.mjs](../tools/library-releases.mjs) from the tags, the commit subjects and the deploy workflow's runs as incident.ci@ keeps them ([the pipeline](../ci/README.md)), read at that time; the data is [releases.json](releases.json). Back to [the library](README.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 14:20 UTC. Built by [tools/library-releases.mjs](../tools/library-releases.mjs) from the tags, the commit subjects and the deploy workflow's runs as incident.ci@ keeps them ([the pipeline](../ci/README.md)), read at that time; the data is [releases.json](releases.json). Back to [the library](README.md).
 
-CI numbers every push (`v0.1.<run>`), deploys it and tags it; nobody who pushes writes a number ([BRIEF-CORRECTIONS.md](../BRIEF-CORRECTIONS.md)). Until about 23:55 UTC on 10 November the newest push cancelled a run in progress; since then a running deploy finishes and only a run still waiting is replaced (the workflow's own comment), so a later "cancelled" should mean it never started. **1202 runs: 815 served (confirmed by CI), 20 deployed and tagged but cancelled before CI confirmed, 360 cancelled before the tag, 6 failed, 1 still running or unknown when read.**
+CI numbers every push (`v0.1.<run>`), deploys it and tags it; nobody who pushes writes a number ([BRIEF-CORRECTIONS.md](../BRIEF-CORRECTIONS.md)). Until about 23:55 UTC on 10 November the newest push cancelled a run in progress; since then a running deploy finishes and only a run still waiting is replaced (the workflow's own comment), so a later "cancelled" should mean it never started. **1259 runs: 857 served (confirmed by CI), 21 deployed and tagged but cancelled before CI confirmed, 370 cancelled before the tag, 6 failed, 5 still running or unknown when read.**
 
 ## Versions never confirmed served
 
-366 of 1202. The newest: v0.1.1171, v0.1.1170, v0.1.1167, v0.1.1165, v0.1.1164, v0.1.1163, v0.1.1162, v0.1.1156, v0.1.1153, v0.1.1150, v0.1.1149, v0.1.1148, v0.1.1145, v0.1.1140, v0.1.1139, v0.1.1136, v0.1.1129, v0.1.1127, v0.1.1123, v0.1.1122, v0.1.1118, v0.1.1116, v0.1.1115, v0.1.1113, v0.1.1109, v0.1.1107, v0.1.1105, v0.1.1101, v0.1.1098, v0.1.1096. Each hour's file lists every version with its state.
+376 of 1259. The newest: v0.1.1231, v0.1.1230, v0.1.1224, v0.1.1222, v0.1.1220, v0.1.1219, v0.1.1212, v0.1.1209, v0.1.1204, v0.1.1191, v0.1.1171, v0.1.1170, v0.1.1167, v0.1.1165, v0.1.1164, v0.1.1163, v0.1.1162, v0.1.1156, v0.1.1153, v0.1.1150, v0.1.1149, v0.1.1148, v0.1.1145, v0.1.1140, v0.1.1139, v0.1.1136, v0.1.1129, v0.1.1127, v0.1.1123, v0.1.1122. Each hour's file lists every version with its state.
 
 **This is not a list of versions that were never deployed**, and none can be made from the runs alone: a cancelled deploy step can still go live. Run 32: served: /version.json answered v0.1.32 with commit 487818fc40 when read at 23:49 UTC, although the run's deploy step is recorded as cancelled (job 130213112738) and no tag was pushed (incident.librarian@). Each of these versions' commits is contained in the next served version, so no change was lost; what is not known is whether a reader was ever served that exact number.
 
 ## The newest sixty versions
 
-What changed is each commit's own subject, as its agent wrote it. Every version, hour by hour, as data: [11-11 13h](../view/index.html?path=library/releases/2026-11-11T13.json) (42) · [mmit-foundh](../view/index.html?path=library/releases/no-commit-found.json) (1) · [11-11 12h](../view/index.html?path=library/releases/2026-11-11T12.json) (144) · [11-11 11h](../view/index.html?path=library/releases/2026-11-11T11.json) (84) · [11-11 10h](../view/index.html?path=library/releases/2026-11-11T10.json) (131) · [11-11 09h](../view/index.html?path=library/releases/2026-11-11T09.json) (83) · [11-11 08h](../view/index.html?path=library/releases/2026-11-11T08.json) (41) · [11-11 07h](../view/index.html?path=library/releases/2026-11-11T07.json) (38) · [11-11 06h](../view/index.html?path=library/releases/2026-11-11T06.json) (37) · [11-11 05h](../view/index.html?path=library/releases/2026-11-11T05.json) (75) · [11-11 04h](../view/index.html?path=library/releases/2026-11-11T04.json) (64) · [11-11 03h](../view/index.html?path=library/releases/2026-11-11T03.json) (116) · [11-11 02h](../view/index.html?path=library/releases/2026-11-11T02.json) (171) · [11-11 01h](../view/index.html?path=library/releases/2026-11-11T01.json) (34) · [11-11 00h](../view/index.html?path=library/releases/2026-11-11T00.json) (65) · [11-10 23h](../view/index.html?path=library/releases/2026-11-10T23.json) (64) · [11-10 22h](../view/index.html?path=library/releases/2026-11-10T22.json) (2) · [11-10 21h](../view/index.html?path=library/releases/2026-11-10T21.json) (10).
+What changed is each commit's own subject, as its agent wrote it. Every version, hour by hour, as data: [11-11 14h](../view/index.html?path=library/releases/2026-11-11T14.json) (38) · [mmit-foundh](../view/index.html?path=library/releases/no-commit-found.json) (5) · [11-11 13h](../view/index.html?path=library/releases/2026-11-11T13.json) (57) · [11-11 12h](../view/index.html?path=library/releases/2026-11-11T12.json) (144) · [11-11 11h](../view/index.html?path=library/releases/2026-11-11T11.json) (84) · [11-11 10h](../view/index.html?path=library/releases/2026-11-11T10.json) (131) · [11-11 09h](../view/index.html?path=library/releases/2026-11-11T09.json) (83) · [11-11 08h](../view/index.html?path=library/releases/2026-11-11T08.json) (41) · [11-11 07h](../view/index.html?path=library/releases/2026-11-11T07.json) (38) · [11-11 06h](../view/index.html?path=library/releases/2026-11-11T06.json) (37) · [11-11 05h](../view/index.html?path=library/releases/2026-11-11T05.json) (75) · [11-11 04h](../view/index.html?path=library/releases/2026-11-11T04.json) (64) · [11-11 03h](../view/index.html?path=library/releases/2026-11-11T03.json) (116) · [11-11 02h](../view/index.html?path=library/releases/2026-11-11T02.json) (171) · [11-11 01h](../view/index.html?path=library/releases/2026-11-11T01.json) (34) · [11-11 00h](../view/index.html?path=library/releases/2026-11-11T00.json) (65) · [11-10 23h](../view/index.html?path=library/releases/2026-11-10T23.json) (64) · [11-10 22h](../view/index.html?path=library/releases/2026-11-10T22.json) (2) · [11-10 21h](../view/index.html?path=library/releases/2026-11-10T21.json) (10).
 
 | Version | Pushed (UTC) | State | What changed |
 |---|---|---|---|
-| v0.1.1202 | 11-11 13:41 | tagged | *incident.accountant@* the accounts, round 15: the conductor 35% of 2.74 billion tokens (57% of the 12:00 hour, a fourth compaction); everyone else flat at about 157,000 a call; five never handed over; brief 15 |
-| v0.1.1201 | 11-11 13:41 | tagged | *incident.weatherwatch@* tokens measured |
-| v0.1.1200 | 11-11 13:40 | tagged | *incident.weatherwatch@* 13:37 re-read: no CAP after 12:33 for Lisbon, open data caught up; weather.com still headlines a red wind warning IPMA withdrew at 07:16; session key -4 |
-| v0.1.1199 | 11-11 13:39 | tagged | *incident.media@* hourly wake 13:36 (411 items; facts 15 and 16: Lisbon's warnings shortened, Day 3 confirmed) |
-| v0.1.1198 | 11-11 13:39 | tagged | *incident.entities@* hourly 13:38: nodes remade (240 nodes, 511 edges): two decisions, Infraestruturas de Portugal placed |
-| v0.1.1197 | 11-11 13:38 | tagged | *incident.conductor@* timeline 13:38: ANA's own airport figures at 11:00 (Lisbon 288 of 565 cancelled in advance, 22 more) |
-| v0.1.1196 | 11-11 13:38 | tagged | *incident.perplexity@* the times on three files corrected to the clock (13:37 UTC, written ahead by mistake) |
-| v0.1.1195 | 11-11 13:37 | tagged | *incident.perplexity@* round 2 and the Sonar comparison: six runs, 15 answers, 45 addresses read; two new leads (ANA's own statement, the government's despacho page); two statements wrong · *incident.perplexity@* tokens measured |
-| v0.1.1194 | 11-11 13:35 | tagged | *incident.board@* 13:33 round: Thursday reported confirmed (press only) on q-thursday-confirmed, still open; peak window and Thursday transport still watching; 12 jobs synced |
-| v0.1.1193 | 11-11 13:32 | tagged | *incident.broadcast@* the wall's model field re-read at 13:31 UTC |
-| v0.1.1192 | 11-11 13:28 | tagged | *incident.archivist@* 13:25 round: IPMA's warnings for Lisbon adjusted (updated 12:33: red rain to 15:00 then yellow; wind orange to 18:00, gusts to 90 km/h); many districts lower in the list · *incident.conductor@* timeline 12:47: IPMA's own warnings page carries the 12:33 update (archivist capture 13:25) |
-| v0.1.1191 |  | unknown | no commit found for this run |
-| v0.1.1190 | 11-11 13:27 | tagged | *incident.conductor@* timeline 12:34 completed: the north's rain lowered to yellow in the same 12:18 batch (incident.sources@ 13:26) |
-| v0.1.1189 | 11-11 13:27 | tagged | *incident.observability@* wake 13:19: page views 1182 in 171 visits (1054 events drained, 0 refused); measured |
-| v0.1.1188 | 11-11 13:26 | tagged | *incident.sources@* MeteoAlarm's Portugal feed changed at the 13:26 read: IPMA's messages of 12:18 and 12:33 shorten Lisbon's red rain to 15:00 and its orange wind to 18:00; the diff is recorded |
-| v0.1.1187 | 11-11 13:25 | tagged | *incident.conductor@* bridge sync after the 13:22 read (analysis 20); timeline 13:25: Lisbon 13:00, the largest six hours of rain in the window, pressure still falling |
-| v0.1.1186 | 11-11 13:23 | tagged | *incident.ci@* hourly wake 13:22; generators-together measured on the runner, patch file removed |
-| v0.1.1185 | 11-11 13:23 | tagged | *incident.identity@* 13:20 wake: 104 keys of 38 agents, 0 problems, signatures hold |
-| v0.1.1184 | 11-11 13:20 | served | *incident.designer@* the front page's h1 checked (11,309 -> 148 px on a phone) |
-| v0.1.1183 | 11-11 13:19 | served | *incident.weather@* the masthead line is the page's one h1, no pixel moved (designer@'s round 59) |
-| v0.1.1182 | 11-11 13:19 | served | *incident.journalist@* 13:12 wake: piece 7 ended (the outage closed at 13:12:51, who restored the credit not on record); piece 10 and the closing piece: Thursday through the press, the hold standing; one support of What it cost re-anchored on its commit · *incident.journalist@* tokens measured |
-| v0.1.1181 | 11-11 13:18 | served | *incident.designer@* HANDOVER names the fifth weather session for the front page's h1 |
-| v0.1.1180 | 11-11 13:17 | served | *incident.designer@* the title lift as one function; the 13:15 measure; HANDOVER for the eighth session |
-| v0.1.1179 | 11-11 13:14 | served | *incident.reporter@* the outage closed: the shadow desk's 13:09 round got through (step 21); who restored the credit is not in the record |
-| v0.1.1178 | 11-11 13:13 | served | *incident.reporter@* the 13:06 wake, the fifth session's first: key incident-reporter-dinis-5 (-4 handed over); Thursday by the press (the hold, step 9; the wind-down, step 19); thirteen hand-overs (memory, step 28); the log to 13:12 · *incident.reporter@* tokens measured |
-| v0.1.1177 | 11-11 13:12 | served | *incident.shadow@* shadow reporting, round 2 (13:09, credit back): 23 answers, 73 statements against the record; six hours after IPMA lowered Lisbon's wind to orange an engine still served the red; nobody had communiqué no. 3; five new leads; 73 more cited addresses |
-| v0.1.1176 | 11-11 13:12 | served | *incident.desk@* the 13:12 drain: nothing waiting |
-| v0.1.1175 | 11-11 13:10 | served | *incident.entities@* hourly 13:05: a node for IPMA's 12:33 shortening of Lisbon's warnings and for 24 Notícias; Thursday reported (237 nodes, 503 edges) |
-| v0.1.1174 | 11-11 13:09 | served | *incident.conductor@* measure line 13:09 (237k a call last, after compaction) |
-| v0.1.1173 | 11-11 13:09 | served | *incident.accountant@* the accounts, round 14: everyone but the conductor at 157,816 tokens a call in the 12:00 hour; wikipedia, transport, stories handed over again (15% to 23% less); archivist and sources still above 430,000; brief 14 |
-| v0.1.1172 | 11-11 13:08 | served | *incident.librarian@* status: the hand-over's times read from the clock (13:07) |
-| v0.1.1171 | 11-11 13:08 | not confirmed | *incident.ipma@* vault key received (sealed to -3), store cloned |
-| v0.1.1170 | 11-11 13:08 | not confirmed | *incident.librarian@* tokens measured; status: the next wake closes 13:00 |
-| v0.1.1169 | 11-11 13:07 | served | *incident.librarian@* 12:00 to 13:00 closed (IPMA's 12:33 shortening, Thursday in the press at 12:52), 13:00 opened (Thursday reported confirmed, s-1111T1305, evidence); release history; the round's 5c and 7 |
-| v0.1.1168 | 11-11 13:07 | served | *incident.accountant@* the second session ends: its part of the hand-over note for the third (rounds 7 to 13, the lessons, what is open); the round's numbers kept as tools/accounts-round.mjs |
-| v0.1.1167 | 11-11 13:06 | not confirmed | *incident.entities@* session key -4 (fourth session); -3 handed over · *incident.entities@* nodes remade after the hour's data (235 nodes, 492 edges) |
-| v0.1.1166 | 11-11 13:06 | served | *incident.entities@* the hand-over brought up to the 12:38 state for the fourth session: the linker's times by page count and by family, the builder alone, what the printed times now mean, what was not started · *incident.entities@* tokens measured |
-| v0.1.1165 | 11-11 13:06 | not confirmed | *incident.ipma@* session key -3 (record sha256:65ab31c6707170ca); -2 handed over |
-| v0.1.1164 | 11-11 13:06 | not confirmed | *incident.accountant@* third session key; the second marked handed over |
-| v0.1.1163 | 11-11 13:06 | not confirmed | *incident.ipma@* the second session's last ledger line; handed over to the third session |
-| v0.1.1162 | 11-11 13:06 | not confirmed | *incident.brief@* decision brief, edition 6 (Web Summit's Day 3 reported confirmed, as evidence) |
-| v0.1.1161 | 11-11 13:06 | served | *incident.librarian@* tenth session key (incident-librarian-dinis-10); the ninth's marked handed over |
-| v0.1.1160 | 11-11 13:04 | served | *incident.conductor@* hourly 13:03: Thursday reported confirmed (press relaying the organisers' message to participants); timeline 13:05; the Thursday line |
-| v0.1.1159 | 11-11 12:59 | served | *incident.wikipedia@* 12:50 read: a Vietnamese section (infobox only, 999 hPa, dates 2-3 Nov); en swaps its image; session key -3 |
-| v0.1.1158 | 11-11 12:58 | served | *incident.transport@* handover: vault key received, store cloned |
-| v0.1.1157 | 11-11 12:56 | served | *incident.transport@* handover up to date (third session's key, Lusoponte live, Carris and IP terms, FlixBus unknown) |
-| v0.1.1156 | 11-11 12:56 | not confirmed | *incident.transport@* IP is "terms" (link only); its 10 Nov rail alert as material for the researcher; FlixBus unknown (no readable network status) |
-| v0.1.1155 | 11-11 12:55 | served | *incident.graph@* rebuilt on the 12:53 data (544 nodes, 762 edges; 102 rows, 64 decisions); the datasets are their own part of the graph (storm-datasets.json, 51 KB; storm-sources.json 163 KB to 123 KB), no id or verb changed; ledger line |
-| v0.1.1154 | 11-11 12:55 | served | *incident.stories@* handover current to the 12:49 read; measure the 12:51 wake |
-| v0.1.1153 | 11-11 12:54 | not confirmed | *incident.conductor@* timeline 12:55: bridge limits since 11:30 at Lusoponte's own notice |
-| v0.1.1152 | 11-11 12:54 | served | *incident.stories@* the mainland retold on the midday cuts (red rain in four districts, orange wind to 18:00); Madeira standing |
-| v0.1.1151 | 11-11 12:54 | served | *incident.transport@* Lusoponte live (its own notices into bridges.json, drawn on /transport/bridges); Carris city is "terms", link only |
-| v0.1.1150 | 11-11 12:54 | not confirmed | *incident.datascience@* 12:53 refresh (IPMA eased some districts orange to yellow in the early hours; red peak unchanged at 4.93 M residents, 12:00 UTC; ensemble unchanged, no new run; tides recomputed) |
-| v0.1.1149 | 11-11 12:53 | not confirmed | *incident.ipma@* HANDOVER.md: the CAP change of 12:33 as the conductor reports it (Lisbon's red rain to 15:00, orange wind to 18:00), not yet in the open data |
-| v0.1.1148 | 11-11 12:53 | not confirmed | *incident.stories@* Less wind for Lisbon? retold on IPMA's communiqué no. 3 and the 12:33 cut (red rain to 15:00, orange wind to 18:00, gusts up to 90) |
-| v0.1.1147 | 11-11 12:53 | served | *incident.conductor@* timeline 12:40 corrected: Madeira's mountain regions, not Porto Santo (incident.ipma@ 12:53) |
-| v0.1.1146 | 11-11 12:52 | served | *incident.ipma@* HANDOVER.md brought up to date at 180k tokens a call (the sealed key route, the three-command wake, the state at 12:48, Porto Santo added to the areas watched); after-round.cjs kept in agents/ipma |
-| v0.1.1145 | 11-11 12:52 | not confirmed | *incident.conductor@* timeline 12:52: Público says Web Summit confirmed Thursday (press, not the organisers); Lusa 360 flights |
-| v0.1.1144 | 11-11 12:52 | served | *incident.ipma@* read 12:48 UTC: 64 requests, 63 answered 200, 47 files changed; warnings (IPMA's file dated 12:15): 43 above green; CBO Precipitação orange 11-11T07:17>11-11T12:00 ended; LRA Precipitação orange 11-11T07:17>11-11T12:00 ended; MCN Vento orange 11-11T07:33>11-11T12:00 ended; MCS Vento orange 11-11T07:33>11-11T12:00 ended; MPS Vento orange 11-11T07:33>11-11T12:00 ended; MRM Vento orange 11-11T07:33>1 |
-| v0.1.1143 | 11-11 12:51 | served | *incident.social@* 12:46 re-read: 4 new kept posts (Lusa, Público x2, VOST); offers: Público on Web Summit (doors reopen Thursday, a press report), 360 flights cancelled (Lusa citing ANA); the organisers still silent |
+| v0.1.1259 | 11-11 14:43 | tagged | *incident.perplexity@* the count of addresses opened corrected (68, not 74) · *incident.transport@* round 14:42: TTSL notice, Trafaria–Porto Brandão–Belém |
+| v0.1.1258 |  | unknown | no commit found for this run |
+| v0.1.1257 | 11-11 14:42 | tagged | *incident.meteorology@* 14:40 UTC re-read of every edge and licence: 0 changed state (prociv.gov.pt answered on a second pass); status · *incident.meteorology@* tokens measured (second session, 14:40 round) · *incident.perplexity@* round 3: the Câmara's measures, archives of IPMA's warnings, the transport operators, the bare question against the briefed one · *incident.perplexity@* tokens measured |
+| v0.1.1256 |  | unknown | no commit found for this run |
+| v0.1.1255 |  | unknown | no commit found for this run |
+| v0.1.1254 | 11-11 14:42 | tagged | *incident.accountant@* brief 16 named by the clock (1442Z); the conductor's line to 14:41 added: 35% of 2.84 billion tokens, 58% of the 14:00 hour so far |
+| v0.1.1253 | 11-11 14:41 | tagged | *incident.conductor@* measure line 14:41 |
+| v0.1.1252 | 11-11 14:41 | tagged | *incident.accountant@* the accounts, round 16: everyone but the conductor at 155,714 tokens a call in the 13:00 hour; transport, ipma, weatherwatch handed over again; five still on a first session; brief 16 |
+| v0.1.1251 | 11-11 14:40 | tagged | *incident.entities@* times corrected to the clock (seed 14:38, status 14:39:20; written ahead as 14:40 and 14:41) |
+| v0.1.1250 | 11-11 14:39 | tagged | *incident.media@* hourly wake 14:36 (444 items; coverage.json's short rows dropped, 220 KB to 34 KB; fact 15 first: DN 13:44) |
+| v0.1.1249 | 11-11 14:39 | tagged | *incident.entities@* hourly 14:38: nodes remade (243 nodes, 528 edges); the 12:33 cut has one id: warning/ipma-cut-1233 |
+| v0.1.1248 | 11-11 14:36 | tagged | *incident.weatherwatch@* tokens measured |
+| v0.1.1247 | 11-11 14:36 | tagged | *incident.weatherwatch@* 14:35 re-read: no CAP since 12:33, Lisbon unchanged, communiqué still no. 3; weather.com still headlines the withdrawn red wind |
+| v0.1.1246 | 11-11 14:34 | tagged | *incident.board@* 14:33 round: the airport's 74 km/h gust on c-peak-window, still watching; two asks between agents; For Dinis unchanged |
+| v0.1.1245 | 11-11 14:27 | tagged | *incident.brief@* edition 6: the marks were dropped at 14:26, not 14:28 (the clock's time) · *incident.weather@* hand-over: live checks with webdriver left on, as few loads as needed |
+| v0.1.1244 |  | unknown | no commit found for this run |
+| v0.1.1243 | 11-11 14:26 | tagged | *incident.brief@* edition 6: the (CAP) marks dropped in place (IPMA's open data caught up) |
+| v0.1.1242 | 11-11 14:25 | tagged | *incident.archivist@* 14:23 round: the primary pages unchanged since 13:25 (Lisboa still red on IPMA's timeline; ANEPC's notice 502 again) · *incident.sources@* 14:25 round: MeteoAlarm's Portugal feed read, unchanged since 13:26 |
+| v0.1.1241 |  | unknown | no commit found for this run |
+| v0.1.1240 | 11-11 14:25 | tagged | *incident.conductor@* bridge sync after the 14:22 read (analysis 21); timeline 14:25: wind turns south, gust 74 km/h, Oeiras 26.2 mm the heaviest hour |
+| v0.1.1239 | 11-11 14:22 | tagged | *incident.observability@* page views: a tab id no one reader could make (views at several screen classes, or over 150) counted apart as automated_inferred: 263 views by people, not 1583; HANDOVER for the seventh session |
+| v0.1.1238 | 11-11 14:21 | tagged | *incident.ci@* hourly wake 14:20 (52 runs, no failure; deploy retry on run 1232 passed) |
+| v0.1.1237 | 11-11 14:21 | tagged | *incident.identity@* 14:20 wake: 110 keys of 38 agents, 0 problems, signatures hold |
+| v0.1.1236 | 11-11 14:17 | served | *incident.designer@* round 61: the family's five themes (paper, ink, broadsheet, archive, azulejo) |
+| v0.1.1235 | 11-11 14:17 | served | *incident.journalist@* 14:12 wake: five supports re-anchored on the perplexity desk's commit 1ea0c72 after its status file was rewritten (credit back); dated on piece 7; hand-over brought up to date (about 170k tokens a call) · *incident.journalist@* tokens measured |
+| v0.1.1234 | 11-11 14:11 | served | *incident.desk@* the 14:11 drain |
+| v0.1.1233 | 11-11 14:10 | served | *incident.reporter@* the 14:06 wake: a quiet hour from Dinis; five hand-overs in 42 s (memory, step 29); the log to 14:09 · *incident.reporter@* tokens measured |
+| v0.1.1232 | 11-11 14:09 | served | *incident.transport@* handover: kept time as read (14:09) |
+| v0.1.1231 | 11-11 14:09 | not confirmed | *incident.transport@* handover: fourth session key, store-clone catch |
+| v0.1.1230 | 11-11 14:09 | not confirmed | *incident.shadow@* shadow reporting, round 3 (14:07): 15 answers against the record; IPMA's 07:16 lowering of the wind reaches one answer seven hours on, the red wind still served by the other engine; findings |
+| v0.1.1229 | 11-11 14:09 | served | *incident.transport@* tokens measured |
+| v0.1.1228 | 11-11 14:09 | served | *incident.transport@* round 14:08 (store cloned, fourth session) |
+| v0.1.1227 | 11-11 14:07 | served | *incident.designer@* hand-over: the eighth session so far (key, round 60, the 14:07 measure) |
+| v0.1.1226 | 11-11 14:07 | served | *incident.graph@* 14:06 rebuild (560 nodes, 788 edges); a-meteorology-5 answered in the builder |
+| v0.1.1225 | 11-11 14:07 | served | *incident.designer@* round 60: confidence as a meter (.conf), the spec for the residents-by-hour chart |
+| v0.1.1224 | 11-11 14:06 | not confirmed | *incident.conductor@* timeline 14:07: Madeira's 285 occurrences (Lusa, evidence) |
+| v0.1.1223 | 11-11 14:06 | served | *incident.transport@* bridges read (Lusoponte, no change) |
+| v0.1.1222 | 11-11 14:06 | not confirmed | *incident.graph@* fourth session key (incident-graph-dinis-4); the third's handed over |
+| v0.1.1221 | 11-11 14:06 | served | *incident.social@* third session's key (incident-social-dinis-3); -2 handed over |
+| v0.1.1220 | 11-11 14:06 | not confirmed | *incident.stories@* seventh session key (incident-stories-dinis-7); -6 handed over |
+| v0.1.1219 | 11-11 14:05 | not confirmed | *incident.transport@* fourth session key; third handed over |
+| v0.1.1218 | 11-11 14:05 | served | *incident.designer@* session key incident-designer-dinis-8; the seventh handed over |
+| v0.1.1217 | 11-11 14:03 | served | *incident.conductor@* hourly 14:03: timeline 14:04 (VOST's 538 occurrences, evidence) |
+| v0.1.1216 | 11-11 13:56 | served | *incident.wikipedia@* 13:50 read: vi and zh edit outside the storm's section; no claim changed |
+| v0.1.1215 | 11-11 13:55 | served | *incident.graph@* status corrected: the coverage table is in two parts, not three |
+| v0.1.1214 | 11-11 13:54 | served | *incident.graph@* rebuilt on the 13:53 data (553 nodes, 771 edges; 106 rows, 66 decisions; coverage 411 items); the hand-over in the status brought up to date; ledger line |
+| v0.1.1213 | 11-11 13:53 | served | *incident.conductor@* bridge sync: the researcher's decisions (ANA newsroom on airport.json, Lusoponte on bridges.json, TAP and IP) |
+| v0.1.1212 | 11-11 13:53 | not confirmed | *incident.ipma@* read 13:49 UTC: open data catches up with the 12:33 CAP (Lisbon red rain to 15:00, wind to 18:00) |
+| v0.1.1211 | 11-11 13:53 | served | *incident.datascience@* 13:53 refresh (IPMA eased: red 12-14 UTC 4.93 M -> 4.04 M residents, red 15-17 UTC 4.93 M -> 0.89 M, orange 18-20 UTC 8.07 M -> 3.29 M; ensemble unchanged, no new run) |
+| v0.1.1210 | 11-11 13:52 | served | *incident.stories@* measure the 13:51 wake |
+| v0.1.1209 | 11-11 13:52 | not confirmed | *incident.stories@* Thursday reported confirmed (press); Lisbon to the airport's 13:00 report; ANA and Lusoponte at source; handover current |
+| v0.1.1208 | 11-11 13:52 | served | *incident.social@* 13:46 re-read: 6 new kept posts (VOST x4, Lusa x2); four offers marked taken, VOST's 538 occurrences offered; HANDOVER.md brought up to date for a third session; the organisers still silent |
+| v0.1.1207 | 11-11 13:47 | served | *incident.transport@* Port of Lisbon (APL): no storm notice in its news at 13:47, unknown; the harbour master next |
+| v0.1.1206 | 11-11 13:46 | served | *incident.transport@* handover up to date at 13:48 (ANA's newsroom live, the terms, flags, trailers) |
+| v0.1.1205 | 11-11 13:46 | served | *incident.transport@* tokens measured |
+| v0.1.1204 | 11-11 13:46 | not confirmed | *incident.transport@* ANA's newsroom as ANA's own source (figures per airport into flights.json, drawn on /transport/flights); round 13:44 |
+| v0.1.1203 | 11-11 13:45 | served | *incident.librarian@* the 13:44 wake: 13:00 to 14:00 true to 13:45 (Thursday as evidence; IPMA's page and MeteoAlarm carry 12:33); release history; round 5c; tokens measured |
+| v0.1.1202 | 11-11 13:41 | served | *incident.accountant@* the accounts, round 15: the conductor 35% of 2.74 billion tokens (57% of the 12:00 hour, a fourth compaction); everyone else flat at about 157,000 a call; five never handed over; brief 15 |
+| v0.1.1201 | 11-11 13:41 | served | *incident.weatherwatch@* tokens measured |
+| v0.1.1200 | 11-11 13:40 | served | *incident.weatherwatch@* 13:37 re-read: no CAP after 12:33 for Lisbon, open data caught up; weather.com still headlines a red wind warning IPMA withdrew at 07:16; session key -4 |
