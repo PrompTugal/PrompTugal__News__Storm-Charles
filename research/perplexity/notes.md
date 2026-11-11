@@ -45,7 +45,7 @@ The same three questions (runs 1 to 3, in English), then three more where each m
 
 ## Cost per useful lead
 
-Five leads read at primary addresses for 0.19 US dollars of model spend: about four cents a lead (round 3 added pointers and confirmations, no new lead). The real cost is the checking: 74 addresses opened against 95 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
+Five leads read at primary addresses for 0.19 US dollars of model spend: about four cents a lead (round 3 added pointers and confirmations, no new lead). The real cost is the checking: 68 addresses opened against 95 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
 
 ## A hold on Web Summit's site (05:27 UTC)
 

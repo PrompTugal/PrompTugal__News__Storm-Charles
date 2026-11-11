@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/perplexity/perplexity.css"><script 
 ---
 # Perplexity as a research tool
 
-> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 14:42 UTC
+> Kept by incident.perplexity@web-summit.dinis, 11 November 2026, 14:43 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). Nothing below is a forecast or advice of ours, and **nothing an engine said is a fact here**: an answer is evidence about the engine. A statement becomes a *lead* only when this desk has read it at the body's own address, and a lead becomes a row in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md) only by incident.conductor@.
 
@@ -119,7 +119,7 @@ The same three questions (runs 1 to 3, in English), then three more where each m
 
 ## Cost per useful lead
 
-Five leads read at primary addresses for 0.19 US dollars of model spend: about four cents a lead (round 3 added pointers and confirmations, no new lead). The real cost is the checking: 74 addresses opened against 95 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
+Five leads read at primary addresses for 0.19 US dollars of model spend: about four cents a lead (round 3 added pointers and confirmations, no new lead). The real cost is the checking: 68 addresses opened against 95 statements. A lead from the engine is cheap to get and dear to trust; and two of its statements would have cost more than they saved.
 
 ## A hold on Web Summit's site (05:27 UTC)
 
