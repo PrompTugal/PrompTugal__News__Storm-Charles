@@ -18,6 +18,7 @@
             start() { frozen = false; document.documentElement.classList.remove('ag-frozen'); for (const [id, cb] of [...held]) { held.delete(id); raf0(cb) } document.dispatchEvent(new Event('agents-motion')) } }
     }
     const ROLE = el.dataset.role || ''   // set on an agent's own page (/agents/<role>/): its card, strip, policy and commits only
+    const VIEW = el.dataset.view || ''   // 'commit': one commit (?sha=) or one file's history (?path=); 'jobs': who owns what, doing what, blocked on whom
     const HERE = document.currentScript.src
     // the live map (Angelo's engine, pinned; live-adapter.js feeds it): its own box after the cards, so a refresh never redraws it
     const liveBox = document.createElement('section'); liveBox.id = 'live'; liveBox.className = 'ag-live'
@@ -25,12 +26,12 @@
     const startLive = () => { const b = liveBox.querySelector('[data-ag-live]'); if (b) b.parentNode.remove(); window.AgentsLive?.start() }
     liveBox.querySelector('[data-ag-live]').onclick = startLive
     document.addEventListener('lv-graph', () => { const b = liveBox.querySelector('[data-ag-live]'); if (b) b.parentNode.remove() }, true)
-    if (!ROLE) el.insertAdjacentElement('afterend', liveBox)
+    if (!ROLE && !VIEW) el.insertAdjacentElement('afterend', liveBox)
     // the Universe (Silvio's engine, pinned; universe-adapter.js feeds it): opened on request, because it needs 1.6 MB of 3D libraries
     const uniBox = document.createElement('section'); uniBox.id = 'universe'; uniBox.className = 'ag-uni'
     uniBox.innerHTML = `<h2 class="ag-h">The team as a Universe: map, circuit and Talk</h2><p class="ag-note">The same team in <a href="https://web-summit.sgit.ai/">the Universe by dashboard@web-summit.silvio, of Silvio's team</a>: a 3D <b>Map</b> (people, agents, the folders each may write), the <b>Circuit</b> (each agent through its behaviour policy to what it reaches) and <b>Talk</b> (who talks to whom, from the commits' <code>For:</code> trailers). The engine is an unchanged copy pinned at <a href="${new URL('vendor/universe@57636ac/pin.json', HERE).href}">commit 57636ac</a>, reading this site's data through one adapter. The policies it shows are the librarian's drafts (<a href="${el.dataset.base || "../../"}library/abp.html">all of them</a>).</p><p class="ag-draft" data-ag-draft><b>Draft policies, not agreed by Dinis.</b> A draft is not a licence to operate: where the Circuit says "a written policy", read "a written draft".</p><p class="ag-note">Opening it loads 1.6 MB of 3D libraries from web-summit.sgit.ai (checked against a pinned hash).</p><p><button type="button" class="ag-btn" data-ag-uni>Open the Universe</button> <span class="ag-note" data-ag-uni-note></span></p><div id="ag-universe"></div><p class="ag-note">The dark stage and its colours are the Universe's own theme, as its authors made it: it does not follow this site's light and dark.</p>`
-    if (!ROLE) liveBox.insertAdjacentElement('afterend', uniBox)
-    if (!ROLE) for (const f of ['live-adapter.js', 'universe-adapter.js']) { const s = document.createElement('script'); s.src = new URL(f, HERE).href; s.async = false; document.head.appendChild(s) }
+    if (!ROLE && !VIEW) liveBox.insertAdjacentElement('afterend', uniBox)
+    if (!ROLE && !VIEW) for (const f of ['live-adapter.js', 'universe-adapter.js']) { const s = document.createElement('script'); s.src = new URL(f, HERE).href; s.async = false; document.head.appendChild(s) }
     const openUni = () => { const b = uniBox.querySelector('[data-ag-uni]'); if (!window.AgentsUniverse || b.hidden) return; b.hidden = true; window.AgentsUniverse.open(uniBox.querySelector('#ag-universe'), uniBox.querySelector('[data-ag-uni-note]')).then(() => { if (!uniBox.querySelector('.bm')) b.hidden = false }) }
     uniBox.querySelector('[data-ag-uni]').onclick = openUni
     document.addEventListener('agents-universe', e => { const d = e.detail, n = uniBox.querySelector('[data-ag-draft]'); if (!n) return
@@ -189,6 +190,83 @@ ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do nex
 </details>`).join('')
     }
 
+    const commitHref = c => `${BASE}app/agents/commit.html?sha=${encodeURIComponent(c.sha)}`
+    const fileHref = p => `${BASE}app/agents/commit.html?path=${encodeURIComponent(p)}`
+    const agentHref = (name, idx) => { const a = (idx.agents || []).find(x => x.name === name); return a && a.has_page ? `${BASE}agents/${a.role}/index.html` : '' }
+    const who = (name, idx) => { const h = agentHref(name, idx); return h ? `<a href="${esc(h)}"><code>${T(short(name))}</code></a>` : `<code>${T(short(name) || '?')}</code>` }
+    const NR = '<span class="ag-nr">not recorded</span>'
+    const nr = v => v == null || v === '' || v === 'not recorded' ? NR : T(v)
+
+    // ---- one commit, or one file's history (app/agents/commit.html?sha=… | ?path=…) ----
+    async function drawCommit(idx, gh) {
+        const q = new URLSearchParams(location.search), sha = (q.get('sha') || '').replace(/[^0-9a-f]/gi, '').slice(0, 40), fpath = (q.get('path') || '').replace(/^\/+/, '').slice(0, 300)
+        if (fpath && !/\.\.|[<>"'`\\]/.test(fpath)) return drawFile(idx, gh, fpath)
+        const c = sha.length >= 7 ? gh.items.find(x => x.sha.startsWith(sha)) : null
+        if (!sha) { el.innerHTML = `<p class="ag-note">Give a commit (<code>?sha=</code>) or a file (<code>?path=</code>). The last pushes:</p><ul class="ag-feed">${gh.items.slice(0, 40).map(c => `<li><time>${esc(String(c.at).slice(5, 16).replace('T', ' '))}</time>${who(c.agent, idx)} <a href="${commitHref(c)}">${T(c.what)}</a></li>`).join('')}</ul>`; return }
+        let d = null, src = ''
+        if (c) { try { const f = await getJSON(`${BASE}data/agents/detail-${c.at.slice(0, 13)}.json`); if (f.commits && f.commits[c.sha]) { d = f.commits[c.sha]; src = `data/agents/detail-${c.at.slice(0, 13)}.json` } } catch { } }
+        let api = null
+        if (!d) { try { api = await getJSON(`https://api.github.com/repos/${REPO}/commits/${sha}`, { headers: { Accept: 'application/vnd.github+json' } }); src = "GitHub's public API" } catch { } }
+        const C = c || (api ? parse(api) : null)
+        if (!C) { el.innerHTML = `<p class="ag-note ag-err">No commit ${esc(sha.slice(0, 12))} was found in the snapshot, and GitHub's API did not answer. <a href="https://github.com/${REPO}/commit/${esc(sha)}">Try it on GitHub</a>.</p>`; return }
+        const files = d ? d.files : api ? (api.files || []).map(f => ({ p: f.filename, a: f.additions, d: f.deletions })) : [], more = d ? d.more_files : 0
+        const msg = api ? String(api.commit?.message || '') : ''
+        const body = d ? d.body : msg.split('\n').slice(1).filter(l => !/^(Agent|Issue|For|Co-Authored-By|Claude-Session):/i.test(l)).join('\n').trim()
+        const session = d ? d.session : (msg.match(/^Claude-Session:\s*\S*?(session_[A-Za-z0-9]+)/m) || [])[1] || ''
+        const add = files.reduce((n, f) => n + (f.a || 0), 0), del = files.reduce((n, f) => n + (f.d || 0), 0), max = Math.max(1, ...files.map(f => (f.a || 0) + (f.d || 0)))
+        const dirs = new Map(); for (const f of files) { const k = f.p.includes('/') ? f.p.split('/').slice(0, 2).join('/') : f.p; dirs.set(k, (dirs.get(k) || 0) + 1) }
+        const iAll = gh.items.findIndex(x => x.sha === C.sha), newer = iAll > 0 ? gh.items[iAll - 1] : null, older = iAll >= 0 ? gh.items[iAll + 1] : null
+        const mineAll = gh.items.filter(x => x.agent === C.agent), iMine = mineAll.findIndex(x => x.sha === C.sha)
+        document.title = `${clean(C.what).slice(0, 60)} · a push · Storm Charles`
+        el.innerHTML = `<p class="ag-note"><a href="${BASE}agents/index.html">All the agents</a> · ${older ? `<a href="${commitHref(older)}">‹ the push before</a>` : ''} ${newer ? `· <a href="${commitHref(newer)}">the push after ›</a>` : ''}</p>
+<section class="ag-one"><p class="kicker">One push</p><h2>${T(C.what)}</h2>
+<dl class="ag-dl">
+<dt>Who</dt><dd>${who(C.agent, idx)}${iMine >= 0 ? ` <span class="ag-note">its push ${mineAll.length - iMine} of ${mineAll.length} read</span>` : ''}</dd>
+<dt>For</dt><dd>${C.to.length ? C.to.map(t => who(t, idx)).join(', ') : '<span class="ag-note">nobody named</span>'}</dd>
+<dt>When</dt><dd>${esc(utc(C.at))} <span class="ag-note">${esc(ago(C.at))}</span></dd>
+<dt>Served in</dt><dd>${C.served_in ? `<a href="https://github.com/${REPO}/releases/tag/${esc(C.served_in)}"><code>${T(C.served_in)}</code></a> <span class="ag-note">the first release CI deployed that contains it${C.served_in && gh.items.find(x => x.sha === C.sha) ? '' : ''}</span>` : `${NR} <span class="ag-note">newer than the snapshot, or its release was not tagged when the snapshot was written</span>`}</dd>
+<dt>Session</dt><dd>${session ? `<code>${esc(session)}</code> <span class="ag-note">from the commit's Claude-Session trailer; <a href="${esc(agentHref(C.agent, idx) || '#')}#provenance">the agent's sessions</a></span>` : NR}</dd>
+<dt>Issue</dt><dd>${nr(C.issue)}</dd>
+<dt>Commit</dt><dd><a href="https://github.com/${REPO}/commit/${esc(C.sha)}"><code>${esc(C.sha.slice(0, 12))}</code> on GitHub (the full diff)</a> <span class="ag-note">not signed: the agent is named by its Agent: trailer</span></dd>
+</dl>
+${body ? `<h3>What it says it did</h3><p class="ag-body">${T(body).replace(/\n/g, '<br>')}</p>` : ''}
+<h3>What changed: ${files.length + more} file${files.length + more === 1 ? '' : 's'}, +${add} −${del} lines</h3>
+<p class="ag-note">${[...dirs].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, n]) => `${esc(k)}${n > 1 ? ` (${n})` : ''}`).join(' · ')}</p>
+<ul class="ag-files">${files.map(f => `<li><a href="${fileHref(f.p)}"><code>${esc(f.p)}</code></a><span class="n">${f.a == null ? 'binary' : `<i class="a" style="width:${Math.round(60 * (f.a || 0) / max)}px"></i><i class="d" style="width:${Math.round(60 * (f.d || 0) / max)}px"></i> +${f.a} −${f.d}`}</span></li>`).join('')}${more ? `<li class="ag-note">and ${more} more (see the full diff on GitHub)</li>` : ''}</ul>
+<p class="ag-note">From ${esc(src || 'the commits list')}; read ${esc(new Date().toISOString().slice(11, 19))} UTC. Lines added and removed are git's count; the diff itself is on GitHub.</p></section>`
+    }
+    async function drawFile(idx, gh, fpath) {
+        let rows = [], src = ''
+        try { const j = await getJSON(`https://api.github.com/repos/${REPO}/commits?sha=${BRANCH}&per_page=50&path=${encodeURIComponent(fpath)}`, { headers: { Accept: 'application/vnd.github+json' } }); rows = j.map(parse); src = "GitHub's public API (the last 50 commits that changed it)" } catch { }
+        if (!rows.length) {   // the snapshot: every hour's detail file, newest first
+            let files = []; try { files = (await getJSON(`${BASE}data/agents/commits.json`)).detail_files || [] } catch { }
+            const D = await Promise.all(files.map(f => getJSON(`${BASE}data/agents/${f}`).catch(() => null)))
+            const has = new Map(); for (const f of D) if (f) for (const [sha, c] of Object.entries(f.commits || {})) { const x = (c.files || []).find(x => x.p === fpath); if (x) has.set(sha, x) }
+            rows = gh.items.filter(c => has.has(c.sha)).map(c => ({ ...c, a: has.get(c.sha).a, d: has.get(c.sha).d })); src = 'the snapshot (data/agents/detail-*.json)'
+        }
+        // who may change it (the path policy's globs), and what the file says of itself (by / updated, or its Kept-by line)
+        const rx = g => new RegExp('^' + g.split(/(\*\*|\*)/).map(p => p === '**' ? '.*' : p === '*' ? '[^/]*' : p.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('') + '$')
+        const owners = idx.agents.filter(a => (a.policy_owns || []).some(g => g !== '**' && rx(g.replace(/<role>/g, a.role)).test(fpath)))
+        let self = ''
+        try { const r = await fetch(`${BASE}${fpath}`, { cache: 'no-cache' }); if (r.ok) { const t = await r.text()
+            if (/\.json$/.test(fpath)) { const j = JSON.parse(t); if (j.by || j.updated) self = `It says of itself: by <b>${T(j.by || 'not recorded')}</b>, updated ${T(j.updated || 'not recorded')}.` }
+            else if (/\.md$/.test(fpath)) { const m = t.match(/^>\s*Kept by ([^\n]{0,200})/m); if (m) self = `It says of itself: kept by ${T(m[1].replace(/\*\*/g, ''))}` } } } catch { }
+        const shown = /\.md$/.test(fpath) ? fpath.replace(/(^|\/)README\.md$/, '$1index.html').replace(/\.md$/, '.html') : fpath
+        const authors = new Map(); for (const c of rows) authors.set(c.agent, (authors.get(c.agent) || 0) + 1)
+        document.title = `${fpath} · a file's history · Storm Charles`
+        el.innerHTML = `<p class="ag-note"><a href="${BASE}agents/index.html">All the agents</a></p>
+<section class="ag-one"><p class="kicker">One file</p><h2><code>${esc(fpath)}</code></h2>
+<dl class="ag-dl">
+<dt>See it</dt><dd><a href="${BASE}${esc(shown)}">as this site serves it</a> · <a href="https://github.com/${REPO}/blob/${BRANCH}/${esc(fpath)}">on GitHub</a> · <a href="https://github.com/${REPO}/commits/${BRANCH}/${esc(fpath)}">its whole history on GitHub</a></dd>
+<dt>May change it</dt><dd>${owners.length ? owners.map(a => who(a.name, idx)).join(', ') + ' <span class="ag-note">by the path policy (agents/policy.json)</span>' : '<span class="ag-note">no agent\'s own paths cover it (shared, or the conductor\'s)</span>'}</dd>
+<dt>Kept by</dt><dd>${self || NR}</dd>
+<dt>Changed by</dt><dd>${[...authors].sort((a, b) => b[1] - a[1]).map(([n, k]) => `${who(n, idx)} ×${k}`).join(', ') || NR}</dd>
+</dl>
+<h3>${rows.length} push${rows.length === 1 ? '' : 'es'} that changed it</h3>
+<ul class="ag-feed">${rows.map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(5, 16).replace('T', ' '))}</time>${who(c.agent, idx)} <a href="${commitHref(c)}">${T(c.what)}</a>${c.a != null ? ` <span class="ag-note">+${c.a} −${c.d}</span>` : ''}</li>`).join('') || '<li class="ag-note">No push that changed it was found.</li>'}</ul>
+<p class="ag-note">From ${esc(src)}; read ${esc(new Date().toISOString().slice(11, 19))} UTC.</p></section>`
+    }
+
     const liveness = (a, last) => {
         if (!a.has_status && !last) return ['none', 'not started']
         if (/^blocked/i.test(a.state || '')) return ['blocked', 'blocked']
@@ -209,7 +287,7 @@ ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do nex
 <div class="body">
 ${ROLE || !a.has_page ? '' : `<p class="ag-note"><a href="${BASE}agents/${esc(a.role)}/index.html">Its own page</a>: its night, its policy, its last 20 commits.</p>`}
 ${a.state ? `<p><span class="lbl">Doing (its own words)</span>${T(a.state)}</p>` : `<p class="ag-note">${a.has_status ? 'No state written.' : `No status file yet (expected at <code>agents/${esc(a.role)}/status.json</code>).`}</p>`}
-<p><span class="lbl">Last push</span>${last ? `<a href="${esc(/^https:/.test(last.url) ? last.url : '#')}">${T(last.what)}</a><br><span class="ag-note">${esc(ago(last.at))} · ${esc(utc(last.at))} · ${mine.length} commit${mine.length > 1 ? 's' : ''} read${last.to.length ? ` · for ${T(last.to.map(short).join(', '))}` : ''}</span>` : '<span class="ag-note">No commit read from it on dev.</span>'}</p>
+<p><span class="lbl">Last push</span>${last ? `<a href="${commitHref(last)}">${T(last.what)}</a><br><span class="ag-note">${esc(ago(last.at))} · ${esc(utc(last.at))} · ${mine.length} commit${mine.length > 1 ? 's' : ''} read${last.to.length ? ` · for ${T(last.to.map(short).join(', '))}` : ''}</span>` : '<span class="ag-note">No commit read from it on dev.</span>'}</p>
 ${a.last_wake ? `<p><span class="lbl">Last wake (its own file)</span>${esc(utc(a.last_wake))} · ${esc(ago(a.last_wake))}</p>` : ''}
 ${a.asks_dinis?.length ? `<p><span class="lbl">Asks Dinis</span></p>${ul(a.asks_dinis, 'ask')}` : ''}
 ${a.asks?.length ? `<p><span class="lbl">Asks the team</span></p>${ul(a.asks)}` : ''}
@@ -226,6 +304,7 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         return rows.length ? `<table class="ag-flow"><thead><tr><th>From</th><th>For</th><th>Commits</th><th>Latest</th></tr></thead><tbody>${rows.map(r => `<tr><td><code>${T(short(r.from) || '(no Agent: trailer)')}</code></td><td><code>${T(short(r.to))}</code></td><td class="n"><span class="bar" style="width:${Math.round(60 * r.n / max)}px"></span>${r.n}</td><td>${T(r.what)} <span class="ag-note">${esc(ago(r.last))}</span></td></tr>`).join('')}</tbody></table>` : '<p class="ag-note">No For: trailers read yet.</p>'
     }
 
+    let whoMiss = ''
     async function draw() {
         let idx
         try { idx = await getJSON(`${BASE}data/agents/index.json?t=${Math.floor(Date.now() / 6e4)}`) }
@@ -239,6 +318,7 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
                 Object.assign(a, { has_status: true, status_file: `agents/${a.role}/status.json`, state: s.state || '', last_wake: s.last_wake || '', jobs: arr(s.jobs), done: arr(s.done), next: arr(s.next), asks_dinis: asks.filter(x => /^Dinis\b/i.test(x)), asks: asks.filter(x => !/^Dinis\b/i.test(x)) })
             } catch { }
         }))
+        if (!ROLE && !VIEW) { const w = new URLSearchParams(location.search).get('who'); if (w) { const a = idx.agents.find(x => x.name === w || x.name === w.replace(/@$/, '@web-summit.dinis') || x.role === w); if (a && a.has_page) { location.replace(`${BASE}agents/${a.role}/index.html`); return } whoMiss = w } }
         const [gh, ver, R, led] = await Promise.all([commits(), getJSON(`${BASE}version.json?t=${Date.now()}`).catch(() => null), runs(), ledger(idx).catch(() => '')])
         const X = R.items.length ? await exact(R) : {}
         const series = String(ver?.version || 'v0.1.0').replace(/^v/, '').split('.').slice(0, 2).join('.')
@@ -255,6 +335,7 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         const all = [...el.querySelectorAll('details')], open = new Set(all.filter(d => d.open).map(keyOf))
         const hadDrawn = !!el.dataset.drawn
         const N = nightData(idx, gh.items, gh.hist || {})
+        if (VIEW === 'commit') { if (!hadDrawn) { await drawCommit(idx, gh); el.dataset.drawn = '1' } return }
         if (ROLE) return drawRole(idx, gh, by, N, keyOf, open, hadDrawn)
         // pipeline health: the last hour of the deploy workflow's runs (the same records as "Release speed" below)
         const hour = R.items.filter(r => Date.now() - Date.parse(r.pushed) < 36e5), okH = hour.filter(r => r.conclusion === 'success')
@@ -264,7 +345,7 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         const health = !R.items.length ? `<p class="ag-note" id="health">Pipeline health: ${R.error ? 'GitHub did not answer this browser, so the run records could not be read.' : 'no run records read.'}</p>`
             : `<div class="ag-health${failedH ? ' bad' : ''}" id="health"><b>Pipeline, last hour</b><span><b>${hour.length}${R.items.length >= 100 && hour.length === R.items.length ? '+' : ''}</b> pushes</span><span><b>${okH.length}</b> deployed</span><span><b>${mServed != null ? mServed + ' s' : mRun != null ? '≤ ' + mRun + ' s' : 'n/a'}</b> median push to served${mServed != null ? ` (CI's measure, ${servedH.length} of ${okH.length} read so far)` : mRun != null ? ' (upper bound: push to run finished)' : ''}</span><span><b>${supH}</b> superseded</span><span class="${failedH ? 'ag-err' : ''}"><b>${failedH}</b> failed</span><a href="#releases">push by push</a></div>`
         el.innerHTML = `
-${health}
+${whoMiss ? `<p class="ag-draft">No page for <code>${T(whoMiss)}</code>: it is not an agent of this team (or has no page yet). It may be another team's agent, named in a commit's For: line.</p>` : ''}${health}
 <p class="ag-line"><span><b>${idx.agents.length}</b> agents</span><span><b>${n('now')}</b> active in the last 30 min</span><span><b>${n('blocked')}</b> blocked</span><span><b>${n('none')}</b> not started</span><span>last push <b>${gh.items[0] ? esc(ago(gh.items[0].at)) : 'n/a'}</b></span><span>serving <b>${ver?.version ? esc(ver.version) : 'n/a'}</b></span></p>
 <section class="ag-asks" id="asks"><h2>What Dinis can unblock: ${asks.length ? `${fresh} open ask${fresh === 1 ? '' : 's'}${asks.length > fresh ? `, and ${asks.length - fresh} that may be stale` : ''}, in ${new Set(asks.map(q => (THEMES.find(([, rx]) => rx.test(q.x)) || ['x'])[0])).size} groups` : 'nothing is waiting for you'}</h2>
 ${unblock(asks, idx)}
@@ -277,7 +358,7 @@ ${strangers.length ? `<p class="ag-note">Also pushing here, not in agents/JOBS.m
 ${section('releases', 'Release speed, push by push', releases(R, by, series, X))}
 ${section('flow', 'Who writes for whom', flow(gh.items), "the commits' For: trailers, as a table")}
 ${section('ledger', 'Model calls (the ledger)', led)}
-${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 25).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(11, 16))}</time><code>${T(short(c.agent) || '?')}</code> <a href="${esc(/^https:/.test(c.url) ? c.url : '#')}">${T(c.what)}</a>${c.to.length ? ` <span class="ag-note">for ${T(c.to.map(short).join(', '))}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commits read.</li>'}</ul>`)}
+${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 25).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(11, 16))}</time>${who(c.agent, idx)} <a href="${commitHref(c)}">${T(c.what)}</a>${c.to.length ? ` <span class="ag-note">for ${c.to.map(t => who(t, idx)).join(', ')}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commits read.</li>'}</ul>`)}
 <p class="ag-note">Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. Roster, jobs, statuses and keys: <a href="${BASE}data/agents/index.json">data/agents/index.json</a> (written ${T(idx.updated || idx.generated_at)} from agents/JOBS.md, agents/*/status.json and data/keys.json), then each agent's own status.json as served now. Commits: ${gh.source === 'snapshot' ? `<a href="${BASE}data/agents/commits.json">the snapshot in data/agents/commits.json</a>, taken ${T(gh.snapshot_at)} <span class="ag-err">(GitHub's public API did not answer this browser${gh.error ? ': ' + T(gh.error) : ''}; without a login it allows 60 calls an hour per address, so pushes after the snapshot are missing until it does)</span>` : `<a href="https://github.com/${REPO}/commits/${BRANCH}">GitHub's public API</a>${gh.read ? `, read ${esc(new Date(gh.read).toISOString().slice(11, 19))} UTC${gh.cached ? ' (cached up to two minutes in this browser)' : ''}` : ''}${gh.error ? ` <span class="ag-err">(GitHub did not answer: ${T(gh.error)})</span>` : ''}`}. "Active", "quiet" (30 min to 2 h) and "silent" are derived from the last push or wake; "blocked" is the agent's own word. Session ids are never shown.</p>`
         if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = open.has(keyOf(d))
         else openHash()
@@ -286,20 +367,47 @@ ${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 
         if (!hadDrawn) setTimeout(() => window.AgentsUniverse?.counts().catch(() => { }), 1500)
     }
     // an agent's own page: its card (open), its strip, its policy (the built page's article, same site), its last 20 commits
-    let policyHtml = null
+    let policyHtml = null, provenance = null
     async function drawRole(idx, gh, by, N, keyOf, open, hadDrawn) {
         const a = idx.agents.find(x => x.role === ROLE)
         if (!a) { el.innerHTML = `<p class="ag-note">No agent with the role "${esc(ROLE)}" in <a href="${BASE}agents/JOBS.html">the jobs table</a>.</p>`; return }
         if (policyHtml === null) { policyHtml = ''; try { const r = await fetch(`${BASE}agents/${encodeURIComponent(ROLE)}/policy.html`, { cache: 'no-cache' }); if (r.ok) { const art = new DOMParser().parseFromString(await r.text(), 'text/html').querySelector('article'); if (art) { for (const x of art.querySelectorAll('script,style,link,iframe')) x.remove(); for (const l of art.querySelectorAll('a[href]')) { const h = l.getAttribute('href'); if (!/^(https:|#)/.test(h)) l.setAttribute('href', `${BASE}agents/${ROLE}/${h}`) } policyHtml = art.innerHTML } } } catch { } }
         const mine = by.get(a.name) || [], draft = /NOT AGREED/i.test(policyHtml)
+        if (provenance === null) { provenance = {}; try { provenance = await getJSON(`${BASE}data/agents/sessions.json?t=${Math.floor(Date.now() / 3e5)}`) } catch { } }
+        const P = (provenance.agents || []).find(x => x.agent === a.name) || {}, sess = Array.isArray(P.sessions) ? P.sessions : [], keys = Array.isArray(P.keys) ? P.keys : []
+        // state and blocker, in plain words, from its own status file and the commits (the same reading as the night strip)
+        const R = N.rows.find(r => r.a.role === ROLE), last = mine[0], nowOn = R ? [...R.on[R.n - 1]] : [], H = (gh.hist || {})[ROLE] || []
+        const askSince = (() => { let t = ''; for (let k = H.length - 1; k >= 0 && H[k].asks_dinis > 0; k--) t = H[k].at; return t })()
+        const [cls, word] = liveness(a, last)
+        const plain = [
+            !a.has_status && !last ? 'It has not started: no status file, no push.' : R && R.synced ? 'Its files arrive here by sync from the old repository; it has pushed nothing here under its own name, so what it is doing now is not visible from this repository.' : last ? `It last pushed ${ago(last.at)} (${utc(last.at)}).` : 'It has a status file and has pushed nothing yet.',
+            /^blocked/i.test(a.state || '') ? `It says it is blocked: "${clean(a.state).slice(0, 220)}"` : '',
+            (a.asks_dinis || []).length ? `It is waiting on Dinis for ${a.asks_dinis.length} thing${a.asks_dinis.length > 1 ? 's' : ''}${askSince ? `, the oldest open since ${utc(askSince)}` : ''} (below).` : 'It asks nothing of Dinis.',
+            nowOn.length ? `It has sent work for ${nowOn.join(', ')}, who ${nowOn.length > 1 ? 'have' : 'has'} not pushed since.` : '',
+            (a.asks || []).length ? `It asks ${a.asks.length} thing${a.asks.length > 1 ? 's' : ''} of the team.` : ''
+        ].filter(Boolean)
+        const owns = a.policy_owns || []
         el.innerHTML = `<p class="ag-note"><a href="${BASE}agents/index.html">All the agents</a> · <a href="${BASE}agents/${esc(ROLE)}/status.json">its status file</a> · <a href="${BASE}agents/JOBS.html">the jobs</a></p>
+<section class="ag-one"><p class="kicker">${T(a.role)} <span class="ag-pill ${cls}">${esc(word)}</span></p><h2><code>${T(a.name)}</code></h2>
+<ul class="ag-plain">${plain.map(x => `<li>${T(x)}</li>`).join('')}</ul></section>
 <div class="ag-grid">${card(a, by).replace('<details class="ag-card"', '<details open class="ag-card"')}</div>
+<h2 class="ag-h" id="folders">Its folders</h2>
+${owns.length ? `<p class="ag-chips">${owns.map(g => { const top = g.replace(/\*.*$/, '').replace(/\/$/, ''); return `<a href="${fileHref(top || g)}"><code>${esc(g)}</code></a>` }).join(' ')}</p><p class="ag-note">The paths it may change, by the path policy (<a href="${fileHref('agents/policy.json')}">agents/policy.json</a>): a check each agent runs on itself before pushing, not a lock.${mine.length ? ` Where its last ${Math.min(mine.length, 100)} pushes went is in each push below.` : ''}</p>` : `<p class="ag-note">No paths of its own in agents/policy.json.</p>`}
+<h2 class="ag-h" id="provenance">Who it is: key and sessions</h2>
+<dl class="ag-dl">
+<dt>Operator</dt><dd>${nr(P.operator)}</dd>
+${keys.length ? keys.map(k => `<dt>Key</dt><dd>record <code>${nr(k.record)}</code> · encryption <code>${nr(k.encryption)}</code><br><span class="ag-note">${nr(k.status)}, added ${nr(k.added)}. ${nr(k.how)}</span><br><span class="ag-note">operator's key it says it is linked to: ${nr(k.operator_key)} · <a href="${fileHref('data/keys.json')}">data/keys.json</a> (public halves only)</span></dd>`).join('') : `<dt>Key</dt><dd>${NR} <span class="ag-note">no public key for it in data/keys.json</span></dd>`}
+${sess.length ? sess.map(x => `<dt>Session</dt><dd><code>${esc(x.id)}</code> <span class="ag-note">(the link opens only for the operator)</span><br>${x.commits} push${x.commits === 1 ? '' : 'es'}, first <a href="${commitHref(x.first_commit)}">${esc(utc(x.first_commit.at))}</a>, last <a href="${commitHref(x.last_commit)}">${esc(utc(x.last_commit.at))}</a><br>started ${nr(x.started_at)} · by ${x.started_by && x.started_by !== 'not recorded' ? who(x.started_by, idx) : NR} · from session ${x.started_by_session && x.started_by_session !== 'not recorded' ? `<code>${esc(x.started_by_session)}</code>` : NR}<br>on whose word: ${nr(x.on_whose_word)}<br><span class="ag-note">source: ${nr(x.source)}</span></dd>`).join('') : `<dt>Session</dt><dd>${NR} <span class="ag-note">no commit here carries its name with a Claude-Session trailer</span></dd>`}
+<dt>Signed?</dt><dd><span class="ag-note">No commit is signed yet: the agent is named by the commit's Agent: trailer, written by whoever pushed it. Its key signs nothing so far.</span></dd>
+</dl>
+<p class="ag-note">From <a href="${fileHref('data/agents/sessions.json')}">data/agents/sessions.json</a> (written ${T(provenance.updated || '')} from the commits' trailers, the status files and data/keys.json). "Not recorded" means the fact is not written in the repository; nothing is guessed. An agent records its own start in its status file's "session" object.</p>
+${section('history', 'Its status through the night', H.length ? `<ul class="ag-feed">${H.slice().reverse().slice(0, 30).map(h => `<li><time datetime="${esc(h.at)}">${esc(String(h.at).slice(5, 16).replace('T', ' '))}</time>${h.blocked ? '<b>blocked</b> · ' : ''}${h.asks_dinis} ask${h.asks_dinis === 1 ? '' : 's'} for Dinis${h.last_wake ? ` · said its last wake was ${T(h.last_wake)}` : ''}</li>`).join('')}</ul><p class="ag-note">Each time its status file changed in what it asks of Dinis, whether it calls itself blocked, or its last wake (as of the snapshot of ${T(gh.snapshot_at || '')}).</p>` : `<p class="ag-note">No history of its status file in the snapshot.</p>`)}
 <h2 class="ag-h">Its night</h2>
 ${night(N, ROLE)}
 <h2 class="ag-h">Its behaviour policy</h2>
 ${policyHtml ? `${draft ? '<p class="ag-draft"><b>A draft, not agreed by Dinis.</b> A draft is not a licence to operate.</p>' : ''}<details class="ag-fold" data-k="policy" id="policy"><summary>Read the policy${draft ? ' (draft)' : ''}</summary><div class="body ag-policy">${policyHtml}</div></details><p class="ag-note">As served at <a href="${BASE}agents/${esc(ROLE)}/policy.html">agents/${esc(ROLE)}/policy.html</a>; kept by the librarian's generator, not by this page.</p>` : `<p class="ag-note">No behaviour policy at agents/${esc(ROLE)}/policy.md.</p>`}
 <h2 class="ag-h">Its last ${Math.min(20, mine.length)} commits</h2>
-<ul class="ag-feed">${mine.slice(0, 20).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(5, 16).replace('T', ' '))}</time><a href="${esc(/^https:/.test(c.url) ? c.url : '#')}">${T(c.what)}</a>${c.to.length ? ` <span class="ag-note">for ${T(c.to.map(short).join(', '))}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commit of its own read on dev.</li>'}</ul>
+<ul class="ag-feed">${mine.slice(0, 20).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(5, 16).replace('T', ' '))}</time><a href="${commitHref(c)}">${T(c.what)}</a>${c.files != null ? ` <span class="ag-note">${c.files} file${c.files === 1 ? '' : 's'}, +${c.added} −${c.removed}${c.served_in ? ', served in ' + T(c.served_in) : ''}</span>` : ''}${c.to.length ? ` <span class="ag-note">for ${c.to.map(t => who(t, idx)).join(', ')}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commit of its own read on dev.</li>'}</ul>
 <p class="ag-note">Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. Its status file as served now; commits from ${gh.source === 'snapshot' ? `the snapshot of ${T(gh.snapshot_at)} (GitHub's API did not answer this browser)` : "GitHub's public API"}. Session ids are never shown.</p>`
         if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = open.has(keyOf(d))
         el.dataset.drawn = '1'

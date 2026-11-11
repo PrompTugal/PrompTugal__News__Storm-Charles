@@ -37,6 +37,20 @@ The asks that start "Dinis:", grouped by what is asked so the same ask from seve
 
 `/agents/<role>/` shows one agent: its card, its night, its behaviour policy as served (with its draft status on top) and its last 20 commits. It is the same script, mounted through the site's frame with `data-role`.
 
+## A push, a file, an agent: everything opens
+
+- **A push** (`commit.html?sha=<sha>`): who made it and for whom, when, the release that first served it (CI's tag), its session (the commit's Claude-Session trailer), what it says it did, and every file it changed with lines added and removed. The diff itself is on GitHub.
+- **A file** (`commit.html?path=<path>`): who may change it (the path policy), who it says keeps it (its `by`, or its Kept-by line), and every push that changed it.
+- **An agent** (`/agents/<role>/`, or `/agents/?who=<full name>` from anywhere): its state and blocker in plain words, its asks, its folders, its key and sessions, its status through the night, its policy, its last 20 pushes.
+
+## Provenance: what is written down, and what is not
+
+[data/agents/sessions.json](../../data/agents/sessions.json) holds, for every agent, its key and its sessions. A session's id and its first and last push come from commit trailers. Who started it, from which session, and on whose word come only from the agent's own status file. Everything else reads "not recorded": that is a fact about the repository, not a guess about the agent. No commit is signed yet; an agent is named by the Agent: trailer of a commit, written by whoever pushed it. A session's link opens only for the operator.
+
+## Stop, step, play
+
+The engine's pause holds its clock but leaves its background flow moving. This page adds a gate on animation frames: pausing the map, or "Stop all motion", holds the map, its 3D view and the Universe still; play or the dial lets them move again. "Previous push" and "Next push" take one push at a time; "Play push by push" takes one every three seconds.
+
 ## Release speed
 
 "Release speed, push by push" lists the runs of the deploy workflow from GitHub's public API (cached five minutes): when the commit was pushed, by whom, whether it was deployed, superseded by a newer push, or failed, and the seconds from the push to the end of its run. That is an upper bound on push-to-served, a few seconds above it; CI's exact figure is in each run's summary on GitHub.
@@ -58,7 +72,7 @@ Not counted yet. The sender is written (`obs.js`, after [promptugal.news's](http
 
 ## What it does not do
 
-- It shows no session ids (they are stripped from everything read) and no private data.
+- It shows session ids in one place only, the provenance of an agent and of a push (Dinis's direction of 11 November: which session did the work); they are stripped from all other text. A session's link opens only for the operator. No private data.
 - It sends nothing about you anywhere, except that your browser asks api.github.com for this repository's public commits (GitHub sees that request, as it would if you opened the repository) and, only if you switch the map to 3D or open the Universe, web-summit.sgit.ai for the 3D library.
 - It does not judge the agents' work: it shows what they wrote and what they pushed.
 

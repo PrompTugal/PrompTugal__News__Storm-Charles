@@ -1,0 +1,628 @@
+{
+ "about": "Agent provenance for storm-charles.promptugal.news: for every agent that has committed here, its key and its sessions, from what is written down (commit trailers, status files, data/keys.json). \"not recorded\" means exactly that: the fact is not in the repository; nothing is guessed. A session link opens only for the operator. Commits are not signed: the agent is named in the commit's Agent: trailer, by whoever pushed it.",
+ "by": "incident.observability@web-summit.dinis",
+ "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
+ "branch": "dev",
+ "head": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
+ "how_to_record": "An agent records its own start in agents/<role>/status.json: \"session\": { \"id\", \"started_at\" (UTC), \"started_by\" (agent), \"started_by_session\", \"on_whose_word\", \"source\" (where that is written) }.",
+ "address_pattern": {
+  "agent_page": "agents/<role>/index.html, where <role> is the part of the name between \"incident.\" and \"@\"",
+  "any_name": "agents/index.html?who=<full agent name> (goes to its page, or says there is none)",
+  "commit": "app/agents/commit.html?sha=<sha>",
+  "file": "app/agents/commit.html?path=<path in the repository>"
+ },
+ "counts": {
+  "agents": 26,
+  "sessions": 11,
+  "sessions_with_a_recorded_start": 1,
+  "agents_without_a_key": 15
+ },
+ "agents": [
+  {
+   "agent": "incident.archivist@web-summit.dinis",
+   "role": "archivist",
+   "team": true,
+   "page": "agents/archivist/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.board@web-summit.dinis",
+   "role": "board",
+   "team": true,
+   "page": "agents/board/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.ci@web-summit.dinis",
+   "role": "ci",
+   "team": true,
+   "page": "agents/ci/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.conductor@web-summit.dinis",
+   "role": "conductor",
+   "team": true,
+   "page": "agents/conductor/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-conductor-dinis",
+     "record": "sha256:fa135665c51ee284",
+     "encryption": "sha256:2df48a3207ec20ae",
+     "added": "2026-11-10",
+     "status": "active",
+     "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab, pinned in SGit-AI__Website__Web-Summit admin/tools/seal.mjs); linked locally to the operator's key sha256:db7f79fdd87e030a; also published on web-summit.sgit.ai's keys page.",
+     "operator_key": "sha256:db7f79fdd87e030a"
+    }
+   ],
+   "commits": 70,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "url": "https://claude.ai/code/session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "commits": 70,
+     "first_commit": {
+      "sha": "77cdd51fc101109920aeb4308704823711d0f356",
+      "at": "2026-11-10T21:14:33Z"
+     },
+     "last_commit": {
+      "sha": "4577806b72673568733c9a77187b29e0a323ee2c",
+      "at": "2026-11-11T02:18:38Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.designer@web-summit.dinis",
+   "role": "designer",
+   "team": true,
+   "page": "agents/designer/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-designer-dinis",
+     "record": "sha256:7f811aed132d0ddb",
+     "encryption": "sha256:eea8a3af03d5efa9",
+     "added": "2026-11-10",
+     "status": "active",
+     "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 36,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtQkhemqpDQRF7VtAN2",
+     "url": "https://claude.ai/code/session_018yvwtQkhemqpDQRF7VtAN2",
+     "commits": 36,
+     "first_commit": {
+      "sha": "876a31e26fde4d49e3bd32e6012f6f11e9da66b6",
+      "at": "2026-11-10T23:36:58Z"
+     },
+     "last_commit": {
+      "sha": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
+      "at": "2026-11-11T02:19:08Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.dev@web-summit.dinis",
+   "role": "dev",
+   "team": true,
+   "page": "agents/dev/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.entities@web-summit.dinis",
+   "role": "entities",
+   "team": true,
+   "page": "agents/entities/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
+   "role": "graph",
+   "team": true,
+   "page": "agents/graph/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-graph-dinis",
+     "record": "sha256:6c3575f81c3ff0e8",
+     "encryption": "sha256:6caf6606ce46c991",
+     "added": "2026-11-10",
+     "status": "active",
+     "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 14,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtR8zLQivnC4JDKPoSw",
+     "url": "https://claude.ai/code/session_018yvwtR8zLQivnC4JDKPoSw",
+     "commits": 14,
+     "first_commit": {
+      "sha": "9b42a2e674cccb55146bc69121ad2aaeae32c97b",
+      "at": "2026-11-10T23:44:08Z"
+     },
+     "last_commit": {
+      "sha": "129a0f7ee3a6092e0c7344adde7401280a2fccde",
+      "at": "2026-11-11T02:17:07Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.identity@web-summit.dinis",
+   "role": "identity",
+   "team": true,
+   "page": "agents/identity/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-identity-dinis",
+     "record": "sha256:2d91c7d9fe8df5d3",
+     "encryption": "sha256:9e6e630e0d1d051a",
+     "added": "2026-11-10",
+     "status": "active",
+     "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 10,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtNHFqJdWi8SYTp77QS",
+     "url": "https://claude.ai/code/session_018yvwtNHFqJdWi8SYTp77QS",
+     "commits": 10,
+     "first_commit": {
+      "sha": "b53673e7c9b3eaad38a40a51150c9f2911fc6b19",
+      "at": "2026-11-10T23:39:17Z"
+     },
+     "last_commit": {
+      "sha": "fd9568a8abfeeb64cc892631bc6161e1fc2ec895",
+      "at": "2026-11-11T02:14:35Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "role": "ipma",
+   "team": true,
+   "page": "agents/ipma/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.labs@web-summit.dinis",
+   "role": "labs",
+   "team": true,
+   "page": "agents/labs/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
+   "role": "librarian",
+   "team": true,
+   "page": "agents/librarian/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-librarian-dinis",
+     "record": "sha256:c1dd34b5c4dcfc33",
+     "encryption": "sha256:cefff668d770eca8",
+     "added": "2026-11-10",
+     "status": "active",
+     "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 31,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtPysshPQ94qEprs4pr",
+     "url": "https://claude.ai/code/session_018yvwtPysshPQ94qEprs4pr",
+     "commits": 31,
+     "first_commit": {
+      "sha": "72a73628abfe6ff30e77f932a0df2644dd3d42a1",
+      "at": "2026-11-10T23:38:35Z"
+     },
+     "last_commit": {
+      "sha": "482ea0c80158743d600ebb120bba20cda199900a",
+      "at": "2026-11-11T02:16:45Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.media@web-summit.dinis",
+   "role": "media",
+   "team": true,
+   "page": "agents/media/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-media-dinis",
+     "record": "sha256:01d564d05862cdbd",
+     "encryption": "sha256:c32235761af5a47b",
+     "added": "2026-11-10",
+     "status": "active",
+     "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 10,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtMBxaFYWBGAGvzTqtH",
+     "url": "https://claude.ai/code/session_018yvwtMBxaFYWBGAGvzTqtH",
+     "commits": 10,
+     "first_commit": {
+      "sha": "8b9392e6e3ba3320f60e6a4c1538846dfcc3322e",
+      "at": "2026-11-10T23:38:00Z"
+     },
+     "last_commit": {
+      "sha": "045b92e983b880cedf1fe1e4c5566ba289e73f56",
+      "at": "2026-11-11T02:17:14Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.meteorologist@web-summit.dinis",
+   "role": "meteorologist",
+   "team": true,
+   "page": "agents/meteorologist/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.meteorology@web-summit.dinis",
+   "role": "meteorology",
+   "team": true,
+   "page": "agents/meteorology/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.models@web-summit.dinis",
+   "role": "models",
+   "team": true,
+   "page": "agents/models/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.observability@web-summit.dinis",
+   "role": "observability",
+   "team": true,
+   "page": "agents/observability/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-observability-dinis",
+     "record": "sha256:4eaeeacb457991e0",
+     "encryption": "sha256:1913bd5631290440",
+     "added": "2026-11-10",
+     "status": "active",
+     "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 17,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtNqSbr9KU2d6ovMWcm",
+     "url": "https://claude.ai/code/session_018yvwtNqSbr9KU2d6ovMWcm",
+     "commits": 17,
+     "first_commit": {
+      "sha": "3d93ef4fd941959eeb82cbbb469877294ea37f1e",
+      "at": "2026-11-10T23:38:37Z"
+     },
+     "last_commit": {
+      "sha": "bea465ffff37b4d0d2c64ca74dd8a9e508ef5623",
+      "at": "2026-11-11T02:14:48Z"
+     },
+     "started_at": "2026-11-10T23:35Z",
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz, 10 November 2026, about 23:40 UTC: \"maximum visibility into what every single agent is doing ... how they're firing up, and how I can help them\"; \"we use their UIs\" (Angelo's and Silvio's)",
+     "source": "this session's start brief from the conductor; Dinis's words are in BRIEF.md, the section of 10 November ~23:40 UTC. started_at is when this session's container cloned the repository."
+    }
+   ]
+  },
+  {
+   "agent": "incident.researcher@web-summit.dinis",
+   "role": "researcher",
+   "team": true,
+   "page": "agents/researcher/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.shadow@web-summit.dinis",
+   "role": "shadow",
+   "team": true,
+   "page": "agents/shadow/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "role": "social",
+   "team": true,
+   "page": "agents/social/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.sources@web-summit.dinis",
+   "role": "sources",
+   "team": true,
+   "page": "agents/sources/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "role": "stories",
+   "team": true,
+   "page": "agents/stories/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": "not recorded",
+   "commits": 0,
+   "commits_without_a_session_trailer": 0,
+   "sessions": "not recorded"
+  },
+  {
+   "agent": "incident.studio@web-summit.dinis",
+   "role": "studio",
+   "team": true,
+   "page": "agents/studio/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-studio-dinis",
+     "record": "sha256:1450b77352b69c10",
+     "encryption": "sha256:a245b51b57e34f52",
+     "added": "2026-11-11",
+     "status": "active",
+     "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 8,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtLqxneDnR4p11VDywD",
+     "url": "https://claude.ai/code/session_018yvwtLqxneDnR4p11VDywD",
+     "commits": 8,
+     "first_commit": {
+      "sha": "7fc709c8b75fa45f121497972b1b5f99cd4af2a7",
+      "at": "2026-11-11T00:38:03Z"
+     },
+     "last_commit": {
+      "sha": "0fde362b6f1f6e590a6393d170557bc020988b7d",
+      "at": "2026-11-11T02:15:42Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.weather@web-summit.dinis",
+   "role": "weather",
+   "team": true,
+   "page": "agents/weather/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-weather-dinis",
+     "record": "sha256:112fde2bd4edd8d8",
+     "encryption": "sha256:59bd6a558daf0242",
+     "added": "2026-11-11",
+     "status": "active",
+     "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 3,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtQpLvbJSGYz3qLMq86",
+     "url": "https://claude.ai/code/session_018yvwtQpLvbJSGYz3qLMq86",
+     "commits": 3,
+     "first_commit": {
+      "sha": "82fa4e5a997531f9e93c67a157ae42457e744abe",
+      "at": "2026-11-11T02:16:19Z"
+     },
+     "last_commit": {
+      "sha": "52da7d95c55020dc6ec647431ef416e701cee4fc",
+      "at": "2026-11-11T02:18:26Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "role": "weatherwatch",
+   "team": true,
+   "page": "agents/weatherwatch/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-weatherwatch-dinis",
+     "record": "sha256:7a20fd5738914fe1",
+     "encryption": "sha256:c3f31029c7428764",
+     "added": "2026-11-10",
+     "status": "active",
+     "how": "Made in its own session on 10 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 11,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtLRz9YpWVk9QAktkQD",
+     "url": "https://claude.ai/code/session_018yvwtLRz9YpWVk9QAktkQD",
+     "commits": 11,
+     "first_commit": {
+      "sha": "066df683d4f98046893cff6e56e09e6abf72f4f6",
+      "at": "2026-11-10T23:38:13Z"
+     },
+     "last_commit": {
+      "sha": "f6323b1c28d23a420764091377c792dc9373f0c8",
+      "at": "2026-11-11T02:16:23Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "role": "wikipedia",
+   "team": true,
+   "page": "agents/wikipedia/index.html",
+   "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
+   "keys": [
+    {
+     "id": "incident-wikipedia-dinis",
+     "record": "sha256:75ed17adda4b899d",
+     "encryption": "sha256:da1d37c302cd8700",
+     "added": "2026-11-11",
+     "status": "active",
+     "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 5,
+   "commits_without_a_session_trailer": 0,
+   "sessions": [
+    {
+     "id": "session_018yvwtPhxRFHgK1h5einS95",
+     "url": "https://claude.ai/code/session_018yvwtPhxRFHgK1h5einS95",
+     "commits": 5,
+     "first_commit": {
+      "sha": "1e744ad917a5cd624f82914992b5f6641caa45ae",
+      "at": "2026-11-11T01:43:52Z"
+     },
+     "last_commit": {
+      "sha": "32efe7eb1a0087950708e971f0368fb9a0f7dfc5",
+      "at": "2026-11-11T02:01:37Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "not recorded",
+     "started_by_session": "not recorded",
+     "on_whose_word": "not recorded",
+     "source": "not recorded"
+    }
+   ]
+  }
+ ],
+ "updated": "2026-11-11T02:19:18Z"
+}

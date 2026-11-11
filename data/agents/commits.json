@@ -1,12 +1,20 @@
 {
- "about": "The last commits on dev of this repository: who pushed what, when, and for whom (Agent: and For: trailers), and each pair's count. Written by tools/agents-commits.mjs from git log; a snapshot as of updated (the live page reads GitHub's public API first and falls back to this). status_history: each agent's status file at every commit that changed it (asks for Dinis, last_wake, blocked). No session ids. A commit's page: https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/<sha>.",
+ "about": "The last commits on dev of this repository: who pushed what, when, and for whom (Agent: and For: trailers), and each pair's count. Written by tools/agents-commits.mjs from git log; a snapshot as of updated (the live page reads GitHub's public API first and falls back to this). Each item: sha, at, agent, to, issue, what, served_in (the first release that served it; empty: not yet tagged when this was written), files, added, removed; its files and message are in detail-<hour>.json (detail_files). status_history: each agent's status file at every commit that changed it (asks for Dinis, last_wake, blocked). No session ids. A commit's page: https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/<sha>.",
  "by": "incident.observability@web-summit.dinis",
- "updated": "2026-11-11T02:14:47Z",
+ "updated": "2026-11-11T02:19:18Z",
  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
  "branch": "dev",
- "head": "fd9568a8abfeeb64cc892631bc6161e1fc2ec895",
- "count": 201,
+ "head": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
+ "count": 216,
  "from": "2026-11-10T21:03:38Z",
+ "detail_files": [
+  "detail-2026-11-11T02.json",
+  "detail-2026-11-11T01.json",
+  "detail-2026-11-11T00.json",
+  "detail-2026-11-10T23.json",
+  "detail-2026-11-10T22.json",
+  "detail-2026-11-10T21.json"
+ ],
  "status_history": {
   "conductor": [
    {
@@ -202,6 +210,18 @@
     "asks_dinis": 1,
     "last_wake": "2026-11-11T02:12:00Z",
     "blocked": false
+   },
+   {
+    "at": "2026-11-11T02:16:05Z",
+    "asks_dinis": 1,
+    "last_wake": "2026-11-11T02:16:03Z",
+    "blocked": false
+   },
+   {
+    "at": "2026-11-11T02:19:08Z",
+    "asks_dinis": 1,
+    "last_wake": "2026-11-11T02:19:05Z",
+    "blocked": false
    }
   ],
   "dev": [
@@ -295,6 +315,12 @@
     "at": "2026-11-11T01:56:06Z",
     "asks_dinis": 1,
     "last_wake": "2026-11-11T01:55Z",
+    "blocked": false
+   },
+   {
+    "at": "2026-11-11T02:16:27Z",
+    "asks_dinis": 1,
+    "last_wake": "2026-11-11T02:16Z",
     "blocked": false
    }
   ],
@@ -434,6 +460,12 @@
     "asks_dinis": 3,
     "last_wake": "2026-11-11T01:45:00Z",
     "blocked": false
+   },
+   {
+    "at": "2026-11-11T02:17:14Z",
+    "asks_dinis": 3,
+    "last_wake": "2026-11-11T02:35:00Z",
+    "blocked": false
    }
   ],
   "meteorologist": [
@@ -546,6 +578,12 @@
     "asks_dinis": 1,
     "last_wake": "2026-11-11T01:23Z",
     "blocked": false
+   },
+   {
+    "at": "2026-11-11T02:14:48Z",
+    "asks_dinis": 1,
+    "last_wake": "2026-11-11T02:14Z",
+    "blocked": false
    }
   ],
   "researcher": [
@@ -628,6 +666,20 @@
     "asks_dinis": 0,
     "last_wake": "2026-11-11T01:59Z",
     "blocked": false
+   },
+   {
+    "at": "2026-11-11T02:15:42Z",
+    "asks_dinis": 0,
+    "last_wake": "2026-11-11T02:11Z",
+    "blocked": false
+   }
+  ],
+  "weather": [
+   {
+    "at": "2026-11-11T02:16:19Z",
+    "asks_dinis": 0,
+    "last_wake": "2026-11-11T02:05:00Z",
+    "blocked": false
    }
   ],
   "weatherwatch": [
@@ -672,6 +724,12 @@
     "asks_dinis": 2,
     "last_wake": "2026-11-11T02:11Z",
     "blocked": false
+   },
+   {
+    "at": "2026-11-11T02:16:23Z",
+    "asks_dinis": 3,
+    "last_wake": "2026-11-11T02:11Z",
+    "blocked": false
    }
   ],
   "wikipedia": [
@@ -691,16 +749,22 @@
  },
  "talks": [
   {
+   "from": "incident.librarian@web-summit.dinis",
+   "to": "incident.conductor@web-summit.dinis",
+   "n": 31,
+   "last": "2026-11-11T02:16:45Z"
+  },
+  {
    "from": "incident.designer@web-summit.dinis",
    "to": "incident.conductor@web-summit.dinis",
    "n": 30,
    "last": "2026-11-11T02:12:14Z"
   },
   {
-   "from": "incident.librarian@web-summit.dinis",
+   "from": "incident.observability@web-summit.dinis",
    "to": "incident.conductor@web-summit.dinis",
-   "n": 29,
-   "last": "2026-11-11T02:14:06Z"
+   "n": 17,
+   "last": "2026-11-11T02:14:48Z"
   },
   {
    "from": "incident.conductor@web-summit.dinis",
@@ -709,22 +773,16 @@
    "last": "2026-11-11T01:57:01Z"
   },
   {
-   "from": "incident.observability@web-summit.dinis",
+   "from": "incident.graph@web-summit.dinis",
    "to": "incident.conductor@web-summit.dinis",
-   "n": 16,
-   "last": "2026-11-11T01:24:54Z"
+   "n": 13,
+   "last": "2026-11-11T02:16:27Z"
   },
   {
    "from": "incident.conductor@web-summit.dinis",
    "to": "incident.meteorologist@web-summit.dinis",
    "n": 12,
    "last": "2026-11-11T01:48:44Z"
-  },
-  {
-   "from": "incident.graph@web-summit.dinis",
-   "to": "incident.conductor@web-summit.dinis",
-   "n": 12,
-   "last": "2026-11-11T01:56:06Z"
   },
   {
    "from": "incident.conductor@web-summit.dinis",
@@ -751,28 +809,28 @@
    "last": "2026-11-10T23:35:36Z"
   },
   {
+   "from": "incident.media@web-summit.dinis",
+   "to": "incident.conductor@web-summit.dinis",
+   "n": 9,
+   "last": "2026-11-11T02:17:14Z"
+  },
+  {
    "from": "incident.conductor@web-summit.dinis",
    "to": "incident.researcher@web-summit.dinis",
    "n": 8,
    "last": "2026-11-11T01:35:57Z"
   },
   {
-   "from": "incident.media@web-summit.dinis",
+   "from": "incident.studio@web-summit.dinis",
    "to": "incident.conductor@web-summit.dinis",
    "n": 8,
-   "last": "2026-11-11T01:37:08Z"
+   "last": "2026-11-11T02:15:42Z"
   },
   {
    "from": "incident.weatherwatch@web-summit.dinis",
    "to": "incident.designer@web-summit.dinis",
    "n": 8,
    "last": "2026-11-11T02:14:26Z"
-  },
-  {
-   "from": "incident.studio@web-summit.dinis",
-   "to": "incident.conductor@web-summit.dinis",
-   "n": 7,
-   "last": "2026-11-11T02:00:06Z"
   },
   {
    "from": "incident.conductor@web-summit.dinis",
@@ -793,22 +851,34 @@
    "last": "2026-11-11T02:01:37Z"
   },
   {
+   "from": "incident.studio@web-summit.dinis",
+   "to": "incident.designer@web-summit.dinis",
+   "n": 4,
+   "last": "2026-11-11T02:15:42Z"
+  },
+  {
+   "from": "incident.conductor@web-summit.dinis",
+   "to": "incident.wikipedia@web-summit.dinis",
+   "n": 3,
+   "last": "2026-11-11T02:18:38Z"
+  },
+  {
    "from": "incident.conductor@web-summit.dinis",
    "to": "incident.identity@web-summit.dinis",
    "n": 3,
    "last": "2026-11-11T00:06:37Z"
   },
   {
-   "from": "incident.studio@web-summit.dinis",
-   "to": "incident.designer@web-summit.dinis",
+   "from": "incident.weather@web-summit.dinis",
+   "to": "incident.conductor@web-summit.dinis",
    "n": 3,
-   "last": "2026-11-11T00:56:54Z"
+   "last": "2026-11-11T02:18:26Z"
   },
   {
    "from": "incident.conductor@web-summit.dinis",
-   "to": "incident.wikipedia@web-summit.dinis",
+   "to": "incident.entities@web-summit.dinis",
    "n": 2,
-   "last": "2026-11-11T01:53:58Z"
+   "last": "2026-11-11T02:18:38Z"
   },
   {
    "from": "incident.conductor@web-summit.dinis",
@@ -818,9 +888,27 @@
   },
   {
    "from": "incident.graph@web-summit.dinis",
+   "to": "incident.entities@web-summit.dinis",
+   "n": 2,
+   "last": "2026-11-11T02:17:07Z"
+  },
+  {
+   "from": "incident.graph@web-summit.dinis",
    "to": "incident.observability@web-summit.dinis",
    "n": 2,
    "last": "2026-11-11T00:29:38Z"
+  },
+  {
+   "from": "incident.studio@web-summit.dinis",
+   "to": "incident.librarian@web-summit.dinis",
+   "n": 2,
+   "last": "2026-11-11T02:15:42Z"
+  },
+  {
+   "from": "incident.weatherwatch@web-summit.dinis",
+   "to": "incident.conductor@web-summit.dinis",
+   "n": 2,
+   "last": "2026-11-11T02:16:23Z"
   },
   {
    "from": "incident.wikipedia@web-summit.dinis",
@@ -836,13 +924,13 @@
   },
   {
    "from": "incident.conductor@web-summit.dinis",
-   "to": "incident.board@web-summit.dinis",
+   "to": "incident.archivist@web-summit.dinis",
    "n": 1,
-   "last": "2026-11-11T02:13:10Z"
+   "last": "2026-11-11T02:18:38Z"
   },
   {
    "from": "incident.conductor@web-summit.dinis",
-   "to": "incident.entities@web-summit.dinis",
+   "to": "incident.board@web-summit.dinis",
    "n": 1,
    "last": "2026-11-11T02:13:10Z"
   },
@@ -857,6 +945,18 @@
    "to": "conductor.B@PrompTugal.vicky",
    "n": 1,
    "last": "2026-11-11T00:05:19Z"
+  },
+  {
+   "from": "incident.designer@web-summit.dinis",
+   "to": "incident.weather@web-summit.dinis",
+   "n": 1,
+   "last": "2026-11-11T02:19:08Z"
+  },
+  {
+   "from": "incident.designer@web-summit.dinis",
+   "to": "incident.entities@web-summit.dinis",
+   "n": 1,
+   "last": "2026-11-11T02:16:05Z"
   },
   {
    "from": "incident.designer@web-summit.dinis",
@@ -896,6 +996,18 @@
   },
   {
    "from": "incident.media@web-summit.dinis",
+   "to": "incident.archivist@web-summit.dinis",
+   "n": 1,
+   "last": "2026-11-11T02:17:14Z"
+  },
+  {
+   "from": "incident.media@web-summit.dinis",
+   "to": "incident.board@web-summit.dinis",
+   "n": 1,
+   "last": "2026-11-11T02:17:14Z"
+  },
+  {
+   "from": "incident.media@web-summit.dinis",
    "to": "incident.wikipedia@web-summit.dinis",
    "n": 1,
    "last": "2026-11-11T01:27:26Z"
@@ -931,22 +1043,16 @@
    "last": "2026-11-11T00:54:27Z"
   },
   {
-   "from": "incident.studio@web-summit.dinis",
-   "to": "incident.librarian@web-summit.dinis",
+   "from": "incident.weather@web-summit.dinis",
+   "to": "incident.designer@web-summit.dinis",
    "n": 1,
-   "last": "2026-11-11T00:42:40Z"
+   "last": "2026-11-11T02:16:19Z"
   },
   {
    "from": "incident.weatherwatch@web-summit.dinis",
    "to": "incident.archivist@web-summit.dinis",
    "n": 1,
    "last": "2026-11-11T02:14:26Z"
-  },
-  {
-   "from": "incident.weatherwatch@web-summit.dinis",
-   "to": "incident.conductor@web-summit.dinis",
-   "n": 1,
-   "last": "2026-11-10T23:58:52Z"
   },
   {
    "from": "incident.wikipedia@web-summit.dinis",
@@ -957,6 +1063,222 @@
  ],
  "items": [
   {
+   "sha": "d8d64501b4432eb1b82f4b5e4e2ad06b78d91f37",
+   "at": "2026-11-11T02:19:08Z",
+   "agent": "incident.designer@web-summit.dinis",
+   "to": [
+    "incident.weather@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "design round 32: the swap: / is the Weather face (weather/index.md re-based to the root); the technical front page is data-room/index.html with its anchors; the",
+   "served_in": "",
+   "files": 6,
+   "added": 68,
+   "removed": 17
+  },
+  {
+   "sha": "4577806b72673568733c9a77187b29e0a323ee2c",
+   "at": "2026-11-11T02:18:38Z",
+   "agent": "incident.conductor@web-summit.dinis",
+   "to": [
+    "incident.entities@web-summit.dinis",
+    "incident.archivist@web-summit.dinis",
+    "incident.wikipedia@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "22 timeline rows gain their source addresses (found by the researcher); eight rows that rest on the press are now labelled evidence, not fact; a file per servic",
+   "served_in": "v0.1.196",
+   "files": 17,
+   "added": 885,
+   "removed": 60
+  },
+  {
+   "sha": "52da7d95c55020dc6ec647431ef416e701cee4fc",
+   "at": "2026-11-11T02:18:26Z",
+   "agent": "incident.weather@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "round 2: wind today, measured against warned (one chart, one axis, a table twin); next read on the hero",
+   "served_in": "v0.1.195",
+   "files": 4,
+   "added": 79,
+   "removed": 8
+  },
+  {
+   "sha": "045b92e983b880cedf1fe1e4c5566ba289e73f56",
+   "at": "2026-11-11T02:17:14Z",
+   "agent": "incident.media@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.archivist@web-summit.dinis",
+    "incident.board@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "round two, part 1: a page per outlet (coverage, key moments, sources, licence and terms as published, contact page), by-lines, who carried whose words, who we w",
+   "served_in": "v0.1.194",
+   "files": 46,
+   "added": 2944,
+   "removed": 26
+  },
+  {
+   "sha": "129a0f7ee3a6092e0c7344adde7401280a2fccde",
+   "at": "2026-11-11T02:17:07Z",
+   "agent": "incident.graph@web-summit.dinis",
+   "to": [
+    "incident.entities@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "the builder joins entities/index.json when it exists: a node with an entity carries entity \"<type>/<id>\" and links to its page",
+   "served_in": "v0.1.193",
+   "files": 2,
+   "added": 9,
+   "removed": 1
+  },
+  {
+   "sha": "482ea0c80158743d600ebb120bba20cda199900a",
+   "at": "2026-11-11T02:16:45Z",
+   "agent": "incident.librarian@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.192",
+   "files": 1,
+   "added": 193,
+   "removed": 52
+  },
+  {
+   "sha": "e8255df992e0608298e34f90370dc97715471711",
+   "at": "2026-11-11T02:16:44Z",
+   "agent": "incident.librarian@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "help/ (how to read the site, six short pages), news/ (the 02:00 to 03:00 article and its data, tools/library-news.mjs), the viewer added to the build's generato",
+   "served_in": "v0.1.192",
+   "files": 14,
+   "added": 657,
+   "removed": 7
+  },
+  {
+   "sha": "2d246d4bd6d47297f8967259b454715e11deb771",
+   "at": "2026-11-11T02:16:27Z",
+   "agent": "incident.graph@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.entities@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "the graph answers questions (presets, filters by kind and verb, layouts, node and edge panes, a node as its own graph); the ontology drawn; lead times as its ow",
+   "served_in": "v0.1.192",
+   "files": 15,
+   "added": 464,
+   "removed": 142
+  },
+  {
+   "sha": "f6323b1c28d23a420764091377c792dc9373f0c8",
+   "at": "2026-11-11T02:16:23Z",
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "weather-sites: terms.json, each site's own terms page with its sentences about reuse; three sites restrict automated reading or AI use: no longer requested, lin",
+   "served_in": "v0.1.190",
+   "files": 114,
+   "added": 1720,
+   "removed": 186
+  },
+  {
+   "sha": "a92c425221a420fefefb4805c9333404a764aa45",
+   "at": "2026-11-11T02:16:19Z",
+   "agent": "incident.weather@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "the Weather face, round 1, at weather/ (now, today hour by hour, the reading as a hypothesis, closed and running, Madeira, Thursday, the last changes), read onl",
+   "served_in": "v0.1.190",
+   "files": 4,
+   "added": 477,
+   "removed": 0
+  },
+  {
+   "sha": "82fa4e5a997531f9e93c67a157ae42457e744abe",
+   "at": "2026-11-11T02:16:19Z",
+   "agent": "incident.weather@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "its session key (public half)",
+   "served_in": "v0.1.190",
+   "files": 1,
+   "added": 16,
+   "removed": 0
+  },
+  {
+   "sha": "fb7bc0d03ae16d521a8fec37df4b9890dbede717",
+   "at": "2026-11-11T02:16:05Z",
+   "agent": "incident.designer@web-summit.dinis",
+   "to": [
+    "incident.entities@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "design round 31: the panel's hooks (slot, show, openItem, openSource); a link to a .json, .md or .txt file of this site opens in the panel; the frame loads app/",
+   "served_in": "v0.1.188",
+   "files": 5,
+   "added": 78,
+   "removed": 9
+  },
+  {
+   "sha": "0fde362b6f1f6e590a6393d170557bc020988b7d",
+   "at": "2026-11-11T02:15:42Z",
+   "agent": "incident.studio@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.librarian@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "the Studio, round two (Dinis, 02:10): a page per explanation and the Studio as their index; a full-screen button; the script beside the stage",
+   "served_in": "v0.1.187",
+   "files": 12,
+   "added": 491,
+   "removed": 365
+  },
+  {
+   "sha": "9d3a54ca9ef129ce7e3b1350c96a48725dc3e456",
+   "at": "2026-11-11T02:15:04Z",
+   "agent": "incident.conductor@web-summit.dinis",
+   "to": [],
+   "issue": "WS-214",
+   "what": "BRIEF: Dinis's direction of 02:20 (meteorology to the raw material, Wayback for pages and data, stories, other models and shadow reporting, a home for every age",
+   "served_in": "v0.1.186",
+   "files": 4,
+   "added": 86,
+   "removed": 2
+  },
+  {
+   "sha": "bea465ffff37b4d0d2c64ca74dd8a9e508ef5623",
+   "at": "2026-11-11T02:14:48Z",
+   "agent": "incident.observability@web-summit.dinis",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "issue": "WS-214",
+   "what": "Stop stops on the live map (a gate on animation frames; the engine's pause left its flow flying); step push by push with a caption per push; agents on the map l",
+   "served_in": "v0.1.185",
+   "files": 6,
+   "added": 889,
+   "removed": 116
+  },
+  {
    "sha": "fd9568a8abfeeb64cc892631bc6161e1fc2ec895",
    "at": "2026-11-11T02:14:35Z",
    "agent": "incident.identity@web-summit.dinis",
@@ -964,7 +1286,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "/account/ is a log-in first (Dinis, ~02:10); SECURITY.md section e: the rule for vaults the agents make and the patterns the gate should add; tools/lane-handove"
+   "what": "/account/ is a log-in first (Dinis, ~02:10); SECURITY.md section e: the rule for vaults the agents make and the patterns the gate should add; tools/lane-handove",
+   "served_in": "v0.1.185",
+   "files": 11,
+   "added": 148,
+   "removed": 39
   },
   {
    "sha": "85719584511e5d393af0870ee7a9b4fd441f0d21",
@@ -974,7 +1300,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "weather-sites round two: a page per site (106), the comparison table that sorts and filters, contact and terms links as printed on each site"
+   "what": "weather-sites round two: a page per site (106), the comparison table that sorts and filters, contact and terms links as printed on each site",
+   "served_in": "v0.1.183",
+   "files": 116,
+   "added": 8261,
+   "removed": 53
   },
   {
    "sha": "60761b2cb5b557bb341514382714a97579eab3dd",
@@ -984,7 +1314,11 @@
     "incident.archivist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "weather-sites: addresses.json, the 106 addresses to capture (official and public-service: yes; commercial and press: only where terms allow)"
+   "what": "weather-sites: addresses.json, the 106 addresses to capture (official and public-service: yes; commercial and press: only where terms allow)",
+   "served_in": "v0.1.183",
+   "files": 1,
+   "added": 1387,
+   "removed": 0
   },
   {
    "sha": "65242357c0a3fcc492ebe14a561cbc4a771020d2",
@@ -994,7 +1328,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.182",
+   "files": 1,
+   "added": 83,
+   "removed": 64
   },
   {
    "sha": "d211ccec8c81173e4265583fddd380ad4709cc7c",
@@ -1004,7 +1342,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "tools/library-view.mjs: a viewer page for every served file (schema, tables, who keeps it, sha256, where used, the raw one click away), written only with --out;"
+   "what": "tools/library-view.mjs: a viewer page for every served file (schema, tables, who keeps it, sha256, where used, the raw one click away), written only with --out;",
+   "served_in": "v0.1.182",
+   "files": 3,
+   "added": 169,
+   "removed": 10
   },
   {
    "sha": "c418f28144a628d411b8639817c2d927a6da1fb1",
@@ -1015,7 +1357,11 @@
     "incident.entities@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the build's generators as a list any agent can add to (admin/build/generators.json: before and after the pages are rendered); board and entities generators expe"
+   "what": "the build's generators as a list any agent can add to (admin/build/generators.json: before and after the pages are rendered); board and entities generators expe",
+   "served_in": "v0.1.181",
+   "files": 3,
+   "added": 21,
+   "removed": 2
   },
   {
    "sha": "6186c29b8eafba579ea104d9f3fc40461256e99e",
@@ -1025,7 +1371,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 30: the frame for round two (Dinis, 02:10): the whole width, subsites in the menu, the version in the chrome, the reader's panel (lens, this item, "
+   "what": "design round 30: the frame for round two (Dinis, 02:10): the whole width, subsites in the menu, the version in the chrome, the reader's panel (lens, this item, ",
+   "served_in": "v0.1.180",
+   "files": 8,
+   "added": 243,
+   "removed": 15
   },
   {
    "sha": "3eb85f12917886e0f276e0042db1f4bbf284af74",
@@ -1033,7 +1383,11 @@
    "agent": "incident.conductor@web-summit.dinis",
    "to": [],
    "issue": "WS-214",
-   "what": "the cross-folder log"
+   "what": "the cross-folder log",
+   "served_in": "v0.1.179",
+   "files": 1,
+   "added": 1,
+   "removed": 0
   },
   {
    "sha": "f8297d80256b5c9dbe48088a540c49a8f812dc28",
@@ -1041,7 +1395,11 @@
    "agent": "incident.conductor@web-summit.dinis",
    "to": [],
    "issue": "WS-214",
-   "what": "RESTRUCTURE.md (two faces, one grammar for entities, evidence, sources and data sets, vault rules, the reader's panel); eight new agents in JOBS and the path po"
+   "what": "RESTRUCTURE.md (two faces, one grammar for entities, evidence, sources and data sets, vault rules, the reader's panel); eight new agents in JOBS and the path po",
+   "served_in": "v0.1.178",
+   "files": 3,
+   "added": 330,
+   "removed": 175
   },
   {
    "sha": "659dd792206cfa6d6c7ebbc69065e708edd807b8",
@@ -1049,7 +1407,11 @@
    "agent": "incident.conductor@web-summit.dinis",
    "to": [],
    "issue": "WS-214",
-   "what": "BRIEF: Dinis's page-by-page direction of 02:10 (two faces, everything linked, evidence captured in vaults, sources as sections with their own agents)"
+   "what": "BRIEF: Dinis's page-by-page direction of 02:10 (two faces, everything linked, evidence captured in vaults, sources as sections with their own agents)",
+   "served_in": "v0.1.178",
+   "files": 1,
+   "added": 47,
+   "removed": 0
   },
   {
    "sha": "32efe7eb1a0087950708e971f0368fb9a0f7dfc5",
@@ -1061,7 +1423,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "each Wikipedia claim with our check at the primary source and its footnote's kind; the footnotes counted; a chatbot's product name withheld from edit summaries"
+   "what": "each Wikipedia claim with our check at the primary source and its footnote's kind; the footnotes counted; a chatbot's product name withheld from edit summaries",
+   "served_in": "v0.1.177",
+   "files": 14,
+   "added": 2397,
+   "removed": 272
   },
   {
    "sha": "10ec0d4d41f6a00747137d94c61fc82092c8a15e",
@@ -1071,7 +1437,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "\"How a fact gets onto this site\" quotes row s-1110T1742 as it now stands (IPMA's send time, 16:30:01, was added to it); \"not rewritten\" now means the claim, and"
+   "what": "\"How a fact gets onto this site\" quotes row s-1110T1742 as it now stands (IPMA's send time, 16:30:01, was added to it); \"not rewritten\" now means the claim, and",
+   "served_in": "v0.1.176",
+   "files": 3,
+   "added": 34,
+   "removed": 30
   },
   {
    "sha": "d6a7d558f8f73664ddb14818019b368ddc5b0e4a",
@@ -1081,7 +1451,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the second read (01:53 UTC): nothing changed on Wikipedia since 01:37; the status says how Wikidata answered"
+   "what": "the second read (01:53 UTC): nothing changed on Wikipedia since 01:37; the status says how Wikidata answered",
+   "served_in": "v0.1.175",
+   "files": 17,
+   "added": 116,
+   "removed": 55
   },
   {
    "sha": "1c402f207e2e9ec7973e1e977fa19a71e9486903",
@@ -1091,7 +1465,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the searched sources on the Madeira card are named whole"
+   "what": "the searched sources on the Madeira card are named whole",
+   "served_in": "v0.1.174",
+   "files": 1,
+   "added": 1,
+   "removed": 1
   },
   {
    "sha": "e6890b9921c4669baa1d1a30f241f0f89a4efa26",
@@ -1101,7 +1479,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the Madeira card says what was searched for an earlier warning and that none was found, as evidence (madeira.json earlier_warnings); the wording \"outside any wi"
+   "what": "the Madeira card says what was searched for an earlier warning and that none was found, as evidence (madeira.json earlier_warnings); the wording \"outside any wi",
+   "served_in": "v0.1.173",
+   "files": 2,
+   "added": 5,
+   "removed": 1
   },
   {
    "sha": "93dfe3b98c78cd31380147f131ddc2c8d99a825e",
@@ -1111,7 +1493,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": ".prov may wrap (a long source line ran research/wikipedia/ to 607 px on a 390 px phone); found by the 01:55 sweep of 139 live pages"
+   "what": ".prov may wrap (a long source line ran research/wikipedia/ to 607 px on a 390 px phone); found by the 01:55 sweep of 139 live pages",
+   "served_in": "v0.1.172",
+   "files": 1,
+   "added": 4,
+   "removed": 0
   },
   {
    "sha": "11e7d4ce3f1c7ab78bf1d206a8a78053e3a3b084",
@@ -1121,7 +1507,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: madeira.json earlier_warnings (no rain warning found for Madeira's mountains or south coast for Tuesday 12:00 to 21:00 in the feed saved at 23:50; not pro"
+   "what": "sync: madeira.json earlier_warnings (no rain warning found for Madeira's mountains or south coast for Tuesday 12:00 to 21:00 in the feed saved at 23:50; not pro",
+   "served_in": "v0.1.171",
+   "files": 2,
+   "added": 66,
+   "removed": 2
   },
   {
    "sha": "9a4f082ed23ae4969af17c7b5527623130cfb9e5",
@@ -1131,7 +1521,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "an allow-list for post addresses, keyed by timeline row, each with its reason and who decided (first: s-1110T2141)"
+   "what": "an allow-list for post addresses, keyed by timeline row, each with its reason and who decided (first: s-1110T2141)",
+   "served_in": "v0.1.170",
+   "files": 10,
+   "added": 35,
+   "removed": 17
   },
   {
    "sha": "caf3181264cef0b6da7bb9917bdd2e0fe961f020",
@@ -1141,7 +1535,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "no personal post address or handle in the graph or its tables: regenerated, and the builder now refuses them"
+   "what": "no personal post address or handle in the graph or its tables: regenerated, and the builder now refuses them",
+   "served_in": "v0.1.169",
+   "files": 13,
+   "added": 602,
+   "removed": 562
   },
   {
    "sha": "df512d56c9dad88402b89f11125b118f0ba86f3a",
@@ -1151,7 +1549,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 27: the hour label read as hour ending (shown as our reading, dashed); Madeira's sums corrected (153.2 mm inside red, 93.3 mm before it); the same "
+   "what": "design round 27: the hour label read as hour ending (shown as our reading, dashed); Madeira's sums corrected (153.2 mm inside red, 93.3 mm before it); the same ",
+   "served_in": "v0.1.168",
+   "files": 5,
+   "added": 72,
+   "removed": 35
   },
   {
    "sha": "1dec01684fecdc43a9fdc0c83977096b2c16e297",
@@ -1162,7 +1564,11 @@
     "incident.wikipedia@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "a private attendee's handle and post address withheld from row s-1110T1806 (found by incident.wikipedia@'s values check); the redaction rule for permanent rows;"
+   "what": "a private attendee's handle and post address withheld from row s-1110T1806 (found by incident.wikipedia@'s values check); the redaction rule for permanent rows;",
+   "served_in": "v0.1.167",
+   "files": 3,
+   "added": 6,
+   "removed": 10
   },
   {
    "sha": "f979e753b8b732f3da9b2f42d1df5acfaccd9a7a",
@@ -1172,7 +1578,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the times on four files were ahead of the clock; corrected to 01:53 UTC"
+   "what": "the times on four files were ahead of the clock; corrected to 01:53 UTC",
+   "served_in": "v0.1.165",
+   "files": 4,
+   "added": 4,
+   "removed": 4
   },
   {
    "sha": "de21661d6dff40f8922583452bf081e2c9377254",
@@ -1182,7 +1592,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: lisbon-rain.json (eight Lisbon stations, hourly rain in madeira.json's shape) and the hour_label block (IPMA does not document it; hour ending is our read"
+   "what": "sync: lisbon-rain.json (eight Lisbon stations, hourly rain in madeira.json's shape) and the hour_label block (IPMA does not document it; hour ending is our read",
+   "served_in": "v0.1.165",
+   "files": 12,
+   "added": 1746,
+   "removed": 127
   },
   {
    "sha": "6f20890b4318b44aa14db458368af9f8e32e78d1",
@@ -1192,7 +1606,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the graph in three files (storm.json was 9 KB from the limit on the new data); rebuilt on the 01:50 data"
+   "what": "the graph in three files (storm.json was 9 KB from the limit on the new data); rebuilt on the 01:50 data",
+   "served_in": "v0.1.165",
+   "files": 17,
+   "added": 1192,
+   "removed": 926
   },
   {
    "sha": "25c74678124b8a32f227d2463b4688442c70a705",
@@ -1204,7 +1622,11 @@
     "incident.media@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "Wikipedia's claims with their footnotes, pt against en, this site against Wikipedia both ways, and this site against Wikipedia's values"
+   "what": "Wikipedia's claims with their footnotes, pt against en, this site against Wikipedia both ways, and this site against Wikipedia's values",
+   "served_in": "v0.1.162",
+   "files": 12,
+   "added": 5451,
+   "removed": 16
   },
   {
    "sha": "2880fb0d020bef7bd6b234f843395db18b34fac6",
@@ -1214,7 +1636,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 26: Madeira, what was warned and what fell: IPMA's rain warnings (CAP, with sent times) over the stations' hourly rain, on one axis; one sentence c"
+   "what": "design round 26: Madeira, what was warned and what fell: IPMA's rain warnings (CAP, with sent times) over the stations' hourly rain, on one axis; one sentence c",
+   "served_in": "v0.1.161",
+   "files": 6,
+   "added": 90,
+   "removed": 8
   },
   {
    "sha": "e414674cb956267d4626bf780f8134ab768c0611",
@@ -1225,7 +1651,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "Madeira observed: 230.5 mm in six hours at IPMA's Areeiro station (verified at IPMA by the meteorologist); madeira.json; the low's possible origin as a hypothes"
+   "what": "Madeira observed: 230.5 mm in six hours at IPMA's Areeiro station (verified at IPMA by the meteorologist); madeira.json; the low's possible origin as a hypothes",
+   "served_in": "v0.1.160",
+   "files": 17,
+   "added": 4113,
+   "removed": 283
   },
   {
    "sha": "ba69077364fcf94e53ac382664f103d3efe6a4c7",
@@ -1235,7 +1665,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.159",
+   "files": 1,
+   "added": 129,
+   "removed": 93
   },
   {
    "sha": "87790e2a514148554775290cb14bfa0f69da10c2",
@@ -1245,7 +1679,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "01:44 wake: the release history to run 158 (113 served); a draft behaviour policy for incident.wikipedia@; a studio kind in the catalogue; the commit record ref"
+   "what": "01:44 wake: the release history to run 158 (113 served); a draft behaviour policy for incident.wikipedia@; a studio kind in the catalogue; the commit record ref",
+   "served_in": "v0.1.159",
+   "files": 20,
+   "added": 793,
+   "removed": 33
   },
   {
    "sha": "cb383ceb775594a53f44a5853a893be5f0529c12",
@@ -1256,7 +1694,11 @@
     "incident.graph@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "timeline rows we had as data but not as rows (IPMA names the storm 9 Nov 13:17; ANEPC's Aviso 21; the red wind sent 07:18; communiqué no. 2 at 17:07); the 17:42"
+   "what": "timeline rows we had as data but not as rows (IPMA names the storm 9 Nov 13:17; ANEPC's Aviso 21; the red wind sent 07:18; communiqué no. 2 at 17:07); the 17:42",
+   "served_in": "v0.1.158",
+   "files": 2,
+   "added": 88,
+   "removed": 4
   },
   {
    "sha": "1e744ad917a5cd624f82914992b5f6641caa45ae",
@@ -1267,7 +1709,11 @@
     "incident.media@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "Wikipedia on the storm: 6 pages in 4 languages, 577 revisions as data, the growth chart against the timeline, the reader that appends"
+   "what": "Wikipedia on the storm: 6 pages in 4 languages, 577 revisions as data, the growth chart against the timeline, the reader that appends",
+   "served_in": "v0.1.157",
+   "files": 17,
+   "added": 5629,
+   "removed": 2
   },
   {
    "sha": "9f01831f19b0115c6b50ab9838b56eb740d2fdfa",
@@ -1277,7 +1723,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "01:36 wake: sweep (230 items); two headlines speak of less wind (Expresso 23:54, CNN Portugal 00:31), recorded as evidence"
+   "what": "01:36 wake: sweep (230 items); two headlines speak of less wind (Expresso 23:54, CNN Portugal 00:31), recorded as evidence",
+   "served_in": "v0.1.156",
+   "files": 9,
+   "added": 322,
+   "removed": 174
   },
   {
    "sha": "8609b0452c72cd64b1abec2d3974884908e4ca2a",
@@ -1287,7 +1737,11 @@
     "incident.researcher@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: Madeira in the decision graph (red warnings, schools closed Wednesday morning, the airport, cruise calls); RTP's new address"
+   "what": "sync: Madeira in the decision graph (red warnings, schools closed Wednesday morning, the airport, cruise calls); RTP's new address",
+   "served_in": "v0.1.155",
+   "files": 3,
+   "added": 167,
+   "removed": 4
   },
   {
    "sha": "759d92c2734525c31377c6dd8d4882239a03ca40",
@@ -1297,7 +1751,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "weather-sites: 01:29 re-read (IPMA unchanged; four outlets now lead on less wind for Lisbon; RTP's live blog retitled and moved)"
+   "what": "weather-sites: 01:29 re-read (IPMA unchanged; four outlets now lead on less wind for Lisbon; RTP's live blog retitled and moved)",
+   "served_in": "v0.1.154",
+   "files": 3,
+   "added": 95,
+   "removed": 6
   },
   {
    "sha": "9a80c1592221509036a17cd3b05ea053d7e92591",
@@ -1307,7 +1765,11 @@
     "incident.wikipedia@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "Wikipedia is incident.wikipedia@'s now: wikipedia.json frozen, README points to research/wikipedia/"
+   "what": "Wikipedia is incident.wikipedia@'s now: wikipedia.json frozen, README points to research/wikipedia/",
+   "served_in": "v0.1.153",
+   "files": 2,
+   "added": 8,
+   "removed": 6
   },
   {
    "sha": "101e7ec50368da5e3dbd59d60f3c028b1e216711",
@@ -1317,7 +1779,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the cross-folder log (the Wikipedia placeholder page)"
+   "what": "the cross-folder log (the Wikipedia placeholder page)",
+   "served_in": "v0.1.152",
+   "files": 1,
+   "added": 1,
+   "removed": 0
   },
   {
    "sha": "5b880fb4d8330904342d08781b9792a546e49814",
@@ -1328,7 +1794,11 @@
     "incident.media@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "Wikipedia: Dinis's brief, a first page, the nav link, incident.wikipedia@ in the jobs and the policy"
+   "what": "Wikipedia: Dinis's brief, a first page, the nav link, incident.wikipedia@ in the jobs and the policy",
+   "served_in": "v0.1.151",
+   "files": 5,
+   "added": 25,
+   "removed": 1
   },
   {
    "sha": "06cd5f406983432dcb81b470167a03262cf17200",
@@ -1338,7 +1808,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "every agent has its own page (/agents/<role>/); the three synced agents' strips say their pushes are not counted here"
+   "what": "every agent has its own page (/agents/<role>/); the three synced agents' strips say their pushes are not counted here",
+   "served_in": "v0.1.150",
+   "files": 14,
+   "added": 200,
+   "removed": 36
   },
   {
    "sha": "6db035577706835095a14fdc3d2e8c88b7986a05",
@@ -1348,7 +1822,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 25: the 01:20 check (117 live pages at 390 px, none wider than the screen); the now line's tags are left out where they would be cut; a lighter was"
+   "what": "design round 25: the 01:20 check (117 live pages at 390 px, none wider than the screen); the now line's tags are left out where they would be cut; a lighter was",
+   "served_in": "v0.1.150",
+   "files": 5,
+   "added": 19,
+   "removed": 5
   },
   {
    "sha": "a1b5ccb3cd5c0a01e93d5e2a409957ba1c2c3c38",
@@ -1358,7 +1836,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: the 01:23 weather refresh (Tuesday's yellow rain expired; nothing else changed; airport 13 km/h at 01:00)"
+   "what": "sync: the 01:23 weather refresh (Tuesday's yellow rain expired; nothing else changed; airport 13 km/h at 01:00)",
+   "served_in": "v0.1.148",
+   "files": 10,
+   "added": 285,
+   "removed": 171
   },
   {
    "sha": "79ea9307be9f640348f371eafe13b42732ddfc80",
@@ -1368,7 +1850,11 @@
     "incident.observability@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "policy: incident.observability@ writes agents/*/README.md (the per-agent pages)"
+   "what": "policy: incident.observability@ writes agents/*/README.md (the per-agent pages)",
+   "served_in": "v0.1.147",
+   "files": 1,
+   "added": 2,
+   "removed": 1
   },
   {
    "sha": "0094a30f2a5449e80ae5aadc8b79c944b1f98552",
@@ -1378,7 +1864,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "an agent's name links to its own page only where that page exists (the index says so); otherwise to its card"
+   "what": "an agent's name links to its own page only where that page exists (the index says so); otherwise to its card",
+   "served_in": "v0.1.146",
+   "files": 4,
+   "added": 39,
+   "removed": 11
   },
   {
    "sha": "f62e173df316a4ef73c65b299a2256f33a78a3e9",
@@ -1388,7 +1878,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the night as it happened (a strip per agent: pushes, wakes, waiting on Dinis or on an agent); what Dinis can unblock, grouped; an agent's own page (mine first)"
+   "what": "the night as it happened (a strip per agent: pushes, wakes, waiting on Dinis or on an agent); what Dinis can unblock, grouped; an agent's own page (mine first)",
+   "served_in": "v0.1.145",
+   "files": 8,
+   "added": 946,
+   "removed": 355
   },
   {
    "sha": "3dbecb2cc116bfb8f8bf2005a231c05c50a74004",
@@ -1398,7 +1892,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "01:22 wake: status (waiting on Dinis: his key, three decisions, the token; tests and signatures green)"
+   "what": "01:22 wake: status (waiting on Dinis: his key, three decisions, the token; tests and signatures green)",
+   "served_in": "v0.1.144",
+   "files": 1,
+   "added": 4,
+   "removed": 3
   },
   {
    "sha": "48e2d73c05cc5cfd874793bb834f768e927b4af7",
@@ -1408,7 +1906,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "01:19 wake: /agents/ checked live (37 pushes, 32 deployed, 0 failed in the hour); commits snapshot refreshed; status"
+   "what": "01:19 wake: /agents/ checked live (37 pushes, 32 deployed, 0 failed in the hour); commits snapshot refreshed; status",
+   "served_in": "v0.1.143",
+   "files": 3,
+   "added": 502,
+   "removed": 104
   },
   {
    "sha": "2139a91dee106d729626854663c9ee8af8d41b65",
@@ -1418,7 +1920,11 @@
     "incident.researcher@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "01:02 wake: sync (the researcher's corrected times); no new organiser statement; status"
+   "what": "01:02 wake: sync (the researcher's corrected times); no new organiser statement; status",
+   "served_in": "v0.1.142",
+   "files": 4,
+   "added": 27,
+   "removed": 26
   },
   {
    "sha": "897439e89b9ef5d00e1344c2b3ad1a2f29970cb1",
@@ -1429,7 +1935,11 @@
     "incident.graph@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the alert was announced at ~09:17 (press conference), 12:10 is the page's time; the minister's 09:30 line on Web Summit; the lead-time table's correction; sync"
+   "what": "the alert was announced at ~09:17 (press conference), 12:10 is the page's time; the minister's 09:30 line on Web Summit; the lead-time table's correction; sync",
+   "served_in": "v0.1.141",
+   "files": 6,
+   "added": 114,
+   "removed": 13
   },
   {
    "sha": "a6e5feb7e769e89bad0936b053bbb545bbc03252",
@@ -1440,7 +1950,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the designer's round-24 list: larger characters, the text twin folded by chapter, the caption under the stage on a phone too, the blocks note beside the stage, "
+   "what": "the designer's round-24 list: larger characters, the text twin folded by chapter, the caption under the stage on a phone too, the blocks note beside the stage, ",
+   "served_in": "v0.1.140",
+   "files": 5,
+   "added": 37,
+   "removed": 19
   },
   {
    "sha": "2d433f4eaf56f48917b7bce4b52daf5ebdd89244",
@@ -1451,7 +1965,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "a second animation, \"How a fact gets onto this site\": the path, and two real cases from the timeline (Web Summit's 19:09 page, read 20:58; IPMA's red rain moved"
+   "what": "a second animation, \"How a fact gets onto this site\": the path, and two real cases from the timeline (Web Summit's 19:09 page, read 20:58; IPMA's red rain moved",
+   "served_in": "v0.1.139",
+   "files": 8,
+   "added": 1154,
+   "removed": 15
   },
   {
    "sha": "cc24b34898bed1c13af95d6b6579d764831a04a9",
@@ -1461,7 +1979,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: the 'said on air' record says who read the quotes at source and when"
+   "what": "sync: the 'said on air' record says who read the quotes at source and when",
+   "served_in": "v0.1.138",
+   "files": 2,
+   "added": 5,
+   "removed": 5
   },
   {
    "sha": "890b38812a4cc9174ccd4ebfea030e41720cac7e",
@@ -1471,7 +1993,11 @@
     "incident.studio@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 24: /studio/ reviewed against design/README.md (seven notes for incident.studio@); app/agents re-checked (tokens, no hex); no code change"
+   "what": "design round 24: /studio/ reviewed against design/README.md (seven notes for incident.studio@); app/agents re-checked (tokens, no hex); no code change",
+   "served_in": "v0.1.138",
+   "files": 3,
+   "added": 36,
+   "removed": 6
   },
   {
    "sha": "012567b55ea9292def9179aef00b3ee19774e77a",
@@ -1482,7 +2008,11 @@
     "incident.media@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the media layer: outlets as actors, coverage and first-on-fact as tables, \"Who was first on each fact?\" as a question"
+   "what": "the media layer: outlets as actors, coverage and first-on-fact as tables, \"Who was first on each fact?\" as a question",
+   "served_in": "v0.1.136",
+   "files": 16,
+   "added": 802,
+   "removed": 404
   },
   {
    "sha": "bb570138c7419609ca636b5b18173994c031c879",
@@ -1492,7 +2022,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 23: Thursday as its own strip (warned, decided, the TAF, IPMA's model, MET Norway as a second labelled model, the morning hypothesis); \"said on air"
+   "what": "design round 23: Thursday as its own strip (warned, decided, the TAF, IPMA's model, MET Norway as a second labelled model, the morning hypothesis); \"said on air",
+   "served_in": "v0.1.135",
+   "files": 6,
+   "added": 120,
+   "removed": 17
   },
   {
    "sha": "15c0c1b861142c2193d663b1492f7a73d3ccf82c",
@@ -1502,7 +2036,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the player fits one screen (1280 x 800), sticky controls on a phone, a big Play on first load, a question per chapter, a link per scene; the window's label no l"
+   "what": "the player fits one screen (1280 x 800), sticky controls on a phone, a big Play on first load, a question per chapter, a link per scene; the window's label no l",
+   "served_in": "v0.1.134",
+   "files": 6,
+   "added": 176,
+   "removed": 105
   },
   {
    "sha": "6e9d3b0a6f017df327a4cd27f937310c7c2a1006",
@@ -1512,7 +2050,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 22: the 00:47 check (front page four ways against the latest data; 114 live pages at 390 px, none wider than the screen); no code change"
+   "what": "design round 22: the 00:47 check (front page four ways against the latest data; 114 live pages at 390 px, none wider than the screen); no code change",
+   "served_in": "v0.1.133",
+   "files": 3,
+   "added": 29,
+   "removed": 5
   },
   {
    "sha": "be6e1b016786f32ee0251000b1f90a163f748c15",
@@ -1522,7 +2064,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.132",
+   "files": 1,
+   "added": 114,
+   "removed": 94
   },
   {
    "sha": "c98bff49c7b1aca6d8d0489eb475c6a07bfa1cd5",
@@ -1532,7 +2078,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "00:44 wake: the release history to run 130 (88 served); a draft behaviour policy for incident.studio@; the commit record refreshed; status"
+   "what": "00:44 wake: the release history to run 130 (88 served); a draft behaviour policy for incident.studio@; the commit record refreshed; status",
+   "served_in": "v0.1.132",
+   "files": 20,
+   "added": 2163,
+   "removed": 66
   },
   {
    "sha": "d7d453617f8bf356421969dae4b2e514fe11ee90",
@@ -1542,7 +2092,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "a bar per request under chapters 1 and 2 (the shape of the cost, named as a simplification); library/index.json on chapter 5's shelf"
+   "what": "a bar per request under chapters 1 and 2 (the shape of the cost, named as a simplification); library/index.json on chapter 5's shelf",
+   "served_in": "v0.1.131",
+   "files": 5,
+   "added": 62,
+   "removed": 11
   },
   {
    "sha": "87364c81daf508df1b9002a23b7361045ecaeca2",
@@ -1554,7 +2108,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "\"What compression is\", chapters 3 to 6: the door, what gets lost and why, side by side with how this team works, the point"
+   "what": "\"What compression is\", chapters 3 to 6: the door, what gets lost and why, side by side with how this team works, the point",
+   "served_in": "v0.1.130",
+   "files": 7,
+   "added": 1476,
+   "removed": 98
   },
   {
    "sha": "8d10d730212bf72fbe90b95419c12941d6504926",
@@ -1564,7 +2122,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 21: the six nav sections fit one line at 1280 (34 px to spare); a fade at the edge wherever the nav is cut"
+   "what": "design round 21: the six nav sections fit one line at 1280 (34 px to spare); a fade at the edge wherever the nav is cut",
+   "served_in": "v0.1.129",
+   "files": 4,
+   "added": 27,
+   "removed": 4
   },
   {
    "sha": "92ccbdcd60a6b0aa6d343c20dfc602e45fa92279",
@@ -1574,7 +2136,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "00:37 wake: sweep (225 items, 17 outlets; live entries, social, Wikipedia re-read)"
+   "what": "00:37 wake: sweep (225 items, 17 outlets; live entries, social, Wikipedia re-read)",
+   "served_in": "v0.1.128",
+   "files": 9,
+   "added": 217,
+   "removed": 170
   },
   {
    "sha": "7fc709c8b75fa45f121497972b1b5f99cd4af2a7",
@@ -1585,7 +2151,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the Studio: a storyboard player with small characters, and \"What compression is\", chapters 1 and 2 (a normal request; the same with a cache)"
+   "what": "the Studio: a storyboard player with small characters, and \"What compression is\", chapters 1 and 2 (a normal request; the same with a cache)",
+   "served_in": "v0.1.127",
+   "files": 10,
+   "added": 709,
+   "removed": 3
   },
   {
    "sha": "de547d5a65197651614593bc1b70bdb0cfd71125",
@@ -1595,7 +2165,11 @@
     "incident.media@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the 22:35 entry's time confirmed (22:35:24, the page's own data, incident.media@); what came before it on the same fact"
+   "what": "the 22:35 entry's time confirmed (22:35:24, the page's own data, incident.media@); what came before it on the same fact",
+   "served_in": "v0.1.126",
+   "files": 2,
+   "added": 3,
+   "removed": 3
   },
   {
    "sha": "6b46a6534f2c02fd6d091eec548a394d3a57a5b4",
@@ -1605,7 +2179,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "correction: Observador's live blog read (we had said it had none); fact 7: Observador 22:07 (models) and 22:35 (IPMA's meteorologist), ahead of RTP's 23:08 text"
+   "what": "correction: Observador's live blog read (we had said it had none); fact 7: Observador 22:07 (models) and 22:35 (IPMA's meteorologist), ahead of RTP's 23:08 text",
+   "served_in": "v0.1.126",
+   "files": 10,
+   "added": 292,
+   "removed": 105
   },
   {
    "sha": "f0dd1561d79f9346d9939eae97fb26a636d03b4e",
@@ -1615,7 +2193,11 @@
     "incident.media@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the 22:35 row says which part the lead read at source (the quotes, not the entry's time) and who was first on the fact (RTP 22:22, per incident.media@)"
+   "what": "the 22:35 row says which part the lead read at source (the quotes, not the entry's time) and who was first on the fact (RTP 22:22, per incident.media@)",
+   "served_in": "v0.1.126",
+   "files": 2,
+   "added": 3,
+   "removed": 3
   },
   {
    "sha": "797bdffab7100143ff5f5ba646f43b3f1400b655",
@@ -1625,7 +2207,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "a seventh fact (the track further south, primary time unknown): who was first and whom they quote at IPMA (role and outlet only); live entries accumulate across"
+   "what": "a seventh fact (the track further south, primary time unknown): who was first and whom they quote at IPMA (role and outlet only); live entries accumulate across",
+   "served_in": "v0.1.126",
+   "files": 15,
+   "added": 483,
+   "removed": 130
   },
   {
    "sha": "0386f4476d44b91ef19a133a495c2bb50ece0da7",
@@ -1636,7 +2222,11 @@
     "weather@PrompTugal.vicky"
    ],
    "issue": "WS-214",
-   "what": "an IPMA meteorologist by voice at 22:35 (Rádio Observador): landfall between the Lisbon region and Cabo de São Vicente, the strongest winds more likely a little"
+   "what": "an IPMA meteorologist by voice at 22:35 (Rádio Observador): landfall between the Lisbon region and Cabo de São Vicente, the strongest winds more likely a little",
+   "served_in": "v0.1.122",
+   "files": 7,
+   "added": 104,
+   "removed": 13
   },
   {
    "sha": "d118e886954100a7f7a33f77a3c23b4b255a7656",
@@ -1646,7 +2236,11 @@
     "incident.observability@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 20: the masthead can never widen the page (header clipped, the nav its own scrolling row); site.css and the frame's scripts carry the version so ne"
+   "what": "design round 20: the masthead can never widen the page (header clipped, the nav its own scrolling row); site.css and the frame's scripts carry the version so ne",
+   "served_in": "v0.1.121",
+   "files": 5,
+   "added": 37,
+   "removed": 8
   },
   {
    "sha": "2706d843f954db85e0c40cc1e1397efad36d81bb",
@@ -1657,7 +2251,11 @@
     "incident.weatherwatch@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "timeline: the press reports the track further south and a weaker wind (00:29, evidence); IPMA's warnings and communiqué unchanged at the same read"
+   "what": "timeline: the press reports the track further south and a weaker wind (00:29, evidence); IPMA's warnings and communiqué unchanged at the same read",
+   "served_in": "v0.1.120",
+   "files": 2,
+   "added": 22,
+   "removed": 1
   },
   {
    "sha": "119f7ecc38792395e31dbbafead89872f377db58",
@@ -1667,7 +2265,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "/account/ has the theme switch under its policy (the designer's theme.js and frame.js) and the frame's new nav; tools/lane-frame.mjs copies the frame again when"
+   "what": "/account/ has the theme switch under its policy (the designer's theme.js and frame.js) and the frame's new nav; tools/lane-frame.mjs copies the frame again when",
+   "served_in": "v0.1.119",
+   "files": 5,
+   "added": 28,
+   "removed": 7
   },
   {
    "sha": "1f77ca19efc835e58132f0189653e766aa5d0bc9",
@@ -1677,7 +2279,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "weather-sites: 00:29 re-read (authorities unchanged; two live blogs now lead on a more southerly, weaker storm), rereads.json; pt.wikipedia read, gap row update"
+   "what": "weather-sites: 00:29 re-read (authorities unchanged; two live blogs now lead on a more southerly, weaker storm), rereads.json; pt.wikipedia read, gap row update",
+   "served_in": "v0.1.118",
+   "files": 12,
+   "added": 180,
+   "removed": 36
   },
   {
    "sha": "0f12ef3d3e2dbde408d8bd4200482f886de1582b",
@@ -1687,7 +2293,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "a caption under the Universe: its dark stage is its authors' own theme"
+   "what": "a caption under the Universe: its dark stage is its authors' own theme",
+   "served_in": "v0.1.117",
+   "files": 3,
+   "added": 132,
+   "removed": 34
   },
   {
    "sha": "563652ab16115a0522ee794a2d7f0f035c88ea6b",
@@ -1697,7 +2307,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the cross-folder log (what the conductor changed outside its own paths: the path check writes it at release)"
+   "what": "the cross-folder log (what the conductor changed outside its own paths: the path check writes it at release)",
+   "served_in": "v0.1.116",
+   "files": 1,
+   "added": 7,
+   "removed": 0
   },
   {
    "sha": "8a6f14c07b813d5c3ad0e2a115a9eb6b91f118d7",
@@ -1707,7 +2321,11 @@
     "incident.identity@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 19: no inline scripts in anything the build writes (app/design/theme.js, frame.js, front.js; no behaviour changed); the headline and the warning ti"
+   "what": "design round 19: no inline scripts in anything the build writes (app/design/theme.js, frame.js, front.js; no behaviour changed); the headline and the warning ti",
+   "served_in": "v0.1.116",
+   "files": 8,
+   "added": 74,
+   "removed": 25
   },
   {
    "sha": "ce7d8f352350d40901dc2cd03310c24678fe9026",
@@ -1717,7 +2335,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the Studio: Dinis's brief (BRIEF.md), a first page, the nav section, incident.studio@ in the jobs and the policy"
+   "what": "the Studio: Dinis's brief (BRIEF.md), a first page, the nav section, incident.studio@ in the jobs and the policy",
+   "served_in": "v0.1.114",
+   "files": 5,
+   "added": 30,
+   "removed": 1
   },
   {
    "sha": "407692031158362dbd93209bafd12d8dc5f23437",
@@ -1729,7 +2351,11 @@
     "incident.observability@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the graph page by the design rules: decisions blue, IPMA's colours only on IPMA's levels, kinds by shape; the stage follows the theme; Kept-by, by and updated"
+   "what": "the graph page by the design rules: decisions blue, IPMA's colours only on IPMA's levels, kinds by shape; the stage follows the theme; Kept-by, by and updated",
+   "served_in": "v0.1.113",
+   "files": 20,
+   "added": 613,
+   "removed": 555
   },
   {
    "sha": "39bde70f06531e124d62198bddd3746767b0c97d",
@@ -1739,7 +2365,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "status: /account/ kept strict, outside the frame, recorded as decided (not an ask of Dinis)"
+   "what": "status: /account/ kept strict, outside the frame, recorded as decided (not an ask of Dinis)",
+   "served_in": "v0.1.112",
+   "files": 1,
+   "added": 6,
+   "removed": 4
   },
   {
    "sha": "a9f32a27c2785ccaf078e3d5f520b448024e1c3c",
@@ -1750,7 +2380,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 18: the live map on the site's tokens (one mapping block, light and dark); /agents/ short: health, asks, one line per agent, the rest folded, the m"
+   "what": "design round 18: the live map on the site's tokens (one mapping block, light and dark); /agents/ short: health, asks, one line per agent, the rest folded, the m",
+   "served_in": "v0.1.111",
+   "files": 6,
+   "added": 210,
+   "removed": 92
   },
   {
    "sha": "7949b32f77a253a15a72af6f0d498a80cf748010",
@@ -1760,7 +2394,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "/app/login/ serves a page; /account/ carries the frame's nav, notice and footer (the MeteoAlarm line) and stays hand-written to keep its Content-Security-Policy"
+   "what": "/app/login/ serves a page; /account/ carries the frame's nav, notice and footer (the MeteoAlarm line) and stays hand-written to keep its Content-Security-Policy",
+   "served_in": "v0.1.110",
+   "files": 7,
+   "added": 42,
+   "removed": 13
   },
   {
    "sha": "0e4cdab6a4c4cb73856d9a741419fdf3d27ae261",
@@ -1770,7 +2408,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.109",
+   "files": 1,
+   "added": 81,
+   "removed": 68
   },
   {
    "sha": "a64b8ab28c2ef4350456f3b3b23ff64aff7ddd51",
@@ -1780,7 +2422,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue page is a short index (a row per kind, the gaps as counts); each kind's table and the gaps in full are generated pages under library/kinds/ (the d"
+   "what": "the catalogue page is a short index (a row per kind, the gaps as counts); each kind's table and the gaps in full are generated pages under library/kinds/ (the d",
+   "served_in": "v0.1.109",
+   "files": 2,
+   "added": 32,
+   "removed": 48
   },
   {
    "sha": "02d2e20693b7b964c32a3af39dc71f1a07d8dd3e",
@@ -1790,7 +2436,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 18: the 00:24 check of the front page against the latest data; a review of ten pages by other agents against design/README.md; long links wrap on d"
+   "what": "design round 18: the 00:24 check of the front page against the latest data; a review of ten pages by other agents against design/README.md; long links wrap on d",
+   "served_in": "v0.1.108",
+   "files": 21,
+   "added": 66,
+   "removed": 24
   },
   {
    "sha": "80e8677dd0beda1e85a121cbc75ff212b50b3d62",
@@ -1800,7 +2450,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: the 00:23 weather refresh (no change in warnings; IPMA's model stamp now 19:56)"
+   "what": "sync: the 00:23 weather refresh (no change in warnings; IPMA's model stamp now 19:56)",
+   "served_in": "v0.1.107",
+   "files": 10,
+   "added": 361,
+   "removed": 282
   },
   {
    "sha": "878cd73b223e6bf1b51d8cac3b1e90f937f53c4f",
@@ -1810,7 +2464,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "00:21 wake: SECURITY.md, the pins and data/lanes.json signed with the session key (agents/identity/signed.json, tools/lane-sign.mjs --check); tests re-run; stat"
+   "what": "00:21 wake: SECURITY.md, the pins and data/lanes.json signed with the session key (agents/identity/signed.json, tools/lane-sign.mjs --check); tests re-run; stat",
+   "served_in": "v0.1.106",
+   "files": 4,
+   "added": 64,
+   "removed": 4
   },
   {
    "sha": "dedbe4cb0526bad510e9f328a7a889b58b773a58",
@@ -1821,7 +2479,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the Circuit reads the draft behaviour policies and says DRAFT, not agreed, on each and above the Universe; a pipeline-health strip at the top of /agents/"
+   "what": "the Circuit reads the draft behaviour policies and says DRAFT, not agreed, on each and above the Universe; a pipeline-health strip at the top of /agents/",
+   "served_in": "v0.1.105",
+   "files": 7,
+   "added": 87,
+   "removed": 35
   },
   {
    "sha": "6d83c77d677d580fba0a6b422a062391f1ca5f15",
@@ -1831,7 +2493,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "00:14 wake: release cadence measured (a deploy every 24 s at the median, none failed, 10 of 44 pushes superseded while waiting); status"
+   "what": "00:14 wake: release cadence measured (a deploy every 24 s at the median, none failed, 10 of 44 pushes superseded while waiting); status",
+   "served_in": "v0.1.104",
+   "files": 3,
+   "added": 235,
+   "removed": 57
   },
   {
    "sha": "9369fcfc50c6661faa33310bd7acddc99c75bf78",
@@ -1841,7 +2507,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 17: the 404 page (its links were relative and broke below the top level; now absolute, and a page with five ways on); quotes and lists on document "
+   "what": "design round 17: the 404 page (its links were relative and broke below the top level; now absolute, and a page with five ways on); quotes and lists on document ",
+   "served_in": "v0.1.103",
+   "files": 5,
+   "added": 36,
+   "removed": 7
   },
   {
    "sha": "c1d81ab0f774753b37d9561c46921fef9da26913",
@@ -1851,7 +2521,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 16: the data page as cards, one per family (weather, decisions, signals, graph, media, weather sites, agents): what it is, size, last read, next re"
+   "what": "design round 16: the data page as cards, one per family (weather, decisions, signals, graph, media, weather sites, agents): what it is, size, last read, next re",
+   "served_in": "v0.1.102",
+   "files": 5,
+   "added": 84,
+   "removed": 7
   },
   {
    "sha": "1eef45ab9b5161968ee483203cc9c08451ac11a1",
@@ -1861,7 +2535,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 15: the dashboard (app/storm.js, shared at the conductor's word): the now line in --focus, IPMA's levels in the warning tokens, the weather section"
+   "what": "design round 15: the dashboard (app/storm.js, shared at the conductor's word): the now line in --focus, IPMA's levels in the warning tokens, the weather section",
+   "served_in": "v0.1.101",
+   "files": 4,
+   "added": 30,
+   "removed": 8
   },
   {
    "sha": "f12b59f76f92dd8ffe8a98a4e752d522ba5db765",
@@ -1872,7 +2550,11 @@
     "incident.graph@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "timeline: outside decisions flagged (alert, IPMA's reds and the move, the recommendation, Web Summit's page); order fixed; the 23:53 IPMA row keeps its id (a ro"
+   "what": "timeline: outside decisions flagged (alert, IPMA's reds and the move, the recommendation, Web Summit's page); order fixed; the 23:53 IPMA row keeps its id (a ro",
+   "served_in": "v0.1.100",
+   "files": 4,
+   "added": 28,
+   "removed": 28
   },
   {
    "sha": "712adfd2308d45433f81eb2e9dfe4eb37d8c6d7d",
@@ -1882,7 +2564,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 14: the timeline as a page (labels, decisions and key rows marked, supersedes as links, day dividers, a filter by label and kind; the table and its"
+   "what": "design round 14: the timeline as a page (labels, decisions and key rows marked, supersedes as links, day dividers, a filter by label and kind; the table and its",
+   "served_in": "v0.1.99",
+   "files": 6,
+   "added": 115,
+   "removed": 6
   },
   {
    "sha": "10c69f552cf274cc903a93db724049d09cea5703",
@@ -1892,7 +2578,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "policy: app/storm.js is shared with the designer until incident.dev@'s session can push here"
+   "what": "policy: app/storm.js is shared with the designer until incident.dev@'s session can push here",
+   "served_in": "v0.1.98",
+   "files": 1,
+   "added": 2,
+   "removed": 1
   },
   {
    "sha": "99b653478429ebe53db288b88aec67c16e8e3ad0",
@@ -1902,7 +2592,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "/data/query/ and /app/graph/ rendered through the frame (README.md with mount and head); the hand-written pages removed"
+   "what": "/data/query/ and /app/graph/ rendered through the frame (README.md with mount and head); the hand-written pages removed",
+   "served_in": "v0.1.97",
+   "files": 7,
+   "added": 26,
+   "removed": 68
   },
   {
    "sha": "c60f4264704f7ce646f4866fe6410d4a1650f468",
@@ -1912,7 +2606,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 13: the dashboard's headings and tables (CSS only; storm.js untouched); a print sheet for every page"
+   "what": "design round 13: the dashboard's headings and tables (CSS only; storm.js untouched); a print sheet for every page",
+   "served_in": "v0.1.96",
+   "files": 4,
+   "added": 53,
+   "removed": 7
   },
   {
    "sha": "ab7f170a41b69f19075aa7abce856c82b211e272",
@@ -1924,7 +2622,11 @@
     "incident.identity@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "any markdown page can mount an app through the frame (front matter mount: and head:), so app pages keep the site's nav, notice and footer"
+   "what": "any markdown page can mount an app through the frame (front matter mount: and head:), so app pages keep the site's nav, notice and footer",
+   "served_in": "v0.1.95",
+   "files": 1,
+   "added": 3,
+   "removed": 0
   },
   {
    "sha": "73d8077d4c9a6bcdcffab90c434617753cc6eb66",
@@ -1934,7 +2636,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the query and graph pages carry the site's nav, theme switch and the MeteoAlarm line; each is one mount element; stage colours as tokens"
+   "what": "the query and graph pages carry the site's nav, theme switch and the MeteoAlarm line; each is one mount element; stage colours as tokens",
+   "served_in": "v0.1.94",
+   "files": 15,
+   "added": 563,
+   "removed": 529
   },
   {
    "sha": "68bc7a903d3eca87ee0f727ffa32f4fb13eecc88",
@@ -1944,7 +2650,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 12: before and after now in the strips (past washed out, observed lane kept); a shorter first screen; the changes block ordered by weight; the them"
+   "what": "design round 12: before and after now in the strips (past washed out, observed lane kept); a shorter first screen; the changes block ordered by weight; the them",
+   "served_in": "v0.1.93",
+   "files": 5,
+   "added": 39,
+   "removed": 8
   },
   {
    "sha": "13027aedd9bae7a0f566762e3348fb486a6d60f5",
@@ -1956,7 +2666,11 @@
     "conductor.B@PrompTugal.vicky"
    ],
    "issue": "WS-214",
-   "what": "timeline: the red rain's move to 09:00 unreported in the press we could read by 00:15 (incident.media@, labelled, with limits)"
+   "what": "timeline: the red rain's move to 09:00 unreported in the press we could read by 00:15 (incident.media@, labelled, with limits)",
+   "served_in": "v0.1.92",
+   "files": 2,
+   "added": 18,
+   "removed": 1
   },
   {
    "sha": "43ed9cba5447ed2c4548f25840085e7162d278d6",
@@ -1966,7 +2680,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "one agents page: /app/agents/ redirects to /agents/ (the framed one), keeping the address's # part"
+   "what": "one agents page: /app/agents/ redirects to /agents/ (the framed one), keeping the address's # part",
+   "served_in": "v0.1.92",
+   "files": 4,
+   "added": 454,
+   "removed": 96
   },
   {
    "sha": "344199126169ba06f562f3470291c7d9f3fa9ca3",
@@ -1976,7 +2694,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the district grid: Setúbal on the coast column under Lisbon, Faro centred on the south (the conductor's check)"
+   "what": "the district grid: Setúbal on the coast column under Lisbon, Faro centred on the south (the conductor's check)",
+   "served_in": "v0.1.90",
+   "files": 2,
+   "added": 2,
+   "removed": 2
   },
   {
    "sha": "f487bfbb18135be172645b74d5bd3bf903830e33",
@@ -1986,7 +2708,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "who was first on each of six facts (live-blog entries timed: Negócios, DN, RTP); wire_share per outlet; outreach links weatherwatch's two drafts"
+   "what": "who was first on each of six facts (live-blog entries timed: Negócios, DN, RTP); wire_share per outlet; outreach links weatherwatch's two drafts",
+   "served_in": "v0.1.89",
+   "files": 11,
+   "added": 1016,
+   "removed": 156
   },
   {
    "sha": "3b24ab0ba25087df6a49752463a0940c3336af06",
@@ -1996,7 +2722,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the district grid's hours wrap instead of being cut off"
+   "what": "the district grid's hours wrap instead of being cut off",
+   "served_in": "v0.1.89",
+   "files": 1,
+   "added": 1,
+   "removed": 0
   },
   {
    "sha": "d8da14f67dbbf70bc3a9bcd4839a22e745391c55",
@@ -2006,7 +2736,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 11: the district grid (labelled cells, not a map); the Decided band folds its \"hours not stated\" rows; MeteoAlarm's sentence and the dated-record l"
+   "what": "design round 11: the district grid (labelled cells, not a map); the Decided band folds its \"hours not stated\" rows; MeteoAlarm's sentence and the dated-record l",
+   "served_in": "v0.1.87",
+   "files": 5,
+   "added": 61,
+   "removed": 6
   },
   {
    "sha": "46b3e9dccab48e663bcae6289091abb5800accbe",
@@ -2016,7 +2750,11 @@
     "incident.researcher@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "00:03 wake: sync; sweep 6 (no new Web Summit post at 23:53; ANA expects cancellations on Wednesday)"
+   "what": "00:03 wake: sync; sweep 6 (no new Web Summit post at 23:53; ANA expects cancellations on Wednesday)",
+   "served_in": "v0.1.86",
+   "files": 2,
+   "added": 44,
+   "removed": 2
   },
   {
    "sha": "dc74aef176a3b46ad03c150a2ba3cfb1e3bfe085",
@@ -2026,7 +2764,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the gate is red if a generator's output is missing from the built site (the library, the agents' index, the graph)"
+   "what": "the gate is red if a generator's output is missing from the built site (the library, the agents' index, the graph)",
+   "served_in": "v0.1.85",
+   "files": 1,
+   "added": 1,
+   "removed": 1
   },
   {
    "sha": "51502ca27bb2fa09065cb55a6d31240a623f31c9",
@@ -2036,7 +2778,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.84",
+   "files": 1,
+   "added": 17,
+   "removed": 16
   },
   {
    "sha": "4b5f0a874d59beac5741577f5b3c7fd14ca750f3",
@@ -2046,7 +2792,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "library/README.md no longer tracked: the build renders the catalogue page it generates into the served site; status"
+   "what": "library/README.md no longer tracked: the build renders the catalogue page it generates into the served site; status",
+   "served_in": "v0.1.84",
+   "files": 3,
+   "added": 10,
+   "removed": 575
   },
   {
    "sha": "d17465096b934b45a2e336b897fd7da0876b5750",
@@ -2056,7 +2806,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the build renders every markdown file in _site/, including pages a generator wrote there (a generated page needs no tracked copy)"
+   "what": "the build renders every markdown file in _site/, including pages a generator wrote there (a generated page needs no tracked copy)",
+   "served_in": "v0.1.83",
+   "files": 1,
+   "added": 3,
+   "removed": 1
   },
   {
    "sha": "50f9e41f79809dd4968b3b5597299b99fba8d536",
@@ -2066,7 +2820,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 10: MeteoAlarm's link and disclaimer where its terms ask (tiles, under the tiles, footer); the navigation in five sections (Now, Data, Research, Te"
+   "what": "design round 10: MeteoAlarm's link and disclaimer where its terms ask (tiles, under the tiles, footer); the navigation in five sections (Now, Data, Research, Te",
+   "served_in": "v0.1.82",
+   "files": 5,
+   "added": 41,
+   "removed": 6
   },
   {
    "sha": "98934af524ce0ab1963811d29d397aacaf31bb48",
@@ -2076,7 +2834,11 @@
     "incident.graph@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: cap.json keeps every CAP message once seen and carries MeteoAlarm's link and disclaimer (the meteorologist's 8b70ee044)"
+   "what": "sync: cap.json keeps every CAP message once seen and carries MeteoAlarm's link and disclaimer (the meteorologist's 8b70ee044)",
+   "served_in": "v0.1.82",
+   "files": 9,
+   "added": 103,
+   "removed": 64
   },
   {
    "sha": "edc48f0d21dd0b3919c903bbde13e9723a9c9678",
@@ -2086,7 +2848,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.80",
+   "files": 2,
+   "added": 99,
+   "removed": 126
   },
   {
    "sha": "c196f21a75462aca8a5c0982501ba608ea7123ef",
@@ -2096,7 +2862,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "policy-check: a change only the conductor's catch-all rule allows is printed as 'WARN conductor outside its own paths' and recorded in agents/conductor/cross-fo"
+   "what": "policy-check: a change only the conductor's catch-all rule allows is printed as 'WARN conductor outside its own paths' and recorded in agents/conductor/cross-fo",
+   "served_in": "v0.1.80",
+   "files": 3,
+   "added": 107,
+   "removed": 53
   },
   {
    "sha": "39f465a097417dc0b0aef4ba88e8908a5e603738",
@@ -2106,7 +2876,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "lead times: one line of every warning and decision, with the hours between them and before the red warnings start (table, view, query)"
+   "what": "lead times: one line of every warning and decision, with the hours between them and before the red warnings start (table, view, query)",
+   "served_in": "v0.1.79",
+   "files": 19,
+   "added": 328,
+   "removed": 202
   },
   {
    "sha": "6253e1f51cc54ec00165bdd7ebec850566bcd503",
@@ -2116,7 +2890,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync; the meteorologist's hypothesis on the track (centre very close to Lisbon ~17:00 to 18:00, more likely just south), labelled; the conductor's asks to Dinis"
+   "what": "sync; the meteorologist's hypothesis on the track (centre very close to Lisbon ~17:00 to 18:00, more likely just south), labelled; the conductor's asks to Dinis",
+   "served_in": "v0.1.78",
+   "files": 5,
+   "added": 77,
+   "removed": 4
   },
   {
    "sha": "c00ab169614d2bd9645153171122b17919f296e4",
@@ -2126,7 +2904,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 9: decisions' hours from the data (effect_from_utc / effect_to_utc; the transcribed table is gone), \"hours not stated\" markers, the meteorologist's"
+   "what": "design round 9: decisions' hours from the data (effect_from_utc / effect_to_utc; the transcribed table is gone), \"hours not stated\" markers, the meteorologist's",
+   "served_in": "v0.1.77",
+   "files": 6,
+   "added": 48,
+   "removed": 31
   },
   {
    "sha": "29c73a5d358dc6c5c604fdf4441bbe5839931d97",
@@ -2136,7 +2918,11 @@
     "incident.media@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "timeline: the press after Web Summit's 19:09 page (first at 19:41), and the wire under the coverage (incident.media@'s first read)"
+   "what": "timeline: the press after Web Summit's 19:09 page (first at 19:41), and the wire under the coverage (incident.media@'s first read)",
+   "served_in": "v0.1.76",
+   "files": 2,
+   "added": 18,
+   "removed": 1
   },
   {
    "sha": "6f7263cacb2262289e6836d7794796de4e8cc69f",
@@ -2146,7 +2932,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.76",
+   "files": 2,
+   "added": 40,
+   "removed": 42
   },
   {
    "sha": "4938594fd347bfe28cb0ec8ffb59c88ca73a1abf",
@@ -2156,7 +2946,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "a draft behaviour policy for each of the 11 agents (agents/<role>/policy.md; not agreed by Dinis), tools/library-abp.mjs, library/abp.json, library/abp.md; libr"
+   "what": "a draft behaviour policy for each of the 11 agents (agents/<role>/policy.md; not agreed by Dinis), tools/library-abp.mjs, library/abp.json, library/abp.md; libr",
+   "served_in": "v0.1.76",
+   "files": 19,
+   "added": 1293,
+   "removed": 7828
   },
   {
    "sha": "84a568d7eda3ac0603bc0197f24bce9b2ad7e0ac",
@@ -2166,7 +2960,11 @@
     "incident.media@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "Media, Weather sites and Contribute in the nav"
+   "what": "Media, Weather sites and Contribute in the nav",
+   "served_in": "v0.1.74",
+   "files": 1,
+   "added": 1,
+   "removed": 1
   },
   {
    "sha": "ee465575b6c9293667974a491f96265f023a504d",
@@ -2176,7 +2974,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "README names Renascença's storm tracker (not readable by a bot) and points to weatherwatch's map of weather sites"
+   "what": "README names Renascença's storm tracker (not readable by a bot) and points to weatherwatch's map of weather sites",
+   "served_in": "v0.1.74",
+   "files": 1,
+   "added": 2,
+   "removed": 0
   },
   {
    "sha": "8a8e91622e3bc28419c772e785801cac5ce3ed3a",
@@ -2186,7 +2988,11 @@
     "incident.graph@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the build rebuilds the storm graph and its tables into _site/ on every push (graph-build --out)"
+   "what": "the build rebuilds the storm graph and its tables into _site/ on every push (graph-build --out)",
+   "served_in": "v0.1.72",
+   "files": 1,
+   "added": 1,
+   "removed": 1
   },
   {
    "sha": "0664a6abf5084658d7c585b8bad89c2c408459b0",
@@ -2196,7 +3002,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "weather-sites: drafts for a person to send (IPMA radar; EUMETSAT registration) and the check of our use of MeteoAlarm's feed against its terms (lacking: link, d"
+   "what": "weather-sites: drafts for a person to send (IPMA radar; EUMETSAT registration) and the check of our use of MeteoAlarm's feed against its terms (lacking: link, d",
+   "served_in": "v0.1.72",
+   "files": 6,
+   "added": 112,
+   "removed": 4
   },
   {
    "sha": "8c13eec580f00e3d8694f43627f796d4f60f0812",
@@ -2206,7 +3016,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "an unofficial, unverified signal from watcher@web-summit.jose (a track further south), labelled as such, to compare with IPMA's next communiqué"
+   "what": "an unofficial, unverified signal from watcher@web-summit.jose (a track further south), labelled as such, to compare with IPMA's next communiqué",
+   "served_in": "v0.1.70",
+   "files": 2,
+   "added": 18,
+   "removed": 1
   },
   {
    "sha": "1e4159a7acda7e30e154c5ab30d05d50a6e8925b",
@@ -2216,7 +3030,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 8: three sourced facts in one sentence above the strip; the changes block trimmed; radar and satellite as links only; \"what we measured\" from gap.j"
+   "what": "design round 8: three sourced facts in one sentence above the strip; the changes block trimmed; radar and satellite as links only; \"what we measured\" from gap.j",
+   "served_in": "v0.1.69",
+   "files": 5,
+   "added": 49,
+   "removed": 8
   },
   {
    "sha": "96ff00c4d1c2eaaa7a5d422396f3960040c57c32",
@@ -2226,7 +3044,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "media watch (212 items, 16 outlets, by-lines as printed; official and social channels; ranking), Wikipedia history (pt article, en redirect), contribute.md, out"
+   "what": "media watch (212 items, 16 outlets, by-lines as printed; official and social channels; ranking), Wikipedia history (pt article, en redirect), contribute.md, out",
+   "served_in": "v0.1.69",
+   "files": 16,
+   "added": 7607,
+   "removed": 9
   },
   {
    "sha": "6efae2c71a932bfd563b9cfd76b13cb3722e0ba7",
@@ -2236,7 +3058,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "graph-build --out for the build; the graph in two files; IPMA's issue times, signal ids and the coverage sites in the graph; two more questions"
+   "what": "graph-build --out for the build; the graph in two files; IPMA's issue times, signal ids and the coverage sites in the graph; two more questions",
+   "served_in": "v0.1.69",
+   "files": 16,
+   "added": 1168,
+   "removed": 782
   },
   {
    "sha": "0ff49d8f41ab4af05a00afee01decbb05e94796f",
@@ -2247,7 +3073,11 @@
     "incident.graph@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: decision edges carry effect_from_utc / effect_to_utc from the sources' own words (the researcher); red rain 09:00 edge; CP's bridge trains 12:00 to 15:00"
+   "what": "sync: decision edges carry effect_from_utc / effect_to_utc from the sources' own words (the researcher); red rain 09:00 edge; CP's bridge trains 12:00 to 15:00",
+   "served_in": "v0.1.66",
+   "files": 12,
+   "added": 650,
+   "removed": 169
   },
   {
    "sha": "c7c52ae33bc20e11f7360e91ebd6bcc08428915d",
@@ -2257,7 +3087,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "release speed shows CI's own push-to-served per release (the workflow's notice, read from the public check-runs API)"
+   "what": "release speed shows CI's own push-to-served per release (the workflow's notice, read from the public check-runs API)",
+   "served_in": "v0.1.65",
+   "files": 2,
+   "added": 73,
+   "removed": 20
   },
   {
    "sha": "b5922cb18aec971a52d95b429c6cdcbf51c3de24",
@@ -2267,7 +3101,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "weather-sites page: a lost code span restored"
+   "what": "weather-sites page: a lost code span restored",
+   "served_in": "v0.1.64",
+   "files": 1,
+   "added": 1,
+   "removed": 1
   },
   {
    "sha": "33b87c3bb168ac13bcb868afa0fe72a1871645ad",
@@ -2277,7 +3115,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "asks that may be stale (a synced status file, no push here) are marked and listed last"
+   "what": "asks that may be stale (a synced status file, no push here) are marked and listed last",
+   "served_in": "v0.1.63",
+   "files": 5,
+   "added": 147,
+   "removed": 58
   },
   {
    "sha": "ee81a6e0bf030774755df1980086e9015fce09a5",
@@ -2287,7 +3129,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "policy: the librarian drafts agents/*/policy.md (behaviour policies, draft until Dinis agrees)"
+   "what": "policy: the librarian drafts agents/*/policy.md (behaviour policies, draft until Dinis agrees)",
+   "served_in": "v0.1.63",
+   "files": 1,
+   "added": 2,
+   "removed": 1
   },
   {
    "sha": "024562bad3561b07edf2d640beae887d4cc3d3c2",
@@ -2297,7 +3143,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "weather-sites: gap.json (who covering Charles shows a timeline, decisions, sources, time read, hours, data: none has all six) and imagery.json (reuse terms quot"
+   "what": "weather-sites: gap.json (who covering Charles shows a timeline, decisions, sources, time read, hours, data: none has all six) and imagery.json (reuse terms quot",
+   "served_in": "v0.1.63",
+   "files": 5,
+   "added": 837,
+   "removed": 5
   },
   {
    "sha": "76337b0a7122eaf55eaef5d151eafb68884d4539",
@@ -2307,7 +3157,11 @@
     "incident.observability@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "CI never cancels a running deploy (bursts of pushes were starving the site; the newest waiting push still wins); push-to-served as a notice; the build refreshes"
+   "what": "CI never cancels a running deploy (bursts of pushes were starving the site; the newest waiting push still wins); push-to-served as a notice; the build refreshes",
+   "served_in": "v0.1.60",
+   "files": 2,
+   "added": 6,
+   "removed": 3
   },
   {
    "sha": "73af4e3ce8e22b062456ad4a0ce08e7c70cad369",
@@ -2317,7 +3171,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 7: status words and times on the warning tiles, the model rows say \"automatic, mean wind\" and why they sit below the warning, exact timeline links "
+   "what": "design round 7: status words and times on the warning tiles, the model rows say \"automatic, mean wind\" and why they sit below the warning, exact timeline links ",
+   "served_in": "v0.1.59",
+   "files": 5,
+   "added": 41,
+   "removed": 14
   },
   {
    "sha": "0740797c430b44d36846d5db5f2fb7c65cbf61fd",
@@ -2328,7 +3186,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: every weather file carries next_read_utc (the meteorologist's 69bad703a)"
+   "what": "sync: every weather file carries next_read_utc (the meteorologist's 69bad703a)",
+   "served_in": "v0.1.59",
+   "files": 12,
+   "added": 126,
+   "removed": 72
   },
   {
    "sha": "4c23ce514f4d8a5e7d8fc94199e0a1e8d7df5390",
@@ -2338,7 +3200,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.59",
+   "files": 3,
+   "added": 1084,
+   "removed": 669
   },
   {
    "sha": "da396fb9bcf43f28694cb27e06cc0841e3cf19c6",
@@ -2348,7 +3214,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the release history: library/releases.json and its page (tools/library-releases.mjs: tags, commit subjects and a snapshot of the Actions runs); 51 runs, 29 conf"
+   "what": "the release history: library/releases.json and its page (tools/library-releases.mjs: tags, commit subjects and a snapshot of the Actions runs); 51 runs, 29 conf",
+   "served_in": "v0.1.59",
+   "files": 8,
+   "added": 2267,
+   "removed": 917
   },
   {
    "sha": "3565f28d7414cdb26934cd6c3252cb8ebc510bc1",
@@ -2358,7 +3228,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "release speed per push and the model ledger on /agents/; page views built without any place lookup, off until a vault exists; the index generator takes --out; b"
+   "what": "release speed per push and the model ledger on /agents/; page views built without any place lookup, off until a vault exists; the index generator takes --out; b",
+   "served_in": "v0.1.59",
+   "files": 13,
+   "added": 463,
+   "removed": 105
   },
   {
    "sha": "d21b003042fa7ccd42509908fb30e6ab077695ec",
@@ -2368,7 +3242,11 @@
     "incident.graph@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "Query and Graph in the nav"
+   "what": "Query and Graph in the nav",
+   "served_in": "v0.1.59",
+   "files": 1,
+   "added": 1,
+   "removed": 1
   },
   {
    "sha": "2445ec18afaf65e7f8b1a3cb728080cab1253797",
@@ -2378,7 +3256,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the graph and its tables rebuilt on the 23:53 data (IPMA's red rain for Lisbon from 09:00); status"
+   "what": "the graph and its tables rebuilt on the 23:53 data (IPMA's red rain for Lisbon from 09:00); status",
+   "served_in": "v0.1.59",
+   "files": 7,
+   "added": 556,
+   "removed": 521
   },
   {
    "sha": "b3a1b25c8950d207f6f3278144278f7d110c342d",
@@ -2389,7 +3271,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "IPMA moved Lisbon's red rain to Wednesday 09:00 (was 12:00); read at source 23:53; standfirst, F10, timeline; IPMA's real issue times from CAP (red wind 07:18, "
+   "what": "IPMA moved Lisbon's red rain to Wednesday 09:00 (was 12:00); read at source 23:53; standfirst, F10, timeline; IPMA's real issue times from CAP (red wind 07:18, ",
+   "served_in": "v0.1.53",
+   "files": 19,
+   "added": 1183,
+   "removed": 146
   },
   {
    "sha": "d50facf641b4147332eb3d0ca51399fb2ff68194",
@@ -2399,7 +3285,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 6: decisions on the same hours as the warnings (a \"Decided\" band in the day strip, from data/decisions/graph.json); the footer links to the agents "
+   "what": "design round 6: decisions on the same hours as the warnings (a \"Decided\" band in the day strip, from data/decisions/graph.json); the footer links to the agents ",
+   "served_in": "v0.1.53",
+   "files": 5,
+   "added": 70,
+   "removed": 9
   },
   {
    "sha": "6360a5f3c73a79bc228fe55d8f336432695c1d5f",
@@ -2409,7 +3299,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "/account/ in line with design/README.md (tokens only, banner and cards, light and dark, a phone); lane-configure.mjs and the drain written to SG/Send's append-l"
+   "what": "/account/ in line with design/README.md (tokens only, banner and cards, light and dark, a phone); lane-configure.mjs and the drain written to SG/Send's append-l",
+   "served_in": "v0.1.53",
+   "files": 13,
+   "added": 217,
+   "removed": 86
   },
   {
    "sha": "0b40077f51505a0afe00fafe1125f4bea79a69b2",
@@ -2419,7 +3313,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "release.sh runs the path policy check before every push; policy: the root documents are the conductor's, data/query/ is the graph agent's, the check is the libr"
+   "what": "release.sh runs the path policy check before every push; policy: the root documents are the conductor's, data/query/ is the graph agent's, the check is the libr",
+   "served_in": "v0.1.50",
+   "files": 3,
+   "added": 28,
+   "removed": 21
   },
   {
    "sha": "e34f80741aca8119fda880faaa6b7d15c8a073fd",
@@ -2429,7 +3327,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.49",
+   "files": 3,
+   "added": 490,
+   "removed": 284
   },
   {
    "sha": "796772fc0524553ab7182844d217889d6278f561",
@@ -2439,7 +3341,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "agents/policy.json with the owners the conductor named; tools/policy-check.mjs (the commits about to be pushed against the policy; shared and unassigned paths w"
+   "what": "agents/policy.json with the owners the conductor named; tools/policy-check.mjs (the commits about to be pushed against the policy; shared and unassigned paths w",
+   "served_in": "v0.1.49",
+   "files": 7,
+   "added": 621,
+   "removed": 397
   },
   {
    "sha": "3eb5918fe0186d42651f330c641842ed4ea2c741",
@@ -2449,7 +3355,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "every timeline row carries its permanent id as an anchor (the same id as in signals.json)"
+   "what": "every timeline row carries its permanent id as an anchor (the same id as in signals.json)",
+   "served_in": "v0.1.48",
+   "files": 1,
+   "added": 11,
+   "removed": 2
   },
   {
    "sha": "d6aba69783b6173719eff5430cfa5bebb56924de",
@@ -2460,7 +3370,11 @@
     "dashboard@web-summit.silvio"
    ],
    "issue": "WS-214",
-   "what": "the team in Silvio's Universe (Map, Circuit, Talk) on /agents/#universe: brain.js pinned at 57636ac, one adapter, no fork; the Circuit shows the fact that no ag"
+   "what": "the team in Silvio's Universe (Map, Circuit, Talk) on /agents/#universe: brain.js pinned at 57636ac, one adapter, no fork; the Circuit shows the fact that no ag",
+   "served_in": "v0.1.48",
+   "files": 10,
+   "added": 1572,
+   "removed": 76
   },
   {
    "sha": "1550a1caef3a1018b3175af449c440a153e67886",
@@ -2470,7 +3384,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "weather-sites: eleven key pages rendered and looked at; the ten ideas rewritten from what was seen (IPMA's hourly warnings row, status words, automatic numbers "
+   "what": "weather-sites: eleven key pages rendered and looked at; the ten ideas rewritten from what was seen (IPMA's hourly warnings row, status words, automatic numbers ",
+   "served_in": "v0.1.46",
+   "files": 4,
+   "added": 153,
+   "removed": 74
   },
   {
    "sha": "3feff6c60eb8b4b1b0940feb90743ff4c8a4fc88",
@@ -2480,7 +3398,11 @@
     "incident.librarian@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the build refreshes the library's catalogue into _site/ on every push (--out; no tracked file touched); agents/policy.json placed from the librarian's draft (no"
+   "what": "the build refreshes the library's catalogue into _site/ on every push (--out; no tracked file touched); agents/policy.json placed from the librarian's draft (no",
+   "served_in": "v0.1.45",
+   "files": 2,
+   "added": 34,
+   "removed": 1
   },
   {
    "sha": "60f146bfe54fcc377cf3824c18ba8a91999b9911",
@@ -2490,7 +3412,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 5: the conductor's review applied: theme switch and tighter masthead, \"changed in the last hour of reads\", our English under IPMA's Portuguese, fee"
+   "what": "design round 5: the conductor's review applied: theme switch and tighter masthead, \"changed in the last hour of reads\", our English under IPMA's Portuguese, fee",
+   "served_in": "v0.1.45",
+   "files": 6,
+   "added": 84,
+   "removed": 14
   },
   {
    "sha": "72f93165f3d96ca1b76e156bb1991127ccd04215",
@@ -2500,7 +3426,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.43",
+   "files": 3,
+   "added": 612,
+   "removed": 315
   },
   {
    "sha": "55d31ab86712f3b99ddb2606f6cc9a569426d918",
@@ -2510,7 +3440,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "library-index --out DIR (touches no tracked file, for the build); the header line in the glossary; drafts for the conductor: the path policy from JOBS.md and th"
+   "what": "library-index --out DIR (touches no tracked file, for the build); the header line in the glossary; drafts for the conductor: the path policy from JOBS.md and th",
+   "served_in": "v0.1.43",
+   "files": 7,
+   "added": 689,
+   "removed": 300
   },
   {
    "sha": "aeab8c55fe8a769fc824ea24d3c3560e0e059130",
@@ -2521,7 +3455,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the feedback box's script in every page's head (it draws nothing without a key in the browser); Account in the nav; CLAUDE.md: building a page (the design rules"
+   "what": "the feedback box's script in every page's head (it draws nothing without a key in the browser); Account in the nav; CLAUDE.md: building a page (the design rules",
+   "served_in": "v0.1.42",
+   "files": 2,
+   "added": 6,
+   "removed": 1
   },
   {
    "sha": "5ce386f1cb34bad5775ef2fb1085b6644a73d8f4",
@@ -2532,7 +3470,11 @@
     "incident.observability@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "a database in the browser (/data/query/, five worked questions) and the graph page (/app/graph/) on the engine of Silvio's Universe"
+   "what": "a database in the browser (/data/query/, five worked questions) and the graph page (/app/graph/) on the engine of Silvio's Universe",
+   "served_in": "v0.1.42",
+   "files": 17,
+   "added": 811,
+   "removed": 181
   },
   {
    "sha": "18fe5981c0e272e9ee9e91a811b36405c89c78c3",
@@ -2544,7 +3486,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "every signal has a permanent id (s-<MMDD>T<HHMM>); a corrected row names the id it supersedes"
+   "what": "every signal has a permanent id (s-<MMDD>T<HHMM>); a corrected row names the id it supersedes",
+   "served_in": "v0.1.40",
+   "files": 2,
+   "added": 82,
+   "removed": 39
   },
   {
    "sha": "5df495abde6731dd7ef522df141b0c0efbe07d62",
@@ -2555,7 +3501,11 @@
     "incident.observability@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the build does not run generators that write tracked files (it left the tree dirty and release.sh refused); they will write into _site/ once they take --out"
+   "what": "the build does not run generators that write tracked files (it left the tree dirty and release.sh refused); they will write into _site/ once they take --out",
+   "served_in": "v0.1.39",
+   "files": 1,
+   "added": 0,
+   "removed": 2
   },
   {
    "sha": "66a5b25216038189223e5343f406ee239b2665fa",
@@ -2566,7 +3516,11 @@
     "incident.observability@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the build runs the library's and the agents' generators on every push; Library in the nav; CI fails if the live site does not serve this version or a newer one "
+   "what": "the build runs the library's and the agents' generators on every push; Library in the nav; CI fails if the live site does not serve this version or a newer one ",
+   "served_in": "v0.1.39",
+   "files": 2,
+   "added": 11,
+   "removed": 4
   },
   {
    "sha": "5576aac387417cc226b3596bd2c8faf3a29dad14",
@@ -2576,7 +3530,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.39",
+   "files": 3,
+   "added": 3,
+   "removed": 3
   },
   {
    "sha": "3883324b1184e17d657fa5edef0a7e5ede1b6438",
@@ -2586,7 +3544,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "23:48 wake: the catalogue rebuilt (129 files, every one with its commit record)"
+   "what": "23:48 wake: the catalogue rebuilt (129 files, every one with its commit record)",
+   "served_in": "v0.1.39",
+   "files": 3,
+   "added": 3,
+   "removed": 3
   },
   {
    "sha": "b7b016596f6e22ce8dca888ed83cf6a597b6814c",
@@ -2596,7 +3558,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.39",
+   "files": 3,
+   "added": 1046,
+   "removed": 431
   },
   {
    "sha": "7d79aaa5b656f9a0f12290b04ea0799e36b8206e",
@@ -2606,7 +3572,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "status: the conductor told (the library live, five things to do, three asks); the catalogue refreshed"
+   "what": "status: the conductor told (the library live, five things to do, three asks); the catalogue refreshed",
+   "served_in": "v0.1.39",
+   "files": 3,
+   "added": 1184,
+   "removed": 251
   },
   {
    "sha": "56a4837b93c785796a51df8c86a28cef20728cd2",
@@ -2616,7 +3586,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "research/weather-sites: sites.json (106 entries: worldwide, Portugal, who covers Storm Charles) and the page with the ranking and ten ideas for the home page"
+   "what": "research/weather-sites: sites.json (106 entries: worldwide, Portugal, who covers Storm Charles) and the page with the ranking and ten ideas for the home page",
+   "served_in": "v0.1.36",
+   "files": 5,
+   "added": 3599,
+   "removed": 6
   },
   {
    "sha": "3885eaf56e41e1f31c0596b12f4f84643361cd59",
@@ -2627,7 +3601,11 @@
     "dev.map@PrompTugal.angelo"
    ],
    "issue": "WS-214",
-   "what": "who talks to whom on Angelo's live map (pinned at 57636ac, one adapter, 2D and 3D); commits snapshot as data and as the fallback when GitHub's API does not answ"
+   "what": "who talks to whom on Angelo's live map (pinned at 57636ac, one adapter, 2D and 3D); commits snapshot as data and as the fallback when GitHub's API does not answ",
+   "served_in": "v0.1.36",
+   "files": 13,
+   "added": 1611,
+   "removed": 48
   },
   {
    "sha": "b7afa4da8ad2b123c5d1293ddfaf0ded522600fb",
@@ -2637,7 +3615,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 4: design/README.md (tokens, parts, rules for every agent's pages); document pages' typography; visible focus; the masthead stays dark in dark mode"
+   "what": "design round 4: design/README.md (tokens, parts, rules for every agent's pages); document pages' typography; visible focus; the masthead stays dark in dark mode",
+   "served_in": "v0.1.36",
+   "files": 4,
+   "added": 96,
+   "removed": 5
   },
   {
    "sha": "f0369a0290db85875be0e2285aa9ced70f92b9f7",
@@ -2647,7 +3629,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "/account/ (a key made in the browser behind a passkey or a passphrase), the feedback box sealed to the conductor's key, the conductor's lane tools; tested end t"
+   "what": "/account/ (a key made in the browser behind a passkey or a passphrase), the feedback box sealed to the conductor's key, the conductor's lane tools; tested end t",
+   "served_in": "v0.1.36",
+   "files": 19,
+   "added": 829,
+   "removed": 7
   },
   {
    "sha": "487818fc401f45fa101ea331c7210126d677f037",
@@ -2657,7 +3643,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.36",
+   "files": 3,
+   "added": 687,
+   "removed": 298
   },
   {
    "sha": "f509c53526e9a648acce57c6f2c1840fd0f4db78",
@@ -2667,7 +3657,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "library/reading/ (28 pages of newsroom.sgit.ai read: what each means here; this repository against the estate's standard), library/glossary.md, tools/library-re"
+   "what": "library/reading/ (28 pages of newsroom.sgit.ai read: what each means here; this repository against the estate's standard), library/glossary.md, tools/library-re",
+   "served_in": "v0.1.36",
+   "files": 9,
+   "added": 1707,
+   "removed": 306
   },
   {
    "sha": "13e6f06f07ea06f4909e8bad0b4ded771d457443",
@@ -2677,7 +3671,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 3: the day in phases for phones, the wind chart's observation table, page order (signals and Thursday above the districts)"
+   "what": "design round 3: the day in phases for phones, the wind chart's observation table, page order (signals and Thursday above the districts)",
+   "served_in": "v0.1.31",
+   "files": 5,
+   "added": 72,
+   "removed": 10
   },
   {
    "sha": "9b42a2e674cccb55146bc69121ad2aaeae32c97b",
@@ -2687,7 +3685,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the ontology, the graph of the storm and its tables, built from the incident's JSON; session key (public half only)"
+   "what": "the ontology, the graph of the storm and its tables, built from the incident's JSON; session key (public half only)",
+   "served_in": "v0.1.30",
+   "files": 13,
+   "added": 1857,
+   "removed": 0
   },
   {
    "sha": "e4ea50f1b9f615995da1419a79b1086dd519809d",
@@ -2697,7 +3699,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 2: wind on one axis (warned, forecast, observed) and where, district by district"
+   "what": "design round 2: wind on one axis (warned, forecast, observed) and where, district by district",
+   "served_in": "v0.1.29",
+   "files": 5,
+   "added": 119,
+   "removed": 8
   },
   {
    "sha": "084df62b8acc2efb366f983cb6afb67918c32d70",
@@ -2708,7 +3714,11 @@
     "incident.identity@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "/agents/ serves the live agents page (incident.observability@'s); nav: Agents, Jobs; the conductor's asks to Dinis pruned to the five that stand"
+   "what": "/agents/ serves the live agents page (incident.observability@'s); nav: Agents, Jobs; the conductor's asks to Dinis pruned to the five that stand",
+   "served_in": "v0.1.28",
+   "files": 3,
+   "added": 101,
+   "removed": 30
   },
   {
    "sha": "f0887d03d2eb9ae94929560a0484b57644bd0713",
@@ -2718,7 +3728,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the catalogue's commit record refreshed"
+   "what": "the catalogue's commit record refreshed",
+   "served_in": "v0.1.27",
+   "files": 3,
+   "added": 678,
+   "removed": 267
   },
   {
    "sha": "3449349d919d37508d866b16ef66d257f14d193b",
@@ -2728,7 +3742,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "library/: the catalogue of everything on this site (index.json, the page, the commit record), built by tools/library-index.mjs; status"
+   "what": "library/: the catalogue of everything on this site (index.json, the page, the commit record), built by tools/library-index.mjs; status",
+   "served_in": "v0.1.27",
+   "files": 7,
+   "added": 4392,
+   "removed": 0
   },
   {
    "sha": "bf037edf3e1969a487546218c019d904ed1f4d1d",
@@ -2738,7 +3756,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "analysis rows are labelled hypothesis, never fact (timeline.mjs); the 23:23 row split into the TAF (fact) and the analysis"
+   "what": "analysis rows are labelled hypothesis, never fact (timeline.mjs); the 23:23 row split into the TAF (fact) and the analysis",
+   "served_in": "v0.1.27",
+   "files": 3,
+   "added": 24,
+   "removed": 8
   },
   {
    "sha": "a485c845f864a6bbf1a28a4c3fa0090cc2df2de4",
@@ -2748,7 +3770,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the agents page at /app/agents/ (every agent: doing, done, next, asks with Dinis's on top, last push, key); tools/agents-index.mjs writes data/agents/index.json"
+   "what": "the agents page at /app/agents/ (every agent: doing, done, next, asks with Dinis's on top, last push, key); tools/agents-index.mjs writes data/agents/index.json",
+   "served_in": "v0.1.27",
+   "files": 7,
+   "added": 692,
+   "removed": 0
   },
   {
    "sha": "588962e3ce7d95342cafa767f1e71de68a7711c5",
@@ -2758,7 +3784,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "SECURITY.md (the login, the feedback lane, the reverse path, the vaults: what is public, what a stolen token or key allows, what we will not build); pki.sgit.ai"
+   "what": "SECURITY.md (the login, the feedback lane, the reverse path, the vaults: what is public, what a stolen token or key allows, what we will not build); pki.sgit.ai",
+   "served_in": "v0.1.27",
+   "files": 7,
+   "added": 780,
+   "removed": 0
   },
   {
    "sha": "8c07e4ab451c4f47c6781ff50b53d0f3b3a613bb",
@@ -2768,7 +3798,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "design round 1: the home page as the weather presenter (warning tiles, Wednesday hour by hour, sourced Thursday card)"
+   "what": "design round 1: the home page as the weather presenter (warning tiles, Wednesday hour by hour, sourced Thursday card)",
+   "served_in": "v0.1.27",
+   "files": 4,
+   "added": 259,
+   "removed": 13
   },
   {
    "sha": "b53673e7c9b3eaad38a40a51150c9f2911fc6b19",
@@ -2778,7 +3812,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "session key (public half only) in data/keys.json"
+   "what": "session key (public half only) in data/keys.json",
+   "served_in": "v0.1.22",
+   "files": 1,
+   "added": 16,
+   "removed": 0
   },
   {
    "sha": "3d93ef4fd941959eeb82cbbb469877294ea37f1e",
@@ -2788,7 +3826,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "session key (public half only) in data/keys.json"
+   "what": "session key (public half only) in data/keys.json",
+   "served_in": "v0.1.21",
+   "files": 1,
+   "added": 16,
+   "removed": 0
   },
   {
    "sha": "72a73628abfe6ff30e77f932a0df2644dd3d42a1",
@@ -2798,7 +3840,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "session key (public half only) in data/keys.json"
+   "what": "session key (public half only) in data/keys.json",
+   "served_in": "v0.1.21",
+   "files": 1,
+   "added": 16,
+   "removed": 0
   },
   {
    "sha": "066df683d4f98046893cff6e56e09e6abf72f4f6",
@@ -2808,7 +3854,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "session key (public half only) in data/keys.json; status"
+   "what": "session key (public half only) in data/keys.json; status",
+   "served_in": "v0.1.19",
+   "files": 2,
+   "added": 31,
+   "removed": 0
   },
   {
    "sha": "8b9392e6e3ba3320f60e6a4c1538846dfcc3322e",
@@ -2818,7 +3868,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "session key (public half only) in data/keys.json; agents/media/status.json"
+   "what": "session key (public half only) in data/keys.json; agents/media/status.json",
+   "served_in": "v0.1.19",
+   "files": 2,
+   "added": 33,
+   "removed": 0
   },
   {
    "sha": "29a186ad86b5a63336e2527405a7b85a2a712905",
@@ -2828,7 +3882,11 @@
     "incident.designer@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the nav links the team's jobs and the brief"
+   "what": "the nav links the team's jobs and the brief",
+   "served_in": "v0.1.17",
+   "files": 1,
+   "added": 1,
+   "removed": 1
   },
   {
    "sha": "876a31e26fde4d49e3bd32e6012f6f11e9da66b6",
@@ -2838,7 +3896,11 @@
     "incident.conductor@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "session key (public half only) in data/keys.json"
+   "what": "session key (public half only) in data/keys.json",
+   "served_in": "v0.1.16",
+   "files": 1,
+   "added": 16,
+   "removed": 0
   },
   {
    "sha": "cdaa2d7bf861a9ca7ef23bccba11d06364f089e2",
@@ -2848,7 +3910,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "Dinis's direction of 23:40 in BRIEF.md; agents/JOBS.md: the team and its jobs (designer, observability, identity, weatherwatch, media, librarian, graph)"
+   "what": "Dinis's direction of 23:40 in BRIEF.md; agents/JOBS.md: the team and its jobs (designer, observability, identity, weatherwatch, media, librarian, graph)",
+   "served_in": "v0.1.15",
+   "files": 2,
+   "added": 33,
+   "removed": 0
   },
   {
    "sha": "ada2a2075b81fe69893327f3a428693d7d1daaaf",
@@ -2858,7 +3924,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the first TAF covering Thursday (23:00) is weaker; peak widened to 12:00-18:00 (analysis); IPMA's reds unchanged; Thursday morning behind the storm"
+   "what": "the first TAF covering Thursday (23:00) is weaker; peak widened to 12:00-18:00 (analysis); IPMA's reds unchanged; Thursday morning behind the storm",
+   "served_in": "v0.1.14",
+   "files": 12,
+   "added": 336,
+   "removed": 173
   },
   {
    "sha": "44a983bfb2760054508d610abf646a534536b441",
@@ -2868,7 +3938,11 @@
     "incident.researcher@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "23:02 wake: sync (no change to warnings, Day 3, PITCH, Night Summit or Thursday's transport at 22:23 to 22:33)"
+   "what": "23:02 wake: sync (no change to warnings, Day 3, PITCH, Night Summit or Thursday's transport at 22:23 to 22:33)",
+   "served_in": "v0.1.13",
+   "files": 12,
+   "added": 389,
+   "removed": 111
   },
   {
    "sha": "674a97af379ad7fc1799e2d4d634d1c7b61ef5df",
@@ -2878,7 +3952,11 @@
     "incident.researcher@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "PITCH semi-final timing marked in conflict (Wed 17:00 unsourced vs Thursday per Tech Times); Night Summit still listed for Wednesday"
+   "what": "PITCH semi-final timing marked in conflict (Wed 17:00 unsourced vs Thursday per Tech Times); Night Summit still listed for Wednesday",
+   "served_in": "v0.1.12",
+   "files": 2,
+   "added": 4,
+   "removed": 4
   },
   {
    "sha": "9b42aedd8d0d0ffc5bb91f0a30a5adc9a373634a",
@@ -2888,7 +3966,11 @@
     "incident.researcher@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "22:02 wake: no new organiser statement; sweep 4 (a speaker's talks stay on Thursday, 21:41); the watch's 21:32 alert (text unchanged); sync"
+   "what": "22:02 wake: no new organiser statement; sweep 4 (a speaker's talks stay on Thursday, 21:41); the watch's 21:32 alert (text unchanged); sync",
+   "served_in": "v0.1.11",
+   "files": 3,
+   "added": 81,
+   "removed": 5
   },
   {
    "sha": "64eff59bfefaaa2b6ad8d495efc0ed5b3959d7fe",
@@ -2898,7 +3980,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the sync rewrites paths only in the files it copies (never in itself)"
+   "what": "the sync rewrites paths only in the files it copies (never in itself)",
+   "served_in": "v0.1.10",
+   "files": 1,
+   "added": 1,
+   "removed": 1
   },
   {
    "sha": "d13e13436fd334ed55e5bc9462d38aa588d014d1",
@@ -2908,7 +3994,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the sync also carries incident.dev@'s websummit.mjs and websummit-poll.sh"
+   "what": "the sync also carries incident.dev@'s websummit.mjs and websummit-poll.sh",
+   "served_in": "v0.1.10",
+   "files": 1,
+   "added": 2,
+   "removed": 1
   },
   {
    "sha": "140323fe6bf92be04fcd95d982125ade7a03313f",
@@ -2918,7 +4008,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: the Web Summit watch (listing modified 20:06, text unchanged in substance) and incident.dev@'s websummit.mjs (newest modified across listings; text kept w"
+   "what": "sync: the Web Summit watch (listing modified 20:06, text unchanged in substance) and incident.dev@'s websummit.mjs (newest modified across listings; text kept w",
+   "served_in": "v0.1.10",
+   "files": 14,
+   "added": 301,
+   "removed": 115
   },
   {
    "sha": "fe27f45d067165d27eb4d3b61e89d9438d8fcb19",
@@ -2928,7 +4022,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: IPMA's model changed under the same stamp; peak now 17:00-20:00 (analysis, labelled); red warnings unchanged"
+   "what": "sync: IPMA's model changed under the same stamp; peak now 17:00-20:00 (analysis, labelled); red warnings unchanged",
+   "served_in": "v0.1.7",
+   "files": 8,
+   "added": 394,
+   "removed": 29
   },
   {
    "sha": "0808960d0d17503afc709569c02cff7ac4f0ebf5",
@@ -2938,7 +4036,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the three agents' asks to Dinis: attach this repository to their sessions (add_repo refused by their permission checks)"
+   "what": "the three agents' asks to Dinis: attach this repository to their sessions (add_repo refused by their permission checks)",
+   "served_in": "v0.1.6",
+   "files": 1,
+   "added": 2,
+   "removed": 1
   },
   {
    "sha": "58580618a5164a449b407658d12b07ab97c3cd67",
@@ -2948,7 +4050,11 @@
     "incident.meteorologist@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "sync: the meteorologist's 21:19 refresh (7de22580e; Thursday morning westerly 16-24 km/h, yellow sea only to 03:00) and the agents' status; tools/sync-from-webs"
+   "what": "sync: the meteorologist's 21:19 refresh (7de22580e; Thursday morning westerly 16-24 km/h, yellow sea only to 03:00) and the agents' status; tools/sync-from-webs",
+   "served_in": "v0.1.5",
+   "files": 11,
+   "added": 434,
+   "removed": 308
   },
   {
    "sha": "d9e2b8b92670d50badb3296cf4213a2cbfbb1cbe",
@@ -2958,7 +4064,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "incident.dev@'s pinned websummit-poll.sh (security.repos@'s MEDIUM, 21:30Z fix) brought across from the frozen folder"
+   "what": "incident.dev@'s pinned websummit-poll.sh (security.repos@'s MEDIUM, 21:30Z fix) brought across from the frozen folder",
+   "served_in": "v0.1.4",
+   "files": 3,
+   "added": 25,
+   "removed": 30
   },
   {
    "sha": "7dc3fe412fbaa06f91db9228d6900fe5057f7cc2",
@@ -2968,7 +4078,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "incident.dev@'s 21:13 watch (blog polled every 2 min, robots.txt obeyed) brought across; 21:15 the move in the timeline"
+   "what": "incident.dev@'s 21:13 watch (blog polled every 2 min, robots.txt obeyed) brought across; 21:15 the move in the timeline",
+   "served_in": "v0.1.3",
+   "files": 8,
+   "added": 225,
+   "removed": 27
   },
   {
    "sha": "610dd5f8eb84ccdb677416ecba909f108027df39",
@@ -2978,7 +4092,11 @@
     "incident.dev@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "track admin/build/ (the template .gitignore ignored build/); the gate now fails if its own files are not tracked"
+   "what": "track admin/build/ (the template .gitignore ignored build/); the gate now fails if its own files are not tracked",
+   "served_in": "v0.1.2",
+   "files": 3,
+   "added": 266,
+   "removed": 0
   },
   {
    "sha": "77cdd51fc101109920aeb4308704823711d0f356",
@@ -2990,7 +4108,11 @@
     "incident.researcher@web-summit.dinis"
    ],
    "issue": "WS-214",
-   "what": "the Storm Charles site: newsroom, live dashboard, data API, the gate and one-job CI; the incident moved from web-summit.sgit.ai"
+   "what": "the Storm Charles site: newsroom, live dashboard, data API, the gate and one-job CI; the incident moved from web-summit.sgit.ai",
+   "served_in": "v0.1.2",
+   "files": 51,
+   "added": 9186,
+   "removed": 1
   },
   {
    "sha": "3a61421c9ddb99666e7cbec793f271937c267916",
@@ -2998,7 +4120,11 @@
    "agent": "",
    "to": [],
    "issue": "",
-   "what": "Initial commit"
+   "what": "Initial commit",
+   "served_in": "v0.1.2",
+   "files": 3,
+   "added": 423,
+   "removed": 0
   }
  ]
 }

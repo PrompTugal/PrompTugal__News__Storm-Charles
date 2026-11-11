@@ -58,6 +58,9 @@ for (const k of JSON.parse(read('data/keys.json')).keys || []) {
     ;(a.keys ||= []).push({ id: k.id, record: k.bundle?.signing_fingerprint || '', encryption: k.bundle?.fingerprint || '', added: k.added || '', status: k.status || '', how: clean(k.how || '') })
 }
 
+// 3b. the path policy: the folders each agent may change (agents/policy.json, kept by the conductor and the librarian)
+try { const pol = JSON.parse(read('agents/policy.json')); for (const [name, v] of Object.entries(pol.agents || pol)) if (v && Array.isArray(v.owns) && /@/.test(name)) add(name).policy_owns = v.owns } catch { }
+
 // 4. model calls, as counts: one file per agent, written by tools/agents-ledger.mjs on the machine that made them
 const LED = path.join(ROOT, 'data/agents/ledger')
 const ledger = fs.existsSync(LED) ? fs.readdirSync(LED).filter(f => f.endsWith('.json')).sort().map(f => `data/agents/ledger/${f}`) : []
@@ -69,7 +72,7 @@ const body = {
     about: 'Every agent of the incident team behind storm-charles.promptugal.news: its job (agents/JOBS.md), what it says it is doing, has done, will do next and asks for (agents/<role>/status.json; asks starting "Dinis:" are for the operator), and its public key fingerprints (data/keys.json). Written by tools/agents-index.mjs from the repository; nothing here is typed by hand. Commits are not in this file: the page reads them from GitHub\'s public API.',
     by: 'incident.observability@web-summit.dinis',
     repository: 'PrompTugal/PrompTugal__News__Storm-Charles', branch: 'dev',
-    sources: ['agents/JOBS.md', 'agents/*/status.json', 'data/keys.json', 'data/agents/ledger/*.json'],
+    sources: ['agents/JOBS.md', 'agents/*/status.json', 'agents/policy.json', 'data/keys.json', 'data/agents/ledger/*.json'],
     counts: { agents: agents.length, with_status: agents.filter(a => a.has_status).length, with_key: agents.filter(a => a.has_key).length, asks_for_dinis: agents.reduce((n, a) => n + (a.asks_dinis?.length || 0), 0) },
     ledger, agents
 }
