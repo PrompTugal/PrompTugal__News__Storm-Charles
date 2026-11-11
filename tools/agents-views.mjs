@@ -72,7 +72,13 @@ for (const lane of new Set(entries.map(e => e.inbox))) {
 
 // 2. count, from every kept event
 const ev = fs.readdirSync(path.join(DRAIN, 'events')).filter(f => f.endsWith('.jsonl')).sort().flatMap(f => fs.readFileSync(path.join(DRAIN, 'events', f), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)))
-const people = ev.filter(e => !e.agent), views = people.filter(e => e.type === 'view'), reads = people.filter(e => e.type === 'read')
+// a tab id that one person could not have made is counted apart as inferred automated: views from more than one screen class
+// (phone, tablet, desktop) in one tab, or more than SWEEP_MAX views in one tab (11 November, 14:20: one tab id sent 1,320 views of 1,057 pages at three widths)
+const SWEEP_MAX = 150
+const bySid = new Map(); for (const e of ev) if (!e.agent && e.type === 'view' && e.sid) { const o = bySid.get(e.sid) || { n: 0, scr: new Set() }; o.n++; o.scr.add(e.screen || ''); bySid.set(e.sid, o) }
+const swept = new Set([...bySid].filter(([, o]) => o.n > SWEEP_MAX || o.scr.size > 1).map(([k]) => k))
+const inferred = ev.filter(e => !e.agent && e.type === 'view' && swept.has(e.sid)).length
+const people = ev.filter(e => !e.agent && !swept.has(e.sid)), views = people.filter(e => e.type === 'view'), reads = people.filter(e => e.type === 'read')
 const tally = (list, key, n) => { const m = new Map(); for (const e of list) { const k = key(e); if (k) m.set(k, (m.get(k) || 0) + 1) } return [...m].sort((x, y) => y[1] - x[1] || (x[0] < y[0] ? -1 : 1)).slice(0, n).map(([k, c]) => ({ k, n: c })) }
 const CITY_MIN = 5   // a city is named only with at least this many views in the period; fewer count as "other" in its country
 const byCountry = list => {
@@ -89,12 +95,12 @@ const hours = new Map()
 for (const e of views) { const h = e.received.slice(0, 13) + ':00Z', o = hours.get(h) || { hour: h, views: 0, s: new Set() }; o.views++; if (e.sid) o.s.add(e.sid); hours.set(h, o) }
 const now = new Date().toISOString().slice(0, 19) + 'Z'
 const out = {
-    about: 'Page views of storm-charles.promptugal.news, as counts only. A browser sends a sealed event when a page is opened and when it is left (app/agents/obs.js): the country and city from one lookup per tab at GeoJS (get.geojs.io, which sees the IP address to answer; the IP address is never kept), no cookie, nothing when Do Not Track or Global Privacy Control is on or when the reader pressed Pause. The events are opened by tools/agents-views.mjs and only these counts are published, here and in the vault named below. Anyone can write to the lanes, so a count is what was reported, not what was verified. A visit is one browser tab (a random id kept for that tab only). Automated browsers that say so are counted apart. A city is named only with at least ' + CITY_MIN + ' views in the period; fewer count in its country as other_or_unknown_city.',
+    about: 'Page views of storm-charles.promptugal.news, as counts only. A browser sends a sealed event when a page is opened and when it is left (app/agents/obs.js): the country and city from one lookup per tab at GeoJS (get.geojs.io, which sees the IP address to answer; the IP address is never kept), no cookie, nothing when Do Not Track or Global Privacy Control is on or when the reader pressed Pause. The events are opened by tools/agents-views.mjs and only these counts are published, here and in the vault named below. Anyone can write to the lanes, so a count is what was reported, not what was verified. A visit is one browser tab (a random id kept for that tab only). Automated browsers that say so are counted apart, and so is a tab id no one person could have made (views at more than one screen class, or more than ' + SWEEP_MAX + ' views): automated_inferred. A city is named only with at least ' + CITY_MIN + ' views in the period; fewer count in its country as other_or_unknown_city.',
     by: 'incident.observability@web-summit.dinis', updated: now,
     source: 'the append lanes of vault zd1cb3kt on https://dev.send.sgraph.ai', read_utc: now,
     vault: { id: 'zd1cb3kt', file: 'stats/views.json' },
     since: ev.length ? ev[0].received : null, until: ev.length ? ev[ev.length - 1].received : null,
-    totals: { views: views.length, visits: new Set(views.map(e => e.sid).filter(Boolean)).size, pages: new Set(views.map(e => e.path)).size, reads: reads.length, median_visible_s: median(reads.map(e => e.visible_s)), automated: ev.filter(e => e.agent && e.type === 'view').length, refused_this_run: refused },
+    totals: { views: views.length, visits: new Set(views.map(e => e.sid).filter(Boolean)).size, pages: new Set(views.map(e => e.path)).size, reads: reads.length, median_visible_s: median(reads.map(e => e.visible_s)), automated: ev.filter(e => e.agent && e.type === 'view').length, automated_inferred: { views: inferred, tabs: swept.size, rule: `one tab id with views from more than one screen class, or more than ${SWEEP_MAX} views` }, refused_this_run: refused },
     by_hour: [...hours.values()].sort((x, y) => x.hour < y.hour ? -1 : 1).map(o => ({ hour: o.hour, views: o.views, visits: o.s.size })),
     by_path: tally(views, e => e.path, 40).map(r => ({ path: r.k, views: r.n, median_visible_s: median(reads.filter(e => e.path === r.k).map(e => e.visible_s)) })),
     by_referrer: tally(views, e => e.ref && e.ref !== 'storm-charles.promptugal.news' ? e.ref : '', 20).map(r => ({ host: r.k, views: r.n })),

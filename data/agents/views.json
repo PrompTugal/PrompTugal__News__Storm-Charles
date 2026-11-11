@@ -1,22 +1,27 @@
 {
-  "about": "Page views of storm-charles.promptugal.news, as counts only. A browser sends a sealed event when a page is opened and when it is left (app/agents/obs.js): the country and city from one lookup per tab at GeoJS (get.geojs.io, which sees the IP address to answer; the IP address is never kept), no cookie, nothing when Do Not Track or Global Privacy Control is on or when the reader pressed Pause. The events are opened by tools/agents-views.mjs and only these counts are published, here and in the vault named below. Anyone can write to the lanes, so a count is what was reported, not what was verified. A visit is one browser tab (a random id kept for that tab only). Automated browsers that say so are counted apart. A city is named only with at least 5 views in the period; fewer count in its country as other_or_unknown_city.",
+  "about": "Page views of storm-charles.promptugal.news, as counts only. A browser sends a sealed event when a page is opened and when it is left (app/agents/obs.js): the country and city from one lookup per tab at GeoJS (get.geojs.io, which sees the IP address to answer; the IP address is never kept), no cookie, nothing when Do Not Track or Global Privacy Control is on or when the reader pressed Pause. The events are opened by tools/agents-views.mjs and only these counts are published, here and in the vault named below. Anyone can write to the lanes, so a count is what was reported, not what was verified. A visit is one browser tab (a random id kept for that tab only). Automated browsers that say so are counted apart, and so is a tab id no one person could have made (views at more than one screen class, or more than 150 views): automated_inferred. A city is named only with at least 5 views in the period; fewer count in its country as other_or_unknown_city.",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T13:23:36Z",
+  "updated": "2026-11-11T14:21:33Z",
   "source": "the append lanes of vault zd1cb3kt on https://dev.send.sgraph.ai",
-  "read_utc": "2026-11-11T13:23:36Z",
+  "read_utc": "2026-11-11T14:21:33Z",
   "vault": {
     "id": "zd1cb3kt",
     "file": "stats/views.json"
   },
   "since": "2026-11-11T09:37:51.121Z",
-  "until": "2026-11-11T13:20:06.930Z",
+  "until": "2026-11-11T14:21:10.764Z",
   "totals": {
-    "views": 1182,
-    "visits": 171,
-    "pages": 794,
-    "reads": 238,
+    "views": 263,
+    "visits": 190,
+    "pages": 23,
+    "reads": 258,
     "median_visible_s": 14,
-    "automated": 296,
+    "automated": 442,
+    "automated_inferred": {
+      "views": 1335,
+      "tabs": 1,
+      "rule": "one tab id with views from more than one screen class, or more than 150 views"
+    },
     "refused_this_run": 0
   },
   "by_hour": [
@@ -32,45 +37,30 @@
     },
     {
       "hour": "2026-11-11T11:00Z",
-      "views": 209,
-      "visits": 115
+      "views": 152,
+      "visits": 114
     },
     {
       "hour": "2026-11-11T12:00Z",
-      "views": 629,
-      "visits": 22
+      "views": 21,
+      "visits": 21
     },
     {
       "hour": "2026-11-11T13:00Z",
-      "views": 305,
-      "visits": 14
+      "views": 34,
+      "visits": 28
+    },
+    {
+      "hour": "2026-11-11T14:00Z",
+      "views": 17,
+      "visits": 6
     }
   ],
   "by_path": [
     {
       "path": "/",
-      "views": 172,
-      "median_visible_s": 34
-    },
-    {
-      "path": "/app/desk/index.html",
-      "views": 75,
-      "median_visible_s": null
-    },
-    {
-      "path": "/view/index.html",
-      "views": 32,
-      "median_visible_s": null
-    },
-    {
-      "path": "/app/agents/commit.html",
-      "views": 26,
-      "median_visible_s": null
-    },
-    {
-      "path": "/agents/index.html",
-      "views": 18,
-      "median_visible_s": 0
+      "views": 193,
+      "median_visible_s": 33
     },
     {
       "path": "/index.html",
@@ -80,42 +70,27 @@
     {
       "path": "/stories/index.html",
       "views": 9,
-      "median_visible_s": 4
+      "median_visible_s": 3
+    },
+    {
+      "path": "/agents/index.html",
+      "views": 7,
+      "median_visible_s": 3
     },
     {
       "path": "/data-room/index.html",
-      "views": 6,
-      "median_visible_s": 4
-    },
-    {
-      "path": "/app/graph/index.html",
-      "views": 5,
-      "median_visible_s": null
+      "views": 7,
+      "median_visible_s": 5
     },
     {
       "path": "/research/media/index.html",
-      "views": 5,
+      "views": 7,
       "median_visible_s": 1
     },
     {
       "path": "/sources/index.html",
       "views": 4,
       "median_visible_s": 1
-    },
-    {
-      "path": "/welcome/index.html",
-      "views": 4,
-      "median_visible_s": 2
-    },
-    {
-      "path": "/agents/identity/index.html",
-      "views": 3,
-      "median_visible_s": null
-    },
-    {
-      "path": "/ci/repository.html",
-      "views": 3,
-      "median_visible_s": 6
     },
     {
       "path": "/labs/index.html",
@@ -125,130 +100,84 @@
     {
       "path": "/studio/index.html",
       "views": 3,
-      "median_visible_s": 0
-    },
-    {
-      "path": "/agents/dev/index.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/agents/entities/index.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/agents/journalist/index.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/agents/meteorologist/index.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/datasets.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/entities/decision/mj-services.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/entities/service/ferries.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/evidence/dn/2026/11/11/0238-sociedade-governo-decreta-situao-de-alerta-montenegro-avisa-a38ad46c.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/evidence/eco-sapo/2026/11/11/0408-feed.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/evidence/noticiasaominuto/2026/11/11/0344-pais-3081862-feira-nacional-do-cavalo-cancela-programacao-po-c539f6f2.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/help/index.html",
-      "views": 2,
       "median_visible_s": 2
     },
     {
-      "path": "/journal/an-agents-first-twelve-minutes.html",
-      "views": 2,
-      "median_visible_s": null
+      "path": "/welcome/index.html",
+      "views": 3,
+      "median_visible_s": 2
     },
     {
-      "path": "/meteorology/nodes/data-metno-api.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/models/models/anthropic--claude-haiku-5.5.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/models/models/google--gemini-3.5-flash-lite.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/models/models/mistralai--mistral-large-4-0.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/models/models/openai--gpt-6-luna.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/models/models/openai--gpt-oss-20b.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/models/models/qwen--qwen3.5-397b-a17b.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/news/index.html",
+      "path": "/ci/repository.html",
       "views": 2,
       "median_visible_s": 6
-    },
-    {
-      "path": "/research/social/accounts/theguardian.com.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/research/weather-sites/sites/mesonet.html",
-      "views": 2,
-      "median_visible_s": null
-    },
-    {
-      "path": "/sources/ipma/api.html",
-      "views": 2,
-      "median_visible_s": null
     },
     {
       "path": "/welcome/",
       "views": 2,
       "median_visible_s": 4
+    },
+    {
+      "path": "/datasets.html",
+      "views": 1,
+      "median_visible_s": null
+    },
+    {
+      "path": "/guide/",
+      "views": 1,
+      "median_visible_s": 17
+    },
+    {
+      "path": "/guide/index.html",
+      "views": 1,
+      "median_visible_s": 10
+    },
+    {
+      "path": "/help/index.html",
+      "views": 1,
+      "median_visible_s": 2
+    },
+    {
+      "path": "/news/index.html",
+      "views": 1,
+      "median_visible_s": 6
+    },
+    {
+      "path": "/research/media/charts.html",
+      "views": 1,
+      "median_visible_s": 4
+    },
+    {
+      "path": "/research/media/outlets/correio-da-manha.html",
+      "views": 1,
+      "median_visible_s": 2
+    },
+    {
+      "path": "/research/media/outlets/index.html",
+      "views": 1,
+      "median_visible_s": 6
+    },
+    {
+      "path": "/research/media/outlets/rtp.html",
+      "views": 1,
+      "median_visible_s": 4
+    },
+    {
+      "path": "/research/media/outlets/tek.html",
+      "views": 1,
+      "median_visible_s": 1
+    },
+    {
+      "path": "/view/",
+      "views": 1,
+      "median_visible_s": 4
     }
   ],
   "by_referrer": [
+    {
+      "host": "www.linkedin.com",
+      "views": 3
+    },
     {
       "host": "fringe.promptugal.news",
       "views": 2
@@ -258,38 +187,29 @@
       "views": 2
     },
     {
-      "host": "www.linkedin.com",
+      "host": "www.google.com",
       "views": 1
     }
   ],
   "by_screen": [
     {
       "screen": "phone",
-      "views": 710
+      "views": 159
     },
     {
       "screen": "desktop",
-      "views": 431
-    },
-    {
-      "screen": "tablet",
-      "views": 41
+      "views": 104
     }
   ],
   "by_via": [],
   "by_country": [
     {
-      "country": null,
-      "note": "no place: sent before the lookup existed, or it failed or was slow",
-      "views": 974
-    },
-    {
       "country": "PT",
-      "views": 141,
+      "views": 151,
       "cities": [
         {
           "city": "Lisbon",
-          "views": 78
+          "views": 84
         },
         {
           "city": "Porto",
@@ -308,24 +228,34 @@
           "views": 5
         }
       ],
-      "other_or_unknown_city": 31
+      "other_or_unknown_city": 35
     },
     {
       "country": "GB",
-      "views": 23,
-      "cities": [],
-      "other_or_unknown_city": 23
+      "views": 37,
+      "cities": [
+        {
+          "city": "Ilford",
+          "views": 13
+        }
+      ],
+      "other_or_unknown_city": 24
+    },
+    {
+      "country": null,
+      "note": "no place: sent before the lookup existed, or it failed or was slow",
+      "views": 23
     },
     {
       "country": "IT",
-      "views": 20,
+      "views": 22,
       "cities": [
         {
           "city": "Milan",
           "views": 12
         }
       ],
-      "other_or_unknown_city": 8
+      "other_or_unknown_city": 10
     },
     {
       "country": "NL",
@@ -335,9 +265,9 @@
     },
     {
       "country": "US",
-      "views": 7,
+      "views": 8,
       "cities": [],
-      "other_or_unknown_city": 7
+      "other_or_unknown_city": 8
     },
     {
       "country": "FR",
@@ -346,10 +276,28 @@
       "other_or_unknown_city": 5
     },
     {
+      "country": "CZ",
+      "views": 3,
+      "cities": [],
+      "other_or_unknown_city": 3
+    },
+    {
       "country": "ES",
       "views": 3,
       "cities": [],
       "other_or_unknown_city": 3
+    },
+    {
+      "country": "CH",
+      "views": 1,
+      "cities": [],
+      "other_or_unknown_city": 1
+    },
+    {
+      "country": "HU",
+      "views": 1,
+      "cities": [],
+      "other_or_unknown_city": 1
     },
     {
       "country": "IE",

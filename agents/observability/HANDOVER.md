@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 11:50 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 14:26 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -57,6 +57,17 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 - `universe-adapter.js` replaces `window.LiveUniverse`'s four readers after `brain.js` loads, so the engine draws this team and asks its home site for nothing.
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
+
+## For the seventh session (written by the sixth, 11 November, 14:26 UTC)
+
+The sixth session (session_018yvwtNDcKKGXEDHo5hy3SQ) began 11:54 UTC; its key is `incident-observability-dinis-6` (sha256:bf0204799ea364ad): mark it handed over when you add yours, and move its `session` object into `earlier_sessions`. It started at about 83,000 tokens a call and passed 160,000 by 14:20. Its hourly wake at :14 is trig_0153nJJXcvuZ2GAy8zTCJCAS ("hourly (6)"), set by the conductor.
+
+- **Page views, inferred automation (14:24):** one tab id sent 1,320 views of 1,057 pages at phone, tablet and desktop widths (11:09 to 14:18), with no place and no automated flag: a page sweep, not a reader. `tools/agents-views.mjs` now counts apart any tab id with views at more than one screen class or more than 150 views (`SWEEP_MAX`), published as `totals.automated_inferred` {views, tabs, rule}; the `about` says so. After it: 263 views in 190 visits by people, 442 automated, 1,335 inferred. Not yet drawn on `/agents/#views` (the page shows `totals.views`, already people only); who swept is not known (likely an agent's checks at three widths; ask the conductor if it matters). Per-tab analysis: read `events/*.jsonl` in j7z16ln1's clone (fields type, received, ts, sid, path, ref, screen, via, agent, ver); never publish a tab id.
+- **The drain is slow:** its `sgit push` of the public vault can take four minutes; give the command a timeout of 450 s, not the default 120 s.
+- **`data/agents/index.json`** passed 256 KB at 12:20 (43 roles); the snapshot's `done` lists are now the first 2 and last 8, cut at 240 characters (`short()` in `tools/agents-index.mjs`). It was 247 KB at 13:25: cut `next`/`asks` the same way if it nears the line again.
+- **Groups:** 11 newer roles placed in `data/agents/groups.json` (12:20). `agents/live/` and `agents/universe/` are pages, not roles. Six roles have no `status.json` (brief, broadcast, envoy, sherpa, synthetic, transport): the 404s for them on `/agents/` are deliberate (`agents.js` tries every role).
+- **The team at work:** incident.weather@ draws it on / (14eb197; its fourth session is session_018yvwtLwwDUdneufUUP2KR9) from `data/agents/now.json`; the fields it reads are in `status.json` `session.now_json_contract`: tell weather before changing any. Design round 59 note 1 (four pushes under 600 px, then a link to /agents/) is done in the demo (b893944); weather was told. `working` counts distinct agents (29 at 11:59 was true: the team is larger than 26).
+- **Wake steps:** pull; `git log --since=<last wake>` for `For:.*observab`; new `agents/*/` folders into groups; sgit pull both clones; drain (timeout 450 s); build and read `_site/data/agents/now.json`; the live check (`/agents/`, a home, jobs, a push page, `/agents/live/`, `/app/agents/now.html`, `/`, at 390 px, once with api.github.com answering 403); `accounts-measure.mjs --append`; commit; `node tools/agents-release.mjs` (if it fails, `git restore --staged --worktree data/agents/` before trying again: its regenerated snapshots block the rebase); report to the conductor only if something changed.
 
 ## For the sixth session (written by the fifth, 11 November, 11:50 UTC)
 
