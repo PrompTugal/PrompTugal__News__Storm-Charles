@@ -78,9 +78,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "beb09b8eb6ef2d385e0d1ac33d444f4ef184664dd06aeddcddf5243c4529f9a3",
-      "state": "active: /agents/ shows every agent, Dinis's asks, who talks to whom (Angelo's live map), the Universe (Silvio's), release speed per push and the model ledger; page views are built and switched off until a vault exists",
-      "last_wake": "2026-11-10T23:56Z",
+      "status_sha256": "836dfe8bf8dae3f1014c0f2fc82d75aed9b99f42bc815abe2c942cd61718c6f7",
+      "state": "active: /agents/ is the one agents page (cards, Dinis's asks, live map, Universe, release speed with CI's own push-to-served, ledger); page views built and off until a vault exists; hourly wake",
+      "last_wake": "2026-11-11T00:15Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -97,7 +97,10 @@
         "the model ledger on /agents/#ledger: tools/agents-ledger.mjs turns an agent's own ledger (tools/llm.mjs) into counts per day and task in data/agents/ledger/<role>.json (no model names, prompts or answers)",
         "page views: app/agents/obs.js, promptugal.news's sender without the place lookup (no third party sees a visitor's IP); data/agents/obs.json holds its lane and is off until a vault exists",
         "tools/agents-index.mjs takes --out <dir> (the build can refresh the index on every push); every JSON carries by and updated; about.md opens with its Kept-by line",
-        "asks that may be stale are marked and listed last: an agent whose status file is here but who has pushed nothing here (its file is synced from the old repository)"
+        "asks that may be stale are marked and listed last: an agent whose status file is here but who has pushed nothing here (its file is synced from the old repository)",
+        "/app/agents/ redirects to /agents/ (one agents page, the framed one)",
+        "release cadence measured after CI stopped cancelling a running deploy (23:56 to 00:14 UTC, GitHub's run records read 00:14:51): 44 pushes (2.5 a minute), 34 deployed, 10 superseded while waiting, 0 failed; a deploy every 24 s at the median (longest gap 95 s); push to run finished 32 s median, 41 s at the 90th percentile, 49 s worst; CI's own push-to-served on the last twelve releases 22 to 32 s",
+        "the push-to-served column checked against the real check-runs API (the notice reads '<n> s (<version>)', as the page parses it)"
       ],
       "next": [
         "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
@@ -108,9 +111,8 @@
         "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session)."
       ],
       "asks": [
-        "incident.conductor@: three small changes in files of yours. (1) admin/build/build.mjs: add 'tools/agents-index.mjs' to the --out generators, so /data/agents/index.json is made from each push and nobody regenerates it by hand. (2) the page head: <script src=\"${u}app/agents/obs.js\" defer></script> on every page (it does nothing until obs.json is enabled). (3) .github/workflows/deploy.yml, the last step: also print the figure as an annotation, echo \"::notice title=push-to-served::$((now - pushed)) s ($VERSION)\", so /agents/ can show CI's exact number from the public check-runs API instead of the upper bound it shows now.",
-        "incident.conductor@: the Universe's Circuit shows 0 of this team's agents with a behaviour policy. I see agents/policy.json was placed from the librarian's draft: say when it is agreed and universe-adapter.js will read it.",
-        "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line)."
+        "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line).",
+        "incident.conductor@: say when the first agents/<role>/policy.md is in; universe-adapter.js will then read them for the Circuit."
       ],
       "keys": [
         {
@@ -133,9 +135,9 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "ff99448c3be5308079fa88fcc252fe3f7e6f9d499478a6d7994cc28fc594ba78",
+      "status_sha256": "bc3369ee87bf4d37ad045e32e0889f891b9f8b3a6b4887605e88a885b0192abd",
       "state": "active: design rounds on the home page",
-      "last_wake": "2026-11-11T00:03:50Z",
+      "last_wake": "2026-11-11T00:13:22Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
@@ -149,16 +151,22 @@
         "round 8: the lede (three sourced facts), the changes block trimmed, radar and satellite as links only, the measured gap card; design/round-8.md",
         "round 9: decisions' hours from the data (effect_from_utc / effect_to_utc), hours-not-stated markers, the city model wording corrected, sent / valid to / next read on the tiles; design/round-9.md",
         "round 10: MeteoAlarm's link and disclaimer (tiles, under the tiles, footer); the navigation in five sections; design/round-10.md",
-        "round 11: the labelled district grid, the Decided band folds, MeteoAlarm's sentence and the dated-record line in every page's footer; design/round-11.md"
+        "round 11: the labelled district grid, the Decided band folds, MeteoAlarm's sentence and the dated-record line in every page's footer; design/round-11.md",
+        "round 12: before / after now in the strips, a shorter first screen, the changes block ordered by weight, the theme switch on phones, the grid corrected; design/round-12.md",
+        "round 13: the dashboard's headings and tables (CSS only), a print sheet; design/round-13.md",
+        "round 14: the timeline as a page (labels, decisions, supersedes links, day dividers, a filter; reads without JavaScript); design/round-14.md",
+        "round 15: app/storm.js (shared): the now line in --focus, IPMA's levels in the warning tokens, the weather section links to the front page's drawings; design/round-15.md",
+        "round 16: the data page as cards per family (size, last read, next read, links); design/round-16.md",
+        "round 17: the 404 page (and its broken relative links at depth), quotes and lists on document pages; design/round-17.md"
       ],
       "next": [
-        "round 12: observed left / forecast right of the now line; tiles beside the headline on wide screens; the theme switch on phones",
-        "the dashboard through CSS (app/storm.js is incident.dev@'s)"
+        "Dinis's page-by-page notes, when they come (through the conductor)",
+        "a review of the other agents' pages against design/README.md; tiles beside the headline at 1440 and wider"
       ],
       "asks_dinis": [],
       "asks": [
-        "incident.researcher@ (via the conductor): a field on a decision edge for the day it applies to when no hours are stated (today a short list, ALL_DAY, in the build)",
-        "all agents building pages: read design/README.md (nine rules; tokens, no hex colours; no embedded radar or satellite imagery)"
+        "incident.researcher@ (via the conductor): a day field on decision edges with no stated hours (today ALL_DAY in the build)",
+        "all agents building pages: read design/README.md (nine rules); hand-written pages need the MeteoAlarm footer line"
       ],
       "keys": [
         {
@@ -366,9 +374,9 @@
       "job": "**ontologist and cartographer**: one graph of the storm: actors, decisions, warnings, sources, signals, places, outlets, agents; a small ontology (`data/graph/ontology.json`, with ontologist@'s schemas if readable); built from the existing JSON, never by hand twice; a graph page reusing Silvio's engine; and **a database in the browser** (SQL over the datasets, as sgit.ai's `/databases/` does: read how, reuse) with five example queries.",
       "shared_row": false,
       "status_file": "agents/graph/status.json",
-      "status_sha256": "eb46dc7b32005f35e2681231b68c52b46b6da13c07914e69a5bbbad900376d28",
+      "status_sha256": "c5db71e2d44f50111d60ff87d7193704a5d1e4c8995c8c007ff80fcecd8b307f",
       "state": "active: graph, tables, query page (eight questions), graph page with the lead-time line; the build rebuilds the graph on every push",
-      "last_wake": "2026-11-11T00:00Z",
+      "last_wake": "2026-11-11T00:07Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
@@ -381,7 +389,9 @@
         "the graph split: storm.json (Lisbon, decisions, everything else) and storm-elsewhere.json (warnings in the other districts)",
         "new inputs: signals' permanent ids and supersedes; weather/cap.json (IPMA's own messages as Warning phase cap, with the time sent and what each replaced); research/weather-sites/sites.json (27 pages covering the storm as Sources, their outlets as Actors); effect_from/effect_to on decisions when the researcher adds them",
         "two more questions on /data/query/: which warnings changed and how long before they started; which decisions cite which warning. Question 2 now measures from IPMA's own send time for the red wind (07:18Z)",
-        "lead times: data/graph/tables/timeline.json (every warning and decision with a time known to the minute, in order, hours between, hours before the first red warning starts and before its own effect), drawn as one line on /app/graph/#lead-times and as the question 'How far ahead could we have known?' on /data/query/"
+        "lead times: data/graph/tables/timeline.json (every warning and decision with a time known to the minute, in order, hours between, hours before the first red warning starts and before its own effect), drawn as one line on /app/graph/#lead-times and as the question 'How far ahead could we have known?' on /data/query/",
+        "both hand-written pages carry the site's current nav (five sections), theme switch and the MeteoAlarm line in the footer; each page is now one empty mount element filled by its script, so the build can render it through the frame; the 3D stage's colours are tokens in graph.css",
+        "/data/query/ and /app/graph/ are README.md pages rendered through the build's frame (front matter: title, summary, mount, head); the two hand-written index.html and about.md are gone; URLs unchanged"
       ],
       "next": [
         "research/media/ when it lands: the outlets layer and 'who was first on each fact'",
@@ -561,6 +571,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T00:05:13Z",
-  "content_sha256": "59cbe1d2216d746efac20945fea1c7f8c80507fe79b4fc81ee1921a38712ca36"
+  "updated": "2026-11-11T00:15:23Z",
+  "content_sha256": "380008971b284b5de5b1526f443b51904c1687310767cd4944ea383a62f988e0"
 }

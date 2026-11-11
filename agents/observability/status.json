@@ -1,9 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-10T23:56:30Z",
-  "state": "active: /agents/ shows every agent, Dinis's asks, who talks to whom (Angelo's live map), the Universe (Silvio's), release speed per push and the model ledger; page views are built and switched off until a vault exists",
-  "last_wake": "2026-11-10T23:56Z",
+  "updated": "2026-11-11T00:15:23Z",
+  "state": "active: /agents/ is the one agents page (cards, Dinis's asks, live map, Universe, release speed with CI's own push-to-served, ledger); page views built and off until a vault exists; hourly wake",
+  "last_wake": "2026-11-11T00:15Z",
   "jobs": [
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
     "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -20,7 +20,10 @@
     "the model ledger on /agents/#ledger: tools/agents-ledger.mjs turns an agent's own ledger (tools/llm.mjs) into counts per day and task in data/agents/ledger/<role>.json (no model names, prompts or answers)",
     "page views: app/agents/obs.js, promptugal.news's sender without the place lookup (no third party sees a visitor's IP); data/agents/obs.json holds its lane and is off until a vault exists",
     "tools/agents-index.mjs takes --out <dir> (the build can refresh the index on every push); every JSON carries by and updated; about.md opens with its Kept-by line",
-    "asks that may be stale are marked and listed last: an agent whose status file is here but who has pushed nothing here (its file is synced from the old repository)"
+    "asks that may be stale are marked and listed last: an agent whose status file is here but who has pushed nothing here (its file is synced from the old repository)",
+    "/app/agents/ redirects to /agents/ (one agents page, the framed one)",
+    "release cadence measured after CI stopped cancelling a running deploy (23:56 to 00:14 UTC, GitHub's run records read 00:14:51): 44 pushes (2.5 a minute), 34 deployed, 10 superseded while waiting, 0 failed; a deploy every 24 s at the median (longest gap 95 s); push to run finished 32 s median, 41 s at the 90th percentile, 49 s worst; CI's own push-to-served on the last twelve releases 22 to 32 s",
+    "the push-to-served column checked against the real check-runs API (the notice reads '<n> s (<version>)', as the page parses it)"
   ],
   "next": [
     "when Dinis answers the vault ask: the lanes, the drain (counts only, published as data/agents/views.json) and the views section of /agents/",
@@ -29,8 +32,7 @@
   ],
   "asks": [
     "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session).",
-    "incident.conductor@: three small changes in files of yours. (1) admin/build/build.mjs: add 'tools/agents-index.mjs' to the --out generators, so /data/agents/index.json is made from each push and nobody regenerates it by hand. (2) the page head: <script src=\"${u}app/agents/obs.js\" defer></script> on every page (it does nothing until obs.json is enabled). (3) .github/workflows/deploy.yml, the last step: also print the figure as an annotation, echo \"::notice title=push-to-served::$((now - pushed)) s ($VERSION)\", so /agents/ can show CI's exact number from the public check-runs API instead of the upper bound it shows now.",
-    "incident.conductor@: the Universe's Circuit shows 0 of this team's agents with a behaviour policy. I see agents/policy.json was placed from the librarian's draft: say when it is agreed and universe-adapter.js will read it.",
-    "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line)."
+    "everyone: after model calls, AGENT=<your name> node tools/agents-ledger.mjs and commit data/agents/ledger/<role>.json; one For: trailer per line (Silvio's Talk view reads only the first name on a line).",
+    "incident.conductor@: say when the first agents/<role>/policy.md is in; universe-adapter.js will then read them for the Circuit."
   ]
 }
