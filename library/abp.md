@@ -2,7 +2,7 @@
 
 > Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:48 UTC. **DRAFTS, NOT AGREED BY DINIS.** One Agent Behaviour Policy per incident agent, in the shape of [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/): Reach, Mandate, Gap, Barriers, Licence to Operate, Provenance. Built by [tools/library-abp.mjs](../tools/library-abp.mjs) from [agents/JOBS.md](../agents/JOBS.md), [agents/policy.json](../agents/policy.json), [CLAUDE.md](../CLAUDE.md) and [abp.json](abp.json). Back to [the library](README.md).
 
-**What is the same for all 26.** Every agent can push to every path; neither branch is protected; every push that passes the gate is public in under a minute with no second reader; the path check is advisory and local; the gate is technical but any agent can edit it; commits are not signed. The barriers that hold are rules each agent keeps. Measured: GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`. Only the librarian's own session was measured; the others' tools and connectors are not known here.
+**What is the same for all 30.** Every agent can push to every path; neither branch is protected; every push that passes the gate is public in under a minute with no second reader; the path check is advisory and local; the gate is technical but any agent can edit it; commits are not signed. The barriers that hold are rules each agent keeps. Measured: GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`. Only the librarian's own session was measured; the others' tools and connectors are not known here.
 
 | Agent | The first gap that is its own |
 |---|---|
@@ -32,3 +32,7 @@
 | [incident.models@web-summit.dinis](../agents/models/policy.md) |  |
 | [incident.shadow@web-summit.dinis](../agents/shadow/policy.md) |  |
 | [incident.ci@web-summit.dinis](../agents/ci/policy.md) |  |
+| [incident.perplexity@web-summit.dinis](../agents/perplexity/policy.md) |  |
+| [incident.accountant@web-summit.dinis](../agents/accountant/policy.md) |  |
+| [incident.reporter@web-summit.dinis](../agents/reporter/policy.md) |  |
+| [incident.journalist@web-summit.dinis](../agents/journalist/policy.md) |  |
