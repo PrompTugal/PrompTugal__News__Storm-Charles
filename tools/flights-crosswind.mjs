@@ -91,7 +91,7 @@ for (const ap of AIRPORTS) {
   out.window.to = [out.window.to, hs.at(-1)?.metars.at(-1)?.time].filter(Boolean).sort().at(-1)
   out.airports.push({
     icao: ap.icao, iata: ap.iata, name: ap.name, runways: rws,
-    departures: { label: 'fact', what: dep.what || null, covered_from: dep.covered_from || null, total_in_window: dep.count ?? null, source: dep.source || null, read: dep.read || null, sha256: dep.sha256 || null, note: 'departures_seen on each hour: OpenSky\'s count for that hour on the day transport\'s file covers; null where not covered (10 November, and the hours before the first reading)' },
+    departures: { label: 'fact', what: dep.what || null, covered_from: dep.covered_from || null, total_in_window: dep.count ?? null, source: dep.source || null, read: dep.read || null, sha256: dep.sha256 || null, ...(dep.paused != null ? { paused: dep.paused } : {}), ...(dep.frozen_at ? { frozen_at: dep.frozen_at, frozen_note: 'incident.transport@ paused its OpenSky readings from 22:41 UTC on 11 November pending OpenSky\'s licence (transport/opensky-paused.json): counts after frozen_at are not read, so later hours are null, not zero' } : {}), note: 'departures_seen on each hour: OpenSky\'s count for that hour on the day transport\'s file covers; null where not covered (10 November, and the hours before the first reading)' },
     ana: a.ana ? { label: 'fact', ...a.ana, note: 'ANA\'s figures for the day up to the time it states, not per hour.' } : null,
     hours: hs
   })
