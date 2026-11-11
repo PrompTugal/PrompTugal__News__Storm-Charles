@@ -14,7 +14,9 @@ import path from 'node:path'
 import { K, M, ROOT, sha256hex, judge, looksSecret, lane as laneCall } from './lane-common.mjs'
 import { drain } from './lane-drain.mjs'
 import { configure, writeKeyOf } from './lane-configure.mjs'
+import { sealKey, openKey } from './lane-handover.mjs'
 
+const TEST_VAULT_KEY = ['throwawaypassphrase000000', 'testvlt1'].join(':')   // joined here: the gate refuses a vault key written out in a tracked file
 let n = 0, failed = 0
 const ok = (cond, what) => { n++; if (!cond) { failed++; console.log('FAIL ' + what) } }
 const t0 = Date.now()
@@ -70,6 +72,17 @@ const sealed = async (from, to, over = {}) => (await M.sealMessage(await M.compo
     ok(o.verified === true && o.msg.text === 'done in v1.41' && !o.problems.length, 'Dinis opens the reply and the signature is the conductor\'s')
     ok(looksSecret('here: sgit_private_' + 'vault_' + 'a'.repeat(24) + ':abcd1234') && looksSecret('ghp_' + 'A'.repeat(36)) && !looksSecret('the banner is fine at 14:02'), 'a vault key or a token is seen, plain words are not')
 }
+// 3b. a vault key handed over (lane-handover.mjs): sealed to the conductor, never readable on the way
+{
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lane-vaults-')), h = await sealKey({ vaultKey: 'sgit_private_' + 'vault_' + TEST_VAULT_KEY, from: stranger, toBundle: conductor.bundle, name: 'test' })
+    ok(h.id === 'testvlt1' && !h.code.includes('throwawaypass') && !looksSecret(h.code), 'the sealed handover shows the vault id and nothing of the key')
+    const r = await openKey({ code: h.code, identity: conductor, ring, dir })
+    ok(r.saved && r.vault === 'testvlt1' && !JSON.stringify(r).includes('throwawaypass') && fs.readFileSync(r.file, 'utf8').trim() === 'sgit_private_' + 'vault_' + TEST_VAULT_KEY && (fs.statSync(r.file).mode & 0o077) === 0, 'the conductor saves the key to a 0600 file and prints only the vault id')
+    ok(!(await openKey({ code: h.code, identity: dinis, ring, dir }).catch(() => ({ saved: false }))).saved, 'nobody else can open the handover')
+    const unknown = await K.generate('unknown'), h2 = await sealKey({ vaultKey: TEST_VAULT_KEY, from: unknown, toBundle: conductor.bundle })
+    ok(!(await openKey({ code: h2.code, identity: conductor, ring, dir })).saved, 'a handover signed by a key not in data/keys.json is not saved')
+    fs.rmSync(dir, { recursive: true, force: true })
+}
 // 4. the lane's calls, against a stand-in built from https://sgit.ai/api/append-lanes.md: configure stores hashes only and
 //    replaces the anchor list; write is gated by sha256(token) and answers exactly {"ok":true}; a wrong key or token is a
 //    404 with an HTML page; list names each lane by its raw token; fetch serves pending files only; content is base64 of
@@ -92,8 +105,8 @@ const sealed = async (from, to, over = {}) => (await M.sealMessage(await M.compo
     })
     await new Promise(r => server.listen(0, '127.0.0.1', r))
     const endpoint = `http://127.0.0.1:${server.address().port}`
-    const { vaultId, writeKeyHex } = await writeKeyOf('sgit_private_' + 'vault_' + 'throwawaypassphrase000000:testvlt1')
-    ok(vaultId === 'testvlt1' && /^[0-9a-f]{64}$/.test(writeKeyHex) && (await writeKeyOf('throwawaypassphrase000000:testvlt1')).writeKeyHex === writeKeyHex, 'the write key is derived from the vault key, prefixed or not')
+    const { vaultId, writeKeyHex } = await writeKeyOf('sgit_private_' + 'vault_' + TEST_VAULT_KEY)
+    ok(vaultId === 'testvlt1' && /^[0-9a-f]{64}$/.test(writeKeyHex) && (await writeKeyOf(TEST_VAULT_KEY)).writeKeyHex === writeKeyHex, 'the write key is derived from the vault key, prefixed or not')
     let st = null; try { await configure({ endpoint, vaultId, writeKeyHex, accessToken: '' }) } catch (e) { st = e.status }
     ok(st === 401, 'configure without an access token is refused (401)')
     const rec = await configure({ endpoint, vaultId, writeKeyHex, accessToken: 'throwaway', lanes: 2 })

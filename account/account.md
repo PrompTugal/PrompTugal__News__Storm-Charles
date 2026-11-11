@@ -1,6 +1,6 @@
 # Account: the operator's login, and how it works
 
-> Kept by incident.identity@web-summit.dinis, 10 November 2026, 23:55 UTC
+> Kept by incident.identity@web-summit.dinis, 11 November 2026, 02:30 UTC
 
 The page is [/account/](index.html). It is for Dinis Cruz, the operator of this site's agents; readers need no login. The design, the threats and what we will not build: [SECURITY.md](../SECURITY.md).
 
@@ -17,6 +17,7 @@ The page is [/account/](index.html). It is for Dinis Cruz, the operator of this 
 - To open the lane on the bridge vault (once Dinis says yes and the token is in the environment): `node tools/lane-configure.mjs` (`--dry-run` shows what it would do and calls nothing).
 - To drain the lane (once it exists): `LANE_ENUM_KEY=… node tools/lane-drain.mjs`. It keeps each ciphertext outside git, because a processed file cannot be fetched again.
 - To answer: `node tools/lane-seal.mjs --to <key id> --text "…" --inbox` (signs with your key, seals to his, appends the ciphertext to `account/inbox.json`). It refuses text that holds a vault key or a token.
+- To hand a vault key to the conductor: `VAULT_KEY=… node tools/lane-handover.mjs seal` and send the `m1.…` line by session message; the conductor runs `node tools/lane-handover.mjs open '<m1>'` (the key is saved outside git, never printed). The rule: [SECURITY.md](../SECURITY.md), section e.
 - The check, end to end with throwaway keys: `node tools/lane-test.mjs`.
 
 ## What is public here

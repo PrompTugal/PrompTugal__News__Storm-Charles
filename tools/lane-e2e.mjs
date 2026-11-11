@@ -70,7 +70,7 @@ const stored = page => page.evaluate(() => JSON.stringify(Object.entries(localSt
     const { page, errors, posts } = await session({ passkey: true })
     await page.goto(base + '/index.html'); ok(await page.locator('.sc-fb-btn').count() === 0, 'no key in the browser: no feedback box for readers')
     await page.goto(base + '/account/index.html')
-    await page.getByRole('button', { name: 'Make it behind a passkey' }).click()
+    await page.getByRole('button', { name: 'Log in with a passkey' }).click()
     await page.locator('#sc-fp').waitFor({ timeout: 60000 })
     const bundle = JSON.parse(await page.locator('#sc-bundle').inputValue()), ring = ringWith(bundle)
     ok((await K.checkBundle(bundle)).length === 0 && bundle.signing_fingerprint === (await page.locator('#sc-fp').textContent()), '1. the page shows a public bundle that checks, and its fingerprint')
@@ -89,7 +89,7 @@ const stored = page => page.evaluate(() => JSON.stringify(Object.entries(localSt
     // 3. the reverse path
     const reply = await M.sealMessage(await M.compose({ to: bundle, from: conductor, subject: 're: the banner', text: 'fixed in v0.e2e+1', expires: new Date(Date.now() + 864e5).toISOString() }), bundle, conductor)
     W('account/inbox.json', { messages: [{ at: new Date().toISOString(), code: reply.code }] })
-    await page.goto(base + '/account/index.html'); await page.getByRole('button', { name: 'Unlock with your passkey' }).click()
+    await page.goto(base + '/account/index.html'); await page.getByRole('button', { name: 'Log in with your passkey' }).click()
     await page.locator('#sc-inbox .msg').waitFor({ timeout: 30000 })
     const shown = await page.locator('#sc-inbox .msg').textContent()
     ok(/signature checked/.test(shown) && /fixed in v0\.e2e\+1/.test(shown), '3. the reply opens at /account/ and the signature is the conductor\'s: ' + shown)
@@ -101,7 +101,7 @@ const stored = page => page.evaluate(() => JSON.stringify(Object.entries(localSt
     ok(r2.accept && r2.text === 'no lane yet' && posts.length === 1, '4. with no lane the m1 code is shown, nothing is posted, and the code opens: ' + r2.reasons)
     // forget
     await page.goto(base + '/account/index.html'); await page.getByRole('button', { name: 'Forget this key' }).click()
-    await page.getByRole('button', { name: 'Make it behind a passkey' }).waitFor()
+    await page.getByRole('button', { name: 'Log in with a passkey' }).waitFor()
     ok((await stored(page)) === '[]', 'forget leaves nothing in localStorage')
     ok(errors.length === 0, 'no console or page error (the Content-Security-Policy included): ' + errors.join(' | '))
 }
@@ -109,14 +109,15 @@ const stored = page => page.evaluate(() => JSON.stringify(Object.entries(localSt
 {
     const { page, errors } = await session({ passkey: false }), pw = 'correct horse battery e2e'
     await page.goto(base + '/account/index.html')
+    await page.getByText('No passkey here? Use a passphrase').click()
     await page.locator('#sc-p1').fill(pw); await page.locator('#sc-p2').fill(pw)
-    await page.getByRole('button', { name: 'Make it behind this passphrase' }).click()
+    await page.getByRole('button', { name: 'Create your key behind this passphrase' }).click()
     await page.locator('#sc-fp').waitFor({ timeout: 60000 })
     const bundle = JSON.parse(await page.locator('#sc-bundle').inputValue()), ls = await stored(page)
     ok(/ENCRYPTED PRIVATE KEY/.test(ls) && !/BEGIN PRIVATE KEY/.test(ls), '5. behind a passphrase: only encrypted private halves are stored')
-    await page.reload(); await page.locator('#sc-pass').fill('wrong passphrase here'); await page.getByRole('button', { name: 'Unlock', exact: true }).click()
+    await page.reload(); await page.locator('#sc-pass').fill('wrong passphrase here'); await page.getByRole('button', { name: 'Log in', exact: true }).click()
     await page.locator('.sc-status.bad').waitFor(); ok(await page.locator('#sc-fp').count() === 0, '5. a wrong passphrase does not unlock')
-    await page.locator('#sc-pass').fill(pw); await page.getByRole('button', { name: 'Unlock', exact: true }).click(); await page.locator('#sc-fp').waitFor({ timeout: 30000 })
+    await page.locator('#sc-pass').fill(pw); await page.getByRole('button', { name: 'Log in', exact: true }).click(); await page.locator('#sc-fp').waitFor({ timeout: 30000 })
     await page.locator('.sc-fb-btn').click(); await page.locator('.sc-fb textarea').first().fill('from the passphrase browser'); await page.getByRole('button', { name: 'Seal and send' }).click()
     await page.locator('.sc-fb textarea.code:not([hidden])').waitFor({ timeout: 30000 })
     const r = await judge(await page.locator('.sc-fb textarea.code').inputValue(), conductor, { ring: ringWith(bundle), senders: ['dinis'] })

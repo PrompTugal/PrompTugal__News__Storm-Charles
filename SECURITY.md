@@ -1,6 +1,6 @@
 # Security: Dinis's login, his lane to the conductor, his vaults
 
-> Kept by incident.identity@web-summit.dinis, 11 November 2026, 00:35 UTC. At Dinis Cruz's word of 10 November, ~23:40 UTC ([BRIEF.md](BRIEF.md)). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: pki.sgit.ai's `keys.js`, `message.js`, `door.js`, `local.js` ([app/login/pki/PIN.json](app/login/pki/PIN.json)). The lane is SG/Send's append lane, as promptugal.news uses it for page views.
+> Kept by incident.identity@web-summit.dinis, 11 November 2026, 02:30 UTC. At Dinis Cruz's word of 10 November, ~23:40 UTC ([BRIEF.md](BRIEF.md)). A design, then what is built; each section says which. Reused, unmodified and pinned by sha256: pki.sgit.ai's `keys.js`, `message.js`, `door.js`, `local.js` ([app/login/pki/PIN.json](app/login/pki/PIN.json)). The lane is SG/Send's append lane, as promptugal.news uses it for page views.
 
 **The ground rule.** This is a static site: no server of ours, no account database, no cookie, no session token. Everything secret is made in a browser or an agent's session and stays there; everything that travels is sealed to a public key first (sgit's hybrid v2 envelope: RSA-OAEP 4096 wraps a fresh AES-256-GCM key; signatures ECDSA P-256). `sgit pki decrypt` opens the same envelope.
 
@@ -33,6 +33,28 @@
 - **Data vault:** what the agents make for him that is too bulky or not for the public site (captures, screenshots, reports). He holds the key; an agent that must write gets the key sealed to its public key, for its session. **A stolen data key** reads and rewrites all of it: so nothing personal and no secret goes in; press captures in it are a licence matter, not a secrecy one.
 - **Creating either needs an SG/Send access token and his yes.** Not built until then. The token is never in git, in a status file, or in chat.
 
+## e. Vaults the agents make (Dinis's yes, 11 November, ~02:10 UTC)
+
+Any agent may create a vault with `sgit`; the conductor holds a copy of each key ([BRIEF.md](BRIEF.md), last section; the three kinds are in [RESTRUCTURE.md](RESTRUCTURE.md)). A vault key reads **and rewrites** everything in its vault, so:
+
+1. **A vault key is never written** in a tracked file, a commit message, a page, a status file, a log or a command line. An agent keeps it in a file outside the repository, mode 0600, or in its environment. In git a vault is named by its id only.
+2. **Only read keys are published**, in one place, `data/vaults.json` (incident.archivist@'s), in sgit's own form (`sgit_public_read_…`), and only for a vault made to be shown. A read key reads everything in the vault for ever: nothing goes into a display or data vault that could not be on the site. A capture vault (raw pages, press) has no published key.
+3. **The key goes to the conductor once, sealed**: `VAULT_KEY=… node tools/lane-handover.mjs seal` prints an `m1.…` code sealed to the conductor's public key and signed by the sender; that line is what travels by session message. The conductor runs `lane-handover.mjs open`, which saves the key to a 0600 file outside git and prints the vault id only. A key pasted in the clear into a session message stays in two transcripts: if that has happened, treat the key as known to whoever can read them, and say so in the status file. The sender's status file records the vault id and "key sent", never the key.
+4. **The conductor's copy** is as strong as its session: it is the one place that holds every key. It keeps them outside git, and when its session ends the copies end with it unless Dinis has them; his copy is sealed to his key (section a) or kept by him.
+5. **A leaked key** is not revoked by deleting the commit (history and the served site keep it): the vault is replaced (a new vault, the content copied, the old one destroyed), and `data/vaults.json` updated.
+
+**What the gate blocks today** (`admin/build/validate.mjs`): a private-key PEM; tokens of five known shapes; `sgit_write_…` and `sgit_admin_…`; anything under `.sg_vault/` or `.sg-send/`. **What it does not block, and should** (both tried against this tree on 11 November, 02:20 UTC: no false match):
+
+```
+/sgit_private_[a-z]+_[A-Za-z0-9]/                 a vault key with sgit's prefix
+/\b[a-z0-9]{20,64}:[a-z0-9]{8}\b/                 a bare vault key: <passphrase>:<vault id>
+/(^|\/)(vault-key-[^\/]*|[^\/]*\.vault-key|access-token\.json|[^\/]*\.key)$/     on the path: a key saved into the tree by mistake
+```
+
+A published read key keeps its `sgit_public_read_` prefix and is not matched by the second pattern; a read key written bare would be, which is right: publish it in sgit's form.
+
+The gate reads files, not commit messages: the same two patterns belong in `tools/policy-check.mjs` over the messages of the commits about to be pushed (incident.librarian@'s). And the gate does not know the shape of an SG/Send access token: that one is kept out by rule 1 alone.
+
 ## What we will not build
 
 - No server, no passwords kept anywhere, no cookies, no tracking of who is logged in; no IP or place lookup.
@@ -49,10 +71,11 @@
 
 ## Built, and checked how
 
-- **Built (10 November):** [/account/](account/index.html) (the key behind a passkey or a passphrase, its public half, the replies), `app/login/feedback.js` (the box), `tools/lane-open.mjs`, `lane-seal.mjs`, `lane-drain.mjs`; [how it works](account/account.md).
+- **Built (10 and 11 November):** [/account/](account/index.html), a log-in first (the key behind a passkey or a passphrase, its public half, the replies), `app/login/feedback.js` (the box), `tools/lane-open.mjs`, `lane-seal.mjs`, `lane-drain.mjs`; [how it works](account/account.md).
 - **Checked with throwaway keys:** `node tools/lane-test.mjs` (the pins; accepted only when signed by a named sender; refused when unsigned, a stranger's, expired, replayed, re-addressed or changed) and `node tools/lane-e2e.mjs` (Chromium, a virtual passkey: make, seal, the POST opened by a throwaway conductor, the reply opened, no Content-Security-Policy error).
 - **Ready, not run:** `tools/lane-configure.mjs` (opens the lane on the bridge vault) and `lane-drain.mjs`, written to [SG/Send's append-lane reference](https://sgit.ai/api/append-lanes.md) (read 10 November 2026, 23:55 UTC) and checked against a stand-in built from it. Against the real server only what needs no credential was tried: it allows this site's origin to POST, and answers an unknown token or a missing key with 404, as the reference says.
 - **Not checked:** a lane on the real server (none exists), a real passkey on a real device. **Not built:** the lane, the vaults, sign-in with pki.sgit.ai.
 - **The lane's limits, from the reference:** 1000 pending messages a token (then 507: the box tries the next token), 5 MB a message (ours: 4000 characters). The enum-key holder sees each lane's raw token; the server sees when something is written and how large, never what.
 - **Signed:** this file, the pins and `data/lanes.json` carry this agent's detached signature ([agents/identity/signed.json](agents/identity/signed.json); `node tools/lane-sign.mjs --check`). It says which session key signed the bytes, not that they are right: the author of this threat model also built what it models, so a second reader is still wanted.
+- **For vault keys:** `tools/lane-handover.mjs` (seal to the conductor, open and save outside git), checked with throwaway keys in `lane-test.mjs`. One thing found on the way, for pki.sgit.ai's maintainers: the pinned `message.js` v0.2.28 does not find a vault key written with sgit's prefix (`vaultKeysIn`: a word boundary is asked for after an underscore); our tools take the prefix off first, the pinned copy is not edited.
 - The state, and what is asked of Dinis: [agents/identity/status.json](agents/identity/status.json).
