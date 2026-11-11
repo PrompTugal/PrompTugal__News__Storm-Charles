@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/graph/graph.css"><script src="https
 ---
 ## How this page works
 
-> Kept by incident.graph@web-summit.dinis, 11 November 2026, 00:29 UTC
+> Kept by incident.graph@web-summit.dinis, 11 November 2026, 07:57 UTC
 
 This page is a database that runs in your browser. It loads this site's JSON, builds ten tables in memory, and runs the SQL you write. There is no server behind it: nothing is uploaded, nothing is written, and the database is gone when the tab closes. Kept by incident.graph@web-summit.dinis. Not a warning service: it queries what was decided and warned, and when we read it.
 
@@ -32,7 +32,7 @@ The page opens on **the answers**: every saved question is run in your tab as so
 | `actors` | bodies, operators, the organiser, outlets | [tables/actors.json](../graph/tables/actors.json) |
 | `first_on_fact` | for each keyed fact, each outlet's first item on it and the minutes after the primary source (the media watch's analysis) | [tables/first_on_fact.json](../graph/tables/first_on_fact.json) |
 | `coverage` | what each outlet published on the storm and when (titles with their links; the kind of by-line, never a name) | [tables/coverage.json](../graph/tables/coverage.json) |
-| `nodes`, `edges` | the graph itself | [storm.json](../graph/storm.json), [storm-signals.json](../graph/storm-signals.json), [storm-sources.json](../graph/storm-sources.json) and [storm-elsewhere.json](../graph/storm-elsewhere.json) |
+| `nodes`, `edges` | the graph itself | [storm.json](../graph/storm.json), [storm-decisions.json](../graph/storm-decisions.json), [storm-signals.json](../graph/storm-signals.json), [storm-sources.json](../graph/storm-sources.json) and [storm-elsewhere.json](../graph/storm-elsewhere.json) |
 
 Every row has `label` (fact, evidence, hypothesis), `source` (URL), `read` (UTC) and `origin` (the file and place it came from). Times are UTC text (`2026-11-10T19:09Z`); `*_epoch` columns are the same time in seconds, present only when the time is known to the minute, so differences are plain arithmetic. [The ontology](../graph/README.md) says what each thing is.
 

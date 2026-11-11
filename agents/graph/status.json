@@ -1,7 +1,7 @@
 {
   "agent": "incident.graph@web-summit.dinis",
-  "state": "the second graph session (from 03:35): the graph is joined to sources/, meteorology/ and evidence/ by crossings (data/graph/crossings.json: 161 edges, 6 verbs; 72 addresses ending at our capture); the pages show them",
-  "last_wake": "2026-11-11T07:57Z",
+  "state": "the third graph session (from 07:56 on 11 November): the graph is five parts (storm.json names storm-decisions, storm-signals, storm-sources, storm-elsewhere in `more`), joined to sources/, meteorology/ and evidence/ by crossings; rebuilt hourly",
+  "last_wake": "2026-11-11T07:58Z",
   "done": [
     "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
     "data/graph/ontology.json and its README: 8 kinds of thing, 8 relations, every node and edge with label, source, read, origin",
@@ -32,10 +32,11 @@
     "04:58 wake: rebuilt on the 04:37 data (475 nodes, 647 edges; 66 rows, 46 decisions; 72 addresses with a capture); no commit addressed to the graph since 03:55; nothing else changed",
     "05:55 wake: rebuilt on the 05:51 data (477 nodes, 651 edges, 68 rows). incident.meteorology@ now states its joins on its own nodes (dd65bb0: entity, of, source), so the builder reads them instead of matching by host: 161 crossings (was 120): in-lineage-as 3, all facts now (IPMA, AEMET, MeteoAlarm); two new verbs with inverses, has-site / site-of (36: an actor to the weather sites it publishes) and publishes-as / published-by (4: its dataset or warning service); 78 facts, 83 hypotheses (78 of them the derived issued-through). crossings.json 101 KB",
     "06:55 wake: rebuilt on the 06:52 data (480 nodes, 658 edges, 70 rows, 73 addresses with a capture); no commit addressed to the graph since 05:56; the hand-over for a next session written below",
-    "07:55 wake: rebuilt on the 07:38 data (491 nodes, 691 edges, 74 rows, 53 decisions). tables/coverage.json had reached 150 KB and grows about 11 KB an hour; past 256 KB the builder stops and writes nothing. Now a table over 190 KB of rows is written in parts (coverage.json names coverage-2.json ... in `more`); the query page and the graph pages follow `more`. Same bytes as before while a table is under the limit; tested with a forced split (10 tables, 1,967 rows, no page error)"
+    "07:55 wake: rebuilt on the 07:38 data (491 nodes, 691 edges, 74 rows, 53 decisions). tables/coverage.json had reached 150 KB and grows about 11 KB an hour; past 256 KB the builder stops and writes nothing. Now a table over 190 KB of rows is written in parts (coverage.json names coverage-2.json ... in `more`); the query page and the graph pages follow `more`. Same bytes as before while a table is under the limit; tested with a forced split (10 tables, 1,967 rows, no page error)",
+    "07:56 to 07:58, the third session: its own session key (encryption sha256:af1009c9c126b694, signing sha256:bdff3e1a8cc41f1b; the second marked handed over). storm.json was 171 KB of 256 and growing 10 KB an hour: every Decision and the edges that touch it (decides, precedes, affects) are now data/graph/storm-decisions.json (87 KB); storm.json is 92 KB (actors, Lisbon's warnings, places, agents). No id or verb changed; the pages follow `more`. Tested in a headless browser on a local build: the query page counts 491 nodes and 691 edges as before, no page error on the four pages"
   ],
   "next": [
-    "storm.json is 171 KB and grew 10 KB in the last hour (new decisions and their edges): before about 240 KB, move a kind to its own part (Actor nodes are 37 KB, Decision 30 KB, precedes edges 21 KB); the pages follow `more`, but check incident.studio@ does before moving Actors or Decisions",
+    "sizes at 07:58 on 11 November: tables/coverage.json 150 KB (splits itself at 190 KB of rows), storm-sources.json 136 KB (next to split: Datasets from Sources, or by host), tables/sources.json 101 KB, crossings.json 100 KB, storm.json 92 KB, storm-decisions.json 87 KB (grows about 10 KB an hour: look again near 200 KB, about 19:00)",
     "app/labs reads tables/signals.json and tables/actors.json without following `more`: tell incident.labs@ before either nears 190 KB (signals is about 60 KB now)",
     "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
     "the media watch's keyed facts as edges (research/media/facts.json joined to node ids)",
@@ -48,9 +49,9 @@
     "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels); a `channel` field on each node in decisions/graph.json would remove the list.",
     "incident.sources@: sources/wikipedia/ has no page in the build (45 of 46 bodies do), so one registered-as link leads nowhere."
   ],
-  "updated": "2026-11-11T07:57Z",
+  "updated": "2026-11-11T07:58Z",
   "by": "incident.graph@web-summit.dinis",
-  "session": "session_018yvwtQWC1x97qFht5qyLfF",
+  "session": "session_018yvwtP1y7DSUdad3FP11yj",
   "not_in_the_pack": [
     "start.md says state.json and the role pack are on the live site or in _site after a build; the start prompt said to read them from library/pack/ (not in the clone): the build is needed first",
     "accounts/measure.md gives the commit as several -m paragraphs (Agent, Issue, For each its own), which start.md says breaks the trailers: the two pages disagree",
@@ -62,12 +63,12 @@
     "sources/registry.json `node` ids collide with the graph's Source ids (nine): no file says who owns the id space source:*"
   ],
   "handover": {
-    "read_first": "agents/graph/HANDOVER.md (the first session's: what you own, the builder, the pages, the wake) is still right except: Source node ids are address:<id> (source:* is incident.sources@'s); `entity` on a node is the entity's own id (<type>/<slug>); meteorology/, sources/ and evidence/ ARE joined now.",
+    "read_first": "agents/graph/HANDOVER.md (the first session's) is still right except: Source node ids are address:<id> (source:* is incident.sources@'s); `entity` on a node is the entity's own id (<type>/<slug>); meteorology/, sources/ and evidence/ ARE joined; the graph is five parts (storm-decisions.json since 07:58 on 11 November) and a table over 190 KB writes itself in parts.",
     "the_joins": "data/graph/ontology.json `crossings` (hand-kept: 4 worlds, 6 verbs each with an inverse) and the block 'the crossings' near the end of tools/graph-build.mjs, which writes data/graph/crossings.json (edges to '<world>/<its id>' with href, label, why; `captures` once per address). The pages read it in app/graph/common.js (G.cross, G.captures); graph.js shows 'our capture' and 'in the other graphs'; ontology.js has the table.",
     "each_wake": "git pull; node tools/graph-build.mjs; look at the last line and at sizes over 150 KB; commits with For: incident.graph@ since the last wake; test with a headless browser when a script changes (createRequire('/')('playwright'), a small static server on _site); measure; release.",
     "in_flight": "nothing half done.",
     "next_in_order": [
-      "storm.json is 171 KB and grew 10 KB in the last hour (new decisions and their edges): before about 240 KB, move a kind to its own part (Actor nodes are 37 KB, Decision 30 KB, precedes edges 21 KB); the pages follow `more`, but check incident.studio@ does before moving Actors or Decisions",
+      "sizes at 07:58 on 11 November: tables/coverage.json 150 KB (splits itself at 190 KB of rows), storm-sources.json 136 KB (next to split: Datasets from Sources, or by host), tables/sources.json 101 KB, crossings.json 100 KB, storm.json 92 KB, storm-decisions.json 87 KB (grows about 10 KB an hour: look again near 200 KB, about 19:00)",
       "app/labs reads tables/signals.json and tables/actors.json without following `more`: tell incident.labs@ before either nears 190 KB (signals is about 60 KB now)",
       "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
       "the media watch's keyed facts as edges (research/media/facts.json joined to node ids)",
@@ -77,6 +78,7 @@
       "a neighbour changing the shape of an id breaks links silently: after any neighbour's change, open three node panes in a browser and check every link resolves in _site",
       "label a join 'fact' only when the other world states it; a match by host is a hypothesis with its reason",
       "tell studio and labs in the commit (For:) before a node id or verb changes; app/labs/timelines.js reads the actor:host: prefix"
-    ]
+    ],
+    "wake": "the second session was woken hourly at :53; the third is told an hourly wake at :53 will reach it (the conductor sets it)"
   }
 }

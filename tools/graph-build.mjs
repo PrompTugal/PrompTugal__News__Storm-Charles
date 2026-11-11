@@ -2,7 +2,7 @@
 // The graph of an incident, built from its JSON files and never by hand (incident.graph@web-summit.dinis).
 //   node tools/graph-build.mjs [incidents/<id>]     writes data/graph/storm.json and data/graph/tables/*.json
 //   node tools/graph-build.mjs --check              exits 1 if what is committed is not what the inputs give
-//   node tools/graph-build.mjs --out DIR            writes DIR/data/graph/{storm,storm-signals,storm-sources,storm-elsewhere,queries}.json and tables/*.json ONLY:
+//   node tools/graph-build.mjs --out DIR            writes DIR/data/graph/{storm,storm-decisions,storm-signals,storm-sources,storm-elsewhere,queries}.json and tables/*.json ONLY:
 //                                                   no tracked file is touched (for the build: --out _site, so the served graph
 //                                                   is rebuilt on every push by anyone)
 // Reads: data/graph/ontology.json (what a node and an edge may be), data/graph/ref/ipma-areas.json, data/keys.json, and
@@ -345,6 +345,10 @@ const touchesSrc = e => !touchesElse(e) && (SRC.has(e.from) || SRC.has(e.to))
 // a fourth: the timeline's rows (Signal nodes) with the edges that touch them and nothing above (reports)
 const SIGS = new Set(N.filter(n => n.type === 'Signal').map(n => n.id))
 const touchesSig = e => !touchesElse(e) && !touchesSrc(e) && (SIGS.has(e.from) || SIGS.has(e.to))
+// a fifth: the decisions (Decision nodes) with the edges that touch them and nothing above (decides, precedes, affects):
+// the kind that grows by the hour. Warnings, actors, places and agents stay in storm.json
+const DEC = new Set(N.filter(n => n.type === 'Decision').map(n => n.id))
+const touchesDec = e => !touchesElse(e) && !touchesSrc(e) && !touchesSig(e) && (DEC.has(e.from) || DEC.has(e.to))
 
 // ---------------------------------------------------------------- the tables (one row per item, with its provenance)
 const actorName = id => (nodes.get(id) || {}).name || null
@@ -397,7 +401,8 @@ const TABLES = {
     actors: ['Who decides, warns or reports: bodies, operators, the organiser, outlets (outlets are derived from cited hosts).', actorRows]
 }
 const out = {
-    'data/graph/storm.json': part(storm.about + ' This file holds the actors, decisions, warnings for Lisbon, places and agents; the files in `more` hold the rest, in the same shape.', n => !ELSE.has(n.id) && !SRC.has(n.id) && !SIGS.has(n.id), e => !touchesElse(e) && !touchesSrc(e) && !touchesSig(e), { more: ['data/graph/storm-signals.json', 'data/graph/storm-sources.json', 'data/graph/storm-elsewhere.json'] }),
+    'data/graph/storm.json': part(storm.about + ' This file holds the actors, the warnings for Lisbon, places and agents; the files in `more` hold the rest (decisions, signals, sources, the other districts), in the same shape.', n => !ELSE.has(n.id) && !SRC.has(n.id) && !SIGS.has(n.id) && !DEC.has(n.id), e => !touchesElse(e) && !touchesSrc(e) && !touchesSig(e) && !touchesDec(e), { more: ['data/graph/storm-decisions.json', 'data/graph/storm-signals.json', 'data/graph/storm-sources.json', 'data/graph/storm-elsewhere.json'] }),
+    'data/graph/storm-decisions.json': part(`Part of the graph of ${incident.title}: every Decision, with the edges that touch it and no Source or Signal (decides, precedes, affects). Same shape as data/graph/storm.json; edges here point to nodes there. Built by tools/graph-build.mjs. Not a warning service: follow IPMA and ANEPC.`, n => DEC.has(n.id), touchesDec, { part_of: 'data/graph/storm.json' }),
     'data/graph/storm-signals.json': part(`Part of the graph of ${incident.title}: every Signal (a row of the timeline), with the edges that touch it and no Source (reports). Same shape as data/graph/storm.json; edges here point to nodes there. Built by tools/graph-build.mjs. Not a warning service: follow IPMA and ANEPC.`, n => SIGS.has(n.id), touchesSig, { part_of: 'data/graph/storm.json' }),
     'data/graph/storm-sources.json': part(`Part of the graph of ${incident.title}: every Source (a URL that was read) and Dataset, with the edges that touch them (cites, produced-by). Same shape as data/graph/storm.json; edges here point to nodes there. Built by tools/graph-build.mjs. Not a warning service: follow IPMA and ANEPC.`, n => SRC.has(n.id), touchesSrc, { part_of: 'data/graph/storm.json' }),
     'data/graph/storm-elsewhere.json': part(`The rest of the graph of ${incident.title}: IPMA's red and orange warnings in force outside the Lisbon district, and those districts. Same shape as data/graph/storm.json; edges here point to nodes there (actor:ipma, place:PT-mainland). Built by tools/graph-build.mjs. Not a warning service: follow IPMA and ANEPC.`, n => ELSE.has(n.id), touchesElse, { part_of: 'data/graph/storm.json' })
@@ -505,5 +510,5 @@ for (const [rel, txt] of Object.entries(out)) {
 }
 // with --out the queries go too, so the served folder is whole even if the build's copy ran before a change
 if (OUT_DIR) fs.copyFileSync(path.join(ROOT, 'data/graph/queries.json'), path.join(OUT_DIR, 'data/graph/queries.json'))
-console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${SIGS.size} nodes in storm-signals.json, ${SRC.size} in storm-sources.json, ${ELSE.size} in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; ${entityLinks} node(s) linked to an entity page; ${cross.length} crossing(s), ${Object.values(captures).filter(c => c.evidence).length} address(es) with a capture; ${withheld} personal address(es) withheld; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
+console.log(`graph-build: ${N.length} nodes, ${EDG.length} edges (${Object.entries(count(N, n => n.type)).map(([k, v]) => `${v} ${k}`).join(', ')}; ${DEC.size} nodes in storm-decisions.json, ${SIGS.size} in storm-signals.json, ${SRC.size} in storm-sources.json, ${ELSE.size} in storm-elsewhere.json); tables: ${Object.entries(TABLES).map(([k, v]) => `${k} ${v[1].length}`).join(', ')}; ${entityLinks} node(s) linked to an entity page; ${cross.length} crossing(s), ${Object.values(captures).filter(c => c.evidence).length} address(es) with a capture; ${withheld} personal address(es) withheld; as of ${asOf}; ${CHECK ? (stale ? stale + ' file(s) stale' : 'up to date') : stale + ' file(s) written' + (OUT_DIR ? ' under ' + path.relative(ROOT, OUT_DIR) : '')}`)
 if (CHECK && stale) process.exit(1)

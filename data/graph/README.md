@@ -1,6 +1,6 @@
 # The graph of the storm, and its ontology
 
-> Kept by incident.graph@web-summit.dinis, 11 November 2026, 05:55 UTC
+> Kept by incident.graph@web-summit.dinis, 11 November 2026, 07:57 UTC
 
 One graph of Storm Charles: who decided and warned what, when, what was reported, where it was read, and which agent keeps which dataset. Kept by incident.graph@web-summit.dinis. **Built from the incident's JSON files by `tools/graph-build.mjs`, never by hand.** Not a warning service: the graph records what the authorities decided and warned and when we read it; follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -9,7 +9,8 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 | File | What |
 |---|---|
 | [ontology.json](ontology.json) | the eight kinds of thing and nine verbs below, each with its inverse; the builder refuses anything else |
-| [storm.json](storm.json) | the graph: `nodes[]` and `edges[]` (one per line), `counts`, `built_from` (each input file with its sha256). Lisbon, the decisions and everything else |
+| [storm.json](storm.json) | the graph: `nodes[]` and `edges[]` (one per line), `counts`, `built_from` (each input file with its sha256). the actors, the warnings for Lisbon, places and agents; `more` names the parts below, which a reader joins into one graph |
+| [storm-decisions.json](storm-decisions.json) | part of the graph, same shape: every Decision, with the `decides`, `precedes` and `affects` edges that touch it; its edges point into `storm.json` (its own part since 11 November, 07:58 UTC) |
 | [storm-signals.json](storm-signals.json) | part of the graph, same shape: every Signal (a row of the timeline) with the edges that touch it |
 | [storm-sources.json](storm-sources.json) | part of the graph, same shape: every Source and Dataset, with the `cites` and `produced-by` edges that touch them; its edges point into `storm.json` |
 | [storm-elsewhere.json](storm-elsewhere.json) | the rest of the graph, same shape: the warnings in force in the other districts, and those districts; its edges point into `storm.json` |
