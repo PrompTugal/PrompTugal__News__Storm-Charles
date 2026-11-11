@@ -1,0 +1,46 @@
+{
+  "by": "incident.storyteller@web-summit.dinis",
+  "updated": "2026-11-11T10:26:00Z",
+  "id": "page-views-and-the-key-lane",
+  "n": 7,
+  "title": "Page views and a vault key travelling through the lane",
+  "named_by": "storyteller",
+  "span": "11 November, 08:40 to 10:15 UTC",
+  "summary": "Two questions waited on Dinis: who holds the keys of the vaults the agents make, and may the site count its readers. At about 09:28 he answered the first in observability's session and at 09:30 in the conductor's: each agent makes its own vault and sends the conductor a sealed copy of the key through the conductor's append lane. In the next quarter hour observability made the page-views vault, identity built and opened the lane, and the first keys travelled through it. At about 09:47 he answered the second: page views on every page, with city and country, the IP never kept. At 10:14 the first drain: 9 views by people, 46 automated.",
+  "pause_min": 10,
+  "cast": ["dinis", "incident.conductor@web-summit.dinis", "incident.observability@web-summit.dinis#4", "incident.identity@web-summit.dinis#2", "incident.board@web-summit.dinis#2", "incident.models@web-summit.dinis#1", "incident.sources@web-summit.dinis#1", "incident.accountant@web-summit.dinis#2", "vaults", "readers"],
+  "steps": [
+    { "t": "2026-11-11T08:40:28Z", "actor": "incident.board@web-summit.dinis#2", "verb": "ask", "what": "the accountant's ask joined into the card a-vault-keys-handover: when a session hands over, who passes on the keys of the vaults it made? Waiting on Dinis", "commit": "639cf58b", "file": "board/items/a-vault-keys-handover.json" },
+    { "t": "2026-11-11T09:29:08Z", "actor": "incident.observability@web-summit.dinis#4", "to": "vaults", "verb": "write", "what": "at Dinis's word in its session (\"Yes create here the vault and then send the key to your conductor (via its append lane)\", as BRIEF.md reports it): the page-views vault exists, with two append lanes; its key sealed to the conductor; the sender stays off", "commit": "18d9f8aa", "before": "the card waits; Dinis had last spoken at about 02:50 (he spoke again \"after 6 h 41 min\", the reporter's count, 0df5e0ab)" },
+    { "t": "2026-11-11T09:29:56Z", "actor": "incident.observability@web-summit.dinis#4", "to": "incident.conductor@web-summit.dinis", "verb": "seal", "what": "the conductor holds a copy of the page-views vault's key since 09:29 (and a time written ahead of the clock corrected)", "commit": "ed75f9a9" },
+    { "t": "2026-11-11T09:30:14Z", "actor": "dinis", "to": "incident.conductor@web-summit.dinis", "verb": "instruct", "what": "\"The keys and vaults are created by the specific agent and then sent to you via your append lane\"; written into BRIEF.md", "commit": "84158ea2", "file": "BRIEF.md" },
+    { "t": "2026-11-11T09:31:51Z", "actor": "incident.models@web-summit.dinis#1", "to": "incident.conductor@web-summit.dinis", "verb": "seal", "what": "its vault key sealed to the conductor and sent; opened by the conductor at 09:31 (8e13cfe0); later keys by the append lane", "commit": "1ed4d6c8" },
+    { "t": "2026-11-11T09:34:19Z", "actor": "incident.identity@web-summit.dinis#2", "verb": "write", "what": "the conductor's append lane for vault keys built, not yet open: `seal --via-lane` for senders; the drain saves a key and prints only the vault id; SECURITY.md e.3", "commit": "4fb4d7c2", "file": "tools/lane-handover.mjs" },
+    { "t": "2026-11-11T09:34:52Z", "actor": "incident.board@web-summit.dinis#2", "verb": "answer", "what": "Dinis's words recorded on the two cards, a-vault-keys-handover and a-pageviews-vault", "commit": "bf665cd4" },
+    { "t": "2026-11-11T09:36:24Z", "actor": "incident.observability@web-summit.dinis#4", "verb": "publish", "what": "page views on: sealed, write-only events to the vault; only counts published (data/agents/views.json, /agents/#views)", "commit": "bcab685a", "file": "data/agents/views.json" },
+    { "t": "2026-11-11T09:39:12Z", "actor": "incident.observability@web-summit.dinis#4", "verb": "read", "what": "the first drain of page views from the live site (counts only)", "commit": "0aa3b5d8" },
+    { "t": "2026-11-11T09:39:19Z", "actor": "incident.identity@web-summit.dinis#2", "verb": "publish", "what": "the conductor's append lane open, at Dinis's yes: data/lanes.json publishes what a sender needs; checked against the real server", "commit": "218c89a0", "file": "data/lanes.json" },
+    { "t": "2026-11-11T09:41:16Z", "actor": "incident.identity@web-summit.dinis#2", "verb": "write", "what": "the lane live end to end since 09:40 (its drain saved a key)", "commit": "7980fa5e" },
+    { "t": "2026-11-11T09:41:52Z", "actor": "incident.observability@web-summit.dinis#4", "verb": "correct", "what": "the page-view sender runs only on the live host, never from a local build or the gate's", "commit": "15a33129" },
+    { "t": "2026-11-11T09:42:00Z", "actor": "incident.observability@web-summit.dinis#4", "to": "readers", "verb": "publish", "what": "the footer tells the reader what one event holds, that it is sealed, where the counts are and how to pause", "commit": "0b90fcfc" },
+    { "t": "2026-11-11T09:42:23Z", "actor": "incident.sources@web-summit.dinis#1", "to": "incident.conductor@web-summit.dinis", "verb": "seal", "what": "a vault key sent to the conductor, sealed, through the lane; held by the conductor at 09:43 (11cd2fb0)", "commit": "6387cf2f" },
+    { "t": "2026-11-11T09:47:30Z", "actor": "dinis", "to": "incident.conductor@web-summit.dinis", "verb": "instruct", "what": "page views on every page with city and country (\"the stats should also make the call to that IP data\"); the conductor gives keys to fresh sessions; recorded in BRIEF.md and CLAUDE.md", "commit": "4dd30049", "file": "CLAUDE.md" },
+    { "t": "2026-11-11T09:54:13Z", "actor": "incident.observability@web-summit.dinis#4", "verb": "publish", "what": "page views carry country and city (one lookup per tab, live host only); the IP never kept; a city shown only at 5 or more views", "commit": "8fa018f3" },
+    { "t": "2026-11-11T10:15:20Z", "actor": "incident.observability@web-summit.dinis#4", "to": "vaults", "verb": "read", "what": "the 10:14 drain: 12 events opened, 0 refused; 9 views by people, 46 automated (the agents' own checks are most of the automated count, 1ccc686b)", "commit": "6648bbba", "before": "the fifth observability session takes over at 10:16; the drain waits for the vault keys to be passed on" }
+  ],
+  "pauses_note": "The long pause is the night: the question had been asked before 08:40 (the accountant's ask was joined to an existing card then) and Dinis was away from about 02:50 to 09:28. Once he spoke, the vault, the lane and the first keys took 13 minutes.",
+  "shows": [
+    "A key travels as data, never as a message: made by the agent that owns the vault, sealed to the conductor's published public key, sent through a lane whose address is in data/lanes.json; the drain prints only the vault id.",
+    "A decision only Dinis could make unblocked four agents at once; the board kept the question open, with its evidence, until he did.",
+    "Counting readers was built privacy first: sealed write-only events, totals only, the IP never kept, the live host only, a footer that says so and a pause; Do Not Track sends nothing (CLAUDE.md)."
+  ],
+  "reading": [
+    "This path is the team's security model in motion: keys in data/keys.json, vault keys only ever sealed, a lane any agent can write to and only the conductor can read. The book's team had a security role proposed and never staffed; here identity@ and the gate stand where it would.",
+    "The first and the fourteenth steps carry no key names or vault keys: only vault ids already in commit subjects. Nothing from a key store is in this page."
+  ],
+  "rests_on": [
+    "BRIEF.md, \"Dinis, 11 November, ~09:30 UTC\" and \"~09:47 UTC\" (commits 84158ea2, 4dd30049); CLAUDE.md, page views and vault keys",
+    "commits 0df5e0ab, 639cf58b, 18d9f8aa, ed75f9a9, 1ed4d6c8, 8e13cfe0, 4fb4d7c2, bf665cd4, bcab685a, 0aa3b5d8, 218c89a0, 7980fa5e, 15a33129, 0b90fcfc, 6387cf2f, 11cd2fb0, 8fa018f3, 1ccc686b, 6648bbba",
+    "board/items/a-vault-keys-handover.json, board/items/a-pageviews-vault.json; data/lanes.json; data/agents/views.json"
+  ]
+}

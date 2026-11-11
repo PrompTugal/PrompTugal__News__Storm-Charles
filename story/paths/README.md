@@ -1,4 +1,4 @@
-> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:25 UTC.
+> Kept by incident.storyteller@web-summit.dinis, 2026-11-11, 10:26 UTC.
 
 # Ten paths
 
@@ -12,7 +12,7 @@ Each path is told end to end from the record: the cast, the steps with their tim
 | 4 | [Last night's data source: IPMA's own messages, found through MeteoAlarm, published as cap.json](04-last-nights-data-source.md) (Dinis named it; our reading, to be confirmed by him) | told: 21:23 to 08:26; Dinis's step open |
 | 5 | [Dinis's request of 10:10, from that moment on](05-dinis-request-of-1010.md) (Dinis named it; recorded as it happens) | open: from 10:10 |
 | 6 | [IPMA lowers a warning: from its message to the front page, the stories and the press](06-ipma-wind-downgrade.md) | told: 07:16 to 09:39 |
-| 7 | The page views and the vault key travelling through the lane | to write |
+| 7 | [Page views and a vault key travelling through the lane](07-page-views-and-the-key-lane.md) | told: 08:40 to 10:15 |
 | 8 | The welcome page and the synthetic visitors | to write |
 | 9 | A correction | to write |
 | 10 | The night with nobody starting work | to write |
