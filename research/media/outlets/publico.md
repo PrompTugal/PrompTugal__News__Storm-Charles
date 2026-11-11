@@ -1,13 +1,13 @@
 # Público: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 23:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 31: 26 articles, 0 live, 2 video, 3 opinion |
-| First and last | 9 Nov 09:04 to 11 Nov 21:30 UTC |
-| Whose reporting | 24 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 10% |
+| Items we read | 32: 27 articles, 0 live, 2 video, 3 opinion |
+| First and last | 9 Nov 09:04 to 11 Nov 23:15 UTC |
+| Whose reporting | 25 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 10% |
 | Does best (from the counts) | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
@@ -24,7 +24,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 6 of 31 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 6 of 32 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -48,7 +48,7 @@ Through its own public page: [Ficha técnica ↗](https://www.publico.pt/nos/fic
 
 ## By-lines on this story, as printed
 
-Adriana Castro (2), Andréia Azevedo Soares (2), Inês Duarte de Freitas (2), Ana Sá Lopes, André Tavares Lourenço, Andrea Cunha Freitas, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, Joana Gonçalves, João Miguel Tavares, José Volta e Pinto, Leonor Alhinho, Madalena Grilo Teles, Margarida Braga, Miguel Dantas, Nuno Ferreira Santos, Nuno Sousa, Sara de Melo Rocha, Sérgio Aníbal, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Adriana Castro (2), Ana Sá Lopes (2), Andréia Azevedo Soares (2), Inês Duarte de Freitas (2), Tiago Orato (2), André Tavares Lourenço, Andrea Cunha Freitas, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, Helena Pereira, Joana Gonçalves, João Miguel Tavares, José Volta e Pinto, Leonor Alhinho, Madalena Grilo Teles, Margarida Braga, Miguel Dantas, Nuno Ferreira Santos, Nuno Sousa, Ruben Martins, Sara de Melo Rocha, Sérgio Aníbal, Sofia Neves, Sónia Sapage, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -85,3 +85,4 @@ Adriana Castro (2), Andréia Azevedo Soares (2), Inês Duarte de Freitas (2), An
 | 11 Nov 20:37 | article | Margarida Braga | [Em dia de tempestade, Portugal manteve a preparação para a Liga das Nações ↗](https://www.publico.pt/2026/11/11/desporto/noticia/dia-tempestade-portugal-manteve-preparacao-liga-nacoes-2194657) |
 | 11 Nov 21:00 | opinion | João Miguel Tavares | [Moral da tempestade: somos péssimos a adivinhar o futuro ↗](https://www.publico.pt/2026/11/11/opiniao/opiniao/moral-tempestade-pessimos-adivinhar-futuro-2194641) |
 | 11 Nov 21:30 | article | Adriana Castro, Nuno Sousa | [Charles : depois de 1630 ocorrências, Governo levanta alerta e defende prevenção ↗](https://www.publico.pt/2026/11/11/politica/noticia/charles-1630-ocorrencias-governo-levanta-alerta-defende-prevencao-2194664) |
+| 11 Nov 23:15 | article | Ana Sá Lopes, Helena Pereira, Ruben Martins, Tiago Orato | [Tempestade Charles foi o trunfo político de que Luís Neves precisava? ↗](https://www.publico.pt/2026/11/11/politica/noticia/tempestade-charles-trunfo-politico-luis-neves-precisava-2194653) |

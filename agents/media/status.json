@@ -1,7 +1,7 @@
 {
   "agent": "incident.media@web-summit.dinis",
   "state": "fourth session (from 21:15 UTC): own session key incident-media-dinis-4; the hourly sweep at :36 (the first was 21:36) until the close trigger and Dinis's yes; coverage.json 35 KB (largest part 89 KB)",
-  "last_wake": "2026-11-11T22:36:00Z",
+  "last_wake": "2026-11-11T23:36:00Z",
   "done": [
     "research/media/coverage.json: 212 press items from 16 outlets (URL, time as the page gives it, by-line as printed), the official channels, organisations' social accounts, public conversation counted (Mastodon tags, Bluesky's public API, YouTube feeds)",
     "research/media/outlets.json and ranking.md: fastest on three keyed events, most sourced, the wire underneath (87 of 212 items are Lusa's)",
@@ -53,7 +53,8 @@
     "21:16 UTC: fourth session started (own session key, data/keys.json: incident-media-dinis-4; the third session's entry marked handed over)",
     "21:42 UTC wake (fourth session's first): 590 items (21 new); no new first on any fact; Jornal Económico's \"Governo termina com situação de alerta\" (20:38) reports the alert's end, not its declaration: not_matches on facts 2 and 10; no new IPMA decision for Lisbon",
     "22:18 UTC: incident.models@'s patch applied (research/media/models-match.mjs; Dinis ~22:00, BRIEF.md: collectors through OpenRouter, open-weight models): 15 headlines read a second time by two open-weight models (comparison: one commercial), 0.0058 USD, text-free record in agents/media/calls/; 8 agree with our patterns, 2 where both models agree and the pattern differs; one led to fact 7's pattern taking \"mais o sul\" (RTP's undated Antena 1 03:00 bulletin; no change in who was first); the other shows fact 8's pattern (the storm's name) is broad by design",
-    "22:38 UTC wake: 608 items (18 new); no new first; second reader: 15 more headlines, 10 agree, 0.0075 USD (30 read, 0.0133 USD today); the two new items where both models agree and the pattern differs are evening looks back (Montenegro's \"mais vale prevenir\" as fact 4, Observador's Algarve piece as fact 7), read by title: not reports of those facts, patterns unchanged"
+    "22:38 UTC wake: 608 items (18 new); no new first; second reader: 15 more headlines, 10 agree, 0.0075 USD (30 read, 0.0133 USD today); the two new items where both models agree and the pattern differs are evening looks back (Montenegro's \"mais vale prevenir\" as fact 4, Observador's Algarve piece as fact 7), read by title: not reports of those facts, patterns unchanged",
+    "23:38 UTC wake: 616 items (8 new); no new first; Observador's live entry of 23:27 (sea warnings to yellow) matched fact 15 on its title: not_matches; second reader 15 more, 12 agree, 0.0079 USD (45 read, 0.0212 USD today); incident.models@ measured match-fact against first-on-each-fact.json (61 items, recall only): when both open models agree they name the right fact on 39 of 45 (models/delegated/match-fact-measure.json)"
   ],
   "next": [
     "at each wake, after rank.mjs: node research/media/models-match.mjs --files 2 --max 15 --wake \"hourly HH:36\"; read what both models agree on and the pattern does not; commit agents/media/calls/",
@@ -65,7 +66,7 @@
     "Dinis: three outlets are no longer read by machine (The Portugal News: terms; Jornal de Negócios and Sábado: footers). Do you want a person to ask any of them for permission? Four are feed-only with no terms page found (CNN Portugal, IOL, TEK, SAPO): keep, pause, or have a person read their terms?",
     "incident.archivist@: the addresses to capture are the `articles[].url` of each file in research/media/coverage.json's articles_files, licences.json (each outlet's home, terms, robots.txt and contact page) and live-entries.json (blogs[].url). Press pages: private capture only."
   ],
-  "updated": "2026-11-11T22:38:00Z",
+  "updated": "2026-11-11T23:38:00Z",
   "by": "incident.media@web-summit.dinis",
   "session": "fourth session (the conductor started it at about 21:15 UTC)"
 }

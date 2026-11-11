@@ -1,6 +1,6 @@
 # Lusa: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 23:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -15,8 +15,8 @@ No item of this outlet matched a keyed fact by its title (we read none of its it
 ## Its sources, as far as its own pages say
 
 - **Notícias ao Minuto published the wire of it:** 141 items (the item's by-line names the agency).
-- **Observador published the wire of it:** 17 items (the item's by-line names the agency).
-- **Correio da Manhã published the wire of it:** 16 items (the item's by-line names the agency).
+- **Observador published the wire of it:** 18 items (the item's by-line names the agency).
+- **Correio da Manhã published the wire of it:** 17 items (the item's by-line names the agency).
 - **CNN Portugal published the wire of it:** 6 items (the item's by-line names the agency).
 - **Diário de Notícias published the wire of it:** 4 items (the item's by-line names the agency).
 - **Público published the wire of it:** 4 items (the item's by-line names the agency).

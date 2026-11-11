@@ -1,13 +1,13 @@
 # Correio da Manhã: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 23:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 41: 23 articles, 0 live, 18 video, 0 opinion |
+| Items we read | 42: 24 articles, 0 live, 18 video, 0 opinion |
 | First and last | 10 Nov 00:00 to 11 Nov 00:00 UTC |
-| Whose reporting | 4 with a reporter's by-line, 16 the agency's (Lusa), 21 the desk's, 0 not read; wire share 39% |
+| Whose reporting | 4 with a reporter's by-line, 17 the agency's (Lusa), 21 the desk's, 0 not read; wire share 40% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -16,8 +16,8 @@ No item of this outlet matched a keyed fact by its title.
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 41 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 16 items (the item's by-line names the agency).
+- **Links to primary sources:** 0 of 42 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 17 items (the item's by-line names the agency).
 - **It republished Jornal de Negócios:** 1 item (the item's by-line names the other outlet).
 
 ## Licence and terms, as it publishes them
@@ -51,6 +51,7 @@ Joana Mendes (2), João Carlos Rodrigues, Marta Mariano. A by-line is a public p
 | 10 Nov 00:00 (day only) | article | Jornal de Negócios | [Pingo Doce fecha supermercados devido à depressão Charles. Continente mantém lojas abertas ↗](https://www.cmjornal.pt/sociedade/clima/detalhe/pingo-doce-fecha-supermercados-devido-a-depressao-charles-continente-mantem-lojas-abertas) |
 | 10 Nov 00:00 (day only) | video | Correio da Manhã | [Portugueses correm aos supermercados para se precaverem dos efeitos da tempestade Charles ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/portugueses-correm-aos-supermercados-para-se-precaverem-dos-efeitos-da-tempestade-charles) |
 | 10 Nov 00:00 (day only) | article | Lusa | [Dois mil clientes da E-Redes sem energia pelas 19h30 devido ao mau tempo ↗](https://www.cmjornal.pt/sociedade/clima/detalhe/dois-mil-clientes-da-e-redes-sem-energia-pelas-19h30-devido-ao-mau-tempo) |
+| 11 Nov 00:00 (day only) | article | Lusa | [Alentejo regista 248 ocorrências até às 20h00 relacionadas com o mau tempo ↗](https://www.cmjornal.pt/sociedade/detalhe/alentejo-regista-248-ocorrencias-ate-as-20h00-relacionadas-com-o-mau-tempo) |
 | 11 Nov 00:00 (day only) | video | Correio da Manhã | [Tempestade Charles: estas são as imagens de um dia marcado pelo mau tempo em Portugal ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/tempestade-charles-estas-sao-as-imagens-de-um-dia-marcado-pelo-mau-tempo-em-portugal) |
 | 11 Nov 00:00 (day only) | video | Correio da Manhã | ["Demos uma resposta muito positiva": Luís Montenegro satisfeito com postura dos portugueses durante… ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/20261111-201353-demos-uma-resposta-muito-positiva-luis-montenegro-satisfeito-com-postura-dos-portugueses-durante-a-tempestade) |
 | 11 Nov 00:00 (day only) | article | Lusa | [PCP exige salário integral para quem faltou ao trabalho devido à tempestade Charles ↗](https://www.cmjornal.pt/politica/detalhe/pcp-exige-salario-integral-para-quem-faltou-ao-trabalho-devido-a-tempestade-charles) |
