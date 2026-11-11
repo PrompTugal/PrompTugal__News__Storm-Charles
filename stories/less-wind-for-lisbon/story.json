@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T02:35Z",
-  "based_on_read_utc": "2026-11-11T02:22:46Z",
+  "updated": "2026-11-11T03:00Z",
+  "based_on_read_utc": "2026-11-11T02:38:08Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first. Each is resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser when the page opens.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -752,60 +752,65 @@
     },
     {
       "id": "o1",
-      "text": "Nothing measured yet can test any of this: the red wind warning begins at 12:00 on Wednesday, and the last observations read are from 01:00 to 02:00.",
+      "text": "Nothing measured yet can test any of this: the red wind warning begins at 12:00 on Wednesday, and the observations we hold end before it.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T02:22:46Z",
+      "read_utc": "2026-11-11T02:38:08Z",
       "supports": [
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
-          "field": "latest_hour_utc",
-          "expect": "2026-11-11T01:00Z"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
-          "field": "observed_airport_latest.time_utc",
-          "expect": "2026-11-11T02:00Z"
-        },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
           "field": "lisbon[type=Vento&level=red].start_utc",
           "expect": "2026-11-11T12:00:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "latest_hour_utc",
+          "note": "The newest station hour held, as it stands at each build."
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+          "field": "observed_airport_latest.raw",
+          "note": "The airport's newest report, as it stands at each build.",
+          "read_field": "observed_airport_latest.read_utc"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+          "field": "stations[0].hourly[time_utc=2026-11-11T12:00Z]",
+          "absent": true,
+          "note": "A tripwire: when the station hour labelled 12:00 arrives, this sentence is behind the data and is retold."
         }
       ]
     },
     {
       "id": "o2",
-      "text": "At 02:00 the airport reported wind from 200° at 5 knots, no gust, and 1006 hPa. The strongest gust in the airport's reports we hold is 36 knots (67 km/h), on Tuesday at 11:00.",
+      "text": "So far the strongest gust in the airport's reports we hold is 36 knots (67 km/h), on Tuesday at 11:00, and the data room's list of airport gusts above the gust warned for their hour, kept from 05:00 on Wednesday, is empty.",
       "label": "fact",
       "said_by": "Lisbon airport's METAR (issued by IPMA, read through NOAA's Aviation Weather)",
-      "at_utc": "2026-11-11T02:00Z",
-      "read_utc": "2026-11-11T02:20:18Z",
+      "at_utc": "2026-11-10T11:00Z",
+      "read_utc": "2026-11-11T02:38:08Z",
       "supports": [
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
-          "field": "observed_airport_latest.raw",
-          "contains": [
-            "110200Z 20005KT"
-          ],
-          "read_field": "observed_airport_latest.read_utc"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
-          "field": "observed_airport_latest.pressure_hpa",
-          "expect": 1006,
-          "read_field": "observed_airport_latest.read_utc"
-        },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
           "field": "observed_airport_max_gust.kmh",
           "expect": 67
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+          "field": "observed_airport_max_gust.time_utc",
+          "expect": "2026-11-10T11:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+          "field": "gusts_above_warned[0]",
+          "absent": true,
+          "note": "A tripwire: the data room lists here every airport gust from Wed 05:00 above the gust warned for that hour. Empty at this read."
         }
       ]
     },
@@ -921,6 +926,16 @@
         "h2",
         "h3",
         "o3"
+      ],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T03:00Z",
+      "what": "Checked against the read of 02:38:08 UTC: nothing moved at IPMA or in the models. The two sentences on the observations no longer quote the airport's newest half-hourly report (it was 02:00: wind from 200° at 5 knots, 1006 hPa); they now say what holds until something measurable happens, with tripwires on the first station hour at 12:00 and on the first gust above the warned gust.",
+      "claims_added": [],
+      "claims_changed": [
+        "o1",
+        "o2"
       ],
       "by": "incident.stories@web-summit.dinis"
     }
