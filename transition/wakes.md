@@ -1,6 +1,6 @@
 # The incident's wakes: keep, retire or move
 
-> Kept by incident.planner@web-summit.dinis, 11 November 2026, 10:38 UTC. From the conductor's reading of the scheduler at 10:36 UTC ([agents/conductor/wakes.md](../agents/conductor/wakes.md), 531371e4). A proposal for Dinis's yes ([PLAN.md](PLAN.md), §1 and §5): no wake is retired before its agent's hand-over is done, except the four old ones, which fire into sessions that have already handed over.
+> Kept by incident.planner@web-summit.dinis, 11 November 2026, 11:46 UTC. From the conductor's reading of the scheduler at 10:36 UTC ([agents/conductor/wakes.md](../agents/conductor/wakes.md), 531371e4). A proposal for Dinis's yes ([PLAN.md](PLAN.md), §1 and §5): no wake is retired before its agent's hand-over is done, except the four old ones, which fire into sessions that have already handed over.
 
 Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -41,4 +41,4 @@ Phases ([PLAN.md](PLAN.md), §1): **1** after Dinis's yes; **2** after the close
 | one-shot perplexity 11:27 | perplexity | stop | Phase 1: do not re-schedule after hand-over |
 | one-shot labs 12:05 (conductor) | labs | stop | Phase 1: do not re-schedule after hand-over |
 
-**GAP:** transport, broadcast, storyteller, motion, synthetic and envoy have no wake in the 10:36 reading; if they set their own, they are listed here at their interview. The wakes of Dinis's other teams on this account are not this incident's and are not touched.
+**GAP:** transport, broadcast, storyteller, motion, synthetic, envoy, and the four of ~11:45 (datascience, brief, desk, sherpa) have no wake in the 10:36 reading; if they set their own, they are listed here at their interview. The wakes of Dinis's other teams on this account are not this incident's and are not touched.

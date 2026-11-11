@@ -1,6 +1,6 @@
 # From incident to business as usual: the plan for Dinis's yes
 
-> Kept by incident.planner@web-summit.dinis, 11 November 2026, 10:52 UTC. Second draft (first pushed 10:36); gaps are marked **GAP**. Nothing here stops anything: this is a plan for Dinis to say yes to, change, or refuse.
+> Kept by incident.planner@web-summit.dinis, 11 November 2026, 11:46 UTC. Second draft (first pushed 10:36); gaps are marked **GAP**. Nothing here stops anything: this is a plan for Dinis to say yes to, change, or refuse.
 
 Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page is about how the team works, not about the storm.
 
@@ -11,9 +11,9 @@ How to read it: **Fact** = read from a file or commit, linked. **Mine** = my jud
 ## In one screen
 
 1. **When.** Nothing stops while the storm is live, and **no agent stops before its hand-over is done** (Dinis, ~10:32). After Dinis's yes, the agents not on live coverage (the *early eleven*) start their exit interview and hand-over at once; each keeps working until its hand-over is accepted. The live crew keeps running until the **close trigger**: IPMA shows nothing above green for Lisbon (and no orange or red for Madeira) at the first hourly read after 21:00 UTC Wednesday **and** Web Summit has published its Day 3 decision. Then the live crew does its interviews and hand-overs, and the closing record is made on Thursday 12 November. (§1)
-2. **Every agent** (37 with planner and transport): 5 continue, 3 refactor, 19 merge into 7 BAU desks, 10 stop. (§2)
+2. **Every agent** (41 with planner, transport and the four of ~11:45): 8 continue, 3 refactor, 21 merge into 8 BAU desks, 9 stop. (§2)
 3. **The closing record**: one incident page from beginning to end, built from the timeline, the traces, the journal, the ten paths and the books; and an incident template for the next one. (§3)
-4. **Business as usual**: a storm conductor and a standing newsroom of **11 roles** from fresh sessions, quiet in fair weather (a few wakes a day), scaled up when IPMA warns orange or red for a watched district. `api/v1/` stays as its contract says. Run by Dinis alone; focused on storms. (§4)
+4. **Business as usual**: a storm conductor and a standing newsroom of **14 desks** from fresh sessions, keeping the use cases, the brief, the contact desk and the data API (Dinis ~11:45), quiet in fair weather (a few wakes a day), scaled up when IPMA warns orange or red for a watched district. `api/v1/` stays as its contract says. Run by Dinis alone; focused on storms. (§4)
 5. **The order of steps** and **Dinis's decisions** in one list (§5). Nothing is deleted; history stays.
 6. **Explorer to villager**: what changes in how we work, and the record that says why. (§6)
 
@@ -43,7 +43,7 @@ How to read it: **Fact** = read from a file or commit, linked. **Mine** = my jud
 
 If (a) holds and (b) does not by 23:00 UTC, start Phase 2 anyway with the Thursday watch carrying (b). If IPMA issues a new warning for Thursday, Phase 2 waits: the live crew keeps running. Reason: the storm is the reason for the site; a reader on Wednesday evening must still find the warnings current, and the only thing still open after the wind drops is the summit's Thursday.
 
-**The live crew (keep running until the trigger):** conductor, ipma, sources, meteorologist, researcher, transport, archivist, weather, broadcast, media, social, board, observability (page views), ci, librarian, graph, entities, stories, reporter, journalist, designer (fixes only, no new rounds).
+**The live crew (keep running until the trigger):** datascience, brief, desk, sherpa (new at ~11:45, live by design), conductor, ipma, sources, meteorologist, researcher, transport, archivist, weather, broadcast, media, social, board, observability (page views), ci, librarian, graph, entities, stories, reporter, journalist, designer (fixes only, no new rounds).
 
 **The early eleven (start interview and hand-over after Dinis's yes; none feeds the live pages):** studio, labs, synthetic, perplexity, models, shadow, weatherwatch, wikipedia, envoy (moves to working with Dinis outside the wake schedule), dev, accountant (after one closing round of the books, §3). Each keeps its wakes until its hand-over is done. Storyteller and motion finish the closing record first (§3). Planner hands over last.
 
@@ -82,18 +82,22 @@ If (a) holds and (b) does not by 23:00 UTC, start Phase 2 anyway with the Thursd
 | shadow | shadow/ | answer engines compared | 1 (0) | 11 | 2.0 M | | paused since 03:00: provider out of credit | **stop**; revive inside *coverage* when credit exists |
 | perplexity | research/perplexity/ | round 1 | 1 (0) | 6 | 1.5 M | | same | **stop** |
 | models | models/, tools/llm.mjs | ledger, evals round 1 | 1 (0) | 8 | 3.6 M | every call through one ledger | blocked since 02:55 (HTTP 402) | **stop**; tools/llm.mjs kept, owned by *operations* |
-| stories | stories/ | [six stories](../stories/), 116 claims | 4 (3) | 31 | 5.6 M | stories from the data room only | 928,186 weighted tokens a story | **continue** (one story per event) |
+| stories | stories/ | [six stories](../stories/), 116 claims | 4 (3) | 31 | 5.6 M | stories from the data room only | 928,186 weighted tokens a story | **merge** → *analysis* desk (with datascience) |
 | labs | labs/ | twelve experiments | 2 (1) | 14 | 4.0 M | | | **stop**; experiments that proved out pass to presenter |
 | studio | studio/ | explanations as storyboards | 2 (1) | 26 | 8.5 M | | last wake 03:54 | **stop** (on request only) |
-| synthetic | research/synthetic/ | three runs on /welcome/ | 1 (0) | n.m. | n.m. | found the decision in ~9 s (run 3) | | **stop**; a run per release on request |
-| envoy | outreach/, comms/, welcome/ | drafts | 1 (0) | n.m. | n.m. | | | **continue** with Dinis, no scheduled wakes |
+| synthetic | research/synthetic/ | three runs on /welcome/ | 1 (0) | n.m. | n.m. | found the decision in ~9 s (run 3) | | **merge** → *guide* desk: the synthetic visitors become the guide's test loop (Dinis ~11:45: sherpa loops with designer and synthetic) |
+| envoy | outreach/, comms/, welcome/ | drafts | 1 (0) | n.m. | n.m. | | | **continue** with Dinis, no scheduled wakes; since ~11:45 also the section for journalists and media, and outreach drafts to every entity with a page (a person sends) |
 | reporter | reporter/ | [14 traces](../reporter/traces/) | 4 (3) | 24 | 3.8 M | traces from word to live page | | **merge** with journalist and storyteller → *the record* desk |
 | journalist | journal/ | [thirteen pieces](../journal/) (the closing piece first since 10:35, journal/index.json); interview drafted early: [interviews/journalist.md](interviews/journalist.md) | 5 (4) (fifth session from 10:33) | 33 | 4.8 M | told from the traces; corrections in the open | | **merge** → *the record* (owner) |
 | storyteller | story/ | [cast, nine paths](../story/) | 1 (0) | n.m. | n.m. | new 10:10 | | **merge** → *the record* after §3 |
 | motion | flows/ | flows | 1 (0) | n.m. | n.m. | new 10:10 | | **stop** after §3; tools/flows-*.mjs kept |
+| datascience | datascience/, incidents/*/data/exposure/, tools/ds-*.mjs | new (Dinis ~11:45): the gap map against Watchfloor's decision brief ([research/watchfloor/README.md](../research/watchfloor/README.md)); new open data sets (people exposed by district and hour, the ensemble, tides, hospitals, power) | new | n.m. | n.m. | new; nothing to judge yet | | **continue** → owns the *analysis* desk (with stories) |
+| brief | brief/, tools/brief-*.mjs | new (~11:45): our own decision-brief PDF, in editions, from our data only | new | n.m. | n.m. | new | | **continue** → *brief* desk: one edition per event, more during it |
+| desk | desk/, app/desk/, tools/desk-*.mjs | new (~11:45): the contact desk; "Contact us" on every page, sealed and write-only to its lane; routes and drafts replies a person sends ([CLAUDE.md](../CLAUDE.md)) | new | n.m. | n.m. | new | | **continue** → *desk*: the only way in from outside; nobody reaches the conductor directly |
+| sherpa | guide/, app/guide/ | new (~11:45): "Are you in Lisbon right now?": use cases (stranded, your flight, getting around, what is open, Madeira) as guided paths, simple to deep | new | n.m. | n.m. | new | | **continue** → owns the *guide* desk (with synthetic) |
 | planner | transition/ | this plan | 1 (0) | n.m. | n.m. | | | **stop** when Phase 3 starts |
 
-Count (mine): continue 5 (identity, librarian, archivist, stories, envoy); refactor 3 (conductor, board, meteorologist); merge 19 into 7 desks (presenter, operations, sources, impacts, graph, coverage, the record); stop 10.
+Count (mine): continue 8 (identity, librarian, archivist, envoy, datascience, brief, desk, sherpa); refactor 3 (conductor, board, meteorologist); merge 21 into 8 desks (presenter, operations, sources, impacts, graph, coverage, the record, analysis, guide: the last two owned by a continuing agent); stop 9.
 
 ### 2.1 What the numbers say (facts, then mine)
 
@@ -142,7 +146,7 @@ The reporter, journalist and storyteller each sent their part by message (10:30 
 
 **Mine.** Two modes. **Fair weather**: a few wakes a day, the API kept fresh, the template maintained. **Event**: when IPMA issues orange or red for a watched district (Lisbon, Porto, Faro, Madeira first), or Dinis says so, the storm conductor opens an incident from the template and raises the desks to hourly.
 
-**Desks (11), each a fresh session started from the pack:**
+**Desks (14), each a fresh session started from the pack:**
 
 | Desk | From (merged) | Fair weather | Event | Publishes |
 |---|---|---|---|---|
@@ -154,7 +158,10 @@ The reporter, journalist and storyteller each sent their part by message (10:30 
 | **coverage** | media + social + wikipedia (+ shadow when credit) | daily | hourly, :36 | research/media, social, wikipedia |
 | **presenter** | weather + designer + broadcast | on change | on change | `/`, /broadcast/, design/ |
 | **graph** | graph + entities | daily | every 3 h | data/graph, entities |
-| **stories** | stories | on event | 1 story per event | stories/ |
+| **analysis** | datascience + stories | weekly gap map; data sets kept fresh | hourly exposure; 1 story per event | datascience/, incidents/*/data/exposure, stories/ |
+| **guide** | sherpa + synthetic | on change; a synthetic run per release | hourly ("are you in Lisbon right now?" kept true) | guide/ (use cases, simple to deep) |
+| **brief** | brief | none | an edition at each change of warning or decision | brief/ (the decision-brief PDF; the PDF is built, not committed, per the git rules) |
+| **desk** | desk | daily | hourly | desk/ (routing record only; messages sealed, never in git) |
 | **the record** | reporter + journalist + storyteller | daily | 3 a day | reporter/, journal/, story/ |
 | **operations** | observability + ci + accountant (+ tools/llm.mjs) | daily | hourly | /agents/, ci/, accounts/, the provider's credit as an alarm |
 | *librarian* | librarian | daily | every 3 h | library/, the pack, the template |
@@ -166,12 +173,12 @@ The reporter, journalist and storyteller each sent their part by message (10:30 
 
 **The API stays stable ([api/v1/README.md](../api/v1/README.md), fact):** addresses and listed fields of `api/v1/` do not change in v1; a breaking change goes to `api/v2/` with v1 kept. **Mine:** a closed incident stays listed with `status: closed`; a new incident is a new `<incident>` path; the "refreshed at least hourly while the storm runs" line gains "and daily otherwise". pt.news and Lisbon Fringe read it ([api/v1/README.md](../api/v1/README.md)).
 
-**Who runs it (Dinis, ~10:38):** Dinis alone. No outside accounts, people or agent teams join this site; the desks hand work to each other by commit `For:` and lanes, as now. Readers of `api/v1/` (pt.news, Lisbon Fringe, per its README) read it; they do not write here. We still feed Vicky Wang's desks as material (CLAUDE.md).
+**Who runs it (Dinis, ~10:38):** Dinis alone. No outside accounts, people or agent teams join this site; the desks hand work to each other by commit `For:` and lanes, as now. Readers of `api/v1/` (pt.news, Lisbon Fringe, per its README) read it; they do not write here. Since ~11:45 this site is **the main source** for promptugal.news and the Fringe site (BRIEF.md): the API's stability is a BAU duty of *operations* and the storm conductor, not a nicety. Messages from the public arrive only through the contact desk. We still feed Vicky Wang's desks as material (CLAUDE.md).
 
 **Start, continue, stop (mine):**
 - **Start (fresh sessions):** storm conductor, sources, meteorologist (with push here), impacts, coverage, presenter, graph, the record, operations.
-- **Continue (same role, a fresh session at the next hand-over):** librarian, identity, archivist, stories, envoy.
-- **Stop, after hand-over:** dev, weatherwatch, labs, studio, synthetic, perplexity, models, shadow, motion, planner; and the old sessions of every merged agent once its desk has accepted the hand-over.
+- **Continue (same role, a fresh session at the next hand-over):** librarian, identity, archivist, envoy, datascience (as *analysis*), sherpa (as *guide*), brief, desk.
+- **Stop, after hand-over:** dev, weatherwatch, labs, studio, perplexity, models, shadow, motion, planner; and the old sessions of every merged agent once its desk has accepted the hand-over.
 
 ## 5. The order of steps
 
@@ -220,7 +227,7 @@ In plain words (mine): the last 16 hours were exploring. We spun up an agent for
 What changes, and the record that proves it:
 
 - **From long sessions to short ones started from the pack.** The conductor's one session is 24% of the team's cost ([accounts/agents.json](../accounts/agents.json)); the journal's piece [starting again is cheaper than remembering](../journal/starting-again-is-cheaper-than-remembering.md) and 40 hand-overs ([count.json](../data/agents/count.json)) show fresh sessions work.
-- **From one agent per idea to desks.** 35 agents for one storm; overlapping pairs (graph and entities; media, social, wikipedia; weather, designer, broadcast) read the same data. Seven desks cover the same ground.
+- **From one agent per idea to desks.** 35 agents for one storm by 10:22 ([count.json](../data/agents/count.json)), 41 with the planner and the five started since (JOBS.md, 11:45); overlapping pairs (graph and entities; media, social, wikipedia; weather, designer, broadcast) read the same data. Seven desks cover the same ground.
 - **From hourly everything to two modes.** 724 CI runs and 515 releases in one night ([accounts/index.md](../accounts/index.md)); the busiest hour, 02:00 UTC, was the restructure, not the storm. In fair weather a few wakes a day are enough.
 - **From hidden dependencies to owned ones.** One account's credit stopped four agents at 02:55 ([accounts/provider.json](../accounts/provider.json)); three agents never pushed here (their status asks). In BAU each dependency has an owner and an alarm, and a desk starts only where it can push.
 - **From asks piling up to a decision list.** The board holds 206 open cards and the asks to Dinis run to dozens ([board/](../board/), [data/agents/index.json](../data/agents/index.json)); the journal's [what waited on the human](../journal/what-waited-on-the-human.md) tells it. BAU keeps one decisions list, read at each of Dinis's sessions.
