@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:38 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 267 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 07:40 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 268 items from 17 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -136,7 +136,7 @@ Primary source time: **10 Nov 21:23 UTC** (fact: IPMA's CAP message sent 21:23 (
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 07:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 07:40 UTC | | | | |
 
 - Outside the press: VOST Portugal (a volunteers' association, not an authority and not press) relayed the change on Bluesky at 22:20, 57 minutes after IPMA sent it (found by incident.social@: research/social/posts/2026-11-10.json, bsky-vost.pt-3mzyhxvwhry25). The finding for the press stands: no article title or live entry we could read reported it.
 
@@ -150,6 +150,14 @@ Primary source time: **10 Nov 22:35 UTC** (evidence: a spoken statement to Rádi
 | 2 | RTP | 10 Nov 23:08 | +32 min | live blog entry | [Tempestade terá mudado de trajetória](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277) |
 | 3 | Expresso | 10 Nov 23:54 | +79 min | not read | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa…](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
 | 4 | CNN Portugal | 11 Nov 00:31 | +115 min | not read | [Algarve deverá ser a região mais afetada pela Charles. Tempestade che…](https://cnnportugal.iol.pt/videos/algarve-devera-ser-a-regiao-mais-afetada-pela-charles-tempestade-chega-a-lisboa-com-menos-intensidade-do-que-o-previsto/6af3b07a0cf2aafa0453e19a) |
+
+### IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands
+
+Primary source time: **11 Nov 07:16 UTC** (fact: IPMA's CAP message PO-01-1932, sent 07:16:30 (data/weather/cap.json, incident.meteorologist@; timeline row s-1111T0738). Asked by incident.conductor@ at 07:39: who reports it first, and do they say the red rain stands? The pattern looks for the lowering or for orange wind in Lisbon; whether a report says the red rain stands is read by hand and written in notes).
+
+| # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
+|---|---|---|---|---|---|
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 07:40 UTC | | | | |
 
 Lags are whole minutes elapsed, truncated (19:09:00 to 19:41:31 is 32 minutes); the seconds are in the data. Notes: the organisers' email to attendees went at 19:38 (no public URL; in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). Where the press is ahead of the primary time, the announcement was made in person before the page went up, or the primary time is itself only the first report. A title match can miss an item that reports the fact under another headline.
 
@@ -167,7 +175,7 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 | Público | 18 | 11 | 3 | 19% | 2 | 2 | 5 | ANEPC, Diário da República, IPMA |
 | Diário de Notícias | 18 | 17 | 1 | 6% | 0 | 0 | 2 | AMN, Lusoponte |
 | ECO | 13 | 3 | 0 | 0% | 3 | 7 | 0 |  |
-| Correio da Manhã | 10 | 0 | 4 | 40% | 6 | 0 | 0 |  |
+| Correio da Manhã | 11 | 0 | 4 | 36% | 7 | 0 | 0 |  |
 | TEK Notícias (SAPO) | 4 | 4 | 0 | 0% | 0 | 0 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
 | Jornal Económico | 3 | 1 | 0 | 0% | 0 | 2 | 0 |  |
 | Jornal de Negócios | 2 | 1 | 0 | 0% | 1 | 0 | 1 | Diário da República, Government, IPMA |
@@ -181,7 +189,7 @@ Among outlets with at least four items:
 
 - **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (28%), Diário de Notícias (11%), Observador (7%), CNN Portugal (3%).
 - **Highest share of items with a reporter's by-line:** TEK Notícias (SAPO) (100%), Diário de Notícias (94%), Público (61%), Observador (31%), ECO (23%).
-- **The wire underneath:** 98 of 267 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **The wire underneath:** 98 of 268 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
