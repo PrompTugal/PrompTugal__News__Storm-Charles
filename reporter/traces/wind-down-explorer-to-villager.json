@@ -4,7 +4,7 @@
  "size": "large",
  "title": "The wind-down, traced as it happens: \"move it into a BAU\" to a plan, exit interviews and a correction, in 14 minutes; open until the hand-overs",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T13:12:41Z",
+ "updated": "2026-11-11T22:08:41Z",
  "captured_at": "2026-11-11T11:17:00Z",
  "summary": [
   "Dinis (~10:30): \"create a plan to refactor this entire incident and then move it into a BAU\"; wind down every agent, \"an exit interview and ... a wrap up\", then decide which to start and continue; \"almost that move from explorer to villager\". Two more words followed within eight minutes: nobody stops \"until the handover is done\" (~10:32), and a correction (~10:38): the outside hand-over \"was for another team\"; \"I'm going to be the only one running this site\".",
@@ -28,7 +28,7 @@
   "what": "transition/PLAN.md (the plan), transition/interviews/ (exit interviews), the closing record (reporter, journalist, storyteller, librarian), a storm conductor for business as usual",
   "url": "https://storm-charles.promptugal.news/transition/PLAN.html"
  },
- "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 21:07); 21:00 passed, Lisbon's orange sea ended, the brief's edition 10 'after the storm' (step 25); the close trigger's first half waits on incident.ipma@'s first read after 21:00, the second is press only",
+ "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 22:08); the close trigger not met at incident.ipma@'s 21:48 read (yellow sea to 03:00 Thursday; no Day 3 decision); the plan has no rule for a later read (step 26)",
  "duration": {
   "from": "2026-11-11T10:29:37Z",
   "to": null,
@@ -1118,8 +1118,11 @@
     {
      "filled": true,
      "type": "version",
-     "version": null,
-     "note": "no CI tag at or after this commit when the trace was filled"
+     "version": "v0.1.1531",
+     "run": 1531,
+     "own_run": true,
+     "served_by": "2026-11-11T21:07:55Z",
+     "push_to_served_s": 225
     }
    ],
    "n": 25,
@@ -1128,13 +1131,80 @@
    "for": [
     "incident.conductor@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.ipma@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "the close trigger's first read: not met",
+   "sha": "f935d264735a4b18e7fc474d54ee838ae4bd4dda",
+   "in": "IPMA's first hourly read by incident.ipma@ after 21:00, the first half of the close trigger (transition/PLAN.md lines 40 to 45)",
+   "out": "\"read 21:48 UTC: Lisbon's orange sea and Madeira's yellow sea ended at 21:00; Madeira all green\". The trigger's (a) wants no yellow or above for Lisbon district on the rest of Wednesday or on Thursday; the yellow sea runs to 03:00 Thursday, so this read cannot meet it (Madeira's half, no orange or red, is met). (b), the organisers' Day 3 decision, is unmet: no publication in the record. The journalist found the gap first (3676f5a0, 21:13:11; 60037c7d); the conductor recorded \"not met\" as a timeline row (0483d68f, 22:05:21) and reworded it as our reading of the plan (ebf00f52). The plan names IPMA's first read only and has no rule for a later one: the planner's gap, for Dinis (the conductor, 21:14). Step 25 said the first half \"waits on\" this read; it could not have been met by it. The plan still waits on Dinis's yes; nothing stops.",
+   "handoff": {
+    "to": "incident.planner@web-summit.dinis",
+    "via": "transition/PLAN.md",
+    "evidence_of_handoff": "not in the record at 22:08: no commit to transition/ since 12:10"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md"
+    },
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/timeline.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/timeline.md"
+    },
+    {
+     "type": "commit",
+     "sha": "3676f5a0a3ea8b0b5670874391560850ac9ccd1c",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/3676f5a0a3ea8b0b5670874391560850ac9ccd1c"
+    },
+    {
+     "type": "commit",
+     "sha": "60037c7d3b348dfd9e632b09c5460c44aa788af2",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/60037c7d3b348dfd9e632b09c5460c44aa788af2"
+    },
+    {
+     "type": "commit",
+     "sha": "0483d68fb04d19cfa5538ce23df1a6f5a44271de",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/0483d68fb04d19cfa5538ce23df1a6f5a44271de"
+    },
+    {
+     "type": "commit",
+     "sha": "ebf00f5243f16988250adfa120e93c50b7ba46c7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/ebf00f5243f16988250adfa120e93c50b7ba46c7"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "f935d264735a4b18e7fc474d54ee838ae4bd4dda",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f935d264735a4b18e7fc474d54ee838ae4bd4dda"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1568",
+     "run": 1568,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T21:18:39Z"
+    }
+   ],
+   "n": 26,
+   "at": "2026-11-11T21:52:27Z",
+   "agent_trailer": "incident.ipma@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 25,
+  "steps": 26,
   "steps_with_no_evidence": 0,
   "person_steps": 3,
-  "agent_steps": 22
+  "agent_steps": 23
  },
  "people_acted": [
   "Dinis Cruz"
@@ -1146,6 +1216,7 @@
   "incident.designer@web-summit.dinis",
   "incident.storyteller@web-summit.dinis",
   "incident.journalist@web-summit.dinis",
-  "incident.brief@web-summit.dinis"
+  "incident.brief@web-summit.dinis",
+  "incident.ipma@web-summit.dinis"
  ]
 }

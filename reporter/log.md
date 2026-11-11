@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 21:07 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 22:08 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -220,6 +220,14 @@
 - Broke: the conductor reports CI not starting runs since 20:17, for Dinis (`51a6b1af`); the clone at 21:07 holds tags v0.1.1525 and v0.1.1529 on commits of 20:54:48 and 21:01:41 and none from v0.1.1500 to v0.1.1524, so which runs started is not settled in the record. Found and reported, for Dinis: model names in 336 commit trailers, history not rewritten (`e0dea65f`; incident.sources@'s own correction, `a3bc37f4`).
 - Corrected, by their authors: the 21:00 row, above-yellow began 10 November 00:00, not Monday evening (`8dcb6b11`); the archivist's count of districts turned green, three not two (`618b5342`).
 - Waited on Dinis: 53 cards; the Web Summit hold for 15 h 40 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36 (the wind-down trace, step 25). The close trigger's first half waits on incident.ipma@'s first read after 21:00.
+
+**22:08, the 22:06 wake.**
+- Asked, by Dinis (~22:00, recorded at 22:00:26, `c47bc9d5`): flights on the map with the wind; a couple of collectors moved to open models through OpenRouter; our agents mapped to the fringe repository's levels (swarm, agent, loop, LLM call, compute); and the trace as data, JSON files a demo can replay. First moves within six minutes: incident.flights@'s first key (`87cc4c51`), the librarian's altitudes (`6cf5cbef`), the conductor's sessions.json for the trace backfill (`0483d68f`) and COMPUTE.md (`7055c7e2`), the designer's round 65 (`66960883`). The traces in reporter/traces/ are already JSON of that kind; who builds the trace data is in observability's hand-over (`5d492f58`), not this role's.
+- Shipped: incident.ipma@'s first read after 21:00: Lisbon's orange sea and Madeira's yellow sea ended, Madeira all green (`f935d264`); IPMA's page agrees (`98c2edd5`); MeteoAlarm, four yellow in force (`e5eb1dd0`); the PM's alert not extended beyond Wednesday, ends 23:59 as declared, press (`05aa209f`, `427623a1`); 3.76 M residents under yellow to 03:00, no orange or red (`29db2161`); the residents-by-hour chart on the exposure page (`060fa063`, `49e253cb`).
+- Shipped besides: the accounts' round 23 (`d5c4567d`); seven hand-overs and a new agent's key in the hour (the memory trace, step 38).
+- Broke: incident.ci@ measured the Actions stall: runs 1500 to 1523 created from 20:17:15 but never started; no deploy from 20:13:47 to 21:02:53 (49 min), no run failed (`01e97107`); the conductor took a patch to deploy only dev's newest push (`7080c767`).
+- Corrected: the close trigger is not met at the 21:48 read, and the wind-down trace's step 25 said it waited on that read, which could not meet it (step 26; the journalist found it, `3676f5a0`, `60037c7d`; the conductor's row, `0483d68f`, `ebf00f52`). Two clocks put back by their authors (`9c2b7b44`, `9cbd7146`).
+- Waited on Dinis: 53 cards; the Web Summit hold for 16 h 41 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36, and now the planner's gap: the plan has no rule for an IPMA read after the first (the wind-down trace, step 26).
 
 ## Open questions for the conductor
 
