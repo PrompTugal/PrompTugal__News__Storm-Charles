@@ -1,0 +1,1333 @@
+{
+  "about": "The hand-kept half of entities/: which things are nodes, their names, and for each hand-written edge the timeline row, decision, actor or site file it is read from. tools/entities-make.mjs joins this with the incident's data (data/signals.json, data/decisions/graph.json) and writes entities/<type>/<id>.json and entities/index.json; it stops if an edge names a row or decision that does not exist, so nothing here can assert what the data does not hold. A name in lower case is matched in any case; a name with a capital exactly. Kept by incident.entities@web-summit.dinis.",
+  "by": "incident.entities@web-summit.dinis",
+  "updated": "2026-11-11T02:20:00Z",
+  "incident": "2026-11-10-storm-charles",
+  "actors": {
+    "ipma": {
+      "type": "body",
+      "name": "IPMA",
+      "also": [
+        "Instituto Português do Mar e da Atmosfera"
+      ]
+    },
+    "anepc": {
+      "type": "body",
+      "name": "ANEPC",
+      "also": [
+        "Autoridade Nacional de Emergência e Proteção Civil",
+        "civil protection"
+      ]
+    },
+    "government": {
+      "type": "body",
+      "name": "The government",
+      "also": [
+        "Government of Portugal",
+        "Council of Ministers",
+        "government",
+        "Governo"
+      ]
+    },
+    "mai": {
+      "type": "body",
+      "name": "Ministry of Internal Administration",
+      "also": [
+        "MAI",
+        "Interior Ministry"
+      ]
+    },
+    "pm": {
+      "type": "role",
+      "name": "Prime Minister",
+      "also": [
+        "prime minister"
+      ]
+    },
+    "camara-lisboa": {
+      "type": "body",
+      "name": "Câmara Municipal de Lisboa",
+      "also": [
+        "Lisbon City Council",
+        "Câmara de Lisboa"
+      ]
+    },
+    "schools": {
+      "type": "service",
+      "name": "Schools",
+      "also": [
+        "schools"
+      ]
+    },
+    "metro": {
+      "type": "service",
+      "name": "Metro",
+      "also": [
+        "Metropolitano de Lisboa",
+        "Metro de Lisboa",
+        "Lisbon's metro"
+      ]
+    },
+    "carris": {
+      "type": "service",
+      "name": "Carris",
+      "also": []
+    },
+    "cp": {
+      "type": "service",
+      "name": "CP",
+      "also": [
+        "Comboios de Portugal"
+      ]
+    },
+    "lusoponte": {
+      "type": "organisation",
+      "name": "Lusoponte",
+      "also": []
+    },
+    "tunnels": {
+      "type": "service",
+      "name": "Lisbon road tunnels",
+      "also": [
+        "Lisbon tunnels",
+        "Lisbon's tunnels"
+      ]
+    },
+    "ferries": {
+      "type": "service",
+      "name": "Tagus ferries",
+      "also": [
+        "Transtejo Soflusa",
+        "ferries"
+      ]
+    },
+    "rede-expressos": {
+      "type": "service",
+      "name": "Rede Expressos",
+      "also": []
+    },
+    "airport": {
+      "type": "service",
+      "name": "Lisbon airport",
+      "also": [
+        "ANA",
+        "Humberto Delgado"
+      ]
+    },
+    "amn": {
+      "type": "body",
+      "name": "Autoridade Marítima Nacional",
+      "also": [
+        "Port of Lisbon",
+        "the port"
+      ]
+    },
+    "venue": {
+      "type": "place",
+      "name": "MEO Arena and FIL (the venue)",
+      "also": [
+        "MEO Arena",
+        "FIL",
+        "the venue"
+      ]
+    },
+    "websummit": {
+      "type": "organisation",
+      "name": "Web Summit",
+      "also": [
+        "the organisers",
+        "organisers"
+      ]
+    },
+    "side-events": {
+      "type": "organisation",
+      "name": "Side events",
+      "also": [
+        "side events",
+        "Dear Gatekeepers Live"
+      ]
+    },
+    "fertagus": {
+      "type": "service",
+      "name": "Fertagus",
+      "also": []
+    },
+    "carris-metropolitana": {
+      "type": "service",
+      "name": "Carris Metropolitana",
+      "also": []
+    },
+    "flixbus": {
+      "type": "service",
+      "name": "FlixBus",
+      "also": []
+    },
+    "pitch": {
+      "type": "organisation",
+      "name": "PITCH",
+      "also": []
+    },
+    "night-summit": {
+      "type": "organisation",
+      "name": "Night Summit",
+      "also": []
+    },
+    "madeira-gov": {
+      "type": "body",
+      "name": "Governo Regional da Madeira",
+      "also": []
+    },
+    "madeira-prociv": {
+      "type": "body",
+      "name": "Serviço Regional de Proteção Civil (Madeira)",
+      "also": [
+        "Serviço Regional de Proteção Civil"
+      ]
+    },
+    "madeira-airport": {
+      "type": "service",
+      "name": "Madeira airport",
+      "also": []
+    },
+    "apram": {
+      "type": "body",
+      "name": "APRAM",
+      "also": [
+        "Administração dos Portos da Madeira"
+      ]
+    },
+    "aemet": {
+      "type": "body",
+      "name": "AEMET",
+      "also": []
+    },
+    "gnr": {
+      "type": "body",
+      "name": "GNR",
+      "also": [
+        "Guarda Nacional Republicana"
+      ]
+    },
+    "mmp": {
+      "type": "service",
+      "name": "Museus e Monumentos de Portugal",
+      "also": [
+        "MMP"
+      ]
+    },
+    "tap": {
+      "type": "service",
+      "name": "TAP",
+      "also": [
+        "TAP Air Portugal"
+      ]
+    },
+    "csm": {
+      "type": "body",
+      "name": "Conselho Superior da Magistratura",
+      "also": [
+        "CSM"
+      ]
+    },
+    "mj": {
+      "type": "body",
+      "name": "Ministry of Justice",
+      "also": []
+    }
+  },
+  "decision_names": {
+    "websummit-wednesday": [
+      "calls off Day 2",
+      "Important event update"
+    ],
+    "gov-recommends-suspend": [
+      "formally advised",
+      "the government's advice",
+      "the government's recommendation"
+    ],
+    "gov-alert": [
+      "The government's alert situation"
+    ],
+    "ipma-red-wind": [
+      "red wind warning",
+      "red wind"
+    ],
+    "ipma-red-rain-0900": [
+      "red rain warning",
+      "red rain"
+    ],
+    "ipma-communique-1": [
+      "communiqué no. 1"
+    ],
+    "ipma-communique-2": [
+      "communiqué no. 2"
+    ],
+    "anepc-aviso-21": [
+      "Aviso 21"
+    ]
+  },
+  "decision_edges": [
+    {
+      "from": "warning/ipma-red-wind",
+      "verb": "warns_of",
+      "to": "hazard/high-winds",
+      "decision": "ipma-red-wind"
+    },
+    {
+      "from": "warning/ipma-red-wind",
+      "verb": "covers",
+      "to": "place/lisbon-district",
+      "decision": "ipma-red-wind"
+    },
+    {
+      "from": "warning/ipma-red-wind",
+      "verb": "instance_of",
+      "to": "term/red-warning",
+      "decision": "ipma-red-wind"
+    },
+    {
+      "from": "warning/ipma-red-rain",
+      "verb": "warns_of",
+      "to": "hazard/heavy-rain",
+      "decision": "ipma-red-rain"
+    },
+    {
+      "from": "warning/ipma-red-rain",
+      "verb": "covers",
+      "to": "place/lisbon-district",
+      "decision": "ipma-red-rain"
+    },
+    {
+      "from": "warning/ipma-red-rain",
+      "verb": "instance_of",
+      "to": "term/red-warning",
+      "decision": "ipma-red-rain"
+    },
+    {
+      "from": "warning/ipma-red-rain-0900",
+      "verb": "warns_of",
+      "to": "hazard/heavy-rain",
+      "decision": "ipma-red-rain-0900"
+    },
+    {
+      "from": "warning/ipma-red-rain-0900",
+      "verb": "covers",
+      "to": "place/lisbon-district",
+      "decision": "ipma-red-rain-0900"
+    },
+    {
+      "from": "warning/ipma-red-rain-0900",
+      "verb": "instance_of",
+      "to": "term/red-warning",
+      "decision": "ipma-red-rain-0900"
+    },
+    {
+      "from": "warning/ipma-red-rain-0900",
+      "verb": "supersedes",
+      "to": "warning/ipma-red-rain",
+      "row": "s-1110T2353"
+    },
+    {
+      "from": "warning/ipma-madeira-red",
+      "verb": "covers",
+      "to": "place/madeira",
+      "decision": "ipma-madeira-red"
+    },
+    {
+      "from": "warning/ipma-madeira-red",
+      "verb": "warns_of",
+      "to": "hazard/heavy-rain",
+      "decision": "ipma-madeira-red"
+    },
+    {
+      "from": "warning/ipma-madeira-red",
+      "verb": "warns_of",
+      "to": "hazard/high-winds",
+      "decision": "ipma-madeira-red"
+    },
+    {
+      "from": "warning/ipma-madeira-red",
+      "verb": "instance_of",
+      "to": "term/red-warning",
+      "decision": "ipma-madeira-red"
+    },
+    {
+      "from": "warning/ipma-communique-1",
+      "verb": "warns_of",
+      "to": "hazard/storm-charles",
+      "decision": "ipma-communique-1"
+    },
+    {
+      "from": "warning/ipma-communique-2",
+      "verb": "warns_of",
+      "to": "hazard/storm-charles",
+      "decision": "ipma-communique-2"
+    },
+    {
+      "from": "warning/ipma-communique-2",
+      "verb": "covers",
+      "to": "place/madeira",
+      "decision": "ipma-communique-2"
+    },
+    {
+      "from": "warning/ipma-communique-2",
+      "verb": "covers",
+      "to": "place/mainland-portugal",
+      "decision": "ipma-communique-2"
+    },
+    {
+      "from": "warning/anepc-aviso-21",
+      "verb": "warns_of",
+      "to": "hazard/storm-charles",
+      "row": "s-1109T2030"
+    },
+    {
+      "from": "decision/gov-alert",
+      "verb": "covers",
+      "to": "place/mainland-portugal",
+      "decision": "gov-alert"
+    },
+    {
+      "from": "decision/gov-alert",
+      "verb": "instance_of",
+      "to": "term/alert-situation",
+      "decision": "gov-alert"
+    },
+    {
+      "from": "decision/gov-alert",
+      "verb": "closes",
+      "to": "service/schools",
+      "decision": "gov-alert"
+    },
+    {
+      "from": "decision/websummit-wednesday",
+      "verb": "cancels",
+      "to": "programme-day/websummit-day-2",
+      "row": "s-1110T1909"
+    },
+    {
+      "from": "decision/websummit-wednesday",
+      "verb": "cites_hazard",
+      "to": "hazard/tidal-flooding",
+      "row": "s-1110T1909"
+    },
+    {
+      "from": "decision/websummit-wednesday",
+      "verb": "cites_hazard",
+      "to": "hazard/high-winds",
+      "row": "s-1110T1909"
+    },
+    {
+      "from": "decision/websummit-wednesday",
+      "verb": "cites_risk_to",
+      "to": "service/public-transport",
+      "row": "s-1110T1909"
+    },
+    {
+      "from": "decision/websummit-thursday",
+      "verb": "aims_to_hold",
+      "to": "programme-day/websummit-day-3",
+      "row": "s-1110T1909"
+    },
+    {
+      "from": "decision/bridges-60",
+      "verb": "restricts",
+      "to": "place/vasco-da-gama-bridge",
+      "decision": "bridges-60"
+    },
+    {
+      "from": "decision/bridges-60",
+      "verb": "restricts",
+      "to": "place/25-de-abril-bridge",
+      "decision": "bridges-60"
+    },
+    {
+      "from": "decision/cp-fertagus-bridge",
+      "verb": "restricts",
+      "to": "place/25-de-abril-bridge",
+      "decision": "cp-fertagus-bridge"
+    },
+    {
+      "from": "decision/tunnels-close",
+      "verb": "closes",
+      "to": "service/tunnels",
+      "decision": "tunnels-close"
+    },
+    {
+      "from": "decision/schools-close",
+      "verb": "closes",
+      "to": "service/schools",
+      "decision": "schools-close"
+    },
+    {
+      "from": "decision/madeira-schools",
+      "verb": "covers",
+      "to": "place/madeira",
+      "decision": "madeira-schools"
+    },
+    {
+      "from": "decision/apram-cruises",
+      "verb": "covers",
+      "to": "place/funchal",
+      "decision": "apram-cruises"
+    },
+    {
+      "from": "decision/bridges-60",
+      "verb": "restricts",
+      "to": "place/tagus-bridges",
+      "row": "s-1110T1425"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "body/psp",
+      "name": "PSP",
+      "also": [
+        "Polícia de Segurança Pública"
+      ],
+      "summary": "The police force Web Summit's organisers named, with ANEPC, as the bodies they were assessing the warnings with.",
+      "summary_from": {
+        "row": "s-1110T1245"
+      },
+      "edges": []
+    },
+    {
+      "id": "body/meteoalarm",
+      "name": "MeteoAlarm",
+      "also": [
+        "EUMETNET"
+      ],
+      "summary": "The European service through which IPMA's warning messages (CAP) are read here, each with the time IPMA sent it.",
+      "summary_from": {
+        "row": "s-1110T0718"
+      },
+      "edges": [
+        {
+          "verb": "relays_messages_of",
+          "to": "body/ipma",
+          "row": "s-1110T0718"
+        }
+      ]
+    },
+    {
+      "id": "organisation/websummit",
+      "edges": [
+        {
+          "verb": "consulted",
+          "to": "body/anepc",
+          "row": "s-1110T1938"
+        },
+        {
+          "verb": "consulted",
+          "to": "body/psp",
+          "row": "s-1110T1938"
+        },
+        {
+          "verb": "consulted",
+          "to": "body/government",
+          "row": "s-1110T1938"
+        }
+      ]
+    },
+    {
+      "id": "organisation/lusoponte",
+      "edges": [
+        {
+          "verb": "runs",
+          "to": "place/vasco-da-gama-bridge",
+          "actor": "lusoponte"
+        },
+        {
+          "verb": "runs",
+          "to": "place/25-de-abril-bridge",
+          "actor": "lusoponte"
+        }
+      ]
+    },
+    {
+      "id": "service/metro",
+      "edges": [
+        {
+          "verb": "serves",
+          "to": "place/oriente",
+          "actor": "metro"
+        },
+        {
+          "verb": "part_of",
+          "to": "service/public-transport",
+          "decision": "transport-thursday"
+        }
+      ]
+    },
+    {
+      "id": "service/cp",
+      "edges": [
+        {
+          "verb": "serves",
+          "to": "place/oriente",
+          "actor": "cp"
+        },
+        {
+          "verb": "part_of",
+          "to": "service/public-transport",
+          "decision": "transport-thursday"
+        }
+      ]
+    },
+    {
+      "id": "service/carris",
+      "edges": [
+        {
+          "verb": "part_of",
+          "to": "service/public-transport",
+          "decision": "transport-thursday"
+        }
+      ]
+    },
+    {
+      "id": "service/ferries",
+      "edges": [
+        {
+          "verb": "part_of",
+          "to": "service/public-transport",
+          "decision": "transport-thursday"
+        }
+      ]
+    },
+    {
+      "id": "organisation/pitch",
+      "edges": [
+        {
+          "verb": "part_of",
+          "to": "organisation/websummit",
+          "actor": "pitch"
+        }
+      ]
+    },
+    {
+      "id": "organisation/night-summit",
+      "edges": [
+        {
+          "verb": "part_of",
+          "to": "organisation/websummit",
+          "actor": "night-summit"
+        }
+      ]
+    },
+    {
+      "id": "role/pm",
+      "edges": [
+        {
+          "verb": "holds_office_in",
+          "to": "body/government",
+          "actor": "pm"
+        }
+      ]
+    },
+    {
+      "id": "body/mai",
+      "edges": [
+        {
+          "verb": "part_of",
+          "to": "body/government",
+          "actor": "mai"
+        }
+      ]
+    },
+    {
+      "id": "body/ipma",
+      "edges": [
+        {
+          "verb": "named",
+          "to": "hazard/storm-charles",
+          "row": "s-1109T1317"
+        }
+      ]
+    },
+    {
+      "id": "service/public-transport",
+      "name": "Public transport",
+      "also": [
+        "public transport",
+        "disruption to public transport"
+      ],
+      "summary": "The services Web Summit's organisers gave, disrupted, as one of their three reasons for calling off Day 2; on this site: the Metro, Carris, CP, the ferries.",
+      "summary_from": {
+        "row": "s-1110T1909"
+      },
+      "edges": []
+    },
+    {
+      "id": "role/interior-minister",
+      "name": "The Interior Minister",
+      "also": [
+        "Interior Minister",
+        "Minister of Internal Administration"
+      ],
+      "summary": "The minister who announced the alert situation at ANEPC's press conference on Tuesday morning. A public office, named here as the office.",
+      "summary_from": {
+        "row": "s-1110T0917"
+      },
+      "edges": [
+        {
+          "verb": "holds_office_in",
+          "to": "body/mai",
+          "row": "s-1110T0917"
+        }
+      ]
+    },
+    {
+      "id": "role/lisbon-mayor",
+      "name": "Lisbon's mayor",
+      "also": [
+        "the mayor",
+        "Mayor"
+      ],
+      "summary": "The mayor of Lisbon, who said on Tuesday that everything indicated Web Summit could not run on Wednesday. A public office, named here as the office.",
+      "summary_from": {
+        "row": "s-1110T1319"
+      },
+      "edges": [
+        {
+          "verb": "holds_office_in",
+          "to": "body/camara-lisboa",
+          "row": "s-1110T1319"
+        }
+      ]
+    },
+    {
+      "id": "role/websummit-chief-executive",
+      "name": "Web Summit's chief executive",
+      "also": [
+        "Paddy Cosgrave",
+        "chief executive"
+      ],
+      "summary": "Web Summit's chief executive, named in an outlet's headline on the suspension of Wednesday. A public role, named here in that role only.",
+      "summary_from": {
+        "row": "s-1110T1942"
+      },
+      "edges": [
+        {
+          "verb": "holds_office_in",
+          "to": "organisation/websummit",
+          "row": "s-1110T1942"
+        }
+      ]
+    },
+    {
+      "id": "role/ipma-meteorologist",
+      "name": "An IPMA meteorologist",
+      "also": [
+        "IPMA meteorologist"
+      ],
+      "summary": "An IPMA meteorologist who spoke on Rádio Observador on Tuesday night about where the storm should come ashore. Not named here.",
+      "summary_from": {
+        "row": "s-1110T2235"
+      },
+      "edges": [
+        {
+          "verb": "works_for",
+          "to": "body/ipma",
+          "row": "s-1110T2235"
+        }
+      ]
+    },
+    {
+      "id": "programme-day/websummit-day-1",
+      "name": "Web Summit Day 1",
+      "also": [
+        "Day 1"
+      ],
+      "summary": "The first day of Web Summit's programme, Tuesday 10 November.",
+      "summary_from": {
+        "row": "s-1110T1905"
+      },
+      "edges": [
+        {
+          "verb": "part_of",
+          "to": "organisation/websummit",
+          "row": "s-1110T1905"
+        },
+        {
+          "verb": "falls_on",
+          "to": "day/2026-11-10",
+          "row": "s-1110T1905"
+        }
+      ]
+    },
+    {
+      "id": "programme-day/websummit-day-2",
+      "name": "Web Summit Day 2",
+      "also": [
+        "Day 2"
+      ],
+      "summary": "The second day of Web Summit's programme, Wednesday 11 November: called off by the organisers.",
+      "summary_from": {
+        "row": "s-1110T1909"
+      },
+      "edges": [
+        {
+          "verb": "part_of",
+          "to": "organisation/websummit",
+          "row": "s-1110T1909"
+        },
+        {
+          "verb": "falls_on",
+          "to": "day/2026-11-11",
+          "row": "s-1110T1909"
+        }
+      ]
+    },
+    {
+      "id": "programme-day/websummit-day-3",
+      "name": "Web Summit Day 3",
+      "also": [
+        "Day 3"
+      ],
+      "summary": "The third day of Web Summit's programme, Thursday 12 November: the organisers aim to proceed as planned.",
+      "summary_from": {
+        "row": "s-1110T1909"
+      },
+      "edges": [
+        {
+          "verb": "part_of",
+          "to": "organisation/websummit",
+          "row": "s-1110T1909"
+        },
+        {
+          "verb": "falls_on",
+          "to": "day/2026-11-12",
+          "row": "s-1110T1909"
+        }
+      ]
+    },
+    {
+      "id": "day/2026-11-09",
+      "name": "Monday 9 November 2026",
+      "also": [
+        "Monday 9 November",
+        "9 November",
+        "9 Nov",
+        "Monday"
+      ],
+      "summary": "The day IPMA named the storm.",
+      "edges": [
+        {
+          "verb": "precedes",
+          "to": "day/2026-11-10",
+          "calendar": true
+        }
+      ]
+    },
+    {
+      "id": "day/2026-11-10",
+      "name": "Tuesday 10 November 2026",
+      "also": [
+        "Tuesday 10 November",
+        "10 November",
+        "10 Nov",
+        "Tuesday"
+      ],
+      "summary": "The day of the red warnings, the alert situation and Web Summit's decision on Day 2.",
+      "edges": [
+        {
+          "verb": "precedes",
+          "to": "day/2026-11-11",
+          "calendar": true
+        }
+      ]
+    },
+    {
+      "id": "day/2026-11-11",
+      "name": "Wednesday 11 November 2026",
+      "also": [
+        "Wednesday 11 November",
+        "Wednesday, 11 November",
+        "Wednesday, November 11th",
+        "11 November",
+        "11 Nov",
+        "Wednesday"
+      ],
+      "summary": "The day the red warnings for Lisbon and the government's alert situation are in force.",
+      "edges": [
+        {
+          "verb": "precedes",
+          "to": "day/2026-11-12",
+          "calendar": true
+        }
+      ]
+    },
+    {
+      "id": "day/2026-11-12",
+      "name": "Thursday 12 November 2026",
+      "also": [
+        "Thursday 12 November",
+        "Thursday, 12 November",
+        "Thursday, November 12",
+        "12 November",
+        "12 Nov",
+        "Thursday"
+      ],
+      "summary": "The day after the storm's passage; Web Summit aims to hold Day 3.",
+      "edges": []
+    },
+    {
+      "id": "place/lisbon",
+      "name": "Lisbon",
+      "also": [
+        "Lisboa"
+      ],
+      "summary": "The city this incident is about.",
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/lisbon-district",
+          "file": "data/graph/ref/ipma-areas.json",
+          "says": "IPMA's warning area LSB is named Lisboa"
+        }
+      ]
+    },
+    {
+      "id": "place/lisbon-district",
+      "name": "Lisbon district",
+      "also": [
+        "district of Lisbon"
+      ],
+      "graph": "place:LSB",
+      "summary": "IPMA's warning area LSB: the area its warnings for Lisbon cover.",
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/mainland-portugal",
+          "file": "data/graph/ref/ipma-areas.json",
+          "says": "area LSB: mainland true"
+        }
+      ]
+    },
+    {
+      "id": "place/mainland-portugal",
+      "name": "Mainland Portugal",
+      "also": [
+        "mainland Portugal",
+        "the mainland",
+        "mainland"
+      ],
+      "graph": "place:PT-mainland",
+      "summary": "The area the government's alert situation covers.",
+      "summary_from": {
+        "decision": "gov-alert"
+      },
+      "edges": []
+    },
+    {
+      "id": "place/madeira",
+      "name": "Madeira",
+      "also": [],
+      "summary": "The island north of which IPMA expected the storm at 00:00 on 11 November, and where its red warnings came first.",
+      "summary_from": {
+        "row": "s-1109T1317"
+      },
+      "edges": []
+    },
+    {
+      "id": "place/funchal",
+      "name": "Funchal",
+      "also": [],
+      "summary": "Madeira's port city, where three cruise calls for Wednesday were cancelled.",
+      "summary_from": {
+        "decision": "apram-cruises"
+      },
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/madeira",
+          "decision": "apram-cruises"
+        }
+      ]
+    },
+    {
+      "id": "place/vasco-da-gama-bridge",
+      "name": "Vasco da Gama bridge",
+      "also": [
+        "Vasco da Gama"
+      ],
+      "summary": "One of the two Tagus bridges Lusoponte runs; limited to 60 km/h on Tuesday.",
+      "summary_from": {
+        "decision": "bridges-60"
+      },
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/lisbon-district",
+          "row": "s-1110T1425"
+        }
+      ]
+    },
+    {
+      "id": "place/25-de-abril-bridge",
+      "name": "25 de Abril bridge",
+      "also": [
+        "25 de Abril"
+      ],
+      "summary": "One of the two Tagus bridges Lusoponte runs; limited to 60 km/h on Tuesday; four trains across it suppressed for Wednesday.",
+      "summary_from": {
+        "decision": "bridges-60"
+      },
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/lisbon-district",
+          "row": "s-1110T1425"
+        }
+      ]
+    },
+    {
+      "id": "place/tagus-bridges",
+      "name": "Tagus bridges",
+      "also": [
+        "the bridges",
+        "bridges"
+      ],
+      "summary": "The two road bridges across the Tagus at Lisbon: Vasco da Gama and 25 de Abril.",
+      "summary_from": {
+        "row": "s-1110T1425"
+      },
+      "edges": []
+    },
+    {
+      "id": "place/oriente",
+      "name": "Oriente",
+      "also": [
+        "Oriente station"
+      ],
+      "summary": "The station that serves the venue.",
+      "summary_from": {
+        "actor": "cp"
+      },
+      "edges": []
+    },
+    {
+      "id": "place/cabo-de-sao-vicente",
+      "name": "Cabo de São Vicente",
+      "also": [
+        "Sagres"
+      ],
+      "summary": "The cape named by an IPMA meteorologist as the southern end of where the storm should come ashore.",
+      "summary_from": {
+        "row": "s-1110T2235"
+      },
+      "edges": []
+    },
+    {
+      "id": "place/sines",
+      "name": "Sines",
+      "also": [],
+      "summary": "Named in IPMA's communiqué no. 2 as one end of the stretch where the centre is most likely to pass.",
+      "summary_from": {
+        "row": "s-1110T1707b"
+      },
+      "edges": []
+    },
+    {
+      "id": "place/cabo-carvoeiro",
+      "name": "Cabo Carvoeiro",
+      "also": [],
+      "summary": "Named in IPMA's communiqué no. 2 as one end of the stretch where the centre is most likely to pass.",
+      "summary_from": {
+        "row": "s-1110T1707b"
+      },
+      "edges": []
+    },
+    {
+      "id": "place/areeiro",
+      "name": "Areeiro (IPMA station, Madeira)",
+      "also": [
+        "Areeiro"
+      ],
+      "summary": "IPMA's station in Madeira where 230.5 mm of rain was observed in six hours.",
+      "summary_from": {
+        "row": "s-1111T0146"
+      },
+      "edges": [
+        {
+          "verb": "located_in",
+          "to": "place/madeira",
+          "row": "s-1111T0146"
+        }
+      ]
+    },
+    {
+      "id": "hazard/storm-charles",
+      "name": "Storm Charles",
+      "also": [
+        "CHARLES",
+        "Depressão CHARLES",
+        "Charles",
+        "the storm"
+      ],
+      "summary": "The low IPMA named CHARLES on Monday 9 November.",
+      "summary_from": {
+        "row": "s-1109T1317"
+      },
+      "edges": []
+    },
+    {
+      "id": "hazard/high-winds",
+      "name": "High winds",
+      "also": [
+        "high winds",
+        "strong wind",
+        "gusts",
+        "wind"
+      ],
+      "summary": "What IPMA's red wind warning warns of, and one of the organisers' three reasons (on external structures).",
+      "summary_from": {
+        "row": "s-1110T1909"
+      },
+      "edges": []
+    },
+    {
+      "id": "hazard/heavy-rain",
+      "name": "Heavy rain",
+      "also": [
+        "heavy rain",
+        "rain"
+      ],
+      "summary": "What IPMA's red rain warning warns of.",
+      "summary_from": {
+        "decision": "ipma-red-rain-0900"
+      },
+      "edges": []
+    },
+    {
+      "id": "hazard/tidal-flooding",
+      "name": "Tidal flooding",
+      "also": [
+        "tidal flooding",
+        "coastal flooding"
+      ],
+      "summary": "One of the three reasons Web Summit's organisers gave for calling off Day 2.",
+      "summary_from": {
+        "row": "s-1110T1909"
+      },
+      "edges": []
+    },
+    {
+      "id": "hazard/sea-agitation",
+      "name": "Sea agitation",
+      "also": [
+        "sea agitation",
+        "rough sea"
+      ],
+      "summary": "One of the three things IPMA's communiqué no. 2 is about: rain, wind and sea agitation.",
+      "summary_from": {
+        "decision": "ipma-communique-2"
+      },
+      "edges": []
+    },
+    {
+      "id": "term/label",
+      "name": "Label",
+      "also": [
+        "labelled"
+      ],
+      "summary": "Every item on this site carries one of three labels: fact, evidence or hypothesis.",
+      "summary_from": {
+        "file": "CLAUDE.md"
+      },
+      "edges": []
+    },
+    {
+      "id": "term/fact",
+      "name": "Fact",
+      "also": [
+        "fact",
+        "facts"
+      ],
+      "summary": "Read from the body that decides or warns.",
+      "summary_from": {
+        "file": "CLAUDE.md"
+      },
+      "edges": [
+        {
+          "verb": "kind_of",
+          "to": "term/label",
+          "file": "data/graph/ontology.json",
+          "says": "fact: read on the channel of the body that decides or warns, by us or by a named desk"
+        }
+      ]
+    },
+    {
+      "id": "term/evidence",
+      "name": "Evidence",
+      "also": [
+        "evidence"
+      ],
+      "summary": "Reported by others, with its source.",
+      "summary_from": {
+        "file": "CLAUDE.md"
+      },
+      "edges": [
+        {
+          "verb": "kind_of",
+          "to": "term/label",
+          "file": "data/graph/ontology.json",
+          "says": "evidence: reported by others (press, a relayed statement, a public post), with its source; holds until a primary source says otherwise"
+        }
+      ]
+    },
+    {
+      "id": "term/hypothesis",
+      "name": "Hypothesis",
+      "also": [
+        "hypothesis",
+        "hypotheses"
+      ],
+      "summary": "Our analysis, with its reasons; never stated as fact.",
+      "summary_from": {
+        "file": "CLAUDE.md"
+      },
+      "edges": [
+        {
+          "verb": "kind_of",
+          "to": "term/label",
+          "file": "data/graph/ontology.json",
+          "says": "hypothesis: our analysis, with its reasons; never stated as fact"
+        }
+      ]
+    },
+    {
+      "id": "term/warning-level",
+      "name": "Warning level",
+      "also": [
+        "warning level",
+        "warning levels"
+      ],
+      "summary": "IPMA issues weather warnings by district and type, green to red.",
+      "summary_from": {
+        "actor": "ipma"
+      },
+      "edges": [
+        {
+          "verb": "used_by",
+          "to": "body/ipma",
+          "actor": "ipma"
+        }
+      ]
+    },
+    {
+      "id": "term/red-warning",
+      "name": "Red warning",
+      "also": [
+        "red warning",
+        "red warnings"
+      ],
+      "summary": "The highest of IPMA's warning levels.",
+      "summary_from": {
+        "actor": "ipma"
+      },
+      "edges": [
+        {
+          "verb": "kind_of",
+          "to": "term/warning-level",
+          "actor": "ipma"
+        }
+      ]
+    },
+    {
+      "id": "term/orange-warning",
+      "name": "Orange warning",
+      "also": [
+        "orange warning",
+        "orange warnings"
+      ],
+      "summary": "The level below red in IPMA's warnings.",
+      "summary_from": {
+        "actor": "ipma"
+      },
+      "edges": [
+        {
+          "verb": "kind_of",
+          "to": "term/warning-level",
+          "actor": "ipma"
+        }
+      ]
+    },
+    {
+      "id": "term/alert-situation",
+      "name": "Alert situation",
+      "also": [
+        "alert situation",
+        "situação de alerta",
+        "alert declaration"
+      ],
+      "summary": "What the government declares under the civil-protection framework law; declared for all of mainland Portugal on Wednesday 11 November.",
+      "summary_from": {
+        "actor": "government"
+      },
+      "edges": [
+        {
+          "verb": "declared_by",
+          "to": "body/government",
+          "actor": "government"
+        }
+      ]
+    },
+    {
+      "id": "term/lead-time",
+      "name": "Lead time",
+      "also": [
+        "lead time",
+        "lead times"
+      ],
+      "summary": "The time between a warning being sent and the start of what it warns of: how far ahead it could have been known.",
+      "summary_from": {
+        "file": "data/graph/ontology.json"
+      },
+      "edges": [
+        {
+          "verb": "measured_on",
+          "to": "warning/ipma-red-wind",
+          "row": "s-1110T2354"
+        },
+        {
+          "verb": "measured_on",
+          "to": "warning/ipma-red-rain-0900",
+          "row": "s-1110T2354"
+        }
+      ]
+    },
+    {
+      "id": "term/communique",
+      "name": "Communiqué",
+      "also": [
+        "communiqué",
+        "communiqués"
+      ],
+      "summary": "IPMA's special written statement on a weather event.",
+      "summary_from": {
+        "actor": "ipma"
+      },
+      "edges": [
+        {
+          "verb": "used_by",
+          "to": "body/ipma",
+          "actor": "ipma"
+        }
+      ]
+    },
+    {
+      "id": "term/primary-source",
+      "name": "Primary source",
+      "also": [
+        "primary source",
+        "primary sources"
+      ],
+      "summary": "The body that decides or warns, read on its own channel: the only place a fact is read from.",
+      "summary_from": {
+        "file": "CLAUDE.md"
+      },
+      "edges": []
+    }
+  ]
+}

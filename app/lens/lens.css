@@ -1,0 +1,20 @@
+/* The lens: how a linked name, an outside link and a labelled item are marked (incident.entities@web-summit.dinis).
+   Tokens only (design/README.md rule 7). The marks are switched by classes on <html>: lens-entity, lens-out, lens-fact,
+   lens-evidence, lens-hypothesis; with none set, a linked name is a quiet dotted underline and an outside link carries its arrow. */
+a.ent { color: inherit; text-decoration: underline dotted; text-decoration-color: var(--line-2); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a.ent:hover, a.ent:focus-visible { color: var(--focus); text-decoration-style: solid; text-decoration-color: var(--focus); }
+a.out::after { content: "\2197"; font-size: .8em; margin-left: 2px; color: var(--ink-2); text-decoration: none; display: inline-block; }
+a.out[data-out]::after { content: "\25A3"; }
+.lens-entity a.ent { background: color-mix(in srgb, var(--focus) 12%, transparent); text-decoration-color: var(--focus); border-radius: 2px; }
+.lens-entity a.ent-term { background: color-mix(in srgb, var(--ink-2) 14%, transparent); text-decoration-style: dashed; }
+.lens-entity a.ent-day, .lens-entity a.ent-programme-day { background: color-mix(in srgb, var(--sent) 14%, transparent); }
+.lens-out a.out { background: color-mix(in srgb, var(--warn) 16%, transparent); border-radius: 2px; }
+.lens-fact [data-lens="fact"] { box-shadow: inset 3px 0 0 var(--ok); }
+.lens-evidence [data-lens="evidence"] { box-shadow: inset 3px 0 0 var(--sent); }
+.lens-hypothesis [data-lens="hypothesis"] { box-shadow: inset 3px 0 0 var(--accent); outline: 1px dashed var(--accent); outline-offset: -1px; }
+.lens-box label { display: block; font: 14px/1.6 var(--sans); }
+.lens-box .meta { font-size: 13px; color: var(--ink-2); }
+.lens-item h3 { font: 600 16px/1.3 var(--sans); margin: 0 0 4px; }
+.lens-item ul { padding-left: 18px; margin: 6px 0; }
+.lens-item li { font: 13.5px/1.45 var(--sans); margin: 4px 0; }
+.lens-item .says { color: var(--ink-2); }

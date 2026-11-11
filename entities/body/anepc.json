@@ -1,0 +1,48 @@
+{
+ "id": "body/anepc",
+ "type": "body",
+ "name": "ANEPC",
+ "also": [
+  "ANEPC (Autoridade Nacional de Emergência e Proteção Civil)",
+  "Autoridade Nacional de Emergência e Proteção Civil",
+  "civil protection"
+ ],
+ "match": {
+  "none": [
+   "ANEPC (Autoridade Nacional de Emergência e Proteção Civil)"
+  ]
+ },
+ "summary": "Special alerts to the civil-protection system (responders) and warnings to the public (written avisos, SMS).",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://prociv.gov.pt/pt/prevencao-e-preparacao/monitorizacao-alerta-e-aviso/alerta/",
+  "read_utc": "2026-11-10T16:57Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/anepc"
+ },
+ "graph": "actor:anepc",
+ "edges": [
+  {
+   "verb": "issued",
+   "to": "warning/anepc-aviso-21",
+   "label": "fact",
+   "source": "https://prociv.gov.pt/pt/avisos-a-populacao/",
+   "read_utc": "2026-11-10T16:57Z",
+   "says": "Public warning Aviso 21: gusts to 120 km/h, avoid unnecessary travel",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/anepc-aviso-21",
+   "decision": "anepc-aviso-21"
+  },
+  {
+   "verb": "decided",
+   "to": "decision/anepc-readiness",
+   "label": "fact",
+   "source": "https://prociv.gov.pt/pt/noticias/depressao-charles-anepc-avisa-populacao-por-sms/",
+   "read_utc": "2026-11-10T16:57Z",
+   "says": "Raises special readiness of the civil-protection system; SMS to the population about Wednesday",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/anepc-readiness",
+   "decision": "anepc-readiness"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

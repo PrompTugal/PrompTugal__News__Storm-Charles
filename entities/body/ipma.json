@@ -1,0 +1,97 @@
+{
+ "id": "body/ipma",
+ "type": "body",
+ "name": "IPMA",
+ "also": [
+  "IPMA (Instituto Português do Mar e da Atmosfera)",
+  "Instituto Português do Mar e da Atmosfera"
+ ],
+ "match": {
+  "none": [
+   "IPMA (Instituto Português do Mar e da Atmosfera)"
+  ]
+ },
+ "summary": "Issues weather warnings by district and type (green to red) and special communiqués.",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json",
+  "read_utc": "2026-11-10T18:59Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/ipma"
+ },
+ "graph": "actor:ipma",
+ "edges": [
+  {
+   "verb": "issued",
+   "to": "warning/ipma-communique-1",
+   "label": "fact",
+   "source": "https://www.ipma.pt/pt/otempo/comunicados/",
+   "read_utc": "2026-11-10T16:53Z",
+   "says": "Names the low CHARLES (communiqué no. 1); orange warnings to follow, upgrade not ruled out",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-communique-1",
+   "decision": "ipma-communique-1"
+  },
+  {
+   "verb": "issued",
+   "to": "warning/ipma-red-wind",
+   "label": "fact",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:05Z",
+   "says": "Red wind warning, Lisbon district, 11 Nov 12:00 to 21:00 (gusts to 120, up to 140 km/h)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-red-wind",
+   "decision": "ipma-red-wind"
+  },
+  {
+   "verb": "issued",
+   "to": "warning/ipma-red-rain",
+   "label": "fact",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:05Z",
+   "says": "Rain raised to red, Lisbon district, 11 Nov 12:00 to 18:00 (orange 05:00 to 12:00); sea orange 12:00 to 21:00",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-red-rain",
+   "decision": "ipma-red-rain"
+  },
+  {
+   "verb": "issued",
+   "to": "warning/ipma-communique-2",
+   "label": "fact",
+   "source": "https://www.ipma.pt/resources.www/rss/comunicados.xml",
+   "read_utc": "2026-11-10T18:59Z",
+   "says": "Communiqué no. 2: rain, wind and sea agitation, Depressão CHARLES, mainland and Madeira",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-communique-2",
+   "decision": "ipma-communique-2"
+  },
+  {
+   "verb": "issued",
+   "to": "warning/ipma-red-rain-0900",
+   "label": "fact",
+   "source": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+   "read_utc": "2026-11-11T01:05Z",
+   "says": "Red rain warning for the Lisbon district brought forward to 11 Nov 09:00 to 18:00 (orange 00:00 to 09:00; yellow from 21:24 Tuesday)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-red-rain-0900",
+   "decision": "ipma-red-rain-0900"
+  },
+  {
+   "verb": "issued",
+   "to": "warning/ipma-madeira-red",
+   "label": "evidence",
+   "source": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "read_utc": "2026-11-11T01:35Z",
+   "says": "Red warnings for Madeira's south coast and mountains: rain from 21:00 Tuesday to 06:00 Wednesday; wind gusts to 140 km/h from 00:00",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ipma-madeira-red",
+   "decision": "ipma-madeira-red"
+  },
+  {
+   "verb": "named",
+   "to": "hazard/storm-charles",
+   "label": "fact",
+   "source": "https://www.ipma.pt/pt/otempo/comunicados/",
+   "read_utc": "2026-11-10T16:53Z",
+   "says": "IPMA names the storm CHARLES (communiqué no. 1): expected north of Madeira at 00:00 on 11 Nov, then toward the mainland, \"com elevada incerteza na trajetória e intensidade\"; orange warnings to be issued",
+   "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1109T1317",
+   "row": "s-1109T1317"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

@@ -1,0 +1,48 @@
+{
+ "id": "service/airport",
+ "type": "service",
+ "name": "Lisbon airport",
+ "also": [
+  "Lisbon airport (ANA, Humberto Delgado) and airlines",
+  "ANA",
+  "Humberto Delgado"
+ ],
+ "match": {
+  "none": [
+   "Lisbon airport (ANA, Humberto Delgado) and airlines"
+  ]
+ },
+ "summary": "Flight operations; each airline decides its own cancellations.",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://www.aeroportolisboa.pt/pt/lis/home",
+  "read_utc": "2026-11-10T18:59Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/airport"
+ },
+ "graph": "actor:airport",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/airport-ops",
+   "label": "fact",
+   "source": "https://www.aeroportolisboa.pt/pt/lis/home",
+   "read_utc": "2026-11-10T18:59Z",
+   "says": "Flight operations on Wednesday",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/airport-ops",
+   "decision": "airport-ops"
+  },
+  {
+   "verb": "decided",
+   "to": "decision/ana-conditioned",
+   "label": "evidence",
+   "source": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "read_utc": "2026-11-10T19:32Z",
+   "says": "ANA: operations at Lisbon, Faro and Madeira airports conditioned on 11 Nov; cancellations expected",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ana-conditioned",
+   "decision": "ana-conditioned"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

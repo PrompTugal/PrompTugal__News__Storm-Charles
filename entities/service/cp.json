@@ -1,0 +1,66 @@
+{
+ "id": "service/cp",
+ "type": "service",
+ "name": "CP",
+ "also": [
+  "CP (Comboios de Portugal) and Infraestruturas de Portugal",
+  "Comboios de Portugal"
+ ],
+ "match": {
+  "none": [
+   "CP (Comboios de Portugal) and Infraestruturas de Portugal"
+  ]
+ },
+ "summary": "Trains (Oriente station serves the venue).",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://www.cp.pt/",
+  "read_utc": "2026-11-10T18:58Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/cp"
+ },
+ "graph": "actor:cp",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/cp-ops",
+   "label": "evidence",
+   "source": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "read_utc": "2026-11-10T21:33Z",
+   "says": "CP admits constraints on rail services on Wednesday",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/cp-ops",
+   "decision": "cp-ops"
+  },
+  {
+   "verb": "decided",
+   "to": "decision/cp-fertagus-bridge",
+   "label": "evidence",
+   "source": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "read_utc": "2026-11-10T23:33Z",
+   "says": "CP suppresses four trains crossing the 25 de Abril bridge in the most critical window (12:00 to 15:00 forecast: heavy rain, strong wind)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/cp-fertagus-bridge",
+   "decision": "cp-fertagus-bridge"
+  },
+  {
+   "verb": "serves",
+   "to": "place/oriente",
+   "label": "fact",
+   "source": "https://www.cp.pt/",
+   "read_utc": "2026-11-10T18:58Z",
+   "says": "CP (Comboios de Portugal) and Infraestruturas de Portugal: Trains (Oriente station serves the venue).",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/cp"
+  },
+  {
+   "verb": "part_of",
+   "to": "service/public-transport",
+   "label": "fact",
+   "source": "https://www.metrolisboa.pt/",
+   "read_utc": "2026-11-11T00:33Z",
+   "says": "Thursday 12 Nov transport after the storm (Metro, Carris, CP, ferries, bridges)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/transport-thursday",
+   "decision": "transport-thursday"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

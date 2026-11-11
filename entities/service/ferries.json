@@ -1,0 +1,48 @@
+{
+ "id": "service/ferries",
+ "type": "service",
+ "name": "Tagus ferries",
+ "also": [
+  "Transtejo Soflusa (Tagus ferries)",
+  "Transtejo Soflusa",
+  "ferries"
+ ],
+ "match": {
+  "none": [
+   "Transtejo Soflusa (Tagus ferries)"
+  ]
+ },
+ "summary": "River crossings.",
+ "label": "evidence",
+ "summary_source": {
+  "url": "https://www.ttsl.pt/",
+  "read_utc": "2026-11-10T18:59Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/ferries"
+ },
+ "graph": "actor:ferries",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/ttsl-wednesday",
+   "label": "evidence",
+   "source": "https://jornaleconomico.sapo.pt/noticias/cp-e-carris-circulam-mas-alertam-para-perturbacoes-e-rede-de-expressos-para/",
+   "read_utc": "2026-11-10T23:55Z",
+   "says": "Ferries start at 05:00 as usual on Wednesday; reassessed from 12:00 (the latter from a search summary)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/ttsl-wednesday",
+   "decision": "ttsl-wednesday"
+  },
+  {
+   "verb": "part_of",
+   "to": "service/public-transport",
+   "label": "fact",
+   "source": "https://www.metrolisboa.pt/",
+   "read_utc": "2026-11-11T00:33Z",
+   "says": "Thursday 12 Nov transport after the storm (Metro, Carris, CP, ferries, bridges)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/transport-thursday",
+   "decision": "transport-thursday"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

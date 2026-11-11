@@ -1,0 +1,37 @@
+{
+ "id": "service/schools",
+ "type": "service",
+ "name": "Schools",
+ "also": [
+  "Schools (Ministry of Education)",
+  "schools"
+ ],
+ "match": {
+  "none": [
+   "Schools (Ministry of Education)"
+  ]
+ },
+ "summary": "Closed by measure (a) of the alert declaration, co-signed by the Minister of Education.",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-todo-o-territorio-continental-1",
+  "read_utc": "2026-11-10T16:55Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/schools"
+ },
+ "graph": "actor:schools",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/schools-close",
+   "label": "fact",
+   "source": "https://portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-todo-o-territorio-continental-1",
+   "read_utc": "2026-11-10T16:55Z",
+   "says": "Schools closed on Wednesday",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/schools-close",
+   "decision": "schools-close"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

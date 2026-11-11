@@ -1,0 +1,72 @@
+{
+ "id": "service/metro",
+ "type": "service",
+ "name": "Metro",
+ "also": [
+  "Metropolitano de Lisboa",
+  "Metro de Lisboa",
+  "Lisbon's metro"
+ ],
+ "summary": "Runs Lisbon's metro (serves the venue at Oriente).",
+ "label": "evidence",
+ "summary_source": {
+  "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+  "read_utc": "2026-11-10T18:58Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/metro"
+ },
+ "graph": "actor:metro",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/metro-runs",
+   "label": "evidence",
+   "source": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "read_utc": "2026-11-10T18:58Z",
+   "says": "Metro to run on Wednesday (announced by the mayor)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/metro-runs",
+   "decision": "metro-runs"
+  },
+  {
+   "verb": "decided",
+   "to": "decision/metro-shelter",
+   "label": "fact",
+   "source": "https://www.metrolisboa.pt/",
+   "read_utc": "2026-11-10T23:33Z",
+   "says": "Contingency plan for homeless people: Amadora Este, Santa Apolónia, Marquês de Pombal, Moscavide and Interface das Olaias stations open on the nights of 10-11 and 11-12 November",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/metro-shelter",
+   "decision": "metro-shelter"
+  },
+  {
+   "verb": "has_not_announced",
+   "to": "decision/transport-thursday",
+   "label": "fact",
+   "source": "https://www.metrolisboa.pt/",
+   "read_utc": "2026-11-11T00:33Z",
+   "says": "Thursday 12 Nov transport after the storm (Metro, Carris, CP, ferries, bridges)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/transport-thursday",
+   "decision": "transport-thursday"
+  },
+  {
+   "verb": "serves",
+   "to": "place/oriente",
+   "label": "evidence",
+   "source": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "read_utc": "2026-11-10T18:58Z",
+   "says": "Metropolitano de Lisboa: Runs Lisbon's metro (serves the venue at Oriente).",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/metro"
+  },
+  {
+   "verb": "part_of",
+   "to": "service/public-transport",
+   "label": "fact",
+   "source": "https://www.metrolisboa.pt/",
+   "read_utc": "2026-11-11T00:33Z",
+   "says": "Thursday 12 Nov transport after the storm (Metro, Carris, CP, ferries, bridges)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/transport-thursday",
+   "decision": "transport-thursday"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

@@ -1,0 +1,58 @@
+{
+ "id": "body/camara-lisboa",
+ "type": "body",
+ "name": "Câmara Municipal de Lisboa",
+ "also": [
+  "Câmara Municipal de Lisboa (mayor, municipal civil protection)",
+  "Lisbon City Council",
+  "Câmara de Lisboa"
+ ],
+ "match": {
+  "none": [
+   "Câmara Municipal de Lisboa (mayor, municipal civil protection)"
+  ]
+ },
+ "summary": "Municipal civil-protection service and commission; decides on the municipal emergency plan, gardens, municipal services; announces city transport status.",
+ "label": "evidence",
+ "summary_source": {
+  "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+  "read_utc": "2026-11-10T18:58Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/camara-lisboa"
+ },
+ "graph": "actor:camara-lisboa",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/mayor-expects-closure",
+   "label": "evidence",
+   "source": "https://jornaleconomico.sapo.pt/noticias/web-summit-fechada-na-quarta-feira-anuncia-autarquia-de-lisboa/",
+   "read_utc": "2026-11-10T18:45Z",
+   "says": "Mayor: \"Tudo indica que a Web Summit não poderá funcionar amanhã\"; the decision is the Interior Ministry's and the organisers'",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/mayor-expects-closure",
+   "decision": "mayor-expects-closure"
+  },
+  {
+   "verb": "decided",
+   "to": "decision/tunnels-close",
+   "label": "evidence",
+   "source": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "read_utc": "2026-11-10T23:55Z",
+   "says": "All Lisbon road tunnels closed from midnight; parks, gardens and cultural facilities too (the mayor, after meeting civil protection)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/tunnels-close",
+   "decision": "tunnels-close"
+  },
+  {
+   "verb": "has_not_announced",
+   "to": "decision/camara-plan",
+   "label": "evidence",
+   "source": "https://informacao.lisboa.pt/",
+   "read_utc": "2026-11-10T18:59Z",
+   "says": "Municipal emergency plan activation and the city's own measures (\"Situação de Alerta: medidas excecionais em Lisboa\")",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/camara-plan",
+   "decision": "camara-plan"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

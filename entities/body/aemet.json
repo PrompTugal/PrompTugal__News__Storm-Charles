@@ -1,0 +1,36 @@
+{
+ "id": "body/aemet",
+ "type": "body",
+ "name": "AEMET",
+ "also": [
+  "AEMET (Spain's meteorological agency)"
+ ],
+ "match": {
+  "none": [
+   "AEMET (Spain's meteorological agency)"
+  ]
+ },
+ "summary": "Spain's warnings, incl. the Canary Islands.",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://www.aemet.es/es/eltiempo/prediccion/avisos",
+  "read_utc": "2026-11-11T01:50Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/aemet"
+ },
+ "graph": "actor:aemet",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/aemet-special",
+   "label": "fact",
+   "source": "https://www.aemet.es/es/eltiempo/prediccion/avisos",
+   "read_utc": "2026-11-11T01:50Z",
+   "says": "AEMET special warning in force: \"Aviso especial. Lluvias fuertes y persistentes, rachas muy fuertes y temporal marítimo\" (Peninsula and Balearics; Canary Islands warnings shown for Wed 11 to Fri 13)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/aemet-special",
+   "decision": "aemet-special"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

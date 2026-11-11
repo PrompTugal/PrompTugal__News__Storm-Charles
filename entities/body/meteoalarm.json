@@ -1,0 +1,33 @@
+{
+ "id": "body/meteoalarm",
+ "type": "body",
+ "name": "MeteoAlarm",
+ "also": [
+  "EUMETNET"
+ ],
+ "summary": "The European service through which IPMA's warning messages (CAP) are read here, each with the time IPMA sent it.",
+ "label": "ours",
+ "summary_source": {
+  "url": "https://www.meteoalarm.org",
+  "read_utc": null,
+  "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1110T0718",
+  "taken_from_label": "fact"
+ },
+ "graph": null,
+ "edges": [
+  {
+   "verb": "relays_messages_of",
+   "to": "body/ipma",
+   "label": "fact",
+   "source": "https://www.meteoalarm.org",
+   "read_utc": null,
+   "read_note": "IPMA's CAP message through , data/weather/cap.json (incident.meteorologist@, read 23:51); research/media/first-on-each-fact.json",
+   "says": "IPMA sends the red wind warning for Lisbon (Wednesday 12:00 to 21:00), updating a wind message sent Monday 13:27; first in the press we read at 08:05 (DN live)",
+   "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1110T0718",
+   "row": "s-1110T0718"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

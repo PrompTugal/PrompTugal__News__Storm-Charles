@@ -1,0 +1,118 @@
+{
+ "id": "organisation/websummit",
+ "type": "organisation",
+ "name": "Web Summit",
+ "also": [
+  "Web Summit (the organisers)",
+  "the organisers",
+  "organisers"
+ ],
+ "match": {
+  "none": [
+   "Web Summit (the organisers)"
+  ]
+ },
+ "summary": "Decides whether Wednesday's programme runs, changes or is suspended.",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://websummit.com/",
+  "read_utc": "2026-11-10T18:58Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/websummit"
+ },
+ "graph": "actor:websummit",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/websummit-assessing",
+   "label": "evidence",
+   "source": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "read_utc": "2026-11-10T18:58Z",
+   "says": "Organisers: aware of the warnings, assessing with ANEPC and PSP, update to follow; no sign yet of cancelling Wednesday",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/websummit-assessing",
+   "decision": "websummit-assessing"
+  },
+  {
+   "verb": "decided",
+   "to": "decision/websummit-wednesday",
+   "label": "fact",
+   "source": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+   "read_utc": "2026-11-10T20:59Z",
+   "says": "Day 2 (Wednesday 11 Nov) will not take place: \"Web Summit will of course respect the Government's direction, and accordingly, Day 2 (Wednesday, November 11th) will not take place.\" Reasons given: tidal flooding, severe disruption to public transport, high…",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/websummit-wednesday",
+   "decision": "websummit-wednesday"
+  },
+  {
+   "verb": "is_expected_to",
+   "to": "decision/websummit-suspends-h",
+   "label": "hypothesis",
+   "source": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+   "read_utc": "2026-11-10T19:00Z",
+   "says": "HYPOTHESIS: the organisers suspend or shorten Wednesday",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/websummit-suspends-h",
+   "decision": "websummit-suspends-h"
+  },
+  {
+   "verb": "decided",
+   "to": "decision/websummit-thursday",
+   "label": "fact",
+   "source": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+   "read_utc": "2026-11-11T01:36Z",
+   "says": "Day 3 (Thursday 12 Nov): \"Web Summit aims to proceed with Day 3 (Thursday, November 12) as planned, following the passing of Storm Charles. [...] provide further updates as soon as confirmed information becomes available.\"",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/websummit-thursday",
+   "decision": "websummit-thursday"
+  },
+  {
+   "verb": "has_not_announced",
+   "to": "decision/websummit-n6",
+   "label": "fact",
+   "source": "https://websummit.com/startups/pitch/",
+   "read_utc": "2026-11-11T01:36Z",
+   "says": "What happens to Wednesday's talks and speakers, the PITCH semi-final, side events and tickets",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/websummit-n6",
+   "decision": "websummit-n6"
+  },
+  {
+   "verb": "is_expected_to",
+   "to": "decision/websummit-thursday-change-h",
+   "label": "hypothesis",
+   "source": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+   "read_utc": "2026-11-10T20:04Z",
+   "says": "HYPOTHESIS: Thursday holds unless storm damage at the venue or transport recovery says otherwise",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/websummit-thursday-change-h",
+   "decision": "websummit-thursday-change-h"
+  },
+  {
+   "verb": "consulted",
+   "to": "body/anepc",
+   "label": "evidence",
+   "source": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/timeline.html#s-1110T1938",
+   "read_utc": null,
+   "says": "DECISION: Web Summit's Day 2, Wednesday 11 November, will not take place. The government \"formally advised\" it (tidal flooding, public transport, high winds on external structures), after talks with the government, ANEPC and PSP; Day 3, Thursday 12 November,…",
+   "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1110T1938",
+   "row": "s-1110T1938"
+  },
+  {
+   "verb": "consulted",
+   "to": "body/psp",
+   "label": "evidence",
+   "source": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/timeline.html#s-1110T1938",
+   "read_utc": null,
+   "says": "DECISION: Web Summit's Day 2, Wednesday 11 November, will not take place. The government \"formally advised\" it (tidal flooding, public transport, high winds on external structures), after talks with the government, ANEPC and PSP; Day 3, Thursday 12 November,…",
+   "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1110T1938",
+   "row": "s-1110T1938"
+  },
+  {
+   "verb": "consulted",
+   "to": "body/government",
+   "label": "evidence",
+   "source": "https://storm-charles.promptugal.news/incidents/2026-11-10-storm-charles/timeline.html#s-1110T1938",
+   "read_utc": null,
+   "says": "DECISION: Web Summit's Day 2, Wednesday 11 November, will not take place. The government \"formally advised\" it (tidal flooding, public transport, high winds on external structures), after talks with the government, ANEPC and PSP; Day 3, Thursday 12 November,…",
+   "origin": "incidents/2026-11-10-storm-charles/data/signals.json#s-1110T1938",
+   "row": "s-1110T1938"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}

@@ -1,0 +1,39 @@
+{
+ "id": "service/carris",
+ "type": "service",
+ "name": "Carris",
+ "also": [],
+ "summary": "Lisbon buses and trams.",
+ "label": "fact",
+ "summary_source": {
+  "url": "https://www.carris.pt/",
+  "read_utc": "2026-11-10T18:58Z",
+  "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/nodes/carris"
+ },
+ "graph": "actor:carris",
+ "edges": [
+  {
+   "verb": "decided",
+   "to": "decision/carris-runs-watched",
+   "label": "fact",
+   "source": "https://www.carris.pt/",
+   "read_utc": "2026-11-10T18:58Z",
+   "says": "Carris to run, buses followed \"minute by minute\" from the operations centre (mayor); carris.pt banner \"Alerta: perturbações na circulação\"",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/carris-runs-watched",
+   "decision": "carris-runs-watched"
+  },
+  {
+   "verb": "part_of",
+   "to": "service/public-transport",
+   "label": "fact",
+   "source": "https://www.metrolisboa.pt/",
+   "read_utc": "2026-11-11T00:33Z",
+   "says": "Thursday 12 Nov transport after the storm (Metro, Carris, CP, ferries, bridges)",
+   "origin": "incidents/2026-11-10-storm-charles/data/decisions/graph.json#/edges/transport-thursday",
+   "decision": "transport-thursday"
+  }
+ ],
+ "sources": [],
+ "by": "incident.entities@web-summit.dinis",
+ "updated": "2026-11-11T02:20:00Z"
+}
