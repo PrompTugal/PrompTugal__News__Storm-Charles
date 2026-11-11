@@ -18,7 +18,7 @@ if (!dir) { console.error('usage: timeline.mjs <incident dir>'); process.exit(2)
 const md = fs.readFileSync(path.join(dir, 'timeline.md'), 'utf8')
 const YEAR = (md.match(/\b(20\d\d)\b/) || [, String(new Date().getUTCFullYear())])[1]
 const MON = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 }
-const OFFICIAL = /\bIPMA\b|portugal\.gov\.pt|websummit\.com|ANEPC|S41|desks\/weather-vicky/
+const OFFICIAL = /\bIPMA\b|portugal\.gov\.pt|diariodarepublica\.pt|prociv\.gov\.pt|amn\.pt|websummit\.com|ANEPC|S41|desks\/weather-vicky/
 // a press or social link with no official source in the cell: a report someone else made
 const PRESS = src => /\]\(https:\/\//.test(src) && !OFFICIAL.test(src)
 const plain = s => s.replace(/\*\*/g, '').replace(/`/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim()
