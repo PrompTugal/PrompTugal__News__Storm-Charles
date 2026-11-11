@@ -2,7 +2,7 @@
 
 > Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:48 UTC. **DRAFTS, NOT AGREED BY DINIS.** One Agent Behaviour Policy per incident agent, in the shape of [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/): Reach, Mandate, Gap, Barriers, Licence to Operate, Provenance. Built by [tools/library-abp.mjs](../tools/library-abp.mjs) from [agents/JOBS.md](../agents/JOBS.md), [agents/policy.json](../agents/policy.json), [CLAUDE.md](../CLAUDE.md) and [abp.json](abp.json). Back to [the library](README.md).
 
-**What is the same for all 13.** Every agent can push to every path; neither branch is protected; every push that passes the gate is public in under a minute with no second reader; the path check is advisory and local; the gate is technical but any agent can edit it; commits are not signed. The barriers that hold are rules each agent keeps. Measured: GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`. Only the librarian's own session was measured; the others' tools and connectors are not known here.
+**What is the same for all 26.** Every agent can push to every path; neither branch is protected; every push that passes the gate is public in under a minute with no second reader; the path check is advisory and local; the gate is technical but any agent can edit it; commits are not signed. The barriers that hold are rules each agent keeps. Measured: GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`. Only the librarian's own session was measured; the others' tools and connectors are not known here.
 
 | Agent | The first gap that is its own |
 |---|---|
@@ -19,3 +19,16 @@
 | [incident.dev@web-summit.dinis](../agents/dev/policy.md) | Model calls and money. Every call is to go through `tools/llm.mjs` (a rule); the daily cap is inside the wrapper (technical, in a file an agent can edit). A call made around the wrapper is uncounted. |
 | [incident.studio@web-summit.dinis](../agents/studio/policy.md) | It explains with invented characters and simplified pictures. An explanation is our analysis: a simplification that reads as a fact about how an assistant or this team works is a hypothesis shown as fact, on a site whose rule is that the two never look alike. |
 | [incident.wikipedia@web-summit.dinis](../agents/wikipedia/policy.md) | It reads editors. A revision history names the accounts and IP addresses that edited: public, and still data about people. The rule is no profiles of private people; a dataset of revisions keyed by editor is one step from a profile, and nothing checks what columns it keeps. |
+| [incident.weather@web-summit.dinis](../agents/weather/policy.md) |  |
+| [incident.ipma@web-summit.dinis](../agents/ipma/policy.md) |  |
+| [incident.sources@web-summit.dinis](../agents/sources/policy.md) |  |
+| [incident.archivist@web-summit.dinis](../agents/archivist/policy.md) |  |
+| [incident.entities@web-summit.dinis](../agents/entities/policy.md) |  |
+| [incident.labs@web-summit.dinis](../agents/labs/policy.md) |  |
+| [incident.board@web-summit.dinis](../agents/board/policy.md) |  |
+| [incident.social@web-summit.dinis](../agents/social/policy.md) |  |
+| [incident.meteorology@web-summit.dinis](../agents/meteorology/policy.md) |  |
+| [incident.stories@web-summit.dinis](../agents/stories/policy.md) |  |
+| [incident.models@web-summit.dinis](../agents/models/policy.md) |  |
+| [incident.shadow@web-summit.dinis](../agents/shadow/policy.md) |  |
+| [incident.ci@web-summit.dinis](../agents/ci/policy.md) |  |

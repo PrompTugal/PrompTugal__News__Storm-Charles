@@ -16,4 +16,4 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 02:00 to 03:00 | [02:00 to 03:00, 11 November: every file gets a page that shows it, a page for each of 106 weather sites, and the plan for two faces](2026-11-11T02.md) |  | 35 |
+| 2026-11-11 02:00 to 03:00 | [02:00 to 03:00, 11 November: every file gets a page that shows it, a page for each of 106 weather sites, and the plan for two faces](2026-11-11T02.md) | v0.1.176 to v0.1.317 (55 served of 127) | 163 |

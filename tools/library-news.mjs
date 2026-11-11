@@ -49,12 +49,12 @@ const changed = Object.entries(files).filter(([f, x]) => x.first !== 'A' && exis
 const area = f => f.includes('/') ? f.split('/').slice(0, f.startsWith('incidents/') ? 3 : 1).join('/') : '(root)'
 const tally = l => Object.entries(l.reduce((a, f) => (a[area(f)] = (a[area(f)] || 0) + 1, a), {})).sort((a, b) => b[1] - a[1]).map(([k, n]) => ({ area: k, files: n }))
 const isData = f => /\.json$/.test(f) && (/^incidents\/[^/]+\/data\//.test(f) || /^(data|entities|evidence|sources)\//.test(f))
-let rel = []; try { rel = JSON.parse(fs.readFileSync(path.join(ROOT, 'library/releases.json'), 'utf8')).releases.filter(r => r.pushed_at >= from && r.pushed_at < to).reverse() } catch { }
+let rel = []; try { rel = JSON.parse(fs.readFileSync(path.join(ROOT, 'library/releases', arg + '.json'), 'utf8')).releases.filter(r => r.pushed_at >= from && r.pushed_at < to).reverse() } catch { }
 const byAgent = Object.entries(commits.reduce((a, c) => (a[c.by || 'not named'] = (a[c.by || 'not named'] || 0) + 1, a), {})).sort((a, b) => b[1] - a[1]).map(([agent, n]) => ({ agent, commits: n }))
 const out = {
     about: `What changed on storm-charles.promptugal.news between ${from} and ${to}: the facts behind the article news/${arg}.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.`,
     by: ME, updated: new Date(Math.max(...commits.map(c => Date.parse(c.at)), Date.parse(from))).toISOString().replace(/\.\d+Z$/, 'Z'), window: { from, to }, made_by: 'tools/library-news.mjs', made_from: ['the commits of this repository', 'library/releases.json'],
-    versions: rel.length ? { first: rel[0].version, last: rel[rel.length - 1].version, pushed: rel.length, served: rel.filter(r => r.state === 'served').length, as_of: 'library/releases.json', list: rel.map(r => ({ version: r.version, state: r.state, pushed_at: r.pushed_at })) } : null,
+    versions: rel.length ? { first: rel[0].version, last: rel[rel.length - 1].version, pushed: rel.length, served: rel.filter(r => r.state === 'served').length, as_of: `library/releases/${arg}.json` , not_confirmed: rel.filter(r => r.state === 'not confirmed').length, failed: rel.filter(r => r.state === 'failed').length } : null,
     by_agent: byAgent,
     new_pages: added.filter(f => f.endsWith('.md')), new_datasets: added.filter(isData), changed_datasets: changed.filter(isData), new_tools: added.filter(f => /^tools\//.test(f) || /\/tools\//.test(f)),
     added: { files: added.length, by_area: tally(added) }, changed: { files: changed.length, by_area: tally(changed) }, removed: { files: removed.length, list: removed.slice(0, 60) },

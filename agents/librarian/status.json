@@ -1,8 +1,8 @@
 {
   "agent": "incident.librarian@web-summit.dinis",
-  "state": "active, round two (Dinis's direction of 02:10, via the conductor): the viewer pages, help/ and news/ are pushed; the 02:00 article is completed when the hour closes",
-  "last_wake": "2026-11-11T02:11Z",
-  "updated": "2026-11-11T02:30Z",
+  "state": "active, round two: the viewer (one page), help/, news/ with the round's article (updated 02:50 to what is live) are served; hourly: catalogue, release history, articles",
+  "last_wake": "2026-11-11T02:45Z",
+  "updated": "2026-11-11T02:52Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:cefff668d770eca8 (encryption), sha256:c1dd34b5c4dcfc33 (signing); a session key, public half in data/keys.json",
   "jobs": [
@@ -15,21 +15,19 @@
     "R2.3: help/: how to read the site, short pages"
   ],
   "done": [
-    "00:48 hourly wake: the catalogue's commit record refreshed; the release history rebuilt from the Actions API read at 00:45 (130 runs: 88 served, 3 tagged, 36 cancelled before the tag, 3 failed); a draft behaviour policy for the new incident.studio@ (12 now); /library/ and its per-kind pages checked live on v0.1.130. Nothing added to the reading list this wake",
-    "01:50 hourly wake: 267 files catalogued (a new kind, studio); the commit record refreshed; the release history rebuilt from the Actions API read at 01:46 (158 runs: 113 served, 3 tagged, 38 cancelled before the tag, 3 failed, 1 running); a draft behaviour policy for the new incident.wikipedia@ (13 now). Nothing added to the reading list or the glossary this wake",
-    "02:14 R2.1: tools/library-view.mjs --out <dir> writes view/<path>.md for every served file (277 now) plus view/README.md and view/index.json; tested inside the build locally: 415 pages, the gate OK in 1.1 s. Address pattern: view/<path>.html",
     "02:16 R2.1 wired: tools/library-view.mjs added to admin/build/generators.json (the build now writes a viewer page per file: 667 pages, the gate OK in 1.4 s)",
     "02:16 R2.3: help/ (start page and six short pages: what this is, the labels, from a word to its evidence, the data, how to cite, corrections)",
     "02:16 R2.2: news/ (the index, the article for 02:00 to 03:00, its facts in news/data/2026-11-11T02.json by tools/library-news.mjs)",
     "02:24 the round's article, written to be printed: news/2026-11-11-round-two.md (what Dinis asked at 02:10 and 02:20, the shape, the data flows drawn as text, the patterns, the 13 new agents and which have landed, page by page, not done, what waits on Dinis); true to the live site at v0.1.194",
     "02:23 the round article updated to the live site at v0.1.203 (the faces swapped: / is the weather face, the data room at data-room/; entities pushed; weather rounds 2 and 3; media, observability, studio) and given class: print-article; the 02:00 article gains the correction of 02:18 (eight rows relabelled evidence)",
     "02:30 at the conductor's ask (02:22): the viewer is ONE page, view/?path=<path> (library/viewer.js reads the file in the browser: facts, sha256 computed from the bytes, values as tables you can walk into with &at=, inferred schema, raw); tools/library-view.mjs now writes two small files. The gate: 2.7 s and 1,084 pages before, 1.4 s and 460 pages after. Tested in a headless browser: JSON, a value inside, markdown, code, the file list, a path outside the site (refused), no errors",
-    "02:30 the gate refused my push: library/provenance.json had reached 344 KB. Nothing oversized went out and the local commits were undone. The commit record is now sixteen small files under library/provenance/ (the largest 11 KB), compact rows"
+    "02:30 the gate refused my push: library/provenance.json had reached 344 KB. Nothing oversized went out and the local commits were undone. The commit record is now sixteen small files under library/provenance/ (the largest 11 KB), compact rows",
+    "02:52 hourly wake: the round article rewritten to the live site at v0.1.317 (all 13 new agents landed, every section answers; corrections of the round; what waits on Dinis); draft behaviour policies for all 26 agents; the release history now reads incident.ci@'s run data (data/ci/runs/) and is split by hour (317 runs: 184 served, 20 tagged, 94 cancelled before the tag, 4 failed, 15 running); the 02:00 article gains its versions; the commit record refreshed"
   ],
   "next": [
-    "at the next wake: read the Actions runs, rebuild the release history, complete the 02:00 article (versions served, 02:15 to 03:00) and write 03:00",
-    "catalogue and policy for the new agents' folders as they appear",
-    "each wake: refresh library/provenance.json"
+    "03:44 wake: close the 02:00 article, write 03:00, update the round article; refresh the commit record",
+    "the 13 new agents' policies are generic until library/abp.json says what is particular to each: write those",
+    "an hour with more than about 400 pushes would take library/releases/<hour>.json past 256 KB: split by half hour if it comes"
   ],
   "asks": [
     "incident.weather@ and incident.designer@: the viewer's address changed: view/?path=<path> (was view/<path>.html, which no longer exists). app/weather/weather.js builds the old address.",
