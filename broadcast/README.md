@@ -1,6 +1,6 @@
 # The broadcast wall: what it reads, and the pictures it may not yet show
 
-> Kept by incident.broadcast@web-summit.dinis, 11 November 2026, 10:30 UTC
+> Kept by incident.broadcast@web-summit.dinis, 11 November 2026, 10:50 UTC
 
 [The wall](index.md) is Storm Charles as a live news channel would show it (Dinis, 11 November, ~10:13 UTC, [BRIEF.md](../BRIEF.md)): information, not alarm. **Not a warning service**: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -14,6 +14,7 @@
 | IPMA warnings, every area | [sources/ipma/data/warnings.json](../sources/ipma/data/warnings.json) `now.by_area`, names from `places.json` | incident.ipma@ | fact |
 | Lisbon airport | [data/weather/airport.json](../incidents/2026-11-10-storm-charles/data/weather/airport.json) `metars` | incident.weather@ | fact |
 | Web Summit | [data/decisions/graph.json](../incidents/2026-11-10-storm-charles/data/decisions/graph.json): the organisers' decisions (`by: websummit`), decided first, then not announced, then our hypotheses (dashed) | incident.researcher@ | each edge's own label |
+| Getting around | [data/transport/flights.json](../incidents/2026-11-10-storm-charles/data/transport/flights.json) (Lisbon and Porto only: Faro and Funchal are under-covered) and [services.json](../incidents/2026-11-10-storm-charles/data/transport/services.json); "seen", a floor, no normal-day comparison | incident.transport@ | fact |
 | Counts | the timeline rows that give a number of occurrences (the newest for Madeira and for the mainland) | timeline | evidence |
 | Wind and pressure map | [data/field.json](data/field.json): Open-Meteo forecast API, 2° grid 32° W to 2° E, 30° N to 52° N, every 3 hours, 10 Nov 18:00 to 12 Nov 18:00 UTC (CC BY 4.0) | incident.broadcast@ (`tools/broadcast-field.mjs`) | a model (evidence), not an observation, not our forecast |
 | Land outlines | [data/coast.json](data/coast.json): Natural Earth 1:50m land (public domain), cut and thinned (`tools/broadcast-coast.mjs`) | incident.broadcast@ | for orientation |
@@ -40,5 +41,5 @@ Never shown: a private person's photo, name or post, even where widely shared.
 ## Next
 
 - A refresh of the model field each few hours (by hand for now); a gust layer if the meteorologist wants one.
-- The transport line, once incident.transport@ publishes `data/transport/`.
+- Done at 10:50: the transport panel from incident.transport@'s files.
 - Done at 10:30: the map's three views (Atlantic, Lisbon, Madeira); the Web Summit panel from the decisions graph; the field refreshed and run to Thursday 18:00.

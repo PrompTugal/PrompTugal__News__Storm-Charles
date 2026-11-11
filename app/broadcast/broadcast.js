@@ -9,7 +9,7 @@
   var FILES = {
     incident: room + 'incident.json', signals: api + 'signals.json', warn: api + 'weather/warnings.json', airport: api + 'weather/airport.json',
     areas: base + 'sources/ipma/data/warnings.json', places: base + 'sources/ipma/data/places.json',
-    field: base + 'broadcast/data/field.json', decisions: api + 'decisions/graph.json', coast: base + 'broadcast/data/coast.json'
+    field: base + 'broadcast/data/field.json', decisions: api + 'decisions/graph.json', flights: api + 'transport/flights.json', services: api + 'transport/services.json', coast: base + 'broadcast/data/coast.json'
   }
   var D = {}
   var qNow = new URLSearchParams(location.search).get('now')
@@ -46,6 +46,7 @@
         '<section class="bc-panel" id="bc-warn"></section>' +
         '<section class="bc-panel" id="bc-ws"></section>' +
         '<section class="bc-panel" id="bc-air"></section>' +
+        '<section class="bc-panel" id="bc-tr"></section>' +
         '<section class="bc-panel" id="bc-count"></section>' +
         '<section class="bc-panel bc-pics" id="bc-pics"></section>' +
       '</aside>' +
@@ -70,7 +71,7 @@
   Promise.all(Object.keys(FILES).map(function (k) {
     return fetch(FILES[k], { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json() }).then(function (j) { D[k] = j }).catch(function () { D[k] = null })
   })).then(function () {
-    chyron(); ticker(); warnings(); websummit(); airport(); counts(); pictures(); map()
+    chyron(); ticker(); warnings(); websummit(); airport(); transport(); counts(); pictures(); map()
   })
 
   // ---------- the chyron: the headline (a decision or warning from its primary source, with its time)
@@ -159,6 +160,34 @@
       '<div class="bc-raw"><code>' + esc(m.raw) + '</code></div>' +
       '<div class="meta">Observed ' + tm(m.time_utc, hm(m.time_utc)) + ' UTC' + (a.max_gust ? ' · highest gust in the reads: ' + esc(a.max_gust.kmh) + ' km/h at ' + tm(a.max_gust.time_utc) : '') + '</div>' +
       prov('METAR LPPT, NOAA Aviation Weather Center', m.source, m.read_utc)
+  }
+
+  // ---------- transport: incident.transport@'s files. "Seen", not "flew"; a count is a floor; no normal-day comparison; Faro's and Funchal's zeros are not shown
+  function transport () {
+    var box = document.getElementById('bc-tr'), f = D.flights, sv = D.services
+    if (!f && !sv) { box.hidden = true; return }
+    var h = '<h2>Getting around <span class="lbl l-fact">fact</span></h2>'
+    if (f && f.airports) {
+      f.airports.filter(function (a) { return a.iata === 'LIS' || a.iata === 'OPO' }).forEach(function (a) {
+        var d = a.departures_today; if (!d) return
+        var ls = a.live_snapshot
+        h += '<div class="bc-tl"><b>' + esc(a.iata === 'LIS' ? 'Lisbon airport' : 'Porto airport') + '</b>: <span class="bc-tn">' + esc(d.count) + '</span> airline departures seen since 00:00 UTC (at least)' +
+          (ls && a.iata === 'LIS' ? '; at ' + tm(ls.at, hm(ls.at)) + ' UTC, ' + esc(ls.on_ground) + ' airline aircraft seen on the ground and ' + esc(ls.airborne_low) + ' low in the air nearby' : '') +
+          prov('OpenSky', d.source, d.read) + '</div>'
+      })
+      h += '<div class="meta">Counts are what OpenSky\'s receivers saw: a floor, not a tally, and not compared with a normal day. Faro and Funchal are under-covered and not shown.</div>'
+    }
+    if (sv && sv.operators) {
+      h += '<div class="bc-sub">Operators\' notices</div><ul class="bc-ops">' + sv.operators.slice(0, 4).map(function (o) {
+        var n = (o.notices || [])[0], name = String(o.operator || o.id).replace(/\s*\(.*\)$/, '')
+        return '<li><b>' + esc(name) + '</b>' + (o.state && !/^see /.test(o.state) ? ': ' + esc(o.state) : '') +
+          (n ? '<div class="bc-ct">' + (n.link ? '<a href="' + esc(n.link) + '" rel="noopener">' : '') + esc(cut(n.title || n.header, 80)) + (n.link ? '</a>' : '') + (n.excerpt ? ': ' + esc(cut(n.excerpt, 110)) : '') + '</div>' : '') +
+          prov(name, o.source, o.read) + '</li>'
+      }).join('') + '</ul>'
+    }
+    h += '<div class="meta"><b>Check with your airline or operator.</b> More: <a href="' + esc(base + 'transport/index.html') + '">transport</a>.</div>'
+    if (f && f.attribution) h += '<span class="prov">' + esc(cut(f.attribution, 140)) + '</span>'
+    box.innerHTML = h
   }
 
   // ---------- counts: occurrences as reported (evidence), from the timeline's rows
