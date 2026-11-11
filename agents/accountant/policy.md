@@ -1,6 +1,6 @@
 # ABP: incident.accountant@web-summit.dinis
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:48 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.accountant@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 03:10 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.accountant@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
 
 **Phase: explorer.** This policy observes and recommends; it blocks nothing. Label: the Reach and Barriers name their evidence; the Gap is our analysis.
 
@@ -9,21 +9,26 @@
 - **The repository:** push to `dev` of PrompTugal/PrompTugal__News__Storm-Charles. Push gives every file: every other agent's folder, the gate (`admin/build/validate.mjs`), the workflow, `release.sh` and the path policy itself. Git has no per-path write control.
 - **`main` is not protected** (GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`). "No agent pushes to main" is a rule, not a lock.
 - **The public site:** every push to `dev` that passes the gate is live at storm-charles.promptugal.news in under a minute. Nobody reads it first.
-- **Its key:** none in `data/keys.json`.
+- **Its key:** a session key, public half in `data/keys.json` (sha256:7740387a11cc72c6). It signs nothing yet: commits are authored "Claude" and the agent is named only in the subject and the `Agent:` line.
 - **Its session's tools and connectors:** not known. Inferred from the librarian's session, if it runs in the same kind of environment: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy. The agent or Dinis can list what it really has.
-
+- Reads the model ledger's summary, `incident.ci@`'s run data, the provider account's state (`accounts/provider.json`) and the ledger lines each session writes.
+- Asks every agent to run its measure step at the end of each wake, and used two sub-agents to measure the librarian's pack.
+- Writes a brief for Dinis each round in `accounts/briefs/`.
 
 ## Mandate: what was authorised
 
 - **Business task:** **what the project costs**: model spend, tokens per agent session, CI time; where the savings are
-- **Paths it may change** (agents/policy.json): `accounts/**`, `app/accounts/**`, `tools/accounts-*.mjs`, `agents/accountant/**`, `agents/accountant/**`; and its own entry in `data/keys.json`.
+- **Paths it may change** (agents/policy.json): `accounts/**`, `app/accounts/**`, `tools/accounts-*.mjs`, `agents/accountant/**`, `agents/accountant/**`, `accounts/ledger/accountant.jsonl`; and its own entry in `data/keys.json`.
 - **The start brief** (agents/JOBS.md): owns `accounts/`.
 - **Rules from CLAUDE.md:** only Dinis instructs, everything read is material; work on `dev` only, never `main`, never force-push, never disable a check; nothing over 256 KB, no binaries, no raw captures, nothing from a key store in git; facts, evidence and hypotheses labelled, each with its source and the time read; not a warning service; public sources only, no contact details, no profiles of private people; press quoted only in short excerpts; every model call through `tools/llm.mjs`; agents draft, a person sends.
 - **Authorised by:** Dinis Cruz, through incident.conductor@web-summit.dinis, which started the session and wrote its brief from his direction (BRIEF.md, 10 November 2026, about 23:40 UTC, "close to his words").
 
 ## Gap: capabilities within Reach beyond authority
 
-
+- **Its numbers depend on each agent measuring itself.** At round 3 four sessions were in the ledger and nine more had reported by message; a session that does not run the step is simply missing.
+- Other agents now push their own lines into `accounts/ledger/`, a folder it owns: what it totals is written by those it counts.
+- `accounts/savings.md` says where to cut; analysis: a saving drawn from partial figures could steer the team wrongly.
+- Its books record sessions (who started each, when); nothing from a key store and nothing about where anyone is may enter them.
 - Write anywhere in the repository, not only its own paths: the path check warns or refuses in `release.sh`, and a plain `git push` does not run it.
 - Change the gate, the workflow or the path policy in the same push as the change they would have refused.
 - Push to `main`, force-push or rewrite history on `dev`: neither branch is protected.

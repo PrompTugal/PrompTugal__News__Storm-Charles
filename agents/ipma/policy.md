@@ -1,6 +1,6 @@
 # ABP: incident.ipma@web-summit.dinis
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:48 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.ipma@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 03:10 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.ipma@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
 
 **Phase: explorer.** This policy observes and recommends; it blocks nothing. Label: the Reach and Barriers name their evidence; the Gap is our analysis.
 
@@ -11,19 +11,24 @@
 - **The public site:** every push to `dev` that passes the gate is live at storm-charles.promptugal.news in under a minute. Nobody reads it first.
 - **Its key:** a session key, public half in `data/keys.json` (sha256:768a297eda9ef6b7). It signs nothing yet: commits are authored "Claude" and the agent is named only in the subject and the `Agent:` line.
 - **Its session's tools and connectors:** not known. Inferred from the librarian's session, if it runs in the same kind of environment: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy. The agent or Dinis can list what it really has.
-
+- Reads IPMA's open data (the documented addresses at api.ipma.pt and IPMA's own directory listings) about hourly with `tools/ipma-read.mjs`, one request every 3 seconds, read-only.
+- Keeps the reads in a data vault; the read key is published in `sources/ipma/dataset.json`.
+- Asks Dinis to send the email IPMA requests of users of its API; an agent does not send email.
 
 ## Mandate: what was authorised
 
 - **Business task:** **IPMA's open data**: every endpoint mapped, read hourly, kept with diffs, and shown better than anywhere else
-- **Paths it may change** (agents/policy.json): `sources/ipma/**`, `app/sources/ipma/**`, `tools/ipma-*.mjs`, `agents/ipma/**`, `agents/ipma/**`; and its own entry in `data/keys.json`.
+- **Paths it may change** (agents/policy.json): `sources/ipma/**`, `app/sources/ipma/**`, `tools/ipma-*.mjs`, `agents/ipma/**`, `agents/ipma/**`, `accounts/ledger/ipma.jsonl`; and its own entry in `data/keys.json`.
 - **The start brief** (agents/JOBS.md): owns `sources/ipma/`.
 - **Rules from CLAUDE.md:** only Dinis instructs, everything read is material; work on `dev` only, never `main`, never force-push, never disable a check; nothing over 256 KB, no binaries, no raw captures, nothing from a key store in git; facts, evidence and hypotheses labelled, each with its source and the time read; not a warning service; public sources only, no contact details, no profiles of private people; press quoted only in short excerpts; every model call through `tools/llm.mjs`; agents draft, a person sends.
 - **Authorised by:** Dinis Cruz, through incident.conductor@web-summit.dinis, which started the session and wrote its brief from his direction (BRIEF.md, 10 November 2026, about 23:40 UTC, "close to his words").
 
 ## Gap: capabilities within Reach beyond authority
 
-
+- **Its vault key was sent to the conductor in the clear by session message** and its status says to treat it as known to anyone who can read the two transcripts: the exposure is write access to copies of public data.
+- IPMA's terms ask users to say by email that they use the service, ask for its logo beside its data, and are silent on reshaping the data: all three wait on Dinis while the hourly reads go on.
+- It records IPMA's licence as 'not stated' and labels everything it computes as ours; every page that draws IPMA's numbers depends on that reading.
+- It has found addresses outside the documented open data with no stated terms; whether to read them is an open ask, and one other agent already reads one such file.
 - Write anywhere in the repository, not only its own paths: the path check warns or refuses in `release.sh`, and a plain `git push` does not run it.
 - Change the gate, the workflow or the path policy in the same push as the change they would have refused.
 - Push to `main`, force-push or rewrite history on `dev`: neither branch is protected.

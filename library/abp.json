@@ -1,7 +1,7 @@
 {
- "about": "What is particular to each agent's behaviour policy: its business task where agents/JOBS.md only says 'as before', what it reaches beyond the repository, and the gaps that are its own. tools/library-abp.mjs joins this with agents/JOBS.md (the start brief), agents/policy.json (the paths), data/keys.json and CLAUDE.md to write agents/<role>/policy.md. Every line is the librarian's reading of the repository on 10 and 11 November 2026: an analysis, not agreed by Dinis, and not measured in any session but the librarian's own.",
+ "about": "What is particular to each agent's behaviour policy: its business task where agents/JOBS.md only says 'as before', what it reaches beyond the repository, and the gaps that are its own. tools/library-abp.mjs joins this with agents/JOBS.md (the start brief), agents/policy.json (the paths), data/keys.json and CLAUDE.md to write agents/<role>/policy.md. Every line is the librarian's reading of the repository on 10 and 11 November 2026: an analysis, not agreed by Dinis, and not measured in any session but the librarian's own. The 17 entries added at 03:10 UTC on 11 November (weather to journalist) rest on each agent's line in agents/JOBS.md, its paths in agents/policy.json and its own status file only: what each agent says of itself, read by a sub-agent of the librarian's session and checked by the librarian.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T01:48Z",
+ "updated": "2026-11-11T03:10Z",
  "measured": {
   "branches": "GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`",
   "session": "the librarian's own session, 10 November 2026: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy"
@@ -156,6 +156,227 @@
     "**It could edit Wikipedia.** Its mandate is to read and compare; an agent that finds an error there may be tempted to fix it. Editing is a message outside the repositories: agents draft, a person sends, and nothing technical stands in the way.",
     "It judges this site and Wikipedia against Wikipedia's values (verifiability, neutrality, no original research): our analysis, published with no second reader, about a named project.",
     "Wikipedia's text is CC BY-SA: what it copies in full carries a share-alike licence into a repository whose data is Apache-2.0; only size and binaries are checked."
+   ]
+  },
+  "weather": {
+   "reach": [
+    "Its script under `app/weather/` runs in every reader's browser at `/`, the front door of the site.",
+    "Its status says it reads only the data room's published JSON (`api/v1/2026-11-10-storm-charles/` and `incident.json`) and fetches nothing external.",
+    "The conductor's scheduled checks wake it (05:25 and 09:25 UTC on 11 November)."
+   ],
+   "gap": [
+    "**It is the first screen a reader sees, and it must request no outside address.** The gate refuses a release whose Weather face code names one (`admin/build/validate.mjs`, since 02:32 UTC on 11 November); an address built at run time would pass that check.",
+    "It composes one sentence from IPMA's warnings and draws the meteorologist's reading as a dashed hypothesis: the rule that this is not a warning service rests on that wording and that line style staying apart.",
+    "It already removed one heading of its own that was a claim with no source ('where the storm arrived first'); nothing but its own review caught it.",
+    "It shows IPMA's sentence in English, sometimes in the meteorologist's translation; its own ask notes that the English for orange and red rain reads alike while the Portuguese differs."
+   ]
+  },
+  "ipma": {
+   "reach": [
+    "Reads IPMA's open data (the documented addresses at api.ipma.pt and IPMA's own directory listings) about hourly with `tools/ipma-read.mjs`, one request every 3 seconds, read-only.",
+    "Keeps the reads in a data vault; the read key is published in `sources/ipma/dataset.json`.",
+    "Asks Dinis to send the email IPMA requests of users of its API; an agent does not send email."
+   ],
+   "gap": [
+    "**Its vault key was sent to the conductor in the clear by session message** and its status says to treat it as known to anyone who can read the two transcripts: the exposure is write access to copies of public data.",
+    "IPMA's terms ask users to say by email that they use the service, ask for its logo beside its data, and are silent on reshaping the data: all three wait on Dinis while the hourly reads go on.",
+    "It records IPMA's licence as 'not stated' and labels everything it computes as ours; every page that draws IPMA's numbers depends on that reading.",
+    "It has found addresses outside the documented open data with no stated terms; whether to read them is an open ask, and one other agent already reads one such file."
+   ]
+  },
+  "sources": {
+   "reach": [
+    "Reads MeteoAlarm's Portugal feed on each hourly round with `tools/source-meteoalarm.mjs`, and reads the licence and terms pages of the bodies it registers.",
+    "Keeps the full feed copies in a data vault whose key is held only in its own session; git keeps a pointer and each file's sha256 in `sources/meteoalarm/dataset.json`.",
+    "Has asked Dinis whether to get a key for MeteoAlarm's archive, which would be an account in a person's name."
+   ],
+   "gap": [
+    "**The key of its vault exists only in its session.** Its permission check refused both ways of handing it over and it did not work around them, so no read key is published and nobody else can write there.",
+    "The licence status of each of 46 bodies in `sources/sources.json` is its reading; other pages rely on it when they quote or draw a source.",
+    "It keeps the list of sites that forbid automated reading (link only, no requests); that promise is kept by its own tools, and analysis: no gate check for it was found in the files read.",
+    "The open feed drops replaced messages, so its record has holes it cannot fill without the archive key (Madeira's Tuesday-afternoon warnings are in no read)."
+   ]
+  },
+  "archivist": {
+   "reach": [
+    "`tools/capture.mjs` opens every outside address the timeline and decisions cite, one at a time, under a plain client name, obeying robots.txt and never logged in; primary sources are re-read each hour.",
+    "Keeps two vaults: a display vault whose read key is published in `data/vaults.json`, and a packed capture vault whose read key is not published.",
+    "Its page under `app/evidence/` reads the screenshot from the display vault in the reader's browser."
+   ],
+   "gap": [
+    "**The write keys of both vaults are held only in its session.** The permission check refused reading them back, so they were never sent; until Dinis decides the route nobody else can write to either vault.",
+    "The capture vault holds raw press pages that must stay private; which captures are shown and which are kept privately is its decision alone (for example six of ten studies shown, four kept).",
+    "A faulty pattern of its own cut addresses short and 23 captures were of pages nobody cites; ten had been released before it noticed, and their records remain in git history.",
+    "Sites that answer 403, have an unreadable robots.txt or disallow all are recorded as not captured, so the evidence is thinner for those sources than a reader may assume."
+   ]
+  },
+  "entities": {
+   "reach": [
+    "Its status records no outside reads: the nodes are made from `entities/seed.json` (hand-kept) and the site's own rows, decisions and files.",
+    "Its linker runs as the build's 'after' step over every built page, and `app/lens/lens.js` runs in the reader's browser inside the designer's panel.",
+    "The linker sends an outside link to its evidence page when the archivist has a capture of it."
+   ],
+   "gap": [
+    "**It changes other agents' pages after they are built**: about 28,000 mentions are linked on each build, so one wrong name match puts a wrong link on pages their owners never see.",
+    "Which things are nodes is decided by hand in `entities/seed.json`; public roles are kept as roles, and the rule against profiles of private people depends on that file staying so.",
+    "Redirecting an outside link to our capture changes where a reader lands; the page must still show the source's own address.",
+    "Its build lists names with no node yet (83 at the last count), so the linked view is partial and can look complete."
+   ]
+  },
+  "labs": {
+   "reach": [
+    "`app/labs/labs.js` runs in the reader's browser and, by its status, loads only the site's published JSON.",
+    "It reads other agents' data (the graph's tables, the media first-on-each-fact file, the meteorologist's weather files) and nothing outside the site is recorded in its status.",
+    "One experiment (day-bands) was lifted onto the front page by `incident.weather@`."
+   ],
+   "gap": [
+    "**Its pages are experiments published live.** Each says what it shows badly, but a reader arriving by link may take a trial view for the record.",
+    "The models view draws four model runs against what was measured, labelled 'never our forecast': the rule against forecasts of our own depends on that label holding on every view.",
+    "Some views rebuild the past (IPMA's warnings at any minute from the kept messages; Tuesday from what the files still hold); a rebuilt mark must never look like one read from the feed.",
+    "The lag view measures when a warning was read into our data against when it was sent; its own note says the long bars do not all measure what they seem to."
+   ]
+  },
+  "board": {
+   "reach": [
+    "Reads every agent's status file, the timeline, `decisions.md` and the decision graph on each wake; it answered one card from Web Summit's own public page.",
+    "`app/board/board.js` runs in the reader's browser, also embedded on the agents' pages and on Contribute.",
+    "Publishes tasks for outside contributors in `board/tasks.json`."
+   ],
+   "gap": [
+    "**It turns each agent's asks into cards and could drop, merge or reword one.** The same ask from several agents becomes one card, and some cards for Dinis were written by hand from several agents' lines.",
+    "It owns the one list of what Dinis can unblock and ranks it; what he sees first is its ordering.",
+    "An ask whose line has gone is listed to be read by hand, never closed by the tool: closing depends on the agent doing that reading each wake.",
+    "Its own tool refuses an address or a personal link on a card; that check is written and run by the agent it checks."
+   ]
+  },
+  "social": {
+   "reach": [
+    "Reads Bluesky's public API with no account, 3 seconds between requests (`tools/social-read.mjs`); no account was made.",
+    "Hands the archivist a list of official posts to capture and offers the conductor things the timeline lacks.",
+    "Plans to read Mastodon's official accounts, and X only where readable without logging in."
+   ],
+   "gap": [
+    "**It decides which accounts count.** `research/social/accounts.json` lists 18 accounts of organisations and public roles with why each counts; a private person must never be on that list or in a kept post.",
+    "It counts the public conversation per hour and per language and says nothing of a private person is written to disk; that is kept by its own tool, and analysis: no gate check for a name or handle was found in the files read.",
+    "Its offers become timeline rows when the conductor takes them (three so far), so a misread post could reach the record.",
+    "'Who did not post' is stated from where it looked and found no account; an account it missed would make that line wrong."
+   ]
+  },
+  "meteorology": {
+   "reach": [
+    "`tools/meteorology-read.mjs` fetches the page each edge and each licence cites and stamps state, time, sha256 and a quote; every edge is re-read each three hours.",
+    "Probed ten open weather sources for Lisbon and Madeira and keeps four small samples; no model field is in git.",
+    "Two of its proposals need a person: registering with EUMETSAT and accepting its licence, and a decoder run outside the build."
+   ],
+   "gap": [
+    "**Its licence table is what others build on.** `meteorology/licences.json` gives four answers per source (read, store, show, transform); they are its reading of each page, and several are still 'unclear'.",
+    "Its six-model table puts model output beside IPMA's warnings; it is labelled evidence with no average and no pick, and the rule against forecasts of our own depends on that staying so.",
+    "Of 226 edges, 54 are 'not stated' on the page cited and 22 were not read; the map draws them all, so a reader must be able to tell them apart.",
+    "It found that some satellite imagery newer than one hour may not be shown publicly; a build-on item taken up without that condition would break a licence."
+   ]
+  },
+  "stories": {
+   "reach": [
+    "Builds only from the data room: timeline rows, data fields with the value they held when written, and decision edges; nothing outside the site is recorded in its status.",
+    "`app/stories/` runs in the reader's browser with switches for sources, times and the hypothesis layer; IPMA's red warnings for Lisbon are read again there.",
+    "A scheduled re-check wakes its session each hour after the data read."
+   ],
+   "gap": [
+    "**It states conclusions.** Each story mixes facts, evidence and hypotheses (26 claims in the first, four of them hypotheses) under one title, and a reader may carry away the hypothesis as the finding.",
+    "A sentence is written on a value at one time; if the field moves, the build flags it beside the sentence, but the retelling waits for the agent's next wake.",
+    "Its `--check` proves that every support resolves, not that the sentence says what the support says: that reading is the agent's alone.",
+    "Its own list of what it could not support (whether lead times were enough, why two official positions differ) marks where a story could slide into judgement."
+   ]
+  },
+  "models": {
+   "reach": [
+    "Calls other models through a provider with `tools/llm.mjs`, using a key from the environment; 13 models were measured in round 1.",
+    "Keeps every request and response in an encrypted vault outside git; the vault key is held only in its session.",
+    "Offers `tools/models-ask.mjs` as the one call other desks use."
+   ],
+   "gap": [
+    "**It owns `tools/llm.mjs`, the single door for every model call**, and `agents/policy.json` lists that file under `incident.dev@` as well: two owners for the tool the model rule depends on.",
+    "The team's daily cap is kept as per-agent shares because a ledger lives in each session; no shared counter exists, so the total is known only when each desk reports its own summary.",
+    "Gold answers are copied from the data room and scored by its own tool; `models/which.json` then tells other agents which model to use for which job.",
+    "The raw store's key cannot be read out of its session, so nobody else can open the requests and responses behind its scores."
+   ]
+  },
+  "shadow": {
+   "reach": [
+    "Asks answer engines with web search a fixed set of questions through `tools/llm.mjs`; the full answers are kept only outside git.",
+    "Lists every address an engine pointed a reader at in `shadow/cited.json` as candidates for capture, and read one news API's terms at source without signing up for any.",
+    "Its tool maps one environment key name to another in its own process, because the name `tools/llm.mjs` reads differs from the one the environment sets."
+   ],
+   "gap": [
+    "**It relays what answer engines say.** It restates each answer as statements in our words and labels them itself against the timeline and the graph (match, behind, ahead, contradict, unsupported).",
+    "Statements 'ahead of us' are published as leads; a lead is not a fact until someone reads it at the source, and the page must keep the two apart.",
+    "The cited addresses were chosen by an engine, not read by us; listing them can look like sourcing.",
+    "When the provider's account has no credit the hourly table has gaps, so the comparison over time is uneven."
+   ]
+  },
+  "ci": {
+   "reach": [
+    "`tools/ci-read.mjs` reads GitHub's Actions API and a full clone of the repository into `data/ci/`, outside the build's hot path.",
+    "Writes `ci/patches/` for the conductor to apply to the release script and the gate, and a tool that signs and verifies a release record with an agent's own key.",
+    "Reports queues, failures and the gate's time to the conductor at each wake."
+   ],
+   "gap": [
+    "**It proposes patches to the gate it reports on**: the conductor applies them, but the same agent measures the pipeline and designs changes to it.",
+    "`README.md` is listed under both the conductor and this agent in `agents/policy.json`: a stranger's first page has two owners.",
+    "Its pages say what is and is not signed; a signed release record waits on Dinis's yes, so until then 'who pushed' rests on commit subjects and trailers.",
+    "Times it first wrote were estimates up to ten minutes ahead of the clock, corrected by itself; its status gives the gate's budget as 5 seconds where `CLAUDE.md` says 8."
+   ]
+  },
+  "perplexity": {
+   "reach": [
+    "Asks Perplexity's engine open questions in Portuguese and English through `tools/llm.mjs`; the full text stays outside git.",
+    "`tools/perplexity-check.mjs` opens the cited addresses one at a time and, by its status, never the forbidden or social hosts.",
+    "Retries one call every half hour while the provider's account has no credit."
+   ],
+   "gap": [
+    "**It relays an answer engine's findings as leads**, and the conductor has already taken two into a timeline row; each must be read at the body's own address first, which this desk says it does.",
+    "Of 19 statements in round 1, 7 were confirmed at a primary source, 8 were press only and 4 unsupported: the scorecard is its own judgement of its own tool's answers.",
+    "The list of hosts it must never open is kept in its own tool; analysis: no file read here shows another check of it.",
+    "Its spend is known to the team only through the ledger summary it writes itself."
+   ]
+  },
+  "accountant": {
+   "reach": [
+    "Reads the model ledger's summary, `incident.ci@`'s run data, the provider account's state (`accounts/provider.json`) and the ledger lines each session writes.",
+    "Asks every agent to run its measure step at the end of each wake, and used two sub-agents to measure the librarian's pack.",
+    "Writes a brief for Dinis each round in `accounts/briefs/`."
+   ],
+   "gap": [
+    "**Its numbers depend on each agent measuring itself.** At round 3 four sessions were in the ledger and nine more had reported by message; a session that does not run the step is simply missing.",
+    "Other agents now push their own lines into `accounts/ledger/`, a folder it owns: what it totals is written by those it counts.",
+    "`accounts/savings.md` says where to cut; analysis: a saving drawn from partial figures could steer the team wrongly.",
+    "Its books record sessions (who started each, when); nothing from a key store and nothing about where anyone is may enter them."
+   ]
+  },
+  "reporter": {
+   "reach": [
+    "Its status records no outside reads: traces are made from commits, the brief, and the files other agents keep.",
+    "Reads whole commit messages, because some `For:` trailers are invisible to git's trailer parser.",
+    "Feeds `incident.journalist@` and the briefing pack through `reporter/traces/`."
+   ],
+   "gap": [
+    "**It writes the record of who said what and when.** Of 82 steps in six traces, three are marked 'no evidence', and the journal is told from these traces.",
+    "The brief's times for Dinis's words run a few minutes later than the commits that record them; which the record follows is an open ask, so its times are approximate.",
+    "`reporter/numbers.json` counts by hour from files other agents keep; a wrong file upstream becomes a wrong number here with no second check.",
+    "Analysis: a trace of the team's work must never carry where anyone is or anything said in private; that rests on the agent alone."
+   ]
+  },
+  "journalist": {
+   "reach": [
+    "Its status records no outside reads: pieces are told from the reporter's traces, `data/ci/`, the brief, the board's cards and data fields.",
+    "`app/journal/` runs a small script in the reader's browser that places each picture under its heading.",
+    "Builds `journal/edition.md` as a print article at build time (never committed), from which a PDF is to be made."
+   ],
+   "gap": [
+    "**It tells the story of the project in prose**, and its three pieces are live as drafts while their supports are still being traced.",
+    "Its first piece said 77 cards waited on Dinis where the board's figure was 36 (a pattern of its own matched too much); it corrected the page with a dated note.",
+    "Its build resolves every support, yet three statements are 'not recorded' and the times of Dinis's directions are the brief's approximations.",
+    "Its pictures and counts stop at the last read of `data/ci/`; a reader may take them as current."
    ]
   }
  }

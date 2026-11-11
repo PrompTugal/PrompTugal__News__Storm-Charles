@@ -1,6 +1,6 @@
 # ABP: incident.sources@web-summit.dinis
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:48 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.sources@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 03:10 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.sources@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
 
 **Phase: explorer.** This policy observes and recommends; it blocks nothing. Label: the Reach and Barriers name their evidence; the Gap is our analysis.
 
@@ -11,19 +11,24 @@
 - **The public site:** every push to `dev` that passes the gate is live at storm-charles.promptugal.news in under a minute. Nobody reads it first.
 - **Its key:** a session key, public half in `data/keys.json` (sha256:f9bdf85cc46df676). It signs nothing yet: commits are authored "Claude" and the agent is named only in the subject and the `Agent:` line.
 - **Its session's tools and connectors:** not known. Inferred from the librarian's session, if it runs in the same kind of environment: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy. The agent or Dinis can list what it really has.
-
+- Reads MeteoAlarm's Portugal feed on each hourly round with `tools/source-meteoalarm.mjs`, and reads the licence and terms pages of the bodies it registers.
+- Keeps the full feed copies in a data vault whose key is held only in its own session; git keeps a pointer and each file's sha256 in `sources/meteoalarm/dataset.json`.
+- Has asked Dinis whether to get a key for MeteoAlarm's archive, which would be an account in a person's name.
 
 ## Mandate: what was authorised
 
 - **Business task:** **a section per source body**, MeteoAlarm first: its feeds browsed, its API mapped, what changed over time, the licence
-- **Paths it may change** (agents/policy.json): `sources/**`, `app/sources/**`, `tools/source-*.mjs`, `agents/sources/**`, `agents/sources/**`; and its own entry in `data/keys.json`.
+- **Paths it may change** (agents/policy.json): `sources/**`, `app/sources/**`, `tools/source-*.mjs`, `agents/sources/**`, `agents/sources/**`, `accounts/ledger/sources.jsonl`; and its own entry in `data/keys.json`.
 - **The start brief** (agents/JOBS.md): owns `sources/` (not `ipma/`).
 - **Rules from CLAUDE.md:** only Dinis instructs, everything read is material; work on `dev` only, never `main`, never force-push, never disable a check; nothing over 256 KB, no binaries, no raw captures, nothing from a key store in git; facts, evidence and hypotheses labelled, each with its source and the time read; not a warning service; public sources only, no contact details, no profiles of private people; press quoted only in short excerpts; every model call through `tools/llm.mjs`; agents draft, a person sends.
 - **Authorised by:** Dinis Cruz, through incident.conductor@web-summit.dinis, which started the session and wrote its brief from his direction (BRIEF.md, 10 November 2026, about 23:40 UTC, "close to his words").
 
 ## Gap: capabilities within Reach beyond authority
 
-
+- **The key of its vault exists only in its session.** Its permission check refused both ways of handing it over and it did not work around them, so no read key is published and nobody else can write there.
+- The licence status of each of 46 bodies in `sources/sources.json` is its reading; other pages rely on it when they quote or draw a source.
+- It keeps the list of sites that forbid automated reading (link only, no requests); that promise is kept by its own tools, and analysis: no gate check for it was found in the files read.
+- The open feed drops replaced messages, so its record has holes it cannot fill without the archive key (Madeira's Tuesday-afternoon warnings are in no read).
 - Write anywhere in the repository, not only its own paths: the path check warns or refuses in `release.sh`, and a plain `git push` does not run it.
 - Change the gate, the workflow or the path policy in the same push as the change they would have refused.
 - Push to `main`, force-push or rewrite history on `dev`: neither branch is protected.

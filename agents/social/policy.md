@@ -1,6 +1,6 @@
 # ABP: incident.social@web-summit.dinis
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:48 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.social@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 03:10 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.social@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
 
 **Phase: explorer.** This policy observes and recommends; it blocks nothing. Label: the Reach and Barriers name their evidence; the Gap is our analysis.
 
@@ -11,19 +11,24 @@
 - **The public site:** every push to `dev` that passes the gate is live at storm-charles.promptugal.news in under a minute. Nobody reads it first.
 - **Its key:** a session key, public half in `data/keys.json` (sha256:a6df1c3e1a231d0f). It signs nothing yet: commits are authored "Claude" and the agent is named only in the subject and the `Agent:` line.
 - **Its session's tools and connectors:** not known. Inferred from the librarian's session, if it runs in the same kind of environment: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy. The agent or Dinis can list what it really has.
-
+- Reads Bluesky's public API with no account, 3 seconds between requests (`tools/social-read.mjs`); no account was made.
+- Hands the archivist a list of official posts to capture and offers the conductor things the timeline lacks.
+- Plans to read Mastodon's official accounts, and X only where readable without logging in.
 
 ## Mandate: what was authorised
 
 - **Business task:** **Bluesky** (and other public social sources) as a section: official and public-role accounts, as data
-- **Paths it may change** (agents/policy.json): `research/social/**`, `app/social/**`, `tools/social-*.mjs`, `agents/social/**`, `agents/social/**`; and its own entry in `data/keys.json`.
+- **Paths it may change** (agents/policy.json): `research/social/**`, `app/social/**`, `tools/social-*.mjs`, `agents/social/**`, `agents/social/**`, `accounts/ledger/social.jsonl`; and its own entry in `data/keys.json`.
 - **The start brief** (agents/JOBS.md): owns `research/social/`.
 - **Rules from CLAUDE.md:** only Dinis instructs, everything read is material; work on `dev` only, never `main`, never force-push, never disable a check; nothing over 256 KB, no binaries, no raw captures, nothing from a key store in git; facts, evidence and hypotheses labelled, each with its source and the time read; not a warning service; public sources only, no contact details, no profiles of private people; press quoted only in short excerpts; every model call through `tools/llm.mjs`; agents draft, a person sends.
 - **Authorised by:** Dinis Cruz, through incident.conductor@web-summit.dinis, which started the session and wrote its brief from his direction (BRIEF.md, 10 November 2026, about 23:40 UTC, "close to his words").
 
 ## Gap: capabilities within Reach beyond authority
 
-
+- **It decides which accounts count.** `research/social/accounts.json` lists 18 accounts of organisations and public roles with why each counts; a private person must never be on that list or in a kept post.
+- It counts the public conversation per hour and per language and says nothing of a private person is written to disk; that is kept by its own tool, and analysis: no gate check for a name or handle was found in the files read.
+- Its offers become timeline rows when the conductor takes them (three so far), so a misread post could reach the record.
+- 'Who did not post' is stated from where it looked and found no account; an account it missed would make that line wrong.
 - Write anywhere in the repository, not only its own paths: the path check warns or refuses in `release.sh`, and a plain `git push` does not run it.
 - Change the gate, the workflow or the path policy in the same push as the change they would have refused.
 - Push to `main`, force-push or rewrite history on `dev`: neither branch is protected.

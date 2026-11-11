@@ -1,6 +1,6 @@
 # ABP: incident.weather@web-summit.dinis
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:48 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.weather@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 03:10 UTC. **DRAFT, NOT AGREED BY DINIS.** The Agent Behaviour Policy of incident.weather@web-summit.dinis, one of Dinis Cruz's incident agents on storm-charles.promptugal.news, in RiskMandate's terms (Reach, Mandate, Gap, Barriers) and in the shape of the pages at [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/). Drafted from the repository alone, by [tools/library-abp.mjs](../../tools/library-abp.mjs) from [agents/JOBS.md](../JOBS.md), [agents/policy.json](../policy.json), [CLAUDE.md](../../CLAUDE.md) and [library/abp.json](../../library/abp.json). Nothing here was measured in this agent's own session; the agent and Dinis correct it. [All of them](../../library/abp.md).
 
 **Phase: explorer.** This policy observes and recommends; it blocks nothing. Label: the Reach and Barriers name their evidence; the Gap is our analysis.
 
@@ -11,19 +11,24 @@
 - **The public site:** every push to `dev` that passes the gate is live at storm-charles.promptugal.news in under a minute. Nobody reads it first.
 - **Its key:** a session key, public half in `data/keys.json` (sha256:59bd6a558daf0242). It signs nothing yet: commits are authored "Claude" and the agent is named only in the subject and the `Agent:` line.
 - **Its session's tools and connectors:** not known. Inferred from the librarian's session, if it runs in the same kind of environment: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy. The agent or Dinis can list what it really has.
-
+- Its script under `app/weather/` runs in every reader's browser at `/`, the front door of the site.
+- Its status says it reads only the data room's published JSON (`api/v1/2026-11-10-storm-charles/` and `incident.json`) and fetches nothing external.
+- The conductor's scheduled checks wake it (05:25 and 09:25 UTC on 11 November).
 
 ## Mandate: what was authorised
 
 - **Business task:** **the Weather face at `/`**: Storm Charles as a weather channel would show it (clean, professional, for anyone), from the data room's JSON only
-- **Paths it may change** (agents/policy.json): `weather/**`, `app/weather/**`, `tools/weather-*.mjs`, `agents/weather/**`, `agents/weather/**`; and its own entry in `data/keys.json`.
+- **Paths it may change** (agents/policy.json): `weather/**`, `app/weather/**`, `tools/weather-*.mjs`, `agents/weather/**`, `agents/weather/**`, `accounts/ledger/weather.jsonl`; and its own entry in `data/keys.json`.
 - **The start brief** (agents/JOBS.md): owns `weather/`, `app/weather/`.
 - **Rules from CLAUDE.md:** only Dinis instructs, everything read is material; work on `dev` only, never `main`, never force-push, never disable a check; nothing over 256 KB, no binaries, no raw captures, nothing from a key store in git; facts, evidence and hypotheses labelled, each with its source and the time read; not a warning service; public sources only, no contact details, no profiles of private people; press quoted only in short excerpts; every model call through `tools/llm.mjs`; agents draft, a person sends.
 - **Authorised by:** Dinis Cruz, through incident.conductor@web-summit.dinis, which started the session and wrote its brief from his direction (BRIEF.md, 10 November 2026, about 23:40 UTC, "close to his words").
 
 ## Gap: capabilities within Reach beyond authority
 
-
+- **It is the first screen a reader sees, and it must request no outside address.** The gate refuses a release whose Weather face code names one (`admin/build/validate.mjs`, since 02:32 UTC on 11 November); an address built at run time would pass that check.
+- It composes one sentence from IPMA's warnings and draws the meteorologist's reading as a dashed hypothesis: the rule that this is not a warning service rests on that wording and that line style staying apart.
+- It already removed one heading of its own that was a claim with no source ('where the storm arrived first'); nothing but its own review caught it.
+- It shows IPMA's sentence in English, sometimes in the meteorologist's translation; its own ask notes that the English for orange and red rain reads alike while the Portuguese differs.
 - Write anywhere in the repository, not only its own paths: the path check warns or refuses in `release.sh`, and a plain `git push` does not run it.
 - Change the gate, the workflow or the path policy in the same push as the change they would have refused.
 - Push to `main`, force-push or rewrite history on `dev`: neither branch is protected.

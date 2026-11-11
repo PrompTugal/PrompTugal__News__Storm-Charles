@@ -1,6 +1,6 @@
 # The agents' behaviour policies (drafts)
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 01:48 UTC. **DRAFTS, NOT AGREED BY DINIS.** One Agent Behaviour Policy per incident agent, in the shape of [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/): Reach, Mandate, Gap, Barriers, Licence to Operate, Provenance. Built by [tools/library-abp.mjs](../tools/library-abp.mjs) from [agents/JOBS.md](../agents/JOBS.md), [agents/policy.json](../agents/policy.json), [CLAUDE.md](../CLAUDE.md) and [abp.json](abp.json). Back to [the library](README.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 03:10 UTC. **DRAFTS, NOT AGREED BY DINIS.** One Agent Behaviour Policy per incident agent, in the shape of [web-summit.sgit.ai/abp/](https://web-summit.sgit.ai/abp/): Reach, Mandate, Gap, Barriers, Licence to Operate, Provenance. Built by [tools/library-abp.mjs](../tools/library-abp.mjs) from [agents/JOBS.md](../agents/JOBS.md), [agents/policy.json](../agents/policy.json), [CLAUDE.md](../CLAUDE.md) and [abp.json](abp.json). Back to [the library](README.md).
 
 **What is the same for all 30.** Every agent can push to every path; neither branch is protected; every push that passes the gate is public in under a minute with no second reader; the path check is advisory and local; the gate is technical but any agent can edit it; commits are not signed. The barriers that hold are rules each agent keeps. Measured: GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`. Only the librarian's own session was measured; the others' tools and connectors are not known here.
 
@@ -19,20 +19,20 @@
 | [incident.dev@web-summit.dinis](../agents/dev/policy.md) | Model calls and money. Every call is to go through `tools/llm.mjs` (a rule); the daily cap is inside the wrapper (technical, in a file an agent can edit). A call made around the wrapper is uncounted. |
 | [incident.studio@web-summit.dinis](../agents/studio/policy.md) | It explains with invented characters and simplified pictures. An explanation is our analysis: a simplification that reads as a fact about how an assistant or this team works is a hypothesis shown as fact, on a site whose rule is that the two never look alike. |
 | [incident.wikipedia@web-summit.dinis](../agents/wikipedia/policy.md) | It reads editors. A revision history names the accounts and IP addresses that edited: public, and still data about people. The rule is no profiles of private people; a dataset of revisions keyed by editor is one step from a profile, and nothing checks what columns it keeps. |
-| [incident.weather@web-summit.dinis](../agents/weather/policy.md) |  |
-| [incident.ipma@web-summit.dinis](../agents/ipma/policy.md) |  |
-| [incident.sources@web-summit.dinis](../agents/sources/policy.md) |  |
-| [incident.archivist@web-summit.dinis](../agents/archivist/policy.md) |  |
-| [incident.entities@web-summit.dinis](../agents/entities/policy.md) |  |
-| [incident.labs@web-summit.dinis](../agents/labs/policy.md) |  |
-| [incident.board@web-summit.dinis](../agents/board/policy.md) |  |
-| [incident.social@web-summit.dinis](../agents/social/policy.md) |  |
-| [incident.meteorology@web-summit.dinis](../agents/meteorology/policy.md) |  |
-| [incident.stories@web-summit.dinis](../agents/stories/policy.md) |  |
-| [incident.models@web-summit.dinis](../agents/models/policy.md) |  |
-| [incident.shadow@web-summit.dinis](../agents/shadow/policy.md) |  |
-| [incident.ci@web-summit.dinis](../agents/ci/policy.md) |  |
-| [incident.perplexity@web-summit.dinis](../agents/perplexity/policy.md) |  |
-| [incident.accountant@web-summit.dinis](../agents/accountant/policy.md) |  |
-| [incident.reporter@web-summit.dinis](../agents/reporter/policy.md) |  |
-| [incident.journalist@web-summit.dinis](../agents/journalist/policy.md) |  |
+| [incident.weather@web-summit.dinis](../agents/weather/policy.md) | It is the first screen a reader sees, and it must request no outside address. The gate refuses a release whose Weather face code names one (`admin/build/validate.mjs`, since 02:32 UTC on 11 November); an address built at run time would pass that check. |
+| [incident.ipma@web-summit.dinis](../agents/ipma/policy.md) | Its vault key was sent to the conductor in the clear by session message and its status says to treat it as known to anyone who can read the two transcripts: the exposure is write access to copies of public data. |
+| [incident.sources@web-summit.dinis](../agents/sources/policy.md) | The key of its vault exists only in its session. Its permission check refused both ways of handing it over and it did not work around them, so no read key is published and nobody else can write there. |
+| [incident.archivist@web-summit.dinis](../agents/archivist/policy.md) | The write keys of both vaults are held only in its session. The permission check refused reading them back, so they were never sent; until Dinis decides the route nobody else can write to either vault. |
+| [incident.entities@web-summit.dinis](../agents/entities/policy.md) | It changes other agents' pages after they are built: about 28,000 mentions are linked on each build, so one wrong name match puts a wrong link on pages their owners never see. |
+| [incident.labs@web-summit.dinis](../agents/labs/policy.md) | Its pages are experiments published live. Each says what it shows badly, but a reader arriving by link may take a trial view for the record. |
+| [incident.board@web-summit.dinis](../agents/board/policy.md) | It turns each agent's asks into cards and could drop, merge or reword one. The same ask from several agents becomes one card, and some cards for Dinis were written by hand from several agents' lines. |
+| [incident.social@web-summit.dinis](../agents/social/policy.md) | It decides which accounts count. `research/social/accounts.json` lists 18 accounts of organisations and public roles with why each counts; a private person must never be on that list or in a kept post. |
+| [incident.meteorology@web-summit.dinis](../agents/meteorology/policy.md) | Its licence table is what others build on. `meteorology/licences.json` gives four answers per source (read, store, show, transform); they are its reading of each page, and several are still 'unclear'. |
+| [incident.stories@web-summit.dinis](../agents/stories/policy.md) | It states conclusions. Each story mixes facts, evidence and hypotheses (26 claims in the first, four of them hypotheses) under one title, and a reader may carry away the hypothesis as the finding. |
+| [incident.models@web-summit.dinis](../agents/models/policy.md) | It owns `tools/llm.mjs`, the single door for every model call, and `agents/policy.json` lists that file under `incident.dev@` as well: two owners for the tool the model rule depends on. |
+| [incident.shadow@web-summit.dinis](../agents/shadow/policy.md) | It relays what answer engines say. It restates each answer as statements in our words and labels them itself against the timeline and the graph (match, behind, ahead, contradict, unsupported). |
+| [incident.ci@web-summit.dinis](../agents/ci/policy.md) | It proposes patches to the gate it reports on: the conductor applies them, but the same agent measures the pipeline and designs changes to it. |
+| [incident.perplexity@web-summit.dinis](../agents/perplexity/policy.md) | It relays an answer engine's findings as leads, and the conductor has already taken two into a timeline row; each must be read at the body's own address first, which this desk says it does. |
+| [incident.accountant@web-summit.dinis](../agents/accountant/policy.md) | Its numbers depend on each agent measuring itself. At round 3 four sessions were in the ledger and nine more had reported by message; a session that does not run the step is simply missing. |
+| [incident.reporter@web-summit.dinis](../agents/reporter/policy.md) | It writes the record of who said what and when. Of 82 steps in six traces, three are marked 'no evidence', and the journal is told from these traces. |
+| [incident.journalist@web-summit.dinis](../agents/journalist/policy.md) | It tells the story of the project in prose, and its three pieces are live as drafts while their supports are still being traced. |
