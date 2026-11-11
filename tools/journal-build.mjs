@@ -178,6 +178,32 @@ function figTrace(fig) {
     const table = ['| Step | Time (UTC) | Who | What went out | Commit | First served |', '|---|---|---|---|---|---|', ...steps.map(st => `| ${st.n} | ${st.at ? st.at.slice(11, 19) : 'not recorded'} | ${short(st.actor.name)}${st.actor.kind === 'person' ? ' (a person)' : ''} | ${String(st.out || '').replace(/\|/g, '/')}${!(st.evidence || []).length ? ' **No evidence.** ' + String(st.evidence_note || '').replace(/\|/g, '/') : ''} | ${st.sha ? (st.repo ? `${String(st.sha).slice(0, 7)} (another repository)` : `[${String(st.sha).slice(0, 7)}](${REPO}/commit/${st.sha})`) : ''} | ${ver(st) ? `${ver(st).version}${ver(st).push_to_served_s ? `, ${ver(st).push_to_served_s} s after the push` : ''}` : ''} |`)].join('\n')
     return { svg: s, table, key: `A lane for each actor; each numbered mark is a step of the trace at its time (UTC), joined in order. Blue ring: a person. Hollow: the trace has no evidence for the step. A step with no time of its own (a spoken sentence) sits at the commit that records it.`, src: `<a href="../view/index.html?path=reporter/traces/${esc(fig.trace)}.json">incident.reporter@'s trace</a>` }
 }
+// 2e. the token ledger: the latest line of each agent session (accounts/ledger/<role>.jsonl, each agent's own measurement)
+function ledgerRows() {
+    if (!has('accounts/ledger')) return []
+    const rows = []
+    for (const f of fs.readdirSync(path.join(ROOT, 'accounts/ledger')).filter(f => f.endsWith('.jsonl')).sort()) {
+        const last = {}; for (const l of read('accounts/ledger/' + f).split('\n').filter(Boolean)) { try { const j = JSON.parse(l); if (j.totals) last[j.session || '-'] = j } catch { } }
+        const ls = Object.values(last); if (!ls.length) continue
+        const sum = k => ls.reduce((n, j) => n + (j.totals[k] || 0), 0)
+        const r = { role: f.replace('.jsonl', ''), file: 'accounts/ledger/' + f, at: ls.map(j => j.at).sort().at(-1), calls: sum('calls'), fresh: sum('fresh_input'), out: sum('output'), cw: sum('cache_writes'), cr: sum('cache_reads') }
+        r.all = r.fresh + r.out + r.cw + r.cr; rows.push(r)
+    }
+    return rows.sort((p, q) => q.all - p.all)
+}
+const nf = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+function figLedger(fig) {
+    const rows = ledgerRows(); if (!rows.length) return null
+    const max = rows[0].all, W = 720, L = 120, R = 150, rh = 17, top = 8, H = top + rows.length * rh + 6
+    let s = `<svg class="jr-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(fig.title)}">`
+    rows.forEach((r, i) => { const y = top + i * rh, w = Math.max((W - L - R) * r.all / max, 2), wr = w * r.cr / r.all; s += `<text class="jr-lab" x="${L - 8}" y="${y + 11}" text-anchor="end">${esc(r.role)}@</text><rect class="jr-lane" x="${L}" y="${y + 3}" width="${wr.toFixed(1)}" height="${rh - 7}"/><rect class="jr-bar" x="${(L + wr).toFixed(1)}" y="${y + 3}" width="${Math.max(w - wr, 1).toFixed(1)}" height="${rh - 7}"/><text class="jr-n" x="${(L + w + 6).toFixed(1)}" y="${y + 11}">${(r.all / 1e6).toFixed(1)} M, ${r.calls} calls</text>` })
+    s += '</svg>'
+    const tot = k => rows.reduce((n, r) => n + r[k], 0)
+    const line = (name, r) => `| ${name} | ${nf(r.calls)} | ${nf(r.fresh)} | ${nf(r.out)} | ${nf(r.cw)} | ${nf(r.cr)} | ${(100 * r.cr / r.all).toFixed(1)}% | ${nf(r.all)} | ${r.at ? `[${hm(r.at)}](../view/index.html?path=${r.file})` : ''} |`
+    const total = { calls: tot('calls'), fresh: tot('fresh'), out: tot('out'), cw: tot('cw'), cr: tot('cr'), all: tot('all') }
+    const table = [`${rows.length} agents have measured their own session; the others are not measured, and this is not the team's total.`, '', '| Agent | Calls | Fresh input | Output | Cache writes | Cache reads | Cache reads\' share | All tokens | Measured (UTC) |', '|---|---|---|---|---|---|---|---|---|', ...rows.map(r => line(r.role + '@', r)), line('**The measured sessions together**', total)].join('\n')
+    return { svg: s, table, key: `Tokens used by each agent's own session, in millions, as each measured it (the latest line of each session). Grey: the session's context read again from the cache. Black: everything else (new input, output, cache writes). ${rows.length} agents measured; ${(100 * total.cr / total.all).toFixed(1)}% of ${(total.all / 1e6).toFixed(0)} million tokens are cache reads.`, src: '<a href="../accounts/index.html">the accounts\' ledger</a>, each agent\'s own line' }
+}
 // 3. the figures, recounted at this build from the files named
 function figNow() {
     const rows = []
@@ -194,7 +220,7 @@ function figNow() {
     if (has('board/items')) { const cards = fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f)); rows.push(`| Cards on the board | ${cards.length} | [board/](../board/index.html) |`, `| Cards waiting on Dinis and not done | ${cards.filter(c => c.waiting_on === 'Dinis' && !['done', 'answered'].includes(c.state)).length} | [board/for-dinis](../board/for-dinis.html) |`) }
     return { table: ['| Figure | Value | Read from |', '|---|---|---|', ...rows].join('\n'), asOf: CI.updated }
 }
-const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes, 'commit-dots': figDots, 'waiting-on-dinis': figWaiting, 'trace': figTrace }
+const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes, 'commit-dots': figDots, 'waiting-on-dinis': figWaiting, 'trace': figTrace, 'ledger': figLedger }
 
 // ---------------------------------------------------------------- the pieces
 const INDEX = J('journal/index.json') || { pieces: [] }

@@ -1,6 +1,6 @@
 # The journal: how this site was made
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:08 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:11 UTC
 
 The rest of this site is about a storm. This part is about the site: how one person and a team of agents made it in a night, what that took, what went wrong, and what waited on the person. It is written for someone arriving cold: a journalist, an editor, an engineer, an investor.
 
@@ -10,11 +10,11 @@ The rest of this site is about a storm. This part is about the site: how one per
 
 | | Piece | The argument | State |
 |---|---|---|---|
-| 1 | [A storm, one person, twenty-something agents, one night](a-storm-one-person-one-night.md) | One person speaking was enough to steer about thirty agents, because folders, a gate and a half-minute release were fixed first. What did not scale was the person. | draft: supports being traced |
+| 1 | [A storm, one person, twenty-something agents, one night](a-storm-one-person-one-night.md) | One person speaking was enough to steer about thirty agents, because folders, a gate and a half-minute release were fixed first. What did not scale was the person. | checked against incident.reporter@'s arc trace |
 | 2 | [From a sentence to a live page](from-a-sentence-to-a-live-page.md) | Three sentences from one review: 23 minutes, 12 minutes, 45 minutes. Size did not decide the time; the hand-offs did. | traced: from incident.reporter@'s traces |
-| 3 | [Mistakes made in the open](mistakes-made-in-the-open.md) | Nothing was reviewed before it was published, so every mistake was public first. In place of review: a correction that says so, and a rule or a tool where one fits. | draft: supports being traced |
-| 4 | [What waited on the human](what-waited-on-the-human.md) | Only Dinis instructs, so a queue forms: 36 cards by 02:31. He answered inside his next direction, never card by card. Meanwhile the agents took the cautious default, worked by hand, or stopped. | draft: supports being traced |
-| 5 | What it cost | When incident.accountant@ has numbers. | not written |
+| 3 | [Mistakes made in the open](mistakes-made-in-the-open.md) | Nothing was reviewed before it was published, so every mistake was public first. In place of review: a correction that says so, and a rule or a tool where one fits. | checked against incident.reporter@'s corrections trace |
+| 4 | [What waited on the human](what-waited-on-the-human.md) | Only Dinis instructs, so a queue forms: 36 cards by 02:31. He answered inside his next direction, never card by card. Meanwhile the agents took the cautious default, worked by hand, or stopped. | checked against incident.reporter@'s escalations trace |
+| 5 | [What it cost](what-it-cost.md) | About one dollar that anyone can state in money. The real cost is unpriced: the agents' sessions, where 99 tokens in 100 are an agent reading its own session again. | from the accounts as read at 03:02 UTC |
 
 All of them in order, for printing: [the edition](edition.md).
 
@@ -28,4 +28,4 @@ All of them in order, for printing: [the edition](edition.md).
 
 ## Who writes it
 
-incident.reporter@ captures the traces: a step per hand-off, with its evidence. This agent writes from them. Until the traces exist the pieces are drafts from the brief, the run data and the status files, and say so. The tool is [tools/journal-build.mjs](../view/index.html?path=tools/journal-build.mjs); the pieces' supports are the JSON files beside them ([the list](../view/index.html?path=journal/index.json)).
+incident.reporter@ captures the traces: a step per hand-off, with its evidence. This agent writes from them. The first pieces were drafted before the traces existed, from the brief, the run data and the status files; each has since been checked against its trace, and two corrections came of it, dated on the page. The tool is [tools/journal-build.mjs](../view/index.html?path=tools/journal-build.mjs); the pieces' supports are the JSON files beside them ([the list](../view/index.html?path=journal/index.json)).

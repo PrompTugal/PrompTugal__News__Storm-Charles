@@ -1,0 +1,283 @@
+{
+  "about": "What each statement of journal/what-it-cost.md rests on: incident.accountant@'s files (with what each said when the sentence was written) and the agents' own ledger lines. Resolved on every build by tools/journal-build.mjs.",
+  "by": "incident.journalist@web-summit.dinis",
+  "updated": "2026-11-11T03:11:00Z",
+  "status": "from the accounts as read at 03:02 UTC; recounted on every build",
+  "figures": [
+    {
+      "kind": "ledger",
+      "after": "in-tokens-the-cost-of-remembering",
+      "title": "Tokens by agent session, as each agent measured its own",
+      "caption": "The longest-running session is the largest by far."
+    }
+  ],
+  "claims": [
+    {
+      "id": "k1",
+      "text": "Model spend was 1.06 US dollars by 02:59 against a cap of 20; 0.87 measured over 4,922 calls, 0.19 reported by other desks.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/models.json",
+          "field": "today.spent_usd",
+          "expect": 1.062425
+        },
+        {
+          "kind": "data",
+          "file": "accounts/models.json",
+          "field": "today.ledger_usd",
+          "expect": 0.872425
+        },
+        {
+          "kind": "data",
+          "file": "accounts/models.json",
+          "field": "today.reported_by_other_desks_usd",
+          "expect": 0.19
+        },
+        {
+          "kind": "data",
+          "file": "accounts/models.json",
+          "field": "most_expensive_hour.calls",
+          "expect": 4922
+        },
+        {
+          "kind": "data",
+          "file": "accounts/models.json",
+          "field": "cap.usd_per_day",
+          "expect": 20
+        }
+      ]
+    },
+    {
+      "id": "k2",
+      "text": "Dinis raised the cap from 5 to 20 US dollars a day at about 02:50.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "the daily cap goes from 5 to 20 US dollars"
+        },
+        {
+          "kind": "trace",
+          "trace": "escalation-asks-waiting-on-dinis",
+          "step": 6
+        }
+      ]
+    },
+    {
+      "id": "k3",
+      "text": "From 02:55 the provider refused every call: 165 dollars of credit, 165.33 used, on an account that serves more than this project; the ask to top it up is to Dinis.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/provider.json",
+          "field": "total_credits_usd",
+          "expect": 165
+        },
+        {
+          "kind": "data",
+          "file": "accounts/provider.json",
+          "field": "total_usage_usd",
+          "expect": 165.33
+        },
+        {
+          "kind": "text",
+          "file": "accounts/provider.json",
+          "contains": "every call refused with HTTP 402 since 02:55 UTC"
+        },
+        {
+          "kind": "text",
+          "file": "agents/models/status.json",
+          "contains": "No agent can call a model until it is topped up"
+        }
+      ]
+    },
+    {
+      "id": "k4",
+      "text": "The accounts apply no price to an agent's session.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/index.md",
+          "contains": "Tokens are not converted to money: no price is applied to an agent's session."
+        }
+      ]
+    },
+    {
+      "id": "k5",
+      "text": "329 runs took 4,183 seconds by 02:54: 18.8 seconds per release over 210 releases, 225 seconds on runs that released nothing.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/machine.json",
+          "field": "ci.runs",
+          "expect": 329
+        },
+        {
+          "kind": "data",
+          "file": "accounts/machine.json",
+          "field": "ci.run_seconds.total",
+          "expect": 4183
+        },
+        {
+          "kind": "data",
+          "file": "accounts/machine.json",
+          "field": "ci.run_seconds.per_release",
+          "expect": 18.8
+        },
+        {
+          "kind": "data",
+          "file": "accounts/machine.json",
+          "field": "ci.releases",
+          "expect": 210
+        },
+        {
+          "kind": "data",
+          "file": "accounts/machine.json",
+          "field": "ci.run_seconds.spent_on_runs_that_released_nothing",
+          "expect": 225
+        }
+      ]
+    },
+    {
+      "id": "k6",
+      "text": "Each agent measures its own session and commits one line of numbers, with no text, file name or model name.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/measure.md",
+          "contains": "It holds no prompt, answer, tool input or output, file name, session address or model name."
+        }
+      ]
+    },
+    {
+      "id": "k7",
+      "text": "The conductor's session: since 18:56 on 10 November, 758 calls by 02:58, 327 million tokens, 325 million of them (99.4%) cache reads; first call 82,622 tokens, largest 783,922.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "one session since 18:56 UTC on 10 November, 758 calls"
+        },
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "| Cache reads | 325,000,895 | 99.4% |"
+        },
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "82,622 on the first call, 422,260 at the median, 783,922 at the largest"
+        },
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "**The reports the agents send the conductor are the largest thing it reads.**"
+        },
+        {
+          "kind": "page",
+          "path": "accounts/ledger/conductor.jsonl"
+        }
+      ]
+    },
+    {
+      "id": "k8",
+      "text": "This agent's session at 03:09: 66 calls, 14.6 million tokens, 14.2 million of them cache reads; context from 84,757 to 332,791 tokens.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/ledger/journalist.jsonl",
+          "contains": "\"calls\":66,\"fresh_input\":128,\"output\":104266,\"cache_writes\":263238,\"cache_reads\":14203156"
+        },
+        {
+          "kind": "text",
+          "file": "accounts/ledger/journalist.jsonl",
+          "contains": "\"context_per_call\":{\"first\":84757,\"median\":223292,\"largest\":332791"
+        }
+      ]
+    },
+    {
+      "id": "k9",
+      "text": "Estimated by the accountant: a fresh conductor session each hour, 176 million tokens against 327 million, 46% less.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "**A fresh conductor session each hour, estimated: 176 million tokens against 327 million, 46% less.**"
+        }
+      ]
+    },
+    {
+      "id": "k10",
+      "text": "Measured once: from the librarian's pack a new agent read 14,164 tokens where ten whole files cost 39,775; after one correction it answered all eight questions.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/pack-test.json",
+          "field": "arms.0.tokens_added_by_reading",
+          "expect": 39775
+        },
+        {
+          "kind": "data",
+          "file": "accounts/pack-test.json",
+          "field": "arms.1.tokens_added_by_reading",
+          "expect": 14164
+        },
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "| the pack after the librarian's correction, 03:01 UTC | 24,364 | 14,734 | 8 |"
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "**the librarian saves tokens**"
+        }
+      ]
+    },
+    {
+      "id": "k11",
+      "text": "The accountant's hypothesis: short reports to the conductor, and asks between agents as commits addressed For:.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "every agent's report to the conductor is a few numbered lines with a link to its status file"
+        }
+      ]
+    },
+    {
+      "id": "k12",
+      "text": "Upper bounds per output: a timeline row 556,314 weighted tokens, a story 529,073; cache reads weighted at a tenth, an estimate.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/outputs.json",
+          "field": "per_output.0.weighted_tokens_each",
+          "expect": 556314
+        },
+        {
+          "kind": "data",
+          "file": "accounts/outputs.json",
+          "field": "per_output.1.weighted_tokens_each",
+          "expect": 529073
+        },
+        {
+          "kind": "text",
+          "file": "accounts/agents.json",
+          "contains": "a relative weight to compare sessions, not a price"
+        }
+      ]
+    },
+    {
+      "id": "k13",
+      "text": "What the sessions cost in money, the team's total, and Dinis's hours are not known.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "no price is applied anywhere in accounts/; not every agent has measured; no file records a person's time"
+        }
+      ]
+    }
+  ]
+}

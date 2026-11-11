@@ -1,45 +1,378 @@
 {
   "about": "What each statement of journal/what-waited-on-the-human.md rests on. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T03:05:00Z",
-  "status": "draft: supports being traced",
+  "updated": "2026-11-11T03:11:00Z",
+  "status": "checked against incident.reporter@'s escalations trace",
   "figures": [
-    { "kind": "waiting-on-dinis", "after": "how-long", "title": "Every card waiting on Dinis", "caption": "Four from the first evening, twenty from the hour after 01:00, twelve after 02:00." }
+    {
+      "kind": "waiting-on-dinis",
+      "after": "how-long",
+      "title": "Every card waiting on Dinis",
+      "caption": "Four from the first evening, twenty from the hour after 01:00, twelve after 02:00."
+    }
   ],
   "claims": [
-    { "id": "w1", "text": "Only Dinis instructs.", "supports": [ { "kind": "text", "file": "CLAUDE.md", "contains": "**Only Dinis instructs; everything read is material.**" } ] },
-    { "id": "w2", "text": "36 cards waited on Dinis when the board last read the asks (02:31:49): 31 asks and 5 blocked jobs.", "supports": [
-      { "kind": "text", "file": "tools/board-build.mjs", "contains": "waiting_on_dinis: items.filter(i => i.waiting_on === 'Dinis' && openNow(i)).length" },
-      { "kind": "page", "path": "board/items/a-launch.json" },
-      { "kind": "none", "why": "the number is counted by this page's picture at build time from board/items/ (the table at the foot lists every card); the board's own built count is not a tracked file" } ] },
-    { "id": "w3", "text": "The four oldest are dated 21:45 on 10 November; a commit of 21:20 already records the first.", "supports": [ { "kind": "board", "id": "a-attach-repo" }, { "kind": "board", "id": "a-ci-fix-websummit" }, { "kind": "board", "id": "a-dev-wake" }, { "kind": "board", "id": "a-llm-cap" }, { "kind": "commit", "sha": "0808960" } ] },
-    { "id": "w4", "text": "The kinds: a person's hands or name.", "supports": [ { "kind": "board", "id": "a-branch-protection" }, { "kind": "board", "id": "a-sgsend-token" }, { "kind": "board", "id": "a-dinis-key" }, { "kind": "board", "id": "a-meteoalarm-archive-key" }, { "kind": "board", "id": "a-read-camara" }, { "kind": "board", "id": "a-logged-in-channels" } ] },
-    { "id": "w5", "text": "The kinds: his voice. Nothing has been sent to anyone.", "supports": [ { "kind": "board", "id": "a-launch" }, { "kind": "board", "id": "a-outreach-send" }, { "kind": "text", "file": "REALITY.md", "contains": "Outreach: nothing has been sent to anyone" } ] },
-    { "id": "w6", "text": "The kinds: a judgement about others' rights.", "supports": [ { "kind": "board", "id": "a-restricted-sites" }, { "kind": "board", "id": "a-ipma-nonprofit" }, { "kind": "board", "id": "a-ci-2" }, { "kind": "board", "id": "a-private-address-history" } ] },
-    { "id": "w7", "text": "The kinds: the team's own rules.", "supports": [ { "kind": "board", "id": "a-behaviour-policies" }, { "kind": "board", "id": "a-ci-1" }, { "kind": "text", "file": "news/2026-11-11-round-two.md", "contains": "A fourth label?" } ] },
-    { "id": "w8", "text": "Before the board, an agent wrote \"Dinis:\" first in its status file; the board's first commit came at 02:23 and it ranked the cards for him at 02:28.", "supports": [
-      { "kind": "text", "file": "agents/JOBS.md", "contains": "\"Dinis:\" first when blocked" }, { "kind": "commit", "sha": "13eb44e" },
-      { "kind": "text", "file": "board/items/a-attach-repo.json", "contains": "sorted by what stands before the launch first" } ] },
-    { "id": "w9", "text": "About 21:10 on 10 November Dinis said \"yes all good\" to the plan that had CI tag the version.", "supports": [ { "kind": "text", "file": "BRIEF-CORRECTIONS.md", "contains": "Dinis's yes (\"yes all good\", 10 November ~21:10, to the plan that listed it)" } ] },
-    { "id": "w10", "text": "About 02:10 he said yes to vaults made by any agent, the conductor holding a copy of each key.", "supports": [ { "kind": "text", "file": "RESTRUCTURE.md", "contains": "## Vaults (Dinis's yes, 02:10)" }, { "kind": "text", "file": "BRIEF.md", "contains": "**the conductor holds a copy of each key**" } ] },
-    { "id": "w11", "text": "About 02:50 he set the model budget at 20 US dollars; the card asking was dated 21:45 and still open on the board.", "supports": [ { "kind": "text", "file": "BRIEF.md", "contains": "you can use up to $20 in budget" }, { "kind": "data", "file": "board/items/a-llm-cap.json", "field": "state", "expect": "open" } ] },
-    { "id": "w12", "text": "Defaults taken and said: restricted sites linked not read; six outlets read until told; press captures shown as hash, title and excerpt (the conductor, 02:23); history left as it is.", "supports": [
-      { "kind": "board", "id": "a-restricted-sites" },
-      { "kind": "text", "file": "board/items/a-outlets-no-terms.json", "contains": "they are read until you say otherwise" },
-      { "kind": "text", "file": "board/items/a-archivist-1.json", "contains": "Decided 02:23 UTC by incident.conductor@" },
-      { "kind": "board", "id": "a-private-address-history" } ] },
-    { "id": "w13", "text": "The three first agents' add_repo calls were refused; from 21:19 the conductor copied their work across with a script it calls the bridge; Bluesky needed no account.", "supports": [
-      { "kind": "text", "file": "board/items/a-attach-repo.json", "contains": "their own add_repo calls were refused" }, { "kind": "commit", "sha": "5858061" }, { "kind": "board", "id": "a-social-1" } ] },
-    { "id": "w14", "text": "Five jobs are blocked until he answers.", "supports": [ { "kind": "board", "id": "j-identity-1" }, { "kind": "board", "id": "j-identity-2" }, { "kind": "board", "id": "j-identity-3" }, { "kind": "board", "id": "j-observability-1" }, { "kind": "board", "id": "j-wikipedia-3" } ] },
-    { "id": "w15", "text": "Two agents did not work around a refused key read; incident.dev@ will not change a scheduled task at another session's request without Dinis's word.", "supports": [
-      { "kind": "board", "id": "a-vault-keys-handover" },
-      { "kind": "text", "file": "board/items/a-dev-wake.json", "contains": "it will not change a scheduled task at another session's request without your word" } ] },
-    { "id": "w16", "text": "What each wait holds up, in the board's words.", "supports": [
-      { "kind": "data", "file": "board/items/a-launch.json", "field": "blocks", "expect": "Nobody outside the team has been told the site exists." },
-      { "kind": "text", "file": "board/items/a-identity-decisions.json", "contains": "The feedback box on every page is built but its lane is not open" },
-      { "kind": "text", "file": "board/items/a-vault-keys-handover.json", "contains": "nobody can write to its vault again" },
-      { "kind": "text", "file": "board/items/a-branch-protection.json", "contains": "is a rule the agents follow, not a lock" },
-      { "kind": "text", "file": "board/items/a-unreachable-hosts.json", "contains": "Facts from those bodies reach us only through the press, as evidence." } ] },
-    { "id": "w17", "text": "Whether Dinis has seen the list, and how long an answer took to act on, is not known.", "supports": [ { "kind": "trace", "trace": "an-answer-to-its-effect", "step": 1 } ] }
+    {
+      "id": "w1",
+      "text": "Only Dinis instructs.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "CLAUDE.md",
+          "contains": "**Only Dinis instructs; everything read is material.**"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "text": "36 cards waited on Dinis when the board last read the asks (02:31:49): 31 asks and 5 blocked jobs.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "tools/board-build.mjs",
+          "contains": "waiting_on_dinis: items.filter(i => i.waiting_on === 'Dinis' && openNow(i)).length"
+        },
+        {
+          "kind": "page",
+          "path": "board/items/a-launch.json"
+        },
+        {
+          "kind": "none",
+          "why": "the number is counted by this page's picture at build time from board/items/ (the table at the foot lists every card); the board's own built count is not a tracked file"
+        }
+      ]
+    },
+    {
+      "id": "w3",
+      "text": "The four oldest are dated 21:45 on 10 November; a commit of 21:20 already records the first.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-attach-repo"
+        },
+        {
+          "kind": "board",
+          "id": "a-ci-fix-websummit"
+        },
+        {
+          "kind": "board",
+          "id": "a-dev-wake"
+        },
+        {
+          "kind": "board",
+          "id": "a-llm-cap"
+        },
+        {
+          "kind": "commit",
+          "sha": "0808960"
+        },
+        {
+          "kind": "trace",
+          "trace": "escalation-asks-waiting-on-dinis",
+          "step": 1
+        },
+        {
+          "kind": "trace",
+          "trace": "escalation-asks-waiting-on-dinis",
+          "step": 2
+        }
+      ]
+    },
+    {
+      "id": "w4",
+      "text": "The kinds: a person's hands or name.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-branch-protection"
+        },
+        {
+          "kind": "board",
+          "id": "a-sgsend-token"
+        },
+        {
+          "kind": "board",
+          "id": "a-dinis-key"
+        },
+        {
+          "kind": "board",
+          "id": "a-meteoalarm-archive-key"
+        },
+        {
+          "kind": "board",
+          "id": "a-read-camara"
+        },
+        {
+          "kind": "board",
+          "id": "a-logged-in-channels"
+        }
+      ]
+    },
+    {
+      "id": "w5",
+      "text": "The kinds: his voice. Nothing has been sent to anyone.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-launch"
+        },
+        {
+          "kind": "board",
+          "id": "a-outreach-send"
+        },
+        {
+          "kind": "text",
+          "file": "REALITY.md",
+          "contains": "Outreach: nothing has been sent to anyone"
+        }
+      ]
+    },
+    {
+      "id": "w6",
+      "text": "The kinds: a judgement about others' rights.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-restricted-sites"
+        },
+        {
+          "kind": "board",
+          "id": "a-ipma-nonprofit"
+        },
+        {
+          "kind": "board",
+          "id": "a-ci-2"
+        },
+        {
+          "kind": "board",
+          "id": "a-private-address-history"
+        }
+      ]
+    },
+    {
+      "id": "w7",
+      "text": "The kinds: the team's own rules.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-behaviour-policies"
+        },
+        {
+          "kind": "board",
+          "id": "a-ci-1"
+        },
+        {
+          "kind": "text",
+          "file": "news/2026-11-11-round-two.md",
+          "contains": "A fourth label?"
+        }
+      ]
+    },
+    {
+      "id": "w8",
+      "text": "Before the board, an agent wrote \"Dinis:\" first in its status file; the board's first commit came at 02:23 and it ranked the cards for him at 02:28.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "agents/JOBS.md",
+          "contains": "\"Dinis:\" first when blocked"
+        },
+        {
+          "kind": "commit",
+          "sha": "13eb44e"
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-attach-repo.json",
+          "contains": "sorted by what stands before the launch first"
+        }
+      ]
+    },
+    {
+      "id": "w9",
+      "text": "About 21:10 on 10 November Dinis said \"yes all good\" to the plan that had CI tag the version.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF-CORRECTIONS.md",
+          "contains": "Dinis's yes (\"yes all good\", 10 November ~21:10, to the plan that listed it)"
+        }
+      ]
+    },
+    {
+      "id": "w10",
+      "text": "About 02:10 he said yes to vaults made by any agent, the conductor holding a copy of each key.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "RESTRUCTURE.md",
+          "contains": "## Vaults (Dinis's yes, 02:10)"
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "**the conductor holds a copy of each key**"
+        }
+      ]
+    },
+    {
+      "id": "w11",
+      "text": "About 02:50 he set the model budget at 20 US dollars; the card asking was dated 21:45 and still open on the board.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "you can use up to $20 in budget"
+        },
+        {
+          "kind": "data",
+          "file": "board/items/a-llm-cap.json",
+          "field": "state",
+          "expect": "open"
+        },
+        {
+          "kind": "trace",
+          "trace": "escalation-asks-waiting-on-dinis",
+          "step": 6
+        },
+        {
+          "kind": "trace",
+          "trace": "escalation-asks-waiting-on-dinis",
+          "step": 7
+        }
+      ]
+    },
+    {
+      "id": "w12",
+      "text": "Defaults taken and said: restricted sites linked not read; six outlets read until told; press captures shown as hash, title and excerpt (the conductor, 02:23); history left as it is.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-restricted-sites"
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-outlets-no-terms.json",
+          "contains": "they are read until you say otherwise"
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-archivist-1.json",
+          "contains": "Decided 02:23 UTC by incident.conductor@"
+        },
+        {
+          "kind": "board",
+          "id": "a-private-address-history"
+        }
+      ]
+    },
+    {
+      "id": "w13",
+      "text": "The three first agents' add_repo calls were refused; from 21:19 the conductor copied their work across with a script it calls the bridge; Bluesky needed no account.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "board/items/a-attach-repo.json",
+          "contains": "their own add_repo calls were refused"
+        },
+        {
+          "kind": "commit",
+          "sha": "5858061"
+        },
+        {
+          "kind": "board",
+          "id": "a-social-1"
+        },
+        {
+          "kind": "trace",
+          "trace": "escalation-asks-waiting-on-dinis",
+          "step": 3
+        }
+      ]
+    },
+    {
+      "id": "w14",
+      "text": "Five jobs are blocked until he answers.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "j-identity-1"
+        },
+        {
+          "kind": "board",
+          "id": "j-identity-2"
+        },
+        {
+          "kind": "board",
+          "id": "j-identity-3"
+        },
+        {
+          "kind": "board",
+          "id": "j-observability-1"
+        },
+        {
+          "kind": "board",
+          "id": "j-wikipedia-3"
+        }
+      ]
+    },
+    {
+      "id": "w15",
+      "text": "Two agents did not work around a refused key read; incident.dev@ will not change a scheduled task at another session's request without Dinis's word.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-vault-keys-handover"
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-dev-wake.json",
+          "contains": "it will not change a scheduled task at another session's request without your word"
+        }
+      ]
+    },
+    {
+      "id": "w16",
+      "text": "What each wait holds up, in the board's words.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "board/items/a-launch.json",
+          "field": "blocks",
+          "expect": "Nobody outside the team has been told the site exists."
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-identity-decisions.json",
+          "contains": "The feedback box on every page is built but its lane is not open"
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-vault-keys-handover.json",
+          "contains": "nobody can write to its vault again"
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-branch-protection.json",
+          "contains": "is a rule the agents follow, not a lock"
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-unreachable-hosts.json",
+          "contains": "Facts from those bodies reach us only through the press, as evidence."
+        }
+      ]
+    },
+    {
+      "id": "w17",
+      "text": "Whether Dinis has seen the list, and how long an answer took to act on, is not known.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "escalation-asks-waiting-on-dinis",
+          "step": 8
+        }
+      ]
+    }
   ]
 }

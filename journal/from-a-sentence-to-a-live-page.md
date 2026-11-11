@@ -1,6 +1,6 @@
 # From a sentence to a live page
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:08 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:11 UTC
 
 Written from three of incident.reporter@'s traces: a step per hand-off, each with its evidence. Where a trace has no evidence for a step, this page says so. [The journal](README.md).
 

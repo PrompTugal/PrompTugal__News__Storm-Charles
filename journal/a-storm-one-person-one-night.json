@@ -1,8 +1,8 @@
 {
   "about": "What each statement of journal/a-storm-one-person-one-night.md rests on. Resolved on every build by tools/journal-build.mjs (the kinds of support are listed at the top of that file); the resolved copy is served as a-storm-one-person-one-night.resolved.json.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T03:03:00Z",
-  "status": "draft: supports being traced",
+  "updated": "2026-11-11T03:11:00Z",
+  "status": "checked against incident.reporter@'s arc trace",
   "figures": [
     {
       "kind": "commits-by-hour",
@@ -108,8 +108,13 @@
         },
         {
           "kind": "trace",
-          "trace": "first-word-to-first-page",
-          "step": 1
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 5
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 6
         }
       ]
     },
@@ -146,16 +151,62 @@
           "kind": "text",
           "file": "BRIEF.md",
           "contains": "## Dinis, 11 November 2026, ~02:50 UTC: the model budget"
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 11
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 16
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 18
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 20
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 22
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 28
         }
       ]
     },
     {
       "id": "a5",
-      "text": "Twice the commit that records a direction is stamped before the time the brief gives it (23:35:36 for \"~23:40\"; 02:49:18 for \"~02:50\").",
+      "text": "Each of the six directions from 23:40 on is recorded by a commit stamped before the time the brief gives it (23:35:36, 00:29:44, 01:26:27, 02:06:42, 02:15:04, 02:49:18).",
       "supports": [
         {
           "kind": "commit",
           "sha": "cdaa2d7"
+        },
+        {
+          "kind": "commit",
+          "sha": "ce7d8f3"
+        },
+        {
+          "kind": "commit",
+          "sha": "5b880fb"
+        },
+        {
+          "kind": "commit",
+          "sha": "659dd79"
+        },
+        {
+          "kind": "commit",
+          "sha": "9d3a54c"
         },
         {
           "kind": "commit",
@@ -165,11 +216,16 @@
     },
     {
       "id": "a6",
-      "text": "The directions of 00:30 and 01:28 are not recorded as commits of their own.",
+      "text": "RESTRUCTURE.md, the contract, was committed 45 seconds after the 02:10 direction was recorded.",
       "supports": [
         {
-          "kind": "none",
-          "why": "no commit in the run data names either direction; they are in BRIEF.md, whose history the build does not read"
+          "kind": "commit",
+          "sha": "f8297d8"
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 21
         }
       ]
     },
@@ -269,6 +325,16 @@
         {
           "kind": "run",
           "run": 2
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 7
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 8
         }
       ]
     },
@@ -319,6 +385,11 @@
         {
           "kind": "commit",
           "sha": "9b42a2e"
+        },
+        {
+          "kind": "trace",
+          "trace": "arc-voice-memo-to-two-faces",
+          "step": 13
         }
       ]
     },
@@ -599,11 +670,11 @@
     },
     {
       "id": "f1",
-      "text": "What it cost is not known: the accountant has published nothing yet.",
+      "text": "What it cost is the journal's fifth piece.",
       "supports": [
         {
-          "kind": "none",
-          "why": "accounts/ does not exist when this was written"
+          "kind": "page",
+          "path": "journal/what-it-cost.md"
         }
       ]
     }
@@ -612,6 +683,11 @@
     {
       "at_utc": "2026-11-11T03:03:00Z",
       "what": "Corrected: the count of cards waiting on Dinis (77, 'more than seventy') was this agent's own and matched every agent address ending in '.dinis'; the board's figure was 36. 'The oldest five' is four. Live with the wrong figure from v0.1.350 for a few minutes.",
+      "by": "incident.journalist@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T03:10:00Z",
+      "what": "Corrected from incident.reporter@'s arc trace: the directions of 00:30 and 01:28 do have recording commits (ce7d8f3, 5b880fb); all six directions are stamped before the brief's time, not two. The cost section now points to the fifth piece.",
       "by": "incident.journalist@web-summit.dinis"
     }
   ]

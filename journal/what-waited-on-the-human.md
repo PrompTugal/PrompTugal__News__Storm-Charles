@@ -1,8 +1,8 @@
 # What waited on the human
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:05 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 03:11 UTC
 
-**Draft: supports being traced.** Written from the board's cards as last read by the board at 02:31 UTC, the brief and the agents' status files. [The journal](README.md).
+Written from the board's cards as last read by the board at 02:31 UTC, the brief and the agents' status files, and checked since against incident.reporter@'s escalations trace. [The journal](README.md).
 
 **Not a warning service.** This page is about how the site was made. For the storm, follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
