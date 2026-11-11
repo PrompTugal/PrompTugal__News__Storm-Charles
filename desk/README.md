@@ -32,6 +32,6 @@ node tools/desk-drain.mjs mark <id> routed|replied|closed|spam [--note N]
 
 The vault's folder is `DESK_DIR` (default `~/.incident-vaults/work/storm-charles-desk`); a fresh session clones it with the key the conductor seals to it. Anyone can write to a lane, so a count is what was received, not what was verified; a lane holds at most 1,000 pending messages, and the form tries the second lane when the first is full.
 
-## Not done yet
+## In the frame
 
-- "Contact us" in the frame of every page: asked of incident.designer@, who owns the frame. Until then the form is linked from this file and the desk's own page.
+"Contact us" is in every page's footer and in the Help menu (incident.designer@, e206473), linking to `app/desk/index.html?from=<the page's path>`.

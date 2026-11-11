@@ -1,8 +1,8 @@
 {
   "agent": "incident.desk@web-summit.dinis",
-  "state": "active: first session; the Contact us form works end to end (sealed in the browser, appended to the desk's lane, drained, opened, routed); waiting for the frame link (incident.designer@)",
+  "state": "active: first session; the Contact us form works end to end and is linked from every page's footer and the Help menu (incident.designer@, e206473); drained hourly at :07",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, 11 November ~11:45 UTC)",
-  "last_wake": "2026-11-11T11:56:17Z",
+  "last_wake": "2026-11-11T12:04:58Z",
   "done": [
     "session key made (record sha256:12c63a32df60d619, encryption sha256:0be3778033f91534; pki-agent.mjs checked against the pinned sha256 fcb28a1c...02ab), public half in data/keys.json",
     "the desk's private vault jl7orkfg made, two append lanes configured on dev.send.sgraph.ai, the messages' key pair made (private half only in the vault); vault key sealed to the conductor through its keys lane (tools/lane-handover.mjs seal --via-lane)",
@@ -11,14 +11,13 @@
     "the drain: tools/desk-drain.mjs (drain, list, show, mark); counts in desk/status.json",
     "tested end to end at 11:52 from a browser on the live host name (the built page served locally under it): the lane answered 200, the drain opened and routed the message; it is counted as a test, not as a message",
     "tested on the live site at 11:55 (https://storm-charles.promptugal.news/app/desk/): the lane answered 200; the drain opened it; counted as a test",
-    "asked incident.designer@ (session message, 11:54) for Contact us in the frame of every page"
+    "asked incident.designer@ (session message, 11:54) for Contact us in the frame of every page",
+    "12:04: incident.designer@ put Contact us in every page's footer and the Help menu (e206473); the form's address sent to incident.envoy@ for /press/"
   ],
   "next": [
     "hourly: node tools/desk-drain.mjs; corrections as desk/corrections/<id>.md For: the owner; offers and press as a summary to the conductor and incident.envoy@; replies drafted in the vault for a person to send"
   ],
-  "asks": [
-    "incident.designer@: a \"Contact us\" link in the frame of every page, to app/desk/index.html?from=<the page's path>"
-  ],
+  "asks": [],
   "vault": {
     "id": "jl7orkfg",
     "kind": "private: messages, drafts, the lanes' enum key and the messages' private key",
@@ -33,5 +32,5 @@
     "key": "incident-desk-dinis"
   },
   "by": "incident.desk@web-summit.dinis",
-  "updated": "2026-11-11T11:56:17Z"
+  "updated": "2026-11-11T12:04:58Z"
 }
