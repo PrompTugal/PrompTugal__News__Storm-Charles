@@ -1,0 +1,50 @@
+--- a/.github/workflows/deploy.yml	2026-11-11 23:20:46.283300894 +0000
++++ b/.github/workflows/deploy.yml	2026-11-11 23:20:46.337176867 +0000
+@@ -36,12 +36,13 @@
+       - name: Still dev's newest push?
+         id: newest
+         # a run GitHub held back (20:17 to 21:02 on 11 November: 24 runs queued with no jobs) must never deploy an older commit
+-        # over a newer one: if dev has moved on, this run builds and gates but does not deploy (the newer push's run deploys)
++        # over a newer one: if dev has moved on, this run neither builds nor deploys (the newer push's run builds, gates and deploys
++        # dev's head, which contains this commit; the pushing agent's release.sh already gated it): it gives the pages group back in seconds
+         run: |
+           head=$(git ls-remote origin refs/heads/dev | cut -f1)
+           if [ -n "$head" ] && [ "$head" != "$GITHUB_SHA" ] && [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+             echo "stale=1" >> "$GITHUB_OUTPUT"
+-            echo "::notice title=superseded::$GITHUB_SHA is not dev's head ($head): built and gated, not deployed"
++            echo "::notice title=superseded::$GITHUB_SHA is not dev's head ($head): not built, not deployed"
+           fi
+       - name: Version
+         id: version
+@@ -51,6 +52,7 @@
+           echo "PUSHED_AT=${{ github.event.head_commit.timestamp }}" >> "$GITHUB_ENV"
+           echo "version=$v" >> "$GITHUB_OUTPUT"
+       - name: Build and gate (the gate builds once; must print OK)
++        if: steps.newest.outputs.stale != '1'
+         run: node admin/build/validate.mjs
+       # The brief's PDFs (incident.brief@'s tools/brief-pdf.mjs; ci/patches/README.md). Never in git: rendered here from the
+       # built page and served beside it. Every deploy replaces the whole site, so they are kept in a cache keyed on the
+@@ -58,13 +60,14 @@
+       # change many times an hour): a push that does not touch the brief only copies them (a second or two); a push that
+       # publishes or edits an edition installs Chromium and renders. Nothing here can fail the deploy: a miss that cannot render serves no PDF.
+       - id: briefcache
++        if: steps.newest.outputs.stale != '1'
+         continue-on-error: true
+         uses: actions/cache@v4
+         with:
+           path: .brief-pdf
+           key: brief-pdf-v1-${{ hashFiles('brief/**', 'tools/brief-make.mjs', 'tools/brief-pdf.mjs') }}
+       - name: Brief PDFs, rendered (only when the brief changed)
+-        if: steps.briefcache.outputs.cache-hit != 'true'
++        if: steps.newest.outputs.stale != '1' && steps.briefcache.outputs.cache-hit != 'true'
+         continue-on-error: true
+         timeout-minutes: 2
+         run: |
+@@ -73,6 +76,7 @@
+           ls .brief-pdf/*.pdf >/dev/null 2>&1 || rm -rf .brief-pdf   # nothing rendered: nothing to cache, the next push tries again
+           rm -rf node_modules
+       - name: Brief PDFs, beside the page
++        if: steps.newest.outputs.stale != '1'
+         continue-on-error: true
+         run: |
+           if ls .brief-pdf/*.pdf >/dev/null 2>&1; then cp .brief-pdf/*.pdf _site/brief/ && ls -l _site/brief/*.pdf; else echo "::warning title=brief-pdf::no PDF in this deploy"; fi

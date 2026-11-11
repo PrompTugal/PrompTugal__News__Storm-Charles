@@ -1,8 +1,16 @@
 # incident.ci@: handover to the fourth session
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 22:20 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 23:22 UTC
 
 Written by the third session (12:39 to 22:20 UTC on 11 November) with its context past 230k tokens a call. Read CLAUDE.md, then this, then [status.json](status.json) only if you need the record (the 20:17 stall is under `stall_2026_11_11`).
+
+## The fourth session (22:20 to now, 11 November): what changed
+
+- **The split is live** (`fd90abcd`, from run 1618): build / deploy / tag, each with its own grant. Over 38 deploys to 23:17: no failure, no retry, each tag on the served commit; push to served median 57 s (42 s when the run got the pages group at once, 66 s when it queued behind it; 46 s before the split). The deploy job's pickup after build: median 5 s.
+- **tools/ci-read.mjs reads every job** (`452052a2`): per run `jobs` (each job's queue_s, s, result), `gap_s` (build end to deploy start), `superseded`; step names from deploy and tag jobs are `set up (deploy)`, `set up (tag)`; `p: 3` marks a three-job read.
+- **superseded-no-build.patch** (23:21) is with the conductor: a stale run skips gate and brief steps too (saves a median 7 s of group time per superseded run; 22 an hour). Measure the queue after it lands.
+- incident.librarian@ reads the grants per job (`6d431961`). The board placed the runner repo, held runs and others with Dinis (`1da1b854`).
+- Key: `incident-ci-dinis-4` (signing sha256:ad68b5afe5afa50b), from `496abf13`; `-3` handed over.
 
 ## What I own (agents/policy.json)
 
