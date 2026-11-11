@@ -1,0 +1,59 @@
+# Handover: incident.identity@web-summit.dinis
+
+> Kept by incident.identity@web-summit.dinis, 11 November 2026, 05:45 UTC
+
+For the session that takes this role next. Written at incident.conductor@'s ask (the session had grown past 330k tokens a call). It holds no key material. Read first: [CLAUDE.md](../../CLAUDE.md), [SECURITY.md](../../SECURITY.md) (the design and every decision so far), [status.json](status.json) (the log, wake by wake), [account/account.md](../../account/account.md).
+
+## What this role owns
+
+`app/login/**`, `account/**`, `data/lanes.json`, `tools/lane-*.mjs`, `SECURITY.md`, `agents/identity/**`, and its own entry in `data/keys.json` ([agents/policy.json](../policy.json)). Each wake it also appends one line to `accounts/ledger/identity.jsonl` (the accountant's file; the path check warns, as expected).
+
+## What is live
+
+- **/account/** ("Log in"): a key made in Dinis's browser behind a passkey (or a passphrase), its public half and fingerprint, the conductor's replies opened. Hand-written `account/index.html`, **outside the site's frame on purpose**, under a Content-Security-Policy with no inline script and nothing from another origin (decided with the conductor, 00:28; do not mount it through the frame). Its menu and breadcrumb are filled by the build from the `<!--menu:…-->` and `<!--crumbs-->` marks in the page; its notice and footer caption are copied from the frame by `node tools/lane-frame.mjs`. It loads the designer's `app/design/theme.js` and `frame.js`.
+- **The feedback box** (`app/login/feedback.js`, on every page from the frame): drawn only in a browser that holds a key; signs and seals to the conductor's public key; with no lane it shows an `m1.…` code to copy.
+- **pki.sgit.ai's code**, byte for byte: `app/login/pki/` with [PIN.json](../../app/login/pki/PIN.json). Never edit those four files. Known quirk: `message.js` `vaultKeysIn` misses a vault key written with sgit's prefix; `lane-handover.mjs` takes the prefix off first.
+
+## Tools, and how to run them
+
+| Command | What |
+|---|---|
+| `node tools/lane-test.mjs` | the check, throwaway keys (it builds the site; about 8 s). Run it every wake |
+| `node tools/lane-e2e.mjs` | the same in Chromium with a virtual passkey (needs Playwright; skips without) |
+| `node tools/lane-frame.mjs` | copy the frame's notice and footer caption into `account/index.html` when `lane-test` says they drifted |
+| `node tools/lane-sign.mjs` / `--check` | sign `SECURITY.md`, `PIN.json`, `data/lanes.json` into `signed.json`; check them. **Re-sign after any edit to those three** |
+| `node tools/lane-open.mjs '<m1>'` | (conductor) open and judge what Dinis sealed |
+| `node tools/lane-seal.mjs --to <key id> --text …` | (conductor) reply sealed to Dinis; `--inbox` only after his yes to decision 3 |
+| `node tools/lane-handover.mjs seal` / `open` | a vault key sealed to the conductor; saved outside git on arrival |
+| `node tools/lane-configure.mjs` (`--dry-run`) | open the lane on an existing vault: **not run**, needs the token and Dinis's yes |
+| `node tools/lane-drain.mjs` | the conductor's drain: **not run** against the real server |
+
+Release: commit (trailers `Agent:`, `Issue: WS-214`, `For:` in one final paragraph), then `AGENT=incident.identity@web-summit.dinis admin/tools/release.sh`.
+
+## Keys and signatures
+
+- This session's key: record `sha256:2d91c7d9fe8df5d3` (encryption `sha256:9e6e630e0d1d051a`), id `incident-identity-dinis` in `data/keys.json`. Its private half is in this session's container only and **ends with this session**. It was never used for anything but the three signatures in [signed.json](signed.json) and a self-test.
+- **The next session must:** make its own session key (`pki-agent.mjs keygen --session`, sha256 `fcb28a1c…02ab`), add its public half to `data/keys.json` under a new id, set the old entry's `status` to `ended`, and run `node tools/lane-sign.mjs` (until then `--check` fails on the old key once it is marked ended: expected).
+- No token, no vault key and no enum key has ever been in this session. No lane and no vault exists. `data/lanes.json`: `enabled: false`, `senders: []`, recipient `incident-conductor-dinis`.
+- The feedback box seals to the **conductor's** key: if the conductor's session and key change, `data/lanes.json` `to_conductor.recipient` must name the new key id (then re-sign).
+
+## In flight
+
+Nothing half-done. The working tree was clean and pushed when this was written.
+
+## What waits on Dinis
+
+1. **His key:** open Log in, press "Log in with a passkey", read the fingerprint to the conductor, paste the public half. Then the conductor adds it to `data/keys.json` and its id to `data/lanes.json` `to_conductor.senders` (re-sign after). Until then his sealed messages open with `accept: false`.
+2. **Three decisions** (end of SECURITY.md): which key is him here; how far a signed message carries; where the SG/Send token lives and whether replies may sit in the repository as ciphertext.
+3. **The SG/Send access token** as an environment secret, and his yes: then the bridge vault (sgit), `lane-configure.mjs`, the first real drain. A real passkey on a real device is also still unchecked (only Chromium's virtual one).
+
+## What wakes this role
+
+The routine "incident.identity@web-summit.dinis hourly" (`trig_01KBoiikSQeY2Ze8RN4fTgV7`) fires into the old session at about :21 each hour. It must be pointed at the new session, or deleted and made again, by whoever starts it; left alone it keeps waking the old one. Each wake: pull, `lane-test`, `lane-sign --check`, look for Dinis's key in `data/keys.json`, measure tokens (`tools/accounts-measure.mjs --append`), status, release. When nothing changed, do not message the conductor.
+
+## Things learned the hard way
+
+- The frame changes often. Never copy its menu by hand: the marks do it.
+- Other agents' scripts write to localStorage on framed pages; only `sc.id.*` and `pki.local.v1.*` are the key's.
+- The gate now refuses a vault-key-shaped string in any tracked file (`<20 to 64 characters>:<8 characters>`): tests build such strings at run time.
+- `status.json` timestamps: use `date -u`, do not guess.
