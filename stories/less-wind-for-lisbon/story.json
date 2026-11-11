@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T20:51Z",
-  "based_on_read_utc": "2026-11-11T20:23:08Z",
+  "updated": "2026-11-11T22:52:00Z",
+  "based_on_read_utc": "2026-11-11T21:52:43Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -1719,13 +1719,13 @@
     },
     {
       "id": "h10",
-      "text": "Our data scientist read the 51 forecasts of ECMWF's ensemble again at 15:52 (shares unchanged since 14:52): the low crosses the line off Lisbon (9.5° W) north of the city in 24% of them, near it in 47% and south of it in 29% (at 11:57: 10%, 41% and 49%), the middle of them about 15:00; Lisbon's strongest model gust has a median of 65 km/h (10% of forecasts below 53, 10% above 80; at 14:52: 69, 55 and 85). These are shares of forecasts, not the chance of it happening; they have moved towards the meteorologist's reading of 14:25 (h11). Our analysis of a model, not a forecast; IPMA's warnings are what stand.",
+      "text": "Our data scientist read the 51 forecasts of ECMWF's ensemble again at 21:52, on the newest run Open-Meteo held, made after the centre had passed: the low crosses the line off Lisbon (9.5° W) north of the city in 6% of them, near it in 53% and south of it in 41% (at 15:52: 24%, 47% and 29%; at 11:57: 10%, 41% and 49%), the middle of them still about 15:00; Lisbon's strongest model gust still has a median of 65 km/h (10% of forecasts below 53, 10% above 80). A run made after the event is closer to a model's reconstruction than a forecast; it does not settle which side the centre passed (h11, the meteorologist's reading, has it just north). These are shares of forecasts, not the chance of it happening. Our analysis of a model, not a forecast; IPMA's warnings are what stand.",
       "label": "hypothesis",
       "model": true,
       "confidence": "medium for the north, near and south split; low for gust values at a point (the file's own words)",
       "said_by": "incident.datascience@web-summit.dinis (analysis of ECMWF's ensemble via Open-Meteo)",
-      "at_utc": "2026-11-11T15:52:55Z",
-      "read_utc": "2026-11-11T15:52:55Z",
+      "at_utc": "2026-11-11T21:52:43Z",
+      "read_utc": "2026-11-11T21:52:43Z",
       "supports": [
         {
           "kind": "row",
@@ -1741,19 +1741,19 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "shares.north",
-          "expect": 0.24
+          "expect": 0.06
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "shares.near",
-          "expect": 0.47
+          "expect": 0.53
         },
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/exposure/ensemble.json",
           "field": "shares.south",
-          "expect": 0.29
+          "expect": 0.41
         },
         {
           "kind": "data",
@@ -2243,6 +2243,13 @@
       "what": "c14: before, IPMA's hourly model had Wednesday's strongest mean wind at 40 km/h at 14:00 (from the 08:45 read to the 19:29 read); now 36 km/h at the same hour under the same stamp (07:56 Lisbon time), changed after the hour had passed.",
       "claims_changed": [
         "c14"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T22:52Z",
+      "what": "h10: before, the ensemble's shares as read at 15:52 (north 24%, near 47%, south 29%); now the 21:52 read of the newest run, made after the centre passed: north 6%, near 53%, south 41%; median crossing (15:00) and Lisbon's gust spread (53/65/80 km/h) unchanged. The sentence says a run made after the event does not settle which side the centre passed.",
+      "claims_changed": [
+        "h10"
       ]
     }
   ]
