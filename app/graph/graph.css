@@ -1,14 +1,6 @@
-/* The query page and the graph page (incident.graph@web-summit.dinis). Colours come from app/site.css's tokens;
-   the eight node colours are this file's own, one per kind of thing, and every one is also named in words. */
-:root {
-  --g-actor: #2f6fde; --g-decision: #c8102e; --g-warning: #e07000; --g-signal: #8a5cd6;
-  --g-source: #5f6b7a; --g-place: #1d8a5a; --g-dataset: #0f8f9c; --g-agent: #b0439a;
-  --g-canvas: #0b0d12;
-  /* on the dark 3D stage (dark in both themes): the same hues, lighter; and the links by label */
-  --gs-actor: #6ea0ff; --gs-decision: #ff5d73; --gs-warning: #ffa23d; --gs-signal: #b592ff;
-  --gs-source: #a3aebf; --gs-place: #4fd699; --gs-dataset: #41cfe0; --gs-agent: #ee7fd6;
-  --gs-link-fact: #5d6b85; --gs-link-evidence: #c99a4a; --gs-link-hypothesis: #b08cf0; --gs-link-picked: #ffffff; --gs-other: #9aa3b2;
-}
+/* The query page and the graph page (incident.graph@web-summit.dinis). Every colour is one of app/site.css's tokens
+   (design/README.md): no hex here. Red, orange and yellow appear only on IPMA's warning levels; a decision is --focus;
+   a kind of thing is told by its shape, never by colour alone. */
 .meter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 16px; }
 .meter div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; min-width: 0; }
 .meter b { display: block; font: 600 1.15rem/1.2 var(--sans); font-variant-numeric: tabular-nums; }
@@ -27,7 +19,7 @@ button:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2
 #q-sql { display: block; width: 100%; box-sizing: border-box; min-height: 11.5em; resize: vertical; font: .86rem/1.5 var(--mono);
   color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: 8px; padding: 12px; tab-size: 4; }
 .q-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 10px 0 14px; }
-#q-run { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; padding: 7px 18px; }
+#q-run { background: var(--focus); border-color: var(--focus); color: var(--surface); font-weight: 600; padding: 7px 18px; }
 #q-run:disabled { opacity: .5; cursor: default; }
 #q-info, #q-status { font-size: .86rem; color: var(--ink-2); }
 #q-info.bad, #q-status.bad { color: var(--bad); }
@@ -44,7 +36,8 @@ button:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2
 .q-out .null { color: var(--ink-2); }
 .q-out p { margin: 10px 12px; }
 .lab { display: inline-block; font: 600 .72rem var(--sans); letter-spacing: .02em; padding: 1px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
-.lab.fact { color: var(--ok); } .lab.evidence { color: var(--warn); } .lab.hypothesis { color: var(--g-signal); border-style: dashed; }
+/* as the site's .lbl.l-fact / .l-evidence / .l-hypothesis: a fact is solid, a hypothesis is dashed and says so */
+.lab.fact { color: var(--ok); background: var(--ok-soft); border-color: transparent; } .lab.evidence { color: var(--sent); background: var(--sent-soft); border-color: transparent; } .lab.hypothesis { color: var(--accent); background: transparent; border-style: dashed; }
 .q-schema details { border-top: 1px solid var(--line); padding: 8px 0; }
 .q-schema summary { cursor: pointer; font-size: .9rem; }
 .q-schema .cols { font-size: .82rem; color: var(--ink-2); margin: 6px 0 8px; overflow-wrap: anywhere; }
@@ -53,17 +46,17 @@ h2.sec { font-size: 1.05rem; margin: 26px 0 10px; }
 /* the graph page */
 .g-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 14px; align-items: start; }
 @media (max-width: 900px) { .g-layout { grid-template-columns: minmax(0, 1fr); } }
-.g-stage { position: relative; height: min(72vh, 680px); min-height: 380px; background: var(--g-canvas); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.g-stage { position: relative; height: min(72vh, 680px); min-height: 380px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
 .g-canvas { position: absolute; inset: 0; }
 .g-stage canvas { display: block; }
-.g-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; color: #c9cfdb; font-size: .92rem; }
+.g-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; color: var(--ink-2); font-size: .92rem; }
 .g-msg[hidden] { display: none; }
-.g-tip { color: #fff; background: rgba(11, 13, 18, .88); border: 1px solid #3a404c; border-radius: 6px; padding: 5px 8px; font: .8rem/1.35 var(--sans); max-width: 320px; }
-.g-tip small { display: block; color: #a7adb9; }
+.g-tip { color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: 6px; padding: 5px 8px; font: .8rem/1.35 var(--sans); max-width: 320px; }
+.g-tip small { display: block; color: var(--ink-2); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
 .chips button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: .82rem; }
 .chips button[aria-pressed="false"] { opacity: .45; text-decoration: line-through; }
-.chips i { width: 10px; height: 10px; border-radius: 50%; background: var(--c, var(--ink-2)); flex: none; }
+.g-ico { display: inline-flex; flex: none; }
 .chips .n { color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .g-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; font-size: .88rem; min-width: 0; }
 .g-panel h2 { font-size: 1rem; margin: 0 0 6px; overflow-wrap: anywhere; }
@@ -74,7 +67,7 @@ h2.sec { font-size: 1.05rem; margin: 26px 0 10px; }
 .g-panel li button { font: inherit; color: var(--focus); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
 .g-panel li small { color: var(--ink-2); display: block; }
 .g-type { display: inline-flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--ink-2); }
-.g-type i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+
 .g-list details { border-top: 1px solid var(--line); padding: 8px 0; }
 .g-list summary { cursor: pointer; }
 .g-list ul { margin: 8px 0 0; padding-left: 18px; font-size: .86rem; }
@@ -82,8 +75,9 @@ h2.sec { font-size: 1.05rem; margin: 26px 0 10px; }
 
 /* the lead-time line */
 .g-line { list-style: none; margin: 12px 0 0; padding: 0; }
-.g-line li.ev { display: grid; grid-template-columns: 5.2em minmax(0, 1fr) 11em; gap: 4px 14px; align-items: start; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--ink-2); border-radius: 8px; font-size: .9rem; }
-.g-line li.ev.warning { border-left-color: var(--yellow); }
+.g-line li.ev { display: grid; grid-template-columns: 5.2em minmax(0, 1fr) 11em; gap: 4px 14px; align-items: start; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--focus); border-radius: 8px; font-size: .9rem; }
+.g-line li.ev.warning { border-left-color: var(--ink-2); }
+.g-line li.ev.warning.yellow { border-left-color: var(--yellow); }
 .g-line li.ev.warning.orange { border-left-color: var(--orange); }
 .g-line li.ev.warning.red { border-left-color: var(--red); }
 .g-line time { font: 600 .9rem var(--sans); font-variant-numeric: tabular-nums; white-space: nowrap; }

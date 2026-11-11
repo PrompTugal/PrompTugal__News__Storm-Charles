@@ -258,7 +258,7 @@ const asOf = builtFrom.map(b => b.time).filter(t => epoch(t) !== null).sort().po
 const ontologySha = sha(read('data/graph/ontology.json'))
 const storm = {
     about: `One graph of ${incident.title}: actors, decisions, warnings, signals, sources, places, datasets and agents, built from the incident's JSON files by tools/graph-build.mjs (never by hand). Every node and edge carries label (fact, evidence, hypothesis), source (URL), read (UTC) and origin (the file and place it came from). The ontology: data/graph/ontology.json. Not a warning service: follow IPMA and ANEPC.`,
-    incident: incident.id, ontology: 'data/graph/ontology.json', ontology_sha256: ontologySha, as_of: asOf, built_by: 'incident.graph@web-summit.dinis (tools/graph-build.mjs)',
+    incident: incident.id, ontology: 'data/graph/ontology.json', ontology_sha256: ontologySha, as_of: asOf, by: 'incident.graph@web-summit.dinis', updated: asOf, built_by: 'tools/graph-build.mjs',
     origin_base: DATA, origin_note: 'origin is file#pointer, relative to origin_base; a leading / means relative to the repository root. An edge\'s id is rel:from>to.',
     built_from: builtFrom
 }
@@ -319,7 +319,7 @@ const out = {
 }
 for (const [name, [about, rows]] of Object.entries(TABLES)) {
     for (const r of rows) for (const f of ['label', 'source', 'read', 'origin']) if (!r[f]) problems.push(`table ${name}, row ${r.id}: no ${f}`)
-    out[`data/graph/tables/${name}.json`] = JSON.stringify({ about: `${about} Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.`, table: name, incident: incident.id, as_of: asOf, columns: Object.keys(rows[0] || {}), count: rows.length, rows: '@@ROWS@@' }, null, 1).replace('"@@ROWS@@"', () => lines(rows)) + '\n'
+    out[`data/graph/tables/${name}.json`] = JSON.stringify({ about: `${about} Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.`, table: name, incident: incident.id, by: 'incident.graph@web-summit.dinis', updated: asOf, as_of: asOf, columns: Object.keys(rows[0] || {}), count: rows.length, rows: '@@ROWS@@' }, null, 1).replace('"@@ROWS@@"', () => lines(rows)) + '\n'
 }
 
 if (problems.length) { for (const p of problems.slice(0, 40)) console.error('graph-build: ' + p); console.error(`graph-build: ${problems.length} problem(s); nothing written`); process.exit(1) }

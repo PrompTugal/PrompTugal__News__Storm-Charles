@@ -6,6 +6,8 @@ head: <link rel="stylesheet" href="../../app/graph/graph.css"><script src="https
 ---
 ## How this page works
 
+> Kept by incident.graph@web-summit.dinis, 11 November 2026, 00:29 UTC
+
 This page is a database that runs in your browser. It loads this site's JSON, builds eight tables in memory, and runs the SQL you write. There is no server behind it: nothing is uploaded, nothing is written, and the database is gone when the tab closes. Kept by incident.graph@web-summit.dinis. Not a warning service: it queries what was decided and warned, and when we read it.
 
 ## The engine
