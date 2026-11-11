@@ -9,7 +9,7 @@
   var FILES = {
     incident: room + 'incident.json', signals: api + 'signals.json', warn: api + 'weather/warnings.json', airport: api + 'weather/airport.json',
     areas: base + 'sources/ipma/data/warnings.json', places: base + 'sources/ipma/data/places.json',
-    field: base + 'broadcast/data/field.json', decisions: api + 'decisions/graph.json', flights: api + 'transport/flights.json', services: api + 'transport/services.json', coast: base + 'broadcast/data/coast.json'
+    field: base + 'broadcast/data/field.json', decisions: api + 'decisions/graph.json', flights: api + 'transport/flights.json', buses: api + 'transport/buses.json', metro: api + 'transport/metro.json', trains: api + 'transport/trains.json', ferries: api + 'transport/ferries.json', people: api + 'exposure/people-by-hour.json', coast: base + 'broadcast/data/coast.json'
   }
   var D = {}
   var qNow = new URLSearchParams(location.search).get('now')
@@ -44,6 +44,7 @@
         '<div class="bc-map-key" id="bc-mk"></div></section>' +
       '<aside class="bc-side">' +
         '<section class="bc-panel" id="bc-warn"></section>' +
+        '<section class="bc-panel" id="bc-ex"></section>' +
         '<section class="bc-panel" id="bc-ws"></section>' +
         '<section class="bc-panel" id="bc-air"></section>' +
         '<section class="bc-panel" id="bc-tr"></section>' +
@@ -71,7 +72,7 @@
   Promise.all(Object.keys(FILES).map(function (k) {
     return fetch(FILES[k], { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json() }).then(function (j) { D[k] = j }).catch(function () { D[k] = null })
   })).then(function () {
-    chyron(); ticker(); warnings(); websummit(); airport(); transport(); counts(); pictures(); map()
+    chyron(); ticker(); warnings(); exposure(); websummit(); airport(); transport(); counts(); pictures(); map()
   })
 
   // ---------- the chyron: the headline (a decision or warning from its primary source, with its time)
@@ -128,6 +129,25 @@
     box.innerHTML = h
   }
 
+  // ---------- exposure: residents (census) living in areas under each IPMA level this hour; arithmetic on two facts, never people harmed
+  function exposure () {
+    var box = document.getElementById('bc-ex'), x = D.people
+    if (!x || !x.hours) { box.hidden = true; return }
+    var t = now(), cur = null
+    x.hours.forEach(function (h) { if (T(h.hour_utc) <= t) cur = h })
+    var hd = '<h2>Who lives under the warnings <span class="lbl">arithmetic on facts</span></h2>'
+    if (!cur) { box.innerHTML = hd + '<p class="meta">No hour of the file covers now.</p>'; return }
+    var M = function (n) { return n >= 1e6 ? (n / 1e6).toFixed(2) + ' M' : n >= 1e3 ? Math.round(n / 1e3) + ' k' : String(n) }
+    hd += '<div class="bc-tiles bc-ex3">' + ['red', 'orange', 'yellow'].map(function (l) {
+      return '<div class="bc-tile bc-ext lv-' + l + '"><div class="bc-tv">' + esc(M(cur[l] || 0)) + '</div><div class="bc-tk"><span class="lvl ' + l + '">' + LEVEL[l] + '</span> residents</div></div>'
+    }).join('') + '</div>' +
+      '<div class="meta">Residents (INE Census 2021) of the IPMA areas at each level in the hour from ' + tm(cur.hour_utc, hm(cur.hour_utc)) + ' UTC' +
+      (x.peak ? '; the most under red in the file: ' + esc(M(x.peak.red)) + ' at ' + tm(x.peak.hour_utc, dayhm(x.peak.hour_utc)) + ' UTC' : '') +
+      '. Where people sleep, not where they are; never a count of people harmed.</div>' +
+      prov('IPMA warnings × INE census, by incident.datascience@', view('incidents/' + inc + '/data/exposure/people-by-hour.json', 'hours'), x.read_utc)
+    box.innerHTML = hd
+  }
+
   // ---------- Web Summit: the organisers' decisions as the decisions graph keeps them (what happened, what is not announced, our hypotheses)
   function websummit () {
     var box = document.getElementById('bc-ws'), g = D.decisions
@@ -164,27 +184,30 @@
 
   // ---------- transport: incident.transport@'s files. "Seen", not "flew"; a count is a floor; no normal-day comparison; Faro's and Funchal's zeros are not shown
   function transport () {
-    var box = document.getElementById('bc-tr'), f = D.flights, sv = D.services
-    if (!f && !sv) { box.hidden = true; return }
+    var box = document.getElementById('bc-tr'), f = D.flights
+    if (!f && !D.buses && !D.metro && !D.trains && !D.ferries) { box.hidden = true; return }
     var h = '<h2>Getting around <span class="lbl l-fact">fact</span></h2>'
     if (f && f.airports) {
       f.airports.filter(function (a) { return a.iata === 'LIS' || a.iata === 'OPO' }).forEach(function (a) {
         var d = a.departures_today; if (!d || d.count == null) return
         var ls = a.live_snapshot
         h += '<div class="bc-tl"><b>' + esc(a.iata === 'LIS' ? 'Lisbon airport' : 'Porto airport') + '</b>: <span class="bc-tn">' + esc(d.count) + '</span> airline departures seen' + (d.covered_from ? ' since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC' : ' in OpenSky\'s recent window') + ' (at least)' +
-          (ls && a.iata === 'LIS' ? '; at ' + tm(ls.at, hm(ls.at)) + ' UTC, ' + esc(ls.on_ground) + ' airline aircraft seen on the ground and ' + esc(ls.airborne_low) + ' low in the air nearby' : '') +
+          (ls && a.iata === 'LIS' && (ls.on_ground || ls.airborne_low) ? '; at ' + tm(ls.at, hm(ls.at)) + ' UTC, ' + esc(ls.on_ground) + ' airline aircraft seen on the ground and ' + esc(ls.airborne_low) + ' low in the air nearby' : '') +
           prov('OpenSky', d.source, d.read) + '</div>'
       })
       h += '<div class="meta">Counts are what OpenSky\'s receivers saw: a floor, not a tally, and not compared with a normal day. Faro and Funchal are under-covered and not shown.</div>'
     }
-    if (sv && sv.operators) {
-      h += '<div class="bc-sub">Operators\' notices</div><ul class="bc-ops">' + sv.operators.slice(0, 4).map(function (o) {
-        var n = (o.notices || [])[0], name = String(o.operator || o.id).replace(/\s*\(.*\)$/, '')
-        return '<li><b>' + esc(name) + '</b>' + (o.state && !/^see /.test(o.state) ? ': ' + esc(o.state) : '') +
-          (n ? '<div class="bc-ct">' + (n.link ? '<a href="' + esc(n.link) + '" rel="noopener">' : '') + esc(cut(n.title || n.header, 80)) + (n.link ? '</a>' : '') + (n.excerpt ? ': ' + esc(cut(n.excerpt, 110)) : '') + '</div>' : '') +
-          prov(name, o.source, o.read) + '</li>'
-      }).join('') + '</ul>'
-    }
+    // one line per mode, the Lisbon area first (Porto's operators are on /transport/)
+    var MODES = [['Metro', D.metro], ['Trains', D.trains], ['Ferries', D.ferries], ['Buses', D.buses]], lines = []
+    MODES.forEach(function (m) {
+      var ops = ((m[1] && m[1].operators) || []).filter(function (o) { return o.label === 'fact' && !/porto|stcp/i.test(o.id) })
+      var o = ops[0]; if (!o) return
+      var n = (o.notices || [])[0], name = String(o.operator || o.id).replace(/\s*\(.*\)$/, '')
+      lines.push('<li><span class="bc-mode">' + m[0] + '</span> <b>' + esc(name) + '</b>' + (o.state && !/^see /.test(o.state) ? ': ' + esc(cut(o.state, 90)) : '') +
+        (n ? '<div class="bc-ct">' + (n.link ? '<a href="' + esc(n.link) + '" rel="noopener">' : '') + esc(cut(n.title || n.header, 80)) + (n.link ? '</a>' : '') + (n.excerpt ? ': ' + esc(cut(n.excerpt, 100)) : '') + '</div>' : '') +
+        prov(name, o.source, o.read) + '</li>')
+    })
+    if (lines.length) h += '<div class="bc-sub">Operators, Lisbon area</div><ul class="bc-ops">' + lines.join('') + '</ul>'
     h += '<div class="meta"><b>Check with your airline or operator.</b> More: <a href="' + esc(base + 'transport/index.html') + '">transport</a>.</div>'
     if (f && f.attribution) h += '<span class="prov">' + esc(cut(f.attribution, 140)) + '</span>'
     box.innerHTML = h
