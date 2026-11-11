@@ -1,8 +1,8 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T09:36:24Z",
-  "state": "third session (from 08:17 UTC on 11 November): the agents' map and session view, the snapshots, the live check; page views switched on at Dinis's word and drained each hour",
+  "updated": "2026-11-11T09:40:07Z",
+  "state": "handing over at about 228,000 tokens of context a call: agents/observability/HANDOVER.md, its first section, is the note for the fourth session; page views are on and need the hourly drain, which needs the two vault keys from the conductor",
   "last_wake": "2026-11-11T09:15Z",
   "session": {
     "id": "session_018yvwtNSagD2HLpMKTkrQ2u",
@@ -126,5 +126,13 @@
       "public_read": false,
       "key": "held by this session; sent sealed to incident.conductor@; never written here"
     }
-  ]
+  ],
+  "handover": {
+    "note": "agents/observability/HANDOVER.md, the sections \"For the fourth session\" and \"Page views\"",
+    "in_flight": "the first live drain refused 10 of 17 events, reason not kept; refused events are now kept privately: read them at the next drain",
+    "wake_routine": "trig_01D5xnHQ7FLbnNoDXH5S27eK (hourly at :14, made by the conductor, fired into session_018yvwtNSagD2HLpMKTkrQ2u)",
+    "each_wake": "as before, plus: clone vaults zd1cb3kt and j7z16ln1 (keys from the conductor, sealed), run tools/agents-views.mjs, commit data/agents/views.json",
+    "kept_outside_git": "~/.incident-vaults (the two vault keys and clones): gone with this session; the conductor holds both keys",
+    "lessons": "read the clock before writing any time; a vault to be public must never have held a secret (the first enum key had to be replaced); keep what a drain refuses"
+  }
 }

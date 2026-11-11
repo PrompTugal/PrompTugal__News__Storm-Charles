@@ -60,8 +60,9 @@ for (const lane of new Set(entries.map(e => e.inbox))) {
     for (let i = 0; i < ids.length; i += 20) {
         const batch = ids.slice(i, i + 20), r = await call('fetch', { inbox: lane, file_ids: batch })
         for (const f of r.files || []) {
-            const received = Number(String(f.file_id).slice(0, 13)), ev = clean(open(f.content), received)
-            if (!ev) { refused++; continue }
+            const received = Number(String(f.file_id).slice(0, 13)), raw = open(f.content), ev = clean(raw, received)
+            if (!ev) { refused++; fs.mkdirSync(path.join(DRAIN, 'refused'), { recursive: true })   // kept privately, cut short, so a refusal can be explained: a processed file cannot be fetched again
+                fs.appendFileSync(path.join(DRAIN, 'refused', new Date(received).toISOString().slice(0, 13) + '.jsonl'), JSON.stringify({ received, opened: raw !== null, event: raw === null ? null : JSON.stringify(raw).slice(0, 600) }) + '\n'); continue }
             fs.appendFileSync(path.join(DRAIN, 'events', new Date(received).toISOString().slice(0, 13) + '.jsonl'), JSON.stringify(ev) + '\n'); opened++
         }
         await call('mark-processed', { inbox: lane, file_ids: batch })
