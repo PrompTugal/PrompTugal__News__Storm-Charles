@@ -1,5 +1,5 @@
 // Stories (incident.stories@web-summit.dinis). The page is already complete HTML (tools/stories-build.mjs): this file only
-// (1) works the switches, (2) opens every support at once, (3) reads IPMA's warnings again from this site's data room when the page
+// (1) works the switches, (2) opens every support at once, (3) reads IPMA's warnings again (both of its channels, for a Lisbon box) from this site's data room when the page
 // opens and says whether they are still what the page was built on. It fetches nothing outside this site.
 (function () {
     const root = document.getElementById('story'); if (!root) return
@@ -21,6 +21,22 @@
     const w = document.getElementById('st-warn'), live = document.getElementById('st-live')
     if (!w || !live || !w.dataset.api) return
     const t = s => { const m = String(s || '').match(/^\d{4}-(\d\d)-(\d\d)T(\d\d):(\d\d)/); return m ? `${+m[2]} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+m[1] - 1]}, ${m[3]}:${m[4]} UTC` : '' }
+    const get = u => fetch(u, { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject(r.status))
+    // a Lisbon box: both of IPMA's channels read again, and the same rule as when the page was built (channels.js)
+    if (w.dataset.cap && window.stChannels) {
+        Promise.all([get(w.dataset.api), get(w.dataset.cap)]).then(([j, c]) => {
+            const b = window.stChannels.box(j, c, Date.now(), w.dataset.levels.split(','))
+            const span = x => `${x.level} ${t(x.start_utc)} to ${t(x.end_utc)}`
+            const reads = `IPMA's messages read ${t(c.read_utc)}, its open-data feed read ${t(j.read_utc)}`
+            if (b.sig === w.dataset.built) live.textContent = `Read again as you opened this page: the same (${reads}).`
+            else {
+                live.classList.add('st-diff')
+                live.textContent = 'Changed since this page was built (' + reads + '): ' + (b.list.length ? b.list.map(x => `${x.type}, ${span(x)}${x.via === 'cap' ? ' (the newest message)' : ''}`).join('; ') : 'no warning at ' + w.dataset.levels.replace(/,/g, ' or ')) + '.' +
+                    b.differ.map(d => ` ${d.type}: the newest message, sent ${t(d.sent_utc)}, says ${d.shown.map(span).join(', ')}; the open-data feed ${d.open.length ? 'still lists ' + d.open.map(span).join(', ') : 'does not list it'}.`).join('') + ' The story below was written on the earlier read.'
+            }
+        }).catch(() => { live.textContent = 'The warnings could not be read again just now; the box above is as built.' })
+        return
+    }
     fetch(w.dataset.api, { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject(r.status)).then(j => {
         const levels = w.dataset.levels.split(','), areas = (w.dataset.areas || '').split(',').filter(Boolean)
         const now = (w.dataset.list.split('.').reduce((o, k) => o && o[k], j) || []).filter(x => levels.includes(x.level) && (!areas.length || areas.includes(x.area)))
