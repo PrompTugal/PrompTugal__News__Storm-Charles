@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T18:55Z",
-  "based_on_read_utc": "2026-11-11T18:23:17Z",
+  "updated": "2026-11-11T19:51Z",
+  "based_on_read_utc": "2026-11-11T19:23:58Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -601,7 +601,7 @@
     },
     {
       "id": "c15",
-      "text": "MET Norway's forecast for Lisbon, at its update of 13:17 on Wednesday, has the strongest mean wind of the afternoon at 46.4 km/h at 14:00, from the south-south-west, and the lowest pressure, 988.8 hPa, in the same hour; then 39.2 km/h from the south-west at 15:00, turning west by 16:00 and north-west by 17:00 as the wind eases. At its update of 08:21 it had 55.1 km/h at 15:00. This block carries no gusts (it has since updated, at 17:20). Measured at the airport at 14:00: 54 km/h from the south, gusting 74, and 989 hPa, close to the model's hour (our comparison). The feed has since dropped the hours it covered.",
+      "text": "MET Norway's forecast for Lisbon, at its update of 13:17 on Wednesday, has the strongest mean wind of the afternoon at 46.4 km/h at 14:00, from the south-south-west, and the lowest pressure, 988.8 hPa, in the same hour; then 39.2 km/h from the south-west at 15:00, turning west by 16:00 and north-west by 17:00 as the wind eases. At its update of 08:21 it had 55.1 km/h at 15:00. This block carries no gusts (it has updated since, about every two hours). Measured at the airport at 14:00: 54 km/h from the south, gusting 74, and 989 hPa, close to the model's hour (our comparison). The feed has since dropped the hours it covered.",
       "label": "evidence",
       "model": true,
       "said_by": "MET Norway, Locationforecast 2.0 (a second model, never merged with IPMA)",
@@ -629,12 +629,6 @@
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "metars[time_utc=2026-11-11T14:00Z].pressure_hpa",
           "expect": 989
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
-          "field": "second_models.met_no.updated_utc",
-          "expect": "2026-11-11T17:20:16Z"
         }
       ]
     },
@@ -2219,6 +2213,10 @@
         "o1",
         "c16"
       ]
+    },
+    {
+      "at_utc": "2026-11-11T19:51Z",
+      "what": "c15: the pin on MET Norway's update time removed (it updates about every two hours; the sentence is the 13:17 update as read, and the feed keeps no past hours). No sentence retold."
     }
   ]
 }
