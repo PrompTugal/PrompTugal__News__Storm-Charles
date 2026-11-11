@@ -218,13 +218,13 @@
     types.forEach(function (ty) {
       var bars = ws.filter(function (w) { return w.type === ty }).sort(function (a, b) { return T(a.start_utc) - T(b.start_utc) }).map(function (w) {
         var a = Math.max(0, Math.round((T(w.start_utc) - D0) / H)), b = Math.min(24, Math.round((T(w.end_utc) - D0) / H)); if (b <= a) return ''
-        return '<div role="cell" class="wxc-band w-' + esc(w.level) + (T(w.end_utc) <= t ? ' ended' : '') + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc(w.level + ' ' + (EN[ty] || ty) + ', ' + when(w.start_utc, ref) + ' to ' + when(w.end_utc, ref) + '. ' + (w.text_pt || '')) + '"><b>' + esc(w.level) + '</b> <span>' + hm(Math.max(T(w.start_utc), D0)) + '–' + (T(w.end_utc) > D1 ? wd(w.end_utc) + ' ' : '') + hm(w.end_utc) + '</span></div>'
+        return '<div role="cell" class="wxc-band w-' + esc(w.level) + (T(w.end_utc) <= t ? ' ended' : '') + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc(w.level + ' ' + (EN[ty] || ty) + ', ' + when(w.start_utc, ref) + ' to ' + when(w.end_utc, ref) + '. ' + (w.text_pt || '')) + '"><i class="wxc-bl"><b>' + esc(w.level) + '</b> <span>' + hm(Math.max(T(w.start_utc), D0)) + '–' + (T(w.end_utc) > D1 ? wd(w.end_utc) + ' ' : '') + hm(w.end_utc) + '</span></i></div>'
       }).join('')
       out += '<div role="row" class="wxc-row wxc-warn"><div role="rowheader" class="wxc-lab"><b>' + iconFor(ty) + esc(EN[ty] || ty) + '</b><i>' + (channels(t).differ.some(function (d) { return d.type === ty }) ? 'IPMA\'s newest message' : 'IPMA warning') + '</i></div>' + bars + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
       var df = channels(t).differ.filter(function (d) { return d.type === ty })[0]
       if (df && df.open.length) out += '<div role="row" class="wxc-row wxc-warn wxc-stale"><div role="rowheader" class="wxc-lab"><b>' + esc(EN[ty] || ty) + '</b><i>IPMA\'s open-data feed still lists</i></div>' + df.open.map(function (w) {
         var a = Math.max(0, Math.round((T(w.start_utc) - D0) / H)), b = Math.min(24, Math.round((T(w.end_utc) - D0) / H)); if (b <= a) return ''
-        return '<div role="cell" class="wxc-band stale w-' + esc(w.level) + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc('IPMA\'s open-data feed still lists: ' + w.level + ' ' + (EN[ty] || ty) + ', ' + hm(w.start_utc) + ' to ' + hm(w.end_utc)) + '"><b>' + esc(w.level) + '</b> <span>' + hm(Math.max(T(w.start_utc), D0)) + '–' + hm(w.end_utc) + '</span></div>'
+        return '<div role="cell" class="wxc-band stale w-' + esc(w.level) + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc('IPMA\'s open-data feed still lists: ' + w.level + ' ' + (EN[ty] || ty) + ', ' + hm(w.start_utc) + ' to ' + hm(w.end_utc)) + '"><i class="wxc-bl"><b>' + esc(w.level) + '</b> <span>' + hm(Math.max(T(w.start_utc), D0)) + '–' + hm(w.end_utc) + '</span></i></div>'
       }).join('') + cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
     })
 
@@ -236,7 +236,7 @@
       var a = Math.max(0, Math.round((a0 - D0) / H)), b = Math.min(24, Math.round((b0 - D0) / H)); if (b <= a) return
       var word = e.state ? String(e.state).replace(/_/g, ' ') : 'decided', hrs = hm(Math.max(a0, D0)) + (open ? ', end not stated' : '–' + hm(e.effect_to_utc))
       out += '<div role="row" class="wxc-row wxc-warn wxc-dec"><div role="rowheader" class="wxc-lab"><b>' + esc(short(dd.nodes[e.by])) + '</b><i>decided · ' + esc(e.label) + '</i></div>' +
-        '<a role="cell" href="#d-' + esc(e.id) + '" class="wxc-band d-' + esc(e.label) + (open ? ' open' : '') + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc(e.decision + ' (' + hrs + ')') + '"><b>' + esc(word) + '</b> <span>' + hrs + '</span> <em>' + esc(String(e.decision).slice(0, 90)) + '</em></a>' +
+        '<a role="cell" href="#d-' + esc(e.id) + '" class="wxc-band d-' + esc(e.label) + (open ? ' open' : '') + '" style="grid-column:' + (a + 2) + '/' + (b + 2) + '" title="' + esc(e.decision + ' (' + hrs + ')') + '"><i class="wxc-bl"><b>' + esc(word) + '</b> <span>' + hrs + '</span></i> <em>' + esc(String(e.decision).slice(0, 90)) + '</em></a>' +
         cols.map(function (h) { return '<div aria-hidden="true" class="wxc-c bg' + (h === nowH ? ' now' : '') + '" style="grid-column:' + (h + 2) + '"></div>' }).join('') + '</div>'
     })
 

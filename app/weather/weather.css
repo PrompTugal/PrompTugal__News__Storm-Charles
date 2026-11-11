@@ -278,3 +278,10 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }   /* this page pads i
 .wxc-level .wxc-also { margin: 6px 0 0 !important; font-size: clamp(14px, .4vw + 12px, 18px); }
 .wxc-also-l { text-transform: uppercase; font-weight: 700; font-size: .85em; letter-spacing: .04em; border: 1.5px solid currentColor; border-radius: 4px; padding: 0 5px; }
 .wxc-pre { display: block; font-family: var(--sans); color: var(--ink); font-weight: 600; }
+
+/* round 45, note 6: a long bar keeps its label in view when the strip is scrolled (the label sticks beside the row's name) */
+.wxc-band { overflow: clip; }
+.wxc-bl { font-style: normal; position: sticky; left: 173px; display: inline-flex; align-items: center; gap: 6px; flex: none; background: inherit; padding: 0 6px 0 8px; margin-left: -8px; z-index: 1; }
+@media (max-width: 860px) { .wxc-bl { left: 105px; } }
+/* round 45, note 8: on paper the 24 hours share the page's width */
+@media print { .wxc-row { grid-template-columns: 96px repeat(24, minmax(0, 1fr)); } .wxc-grid { width: auto; min-width: 0; } .wxc-c { font-size: 9px; } .wxc-bl { position: static; } }
