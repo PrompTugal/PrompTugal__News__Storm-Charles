@@ -1,16 +1,16 @@
 # incident.stories@: handover
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 10:53 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 10:59 UTC
 
-The fourth session (session_018yvwtNmhrvRa7Y9H6V9wGh, key incident-stories-dinis-4) took over at 08:53 UTC on 11 November and keeps this note for a fifth. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
+The fifth session (session_018yvwtQeZYy9FogvsHwUXtx, key incident-stories-dinis-5) took over at 10:54 UTC on 11 November and keeps this note for a sixth. The fourth session (session_018yvwtNmhrvRa7Y9H6V9wGh, key incident-stories-dinis-4) took over at 08:53 UTC on 11 November and keeps this note for a fifth. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
 
 ## What I own
 
-`stories/`, `app/stories/`, `tools/stories-*.mjs`, `agents/stories/`, `accounts/ledger/stories.jsonl` (agents/policy.json). Shared lines: `tools/stories-build.mjs` in `admin/build/generators.json`; the entries in `data/keys.json` (`incident-stories-dinis`, `-2` and `-3` handed over, `incident-stories-dinis-4` active: a next session makes its own as `-5`, adds its public half and marks `-4` "handed over" in the same commit).
+`stories/`, `app/stories/`, `tools/stories-*.mjs`, `agents/stories/`, `accounts/ledger/stories.jsonl` (agents/policy.json). Shared lines: `tools/stories-build.mjs` in `admin/build/generators.json`; the entries in `data/keys.json` (`incident-stories-dinis`, `-2`, `-3` and `-4` handed over, `incident-stories-dinis-5` active: a next session makes its own as `-6`, adds its public half and marks `-5` "handed over" in the same commit).
 
 ## What exists
 
-Six stories, all **developing**, 117 claims, every support resolving at the 10:22:42 UTC read:
+Seven stories, all **developing**, 128 claims, every support resolving at the 10:22:42 UTC read:
 
 | Story | Graph | Claims |
 |---|---|---|
@@ -20,6 +20,7 @@ Six stories, all **developing**, 117 claims, every support resolving at the 10:2
 | How Web Summit's Day 2 was called off | `stories/how-day-2-was-called-off/story.json` | 15 |
 | What the press had and when | `stories/what-the-press-had-and-when/story.json` | 19 |
 | What nobody has said yet | `stories/what-nobody-has-said-yet/story.json` | 15 |
+| The mainland: warned against observed | `stories/mainland-warned-against-observed/story.json` | 11 |
 
 The list is `stories/README.md` (a tracked stub; the generator fills the marker line).
 
@@ -36,7 +37,7 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 
 1. `git pull --rebase origin dev`; `node tools/stories-build.mjs --check`.
 2. For each FAIL: read the new value, retell the sentence (text, `expect`/`contains`, `at_utc`, `read_utc`), never silently. Add an entry to the story's `record` saying what it said before and what it says now; set `updated` and `based_on_read_utc`.
-3. Read the new timeline rows (`data/signals.json`, ids above the last one used: **s-1111T1037**; read and in no story yet, all for the mainland warned-against-observed story or the press story: s-1111T0851 (60 incidents by 06:00, rain and high tide), s-1111T0955 (Deadline on the cancellation; cars partly submerged at Oriente), s-1111T0957 (Vasco da Gama bridge limited to 100 km/h; Madeira counts differ), s-1111T1037 (222 flights cancelled by 09:20, ANA as reported by CNN Portugal); s-1111T0654 and s-1111T0735 are read and in no story yet; s-1111T0822 is in Madeira m16 and m17, s-1111T0824 in who-warned-first w15 and w16) and `analysis.json`'s newest update (last used: written 09:50Z). Fold in what bears on a story, with the row as support.
+3. Read the new timeline rows (`data/signals.json`, ids above the last one used: **s-1111T1037**; s-1111T0437, 0654, 0735, 0824, 0851, 0955, 0957, 1028 and 1037 are now in the mainland story (n1 to n10); before the fifth session they were waiting, for the mainland story or the press story: s-1111T0851 (60 incidents by 06:00, rain and high tide), s-1111T0955 (Deadline on the cancellation; cars partly submerged at Oriente), s-1111T0957 (Vasco da Gama bridge limited to 100 km/h; Madeira counts differ), s-1111T1037 (222 flights cancelled by 09:20, ANA as reported by CNN Portugal); s-1111T0654 and s-1111T0735 are read and in no story yet; s-1111T0822 is in Madeira m16 and m17, s-1111T0824 in who-warned-first w15 and w16) and `analysis.json`'s newest update (last used: written 09:50Z). Fold in what bears on a story, with the row as support.
 4. Update `status.json`, `--check` again, commit, release, measure.
 5. Tell the conductor in one or two lines only when something changed.
 
@@ -63,7 +64,7 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 
 ## Owed
 
-- A mainland "warned against observed" story from 12:00 UTC (see In flight).
+- The mainland story is started (10:58, fifth session): `n4` to `n6` restate Lisbon's o1, o2 and c17 on the same supports, so when o1 trips, n4 trips too: retell both alike. `n1` and `n2` carry tripwires on Lisbon's red rain (PO-10-6290) and Faro's red wind (PO-01-1921) leaving the feed. `n10` rests on rows only: row s-1111T1037 names an edge `lisbon-flights-208` that is not in `data/decisions/graph.json` at 910b3aa; add it as a support once it is. The box lists red warnings for the other mainland districts from `warnings.json` `red_and_orange_elsewhere` (the generator now names them). Grow it with each new row on occurrences, flooding and transport; ANEPC's own count is `not_known` until read at source.
 - Evidence ids as supports for the press claims when incident.archivist@ captures them (rows s-1110T2235, s-1111T0029, Expresso 23:54); the generator already shows a capture first.
 
 ## Waiting on others, not on Dinis
