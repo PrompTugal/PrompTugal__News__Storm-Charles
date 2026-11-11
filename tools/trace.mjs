@@ -278,7 +278,7 @@ function backfill() {
   //     (their flow, trace_id, span_id kept; seq renumbered with the rest), an A2 with no parent put under its agent's A3, and each A1 end
   //     given cost_usd/duration_ms from the call with its span_id. A call with no event becomes an A1 start/end of its own. Lines an agent
   //     wrote live (same span_id and phase in an <HH>.<role>.json) are skipped.
-  let nModelEv = 0, nModelCalls = 0;
+  let nModelEv = 0, nModelCalls = 0, nModelAgg = 0; const agg = {};
   const liveSeen = new Set();
   if (fs.existsSync(DIR)) for (const d of fs.readdirSync(DIR).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)))
     for (const f of fs.readdirSync(path.join(DIR, d)).filter(f => /^\d{2}\.[^.]+(-\d+)?\.json$/.test(f)))
@@ -302,6 +302,11 @@ function backfill() {
     for (const c of hf.calls || []) {
       if ((c.span_id && spans.has(c.span_id)) || !c.at || c.at < since) continue;
       const agent = fullName(c.agent || hf.by);
+      if (!c.parent?.span_id) {   // no parent loop (eval batches, single calls): one A1 aggregate per agent, task and hour (the conductor, 23:12)
+        const k = [agent, c.task || '', c.at.slice(0, 13)].join('|'); const g = (agg[k] ||= { agent, task: c.task || '', hour: c.at.slice(0, 13), src, n: 0, ok: 0, cost: 0, lat: 0, tin: 0, tout: 0, models: new Set(), t0: Infinity, t1: 0 });
+        const t0 = Date.parse(c.at); g.n++; if (c.status === 'ok') g.ok++; g.cost += c.cost_usd || 0; g.lat += c.latency_ms || 0; g.tin += c.tokens_in || 0; g.tout += c.tokens_out || 0;
+        g.models.add(c.model_served || c.model_asked); g.t0 = Math.min(g.t0, t0); g.t1 = Math.max(g.t1, t0 + (c.latency_ms || 0)); nModelCalls++; continue;
+      }
       const unit = c.span_id ? `A1-${c.span_id.slice(0, 12)}` : `A1-${c.id}`;
       const parent = c.parent?.unit_id || unitOf(agent);
       if (liveSeen.has(spanIdOf(unit) + '|end')) continue;
@@ -313,6 +318,16 @@ function backfill() {
       for (const x of pair) { if (c.span_id) x.span_id = c.span_id; if (c.parent?.unit_id && c.parent.span_id) x.parent_span_id = c.parent.span_id; if (c.trace_id) x.trace_id = c.trace_id; ev.push(x); }
       agents.add(agent); nModelCalls++;
     }
+  }
+  for (const g of Object.values(agg)) {
+    const unit = `A1-${hex('calls|' + g.agent + '|' + g.task + '|' + g.hour, 12)}`, models = [...g.models].filter(Boolean).sort();
+    const common = { unit, altitude: 'A1', parent: unitOf(g.agent), runner: g.agent, environment: envOf(g.agent), key_fp: keyAt(keys, g.agent, g.t0),
+      model: models.length === 1 ? models[0] : undefined, item: g.task || undefined, source: g.src };
+    const name = `llm calls ${g.n}${g.task ? ' task ' + g.task : ''} in the hour (aggregate)`;
+    ev.push(event({ ...common, at: iso(g.t0), phase: 'start', name }));
+    ev.push(event({ ...common, at: iso(Math.max(g.t0, g.t1)), phase: 'end', name, valid: g.ok === g.n, cost_usd: +g.cost.toFixed(6), duration_ms: g.lat,
+      note: `${g.n} calls, ${g.ok} ok, ${g.n - g.ok} not; ${g.tin} tokens in, ${g.tout} out; ${models.length} model${models.length === 1 ? '' : 's'}${models.length > 1 ? ': ' + models.slice(0, 6).join(', ') + (models.length > 6 ? ', ...' : '') : ''}; duration_ms is the calls' latency summed` }));
+    agents.add(g.agent); nModelAgg++;
   }
 
   // 4. Spawns and hand-overs: the conductor's record (agents/conductor/sessions.json), then the sessions each agent stated it was
@@ -353,7 +368,7 @@ function backfill() {
   }
   for (const f of stale) fs.unlinkSync(f);
   const u = units(agents);
-  console.log(`trace backfill since ${since}: ${nCommits} commits, ${nMsgs} messages, ${nRuns} CI runs, ${nA1} A1 aggregates, ${nModelEv} model-call events and ${nModelCalls} calls without one (models/calls), ${nSpawns} spawns; agents' live files left as they are; ${ev.length} lines in ${files} files (${Math.round(bytes / 1024)} KB); ${u.count} units`);
+  console.log(`trace backfill since ${since}: ${nCommits} commits, ${nMsgs} messages, ${nRuns} CI runs, ${nA1} A1 aggregates, ${nModelEv} model-call events, ${nModelCalls} calls without one (${nModelAgg} aggregates for those with no parent loop) (models/calls), ${nSpawns} spawns; agents' live files left as they are; ${ev.length} lines in ${files} files (${Math.round(bytes / 1024)} KB); ${u.count} units`);
 }
 
 // ---------- index.json: every file, its lines, first and last time, sha256 (so a visualizer fetches only what it needs) ----------
