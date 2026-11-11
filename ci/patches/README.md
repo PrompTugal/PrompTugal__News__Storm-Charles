@@ -1,6 +1,6 @@
 # Patches for the conductor's files
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 12:20 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 12:32 UTC
 
 The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open one was checked with `git apply --check` at commit `f42d48a` (the signing patch rebuilt at 03:16 after `validate.mjs` and the policy changed).
 
@@ -10,6 +10,7 @@ The workflow, the build, the gate and the release script are incident.conductor@
 | deploy-retry.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`9ed312b`, 03:19 UTC; live from run 418); the file is removed. The second try has not fired yet (read 03:40): `data/ci/index.json`, `pipeline.deploy_retries` | when `deploy-pages` fails, wait 8 s and try once more; a second failure is a red run, as today |
 | [signed-release-record.patch](signed-release-record.patch) | `admin/tools/release.sh`, `admin/build/validate.mjs`, `agents/policy.json` | **waits for Dinis's yes** | each push carries a record signed with the pushing agent's own key; the gate verifies it ([the proposal](../signing.html)) |
 | brief-pdf.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`1a5f32d7`, 12:17 UTC; live from run 1061); the file is removed | the brief's PDFs are rendered in CI from the built page and served at `/brief/brief-latest.pdf` and `/brief/edition-<n>.pdf`, from a cache keyed on the page's inputs |
+| [generators-together.patch](generators-together.patch) | `admin/build/build.mjs` | **ready for the conductor** (12:45 UTC, at its ask) | the twelve "before" generators run side by side instead of one after another: the gate is about 1.2 s shorter here, same output |
 
 ## Generators in-process: measured, and not recommended
 
@@ -25,6 +26,31 @@ The conductor asked for a patch that runs the build's generators inside the buil
 - Plain import looks 1.4 s faster only because the linker silently did nothing: `tools/entities-link.mjs` is one line that imports `tools/entities-build.mjs` again with `--link`, and a module already imported is not run twice. The gate stayed green while 880 pages lost their links. Several generators also call `process.exit` on their normal path. So importing is not safe without changing other agents' tools.
 - **Where the time is** (one line from the timed build): graph-build 114 ms, library-index 268, library-view 40, agents-index 53, board-build 191, entities-build 164, stories-build 44, **entities-link 806**. The generators are about 1.7 s of a 3.1 s gate; the linker alone is a quarter of the gate and grows with every page.
 - **What would help**, in order: the linker working on the pages in memory before they are written instead of rereading and rewriting 880 files (its owner: incident.entities@); library-index reading each file once; and the timed line above, so the next slow generator is seen the push it lands.
+
+## Where the gate's time goes at 2,297 pages, and the cut (12:45 UTC)
+
+The conductor asked what grew (the librarian measured 8,975 ms on its machine; the runner's median is 6 s, with runs at 7 to 11 s). Measured here, three runs, at `48f3e795` plus an hour of pushes (2,297 pages, 2,944 tracked files); the gate was 5,959 to 6,499 ms:
+
+| Part | ms | Whose |
+|---|---|---|
+| the twelve "before" generators, one after another | about 2,100 | each generator's owner |
+| the build itself (copy, render 2,297 pages) | about 1,000 to 1,500 | the conductor (halved at 09:16) |
+| the three "after" generators (flows-build 90 to 118, **entities-link 570 to 602**, agents-now 132 to 183) | about 830 | flows, entities, observability |
+| the gate's own checks (220,472 links in 41 MB of pages: about 460; tracked files: about 40; the rest) | about 700 | the conductor |
+| node starting, sixteen times | the rest | |
+
+**What grew since 05:44 UTC** (1,965 pages, gate 4,171 ms): library-index 491 to about 700 ms, entities-link 457 to about 590, meteorology-build 149 to about 180, journal-build 84 to about 130, and two new "after" generators (flows-build about 100, agents-now about 150). The largest single costs are **library-index** (664 to 747 ms; it grows with the number of files) and **entities-link** (it rereads every page).
+
+**The cut: generators-together.patch.** The "before" generators do not read one another's output (each writes its own files into `_site/`), so the build can start them together and wait for all of them. One function and one line in `admin/build/build.mjs`; the log line keeps each generator's own milliseconds and adds the wall time ("before, together"). The "after" generators stay in order (the linker must see the finished pages).
+
+| | "before" generators | build | gate |
+|---|---|---|---|
+| as today | about 2,100 ms | 3,507 to 4,316 ms | 5,959 to 6,499 ms |
+| together | 895 to 1,143 ms | 2,294 to 3,283 ms | 4,693 to 5,596 ms |
+
+Checked: the two builds have the same 7,265 files; with time stamps and each tool's own "ms" figures removed, the only differences left are the bytes and sha256 of `admin/build/build.mjs` itself in the catalogue (the patch changes that file). This machine has 4 cores, as the runner does; a generator's own figure roughly doubles when run together (they share the cores), so the per-generator numbers in the log are then for comparing a generator with itself, not for adding up. A generator that one day reads another's output would have to move to "after".
+
+**For the owners, not patched here:** incident.librarian@: library-index is the largest generator and grows with every file; incident.entities@: entities-link at about 590 ms is the largest "after" step and cannot be run together with anything.
 
 ## The brief's PDFs: what the patch adds
 

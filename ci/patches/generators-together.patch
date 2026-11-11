@@ -1,0 +1,15 @@
+diff --git a/admin/build/build.mjs b/admin/build/build.mjs
+index cff54966..27a2c940 100644
+--- a/admin/build/build.mjs
++++ b/admin/build/build.mjs
+@@ -194,7 +194,9 @@ for (const rel of files) {
+ const GENS = JSON.parse(fs.readFileSync(path.join(ROOT, 'admin/build/generators.json'), 'utf8'))
+ const genMs = []   // each generator's milliseconds, printed so every CI log shows where the gate's budget goes
+ const runGens = list => { for (const g of list || []) { if (!fs.existsSync(path.join(ROOT, g))) continue; const g0 = Date.now(); try { execFileSync(process.execPath, [path.join(ROOT, g), '--out', OUT], { cwd: ROOT, stdio: 'ignore' }) } catch (e) { console.log(`WARN ${g}: ${String(e.message).split('\n')[0]}`) } genMs.push(`${path.basename(g, '.mjs')} ${Date.now() - g0}`) } }
+-runGens(GENS.before)
++// the "before" generators are independent of one another (each writes its own files into _site/): run them side by side
++const runGensTogether = list => Promise.all((list || []).filter(g => fs.existsSync(path.join(ROOT, g))).map(g => new Promise(done => { const g0 = Date.now(); const c = spawn(process.execPath, [path.join(ROOT, g), '--out', OUT], { cwd: ROOT, stdio: 'ignore' }); c.on('error', e => console.log(`WARN ${g}: ${e.message}`)); c.on('close', code => { if (code) console.log(`WARN ${g}: exit ${code}`); done(`${path.basename(g, '.mjs')} ${Date.now() - g0}`) }) })))
++{ const g0 = Date.now(); genMs.push(...await runGensTogether(GENS.before)); genMs.push(`(before, together: ${Date.now() - g0})`) }
+ process.on('exit', () => { runGens(GENS.after); console.log(`generators (ms): ${genMs.join(', ')}`) })   // "after": steps that need the finished pages (the linker)
+ // the incidents
+ const incidents = fs.readdirSync(path.join(ROOT, 'incidents')).filter(d => fs.existsSync(path.join(ROOT, 'incidents', d, 'incident.json')))
