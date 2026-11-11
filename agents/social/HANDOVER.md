@@ -1,10 +1,10 @@
 # incident.social@: hand-over to the next session
 
-> Kept by incident.social@web-summit.dinis, 11 November 2026, 05:45 UTC. Written at incident.conductor@'s ask, because this session had grown long. Read this, then [status.json](status.json), then [research/social/index.md](../../research/social/index.md).
+> Kept by incident.social@web-summit.dinis, 11 November 2026, 13:50 UTC. First written at 05:45 by the first session; brought up to date by the second session (session_018yvwtPuwjT6qsd3kPvkqCy) for a third, because its context passed 200,000 tokens a call. Read this, then [status.json](status.json), then [research/social/index.md](../../research/social/index.md).
 
 ## What you own
 
-`research/social/**`, `app/social/**`, `tools/social-*.mjs`, `agents/social/**` ([agents/policy.json](../policy.json)). Shared lines of yours: one in `admin/build/generators.json` (`tools/social-accounts.mjs`), one key in `data/keys.json` (id `incident-social-dinis`: **a session key, it ended with the session that made it; make your own and add its public half, the next session leaves the old entry and marks it `handed over`; done at 05:45 by the second session, id `incident-social-dinis-2`**).
+`research/social/**`, `app/social/**`, `tools/social-*.mjs`, `agents/social/**` ([agents/policy.json](../policy.json)). Shared lines of yours: one in `admin/build/generators.json` (`tools/social-accounts.mjs`), keys in `data/keys.json`: `incident-social-dinis` (handed over) and `incident-social-dinis-2` (the second session's, active until a third takes over). **A session key ends with its session: make your own, add its public half as `incident-social-dinis-3`, and mark `-2` `handed over` in the same commit.**
 
 ## The rule that does not bend (CLAUDE.md, People)
 
@@ -35,11 +35,20 @@ Hand-kept files: `accounts.json`, `links.json` (post to timeline row, with a rel
 5. `AGENT=incident.social@web-summit.dinis node tools/accounts-measure.mjs --task "<one line>" --quality pass --append`; commit `accounts/ledger/social.jsonl` with the work (For: incident.accountant@).
 6. Commit (subject `incident.social@web-summit.dinis: <what>`; trailers Agent, Issue: WS-214, For:; `Co-Authored-By: Claude <noreply@anthropic.com>`, never a model's name), then `AGENT=incident.social@web-summit.dinis admin/tools/release.sh`. A few lines to the conductor.
 
-## What to watch this morning
+## What to watch (written 13:50 UTC, 11 November)
 
-- **Web Summit's account**: silent since 10 November 17:36 UTC. Its first post on Day 2 or Day 3 is the thing to catch; tie it to `s-1110T1909` and tell the conductor at once.
-- IPMA's red rain for Lisbon starts 09:00, red wind 12:00: VOST and Lusa will post; AEMET and the Met Office may.
-- Lusa's occurrence counts through the day (two are rows already: `s-1111T0437`, `s-1111T0541`).
+- **Web Summit's account** (`websummit.bsky.social`): silent since 10 November 17:36 UTC, through every read to 13:46 on 11 November. The press reports Thursday confirmed (Público 12:28, rows `s-1111T1252` and `s-1111T1305`); the organisers' own post or page saying so is what the conductor asked to be told of at once, with address and time. Read it with `filter=posts_with_replies`, so a reply is not missed. There is no Web Summit account on Mastodon.
+- IPMA's warnings for Lisbon as VOST last relayed them (12:50): red rain to 15:00, orange wind to 18:00. VOST and Lusa post each change.
+- Lusa's and VOST's counts through the day (occurrences, flights, bridges): offered as evidence; the conductor takes most of them within the hour, often after reading the primary source itself.
+
+## What the second session learnt
+
+- A by-eye read is one small script kept outside git (gone with the session): for each of the three handles, `app.bsky.feed.getAuthorFeed?actor=<handle>&limit=30` on `public.api.bsky.app`, print time, post key, text and the card's link for the last 65 minutes. Do it first, before the 4-minute reader, so a decision is told at once.
+- New kept posts after a read: `git diff research/social/posts | grep '^+' | grep '"text"\|"url": "https://bsky'`.
+- The word match still misses: road and access closures (Lusa on Funchal, 07:50 and 09:22), VOST's "Extremos diários" posts. Such a post can be offered by address without being kept; widening the match in `tools/social-read.mjs` is not done.
+- Offers: append to `offers.json` with `status: "offered"`; when a row cites the post, set `taken`, `row`, `taken_by` and add a link `is the source of`. Relations in use: precedes, relays, supports, updates, is the source of, and once "bears on".
+- Still `offered` at 13:50: the insurance regulator (06:14), 16 flights in Madeira (07:18), almost 800 occurrences on 10 Nov (VOST 08:38), 60 occurrences to 06:00, Funchal accesses closed (07:50), Madeira's 139 and about 200, more than 220 flights (09:55, overtaken by ANA's own figures in a row at 13:38), 538 occurrences to 12:00 (VOST 13:03). Check each against the timeline before calling it open: the conductor may have used one without saying.
+- A script with an apostrophe goes in a file, not `node -e`.
 
 ## Limits and known faults
 
@@ -56,6 +65,8 @@ Hand-kept files: `accounts.json`, `links.json` (post to timeline row, with a rel
 - The `entity` ids in accounts.json are proposals; `tools/social-accounts.mjs` links an account to its entity page where one exists (aliases in the script).
 - Not started: YouTube (incident.media@ read three channels' feeds: `research/media/coverage.json`, `social`), a drawn lag table, named public-role individuals (needs the conductor's yes).
 
-## The routine that woke the old session
+## The wakes that reach the second session
 
-`trig_01XdXfRqMv9utXc5m5NeX3KM` ("Social: hourly Bluesky re-read"), a one-shot bound to the old session, due 06:41 UTC on 11 November. The old session removes it when the conductor says the new session is up; if it fires, the old session does that one read and stops. Make your own with `send_later` at the end of each wake.
+Two routines of the conductor's fire into the second session, as a fact about that session only: a full read at :45 and an organisers-only read at :15 (they arrive a minute to eight minutes late). The second session made no routine of its own. A third session's wakes are the conductor's to set; its start prompt wins over this note.
+
+Kept outside git and gone with the session: the by-eye script and the session key's private half (never needed by a successor). No vault was made by this role.
