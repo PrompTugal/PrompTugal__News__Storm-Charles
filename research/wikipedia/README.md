@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="growth.css"><script src="growth.js" defer></s
 ---
 # Wikipedia and Storm Charles
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 01:45 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~01:28 UTC): "a complete section with a separate folder, separate data set, for Wikipedia, to track everything that's there that is related to this storm". Built on incident.media@'s first read ([research/media/wikipedia.json](../media/wikipedia.json)).
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 02:25 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~01:28 UTC): "a complete section with a separate folder, separate data set, for Wikipedia, to track everything that's there that is related to this storm". Built on incident.media@'s first read ([research/media/wikipedia.json](../media/wikipedia.json)).
 
 **Everything here is evidence.** Wikipedia is a tertiary source written by volunteers: what it states is reported here as what Wikipedia states, with the exact revision, never as a fact about the storm. Where we compare or judge, it is our analysis and says so. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -16,7 +16,14 @@ head: <link rel="stylesheet" href="growth.css"><script src="growth.js" defer></s
 - **English has a section, not an article**: "Storm Charles" in [2026–27 European windstorm season](https://en.wikipedia.org/wiki/2026%E2%80%9327_European_windstorm_season#Storm_Charles) (the section first appears in the revision of 9 November, 22:35 UTC; 12,198 bytes and 29 footnotes now), and a redirect, [Storm Charles](https://en.wikipedia.org/w/index.php?title=Storm_Charles&redirect=no), made 10 November at 22:46 UTC.
 - **Chinese has a short section** in its page for the same season (1,336 bytes), and **French names Charles** in its season article without a section of its own. The Portuguese article on the storm before it, Depressão Bruna, names Charles too.
 - **No page found** in Spanish, Galician, German, Italian, Catalan, Dutch, Basque or Simple English under the names their press uses, by title or by phrase search; the English season article links to no page in those languages. Wikidata (items Q142101629 for the storm, Q140628909 for the season) did not answer this read, so the language links of the articles themselves were used. What was asked of each wiki is in `checked` in [articles.json](articles.json): absence is what we looked for and did not find, not proof that nothing exists.
-- **The two languages tell different storms.** Portuguese is about decisions and effects in Madeira and mainland Portugal, nearly all from the Portuguese press and IPMA. English is about where the low came from (the US National Hurricane Center's outlooks from 3 November) and Spain (AEMET, the Canary Islands, Ávila). The comparison, claim by claim, comes next.
+- **The two languages tell different storms.** Portuguese is about decisions and effects in Madeira and mainland Portugal, nearly all from the Portuguese press and IPMA. English is about where the low came from (the US National Hurricane Center's outlooks from 3 November) and Spain (AEMET, the Canary Islands, Ávila). Claim by claim: [compare.md](compare.md).
+
+## Against our timeline, in short (our analysis; [against.md](against.md))
+
+- **Wikipedia is ahead of us on 34 of its 61 claims**, which are nowhere on this site: where the low came from (the US National Hurricane Center's outlooks from 3 November), Spain and the Canary Islands, Madeira's measured rain and incidents, the environment agency's 101 municipalities at flood risk. Another 13 are in our data files with no timeline row (the naming at 13:17 UTC on 9 November, IPMA's second communiqué at 17:07, the coach operator's suspension).
+- **We are ahead of Wikipedia on time.** Neither language has the minute of any of our five key facts. Neither has IPMA's move of Lisbon's red rain to 09:00 (sent 21:23): both still say 12:00. Neither has the 22:35 spoken line on the track further south. Portuguese has Web Summit's Day 2 since the revision of 00:50 UTC on 11 November, 5 h 42 min after the organisers' page, citing ECO; English and Chinese do not mention the conference.
+- **One of our own rows is off:** `s-1110T1742` gives 17:42 for Lisbon's red rain, the time our desk read it; IPMA sent it at 16:30 (Wikipedia and our own decision graph agree).
+- **Measured against Wikipedia's policies** we fail "no original research" by design and "due weight" on Madeira: [values.md](values.md).
 
 ## The data
 
@@ -25,10 +32,13 @@ head: <link rel="stylesheet" href="growth.css"><script src="growth.js" defer></s
 | [articles.json](articles.json) | Every page: language, title, address, page id, kind (article, section, redirect, mention), created, bytes, revisions, last changed, time read; and `checked`: every title and phrase asked of each wiki, found or not |
 | [revisions.json](revisions.json) and [revisions/](revisions.json) | The full revision history of each page, one file per page: revision id, time, bytes, edit summary; for revisions since 8 November also the sha256 of the wikitext, its footnotes and the bytes of the storm's section. **No editor's name or address is requested or kept**; a summary that names an editor (a revert) is withheld |
 | [reads.json](reads.json) and [changes.md](changes.md) | One entry per read, appended and never rewritten; and what changed on Wikipedia since the read before |
-| claims.json, compare.json, against.json | Being written: the checkable statements of each current revision with the citation each carries; pt against en; Wikipedia against our timeline, both ways |
-| values.md | Being written: this site measured against Wikipedia's policies (verifiability, neutral point of view, no original research, reliable sources, living persons), after the mapping the SGit newsroom made for its own agents |
+| [claims.json](claims.json), page: [claims.md](claims.md) | 61 checkable statements of the current revisions (36 pt, 22 en, 3 zh), in our own English, each with the footnotes it carries (address, outlet, date, date consulted) and the revision in which it first appeared |
+| [compare.json](compare.json), page: [compare.md](compare.md) | The languages side by side, topic by topic; seven places where they differ |
+| [against.json](against.json), page: [against.md](against.md) | Wikipedia against our timeline, both ways: each claim against our rows by permanent id; each of our key facts against Wikipedia, with the revision in which it first appeared |
+| [values.md](values.md) | This site measured against Wikipedia's policies (verifiability, no original research, neutral point of view, reliable sources, living persons) and the working habits the SGit newsroom mapped for its own agents |
+| [claims-curated.json](claims-curated.json) | The hand-kept source of the three files above: the paraphrases, the anchors and the relations |
 
-The tools: [tools/wikipedia-read.mjs](../../tools/wikipedia-read.mjs) and [tools/wikipedia-lib.mjs](../../tools/wikipedia-lib.mjs), no dependencies; `node tools/wikipedia-read.mjs` re-reads and appends.
+The tools: [tools/wikipedia-read.mjs](../../tools/wikipedia-read.mjs) (re-reads and appends), [tools/wikipedia-claims.mjs](../../tools/wikipedia-claims.mjs) (claims, comparison, both-ways table) and [tools/wikipedia-lib.mjs](../../tools/wikipedia-lib.mjs); no dependencies. Also: [what changed since the last read](changes.md).
 
 ## How we read Wikipedia, and what we do not do
 

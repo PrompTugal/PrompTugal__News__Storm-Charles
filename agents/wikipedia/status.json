@@ -1,25 +1,36 @@
 {
   "agent": "incident.wikipedia@web-summit.dinis",
-  "state": "active: first read done (01:37 to 01:42 UTC, 11 November); now writing the claims, the comparison, us against Wikipedia, and the values page",
+  "state": "active: all seven parts of the brief are up (pages, revisions, claims, comparison, both-ways table, values, the re-reader); next read on the next wake",
   "last_wake": "2026-11-11T01:28:00Z",
   "done": [
     "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
     "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
     "research/wikipedia/revisions.json and revisions/: 577 revisions, times, sizes and edit summaries only, no editors; sha256, footnotes and section bytes for every revision since 8 November",
     "research/wikipedia/ (the page): the pages and their growth drawn against the timeline's key moments; changes.md and reads.json (appended on each read)",
-    "tools/wikipedia-read.mjs, tools/wikipedia-lib.mjs: re-read and append; read-only on Wikipedia"
+    "tools/wikipedia-read.mjs, tools/wikipedia-lib.mjs: re-read and append; read-only on Wikipedia",
+    "research/wikipedia/claims.json and claims.md: 61 checkable statements (36 pt, 22 en, 3 zh) in our own English, each with its footnotes (outlet, date, date consulted) and the revision it first appeared in; 5 carry no footnote",
+    "compare.json and compare.md: 21 topics; seven differences between languages (Madeira's north coast red in pt, orange in en; who called the low subtropical; 991/989 hPa forecast in pt against an unsourced 995 hPa minimum in zh)",
+    "against.json and against.md: of Wikipedia's 61 claims, 10 match a timeline row, 13 are in our data with no row, 34 are nowhere on this site, 4 are behind a later change we hold; of our five key facts Wikipedia has the minute of none, and lacks the 21:23 move of the red rain and the 22:35 spoken line altogether; pt has Web Summit Day 2 since the 00:50 revision (5 h 42 min after), citing ECO",
+    "values.md: this site against verifiability, no original research, neutral point of view and due weight, reliable sources, living persons and the newsroom's eleven habits; six changes asked of the conductor",
+    "tools/wikipedia-claims.mjs: builds the three files and their pages from claims-curated.json and the stored revisions; fails if an anchor or a timeline id does not exist"
   ],
   "next": [
-    "claims.json: the checkable statements of the current pt, en and zh revisions with the citation each carries",
-    "compare.json and its page: pt against en",
-    "against.json and its page: Wikipedia against our timeline, both ways; what Wikipedia has that we lack goes to the conductor at once",
-    "values.md: this site against Wikipedia's policies, after the SGit newsroom's mapping",
-    "re-read on each wake"
+    "re-read on each wake (tools/wikipedia-read.mjs), then tools/wikipedia-claims.mjs: it flags when a page has moved past the revision the claims were written for; then update claims-curated.json by hand",
+    "Wikidata's sitelinks and the item's own history, when Wikidata answers",
+    "es, gl, de: no page yet; the title and phrase checks run on every read",
+    "the talk pages (what editors dispute), read-only"
   ],
   "asks": [
-    "Dinis: Wikipedia's API answered 429 to this session's shared address before the first read (retry-after 37 s), then served every request at one per 5 s (0 waits for 429, 12 for server lag). Wikidata answered 429 throughout, so sitelinks were read from each article's own language links instead. Wikimedia's rule asks bots for a client name with a way to reach the operator; ours is generic by your instruction. If you want Wikidata read too, a client name carrying the site's address is the polite way: your yes is needed."
+    "Dinis: Wikipedia's API answered 429 to this session's shared address before the first read (retry-after 37 s), then served every request at one per 5 s (0 waits for 429, 12 for server lag). Wikidata answered 429 throughout, so sitelinks were read from each article's own language links instead. Wikimedia's rule asks bots for a client name with a way to reach the operator; ours is generic by your instruction. If you want Wikidata read too, a client name carrying the site's address is the polite way: your yes is needed.",
+    "incident.conductor@: against.md lists what Wikipedia has that the timeline lacks (34 claims nowhere here, 13 in our data without a row); row s-1110T1742 is timed by when we read it (17:42), IPMA sent it at 16:30. values.md ends with six changes it asks for; three concern rows about people (s-1110T1806 carries a private attendee's handle).",
+    "incident.conductor@: revisions/pt-8011202.json keeps the first revision's edit summary as its editor wrote it; it names the chatbot the editor says helped draft the article. CLAUDE.md says no model names in what we push; that rule reads as being about our own calls, so I kept the editor's words. Say if you want it withheld."
   ],
-  "api": { "requests": 52, "waits_429": 0, "waits_maxlag": 12, "note": "counts of the last read; every read is in research/wikipedia/reads.json" },
-  "updated": "2026-11-11T01:44:00Z",
+  "api": {
+    "requests": 52,
+    "waits_429": 0,
+    "waits_maxlag": 12,
+    "note": "counts of the last read; every read is in research/wikipedia/reads.json"
+  },
+  "updated": "2026-11-11T02:30:00Z",
   "by": "incident.wikipedia@web-summit.dinis"
 }
