@@ -1,0 +1,43 @@
+{
+  "by": "incident.storyteller@web-summit.dinis",
+  "updated": "2026-11-11T10:24:00Z",
+  "id": "last-nights-data-source",
+  "n": 4,
+  "title": "Last night's data source: IPMA's own messages, found through MeteoAlarm, published as cap.json",
+  "named_by": "dinis",
+  "span": "10 to 11 November, 21:23 to 08:26 UTC. Our reading of which source Dinis meant, to be confirmed by him",
+  "summary": "**Our reading, to be confirmed by Dinis:** neither the storyteller nor the conductor can place his words (\"an agent needing a data source, then a researcher finding out, and then the website published a JSON file, and then I came along\") with certainty; this is the best candidate in the record, the conductor's and ours. At 21:23 on Tuesday IPMA moved Lisbon's red rain warning to 09:00; the open-data feed the site read did not show it for about two and a half hours. The meteorologist found IPMA's own messages (CAP), with their send times, in MeteoAlarm's public feed; the conductor published them as cap.json at 23:53. Within ten minutes the weather watch checked MeteoAlarm's terms and found what was missing; the meteorologist added the link and disclaimer; the designer put MeteoAlarm's line in every page's footer. By morning cap.json was what the front page and the timeline read first. Where Dinis \"came along\" is not in the record we hold: that step is left open until he says.",
+  "pause_min": 20,
+  "cast": ["ipma", "meteoalarm", "incident.meteorologist@web-summit.dinis", "incident.researcher@web-summit.dinis", "incident.conductor@web-summit.dinis", "incident.weatherwatch@web-summit.dinis#1", "incident.designer@web-summit.dinis#1", "incident.graph@web-summit.dinis#1", "incident.studio@web-summit.dinis#1", "incident.sources@web-summit.dinis#1", "incident.archivist@web-summit.dinis#1", "readers", "dinis"],
+  "steps": [
+    { "t": "2026-11-10T21:23:00Z", "actor": "ipma", "verb": "publish", "what": "IPMA sends a CAP message: Lisbon's red rain moved to Wednesday 09:00 to 18:00 (was from 12:00). Its open-data feed, which the site's warnings were read from, does not show it yet (the minute as the meteorologist's status gives it)", "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json" },
+    { "t": "2026-11-10T23:51:47Z", "actor": "incident.meteorologist@web-summit.dinis", "to": "meteoalarm", "verb": "read", "what": "the need and the find: \"open data lagged 2 h+\"; IPMA's warnings for Lisbon read as CAP messages through MeteoAlarm's public feed (feeds.meteoalarm.org), each with sent_utc and the message it replaces (cap.json's read_utc). In the other repository; the conductor reports the meteorologist's commit there as 169445f, 23:52", "url": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal", "before": "2 h 28 min in which IPMA's message was out and the site's warnings did not have it" },
+    { "t": "2026-11-10T23:53:40Z", "actor": "incident.conductor@web-summit.dinis", "verb": "publish", "what": "sync: cap.json published (283 lines) under the incident's data, so served at its path and at api/v1; row s-1110T2353 (the red rain at 09:00, read at source 23:53); the standfirst; IPMA's real issue times from CAP (red wind 07:18, 28.7 h ahead). For: the meteorologist and the designer", "commit": "b3a1b25c", "file": "incidents/2026-11-10-storm-charles/data/weather/cap.json", "signal": "s-1110T2353" },
+    { "t": "2026-11-10T23:54:04Z", "actor": "incident.graph@web-summit.dinis#1", "verb": "write", "what": "the graph and its tables rebuilt on the 23:53 data (IPMA's red rain for Lisbon from 09:00)", "commit": "2445ec18" },
+    { "t": "2026-11-10T23:58:51Z", "actor": "incident.weatherwatch@web-summit.dinis#1", "verb": "ask", "what": "the check of our use of MeteoAlarm's feed against its terms: lacking a link, a disclaimer and the delay", "commit": "0664a6ab" },
+    { "t": "2026-11-11T00:01:31Z", "actor": "incident.meteorologist@web-summit.dinis", "verb": "answer", "what": "cap.json keeps every CAP message once seen (the feed drops superseded ones) and carries MeteoAlarm's link and disclaimer (the meteorologist's 8b70ee044, synced by the conductor)", "commit": "98934af5" },
+    { "t": "2026-11-11T00:01:49Z", "actor": "incident.designer@web-summit.dinis#1", "verb": "publish", "what": "design round 10: MeteoAlarm's link and disclaimer where its terms ask (the tiles, under them, the footer)", "commit": "50f9e41f" },
+    { "t": "2026-11-11T00:03:51Z", "actor": "incident.designer@web-summit.dinis#1", "verb": "publish", "what": "design round 11: MeteoAlarm's sentence and the dated-record line in every page's footer", "commit": "d8da14f6" },
+    { "t": "2026-11-11T00:54:27Z", "actor": "incident.studio@web-summit.dinis#1", "verb": "publish", "what": "the Studio's second animation, \"How a fact gets onto this site\", tells this case: IPMA's red rain moved to 09:00, sent 21:23, read 23:53", "commit": "2d433f4e", "before": "the source is in place; the next fifty minutes are other work" },
+    { "t": "2026-11-11T01:02:46Z", "actor": "incident.researcher@web-summit.dinis", "verb": "correct", "what": "the researcher's corrected times synced (the conductor reports the researcher reading IPMA's own send times from CAP at 01:00, d6ce188 in the other repository)", "commit": "2139a91d" },
+    { "t": "2026-11-11T02:21:37Z", "actor": "incident.sources@web-summit.dinis#1", "verb": "publish", "what": "MeteoAlarm gets its own section: API map, the Portugal feed browsed, a reader that keeps each read's sha256 and a diff (among an index of 46 bodies)", "commit": "ec7471fc", "before": "Dinis's 02:20 direction creates a desk per source body; MeteoAlarm is the first" },
+    { "t": "2026-11-11T02:29:34Z", "actor": "incident.archivist@web-summit.dinis#1", "verb": "capture", "what": "Wayback for data: every feed that publishes reads.json indexed, MeteoAlarm's Portugal feed first", "commit": "c8043014", "file": "evidence/data.json" },
+    { "t": "2026-11-11T08:26:23Z", "actor": "incident.conductor@web-summit.dinis", "verb": "write", "what": "the timeline tool counts MeteoAlarm's CAP feed (IPMA's own messages) as an official source, so a row read from it is a fact, not evidence. By then CAP had led the open data a second time, on the 07:16 wind change (path 6)", "commit": "b00b2a13", "file": "tools/timeline.mjs", "before": "the night and the morning: cap.json is read on every sync" }
+  ],
+  "pauses_note": "The pause that matters is the first: two and a half hours in which the warning existed and the site's feed did not have it. After the source was found the rest took ten minutes. Dinis's own step (\"and then I came along\") is not drawn: it has no time in the record we hold, and it waits for his word.",
+  "shows": [
+    "A data source arrives because an agent notices a gap (two of IPMA's channels disagree), finds where the body's own words are published, and the site publishes them as a JSON with their read time, for people and agents alike.",
+    "A new source brings its terms with it: within eight minutes another agent checked them, and within ten the link and disclaimer were on every page. Licence is part of the data.",
+    "The find outlived the night: cap.json is what made the morning's wind downgrade (path 6) a fact on the site 22 minutes after IPMA sent it, while the open-data feed lagged again."
+  ],
+  "reading": [
+    "This path is labelled as our reading because Dinis's words name roles (\"an agent\", \"a researcher\") that fit two agents here: the meteorologist found the feed and the researcher read IPMA's send times from it an hour later. The conductor has asked Dinis; when he answers, this page will follow him.",
+    "Two of the hashes (169445f, d6ce188) are in the Web Summit site's repository, which this session cannot read; they are given as the conductor reported them. Every other step rests on a commit in this repository."
+  ],
+  "rests_on": [
+    "commits b3a1b25c, 2445ec18, 0664a6ab, 98934af5, 50f9e41f, d8da14f6, 2d433f4e, 2139a91d, ec7471fc, c8043014, b00b2a13",
+    "incidents/2026-11-10-storm-charles/data/weather/cap.json as committed in b3a1b25c (`about`, `source`, `read_utc` 23:51:47)",
+    "agents/meteorologist/status.json as committed in b3a1b25c (\"red rain moved to 09:00-18:00 (IPMA CAP sent 21:23; open data lagged 2 h+); CAP feed added\")",
+    "timeline row s-1110T2353; the conductor's message to the storyteller, 10:21 UTC (the candidate, and the other repository's hashes)"
+  ]
+}
