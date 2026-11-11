@@ -68,10 +68,11 @@ export function matcher(nodes, { html = false, bytes = false } = {}) {
 // incident.archivist@'s captures: an outside address -> the id of our latest capture of it (its page is evidence/<id>.html)
 export function captures(root = ROOT) {
     const m = new Map()
-    try { for (const a of readJson(path.join(root, 'evidence/index.json')).addresses || []) if (a.url && a.latest && fs.existsSync(path.join(root, 'evidence', a.latest + '.md'))) { m.set(a.url, a.latest); m.set(a.url.replace(/\/$/, ''), a.latest) } } catch { }
+    try { for (const a of readJson(path.join(root, 'evidence/index.json')).addresses || []) if (a.url && a.latest && (a.latest_status == null || a.latest_status === 200) && fs.existsSync(path.join(root, 'evidence', a.latest + '.md'))) { m.set(a.url, a.latest); m.set(a.url.replace(/\/$/, ''), a.latest) } } catch { }
     return { get: u => m.get(u) || m.get(String(u).replace(/\/$/, '')) || null, size: m.size }
 }
 
+// The neighbouring graphs, joined and not copied (the conductor, 11 Nov: each world keeps its own types and verbs; a link crosses).
 // incident.meteorology@'s nodes (meteorology/nodes/<type>.json; pages at meteorology/nodes/<id>.html): a graph of its own, with its
 // own types and verbs. They are not copied into entities/: the linker links their names to their own pages, and a name both sides
 // have stays with entities/ (whose page then points across). A bracket is dropped from a name; an acronym in a bracket is a name too.
@@ -86,5 +87,13 @@ export function neighbours(root = ROOT) {
             if (names.length) out.push({ id: `meteorology/${n.id}`, type: 'meteorology', kind: j.type || 'node', name: names[0], also: names.slice(1), href: `meteorology/nodes/${n.id}.html`, md: `meteorology/nodes/${n.id}.md`, summary: n.summary || '' })
         }
     }
+    // incident.sources@'s bodies (sources/sources.json): a body that has no page of its own is on the sources page, under its group
+    try {
+        const S = readJson(path.join(root, 'sources/sources.json')), anchor = { official: 'official-bodies', transport: 'transport-operators-and-venues', reference: 'reference-and-open-data', press: 'the-press', platform: 'platforms' }
+        for (const s of S.sources || []) {
+            const base = String(s.name || '').replace(/\s*\(.*$/, '').trim(), own = s.id === 'ipma' ? 'ipma/index.html' : (s.section && !s.section.startsWith('..') ? s.section : null)
+            if (base.length > 2 && /[A-Z]/.test(base) && !/ and | \/ /.test(base)) out.push({ id: `sources/${s.id}`, type: 'source', kind: s.group, name: base, also: [], hosts: s.hosts || [], href: own ? `sources/${own}` : `sources/index.html#${anchor[s.group] || ''}`, md: own ? `sources/${own.replace(/index\.html$/, 'README.md').replace(/\.html$/, '.md')}` : 'sources/README.md', summary: [s.kind, s.publishes && `Publishes: ${s.publishes}`, s.we_take && `We take: ${s.we_take}`, s.licence?.status && `Licence: ${s.licence.status}${s.licence.summary ? ` (${s.licence.summary})` : ''}`].filter(Boolean).join('. ') })
+        }
+    } catch { }
     return out
 }

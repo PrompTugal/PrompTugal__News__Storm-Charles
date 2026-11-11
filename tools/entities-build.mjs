@@ -79,8 +79,9 @@ function pages() {
         const seen = new Map()
         for (const e of [...(ss && n.label !== 'ours' ? [{ source: ss.url, read_utc: ss.read_utc }] : []), ...n.edges, ...(incoming.get(n.id) || [])]) if (!e.source.startsWith('https://storm-charles.promptugal.news/') && !seen.has(e.source)) seen.set(e.source, e)
         out.push(`## Evidence (${seen.size} outside address${seen.size === 1 ? '' : 'es'})`, '', seen.size ? [...seen.values()].map(e => { const c = CAP.get(e.source); return `- ${host(e.source)}${e.read_utc ? `, read ${when(e.read_utc)}` : ''} · ${c ? `[our capture of it](${up}evidence/${c}.md) (the page as we read it, its hash, then the way out)` : `no capture of ours yet · [the address itself](${u(e.source)})`}` }).join('\n') : 'Its statements come from this site\'s own files.', '')
-        const across = NBP.filter(x => [x.name, ...x.also].some(a => mine.has(a.toLowerCase()) && [n.name, ...n.also].some(b2 => b2.toLowerCase() === a.toLowerCase())))
-        out.push('## The same node elsewhere', '', ...across.map(x => `- In the meteorology graph (${x.kind}): [${t(x.name)}](${up}${x.md}): ${t(x.summary).slice(0, 200)}`), n.graph ? `- In the graph: \`${n.graph}\` ([open it there](${up}app/graph/index.html?node=${encodeURIComponent(n.graph)}), [its data](${up}data/graph/storm.json))` : '- The graph (data/graph/) has no node for this yet.', ...(n.page ? [`- Its page on this site: [${t(n.page.replace(/README\.md$/, ''))}](${up}${n.page})`] : []), `- As data: [${n.id}.json](${n.id.split('/')[1]}.json) · [every node](${up}entities/index.json) · [the grammar](${up}entities/ontology.md)`, '')
+        const myNames = new Set([n.name, ...n.also].map(x => x.toLowerCase()))
+        const across = NBP.filter(x => [x.name, ...x.also].some(a => myNames.has(a.toLowerCase())) || (x.type === 'source' && n.hosts?.some(h => x.hosts.includes(h) || x.hosts.includes('www.' + h))))
+        out.push('## The same node elsewhere', '', ...across.map(x => x.type === 'source' ? `- As a source of this site (${x.kind}): [${t(x.name)} on the sources pages](${up}${x.md}). ${t(x.summary).slice(0, 420)}` : `- In the meteorology graph (${x.kind}): [${t(x.name)}](${up}${x.md}): ${t(x.summary).slice(0, 200)}`), n.graph ? `- In the graph: \`${n.graph}\` ([open it there](${up}app/graph/index.html?node=${encodeURIComponent(n.graph)}), [its data](${up}data/graph/storm.json))` : '- The graph (data/graph/) has no node for this yet.', ...(n.page ? [`- Its page on this site: [${t(n.page.replace(/README\.md$/, ''))}](${up}${n.page})`] : []), `- As data: [${n.id}.json](${n.id.split('/')[1]}.json) · [every node](${up}entities/index.json) · [the grammar](${up}entities/ontology.md)`, '')
         write(`entities/${n.id}.md`, out.join('\n'))
     }
     // an index per type, the front index, the ontology as a page
@@ -100,7 +101,8 @@ function link() {
     // Pages are read and written as bytes (latin1): nothing is decoded or re-encoded, and what is not changed is copied as it was.
     // The names are matched in their UTF-8 bytes (matcher's `bytes`), so an accented name is found the same.
     const dec = s => Buffer.from(s, 'latin1').toString('utf8')
-    const NB = neighbours()   // entities/ first: a name both have goes to the node here
+    const have = new Set(nodes.flatMap(n => [n.name, ...n.also].map(x => x.toLowerCase())))
+    const NB = neighbours().filter(x => !have.has(x.name.toLowerCase().replace(/^the /, '')))   // a name both have goes to the node here, whose page points across
     const M = matcher([...nodes, ...NB], { html: true, bytes: true })
     const SKIP = new Set(['a', 'code', 'pre', 'svg', 'button', 'nav', 'header', 'footer', 'form', 'select', 'label', 'summary', 'time', 'kbd', 'samp', 'output', 'noscript', 'template'])
     const RAW = new Set(['script', 'style', 'textarea', 'title'])
@@ -175,9 +177,9 @@ function link() {
         const gapText = (a, b) => { const s = html.slice(a, b); let plain = '', at = 0; for (const h of M.find(s)) { plain += s.slice(at, h.index) + ' '; at = h.index + h.length } for (const m of dec(plain + s.slice(at)).replace(/&#39;|&quot;|&amp;/g, ' ').matchAll(CAND)) { const k = m[0].trim().replace(/\s+/g, ' '); if (!known.has(k.toLowerCase())) gaps.set(k, (gaps.get(k) || 0) + 1) } }
         M.scan(html, from, to, (at, txt, h) => {
             walk(at)
-            if (inTag || skip || at < last || seen.has(h.id) || h.id === self || (!h.own && rel === h.href)) return
+            if (inTag || skip || at < last || seen.has(h.id) || h.id === self || (!h.own && rel === h.href.split('#')[0])) return
             seen.add(h.id); n++; stats.by_node[h.id] = (stats.by_node[h.id] || 0) + 1
-            if (!h.own) stats.to_meteorology = (stats.to_meteorology || 0) + 1
+            if (!h.own) { const k = h.type === 'source' ? 'to_sources' : 'to_meteorology'; stats[k] = (stats[k] || 0) + 1 }
             put(at, at + txt.length, h.own ? `<a class="ent ent-${h.type}" data-kind="entity" data-ent="${h.id}" href="${up}entities/${h.id}.html">${txt}</a>` : `<a class="ent ent-${h.type}" data-kind="entity" data-node="${h.id}" href="${up}${h.href}">${txt}</a>`)
         })
         walk(to - 1)
