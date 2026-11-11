@@ -175,6 +175,23 @@ async function services() {
         }
     } else items.push({ id: 'carris-metropolitana', operator: 'Carris Metropolitana', mode: 'bus', label: 'none', note: `did not answer (status ${cm.rec.status})`, source: cmUrl, read: cm.rec.read })
 
+    // STCP (Porto buses): real-time positions on Porto Digital's urban platform (dados.gov.pt, CC0). Counts only; public buses, no person.
+    const stUrl = 'https://broker.fiware.urbanplatform.portodigital.pt/v2/entities?q=vehicleType==bus&limit=1000'
+    const st = await get('stcp-vehicles', stUrl)
+    if (Array.isArray(st.data)) {
+        const tnow = Date.now(), fresh = st.data.filter(x => tnow - Date.parse(x.observationDateTime?.value || 0) < 300e3)
+        const route = x => ((x.annotations?.value || []).find(a => /^stcp:route:/.test(a)) || '').slice(11)
+        const lines = new Set(fresh.map(route).filter(Boolean))
+        let prev = []; try { prev = (JSON.parse(fs.readFileSync(path.join(OUT, 'buses.json'), 'utf8')).operators || []).find(o => o.id === 'stcp')?.vehicles_now?.series || [] } catch { }
+        const point = { at: st.rec.read, vehicles: fresh.length, lines: lines.size }
+        items.push({
+            id: 'stcp', operator: 'STCP (buses, Porto)', mode: 'bus', label: 'fact', state: fresh.length ? 'buses reporting positions' : 'no bus reported a position in the last five minutes',
+            vehicles_now: { label: 'fact', what: 'buses reporting a position in the last five minutes, and the lines they run, at the time read (our hourly readings form the series)', ...point, series: [...prev.filter(p => p.at !== point.at), point].slice(-96), source: stUrl, read: st.rec.read, sha256: st.rec.sha256, baseline: { label: 'none', note: 'No normal-day figure yet; from tomorrow the series compares the same hour.' } },
+            notices: [], link: 'https://www.stcp.pt/', source: 'https://dados.gov.pt/datasets/urban-platform-bus-location/', read: st.rec.read, sha256: st.rec.sha256,
+            licence: 'CC0 (dados.gov.pt, published by STCP through Porto Digital\'s urban platform)',
+        })
+    } else items.push({ id: 'stcp', operator: 'STCP (buses, Porto)', mode: 'bus', label: 'none', note: `did not answer (status ${st.rec.status})`, source: stUrl, read: st.rec.read })
+
     // Transtejo/Soflusa (TTSL): the operator's own notices, its public WordPress API (robots.txt allows it).
     const ttUrl = 'https://ttsl.pt/wp-json/wp/v2/avisos?per_page=8&_fields=id,date_gmt,modified_gmt,link,title,content'
     const tt = await get('ttsl-avisos', ttUrl)
@@ -232,7 +249,45 @@ async function metro() {
     return ops
 }
 
+// ---------- trains: each operator's own page
+const lisbonToUtc = (y, mo, d, h, mi) => {   // Lisbon wall clock -> UTC ISO (WET/WEST from Intl, not assumed)
+    const guess = Date.UTC(y, mo - 1, d, h, mi), f = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Lisbon', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+    const [lh, lm] = f.format(new Date(guess)).split(':').map(Number), off = ((lh * 60 + lm) - (h * 60 + mi) + 1440 * 1.5) % 1440 - 720
+    return iso(guess - off * 60e3)
+}
+async function trains() {
+    const items = []
+    // Fertagus (Lisbon-Setúbal over the 25 de Abril bridge): its own "Informação ao Público" page, a timed log for the day. robots.txt allows the path.
+    const fUrl = 'https://www.fertagus.pt/Fertagus-pt/Viajar/Comunicados-e-Campanhas/Informa%C3%A7%C3%A3o-ao-P%C3%BAblico'
+    const f = await get('fertagus-info-publico', fUrl, { json: false })
+    if (f.rec.status === 200 && f.body) {
+        const lines = f.body.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<(br|\/p|\/div|\/li|\/h\d)[^>]*>/gi, '\n').split('\n').map(strip).filter(Boolean)
+        const notices = []; let day = null
+        for (const l of lines) {
+            const dm = /^(\d{1,2}) de ([a-zç]+) de (\d{4})$/i.exec(l)
+            if (dm && PT_MONTHS[dm[2].toLowerCase()]) { day = [+dm[3], PT_MONTHS[dm[2].toLowerCase()], +dm[1]]; continue }
+            if (!day) continue
+            const tm = /^(\d{1,2}):(\d{2})\s*[-–]\s*(.+)$/.exec(l)
+            if (tm) notices.push({ at: lisbonToUtc(...day, +tm[1], +tm[2]), local: `${tm[1].padStart(2, '0')}:${tm[2]}`, excerpt: excerpt(tm[3], 200) })
+            else if (l.length > 60 && notices.length < 40 && !/cookies|navega|direitos/i.test(l)) notices.push({ day: `${day[0]}-${String(day[1]).padStart(2, '0')}-${String(day[2]).padStart(2, '0')}`, excerpt: excerpt(l, 220) })
+            if (/^Nesta página encontra/i.test(l)) break
+        }
+        const since = Date.now() - 3 * 86400e3, keep = notices.filter(n => Date.parse(n.at || n.day + 'T23:59:59Z') >= since).sort((a, b) => (b.at ? 1 : 0) - (a.at ? 1 : 0)).slice(0, 8)   // timed entries first (page order, newest first), then the day's notes
+        const latest = keep.find(n => n.at)
+        items.push({
+            id: 'fertagus', operator: 'Fertagus (trains, Lisbon to Setúbal over the 25 de Abril bridge)', mode: 'train', label: latest ? 'fact' : 'none',
+            state: latest ? `its latest entry, ${latest.local} Lisbon time: ${latest.excerpt}` : 'no timed entry found on its page',
+            notices: keep.map(n => ({ title: n.at ? n.local + ' Lisbon time' : 'Note for ' + +n.day.slice(8) + ' Nov', excerpt: n.excerpt, published: n.at || null })),
+            link: fUrl, source: fUrl, read: f.rec.read, sha256: f.rec.sha256, kind: 'its own public-information page (a timed log; short excerpts, the page one click away)',
+            licence: 'No terms of use found beyond "all rights reserved": short excerpts with the link',
+            ...(latest ? {} : { note: 'its page answered, but no timed entry was found' }),
+        })
+    } else items.push({ id: 'fertagus', operator: 'Fertagus (trains)', mode: 'train', label: 'none', note: `did not answer (status ${f.rec.status})`, source: fUrl, read: f.rec.read })
+    return items
+}
+
 const fl = await flights()
+const tr = await trains()
 const sv = await services()
 const mt = await metro()
 const updated = iso(Date.now())
@@ -250,9 +305,9 @@ if (DRY) { console.log(JSON.stringify({ flightsJ, servicesJ }, null, 1).slice(0,
 writeJ(path.join(OUT, 'flights.json'), flightsJ)
 writeJ(path.join(OUT, 'services.json'), servicesJ)
 const modeJ = (mode, title, operators, decisions) => ({ about: `${title}: each operator's own site, feed or open API first; the press only where the operator publishes nothing readable (those are the researcher's decisions, linked). Short excerpts with the link.`, mode, ...common, operators, decisions_elsewhere: decisions.map(e => `incidents/2026-11-10-storm-charles/data/decisions/entities/${e}.json`) })
-const MODES = { metro: modeJ('metro', 'Metro and light rail', mt, ['metro']), buses: modeJ('buses', 'Buses and trams', sv.filter(o => o.mode === 'bus'), []), ferries: modeJ('ferries', 'Ferries', sv.filter(o => o.mode === 'ferry'), ['ferries']) }
+const MODES = { metro: modeJ('metro', 'Metro and light rail', mt, ['metro']), buses: modeJ('buses', 'Buses and trams', sv.filter(o => o.mode === 'bus'), []), ferries: modeJ('ferries', 'Ferries', sv.filter(o => o.mode === 'ferry'), ['ferries']), trains: modeJ('trains', 'Trains', tr, ['cp']) }
 for (const [m, j] of Object.entries(MODES)) writeJ(path.join(OUT, m + '.json'), j)
 fs.mkdirSync(path.join(ROOT, 'transport'), { recursive: true })
 fs.appendFileSync(path.join(ROOT, 'transport/reads.jsonl'), reads.map(r => JSON.stringify({ ...r, url: r.url.replace(/begin=\d+&end=\d+/, 'begin=…&end=…') })).join('\n') + '\n')
-for (const f of ['flights.json', 'services.json', 'metro.json', 'buses.json', 'ferries.json']) { const s = fs.statSync(path.join(OUT, f)).size; if (s > 256 * 1024) { console.error(`${f} is ${s} bytes, over 256 KB`); process.exit(1) } }
-console.log(`transport: ${fl.map(a => `${a.iata} dep ${a.departures_today.count ?? '—'} live ${a.live_snapshot.on_ground ?? '—'}/${a.live_snapshot.airborne_low ?? '—'}`).join(' · ')} · ${[...sv, ...mt].map(s => `${s.id} ${s.label}${s.notices ? ' ' + s.notices.length : ''}`).join(' · ')} · store ${STORE}`)
+for (const f of ['flights.json', 'services.json', 'metro.json', 'buses.json', 'ferries.json', 'trains.json']) { const s = fs.statSync(path.join(OUT, f)).size; if (s > 256 * 1024) { console.error(`${f} is ${s} bytes, over 256 KB`); process.exit(1) } }
+console.log(`transport: ${fl.map(a => `${a.iata} dep ${a.departures_today.count ?? '—'} live ${a.live_snapshot.on_ground ?? '—'}/${a.live_snapshot.airborne_low ?? '—'}`).join(' · ')} · ${[...sv, ...mt, ...tr].map(s => `${s.id} ${s.label}${s.notices ? ' ' + s.notices.length : ''}`).join(' · ')} · store ${STORE}`)

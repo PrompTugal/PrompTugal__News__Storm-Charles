@@ -9,7 +9,7 @@
   var mode = el.getAttribute('data-mode') || 'hub'
   var MODES = [
     { id: 'flights', name: 'Flights', page: 'flights', file: 'flights.json', ents: ['airport', 'tap'], ops: 'Lisbon, Porto, Faro and Funchal airports (OpenSky Network)' },
-    { id: 'trains', name: 'Trains', page: 'trains', file: null, ents: ['cp'], ops: 'CP, Fertagus' },
+    { id: 'trains', name: 'Trains', page: 'trains', file: 'trains.json', ents: ['cp'], ops: 'CP, Fertagus' },
     { id: 'metro', name: 'Metro and light rail', page: 'metro', file: 'metro.json', sched: 'metro-schedule.json', ents: ['metro'], ops: 'Metro de Lisboa, Metro do Porto, MTS' },
     { id: 'buses', name: 'Buses and trams', page: 'buses', file: 'buses.json', ents: [], ops: 'Carris Metropolitana; Carris (next)' },
     { id: 'ferries', name: 'Ferries and the port', page: 'ferries', file: 'ferries.json', ents: ['ferries', 'port'], ops: 'Transtejo Soflusa' },

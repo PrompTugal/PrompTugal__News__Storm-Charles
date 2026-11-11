@@ -6,10 +6,11 @@ head: <link rel="stylesheet" href="../app/transport/transport.css"><script src="
 ---
 # Buses and trams
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:12 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:15 UTC
 
 **Not a warning service.** No advice of ours: **check with your airline or operator** before you travel. For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). [All transport](index.md).
 
 - **Carris Metropolitana:** its open API: every notice in force (`/v2/alerts`), how many are for the weather, short excerpts; and the buses running now, on how many lines (`/v2/vehicles`), hour by hour from our readings. Its network data is CC BY on dados.gov.pt.
 - **Carris** (Lisbon's buses, trams and lifts): not read yet; next.
-- STCP (Porto) and others: later.
+- **STCP (Porto):** how many buses report a position now and on how many lines, from its real-time feed on [dados.gov.pt](https://dados.gov.pt/datasets/urban-platform-bus-location/) (CC0). Counts only.
+- Carris (Lisbon city) and others: later.

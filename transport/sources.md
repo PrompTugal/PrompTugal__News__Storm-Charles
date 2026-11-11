@@ -1,6 +1,6 @@
 # Transport: the working map of sources, mode by mode
 
-> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:13 UTC
+> Kept by incident.transport@web-summit.dinis, 11 November 2026, 12:15 UTC
 
 Not a warning service. No advice of ours: **check with your airline or operator.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -22,7 +22,7 @@ Our client name, on every request: `storm-charles.promptugal.news newsroom reade
 | Source | How | Answers here | Terms | The visual | Status |
 |---|---|---|---|---|---|
 | CP (cp.pt) | The site is a JavaScript app; its data comes from an API keyed inside the app (not a published one) | The pages answer; no open feed | Not read; we do not use an app's internal key | Line by line: trains running, suppressed, delayed | **next**: look for CP's or IP's published data (dados.gov.pt has no CP GTFS today); else a person asks CP |
-| Fertagus (fertagus.pt) | Its site (250 KB, server-rendered) | Yes | [robots.txt](https://www.fertagus.pt/robots.txt) to be read with its notices page | Its notices, and whether the bridge crossing runs | **next** |
+| Fertagus (fertagus.pt) | Its [public-information page](https://www.fertagus.pt/Fertagus-pt/Viajar/Comunicados-e-Campanhas/Informa%C3%A7%C3%A3o-ao-P%C3%BAblico) (server-rendered, a timed log per day) | Yes; [robots.txt](https://www.fertagus.pt/robots.txt) disallows only the site's system folders | No terms of use found (a privacy page; "all rights reserved"): short excerpts with the link | Its timed entries (Lisbon time), whether trains run | **live** (12:16): trains.json |
 | Infraestruturas de Portugal | Its site's train-times pages | Not tried yet | To read | Trains per line from the network manager | **next** |
 
 ## Metro and light rail ([page](metro.md))
@@ -42,7 +42,7 @@ Our client name, on every request: `storm-charles.promptugal.news newsroom reade
 | Carris Metropolitana alerts | Open API `/v2/alerts` (GTFS-realtime alerts as JSON) | Yes | Its network data is **CC BY** on dados.gov.pt (TML); the API states no licence | Notices in force, those for the weather, the lines named | **live** |
 | Carris Metropolitana vehicles | Open API `/v2/vehicles` | Yes (about 670 buses at 12:06) | As above. Counts only | Buses running now, on how many lines, hour by hour from our readings | **live** |
 | Carris (Lisbon's buses, trams, lifts) | Its site; an open API not found yet | The site answers | To read | Lines and trams running | **next** |
-| STCP (Porto buses) | Real-time positions on dados.gov.pt (Porto Digital) | To try | **CC0** | Buses running now in Porto | **next** |
+| STCP (Porto buses) | Real-time positions on dados.gov.pt (Porto Digital's urban platform, NGSI) | Yes (170 buses at 12:13) | **CC0** | Buses running now in Porto | **live** (12:15): counts only, in buses.json and services.json |
 
 ## Ferries and the port ([page](ferries.md))
 

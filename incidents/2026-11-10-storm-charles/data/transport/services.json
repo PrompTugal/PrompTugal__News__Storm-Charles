@@ -1,7 +1,7 @@
 {
  "about": "Each operator's current state from its own notices where an open, machine-readable source exists, with short excerpts and the link. Operators without an open source (Metro, CP, Fertagus, Carris, the bridges, the airport) are in the decisions kept by incident.researcher@ (data/decisions/entities/), linked from the page.",
  "by": "incident.transport@web-summit.dinis",
- "updated": "2026-11-11T12:06:57Z",
+ "updated": "2026-11-11T12:17:17Z",
  "not_a_warning_service": "Not a warning service. No advice of ours: check with your airline or operator. For warnings follow IPMA and ANEPC.",
  "sources_page": "transport/sources.md",
  "operators": [
@@ -12,11 +12,11 @@
    "label": "fact",
    "state": "disrupted (weather notices in force)",
    "counts": {
-    "active_notices": 99,
-    "weather_notices": 10,
-    "lines_named_in_weather_notices": 48,
+    "active_notices": 100,
+    "weather_notices": 11,
+    "lines_named_in_weather_notices": 50,
     "by_effect": {
-     "DETOUR": 25,
+     "DETOUR": 26,
      "SIGNIFICANT_DELAYS": 44,
      "MODIFIED_SERVICE": 7,
      "ADDITIONAL_SERVICE": 21,
@@ -69,30 +69,69 @@
    ],
    "link": "https://www.carrismetropolitana.pt/",
    "source": "https://api.carrismetropolitana.pt/v2/alerts",
-   "read": "2026-11-11T12:06:43Z",
-   "sha256": "9272d258ed80eeed8b0fbff1693be98e55556d905f9a8e0eb63d51f1adb1629e",
+   "read": "2026-11-11T12:16:59Z",
+   "sha256": "b6725f5db5732172db97246680899e91957e2a66a0c1fb9c74ade6684f62d14c",
    "licence": "Carris Metropolitana's network data is published on dados.gov.pt under CC BY (TML); the API itself states no licence",
    "vehicles_now": {
     "label": "fact",
     "what": "buses reporting a position in the last five minutes, and the lines they run, at the time read (our hourly readings form the series)",
-    "at": "2026-11-11T12:06:46Z",
-    "vehicles": 669,
-    "lines": 388,
+    "at": "2026-11-11T12:17:02Z",
+    "vehicles": 666,
+    "lines": 396,
     "series": [
      {
       "at": "2026-11-11T12:06:46Z",
       "vehicles": 669,
       "lines": 388
+     },
+     {
+      "at": "2026-11-11T12:17:02Z",
+      "vehicles": 666,
+      "lines": 396
      }
     ],
     "source": "https://api.carrismetropolitana.pt/v2/vehicles",
-    "read": "2026-11-11T12:06:46Z",
-    "sha256": "522c30f4442d6c72ab8e89fb3ab53175489847419f514783a30748c73fb2e120",
+    "read": "2026-11-11T12:17:02Z",
+    "sha256": "cee44f816beb5c1afca3b012844c37cb8c0514a84cbd634bffbdf48d68089a32",
     "baseline": {
      "label": "none",
      "note": "No normal-day figure yet; from tomorrow the series compares the same hour."
     }
    }
+  },
+  {
+   "id": "stcp",
+   "operator": "STCP (buses, Porto)",
+   "mode": "bus",
+   "label": "fact",
+   "state": "buses reporting positions",
+   "vehicles_now": {
+    "label": "fact",
+    "what": "buses reporting a position in the last five minutes, and the lines they run, at the time read (our hourly readings form the series)",
+    "at": "2026-11-11T12:17:04Z",
+    "vehicles": 175,
+    "lines": 55,
+    "series": [
+     {
+      "at": "2026-11-11T12:17:04Z",
+      "vehicles": 175,
+      "lines": 55
+     }
+    ],
+    "source": "https://broker.fiware.urbanplatform.portodigital.pt/v2/entities?q=vehicleType==bus&limit=1000",
+    "read": "2026-11-11T12:17:04Z",
+    "sha256": "c1d6bc00668b4846f90278bd86f7670c37845c0c5b8220f12388fa01d35cd737",
+    "baseline": {
+     "label": "none",
+     "note": "No normal-day figure yet; from tomorrow the series compares the same hour."
+    }
+   },
+   "notices": [],
+   "link": "https://www.stcp.pt/",
+   "source": "https://dados.gov.pt/datasets/urban-platform-bus-location/",
+   "read": "2026-11-11T12:17:04Z",
+   "sha256": "c1d6bc00668b4846f90278bd86f7670c37845c0c5b8220f12388fa01d35cd737",
+   "licence": "CC0 (dados.gov.pt, published by STCP through Porto Digital's urban platform)"
   },
   {
    "id": "ttsl",
@@ -139,7 +178,7 @@
    ],
    "link": "https://ttsl.pt/passageiros/avisos-alteracoes-de-servico/",
    "source": "https://ttsl.pt/wp-json/wp/v2/avisos",
-   "read": "2026-11-11T12:06:47Z",
+   "read": "2026-11-11T12:17:07Z",
    "sha256": "33386886070c0a1811a7f3af4e8b6247708e747de6ebf120f6f334d15ed98685"
   }
  ],
