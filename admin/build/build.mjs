@@ -111,7 +111,7 @@ function menu(rel, u, title) {
     const here = active[1].find(([, t]) => t === rel)
     const a = ([label, t], cur) => `<a href="${u}${t}"${cur ? ' aria-current="page"' : ''}>${esc(label)}</a>`
     const nav = `<nav class="sites" aria-label="Subsites">${MENU_LIVE.map(s => `<a href="${u}${s[1][0][1]}"${s === active ? ' aria-current="true"' : ''}>${esc(s[0])}</a>`).join('')}</nav>
-<nav class="top" aria-label="${esc(active[0])}"><span class="navg"><b>${esc(active[0])}</b>${active[1].map(i => a(i, i[1] === rel)).join('')}</span></nav>`
+${active[1].length > 1 ? `<nav class="top" aria-label="${esc(active[0])}"><span class="navg"><b>${esc(active[0])}</b>${active[1].map(i => a(i, i[1] === rel)).join('')}</span></nav>` : ''}`
     const crumbs = rel === 'index.html' ? '' : `<nav class="crumbs" aria-label="Where you are"><div class="wrap"><a href="${u}index.html">Storm Charles</a><span>›</span><a href="${u}${active[1][0][1]}">${esc(active[0])}</a>${here && here[1] === active[1][0][1] ? '' : `<span>›</span><b>${esc(here ? here[0] : title)}</b>`}</div></nav>`
     return { nav, crumbs }
 }
@@ -136,9 +136,9 @@ ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 ${extraHead}
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span><a class="ver" href="${u}${HAS_NEWS ? 'news/index.html' : 'version.json'}" title="This version: what changed, what was built, when">${esc(VERSION)}</a><a class="ver repo" href="${REPO}" title="The repository this site is built from (leaves this site)">repo</a><button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
+<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b><span class="brand-org"> · PrompTugal</span></a><span class="live">Live</span><a class="ver" href="${u}${HAS_NEWS ? 'news/index.html' : 'version.json'}" title="This version: what changed, what was built, when">${esc(VERSION)}</a><a class="ver repo" href="${REPO}" title="The repository this site is built from (leaves this site)">Repo</a><button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
 ${MENU_MARK(rel, u, title)}</div></header>
-<div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
+<div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a><span class="nt-more"> and your local authorities. We aggregate public sources, each with its source and the time we read it</span>.</div></div>
 <!--crumbs--><div class="shell" id="shell"><div class="shell-main">
 ${body}
 </div><aside class="panel" id="panel" hidden aria-label="The reader's panel" data-base="${u}" data-version="${esc(VERSION)}"${twin ? ` data-twin="${esc(twin)}"` : ''}>
