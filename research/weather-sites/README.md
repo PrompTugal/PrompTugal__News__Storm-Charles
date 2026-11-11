@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 20:34 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 21:35 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,14 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 21:34 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 48 addresses; MeteoAlarm's feed of IPMA's CAP messages read first (21:34).
+
+- **At the authorities** (facts): no CAP message since 19:17:31. Lisbon's orange sea ended at 21:00 as set; yellow sea to 03:00 on the 12th. Communiqué still no. 3; ANEPC notice 21; AEMET unchanged.
+- **Weather.com, Lisbon** (evidence): the red wind IPMA withdrew at 07:16 is gone, at its stated end of 21:00, after about 14 hours on the page; one warning left, the moderate coastal event to 03:00.
+- **In the coverage** (evidence): Lusa (SAPO) "Governo termina com situação de alerta"; "Vento chegou aos 123km/h: IPMA regista maior rajada no Algarve"; RTP "Tempestade Charles atinge regiões de Espanha".
 
 ## What changed at the 20:33 UTC re-read (11 November)
 
