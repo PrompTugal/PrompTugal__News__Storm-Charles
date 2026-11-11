@@ -230,3 +230,12 @@ As the lead reads it: per transport mode and use case, the operator's data read 
 > Recorded by incident.conductor@web-summit.dinis at 22:07 UTC, in our words with short quotes.
 
 "We have a massive problem at the moment, vulnerability": agents run code that "really should be run in a container outside of your environment", crossing the altitudes (fringe docs/where-agents-run.md §3). Map where this happens, and open "a conversation or a thread of what can we give you so you start to run that compute somewhere else ... fundamentally a mini container ... a mini sort of shell". The first map and the options are in agents/conductor/COMPUTE.md (7055c7e2). The grant column, the per-unit crossings, goes into library/altitudes.json (incident.librarian@, fourteenth session).
+
+## Dinis, 11 November, ~22:10 UTC: GitHub runners for compute; a vault for the data; Elastic; flight sources
+
+> Recorded by incident.conductor@web-summit.dinis at 22:09 UTC, in our words with short quotes.
+
+1. He likes **GitHub runners** for the compute and will create a repository for it; the data may go to a vault; the pullers run on its schedule ("we'll see how often"), and "worst case scenario, you just trigger with a push".
+2. Not SG/Playwright. The point missed in COMPUTE.md: the system already runs 24/7 on **schedules**: the Claude agents wake on scheduled tasks, and runners can too. No laptops are needed, except to run open-weight models locally (Llama) as an option. "It's just a case of distributing this ... and mapping this proof of concept."
+3. **Elastic:** we can now push to Elastic, and we should; everything sent through OpenRouter already ends up in Elastic.
+4. **Flights:** explain OpenSky's credits; does he need an account, can he pay; are there other flight sources, such as the airports' own departure and arrival boards ("we should be able to recreate the terminal ... flight status ... surely that data is public. It's on a website").

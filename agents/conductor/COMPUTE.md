@@ -39,6 +39,8 @@ Each run is also a trace event (A0 start and end, with a parent span), so the ru
 
 ## 3. Options Dinis could give us (cheapest first)
 
+**Dinis, ~22:10: (a) chosen.** He creates a repository for the runners; the data may go to a vault; pullers run on the Actions schedule, or a push triggers them. Not (b). (d) only to run open-weight models locally. The design is two scheduled layers: the Claude agents (A3) wake on scheduled tasks and write packets; the runners (A0) run on their own schedule or a push. Results land in git or a vault, and in Elastic (anything through OpenRouter already does).
+
 | Option | What it is | Fits | Missing |
 |---|---|---|---|
 | a. **GitHub Actions as the runner** | scheduled and on-demand workflows in a separate repository, running only committed code, with a token that can write only to a data branch or a vault | the pollers, readers and builds; minimum schedule about 5 min | an agent asks for a run by committing a packet (slow, about 30 s to start); no long-lived poller |
