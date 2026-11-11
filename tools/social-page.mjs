@@ -35,7 +35,7 @@ const lagRows = KEY.map(([row, body, what]) => {
     return `| ${hm(at)} | ${what} ([\`${row}\`](../../${INC}/timeline.html#${row})) | ${own} | ${first ? `${who(first.account)}, [${hm(first.posted_utc)}](${first.url}) (leaves this site): ${dur(at, first.posted_utc)}` : 'none of the listed accounts'} | ${ps.length} |`
 })
 const top = ix.most_reposted.slice(0, 8).map(m => { const p = byId[m.id]; return `| ${m.reposts + m.quotes} | ${who(p.account)} | ${hm(p.posted_utc)} | ${cut(p.text, 110)} | [the post](${p.url}) (leaves this site) |` })
-const accRows = acc.accounts.map(a => { const s = st(a.handle); return `| \`${a.handle}\` | ${a.who} | ${a.kind} | ${s.verified_by_bluesky ? 'yes' : 'no'} | ${s.posts_since ?? '?'}${s.reached_since === false ? '+' : ''} | ${s.kept ?? 0} | ${s.last_post_utc ? hm(s.last_post_utc).replace(/^(\d+ \w+), /, s.last_post_utc < acc.since ? s.last_post_utc.slice(0, 10) + ' ' : '$1, ') : 'never'} |` })
+const accRows = acc.accounts.map(a => { const s = st(a.handle); return `| [\`${a.handle}\`](accounts/${a.handle}.html) | ${a.who} | ${a.kind} | ${s.verified_by_bluesky ? 'yes' : 'no'} | ${s.posts_since ?? '?'}${s.reached_since === false ? '+' : ''} | ${s.kept ?? 0} | ${s.last_post_utc ? hm(s.last_post_utc).replace(/^(\d+ \w+), /, s.last_post_utc < acc.since ? s.last_post_utc.slice(0, 10) + ' ' : '$1, ') : 'never'} |` })
 const silent = acc.accounts.filter(a => !(st(a.handle).kept)).map(a => `${who(a.handle)}${st(a.handle).last_post_utc && st(a.handle).last_post_utc < acc.since ? ` (last post of any kind: ${st(a.handle).last_post_utc.slice(0, 10)})` : ''}`)
 const convRows = conv.queries.map(c => c.status === 200 ? `| ${c.query} | ${c.posts}${c.complete ? '' : '+'} | ${c.distinct_accounts} | ${c.by_listed_accounts} | ${Object.entries(c.per_hour).sort((a, b) => b[1] - a[1])[0] ? (([h, n]) => `${hm(h)} (${n})`)(Object.entries(c.per_hour).sort((a, b) => b[1] - a[1])[0]) : ''} | ${Object.entries(c.languages).slice(0, 4).map(([l, n]) => `${l === 'und' ? 'none declared' : l} ${n}`).join(', ')} |` : `| ${c.query} | not counted (the API answered ${c.status}) | | | | |`)
 const storm = posts.filter(p => p.about_storm)
@@ -110,7 +110,7 @@ Not readable without logging in: the organisers' and the authorities' profiles a
 
 ## The accounts read
 
-Each with the reason it counts as official or public-role, and who decided: [accounts.json](accounts.json). "Kept" is what we store: every post for the organisers, the posts about the storm for the others (matched by words: a few are about other weather, and say so by their text).
+Each with the reason it counts as official or public-role, and who decided: [accounts.json](accounts.json). Each handle opens that account's page. "Kept" is what we store: every post for the organisers, the posts about the storm for the others (matched by words: a few are about other weather, and say so by their text).
 
 | Handle | Who | Kind | Verified by Bluesky | Own posts since 8 Nov | Kept | Last post |
 |---|---|---|---|---|---|---|
