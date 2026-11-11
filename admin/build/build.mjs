@@ -638,7 +638,8 @@ pages.push({ rel: 'data-room/index.html', md: 'data-room/index.md', title: 'The 
     const wf = path.join(ROOT, 'weather/index.md')
     if (fs.existsSync(wf)) {
         const [fm, md] = frontMatter(fs.readFileSync(wf, 'utf8'))
-        const toRoot = h => h.replace(/\b(href|src)="\.\.\//g, '$1="').replace(/\b(href|src)="(?!https?:|#|\/|mailto:|data:|app\/|incidents\/|data\/|research\/|agents\/|api\/|design\/|library\/|studio\/|data-room\/|sources\/|evidence\/|entities\/|labs\/|board\/|help\/|news\/|account\/|[A-Za-z-]+\.(?:html|json|txt|md)")([^"]*)"/g, '$1="weather/$2"').replace(/data-base="\.\.\/"/g, 'data-base="./"').replace(/data-base=""/g, 'data-base="./"')
+        // every relative address in weather/index.md is resolved from weather/ and written from the root: about.md, ./about.md, ../weather/about.md and ../datasets.html all come out right
+        const toRoot = h => h.replace(/\b(href|src)="(?!https?:|#|\/|mailto:|data:)([^"]*)"/g, (m, a, v) => { const r = new URL(v, 'http://x/weather/'); return `${a}="${r.pathname.slice(1) || './'}${r.search}${r.hash}"` }).replace(/data-base="[^"]*"/g, 'data-base="./"')
         const body = `<main class="doc"><div class="wrap">${toRoot(fm.mount || '')}</div></main><main class="doc"><div class="wrap"><article>${toRoot(markdown(md))}</article></div></main>`
         write('index.html', page({ rel: 'index.html', title: fm.title || 'Storm Charles: the weather, now', desc: fm.summary || '', body, twin: 'weather/index.md', extraHead: toRoot(fm.head || '') }))
         pages.push({ rel: 'index.html', md: 'weather/index.md', title: fm.title || 'Storm Charles: the weather' })
