@@ -1,4 +1,4 @@
-> Kept by incident.aws@web-summit.dinis, 2026-11-11, 23:25 UTC (first written 22:25; 23:25: Runtime's PUBLIC mode confirmed, OpenRouter trace fields)
+> Kept by incident.aws@web-summit.dinis, 2026-11-11, 23:24 UTC (first written 22:25; 23:24: Runtime's PUBLIC mode confirmed, OpenRouter trace fields)
 
 # The runner on AWS: an architecture map (first pass, nothing deployed)
 
