@@ -1,11 +1,11 @@
 {
  "about": "Kept by hand by incident.wikipedia@web-summit.dinis: the checkable statements of each Wikipedia page on Storm Charles, in our own English (a paraphrase, never Wikipedia's wording), each with an anchor (a few words of the article, to find the sentence in the revision named) and how it stands against this site. tools/wikipedia-claims.mjs reads this file, finds each sentence in the stored revision, attaches the footnotes it carries, and writes claims.json, compare.json and against.json. rel: 'matches' = a timeline row says the same; 'in-data' = this site holds it in a data file but no timeline row; 'missing' = nowhere on this site; 'behind' = Wikipedia states what a later official change has overtaken, and we hold the change; 'differs' = a figure or time differs. verdict: what this team found when it went to the primary source for the statement ('verified at primary source', 'press only', 'not established at source', or 'not checked by us'), with the row or decision that holds the check. Wikipedia is a lead for us, never the source.",
  "by": "incident.wikipedia@web-summit.dinis",
- "updated": "2026-11-11T02:46:00Z",
+ "updated": "2026-11-11T03:50:00Z",
  "revisions": {
   "pt": {
    "page": "pt-8011202",
-   "oldid": 73419488
+   "oldid": 73420177
   },
   "en": {
    "page": "en-83624065",
@@ -758,17 +758,24 @@
    "lang": "pt",
    "topic": "madeira-impacts",
    "kind": "number",
-   "anchor": "foram registadas 38 ocorrências",
-   "statement": "Madeira's civil protection logged 38 incidents between 20:00 and 23:30 on 10 November: 15 floodings, five fallen trees, four landslides and others, with 113 responders and 39 vehicles.",
+   "anchor": "foram registadas 71 ocorrências",
+   "statement": "Madeira's civil protection logged 71 incidents between 20:00 on 10 November and 02:00 on 11 November (a provisional count): 22 floodings, 13 landslides, seven fallen trees and others, with 193 responders and 72 vehicles; Machico had most, 20, then Santa Cruz 18. (Until the revision of 03:25 UTC on 11 November the article gave 38 incidents to 23:30.)",
    "figures": [
-    "38 incidents",
-    "20:00 to 23:30",
-    "113 responders",
-    "39 vehicles"
+    "71 incidents",
+    "20:00 to 02:00",
+    "13 landslides",
+    "193 responders",
+    "72 vehicles",
+    "Machico 20"
    ],
    "ours": {
-    "rel": "missing",
-    "verdict": "not checked by us"
+    "rel": "differs",
+    "signals": [
+     "s-1111T0233"
+    ],
+    "verdict": "not checked by us",
+    "verdict_note": "Our row has only a radio bulletin's title, 'more than 50 incidents', with no figure read at source. Wikipedia's 71 to 02:00 is from the regional daily quoting the civil protection platform: a lead for the researcher, not a fact.",
+    "note": "Wikipedia is ahead of our row: a later and exact count, with its hours and a breakdown."
    }
   },
   {
@@ -808,6 +815,24 @@
    "ours": {
     "rel": "missing",
     "verdict": "not checked by us"
+   }
+  },
+  {
+   "id": "w-pt-37",
+   "lang": "pt",
+   "topic": "madeira-impacts",
+   "kind": "place",
+   "anchor": "falhas no fornecimento de electricidade e dificuldades nas comunicações",
+   "statement": "On Porto Santo there were power failures and trouble with communications as the low passed; the mayor confirmed the municipal civil protection centre was activated, coastal accesses closed and operations at the harbour suspended.",
+   "figures": [],
+   "ours": {
+    "rel": "matches",
+    "signals": [
+     "s-1111T0233"
+    ],
+    "verdict": "not checked by us",
+    "verdict_note": "Our row reports a front-page headline on the power cuts (title only). The measures the mayor confirmed are not on this site.",
+    "note": "The article names the mayor; our claim gives the role."
    }
   },
   {
