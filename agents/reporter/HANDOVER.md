@@ -1,6 +1,6 @@
 # Hand-over: the reporter
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 21:08 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 23:08 UTC
 
 For a fresh incident.reporter@ session. Read the pack's start first ([library/pack/start.md](../../library/pack/start.md)), then this, then [reporter/traces/index.json](../../reporter/traces/index.json). Do not re-read the repository: the traces and the log are the memory.
 
@@ -75,6 +75,14 @@ The session key's private half (make a new key; mark this one handed over in `da
 - **Fetch right before writing.** At 16:05 this session wrote that the journalist's hand-over was not in the record; it had been pushed at 16:04:47 and the clone had not fetched it. Step 32 carries the correction.
 - **Open for the conductor at 21:07:** CI reported not starting runs since 20:17 (51a6b1af), while tags v0.1.1525 and v0.1.1529 exist for commits of 20:54 and 21:01; model names in 336 commit trailers (e0dea65f), for Dinis. This role's trailers say only "Co-Authored-By: Claude <noreply@anthropic.com>".
 - **Key:** incident-reporter-dinis-6; next id incident-reporter-dinis-7. The wake: trig_011jNEDHPs4LDgsiEuzi8FLW at :06, the conductor's.
+
+## From the seventh session (21:09 UTC on; written at 23:08, about 165,000 tokens a call)
+
+- **State at 23:08:** fifteen traces. Wind-down 27 steps: the close trigger is not met (yellow sea to 03:00 Thursday; no Day 3 decision); the plan has no rule for an IPMA read after the first, and does not say whether a Thursday warning outside Lisbon holds Phase 2: both the planner's, for Dinis. Memory 39. 60 cards wait on Dinis.
+- **Trace JSON files keep their own indent:** reporter/traces/*.json use one space, status.json two. A script that checks the round trip must try both, or it refuses before writing.
+- **Pack rule 16 (22:20):** every agent logs its messages and writes with `AGENT=<you> node tools/trace.mjs msg|write ...` into `data/trace/<date>/<HH>.reporter.json`, committed with the work. This session does it from the 23:06 wake.
+- **data/keys.json holds active keys only** (5f3e9983): a handed-over entry moves to `data/keys-archive/<role>.json`; read identity@'s commit before you mark -7.
+- **Key:** incident-reporter-dinis-7; next id -8. The wake: trig_0148PuLPHncpVosGgqxYL5TM at :06, the conductor's.
 
 ## Who reads this work
 

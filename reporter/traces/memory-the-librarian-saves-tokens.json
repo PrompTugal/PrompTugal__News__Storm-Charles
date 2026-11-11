@@ -4,7 +4,7 @@
  "size": "medium",
  "title": "Memory: \"the librarian saves tokens\" to a measured number in 9 minutes, and six sessions replaced within the hour",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T22:08:41Z",
+ "updated": "2026-11-11T23:08:20Z",
  "captured_at": "2026-11-11T04:03:00Z",
  "summary": [
   "Dinis (~02:50): \"we should make it much cheaper if another agent wanted to capture all this ... the librarian saves tokens and ... implements memory in a much more effective way.\" Five and a half minutes after the commit that records it, the librarian pushed a briefing pack; three minutes after that the accountant had measured it.",
@@ -39,7 +39,7 @@
   "what": "library/pack/ (start.md, state.json, a pack per role); accounts/pack-test.json; six agents continued by fresh sessions started from the pack",
   "url": "https://storm-charles.promptugal.news/accounts/"
  },
- "status": "open: one step per hour; round 23, the five held for Dinis 29% of the 20:00 hour's tokens; seven hand-overs and a new agent (flights) in the hour (step 38)",
+ "status": "open: one step per hour; round 24, models handed over (47% less a call); nine hand-overs, aws new, the keys file split into an archive (step 39)",
  "duration": {
   "from": "2026-11-11T02:49:18Z",
   "to": "2026-11-11T10:05:23Z",
@@ -2154,11 +2154,109 @@
      "version": "v0.1.1559",
      "run": 1559,
      "own_run": true,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T21:18:39Z"
+     "served_by": "2026-11-11T21:42:36Z",
+     "push_to_served_s": 38
     }
    ],
    "n": 38,
    "at": "2026-11-11T21:41:55Z",
+   "agent_trailer": "incident.accountant@web-summit.dinis",
+   "for": [
+    "incident.conductor@web-summit.dinis"
+   ]
+  },
+  {
+   "actor": {
+    "name": "incident.accountant@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "round 24; nine hand-overs, a new agent, the keys file split",
+   "sha": "2af5d987451d0093c1ebe9f1beeeb99817905bda",
+   "in": "the ledger lines",
+   "out": "\"the accounts, round 24: models handed over at Dinis's word (47% less a call); four still held; the conductor at 436,404 at 22:05\". In the hour from 22:09 the keys file took nine hand-overs: the librarian's fourteenth (f698a96f, 22:12:24) and fifteenth (f1627886, 23:02:23), the journalist's eighth (733f7146, 22:15:30), CI's fourth (496abf13, 22:22:56), observability's tenth (47a98cf0, 22:23:06), models' third (60953a94, 22:35:37), weatherwatch's sixth (b6795638, 22:37:01), transport's sixth (52e047ce, 22:51:28), flights' second (71a9f382, 23:03:59); and a new agent's first key, incident.aws@ (405631ae, 22:19:43), from Dinis's ~22:20 word. The keys file had grown to 261 KB, over the gate's 256 KB: incident.identity@ moved every handed-over entry to data/keys-archive/<role>.json (5f3e9983, 23:00:44). The librarian handed over twice in 50 minutes.",
+   "handoff": {
+    "to": "every agent",
+    "via": "accounts/, data/keys.json and data/keys-archive/",
+    "evidence_of_handoff": "the keys file and its archive"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "data/keys.json",
+     "url": "https://storm-charles.promptugal.news/view/?path=data/keys.json"
+    },
+    {
+     "type": "commit",
+     "sha": "f698a96fac802053683a18311eb27c5413720251",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f698a96fac802053683a18311eb27c5413720251"
+    },
+    {
+     "type": "commit",
+     "sha": "f16278861f643e644ecb8726d5c3ec9113318133",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/f16278861f643e644ecb8726d5c3ec9113318133"
+    },
+    {
+     "type": "commit",
+     "sha": "733f71465a54fdc9eb03c005990a85ec8fd86c05",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/733f71465a54fdc9eb03c005990a85ec8fd86c05"
+    },
+    {
+     "type": "commit",
+     "sha": "496abf137cbee7f2e537e60de63b0559f88026c1",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/496abf137cbee7f2e537e60de63b0559f88026c1"
+    },
+    {
+     "type": "commit",
+     "sha": "47a98cf085e0748aa4f47b4d0e35961e9c6fdb00",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/47a98cf085e0748aa4f47b4d0e35961e9c6fdb00"
+    },
+    {
+     "type": "commit",
+     "sha": "60953a94bcd04d5c421fefc5e627dbe36cca9f1b",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/60953a94bcd04d5c421fefc5e627dbe36cca9f1b"
+    },
+    {
+     "type": "commit",
+     "sha": "b6795638cdc7d9d044beeb465cb8859a7a1981b1",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b6795638cdc7d9d044beeb465cb8859a7a1981b1"
+    },
+    {
+     "type": "commit",
+     "sha": "52e047cebe1deda9c03652bfc70df2e4122465c7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/52e047cebe1deda9c03652bfc70df2e4122465c7"
+    },
+    {
+     "type": "commit",
+     "sha": "71a9f3825ea3b5b51e40d6284103ccfc53120bc1",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/71a9f3825ea3b5b51e40d6284103ccfc53120bc1"
+    },
+    {
+     "type": "commit",
+     "sha": "405631aeff4a9cbaf66078ea805a296a3a3dd367",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/405631aeff4a9cbaf66078ea805a296a3a3dd367"
+    },
+    {
+     "type": "commit",
+     "sha": "5f3e99833bc0a00c9407b0e82495d945a85de6bb",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5f3e99833bc0a00c9407b0e82495d945a85de6bb"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "2af5d987451d0093c1ebe9f1beeeb99817905bda",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/2af5d987451d0093c1ebe9f1beeeb99817905bda"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1669",
+     "run": 1669,
+     "own_run": true,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T22:26:16Z"
+    }
+   ],
+   "n": 39,
+   "at": "2026-11-11T22:47:23Z",
    "agent_trailer": "incident.accountant@web-summit.dinis",
    "for": [
     "incident.conductor@web-summit.dinis"
@@ -2172,10 +2270,10 @@
   "person": "A person's step is where Dinis acted. His words are known only as incident.conductor@ wrote them down in BRIEF.md (\"close to his words\"); the time is the brief's own \"~\" time, and the commit that records it is the only timestamp."
  },
  "counts": {
-  "steps": 38,
+  "steps": 39,
   "steps_with_no_evidence": 0,
   "person_steps": 2,
-  "agent_steps": 36
+  "agent_steps": 37
  },
  "people_acted": [
   "Dinis Cruz"

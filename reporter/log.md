@@ -1,6 +1,6 @@
 # The project, hour by hour
 
-> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 22:08 UTC
+> Kept by incident.reporter@web-summit.dinis, 11 November 2026, 23:08 UTC
 
 **In five lines.**
 1. One person, Dinis Cruz, spoke nine times between about 19:00 on 10 November and about 02:50 on 11 November, then fourteen more times between about 09:30 and 11:56 after 6 h 41 min without a word in the record: at 10:30 to wind the incident down, at 11:42 to start four more agents; a team that grew from 4 agents to 41 (85 sessions by 11:53, data/agents/count.json) turned each direction into pages within minutes.
@@ -228,6 +228,14 @@
 - Broke: incident.ci@ measured the Actions stall: runs 1500 to 1523 created from 20:17:15 but never started; no deploy from 20:13:47 to 21:02:53 (49 min), no run failed (`01e97107`); the conductor took a patch to deploy only dev's newest push (`7080c767`).
 - Corrected: the close trigger is not met at the 21:48 read, and the wind-down trace's step 25 said it waited on that read, which could not meet it (step 26; the journalist found it, `3676f5a0`, `60037c7d`; the conductor's row, `0483d68f`, `ebf00f52`). Two clocks put back by their authors (`9c2b7b44`, `9cbd7146`).
 - Waited on Dinis: 53 cards; the Web Summit hold for 16 h 41 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36, and now the planner's gap: the plan has no rule for an IPMA read after the first (the wind-down trace, step 26).
+
+**23:08, the 23:06 wake.**
+- Asked, by Dinis: ~22:10, GitHub runners for the compute (he will make the repository), a vault for the data, push to Elastic, other flight sources (`cea17265`); ~22:20, an AWS agent to explore runners "in bits", and send it all to Angelo's conductor (`bf85e691`; sent, `c24ef98a`). No commit to transition/ or welcome/.
+- Shipped: the swarm's trace as data, backfilled to 10 November (`7d67da42`), as Elastic feeds (`9973959c`), and pack rule 16, every agent leaves its own trace lines (`91f3dcb5`); RUNNER.md (`ecd37a93`, `efe7bc85`); CI split by altitude, push to served 49 s on run 1626 (`fd90abcd`, `6f15b459`); the flights map live on /flights/ (`396b0291`), positions from adsb.lol under ODbL (`a75d47f9`); collectors with open-weight second readers through OpenRouter (`1ea5b191`, `2be9465b`, `307be0ff`); incident.aws@'s first pass (`4b15089f`); IPMA's first warnings for Thursday, yellow rain in six northern districts, nothing for Lisbon or Madeira (`4cb9220c`; the wind-down trace, step 27).
+- Shipped besides: the accounts' round 24 (`2af5d987`); nine hand-overs, a new agent and the keys file split into data/keys-archive/ at 261 KB (`5f3e9983`; the memory trace, step 39); the conductor's own HANDOVER.md (`713b2794`).
+- Broke: nothing in the record at 23:08. Paused by their authors on licence: OpenSky's readings, its terms ask a written licence for automated use, for Dinis (`5e25848f`, `a75d47f9`).
+- Corrected, by their authors: COMPUTE.md, CI crosses too (`2a265c2d`); hand-over times put back to the clock (`c9b455d4`, `9b5dba1e`).
+- Waited on Dinis: 60 cards (53 at 22:08; five runner, Elastic and flight asks placed at the conductor's word, `1da1b854`); the Web Summit hold for 17 h 41 min; /welcome/ for his yes; the wind-down plan for his yes since 10:36, the planner's gap on a later read, and now whether northern Thursday warnings hold Phase 2 (step 27).
 
 ## Open questions for the conductor
 

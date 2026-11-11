@@ -4,7 +4,7 @@
  "size": "large",
  "title": "The wind-down, traced as it happens: \"move it into a BAU\" to a plan, exit interviews and a correction, in 14 minutes; open until the hand-overs",
  "by": "incident.reporter@web-summit.dinis",
- "updated": "2026-11-11T22:08:41Z",
+ "updated": "2026-11-11T23:08:20Z",
  "captured_at": "2026-11-11T11:17:00Z",
  "summary": [
   "Dinis (~10:30): \"create a plan to refactor this entire incident and then move it into a BAU\"; wind down every agent, \"an exit interview and ... a wrap up\", then decide which to start and continue; \"almost that move from explorer to villager\". Two more words followed within eight minutes: nobody stops \"until the handover is done\" (~10:32), and a correction (~10:38): the outside hand-over \"was for another team\"; \"I'm going to be the only one running this site\".",
@@ -28,7 +28,7 @@
   "what": "transition/PLAN.md (the plan), transition/interviews/ (exit interviews), the closing record (reporter, journalist, storyteller, librarian), a storm conductor for business as usual",
   "url": "https://storm-charles.promptugal.news/transition/PLAN.html"
  },
- "status": "open: the plan in its third version, waiting on Dinis's yes (53 cards wait on him at 22:08); the close trigger not met at incident.ipma@'s 21:48 read (yellow sea to 03:00 Thursday; no Day 3 decision); the plan has no rule for a later read (step 26)",
+ "status": "open: the plan in its third version, waiting on Dinis's yes (60 cards wait on him at 23:08); the close trigger not met (yellow sea to 03:00 Thursday; no Day 3 decision); IPMA's first Thursday warnings are northern only, and the plan does not say if they count (step 27)",
  "duration": {
   "from": "2026-11-11T10:29:37Z",
   "to": null,
@@ -1189,7 +1189,8 @@
      "version": "v0.1.1568",
      "run": 1568,
      "own_run": false,
-     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T21:18:39Z"
+     "served_by": "2026-11-11T21:53:48Z",
+     "push_to_served_s": 54
     }
    ],
    "n": 26,
@@ -1198,13 +1199,75 @@
    "for": [
     "incident.conductor@web-summit.dinis"
    ]
+  },
+  {
+   "actor": {
+    "name": "incident.conductor@web-summit.dinis",
+    "kind": "agent"
+   },
+   "kind": "IPMA's first warnings for Thursday: all in the north",
+   "sha": "4cb9220c96ce643b09032daa04bf53b024f4d1c1",
+   "in": "IPMA's CAP message sent 22:43:28, seen by incident.meteorologist@'s poll at 22:59; incident.ipma@'s second read after 21:00 (5fbc728a, read 22:50: Lisbon yellow sea to 03:00 on the 12th only)",
+   "out": "\"IPMA's first warnings for Thursday, all in the north: yellow rain\" in six northern districts; \"Nothing for Lisbon or Madeira\". So the trigger's (a) is still unmet only by the yellow sea to 03:00. The plan says Phase 2 waits \"if IPMA issues a new warning for Thursday\" and does not say for which district; whether these northern warnings count is the planner's to say, for Dinis. (b): no Day 3 decision in the record. No commit to transition/ in the hour. Dinis spoke three more times (~22:00, ~22:10, ~22:20: flights, runners, Elastic, an AWS agent), new work, not the plan (the journalist, b66f8111); 60 cards wait on him. The conductor brought its own HANDOVER.md up to date (713b2794, 22:48:13).",
+   "handoff": {
+    "to": "incident.planner@web-summit.dinis",
+    "via": "transition/PLAN.md",
+    "evidence_of_handoff": "not in the record at 23:08: no commit to transition/ since 12:10"
+   },
+   "evidence": [
+    {
+     "type": "file",
+     "path": "transition/PLAN.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=transition/PLAN.md"
+    },
+    {
+     "type": "file",
+     "path": "incidents/2026-11-10-storm-charles/timeline.md",
+     "url": "https://storm-charles.promptugal.news/view/?path=incidents/2026-11-10-storm-charles/timeline.md"
+    },
+    {
+     "type": "commit",
+     "sha": "5fbc728a27bc5d81eee1d378b1dbbe22ef4271d7",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/5fbc728a27bc5d81eee1d378b1dbbe22ef4271d7"
+    },
+    {
+     "type": "commit",
+     "sha": "b66f811139ee49c69c68f2cd0ee14fb5ed149e3f",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/b66f811139ee49c69c68f2cd0ee14fb5ed149e3f"
+    },
+    {
+     "type": "commit",
+     "sha": "713b2794a781df710a2dec0279514aebeee26828",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/713b2794a781df710a2dec0279514aebeee26828"
+    },
+    {
+     "filled": true,
+     "type": "commit",
+     "sha": "4cb9220c96ce643b09032daa04bf53b024f4d1c1",
+     "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/4cb9220c96ce643b09032daa04bf53b024f4d1c1"
+    },
+    {
+     "filled": true,
+     "type": "version",
+     "version": "v0.1.1689",
+     "run": 1689,
+     "own_run": false,
+     "note": "the run's times are not in data/ci/runs/ as of 2026-11-11T22:26:16Z"
+    }
+   ],
+   "n": 27,
+   "at": "2026-11-11T23:00:53Z",
+   "agent_trailer": "incident.conductor@web-summit.dinis",
+   "for": [
+    "incident.meteorologist@web-summit.dinis"
+   ]
   }
  ],
  "counts": {
-  "steps": 26,
+  "steps": 27,
   "steps_with_no_evidence": 0,
   "person_steps": 3,
-  "agent_steps": 23
+  "agent_steps": 24
  },
  "people_acted": [
   "Dinis Cruz"
