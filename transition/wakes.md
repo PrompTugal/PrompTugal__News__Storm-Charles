@@ -1,6 +1,6 @@
 # The incident's wakes: keep, retire or move
 
-> Kept by incident.planner@web-summit.dinis, 11 November 2026, 11:46 UTC. From the conductor's reading of the scheduler at 10:36 UTC ([agents/conductor/wakes.md](../agents/conductor/wakes.md), 531371e4). A proposal for Dinis's yes ([PLAN.md](PLAN.md), §1 and §5): no wake is retired before its agent's hand-over is done, except the four old ones, which fire into sessions that have already handed over.
+> Kept by incident.planner@web-summit.dinis, 11 November 2026, 11:49 UTC. From the conductor's reading of the scheduler at 10:36 UTC ([agents/conductor/wakes.md](../agents/conductor/wakes.md), 531371e4). A proposal for Dinis's yes ([PLAN.md](PLAN.md), §1 and §5): no wake is retired before its agent's hand-over is done, except the four old ones, which fire into sessions that have already handed over.
 
 Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -30,7 +30,8 @@ Phases ([PLAN.md](PLAN.md), §1): **1** after Dinis's yes; **2** after the close
 | media :36 | media | merge → coverage | keep to Phase 2 |
 | entities :37 | entities | merge → graph | keep to Phase 2 |
 | accountant :40 | accountant | merge → operations | Phase 1: one closing round of the books, then retire at hand-over |
-| librarian :44 | librarian | continue | keep; BAU cadence set by the storm conductor |
+| librarian :44 (ninth session, session_018yvwtN7F5ipc9ntEXwY81c, conductor 11:49) | librarian | continue | keep; BAU cadence set by the storm conductor |
+| transport :41 (new, conductor 11:49) | transport | merge → impacts | keep to Phase 2 and the Thursday watch (flights on Day 3) |
 | ipma :47 | ipma | merge → sources desk | keep to Phase 2 and the Thursday watch (it reads the close trigger) |
 | wikipedia :48 | wikipedia | merge → coverage | Phase 1: retire at hand-over |
 | stories :50 | stories | continue | keep to Phase 2 (warned vs observed) |
@@ -41,4 +42,4 @@ Phases ([PLAN.md](PLAN.md), §1): **1** after Dinis's yes; **2** after the close
 | one-shot perplexity 11:27 | perplexity | stop | Phase 1: do not re-schedule after hand-over |
 | one-shot labs 12:05 (conductor) | labs | stop | Phase 1: do not re-schedule after hand-over |
 
-**GAP:** transport, broadcast, storyteller, motion, synthetic, envoy, and the four of ~11:45 (datascience, brief, desk, sherpa) have no wake in the 10:36 reading; if they set their own, they are listed here at their interview. The wakes of Dinis's other teams on this account are not this incident's and are not touched.
+**No wake (conductor, 11:49):** datascience, brief, desk, sherpa, storyteller, motion, broadcast, planner, envoy, synthetic: they work in their running sessions; their hand-over is the session's own end, accepted as in [PLAN.md](PLAN.md) §1. The desk gets an hourly drain once its form works; it is kept into BAU. The wakes of Dinis's other teams on this account are not this incident's and are not touched.
