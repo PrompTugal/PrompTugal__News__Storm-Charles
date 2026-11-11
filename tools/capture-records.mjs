@@ -28,7 +28,7 @@ const walk = (d, name, acc = []) => { if (!fs.existsSync(d)) return acc; for (co
 const J = f => JSON.parse(fs.readFileSync(f, 'utf8'))
 const W = (f, data) => { fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, data) }
 const utc = iso => `${+iso.slice(8, 10)} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+iso.slice(5, 7) - 1]} ${iso.slice(0, 4)}, ${iso.slice(11, 16)} UTC`
-const mdEsc = s => String(s || '').replace(/([|\[\]*`<>])/g, '\\$1')
+const mdEsc = s => String(s || '').replace(/\s*\|\s*/g, ' · ').replace(/\[/g, '(').replace(/\]/g, ')').replace(/[*`]/g, '').replace(/\s+/g, ' ').trim()   // the build's markdown has no escapes
 const isRecord = n => /^\d{4}-.*\.json$/.test(n)
 
 // ---- 1. new captures -> vault working copies and records
@@ -42,7 +42,7 @@ for (const f of walk(IN, n => n === 'capture.json').sort()) {
         id: c.id, url: c.url, final_url: c.final_url !== c.url ? c.final_url : undefined, redirects: c.redirects, host: c.host, source: src.id, source_name: src.name, kind: src.kind,
         read_utc: c.read_utc, captured: c.captured, why: c.why, status: c.status, headers: c.headers, title: c.title || '',
         sha256_html: c.sha256_html, sha256_dom: c.sha256_dom, sha256_text: c.sha256_text, sha256_screenshot: c.sha256_screenshot,
-        bytes: c.bytes, screenshot: c.screenshot, clean: c.clean, rendered: c.rendered, note: c.note,
+        bytes: c.bytes, screenshot: c.screenshot, clean: c.clean, rendered: c.rendered, note: c.note, diff: undefined,
         shown: !!(src.show && c.captured && c.sha256_screenshot), licence: src.licence, excerpt: c.excerpt ? c.excerpt.slice(0, 280) : undefined,
         vault: src.show && c.captured && c.sha256_screenshot ? { id: vid('display'), path: c.id } : null,
         capture_vault: c.captured ? { id: vid('capture'), path: c.id, files: fs.readdirSync(dir).sort() } : null,
@@ -65,6 +65,18 @@ for (const chain of chains.values()) {
         if (!r.captured) { r.previous = prev ? prev.id : null; continue }
         r.previous = prev ? prev.id : null
         r.changed = prev ? { text: r.sha256_text !== prev.sha256_text, html: r.sha256_html !== prev.sha256_html, screenshot: r.sha256_screenshot !== prev.sha256_screenshot, status: r.status !== prev.status, since: prev.read_utc } : null
+        // what changed, in words: sentences of the visible text present in one capture and not the other (from the private copies)
+        if (r.changed?.text && !r.diff) {
+            const read = id => { try { return fs.readFileSync(path.join(CV, id, 'text.txt'), 'utf8') } catch { return null } }
+            const A = read(prev.id), B = read(r.id)
+            if (A != null && B != null) {
+                const parts = t => t.split(/(?<=[.!?:])\s+|\s{2,}| \| /).map(x => x.trim()).filter(x => x.length > 2)
+                const a = parts(A), b = parts(B), sa = new Set(a), sb = new Set(b)
+                const gone = a.filter(x => !sb.has(x)), came = b.filter(x => !sa.has(x))
+                r.diff = { removed: gone.length, added: came.length, chars_before: A.length, chars_after: B.length }
+                if (r.shown) { r.diff.removed_text = gone.slice(0, 6).map(x => x.slice(0, 220)); r.diff.added_text = came.slice(0, 6).map(x => x.slice(0, 220)) }
+            }
+        }
         prev = r
     }
 }
@@ -105,7 +117,14 @@ ${r.sha256_screenshot ? `| sha256 of the screenshot | \`${r.sha256_screenshot}\`
 | Licence | ${mdEsc(r.licence)} |
 | Robots | ${mdEsc(r.robots)}; read as \`${r.client}\`, not logged in |
 ${r.excerpt ? `\n**The first words on the page** (a short excerpt): "${mdEsc(r.excerpt)}…"\n` : ''}
-## Every capture of this address
+${r.diff ? `## What changed since the capture before
+
+${r.diff.added} passage(s) of visible text are new and ${r.diff.removed} are gone (the text went from ${r.diff.chars_before} to ${r.diff.chars_after} characters). ${r.diff.added_text ? '' : 'The words are not shown for this source (its capture is kept privately).'}
+
+${(r.diff.added_text || []).map(x => `- **new:** "${mdEsc(x)}"`).join('\n')}
+${(r.diff.removed_text || []).map(x => `- **gone:** "${mdEsc(x)}"`).join('\n')}
+
+` : ''}## Every capture of this address
 
 | Capture | Read | Answer | Against the one before | Text hash |
 |---|---|---|---|---|
@@ -150,7 +169,7 @@ if (!fs.existsSync(rf) || JSON.stringify({ ...J(rf), updated: 0 }) !== JSON.stri
 
 // ---- 6. the section's front page
 const c = index.counts
-const table = addresses.map(a => `| ${mdEsc(a.source_name)} | [${mdEsc(a.title || a.url.replace(/^https?:\/\//, '').slice(0, 70))}](${a.latest}.md) | ${utc(a.last_read)} | ${a.captures.length} | ${a.captures.length < 2 ? 'one capture' : a.captures[a.captures.length - 1].changed ? '**changed** at the last read' : 'unchanged at the last read'}${a.changes ? ` (${a.changes} change${a.changes > 1 ? 's' : ''} in all)` : ''} | ${a.shown ? 'screenshot' : 'hash and excerpt'} |`).join('\n')
+const table = addresses.map(a => `| ${mdEsc(a.source_name)} | [${mdEsc(a.title || a.url.replace(/^https?:\/\//, '').slice(0, 70))}](${a.latest}.md) \`${a.url.replace(/^https?:\/\/(www\.)?/, '').slice(0, 80)}\` | ${utc(a.last_read)} | ${a.captures.length} | ${a.captures.length < 2 ? 'one capture' : a.captures[a.captures.length - 1].changed ? '**changed** at the last read' : 'unchanged at the last read'}${a.changes ? ` (${a.changes} change${a.changes > 1 ? 's' : ''} in all)` : ''} | ${a.shown ? 'screenshot' : 'hash and excerpt'} |`).join('\n')
 const im = `---
 title: Evidence: what each outside page looked like when we read it
 summary: Our dated captures of every outside page this site cites: a screenshot, the sha256 of what was served, the time read, and whether the page has changed since.

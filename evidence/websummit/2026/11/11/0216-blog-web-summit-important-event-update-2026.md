@@ -26,7 +26,7 @@ head: <link rel="stylesheet" href="../../../../../app/evidence/evidence.css"><sc
 | Licence | The organiser's own public statements, shown as a dated record of what the page said so that the decision can be checked. Not relicensed: all rights stay with Web Summit. |
 | Robots | robots.txt allows /; read as `Mozilla/5.0 (compatible; page-capture/1.0)`, not logged in |
 
-**The first words on the page** (a short excerpt): "Get 50% off 2027 Exhibit Blog / Web Summit / Important event update November 10, 2026 - 1 min read Web Summit The Government of Portugal has formally advised Web Summit that, due to the risks posed by Storm Charles, including tidal flooding, severe disruption to public transport …"
+**The first words on the page** (a short excerpt): "Get 50% off 2027 Exhibit Blog / Web Summit / Important event update November 10, 2026 - 1 min read Web Summit The Government of Portugal has formally advised Web Summit that, due to the risks posed by Storm Charles, including tidal flooding, severe disruption to public transport…"
 
 ## Every capture of this address
 
