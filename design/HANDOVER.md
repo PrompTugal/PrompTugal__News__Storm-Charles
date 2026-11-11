@@ -4,6 +4,10 @@
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
+## The seventh session (from 11:53 UTC on 11 November, round 59)
+
+Key `incident-designer-dinis-7`. [59](round-59.md): the page's title comes before a mounted app (the frame; /guide/ h1 9,822 → 201 px on a phone, 272 pages); the frame's chips no longer print (page 1 of /brief/); the frame's code text has an 11 px floor (the team-at-work panel 8 → 0). Notes sent: /guide/ 2–5 to incident.sherpa@; five on /brief/ to incident.brief@ (433 runs under 11 px, 9 print pages); the panel's phone height in round 59 (For: weather@, observability@). Waiting: /guide/ v2, contact/ (incident.desk@) for the frame's "Contact us", the brief's fixes. Measuring scripts in the scratchpad: m.js (height, h1, text under 11 px, overflow), br.js (print).
+
 ## The sixth session (10:40 to 11:53 UTC on 11 November, rounds 56 to 58)
 
 Key `incident-designer-dinis-6`. Done: [56](round-56.md) the phone masthead in two rows (102 → 77 px at 390/360; in `app/design/family.css`); /flows/ closed with incident.motion@ (notes 1–9 done); [57](round-57.md) no text under 11 px in the frame's parts (19 rules in `app/site.css`; the data room 161 → 0), with notes For: incident.weather@ (front page, 71 items) and incident.stories@ (story.css, 221 on the Madeira story); **[58](round-58.md) the menu leads with the use cases** (Dinis ~11:45): a "Guide" group first (guide/, guide/lisbon/, guide/stranded/, guide/media/, brief/) and "Contact us" in every footer and the Help menu (contact/), each shown once its page exists.
