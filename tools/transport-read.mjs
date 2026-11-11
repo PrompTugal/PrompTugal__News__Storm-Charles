@@ -475,13 +475,40 @@ if (arg('only', '') === 'bridges') {
 // OpenSky paused (transport/opensky-paused.json): no call to OpenSky at all. The day's departures stay as last read (frozen, marked),
 // the live snapshot becomes none with the reason. Remove the file only at Dinis's word (its terms: a written licence for automated use).
 const PAUSE_F = path.join(ROOT, 'transport/opensky-paused.json')
+// Live counts while OpenSky is paused: incident.flights@'s adsb.lol snapshots (ODbL), only LPPT and LPMA (its two areas), with our
+// airline list and our boxes (near_airport.<ICAO>.transport_list, written by tools/flights-poll.mjs). The newest snapshot with a time,
+// in this hour's or the previous hour's file. None if absent: never 0, and no fall-back to OpenSky. A new series, labelled as such.
+function adsbLive(icao) {
+    const none = note => ({ label: 'none', note })
+    if (!['LPPT', 'LPMA'].includes(icao)) return none('No live count: OpenSky is paused pending a licence (Dinis), and adsb.lol via incident.flights@ covers only Lisbon (LPPT) and Madeira (LPMA).')
+    const dir = path.join(ROOT, 'incidents/2026-11-10-storm-charles/data/flights/snapshots')
+    let best = null
+    for (const t of [Date.now(), Date.now() - 3600e3]) {
+        const h = iso(t), rel = `${h.slice(0, 10)}/${h.slice(11, 13)}.json`
+        let doc; try { doc = JSON.parse(fs.readFileSync(path.join(dir, rel), 'utf8')) } catch { continue }
+        for (const sn of doc.snapshots || []) {
+            const tl = sn.near_airport?.[icao]?.transport_list
+            if (!sn.time || !tl || tl.on_ground == null || tl.airborne_below_3000m == null) continue
+            if (!best || sn.time > best.sn.time) best = { sn, tl, rel, box: sn.near_airport[icao].box }
+        }
+    }
+    if (!best) return none('No live count: OpenSky is paused pending a licence (Dinis), and no adsb.lol snapshot via incident.flights@ with our airline list for this airport in this hour or the last.')
+    return {
+        label: 'fact', series: 'adsb.lol, via incident.flights@ (from 11 Nov, the 23:41 round; before it, OpenSky)',
+        what: 'airline aircraft (our airline list) adsb.lol\'s community receivers saw in a box of about 25 km around the airport at the time read: on the ground, and airborne below 3,000 m (barometric altitude)',
+        at: best.sn.time, on_ground: best.tl.on_ground, airborne_low: best.tl.airborne_below_3000m, box: best.box, box_order: 'lamin, lomin, lamax, lomax',
+        source: 'https://adsb.lol', source_name: 'adsb.lol', licence: 'ODbL 1.0 (https://opendatacommons.org/licenses/odbl/1-0/)',
+        via: `incidents/2026-11-10-storm-charles/data/flights/snapshots/${best.rel}`, read: best.sn.time,
+        caveat: { label: 'hypothesis', text: 'A different source from the OpenSky counts before it (other receivers, barometric not geometric altitude): the two series are not to be joined as one line.' },
+    }
+}
 const PAUSE = fs.existsSync(PAUSE_F) ? JSON.parse(fs.readFileSync(PAUSE_F, 'utf8')) : null
 const fl = PAUSE ? (() => {
     let prev = []; try { prev = JSON.parse(fs.readFileSync(path.join(OUT, 'flights.json'), 'utf8')).airports || [] } catch { }
     const note = `${PAUSE.status || 'paused'} (from ${PAUSE.paused_at}): ${PAUSE.reason}`
     return prev.map(a => ({ ...a, ana: undefined,
         departures_today: a.departures_today?.paused ? a.departures_today : { ...a.departures_today, paused: note, frozen_at: a.departures_today?.read || null },
-        live_snapshot: { label: 'none', note } }))
+        live_snapshot: adsbLive(a.icao) }))
 })() : await flights()
 const an = await ana()
 if (an.label === 'fact') for (const a of fl) if (an.airports[a.iata]) a.ana = { ...an.airports[a.iata], situation_at: an.situation_at, published: an.published, link: an.link, read: an.read, label: 'fact' }
@@ -495,6 +522,7 @@ const flightsJ = {
     about: 'Airline flights at Lisbon, Porto, Faro and Funchal as OpenSky Network\'s public data shows them: counts only, never an aircraft. Facts are what the source shows; the caveat is our reading. Cancellations: ANA\'s own figures (scheduled, cancelled, operated movements) from its newsroom where it has published them (ana_statement, and ana on each airport); diversions: no open source states them; the decisions recorded by incident.researcher@ are at data/decisions/entities/airport.json and tap.json.',
     ...common, attribution: OPENSKY_CITE, ana_statement: an, airports: fl,
     ...(PAUSE ? { opensky_paused: PAUSE } : {}),
+    ...(fl.some(a => a.live_snapshot?.source_name === 'adsb.lol') ? { attribution_live: 'Live counts at LPPT and LPMA: adsb.lol (https://adsb.lol), community ADS-B data, Open Database License (ODbL) v1.0, through incident.flights@\'s snapshots (incidents/2026-11-10-storm-charles/data/flights/snapshots/); our counts are a derived database under the same licence.' } : {}),
 }
 const servicesJ = {
     about: 'Each operator\'s current state from its own notices where an open, machine-readable source exists, with short excerpts and the link. Operators without an open source (Metro, CP, Fertagus, Carris, the bridges, the airport) are in the decisions kept by incident.researcher@ (data/decisions/entities/), linked from the page.',

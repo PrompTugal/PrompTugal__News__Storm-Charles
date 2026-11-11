@@ -51,7 +51,10 @@
       if (d.by_airline && d.by_airline.length) s += '<p class="meta">' + d.by_airline.slice(0, 6).map(function (x) { return esc(x.airline) + ' ' + x.n }).join(' · ') + (d.by_airline.length > 6 ? ' · …' : '') + '</p>'
       s += '<p>' + prov('OpenSky Network', 'https://opensky-network.org/', d.read) + '</p>'
     } else s += '<p>' + lbl('none') + ' ' + esc(d.note || 'No reading') + '</p>'
-    if (l.label === 'fact') s += '<p>At ' + tm(l.at, hm(l.at)) + ' UTC, within about 25 km: <b>' + l.on_ground + '</b> airline aircraft on the ground, <b>' + l.airborne_low + '</b> airborne below 3,000 m ' + lbl('fact') + '</p>'
+    if (l.label === 'fact') {
+      s += '<p>At ' + tm(l.at, hm(l.at)) + ' UTC, within about 25 km: <b>' + l.on_ground + '</b> airline aircraft on the ground, <b>' + l.airborne_low + '</b> airborne below 3,000 m ' + lbl('fact') + '</p>'
+      if (l.source_name) s += '<p>' + prov(l.source_name + ' (ODbL), via incident.flights@', l.source, l.read) + '</p>' + (l.caveat ? '<p class="tr-hyp">' + lbl('hypothesis') + ' ' + esc(l.caveat.text) + '</p>' : '')
+    } else if (l.note && d.label !== 'none') s += '<p class="meta">Now: ' + lbl('none') + ' ' + esc(l.note) + '</p>'
     s += '<p class="tr-hyp">' + lbl('hypothesis') + ' ' + esc((a.coverage_caveat || {}).text || '') + '</p>'
     s += '<p class="meta">Arrivals: ' + esc((a.arrivals_today || {}).note || '') + ' Baseline: ' + esc((a.baseline || {}).note || '') + '</p>'
     return s + '</section>'
