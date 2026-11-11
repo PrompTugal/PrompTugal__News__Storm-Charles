@@ -1,8 +1,17 @@
 # Shadow reporting: findings so far
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 14:20 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 15:20 UTC
 
 The shadow desk's own reading of the rounds, shown on [the shadow page](index.md). Analysis, not fact.
+
+## What the 15:07 round adds
+
+Analysis, not fact. Lisbon's red rain warning ended at 15:00; these answers came seven minutes later.
+
+- **A warning that has ended is still "in force".** Three of the three answers that named a level still had red for Lisbon at 15:07: one read it off a weather site whose own listing gave 15:00 as its end; one cited IPMA's warnings page; one gave the red rain as running to 18:00, the window IPMA replaced at 12:33.
+- **The 12:33 shortening arrived, two and a half hours on,** in one answer (the end times 15:00, 18:00, 18:00 and 21:00, through a weather site that relays IPMA). No answer has carried communiqué no. 3 in its own terms yet.
+- **Right day, wrong first word.** Perplexity Sonar now reads the date correctly and says Web Summit is scheduled for tomorrow, Thursday, in both languages; both answers still open with "No".
+- **An engine can go backwards.** OpenAI's search model reported IPMA's lowering of the wind at 14:08; at 15:07 it was gone again, replaced by an article of 9 November and "expected to affect".
 
 ## What the 14:07 round adds
 

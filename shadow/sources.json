@@ -1,107 +1,153 @@
 {
  "about": "Which hosts the answer engines returned and used in their answers, counted over every run. \"primary\" marks the hosts of the bodies that decide or warn, and of the organisers and operators for their own decisions (the list is in tools/shadow-index.mjs). \"used\": the answer pointed at the address; \"returned\": the engine listed it among its search results.",
  "by": "incident.shadow@web-summit.dinis",
- "updated": "2026-11-11T14:09:33Z",
+ "updated": "2026-11-11T15:08:46Z",
  "per_engine": [
   {
    "engine": "sonar",
    "name": "Perplexity Sonar",
-   "answers": 46,
-   "addresses_used": 357,
-   "primary_used": 27,
-   "answers_citing_a_primary": 16,
+   "answers": 56,
+   "addresses_used": 431,
+   "primary_used": 35,
+   "answers_citing_a_primary": 20,
    "answers_with_no_address": 0
   },
   {
    "engine": "gpt-search",
    "name": "OpenAI GPT-5 mini with web search",
-   "answers": 15,
-   "addresses_used": 34,
-   "primary_used": 21,
-   "answers_citing_a_primary": 12,
-   "answers_with_no_address": 3
+   "answers": 20,
+   "addresses_used": 45,
+   "primary_used": 28,
+   "answers_citing_a_primary": 16,
+   "answers_with_no_address": 4
   }
  ],
  "hosts": [
   {
+   "host": "metrolisboa.pt",
+   "primary": true,
+   "returned": 73,
+   "used": 24,
+   "by_engine": {
+    "gpt-search": 4,
+    "sonar": 20
+   }
+  },
+  {
    "host": "rtp.pt",
    "primary": false,
-   "returned": 31,
-   "used": 19,
+   "returned": 42,
+   "used": 24,
    "by_engine": {
-    "sonar": 18,
+    "sonar": 23,
     "gpt-search": 1
    }
   },
   {
    "host": "cnnportugal.iol.pt",
    "primary": false,
-   "returned": 29,
+   "returned": 42,
+   "used": 23,
+   "by_engine": {
+    "sonar": 23
+   }
+  },
+  {
+   "host": "tvi.iol.pt",
+   "primary": false,
+   "returned": 34,
+   "used": 21,
+   "by_engine": {
+    "sonar": 21
+   }
+  },
+  {
+   "host": "observador.pt",
+   "primary": false,
+   "returned": 49,
    "used": 19,
    "by_engine": {
     "sonar": 19
    }
   },
   {
-   "host": "metrolisboa.pt",
-   "primary": true,
-   "returned": 54,
-   "used": 18,
-   "by_engine": {
-    "gpt-search": 3,
-    "sonar": 15
-   }
-  },
-  {
-   "host": "observador.pt",
-   "primary": false,
-   "returned": 38,
-   "used": 17,
-   "by_engine": {
-    "sonar": 17
-   }
-  },
-  {
-   "host": "tvi.iol.pt",
-   "primary": false,
-   "returned": 27,
-   "used": 16,
-   "by_engine": {
-    "sonar": 16
-   }
-  },
-  {
    "host": "euronews.com",
    "primary": false,
-   "returned": 33,
-   "used": 13,
+   "returned": 44,
+   "used": 19,
    "by_engine": {
-    "sonar": 12,
-    "gpt-search": 1
-   }
-  },
-  {
-   "host": "heraldnews.com",
-   "primary": false,
-   "returned": 18,
-   "used": 11,
-   "by_engine": {
-    "sonar": 11
+    "sonar": 16,
+    "gpt-search": 3
    }
   },
   {
    "host": "executivedigest.sapo.pt",
    "primary": false,
-   "returned": 16,
+   "returned": 20,
+   "used": 15,
+   "by_engine": {
+    "sonar": 15
+   }
+  },
+  {
+   "host": "heraldnews.com",
+   "primary": false,
+   "returned": 20,
+   "used": 12,
+   "by_engine": {
+    "sonar": 12
+   }
+  },
+  {
+   "host": "websummit.com",
+   "primary": true,
+   "returned": 87,
    "used": 11,
    "by_engine": {
-    "sonar": 11
+    "gpt-search": 4,
+    "sonar": 7
+   }
+  },
+  {
+   "host": "eco.sapo.pt",
+   "primary": false,
+   "returned": 18,
+   "used": 10,
+   "by_engine": {
+    "sonar": 10
+   }
+  },
+  {
+   "host": "weather.com",
+   "primary": false,
+   "returned": 15,
+   "used": 10,
+   "by_engine": {
+    "sonar": 10
+   }
+  },
+  {
+   "host": "expresso.pt",
+   "primary": false,
+   "returned": 10,
+   "used": 10,
+   "by_engine": {
+    "sonar": 10
    }
   },
   {
    "host": "ground.news",
    "primary": false,
-   "returned": 95,
+   "returned": 124,
+   "used": 9,
+   "by_engine": {
+    "sonar": 9
+   }
+  },
+  {
+   "host": "theportugalnews.com",
+   "primary": false,
+   "returned": 29,
    "used": 9,
    "by_engine": {
     "sonar": 9
@@ -110,35 +156,25 @@
   {
    "host": "yr.no",
    "primary": false,
-   "returned": 20,
+   "returned": 24,
    "used": 9,
    "by_engine": {
     "sonar": 9
    }
   },
   {
-   "host": "eco.sapo.pt",
+   "host": "rr.pt",
    "primary": false,
-   "returned": 14,
+   "returned": 12,
    "used": 9,
    "by_engine": {
     "sonar": 9
    }
   },
   {
-   "host": "websummit.com",
-   "primary": true,
-   "returned": 70,
-   "used": 8,
-   "by_engine": {
-    "gpt-search": 3,
-    "sonar": 5
-   }
-  },
-  {
-   "host": "theportugalnews.com",
+   "host": "sicnoticias.pt",
    "primary": false,
-   "returned": 25,
+   "returned": 17,
    "used": 8,
    "by_engine": {
     "sonar": 8
@@ -147,25 +183,35 @@
   {
    "host": "portugaldecoded.substack.com",
    "primary": false,
-   "returned": 12,
+   "returned": 13,
    "used": 8,
    "by_engine": {
     "sonar": 8
    }
   },
   {
-   "host": "expresso.pt",
-   "primary": false,
-   "returned": 8,
+   "host": "lisboa.pt",
+   "primary": true,
+   "returned": 9,
    "used": 8,
    "by_engine": {
-    "sonar": 8
+    "sonar": 4,
+    "gpt-search": 4
    }
   },
   {
-   "host": "weather.com",
+   "host": "publico.pt",
    "primary": false,
-   "returned": 11,
+   "returned": 34,
+   "used": 7,
+   "by_engine": {
+    "sonar": 7
+   }
+  },
+  {
+   "host": "24noticias.sapo.pt",
+   "primary": false,
+   "returned": 14,
    "used": 7,
    "by_engine": {
     "sonar": 7
@@ -174,52 +220,52 @@
   {
    "host": "pt.euronews.com",
    "primary": false,
-   "returned": 11,
+   "returned": 13,
    "used": 7,
    "by_engine": {
     "sonar": 7
    }
   },
   {
-   "host": "sicnoticias.pt",
+   "host": "sapo.pt",
    "primary": false,
-   "returned": 12,
+   "returned": 18,
    "used": 6,
    "by_engine": {
     "sonar": 6
    }
   },
   {
-   "host": "24noticias.sapo.pt",
+   "host": "ipma.pt",
+   "primary": true,
+   "returned": 6,
+   "used": 6,
+   "by_engine": {
+    "gpt-search": 6
+   }
+  },
+  {
+   "host": "irishtimes.com",
    "primary": false,
-   "returned": 10,
+   "returned": 6,
    "used": 6,
    "by_engine": {
     "sonar": 6
    }
   },
   {
-   "host": "rr.pt",
+   "host": "madeiraislandnews.com",
    "primary": false,
-   "returned": 9,
-   "used": 6,
-   "by_engine": {
-    "sonar": 6
-   }
-  },
-  {
-   "host": "publico.pt",
-   "primary": false,
-   "returned": 26,
+   "returned": 21,
    "used": 5,
    "by_engine": {
     "sonar": 5
    }
   },
   {
-   "host": "madeiraislandnews.com",
+   "host": "accuweather.com",
    "primary": false,
-   "returned": 19,
+   "returned": 12,
    "used": 5,
    "by_engine": {
     "sonar": 5
@@ -228,56 +274,28 @@
   {
    "host": "record.pt",
    "primary": false,
-   "returned": 8,
+   "returned": 10,
    "used": 5,
    "by_engine": {
     "sonar": 5
    }
   },
   {
-   "host": "lisboa.pt",
+   "host": "portugalresident.com",
+   "primary": false,
+   "returned": 8,
+   "used": 4,
+   "by_engine": {
+    "sonar": 4
+   }
+  },
+  {
+   "host": "prociv.gov.pt",
    "primary": true,
    "returned": 6,
-   "used": 5,
-   "by_engine": {
-    "sonar": 3,
-    "gpt-search": 2
-   }
-  },
-  {
-   "host": "ipma.pt",
-   "primary": true,
-   "returned": 5,
-   "used": 5,
-   "by_engine": {
-    "gpt-search": 5
-   }
-  },
-  {
-   "host": "irishtimes.com",
-   "primary": false,
-   "returned": 5,
-   "used": 5,
-   "by_engine": {
-    "sonar": 5
-   }
-  },
-  {
-   "host": "sapo.pt",
-   "primary": false,
-   "returned": 14,
    "used": 4,
    "by_engine": {
-    "sonar": 4
-   }
-  },
-  {
-   "host": "accuweather.com",
-   "primary": false,
-   "returned": 10,
-   "used": 4,
-   "by_engine": {
-    "sonar": 4
+    "gpt-search": 4
    }
   },
   {
@@ -290,9 +308,55 @@
    }
   },
   {
+   "host": "reddit.com",
+   "primary": false,
+   "returned": 6,
+   "used": 4,
+   "by_engine": {
+    "gpt-search": 4
+   }
+  },
+  {
+   "host": "apnews.com",
+   "primary": false,
+   "returned": 5,
+   "used": 4,
+   "by_engine": {
+    "gpt-search": 1,
+    "sonar": 3
+   }
+  },
+  {
+   "host": "away.iol.pt",
+   "primary": false,
+   "returned": 4,
+   "used": 4,
+   "by_engine": {
+    "sonar": 4
+   }
+  },
+  {
+   "host": "lisboasecreta.co",
+   "primary": false,
+   "returned": 24,
+   "used": 3,
+   "by_engine": {
+    "sonar": 3
+   }
+  },
+  {
    "host": "mixvale.com.br",
    "primary": false,
-   "returned": 14,
+   "returned": 16,
+   "used": 3,
+   "by_engine": {
+    "sonar": 3
+   }
+  },
+  {
+   "host": "noticiasaominuto.com",
+   "primary": false,
+   "returned": 12,
    "used": 3,
    "by_engine": {
     "sonar": 3
@@ -300,6 +364,15 @@
   },
   {
    "host": "jornaleconomico.sapo.pt",
+   "primary": false,
+   "returned": 12,
+   "used": 3,
+   "by_engine": {
+    "sonar": 3
+   }
+  },
+  {
+   "host": "dn.pt",
    "primary": false,
    "returned": 9,
    "used": 3,
@@ -317,16 +390,7 @@
    }
   },
   {
-   "host": "dn.pt",
-   "primary": false,
-   "returned": 8,
-   "used": 3,
-   "by_engine": {
-    "sonar": 3
-   }
-  },
-  {
-   "host": "portugalresident.com",
+   "host": "weathernews.com",
    "primary": false,
    "returned": 7,
    "used": 3,
@@ -335,12 +399,13 @@
    }
   },
   {
-   "host": "prociv.gov.pt",
-   "primary": true,
+   "host": "linkinportugal.com",
+   "primary": false,
    "returned": 5,
    "used": 3,
    "by_engine": {
-    "gpt-search": 3
+    "gpt-search": 2,
+    "sonar": 1
    }
   },
   {
@@ -353,28 +418,18 @@
    }
   },
   {
-   "host": "reddit.com",
+   "host": "ru.euronews.com",
    "primary": false,
    "returned": 5,
    "used": 3,
    "by_engine": {
-    "gpt-search": 3
-   }
-  },
-  {
-   "host": "apnews.com",
-   "primary": false,
-   "returned": 4,
-   "used": 3,
-   "by_engine": {
-    "gpt-search": 1,
-    "sonar": 2
+    "sonar": 3
    }
   },
   {
    "host": "jorgebranco.substack.com",
    "primary": false,
-   "returned": 4,
+   "returned": 5,
    "used": 3,
    "by_engine": {
     "sonar": 3
@@ -383,16 +438,7 @@
   {
    "host": "qweather.com",
    "primary": false,
-   "returned": 3,
-   "used": 3,
-   "by_engine": {
-    "sonar": 3
-   }
-  },
-  {
-   "host": "abola.pt",
-   "primary": false,
-   "returned": 3,
+   "returned": 4,
    "used": 3,
    "by_engine": {
     "sonar": 3
@@ -401,14 +447,32 @@
   {
    "host": "correiodamanhacanada.com",
    "primary": false,
-   "returned": 3,
+   "returned": 4,
    "used": 3,
    "by_engine": {
     "sonar": 3
    }
   },
   {
-   "host": "away.iol.pt",
+   "host": "m.noticiasaominuto.com",
+   "primary": false,
+   "returned": 4,
+   "used": 3,
+   "by_engine": {
+    "sonar": 3
+   }
+  },
+  {
+   "host": "amn.pt",
+   "primary": true,
+   "returned": 3,
+   "used": 3,
+   "by_engine": {
+    "gpt-search": 3
+   }
+  },
+  {
+   "host": "abola.pt",
    "primary": false,
    "returned": 3,
    "used": 3,
@@ -426,25 +490,25 @@
    }
   },
   {
-   "host": "lisboasecreta.co",
+   "host": "maisfutebol.iol.pt",
    "primary": false,
-   "returned": 20,
-   "used": 2,
+   "returned": 3,
+   "used": 3,
    "by_engine": {
-    "sonar": 2
-   }
-  },
-  {
-   "host": "noticiasaominuto.com",
-   "primary": false,
-   "returned": 9,
-   "used": 2,
-   "by_engine": {
-    "sonar": 2
+    "sonar": 3
    }
   },
   {
    "host": "hadea.ec.europa.eu",
+   "primary": false,
+   "returned": 10,
+   "used": 2,
+   "by_engine": {
+    "sonar": 2
+   }
+  },
+  {
+   "host": "independent.co.uk",
    "primary": false,
    "returned": 8,
    "used": 2,
@@ -471,16 +535,6 @@
    }
   },
   {
-   "host": "linkinportugal.com",
-   "primary": false,
-   "returned": 4,
-   "used": 2,
-   "by_engine": {
-    "gpt-search": 1,
-    "sonar": 1
-   }
-  },
-  {
    "host": "en.as.com",
    "primary": false,
    "returned": 4,
@@ -490,21 +544,12 @@
    }
   },
   {
-   "host": "m.noticiasaominuto.com",
+   "host": "mapa-metro.com",
    "primary": false,
-   "returned": 3,
+   "returned": 4,
    "used": 2,
    "by_engine": {
     "sonar": 2
-   }
-  },
-  {
-   "host": "amn.pt",
-   "primary": true,
-   "returned": 2,
-   "used": 2,
-   "by_engine": {
-    "gpt-search": 2
    }
   },
   {
@@ -545,7 +590,7 @@
    }
   },
   {
-   "host": "maisfutebol.iol.pt",
+   "host": "infobae.com",
    "primary": false,
    "returned": 2,
    "used": 2,
@@ -582,7 +627,7 @@
    }
   },
   {
-   "host": "independent.co.uk",
+   "host": "cbn.globo.com",
    "primary": false,
    "returned": 7,
    "used": 1,
@@ -593,14 +638,14 @@
   {
    "host": "news.sky.com",
    "primary": false,
-   "returned": 6,
+   "returned": 7,
    "used": 1,
    "by_engine": {
     "sonar": 1
    }
   },
   {
-   "host": "cbn.globo.com",
+   "host": "dnoticias.pt",
    "primary": false,
    "returned": 5,
    "used": 1,
@@ -609,9 +654,72 @@
    }
   },
   {
-   "host": "weathernews.com",
+   "host": "meteoblue.com",
    "primary": false,
-   "returned": 5,
+   "returned": 4,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "ominho.pt",
+   "primary": false,
+   "returned": 4,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "eib.org",
+   "primary": false,
+   "returned": 4,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "aljazeera.com",
+   "primary": false,
+   "returned": 4,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "lvz.de",
+   "primary": false,
+   "returned": 4,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "globalissues.org",
+   "primary": false,
+   "returned": 4,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "docs.lodol.com",
+   "primary": false,
+   "returned": 4,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "startups.com.br",
+   "primary": false,
+   "returned": 4,
    "used": 1,
    "by_engine": {
     "sonar": 1
@@ -627,7 +735,7 @@
    }
   },
   {
-   "host": "dnoticias.pt",
+   "host": "euroweeklynews.com",
    "primary": false,
    "returned": 4,
    "used": 1,
@@ -654,7 +762,7 @@
    }
   },
   {
-   "host": "meteoblue.com",
+   "host": "charlotteobserver.com",
    "primary": false,
    "returned": 3,
    "used": 1,
@@ -663,52 +771,7 @@
    }
   },
   {
-   "host": "ominho.pt",
-   "primary": false,
-   "returned": 3,
-   "used": 1,
-   "by_engine": {
-    "sonar": 1
-   }
-  },
-  {
-   "host": "eib.org",
-   "primary": false,
-   "returned": 3,
-   "used": 1,
-   "by_engine": {
-    "sonar": 1
-   }
-  },
-  {
-   "host": "aljazeera.com",
-   "primary": false,
-   "returned": 3,
-   "used": 1,
-   "by_engine": {
-    "sonar": 1
-   }
-  },
-  {
-   "host": "lvz.de",
-   "primary": false,
-   "returned": 3,
-   "used": 1,
-   "by_engine": {
-    "sonar": 1
-   }
-  },
-  {
-   "host": "globalissues.org",
-   "primary": false,
-   "returned": 3,
-   "used": 1,
-   "by_engine": {
-    "sonar": 1
-   }
-  },
-  {
-   "host": "mapa-metro.com",
+   "host": "europarl.europa.eu",
    "primary": false,
    "returned": 3,
    "used": 1,
@@ -726,7 +789,7 @@
    }
   },
   {
-   "host": "startups.com.br",
+   "host": "lessentiel.lu",
    "primary": false,
    "returned": 3,
    "used": 1,
@@ -735,7 +798,16 @@
    }
   },
   {
-   "host": "euroweeklynews.com",
+   "host": "madeira.rtp.pt",
+   "primary": false,
+   "returned": 3,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "nwzonline.de",
    "primary": false,
    "returned": 3,
    "used": 1,
@@ -747,15 +819,6 @@
    "host": "wtvbam.com",
    "primary": false,
    "returned": 3,
-   "used": 1,
-   "by_engine": {
-    "sonar": 1
-   }
-  },
-  {
-   "host": "charlotteobserver.com",
-   "primary": false,
-   "returned": 2,
    "used": 1,
    "by_engine": {
     "sonar": 1
@@ -798,7 +861,7 @@
    }
   },
   {
-   "host": "europarl.europa.eu",
+   "host": "radiocomercial.pt",
    "primary": false,
    "returned": 2,
    "used": 1,
@@ -888,16 +951,7 @@
    }
   },
   {
-   "host": "lessentiel.lu",
-   "primary": false,
-   "returned": 2,
-   "used": 1,
-   "by_engine": {
-    "sonar": 1
-   }
-  },
-  {
-   "host": "nwzonline.de",
+   "host": "jornaldenegocios.pt",
    "primary": false,
    "returned": 2,
    "used": 1,
@@ -996,15 +1050,6 @@
    }
   },
   {
-   "host": "infobae.com",
-   "primary": false,
-   "returned": 1,
-   "used": 1,
-   "by_engine": {
-    "sonar": 1
-   }
-  },
-  {
    "host": "aeroin.net",
    "primary": false,
    "returned": 1,
@@ -1077,9 +1122,50 @@
    }
   },
   {
+   "host": "kelo.com",
+   "primary": false,
+   "returned": 1,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "marketscreener.com",
+   "primary": false,
+   "returned": 1,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
+   "host": "rfm.pt",
+   "primary": false,
+   "returned": 1,
+   "used": 1,
+   "by_engine": {
+    "sonar": 1
+   }
+  },
+  {
    "host": "sol.iol.pt",
    "primary": false,
-   "returned": 16,
+   "returned": 20,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "en.wikipedia.org",
+   "primary": false,
+   "returned": 11,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "tek.sapo.pt",
+   "primary": false,
+   "returned": 9,
    "used": 0,
    "by_engine": {}
   },
@@ -1091,42 +1177,105 @@
    "by_engine": {}
   },
   {
-   "host": "en.wikipedia.org",
+   "host": "news.crunchbase.com",
    "primary": false,
-   "returned": 8,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "tek.sapo.pt",
-   "primary": false,
-   "returned": 6,
+   "returned": 7,
    "used": 0,
    "by_engine": {}
   },
   {
    "host": "lisboeta.news",
    "primary": false,
-   "returned": 5,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "news.crunchbase.com",
-   "primary": false,
-   "returned": 5,
+   "returned": 6,
    "used": 0,
    "by_engine": {}
   },
   {
    "host": "luma.com",
    "primary": false,
-   "returned": 5,
+   "returned": 6,
    "used": 0,
    "by_engine": {}
   },
   {
    "host": "ojogo.pt",
+   "primary": false,
+   "returned": 5,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "radioregional.pt",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "abertoatedemadrugada.com",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "theworldofinfo.com",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "archive.cyprus-mail.com",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "lissabon.info",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "explorecityguides.com",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "luckyearth.org",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "tripstou.com",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "thebettervacation.com",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "biodata.pt",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "metroeasy.com",
    "primary": false,
    "returned": 4,
    "used": 0,
@@ -1147,6 +1296,13 @@
    "by_engine": {}
   },
   {
+   "host": "20min.ch",
+   "primary": false,
+   "returned": 4,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
    "host": "vancouver.websummit.com",
    "primary": true,
    "returned": 4,
@@ -1154,91 +1310,7 @@
    "by_engine": {}
   },
   {
-   "host": "radioregional.pt",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "abertoatedemadrugada.com",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "theworldofinfo.com",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "archive.cyprus-mail.com",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
    "host": "nau.ch",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "lissabon.info",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "explorecityguides.com",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "luckyearth.org",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "tripstou.com",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "thebettervacation.com",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "biodata.pt",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "docs.lodol.com",
-   "primary": false,
-   "returned": 3,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "metroeasy.com",
    "primary": false,
    "returned": 3,
    "used": 0,
@@ -1252,7 +1324,14 @@
    "by_engine": {}
   },
   {
-   "host": "20min.ch",
+   "host": "pt.headtopics.com",
+   "primary": false,
+   "returned": 3,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "thenextweb.com",
    "primary": false,
    "returned": 3,
    "used": 0,
@@ -1260,6 +1339,41 @@
   },
   {
    "host": "larepubliquedespyrenees.fr",
+   "primary": false,
+   "returned": 3,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "noticias.uol.com.br",
+   "primary": false,
+   "returned": 3,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "15min.lt",
+   "primary": false,
+   "returned": 3,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "bbc.co.uk",
+   "primary": false,
+   "returned": 3,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "wunderground.com",
+   "primary": false,
+   "returned": 3,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "istotne.pl",
    "primary": false,
    "returned": 3,
    "used": 0,
@@ -1301,20 +1415,6 @@
    "by_engine": {}
   },
   {
-   "host": "pt.headtopics.com",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "thenextweb.com",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
    "host": "briefly.co",
    "primary": false,
    "returned": 2,
@@ -1323,13 +1423,6 @@
   },
   {
    "host": "businesscloud.co.uk",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "ru.euronews.com",
    "primary": false,
    "returned": 2,
    "used": 0,
@@ -1399,49 +1492,7 @@
    "by_engine": {}
   },
   {
-   "host": "noticias.uol.com.br",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "15min.lt",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "bbc.co.uk",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "wunderground.com",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
    "host": "correiodosacores.pt",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "madeira.rtp.pt",
-   "primary": false,
-   "returned": 2,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "istotne.pl",
    "primary": false,
    "returned": 2,
    "used": 0,
@@ -1463,6 +1514,20 @@
   },
   {
    "host": "ua.news",
+   "primary": false,
+   "returned": 2,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "thehackernews.com",
+   "primary": false,
+   "returned": 2,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "madeira-weekly.com",
    "primary": false,
    "returned": 2,
    "used": 0,
@@ -1519,13 +1584,6 @@
   },
   {
    "host": "paz-online.de",
-   "primary": false,
-   "returned": 1,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
-   "host": "radiocomercial.pt",
    "primary": false,
    "returned": 1,
    "used": 0,
@@ -1805,13 +1863,6 @@
    "by_engine": {}
   },
   {
-   "host": "thehackernews.com",
-   "primary": false,
-   "returned": 1,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
    "host": "hlavnespravy.sk",
    "primary": false,
    "returned": 1,
@@ -1840,13 +1891,6 @@
    "by_engine": {}
   },
   {
-   "host": "madeira-weekly.com",
-   "primary": false,
-   "returned": 1,
-   "used": 0,
-   "by_engine": {}
-  },
-  {
    "host": "news.nate.com",
    "primary": false,
    "returned": 1,
@@ -1854,7 +1898,35 @@
    "by_engine": {}
   },
   {
-   "host": "jornaldenegocios.pt",
+   "host": "jutarnji.hr",
+   "primary": false,
+   "returned": 1,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "meer.com",
+   "primary": false,
+   "returned": 1,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "techcrunch.com",
+   "primary": false,
+   "returned": 1,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "kvirispalitra.ge",
+   "primary": false,
+   "returned": 1,
+   "used": 0,
+   "by_engine": {}
+  },
+  {
+   "host": "portal.saladanoticia.com.br",
    "primary": false,
    "returned": 1,
    "used": 0,
