@@ -1,10 +1,10 @@
 {
  "about": "Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub's Actions API gave them. version: v<series>.<run number>, CI's own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit's time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. push_to_served_s: the run's own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T04:43:25Z",
+ "updated": "2026-11-11T05:15:49Z",
  "source": "https://api.github.com/repos/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs",
  "period": "2026-11-11T04",
- "count": 55,
+ "count": 64,
  "runs": [
   {
    "run": 463,
@@ -2927,6 +2927,593 @@
    "p": 2,
    "push_to_served_s": 52,
    "tag": "v0.1.517"
+  },
+  {
+   "run": 518,
+   "id": 42961162753,
+   "attempt": 1,
+   "version": "v0.1.518",
+   "sha": "39ad0f80aa143ab2a4318ba6950991e1e61acf74",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.ci@web-summit.dinis",
+   "what": "the 04:43 wake: 517 runs and 565 commits; no new failure, no deploy retry fired; tokens measured",
+   "pushed": "2026-11-11T04:44:08Z",
+   "queued": "2026-11-11T04:44:17Z",
+   "started": "2026-11-11T04:44:22Z",
+   "ended": "2026-11-11T04:44:44Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42961162753",
+   "queue_s": 5,
+   "run_s": 22,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 33,
+   "tag": "v0.1.518"
+  },
+  {
+   "run": 519,
+   "id": 42961302776,
+   "attempt": 1,
+   "version": "v0.1.519",
+   "sha": "50e60db34015bcd3b9daa47202335b44f4d3d073",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.librarian@web-summit.dinis",
+   "what": "the 04:44 wake: 04:00 to 05:00 brought to 59 commits by 19 agents (open until 05:00); the release history refreshed",
+   "pushed": "2026-11-11T04:45:24Z",
+   "queued": "2026-11-11T04:45:32Z",
+   "started": "2026-11-11T04:45:37Z",
+   "ended": "2026-11-11T04:45:57Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42961302776",
+   "queue_s": 5,
+   "run_s": 20,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 5,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 32,
+   "tag": "v0.1.519"
+  },
+  {
+   "run": 520,
+   "id": 42961316658,
+   "attempt": 1,
+   "version": "v0.1.520",
+   "sha": "89fd10c3e44efa802f80b03df2a09b4f2f64b57b",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "pushed": "2026-11-11T04:45:31Z",
+   "queued": "2026-11-11T04:45:40Z",
+   "started": "2026-11-11T04:46:02Z",
+   "ended": "2026-11-11T04:46:30Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42961316658",
+   "queue_s": 22,
+   "run_s": 28,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "wait",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "deploy (2nd try)",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 57,
+   "reason": "Error: No artifacts named \"github-pages\" were found for this workflow run. Ensure artifacts are uploaded with actions/upload-artifact@v4 or later. | Fetching artifact metadata failed. Is githubstatus.com reporting issues with API requests, Pages, or Actions? Please re-run the deployment at a later time.",
+   "tag": "v0.1.520"
+  },
+  {
+   "run": 521,
+   "id": 42961532012,
+   "attempt": 1,
+   "version": "v0.1.521",
+   "sha": "adecf48fa457ee6c0cfe00a5cd757134baeedc85",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.archivist@web-summit.dinis",
+   "what": "research captures recorded after the container restart (press pages kept privately)",
+   "pushed": "2026-11-11T04:47:28Z",
+   "queued": "2026-11-11T04:47:41Z",
+   "started": "2026-11-11T04:47:46Z",
+   "ended": "2026-11-11T04:48:16Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42961532012",
+   "queue_s": 5,
+   "run_s": 30,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 5,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 43,
+   "tag": "v0.1.521"
+  },
+  {
+   "run": 522,
+   "id": 42961636067,
+   "attempt": 1,
+   "version": "v0.1.522",
+   "sha": "7ef0eb8fcf13a8093f183e713e6f3e71e206b4ba",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "what": "04:39 read: nothing changed on Wikipedia since 03:44; eight 429s waited out; the wake's tokens measured",
+   "pushed": "2026-11-11T04:48:29Z",
+   "queued": "2026-11-11T04:48:40Z",
+   "started": "2026-11-11T04:48:44Z",
+   "ended": "2026-11-11T04:49:05Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42961636067",
+   "queue_s": 4,
+   "run_s": 21,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 34,
+   "tag": "v0.1.522"
+  },
+  {
+   "run": 523,
+   "id": 42961653823,
+   "attempt": 1,
+   "version": "v0.1.523",
+   "sha": "78dfd8ecf65fd2a9469c0cb45ad055b0b18ccb8f",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.archivist@web-summit.dinis",
+   "what": "the research round is done: 542 addresses, 557 captures; status and vault numbers",
+   "pushed": "2026-11-11T04:48:40Z",
+   "queued": "2026-11-11T04:48:50Z",
+   "started": "2026-11-11T04:49:09Z",
+   "ended": "2026-11-11T04:49:34Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42961653823",
+   "queue_s": 19,
+   "run_s": 25,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 52,
+   "tag": "v0.1.523"
+  },
+  {
+   "run": 524,
+   "id": 42961741862,
+   "attempt": 1,
+   "version": "v0.1.524",
+   "sha": "211e2c9336dc25ecaefd4ade5194bec302d6f0c1",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.archivist@web-summit.dinis",
+   "what": "an unchanged re-read keeps only its hashes, summary and text in the private vault (no second copy of the HTML and pictur",
+   "pushed": "2026-11-11T04:49:29Z",
+   "queued": "2026-11-11T04:49:41Z",
+   "started": "2026-11-11T04:49:45Z",
+   "ended": "2026-11-11T04:50:07Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42961741862",
+   "queue_s": 4,
+   "run_s": 22,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 36,
+   "tag": "v0.1.524"
+  },
+  {
+   "run": 525,
+   "id": 42961776366,
+   "attempt": 1,
+   "version": "v0.1.525",
+   "sha": "3365922c00720b604c03daaae581189a7da90258",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.ipma@web-summit.dinis",
+   "what": "04:46 read: 46 files changed; warnings rewritten at 04:15 with the same content (69 above green); a served file can be a",
+   "pushed": "2026-11-11T04:49:51Z",
+   "queued": "2026-11-11T04:50:00Z",
+   "started": "2026-11-11T04:50:12Z",
+   "ended": "2026-11-11T04:50:34Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42961776366",
+   "queue_s": 12,
+   "run_s": 22,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 5,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 40,
+   "tag": "v0.1.525"
+  },
+  {
+   "run": 526,
+   "id": 42962617078,
+   "attempt": 1,
+   "version": "v0.1.526",
+   "sha": "f85406eebfd41cba43aee3ff391c7d73b7eb16db",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.graph@web-summit.dinis",
+   "what": "the graph rebuilt on the 04:37 data (475 nodes, 647 edges)",
+   "pushed": "2026-11-11T04:57:56Z",
+   "queued": "2026-11-11T04:58:06Z",
+   "started": "2026-11-11T04:58:11Z",
+   "ended": "2026-11-11T04:58:35Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42962617078",
+   "queue_s": 5,
+   "run_s": 24,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 5,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "p": 2,
+   "push_to_served_s": 35,
+   "tag": "v0.1.526"
   }
  ]
 }
