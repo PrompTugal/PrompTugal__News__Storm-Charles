@@ -23,6 +23,14 @@ const t0 = Date.now()
 const pin = JSON.parse(fs.readFileSync(path.join(ROOT, 'app/login/pki/PIN.json'), 'utf8'))
 for (const [name, f] of Object.entries(pin.files)) ok(sha256hex(fs.readFileSync(path.join(ROOT, 'app/login/pki', name))) === f.sha256, `${name} is not the pinned copy`)
 
+// 1b. /account/ is written by hand (so it can refuse inline and third-party script): it must still carry what the frame carries
+{
+    const page = fs.readFileSync(path.join(ROOT, 'account/index.html'), 'utf8'), build = fs.readFileSync(path.join(ROOT, 'admin/build/build.mjs'), 'utf8')
+    for (const must of ['Not a warning service', 'Time delays between this website and the www.meteoalarm.org website are possible', 'please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>'])
+        ok(page.includes(must) && build.includes(must), `/account/ and the frame both carry: ${must.slice(0, 50)}`)
+    ok(/Content-Security-Policy" content="default-src 'none'; script-src 'self';/.test(page) && !/<script(?![^>]*\ssrc=)/.test(page) && !/\sstyle="/.test(page), '/account/ keeps its Content-Security-Policy and has no inline script or style')
+    for (const [, href] of build.matchAll(/<a href="\$\{u\}([^"]+)">/g)) ok(page.includes(`"../${href}"`) || href === 'account/index.html' || href === 'index.html', `/account/'s nav has the frame's link to ${href}`)
+}
 // throwaway people
 const [dinis, conductor, stranger] = await Promise.all(['Dinis (throwaway)', 'conductor (throwaway)', 'stranger (throwaway)'].map(l => K.generate(l)))
 const entry = (id, who) => ({ id, agent: who.bundle.label, status: 'active', bundle: who.bundle })

@@ -12,7 +12,8 @@
     "the box is on every page (the conductor's line in the page frame, aeab8c5); /account/ brought in line with design/README.md (tokens only, the banner and cards, UTC times in monospace, light and dark, a phone)",
     "tools/lane-configure.mjs (opens the lane on the bridge vault; --dry-run calls nothing) and lane-drain.mjs rewritten to SG/Send's append-lane reference (https://sgit.ai/api/append-lanes.md, read 10 November 23:55 UTC); tools/lane-test.mjs is now 30 checks against a stand-in built from that reference",
     "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says",
-    "00:21 wake: nothing new from Dinis (no public half, no decision, no token). Tests re-run (lane-test 30, lane-e2e 15: OK); the pins still match pki.sgit.ai (lib v0.2.28; door.js and local.js unchanged). SECURITY.md, the pins and data/lanes.json now carry this agent's detached signature (agents/identity/signed.json, tools/lane-sign.mjs --check)"
+    "00:21 wake: nothing new from Dinis (no public half, no decision, no token). Tests re-run (lane-test 30, lane-e2e 15: OK); the pins still match pki.sgit.ai (lib v0.2.28; door.js and local.js unchanged). SECURITY.md, the pins and data/lanes.json now carry this agent's detached signature (agents/identity/signed.json, tools/lane-sign.mjs --check)",
+    "00:27, from the designer's review (round 18): /app/login/ now serves a page (the code, file by file); /account/ carries the frame's current nav, notice and footer (the MeteoAlarm line) and the reader's theme. It stays hand-written, not mounted through the frame: the frame has an inline script and other agents' scripts, and /account/ refuses both by its Content-Security-Policy. tools/lane-test.mjs fails if its nav, notice or footer drift from the frame"
   ],
   "not_checked": [
     "a lane on the real SG/Send server: none exists. lane-configure.mjs and lane-drain.mjs have made no call to it",
@@ -26,9 +27,10 @@
   "asks": [
     "Dinis: three decisions, at the end of SECURITY.md: (1) a new key made on this site behind a passkey, or sign in with your pki.sgit.ai key; (2) how far a signed message from the feedback box carries (recommended: feedback on pages and content; anything hard to undo is confirmed in your session); (3) the SG/Send access token: as a secret in the conductor's environment, or typed only in your browser; and may replies sit in this repository as ciphertext sealed to your key until the bridge vault exists. Never paste a token or a key in chat.",
     "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
-    "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret)."
+    "Dinis: to start now, open /account/, make the key, and read its fingerprint (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret).",
+    "Dinis: one more, small: /account/ is kept outside the site's frame so it can refuse inline and third-party script where your key is made. If you prefer it inside the frame like every other page, say so and the policy is dropped."
   ],
-  "updated": "2026-11-11T00:30:00Z",
+  "updated": "2026-11-11T00:35:00Z",
   "by": "incident.identity@web-summit.dinis",
   "last_wake": "2026-11-11T00:21:31Z",
   "notes_for": {

@@ -8,6 +8,8 @@ import * as LANE from './lane.js'
 import { el, css, say, act, copy } from './dom.js'
 
 css()
+// the reader's theme, as the site's frame applies it (this page allows no inline script, so it is done here)
+try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t } catch (e) { }
 const root = document.getElementById('account')
 const status = el('p', { class: 'sc-status', role: 'status' })
 const utc = iso => el('time', { datetime: iso }, String(iso).slice(0, 16).replace('T', ' ') + ' UTC')
