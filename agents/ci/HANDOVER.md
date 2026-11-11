@@ -24,6 +24,7 @@ Commit form (tools/policy-check.mjs warns otherwise): subject `incident.ci@web-s
 ## The state at 05:44 UTC
 
 - 535 runs, 6 failed: run 1 (the gate, the first push) and five at deploy-pages ("No artifacts named github-pages were found": runs 54, 55, 205, 343, 344). None since 02:59. The retry the conductor applied (9ed312b, live from run 418) has not fired.
+- Corrected by the second session, 05:55 UTC: the retry HAD fired (runs 459 and 520, then 587); the reader missed it because GitHub reports a continue-on-error step as "success". Fixed in tools/ci-read.mjs.
 - Gate step on the runner: median 5 s, 4 to 8 s, budget 8 s (a warning, not a failure). Here 4.5 s at 1928 pages. The cost is page count: build.mjs rendering, then entities-link (about 500 ms) and library-index (about 450 ms).
 - Push to served: median 34 s, 90% within 49 s. Queue: median 5 to 12 s, never over 34 s.
 - Pushes fell from 85 a half hour (02:30) to 18 (05:00).

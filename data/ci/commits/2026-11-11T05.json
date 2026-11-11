@@ -1,10 +1,10 @@
 {
  "about": "Commits on dev made on this day (UTC, committer time), oldest first, from a full clone. agent: the Agent: trailer (agent_from says where it was read); what: the subject without the agent; to: the For: trailers (a hand-off); folders: files changed per top-level folder; files: the paths (the first 40); outside: paths that are not the agent's own under agents/policy.json as it is today, with their owners; sig: the signature the commit object carries (kind, the key's fingerprint) and GitHub's verdict; run: the workflow run of this very commit; served: the run and version that first served it (its own, or a later one when its own was replaced), and lag_s from commit to served. No session ids. A commit: https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/<sha>.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T05:15:49Z",
+ "updated": "2026-11-11T05:47:41Z",
  "source": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commits/dev",
  "period": "2026-11-11T05",
- "count": 10,
+ "count": 69,
  "commits": [
   {
    "sha": "73fc7be754dc4747221d2eb1ce912f42b3e764f7",
@@ -422,6 +422,2769 @@
     "at": "2026-11-11T05:15:25Z",
     "with_its_own_run": true,
     "lag_s": 58
+   }
+  },
+  {
+   "sha": "c10e42106eacecd32be3a698d4e2b568ba24b4fa",
+   "at": "2026-11-11T05:16:28Z",
+   "agent": "incident.ci@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the 05:15 wake: 535 runs and 584 commits; no new failure, no deploy retry fired; tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 8,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "data/": 6
+   },
+   "files": [
+    "accounts/ledger/ci.jsonl",
+    "agents/ci/status.json",
+    "data/ci/commits/2026-11-11T04.json",
+    "data/ci/commits/2026-11-11T05.json",
+    "data/ci/index.json",
+    "data/ci/runs/2026-11-11T04.json",
+    "data/ci/runs/2026-11-11T05.json",
+    "data/ci/tree.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 536,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.536",
+    "run": 536,
+    "at": "2026-11-11T05:17:12Z",
+    "with_its_own_run": true,
+    "lag_s": 44
+   }
+  },
+  {
+   "sha": "a1a01dbe6351fe7b531da289ff34b19ca0ba105b",
+   "at": "2026-11-11T05:16:53Z",
+   "agent": "incident.observability@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the hour's snapshots of commits and sessions; tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 6,
+   "folders": {
+    "accounts/": 1,
+    "data/": 5
+   },
+   "files": [
+    "accounts/ledger/observability.jsonl",
+    "data/agents/commits.json",
+    "data/agents/detail-2026-11-11T04.json",
+    "data/agents/detail-2026-11-11T05.json",
+    "data/agents/index.json",
+    "data/agents/sessions.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": null,
+   "served": {
+    "version": "v0.1.537",
+    "run": 537,
+    "at": "2026-11-11T05:17:44Z",
+    "with_its_own_run": false,
+    "lag_s": 51
+   }
+  },
+  {
+   "sha": "927fd6885065864fa0e73f2e215264d443aa18d5",
+   "at": "2026-11-11T05:16:56Z",
+   "agent": "incident.observability@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the snapshot files sized as written so they stay under the gate's limit (commits.json had passed it and the gate refused the push); the index carries a short done list",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 7,
+   "folders": {
+    "agents/": 1,
+    "data/": 4,
+    "tools/": 2
+   },
+   "files": [
+    "agents/observability/status.json",
+    "data/agents/commits.json",
+    "data/agents/detail-2026-11-11T05.json",
+    "data/agents/index.json",
+    "data/agents/sessions.json",
+    "tools/agents-commits.mjs",
+    "tools/agents-index.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 537,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.537",
+    "run": 537,
+    "at": "2026-11-11T05:17:44Z",
+    "with_its_own_run": true,
+    "lag_s": 48
+   }
+  },
+  {
+   "sha": "12c22b233b7c9d961dd7778bc73d2300bb7017d8",
+   "at": "2026-11-11T05:17:43Z",
+   "agent": "incident.journalist@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the third session starts: its session key (the second session's entry marked handed over); a ninth piece, \"An explanation that is data\" (from the reporter's trace of the Studio); the sixth piece carries the accountant's ",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.librarian@web-summit.dinis"
+   ],
+   "n_files": 8,
+   "folders": {
+    "agents/": 1,
+    "data/": 1,
+    "journal/": 6
+   },
+   "files": [
+    "agents/journalist/status.json",
+    "data/keys.json",
+    "journal/README.md",
+    "journal/an-explanation-that-is-data.json",
+    "journal/an-explanation-that-is-data.md",
+    "journal/index.json",
+    "journal/starting-again-is-cheaper-than-remembering.json",
+    "journal/starting-again-is-cheaper-than-remembering.md"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 538,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.538",
+    "run": 538,
+    "at": "2026-11-11T05:18:17Z",
+    "with_its_own_run": true,
+    "lag_s": 34
+   }
+  },
+  {
+   "sha": "5a1ace383be30bfd2ca70c043965d700ca062811",
+   "at": "2026-11-11T05:18:01Z",
+   "agent": "incident.journalist@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "accounts/": 1
+   },
+   "files": [
+    "accounts/ledger/journalist.jsonl"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 539,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.539",
+    "run": 539,
+    "at": "2026-11-11T05:18:43Z",
+    "with_its_own_run": true,
+    "lag_s": 42
+   }
+  },
+  {
+   "sha": "095f882c5bd574f643a714e79b4cd3e59c63daa5",
+   "at": "2026-11-11T05:19:18Z",
+   "agent": "incident.entities@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "agents/entities/HANDOVER.md (what I own, how to run, check and time the builder and the linker, what is in flight, what is owed); nodes current",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 147,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2,
+    "entities/": 144
+   },
+   "files": [
+    "accounts/ledger/entities.jsonl",
+    "agents/entities/HANDOVER.md",
+    "agents/entities/status.json",
+    "entities/body/aemet.json",
+    "entities/body/amn.json",
+    "entities/body/anepc.json",
+    "entities/body/apram.json",
+    "entities/body/camara-lisboa.json",
+    "entities/body/capitania-lisboa.json",
+    "entities/body/csm.json",
+    "entities/body/gnr.json",
+    "entities/body/government.json",
+    "entities/body/ipma.json",
+    "entities/body/madeira-gov.json",
+    "entities/body/madeira-prociv.json",
+    "entities/body/mai.json",
+    "entities/body/meteoalarm.json",
+    "entities/body/mj.json",
+    "entities/body/psp.json",
+    "entities/decision/aemet-special.json",
+    "entities/decision/airport-ops.json",
+    "entities/decision/ana-conditioned.json",
+    "entities/decision/apram-cruises.json",
+    "entities/decision/bridges-60.json",
+    "entities/decision/capitania-aviso-53.json",
+    "entities/decision/carris-runs-watched.json",
+    "entities/decision/cp-fertagus-bridge.json",
+    "entities/decision/cp-ops.json",
+    "entities/decision/csm-courts.json",
+    "entities/decision/flixbus-suspends.json",
+    "entities/decision/gnr-readiness.json",
+    "entities/decision/gov-alert.json",
+    "entities/decision/gov-recommends-suspend.json",
+    "entities/decision/madeira-airport-conditioned.json",
+    "entities/decision/madeira-gov-visit.json",
+    "entities/decision/madeira-schools.json",
+    "entities/decision/mai-websummit-indoor.json",
+    "entities/decision/mayor-expects-closure.json",
+    "entities/decision/metro-runs.json",
+    "entities/decision/metro-shelter.json"
+   ],
+   "files_more": 107,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 540,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.540",
+    "run": 540,
+    "at": "2026-11-11T05:19:57Z",
+    "with_its_own_run": true,
+    "lag_s": 39
+   }
+  },
+  {
+   "sha": "58d8538cc7270cd9ecc71c7e7a26f562cc49b186",
+   "at": "2026-11-11T05:19:29Z",
+   "agent": "incident.meteorology@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "agents/meteorology/HANDOVER.md (what it owns, the reader and builder and how to run them, in flight, what waits on Dinis); status; tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 3,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2
+   },
+   "files": [
+    "accounts/ledger/meteorology.jsonl",
+    "agents/meteorology/HANDOVER.md",
+    "agents/meteorology/status.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 541,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.542",
+    "run": 542,
+    "at": "2026-11-11T05:20:26Z",
+    "with_its_own_run": false,
+    "lag_s": 57
+   }
+  },
+  {
+   "sha": "8b9ff10ec95b2eb2112e1c0b73b36e7ca9ff039d",
+   "at": "2026-11-11T05:19:35Z",
+   "agent": "incident.media@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "agents/media/HANDOVER.md for a fresh session (what I own, the tools, the wake's steps, the rules, what is in flight, what waits on Dinis)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 3,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2
+   },
+   "files": [
+    "accounts/ledger/media.jsonl",
+    "agents/media/HANDOVER.md",
+    "agents/media/status.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 542,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.542",
+    "run": 542,
+    "at": "2026-11-11T05:20:26Z",
+    "with_its_own_run": true,
+    "lag_s": 51
+   }
+  },
+  {
+   "sha": "43a96c7e0ccfef74c33c9bc79b2d40a002a0670a",
+   "at": "2026-11-11T05:20:41Z",
+   "agent": "incident.entities@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session started: its session key's public half in data/keys.json, the first session's entry handed over; status",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "agents/": 1,
+    "data/": 1
+   },
+   "files": [
+    "agents/entities/status.json",
+    "data/keys.json"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 543,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.543",
+    "run": 543,
+    "at": "2026-11-11T05:21:18Z",
+    "with_its_own_run": true,
+    "lag_s": 37
+   }
+  },
+  {
+   "sha": "7954045e4637ec2343a4499c5c4ae1564b4e7887",
+   "at": "2026-11-11T05:21:53Z",
+   "agent": "incident.identity@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "05:21 wake: status (checks green, waiting on Dinis); tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1
+   },
+   "files": [
+    "accounts/ledger/identity.jsonl",
+    "agents/identity/status.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 544,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.544",
+    "run": 544,
+    "at": "2026-11-11T05:22:30Z",
+    "with_its_own_run": true,
+    "lag_s": 37
+   }
+  },
+  {
+   "sha": "dd65bb0744b5ec7159689fbbf5877020c0c19162",
+   "at": "2026-11-11T05:23:42Z",
+   "agent": "incident.meteorology@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session: new session key (the first handed over); re-read of every edge and licence (0 changed state); nodes carry stated joins (entity, of, source) for the graph; two sharper names for the linker; status and hand",
+   "issue": "WS-214",
+   "to": [
+    "incident.graph@web-summit.dinis",
+    "incident.entities@web-summit.dinis"
+   ],
+   "n_files": 20,
+   "folders": {
+    "agents/": 2,
+    "data/": 1,
+    "meteorology/": 16,
+    "tools/": 1
+   },
+   "files": [
+    "agents/meteorology/HANDOVER.md",
+    "agents/meteorology/status.json",
+    "data/keys.json",
+    "meteorology/edges/aggregates.json",
+    "meteorology/edges/assimilates.json",
+    "meteorology/edges/issues.json",
+    "meteorology/edges/operates.json",
+    "meteorology/edges/publishes.json",
+    "meteorology/edges/redistributes.json",
+    "meteorology/edges/runs.json",
+    "meteorology/edges/supplies.json",
+    "meteorology/edges/visualises.json",
+    "meteorology/edges/warns_from.json",
+    "meteorology/licences.json",
+    "meteorology/nodes/body.json",
+    "meteorology/nodes/dataset.json",
+    "meteorology/nodes/site.json",
+    "meteorology/nodes/warning-service.json",
+    "meteorology/sources.json",
+    "tools/meteorology-build.mjs"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 545,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.545",
+    "run": 545,
+    "at": "2026-11-11T05:24:18Z",
+    "with_its_own_run": true,
+    "lag_s": 36
+   }
+  },
+  {
+   "sha": "dc5a2c33ce2a8c889f028d215a3329c05add767a",
+   "at": "2026-11-11T05:23:57Z",
+   "agent": "incident.meteorology@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "tokens measured (second session, first round)",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "accounts/": 1
+   },
+   "files": [
+    "accounts/ledger/meteorology.jsonl"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 546,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.546",
+    "run": 546,
+    "at": "2026-11-11T05:24:42Z",
+    "with_its_own_run": true,
+    "lag_s": 45
+   }
+  },
+  {
+   "sha": "9b7d02275a8adf542f9bfb8de31bd1dbab7bfeb6",
+   "at": "2026-11-11T05:24:38Z",
+   "agent": "incident.entities@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "IPMA's nodes joined, not copied (card a-ipma-7): district names and codes, forecast and coastal places, qualified station names, warning types and levels link to their place on IPMA's pages; 635 more mentions linked, the",
+   "issue": "WS-214",
+   "to": [
+    "incident.ipma@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "tools/": 2
+   },
+   "files": [
+    "tools/entities-build.mjs",
+    "tools/entities-lib.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 547,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.547",
+    "run": 547,
+    "at": "2026-11-11T05:25:17Z",
+    "with_its_own_run": true,
+    "lag_s": 39
+   }
+  },
+  {
+   "sha": "3744ad04fe7f95b258f38e4df01931583104c5cf",
+   "at": "2026-11-11T05:25:56Z",
+   "agent": "incident.archivist@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "05:23 round: the seven primary pages unchanged since the first captures",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 16,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "evidence/": 14
+   },
+   "files": [
+    "accounts/ledger/archivist.jsonl",
+    "agents/archivist/status.json",
+    "evidence/README.md",
+    "evidence/anepc/2026/11/11/0524-pt-avisos-a-populacao-aviso-21-depressao-charles-agravamento-b0cbfc7a.json",
+    "evidence/anepc/2026/11/11/0524-pt-avisos-a-populacao.json",
+    "evidence/anepc/index.json",
+    "evidence/governo/2026/11/11/0524-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.json",
+    "evidence/governo/index.json",
+    "evidence/index.json",
+    "evidence/ipma/2026/11/11/0523-pt-otempo-prev-sam.json",
+    "evidence/ipma/2026/11/11/0524-pt-otempo-comunicados.json",
+    "evidence/ipma/index.json",
+    "evidence/rows.json",
+    "evidence/websummit/2026/11/11/0523-blog-web-summit-important-event-update-2026.json",
+    "evidence/websummit/2026/11/11/0523-blog.json",
+    "evidence/websummit/index.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 548,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.548",
+    "run": 548,
+    "at": "2026-11-11T05:26:35Z",
+    "with_its_own_run": true,
+    "lag_s": 39
+   }
+  },
+  {
+   "sha": "dd54ba38a4c622616a0065e2ecaa4dbe97f848a8",
+   "at": "2026-11-11T05:26:18Z",
+   "agent": "incident.sources@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "Web Summit's terms read and quoted: automated access, archiving and summarising of its websites are forbidden (a decision for Dinis); feed read 05:25, unchanged",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 10,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "sources/": 7,
+    "tools/": 1
+   },
+   "files": [
+    "accounts/ledger/sources.jsonl",
+    "agents/sources/status.json",
+    "sources/README.md",
+    "sources/meteoalarm/api-map.md",
+    "sources/meteoalarm/data/portugal/latest.json",
+    "sources/meteoalarm/data/portugal/reads.json",
+    "sources/meteoalarm/dataset.json",
+    "sources/registry.json",
+    "sources/sources.json",
+    "tools/source-index.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 549,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.549",
+    "run": 549,
+    "at": "2026-11-11T05:27:07Z",
+    "with_its_own_run": true,
+    "lag_s": 49
+   }
+  },
+  {
+   "sha": "7108c5e04f5e6c1eb84e5069b6b776e5b39109e4",
+   "at": "2026-11-11T05:26:55Z",
+   "agent": "incident.media@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session starts (session key incident-media-dinis-2, the first marked handed over); sweep: 229 items, 17 outlets, 2 new; fact 6 still unreported; live.mjs keeps a blog's earlier record when a fresh cache can time n",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 45,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "data/": 1,
+    "research/": 42
+   },
+   "files": [
+    "accounts/ledger/media.jsonl",
+    "agents/media/status.json",
+    "data/keys.json",
+    "research/media/README.md",
+    "research/media/cites.json",
+    "research/media/coverage.json",
+    "research/media/feeds.json",
+    "research/media/first-on-each-fact.json",
+    "research/media/live-entries.json",
+    "research/media/outlets.json",
+    "research/media/outlets/README.md",
+    "research/media/outlets/ap.md",
+    "research/media/outlets/bloomberg.md",
+    "research/media/outlets/cnn-portugal.md",
+    "research/media/outlets/correio-da-manha.md",
+    "research/media/outlets/dn.md",
+    "research/media/outlets/dnoticias.md",
+    "research/media/outlets/eco.md",
+    "research/media/outlets/euronews.md",
+    "research/media/outlets/expresso.md",
+    "research/media/outlets/guardian.md",
+    "research/media/outlets/iol.md",
+    "research/media/outlets/jn.md",
+    "research/media/outlets/jornal-economico.md",
+    "research/media/outlets/lusa.md",
+    "research/media/outlets/madeira-island-news.md",
+    "research/media/outlets/negocios.md",
+    "research/media/outlets/noticias-ao-minuto.md",
+    "research/media/outlets/observador.md",
+    "research/media/outlets/portugal-news.md",
+    "research/media/outlets/portugal-resident.md",
+    "research/media/outlets/publico.md",
+    "research/media/outlets/renascenca.md",
+    "research/media/outlets/rtp.md",
+    "research/media/outlets/sabado.md",
+    "research/media/outlets/sapo.md",
+    "research/media/outlets/sic-noticias.md",
+    "research/media/outlets/techcrunch.md",
+    "research/media/outlets/techtimes.md",
+    "research/media/outlets/tek.md"
+   ],
+   "files_more": 5,
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 550,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.550",
+    "run": 550,
+    "at": "2026-11-11T05:27:33Z",
+    "with_its_own_run": true,
+    "lag_s": 38
+   }
+  },
+  {
+   "sha": "3fc6c9cd0ac52ad3e73dcacaf9c72c04bbd1983c",
+   "at": "2026-11-11T05:27:08Z",
+   "agent": "incident.weather@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the 05:25 check: a past hour with no measurement read yet says so (it showed the automatic forecast); the rain tile names its hour",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 4,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "app/": 2
+   },
+   "files": [
+    "accounts/ledger/weather.jsonl",
+    "agents/weather/status.json",
+    "app/weather/weather.css",
+    "app/weather/weather.js"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 551,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.551",
+    "run": 551,
+    "at": "2026-11-11T05:27:57Z",
+    "with_its_own_run": true,
+    "lag_s": 49
+   }
+  },
+  {
+   "sha": "e2b2256906433962a66f2e369677b2ebf0591c7b",
+   "at": "2026-11-11T05:27:33Z",
+   "agent": "incident.conductor@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "bridge sync of the meteorologist's 05:22 read (new airport forecast, stations, warnings)",
+   "issue": "WS-214",
+   "to": [
+    "incident.weather@web-summit.dinis"
+   ],
+   "n_files": 14,
+   "folders": {
+    "agents/": 1,
+    "incidents/": 13
+   },
+   "files": [
+    "agents/meteorologist/status.json",
+    "incidents/2026-11-10-storm-charles/data/weather/airport-madeira.json",
+    "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.json",
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md",
+    "incidents/2026-11-10-storm-charles/data/weather/cap.json",
+    "incidents/2026-11-10-storm-charles/data/weather/changes.json",
+    "incidents/2026-11-10-storm-charles/data/weather/communiques.json",
+    "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+    "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json",
+    "incidents/2026-11-10-storm-charles/data/weather/lisbon-rain.json",
+    "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
+    "incidents/2026-11-10-storm-charles/data/weather/stations.json",
+    "incidents/2026-11-10-storm-charles/data/weather/warnings.json"
+   ],
+   "shared_n": 13,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 552,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.553",
+    "run": 553,
+    "at": "2026-11-11T05:28:27Z",
+    "with_its_own_run": false,
+    "lag_s": 54
+   }
+  },
+  {
+   "sha": "879d9d4c36e274b878979d78bc8bff706af1e323",
+   "at": "2026-11-11T05:27:47Z",
+   "agent": "incident.perplexity@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the conductor's interim hold on websummit.com: the checker no longer requests it; capture asks for its pages withdrawn; the page says so",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.archivist@web-summit.dinis"
+   ],
+   "n_files": 9,
+   "folders": {
+    "agents/": 1,
+    "research/": 7,
+    "tools/": 1
+   },
+   "files": [
+    "agents/perplexity/status.json",
+    "research/perplexity/capture-asks.json",
+    "research/perplexity/hosts.json",
+    "research/perplexity/index.md",
+    "research/perplexity/leads.json",
+    "research/perplexity/ledger-summary.json",
+    "research/perplexity/notes.md",
+    "research/perplexity/scorecard.json",
+    "tools/perplexity-check.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": null,
+   "served": {
+    "version": "v0.1.553",
+    "run": 553,
+    "at": "2026-11-11T05:28:27Z",
+    "with_its_own_run": false,
+    "lag_s": 40
+   }
+  },
+  {
+   "sha": "49907ea5ef3f5ce685cd8435852ce234ef41cd6f",
+   "at": "2026-11-11T05:27:47Z",
+   "agent": "incident.perplexity@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "accounts/": 1
+   },
+   "files": [
+    "accounts/ledger/perplexity.jsonl"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 553,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.553",
+    "run": 553,
+    "at": "2026-11-11T05:28:27Z",
+    "with_its_own_run": true,
+    "lag_s": 40
+   }
+  },
+  {
+   "sha": "6f7cb6f91b37ab8eaed2e82df0ae618201bf6384",
+   "at": "2026-11-11T05:27:58Z",
+   "agent": "incident.sources@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "Web Summit on hold (its terms forbid automated reading; decision with Dinis); its page lists what this site read automatically and when",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 7,
+   "folders": {
+    "agents/": 1,
+    "sources/": 4,
+    "tools/": 2
+   },
+   "files": [
+    "agents/sources/status.json",
+    "sources/README.md",
+    "sources/meteoalarm/api-map.md",
+    "sources/registry.json",
+    "sources/sources.json",
+    "tools/source-index.mjs",
+    "tools/source-pages.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 554,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.557",
+    "run": 557,
+    "at": "2026-11-11T05:28:53Z",
+    "with_its_own_run": false,
+    "lag_s": 55
+   }
+  },
+  {
+   "sha": "c82743cae5ce4a25d229e1f06273f28616cc34af",
+   "at": "2026-11-11T05:28:02Z",
+   "agent": "incident.board@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "Web Summit's terms and the hold on automated reads as a card for Dinis (second on his list); the five questions only Web Summit can answer move from watching to open; tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.sources@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 38,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "board/": 36
+   },
+   "files": [
+    "accounts/ledger/board.jsonl",
+    "agents/board/status.json",
+    "board/items/a-accountant-2.json",
+    "board/items/a-accountant-3.json",
+    "board/items/a-archivist-3.json",
+    "board/items/a-journalist-5.json",
+    "board/items/a-meteorology-5.json",
+    "board/items/a-meteorology-6.json",
+    "board/items/a-provider-credit.json",
+    "board/items/a-reporter-4.json",
+    "board/items/a-websummit-terms.json",
+    "board/items/j-accountant-10.json",
+    "board/items/j-accountant-5.json",
+    "board/items/j-accountant-6.json",
+    "board/items/j-accountant-7.json",
+    "board/items/j-accountant-8.json",
+    "board/items/j-accountant-9.json",
+    "board/items/j-archivist-10.json",
+    "board/items/j-archivist-6.json",
+    "board/items/j-archivist-9.json",
+    "board/items/j-entities-5.json",
+    "board/items/j-entities-6.json",
+    "board/items/j-entities-7.json",
+    "board/items/j-entities-8.json",
+    "board/items/j-journalist-7.json",
+    "board/items/j-journalist-8.json",
+    "board/items/j-journalist-9.json",
+    "board/items/j-media-9.json",
+    "board/items/j-meteorology-1.json",
+    "board/items/j-meteorology-5.json",
+    "board/items/j-observability-9.json",
+    "board/items/j-social-2.json",
+    "board/items/q-pitch-semifinal.json",
+    "board/items/q-side-events.json",
+    "board/items/q-thursday-confirmed.json",
+    "board/items/q-tickets-refunds.json",
+    "board/items/q-wednesday-talks.json",
+    "board/items/t-organiser-notices.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 555,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.557",
+    "run": 557,
+    "at": "2026-11-11T05:28:53Z",
+    "with_its_own_run": false,
+    "lag_s": 51
+   }
+  },
+  {
+   "sha": "fb52d88e49d2993d5f138ed1e1f8f43e4e59d319",
+   "at": "2026-11-11T05:28:10Z",
+   "agent": "incident.entities@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the linker writes each page in place (no truncate first): about 650 ms to about 400 ms in the build at 1,932 pages, output byte for byte the same; mentions.json now says where its time goes by family of pages",
+   "issue": "WS-214",
+   "to": [
+    "incident.ci@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "tools/": 1
+   },
+   "files": [
+    "tools/entities-build.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 556,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.557",
+    "run": 557,
+    "at": "2026-11-11T05:28:53Z",
+    "with_its_own_run": false,
+    "lag_s": 43
+   }
+  },
+  {
+   "sha": "96b5592738ba634eefe329ec16b3ca6fb7611b90",
+   "at": "2026-11-11T05:28:14Z",
+   "agent": "incident.archivist@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "Web Summit hold: no further read of websummit.com; its captures kept privately and not shown (address, title, time and hashes stay)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 24,
+   "folders": {
+    "agents/": 1,
+    "evidence/": 22,
+    "tools/": 1
+   },
+   "files": [
+    "agents/archivist/status.json",
+    "evidence/README.md",
+    "evidence/data.json",
+    "evidence/eumetsat-int/2026/11/11/0231-front.json",
+    "evidence/index.json",
+    "evidence/rows.json",
+    "evidence/sources.json",
+    "evidence/websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.json",
+    "evidence/websummit/2026/11/11/0216-blog.json",
+    "evidence/websummit/2026/11/11/0223-front.json",
+    "evidence/websummit/2026/11/11/0224-news.json",
+    "evidence/websummit/2026/11/11/0225-essentials-app.json",
+    "evidence/websummit/2026/11/11/0225-essentials-schedule.json",
+    "evidence/websummit/2026/11/11/0225-schedule.json",
+    "evidence/websummit/2026/11/11/0228-startups-pitch.json",
+    "evidence/websummit/2026/11/11/0240-sitemap-xml.json",
+    "evidence/websummit/2026/11/11/0324-blog-web-summit-important-event-update-2026.json",
+    "evidence/websummit/2026/11/11/0324-blog.json",
+    "evidence/websummit/2026/11/11/0424-blog-web-summit-important-event-update-2026.json",
+    "evidence/websummit/2026/11/11/0424-blog.json",
+    "evidence/websummit/2026/11/11/0523-blog-web-summit-important-event-update-2026.json",
+    "evidence/websummit/2026/11/11/0523-blog.json",
+    "evidence/websummit/index.json",
+    "tools/capture-records.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 557,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.557",
+    "run": 557,
+    "at": "2026-11-11T05:28:53Z",
+    "with_its_own_run": true,
+    "lag_s": 39
+   }
+  },
+  {
+   "sha": "a6b94b6fccbfef318a8c0f122d6dd807eee886b6",
+   "at": "2026-11-11T05:28:27Z",
+   "agent": "incident.archivist@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "status: the Web Summit hold covers 9 addresses (I had written 17)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "agents/": 1
+   },
+   "files": [
+    "agents/archivist/status.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 558,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.559",
+    "run": 559,
+    "at": "2026-11-11T05:29:16Z",
+    "with_its_own_run": false,
+    "lag_s": 49
+   }
+  },
+  {
+   "sha": "787075c0ec197cbf79ba592200321b0bb7b64823",
+   "at": "2026-11-11T05:28:42Z",
+   "agent": "incident.stories@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the 05:27 re-check on the 04:23 read: nothing moved at IPMA; Open-Meteo moved and Madeira's stations gained an hour (Areeiro 232.1 mm in six hourly values): both retold and dated",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 4,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "stories/": 2
+   },
+   "files": [
+    "accounts/ledger/stories.jsonl",
+    "agents/stories/status.json",
+    "stories/less-wind-for-lisbon/story.json",
+    "stories/madeira-warned-against-observed/story.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": null,
+   "served": {
+    "version": "v0.1.559",
+    "run": 559,
+    "at": "2026-11-11T05:29:16Z",
+    "with_its_own_run": false,
+    "lag_s": 34
+   }
+  },
+  {
+   "sha": "ceee64bd6a6152b0ca70b891194fcb3971be5048",
+   "at": "2026-11-11T05:28:42Z",
+   "agent": "incident.stories@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "on the 05:22 read: the 05:00 airport forecast keeps the 45-knot gusts, now to 18:00 (\"Less wind for Lisbon?\" retold, dated); IPMA's warnings unchanged",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "stories/": 1
+   },
+   "files": [
+    "stories/less-wind-for-lisbon/story.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 559,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.559",
+    "run": 559,
+    "at": "2026-11-11T05:29:16Z",
+    "with_its_own_run": true,
+    "lag_s": 34
+   }
+  },
+  {
+   "sha": "e2ac7649f455d963dd0322de0fe56e8fc1fbffd6",
+   "at": "2026-11-11T05:29:07Z",
+   "agent": "incident.sources@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "Web Summit's record of automated reads completed with incident.dev@'s counts (244 poll reads, about 640 to 660 requests in all, estimated) and what content the repository holds",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 4,
+   "folders": {
+    "sources/": 4
+   },
+   "files": [
+    "sources/README.md",
+    "sources/meteoalarm/api-map.md",
+    "sources/registry.json",
+    "sources/sources.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 560,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.560",
+    "run": 560,
+    "at": "2026-11-11T05:29:44Z",
+    "with_its_own_run": true,
+    "lag_s": 37
+   }
+  },
+  {
+   "sha": "215890d0effa2aff7763987d33e032fcc5b37543",
+   "at": "2026-11-11T05:29:18Z",
+   "agent": "incident.board@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "a-websummit-terms: what keeping the hold means for the screenshots already in the display vault; the clauses checked in sources/registry.json",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "board/": 1
+   },
+   "files": [
+    "board/items/a-websummit-terms.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 561,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.562",
+    "run": 562,
+    "at": "2026-11-11T05:30:11Z",
+    "with_its_own_run": false,
+    "lag_s": 53
+   }
+  },
+  {
+   "sha": "83b49b53284a217b87323a47d519ba5caaf92fcb",
+   "at": "2026-11-11T05:29:28Z",
+   "agent": "incident.entities@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "LPPT, LPMA and SRPC are names of the nodes that had them; the Capitania placed in the seed; nodes remade; HANDOVER.md and status current; tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 200,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2,
+    "entities/": 197
+   },
+   "files": [
+    "accounts/ledger/entities.jsonl",
+    "agents/entities/HANDOVER.md",
+    "agents/entities/status.json",
+    "entities/agent/accountant.json",
+    "entities/agent/archivist.json",
+    "entities/agent/board.json",
+    "entities/agent/ci.json",
+    "entities/agent/conductor.json",
+    "entities/agent/designer.json",
+    "entities/agent/entities.json",
+    "entities/agent/graph.json",
+    "entities/agent/identity.json",
+    "entities/agent/ipma.json",
+    "entities/agent/journalist.json",
+    "entities/agent/labs.json",
+    "entities/agent/librarian.json",
+    "entities/agent/media.json",
+    "entities/agent/meteorology.json",
+    "entities/agent/models.json",
+    "entities/agent/observability.json",
+    "entities/agent/perplexity.json",
+    "entities/agent/reporter.json",
+    "entities/agent/shadow.json",
+    "entities/agent/social.json",
+    "entities/agent/sources.json",
+    "entities/agent/stories.json",
+    "entities/agent/studio.json",
+    "entities/agent/weather.json",
+    "entities/agent/weatherwatch.json",
+    "entities/agent/wikipedia.json",
+    "entities/body/aemet.json",
+    "entities/body/amn.json",
+    "entities/body/anepc.json",
+    "entities/body/apram.json",
+    "entities/body/camara-lisboa.json",
+    "entities/body/capitania-lisboa.json",
+    "entities/body/csm.json",
+    "entities/body/gnr.json",
+    "entities/body/government.json",
+    "entities/body/ipma.json"
+   ],
+   "files_more": 160,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 562,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.562",
+    "run": 562,
+    "at": "2026-11-11T05:30:11Z",
+    "with_its_own_run": true,
+    "lag_s": 43
+   }
+  },
+  {
+   "sha": "0cf25ec58c5f7cf134fed85a7c26820a05827fa8",
+   "at": "2026-11-11T05:32:37Z",
+   "agent": "incident.board@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the 05:32 sync to the status files (no question moved; the round itself went out at 05:27)",
+   "issue": "WS-214",
+   "to": [],
+   "n_files": 3,
+   "folders": {
+    "board/": 3
+   },
+   "files": [
+    "board/items/a-perplexity-6.json",
+    "board/items/j-entities-8.json",
+    "board/items/j-entities-9.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 563,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.563",
+    "run": 563,
+    "at": "2026-11-11T05:33:15Z",
+    "with_its_own_run": true,
+    "lag_s": 38
+   }
+  },
+  {
+   "sha": "68afa59f6e57f74f8a66d70ecf88b96a11ee5372",
+   "at": "2026-11-11T05:37:11Z",
+   "agent": "incident.social@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "05:33 re-read: no new post about the storm from any listed account; Web Summit still silent; counts refreshed",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 10,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "research/": 8
+   },
+   "files": [
+    "accounts/ledger/social.jsonl",
+    "agents/social/status.json",
+    "research/social/conversation.json",
+    "research/social/index.md",
+    "research/social/mastodon.json",
+    "research/social/posts.json",
+    "research/social/posts/2026-11-08.json",
+    "research/social/posts/2026-11-09.json",
+    "research/social/posts/2026-11-10.json",
+    "research/social/posts/2026-11-11.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 564,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.564",
+    "run": 564,
+    "at": "2026-11-11T05:37:51Z",
+    "with_its_own_run": true,
+    "lag_s": 40
+   }
+  },
+  {
+   "sha": "bc763a795ea8dd5360f328fca2be347c71566a2d",
+   "at": "2026-11-11T05:37:20Z",
+   "agent": "incident.designer@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the 05:36 look at the day in progress: the minute line no longer crosses a figure; the wind chart's observed label clear of its line; tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 5,
+   "folders": {
+    "accounts/": 1,
+    "admin/": 1,
+    "agents/": 1,
+    "app/": 1,
+    "design/": 1
+   },
+   "files": [
+    "accounts/ledger/designer.jsonl",
+    "admin/build/build.mjs",
+    "agents/designer/status.json",
+    "app/site.css",
+    "design/round-44.md"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 565,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.565",
+    "run": 565,
+    "at": "2026-11-11T05:38:21Z",
+    "with_its_own_run": true,
+    "lag_s": 61
+   }
+  },
+  {
+   "sha": "321e6a62af39a2b67769046bc324b666b50dbed0",
+   "at": "2026-11-11T05:37:54Z",
+   "agent": "incident.media@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "05:36 wake: sweep (231 items, 17 outlets, 2 new); fact 6 still unreported; no new-day live page yet",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 43,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "research/": 41
+   },
+   "files": [
+    "accounts/ledger/media.jsonl",
+    "agents/media/status.json",
+    "research/media/README.md",
+    "research/media/cites.json",
+    "research/media/coverage.json",
+    "research/media/feeds.json",
+    "research/media/first-on-each-fact.json",
+    "research/media/live-entries.json",
+    "research/media/outlets.json",
+    "research/media/outlets/README.md",
+    "research/media/outlets/ap.md",
+    "research/media/outlets/bloomberg.md",
+    "research/media/outlets/cnn-portugal.md",
+    "research/media/outlets/correio-da-manha.md",
+    "research/media/outlets/dn.md",
+    "research/media/outlets/dnoticias.md",
+    "research/media/outlets/eco.md",
+    "research/media/outlets/euronews.md",
+    "research/media/outlets/expresso.md",
+    "research/media/outlets/guardian.md",
+    "research/media/outlets/iol.md",
+    "research/media/outlets/jn.md",
+    "research/media/outlets/jornal-economico.md",
+    "research/media/outlets/lusa.md",
+    "research/media/outlets/madeira-island-news.md",
+    "research/media/outlets/negocios.md",
+    "research/media/outlets/noticias-ao-minuto.md",
+    "research/media/outlets/observador.md",
+    "research/media/outlets/portugal-news.md",
+    "research/media/outlets/portugal-resident.md",
+    "research/media/outlets/publico.md",
+    "research/media/outlets/renascenca.md",
+    "research/media/outlets/rtp.md",
+    "research/media/outlets/sabado.md",
+    "research/media/outlets/sapo.md",
+    "research/media/outlets/sic-noticias.md",
+    "research/media/outlets/techcrunch.md",
+    "research/media/outlets/techtimes.md",
+    "research/media/outlets/tek.md",
+    "research/media/outlets/tsf.md"
+   ],
+   "files_more": 3,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 566,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.567",
+    "run": 567,
+    "at": "2026-11-11T05:38:49Z",
+    "with_its_own_run": false,
+    "lag_s": 55
+   }
+  },
+  {
+   "sha": "b8bdfec370ce5713ec317620e13ae994cc42bde4",
+   "at": "2026-11-11T05:38:03Z",
+   "agent": "incident.designer@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the hand-over brought up to date (rounds 43 and 44 done, what is next at 09:35, the scripts, the cost), for a fresh session",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "design/": 1
+   },
+   "files": [
+    "design/HANDOVER.md"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 567,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.567",
+    "run": 567,
+    "at": "2026-11-11T05:38:49Z",
+    "with_its_own_run": true,
+    "lag_s": 46
+   }
+  },
+  {
+   "sha": "352fd6c24bd391abe2a335115f27974320b47e91",
+   "at": "2026-11-11T05:38:25Z",
+   "agent": "incident.entities@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "hourly wake 05:37: the outlet nodes remade after the media watch's push; builder 179 ms, linker 395 ms at 1,95x pages; tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 32,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "entities/": 30
+   },
+   "files": [
+    "accounts/ledger/entities.jsonl",
+    "agents/entities/status.json",
+    "entities/outlet/ap.json",
+    "entities/outlet/bloomberg.json",
+    "entities/outlet/cnn-portugal.json",
+    "entities/outlet/correio-da-manha.json",
+    "entities/outlet/dn.json",
+    "entities/outlet/dnoticias.json",
+    "entities/outlet/eco.json",
+    "entities/outlet/euronews.json",
+    "entities/outlet/expresso.json",
+    "entities/outlet/guardian.json",
+    "entities/outlet/iol.json",
+    "entities/outlet/jn.json",
+    "entities/outlet/jornal-economico.json",
+    "entities/outlet/lusa.json",
+    "entities/outlet/madeira-island-news.json",
+    "entities/outlet/negocios.json",
+    "entities/outlet/noticias-ao-minuto.json",
+    "entities/outlet/observador.json",
+    "entities/outlet/portugal-news.json",
+    "entities/outlet/portugal-resident.json",
+    "entities/outlet/publico.json",
+    "entities/outlet/renascenca.json",
+    "entities/outlet/rtp.json",
+    "entities/outlet/sabado.json",
+    "entities/outlet/sapo.json",
+    "entities/outlet/sic-noticias.json",
+    "entities/outlet/techcrunch.json",
+    "entities/outlet/techtimes.json",
+    "entities/outlet/tek.json",
+    "entities/outlet/tsf.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 568,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.568",
+    "run": 568,
+    "at": "2026-11-11T05:39:15Z",
+    "with_its_own_run": true,
+    "lag_s": 50
+   }
+  },
+  {
+   "sha": "dd4b8f78822a4666ccefae7bb6375bdc0ca88409",
+   "at": "2026-11-11T05:39:18Z",
+   "agent": "incident.accountant@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the accounts, round 6: eleven agents have handed over (53% to 84% less per call); the conductor's session is 28% of 1.65 billion tokens; round 5's hourly figures corrected; brief 6",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 10,
+   "folders": {
+    "accounts/": 9,
+    "agents/": 1
+   },
+   "files": [
+    "accounts/agents.json",
+    "accounts/books.json",
+    "accounts/briefs/2026-11-11T0545Z.md",
+    "accounts/index.md",
+    "accounts/ledger/accountant.jsonl",
+    "accounts/machine.json",
+    "accounts/models.json",
+    "accounts/outputs.json",
+    "accounts/savings.md",
+    "agents/accountant/status.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 569,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.569",
+    "run": 569,
+    "at": "2026-11-11T05:39:53Z",
+    "with_its_own_run": true,
+    "lag_s": 35
+   }
+  },
+  {
+   "sha": "51f7d25f0188cf9bb51aaead826957b91cccd0f8",
+   "at": "2026-11-11T05:40:25Z",
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the 05:39 re-read (authorities unchanged; first impact headline from greater Lisbon) and a look at the front page under the orange rain (reviews/2026-11-11T0540.md)",
+   "issue": "WS-214",
+   "to": [
+    "incident.weather@web-summit.dinis",
+    "incident.designer@web-summit.dinis",
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 5,
+   "folders": {
+    "agents/": 1,
+    "research/": 4
+   },
+   "files": [
+    "agents/weatherwatch/status.json",
+    "research/weather-sites/README.md",
+    "research/weather-sites/rereads.json",
+    "research/weather-sites/reviews/2026-11-11T0540.md",
+    "research/weather-sites/tools/review-weather-face.cjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": null,
+   "served": {
+    "version": "v0.1.570",
+    "run": 570,
+    "at": "2026-11-11T05:40:58Z",
+    "with_its_own_run": false,
+    "lag_s": 33
+   }
+  },
+  {
+   "sha": "d6e0ab03f21bc0534feb7f5d782f0d07e3503d4b",
+   "at": "2026-11-11T05:40:25Z",
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "accounts/": 1
+   },
+   "files": [
+    "accounts/ledger/weatherwatch.jsonl"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 570,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.570",
+    "run": 570,
+    "at": "2026-11-11T05:40:58Z",
+    "with_its_own_run": true,
+    "lag_s": 33
+   }
+  },
+  {
+   "sha": "b60a820960dc7ff01dcbf0c68f4fc767cb29f7ca",
+   "at": "2026-11-11T05:40:35Z",
+   "agent": "incident.social@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "correction: the word match missed posts counting occurrences (Lusa 04:02 and 04:42 today, four earlier); matcher widened, 7 posts added, two offered; the page says so",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 11,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "research/": 7,
+    "tools/": 2
+   },
+   "files": [
+    "accounts/ledger/social.jsonl",
+    "agents/social/status.json",
+    "research/social/index.md",
+    "research/social/offers.json",
+    "research/social/posts.json",
+    "research/social/posts/2026-11-08.json",
+    "research/social/posts/2026-11-09.json",
+    "research/social/posts/2026-11-10.json",
+    "research/social/posts/2026-11-11.json",
+    "tools/social-page.mjs",
+    "tools/social-read.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 571,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.571",
+    "run": 571,
+    "at": "2026-11-11T05:41:26Z",
+    "with_its_own_run": true,
+    "lag_s": 51
+   }
+  },
+  {
+   "sha": "22d54521d41003dad65311cddde89bf40274b885",
+   "at": "2026-11-11T05:41:01Z",
+   "agent": "incident.conductor@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "timeline row s-1111T0541, Madeira 99 occurrences and power restored (Lusa, evidence)",
+   "issue": "WS-214",
+   "to": [
+    "incident.social@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "incidents/": 2
+   },
+   "files": [
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "incidents/2026-11-10-storm-charles/timeline.md"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 572,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.573",
+    "run": 573,
+    "at": "2026-11-11T05:41:54Z",
+    "with_its_own_run": false,
+    "lag_s": 53
+   }
+  },
+  {
+   "sha": "8ca902eb09866e57e5a4a98486fa93016785d8db",
+   "at": "2026-11-11T05:41:14Z",
+   "agent": "incident.accountant@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the second accountant session has started: a new session key, the first session's marked handed over; the measure page's example commit gives the trailers in one paragraph",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.librarian@web-summit.dinis"
+   ],
+   "n_files": 12,
+   "folders": {
+    "accounts/": 8,
+    "agents/": 2,
+    "data/": 1,
+    "tools/": 1
+   },
+   "files": [
+    "accounts/agents.json",
+    "accounts/books.json",
+    "accounts/index.md",
+    "accounts/ledger/accountant.jsonl",
+    "accounts/machine.json",
+    "accounts/measure.md",
+    "accounts/models.json",
+    "accounts/outputs.json",
+    "agents/accountant/handover.md",
+    "agents/accountant/status.json",
+    "data/keys.json",
+    "tools/accounts-measure.mjs"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 573,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.573",
+    "run": 573,
+    "at": "2026-11-11T05:41:54Z",
+    "with_its_own_run": true,
+    "lag_s": 40
+   }
+  },
+  {
+   "sha": "c7a70556bef57845715dd942adeca1c2a3b2d6da",
+   "at": "2026-11-11T05:42:49Z",
+   "agent": "incident.social@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "HANDOVER.md for the next session; two offers taken into the timeline (s-1111T0437, s-1111T0541) marked and tied",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 11,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2,
+    "research/": 8
+   },
+   "files": [
+    "accounts/ledger/social.jsonl",
+    "agents/social/HANDOVER.md",
+    "agents/social/status.json",
+    "research/social/index.md",
+    "research/social/links.json",
+    "research/social/offers.json",
+    "research/social/posts.json",
+    "research/social/posts/2026-11-08.json",
+    "research/social/posts/2026-11-09.json",
+    "research/social/posts/2026-11-10.json",
+    "research/social/posts/2026-11-11.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 574,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.574",
+    "run": 574,
+    "at": "2026-11-11T05:43:26Z",
+    "with_its_own_run": true,
+    "lag_s": 37
+   }
+  },
+  {
+   "sha": "4adb9f40dbcc51cdb9862dbc1050cb2769788067",
+   "at": "2026-11-11T05:43:02Z",
+   "agent": "incident.stories@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "HANDOVER.md for its next session (what it owns, the tools, the wake's steps, in flight, owed, the routine's id)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 3,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2
+   },
+   "files": [
+    "accounts/ledger/stories.jsonl",
+    "agents/stories/HANDOVER.md",
+    "agents/stories/status.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 575,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.579",
+    "run": 579,
+    "at": "2026-11-11T05:43:52Z",
+    "with_its_own_run": false,
+    "lag_s": 50
+   }
+  },
+  {
+   "sha": "cf7a755e25e55cd0c682aed1e234dab9d3ade641",
+   "at": "2026-11-11T05:43:06Z",
+   "agent": "incident.board@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "HANDOVER.md for a fresh board session (what is owned, the tools, the hourly round, for-dinis's order and why, what is in flight); tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 11,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2,
+    "board/": 8
+   },
+   "files": [
+    "accounts/ledger/board.jsonl",
+    "agents/board/HANDOVER.md",
+    "agents/board/status.json",
+    "board/items/a-accountant-3.json",
+    "board/items/a-designer-5.json",
+    "board/items/j-accountant-10.json",
+    "board/items/j-accountant-11.json",
+    "board/items/j-accountant-5.json",
+    "board/items/j-accountant-8.json",
+    "board/items/j-accountant-9.json",
+    "board/items/j-social-6.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 576,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.579",
+    "run": 579,
+    "at": "2026-11-11T05:43:52Z",
+    "with_its_own_run": false,
+    "lag_s": 46
+   }
+  },
+  {
+   "sha": "599545729094b2e1cee936888ff2b531b5ec7d54",
+   "at": "2026-11-11T05:43:09Z",
+   "agent": "incident.identity@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "HANDOVER.md for the next session (what the role owns, tools, keys and signatures, what waits on Dinis, the routine); status",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 3,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2
+   },
+   "files": [
+    "accounts/ledger/identity.jsonl",
+    "agents/identity/HANDOVER.md",
+    "agents/identity/status.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 577,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.579",
+    "run": 579,
+    "at": "2026-11-11T05:43:52Z",
+    "with_its_own_run": false,
+    "lag_s": 43
+   }
+  },
+  {
+   "sha": "edb66ffe5ee8ce6c07a820cc81c0c1a1ba37aea0",
+   "at": "2026-11-11T05:43:15Z",
+   "agent": "incident.ci@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "agents/ci/HANDOVER.md: everything a fresh incident.ci@ session needs (the wake, the state, the patches, what waits on Dinis)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 3,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2
+   },
+   "files": [
+    "accounts/ledger/ci.jsonl",
+    "agents/ci/HANDOVER.md",
+    "agents/ci/status.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 578,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.579",
+    "run": 579,
+    "at": "2026-11-11T05:43:52Z",
+    "with_its_own_run": false,
+    "lag_s": 37
+   }
+  },
+  {
+   "sha": "a43ca0892ce7987f3691b13d358592ee4d71f970",
+   "at": "2026-11-11T05:43:20Z",
+   "agent": "incident.ipma@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "HANDOVER.md for a fresh session (what is owned, how each data set is read and when, the vault without its key, what waits on Dinis, the routine)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "agents/": 1
+   },
+   "files": [
+    "agents/ipma/HANDOVER.md"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 579,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.579",
+    "run": 579,
+    "at": "2026-11-11T05:43:52Z",
+    "with_its_own_run": true,
+    "lag_s": 32
+   }
+  },
+  {
+   "sha": "4561b70e03336f6b0e26fd7ec47fa53688c93431",
+   "at": "2026-11-11T05:44:30Z",
+   "agent": "incident.social@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session takes over: session key (public half), first session's entry handed over; 05:45 read by eye: the organisers still silent",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 4,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2,
+    "data/": 1
+   },
+   "files": [
+    "accounts/ledger/social.jsonl",
+    "agents/social/HANDOVER.md",
+    "agents/social/status.json",
+    "data/keys.json"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 580,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.580",
+    "run": 580,
+    "at": "2026-11-11T05:45:07Z",
+    "with_its_own_run": true,
+    "lag_s": 37
+   }
+  },
+  {
+   "sha": "07644dc0587233a42d8d15fdacc0a95a7d53801d",
+   "at": "2026-11-11T05:45:10Z",
+   "agent": "incident.ipma@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session takes over: session key (public half), first session's entry handed over; status",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "agents/": 1,
+    "data/": 1
+   },
+   "files": [
+    "agents/ipma/status.json",
+    "data/keys.json"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 581,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.581",
+    "run": 581,
+    "at": "2026-11-11T05:45:46Z",
+    "with_its_own_run": true,
+    "lag_s": 36
+   }
+  },
+  {
+   "sha": "f6a2f28e7746c14a3019c235f104ab5a81566c51",
+   "at": "2026-11-11T05:45:19Z",
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "05:39 read: nothing changed on Wikipedia since 03:44; the wake's tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 18,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "research/": 16
+   },
+   "files": [
+    "accounts/ledger/wikipedia.jsonl",
+    "agents/wikipedia/status.json",
+    "research/wikipedia/against.json",
+    "research/wikipedia/against.md",
+    "research/wikipedia/articles.json",
+    "research/wikipedia/changes.md",
+    "research/wikipedia/claims.json",
+    "research/wikipedia/claims.md",
+    "research/wikipedia/compare.json",
+    "research/wikipedia/compare.md",
+    "research/wikipedia/reads.json",
+    "research/wikipedia/revisions.json",
+    "research/wikipedia/revisions/en-83624065.json",
+    "research/wikipedia/revisions/en-84754693.json",
+    "research/wikipedia/revisions/fr-17598851.json",
+    "research/wikipedia/revisions/pt-8009101.json",
+    "research/wikipedia/revisions/pt-8011202.json",
+    "research/wikipedia/revisions/zh-9562628.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 582,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.583",
+    "run": 583,
+    "at": "2026-11-11T05:46:17Z",
+    "with_its_own_run": false,
+    "lag_s": 58
+   }
+  },
+  {
+   "sha": "5588b88299c2921e3c7fd8488df5d8c951ae3a93",
+   "at": "2026-11-11T05:45:27Z",
+   "agent": "incident.ipma@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "ledger line for the second session's start",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "accounts/": 1
+   },
+   "files": [
+    "accounts/ledger/ipma.jsonl"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 583,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.583",
+    "run": 583,
+    "at": "2026-11-11T05:46:17Z",
+    "with_its_own_run": true,
+    "lag_s": 50
+   }
+  },
+  {
+   "sha": "195021d63526f000a044bb935ee8159f98c3296c",
+   "at": "2026-11-11T05:45:38Z",
+   "agent": "incident.stories@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session takes over: session key (public half), first session's entry handed over; Madeira story m13 gains Lusa's 04:42 count (99 occurrences, row s-1111T0541)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 3,
+   "folders": {
+    "agents/": 1,
+    "data/": 1,
+    "stories/": 1
+   },
+   "files": [
+    "agents/stories/status.json",
+    "data/keys.json",
+    "stories/madeira-warned-against-observed/story.json"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 584,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.587",
+    "run": 587,
+    "at": "2026-11-11T05:46:53Z",
+    "with_its_own_run": false,
+    "lag_s": 75
+   }
+  },
+  {
+   "sha": "f5e0c8df14f32fde1d6a61c62b4932248f692892",
+   "at": "2026-11-11T05:45:53Z",
+   "agent": "incident.board@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session takes the board over: session key (public half), first session's entry handed over, round at 05:45 (nothing moved)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 4,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2,
+    "data/": 1
+   },
+   "files": [
+    "accounts/ledger/board.jsonl",
+    "agents/board/HANDOVER.md",
+    "agents/board/status.json",
+    "data/keys.json"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 585,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.587",
+    "run": 587,
+    "at": "2026-11-11T05:46:53Z",
+    "with_its_own_run": false,
+    "lag_s": 60
+   }
+  },
+  {
+   "sha": "05d2ba9482d039589d7af32378dab3e6e851d863",
+   "at": "2026-11-11T05:46:04Z",
+   "agent": "incident.ipma@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session stands down: first session's key entry active again, incident-ipma-dinis-2 not used, status.json as the first session left it",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "agents/": 1,
+    "data/": 1
+   },
+   "files": [
+    "agents/ipma/status.json",
+    "data/keys.json"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 586,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.587",
+    "run": 587,
+    "at": "2026-11-11T05:46:53Z",
+    "with_its_own_run": false,
+    "lag_s": 49
+   }
+  },
+  {
+   "sha": "5903ecee8329950a4fe9baf83224a926a056c8b0",
+   "at": "2026-11-11T05:46:10Z",
+   "agent": "incident.librarian@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the 05:44 wake: 04:00 to 05:00 closed (67 commits by 21 agents, 64 versions); 05:00 to 06:00 opened; the release history refreshed; the fourth session's hand-over",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 18,
+   "folders": {
+    "agents/": 1,
+    "library/": 12,
+    "news/": 5
+   },
+   "files": [
+    "agents/librarian/status.json",
+    "library/releases.json",
+    "library/releases.md",
+    "library/releases/2026-11-10T21.json",
+    "library/releases/2026-11-10T22.json",
+    "library/releases/2026-11-10T23.json",
+    "library/releases/2026-11-11T00.json",
+    "library/releases/2026-11-11T01.json",
+    "library/releases/2026-11-11T02.json",
+    "library/releases/2026-11-11T03.json",
+    "library/releases/2026-11-11T04.json",
+    "library/releases/2026-11-11T05.json",
+    "library/releases/no-commit-found.json",
+    "news/2026-11-11T04.md",
+    "news/2026-11-11T05.md",
+    "news/README.md",
+    "news/data/2026-11-11T04.json",
+    "news/data/2026-11-11T05.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 587,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.587",
+    "run": 587,
+    "at": "2026-11-11T05:46:53Z",
+    "with_its_own_run": true,
+    "lag_s": 43
+   }
+  },
+  {
+   "sha": "9fbb7bfda8e4b90ddde71a2208de287109666687",
+   "at": "2026-11-11T05:46:12Z",
+   "agent": "incident.librarian@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "accounts/": 1
+   },
+   "files": [
+    "accounts/ledger/librarian.jsonl"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 588,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.589",
+    "run": 589,
+    "at": "2026-11-11T05:47:25Z",
+    "with_its_own_run": false,
+    "lag_s": 73
+   }
+  },
+  {
+   "sha": "8f8b2e8591fdd29453613b6d02840f043471833d",
+   "at": "2026-11-11T05:46:33Z",
+   "agent": "incident.identity@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "second session takes over: session key (public half), the first session's entry handed over, the three files signed again; tools/lane-keys.mjs checks the whole key list (45 keys, 0 problems)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 5,
+   "folders": {
+    "agents/": 3,
+    "data/": 1,
+    "tools/": 1
+   },
+   "files": [
+    "agents/identity/HANDOVER.md",
+    "agents/identity/signed.json",
+    "agents/identity/status.json",
+    "data/keys.json",
+    "tools/lane-keys.mjs"
+   ],
+   "shared_n": 1,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": null,
+   "served": {
+    "version": "v0.1.589",
+    "run": 589,
+    "at": "2026-11-11T05:47:25Z",
+    "with_its_own_run": false,
+    "lag_s": 52
+   }
+  },
+  {
+   "sha": "c8dcca0fff6291938d2edcdafac9d6d4cbeca243",
+   "at": "2026-11-11T05:46:33Z",
+   "agent": "incident.identity@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "accounts/": 1
+   },
+   "files": [
+    "accounts/ledger/identity.jsonl"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 589,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.589",
+    "run": 589,
+    "at": "2026-11-11T05:47:25Z",
+    "with_its_own_run": true,
+    "lag_s": 52
    }
   }
  ]

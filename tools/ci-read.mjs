@@ -141,7 +141,9 @@ if (!NO_API) try {
                 o.steps = (job.steps || []).filter(s => !/^(Post |Complete job)/.test(s.name)).map(s => ({ step: stepName(s), s: secs(s.started_at, s.completed_at), result: s.conclusion || s.status })).filter(s => s.result !== 'skipped')
                 o.p = 2
                 const first = o.steps.find(s => s.step === 'deploy'), second = o.steps.find(s => s.step === 'deploy (2nd try)')
-                if (first?.result === 'failure' && second) o.deploy_retried = second.result
+                // the first try has continue-on-error, so GitHub's API reports its conclusion as "success" even when it failed:
+                // the second try only runs when the first failed, so its presence (not skipped) is the evidence
+                if (first && second && /^(success|failure)$/.test(second.result)) o.deploy_retried = second.result   // a run still going lists the step as pending
                 const bad = o.steps.filter(s => s.result === 'failure').at(-1); if (bad && r.conclusion === 'failure') o.failed_step = bad.step
                 if (done) {
                     const ann = await api(`/check-runs/${job.id}/annotations`)
@@ -248,7 +250,7 @@ const index = {
         steps, slowest_step: steps.slice().sort((a, b) => b.median_s - a.median_s || b.max_s - a.max_s)[0] || null,
         gate: { budget_s: Number((fs.readFileSync(path.join(ROOT, 'admin/build/validate.mjs'), 'utf8').match(/over its (\d+) s budget/) || [0, 5])[1]), last_20_max_s: gate20.length ? Math.max(...gate20) : null, last_20_median_s: q(gate20.slice().sort((a, b) => a - b), .5), note: 'the step\'s seconds as GitHub timed them (whole seconds, node start included); the gate prints its own milliseconds in the run\'s log' },
         queue: { last_20_max_s: queue20.length ? Math.max(...queue20) : null, last_20_median_s: q(queue20.slice().sort((a, b) => a - b), .5) },
-        deploy_retries: runs.filter(r => r.deploy_retried).map(r => ({ run: r.run, at: r.queued, second_try: r.deploy_retried, result: r.result, push_to_served_s: r.push_to_served_s ?? null, url: r.url })),
+        deploy_retries: runs.map(r => ({ r, second: r.deploy_retried || r.steps?.find(s => s.step === 'deploy (2nd try)')?.result })).filter(x => /^(success|failure)$/.test(x.second || '')).map(({ r, second }) => ({ run: r.run, at: r.queued, second_try: second, first_try_error: r.reason ? r.reason.split(' | ')[0].slice(0, 120) : null, result: r.result, push_to_served_s: r.push_to_served_s ?? null, url: r.url })),
         failures: runs.filter(r => r.result === 'failure').map(r => ({ run: r.run, at: r.queued, agent: short(r.agent), failed_step: r.failed_step || null, reason: r.reason || 'not recorded', url: r.url })),
         last: runs.slice(-12).reverse().map(r => ({ run: r.run, version: r.version, result: r.result, agent: short(r.agent), queued: r.queued, push_to_served_s: r.push_to_served_s ?? null, what: r.what }))
     },
