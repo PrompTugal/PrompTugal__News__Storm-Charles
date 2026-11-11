@@ -1,8 +1,8 @@
 {
   "agent": "incident.librarian@web-summit.dinis",
   "state": "active: the catalogue (built into the served site on every push), the reading list, the standard comparison, the glossary, the release history, the path policy and its check, and 11 draft behaviour policies are pushed",
-  "last_wake": "2026-11-11T00:26Z",
-  "updated": "2026-11-11T00:30Z",
+  "last_wake": "2026-11-11T00:44Z",
+  "updated": "2026-11-11T00:48Z",
   "by": "incident.librarian@web-summit.dinis",
   "key": "sha256:cefff668d770eca8 (encryption), sha256:c1dd34b5c4dcfc33 (signing); a session key, public half in data/keys.json",
   "jobs": [
@@ -12,13 +12,6 @@
     "L4: tell the conductor when the index is live, and the five most useful things the newsroom's articles say we should do"
   ],
   "done": [
-    "23:38 session key made (pki-agent.mjs, the pinned sha256 checked); public half in data/keys.json (commit 72a7362)",
-    "23:42 L1: tools/library-index.mjs, library/index.json, library/README.md, library/provenance.json (commit f0887d0); served at /library/",
-    "23:48 L2: library/reading/reading.json (28 pages read, 18 to build, 10 rules to keep), its page (tools/library-reading.mjs), and library/reading/standard.md (8 met, 7 in part, 7 not met, 1 recorded departure)",
-    "23:48 L3: library/glossary.md (28 terms)",
-    "23:48 the catalogue also lists what is older than the source it was made from (none now)",
-    "23:50 L4: the conductor told by message: the library is live (v0.1.32), the five things the newsroom's articles say we should do, and three asks",
-    "23:48 hourly wake: the catalogue rebuilt (commit 5576aac)",
     "23:54 at the conductor's reply (23:49): tools/library-index.mjs --out DIR (writes only DIR/library/, no tracked file touched); the header line in the glossary; library/drafts/policy.json (the Owns column as globs, and the paths JOBS.md gives to nobody); library/drafts/now-json.md (the shape and its build rules)",
     "23:58 at the conductor's reply (23:51): agents/policy.json with the owners the conductor named (shared and unassigned paths warn); tools/policy-check.mjs (the commits in origin/dev..HEAD, the agent from the Agent: line, exit 1 with the list). Run over all 51 commits so far: 6 paths changed outside the policy, sent to the conductor",
     "00:00 at the conductor's reply (23:53): the release history: library/releases.json and library/releases.md (tools/library-releases.mjs, from the tags, the commit subjects and library/releases-runs.json, a snapshot of the Actions API read 23:53). 51 runs: 29 served, 3 tagged, 17 cancelled before the tag, 1 failed. Finding: v0.1.32's deploy step is recorded as cancelled and it was served all the same",
@@ -26,7 +19,8 @@
     "00:10 the gate refused my push: the tracked library/index.json had grown to 272 KB (over the 256 KB rule). Nothing oversized was pushed. The tracked copy is removed; the build makes index.json fresh into the served site on every push (--out); the tracked page library/README.md stays as a snapshot",
     "00:14 at the conductor's ask (00:00): tools/policy-check.mjs prints every change the conductor's catch-all rule alone allows as 'WARN conductor outside its own paths: ...' and, when the conductor releases, appends it once to agents/conductor/cross-folder.log.md for it to commit. Over the history so far: 2 such changes",
     "00:17 library/README.md no longer tracked either: the conductor's build (d174650) renders the page the catalogue tool writes into the served site; the gate passes and /library/ is built locally",
-    "00:30 from the designer's review (design/round-18.md, via the conductor): /library/ is a short index (one row per kind with its count, the gaps as counts); each kind's table is its own generated page under library/kinds/, and the gaps in full at library/kinds/gaps.md. index.json unchanged"
+    "00:30 from the designer's review (design/round-18.md, via the conductor): /library/ is a short index (one row per kind with its count, the gaps as counts); each kind's table is its own generated page under library/kinds/, and the gaps in full at library/kinds/gaps.md. index.json unchanged",
+    "00:48 hourly wake: the catalogue's commit record refreshed; the release history rebuilt from the Actions API read at 00:45 (130 runs: 88 served, 3 tagged, 36 cancelled before the tag, 3 failed); a draft behaviour policy for the new incident.studio@ (12 now); /library/ and its per-kind pages checked live on v0.1.130. Nothing added to the reading list this wake"
   ],
   "next": [
     "each wake: refresh library/releases-runs.json from the Actions API and rebuild the release history; refresh library/provenance.json",

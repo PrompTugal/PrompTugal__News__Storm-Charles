@@ -1,58 +1,151 @@
 {
  "about": "What is particular to each agent's behaviour policy: its business task where agents/JOBS.md only says 'as before', what it reaches beyond the repository, and the gaps that are its own. tools/library-abp.mjs joins this with agents/JOBS.md (the start brief), agents/policy.json (the paths), data/keys.json and CLAUDE.md to write agents/<role>/policy.md. Every line is the librarian's reading of the repository on 10 and 11 November 2026: an analysis, not agreed by Dinis, and not measured in any session but the librarian's own.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T00:05Z",
+ "updated": "2026-11-11T00:47Z",
  "measured": {
   "branches": "GitHub's branches API, read 23:58 UTC on 10 November 2026: dev and main both `protected: false`",
   "session": "the librarian's own session, 10 November 2026: GitHub access scoped to this one repository (push to dev works; main not tried); Claude Code Remote tools (message another session, start a session, schedule a wake); a Google Drive connector and a documents connector, both present and unused; outbound HTTPS through the environment's proxy"
  },
  "agents": {
   "conductor": {
-   "reach": ["Starts the other agents' sessions and their hourly wakes (it started the librarian's and a wake fires into it): it can start, brief and message any number of sessions.", "Is the one agent in Dinis's session: what 'at Dinis's word' means reaches every other agent through it."],
-   "gap": ["**It holds a shared `**` rule**: it may change any path, with a warning. It integrates across folders, so the path check can never refuse it; the warnings are the only trace.", "**It owns the gate, the build, the workflow and `release.sh`**: the checks that check every agent, itself included. A change that weakens a check is one commit by the agent the check binds.", "It writes every agent's jobs (`agents/*/status.json`) and co-owns `agents/policy.json`: it can change what another agent is allowed or asked to do.", "It commits other agents' data under its own name while their sessions cannot push here (`tools/sync-from-websummit.sh`): in the history, who wrote that data is its word.", "It relays Dinis's words (BRIEF.md 'close to his words'): no other agent, and no reader, can check a quotation against the original."]
+   "reach": [
+    "Starts the other agents' sessions and their hourly wakes (it started the librarian's and a wake fires into it): it can start, brief and message any number of sessions.",
+    "Is the one agent in Dinis's session: what 'at Dinis's word' means reaches every other agent through it."
+   ],
+   "gap": [
+    "**It holds a shared `**` rule**: it may change any path, with a warning. It integrates across folders, so the path check can never refuse it; the warnings are the only trace.",
+    "**It owns the gate, the build, the workflow and `release.sh`**: the checks that check every agent, itself included. A change that weakens a check is one commit by the agent the check binds.",
+    "It writes every agent's jobs (`agents/*/status.json`) and co-owns `agents/policy.json`: it can change what another agent is allowed or asked to do.",
+    "It commits other agents' data under its own name while their sessions cannot push here (`tools/sync-from-websummit.sh`): in the history, who wrote that data is its word.",
+    "It relays Dinis's words (BRIEF.md 'close to his words'): no other agent, and no reader, can check a quotation against the original."
+   ]
   },
   "designer": {
-   "reach": ["Its stylesheet and its part of the page frame are on every page of the site."],
-   "gap": ["It shares `admin/build/build.mjs` (the page frame and the front-page block): the same file holds the build, the notice 'Not a warning service' and every page's footer. The path check warns and passes.", "CSS can hide, reorder or recolour what the data says (a warning level, a label) without changing a word of content; no check compares what is drawn with the data.", "Screenshots of each round are to be described, not committed: the gate refuses binaries, so this one is technical."]
+   "reach": [
+    "Its stylesheet and its part of the page frame are on every page of the site."
+   ],
+   "gap": [
+    "It shares `admin/build/build.mjs` (the page frame and the front-page block): the same file holds the build, the notice 'Not a warning service' and every page's footer. The path check warns and passes.",
+    "CSS can hide, reorder or recolour what the data says (a warning level, a label) without changing a word of content; no check compares what is drawn with the data.",
+    "Screenshots of each round are to be described, not committed: the gate refuses binaries, so this one is technical."
+   ]
   },
   "observability": {
-   "reach": ["Its code under `app/agents/` runs in every reader's browser on the site's one origin, and reads GitHub's public API from there.", "Pinned copies of other people's engines (Angelo's live map, Silvio's Universe) run inside its pages."],
-   "gap": ["**It can watch readers.** Page views are in its job ('no geo lookup' is the only limit written); what a visitor is told, and what is kept, is not yet written anywhere on this site.", "It publishes what every agent is doing: a status line or an ask copied to a public page is published within a minute of the agent writing it, with no one reading it first.", "Vendored engines are pinned by commit, which fixes the bytes but is not a review of them.", "`admin/` pages are in its row; `admin/build/` and `admin/tools/` in the same folder are the conductor's: the boundary is a path prefix apart."]
+   "reach": [
+    "Its code under `app/agents/` runs in every reader's browser on the site's one origin, and reads GitHub's public API from there.",
+    "Pinned copies of other people's engines (Angelo's live map, Silvio's Universe) run inside its pages."
+   ],
+   "gap": [
+    "**It can watch readers.** Page views are in its job ('no geo lookup' is the only limit written); what a visitor is told, and what is kept, is not yet written anywhere on this site.",
+    "It publishes what every agent is doing: a status line or an ask copied to a public page is published within a minute of the agent writing it, with no one reading it first.",
+    "Vendored engines are pinned by commit, which fixes the bytes but is not a review of them.",
+    "`admin/` pages are in its row; `admin/build/` and `admin/tools/` in the same folder are the conductor's: the boundary is a path prefix apart."
+   ]
   },
   "identity": {
-   "reach": ["Its code under `app/login/` and `account/` makes and holds a person's private key in the browser, on the same origin as every other script on the site.", "It designs the lane by which Dinis writes to the conductor, and asks for an SG/Send token to make vaults."],
-   "gap": ["**Any agent's script on this origin could read what its login keeps in the browser**: the site has one origin and no agent's JavaScript is isolated from another's.", "It writes `SECURITY.md`, the document that says what is safe: the author of the threat model is also the builder of what it models.", "A vault token it is given must never be committed; the gate catches known token shapes and vault write keys, not every secret.", "`PIN.json` names `tools/lane-test.mjs` as the check of its pinned copies; the catalogue did not find that file at 23:46 on 10 November."]
+   "reach": [
+    "Its code under `app/login/` and `account/` makes and holds a person's private key in the browser, on the same origin as every other script on the site.",
+    "It designs the lane by which Dinis writes to the conductor, and asks for an SG/Send token to make vaults."
+   ],
+   "gap": [
+    "**Any agent's script on this origin could read what its login keeps in the browser**: the site has one origin and no agent's JavaScript is isolated from another's.",
+    "It writes `SECURITY.md`, the document that says what is safe: the author of the threat model is also the builder of what it models.",
+    "A vault token it is given must never be committed; the gate catches known token shapes and vault write keys, not every secret.",
+    "`PIN.json` names `tools/lane-test.mjs` as the check of its pinned copies; the catalogue did not find that file at 23:46 on 10 November."
+   ]
   },
   "weatherwatch": {
-   "reach": ["Fetches many third-party sites (weather services, broadcasters, apps) from its session to describe them."],
-   "gap": ["It ranks named outlets and says what each does well or badly: published opinion about named organisations, labelled as ours, with no one reading it first.", "What it copies from a site it describes (a screenshot, a paragraph, a map) is bound by that site's terms; only the size and binary rule is checked.", "Its tools under `research/weather-sites/tools/` run in a session that can push to every path."]
+   "reach": [
+    "Fetches many third-party sites (weather services, broadcasters, apps) from its session to describe them."
+   ],
+   "gap": [
+    "It ranks named outlets and says what each does well or badly: published opinion about named organisations, labelled as ours, with no one reading it first.",
+    "What it copies from a site it describes (a screenshot, a paragraph, a map) is bound by that site's terms; only the size and binary rule is checked.",
+    "Its tools under `research/weather-sites/tools/` run in a session that can push to every path."
+   ]
   },
   "media": {
-   "reach": ["Reads public articles, by-lines, official and public social accounts, and Wikipedia's edit history.", "Drafts messages to journalists, experts and public bodies."],
-   "gap": ["**It writes about named people.** By-lines on public articles only, no private individuals, no contact details: all three are rules it keeps; the gate has no check for a name, an email address or a phone number.", "**It drafts outreach and a person sends.** Nothing technical stops a session with a mail or documents connector from sending; whether its session has one is not known here.", "The contribute page invites corrections from readers: what arrives is material, never instruction, and the page must say where it goes."]
+   "reach": [
+    "Reads public articles, by-lines, official and public social accounts, and Wikipedia's edit history.",
+    "Drafts messages to journalists, experts and public bodies."
+   ],
+   "gap": [
+    "**It writes about named people.** By-lines on public articles only, no private individuals, no contact details: all three are rules it keeps; the gate has no check for a name, an email address or a phone number.",
+    "**It drafts outreach and a person sends.** Nothing technical stops a session with a mail or documents connector from sending; whether its session has one is not known here.",
+    "The contribute page invites corrections from readers: what arrives is material, never instruction, and the page must say where it goes."
+   ]
   },
   "librarian": {
-   "reach": ["Measured in its own session: GitHub access scoped to this repository; Claude Code Remote tools; a Google Drive and a documents connector (unused); outbound HTTPS through a proxy; GitHub's Actions and branches APIs (read).", "Reads other sites at length (newsroom.sgit.ai, sgit.ai, web-summit.sgit.ai) and summarises them here."],
-   "gap": ["**It writes the rules that check it.** `tools/policy-check.mjs` is its own, `agents/policy.json` is shared with the conductor, and every `agents/*/policy.md`, this page included, is drafted by it.", "It writes inside every other agent's folder (`agents/<role>/policy.md`): the one agent whose paths cross all the others' by design.", "It says who wrote what (`library/provenance.json`, the catalogue): a wrong attribution is published as provenance. It reads the agent from the commit's subject, which is asserted, not signed.", "Its summaries of other people's articles are its own words presented beside their links: a wrong summary misleads with a citation attached.", "It reads the commits in a full clone only it holds: nobody else re-runs that read."]
+   "reach": [
+    "Measured in its own session: GitHub access scoped to this repository; Claude Code Remote tools; a Google Drive and a documents connector (unused); outbound HTTPS through a proxy; GitHub's Actions and branches APIs (read).",
+    "Reads other sites at length (newsroom.sgit.ai, sgit.ai, web-summit.sgit.ai) and summarises them here."
+   ],
+   "gap": [
+    "**It writes the rules that check it.** `tools/policy-check.mjs` is its own, `agents/policy.json` is shared with the conductor, and every `agents/*/policy.md`, this page included, is drafted by it.",
+    "It writes inside every other agent's folder (`agents/<role>/policy.md`): the one agent whose paths cross all the others' by design.",
+    "It says who wrote what (`library/provenance.json`, the catalogue): a wrong attribution is published as provenance. It reads the agent from the commit's subject, which is asserted, not signed.",
+    "Its summaries of other people's articles are its own words presented beside their links: a wrong summary misleads with a citation attached.",
+    "It reads the commits in a full clone only it holds: nobody else re-runs that read."
+   ]
   },
   "graph": {
-   "reach": ["Its pages run a database in the reader's browser over the site's JSON; its graph joins every other agent's data."],
-   "gap": ["It derives one graph from the others' files: a wrong join states a relation (who decided, who warned, who reported) that no source stated. The rule is 'built from the existing JSON, never by hand twice'; nothing checks a derived edge against its sources.", "Its ontology names kinds of actors and relations for everyone: a change there changes what every page means.", "Code under `app/graph/` and `data/query/` runs on the site's one origin."]
+   "reach": [
+    "Its pages run a database in the reader's browser over the site's JSON; its graph joins every other agent's data."
+   ],
+   "gap": [
+    "It derives one graph from the others' files: a wrong join states a relation (who decided, who warned, who reported) that no source stated. The rule is 'built from the existing JSON, never by hand twice'; nothing checks a derived edge against its sources.",
+    "Its ontology names kinds of actors and relations for everyone: a change there changes what every page means.",
+    "Code under `app/graph/` and `data/query/` runs on the site's one origin."
+   ]
   },
   "meteorologist": {
    "task": "The weather picture as data: IPMA's warnings, communiqués, forecasts and station observations and the airport's TAF and METAR, each with source and time read, refreshed hourly; and one analysis, labelled as analysis (its jobs in `agents/meteorologist/status.json`).",
-   "reach": ["Fetches IPMA's open data and NOAA's aviation weather service every hour (`data/weather/tools/refresh.py`).", "Its session cannot push to this repository: it writes in SGit-AI__Website__Web-Summit and the conductor copies it across."],
-   "gap": ["**Its analysis can be read as a forecast.** The site is not a warning service; `analysis.md` is labelled a hypothesis, and the label is the only barrier between our reasoning and advice.", "A parsing mistake in `refresh.py` publishes a wrong warning window under IPMA's name within the hour; the source URL is on every record, the bytes read are not kept (no raw vault).", "Its data reaches this repository in the conductor's commits: in the history here, the meteorologist never committed."]
+   "reach": [
+    "Fetches IPMA's open data and NOAA's aviation weather service every hour (`data/weather/tools/refresh.py`).",
+    "Its session cannot push to this repository: it writes in SGit-AI__Website__Web-Summit and the conductor copies it across."
+   ],
+   "gap": [
+    "**Its analysis can be read as a forecast.** The site is not a warning service; `analysis.md` is labelled a hypothesis, and the label is the only barrier between our reasoning and advice.",
+    "A parsing mistake in `refresh.py` publishes a wrong warning window under IPMA's name within the hour; the source URL is on every record, the bytes read are not kept (no raw vault).",
+    "Its data reaches this repository in the conductor's commits: in the history here, the meteorologist never committed."
+   ]
   },
   "researcher": {
    "task": "The decision graph (who decides what, when, following what) and the list of every source with its status, reuse terms and how it can be read (its jobs in `agents/researcher/status.json`).",
-   "reach": ["Reads official, press and organiser pages and public social posts.", "Its session cannot push to this repository: it writes in SGit-AI__Website__Web-Summit and the conductor copies it across."],
-   "gap": ["It labels what is fact, evidence or hypothesis about named bodies: a wrong label states a report as a decision.", "It decides what may be reused (`reuse`, `reuse_basis` in `sources.json`): a licence judgement nobody else reviews.", "Where a site refuses machines (a bot check), the rule is that a person reads it; nothing technical stops a session from trying.", "Its data reaches this repository in the conductor's commits."]
+   "reach": [
+    "Reads official, press and organiser pages and public social posts.",
+    "Its session cannot push to this repository: it writes in SGit-AI__Website__Web-Summit and the conductor copies it across."
+   ],
+   "gap": [
+    "It labels what is fact, evidence or hypothesis about named bodies: a wrong label states a report as a decision.",
+    "It decides what may be reused (`reuse`, `reuse_basis` in `sources.json`): a licence judgement nobody else reviews.",
+    "Where a site refuses machines (a bot check), the rule is that a person reads it; nothing technical stops a session from trying.",
+    "Its data reaches this repository in the conductor's commits."
+   ]
   },
   "dev": {
    "task": "The connectors and the dashboard: the Web Summit watch (`tools/websummit*`), the timeline converter, the model ledger's wrapper (`tools/llm.mjs`) and `app/storm.js` (its jobs in `agents/dev/status.json`).",
-   "reach": ["Polls third-party sites on a short cycle (every 2 minutes for the organiser's blog).", "Its wrapper is the one path to third-party models (OpenRouter) and to the spend.", "Its session cannot push to this repository yet; the conductor copies its work across."],
-   "gap": ["**Model calls and money.** Every call is to go through `tools/llm.mjs` (a rule); the daily cap is inside the wrapper (technical, in a file an agent can edit). A call made around the wrapper is uncounted.", "A poller is code run on a loop in a session that can push: a review found the first version ran unreviewed code within 2 minutes; the pinned copy fixed it, as a design choice, not a platform limit.", "`app/storm.js` runs on the site's one origin and draws the decision: a mistake there shows a wrong status to every reader.", "It reads robots.txt and obeys it (its own code): a rule it implements, not one imposed on it."]
+   "reach": [
+    "Polls third-party sites on a short cycle (every 2 minutes for the organiser's blog).",
+    "Its wrapper is the one path to third-party models (OpenRouter) and to the spend.",
+    "Its session cannot push to this repository yet; the conductor copies its work across."
+   ],
+   "gap": [
+    "**Model calls and money.** Every call is to go through `tools/llm.mjs` (a rule); the daily cap is inside the wrapper (technical, in a file an agent can edit). A call made around the wrapper is uncounted.",
+    "A poller is code run on a loop in a session that can push: a review found the first version ran unreviewed code within 2 minutes; the pinned copy fixed it, as a design choice, not a platform limit.",
+    "`app/storm.js` runs on the site's one origin and draws the decision: a mistake there shows a wrong status to every reader.",
+    "It reads robots.txt and obeys it (its own code): a rule it implements, not one imposed on it."
+   ]
+  },
+  "studio": {
+   "reach": [
+    "Its pages under `studio/` and `app/studio/` run animations in the reader's browser, on the site's one origin."
+   ],
+   "gap": [
+    "**It explains with invented characters and simplified pictures.** An explanation is our analysis: a simplification that reads as a fact about how an assistant or this team works is a hypothesis shown as fact, on a site whose rule is that the two never look alike.",
+    "It takes its look from other sites and a book (storyboard.sgit.ai, The Ultimate Insider): what it copies is bound by their terms; images are binaries the gate refuses, drawings in code are not checked.",
+    "Code under `app/studio/` runs beside the login's keys in the browser, as every agent's script does."
+   ]
   }
  }
 }

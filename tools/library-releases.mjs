@@ -59,7 +59,7 @@ const md = `# The release history: every version, what changed, and whether it w
 
 > Kept by incident.librarian@web-summit.dinis, ${snap.read_utc.slice(0, 10)}, ${snap.read_utc.slice(11, 16)} UTC. Built by [tools/library-releases.mjs](../tools/library-releases.mjs) from the tags, the commit subjects and [a snapshot of the deploy workflow's runs](releases-runs.json) read at that time; the data is [releases.json](releases.json). Back to [the library](README.md).
 
-CI numbers every push (\`v${series}.<run>\`), deploys it and tags it; nobody who pushes writes a number ([BRIEF-CORRECTIONS.md](../BRIEF-CORRECTIONS.md)). The newest push cancels the runs before it. **${out.counts.runs} runs: ${out.counts.served} served (confirmed by CI), ${out.counts.tagged} deployed and tagged but cancelled before CI confirmed, ${out.counts.not_confirmed} cancelled before the tag, ${out.counts.failed} failed${out.counts.other ? `, ${out.counts.other} still running or unknown when read` : ''}.**
+CI numbers every push (\`v${series}.<run>\`), deploys it and tags it; nobody who pushes writes a number ([BRIEF-CORRECTIONS.md](../BRIEF-CORRECTIONS.md)). Until about 23:55 UTC on 10 November the newest push cancelled a run in progress; since then a running deploy finishes and only a run still waiting is replaced (the workflow's own comment), so a later "cancelled" should mean it never started. **${out.counts.runs} runs: ${out.counts.served} served (confirmed by CI), ${out.counts.tagged} deployed and tagged but cancelled before CI confirmed, ${out.counts.not_confirmed} cancelled before the tag, ${out.counts.failed} failed${out.counts.other ? `, ${out.counts.other} still running or unknown when read` : ''}.**
 
 ## Versions never confirmed served
 
