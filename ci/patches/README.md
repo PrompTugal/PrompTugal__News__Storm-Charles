@@ -1,6 +1,6 @@
 # Patches for the conductor's files
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 13:25 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 14:55 UTC
 
 The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open one was checked with `git apply --check` at commit `f42d48a` (the signing patch rebuilt at 03:16 after `validate.mjs` and the policy changed).
 
@@ -11,6 +11,7 @@ The workflow, the build, the gate and the release script are incident.conductor@
 | [signed-release-record.patch](signed-release-record.patch) | `admin/tools/release.sh`, `admin/build/validate.mjs`, `agents/policy.json` | **waits for Dinis's yes** | each push carries a record signed with the pushing agent's own key; the gate verifies it ([the proposal](../signing.html)) |
 | brief-pdf.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`1a5f32d7`, 12:17 UTC; live from run 1061); the file is removed | the brief's PDFs are rendered in CI from the built page and served at `/brief/brief-latest.pdf` and `/brief/edition-<n>.pdf`, from a cache keyed on the page's inputs |
 | generators-together.patch | `admin/build/build.mjs` | **applied** by the conductor (`f9ff8bc9`, 12:35 UTC; live from run 1109); the file is removed. On the runner, the 20 runs after (1110 to 1138): gate median 5.5 s, max 7; the 17 before (1079 to 1108): median 6 s, max 10. Push to served median 40 s after, 43 s before (read 13:24 UTC, data/ci/runs) | the twelve "before" generators run side by side instead of one after another: the gate is about 1.2 s shorter here, same output |
+| [gate-overlap.patch](gate-overlap.patch) | `admin/build/validate.mjs` | **ready for the conductor** (14:55 UTC, at its ask; `git apply --check` at `9494f555`) | the gate starts the build as a child process and checks the tracked files while it runs (that scan reads only the repository, never `_site/`); the built-site checks `await` the build. A failing build still fails the gate (exit 1, "admin/build/build.mjs exited <code>"). Here, six runs each, interleaved: 4,153 to 5,013 ms today (median about 4,400), 3,601 to 5,057 ms with it (median about 3,860) |
 
 ## Generators in-process: measured, and not recommended
 
@@ -85,3 +86,7 @@ Five of the first 414 runs failed at the deploy step with the same words from Gi
 - **Hypothesis**: the artifact exists but GitHub's artifact listing has not caught up when `deploy-pages` asks. If so, a second try a few seconds later succeeds. This has not been tested: it can only be seen on the runner, the next time it happens.
 - **The patch**: the first `deploy-pages` may fail without stopping the job; then an 8 s wait and a second `deploy-pages`. If the second fails, the job stops there, red, with no tag and no measure, exactly as now. The page address is taken from whichever try succeeded.
 - After it is applied, /ci/ will show whether a retried run served: the first try's failure stays visible in the run's steps.
+
+**Where the gate's time goes at 2,403 pages** (14:50 UTC, here, four cores; three runs of an instrumented copy outside git): the build 3,134 to 3,609 ms (inside it, the "before" generators together 847 to 1,011 ms, bounded by **library-index** at 844 to 1,008; then **entities-link** 568 to 761 ms in order), the tracked-file scan 353 to 527 ms, the Weather face's check 65 to 71 ms, the built-site checks (twins and links over every page) 641 to 738 ms. gate-overlap.patch takes the tracked-file scan off the path. The next cuts are the two owners' (library-index, entities-link) and the link check, which reads every page the build has just written.
+
+**On the runner** (data/ci/runs, medians by hour from 06 to 14 UTC): 5, 5, 5, 5, 6, 6, 6, 6, 5 s; p90 6 to 8 s; no trend toward 7 s yet. A single agent's machine reading 7.76 s (incident.entities@, 14:39) is that machine, not the runner.
