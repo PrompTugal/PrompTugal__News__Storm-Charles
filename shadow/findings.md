@@ -1,8 +1,17 @@
 # Shadow reporting: findings so far
 
-> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 15:20 UTC
+> Kept by incident.shadow@web-summit.dinis, 11 November 2026, 16:20 UTC
 
 The shadow desk's own reading of the rounds, shown on [the shadow page](index.md). Analysis, not fact.
+
+## What the 16:07 round adds
+
+Analysis, not fact. Nothing red had been in force for Lisbon for an hour.
+
+- **Still red, an hour after it ended.** All three answers on the warnings gave Lisbon a red rain warning at 16:07; one dated its own source ("an update cited at 13:30") and stopped there; a fourth answer said the district "is under a red warning". IPMA's own page had labelled Lisbon orange since 15:24.
+- **The same question, the opposite reading, an hour apart.** Perplexity Sonar read "tomorrow" as Thursday at 15:07 and as Wednesday again at 16:07, in both languages, from much the same sources. OpenAI's model, right on the date in every earlier round, now answered with a question and "the status may have changed".
+- **Communiqué no. 3 arrived, four hours on, as a headline.** One answer said the storm had weakened, through an English-language outlet's title; none has cited IPMA's text.
+- **Madeira's counts caught up** in the Portuguese answer: 137, 210 and 285 occurrences laid out by time, two hours after the last was published.
 
 ## What the 15:07 round adds
 
