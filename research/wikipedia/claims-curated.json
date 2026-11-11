@@ -1,11 +1,11 @@
 {
  "about": "Kept by hand by incident.wikipedia@web-summit.dinis: the checkable statements of each Wikipedia page on Storm Charles, in our own English (a paraphrase, never Wikipedia's wording), each with an anchor (a few words of the article, to find the sentence in the revision named) and how it stands against this site. tools/wikipedia-claims.mjs reads this file, finds each sentence in the stored revision, attaches the footnotes it carries, and writes claims.json, compare.json and against.json. rel: 'matches' = a timeline row says the same; 'in-data' = this site holds it in a data file but no timeline row; 'missing' = nowhere on this site; 'behind' = Wikipedia states what a later official change has overtaken, and we hold the change; 'differs' = a figure or time differs. verdict: what this team found when it went to the primary source for the statement ('verified at primary source', 'press only', 'not established at source', or 'not checked by us'), with the row or decision that holds the check. Wikipedia is a lead for us, never the source.",
  "by": "incident.wikipedia@web-summit.dinis",
- "updated": "2026-11-11T10:01:29Z",
+ "updated": "2026-11-11T10:55:06Z",
  "revisions": {
   "pt": {
    "page": "pt-8011202",
-   "oldid": 73421349
+   "oldid": 73421512
   },
   "en": {
    "page": "en-83624065",
@@ -428,16 +428,18 @@
     "140 km/h"
    ],
    "ours": {
-    "rel": "matches",
+    "rel": "behind",
     "signals": [
      "s-1110T0718",
      "s-1110T1423",
-     "s-1110T2354"
+     "s-1110T2354",
+     "s-1111T0738",
+     "s-1111T0824"
     ],
     "decisions": [
      "ipma-red-wind"
     ],
-    "note": "Lisbon's hours agree. Wikipedia says 'in the morning'; we have the minute IPMA sent it, 07:18 UTC, from its CAP message.",
+    "note": "Lisbon's hours agreed when written. Since then IPMA lowered the wind warnings (sent 07:16:30 UTC on 11 November): Lisboa, Setúbal and Beja red to orange, 09:00 to 21:00; Leiria, Santarém, Portalegre and Évora red to yellow. The Portuguese article (revision of 10:17 UTC) still gives eight districts at red and says nothing of the change. Wikipedia says 'in the morning'; we have the minute IPMA sent the red warning, 07:18 UTC on 10 November, from its CAP message.",
     "verdict": "verified at primary source",
     "verdict_note": "Lisbon's red wind from IPMA's CAP message, sent 07:18 UTC (row s-1110T0718). The other seven districts were not checked by us."
    }
@@ -947,6 +949,44 @@
    }
   },
   {
+   "id": "w-pt-44",
+   "lang": "pt",
+   "topic": "canaries",
+   "kind": "decision",
+   "anchor": "activou o nível de alerta máximo por vento na ilha de [[La Palma]]",
+   "statement": "On 10 November the Government of the Canary Islands activated its highest alert level for wind on La Palma and the high ground of Tenerife, from 00:00 on 11 November, with alerts for rough seas and rain and preventive measures against floods and landslides; AEMET issued a red wind warning for La Palma for the morning of 11 November (two footnotes: the Canary Islands government's own notice, and a Spanish online daily).",
+   "figures": [
+    "from 00:00 on 11 Nov",
+    "La Palma",
+    "Tenerife"
+   ],
+   "ours": {
+    "rel": "missing",
+    "note": "Not on this site. The first footnote is the deciding body's own notice, which is rare in this article; neither it nor AEMET's warning was read by us.",
+    "verdict": "not checked by us",
+    "verdict_note": "The Canary Islands' alert was not read at source (noted in decision aemet-special)."
+   }
+  },
+  {
+   "id": "w-pt-45",
+   "lang": "pt",
+   "topic": "canaries",
+   "kind": "number",
+   "anchor": "rajadas de vento até 162 km/h em [[Santa Cruz de La Palma]]",
+   "statement": "A new section, Spain (added at 10:17 UTC on 11 November): on the morning of 11 November the Canary Islands' public television reported gusts up to 162 km/h at Santa Cruz de La Palma and over 130 km/h at Izaña, Tenerife; three roads closed on La Palma; a fault on a power line at 07:12 cut supply to 17,622 customers in three municipalities, restored at 07:34; a ferry operator cancelled several crossings; fallen trees closed roads on Gran Canaria.",
+   "figures": [
+    "162 km/h",
+    "130 km/h",
+    "17,622 customers",
+    "07:12 to 07:34"
+   ],
+   "ours": {
+    "rel": "missing",
+    "note": "Not on this site: the Canary Islands are outside what this timeline follows. One footnote, the islands' public broadcaster; the hours are presumably local time (the article does not say).",
+    "verdict": "not checked by us"
+   }
+  },
+  {
    "id": "w-pt-36",
    "lang": "pt",
    "topic": "bruna",
@@ -1170,14 +1210,15 @@
     "signals": [
      "s-1110T1423",
      "s-1110T1742",
-     "s-1110T2353"
+     "s-1110T2353",
+     "s-1111T0738"
     ],
     "decisions": [
      "ipma-red-rain-0900"
     ],
-    "note": "Lisbon's red rain was moved to 09:00 to 18:00 at 21:23 on 10 November; the English page was last edited at 20:32 and still says 12:00.",
+    "note": "Lisbon's red rain was moved to 09:00 to 18:00 at 21:23 on 10 November; the English page was last edited at 20:32 and still says 12:00. Lisbon's red wind was lowered to orange, 09:00 to 21:00, at 07:16:30 on 11 November; the English page (last edited 02:22) still gives red, 12:00 to 21:00.",
     "verdict": "verified at primary source",
-    "verdict_note": "Lisbon's windows from IPMA's CAP messages; the rain window was overtaken at 21:23."
+    "verdict_note": "Lisbon's windows from IPMA's CAP messages; the rain window was overtaken at 21:23 on 10 November and the wind level at 07:16:30 on 11 November."
    }
   },
   {
@@ -1603,6 +1644,29 @@
    },
    "claims": [
     "w-pt-18",
+    "w-en-11"
+   ]
+  },
+  {
+   "id": "f-wind-orange-0716",
+   "happened": "2026-11-11T07:16:30Z",
+   "fact": "At 07:16:30 UTC on 11 November IPMA lowered Lisbon's wind warning from red to orange and started it three hours earlier: 09:00 to 21:00, gusts up to 120 km/h.",
+   "signals": [
+    "s-1111T0738",
+    "s-1111T0824"
+   ],
+   "label": "fact",
+   "patterns": {
+    "pt": "0?7h16|(reduz|baix|desagrav|desc)[^.]{0,160}aviso[^.]{0,80}vento|aviso[^.]{0,60}vento[^.]{0,160}(reduzid|baixad|rebaixad|passou a laranja)",
+    "en": "07:16|(downgraded|lowered)[^.]{0,100}(to orange|wind warning)",
+    "zh": "07:16|下調[^。]{0,30}風"
+   },
+   "time_patterns": {
+    "pt": "0?7h16",
+    "en": "07:16"
+   },
+   "claims": [
+    "w-pt-17",
     "w-en-11"
    ]
   },
