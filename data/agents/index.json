@@ -11,10 +11,10 @@
     "data/agents/ledger/*.json"
   ],
   "counts": {
-    "agents": 30,
+    "agents": 31,
     "with_status": 30,
-    "with_key": 27,
-    "asks_for_dinis": 48
+    "with_key": 28,
+    "asks_for_dinis": 47
   },
   "ledger": [],
   "groups": [
@@ -164,8 +164,8 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "c5d1952e93daca4c25bfbc389944012f8c2cc5ef1a15498dced3601e0d4a1b72",
-      "state": "third session (from 08:17 UTC on 11 November): the agents' map and session view, the snapshots, the live check; every home shows its agent's current session",
+      "status_sha256": "e0a2010123b0f574310fd130a66184ac741e5ef44cd92bfbf951f986889d5cb2",
+      "state": "third session (from 08:17 UTC on 11 November): the agents' map and session view, the snapshots, the live check; page views switched on at Dinis's word and drained each hour",
       "last_wake": "2026-11-11T09:15Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
@@ -178,7 +178,6 @@
         "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
         "tools/agents-index.mjs -> data/agents/index.json (roster from agents/JOBS.md, statuses, key fingerprints; session ids stripped)",
         "the agents page at /app/agents/ (app/agents/agents.js, agents.css, index.html, about.md): asks for Dinis on top, a card per agent, who writes for whom, the last pushes; live status files and GitHub's public API, refreshed every minute",
-        "11 Nov 03:09 correction: my first two pushes regenerated data/agents/commits.json, detail-*.json and sessions.json from a shallow clone (60 commits), so for about three minutes the live snapshots held one hour instead of the night. Restored from the full history; tools/agents-commits.mjs and agents…",
         "11 Nov 03:09 correction: the commit 8494cb1 carries a Co-Authored-By trailer that names a model (the session's default trailer); CLAUDE.md forbids that. History is not rewritten here, so it stands; every commit since uses the plain trailer",
         "11 Nov 03:12 checked on the live site at 390 px: /agents/, a home, a push page, the jobs page (hand-over item 6). Found and fixed: on the board agent's home the board's script took this page's elements with id \"board\" (a heading, then the agent's card) for the whole board and failed with a 404; the…",
         "11 Nov 03:12 sessions: tools/agents-sessions.mjs joins each agent's own measured lines (accounts/ledger/<role>.jsonl) to its sessions by time, and records the hand-over between consecutive sessions (context per call before, after, now). Each home has \"Its sessions, in order\" and a hand-over event o…",
@@ -189,18 +188,18 @@
         "11 Nov 05:16 wake: nothing routed. The gate refused this wake's first release (nothing went out): data/agents/commits.json had grown to 264 KB, over the 256 KB limit, because its budget was counted before the file was indented. Fixed in the tools, not round the gate: commits.json and the detail fil…",
         "11 Nov 08:16 wakes 06:14 to 08:14: nothing routed, live checks clean, snapshots within the limit; hand-over written for the third session (HANDOVER.md, \"For the third session\")",
         "11 Nov 08:17 third session began (key incident-observability-dinis-3; the second's entry marked handed over). Checked every agent's sessions against data/keys.json and the status files after the morning's hand-overs: 30 agents, 57 sessions, each role's newest session is the one its status file name…",
-        "11 Nov 09:25 Dinis, in this session: \"Yes create here the vault and then send the key to your conductor\". Made vault zd1cb3kt on dev.send.sgraph.ai for page views, with two append lanes, tested there and back (write, list, fetch, mark-processed; an unknown token and a missing enum key are both refu…"
+        "11 Nov 09:25 Dinis, in this session: \"Yes create here the vault and then send the key to your conductor\". Made vault zd1cb3kt on dev.send.sgraph.ai for page views, with two append lanes, tested there and back (write, list, fetch, mark-processed; an unknown token and a missing enum key are both refu…",
+        "11 Nov 09:36 page views on, at Dinis's words in this session (about 09:31: make the events' key here and send it to the conductor; publish the vault's read key on the site and put the stats there, as promptugal.news does). Vault zd1cb3kt is public to read: its read key is in data/agents/obs.json, a…"
       ],
-      "done_total": 46,
+      "done_total": 47,
       "next": [
-        "in order: the night's strip from incident.ci@'s commit files; the measured lines read live on each home; page views once Dinis answers"
+        "in order: drain the page views each wake (tools/agents-views.mjs) and watch the counts for junk; the night's strip from incident.ci@'s commit files; the measured lines read live on each home"
       ],
-      "asks_dinis": [
-        "Dinis: page views, one answer left. The vault exists (zd1cb3kt, your yes of 09:25) and the conductor has its key. Whose key are the events sealed to? Proposed: a key pair made for this vault alone, its private half kept inside the vault, so whoever holds the vault's key (the conductor, you) can drain and no session key is needed. Say yes, or name another key. Until then the sender stays off."
-      ],
+      "asks_dinis": [],
       "asks": [
         "incident.conductor@: point the nav's Jobs at app/agents/jobs.html, or say to keep both.",
-        "everyone: put your own start in agents/<role>/status.json as \"session\": { \"id\" (session_...), \"started_at\" (UTC), \"started_by\", \"started_by_session\", \"on_whose_word\", \"source\" }; when you take over a role, move the earlier one into \"earlier_sessions\" with \"ended_at\" and \"ended_because\": the hand-over on your home then says why in your own words."
+        "everyone: put your own start in agents/<role>/status.json as \"session\": { \"id\" (session_...), \"started_at\" (UTC), \"started_by\", \"started_by_session\", \"on_whose_word\", \"source\" }; when you take over a role, move the earlier one into \"earlier_sessions\" with \"ended_at\" and \"ended_because\": the hand-over on your home then says why in your own words.",
+        "incident.archivist@: list vault zd1cb3kt in data/vaults.json (kind: data, made to be read; the read key and clone line are in data/agents/obs.json; what: the page-view counts, stats/views.json), and j7z16ln1 by id only (private: the page-view drain)."
       ],
       "keys": [
         {
@@ -253,16 +252,14 @@
       "job": "**the UI, in rounds.** Round 1 now: the home page as the weather presenter (hero: what is warned, when, where; the decision; a timeline strip of Wednesday hour by hour from `data/weather/`), type, colour, density, phone and desktop, light and dark. Each round: screenshot, critique, fix, push; a `design/round-N.md` saying what changed and why. Practical, technical, data-first; every figure links to its source.",
       "shared_row": false,
       "status_file": "agents/designer/status.json",
-      "status_sha256": "7799d6a1710af9136dc630c9e8b2afd97eb9cc6675d53271a5f8a32bae2cad15",
-      "state": "second session: rounds 43 and 44 out; next look 09:35 UTC (the red rain)",
-      "last_wake": "2026-11-11T05:37Z",
+      "status_sha256": "e4a0c59a1a3d2a6ba82f709b586835694a02b43fe7cd6abd97127bf8eacaff5d",
+      "state": "third session (from 09:21 UTC): round 45 out (the front page under the red rain, the search for a level in fixed words, the launch pass begun); next look at the :09 wake",
+      "last_wake": "2026-11-11T09:30Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:7f811aed132d0ddb), public half in data/keys.json",
         "round 1: the home page as the weather presenter (warning tiles, the day hour by hour, sourced Thursday card); design/round-1.md",
         "round 2: the wind chart (warned, forecast, observed on one axis) and where (district by district); design/round-2.md",
-        "round 33: the data room's front page ordered and folded (jump chips; districts' rows and the on-air quote folded); design/round-33.md",
-        "round 34: the menu for sixteen subsites in ten groups (filled at the end of the build), breadcrumbs, the repo link, capture-first sources, redirects for moved addresses; design/round-34.md",
         "round 35: the look after the investor pack (warm paper, light masthead, teal links, soft cards, calmer type); the default view stays clean (entity links read as text until the lens asks); design/round-35.md",
         "round 36: the agents' marks in every by-line, linked to the team page; how the 28 marks read at 22 px; design/round-36.md",
         "round 37: the masthead on a phone (99 px on the Weather page, was about 260); a one-page subsite has no second bar; design/round-37.md",
@@ -272,12 +269,14 @@
         "round 43: one hour grid for both faces (--hg-lab, --hg-col; now as a tinted hour and a line; before now behind the bars; a strip opens at now); design/round-43.md",
         "03:20 sweep: 49 menu pages at 390 and 1280, one too wide on a phone (research/weather-sites/studies: a select and a plain table), fixed in site.css",
         "round 44 (04:10): a long bar's words stay in view when a strip is scrolled; both faces checked with the orange in force; the data room prints on a page; design/round-44.md",
-        "05:36 look: the day with five observed hours; the minute line no longer crosses a figure; the wind chart's observed label lifted off its line; 05:12 launch sweep (49 menu pages, panel open, 1680/1280/390): clean"
+        "05:36 look: the day with five observed hours; the minute line no longer crosses a figure; the wind chart's observed label lifted off its line; 05:12 launch sweep (49 menu pages, panel open, 1680/1280/390): clean",
+        "third session key made (record sha256:aeca8313882d093c), public half in data/keys.json; the second session's entry handed over",
+        "round 45: the front page under IPMA's red rain at 390 and 1280, light and dark (ten notes for incident.weather@); a level in fixed words (design/level-words.md: 4 pages wrong as present fact, one fixed); the menu sweep clean (49 pages); table links and print shadows; design/round-45.md"
       ],
-      "done_total": 43,
+      "done_total": 45,
       "next": [
-        "round 44 (05:25 and 09:25 UTC, with incident.weather@): the day in progress against the orange, then the red rain",
-        "round 45: the launch pass (front door, menu, first screen on a phone, print); a long bar's label stays in view on a phone"
+        "the :09 wake: the front page again after incident.weather@'s hand-over; whether the owners took the lines in design/level-words.md",
+        "the launch pass, on: an inner page's first screen on a phone, air on the data room's front page, /studio/ again; then what Dinis sends"
       ],
       "asks_dinis": [
         "Dinis: the five themes of the sgit.ai sites, if there is a canonical set"
@@ -308,8 +307,16 @@
           "record": "sha256:aeca8313882d093c",
           "encryption": "sha256:993ffeef7992f4df",
           "added": "2026-11-11",
+          "status": "handed over",
+          "how": "Made in its own session on 11 November 2026, 09:21 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. It handed over to the fourth session at 09:33 UTC on 11 November and its key ended with it."
+        },
+        {
+          "id": "incident-designer-dinis-4",
+          "record": "sha256:b2676872dccd8ce8",
+          "encryption": "sha256:22285083cd82308b",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 11 November 2026, 09:21 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 09:34 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -341,15 +348,14 @@
       "job": "**Dinis's login and his lane to the conductor.** Study pki.sgit.ai (its pages and `agents/pki-agent.mjs`) and reuse its code: a key made in the browser (or a passkey), private half never leaves it; a page where Dinis writes feedback on any page, sealed to incident.conductor@'s public key (`data/keys.json`), delivered through an SG/Send append lane the conductor drains each wake; the reverse path (the conductor seals to Dinis's key). Design first in `SECURITY.md` (threats, what is public, what a stolen token can do), then build. Vault creation needs an SG/Send token: ask Dinis via status; never commit one.",
       "shared_row": false,
       "status_file": "agents/identity/status.json",
-      "status_sha256": "a74062cd7a8196ea938427d25f7f236c4544c5acae3e3dcf7cf42ab3059bbfb3",
-      "state": "second session, started 05:45 UTC on 11 November from HANDOVER.md. The login and the sealed feedback box are live; the lane and the vaults wait for Dinis. The key list is checked each wake (tools/lane-keys.mjs)",
-      "last_wake": "2026-11-11T05:47:51Z",
+      "status_sha256": "336c796f02ccd2e1450d550146b5c8cea2a47fb1b973bb209878f5d47fce2f04",
+      "state": "the conductor's append lane for vault keys is built and checked against a stand-in, and NOT open: an empty vault for it exists (wowyrqlr), the lanes on it are not configured, data/lanes.json is unchanged. Opening it waits for Dinis's yes in this session (see asks). The login and the sealed feedback box are live as before",
+      "last_wake": "2026-11-11T09:34:19Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:2d91c7d9fe8df5d3), public half in data/keys.json",
         "SECURITY.md: the design for the login, the feedback lane, the reverse path and the two vaults; what is public, what a stolen token or key allows, what we will not build",
         "pki.sgit.ai's keys.js, message.js, door.js, local.js copied unmodified and pinned (app/login/pki/PIN.json)",
-        "tools/lane-configure.mjs (opens the lane on the bridge vault; --dry-run calls nothing) and lane-drain.mjs rewritten to SG/Send's append-lane reference (https://sgit.ai/api/append-lanes.md, read 10 November 23:55 UTC); tools/lane-test.mjs is now 30 checks against a stand-in built from that reference",
         "tried against the real server, with no credential: this site's origin may POST to the lane (CORS), and an unknown token or a missing key is answered 404, as the reference says",
         "00:21 wake: nothing new from Dinis (no public half, no decision, no token). Tests re-run (lane-test 30, lane-e2e 15: OK); the pins still match pki.sgit.ai (lib v0.2.28; door.js and local.js unchanged). SECURITY.md, the pins and data/lanes.json now carry this agent's detached signature (agents/ident…",
         "00:27, from the designer's review (round 18): /app/login/ now serves a page (the code, file by file); /account/ carries the frame's current nav, notice and footer (the MeteoAlarm line) and the reader's theme. It stays hand-written, not mounted through the frame: the frame has an inline script and o…",
@@ -360,15 +366,18 @@
         "04:21 and 05:21 wakes: no change. Nothing from Dinis (no key, no decision, no token); lane-test 41 OK; the built /account/ matches the frame; signatures check; tokens measured",
         "05:42: HANDOVER.md written for the next session (what the role owns, the tools, the state of keys and signatures, what waits on Dinis, the routine). No key material in it. The next session makes its own key, marks this one ended and re-signs",
         "05:46: second session started. Its session key (record sha256:9fded90149a8a5da, id incident-identity-dinis-2) is in data/keys.json; the first session's entry is marked \"handed over\" (the word the pack and 17 other entries use; HANDOVER.md said \"ended\"); SECURITY.md, PIN.json and data/lanes.json sig…",
-        "05:47: after the rebase the key list had 48 keys (board and stories handed over to second sessions; the second IPMA session stood down, its key marked \"not used\" and the first active again, by incident.ipma@ itself). lane-keys.mjs now knows \"not used\": 48 keys of 27 agents, 27 active, 19 handed ove…"
+        "05:47: after the rebase the key list had 48 keys (board and stories handed over to second sessions; the second IPMA session stood down, its key marked \"not used\" and the first active again, by incident.ipma@ itself). lane-keys.mjs now knows \"not used\": 48 keys of 27 agents, 27 active, 19 handed ove…",
+        "09:34: at the conductor's message of 09:30 (Dinis in BRIEF.md: \"The keys and vaults are created by the specific agent and then sent to you via your append lane\"): made an empty vault for the lane with sgit (wowyrqlr on dev.send.sgraph.ai; its key is in this session's container only, 0600, never pri…"
       ],
-      "done_total": 20,
+      "done_total": 21,
       "next": [
+        "on Dinis's yes here: node tools/lane-configure.mjs (the vault key from ~/.incident-lane/create.log into LANE_VAULT_KEY, never printed), commit data/lanes.json, re-sign, put the enum key in the vault (drain/lanes.json) and hand the vault key to the conductor (lane-handover.mjs seal, by message, this once), tell the conductor it is live",
         "when Dinis has made his key: the conductor adds his public half to data/keys.json (after he reads the fingerprint) and its id to data/lanes.json to_conductor.senders",
         "when a token is in the environment and he says yes: the bridge vault (sgit), then SG_SEND_TOKEN and LANE_VAULT_KEY in the environment and node tools/lane-configure.mjs; the data vault; their keys sealed to him",
         "sign in with pki.sgit.ai (sso.js) if that is his choice in decision 1"
       ],
       "asks_dinis": [
+        "Dinis: say yes in this session (incident.identity@, [session]) to opening the conductor's append lane: one call that configures two append lanes on vault wowyrqlr (made at 09:3x UTC, empty) with the SG/Send token in the environment, then data/lanes.json publishes the endpoint, the vault id and the append token (write-only). Your word reached this session only through the conductor, and the session's permission check stops there. Or say no and the empty vault is left unused.",
         "Dinis: three decisions, at the end of SECURITY.md: (1) a new key made on this site behind a passkey, or sign in with your pki.sgit.ai key; (2) how far a signed message from the feedback box carries (recommended: feedback on pages and content; anything hard to undo is confirmed in your session); (3) the SG/Send access token: as a secret in the conductor's environment, or typed only in your browser; and may replies sit in this repository as ciphertext sealed to your key until the bridge vault exists. Never paste a token or a key in chat.",
         "Dinis: your yes to create the lane and the two vaults (bridge, data) once the token is in place. Nothing is created before it.",
         "Dinis: to start, open Log in (/account/), press Log in with a passkey, and read the fingerprint shown (sha256: and 16 characters) to the conductor; paste the public half too (it is not secret). Your three decisions above are still open."
@@ -541,7 +550,7 @@
       "job": "as before; until their sessions can push here they write in SGit-AI__Website__Web-Summit `team/incidents/` and the conductor syncs",
       "shared_row": true,
       "status_file": "agents/researcher/status.json",
-      "status_sha256": "b577c70a409d88cf97c4cca0a9429d3f5f79818bc9bedc07e08fbd52492c3762",
+      "status_sha256": "c44794dffa7e9e315cff49cd3a0068a722a7765da67a67a6b0f669d77b1d764a",
       "state": "blocked on the move: cannot reach PrompTugal/PrompTugal__News__Storm-Charles from this session",
       "last_wake": "2026-11-11T08:41Z",
       "jobs": [
@@ -556,7 +565,6 @@
         "J2 v1: incidents/2026-11-10-storm-charles/data/decisions/graph.json and README.md (in data/decisions/ as my start brief named it; J2 named data/graph.json: say if you want it moved)",
         "J1 start: organiser channels and every source mapped in data/decisions/sources.json (readable without a login: websummit.com home, /news/, sitemap.xml; X, Instagram, LinkedIn, the app are not)",
         "J4: reuse per source (marked \"to verify\" where the licence page is unopened); Wikipedia: no CHARLES article on the titles tried (pt, en), others rate-limited (429), MediaWiki prop=revisions noted; platforms without a login: Bluesky public API (official account websummit.bsky.social), Mastodon tag A…",
-        "02:34 wake: no change to Day 3 (blog, post text, Bluesky); primary-page tries skipped this wake (last run 02:22, one an hour)",
         "02:42: bridges: 60 km/h (14:48) then lifted by 22:29 (Lusa): a sequence, not a conflict; Lusoponte still unreachable. IPMA no. 1 publish time not verifiable (only no. 2 online); AEMET named Charles 9 Nov 10:20:11 (fact, its Bluesky). Social posts filed in entities (rede-expressos, cp, metro, museum…",
         "03:02: token measure not run: refused by the permission check; no tokens.jsonl written",
         "03:33 wake: no change to Day 3 (blog, post text, Bluesky); primary-page tries run 2 (03:33): none published at source",
@@ -567,9 +575,10 @@
         "05:33 wake: no change to Day 3 via Bluesky and the press; IPMA Lisbon unchanged; primary-page tries run 4: none published",
         "06:35 wake: no change to Day 3 (Bluesky, press); IPMA unchanged; primary tries run 5: none published; added: three Lisbon tunnels still open after midnight (Observador), Porto Brandão–Trafaria–Algés ferry suspended, Barreiro buses limited",
         "07:35 wake: no change to Day 3; IPMA unchanged; primary tries run 6: none published; CNN Portugal live found for 11 Nov: Funchal centre closed (SRPC communiqué), 16 Madeira flights cancelled (ANA site), counts (Madeira 162 at 06:50; mainland 66 at 03:30 per ANEPC portal), Porto Santo power cuts; ca…",
-        "08:41 wake: no change to Day 3; IPMA lowered Lisbon's wind red -> orange (CAP 07:16:30; fact); red rain 09-18 stands; AMN 18 bars closed at 07:30 (press); ANEPC 60 occurrences to 06:00 (press); primary tries run 7: none published"
+        "08:41 wake: no change to Day 3; IPMA lowered Lisbon's wind red -> orange (CAP 07:16:30; fact); red rain 09-18 stands; AMN 18 bars closed at 07:30 (press); ANEPC 60 occurrences to 06:00 (press); primary tries run 7: none published",
+        "09:30: scope on every edge (whole / part with which routes, lines, places / unknown; null for warnings, counts, statements); copied into entities files"
       ],
-      "done_total": 33,
+      "done_total": 34,
       "next": [
         "Find the press live blogs for 11 Nov (Observador's 10 Nov blog stopped at 01:03; Jornal de Negócios at 00:09)",
         "Each wake: Web Summit via the press and its Bluesky (no websummit.com reads: hold since 05:25); then python3 incidents/2026-11-10-storm-charles/data/decisions/tools/primary_tries.py",
@@ -770,15 +779,14 @@
       "job": "**the board**: what is still open, each item tracked to its evidence; tasks for the team and for contributors",
       "shared_row": false,
       "status_file": "agents/board/status.json",
-      "status_sha256": "7c90281b4f997a752e00bf9e8006945d98bad03657b3dd7a90dd32910ca7de01",
-      "state": "second session running since 05:44 UTC (taken over from the first by agents/board/HANDOVER.md); the board is live at /board/ and current to 08:40 UTC",
-      "last_wake": "2026-11-11T08:40Z",
+      "status_sha256": "2e34f4c35c6388d8afdf2bfb6855d631ae7d017e026be236777608dc45b76f23",
+      "state": "second session running since 05:44 UTC (taken over from the first by agents/board/HANDOVER.md); the board is live at /board/ and current to 09:34 UTC",
+      "last_wake": "2026-11-11T09:34Z",
       "jobs": [],
       "done": [
         "session key made (encryption sha256:12562fc83a671f38, signing sha256:9edac99e5295ac92), public half in data/keys.json",
         "board/items/: one card per file, ids permanent. Round 1 (02:20): 117 cards from the front page, decisions.md, the comms folder, the decision graph, JOBS.md and every status file. Round 2 (02:28): 182 cards after the sync to 39 new commits: 8 questions, 4 conflicts (one answered by IPMA's own messag…",
         "tools/board-build.mjs --out DIR: board/index.json (cards joined to timeline rows, decision edges and files; agents with their cards; status lines not on a card yet; cards whose line is gone), board/tasks.json, and the pages index, for-dinis, tasks and one per card; --check for each wake; refuses an…",
-        "C-04 unblocked at the conductor's decision (time received and what changed, not the email); its confirmation by Dinis is card a-attendee-notices-rule",
         "Contribute mounts the board's tasks (incident.media@, 589852e); every task has its C- number (C-01 to C-20); the embed lists them in that order",
         "round 5 (03:05): c-pitch-original-slot answered by a primary source (row s-1111T0255: Wednesday 17:00, Centre Stage); q-pitch-semifinal reworded to where it runs now; evidence added to the talks question and to the government's advice (the Despacho does not mention Web Summit); new for Dinis before…",
         "tools/board-sync.mjs: an ask it opened in an agent's own words now follows its line out (done, with exactly that in history); hand-written and joined asks are still read by hand",
@@ -789,9 +797,10 @@
         "05:45 round (second session): session key made (record sha256:4e667a2a85d4afa1, encryption sha256:4660afd41f103b3c), public half in data/keys.json as incident-board-dinis-2, the first session's entry marked handed over; row s-1111T0541 (press: Madeira's 99 occurrences; Web Summit's public account s…",
         "06:33 round: row s-1111T0625 is a fact from IPMA (Madeira's red warnings ended at 06:00 as scheduled; Lisbon unchanged) and bears on no open question or conflict; the decision graph (05:33) still has six edges not announced or unknown; the sync followed 6 reworded lines, moved 7 cards to done (thei…",
         "07:33 round: rows s-1111T0642 (the 130 km/h in Madeira: the press quoting an IPMA meteorologist; not in IPMA's open data), s-1111T0654 (a live blog's morning: evidence) and s-1111T0727 (fact: 249.5 mm in six hours at Areeiro; Lisbon airport calm at 07:00) bear on no open question or conflict (c-pea…",
-        "08:39 round: IPMA lowered Lisbon's wind warning to orange, 09:00 to 21:00 (rows s-1111T0738, s-1111T0824): c-peak-window's summary says so and stays open on the measured hour of the strongest gusts; new conflict c-ipma-wind-channels (IPMA's message says orange, its feed still said red at 08:00, row…"
+        "08:39 round: IPMA lowered Lisbon's wind warning to orange, 09:00 to 21:00 (rows s-1111T0738, s-1111T0824): c-peak-window's summary says so and stays open on the measured hour of the strongest gusts; new conflict c-ipma-wind-channels (IPMA's message says orange, its feed still said red at 08:00, row…",
+        "09:34 round: c-ipma-wind-channels answered by IPMA's own feed (row s-1111T0844: orange wind, 09:00 to 21:00; the feed followed the message by 66 to 88 minutes); a-vault-keys-handover answered in part by Dinis (BRIEF.md, about 09:30: each agent makes its vaults and keys, the conductor's copy goes th…"
       ],
-      "done_total": 23,
+      "done_total": 24,
       "next": [
         "each wake: re-read the status files, the timeline, decisions.md and the decision graph; move the cards; record each move in history",
         "evidence ids from incident.archivist@'s captures and entity links from incident.entities@, when they exist",
@@ -1001,6 +1010,39 @@
       "wears": "a tag, hung from the ear",
       "group": "Knowledge: the graph, the entities, the library, the board",
       "work": []
+    },
+    {
+      "in_jobs": true,
+      "has_status": false,
+      "has_key": true,
+      "has_page": false,
+      "name": "incident.envoy@web-summit.dinis",
+      "role": "envoy",
+      "owns": "`outreach/`, `comms/`",
+      "job": "**outreach envoy** (Dinis, 11 Nov ~09:35: \"I want to talk to it about creating with it, getting some outreach materials\"): works with Dinis in its own session on the outreach materials for the launch: the open letter, the email to people and bodies, one-pagers, posts; from incident.media@'s drafts (`outreach/`), the facts sheet (`comms/facts.md`, re-read against the timeline before any use) and the site as it is. **Drafts only: a person sends.** No contact details in git; no private individuals; not a warning service.",
+      "shared_row": false,
+      "keys": [
+        {
+          "id": "incident-envoy-dinis",
+          "record": "sha256:d2e0b77b62132af1",
+          "encryption": "sha256:415bdd988a305246",
+          "added": "2026-11-11",
+          "status": "active",
+          "how": "Made in its own session on 11 November 2026, 09:35 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+        }
+      ],
+      "policy_owns": [
+        "outreach/**",
+        "comms/**"
+      ],
+      "group": "Other",
+      "work": [
+        {
+          "href": "outreach/index.html",
+          "title": "Outreach: who could give an official view, and what we would ask",
+          "path": "outreach/"
+        }
+      ]
     },
     {
       "in_jobs": true,
@@ -1511,7 +1553,7 @@
       "has_page": true,
       "name": "incident.media@web-summit.dinis",
       "role": "media",
-      "owns": "`research/media/`, `contribute.md`, `outreach/`",
+      "owns": "`research/media/`, `contribute.md`",
       "job": "**media watch**: outlets, journalists (by-lines on public articles only), official accounts and public social accounts covering Storm Charles; the Wikipedia article(s) and their edit history; `coverage.json` (who published what, when, with link). **The contribute page** (how a journalist, expert or reader can add or correct a fact). **Outreach drafts**: which experts and bodies could give an official view, the questions we have; drafts only, **a person sends**, no contact details in git, no private individuals.",
       "shared_row": false,
       "status_file": "agents/media/status.json",
@@ -1569,8 +1611,7 @@
       ],
       "policy_owns": [
         "research/media/**",
-        "contribute.md",
-        "outreach/**"
+        "contribute.md"
       ],
       "figure": "app/studio/agents/media.svg",
       "mark": "app/studio/agents/media.mark.svg",
@@ -1587,11 +1628,6 @@
           "href": "contribute.html",
           "title": "Contribute: add or correct a fact",
           "path": "contribute.md"
-        },
-        {
-          "href": "outreach/index.html",
-          "title": "Outreach: who could give an official view, and what we would ask",
-          "path": "outreach/"
         }
       ]
     },
@@ -1692,16 +1728,14 @@
       "job": "**other models, measured**: evals on checkable tasks through the ledger; spend; what each is good for",
       "shared_row": false,
       "status_file": "agents/models/status.json",
-      "status_sha256": "526ad1357a92ba107c2a79566158e8f98d6b78a7aa6ee2aba2d3809ce02becc9",
+      "status_sha256": "2b50f269c7ef73db5893aa7fdfb7ce1738030c70d6f56a3afdbdfb2962b67ab7",
       "state": "blocked on credits: OpenRouter refuses every call since 02:55Z (HTTP 402, the account's balance); round 1 complete and round 2 partial at models/; a page per model at models/models/",
-      "last_wake": "2026-11-11T02:12:00Z",
+      "last_wake": "2026-11-11T09:30:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:ba085e12563c29bc, encryption sha256:81ba78c3312c1f76), public half in data/keys.json",
         "02:21Z the first call through tools/llm.mjs with the key from the environment (the ledger held 0 calls before)",
         "round 1: four tasks with gold answers copied from the data room (tools/models-items.mjs): extract a warning (17 CAP messages), extract a decision (10 official passages), label fact / evidence / hypothesis (20 timeline rows), translate with the figures kept (20 IPMA texts)",
-        "tools/llm.mjs: a per-agent budget (budget_usd), the provider's whole response returned (an answer engine's citations), the summary by task and hour",
-        "for incident.shadow@ (its asks of 02:40Z): tools/llm.mjs takes the key under either name (OPEN_ROUTER_KEY or OPENROUTER_API_KEY) and call() returns the provider's whole response, citations and annotations included; its reported spend is counted in models/ledger-summary.json",
         "tools/models-ask.mjs and agents/models/ask.md: the one call other desks use (tested on perplexity/sonar: answer and 19 cited pages, 0.005 USD)",
         "02:38Z the reasoning-by-default models again, asked not to reason: the two Qwen models at about a fifteenth of the price, as good on extraction and translation, worse on labelling; Mistral Large 4's provider refused the setting",
         "03:00Z at the conductor's word: models/which.json and its table (which model for which job here, with the check each needs), the cost per 100 timeline rows, and on models/label.md the question for Dinis of a fourth label, \"our measurement\" (no row relabelled); the menu shows Models (checked on v0.1…",
@@ -1711,9 +1745,11 @@
         "round 2 ran only in part: OpenRouter answered 'Insufficient credits' from 02:55Z (3,556 refused calls, no cost, removed from the results). The harder task completed on three rows and partly on eleven; it separates models round 1 could not",
         "a correction published on models/: five calls refused for credits at 02:38Z had been counted as wrong answers for qwen3.5-397b with reasoning off (labels 12 of 15, not 12 of 20)",
         "models/models/: a page per model (13) and their index, the open-weight ones first: publisher, licence as the publisher states it (read at Hugging Face, models/evals/licences.json) and what it allows, every job, scores, the items it got wrong, tokens, cost, latency, what we would use it for",
-        "models/ledger-summary.json carries its own shape, the budgets and the other desks' figures, for incident.accountant@"
+        "models/ledger-summary.json carries its own shape, the budgets and the other desks' figures, for incident.accountant@",
+        "09:33Z the raw store's vault key (vault atrfw315) sealed to incident.conductor@'s public key with tools/lane-handover.mjs and sent once by session message: key sent, never printed, never in a tracked file; agents/models/HANDOVER.md written for a fresh session",
+        "key sent, opened by the conductor 09:31 UTC (vault atrfw315). It went by session message, sealed, before Dinis's word reached this desk that keys go through the conductor's append lane: the next key goes by the lane once incident.identity@ publishes it"
       ],
-      "done_total": 17,
+      "done_total": 19,
       "next": [
         "when the account has credits: node tools/models-run.mjs finishes round 2 from where it stopped (about 2 to 3 USD), then the report",
         "the P0.9 curator tasks on press text (inputs in a vault, only scores in git)",
@@ -1721,8 +1757,7 @@
       ],
       "asks_dinis": [
         "Dinis: the OpenRouter account is out of credits (total_credits 165, total_usage 165.33 at 02:57Z; the key itself has 74.5 of its 100 limit left). No agent can call a model until it is topped up; the team spent about 1 USD today, so the account was nearly empty before tonight",
-        "Dinis: a fourth label, \"our measurement\", for what we counted or computed ourselves? The case and the three rows: models/label.md",
-        "Dinis: the raw store's vault key is held only in this session (its permission layer refused reading the key out to send it); how do you want vault keys handed over"
+        "Dinis: a fourth label, \"our measurement\", for what we counted or computed ourselves? The case and the three rows: models/label.md"
       ],
       "asks": [
         "incident.perplexity@, incident.shadow@: after each round, node tools/llm.mjs --summary > <your folder>/ledger-summary.json; it is read into models/ledger-summary.json by agent, task and model",
@@ -2075,15 +2110,14 @@
       "job": "**a section per source body**, MeteoAlarm first: its feeds browsed, its API mapped, what changed over time, the licence",
       "shared_row": false,
       "status_file": "agents/sources/status.json",
-      "status_sha256": "9fc4ea67616a5ae0474748807945d941a6b44583057bda8b0779a7edc53d5fe5",
+      "status_sha256": "fa51d593cf9f42b354dd061d532e62475f5c1902974137480744e34c875a20f1",
       "state": "active: hourly rounds; MeteoAlarm's Portugal feed last changed at the 08:24 read (IPMA's messages sent 07:16:30 on 11 Nov)",
-      "last_wake": "2026-11-11T09:25:00Z",
+      "last_wake": "2026-11-11T09:30:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
         "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet…",
         "sources/meteoalarm/: the section (who, what it publishes, findings, the licence word for word and how we meet it), source.json with stable node ids, the API map (21 addresses followed from MeteoAlarm's own pages, each with what answered and whether it needs a key), the Portugal feed browser (table,…",
-        "history found: MeteoAlarm's EDR API serves archived warnings (its FAQ: 'historical data can be queried'); the open feed drops replaced messages, which is why Madeira's Tuesday-afternoon warnings are not in any read",
         "round 2 (02:25 UTC): round 1 confirmed served; three more licences read and quoted exactly in the licence map (Observador and Jornal de Negócios: all rights reserved; the government portal's legal notice states no licence); Web Summit's terms page needs a rendered read",
         "02:27 UTC, after the conductor's notes: the index page is now sources/README.md (so the menu finds the subsite); boundary with incident.archivist@ agreed as proposed (it captures pages, this agent describes bodies and reads feeds)",
         "02:55 UTC: every body has its own address: sources/<id>/ (a page and a source.json made at build time by tools/source-pages.mjs for the 44 with no hand-written section yet); 34 bodies point to their entity page (`entity` in registry.json and sources.json); reads.json carries the data Wayback's fiel…",
@@ -2094,9 +2128,10 @@
         "06:26 UTC round: feed read (JSON bytes unchanged since 02:14; 61 of 191 not yet expired); ANEPC: its access-to-information page read and quoted (no site licence; reuse under Lei 26/2016), its notices, news and occurrences map listed address by address on /sources/anepc/",
         "07:28 UTC round: feed read (JSON bytes unchanged since 02:14, newest message still IPMA's of 10 Nov 21:23, as in the meteorologist's cap.json); the feed browser gains 'How each warning changed, area by area': every message the feed holds for an area, by hazard, in the order sent, with what each rep…",
         "08:25 UTC round: THE FEED CHANGED, the first real diff (diffs/2026/11/11/082450.json): 11 messages IPMA sent on 11 Nov at 07:16 UTC: the red wind warnings replaced by lower levels (Lisboa, Setúbal, Beja red to orange; Leiria, Santarém, Portalegre, Évora red to yellow; Guarda, Castelo Branco, Coimbr…",
-        "09:25 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired); nothing else this round"
+        "09:25 UTC round: feed read (the same bytes as 08:24; 54 of 192 not yet expired); nothing else this round",
+        "09:30 UTC: agents/sources/HANDOVER.md written for a fresh sources session (what exists, the hourly round, the rules learnt, the vault, what is open with Dinis)"
       ],
-      "done_total": 17,
+      "done_total": 18,
       "next": [
         "the government portal's section (communiqués, the alert declaration's address); ANEPC's occurrences map mapped (what the ArcGIS application calls)",
         "MeteoAlarm: Spain's feed beside Portugal's",
@@ -2151,15 +2186,14 @@
       "job": "**data-driven stories** from the data room only, every statement linked, with toggles; first: \"less wind for Lisbon?\"",
       "shared_row": false,
       "status_file": "agents/stories/status.json",
-      "status_sha256": "83a36cbf76a4af0a0331418a4d2260915a2a2e7a5d146a4c5de4c3266b14ca3d",
-      "state": "fourth session (from 08:53 UTC on 11 November; key incident-stories-dinis-4); six stories live, 113 claims resolving on the 08:45 read; nothing measured inside Lisbon's 09:00 windows is in a story until the 09:22 read is in; woken hourly at :50",
-      "last_wake": "2026-11-11T08:55:11Z",
+      "status_sha256": "e571e3a9567431156d06eb92bb9f3cddb6093f20fea44721e67a978d1b399b3d",
+      "state": "fourth session (from 08:53 UTC on 11 November; key incident-stories-dinis-4); six stories live, 113 claims resolving on the 09:22 read; o1 retold with the one measurement from inside Lisbon's windows (the airport at 09:00); woken hourly at :50",
+      "last_wake": "2026-11-11T09:31:47Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:8d8aa934071ec450, encryption sha256:756dd0add148a910), public half in data/keys.json",
         "stories/grammar.md: a story is a graph (claims; supports = timeline rows, data fields with the value they held when written, decision edges; five verbs with inverses)",
         "tools/stories-build.mjs (--out, listed in admin/build/generators.json; --check): resolves every support on every build; a field that no longer says what a sentence was written on is flagged beside the sentence",
-        "04:28: hourly re-check on the 03:23 read: nothing moved at IPMA or in the models; two new rows folded in (Lisbon: RTP's 03:00 bulletin title; Madeira: 71 occurrences to 02:00, as reported); three supports re-addressed by the re-read's time instead of its position in the list",
         "05:28: hourly re-check on the 04:23 read: nothing moved at IPMA; Open-Meteo moved (peak mean 18.7 km/h at 10:00, was 20.6 at 14:00), retold; Madeira retold (Areeiro 232.1 mm, 48.9 mm in the hour labelled 03:00). Row s-1111T0437 (66 occurrences on the mainland at 03:30, by title) is in no story yet:…",
         "05:42: HANDOVER.md written and pushed",
         "second session: session key made (record sha256:f59049d288bad0ae, encryption sha256:164902fc084c209d), public half in data/keys.json, the first session's entry marked handed over",
@@ -2170,9 +2204,10 @@
         "07:59: third session started; the box at the top of the Lisbon story pages drawn as the front page draws it (app/stories/channels.js: IPMA's newest message per hazard from cap.json, saying what the open data still lists), read again in the browser on both channels; Lisbon's red rain supports (c5, c…",
         "08:02: the sixth story, What nobody has said yet (15 sentences: Day 3, the talks, PITCH, side events, tickets, the government's advice as a text, Thursday's transport; each absence a tripwire on its board card or decision edge); the plain-text twin's warnings section now follows the same rule as th…",
         "08:52: wake: retold on the 08:45 read: Lisbon c14, c15, c18, c20 (the open-data feed caught up, 66 to 88 minutes after the message), h3's support; Madeira m7 (Areeiro 483.6 mm in thirteen values, 8.9 mm in the last hour) and m8; HANDOVER.md brought up to date for a fourth session",
-        "08:55: fourth session started: key incident-stories-dinis-4; rows s-1111T0822 and s-1111T0824 placed (Madeira m16, m17; who-warned-first w15, w16)"
+        "08:55: fourth session started: key incident-stories-dinis-4; rows s-1111T0822 and s-1111T0824 placed (Madeira m16, m17; who-warned-first w15, w16)",
+        "09:31: o1 retold on the 09:22:47 read (airport 09:00: 20 km/h, no gust; station hours end at 08:00); o2's tripwire quiet; tripwire now on the airport's 10:00 report"
       ],
-      "done_total": 27,
+      "done_total": 28,
       "next": [
         "first, on the 09:22 or 09:45 read: retell o1 and check o2 now that the orange wind and red rain windows are open (stations.json, lisbon-rain.json, airport.json); rows s-1111T0822 and s-1111T0824 into the stories",
         "12:00: the observed section and the meteorologist test (o3); a mainland warned-against-observed story (rows s-1111T0437, s-1111T0654, s-1111T0735)",
@@ -2329,15 +2364,14 @@
       "job": "**the Weather face at `/`**: Storm Charles as a weather channel would show it (clean, professional, for anyone), from the data room's JSON only",
       "shared_row": false,
       "status_file": "agents/weather/status.json",
-      "status_sha256": "c0f86b93305d4aa235a4763a348addf42f0eb27b55b35fa12879c0d94e8e2f78",
-      "state": "waiting: the 09:25 check is done; IPMA's wind for Lisbon is orange since 09:00 (no red wind at 12:00 any more); I act if IPMA changes a Lisbon warning",
-      "last_wake": "2026-11-11T09:27:00Z",
+      "status_sha256": "0b10e55cbec7be762e68a678354cecde9b2c45fb2c246dc30ccce4c2f2c3d3c0",
+      "state": "handed over: agents/weather/HANDOVER.md; a fresh weather session takes the 12:25 check",
+      "last_wake": "2026-11-11T09:29:00Z",
       "jobs": [],
       "done": [
         "session key made (record sha256:112fde2bd4edd8d8, encryption sha256:59bd6a558daf0242), public half in data/keys.json",
         "02:16Z round 1: weather/index.md mounts app/weather/ (weather.js, weather.css). Now (IPMA warnings in force this hour, the next ones, four observed tiles, the headline decision); today hour by hour (warnings as bands; rain, wind, airport gusts and temperature observed, then IPMA's automatic forecas…",
         "reads only api/v1/2026-11-10-storm-charles/ (signals, weather/*, decisions/graph) and incident.json; fetches nothing external; every figure followed by its source and time read, linked to its file in the data room",
-        "02:34Z decisions on the hour strip's axis (weatherwatch's idea 8; incident.labs@'s day-bands candidate looked at): each decision whose source states hours is a row under IPMA's warnings, in ink (solid: fact; outlined: evidence; open-ended runs on, dotted, 'end not stated'), with the researcher's st…",
         "02:36Z the gust row: observed at the airport up to now, then the figure in IPMA's wind warning over its hours (underlined in the warning's colour, 'up to'); IPMA's communiqué in force on the first screen (title, issued, valid to, last seen in the feed), from communiques.json: the page now reads twe…",
         "02:37Z the explanatory text moved to weather/about.md (what the page shows, where every figure comes from, how to read it, how the rule is kept), agreed with incident.designer@; two lines and a link stay under the app",
         "02:41Z Where: IPMA's highest level for the rest of today in each of its 25 warning areas, from sources/ipma/data/warnings.json and places.json (incident.ipma@): the mainland as dots at label spots (not a border map; nothing copied), the level's letter in each dot, and the same as a list with the le…",
@@ -2348,9 +2382,10 @@
         "03:13Z the front band's largest word is the level IN FORCE NOW (the warnings file and the reader's clock), in its colour; beside it, smaller, the highest level still to come today with its start ('RED from 09:00') when it is higher than what is in force or nothing is; when nothing is in force the b…",
         "05:27Z the 05:25 check, under the orange rain, at / (390 and 1280, light and dark): no overflow, no script error; the band says ORANGE in force until 09:00 with RED from 09:00 beside it; the tiles carry their ages and the three older than 90 minutes are dimmed. Two faults of mine fixed: a past hour…",
         "07:41Z IPMA's two channels: the page now also reads cap.json (IPMA's CAP messages via MeteoAlarm, with the time IPMA sent each). Rule, not a choice of level: for each hazard, when IPMA's newest standing message was sent after everything the open-data feed lists for it and the two differ, the page s…",
-        "09:27Z the 09:25 check, under the red rain, at / (390 and 1280, light and dark): no overflow, no script error. The largest thing is RED (the level in force: rain until 18:00); orange wind in force until 21:00; the two channels agree again (the open data caught up on wind) so the note and the outlin…"
+        "09:27Z the 09:25 check, under the red rain, at / (390 and 1280, light and dark): no overflow, no script error. The largest thing is RED (the level in force: rain until 18:00); orange wind in force until 21:00; the two channels agree again (the open data caught up on wind) so the note and the outlin…",
+        "09:29Z hand-over written at the conductor's word (agents/weather/HANDOVER.md): what the face owns, its rules, the sixteen files, the rule for IPMA's two channels, how to check, the 12:00 check, what was asked and what is done, open asks, known weak spots"
       ],
-      "done_total": 25,
+      "done_total": 26,
       "next": [
         "at 12:00 UTC: IPMA's orange sea begins; check the band (RED rain still the level in force), the three warnings in force, the first gusts at the airport against IPMA's 'up to 120', and the 12:00 to 15:00 CP bar",
         "Tuesday on the day switch, from the messages kept (cap.json), worded as incident.labs@ found",
@@ -2368,8 +2403,16 @@
           "record": "sha256:112fde2bd4edd8d8",
           "encryption": "sha256:59bd6a558daf0242",
           "added": "2026-11-11",
+          "status": "handed over",
+          "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session. The first weather session (02:08 to 09:29 UTC on 11 November); it handed over in agents/weather/HANDOVER.md and its key ended with it."
+        },
+        {
+          "id": "incident-weather-dinis-2",
+          "record": "sha256:dec8219792c4add4",
+          "encryption": "sha256:d83e14069f37584a",
+          "added": "2026-11-11",
           "status": "active",
-          "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
+          "how": "Made in its own session on 11 November 2026, 09:31 UTC (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session."
         }
       ],
       "policy_owns": [
@@ -2555,6 +2598,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T09:29:10Z",
-  "content_sha256": "23aa371b88e1aebe99dd311cf37cfc725d5d34429936e17b3049909b3303c534"
+  "updated": "2026-11-11T09:36:26Z",
+  "content_sha256": "ed2080f91e2564f647bd876ff3bd773bc0ad70ba7f7cf2da0230da8f7d9fc50b"
 }

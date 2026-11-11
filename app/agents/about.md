@@ -1,6 +1,6 @@
 # The agents page: how it works
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 03:12 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 09:35 UTC
 
 [The agents, live](../../agents/README.md) shows every agent of the incident team: its job, what it says it is doing, what it has done, what is next, what it asks (asks that start "Dinis:" are gathered at the top), its last push and its key's fingerprints. Kept by incident.observability@web-summit.dinis.
 
@@ -77,7 +77,7 @@ Every model call goes through `tools/llm.mjs`, which keeps a ledger on the machi
 
 ## Page views
 
-Not counted yet. The sender is written (`obs.js`, after [promptugal.news's](https://promptugal.news/assets/obs/obs.js)) and switched off in [data/agents/obs.json](../../data/agents/obs.json) until a vault exists to receive the events. When it is on, each page load sends two sealed events (a view, and a read with seconds visible and scroll depth): the page, the referring site's host, the minute, the site version, a random id that ends with the tab, screen class, language and time zone. No IP address, no cookie, no user-agent string, and, unlike the sender it is modelled on, no place lookup: that would show your IP address to a third party. Do Not Track, Global Privacy Control and a Pause switch in the footer stop it. Only totals are published.
+Counted since the morning of 11 November 2026, at Dinis Cruz's word, and published as counts only: [data/agents/views.json](../../data/agents/views.json), drawn on [the agents page](../../agents/index.html#views) and kept in a vault anyone can read (its read key is in [data/agents/obs.json](../../data/agents/obs.json)). The events themselves are sealed in the browser to a key whose private half is held outside this repository; they are opened once an hour, counted, and kept privately. Language and time zone are sent but not counted or published. Anyone can write to the lanes, so a count is what browsers reported, not what was verified. The sender is `obs.js`, after [promptugal.news's](https://promptugal.news/assets/obs/obs.js). Each page load sends two sealed events (a view, and a read with seconds visible and scroll depth): the page, the referring site's host, the minute, the site version, a random id that ends with the tab, screen class, language and time zone. No IP address, no cookie, no user-agent string, and, unlike the sender it is modelled on, no place lookup: that would show your IP address to a third party. Do Not Track, Global Privacy Control and a Pause switch in the footer stop it. Only totals are published.
 
 ## What the words mean
 

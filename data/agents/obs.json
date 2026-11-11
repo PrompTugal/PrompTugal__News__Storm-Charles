@@ -1,16 +1,22 @@
 {
-  "about": "Where app/agents/obs.js sends page views and reads, when it is switched on. Public on purpose: an append token can only write to its lane, and the key can only encrypt. The vault exists (zd1cb3kt, made 11 November 2026 at Dinis Cruz's word, with two append lanes). Still off until the key the events are sealed to is chosen (asked of Dinis in agents/observability/status.json). No place lookup, ever: this site asks no third party about its visitors.",
+  "about": "Where app/agents/obs.js sends page views and reads. Public on purpose: an append token can only write to its lane, the key can only encrypt, and the read key reads the vault's published counts (stats/views.json), which hold nothing that is not on the site. Switched on 11 November 2026 at Dinis Cruz's word (the vault, the events' key and the public counts: his words of about 09:25 and 09:31 UTC in the observability session). The lanes' enum key and the events' private key are in a second, private vault held by the conductor; neither is in this repository. No place lookup, ever: this site asks no third party about its visitors.",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T09:29:08Z",
-  "enabled": false,
+  "updated": "2026-11-11T09:34:03Z",
+  "enabled": true,
   "endpoint": "https://dev.send.sgraph.ai",
   "vault_id": "zd1cb3kt",
   "lanes": {
-    "site": []
+    "site": [
+      "3c39451347069434fc9a6b62d34b389107f52bd08288ddb939833e2e1783bd84",
+      "2968e4dd7917c0e91874457eabceb7338de2a2fb1586edd890d7ca663b19f7a7"
+    ]
   },
   "recipient": {
-    "fingerprint": "",
-    "encrypt": ""
+    "fingerprint": "sha256:184037d550c878d7",
+    "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAz3H/seDqcm696hA6L8XO\n0YZilV8MbvXzoeApLCwEvYhu+tTZNFNyYi9Awl5T+eO1p38d4IbnZ1GFzIiKNg+I\n1fGpGFcK6jAYhZJ8+WTC8iL+Or+N0eOVCUybxnMtAdWS0O6T2TSQByTanB75AFx9\ngtiN6YaIOEBWm5bOXEx1Iib4u1x3R+YWH3GT8HbmIpitVXbLKRLqVDg+I2jjftab\nI1FRrZDyzPyp9JrEo+tnDxSXUpeMRmqc+84fA/oVvs8Y1Z12TW9PQZmsckLldwkg\n7RP+wJKmWKdBN3OSCs6CUJg138SDqLmu18ArlSdTl/+4j7r6taiDAvLiP/6HwVf0\nJ7IDy2MZDQ+71p3v4hO/8Ieu+o4LabHoSVhZJMyupNfDnUJ1YOU65YQ0yuVyVdLo\no7r/Iyu+cvDxitwL+xRxPBSNPNLiwXziVuwMryCdVS1Mc2Hs5j8uM+4No84Qh4B/\njQsO3488iB2m4AxBP5TJTp74KbpAZLPJO5+sJgw/NWMYYskfEV7JJqmbQn2EguAS\neAGpBIf9JFMuBQ1EmdaJ41vghq27zF0A5poLX+WQ+xs1cibbCGnCkyDFVN05kLIC\niF3Zh3aoqLKztgaGSfHqQVYWiVFT9VgM8ytjWhT0Pt33pvZOQjpuOFgIab7KaxLl\n2GQF/aKmsPzFbVXsvPKoO8UCAwEAAQ==\n-----END PUBLIC KEY-----\n"
   },
+  "read_key": "sgit_public_read_a32b1af10198ed8615643a3f33ea0f1afca89dbf8718c32685f9e567f65ed799",
+  "clone": "sgit clone sgit_public_read_a32b1af10198ed8615643a3f33ea0f1afca89dbf8718c32685f9e567f65ed799:zd1cb3kt",
+  "counts": "data/agents/views.json",
   "geo": "none, by design"
 }

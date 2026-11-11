@@ -398,6 +398,7 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         const all = [...el.querySelectorAll('details')], open = new Set(all.filter(d => d.open).map(keyOf))
         const hadDrawn = !!el.dataset.drawn
         const N = nightData(idx, gh.items, gh.hist || {})
+        if (!ROLE && !VIEW) { try { pageViews = await getJSON(`${BASE}data/agents/views.json?t=${Math.floor(Date.now() / 3e5)}`) } catch { } }
         if (provenance === null && !ROLE && !VIEW) { provenance = {}; try { provenance = await getJSON(`${BASE}data/agents/sessions.json?t=${Math.floor(Date.now() / 3e5)}`) } catch { } }
         if (VIEW === 'jobs') { const o2 = new Set([...el.querySelectorAll('details[open]')].map(keyOf)); drawJobs(idx, gh, by, N); if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = o2.has(keyOf(d)); else openHash(); el.dataset.drawn = '1'; return }
         if (VIEW === 'commit') { if (!hadDrawn) { await drawCommit(idx, gh); el.dataset.drawn = '1' } return }
@@ -432,6 +433,7 @@ ${section('releases', 'Release speed, push by push', releases(R, by, series, X))
 ${provenance && provenance.agents ? section('sessions', 'Sessions and hand-overs', sessionsAll(provenance, idx), 'what each session carries into a call') : ''}
 ${section('flow', 'Who writes for whom', flow(gh.items), "the commits' For: trailers, as a table")}
 ${section('ledger', 'Model calls (the ledger)', led)}
+${section('views', 'Page views', viewsHtml(pageViews), pageViews && pageViews.totals ? `${NUM(pageViews.totals.views)} views in ${NUM(pageViews.totals.visits)} visits` : 'counts only')}
 ${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 25).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(11, 16))}</time>${who(c.agent, idx)} <a href="${commitHref(c)}">${T(c.what)}</a>${c.to.length ? ` <span class="ag-note">for ${c.to.map(t => who(t, idx)).join(', ')}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commits read.</li>'}</ul>`)}
 <p class="ag-note">Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. Roster, jobs, statuses and keys: <a href="${BASE}data/agents/index.json">data/agents/index.json</a> (written ${T(idx.updated || idx.generated_at)} from agents/JOBS.md, agents/*/status.json and data/keys.json), then each agent's own status.json as served now. Commits: ${gh.source === 'snapshot' ? `<a href="${BASE}data/agents/commits.json">the snapshot in data/agents/commits.json</a>, taken ${T(gh.snapshot_at)} <span class="ag-err">(GitHub's public API did not answer this browser${gh.error ? ': ' + T(gh.error) : ''}; without a login it allows 60 calls an hour per address, so pushes after the snapshot are missing until it does)</span>` : `<a href="https://github.com/${REPO}/commits/${BRANCH}">GitHub's public API</a>${gh.read ? `, read ${esc(new Date(gh.read).toISOString().slice(11, 19))} UTC${gh.cached ? ' (cached up to two minutes in this browser)' : ''}` : ''}${gh.error ? ` <span class="ag-err">(GitHub did not answer: ${T(gh.error)})</span>` : ''}`}. "Active", "quiet" (30 min to 2 h) and "silent" are derived from the last push or wake; "blocked" is the agent's own word. Session ids are never shown.</p>`
         if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = open.has(keyOf(d))
@@ -445,6 +447,17 @@ ${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 
     // status file (asks for Dinis, blocked, wakes) and its sessions' starts, newest first, grouped by hour
     // context per call: what one call of a session carried (its own measure, accounts/ledger/); the bar's scale is the largest shown beside it
     const NUM = n => n == null ? '' : Number(n).toLocaleString('en-GB'), LONG = 300000
+    /* page views: counts only, from data/agents/views.json (tools/agents-views.mjs); the same file is in the public vault */
+    function viewsHtml(V) {
+        const how = `<p class="ag-note">Counts only: no IP address, no cookie, no place lookup; nothing is sent when Do Not Track or Global Privacy Control is on, or after Pause in a page's footer. A visit is one browser tab. Anyone can write to the lanes, so a count is what browsers reported, not what was verified. <a href="${BASE}app/agents/about.html#page-views">What is counted</a>; <a href="${fileHref('data/agents/views.json')}">the counts</a>; the same file is in a vault anyone can read (<a href="${fileHref('data/agents/obs.json')}">its read key</a>).</p>`
+        if (!V || !V.totals) return `<p class="ag-note">${NR}: no count has been published yet.</p>${how}`
+        const t = V.totals, H = (V.by_hour || []).slice(-24), P = (V.by_path || []).slice(0, 15), R = (V.by_referrer || []).slice(0, 8)
+        const bars = (rows, label, val) => { const max = Math.max(1, ...rows.map(val)); return `<div class="ag-ctxs wide">${rows.map(r => ctxBar(val(r), max, label(r))).join('')}</div>` }
+        return `<p><b>${NUM(t.views)}</b> views in <b>${NUM(t.visits)}</b> visits, over <b>${NUM(t.pages)}</b> pages${V.since ? `, from ${esc(utc(V.since))} to ${esc(utc(V.until))}` : ' (counting has just begun)'}${t.median_visible_s != null ? `; a page was on screen ${NUM(t.median_visible_s)} s at the median` : ''}. Counted apart: ${NUM(t.automated)} views by browsers that say they are automated. Drained ${esc(utc(V.updated))} (each hour, by incident.observability@).</p>
+${H.length ? `<h3 class="ag-group">Views by hour (UTC)</h3>${bars(H, r => String(r.hour).slice(5, 13).replace('T', ' ') + 'h', r => r.views)}` : ''}
+${P.length ? `<h3 class="ag-group">The pages most opened</h3>${bars(P, r => r.path, r => r.views)}` : ''}
+${R.length ? `<h3 class="ag-group">Where readers came from (the referring site's host)</h3>${bars(R, r => r.host, r => r.views)}` : ''}
+${how}` }
     const ctxBar = (v, max, label, due) => `<span class="ag-ctx${v >= LONG ? ' long' : ''}"><span class="l">${esc(label)}</span><span class="bar"><i style="width:${Math.max(1, Math.round(100 * v / max))}%"></i></span><b>${NUM(v)}</b>${due ? `<em class="due">${v >= LONG ? 'due' : ''}</em>` : ''}</span>`
     const drop = (b, a) => b > 0 ? `${Math.round(100 * (b - a) / b)}% less` : ''
     const measuredOf = x => x && x.measured && x.measured.context_per_call ? x.measured : null
@@ -486,7 +499,7 @@ ${hand.length ? `<h3 class="ag-group">Hand-overs: the same agent, a fresh sessio
     document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('[data-embed]'); if (!b) return; const box = el.querySelector('[data-embed-box]'); if (!box) return
         const src = BASE + b.dataset.embed; box.hidden = false; box.innerHTML = `<p class="ag-note">Showing <a href="${esc(src)}">${esc(b.dataset.embed)}</a> here, live. <button type="button" class="ag-mini" data-embed-close>Close</button></p><iframe src="${esc(src)}" title="This agent's work, live" loading="lazy"></iframe>`; box.scrollIntoView({ block: 'nearest' }) })
     document.addEventListener('click', e => { if (e.target.closest && e.target.closest('[data-embed-close]')) { const box = el.querySelector('[data-embed-box]'); if (box) { box.hidden = true; box.innerHTML = '' } } })
-    let policyHtml = null, provenance = null, costs = null
+    let policyHtml = null, provenance = null, costs = null, pageViews = null
     async function drawRole(idx, gh, by, N, keyOf, open, hadDrawn) {
         const a = idx.agents.find(x => x.role === ROLE)
         if (!a) { el.innerHTML = `<p class="ag-note">No agent with the role "${esc(ROLE)}" in <a href="${BASE}agents/JOBS.html">the jobs table</a>.</p>`; return }
