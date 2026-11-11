@@ -63,33 +63,51 @@
   })
 
   // ---- Wednesday hour by hour, in bands
-  L.exp('weather/day-bands', {
-    needs: ['warnings', 'forecast', 'airport', 'rain', 'graph', 'analysis'],
-    setup: function (c) { L.choice(c.tools, 'day', [['2026-11-11', 'Wednesday 11'], ['2026-11-10', 'Tuesday 10'], ['2026-11-12', 'Thursday 12']], c.state, c.redraw) },
+  var dayBands = {
+    needs: ['warnings', 'cap', 'forecast', 'airport', 'rain', 'graph', 'analysis'],
+    setup: function (c) {
+      L.choice(c.tools, 'day', [['2026-11-11', 'Wednesday 11'], ['2026-11-10', 'Tuesday 10'], ['2026-11-12', 'Thursday 12']], c.state, c.redraw)
+      L.choice(c.tools, 'warned', [['feed', 'IPMA\'s feed as last read'], ['kept', 'Every message we kept']], c.state, c.redraw)
+      L.choice(c.tools, 'shade', [['unit', 'One scale per unit'], ['band', 'Each band its own']], c.state, c.redraw)
+    },
     draw: function (c) {
       var d = c.data, d0 = T(c.state.day), d1 = d0 + 24 * H, lab = c.phone ? 104 : 220, W = Math.max(c.W - 22, c.phone ? 900 : 820), sc = L.scale(d0, d1, lab, W - 12), cw = sc(d0 + H) - sc(d0)
       var bands = []   // {group, name, draw(g, y, h)} built below, then laid out
       var grp = function (name, sub) { bands.push({ head: name, sub: sub }) }
       var clip = function (a, b) { return a < d1 && b > d0 ? [Math.max(a, d0), Math.min(b, d1)] : null }
       // 1. IPMA's warnings
-      grp('Warned', 'IPMA, Lisbon district: a fact')
-      ;[['wind', 'Wind'], ['rain', 'Rain'], ['sea', 'Sea']].forEach(function (ty) {
-        bands.push({ name: ty[1], h: 24, draw: function (g, y) { d.warnings.lisbon.forEach(function (w, i) { var k = L.wtype(w.type) === ty[0] && clip(T(w.start_utc), T(w.end_utc)); if (k) L.mark(L.levelBar(g, sc(k[0]), y + 3, sc(k[1]) - sc(k[0]), 18, w.level, w.level.toUpperCase() + ' ' + short(w.text_pt, Math.floor((sc(k[1]) - sc(k[0])) / 6.5) - 8)), L.warnItem(w, i), w.level + ' ' + w.type) }) } })
+      var kept = c.state.warned === 'kept', replaced = {}; d.cap.lisbon_messages.forEach(function (m) { (m.replaces || []).forEach(function (r) { replaced[r.identifier] = 1 }) })
+      var keptMsgs = d.cap.lisbon_messages.filter(function (m) { return !replaced[m.identifier] && clip(T(m.onset_utc), T(m.expires_utc)) }), isGone = function (m) { return !!m.left_feed_utc || T(m.last_seen_utc) < T(d.cap.read_utc) - 60e3 }, nGone = keptMsgs.filter(isGone).length
+      grp('Warned', kept ? 'IPMA, Lisbon district, from every CAP message we kept: ' + (keptMsgs.length - nGone) + ' still in the feed, ' + nGone + ' rebuilt from our record (dotted)' : 'IPMA, Lisbon district, as in IPMA\'s feed read ' + L.dhm(T(d.warnings.read_utc)) + ': a fact')
+      ;[['wind', 'Wind'], ['rain', 'Rain'], ['sea', 'Sea'], ['thunder', 'Thunder']].forEach(function (ty) {
+        if (ty[0] === 'thunder' && !(kept && keptMsgs.some(function (m) { return L.wtype(m.event_pt) === 'thunder' }))) return
+        bands.push({ name: ty[1], h: 24, draw: function (g, y) {
+          if (kept) keptMsgs.forEach(function (m) { if (L.wtype(m.event_pt) !== ty[0]) return; var k = clip(T(m.onset_utc), T(m.expires_utc)), lv = L.level(m.event_pt), gone = isGone(m), bar = L.levelBar(g, sc(k[0]), y + 3, sc(k[1]) - sc(k[0]), 18, lv, lv.toUpperCase() + (gone ? ' · rebuilt: last in the feed ' + L.dhm(T(m.last_seen_utc)) : ' · in the feed')); if (gone) bar.classList.add('lv-kept'); L.mark(bar, L.capItem(m), m.event_pt) })
+          else d.warnings.lisbon.forEach(function (w, i) { var k = L.wtype(w.type) === ty[0] && clip(T(w.start_utc), T(w.end_utc)); if (k) L.mark(L.levelBar(g, sc(k[0]), y + 3, sc(k[1]) - sc(k[0]), 18, w.level, w.level.toUpperCase() + ' ' + short(w.text_pt, Math.floor((sc(k[1]) - sc(k[0])) / 6.5) - 8)), L.warnItem(w, i), w.level + ' ' + w.type) })
+        } })
       })
+      // shading: one scale per unit (so a km/h cell means the same in every band), or each band's own maximum
+      var sts0 = d.rain.stations.filter(function (st) { return /^Lisboa|Oeiras/.test(st.name) }), MAXU = { 'km/h': 1, 'mm': 1, '%': 100, 'm': 1 }
+      d.forecast.hourly.rows.forEach(function (r) { MAXU['km/h'] = Math.max(MAXU['km/h'], r.wind_mean_kmh || 0); MAXU.m = Math.max(MAXU.m, r.sea_total_m || 0) })
+      sts0.forEach(function (st) { st.hourly.forEach(function (r) { MAXU['km/h'] = Math.max(MAXU['km/h'], r.wind_mean_kmh || 0); MAXU.mm = Math.max(MAXU.mm, r.rain_mm || 0) }) })
+      var perUnit = c.state.shade !== 'band', pct = function (v, unit, bandMax) { return Math.round(4 + Math.min(1, v / (perUnit ? MAXU[unit] : bandMax)) * 66) }
       // 2. IPMA's hourly forecast: cells, dashed because a forecast
       var fc = d.forecast.hourly, cell = function (key, unit, fmt) {
         return function (g, y) {
           var max = Math.max.apply(null, fc.rows.map(function (r) { return r[key] || 0 })) || 1
           fc.rows.forEach(function (r) {
             var t = T(r.time_utc); if (t < d0 || t >= d1 || r[key] == null) return
-            var x = sc(t), q = s('g', {}); q.appendChild(s('rect', { x: x + 1, y: y + 3, width: cw - 2, height: 20, class: 'fc-cell', style: 'fill: color-mix(in srgb, var(--ink-2) ' + Math.round(r[key] / max * 45) + '%, var(--surface))' }))
+            var x = sc(t), q = s('g', {}); q.appendChild(s('rect', { x: x + 1, y: y + 3, width: cw - 2, height: 20, class: 'fc-cell', style: 'fill: color-mix(in srgb, var(--ink-2) ' + pct(r[key], unit, max) + '%, var(--surface))' }))
             if (cw >= 22) q.appendChild(s('text', { x: x + cw / 2, y: y + 17, class: 't-val', 'text-anchor': 'middle', text: fmt ? fmt(r[key]) : Math.round(r[key]) }))
             g.appendChild(L.mark(q, L.valueItem('fc:ipma:' + key + ':' + r.time_utc, { type: 'IPMA\'s hourly forecast for Lisbon (theirs, not ours)', label: 'fact', title: 'IPMA forecast for ' + L.dhm(t) + ': ' + key.replace(/_/g, ' ') + ' ' + r[key] + ' ' + unit, when: r.time_utc, whenName: 'Forecast for', facts: [['The whole hour, as IPMA gave it', 'mean wind ' + r.wind_mean_kmh + ' km/h ' + r.wind_dir + ', rain probability ' + r.rain_prob_pct + ' %, rain intensity class ' + r.rain_intensity_class + ', sea ' + r.sea_total_m + ' m'], ['Model run stamped (local)', fc.updated_local], ['Label', 'A fact that IPMA forecast this; what will happen is not known.']], sources: [{ label: 'IPMA, aggregate forecast for Lisbon', url: fc.source }], read: fc.read_utc, file: L.DATA + 'weather/forecast.json' }), 'IPMA forecast ' + L.dhm(t)))
           })
         }
       }
       grp('Forecast', 'IPMA\'s hourly model for Lisbon, run of ' + String(fc.updated_local).replace('T', ' ').slice(5, 16))
+      if (!fc.rows.some(function (r) { var t = T(r.time_utc); return t >= d0 && t < d1 })) bands.push({ name: 'Not kept', h: 22, draw: function (g, y) { g.appendChild(s('text', { x: sc(d0) + 6, y: y + 15, class: 't-small', text: 'no hourly forecast for this day is in the file: IPMA\'s model output starts ' + L.dhm(T(fc.rows[0].time_utc)) + ', and earlier runs were not kept' })) } })
+      else {
       bands.push({ name: 'Mean wind, km/h', h: 26, draw: cell('wind_mean_kmh', 'km/h') }); bands.push({ name: 'Rain probability, %', h: 26, draw: cell('rain_prob_pct', '%') }); bands.push({ name: 'Sea, m', h: 26, draw: cell('sea_total_m', 'm', function (v) { return v.toFixed(1) }) })
+      }
       // 3. the airport's TAF
       grp('Airport forecast', 'TAF for Lisbon airport, issued ' + L.dhm(T(d.airport.taf.issue_utc)))
       d.airport.taf.groups.forEach(function (gp, i) {
@@ -97,11 +115,12 @@
         var txt = (gp.prob ? 'PROB' + gp.prob + ' ' : '') + gp.change + (gp.wind_kmh ? ': ' + gp.wind_kmh + ' km/h' : '') + (gp.gust_kmh ? ', gusts ' + gp.gust_kmh : '') + (gp.weather ? ' ' + gp.weather : '')
         bands.push({ name: (gp.prob ? gp.prob + ' % chance' : gp.change === 'TEMPO' ? 'At times' : gp.change === 'BECMG' ? 'Becoming' : 'Base'), h: 22, draw: function (g, y) { var q = s('g', {}); q.appendChild(s('rect', { x: sc(k[0]), y: y + 3, width: sc(k[1]) - sc(k[0]), height: 16, class: 'fc-cell' })); q.appendChild(s('text', { x: sc(k[0]) + 4, y: y + 15, class: 't-val', text: short(txt, Math.floor((sc(k[1]) - sc(k[0])) / 6.3)) })); g.appendChild(L.mark(q, L.valueItem('taf:' + i, { type: 'airport forecast (TAF group)', label: 'fact', title: txt, when: gp.from_utc, whenName: 'From', facts: [['To', L.dhm(T(gp.to_utc))], ['Raw', d.airport.taf.raw], ['Label', 'A fact that this was forecast for the airport; gusts in km/h converted from knots.']], sources: [{ label: 'Lisbon airport TAF (IPMA), via NOAA Aviation Weather', url: d.airport.taf.source }], read: d.airport.taf.read_utc, file: L.DATA + 'weather/airport.json' }), txt)) } })
       })
+      if (!d.airport.taf.groups.some(function (gp) { return clip(T(gp.from_utc), T(gp.to_utc)) })) bands.push({ name: 'Not for this day', h: 22, draw: function (g, y) { g.appendChild(s('text', { x: sc(d0) + 6, y: y + 15, class: 't-small', text: 'the TAF in the file covers ' + L.dhm(T(d.airport.taf.valid_from_utc)) + ' to ' + L.dhm(T(d.airport.taf.valid_to_utc)) })) } })
       // 4. observed so far
       grp('Observed', 'IPMA stations in Lisbon and the airport: facts')
       var sts = d.rain.stations.filter(function (st) { return /^Lisboa|Oeiras/.test(st.name) }), byHour = {}
       sts.forEach(function (st) { st.hourly.forEach(function (r) { var o = byHour[r.time_utc] = byHour[r.time_utc] || { w: null, r: null }; if (r.wind_mean_kmh != null && (o.w == null || r.wind_mean_kmh > o.w.v)) o.w = { v: r.wind_mean_kmh, st: st, r: r }; if (r.rain_mm != null && (o.r == null || r.rain_mm > o.r.v)) o.r = { v: r.rain_mm, st: st, r: r } }) })
-      var obsRow = function (key, unit) { return function (g, y) { var n = 0; Object.keys(byHour).forEach(function (k) { var t = T(k) - H, o = byHour[k][key]; if (t < d0 || t >= d1 || !o) return; n++; var x = sc(t), q = s('g', {}); q.appendChild(s('rect', { x: x + 1, y: y + 3, width: cw - 2, height: 20, class: 'd d-fact', style: 'fill: color-mix(in srgb, var(--focus) ' + Math.min(90, Math.round(10 + o.v * (key === 'w' ? 1.2 : 5))) + '%, var(--surface)); stroke: var(--focus)' })); if (cw >= 22) q.appendChild(s('text', { x: x + cw / 2, y: y + 17, class: 't-val', 'text-anchor': 'middle', text: key === 'w' ? Math.round(o.v) : o.v })); g.appendChild(L.mark(q, obsItem(o.st, o.r, 'weather/lisbon-rain.json', o.st.source || d.rain.source, o.st.read_utc || d.rain.read_utc), 'Observed ' + o.v + ' ' + unit)) }); if (!n) g.appendChild(s('text', { x: sc(d0) + 6, y: y + 17, class: 't-small', text: 'no observation for this day in the file read ' + L.dhm(T(d.rain.read_utc)) })) } }
+      var obsRow = function (key, unit) { return function (g, y) { var n = 0, bmax = Math.max.apply(null, Object.keys(byHour).map(function (k) { return (byHour[k][key] || {}).v || 0 })) || 1; Object.keys(byHour).forEach(function (k) { var t = T(k) - H, o = byHour[k][key]; if (t < d0 || t >= d1 || !o) return; n++; var x = sc(t), q = s('g', {}); q.appendChild(s('rect', { x: x + 1, y: y + 3, width: cw - 2, height: 20, class: 'd d-fact', style: 'fill: color-mix(in srgb, var(--focus) ' + pct(o.v, unit, bmax) + '%, var(--surface)); stroke: var(--focus)' })); if (cw >= 22) q.appendChild(s('text', { x: x + cw / 2, y: y + 17, class: 't-val', 'text-anchor': 'middle', text: key === 'w' ? Math.round(o.v) : o.v })); g.appendChild(L.mark(q, obsItem(o.st, o.r, 'weather/lisbon-rain.json', o.st.source || d.rain.source, o.st.read_utc || d.rain.read_utc), 'Observed ' + o.v + ' ' + unit)) }); if (!n) g.appendChild(s('text', { x: sc(d0) + 6, y: y + 17, class: 't-small', text: 'no observation for this day in the file read ' + L.dhm(T(d.rain.read_utc)) })) } }
       bands.push({ name: 'Highest mean wind, km/h', h: 26, draw: obsRow('w', 'km/h') }); bands.push({ name: 'Most rain in the hour, mm', h: 26, draw: obsRow('r', 'mm') })
       bands.push({ name: 'Airport gusts, km/h', h: 26, draw: function (g, y) { d.airport.metars.forEach(function (m) { var t = T(m.time_utc); if (t < d0 || t >= d1 || !m.gust_kmh) return; var q = s('g', {}); q.appendChild(s('circle', { cx: sc(t), cy: y + 13, r: 9, class: 'd d-fact', style: 'fill: var(--focus); stroke: var(--focus)' })); q.appendChild(s('text', { x: sc(t), y: y + 16.5, class: 't-val', 'text-anchor': 'middle', style: 'fill: var(--paper)', text: m.gust_kmh })); g.appendChild(L.mark(q, L.valueItem('metar:' + m.time_utc, { type: 'observation, Lisbon airport (METAR)', label: 'fact', title: 'Gust ' + m.gust_kmh + ' km/h, wind ' + m.wind_kmh + ' km/h', when: m.time_utc, facts: [['Raw', m.raw]], sources: [{ label: 'METAR LPPT via NOAA Aviation Weather', url: m.source }], read: m.read_utc, file: L.DATA + 'weather/airport.json' }), 'Gust ' + m.gust_kmh)) }) } })
       // 5. decisions in effect
@@ -124,10 +143,13 @@
       })
       var rl = T(d.warnings.read_utc); if (rl > d0 && rl < d1) { g.appendChild(s('line', { x1: sc(rl), x2: sc(rl), y1: top - 10, y2: total - 8, class: 'readline' })); g.appendChild(s('text', { x: sc(rl) + 4, y: total - 1, class: 'readline-t', text: 'data read ' + L.hm(rl) })) }
       c.el.appendChild(g)
-      c.el.appendChild(L.legend([['lg-red', 'IPMA red'], ['lg-orange', 'IPMA orange'], ['lg-yellow', 'IPMA yellow'], ['lg-fc', 'a forecast (dashed edge): IPMA\'s or the airport\'s, never ours'], ['lg-obs', 'observed (blue, solid)'], ['lg-fx', 'a decision in effect'], ['lg-hypothesis', 'our hypothesis (dashed, and it says so)']]))
-      c.el.appendChild(h('p', { class: 'meta', text: 'Observed hours are drawn in the hour ending at IPMA\'s label (our reading of an undocumented label; the data file explains why). Not a warning service: for the warning itself, IPMA.' }))
+      c.el.appendChild(L.legend([['lg-red', 'IPMA red'], ['lg-orange', 'IPMA orange'], ['lg-yellow', 'IPMA yellow'], ['lg-kept', 'rebuilt: a warning that has left the feed, from our record'], ['lg-fc', 'a forecast (dashed edge): IPMA\'s or the airport\'s, never ours'], ['lg-obs', 'observed (blue, solid)'], ['lg-fx', 'a decision in effect'], ['lg-hypothesis', 'our hypothesis (dashed, and it says so)']]))
+      c.el.appendChild(h('p', { class: 'meta', text: (perUnit ? 'Shading, one scale per unit: km/h cells run from 0 to ' + MAXU['km/h'] + ' (the highest mean wind in these files), mm from 0 to ' + MAXU.mm + ', % from 0 to 100, m from 0 to ' + MAXU.m + '; grey is forecast, blue is measured, and the same depth means the same number within a unit. Gusts are not shaded: they are a different quantity from mean wind. ' : 'Shading: each band against its own maximum, so depth cannot be compared between bands. ') + (kept ? 'Warned bands here come from the CAP messages we kept (first read ' + L.dhm(T(d.cap.reads_utc.slice().sort()[0])) + '): a message replaced and dropped before that read is not in our record, so this day may have had warnings we cannot show. ' : '') + 'Observed hours are drawn in the hour ending at IPMA\'s label (our reading of an undocumented label; the data file explains why). Not a warning service: for the warning itself, IPMA.' }))
     }
-  })
+  }
+  L.exp('weather/day-bands', dayBands)
+  // the same strip opened on Tuesday, built only from what the files still hold (asked for by incident.weather@)
+  L.exp('weather/day-rebuilt', { needs: dayBands.needs, setup: dayBands.setup, draw: dayBands.draw, init: { day: '2026-11-10', warned: 'kept', shade: 'unit' } })
 
   // ---- the forecast models side by side, as the hypotheses about the future that they are
   L.exp('weather/models', {

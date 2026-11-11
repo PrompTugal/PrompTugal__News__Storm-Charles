@@ -29,7 +29,8 @@ Small experiments, each on its own page, at Dinis Cruz's word ([BRIEF.md](../BRI
 
 | Experiment | Our verdict so far |
 |---|---|
-| [The day in bands](weather/day-bands.md) | **The strongest weather view.** Warned, forecast, observed, decided and our hypothesis in one 24-hour grid; dense, and the bands are not comparable with each other. |
+| [The day in bands](weather/day-bands.md) | **The strongest weather view.** Warned, forecast, observed, decided and our hypothesis in one 24-hour grid; dense. Now on the front page in a simpler form (incident.weather@). Shading can be switched to one scale per unit. |
+| [Tuesday rebuilt from what the files still hold](weather/day-rebuilt.md) | New in round 4, at the Weather face's ask. The same strip for a past day, each warning marked as still in the feed or rebuilt from our record; limited by when our record starts. |
 | [Warned against observed, station by station](weather/stations.md) | Shows Madeira's rain against its warnings at a glance; cannot check wind, because warnings speak of gusts and stations report mean wind. |
 | [The models side by side](weather/models.md) | Honest about what a forecast is (dashed, named, never ours); one grid cell against one station is a rough comparison. |
 

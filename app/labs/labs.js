@@ -123,7 +123,7 @@
     var tools = h('div', { class: 'lab-tools' }), stage = h('div', { class: 'lab-stage' }), body = h('div', { class: 'lab-body' }, stage)
     panel = h('aside', { class: 'lab-panel', hidden: true, 'aria-live': 'polite', 'aria-label': 'This item' })
     add(el, [tools, body, h('p', { class: 'lab-hint meta', text: 'Every mark opens its row or edge with its source and the time it was read. Times are UTC (Lisbon is on UTC in November).' })]); body.appendChild(panel)
-    var state = {}, data
+    var state = {}, data; for (var k0 in (def.init || {})) state[k0] = def.init[k0]
     function draw() { stage.textContent = ''; try { def.draw({ el: stage, tools: tools, W: Math.max(320, stage.clientWidth), data: data, state: state, redraw: draw, phone: window.innerWidth < 700 }) } catch (e) { stage.appendChild(h('p', { class: 'meta', text: 'This experiment failed to draw: ' + e.message })); console.error(e) } }
     load(def.needs).then(function (d) {
       data = d; tools.textContent = ''; if (def.setup) def.setup({ tools: tools, data: d, state: state, redraw: draw })
