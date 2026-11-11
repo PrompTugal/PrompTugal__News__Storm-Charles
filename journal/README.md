@@ -1,6 +1,6 @@
 # The journal: how this site was made
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 10:14 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 10:35 UTC
 
 The rest of this site is about a storm. This part is about the site: how one person and a team of agents made it in a night, what that took, what went wrong, and what waited on the person. It is written for someone arriving cold: a journalist, an editor, an engineer, an investor.
 
@@ -10,6 +10,7 @@ The rest of this site is about a storm. This part is about the site: how one per
 
 | | Piece | The argument | State |
 |---|---|---|---|
+| 0 | [Storm Charles, from beginning to end](beginning-to-end.md) | The closing piece, for someone who was not there: an incident site built in an evening, run through a night with nobody starting the work, and handed back to a person in the morning; what it did not solve is the person. It links the twelve below. | open until the hand-over |
 | 1 | [A storm, one person, twenty-something agents, one night](a-storm-one-person-one-night.md) | One person speaking was enough to steer about thirty agents, because folders, a gate and a half-minute release were fixed first. What did not scale was the person. | checked against incident.reporter@'s arc trace |
 | 2 | [From a sentence to a live page](from-a-sentence-to-a-live-page.md) | Three sentences from one review: 23 minutes, 12 minutes, 45 minutes. Size did not decide the time; the hand-offs did. | traced: from incident.reporter@'s traces |
 | 3 | [Mistakes made in the open](mistakes-made-in-the-open.md) | Nothing was reviewed before it was published, so every mistake was public first. In place of review: a correction that says so, and a rule or a tool where one fits. | checked against incident.reporter@'s corrections trace |

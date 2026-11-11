@@ -1,0 +1,460 @@
+{
+  "about": "What each statement of journal/beginning-to-end.md (the journal's closing piece) rests on: incident.ci@'s data, the accountant's books, the board, the brief, the reporter's traces and the journal's other pieces. Resolved on every build by tools/journal-build.mjs.",
+  "by": "incident.journalist@web-summit.dinis",
+  "updated": "2026-11-11T10:35:00Z",
+  "status": "open until the hand-over to business as usual",
+  "claims": [
+    {
+      "id": "x1",
+      "text": "Each agent owns its folders, each push passes one gate, and a push is served in about half a minute.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "CLAUDE.md",
+          "contains": "each owns its folders"
+        },
+        {
+          "kind": "text",
+          "file": "CLAUDE.md",
+          "contains": "node admin/build/validate.mjs   # the gate"
+        },
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "pipeline.push_to_served_s.median",
+          "expect": 37
+        }
+      ]
+    },
+    {
+      "id": "x2",
+      "text": "Web Summit called off its second day on the government's advice (the incident's headline).",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "incidents/2026-11-10-storm-charles/incident.json",
+          "contains": "Web Summit calls off Day 2 (Wednesday) on the government's advice"
+        }
+      ]
+    },
+    {
+      "id": "x3",
+      "text": "Dinis asked by voice for a separate team with its own conductor, repository and site, a newsroom for people and a data source for agents.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "CLAUDE.md",
+          "contains": "A newsroom for people and a data source for agents on Storm Charles"
+        },
+        {
+          "kind": "page",
+          "path": "BRIEF.md"
+        }
+      ]
+    },
+    {
+      "id": "x4",
+      "text": "The repository's first commit is stamped 21:03:38 UTC; the first push was live at 21:14:33.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "totals.first_commit",
+          "expect": "2026-11-10T21:03:38Z"
+        },
+        {
+          "kind": "commit",
+          "sha": "77cdd51"
+        }
+      ]
+    },
+    {
+      "id": "x5",
+      "text": "He came back six more times before 03:00 UTC.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "journal/a-storm-one-person-one-night.md",
+          "contains": "He then came back six more times before 03:00 UTC"
+        }
+      ]
+    },
+    {
+      "id": "x6",
+      "text": "By incident.ci@'s read of 10:18 UTC: 920 commits by 31 agents, 830 workflow runs, 596 tagged versions, a median of 37 s from push to served.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "read.api",
+          "expect": "read 2026-11-11T10:18:17Z"
+        },
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "totals.commits",
+          "expect": 920
+        },
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "totals.agents",
+          "expect": 31
+        },
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "totals.runs",
+          "expect": 830
+        },
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "totals.tags",
+          "expect": 596
+        },
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "pipeline.push_to_served_s.median",
+          "expect": 37
+        }
+      ]
+    },
+    {
+      "id": "x7",
+      "text": "What exists is listed in REALITY.md.",
+      "supports": [
+        {
+          "kind": "page",
+          "path": "REALITY.md"
+        }
+      ]
+    },
+    {
+      "id": "x8",
+      "text": "Dinis's last direction of the night was at about 02:50; his next words in the record came 6 h 41 min later.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "you can use up to $20 in budget"
+        },
+        {
+          "kind": "trace",
+          "trace": "loop-a-front-page-for-newcomers",
+          "step": 1
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 24
+        }
+      ]
+    },
+    {
+      "id": "x9",
+      "text": "At 07:16:30 IPMA lowered Lisbon's wind warning; the row, data, front page, headline and five stories followed within 37 minutes; one wrong 'unchanged' corrected by its author in 51 s.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 1
+        },
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 3
+        },
+        {
+          "kind": "trace",
+          "trace": "signal-a-warning-lowered-to-the-front-page",
+          "step": 7
+        },
+        {
+          "kind": "commit",
+          "sha": "45d33f1"
+        },
+        {
+          "kind": "commit",
+          "sha": "1056373"
+        }
+      ]
+    },
+    {
+      "id": "x10",
+      "text": "A source's terms forbade what the site did; the conductor held the reading as an interim measure until Dinis could answer.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "journal/the-first-decision-to-stop.md",
+          "contains": "The first decision to stop"
+        },
+        {
+          "kind": "board",
+          "id": "a-websummit-terms"
+        }
+      ]
+    },
+    {
+      "id": "x11",
+      "text": "By the accountant's books of 09:41 UTC: 1.06 dollars of model calls through the ledger against a cap of 20 a day.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "updated",
+          "expect": "2026-11-11T09:41:14Z"
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "model_spend.spent_usd",
+          "expect": 1.062425
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "model_spend.cap_usd",
+          "expect": 20
+        }
+      ]
+    },
+    {
+      "id": "x12",
+      "text": "1.92 billion tokens across the 27 agents measured, 98.6 per cent of them cache reads (agents re-reading their own sessions).",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "agent_tokens.measured",
+          "expect": 27
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "agent_tokens.team_measured.all",
+          "expect": 1920434543
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "agent_tokens.team_measured.cache_reads_share",
+          "expect": 0.9859
+        }
+      ]
+    },
+    {
+      "id": "x13",
+      "text": "The busiest hour was 02:00 UTC, in money and in tokens.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "most_expensive_hour.models_usd.hour",
+          "expect": "02:00"
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "most_expensive_hour.tokens.hour",
+          "expect": "2026-11-11T02:00Z"
+        }
+      ]
+    },
+    {
+      "id": "x14",
+      "text": "Agents began handing over to fresh sessions with a short briefing pack.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "journal/starting-again-is-cheaper-than-remembering.json",
+          "contains": "No person acted between the sentence and the sixth hand-over."
+        },
+        {
+          "kind": "page",
+          "path": "library/pack/start.md"
+        }
+      ]
+    },
+    {
+      "id": "x15",
+      "text": "At 02:53 the provider's account ran out of credit: the models stopped and nothing else did.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "board/items/a-provider-credit.json",
+          "contains": "out of credit since 02:53:57 UTC"
+        },
+        {
+          "kind": "text",
+          "file": "agents/perplexity/status.json",
+          "contains": "HTTP 402 at 02:53:57Z"
+        }
+      ]
+    },
+    {
+      "id": "x16",
+      "text": "The mistakes of the night, with who found each and what rule it changed, are in Mistakes made in the open.",
+      "supports": [
+        {
+          "kind": "page",
+          "path": "journal/mistakes-made-in-the-open.md"
+        }
+      ]
+    },
+    {
+      "id": "x17",
+      "text": "This journal's own first page carried a wrong count of the cards waiting on Dinis and was corrected by its author within minutes.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "journal/a-storm-one-person-one-night.md",
+          "contains": "**Corrected at 03:03 UTC.**"
+        },
+        {
+          "kind": "text",
+          "file": "journal/a-storm-one-person-one-night.md",
+          "contains": "The board's figure was 36"
+        }
+      ]
+    },
+    {
+      "id": "x18",
+      "text": "At 10:35 UTC the board counts 44 open cards waiting on Dinis.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "counted by this agent from board/items/*.json at 10:35 UTC (state not done, closed or answered; waiting_on === 'Dinis'); the board recounts on every build"
+        },
+        {
+          "kind": "board",
+          "id": "a-provider-credit"
+        }
+      ]
+    },
+    {
+      "id": "x19",
+      "text": "Among them: the provider's account, still out of credit, and the hold on reading Web Summit's site.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-provider-credit"
+        },
+        {
+          "kind": "board",
+          "id": "a-websummit-terms"
+        },
+        {
+          "kind": "commit",
+          "sha": "0df5e0a"
+        }
+      ]
+    },
+    {
+      "id": "x20",
+      "text": "When he came back he answered how vault keys are held and asked for page views, a front page for newcomers tried by four invented readers, this story told, flights and transport.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "CLAUDE.md",
+          "contains": "each agent makes its own vaults and sends the conductor a sealed copy of each key"
+        },
+        {
+          "kind": "trace",
+          "trace": "loop-a-front-page-for-newcomers",
+          "step": 3
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "## Dinis, 11 November, ~10:25 UTC: flights and transport"
+        },
+        {
+          "kind": "commit",
+          "sha": "44c65e2"
+        }
+      ]
+    },
+    {
+      "id": "x21",
+      "text": "At about 10:30 Dinis asked for the incident to be wound down and moved to business as usual, explorer to villager: exit interviews, assessments, verdicts; the reporter and journalist go to town on the incident pages; a storm conductor's standing newsroom.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "## Dinis, 11 November, ~10:30 UTC: wind the incident down, move to business as usual (explorer to villager)"
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "go to town in creating the incident pages"
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "a **storm conductor**"
+        },
+        {
+          "kind": "commit",
+          "sha": "bda392b"
+        }
+      ]
+    },
+    {
+      "id": "x22",
+      "text": "incident.planner@ writes the plan; nothing stops until Dinis says yes; at ~10:32 nobody stops before the hand-over.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "Nothing is stopped until Dinis says yes to the plan."
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "which shouldn't stop until the handover is done"
+        },
+        {
+          "kind": "commit",
+          "sha": "9fea08e"
+        }
+      ]
+    },
+    {
+      "id": "x23",
+      "text": "At about 10:35 he asked for the site to take PrompTugal News's brand, one site of a family that will grow.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "## Dinis, 11 November, ~10:35 UTC: the branding must match promptugal.news"
+        },
+        {
+          "kind": "commit",
+          "sha": "348bf2e"
+        }
+      ]
+    },
+    {
+      "id": "x24",
+      "text": "The arc in acts, with ten paths, is incident.storyteller@'s.",
+      "supports": [
+        {
+          "kind": "page",
+          "path": "story/arc.md"
+        }
+      ]
+    },
+    {
+      "id": "x25",
+      "text": "How the incident ended (which agents stopped, which continued, what was left open) is not yet on record.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "written at 10:35 UTC on 11 November, before the plan and the hand-over"
+        }
+      ]
+    }
+  ]
+}
