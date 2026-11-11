@@ -54,6 +54,7 @@ for (const a of anims) {
                 if (lf.length) extra.push(`${pre}${lf.some(f => f.state === 'read') ? 'read from the file system' : lf.some(f => f.state === 'new') ? 'written to the file system' : 'on the file system'}: ${lf.map(f => `${f.href ? `[${f.name}](${f.href})` : f.name}${f.size ? ` (${f.size})` : ''}`).join(', ')}.`)
                 for (const b of l.stack || []) { const k = (typeof b === 'string' ? b : b.id).split(':')[0]; if (!ch.blocks?.[k] && typeof b === 'string') problems.push(`${a.id} ${ci + 1}.${si + 1}: block "${k}" is not defined`) }
             }
+            for (const m of sc.measured || []) extra.push(`Measured on this team: ${m.v} ${one(m.k)} (${m.href ? `[${m.src}](${m.href})` : m.src}${m.read ? `, read ${m.read}` : ''}).`)
             out.push(`${si + 1}. ${one(sc.caption)}${sc.note ? ` *${one(sc.note)}*` : ''}${extra.length ? `\n   ${extra.join(' ')}` : ''}`)
         })
         out.push('')

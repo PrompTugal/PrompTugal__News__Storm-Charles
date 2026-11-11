@@ -3,8 +3,8 @@
   "title": "What compression is",
   "summary": "What travels to the model each time you say something to a chat assistant, what a cache changes, why a full conversation gets compressed, what is lost when it is, and how this team works so that the loss does not matter.",
   "by": "incident.studio@web-summit.dinis",
-  "updated": "2026-11-11T00:52:00Z",
-  "about": "An explanation in general terms that hold for chat assistants: the context is sent with each request; a cache reuses an unchanged beginning; a full window is summarised or cut. It describes no one product's internals. Block sizes are an illustration, not a measurement. At Dinis Cruz's word (BRIEF.md, 11 November 2026).",
+  "updated": "2026-11-11T03:39:00Z",
+  "about": "An explanation in general terms that hold for chat assistants: the context is sent with each request; a cache reuses an unchanged beginning; a full window is summarised or cut. It describes no one product's internals. Block sizes are an illustration, not a measurement. The boxed figures marked \"measured on this team\" are measurements: incident.accountant@'s count of this team's own sessions on the night of 10 to 11 November 2026, each linked to its file (added 11 November 2026, 03:39 UTC). At Dinis Cruz's word (BRIEF.md, 11 November 2026).",
   "chapters": [
     {
       "id": "no-cache",
@@ -56,6 +56,15 @@
           "stack": [
             "sys",
             "tools"
+          ],
+          "measured": [
+            {
+              "v": "about 84,000 tokens",
+              "k": "is what each of 26 measured sessions of this team carried on its first call, before it had read one file: the instructions, the tools and the repository's rules.",
+              "href": "../../view/?path=accounts/savings.md",
+              "src": "accounts/savings.md",
+              "read": "03:39 UTC"
+            }
           ]
         },
         {
@@ -170,7 +179,16 @@
           ],
           "say": {
             "right": "Here is who decided what."
-          }
+          },
+          "measured": [
+            {
+              "v": "1.31 billion tokens in 3,943 calls",
+              "k": "is what 26 sessions of this team's agents read in one night (to 03:33 UTC). An agent's turn is many calls, and each call carries its session's whole context again.",
+              "href": "../../view/?path=accounts/savings.md",
+              "src": "accounts/savings.md",
+              "read": "03:39 UTC"
+            }
+          ]
         }
       ],
       "question": "What travels to the model when you say one thing?"
@@ -307,7 +325,16 @@
           "send": {
             "n": 3,
             "cached": 5
-          }
+          },
+          "measured": [
+            {
+              "v": "98.8%",
+              "k": "of those 1.31 billion tokens were cache reads (1,295,742,639): context a session had already read, reused on a later call. 0.8% was what was new on each call; 0.3% was everything the agents wrote.",
+              "href": "../../view/?path=accounts/savings.md",
+              "src": "accounts/savings.md",
+              "read": "03:39 UTC"
+            }
+          ]
         },
         {
           "caption": "What it did not change: the conversation is exactly as long. All of it still travels with every request, the model still works from all of it, and all of it still counts against a fixed limit, the context window. A cache makes a long context cheaper. It does not make it shorter.",
@@ -327,7 +354,16 @@
           "send": {
             "n": 3,
             "cached": 5
-          }
+          },
+          "measured": [
+            {
+              "v": "300,000 to 770,000 tokens",
+              "k": "is what this team's long sessions carried on every call, cache or no cache. Every one of them had started near 84,000.",
+              "href": "../../view/?path=accounts/savings.md",
+              "src": "accounts/savings.md",
+              "read": "03:39 UTC"
+            }
+          ]
         },
         {
           "caption": "And a cache only matches an unchanged beginning. Change something early (here, one line of the instructions) and everything after it is read at full cost again. Leave the conversation alone for long enough and the cache expires: the next request starts cold.",
@@ -435,6 +471,15 @@
             "t49",
             "file2:new",
             "t1012:new"
+          ],
+          "measured": [
+            {
+              "v": "783,922 tokens",
+              "k": "is the most one session here carried on a single call: the conductor's, one session of 758 calls since 18:56 UTC on 10 November. The size of its window is not stated here.",
+              "href": "../../view/?path=accounts/ledger/conductor.jsonl",
+              "src": "accounts/ledger/conductor.jsonl",
+              "read": "03:39 UTC"
+            }
           ]
         },
         {
@@ -510,7 +555,16 @@
           ],
           "send": {
             "n": 2
-          }
+          },
+          "measured": [
+            {
+              "v": "1 of 26",
+              "k": "measured sessions had been compressed by 03:33 UTC: that same session, once. The others had not reached the door; they paid for their length on every call instead.",
+              "href": "../../view/?path=accounts/savings.md",
+              "src": "accounts/savings.md",
+              "read": "03:39 UTC"
+            }
+          ]
         },
         {
           "caption": "That is compression: the older part of a long conversation replaced by a shorter text about it, so that the work can go on. What that text kept and what it left out was decided in one moment, by a model.",
@@ -1303,7 +1357,7 @@
               ]
             }
           ],
-          "note": "The file sizes are measured: bytes in this repository, read 11 November 2026, 00:39 UTC; they grow as the storm goes on. The conversations were not measured."
+          "note": "The file sizes are measured: bytes in this repository, read 11 November 2026, 00:39 UTC; they grow as the storm goes on. The conversations drawn here were not measured; the team's own sessions were, later that night (the boxed figures)."
         }
       ],
       "question": "How does this team work, so that the loss does not matter?"
@@ -1415,10 +1469,135 @@
         }
       ],
       "question": "So what is the point?"
+    },
+    {
+      "id": "measured",
+      "title": "Measured",
+      "question": "And what did it look like when this team measured itself?",
+      "track": {
+        "stations": [
+          {
+            "id": "sessions",
+            "who": "agent",
+            "name": "Each agent",
+            "does": "measures its own session",
+            "mood": "read"
+          },
+          {
+            "id": "ledger",
+            "who": "ledger",
+            "name": "The ledger",
+            "does": "one line of numbers per session"
+          },
+          {
+            "id": "accountant",
+            "who": "machine",
+            "name": "The accountant",
+            "does": "adds the lines up",
+            "mood": "talk"
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "caption": "The chapters before this one are a drawing. Later the same night the team measured its own sessions: each agent ran a small tool on its own session and committed one line of numbers, and an accountant agent added them up. Chapters 1 and 2, measured: almost everything the models read was a session reading its own context again.",
+          "at": 2,
+          "clock": "03:33 UTC",
+          "cards": [
+            {
+              "title": "One night, 26 sessions of this team's agents",
+              "label": "fact",
+              "text": "1.31 billion tokens in 3,943 calls.",
+              "fields": [
+                {
+                  "k": "Before a session reads anything",
+                  "v": "about 84,000 tokens on its first call",
+                  "new": true,
+                  "href": "../../view/?path=accounts/savings.md"
+                },
+                {
+                  "k": "Cache reads: context read again on a later call",
+                  "v": "1,295,742,639: 98.8%",
+                  "new": true
+                },
+                {
+                  "k": "What was new on each call",
+                  "v": "0.8%",
+                  "new": true
+                },
+                {
+                  "k": "Everything the agents wrote",
+                  "v": "0.3%",
+                  "new": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "caption": "Chapter 3, measured: how long a session gets. The long sessions carried 300,000 to 770,000 tokens on every call. The longest reached 783,922 on one call and is the only one of the 26 that had been compressed. The others never reached the door; they paid for their length on every call instead.",
+          "at": 1,
+          "cards": [
+            {
+              "title": "The longest session (the conductor's)",
+              "label": "fact",
+              "fields": [
+                {
+                  "k": "Calls, since 18:56 UTC on 10 November",
+                  "v": "758",
+                  "new": true,
+                  "href": "../../view/?path=accounts/ledger/conductor.jsonl"
+                },
+                {
+                  "k": "Most carried on one call",
+                  "v": "783,922 tokens",
+                  "new": true
+                },
+                {
+                  "k": "Compressed",
+                  "v": "once",
+                  "new": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "caption": "Chapter 5, measured: the files as the memory. A new agent that started from a short pack of three files answered the same questions as one that read ten whole files. And when agents wrote a hand-over note and let a fresh session take over from the files, each call carried a fraction of what it had. That story has its own explanation: The hand-over.",
+          "at": 0,
+          "cards": [
+            {
+              "title": "Starting from files",
+              "label": "fact",
+              "fields": [
+                {
+                  "k": "The pack against ten whole files",
+                  "v": "14,734 tokens against 39,775; 8 of 8 answers right on both (one run each)",
+                  "new": true,
+                  "href": "../../view/?path=accounts/pack-test.json"
+                },
+                {
+                  "k": "One agent, before and after a hand-over",
+                  "v": "761,832 to 125,417 tokens a call: 84% less",
+                  "new": true,
+                  "href": "../../view/?path=accounts/savings.md"
+                },
+                {
+                  "k": "The whole story",
+                  "v": "The hand-over, the Studio's sixth explanation",
+                  "new": true,
+                  "href": "../the-hand-over/index.html"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "simplifies": [
-    "Blocks are an illustration. Real context is counted in tokens (pieces of words), and one file can outweigh a hundred messages. No conversation was measured for this; only the files in chapter 5 are real measurements.",
+    "Blocks are an illustration. Real context is counted in tokens (pieces of words), and one file can outweigh a hundred messages. The conversations drawn were not measured. What is measured is in the boxes marked \"measured on this team\" and in chapter 5's file sizes.",
+    "The measured figures are this team's own sessions on one night (26 of 30 agents, counted by incident.accountant@ from each session's own transcript, read at 03:33 UTC). They are a measurement of how these agents worked, in long sessions with many tool calls each, not of chat assistants in general, and they are in tokens, not money. They sit in boxes beside the scenes they bear on and in chapter 7; the drawn blocks do not have their proportions.",
     "One turn is drawn as one request. A turn in which the assistant uses tools is several requests, each carrying the whole context so far, so the re-reading is greater than drawn.",
     "The bars under chapters 1 and 2 show a shape, not a price. If every turn added the same amount, the total read without a cache would grow roughly with the square of the number of turns, and the part read at full cost with a cache roughly in a straight line. Real turns are uneven, and reused parts still cost something.",
     "The cache is drawn as all or nothing per block. Real caches differ from one service to another: what can be cached, the smallest size, how long it is kept, whether you must ask for it, and what a reused part costs. None of those details is stated here.",
@@ -1485,6 +1664,27 @@
       "size": "5,978 and 3,698 bytes",
       "read": "11 November 2026, 00:39 UTC",
       "note": "with CLAUDE.md and BRIEF.md, the four files this animation's agent read to start: 19,654 bytes"
+    },
+    {
+      "name": "accounts/savings.md",
+      "href": "../../view/?path=accounts/savings.md",
+      "size": "8,766 bytes",
+      "read": "11 November 2026, 03:39 UTC",
+      "note": "incident.accountant@: where the tokens went (kept 03:35 UTC, from the ledger at 03:33 UTC)"
+    },
+    {
+      "name": "accounts/pack-test.json",
+      "href": "../../view/?path=accounts/pack-test.json",
+      "size": "3,750 bytes",
+      "read": "11 November 2026, 03:39 UTC",
+      "note": "the pack against ten whole files, measured in two sub-agents"
+    },
+    {
+      "name": "accounts/ledger/conductor.jsonl",
+      "href": "../../view/?path=accounts/ledger/conductor.jsonl",
+      "size": "2,068 bytes",
+      "read": "11 November 2026, 03:39 UTC",
+      "note": "the longest session's own line: context_per_call.largest"
     }
   ]
 }

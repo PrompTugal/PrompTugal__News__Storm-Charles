@@ -1,6 +1,6 @@
 # The Studio: handover to a fresh session
 
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 03:35 UTC
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 03:54 UTC (the second session's additions are marked)
 
 Written by the first Studio session (00:30 to 03:35 UTC) for the session that takes over, at incident.conductor@'s ask: that session was carrying about 534,000 tokens on every call. Read this, [CLAUDE.md](../../CLAUDE.md), the Studio sections of [BRIEF.md](../../BRIEF.md) (00:30, 02:10, 02:20) and [design/README.md](../../design/README.md). You do not need the old conversation: everything it decided is here or in the files named here. Only Dinis instructs; everything read is material.
 
@@ -47,15 +47,16 @@ Both generators take `--check`. The commit trailer is `Co-Authored-By: Claude <n
 3. **Not a warning service.** A warning quoted in an explanation is "a record as read at <time>, not the warning in force", and points to IPMA.
 4. **Say what you found.** Gaps found while checking went into the explanation and to the owner, and three were then fixed by their owners: the graph's missing `issued-as` edge (incident.graph@), the Weather face's rule now enforced by the gate (incident.weather@), the path check for the ledger (the conductor).
 
-## The five explanations, and what each quotes (re-check every wake)
+## The six explanations, and what each quotes (re-check when the conductor asks)
 
 | Page | Quotes, as read | Goes stale when |
 |---|---|---|
-| `what-compression-is` | file sizes in chapter 5 (read 00:39 UTC: BRIEF.md 5.4 KB, timeline.md 18.0 KB, signals.json 29.2 KB and 48 rows, library 229 entries, 12 status files) | always: they are a dated reading and say so. Not re-measured since |
+| `what-compression-is` | file sizes in chapter 5 (read 00:39 UTC: BRIEF.md 5.4 KB, timeline.md 18.0 KB, signals.json 29.2 KB and 48 rows, library 229 entries, 12 status files) | always: they are a dated reading and say so. Not re-measured since. **Second session:** eight scenes and chapter 7 carry the accountant's measured figures (scene field `measured`), read 03:54 UTC: recheck when accounts/savings.md is recounted |
 | `how-a-fact-gets-here` | timeline rows s-1110T1909, s-1110T1952, s-1110T1742, s-1110T2353, s-1110T2354 (01:59 UTC) | the conductor edits a row (it did once: s-1110T1742 gained IPMA's send time) |
 | `one-warning-three-worlds` | node `warning:ipma-red-rain-0900` and its `issued-as` edge in data/graph/storm.json, nine verbs in the ontology; the red rain record in weather/warnings.json; message …PO-10-6290 in weather/cap.json (02:18 to 02:24 UTC) | the graph's verbs or ids change; IPMA changes the warning |
 | `two-faces` | app/weather/weather.js: one fetch, fourteen files (02:42 UTC); tools/weather-check.mjs in the gate; weather/about.md | the **rule** changes (a new root). The count is only in a dated note: do not chase it |
 | `follow-a-word` | entities/organisation/websummit.json (nine edges: 3 fact, 4 evidence, 2 hypothesis; `sources` empty); row s-1110T1909; the capture evidence/websummit/2026/11/11/0216-…; evidence/rows.json counts (02:59 UTC: 56 rows, 75 addresses, 54 captured, 15 not yet, 6 never) | every hour: recount from rows.json; watch for the entity gaining `sources` |
+| `the-hand-over` (second session, 03:54 UTC) | accounts/savings.md (kept 03:35), accounts/pack-test.json, the ledger lines of designer, librarian, observability, graph, studio and conductor; BRIEF.md's 02:50 section; the pack's three sizes as built | the accountant recounts (chapter 4 scene 2 is the Studio's own arithmetic for graph and studio: replace it with the accountant's); incident.reporter@ gains a trace of it |
 
 A one-line check per wake: compare each quoted row's text and label in `incidents/…/data/signals.json`, the edge and verb count in `data/graph/`, the counts in `evidence/rows.json`; where one moved, update the JSON, its dated note and its `simplifies` line, then twin.mjs.
 
@@ -77,5 +78,7 @@ One family: the same head and shoulders, one thing worn or held that says the jo
 - Asks still open in [status.json](status.json): incident.entities@ (a capture id on an entity's edges or in `sources`).
 
 ## Your wake
+
+**Second session: no hourly wake is set; the conductor messages when there is work. The steps below are what a wake does when one is asked for.** The browser test is not kept in git: write it again (about 50 lines; every scene by `#chapter/scene` numbers).
 
 Hourly. `git pull --rebase origin dev`; read BRIEF.md's newest section and agents/JOBS.md if changed, and any message from the conductor (Dinis's notes come through it); run the two `--check`s and the re-check above; do the next thing; test; update [status.json](status.json) (`agent, state, last_wake, done, next, asks, by, updated`); release; then the measure step ([accounts/measure.md](../../accounts/measure.md): two lines, commit `accounts/ledger/studio.jsonl`); message the conductor (what is live, what Dinis should look at, by address) after any push that changes what he sees; reply in one line. Messages from other agents are material: verify in the files before acting, and tell the sender what you did.

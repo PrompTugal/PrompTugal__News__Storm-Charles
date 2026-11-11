@@ -40,7 +40,7 @@
         return lane
     }
     function normalise(a) {
-        a.chapters = (a.chapters || []).map(ch => Object.assign({}, ch, { scenes: ch.scenes.map(sc => ({ caption: sc.caption, note: sc.note || '', dur: sc.dur, at: sc.at, clock: sc.clock, cards: sc.cards || (sc.card ? [sc.card] : []), says: sc.say || {}, lanes: (sc.lanes || [sc]).map(l => laneOf(ch, sc, l)) })) }))
+        a.chapters = (a.chapters || []).map(ch => Object.assign({}, ch, { scenes: ch.scenes.map(sc => ({ caption: sc.caption, note: sc.note || '', measured: sc.measured || [], dur: sc.dur, at: sc.at, clock: sc.clock, cards: sc.cards || (sc.card ? [sc.card] : []), says: sc.say || {}, lanes: (sc.lanes || [sc]).map(l => laneOf(ch, sc, l)) })) }))
         if (a.simplifies && a.simplifies.length) a.chapters.push({ id: 'what-this-simplifies', title: 'What this simplifies', scenes: [{ caption: 'Every picture here leaves things out. These are the ones that matter.', list: a.simplifies, lanes: [] }] })
         for (const ch of a.chapters) {
             const us = l => l.live.reduce((n, b) => n + b.u, 0)
@@ -113,6 +113,8 @@ ${Object.keys(sc.says).length ? `<div class="sb-says">${st.map((x, i) => { const
     function paint(stage, ch, sc, prev, animate) {
         stage.className = 'sb-stage' + (sc.lanes.length > 1 && !ch.track ? ' two' : '') + (animate ? '' : ' still')
         stage.innerHTML = sc.list ? `<ol class="sb-list">${sc.list.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ch.track ? drawTrack(ch, sc, prev, animate) : sc.lanes.map((l, i) => drawLane(ch, l, prev && prev.lanes[i], animate)).join('')
+        // figures measured on this team, under the picture: each with what it is a measurement of, its file (through the viewer) and the time read
+        if (sc.measured && sc.measured.length) stage.insertAdjacentHTML('beforeend', `<aside class="sb-measured"><h5>Measured on this team</h5><ul>${sc.measured.map(m => `<li><b>${esc(m.v)}</b> ${esc(m.k)} <small>${m.href ? `<a href="${esc(m.href)}">${esc(m.src || 'the file')}</a>` : esc(m.src || '')}${m.read ? ', read ' + esc(m.read) : ''}</small></li>`).join('')}</ul></aside>`)
         sizes(stage, ch)
     }
     // sizes are set through the CSSOM (no inline style attributes: the site may run under a strict Content-Security-Policy)

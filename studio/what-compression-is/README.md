@@ -4,11 +4,11 @@ summary: What travels to the model each time you say something to a chat assista
 mount: <div id="studio" data-base="../animations/" data-anim="what-compression-is"><noscript><p class="meta">The player needs JavaScript. The same explanation, scene by scene as text, is below.</p></noscript></div>
 head: <link rel="stylesheet" href="../../app/studio/studio.css"><script src="../../app/studio/characters.js" defer></script><script src="../../app/studio/player.js" defer></script>
 ---
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:13 UTC
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 03:48 UTC
 
 # What compression is
 
-What travels to the model each time you say something to a chat assistant, what a cache changes, why a full conversation gets compressed, what is lost when it is, and how this team works so that the loss does not matter. An explanation from [the Studio](../index.html). An explanation in general terms that hold for chat assistants: the context is sent with each request; a cache reuses an unchanged beginning; a full window is summarised or cut. It describes no one product's internals. Block sizes are an illustration, not a measurement. At Dinis Cruz's word (BRIEF.md, 11 November 2026).
+What travels to the model each time you say something to a chat assistant, what a cache changes, why a full conversation gets compressed, what is lost when it is, and how this team works so that the loss does not matter. An explanation from [the Studio](../index.html). An explanation in general terms that hold for chat assistants: the context is sent with each request; a cache reuses an unchanged beginning; a full window is summarised or cut. It describes no one product's internals. Block sizes are an illustration, not a measurement. The boxed figures marked "measured on this team" are measurements: incident.accountant@'s count of this team's own sessions on the night of 10 to 11 November 2026, each linked to its file (added 11 November 2026, 03:39 UTC). At Dinis Cruz's word (BRIEF.md, 11 November 2026).
 
 Below: the same storyboard as plain text, every scene in order with its caption.
 
@@ -17,6 +17,7 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 **What travels to the model when you say one thing?**
 
 1. Three characters. You, on the left. In the centre the app: the chat program, which keeps the conversation. On the right the model, which reads what it is sent and writes an answer. Before you type anything the app already holds two things: its instructions and the descriptions of its tools.
+   Measured on this team: about 84,000 tokens is what each of 26 measured sessions of this team carried on its first call, before it had read one file: the instructions, the tools and the repository's rules. ([accounts/savings.md](../../view/?path=accounts/savings.md), read 03:39 UTC).
 2. You say one thing. The app adds it to the bottom of the conversation.
 3. The app sends the model everything it holds: the instructions, the tools and your message. The model reads all of it, top to bottom.
    request 1 carries 3 blocks; 3 read at full cost.
@@ -27,6 +28,7 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 7. Third message. The pile has grown, and all of it is sent and read again. Each turn costs more than the last and usually takes longer, because each one carries everything before it.
    request 3 carries 10 blocks; 10 read at full cost.
 8. That is a request with no cache. You typed three short lines; the model read 18 blocks to answer them, most of them more than once. The bars show the shape: each request is longer than the one before, so the total grows faster than the conversation does. This is the picture to keep: the context is sent with every request.
+   Measured on this team: 1.31 billion tokens in 3,943 calls is what 26 sessions of this team's agents read in one night (to 03:33 UTC). An agent's turn is many calls, and each call carries its session's whole context again. ([accounts/savings.md](../../view/?path=accounts/savings.md), read 03:39 UTC).
 
 ## 2. The same, with a cache
 
@@ -40,9 +42,9 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 4. Third request: the same again. The unchanged beginning is longer now, so more is reused. The new end (the file, an answer, your message) is read at full cost.
    request 3 carries 10 blocks; 5 read at full cost, 5 reused from the cache.
 5. What the cache changed: cost and time. Over the same three requests the model read 10 blocks at full cost instead of 18: each request now pays in full only for what is new. The reused part is usually charged at a lower rate, not at nothing; how much lower differs from one service to another.
-   request 3 carries 10 blocks; 5 read at full cost, 5 reused from the cache.
+   request 3 carries 10 blocks; 5 read at full cost, 5 reused from the cache. Measured on this team: 98.8% of those 1.31 billion tokens were cache reads (1,295,742,639): context a session had already read, reused on a later call. 0.8% was what was new on each call; 0.3% was everything the agents wrote. ([accounts/savings.md](../../view/?path=accounts/savings.md), read 03:39 UTC).
 6. What it did not change: the conversation is exactly as long. All of it still travels with every request, the model still works from all of it, and all of it still counts against a fixed limit, the context window. A cache makes a long context cheaper. It does not make it shorter.
-   request 3 carries 10 blocks; 5 read at full cost, 5 reused from the cache.
+   request 3 carries 10 blocks; 5 read at full cost, 5 reused from the cache. Measured on this team: 300,000 to 770,000 tokens is what this team's long sessions carried on every call, cache or no cache. Every one of them had started near 84,000. ([accounts/savings.md](../../view/?path=accounts/savings.md), read 03:39 UTC).
 7. And a cache only matches an unchanged beginning. Change something early (here, one line of the instructions) and everything after it is read at full cost again. Leave the conversation alone for long enough and the cache expires: the next request starts cold.
    request 4 carries 12 blocks; 12 read at full cost.
 
@@ -53,12 +55,13 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 1. Every model has a context window: the most it can be sent in one request. Picture it as a doorway of fixed size between the app and the model. So far the conversation goes through with room to spare.
    request 1 carries 8 blocks; 8 read at full cost.
 2. The conversation keeps growing: more turns, another file. The doorway does not grow. The pile is now taller than the door: the hatched part is what no longer fits.
+   Measured on this team: 783,922 tokens is the most one session here carried on a single call: the conductor's, one session of 758 calls since 18:56 UTC on 10 November. The size of its window is not stated here. ([accounts/ledger/conductor.jsonl](../../view/?path=accounts/ledger/conductor.jsonl), read 03:39 UTC).
 3. You say one more thing, and the request cannot be sent: it is longer than the window. A cache does not help here. It changes what a long context costs, not how long it is.
    request 2 does not fit the window of 11 blocks and cannot be sent.
 4. Something has to give. The crude way is to cut: drop the oldest turns, and everything in them is gone. The usual way is to compress: a model is asked to write a short summary of the older part of the conversation. *Simplified: this is normally done a little before the limit, while the conversation still fits through the door to be summarised.*
 5. The summary takes the place of the middle. The instructions and tools stay; the most recent turns stay; nine turns and two files are now a few lines about them.
 6. Now it fits through the door, and the conversation goes on. From your side the chat simply continues; it is easy to miss that anything happened.
-   request 2 carries 7 blocks; 7 read at full cost.
+   request 2 carries 7 blocks; 7 read at full cost. Measured on this team: 1 of 26 measured sessions had been compressed by 03:33 UTC: that same session, once. The others had not reached the door; they paid for their length on every call instead. ([accounts/savings.md](../../view/?path=accounts/savings.md), read 03:39 UTC).
 7. That is compression: the older part of a long conversation replaced by a shorter text about it, so that the work can go on. What that text kept and what it left out was decided in one moment, by a model.
 
 ## 4. What gets lost, and why
@@ -89,7 +92,7 @@ Below: the same storyboard as plain text, every scene in order with its caption.
    This team: written down as it goes: read from the file system: [CLAUDE.md](../../CLAUDE.html) (4.6 KB).
 6. A fresh agent, a new session with nothing in its head, does not read the old conversation at all. It reads the documents. The agent that made this animation started that way: four files, CLAUDE.md, BRIEF.md, agents/JOBS.md and design/README.md, 19.7 KB in all, and none of the conversations that produced them.
    This team: written down as it goes: request 1 carries 6 blocks; 6 read at full cost. This team: written down as it goes: read from the file system: [BRIEF.md](../../BRIEF.html) (5.4 KB), [CLAUDE.md](../../CLAUDE.html) (4.6 KB), [agents/*/status.json](../../agents/index.html) (12 files, 1.9 to 15.2 KB).
-7. Dinis's words for it (BRIEF.md): a massive conversation, then a document "always going to be smaller than the conversation ... but more of a cohesive document". Writing the document is compression too. The difference is who does it and when: whoever is doing the work, on purpose, while they still know what matters. *The file sizes are measured: bytes in this repository, read 11 November 2026, 00:39 UTC; they grow as the storm goes on. The conversations were not measured.*
+7. Dinis's words for it (BRIEF.md): a massive conversation, then a document "always going to be smaller than the conversation ... but more of a cohesive document". Writing the document is compression too. The difference is who does it and when: whoever is doing the work, on purpose, while they still know what matters. *The file sizes are measured: bytes in this repository, read 11 November 2026, 00:39 UTC; they grow as the storm goes on. The conversations drawn here were not measured; the team's own sessions were, later that night (the boxed figures).*
 
 ## 6. The point
 
@@ -98,9 +101,21 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 1. Compression still happens. It stops mattering when the file system is the memory: documents that are specific, linked to each other, and hold what actually matters. The conversation is where the work is done. The files are what is kept.
    request 1 carries 7 blocks; 7 read at full cost. read from the file system: [BRIEF.md](../../BRIEF.html) (5.4 KB), [CLAUDE.md](../../CLAUDE.html) (4.6 KB), [timeline.md](../../incidents/2026-11-10-storm-charles/timeline.html) (18.0 KB), [data/signals.json](../../incidents/2026-11-10-storm-charles/data/signals.json) (29.2 KB), [decisions.md](../../incidents/2026-11-10-storm-charles/decisions.html) (3.5 KB), [library/](../../library/index.html) (229 entries), [agents/*/status.json](../../agents/index.html) (12 files, 1.9 to 15.2 KB).
 
+## 7. Measured
+
+**And what did it look like when this team measured itself?**
+
+1. The chapters before this one are a drawing. Later the same night the team measured its own sessions: each agent ran a small tool on its own session and committed one line of numbers, and an accountant agent added them up. Chapters 1 and 2, measured: almost everything the models read was a session reading its own context again.
+   The time: 03:33 UTC. At work: the accountant. (fact) "1.31 billion tokens in 3,943 calls."; added: Before a session reads anything: [about 84,000 tokens on its first call](../../view/?path=accounts/savings.md); Cache reads: context read again on a later call: 1,295,742,639: 98.8%; What was new on each call: 0.8%; Everything the agents wrote: 0.3%.
+2. Chapter 3, measured: how long a session gets. The long sessions carried 300,000 to 770,000 tokens on every call. The longest reached 783,922 on one call and is the only one of the 26 that had been compressed. The others never reached the door; they paid for their length on every call instead.
+   At work: the ledger. (fact) The longest session (the conductor's); added: Calls, since 18:56 UTC on 10 November: [758](../../view/?path=accounts/ledger/conductor.jsonl); Most carried on one call: 783,922 tokens; Compressed: once.
+3. Chapter 5, measured: the files as the memory. A new agent that started from a short pack of three files answered the same questions as one that read ten whole files. And when agents wrote a hand-over note and let a fresh session take over from the files, each call carried a fraction of what it had. That story has its own explanation: The hand-over.
+   At work: each agent. (fact) Starting from files; added: The pack against ten whole files: [14,734 tokens against 39,775; 8 of 8 answers right on both (one run each)](../../view/?path=accounts/pack-test.json); One agent, before and after a hand-over: [761,832 to 125,417 tokens a call: 84% less](../../view/?path=accounts/savings.md); The whole story: [The hand-over, the Studio's sixth explanation](../the-hand-over/index.html).
+
 ## What this simplifies
 
-- Blocks are an illustration. Real context is counted in tokens (pieces of words), and one file can outweigh a hundred messages. No conversation was measured for this; only the files in chapter 5 are real measurements.
+- Blocks are an illustration. Real context is counted in tokens (pieces of words), and one file can outweigh a hundred messages. The conversations drawn were not measured. What is measured is in the boxes marked "measured on this team" and in chapter 5's file sizes.
+- The measured figures are this team's own sessions on one night (26 of 30 agents, counted by incident.accountant@ from each session's own transcript, read at 03:33 UTC). They are a measurement of how these agents worked, in long sessions with many tool calls each, not of chat assistants in general, and they are in tokens, not money. They sit in boxes beside the scenes they bear on and in chapter 7; the drawn blocks do not have their proportions.
 - One turn is drawn as one request. A turn in which the assistant uses tools is several requests, each carrying the whole context so far, so the re-reading is greater than drawn.
 - The bars under chapters 1 and 2 show a shape, not a price. If every turn added the same amount, the total read without a cache would grow roughly with the square of the number of turns, and the part read at full cost with a cache roughly in a straight line. Real turns are uneven, and reused parts still cost something.
 - The cache is drawn as all or nothing per block. Real caches differ from one service to another: what can be cached, the smallest size, how long it is kept, whether you must ask for it, and what a reused part costs. None of those details is stated here.
@@ -121,5 +136,8 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 - [library/index.json (built by tools/library-index.mjs, not tracked)](../../library/index.json), 296,196 bytes, 229 entries, read 11 November 2026, 00:39 UTC
 - [agents/*/status.json](../../agents/index.html), 12 files, 1,951 to 15,223 bytes, read 11 November 2026, 00:39 UTC
 - [agents/JOBS.md and design/README.md](../../agents/JOBS.html), 5,978 and 3,698 bytes, read 11 November 2026, 00:39 UTC: with CLAUDE.md and BRIEF.md, the four files this animation's agent read to start: 19,654 bytes
+- [accounts/savings.md](../../view/?path=accounts/savings.md), 8,766 bytes, read 11 November 2026, 03:39 UTC: incident.accountant@: where the tokens went (kept 03:35 UTC, from the ledger at 03:33 UTC)
+- [accounts/pack-test.json](../../view/?path=accounts/pack-test.json), 3,750 bytes, read 11 November 2026, 03:39 UTC: the pack against ten whole files, measured in two sub-agents
+- [accounts/ledger/conductor.jsonl](../../view/?path=accounts/ledger/conductor.jsonl), 2,068 bytes, read 11 November 2026, 03:39 UTC: the longest session's own line: context_per_call.largest
 
 The data this page is drawn from: [animations/what-compression-is.json](../animations/what-compression-is.json).
