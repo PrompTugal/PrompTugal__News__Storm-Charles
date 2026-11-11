@@ -324,7 +324,24 @@ function writeIndex() {
   fs.writeFileSync(path.join(DIR, 'index.json'), JSON.stringify(out, null, 1) + '\n');
 }
 
-if (cmd === 'backfill') { backfill(); writeIndex(); }
-else if (cmd === 'units') { const u = units(); console.log(`data/trace/units.json: ${u.count} units`); }
-else if (cmd === 'index') writeIndex();
-else { live(); writeIndex(); }
+// The CLI runs only when this file is the command, never on import (tools/models-calls.mjs and others import emit()).
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isMain) {
+  if (cmd === 'backfill') { backfill(); writeIndex(); }
+  else if (cmd === 'units') { const u = units(); console.log(`data/trace/units.json: ${u.count} units`); }
+  else if (cmd === 'index') writeIndex();
+  else { live(); writeIndex(); }
+}
+
+// For other tools: emit({ at?, unit, altitude, phase, name, parent?, runner, environment?, key_fp?, model?, valid?, item?, note?, host?,
+// duration_ms?, cost_usd? }) appends one event to data/trace/<date>/<HH>.<runner's role>.json and returns that path. `runner` is the
+// agent the event belongs to (it owns the file); trace_id, span_id and seq are computed here. Call writeIndex() once after a batch.
+export function emit(o) {
+  if (!o || !o.unit || !o.phase || !o.runner) throw new Error('trace emit: unit, phase and runner are needed');
+  const t = o.at ? Date.parse(o.at) : Date.now();
+  if (seqLast < t * 1000 + 500) seqLast = t * 1000 + 500 + Math.floor(Math.random() * 400);
+  const runner = fullName(o.runner);
+  const e = event({ altitude: 'A3', environment: envOf(runner), source: 'tools/trace.mjs', ...o, runner, at: iso(t) });
+  return appendLive(e);
+}
+export { writeIndex, appendLive };
