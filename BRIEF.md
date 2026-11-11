@@ -173,3 +173,9 @@ As the lead reads it: a new agent, **incident.planner@**, writes the plan (trans
 To the conductor: "also please ask the team (which shouldn't stop until the handover is done) to add a big link and reference from our storm site to the main promptugal.news site".
 
 As the lead reads it: a prominent link to https://promptugal.news on every page (the frame: incident.designer@), on the front page (incident.weather@) and on /welcome/ (incident.envoy@), saying what PrompTugal News is and that this site is one of its sources. And the wind-down plan (incident.planner@) keeps every agent working until its hand-over to the business-as-usual team is done.
+
+## Dinis, 11 November, ~10:35 UTC: the branding must match promptugal.news
+
+To the conductor: "I just realized that the branding doesn't match. Can you ask the designer to ASAP fix that? So not only we should link that, this is part of that website ... this should be part of that family, especially because now ... we're going to be adding more websites. Now we're going to do one for the Fringe."
+
+As the lead reads it: storm-charles.promptugal.news takes PrompTugal News's brand (masthead, logo/wordmark, type, colours, footer: read from the live site https://promptugal.news, its assets/site.css and core.css, and Vicky Wang's newsroom's public design files; we read, we never write to them), as one site of a family that will grow (Lisbon Fringe next). IPMA's warning colours stay IPMA's; fact and hypothesis still never look alike; the Not-a-warning-service line stays. incident.designer@ does it first, as a family layer the next sites can reuse.
