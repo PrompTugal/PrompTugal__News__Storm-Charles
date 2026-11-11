@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 21:42 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 590 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 22:18 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 590 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -186,7 +186,7 @@ Primary source time: **11 Nov 07:16 UTC** (fact: IPMA's CAP message PO-01-1932, 
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 21:42 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 22:18 UTC | | | | |
 
 - Added 13:38 UTC by the third session. Público's title "já confirmou o regresso amanhã" (article 12:00, updated 12:17) is earlier than the 12:04 post if its 12:00 is its first time: read by hand before saying who was first.
 
@@ -196,7 +196,7 @@ Primary source time: **11 Nov 12:16 UTC** (fact: IPMA, comunicados (https://www.
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 21:42 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 22:18 UTC | | | | |
 
 - Added 12:38 UTC by the third session.
 
@@ -206,7 +206,7 @@ Primary source time: **11 Nov 12:18 UTC** (fact: IPMA's CAP batch sent 12:18:03 
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 21:42 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 22:18 UTC | | | | |
 
 - Added 12:38 UTC by the third session. Candidate for a hand check: ECO's title "IPMA atualiza para oito os distritos em aviso vermelho" carries the time 11:38, before the 12:18:03 batch (a title changed after publication, or an earlier change: not checked).
 - 13:38 UTC: ECO's item is feed-only (its pages are not opened), so whether its 11:38:06 title was changed later cannot be read here; it stays outside the window and is not counted.

@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+// A second reader of each new press headline: which of the team's facts it reports, by open-weight models through OpenRouter, compared
+// with this desk's own patterns (proposed by incident.models@web-summit.dinis for incident.media@web-summit.dinis, 11 November 2026,
+// WS-214; Dinis ~22:00 UTC, BRIEF.md: collectors through OpenRouter, open-source models). Run after the coverage read:
+//   node research/media/models-match.mjs [--files 2] [--max 15] [--dry] [--wake "hourly HH:MM"]
+// For each article in the newest coverage files (research/media/coverage/*.json) not yet read, its headline and publication time go to
+// tools/models-delegate.mjs (task match-fact: two open-weight models, plus one commercial model for comparison) with the facts of
+// research/media/facts.json (id and what). The desk's own pattern (facts.json `pattern`, the first that matches the headline) is the
+// reference; the models' answer is evidence, labelled with their names; a disagreement is listed for this desk, nothing is relabelled.
+// Written to research/media/models-match.json: per article its id, url, the pattern's fact, each model's fact, whether they agree.
+// Ids and urls only: no headline text (it is in the coverage files already) and no model text.
+// Every call is in the ledger and published text-free in agents/media/calls/ (tools/models-calls.mjs).
+import fs from 'node:fs'
+import path from 'node:path'
+import crypto from 'node:crypto'
+import { fileURLToPath } from 'node:url'
+
+const HERE = path.dirname(fileURLToPath(import.meta.url)), ROOT = path.resolve(HERE, '../..')
+const { delegate } = await import(path.join(ROOT, 'tools/models-delegate.mjs'))
+const AGENT = process.env.MATCH_AGENT || 'incident.media@web-summit.dinis'
+const args = process.argv.slice(2), opt = (k, d) => { const i = args.indexOf(k); return i < 0 ? d : args[i + 1] }
+const FILES = +opt('--files', 2), MAX = +opt('--max', 15), DRY = args.includes('--dry'), WAKE = opt('--wake', process.env.INCIDENT_WAKE || null)
+const OUT = path.join(HERE, 'models-match.json')
+const facts = JSON.parse(fs.readFileSync(path.join(HERE, 'facts.json'), 'utf8')).facts
+const patternFact = t => facts.find(f => f.pattern && new RegExp(f.pattern, 'i').test(t))?.id || 'none'
+let out; try { out = JSON.parse(fs.readFileSync(OUT, 'utf8')) } catch { out = null }
+out = out || { about: "Each press headline read a second time by open-weight models through OpenRouter (research/media/models-match.mjs, task match-fact of models/delegate.json): which of the facts in facts.json it reports, compared with this desk's own pattern. The pattern is the reference; the models' answer is evidence, labelled with their names. Ids and urls only.", by: AGENT, updated: null, read: {} }
+
+const dir = path.join(HERE, 'coverage'), files = fs.readdirSync(dir).filter(f => /^\d{4}-\d\d-\d\dT\d\d\.json$/.test(f)).sort().slice(-FILES)
+const articles = files.flatMap(f => JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).articles || [])
+const todo = articles.filter(a => a.id && a.title && !out.read[a.id]).sort((a, b) => String(b.published).localeCompare(String(a.published))).slice(0, MAX)
+let cost = 0, agree = 0
+const byTitle = new Map(Object.values(out.read).filter(x => x.title_sha256).map(x => [x.title_sha256, x]))
+const tsha = t => crypto.createHash('sha256').update(t).digest('hex')
+for (const a of todo) {
+    const seen = byTitle.get(tsha(a.title))
+    if (seen) { out.read[a.id] = { ...seen, url: a.url, outlet: a.outlet, published: a.published, same_headline_as: seen.id || null, cost_usd: 0, calls: 0 }; if (seen.agree_with_pattern) agree++; continue }
+    const r = await delegate({ task: 'match-fact', input: { id: a.id, input: a.title, published_at: a.published, facts: facts.map(f => ({ id: f.id, what: f.what })) }, agent: AGENT, wake: WAKE })
+    cost += r.cost_usd
+    const ref = patternFact(a.title), open = r.models.filter(m => !m.comparison && m.valid), cmp = r.models.find(m => m.comparison)
+    const said = open.map(m => m.answer.fact), same = open.length >= 2 && said.every(v => v === ref)
+    if (same) agree++
+    out.read[a.id] = { url: a.url, outlet: a.outlet, published: a.published, at: r.at, trace_id: r.trace_id, label: 'evidence', pattern: ref,
+        models: Object.fromEntries(open.map(m => [m.model, m.answer.fact])), models_agree: open.length >= 2 && new Set(said).size === 1, agree_with_pattern: same,
+        comparison: cmp ? { model: cmp.model, label: 'commercial, for comparison', fact: cmp.valid ? cmp.answer.fact : null } : null, cost_usd: r.cost_usd, calls: r.calls, title_sha256: tsha(a.title), id: a.id }
+    byTitle.set(tsha(a.title), out.read[a.id])
+}
+out.updated = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
+const all = Object.values(out.read)
+out.totals = { read: all.length, agree_with_pattern: all.filter(x => x.agree_with_pattern).length, models_agree_pattern_differs: all.filter(x => x.models_agree && !x.agree_with_pattern).length, cost_usd: +all.reduce((s, x) => s + (x.cost_usd || 0), 0).toFixed(6) }
+if (!DRY) fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n')
+else console.error(JSON.stringify(Object.fromEntries(todo.map(a => [a.id, { title: a.title, ...out.read[a.id] }])), null, 1))
+console.log(JSON.stringify({ agent: AGENT, read_now: todo.length, agree_with_pattern: agree, cost_usd: +cost.toFixed(6), dry: DRY }))
