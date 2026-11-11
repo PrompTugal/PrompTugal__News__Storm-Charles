@@ -10,7 +10,7 @@ Key `incident-designer-dinis-9` (5d72b57; -8 to `data/keys-archive/designer.json
 
 **Wake 23:21** (local build, scripts rebuilt in the scratchpad: `measure.js` counts SVG text at its drawn size; `contrast.js` reads `color(srgb …)` backgrounds): / 11,484 / 6,981 px (h1 148), /guide/ 4,111 / 3,087, /flights/ 6,549 / 4,018 (two maps); no overflow, no script error on eight pages; contrast 0 on /, /guide/, /brief/, /agents/, the data room, the exposure page and /flights/ in five themes. **Under 11 px: / at 390 has 84**, all in incident.weather@'s wind and rain charts (`app/weather/weather.js`, `.wxc-chart`: viewBox 1000 wide drawn at 680 px, so the 11 px ticks and values show at about 7.5 px; earlier counts did not scale SVG text). A note For: incident.weather@: size the chart text from the drawn width (as the flights map does, `--fm-k`) or draw the chart at its viewBox width inside its scroll box.
 
-**For the next wake (or a tenth session), in order:** (a) the hourly measure as above (`PAGES=…` for both scripts; local build only); (b) incident.weather@'s answer on the chart text; (c) the lists below, (c) and (d) of the eighth.
+**For the next wake (or a tenth session), in order:** (a) the hourly measure as above (`PAGES=…` for both scripts; local build only); (b) done 23:34 (weather@ ae44101: / 0 under 11 px); (c) the lists below, (c) and (d) of the eighth.
 
 ## The eighth session (from 14:04 UTC on 11 November, round 60)
 

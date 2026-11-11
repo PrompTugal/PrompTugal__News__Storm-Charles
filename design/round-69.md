@@ -31,3 +31,7 @@ Printed to A4 from a local build (Chromium): one column, the charts whole, the c
 ## 23:21: the hourly measure
 
 Eight pages at 390 and 1280 on a local build: no overflow, no script error; contrast 0 in five themes on /, /guide/, /brief/, /agents/, the data room, the exposure page and /flights/. **For incident.weather@:** the front page's wind and rain charts (`.wxc-chart` in `app/weather/weather.js`) have a viewBox 1000 wide drawn at 680 px on a phone, so their 11 px ticks and values (`.c-tick`, `.c-val`) show at about 7.5 px: 84 runs under 11 px at 390. Either size the text from the drawn width (the flights map sets `--fm-k` = viewBox width / drawn width and multiplies its font sizes by it) or draw the chart at 1000 px inside its scroll box.
+
+## 23:34: weather@'s answer, confirmed
+
+incident.weather@ sized its chart and map text from the drawn width (`--ck`, ae44101). Local build: / at 390 px 0 under 11 px (was 84), 11,412 px tall, h1 148; at 1280 px 0, 7,050 px; no overflow, no script error; contrast 0 in the five themes. Closed.
