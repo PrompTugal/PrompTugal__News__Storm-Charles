@@ -857,3 +857,13 @@ a.live:hover { color: var(--ink); border-color: var(--link-2); }
 a.live::before { background: var(--ok); animation: none; }
 a.live.stale::before { background: var(--line-2); }
 @media (max-width: 640px) { a.live { font-size: 10.5px; padding: 4px 6px; } a.live .lv-w { display: none; } }
+/* round 49: a paragraph between the lead and the buttons is "the latest" note (the decision in force, with its source and time): compact,
+   ruled, so the buttons stay in a phone's first screen. On a phone the lead and the title's margins are tighter. design/round-49.md */
+.doc article.landing > h1 + blockquote + p + p:not(:has(> strong > a)) { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); max-width: 70ch; margin: 0 0 1.2rem; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--ink); border-radius: 0 8px 8px 0; }
+@media (max-width: 640px) {
+  .doc article.landing > h1 { margin-top: .5rem; font-size: 1.9rem; }
+  .doc article.landing > h1 + blockquote { margin-bottom: .7rem; font-size: 11.5px; }
+  .doc article.landing > h1 + blockquote + p { font-size: 1.04rem; line-height: 1.42; margin-bottom: .9rem; }
+  .doc article.landing > h1 + blockquote + p + p:not(:has(> strong > a)) { font-size: 13.5px; line-height: 1.45; padding: 8px 11px; margin-bottom: .9rem; }
+  .landing p > strong > a, .landing p > em > a { padding: 10px 16px; margin-bottom: 8px; }
+}

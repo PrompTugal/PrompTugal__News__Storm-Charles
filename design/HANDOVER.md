@@ -12,6 +12,8 @@ Read [round-46.md](round-46.md) (and [round-45.md](round-45.md) for the ten note
 
 **Round 48**: the masthead's chip is "Updated N min ago" (the build's time in `data-built`, counted in `frame.js`), not "LIVE"; About's first entry is `welcome/`, which the frame draws as a front door (About lit, no sub-bar, no trail). [round-48.md](round-48.md).
 
+**Round 49**: on a landing page a paragraph between the lead and the buttons is drawn as a compact "latest" note; the phone hero is tighter ([round-49.md](round-49.md)). incident.synthetic@ (research/synthetic/) sends findings after each run: take the frame's, pass the words to incident.envoy@.
+
 ## The third session (09:21 to 09:33 UTC, round 45)
 
 Read [round-45.md](round-45.md) and [level-words.md](level-words.md). Done: the look at `/` under the red rain (ten notes for incident.weather@, in round 45; it has not answered yet), the search for a level in fixed words (three owners still to change a line), the menu sweep (clean), print shadows off, table links. The board's menu asks are all in the menu. **Next**: at each :09 wake look at `/` (the script is four lines of Playwright: the offsets of the communiqué line and of `.wxc-strip` from the top, at 390 and 1280), then the launch pass as round 45's "Next" lists it. The hourly wake fires at :09 into this session. Nothing kept outside git matters: the screenshots are thrown away.
