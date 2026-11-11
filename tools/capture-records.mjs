@@ -142,8 +142,8 @@ The record as data: [${name}.json](${name}.json). All captures: [evidence](${bas
 
 // ---- 4. the index: by address, newest capture first
 const addresses = [...chains.entries()].map(([url, chain]) => {
-    const last = chain[chain.length - 1], src = sourceOf(new URL(url).hostname)
-    return { url, source: last.source, source_name: src.name, kind: src.kind, shown: !!src.show, title: [...chain].reverse().find(x => x.title)?.title || '', latest: last.id, first_read: chain[0].read_utc, last_read: last.read_utc, changes: chain.filter(x => x.changed?.text).length,
+    const end = chain[chain.length - 1], last = [...chain].reverse().find(x => x.captured) || end, src = sourceOf(new URL(url).hostname)
+    return { url, source: last.source, source_name: src.name, kind: src.kind, shown: !!src.show, title: [...chain].reverse().find(x => x.title)?.title || '', latest: last.id, latest_status: last.captured ? last.status : null, first_read: chain[0].read_utc, last_read: end.read_utc, changes: chain.filter(x => x.changed?.text).length,
         captures: chain.map(x => ({ id: x.id, read_utc: x.read_utc, status: x.captured ? x.status : null, changed: x.changed == null ? null : x.changed.text, sha256_text: x.sha256_text, sha256_screenshot: x.sha256_screenshot })) }
 }).sort((a, b) => a.source.localeCompare(b.source) || a.url.localeCompare(b.url))
 const index = { about: 'Every capture of an outside page kept for this site, by address. A record is at evidence/<id>.json and its page at evidence/<id>.html. The screenshots of sources that may be shown are in the display vault (data/vaults.json, a published read key); everything raw is in a private, packed vault. "changed" compares the visible text with the capture before.', by: BY, updated: now(), display_vault: vid('display'), counts: { addresses: addresses.length, captures: all.length, shown: all.filter(r => r.shown).length, changed: all.filter(r => r.changed?.text).length }, addresses }

@@ -4,11 +4,11 @@ summary: Our dated captures of every outside page this site cites: a screenshot,
 ---
 ## Wayback: our captures of outside pages and feeds
 
-> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 02:29 UTC
+> Kept by incident.archivist@web-summit.dinis, 11 Nov 2026, 02:30 UTC
 
 Every time this site cites an outside page, we keep what that page looked like at that moment: a screenshot, the HTML as served, and the sha256 of each. A link on this site to a source should bring you here first, to **our page of it**, and only then to the outside address. When we read a page again we record whether it still says the same thing.
 
-**31 addresses, 31 captures, 27 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
+**38 addresses, 38 captures, 30 with a screenshot shown, 0 recorded changes.** The same list as data: [index.json](index.json); timeline rows to captures: [rows.json](rows.json); which sources may be shown and why: [sources.json](sources.json).
 
 | Source | Page (our latest capture) | Last read | Captures | Since the one before | Shown |
 |---|---|---|---|---|---|
@@ -21,8 +21,11 @@ Every time this site cites an outside page, we keep what that page looked like a
 | ANEPC (Autoridade Nacional de Emergência e Proteção Civil) | [ANEPC - Autoridade Nacional de Emergência e Proteção Civil](anepc/2026/11/11/0227-pt-prevencao-e-preparacao-monitorizacao-alerta-e-aviso-alerta.md) `prociv.gov.pt/pt/prevencao-e-preparacao/monitorizacao-alerta-e-aviso/alerta/` | 11 Nov 2026, 02:27 UTC | 1 | one capture | screenshot |
 | Aviation Weather Center (NOAA) | [aviationweather.gov/api/data/taf?ids=LPPT&format=json](aviationweather/2026/11/11/0228-api-data-taf-ids-lppt-format-json.md) `aviationweather.gov/api/data/taf?ids=LPPT&format=json` | 11 Nov 2026, 02:28 UTC | 1 | one capture | screenshot |
 | away.iol.pt | [Away - Tempo, Avisos Meteo, Combustíveis e Mobilidade](away-iol/2026/11/11/0224-aviso-vermelho-ipma-vento-alerta-vermelho-ipma-admite-cenari-332f69e5.md) `away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelh` | 11 Nov 2026, 02:24 UTC | 1 | one capture | hash and excerpt |
+| carris.pt | [CARRIS · Transporte Público de Lisboa](carris/2026/11/11/0229-front.md) `carris.pt/` | 11 Nov 2026, 02:29 UTC | 1 | one capture | screenshot |
 | Câmara Municipal de Lisboa | [Um momento…](cml/2026/11/11/0227-front.md) `informacao.lisboa.pt/` | 11 Nov 2026, 02:27 UTC | 1 | one capture | screenshot |
 | Câmara Municipal de Lisboa | [Um momento…](cml/2026/11/11/0226-front.md) `lisboa.pt/` | 11 Nov 2026, 02:26 UTC | 1 | one capture | screenshot |
+| cp.pt | [CP - Comboios de Portugal · Bilhetes de Comboio Online](cp/2026/11/11/0229-front.md) `cp.pt/` | 11 Nov 2026, 02:29 UTC | 1 | one capture | screenshot |
+| fil.pt | [Fil – Feira Internacional de Lisboa](fil/2026/11/11/0230-front.md) `fil.pt/` | 11 Nov 2026, 02:30 UTC | 1 | one capture | hash and excerpt |
 | Government of Portugal | [404: This page could not be found.](governo/2026/11/11/0224-gc.md) `portugal.gov.pt/gc` | 11 Nov 2026, 02:24 UTC | 1 | one capture | screenshot |
 | Government of Portugal | [Governo declara situação de alerta em todo o território continental - XXV Governo Constitucional](governo/2026/11/11/0220-gc25-comunicacao-noticias-governo-declara-situacao-de-alerta-14dd612b.md) `portugal.gov.pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-` | 11 Nov 2026, 02:20 UTC | 1 | one capture | screenshot |
 | Government of Portugal | [www.mai.gov.pt/](governo/2026/11/11/0226-front.md) `mai.gov.pt/` | 11 Nov 2026, 02:26 UTC | 1 | one capture | screenshot |
@@ -34,7 +37,11 @@ Every time this site cites an outside page, we keep what that page looked like a
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0216-pt-otempo-prev-sam.md) `ipma.pt/pt/otempo/prev-sam/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [IPMA - Avisos Meteorológicos em linha temporal](ipma/2026/11/11/0224-pt-otempo-prev-sam-timeline-jsp-print-true-reg-lsb.md) `ipma.pt/pt/otempo/prev-sam/timeline.jsp?print=true&reg=LSB` | 11 Nov 2026, 02:24 UTC | 1 | one capture | screenshot |
 | IPMA (Instituto Português do Mar e da Atmosfera) | [404 Not Found](ipma/2026/11/11/0225-resources-www-rss-comunicados.md) `ipma.pt/resources.www/rss/comunicados` | 11 Nov 2026, 02:25 UTC | 1 | one capture | screenshot |
+| lusoponte.pt | [www.lusoponte.pt/](lusoponte/2026/11/11/0230-front.md) `lusoponte.pt/` | 11 Nov 2026, 02:30 UTC | 1 | one capture | hash and excerpt |
+| MeteoAlarm (EUMETNET) | [feeds.meteoalarm.org/api/v1/warnings/feeds-portugal](meteoalarm/2026/11/11/0229-api-v1-warnings-feeds-portugal.md) `feeds.meteoalarm.org/api/v1/warnings/feeds-portugal` | 11 Nov 2026, 02:29 UTC | 1 | one capture | hash and excerpt |
+| MeteoAlarm (EUMETNET) | [Europe · MeteoAlarm · Early Warnings for Europe](meteoalarm/2026/11/11/0229-front.md) `meteoalarm.org/` | 11 Nov 2026, 02:29 UTC | 1 | one capture | hash and excerpt |
 | metrolisboa.pt | [Metropolitano de Lisboa, E.P.E.](metrolisboa/2026/11/11/0227-front.md) `metrolisboa.pt/` | 11 Nov 2026, 02:27 UTC | 1 | one capture | screenshot |
+| ttsl.pt | [Transtejo Soflusa · Unimos margens](ttsl/2026/11/11/0230-front.md) `ttsl.pt/` | 11 Nov 2026, 02:30 UTC | 1 | one capture | screenshot |
 | Web Summit | [Web Summit - The best tech conference on the planet · November 9-12, 2026](websummit/2026/11/11/0223-front.md) `websummit.com/` | 11 Nov 2026, 02:23 UTC | 1 | one capture | screenshot |
 | Web Summit | [What's happening at Web Summit · Web Summit](websummit/2026/11/11/0216-blog.md) `websummit.com/blog/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
 | Web Summit | [Important event update](websummit/2026/11/11/0216-blog-web-summit-important-event-update-2026.md) `websummit.com/blog/web-summit/important-event-update-2026/` | 11 Nov 2026, 02:16 UTC | 1 | one capture | screenshot |
