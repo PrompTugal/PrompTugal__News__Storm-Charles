@@ -105,9 +105,13 @@
       var same = oLive.length === cLive.length && oLive.every(function (w) { return cLive.some(function (x) { return key(x) === key(w) }) })
       // the newest standing CAP message counts even after its window has run: once it has ended, an older open-data entry must not come back
       var capSent = Math.max.apply(0, c.map(function (w) { return T(w.sent_utc) }).concat([0])), openSent = Math.max.apply(0, o.map(function (w) { return ok(w.sent_utc) ? T(w.sent_utc) : 0 }).concat([0]))
-      if (same || !(capSent > openSent)) { list = list.concat(o); return }
+      if (!(capSent > openSent)) { list = list.concat(o); return }
+      var cDone0 = c.filter(function (w) { return T(w.end_utc) <= t && T(w.sent_utc) === capSent })
+      if (same) { list = list.concat(cDone0.length ? cDone0 : o.filter(function (w) { return T(w.end_utc) <= t }), oLive); return }
       var cPast = c.filter(function (w) { return T(w.end_utc) <= t && T(w.sent_utc) === capSent }).sort(function (a, b) { return T(b.end_utc) - T(a.end_utc) })
-      list = list.concat(o.filter(function (w) { return T(w.end_utc) <= t }), cLive)
+      // the newest message's own windows that have already run stay on the strip (an orange wind ended at 15:56 is still drawn 12:00-15:56), in place of the open data's
+      var cDone = c.filter(function (w) { return T(w.end_utc) <= t && T(w.sent_utc) === capSent })
+      list = list.concat(cDone.length ? cDone : o.filter(function (w) { return T(w.end_utc) <= t }), cLive)
       out.differ.push({ type: ty, shown: cLive, ended: cLive.length ? null : cPast[0] || null, open: oLive.filter(function (w) { return !cLive.some(function (x) { return key(x) === key(w) }) }), sent: capSent })
     })
     out.list = list
