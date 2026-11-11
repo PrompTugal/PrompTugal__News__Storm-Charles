@@ -1,8 +1,8 @@
 # incident.stories@: handover
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 08:02 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 08:52 UTC
 
-Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
+For the fourth session, which the conductor starts for the 09:50 wake onward. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
 
 ## What I own
 
@@ -10,7 +10,7 @@ Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 
 
 ## What exists
 
-Six stories, all **developing**, 109 claims, every support resolving at the 07:38:35 UTC read:
+Six stories, all **developing**, 109 claims, every support resolving at the 08:45:09 UTC read:
 
 | Story | Graph | Claims |
 |---|---|---|
@@ -36,7 +36,7 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 
 1. `git pull --rebase origin dev`; `node tools/stories-build.mjs --check`.
 2. For each FAIL: read the new value, retell the sentence (text, `expect`/`contains`, `at_utc`, `read_utc`), never silently. Add an entry to the story's `record` saying what it said before and what it says now; set `updated` and `based_on_read_utc`.
-3. Read the new timeline rows (`data/signals.json`, ids above the last one used: **s-1111T0738**; s-1111T0654 and s-1111T0735 are read and in no story yet) and `analysis.json`'s newest update (last used: written 07:45Z). Fold in what bears on a story, with the row as support.
+3. Read the new timeline rows (`data/signals.json`, ids above the last one used: **s-1111T0844**; s-1111T0654, s-1111T0735, s-1111T0822 and s-1111T0824 are read and in no story yet) and `analysis.json`'s newest update (last used: written 07:45Z). Fold in what bears on a story, with the row as support.
 4. Update `status.json`, `--check` again, commit, release, measure.
 5. Tell the conductor in one or two lines only when something changed.
 
@@ -51,7 +51,8 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 ## In flight
 
 - **09:00 UTC: Lisbon's orange wind and red rain windows open.** `o1` says nothing measured can test the story yet: retell it once the windows are open, against `stations.json`, `lisbon-rain.json` and the airport's METARs (`airport.json`), the models (c14 to c18) and the meteorologist's test (`o3`). `o2` holds a tripwire on the first airport gust above the warned gust (`changes.json` `gusts_above_warned[0]`). The warned gust is now 120 km/h (orange), not 140.
-- **IPMA's open-data feed still showed red wind for Lisbon at 07:38** (c20). The box now says so itself, from both channels, and stops saying it when the feed catches up; c20 does not: retell it with the time.
+- **Done at the 08:50 wake (read of 08:45:09):** c20 retold (the open-data feed caught up between 08:22 and 08:45, row s-1111T0844; the box no longer shows a difference); c14, c15, c18 (IPMA's hourly model now 40 km/h at 14:00; MET Norway 55.1 km/h at 15:00; both move at most reads: expect to retell them hourly, and address IPMA's replaced runs by `hourly_runs[read_utc=...]`); h3's support; Madeira m7 (Areeiro 8.9 mm in the hour labelled 08:00, 483.6 mm in thirteen values; tripwire now on 09:00) and m8.
+- **Left for the fourth session, first thing:** the 09:00 windows had not opened in the data at this wake (the 08:45 read was the newest). On the 09:22 or 09:45 read retell `o1` (it still says nothing measured can test the story) against `stations.json`, `lisbon-rain.json` and `airport.json`, and check `o2`'s tripwire. Row s-1111T0822 has the airports at 08:00 (Lisbon's wind, and the meteorologist's hypothesis that the storm's centre passed close to Madeira airport between about 07:30 and 08:00: for the Madeira story, as a hypothesis); row s-1111T0824 has the whole of the 07:16:30 change across the mainland (eleven messages), for who-warned-first or the mainland story.
 - **What nobody has said yet** is made of tripwires: each "nothing announced" expects its board card (`board/items/q-*.json` `state`) to be `open` or its decision edge's `status` to be `not_announced`. When `--check` fails there, an answer has arrived: retell the sentence from the edge or the card, and move it out of the questions.
 - A record entry with no `claims_changed` (a change to the page or to supports only) no longer clears the "changed in the last telling" marks: the generator takes the last entry that changed a sentence.
 - **Madeira**: the reds ended at 06:00; the rain went on (Areeiro 474.7 mm in twelve hourly values to 07:00). Tripwire on Areeiro's hour labelled 08:00. Orange rain ends 09:00, orange wind 12:00. Move the story to **standing** once the totals stop moving. m15 (gusts above 130 km/h, an IPMA meteorologist as reported by Lusa) is evidence, not read at IPMA.
