@@ -1,0 +1,244 @@
+{
+  "by": "incident.flights@web-summit.dinis",
+  "updated": "2026-11-11T23:43:03Z",
+  "label": "fact",
+  "about": "How the flights page is made, as data for the reader's panel (Dinis via incident.conductor@, 11 November ~23:38 UTC: a visual explanation of how the plane data is worked out). Two pipelines and one sum: aircraft (adsb.lol -> our poll -> filter -> frames and snapshots -> tracks -> the map), the wind field (Open-Meteo -> the map's arrows) and the crosswind arithmetic on the airports' METAR, with a worked example. Each step names its source, the time it was read and its numbers. Every step's label: fact (read from the source), derived (arithmetic on facts, the rule printed), hypothesis (a drawing or a judgement of ours).",
+  "not_a_warning_service": "Not a warning service. No forecast or advice of ours. Your airline decides whether your flight runs: its site or app has the latest. For warnings follow IPMA and ANEPC.",
+  "pipelines": [
+    {
+      "id": "aircraft",
+      "title": "Aircraft: where the planes are",
+      "steps": [
+        {
+          "id": "receivers",
+          "label": "fact",
+          "title": "Receivers",
+          "what": "Aircraft broadcast their position, altitude, speed and callsign by ADS-B about twice a second. Volunteers' receivers on the ground hear them and send what they hear to adsb.lol, which merges it.",
+          "source": "https://adsb.lol",
+          "licence": "ODbL 1.0 (https://opendatacommons.org/licenses/odbl/1-0/)",
+          "limits": "Coverage depends on where volunteers have receivers; far out over the Atlantic and low near the ground there are gaps. An aircraft not heard is not on the map, which does not mean it is not flying."
+        },
+        {
+          "id": "poll",
+          "label": "fact",
+          "title": "Our poll",
+          "what": "We ask adsb.lol's public API for every aircraft within a circle, and keep the raw answer in our private vault with its sha256.",
+          "areas": [
+            {
+              "area": "lisbon",
+              "centre": [
+                38.75,
+                -9.2
+              ],
+              "radius_nm": 250,
+              "radius_km": 463,
+              "every_min": 5
+            },
+            {
+              "area": "funchal",
+              "centre": [
+                32.75,
+                -16.85
+              ],
+              "radius_nm": 150,
+              "radius_km": 278,
+              "every_min": 20
+            }
+          ],
+          "requests_per_day": 360,
+          "limit_per_day": 500,
+          "limit_source": "https://api.adsb.lol/docs (500 requests a day per IP without a key; the window resets at 00:00 UTC), read 2026-11-11T23:40:00Z",
+          "since": "2026-11-11T23:42:09Z",
+          "before": "from 22:23 UTC on 11 November: Lisbon 40 nm and Madeira 30 nm every 10 minutes (snapshots/)",
+          "time_read": "each frame's t (adsb.lol's own clock) and request.read (ours)",
+          "files": [
+            "incidents/2026-11-10-storm-charles/data/flights/frames/<area>/<date>/<HH>.json"
+          ]
+        },
+        {
+          "id": "filter",
+          "label": "derived",
+          "title": "Filter",
+          "what": "A callsign that is an airline's three-letter ICAO code followed by a flight number (TAP1234, RYR85AB) is an airline flight, kept with its callsign and aircraft type. Every other aircraft is kept only as an anonymous position: its emitter category (light, large, heavy, rotorcraft), position, altitude rounded to 100 ft, speed and track, with no callsign, address, registration or type. Aircraft whose owners asked to be withheld (PIA or LADD in adsb.lol's data) are dropped and only counted. Never kept for anyone: the ICAO24 address, the registration.",
+          "rule": "/^([A-Z]{3})(\\d[0-9A-Z]{0,4})$/ and the three letters in our airline list (tools/flights-common.mjs, shared with incident.transport@)",
+          "example_frame": {
+            "t": "2026-11-11T23:42:09Z",
+            "area": "lisbon",
+            "airline": 21,
+            "other": 11,
+            "withheld": 0
+          }
+        },
+        {
+          "id": "frames",
+          "label": "fact",
+          "title": "Frames and snapshots",
+          "what": "Each poll becomes one frame: one array per aircraft under a header of fields (compact, so an hour of frames stays under the repository's 256 KB a file). The earlier snapshots (40 nm and 30 nm, objects) continue every 10 and 20 minutes for incident.transport@'s counts near the airports.",
+          "files": [
+            "incidents/2026-11-10-storm-charles/data/flights/frames/<area>/<date>/<HH>.json",
+            "incidents/2026-11-10-storm-charles/data/flights/snapshots/<date>/<HH>.json"
+          ]
+        },
+        {
+          "id": "tracks",
+          "label": "derived",
+          "title": "Tracks",
+          "what": "For each hour, each airline callsign's points from every frame it appears in: first and last seen, and its altitude, speed, heading and phase at the last point. Phase is arithmetic on the reported vertical rate: climbing above +300 ft/min, descending below -300, cruising level at or above 10,000 ft, level below it, on ground when reported so.",
+          "files": [
+            "incidents/2026-11-10-storm-charles/data/flights/tracks/<area>/<date>/<HH>.json (written by the build)"
+          ]
+        },
+        {
+          "id": "map",
+          "label": "fact",
+          "title": "The map",
+          "what": "The designer's map draws each frame's measured positions. Between two frames nothing is measured: a plane drawn moving between them, or a trail joining its points, is a drawing (hypothesis) and the map says so.",
+          "drawn_by": "incident.designer@ (app/design/flightmap/)",
+          "files": [
+            "incidents/2026-11-10-storm-charles/data/flights/index.json",
+            "incidents/2026-11-10-storm-charles/data/flights/map/snapshots/<date>/<HHMM>-<area>.json (written by the build)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wind",
+      "title": "The wind field: the arrows",
+      "steps": [
+        {
+          "id": "model",
+          "label": "evidence",
+          "title": "A weather model",
+          "what": "Open-Meteo's forecast API, best match for each point: the model's hourly analysis for past hours and its short-range forecast for later ones. A model's wind, not a measurement.",
+          "source": "https://open-meteo.com",
+          "licence": "CC BY 4.0",
+          "read": "2026-11-11T22:10:25Z",
+          "refresh": "every 6 hours"
+        },
+        {
+          "id": "lattice",
+          "label": "evidence",
+          "title": "A lattice of points",
+          "what": "Wind at 10 m (speed, direction, gusts) and at 850 hPa (about 1,500 m), hourly, at points 0.25 degrees apart.",
+          "grids": [
+            {
+              "area": "lisbon",
+              "points": 121,
+              "rows": 11,
+              "cols": 11,
+              "step_deg": 0.25
+            },
+            {
+              "area": "madeira",
+              "points": 24,
+              "rows": 4,
+              "cols": 6,
+              "step_deg": 0.25
+            }
+          ],
+          "window": "2026-11-10T12:00:00Z to 2026-11-12T12:00:00Z",
+          "files": [
+            "incidents/2026-11-10-storm-charles/data/flights/wind/<area>-<date>.json"
+          ]
+        },
+        {
+          "id": "arrows",
+          "label": "evidence",
+          "title": "Arrows",
+          "what": "Each point becomes an arrow pointing where the wind goes (the direction it blows from plus 180 degrees), longer when stronger. Hours after forecast_from are the model's forecast, and the map marks them."
+        }
+      ]
+    },
+    {
+      "id": "crosswind",
+      "title": "The wind on each runway",
+      "steps": [
+        {
+          "id": "metar",
+          "label": "fact",
+          "title": "The airport's own report",
+          "what": "Every half hour the airport's weather station issues a METAR: the wind's direction (degrees true), speed and gusts in knots.",
+          "source": "https://aviationweather.gov/api/data/metar?ids=LPPT,LPMA&hours=60&format=json (IPMA's observations through the US NOAA Aviation Weather Center, public domain)",
+          "read": "2026-11-11T23:04:51Z"
+        },
+        {
+          "id": "runway",
+          "label": "fact",
+          "title": "The runway's heading",
+          "what": "Each runway end's true heading.",
+          "source": "https://davidmegginson.github.io/ourairports-data/runways.csv (OurAirports, public domain)",
+          "read": "2026-11-11T23:04:51Z",
+          "example": {
+            "airport": "LPPT",
+            "runway": "02/20",
+            "ends": {
+              "02": 22,
+              "20": 202
+            }
+          }
+        },
+        {
+          "id": "components",
+          "label": "derived",
+          "title": "Headwind and crosswind",
+          "formula": {
+            "angle": "wind direction - runway heading",
+            "headwind_kt": "wind_kt x cos(angle) (negative = tailwind)",
+            "crosswind_kt": "|wind_kt x sin(angle)|, from the left or the right"
+          },
+          "worked_example": {
+            "metar": "METAR LPPT 111400Z 19029G40KT 3000 R20/0900 +RA BR FEW002 BKN007 FEW015TCU 19/19 Q0989 WS R20 NOSIG",
+            "time": "2026-11-11T14:00:00Z",
+            "wind_dir_deg": 190,
+            "wind_kt": 29,
+            "gust_kt": 40,
+            "runway_end": "20",
+            "heading_deg": 202,
+            "angle_deg": -12,
+            "headwind_kt": 28.4,
+            "crosswind_kt": 6.0,
+            "crosswind_from": "left",
+            "gust_headwind_kt": 39.1,
+            "gust_crosswind_kt": 8.3,
+            "on_02": "the same numbers as a tailwind: -28.4 kt (-39.1 kt in the gust)",
+            "steps": [
+              "angle = 190 - 202 = -12 degrees",
+              "headwind = 29 x cos(12) = 29 x 0.978 = 28.4 kt",
+              "crosswind = 29 x sin(12) = 29 x 0.208 = 6.0 kt, from the left",
+              "in the 40 kt gust: 39.1 kt headwind, 8.3 kt crosswind"
+            ]
+          },
+          "file": "incidents/2026-11-10-storm-charles/data/flights/crosswind.json"
+        },
+        {
+          "id": "favoured",
+          "label": "hypothesis",
+          "title": "Which end the wind favours",
+          "what": "The end with the most headwind. Air traffic control chooses the runway; we state no limit and no advice."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "what": "aircraft",
+      "url": "https://adsb.lol",
+      "licence": "ODbL 1.0"
+    },
+    {
+      "what": "wind field",
+      "url": "https://open-meteo.com",
+      "licence": "CC BY 4.0"
+    },
+    {
+      "what": "METAR",
+      "url": "https://aviationweather.gov/data/api/",
+      "licence": "public domain"
+    },
+    {
+      "what": "runways",
+      "url": "https://ourairports.com/data/",
+      "licence": "public domain"
+    }
+  ]
+}
