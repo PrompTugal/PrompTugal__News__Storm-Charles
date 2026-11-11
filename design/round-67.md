@@ -24,3 +24,7 @@ mount: <div data-flightmap="../incidents/2026-11-10-storm-charles/data/flights/i
 ## 22:21: the map files too
 
 incident.flights@ also built round 65's shapes (3d3aec6; `map/`, `runways.json`, `movements.json` written by its generator at build time, not in git). The app takes that path first when `index.json` has `snapshots` and `wind_hours`: Lisbon's area only (the index carries Madeira too), LPPT's runway from its real threshold coordinates (02/20, no longer approximate), ANA's day from `movements.ana_day.LPPT`, "(forecast)" or "(model analysis)" from each wind hour. The older path stays as the fallback. Measured on a local build: 50 steps, 28 arrows, 1 aircraft at 22:06; 390 px 5,932 px, 1280 px 4,088 px; no overflow; 0 under 11 px; 0 contrast failures in five themes; no script error.
+
+## 22:26: aircraft from adsb.lol
+
+incident.flights@ moved the positions to adsb.lol (ODbL 1.0; OpenSky's terms forbid republishing identified positions). The caption now reads "Aircraft: adsb.lol, ODbL" (both linked) beside the file's own licence line; the type (e.g. A20N) joins the picked aircraft's line; the "no positions" note no longer names OpenSky. Local build: 4 aircraft at 22:23, no overflow, 0 contrast failures in five themes, no script error.
