@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T22:52:00Z",
-  "based_on_read_utc": "2026-11-11T21:52:43Z",
+  "updated": "2026-11-11T23:57:00Z",
+  "based_on_read_utc": "2026-11-11T23:23:31Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -713,11 +713,11 @@
     },
     {
       "id": "c17",
-      "text": "The airport's forecast, written by IPMA for pilots, held through the night and was then lowered. The one issued at 05:00 on Wednesday kept 30 knots gusting 45 (83 km/h) at times to 18:00. The amendment of 10:08 cut that to 20 knots gusting 35 (65 km/h) at times to 16:00, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms in the same hours, and the wind turning west-north-west between 16:00 and 18:00. The airport measured 74 km/h at 14:00, above the 65 it had at times. The amendment of 14:36 has 23 knots gusting 38 (70 km/h) to 16:00, the wind becoming west-north-west by 18:00, at times gusting 27 knots (50 km/h) from 18:00 to 21:00; the thunderstorm group is gone. The forecast issued at 17:00, the first to cover all of Thursday, has west-north-west 24 km/h from 18:00, turning south-west by 02:00, showers at times, and gusts of 27 knots (50 km/h) at times from 10:00 to 18:00 on Thursday.",
+      "text": "The airport's forecast, written by IPMA for pilots, held through the night and was then lowered. The one issued at 05:00 on Wednesday kept 30 knots gusting 45 (83 km/h) at times to 18:00. The amendment of 10:08 cut that to 20 knots gusting 35 (65 km/h) at times to 16:00, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms in the same hours, and the wind turning west-north-west between 16:00 and 18:00. The airport measured 74 km/h at 14:00, above the 65 it had at times. The amendment of 14:36 has 23 knots gusting 38 (70 km/h) to 16:00, the wind becoming west-north-west by 18:00, at times gusting 27 knots (50 km/h) from 18:00 to 21:00; the thunderstorm group is gone. The forecast issued at 17:00, the first to cover all of Thursday, had west-north-west 24 km/h from 18:00, turning south-west by 02:00, showers at times, and gusts of 27 knots (50 km/h) at times from 10:00 to 18:00 on Thursday. The forecast issued at 23:00, for Thursday 00:00 to Friday 06:00, has west-south-west 12 knots (22 km/h), showers at times all period (visibility down to 4 km, cumulonimbus possible), and at times 17 knots gusting 27 (31 km/h gusting 50) from 06:00 to 18:00 on Thursday.",
       "label": "fact",
       "said_by": "IPMA, the TAF for Lisbon airport (a point forecast for pilots, not a public warning)",
-      "at_utc": "2026-11-11T17:00:00Z",
-      "read_utc": "2026-11-11T17:23:17Z",
+      "at_utc": "2026-11-11T23:00:00Z",
+      "read_utc": "2026-11-11T23:23:31Z",
       "supports": [
         {
           "kind": "row",
@@ -738,42 +738,52 @@
           "expect": 74
         },
         {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.issue_utc",
-          "expect": "2026-11-11T17:00Z"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.raw",
-          "contains": "TAF LPPT 111700Z"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=BASE].wind_dir",
-          "expect": 290
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=BECMG].becoming_by_utc",
-          "expect": "2026-11-12T02:00Z"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=TEMPO&wind_dir=230].gust_kmh",
-          "expect": 50
-        },
-        {
           "kind": "row",
           "id": "s-1111T1611"
         },
         {
           "kind": "row",
           "id": "s-1111T1724"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.issue_utc",
+          "expect": "2026-11-11T23:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.raw",
+          "contains": "TAF LPPT 112300Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=BASE].wind_dir",
+          "expect": 250
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=BASE].wind_kmh",
+          "expect": 22
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=TEMPO&wind_dir=250].gust_kmh",
+          "expect": 50
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=TEMPO&wind_dir=250].from_utc",
+          "expect": "2026-11-12T06:00Z"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T2328"
         }
       ]
     },
@@ -2250,6 +2260,13 @@
       "what": "h10: before, the ensemble's shares as read at 15:52 (north 24%, near 47%, south 29%); now the 21:52 read of the newest run, made after the centre passed: north 6%, near 53%, south 41%; median crossing (15:00) and Lisbon's gust spread (53/65/80 km/h) unchanged. The sentence says a run made after the event does not settle which side the centre passed.",
       "claims_changed": [
         "h10"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T23:57Z",
+      "what": "c17: before, the airport forecast of 17:00 (west-north-west 24 km/h, south-west by 02:00, gusts 50 km/h at times 10:00 to 18:00 Thursday); now also the forecast of 23:00 (west-south-west 22 km/h, showers at times, gusts 50 km/h at times 06:00 to 18:00 Thursday; row s-1111T2328).",
+      "claims_changed": [
+        "c17"
       ]
     }
   ]

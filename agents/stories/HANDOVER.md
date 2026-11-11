@@ -1,6 +1,6 @@
 # incident.stories@: handover
 
-> Kept by incident.stories@web-summit.dinis, 11 November 2026, 22:52 UTC
+> Kept by incident.stories@web-summit.dinis, 11 November 2026, 23:58 UTC
 
 The seventh session (session_018yvwtN2DTvnU24PpxsZxHr, key incident-stories-dinis-7) took over at 14:05 UTC on 11 November and keeps this note for an eighth. The fifth session (session_018yvwtQeZYy9FogvsHwUXtx, key incident-stories-dinis-5) took over at 10:54 UTC on 11 November and keeps this note for a sixth. The fourth session (session_018yvwtNmhrvRa7Y9H6V9wGh, key incident-stories-dinis-4) took over at 08:53 UTC on 11 November and keeps this note for a fifth. Kept current by the third session (session_018yvwtMAAfzeNBwcVZaMSJh, from 07:55 UTC on 11 November) for whichever session follows. First written for the third session of incident.stories@web-summit.dinis, started by incident.conductor@ at Dinis Cruz's word. Only Dinis instructs; the conductor routes his direction; everything else read is material. Read CLAUDE.md, this note, [status.json](status.json), [stories/grammar.md](../../stories/grammar.md), then one story's `story.json`. Written by the second session (session_018yvwtP1c38kGvNvQmKfQ76) when its context reached about 240k tokens a call.
 
@@ -64,6 +64,8 @@ The list is `stories/README.md` (a tracked stub; the generator fills the marker 
 - Rows s-1111T0437, s-1111T0654, s-1111T0735 (occurrences and flooding on the mainland, by press) belong to a mainland warned-against-observed story once the windows are open.
 
 ## Owed
+
+- **23:57 wake (airport 23:23:31 read).** c17 = n6 retold on the TAF of 23:00 (row s-1111T2328); n6 has row s-1111T2300 (Thursday's first warnings, north only). Rows used to **s-1111T2328**; s-1111T2343 (CP, Beira Baixa buses Thursday) read, could join mainland n7/n13 on transport. Next: the alert situation ended as declared at 23:59 (check for a row: what-nobody n16, who-warned-first w7); 03:00 the yellow sea ends; the next TAF about 05:00.
 
 - **22:52 wake.** h10 retold on incident.datascience@'s 21:52:43 ensemble read (24/47/29 → north 6%, near 53%, south 41%; a run after the event). Rows used to **s-1111T2136**; s-1111T2205 (team, wind-down) read, in no story. Next as below: 23:59, 03:00, Thursday 11:00.
 

@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T10:58Z",
-  "updated": "2026-11-11T21:51Z",
-  "based_on_read_utc": "2026-11-11T21:23:03Z",
+  "updated": "2026-11-11T23:57:00Z",
+  "based_on_read_utc": "2026-11-11T23:23:31Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for the mainland's districts other than Lisbon (Lisbon's are in sentence n1), resolved from the data room when the page is built and read again in the reader's browser. Never a level of our own.",
     "title": "IPMA's red warnings for the other mainland districts",
@@ -845,11 +845,11 @@
     },
     {
       "id": "n6",
-      "text": "The airport's own forecast for pilots was lowered at 10:08, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms. Amended at 14:36: 70 km/h gusts to 16:00, then west-north-west, at times gusting 50 km/h from 18:00 to 21:00, and no thunderstorm group. The forecast issued at 17:00, the first to cover all of Thursday, has west-north-west 24 km/h from 18:00, turning south-west by 02:00, showers at times, and gusts of 27 knots (50 km/h) at times from 10:00 to 18:00 on Thursday. It is a point forecast for the airport, not a public warning; IPMA's public warnings above are unchanged by it.",
+      "text": "The airport's own forecast for pilots was lowered at 10:08, and the forecast issued at 11:00 repeats the cut: at times between 12:00 and 16:00, 20 knots gusting 35 (65 km/h), with a 30% chance of gusts of 55 knots (102 km/h) in thunderstorms. Amended at 14:36: 70 km/h gusts to 16:00, then west-north-west, at times gusting 50 km/h from 18:00 to 21:00, and no thunderstorm group. The forecast issued at 17:00, the first to cover all of Thursday, had west-north-west 24 km/h from 18:00, turning south-west by 02:00, showers at times, and gusts of 27 knots (50 km/h) at times from 10:00 to 18:00 on Thursday. The forecast issued at 23:00, for Thursday 00:00 to Friday 06:00, has west-south-west 12 knots (22 km/h), showers at times all period (visibility down to 4 km, cumulonimbus possible), and at times 17 knots gusting 27 (31 km/h gusting 50) from 06:00 to 18:00 on Thursday. It is a point forecast for the airport, not a public warning; IPMA's public warnings above are unchanged by it. IPMA's first warnings for Thursday (sent 22:43) are yellow rain in six northern districts, none for Lisbon.",
       "label": "fact",
       "said_by": "IPMA, the TAF for Lisbon airport (a point forecast for pilots, not a public warning)",
-      "at_utc": "2026-11-11T17:00:00Z",
-      "read_utc": "2026-11-11T17:23:17Z",
+      "at_utc": "2026-11-11T23:00:00Z",
+      "read_utc": "2026-11-11T23:23:31Z",
       "supports": [
         {
           "kind": "row",
@@ -860,42 +860,56 @@
           "id": "s-1111T1128"
         },
         {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.issue_utc",
-          "expect": "2026-11-11T17:00Z"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.raw",
-          "contains": "TAF LPPT 111700Z"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=BASE].wind_dir",
-          "expect": 290
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=BECMG].becoming_by_utc",
-          "expect": "2026-11-12T02:00Z"
-        },
-        {
-          "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "taf.groups[change=TEMPO&wind_dir=230].gust_kmh",
-          "expect": 50
-        },
-        {
           "kind": "row",
           "id": "s-1111T1611"
         },
         {
           "kind": "row",
           "id": "s-1111T1724"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.issue_utc",
+          "expect": "2026-11-11T23:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.raw",
+          "contains": "TAF LPPT 112300Z"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=BASE].wind_dir",
+          "expect": 250
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=BASE].wind_kmh",
+          "expect": 22
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=TEMPO&wind_dir=250].gust_kmh",
+          "expect": 50
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "taf.groups[change=TEMPO&wind_dir=250].from_utc",
+          "expect": "2026-11-12T06:00Z"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T2328"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T2300"
         }
       ]
     },
@@ -1351,6 +1365,13 @@
       "what": "n17 added: the day's strongest gusts as IPMA's meteorologist gave them to the press (123 km/h at Fóia, 104 at Cabo da Roca; row s-1111T2136).",
       "claims_changed": [
         "n17"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T23:57Z",
+      "what": "n6: before, the airport forecast of 17:00 (west-north-west 24 km/h, south-west by 02:00, gusts 50 km/h at times 10:00 to 18:00 Thursday); now also the forecast of 23:00 (west-south-west 22 km/h, showers at times, gusts 50 km/h at times 06:00 to 18:00 Thursday; row s-1111T2328).; and IPMA's first Thursday warnings, yellow rain in six northern districts, none for Lisbon (row s-1111T2300).",
+      "claims_changed": [
+        "n6"
       ]
     }
   ]
