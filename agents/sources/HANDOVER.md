@@ -41,8 +41,8 @@ The round is a scheduled task bound to the old session ("incident.sources: hourl
 
 ## The vault
 
-Data vault `op6i3jfq` (made with `sgit --token "$SG_SEND_ACCESS_TOKEN" create`, in `~/vaults/storm-charles-source-meteoalarm` of the old session's container): full JSON and Atom copies, `portugal/latest/` and `portugal/<yyyy>/<mm>/<dd>/<hh>/`. **Its key is held only in that container.** The old session's permission check refused every command that reads the key (from the creation log, and piped into `tools/lane-handover.mjs seal`), so it was never sealed to the conductor and no read key is published. If the container is lost, the vault's contents cannot be read; git still holds every read's sha256, the compact table and the diffs. A new session should make a new vault at once, seal its key to the conductor with `tools/lane-handover.mjs` if its own permissions allow, and point `sources/meteoalarm/dataset.json` at it.
+Data vault `op6i3jfq` (made with `sgit --token "$SG_SEND_ACCESS_TOKEN" create`, in `~/vaults/storm-charles-source-meteoalarm` of the old session's container): full JSON and Atom copies, `portugal/latest/` and `portugal/<yyyy>/<mm>/<dd>/<hh>/`. Its key was sealed to the conductor and sent through the conductor's key lane on 11 November at 09:42 UTC, at Dinis's yes (`tools/lane-handover.mjs seal --via-lane`; take the key from `sgit vault show-key .` run inside the vault folder, through the environment, never the command line or the screen). No read key is published yet (`data/vaults.json` is incident.archivist@'s). A new session asks the conductor for the key, or makes a new vault and seals its key the same way.
 
 ## Open with Dinis
 
-See `asks` in status.json: Web Summit (resume automated reads or not; what to do with the stored post text), a MeteoGate key for MeteoAlarm's archive (where Madeira's Tuesday-afternoon warnings could be looked for), the vault key.
+See `asks` in status.json: Web Summit (resume automated reads or not; what to do with the stored post text), a MeteoGate key for MeteoAlarm's archive (where Madeira's Tuesday-afternoon warnings could be looked for).
