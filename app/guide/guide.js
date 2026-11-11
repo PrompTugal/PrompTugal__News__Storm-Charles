@@ -14,9 +14,10 @@
   var dhm = function (t) { var s = iso(t); if (!s) return 'time not stated'; var d = new Date(s); return DAY[d.getUTCDay()] + ' ' + s.slice(8, 10) + ' Nov ' + s.slice(11, 16) }
   var tm = function (t, txt) { var s = iso(t); return s ? '<time datetime="' + s + '">' + esc(txt || dhm(t)) + '</time>' : esc(txt || 'time not stated') }
   var host = function (u) { try { return new URL(u).hostname.replace(/^www\./, '') } catch (e) { return 'source' } }
-  var prov = function (label, url, read, pub) {
-    return '<span class="prov">' + (url ? '<a href="' + esc(url) + '" rel="noopener">' + esc(label || host(url)) + '</a>' : esc(label || 'no address')) +
-      (pub ? ', published ' + tm(pub) + ' UTC' : '') + (read ? ', read ' + tm(read) + ' UTC' : '') + '</span>'
+  var age = function (t) { var h = (now - T(t)) / 36e5; return h >= 3 ? ' (' + Math.round(h) + ' h ago)' : '' }
+  var prov = function (label, url, read, pub, k) {
+    return '<span class="prov">' + (k === 'evidence' ? 'reported by ' : '') + (url ? '<a href="' + esc(url) + '" rel="noopener">' + esc(label || host(url)) + '</a>' : esc(label || 'no address')) +
+      (pub ? (/^\d{4}-\d\d-\d\d$/.test(pub) ? ', published ' + tm(pub, dhm(pub).slice(0, 10)) + ' (time not stated)' : ', published ' + tm(pub) + ' UTC') : '') + (read ? ', read ' + tm(read) + ' UTC' + age(read) : '') + '</span>'
   }
   var kind = function (l) { l = String(l || '').toLowerCase(); return /fact|official/.test(l) ? 'fact' : /hyp/.test(l) ? 'hypothesis' : /none/.test(l) ? 'not stated' : 'evidence' }
   var lbl = function (l) { var k = kind(l); return '<span class="lbl l-' + k.replace(' ', '-') + ' gd-l-' + k.replace(' ', '-') + '">' + k + '</span>' }
@@ -24,8 +25,14 @@
   var TYPE = { 'Precipitação': 'rain', 'Vento': 'wind', 'Agitação Marítima': 'waves (sea)', 'Trovoada': 'thunderstorms', 'Nevoeiro': 'fog', 'Neve': 'snow', 'Tempo Quente': 'heat', 'Tempo Frio': 'cold' }
   var AREA = { LSB: 'Lisbon', MCN: 'Madeira, north coast', MCS: 'Madeira, south coast', MRM: 'Madeira, mountains', MPS: 'Porto Santo' }
   var RANK = { red: 3, orange: 2, yellow: 1, green: 0 }
-  var STATE = { closed: 'closed', suspended: 'suspended', limited: 'limited', running: 'running', happened: 'announced', not_announced: 'not announced', superseded: 'superseded', expected: 'expected' }
-  var stateChip = function (s) { if (!s) return ''; var w = STATE[s] || String(s).replace(/_/g, ' '); return '<span class="gd-st gd-st-' + esc(String(s).replace(/[^a-z_]/g, '')) + '">' + esc(w) + '</span>' }
+  var STATE = { closed: 'closed', suspended: 'suspended', limited: 'limited', running: 'running', happened: 'announced', not_announced: 'not announced', aim_stated: 'an aim, not a promise', superseded: 'superseded', expected: 'expected' }
+  var stateOf = function (d) {
+    var s = d.state || d.status, t = String(d.decision || '')
+    if (/\baims? to\b/i.test(t) && s === 'running') return 'aim_stated'
+    if (s === 'not_announced') { var m = /\b(Monday|Tuesday|Wednesday|Thursday|Friday)\b/.exec(t); if (m) return 'not_announced_' + m[1] }
+    return s
+  }
+  var stateChip = function (s) { if (!s) return ''; if (/^not_announced_/.test(s)) { var day = s.slice(14); return '<span class="gd-st gd-st-not_announced">' + esc(day) + ': not announced</span>' } var w = STATE[s] || String(s).replace(/_/g, ' '); return '<span class="gd-st gd-st-' + esc(String(s).replace(/[^a-z_]/g, '')) + '">' + esc(w) + '</span>' }
   var lvl = function (l) { return '<span class="lvl ' + esc(l) + '">' + esc(l) + '</span>' }
   var SAFE = '<p class="gd-safe">For warnings and what to do, follow <a href="https://www.ipma.pt/" rel="noopener">IPMA</a> and <a href="https://prociv.gov.pt/" rel="noopener">ANEPC</a>; in an emergency call <b>112</b>.</p>'
   var now = Date.now()
@@ -46,9 +53,9 @@
     var url = d.address || d.source || (at && at.source), pub = d.published_utc || (at ? at.at : (typeof d.at === 'string' ? d.at : null))
     var read = d.read || (at && at.read)
     var text = String(d.decision || '').replace(/^HYPOTHESIS:\s*/, '')
-    return '<li class="gd-row' + (kind(d.label) === 'hypothesis' ? ' gd-hyp' : '') + '">' + lbl(d.label) + stateChip(d.state || d.status) +
+    return '<li class="gd-row' + (kind(d.label) === 'hypothesis' ? ' gd-hyp' : '') + '">' + lbl(d.label) + stateChip(stateOf(d)) +
       '<span class="gd-txt">' + esc(text) + '</span>' + (d.decided_by ? '<span class="meta">Who: ' + esc(d.decided_by) + (d.effect_note && d.effect_note !== 'hours not stated' ? ' · ' + esc(d.effect_note) : '') + '</span>' : '') +
-      prov(url ? host(url) : '', url, read, pub) + '</li>'
+      prov(url ? host(url) : '', url, read, pub, kind(d.label)) + '</li>'
   }
   function entityBlock(e, title) {
     if (!e) return '<p class="meta">' + esc(title) + ': no file in the data room.</p>'
@@ -60,13 +67,13 @@
   // a row never shows one item's state beside another item's words (synthetic@, 11:54: parks read as "running")
   function standing(e, re) {
     if (!e) return []
-    return (e.decisions || []).filter(function (d) { return d.status !== 'superseded' && d.state !== 'superseded' && (!re || re.test(d.decision)) })
+    return (e.decisions || []).filter(function (d) { return d.status !== 'superseded' && d.state !== 'superseded' && d.status !== 'not_announced' && (!re || re.test(d.decision)) })
       .sort(function (a, b) { return (T(b.published_utc || b.read) || 0) - (T(a.published_utc || a.read) || 0) })
   }
   function short(name, e, re) {
     var ds = standing(e, re); if (!ds.length) return '<li><b>' + esc(name) + '</b>: <span class="gd-ns">not stated</span> in what we have read</li>'
     return '<li><b>' + esc(name) + '</b><ul class="gd-sub">' + ds.slice(0, 2).map(function (d) {
-      return '<li>' + stateChip(d.state || d.status) + ' ' + esc(String(d.decision).slice(0, 160)) + (String(d.decision).length > 160 ? '…' : '') + ' ' + lbl(d.label) + ' ' + prov(host(d.address), d.address, d.read, d.published_utc) + '</li>'
+      return '<li>' + stateChip(stateOf(d)) + ' ' + esc(String(d.decision).slice(0, 160)) + (String(d.decision).length > 160 ? '…' : '') + ' ' + lbl(d.label) + ' ' + prov(host(d.address), d.address, d.read, d.published_utc, kind(d.label)) + '</li>'
     }).join('') + '</ul>' + (ds.length > 2 ? '<span class="meta">' + (ds.length - 2) + ' more under "Deeper"</span>' : '') + '</li>'
   }
   function sect(id, q, simple, deep, open) {
@@ -100,6 +107,16 @@
     out += '<div class="gd-now" id="now"><p class="gd-now-line">' + line + '</p><p class="meta">' + (W ? lbl('fact') + ' ' : '') + prov('IPMA\'s warnings feed', W && W.source, W && W.read_utc) + ' Lisbon is on UTC in November.</p><p class="gd-now-safe">' +
       'Not a warning service: <a href="https://www.ipma.pt/" rel="noopener">IPMA</a> issues the warnings, <a href="https://prociv.gov.pt/" rel="noopener">ANEPC</a> says what to do; emergency <b>112</b>.</p></div>'
 
+    // changed today (UTC): decisions and warning changes published today, newest first
+    var today = new Date(now).toISOString().slice(0, 10), seen = {}, ch = []
+    ENT.forEach(function (n) { ((E[n] && E[n].decisions) || []).forEach(function (d) { var k = String(d.decision).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 48); if (seen[k] || String(d.published_utc || '').slice(0, 10) !== today || !/T/.test(d.published_utc)) return; seen[k] = 1; ch.push({ t: d.published_utc, d: d }) }) })
+    edges.forEach(function (e) { var a = e.at && typeof e.at === 'object' ? e.at.at : e.at; var k = String(e.decision).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 48); if (typeof a === 'string' && a.slice(0, 10) === today && /T/.test(a) && kind(e.label) !== 'hypothesis' && !seen[k] && (seen[k] = 1)) ch.push({ t: a, d: e }) })
+    ;((W && W.history) || []).forEach(function (h) { if (String(h.at_utc).slice(0, 10) === today) ch.push({ t: h.at_utc, d: { decision: h.event, label: h.kind, source: h.source, read: h.read_utc, published_utc: h.at_utc } }) })
+    ch.sort(function (a, b) { return T(b.t) - T(a.t) })
+    if (ch.length) out += '<section class="gd-today" aria-labelledby="gd-today-h"><h2 id="gd-today-h">Changed today <span class="meta">(published ' + esc(today) + ', UTC; newest first)</span></h2><ul class="gd-rows">' +
+      ch.slice(0, 4).map(function (c) { return row(c.d).replace('<li class="gd-row', '<li data-t="' + esc(c.t) + '" class="gd-row') }).join('') + '</ul>' +
+      (ch.length > 4 ? '<details class="gd-deep"><summary>' + (ch.length - 4) + ' more today</summary><ul class="gd-rows">' + ch.slice(4).map(function (c) { return row(c.d) }).join('') + '</ul></details>' : '') + '</section>'
+
     // the path: pick your question
     var CASES = [['now-detail', 'What is happening now'], ['flight', 'I have a flight'], ['around', 'Getting around'], ['stranded', 'I\'m stranded: what is open?'], ['websummit', 'Web Summit'], ['madeira', 'Madeira'], ['press', 'I\'m a journalist']]
     out += '<nav class="gd-paths" id="gd-q" aria-label="Choose your question">' + CASES.map(function (c, i) { return '<a href="' + (shown(c[0]) ? '' : base + 'guide/index.html') + '#' + c[0] + '"' + (focus.length && shown(c[0]) ? ' aria-current="true"' : '') + '><span class="gd-n">' + (i + 1) + '</span>' + esc(c[1]) + '</a>' }).join('') + '</nav>'
@@ -117,11 +134,13 @@
     var lisF = F && (F.airports || []).filter(function (a) { return a.iata === 'LIS' })[0], fun = F && (F.airports || []).filter(function (a) { return a.iata === 'FNC' })[0]
     var depLine = function (a) { var d = a && a.departures_today; return d && d.label === 'fact' ? '<li><b>' + esc(a.name) + '</b>: <b class="gd-num">' + d.count + '</b> airline departures <i>seen</i> by OpenSky\'s receivers since ' + tm(d.covered_from, hm(d.covered_from)) + ' UTC ' + lbl('fact') + ' ' + prov('OpenSky Network', 'https://opensky-network.org/', d.read) + '<span class="meta">A floor, not a total; it says nothing about your flight.</span></li>' : '' }
     out += sect('flight', '2 · I have a flight',
-      '<p class="gd-big"><b>Check with your airline.</b> Only your airline can say whether your flight goes.</p>' +
-      '<ul class="gd-short">' + short('Lisbon airport (ANA)', E.airport) + short('TAP Air Portugal', E.tap) + '</ul>' +
+      '<p class="gd-big"><b>Your airline decides whether your flight goes</b>: its site or app has the latest.</p>' +
+      '<ul class="gd-short">' + short('Lisbon airport (ANA)', E.airport) + short('TAP Air Portugal', E.tap) + depLine(lisF) + '</ul>' +
+      '<h4>Getting to the airport</h4><ul class="gd-short">' + short('Metro (the red line serves the airport)', E.metro, /\brun/i) + short('Bridges', E.bridges) + '</ul>' +
+      '<p class="meta">Taxis, ride-hailing and the airport\'s buses: <span class="gd-ns">not stated</span> in what we have read.</p>' +
       '<p class="meta">The airport\'s own departures board: <a href="https://www.aeroportolisboa.pt/en/lis/flights-destinations/find-flights/real-time-departures" rel="noopener">aeroportolisboa.pt</a> (it shows a bot check to our readers, so we cannot quote it).</p>',
       entityBlock(E.airport, 'Airports (ANA)') + entityBlock(E.tap, 'TAP Air Portugal') +
-      '<h4>What open flight data shows</h4><ul class="gd-short">' + depLine(lisF) + depLine(fun) + '</ul>' +
+      '<h4>What open flight data shows</h4><ul class="gd-short">' + depLine(fun) + '</ul>' +
       '<p>Charts by the hour, all four airports: <a href="' + base + 'transport/index.html">flights and transport</a> (incident.transport@).</p>')
 
     // (3) getting around
@@ -131,11 +150,11 @@
     }
     var thu = edge('metro-thursday') || (E.metro && (E.metro.decisions || []).filter(function (d) { return d.status === 'not_announced' })[0])
     out += sect('around', '3 · Getting around',
-      '<p>Each operator\'s latest word, newest first. Most were read through the press (labelled <i>evidence</i>); go to the operator before you set off.</p><ul class="gd-short">' +
+      '<p class="gd-ns-line">Carris (Lisbon city buses), Fertagus, taxis and ride-hailing: <span class="gd-ns">not stated</span> in what we have read.</p>' +
+      '<p>Each operator\'s word, newest first. Most were read through the press (labelled <i>evidence</i>). Each operator decides its own service: its site has the latest.</p><ul class="gd-short">' +
       short('Metro (Metropolitano de Lisboa)', E.metro) + short('Trains (CP)', E.cp) + short('Ferries (Transtejo Soflusa)', E.ferries) + short('Bridges (25 de Abril, Vasco da Gama)', E.bridges) + short('Road tunnels (Lisbon city)', E.tunnels, /tunnel/i) + short('Intercity coaches (Rede Expressos)', E['rede-expressos']) + short('FlixBus', E.flixbus) + '</ul>' +
-      '<p class="meta">Carris (Lisbon city buses), Fertagus, ride-hailing and taxis: <span class="gd-ns">not stated</span> in what we have read.</p>' +
-      (thu ? '<p><b>Thursday:</b> ' + lbl(thu.label) + ' ' + esc(thu.decision) + ' ' + stateChip(thu.status) + '</p>' : ''),
-      '<h4>From the operators\' own open feeds</h4><ul class="gd-short">' + ops.map(opLine).join('') + '</ul>' +
+      '<h4>From the operators\' own feeds</h4><ul class="gd-short">' + ops.map(opLine).join('') + '</ul>' +
+      (thu ? '<p><b>Thursday:</b> ' + stateChip(stateOf(thu)) + ' ' + esc(thu.decision) + ' ' + lbl(thu.label) + '</p>' : ''),
       entityBlock(E.metro, 'Metro') + entityBlock(E.cp, 'Trains (CP)') + entityBlock(E.ferries, 'Ferries') + entityBlock(E.bridges, 'Bridges') + entityBlock(E.tunnels, 'Road tunnels') + entityBlock(E['rede-expressos'], 'Rede Expressos') + entityBlock(E.flixbus, 'FlixBus') +
       '<p>All of it, with flights: <a href="' + base + 'transport/index.html">flights and transport</a>.</p>')
 
@@ -143,8 +162,8 @@
     var shelter = E.metro && (E.metro.decisions || []).filter(function (d) { return /shelter|homeless/i.test(d.decision) })
     out += sect('stranded', '4 · I\'m stranded: where can I go, what is open?',
       '<p>Only what an authority or an operator has <b>stated</b>, with its source and time. We never infer that a place is open.</p><ul class="gd-short">' +
-      short('Shops: Pingo Doce supermarkets', E.retail) + short('State museums and monuments', E.museums) + short('Schools', E.schools) + short('Courts and registries', E.courts) + short('Hospitals (scheduled activity)', E.hospitals) + short('Parks, gardens, municipal culture (Lisbon city)', E.tunnels, /park|garden|cultur/i) + '</ul>' +
-      '<div class="gd-ns-box"><b>Not stated</b> by any authority or operator in what we have read: cafés and restaurants, shopping malls, other supermarket chains, hotels, ride-hailing (Uber, Bolt), taxis, pharmacies. That means <i>we do not know</i>, not that they are closed. Ask the place itself.</div>' +
+      short('Shops: Pingo Doce supermarkets', E.retail) + short('State museums and monuments', E.museums) + short('Schools (mainland)', E.schools, /^(?!.*Madeira)/) + short('Courts and registries', E.courts) + short('Hospitals (scheduled activity)', E.hospitals) + short('Parks, gardens, municipal culture (Lisbon city)', E.tunnels, /park|garden|cultur/i) + '</ul>' +
+      '<div class="gd-ns-box"><b>Not stated</b> by any authority or operator in what we have read: cafés and restaurants, shopping malls, other supermarket chains, hotels, ride-hailing (Uber, Bolt), taxis, pharmacies. That means <i>we do not know</i>, not that they are closed: whether a place is open is the place\'s own word.</div>' +
       (shelter && shelter.length ? '<p><b>Shelter stated by an operator:</b></p><ul class="gd-rows">' + shelter.map(row).join('') + '</ul>' : ''),
       (govAlert ? '<h4>The government\'s measures for Wednesday</h4><ul class="gd-rows">' + row(govAlert) + '</ul>' : '') +
       entityBlock(E.retail, 'Shops') + entityBlock(E.museums, 'Museums and monuments') + entityBlock(E.schools, 'Schools') + entityBlock(E.courts, 'Courts') + entityBlock(E.hospitals, 'Hospitals') + entityBlock(E.parliament, 'Parliament') +
@@ -165,10 +184,14 @@
     // (6) Madeira
     var mw = inForce(((W && W.red_and_orange_elsewhere && W.red_and_orange_elsewhere.items) || []).filter(function (w) { return /^M/.test(w.area) }))
     var md = (E.madeira && E.madeira.decisions || []).slice().sort(function (a, b) { return (T(b.published_utc) || 0) - (T(a.published_utc) || 0) })
+    var mDec = md.filter(function (d) { return /closed|suspended|limited/.test(d.state || '') }), mCount = md.filter(function (d) { return /occurrence count/i.test(d.decision) })
     out += sect('madeira', '6 · Madeira',
-      '<ul class="gd-ws">' + (mw.length ? mw.map(function (w) { return warnLine(w).replace('<b>', '<b>' + esc(AREA[w.area] || w.area) + ': ') }).join('') : '<li>No orange or red IPMA warning for Madeira in force or ahead, in the feed as we last read it.</li>') + '</ul>' +
+      (mDec[0] ? '<p class="gd-big">' + stateChip(stateOf(mDec[0])) + ' <b>' + esc(mDec[0].decision) + '</b> ' + lbl(mDec[0].label) + ' ' + prov(host(mDec[0].address), mDec[0].address, mDec[0].read, mDec[0].published_utc, kind(mDec[0].label)) + '</p>' : '') +
+      '<h4>Decisions stated, newest first</h4><ul class="gd-rows">' + mDec.slice(1, 4).map(row).join('') + '</ul>' +
+      (mCount[0] ? '<h4>Occurrences, the latest count</h4><ul class="gd-rows">' + row(mCount[0]) + '</ul>' : '') +
+      '<h4>IPMA\'s warnings for Madeira</h4><ul class="gd-ws">' + (mw.length ? mw.map(function (w) { return warnLine(w).replace('<b>', '<b>' + esc(AREA[w.area] || w.area) + ': ') }).join('') : '<li>No orange or red IPMA warning for Madeira in force or ahead, in the feed as we last read it.</li>') + '</ul>' +
       '<p class="meta">' + prov('IPMA open data', W && W.red_and_orange_elsewhere && W.red_and_orange_elsewhere.source, W && W.red_and_orange_elsewhere && W.red_and_orange_elsewhere.read_utc) + ' (orange and red only)</p>' +
-      '<ul class="gd-rows">' + md.slice(0, 3).map(row).join('') + '</ul>' +
+      '<p class="gd-ns-line">Anything not listed here (roads, buses, shops, Funchal\'s centre since this morning): <span class="gd-ns">not stated</span> in what we have read.</p>' +
       '<p class="meta">Madeira\'s civil protection: <a href="https://www.procivmadeira.pt/" rel="noopener">procivmadeira.pt</a>.</p>',
       entityBlock(E.madeira, 'Everything we hold on Madeira'))
 
@@ -184,7 +207,6 @@
       '<li><a href="' + base + 'help/cite.html">How to cite</a></li></ul>')
 
     el.innerHTML = out
-    var h1 = document.querySelector('main.doc article h1'); if (h1 && !el.previousElementSibling) { h1.classList.add('gd-h1'); el.parentNode.insertBefore(h1, el) }
     focus.forEach(function (id) { var n = document.getElementById(id); if (n && n.classList.contains('gd-case')) el.appendChild(n) })
     if (focus.length) { var nv = el.querySelector('.gd-paths'); if (nv) { var h = document.createElement('h2'); h.className = 'gd-other'; h.textContent = 'Other questions'; el.appendChild(h); el.appendChild(nv) } }
     if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView() }
