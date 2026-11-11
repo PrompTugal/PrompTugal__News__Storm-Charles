@@ -21,11 +21,29 @@ For a fresh accountant session. Read the librarian's pack (`library/pack/start.m
 - Open: three agents with no line (dev, meteorologist, researcher: the conductor relays), the conductor's sessions after 02:58 UTC, `app/accounts/` not built, no Accounts entry in the menu (asked of the designer), a smaller model for the hourly refreshes not tested.
 - An error to remember: the first measure page said the path check would only warn. Check a claim about another agent's tool by running it before writing it down.
 
-## The second session (from 05:40 UTC, 11 November)
+## The second session (05:40 to 13:06 UTC, 11 November): for the third
 
-- Took over at 05:40 UTC from the first session (02:50 to 05:42 UTC, six rounds). Its key is marked handed over in `data/keys.json`; this session's entry is `incident-accountant-dinis-2`.
-- The hourly wake at :40 is the conductor's and fires into this session. Do not list the scheduler: ask the conductor.
-- Round 6 stands; round 7 is at 06:40 UTC. Nothing was kept outside git by the first session that a round needs.
+Seven rounds (7 to 13), briefs 7 to 13. The conductor started the third session (session_018yvwtMAwJzdrTaR5WLF97a) at about 13:05 UTC and moved the :40 wake to it; the wake no longer fires into the second session. The third marks `incident-accountant-dinis-2` handed over in `data/keys.json` in the same commit as its own entry (`-3`); the second leaves that file alone.
+
+**The round's numbers in one command:** `node tools/accounts-round.mjs | cut -c1-140` (new at 13:06 UTC): every agent's current session with the context on its last call, its previous session's last hour, the team's last hours, and those hours with and without the conductor. It replaces step 2's one-off script. The edits to `savings.md` each round were made with a small replace script, never by reading the file whole (it is long: `grep -n '^#\|^- \*\*'` first).
+
+**What the conductor wants from a report (its word, 06:42 UTC):** three lines only: the team's tokens per call this hour, who must hand over next, anything wrong; plus the brief's link.
+
+**Where round 13 left the books (12:42 UTC):** 30 of 41 agents measured, 2.51 billion tokens in 8,938 calls; the conductor 31% of it (one session, three compactions, its line to 11:42); the team at 187,811 tokens a call in the 10:00 hour and the others alone at 150,078; twenty-two agents have handed over. Next to hand over: archivist (467,435), sources (430,857), models (403,575, line from 09:31), shadow (311,034), perplexity (254,728, line from 05:27), and the conductor. Model spend 1.06 of 20 US dollars, unchanged all day; the provider's account out of credit since 02:55 UTC (last read 09:31, incident.models@'s status; `accounts/provider.json` still carries the 02:57 read).
+
+**Lessons, each from an error published and corrected:**
+
+- A second session in the ledger is not a hand-over unless its line is the later one (ipma, brief 7: nineteen became eighteen).
+- Never conclude from the hour in progress, and an hour's figure settles only when the next hour's lines are in (briefs 8 and 9).
+- The conductor's line arrives hours late and is a third to a half of an hour's tokens: give the team's figure only beside the figure without the conductor, and say to what time its line runs (brief 10's "cheapest yet").
+- Use the real clock for every "Kept by" and "done" time (`date -u`).
+
+**Open:**
+
+- The wind-down: [transition/PLAN.md](../../transition/PLAN.md) waits on Dinis's yes. The accountant is among the early eleven: one closing round as `accounts/closing.md` (tokens per agent, model spend, CI, pages, cost per output), an exit interview in `transition/interviews/accountant.md` when the planner asks, then merged into *operations* with observability and ci. Nothing of it is started.
+- Eleven agents with no line (dev, meteorologist, researcher, envoy and those started since 09:50 UTC); the roster grows each hour (`accounts-build.mjs` reads it from `agents/policy.json`).
+- `app/accounts/` not built; the Accounts entry in the menu still asked of the designer (card `a-accountant-1`); the librarian's card `a-librarian-8` is answered (the measure page's commit example, 05:41 UTC) and can close.
+- Nothing was kept outside git that a round needs: the second session's scratch scripts are gone with it, and `tools/accounts-round.mjs` stands for them.
 
 ## The third session (from 13:05 UTC, 11 November)
 
