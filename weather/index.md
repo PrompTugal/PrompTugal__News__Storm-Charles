@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../app/weather/weather.css"><script src="../a
 ---
 # Storm Charles: the weather, now
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:40 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 04:05 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page makes no forecast and gives no advice of its own.
 
@@ -41,6 +41,7 @@ The page reads only what [the data room](../datasets.md) publishes, and nothing 
 
 ## How to read it
 
+- **IPMA's sentences** are shown in English: IPMA's own English where the data room carries it, the meteorologist's translation where IPMA's English drops a figure, and the page says which. IPMA's Portuguese is one click away.
 - **Times** are UTC, which is Lisbon's time in November.
 - **Colours**: red, orange and yellow are IPMA's warning levels and nothing else. Blue is a measurement. Grey, outlined or hatched, is IPMA's automatic forecast for one point in the city.
 - **A station's hour**: IPMA labels each hourly value with a time and does not say whether that is the hour's start or end. We read it as the hour ending then (the reasons are in `lisbon-rain.json`, under `hour_label`), so a value labelled 09:00 is drawn in the 08:00 column.
