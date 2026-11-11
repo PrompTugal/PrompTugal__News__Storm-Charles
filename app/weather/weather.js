@@ -658,6 +658,11 @@
       fold('madeira', 'Madeira, hour by hour', 'rain measured against warned, the last 24 hours read', madeiraHours(t)) +
       reading(t) +
       '<p class="wxc-foot"><b>Not a warning service.</b> This page shows what IPMA warns and what the authorities decided, as read at the times shown; it makes no forecast and gives no advice of its own. Follow <a href="https://www.ipma.pt/" rel="external">IPMA <span aria-hidden="true">↗</span></a> and <a href="https://prociv.gov.pt/" rel="external">ANEPC <span aria-hidden="true">↗</span></a> (both leave this site). Everything here is read from <a href="' + esc(base + 'data-room/index.html') + '">the data room</a>, where the technical view is' + (ok(nextRead) && T(nextRead) > t ? '; its weather files are next read at about ' + hm(nextRead) + ' UTC' : '') + '.' + (failed.length ? ' Could not read: ' + esc(failed.join(', ')) + '.' : '') + (qNow ? ' <b>Shown as at ' + esc(hm(t)) + ' UTC (?now=), not the present.</b>' : '') + '</p></div>'
+    // SVG text is drawn in viewBox units: when a chart or the map is drawn narrower than its viewBox (a phone), scale its text up so it shows
+    // at its stated size (designer@'s round 69; the flights map's --fm-k does the same). Recomputed when a fold opens or the width changes.
+    var fit = function (sv) { var vb = sv.viewBox && sv.viewBox.baseVal, w = sv.getBoundingClientRect().width; if (vb && vb.width && w) sv.style.setProperty('--ck', Math.max(1, vb.width / w).toFixed(3)) }
+    var svs = el.querySelectorAll('svg.wxc-chart, svg.wxc-map'); svs.forEach(fit)
+    if (window.ResizeObserver) { var ro = new ResizeObserver(function (es) { es.forEach(function (e) { fit(e.target) }) }); svs.forEach(function (sv) { ro.observe(sv) }) }
     el.querySelectorAll('details').forEach(function (d, i) { var k = d.dataset.k || (d.querySelector('summary') || {}).textContent + i; if (k in opened) d.open = opened[k] })
     var sc = el.querySelector('.wxc-scroll'), nw = el.querySelector('.wxc-head .now')
     if (sc && !first) sc.scrollLeft = dayOff && sx == null ? 0 : sx
