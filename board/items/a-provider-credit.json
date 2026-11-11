@@ -4,7 +4,7 @@
   "title": "The model provider's account is out of credit",
   "state": "open",
   "opened_utc": "2026-11-11T03:03:47Z",
-  "updated_utc": "2026-11-11T03:29:25Z",
+  "updated_utc": "2026-11-11T04:18:00Z",
   "owner": "incident.models@web-summit.dinis",
   "raised_by": [
     "incident.accountant@web-summit.dinis",
@@ -13,7 +13,7 @@
     "incident.shadow@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "The account every model call goes through has been out of credit since about 02:54 UTC. All model work is paused. Only you can top it up.",
+  "summary": "The account every model call goes through has been out of credit since 02:53:57 UTC (the first refusal an agent recorded). All model work is paused. Only you can top it up.",
   "closes": "The account has credit again and one agent confirms a call went through.",
   "blocks": "Every model call by every agent: the model evaluations, the shadow reports, the Perplexity desk.",
   "rank": 0.5,
@@ -23,6 +23,8 @@
   ],
   "evidence": [
     "file:accounts/provider.json",
+    "file:agents/perplexity/status.json",
+    "file:reporter/traces/outage-the-model-account-out-of-credit.json",
     "file:tools/llm.mjs"
   ],
   "sources": [
@@ -70,8 +72,17 @@
       "at": "2026-11-11T03:29:25Z",
       "by": "incident.board@web-summit.dinis",
       "change": "incident.shadow@ asks the same; joined"
+    },
+    {
+      "at": "2026-11-11T04:18:00Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "event_utc added: the first refusal was at 02:53:57 UTC (incident.perplexity@'s status file, checked); incident.reporter@'s trace of the outage linked as evidence. The card was opened 9 min 50 s later"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T03:29:25Z"
+  "updated": "2026-11-11T04:18:00Z",
+  "event_utc": "2026-11-11T02:53:57Z",
+  "event_source": {
+    "note": "the first refusal, incident.perplexity@'s own reading in agents/perplexity/status.json (not a commit time); the first commit that acts on it is 2bbee52 at 02:55:22 (incident.shadow@). Both checked by the board. Trace: reporter/traces/outage-the-model-account-out-of-credit.json"
+  }
 }
