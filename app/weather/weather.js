@@ -14,10 +14,11 @@
     madeira: api + 'weather/madeira.json', changes: api + 'weather/changes.json', analysis: api + 'weather/analysis.json', decisions: api + 'decisions/graph.json'
   }
   // where a reader lands for each file: the data room's own copy (one place to change when the data room's file viewer is live)
+  var view = base + 'view/incidents/' + inc + '/'
   var ROOM = {
-    incident: room + 'incident.json', signals: room + 'timeline.html', warn: room + 'data/weather/warnings.json', rain: room + 'data/weather/lisbon-rain.json',
-    stations: room + 'data/weather/stations.json', forecast: room + 'data/weather/forecast.json', airport: room + 'data/weather/airport.json',
-    madeira: room + 'data/weather/madeira.json', changes: room + 'data/weather/changes.json', analysis: room + 'data/weather/analysis.html', decisions: room + 'data/decisions/graph.json'
+    incident: view + 'incident.json.html', signals: room + 'timeline.html', warn: view + 'data/weather/warnings.json.html', rain: view + 'data/weather/lisbon-rain.json.html',
+    stations: view + 'data/weather/stations.json.html', forecast: view + 'data/weather/forecast.json.html', airport: view + 'data/weather/airport.json.html',
+    madeira: view + 'data/weather/madeira.json.html', changes: view + 'data/weather/changes.json.html', analysis: room + 'data/weather/analysis.html', decisions: view + 'data/decisions/graph.json.html'
   }
   var qNow = new URLSearchParams(location.search).get('now')   // ?now=2026-11-11T13:00Z shows the page as at that time (a check, not a forecast)
   var now = function () { var t = qNow ? Date.parse(qNow) : NaN; return isNaN(t) ? Date.now() : t }
@@ -75,7 +76,7 @@
     var top = live[0], wp = D.warn ? prov('warn', "IPMA's warnings for the Lisbon district", D.warn.read_utc) : ''
     var line = function (w) {
       var st = status(w, t)
-      return '<li class="wxc-w w-' + esc(w.level) + '"><span class="wxc-w-i">' + iconFor(w.type) + '</span><div><p class="wxc-w-h">' + lvl(w.level) + ' <b>' + esc(EN[w.type] || w.type) + '</b> <span class="wxc-st">' + (st === 'in force' ? 'in force until ' + when(w.end_utc, t) : 'from ' + when(w.start_utc, t) + ' to ' + when(w.end_utc, t)) + '</span></p>' +
+      return '<li class="wxc-w w-' + esc(w.level) + '"><span class="wxc-w-i">' + iconFor(w.type) + '</span><div><p class="wxc-w-h">' + lvl(w.level) + ' <b>' + esc(EN[w.type] || w.type) + '</b> <span class="wxc-st">' + (st === 'in force' ? 'in force until <b>' + when(w.end_utc, t) + '</b>' : 'expected, ' + when(w.start_utc, t) + ' to ' + when(w.end_utc, t)) + '</span></p>' +
         '<p class="wxc-w-t"><span lang="pt">' + esc(w.text_pt || '') + '</span> <span class="meta">(IPMA\'s words' + (ok(w.sent_utc) ? '; sent ' + when(w.sent_utc, t) + ' UTC' : '') + ')</span></p></div></li>'
     }
     var sigUrl = h.url && ((D.signals || {}).items || []).filter(function (s) { return (s.sources || []).some(function (x) { return x.url === h.url }) }).pop()
@@ -83,6 +84,7 @@
       '<div class="wxc-hero-main"><p class="kicker">' + esc(I.kicker || 'Storm Charles') + '</p>' +
       '<h1 id="wxc-now">Lisbon now <time datetime="' + iso(t) + '">' + esc(longDay(t)) + ', ' + hm(t) + ' UTC <span>(Lisbon time)</span></time></h1>' +
       (D.warn ? '<h2 class="wxc-sub">' + (live.length ? 'IPMA warnings in force this hour' : 'No IPMA warning above green is in force in Lisbon this hour') + '</h2>' + (live.length ? '<ul class="wxc-ws">' + live.map(line).join('') + '</ul>' : '') +
+        closedStrip() +
         (next.length ? '<h2 class="wxc-sub">Next, as IPMA warns</h2><ul class="wxc-ws next">' + next.map(line).join('') + '</ul>' : '') + '<p>' + wp + (ok(D.warn.next_read_utc) ? ' <span class="prov">· next read at about ' + hm(D.warn.next_read_utc) + ' UTC</span>' : '') + '</p>' : '<p class="meta">The warnings file could not be read.</p>') +
       '</div><div class="wxc-hero-side">' + nowTiles(t) +
       (h.text ? '<div class="wxc-decision"><p class="wxc-eyebrow">The decision ' + lbl(h.label || 'fact') + '</p><p class="wxc-dtext">' + esc(h.text) + '</p><p class="prov">' + esc(h.source || '') + ', ' + esc(h.at || '') + '. <a href="' + esc(sigUrl ? ROOM.signals + '#' + sigUrl.id : room + 'index.html') + '">In the data room</a></p></div>' : '') +
@@ -273,18 +275,39 @@
 
   // what is closed and what runs: the deciders' own decisions (data/decisions/graph.json). The grouping reads the decision's own words;
   // it adds nothing. Hypotheses are left out here: this is the list of what was decided or not yet announced.
-  function closed(t) {
-    var G = D.decisions; if (!G) return ''
-    var nodes = {}; (G.nodes || []).forEach(function (n) { nodes[n.id] = n })
+  var OFF = /clos|suspend|cancel|will not take place|suppress|called off/i, LIM = /limit|condition|constraint|disruption|adjust|reassess|watched|rebook/i
+  var PART = /condition|constraint|possible disruption|adjust|limited to|suppresses \w+ trains/i   // a partial measure is a limit, whatever else its sentence says
+  // the edge's own `state` (closed, suspended, limited, running, not_announced) when the data room carries it; the decision's words until then
+  function groupOf(e, g) {
+    if (e.status === 'not_announced' || e.state === 'not_announced') return g.open
+    if (e.state) return /closed|suspended|cancel/.test(e.state) ? g.off : e.state === 'limited' ? g.lim : e.state === 'running' ? g.on : g.lim
+    return PART.test(e.decision) ? g.lim : OFF.test(e.decision) ? g.off : LIM.test(e.decision) ? g.lim : g.on
+  }
+  function decided() {
+    var G = D.decisions, nodes = {}; if (!G) return null
+    ;(G.nodes || []).forEach(function (n) { nodes[n.id] = n })
     var KIND = { transport: 1, service: 1, organiser: 1, venue: 1, municipality: 1, government: 1 }
     var es = (G.edges || []).filter(function (e) { return e.label !== 'hypothesis' && nodes[e.by] && KIND[nodes[e.by].kind] && (e.status === 'happened' || e.status === 'not_announced') && !/^madeira|^apram/.test(e.by) && !/^(mayor-expects|websummit-assessing|mai-websummit|gov-recommends)/.test(e.id) })
-    var off = /clos|suspend|cancel|will not take place|suppress|called off/i, lim = /limit|condition|constraint|disruption|adjust|reassess|watched|rebook/i
     var g = { off: [], lim: [], on: [], open: [] }
-    es.forEach(function (e) { (e.status === 'not_announced' ? g.open : off.test(e.decision) ? g.off : lim.test(e.decision) ? g.lim : g.on).push(e) })
+    es.forEach(function (e) { groupOf(e, g).push(e) })
+    return { g: g, nodes: nodes, G: G }
+  }
+  var short = function (n) { return String(n.name).replace(/\s*\(.*$/, '').replace(/ and .*$/, '') }
+  // the first screen's line of what is closed and what runs: names only, each a link to its entry below
+  function closedStrip() {
+    var d = decided(); if (!d) return ''
+    var seen = {}, names = function (list) { return list.filter(function (e) { var k = e.by; if (seen[k] || d.nodes[k].kind === 'government') return false; seen[k] = 1; return true }).map(function (e) { return '<a href="#d-' + esc(e.id) + '">' + esc(short(d.nodes[e.by])) + '</a>' }).join(', ') }
+    var offN = names(d.g.off), limN = names(d.g.lim), onN = names(d.g.on)   // a body is named once: closed first, then limited, then running
+    return '<div class="wxc-strip3"><p><b>Closed or suspended today</b> ' + (offN || 'none in the data') + '</p>' + (limN ? '<p><b>Running with limits</b> ' + limN + '</p>' : '') + (onN ? '<p><b>Running</b> ' + onN + '</p>' : '') + '<p class="prov">As each body decided; <a href="#wxc-h-closed">what exactly, when, and the source of each</a></p></div>'
+  }
+
+  function closed(t) {
+    var d = decided(); if (!d) return ''
+    var G = d.G, nodes = d.nodes, g = d.g
     var item = function (e) {
       var n = nodes[e.by], who = String(n.name).replace(/\s*\(.*$/, ''), hrs = ok(e.effect_from_utc) ? (ok(e.effect_to_utc) ? when(e.effect_from_utc, t) + ' to ' + when(e.effect_to_utc, t) : 'from ' + when(e.effect_from_utc, t)) : ''
       var txt = String(e.decision); if (txt.length > 170) txt = txt.slice(0, 168).replace(/\s+\S*$/, '') + '…'
-      return '<li><p><b>' + esc(who) + '</b> ' + lbl(e.label) + (hrs ? ' <span class="wxc-st">' + hrs + '</span>' : '') + '</p><p>' + esc(txt) + '</p><p class="prov">' + (/T\d\d:\d\d/.test(e.at || '') ? 'decided ' + when(e.at, t) + ' UTC · ' : '') + 'read ' + (ok(e.read) ? when(e.read, t) + ' UTC' : 'time not recorded') + ' · <a href="' + esc(ROOM.decisions) + '">in the data room</a> (' + esc(e.id) + ')</p></li>'
+      return '<li id="d-' + esc(e.id) + '"><p><b>' + esc(who) + '</b> ' + lbl(e.label) + (hrs ? ' <span class="wxc-st">' + hrs + '</span>' : '') + '</p><p>' + esc(txt) + '</p><p class="prov">' + (/T\d\d:\d\d/.test(e.at || '') ? 'decided ' + when(e.at, t) + ' UTC · ' : '') + 'read ' + (ok(e.read) ? when(e.read, t) + ' UTC' : 'time not recorded') + ' · <a href="' + esc(ROOM.decisions) + '">in the data room</a> (' + esc(e.id) + ')</p></li>'
     }
     var col = function (title, sub, list, cls) { return list.length ? '<div class="wxc-col ' + cls + '"><h3>' + title + ' <span class="meta">' + list.length + '</span></h3><p class="meta">' + sub + '</p><ul class="wxc-list">' + list.map(item).join('') + '</ul></div>' : '' }
     return '<section class="wxc-sec" aria-labelledby="wxc-h-closed"><h2 id="wxc-h-closed">What is closed and what runs <span class="meta">Lisbon and the mainland, as each body decided</span></h2><div class="wxc-cols">' +

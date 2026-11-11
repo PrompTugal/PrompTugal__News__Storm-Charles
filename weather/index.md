@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../app/weather/weather.css"><script src="../a
 ---
 # Storm Charles: the weather, now
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:20 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:40 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page makes no forecast and gives no advice of its own.
 
@@ -23,7 +23,7 @@ The Weather face of this site: Storm Charles (Lisbon and Madeira, 10 to 12 Novem
 
 ## Where every figure comes from
 
-The page reads only what [the data room](../datasets.md) publishes, and nothing from outside this site. Each figure is followed by its source and the time it was read, linked to the file it came from:
+The page reads only what [the data room](../datasets.md) publishes, and nothing from outside this site. Each figure is followed by its source and the time it was read, linked to that file as the data room shows it:
 
 | On the page | File in the data room | Kept by |
 |---|---|---|
