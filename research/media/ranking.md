@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:42 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 344 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 345 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -152,6 +152,7 @@ Primary source time: **10 Nov 22:35 UTC** (evidence: a spoken statement to Rádi
 | 2 | RTP | 10 Nov 23:08 | +32 min | live blog entry | [Tempestade terá mudado de trajetória](https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277) |
 | 3 | Expresso | 10 Nov 23:54 | +79 min | not read | [Depressão Charles muda trajetória para sul, com menos vento em Lisboa…](https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b) |
 | 4 | CNN Portugal | 11 Nov 00:31 | +115 min | not read | [Algarve deverá ser a região mais afetada pela Charles. Tempestade che…](https://cnnportugal.iol.pt/videos/algarve-devera-ser-a-regiao-mais-afetada-pela-charles-tempestade-chega-a-lisboa-com-menos-intensidade-do-que-o-previsto/6af3b07a0cf2aafa0453e19a) |
+| 5 | Público | 11 Nov 10:39 | +723 min | Andréia Azevedo Soares | [Depressão Charles deverá entrar pela Grande Lisboa, com vento menos i…](https://www.publico.pt/2026/11/11/azul/noticia/depressao-charles-devera-entrar-lisboa-vento-menos-intenso-2194549) |
 
 ### IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands
 
@@ -162,7 +163,8 @@ Primary source time: **11 Nov 07:16 UTC** (fact: IPMA's CAP message PO-01-1932, 
 | 1 | Observador | 11 Nov 08:46 | +89 min | live blog entry | [Vento. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja. Mas ch…](https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791224-scroll) |
 | 2 | CNN Portugal | 11 Nov 08:53 | +96 min | not read | [Lisboa, Setúbal e Beja deixam de estar em aviso vermelho para vento m…](https://cnnportugal.iol.pt/depressao-charles/tempestade-charles/lisboa-setubal-e-beja-deixam-de-estar-em-aviso-vermelho-para-vento-mas-passam-ao-nivel-maximo-de-alerta-para-chuva/20261111/6af42d3ad34e9ce6f1b43e73) |
 | 3 | Notícias ao Minuto | 11 Nov 09:10 | +114 min | Lusa | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento](https://www.noticiasaominuto.com/pais/3082238/mau-tempo-beja-lisboa-e-setubal-deixam-de-estar-sob-aviso-vermelho-para-o-vento) |
-| 4 | RTP | 11 Nov 09:22 | +125 min | live blog entry | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento](https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778369) |
+| 4 | Diário de Notícias | 11 Nov 09:14 | +118 min | live blog entry | [Depressão dividiu-se em dois núcleos. IPMA reduz nível de alerta para…](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
+| 5 | RTP | 11 Nov 09:22 | +125 min | live blog entry | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento](https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778369) |
 
 - Read by hand at 09:38 UTC on 11 November (evidence; short excerpts, each with its link in first_by_outlet). Does the report say the red rain stands?
 - Observador's live blog, 08:46:16 (first, 89 minutes after IPMA sent it): the wind is right (orange, gusts to 120 km/h), but the red rain is written as new: Lisbon, Setúbal and Beja "a passarem a alerta máximo devido à chuva", with the hours given as 9h00 to 21h00. IPMA's red rain for Lisbon was not new (moved to 09:00 at 21:23 on Tuesday, fact 6) and its message gives 09:00 to 18:00 (timeline row s-1111T0738).
@@ -170,6 +172,7 @@ Primary source time: **11 Nov 07:16 UTC** (fact: IPMA's CAP message PO-01-1932, 
 - Lusa, as carried by Notícias ao Minuto at 09:10:37 and RTP's live blog at 09:22: says the red rain is in force ("estão sob aviso vermelho, o mais grave, até às 18:00 de hoje") without calling it new; it gives the earlier red wind as "entre as 09:00 e as 18:00", where IPMA's red wind message was for 12:00 to 21:00.
 - RTP's live blog, 08:46 (not counted: it is about the forecast, not the warning): IPMA's meteorologist, as RTP reports, says the wind forecast eased with the track further south and "mantém-se ainda a previsão de forte precipitação"; it names no warning level and no district.
 - So: three texts of the warning's change in four outlets, between 89 and 125 minutes after IPMA sent it; none we read says in words that the red rain warning is unchanged; two present it as a new warning.
+- Added 10:52 UTC by the third session: DN's live page of 11 November, entry 09:14:37 "Depressão dividiu-se em dois núcleos. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja" (attributed to an IPMA meteorologist on SIC Notícias; says the alert dropped to orange). Its lead entry of 08:11:27 carries the same headline but not the fact: see not_matches. Observador stays first.
 
 Lags are whole minutes elapsed, truncated (19:09:00 to 19:41:31 is 32 minutes); the seconds are in the data. Notes: the organisers' email to attendees went at 19:38 (no public URL; in [the timeline](../../incidents/2026-11-10-storm-charles/timeline.md)). Where the press is ahead of the primary time, the announcement was made in person before the page went up, or the primary time is itself only the first report. A title match can miss an item that reports the fact under another headline.
 
@@ -180,12 +183,12 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 | Outlet | Items | Reporter's by-line | Agency (Lusa) | Wire share | Desk | By-line not read | Items linking a primary source | Bodies linked |
 |---|---|---|---|---|---|---|---|---|
 | Notícias ao Minuto | 107 | 6 | 92 | 86% | 9 | 0 | 1 | IPMA |
-| Observador | 43 | 17 | 8 | 19% | 18 | 0 | 2 | IPMA, MAI |
+| Observador | 43 | 18 | 8 | 19% | 17 | 0 | 1 | IPMA |
 | CNN Portugal | 41 | 3 | 6 | 67% | 0 | 32 | 1 | Diário da República |
 | RTP | 29 | 0 | 0 | 0% | 29 | 0 | 0 |  |
 | Expresso | 28 | 0 | 0 | n/a | 0 | 28 | 0 |  |
 | Diário de Notícias | 23 | 21 | 2 | 9% | 0 | 0 | 2 | AMN, Lusoponte |
-| Público | 19 | 12 | 3 | 18% | 2 | 2 | 5 | ANEPC, Diário da República, IPMA |
+| Público | 20 | 13 | 3 | 17% | 2 | 2 | 6 | ANEPC, Diário da República, IPMA |
 | ECO | 14 | 3 | 0 | 0% | 3 | 8 | 0 |  |
 | Correio da Manhã | 14 | 1 | 4 | 29% | 9 | 0 | 0 |  |
 | Jornal Económico | 8 | 1 | 0 | 0% | 0 | 7 | 0 |  |
@@ -200,9 +203,9 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 Among outlets with at least four items:
 
-- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (26%), Diário de Notícias (9%), Observador (5%), CNN Portugal (2%).
-- **Highest share of items with a reporter's by-line:** Portugal Resident (100%), TEK Notícias (SAPO) (100%), Diário de Notícias (91%), Público (63%), Observador (40%).
-- **The wire underneath:** 115 of 344 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (30%), Diário de Notícias (9%), CNN Portugal (2%), Observador (2%).
+- **Highest share of items with a reporter's by-line:** Portugal Resident (100%), TEK Notícias (SAPO) (100%), Diário de Notícias (91%), Público (65%), Observador (42%).
+- **The wire underneath:** 115 of 345 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -214,7 +217,7 @@ Among outlets with at least four items:
 | RTP | public broadcaster | nothing stands out in this sample |
 | Expresso | weekly, online daily | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
-| Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
+| Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line; links to the primary sources |
 | ECO | business daily (online) | first on "Web Summit calls off Day 2" |
 | Correio da Manhã | daily | video |
 | Jornal Económico | business weekly, online daily | nothing stands out in this sample |
@@ -232,10 +235,10 @@ Among outlets with at least four items:
 Reporters whose names are printed on the items in the list, by outlet, with the number of items. A by-line is a public professional credit; nothing else about anyone is kept. A wrong or missing by-line: [tell us](../../contribute.md).
 
 - **Notícias ao Minuto:** Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias, Natacha Nunes Costa
-- **Observador:** Carla Jorge de Carvalho (4), Bruno Vieira Amaral (3), Paulo Ferreira (3), Edgar Caetano (2), José Manuel Fernandes (2), Ana Sanlez, António Moura dos Santos, Filomena Martins, Helena Garrido, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Leonor Riso, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição
+- **Observador:** Carla Jorge de Carvalho (5), Bruno Vieira Amaral (3), Paulo Ferreira (3), Edgar Caetano (2), Filomena Martins (2), José Manuel Fernandes (2), Ana Sanlez, António Moura dos Santos, Helena Garrido, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Porfírio, Judite França, Leonor Riso, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição, Teresa Freire
 - **CNN Portugal:** Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva
 - **Diário de Notícias:** Ricardo Simões Ferreira (4), Sofia Fonseca (4), Susete Henriques (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Adelaide Cabral, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Tomás Gonçalves Pereira
-- **Público:** Adriana Castro, Andrea Cunha Freitas, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira
+- **Público:** Adriana Castro, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira
 - **ECO:** Ana Marcela, Shrikesh Laxmidas, Tiago Alexandre Pereira
 - **Correio da Manhã:** Marta Mariano
 - **Jornal Económico:** José Carlos Lourinho

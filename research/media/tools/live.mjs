@@ -16,6 +16,7 @@ const FACTS = JSON.parse(fs.readFileSync(path.join(M, 'facts.json'), 'utf8')).fa
 const BLOGS = [
     // Jornal de Negócios' live blog is no longer read (its footer forbids reproduction; stopped 11 November): entries already timed are kept
     { outlet: 'dn', url: 'https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh', parse: dn },
+    { outlet: 'dn', url: 'https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente', parse: dn },   // DN's live page of 11 November (found 10:55 UTC by the third session)
     { outlet: 'observador', url: 'https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/', parse: dn },   // the slug is the page's first headline of the day; the page is Observador's running live blog, storm entries included
     { outlet: 'observador', url: 'https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/', parse: dn },   // Observador's live page of 11 November (found 07:40 UTC in its feed)
     { outlet: 'rtp', url: 'https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024', parse: rtp },
@@ -77,9 +78,11 @@ for (const b of BLOGS) {
     const times = all.map(e => e.at).sort()
     if (PREV[b.url] && all.length < (PREV[b.url].entries_read || 0)) { blogs.push({ ...PREV[b.url], status: r.status, rechecked: read, rechecked_note: 'at this read the page gave fewer timed entries than the earlier read (a live page drops entries or their times as it ages) and this session holds no earlier capture: the record of the earlier read is kept, and its timed entries stay below' }); console.error(`${b.outlet}: ${r.status}, ${all.length} entries now; the earlier record kept`); await new Promise(r => setTimeout(r, 1000)); continue }
     blogs.push({ outlet: b.outlet, url: b.url, status: r.status, read: used.read, capture_sha256: used.sha, note, entries_read: all.length, first_entry: times[0] || null, last_entry: times[times.length - 1] || null })
+    // entries read by hand and found not to report the fact (facts.json: not_matches, with the reason) are never matched again
+    const notMatch = (fact, outlet, at) => (FACTS.find(f => f.id === fact)?.not_matches || []).some(n => n.outlet === outlet && n.at === at)
     for (const e of all) for (const f of FACTS) {
         const re = new RegExp(f.live_pattern || f.pattern, 'i')
-        if (e.at >= (f.from || f.primary_time) && e.at < (f.until || '2026-11-13T00:00:00Z') && re.test(e.title + (f.match_entry_text ? ' ' + e.body : '')))
+        if (!notMatch(f.id, b.outlet, e.at) && e.at >= (f.from || f.primary_time) && e.at < (f.until || '2026-11-13T00:00:00Z') && re.test(e.title + (f.match_entry_text ? ' ' + e.body : '')))
             entries.push({ fact: f.id, outlet: b.outlet, at: e.at, title: e.title || '(entry without a title)', url: e.url || r.url, time_from: e.time_from, matched_in: re.test(e.title) ? 'title' : 'entry text (read, not kept)', label: 'evidence', read: used.read })
     }
     console.error(`${b.outlet}: ${r.status}, ${all.length} entries (${times[0]} to ${times[times.length - 1]})`)
@@ -87,7 +90,7 @@ for (const b of BLOGS) {
 }
 // a page drops its entry times after midnight: keep what earlier reads timed
 { const OUTF = path.join(M, 'live-entries.json'), key = e => e.fact + '|' + e.outlet + '|' + e.at + '|' + e.title, have = new Set(entries.map(key))
-  if (fs.existsSync(OUTF)) for (const e of JSON.parse(fs.readFileSync(OUTF, 'utf8')).entries || []) if (!have.has(key(e))) entries.push(e) }
+  if (fs.existsSync(OUTF)) for (const e of JSON.parse(fs.readFileSync(OUTF, 'utf8')).entries || []) if (!have.has(key(e)) && !(FACTS.find(f => f.id === e.fact)?.not_matches || []).some(n => n.outlet === e.outlet && n.at === e.at)) entries.push(e) }
 entries.sort((a, b) => a.fact.localeCompare(b.fact) || a.at.localeCompare(b.at))
 fs.writeFileSync(path.join(M, 'live-entries.json'), JSON.stringify({
     about: 'Timed entries inside the press live blogs on Storm Charles, for the keyed facts only (facts.json): the entry\'s own time (UTC), its title, the live blog\'s URL. An entry\'s text is read to match it and is not kept; no author is kept. Observador\'s storm entries are inside its general live blog of the day, whose address names another story (we missed it at first and said it had none: corrected 00:50 UTC, 11 November); Notícias ao Minuto\'s live page prints no time per entry. Evidence, not fact.',

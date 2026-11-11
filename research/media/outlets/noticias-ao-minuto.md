@@ -1,6 +1,6 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:41 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
@@ -20,7 +20,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | ANEPC's public warning on Charles (Aviso 21) | 9 Nov 20:30 | 9 Nov 23:37 (article) | +187 min | 1 of 1 | [Mau tempo agrava-se "nos próximos dias": Os conselhos da Proteção Civ… ↗](https://www.noticiasaominuto.com/pais/3081340/mau-tempo-agrava-se-nos-proximos-dias-os-conselhos-da-protecao-civil) |
 | IPMA's red wind warning for Wednesday | 10 Nov 07:18 | 10 Nov 08:59 (article) | +101 min | 5 of 6 | [Oito distritos com aviso vermelho para vento na quarta-feira ↗](https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 20:01 (article) | +52 min | 7 of 11 | [Web Summit cancela segundo dia devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo) |
-| IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:10 (article) | +114 min | 3 of 4 | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento ↗](https://www.noticiasaominuto.com/pais/3082238/mau-tempo-beja-lisboa-e-setubal-deixam-de-estar-sob-aviso-vermelho-para-o-vento) |
+| IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:10 (article) | +114 min | 3 of 5 | [Beja, Lisboa e Setúbal deixam de estar sob aviso vermelho para o vento ↗](https://www.noticiasaominuto.com/pais/3082238/mau-tempo-beja-lisboa-e-setubal-deixam-de-estar-sob-aviso-vermelho-para-o-vento) |
 
 ## Its sources, as far as its own pages say
 
@@ -136,7 +136,7 @@ Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Marilin
 | 10 Nov 23:50 | article | Lusa | [Mau tempo: Albuquerque diz que ocorrências "não são significativas" ↗](https://www.noticiasaominuto.com/pais/3082101/mau-tempo-albuquerque-diz-que-ocorrencias-nao-sao-significativas) |
 | 11 Nov 00:00 | article | Lusa | [Portugal em alerta: Escolas fechadas e transportes suspensos ↗](https://www.noticiasaominuto.com/pais/3082105/continente-em-alerta-devido-a-passagem-da-depressao-charles) |
 | 11 Nov 00:30 | article | Lusa | [Grande Lisboa com mais de metade das ocorrências registadas 3.ª-feira ↗](https://www.noticiasaominuto.com/pais/3082117/mau-tempo-grande-lisboa-com-mais-de-metade-das-1240-ocorrencias-registadas-3-feira) |
-| 11 Nov 04:01 | article | Lusa | [Proteção Civil: 66 ocorrências em Portugal continental às 03:30 ↗](https://www.noticiasaominuto.com/pais/3082141/protecao-civil-66-ocorrencias-em-portugal-continental-as-0330) |
+| 11 Nov 04:01 | article | Lusa | [Proteção Civil: 66 ocorrências em Portugal continental às 03h30 ↗](https://www.noticiasaominuto.com/pais/3082141/protecao-civil-66-ocorrencias-em-portugal-continental-as-0330) |
 | 11 Nov 04:41 | article | Lusa | [Mau tempo na Madeira: 99 ocorrências, energia já restabelecida ↗](https://www.noticiasaominuto.com/pais/3082146/madeira-99-ocorrencias-energia-ja-restabelecida) |
 | 11 Nov 05:37 | article | Lusa | [Portugal prepara jogo com Dinamarca sob aviso de mau tempo ↗](https://www.noticiasaominuto.com/desporto/3082163/portugal-prepara-jogo-com-dinamarca-sob-aviso-de-mau-tempo) |
 | 11 Nov 06:28 | article | Lusa | [Charles causa vento de 130 km/hora na Madeira e dirige-se para continente ↗](https://www.noticiasaominuto.com/pais/3082173/mau-tempo-charles-causou-ventos-de-130-kmhora-na-madeira-e-dirige-se-para-o-continente) |

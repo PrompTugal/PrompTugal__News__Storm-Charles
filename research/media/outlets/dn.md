@@ -1,12 +1,12 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:41 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
 | Items we read | 23: 20 articles, 2 live, 0 video, 1 opinion |
-| First and last | 9 Nov 08:34 to 11 Nov 10:33 UTC |
+| First and last | 9 Nov 08:34 to 11 Nov 10:44 UTC |
 | Whose reporting | 21 with a reporter's by-line, 2 the agency's (Lusa), 0 the desk's, 0 not read; wire share 9% |
 | Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
 
@@ -22,6 +22,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 09:14 (live entry) | -175 min | 1 of 6 | [Escolas e serviços públicos não essenciais serão encerrados amanhã. "… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:47 (live entry) | +47 min | 3 of 6 | ["Eu diria que tudo indica que a Web Summit não poderá funcionar amanh… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:45 (live entry) | +36 min | 4 of 11 | [Segundo dia da Web Summit cancelado ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
+| IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:14 (live entry) | +118 min | 4 of 5 | [Depressão dividiu-se em dois núcleos. IPMA reduz nível de alerta para… ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
 
 ## Its sources, as far as its own pages say
 
@@ -77,4 +78,4 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 | 11 Nov 09:36 | live | Sofia Fonseca | [Charles causou ventos de 130 km/hora na Madeira. Agora está a caminho do continente ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
 | 11 Nov 09:55 | article | Susete Henriques | [Revista de imprensa. Os alertas sobre a tempestade Charles em destaque ↗](https://www.dn.pt/media-geral/revista-de-imprensa-os-alertas-sobre-a-tempestade-charles-em-destaque) |
 | 11 Nov 10:25 | article | Tomás Gonçalves Pereira | [Depressão Charles deixa dois mil clientes sem luz em casa esta madrugada ↗](https://dinheirovivo.dn.pt/empresas/depresso-charles-deixa-dois-mil-clientes-sem-luz-em-casa-esta-madrugada) |
-| 11 Nov 10:33 | live | Sofia Fonseca | [Depressão Charles dividiu-se em dois núcleos. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja ↗](https://www.dn.pt/sociedade/depresso-charles-dividiu-se-em-dois-ncleos-ipma-reduz-nvel-de-alerta-para-lisboa-setbal-e-beja) |
+| 11 Nov 10:44 | live | Sofia Fonseca | [Depressão Charles dividiu-se em dois núcleos. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja ↗](https://www.dn.pt/sociedade/depresso-charles-dividiu-se-em-dois-ncleos-ipma-reduz-nvel-de-alerta-para-lisboa-setbal-e-beja) |

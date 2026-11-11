@@ -1,14 +1,14 @@
 # Público: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:41 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 10:52 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 19: 18 articles, 0 live, 0 video, 1 opinion |
-| First and last | 9 Nov 09:04 to 11 Nov 08:14 UTC |
-| Whose reporting | 12 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 18% |
-| Does best (from the counts) | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
+| Items we read | 20: 19 articles, 0 live, 0 video, 1 opinion |
+| First and last | 9 Nov 09:04 to 11 Nov 10:39 UTC |
+| Whose reporting | 13 with a reporter's by-line, 3 the agency's (Lusa), 2 the desk's, 2 not read; wire share 17% |
+| Does best (from the counts) | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line; links to the primary sources |
 
 ## Against the key moments
 
@@ -20,10 +20,11 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page) | 10 Nov 09:14 | 10 Nov 14:09 (article) | +295 min | 4 of 6 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | The government's alert situation: schools and non-essential public services closed on Wednesday | 10 Nov 12:10 | 10 Nov 14:09 (article) | +119 min | 5 of 6 | [Creches e escolas públicas e privadas fecham na quarta-feira devido à… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422) |
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 14:00 (article) | +60 min | 4 of 6 | [Tempestade Charles encerra túneis em Lisboa e coloca Web Summit em dú… ↗](https://www.publico.pt/2026/11/10/sociedade/noticia/tempestade-charles-encerra-tuneis-lisboa-coloca-web-summit-duvida-2194442) |
+| IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 11 Nov 10:39 (article) | +723 min | 5 of 5 | [Depressão Charles deverá entrar pela Grande Lisboa, com vento menos i… ↗](https://www.publico.pt/2026/11/11/azul/noticia/depressao-charles-devera-entrar-lisboa-vento-menos-intenso-2194549) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 5 of 19 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 6 of 20 items link to a body that decides or warns (ANEPC, Diário da República, IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 4 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -47,7 +48,7 @@ Through its own public page: [Ficha técnica ↗](https://www.publico.pt/nos/fic
 
 ## By-lines on this story, as printed
 
-Adriana Castro, Andrea Cunha Freitas, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+Adriana Castro, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, José Volta e Pinto, Leonor Alhinho, Miguel Dantas, Sara de Melo Rocha, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -72,3 +73,4 @@ Adriana Castro, Andrea Cunha Freitas, Carlos Dias, Cristiana Faria Moreira, Fern
 | 11 Nov 06:40 | article | Sofia Neves | [Charles causou ventos de 130 km/hora na Madeira e dirige-se para o continente ↗](https://www.publico.pt/2026/11/11/sociedade/noticia/charles-causou-ventos-130-kmhora-madeira-dirigese-continente-2194537) |
 | 11 Nov 07:14 | article | not read | [Despertador: Charles causou ventos de 130 km/hora na Madeira e dirige-se para o continente ↗](https://www.publico.pt/2026/11/11/newsletter/despertador) |
 | 11 Nov 08:14 | article | Carlos Dias | [Tempestade: Alqueva tem capacidade para receber 900 milhões de metros cúbicos de água ↗](https://www.publico.pt/2026/11/11/azul/noticia/tempestade-alqueva-capacidade-receber-900-milhoes-metros-cubicos-agua-2194513) |
+| 11 Nov 10:39 | article | Andréia Azevedo Soares | [Depressão Charles deverá entrar pela Grande Lisboa, com vento menos intenso ↗](https://www.publico.pt/2026/11/11/azul/noticia/depressao-charles-devera-entrar-lisboa-vento-menos-intenso-2194549) |
