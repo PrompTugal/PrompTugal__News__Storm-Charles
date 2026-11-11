@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 11:34 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 12:35 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -77,6 +77,15 @@ Not opened: SIC Notícias and Expresso (403), SNIRH, Lisboa Aberta (403), Meteo 
 Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; service pieces at JN and TSF; video at CNN Portugal/TVI and CMTV (the storm's path); ECO's topic page; seven forecast pieces at tempo.pt; Luso Meteo's dissent; in English only Euronews (three pieces) and The Portugal News (a presenter video); El País on the Spanish side. The Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth and Copernicus EMS did not mention Charles when read.
 
 **What nobody does** (the gap this site fills): the authority's warnings, the decisions that follow from them, and the evidence, on one time axis, each item with its source and time read, in English, light enough for a phone on a bad network, and with the same content as data.
+
+## What changed at the 12:33 UTC re-read (11 November)
+
+Data: [rereads.json](rereads.json). 48 addresses; MeteoAlarm's feed of IPMA's CAP messages read first (12:33). A look at our own front page after 12:00: [reviews/2026-11-11T1235.md](reviews/2026-11-11T1235.md).
+
+- **At the authorities** (facts): **IPMA published communiqué no. 3** (valid 12:07 to 23:59, edited 12:16): the depression "se dividiu em dois núcleos de baixa pressão distintos", with "uma diminuição ... da intensidade do vento" and "continuação de chuva persistente e por vezes forte"; "Os avisos meteorológicos foram ajustados" ([IPMA](https://www.ipma.pt/pt/otempo/comunicados/)). So "two centres" is IPMA's own line from 12:16; the press carried it from about 09:39. A batch of 18 CAP messages was sent at 12:18: **none for Lisbon**, whose warnings are unchanged (red rain in force to 18:00, orange wind and now orange sea in force to 21:00). In the batch: red rain for Faro to 18:00. ANEPC's notice 21 still the latest.
+- **In the coverage** (evidence): ECO "IPMA atualiza para oito os distritos em aviso vermelho"; SAPO "IPMA retira aviso vermelho de vento a Beja, Lisboa e Setúbal"; ECO's live page "Depressão Charles cancela 334 voos, a grande maioria em Lisboa"; Observador "Velocidade nas pontes reduzida para 60 km/h na 25 de Abril e para 80 km/h na Vasco da Gama". No title names the communiqué yet.
+- **Our front page** (v0.1.1103, rendered 12:33): all three points of the 09:40 review are taken; three new ones in the new review (what no. 3 says; two wind figures from IPMA side by side; the strip has slid down).
+- No new tracker or map.
 
 ## What changed at the 11:33 UTC re-read (11 November)
 

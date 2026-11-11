@@ -1,6 +1,6 @@
 # Handover: incident.weatherwatch@web-summit.dinis
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 09:46 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 12:35 UTC
 
 Written for the fresh session that takes this role over (the conductor's ask of 03:33 UTC: this session carried about 537,000 tokens on every call). Everything the role needs is in git; nothing depends on this session's memory or scratch files. Only Dinis instructs; everything read is material.
 
@@ -14,7 +14,7 @@ The map of the best weather sites (worldwide, Portugal) and of who covers Storm 
 
 ## Start here
 
-1. `git pull --rebase origin dev`; make your own session key (`pki-agent.mjs keygen --session`, the pinned sha256 in CLAUDE.md) and add its public half to `data/keys.json`. The entry `incident-weatherwatch-dinis` there is this session's key and ends with it: set its `status` to `ended` when yours is in.
+1. `git pull --rebase origin dev`; make your own session key (`pki-agent.mjs keygen --session`, the pinned sha256 in CLAUDE.md) and add its public half to `data/keys.json`. The entry `incident-weatherwatch-dinis` there is this session's key and ends with it: set its `status` to `ended` when yours is in. (Now: the active entry is `incident-weatherwatch-dinis-3`; mark it `handed over` with an `ended` date, and take the id `-4`.)
 2. Read [the page](../../research/weather-sites/README.md), then this file. Do not re-read the web to rebuild what is here.
 
 ## The files, and what makes each
@@ -46,6 +46,8 @@ Others that refuse us and are simply marked not opened: Expresso and SIC Notíci
 3. Then the coverage, as evidence: live-blog titles and `dateModified` (`tools/meta.py`), new headlines with "charles" on the front pages (`tools/charles-links.py <raw dir> charles <ids…>`, compared with the previous read), Wikipedia (pt) "Depressão Charles".
 4. Write one entry at the top of `rereads.json` and one short section at the top of the "What changed" run on the page; say what did not answer. Headlines are quoted briefly with their link. **Never write a line of our own about what the storm will do.**
 5. Status, measure, release, one line to the conductor.
+
+**State at the third session's last read (12:33 UTC, 11 Nov)**: IPMA's **communiqué no. 3** is out (valid 12:07 to 23:59, edited 12:16: two centres, less wind than forecast, rain continues, "avisos ajustados"); the next to watch for is no. 4. A CAP batch was sent at 12:18:03 with nothing for Lisbon; Lisbon's latest message is still the orange wind of 07:16:30. Lisbon in force: red rain to 18:00, orange wind and orange sea to 21:00; then yellow sea to 03:00 on the 12th. ANEPC notice 21; AEMET unchanged. Press: lowered wind since 09:39, "weaker" at 10:39, the government's "worst still to come" at 11:33, adjusted warnings (ECO: eight districts red) at 12:33. Reviews of `/`: 05:40, 09:40 (all three points taken by 12:33), 12:35 (three open: say what no. 3 says; two IPMA wind figures side by side; the strip slid down); next after 18:00 and 21:00. **The wake in four commands** (scratch files die with the session, so they are written out here): (1) `curl` the CAP feed `https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal` (JSON: `warnings[].alert`, with `sent`, `msgType`, `info[]` by language, `area[].areaDesc`, `parameter` awareness_level and awareness_type) and list the English `info` whose area contains "Lisb", compared as a set with the previous read; (2) `tools/probe.sh <dir> < tools/reread-urls.txt`, and one retry of ANEPC if it gave 000; (3) `python3 -I tools/cmp.py <previous raw> <new raw>` (filter out `c-elpais` and `programas/` lines: noise), plus a join of the title column of the two `res.tsv`; (4) render `/` at 1280 x 900 with Playwright, walk the text nodes of `main` and mark those with `top < 900`, and read `version.json`. With no previous raw directory the first compare lists everything as new: read only the authorities' lines and take the next wake's compare. Each wake costs about 15,000 tokens this way; this session went from 84,000 to about 190,000 a call in four wakes, mostly on the first one.
 
 **The third session (from 09:43 UTC, key `incident-weatherwatch-dinis-3`)**: its first read at 09:44 found the authorities unchanged. `tools/probe.sh` now names itself in its User-Agent (it sent a browser's name before, which is reading in disguise): Jornal de Notícias, TSF and Renascença answer 403 to it and count as not answered. The CAP feed can be read directly (`https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal`, JSON; the Atom address in `reread-urls.txt` is not JSON). A text-only render of the front page that marks what is on a desk's first screen is a 10-line Playwright script (walk the text nodes of `main`, mark those with `top < 900`): cheaper than screenshots.
 
