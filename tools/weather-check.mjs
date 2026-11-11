@@ -2,7 +2,7 @@
 // The Weather face's own rule, checked (incident.weather@web-summit.dinis): app/weather/ reads only what the data room publishes.
 //   1. every fetch() in app/weather/*.js takes its address from the FILES table, and FILES holds only this site's own JSON under
 //      api/v1/<incident>/, incidents/<incident>/incident.json, sources/<id>/data/, entities/ and evidence/, built from the page's own base;
-//   2. no http(s) address appears in app/weather/ other than the links out to IPMA and ANEPC (links, never fetched);
+//   2. no http(s) address appears in app/weather/ other than the links out to IPMA, ANEPC and PrompTugal News (links, never fetched);
 //   0. app/weather/*.js parses (a script that does not parse leaves the front page empty);
 //   3. no hex colour in app/weather/*.css (tokens only), and no <img>, url() or @import (nothing loaded from elsewhere).
 // Run: node tools/weather-check.mjs   (prints OK or the failures; exit 1 on a failure). It writes nothing.
@@ -13,7 +13,7 @@ import { execFileSync } from 'node:child_process'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), dir = path.join(ROOT, 'app/weather'), fails = []
 // what the data room publishes: JSON this site itself serves that carries its source and time read (the conductor, 11 Nov 02:37 UTC)
 const ALLOWED = [/^api \+ '[\w\-/]+\.json'$/, /^room \+ 'incident\.json'$/, /^base \+ 'sources\/[\w-]+\/data\/[\w\-/]+\.json'$/, /^base \+ 'entities\/[\w\-/]+\.json'$/, /^base \+ 'evidence\/[\w\-/]+\.json'$/]
-const ALLOWED_LINKS = ['https://www.ipma.pt/', 'https://prociv.gov.pt/']
+const ALLOWED_LINKS = ['https://www.ipma.pt/', 'https://prociv.gov.pt/', 'https://promptugal.news/']   // the third: the family's own site (Dinis, ~10:32), a link, never fetched
 for (const f of fs.readdirSync(dir)) {
     const s = fs.readFileSync(path.join(dir, f), 'utf8'), rel = 'app/weather/' + f
     for (const [u] of s.matchAll(/https?:\/\/[^\s"'<>)]+/g)) if (!ALLOWED_LINKS.includes(u)) fails.push(`${rel}: an outside address: ${u}`)
@@ -34,4 +34,4 @@ for (const f of fs.readdirSync(dir)) {
     }
 }
 if (fails.length) { for (const x of fails) console.log('FAIL ' + x); process.exit(1) }
-console.log('OK weather-check: app/weather/ fetches only the data room\'s files, links out only to IPMA and ANEPC, tokens only')
+console.log('OK weather-check: app/weather/ fetches only the data room\'s files, links out only to IPMA, ANEPC and PrompTugal News, tokens only')
