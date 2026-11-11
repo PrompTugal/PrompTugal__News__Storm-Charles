@@ -480,6 +480,24 @@ ${timeline(a, mine, H, sess, idx)}
         if (idx.board) { if (idx.board.style && !document.querySelector('link[data-board]')) { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = BASE + idx.board.style; l.dataset.board = '1'; document.head.appendChild(l) }
             const old = document.querySelector('script[data-board]'); if (old) old.remove(); const sc = document.createElement('script'); sc.src = BASE + idx.board.script; sc.dataset.board = '1'; document.head.appendChild(sc) }
     }
+    // the cast's characters, inline: as <img> they follow the system's light and dark, not this site's theme button; inline they
+    // take the site's tokens. Each file is fetched once (same site, under 2 KB), cleaned of anything that is not drawing, and
+    // put in place of its <img>, keeping the size and the alt text.
+    const svgCache = new Map()
+    function inlineCast() {
+        for (const im of document.querySelectorAll('img.ag-mark, .ag-home .fig img')) {
+            const src = im.getAttribute('src'); if (!/\.svg$/.test(src) || im.dataset.done) continue; im.dataset.done = '1'
+            if (!svgCache.has(src)) svgCache.set(src, fetch(src).then(r => r.ok ? r.text() : '').catch(() => ''))
+            svgCache.get(src).then(t => { if (!t || !im.isConnected) return
+                const svg = new DOMParser().parseFromString(t, 'image/svg+xml').documentElement; if (!svg || svg.nodeName !== 'svg') return
+                for (const x of svg.querySelectorAll('script,foreignObject,image,a')) x.remove()
+                for (const x of svg.querySelectorAll('*')) for (const at of [...x.attributes]) if (/^on/i.test(at.name) || /^(href|xlink:href)$/i.test(at.name)) x.removeAttribute(at.name)
+                svg.setAttribute('width', im.getAttribute('width')); svg.setAttribute('height', im.getAttribute('height')); svg.setAttribute('class', im.className)
+                const alt = im.getAttribute('alt'); if (alt) svg.setAttribute('aria-label', alt); else { svg.setAttribute('aria-hidden', 'true'); svg.removeAttribute('aria-label'); svg.removeAttribute('role') }
+                im.replaceWith(document.importNode(svg, true)) })
+        }
+    }
+    new MutationObserver(inlineCast).observe(el, { childList: true, subtree: true })
     const openHash = () => { const t = location.hash && !/[?&=]/.test(location.hash) ? document.getElementById(location.hash.slice(1)) : null; if (!t) return; if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView() }
     window.addEventListener('hashchange', openHash)
     draw(); setInterval(() => { if (!document.hidden) draw() }, 60e3)
