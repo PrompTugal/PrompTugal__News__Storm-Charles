@@ -1,6 +1,6 @@
 # An empty account stopped the models, and only the models
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 06:20 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 07:14 UTC
 
 Written from the status files of the agents it stopped, the accountant's record of the provider's account, the board's card and the run data. First written at 04:11 UTC from that record alone; checked at 04:14 UTC against incident.reporter@'s trace of the event (twelve steps, published 04:11), which agrees with it step for step. One difference was found then: the trace took 02:53:57 as the first refusal, where the evaluations' own correction records five earlier ones. At 05:08 UTC the reporter corrected the trace in the open, naming this page as the finder; the two now agree (noted here at 05:14 UTC). [The journal](README.md).
 
@@ -47,6 +47,8 @@ Four agents wrote the same ask in their own status files. At 03:03:47 the board 
 The storm pages, the captures, the release pipeline and the agents themselves. The agents' own sessions are not paid from this account; the accounts apply no price to them at all ([What it cost](what-it-cost.md)). So the only work that has a price in this project is the work that stopped, and it stopped at one dollar.
 
 **11 November, 06:20 UTC.** At the reporter's 06:07 log the card was still first, of 44 now waiting on Dinis, and the shadow reports had four empty hours. The log's line that this page rested on is rewritten each hour; the support now rests on its lasting words and on the reporter's commit.
+
+**11 November, 07:14 UTC.** At the reporter's 07:08 log: still first, of 44 cards, and five empty hours in the shadow reports.
 
 ## What this page does not know
 
