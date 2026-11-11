@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T19:51Z",
-  "based_on_read_utc": "2026-11-11T19:23:58Z",
+  "updated": "2026-11-11T20:51Z",
+  "based_on_read_utc": "2026-11-11T20:23:08Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -552,12 +552,12 @@
     },
     {
       "id": "c14",
-      "text": "IPMA's own hourly model for Lisbon has moved twice between our reads. On Tuesday evening, under an unchanged stamp, Wednesday's strongest mean wind went from 48.6 km/h at 18:00 to 23.4 km/h at 20:00. At the 08:45 read on Wednesday it was 40 km/h at 14:00, from the south.",
+      "text": "IPMA's own hourly model for Lisbon has moved three times between our reads. On Tuesday evening, under an unchanged stamp, Wednesday's strongest mean wind went from 48.6 km/h at 18:00 to 23.4 km/h at 20:00. From the 08:45 read on Wednesday it was 40 km/h at 14:00, from the south (last read so at 19:29). At the 20:23 read, under the same stamp (07:56 Lisbon time), the same hour is 36 km/h, still from the south: the run was changed after its hour had passed. Measured at the airport at 14:00: 54 km/h, gusting 74.",
       "label": "evidence",
       "model": true,
       "said_by": "IPMA's automatic hourly forecast for Lisbon (a model's output, not a warning)",
       "at_utc": "2026-11-10T21:18:43Z",
-      "read_utc": "2026-11-11T08:45:09Z",
+      "read_utc": "2026-11-11T20:23:08Z",
       "supports": [
         {
           "kind": "row",
@@ -580,7 +580,7 @@
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
           "field": "hourly.wed_peak.wind_mean_kmh",
-          "expect": 40,
+          "expect": 36,
           "read_field": "hourly.read_utc"
         },
         {
@@ -596,6 +596,26 @@
           "field": "hourly.wed_peak.wind_dir",
           "expect": "S",
           "read_field": "hourly.read_utc"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+          "field": "hourly_runs[read_utc=2026-11-11T19:29:49Z].wed_peak.wind_mean_kmh",
+          "expect": 40,
+          "note": "The run as last read before it was changed."
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json",
+          "field": "hourly.updated_local",
+          "expect": "2026-11-11T07:56:49",
+          "read_field": "hourly.read_utc"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T14:00Z].wind_kmh",
+          "expect": 54
         }
       ]
     },
@@ -2217,6 +2237,13 @@
     {
       "at_utc": "2026-11-11T19:51Z",
       "what": "c15: the pin on MET Norway's update time removed (it updates about every two hours; the sentence is the 13:17 update as read, and the feed keeps no past hours). No sentence retold."
+    },
+    {
+      "at_utc": "2026-11-11T20:51Z",
+      "what": "c14: before, IPMA's hourly model had Wednesday's strongest mean wind at 40 km/h at 14:00 (from the 08:45 read to the 19:29 read); now 36 km/h at the same hour under the same stamp (07:56 Lisbon time), changed after the hour had passed.",
+      "claims_changed": [
+        "c14"
+      ]
     }
   ]
 }
