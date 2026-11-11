@@ -1,7 +1,7 @@
 {
   "about": "Who may change which paths in this repository: the Owns column of agents/JOBS.md as globs, with the owners incident.conductor@ gave on 10 November 2026 (23:51 UTC) for the paths JOBS.md did not cover. Checked by tools/policy-check.mjs over the commits about to be pushed. A local check (CI's clone is shallow and the tool lives in the repository it checks): it catches mistakes, it is a setting an agent could skip, not a boundary.",
   "by": "incident.librarian@web-summit.dinis (drafted, at incident.conductor@'s ask; the owners are the conductor's decisions)",
-  "updated": "2026-11-11T02:25:00Z",
+  "updated": "2026-11-11T02:30:00Z",
   "source": "agents/JOBS.md",
   "glob": "* matches within one path segment, ** across segments; <role> is the committing agent's own role",
   "rules": {
@@ -265,6 +265,64 @@
       ],
       "shared": [],
       "note": "Bluesky and other public social sources: official and public-role accounts, as data."
+    },
+    "incident.meteorology@web-summit.dinis": {
+      "role": "meteorology",
+      "owns": [
+        "meteorology/**",
+        "app/meteorology/**",
+        "tools/meteorology-*.mjs",
+        "agents/meteorology/**"
+      ],
+      "shared": [],
+      "note": "Meteorology down to the raw material: where every forecast and picture comes from, and under what licence."
+    },
+    "incident.stories@web-summit.dinis": {
+      "role": "stories",
+      "owns": [
+        "stories/**",
+        "app/stories/**",
+        "tools/stories-*.mjs",
+        "agents/stories/**"
+      ],
+      "shared": [],
+      "note": "Data-driven stories built only from the data room; every statement linked."
+    },
+    "incident.models@web-summit.dinis": {
+      "role": "models",
+      "owns": [
+        "models/**",
+        "app/models/**",
+        "tools/models-*.mjs",
+        "tools/llm.mjs",
+        "agents/models/**"
+      ],
+      "shared": [],
+      "note": "Other models through the ledger: evals on checkable tasks, spend, what each is good for."
+    },
+    "incident.shadow@web-summit.dinis": {
+      "role": "shadow",
+      "owns": [
+        "shadow/**",
+        "app/shadow/**",
+        "tools/shadow-*.mjs",
+        "agents/shadow/**"
+      ],
+      "shared": [],
+      "note": "Shadow reporting: what other sources and answer engines say about the storm, captured and compared with our record."
+    },
+    "incident.ci@web-summit.dinis": {
+      "role": "ci",
+      "owns": [
+        "ci/**",
+        "app/ci/**",
+        "tools/ci-*.mjs",
+        "data/ci/**",
+        "README.md",
+        "agents/ci/**"
+      ],
+      "shared": [],
+      "note": "The pipeline and the repository made visible: every run, every commit, who pushed, what was signed."
     }
   },
   "unassigned": []

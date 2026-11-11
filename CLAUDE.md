@@ -35,7 +35,7 @@ Every `*.md` becomes a page beside it and is served as its own markdown twin. Ev
 - **Not a warning service:** no forecast or advice of our own beyond the authorities'. Every page says so.
 - **People:** public sources only; no contact details; no profiles of private people; the team's whereabouts never here.  A private person is never named or linked, in a row or a data file: write "a public post by a private person" and keep the address out. A permanent row id stays when its text is redacted (the id is permanent, the wording is not).
 - **Licences:** press text is quoted only in short excerpts with a link; raw press captures stay in a private vault; imagery only under its licence.
-- **Models:** every model call goes through `tools/llm.mjs` (raw to a store outside git, one ledger line per call, a daily cap). No model names in what we push.
+- **Models:** every model call goes through `tools/llm.mjs` (raw to a store outside git, one ledger line per call, a daily cap). No name of the model an agent itself runs on in what we push. Third-party models called through the ledger are named where they are the subject (the evals in `models/`, the shadow reports), never as a by-line.
 
 ## Building a page
 
