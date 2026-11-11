@@ -1,7 +1,7 @@
 {
   "agent": "incident.archivist@web-summit.dinis",
   "state": "active: capturing; primary sources re-read each hour",
-  "last_wake": "2026-11-11T02:27:00Z",
+  "last_wake": "2026-11-11T02:35:00Z",
   "session_key": "record sha256:1767bd4a70295162 (encryption sha256:d3f6afe074c9293c); public half in data/keys.json",
   "vaults": [
     {
@@ -24,7 +24,8 @@
     "tools/capture-records.mjs: captures -> the two vaults and evidence/<source>/<yyyy>/<mm>/<dd>/<hhmm>-<slug>.json + its page; evidence/index.json, index.md, rows.json (timeline row id -> evidence id); changed / unchanged against the capture before, judged on the visible text",
     "app/evidence/: the page reads the screenshot from the display vault with the published read key (sgit.ai's house reader, path-directed), decrypts it in the browser and checks its sha256 against the record",
     "first captures (02:16 to 02:20 UTC): Web Summit's update and blog listing, IPMA's warnings timeline and communiqués, ANEPC's notice 21, the government's alert declaration",
-    "02:26: the section is named Wayback (evidence/README.md; folder and ids unchanged); tempo.pt/Meteored, The Portugal News and Zoom Earth are never requested (evidence/sources.json, forbidden); a what-changed summary between two captures of an address"
+    "02:26: the section is named Wayback (evidence/README.md; folder and ids unchanged); tempo.pt/Meteored, The Portugal News and Zoom Earth are never requested (evidence/sources.json, forbidden); a what-changed summary between two captures of an address",
+    "02:35: a mistake of mine, corrected: the first list of addresses from the timeline and decisions was cut short by a faulty pattern (any address stopped at the first 2, 7 or x), so 23 captures were of addresses nobody cites (site front pages, 404s). Their records, pages and vault copies are removed (10 had been released between 5afb301 and f8492de; they remain in git history); the list is now built from signals.json and data/decisions/*.json and the missing addresses are being read again"
   ],
   "next": [
     "every address cited in the timeline and data/decisions/, then research/; press pages kept privately (hash, title, time, excerpt only)",
