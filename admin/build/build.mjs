@@ -126,7 +126,9 @@ for (const g of ['tools/graph-build.mjs', 'tools/library-index.mjs', 'tools/agen
 const incidents = fs.readdirSync(path.join(ROOT, 'incidents')).filter(d => fs.existsSync(path.join(ROOT, 'incidents', d, 'incident.json')))
 const INC = Object.fromEntries(incidents.map(d => [d, JSON.parse(fs.readFileSync(path.join(ROOT, 'incidents', d, 'incident.json'), 'utf8'))]))
 
-for (const rel of files.filter(f => f.endsWith('.md'))) {
+// every markdown file being served: the tracked ones, and any a generator wrote into _site/ (so a generated page needs no tracked copy)
+const walkOut = (dir, acc = []) => { for (const e of fs.readdirSync(dir, { withFileTypes: true })) { const f = path.join(dir, e.name); e.isDirectory() ? walkOut(f, acc) : e.name.endsWith('.md') && acc.push(path.relative(OUT, f)) } return acc }
+for (const rel of walkOut(OUT).sort()) {
     const [fm, md] = frontMatter(fs.readFileSync(path.join(OUT, rel), 'utf8'))   // the served copy (a generator may have refreshed it)
     const htmlRel = rel.replace(/(^|\/)README\.md$/, '$1index.html').replace(/\.md$/, '.html')
     const title = fm.title || titleOf(md, rel)
