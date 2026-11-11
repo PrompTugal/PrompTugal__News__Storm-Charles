@@ -6,6 +6,7 @@
 
 | Page | What it shows |
 |---|---|
+| [Visualised](charts.md) | Coverage over time for each outlet, who was first with each key fact, who carried whose words: three charts, every mark a link |
 | [The outlets](outlets/README.md) | One page per outlet: what it published and when, its place on each key moment, its sources as its pages say, its licence and terms as published, its own contact page. And who carried whose words |
 | [By-lines](people/README.md) | The reporters whose names are printed on the coverage, with their pieces; a page for each with three or more |
 | [Who was first, who is most sourced](ranking.md) | The seven keyed facts, outlet by outlet |
