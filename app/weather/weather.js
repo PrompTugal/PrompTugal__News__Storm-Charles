@@ -148,7 +148,7 @@
 
   // the first screen. The largest thing is IPMA's highest level for Lisbon for the rest of today, in IPMA's colour with the word written;
   // then one line of what is measured now; then what is in force, what is closed, what comes next and the headline decision.
-  function hero(t) {
+  function hero(t, wide) {
     var I = D.incident || {}, h = I.headline || {}, ws = lisbonWarnings()
     var live = ws.filter(function (w) { return status(w, t) === 'in force' }).sort(function (a, b) { return RANK[b.level] - RANK[a.level] })
     var next = ws.filter(function (w) { return status(w, t) === 'expected' }).sort(function (a, b) { return T(a.start_utc) - T(b.start_utc) || RANK[b.level] - RANK[a.level] })
@@ -173,16 +173,17 @@
     var upLine = up ? '<p class="wxc-up">' + lvl(up.level) + ' <b>from ' + when(up.start_utc, t) + '</b> <span>' + coming.filter(function (w) { return w.level === up.level }).sort(function (a, b) { return T(a.start_utc) - T(b.start_utc) }).map(part).join(' · ') + '</span></p>' : ''
     var reds = {}; (((D.warn || {}).red_and_orange_elsewhere || {}).items || []).forEach(function (w) { if (w.level === 'red' && T(w.end_utc) > t && DISTRICT[w.area]) reds[DISTRICT[w.area]] = 1 })
     var where = Object.keys(reds).length ? '<p class="meta wxc-where">IPMA red warnings also in force or expected in: ' + esc(Object.keys(reds).sort().join(', ')) + '.</p>' : ''
-    return '<section class="wxc-hero" aria-labelledby="wxc-now">' +
+    return ['<section class="wxc-hero wxc-hero-top" aria-labelledby="wxc-now">' +
       '<div class="wxc-top"><p class="kicker">' + esc(I.kicker || 'Storm Charles') + '</p><p class="wxc-clock"><time datetime="' + iso(t) + '">' + '<span class="wxc-dl">' + esc(longDay(t)) + '</span><span class="wxc-ds">' + esc(loc(t, { weekday: 'short', day: 'numeric', month: 'short' })) + '</span>, ' + hm(t) + ' UTC</time> <span class="wxc-dl">(Lisbon time)</span></p></div>' +
       '<div class="wxc-level' + (cur ? ' w-' + esc(cur.level) : '') + '"><h2 class="wxc-h" id="wxc-now">' + (cur ? '<span class="wxc-word">' + esc(cur.level) + '</span> <span class="wxc-h1b">IPMA warning in force in Lisbon now</span>' : D.warn ? '<span class="wxc-h1b">No IPMA warning above green is in force in Lisbon now</span>' : '<span class="wxc-h1b">Storm Charles, Lisbon</span>') + '</h2>' + (sentence ? '<p class="wxc-say">' + sentence + '</p>' : '') + (also ? '<p class="wxc-also">Also in force: ' + also + '</p>' : '') + '</div>' + channelNote(t) + upLine +
-      commLine(t) + dayChips(t) + nowTiles(t) +
+      commLine(t) + dayChips(t) + (wide ? '' : nowTiles(t)) + '</section>',
+      '<section class="wxc-hero wxc-hero-rest" aria-label="Observed now, in force, closed and running, next">' + (wide ? nowTiles(t) : '') +
       '<div class="wxc-hero-cols"><div>' +
       (D.warn ? '<h2 class="wxc-sub">' + (live.length ? 'In force this hour' : 'No IPMA warning above green is in force in Lisbon this hour') + '</h2>' + (live.length ? '<ul class="wxc-ws">' + live.map(line).join('') + '</ul>' : '') + closedStrip(t) : '<p class="meta">The warnings file could not be read.</p>') +
       '</div><div>' +
       (next.length ? '<h2 class="wxc-sub">Next, as IPMA warns</h2><ul class="wxc-ws next">' + next.map(line).join('') + '</ul>' : '') +
       (h.text ? '<div class="wxc-decision flat"><p class="wxc-eyebrow">The decision ' + lbl(h.label || 'fact') + '</p><p class="wxc-dtext">' + esc(h.text) + '</p><p class="prov">' + esc(h.source || '') + ', ' + esc(h.at || '') + '. <a href="' + esc(sigUrl ? ROOM.signals + '#' + sigUrl.id : room + 'index.html') + '">In the data room</a></p></div>' : '') +
-      '</div></div>' + where + communique(t) + (D.warn ? '<p>' + wp + ' <span class="prov">(' + ago(D.warn.read_utc, t) + ')' + (ok(D.warn.next_read_utc) ? ' · next read ' + (T(D.warn.next_read_utc) > t ? 'at about ' : 'was due at ') + hm(D.warn.next_read_utc) + ' UTC' : '') + '</span></p>' : '') + '</section>'
+      '</div></div>' + where + communique(t) + (D.warn ? '<p>' + wp + ' <span class="prov">(' + ago(D.warn.read_utc, t) + ')' + (ok(D.warn.next_read_utc) ? ' · next read ' + (T(D.warn.next_read_utc) > t ? 'at about ' : 'was due at ') + hm(D.warn.next_read_utc) + ' UTC' : '') + '</span></p>' : '') + '</section>']
   }
 
   function nowTiles(t) {
@@ -523,11 +524,14 @@
   }
 
   var fold = function (key, title, sub, inner, open) { return inner ? '<details class="wxc-fold" data-k="' + key + '"' + (open ? ' open' : '') + '><summary><h2>' + title + '</h2> <span class="meta">' + sub + '</span></summary>' + inner + '</details>' : '' }
+  var MQ = window.matchMedia ? window.matchMedia('(min-width: 1100px)') : null
   function render() {
     var t = now(), sx = (el.querySelector('.wxc-scroll') || {}).scrollLeft, first = !el.querySelector('.wxc'), opened = {}
     el.querySelectorAll('details').forEach(function (d, i) { opened[d.dataset.k || (d.querySelector('summary') || {}).textContent + i] = d.open })
     var nextRead = D.warn && D.warn.next_read_utc
-    el.innerHTML = '<div class="wxc">' + hero(t) + hours(t) + whereMap(t) + tomorrow(t) + '<div class="wxc-pair">' + latest(t) + madeira(t) + '</div>' +
+    // on a desk the hour strip comes straight after the band (the designer's round 45, note 2); on a phone the lists come first. The order in the page is the order read
+    var wide = !!(MQ && MQ.matches), H = hero(t, wide)
+    el.innerHTML = '<div class="wxc">' + (wide ? H[0] + hours(t) + H[1] : H[0] + H[1] + hours(t)) + whereMap(t) + tomorrow(t) + '<div class="wxc-pair">' + latest(t) + madeira(t) + '</div>' +
       fold('closed', 'What is closed and what runs', 'every entry: who, what, when, the source', closed(t)) +
       fold('charts', 'Rain and wind today, as charts', 'measured against warned', '<div class="wxc-pair even">' + rainChart(t) + windChart(t) + '</div>') +
       fold('madeira', 'Madeira, hour by hour', 'rain measured against warned, the last 24 hours read', madeiraHours(t)) +
@@ -546,6 +550,7 @@
 
   load().then(function () {
     render()
+    if (MQ && MQ.addEventListener) MQ.addEventListener('change', render)
     setInterval(render, 60 * 1000)                                   // the clock, "now" and the status words move with the minute
     setInterval(function () { load().then(render) }, 5 * 60 * 1000)   // the data room's files, again every five minutes
   })
