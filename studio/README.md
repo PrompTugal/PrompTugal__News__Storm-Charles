@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../app/studio/studio.css"><script src="../app
 ---
 # Studio
 
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 00:42 UTC
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 00:44 UTC
 
 Where this site experiments with ways to show complex things: animations with small characters, played as storyboards, scene by scene. At Dinis Cruz's word ([BRIEF.md](../BRIEF.md), 11 November 2026). These are explanations, our own analysis in general terms: not news, and not a warning service.
 
@@ -32,7 +32,7 @@ The same storyboard as text: every scene, in order, with its caption. An explana
 6. To answer, the app read a file. The file's text is now part of the conversation as well, and it is much longer than anything you typed. *Simplified: reading a file is itself one or more requests. Here it is folded into one turn.*
 7. Third message. The pile has grown, and all of it is sent and read again. Each turn costs more than the last and usually takes longer, because each one carries everything before it.
    request 3 carries 12 blocks; 12 read at full cost.
-8. That is a request with no cache. You typed three short lines; the model read 24 blocks to answer them, most of them more than once. This is the picture to keep: the context is sent with every request.
+8. That is a request with no cache. You typed three short lines; the model read 24 blocks to answer them, most of them more than once. The bars show the shape: each request is longer than the one before, so the total grows faster than the conversation does. This is the picture to keep: the context is sent with every request.
 
 ### 2. The same, with a cache
 
@@ -43,7 +43,7 @@ The same storyboard as text: every scene, in order, with its caption. An explana
    request 2 carries 7 blocks; 2 read at full cost, 5 reused from the cache.
 4. Third request: the same again. The unchanged beginning is longer now, so more is reused. The new end (the file, an answer, your message) is read at full cost.
    request 3 carries 12 blocks; 5 read at full cost, 7 reused from the cache.
-5. What the cache changed: cost and time. Over the same three requests the model read 12 blocks at full cost instead of 24. The reused part is usually charged at a lower rate, not at nothing; how much lower differs from one service to another.
+5. What the cache changed: cost and time. Over the same three requests the model read 12 blocks at full cost instead of 24: each request now pays in full only for what is new. The reused part is usually charged at a lower rate, not at nothing; how much lower differs from one service to another.
    request 3 carries 12 blocks; 5 read at full cost, 7 reused from the cache.
 6. What it did not change: the conversation is exactly as long. All of it still travels with every request, the model still works from all of it, and all of it still counts against a fixed limit, the context window. A cache makes a long context cheaper. It does not make it shorter.
    request 3 carries 12 blocks; 5 read at full cost, 7 reused from the cache.
@@ -81,7 +81,7 @@ The same storyboard as text: every scene, in order, with its caption. An explana
 2. Hours of reading sources become a timeline: one row per signal, each with its source and the time it was read, and the same rows as a dataset. The intermediate steps (pages fetched, dead ends, drafts) are not stored anywhere.
    This team: written down as it goes: written to the file system: [timeline.md](../incidents/2026-11-10-storm-charles/timeline.html) (18.0 KB), [data/signals.json](../incidents/2026-11-10-storm-charles/data/signals.json) (29.2 KB).
 3. Decisions go into a decision log. The rules go into CLAUDE.md. The librarian's catalogue says what every file is and what links to it. Each agent keeps a status file: done, next, asks. Each is small, specific and linked to the others.
-   This team: written down as it goes: written to the file system: [decisions.md](../incidents/2026-11-10-storm-charles/decisions.html) (3.5 KB), [CLAUDE.md](../CLAUDE.html) (4.6 KB), [library/](../library/index.html) (229 entries), [agents/*/status.json](../agents/index.html) (12 files, 1.9 to 15.2 KB).
+   This team: written down as it goes: written to the file system: [decisions.md](../incidents/2026-11-10-storm-charles/decisions.html) (3.5 KB), [CLAUDE.md](../CLAUDE.html) (4.6 KB), [library/](../library/index.html) (229 entries), [library/index.json](../library/index.json) (296 KB), [agents/*/status.json](../agents/index.html) (12 files, 1.9 to 15.2 KB).
 4. The window fills on both sides, and both conversations are compressed in exactly the same way. The same guesses are made about what mattered.
 5. On one side a detail is gone, and with it the rule. On the other the same detail is gone from the conversation too, and it does not matter: "No agent ever pushes to main" is a line in CLAUDE.md, and the agent reads the file, not its memory of the chat.
    This team: written down as it goes: read from the file system: [CLAUDE.md](../CLAUDE.html) (4.6 KB).
@@ -98,6 +98,7 @@ The same storyboard as text: every scene, in order, with its caption. An explana
 
 - Blocks are an illustration. Real context is counted in tokens (pieces of words), and one file can outweigh a hundred messages. No conversation was measured for this; only the files in chapter 5 are real measurements.
 - One turn is drawn as one request. A turn in which the assistant uses tools is several requests, each carrying the whole context so far, so the re-reading is greater than drawn.
+- The bars under chapters 1 and 2 show a shape, not a price. If every turn added the same amount, the total read without a cache would grow roughly with the square of the number of turns, and the part read at full cost with a cache roughly in a straight line. Real turns are uneven, and reused parts still cost something.
 - The cache is drawn as all or nothing per block. Real caches differ from one service to another: what can be cached, the smallest size, how long it is kept, whether you must ask for it, and what a reused part costs. None of those details is stated here.
 - "Read at full cost" and "reused" describe cost and time. With or without a cache, the model's answer depends on the whole context it was sent.
 - Compression is drawn as one summary replacing the middle. Assistants differ: some cut the oldest turns, some summarise more than once, some keep certain things (instructions, recent files) outside the summary, and when it happens differs too. What is common is that something shorter stands in for something longer.
@@ -113,5 +114,6 @@ The same storyboard as text: every scene, in order, with its caption. An explana
 - [incidents/2026-11-10-storm-charles/data/signals.json](../incidents/2026-11-10-storm-charles/data/signals.json), 29,191 bytes, 48 rows, read 11 November 2026, 00:39 UTC
 - [incidents/2026-11-10-storm-charles/decisions.md](../incidents/2026-11-10-storm-charles/decisions.html), 3,508 bytes, read 11 November 2026, 00:39 UTC
 - [library/ (the librarian's catalogue)](../library/index.html), 229 entries, read 11 November 2026, 00:39 UTC
+- [library/index.json (built by tools/library-index.mjs, not tracked)](../library/index.json), 296,196 bytes, 229 entries, read 11 November 2026, 00:39 UTC
 - [agents/*/status.json](../agents/index.html), 12 files, 1,951 to 15,223 bytes, read 11 November 2026, 00:39 UTC
 - [agents/JOBS.md and design/README.md](../agents/JOBS.html), 5,978 and 3,698 bytes, read 11 November 2026, 00:39 UTC: with CLAUDE.md and BRIEF.md, the four files this animation's agent read to start: 19,654 bytes

@@ -3,7 +3,7 @@
   "title": "What compression is",
   "summary": "What travels to the model each time you say something to a chat assistant, what a cache changes, why a full conversation gets compressed, what is lost when it is, and how this team works so that the loss does not matter.",
   "by": "incident.studio@web-summit.dinis",
-  "updated": "2026-11-11T00:42:00Z",
+  "updated": "2026-11-11T00:46:00Z",
   "about": "An explanation in general terms that hold for chat assistants: the context is sent with each request; a cache reuses an unchanged beginning; a full window is summarised or cut. It describes no one product's internals. Block sizes are an illustration, not a measurement. At Dinis Cruz's word (BRIEF.md, 11 November 2026).",
   "chapters": [
     {
@@ -156,7 +156,7 @@
           }
         },
         {
-          "caption": "That is a request with no cache. You typed three short lines; the model read 24 blocks to answer them, most of them more than once. This is the picture to keep: the context is sent with every request.",
+          "caption": "That is a request with no cache. You typed three short lines; the model read 24 blocks to answer them, most of them more than once. The bars show the shape: each request is longer than the one before, so the total grows faster than the conversation does. This is the picture to keep: the context is sent with every request.",
           "stack": [
             "sys",
             "tools",
@@ -292,7 +292,7 @@
           }
         },
         {
-          "caption": "What the cache changed: cost and time. Over the same three requests the model read 12 blocks at full cost instead of 24. The reused part is usually charged at a lower rate, not at nothing; how much lower differs from one service to another.",
+          "caption": "What the cache changed: cost and time. Over the same three requests the model read 12 blocks at full cost instead of 24: each request now pays in full only for what is new. The reused part is usually charged at a lower rate, not at nothing; how much lower differs from one service to another.",
           "stack": [
             "sys",
             "tools",
@@ -923,6 +923,13 @@
                   "state": "new"
                 },
                 {
+                  "name": "library/index.json",
+                  "href": "../library/index.json",
+                  "size": "296 KB",
+                  "note": "the catalogue as data: 229 entries",
+                  "state": "new"
+                },
+                {
                   "name": "agents/*/status.json",
                   "href": "../agents/index.html",
                   "size": "12 files, 1.9 to 15.2 KB",
@@ -998,6 +1005,12 @@
                   "href": "../library/index.html",
                   "size": "229 entries",
                   "note": "the catalogue: what each file is, what links to it"
+                },
+                {
+                  "name": "library/index.json",
+                  "href": "../library/index.json",
+                  "size": "296 KB",
+                  "note": "the catalogue as data: 229 entries"
                 },
                 {
                   "name": "agents/*/status.json",
@@ -1087,6 +1100,12 @@
                   "note": "the catalogue: what each file is, what links to it"
                 },
                 {
+                  "name": "library/index.json",
+                  "href": "../library/index.json",
+                  "size": "296 KB",
+                  "note": "the catalogue as data: 229 entries"
+                },
+                {
                   "name": "agents/*/status.json",
                   "href": "../agents/index.html",
                   "size": "12 files, 1.9 to 15.2 KB",
@@ -1170,6 +1189,12 @@
                   "href": "../library/index.html",
                   "size": "229 entries",
                   "note": "the catalogue: what each file is, what links to it"
+                },
+                {
+                  "name": "library/index.json",
+                  "href": "../library/index.json",
+                  "size": "296 KB",
+                  "note": "the catalogue as data: 229 entries"
                 },
                 {
                   "name": "agents/*/status.json",
@@ -1258,6 +1283,12 @@
                   "href": "../library/index.html",
                   "size": "229 entries",
                   "note": "the catalogue: what each file is, what links to it"
+                },
+                {
+                  "name": "library/index.json",
+                  "href": "../library/index.json",
+                  "size": "296 KB",
+                  "note": "the catalogue as data: 229 entries"
                 },
                 {
                   "name": "agents/*/status.json",
@@ -1383,6 +1414,7 @@
   "simplifies": [
     "Blocks are an illustration. Real context is counted in tokens (pieces of words), and one file can outweigh a hundred messages. No conversation was measured for this; only the files in chapter 5 are real measurements.",
     "One turn is drawn as one request. A turn in which the assistant uses tools is several requests, each carrying the whole context so far, so the re-reading is greater than drawn.",
+    "The bars under chapters 1 and 2 show a shape, not a price. If every turn added the same amount, the total read without a cache would grow roughly with the square of the number of turns, and the part read at full cost with a cache roughly in a straight line. Real turns are uneven, and reused parts still cost something.",
     "The cache is drawn as all or nothing per block. Real caches differ from one service to another: what can be cached, the smallest size, how long it is kept, whether you must ask for it, and what a reused part costs. None of those details is stated here.",
     "\"Read at full cost\" and \"reused\" describe cost and time. With or without a cache, the model's answer depends on the whole context it was sent.",
     "Compression is drawn as one summary replacing the middle. Assistants differ: some cut the oldest turns, some summarise more than once, some keep certain things (instructions, recent files) outside the summary, and when it happens differs too. What is common is that something shorter stands in for something longer.",
@@ -1427,6 +1459,12 @@
       "name": "library/ (the librarian's catalogue)",
       "href": "../library/index.html",
       "size": "229 entries",
+      "read": "11 November 2026, 00:39 UTC"
+    },
+    {
+      "name": "library/index.json (built by tools/library-index.mjs, not tracked)",
+      "href": "../library/index.json",
+      "size": "296,196 bytes, 229 entries",
       "read": "11 November 2026, 00:39 UTC"
     },
     {

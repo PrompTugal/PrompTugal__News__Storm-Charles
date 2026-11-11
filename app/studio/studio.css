@@ -80,6 +80,13 @@
 .sb-meters.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .sb-meters .reuse { position: relative; padding-left: 22px; } .sb-meters .reuse::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 13px; background: var(--hatch); border-right: 1px solid var(--line); }
 
+.sb-bars { margin-top: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 9px; font-size: 11.5px; color: var(--ink-2); }
+.sb-bars b { display: block; font-weight: 400; margin-bottom: 3px; }
+.sb-bars div { display: flex; align-items: center; height: 15px; margin-top: 2px; }
+.sb-bars span { width: 16px; font: 700 11px/1 var(--mono); }
+.sb-bars i { display: block; height: 11px; box-sizing: border-box; }
+.sb-bars i.r { background: var(--sent); } .sb-bars i.c { background: var(--hatch); border: 1px solid var(--line-2); border-right: 0; } .sb-bars i[data-w="0"] { display: none; }
+.sb-bars small { margin-left: 6px; font: 600 11px/1 var(--mono); white-space: nowrap; } .sb-bars .now small { color: var(--ink); }
 .sb-shelf { margin-top: 10px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--surface); padding: 6px 9px 8px; }
 .sb-shelf h5 { margin: 0 0 5px; font: 700 11px/1.2 var(--sans); text-transform: uppercase; letter-spacing: .07em; color: var(--ink-2); }
 .sb-shelf ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }

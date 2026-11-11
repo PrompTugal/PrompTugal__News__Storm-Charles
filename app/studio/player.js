@@ -54,6 +54,7 @@
                     seen[i][l.send.n] = l.m
                 }
                 const all = Object.values(seen[i])
+                l.reqs = all.map(m => Object.assign({}, m)); ch.maxReq = Math.max(ch.maxReq || 0, ...all.map(m => m.total))
                 l.sum = { requests: all.length, read: all.reduce((n, m) => n + m.read, 0), cached: all.reduce((n, m) => n + m.cached, 0), sent: all.reduce((n, m) => n + m.total, 0) }
             })
         }
@@ -89,7 +90,8 @@
 <div><dt>This request, read at full cost</dt><dd>${m ? m.read : 0}<small> of ${m ? m.total : 0} blocks sent</small></dd></div>
 ${ch.cache ? `<div class="reuse"><dt>This request, reused from the cache</dt><dd>${m ? m.cached : 0}<small> blocks</small></dd></div>` : ''}
 <div><dt>All ${sum.requests} request${sum.requests > 1 ? 's' : ''} so far, read at full cost</dt><dd>${sum.read}<small> blocks${sum.cached ? ` (${sum.cached} reused)` : ''}</small></dd></div>
-</dl>`
+</dl>
+<div class="sb-bars" role="img" aria-label="Each request so far: ${lane.reqs.map(r => `request ${r.n}, ${r.read} blocks read at full cost${r.cached ? `, ${r.cached} reused` : ''}`).join('; ')}"><b>Each request so far</b>${lane.reqs.map(r => `<div class="${m && r.n === m.n ? 'now' : ''}"><span>${r.n}</span><i class="c" data-w="${r.cached}"></i><i class="r" data-w="${r.read}"></i><small>${r.read} read${r.cached ? `, ${r.cached} reused` : ''}</small></div>`).join('')}</div>`
         const files = lane.files ? `<div class="sb-shelf"><h5>${esc(lane.shelf || 'The file system')}</h5><ul>${lane.files.map(f => `<li class="${f.state ? 's-' + esc(f.state) : ''}${animate && f.state === 'new' ? ' enter' : ''}">${f.href ? `<a href="${esc(f.href)}">${esc(f.name)}</a>` : `<b>${esc(f.name)}</b>`}${f.size ? ` <span class="sb-size">${esc(f.size)}</span>` : ''}${f.note ? `<small>${esc(f.note)}</small>` : ''}</li>`).join('')}</ul></div>` : ''
         return `<section class="sb-lane${lane.title ? ' titled' : ''}">${lane.title ? `<h4>${esc(lane.title)}</h4>` : ''}
 <div class="sb-cols${win ? ' has-door' : ''}${lane.cast.left ? '' : ' no-left'}">
@@ -108,6 +110,7 @@ ${win ? `<div class="sb-door${blocked ? ' blocked' : ''}" data-units="${ch.units
         // sizes are set through the CSSOM (no inline style attributes: the site may run under a strict Content-Security-Policy)
         for (const e of stage.querySelectorAll('[data-u]')) e.style.setProperty('--u', e.dataset.u)
         for (const e of stage.querySelectorAll('[data-units]')) e.style.setProperty('--units', e.dataset.units)
+        for (const e of stage.querySelectorAll('[data-w]')) e.style.width = (60 * e.dataset.w / (ch.maxReq || 1)) + '%'
         for (const e of stage.querySelectorAll('[data-i]')) e.style.setProperty('--i', e.dataset.i)
         root.querySelector('.sb-caption').innerHTML = `<b>${esc(ch.title)} · scene ${S.sc + 1} of ${ch.scenes.length}</b> ${esc(sc.caption)}${sc.note ? ` <small>${esc(sc.note)}</small>` : ''}`
         root.querySelectorAll('.sb-chapters button').forEach((b, i) => b.setAttribute('aria-current', i === S.ch ? 'true' : 'false'))
