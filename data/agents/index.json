@@ -164,9 +164,9 @@
       "job": "**maximum visibility into every agent.** `/agents/`: every agent (name, role, session state, last commit, last wake, what it is doing, its asks, its key), from `agents/*/status.json`, git and GitHub's API, refreshed live in the browser. Reuse, as pinned copies with their source commit: Angelo's live map (`people/angelo/app/live.js`, `live3d.js`, `replay.js` in SGit-AI__Website__Web-Summit) for who-talks-to-whom from commits' `For:` trailers; Silvio's Universe / mind map / Talk view (`assets/cc/brain.js`). Then page views (promptugal.news's `assets/obs/obs.js` model, **no geo lookup**), release speed per push, the model ledger.",
       "shared_row": false,
       "status_file": "agents/observability/status.json",
-      "status_sha256": "ec08eeb25c752e766e4f897cbde7f8675d902f8b5ff50a50b449ea1a2c7d4573",
-      "state": "active: second session (started 03:06 UTC from the pack and the hand-over). Live: an agent's sessions in order with the context each call carried and the hand-over on its timeline; the same for the team on /agents/; homes for the four new agents; the live map plays incident.reporter@'s traces",
-      "last_wake": "2026-11-11T05:16Z",
+      "status_sha256": "e15e1abe7f7e45adccbfc91e253d7dffb3dc86a5ced632fb7b0b552f749fa116",
+      "state": "handing over at the conductor's word (about 242,000 tokens of context a call): agents/observability/HANDOVER.md, its first section, is the note for the third session; nothing is half-done; the pages keep running without a session",
+      "last_wake": "2026-11-11T08:16Z",
       "jobs": [
         "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
         "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
@@ -178,7 +178,6 @@
         "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
         "tools/agents-index.mjs -> data/agents/index.json (roster from agents/JOBS.md, statuses, key fingerprints; session ids stripped)",
         "the agents page at /app/agents/ (app/agents/agents.js, agents.css, index.html, about.md): asks for Dinis on top, a card per agent, who writes for whom, the last pushes; live status files and GitHub's public API, refreshed every minute",
-        "tokens measured and committed (accounts/ledger/observability.jsonl), now that every agent owns its own ledger file",
         "hand-over written (agents/observability/HANDOVER.md): the pages and the one script, the data and who makes it, what reads ci's, the board's, the studio's and the accountant's data, the pinned engines and why they are not forked, what is unfinished, corrections made, the wakes; tools/agents-release.…",
         "11 Nov 03:07 second session: its own key (incident-observability-dinis-2 in data/keys.json; the first marked handed over), its session object, the first session kept under earlier_sessions",
         "11 Nov 03:09 correction: my first two pushes regenerated data/agents/commits.json, detail-*.json and sessions.json from a shallow clone (60 commits), so for about three minutes the live snapshots held one hour instead of the night. Restored from the full history; tools/agents-commits.mjs and agents…",
@@ -189,14 +188,12 @@
         "11 Nov 03:14 the live map plays a workflow: a chooser of incident.reporter@'s traces (reporter/traces/index.json) beside \"play push by push\"; a step with a push flies as that push, a step by voice or message is read in the caption and nothing moves",
         "11 Nov 03:17 the conductor's statement (03:16) recorded in data/agents/starts.json: the three sessions that never push here (meteorologist, researcher, dev), so 33 sessions in all; /agents/#sessions marks every session over 300,000 tokens a call \"hand-over due\", ranked; the pack's five gaps sent to…",
         "11 Nov 04:16 wake: nothing routed, no commit For: this role in the hour (71 pushes read by subject only). Found on the live check and fixed: when GitHub's public API refuses the browser (60 calls an hour without a login) the error note carries an unbroken address and /agents/ grew to 447 px on a 39…",
-        "11 Nov 05:16 wake: nothing routed. The gate refused this wake's first release (nothing went out): data/agents/commits.json had grown to 264 KB, over the 256 KB limit, because its budget was counted before the file was indented. Fixed in the tools, not round the gate: commits.json and the detail fil…"
+        "11 Nov 05:16 wake: nothing routed. The gate refused this wake's first release (nothing went out): data/agents/commits.json had grown to 264 KB, over the 256 KB limit, because its budget was counted before the file was indented. Fixed in the tools, not round the gate: commits.json and the detail fil…",
+        "11 Nov 08:16 wakes 06:14 to 08:14: nothing routed, live checks clean, snapshots within the limit; hand-over written for the third session (HANDOVER.md, \"For the third session\")"
       ],
-      "done_total": 43,
+      "done_total": 44,
       "next": [
-        "page views once Dinis answers (the vault and whose key)",
-        "replay.js and detail-<hour>.json: ask before building or dropping (hand-over items 4 and 5)",
-        "the snapshot of commits now reaches back only as far as fits (00:31 on 11 November): the first evening is in incident.ci@'s files; read those for the night's strip rather than widen ours (hand-over item 5)",
-        "read the measured lines live on each home (today they are as of this role's last release)"
+        "for the third session: read HANDOVER.md's first section; then, in order: the night's strip from incident.ci@'s commit files; the measured lines read live on each home; page views once Dinis answers"
       ],
       "asks_dinis": [
         "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session)."
@@ -2517,6 +2514,6 @@
       ]
     }
   ],
-  "updated": "2026-11-11T08:15:29Z",
-  "content_sha256": "6432a9f5759b3f0e659854954793c4ba44884e77f1fccb7cd2d2580498874011"
+  "updated": "2026-11-11T08:16:55Z",
+  "content_sha256": "2660b19bddc1abe0b08885162fc7dad47d61b98a4e1c7919f681cac1a5ccb541"
 }

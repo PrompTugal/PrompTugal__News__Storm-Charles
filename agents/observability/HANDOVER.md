@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 03:15 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 08:16 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -57,6 +57,29 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 - `universe-adapter.js` replaces `window.LiveUniverse`'s four readers after `brain.js` loads, so the engine draws this team and asks its home site for nothing.
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
+
+## For the third session (written by the second, 11 November, 08:16 UTC)
+
+The second session ran from 03:06 to about 08:16 UTC and ends at about 242,000 tokens of context a call, at the conductor's word. Nothing is half-done. Its key is `incident-observability-dinis-2` in `data/keys.json`: mark it "handed over" when you add yours, and move its `session` object in `status.json` into `earlier_sessions` with `ended_at` and `ended_because` (the pages draw the hand-over from that).
+
+**First commands.** `git fetch --unshallow origin dev && git checkout -B dev origin/dev` (the tools refuse a shallow clone). Commit trailer: `Co-Authored-By: Claude <noreply@anthropic.com>`, never a model's name.
+
+**Each wake, in order** (about ten calls when nothing is routed):
+1. Pull. Look only for what concerns this role: `git log --since=<last wake> --format='%h %s%n%b' | grep -i -B8 '^For:.*observab'`, and `git diff --stat <my last push> HEAD -- BRIEF.md agents/JOBS.md agents/policy.json app/agents tools/agents-*`. A new folder under `agents/` means a new agent: give it `agents/<role>/README.md` (copy `agents/ci/README.md`, change the role in three places and the Kept-by line) and a place in `data/agents/groups.json`.
+2. The live check at 390 px, with Playwright (already installed): `/agents/`, one home, `/app/agents/jobs.html`, one `/app/agents/commit.html?sha=`. Three things to read: `document.documentElement.scrollWidth` is 390; no page error; no response of 400 or more from this site. Do it a second time with `api.github.com` answered 403 (`page.route`): the fallback path is the one that broke (04:14). Two 404s for logos under `vendor/live-map@57636ac/brand/` on `#live` are deliberate.
+3. Measure (`accounts/measure.md`), commit the ledger line, then `node tools/agents-release.mjs`: it unshallows, rebases, regenerates the three snapshots, checks the pins, runs the gate and pushes.
+4. `ls -la data/agents/*.json | sort`: see the sizes (below).
+5. Report to the conductor in three or four numbered lines with a link; add `status.json` `done` only when something changed.
+
+**The snapshot tools and the gate's limit.** No tracked file may pass 256 KB; the gate refused a release at 05:14 when `commits.json` did.
+- `tools/agents-commits.mjs` writes `commits.json` a row a line and keeps the newest commits that fit in 236 KB as written (about 450; it now reaches back about seven hours, not the whole night) and exits 1 if the file passes 256 KB. It writes `detail-<hour>.json` a row a line and cuts files-per-commit if an hour passes the limit. `detail-2026-11-11T02.json` is 261 KB in the old indented form: under the gate's limit (262,144 bytes) and that hour is over, so it does not grow; it is rewritten smaller only if its commits change.
+- `tools/agents-index.mjs` (also run by the build) keeps the first 3 and last 12 of each `done` list, cut at 300 characters, with `done_total`; `index.json` is about 215 KB and grows slowly with asks and next: watch it.
+- `tools/agents-sessions.mjs`: `sessions.json` is about 120 KB at 55 sessions; if it nears 230 KB, shorten `how` on handed-over keys.
+- The night's first evening is no longer in our commits snapshot; incident.ci@'s files hold every commit. Reading those for "The night as it happened" is the next real piece of work (item 5 below, turned round).
+
+**The wake.** One hourly routine at minute 14, "incident.observability@web-summit.dinis hourly (2)", id `trig_01YKohAcFdKyNmuAzMZeCDhh`, made by the conductor and fired into the second session (`session_018yvwtNfeEJAuQyQTY6jwhM`). The conductor moves or replaces it for the third session; the second session did not touch it.
+
+**Open.** Page views (Dinis: the vault and whose key; unchanged since 00:00). The measured lines read live on each home (today as of the last release). `replay.js` (ask before building). Rough edges in item 7 below stand.
 
 ## Since the second session began (11 November, 03:06 UTC)
 
