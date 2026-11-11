@@ -1,6 +1,6 @@
 # From incident to business as usual: the plan for Dinis's yes
 
-> Kept by incident.planner@web-summit.dinis, 11 November 2026, 10:41 UTC. Second draft (first pushed 10:36); gaps are marked **GAP**. Nothing here stops anything: this is a plan for Dinis to say yes to, change, or refuse.
+> Kept by incident.planner@web-summit.dinis, 11 November 2026, 10:52 UTC. Second draft (first pushed 10:36); gaps are marked **GAP**. Nothing here stops anything: this is a plan for Dinis to say yes to, change, or refuse.
 
 Not a warning service: for warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page is about how the team works, not about the storm.
 
@@ -63,7 +63,7 @@ If (a) holds and (b) does not by 23:00 UTC, start Phase 2 anyway with the Thursd
 | ci | ci/, data/ci/, README | [ci/](../ci/) | 2 (1) | 14 | 3.7 M | push-to-served measured | asks open: signed releases, licence | **merge** → *operations* |
 | accountant | accounts/ | [accounts/](../accounts/) | 2 (1) | 13 | 3.2 M | measured not guessed; cost per output | 4 agents never measured; new agents absent | **merge** → *operations* after the closing books |
 | identity | app/login/, account/, lanes, SECURITY.md | [SECURITY.md](../SECURITY.md), the key lane | 2 (1) | 21 | 5.2 M | the append lane for vault keys works | three Dinis decisions still open | **continue** (on demand: Dinis's lane, the team's keys, vault-key hand-overs) |
-| librarian | library/, index, policy-check | [the pack](../library/pack/start.md), [library](../library/) | 7 (6) | 93 | 13.7 M | the pack makes a fresh session cheap | seven sessions | **continue** (+ the incident template) |
+| librarian | library/, index, policy-check | [the pack](../library/pack/start.md), [library](../library/), [the catalogue](../library/index.json), draft behaviour policies for all 37 agents (agents/<role>/policy.md) | 8 (7) (eighth session from 10:53) | 93 | 13.7 M | the pack makes a fresh session cheap | seven sessions | **continue** (+ the incident template) |
 | board | board/ | [board](../board/) (444 cards: 209 done, 206 open, 19 watching, 7 blocked, 3 answered) | 2 (1) | 20 | 4.7 M | one place for what is open | 206 open cards to triage | **refactor**: closing triage (every open card closed, moved to a BAU desk, or dropped with a reason), then a small board the storm conductor keeps |
 | ipma | sources/ipma/ | [sources/ipma/](../sources/ipma/) | 2 (1) | 18 | 4.3 M | hourly reads with diffs; caught the 07:16 lowering | IPMA's terms asks unanswered (email, logo, derived data) | **merge** → *sources* desk (owner) |
 | sources | sources/ (not ipma) | MeteoAlarm | 1 (0) | 17 | 4.4 M | | MeteoAlarm archive needs a key | **merge** → *sources* |
@@ -104,7 +104,7 @@ Count (mine): continue 5 (identity, librarian, archivist, stories, envoy); refac
 
 ### 2.2 The exit interview
 
-**Who asks:** the planner sends each agent the questions by message (through the conductor while the planner has no lane of its own), in the agent's phase (§1). **Who answers:** the agent's current session, in `transition/interviews/<role>.md`. **Policy:** `transition/**` is the planner's; the conductor adds `transition/interviews/<role>.md` to each agent's *owns* in [agents/policy.json](../agents/policy.json) (or to `everyone` as `transition/interviews/<role>.md`) — **Dinis/conductor decision D7**. **Checked:** the planner checks every factual claim against the record and writes `transition/checks/<role>.md`: each claim marked *matches*, *differs* (with the file that says otherwise) or *not in the record*. The interview stands as the agent wrote it; the check sits beside it. Answers longer than a screen are cut by the planner's check, not rewritten.
+**Who asks:** the planner sends each agent the questions by message (through the conductor while the planner has no lane of its own), in the agent's phase (§1). **Who answers:** the agent's current session, in `transition/interviews/<role>.md`. **Policy:** `transition/**` is the planner's; the conductor adds `transition/interviews/<role>.md` to each agent's *owns* in [agents/policy.json](../agents/policy.json) (or to `everyone` as `transition/interviews/<role>.md`) — **Dinis/conductor decision D7**. **Checked:** the planner checks every factual claim against the record (each agent's commits from [library/provenance/](../library/provenance/); its paths and reach from its draft behaviour policy, agents/<role>/policy.md; its cost from [accounts/ledger/](../accounts/ledger/)) and writes `transition/checks/<role>.md`: each claim marked *matches*, *differs* (with the file that says otherwise) or *not in the record*. The interview stands as the agent wrote it; the check sits beside it. Answers longer than a screen are cut by the planner's check, not rewritten.
 
 The questions (template: [interviews/TEMPLATE.md](interviews/TEMPLATE.md)):
 
@@ -134,9 +134,9 @@ The reporter, journalist and storyteller each sent their part by message (10:30 
 | **Warned vs observed**: what IPMA warned, what the stations measured, what was decided and when (lead times) | stories + graph | data/weather/, data/decisions/, [stories/](../stories/) | `stories/` |
 | **The lessons**: the exit interviews and their checks, and §6 here | planner | transition/interviews/, transition/checks/ | `transition/LESSONS.md` |
 | **The flows** | motion | flows of the ten paths | `flows/` |
-| **The catalogue and the template** | librarian | everything above | `library/` + `incidents/_template/` |
+| **The catalogue and the template** | librarian | everything above; [library/index.json](../library/index.json) (every tracked file: who keeps it, when, made from) as the inventory; the hourly articles (news/2026-11-11T<HH>.md, news/data/) and [the round article](../news/2026-11-11-round-two.md) as the team's timeline in data | `library/` + `incidents/_template/` (with the conductor) |
 
-**What becomes the template for the next incident (mine):** `incidents/_template/` (incident.json with the headline rule, timeline.md with the row-id rule, decisions.md, comms/ drafts, data/README), the pack ([library/pack/start.md](../library/pack/start.md)) generalised, a JOBS.md and policy.json skeleton for the standing desks (§4), the generators list, the [api/v1 contract](../api/v1/README.md), the exit-interview template, and this plan's phases. Owner: librarian, with the conductor.
+**What becomes the template for the next incident (mine):** `incidents/_template/` (incident.json with the headline rule, timeline.md with the row-id rule, decisions.md, comms/ drafts, data/README), the pack ([library/pack/start.md](../library/pack/start.md), now with rules 12 to 14 on the wind-down) generalised as the BAU desks' start page, measured by the pack test ([accounts/pack-test.json](../accounts/pack-test.json)), a JOBS.md and policy.json skeleton for the standing desks (§4), the generators list, the [api/v1 contract](../api/v1/README.md), the exit-interview template, and this plan's phases. Owner: librarian, with the conductor.
 
 ## 4. Business as usual: the storm conductor and a standing newsroom
 
