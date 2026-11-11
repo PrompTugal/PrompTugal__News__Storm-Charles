@@ -70,16 +70,20 @@ if (has('dry')) process.exit(0)
 const jobs = []
 for (const e of engines) for (const q of questions) for (const x of q.ask) if (e.langs.includes(x.lang)) jobs.push({ e, q, x })
 const errors = []
+let paused = false
 async function one({ e, q, x }) {
     const id = `${q.id}.${x.lang}.${e.id}`
     if (run.answers.some(r => r.id === id)) return
+    if (paused) return   // the account is out of credit (HTTP 402): stop at the first, ask nothing more this hour
     const { text, line } = await call({ task: 'WS-214/shadow', agent: AGENT, model: e.model, max_tokens: e.max_tokens || 700, messages: [{ role: 'user', content: x.text }], extra: e.extra || {} })
+    if (line.status === 'http_402') { paused = true; run.paused = 'paused: account out of credit (HTTP 402 at ' + line.at + ')'; errors.push(`${id}: http_402`); return }
     if (line.status !== 'ok' || !text) { errors.push(`${id}: ${line.status} ${line.error || ''}`); run.answers.push({ id, question: q.id, lang: x.lang, asked: x.text, engine: e.id, engine_name: e.name, model_asked: e.model, at: line.at, status: line.status, error: line.error || null, cost_usd: line.cost_usd, raw: line.raw, raw_sha256: line.raw_sha256, cited: [], statements: [] }); return }
     const raw = JSON.parse(fs.readFileSync(path.join(RAW_DIR, line.raw), 'utf8'))
     work[id] = { asked: x.text, engine: e.id, at: line.at, text, cited: cited(raw, text) }
     run.answers.push({ id, question: q.id, lang: x.lang, asked: x.text, engine: e.id, engine_name: e.name, model_asked: e.model, model_served: line.model_served, at: line.at, status: 'ok', cost_usd: line.cost_usd, answer_chars: text.length, raw: line.raw, raw_sha256: line.raw_sha256, cited: cited(raw, text), statements: [] })
 }
-for (let i = 0; i < jobs.length; i += 4) await Promise.all(jobs.slice(i, i + 4).map(one))   // four at a time
+if (jobs.length) { await one(jobs[0]); jobs.shift() }   // one first: a refusal for credit shows before the rest are sent
+for (let i = 0; i < jobs.length && !paused; i += 4) await Promise.all(jobs.slice(i, i + 4).map(one))   // four at a time
 
 run.updated = new Date().toISOString().slice(0, 19) + 'Z'
 run.spent_usd = +run.answers.reduce((s, r) => s + (r.cost_usd || 0), 0).toFixed(5)
