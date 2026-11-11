@@ -23,9 +23,7 @@ export function saveCoverage(M, c) {
         return { file, from: `${k}:00:00Z`, count: by[k].length }
     })
     for (const f of fs.readdirSync(dir)) if (f.endsWith('.json') && !files.some(x => x.file === 'coverage/' + f)) fs.unlinkSync(path.join(dir, f))
-    // a short row per item stays here, one to a line, for readers that take `articles` from this file (tools/graph-build.mjs does, at build time)
-    const SLIM = ['id', 'outlet', 'kind', 'lang', 'title', 'published', 'read', 'url', 'byline_kind', 'label', 'links_to_primary']
-    const slim = articles.map(a => JSON.stringify(Object.fromEntries(SLIM.filter(k => a[k] !== undefined).map(k => [k, a[k]]))))
-    const head = JSON.stringify({ ...rest, articles_note: 'The whole items (by-line as printed, where each field was read, the capture\'s sha256) are in the files of articles_files, relative to this folder: join their `articles`. `articles` here is a short row per item (id, outlet, kind, lang, title, published, read, url, byline_kind, label, links_to_primary), kept so that existing readers go on working; this file may hold at most 256 KB, so read the parts if you can: the short rows will be dropped when they no longer fit (about 500 items).', articles_count: articles.length, articles_files: files, articles: '@@' }, null, 1)
-    fs.writeFileSync(path.join(M, 'coverage.json'), head.replace('"articles": "@@"', '"articles": [\n' + slim.join(',\n') + '\n ]') + '\n')
+    // the short rows once kept here for tools/graph-build.mjs were dropped at 14:45 UTC on 11 November (third session): the builder reads the parts since 10:45
+    const head = { ...rest, articles_note: 'The items are in the files of articles_files, relative to this folder: join their `articles` (each item: id, outlet, kind, lang, title, published, read, url, by-line as printed, where each field was read, the capture\'s sha256, links_to_primary). The short row per item that this file kept until 14:45 UTC on 11 November is gone: the file may hold at most 256 KB.', articles_count: articles.length, articles_files: files }
+    fs.writeFileSync(path.join(M, 'coverage.json'), JSON.stringify(head, null, 1) + '\n')
 }

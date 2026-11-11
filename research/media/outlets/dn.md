@@ -1,14 +1,14 @@
 # Diário de Notícias: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
 | Items we read | 25: 22 articles, 2 live, 0 video, 1 opinion |
-| First and last | 9 Nov 08:34 to 11 Nov 13:31 UTC |
+| First and last | 9 Nov 08:34 to 11 Nov 14:32 UTC |
 | Whose reporting | 22 with a reporter's by-line, 3 the agency's (Lusa), 0 the desk's, 0 not read; wire share 12% |
-| Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
+| Does best (from the counts) | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; first on "IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places"; a running live blog; own reporting: most items carry a reporter's by-line |
 
 ## Against the key moments
 
@@ -23,6 +23,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:47 (live entry) | +47 min | 3 of 6 | ["Eu diria que tudo indica que a Web Summit não poderá funcionar amanh… ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | Web Summit calls off Day 2 | 10 Nov 19:09 | 10 Nov 19:45 (live entry) | +36 min | 4 of 11 | [Segundo dia da Web Summit cancelado ↗](https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh) |
 | IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 09:14 (live entry) | +118 min | 4 of 5 | [Depressão dividiu-se em dois núcleos. IPMA reduz nível de alerta para… ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
+| IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places | 11 Nov 12:33 | 11 Nov 13:44 (live entry) | +71 min | 1 of 1 | [Lisboa e Setúbal em alerta vermelho para chuva só até às 15h00 ↗](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
 
 ## Its sources, as far as its own pages say
 
@@ -80,4 +81,4 @@ Through its own public page: [Contactos ↗](https://www.dn.pt/contactos). We li
 | 11 Nov 10:25 | article | Tomás Gonçalves Pereira | [Depressão Charles deixa dois mil clientes sem luz em casa esta madrugada ↗](https://dinheirovivo.dn.pt/empresas/depresso-charles-deixa-dois-mil-clientes-sem-luz-em-casa-esta-madrugada) |
 | 11 Nov 12:49 | article | DN/Lusa | [Mau tempo: Aeroportos portugueses registam 360 voos cancelados ↗](https://dinheirovivo.dn.pt/empresas/mau-tempo-aeroportos-portugueses-registam-360-voos-cancelados) |
 | 11 Nov 13:11 | article | Alexandra Tavares-Teles | [Depressão Charles: Porto ativa centro de coordenação e reforça apoio a pessoas sem-abrigo ↗](https://www.dn.pt/pol%C3%ADtica/depresso-charles-porto-ativa-centro-de-coordenao-e-refora-apoio-a-pessoas-sem-abrigo) |
-| 11 Nov 13:31 | live | Sofia Fonseca | [Depressão Charles dividiu-se em dois núcleos. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja ↗](https://www.dn.pt/sociedade/depresso-charles-dividiu-se-em-dois-ncleos-ipma-reduz-nvel-de-alerta-para-lisboa-setbal-e-beja) |
+| 11 Nov 14:32 | live | Sofia Fonseca | [Depressão Charles dividiu-se em dois núcleos. IPMA reduz nível de alerta para Lisboa, Setúbal e Beja ↗](https://www.dn.pt/sociedade/depresso-charles-dividiu-se-em-dois-ncleos-ipma-reduz-nvel-de-alerta-para-lisboa-setbal-e-beja) |

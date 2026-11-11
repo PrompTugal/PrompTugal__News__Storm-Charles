@@ -1,15 +1,15 @@
 # TEK Notícias (SAPO): its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | technology (pt) |
-| Items we read | 4: 4 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 09:45 to 10 Nov 19:41 UTC |
-| Whose reporting | 4 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 0 not read; wire share 0% |
+| Items we read | 5: 5 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 09:45 to 11 Nov 13:58 UTC |
+| Whose reporting | 4 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 1 not read; wire share 0% |
 | Does best (from the counts) | own reporting: most items carry a reporter's by-line; links to the primary sources |
 
 ## Against the key moments
@@ -23,7 +23,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 3 of 4 items link to a body that decides or warns (ANEPC, E-REDES, IPMA, Lusoponte, Web Summit). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 3 of 5 items link to a body that decides or warns (ANEPC, E-REDES, IPMA, Lusoponte, Web Summit). A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -55,3 +55,4 @@ Gustavo Dias (2), Fátima Caçador, Francisca Andrade. A by-line is a public pro
 | 10 Nov 14:25 | article | Gustavo Dias | [Depressão Charles: Web Summit sob dúvida, pontes do Tejo com limite de 60 km/h e túneis de Lisboa f… ↗](https://tek.sapo.pt/noticias/ciencia/artigos/depressao-charles-web-summit-sob-duvida-pontes-do-tejo-com-limite-de-60-km-h-e-tuneis-de-lisboa-fechados/) |
 | 10 Nov 17:58 | article | Francisca Andrade | [Web Summit 2026: Comunicações reforçadas e uma “war room” atenta ao impacto da depressão Charles ↗](https://tek.sapo.pt/noticias/telecomunicacoes/artigos/web-summit-2026-comunicacoes-reforcadas-e-uma-war-room-atenta-ao-impacto-da-depressao-charles/) |
 | 10 Nov 19:41 | article | Fátima Caçador | [Web Summit cede às pressões e fecha portas no segundo dia por causa do mau tempo ↗](https://tek.sapo.pt/noticias/negocios/artigos/web-summit-cede-as-pressoes-e-fecha-portas-no-segundo-dia-por-causa-do-mau-tempo/) |
+| 11 Nov 13:58 | article | not read | [Mau tempo não “arrefeceu” o entusiasmo, mas mudou os planos de quem veio ao Web Summit à procura de… ↗](https://tek.sapo.pt/noticias/negocios/artigos/mau-tempo-nao-arrefeceu-o-entusiasmo-mas-mudou-os-planos-de-quem-veio-ao-web-summit-a-procura-de-novas-ideias-e-oportunidades/) |

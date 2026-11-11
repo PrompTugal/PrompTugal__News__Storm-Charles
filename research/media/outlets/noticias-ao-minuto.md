@@ -1,13 +1,13 @@
 # Notícias ao Minuto: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online (pt) |
-| Items we read | 119: 117 articles, 2 live, 0 video, 0 opinion |
-| First and last | 9 Nov 16:06 to 11 Nov 13:34 UTC |
-| Whose reporting | 6 with a reporter's by-line, 102 the agency's (Lusa), 11 the desk's, 0 not read; wire share 86% |
+| Items we read | 123: 121 articles, 2 live, 0 video, 0 opinion |
+| First and last | 9 Nov 16:06 to 11 Nov 14:30 UTC |
+| Whose reporting | 6 with a reporter's by-line, 106 the agency's (Lusa), 11 the desk's, 0 not read; wire share 86% |
 | Does best (from the counts) | volume: the most items in the list; first on "ANEPC's public warning on Charles (Aviso 21)"; a running live blog; the agency wire, fast and complete (most items are Lusa's) |
 
 ## Against the key moments
@@ -24,8 +24,8 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 119 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 103 items (the item's by-line names the agency).
+- **Links to primary sources:** 1 of 123 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 107 items (the item's by-line names the agency).
 - **It relayed RTP:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -174,3 +174,7 @@ Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Marilin
 | 11 Nov 12:53 | article | Lusa | [Charles: Impacto diminui em Lisboa e aumenta no Alentejo e Algarve ↗](https://www.noticiasaominuto.com/pais/3082428/lusa-charles-enfraquece-em-lisboa-aumenta-no-alentejo-e-algarve) |
 | 11 Nov 13:15 | article | Lusa | [Câmara de Setúbal alerta para mau tempo com chuva intensa e preia-mar ↗](https://www.noticiasaominuto.com/pais/3082432/camara-de-setubal-alerta-para-mau-tempo-com-chuva-intensa-e-preia-mar) |
 | 11 Nov 13:34 | article | Lusa | [E-Redes: Dois mil clientes sem energia às 12:30 devido ao mau tempo ↗](https://www.noticiasaominuto.com/pais/3082452/e-redes-dois-mil-clientes-sem-energia-as-1230-devido-ao-mau-tempo) |
+| 11 Nov 14:03 | article | Lusa | [Proteção Civil da Madeira registou 285 ocorrências até às 13:10 ↗](https://www.noticiasaominuto.com/pais/3082470/protecao-civil-da-madeira-registou-285-ocorrencias-ate-as-1310) |
+| 11 Nov 14:08 | article | Lusa | [Charles provoca 538 ocorrências em 12 horas. Lisboa entre as piores ↗](https://www.noticiasaominuto.com/pais/3082468/charles-provoca-538-ocorrencias-em-12-horas-lisboa-entre-as-piores) |
+| 11 Nov 14:25 | article | Lusa | [Algarve é a zona mais afetada após divisão da depressão Charles ↗](https://www.noticiasaominuto.com/pais/3082478/mau-tempo-algarve-e-a-zona-mais-afetada-apos-divisao-da-depressao-charles-ipma) |
+| 11 Nov 14:30 | article | Lusa | [Seis estradas em Setúbal, Portalegre e Guarda com circulação condicionada ↗](https://www.noticiasaominuto.com/pais/3082473/mau-tempo-seis-estradas-nacionais-nos-distritos-de-setubal-portalegre-e-guarda-com-circulacao-condicionada) |

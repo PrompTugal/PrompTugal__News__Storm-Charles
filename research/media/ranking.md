@@ -1,6 +1,6 @@
 # Media watch: who is fastest, who is most sourced
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 411 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. **Label: analysis**, computed from [coverage.json](coverage.json): 444 items from 18 outlets, each read from the outlet's own page, feed or news sitemap. It ranks **only what we could read**: SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused a bot, and a live blog's entries are not timed here, so a live blog that carried the news first can look slower than it was. A ranking of a sample, not a verdict on anyone's journalism. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
 ## Who was first on each fact
 
@@ -181,7 +181,7 @@ Primary source time: **11 Nov 07:16 UTC** (fact: IPMA's CAP message PO-01-1932, 
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 13:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 14:38 UTC | | | | |
 
 - Added 13:38 UTC by the third session. Público's title "já confirmou o regresso amanhã" (article 12:00, updated 12:17) is earlier than the 12:04 post if its 12:00 is its first time: read by hand before saying who was first.
 
@@ -191,7 +191,7 @@ Primary source time: **11 Nov 12:16 UTC** (fact: IPMA, comunicados (https://www.
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 13:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 14:38 UTC | | | | |
 
 - Added 12:38 UTC by the third session.
 
@@ -201,7 +201,7 @@ Primary source time: **11 Nov 12:18 UTC** (fact: IPMA's CAP batch sent 12:18:03 
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 13:38 UTC | | | | |
+| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 14:38 UTC | | | | |
 
 - Added 12:38 UTC by the third session. Candidate for a hand check: ECO's title "IPMA atualiza para oito os distritos em aviso vermelho" carries the time 11:38, before the 12:18:03 batch (a title changed after publication, or an earlier change: not checked).
 - 13:38 UTC: ECO's item is feed-only (its pages are not opened), so whether its 11:38:06 title was changed later cannot be read here; it stays outside the window and is not counted.
@@ -212,7 +212,7 @@ Primary source time: **11 Nov 12:33 UTC** (fact: IPMA's CAP batch sent 12:33:13 
 
 | # | Outlet | Published (UTC) | After the primary | By-line as printed, or live entry | Item |
 |---|---|---|---|---|---|
-| | **none found**: no article title and no live-blog entry we could read reported it by 11 Nov 13:38 UTC | | | | |
+| 1 | Diário de Notícias | 11 Nov 13:44 | +71 min | live blog entry | [Lisboa e Setúbal em alerta vermelho para chuva só até às 15h00](https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente) |
 
 - Added 13:38 UTC by the third session.
 
@@ -224,18 +224,18 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 | Outlet | Items | Reporter's by-line | Agency (Lusa) | Wire share | Desk | By-line not read | Items linking a primary source | Bodies linked |
 |---|---|---|---|---|---|---|---|---|
-| Notícias ao Minuto | 119 | 6 | 102 | 86% | 11 | 0 | 1 | IPMA |
-| CNN Portugal | 55 | 3 | 6 | 67% | 0 | 46 | 1 | Diário da República |
-| Observador | 48 | 22 | 8 | 17% | 18 | 0 | 1 | IPMA |
-| RTP | 44 | 0 | 0 | 0% | 43 | 1 | 0 |  |
-| Expresso | 32 | 0 | 0 | n/a | 0 | 32 | 0 |  |
+| Notícias ao Minuto | 123 | 6 | 106 | 86% | 11 | 0 | 1 | IPMA |
+| CNN Portugal | 59 | 3 | 6 | 67% | 0 | 50 | 1 | Diário da República |
+| Observador | 52 | 24 | 8 | 15% | 20 | 0 | 1 | IPMA |
+| RTP | 46 | 0 | 0 | 0% | 45 | 1 | 0 |  |
+| Expresso | 37 | 0 | 0 | n/a | 0 | 37 | 0 |  |
 | Público | 25 | 18 | 3 | 13% | 2 | 2 | 6 | ANEPC, Diário da República, IPMA |
 | Diário de Notícias | 25 | 22 | 3 | 12% | 0 | 0 | 2 | AMN, Lusoponte |
-| Correio da Manhã | 16 | 1 | 5 | 31% | 10 | 0 | 0 |  |
-| ECO | 15 | 3 | 0 | 0% | 3 | 9 | 0 |  |
-| Jornal Económico | 11 | 1 | 0 | 0% | 0 | 10 | 0 |  |
+| Correio da Manhã | 24 | 1 | 8 | 33% | 15 | 0 | 0 |  |
+| ECO | 16 | 3 | 0 | 0% | 3 | 10 | 0 |  |
+| Jornal Económico | 15 | 1 | 0 | 0% | 0 | 14 | 0 |  |
 | Portugal Resident | 7 | 7 | 0 | 0% | 0 | 0 | 0 |  |
-| TEK Notícias (SAPO) | 4 | 4 | 0 | 0% | 0 | 0 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
+| TEK Notícias (SAPO) | 5 | 4 | 0 | 0% | 0 | 1 | 3 | ANEPC, E-REDES, IPMA, Lusoponte, Web Summit |
 | Euronews | 3 | 2 | 0 | 0% | 0 | 1 | 0 |  |
 | Jornal de Negócios | 2 | 1 | 0 | 0% | 1 | 0 | 1 | Diário da República, Government, IPMA |
 | Diário de Notícias da Madeira | 2 | 2 | 0 | 0% | 0 | 0 | 0 |  |
@@ -245,9 +245,9 @@ Two measures, both countable from the pages: **whose reporting it is** (a report
 
 Among outlets with at least four items:
 
-- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (75%), Público (24%), Diário de Notícias (8%), Observador (2%), CNN Portugal (2%).
-- **Highest share of items with a reporter's by-line:** Portugal Resident (100%), TEK Notícias (SAPO) (100%), Diário de Notícias (88%), Público (72%), Observador (46%).
-- **The wire underneath:** 127 of 411 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
+- **Highest share of items linking a primary source:** TEK Notícias (SAPO) (60%), Público (24%), Diário de Notícias (8%), Observador (2%), CNN Portugal (2%).
+- **Highest share of items with a reporter's by-line:** Portugal Resident (100%), Diário de Notícias (88%), TEK Notícias (SAPO) (80%), Público (72%), Observador (46%).
+- **The wire underneath:** 134 of 444 items carry Lusa's by-line, across 6 outlets. Much of what looks like many outlets is one agency, published many times.
 
 ## What each outlet does best (from these counts)
 
@@ -259,7 +259,7 @@ Among outlets with at least four items:
 | RTP | public broadcaster | nothing stands out in this sample |
 | Expresso | weekly, online daily | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 | Público | daily | first on "IPMA names the storm Charles (communiqué no. 1)"; own reporting: most items carry a reporter's by-line |
-| Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; a running live blog; own reporting: most items carry a reporter's by-line |
+| Diário de Notícias | daily | first on "IPMA's red wind warning for Wednesday"; first on "The minister announces that schools and non-essential public services close on Wednesday (spoken, before the government's page)"; first on "The government's alert situation: schools and non-essential public services closed on Wednesday"; first on "IPMA shortens Lisbon's warnings: red rain to 15:00 (was 18:00), then yellow to 18:00; orange wind to 18:00 (was 21:00), gusts to 90 km/h, up to 110 on exposed places"; a running live blog; own reporting: most items carry a reporter's by-line |
 | Correio da Manhã | daily | video |
 | ECO | business daily (online) | first on "Web Summit calls off Day 2" |
 | Jornal Económico | business weekly, online daily | nothing stands out in this sample |
@@ -278,7 +278,7 @@ Reporters whose names are printed on the items in the list, by outlet, with the 
 
 - **Notícias ao Minuto:** Beatriz Vasconcelos com Lusa, Bernardo Matias, Carlos Pereira Fernandes, Mariline Direito Rodrigues, Miguel Patinha Dias, Natacha Nunes Costa
 - **CNN Portugal:** Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva
-- **Observador:** Carla Jorge de Carvalho (5), Bruno Vieira Amaral (3), José Manuel Fernandes (3), Paulo Ferreira (3), Edgar Caetano (2), Filomena Martins (2), Helena Garrido (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição, Teresa Freire
+- **Observador:** Carla Jorge de Carvalho (4), Bruno Vieira Amaral (3), José Manuel Fernandes (3), Paulo Ferreira (3), Edgar Caetano (2), Filomena Martins (2), Helena Garrido (2), Miguel Santos Carrapatoso (2), Miguel Videira (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Mariana Lima Cunha, Martim Andrade, Miguel Viterbo Dias, Pedro Benevides, Ricardo Conceição, Teresa Freire
 - **Público:** Adriana Castro, Ana Sá Lopes, André Tavares Lourenço, Andrea Cunha Freitas, Andréia Azevedo Soares, Carlos Dias, Cristiana Faria Moreira, Fernando Costa, Inês Duarte de Freitas, José Volta e Pinto, Leonor Alhinho, Madalena Grilo Teles, Miguel Dantas, Sara de Melo Rocha, Sérgio Aníbal, Sofia Neves, Sónia Sapage, Tiago Orato, Victor Ferreira
 - **Diário de Notícias:** Ricardo Simões Ferreira (4), Sofia Fonseca (4), Susete Henriques (3), David Pereira (2), Margarida Vaqueiro Lopes (2), Sónia Santos Pereira (2), Adelaide Cabral, Alexandra Tavares-Teles, Amanda Lima, Ana Meireles, André Certã, Cecília Carmo, Cynthia Valente, Filipe Alves, Leonardo Ralha, Nuno Vinha, Tomás Gonçalves Pereira
 - **Correio da Manhã:** Marta Mariano

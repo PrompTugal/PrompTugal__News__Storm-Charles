@@ -1,13 +1,13 @@
 # Observador: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | online daily (pt) |
-| Items we read | 48: 45 articles, 2 live, 0 video, 1 opinion |
-| First and last | 10 Nov 07:32 to 11 Nov 13:17 UTC |
-| Whose reporting | 22 with a reporter's by-line, 8 the agency's (Lusa), 18 the desk's, 0 not read; wire share 17% |
+| Items we read | 52: 49 articles, 2 live, 0 video, 1 opinion |
+| First and last | 10 Nov 07:32 to 11 Nov 14:25 UTC |
+| Whose reporting | 24 with a reporter's by-line, 8 the agency's (Lusa), 20 the desk's, 0 not read; wire share 15% |
 | Does best (from the counts) | first on "The storm's track is further south than forecast (strongest winds south of Lisbon)"; first on "IPMA moves Lisbon's red rain warning three hours earlier, to Wednesday 09:00"; first on "IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente"; first on "IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands"; a running live blog |
 
 ## Against the key moments
@@ -27,7 +27,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 48 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 52 items link to a body that decides or warns (IPMA). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 10 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -51,7 +51,7 @@ Through its own public page: [Ficha Técnica ↗](https://observador.pt/ficha-te
 
 ## By-lines on this story, as printed
 
-[Carla Jorge de Carvalho](../people/carla-jorge-de-carvalho.md) (5), [Bruno Vieira Amaral](../people/bruno-vieira-amaral.md) (3), [José Manuel Fernandes](../people/jose-manuel-fernandes.md) (3), [Paulo Ferreira](../people/paulo-ferreira.md) (3), Edgar Caetano (2), Filomena Martins (2), Helena Garrido (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Martim Andrade, Miguel Santos Carrapatoso, Pedro Benevides, Ricardo Conceição, Teresa Freire. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
+[Carla Jorge de Carvalho](../people/carla-jorge-de-carvalho.md) (4), [Bruno Vieira Amaral](../people/bruno-vieira-amaral.md) (3), [José Manuel Fernandes](../people/jose-manuel-fernandes.md) (3), [Paulo Ferreira](../people/paulo-ferreira.md) (3), Edgar Caetano (2), Filomena Martins (2), Helena Garrido (2), Miguel Santos Carrapatoso (2), Miguel Videira (2), Ana Sanlez, António Moura dos Santos, Carlos Diogo Santos, Carlos Pedro, Cátia Rocha, Hugo Fortunato de Oliveira, João Adrião, João Francisco Gomes, João Paulo Godinho, João Porfírio, Judite França, Leonor Riso, Mariana Lima Cunha, Martim Andrade, Miguel Viterbo Dias, Pedro Benevides, Ricardo Conceição, Teresa Freire. A by-line is a public professional credit; nothing else about anyone is kept ([all by-lines](../people/README.md)).
 
 ## What it published, in order
 
@@ -91,7 +91,6 @@ Through its own public page: [Ficha Técnica ↗](https://observador.pt/ficha-te
 | 11 Nov 08:19 | article | Leonor Riso | [Tempestade Charles deixa Portugal continental em situação de alerta, causa estragos na Madeira e o… ↗](https://observador.pt/newsletters/360/tempestade-charles-deixa-portugal-continental-em-situacao-de-alerta-causa-estragos-na-madeira-e-o-que-diz-a-lei-sobre-teletrabalho/) |
 | 11 Nov 08:21 | article | Rádio Observador | [Mau tempo: erros a evitar e como se proteger numa tempestade ↗](https://observador.pt/programas/no-se-fala-de-outra-coisa/mau-tempo-erros-a-evitar-e-como-se-proteger-numa-tempestade/) |
 | 11 Nov 08:29 | article | José Manuel Fernandes, Helena Garrido | [Mais uma tempestade, a mesma pergunta: o tempo mudou mesmo? ↗](https://observador.pt/programas/contra-corrente/mais-uma-tempestade-a-mesma-pergunta-o-tempo-mudou-mesmo/) |
-| 11 Nov 08:58 | article | Carla Jorge de Carvalho | [Mau tempo. Transtejo Soflusa "não prevê alteração da oferta" ↗](https://observador.pt/programas/resposta-pronta/mau-tempo-transtejo-soflusa-nao-preve-alteracao-da-oferta/) |
 | 11 Nov 09:27 | article | Rádio Observador | [9h. IPMA reduz o nível de alerta para algumas localidades ↗](https://observador.pt/programas/noticiario/as-noticias-das-9h-2528/) |
 | 11 Nov 09:31 | article | Carla Jorge de Carvalho, Bruno Vieira Amaral, José Manuel Fernandes, Paulo Ferreira, Filomena Martins | [A tempestade Charles pôs o governo com trancas à porta? ↗](https://observador.pt/programas/e-o-vencedor-e/a-tempestade-charles-pos-o-governo-com-trancas-a-porta/) |
 | 11 Nov 09:36 | article | Carla Jorge de Carvalho | [Tempestade Charles. "Eventos extremos são agora mais intensos e mais frequentes" ↗](https://observador.pt/programas/resposta-pronta/tempestade-charles-eventos-extremos-sao-agora-mais-intensos-e-mais-frequentes/) |
@@ -105,3 +104,8 @@ Through its own public page: [Ficha Técnica ↗](https://observador.pt/ficha-te
 | 11 Nov 11:35 | article | João Paulo Godinho, Agência Lusa | [Depressão Charles deixa 210 ocorrências na Madeira e Albuquerque avisa para risco de deslizamentos ↗](https://observador.pt/2026/11/11/depressao-charles-deixa-210-ocorrencias-na-madeira-e-albuquerque-avisa-para-risco-de-deslizamentos/) |
 | 11 Nov 12:35 | article | José Manuel Fernandes, Helena Garrido | [Tempestade Charles. Portugal aguenta mais uma? — Debate ↗](https://observador.pt/programas/contra-corrente/tempestade-charles-portugal-aguenta-mais-uma-debate/) |
 | 11 Nov 13:17 | article | Rádio Observador | [12h. Depressão Charles. Período crítico entre 15h e 18h ↗](https://observador.pt/programas/noticiario/as-noticias-das-12h-2492/) |
+| 11 Nov 13:58 | article | Miguel Videira | [Depressão Charles. "É um verdadeiro temporal" ↗](https://observador.pt/programas/resposta-pronta/depressao-charles-e-um-verdadeiro-temporal/) |
+| 11 Nov 14:04 | article | Miguel Videira | [Mau tempo: "Não vale a pena correr riscos", avisa AMN ↗](https://observador.pt/programas/resposta-pronta/mau-tempo-nao-vale-a-pena-correr-riscos-avisa-amn/) |
+| 11 Nov 14:16 | article | Rádio Observador | [Mau tempo. MEO: "A situação é relativamente calma" ↗](https://observador.pt/programas/resposta-pronta/mau-tempo-meo-a-situacao-e-relativamente-calma/) |
+| 11 Nov 14:17 | article | Mariana Lima Cunha, Miguel Santos Carrapatoso, Miguel Viterbo Dias | [AR tem bar e motorista a trabalhar em dia de tempestade. PSD defende que "Parlamento não fecha e nã… ↗](https://observador.pt/2026/11/11/ar-tem-bar-e-motorista-a-trabalhar-em-dia-de-tempestade-psd-defende-que-parlamento-nao-fecha-e-nao-e-dispensavel/) |
+| 11 Nov 14:25 | article | Rádio Observador | [Briefing da ANEPC sobre a depressão Charles ↗](https://observador.pt/programas/emissao-especial/briefing-da-anepc-sobre-a-depressao-charles/) |

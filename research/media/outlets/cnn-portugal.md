@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 55: 17 articles, 0 live, 38 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 13:07 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 46 not read; wire share 67% |
+| Items we read | 59: 18 articles, 0 live, 41 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 14:24 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 50 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -25,7 +25,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 55 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 59 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -109,3 +109,7 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 13:06 | video | not read | [Tempestade Charles desloca-se para sul. Proteção Civil admite menor impacto em Lisboa e maior no Al… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-desloca-se-para-sul-protecao-civil-admite-menor-impacto-em-lisboa-e-maior-no-alentejo-e-algarve/6af462a10cf2cb2507aa84f7) |
 | 11 Nov 13:06 | video | not read | [Tempestade Charles divide-se em dois núcleos. IPMA avisa que chuva e vento forte continuam a preocu… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-divide-se-em-dois-nucleos-ipma-avisa-que-chuva-e-vento-forte-continuam-a-preocupar/6af45cc40cf2051820fb14b6) |
 | 11 Nov 13:07 | video | not read | [Tempestade Charles: chuva intensa pode provocar inundações e perturbar o trânsito em Lisboa ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-chuva-intensa-pode-provocar-inundacoes-e-perturbar-o-transito-em-lisboa/6af459b70cf235b99ef5093f) |
+| 11 Nov 14:03 | article | not read | [A empresa fechou devido ao mau tempo e tirou-lhe um dia de férias? "Não pode. É o empregador que es… ↗](https://cnnportugal.iol.pt/mau-tempo/empresa/a-empresa-fechou-devido-ao-mau-tempo-e-tirou-lhe-um-dia-de-ferias-nao-pode-e-o-empregador-que-esta-a-impedir-a-prestacao-de-trabalho/20261111/6af44482d34e5a653d733b51) |
+| 11 Nov 14:23 | video | not read | [Tempestade Charles: Amadora ainda sem ocorrências graves, mas comandante alerta para as próximas ho… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-amadora-ainda-sem-ocorrencias-graves-mas-comandante-alerta-para-as-proximas-horas/6af46e740cf235b99ef509c3) |
+| 11 Nov 14:23 | video | not read | [Tempestade Charles: porque se dividiu o núcleo da depressão e que regiões podem ser afetadas? ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-porque-se-dividiu-o-nucleo-da-depressao-e-que-regioes-podem-ser-afetadas/6af46ee10cf235b99ef509c4) |
+| 11 Nov 14:24 | video | not read | [Tempestade Charles provoca centenas de cancelamentos de voos em Portugal. Lisboa é o aeroporto mais… ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-provoca-centenas-de-cancelamentos-de-voos-em-portugal-lisboa-e-o-aeroporto-mais-afetado/6af46c7f0cf2051820fb1534) |

@@ -1,13 +1,13 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
-| Items we read | 44: 44 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 13:23 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 43 the desk's, 1 not read; wire share 0% |
+| Items we read | 46: 46 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:34 to 11 Nov 14:23 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 45 the desk's, 1 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -26,7 +26,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 44 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 46 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **Notícias ao Minuto relayed it:** 1 item (the entry says so (7-track-south): "the latest information from IPMA, released by RTP Notícias": relayed from RTP, no person or role named).
 
 ## Licence and terms, as it publishes them
@@ -96,3 +96,5 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 13:18 | article | Rádio e Televisão de Portugal | [Charles fez estragos na Madeira. Homem retirado de escombros ↗](https://www.rtp.pt/noticias/pais/charles-fez-estragos-na-madeira-homem-retirado-de-escombros_v1778422) |
 | 11 Nov 13:19 | article | Rádio e Televisão de Portugal | [Lisboa com pouco movimento em dia de intempérie ↗](https://www.rtp.pt/noticias/pais/lisboa-com-pouco-movimento-em-dia-de-intemperie_v1778424) |
 | 11 Nov 13:23 | article | not read | ["Risco mantém-se". Proteção Civil conserva todos os alertas apesar de "impacto mais reduzido" ↗](https://www.rtp.pt/noticias/mundo/risco-mantem-se-protecao-civil-conserva-todos-os-alertas-apesar-de-impacto-mais-reduzido_e1778319) |
+| 11 Nov 13:54 | article | Rádio e Televisão de Portugal | [Centenas voos cancelados à passagem da depressão Charles ↗](https://www.rtp.pt/noticias/pais/centenas-voos-cancelados-a-passagem-da-depressao-charles_v1778436) |
+| 11 Nov 14:23 | article | Rádio e Televisão de Portugal | ["Risco mantém-se". Proteção Civil conserva todos os alertas apesar de "impacto mais reduzido" ↗](https://www.rtp.pt/noticias/pais/risco-mantem-se-protecao-civil-conserva-todos-os-alertas-apesar-de-impacto-mais-reduzido_e1778319) |

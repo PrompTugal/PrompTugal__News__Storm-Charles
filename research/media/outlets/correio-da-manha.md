@@ -1,13 +1,13 @@
 # Correio da Manhã: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | daily (pt) |
-| Items we read | 16: 8 articles, 0 live, 8 video, 0 opinion |
+| Items we read | 24: 11 articles, 0 live, 13 video, 0 opinion |
 | First and last | 10 Nov 00:00 to 11 Nov 00:00 UTC |
-| Whose reporting | 1 with a reporter's by-line, 5 the agency's (Lusa), 10 the desk's, 0 not read; wire share 31% |
+| Whose reporting | 1 with a reporter's by-line, 8 the agency's (Lusa), 15 the desk's, 0 not read; wire share 33% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -16,8 +16,8 @@ No item of this outlet matched a keyed fact by its title.
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 16 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
-- **It published the wire of Lusa:** 5 items (the item's by-line names the agency).
+- **Links to primary sources:** 0 of 24 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **It published the wire of Lusa:** 8 items (the item's by-line names the agency).
 - **It republished Jornal de Negócios:** 1 item (the item's by-line names the other outlet).
 
 ## Licence and terms, as it publishes them
@@ -51,6 +51,14 @@ Marta Mariano. A by-line is a public professional credit; nothing else about any
 | 10 Nov 00:00 (day only) | article | Jornal de Negócios | [Pingo Doce fecha supermercados devido à depressão Charles. Continente mantém lojas abertas ↗](https://www.cmjornal.pt/sociedade/clima/detalhe/pingo-doce-fecha-supermercados-devido-a-depressao-charles-continente-mantem-lojas-abertas) |
 | 10 Nov 00:00 (day only) | video | Correio da Manhã | [Portugueses correm aos supermercados para se precaverem dos efeitos da tempestade Charles ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/portugueses-correm-aos-supermercados-para-se-precaverem-dos-efeitos-da-tempestade-charles) |
 | 10 Nov 00:00 (day only) | article | Lusa | [Dois mil clientes da E-Redes sem energia pelas 19h30 devido ao mau tempo ↗](https://www.cmjornal.pt/sociedade/clima/detalhe/dois-mil-clientes-da-e-redes-sem-energia-pelas-19h30-devido-ao-mau-tempo) |
+| 11 Nov 00:00 (day only) | video | Correio da Manhã | [Mau tempo: Paróquia de Machico fica alagada na ilha da Madeira ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/mau-tempo-paroquia-de-machico-fica-alagada-na-ilha-da-madeira) |
+| 11 Nov 00:00 (day only) | video | Correio da Manhã | [Bombeiros preparados para intervir caso mau tempo se agrave em Odemira ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/bombeiros-preparados-para-intervir-caso-mau-tempo-se-agrave-em-odemira) |
+| 11 Nov 00:00 (day only) | article | Lusa | [Sete estradas do concelho do Seixal encerradas preventivamente devido ao mau tempo ↗](https://www.cmjornal.pt/portugal/detalhe/sete-estradas-do-concelho-do-seixal-encerradas-preventivamente-devido-ao-mau-tempo) |
+| 11 Nov 00:00 (day only) | video | Correio da Manhã | [Faro é o único distrito sob aviso vermelho devido ao vento ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/faro-e-o-unico-distrito-sob-aviso-vermelho-devido-ao-vento) |
+| 11 Nov 00:00 (day only) | article | Lusa | [Mau tempo: Alcácer do Sal aconselha a saída preventiva de 10 moradores junto a encosta do Castelo ↗](https://www.cmjornal.pt/sociedade/detalhe/mau-tempo-alcacer-do-sal-aconselha-a-saida-preventiva-de-10-moradores-junto-a-encosta-do-castelo) |
+| 11 Nov 00:00 (day only) | article | Lusa | [Depressão Charles perde força em Lisboa e ganha no Alentejo e Algarve ↗](https://www.cmjornal.pt/sociedade/detalhe/depressao-charles-perde-forca-em-lisboa-e-ganha-no-alentejo-e-algarve) |
+| 11 Nov 00:00 (day only) | video | Correio da Manhã | ["Vou ficar sem nada": família fica com casa completamente alagada devido ao mau tempo em Alfragide ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/vou-ficar-sem-nada-familia-fica-com-casa-completamente-alagada-devido-ao-mau-tempo-em-alfragide) |
+| 11 Nov 00:00 (day only) | video | Correio da Manhã | ["Há poucas pessoas na rua": Tânia Laranjo relata cenário em Faro durante passagem de depressão Char… ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/ha-poucas-pessoas-na-rua-tania-laranjo-relata-cenario-em-faro-durante-passagem-de-depressao-charles) |
 | 11 Nov 00:00 (day only) | video | Correio da Manhã | [Vai ter de conduzir durante a tempestade Charles? Saiba que medidas deve adotar ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/vai-ter-de-conduzir-durante-a-tempestade-charles-saiba-que-medidas-deve-adotar) |
 | 11 Nov 00:00 (day only) | article | Lusa | [Santa Cruz, Câmara de Lobos e Machico entre os mais afetados pelo mau tempo na Madeira ↗](https://www.cmjornal.pt/portugal/detalhe/santa-cruz-camara-de-lobos-e-machico-entre-os-mais-afetados-pelo-mau-tempo-na-madeira) |
 | 11 Nov 00:00 (day only) | video | Correio da Manhã | [Tempestade Charles mudou de trajetória e dividiu-se em dois núcleos. Veja por onde deverá passar ↗](https://www.cmjornal.pt/cmtv/videos/detalhe/tempestade-charles-mudou-de-trajetoria-e-dividiu-se-em-dois-nucleos-veja-por-onde-devera-passar) |

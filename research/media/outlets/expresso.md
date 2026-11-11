@@ -1,13 +1,13 @@
 # Expresso: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 13:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 14:38 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | weekly, online daily (pt) |
-| Items we read | 32: 32 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:21 to 11 Nov 12:01 UTC |
-| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 32 not read |
+| Items we read | 37: 37 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 14:21 to 11 Nov 14:02 UTC |
+| Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 37 not read |
 | Does best (from the counts) | (by-lines not read: the pages refuse a bot or print none in their metadata) |
 
 ## Against the key moments
@@ -23,7 +23,7 @@ Its first item on each keyed fact, and its place among the outlets we could read
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 32 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 37 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -79,3 +79,8 @@ Its public contact page was not found by our reader (start at [Expresso ↗](htt
 | 11 Nov 11:34 | article | not read | [Madeira teve chuva forte e ventos de 130 km/h: pico da tempestade já passou e alerta baixou (veja a… ↗](https://expresso.pt/curtas/2026-11-11-video-madeira-teve-chuva-forte-e-ventos-de-130-km-h-pico-da-tempestade-ja-passou-e-alerta-baixou--veja-as-imagens--5260821f) |
 | 11 Nov 12:01 | article | not read | [SIRESP processou perto de 5 milhões de chamadas e sem registo de "constrangimentos" ↗](https://expresso.pt/tempestades/2026-11-11-siresp-processou-perto-de-5-milhoes-de-chamadas-e-sem-registo-de-constrangimentos-c217c70f) |
 | 11 Nov 12:01 | article | not read | [Depressão “Charles” perde intensidade, mas prevenção tem de manter-se. Algarve deve ser a zona mais… ↗](https://expresso.pt/tempestades/2026-11-11-depressao-charles-perde-intensidade-mas-prevencao-tem-de-manter-se.-algarve-deve-ser-a-zona-mais-afetada-fadb3d6f) |
+| 11 Nov 13:20 | article | not read | [Uma quarta feira de manhã como um domingo de inverno: “Antigamente também chovia e trabalhava-se, a… ↗](https://expresso.pt/tempestades/2026-11-11-uma-quarta-feira-de-manha-como-um-domingo-de-inverno-antigamente-tambem-chovia-e-trabalhava-se-agora-ficam-em-casa-40e23b48) |
+| 11 Nov 13:33 | article | not read | ["Não há respeito pela segurança destas pessoas": sindicato critica Moedas por colocar trabalhadores… ↗](https://expresso.pt/poder-local/2026-11-11-nao-ha-respeito-pela-seguranca-destas-pessoas-sindicato-critica-moedas-por-colocar-trabalhadores-a-limpar-estatua-durante-tempestade-ca697f63-1) |
+| 11 Nov 13:50 | article | not read | [Tempestade "Charles": congestionamento de trânsito em Lisboa não passou dos 6% esta manhã ↗](https://expresso.pt/tempestades/2026-11-11-tempestade-charles-congestionamento-de-transito-em-lisboa-nao-passou-dos-6-esta-manha-fb0acead) |
+| 11 Nov 13:57 | article | not read | [Serviço de entregas da Uber Eats suspenso em diferentes pontos do país ↗](https://expresso.pt/tempestades/2026-11-11-servico-de-entregas-da-uber-eats-suspenso-em-diferentes-pontos-do-pais-11d1b407) |
+| 11 Nov 14:02 | article | not read | [Tempestade Charles provoca danos no cocelho de Cascais e Oeiras ↗](https://expresso.pt/sociedade/2026-11-11-tempestade-charles-provoca-danos-no-cocelho-de-cascais-e-oeiras-bed42370) |
