@@ -209,6 +209,35 @@
       '<p>' + (D.warn ? prov('warn', 'IPMA warnings', D.warn.read_utc) + ' · ' : '') + (D.airport ? prov('airport', 'Lisbon airport (METAR)', D.airport.read_utc) + ' · ' : '') + (D.stations ? prov('stations', 'IPMA stations', D.stations.read_utc) + ' · ' : '') + (D.forecast && D.forecast.hourly ? prov('forecast', 'IPMA automatic forecast', D.forecast.hourly.read_utc) : '') + '</p></section>'
   }
 
+  // rain today, measured against warned: hourly bars (the wettest of the Lisbon stations each hour) under IPMA's rain warnings, which
+  // carry no figure in millimetres, so they are drawn as their hours, in their colour, with the level written. One axis: mm in the hour.
+  function rainChart(t) {
+    var D0 = T(day(t) + 'T00:00:00Z'), D1 = D0 + 864e5, H = 36e5, rs = (D.rain || {}).stations || []; if (!rs.length) return ''
+    var ws = lisbonWarnings().filter(function (w) { return w.type === 'Precipitação' && T(w.start_utc) < D1 && T(w.end_utc) > D0 })
+    var bars = [], totals = []
+    for (var h = 0; h < 24; h++) { var x = D0 + (h + 1) * H, best = null; rs.forEach(function (s) { (s.hourly || []).forEach(function (r) { if (T(r.time_utc) === x && r.rain_mm != null && (!best || r.rain_mm > best.v)) best = { v: r.rain_mm, s: s.name, h: h } }) }); if (best) bars.push(best) }
+    rs.forEach(function (s) { var sum = 0, n = 0; (s.hourly || []).forEach(function (r) { var x = T(r.time_utc); if (x > D0 && x <= D1 && r.rain_mm != null) { sum += r.rain_mm; n++ } }); if (n) totals.push({ s: s.name, mm: Math.round(sum * 10) / 10, n: n }) })
+    totals.sort(function (a, b) { return b.mm - a.mm })
+    var top = 10; bars.forEach(function (b) { if (b.v > top) top = b.v }); top = Math.ceil(top / 5) * 5
+    var W = 1000, Ht = 260, L = 46, R = 14, Tp = 40, B = 30, X = function (m) { return L + (W - L - R) * (m - D0) / 864e5 }, Y = function (v) { return Tp + (Ht - Tp - B) * (1 - v / top) }, bw = (W - L - R) / 24
+    var g = '', step = top > 20 ? 10 : 5, hh = function (h) { return ('0' + (h % 24)).slice(-2) + ':00' }
+    for (var v = 0; v <= top; v += step) g += '<line class="c-grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v) + '" y2="' + Y(v) + '"/><text class="c-tick" x="' + (L - 6) + '" y="' + (Y(v) + 4) + '" text-anchor="end">' + v + '</text>'
+    for (var i = 0; i <= 24; i += 3) g += '<text class="c-tick" x="' + X(D0 + i * H) + '" y="' + (Ht - 10) + '" text-anchor="' + (i === 24 ? 'end' : i ? 'middle' : 'start') + '">' + hh(i) + '</text>'
+    ws.forEach(function (w) {
+      var a = Math.max(D0, T(w.start_utc)), b = Math.min(D1, T(w.end_utc))
+      g += '<rect class="c-win w-' + esc(w.level) + '" x="' + X(a) + '" y="' + Tp + '" width="' + (X(b) - X(a)) + '" height="' + (Ht - Tp - B) + '"/><rect class="c-strip w-' + esc(w.level) + '" x="' + (X(a) + 1) + '" y="10" width="' + (X(b) - X(a) - 2) + '" height="22" rx="4"><title>' + esc('IPMA ' + w.level + ' rain warning, ' + hm(a) + ' to ' + hm(w.end_utc) + ': ' + w.text_pt) + '</title></rect><text class="c-striplab w-' + esc(w.level) + '" x="' + (X(a) + 9) + '" y="25">' + esc(w.level.toUpperCase()) + ' warning ' + hm(a) + '–' + hm(w.end_utc) + '</text>'
+    })
+    bars.forEach(function (b) { if (b.v > 0) g += '<path class="c-bar" d="M' + (X(D0 + b.h * H) + 3) + ' ' + Y(0) + 'V' + (Y(b.v) + 3) + 'q0-3 3-3h' + (bw - 12) + 'q3 0 3 3V' + Y(0) + 'z"><title>' + esc(hh(b.h) + ' to ' + hh(b.h + 1) + ': ' + b.v + ' mm at ' + b.s) + '</title></path>'; if (b.v >= 1) g += '<text class="c-val" x="' + (X(D0 + b.h * H) + bw / 2) + '" y="' + (Y(b.v) - 4) + '" text-anchor="middle">' + num(b.v, b.v < 10 ? 1 : 0) + '</text>' })
+    if (t >= D0 && t < D1) g += '<line class="c-now" x1="' + X(t) + '" x2="' + X(t) + '" y1="' + Tp + '" y2="' + (Ht - B) + '"/><text class="c-nowt" x="' + (X(t) + 5) + '" y="' + (Tp + 12) + '">now ' + hm(t) + '</text>'
+    var rows = ws.map(function (w) { return ['IPMA ' + esc(w.level) + ' rain warning', when(w.start_utc, t) + ' to ' + when(w.end_utc, t), '<span lang="pt">' + esc(w.text_pt) + '</span>'] }).concat(bars.map(function (b) { return ['Rain measured, ' + esc(b.s), hh(b.h) + ' to ' + hh(b.h + 1), b.v + ' mm'] }))
+    var lead = totals.length ? 'Most rain measured so far today: <b>' + totals[0].mm + ' mm</b> at ' + esc(totals[0].s) + ' <span class="meta">(' + totals[0].n + ' hour' + (totals[0].n > 1 ? 's' : '') + ' measured, to ' + hh(bars.length ? bars[bars.length - 1].h + 1 : 0) + ')</span>' : 'No rain measurement for today has been read yet.'
+    return '<section class="wxc-sec" aria-labelledby="wxc-h-rain"><h2 id="wxc-h-rain">Rain today: measured against warned <span class="meta">mm in each hour, Lisbon</span></h2><p class="wxc-lead">' + lead + '</p>' +
+      '<div class="wxc-scroll plain" tabindex="0" role="group" aria-label="Rain chart: scrolls sideways on a small screen"><svg class="wxc-chart" viewBox="0 0 ' + W + ' ' + Ht + '" role="img" aria-label="Rain today in Lisbon by the hour, under the hours of IPMA\'s rain warnings. The values are in the table below.">' + g + '</svg></div>' +
+      '<p class="meta">Each bar is the wettest of IPMA\'s ' + rs.length + ' Lisbon stations in that hour. IPMA\'s rain warnings give no figure in millimetres, so they are shown as their hours.</p>' +
+      (totals.length > 1 ? '<details class="wxc-table"><summary>So far today at each station, and the chart as a table</summary><div class="wxc-scroll plain"><table><thead><tr><th>Station</th><th>Hours measured</th><th>Total today</th></tr></thead><tbody>' + totals.map(function (x) { return '<tr><td>' + esc(x.s) + '</td><td>' + x.n + '</td><td>' + x.mm + ' mm</td></tr>' }).join('') + '</tbody></table><table><thead><tr><th>What</th><th>When (UTC)</th><th>Value</th></tr></thead><tbody>' + rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>' }).join('') + '</tbody></table></div></details>' : '') +
+      '<p>' + (D.warn ? prov('warn', 'IPMA warnings', D.warn.read_utc) + ' · ' : '') + prov('rain', 'IPMA stations, rain', D.rain.read_utc) + '</p></section>'
+  }
+
   // our meteorologist's reading: a hypothesis, never a forecast of ours stated as fact. Dashed, and it says so.
   function reading(t) {
     var A = D.analysis; if (!A) return ''
@@ -289,7 +318,7 @@
   function render() {
     var t = now(), sx = (el.querySelector('.wxc-scroll') || {}).scrollLeft
     var nextRead = D.warn && D.warn.next_read_utc
-    el.innerHTML = '<div class="wxc">' + hero(t) + hours(t) + windChart(t) + reading(t) + '<div class="wxc-pair">' + closed(t) + madeira(t) + '</div>' + tomorrow(t) + latest(t) +
+    el.innerHTML = '<div class="wxc">' + hero(t) + hours(t) + '<div class="wxc-pair even">' + rainChart(t) + windChart(t) + '</div>' + reading(t) + '<div class="wxc-pair">' + closed(t) + madeira(t) + '</div>' + tomorrow(t) + latest(t) +
       '<p class="wxc-foot"><b>Not a warning service.</b> This page shows what IPMA warns and what the authorities decided, as read at the times shown; it makes no forecast and gives no advice of its own. Follow <a href="https://www.ipma.pt/" rel="external">IPMA <span aria-hidden="true">↗</span></a> and <a href="https://prociv.gov.pt/" rel="external">ANEPC <span aria-hidden="true">↗</span></a> (both leave this site). Everything here is read from <a href="' + esc(base + 'datasets.html') + '">the data room</a>' + (ok(nextRead) ? '; its weather files are next read at about ' + hm(nextRead) + ' UTC' : '') + '.' + (failed.length ? ' Could not read: ' + esc(failed.join(', ')) + '.' : '') + (qNow ? ' <b>Shown as at ' + esc(hm(t)) + ' UTC (?now=), not the present.</b>' : '') + '</p></div>'
     var sc = el.querySelector('.wxc-scroll'), nw = el.querySelector('.wxc-head .now')
     if (sc && sx != null) sc.scrollLeft = sx

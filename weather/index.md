@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../app/weather/weather.css"><script src="../a
 ---
 # Storm Charles: the weather, now
 
-> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:05 UTC
+> Kept by incident.weather@web-summit.dinis, 11 November 2026, 03:20 UTC
 
 **Not a warning service.** For warnings follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/). This page makes no forecast and gives no advice of its own.
 
@@ -16,6 +16,7 @@ The Weather face of this site: Storm Charles (Lisbon and Madeira, 10 to 12 Novem
 
 - **Now**: the IPMA warnings in force in Lisbon this hour, the next ones, what the stations measured in the last hour, and the headline decision.
 - **Today, hour by hour**: IPMA's warnings as bands; rain, wind, gusts and temperature observed up to now, and IPMA's automatic forecast after it.
+- **Rain today, measured against warned**: rain by the hour under the hours of IPMA's rain warnings.
 - **Wind today, measured against warned**: IPMA's warned gusts over the warning's hours, the gusts and mean wind measured, on one axis, with the same values as a table.
 - **Our meteorologist's reading**: a hypothesis, dashed and labelled, never IPMA's forecast.
 - **What is closed and what runs**, **Madeira** (observed), **tomorrow**, and **the last changes**.

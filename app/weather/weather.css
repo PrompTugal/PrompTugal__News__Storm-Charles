@@ -6,7 +6,7 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }
 .wxc { --pad: clamp(14px, 2.4vw, 40px); font-family: var(--sans); color: var(--ink); }
 .wxc p { margin: 0; }
 .wxc h2 { font-size: clamp(20px, 1.5vw + 12px, 28px); margin: 0 0 14px; letter-spacing: -.01em; }
-.wxc h2 .meta { font-weight: 400; font-size: 14px; margin-left: 8px; letter-spacing: 0; }
+.wxc h2 .meta { display: inline-block; font-weight: 400; font-size: 14px; margin-left: 8px; letter-spacing: 0; }
 .wxc h2 .lbl { font-size: 13px; vertical-align: 4px; }
 .wxc-hero h1 time span { font-family: var(--sans); font-size: 14px; }
 .wxc h3 { font-size: 16px; margin: 0 0 6px; }
@@ -142,12 +142,13 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }
   .wxc-feed li { grid-template-columns: 70px minmax(0, 1fr); }
 }
 @media (max-width: 420px) { .wxc-tiles { grid-template-columns: 1fr 1fr; gap: 8px; } .wxc-tile { padding: 10px; } .wxc-w { padding: 8px 10px; gap: 8px; } }
+@media (max-width: 760px) { .wxc-chart { min-width: 680px; } }
 @media print { .wxc-scroll { overflow: visible; } .wxc-grid { min-width: 0; } }
 
 /* the wind chart: one axis; warned in IPMA's colour with the level written; observed solid; automatic forecast grey and dashed */
 .wxc-lead { font-size: 17px; margin-bottom: 10px !important; }
 .wxc-scroll.plain { border: 0; background: transparent; }
-.wxc-chart { display: block; width: 100%; min-width: 680px; height: auto; max-height: 420px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.wxc-chart { display: block; width: 100%; height: auto; max-height: 420px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
 .wxc-chart .c-grid { stroke: var(--line); stroke-width: 1; }
 .wxc-chart .c-tick { fill: var(--ink-2); font: 11px var(--mono); }
 .wxc-chart .c-win { opacity: .07; } .wxc-chart .c-win.w-red { fill: var(--red); } .wxc-chart .c-win.w-orange { fill: var(--orange); } .wxc-chart .c-win.w-yellow { fill: var(--yellow); }
@@ -168,3 +169,12 @@ main.doc:has(#wx) > .wrap { max-width: none; padding: 0; }
 .wxc-table table { border-collapse: collapse; margin-top: 8px; min-width: 520px; }
 .wxc-table th, .wxc-table td { text-align: left; padding: 4px 14px 4px 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .wxc-chart .c-meanp { fill: var(--surface); stroke: var(--focus); stroke-width: 2; }
+.wxc { container-type: inline-size; }
+.wxc-pair.even { grid-template-columns: 1fr; }
+.wxc-pair.even > .wxc-sec + .wxc-sec { border-left: 0; }
+@container (min-width: 1560px) { .wxc-pair.even { grid-template-columns: repeat(2, minmax(0, 1fr)); } .wxc-pair.even > .wxc-sec + .wxc-sec { border-left: 1px solid var(--line); } }
+.wxc-chart .c-bar { fill: var(--rain); }
+.wxc-chart .c-val { fill: var(--ink); font: 600 11px var(--sans); }
+.wxc-chart .c-strip.w-red { fill: var(--red); } .wxc-chart .c-strip.w-orange { fill: var(--orange); } .wxc-chart .c-strip.w-yellow { fill: var(--yellow); }
+.wxc-chart .c-striplab { font: 700 12px var(--sans); fill: var(--on-orange); } .wxc-chart .c-striplab.w-red { fill: white; }
+.wxc-table table + table { margin-top: 14px; }
