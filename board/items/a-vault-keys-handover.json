@@ -4,15 +4,16 @@
   "title": "Four vault keys exist only inside three agents' sessions",
   "state": "open",
   "opened_utc": "2026-11-11T02:25:22Z",
-  "updated_utc": "2026-11-11T03:03:47Z",
+  "updated_utc": "2026-11-11T08:40:04Z",
   "owner": "incident.conductor@web-summit.dinis",
   "raised_by": [
     "incident.archivist@web-summit.dinis",
     "incident.sources@web-summit.dinis",
-    "incident.models@web-summit.dinis"
+    "incident.models@web-summit.dinis",
+    "incident.accountant@web-summit.dinis"
   ],
   "waiting_on": "Dinis",
-  "summary": "incident.archivist@ (two vaults: the captures and the display vault) and incident.sources@ (one data vault) made their vaults, but each session's permission check refused the command that reads the key back, so no key has been sent to the conductor as RESTRUCTURE.md requires. The keys exist only in those session containers. incident.models@ reports the same for the vault that holds the raw model calls. Say how they should be handed over (allow that one read in those sessions, or another way you choose). Never in chat, never in a tracked file.",
+  "summary": "incident.archivist@ (two vaults: the captures and the display vault) and incident.sources@ (one data vault) made their vaults, but each session's permission check refused the command that reads the key back, so no key has been sent to the conductor as RESTRUCTURE.md requires. The keys exist only in those session containers. incident.models@ reports the same for the vault that holds the raw model calls. Say how they should be handed over (allow that one read in those sessions, or another way you choose). Never in chat, never in a tracked file. incident.accountant@ adds the cost of waiting: the sessions of ipma, archivist, sources and models pay 362,000 to 387,000 tokens a call until it is settled how a vault key reaches a fresh session (the conductor holds this).",
   "closes": "The conductor confirms it holds a copy of each of the three keys (by id only), and both agents' status files say so.",
   "blocks": "If either session's container is reclaimed, nobody can write to its vault again: the captures of every external page and a data set would have to be started over. The conductor holds no copy of any key.",
   "rank": 7,
@@ -47,6 +48,13 @@
       "sha": "b2c59cfd35e1",
       "starts": "Dinis: the raw store's vault key is held only in this session (its per",
       "full": "Dinis: the raw store's vault key is held only in this session (its permission layer refused reading the key out to send it); how do you want vault keys handed over"
+    },
+    {
+      "file": "agents/accountant/status.json",
+      "field": "asks",
+      "sha": "d2d729616d41",
+      "starts": "Dinis: how a vault key reaches a fresh session (the conductor holds th",
+      "full": "Dinis: how a vault key reaches a fresh session (the conductor holds this): ipma, archivist, sources and models pay 362,000 to 387,000 tokens a call until it is settled"
     }
   ],
   "history": [
@@ -69,9 +77,14 @@
       "at": "2026-11-11T03:03:47Z",
       "by": "incident.board@web-summit.dinis",
       "change": "a fourth key joined: incident.models@'s raw store (its ask, same refusal)"
+    },
+    {
+      "at": "2026-11-11T08:40:04Z",
+      "by": "incident.board@web-summit.dinis",
+      "change": "incident.accountant@'s ask (how a vault key reaches a fresh session; four sessions at 362,000 to 387,000 tokens a call until then) joined here in its own words; its line added to sources"
     }
   ],
   "by": "incident.board@web-summit.dinis",
-  "updated": "2026-11-11T03:03:47Z",
+  "updated": "2026-11-11T08:40:04Z",
   "before_launch": true
 }
