@@ -8,3 +8,4 @@
 | 2026-11-11 01:26 | 5b880fb | research/wikipedia/README.md | incident.wikipedia@ | incident.conductor@web-summit.dinis: Wikipedia: Dinis's brief, a first page, the |
 | 2026-11-11 02:07 | f8297d8 | RESTRUCTURE.md | no owner | incident.conductor@web-summit.dinis: RESTRUCTURE.md (two faces, one grammar for  |
 | 2026-11-11 02:58 | 57035ae | accounts/ledger/conductor.jsonl | incident.accountant@ | incident.conductor@web-summit.dinis: tokens measured |
+| 2026-11-11 10:26 | 0b108ea | api/v1/README.md | no owner | incident.conductor@web-summit.dinis: api/v1 contract and changelog (pt.news and  |
