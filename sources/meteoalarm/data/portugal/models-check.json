@@ -1,7 +1,7 @@
 {
  "about": "Each CAP message of MeteoAlarm's feed read a second time by open-weight models through OpenRouter (tools/source-meteoalarm-models.mjs, task extract-warning of models/delegate.json), compared field by field with this desk's parser (latest.json). The parser's value is the fact; the models' answer is evidence, labelled with their names. Fields only: no message text and no model text here.",
  "by": "incident.sources@web-summit.dinis",
- "updated": "2026-11-11T22:23:28Z",
+ "updated": "2026-11-11T22:25:23Z",
  "checked": {
   "2.49.0.0.620.0.PT.261111191731.PO-10-6338": {
    "sent_utc": "2026-11-11T19:17:31Z",
@@ -212,12 +212,432 @@
    },
    "cost_usd": 0.00038427,
    "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-01-1946": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Setúbal",
+   "at": "2026-11-11T22:24:51Z",
+   "trace_id": "ce55486c1cdf10759d0831bf2907008a",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "wind",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "orange",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Setúbal",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T12:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.00040682,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-01-1947": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Leiria",
+   "at": "2026-11-11T22:24:54Z",
+   "trace_id": "331cdde6a4a2ae3e446fb71796d2f7c9",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "wind",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "yellow",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Leiria",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T12:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.00040711,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-01-1948": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Santarém",
+   "at": "2026-11-11T22:24:57Z",
+   "trace_id": "580077de9a306f1a3f740a02a445d777",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "wind",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "yellow",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Santarém",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T12:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.0003894,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-01-1949": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Castelo Branco",
+   "at": "2026-11-11T22:25:00Z",
+   "trace_id": "e3e2fed052ce55e565ac89da217934a4",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "wind",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "yellow",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Castelo Branco",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T12:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.00038571,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-01-1950": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Portalegre",
+   "at": "2026-11-11T22:25:03Z",
+   "trace_id": "9de6a296e7944dcc1494ce9e7d0a9a46",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "wind",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "yellow",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Portalegre",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T12:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.00038041,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-01-1951": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Évora",
+   "at": "2026-11-11T22:25:06Z",
+   "trace_id": "97062e79d629596711f7694de501c561",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "wind",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "yellow",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Évora",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T12:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.00035012,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-01-1952": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Beja",
+   "at": "2026-11-11T22:25:09Z",
+   "trace_id": "cde29ee356f3441c4902f10032c45fb1",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "wind",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "orange",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Beja",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T12:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.00036722,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-10-6333": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Faro",
+   "at": "2026-11-11T22:25:12Z",
+   "trace_id": "193b328240f142c6f110f13bd167a0c9",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "rain",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "yellow",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Faro",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T18:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.0003429,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-10-6334": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Castelo Branco",
+   "at": "2026-11-11T22:25:15Z",
+   "trace_id": "6c7430839f4a06b8b9e2581fdcf8ef09",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "rain",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "yellow",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Castelo Branco",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T18:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.00037318,
+   "calls": 3
+  },
+  "2.49.0.0.620.0.PT.261111155503.PO-10-6335": {
+   "sent_utc": "2026-11-11T15:55:03Z",
+   "area": "Portalegre",
+   "at": "2026-11-11T22:25:23Z",
+   "trace_id": "e587d82a4189677cea5e0063babd77c2",
+   "label": "evidence",
+   "models": [
+    "qwen/qwen3.5-9b#reasoning-off",
+    "mistralai/ministral-8b-2512"
+   ],
+   "agree_with_parser": true,
+   "fields": {
+    "type": {
+     "parser": "rain",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "level": {
+     "parser": "yellow",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "area": {
+     "parser": "Portalegre",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "start_utc": {
+     "parser": "2026-11-11T15:56:00Z",
+     "models_agree_with_parser": "2 of 2"
+    },
+    "end_utc": {
+     "parser": "2026-11-11T18:00:00Z",
+     "models_agree_with_parser": "2 of 2"
+    }
+   },
+   "comparison": {
+    "model": "google/gemini-3.5-flash-lite",
+    "label": "commercial, for comparison",
+    "valid": true,
+    "agrees_with_parser": true
+   },
+   "cost_usd": 0.00036228,
+   "calls": 3
   }
  },
  "totals": {
-  "checked": 5,
-  "agree_with_parser": 5,
+  "checked": 15,
+  "agree_with_parser": 15,
   "differ": 0,
-  "cost_usd": 0.00199
+  "cost_usd": 0.005755
  }
 }

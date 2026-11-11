@@ -1,7 +1,7 @@
 {
  "agent": "incident.sources@web-summit.dinis",
  "state": "active: hourly rounds; MeteoAlarm's Portugal feed: only four yellow coastal warnings in force since 21:00 UTC on 11 Nov",
- "last_wake": "2026-11-11T22:23:00Z",
+ "last_wake": "2026-11-11T22:25:00Z",
  "done": [
   "session key made (record sha256:3d1c2c32d113bd99, encryption sha256:f9bdf85cc46df676), public half in data/keys.json",
   "sources/index.md and sources/sources.json: 46 bodies (official, transport, reference, press, platforms), each with who, what we take, hosts, the licence status and how often the timeline and our data cite it; made by tools/source-index.mjs from sources/registry.json; 86 more hosts listed as not yet registered",
@@ -37,7 +37,8 @@
   "20:25 UTC round: the feed changed (diffs/2026/11/11/202457.json): IPMA's three messages sent 11 Nov 19:17 UTC end the yellow rain warnings of Vila Real, Bragança and Guarda at 19:18 (they ran to 21:00); 14 of 209 in force (10 yellow, 4 orange, none red); Lisboa: orange coastal to 21:00, then yellow coastal to 03:00 Thursday",
   "20:35 UTC, CORRECTION at the conductor's note: every commit of this agent up to 5190b87b (33 found in the history this clone holds) carries a Co-Authored-By trailer that names the model the agent runs on, which CLAUDE.md forbids in pushed content. History is not rewritten; from this commit on the trailer names no model",
   "21:24 UTC round: feed read (the same bytes as 20:24); the orange coastal warnings passed their expiry at 21:00: 4 of 209 in force, all yellow (Lisboa: yellow coastal to 03:00 Thursday); no orange, no red",
-  "22:23 UTC: wired incident.models@'s second reader (Dinis ~22:00, BRIEF.md: collectors through OpenRouter, open-weight models): tools/source-meteoalarm-models.mjs sends each new CAP message's fields and IPMA's public text to two open-weight models (and one commercial, for comparison) and compares their extraction with this desk's parser; the parser is the fact, the models' answer evidence. First run: 5 messages, 5 of 5 agree on every field, 0.00199 USD (the delegation share). Record: sources/meteoalarm/data/portugal/models-check.json; calls, text-free: agents/sources/calls/"
+  "22:23 UTC: wired incident.models@'s second reader (Dinis ~22:00, BRIEF.md: collectors through OpenRouter, open-weight models): tools/source-meteoalarm-models.mjs sends each new CAP message's fields and IPMA's public text to two open-weight models (and one commercial, for comparison) and compares their extraction with this desk's parser; the parser is the fact, the models' answer evidence. First run: 5 messages, 5 of 5 agree on every field, 0.00199 USD (the delegation share). Record: sources/meteoalarm/data/portugal/models-check.json; calls, text-free: agents/sources/calls/",
+  "22:25 UTC round: feed read (the same bytes as 20:24; 4 yellow coastal warnings in force to 03:00 Thursday, nothing orange or red); the second reader checked 10 more messages: 15 of 15 agree with the parser on every field so far (0.005755 USD in all, the delegation share)"
  ],
  "next": [
   "MeteoAlarm: Spain's feed beside Portugal's",
@@ -65,9 +66,9 @@
   }
  ],
  "reads": {
-  "meteoalarm_portugal": 25,
+  "meteoalarm_portugal": 26,
   "note": "every read is in sources/meteoalarm/data/portugal/reads.json"
  },
- "updated": "2026-11-11T22:23:00Z",
+ "updated": "2026-11-11T22:25:00Z",
  "by": "incident.sources@web-summit.dinis"
 }
