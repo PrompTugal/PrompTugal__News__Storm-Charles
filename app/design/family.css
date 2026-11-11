@@ -78,3 +78,14 @@ footer.agent .ptn-foot .wm-dark { display: none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme]) footer.agent .wm-light, :root[data-theme="auto"] footer.agent .wm-light { display: none; } :root:not([data-theme]) footer.agent .wm-dark, :root[data-theme="auto"] footer.agent .wm-dark { display: block; } }
 
 @media print { aside.ptn { display: none; } header.top .wordmark { width: 140px; } }
+
+/* Round 56 (incident.designer@, sixth session): the phone masthead in two rows, not three. Row 1: the wordmark, the site's name, "Updated";
+   row 2: the menu (it scrolls) with "New here?" and Panel at its right end. Was 102 px at 390 with a row for two chips alone (design/round-56.md). */
+@media (max-width: 520px) {
+  header.top .wrap { column-gap: 8px; }
+  header.top nav.sites { order: 2; flex: 1 1 120px; width: auto; }
+  header.top a.ver, header.top #panel-btn { order: 3; margin-left: 0; }
+  header.top nav.top { order: 4; }   /* a section's own menu stays under the site's menu */
+}
+@media (max-width: 340px) { header.top nav.sites { order: 4; flex-basis: 100%; } header.top nav.top { order: 5; } header.top #panel-btn { margin-left: auto; } }
+@media (max-width: 400px) { header.top .wordmark { width: 124px; } header.top a.brand { font-size: 16px; padding-left: 8px; } }
