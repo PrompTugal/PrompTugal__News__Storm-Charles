@@ -1,41 +1,39 @@
 {
   "agent": "incident.transport@web-summit.dinis",
   "by": "incident.transport@web-summit.dinis",
-  "updated": "2026-11-11T12:24:14Z",
+  "updated": "2026-11-11T22:53:27Z",
   "role": "transport: /transport/, a whole section reading each operator's own data into our JSON and drawing it on our pages; links only as citations (Dinis, 11 Nov ~10:25, ~11:55, ~11:56)",
-  "state": "active: second session; Metro de Lisboa timetable (GTFS), STCP Porto buses and Fertagus's own log added; hourly round at :41",
-  "last_wake": "2026-11-11T12:24:14Z",
+  "state": "active: sixth session from 22:50; hourly round at :41 (OpenSky paused pending Dinis; live counts at LPPT and LPMA from adsb.lol via incident.flights@ from 23:41; the open-weight gloss in the round)",
+  "last_wake": "2026-11-11T22:53:27Z",
   "session": {
-    "id": "session_018yvwtQ34NMWTX5qSMUCC9j",
-    "started_at": "2026-11-11T12:09:00Z",
+    "id": "session_018yvwtQM75D7SpofefudHFB",
+    "started_at": "2026-11-11T22:50:00Z",
     "started_by": "incident.conductor@web-summit.dinis",
     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
     "on_whose_word": "Dinis Cruz",
-    "took_over_from": "session_018yvwtPXEVykHHGmwcj9W4P (the first session, 10:30 to 12:10 UTC; its key is marked handed over)",
+    "took_over_from": "session_018yvwtQ9zahLJ3zABzMxiY7 (the fifth session, 19:05 to 22:50 UTC; its key is marked handed over)",
     "wake": "hourly at :41"
   },
-  "key": "sha256:ba2c25bc55222bea (encryption), sha256:33b3e0fa7b8f3d2b (signing); a session key, public half in data/keys.json (incident-transport-dinis-2)",
+  "key": "sha256:7e7af8ab6a2cf2ec (encryption), sha256:c84ff7509c31c05d (signing); a session key, public half in data/keys.json (incident-transport-dinis-6)",
   "sources_live": [
-    "OpenSky Network: airline departures at LIS, OPO, FAO, FNC (counts only) -> flights.json",
-    "Carris Metropolitana open API: alerts and buses running now -> buses.json, services.json",
-    "STCP (Porto) real-time positions, dados.gov.pt CC0: buses running now -> buses.json",
-    "Transtejo Soflusa: its notices (WordPress API) -> ferries.json",
-    "Metro do Porto news pages; MTS (WordPress API) -> metro.json",
-    "Fertagus: its own timed public-information log -> trains.json",
-    "Metro de Lisboa timetable (GTFS, dados.gov.pt, CC BY): trips per hour per line -> metro-schedule.json"
+    "ANA's newsroom: cancellations per airport (numbers only) -> flights.json",
+    "adsb.lol via incident.flights@ (ODbL): airline aircraft near LPPT and LPMA now -> flights.json (from 23:41)",
+    "Carris Metropolitana open API; STCP (CC0) -> buses.json, services.json",
+    "Transtejo Soflusa notices -> ferries.json",
+    "Metro do Porto; MTS -> metro.json",
+    "Fertagus's own log; CP notice titles and times -> trains.json",
+    "Lusoponte notices -> bridges.json",
+    "Metro de Lisboa timetable (GTFS, CC BY) -> metro-schedule.json"
   ],
   "blocked": [
-    "Metro de Lisboa's site and line status: terms forbid republishing without written consent; API needs a key (with Dinis)",
-    "ANA airport boards: bot check, not got round (with Dinis)",
-    "OpenSky: account and full terms (with Dinis)",
-    "Rede Expressos: behind Cloudflare, not got round (with Dinis)",
-    "CP: no published feed found; its site uses an app's internal key, not used"
+    "OpenSky: paused 22:26 pending a written licence (Dinis); counts to 21:42 kept, marked (transport/opensky-paused.json)",
+    "Metro de Lisboa, Carris (city), IP: terms forbid republishing without written consent; link only (with Dinis)",
+    "ANA airport boards: bot check (with Dinis)",
+    "Rede Expressos: Cloudflare (with Dinis)"
   ],
   "next": [
-    "Carris (Lisbon buses and trams): open data first",
-    "Lusoponte (retry)",
-    "IP (roads, bridges)",
-    "FlixBus",
+    "Hourly rounds at :41",
+    "Thursday 12/11: watch CP, Fertagus, TTSL, Lusoponte for a statement (none yet)",
     "Tomorrow: the same hour today against yesterday, from our own series"
   ],
   "data": "incidents/2026-11-10-storm-charles/data/transport/ (README.md); sources and terms: transport/sources.md; handover: transport/HANDOVER.md",
