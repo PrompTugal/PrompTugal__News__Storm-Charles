@@ -1,10 +1,10 @@
 {
  "about": "Runs of the deploy workflow (.github/workflows/deploy.yml) on this day (UTC, by the time GitHub queued them), oldest first, as GitHub's Actions API gave them. version: v<series>.<run number>, CI's own number. agent, what: from the commit the run built (the Agent: trailer). pushed: the head commit's time; queued: the run created; started: a runner took the job; queue_s between the last two. steps: seconds per step. push_to_served_s: the run's own notice (it reads version.json on the live site until it serves this version). result: success, failure, cancelled (a newer push replaced it while it waited), in progress. tag: the version tag when it exists on that commit. Read by tools/ci-read.mjs.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T02:36:27Z",
+ "updated": "2026-11-11T02:54:11Z",
  "source": "https://api.github.com/repos/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs",
  "period": "2026-11-11T02",
- "count": 112,
+ "count": 154,
  "runs": [
   {
    "run": 176,
@@ -2465,6 +2465,24 @@
    "tag": null
   },
   {
+   "run": 229,
+   "id": 42945983994,
+   "attempt": 1,
+   "version": "v0.1.229",
+   "sha": "5afb3010b3989166816daa1b32801baba18913dd",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.archivist@web-summit.dinis",
+   "what": "evidence: more sources classified, a what-changed summary between captures, the captures made so far of the addresses th",
+   "pushed": "2026-11-11T02:25:53Z",
+   "queued": "2026-11-11T02:25:59Z",
+   "started": null,
+   "ended": "2026-11-11T02:26:12Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42945983994",
+   "tag": null
+  },
+  {
    "run": 230,
    "id": 42946005119,
    "attempt": 1,
@@ -4466,10 +4484,11 @@
    "pushed": "2026-11-11T02:35:35Z",
    "queued": "2026-11-11T02:35:43Z",
    "started": "2026-11-11T02:36:12Z",
-   "ended": null,
-   "result": "in progress",
+   "ended": "2026-11-11T02:36:32Z",
+   "result": "success",
    "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947092472",
    "queue_s": 29,
+   "run_s": 20,
    "steps": [
     {
      "step": "set up",
@@ -4512,7 +4531,8 @@
      "result": "success"
     }
    ],
-   "tag": null
+   "push_to_served_s": 54,
+   "tag": "v0.1.283"
   },
   {
    "run": 284,
@@ -4581,12 +4601,1873 @@
    "pushed": "2026-11-11T02:36:23Z",
    "queued": "2026-11-11T02:36:26Z",
    "started": "2026-11-11T02:36:36Z",
-   "ended": null,
-   "result": "queued",
+   "ended": "2026-11-11T02:36:56Z",
+   "result": "success",
    "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947175590",
    "queue_s": 10,
-   "steps": [],
+   "run_s": 20,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 31,
+   "tag": "v0.1.287"
+  },
+  {
+   "run": 288,
+   "id": 42947195593,
+   "attempt": 1,
+   "version": "v0.1.288",
+   "sha": "c63f8432d69f2b85513a87e10ea51e4beff38984",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.ipma@web-summit.dinis",
+   "what": "\"What we learned reading IPMA's API\" (the findings as help for IPMA); a draft notice to IPMA for Dinis to send (agents/i",
+   "pushed": "2026-11-11T02:36:30Z",
+   "queued": "2026-11-11T02:36:37Z",
+   "started": null,
+   "ended": "2026-11-11T02:36:45Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947195593",
    "tag": null
+  },
+  {
+   "run": 289,
+   "id": 42947206780,
+   "attempt": 1,
+   "version": "v0.1.289",
+   "sha": "feecc6cdfc27360d4efdbd5bc9149954fe84dd2f",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.conductor@web-summit.dinis",
+   "what": "the Diário da República, civil protection's and the maritime authority's own sites count as primary sources in the timel",
+   "pushed": "2026-11-11T02:36:40Z",
+   "queued": "2026-11-11T02:36:43Z",
+   "started": null,
+   "ended": "2026-11-11T02:36:52Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947206780",
+   "tag": null
+  },
+  {
+   "run": 290,
+   "id": 42947219519,
+   "attempt": 1,
+   "version": "v0.1.290",
+   "sha": "52f4d16fbdba62c6cc4f070d280550b9fa71a790",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.designer@web-summit.dinis",
+   "what": "design round 37: the masthead on a phone (99 px on the Weather page, was about 260): a one-line notice, no second bar fo",
+   "pushed": "2026-11-11T02:36:44Z",
+   "queued": "2026-11-11T02:36:50Z",
+   "started": "2026-11-11T02:37:01Z",
+   "ended": "2026-11-11T02:37:18Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947219519",
+   "queue_s": 11,
+   "run_s": 17,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 32,
+   "tag": "v0.1.290"
+  },
+  {
+   "run": 291,
+   "id": 42947237780,
+   "attempt": 1,
+   "version": "v0.1.291",
+   "sha": "1f5cb6293a1293df2959ad7e0079b8022e235182",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.ci@web-summit.dinis",
+   "what": "ci/patches/ for the conductor (generators timed; the signed release record, waiting for Dinis's yes), tools/ci-release-r",
+   "pushed": "2026-11-11T02:36:53Z",
+   "queued": "2026-11-11T02:37:00Z",
+   "started": null,
+   "ended": "2026-11-11T02:37:08Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947237780",
+   "tag": null
+  },
+  {
+   "run": 292,
+   "id": 42947250825,
+   "attempt": 1,
+   "version": "v0.1.292",
+   "sha": "c05996ea7753808ccd43344ea43f7610f18d89c5",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.studio@web-summit.dinis",
+   "what": "the cast, second drawing: the ten marks that looked alike at 22 px each get a filled shape in a different place; observa",
+   "pushed": "2026-11-11T02:36:59Z",
+   "queued": "2026-11-11T02:37:06Z",
+   "started": null,
+   "ended": "2026-11-11T02:37:11Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947250825",
+   "tag": null
+  },
+  {
+   "run": 293,
+   "id": 42947258245,
+   "attempt": 1,
+   "version": "v0.1.293",
+   "sha": "94fd6bc575b6f660a0d3134d110e8c195c948ba1",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.meteorology@web-summit.dinis",
+   "what": "this session's public key in data/keys.json; the meteorology generator in the build's list",
+   "pushed": "2026-11-11T02:37:07Z",
+   "queued": "2026-11-11T02:37:10Z",
+   "started": "2026-11-11T02:37:23Z",
+   "ended": "2026-11-11T02:37:46Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947258245",
+   "queue_s": 13,
+   "run_s": 23,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 5,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 36,
+   "tag": "v0.1.293"
+  },
+  {
+   "run": 294,
+   "id": 42947273781,
+   "attempt": 1,
+   "version": "v0.1.294",
+   "sha": "2f45e6282765e65d81f68eb7187d562a9e8fc48f",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.entities@web-summit.dinis",
+   "what": "the linker in about 230 ms (was about 620): one scan per page, the names as one trie, pages handled as bytes, only the p",
+   "pushed": "2026-11-11T02:37:11Z",
+   "queued": "2026-11-11T02:37:18Z",
+   "started": null,
+   "ended": "2026-11-11T02:37:25Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947273781",
+   "tag": null
+  },
+  {
+   "run": 295,
+   "id": 42947286527,
+   "attempt": 1,
+   "version": "v0.1.295",
+   "sha": "61045f35c5efff35e49f52ed66b993b0937695ba",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.labs@web-summit.dinis",
+   "what": "round 4: Tuesday rebuilt from what the files still hold; shading on one scale per unit (for incident.weather@ to lift)",
+   "pushed": "2026-11-11T02:37:21Z",
+   "queued": "2026-11-11T02:37:24Z",
+   "started": null,
+   "ended": "2026-11-11T02:37:37Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947286527",
+   "tag": null
+  },
+  {
+   "run": 296,
+   "id": 42947308113,
+   "attempt": 1,
+   "version": "v0.1.296",
+   "sha": "b38730cc9cea4c0b3b024a3493d00833879e3d20",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.designer@web-summit.dinis",
+   "what": "the cast's rules once in site.css (each inlined mark's own style block stripped by the build); marks at 22 x 22 for the ",
+   "pushed": "2026-11-11T02:37:29Z",
+   "queued": "2026-11-11T02:37:36Z",
+   "started": "2026-11-11T02:37:51Z",
+   "ended": "2026-11-11T02:38:09Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947308113",
+   "queue_s": 15,
+   "run_s": 18,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 38,
+   "tag": "v0.1.296"
+  },
+  {
+   "run": 297,
+   "id": 42947329586,
+   "attempt": 1,
+   "version": "v0.1.297",
+   "sha": "6390074f132a4ec90046988e30b2133344202795",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.studio@web-summit.dinis",
+   "what": "\"Two faces\": the Weather face reads twelve files now (IPMA's communiqué added), counted 02:38 UTC",
+   "pushed": "2026-11-11T02:37:40Z",
+   "queued": "2026-11-11T02:37:47Z",
+   "started": null,
+   "ended": "2026-11-11T02:37:53Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947329586",
+   "tag": null
+  },
+  {
+   "run": 298,
+   "id": 42947336458,
+   "attempt": 1,
+   "version": "v0.1.298",
+   "sha": "444257a12f29b1b827c0bef38c14fc04af6301fd",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.conductor@web-summit.dinis",
+   "what": "the build prints each generator's time (incident.ci@'s patch)",
+   "pushed": "2026-11-11T02:37:48Z",
+   "queued": "2026-11-11T02:37:51Z",
+   "started": null,
+   "ended": "2026-11-11T02:38:00Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947336458",
+   "tag": null
+  },
+  {
+   "run": 299,
+   "id": 42947350818,
+   "attempt": 1,
+   "version": "v0.1.299",
+   "sha": "e1f293b4aa40aeed10c9eb626ca8287661385f7a",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.weather@web-summit.dinis",
+   "what": "the link to weather/about.md in a form the root page's re-basing keeps",
+   "pushed": "2026-11-11T02:37:52Z",
+   "queued": "2026-11-11T02:37:59Z",
+   "started": null,
+   "ended": "2026-11-11T02:38:05Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947350818",
+   "tag": null
+  },
+  {
+   "run": 300,
+   "id": 42947360456,
+   "attempt": 1,
+   "version": "v0.1.300",
+   "sha": "5bb2c2bbaa8c56af365a6aa75b525c4f68be7f93",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.media@web-summit.dinis",
+   "what": "an outlet the sweep met for the first time gets its entry and page (Diário de Notícias da Madeira); MeteoAlarm's feed is",
+   "pushed": "2026-11-11T02:38:01Z",
+   "queued": "2026-11-11T02:38:04Z",
+   "started": null,
+   "ended": "2026-11-11T02:38:08Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947360456",
+   "tag": null
+  },
+  {
+   "run": 301,
+   "id": 42947366125,
+   "attempt": 1,
+   "version": "v0.1.301",
+   "sha": "39bae7b7ab0547d2d99bec230b0cad81015f3097",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.entities@web-summit.dinis",
+   "what": "the linker's time on each build is in entities/mentions.json (ms)",
+   "pushed": "2026-11-11T02:38:04Z",
+   "queued": "2026-11-11T02:38:07Z",
+   "started": "2026-11-11T02:38:14Z",
+   "ended": "2026-11-11T02:38:38Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947366125",
+   "queue_s": 7,
+   "run_s": 24,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 31,
+   "tag": "v0.1.301"
+  },
+  {
+   "run": 302,
+   "id": 42947372733,
+   "attempt": 1,
+   "version": "v0.1.302",
+   "sha": "db346896ea1828e8d6188e1f8783979e3d1ceade",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.designer@web-summit.dinis",
+   "what": "the menu: Commits and Repository under Team (incident.ci@'s pages); the Repo chip goes to our map of the repository firs",
+   "pushed": "2026-11-11T02:38:07Z",
+   "queued": "2026-11-11T02:38:10Z",
+   "started": "2026-11-11T02:38:42Z",
+   "ended": "2026-11-11T02:39:01Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947372733",
+   "queue_s": 32,
+   "run_s": 19,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 52,
+   "tag": "v0.1.302"
+  },
+  {
+   "run": 303,
+   "id": 42947436995,
+   "attempt": 1,
+   "version": "v0.1.303",
+   "sha": "d0aa8fc5f652f4ce59744a0fa20f9541da8017ab",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.designer@web-summit.dinis",
+   "what": "the root page resolves every relative address of weather/index.md from weather/ (a sibling link such as about.md no long",
+   "pushed": "2026-11-11T02:38:37Z",
+   "queued": "2026-11-11T02:38:45Z",
+   "started": "2026-11-11T02:39:06Z",
+   "ended": "2026-11-11T02:39:24Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947436995",
+   "queue_s": 21,
+   "run_s": 18,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 45,
+   "tag": "v0.1.303"
+  },
+  {
+   "run": 304,
+   "id": 42947480384,
+   "attempt": 1,
+   "version": "v0.1.304",
+   "sha": "328011634bf05d5940c384742a8977365ea5cd69",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.conductor@web-summit.dinis",
+   "what": "Madeira airport observed: gusts to 98 km/h at 02:30 (METAR LPMA); airport-madeira.json synced (METARs, TAF, hourly)",
+   "pushed": "2026-11-11T02:39:02Z",
+   "queued": "2026-11-11T02:39:10Z",
+   "started": null,
+   "ended": "2026-11-11T02:39:16Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947480384",
+   "tag": null
+  },
+  {
+   "run": 305,
+   "id": 42947489978,
+   "attempt": 1,
+   "version": "v0.1.305",
+   "sha": "4de60d0554c3ab6ead25b19f745621932e01b661",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.entities@web-summit.dinis",
+   "what": "tools/entities-check.mjs (every app/lens script and entities tool must parse, the nodes be current, before a release); a",
+   "pushed": "2026-11-11T02:39:12Z",
+   "queued": "2026-11-11T02:39:15Z",
+   "started": null,
+   "ended": "2026-11-11T02:39:24Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947489978",
+   "tag": null
+  },
+  {
+   "run": 306,
+   "id": 42947503764,
+   "attempt": 1,
+   "version": "v0.1.306",
+   "sha": "273a1d3192079dec37d12e4aa641dbdd7a497919",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.models@web-summit.dinis",
+   "what": "the models that reason by default, asked not to: two more rows (a fifteenth of the price; as good on extraction and tran",
+   "pushed": "2026-11-11T02:39:15Z",
+   "queued": "2026-11-11T02:39:23Z",
+   "started": "2026-11-11T02:39:29Z",
+   "ended": "2026-11-11T02:39:46Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947503764",
+   "queue_s": 6,
+   "run_s": 17,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 30,
+   "tag": "v0.1.306"
+  },
+  {
+   "run": 307,
+   "id": 42947572115,
+   "attempt": 1,
+   "version": "v0.1.307",
+   "sha": "85db3df8b32c7c48eabf3cce9df829e5bb79eec9",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.entities@web-summit.dinis",
+   "what": "the board's item pages are linked in the browser, not by the build (the conductor's decision: a third of the linker's by",
+   "pushed": "2026-11-11T02:39:54Z",
+   "queued": "2026-11-11T02:40:02Z",
+   "started": "2026-11-11T02:40:07Z",
+   "ended": "2026-11-11T02:40:25Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947572115",
+   "queue_s": 5,
+   "run_s": 18,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 29,
+   "tag": "v0.1.307"
+  },
+  {
+   "run": 308,
+   "id": 42947691993,
+   "attempt": 1,
+   "version": "v0.1.308",
+   "sha": "97f63e190559cdb71d425ba38ebd20546a329415",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.archivist@web-summit.dinis",
+   "what": "23 captures of mis-extracted addresses removed (my faulty pattern cut addresses short); the correct captures of the roun",
+   "pushed": "2026-11-11T02:40:57Z",
+   "queued": "2026-11-11T02:41:05Z",
+   "started": "2026-11-11T02:41:10Z",
+   "ended": "2026-11-11T02:41:33Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947691993",
+   "queue_s": 5,
+   "run_s": 23,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 34,
+   "tag": "v0.1.308"
+  },
+  {
+   "run": 309,
+   "id": 42947711855,
+   "attempt": 1,
+   "version": "v0.1.309",
+   "sha": "1ea6bf6d8833431b0f92a17f96b022ae2218ebb6",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.models@web-summit.dinis",
+   "what": "which model for which job here (models/which.json), the cost per 100 timeline rows, and on the label page the question o",
+   "pushed": "2026-11-11T02:41:06Z",
+   "queued": "2026-11-11T02:41:16Z",
+   "started": null,
+   "ended": "2026-11-11T02:41:28Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947711855",
+   "tag": null
+  },
+  {
+   "run": 310,
+   "id": 42947732675,
+   "attempt": 1,
+   "version": "v0.1.310",
+   "sha": "6e4131d947118a077835189e91194cc6e94da3e1",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.weather@web-summit.dinis",
+   "what": "Where: IPMA's highest level for the rest of today in each warning area (dots at label spots and a list), from sources/ip",
+   "pushed": "2026-11-11T02:41:20Z",
+   "queued": "2026-11-11T02:41:27Z",
+   "started": "2026-11-11T02:41:38Z",
+   "ended": "2026-11-11T02:42:00Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947732675",
+   "queue_s": 11,
+   "run_s": 22,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 37,
+   "tag": "v0.1.310"
+  },
+  {
+   "run": 311,
+   "id": 42947820408,
+   "attempt": 1,
+   "version": "v0.1.311",
+   "sha": "ebcb3b0831895158cb89c7252c7f58db0f5cedc0",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.ipma@web-summit.dinis",
+   "what": "warnings.json gains start_utc and end_utc beside start and end (our reading of IPMA's zoneless window, said so in window",
+   "pushed": "2026-11-11T02:42:08Z",
+   "queued": "2026-11-11T02:42:15Z",
+   "started": "2026-11-11T02:42:20Z",
+   "ended": "2026-11-11T02:42:44Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947820408",
+   "queue_s": 5,
+   "run_s": 24,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 33,
+   "tag": "v0.1.311"
+  },
+  {
+   "run": 312,
+   "id": 42947848984,
+   "attempt": 1,
+   "version": "v0.1.312",
+   "sha": "b93e923d60723a211db63cafadc0d02d38a8574a",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.studio@web-summit.dinis",
+   "what": "\"Two faces\": the rule is enforced by the gate now; fourteen files; the rule widened to any file this site serves",
+   "pushed": "2026-11-11T02:42:23Z",
+   "queued": "2026-11-11T02:42:31Z",
+   "started": null,
+   "ended": "2026-11-11T02:42:35Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947848984",
+   "tag": null
+  },
+  {
+   "run": 313,
+   "id": 42947855091,
+   "attempt": 1,
+   "version": "v0.1.313",
+   "sha": "6823e501c5faf9edbf8fcb9f2861c29476f535e6",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.conductor@web-summit.dinis",
+   "what": "the bridges: a sequence, not a conflict (60 km/h reported 14:48, lifted by 22:29; neither confirmed at Lusoponte); AEMET",
+   "pushed": "2026-11-11T02:42:31Z",
+   "queued": "2026-11-11T02:42:34Z",
+   "started": "2026-11-11T02:42:49Z",
+   "ended": "2026-11-11T02:43:12Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947855091",
+   "queue_s": 15,
+   "run_s": 23,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 38,
+   "tag": "v0.1.313"
+  },
+  {
+   "run": 314,
+   "id": 42947906441,
+   "attempt": 1,
+   "version": "v0.1.314",
+   "sha": "a36dee534363063f3f3fb79899b72365f30a5323",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.weather@web-summit.dinis",
+   "what": "a day switch on the hour strip (today, tomorrow); Madeira airport's observed gust, as one point, not a warning area",
+   "pushed": "2026-11-11T02:42:55Z",
+   "queued": "2026-11-11T02:43:02Z",
+   "started": "2026-11-11T02:43:17Z",
+   "ended": "2026-11-11T02:43:41Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947906441",
+   "queue_s": 15,
+   "run_s": 24,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 5,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 42,
+   "tag": "v0.1.314"
+  },
+  {
+   "run": 315,
+   "id": 42947956543,
+   "attempt": 1,
+   "version": "v0.1.315",
+   "sha": "693cde56d0997fe14ce66560589d8580e422a560",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.labs@web-summit.dinis",
+   "what": "day-bands: a decision with no stated end is drawn only on the day it starts (incident.weather@'s catch; the days view al",
+   "pushed": "2026-11-11T02:43:23Z",
+   "queued": "2026-11-11T02:43:31Z",
+   "started": null,
+   "ended": "2026-11-11T02:43:41Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947956543",
+   "tag": null
+  },
+  {
+   "run": 316,
+   "id": 42947974344,
+   "attempt": 1,
+   "version": "v0.1.316",
+   "sha": "3a7f61a91ab7bd54f0b2c717410fccbdb6d50a01",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.meteorology@web-summit.dinis",
+   "what": "meteorology round 2: edges confirmed against their pages, a drawing per node, one storm in six layers",
+   "pushed": "2026-11-11T02:43:33Z",
+   "queued": "2026-11-11T02:43:40Z",
+   "started": "2026-11-11T02:43:45Z",
+   "ended": "2026-11-11T02:44:04Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947974344",
+   "queue_s": 5,
+   "run_s": 19,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 29,
+   "tag": "v0.1.316"
+  },
+  {
+   "run": 317,
+   "id": 42947987324,
+   "attempt": 1,
+   "version": "v0.1.317",
+   "sha": "abf78fe888d9ea9b6644cbfd9d478c3152c622f3",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.weather@web-summit.dinis",
+   "what": "Where reads incident.ipma@'s start_utc / end_utc and says the hours' zone is a reading, unconfirmed for the Azores",
+   "pushed": "2026-11-11T02:43:43Z",
+   "queued": "2026-11-11T02:43:47Z",
+   "started": "2026-11-11T02:44:09Z",
+   "ended": "2026-11-11T02:44:32Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42947987324",
+   "queue_s": 22,
+   "run_s": 23,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 5,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 46,
+   "tag": "v0.1.317"
+  },
+  {
+   "run": 318,
+   "id": 42948170679,
+   "attempt": 1,
+   "version": "v0.1.318",
+   "sha": "c7541cadd937a32edec7b51d2b07cfb55e853c5c",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "what": "02:39 read: en and zh only extended the season chart's bars to 11 November; no claim changed; pt unchanged since 01:33",
+   "pushed": "2026-11-11T02:45:16Z",
+   "queued": "2026-11-11T02:45:25Z",
+   "started": "2026-11-11T02:45:30Z",
+   "ended": "2026-11-11T02:45:53Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948170679",
+   "queue_s": 5,
+   "run_s": 23,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 33,
+   "tag": "v0.1.318"
+  },
+  {
+   "run": 319,
+   "id": 42948450530,
+   "attempt": 1,
+   "version": "v0.1.319",
+   "sha": "35efbea0814317fe83933d59780bf50cbe5e8c11",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.meteorology@web-summit.dinis",
+   "what": "meteorology round 3: the sea side, ensembles, EUMETSAT's three licences, which model is behind which site",
+   "pushed": "2026-11-11T02:47:49Z",
+   "queued": "2026-11-11T02:47:56Z",
+   "started": "2026-11-11T02:48:00Z",
+   "ended": "2026-11-11T02:48:23Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948450530",
+   "queue_s": 4,
+   "run_s": 23,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 8,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 32,
+   "tag": "v0.1.319"
+  },
+  {
+   "run": 320,
+   "id": 42948456531,
+   "attempt": 1,
+   "version": "v0.1.320",
+   "sha": "873898293ed461f2c5231545b9155df0198887b9",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.librarian@web-summit.dinis",
+   "what": "the catalogue's commit record refreshed",
+   "pushed": "2026-11-11T02:47:56Z",
+   "queued": "2026-11-11T02:47:59Z",
+   "started": null,
+   "ended": "2026-11-11T02:48:15Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948456531",
+   "tag": null
+  },
+  {
+   "run": 321,
+   "id": 42948482847,
+   "attempt": 1,
+   "version": "v0.1.321",
+   "sha": "2fdb6e433da552d7c3aebef3fffdf96a4e979ee6",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.designer@web-summit.dinis",
+   "what": "long unbroken strings in prose wrap (they ran the CI pages, the studies page and the restructure wide on a phone); found",
+   "pushed": "2026-11-11T02:48:07Z",
+   "queued": "2026-11-11T02:48:14Z",
+   "started": "2026-11-11T02:48:28Z",
+   "ended": "2026-11-11T02:48:47Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948482847",
+   "queue_s": 14,
+   "run_s": 19,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 38,
+   "tag": "v0.1.321"
+  },
+  {
+   "run": 322,
+   "id": 42948613842,
+   "attempt": 1,
+   "version": "v0.1.322",
+   "sha": "ab8008ef978592bda87b062143704713401467a0",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.conductor@web-summit.dinis",
+   "what": "BRIEF: Dinis's direction of 02:50 (20 dollars a day for models, a Perplexity agent, an accountant, a reporter and a jour",
+   "pushed": "2026-11-11T02:49:18Z",
+   "queued": "2026-11-11T02:49:26Z",
+   "started": "2026-11-11T02:49:31Z",
+   "ended": "2026-11-11T02:49:52Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948613842",
+   "queue_s": 5,
+   "run_s": 21,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 31,
+   "tag": "v0.1.322"
+  },
+  {
+   "run": 323,
+   "id": 42948789766,
+   "attempt": 1,
+   "version": "v0.1.323",
+   "sha": "3ef45a7867861b16da1ecc120c1dd962c5b912a7",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.meteorology@web-summit.dinis",
+   "what": "charles.html: the six-model table to the conductor's conditions; IPMA's and Open-Meteo's own statements of their sources",
+   "pushed": "2026-11-11T02:50:54Z",
+   "queued": "2026-11-11T02:51:01Z",
+   "started": "2026-11-11T02:51:06Z",
+   "ended": "2026-11-11T02:51:27Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948789766",
+   "queue_s": 5,
+   "run_s": 21,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 31,
+   "tag": "v0.1.323"
+  },
+  {
+   "run": 324,
+   "id": 42948894482,
+   "attempt": 1,
+   "version": "v0.1.324",
+   "sha": "df4d45b00c498da431b35c08e673b32b86eebf99",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.archivist@web-summit.dinis",
+   "what": "Wayback: every address the timeline and decisions cite, captured (79 addresses; press kept privately); what could not be",
+   "pushed": "2026-11-11T02:51:52Z",
+   "queued": "2026-11-11T02:52:00Z",
+   "started": "2026-11-11T02:52:04Z",
+   "ended": "2026-11-11T02:52:21Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948894482",
+   "queue_s": 4,
+   "run_s": 17,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 27,
+   "tag": "v0.1.324"
+  },
+  {
+   "run": 325,
+   "id": 42948910506,
+   "attempt": 1,
+   "version": "v0.1.325",
+   "sha": "c885b63445a0dc31753aed2ee135169b8f76c1f4",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "what": "weather-sites: 39 site pages link to their lineage (meteorology/nodes); BBC's \"in association with MeteoGroup\" and Weath",
+   "pushed": "2026-11-11T02:52:00Z",
+   "queued": "2026-11-11T02:52:08Z",
+   "started": "2026-11-11T02:52:26Z",
+   "ended": "2026-11-11T02:52:46Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948910506",
+   "queue_s": 18,
+   "run_s": 20,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 4,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 1,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 44,
+   "tag": "v0.1.325"
+  },
+  {
+   "run": 326,
+   "id": 42948958677,
+   "attempt": 1,
+   "version": "v0.1.326",
+   "sha": "11cfd21f36bac457fe1795afcedf8ddf729edde7",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.conductor@web-summit.dinis",
+   "what": "timeline rows re-read against the archivist's corrected captures (23 wrong captures removed by it; rows now point only a",
+   "pushed": "2026-11-11T02:52:26Z",
+   "queued": "2026-11-11T02:52:35Z",
+   "started": null,
+   "ended": "2026-11-11T02:52:47Z",
+   "result": "cancelled",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948958677",
+   "tag": null
+  },
+  {
+   "run": 327,
+   "id": 42948979020,
+   "attempt": 1,
+   "version": "v0.1.327",
+   "sha": "371c7d82f70ed1e97ee7589eec10788f04e22998",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.entities@web-summit.dinis",
+   "what": "the meteorology graph's names link to its own node pages (a graph of its own, joined by links, not copied); overlapping ",
+   "pushed": "2026-11-11T02:52:37Z",
+   "queued": "2026-11-11T02:52:46Z",
+   "started": "2026-11-11T02:52:51Z",
+   "ended": "2026-11-11T02:53:09Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948979020",
+   "queue_s": 5,
+   "run_s": 18,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 6,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 30,
+   "tag": "v0.1.327"
+  },
+  {
+   "run": 328,
+   "id": 42948996926,
+   "attempt": 1,
+   "version": "v0.1.328",
+   "sha": "e9e2e6875256d01a80963a7a81ce73e6f99c6424",
+   "branch": "dev",
+   "event": "push",
+   "agent": "incident.graph@web-summit.dinis",
+   "what": "02:51 wake: the graph rebuilt on the 02:42 data, in four parts (the timeline's rows in storm-signals.json); the side pan",
+   "pushed": "2026-11-11T02:52:48Z",
+   "queued": "2026-11-11T02:52:56Z",
+   "started": "2026-11-11T02:53:14Z",
+   "ended": "2026-11-11T02:53:35Z",
+   "result": "success",
+   "url": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/actions/runs/42948996926",
+   "queue_s": 18,
+   "run_s": 21,
+   "steps": [
+    {
+     "step": "set up",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "checkout",
+     "s": 2,
+     "result": "success"
+    },
+    {
+     "step": "version",
+     "s": 0,
+     "result": "success"
+    },
+    {
+     "step": "gate",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "upload",
+     "s": 3,
+     "result": "success"
+    },
+    {
+     "step": "deploy",
+     "s": 7,
+     "result": "success"
+    },
+    {
+     "step": "tag",
+     "s": 1,
+     "result": "success"
+    },
+    {
+     "step": "measure",
+     "s": 0,
+     "result": "success"
+    }
+   ],
+   "push_to_served_s": 44,
+   "tag": "v0.1.328"
   }
  ]
 }

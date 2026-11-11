@@ -1,9 +1,9 @@
 diff --git a/admin/build/validate.mjs b/admin/build/validate.mjs
-index 330348c..eab7ab4 100644
+index dbea046..e7c10e9 100644
 --- a/admin/build/validate.mjs
 +++ b/admin/build/validate.mjs
-@@ -43,6 +43,12 @@ for (const rel of tracked) {
-     if (/(^|\/)(vault-key-[^\/]*|[^\/]*\.vault-key|access-token\.json|[^\/]*\.key)$/.test(rel)) fail(`${rel}: a key file never goes in git`)
+@@ -45,6 +45,12 @@ for (const rel of tracked) {
+     if (/^app\/weather\/.*\.m?js$/.test(rel) && /(fetch|XMLHttpRequest|EventSource|WebSocket|import)\s*\(?\s*['"`](https?:)?\/\//.test(s)) fail(`${rel}: the Weather face must read only this site's own files (an outside address is requested)`)
      if (rel.endsWith('.json')) { try { JSON.parse(s) } catch (e) { fail(`${rel}: invalid JSON (${e.message})`) } }
  }
 +// the signed release record (ci/signing.md, tools/ci-release-record.mjs): a record whose signature does not verify against its agent's
@@ -16,23 +16,24 @@ index 330348c..eab7ab4 100644
  else for (const need of ['admin/build/build.mjs', 'admin/build/validate.mjs', '.github/workflows/deploy.yml', 'admin/series.txt']) if (!tracked.includes(need)) fail(`${need} is not tracked by git (ignored?): CI would not have it`)
  
 diff --git a/admin/tools/release.sh b/admin/tools/release.sh
-index 1738f9a..d7e633a 100755
+index dfc0ab3..834c0c9 100755
 --- a/admin/tools/release.sh
 +++ b/admin/tools/release.sh
-@@ -12,6 +12,11 @@ for attempt in 1 2 3 4 5; do
+@@ -15,6 +15,12 @@ for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
    git fetch -q origin dev
    git rebase -q origin/dev || { echo "release.sh: conflict with dev; resolve by hand"; git rebase --abort; exit 1; }
    [ "$(git rev-list --count origin/dev..HEAD)" = 0 ] && { echo "release.sh: nothing to push"; exit 0; }
-+  # the signed release record (ci/signing.md): this agent's own key signs the digest of the tree it is about to push; the record
-+  # rides in its last commit. No key on this machine: the push goes unsigned and the gate says so. SIGN_RELEASE=0 skips it.
++  # the signed release record (ci/signing.md): this agent's own key signs the digest of the tree it is about to push, again after
++  # every rebase (the tree changed); the record rides in its last commit. No key on this machine: the push goes unsigned and the
++  # gate says so. SIGN_RELEASE=0 skips it.
 +  if [ "${SIGN_RELEASE:-1}" = 1 ] && AGENT="$AGENT" node tools/ci-release-record.mjs --write; then
 +    git add data/releases 2>/dev/null && { git diff --cached --quiet || git commit -q --amend --no-edit; }
 +  fi
-   node admin/build/validate.mjs
-   node tools/policy-check.mjs   # each commit's Agent: may change only its own paths (agents/policy.json); a local check, not a boundary
-   if git push -q origin HEAD:dev; then echo "pushed $(git rev-parse --short HEAD) by $AGENT; CI numbers, deploys and times it"; exit 0; fi
+   if [ "$gated" = 0 ]; then
+     node admin/build/validate.mjs
+     node tools/policy-check.mjs   # each commit's Agent: may change only its own paths (agents/policy.json); a local check, not a boundary
 diff --git a/agents/policy.json b/agents/policy.json
-index 20534f7..874f360 100644
+index a589cdd..35cc803 100644
 --- a/agents/policy.json
 +++ b/agents/policy.json
 @@ -12,7 +12,9 @@

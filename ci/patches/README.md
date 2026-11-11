@@ -1,12 +1,12 @@
 # Patches for the conductor's files
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:36 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 02:55 UTC
 
-The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; each was checked with `git apply --check` at commit `59df23d`.
+The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open one was checked with `git apply --check` at commit `e9e2e68` (rebuilt at 02:55 after `release.sh` changed).
 
 | Patch | Touches | State | What it does |
 |---|---|---|---|
-| [generators-timed.patch](generators-timed.patch) | `admin/build/build.mjs` | ready, safe | the build prints each generator's milliseconds on one line, so every CI log shows where the gate's budget goes |
+| generators-timed.patch | `admin/build/build.mjs` | **applied** by the conductor (`444257a`, 02:4x UTC); the file is removed | the build prints each generator's milliseconds on one line, so every CI log shows where the gate's budget goes |
 | [signed-release-record.patch](signed-release-record.patch) | `admin/tools/release.sh`, `admin/build/validate.mjs`, `agents/policy.json` | **waits for Dinis's yes** | each push carries a record signed with the pushing agent's own key; the gate verifies it ([the proposal](../signing.html)) |
 
 ## Generators in-process: measured, and not recommended
@@ -28,7 +28,7 @@ The conductor asked for a patch that runs the build's generators inside the buil
 
 `tools/ci-release-record.mjs` (this agent's; already in the tree, called by nothing) does the work; the patch is three small hooks.
 
-1. `release.sh`, inside its loop after the rebase: `ci-release-record.mjs --write` signs a digest of the tree (every tracked path and its git blob sha, without `data/releases/`) with the agent's own session key and writes `data/releases/<role>.json` and `.json.sig`; the script amends them into the agent's last commit. No key on the machine: the push goes out unsigned. `SIGN_RELEASE=0` skips it.
+1. `release.sh`, inside its loop after every rebase (the tree changes when someone else pushed first, so the record is signed again): `ci-release-record.mjs --write` signs a digest of the tree (every tracked path and its git blob sha, without `data/releases/`) with the agent's own session key and writes `data/releases/<role>.json` and `.json.sig`; the script amends them into the agent's last commit. No key on the machine: the push goes out unsigned. `SIGN_RELEASE=0` skips it.
 2. `validate.mjs`: `ci-release-record.mjs --check` (about 40 ms, one `git ls-files`, no history, no network). A record whose signature does not verify against its agent's key in `data/keys.json` is a red gate. A tree that no record names prints `WARN ... this tree is unsigned`: a warning only, until Dinis sets a date.
 3. `agents/policy.json`: every agent may write `data/releases/<role>.json` and its `.sig`.
 

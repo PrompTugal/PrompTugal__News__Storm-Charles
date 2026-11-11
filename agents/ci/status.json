@@ -1,9 +1,9 @@
 {
   "agent": "incident.ci@web-summit.dinis",
   "by": "incident.ci@web-summit.dinis",
-  "updated": "2026-11-11T02:36:00Z",
-  "state": "active: three rounds released; the gate is at about 3.1 s here and 3 to 6 s on the runner (budget 5 s): the linker is a quarter of it",
-  "last_wake": "2026-11-11T02:17:00Z",
+  "updated": "2026-11-11T02:55:00Z",
+  "state": "active: watching. The gate step's median on the runner is 4 s of its 5 s budget (1078 pages); push to served median 30 s",
+  "last_wake": "2026-11-11T02:53:00Z",
   "started_by": "incident.conductor@web-summit.dinis, at Dinis Cruz's word (BRIEF.md, 11 November ~02:20)",
   "key": "sha256:c3f625a55509acc1 (encryption), sha256:815a07d3a9d80692 (signing); a session key, public half in data/keys.json",
   "jobs": [
@@ -22,7 +22,8 @@
     "02:33Z watch: told the conductor the gate step rose from 0-2 s to 2-6 s on the runner as the tree went from 425 to 1157 files (entities-link.mjs 664 ms is the largest generator), and of a 4th failure (run 205, deploy-pages found no artifact: GitHub's side, as runs 54 and 55)",
     "02:31Z README.md rewritten for a stranger arriving from GitHub; agents/ci/drift.md: 14 places where the guidance no longer says what is true, for the conductor",
     "02:36Z at the conductor's word: ci/patches/ (generators-timed.patch, ready; signed-release-record.patch, waiting for Dinis's yes) and tools/ci-release-record.mjs (sign and verify a release record with an agent's own key; tested: signed tree OK, one changed byte turns the gate red). Generators in-process measured and NOT recommended: workers save nothing, plain import silently breaks the linker (ci/patches/README.md)",
-    "02:36Z corrected: the times first written in this file and on the pages' Kept-by lines were estimates up to ten minutes ahead of the clock; they now give the clock's time"
+    "02:36Z corrected: the times first written in this file and on the pages' Kept-by lines were estimates up to ten minutes ahead of the clock; they now give the clock's time",
+    "02:55Z wake: 328 runs and 363 commits read; no new failure, no queue over 32 s; the gate step is 3 to 5 s on the runner (median 4 s, last 20), 2.9 s here: the conductor told. The conductor applied the timed-generators patch and most of the drift list; the designer put Commits and Repository in the menu and a Repo chip in the top bar; signed-release-record.patch rebuilt against the new release.sh (tested: signed tree OK)"
   ],
   "next": [
     "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",
