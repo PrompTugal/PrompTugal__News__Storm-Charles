@@ -1,7 +1,7 @@
 {
  "about": "A body issues warnings through its warning service, or names storms. Every edge: the page that says so (`source`), when we read it (`read_utc`), whether the phrases we looked for were on it (`state`), a short quote. Stamped by tools/meteorology-read.mjs.",
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:30Z",
+ "updated": "2026-11-11T02:41Z",
  "verb": "issues",
  "inverse": "issued_by",
  "edges": [
@@ -13,9 +13,9 @@
     "avisos",
     "IPMA"
    ],
-   "read_utc": "2026-11-11T02:22Z",
+   "read_utc": "2026-11-11T02:40Z",
    "http": 200,
-   "sha256": "298b68cc9691556d1555cecf9713710413494bd3fc2fa0e347e87745ea83dbe3",
+   "sha256": "838b0563287654245dc476aa3a839ef677bc6fa5130cc4c942e55907e957f209",
    "state": "stated",
    "quote": "Enciclopédia ipma --> | Contacto | EN Tempo Previsão significativa Previsão 10 dias e horária Previsão descritiva Avisos Meteorológicos Cartas meteorológicas Perfis verticais Imagens satélite Imagens radar Descargas elétricas Estações Online Radiação Solar Previsão no mundo Previsão período"
   },
@@ -26,9 +26,9 @@
    "expect": [
     "warnings"
    ],
-   "read_utc": "2026-11-11T02:22Z",
+   "read_utc": "2026-11-11T02:40Z",
    "http": 200,
-   "sha256": "824b87ebf5ad6c3e5c15f5031f1853bf30e6fd588fae8f6ba4d0a4e06f8d0046",
+   "sha256": "0d78e983b17d0a360dcb703ea98e7a2a29bdb3a304e302a4733dd2f5152c72af",
    "state": "stated",
    "quote": "Meteorological warnings - State Meteorological Agency - AEMET - Spanish Government --> Aceptar cookies Informaci�n sobre uso de cookies Este sitio web utiliza cookies propias y de terceros"
   },
@@ -39,7 +39,7 @@
    "expect": [
     "Vigilance"
    ],
-   "read_utc": "2026-11-11T02:22Z",
+   "read_utc": "2026-11-11T02:40Z",
    "http": 200,
    "sha256": "250b9c087d6188c17d60920684f3e06f927f7c0c676c1782994a4ebf6f18bb60",
    "state": "stated",
@@ -52,7 +52,7 @@
    "expect": [
     "National Severe Weather Warning Service"
    ],
-   "read_utc": "2026-11-11T02:22Z",
+   "read_utc": "2026-11-11T02:40Z",
    "http": 200,
    "sha256": "0066d8934088e4fed056ef520e3f741c683d41145c957e5dfad50174da2c9e7f",
    "state": "stated",
@@ -66,7 +66,7 @@
     "National Hurricane Center",
     "NOAA"
    ],
-   "read_utc": "2026-11-11T02:22Z",
+   "read_utc": "2026-11-11T02:40Z",
    "http": 200,
    "sha256": "e9b730f39f16675377df19a39808c2611ff87edf8e4e1aa7ce93da251cd0a7aa",
    "state": "stated",
@@ -75,14 +75,17 @@
   {
    "from": "body-eumetnet",
    "to": "svc-meteoalarm",
-   "source": "https://www.eumetnet.eu/meteoalarm/",
+   "source": "https://www.eumetnet.eu/",
    "expect": [
-    "MeteoAlarm"
+    "MeteoAlarm Feeds",
+    "National Meteorological Services"
    ],
-   "read_utc": "2026-11-11T02:26Z",
-   "http": 404,
-   "sha256": "7db16f8eb5cb4a10f8a23485962091f4967bd9aeb0d86f6526ab0d833ca1cd77",
-   "state": "not read"
+   "read_utc": "2026-11-11T02:39Z",
+   "http": 200,
+   "sha256": "8688616e18509b71e1ff5c942e7f9c03f8d5fa5e8ae1b9af7b20b6e66aaa56ce",
+   "state": "stated",
+   "verb_note": "runs",
+   "quote": "Europe. Visit the MeteoAlarm Website for the latest weather-related awareness situation and further information. METEOALARM Feeds The MeteoAlarm Feeds provide a thorough summary of active multi-hazard early warnings, aggregated according to each NMS contributing to MeteoAlarm. Subscriptions"
   },
   {
    "from": "body-wmo",
@@ -91,7 +94,7 @@
    "expect": [
     "WMO"
    ],
-   "read_utc": "2026-11-11T02:22Z",
+   "read_utc": "2026-11-11T02:40Z",
    "http": 200,
    "sha256": "8ce2f68d624aead8b1f064a122ba6ce3c5a26c5da015a46bfcb62bb1c58968e5",
    "state": "stated",
@@ -100,26 +103,27 @@
   {
    "from": "body-ipma",
    "to": "svc-storm-naming-sw",
-   "source": "https://www.ipma.pt/pt/enciclopedia/otempo/nomes.tempestades/index.html",
+   "source": "https://www.aemet.es/en/conocermas/borrascas",
    "expect": [
-    "tempestades",
-    "AEMET"
+    "IPMA (Portugal)",
+    "Météo-France (Francia)"
    ],
-   "read_utc": "2026-11-11T02:22Z",
+   "read_utc": "2026-11-11T02:40Z",
    "http": 200,
-   "sha256": "9300c881b433c48ef7456a537a5c79f37b36b075ad1344a88cf57f0b55705923",
-   "state": "not found in this read",
-   "found": []
+   "sha256": "ab2507506d22695b737bbdb5a4d2f77f985a790701c0590e9d437df9f64f2980",
+   "state": "stated",
+   "note": "As AEMET states it: the tenth season of naming began on 1 September 2026, with Météo-France, IPMA, RMI, MeteoLux and Andorra's service.",
+   "quote": "oriental (Grecia, Chipre e Israel) El 1 de septiembre de 2026 Aemet , en colaboración con Météo-France (Francia), IPMA (Portugal), RMI (Bélgica), MeteoLux (Luxemburgo) y el Servei Meteorol gic Nacional (Andorra), da comienzo a la décima temporada de nombramiento de sistemas de bajas presiones"
   },
   {
    "from": "body-aemet",
    "to": "svc-storm-naming-sw",
    "source": "https://www.aemet.es/en/conocermas/borrascas",
    "expect": [
-    "IPMA",
-    "Météo-France"
+    "IPMA (Portugal)",
+    "nombramiento"
    ],
-   "read_utc": "2026-11-11T02:22Z",
+   "read_utc": "2026-11-11T02:40Z",
    "http": 200,
    "sha256": "ab2507506d22695b737bbdb5a4d2f77f985a790701c0590e9d437df9f64f2980",
    "state": "stated",

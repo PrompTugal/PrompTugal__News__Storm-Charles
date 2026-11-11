@@ -7,8 +7,9 @@ const { chromium } = (await import('module')).createRequire(import.meta.url)('pl
 const b = await chromium.launch(); let status = 0
 try {
     const p = await b.newPage({ userAgent: 'storm-charles.promptugal.news meteorology reader (public research; one request per address)', locale: 'en-GB' })
-    const r = await p.goto(url, { waitUntil: 'networkidle', timeout: 35000 }).catch(() => null)
+    const r = await p.goto(url, { waitUntil: 'domcontentloaded', timeout: 35000 }).catch(() => null)
     status = r ? r.status() : 0
+    await p.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { })   // a page that never goes quiet is read as it stands
     await p.waitForTimeout(1500)
     fs.writeFileSync(out, await p.evaluate(() => document.body ? document.body.innerText : ''))
 } finally { await b.close() }

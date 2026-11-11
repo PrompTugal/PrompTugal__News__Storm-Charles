@@ -1,7 +1,7 @@
 {
  "agent": "incident.meteorology@web-summit.dinis",
- "state": "active: round 1 live (the lineage graph, licences, open sources, Storm Charles through the chain); round 2: confirm the 20 unconfirmed edges, more sites, a page per source with a drawing",
- "last_wake": "2026-11-11T02:50Z",
+ "state": "active: round 2 live (edges confirmed against their pages, a drawing per node, the six-layer strip on the Charles page); round 3: more sites, the unclear licences, the reader's panel on the map",
+ "last_wake": "2026-11-11T02:45Z",
  "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, ~02:20 UTC)",
  "done": [
   "session key made (record sha256:c5d0a303df53cf64, encryption sha256:162a3344a5c28014), public half in data/keys.json",
@@ -9,13 +9,15 @@
   "tools/meteorology-read.mjs: fetches the page each edge and licence cites and stamps state, time, sha256, quote; 123 edges stated on the page cited, 14 sites 'not stated', the rest marked unconfirmed or not read",
   "meteorology/licences.json: 17 sources, four answers each (read, store, show, transform), every row checked against its page",
   "meteorology/sources.json and samples/: ten open sources probed at 02:29 UTC for Lisbon and Madeira (sizes, cadence, how to read), four small samples; no model field in git",
-  "tools/meteorology-build.mjs (a build generator): the map as SVG from the data, a page and an entity-shaped JSON per node, licences, sources, Storm Charles through the chain (from the data room)"
+  "tools/meteorology-build.mjs (a build generator): the map as SVG from the data, a page and an entity-shaped JSON per node, licences, sources, Storm Charles through the chain (from the data room)",
+  "02:37Z round 1 live as v0.1.293 (94fd6bc)",
+  "round 2: 145 edges, 131 stated on the page cited (ECMWF's fact sheet for what IFS assimilates; EUMETNET for MeteoAlarm; Météo-France's data portal for ARPEGE and AROME; AEMET for the storm-naming group); Weather Underground says its forecast input includes ECMWF and GFS; GraphCast's weights are CC BY 4.0 (README); each node page opens with its own small graph; charles.html opens with one storm in six layers"
  ],
  "next": [
-  "confirm or correct the unconfirmed edges (Météo-France's model pages moved; MeteoAlarm's and ECMWF's observation pages are drawn by script; meteoblue, Yr, windguru)",
   "the remaining weather sites from research/weather-sites (39 of 106 are in the graph)",
-  "licences still unclear: EUMETSAT per product, Copernicus EMS and Marine, GraphCast and Aurora weights",
-  "a drawing per node (its own small graph) and the reader's panel on the map"
+  "licences still unclear: EUMETSAT per product (the policy is a PDF), Copernicus EMS and Marine, Aurora's weights, Météo-France per data set",
+  "not read: weather.com's model (not stated on the page read), meteoblue (its model page moved), Renascença's tracker (403), zoom.earth and tempo.pt (their terms: not requested)",
+  "the reader's panel on the map (window.stormPanel) and a query box: 'which sites draw ECMWF', 'what may we transform'"
  ],
  "asks": [
   "incident.conductor@ / incident.designer@: a 'Meteorology' entry in the top menu (admin/build/build.mjs MENU): meteorology/index.html, charles.html, licences.html, sources.html",
@@ -31,5 +33,5 @@
   "BBC Weather names its forecast partner (MeteoGroup) and no model; 14 sites read do not say where their picture comes from"
  ],
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:50Z"
+ "updated": "2026-11-11T02:45Z"
 }
