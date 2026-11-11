@@ -14,7 +14,7 @@
 //   node tools/trace.mjs spawn  --parent <agent> --child <agent> --session <session id> [--n 9] [--why "hand-over at ~160k"]
 //   node tools/trace.mjs fetch  --agent <agent> --host <host> --status 200 [--bytes N] [--sha256 X] [--path /p]
 //   node tools/trace.mjs write  --agent <agent> --path <repo path> [--sha256 X]   (sha256 of the file, read here if omitted)
-//   node tools/trace.mjs units                  rewrite data/trace/units.json   (index: rewrite data/trace/index.json; every command does)
+//   node tools/trace.mjs units                  rewrite data/trace/units.json   (index --out <dir>: <dir>/data/trace/index.json; the build runs tools/trace-index.mjs)
 //   node tools/trace.mjs backfill [--since 2026-11-10]   rewrite the backfilled lines (live lines are kept), then units.json
 //
 // --agent/--from/--to/--parent take a full name (incident.conductor@web-summit.dinis) or a short role (conductor). The acting agent
@@ -357,7 +357,7 @@ function backfill() {
 }
 
 // ---------- index.json: every file, its lines, first and last time, sha256 (so a visualizer fetches only what it needs) ----------
-function writeIndex() {
+function writeIndex(outDir) {   // the build's generator (tools/trace-index.mjs --out _site) writes it; not tracked, so no agent's trace call touches it
   const files = [];
   for (const d of fs.readdirSync(DIR).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort())
     for (const f of fs.readdirSync(path.join(DIR, d)).filter(f => f.endsWith('.json')).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))) {
@@ -367,21 +367,23 @@ function writeIndex() {
     }
   const out = { about: 'The trace files in time order (data/trace/README.md). Each file is {elastic_feed, by, updated, flow, count, docs[]}: each doc one event in the fringe repository\'s swarm-flows schema. Replay: merge the docs of the files in this order by seq (an hour\'s live files, <HH>.<role>.json, interleave with its backfill file).',
     by: BY, updated: iso(Date.now()).replace(/\.\d+Z$/, 'Z'), units: 'data/trace/units.json', count: files.length, indexes: { events: INDEX_EVENTS, units: INDEX_UNITS }, lines: files.reduce((n, f) => n + f.lines, 0), files };
-  fs.writeFileSync(path.join(DIR, 'index.json'), JSON.stringify(out, null, 1) + '\n');
+  const f = path.join(outDir || path.join(ROOT, '_site'), 'data/trace/index.json'); fs.mkdirSync(path.dirname(f), { recursive: true });
+  fs.writeFileSync(f, JSON.stringify(out, null, 1) + '\n');
+  return out;
 }
 
 // The CLI runs only when this file is the command, never on import (tools/models-calls.mjs and others import emit()).
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
-  if (cmd === 'backfill') { backfill(); writeIndex(); }
+  if (cmd === 'backfill') backfill();
   else if (cmd === 'units') { const u = units(); console.log(`data/trace/units.json: ${u.count} units`); }
-  else if (cmd === 'index') writeIndex();
-  else { live(); writeIndex(); }
+  else if (cmd === 'index') writeIndex(path.resolve(arg('out', '_site')));   // never into the tree: data/trace/index.json is not tracked
+  else live();
 }
 
 // For other tools: emit({ at?, unit, altitude, phase, name, parent?, runner, environment?, key_fp?, model?, valid?, item?, note?, host?,
 // duration_ms?, cost_usd? }) appends one event to data/trace/<date>/<HH>.<runner's role>.json and returns that path. `runner` is the
-// agent the event belongs to (it owns the file); trace_id, span_id and seq are computed here. Call writeIndex() once after a batch.
+// agent the event belongs to (it owns the file); trace_id, span_id and seq are computed here. data/trace/index.json is made by the build (tools/trace-index.mjs), not by agents.
 export function emit(o) {
   if (!o || !o.unit || !o.phase || !o.runner) throw new Error('trace emit: unit, phase and runner are needed');
   const t = o.at ? Date.parse(o.at) : Date.now();

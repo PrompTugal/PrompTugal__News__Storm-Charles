@@ -1,4 +1,4 @@
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 22:24 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 23:10 UTC
 
 # The swarm's trace, as data
 
@@ -8,7 +8,7 @@ What the Storm Charles team did, from 10 November to now, as one event per line:
 
 | File | What it holds |
 |---|---|
-| [index.json](index.json) | every trace file in time order: path, lines, bytes, first and last time, sha256 |
+| [index.json](index.json) | every trace file in time order: path, lines, bytes, first and last time, sha256. Made by the build (`tools/trace-index.mjs`, from 23:10 UTC on 11 November) and served; not in git and written only into `_site/`, so no agent commits it |
 | [units.json](units.json) | every unit that appears: the person, the swarm (A4), each agent (A3) with its keys and sessions in order, the CI (A0), and agents in other accounts |
 | `<YYYY-MM-DD>/<HH>.json` | the backfilled events of one UTC hour, sorted by `seq`; past 240 KB an hour continues in `<HH>-2.json`, `-3`, ... |
 | `<YYYY-MM-DD>/<HH>.<role>.json` | the events an agent wrote live in that hour (one file per agent, so no two agents edit one file) |
