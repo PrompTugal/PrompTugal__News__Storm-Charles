@@ -126,6 +126,13 @@ const HAS_LENS_CSS = fs.existsSync(path.join(ROOT, 'app/lens/lens.css')), HAS_LE
 const HAS_CI_REPO = fs.existsSync(path.join(ROOT, 'ci/repository.md'))
 const HAS_WELCOME = fs.existsSync(path.join(ROOT, 'welcome/index.md')) || fs.existsSync(path.join(ROOT, 'welcome/README.md'))   // the page for newcomers (incident.envoy@'s words; design/landing.md)
 const HAS_NEWS = fs.existsSync(path.join(ROOT, 'news/README.md')) || fs.existsSync(path.join(ROOT, 'news/index.md'))
+// The page's title comes first (designer, round 59): the body's leading h1 and its "Kept by" line (under it, or just above it) are lifted above
+// a mounted app, unless the app carries its own h1. Used by every mount page and the live agents page.
+function withTitleFirst(app, body) {
+    let top = ''
+    if (!/<h1[\s>]/.test(app)) body = body.replace(/^(<main class="doc"><div class="wrap"><article>)(?:(<blockquote>(?:(?!<\/blockquote>)[\s\S])*?Kept by[\s\S]*?<\/blockquote>)\s*)?(<h1[\s>][\s\S]*?<\/h1>)\s*(<blockquote>[\s\S]*?<\/blockquote>)?/, (m, open, kept, h1, after) => { top = h1 + (kept || after || ''); return open + (kept && after ? after : '') })
+    return `<main class="doc"><div class="wrap">${top ? `<article class="mount-head">${top}</article>` : ''}${app}</div></main>` + body
+}
 function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
     const u = rel === '404.html' ? '/' : up(rel)   // the 404 page is served at any depth: its links are absolute
     return `<!doctype html>
@@ -242,13 +249,7 @@ ${html}
     }
     // any page can mount an app through the frame: front matter `mount:` (the element, one line of HTML, placed above the text, under the page's title) and
     // `head:` (its stylesheet and script tags, one line). The page then always has the site's nav, notice and footer
-    // The page's title comes first (designer, round 59): the body's leading h1 and its "Kept by" line (under it, or just above it) are lifted above the mount,
-    // unless the mount carries its own h1 (on a phone /guide/'s h1 sat at 9,822 px of 11,317, below its app)
-    const mountAbove = app => {
-        let top = ''
-        if (!/<h1[\s>]/.test(app)) body = body.replace(/^(<main class="doc"><div class="wrap"><article>)(?:(<blockquote>(?:(?!<\/blockquote>)[\s\S])*?Kept by[\s\S]*?<\/blockquote>)\s*)?(<h1[\s>][\s\S]*?<\/h1>)\s*(<blockquote>[\s\S]*?<\/blockquote>)?/, (m, open, kept, h1, after) => { top = h1 + (kept || after || ''); return open + (kept && after ? after : '') })
-        body = `<main class="doc"><div class="wrap">${top ? `<article class="mount-head">${top}</article>` : ''}${app}</div></main>` + body
-    }
+    const mountAbove = app => { body = withTitleFirst(app, body) }
     if (fm.mount) { mountAbove(fm.mount); extraHead += fm.head || '' }
     if (rel === 'agents/README.md') {   // the live agents page (incident.observability@'s app/agents/)
         mountAbove(`<div id="agents-live" data-base="../"></div>`)
@@ -664,6 +665,7 @@ pages.push({ rel: 'data-room/index.html', md: 'data-room/index.md', title: 'The 
         const [fm, md] = frontMatter(fs.readFileSync(wf, 'utf8'))
         // every relative address in weather/index.md is resolved from weather/ and written from the root: about.md, ./about.md, ../weather/about.md and ../datasets.html all come out right
         const toRoot = h => h.replace(/\b(href|src)="(?!https?:|#|\/|mailto:|data:)([^"]*)"/g, (m, a, v) => { const r = new URL(v, 'http://x/weather/'); return `${a}="${r.pathname.slice(1) || './'}${r.search}${r.hash}"` }).replace(/data-base="[^"]*"/g, 'data-base="./"')
+        // not withTitleFirst: the weather face draws its own masthead above IPMA's band, and the guide link must stay in the first screen (round 59)
         const body = `<main class="doc"><div class="wrap">${toRoot(fm.mount || '')}</div></main><main class="doc"><div class="wrap"><article>${toRoot(markdown(md))}</article></div></main>`
         write('index.html', page({ rel: 'index.html', title: fm.title || 'Storm Charles: the weather, now', desc: fm.summary || '', body, twin: 'weather/index.md', extraHead: toRoot(fm.head || '') }))
         pages.push({ rel: 'index.html', md: 'weather/index.md', title: fm.title || 'Storm Charles: the weather' })
