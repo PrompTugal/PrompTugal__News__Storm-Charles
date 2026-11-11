@@ -137,7 +137,14 @@
   function commLine(t) {
     var c = commNow(t); if (!c) return ''
     var m = String(c.title || '').match(/comunicado\s+n\S*\s*\d+/i)
-    return '<p class="wxc-comm">IPMA <a href="' + esc(ROOM.comm) + '"><span lang="pt">' + esc(m ? m[0] : 'comunicado') + '</span></a> <span>· valid to ' + when(c.valid_to_utc, t) + ' UTC</span>' + (ok(c.last_seen_utc) ? ' <span>· last seen in IPMA\'s feed ' + when(c.last_seen_utc, t) + '</span>' : '') + '</p>'
+    // IPMA's own words, never ours: the text without its link sentences; on the line, the first two clauses of the sentence that gives a figure in km/h
+    var ss = String(c.text_pt || '').split(/(?<=\.)\s+/).filter(function (x) { return x && !/https?:/.test(x) })
+    var k = ss.filter(function (x) { return /km\/h/.test(x) })[0], q = k ? k.split(',').slice(0, 2).join(',').replace(/[.\s]+$/, '') : ''
+    var fresh = ok(c.last_seen_utc) ? 'last seen in IPMA\'s feed ' + when(c.last_seen_utc, t) : ok(c.read_utc) ? 'read on IPMA\'s page ' + when(c.read_utc, t) : ''
+    var head = 'IPMA <span lang="pt">' + esc(m ? m[0] : 'comunicado') + '</span>' + (ok(c.issued_utc) ? ', ' + when(c.issued_utc, t) + ' UTC' : '') + ' <span>· valid to ' + when(c.valid_to_utc, t) + ' UTC' + (fresh ? ' · ' + fresh : '') + '</span>'
+    if (!ss.length) return '<p class="wxc-comm">' + head + ' <a href="' + esc(ROOM.comm) + '">record</a></p>'
+    return '<details class="wxc-comm wxc-cq"><summary>' + head + (q ? ' <span class="wxc-cqq">In IPMA\'s words: <q lang="pt">' + esc(q) + (q.length < k.replace(/[.\s]+$/, '').length ? '…' : '') + '</q></span>' : '') + '</summary>' +
+      '<blockquote lang="pt"><p>' + esc(ss.join(' ')) + '</p></blockquote><p class="prov">IPMA, communiqué issued ' + when(c.issued_utc, t) + ' UTC, quoted in full without its links. ' + prov('comm', 'IPMA communiqués', c.read_utc || D.comm.read_utc) + '</p></details>'
   }
   // one line under the band (designer@'s round 50, note 4; synthetic@'s run 3, point 5): Web Summit's latest decision, with its time,
   // and the way in for a newcomer (and, the conductor's 11:51 ask, incident.sherpa@'s /guide/ for someone in Lisbon: sourced only, no advice of ours). The decision is the newest dated fact or evidence of the organisers in the decision graph; its words are
@@ -199,7 +206,7 @@
     var D1 = T(day(t) + 'T00:00:00Z') + 864e5, today = ws.filter(function (w) { return T(w.end_utc) > t && T(w.start_utc) < D1 }), hi = null
     today.forEach(function (w) { if (!hi || RANK[w.level] > RANK[hi.level]) hi = w })
     // one sentence, composed from IPMA's data only: today's warnings at the highest level, with their hours and, for wind, IPMA's own gust figure
-    var gust = function (w) { var m = w.type === 'Vento' && String(w.text_pt || '').match(/(\d+)\s*km\/h/); return m ? ' (IPMA: gusts up to ' + m[1] + ' km/h)' : '' }
+    var gust = function (w) { var m = w.type === 'Vento' && String(w.text_pt || '').match(/(\d+)\s*km\/h/); return m ? ' (IPMA warning' + (ok(w.sent_utc) ? ', sent ' + when(w.sent_utc, t) : '') + ': gusts up to ' + m[1] + ' km/h)' : '' }
     var cur = live[0] || null, part = function (w) { return '<b>' + esc(EN[w.type] || w.type) + '</b> ' + (T(w.start_utc) <= t ? 'until ' + when(w.end_utc, t) : when(w.start_utc, t) + ' to ' + when(w.end_utc, t)) + gust(w) }
     var sentence = cur ? live.filter(function (w) { return w.level === cur.level }).map(part).join(' · ') : ''
     var also = cur ? live.filter(function (w) { return w.level !== cur.level }).map(function (w) { return '<span class="wxc-also-l">' + esc(w.level) + '</span> ' + part(w) }).join(' · ') : ''
@@ -212,8 +219,8 @@
     var where = Object.keys(reds).length ? '<p class="meta wxc-where">IPMA red warnings also in force or expected in: ' + esc(Object.keys(reds).sort().join(', ')) + '.</p>' : ''
     return ['<section class="wxc-hero wxc-hero-top" aria-labelledby="wxc-now">' +
       '<div class="wxc-top"><p class="kicker">' + esc(I.kicker || 'Storm Charles') + '</p><p class="wxc-clock"><time datetime="' + iso(t) + '">' + '<span class="wxc-dl">' + esc(longDay(t)) + '</span><span class="wxc-ds">' + esc(loc(t, { weekday: 'short', day: 'numeric', month: 'short' })) + '</span>, ' + hm(t) + ' UTC</time> <span class="wxc-dl">(Lisbon time)</span></p></div>' +
-      '<div class="wxc-level' + (cur ? ' w-' + esc(cur.level) : '') + '"><h2 class="wxc-h" id="wxc-now">' + (cur ? '<span class="wxc-word">' + esc(cur.level) + '</span> <span class="wxc-h1b">IPMA warning in force in Lisbon now</span>' : D.warn ? '<span class="wxc-h1b">No IPMA warning above green is in force in Lisbon now</span>' : '<span class="wxc-h1b">Storm Charles, Lisbon</span>') + '</h2>' + (sentence ? '<p class="wxc-say">' + sentence + '</p>' : '') + (also ? '<p class="wxc-also">Also in force: ' + also + '</p>' : '') + '</div>' + channelNote(t) + upLine +
-      changeLine(t) + commLine(t) + summitLine(t) + dayChips(t) + (wide ? nowTiles(t, 'line') : nowTiles(t)) + '</section>',
+      '<div class="wxc-lv2"><div class="wxc-level' + (cur ? ' w-' + esc(cur.level) : '') + '"><h2 class="wxc-h" id="wxc-now">' + (cur ? '<span class="wxc-word">' + esc(cur.level) + '</span> <span class="wxc-h1b">IPMA warning in force in Lisbon now</span>' : D.warn ? '<span class="wxc-h1b">No IPMA warning above green is in force in Lisbon now</span>' : '<span class="wxc-h1b">Storm Charles, Lisbon</span>') + '</h2>' + (sentence ? '<p class="wxc-say">' + sentence + '</p>' : '') + (also ? '<p class="wxc-also">Also in force: ' + also + '</p>' : '') + '</div>' + summitLine(t) + '</div>' + channelNote(t) + upLine +
+      changeLine(t) + commLine(t) + dayChips(t) + (wide ? nowTiles(t, 'line') : nowTiles(t)) + '</section>',
       '<section class="wxc-hero wxc-hero-rest" aria-label="Observed now, in force, closed and running, next">' + (wide ? nowTiles(t) : '') +
       '<div class="wxc-hero-cols"><div>' +
       (D.warn ? '<h2 class="wxc-sub">' + (live.length ? 'In force this hour' : 'No IPMA warning above green is in force in Lisbon this hour') + '</h2>' + (live.length ? '<ul class="wxc-ws">' + live.map(line).join('') + '</ul>' : '') + closedStrip(t) : '<p class="meta">The warnings file could not be read.</p>') +
