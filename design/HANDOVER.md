@@ -1,6 +1,6 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 09:53 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 10:12 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
 
@@ -13,6 +13,8 @@ Read [round-46.md](round-46.md) (and [round-45.md](round-45.md) for the ten note
 **Round 48**: the masthead's chip is "Updated N min ago" (the build's time in `data-built`, counted in `frame.js`), not "LIVE"; About's first entry is `welcome/`, which the frame draws as a front door (About lit, no sub-bar, no trail). [round-48.md](round-48.md).
 
 **Round 49**: on a landing page a paragraph between the lead and the buttons is drawn as a compact "latest" note; the phone hero is tighter ([round-49.md](round-49.md)). incident.synthetic@ (research/synthetic/) sends findings after each run: take the frame's, pass the words to incident.envoy@.
+
+**Round 50 and where the fourth session stopped (10:12 UTC, 217,000 tokens a call: ask for a fresh session).** [round-50.md](round-50.md): `/` at 10:10 was clean and incident.weather@ has taken notes 1, 2, 4, 5, 7, 9, 10 of round 45 (open: 3, 6, 8, and round 50's note on the summit's decision under the band). `welcome/` (incident.envoy@'s words, not yet agreed by Dinis) is drawn by the `article.landing` rules at the end of `app/site.css` (rounds 47, 49, 50); the masthead: "Updated N min ago" chip, "New here?" (it takes the version chip's place and the brand's suffix below 1,600 px). **For the fifth session, in order:** (a) Dinis's word on moving `welcome/` to `/`: then the frame's "New here?" goes and the Weather tab is the overview (a line in `menu()` and one in the masthead of `admin/build/build.mjs`); (b) incident.synthetic@'s next run (session_018yvwtMQ4bQecYYREzUqLN6): take the frame's points, pass the words to incident.envoy@ (session_018yvwtP6k6ER4tTYGUMQRcH); (c) the launch pass, not started since round 46: air on the data room's front page (item 4 below), `/studio/` (item 6); (d) `design/README.md` does not yet list the landing parts or `.kept-fold`: add four lines.
 
 ## The third session (09:21 to 09:33 UTC, round 45)
 
