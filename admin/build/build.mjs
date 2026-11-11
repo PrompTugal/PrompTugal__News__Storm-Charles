@@ -385,6 +385,47 @@ const thuStrip = (() => {
 ${R.join('\n')}
 </div></div></section>`
 })()
+// round 26: Madeira, where the storm has already been: the warnings it had (IPMA's CAP messages, with the time each was sent) over the rain
+// its stations measured, hour by hour, on one axis. The first place on the site where a warning can be checked against what happened.
+const madeira = (() => {
+    const md = J('data/weather/madeira.json'), cap = J('data/weather/cap.json'); if (!md?.stations?.length) return ''
+    const allH = md.stations.flatMap(s => (s.hourly || []).map(h => h.time_utc)).filter(ok).sort(), last = T(allH[allH.length - 1])
+    const B = Math.ceil((last + 1) / (12 * 36e5)) * 12 * 36e5, A = B - 864e5, N = 24, hrs = [...Array(N)].map((_, h) => A + h * 36e5), R = []
+    const pc = t => Math.max(0, Math.min(100, (T(t) - A) / (B - A) * 100))
+    const br = ({ a, b, cls = '', text, title = '', href = '' }) => { const l = pc(a), r = pc(b); if (r <= l) return ''; const tag = href ? `a href="${esc(href)}"` : 'div'; return `<${tag} class="wx-bar ${cls}${T(a) < A ? ' cut-l' : ''}${T(b) > B ? ' cut-r' : ''}" style="left:${l.toFixed(3)}%;width:${(r - l).toFixed(3)}%" title="${esc(title)}"><span>${text}</span></${href ? 'a' : 'div'}>` }
+    const rw = (label, sub, inner, cls = '') => R.push(`<div class="wx-row ${cls}"><div class="wx-lab"><b>${label}</b>${sub}</div><div class="wx-track">${inner}</div></div>`)
+    const hd = (label, sub) => R.push(`<div class="wx-row wx-group"><div class="wx-lab"><b>${label}</b></div><div class="wx-track"><span>${sub}</span></div></div>`)
+    // warned: Madeira's rain messages that touch the window and were not replaced by a later message
+    const LV = { Amarelo: 'yellow', Laranja: 'orange', Vermelho: 'red' }
+    const ms = (cap?.other_messages || []).filter(m => (m.areas || []).some(a => /^Madeira/.test(a)) && /Precipita/.test(m.event_pt || '') && ok(m.onset_utc) && ok(m.expires_utc))
+    const gone = new Set(ms.flatMap(m => (m.replaces || []).map(r => r.identifier)))
+    const live = ms.filter(m => !gone.has(m.identifier) && T(m.onset_utc) < B && T(m.expires_utc) > A).map(m => ({ ...m, level: LV[(m.event_pt.match(/Aviso (\w+)/) || [])[1]] || 'yellow' }))
+    const areas = [...new Set(live.flatMap(m => m.areas))].sort((p, q) => Math.max(...live.filter(m => m.areas.includes(q)).map(m => RANK[m.level])) - Math.max(...live.filter(m => m.areas.includes(p)).map(m => RANK[m.level])))
+    const capProv = prov('https://www.meteoalarm.org', "IPMA's messages via MeteoAlarm", cap?.read_utc)
+    if (areas.length) {
+        hd('Warned', `IPMA's rain warnings for Madeira's areas, each with the time IPMA sent it: facts. ${capProv}`)
+        for (const a of areas) rw(esc(a.replace(/^Madeira - /, '')), '<i>rain · <span lang="pt">Precipitação</span></i>', live.filter(m => m.areas.includes(a)).sort((p, q) => T(p.onset_utc) - T(q.onset_utc)).map(m => br({ a: m.onset_utc, b: m.expires_utc, cls: 'w-' + m.level, text: `<b>${m.level}</b> ${hm(m.onset_utc)} to ${hm(m.expires_utc)} · sent ${wd(m.sent_utc)} ${hm(m.sent_utc)}`, title: `${m.event_pt}, ${a}: ${rng(m.onset_utc, m.expires_utc)}; sent by IPMA ${wd(m.sent_utc)} ${hm(m.sent_utc)} UTC (${m.identifier})` })).join(''))
+    }
+    // observed: the wettest stations, rain in each hour as a column
+    const top = md.stations.filter(s => (s.hourly || []).some(h => T(h.time_utc) >= A)).slice(0, 6), vmax = Math.max(10, Math.ceil(Math.max(...top.flatMap(s => s.hourly.map(h => h.rain_mm || 0))) / 10) * 10)
+    const obsProv = prov(md.source, 'IPMA observations', md.read_utc)
+    hd('Observed', `Rain measured in each hour at Madeira's six wettest stations, mm (columns to scale, ${vmax} mm the full height): facts, measured, not forecast. Observations to ${wd(last)} ${hm(last)}. The feed labels each hour with one time and does not say whether that is the hour's start or its end. ${obsProv}`)
+    for (const s of top) {
+        const by = Object.fromEntries(s.hourly.map(h => [T(h.time_utc), h])), tot = s.hourly.filter(h => T(h.time_utc) >= A).reduce((n, h) => n + (h.rain_mm || 0), 0), m6 = s.max_6h_rain
+        rw(esc(s.name.replace(/^Madeira, /, '')), `<i>${m6?.mm != null ? `${esc(m6.mm)} mm in 6 h` : `${tot.toFixed(1)} mm`}</i>`, hrs.map(t => { const h = by[t]; return h && h.rain_mm != null ? `<div class="wx-cell wx-rain" title="${esc(`${s.name}, ${wd(t)} ${hm(t)}: ${h.rain_mm} mm in the hour${h.wind_mean_kmh != null ? `; mean wind ${h.wind_mean_kmh} km/h ${h.wind_dir || ''}` : ''}`)}"><b>${h.rain_mm >= 10 ? Math.round(h.rain_mm) : h.rain_mm}</b><i style="height:${Math.max(h.rain_mm > 0 ? 1 : 0, Math.round(h.rain_mm / vmax * 30))}px"></i></div>` : '<div class="wx-cell empty"></div>' }).join(''), 'wx-cells obs wx-rainrow')
+    }
+    // the comparison, in one sentence, from the data alone
+    const s0 = top[0], reds = live.filter(m => m.level === 'red'), r0 = reds.slice().sort((p, q) => T(p.onset_utc) - T(q.onset_utc))[0]
+    const inRed = t => reds.some(m => t >= T(m.onset_utc) && t < T(m.expires_utc)), tot0 = s0.hourly.filter(h => T(h.time_utc) >= A).reduce((n, h) => n + (h.rain_mm || 0), 0), red0 = s0.hourly.filter(h => inRed(T(h.time_utc))).reduce((n, h) => n + (h.rain_mm || 0), 0), wet = s0.hourly.slice().sort((p, q) => (q.rain_mm || 0) - (p.rain_mm || 0))[0]
+    const lead = r0 ? Math.round((T(r0.onset_utc) - T(r0.sent_utc)) / 6e4) : 0
+    const sentence = r0 ? `IPMA sent the <b>red rain warning</b>${r0.msg_type === 'Update' ? ' (this message updates an earlier one)' : ''} for ${esc([...new Set(reds.filter(m => m.sent_utc === r0.sent_utc).flatMap(m => m.areas))].map(a => a.replace(/^Madeira - /, '')).join(' and '))} on ${wd(r0.sent_utc)} at ${hm(r0.sent_utc)}, <b>${Math.floor(lead / 60)} h ${lead % 60} min before</b> it began (${hm(r0.onset_utc)} to ${hm(r0.expires_utc)}). ${esc(s0.name.replace(/^Madeira, /, ''))} then measured <b>${esc(s0.max_6h_rain?.mm ?? '')} mm in six hours</b> (hours labelled ${hm(s0.max_6h_rain.hours_labelled[0])} to ${hm(s0.max_6h_rain.hours_labelled[1])}), ${esc(wet.rain_mm)} mm in its wettest hour; of its ${tot0.toFixed(1)} mm in this window, <b>${red0.toFixed(1)} mm</b> fell in hours labelled inside a red window.` : ''
+    return `<section class="card wx-day wx-madeira" id="madeira"><div class="wx-head"><h2>Madeira: what was warned, and what fell</h2><p class="wx-lede">${sentence}</p><p class="meta">${wd(A)} ${hm(A)} to ${wd(B)} ${hm(B)} UTC (Madeira is on UTC in November). Warnings above, measurements below, on the same hours. The stations are not tied to warning areas in the data, so no station is placed in an area here; and this card states no threshold for a warning level, because IPMA's messages as we hold them carry none.</p></div>
+<div class="wx-scroll" tabindex="0" role="group" aria-label="Madeira, warned and observed, hour by hour: scroll sideways"><div class="wx-strip" data-d0="${A}" data-span="${B - A}">
+<div class="wx-row wx-hours"><div class="wx-lab"></div><div class="wx-track">${hrs.map(t => `<span>${hm(t).slice(0, 2)}</span>`).join('')}</div></div>
+${R.join('\n')}
+</div></div>
+<p class="meta wx-mfoot">All ${md.stations.length} stations, hourly: <a href="${base}data/weather/madeira.json">madeira.json</a>. The messages: <a href="${base}data/weather/cap.json">cap.json</a>. Next read ${ok(md.next_read_utc) ? hm(md.next_read_utc) + ' UTC' : 'not stated'}.</p></section>`
+})()
 const chart = (() => {
     const W = 960, H = 290, ml = 40, mr = 14, mt = 14, mb = 30, X0 = D0 - 12 * 36e5, X1 = D1 + 6 * 36e5, YM = 150
     const x = t => ml + (Math.max(X0, Math.min(X1, T(t))) - X0) / (X1 - X0) * (W - ml - mr), y = v => mt + (1 - v / YM) * (H - mt - mb), f = n => n.toFixed(1)
@@ -495,6 +536,7 @@ const front = `<section class="banner"><div class="wrap hero"><div class="hero-h
 ${lis.some(w => ok(w.sent_utc)) ? `<p class="wx-cap">The times IPMA sent each warning are read from IPMA's messages on <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes (last read ${hm(warn.read_utc)} UTC ${dm(warn.read_utc)}), not a live feed.</p>` : ''}</div></div></section>
 <div class="wrap">
 ${changed}
+${madeira}
 ${strip.replace('<!--lede-->', lede)}
 ${chart}
 ${thuStrip}
