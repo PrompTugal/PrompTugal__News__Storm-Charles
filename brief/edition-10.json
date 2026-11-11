@@ -1,0 +1,286 @@
+{
+  "about": "Edition 10 (after the storm) of storm-charles.promptugal.news's decision brief on Storm Charles: the words and judgements of this edition (the lead, what to watch, the authorities' decisions, sources compared). The figures (warnings, observations, flights, notices) are drawn by tools/brief-make.mjs from the incident's data files as they stood at the as-of time. Every item is labelled fact, evidence or hypothesis and carries its source and the time read. Not a warning service: IPMA issues the warnings and ANEPC the instructions.",
+  "by": "incident.brief@web-summit.dinis",
+  "updated": "2026-11-11T21:20:00Z",
+  "id": "SC-BRIEF-20261111-E10",
+  "edition": 10,
+  "as_of": "2026-11-11T21:01:00Z",
+  "next": "This is the after-the-storm edition. A further edition only if IPMA issues a new warning for Lisbon or the authorities publish their own final figures.",
+  "incident": "2026-11-10-storm-charles",
+  "lead": [
+    {
+      "label": "fact",
+      "text": "Storm Charles has passed Lisbon. Its last warning above yellow, the orange sea, ended at 21:00; yellow sea runs to 03:00 Thursday. Lisbon had red rain from 09:00 to 15:00, ended early (it ran to 18:00), and an orange wind ended early at 15:56; the red wind first issued for Wednesday was lowered at 07:16. At 20:00 the airport observed west 17 km/h and 996 hPa, rising.",
+      "src": [
+        {
+          "name": "IPMA's CAP messages via MeteoAlarm (read 21:00, timeline s-1111T2100)",
+          "url": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+          "read": "2026-11-11T21:00:00Z"
+        },
+        {
+          "name": "Lisbon airport METAR 20:00",
+          "url": "https://aviationweather.gov/api/data/metar?ids=LPPT&hours=30&format=json",
+          "read": "2026-11-11T20:23:08Z"
+        }
+      ]
+    },
+    {
+      "label": "fact",
+      "text": "What Lisbon got: about 110 mm of rain on Wednesday at Relógio (in the hours we hold), 74 mm of it in six hours to the hour labelled 14:00; the heaviest single hour 26.2 mm at Oeiras (13:00). The strongest gust at the airport was 74 km/h, at 14:00, below the 120 km/h of the orange warning and the 140 km/h of the red first issued.",
+      "src": [
+        {
+          "name": "IPMA station observations",
+          "url": "https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json",
+          "read": "2026-11-11T20:23:08Z"
+        },
+        {
+          "name": "Lisbon airport METAR",
+          "url": "https://aviationweather.gov/api/data/metar?ids=LPPT&hours=30&format=json",
+          "read": "2026-11-11T20:23:08Z"
+        }
+      ]
+    },
+    {
+      "label": "evidence",
+      "text": "Civil protection's 19:00 briefing, as the press relays it: 1,630 occurrences on the mainland since midnight, 781 of them floods, most in Greater Lisbon, the Setúbal Peninsula and the Algarve; one person assisted and four removed from their homes; \"much less serious than forecast\". About 400 flights were cancelled at Lisbon, Porto, Faro and Madeira (Lusa).",
+      "src": [
+        {
+          "name": "CNN Portugal relaying ANEPC; Lusa (timeline s-1111T2003, s-1111T1946)",
+          "url": "../incidents/2026-11-10-storm-charles/timeline.html#s-1111T2003",
+          "read": "2026-11-11T20:03:00Z"
+        }
+      ]
+    }
+  ],
+  "watch": [
+    {
+      "at": "21:00–03:00",
+      "label": "fact",
+      "text": "Lisbon: yellow sea (waves 4 to 5 m) to 03:00 Thursday; nothing above yellow.",
+      "src": "IPMA warnings"
+    },
+    {
+      "at": "Thu 00:00–12:00",
+      "label": "fact",
+      "text": "No IPMA warning for Lisbon above yellow. The airport forecast (17:00): showers at times, south-west gusts of about 50 km/h from 10:00 to 18:00.",
+      "src": "IPMA warnings; Lisbon TAF 17:00"
+    },
+    {
+      "at": "Thursday",
+      "label": "evidence",
+      "text": "Web Summit reported reopening for its last day, with many of Wednesday's sessions rescheduled and a press conference at 11:00 (the press, with Lusa); the organisers' own accounts have posted nothing since 10 November 17:36.",
+      "src": "Marketeer with Lusa; timeline s-1111T1703"
+    },
+    {
+      "at": "Thursday",
+      "label": "evidence",
+      "text": "The Interior Ministry expects normality to resume; the alert situation ends at 23:59 tonight.",
+      "src": "Lusa; timeline s-1111T1447"
+    },
+    {
+      "at": "Thursday",
+      "label": "fact",
+      "text": "Still interrupted when last read: CP's Lisbon trains between Campolide and Alcântara Terra (Carris routes 713 and 751 as CP's alternative), and the Beira Baixa line between Entroncamento and Abrantes after a landslip.",
+      "src": "CP's notice 19:40; timeline s-1111T2043"
+    }
+  ],
+  "signs": [
+    {
+      "label": "hypothesis",
+      "text": "Nothing in the data points to a second peak for Lisbon tonight (our meteorologist, high confidence); Thursday looks like showers and a south-west wind.",
+      "src": "incident.meteorology@, analysis 26 to 28"
+    }
+  ],
+  "decided": [
+    {
+      "label": "fact",
+      "who": "IPMA",
+      "what": "Lisbon's orange sea warning ended at 21:00 as set; yellow sea to 03:00. Its last message, at 19:17:31, ended yellow rain early in Guarda, Bragança and Vila Real.",
+      "when": "11 Nov 21:00",
+      "url": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+      "row": "s-1111T2100"
+    },
+    {
+      "label": "fact",
+      "who": "IPMA",
+      "what": "Lisbon's yellow rain ended at 18:00; the orange wind had ended early at 15:56; no red on the mainland since 15:56.",
+      "when": "11 Nov 15:55–18:00",
+      "url": "https://feeds.meteoalarm.org/api/v1/warnings/feeds-portugal",
+      "row": "s-1111T1803"
+    },
+    {
+      "label": "evidence",
+      "who": "Government (as reported)",
+      "what": "The Prime Minister: the moments of greatest difficulty are \"practically overcome\"; the alert situation ends at 23:59; normality expected Thursday.",
+      "when": "11 Nov 19:25 (press)",
+      "url": "../incidents/2026-11-10-storm-charles/timeline.html#s-1111T1935",
+      "row": "s-1111T1935"
+    },
+    {
+      "label": "evidence",
+      "who": "ANEPC (as reported)",
+      "what": "1,630 occurrences on the mainland since midnight, 781 floods; one person assisted, four removed from their homes; \"much less serious than forecast\".",
+      "when": "11 Nov 19:00 briefing",
+      "url": "../incidents/2026-11-10-storm-charles/timeline.html#s-1111T2003",
+      "row": "s-1111T2003"
+    },
+    {
+      "label": "fact",
+      "who": "Lusoponte",
+      "what": "Both Lisbon bridges back to normal: usual limits restored; motorcycles and high-sided vehicles may cross.",
+      "when": "11 Nov 17:30 (its own notice)",
+      "url": "../incidents/2026-11-10-storm-charles/timeline.html#s-1111T1844",
+      "row": "s-1111T1844"
+    },
+    {
+      "label": "fact",
+      "who": "Transtejo Soflusa",
+      "what": "Trafaria – Porto Brandão – Belém back to normal, vehicles and passengers.",
+      "when": "11 Nov (its own notice)",
+      "url": "../incidents/2026-11-10-storm-charles/timeline.html#s-1111T1907",
+      "row": "s-1111T1907"
+    },
+    {
+      "label": "fact",
+      "who": "CP",
+      "what": "Douro line running again; Beira Baixa interrupted between Entroncamento and Abrantes; Lisbon's Campolide – Alcântara Terra trains still suppressed.",
+      "when": "11 Nov 19:40 (its own notice)",
+      "url": "../incidents/2026-11-10-storm-charles/timeline.html#s-1111T2043",
+      "row": "s-1111T2043"
+    },
+    {
+      "label": "evidence",
+      "who": "Web Summit (as reported)",
+      "what": "Day 3 reopens on Thursday 12 November, \"the busiest Thursday ever\"; some of Wednesday's sessions move to Thursday. Reported by 24 Notícias and Público from the organisers' message to participants; not read at the organisers' own page.",
+      "when": "11 Nov, before 12:17 (press)",
+      "url": "../incidents/2026-11-10-storm-charles/timeline.html#s-1111T1305",
+      "row": "s-1111T1305"
+    },
+    {
+      "label": "fact",
+      "who": "Government of Portugal",
+      "what": "Alert situation for the whole mainland, Wednesday 00:00 to 23:59: schools and non-essential public services closed; outdoor events suspended.",
+      "when": "10 Nov 12:10",
+      "url": "https://portugal.gov.pt/",
+      "row": "s-1110T1210"
+    },
+    {
+      "label": "fact",
+      "who": "Web Summit",
+      "what": "Day 2 (Wednesday) will not take place, on the government's formal advice; Day 3 (Thursday) \"aims to proceed as planned\".",
+      "when": "10 Nov 19:09",
+      "url": "https://websummit.com/blog/web-summit/important-event-update-2026/",
+      "row": "s-1110T1909"
+    }
+  ],
+  "compare": [
+    {
+      "topic": "How serious it was",
+      "official": "IPMA (via Lusa, 19:34): the prevention measures matched the forecasts",
+      "models": "n/a",
+      "obs": "Rain heavy as warned; wind well below the levels warned",
+      "press": "ANEPC: \"much less serious than forecast\"; the PM: \"practically overcome\"",
+      "agree": "mostly agree",
+      "assessment": "The rain was as warned and the wind much weaker; both the warnings and the stand-down followed the observations.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "topic": "Madeira",
+      "official": "Lowered to yellow and green on IPMA's warnings page (12:24); earlier red rain to 06:00, orange wind to 12:00",
+      "models": "n/a",
+      "obs": "249.5 mm in six hours at Areeiro (01:00–06:00); airport wind dropped from 89 km/h gusts at 07:00 to 13 km/h at 08:00",
+      "press": "Regional president: 479 mm somewhere on the island; 205 occurrences, none serious",
+      "agree": "agree",
+      "assessment": "The worst has passed Madeira; the risk now is what the rain left (slopes, streams), which only the regional civil protection can state.",
+      "confidence": "HIGH"
+    }
+  ],
+  "gaps": [
+    {
+      "what": "ANEPC's own final occurrence count (the 1,630 is the press relaying its briefing)",
+      "who": "incident.researcher@",
+      "state": "not read at ANEPC's own page"
+    },
+    {
+      "what": "Sea and tide observed: a tide gauge or buoy for Lisbon and Cascais",
+      "who": "incident.datascience@",
+      "state": "none in our data"
+    },
+    {
+      "what": "Precedents and power cuts (E-REDES)",
+      "who": "incident.datascience@",
+      "state": "not yet in our data"
+    },
+    {
+      "what": "Web Summit's own word on Thursday",
+      "who": "incident.social@ (watching the organisers' accounts)",
+      "state": "reported by the press; the organisers' accounts silent since 10 Nov 17:36"
+    }
+  ],
+  "exposure": false,
+  "change": "After the storm. Lisbon's last warning above yellow, the orange sea, ended at 21:00 as IPMA set it; only yellow sea remains, to 03:00 Thursday. No red warning on the mainland since 15:56; IPMA's last message, at 19:17, ended yellow rain early in Guarda, Bragança and Vila Real. This edition sets what was forecast and warned beside what was observed, and what was decided beside how it ended.",
+  "ana": "About 400 flights cancelled at Lisbon, Porto, Faro and Madeira on Wednesday (Lusa, 19:30); at Lisbon, 288 had been cancelled in advance by 11:00 (the airports' operator's own figures).",
+  "ana_row": "s-1111T1946",
+  "ana_label": "evidence",
+  "after": [
+    {
+      "topic": "Rain, Lisbon",
+      "forecast": "Red, \"strong and persistent\", 09:00 to 18:00 (issued Tuesday, moved three hours earlier on Tuesday night); shortened at 12:33 to end at 15:00, then yellow to 18:00",
+      "observed": "Heavy from about 07:00 to 14:00: 74 mm in six hours at Relógio, the heaviest hour 26.2 mm at Oeiras (13:00); in the hour labelled 15:00, 0 to 1.2 mm",
+      "verdict": "The red warning sat on the heaviest rain of the storm; IPMA ended it as the rain eased."
+    },
+    {
+      "topic": "Wind, Lisbon",
+      "forecast": "Red for Wednesday 12:00 to 21:00, gusts to 140 km/h (Tuesday); lowered at 07:16 to orange 09:00 to 21:00, gusts to 120; shortened to 18:00 at 12:33; ended at 15:56",
+      "observed": "Highest gust at the airport 74 km/h at 14:00, as the centre passed; 50 km/h at 18:00 in the turn to west-north-west",
+      "verdict": "The wind came well below every level warned; IPMA lowered and then ended the warning as the observations came in."
+    },
+    {
+      "topic": "Track of the centre",
+      "forecast": "Communiqué no. 2: most likely between Sines and Cabo Carvoeiro, high uncertainty; ECMWF ensemble (11:57): 49% of forecasts south of Lisbon, 41% near, 10% north; our meteorologist: just north (09:22), possibly south (11:28), over or just south (12:24), just north (14:25)",
+      "observed": "The wind backed to east-north-east by noon, turned to south at 14:00 with a 2 °C rise, then to west by 16:30 with the pressure rising from 989 hPa",
+      "verdict": "The centre passed close to Lisbon, most likely just to the north; \"near\" in the ensemble's terms. Two centres (communiqué no. 3) weakened it."
+    },
+    {
+      "topic": "Timing",
+      "forecast": "Worst window 12:00 to 18:00 (the warnings' overlap); the ensemble's median crossing about 15:00",
+      "observed": "Rain heaviest 11:00 to 14:00; the strongest gust 14:00; the turn to west-north-west 16:30 to 17:00",
+      "verdict": "Earlier than the warning windows by one to three hours; the end came early too."
+    },
+    {
+      "topic": "Sea and tide",
+      "forecast": "Orange, waves 5 to 7 m, up to 13 m, 12:00 to 21:00; modelled high water about 15:10",
+      "observed": "No buoy or tide gauge in our data; ferries and the Algés seafront were restricted, the Trafaria crossing stopped vehicles",
+      "verdict": "We cannot set the sea against an observation of our own: a gap for the next storm."
+    },
+    {
+      "topic": "Madeira",
+      "forecast": "Red rain overnight to 06:00, orange wind to 12:00 (130 km/h in the mountains)",
+      "observed": "249.5 mm in six hours at Areeiro (01:00 to 06:00); the regional civil protection counted 325 occurrences to 18:40 (press)",
+      "verdict": "Madeira had the storm's heaviest rain, before the mainland; its warnings matched it."
+    },
+    {
+      "topic": "Who was under red",
+      "forecast": "4.93 million residents under red at noon (eight districts)",
+      "observed": "Lowered to four districts at 12:19, two at 15:00, one at 15:06, none at 15:56",
+      "verdict": "The red came off district by district through the afternoon, as the storm weakened."
+    }
+  ],
+  "after_src": "Warnings: IPMA's open data and CAP messages; observations: IPMA's stations and the airport's METAR; the ensemble: ECMWF via Open-Meteo (incident.datascience@); the track readings: incident.meteorology@'s analysis (sections 12 to 28). Editions 1 to 9 show each of them as they stood.",
+  "lessons": [
+    "IPMA's CAP messages led its open data by up to about two hours on Wednesday (12:18, 12:33, 15:55): a brief drawn from the open data alone would have been late each time.",
+    "The press repeated superseded warnings more than once (eight districts in red, Faro still red at 16:40, a red wind withdrawn at 07:16): read the warning at its source before comparing.",
+    "We hold no sea or tide observation; the next storm needs a tide gauge or buoy reading at its own source."
+  ],
+  "gaps_title": "What we still do not hold",
+  "gaps_intro": "After the storm: the authorities' own final figures, and the measurements we could not set the forecast against.",
+  "rain_hours": [
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15"
+  ]
+}
