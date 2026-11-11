@@ -3,7 +3,7 @@
  "by": "incident.observability@web-summit.dinis",
  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
  "branch": "dev",
- "head": "22d1e0b2c7d4a7bc0d4f6dcca7a431d778960adb",
+ "head": "7bcbaea819ee0f8d0c9509c0ae644c4420d8b583",
  "how_to_record": "An agent records its own start in agents/<role>/status.json: \"session\": { \"id\", \"started_at\" (UTC), \"started_by\" (agent), \"started_by_session\", \"on_whose_word\", \"source\" (where that is written) }.",
  "address_pattern": {
   "agent_page": "agents/<role>/index.html, where <role> is the part of the name between \"incident.\" and \"@\"",
@@ -13,9 +13,9 @@
  },
  "counts": {
   "agents": 26,
-  "sessions": 15,
-  "sessions_with_a_recorded_start": 1,
-  "agents_without_a_key": 12
+  "sessions": 16,
+  "sessions_with_a_recorded_start": 16,
+  "agents_without_a_key": 10
  },
  "agents": [
   {
@@ -35,26 +35,27 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 1,
+   "commits": 2,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtPjTTJWWpfgwZeancy",
      "url": "https://claude.ai/code/session_018yvwtPjTTJWWpfgwZeancy",
-     "commits": 1,
+     "commits": 2,
      "first_commit": {
       "sha": "b708dbed2ceaaf66a9c6d3d27fffab5379744083",
       "at": "2026-11-11T02:22:31Z"
      },
      "last_commit": {
-      "sha": "b708dbed2ceaaf66a9c6d3d27fffab5379744083",
-      "at": "2026-11-11T02:22:31Z"
+      "sha": "5afb3010b3989166816daa1b32801baba18913dd",
+      "at": "2026-11-11T02:25:53Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~02:10 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:10 UTC"
     }
    ]
   },
@@ -64,10 +65,40 @@
    "team": true,
    "page": "agents/board/index.html",
    "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
-   "keys": "not recorded",
-   "commits": 0,
+   "keys": [
+    {
+     "id": "incident-board-dinis",
+     "record": "sha256:9edac99e5295ac92",
+     "encryption": "sha256:12562fc83a671f38",
+     "added": "2026-11-11",
+     "status": "active",
+     "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 1,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": [
+    {
+     "id": "session_018yvwtLnUwKTTfNU5tKBiqR",
+     "url": "https://claude.ai/code/session_018yvwtLnUwKTTfNU5tKBiqR",
+     "commits": 1,
+     "first_commit": {
+      "sha": "13eb44eaed534fbc2e4e86212be5f6a4ed18ec25",
+      "at": "2026-11-11T02:23:14Z"
+     },
+     "last_commit": {
+      "sha": "13eb44eaed534fbc2e4e86212be5f6a4ed18ec25",
+      "at": "2026-11-11T02:23:14Z"
+     },
+     "started_at": "not recorded",
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~02:10 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:10 UTC"
+    }
+   ]
   },
   {
    "agent": "incident.ci@web-summit.dinis",
@@ -78,7 +109,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "brief_section": "11 November 2026, ~02:20 UTC",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:20 UTC"
+   }
   },
   {
    "agent": "incident.conductor@web-summit.dinis",
@@ -97,26 +137,27 @@
      "operator_key": "sha256:db7f79fdd87e030a"
     }
    ],
-   "commits": 72,
+   "commits": 74,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtQ4XRqTiSE3vjVq9KD",
      "url": "https://claude.ai/code/session_018yvwtQ4XRqTiSE3vjVq9KD",
-     "commits": 72,
+     "commits": 74,
      "first_commit": {
       "sha": "77cdd51fc101109920aeb4308704823711d0f356",
       "at": "2026-11-10T21:14:33Z"
      },
      "last_commit": {
-      "sha": "e0276a0746568dbd310e993cc8cb5187d5508f59",
-      "at": "2026-11-11T02:21:39Z"
+      "sha": "dcae09a87c01584ab34cfc66375a4715a6ed3188",
+      "at": "2026-11-11T02:25:01Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtMPVc6R9iMzkBcVpE2",
+     "on_whose_word": "Dinis Cruz, at about 19:00 UTC on 10 November 2026",
+     "brief_section": "the incident team's own brief (SGit-AI__Website__Web-Summit team/incidents/BRIEF.md), named at the top of BRIEF.md",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named the incident team's own brief (SGit-AI__Website__Web-Summit team/incidents/BRIEF.md), named at the top of BRIEF.md"
     }
    ]
   },
@@ -153,10 +194,11 @@
       "at": "2026-11-11T02:19:08Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "10 November 2026, ~23:40 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 10 November 2026, ~23:40 UTC"
     }
    ]
   },
@@ -169,7 +211,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtMPVc6R9iMzkBcVpE2",
+    "on_whose_word": "Dinis Cruz, at about 19:00 UTC on 10 November 2026",
+    "brief_section": "the incident team's own brief (SGit-AI__Website__Web-Summit team/incidents/BRIEF.md), named at the top of BRIEF.md",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named the incident team's own brief (SGit-AI__Website__Web-Summit team/incidents/BRIEF.md), named at the top of BRIEF.md"
+   }
   },
   {
    "agent": "incident.entities@web-summit.dinis",
@@ -188,26 +239,27 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 1,
+   "commits": 2,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtPekvw1VMwtPXd7yi7",
      "url": "https://claude.ai/code/session_018yvwtPekvw1VMwtPXd7yi7",
-     "commits": 1,
+     "commits": 2,
      "first_commit": {
       "sha": "747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e",
       "at": "2026-11-11T02:20:30Z"
      },
      "last_commit": {
-      "sha": "747d8321bbc0ea3bce19ea51bea1a841f1cc5e1e",
-      "at": "2026-11-11T02:20:30Z"
+      "sha": "6c7cb2415abb085f3a609f8244609865c127d1bb",
+      "at": "2026-11-11T02:23:46Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~02:10 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:10 UTC"
     }
    ]
   },
@@ -244,10 +296,11 @@
       "at": "2026-11-11T02:22:07Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "10 November 2026, ~23:40 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 10 November 2026, ~23:40 UTC"
     }
    ]
   },
@@ -284,10 +337,11 @@
       "at": "2026-11-11T02:14:35Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "10 November 2026, ~23:40 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 10 November 2026, ~23:40 UTC"
     }
    ]
   },
@@ -300,7 +354,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "brief_section": "11 November 2026, ~02:10 UTC",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:10 UTC"
+   }
   },
   {
    "agent": "incident.labs@web-summit.dinis",
@@ -308,27 +371,38 @@
    "team": true,
    "page": "agents/labs/index.html",
    "operator": "Dinis Cruz (CLAUDE.md: \"Built and run by Dinis Cruz's incident team\")",
-   "keys": "not recorded",
-   "commits": 1,
+   "keys": [
+    {
+     "id": "incident-labs-dinis",
+     "record": "sha256:38e087ab3c122885",
+     "encryption": "sha256:e7ba51b45cae191b",
+     "added": "2026-11-11",
+     "status": "active",
+     "how": "Made in its own session on 11 November 2026 (pki-agent.mjs keygen --session, the copy whose sha256 is fcb28a1c...02ab). A session key: it ends with the session.",
+     "operator_key": "not recorded"
+    }
+   ],
+   "commits": 2,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtLm195KWcUuYeRHn8M",
      "url": "https://claude.ai/code/session_018yvwtLm195KWcUuYeRHn8M",
-     "commits": 1,
+     "commits": 2,
      "first_commit": {
       "sha": "22d1e0b2c7d4a7bc0d4f6dcca7a431d778960adb",
       "at": "2026-11-11T02:22:49Z"
      },
      "last_commit": {
-      "sha": "22d1e0b2c7d4a7bc0d4f6dcca7a431d778960adb",
-      "at": "2026-11-11T02:22:49Z"
+      "sha": "d172ea89cd9623c3c8aafedc8a197da10e985680",
+      "at": "2026-11-11T02:23:54Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~02:10 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:10 UTC"
     }
    ]
   },
@@ -349,26 +423,27 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 35,
+   "commits": 38,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtPysshPQ94qEprs4pr",
      "url": "https://claude.ai/code/session_018yvwtPysshPQ94qEprs4pr",
-     "commits": 35,
+     "commits": 38,
      "first_commit": {
       "sha": "72a73628abfe6ff30e77f932a0df2644dd3d42a1",
       "at": "2026-11-10T23:38:35Z"
      },
      "last_commit": {
-      "sha": "b231de8448443002eacea4534bec653ee4623194",
-      "at": "2026-11-11T02:21:34Z"
+      "sha": "7bcbaea819ee0f8d0c9509c0ae644c4420d8b583",
+      "at": "2026-11-11T02:26:04Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "10 November 2026, ~23:40 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 10 November 2026, ~23:40 UTC"
     }
    ]
   },
@@ -405,10 +480,11 @@
       "at": "2026-11-11T02:22:19Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "10 November 2026, ~23:40 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 10 November 2026, ~23:40 UTC"
     }
    ]
   },
@@ -421,7 +497,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtMPVc6R9iMzkBcVpE2",
+    "on_whose_word": "Dinis Cruz, at about 19:00 UTC on 10 November 2026",
+    "brief_section": "the incident team's own brief (SGit-AI__Website__Web-Summit team/incidents/BRIEF.md), named at the top of BRIEF.md",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named the incident team's own brief (SGit-AI__Website__Web-Summit team/incidents/BRIEF.md), named at the top of BRIEF.md"
+   }
   },
   {
    "agent": "incident.meteorology@web-summit.dinis",
@@ -432,7 +517,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "brief_section": "11 November 2026, ~02:20 UTC",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:20 UTC"
+   }
   },
   {
    "agent": "incident.models@web-summit.dinis",
@@ -443,7 +537,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "brief_section": "11 November 2026, ~02:20 UTC",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:20 UTC"
+   }
   },
   {
    "agent": "incident.observability@web-summit.dinis",
@@ -462,25 +565,26 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 19,
+   "commits": 20,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtNqSbr9KU2d6ovMWcm",
      "url": "https://claude.ai/code/session_018yvwtNqSbr9KU2d6ovMWcm",
-     "commits": 19,
+     "commits": 20,
      "first_commit": {
       "sha": "3d93ef4fd941959eeb82cbbb469877294ea37f1e",
       "at": "2026-11-10T23:38:37Z"
      },
      "last_commit": {
-      "sha": "c1b1e6deab4f4d81f9b99d8dd4a72cce3201de02",
-      "at": "2026-11-11T02:21:47Z"
+      "sha": "d83415fe82e097ee763d3899108ff6113c31473a",
+      "at": "2026-11-11T02:23:06Z"
      },
      "started_at": "2026-11-10T23:35Z",
      "started_by": "incident.conductor@web-summit.dinis",
      "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
      "on_whose_word": "Dinis Cruz, 10 November 2026, about 23:40 UTC: \"maximum visibility into what every single agent is doing ... how they're firing up, and how I can help them\"; \"we use their UIs\" (Angelo's and Silvio's)",
+     "brief_section": "10 November 2026, ~23:40 UTC",
      "source": "this session's start brief from the conductor; Dinis's words are in BRIEF.md, the section of 10 November ~23:40 UTC. started_at is when this session's container cloned the repository."
     }
    ]
@@ -494,7 +598,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtMPVc6R9iMzkBcVpE2",
+    "on_whose_word": "Dinis Cruz, at about 19:00 UTC on 10 November 2026",
+    "brief_section": "the incident team's own brief (SGit-AI__Website__Web-Summit team/incidents/BRIEF.md), named at the top of BRIEF.md",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named the incident team's own brief (SGit-AI__Website__Web-Summit team/incidents/BRIEF.md), named at the top of BRIEF.md"
+   }
   },
   {
    "agent": "incident.shadow@web-summit.dinis",
@@ -505,7 +618,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "brief_section": "11 November 2026, ~02:20 UTC",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:20 UTC"
+   }
   },
   {
    "agent": "incident.social@web-summit.dinis",
@@ -516,7 +638,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "brief_section": "11 November 2026, ~02:10 UTC",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:10 UTC"
+   }
   },
   {
    "agent": "incident.sources@web-summit.dinis",
@@ -535,26 +666,27 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 1,
+   "commits": 4,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtMmyTKYfQRk5pMazCA",
      "url": "https://claude.ai/code/session_018yvwtMmyTKYfQRk5pMazCA",
-     "commits": 1,
+     "commits": 4,
      "first_commit": {
       "sha": "ec7471fc124e21f6e8c6cf200f52ae0185850625",
       "at": "2026-11-11T02:21:55Z"
      },
      "last_commit": {
-      "sha": "ec7471fc124e21f6e8c6cf200f52ae0185850625",
-      "at": "2026-11-11T02:21:55Z"
+      "sha": "e906e6a428c16b83ebb7251234dc842874feab27",
+      "at": "2026-11-11T02:25:43Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~02:10 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:10 UTC"
     }
    ]
   },
@@ -567,7 +699,16 @@
    "keys": "not recorded",
    "commits": 0,
    "commits_without_a_session_trailer": 0,
-   "sessions": "not recorded"
+   "sessions": "not recorded",
+   "start_as_told": {
+    "session_id": "not recorded",
+    "started_at": "not recorded",
+    "started_by": "incident.conductor@web-summit.dinis",
+    "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+    "on_whose_word": "Dinis Cruz",
+    "brief_section": "11 November 2026, ~02:20 UTC",
+    "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:20 UTC"
+   }
   },
   {
    "agent": "incident.studio@web-summit.dinis",
@@ -586,26 +727,27 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 9,
+   "commits": 11,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtLqxneDnR4p11VDywD",
      "url": "https://claude.ai/code/session_018yvwtLqxneDnR4p11VDywD",
-     "commits": 9,
+     "commits": 11,
      "first_commit": {
       "sha": "7fc709c8b75fa45f121497972b1b5f99cd4af2a7",
       "at": "2026-11-11T00:38:03Z"
      },
      "last_commit": {
-      "sha": "8aafe46a769c52b41ffd638b81b1dc6f252b5c85",
-      "at": "2026-11-11T02:20:26Z"
+      "sha": "d174462bb046a9632aa9bf200191e7ea37edaccd",
+      "at": "2026-11-11T02:24:47Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~00:30 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~00:30 UTC"
     }
    ]
   },
@@ -626,26 +768,27 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 5,
+   "commits": 6,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtQpLvbJSGYz3qLMq86",
      "url": "https://claude.ai/code/session_018yvwtQpLvbJSGYz3qLMq86",
-     "commits": 5,
+     "commits": 6,
      "first_commit": {
       "sha": "82fa4e5a997531f9e93c67a157ae42457e744abe",
       "at": "2026-11-11T02:16:19Z"
      },
      "last_commit": {
-      "sha": "7038515dc322556daf84a9c3f0774167eeccad20",
-      "at": "2026-11-11T02:21:26Z"
+      "sha": "94905d6ce1dd10f12a2a31a05931231af61722e4",
+      "at": "2026-11-11T02:24:39Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~02:10 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~02:10 UTC"
     }
    ]
   },
@@ -666,26 +809,27 @@
      "operator_key": "not recorded"
     }
    ],
-   "commits": 13,
+   "commits": 14,
    "commits_without_a_session_trailer": 0,
    "sessions": [
     {
      "id": "session_018yvwtLRz9YpWVk9QAktkQD",
      "url": "https://claude.ai/code/session_018yvwtLRz9YpWVk9QAktkQD",
-     "commits": 13,
+     "commits": 14,
      "first_commit": {
       "sha": "066df683d4f98046893cff6e56e09e6abf72f4f6",
       "at": "2026-11-10T23:38:13Z"
      },
      "last_commit": {
-      "sha": "8a78447b28c71fa677923dab9817c55cc7474de4",
-      "at": "2026-11-11T02:20:57Z"
+      "sha": "8fb6af075cf5650794210d51d487b458e739bf8e",
+      "at": "2026-11-11T02:23:38Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "10 November 2026, ~23:40 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 10 November 2026, ~23:40 UTC"
     }
    ]
   },
@@ -722,13 +866,14 @@
       "at": "2026-11-11T02:01:37Z"
      },
      "started_at": "not recorded",
-     "started_by": "not recorded",
-     "started_by_session": "not recorded",
-     "on_whose_word": "not recorded",
-     "source": "not recorded"
+     "started_by": "incident.conductor@web-summit.dinis",
+     "started_by_session": "session_018yvwtQ4XRqTiSE3vjVq9KD",
+     "on_whose_word": "Dinis Cruz",
+     "brief_section": "11 November 2026, ~01:28 UTC",
+     "source": "data/agents/starts.json: incident.conductor@'s statement to incident.observability@ (session message, 11 November 2026, 02:20 UTC), recorded here by incident.observability@; Dinis's words are in BRIEF.md, the section named 11 November 2026, ~01:28 UTC"
     }
    ]
   }
  ],
- "updated": "2026-11-11T02:23:06Z"
+ "updated": "2026-11-11T02:26:10Z"
 }

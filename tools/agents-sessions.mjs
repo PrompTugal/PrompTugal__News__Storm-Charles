@@ -36,6 +36,8 @@ for (const r of raw.split('\x1e').map(r => r.trim()).filter(Boolean)) {
 // every agent of the team, even one that has not committed here under its own name (the jobs table, the status folders)
 for (const m of fs.readFileSync(path.join(ROOT, 'agents/JOBS.md'), 'utf8').matchAll(/^\|\s*([^|]*incident\.[^|]*)\|/gm)) for (const n of m[1].matchAll(/([a-z]+\.[a-z0-9-]+)@/gi)) get(`${n[1]}@web-summit.dinis`)
 for (const d of fs.readdirSync(path.join(ROOT, 'agents'), { withFileTypes: true })) if (d.isDirectory()) { try { const n = JSON.parse(fs.readFileSync(path.join(ROOT, 'agents', d.name, 'status.json'), 'utf8')).agent; if (n) get(n) } catch { } }
+// the conductor's statement of who started whom (data/agents/starts.json): used where an agent's own status file is silent
+let STARTS = { roles: {} }; try { STARTS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/agents/starts.json'), 'utf8')) } catch { }
 const keys = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/keys.json'), 'utf8')).keys || []
 const agents = []
 for (const a of [...A.values()].sort((x, y) => (y.team - x.team) || x.agent.localeCompare(y.agent))) {
@@ -43,20 +45,23 @@ for (const a of [...A.values()].sort((x, y) => (y.team - x.team) || x.agent.loca
     if (st && st.agent && st.agent !== a.agent) st = null
     const rec = (st && typeof st.session === 'object' && st.session) || {}
     const phrase = st && String(st.state || '').match(/started\s+([0-9:]{4,5}\s*(?:UTC|Z)?)\s*(?:UTC\s*)?by\s+([a-z]+\.[a-z0-9-]+@[a-z0-9.-]*)/i)
+    const told = (a.team && STARTS.roles[a.role]) || null
     const sessions = [...a.sessions.values()].sort((x, y) => x.first_commit.at.localeCompare(y.first_commit.at)).map((s, i, all) => {
         const mine = rec.id ? rec.id === s.id : i === all.length - 1   // the status file speaks for the session it names; with no id, for the latest
         return { id: s.id, url: `https://claude.ai/code/${s.id}`, commits: s.commits, first_commit: s.first_commit, last_commit: s.last_commit,
             started_at: (mine && rec.started_at) || NR,
-            started_by: (mine && rec.started_by) || (mine && phrase ? phrase[2].replace(/@$/, '@web-summit.dinis') : NR),
-            started_by_session: (mine && rec.started_by_session) || NR,
-            on_whose_word: (mine && rec.on_whose_word) || NR,
-            source: mine && (rec.started_by || rec.on_whose_word) ? (rec.source || `agents/${a.role}/status.json, its "session" object`) : mine && phrase ? `agents/${a.role}/status.json, its state: "${phrase[0]}"` : NR }
+            started_by: (mine && rec.started_by) || (mine && told ? told.started_by : mine && phrase ? phrase[2].replace(/@$/, '@web-summit.dinis') : NR),
+            started_by_session: (mine && rec.started_by_session) || (mine && told ? told.started_by_session : NR),
+            on_whose_word: (mine && rec.on_whose_word) || (mine && told ? told.on_whose_word : NR),
+            brief_section: mine && told ? told.brief_section : NR,
+            source: mine && (rec.started_by || rec.on_whose_word) ? (rec.source || `agents/${a.role}/status.json, its "session" object`) : mine && told ? `data/agents/starts.json: ${STARTS.source} ${told.brief_section}` : mine && phrase ? `agents/${a.role}/status.json, its state: "${phrase[0]}"` : NR }
     })
     const k = keys.filter(k => k.agent === a.agent).map(k => ({ id: k.id, record: k.bundle?.signing_fingerprint || NR, encryption: k.bundle?.fingerprint || NR, added: k.added || NR, status: k.status || NR, how: k.how || NR,
         operator_key: (String(k.how || '').match(/operator's key (sha256:[0-9a-f]+)/) || [, NR])[1] }))
     agents.push({ agent: a.agent, role: a.role, team: a.team, page: a.team && fs.existsSync(path.join(ROOT, 'agents', a.role, 'README.md')) ? `agents/${a.role}/index.html` : NR,
         operator: a.team ? 'Dinis Cruz (CLAUDE.md: "Built and run by Dinis Cruz\'s incident team")' : NR,
-        keys: k.length ? k : NR, commits: a.commits, commits_without_a_session_trailer: a.without_session, sessions: sessions.length ? sessions : NR })
+        keys: k.length ? k : NR, commits: a.commits, commits_without_a_session_trailer: a.without_session, sessions: sessions.length ? sessions : NR,
+        ...(!sessions.length && told ? { start_as_told: { session_id: NR, started_at: NR, ...told, source: `data/agents/starts.json: ${STARTS.source} ${told.brief_section}` } } : {}) })
 }
 const body = {
     about: 'Agent provenance for storm-charles.promptugal.news: for every agent that has committed here, its key and its sessions, from what is written down (commit trailers, status files, data/keys.json). "not recorded" means exactly that: the fact is not in the repository; nothing is guessed. A session link opens only for the operator. Commits are not signed: the agent is named in the commit\'s Agent: trailer, by whoever pushed it.',

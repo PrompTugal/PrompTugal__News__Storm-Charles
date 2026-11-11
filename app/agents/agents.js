@@ -194,6 +194,7 @@ ${r.who.filter(w => next.get(w)).length ? `<p class="lbl">What they would do nex
     const fileHref = p => `${BASE}app/agents/commit.html?path=${encodeURIComponent(p)}`
     const agentHref = (name, idx) => { const a = (idx.agents || []).find(x => x.name === name); return a && a.has_page ? `${BASE}agents/${a.role}/index.html` : '' }
     const who = (name, idx) => { const h = agentHref(name, idx); return h ? `<a href="${esc(h)}"><code>${T(short(name))}</code></a>` : `<code>${T(short(name) || '?')}</code>` }
+    const mark = (a, px = 22) => a && a.mark ? `<img class="ag-mark" src="${BASE}${esc(a.mark)}" width="${px}" height="${px}" alt="" loading="lazy">` : ''
     const NR = '<span class="ag-nr">not recorded</span>'
     const nr = v => v == null || v === '' || v === 'not recorded' ? NR : T(v)
 
@@ -280,7 +281,7 @@ ${body ? `<h3>What it says it did</h3><p class="ag-body">${T(body).replace(/\n/g
         const onNow = a => { const R = row(a); return R ? [...R.on[R.n - 1]] : [] }
         const state = a => { const [c, w] = lv(a), R = row(a); return R && R.synced ? ['silent', 'by sync'] : [c, w] }
         const nameOf = sh => idx.agents.find(x => short(x.name) === sh)
-        const tag = a => `<a class="ag-tag" href="${esc(agentHref(a.name, idx) || '#' + a.role)}">${T(a.role)}</a>`
+        const tag = a => `<a class="ag-tag" href="${esc(agentHref(a.name, idx) || '#' + a.role)}">${mark(a, 16)}${T(a.role)}</a>`
         const D = idx.agents.filter(a => (a.asks_dinis || []).length).sort((x, y) => y.asks_dinis.length - x.asks_dinis.length)
         const W = idx.agents.map(a => [a, onNow(a)]).filter(([, o]) => o.length)
         const waitedOn = new Map(); for (const [a, o] of W) for (const b of o) { if (!waitedOn.has(b)) waitedOn.set(b, []); waitedOn.get(b).push(a) }
@@ -325,7 +326,7 @@ ${section('owns', 'Who owns what', `<div class="ag-owns">${folders.map(([k, m]) 
         const k = (a.keys || [])[0]
         const nAsk = (a.asks_dinis || []).length
         return `<details class="ag-card" id="${esc(a.role)}" data-k="card">
-<summary><span class="nm">${T(short(a.name))}</span><span class="ag-pill ${cls}">${esc(word)}</span>${nAsk ? `<span class="n">${nAsk} ask${nAsk > 1 ? 's' : ''} for Dinis</span>` : ''}<span class="lp">${last ? `${esc(ago(last.at))}: ${T(last.what)}` : a.state ? T(a.state) : 'no push read'}</span></summary>
+<summary>${mark(a)}<span class="nm">${T(short(a.name))}</span><span class="ag-pill ${cls}">${esc(word)}</span>${nAsk ? `<span class="n">${nAsk} ask${nAsk > 1 ? 's' : ''} for Dinis</span>` : ''}<span class="lp">${last ? `${esc(ago(last.at))}: ${T(last.what)}` : a.state ? T(a.state) : 'no push read'}</span></summary>
 <div class="body">
 ${ROLE || !a.has_page ? '' : `<p class="ag-note"><a href="${BASE}agents/${esc(a.role)}/index.html">Its own page</a>: its night, its policy, its last 20 commits.</p>`}
 ${a.state ? `<p><span class="lbl">Doing (its own words)</span>${T(a.state)}</p>` : `<p class="ag-note">${a.has_status ? 'No state written.' : `No status file yet (expected at <code>agents/${esc(a.role)}/status.json</code>).`}</p>`}
@@ -379,7 +380,7 @@ ${a.job ? `<details data-k="job"><summary>Its job (agents/JOBS.md)</summary><p>$
         const N = nightData(idx, gh.items, gh.hist || {})
         if (VIEW === 'jobs') { const o2 = new Set([...el.querySelectorAll('details[open]')].map(keyOf)); drawJobs(idx, gh, by, N); if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = o2.has(keyOf(d)); else openHash(); el.dataset.drawn = '1'; return }
         if (VIEW === 'commit') { if (!hadDrawn) { await drawCommit(idx, gh); el.dataset.drawn = '1' } return }
-        if (ROLE) return drawRole(idx, gh, by, N, keyOf, open, hadDrawn)
+        if (ROLE) { if (hadDrawn && el.querySelector('[data-embed-box]:not([hidden])')) return; return drawRole(idx, gh, by, N, keyOf, open, hadDrawn) }
         // pipeline health: the last hour of the deploy workflow's runs (the same records as "Release speed" below)
         const hour = R.items.filter(r => Date.now() - Date.parse(r.pushed) < 36e5), okH = hour.filter(r => r.conclusion === 'success')
         const medOf = a => { a = a.filter(x => x != null && x > 0).sort((p, q) => p - q); return a.length ? a[Math.floor(a.length / 2)] : null }
@@ -396,7 +397,7 @@ ${asks.length ? `<p class="ag-note">Grouped by what is asked (by keyword, so rea
 <h2 class="ag-h" id="night">The night as it happened</h2>
 ${night(N)}
 <h2 class="ag-h">The agents <span class="ag-note">one line each; open one for its state, asks, next, done, job and key</span></h2>
-<div class="ag-grid">${idx.agents.map(a => card(a, by)).join('')}</div>
+${(idx.groups && idx.groups.length ? idx.groups : ['']).map(g => { const as = idx.agents.filter(a => !g || (a.group || 'Other') === g); return as.length ? `${g ? `<h3 class="ag-group">${esc(g)} <span class="ag-note">${as.length}</span></h3>` : ''}<div class="ag-grid">${as.map(a => card(a, by)).join('')}</div>` : '' }).join('')}
 ${strangers.length ? `<p class="ag-note">Also pushing here, not in agents/JOBS.md: ${strangers.map(s => `<code>${T(s)}</code>`).join(', ')}.</p>` : ''}
 ${section('releases', 'Release speed, push by push', releases(R, by, series, X))}
 ${section('flow', 'Who writes for whom', flow(gh.items), "the commits' For: trailers, as a table")}
@@ -410,6 +411,25 @@ ${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 
         if (!hadDrawn) setTimeout(() => window.AgentsUniverse?.counts().catch(() => { }), 1500)
     }
     // an agent's own page: its card (open), its strip, its policy (the built page's article, same site), its last 20 commits
+    // an agent's timeline report: its pushes (with what each changed and the release that served it), the changes in its
+    // status file (asks for Dinis, blocked, wakes) and its sessions' starts, newest first, grouped by hour
+    function timeline(a, mine, H, sess, idx) {
+        const ev = []
+        for (const c of mine) ev.push({ at: c.at, k: 'push', html: `<a href="${commitHref(c)}">${T(c.what)}</a>${c.files != null ? ` <span class="ag-note">${c.files} file${c.files === 1 ? '' : 's'}, +${c.added} −${c.removed}${c.served_in ? `, served in ${T(c.served_in)}` : ''}</span>` : ''}${c.to.length ? ` <span class="ag-note">for ${c.to.map(t => who(t, idx)).join(', ')}</span>` : ''}` })
+        H.forEach((h, k) => { const p = H[k - 1]; if (!p) { if (h.asks_dinis) ev.push({ at: h.at, k: 'ask', html: `its status file first asked Dinis for ${h.asks_dinis} thing${h.asks_dinis > 1 ? 's' : ''}` }); return }
+            if (h.asks_dinis !== p.asks_dinis) ev.push({ at: h.at, k: 'ask', html: `asks for Dinis: ${p.asks_dinis} → ${h.asks_dinis}` })
+            if (h.blocked !== p.blocked) ev.push({ at: h.at, k: h.blocked ? 'blocked' : 'ok', html: h.blocked ? 'it began to call itself blocked' : 'it stopped calling itself blocked' }) })
+        for (const w of new Set(H.map(h => h.last_wake).filter(Boolean))) if (isFinite(Date.parse(w))) ev.push({ at: new Date(Date.parse(w)).toISOString(), k: 'wake', html: 'a wake (from its status file)' })
+        for (const x of sess) ev.push({ at: x.first_commit.at, k: 'session', html: `first push of session <code>${esc(x.id)}</code>${x.started_by && x.started_by !== 'not recorded' ? `, started by ${who(x.started_by, idx)}` : ''}` })
+        ev.sort((x, y) => Date.parse(y.at) - Date.parse(x.at))
+        if (!ev.length) return '<p class="ag-note">Nothing recorded yet: no push of its own, no status history.</p>'
+        const hours = new Map(); for (const e of ev) { const h = String(e.at).slice(0, 13); if (!hours.has(h)) hours.set(h, []); hours.get(h).push(e) }
+        const one = ([h, es], open) => { const n = es.filter(e => e.k === 'push').length; return `<details class="ag-hour" data-k="h-${esc(h)}"${open ? ' open' : ''}><summary><b>${esc(h.slice(5, 10))} ${esc(h.slice(11))}:00 UTC</b> <span class="ag-note">${n} push${n === 1 ? '' : 'es'}${es.length > n ? `, ${es.length - n} other event${es.length - n === 1 ? '' : 's'}` : ''}</span></summary><ul class="ag-tl">${es.map(e => `<li class="${e.k}"><time datetime="${esc(e.at)}">${esc(String(e.at).slice(11, 16))}</time><span class="k">${esc(e.k)}</span> ${e.html}</li>`).join('')}</ul></details>` }
+        return [...hours].map((x, i) => one(x, i === 0)).join('') + `<p class="ag-note">Pushes from the commits; asks, blocked and wakes from the history of its status file; sessions from commit trailers. Releases are named on each push ("served in"). Messages between sessions are not in the repository unless an agent writes them into its status file, so they are not here.</p>`
+    }
+    document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('[data-embed]'); if (!b) return; const box = el.querySelector('[data-embed-box]'); if (!box) return
+        const src = BASE + b.dataset.embed; box.hidden = false; box.innerHTML = `<p class="ag-note">Showing <a href="${esc(src)}">${esc(b.dataset.embed)}</a> here, live. <button type="button" class="ag-mini" data-embed-close>Close</button></p><iframe src="${esc(src)}" title="This agent's work, live" loading="lazy"></iframe>`; box.scrollIntoView({ block: 'nearest' }) })
+    document.addEventListener('click', e => { if (e.target.closest && e.target.closest('[data-embed-close]')) { const box = el.querySelector('[data-embed-box]'); if (box) { box.hidden = true; box.innerHTML = '' } } })
     let policyHtml = null, provenance = null
     async function drawRole(idx, gh, by, N, keyOf, open, hadDrawn) {
         const a = idx.agents.find(x => x.role === ROLE)
@@ -431,8 +451,11 @@ ${section('pushes', 'The last pushes', `<ul class="ag-feed">${gh.items.slice(0, 
         ].filter(Boolean)
         const owns = a.policy_owns || []
         el.innerHTML = `<p class="ag-note"><a href="${BASE}agents/index.html">All the agents</a> · <a href="${BASE}agents/${esc(ROLE)}/status.json">its status file</a> · <a href="${BASE}agents/JOBS.html">the jobs</a></p>
-<section class="ag-one"><p class="kicker">${T(a.role)} <span class="ag-pill ${cls}">${esc(word)}</span></p><h2><code>${T(a.name)}</code></h2>
-<ul class="ag-plain">${plain.map(x => `<li>${T(x)}</li>`).join('')}</ul></section>
+<section class="ag-one ag-home">${a.figure ? `<a class="fig" href="${BASE}studio/cast/index.html" title="Its character, by incident.studio@${a.wears ? ': ' + esc(a.wears) : ''}"><img src="${BASE}${esc(a.figure)}" width="96" height="108" alt="${esc(a.wears ? `Its character: ${a.wears}` : 'Its character')}"></a>` : ''}<div><p class="kicker">${T(a.group || a.role)} <span class="ag-pill ${cls}">${esc(word)}</span></p><h2><code>${T(a.name)}</code></h2>
+${a.tagline ? `<p class="for"><b>What it is for:</b> ${T(a.tagline)}.</p>` : ''}
+<ul class="ag-plain">${plain.map(x => `<li>${T(x)}</li>`).join('')}</ul></div></section>
+${(a.work || []).length ? `<h2 class="ag-h" id="work">Its work, to open</h2><div class="ag-work">${a.work.map((w, k) => `<div class="w"><a href="${BASE}${esc(w.href)}"><b>${T(w.title)}</b></a><span class="ag-note"><code>${esc(w.path)}</code></span><button type="button" class="ag-mini" data-embed="${esc(w.href)}">Open it here</button></div>`).join('')}</div><div class="ag-embed" data-embed-box hidden></div>` : ''}
+${idx.board ? `<h2 class="ag-h" id="board">On the board</h2><div data-board-embed="agent" data-agent="${esc(a.name)}" data-base="${esc(BASE)}"></div><p class="ag-note">Its cards on <a href="${BASE}board/index.html">the board</a> (kept by incident.board@): what it owns, what it raised, what waits on it.</p>` : ''}
 <div class="ag-grid">${card(a, by).replace('<details class="ag-card"', '<details open class="ag-card"')}</div>
 <h2 class="ag-h" id="folders">Its folders</h2>
 ${owns.length ? `<p class="ag-chips">${owns.map(g => { const top = g.replace(/\*.*$/, '').replace(/\/$/, ''); return `<a href="${fileHref(top || g)}"><code>${esc(g)}</code></a>` }).join(' ')}</p><p class="ag-note">The paths it may change, by the path policy (<a href="${fileHref('agents/policy.json')}">agents/policy.json</a>): a check each agent runs on itself before pushing, not a lock.${mine.length ? ` Where its last ${Math.min(mine.length, 100)} pushes went is in each push below.` : ''}</p>` : `<p class="ag-note">No paths of its own in agents/policy.json.</p>`}
@@ -449,11 +472,13 @@ ${section('history', 'Its status through the night', H.length ? `<ul class="ag-f
 ${night(N, ROLE)}
 <h2 class="ag-h">Its behaviour policy</h2>
 ${policyHtml ? `${draft ? '<p class="ag-draft"><b>A draft, not agreed by Dinis.</b> A draft is not a licence to operate.</p>' : ''}<details class="ag-fold" data-k="policy" id="policy"><summary>Read the policy${draft ? ' (draft)' : ''}</summary><div class="body ag-policy">${policyHtml}</div></details><p class="ag-note">As served at <a href="${BASE}agents/${esc(ROLE)}/policy.html">agents/${esc(ROLE)}/policy.html</a>; kept by the librarian's generator, not by this page.</p>` : `<p class="ag-note">No behaviour policy at agents/${esc(ROLE)}/policy.md.</p>`}
-<h2 class="ag-h">Its last ${Math.min(20, mine.length)} commits</h2>
-<ul class="ag-feed">${mine.slice(0, 20).map(c => `<li><time datetime="${esc(c.at)}">${esc(String(c.at).slice(5, 16).replace('T', ' '))}</time><a href="${commitHref(c)}">${T(c.what)}</a>${c.files != null ? ` <span class="ag-note">${c.files} file${c.files === 1 ? '' : 's'}, +${c.added} −${c.removed}${c.served_in ? ', served in ' + T(c.served_in) : ''}</span>` : ''}${c.to.length ? ` <span class="ag-note">for ${c.to.map(t => who(t, idx)).join(', ')}</span>` : ''}</li>`).join('') || '<li class="ag-note">No commit of its own read on dev.</li>'}</ul>
+<h2 class="ag-h" id="timeline">Its timeline: what it did, hour by hour</h2>
+${timeline(a, mine, H, sess, idx)}
 <p class="ag-note">Read ${esc(new Date().toISOString().slice(11, 19))} UTC; refreshes every minute. Its status file as served now; commits from ${gh.source === 'snapshot' ? `the snapshot of ${T(gh.snapshot_at)} (GitHub's API did not answer this browser)` : "GitHub's public API"}. Session ids are never shown.</p>`
         if (hadDrawn) for (const d of el.querySelectorAll('details')) d.open = open.has(keyOf(d))
         el.dataset.drawn = '1'
+        if (idx.board) { if (idx.board.style && !document.querySelector('link[data-board]')) { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = BASE + idx.board.style; l.dataset.board = '1'; document.head.appendChild(l) }
+            const old = document.querySelector('script[data-board]'); if (old) old.remove(); const sc = document.createElement('script'); sc.src = BASE + idx.board.script; sc.dataset.board = '1'; document.head.appendChild(sc) }
     }
     const openHash = () => { const t = location.hash && !/[?&=]/.test(location.hash) ? document.getElementById(location.hash.slice(1)) : null; if (!t) return; if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView() }
     window.addEventListener('hashchange', openHash)

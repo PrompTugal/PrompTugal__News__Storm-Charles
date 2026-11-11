@@ -1,9 +1,9 @@
 {
   "agent": "incident.observability@web-summit.dinis",
   "by": "incident.observability@web-summit.dinis",
-  "updated": "2026-11-11T02:21:35Z",
-  "state": "active: round two done, 4 of 4 (Stop stops; every agent, push and file opens; sessions.json; Jobs drawn at /app/agents/jobs.html); waiting on the board's JSON to show cards on agents' pages, and on Dinis for the page-views vault",
-  "last_wake": "2026-11-11T02:21Z",
+  "updated": "2026-11-11T02:26:04Z",
+  "state": "active: every agent has a home (its character, what it is for, its work to open here, its board cards, its timeline hour by hour, key and sessions); the index is grouped by what agents work on; next: read commits and runs from incident.ci@'s data once it exists, link the board's for-Dinis page",
+  "last_wake": "2026-11-11T02:26Z",
   "session": {
     "id": "session_018yvwtNqSbr9KU2d6ovMWcm",
     "started_at": "2026-11-10T23:35Z",
@@ -16,7 +16,8 @@
     "J1: /agents/: every agent (name, role, doing, done, next, asks with Dinis's on top, last commit, key fingerprint); tools/agents-index.mjs writes data/agents/index.json; the page reads JSON only, refreshes every minute.",
     "J2: reuse as pinned copies with their source commit: Angelo's live map (who talks to whom from For: trailers); Silvio's Universe, mind map and Talk view; one small adapter per engine, no fork; credit on the page.",
     "J3: page views (promptugal.news's obs.js model, no geo lookup); release speed per push; the model ledger.",
-    "Round two (Dinis, 11 November ~02:10, BRIEF.md; routed by the conductor): 1 fix Stop on the live map, check start, step, speed; 2 everything clickable (agent, flight = one commit, file) and a fuller page per agent; 3 data/agents/sessions.json, every by and Kept-by resolving to an agent's page; 4 Jobs as a visual page generated from JOBS.md, policy.json and the status files."
+    "Round two (Dinis, 11 November ~02:10, BRIEF.md; routed by the conductor): 1 fix Stop on the live map, check start, step, speed; 2 everything clickable (agent, flight = one commit, file) and a fuller page per agent; 3 data/agents/sessions.json, every by and Kept-by resolving to an agent's page; 4 Jobs as a visual page generated from JOBS.md, policy.json and the status files.",
+    "Round three (Dinis, 11 November ~02:20, BRIEF.md; routed by the conductor): a home for every agent: who it is and what it is for, its identity mark (incident.studio@'s cast), key, state and blockers, a timeline report, a showcase of its work with a live embed where it has one; the index scaled and grouped; commits and runs from incident.ci@'s data rather than a second copy."
   ],
   "done": [
     "session key made (record sha256:4eaeeacb457991e0), public half in data/keys.json",
@@ -43,7 +44,10 @@
     "round two, 1: Stop stops. The engine's pause held its clock but left its background flow flying; now pausing it (or 'Stop all motion') closes a gate on the page's animation frames, so the map, its 3D view and the Universe hold still, and play or the dial opens it. New under the map: previous push, next push, play push by push (one every three seconds), back to live, with a caption naming each push (who, for whom, what, linked); events carry seconds, so two pushes in a minute fly apart; an agent's dot and name on the map link to its page. Checked: the engine's 1 h/s and 6 h/s play advance its clock and pause holds it.",
     "round two, 2: everything opens. A push: app/agents/commit.html?sha= (who, for whom, when, the release that first served it, its session, what it says it did, every file with lines added and removed). A file: ?path= (who may change it by the path policy, who it says keeps it, every push that changed it). An agent's page now starts with its state and blocker in plain words, then its folders, its key and its record, its sessions, its status through the night, its night, its policy, its last 20 commits. tools/agents-commits.mjs keeps each commit's served-in version (CI's tags) and, per hour, its message and files (data/agents/detail-<hour>.json). Pages for the fourteen new agents.",
     "round two, 3: data/agents/sessions.json (tools/agents-sessions.mjs): for all 26 agents, key, operator's key where the key record names one, and each session from the commits' Claude-Session trailers (id, first and last commit, count); who started it, from which session and on whose word only where a status file records it, otherwise the words 'not recorded'. Right now 1 of 10 sessions has a recorded start (this one). The address pattern for every by and Kept-by: agents/index.html?who=<full name> (redirects to agents/<role>/, or says there is no page).",
-    "round two, 4: the jobs, drawn, at /app/agents/jobs.html, generated from agents/JOBS.md, agents/policy.json, the status files and the commits: blocked on whom (on Dinis, on another agent, not started), a line per agent (job, state, waits-on; opens to what it is doing, its last push, its paths), and who owns what, folder by folder"
+    "round two, 4: the jobs, drawn, at /app/agents/jobs.html, generated from agents/JOBS.md, agents/policy.json, the status files and the commits: blocked on whom (on Dinis, on another agent, not started), a line per agent (job, state, waits-on; opens to what it is doing, its last push, its paths), and who owns what, folder by folder",
+    "round three: a home for every agent at /agents/<role>/: its character (incident.studio@'s cast, app/studio/agents/), what it is for, state and blocker in plain words, its work as cards that open the page here (the graph agent's graph and ontology open in place), its cards from the board (incident.board@'s embed), its timeline hour by hour (pushes with what changed and the release that served each, changes in its asks, blocked, wakes, session starts), folders, key and sessions, policy",
+    "the agents index grouped by what they work on (data/agents/groups.json: lead; the faces; sources and evidence; knowledge; the machine), each with its mark; 26 agents",
+    "who started whom: data/agents/starts.json records the conductor's statement (session, on whose word, the BRIEF section); sessions.json now has a recorded start for all 16 sessions seen in commits; started_at stays 'not recorded' until each agent writes its own"
   ],
   "next": [
     "show the board's cards on each agent's page once incident.board@ publishes its JSON (contract proposed to it)",
@@ -52,8 +56,8 @@
   ],
   "asks": [
     "Dinis: page views need a vault with append lanes on SG/Send (as promptugal.news's obs vault) and a drain key that outlives one session. The sender is built and switched off (data/agents/obs.json). Either make the vault and hand me its id and lane tokens (public by design), or say that I may make it with the SG/Send token in this session's environment; and say whose key the events are sealed to (a session key ends with its session).",
-    "everyone: record your own start so your page can show it, in agents/<role>/status.json: \"session\": { \"id\", \"started_at\" (UTC), \"started_by\", \"started_by_session\", \"on_whose_word\", \"source\" }. Without it your page says 'not recorded' for who started you and on whose word. Mine is the example.",
-    "everyone: link an agent's name (every by, every Kept-by) to agents/index.html?who=<full name>; a push to app/agents/commit.html?sha=<sha>; a file's history to app/agents/commit.html?path=<path>. After model calls, AGENT=<name> node tools/agents-ledger.mjs. One For: trailer per line.",
-    "incident.conductor@: point the nav's Jobs at app/agents/jobs.html (the drawn page; it links to your table as written), or say to keep both."
+    "everyone: add your own started_at (UTC) to agents/<role>/status.json as \"session\": { \"id\", \"started_at\" }: it is the one fact about your start only you know. Link an agent's name to agents/index.html?who=<full name>, a push to app/agents/commit.html?sha=<sha>, a file's history to app/agents/commit.html?path=<path>.",
+    "incident.ci@: when data/ci/ holds commits and runs, tell me the paths and fields; I will read them and retire tools/agents-commits.mjs's copy. What my pages read today: per commit sha, at, agent, to[], issue, what, served_in, files, added, removed; per commit detail body, session, files[{p,a,d}]; per run n, sha, conclusion, pushed, started, ended, and CI's push-to-served seconds.",
+    "incident.conductor@: point the nav's Jobs at app/agents/jobs.html, or say to keep both."
   ]
 }

@@ -65,6 +65,25 @@ try { const pol = JSON.parse(read('agents/policy.json')); for (const [name, v] o
 const LED = path.join(ROOT, 'data/agents/ledger')
 const ledger = fs.existsSync(LED) ? fs.readdirSync(LED).filter(f => f.endsWith('.json')).sort().map(f => `data/agents/ledger/${f}`) : []
 
+// 5. its home: the studio's character for it (app/studio/agents/, by incident.studio@), what it is for in a line, its group,
+//    and its work: the pages in the folders it owns (a README.md is a section's front page)
+let CAST = {}; try { for (const c of JSON.parse(read('app/studio/agents/index.json')).agents || []) CAST[c.role] = c } catch { }
+let GROUPS = []; try { GROUPS = JSON.parse(read('data/agents/groups.json')).groups || [] } catch { }
+const titleOf = rel => { try { const t = read(rel); return (t.match(/^title:\s*(.+)$/m) || t.match(/^#\s+(.+)$/m) || [, rel])[1].replace(/[*`"]/g, '').slice(0, 90) } catch { return rel } }
+for (const a of roster.values()) {
+    const ex = rel => fs.existsSync(path.join(ROOT, rel))
+    if (ex(`app/studio/agents/${a.role}.svg`)) { a.figure = `app/studio/agents/${a.role}.svg`; a.mark = ex(`app/studio/agents/${a.role}.mark.svg`) ? `app/studio/agents/${a.role}.mark.svg` : a.figure }
+    const c = CAST[a.role]; if (c) { a.tagline = clean(c.job || c.what || ''); a.wears = clean(c.wears || c.holds || c.thing || '') }
+    a.group = (GROUPS.find(g => (g.roles || []).includes(a.role)) || { title: 'Other' }).title
+    const work = [], seen = new Set()
+    for (const g of a.policy_owns || []) {
+        const base = g.replace(/<role>/g, a.role).replace(/\/?\*.*$/, ''); if (!base || /^agents(\/|$)/.test(base) || seen.has(base) || /^(tools|data\/agents)/.test(base) && !ex(base + '/README.md')) continue; seen.add(base)
+        if (ex(base + '/README.md')) work.push({ href: `${base}/index.html`, title: titleOf(base + '/README.md'), path: base + '/' })
+        else if (/\.md$/.test(base) && ex(base)) work.push({ href: base.replace(/\.md$/, '.html'), title: titleOf(base), path: base })
+    }
+    a.work = work.slice(0, 12)
+}
+
 const order = ['conductor', 'observability', 'designer', 'identity', 'dev', 'meteorologist', 'researcher']
 const agents = [...roster.values()].sort((a, b) => ((order.indexOf(a.role) + 1) || 99) - ((order.indexOf(b.role) + 1) || 99) || a.name.localeCompare(b.name))
     .map(a => ({ in_jobs: !!a.job, has_status: !!a.status_file, has_key: !!a.keys?.length, has_page: fs.existsSync(path.join(ROOT, 'agents', a.role, 'README.md')), ...a }))
@@ -74,7 +93,7 @@ const body = {
     repository: 'PrompTugal/PrompTugal__News__Storm-Charles', branch: 'dev',
     sources: ['agents/JOBS.md', 'agents/*/status.json', 'agents/policy.json', 'data/keys.json', 'data/agents/ledger/*.json'],
     counts: { agents: agents.length, with_status: agents.filter(a => a.has_status).length, with_key: agents.filter(a => a.has_key).length, asks_for_dinis: agents.reduce((n, a) => n + (a.asks_dinis?.length || 0), 0) },
-    ledger, agents
+    ledger, groups: GROUPS.map(g => g.title).concat('Other'), board: fs.existsSync(path.join(ROOT, 'app/board/board.js')) ? { script: 'app/board/board.js', style: fs.existsSync(path.join(ROOT, 'app/board/board.css')) ? 'app/board/board.css' : '', index: 'board/index.json', for_dinis: fs.existsSync(path.join(ROOT, 'board/for-dinis.md')) ? 'board/for-dinis.html' : '' } : null, agents
 }
 // generated_at changes only when the content does: a run with nothing new writes nothing (no commit churn)
 const sig = crypto.createHash('sha256').update(JSON.stringify(body)).digest('hex')

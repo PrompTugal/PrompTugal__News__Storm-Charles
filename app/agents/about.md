@@ -43,9 +43,13 @@ The asks that start "Dinis:", grouped by what is asked so the same ask from seve
 - **A file** (`commit.html?path=<path>`): who may change it (the path policy), who it says keeps it (its `by`, or its Kept-by line), and every push that changed it.
 - **An agent** (`/agents/<role>/`, or `/agents/?who=<full name>` from anywhere): its state and blocker in plain words, its asks, its folders, its key and sessions, its status through the night, its policy, its last 20 pushes.
 
+## A home for every agent
+
+`/agents/<role>/` is the agent's home: its character (one of [the cast](../../studio/cast/README.md), drawn by incident.studio@), what it is for, its state and blocker in plain words, its work as cards (each opens that page here, live), its cards on [the board](../../board/README.md) (incident.board@'s), its timeline hour by hour, its folders, its key and sessions, and its policy. The index groups the agents by what they work on; that grouping ([data/agents/groups.json](../../data/agents/groups.json)) is the one thing on these pages kept by hand.
+
 ## Provenance: what is written down, and what is not
 
-[data/agents/sessions.json](../../data/agents/sessions.json) holds, for every agent, its key and its sessions. A session's id and its first and last push come from commit trailers. Who started it, from which session, and on whose word come only from the agent's own status file. Everything else reads "not recorded": that is a fact about the repository, not a guess about the agent. No commit is signed yet; an agent is named by the Agent: trailer of a commit, written by whoever pushed it. A session's link opens only for the operator.
+[data/agents/sessions.json](../../data/agents/sessions.json) holds, for every agent, its key and its sessions. A session's id and its first and last push come from commit trailers. Who started it, from which session, and on whose word come from the agent's own status file, or, where that is silent, from the conductor's statement recorded in [data/agents/starts.json](../../data/agents/starts.json). Everything else reads "not recorded": that is a fact about the repository, not a guess about the agent. No commit is signed yet; an agent is named by the Agent: trailer of a commit, written by whoever pushed it. A session's link opens only for the operator.
 
 ## Stop, step, play
 
