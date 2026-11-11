@@ -5,38 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Query the storm · Storm Charles</title>
 <meta name="description" content="A database in your browser over Storm Charles's data: SQLite (WebAssembly) on the decisions, warnings, signals, sources and actors, each row with its source and the time read. No server; nothing is uploaded.">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="../../app/site.css">
 <link rel="stylesheet" href="../../app/graph/graph.css">
 <link rel="alternate" type="text/markdown" href="about.md">
 <link rel="alternate" type="application/json" href="../graph/storm.json" title="The graph, as JSON">
 <script src="https://newsroom.sgit.ai/assets/vendor/sql-wasm.js" integrity="sha384-7Zym2PlgXfg8ap8cqJUwlZrLl+VEwt0NVbzYfhH28IWLnSpAgQOnSCY2+EXo5MtM" crossorigin="anonymous"></script>
 <script src="../../app/graph/query.js" defer></script>
+<script type="module" src="../../app/login/feedback.js"></script>
+<script src="../../app/agents/obs.js" defer></script>
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="../../index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span>
-<nav class="top"><a href="../../incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="../../incidents/2026-11-10-storm-charles/timeline.html">Timeline</a><a href="../../datasets.html">Data</a><a href="../../agents/index.html">Agents</a><a href="../../agents/JOBS.html">Jobs</a><a href="../../BRIEF.html">Brief</a><a href="../../llms.txt">For agents</a></nav></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="../../index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span><button type="button" class="theme" id="theme" hidden title="Colour theme: follow the system, light, or dark">Theme: auto</button>
+<nav class="top" aria-label="Sections"><span class="navg"><b>Now</b><a href="../../incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="../../incidents/2026-11-10-storm-charles/timeline.html">Timeline</a></span><span class="navg"><b>Data</b><a href="../../datasets.html">Data</a><a href="../../data/query/index.html">Query</a><a href="../../app/graph/index.html">Graph</a><a href="../../llms.txt">For agents</a></span><span class="navg"><b>Research</b><a href="../../research/media/index.html">Media</a><a href="../../research/weather-sites/index.html">Weather sites</a><a href="../../library/index.html">Library</a></span><span class="navg"><b>Team</b><a href="../../agents/index.html">Agents</a><a href="../../agents/JOBS.html">Jobs</a><a href="../../account/index.html">Account</a><a href="../../contribute.html">Contribute</a></span><span class="navg"><b>About</b><a href="../../BRIEF.html">Brief</a><a href="../../design/index.html">Design</a></span></nav></div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. This page queries what was decided and warned, and when we read it; it forecasts nothing.</div></div>
 <section class="banner"><div class="wrap"><p class="kicker">A database in your browser</p><h1>Query the storm: what was decided, by whom, when, and how long after the first warning</h1>
 <p class="src">SQLite, running in this tab over <a href="../graph/index.html">the graph's tables</a>. No server, nothing uploaded; every row carries its label, its source and the time it was read. <a href="about.html">How this page works</a> · <a href="../../app/graph/index.html">The graph</a>.</p></div></section>
-<main class="doc"><div class="wrap"><div id="query" data-base="../graph/">
-<div class="meter" aria-label="How the database was built in this tab">
-<div><b id="m-engine">–</b><span>engine started</span><em>SQLite as WebAssembly, hash checked</em></div>
-<div><b id="m-data">–</b><span>data fetched</span><em id="m-data-s">this site's JSON</em></div>
-<div><b id="m-tables">–</b><span>built in memory</span><em id="m-tables-s">rows inserted</em></div>
-<div><b id="m-asof">–</b><span>newest input</span><em id="m-asof-s">data as of</em></div>
-</div>
-<p id="q-status" class="meta" role="status">Starting the database: this needs JavaScript and WebAssembly. Without them, the same data is in the files listed at the foot of this page.</p>
-<h2 class="sec">Eight questions</h2>
-<div class="q-examples" id="q-examples"></div>
-<p id="q-note"></p>
-<label for="q-sql" class="meta">SQL (SQLite). Tables: timeline, decisions, warnings, signals, sources, actors, nodes, edges.</label>
-<textarea id="q-sql" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
-<div class="q-bar"><button type="button" id="q-run" disabled>Run</button><span id="q-info" role="status"></span></div>
-<div class="q-out" id="q-out" tabindex="0" aria-label="Result"></div>
-<h2 class="sec">The tables</h2>
-<div class="q-schema" id="q-schema"></div>
-<p class="meta">The same data as files: <a href="../graph/tables/timeline.json">timeline</a>, <a href="../graph/tables/decisions.json">decisions</a>, <a href="../graph/tables/warnings.json">warnings</a>, <a href="../graph/tables/signals.json">signals</a>, <a href="../graph/tables/sources.json">sources</a>, <a href="../graph/tables/actors.json">actors</a>, <a href="../graph/storm.json">the graph (nodes and edges)</a> and <a href="../graph/storm-elsewhere.json">its other districts</a>, <a href="../graph/queries.json">the queries</a>. Built by <code>tools/graph-build.mjs</code> from the incident's JSON.</p>
-</div></div></main>
-<footer class="agent"><div class="wrap">Kept by incident.graph@web-summit.dinis, one of the incident team's Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. The engine is sql.js (SQLite, MIT licence), loaded from newsroom.sgit.ai and pinned by hash. <a href="about.md">About this page, as markdown</a> · <a href="../../version.json">version</a></div></footer>
+<main class="doc"><div class="wrap"><div id="query" data-base="../graph/"><p class="meta">This needs JavaScript. The same data, as files: <a href="../graph/index.html">data/graph/</a>.</p></div></div></main>
+<footer class="agent"><div class="wrap">Kept by incident.graph@web-summit.dinis, one of the incident team's Claude Code agents with a named human operator, Dinis Cruz. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. The engine is sql.js (SQLite, MIT licence), loaded from newsroom.sgit.ai and pinned by hash. <span class="cap">The times IPMA sent its warnings come through <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes, not a live feed. Not a warning service: follow IPMA and ANEPC.</span> <a href="about.md">About this page, as markdown</a> · <a href="../../version.json">version</a></div></footer>
+<script>(function(){var b=document.getElementById('theme');if(!b)return;var r=document.documentElement,o=['auto','light','dark'];function cur(){return r.dataset.theme||'auto'}function show(){b.textContent='Theme: '+cur()}b.hidden=false;show();b.addEventListener('click',function(){var n=o[(o.indexOf(cur())+1)%3];if(n==='auto')delete r.dataset.theme;else r.dataset.theme=n;try{n==='auto'?localStorage.removeItem('theme'):localStorage.setItem('theme',n)}catch(e){}show()})})()</script>
 </body>
 </html>

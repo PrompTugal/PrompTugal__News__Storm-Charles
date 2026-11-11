@@ -7,7 +7,7 @@
 //
 // For any page of this site (incident.observability@ uses it for the agents):
 //   const g = await StormGraph.mount(element, { nodes: [{ id, name, type, degree? }], links: [{ source, target, rel? }] },
-//                                    { colours: { <type>: '#rrggbb' }, onPick(node), tip(node) -> string })
+//                                    { colours: { <type>: colour }, links: { fact, evidence, hypothesis, picked }, background, other, onPick(node), tip(node) -> string })
 //   g.show(predicate)   which nodes are drawn      g.focus(id)   fly to one      g.fg   the 3d-force-graph instance
 //   StormGraph.fromStorm(storm)   data/graph/storm.json -> { nodes, links } for mount
 window.StormGraph = (function () {
@@ -33,7 +33,9 @@ window.StormGraph = (function () {
     async function mount(el, data, opts = {}) {
         if (!webgl()) throw new Error('this browser has no WebGL, which the 3D engine needs')
         const { ForceGraph3D: FG, THREE } = await libs()
-        const colours = opts.colours || {}, colourOf = n => colours[n.type] || '#9aa3b2'
+        // colours come from the page (its stylesheet's tokens); the values here are only what the engine draws when a page gives none
+        const colours = opts.colours || {}, colourOf = n => colours[n.type] || opts.other || '#9aa3b2'
+        const L = Object.assign({ fact: '#5d6b85', evidence: '#c99a4a', hypothesis: '#b08cf0', picked: '#ffffff' }, opts.links || {})
         // the engine's look: each node a soft orb in its colour (a sprite, as in the Universe), sized by its links
         const orbs = new Map()
         const orb = col => {
@@ -52,7 +54,7 @@ window.StormGraph = (function () {
             .width(el.clientWidth).height(el.clientHeight)
             .nodeLabel(n => `<div class="g-tip">${esc(n.name)}<small>${esc(opts.tip ? opts.tip(n) : n.type)}</small></div>`)
             .nodeThreeObject(n => { const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: orb(colourOf(n)), transparent: true, depthWrite: false })); sp.scale.setScalar(size(n)); n.__sp = sp; return sp })
-            .linkColor(l => picked && (l.source.id === picked || l.target.id === picked) ? '#ffffff' : l.label === 'hypothesis' ? '#b08cf0' : l.label === 'evidence' ? '#c99a4a' : '#5d6b85')
+            .linkColor(l => picked && (l.source.id === picked || l.target.id === picked) ? L.picked : L[l.label] || L.fact)
             .linkOpacity(0.38).linkWidth(l => picked && (l.source.id === picked || l.target.id === picked) ? 0.9 : 0)
             .linkDirectionalArrowLength(2.4).linkDirectionalArrowRelPos(1)
             .linkLabel(l => `<div class="g-tip">${esc(l.rel || '')}${l.lead_minutes != null ? ' · ' + l.lead_minutes + ' min' : ''}<small>${esc(l.label || '')}</small></div>`)

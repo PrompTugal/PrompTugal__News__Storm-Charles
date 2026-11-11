@@ -10,6 +10,25 @@
     const ENGINE = 'https://newsroom.sgit.ai/assets/vendor/'
     const WASM_SHA256 = '38c14f6e379210bc942bdc4ebca44e7bfdb4318ecc1c72ca666a28fdce96670a'
     const root = document.getElementById('query'), BASE = root.dataset.base || '../graph/'
+    // the page inside the mount element: static markup, no data in it (data is always set as text, below)
+    root.innerHTML = "<div class=\"meter\" aria-label=\"How the database was built in this tab\">\n" +
+        "<div><b id=\"m-engine\">–</b><span>engine started</span><em>SQLite as WebAssembly, hash checked</em></div>\n" +
+        "<div><b id=\"m-data\">–</b><span>data fetched</span><em id=\"m-data-s\">this site's JSON</em></div>\n" +
+        "<div><b id=\"m-tables\">–</b><span>built in memory</span><em id=\"m-tables-s\">rows inserted</em></div>\n" +
+        "<div><b id=\"m-asof\">–</b><span>newest input</span><em id=\"m-asof-s\">data as of</em></div>\n" +
+        "</div>\n" +
+        "<p id=\"q-status\" class=\"meta\" role=\"status\">Starting the database: this needs JavaScript and WebAssembly. Without them, the same data is in the files listed at the foot of this page.</p>\n" +
+        "<h2 class=\"sec\">Eight questions</h2>\n" +
+        "<div class=\"q-examples\" id=\"q-examples\"></div>\n" +
+        "<p id=\"q-note\"></p>\n" +
+        "<label for=\"q-sql\" class=\"meta\">SQL (SQLite). Tables: timeline, decisions, warnings, signals, sources, actors, nodes, edges.</label>\n" +
+        "<textarea id=\"q-sql\" spellcheck=\"false\" autocapitalize=\"off\" autocomplete=\"off\"></textarea>\n" +
+        "<div class=\"q-bar\"><button type=\"button\" id=\"q-run\" disabled>Run</button><span id=\"q-info\" role=\"status\"></span></div>\n" +
+        "<div class=\"q-out\" id=\"q-out\" tabindex=\"0\" aria-label=\"Result\"></div>\n" +
+        "<h2 class=\"sec\">The tables</h2>\n" +
+        "<div class=\"q-schema\" id=\"q-schema\"></div>\n" +
+        "<p class=\"meta\">The same data as files: <a href=\"../graph/tables/timeline.json\">timeline</a>, <a href=\"../graph/tables/decisions.json\">decisions</a>, <a href=\"../graph/tables/warnings.json\">warnings</a>, <a href=\"../graph/tables/signals.json\">signals</a>, <a href=\"../graph/tables/sources.json\">sources</a>, <a href=\"../graph/tables/actors.json\">actors</a>, <a href=\"../graph/storm.json\">the graph (nodes and edges)</a> and <a href=\"../graph/storm-elsewhere.json\">its other districts</a>, <a href=\"../graph/queries.json\">the queries</a>. Built by <code>tools/graph-build.mjs</code> from the incident's JSON.</p>"
+
     const TABLES = ['timeline', 'decisions', 'warnings', 'signals', 'sources', 'actors']
     const $ = id => document.getElementById(id)
     const el = (tag, props = {}, kids = []) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(props)) k === 'class' ? e.className = v : k === 'text' ? e.textContent = v : e.setAttribute(k, v); for (const k of [].concat(kids)) e.append(k); return e }

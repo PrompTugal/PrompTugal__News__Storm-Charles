@@ -4,13 +4,30 @@
 (function () {
     'use strict'
     const root = document.getElementById('graph'), BASE = root.dataset.base
+    // the page inside the mount element: static markup, no data in it (data is always set as text, below)
+    root.innerHTML = "<div class=\"chips\" id=\"g-types\" aria-label=\"Kinds of thing: press to hide or show\"></div>\n" +
+        "<div class=\"chips\" id=\"g-labels\" aria-label=\"Labels and scope: press to hide or show\"></div>\n" +
+        "<div class=\"q-bar\"><button type=\"button\" class=\"small\" id=\"g-fit\">Fit all</button><span id=\"g-count\" class=\"meta\" role=\"status\"></span><span class=\"meta\">Drag to turn, scroll to zoom, press a node to read it. Link colour: grey fact, amber evidence, violet hypothesis.</span></div>\n" +
+        "<div class=\"g-layout\">\n" +
+        "<div class=\"g-stage\" id=\"g-stage\"><div class=\"g-canvas\" id=\"g-canvas\"></div><div class=\"g-msg\" id=\"g-msg\">Loading the 3D engine (1.6 MB, from web-summit.sgit.ai)… The same graph is in the list below.</div></div>\n" +
+        "<aside class=\"g-panel\" id=\"g-panel\" aria-live=\"polite\"><p class=\"meta\">Press a node, or pick one from the list below.</p></aside>\n" +
+        "</div>\n" +
+        "<h2 class=\"sec\" id=\"lead-times\">Lead times: how far ahead could we have known?</h2>\n" +
+        "<p class=\"meta\" id=\"g-line-note\">Every warning and decision with a time known to the minute, on one line of time (UTC = Lisbon time). Between two rows: the time that passed. On the right: how long before the first red warning starts in Lisbon. The bar on the left is the warning's colour for a warning, grey for a decision. For IPMA's colour warnings the time is when IPMA sent the message. Order, not cause. <a href=\"../../data/graph/tables/timeline.json\">As JSON</a> · <a href=\"../../data/query/index.html?example=lead-times\">as a query</a>.</p>\n" +
+        "<ol class=\"g-line\" id=\"g-line\"></ol>\n" +
+        "<h2 class=\"sec\">The same graph as a list</h2>\n" +
+        "<div class=\"g-list\" id=\"g-list\"></div>\n" +
+        "<p class=\"meta\">The files: <a href=\"../../data/graph/storm.json\">storm.json</a> (nodes and edges), <a href=\"../../data/graph/ontology.json\">ontology.json</a>, and the tables under <a href=\"../../data/graph/index.html\">data/graph/</a>.</p>"
+
     const $ = id => document.getElementById(id)
     const el = (tag, props = {}, kids = []) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(props)) k === 'class' ? e.className = v : k === 'text' ? e.textContent = v : e.setAttribute(k, v); for (const k of [].concat(kids)) e.append(k); return e }
     const css = getComputedStyle(document.documentElement)
     const TYPES = ['Actor', 'Decision', 'Warning', 'Signal', 'Source', 'Place', 'Dataset', 'Agent']
-    const COL = Object.fromEntries(TYPES.map(t => [t, css.getPropertyValue('--g-' + t.toLowerCase()).trim() || '#888']))
-    // on the dark stage the same hues, lighter, so each kind stays readable against it
-    const STAGE = { Actor: '#6ea0ff', Decision: '#ff5d73', Warning: '#ffa23d', Signal: '#b592ff', Source: '#a3aebf', Place: '#4fd699', Dataset: '#41cfe0', Agent: '#ee7fd6' }
+    const COL = Object.fromEntries(TYPES.map(t => [t, css.getPropertyValue('--g-' + t.toLowerCase()).trim()]))
+    // on the dark stage the same hues, lighter (graph.css's --gs-* tokens), so each kind stays readable against it
+    const tok = n => css.getPropertyValue(n).trim()
+    const STAGE = Object.fromEntries(TYPES.map(t => [t, tok('--gs-' + t.toLowerCase())]))
+    const LINKS = { fact: tok('--gs-link-fact'), evidence: tok('--gs-link-evidence'), hypothesis: tok('--gs-link-hypothesis'), picked: tok('--gs-link-picked') }
     const LABELS = ['fact', 'evidence', 'hypothesis']
     const off = { types: new Set(), labels: new Set(), elsewhere: true }
     let storm = null, byId = new Map(), out = new Map(), inn = new Map(), g = null, tables = {}
@@ -98,7 +115,7 @@
             const first = byId.get('decision:websummit-wednesday') || storm.nodes[0]; pick(first)
         } catch (e) { msg.textContent = 'The graph could not be read: ' + (e && e.message || e); return }
         try {
-            g = await window.StormGraph.mount($('g-canvas'), window.StormGraph.fromStorm(storm), { colours: STAGE, onPick: pick, tip: n => `${n.type} · ${n.label}${n.at ? ' · ' + n.at.slice(5, 16).replace('T', ' ') : ''}` })
+            g = await window.StormGraph.mount($('g-canvas'), window.StormGraph.fromStorm(storm), { colours: STAGE, links: LINKS, background: tok('--g-canvas'), other: tok('--gs-other'), onPick: pick, tip: n => `${n.type} · ${n.label}${n.at ? ' · ' + n.at.slice(5, 16).replace('T', ' ') : ''}` })
             msg.hidden = true; apply()
             window.__tools = Object.assign(window.__tools || {}, { graph: { focus: id => { const n = byId.get(id); if (n) pick(n); return g.focus(id) }, node: id => byId.get(id), counts: () => ({ nodes: storm.nodes.length, edges: storm.edges.length }) } })
             document.dispatchEvent(new CustomEvent('tool:ready', { detail: { tool: 'graph' } }))
