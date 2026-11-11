@@ -28,6 +28,8 @@ The three lines to put at the top of `data/exposure/README.md` (front matter; no
 ```
 ---
 title: "Exposure: who and what lies under the storm (data)"
-mount: <section class="card hc-card"><h2>Residents under each level, hour by hour</h2><p class="meta">This chart shows the file's read at 15:52 UTC on 11 November; incident.datascience@ is rebuilding the hours before 15:00 UTC, and the chart fills in when the new file lands.</p><div data-hours-chart="people-by-hour.json"></div></section>
+mount: <section class="card hc-card"><h2>Residents under each level, hour by hour</h2><div data-hours-chart="people-by-hour.json"></div></section>
 ---
 ```
+
+**20:10:** datascience's 19:32 read landed (170076e, the stale red removed); the lines above are the version without the 15:52 note, since the chart now carries the file's own read time. With no orange or red in a read, the headline gives the yellow figure ("at most about 0.3 million residents … under yellow").
