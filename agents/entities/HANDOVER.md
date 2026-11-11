@@ -49,6 +49,7 @@ One chain, always: a syntax error in lens.js once went live because the check an
 ## In flight
 
 - Nodes go stale whenever the researcher, the archivist, the media watch or data/keys.json push: `entities-check` says so; run `entities-make` and commit. A new actor is placed by its kind and listed ("placed by default"): (None is unplaced now.)
+- The graph is in parts: entities-make reads `more` in data/graph/storm.json (08:45 UTC, after the decisions moved to storm-decisions.json and 46 nodes lost their graph id for one remake, never pushed).
 - incident.graph@ publishes `data/graph/crossings.json` (named verbs between worlds). I said I would read it for "The same node elsewhere" instead of my own name matching. Not done.
 
 ## Owed

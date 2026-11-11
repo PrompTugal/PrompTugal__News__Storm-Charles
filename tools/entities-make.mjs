@@ -14,7 +14,9 @@ const seed = readJson(path.join(ROOT, 'entities/seed.json')), onto = readJson(pa
 const INC = `incidents/${seed.incident}/`
 const signals = readJson(path.join(ROOT, INC, 'data/signals.json')), G = readJson(path.join(ROOT, INC, 'data/decisions/graph.json'))
 let graphIds = new Set()
-for (const f of ['storm.json', 'storm-sources.json', 'storm-elsewhere.json']) try { for (const n of readJson(path.join(ROOT, 'data/graph', f)).nodes || []) graphIds.add(n.id) } catch { }
+// the graph is in parts (incident.graph@): storm.json names the others in `more`, so a part added later is read without a change here
+let graphParts = ['data/graph/storm.json']; try { graphParts = [...new Set([...graphParts, ...(readJson(path.join(ROOT, graphParts[0])).more || [])])] } catch { }
+for (const f of graphParts) try { for (const n of readJson(path.join(ROOT, f)).nodes || []) graphIds.add(n.id) } catch { }
 const rows = new Map(signals.items.map(x => [x.id, x])), dEdges = new Map(G.edges.map(e => [e.id, e])), dNodes = new Map(G.nodes.map(n => [n.id, n]))
 const die = m => { console.error('entities-make: ' + m); process.exit(1) }
 const short = (s, n = 260) => { s = String(s || '').replace(/\s+/g, ' ').trim(); return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : s }
