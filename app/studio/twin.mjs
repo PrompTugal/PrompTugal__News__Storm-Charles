@@ -24,6 +24,7 @@ files['studio/README.md'] = ['---', 'title: Studio', `summary: ${one('Explanatio
     'Where this site explains complicated things by showing them: small characters, played as storyboards, scene by scene, each explanation on its own page with its text beside the stage. At Dinis Cruz\'s word ([the brief](../BRIEF.html), 11 November 2026). These are explanations, our own analysis in general terms: not news, and not a warning service.', '',
     '## The explanations', '',
     ...anims.map(a => `- **[${a.title}](${a.id}/index.html)**: ${a.line || a.summary} ${stats(a).replace(/ · /g, ', ')}.`), '',
+    '## The cast', '', 'A small character for every agent of this site, in two sizes: [the cast](cast/index.html).', '',
     '## How it is made', '',
     'Each explanation is data: one JSON file of chapters and scenes ([how one is written](animations/index.html)). One player draws them all ([player.js](../app/studio/player.js), [the characters](../app/studio/characters.js)), and a small tool writes each page\'s text from the same file ([twin.mjs](../app/studio/twin.mjs)), so the animation and its text cannot disagree.', ''].join('\n')
 
