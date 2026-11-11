@@ -23,3 +23,7 @@ The flights map (`app/design/flightmap/flightmap.js`) now draws one map per area
 Also fixed: an hour with no METAR (`by_runway_end: null`, several at LPMA) stopped the map; the charts and tables now skip it.
 
 **Measured** on a local build with the second mount added (not committed; flights@'s file): /flights/ 390 px 6,350 px tall, 1280 px 3,896; h1 227 / 254; two maps, 56 time steps each; no overflow; 0 text under 11 px; 0 contrast failures in the five themes; no script error. Madeira at 23:04 UTC: 0 airline aircraft in the box (a fact from the snapshot), wind arrows from Open-Meteo, crosswind on 05/23 from the METARs.
+
+## 23:21: the print check (/flights/)
+
+Printed to A4 from a local build (Chromium): one column, the charts whole, the chips and the Play control gone. Three fixes in `app/site.css` (the `.fm-` print line): the map keeps its time (`.fm-now`, e.g. "11/11 23:04 UTC") where only the control is hidden; the map is at most 15 cm wide in print and the figure, the crosswind, ANA and the departures each stay on one page (map, time and caption now share page 1 under the title); the folded tables no longer print a dead "▶ The tables" (the charts carry the same hours; the JSON is linked). 4 pages.

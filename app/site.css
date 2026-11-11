@@ -945,7 +945,7 @@ footer.agent .ptn-foot a { font-weight: 700; }
 .fm-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 0; margin: 0 0 6px; font-size: 13px; color: var(--ink-2); }
 .fm-legend li { display: inline-flex; align-items: center; gap: 6px; }
 .fm-tables table { margin: 10px 0; } .fm-tables caption { text-align: left; font-weight: 600; padding: 4px 0; }
-@media print { .fm-ctl, .fm-item { display: none; } .fm-map { border-color: var(--ink); } .fm-plane path { fill: var(--ink); } }
+@media print { .fm-ctl > :not(.fm-now), .fm-item, details.wx-table.fm-tables { display: none; } .fm-ctl { margin: 4px 0 0; } .fm-fig, .fm-xw, .fm-mv, .fm-ana { break-inside: avoid; } .fm-map { border-color: var(--ink); max-width: 15cm; } .fm-plane path { fill: var(--ink); } } /* round 69: the printed map keeps its time; the folded tables do not print (the charts carry them; the JSON is linked) */
 .fm .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .fm-map .fm-place { font-size: calc(var(--fm-k, 2.6) * 13px); stroke-width: calc(var(--fm-k, 2.6) * 3px); } .fm-map .fm-scale text { font-size: calc(var(--fm-k, 2.6) * 12px); }
 .fm .lbl { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 2px 6px; border-radius: 3px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; } .fm-scale line { stroke-width: 3; }
