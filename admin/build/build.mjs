@@ -82,6 +82,36 @@ const titleOf = (md, fallback) => (md.match(/^#\s+(.+)$/m) || [, fallback])[1].r
 
 // ---------------------------------------------------------------- the page frame
 const up = rel => '../'.repeat(rel.split('/').length - 1) || './'
+// the menu: subsites on the first row, the pages of the subsite you are in on the second (incident.designer@, design/round-30.md;
+// RESTRUCTURE.md). A page is listed only when its source exists in the repository, so a section appears the push its owner ships it.
+const INCP = 'incidents/2026-11-10-storm-charles/'
+const MENU = [
+    ['Weather', [['Storm Charles', 'weather/index.html']]],
+    ['Data room', [['Front page', 'index.html'], ['Dashboard', INCP + 'index.html'], ['Timeline', INCP + 'timeline.html'], ['Decisions', INCP + 'decisions.html'], ['Data', 'datasets.html'], ['Query', 'data/query/index.html'], ['Graph', 'app/graph/index.html'], ['Library', 'library/index.html']]],
+    ['Sources', [['Sources', 'sources/index.html'], ['IPMA', 'sources/ipma/index.html'], ['MeteoAlarm', 'sources/meteoalarm/index.html']]],
+    ['Evidence', [['Evidence', 'evidence/index.html']]],
+    ['Entities', [['Entities', 'entities/index.html']]],
+    ['Labs', [['Labs', 'labs/index.html']]],
+    ['Board', [['Board', 'board/index.html']]],
+    ['Studio', [['Studio', 'studio/index.html']]],
+    ['Research', [['Media', 'research/media/index.html'], ['Social', 'research/social/index.html'], ['Wikipedia', 'research/wikipedia/index.html'], ['Weather sites', 'research/weather-sites/index.html']]],
+    ['Team', [['Agents', 'agents/index.html'], ['Jobs', 'agents/JOBS.html'], ['Log in', 'account/index.html'], ['Contribute', 'contribute.html']]],
+    ['Help', [['Help', 'help/index.html'], ["What's new", 'news/index.html']]],
+    ['About', [['Brief', 'BRIEF.html'], ['Restructure', 'RESTRUCTURE.html'], ['Design', 'design/index.html'], ['LLMs', 'llms.txt']]]
+]
+const GENERATED = new Set(['index.html', 'datasets.html', 'llms.txt', 'library/index.html'])
+const hasPage = t => GENERATED.has(t) || fs.existsSync(path.join(ROOT, t)) || fs.existsSync(path.join(ROOT, t.replace(/index\.html$/, 'README.md'))) || fs.existsSync(path.join(ROOT, t.replace(/\.html$/, '.md')))
+const MENU_LIVE = MENU.map(([name, items]) => [name, items.filter(([, t]) => hasPage(t))]).filter(([, items]) => items.length)
+function menu(rel, u) {
+    const dir = t => t.replace(/[^/]*$/, '')
+    // the subsite of a page: an exact address first, else the longest folder it sits under
+    let active = MENU_LIVE.find(([, items]) => items.some(([, t]) => t === rel)), best = 0
+    if (!active) for (const s of MENU_LIVE) for (const [, t] of s[1]) { const d = dir(t); if (d && rel.startsWith(d) && d.length > best) { best = d.length; active = s } }
+    if (!active) active = MENU_LIVE.find(([n]) => n === 'Data room') || MENU_LIVE[0]
+    const a = ([label, t], cur) => `<a href="${u}${t}"${cur ? ' aria-current="page"' : ''}>${esc(label)}</a>`
+    return `<nav class="sites" aria-label="Subsites">${MENU_LIVE.map(s => `<a href="${u}${s[1][0][1]}"${s === active ? ' aria-current="true"' : ''}>${esc(s[0])}</a>`).join('')}</nav>
+<nav class="top" aria-label="${esc(active[0])}"><span class="navg"><b>${esc(active[0])}</b>${active[1].map(i => a(i, i[1] === rel)).join('')}</span></nav>`
+}
 function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
     const u = rel === '404.html' ? '/' : up(rel)   // the 404 page is served at any depth: its links are absolute
     return `<!doctype html>
@@ -100,12 +130,27 @@ ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 ${extraHead}
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span><button type="button" class="theme" id="theme" hidden title="Colour theme: follow the system, light, or dark">Theme: auto</button>
-<nav class="top" aria-label="Sections"><span class="navg"><b>Now</b><a href="${u}incidents/2026-11-10-storm-charles/index.html">Dashboard</a><a href="${u}incidents/2026-11-10-storm-charles/timeline.html">Timeline</a></span><span class="navg"><b>Data</b><a href="${u}datasets.html">Data</a><a href="${u}data/query/index.html">Query</a><a href="${u}app/graph/index.html">Graph</a><a href="${u}llms.txt">For agents</a></span><span class="navg"><b>Studio</b><a href="${u}studio/index.html">Studio</a></span><span class="navg"><b>Research</b><a href="${u}research/media/index.html">Media</a><a href="${u}research/wikipedia/index.html">Wikipedia</a><a href="${u}research/weather-sites/index.html">Weather sites</a><a href="${u}library/index.html">Library</a></span><span class="navg"><b>Team</b><a href="${u}agents/index.html">Agents</a><a href="${u}agents/JOBS.html">Jobs</a><a href="${u}account/index.html">Account</a><a href="${u}contribute.html">Contribute</a></span><span class="navg"><b>About</b><a href="${u}BRIEF.html">Brief</a><a href="${u}design/index.html">Design</a></span></nav></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span><a class="ver" href="${u}version.json" title="This version: what was built, from which commit, when">${esc(VERSION)}</a><button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
+${menu(rel, u)}</div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
+<div class="shell" id="shell"><div class="shell-main">
 ${body}
+</div><aside class="panel" id="panel" hidden aria-label="The reader's panel" data-base="${u}" data-version="${esc(VERSION)}"${twin ? ` data-twin="${esc(twin)}"` : ''}>
+<p class="pn-top"><b>The reader's panel</b><button type="button" id="panel-close" aria-label="Close the panel">Close ×</button></p>
+<details id="pn-lens" open><summary>Lens</summary><p class="pn-meta">Colour what a page is made of. Yours only; kept in this browser.</p>
+<label><input type="checkbox" data-lens="fact"> <span class="lbl l-fact">fact</span> read at the source that decides or warns</label>
+<label><input type="checkbox" data-lens="evidence"> <span class="lbl l-evidence">evidence</span> reported by others</label>
+<label><input type="checkbox" data-lens="hypothesis"> <span class="lbl l-hypothesis">hypothesis</span> our analysis</label>
+<label><input type="checkbox" data-lens="entity"> <span class="pn-sw ent"></span> entities (things with a page here)</label>
+<label><input type="checkbox" data-lens="out" checked> <span class="pn-sw out"></span> links that leave this site</label></details>
+<details id="pn-item" open><summary>This item</summary><div id="panel-item"><p class="pn-meta">Click a bar in a strip, a row of the timeline or a linked word: what it is, and where it comes from, opens here.</p></div></details>
+<details id="pn-source"><summary>Source</summary><div id="panel-source"><p class="pn-meta">The file behind this page, shown here, not downloaded.</p></div></details>
+<details id="pn-theme"><summary>Theme</summary><div class="pn-themes" role="radiogroup" aria-label="Theme">${['auto', 'light', 'dark', 'paper', 'night', 'contrast'].map(t => `<label><input type="radio" name="pn-theme" value="${t}"> ${t}</label>`).join('')}</div></details>
+<details id="pn-version"><summary>Version</summary><div id="panel-version"><p><a href="${u}version.json">${esc(VERSION)}</a></p></div></details>
+</aside></div>
 <footer class="agent"><div class="wrap">Built and run by Dinis Cruz's incident team of Claude Code agents (see <a href="${u}agents/index.html">Agents</a>), with a named human operator. Facts, evidence and hypotheses are labelled; hypotheses are never stated as fact. <span class="cap">The times IPMA sent its warnings come through <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes, not a live feed.</span> ${twin ? `<a href="${esc(twin)}">This page as markdown</a> · ` : ''}<a href="${u}version.json">${esc(VERSION)}</a></div></footer>
 <script src="${u}app/design/frame.js?v=${encodeURIComponent(VERSION)}"></script>
+<script src="${u}app/design/panel.js?v=${encodeURIComponent(VERSION)}"></script>
 </body>
 </html>
 `
