@@ -44,7 +44,9 @@ const detail_files = []
 for (const [h, commits] of hours) {
     const name = `detail-${h}.json`, f = path.join(ROOT, 'data/agents', name), body = { about: 'What each commit of this hour changed: its message beyond the subject, its session (the Claude-Session trailer), and its files with lines added and removed (git numstat; at most 40 files a commit). Written by tools/agents-commits.mjs. The list of commits: data/agents/commits.json.', by: 'incident.observability@web-summit.dinis', hour: h + ':00Z', commits }
     let prev = null; try { prev = JSON.parse(fs.readFileSync(f, 'utf8')) } catch { }
-    if (!prev || JSON.stringify(prev.commits) !== JSON.stringify(commits)) fs.writeFileSync(f, JSON.stringify({ ...body, updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z') }, null, 1) + '\n')
+    if (!prev || JSON.stringify(prev.commits) !== JSON.stringify(commits)) { const txt = JSON.stringify({ ...body, updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'), commits: '@C' }, null, 1).replace('"@C"', () => '{\n' + Object.entries(commits).map(([k, v]) => JSON.stringify(k) + ': ' + JSON.stringify(v)).join(',\n') + '\n}') + '\n'
+        if (Buffer.byteLength(txt) > 256e3) for (const v of Object.values(commits)) { v.more_files += Math.max(0, v.files.length - 12); v.files = v.files.slice(0, 12); v.body = String(v.body || '').slice(0, 300) }   // a very busy hour: fewer files a commit
+        fs.writeFileSync(f, Buffer.byteLength(txt) > 256e3 ? JSON.stringify({ ...body, updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z') }) + '\n' : txt) }
     detail_files.push(name)
 }
 // each agent's status file through the night: at every commit that changed agents/<role>/status.json, how many asks for
@@ -62,15 +64,21 @@ for (const f of git('ls-tree', '-r', '--name-only', ref, 'agents/').split('\n').
     }
     status_history[role] = rows
 }
-// the file stays small (the gate's limit is 256 KB): the newest commits that fit in about 170 KB
-while (items.length > 50 && JSON.stringify(items).length > 170e3) items.pop()
+// the file stays small (the gate's limit is 256 KB, counted on the file as written): a row a line rather than a field a line, and
+// the newest commits that fit beside the status history in 236 KB. (Until 11 November 05:14 the budget was counted before the file was
+// indented, and the file passed the limit as the night grew: the gate refused it, rightly.)
+const rows = a => '[\n' + a.map(x => JSON.stringify(x)).join(',\n') + '\n]'
+const fixed = Buffer.byteLength(JSON.stringify(status_history)) + 4000
+const sizeOf = () => { const p = new Map(); for (const c of items) for (const to of c.to) p.set(c.agent + '\u0000' + to, 1); return fixed + Buffer.byteLength(JSON.stringify(items)) + items.length + p.size * 150 }
+while (items.length > 50 && sizeOf() > 236e3) items.pop()
 const pairs = new Map()
 for (const c of items) for (const to of c.to) { const k = c.agent + '\u0000' + to, p = pairs.get(k) || { from: c.agent, to, n: 0, last: c.at }; p.n++; pairs.set(k, p) }
 fs.mkdirSync(path.dirname(OUT), { recursive: true })
 fs.writeFileSync(OUT, JSON.stringify({
     about: 'The last commits on dev of this repository: who pushed what, when, and for whom (Agent: and For: trailers), and each pair\'s count. Written by tools/agents-commits.mjs from git log; a snapshot as of updated (the live page reads GitHub\'s public API first and falls back to this). Each item: sha, at, agent, to, issue, what, served_in (the first release that served it; empty: not yet tagged when this was written), files, added, removed; its files and message are in detail-<hour>.json (detail_files). status_history: each agent\'s status file at every commit that changed it (asks for Dinis, last_wake, blocked). No session ids. A commit\'s page: https://github.com/' + REPO + '/commit/<sha>.',
     by: 'incident.observability@web-summit.dinis', updated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'), repository: REPO, branch: 'dev',
-    head: items[0]?.sha || '', count: items.length, from: items.at(-1)?.at || '', detail_files, status_history,
-    talks: [...pairs.values()].sort((a, b) => b.n - a.n || a.from.localeCompare(b.from)), items
-}, null, 1) + '\n')
+    head: items[0]?.sha || '', count: items.length, from: items.at(-1)?.at || '', detail_files, status_history: '@H', talks: '@T', items: '@I'
+}, null, 1).replace('"@H"', () => '{\n' + Object.entries(status_history).map(([k, v]) => JSON.stringify(k) + ': ' + JSON.stringify(v)).join(',\n') + '\n}')
+    .replace('"@T"', () => rows([...pairs.values()].sort((a, b) => b.n - a.n || a.from.localeCompare(b.from)))).replace('"@I"', () => rows(items)) + '\n')
+if (fs.statSync(OUT).size > 256e3) { console.error(`agents-commits: ${fs.statSync(OUT).size} bytes is over the gate's limit; the budget above needs lowering`); process.exit(1) }
 console.log(`agents-commits: ${items.length} commits, ${pairs.size} pairs -> data/agents/commits.json (${fs.statSync(OUT).size} bytes)`)

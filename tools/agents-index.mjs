@@ -46,7 +46,7 @@ for (const d of fs.readdirSync(path.join(ROOT, 'agents'), { withFileTypes: true 
     Object.assign(a, {
         status_file: rel, status_sha256: crypto.createHash('sha256').update(raw).digest('hex'),
         state: clean(s.state || ''), last_wake: clean(s.last_wake || ''),
-        jobs: list(s.jobs), done: list(s.done), next: list(s.next),
+        jobs: list(s.jobs), done: short(list(s.done)), done_total: list(s.done).length, next: list(s.next),
         asks_dinis: asks.filter(x => /^Dinis\b/i.test(x)), asks: asks.filter(x => !/^Dinis\b/i.test(x))
     })
 }
@@ -70,6 +70,9 @@ const ledger = fs.existsSync(LED) ? fs.readdirSync(LED).filter(f => f.endsWith('
 let CAST = {}; try { for (const c of JSON.parse(read('app/studio/agents/index.json')).agents || []) CAST[c.role] = c } catch { }
 let GROUPS = []; try { GROUPS = JSON.parse(read('data/agents/groups.json')).groups || [] } catch { }
 const titleOf = rel => { try { const t = read(rel); return (t.match(/^title:\s*(.+)$/m) || t.match(/^#\s+(.+)$/m) || [, rel])[1].replace(/[*`"]/g, '').slice(0, 90) } catch { return rel } }
+// the index stays under the gate's 256 KB as the done lists grow: the first 3 and the last 12 of each, each cut at 300 characters;
+// the page reads every agent's whole status file as served, so nothing is lost to a reader
+function short(d) { return (d.length > 15 ? [...d.slice(0, 3), ...d.slice(-12)] : d).map(x => typeof x === 'string' && x.length > 300 ? x.slice(0, 299) + '…' : x) }
 for (const a of roster.values()) {
     const ex = rel => fs.existsSync(path.join(ROOT, rel))
     if (ex(`app/studio/agents/${a.role}.svg`)) { a.figure = `app/studio/agents/${a.role}.svg`; a.mark = ex(`app/studio/agents/${a.role}.mark.svg`) ? `app/studio/agents/${a.role}.mark.svg` : a.figure }
