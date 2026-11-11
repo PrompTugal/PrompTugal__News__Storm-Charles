@@ -4,13 +4,13 @@
  "updated": "2026-11-11T08:47:12Z",
  "incident": "2026-11-10-storm-charles",
  "counts": {
-  "nodes": 224,
-  "edges": 456,
+  "nodes": 235,
+  "edges": 492,
   "by_type": {
-   "agent": 34,
-   "body": 16,
+   "agent": 38,
+   "body": 17,
    "day": 4,
-   "decision": 58,
+   "decision": 64,
    "hazard": 5,
    "organisation": 7,
    "outlet": 30,
@@ -60,6 +60,18 @@
    "rows": 0
   },
   {
+   "id": "agent/brief",
+   "type": "agent",
+   "name": "incident.brief@web-summit.dinis",
+   "also": [
+    "incident.brief@"
+   ],
+   "label": "ours",
+   "graph": null,
+   "edges": 1,
+   "rows": 0
+  },
+  {
    "id": "agent/broadcast",
    "type": "agent",
    "name": "incident.broadcast@web-summit.dinis",
@@ -96,6 +108,18 @@
    "rows": 1
   },
   {
+   "id": "agent/datascience",
+   "type": "agent",
+   "name": "incident.datascience@web-summit.dinis",
+   "also": [
+    "incident.datascience@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.datascience@web-summit.dinis",
+   "edges": 1,
+   "rows": 1
+  },
+  {
    "id": "agent/designer",
    "type": "agent",
    "name": "incident.designer@web-summit.dinis",
@@ -104,6 +128,18 @@
    ],
    "label": "ours",
    "graph": "agent:incident.designer@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/desk",
+   "type": "agent",
+   "name": "incident.desk@web-summit.dinis",
+   "also": [
+    "incident.desk@"
+   ],
+   "label": "ours",
+   "graph": null,
    "edges": 1,
    "rows": 0
   },
@@ -308,6 +344,18 @@
    ],
    "label": "ours",
    "graph": "agent:incident.shadow@web-summit.dinis",
+   "edges": 1,
+   "rows": 0
+  },
+  {
+   "id": "agent/sherpa",
+   "type": "agent",
+   "name": "incident.sherpa@web-summit.dinis",
+   "also": [
+    "incident.sherpa@"
+   ],
+   "label": "ours",
+   "graph": "agent:incident.sherpa@web-summit.dinis",
    "edges": 1,
    "rows": 0
   },
@@ -541,7 +589,7 @@
    ],
    "label": "fact",
    "graph": "actor:government",
-   "edges": 1,
+   "edges": 2,
    "rows": 9
   },
   {
@@ -554,7 +602,7 @@
    "label": "fact",
    "graph": "actor:ipma",
    "edges": 8,
-   "rows": 43
+   "rows": 50
   },
   {
    "id": "body/madeira-gov",
@@ -602,7 +650,7 @@
    "label": "ours",
    "graph": "actor:meteoalarm",
    "edges": 1,
-   "rows": 0
+   "rows": 1
   },
   {
    "id": "body/mj",
@@ -625,6 +673,21 @@
    "graph": null,
    "edges": 0,
    "rows": 4
+  },
+  {
+   "id": "body/rsb-lisboa",
+   "type": "body",
+   "name": "Regimento de Sapadores Bombeiros",
+   "also": [
+    "Sapadores Bombeiros",
+    "RSB",
+    "Lisbon's fire brigade",
+    "Lisbon fire brigade"
+   ],
+   "label": "evidence",
+   "graph": null,
+   "edges": 1,
+   "rows": 0
   },
   {
    "id": "day/2026-11-09",
@@ -654,7 +717,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 11
+   "rows": 14
   },
   {
    "id": "day/2026-11-11",
@@ -688,7 +751,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 9
+   "rows": 10
   },
   {
    "id": "decision/aemet-names-charles",
@@ -738,6 +801,16 @@
    "label": "evidence",
    "graph": "decision:ana-conditioned",
    "edges": 3,
+   "rows": 0
+  },
+  {
+   "id": "decision/ana-movements-1100",
+   "type": "decision",
+   "name": "ANA's balance at 11:00: Lisbon 288 of 565 planned movements cancelled in advance, plus 22 cancelled during…",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
+   "edges": 2,
    "rows": 0
   },
   {
@@ -831,9 +904,19 @@
    "rows": 0
   },
   {
+   "id": "decision/carris-service-1156",
+   "type": "decision",
+   "name": "Carris (its own page): service continues, priority to essential journeys (health, emergency workers); Web…",
+   "also": [],
+   "label": "fact",
+   "graph": null,
+   "edges": 4,
+   "rows": 0
+  },
+  {
    "id": "decision/cp-fertagus-bridge",
    "type": "decision",
-   "name": "CP suppresses four trains crossing the 25 de Abril bridge in the most critical window (12:00 to 15:00…",
+   "name": "CP suppresses four trains crossing the 25 de Abril bridge in what it calls the most critical window; CP says…",
    "also": [],
    "label": "evidence",
    "graph": "decision:cp-fertagus-bridge",
@@ -858,6 +941,16 @@
    "label": "evidence",
    "graph": "decision:csm-courts",
    "edges": 2,
+   "rows": 0
+  },
+  {
+   "id": "decision/fertagus-normal-1040",
+   "type": "decision",
+   "name": "Fertagus (its own notice, \"Alerta Vermelho | Condições Meteorológicas Adversas\", 11 Nov): conditions met to…",
+   "also": [],
+   "label": "fact",
+   "graph": null,
+   "edges": 4,
    "rows": 0
   },
   {
@@ -893,6 +986,16 @@
    "rows": 0
   },
   {
+   "id": "decision/gov-council-sao-bento",
+   "type": "decision",
+   "name": "Government meets at São Bento; reiterates that prevention is the key word and that the storm has not yet…",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
+   "edges": 2,
+   "rows": 0
+  },
+  {
    "id": "decision/gov-recommends-suspend",
    "type": "decision",
    "name": "Government recommends suspending Web Summit on Wednesday; the decision rests with the organisers (\"Já…",
@@ -912,7 +1015,7 @@
    "name": "222 flights cancelled at Lisbon and Faro by 09:20 (departures and arrivals): 208 at Lisbon (Humberto…",
    "also": [],
    "label": "evidence",
-   "graph": null,
+   "graph": "decision:lisbon-flights-208",
    "edges": 2,
    "rows": 0
   },
@@ -1077,6 +1180,16 @@
    "rows": 0
   },
   {
+   "id": "decision/rsb-lisbon-count-1000",
+   "type": "decision",
+   "name": "Occurrence count, Lisbon city: about 50 from 00:00 to 10:00, mostly floods",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
+   "edges": 3,
+   "rows": 0
+  },
+  {
    "id": "decision/schools-close",
    "type": "decision",
    "name": "Schools closed on Wednesday",
@@ -1217,6 +1330,16 @@
    "rows": 0
   },
   {
+   "id": "decision/vasco-da-gama-100",
+   "type": "decision",
+   "name": "Vasco da Gama bridge limited to 100 km/h since 07:30 for reduced visibility; usual limits on the 25 de Abril…",
+   "also": [],
+   "label": "evidence",
+   "graph": null,
+   "edges": 3,
+   "rows": 0
+  },
+  {
    "id": "decision/websummit-assessing",
    "type": "decision",
    "name": "Organisers: aware of the warnings, assessing with ANEPC and PSP, update to follow; no sign yet of cancelling…",
@@ -1290,7 +1413,7 @@
    "label": "ours",
    "graph": null,
    "edges": 4,
-   "rows": 17
+   "rows": 22
   },
   {
    "id": "hazard/high-winds",
@@ -1305,7 +1428,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 30
+   "rows": 34
   },
   {
    "id": "hazard/sea-agitation",
@@ -1335,7 +1458,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 22
+   "rows": 25
   },
   {
    "id": "hazard/tidal-flooding",
@@ -1370,8 +1493,8 @@
    "also": [],
    "label": "evidence",
    "graph": "actor:lusoponte",
-   "edges": 4,
-   "rows": 1
+   "edges": 5,
+   "rows": 2
   },
   {
    "id": "organisation/night-summit",
@@ -1427,7 +1550,7 @@
    "label": "fact",
    "graph": "actor:websummit",
    "edges": 9,
-   "rows": 31
+   "rows": 33
   },
   {
    "id": "outlet/ap",
@@ -1462,8 +1585,8 @@
    ],
    "label": "ours",
    "graph": "actor:outlet:cnn-portugal",
-   "edges": 9,
-   "rows": 6
+   "edges": 13,
+   "rows": 8
   },
   {
    "id": "outlet/correio-da-manha",
@@ -1512,7 +1635,7 @@
    "label": "ours",
    "graph": "actor:outlet:eco",
    "edges": 2,
-   "rows": 3
+   "rows": 5
   },
   {
    "id": "outlet/euronews",
@@ -1561,7 +1684,7 @@
    ],
    "label": "ours",
    "graph": "actor:outlet:iol",
-   "edges": 9,
+   "edges": 13,
    "rows": 0
   },
   {
@@ -1650,7 +1773,7 @@
    "label": "ours",
    "graph": "actor:outlet:observador",
    "edges": 14,
-   "rows": 6
+   "rows": 7
   },
   {
    "id": "outlet/portugal-news",
@@ -1811,7 +1934,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 1
+   "rows": 2
   },
   {
    "id": "place/areeiro",
@@ -1887,7 +2010,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 34
+   "rows": 42
   },
   {
    "id": "place/lisbon-district",
@@ -1919,7 +2042,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 16
+   "rows": 17
   },
   {
    "id": "place/mainland-portugal",
@@ -2028,7 +2151,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 3
+   "rows": 4
   },
   {
    "id": "place/vasco-da-gama-bridge",
@@ -2040,7 +2163,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 2
+   "rows": 3
   },
   {
    "id": "place/venue",
@@ -2180,8 +2303,8 @@
    ],
    "label": "fact",
    "graph": "actor:airport",
-   "edges": 3,
-   "rows": 8
+   "edges": 4,
+   "rows": 10
   },
   {
    "id": "service/carris",
@@ -2190,8 +2313,8 @@
    "also": [],
    "label": "fact",
    "graph": "actor:carris",
-   "edges": 2,
-   "rows": 0
+   "edges": 3,
+   "rows": 1
   },
   {
    "id": "service/carris-metropolitana",
@@ -2235,8 +2358,8 @@
    "also": [],
    "label": "evidence",
    "graph": "actor:fertagus",
-   "edges": 1,
-   "rows": 0
+   "edges": 2,
+   "rows": 1
   },
   {
    "id": "service/flixbus",
@@ -2272,7 +2395,7 @@
    "label": "evidence",
    "graph": "actor:metro",
    "edges": 5,
-   "rows": 1
+   "rows": 2
   },
   {
    "id": "service/mmp",
@@ -2383,7 +2506,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 8
+   "rows": 11
   },
   {
    "id": "term/communique",
@@ -2396,7 +2519,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 11
+   "rows": 14
   },
   {
    "id": "term/diario-da-republica",
@@ -2418,7 +2541,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 6
+   "rows": 7
   },
   {
    "id": "term/fact",
@@ -2444,7 +2567,7 @@
    "label": "ours",
    "graph": null,
    "edges": 1,
-   "rows": 6
+   "rows": 7
   },
   {
    "id": "term/label",
@@ -2456,7 +2579,7 @@
    "label": "ours",
    "graph": null,
    "edges": 0,
-   "rows": 8
+   "rows": 9
   },
   {
    "id": "term/lead-time",
@@ -2603,7 +2726,7 @@
    "label": "fact",
    "graph": "warning:ipma-red-rain-0900",
    "edges": 9,
-   "rows": 14
+   "rows": 17
   },
   {
    "id": "warning/ipma-red-wind",

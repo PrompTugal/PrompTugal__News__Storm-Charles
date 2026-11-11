@@ -30,7 +30,7 @@ function pages() {
     const MON = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const when = z => { const m = String(z || '').match(/^(\d{4})-(\d\d)-(\d\d)(?:T(\d\d):(\d\d))?/); return !m ? '' : `${+m[3]} ${MON[+m[2] - 1].slice(0, 3)}${m[4] ? `, ${m[4]}:${m[5]} UTC` : ''}` }
     const kept = `> Kept by incident.entities@web-summit.dinis, ${(d => `${+d.slice(8, 10)} ${MON[+d.slice(5, 7) - 1]} ${d.slice(0, 4)}, ${d.slice(11, 16)} UTC`)(index.updated)}`
-    const host = url => { try { return new URL(url).host.replace(/^www\./, '') } catch { return 'source' } }
+    const hostOf = new Map(), host = url => { let h = hostOf.get(url); if (h === undefined) { try { h = new URL(url).host.replace(/^www\./, '') } catch { h = 'source' } hostOf.set(url, h) } return h }
     const nlink = (id, from) => `[${t(byId.get(id).name)}](${from}${id}.md)`
     const rowLink = (id, up) => `[row ${id}](${up}${INC}timeline.md#${id})`
     const src = (e, up) => {
@@ -48,7 +48,9 @@ function pages() {
     const rowTable = (rs, up) => rs.length ? ['| When (UTC) | Label | What the row says |', '|---|---|---|', ...rs.slice().sort((a, b) => a.at < b.at ? 1 : -1).map(r => `| [${when(r.at)}](${up}${INC}timeline.md#${r.id}) | ${r.label}${r.decision ? ', decision' : ''} | ${t(r.text).slice(0, 300)}${r.text.length > 300 ? '…' : ''} |`)].join('\n') : ''
     const CAP = loadCaptures()
 
-    const NBP = neighbours(), mine = new Set(nodes.flatMap(n => [n.name, ...n.also].map(x => x.toLowerCase())))
+    const NBP = neighbours(), nbByName = new Map(), nbByEntity = new Map()
+    NBP.forEach((x, i) => { const put = (m, k) => { if (!m.has(k)) m.set(k, new Set()); m.get(k).add(i) }; if (x.type === 'source') { if (x.entity) put(nbByEntity, x.entity); else put(nbByName, x.name.toLowerCase()) } else for (const a of (x.same || [x.name, ...x.also])) put(nbByName, a.toLowerCase()) })
+    const mine = new Set(nodes.flatMap(n => [n.name, ...n.also].map(x => x.toLowerCase())))
     for (const n of nodes) {
         const up = '../../', here = '../', out = []
         const names = n.also.filter(a => !n.match?.none?.includes(a))
@@ -80,7 +82,8 @@ function pages() {
         for (const e of [...(ss && n.label !== 'ours' ? [{ source: ss.url, read_utc: ss.read_utc }] : []), ...n.edges, ...(incoming.get(n.id) || [])]) if (!e.source.startsWith('https://storm-charles.promptugal.news/') && !seen.has(e.source)) seen.set(e.source, e)
         out.push(`## Evidence (${seen.size} outside address${seen.size === 1 ? '' : 'es'})`, '', seen.size ? [...seen.values()].map(e => { const c = CAP.get(e.source); return `- ${host(e.source)}${e.read_utc ? `, read ${when(e.read_utc)}` : ''} · ${c ? `[our capture of it](${up}evidence/${c}.md) (the page as we read it, its hash, then the way out)` : `no capture of ours yet · [the address itself](${u(e.source)})`}` }).join('\n') : 'Its statements come from this site\'s own files.', '')
         const myNames = new Set([n.name, ...n.also].map(x => x.toLowerCase()))
-        const across = NBP.filter(x => x.type === 'source' ? (x.entity ? x.entity === n.id : myNames.has(x.name.toLowerCase())) : (x.same || [x.name, ...x.also]).some(a => myNames.has(a.toLowerCase())))
+        const hit = new Set(nbByEntity.get(n.id) || []); for (const a of myNames) for (const i of nbByName.get(a) || []) hit.add(i)
+        const across = [...hit].sort((a, b) => a - b).map(i => NBP[i])
         out.push('## The same node elsewhere', '', ...across.map(x => x.type === 'source' ? `- As a source of this site (${x.kind}): [${t(x.name)}, its source page](${up}${x.md}). ${t(x.summary).slice(0, 420)}` : x.type === 'ipma' ? `- In IPMA's open data (${x.kind}): [${t(x.same[0])}](${up}${x.md})` : `- In the meteorology graph (${x.kind}): [${t(x.name)}](${up}${x.md}): ${t(x.summary).slice(0, 200)}`), n.graph ? `- In the graph: \`${n.graph}\` ([open it there](${up}app/graph/index.html?node=${encodeURIComponent(n.graph)}), [its data](${up}data/graph/storm.json))` : '- The graph (data/graph/) has no node for this yet.', ...(n.page ? [`- Its page on this site: [${t(n.page.replace(/README\.md$/, ''))}](${up}${n.page})`] : []), `- As data: [${n.id}.json](${n.id.split('/')[1]}.json) · [every node](${up}entities/index.json) · [the grammar](${up}entities/ontology.md)`, '')
         write(`entities/${n.id}.md`, out.join('\n'))
     }
