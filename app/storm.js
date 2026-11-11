@@ -26,7 +26,7 @@
     const el = (tag, attrs = {}, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n }
     const title = (n, text) => { el('title', {}, n).textContent = text; return n }
     const srcHtml = ss => (ss || []).map(s => safe(s.url) ? `<a href="${esc(s.url)}" rel="noopener">${esc(s.label)}</a>` : esc(s.label)).join('; ')
-    const LEVEL = { yellow: 'var(--st-gold)', orange: 'var(--warm)', red: 'var(--bad)' }
+    const LEVEL = { yellow: 'var(--yellow)', orange: 'var(--orange)', red: 'var(--red)' }   // IPMA's levels wear the site's warning tokens (design/README.md, rule 3)
     const LABEL = { fact: 'Fact', evidence: 'Evidence', hypothesis: 'Hypothesis' }
 
     const CSS = `
@@ -55,7 +55,7 @@
 .incident svg text { fill: var(--ink); font: 12px/1.2 system-ui, sans-serif; }
 .incident svg .muted { fill: var(--ink-2); font-size: 11px; }
 .incident svg .grid { stroke: var(--line); stroke-width: 1; }
-.incident svg .now { stroke: var(--bad); stroke-width: 2; stroke-dasharray: 4 3; }
+.incident svg .now { stroke: var(--focus); stroke-width: 2; stroke-dasharray: 4 3; }
 .incident svg .mk { cursor: pointer; }
 .incident svg .mk:focus { outline: none; } .incident svg .mk:focus > :first-child { stroke: var(--focus); stroke-width: 3; }
 .inc-detail { min-height: 3.2em; margin: .5rem 0 0; padding: .6rem .8rem; border-left: 3px solid var(--line-2); background: var(--surface-2); font-size: .9rem; }
@@ -260,7 +260,7 @@
         const box = mount.querySelector('#inc-wx'), wr = state.warnings, st = state.stations, fc = state.forecast, ap = state.airport, an = state.analysis
         if (!wr && !st) { box.innerHTML = '<p class="meta">No weather files yet.</p>'; return }
         const wl = an && an.wednesday_lisbon
-        box.innerHTML = `<p class="meta">Kept by incident.meteorologist@web-summit.dinis from IPMA's open data and the airport's METAR and TAF (<a href="../../${esc(mount.dataset.dir)}weather/README.md">the weather README</a>). Facts, except the analysis, which is labelled.</p>
+        box.innerHTML = `<p class="meta">Kept by incident.meteorologist@web-summit.dinis from IPMA's open data and the airport's METAR and TAF (<a href="../../${esc(mount.dataset.dir)}weather/README.md">the weather README</a>). Facts, except the analysis, which is labelled. <b>The day hour by hour</b> (warnings, decisions, the airport forecast, the city model, observations) is drawn once, on the front page: <a href="../../index.html#day">the day</a> · <a href="../../index.html#wind">wind: warned, forecast, observed</a> · <a href="../../index.html#where">district by district</a>. Below: what only this page has, read live every minute: the stations' mean wind, and the warnings as they stand now.</p>
 <h3>Mean wind observed, gusts at the airport, and IPMA's model (km/h, UTC)</h3><div class="inc-scroll" id="inc-obs"></div>
 <p class="meta">Solid lines: mean wind at Lisbon stations (IPMA; this feed has no gusts). Dots: the airport's METAR gusts. Dashed: IPMA's hourly model, mean wind. Red band: the red wind warning.</p>
 ${wl ? `<div class="inc-detail"><span class="lab hypothesis">Analysis</span>by ${esc(an.by)} at ${hm(T(an.written_utc))}: worst <b>${hm(T(wl.worst_window_utc[0]))} to ${hm(T(wl.worst_window_utc[1]))}</b> on Wednesday, likely peak ${hm(T(wl.likely_peak_utc[0]))} to ${hm(T(wl.likely_peak_utc[1]))}, over by ${hm(T(wl.ends_utc))} (confidence: window ${esc(wl.confidence.window)}, peak ${esc(wl.confidence.peak_hour_and_strength)}). ${(an.lead_times || []).length ? `<br><b>Lead times:</b> ${an.lead_times.filter(l => Number.isFinite(+l.lead_hours) && l.lead_hours !== null).map(l => `${esc(l.warning)} ${Math.round(l.lead_hours)} h ahead`).join('; ')}` : ''}</div>` : ''}
