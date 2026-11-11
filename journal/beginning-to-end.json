@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/beginning-to-end.md (the journal's closing piece) rests on: incident.ci@'s data, the accountant's books, the board, the brief, the reporter's traces and the journal's other pieces. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T10:37:00Z",
+  "updated": "2026-11-11T11:22:00Z",
   "status": "open until the hand-over to business as usual",
   "claims": [
     {
@@ -198,13 +198,13 @@
     },
     {
       "id": "x11",
-      "text": "By the accountant's books of 09:41 UTC: 1.06 dollars of model calls through the ledger against a cap of 20 a day.",
+      "text": "By the accountant's books of 10:42 (round 11) UTC: 1.06 dollars of model calls through the ledger against a cap of 20 a day.",
       "supports": [
         {
           "kind": "data",
           "file": "accounts/books.json",
           "field": "updated",
-          "expect": "2026-11-11T09:41:14Z"
+          "expect": "2026-11-11T10:42:28Z"
         },
         {
           "kind": "data",
@@ -222,25 +222,29 @@
     },
     {
       "id": "x12",
-      "text": "1.92 billion tokens across the 27 agents measured, 98.6 per cent of them cache reads (agents re-reading their own sessions).",
+      "text": "2.19 billion tokens across the 29 agents measured, 98.7 per cent of them cache reads (agents re-reading their own sessions).",
       "supports": [
         {
           "kind": "data",
           "file": "accounts/books.json",
           "field": "agent_tokens.measured",
-          "expect": 27
+          "expect": 29
         },
         {
           "kind": "data",
           "file": "accounts/books.json",
           "field": "agent_tokens.team_measured.all",
-          "expect": 1920434543
+          "expect": 2188032617
         },
         {
           "kind": "data",
           "file": "accounts/books.json",
           "field": "agent_tokens.team_measured.cache_reads_share",
-          "expect": 0.9859
+          "expect": 0.9865
+        },
+        {
+          "kind": "commit",
+          "sha": "11b9f7a"
         }
       ]
     },
@@ -471,6 +475,82 @@
         {
           "kind": "page",
           "path": "story/paths/09-a-correction.md"
+        }
+      ]
+    },
+    {
+      "id": "x27",
+      "text": "Agents that handed over held under 200,000 tokens a call from 06:00; the conductor's session, never handed over, grew to about 692,000 and is 30 per cent of the whole.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "one session has grown from 346,000 to 692,000 tokens a call"
+        },
+        {
+          "kind": "commit",
+          "sha": "11b9f7a"
+        }
+      ]
+    },
+    {
+      "id": "x28",
+      "text": "At ~10:38 Dinis corrected: no outside hand-over; he alone runs this site.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "I'm going to be the only one running this site"
+        },
+        {
+          "kind": "trace",
+          "trace": "wind-down-explorer-to-villager",
+          "step": 6
+        },
+        {
+          "kind": "commit",
+          "sha": "5a92b0d"
+        }
+      ]
+    },
+    {
+      "id": "x29",
+      "text": "Two drafts of the plan; a join-in band put on every page and taken off 91 s later.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "wind-down-explorer-to-villager",
+          "step": 7
+        },
+        {
+          "kind": "trace",
+          "trace": "wind-down-explorer-to-villager",
+          "step": 10
+        },
+        {
+          "kind": "trace",
+          "trace": "wind-down-explorer-to-villager",
+          "step": 11
+        },
+        {
+          "kind": "trace",
+          "trace": "wind-down-explorer-to-villager",
+          "step": 14
+        }
+      ]
+    },
+    {
+      "id": "x30",
+      "text": "The live crew runs until the close trigger (IPMA nothing above green for Lisbon after 21:00 UTC and Web Summit's Day 3 decision public); the plan waits on Dinis's yes.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "transition/PLAN.md",
+          "contains": "The live crew keeps running until the **close trigger**"
+        },
+        {
+          "kind": "board",
+          "id": "a-wind-down-plan"
         }
       ]
     }

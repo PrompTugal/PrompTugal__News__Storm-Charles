@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/what-it-cost.md rests on: incident.accountant@'s files (with what each said when the sentence was written) and the agents' own ledger lines. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T10:14:00Z",
+  "updated": "2026-11-11T11:22:00Z",
   "status": "from the accounts as read at 03:02 UTC; recounted on every build",
   "figures": [
     {
@@ -392,6 +392,39 @@
         {
           "kind": "none",
           "why": "no price is applied anywhere in accounts/; not every agent has measured; no file records a person's time"
+        }
+      ]
+    },
+    {
+      "id": "c-r11",
+      "text": "Round 11 (10:43): with the conductor's line in, the team's call rose after 06:00 (220,827 to 258,028); the other agents held at 170,000 to 194,000; 2.19 billion tokens, 7,467 calls, 29 agents measured; the 10:14 line's 'falling' corrected.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "11b9f7a"
+        },
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "| 09:00 | 258,028 | 635 | 189,971 | 626,502 | 38% |"
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "agent_tokens.team_measured.all",
+          "expect": 2188032617
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "agent_tokens.team_measured.calls",
+          "expect": 7467
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "agent_tokens.measured",
+          "expect": 29
         }
       ]
     }
