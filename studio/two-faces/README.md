@@ -4,7 +4,7 @@ summary: Why this site has two fronts: the Weather face, clean and for anyone, a
 mount: <div id="studio" data-base="../animations/" data-anim="two-faces"><noscript><p class="meta">The player needs JavaScript. The same explanation, scene by scene as text, is below.</p></noscript></div>
 head: <link rel="stylesheet" href="../../app/studio/studio.css"><script src="../../app/studio/characters.js" defer></script><script src="../../app/studio/player.js" defer></script>
 ---
-> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.studio@web-summit.dinis, 11 November 2026, 02:37 UTC
 
 # Two faces
 
@@ -42,8 +42,8 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 
 **A clean page hides its workings. What stops it drifting from the evidence?**
 
-1. It fetches nothing from outside. Its script has one fetch, over a fixed list of eleven files, every one of them published by this site's data room. Whatever is on the page is in a file you can open. A small tool checks this before each push. *Counted in the script as read 02:25 UTC. The table of which file feeds which part is on the Weather page itself, under "Where every figure comes from".*
-   At work: the weather face. "One fetch, eleven files, all on this site.".
+1. It fetches nothing from outside. Its script has one fetch, over a fixed list of twelve files, every one of them published by this site's data room. Whatever is on the page is in a file you can open. A small tool checks this before each push. *Counted in the script as read 02:38 UTC (eleven at 02:25; IPMA's communiqué was added since). The table of which file feeds which part is on the Weather page itself, under "Where every figure comes from".*
+   At work: the weather face. "One fetch, twelve files, all on this site.".
 2. It makes no forecast of its own, and it does not let three different things look alike. What was measured is solid blue. IPMA's automatic forecast is grey and hatched. The meteorologist's reading is dashed and carries the word hypothesis.
    At work: the weather face. "Storm Charles as a weather channel would show it: now, today hour by hour, what is closed, tomorrow.".
 3. Red, orange and yellow mean IPMA's warning levels and nothing else, always with the level written. Nothing else on the page may wear them.
@@ -56,7 +56,7 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 ## What this simplifies
 
 - "Reads only the data room" is checked by a tool the Weather agent runs before each push (tools/weather-check.mjs: it fails if the page's script fetches anything outside its fixed list of the data room's files, or names an outside address other than the links to IPMA and ANEPC). It printed OK when run here at 02:33 UTC. It is not yet enforced by the site's gate.
-- Ten of the eleven files are fetched from api/v1/; the headline's file, incident.json, is fetched from the incident's own folder. Both are this site's published files.
+- Eleven of the twelve files are fetched from api/v1/; the headline's file, incident.json, is fetched from the incident's own folder. Both are this site's published files.
 - The collectors are drawn as one character. They are several agents and scripts, and the files have different keepers: the weather files the meteorologist's agent, decisions/graph.json the researcher's, signals.json and incident.json the conductor's.
 - Dinis's direction goes further than what is built: the data is to move into vaults and the site is to read it from there ("it shouldn't come from here"). Today the files are in the repository and served by the site.
 - The Weather face was hours old when this was made and is changing by the hour. Its own page says what it shows; if this explanation and that page disagree, the page is right.
@@ -68,7 +68,7 @@ Below: the same storyboard as plain text, every scene in order with its caption.
 - [BRIEF.md (Dinis, 11 November, ~02:10 UTC: two faces)](../../BRIEF.html), read 11 November 2026, 02:12 UTC
 - [RESTRUCTURE.md (the two faces, what each may read)](../../RESTRUCTURE.html), read 11 November 2026, 02:12 UTC
 - [weather/index.md (the Weather face's own account of itself)](../../weather/index.html), read 11 November 2026, 02:25 UTC
-- [app/weather/weather.js (one fetch; the list of eleven files)](../../app/weather/weather.js), read 11 November 2026, 02:25 UTC
+- [app/weather/weather.js (one fetch; the list of twelve files)](../../app/weather/weather.js), read 11 November 2026, 02:25 UTC
 - [weather/warnings.json (read from IPMA 02:22:46 UTC)](../../incidents/2026-11-10-storm-charles/data/weather/warnings.json), read 11 November 2026, 02:25 UTC
 - [tools/weather-check.mjs (run here: OK)](../../tools/weather-check.mjs), read 11 November 2026, 02:33 UTC
 

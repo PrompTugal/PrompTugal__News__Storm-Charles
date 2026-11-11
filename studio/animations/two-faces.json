@@ -3,7 +3,7 @@
   "title": "Two faces",
   "summary": "Why this site has two fronts: the Weather face, clean and for anyone, and the data room, where everything read from outside is kept with its source. The one rule between them: the face draws only what the data room holds.",
   "by": "incident.studio@web-summit.dinis",
-  "updated": "2026-11-11T02:34:00Z",
+  "updated": "2026-11-11T02:38:00Z",
   "about": "From Dinis Cruz's direction of 11 November 2026, about 02:10 UTC (BRIEF.md), and the Weather face as incident.weather@ built it (weather/index.md, app/weather/weather.js, read 02:25 UTC). The warning shown is quoted from the data room as read then: a record, not the warning in force. For warnings, follow IPMA and ANEPC. Proposed by incident.conductor@web-summit.dinis.",
   "chapters": [
     {
@@ -457,12 +457,12 @@
       },
       "scenes": [
         {
-          "caption": "It fetches nothing from outside. Its script has one fetch, over a fixed list of eleven files, every one of them published by this site's data room. Whatever is on the page is in a file you can open. A small tool checks this before each push.",
+          "caption": "It fetches nothing from outside. Its script has one fetch, over a fixed list of twelve files, every one of them published by this site's data room. Whatever is on the page is in a file you can open. A small tool checks this before each push.",
           "at": 3,
           "cards": [
             {
               "title": "app/weather/weather.js",
-              "text": "One fetch, eleven files, all on this site.",
+              "text": "One fetch, twelve files, all on this site.",
               "fields": [
                 {
                   "k": "signals.json",
@@ -471,6 +471,10 @@
                 {
                   "k": "weather/warnings.json",
                   "v": "the warnings"
+                },
+                {
+                  "k": "weather/communiques.json",
+                  "v": "IPMA's communiqué in force"
                 },
                 {
                   "k": "weather/lisbon-rain.json",
@@ -512,7 +516,7 @@
               "href": "../../app/weather/weather.js"
             }
           ],
-          "note": "Counted in the script as read 02:25 UTC. The table of which file feeds which part is on the Weather page itself, under \"Where every figure comes from\"."
+          "note": "Counted in the script as read 02:38 UTC (eleven at 02:25; IPMA's communiqué was added since). The table of which file feeds which part is on the Weather page itself, under \"Where every figure comes from\"."
         },
         {
           "caption": "It makes no forecast of its own, and it does not let three different things look alike. What was measured is solid blue. IPMA's automatic forecast is grey and hatched. The meteorologist's reading is dashed and carries the word hypothesis.",
@@ -661,7 +665,7 @@
   ],
   "simplifies": [
     "\"Reads only the data room\" is checked by a tool the Weather agent runs before each push (tools/weather-check.mjs: it fails if the page's script fetches anything outside its fixed list of the data room's files, or names an outside address other than the links to IPMA and ANEPC). It printed OK when run here at 02:33 UTC. It is not yet enforced by the site's gate.",
-    "Ten of the eleven files are fetched from api/v1/; the headline's file, incident.json, is fetched from the incident's own folder. Both are this site's published files.",
+    "Eleven of the twelve files are fetched from api/v1/; the headline's file, incident.json, is fetched from the incident's own folder. Both are this site's published files.",
     "The collectors are drawn as one character. They are several agents and scripts, and the files have different keepers: the weather files the meteorologist's agent, decisions/graph.json the researcher's, signals.json and incident.json the conductor's.",
     "Dinis's direction goes further than what is built: the data is to move into vaults and the site is to read it from there (\"it shouldn't come from here\"). Today the files are in the repository and served by the site.",
     "The Weather face was hours old when this was made and is changing by the hour. Its own page says what it shows; if this explanation and that page disagree, the page is right.",
@@ -685,7 +689,7 @@
       "read": "11 November 2026, 02:25 UTC"
     },
     {
-      "name": "app/weather/weather.js (one fetch; the list of eleven files)",
+      "name": "app/weather/weather.js (one fetch; the list of twelve files)",
       "href": "../../app/weather/weather.js",
       "read": "11 November 2026, 02:25 UTC"
     },
