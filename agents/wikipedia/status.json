@@ -1,7 +1,7 @@
 {
   "agent": "incident.wikipedia@web-summit.dinis",
-  "state": "active: all seven parts of the brief are up (pages, revisions, claims, comparison, both-ways table, values, the re-reader); next read on the next wake",
-  "last_wake": "2026-11-11T01:28:00Z",
+  "state": "active: hourly re-read while the storm is live (the conductor's routine); reports only when changes.md touches our key facts",
+  "last_wake": "2026-11-11T01:59:00Z",
   "done": [
     "session key made (record sha256:75ed17adda4b899d), public half in data/keys.json",
     "research/wikipedia/articles.json: 6 pages in 4 languages (pt: an article; en: a section of the season article and a redirect; zh: a short section; fr and pt 'Depressão Bruna': mentions); what was asked of 11 wikis and not found is in 'checked'",
@@ -13,18 +13,18 @@
     "against.json and against.md: of Wikipedia's 61 claims, 10 match a timeline row, 13 are in our data with no row, 34 are nowhere on this site, 4 are behind a later change we hold; of our five key facts Wikipedia has the minute of none, and lacks the 21:23 move of the red rain and the 22:35 spoken line altogether; pt has Web Summit Day 2 since the 00:50 revision (5 h 42 min after), citing ECO",
     "values.md: this site against verifiability, no original research, neutral point of view and due weight, reliable sources, living persons and the newsroom's eleven habits; six changes asked of the conductor",
     "tools/wikipedia-claims.mjs: builds the three files and their pages from claims-curated.json and the stored revisions; fails if an anchor or a timeline id does not exist",
-    "second read 01:53 UTC: appended to reads.json; no new revision on any of the 6 pages since 01:37"
+    "second read 01:53 UTC: appended to reads.json; no new revision on any of the 6 pages since 01:37",
+    "02:02 UTC, after the conductor's messages: each claim carries our check at the primary source (18 verified, 2 press only, 4 not established, 37 not checked) and whether its footnote is a primary body or the press; the pt article's footnotes counted (46 marks, 36 sources: 5 primary, 31 press, 4 naming Lusa); relations updated for the five new timeline rows (15 match, 12 in data, 30 not here, 4 behind); values.md marks what the conductor has done",
+    "the product name of a chatbot is withheld from two edit summaries (revisions 73412811, 73395114) and by the reader from now on; the earlier wording remains in git history (commits 1e744ad to d6a7d55), which no agent rewrites"
   ],
   "next": [
-    "re-read on each wake (tools/wikipedia-read.mjs), then tools/wikipedia-claims.mjs: it flags when a page has moved past the revision the claims were written for; then update claims-curated.json by hand",
-    "Wikidata's sitelinks and the item's own history, when Wikidata answers",
-    "es, gl, de: no page yet; the title and phrase checks run on every read",
-    "the talk pages (what editors dispute), read-only"
+    "hourly: tools/wikipedia-read.mjs then tools/wikipedia-claims.mjs; update claims-curated.json by hand when a page moves past the revision the claims were written for",
+    "keep the list of open changes in values.md and against.json current as rows are fixed",
+    "Wikidata, when Dinis says yes to a client name; the talk pages, read-only"
   ],
   "asks": [
     "Dinis: Wikipedia's API answered 429 to this session's shared address before the first read (retry-after 37 s), then served every request at one per 5 s (no 429 in either read). Wikidata is the exception: it answered 429 to one direct request and, in both reads, reported server lag on all 12 tries (2 requests given up), so the other languages were found through each article's own language links instead. Wikimedia's rule asks bots for a client name with a way to reach the operator; ours is generic by your instruction. If you want Wikidata read too, a client name carrying the site's address is the polite way: your yes is needed.",
-    "incident.conductor@: against.md lists what Wikipedia has that the timeline lacks (34 claims nowhere here, 13 in our data without a row); row s-1110T1742 is timed by when we read it (17:42), IPMA sent it at 16:30. values.md ends with six changes it asks for; three concern rows about people (s-1110T1806 carries a private attendee's handle).",
-    "incident.conductor@: revisions/pt-8011202.json keeps the first revision's edit summary as its editor wrote it; it names the chatbot the editor says helped draft the article. CLAUDE.md says no model names in what we push; that rule reads as being about our own calls, so I kept the editor's words. Say if you want it withheld."
+    "incident.conductor@: the chatbot's product name was pushed in four commits before it was withheld; it stays in git history. Rewriting history is forbidden; say if Dinis wants anything else done."
   ],
   "api": {
     "requests": 50,
@@ -33,6 +33,6 @@
     "failed": 2,
     "note": "counts of the last read (01:53 UTC); the 12 waits and 2 failures are Wikidata's; every read is in research/wikipedia/reads.json"
   },
-  "updated": "2026-11-11T01:59:00Z",
+  "updated": "2026-11-11T02:02:00Z",
   "by": "incident.wikipedia@web-summit.dinis"
 }

@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="growth.css"><script src="growth.js" defer></s
 ---
 # Wikipedia and Storm Charles
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 01:53 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~01:28 UTC): "a complete section with a separate folder, separate data set, for Wikipedia, to track everything that's there that is related to this storm". Built on incident.media@'s first read ([research/media/wikipedia.json](../media/wikipedia.json)).
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 02:02 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~01:28 UTC): "a complete section with a separate folder, separate data set, for Wikipedia, to track everything that's there that is related to this storm". Built on incident.media@'s first read ([research/media/wikipedia.json](../media/wikipedia.json)).
 
 **Everything here is evidence.** Wikipedia is a tertiary source written by volunteers: what it states is reported here as what Wikipedia states, with the exact revision, never as a fact about the storm. Where we compare or judge, it is our analysis and says so. Not a warning service: follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -20,9 +20,11 @@ head: <link rel="stylesheet" href="growth.css"><script src="growth.js" defer></s
 
 ## Against our timeline, in short (our analysis; [against.md](against.md))
 
-- **Wikipedia is ahead of us on 34 of its 61 claims**, which are nowhere on this site: where the low came from (the US National Hurricane Center's outlooks from 3 November), Spain and the Canary Islands, Madeira's measured rain and incidents, the environment agency's 101 municipalities at flood risk. Another 13 are in our data files with no timeline row (the naming at 13:17 UTC on 9 November, IPMA's second communiqué at 17:07, the coach operator's suspension).
+- **Wikipedia was ahead of us, and is a lead, never the source.** At the first read 34 of its 61 claims were nowhere on this site and 13 were in our data with no timeline row. The conductor sent them to the researcher and the meteorologist to check at the bodies themselves; the timeline gained five rows. Now: 15 claims match a row, 12 are in our data, 30 are not on this site (most are outside Lisbon: Spain, the Canary Islands, Madeira's local measures).
+- **Checked at the primary source: 18 verified, 2 press only, 4 not established, 37 not checked by us.** Not established: the environment agency's "101 municipalities" (no such notice on its site), the airline's "ten flights" (the press says "several"), "Madeira's courts closed" (the order is national), and the day the US Hurricane Center labelled the low (6 November in its own text, not 7; and no source says that low became Charles).
+- **Whom the Portuguese article rests on:** 46 footnote marks, 36 distinct sources: 5 primary bodies, 31 press; 4 of the press footnotes name Lusa (13%, a floor: a footnote shows the wire only when it names it).
 - **We are ahead of Wikipedia on time.** Neither language has the minute of any of our five key facts. Neither has IPMA's move of Lisbon's red rain to 09:00 (sent 21:23): both still say 12:00. Neither has the 22:35 spoken line on the track further south. Portuguese has Web Summit's Day 2 since the revision of 00:50 UTC on 11 November, 5 h 42 min after the organisers' page, citing ECO; English and Chinese do not mention the conference.
-- **One of our own rows is off:** `s-1110T1742` gives 17:42 for Lisbon's red rain, the time our desk read it; IPMA sent it at 16:30 (Wikipedia and our own decision graph agree).
+- **One of our own rows was off, and is corrected:** `s-1110T1742` gave 17:42 for Lisbon's red rain, the time our desk read it; IPMA sent it at 16:30. The row now says both.
 - **Measured against Wikipedia's policies** we fail "no original research" by design and "due weight" on Madeira: [values.md](values.md).
 
 ## The data
@@ -30,7 +32,7 @@ head: <link rel="stylesheet" href="growth.css"><script src="growth.js" defer></s
 | File | What it holds |
 |---|---|
 | [articles.json](articles.json) | Every page: language, title, address, page id, kind (article, section, redirect, mention), created, bytes, revisions, last changed, time read; and `checked`: every title and phrase asked of each wiki, found or not |
-| [revisions.json](revisions.json) and [revisions/](revisions.json) | The full revision history of each page, one file per page: revision id, time, bytes, edit summary; for revisions since 8 November also the sha256 of the wikitext, its footnotes and the bytes of the storm's section. **No editor's name or address is requested or kept**; a summary that names an editor (a revert) is withheld |
+| [revisions.json](revisions.json) and [revisions/](revisions.json) | The full revision history of each page, one file per page: revision id, time, bytes, edit summary; for revisions since 8 November also the sha256 of the wikitext, its footnotes and the bytes of the storm's section. **No editor's name or address is requested or kept**; a summary that names an editor (a revert) is withheld, and so is the product name of a chatbot where an editor's summary gives one |
 | [reads.json](reads.json) and [changes.md](changes.md) | One entry per read, appended and never rewritten; and what changed on Wikipedia since the read before |
 | [claims.json](claims.json), page: [claims.md](claims.md) | 61 checkable statements of the current revisions (36 pt, 22 en, 3 zh), in our own English, each with the footnotes it carries (address, outlet, date, date consulted) and the revision in which it first appeared |
 | [compare.json](compare.json), page: [compare.md](compare.md) | The languages side by side, topic by topic; seven places where they differ |

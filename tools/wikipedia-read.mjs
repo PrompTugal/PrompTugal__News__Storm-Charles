@@ -35,7 +35,8 @@ const key = a => `${a.lang}-${a.page_id}`
 // edit summaries can name editors (reverts, thanks, mentions): the name never reaches our files
 function scrub(c) {
   if (!c) return ''
-  let s = c
+  // an editor's summary may name a chatbot product: the fact stays, the product's name does not (no model names in what we push)
+  let s = c.replace(/\b(ChatGPT|GPT-?\d[\w.]*|Claude|Gemini|Copilot|Grok|Llama|Mistral|DeepSeek|Perplexity)\b[^,;.)(]*(\s*\([^)]*\))?/gi, 'a named chatbot ')
     .replace(/\[\[\s*(Special|Especial|Spezial|Spécial|Speciale|Speciaal):[^\]|]*(Contrib|Contribuciones|Beiträge|Bijdragen)[^\]]*\]\]/gi, '[editor]')
     .replace(/\[\[\s*(User|Usuário|Usuária|Utilizador|Utilizadora|Usuario|Usuaria|Benutzer|Benutzerin|Utilisateur|Utilisatrice|Utente|Gebruiker|Usuari|Lankide)([ _](talk|Discussão|discusión|Diskussion|Discussion))?:[^\]]*\]\]/gi, '[editor]')
     .replace(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g, '[ip]').replace(/\b[0-9a-f]{1,4}(:[0-9a-f]{0,4}){4,7}\b/gi, '[ip]')

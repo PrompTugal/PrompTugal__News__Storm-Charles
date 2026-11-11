@@ -2,7 +2,7 @@
  "about": "This site against Wikipedia, both ways. wikipedia_to_us: for each Wikipedia claim, the timeline row (by permanent id) that says the same, the data file that holds it, or that it is missing here. us_to_wikipedia: for each of our key facts, whether each language has the subject, whether it has our time, the revision in which it first appeared and whom it cites. Every relation is our analysis of two bodies of evidence; a pattern match on wikitext finds the subject, not agreement.",
  "by": "incident.wikipedia@web-summit.dinis",
  "tool": "tools/wikipedia-claims.mjs",
- "updated": "2026-11-11T01:58:44Z",
+ "updated": "2026-11-11T02:01:35Z",
  "attribution": "Wikipedia's text is by Wikipedia's contributors, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Each statement here is our own English paraphrase; the anchor is a few words of the article, quoted to find the sentence; the exact revision is linked.",
  "revisions": {
   "pt": {
@@ -37,10 +37,193 @@
   "behind": "Wikipedia states what a later change has overtaken; we hold the change",
   "differs": "a figure or time differs"
  },
+ "checks": {
+  "about": "What this team found when it went to the primary source for a Wikipedia statement. Wikipedia is a lead for us, never the source.",
+  "counts": {
+   "verified at primary source": 18,
+   "not checked by us": 37,
+   "not established at source": 4,
+   "press only": 2
+  },
+  "footnote_kinds": {
+   "primary": 11,
+   "press": 42,
+   "primary and press": 3,
+   "no footnote": 5
+  },
+  "not_established": [
+   {
+    "claim": "w-pt-13",
+    "why": "The count of ten is not established: the press we read says only that several TAP flights to Funchal were affected, from the airport operator's site; TAP's own statement is about rebooking (decision tap-adjusts)."
+   },
+   {
+    "claim": "w-pt-15",
+    "why": "As stated, not established: the order we could trace is national (court presidents may close courts fully or partly; decision csm-courts), not specific to Madeira. The 34 trials were not checked."
+   },
+   {
+    "claim": "w-pt-23",
+    "why": "No such notice was found on the environment agency's own site by incident.researcher@ (01:45 to 01:50 UTC on 11 November). The figure rests on the radio report Wikipedia cites."
+   },
+   {
+    "claim": "w-en-04",
+    "why": "The Hurricane Center's own archived outlooks label the low AL94 on 6 November (11:37 UTC), not 7; and no source read says it became Charles (data/weather/analysis.md, section 8b, a hypothesis)."
+   }
+  ]
+ },
+ "footnotes": {
+  "pt": {
+   "footnote_marks": 46,
+   "distinct_sources": 36,
+   "primary": 5,
+   "press": 31,
+   "with_a_Lusa_byline": 4,
+   "lusa_share_of_press": 0.13,
+   "note": "whole page for an article; for a season article, the whole season page, not only the storm's section. A wire is counted only where the footnote itself gives it as author or agency: a newspaper relaying the wire without saying so cannot be seen from the footnote.",
+   "by_outlet": {
+    "Diário de Notícias da Madeira": 19,
+    "IPMA": 3,
+    "RTP": 1,
+    "Portal do Governo": 1,
+    "Cadena SER": 1,
+    "Postal": 1,
+    "24 Notícias": 1,
+    "ODigital": 1,
+    "ANEPC": 1,
+    "RTP Antena 1": 1,
+    "Razão Automóvel": 1,
+    "Executive Digest": 1,
+    "Local": 1,
+    "ECO": 1,
+    "RTVE": 1,
+    "El País": 1
+   }
+  },
+  "en": {
+   "footnote_marks": 154,
+   "distinct_sources": 112,
+   "primary": 2,
+   "press": 110,
+   "with_a_Lusa_byline": 0,
+   "lusa_share_of_press": 0,
+   "note": "whole page for an article; for a season article, the whole season page, not only the storm's section. A wire is counted only where the footnote itself gives it as author or agency: a newspaper relaying the wire without saying so cannot be seen from the footnote.",
+   "by_outlet": {
+    "Met Office": 6,
+    "The Independent": 6,
+    "BBC News": 5,
+    "Météo-France": 3,
+    "Focus Online": 3,
+    "Agriland": 3,
+    "STV News": 3,
+    "The Portugal News": 3,
+    "Met Éireann": 2,
+    "Free University of Berlin": 2,
+    "Majorca Daily Bulletin": 2,
+    "Meteociel": 2,
+    "The Irish Times": 2,
+    "TheJournal.ie": 2,
+    "Institute of Meteorology, Free University of Berlin": 2,
+    "meteo365.es": 2,
+    "To Vima": 2,
+    "The Olive Press": 2,
+    "Danish Meteorological Institute": 1,
+    "Servizio Meteorologico": 1,
+    "Hellenic National Meteorological Service": 1,
+    "meteofrance.com": 1,
+    "Netweather": 1,
+    "meteoam.it": 1,
+    "en.politis.com.cy": 1,
+    "wetterpate.de": 1,
+    "[[State Meteorological Agency": 1,
+    "WalesOnline": 1,
+    "Euro Weekly News": 1,
+    "Todo Alicante": 1,
+    "InSpain News": 1,
+    "RTVE": 1,
+    "Meteologix": 1,
+    "Servimedia": 1,
+    "Travel Gossip": 1,
+    "The Guardian": 1,
+    "Slough Observer": 1,
+    "JOE.ie": 1,
+    "Clare Herald": 1,
+    "Connacht Tribune": 1,
+    "Bailiwick Express": 1,
+    "www.express.co.uk": 1,
+    "Waterford Live": 1,
+    "Anadolu Agency": 1,
+    "Bloomberg News / Insurance Journal": 1,
+    "Météo Paris": 1,
+    "UK Tides": 1,
+    "nltimes.nl": 1,
+    "Wikifarmer": 1,
+    "Proto Thema": 1,
+    "Parapolitika": 1,
+    "Madeira Island News": 1,
+    "MitKat Advisory": 1,
+    "Curiouslogy / AEMET": 1,
+    "Portugal Resident": 1,
+    "Curiouslogy": 1,
+    "DA News": 1,
+    "Demócrata": 1,
+    "Tenerife Weekly": 1,
+    "Teneriffa News": 1,
+    "Portugal.fr / IPMA": 1,
+    "ClickOrlando": 1,
+    "WESH": 1,
+    "Yahoo News": 1,
+    "Index-Journal": 1,
+    "Meteored España": 1,
+    "Voces de Cuenca": 1,
+    "ipma.pt": 1,
+    "Infobae": 1,
+    "Estrella Digital": 1,
+    "Euronews": 1,
+    "Portugal Decoded": 1,
+    "sextaNoticias, via Headtopics": 1,
+    "El Independiente": 1,
+    "Vozpópuli": 1,
+    "Mirametv": 1,
+    "Diario de Avisos": 1,
+    "www.highlandweather.info": 1
+   }
+  },
+  "zh": {
+   "footnote_marks": 24,
+   "distinct_sources": 23,
+   "primary": 1,
+   "press": 22,
+   "with_a_Lusa_byline": 0,
+   "lusa_share_of_press": 0,
+   "note": "whole page for an article; for a season article, the whole season page, not only the storm's section. A wire is counted only where the footnote itself gives it as author or agency: a newspaper relaying the wire without saying so cannot be seen from the footnote.",
+   "by_outlet": {
+    "Met Office": 3,
+    "Met Éireann The Irish Meteorological Service": 1,
+    "[[荷兰皇家气象研究所": 1,
+    "euroforecaster.org": 1,
+    "unknown": 1,
+    "dmi.dk": 1,
+    "Freie Universität Berlin Office of Communication and Marketing": 1,
+    "meteofrance.com": 1,
+    "Netweather": 1,
+    "meteoam.it": 1,
+    "en.politis.com.cy": 1,
+    "wetterpate.de": 1,
+    "Euro Weekly News": 1,
+    "youtube.com": 1,
+    "Agriland": 1,
+    "Wikifarmer": 1,
+    "Madeira Island News Blog": 1,
+    "CNN Portugal": 1,
+    "Portugal.fr": 1,
+    "Agroportal": 1,
+    "www.ipma.pt": 1
+   }
+  }
+ },
  "counts": {
-  "matches": 10,
-  "in-data": 13,
-  "missing": 34,
+  "matches": 15,
+  "in-data": 12,
+  "missing": 30,
   "behind": 4,
   "differs": 0
  },
@@ -56,13 +239,10 @@
    "w-pt-15",
    "w-pt-16",
    "w-pt-23",
-   "w-pt-26",
-   "w-pt-27",
    "w-pt-30",
    "w-pt-31",
    "w-pt-32",
    "w-pt-33",
-   "w-pt-34",
    "w-pt-35",
    "w-en-01",
    "w-en-02",
@@ -72,7 +252,6 @@
    "w-en-07",
    "w-en-15",
    "w-en-16",
-   "w-en-17",
    "w-en-18",
    "w-en-19",
    "w-en-20",
@@ -82,18 +261,17 @@
    "w-zh-03"
   ],
   "in_our_data_but_no_timeline_row": [
-   "w-pt-01",
-   "w-pt-06",
    "w-pt-07",
    "w-pt-08",
    "w-pt-11",
    "w-pt-12",
    "w-pt-21",
-   "w-pt-22",
+   "w-pt-26",
+   "w-pt-27",
    "w-pt-28",
    "w-pt-36",
-   "w-en-06",
    "w-en-13",
+   "w-en-17",
    "w-zh-02"
   ]
  },
@@ -118,13 +296,25 @@
  },
  "wikipedia_to_us": [
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "IPMA communiqué no. 1, 13:17 UTC on 9 November (timeline row s-1109T1317, added after our first read reported it missing).",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-01",
    "lang": "pt",
    "topic": "naming",
    "statement": "IPMA announced the name Charles on 9 November at 13:17 UTC, for a low centred near 33° N, 31° W and moving east.",
-   "relation": "in-data",
-   "means": "on this site in a data file, with no timeline row",
-   "timeline": [],
+   "relation": "matches",
+   "means": "a timeline row says the same",
+   "timeline": [
+    {
+     "id": "s-1109T1317",
+     "at": "2026-11-09T13:17Z",
+     "label": "fact",
+     "text": "IPMA names the storm CHARLES (communiqué no. 1): expected north of Madeira at 00:00 on 11 Nov, then toward the mainland, \"com elevada incerteza na trajetória e ",
+     "url": "incidents/2026-11-10-storm-charles/timeline.html#s-1109T1317"
+    }
+   ],
    "decisions": [
     {
      "id": "ipma-communique-1",
@@ -133,7 +323,7 @@
     }
    ],
    "files": [],
-   "note": "The decision graph has communiqué no. 1 at 13:17 UTC on 9 November. The timeline starts on 10 November at 08:46 and has no row for the naming.",
+   "note": "The timeline now has the row (added 11 November after this comparison).",
    "wikipedia_first_seen": {
     "revision": 73412811,
     "at": "2026-11-10T13:07:26Z",
@@ -146,6 +336,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-02",
    "lang": "pt",
    "topic": "pressure",
@@ -168,6 +361,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-03",
    "lang": "pt",
    "topic": "origin",
@@ -190,6 +386,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-04",
    "lang": "pt",
    "topic": "madeira-warnings",
@@ -212,6 +411,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "The written track is in IPMA's communiqués as we hold them.",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-05",
    "lang": "pt",
    "topic": "track",
@@ -256,13 +459,25 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "IPMA communiqué no. 2 (our copy: issued 17:07; the row says edited 17:07:58).",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-06",
    "lang": "pt",
    "topic": "communique-2",
    "statement": "On 10 November at 17:07 UTC IPMA published communiqué no. 2, moving the forecast centre for 00:00 UTC on 11 November to about 34° N, 21° W at 989 hPa (it had been 34° N, 23° W at 991 hPa), still with high uncertainty.",
-   "relation": "in-data",
-   "means": "on this site in a data file, with no timeline row",
-   "timeline": [],
+   "relation": "matches",
+   "means": "a timeline row says the same",
+   "timeline": [
+    {
+     "id": "s-1110T1707b",
+     "at": "2026-11-10T17:07Z",
+     "label": "fact",
+     "text": "IPMA communiqué no. 2 on CHARLES (edited 17:07:58): worse weather from early Wednesday morning; the centre most likely to pass \"entre Sines e o Cabo Carvoeiro\";",
+     "url": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T1707b"
+    }
+   ],
    "decisions": [
     {
      "id": "ipma-communique-2",
@@ -273,7 +488,7 @@
    "files": [
     "incidents/2026-11-10-storm-charles/data/weather/communiques.json"
    ],
-   "note": "Same time and same figures in our copy of the communiqué. No timeline row for it.",
+   "note": "Same time and figures in our copy. The timeline now has the row s-1110T1707b.",
    "wikipedia_first_seen": {
     "revision": 73419256,
     "at": "2026-11-11T00:50:51Z",
@@ -286,6 +501,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "In the text of communiqué no. 2 as we hold it.",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-07",
    "lang": "pt",
    "topic": "communique-2",
@@ -310,6 +529,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "IPMA's CAP message (decision ipma-madeira-red, sent 07:24 UTC).",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-08",
    "lang": "pt",
    "topic": "madeira-warnings",
@@ -338,6 +561,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-09",
    "lang": "pt",
    "topic": "madeira-measures",
@@ -359,6 +585,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-10",
    "lang": "pt",
    "topic": "madeira-measures",
@@ -380,6 +609,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-11",
    "lang": "pt",
    "topic": "madeira-measures",
@@ -407,6 +639,11 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [
+    "Lusa"
+   ],
    "claim": "w-pt-12",
    "lang": "pt",
    "topic": "madeira-measures",
@@ -434,6 +671,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not established at source",
+   "our_check_note": "The count of ten is not established: the press we read says only that several TAP flights to Funchal were affected, from the airport operator's site; TAP's own statement is about rebooking (decision tap-adjusts).",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-13",
    "lang": "pt",
    "topic": "madeira-measures",
@@ -446,6 +687,11 @@
      "id": "madeira-airport-conditioned",
      "at": "2026-11-10T18:04Z",
      "decision": "ANA: operations at Madeira airport conditioned on 11 Nov; cancellations expected"
+    },
+    {
+     "id": "tap-adjusts",
+     "at": "2026-11-10T16:09Z",
+     "decision": "TAP adjusts operations; passengers with tickets for travel up to 11 Nov may rebook without penalty to flights up to 17 N"
     }
    ],
    "files": [],
@@ -462,6 +708,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-14",
    "lang": "pt",
    "topic": "madeira-measures",
@@ -483,6 +732,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not established at source",
+   "our_check_note": "As stated, not established: the order we could trace is national (court presidents may close courts fully or partly; decision csm-courts), not specific to Madeira. The 34 trials were not checked.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-15",
    "lang": "pt",
    "topic": "madeira-measures",
@@ -490,7 +743,13 @@
    "relation": "missing",
    "means": "nowhere on this site",
    "timeline": [],
-   "decisions": [],
+   "decisions": [
+    {
+     "id": "csm-courts",
+     "at": "2026-11-10T12:51Z",
+     "decision": "Court presidents may close courts fully or partly on Wednesday; urgent acts must go ahead"
+    }
+   ],
    "files": [],
    "note": "The article names the judge; we do not repeat the name.",
    "wikipedia_first_seen": {
@@ -505,6 +764,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-16",
    "lang": "pt",
    "topic": "madeira-warnings",
@@ -526,6 +788,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "Lisbon's red wind from IPMA's CAP message, sent 07:18 UTC (row s-1110T0718). The other seven districts were not checked by us.",
+   "footnote_kind": "primary and press",
+   "footnote_wire": [],
    "claim": "w-pt-17",
    "lang": "pt",
    "topic": "red-wind",
@@ -533,6 +799,13 @@
    "relation": "matches",
    "means": "a timeline row says the same",
    "timeline": [
+    {
+     "id": "s-1110T0718",
+     "at": "2026-11-10T07:18Z",
+     "label": "fact",
+     "text": "IPMA sends the red wind warning for Lisbon (Wednesday 12:00 to 21:00), updating a wind message sent Monday 13:27; first in the press we read at 08:05 (DN live)",
+     "url": "incidents/2026-11-10-storm-charles/timeline.html#s-1110T0718"
+    },
     {
      "id": "s-1110T1423",
      "at": "2026-11-10T14:23Z",
@@ -570,6 +843,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "Sent 16:30:01 by IPMA's CAP message for Lisbon; and overtaken at 21:23 (row s-1110T2353). The other five districts were not checked by us.",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-18",
    "lang": "pt",
    "topic": "red-rain",
@@ -605,7 +882,7 @@
     }
    ],
    "files": [],
-   "note": "Two things. (1) Our row s-1110T1742 is timed 17:42, when the desk read it; IPMA sent it at 16:30 (our decision graph and Wikipedia agree). (2) At 21:23 IPMA moved Lisbon's red rain to 09:00 to 18:00. Wikipedia's revision of 01:33 on 11 November still says 12:00, although this footnote was consulted on 11 November.",
+   "note": "(1) Our row s-1110T1742 now says IPMA sent it at 16:30:01 and that 17:42 is when the desk read it (corrected after this comparison). (2) At 21:23 IPMA moved Lisbon's red rain to 09:00 to 18:00. Wikipedia's revision of 01:33 on 11 November still says 12:00, although this footnote was consulted on 11 November.",
    "wikipedia_first_seen": {
     "revision": 73419256,
     "at": "2026-11-11T00:50:51Z",
@@ -618,6 +895,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "The government's own page, timed 12:10 (row s-1110T1210).",
+   "footnote_kind": "primary and press",
+   "footnote_wire": [],
    "claim": "w-pt-19",
    "lang": "pt",
    "topic": "alert",
@@ -666,6 +947,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "The government's own page (row s-1110T1210); the announcement at about 09:17 is from live blogs (evidence).",
+   "footnote_kind": "primary and press",
+   "footnote_wire": [],
    "claim": "w-pt-20",
    "lang": "pt",
    "topic": "alert",
@@ -710,6 +995,11 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [
+    "Lusa"
+   ],
    "claim": "w-pt-21",
    "lang": "pt",
    "topic": "transport",
@@ -738,13 +1028,25 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "ANEPC's Aviso 21 (row s-1109T2030, added after our first read).",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-22",
    "lang": "pt",
    "topic": "anepc",
    "statement": "ANEPC published a warning to the population (Aviso 21) on the risks of rain and strong wind, with self-protection measures.",
-   "relation": "in-data",
-   "means": "on this site in a data file, with no timeline row",
-   "timeline": [],
+   "relation": "matches",
+   "means": "a timeline row says the same",
+   "timeline": [
+    {
+     "id": "s-1109T2030",
+     "at": "2026-11-09T20:30Z",
+     "label": "fact",
+     "text": "ANEPC's public warning, Aviso 21, on CHARLES (before any red warning)",
+     "url": "incidents/2026-11-10-storm-charles/timeline.html#s-1109T2030"
+    }
+   ],
    "decisions": [
     {
      "id": "anepc-aviso-21",
@@ -753,7 +1055,7 @@
     }
    ],
    "files": [],
-   "note": "The decision graph has it at 20:30 UTC on 9 November.",
+   "note": "The timeline now has the row.",
    "wikipedia_first_seen": {
     "revision": 73412811,
     "at": "2026-11-10T13:07:26Z",
@@ -766,6 +1068,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not established at source",
+   "our_check_note": "No such notice was found on the environment agency's own site by incident.researcher@ (01:45 to 01:50 UTC on 11 November). The figure rests on the radio report Wikipedia cites.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-23",
    "lang": "pt",
    "topic": "other-measures",
@@ -788,6 +1094,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-24",
    "lang": "pt",
    "topic": "lisbon",
@@ -823,6 +1132,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-25",
    "lang": "pt",
    "topic": "transport",
@@ -859,16 +1171,26 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "press only",
+   "our_check_note": "Dated press quoting the company's online message (decision mmp-closed, evidence).",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-26",
    "lang": "pt",
    "topic": "other-measures",
    "statement": "The public company Museus e Monumentos de Portugal closed its museums and monuments on 11 November, with rebooking or refunds.",
-   "relation": "missing",
-   "means": "nowhere on this site",
+   "relation": "in-data",
+   "means": "on this site in a data file, with no timeline row",
    "timeline": [],
-   "decisions": [],
+   "decisions": [
+    {
+     "id": "mmp-closed",
+     "at": "2026-11-10T14:08Z",
+     "decision": "State museums and monuments closed on Wednesday; tickets can be changed or refunded"
+    }
+   ],
    "files": [],
-   "note": "Only as press titles in research/media/coverage.json.",
+   "note": "Now in the decision graph as evidence.",
    "wikipedia_first_seen": {
     "revision": 73413663,
     "at": "2026-11-10T14:30:55Z",
@@ -882,16 +1204,28 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "press only",
+   "our_check_note": "GNR's own site lists a notice of that date; the figure 1,100 is the press quoting it (decision gnr-readiness, evidence).",
+   "footnote_kind": "press",
+   "footnote_wire": [
+    "Lusa"
+   ],
    "claim": "w-pt-27",
    "lang": "pt",
    "topic": "other-measures",
    "statement": "The GNR set up an operational reserve of about 1,100 officers on standby.",
-   "relation": "missing",
-   "means": "nowhere on this site",
+   "relation": "in-data",
+   "means": "on this site in a data file, with no timeline row",
    "timeline": [],
-   "decisions": [],
+   "decisions": [
+    {
+     "id": "gnr-readiness",
+     "at": "2026-11-10T18:17Z",
+     "decision": "GNR reinforces its operational deployment: 1,100 personnel on standby, Emergency Protection and Relief Unit (UEPS) highl"
+    }
+   ],
    "files": [],
-   "note": "Only as a press title in research/media/coverage.json.",
+   "note": "Now in the decision graph as evidence.",
    "wikipedia_first_seen": {
     "revision": 73419026,
     "at": "2026-11-11T00:15:03Z",
@@ -904,6 +1238,11 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [
+    "Lusa"
+   ],
    "claim": "w-pt-28",
    "lang": "pt",
    "topic": "lisbon",
@@ -931,6 +1270,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "The organisers' own page, published 19:09 UTC (row s-1110T1909).",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-29",
    "lang": "pt",
    "topic": "web-summit",
@@ -986,6 +1329,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-30",
    "lang": "pt",
    "topic": "spain",
@@ -1007,6 +1353,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-31",
    "lang": "pt",
    "topic": "spain",
@@ -1028,6 +1377,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-32",
    "lang": "pt",
    "topic": "madeira-impacts",
@@ -1049,6 +1401,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-33",
    "lang": "pt",
    "topic": "madeira-impacts",
@@ -1070,15 +1425,30 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "IPMA's own station data: exactly 133.9 mm in the six hours to 22:00 at Areeiro, and 230.5 mm in the six hours to 01:00 (row s-1111T0146). The reading of the hour labels is our inference, stated in madeira.json.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-34",
    "lang": "pt",
    "topic": "madeira-impacts",
    "statement": "By 22:00 Chão do Areeiro had 122 mm in three hours, 133.9 mm in six and 50.7 mm in one; four other stations were also at red thresholds.",
-   "relation": "missing",
-   "means": "nowhere on this site",
-   "timeline": [],
+   "relation": "matches",
+   "means": "a timeline row says the same",
+   "timeline": [
+    {
+     "id": "s-1111T0146",
+     "at": "2026-11-11T01:46Z",
+     "label": "fact",
+     "text": "Madeira, observed: 230.5 mm of rain in six hours at IPMA's station Areeiro (the hours 20:00 Tuesday to 01:00 Wednesday; 133.9 mm in the six hours to 22:00); nex",
+     "url": "incidents/2026-11-10-storm-charles/timeline.html#s-1111T0146"
+    }
+   ],
    "decisions": [],
-   "files": [],
+   "files": [
+    "incidents/2026-11-10-storm-charles/data/weather/madeira.json"
+   ],
+   "note": "Wikipedia was the lead; the figure was then checked at IPMA's station data and the row added.",
    "wikipedia_first_seen": {
     "revision": 73419256,
     "at": "2026-11-11T00:50:51Z",
@@ -1091,6 +1461,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-pt-35",
    "lang": "pt",
    "topic": "madeira-impacts",
@@ -1112,6 +1485,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "IPMA's communiqué no. 2 says so.",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-pt-36",
    "lang": "pt",
    "topic": "bruna",
@@ -1136,6 +1513,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "our_check_note": "The Hurricane Center's archived outlooks were read by incident.meteorologist@ (analysis.md, section 8b): a low expected from 2 November, the chance rising to 50% by 4 November. These exact figures were not compared one by one.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-01",
    "lang": "en",
    "topic": "origin",
@@ -1144,7 +1525,9 @@
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
-   "files": [],
+   "files": [
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ],
    "wikipedia_first_seen": {
     "revision": 1384920191,
     "at": "2026-11-10T20:32:52Z",
@@ -1157,6 +1540,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "our_check_note": "The Hurricane Center's archived outlooks were read by incident.meteorologist@ (analysis.md, section 8b): a low expected from 2 November, the chance rising to 50% by 4 November. These exact figures were not compared one by one.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-02",
    "lang": "en",
    "topic": "origin",
@@ -1165,7 +1552,9 @@
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
-   "files": [],
+   "files": [
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ],
    "wikipedia_first_seen": {
     "revision": 1384920191,
     "at": "2026-11-10T20:32:52Z",
@@ -1178,6 +1567,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "our_check_note": "The Hurricane Center's archived outlooks were read by incident.meteorologist@ (analysis.md, section 8b): a low expected from 2 November, the chance rising to 50% by 4 November. These exact figures were not compared one by one.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-03",
    "lang": "en",
    "topic": "origin",
@@ -1186,7 +1579,9 @@
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
-   "files": [],
+   "files": [
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ],
    "wikipedia_first_seen": {
     "revision": 1384920191,
     "at": "2026-11-10T20:32:52Z",
@@ -1199,6 +1594,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not established at source",
+   "our_check_note": "The Hurricane Center's own archived outlooks label the low AL94 on 6 November (11:37 UTC), not 7; and no source read says it became Charles (data/weather/analysis.md, section 8b, a hypothesis).",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-04",
    "lang": "en",
    "topic": "origin",
@@ -1207,7 +1606,9 @@
    "means": "nowhere on this site",
    "timeline": [],
    "decisions": [],
-   "files": [],
+   "files": [
+    "incidents/2026-11-10-storm-charles/data/weather/analysis.md"
+   ],
    "note": "A hidden note left in the wikitext by an editor says the sources do not state that 94L became Charles and asks for it to be checked. Wikipedia itself marks this as unverified.",
    "wikipedia_first_seen": {
     "revision": 1384920191,
@@ -1221,6 +1622,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-05",
    "lang": "en",
    "topic": "origin",
@@ -1242,13 +1646,25 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "As w-pt-01.",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-en-06",
    "lang": "en",
    "topic": "naming",
    "statement": "IPMA named Storm Charles on 9 November 2026.",
-   "relation": "in-data",
-   "means": "on this site in a data file, with no timeline row",
-   "timeline": [],
+   "relation": "matches",
+   "means": "a timeline row says the same",
+   "timeline": [
+    {
+     "id": "s-1109T1317",
+     "at": "2026-11-09T13:17Z",
+     "label": "fact",
+     "text": "IPMA names the storm CHARLES (communiqué no. 1): expected north of Madeira at 00:00 on 11 Nov, then toward the mainland, \"com elevada incerteza na trajetória e ",
+     "url": "incidents/2026-11-10-storm-charles/timeline.html#s-1109T1317"
+    }
+   ],
    "decisions": [
     {
      "id": "ipma-communique-1",
@@ -1257,7 +1673,7 @@
     }
    ],
    "files": [],
-   "note": "English gives the day; Portuguese and our decision graph give 13:17 UTC.",
+   "note": "English gives the day; Portuguese and our row give 13:17 UTC.",
    "wikipedia_first_seen": {
     "revision": 1384744194,
     "at": "2026-11-09T22:36:26Z",
@@ -1270,6 +1686,11 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [
+    "a Spanish wire"
+   ],
    "claim": "w-en-07",
    "lang": "en",
    "topic": "spain",
@@ -1291,6 +1712,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "no footnote",
+   "footnote_wire": [],
    "claim": "w-en-08",
    "lang": "en",
    "topic": "extent",
@@ -1326,6 +1750,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-09",
    "lang": "en",
    "topic": "orange",
@@ -1356,6 +1783,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-10",
    "lang": "en",
    "topic": "red-wind",
@@ -1393,6 +1823,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "Lisbon's windows from IPMA's CAP messages; the rain window was overtaken at 21:23.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-11",
    "lang": "en",
    "topic": "red-rain",
@@ -1443,6 +1877,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-12",
    "lang": "en",
    "topic": "track",
@@ -1480,6 +1917,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "The south coast and mountains from IPMA's CAP message (ipma-madeira-red). The north coast's level was not checked by us.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-13",
    "lang": "en",
    "topic": "madeira-warnings",
@@ -1507,6 +1948,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "The government's own page for the hours and the closures (row s-1110T1210). ANEPC's readiness level is in the decision graph (anepc-readiness).",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-14",
    "lang": "en",
    "topic": "alert",
@@ -1555,6 +2000,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-15",
    "lang": "en",
    "topic": "spain",
@@ -1577,6 +2025,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-16",
    "lang": "en",
    "topic": "spain",
@@ -1598,15 +2049,26 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "verified at primary source",
+   "our_check_note": "In part: a special warning is in force on AEMET's own warnings page (title read 01:46 UTC on 11 November; decision aemet-special). Its number and its period were not readable there and rest on the press Wikipedia cites.",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-17",
    "lang": "en",
    "topic": "spain",
    "statement": "On the evening of 9 November AEMET issued special warning 38/2026 for 10 to 12 November, for the south and west of the peninsula and the Canary Islands, citing Bruna and Charles together.",
-   "relation": "missing",
-   "means": "nowhere on this site",
+   "relation": "in-data",
+   "means": "on this site in a data file, with no timeline row",
    "timeline": [],
-   "decisions": [],
+   "decisions": [
+    {
+     "id": "aemet-special",
+     "at": null,
+     "decision": "AEMET special warning in force: \"Aviso especial. Lluvias fuertes y persistentes, rachas muy fuertes y temporal marítimo\""
+    }
+   ],
    "files": [],
+   "note": "Now in the decision graph.",
    "wikipedia_first_seen": {
     "revision": 1384775098,
     "at": "2026-11-10T01:41:37Z",
@@ -1619,6 +2081,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-18",
    "lang": "en",
    "topic": "track",
@@ -1641,6 +2106,10 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "our_check_note": "The Canary Islands' alert was not read at source (noted in decision aemet-special).",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-19",
    "lang": "en",
    "topic": "canaries",
@@ -1662,6 +2131,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "press",
+   "footnote_wire": [],
    "claim": "w-en-20",
    "lang": "en",
    "topic": "canaries",
@@ -1683,6 +2155,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "no footnote",
+   "footnote_wire": [],
    "claim": "w-en-21",
    "lang": "en",
    "topic": "extent",
@@ -1703,6 +2178,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "no footnote",
+   "footnote_wire": [],
    "claim": "w-en-22",
    "lang": "en",
    "topic": "madeira-impacts",
@@ -1723,6 +2201,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "no footnote",
+   "footnote_wire": [],
    "claim": "w-zh-01",
    "lang": "zh",
    "topic": "pressure",
@@ -1743,6 +2224,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "primary",
+   "footnote_wire": [],
    "claim": "w-zh-02",
    "lang": "zh",
    "topic": "bruna",
@@ -1766,6 +2250,9 @@
    "label": "our analysis of evidence"
   },
   {
+   "our_check": "not checked by us",
+   "footnote_kind": "no footnote",
+   "footnote_wire": [],
    "claim": "w-zh-03",
    "lang": "zh",
    "topic": "extent",

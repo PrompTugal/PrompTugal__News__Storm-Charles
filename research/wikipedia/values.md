@@ -4,19 +4,19 @@ summary: Verifiability, no original research, neutral point of view, reliable so
 ---
 # This site measured against Wikipedia's values
 
-> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 01:53 UTC. At Dinis Cruz's word (BRIEF.md, 11 November): "We should be measuring ourselves into the whole evidence of Wikipedia."
+> Kept by incident.wikipedia@web-summit.dinis, 11 November 2026, 02:02 UTC. At Dinis Cruz's word (BRIEF.md, 11 November): "We should be measuring ourselves into the whole evidence of Wikipedia."
 
-**This whole page is our analysis (a hypothesis in this site's labels), not a fact and not Wikipedia's judgement of us.** Nobody at Wikipedia has reviewed this site. The policies are described in our words from general knowledge of them and from the SGit newsroom's reading of the policy pages on 25 October 2026 ([What Wikipedia knows about being right](https://php.oct.2026.newsroom.sgit.ai/articles/what-wikipedia-knows-about-being-right/index.html), a proposal by that newsroom's ontologist, whose eleven habits this page follows after the five core policies); we did not re-read the policy pages today. Each policy name links to Wikipedia's own page, which is the authority. Counts are from [signals.json](../../incidents/2026-11-10-storm-charles/data/signals.json) as made at 00:59 UTC on 11 November: 50 rows.
+**This whole page is our analysis (a hypothesis in this site's labels), not a fact and not Wikipedia's judgement of us.** Nobody at Wikipedia has reviewed this site. The policies are described in our words from general knowledge of them and from the SGit newsroom's reading of the policy pages on 25 October 2026 ([What Wikipedia knows about being right](https://php.oct.2026.newsroom.sgit.ai/articles/what-wikipedia-knows-about-being-right/index.html), a proposal by that newsroom's ontologist, whose eleven habits this page follows after the five core policies); we did not re-read the policy pages today. Each policy name links to Wikipedia's own page, which is the authority. Counts are from [signals.json](../../incidents/2026-11-10-storm-charles/data/signals.json) as made at 01:53 UTC on 11 November: 55 rows. **Since the first version of this page (01:52 UTC) the conductor has acted on part of it**; what changed is marked "done" below.
 
 ## The short version
 
 | Value | Verdict (ours, on ourselves) |
 |---|---|
-| Verifiability | **Partly.** Every row names a source; half the rows (25 of 50) carry no address a reader can open, and no source has a public capture |
+| Verifiability | **Partly.** Every row names a source; nearly half the rows (26 of 55) carry no address a reader can open, and no source has a public capture |
 | No original research | **Fails by design.** Seven timeline rows, the worst-window bars on the front page and this page are original research in Wikipedia's meaning |
-| Neutral point of view, due weight | **Fails on weight.** 27 of 50 rows are about one conference; Madeira, where the measured damage was on Tuesday night, has one |
+| Neutral point of view, due weight | **Fails on weight.** 27 of 55 rows are about one conference; Madeira, where the measured effects were on Tuesday night, has three (one at the first count) |
 | Reliable sources | **We are not one.** Self-published and written largely by language models. Our best rows rest on primary sources, which Wikipedia uses with care |
-| Living persons | **Mostly, with three rows to fix** |
+| Living persons | **Mostly.** One row fixed since the first count, a redaction rule written; one thin attribution remains |
 | The working habits (say where you read it, breaking news, recentism, words to watch, the diff as the record, corrections) | **Mixed**: strong on times, ids and visible corrections; weak on captures and on loaded words |
 
 ## 1. Verifiability
@@ -27,7 +27,7 @@ summary: Verifiability, no original research, neutral point of view, reliable so
 
 **Where we do not.**
 
-- **25 of 50 timeline rows have no address in their source cell.** Among them rows labelled fact: `s-1110T1210` (the government's alert: "portugal.gov.pt", no link), `s-1110T1423` and `s-1110T1742` (IPMA's red warnings: "read by weather@", no link). The Portuguese Wikipedia article links the government's page for the same statement ([w-pt-19](claims.md)).
+- **26 of 55 timeline rows have no address in their source cell** (15 of them labelled fact, eight about official bodies). Among them rows labelled fact: `s-1110T1210` (the government's alert: "portugal.gov.pt", no link), `s-1110T1423` and `s-1110T1742` (IPMA's red warnings: "read by weather@", no link). The Portuguese Wikipedia article links the government's page for the same statement ([w-pt-19](claims.md)).
 - **`s-1110T1938` rests on an email** to attendees "with no public URL". A reader cannot check it. On Wikipedia it would not stand; here it is redundant, since `s-1110T1909` (the organisers' public page) says the same.
 - **`s-1110T2350` reports an image we did not open** ("not opened by us"), from a page we do not name, labelled unofficial and unverified. That is a rumour with a label on it.
 - **No capture.** When a source changes, our row points at the new text. IPMA's communiqués live at one address whose content changes; Wikipedia's article has the same weakness (both its IPMA footnotes point at the index page). The newsroom's standard is a dated capture with its hash for every source read ([library/reading](../../library/reading/README.md), "Provenance is the product", "Capture first"); this site has captures for the press sweep only, in a private store.
@@ -62,7 +62,7 @@ summary: Verifiability, no original research, neutral point of view, reliable so
 
 **Where we do not.**
 
-- **Weight.** 27 of 50 rows concern Web Summit. The Portuguese Wikipedia article gives the conference one sentence in 28,258 bytes and gives Madeira about half the article, including the only measured effects so far (133.9 mm in six hours at one station, 38 incidents; [w-pt-33, w-pt-34](claims.md)). Our timeline has one row that mentions Madeira. The site says what it is (Lisbon, and the conference its team attends), but its title is "Storm Charles", and for the storm as a whole this is undue weight.
+- **Weight.** 27 of 55 rows concern Web Summit. The Portuguese Wikipedia article gives the conference one sentence in 28,258 bytes and gives Madeira about half the article, including the only measured effects so far (133.9 mm in six hours at one station, 38 incidents; [w-pt-33, w-pt-34](claims.md)). Our timeline had one row that mentioned Madeira at the first count; it has three now, one of them IPMA's own station figures (`s-1111T0146`, added after Wikipedia's figure was checked at source). The site says what it is (Lisbon, and the conference its team attends), but its title is "Storm Charles", and for the storm as a whole this is undue weight.
 - **We have an interest.** The site is run by a team attending the conference it covers most, and it is also a demonstration of its makers' way of working. The home page says who runs it; it does not say that this shapes what is covered.
 - **Emphasis is editorial.** Capitals and bold ("PRIMARY", "DECISION") rank some rows above others by our judgement.
 
@@ -91,24 +91,24 @@ summary: Verifiability, no original research, neutral point of view, reliable so
 
 **Where we do not.**
 
-- **`s-1110T1806` links a private attendee's Mastodon post**, and the address carries the account's handle. The row calls it speculation. A private person's guess is being kept, with their handle, in a permanent row.
+- **Done (01:5x UTC):** `s-1110T1806` linked a private attendee's post, and the address carried the account's handle. The conductor has withheld the handle and the address, and the graph's tables were regenerated without them.
 - **`s-1110T2235` names an IPMA meteorologist** for words said on radio. She spoke in her role and Observador published the name, so this is defensible; the row's weight (it is in our standfirst) rests on one live-blog entry and one person's spoken words, which is thin for a statement attributed to a named living person.
-- **`s-1110T1942` repeats a headline that calls the organisers' chief executive by his first name.** It is the newspaper's wording, quoted; our own text should not adopt it.
-- **Row ids are permanent**, which is good for citation and bad for a mistake about a person: we have no rule for removing a name from a permanent row.
+- **`s-1110T1942` repeats a headline that calls the organisers' chief executive by his first name.** It is the newspaper's wording, quoted; the row now says so and names his public role. Our own text should not adopt the first name.
+- **Done:** row ids are permanent, which is good for citation and bad for a mistake about a person. CLAUDE.md now has the rule: the id stays when the text is redacted.
 
-**What we would have to change.** Remove the handle from `s-1110T1806` (keep "an attendee's public post", with the outlet-level link if any) or drop the row. Write a rule for redaction inside a permanent row (the id stays, the name goes, the change is noted). Prefer the role to the name unless the name is needed.
+**What is left to change.** Prefer the role to the name unless the name is needed (`s-1110T2235`). A check in the gate for a personal address or handle in any row, as the graph's builder now has.
 
 ## 6. The working habits (after the newsroom's mapping)
 
 | Habit | What it asks | This site |
 |---|---|---|
-| The burden is on the one who adds | An unsourced claim leaves the summary until someone cites it | **Not met.** Nothing takes an unsourced or unlinked row off the front page. 25 rows have no link |
+| The burden is on the one who adds | An unsourced claim leaves the summary until someone cites it | **Not met.** Nothing takes an unsourced or unlinked row off the front page. 26 rows have no link |
 | "Directly supports" means what it says | One claim, one assertion, one kind of support | **Partly.** Labels are per row; several rows hold a fact and a conclusion together (section 2) |
 | Say where you read it | Cite the copy you read; a relay is not a second source | **Partly.** "Read at source by the lead 20:58" is exactly right; "via social.watch@" in the source cell is not |
 | Breaking news is a primary source | Mark it and replace it | **Not met.** No marking, no replacement step |
 | The ten-year test | Summaries carry what will still matter; the day's detail lives on the timeline | **Partly.** The timeline is the right place for detail; the front page's standfirst carries a spoken line of one evening |
 | Words to watch | No loaded or vague words without naming who says them | **Partly.** "PRIMARY", "DECISION", "the press had it" are ours; quotes are attributed |
-| Neutral voice, both sides shown | A contradiction appears beside both claims | **Met on the track and on Thursday**; our own 17:42 against IPMA's 16:30 for the red rain is nowhere shown as a contradiction ([against.md](against.md), w-pt-18) |
+| Neutral voice, both sides shown | A contradiction appears beside both claims | **Met on the track and on Thursday**; our own 17:42 against IPMA's 16:30 for the red rain was not shown until Wikipedia's figure pointed at it; the row now gives both ([against.md](against.md), w-pt-18) |
 | Edit summaries; the diff as the record | Every change says what and why, and the history is public | **Met.** Commit subjects name the agent and the change; row ids are permanent; corrections are visible (`BRIEF-CORRECTIONS.md`, the media watch's "Correction:") |
 | Revert once, then discuss | No edit wars | **Met by structure**: each agent owns its paths (`agents/policy.json`); the check warns, it does not lock |
 | A request with a declared interest | Changes outside your scope are asked for, with the source | **Met**: [contribute.md](../../contribute.md), and agents message the conductor. This page is such a request |
@@ -118,9 +118,13 @@ Two of Wikipedia's rules we do not take, as the newsroom did not: its ban on con
 
 ## What we would change first (a request to the conductor, not a decision)
 
-1. **A link or a stated reason on every timeline row**, starting with the 15 rows labelled fact that have none (eight of them about official bodies).
-2. **Split fact from conclusion** in `s-1110T0930` and `s-1110T2354`; every hypothesis row names its test.
-3. **Fix the three rows about people**: `s-1110T1806` (handle), `s-1110T1942` (first name in our voice), and a redaction rule.
-4. **Say the scope and the interest** on the front page; add the storm outside Lisbon or narrow the title.
-5. **A sourcing check in the gate**: a row labelled fact must carry a primary address; a row whose only source is a live blog or a social post is marked breaking.
-6. **Captures**: the vault, a pointer and a sha256 for every source, so "verifiable" survives the source changing.
+1. **A link or a stated reason on every timeline row**, starting with the 15 rows labelled fact that have none (eight of them about official bodies). **Open**.
+2. **Split fact from conclusion** in `s-1110T0930` and `s-1110T2354`; every hypothesis row names its test. **Open**
+3. **The rows about people**: `s-1110T1806` (handle), `s-1110T1942` (first name), and a redaction rule. **Done by the conductor, 11 November**
+4. **Say the scope and the interest** on the front page; add the storm outside Lisbon or narrow the title. **Open; Madeira's measurements are now in**
+5. **A sourcing check in the gate**: a row labelled fact must carry a primary address; a row whose only source is a live blog or a social post is marked breaking. **Open**
+6. **Captures**: the vault, a pointer and a sha256 for every source, so "verifiable" survives the source changing. **Open**
+
+## What the first day showed
+
+Wikipedia was useful to us as a list of leads and no more. Of its 61 claims, our researcher and meteorologist took the ones we lacked to the bodies themselves: 18 claims are verified at a primary source, and **four are not established there** (the environment agency's "101 municipalities", the airline's "ten flights", "Madeira's courts closed", and the day the US Hurricane Center labelled the low). That is verifiability working in both directions: [against.md](against.md).
