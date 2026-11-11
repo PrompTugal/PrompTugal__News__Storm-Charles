@@ -1,15 +1,15 @@
 {
  "about": "The pipeline and the repository of storm-charles.promptugal.news as data: the list of the day files (runs/, commits/), the totals, the pipeline's measures, who pushes where (agents against top-level folders, by files changed), hand-offs (For: trailers), changes outside an agent's own paths, and what is and is not signed. Written by tools/ci-read.mjs, run by incident.ci@ each wake in a full clone: a snapshot as of updated, not a live feed. The pages under /ci/ draw it. No session ids.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T12:32:59Z",
+ "updated": "2026-11-11T12:37:16Z",
  "repository": "PrompTugal/PrompTugal__News__Storm-Charles",
  "web": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles",
  "branch": "dev",
- "head": "4a6ad258d175518eb89d3f7d46dad44e6e52b122",
+ "head": "60bc99a98bc1ec40cf8c7d0129b3a738eaa44244",
  "series": "0.1",
  "read": {
-  "api": "read 2026-11-11T12:32:59Z",
-  "api_calls": 253,
+  "api": "read 2026-11-11T12:37:16Z",
+  "api_calls": 214,
   "history": "a full clone, origin/dev at head"
  },
  "files": {
@@ -49,8 +49,8 @@
    {
     "file": "runs/2026-11-11T03.json",
     "period": "2026-11-11T03",
-    "count": 116,
-    "bytes": 123759,
+    "count": 117,
+    "bytes": 125095,
     "from": "2026-11-11T03:00:08Z",
     "to": "2026-11-11T03:57:06Z"
    },
@@ -121,10 +121,10 @@
    {
     "file": "runs/2026-11-11T12.json",
     "period": "2026-11-11T12",
-    "count": 88,
-    "bytes": 95343,
+    "count": 97,
+    "bytes": 106207,
     "from": "2026-11-11T12:01:05Z",
-    "to": "2026-11-11T12:32:47Z"
+    "to": "2026-11-11T12:36:50Z"
    }
   ],
   "commits": [
@@ -275,27 +275,27 @@
    {
     "file": "commits/2026-11-11T12.json",
     "period": "2026-11-11T12",
-    "count": 93,
-    "bytes": 94641,
+    "count": 103,
+    "bytes": 105777,
     "from": "2026-11-11T12:00:55Z",
-    "to": "2026-11-11T12:32:36Z"
+    "to": "2026-11-11T12:36:46Z"
    }
   ]
  },
  "tree": "tree.json",
  "totals": {
-  "commits": 1210,
+  "commits": 1220,
   "first_commit": "2026-11-10T21:03:38Z",
-  "last_commit": "2026-11-11T12:32:36Z",
-  "runs": 1103,
+  "last_commit": "2026-11-11T12:36:46Z",
+  "runs": 1113,
   "by_result": {
    "failure": 6,
-   "success": 760,
-   "cancelled": 336,
-   "in progress": 1
+   "success": 767,
+   "cancelled": 339,
+   "queued": 1
   },
   "agents": 39,
-  "tags": 762,
+  "tags": 767,
   "github_releases": 0
  },
  "pipeline": {
@@ -310,7 +310,7 @@
    "measure"
   ],
   "push_to_served_s": {
-   "runs": 729,
+   "runs": 736,
    "median": 38,
    "p90": 55,
    "max": 161,
@@ -320,56 +320,56 @@
   "steps": [
    {
     "step": "set up",
-    "runs": 760,
+    "runs": 767,
     "median_s": 1,
     "p90_s": 2,
     "max_s": 5
    },
    {
     "step": "checkout",
-    "runs": 760,
+    "runs": 767,
     "median_s": 1,
     "p90_s": 2,
     "max_s": 6
    },
    {
     "step": "version",
-    "runs": 760,
+    "runs": 767,
     "median_s": 0,
     "p90_s": 0,
     "max_s": 1
    },
    {
     "step": "gate",
-    "runs": 760,
+    "runs": 767,
     "median_s": 5,
     "p90_s": 7,
     "max_s": 12
    },
    {
     "step": "upload",
-    "runs": 760,
+    "runs": 767,
     "median_s": 2,
     "p90_s": 3,
     "max_s": 4
    },
    {
     "step": "deploy",
-    "runs": 760,
+    "runs": 767,
     "median_s": 7,
     "p90_s": 8,
     "max_s": 139
    },
    {
     "step": "tag",
-    "runs": 760,
+    "runs": 767,
     "median_s": 2,
     "p90_s": 2,
     "max_s": 8
    },
    {
     "step": "measure",
-    "runs": 760,
+    "runs": 767,
     "median_s": 0,
     "p90_s": 1,
     "max_s": 13
@@ -390,21 +390,21 @@
    },
    {
     "step": "Run actions/cache@v4",
-    "runs": 24,
+    "runs": 30,
     "median_s": 1,
     "p90_s": 1,
     "max_s": 2
    },
    {
     "step": "Brief PDFs, rendered (only when the brief changed)",
-    "runs": 3,
-    "median_s": 12,
+    "runs": 4,
+    "median_s": 14,
     "p90_s": 18,
     "max_s": 18
    },
    {
     "step": "Brief PDFs, beside the page",
-    "runs": 24,
+    "runs": 30,
     "median_s": 0,
     "p90_s": 0,
     "max_s": 1
@@ -412,8 +412,8 @@
   ],
   "slowest_step": {
    "step": "Brief PDFs, rendered (only when the brief changed)",
-   "runs": 3,
-   "median_s": 12,
+   "runs": 4,
+   "median_s": 14,
    "p90_s": 18,
    "max_s": 18
   },
@@ -424,8 +424,8 @@
    "note": "the step's seconds as GitHub timed them (whole seconds, node start included); the gate prints its own milliseconds in the run's log"
   },
   "queue": {
-   "last_20_max_s": 25,
-   "last_20_median_s": 13
+   "last_20_max_s": 38,
+   "last_20_median_s": 9
   },
   "deploy_retries": [
    {
@@ -526,12 +526,93 @@
   ],
   "last": [
    {
+    "run": 1112,
+    "version": "v0.1.1112",
+    "result": "queued",
+    "agent": "incident.sherpa",
+    "queued": "2026-11-11T12:36:50Z",
+    "push_to_served_s": null,
+    "what": "guide v10: short names on the rows, the full name in the fold; the alert in two lines (designer@ 12:33)"
+   },
+   {
+    "run": 1111,
+    "version": "v0.1.1111",
+    "result": "success",
+    "agent": "incident.conductor",
+    "queued": "2026-11-11T12:36:48Z",
+    "push_to_served_s": 39,
+    "what": "timeline: bridge limits again (60/80 km/h), 334 flights cancelled (press)"
+   },
+   {
+    "run": 1110,
+    "version": "v0.1.1110",
+    "result": "success",
+    "agent": "incident.weatherwatch",
+    "queued": "2026-11-11T12:35:27Z",
+    "push_to_served_s": 35,
+    "what": "tokens measured"
+   },
+   {
+    "run": 1109,
+    "version": "v0.1.1109",
+    "result": "cancelled",
+    "agent": "incident.conductor",
+    "queued": "2026-11-11T12:35:20Z",
+    "push_to_served_s": null,
+    "what": "apply incident.ci@'s generators-together patch (before-generators start together; gate ~4.4 s to ~3.5 s locally)"
+   },
+   {
+    "run": 1108,
+    "version": "v0.1.1108",
+    "result": "success",
+    "agent": "incident.board",
+    "queued": "2026-11-11T12:34:58Z",
+    "push_to_served_s": 33,
+    "what": "12:33 round: eight new asks for Dinis joined or ranked, evidence on q-thursday-transport, sync (58 cards); HANDOVER.md b"
+   },
+   {
+    "run": 1107,
+    "version": "v0.1.1107",
+    "result": "cancelled",
+    "agent": "incident.sherpa",
+    "queued": "2026-11-11T12:34:52Z",
+    "push_to_served_s": null,
+    "what": "guide: the label key under \"Changed today\"; how to cite near the top (synthetic@'s /guide/media/ check)"
+   },
+   {
+    "run": 1106,
+    "version": "v0.1.1106",
+    "result": "success",
+    "agent": "incident.conductor",
+    "queued": "2026-11-11T12:34:32Z",
+    "push_to_served_s": 36,
+    "what": "timeline: IPMA's adjusted warnings (CAP 12:18:03): none for Lisbon; Faro rain red 12:19-18:00"
+   },
+   {
+    "run": 1105,
+    "version": "v0.1.1105",
+    "result": "cancelled",
+    "agent": "incident.weather",
+    "queued": "2026-11-11T12:34:21Z",
+    "push_to_served_s": null,
+    "what": "the Câmara on the first screen names what it closed (scope.parts); communiqué no. 3 and the 18:00/21:00 step-downs check"
+   },
+   {
+    "run": 1104,
+    "version": "v0.1.1104",
+    "result": "success",
+    "agent": "incident.ci",
+    "queued": "2026-11-11T12:34:02Z",
+    "push_to_served_s": 39,
+    "what": "where the gate's time goes at 2,297 pages, and ci/patches/generators-together.patch for the conductor (the before-genera"
+   },
+   {
     "run": 1103,
     "version": "v0.1.1103",
-    "result": "in progress",
+    "result": "success",
     "agent": "incident.brief",
     "queued": "2026-11-11T12:32:47Z",
-    "push_to_served_s": null,
+    "push_to_served_s": 63,
     "what": "edition 3 corrected: \"heaviest hour since the red warning began\", not \"yet\"; \"adjusted\" read against CAP"
    },
    {
@@ -551,107 +632,26 @@
     "queued": "2026-11-11T12:31:57Z",
     "push_to_served_s": null,
     "what": "guide v9: getting around as one row per operator (designer@ 12:25)"
-   },
-   {
-    "run": 1100,
-    "version": "v0.1.1100",
-    "result": "success",
-    "agent": "incident.brief",
-    "queued": "2026-11-11T12:31:48Z",
-    "push_to_served_s": 40,
-    "what": "status: edition 3 live"
-   },
-   {
-    "run": 1099,
-    "version": "v0.1.1099",
-    "result": "success",
-    "agent": "incident.conductor",
-    "queued": "2026-11-11T12:30:43Z",
-    "push_to_served_s": 41,
-    "what": "sync communiqué no. 3 to the site; timeline row 12:25 corrected: heaviest hour since the red warning began, not of the w"
-   },
-   {
-    "run": 1098,
-    "version": "v0.1.1098",
-    "result": "cancelled",
-    "agent": "incident.stories",
-    "queued": "2026-11-11T12:30:05Z",
-    "push_to_served_s": null,
-    "what": "measure the sixth session's first wake"
-   },
-   {
-    "run": 1097,
-    "version": "v0.1.1097",
-    "result": "success",
-    "agent": "incident.stories",
-    "queued": "2026-11-11T12:29:48Z",
-    "push_to_served_s": 60,
-    "what": "sixth session key; Lisbon and mainland retold on the 12:23 read (airport to 12:00, the wettest station hour, the 12:25 r"
-   },
-   {
-    "run": 1096,
-    "version": "v0.1.1096",
-    "result": "cancelled",
-    "agent": "incident.designer",
-    "queued": "2026-11-11T12:29:43Z",
-    "push_to_served_s": null,
-    "what": "the phone menu row fades at its cut edge, and the fade drops at the end (synthetic@'s run 5)"
-   },
-   {
-    "run": 1095,
-    "version": "v0.1.1095",
-    "result": "cancelled",
-    "agent": "incident.librarian",
-    "queued": "2026-11-11T12:29:40Z",
-    "push_to_served_s": null,
-    "what": "the pack accepts next and asks as a string or a list"
-   },
-   {
-    "run": 1094,
-    "version": "v0.1.1094",
-    "result": "cancelled",
-    "agent": "incident.brief",
-    "queued": "2026-11-11T12:29:23Z",
-    "push_to_served_s": null,
-    "what": "decision brief, edition 3 (IPMA's communiqué no. 3; adjusted warnings awaited)"
-   },
-   {
-    "run": 1093,
-    "version": "v0.1.1093",
-    "result": "success",
-    "agent": "incident.synthetic",
-    "queued": "2026-11-11T12:29:18Z",
-    "push_to_served_s": 43,
-    "what": "targeted check of /guide/media/ on v8: \"Changed today\" at 801 px, the IPMA change is row 1"
-   },
-   {
-    "run": 1092,
-    "version": "v0.1.1092",
-    "result": "success",
-    "agent": "incident.weather",
-    "queued": "2026-11-11T12:28:35Z",
-    "push_to_served_s": 34,
-    "what": "the 12:00 check true on the live site; \"earlier today\" rows off a class already taken; hand-over"
    }
   ]
  },
  "agents": [
   {
    "agent": "incident.conductor",
-   "commits": 179,
-   "files": 901,
+   "commits": 182,
+   "files": 906,
    "outside": 8,
    "shared": 515,
    "first": "2026-11-10T21:14:33Z",
-   "last": "2026-11-11T12:30:34Z",
+   "last": "2026-11-11T12:36:39Z",
    "folders": {
     ".github/": 5,
     "(root)": 45,
-    "admin/": 35,
+    "admin/": 36,
     "agents/": 115,
     "app/": 3,
     "data/": 2,
-    "incidents/": 669,
+    "incidents/": 673,
     "tools/": 17,
     "studio/": 1,
     "research/": 3,
@@ -729,16 +729,16 @@
   },
   {
    "agent": "incident.weather",
-   "commits": 49,
-   "files": 134,
+   "commits": 50,
+   "files": 136,
    "outside": 0,
    "shared": 5,
    "first": "2026-11-11T02:16:19Z",
-   "last": "2026-11-11T12:31:59Z",
+   "last": "2026-11-11T12:34:10Z",
    "folders": {
     "data/": 5,
-    "agents/": 34,
-    "app/": 58,
+    "agents/": 35,
+    "app/": 59,
     "weather/": 19,
     "tools/": 4,
     "accounts/": 14
@@ -769,17 +769,17 @@
   },
   {
    "agent": "incident.weatherwatch",
-   "commits": 46,
-   "files": 743,
+   "commits": 48,
+   "files": 749,
    "outside": 0,
    "shared": 3,
    "first": "2026-11-10T23:38:13Z",
-   "last": "2026-11-11T11:34:19Z",
+   "last": "2026-11-11T12:35:23Z",
    "folders": {
-    "agents/": 32,
+    "agents/": 34,
     "data/": 3,
-    "research/": 693,
-    "accounts/": 15
+    "research/": 696,
+    "accounts/": 16
    },
    "outside_folders": {},
    "has_key": true
@@ -940,19 +940,19 @@
   },
   {
    "agent": "incident.board",
-   "commits": 25,
-   "files": 928,
+   "commits": 26,
+   "files": 990,
    "outside": 0,
    "shared": 2,
    "first": "2026-11-11T02:23:14Z",
-   "last": "2026-11-11T11:35:04Z",
+   "last": "2026-11-11T12:34:55Z",
    "folders": {
-    "agents/": 22,
+    "agents/": 24,
     "app/": 4,
-    "board/": 881,
+    "board/": 940,
     "data/": 2,
     "tools/": 7,
-    "accounts/": 12
+    "accounts/": 13
    },
    "outside_folders": {},
    "has_key": true
@@ -998,20 +998,20 @@
   },
   {
    "agent": "incident.ci",
-   "commits": 20,
-   "files": 202,
+   "commits": 21,
+   "files": 210,
    "outside": 0,
    "shared": 2,
    "first": "2026-11-11T02:28:32Z",
-   "last": "2026-11-11T12:20:05Z",
+   "last": "2026-11-11T12:33:51Z",
    "folders": {
-    "agents/": 24,
+    "agents/": 25,
     "app/": 4,
-    "ci/": 28,
-    "data/": 124,
+    "ci/": 30,
+    "data/": 128,
     "tools/": 5,
     "(root)": 2,
-    "accounts/": 15
+    "accounts/": 16
    },
    "outside_folders": {},
    "has_key": true
@@ -1165,6 +1165,23 @@
    "has_key": true
   },
   {
+   "agent": "incident.sherpa",
+   "commits": 14,
+   "files": 38,
+   "outside": 0,
+   "shared": 1,
+   "first": "2026-11-11T11:49:59Z",
+   "last": "2026-11-11T12:36:46Z",
+   "folders": {
+    "app/": 23,
+    "data/": 1,
+    "guide/": 13,
+    "agents/": 1
+   },
+   "outside_folders": {},
+   "has_key": true
+  },
+  {
    "agent": "incident.synthetic",
    "commits": 12,
    "files": 95,
@@ -1175,23 +1192,6 @@
    "folders": {
     "data/": 1,
     "research/": 93,
-    "agents/": 1
-   },
-   "outside_folders": {},
-   "has_key": true
-  },
-  {
-   "agent": "incident.sherpa",
-   "commits": 12,
-   "files": 35,
-   "outside": 0,
-   "shared": 1,
-   "first": "2026-11-11T11:49:59Z",
-   "last": "2026-11-11T12:31:53Z",
-   "folders": {
-    "app/": 20,
-    "data/": 1,
-    "guide/": 13,
     "agents/": 1
    },
    "outside_folders": {},
@@ -1464,20 +1464,20 @@
    "last_sha": "e87d672b30"
   },
   {
+   "from": "incident.conductor",
+   "to": "incident.stories",
+   "n": 30,
+   "first": "2026-11-11T02:30:07Z",
+   "last": "2026-11-11T12:34:23Z",
+   "last_sha": "b21bc1de1a"
+  },
+  {
    "from": "incident.weather",
    "to": "incident.conductor",
    "n": 30,
    "first": "2026-11-11T02:16:19Z",
    "last": "2026-11-11T12:28:26Z",
    "last_sha": "f6c4aa9fbd"
-  },
-  {
-   "from": "incident.conductor",
-   "to": "incident.stories",
-   "n": 29,
-   "first": "2026-11-11T02:30:07Z",
-   "last": "2026-11-11T12:30:34Z",
-   "last_sha": "4bca182766"
   },
   {
    "from": "incident.conductor",
@@ -1546,18 +1546,18 @@
   {
    "from": "incident.board",
    "to": "incident.conductor",
-   "n": 20,
+   "n": 21,
    "first": "2026-11-11T02:23:14Z",
-   "last": "2026-11-11T11:35:04Z",
-   "last_sha": "ed5fe2ef84"
+   "last": "2026-11-11T12:34:55Z",
+   "last_sha": "5315e24b28"
   },
   {
    "from": "incident.conductor",
    "to": "incident.meteorologist",
-   "n": 20,
+   "n": 21,
    "first": "2026-11-10T21:14:33Z",
-   "last": "2026-11-11T12:30:34Z",
-   "last_sha": "4bca182766"
+   "last": "2026-11-11T12:34:23Z",
+   "last_sha": "b21bc1de1a"
   },
   {
    "from": "incident.reporter",
@@ -1600,6 +1600,14 @@
    "last_sha": "175c7f512b"
   },
   {
+   "from": "incident.conductor",
+   "to": "incident.researcher",
+   "n": 17,
+   "first": "2026-11-10T21:14:33Z",
+   "last": "2026-11-11T12:36:39Z",
+   "last_sha": "d62c104d52"
+  },
+  {
    "from": "incident.wikipedia",
    "to": "incident.conductor",
    "n": 17,
@@ -1616,12 +1624,12 @@
    "last_sha": "23eff566f2"
   },
   {
-   "from": "incident.conductor",
-   "to": "incident.researcher",
+   "from": "incident.ci",
+   "to": "incident.conductor",
    "n": 16,
-   "first": "2026-11-10T21:14:33Z",
-   "last": "2026-11-11T12:22:58Z",
-   "last_sha": "bd91d2d113"
+   "first": "2026-11-11T02:28:32Z",
+   "last": "2026-11-11T12:33:51Z",
+   "last_sha": "0df121c091"
   },
   {
    "from": "incident.ipma",
@@ -1638,14 +1646,6 @@
    "first": "2026-11-10T23:58:52Z",
    "last": "2026-11-11T11:34:19Z",
    "last_sha": "8069e09974"
-  },
-  {
-   "from": "incident.ci",
-   "to": "incident.conductor",
-   "n": 15,
-   "first": "2026-11-11T02:28:32Z",
-   "last": "2026-11-11T12:20:05Z",
-   "last_sha": "48f3e7953b"
   },
   {
    "from": "incident.conductor",
@@ -1728,6 +1728,14 @@
    "last_sha": "2561637a1c"
   },
   {
+   "from": "incident.weatherwatch",
+   "to": "incident.accountant",
+   "n": 13,
+   "first": "2026-11-11T03:02:11Z",
+   "last": "2026-11-11T12:35:23Z",
+   "last_sha": "c3d78366ad"
+  },
+  {
    "from": "incident.journalist",
    "to": "incident.reporter",
    "n": 12,
@@ -1742,14 +1750,6 @@
    "first": "2026-11-11T03:03:46Z",
    "last": "2026-11-11T12:10:59Z",
    "last_sha": "4cf874a1d0"
-  },
-  {
-   "from": "incident.weatherwatch",
-   "to": "incident.accountant",
-   "n": 12,
-   "first": "2026-11-11T03:02:11Z",
-   "last": "2026-11-11T11:34:19Z",
-   "last_sha": "0f7c045582"
   },
   {
    "from": "incident.designer",
@@ -1808,6 +1808,14 @@
    "last_sha": "4794abfb68"
   },
   {
+   "from": "incident.conductor",
+   "to": "incident.ci",
+   "n": 9,
+   "first": "2026-11-11T02:33:03Z",
+   "last": "2026-11-11T12:35:12Z",
+   "last_sha": "f9ff8bc990"
+  },
+  {
    "from": "incident.meteorology",
    "to": "incident.conductor",
    "n": 9,
@@ -1833,11 +1841,11 @@
   },
   {
    "from": "incident.conductor",
-   "to": "incident.ci",
+   "to": "incident.transport",
    "n": 8,
-   "first": "2026-11-11T02:33:03Z",
-   "last": "2026-11-11T12:17:52Z",
-   "last_sha": "1a5f32d75b"
+   "first": "2026-11-11T10:24:26Z",
+   "last": "2026-11-11T12:36:39Z",
+   "last_sha": "d62c104d52"
   },
   {
    "from": "incident.labs",
@@ -1865,19 +1873,19 @@
   },
   {
    "from": "incident.conductor",
-   "to": "incident.transport",
-   "n": 7,
-   "first": "2026-11-11T10:24:26Z",
-   "last": "2026-11-11T12:03:51Z",
-   "last_sha": "fb5e8c098b"
-  },
-  {
-   "from": "incident.conductor",
    "to": "incident.planner",
    "n": 7,
    "first": "2026-11-11T10:29:37Z",
    "last": "2026-11-11T11:44:00Z",
    "last_sha": "de100d710a"
+  },
+  {
+   "from": "incident.conductor",
+   "to": "incident.brief",
+   "n": 7,
+   "first": "2026-11-11T11:44:00Z",
+   "last": "2026-11-11T12:34:23Z",
+   "last_sha": "b21bc1de1a"
   },
   {
    "from": "incident.designer",
@@ -1944,20 +1952,20 @@
    "last_sha": "6823e501c5"
   },
   {
-   "from": "incident.conductor",
-   "to": "incident.brief",
-   "n": 6,
-   "first": "2026-11-11T11:44:00Z",
-   "last": "2026-11-11T12:27:00Z",
-   "last_sha": "cbf8a86253"
-  },
-  {
    "from": "incident.desk",
    "to": "incident.conductor",
    "n": 6,
    "first": "2026-11-11T11:54:45Z",
    "last": "2026-11-11T12:11:40Z",
    "last_sha": "3d7dbd0ff2"
+  },
+  {
+   "from": "incident.sherpa",
+   "to": "incident.synthetic",
+   "n": 6,
+   "first": "2026-11-11T11:56:33Z",
+   "last": "2026-11-11T12:34:42Z",
+   "last_sha": "500e10e02b"
   },
   {
    "from": "incident.weatherwatch",
@@ -2006,6 +2014,14 @@
    "first": "2026-11-11T02:34:10Z",
    "last": "2026-11-11T10:51:57Z",
    "last_sha": "53e68e3dcb"
+  },
+  {
+   "from": "incident.conductor",
+   "to": "incident.ipma",
+   "n": 5,
+   "first": "2026-11-11T02:34:10Z",
+   "last": "2026-11-11T12:34:23Z",
+   "last_sha": "b21bc1de1a"
   },
   {
    "from": "incident.conductor",
@@ -2088,14 +2104,6 @@
    "last_sha": "9d1e09019b"
   },
   {
-   "from": "incident.sherpa",
-   "to": "incident.synthetic",
-   "n": 5,
-   "first": "2026-11-11T11:56:33Z",
-   "last": "2026-11-11T12:18:03Z",
-   "last_sha": "516583a34f"
-  },
-  {
    "from": "incident.studio",
    "to": "incident.weather",
    "n": 5,
@@ -2128,6 +2136,14 @@
    "last_sha": "346491fa53"
   },
   {
+   "from": "incident.weatherwatch",
+   "to": "incident.weather",
+   "n": 5,
+   "first": "2026-11-11T02:23:38Z",
+   "last": "2026-11-11T12:35:23Z",
+   "last_sha": "e9c8d3d3a3"
+  },
+  {
    "from": "incident.board",
    "to": "incident.media",
    "n": 4,
@@ -2150,14 +2166,6 @@
    "first": "2026-11-11T01:44:49Z",
    "last": "2026-11-11T03:53:35Z",
    "last_sha": "78b9265cbd"
-  },
-  {
-   "from": "incident.conductor",
-   "to": "incident.ipma",
-   "n": 4,
-   "first": "2026-11-11T02:34:10Z",
-   "last": "2026-11-11T12:27:00Z",
-   "last_sha": "cbf8a86253"
   },
   {
    "from": "incident.designer",
@@ -2216,20 +2224,20 @@
    "last_sha": "e3abc02a77"
   },
   {
+   "from": "incident.sherpa",
+   "to": "incident.designer",
+   "n": 4,
+   "first": "2026-11-11T11:53:53Z",
+   "last": "2026-11-11T12:36:46Z",
+   "last_sha": "60bc99a98b"
+  },
+  {
    "from": "incident.studio",
    "to": "incident.librarian",
    "n": 4,
    "first": "2026-11-11T00:42:40Z",
    "last": "2026-11-11T03:54:54Z",
    "last_sha": "863d28febe"
-  },
-  {
-   "from": "incident.weatherwatch",
-   "to": "incident.weather",
-   "n": 4,
-   "first": "2026-11-11T02:23:38Z",
-   "last": "2026-11-11T09:40:56Z",
-   "last_sha": "0c53794303"
   },
   {
    "from": "incident.weatherwatch",
@@ -2432,14 +2440,6 @@
    "last_sha": "9ea4e2887d"
   },
   {
-   "from": "incident.sherpa",
-   "to": "incident.designer",
-   "n": 3,
-   "first": "2026-11-11T11:53:53Z",
-   "last": "2026-11-11T12:31:53Z",
-   "last_sha": "650bd4c86b"
-  },
-  {
    "from": "incident.stories",
    "to": "incident.media",
    "n": 3,
@@ -2486,6 +2486,14 @@
    "first": "2026-11-11T02:26:38Z",
    "last": "2026-11-11T12:06:08Z",
    "last_sha": "c3942f5ac0"
+  },
+  {
+   "from": "incident.weather",
+   "to": "incident.researcher",
+   "n": 3,
+   "first": "2026-11-11T09:27:41Z",
+   "last": "2026-11-11T12:34:10Z",
+   "last_sha": "b40928260e"
   },
   {
    "from": "incident.wikipedia",
@@ -2550,6 +2558,14 @@
    "first": "2026-11-11T02:28:32Z",
    "last": "2026-11-11T03:17:25Z",
    "last_sha": "31a5b210c9"
+  },
+  {
+   "from": "incident.ci",
+   "to": "incident.entities",
+   "n": 2,
+   "first": "2026-11-11T02:36:53Z",
+   "last": "2026-11-11T12:33:51Z",
+   "last_sha": "0df121c091"
   },
   {
    "from": "incident.conductor",
@@ -2888,14 +2904,6 @@
    "last_sha": "14eb1978b3"
   },
   {
-   "from": "incident.weather",
-   "to": "incident.researcher",
-   "n": 2,
-   "first": "2026-11-11T09:27:41Z",
-   "last": "2026-11-11T12:02:40Z",
-   "last_sha": "078d643efa"
-  },
-  {
    "from": "incident.weatherwatch",
    "to": "incident.meteorology",
    "n": 2,
@@ -3001,19 +3009,19 @@
   },
   {
    "from": "incident.ci",
-   "to": "incident.entities",
-   "n": 1,
-   "first": "2026-11-11T02:36:53Z",
-   "last": "2026-11-11T02:36:53Z",
-   "last_sha": "1f5cb6293a"
-  },
-  {
-   "from": "incident.ci",
    "to": "incident.brief",
    "n": 1,
    "first": "2026-11-11T12:15:47Z",
    "last": "2026-11-11T12:15:47Z",
    "last_sha": "cd1e0372b2"
+  },
+  {
+   "from": "incident.ci",
+   "to": "incident.librarian",
+   "n": 1,
+   "first": "2026-11-11T12:33:51Z",
+   "last": "2026-11-11T12:33:51Z",
+   "last_sha": "0df121c091"
   },
   {
    "from": "incident.conductor",
@@ -3797,38 +3805,38 @@
  ],
  "signing": {
   "commits": {
-   "total": 1210,
-   "with_a_signature": 1210,
+   "total": 1220,
+   "with_a_signature": 1220,
    "without": [],
-   "github_verified": 1210,
+   "github_verified": 1220,
    "github_not_asked": 0,
    "keys": [
     {
      "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
-     "commits": 1209,
+     "commits": 1219,
      "in_data_keys_json": false
     }
    ],
    "kinds": {
     "pgp": 1,
-    "ssh": 1209
+    "ssh": 1219
    }
   },
   "agent_named_by": {
    "not stated": 1,
-   "Agent: trailer": 1209
+   "Agent: trailer": 1219
   },
   "tags": {
-   "total": 762,
+   "total": 767,
    "annotated": 0,
-   "lightweight": 762,
+   "lightweight": 767,
    "signed": 0
   },
   "releases": {
    "github_releases": 0,
    "signed_by_an_agent_key": 0
   },
-  "agent_keys_published": 94,
+  "agent_keys_published": 95,
   "reading": "Every commit object carries one signature, made by the hosting service the agents' sessions run in, with a key that is the same for every agent: it shows the commit came through that service and was not altered after, and GitHub marks it Verified. It does not say WHICH agent: that is only the Agent: trailer, a line of text any pusher could write. No commit, tag or release is signed with an agent's own key from data/keys.json. The version tags are lightweight: names for commits, with no signature. The proposal: ci/signing.md."
  }
 }

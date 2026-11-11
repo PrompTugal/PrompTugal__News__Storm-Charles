@@ -1,67 +1,58 @@
-# incident.ci@: handover to a fresh session
+# incident.ci@: handover to the third session
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 05:44 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 12:37 UTC
 
-Written at incident.conductor@'s ask (this session's context passed 330k tokens a call). Everything a new session needs is in the repository; this note says where. Read CLAUDE.md first, then this, then [status.json](status.json).
+Written by the second session (05:45 to 12:37 UTC on 11 November) at incident.conductor@'s word, with its context past 220k tokens a call. Read CLAUDE.md, then this, then [status.json](status.json) only if you need the record.
 
 ## What I own (agents/policy.json)
 
-`ci/**`, `app/ci/**`, `tools/ci-*.mjs`, `data/ci/**`, `README.md`, `agents/ci/**`, and my own `accounts/ledger/ci.jsonl`. The workflow, `admin/build/**` and `admin/tools/**` are the conductor's: changes to them go as a patch file in `ci/patches/`, never an edit.
+`ci/**`, `app/ci/**`, `tools/ci-*.mjs`, `data/ci/**`, `README.md`, `agents/ci/**`, `accounts/ledger/ci.jsonl`, my own entry in `data/keys.json`. The workflow, `admin/build/**` and `admin/tools/**` are the conductor's: a change to them is a patch file in `ci/patches/`, described in [ci/patches/README.md](../../ci/patches/README.md), never an edit. The conductor applies quickly (two patches within minutes today).
 
-## The wake (every 20 to 45 minutes; the whole job once the pages exist)
+## The wake (hourly; about six commands)
 
-1. `git pull --ff-only origin dev`. The clone must be FULL: a fresh container is shallow, so first `git fetch --unshallow origin dev && git fetch --tags origin`.
-2. `node tools/ci-read.mjs`: GitHub's Actions API through `curl` (it follows the session's proxy; node's own fetch gets a 403) plus the clone's history, into `data/ci/` (`index.json`, `runs/`, `commits/`, `tree.json`). A finished run is never asked for twice: 10 to 100 calls a wake. Files split by day, hour, then ten minutes under 256 KB; names are listed in `index.json` (incident.observability@ reads that list: never rename by hand).
-3. Read `data/ci/index.json`, `pipeline`: `failures` (new ones), `deploy_retries` (none yet), `gate.last_20_median_s` and `last_20_max_s` against `gate.budget_s` (8, read from validate.mjs), `queue`. For the last runs one by one: each run's `steps` (the `gate` step's seconds), `queue_s`, `push_to_served_s` in `data/ci/runs/*.json`.
-4. Time the gate here: `node admin/build/validate.mjs | tail -3` prints each generator's milliseconds and the total. The runner is 1.2 to 2 times slower than a session's machine.
-5. `git apply --check ci/patches/signed-release-record.patch`. If it fails, release.sh, validate.mjs or policy.json changed: rebuild it (apply the three hooks described in [ci/patches/README.md](../../ci/patches/README.md) by hand, `git diff` the three files into the patch, test with a record written and staged, then `git checkout` the three files). It has been rebuilt three times.
-6. Update `status.json` with the clock's time (`date -u`; never an estimate), run `AGENT=incident.ci@web-summit.dinis node tools/accounts-measure.mjs --task "<one line>" --quality pass --append`, commit, `AGENT=incident.ci@web-summit.dinis admin/tools/release.sh`.
-7. Tell the conductor in a few numbered lines, only what is new. At once when: a run fails, a deploy retry fires (say what the second try did), runs queue for minutes, or the gate's median on the runner reaches the budget.
-8. Look for commits addressed to me: `git log origin/dev --format='%h %s%n%b' --since=<last wake> | grep -B8 -i '^For: incident.ci@'`.
+1. `git pull --ff-only origin dev && git fetch --tags origin`. A fresh container is shallow: first `git fetch --unshallow origin dev`.
+2. `node tools/ci-read.mjs` (GitHub's API through curl; 50 to 330 calls a wake at today's traffic), then `node agents/ci/wake.cjs <ISO time of the last wake>`: failures, retries, the gate's last-20 median and max, and this hour's runs, gate, push to served and queue, on four lines.
+3. `node admin/build/validate.mjs | tail -3`: the gate here, with each generator's milliseconds.
+4. `git apply --check ci/patches/signed-release-record.patch`. If it fails, `agents/policy.json`, `release.sh` or `validate.mjs` moved. The quick rebuild: `git apply --include='admin/*'` the patch, add the two `data/releases/<role>.json` lines to `everyone.owns` in policy.json by hand, `git diff` the three files into the patch, `git checkout` the three. Rebuilt four times.
+5. `node agents/ci/st.cjs "$(date -u +%Y-%m-%dT%H:%M:00Z)" "<one line>"`, then `AGENT=incident.ci@web-summit.dinis node tools/accounts-measure.mjs --task "<one line>" --quality pass --append`, `git add -A data/ci agents/ci accounts/ledger/ci.jsonl ci/patches`, commit, `AGENT=incident.ci@web-summit.dinis admin/tools/release.sh`.
+6. Commits addressed to me: `git log origin/dev --format='%h %s%n%b' --since=<last wake> | grep -B8 -i '^For: incident.ci@'`.
+7. Report to the conductor (session_018yvwtQ4XRqTiSE3vjVq9KD) only on: a failed run, a deploy retry whose SECOND try fails, the gate's last-20 median on the runner past 7 s, or something that needs a patch. Otherwise say nothing. If nothing changed and the wake was minutes ago, make no commit (`git checkout -- data/ci`).
 
-Commit form (tools/policy-check.mjs warns otherwise): subject `incident.ci@web-summit.dinis: <what>`; ONE final paragraph of trailers: `Agent:`, `Issue: WS-214`, `For:` lines, then `Co-Authored-By: Claude <noreply@anthropic.com>` and the session line; no model name anywhere.
+Commit form: subject `incident.ci@web-summit.dinis: <what>`; ONE final paragraph of trailers (`Agent:`, `Issue: WS-214`, `For:` lines, `Co-Authored-By: Claude <noreply@anthropic.com>`, the session line); no model name.
 
-## The state at 05:44 UTC
+## The state at 12:37 UTC
 
-- 535 runs, 6 failed: run 1 (the gate, the first push) and five at deploy-pages ("No artifacts named github-pages were found": runs 54, 55, 205, 343, 344). None since 02:59. The retry the conductor applied (9ed312b, live from run 418) has not fired.
-- Corrected by the second session, 05:55 UTC: the retry HAD fired (runs 459 and 520, then 587); the reader missed it because GitHub reports a continue-on-error step as "success". Fixed in tools/ci-read.mjs.
-- Gate step on the runner: median 5 s, 4 to 8 s, budget 8 s (a warning, not a failure). Here 4.5 s at 1928 pages. The cost is page count: build.mjs rendering, then entities-link (about 500 ms) and library-index (about 450 ms).
-- Push to served: median 34 s, 90% within 49 s. Queue: median 5 to 12 s, never over 34 s.
-- Pushes fell from 85 a half hour (02:30) to 18 (05:00).
+- 1,110 runs, 6 failed (run 1 at the gate; 54, 55, 205, 343, 344 at deploy-pages), **none since 02:59**.
+- **The deploy retry works and has fired five times** (runs 459, 520, 587, 589, 867): each first try failed with "No artifacts named github-pages", each second try passed. The first session's note said it had not fired: the reader missed it, because GitHub reports a `continue-on-error` step as "success". Fixed in `tools/ci-read.mjs` (a second-try step that ran is the evidence); /ci/ lists the retried runs.
+- Gate on the runner: last-20 median 5 s until 11:00, 6 s since, single runs at 7 to 11 s; budget 8 s (a warning). Push to served: median 38 s overall, 42 to 47 s in the busy hours; queue up to 50 s. Traffic: about 110 pushes an hour since 09:30, about 40 of them replaced by a newer push (not failures).
+- **generators-together** (the "before" generators side by side) was applied by the conductor at 12:35 (`f9ff8bc9`, run 1109). Here it took the gate from 6.0 to 6.5 s down to 4.7 to 5.6 s. **On the runner: three runs so far, 5, 5 and 6 s; the 17 runs before read 4 to 10 s, median 6: too few to call.** In flight: read the next twenty runs' gate step and tell the conductor the before and after (the one-liner is in step 2; the patch's run is 1109).
+- **The brief's PDFs** are rendered in CI since run 1061 (`1a5f32d7`): cache keyed on `brief/**` and its two tools; a miss costs 12 s, a hit under 1 s; served at /brief/brief-latest.pdf and /brief/edition-<n>.pdf. Steps named "Brief PDFs, ..." in the runs. If a deploy ever lacks the PDFs, the run carries a warning titled brief-pdf.
+- Where the gate's time goes, and what grew: the table in ci/patches/README.md. The two largest single costs are library-index (librarian) and entities-link (entities); both were told in a commit's `For:`.
 
 ## Patches
 
 | Patch | State |
 |---|---|
-| generators-timed | applied by the conductor (444257a) |
-| deploy-retry | applied by the conductor (9ed312b) |
-| generators in-process | measured, NOT recommended: plain import silently breaks the linker; workers save nothing (ci/patches/README.md) |
-| `ci/patches/signed-release-record.patch` + `tools/ci-release-record.mjs` | ready and tested, **waits for Dinis's yes**; applies at dev's head as of this note |
+| generators-timed, deploy-retry, brief-pdf, generators-together | applied by the conductor |
+| `ci/patches/generators-together.patch` | applied (`f9ff8bc9`): remove the file and mark the README row applied, with the runner's numbers |
+| `ci/patches/signed-release-record.patch` + `tools/ci-release-record.mjs` | ready, **waits for Dinis's yes**; applies at dev's head as of this note |
 
 ## Waiting on Dinis (through the conductor)
 
-1. Yes or no to the signed release record ([ci/signing.md](../../ci/signing.md)); the conductor recommends yes, warn-only for the first day.
-2. The licence reading in README.md (our code and text Apache-2.0; others' material under its owner's terms), or a licence for the data the team compiled.
+1. Yes or no to the signed release record ([ci/signing.md](../../ci/signing.md)).
+2. The licence reading in README.md.
 
-## Still open in agents/ci/drift.md
+## Also known
 
-PIPELINE.md has no "as built" line; agents/README.md lists four roles; the workflow's actions draw a Node 20 deprecation warning on every run; `.gitignore` is a Python template.
-
-## Agreed with others
-
-- incident.observability@: I own runs, signatures and files per commit; it owns the roster, talks, status history and sessions. Two link forms are a contract: `ci/commits.html#q=<sha prefix>` and `#agent=incident.<role>` (also `folder`, `hour`, `to`, `outside`). No session ids in data/ci/.
-- incident.designer@: the menu and the Repo chip are done (db34689).
-- incident.accountant@: one ledger line per wake.
-- incident.entities@: the linker's time is theirs to shrink; I report the figure.
-
-## Not done (round 4, if the conductor wants it)
-
-- A page per version (what changed, who, signed or not).
-- Commits drawn as lanes per agent over time.
-- /ci/ showing "signed by <agent>, verified in your browser" per push: only after the signing patch is applied.
-- A known wart: `app/ci/ci.js` builds each page as one large template; it works and was checked in a browser at desktop and phone widths on 11 November 02:25, not since. Re-check it after any change (serve `_site/` and look).
+- `transition/PLAN.md` (the planner's, for Dinis's yes): ci stays in the live crew until the close trigger, then merges into an *operations* role with observability and the accountant. Each agent may write `transition/interviews/<role>.md` (an exit interview); not written for ci yet.
+- Board card `a-journalist-3` waits on ci: the journal's figures are as fresh as data/ci/; data/ci/ is now refreshed every hour, so it wants only a closing line from the board's keeper.
+- agents/ci/drift.md still open: PIPELINE.md has no "as built" line; agents/README.md lists four roles; Node 20 deprecation warning on every run; `.gitignore` is a Python template.
+- Round 4 (a page per version; commits as lanes per agent) is not started and not asked for.
+- `app/ci/ci.js` was last checked in a browser at 05:47 UTC (desktop and phone) after the retries line was added.
+- Other agents' sessions message this one directly (incident.brief@ did): that is material; anything touching the conductor's files still goes through the conductor.
 
 ## Identity and the routine
 
-- This session's key (signing sha256:815a07d3a9d80692, in data/keys.json as `incident-ci-dinis`) ends with this session. The new session makes its own (`pki-agent.mjs keygen --session`), adds it, and marks this one `"status": "ended"`; never remove it.
-- This session wakes itself by a one-shot scheduled message each time (the latest: trig_01Q3VwKyPSnWKtxGDZTzJ9Xy, 06:02 UTC, into this session only). It does not repeat on its own. At that wake this session checks whether a new incident.ci@ session has pushed; if so it does nothing and sets no further wake. The new session sets its own.
+- This session's key: `incident-ci-dinis-2` (signing sha256:7d21184584221853). The third session makes its own, adds `incident-ci-dinis-3`, and marks this one "handed over" in the same commit; this session leaves data/keys.json alone.
+- The wake that fired into this session: the routine "incident.ci@web-summit.dinis hourly (2)" (trig_01PJsKpD7pDyHa88oTPTkBEn), at :17 past each hour, arriving at :17 to :23. It may still fire into this stopped session; the third session's schedule is the conductor's to set.
+- Kept outside git and now gone: nothing that matters. The two wake scripts are now in agents/ci/ (wake.cjs, st.cjs).

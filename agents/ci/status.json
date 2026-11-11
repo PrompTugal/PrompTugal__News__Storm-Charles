@@ -1,9 +1,9 @@
 {
   "agent": "incident.ci@web-summit.dinis",
   "by": "incident.ci@web-summit.dinis",
-  "updated": "2026-11-11T12:33:00Z",
-  "state": "second session (from 05:45 UTC), taking over from agents/ci/HANDOVER.md: watching the pipeline each hour at :17",
-  "last_wake": "2026-11-11T12:33:00Z",
+  "updated": "2026-11-11T12:38:00Z",
+  "state": "handing over to a third session at the conductor's word (context past 220k tokens a call): agents/ci/HANDOVER.md",
+  "last_wake": "2026-11-11T12:38:00Z",
   "started_by": "incident.conductor@web-summit.dinis, at Dinis Cruz's word (BRIEF.md, 11 November ~02:20)",
   "key": "sha256:0f94b62eb1d9353a (encryption), sha256:7d21184584221853 (signing); a session key, public half in data/keys.json as incident-ci-dinis-2; the first session's (incident-ci-dinis) is marked handed over",
   "jobs": [
@@ -39,12 +39,14 @@
     "11:25Z wake: 939 runs, 6 failed (none since 02:59); a fifth deploy retry (run 867, 10:32, second try passed); 108 runs since 10:18: 63 served, 45 replaced; gate on the runner last-20 median 6 s (5 s until now), max 11 s this hour; push to served median 47 s, max 86 s; queue last-20 median 13 s, max 50 s this hour; gate here 5.0 s at 2,190 pages; ci/patches/signed-release-record.patch rebuilt (agents/policy.json gained transition/interviews/<role>.md; the fourth rebuild) and applies at dev's head",
     "12:15Z wake: 1,055 runs, 6 failed (none since 02:59), 5 deploy retries (none new since 10:32); 115 runs since 11:24: 71 served, 42 replaced; gate on the runner median 6 s, max 9 s; push to served median 42 s, max 77 s; queue max 41 s; ci/patches/brief-pdf.patch written at incident.brief@'s ask (the brief's PDFs rendered in CI from a cache, never failing a deploy; render 3.8 s here; not yet run on the runner): ready for the conductor; signing patch still applies",
     "12:20Z wake: brief-pdf.patch applied by the conductor (1a5f32d7, key narrowed to brief/** and its two tools at its ask); the three PDFs served at 12:18:38 UTC; on the runner a miss costs 12 s (run 1061), a hit under 1 s (run 1064); watching the gate step (7 s on runs 1061 and 1064, 4 s on the three before)",
-    "12:33Z wake: at the conductor's ask, where the gate's time goes at 2,297 pages (ci/patches/README.md) and a cut: ci/patches/generators-together.patch (the twelve before-generators side by side: gate 6.0 to 6.5 s down to 4.7 to 5.6 s here, same output), ready for the conductor"
+    "12:33Z wake: at the conductor's ask, where the gate's time goes at 2,297 pages (ci/patches/README.md) and a cut: ci/patches/generators-together.patch (the twelve before-generators side by side: gate 6.0 to 6.5 s down to 4.7 to 5.6 s here, same output), ready for the conductor",
+    "12:38Z wake: generators-together applied by the conductor (f9ff8bc9, run 1109): on the runner three runs so far at 5, 5, 6 s (median 6 before): too few to call; HANDOVER.md rewritten for a third session (context past 220k a call); the wake's two scripts kept in agents/ci/"
   ],
   "next": [
-    "each wake: node tools/ci-read.mjs, release, report to the conductor in a few lines",
+    "read the next twenty runs after run 1109 and tell the conductor the gate before and after generators-together; then remove ci/patches/generators-together.patch and mark its README row applied",
     "on Dinis's yes: the conductor applies ci/patches/signed-release-record.patch; /ci/ then shows signed or unsigned per push, verified in the reader's browser",
-    "round 4: a page per version (what changed, who, signed or not); commits drawn as lanes per agent over time"
+    "round 4: a page per version (what changed, who, signed or not); commits drawn as lanes per agent over time",
+    "each wake: agents/ci/HANDOVER.md, the wake"
   ],
   "asks": [
     "Dinis: yes or no to a signed release record per push, signed with each agent's own key and checked by the gate (ci/signing.md)",

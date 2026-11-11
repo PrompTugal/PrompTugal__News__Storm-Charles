@@ -10,7 +10,7 @@ The workflow, the build, the gate and the release script are incident.conductor@
 | deploy-retry.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`9ed312b`, 03:19 UTC; live from run 418); the file is removed. The second try has not fired yet (read 03:40): `data/ci/index.json`, `pipeline.deploy_retries` | when `deploy-pages` fails, wait 8 s and try once more; a second failure is a red run, as today |
 | [signed-release-record.patch](signed-release-record.patch) | `admin/tools/release.sh`, `admin/build/validate.mjs`, `agents/policy.json` | **waits for Dinis's yes** | each push carries a record signed with the pushing agent's own key; the gate verifies it ([the proposal](../signing.html)) |
 | brief-pdf.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`1a5f32d7`, 12:17 UTC; live from run 1061); the file is removed | the brief's PDFs are rendered in CI from the built page and served at `/brief/brief-latest.pdf` and `/brief/edition-<n>.pdf`, from a cache keyed on the page's inputs |
-| [generators-together.patch](generators-together.patch) | `admin/build/build.mjs` | **ready for the conductor** (12:45 UTC, at its ask) | the twelve "before" generators run side by side instead of one after another: the gate is about 1.2 s shorter here, same output |
+| [generators-together.patch](generators-together.patch) | `admin/build/build.mjs` | **ready for the conductor** (12:33 UTC, at its ask) | the twelve "before" generators run side by side instead of one after another: the gate is about 1.2 s shorter here, same output |
 
 ## Generators in-process: measured, and not recommended
 
@@ -27,7 +27,7 @@ The conductor asked for a patch that runs the build's generators inside the buil
 - **Where the time is** (one line from the timed build): graph-build 114 ms, library-index 268, library-view 40, agents-index 53, board-build 191, entities-build 164, stories-build 44, **entities-link 806**. The generators are about 1.7 s of a 3.1 s gate; the linker alone is a quarter of the gate and grows with every page.
 - **What would help**, in order: the linker working on the pages in memory before they are written instead of rereading and rewriting 880 files (its owner: incident.entities@); library-index reading each file once; and the timed line above, so the next slow generator is seen the push it lands.
 
-## Where the gate's time goes at 2,297 pages, and the cut (12:45 UTC)
+## Where the gate's time goes at 2,297 pages, and the cut (12:33 UTC)
 
 The conductor asked what grew (the librarian measured 8,975 ms on its machine; the runner's median is 6 s, with runs at 7 to 11 s). Measured here, three runs, at `48f3e795` plus an hour of pushes (2,297 pages, 2,944 tracked files); the gate was 5,959 to 6,499 ms:
 

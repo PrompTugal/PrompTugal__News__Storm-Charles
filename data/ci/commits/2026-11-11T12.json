@@ -1,10 +1,10 @@
 {
  "about": "Commits on dev made on this day (UTC, committer time), oldest first, from a full clone. agent: the Agent: trailer (agent_from says where it was read); what: the subject without the agent; to: the For: trailers (a hand-off); folders: files changed per top-level folder; files: the paths (the first 40); outside: paths that are not the agent's own under agents/policy.json as it is today, with their owners; sig: the signature the commit object carries (kind, the key's fingerprint) and GitHub's verdict; run: the workflow run of this very commit; served: the run and version that first served it (its own, or a later one when its own was replaced), and lag_s from commit to served. No session ids. A commit: https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commit/<sha>.",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T12:32:59Z",
+ "updated": "2026-11-11T12:37:16Z",
  "source": "https://github.com/PrompTugal/PrompTugal__News__Storm-Charles/commits/dev",
  "period": "2026-11-11T12",
- "count": 93,
+ "count": 103,
  "commits": [
   {
    "sha": "1dba936829173ce2344afd391718b765ef7bff34",
@@ -3825,7 +3825,442 @@
    },
    "run": {
     "run": 1103,
-    "result": "in progress"
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.1103",
+    "run": 1103,
+    "at": "2026-11-11T12:33:43Z",
+    "with_its_own_run": true,
+    "lag_s": 67
+   }
+  },
+  {
+   "sha": "0df121c0914c484c48befdba1d525aaebac9f33e",
+   "at": "2026-11-11T12:33:51Z",
+   "agent": "incident.ci@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "where the gate's time goes at 2,297 pages, and ci/patches/generators-together.patch for the conductor (the before-generators side by side: about 1.2 s off the gate here, same output)",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis",
+    "incident.librarian@web-summit.dinis",
+    "incident.entities@web-summit.dinis"
+   ],
+   "n_files": 8,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 1,
+    "ci/": 2,
+    "data/": 4
+   },
+   "files": [
+    "accounts/ledger/ci.jsonl",
+    "agents/ci/status.json",
+    "ci/patches/README.md",
+    "ci/patches/generators-together.patch",
+    "data/ci/commits/2026-11-11T12.json",
+    "data/ci/index.json",
+    "data/ci/runs/2026-11-11T12.json",
+    "data/ci/tree.json"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1104,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.1104",
+    "run": 1104,
+    "at": "2026-11-11T12:34:34Z",
+    "with_its_own_run": true,
+    "lag_s": 43
+   }
+  },
+  {
+   "sha": "b40928260ead6d432c810d954cb62f909979ca8c",
+   "at": "2026-11-11T12:34:10Z",
+   "agent": "incident.weather@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the Câmara on the first screen names what it closed (scope.parts); communiqué no. 3 and the 18:00/21:00 step-downs checked",
+   "issue": "WS-214",
+   "to": [
+    "incident.researcher@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "agents/": 1,
+    "app/": 1
+   },
+   "files": [
+    "agents/weather/HANDOVER.md",
+    "app/weather/weather.js"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1105,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.1106",
+    "run": 1106,
+    "at": "2026-11-11T12:35:02Z",
+    "with_its_own_run": false,
+    "lag_s": 52
+   }
+  },
+  {
+   "sha": "b21bc1de1aebe6c5564046b4fc9972a7f20d3449",
+   "at": "2026-11-11T12:34:23Z",
+   "agent": "incident.conductor@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "timeline: IPMA's adjusted warnings (CAP 12:18:03): none for Lisbon; Faro rain red 12:19-18:00",
+   "issue": "WS-214",
+   "to": [
+    "incident.brief@web-summit.dinis",
+    "incident.ipma@web-summit.dinis",
+    "incident.meteorologist@web-summit.dinis",
+    "incident.stories@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "incidents/": 2
+   },
+   "files": [
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "incidents/2026-11-10-storm-charles/timeline.md"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1106,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.1106",
+    "run": 1106,
+    "at": "2026-11-11T12:35:02Z",
+    "with_its_own_run": true,
+    "lag_s": 39
+   }
+  },
+  {
+   "sha": "500e10e02beeb7a775c3a50b7fedd28a710b0293",
+   "at": "2026-11-11T12:34:42Z",
+   "agent": "incident.sherpa@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "guide: the label key under \"Changed today\"; how to cite near the top (synthetic@'s /guide/media/ check)",
+   "issue": "WS-214",
+   "to": [
+    "incident.synthetic@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "app/": 1
+   },
+   "files": [
+    "app/guide/guide.js"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1107,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.1108",
+    "run": 1108,
+    "at": "2026-11-11T12:35:31Z",
+    "with_its_own_run": false,
+    "lag_s": 49
+   }
+  },
+  {
+   "sha": "5315e24b28a811d22ed72df2b1b763b648d642c3",
+   "at": "2026-11-11T12:34:55Z",
+   "agent": "incident.board@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "12:33 round: eight new asks for Dinis joined or ranked, evidence on q-thursday-transport, sync (58 cards); HANDOVER.md brought up to date for a third session",
+   "issue": "WS-214",
+   "to": [
+    "incident.conductor@web-summit.dinis"
+   ],
+   "n_files": 62,
+   "folders": {
+    "accounts/": 1,
+    "agents/": 2,
+    "board/": 59
+   },
+   "files": [
+    "accounts/ledger/board.jsonl",
+    "agents/board/HANDOVER.md",
+    "agents/board/status.json",
+    "board/items/a-brief-1.json",
+    "board/items/a-broadcast-1.json",
+    "board/items/a-datascience-1.json",
+    "board/items/a-datascience-2.json",
+    "board/items/a-datascience-3.json",
+    "board/items/a-envoy-1.json",
+    "board/items/a-envoy-4.json",
+    "board/items/a-launch.json",
+    "board/items/a-outreach-send.json",
+    "board/items/a-sherpa-1.json",
+    "board/items/a-sherpa-2.json",
+    "board/items/a-sherpa-3.json",
+    "board/items/a-synthetic-1.json",
+    "board/items/j-accountant-12.json",
+    "board/items/j-accountant-15.json",
+    "board/items/j-accountant-16.json",
+    "board/items/j-accountant-17.json",
+    "board/items/j-brief-1.json",
+    "board/items/j-brief-2.json",
+    "board/items/j-brief-3.json",
+    "board/items/j-brief-4.json",
+    "board/items/j-broadcast-1.json",
+    "board/items/j-broadcast-2.json",
+    "board/items/j-datascience-1.json",
+    "board/items/j-datascience-2.json",
+    "board/items/j-datascience-3.json",
+    "board/items/j-datascience-4.json",
+    "board/items/j-desk-1.json",
+    "board/items/j-envoy-1.json",
+    "board/items/j-envoy-2.json",
+    "board/items/j-envoy-3.json",
+    "board/items/j-graph-18.json",
+    "board/items/j-labs-10.json",
+    "board/items/j-labs-11.json",
+    "board/items/j-librarian-16.json",
+    "board/items/j-librarian-20.json",
+    "board/items/j-librarian-21.json"
+   ],
+   "files_more": 22,
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1108,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.1108",
+    "run": 1108,
+    "at": "2026-11-11T12:35:31Z",
+    "with_its_own_run": true,
+    "lag_s": 36
+   }
+  },
+  {
+   "sha": "f9ff8bc990e3b017b98bc40d9ffe895583dd9aee",
+   "at": "2026-11-11T12:35:12Z",
+   "agent": "incident.conductor@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "apply incident.ci@'s generators-together patch (before-generators start together; gate ~4.4 s to ~3.5 s locally)",
+   "issue": "WS-214",
+   "to": [
+    "incident.ci@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "admin/": 1
+   },
+   "files": [
+    "admin/build/build.mjs"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1109,
+    "result": "cancelled"
+   },
+   "served": {
+    "version": "v0.1.1110",
+    "run": 1110,
+    "at": "2026-11-11T12:36:01Z",
+    "with_its_own_run": false,
+    "lag_s": 49
+   }
+  },
+  {
+   "sha": "e9c8d3d3a3b04cfd476f9e9d12b415152163fe60",
+   "at": "2026-11-11T12:35:23Z",
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "the 12:33 re-read: IPMA's communiqué no. 3 and a CAP batch with nothing for Lisbon; / took the 09:40 review's three points, a new review after 12:00; hand-over brought up to date",
+   "issue": "WS-214",
+   "to": [
+    "incident.weather@web-summit.dinis"
+   ],
+   "n_files": 5,
+   "folders": {
+    "agents/": 2,
+    "research/": 3
+   },
+   "files": [
+    "agents/weatherwatch/HANDOVER.md",
+    "agents/weatherwatch/status.json",
+    "research/weather-sites/README.md",
+    "research/weather-sites/rereads.json",
+    "research/weather-sites/reviews/2026-11-11T1235.md"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": null,
+   "served": {
+    "version": "v0.1.1110",
+    "run": 1110,
+    "at": "2026-11-11T12:36:01Z",
+    "with_its_own_run": false,
+    "lag_s": 38
+   }
+  },
+  {
+   "sha": "c3d78366adf953743f2524ed25e9a59786ae0244",
+   "at": "2026-11-11T12:35:23Z",
+   "agent": "incident.weatherwatch@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "tokens measured",
+   "issue": "WS-214",
+   "to": [
+    "incident.accountant@web-summit.dinis"
+   ],
+   "n_files": 1,
+   "folders": {
+    "accounts/": 1
+   },
+   "files": [
+    "accounts/ledger/weatherwatch.jsonl"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1110,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.1110",
+    "run": 1110,
+    "at": "2026-11-11T12:36:01Z",
+    "with_its_own_run": true,
+    "lag_s": 38
+   }
+  },
+  {
+   "sha": "d62c104d52b41410c16fe0660f0f57676c4657ef",
+   "at": "2026-11-11T12:36:39Z",
+   "agent": "incident.conductor@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "timeline: bridge limits again (60/80 km/h), 334 flights cancelled (press)",
+   "issue": "WS-214",
+   "to": [
+    "incident.transport@web-summit.dinis",
+    "incident.researcher@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "incidents/": 2
+   },
+   "files": [
+    "incidents/2026-11-10-storm-charles/data/signals.json",
+    "incidents/2026-11-10-storm-charles/timeline.md"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1111,
+    "result": "success"
+   },
+   "served": {
+    "version": "v0.1.1111",
+    "run": 1111,
+    "at": "2026-11-11T12:37:22Z",
+    "with_its_own_run": true,
+    "lag_s": 43
+   }
+  },
+  {
+   "sha": "60bc99a98bc1ec40cf8c7d0129b3a738eaa44244",
+   "at": "2026-11-11T12:36:46Z",
+   "agent": "incident.sherpa@web-summit.dinis",
+   "agent_from": "Agent: trailer",
+   "what": "guide v10: short names on the rows, the full name in the fold; the alert in two lines (designer@ 12:33)",
+   "issue": "WS-214",
+   "to": [
+    "incident.designer@web-summit.dinis"
+   ],
+   "n_files": 2,
+   "folders": {
+    "app/": 2
+   },
+   "files": [
+    "app/guide/guide.css",
+    "app/guide/guide.js"
+   ],
+   "sig": {
+    "kind": "ssh",
+    "key": "SHA256:32dP45eSMmVSt/G/CGvcxl/P+MO3Nwj9xeTh/GSA2wc",
+    "github": {
+     "verified": true,
+     "reason": "valid"
+    }
+   },
+   "run": {
+    "run": 1112,
+    "result": "queued"
    },
    "served": null
   }
