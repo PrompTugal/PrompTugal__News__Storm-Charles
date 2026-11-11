@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T10:58Z",
-  "updated": "2026-11-11T12:54Z",
-  "based_on_read_utc": "2026-11-11T12:49:59Z",
+  "updated": "2026-11-11T13:52Z",
+  "based_on_read_utc": "2026-11-11T13:24:33Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: IPMA's red warnings for the mainland's districts other than Lisbon (Lisbon's are in sentence n1), resolved from the data room when the page is built and read again in the reader's browser. Never a level of our own.",
     "title": "IPMA's red warnings for the other mainland districts",
@@ -67,7 +67,8 @@
         "n12",
         "n13",
         "n14",
-        "n15"
+        "n15",
+        "n16"
       ]
     },
     {
@@ -287,10 +288,10 @@
     },
     {
       "id": "n4",
-      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's eight reports from 09:00 to 12:30 have a wind of 17 to 28 km/h, backing from south-south-east through east-south-east to east-north-east, with no gust reported; heavy rain from 10:30, with visibility down to 2 km; and pressure falling from 1001 to 992 hPa, 6 hPa of it since 11:00. IPMA's newest station hour is the one labelled 12:00: seven stations in and around Lisbon measured between 8.7 and 18.7 mm of rain in it (Relógio the most; Lisbon's Geofísico 18.1), after 11.5 to 17.9 mm in the hour labelled 11:00; the strongest mean wind among them was 29.5 km/h, at Oeiras. No gust has been reported at the airport inside the windows. At 12:33 IPMA cut the wind warning it is measured against to gusts up to 90 km/h, 110 in the most exposed places, until 18:00 (it had warned up to 120 km/h until 21:00), and the red rain to 15:00. That is not yet a test of the warnings.",
+      "text": "Inside the windows so far (they opened at 09:00 on Wednesday), the airport's nine reports from 09:00 to 13:00 have a wind of 17 to 28 km/h, backing from south-south-east through east-south-east to east-north-east, then east again at 13:00 (20 km/h), with no gust reported; heavy rain from 10:30, with visibility down to 1.5 km at 13:00; and pressure falling from 1001 to 991 hPa, 8 hPa of it since 10:00, still falling. IPMA's newest station hour is the one labelled 12:00: seven stations in and around Lisbon measured between 8.7 and 18.7 mm of rain in it (Relógio the most; Lisbon's Geofísico 18.1), after 11.5 to 17.9 mm in the hour labelled 11:00; the strongest mean wind among them was 29.5 km/h, at Oeiras. No gust has been reported at the airport inside the windows. At 12:33 IPMA cut the wind warning it is measured against to gusts up to 90 km/h, 110 in the most exposed places, until 18:00 (it had warned up to 120 km/h until 21:00), and the red rain to 15:00. That is not yet a test of the warnings.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T12:49:59Z",
+      "read_utc": "2026-11-11T13:24:33Z",
       "supports": [
         {
           "kind": "data",
@@ -382,6 +383,38 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T13:00Z].wind_kmh",
+          "expect": 20
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T13:00Z].wind_dir",
+          "expect": 100
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T13:00Z].pressure_hpa",
+          "expect": 991
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T10:00Z].pressure_hpa",
+          "expect": 999
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
+          "field": "metars[time_utc=2026-11-11T13:00Z].raw",
+          "contains": [
+            "1500 +RA"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
           "field": "metars[time_utc=2026-11-11T11:00Z].raw",
           "contains": [
             "2000 +RA BR"
@@ -464,9 +497,9 @@
         {
           "kind": "data",
           "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json",
-          "field": "metars[time_utc=2026-11-11T13:00Z]",
+          "field": "metars[time_utc=2026-11-11T14:00Z]",
           "absent": true,
-          "note": "A tripwire: when the airport's 13:00 report arrives, this sentence is behind the data and is retold."
+          "note": "A tripwire: when the airport's 14:00 report arrives, this sentence is behind the data and is retold."
         },
         {
           "kind": "data",
@@ -486,6 +519,10 @@
         {
           "kind": "row",
           "id": "s-1111T1247"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1325"
         }
       ]
     },
@@ -725,6 +762,24 @@
           "id": "s-1111T1203"
         }
       ]
+    },
+    {
+      "id": "n16",
+      "text": "Read at the source: ANA's own figures, situation at 11:00, give Lisbon 565 movements scheduled for Wednesday, 288 cancelled in advance by the airlines, 45 operated and 22 more cancelled by 11:00; Faro 14 of 62 cancelled in advance, Porto 12 of 214, Madeira 20 of 80. Lusoponte's own notice (11:30) limits the 25 de Abril bridge to 60 km/h and the Vasco da Gama to 80 km/h since 11:30, \"devido à intensificação da chuva e à visibilidade reduzida\", and still advises against wind-prone vehicles crossing. These confirm, at the operators, the press figures in n14 and n15 (334 cancelled, from ECO, is not ANA's figure).",
+      "label": "fact",
+      "said_by": "ANA's newsroom and Lusoponte's notice, read at source",
+      "at_utc": "2026-11-11T11:30Z",
+      "read_utc": "2026-11-11T13:38Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T1338"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1255"
+        }
+      ]
     }
   ],
   "not_known": [
@@ -797,6 +852,14 @@
         "n4",
         "n11",
         "n15"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T13:52Z",
+      "what": "On the 13:24:33 read. n4 retold as Lisbon's o1: before, eight airport reports to 12:30 (992 hPa); now nine to 13:00: east 20 km/h, no gust, visibility 1.5 km, 991 hPa, 8 hPa down since 10:00 and still falling. The station hour is still the one labelled 12:00. Tripwire now the airport's 14:00 report. n16 added: ANA's and Lusoponte's own figures (rows s-1111T1338, s-1111T1255), confirming n14 and n15 at the operators.",
+      "claims_changed": [
+        "n4",
+        "n16"
       ]
     }
   ]

@@ -2,12 +2,12 @@
   "about": "A story as a small graph: claims, each with its label, who said it, when, and the rows and data fields that support it. The page is generated from this file by tools/stories-build.mjs; nothing here is new reporting. See stories/grammar.md. Every \"nothing announced\" here is a tripwire: its support expects the board card to be open or the decision edge to be not_announced, so the check fails, and the sentence is retold, when an answer arrives.",
   "id": "what-nobody-has-said-yet",
   "title": "What nobody has said yet",
-  "standfirst": "Day 2 is off and the storm has its warnings. What has no answer on Wednesday morning: whether Day 3 runs, what becomes of the lost day's talks, the PITCH semi-final, the side events and the tickets, and where the government's advice is written down. Each line here is an absence, with when and where it was last looked for.",
+  "standfirst": "Day 2 is off and the storm has its warnings. What has no answer on Wednesday morning: whether Day 3 runs (the press reported it confirmed early on Wednesday afternoon; not read at the organisers' own page), what becomes of the lost day's talks, the PITCH semi-final, the side events and the tickets, and where the government's advice is written down. Each line here is an absence, with when and where it was last looked for.",
   "state": "developing",
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T08:01Z",
-  "updated": "2026-11-11T08:01Z",
+  "updated": "2026-11-11T13:51Z",
   "based_on_read_utc": "2026-11-11T07:38:35Z",
   "warnings_in_force": {
     "about": "The official warnings a story about the storm states first, drawn as the front page draws them: for each kind of weather IPMA's newest message by the time it was sent (cap.json beside this file), saying what IPMA's open-data feed (this file) lists where the two differ; resolved when the page is built and read again in the reader's browser. Never a level of our own.",
@@ -121,18 +121,20 @@
           "file": "incidents/2026-11-10-storm-charles/incident.json",
           "field": "thursday",
           "contains": [
-            "an aim, not yet a promise"
+            "Thursday reported confirmed",
+            "24 Notícias",
+            "not read here by machine"
           ]
         }
       ]
     },
     {
       "id": "n3",
-      "text": "Does Day 3 go ahead? No confirmation had followed the aim when Web Summit's own pages were last read, at 04:33 on Wednesday, and none had reached the press or the organisers' public account by 07:33. The question is open on the board.",
-      "label": "fact",
-      "said_by": "incident.researcher@web-summit.dinis, the decision graph (an absence, as read)",
-      "at_utc": "2026-11-11T07:33Z",
-      "read_utc": "2026-11-11T07:35Z",
+      "text": "Does Day 3 go ahead? The press now says yes, relaying the organisers: 24 Notícias (read 13:04) reports that Web Summit told participants on Wednesday it reopens on Thursday 12 November for its last day, with part of Wednesday's programme moved to Thursday, and Público's caption (12:17) has the arena and FIL reopening on Thursday, \"confirma a organização\". Neither says it read the organisers' own text, the organisers' page is not read here (its terms forbid automated reading), and their public accounts have posted nothing since Tuesday 17:36. Reported, not read at source; the card stays open on the board.",
+      "label": "evidence",
+      "said_by": "24 Notícias and Público, relaying the organisers' message to participants",
+      "at_utc": "2026-11-11T13:04Z",
+      "read_utc": "2026-11-11T13:05Z",
       "supports": [
         {
           "kind": "edge",
@@ -146,11 +148,21 @@
         },
         {
           "kind": "data",
-          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
-          "field": "edges[id=websummit-thursday].note",
+          "file": "incidents/2026-11-10-storm-charles/incident.json",
+          "field": "thursday",
           "contains": [
-            "07:33Z: Bluesky (last post 17:36Z) and the press: nothing new"
+            "Thursday reported confirmed",
+            "24 Notícias",
+            "not read here by machine"
           ]
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1252"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T1305"
         }
       ],
       "qualified_by": [
@@ -506,6 +518,13 @@
         "n14",
         "n13",
         "n15"
+      ]
+    },
+    {
+      "at_utc": "2026-11-11T13:51Z",
+      "what": "Rows s-1111T1252 and s-1111T1305. n3 retold: before, \"Does Day 3 go ahead? No confirmation had followed the aim when Web Summit's own pages were last read, at 04:33 on Wednesday, and none had reached the press or the organisers' public account by 07:33. The question is open on the board.\" (fact); now the press reports Thursday confirmed, relaying the organisers' message to participants (evidence: 24 Notícias, Público); the board card stays open until it is read at source. n2: its support on the headline's Thursday line moved to the new wording. Standfirst says so.",
+      "claims_changed": [
+        "n3"
       ]
     }
   ]
