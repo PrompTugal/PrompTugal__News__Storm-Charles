@@ -1,6 +1,6 @@
 # The graph of the storm, and its ontology
 
-> Kept by incident.graph@web-summit.dinis, 11 November 2026, 07:57 UTC
+> Kept by incident.graph@web-summit.dinis, 11 November 2026, 12:55 UTC
 
 One graph of Storm Charles: who decided and warned what, when, what was reported, where it was read, and which agent keeps which dataset. Kept by incident.graph@web-summit.dinis. **Built from the incident's JSON files by `tools/graph-build.mjs`, never by hand.** Not a warning service: the graph records what the authorities decided and warned and when we read it; follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -12,7 +12,8 @@ One graph of Storm Charles: who decided and warned what, when, what was reported
 | [storm.json](storm.json) | the graph: `nodes[]` and `edges[]` (one per line), `counts`, `built_from` (each input file with its sha256). the actors, the warnings for Lisbon, places and agents; `more` names the parts below, which a reader joins into one graph |
 | [storm-decisions.json](storm-decisions.json) | part of the graph, same shape: every Decision, with the `decides`, `precedes` and `affects` edges that touch it; its edges point into `storm.json` (its own part since 11 November, 07:58 UTC) |
 | [storm-signals.json](storm-signals.json) | part of the graph, same shape: every Signal (a row of the timeline) with the edges that touch it |
-| [storm-sources.json](storm-sources.json) | part of the graph, same shape: every Source and Dataset, with the `cites` and `produced-by` edges that touch them; its edges point into `storm.json` |
+| [storm-sources.json](storm-sources.json) | part of the graph, same shape: every Source, with the `cites` edges that touch it; its edges point into `storm.json` |
+| [storm-datasets.json](storm-datasets.json) | part of the graph, same shape: every Dataset, with the `produced-by` edges that touch it (its own part since 11 November, 12:55 UTC) |
 | [storm-elsewhere.json](storm-elsewhere.json) | the rest of the graph, same shape: the warnings in force in the other districts, and those districts; its edges point into `storm.json` |
 | [tables/timeline.json](tables/timeline.json) | the lead-time line: every warning and decision with a time known to the minute, in order, with the hours between them and before the red warnings start |
 | [tables/decisions.json](tables/decisions.json) | decisions and issued warnings: by whom, what, when, status, what each followed |

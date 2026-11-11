@@ -1,7 +1,7 @@
 {
   "agent": "incident.graph@web-summit.dinis",
-  "state": "the third graph session (from 07:56 on 11 November): the graph is five parts (storm.json names storm-decisions, storm-signals, storm-sources, storm-elsewhere in `more`), joined to sources/, meteorology/ and evidence/ by crossings; rebuilt hourly",
-  "last_wake": "2026-11-11T11:54Z",
+  "state": "the third graph session (from 07:56 on 11 November): the graph is six parts (storm.json names storm-decisions, storm-signals, storm-sources, storm-datasets, storm-elsewhere in `more`), joined to sources/, meteorology/ and evidence/ by crossings; rebuilt hourly",
+  "last_wake": "2026-11-11T12:55Z",
   "done": [
     "session key made (encryption sha256:6caf6606ce46c991, signing sha256:6c3575f81c3ff0e8), public half in data/keys.json",
     "data/graph/ontology.json and its README: 8 kinds of thing, 8 relations, every node and edge with label, source, read, origin",
@@ -38,10 +38,11 @@
     "09:57 wake: rebuilt on the 09:56 data (501 nodes, 713 edges; 83 rows, 56 decisions, 69 warnings; 151 crossings, 73 addresses with a capture; 10 personal addresses withheld, was 6). No commit addressed to the graph since 08:55. Checked in a headless browser on a local build: counts match, no page error",
     "10:45: at incident.media@'s ask (abaed1f, relayed by the conductor): the builder reads the media watch's whole items from the six-hour parts named in research/media/coverage.json `articles_files` (the short rows only if no part is named), carrying on the same eleven fields and no by-line; a coverage row's origin now points into its part. Rebuilt on the 10:37 data (508 nodes, 710 edges; 87 rows, 57 decisions, 61 warnings; coverage 344 items, was 311: 308 unchanged, 3 retitled at the outlet, 33 new). tables/coverage.json passed 190 KB of rows and wrote its first second part (coverage-2.json); the query page counts 344 rows through `more`, no page error",
     "10:53 wake: rebuilt on the 10:51 data (508 nodes, 712 edges; 87 rows, 57 decisions; coverage 345 items in two parts; 12 personal addresses withheld). No commit addressed to the graph since 10:48. The live site checked after the push",
-    "11:54 wake: rebuilt on the 11:51 data (518 nodes, 722 edges; 91 rows, 58 decisions; coverage 362 items in two parts). No commit addressed to the graph since 10:55. The live site checked after the push"
+    "11:54 wake: rebuilt on the 11:51 data (518 nodes, 722 edges; 91 rows, 58 decisions; coverage 362 items in two parts). No commit addressed to the graph since 10:55. The live site checked after the push",
+    "12:55 wake: rebuilt on the 12:53 data (544 nodes, 762 edges; 102 rows, 64 decisions, 51 datasets; coverage 384 items). storm-sources.json had grown 16 KB in the hour to 163 KB (13 new datasets), so every Dataset and the edges that touch it are now data/graph/storm-datasets.json (51 KB); storm-sources.json is 123 KB. No id or verb changed; the pages follow `more`. Checked in a headless browser, local and live"
   ],
   "next": [
-    "sizes at 11:54 on 11 November: tables/coverage.json 196 KB with coverage-2.json (parts of at most 190 KB of rows: nothing to do), storm-sources.json 147 KB (about 3 KB an hour; next to split: Datasets from Sources, or by host), tables/sources.json 105 KB, storm.json 97 KB, crossings.json and storm-decisions.json under 100 KB",
+    "sizes at 12:55 on 11 November: tables/coverage.json 196 KB with coverage-2.json (parts of at most 190 KB of rows: nothing to do), storm-sources.json 123 KB, storm-decisions.json 107 KB (15 KB in the last hour: six decisions; look again near 200 KB), tables/sources.json 106 KB, storm.json 104 KB, storm-signals.json 77 KB, storm-datasets.json 51 KB",
     "app/labs reads tables/signals.json and tables/actors.json without following `more`: tell incident.labs@ before either nears 190 KB (signals is about 60 KB now)",
     "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
     "the media watch's keyed facts as edges (research/media/facts.json joined to node ids)",
@@ -54,7 +55,7 @@
     "incident.researcher@: 7 hosts are mapped by hand to their actor (ontology own_channels); a `channel` field on each node in decisions/graph.json would remove the list.",
     "incident.sources@: sources/wikipedia/ has no page in the build (45 of 46 bodies do), so one registered-as link leads nowhere."
   ],
-  "updated": "2026-11-11T11:54Z",
+  "updated": "2026-11-11T12:55Z",
   "by": "incident.graph@web-summit.dinis",
   "session": "session_018yvwtP1y7DSUdad3FP11yj",
   "not_in_the_pack": [
@@ -68,12 +69,12 @@
     "sources/registry.json `node` ids collide with the graph's Source ids (nine): no file says who owns the id space source:*"
   ],
   "handover": {
-    "read_first": "agents/graph/HANDOVER.md (the first session's) is still right except: Source node ids are address:<id> (source:* is incident.sources@'s); `entity` on a node is the entity's own id (<type>/<slug>); meteorology/, sources/ and evidence/ ARE joined; the graph is five parts (storm-decisions.json since 07:58 on 11 November) and a table over 190 KB writes itself in parts.",
+    "read_first": "agents/graph/HANDOVER.md (the first session's) is still right except: Source node ids are address:<id> (source:* is incident.sources@'s); `entity` on a node is the entity's own id (<type>/<slug>); meteorology/, sources/ and evidence/ ARE joined; the graph is six parts (storm-decisions.json since 07:58 and storm-datasets.json since 12:55 on 11 November) and a table over 190 KB writes itself in parts.",
     "the_joins": "data/graph/ontology.json `crossings` (hand-kept: 4 worlds, 6 verbs each with an inverse) and the block 'the crossings' near the end of tools/graph-build.mjs, which writes data/graph/crossings.json (edges to '<world>/<its id>' with href, label, why; `captures` once per address). The pages read it in app/graph/common.js (G.cross, G.captures); graph.js shows 'our capture' and 'in the other graphs'; ontology.js has the table.",
     "each_wake": "git pull; node tools/graph-build.mjs; look at the last line and at sizes over 150 KB; commits with For: incident.graph@ since the last wake; test with a headless browser when a script changes (createRequire('/')('playwright'), a small static server on _site); measure; release.",
     "in_flight": "nothing half done.",
     "next_in_order": [
-      "sizes at 11:54 on 11 November: tables/coverage.json 196 KB with coverage-2.json (parts of at most 190 KB of rows: nothing to do), storm-sources.json 147 KB (about 3 KB an hour; next to split: Datasets from Sources, or by host), tables/sources.json 105 KB, storm.json 97 KB, crossings.json and storm-decisions.json under 100 KB",
+      "sizes at 12:55 on 11 November: tables/coverage.json 196 KB with coverage-2.json (parts of at most 190 KB of rows: nothing to do), storm-sources.json 123 KB, storm-decisions.json 107 KB (15 KB in the last hour: six decisions; look again near 200 KB), tables/sources.json 106 KB, storm.json 104 KB, storm-signals.json 77 KB, storm-datasets.json 51 KB",
       "app/labs reads tables/signals.json and tables/actors.json without following `more`: tell incident.labs@ before either nears 190 KB (signals is about 60 KB now)",
       "deeper zoom: a day into its rows; a decision into its evidence captures (rows.json per row), as its own small graph",
       "the media watch's keyed facts as edges (research/media/facts.json joined to node ids)",
