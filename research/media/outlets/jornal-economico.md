@@ -1,13 +1,13 @@
 # Jornal Económico: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 17:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 18:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | business weekly, online daily (pt) |
-| Items we read | 20: 20 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 13:23 to 11 Nov 17:22 UTC |
-| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 19 not read; wire share 0% |
+| Items we read | 21: 21 articles, 0 live, 0 video, 0 opinion |
+| First and last | 10 Nov 13:23 to 11 Nov 18:35 UTC |
+| Whose reporting | 1 with a reporter's by-line, 0 the agency's (Lusa), 0 the desk's, 20 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
 ## Against the key moments
@@ -18,10 +18,11 @@ Its first item on each keyed fact, and its place among the outlets we could read
 |---|---|---|---|---|---|
 | Lisbon's mayor: everything indicates Web Summit cannot run on Wednesday | 10 Nov 13:00 | 10 Nov 13:23 (article) | +23 min | 2 of 6 | [Web Summit deverá fechar na quarta-feira, anuncia autarquia de Lisboa ↗](https://jornaleconomico.sapo.pt/noticias/web-summit-fechada-na-quarta-feira-anuncia-autarquia-de-lisboa/) |
 | IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 15:36 (article) | +499 min | 6 of 6 | [Mau tempo: Aviso de chuva passa de vermelho para laranja em Leiria, C… ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-aviso-de-chuva-passa-de-vermelho-para-laranja-em-leiria-castelo-branco-beja-e-portalegre/) |
+| IPMA ends Lisbon's orange wind warning at 15:56 (was to 18:00) and lowers Faro's red rain and wind: no red warning remains on the mainland; Lisbon keeps yellow rain to 18:00 and orange sea to 21:00 | 11 Nov 15:55 | 11 Nov 18:35 (article) | +160 min | 5 of 5 | [Mau tempo: Portugal sem avisos vermelhos após desativação em Faro ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-portugal-sem-avisos-vermelhos-apos-desativacao-em-faro/) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 0 of 20 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 0 of 21 items link to a body that decides or warns. A link is not the same as sourcing: text and broadcasts name sources without linking.
 
 ## Licence and terms, as it publishes them
 
@@ -70,3 +71,4 @@ José Carlos Lourinho. A by-line is a public professional credit; nothing else a
 | 11 Nov 15:47 | article | not read | [Luís Neves diz que “está à porta o período mais grave” da tempestade, principalmente no Algarve ↗](https://jornaleconomico.sapo.pt/noticias/luis-neves-diz-que-esta-a-porta-o-periodo-mais-grave-da-tempestade-principalmente-no-algarve/) |
 | 11 Nov 16:30 | article | not read | [Mau tempo: Sindicato critica Câmara de Miranda do Corvo por manter funcionários nas escolas ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-sindicato-critica-camara-de-miranda-do-corvo-por-manter-funcionarios-nas-escolas/) |
 | 11 Nov 17:22 | article | not read | [Seguro acompanha evolução da depressão Charles em Belém ↗](https://jornaleconomico.sapo.pt/noticias/seguro-acompanha-evolucao-da-depressao-charles-em-belem/) |
+| 11 Nov 18:35 | article | not read | [Mau tempo: Portugal sem avisos vermelhos após desativação em Faro ↗](https://jornaleconomico.sapo.pt/noticias/mau-tempo-portugal-sem-avisos-vermelhos-apos-desativacao-em-faro/) |

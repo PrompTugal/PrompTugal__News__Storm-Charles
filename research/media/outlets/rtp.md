@@ -1,12 +1,12 @@
 # RTP: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 17:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 18:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 | | |
 |---|---|
 | Kind | public broadcaster (pt) |
 | Items we read | 51: 51 articles, 0 live, 0 video, 0 opinion |
-| First and last | 10 Nov 14:34 to 11 Nov 17:36 UTC |
+| First and last | 10 Nov 14:34 to 11 Nov 18:19 UTC |
 | Whose reporting | 0 with a reporter's by-line, 0 the agency's (Lusa), 50 the desk's, 1 not read; wire share 0% |
 | Does best (from the counts) | nothing stands out in this sample |
 
@@ -103,4 +103,4 @@ Through its own public page: [CONTACTOS ↗](https://media.rtp.pt/institucional/
 | 11 Nov 16:30 | article | Rádio e Televisão de Portugal | [Depressão Charles. MAI rejeita excesso de zelo e avisa que "o período mais grave está aí à porta" ↗](https://www.rtp.pt/noticias/pais/depressao-charles-mai-rejeita-excesso-de-zelo-e-avisa-que-o-periodo-mais-grave-esta-ai-a-porta_e1778319) |
 | 11 Nov 16:59 | article | Rádio e Televisão de Portugal | ["Aparentemente, o pior já passou", adianta o IPMA ↗](https://www.rtp.pt/noticias/pais/aparentemente-o-pior-ja-passou-adianta-o-ipma_v1778480) |
 | 11 Nov 17:17 | article | Rádio e Televisão de Portugal | [Lisboa, Santarém e Setúbal sem avisos vermelhos, Faro mantém nível mais elevado ↗](https://www.rtp.pt/noticias/pais/lisboa-santarem-e-setubal-sem-avisos-vermelhos-faro-mantem-nivel-mais-elevado_n1778482) |
-| 11 Nov 17:36 | article | Rádio e Televisão de Portugal | [Depressão Charles. "Aparentemente, o pior já passou", adianta o IPMA ↗](https://www.rtp.pt/noticias/pais/depressao-charles-aparentemente-o-pior-ja-passou-adianta-o-ipma_e1778319) |
+| 11 Nov 18:19 | article | Rádio e Televisão de Portugal | [Depressão Charles. "Aparentemente, o pior já passou", adianta o IPMA ↗](https://www.rtp.pt/noticias/pais/depressao-charles-aparentemente-o-pior-ja-passou-adianta-o-ipma_e1778319) |

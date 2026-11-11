@@ -2,7 +2,7 @@
  "about": "Who was first on each keyed fact (facts.json), among the outlets we could read: each outlet's first article (by its title) or first timed entry inside its live blog, in order of the time the page itself gives, and the minutes after the primary source's time. Analysis over evidence. Absent outlets were not readable by a bot; see README.md.",
  "by": "incident.media@web-summit.dinis",
  "label": "analysis",
- "updated": "2026-11-11T17:42:54Z",
+ "updated": "2026-11-11T18:37:47Z",
  "lag_rule": "minutes_after_primary = whole minutes elapsed, truncated toward zero (19:09:00 to 19:41:31 is 32 minutes, not 33); seconds_after_primary carries the exact difference. Times are each page's own, to the second where the page gives seconds.",
  "shape_for_other_series": "To put another series (for example Wikipedia's first edit per fact) on the same axis: for each fact id here, a row {fact, series (e.g. \"wikipedia-pt\"), at (UTC), title or summary, url, via, seconds_after_primary, minutes_after_primary}. first-on-each-fact.json's facts[].first_by_outlet[] rows have that shape with `outlet` as the series and `published` as `at`.",
  "facts": [
@@ -186,7 +186,7 @@
    "primary_time": "2026-11-10T09:14:29Z",
    "primary_note": "no timed primary source for the spoken announcement: the reference is the earliest report we read (Diário de Notícias' live blog, 09:14:29). The government's page is dated 12:10 (fact 2)",
    "primary_label": "evidence",
-   "items_matched": 21,
+   "items_matched": 22,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -272,9 +272,9 @@
      "via": "article",
      "byline": [],
      "byline_kind": "none",
-     "title": "Situação de alerta não será prolongada: MAI recusa excesso de zelo e avisa para perigo no Algarve",
-     "url": "https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-e-avisa-para-perigo-no-algarve-1d821b8b",
-     "article": "A-31848f64",
+     "title": "Situação de alerta não será prolongada: MAI recusa excesso de zelo",
+     "url": "https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-1d821b8b",
+     "article": "A-c87f3a98",
      "seconds_after_primary": 110592,
      "minutes_after_primary": 1843
     }
@@ -286,7 +286,7 @@
    "primary_time": "2026-11-10T12:10:00Z",
    "primary_note": "portugal.gov.pt's page is dated 12:10; the minister announced it in the morning, so the press is ahead of the page",
    "primary_label": "fact",
-   "items_matched": 23,
+   "items_matched": 24,
    "first_by_outlet": [
     {
      "rank": 1,
@@ -372,9 +372,9 @@
      "via": "article",
      "byline": [],
      "byline_kind": "none",
-     "title": "Situação de alerta não será prolongada: MAI recusa excesso de zelo e avisa para perigo no Algarve",
-     "url": "https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-e-avisa-para-perigo-no-algarve-1d821b8b",
-     "article": "A-31848f64",
+     "title": "Situação de alerta não será prolongada: MAI recusa excesso de zelo",
+     "url": "https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-1d821b8b",
+     "article": "A-c87f3a98",
      "seconds_after_primary": 100061,
      "minutes_after_primary": 1667
     }
@@ -1069,8 +1069,74 @@
     "16:39 UTC: no title we read reports it yet. Evidence beside it: from 16:03 to 16:30 DN, Público and RTP title the Interior Minister's words that \"o período mais grave está à porta\" (DN 16:03, Público 16:05, RTP 16:30), after IPMA's 15:55:03 batch; when he spoke is not given in the titles, so no comparison with IPMA's time is made here.",
     "17:42 UTC: two title matches (Observador's live blog 17:05:09, RTP 17:17:11) are Lusa's report of the earlier state and are excluded (not_matches). No report of the 15:55:03 batch itself found yet."
    ],
-   "items_matched": 0,
-   "first_by_outlet": []
+   "items_matched": 5,
+   "first_by_outlet": [
+    {
+     "rank": 1,
+     "outlet": "observador",
+     "published": "2026-11-11T18:09:18Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Portugal sem avisos vermelhos após desativação em Faro",
+     "url": "https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791405-scroll",
+     "seconds_after_primary": 8055,
+     "minutes_after_primary": 134
+    },
+    {
+     "rank": 2,
+     "outlet": "noticias-ao-minuto",
+     "published": "2026-11-11T18:09:28Z",
+     "via": "article",
+     "byline": [
+      "Lusa"
+     ],
+     "byline_kind": "agency",
+     "title": "Charles: Já não há distritos sob aviso vermelho em Portugal",
+     "url": "https://www.noticiasaominuto.com/pais/3082627/sem-alertas-vermelhos-portugal-apos-desativacao-em-faro",
+     "article": "A-730f2e70",
+     "seconds_after_primary": 8065,
+     "minutes_after_primary": 134
+    },
+    {
+     "rank": 3,
+     "outlet": "dn",
+     "published": "2026-11-11T18:09:30Z",
+     "via": "live blog entry",
+     "byline": [],
+     "byline_kind": "not kept",
+     "title": "Portugal sem avisos vermelhos após desativação em Faro",
+     "url": "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente",
+     "seconds_after_primary": 8067,
+     "minutes_after_primary": 134
+    },
+    {
+     "rank": 4,
+     "outlet": "cnn-portugal",
+     "published": "2026-11-11T18:30:00Z",
+     "via": "article",
+     "byline": [],
+     "byline_kind": "none",
+     "title": "Portugal sem avisos vermelhos após desativação em Faro. Apenas Guarda, Vila Real e Bragança continuam sob aviso",
+     "url": "https://cnnportugal.iol.pt/ipma/tempo/portugal-sem-avisos-vermelhos-apos-desativacao-em-faro-apenas-guarda-vila-real-e-braganca-continuam-sob-aviso/20261111/6af4b3a5d34e5a653d733dad",
+     "article": "A-dc82a62a",
+     "seconds_after_primary": 9297,
+     "minutes_after_primary": 154
+    },
+    {
+     "rank": 5,
+     "outlet": "jornal-economico",
+     "published": "2026-11-11T18:35:09Z",
+     "via": "article",
+     "byline": [],
+     "byline_kind": "none",
+     "title": "Mau tempo: Portugal sem avisos vermelhos após desativação em Faro",
+     "url": "https://jornaleconomico.sapo.pt/noticias/mau-tempo-portugal-sem-avisos-vermelhos-apos-desativacao-em-faro/",
+     "article": "A-5ccbfe76",
+     "seconds_after_primary": 9606,
+     "minutes_after_primary": 160
+    }
+   ]
   }
  ]
 }

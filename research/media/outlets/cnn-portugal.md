@@ -1,15 +1,15 @@
 # CNN Portugal: its coverage of Storm Charles
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 17:42 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 18:37 UTC. One of [the outlets in the media watch](README.md). Everything here is **evidence** (what the outlet published, read from its own pages) or, where it compares, **analysis**. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 **Feed only.** from 2026-11-11T03:30:00Z: no terms page was found by our reader, so only its public feed is read, for headline, time and link; its article pages are no longer opened and by-lines are no longer read. Until Dinis decides.
 
 | | |
 |---|---|
 | Kind | news channel (pt) |
-| Items we read | 71: 20 articles, 0 live, 51 video, 0 opinion |
-| First and last | 10 Nov 15:32 to 11 Nov 16:52 UTC |
-| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 62 not read; wire share 67% |
+| Items we read | 72: 21 articles, 0 live, 51 video, 0 opinion |
+| First and last | 10 Nov 15:32 to 11 Nov 18:30 UTC |
+| Whose reporting | 3 with a reporter's by-line, 6 the agency's (Lusa), 0 the desk's, 63 not read; wire share 67% |
 | Does best (from the counts) | video |
 
 ## Against the key moments
@@ -22,10 +22,11 @@ Its first item on each keyed fact, and its place among the outlets we could read
 | The storm's track is further south than forecast (strongest winds south of Lisbon) | unknown | 11 Nov 11:41 (video) | unknown | 4 of 4 | [Tempestade Charles mudou de trajetória: "Felizmente, enfraqueceu" ↗](https://cnnportugal.iol.pt/videos/tempestade-charles-mudou-de-trajetoria-felizmente-enfraqueceu/6af449280cf2051820fb147a) |
 | IPMA's meteorologist: the storm should enter between the Lisbon region and Cabo de São Vicente | 10 Nov 22:35 | 11 Nov 00:31 (video) | +115 min | 4 of 5 | [Algarve deverá ser a região mais afetada pela Charles. Tempestade che… ↗](https://cnnportugal.iol.pt/videos/algarve-devera-ser-a-regiao-mais-afetada-pela-charles-tempestade-chega-a-lisboa-com-menos-intensidade-do-que-o-previsto/6af3b07a0cf2aafa0453e19a) |
 | IPMA lowers Lisbon's wind warning from red to orange (Wednesday 09:00 to 21:00, gusts to 120 km/h); the red rain warning stands | 11 Nov 07:16 | 11 Nov 08:53 (article) | +96 min | 2 of 6 | [Lisboa, Setúbal e Beja deixam de estar em aviso vermelho para vento m… ↗](https://cnnportugal.iol.pt/depressao-charles/tempestade-charles/lisboa-setubal-e-beja-deixam-de-estar-em-aviso-vermelho-para-vento-mas-passam-ao-nivel-maximo-de-alerta-para-chuva/20261111/6af42d3ad34e9ce6f1b43e73) |
+| IPMA ends Lisbon's orange wind warning at 15:56 (was to 18:00) and lowers Faro's red rain and wind: no red warning remains on the mainland; Lisbon keeps yellow rain to 18:00 and orange sea to 21:00 | 11 Nov 15:55 | 11 Nov 18:30 (article) | +154 min | 4 of 5 | [Portugal sem avisos vermelhos após desativação em Faro. Apenas Guarda… ↗](https://cnnportugal.iol.pt/ipma/tempo/portugal-sem-avisos-vermelhos-apos-desativacao-em-faro-apenas-guarda-vila-real-e-braganca-continuam-sob-aviso/20261111/6af4b3a5d34e5a653d733dad) |
 
 ## Its sources, as far as its own pages say
 
-- **Links to primary sources:** 1 of 71 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
+- **Links to primary sources:** 1 of 72 items link to a body that decides or warns (Diário da República). A link is not the same as sourcing: text and broadcasts name sources without linking.
 - **It published the wire of Lusa:** 6 items (the item's by-line names the agency).
 
 ## Licence and terms, as it publishes them
@@ -125,3 +126,4 @@ Marta Coropos Carvalho, Nuno Mandeiro, Pedro Filipe Silva. A by-line is a public
 | 11 Nov 16:51 | video | not read | [Sines preparou-se para o pior da tempestade Charles mas escapou aos efeitos mais graves ↗](https://cnnportugal.iol.pt/videos/sines-preparou-se-para-o-pior-da-tempestade-charles-mas-escapou-aos-efeitos-mais-graves/6af4924b0cf2aafa0453e30f) |
 | 11 Nov 16:52 | video | not read | [Operações subaquáticas, drones, geradores e autotanques: foi assim que a GNR se preparou para receb… ↗](https://cnnportugal.iol.pt/videos/operacoes-subaquaticas-drones-geradores-e-autotanques-foi-assim-que-a-gnr-se-preparou-para-receber-a-tempestade-charles/6af499d60cf2051820fb159f) |
 | 11 Nov 16:52 | video | not read | [Apesar da "fase de acalmia", ainda "é importante estar vigilante" ao mau tempo ↗](https://cnnportugal.iol.pt/videos/apesar-da-fase-de-acalmia-ainda-e-importante-estar-vigilante-ao-mau-tempo/6af498bb0cf2cb2507aa8585) |
+| 11 Nov 18:30 | article | not read | [Portugal sem avisos vermelhos após desativação em Faro. Apenas Guarda, Vila Real e Bragança continu… ↗](https://cnnportugal.iol.pt/ipma/tempo/portugal-sem-avisos-vermelhos-apos-desativacao-em-faro-apenas-guarda-vila-real-e-braganca-continuam-sob-aviso/20261111/6af4b3a5d34e5a653d733dad) |
