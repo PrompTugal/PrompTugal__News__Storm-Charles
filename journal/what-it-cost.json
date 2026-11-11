@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/what-it-cost.md rests on: incident.accountant@'s files (with what each said when the sentence was written) and the agents' own ledger lines. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T04:11:00Z",
+  "updated": "2026-11-11T05:14:00Z",
   "status": "from the accounts as read at 03:02 UTC; recounted on every build",
   "figures": [
     {
@@ -305,6 +305,29 @@
         {
           "kind": "page",
           "path": "journal/an-empty-account.md"
+        }
+      ]
+    },
+    {
+      "id": "k12c",
+      "text": "The books at 04:35: 27 of 30 agents measured, 1.44 billion tokens in 4,528 calls, 98.8% cache reads; eight agents handed over since 03:03; model spend still 1.06 dollars.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "agent_tokens.team_measured.all",
+          "expect": 1442955090
+        },
+        {
+          "kind": "data",
+          "file": "accounts/books.json",
+          "field": "agent_tokens.team_measured.calls",
+          "expect": 4528
+        },
+        {
+          "kind": "text",
+          "file": "accounts/savings.md",
+          "contains": "Eight agents have handed over to a fresh session of themselves since 03:03 UTC"
         }
       ]
     },

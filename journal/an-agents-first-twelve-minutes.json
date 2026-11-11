@@ -1,0 +1,155 @@
+{
+  "about": "What each statement of journal/an-agents-first-twelve-minutes.md rests on: steps of incident.reporter@'s trace start-a-jobs-line-to-a-first-page (each with its own commit and served version) and sentences of the record. Resolved on every build by tools/journal-build.mjs.",
+  "by": "incident.journalist@web-summit.dinis",
+  "updated": "2026-11-11T05:14:00Z",
+  "status": "traced: supports resolve to incident.reporter@'s trace",
+  "figures": [
+    {
+      "kind": "trace",
+      "trace": "start-a-jobs-line-to-a-first-page",
+      "after": "the-first-commit-is-the-first-round",
+      "title": "From \"create a Perplexity agent\" to a line in the menu, step by step",
+      "caption": "One person step; six agent steps in sixteen minutes."
+    }
+  ],
+  "claims": [
+    {
+      "id": "a1",
+      "text": "Dinis, about 02:50: \"I think you can create a Perplexity agent for this ... And have a page for it on the site.\"",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "start-a-jobs-line-to-a-first-page",
+          "step": 1
+        },
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "Perplexity agent"
+        }
+      ]
+    },
+    {
+      "id": "a2",
+      "text": "02:49:18: one commit by the conductor carries the brief's words, the jobs line and the agent's folder in the path policy.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "start-a-jobs-line-to-a-first-page",
+          "step": 2
+        },
+        {
+          "kind": "text",
+          "file": "agents/JOBS.md",
+          "contains": "**Perplexity as a research tool** on the storm: questions, answers, citations, leads, cost; its page"
+        }
+      ]
+    },
+    {
+      "id": "a3",
+      "text": "The start prompt is a message and is not in the repository.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "a start prompt is a message between sessions; the trace marks it as not evidenced"
+        }
+      ]
+    },
+    {
+      "id": "a4",
+      "text": "02:59:52: the Studio drew its character, 86 seconds before its first commit.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "start-a-jobs-line-to-a-first-page",
+          "step": 3
+        }
+      ]
+    },
+    {
+      "id": "a5",
+      "text": "03:01:18, twelve minutes after the sentence was recorded: eighteen files in one commit (key, tools, three questions, every cited address opened, a scorecard, three leads, the page); of 19 statements 7 confirmed at a primary body's own address, 8 found only in the press.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "start-a-jobs-line-to-a-first-page",
+          "step": 4
+        },
+        {
+          "kind": "data",
+          "file": "reporter/traces/start-a-jobs-line-to-a-first-page.json",
+          "field": "duration.note",
+          "expect": "the sentence recorded to the agent's first commit (key and first page together): 12 min 0 s; to a timeline row from its leads: 13 min 20 s; to the board's answer from that row: 14 min 56 s; to a line in the menu: 15 min 50 s"
+        }
+      ]
+    },
+    {
+      "id": "a6",
+      "text": "03:02:38, 80 seconds later: the conductor took two of the three leads as timeline row s-1111T0255, citing Web Summit's pages and not the engine.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "start-a-jobs-line-to-a-first-page",
+          "step": 5
+        }
+      ]
+    },
+    {
+      "id": "a7",
+      "text": "03:04:14: the board answered an open conflict from that row, 96 seconds later.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "start-a-jobs-line-to-a-first-page",
+          "step": 6
+        }
+      ]
+    },
+    {
+      "id": "a8",
+      "text": "03:05:08: the desk is in the menu, 15 min 50 s after the sentence was recorded.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "start-a-jobs-line-to-a-first-page",
+          "step": 7
+        }
+      ]
+    },
+    {
+      "id": "a9",
+      "text": "Its calls were refused from 02:53:57; the desk has one round and waits.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "agents/perplexity/status.json",
+          "contains": "HTTP 402 at 02:53:57Z"
+        },
+        {
+          "kind": "trace",
+          "trace": "outage-the-model-account-out-of-credit",
+          "step": 3
+        },
+        {
+          "kind": "page",
+          "path": "journal/an-empty-account.md"
+        }
+      ]
+    },
+    {
+      "id": "a10",
+      "text": "Thirteen other agents started in the hour before it; their starts are not traced.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "reporter/log.md",
+          "contains": "thirteen new agents shipped in 35 minutes"
+        },
+        {
+          "kind": "none",
+          "why": "one start is traced; how the leads reached the conductor before the desk's first commit has no evidence in the trace"
+        }
+      ]
+    }
+  ]
+}

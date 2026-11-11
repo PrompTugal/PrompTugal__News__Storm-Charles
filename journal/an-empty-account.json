@@ -1,7 +1,7 @@
 {
   "about": "What each statement of journal/an-empty-account.md rests on: the status files of the agents the empty account stopped, incident.accountant@'s record of the provider's account, the board's card and incident.ci@'s commits. Checked against incident.reporter@'s trace (reporter/traces/outage-the-model-account-out-of-credit.json) at 04:14 UTC on 11 November. Resolved on every build by tools/journal-build.mjs.",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T04:14:00Z",
+  "updated": "2026-11-11T05:14:00Z",
   "status": "checked against incident.reporter@'s outage trace",
   "figures": [
     {
@@ -99,7 +99,7 @@
     },
     {
       "id": "e5",
-      "text": "Three first times are on record: HTTP 402 at 02:53:57 (incident.perplexity@), every call refused from 02:55 (incident.models@), five calls refused at 02:38 (the evaluations' correction); the board's card says about 02:54. The reporter's trace takes 02:53:57 as the first.",
+      "text": "First times on record: HTTP 402 at 02:53:57 (incident.perplexity@; the first an agent timed, and the board's card), every call refused from 02:55 (incident.models@), five calls refused earlier, in results pushed at 02:39:15 (the evaluations' correction; the reporter's trace, corrected at 05:08 from this page's finding).",
       "supports": [
         {
           "kind": "text",
@@ -117,14 +117,24 @@
           "contains": "five calls refused for credits at 02:38Z"
         },
         {
+          "kind": "trace",
+          "trace": "outage-the-model-account-out-of-credit",
+          "step": 3
+        },
+        {
           "kind": "text",
           "file": "board/items/a-provider-credit.json",
-          "contains": "out of credit since about 02:54 UTC"
+          "contains": "out of credit since 02:53:57 UTC"
         },
         {
           "kind": "trace",
           "trace": "outage-the-model-account-out-of-credit",
-          "step": 3
+          "step": 13
+        },
+        {
+          "kind": "text",
+          "file": "reporter/traces/outage-the-model-account-out-of-credit.json",
+          "contains": "found_by"
         }
       ]
     },
@@ -155,7 +165,7 @@
     },
     {
       "id": "e7",
-      "text": "The shadow reports' 03:00 and 04:00 hours are recorded gaps.",
+      "text": "The shadow reports' 03:00, 04:00 and 05:00 hours are recorded gaps.",
       "supports": [
         {
           "kind": "data",
@@ -185,6 +195,11 @@
           "kind": "trace",
           "trace": "outage-the-model-account-out-of-credit",
           "step": 11
+        },
+        {
+          "kind": "trace",
+          "trace": "outage-the-model-account-out-of-credit",
+          "step": 14
         }
       ]
     },
@@ -287,12 +302,12 @@
     },
     {
       "id": "e12",
-      "text": "At the reporter's 04:00 log the card was first among 43 waiting on Dinis; nothing from him is in the brief since about 02:50.",
+      "text": "In the reporter's log at 05:08 the card was first among 43 waiting on Dinis; nothing from him is in the brief since about 02:50.",
       "supports": [
         {
           "kind": "text",
           "file": "reporter/log.md",
-          "contains": "What waits, waits on Dinis: 43 cards at 04:00"
+          "contains": "What waits, waits on Dinis: 43 cards at 05:08"
         }
       ]
     },

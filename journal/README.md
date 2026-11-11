@@ -1,6 +1,6 @@
 # The journal: how this site was made
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 04:14 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 05:14 UTC
 
 The rest of this site is about a storm. This part is about the site: how one person and a team of agents made it in a night, what that took, what went wrong, and what waited on the person. It is written for someone arriving cold: a journalist, an editor, an engineer, an investor.
 
@@ -17,6 +17,7 @@ The rest of this site is about a storm. This part is about the site: how one per
 | 5 | [What it cost](what-it-cost.md) | About one dollar that anyone can state in money. The real cost is unpriced: the agents' sessions, where 99 tokens in 100 are an agent reading its own session again. | from the accounts as read at 03:02 UTC |
 | 6 | [Starting again is cheaper than remembering](starting-again-is-cheaper-than-remembering.md) | "The librarian saves tokens": a sentence, a pack in five and a half minutes, a measured number three minutes later, and six agents beginning again from it within the hour. | traced: from incident.reporter@'s trace |
 | 7 | [An empty account stopped the models, and only the models](an-empty-account.md) | The cap and the balance were two numbers kept by two parties. When the balance ran out at a dollar of the team's spend, three desks stopped asking, published the gap as a gap, and put one card first on Dinis's list. | checked against incident.reporter@'s outage trace |
+| 8 | [An agent's first twelve minutes](an-agents-first-twelve-minutes.md) | A new agent is not introduced or reviewed: it is given a sentence, a jobs line and a folder, and judged by its first push. What made that safe was that the team used only what stood on a primary source. | traced: from incident.reporter@'s trace |
 
 All of them in order, for printing: [the edition](edition.md).
 
