@@ -2,8 +2,8 @@
 :root {
   --paper: #f7f7f5; --surface: #ffffff; --surface-2: #f0f0ec; --ink: #16181d; --ink-2: #4a505c;
   --line: #d9dad6; --line-2: #c4c6c1; --accent: #c8102e; --focus: #1d5fd1; --st-gold: #b7862b;
-  --ok: #1d7a46; --ok-soft: #e3f3ea; --bad: #b3261e; --bad-soft: #fbe7e5; --warn: #a15c00; --warn-soft: #fdf0dc;
-  --sent: #1d5fd1; --sent-soft: #e5eefc; --wait: #6b6f7a; --warm: #c45a00;
+  --ok: #17663a; --ok-soft: #e3f3ea; --bad: #b3261e; --bad-soft: #fbe7e5; --warn: #8a4f00; --warn-soft: #fdf0dc;
+  --sent: #1d5fd1; --sent-soft: #e5eefc; --wait: #595c64; --warm: #c45a00;
   --red: #c8102e; --orange: #e07000; --yellow: #d9b300;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
@@ -550,13 +550,13 @@ header.top .wrap { row-gap: 4px; }
 /* round 61: the family's five themes (paper, ink, broadsheet, archive, azulejo; app/design/family.css sets their surfaces); these blocks give archive and azulejo their level and state colours; contrast stays as ours */
 :root[data-theme="archive"] {
   --paper: #f4ecd8; --surface: #fbf5e6; --surface-2: #ece2c8; --ink: #2b2418; --ink-2: #5f553f; --line: #d8ccab; --line-2: #bfb18a;
-  --accent: #a3271f; --focus: #1f4f96; --ok: #2f6b3a; --ok-soft: #e2ecd3; --bad: #a3271f; --bad-soft: #f3dcd3; --warn: #8a5a00; --warn-soft: #f3e3bd;
-  --sent: #1f4f96; --sent-soft: #dfe6ee; --wait: #6f6650; --warm: #b35300; --red: #b81d2c; --orange: #d66a00; --yellow: #c9a300; --rain: #1f4f96; --hatch: rgba(43,36,24,.16);
+  --accent: #a3271f; --focus: #1f4f96; --ok: #2f6b3a; --ok-soft: #e2ecd3; --bad: #a3271f; --bad-soft: #f3dcd3; --warn: #7a4800; --warn-soft: #f3e3bd;
+  --sent: #1f4f96; --sent-soft: #dfe6ee; --wait: #5f5244; --warm: #b35300; --red: #b81d2c; --orange: #d66a00; --yellow: #c9a300; --rain: #1f4f96; --hatch: rgba(43,36,24,.16);
 }
 :root[data-theme="azulejo"] {
   --paper: #000000; --surface: #0a0a0a; --surface-2: #151515; --ink: #d6d6d6; --ink-2: #8f8f8f; --line: #232323; --line-2: #333333;
   --accent: #e0606b; --focus: #8fb0e6; --ok: #6fbf8f; --ok-soft: #0f2117; --bad: #e08a82; --bad-soft: #2a1413; --warn: #d9a659; --warn-soft: #241b0d;
-  --sent: #8fb0e6; --sent-soft: #101a2b; --wait: #808080; --warm: #d98a4d; --red: #d42a42; --orange: #f08a1c; --yellow: #e6c229; --rain: #8fb0e6; --hatch: rgba(214,214,214,.18);
+  --sent: #8fb0e6; --sent-soft: #101a2b; --wait: #a3afc6; --warm: #d98a4d; --red: #d42a42; --orange: #f08a1c; --yellow: #e6c229; --rain: #8fb0e6; --hatch: rgba(214,214,214,.18);
 }
 :root[data-theme="contrast"] {
   --paper: #ffffff; --surface: #ffffff; --surface-2: #ededed; --ink: #000000; --ink-2: #222222; --line: #6b6b6b; --line-2: #000000;
@@ -566,7 +566,7 @@ header.top .wrap { row-gap: 4px; }
 :root[data-theme="contrast"] a { text-decoration-thickness: 2px; } :root[data-theme="contrast"] .card, :root[data-theme="contrast"] .wx-tile { border-color: #000; }
 :root[data-theme="light"], :root[data-theme="paper"], :root[data-theme="broadsheet"] {
   --paper: #f7f7f5; --surface: #ffffff; --surface-2: #f0f0ec; --ink: #16181d; --ink-2: #4a505c; --line: #d9dad6; --line-2: #c4c6c1; --accent: #c8102e; --focus: #1d5fd1;
-  --ok: #1d7a46; --ok-soft: #e3f3ea; --bad: #b3261e; --bad-soft: #fbe7e5; --warn: #a15c00; --warn-soft: #fdf0dc; --sent: #1d5fd1; --sent-soft: #e5eefc; --wait: #6b6f7a; --warm: #c45a00;
+  --ok: #17663a; --ok-soft: #e3f3ea; --bad: #b3261e; --bad-soft: #fbe7e5; --warn: #8a4f00; --warn-soft: #fdf0dc; --sent: #1d5fd1; --sent-soft: #e5eefc; --wait: #595c64; --warm: #c45a00;
   --red: #c8102e; --orange: #e07000; --yellow: #d9b300; --rain: #1d5fd1; --hatch: rgba(22,24,29,.16);
 }
 @media print { .panel, #panel-btn, nav.sites { display: none !important; } .shell { display: block; } }
@@ -903,3 +903,4 @@ footer.agent .ptn-foot a { font-weight: 700; }
 .wx-chart rect.lv-red { fill: var(--red); } .wx-chart rect.lv-orange { fill: var(--orange); } .wx-chart rect.lv-yellow { fill: var(--yellow); }
 @media print { .conf > b { color: var(--ink); } }
 /* round 62: the zebra stripe is a :where() so a cell's own fill (a level cell, a state) wins; IPMA red on dark themes #e5324b -> #d42a42 (white on it 4.3 -> 5.0:1; on ink 3.7, on azulejo 3.4) */
+/* round 63: state tokens to 4.5:1 on the recessed band in every theme: --wait (light #595c64, archive #5f5244, azulejo #a3afc6), --ok light #17663a, --warn light #8a4f00 and archive #7a4800 */
