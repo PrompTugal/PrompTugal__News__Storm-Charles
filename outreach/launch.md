@@ -1,6 +1,6 @@
 # The launch: who we reach out to, what we say, in what order
 
-> Kept by incident.media@web-summit.dinis, 2026-11-11, 03:10 UTC. **A draft for Dinis Cruz.** From his words of about 02:20 UTC ([the brief](../BRIEF.md)): "a nice launch of this site later today ... planning who we're going to reach out to ... maybe do an outreach email ... everything here can be public ... a lot of this needs to be done via public mediums." **A person sends every message and posts every post; nothing leaves by an agent's hand, and nothing here has been sent.** People appear only in a public professional role, with the public work that makes them relevant; each is reached through the channel they or their outlet publish themselves. No private address or number is kept. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
+> Kept by incident.media@web-summit.dinis, 2026-11-11, 03:45 UTC. **A draft for Dinis Cruz.** From his words of about 02:20 UTC ([the brief](../BRIEF.md)): "a nice launch of this site later today ... planning who we're going to reach out to ... maybe do an outreach email ... everything here can be public ... a lot of this needs to be done via public mediums." **A person sends every message and posts every post; nothing leaves by an agent's hand, and nothing here has been sent.** People appear only in a public professional role, with the public work that makes them relevant; each is reached through the channel they or their outlet publish themselves. No private address or number is kept. Not a warning service: follow [IPMA ↗](https://www.ipma.pt/) and [ANEPC ↗](https://prociv.gov.pt/).
 
 ## One decision first: when
 
@@ -26,6 +26,18 @@ Each group: who they are, the public work that makes them relevant, what we offe
 | **7. Web Summit attendees and speakers** | People who posted in public about Day 2 under the event's hashtag; the organisers' media team | One page that says what was decided, by whom and when, and what is still unannounced | When did the organisers' notice reach you, and what did it say changed? (in your own words; we do not take the email itself: [Contribute](../contribute.md), C-04) And any notice the organisers published themselves, with its address and time | Public posts with the event's hashtag; the organisers' media page |
 
 Named people beyond by-lines (individual meteorologists, researchers, editors): none is listed yet, because we have not read their public work closely enough to say why each one. That is [a task](../contribute.md) (C-10) and the next round of this page.
+
+## Where a public post can reach them: Bluesky
+
+From incident.social@'s read at 02:24 UTC on 11 November ([research/social](../research/social/index.html): accounts and reasons in its accounts.json). Organisations only; no individual's account is listed, and we do not look up reporters' personal accounts.
+
+| State on Bluesky | Accounts (organisations) | What it means for the launch |
+|---|---|---|
+| **Posting about the storm** | VOST Portugal (97 posts; a volunteers' association, not an authority), Agência Lusa (40), Público (9, verified), AEMET (4, verified), Euronews (4, verified), Met Office (1, verified), Reuters (1, verified), Bloomberg (1, verified), Lisboa Para Pessoas (1) | a public post that mentions the record of who reported what can be seen by these newsrooms; VOST and the open-data community are reachable here |
+| **Present, silent on the storm** | Web Summit (silent since 10 Nov 17:36), Météo-France, ECMWF, EUMETSAT, AP, The Guardian, Metropolitano de Lisboa (last post in March), Renascença (last post in May), Meteored | not a channel for this launch |
+| **No account found** | IPMA, ANEPC, the government, the Câmara, RTP, Observador, Expresso, Diário de Notícias, Jornal de Notícias, CNN Portugal, SIC, ECO, TSF | reach them by their own sites' public contact pages, or on the platforms they use (LinkedIn, X, Facebook: not readable by us, so a person checks) |
+
+So Bluesky and Mastodon suit the quiet opening (open data, civic tech, the wire, two newsrooms); most Portuguese newsrooms and all the authorities are not there, which is why the open letter by email, and LinkedIn, carry the launch proper.
 
 ## The open letter (a page on the site, and the email)
 
