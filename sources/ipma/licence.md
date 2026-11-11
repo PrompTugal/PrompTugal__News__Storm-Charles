@@ -4,9 +4,9 @@ summary: What IPMA's own terms say about using its data, quoted with the link, a
 ---
 # IPMA's licence and terms, as published
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:35 UTC
 
-[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
+[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
 Read at [api.ipma.pt, "termos e condições"](https://api.ipma.pt/#legal) on 2026-11-11 02:12 UTC. Short excerpts, in IPMA's Portuguese, each with our English beside it. Ours is a reading, not legal advice; **the text that counts is IPMA's**.
 

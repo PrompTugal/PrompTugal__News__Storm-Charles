@@ -6,11 +6,11 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # The sea: IPMA's sea state forecast
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:35 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
-[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
+[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
 IPMA forecasts the sea for 12 coastal places, three days at a time: the significant wave height (the "total sea"), the swell's height and peak period, the prevailing direction and the sea surface temperature, each as the day's minimum and maximum. These are **forecasts by IPMA**, shown as IPMA's. Each time a day's forecast changed between two of our reads, both versions are kept: the view draws the latest and lists the earlier ones.
 

@@ -6,9 +6,9 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # IPMA's API, mapped
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:35 UTC
 
-[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
+[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
 IPMA's documentation is one page, in Portuguese: [api.ipma.pt](https://api.ipma.pt/) (read 2026-11-11 02:12 UTC). No key, no registration; the responses allow any origin. On times IPMA says: "As previsões são apresentadas em horas UTC. No continente e na Região Autónoma da Madeira a hora legal é igual à UTC, no horário de inverno." No time in any response carries a zone, except the climate CSVs (+00:00). No-data value: -99.0 (stated for the observations).
 

@@ -27,7 +27,7 @@ const page = (rel, { title, summary, view, attrs = '', fallback, body }) => {
     for (let i = 0; i < L.length; i++) if (/^\s*\|/.test(L[i]) && !/^\s*\|/.test(L[i - 1] || '') && !/^\s*\|?\s*:?-{3,}/.test(L[i + 1] || '')) throw new Error(`${rel}: line ${i + 1} starts a table with no header rule: ${L[i].slice(0, 80)}`)
     fs.writeFileSync(path.join(SRC, rel), fm + L.join('\n') + '\n')
 }
-const nav = (b = '') => `[IPMA's open data](${b}index.md) · [Warnings over time](${b}warnings.md) · [Stations](${b}stations.md) · [The sea](${b}sea.md) · [Cities: forecast and observed](${b}cities.md) · [The API, mapped](${b}api.md) · [Browse the files](${b}data.md) · [Licence and terms](${b}licence.md)`
+const nav = (b = '') => `[IPMA's open data](${b}index.md) · [Warnings over time](${b}warnings.md) · [Stations](${b}stations.md) · [The sea](${b}sea.md) · [Cities: forecast and observed](${b}cities.md) · [The API, mapped](${b}api.md) · [What we learned](${b}learned.md) · [Browse the files](${b}data.md) · [Licence and terms](${b}licence.md)`
 const lastRead = reads.reads.at(-1) || {}
 const epFiles = e => files.filter(([, f]) => f.endpoint === e.id)
 const epRow = (e, b = '') => { const fr = epFiles(e), bytes = fr.reduce((s, [, f]) => s + (f.bytes || 0), 0), lm = fr.map(([, f]) => f.last_modified).filter(Boolean).sort().at(-1), bad = fr.filter(([, f]) => f.status !== 200).length; return `| [${c(e.title)}](${b}endpoints/${e.id}.md) | ${c(e.format)} | ${fr.length || '·'}${bad ? ` (${bad} not 200)` : ''} | ${bytes || '·'} | ${t(lm)} | ${t(fr[0]?.[1].read_utc)} | ${c(e.cadence?.ipma_says || '·')} |` }
@@ -260,6 +260,57 @@ The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). W
 ` })
 }
 
+// ---------------------------------------------------------------- what we learned, written as help for IPMA
+const ev = latest.files['observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv'] || {}, ev2 = latest.files['observation/climate/evapotranspiration/et0-p1d-continental-obssup-idw-concelhos-20d.csv'] || {}
+const LN = (title, what, where, help) => `### ${title}\n\n${what}\n\n- **Where to see it:** ${where}\n- **What would help a reader of the API:** ${help}`
+page('learned.md', {
+    title: "What we learned reading IPMA's API", summary: "Notes from reading every file of IPMA's open data beside its documentation: small differences, things the documentation does not say, and files it does not list. Written as help for IPMA and for anyone building on the API.",
+    body: `
+# What we learned reading IPMA's API
+
+${kept}
+
+${nav()}
+
+IPMA's open data is a generous thing: warnings, forecasts, observations, the sea, earthquakes and climate series, free to read, without a key, with a documentation page that names every field. We read all of it on 11 November 2026 during Storm Charles, field by field, beside the documentation at [api.ipma.pt](https://api.ipma.pt/). These are the notes of a careful reader: where a response and the documentation differ, what a builder has to guess, and what is there but not listed. **They are offered as help, not criticism**: each one says where to see it and what would make it easier. Everything here is our observation at the time given; IPMA's files may have changed since, and where we may have misread, the address is there to check.
+
+## Where a response and the documentation differ
+
+${LN('The evapotranspiration file is at another address', `The documentation gives \`.../evapotranspiration/et0-p1d-continental-obssup-idw-20d-concelhos.csv\`. That address answered **${ev.status || 404}** when we read it (${t(ev.read_utc)} UTC). IPMA's own directory lists the file as \`et0-p1d-continental-obssup-idw-concelhos-20d.csv\` ("concelhos" and "20d" the other way round, as in the precipitation and temperature files), and that address answered **${ev2.status || 'not read yet'}**.`, '[the documented address](endpoints/climate-evapotranspiration.md), [the listed address](endpoints/climate-evapotranspiration-listed.md)', 'one word order in the documentation\'s link.')}
+
+${LN('Four field names', 'In the daily forecasts the documentation names `probPrecipita`; the responses carry `precipitaProb`. In the seismic files it names `long`; the responses carry `lon`. In the wind-class table it names `descClassWindSpeedEN` and `descClassWindSpeedPT`; the responses carry `descClassWindSpeedDailyEN` and `descClassWindSpeedDailyPT`. In the shellfish zones it names `samp`; the responses carry `code`.', '[city-daily](endpoints/city-daily.md), [seismic](endpoints/seismic.md), [wind-classes](endpoints/wind-classes.md), [bivalves](endpoints/bivalves.md)', 'the documentation\'s field lists brought in line with the responses (or the other way round).')}
+
+${LN('The UV file carries four days', 'The title says "até 3 dias"; the file we read carried four dates. The field `intervaloHora` was empty in every row.', '[uv](endpoints/uv.md)', 'the title, or a note on what `intervaloHora` holds and when.')}
+
+${LN('Numbers as text in one file and as numbers in another', 'In the per-place daily forecast `tMin` and `tMax` are strings with one decimal ("14.6"); in the per-day files they are whole numbers (15). Latitude and longitude are strings in the place tables and numbers in the fire-risk files.', '[city-daily](endpoints/city-daily.md), [day-forecast](endpoints/day-forecast.md)', 'a line in the documentation saying which is which, so a reader does not mistake rounding for a change of forecast.')}
+
+## What the documentation does not say
+
+${LN('Warnings have no time of issue and no identifier', 'A row of the warnings feed is an area, a type, a level, a window and a text. It does not say when IPMA issued or changed it, and nothing ties a changed warning to the one it replaces: the old row goes and a new one appears. During a storm that is the question everyone asks ("when was the red issued?"). Today the only way to answer from open data is to read the feed often and compare, or to take the sent time from MeteoAlarm\'s CAP messages.', '[the warnings over time](warnings.md), where we pair rows ourselves and say so', 'an issue time on each row (and, if possible, an identifier that survives an update). This would be the single most useful addition for anyone keeping a record.')}
+
+${LN('Two warning areas are in no id table', 'The feed carries 25 areas. `MCN` and `MRM` (parts of Madeira) appear in it but not in `distrits-islands.json` or `sea-locations.json`, which carry `MCS` and `MPS` only; and no table gives an area\'s name.', '[places](endpoints/places.md), [data/places.json](data/places.json)', 'a small table of warning areas: code, name, and ideally an outline.')}
+
+${LN('The time zone of a warning\'s window', 'The documentation says forecasts are in UTC. For the warnings\' `startTime` and `endTime` it says nothing, and they carry no zone. On the mainland and Madeira in winter it makes no difference; for the Azores, and in summer, it does.', '[warnings](endpoints/warnings.md)', 'one sentence, or a zone on the timestamps.')}
+
+${LN('What an hour label means in the observations', 'An observation is keyed by an hour ("2026-11-10T18:00") and `precAcumulada` is "valor acumulado da hora". The documentation does not say whether that is the hour ending or starting at the label, nor the zone. The meteorologist of this site infers hour ending, UTC, and labels that as an inference.', '[observations](endpoints/observations.md)', 'one sentence in the documentation.')}
+
+${LN('No gusts in the observations', 'The hourly observations carry the mean wind. IPMA\'s wind warnings are worded in gusts ("rajadas até 120 km/h"), so the open observations cannot be read beside a warning.', '[stations](stations.md)', 'the hourly maximum gust, if IPMA can publish it.')}
+
+${LN('What the classes stand for', 'The wind and precipitation class tables give names (Fraco, Moderado, Forte) without the speeds or amounts behind them.', '[data/classes.json](data/classes.json)', 'the thresholds beside the names.')}
+
+${LN('Smaller things', 'The unit of an earthquake\'s `depth`; the fields `sensed`, `sismoId`, `shakemapid` and others in the seismic files; what the point given for each municipality in the fire-risk files is; which model run a forecast file comes from (`dataUpdate` is the hourly rewrite time); the per-day forecast files list 27 places where the place table lists 35; the stations table has no altitude.', 'each data set\'s page, under "Not documented": [the API, mapped](api.md)', 'a line each.')}
+
+## What is there and not listed
+
+${LN('Files in the directory that the documentation does not mention', `IPMA's server lists its folders, which is how we found them: climate series by district in five folders (\`evapotranspiration\`, \`mpdsi\`, \`precipitation-total\`, \`temperature-max\`, \`temperature-min\`), 22 long-series spreadsheets under \`monthly-long-series\` (Lisbon's daily temperature from 1855 and rain from 1863 among them), a 61 MB \`zonas.gpkg\`, and \`06.json\`. We have listed them (names, sizes and dates as IPMA's server gives them) and downloaded none of the series.`, '[listing.json](listing.json), [the API, mapped](api.md)', 'a paragraph in the documentation for each: these are remarkable series and few people know they are there.')}
+
+${LN('06.json does not parse', 'It reads as a list of place ids for district 06, but its `data` is a set of bare numbers in braces, which is not valid JSON. It is dated 2018 and may simply be a leftover.', '[district-06](endpoints/district-06.md)', 'removing it, or brackets.')}
+
+## How we read
+
+One request every three seconds, about once an hour, read-only, with no key (none is needed). Every response's sha256 and the time read are public: [latest.json](latest.json), [reads.json](reads.json). IPMA's terms as published, and how this site follows them: [licence.md](licence.md).
+` })
+
 // ---------------------------------------------------------------- the browser
 const browse = ['data/warnings.json', 'data/classes.json', 'data/places.json', 'data/stations.json', 'data/observations.json', 'data/observed-daily.json', 'data/sea.json', 'data/cities.json', 'data/seismic.json', 'data/shellfish-zones.json', 'api.json', 'latest.json', 'reads.json', 'listing.json', 'nodes.json', 'source.json', 'dataset.json', ...(fs.existsSync(path.join(SRC, 'changes')) ? fs.readdirSync(path.join(SRC, 'changes')) : []).map(f => 'changes/' + f)].filter(f => fs.existsSync(path.join(SRC, f)))
 page('data.md', {
@@ -311,4 +362,4 @@ ${(L.open || []).map(x => `- ${x}`).join('\n')}
 
 The same, as data: [source.json](source.json).
 ` })
-console.log(`pages: ${8 + api.endpoints.length} written`)
+console.log(`pages: ${9 + api.endpoints.length} written`)

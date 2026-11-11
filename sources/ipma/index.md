@@ -6,11 +6,11 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # IPMA's open data
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~02:10 UTC): "start a new agent for IPMA and build a complete new visualisation, a section, a data analysis ... every JSON under api.ipma.pt/open-data, the cities, the ocean".
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:35 UTC. At Dinis Cruz's word (BRIEF.md, 11 November, ~02:10 UTC): "start a new agent for IPMA and build a complete new visualisation, a section, a data analysis ... every JSON under api.ipma.pt/open-data, the cities, the ocean".
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
-[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
+[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
 **What this is.** IPMA (Instituto Português do Mar e da Atmosfera) publishes warnings, forecasts, observations, the sea state, earthquakes and climate series as open files at [api.ipma.pt](https://api.ipma.pt/). This section maps every one of them, reads them about once an hour (one request every few seconds, read-only), keeps the sha256 and the time of each read in git and the full responses in a data store, records what changed between reads, and draws views from them. The map above is drawn from IPMA's coordinates only: no tiles, no image.
 

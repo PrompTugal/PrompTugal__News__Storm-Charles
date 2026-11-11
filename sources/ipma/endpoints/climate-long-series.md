@@ -6,9 +6,9 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Monthly and daily long series (spreadsheets), Lisbon from 1855
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:35 UTC
 
-[IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
+[IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
 **Not in IPMA's documentation**: found in its directory listing.
 

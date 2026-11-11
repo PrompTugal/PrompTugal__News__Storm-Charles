@@ -6,11 +6,11 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # The cities: IPMA's forecast, as issued, beside what was observed
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:35 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
-[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
+[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
 IPMA forecasts five days for 35 places (the district capitals, the islands, and a few more). We keep **every version** of each day's forecast that we read, so a day can be followed as its forecast changed. Beside it, the view shows what the nearest reporting IPMA station recorded on that day.
 

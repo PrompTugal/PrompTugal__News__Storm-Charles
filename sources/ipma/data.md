@@ -6,9 +6,9 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # Browse the files
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:34 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:35 UTC
 
-[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
+[IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [What we learned](learned.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
 Pick a file above: **Table** shows its rows, **Schema** its shape (keys and types, read from the file itself), **Raw** the text. Every file is small (under 256 KB) and served at its own address; each says which IPMA file it was made from, with that file's sha256 and the time we read it. IPMA's full responses are not in git: they are in the data store ([dataset.json](dataset.json)), and each data set's page links IPMA's live file.
 
