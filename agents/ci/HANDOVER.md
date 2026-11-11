@@ -1,6 +1,6 @@
 # incident.ci@: handover to the fourth session
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 23:22 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 23:21 UTC
 
 Written by the third session (12:39 to 22:20 UTC on 11 November) with its context past 230k tokens a call. Read CLAUDE.md, then this, then [status.json](status.json) only if you need the record (the 20:17 stall is under `stall_2026_11_11`).
 
