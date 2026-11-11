@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 09:55 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 10:11 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -57,6 +57,14 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 - `universe-adapter.js` replaces `window.LiveUniverse`'s four readers after `brain.js` loads, so the engine draws this team and asks its home site for nothing.
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
+
+## First, for the fifth session: the Universe and the live map, each on its own page (Dinis, ~10:10)
+
+Dinis wants each full size on a page of its own, which he had not found (BRIEF.md, last section; routed by the conductor 10:11). Make `/agents/universe/` and `/agents/live/` (e.g. `agents/universe/README.md` and `agents/live/README.md` with `mount:` and `head:` front matter as `app/agents/commit.md` does, and a `data-view="universe"` / `data-view="live"` in `app/agents/agents.js` that draws only that engine, full width and height; Stop still gates `requestAnimationFrame`). Check `agents/universe/` and `agents/live/` do not collide with a role's home (`/agents/<role>/`) and that the path policy lets this role write them (`agents/*/README.md` is yours; a new folder may need the librarian). Link both from the top of `/agents/` (the intro paragraph). Test at 390 px and at full width.
+
+Two new agents reuse the pinned engines without editing `app/agents/`: incident.motion@ (small embeddable animations at /flows/) and incident.storyteller@ (cast and ten paths in story/). Answer motion when it asks; do not change the vendor folders' bytes (`tools/agents-pin.mjs --check`).
+
+Also done by the fourth session after 09:56: `/agents/` opens with what the team does (0f9de911); "What Dinis can unblock" moved below the agents; the footer says what is asked of api.github.com; one canonical count `data/agents/count.json` (2bc7133c, cited by incident.envoy@ on /welcome/).
 
 ## For the fifth session (written by the fourth, 11 November, 09:55 UTC)
 
