@@ -1,0 +1,140 @@
+{
+  "id": "what-compression-is",
+  "title": "What compression is",
+  "summary": "What travels to the model each time you say something to a chat assistant, what a cache changes, why a full conversation gets compressed, what is lost when it is, and how this team works so that the loss does not matter.",
+  "by": "incident.studio@web-summit.dinis",
+  "updated": "2026-11-11T00:50:00Z",
+  "about": "An explanation in general terms that hold for chat assistants: the context is sent with each request; a cache reuses an unchanged beginning; a full window is summarised or cut. It describes no one product's internals. Block sizes are an illustration, not a measurement. At Dinis Cruz's word (BRIEF.md, 11 November 2026).",
+  "chapters": [
+    {
+      "id": "no-cache",
+      "title": "A normal request",
+      "blocks": {
+        "sys": { "label": "Instructions", "note": "the system prompt", "u": 2, "kind": "system" },
+        "tools": { "label": "Tools", "note": "what each tool does", "u": 2, "kind": "tools" },
+        "q1": { "label": "You, 1", "note": "What changed in the warning?" },
+        "a1": { "label": "Answer 1" },
+        "q2": { "label": "You, 2", "note": "Read the timeline file." },
+        "a2": { "label": "Answer 2" },
+        "file": { "label": "File read", "note": "the timeline's text", "u": 3, "kind": "file" },
+        "q3": { "label": "You, 3", "note": "Who decided what?" },
+        "a3": { "label": "Answer 3" }
+      },
+      "scenes": [
+        {
+          "caption": "Three characters. You, on the left. In the centre the app: the chat program, which keeps the conversation. On the right the model, which reads what it is sent and writes an answer. Before you type anything the app already holds two things: its instructions and the descriptions of its tools.",
+          "stack": ["sys", "tools"]
+        },
+        {
+          "caption": "You say one thing. The app adds it to the bottom of the conversation.",
+          "say": { "left": "What changed in the warning?" },
+          "stack": ["sys", "tools", "q1:new"]
+        },
+        {
+          "caption": "The app sends the model everything it holds: the instructions, the tools and your message. The model reads all of it, top to bottom.",
+          "say": { "centre": "Here is all of it." },
+          "mood": { "right": "read" },
+          "stack": ["sys", "tools", "q1:new"],
+          "send": { "n": 1 }
+        },
+        {
+          "caption": "The answer comes back and joins the conversation. The model keeps nothing: once it has answered, the only copy of the conversation is the one the app holds.",
+          "say": { "right": "Here is what changed." },
+          "stack": ["sys", "tools", "q1", "a1:new"]
+        },
+        {
+          "caption": "Your second message is short. What travels is not: the whole conversation goes again, and the model reads all of it again, including everything it read a moment ago.",
+          "say": { "left": "Read the timeline file." },
+          "mood": { "right": "read" },
+          "stack": ["sys", "tools", "q1", "a1", "q2:new"],
+          "send": { "n": 2 }
+        },
+        {
+          "caption": "To answer, the app read a file. The file's text is now part of the conversation as well, and it is much longer than anything you typed.",
+          "say": { "right": "I have read it." },
+          "stack": ["sys", "tools", "q1", "a1", "q2", "file:new", "a2:new"],
+          "note": "Simplified: reading a file is itself one or more requests. Here it is folded into one turn."
+        },
+        {
+          "caption": "Third message. The pile has grown, and all of it is sent and read again. Each turn costs more than the last and usually takes longer, because each one carries everything before it.",
+          "say": { "left": "Who decided what?" },
+          "mood": { "right": "read" },
+          "stack": ["sys", "tools", "q1", "a1", "q2", "file", "a2", "q3:new"],
+          "send": { "n": 3 }
+        },
+        {
+          "caption": "That is a request with no cache. You typed three short lines; the model read 24 blocks to answer them, most of them more than once. This is the picture to keep: the context is sent with every request.",
+          "stack": ["sys", "tools", "q1", "a1", "q2", "file", "a2", "q3", "a3:new"],
+          "say": { "right": "Here is who decided what." }
+        }
+      ]
+    },
+    {
+      "id": "with-cache",
+      "title": "The same, with a cache",
+      "blocks": {
+        "sys": { "label": "Instructions", "note": "the system prompt", "u": 2, "kind": "system" },
+        "tools": { "label": "Tools", "note": "what each tool does", "u": 2, "kind": "tools" },
+        "q1": { "label": "You, 1", "note": "What changed in the warning?" },
+        "a1": { "label": "Answer 1" },
+        "q2": { "label": "You, 2", "note": "Read the timeline file." },
+        "a2": { "label": "Answer 2" },
+        "file": { "label": "File read", "note": "the timeline's text", "u": 3, "kind": "file" },
+        "q3": { "label": "You, 3", "note": "Who decided what?" },
+        "a3": { "label": "Answer 3" },
+        "q4": { "label": "You, 4", "note": "And tomorrow?" }
+      },
+      "scenes": [
+        {
+          "caption": "The same conversation, the same three messages. This time the service that runs the model keeps a cache: for a while, it remembers the work it did on a beginning it has already read.",
+          "say": { "left": "What changed in the warning?" },
+          "stack": ["sys", "tools", "q1:new"]
+        },
+        {
+          "caption": "First request: the cache is empty, so nothing can be reused. Everything is read at full cost, exactly as before, and the work is kept.",
+          "mood": { "right": "read" },
+          "stack": ["sys", "tools", "q1:new"],
+          "send": { "n": 1 }
+        },
+        {
+          "caption": "Second request. The beginning is exactly what was sent a moment ago, so it is recognised and the work on it is reused: cheaper and quicker. Only what has been added since is read at full cost.",
+          "say": { "left": "Read the timeline file." },
+          "mood": { "right": "read" },
+          "stack": ["sys", "tools", "q1", "a1", "q2:new"],
+          "send": { "n": 2, "cached": 3 }
+        },
+        {
+          "caption": "Third request: the same again. The unchanged beginning is longer now, so more is reused. The new end (the file, an answer, your message) is read at full cost.",
+          "say": { "left": "Who decided what?" },
+          "mood": { "right": "read" },
+          "stack": ["sys", "tools", "q1", "a1", "q2", "file", "a2", "q3:new"],
+          "send": { "n": 3, "cached": 5 }
+        },
+        {
+          "caption": "What the cache changed: cost and time. Over the same three requests the model read 12 blocks at full cost instead of 24. The reused part is usually charged at a lower rate, not at nothing; how much lower differs from one service to another.",
+          "stack": ["sys", "tools", "q1", "a1", "q2", "file", "a2", "q3:new"],
+          "send": { "n": 3, "cached": 5 }
+        },
+        {
+          "caption": "What it did not change: the conversation is exactly as long. All of it still travels with every request, the model still works from all of it, and all of it still counts against a fixed limit, the context window. A cache makes a long context cheaper. It does not make it shorter.",
+          "mood": { "right": "idle" },
+          "stack": ["sys", "tools", "q1", "a1", "q2", "file", "a2", "q3:new"],
+          "send": { "n": 3, "cached": 5 }
+        },
+        {
+          "caption": "And a cache only matches an unchanged beginning. Change something early (here, one line of the instructions) and everything after it is read at full cost again. Leave the conversation alone for long enough and the cache expires: the next request starts cold.",
+          "say": { "left": "And tomorrow?" },
+          "mood": { "right": "read" },
+          "stack": ["sys:changed", "tools", "q1", "a1", "q2", "file", "a2", "q3", "a3", "q4:new"],
+          "send": { "n": 4, "cached": 0 }
+        }
+      ]
+    }
+  ],
+  "simplifies": [
+    "Blocks are an illustration. Real context is counted in tokens (pieces of words), and one file can outweigh a hundred messages. No size here was measured from a real conversation.",
+    "One turn is drawn as one request. A turn in which the assistant uses tools is several requests, each carrying the whole context so far, so the re-reading is greater than drawn.",
+    "The cache is drawn as all or nothing per block. Real caches differ from one service to another: what can be cached, the smallest size, how long it is kept, whether you must ask for it, and what a reused part costs. None of those details is stated here.",
+    "\"Read at full cost\" and \"reused\" describe cost and time. With or without a cache the model's answer depends on the whole context it was sent."
+  ]
+}
