@@ -58,7 +58,9 @@
         fetch(href).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text() }).then(function (t) {
             var shown = t; if (/\.json(\?|#|$)/.test(href)) { try { shown = JSON.stringify(JSON.parse(t), null, 1) } catch (e) { } }
             var page = /\.md(\?|#|$)/.test(href) ? href.replace(/(^|\/)README\.md/, '$1index.html').replace(/\.md/, '.html') : ''
-            box.innerHTML = '<p><b>' + esc(label || href.split('/').pop()) + '</b></p><p class="pn-meta">' + t.length.toLocaleString('en-GB') + ' characters' + (shown.length > 30000 ? ' (the first 30,000 shown)' : '') + ' · <a href="' + esc(href) + '" data-raw="1">the file itself</a>' + (page ? ' · <a href="' + esc(page) + '">its page</a>' : '') + '</p><pre>' + esc(shown.slice(0, 30000)) + '</pre>'
+            var root = new URL(base, location.href), rel = ''; try { var uu = new URL(href, location.href); if (uu.pathname.indexOf(root.pathname) === 0) rel = uu.pathname.slice(root.pathname.length) } catch (e) { }
+            var viewer = rel && /\.json$/.test(rel) ? base + 'view/?path=' + encodeURIComponent(rel) : ''
+            box.innerHTML = '<p><b>' + esc(label || href.split('/').pop()) + '</b></p><p class="pn-meta">' + t.length.toLocaleString('en-GB') + ' characters' + (shown.length > 30000 ? ' (the first 30,000 shown)' : '') + ' · <a href="' + esc(href) + '" data-raw="1">the file itself</a>' + (page ? ' · <a href="' + esc(page) + '">its page</a>' : '') + (viewer ? ' · <a href="' + esc(viewer) + '">in the file viewer</a>' : '') + '</p><pre>' + esc(shown.slice(0, 30000)) + '</pre>'
             box.scrollIntoView({ block: 'nearest' })
         }).catch(function () { box.innerHTML = '<p class="pn-meta">Could not read <a href="' + esc(href) + '" data-raw="1">' + esc(href) + '</a>.</p>' })
     }

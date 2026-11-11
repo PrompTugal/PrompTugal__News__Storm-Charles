@@ -82,37 +82,41 @@ const titleOf = (md, fallback) => (md.match(/^#\s+(.+)$/m) || [, fallback])[1].r
 
 // ---------------------------------------------------------------- the page frame
 const up = rel => '../'.repeat(rel.split('/').length - 1) || './'
-// the menu: subsites on the first row, the pages of the subsite you are in on the second (incident.designer@, design/round-30.md;
-// RESTRUCTURE.md). A page is listed only when its source exists in the repository, so a section appears the push its owner ships it.
+// the menu: subsites on the first row, the pages of the subsite you are in on the second, breadcrumbs under them
+// (incident.designer@, design/round-34.md; RESTRUCTURE.md and Dinis's 02:20 note). page() leaves a mark; the LAST step of the build fills
+// it, when every page exists, so a link is listed only where its page was really built: no dead link, and nobody edits this file to appear.
 const INCP = 'incidents/2026-11-10-storm-charles/'
 const MENU = [
-    ['Weather', [['Storm Charles', 'index.html'], ['The same page at /weather/', 'weather/index.html']]],
-    ['Data room', [['Front page', 'data-room/index.html'], ['Dashboard', INCP + 'index.html'], ['Timeline', INCP + 'timeline.html'], ['Decisions', INCP + 'decisions.html'], ['Data', 'datasets.html'], ['Query', 'data/query/index.html'], ['Graph', 'app/graph/index.html'], ['Library', 'library/index.html']]],
-    ['Sources', [['Sources', 'sources/index.html'], ['IPMA', 'sources/ipma/index.html'], ['MeteoAlarm', 'sources/meteoalarm/index.html']]],
-    ['Evidence', [['Evidence', 'evidence/index.html']]],
-    ['Entities', [['Entities', 'entities/index.html']]],
+    ['Weather', [['Storm Charles', 'index.html']]],
+    ['Stories', [['Stories', 'stories/index.html']]],
+    ['Data room', [['Front page', 'data-room/index.html'], ['Dashboard', INCP + 'index.html'], ['Timeline', INCP + 'timeline.html'], ['Decisions', INCP + 'decisions.html'], ['Data', 'datasets.html'], ['Query', 'data/query/index.html'], ['Graph', 'app/graph/index.html'], ['Ontology', 'app/graph/ontology/index.html'], ['Lead times', 'app/graph/lead-times/index.html'], ['Entities', 'entities/index.html'], ['Library', 'library/index.html']]],
+    ['Sources', [['Sources', 'sources/index.html'], ['IPMA', 'sources/ipma/index.html'], ['MeteoAlarm', 'sources/meteoalarm/index.html'], ['Meteorology', 'meteorology/index.html'], ['Wayback', 'evidence/index.html']]],
+    ['Research', [['Media', 'research/media/index.html'], ['Media charts', 'research/media/charts.html'], ['Social', 'research/social/index.html'], ['Wikipedia', 'research/wikipedia/index.html'], ['Weather sites', 'research/weather-sites/index.html'], ['Studies', 'research/weather-sites/studies/index.html'], ['Shadow', 'shadow/index.html'], ['Models', 'models/index.html']]],
     ['Labs', [['Labs', 'labs/index.html']]],
-    ['Board', [['Board', 'board/index.html']]],
-    ['Studio', [['Studio', 'studio/index.html']]],
-    ['Research', [['Media', 'research/media/index.html'], ['Social', 'research/social/index.html'], ['Wikipedia', 'research/wikipedia/index.html'], ['Weather sites', 'research/weather-sites/index.html']]],
-    ['Team', [['Agents', 'agents/index.html'], ['Jobs', 'agents/JOBS.html'], ['Log in', 'account/index.html'], ['Contribute', 'contribute.html']]],
+    ['Studio', [['Studio', 'studio/index.html'], ['Cast', 'studio/cast/index.html']]],
+    ['Team', [['Agents', 'agents/index.html'], ['Jobs', 'app/agents/jobs.html'], ['Jobs, the table', 'agents/JOBS.html'], ['Board', 'board/index.html'], ['For Dinis', 'board/for-dinis.html'], ['CI', 'ci/index.html'], ['Log in', 'account/index.html'], ['Contribute', 'contribute.html'], ['Launch draft', 'outreach/launch.html']]],
     ['Help', [['Help', 'help/index.html'], ["What's new", 'news/index.html']]],
     ['About', [['Brief', 'BRIEF.html'], ['Restructure', 'RESTRUCTURE.html'], ['Design', 'design/index.html'], ['LLMs', 'llms.txt']]]
 ]
-const HAS_LENS_CSS = fs.existsSync(path.join(ROOT, 'app/lens/lens.css')), HAS_LENS_JS = fs.existsSync(path.join(ROOT, 'app/lens/lens.js'))
-const GENERATED = new Set(['index.html', 'data-room/index.html', 'datasets.html', 'llms.txt', 'library/index.html'])
-const hasPage = t => GENERATED.has(t) || fs.existsSync(path.join(ROOT, t)) || fs.existsSync(path.join(ROOT, t.replace(/index\.html$/, 'README.md'))) || fs.existsSync(path.join(ROOT, t.replace(/\.html$/, '.md')))
-const MENU_LIVE = MENU.map(([name, items]) => [name, items.filter(([, t]) => hasPage(t))]).filter(([, items]) => items.length)
-function menu(rel, u) {
+const REPO = 'https://github.com/PrompTugal/PrompTugal__News__Storm-Charles'
+let MENU_LIVE = null
+function menu(rel, u, title) {
+    if (!MENU_LIVE) MENU_LIVE = MENU.map(([name, items]) => [name, items.filter(([, t]) => fs.existsSync(path.join(OUT, t)))]).filter(([, items]) => items.length)
     const dir = t => t.replace(/[^/]*$/, '')
     // the subsite of a page: an exact address first, else the longest folder it sits under
     let active = MENU_LIVE.find(([, items]) => items.some(([, t]) => t === rel)), best = 0
     if (!active) for (const s of MENU_LIVE) for (const [, t] of s[1]) { const d = dir(t); if (d && rel.startsWith(d) && d.length > best) { best = d.length; active = s } }
     if (!active) active = MENU_LIVE.find(([n]) => n === 'Data room') || MENU_LIVE[0]
+    const here = active[1].find(([, t]) => t === rel)
     const a = ([label, t], cur) => `<a href="${u}${t}"${cur ? ' aria-current="page"' : ''}>${esc(label)}</a>`
-    return `<nav class="sites" aria-label="Subsites">${MENU_LIVE.map(s => `<a href="${u}${s[1][0][1]}"${s === active ? ' aria-current="true"' : ''}>${esc(s[0])}</a>`).join('')}</nav>
+    const nav = `<nav class="sites" aria-label="Subsites">${MENU_LIVE.map(s => `<a href="${u}${s[1][0][1]}"${s === active ? ' aria-current="true"' : ''}>${esc(s[0])}</a>`).join('')}</nav>
 <nav class="top" aria-label="${esc(active[0])}"><span class="navg"><b>${esc(active[0])}</b>${active[1].map(i => a(i, i[1] === rel)).join('')}</span></nav>`
+    const crumbs = rel === 'index.html' ? '' : `<nav class="crumbs" aria-label="Where you are"><div class="wrap"><a href="${u}index.html">Storm Charles</a><span>›</span><a href="${u}${active[1][0][1]}">${esc(active[0])}</a>${here && here[1] === active[1][0][1] ? '' : `<span>›</span><b>${esc(here ? here[0] : title)}</b>`}</div></nav>`
+    return { nav, crumbs }
 }
+const MENU_MARK = (rel, u, title) => `<!--menu:${Buffer.from(JSON.stringify([rel, u, title])).toString('base64')}-->`
+const HAS_LENS_CSS = fs.existsSync(path.join(ROOT, 'app/lens/lens.css')), HAS_LENS_JS = fs.existsSync(path.join(ROOT, 'app/lens/lens.js'))
+const HAS_NEWS = fs.existsSync(path.join(ROOT, 'news/README.md')) || fs.existsSync(path.join(ROOT, 'news/index.md'))
 function page({ rel, title, body, desc = '', twin = '', extraHead = '' }) {
     const u = rel === '404.html' ? '/' : up(rel)   // the 404 page is served at any depth: its links are absolute
     return `<!doctype html>
@@ -131,10 +135,10 @@ ${twin ? `<link rel="alternate" type="text/markdown" href="${esc(twin)}">` : ''}
 ${extraHead}
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span><a class="ver" href="${u}version.json" title="This version: what was built, from which commit, when">${esc(VERSION)}</a><button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
-${menu(rel, u)}</div></header>
+<header class="top"><div class="wrap"><a class="brand" href="${u}index.html">Storm <b>Charles</b> · PrompTugal</a><span class="live">Live</span><a class="ver" href="${u}${HAS_NEWS ? 'news/index.html' : 'version.json'}" title="This version: what changed, what was built, when">${esc(VERSION)}</a><a class="ver repo" href="${REPO}" title="The repository this site is built from (leaves this site)">repo</a><button type="button" class="theme" id="panel-btn" hidden aria-controls="panel" aria-expanded="false">Panel</button>
+${MENU_MARK(rel, u, title)}</div></header>
 <div class="notice"><div class="wrap"><strong>Not a warning service.</strong> Follow <a href="https://www.ipma.pt/">IPMA</a>, <a href="https://prociv.gov.pt/">ANEPC</a> and your local authorities. We aggregate public sources, each with its source and the time we read it.</div></div>
-<div class="shell" id="shell"><div class="shell-main">
+<!--crumbs--><div class="shell" id="shell"><div class="shell-main">
 ${body}
 </div><aside class="panel" id="panel" hidden aria-label="The reader's panel" data-base="${u}" data-version="${esc(VERSION)}"${twin ? ` data-twin="${esc(twin)}"` : ''}>
 <p class="pn-top"><b>The reader's panel</b><button type="button" id="panel-close" aria-label="Close the panel">Close ×</button></p>
@@ -582,7 +586,7 @@ const spoken = (an?.updates || []).flatMap(u => u.press_quoting_ipma || []).filt
 const voice = spoken.map(q => `<details class="voice"><summary><span class="lbl l-voice">said on air</span> <b>${esc(q.who || '')}</b>, ${esc(q.outlet || '')}${ok(q.entry_utc) ? `, ${wd(q.entry_utc)} ${hm(q.entry_utc)}` : ''}. Spoken, as reported by the outlet: <b>not in IPMA's written record</b> (its warnings and communiqués).</summary>${q.quotes_pt.map(t => `<blockquote lang="pt">${esc(t)}</blockquote>`).join('')}<p class="prov">${q.url ? `<a href="${esc(q.url)}">${esc(q.outlet || 'source')}</a>` : esc(q.outlet || '')}, read ${hm(q.read_utc)} UTC ${dm(q.read_utc)}${q.note ? `. Our reading: ${esc(q.note)}` : ''}</p></details>`).join('')
 const feed = (sig?.items || []).slice().sort((a, b) => T(b.at) - T(a.at)).slice(0, 14).map(s => {
     const src = (s.sources || []).find(x => x.url && /^https:/.test(x.url)), via = (s.sources || []).map(x => x.label).filter(Boolean).join('; ')
-    return `<li><a class="when" href="${base}timeline.html${s.id ? '#' + esc(s.id) : ''}" title="This signal in the timeline"><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time></a><div><span class="lbl ${esc(s.kind)} l-${esc(s.label || '')}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${src ? `<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via)}</span></div></li>`
+    return `<li><a class="when" href="${base}timeline.html${s.id ? '#' + esc(s.id) : ''}" title="This signal in the timeline"><time datetime="${esc(s.at)}">${esc(hm(s.at))}<small>${esc(dm(s.at))}</small></time></a><div><span class="lbl ${esc(s.kind)} l-${esc(s.label || '')}">${esc(s.label || s.kind)}</span>${s.decision || s.key ? '<strong>' : ''}${esc(s.text)}${s.decision || s.key ? '</strong>' : ''}<span class="via">${(() => { const ev = src && (s.evidence || []).find(e => e.url === src.url && e.page); return src ? `${ev ? `<a href="${esc(ev.page)}">our capture</a>, then ` : ''}<a href="${esc(src.url)}">${esc(src.label)}</a>` : esc(via) })()}</span></div></li>`
 }).join('')
 const th = chg?.thursday || {}, thu = th.lisbon_warnings_touching_thursday?.items || [], tm = th.ipma_model_thursday_morning, td = th.ipma_daily_thursday, tt = th.taf_groups_into_thursday
 const thuRows = [
@@ -593,7 +597,7 @@ const thuRows = [
     ...(tt?.groups || []).map(g => `<li><span>Airport, ${rng(g.from_utc, g.to_utc)}: <b>${gtxt(g)}</b></span>${prov(tt.source, `TAF LPPT ${hm(tt.taf_issue_utc)}`, tt.read_utc)}</li>`)
 ].join('')
 const front = `<section class="banner"><div class="wrap hero"><div class="hero-h"><p class="kicker">${esc(inc.kicker || 'Storm Charles · Lisbon')}</p><h1>${esc(inc.headline.text)}</h1>
-<p class="src"><span class="lbl official">decision · ${esc(inc.headline.label || 'fact')}</span> Source: <a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}.</p><p class="stand">${esc(inc.standfirst || '')}</p>${voice}</div>
+<p class="src"><span class="lbl official">decision · ${esc(inc.headline.label || 'fact')}</span> Source: ${inc.headline.evidence ? `<a href="${esc(inc.headline.evidence)}">our capture of it</a>, then ` : ''}<a href="${esc(inc.headline.url)}">${esc(inc.headline.source)}</a>, ${esc(inc.headline.at)}.</p><p class="stand">${esc(inc.standfirst || '')}</p>${voice}</div>
 <div class="hero-w"><section class="wx-tiles" aria-label="What is warned, when, where: IPMA, Lisbon district">${tiles.join('') || '<p class="meta">No warning above green read for the Lisbon district.</p>'}</section>
 ${lis.some(w => ok(w.sent_utc)) ? `<p class="wx-cap">The times IPMA sent each warning are read from IPMA's messages on <a href="https://www.meteoalarm.org">MeteoAlarm</a> (EUMETNET). Time delays between this website and the www.meteoalarm.org website are possible. For the most up-to-date awareness information as published by the participating National Meteorological and Hydrological Services, please refer to <a href="https://www.meteoalarm.org">www.meteoalarm.org</a>. Our copy is a dated record, read about every 5 to 30 minutes (last read ${hm(warn.read_utc)} UTC ${dm(warn.read_utc)}), not a live feed.</p>` : ''}</div></div></section>
 <div class="wrap">
@@ -678,5 +682,13 @@ write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="htt
 write('version.json', JSON.stringify({ version: VERSION, commit: process.env.GITHUB_SHA || '', pushed_at: process.env.PUSHED_AT || '', built_at: builtAt }, null, 2) + '\n')
 write('version.txt', VERSION + '\n')
 write('404.html', page({ rel: '404.html', title: 'Not found', body: `<main class="doc nf"><div class="wrap"><article><p class="kicker">404</p><h1>No page at this address</h1><p class="nf-path" id="nf-path"></p><p>Pages here are files in a public repository, so an address can change when a file moves. The facts have not gone: every row of the timeline and every dataset keeps its own address.</p><ul class="nf-go"><li><a href="/"><b>The weather</b><span>what is warned now, in a page for anyone</span></a></li><li><a href="/data-room/index.html"><b>The data room</b><span>what is warned, what is decided, hour by hour, with every source</span></a></li><li><a href="/${base}timeline.html"><b>The timeline</b><span>every signal and decision, each with its source</span></a></li><li><a href="/datasets.html"><b>The data</b><span>every file, its size and when it was read</span></a></li><li><a href="/library/index.html"><b>The library</b><span>the catalogue of everything on this site</span></a></li><li><a href="/llms.txt"><b>For agents</b><span>llms.txt and the API catalogue</span></a></li></ul><p class="meta">Not a warning service: for the weather itself, <a href="https://www.ipma.pt/">IPMA</a> and <a href="https://prociv.gov.pt/">ANEPC</a>.</p></article></div></main>` }))
+{
+    const all = []; const wk = d => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); e.isDirectory() ? wk(f) : e.name.endsWith('.html') && all.push(f) } }; wk(OUT)
+    for (const f of all) {
+        const h = fs.readFileSync(f, 'utf8'), m = h.match(/<!--menu:([A-Za-z0-9+/=]+)-->/); if (!m) continue
+        const [rel, u, title] = JSON.parse(Buffer.from(m[1], 'base64').toString('utf8')), { nav, crumbs } = menu(rel, u, title)
+        fs.writeFileSync(f, h.replace(m[0], () => nav).replace('<!--crumbs-->', () => crumbs))
+    }
+}
 write('.nojekyll', '')
 console.log(`build: ${pages.length} pages, ${datasets.length} datasets, ${files.length} files, ${Date.now() - t0} ms -> _site/ (${VERSION})`)
