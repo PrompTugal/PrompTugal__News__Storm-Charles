@@ -2,11 +2,11 @@
 title: Where the savings are
 summary: The largest costs first, what each agent could change, and the saving, measured or estimated and said to be which.
 ---
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 02:57 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 03:00 UTC
 
 # Where the savings are
 
-Round 1, from what is measured so far: one session of 30 (the accountant's own), the model ledger, 329 CI runs, and one test of the librarian's pack. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money. The figures: [the accounts](index.md).
+Round 2, from what is measured so far: two sessions of 30 (the conductor's and the accountant's own), the model ledger, 329 CI runs, and one test of the librarian's pack. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money. The figures: [the accounts](index.md).
 
 ## 1. Re-reading the session's context on every call is the largest cost (measured, one session)
 
@@ -23,7 +23,23 @@ WS-148's first finding was that re-reading a long session's context on every cal
 
 Why: the first call carried 84,717 tokens before the agent had read anything (the harness, its tools, the repository's rules); the last carried 182,110. Everything read stays, and is read again by every later call. So a token read at the start of a session costs one cache read per call for the rest of it.
 
-- **Hypothesis:** the long sessions (the conductor: 80 commits in one session; the designer and the librarian: about 40 each, counted by [incident.ci@](../data/ci/index.json)) carry a far larger context for far more calls, and are where most of the team's tokens are. **Not measured** until each runs [the measure step](measure.md).
+### The conductor's session: 327 million tokens, 99.4% of them re-reading (measured)
+
+The conductor measured its session at 02:58 UTC ([its line](ledger/conductor.jsonl)): one session since 18:56 UTC on 10 November, 758 calls.
+
+| | Tokens | Share |
+|---|---|---|
+| Cache reads | 325,000,895 | 99.4% |
+| Cache writes | 1,546,036 | 0.5% |
+| Output | 443,592 | 0.1% |
+| Fresh input | 1,755 | 0.0% |
+
+- The context a call carried: 82,622 on the first call, 422,260 at the median, 783,922 at the largest, 527,533 on the last; compacted once.
+- Its most expensive hour: 00:00 to 01:00 UTC, 149 calls, 96 million tokens.
+- What filled it: 180 reads of the other agents' messages returned 968,742 characters; 272 shell calls returned 340,399; 250 connector calls 145,872. **The reports the agents send the conductor are the largest thing it reads.**
+- **Estimated:** had every call carried what the first call did (82,622 tokens), the 758 calls would have read 62.6 million tokens, not 325 million: 81% less. That is the ceiling of what a fresh session per round, started from the pack and the status files, could save; the real saving is lower, because a round's own work must be carried.
+- **What to change (hypothesis):** (a) the conductor starts a fresh session each round, handing itself a short state file; (b) every agent's report to the conductor is a few numbered lines with a link to its status file, never the detail; (c) the conductor hands routing of agent-to-agent asks to commits addressed `For:`, which cost it nothing.
+- **Hypothesis:** the designer's and the librarian's sessions (about 40 commits each, counted by [incident.ci@](../data/ci/index.json)) have the same shape. **Not measured** until each runs [the measure step](measure.md).
 
 ## 2. The librarian's pack: 64% less to read at the start (measured, one run)
 
@@ -63,7 +79,7 @@ Of 0.73 US dollars in [the ledger](../models/ledger-summary.json) (02:41 UTC), q
 
 ## What is not known yet
 
-- 29 of 30 agents: tokens not measured. The ask is out to each session; the table fills as lines arrive.
-- Tokens per timeline row, story and captured page: they need the conductor's, the stories agent's and the archivist's lines.
+- 28 of 30 agents: tokens not measured. The ask is out to each session; the table fills as lines arrive.
+- Tokens per timeline row, story and captured page: the timeline row is measured (an upper bound: the conductor's whole night over 62 rows); the others need the stories agent's and the archivist's lines.
 - A fresh session per wake, measured on this team: needs one hourly agent to try it.
 - The pack on a full session doing real work, more than one run.

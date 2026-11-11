@@ -1,7 +1,7 @@
 {
  "about": "Tokens each agent's own session has used, by the WS-148 method: an agent runs tools/accounts-measure.mjs in its own session and commits one line of numbers to accounts/ledger/<role>.jsonl (fresh input, output, cache writes, cache reads; no message text). Only the agent can measure its session. Where no line exists the cell says \"not measured\". Tokens, not money: no price is applied.",
  "by": "incident.accountant@web-summit.dinis",
- "updated": "2026-11-11T02:57:38Z",
+ "updated": "2026-11-11T03:00:11Z",
  "method": {
   "tool": "tools/accounts-measure.mjs",
   "from": "WS-148, people/indi/accountant/measure.mjs in SGit-AI/SGit-AI__Website__Web-Summit",
@@ -14,48 +14,145 @@
  },
  "coverage": {
   "agents": 30,
-  "measured": 1,
-  "not_measured": 29,
+  "measured": 2,
+  "not_measured": 28,
   "source": "agents/policy.json and data/agents/sessions.json for who exists; accounts/ledger/ for who has measured"
  },
  "team_measured": {
-  "calls": 27,
-  "fresh_input": 52,
-  "output": 36917,
-  "cache_writes": 294116,
-  "cache_reads": 3201416,
-  "all": 3532501,
-  "cache_reads_share": 0.9063,
-  "weighted": 651227,
+  "calls": 785,
+  "fresh_input": 1807,
+  "output": 480509,
+  "cache_writes": 1840152,
+  "cache_reads": 328202311,
+  "all": 330524779,
+  "cache_reads_share": 0.993,
+  "weighted": 35142699,
   "kind": "measured",
-  "note": "the sum of the 1 measured of 30 agents; not the team's total"
+  "note": "the sum of the 2 measured of 30 agents; not the team's total"
  },
  "most_expensive_hour": {
-  "hour": "2026-11-11T02:00Z",
-  "calls": 23,
-  "fresh_input": 44,
-  "output": 34896,
-  "cache_writes": 112558,
-  "cache_reads": 3073797,
+  "hour": "2026-11-11T00:00Z",
+  "calls": 149,
+  "fresh_input": 370,
+  "output": 56887,
+  "cache_writes": 165332,
+  "cache_reads": 95826684,
   "agents": [
-   "accountant"
+   "conductor"
   ],
-  "weighted": 454878,
+  "weighted": 9805257,
   "kind": "measured",
-  "note": "among the 1 measured agents only"
+  "note": "among the 2 measured agents only"
  },
  "by_hour": [
   {
-   "hour": "2026-11-11T02:00Z",
-   "calls": 23,
-   "fresh_input": 44,
-   "output": 34896,
-   "cache_writes": 112558,
-   "cache_reads": 3073797,
+   "hour": "2026-11-10T18:00Z",
+   "calls": 27,
+   "fresh_input": 54,
+   "output": 10528,
+   "cache_writes": 77896,
+   "cache_reads": 3085356,
    "agents": [
-    "accountant"
+    "conductor"
    ],
-   "weighted": 454878
+   "weighted": 397014
+  },
+  {
+   "hour": "2026-11-10T19:00Z",
+   "calls": 47,
+   "fresh_input": 95,
+   "output": 41899,
+   "cache_writes": 105384,
+   "cache_reads": 10016671,
+   "agents": [
+    "conductor"
+   ],
+   "weighted": 1149045
+  },
+  {
+   "hour": "2026-11-10T20:00Z",
+   "calls": 26,
+   "fresh_input": 62,
+   "output": 13822,
+   "cache_writes": 29374,
+   "cache_reads": 6894325,
+   "agents": [
+    "conductor"
+   ],
+   "weighted": 732691
+  },
+  {
+   "hour": "2026-11-10T21:00Z",
+   "calls": 85,
+   "fresh_input": 180,
+   "output": 61035,
+   "cache_writes": 118982,
+   "cache_reads": 29235358,
+   "agents": [
+    "conductor"
+   ],
+   "weighted": 3103733
+  },
+  {
+   "hour": "2026-11-10T22:00Z",
+   "calls": 12,
+   "fresh_input": 25,
+   "output": 3934,
+   "cache_writes": 14841,
+   "cache_reads": 4877527,
+   "agents": [
+    "conductor"
+   ],
+   "weighted": 506553
+  },
+  {
+   "hour": "2026-11-10T23:00Z",
+   "calls": 112,
+   "fresh_input": 251,
+   "output": 70171,
+   "cache_writes": 514006,
+   "cache_reads": 54597092,
+   "agents": [
+    "conductor"
+   ],
+   "weighted": 6044137
+  },
+  {
+   "hour": "2026-11-11T00:00Z",
+   "calls": 149,
+   "fresh_input": 370,
+   "output": 56887,
+   "cache_writes": 165332,
+   "cache_reads": 95826684,
+   "agents": [
+    "conductor"
+   ],
+   "weighted": 9805257
+  },
+  {
+   "hour": "2026-11-11T01:00Z",
+   "calls": 76,
+   "fresh_input": 184,
+   "output": 30225,
+   "cache_writes": 126160,
+   "cache_reads": 39463248,
+   "agents": [
+    "conductor"
+   ],
+   "weighted": 4102894
+  },
+  {
+   "hour": "2026-11-11T02:00Z",
+   "calls": 247,
+   "fresh_input": 578,
+   "output": 189987,
+   "cache_writes": 506619,
+   "cache_reads": 84078431,
+   "agents": [
+    "accountant",
+    "conductor"
+   ],
+   "weighted": 9105027
   }
  ],
  "agents": [
@@ -142,8 +239,68 @@
    "sessions_recorded": 1,
    "commits": 86,
    "commits_source": "data/ci/index.json",
-   "tokens": "not measured",
-   "why": "no line in accounts/ledger/conductor.jsonl yet: an agent can only measure its own session"
+   "kind": "measured",
+   "source": "accounts/ledger/conductor.jsonl",
+   "measured_at": "2026-11-11T02:58:41Z",
+   "sessions_measured": 1,
+   "lines": 1,
+   "tokens": {
+    "calls": 758,
+    "fresh_input": 1755,
+    "output": 443592,
+    "cache_writes": 1546036,
+    "cache_reads": 325000895,
+    "without_cache_reads": 1991383,
+    "all": 326992278,
+    "cache_reads_share": 0.9939,
+    "weighted": 34491473
+   },
+   "context_per_call": {
+    "first": 82622,
+    "median": 422260,
+    "largest": 783922,
+    "last": 527533
+   },
+   "compactions": 1,
+   "subagents": 0,
+   "first_call": "2026-11-10T18:56:43.267Z",
+   "last_call": "2026-11-11T02:58:40.252Z",
+   "per_commit": {
+    "weighted_tokens": 401064,
+    "kind": "measured tokens over commits counted by incident.ci@ (the two were read at different times)"
+   },
+   "tools": {
+    "ReadNotifications": {
+     "calls": 180,
+     "returned_chars": 968742
+    },
+    "Bash": {
+     "calls": 272,
+     "returned_chars": 340399
+    },
+    "connector tools": {
+     "calls": 250,
+     "returned_chars": 145872
+    },
+    "Write": {
+     "calls": 7,
+     "returned_chars": 1173
+    },
+    "SendUserFile": {
+     "calls": 2,
+     "returned_chars": 374
+    },
+    "Read": {
+     "calls": 8,
+     "returned_chars": 106
+    },
+    "ToolSearch": {
+     "calls": 2,
+     "returned_chars": 0
+    }
+   },
+   "last_task": "the night: lead, route, timeline, 30 agents started",
+   "quality": "pass"
   },
   {
    "agent": "incident.designer@web-summit.dinis",

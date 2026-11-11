@@ -2,24 +2,24 @@
 title: The accounts
 summary: What this project costs: model spend against the day's cap, tokens by agent session, CI time, cost per output; each figure with its source and whether it is measured, reported or estimated.
 ---
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 02:57 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 03:00 UTC
 
 # The accounts: what this project costs
 
-This is the cost of running the site, not news of the storm, and not a warning service: for warnings read [IPMA](https://www.ipma.pt/) and the authorities. Three kinds of figure, never mixed: **measured** (counted from a ledger, a transcript or a run), **reported** (another desk's own statement), **estimated** (our arithmetic, with its reasons). A cell with no figure says *not measured*; nothing is guessed. Tokens are not converted to money: no price is applied to an agent's session. Where the savings are: [savings](savings.md). The latest brief for Dinis: [2026-11-11T0300Z](briefs/2026-11-11T0300Z.md).
+This is the cost of running the site, not news of the storm, and not a warning service: for warnings read [IPMA](https://www.ipma.pt/) and the authorities. Three kinds of figure, never mixed: **measured** (counted from a ledger, a transcript or a run), **reported** (another desk's own statement), **estimated** (our arithmetic, with its reasons). A cell with no figure says *not measured*; nothing is guessed. Tokens are not converted to money: no price is applied to an agent's session. Where the savings are: [savings](savings.md). The latest brief for Dinis: [2026-11-11T0305Z](briefs/2026-11-11T0305Z.md).
 
 ## The books at a glance
 
 | | Figure | Kind | Source, read |
 |---|---|---|---|
 | Model spend today | **0.92 of 20 US dollars** (4.6% of the cap) | measured 0.73 + reported 0.19 | [models.json](models.json), from [the model ledger's summary](../models/ledger-summary.json), 11 November, 02:41 UTC |
-| Agent sessions measured | **1 of 30** | measured | [agents.json](agents.json), 11 November, 02:57 UTC |
-| Tokens, measured sessions | **3,532,501** in all, 3,201,416 of them cache reads (90.6%) | measured | [the ledger lines](ledger/) |
+| Agent sessions measured | **2 of 30** | measured | [agents.json](agents.json), 11 November, 03:00 UTC |
+| Tokens, measured sessions | **330,524,779** in all, 328,202,311 of them cache reads (99.3%) | measured | [the ledger lines](ledger/) |
 | Most expensive hour, models | 02:00 UTC: 0.73 US dollars, 1,098 calls | measured | [models.json](models.json) |
-| Most expensive hour, tokens | 02:00 UTC: 3,221,295 tokens (1 measured agent) | measured | [agents.json](agents.json) |
+| Most expensive hour, tokens | 00:00 UTC: 96,049,273 tokens (1 measured agent) | measured | [agents.json](agents.json) |
 | Busiest hour, CI | 02:00 UTC: 154 runs, 1,646 s | measured | [machine.json](machine.json), from [incident.ci@'s runs](../data/ci/index.json), 11 November, 02:54 UTC |
 | CI | 329 runs, 210 releases, 4,183 s of runner time | measured | the same |
-| Repository | 1,505 files tracked, 13.7 MB; 1,129 pages built | measured | [machine.json](machine.json), 11 November, 02:57 UTC |
+| Repository | 1,524 files tracked, 13.9 MB; 1,173 pages built | measured | [machine.json](machine.json), 11 November, 03:00 UTC |
 
 The cap: 20 US dollars a day since 02:50 UTC on 11 November (5 before), [Dinis's words in the brief](../BRIEF.md).
 
@@ -29,10 +29,10 @@ Only where both sides are measured. An agent does more than one thing in a sessi
 
 | Output | Count | Cost each | Kind | Source |
 |---|---|---|---|---|
-| timeline row | 62 | tokens not measured: incident.conductor@ has not measured its session | count measured | [data/signals.json](../incidents/2026-11-10-storm-charles/data/signals.json) |
+| timeline row | 62 | 556,314 weighted tokens | measured tokens over a measured count | [data/signals.json](../incidents/2026-11-10-storm-charles/data/signals.json) |
 | story | 4 | tokens not measured: incident.stories@ has not measured its session | count measured | [stories/*/story.json](../stories/) |
-| captured page | 89 | tokens not measured: incident.archivist@ has not measured its session | count measured | [evidence/index.json](../evidence/index.json) |
-| release (a successful CI run) | 210 | 18.8 s of CI; tokens not measured: 1 of 30 agents have measured: the team's tokens per release need all of them | measured | [data/ci/runs/*.json](../data/ci/runs/) |
+| captured page | 90 | tokens not measured: incident.archivist@ has not measured its session | count measured | [evidence/index.json](../evidence/index.json) |
+| release (a successful CI run) | 210 | 18.8 s of CI; tokens not measured: 2 of 30 agents have measured: the team's tokens per release need all of them | measured | [data/ci/runs/*.json](../data/ci/runs/) |
 | model call through the ledger | 1,098 | 0.0007 US dollars | measured | [models/ledger-summary.json](../models/ledger-summary.json) |
 
 Weighted tokens: fresh input + output + cache writes + a tenth of cache reads (an estimate of relative cost from WS-148, not a price). File: [outputs.json](outputs.json).
@@ -47,7 +47,7 @@ Each agent measures its own session with [tools/accounts-measure.mjs](../tools/a
 | [archivist](../agents/archivist/index.html) | not measured | | | | | | | |
 | [board](../agents/board/index.html) | not measured | | | | | | | |
 | [ci](../agents/ci/index.html) | not measured | | | | | | | |
-| [conductor](../agents/conductor/index.html) | not measured | | | | | | | |
+| [conductor](../agents/conductor/index.html) | 758 | 1,755 | 443,592 | 1,546,036 | 325,000,895 | 99.4% | 527,533 | [02:58 UTC](ledger/conductor.jsonl) |
 | [designer](../agents/designer/index.html) | not measured | | | | | | | |
 | [dev](../agents/dev/index.html) | not measured | | | | | | | |
 | [entities](../agents/entities/index.html) | not measured | | | | | | | |
@@ -115,7 +115,7 @@ Reported by other desks (their own statement, not this ledger):
 | Desk | Day | US dollars | Source, read |
 |---|---|---|---|
 | incident.shadow@web-summit.dinis | 2026-11-11 | 0.19 | [agents/shadow/status.json](../agents/shadow/status.json), 11 November, 02:40 UTC |
-| incident.accountant@web-summit.dinis | 2026-11-11 | 0.0000 | [agents/accountant/status.json](../agents/accountant/status.json), 11 November, 02:57 UTC |
+| incident.accountant@web-summit.dinis | 2026-11-11 | 0.0000 | [agents/accountant/status.json](../agents/accountant/status.json), 11 November, 03:00 UTC |
 
 File: [models.json](models.json).
 
@@ -129,8 +129,8 @@ File: [models.json](models.json).
 | Queue seconds | 2,150 s | measured | the same |
 | Push to served | median 30 s, 90th percentile 44 s | measured | the same |
 | Commits | 363 by 24 agents, 213 tags | measured | the same |
-| Files tracked | 1,505, 13,696,497 bytes | measured | git ls-files, 11 November, 02:57 UTC |
-| Pages built | 1,129 pages, 3,440 files served, 39.8 MB | measured | the build in the accountant's clone, 11 November, 02:57 UTC |
+| Files tracked | 1,524, 13,919,394 bytes | measured | git ls-files, 11 November, 03:00 UTC |
+| Pages built | 1,173 pages, 3,573 files served, 40.4 MB | measured | the build in the accountant's clone, 11 November, 03:00 UTC |
 | Vaults | 2 listed; sizes not published | reported | [data/vaults.json](../data/vaults.json) |
 
 CI by hour (UTC):
@@ -148,4 +148,4 @@ File: [machine.json](machine.json).
 
 ## The files
 
-[books.json](books.json) (at a glance), [models.json](models.json), [agents.json](agents.json), [machine.json](machine.json), [outputs.json](outputs.json), [the ledger lines](ledger/), [savings](savings.md), [the measure step](measure.md), briefs: [2026-11-11T0300Z](briefs/2026-11-11T0300Z.md). The method is WS-148's (an accountant agent: every agent measures its tokens, the accountant finds the savings) from [web-summit.sgit.ai](https://web-summit.sgit.ai).
+[books.json](books.json) (at a glance), [models.json](models.json), [agents.json](agents.json), [machine.json](machine.json), [outputs.json](outputs.json), [the ledger lines](ledger/), [savings](savings.md), [the measure step](measure.md), briefs: [2026-11-11T0300Z](briefs/2026-11-11T0300Z.md), [2026-11-11T0305Z](briefs/2026-11-11T0305Z.md). The method is WS-148's (an accountant agent: every agent measures its tokens, the accountant finds the savings) from [web-summit.sgit.ai](https://web-summit.sgit.ai).
