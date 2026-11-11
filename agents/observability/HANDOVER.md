@@ -1,6 +1,6 @@
 # Hand-over: incident.observability@web-summit.dinis
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 10:11 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 11:50 UTC
 
 For the next session that takes this name. The first session ran from 10 November 23:37 UTC to 11 November about 03:05 UTC and ended because it was carrying about 566,000 tokens of context on every call, not because the work was done. Read this, then [status.json](status.json), then [app/agents/about.md](../../app/agents/about.md) (what each page reads and what its words mean, written for readers). Then make your own session key, add its public half to `data/keys.json`, and put a `session` object in `status.json` (yours, not mine: id, started_at, started_by, started_by_session, on_whose_word, source).
 
@@ -57,6 +57,15 @@ In the browser the script also reads: each `agents/<role>/status.json` and `poli
 - `universe-adapter.js` replaces `window.LiveUniverse`'s four readers after `brain.js` loads, so the engine draws this team and asks its home site for nothing.
 
 Three things follow from not forking, each stated on the page: the engine's pause leaves its background flow moving, so **Stop is a gate on `requestAnimationFrame`** (`window.AgentsMotion`, at the top of `agents.js`, installed before any engine loads); the Universe's Circuit says "a written policy" where we mean a draft; the Universe keeps its own dark stage. `brain-libs.js` (1.6 MB, three.js) is never committed: it loads from web-summit.sgit.ai under a sha384 check, the same hash incident.graph@ uses; if Silvio's file changes, 3D and the Universe fail closed with a message, and the fix is a new hash after reading what changed. The two logos the live map shows on its home site are deliberately not copied (two 404s in the console; the engine hides them).
+
+## For the sixth session (written by the fifth, 11 November, 11:50 UTC)
+
+The fifth session (session_018yvwtMQ5aoHiSmnWrLz33S) began 10:16 UTC; its key is `incident-observability-dinis-5` (sha256:3882a2e38f7dd7ca): mark it handed over when you add yours, and move its `session` object into `earlier_sessions`. Its start reads put it at about 83,000 tokens a call; it passed 160,000 by 11:50.
+
+- **Done:** `/agents/live/` and `/agents/universe/` (Dinis ~10:10), pushed e73737c5: `agents/live/README.md` and `agents/universe/README.md` mount `data-view="live"` / `"universe"`; in `app/agents/agents.js` a `STAGE` box (class `ag-stage`) draws only that engine, wide and tall (`agents.css`, end), started on load; `draw()` returns early for these views after dispatching `agents-data` (no status files, runs, ledger or board). Linked from the intro of `/agents/` (`.ag-full-links`). incident.motion@ was told the addresses and to keep its own `AngeloLive.view` call in `app/flows/` with its own requestAnimationFrame gate.
+- **Page views:** vault keys arrive from the conductor as m1 lines sealed to your key; `node tools/lane-handover.mjs open '<line>'` writes `~/.incident-vaults/<id>.key`; clone with `cd ~/.incident-vaults/work && sgit clone - <id> < ../<id>.key`; drain with `OBS_DRAIN_DIR=$HOME/.incident-vaults/work/j7z16ln1 OBS_PUBLIC_DIR=$HOME/.incident-vaults/work/zd1cb3kt node tools/agents-views.mjs` (`SG_SEND_ACCESS_TOKEN` is in the environment). 11:24: 287 opened, 0 refused, 141 views in 97 visits.
+- **In progress at hand-over time, Dinis ~11:55 (BRIEF.md last section, routed by the conductor 11:46):** "the team at work" on the front page: `tools/agents-now.mjs` (an "after" generator writing `_site/data/agents/now.json`: agents working in the last hour, sources read with their read times, social posts counted not listed, feeds from `api/v1/index.json`), `app/agents/now.js` + `now.css` mounting into `<div id="team-at-work" data-base="…">`, demo at `/app/agents/now.html`. Then hand it to incident.weather@ (session_018yvwtQYMVvhqjVntBCKjaa), which places it below IPMA's warning band; incident.designer@ (session_018yvwtPDnWQ4g4gw4SqSVJ1) does the look. Check `status.json` and `git log` for how far it got.
+- **Hourly wake** at :14 is trig_01YMjYQHV1SVid4oEeJa3djh ("hourly (5)"), set by the conductor.
 
 ## First, for the fifth session: the Universe and the live map, each on its own page (Dinis, ~10:10)
 
