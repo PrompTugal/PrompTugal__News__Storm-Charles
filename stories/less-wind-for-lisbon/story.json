@@ -7,8 +7,8 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:25Z",
-  "updated": "2026-11-11T02:25Z",
-  "based_on_read_utc": "2026-11-11T01:51:55Z",
+  "updated": "2026-11-11T02:26Z",
+  "based_on_read_utc": "2026-11-11T02:22:46Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first. Each is resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser when the page opens.",
     "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
@@ -65,7 +65,7 @@
       "text": "IPMA has published no communiqué no. 3: at the last read, no. 2 is still the newest text on Charles in its feed.",
       "label": "fact",
       "said_by": "IPMA's communiqués feed",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "supports": [
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/communiques.json", "field": "items[0].title", "expect": "Chuva, vento e agitação marítima - Depressão CHARLES - Continente e Madeira - Comunicado nº2" },
         { "kind": "data", "file": "research/weather-sites/rereads.json", "field": "rereads[0].unchanged_at_the_authorities[0].what", "expect": "IPMA's communiqué is still no. 2 (valid 10 Nov 17:07 to 11 Nov 23:59)" }
@@ -77,7 +77,7 @@
       "label": "fact",
       "said_by": "IPMA, warning (CAP message through MeteoAlarm)",
       "at_utc": "2026-11-10T07:18:40Z",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "supports": [
         { "kind": "row", "id": "s-1110T0718" },
         { "kind": "edge", "id": "ipma-red-wind" },
@@ -104,7 +104,7 @@
       "text": "Since then IPMA has sent no message that lowers, shortens or lifts a Lisbon warning: the red wind warning is as it was sent at 07:18 on Tuesday.",
       "label": "fact",
       "said_by": "IPMA's warnings, as read",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "supports": [
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json", "field": "lisbon[type=Vento&level=red].end_utc", "expect": "2026-11-11T21:00:00Z" },
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json", "field": "lisbon_peak_level", "expect": "red" },
@@ -205,7 +205,7 @@
       "model": true,
       "said_by": "IPMA's automatic hourly forecast for Lisbon (a model's output, not a warning)",
       "at_utc": "2026-11-10T21:18:43Z",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "supports": [
         { "kind": "row", "id": "s-1110T2118" },
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json", "field": "hourly_runs[0].wed_peak.wind_mean_kmh", "expect": 48.6 },
@@ -220,7 +220,7 @@
       "model": true,
       "said_by": "MET Norway, Locationforecast 2.0 (a second model, never merged with IPMA)",
       "at_utc": "2026-11-11T01:19:09Z",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "supports": [
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json", "field": "second_models.met_no.rows[time_utc=2026-11-11T15:00Z].wind_mean_kmh", "expect": 58.3, "read_field": "second_models.met_no.read_utc", "url_field": "second_models.met_no.source" },
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json", "field": "second_models.met_no.rows[time_utc=2026-11-11T15:00Z].pressure_hpa", "expect": 987.7, "read_field": "second_models.met_no.read_utc" },
@@ -234,7 +234,7 @@
       "label": "evidence",
       "model": true,
       "said_by": "Open-Meteo, best match (a second model, never merged with IPMA)",
-      "read_utc": "2026-11-11T01:46:44Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "supports": [
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json", "field": "second_models.open_meteo.rows[time_utc=2026-11-11T14:00Z].wind_mean_kmh", "expect": 20.6, "read_field": "second_models.open_meteo.read_utc", "url_field": "second_models.open_meteo.source" },
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/forecast.json", "field": "second_models.open_meteo.rows[time_utc=2026-11-11T14:00Z].gust_kmh", "expect": 52.6, "read_field": "second_models.open_meteo.read_utc" },
@@ -247,7 +247,7 @@
       "label": "fact",
       "said_by": "IPMA, the TAF for Lisbon airport (a point forecast for pilots, not a public warning)",
       "at_utc": "2026-11-10T23:00Z",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "supports": [
         { "kind": "row", "id": "s-1110T2323" },
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/airport.json", "field": "taf.groups[change=TEMPO&gust_kt=45].gust_kmh", "expect": 83 },
@@ -262,7 +262,7 @@
       "model": true,
       "derived": true,
       "said_by": "this desk, setting three files side by side",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "derived_from": ["c14", "c15", "c16", "c4"],
       "supports": [
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/README.md", "note": "The data room's own note: the airport's gusts and the warning's gusts \"are not the same measure\"; second models are kept one block per source, \"never merged with IPMA\"." }
@@ -304,7 +304,7 @@
       "derived": true,
       "confidence": "not ours to set: a note that an input changed, for the meteorologist",
       "said_by": "this desk, setting the analysis beside the file it cites",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "derived_from": ["h1", "c15"],
       "supports": [
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/analysis.json", "field": "updates[written_utc=2026-11-11T00:05Z].for[2]", "expect": "met.no MSLP minimum 986.7 hPa at 17-18Z, +5 hPa in the next hour; ~160 deg swing in 1 h: near-overhead passage" },
@@ -318,7 +318,7 @@
       "label": "evidence",
       "derived": true,
       "said_by": "this desk, setting a headline beside a warning",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "derived_from": ["c11", "c4", "c6"],
       "supports": []
     },
@@ -328,31 +328,31 @@
       "label": "evidence",
       "derived": true,
       "said_by": "this desk, setting the spoken line beside IPMA's written channels",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "derived_from": ["c8", "c9", "c3", "c6"],
       "supports": []
     },
     {
       "id": "o1",
-      "text": "Nothing measured yet can test any of this: the red wind warning begins at 12:00 on Wednesday, and the last observations read are from 01:00 to 01:30.",
+      "text": "Nothing measured yet can test any of this: the red wind warning begins at 12:00 on Wednesday, and the last observations read are from 01:00 to 02:00.",
       "label": "fact",
       "said_by": "IPMA's stations and the airport's METAR, as read",
-      "read_utc": "2026-11-11T01:51:55Z",
+      "read_utc": "2026-11-11T02:22:46Z",
       "supports": [
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/stations.json", "field": "latest_hour_utc", "expect": "2026-11-11T01:00Z" },
-        { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json", "field": "observed_airport_latest.time_utc", "expect": "2026-11-11T01:30Z" },
+        { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json", "field": "observed_airport_latest.time_utc", "expect": "2026-11-11T02:00Z" },
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json", "field": "lisbon[type=Vento&level=red].start_utc", "expect": "2026-11-11T12:00:00Z" }
       ]
     },
     {
       "id": "o2",
-      "text": "At 01:30 the airport reported wind from 190° at 5 knots, no gust, and 1006 hPa. The strongest gust in the airport's reports we hold is 36 knots (67 km/h), on Tuesday at 11:00.",
+      "text": "At 02:00 the airport reported wind from 200° at 5 knots, no gust, and 1006 hPa. The strongest gust in the airport's reports we hold is 36 knots (67 km/h), on Tuesday at 11:00.",
       "label": "fact",
       "said_by": "Lisbon airport's METAR (issued by IPMA, read through NOAA's Aviation Weather)",
-      "at_utc": "2026-11-11T01:30Z",
-      "read_utc": "2026-11-11T01:46:44Z",
+      "at_utc": "2026-11-11T02:00Z",
+      "read_utc": "2026-11-11T02:20:18Z",
       "supports": [
-        { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json", "field": "observed_airport_latest.raw", "contains": ["110130Z 19005KT"], "read_field": "observed_airport_latest.read_utc" },
+        { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json", "field": "observed_airport_latest.raw", "contains": ["110200Z 20005KT"], "read_field": "observed_airport_latest.read_utc" },
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json", "field": "observed_airport_latest.pressure_hpa", "expect": 1006, "read_field": "observed_airport_latest.read_utc" },
         { "kind": "data", "file": "incidents/2026-11-10-storm-charles/data/weather/gusts-vs-forecast.json", "field": "observed_airport_max_gust.kmh", "expect": 67 }
       ]
@@ -384,6 +384,7 @@
     { "text": "How much wind Lisbon gets. That is for Wednesday's observations, from 12:00." }
   ],
   "record": [
-    { "at_utc": "2026-11-11T02:25Z", "what": "First telling, on the data read at 01:51:55 UTC: 26 claims. Lisbon's red wind and red rain warnings stand; no communiqué no. 3; three models in the data room disagree; nothing observed yet tests it.", "claims_added": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10", "c11", "c12", "c13", "c14", "c15", "c16", "c17", "c18", "h1", "h2", "h3", "g1", "g2", "o1", "o2", "o3"], "claims_changed": [], "by": "incident.stories@web-summit.dinis" }
+    { "at_utc": "2026-11-11T02:25Z", "what": "First telling, on the data read at 01:51:55 UTC: 26 sentences. Lisbon's red wind and red rain warnings stand; no communiqué no. 3; three models in the data room disagree; nothing observed yet tests it.", "claims_added": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10", "c11", "c12", "c13", "c14", "c15", "c16", "c17", "c18", "h1", "h2", "h3", "g1", "g2", "o1", "o2", "o3"], "claims_changed": [], "by": "incident.stories@web-summit.dinis" },
+    { "at_utc": "2026-11-11T02:26Z", "what": "Checked against the read of 02:22:46 UTC. Nothing moved at IPMA: the same warnings for Lisbon, the communiqué still no. 2. Nothing moved in the three models. The airport's latest report is now 02:00 (wind from 200° at 5 knots, 1006 hPa), so the two sentences on the observations were retold.", "claims_added": [], "claims_changed": ["o1", "o2"], "by": "incident.stories@web-summit.dinis" }
   ]
 }
