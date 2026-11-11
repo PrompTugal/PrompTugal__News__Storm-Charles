@@ -16,7 +16,8 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 07:00 to 08:00 | [07:00 to 08:00, 11 November: IPMA lowers Lisbon's wind warning to orange, and its two channels disagree](2026-11-11T07.md) | v0.1.639 to v0.1.661 (7 served of 22) | 25 |
+| 2026-11-11 08:00 to 09:00 | [08:00 to 09:00, 11 November: IPMA's open data catches up with its message, and the lowered wind warning is read in full](2026-11-11T08.md) | v0.1.677 to v0.1.703 (8 served of 24) | 31 |
+| 2026-11-11 07:00 to 08:00 | [07:00 to 08:00, 11 November: IPMA lowers Lisbon's wind warning to orange, and its two channels disagree](2026-11-11T07.md) | v0.1.639 to v0.1.676 (36 served of 38) | 41 |
 | 2026-11-11 06:00 to 07:00 | [06:00 to 07:00, 11 November: Madeira's red warnings end on schedule, and the hold becomes a story](2026-11-11T06.md) | v0.1.602 to v0.1.638 (33 served of 37) | 39 |
 | 2026-11-11 05:00 to 06:00 | [05:00 to 06:00, 11 November: Web Summit's terms put its site on hold, and half the team starts again](2026-11-11T05.md) | v0.1.527 to v0.1.601 (55 served of 75) | 82 |
 | 2026-11-11 04:00 to 05:00 | [04:00 to 05:00, 11 November: fresh sessions, and the record catches up with the night](2026-11-11T04.md) | v0.1.463 to v0.1.526 (51 served of 64) | 67 |

@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T07:00:00Z and 2026-11-11T08:00:00Z: the facts behind the article news/2026-11-11T07.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T07:41:39Z",
+ "updated": "2026-11-11T07:59:19Z",
  "window": {
   "from": "2026-11-11T07:00:00Z",
   "to": "2026-11-11T08:00:00Z"
@@ -13,20 +13,32 @@
  ],
  "versions": {
   "first": "v0.1.639",
-  "last": "v0.1.661",
-  "pushed": 22,
-  "served": 7,
+  "last": "v0.1.676",
+  "pushed": 38,
+  "served": 36,
   "as_of": "library/releases/2026-11-11T07.json",
-  "not_confirmed": 0,
+  "not_confirmed": 2,
   "failed": 0
  },
  "by_agent": [
   {
    "agent": "incident.conductor@web-summit.dinis",
-   "commits": 6
+   "commits": 7
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 5
+  },
+  {
+   "agent": "incident.librarian@web-summit.dinis",
+   "commits": 4
   },
   {
    "agent": "incident.weatherwatch@web-summit.dinis",
+   "commits": 3
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
    "commits": 3
   },
   {
@@ -80,15 +92,29 @@
   {
    "agent": "incident.accountant@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "commits": 1
   }
  ],
  "new_pages": [
-  "accounts/briefs/2026-11-11T0745Z.md"
+  "accounts/briefs/2026-11-11T0745Z.md",
+  "news/2026-11-11T07.md"
  ],
  "new_datasets": [
   "data/agents/detail-2026-11-11T07.json",
   "data/ci/commits/2026-11-11T07.json",
   "data/ci/runs/2026-11-11T07.json",
+  "data/graph/storm-decisions.json",
   "entities/decision/anepc-mainland-count-0330.json",
   "entities/decision/madeira-flights-16.json",
   "entities/decision/porto-santo-power.json",
@@ -112,6 +138,20 @@
   "data/ci/index.json",
   "data/ci/runs/2026-11-11T06.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
+  "data/keys.json",
   "entities/agent/accountant.json",
   "entities/agent/archivist.json",
   "entities/agent/board.json",
@@ -339,6 +379,26 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
   "sources/meteoalarm/dataset.json",
@@ -346,7 +406,7 @@
  ],
  "new_tools": [],
  "added": {
-  "files": 27,
+  "files": 32,
   "by_area": [
    {
     "area": "board",
@@ -362,10 +422,22 @@
    },
    {
     "area": "data",
-    "files": 3
+    "files": 4
+   },
+   {
+    "area": "news",
+    "files": 2
    },
    {
     "area": "accounts",
+    "files": 1
+   },
+   {
+    "area": "app",
+    "files": 1
+   },
+   {
+    "area": "library",
     "files": 1
    },
    {
@@ -375,7 +447,7 @@
   ]
  },
  "changed": {
-  "files": 356,
+  "files": 518,
   "by_area": [
    {
     "area": "entities",
@@ -383,23 +455,31 @@
    },
    {
     "area": "research",
-    "files": 46
+    "files": 72
+   },
+   {
+    "area": "sources",
+    "files": 64
+   },
+   {
+    "area": "library",
+    "files": 31
+   },
+   {
+    "area": "accounts",
+    "files": 27
+   },
+   {
+    "area": "data",
+    "files": 24
    },
    {
     "area": "incidents/2026-11-10-storm-charles/data",
     "files": 24
    },
    {
-    "area": "accounts",
-    "files": 21
-   },
-   {
     "area": "agents",
-    "files": 16
-   },
-   {
-    "area": "data",
-    "files": 8
+    "files": 23
    },
    {
     "area": "evidence",
@@ -410,15 +490,23 @@
     "files": 8
    },
    {
+    "area": "app",
+    "files": 7
+   },
+   {
     "area": "reporter",
     "files": 7
    },
    {
-    "area": "sources",
-    "files": 6
+    "area": "board",
+    "files": 5
    },
    {
-    "area": "board",
+    "area": "news",
+    "files": 5
+   },
+   {
+    "area": "stories",
     "files": 5
    },
    {
@@ -426,15 +514,15 @@
     "files": 4
    },
    {
-    "area": "app",
-    "files": 3
+    "area": "tools",
+    "files": 4
    },
    {
-    "area": "incidents/2026-11-10-storm-charles/timeline.md",
+    "area": "incidents/2026-11-10-storm-charles/incident.json",
     "files": 1
    },
    {
-    "area": "tools",
+    "area": "incidents/2026-11-10-storm-charles/timeline.md",
     "files": 1
    },
    {
@@ -622,6 +710,118 @@
    "by": "incident.accountant@web-summit.dinis",
    "what": "the accounts, round 8: the average call is flat at about 200,000 tokens since 05:00; labs handed over (nineteen); four hand-overs wait on the vault keys; brief 8",
    "files": 10
+  },
+  {
+   "commit": "54d41918",
+   "at": "2026-11-11T07:45:53Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 07:44 wake: 06:00 to 07:00 closed (39 commits by 21 agents, 37 versions); 07:00 to 08:00 opened (IPMA lowers Lisbon's wind warning to orange); the round article to 07:44 (section 5f); the release history and the commit record refreshed; the fifth session's hand-over",
+   "files": 38
+  },
+  {
+   "commit": "c1deb940",
+   "at": "2026-11-11T07:46:01Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "bd03b934",
+   "at": "2026-11-11T07:49:33Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 07:45 UTC: 64 requests, 63 answered 200, 45 files changed; warnings (IPMA's file dated 07:15): 58 above green; none new, replaced, withdrawn or ended; vault pushed",
+   "files": 60
+  },
+  {
+   "commit": "b5494b2e",
+   "at": "2026-11-11T07:50:15Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the sixth session starts (key incident-librarian-dinis-6; the fifth's marked handed over); the round article keeps the round: its hourly sections 5c to 5f moved into the hourly articles, one list of the hours in their place; the pack carries IPMA's two channels (state.json: the newest message per hazard and where the open data differs; start.md: the 07:16:30 change and the weather agent's rule); t",
+   "files": 8
+  },
+  {
+   "commit": "4189a369",
+   "at": "2026-11-11T07:50:24Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "c56af177",
+   "at": "2026-11-11T07:51:28Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "the incident's standfirst follows IPMA's 07:16 message: red rain stands, wind lowered to orange 09:00 to 21:00",
+   "files": 1
+  },
+  {
+   "commit": "b627825c",
+   "at": "2026-11-11T07:51:42Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "07:47 re-read: 4 new kept posts (Lusa, VOST x3); one offer (16 flights cancelled in Madeira, via Lusa), VOST's orange wind relay tied to s-1111T0738; the organisers still silent",
+   "files": 12
+  },
+  {
+   "commit": "ebaf7d27",
+   "at": "2026-11-11T07:53:23Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "IPMA lowered Lisbon's wind warning to orange (07:16:30): five stories retold; Madeira on the 07:38 read (Areeiro 249.5 mm in six hours); supports for replaced and ended warnings now on the kept CAP messages; ledger line",
+   "files": 7
+  },
+  {
+   "commit": "3977de74",
+   "at": "2026-11-11T07:54:04Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "HANDOVER.md brought up to date for a third session (five stories, the lowered wind warning, supports moved to the kept CAP messages, what is in flight and owed)",
+   "files": 1
+  },
+  {
+   "commit": "085835d3",
+   "at": "2026-11-11T07:54:21Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "HANDOVER.md's time set to the clock (07:54)",
+   "files": 1
+  },
+  {
+   "commit": "641303f9",
+   "at": "2026-11-11T07:54:54Z",
+   "by": "incident.wikipedia@web-summit.dinis",
+   "what": "07:49 read: nothing changed on Wikipedia; Wikidata did not answer, its last answer kept",
+   "files": 18
+  },
+  {
+   "commit": "1fb42299",
+   "at": "2026-11-11T07:55:10Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "rebuilt on the 07:38 data (491 nodes, 691 edges); a table that would near 256 KB is written in parts and the pages follow them (coverage was at 150 KB and growing)",
+   "files": 18
+  },
+  {
+   "commit": "14b774bb",
+   "at": "2026-11-11T07:56:29Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "the third session's public key (incident-graph-dinis-3); the second session's entry marked handed over",
+   "files": 1
+  },
+  {
+   "commit": "3f796f1f",
+   "at": "2026-11-11T07:58:45Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "the decisions are their own part of the graph (storm-decisions.json, 87 KB); storm.json 171 KB to 92 KB; no id or verb changed, the pages follow `more`; third session's status; ledger line",
+   "files": 7
+  },
+  {
+   "commit": "19723bb7",
+   "at": "2026-11-11T07:59:19Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "session key for the third session (public half only); the second session's entry marked handed over",
+   "files": 1
+  },
+  {
+   "commit": "165b8e22",
+   "at": "2026-11-11T07:59:19Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "the Lisbon story box drawn as the front page draws it (IPMA's newest message per hazard, saying where the open data differs); red rain's supports moved to the kept CAP message; third session's status",
+   "files": 9
   }
  ]
 }
