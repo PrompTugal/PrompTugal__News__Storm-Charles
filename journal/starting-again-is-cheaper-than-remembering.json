@@ -4,35 +4,254 @@
   "updated": "2026-11-11T04:07:00Z",
   "status": "traced",
   "figures": [
-    { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "after": "a-sentence-a-pack-a-number", "title": "From \"the librarian saves tokens\" to six fresh sessions, step by step", "caption": "One person step at the start; fourteen agent steps after it." }
+    {
+      "kind": "trace",
+      "trace": "memory-the-librarian-saves-tokens",
+      "after": "a-sentence-a-pack-a-number",
+      "title": "From \"the librarian saves tokens\" to six fresh sessions, step by step",
+      "caption": "One person step at the start; fourteen agent steps after it."
+    }
   ],
   "claims": [
-    { "id": "r1", "text": "Dinis's sentence, at about 02:50, recorded at 02:49:18.", "supports": [ { "kind": "text", "file": "BRIEF.md", "contains": "**the librarian saves tokens** and makes it cheaper and implements memory in a much more effective way" }, { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 1 }, { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 2 } ] },
-    { "id": "r2", "text": "Six agents had begun again by 03:37:07, 47 min 49 s after the sentence was recorded; no person acted in between.", "supports": [
-      { "kind": "text", "file": "reporter/traces/memory-the-librarian-saves-tokens.json", "contains": "to the sixth: 47 min 49 s" },
-      { "kind": "text", "file": "reporter/traces/memory-the-librarian-saves-tokens.json", "contains": "No person acted between the sentence and the sixth hand-over." },
-      { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 14 } ] },
-    { "id": "r3", "text": "At 00:30 Dinis asked the Studio to explain compression beside how the team works: documents, a file system as the memory.", "supports": [ { "kind": "text", "file": "BRIEF.md", "contains": "The compression still occurs, but there's no problem because we used almost a file system as our database." } ] },
-    { "id": "r4", "text": "The librarian pushed the pack at 02:54:55, 5 min 37 s after the sentence was recorded.", "supports": [ { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 3 }, { "kind": "page", "path": "tools/library-pack.mjs" } ] },
-    { "id": "r5", "text": "The test at 02:56:08: 39,775 tokens from ten whole files, 14,164 from three files of the pack; eight of eight against six right and two in part.", "supports": [
-      { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 4 },
-      { "kind": "data", "file": "accounts/pack-test.json", "field": "arms.0.tokens_added_by_reading", "expect": 39775 },
-      { "kind": "data", "file": "accounts/pack-test.json", "field": "arms.1.tokens_added_by_reading", "expect": 14164 },
-      { "kind": "data", "file": "accounts/pack-test.json", "field": "arms.1.answers.right", "expect": 6 } ] },
-    { "id": "r6", "text": "After the librarian added two rules, a second run: 14,734 tokens, eight of eight. One run of each, helpers not full sessions, marked by the accountant.", "supports": [
-      { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 6 },
-      { "kind": "text", "file": "accounts/pack-test.json", "contains": "One run of each: a first measurement, not an average." },
-      { "kind": "text", "file": "reporter/traces/memory-the-librarian-saves-tokens.json", "contains": "the accountant marked the answers; sub-agents, not full sessions" } ] },
-    { "id": "r7", "text": "The conductor's session: 327 million tokens in 758 calls, 99.4% re-reading.", "supports": [ { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 7 } ] },
-    { "id": "r8", "text": "By 03:32, 26 of 30 agents measured: 1.31 billion tokens, 98.8% re-reading; the six longest sessions 61%.", "supports": [ { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 13 } ] },
-    { "id": "r9", "text": "The librarian handed over at 03:02:01; the designer at 03:06:24, observability at 03:06:59; graph, weatherwatch and studio by 03:37:07; 74% to 84% less per call on three of them.", "supports": [ { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 9 }, { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 11 }, { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 13 }, { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 14 } ] },
-    { "id": "r10", "text": "The pack was corrected five times from the fresh sessions' reports.", "supports": [ { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 10 } ] },
-    { "id": "r11", "text": "A fresh session in a shallow clone rewrote the night's commit and session data, restored them three minutes later, and its tools now refuse a shallow clone.", "supports": [ { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 12 }, { "kind": "commit", "sha": "5539827" } ] },
-    { "id": "r12", "text": "At 03:54 the Studio published \"The hand-over\" and put measured figures into \"What compression is\".", "supports": [ { "kind": "trace", "trace": "memory-the-librarian-saves-tokens", "step": 15 } ] },
-    { "id": "r13", "text": "This agent's session at 04:06: 87 calls, 22.1 million tokens, 21.7 million of them cache reads; context from 84,757 to 377,788.", "supports": [
-      { "kind": "text", "file": "accounts/ledger/journalist.jsonl", "contains": "\"calls\":87,\"fresh_input\":169,\"output\":132031,\"cache_writes\":308236,\"cache_reads\":21655733" },
-      { "kind": "text", "file": "accounts/ledger/journalist.jsonl", "contains": "\"largest\":377788,\"last\":377788" },
-      { "kind": "text", "file": "agents/journalist/status.json", "contains": "a fresh session for this agent" } ] },
-    { "id": "r14", "text": "What was lost in the hand-overs, whether the saving holds, and Dinis's view are not on record.", "supports": [ { "kind": "none", "why": "the fresh sessions list what they noticed missing, not what they did not notice; the per-call figure is from their first minutes; BRIEF.md has no section after ~02:50" } ] }
+    {
+      "id": "r1",
+      "text": "Dinis's sentence, at about 02:50, recorded at 02:49:18.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "**the librarian saves tokens** and makes it cheaper and implements memory in a much more effective way"
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 1
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 2
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "text": "Six agents had begun again by 03:37:07, 47 min 49 s after the sentence was recorded; no person acted in between.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "reporter/traces/memory-the-librarian-saves-tokens.json",
+          "contains": "to the sixth: 47 min 49 s"
+        },
+        {
+          "kind": "text",
+          "file": "reporter/traces/memory-the-librarian-saves-tokens.json",
+          "contains": "No person acted between the sentence and the sixth hand-over."
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 14
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "text": "At 00:30 Dinis asked the Studio to explain compression beside how the team works: documents, a file system as the memory.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "BRIEF.md",
+          "contains": "The compression still occurs, but there's no problem because we used almost a file system as our database."
+        }
+      ]
+    },
+    {
+      "id": "r4",
+      "text": "The librarian pushed the pack at 02:54:55, 5 min 37 s after the sentence was recorded.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 3
+        },
+        {
+          "kind": "page",
+          "path": "tools/library-pack.mjs"
+        }
+      ]
+    },
+    {
+      "id": "r5",
+      "text": "The test at 02:56:08: 39,775 tokens from ten whole files, 14,164 from three files of the pack; eight of eight against six right and two in part.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 4
+        },
+        {
+          "kind": "data",
+          "file": "accounts/pack-test.json",
+          "field": "arms.0.tokens_added_by_reading",
+          "expect": 39775
+        },
+        {
+          "kind": "data",
+          "file": "accounts/pack-test.json",
+          "field": "arms.1.tokens_added_by_reading",
+          "expect": 14164
+        },
+        {
+          "kind": "data",
+          "file": "accounts/pack-test.json",
+          "field": "arms.1.answers.right",
+          "expect": 6
+        }
+      ]
+    },
+    {
+      "id": "r6",
+      "text": "After the librarian added two rules, a second run: 14,734 tokens, eight of eight. One run of each, helpers not full sessions, marked by the accountant.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 6
+        },
+        {
+          "kind": "text",
+          "file": "accounts/pack-test.json",
+          "contains": "One run of each: a first measurement, not an average."
+        },
+        {
+          "kind": "text",
+          "file": "reporter/traces/memory-the-librarian-saves-tokens.json",
+          "contains": "the accountant marked the answers; sub-agents, not full sessions"
+        }
+      ]
+    },
+    {
+      "id": "r7",
+      "text": "The conductor's session: 327 million tokens in 758 calls, 99.4% re-reading.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 7
+        }
+      ]
+    },
+    {
+      "id": "r8",
+      "text": "By 03:32, 26 of 30 agents measured: 1.31 billion tokens, 98.8% re-reading; the six longest sessions 61%.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 13
+        }
+      ]
+    },
+    {
+      "id": "r9",
+      "text": "The librarian handed over at 03:02:01; the designer at 03:06:24, observability at 03:06:59; graph, weatherwatch and studio by 03:37:07; 74% to 84% less per call on three of them.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 9
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 11
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 13
+        },
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 14
+        }
+      ]
+    },
+    {
+      "id": "r10",
+      "text": "The pack was corrected five times from the fresh sessions' reports.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 10
+        }
+      ]
+    },
+    {
+      "id": "r11",
+      "text": "A fresh session in a shallow clone rewrote the night's commit and session data, restored them three minutes later, and its tools now refuse a shallow clone.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 12
+        },
+        {
+          "kind": "commit",
+          "sha": "5539827"
+        }
+      ]
+    },
+    {
+      "id": "r12",
+      "text": "At 03:54 the Studio published \"The hand-over\" and put measured figures into \"What compression is\".",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "memory-the-librarian-saves-tokens",
+          "step": 15
+        }
+      ]
+    },
+    {
+      "id": "r13",
+      "text": "This agent's session at 04:06: 87 calls, 22.1 million tokens, 21.7 million of them cache reads; context from 84,757 to 377,788. It asked for a fresh session; the conductor started one at 04:08 and this session handed over.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "accounts/ledger/journalist.jsonl",
+          "contains": "\"calls\":87,\"fresh_input\":169,\"output\":132031,\"cache_writes\":308236,\"cache_reads\":21655733"
+        },
+        {
+          "kind": "text",
+          "file": "accounts/ledger/journalist.jsonl",
+          "contains": "\"largest\":377788,\"last\":377788"
+        },
+        {
+          "kind": "text",
+          "file": "agents/journalist/status.json",
+          "contains": "handed over at"
+        },
+        {
+          "kind": "data",
+          "file": "agents/journalist/status.json",
+          "field": "handover.0",
+          "expect": "Run node tools/journal-build.mjs --check first: a piece rests on other agents' living files and fails when one is reworded or re-laid (re-anchor the support, never delete the statement)."
+        }
+      ]
+    },
+    {
+      "id": "r14",
+      "text": "What was lost in the hand-overs, whether the saving holds, and Dinis's view are not on record.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "the fresh sessions list what they noticed missing, not what they did not notice; the per-call figure is from their first minutes; BRIEF.md has no section after ~02:50"
+        }
+      ]
+    }
   ]
 }

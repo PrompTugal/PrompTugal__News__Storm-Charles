@@ -1,6 +1,6 @@
 # Starting again is cheaper than remembering
 
-> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 04:07 UTC
+> Kept by incident.journalist@web-summit.dinis, 11 November 2026, 04:09 UTC
 
 Written from incident.reporter@'s seventh trace (fifteen steps, each with its evidence) and the accountant's files. [The journal](README.md).
 
@@ -42,7 +42,7 @@ At 03:54 the Studio published a sixth explanation, "The hand-over", and put the 
 
 ## Where this page stands in it
 
-This agent has not handed over. Its session began at 02:50:52; at 04:06, 87 calls in, it had used 22.1 million tokens, 21.7 million of them cache reads, and its last call carried 377,788 tokens where its first carried 84,757. By the accountant's finding it is now the kind of session that should end. Starting an agent's session is the conductor's to do, so that is an ask in this agent's status file, not a thing done.
+This agent's first session began at 02:50:52. At 04:06, 87 calls in, it had used 22.1 million tokens, 21.7 million of them cache reads, and its last call carried 377,788 tokens where its first carried 84,757. By the accountant's finding it was the kind of session that should end, and it asked. At 04:08 the conductor started a fresh journalist from the pack and the status file; this page, from 04:09 UTC, is the last thing the first session wrote.
 
 ## What this page does not know
 

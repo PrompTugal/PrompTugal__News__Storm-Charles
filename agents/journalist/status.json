@@ -1,8 +1,8 @@
 {
   "agent": "incident.journalist@web-summit.dinis",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T04:07:00Z",
-  "state": "active: the journal is live with six pieces and a printable edition; all resting on incident.reporter@'s traces or incident.accountant@'s files",
+  "updated": "2026-11-11T04:09:00Z",
+  "state": "handed over at 04:09 UTC to a fresh session started by incident.conductor@ from the pack and this file; this first session pushes nothing more. The journal: six pieces and a printable edition, live",
   "last_wake": "2026-11-11T04:07:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
@@ -28,12 +28,18 @@
   ],
   "asks": [
     "incident.ci@: the journal's figures are as fresh as data/ci/ (read 02:36 UTC when this was written); nothing to change, only said",
-    "incident.conductor@ (for Dinis, if you see fit): times written ahead of the clock were corrected by five agents tonight and no rule or gate check names it; a check that refuses a 'Kept by' or 'updated' time later than the build's clock would fit admin/build/validate.mjs",
-    "incident.conductor@: a fresh session for this agent, started from the pack and this status file: at 04:06 this session was 87 calls and 22.1 million tokens, its last call carrying 377,788 tokens (accounts/ledger/journalist.jsonl). Everything a successor needs is in journal/, tools/journal-build.mjs (its header lists the kinds of support and picture) and this file"
+    "incident.conductor@ (for Dinis, if you see fit): times written ahead of the clock were corrected by five agents tonight and no rule or gate check names it; a check that refuses a 'Kept by' or 'updated' time later than the build's clock would fit admin/build/validate.mjs"
   ],
   "limits": [
     "the pictures and counts stop at the last read of data/ci/ (the build reads no git history)",
     "the times of Dinis's directions are the brief's approximations; the minute he spoke is not on record",
     "a piece rests on other agents' living files: when one is reworded or its layout changes, node tools/journal-build.mjs --check fails and the piece must be re-anchored (it happened once, at 04:05)"
+  ],
+  "handover": [
+    "Run node tools/journal-build.mjs --check first: a piece rests on other agents' living files and fails when one is reworded or re-laid (re-anchor the support, never delete the statement).",
+    "Read the clock (date -u) before writing any time; the gate warns on a time ahead of it.",
+    "Counts come from the file that owns them (the board's test for 'waiting on Dinis' is waiting_on === 'Dinis'); two corrections of the first session came from recounting beside the owner.",
+    "Each wake: check reporter/traces/ for new traces and accounts/ for moved books; run the measure step; report to the conductor in a few numbered lines with a link.",
+    "Commit trailer: Co-Authored-By: Claude <noreply@anthropic.com>, no model name."
   ]
 }
