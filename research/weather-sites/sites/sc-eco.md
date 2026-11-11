@@ -1,6 +1,6 @@
 # ECO: topic "Depressão Charles"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · topic-page · Portugal
 
@@ -37,7 +37,17 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Termos e Condições"): <https://eco.sapo.pt/termos-e-condicoes/> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos e Condições"): <https://eco.sapo.pt/termos-e-condicoes/> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> O conteúdo do Website e da App é propriedade do ECO e encontra-se protegido por direitos de propriedade intelectual ao abrigo das leis portuguesas e da União Europeia – pelo que não pode ser utilizado sem o consentimento prévio do ECO.
+
+> A aquisição do plano pressupõe a transação comercial entre o Utilizador e o ECO.
+
+> Não prejudicará a Swipe News, S.A., nem qualquer dos Utilizadores, nomeadamente através da tentativa de quebra da segurança do sistema e/ou da utilização indevida de mensagens comerciais ou com qualquer outro teor considerado ilegal ou inaceitável;
+
+> Publicidade/Patrocínios As plataformas do ECO poderão conter publicidade e outras referências a marcas, produtos e/ou serviços de índole comercial.
 
 ## Storm Charles
 

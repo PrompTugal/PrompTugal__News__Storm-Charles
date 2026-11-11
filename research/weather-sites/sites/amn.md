@@ -1,6 +1,6 @@
 # Autoridade Marítima Nacional
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · public-service · Portugal
 
@@ -37,7 +37,19 @@ none
 
 As we recorded it: public body; cite.  
 May we show its content: **quote with attribution**.  
-Its terms page, as linked on the site ("Informação Legal"): <https://www.amn.pt/Paginas/InformacaoLegal.aspx> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Informação Legal"): <https://www.amn.pt/Paginas/InformacaoLegal.aspx> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Quaisquer tentativas de alteração de informação, de carregamento de informação, ou qualquer outra ação que possa causar dano e pôr em risco a integridade do sistema, são estritamente proibidas e podem ser punidas de acordo com a legislação em vigor.
+
+> Marcas As imagens, marcas, logótipos, nomes e denominações presentes nesta página são alvo de direitos de autor ou de direitos de propriedade industrial e, como tal, encontram-se protegidos pelo Código do Direito de Autor e dos Direitos Conexos e pelo Código da Propriedade Industrial e não poderão ser objeto de reprodução ou apropriação, de modo algum, sem permissão escrita dos respetivos detentores dos direitos.
+
+> A Autoridade Marítima Nacional não é responsável pela exatidão, qualidade, segurança, legalidade ou licitude, incluindo o cumprimento das regras respeitantes a direitos de autor e direitos conexos, relativamente aos conteúdos, produtos ou serviços neste contidos que tenham sido fornecidos por anunciantes ou parceiros comerciais.
+
+> Links - Ligações de Hipertexto A Autoridade Marítima Nacional não se responsabiliza pela qualidade ou veracidade das afirmações reproduzidas no portal para onde remetem as ligações de hipertexto, também denominadas "hyperlinks" ou "links" presentes neste portal.
+
+Words found on that page: personal or non-commercial use is named.
 
 ## Storm Charles
 

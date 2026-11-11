@@ -1,6 +1,6 @@
 # Not covering Charles when read: Met Office storm centre, BBC, Severe Weather Europe, Zoom Earth, Copernicus EMS
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · absent · International
 
@@ -37,7 +37,19 @@ n/a
 
 As we recorded it: n/a.  
 May we show its content: **n/a**.  
-Its terms page, as linked on the site ("Legal"): <https://www.metoffice.gov.uk/policies/legal> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Legal"): <https://www.metoffice.gov.uk/policies/legal> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> The Keeper of Public Records has authorised the Met Office to license the use and reuse of its own information, subject to certain conditions.
+
+> Met Office Open Data Policy Free Licences Open Government Licence The Website terms of use contain licence provisions under the terms of the UK Open Government Licence for Public Sector Information v3.0 which govern the use of material presented on this website, other than material which we tell you is governed by different licence terms.
+
+> Registered Public Sector Information Licence These Licence to Reproduce Registered Content govern the use of free material provided through this website for which you must register, except for material provided through Met Office DataPoint™.
+
+> All Met Office licences are non-exclusive and conform to The Re-Use of Public Sector Information Regulations 2015.
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

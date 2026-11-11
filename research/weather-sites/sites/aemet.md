@@ -1,6 +1,6 @@
 # AEMET (Spain)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Spain
 
@@ -37,7 +37,11 @@ AEMET OpenData (REST, free API key)
 
 As we recorded it: reuse allowed citing AEMET as the source, without distorting the information (read on its legal notice).  
 May we show its content: **yes with attribution**.  
-Its terms page, as linked on the site ("Legal"): <https://www.aemet.es/en/conocenos/transparencia/relevancia-juridica> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Legal"): <https://www.aemet.es/en/conocenos/transparencia/relevancia-juridica> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> The use and reproduction of this information is authorized only if AEMET is identified as its author Site map | Legal notice | Web accessibility | Links | Web help Widget El tiempo en tu web Descarga nuestra App App Oficial Android e iOS Follow us
 
 ## Storm Charles
 

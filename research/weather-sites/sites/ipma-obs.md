@@ -1,6 +1,6 @@
 # IPMA: radar, satellite, stations, lightning
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · national-service · Portugal
 
@@ -37,7 +37,19 @@ station observations in the open API (read: 93 KB JSON)
 
 As we recorded it: as IPMA; imagery under its terms.  
 May we show its content: **yes, non-commercial, with attribution; images by link**.  
-Its terms page, as linked on the site ("Avisos legais"): <https://www.ipma.pt/opencms/pt/siteinfo/index.html?page=index.xml> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Avisos legais"): <https://www.ipma.pt/opencms/pt/siteinfo/index.html?page=index.xml> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Quaisquer tentativas de alteração de informação, de carregamento de informação, ou qualquer outra acção que possa causar dano e/ou colocar em risco a integridade do sistema, é expressamente proibida, podendo ser punida de acordo com a legislação em vigor.
+
+> O Utilizador pode copiar, importar ou utilizar gratuitamente informações ou símbolos nacionais existentes neste site para uso pessoal ou público desde que dessa utilização não decorram finalidades lucrativas ou ofensivas.
+
+> O Utilizador deve referir, sempre, a fonte de informação.
+
+> No que respeita aos sítios para que este site faz ligação deverá ser obtida a autorização dos autores desse material ou feita referência à fonte conforme as respectivas declarações de direitos de autor.
+
+Words found on that page: personal or non-commercial use is named.
 
 **Exact terms** (read 23:53 UTC, <https://www.ipma.pt/pt/siteinfo/index.html?page=index.xml>):
 

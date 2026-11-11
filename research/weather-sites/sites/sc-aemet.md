@@ -1,6 +1,6 @@
 # AEMET: season table of named storms
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · authority · Spain
 
@@ -37,7 +37,17 @@ OpenData
 
 As we recorded it: cite AEMET.  
 May we show its content: **yes with attribution**.  
-Its terms page, as linked on the site ("Nota legal"): <https://www.aemet.es/es/nota_legal> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Nota legal"): <https://www.aemet.es/es/nota_legal> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Autorización de reutilización y cesión no exclusiva de derechos de propiedad intelectual Las condiciones generales recogidas en la presente nota legal permiten la reutilización de los documentos sometidos a ellas para fines comerciales y no comerciales.
+
+> Se entiende por reutilización el uso de documentos que obran en poder de AEMET de acuerdo con lo establecido en el artículo 3 de la Ley 18/2015, de 9 de julio, por la que se modifica la Ley 37/2007, de 16 de noviembre, sobre reutilización de la información del sector público.
+
+> Condiciones generales para la reutilización El ejercicio de la reutilización está sujeto a:
+
+> Se debe citar a AEMET como fuente de la información objeto de la reutilización en una de las siguientes formas:
 
 ## Storm Charles
 

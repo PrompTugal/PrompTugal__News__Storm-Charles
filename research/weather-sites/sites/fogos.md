@@ -1,6 +1,6 @@
 # Fogos.pt / VOST Portugal
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · volunteer-network · Portugal
 
@@ -37,7 +37,19 @@ api.fogos.pt (answered 429 to us: rate limit)
 
 As we recorded it: open project; data from ANEPC.  
 May we show its content: **yes with attribution (to confirm)**.  
-Its terms page, as linked on the site ("Termos API"): <https://fogos.pt/pt/api-termos> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos API"): <https://fogos.pt/pt/api-termos> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Utilização pessoal , incluindo projetos individuais, académicos, educativos, de investigação ou experimentais Utilização por entidades, incluindo empresas, para fins não comerciais , nomeadamente:
+
+> Investigação Análise de dados Ferramentas internas de apoio operacional Projetos cívicos ou de interesse público Monitorização ou visualização interna sem exploração comercial A permissão de utilização depende, quando aplicável, da obtenção de autorização prévia e da atribuição de credenciais de acesso válidas.
+
+> Utilização Não Permitida Não é permitida a utilização da API em contextos de monetização, promoção comercial ou exploração económica direta ou indireta.
+
+> Os dados disponibilizados através da API podem depender de fontes externas, processos automáticos, integrações técnicas e fluxos de atualização que estão sujeitos a falhas, atrasos, omissões, inconsistências ou interrupções.
+
+Words found on that page: personal or non-commercial use is named.
 
 ## Storm Charles
 

@@ -6,6 +6,7 @@ d, when = sys.argv[1], sys.argv[2]
 BY = 'incident.weatherwatch@web-summit.dinis'
 J = lambda f: json.load(open(f'{d}/{f}'))
 sites = J('sites.json')['sites']; links = J('links.json')['sites']
+TERMS = J('terms.json')['sites']
 gap = {r['id']: r for r in J('gap.json')['rows']}; imagery = {s['id']: s for s in J('imagery.json')['sources']}
 clean = lambda u: re.sub(r';jsessionid=[^?#]*', '', u)
 
@@ -56,6 +57,8 @@ CH = {
  'english-press': 'Yes: a presenter video and two items (see [The Portugal News](sc-tpn.md)).', 'sapo-tempo': 'Yes: its front page aggregates the storm headlines of many outlets.', 'beachcam': 'Yes: Charles items on its front page.',
  'sic': 'Not opened (403); its headlines on the storm were read through SAPO.', 'expresso': 'Not opened (403).',
 }
+# sites whose own terms restrict automated access or use by AI systems (terms.json): we stopped reading them on 11 November, 02:40 UTC
+RESTRICT = {'zoomearth': 'Zoom Earth', 'tempopt': 'tempo.pt (Meteored)', 'sc-tempopt': 'tempo.pt (Meteored)', 'english-press': 'The Portugal News', 'sc-tpn': 'The Portugal News'}
 OFFICIAL = {'national-service', 'authority', 'authority-aggregator', 'civil-protection', 'public-service', 'warnings-aggregator', 'satellite', 'emergency-mapping', 'open-data', 'encyclopedia', 'storm-tracker', 'aviation', 'archive', 'data-api'}
 MAPNAME = {'worldwide': 'Worldwide', 'portugal': 'Portugal', 'storm-charles': 'Storm Charles coverage'}
 SEEN = {'rendered': 'drawn in a headless browser and looked at', 'html': 'content read in the returned page', 'json': 'a data answer read', 'shell': 'drawn by script: only the shell and labels read', 'blocked': 'refused (401, 403, 429 or a bot check)', 'failed': 'no answer or 404'}
@@ -66,6 +69,7 @@ for s in sites:
     i, o, L = s['id'], s['opened'], links.get(s['id'], {})
     country = COUNTRY.get(i, 'Portugal' if s['map'] != 'worldwide' else 'not stated')
     cap = 'yes' if (s['kind'] in OFFICIAL and s['owner'] not in ('Neave Interactive',)) else 'only if its terms allow: otherwise the link'
+    if i in RESTRICT: cap = 'no: its terms restrict automated access; link only'
     if o['seen'] in ('blocked', 'failed'): cap_note = 'the address refused or did not answer our request'
     else: cap_note = None
     terms, contact = L.get('terms'), L.get('contact')
@@ -79,9 +83,16 @@ for s in sites:
           '## Data and models it says it uses', '', STATED.get(i, 'Not read: we did not open a page of this site that says what data or models it uses.'), '',
           '## API and feeds', '', s['data'].get('api') or 'not stated', '',
           '## Licence and terms', '', f"As we recorded it: {s['data'].get('licence') or 'not stated'}.  ", f"May we show its content: **{s['data'].get('reuse') or 'not stated'}**.  "]
-    m += [f"Its terms page, as linked on the site (\"{terms['text']}\"): <{clean(terms['url'])}> (found {terms['read'][11:16]} UTC, {terms['read'][:10]}; the terms themselves were " + ('read: see below' if i in imagery or i.replace('sc-', '') in imagery else 'not read line by line unless the line above says "read"') + ').' if terms else 'No link to terms or a licence was found in the HTML we read (many sites draw their footer by script): **not stated** as far as we read.', '']
+    m += [f"Its terms page, as linked on the site (\"{terms['text']}\"): <{clean(terms['url'])}> (found {terms['read'][11:16]} UTC, {terms['read'][:10]}; excerpts below where the page opened)." if terms else 'No link to terms or a licence was found in the HTML we read (many sites draw their footer by script): **not stated** as far as we read.', '']
+    tj = TERMS.get(i)
+    SIG = {'open_licence': 'an open licence is named', 'all_rights_reserved': 'all rights reserved', 'needs_permission': 'prior permission or consent is required for some uses', 'names_automated_access_or_ai': 'automated access, scraping or AI is named', 'non_commercial_only': 'personal or non-commercial use is named'}
+    if tj and tj.get('excerpts'):
+        m += [f"**From its terms page as published** (read {tj['read'][11:16]} UTC, {tj['read'][:10]}; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):", ''] + [f'> {x}\n' for x in tj['excerpts']]
+        if tj.get('signals'): m += ['Words found on that page: ' + '; '.join(SIG[x] for x in tj['signals']) + '.', '']
+    elif tj: m += [f"Its terms page was not read: {tj.get('note') or 'no text about reuse was found in it'}.", '']
     im = imagery.get(i) or imagery.get({'ipma-obs': 'ipma-radar', 'sc-meteoalarm': 'meteoalarm', 'sc-ipma': 'ipma-radar'}.get(i, ''))
     if im: m += [f"**Exact terms** (read {im['terms_read'][11:16]} UTC, <{im['terms_url']}>):", ''] + [f'- {t}' for t in im['terms']] + ['', f"Our reading: {im['reading']} Verdict: {im['verdict']} (from [imagery.json](../imagery.json); not legal advice.)", '']
+    if i in RESTRICT: m += ['**Its terms restrict automated access or use by AI systems (see the sentences above).** We read this site once before reading its terms; since 11 November 2026, 02:40 UTC we no longer request its pages, we keep only the link and the short description, and nothing of it is captured. Whether to ask for permission is for a person to decide.', '']
     m += ['## Storm Charles', '']
     if s['map'] == 'storm-charles':
         g = gap[i]

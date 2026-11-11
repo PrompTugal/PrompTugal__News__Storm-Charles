@@ -1,6 +1,6 @@
 # ANEPC: notice 21 and preventive measures
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · authority · Portugal
 

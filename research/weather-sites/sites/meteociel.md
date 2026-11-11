@@ -1,6 +1,6 @@
 # Meteociel
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · model-viewer · France
 
@@ -37,7 +37,15 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **link only**.  
-Its terms page, as linked on the site ("Mentions l�gales"): <https://www.meteociel.fr/copyright/mentions.php> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Mentions l�gales"): <https://www.meteociel.fr/copyright/mentions.php> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Meteociel.fr " et la source éventuelle des données doivent impérativement rester visibles.
+
+> Il est strictement interdit de faire un usage commercial des images, des cartes, des données météo présentes sur notre site.
+
+> Vous autorisez, à titre gracieux, leur reproduction et leur diffusion sur le site internet de la société et sur les réseaux sociaux, y compris le droit de reproduction sur tout support que ce soit, qui ne doit pas être limitée en aucune façon dans son utilisation, dans toute la mesure permise par la loi applicable.
 
 ## Storm Charles
 

@@ -1,6 +1,6 @@
 # Open-Meteo
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · data-api · Switzerland
 
@@ -37,7 +37,19 @@ HTTP GET, no key, no sign-up
 
 As we recorded it: CC BY 4.0 for the data; the free tier is for non-commercial use.  
 May we show its content: **yes with attribution**.  
-Its terms page, as linked on the site ("Licence"): <https://open-meteo.com/en/licence> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Licence"): <https://open-meteo.com/en/licence> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> 🧑‍⚖️ Licence | Open-Meteo.com Licence Data Sources Open-Meteo utilises open-data from various national weather services including:
+
+> You must give appropriate credit, provide a link to the licence, and indicate if changes were made.
+
+> You must include a link next to any location Open-Meteo data are displayed, for example: < a href = " https://open-meteo.com/ " > Weather data by Open-Meteo.com </ a > Open-Meteo is open-source Source code is available on GitHub under the GNU Affero General Public Licence Version 3 AGPLv3 or any later version.
+
+> Citation We encourage researchers in the field of meteorology and related disciplines to cite Open-Meteo in their work.
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

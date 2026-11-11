@@ -1,6 +1,6 @@
 # BBC Weather
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · broadcaster · United Kingdom
 
@@ -39,7 +39,11 @@ none public
 
 As we recorded it: BBC terms: no reuse without permission; link and short quotation only.  
 May we show its content: **no**.  
-Its terms page, as linked on the site ("Terms of Use"): <https://www.bbc.co.uk/usingthebbc/terms/> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Terms of Use"): <https://www.bbc.co.uk/usingthebbc/terms/> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Can I reuse BBC content and services for my business?
 
 ## Storm Charles
 

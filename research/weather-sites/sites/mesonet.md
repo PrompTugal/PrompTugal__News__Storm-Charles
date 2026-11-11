@@ -1,6 +1,6 @@
 # Iowa Environmental Mesonet
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · archive · United States
 
@@ -37,7 +37,13 @@ open CSV/JSON
 
 As we recorded it: open.  
 May we show its content: **yes**.  
-Its terms page, as linked on the site ("disclaimer"): <https://mesonet.agron.iastate.edu/disclaimer.php> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("disclaimer"): <https://mesonet.agron.iastate.edu/disclaimer.php> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Usage of IEM Products The materials found on this website are in the public domain and may be used freely by anyone for any lawful purpose.
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

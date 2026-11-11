@@ -1,6 +1,6 @@
 # US National Weather Service
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · United States
 
@@ -37,7 +37,19 @@ api.weather.gov: JSON-LD/GeoJSON, alerts in CAP, no key (a User-Agent is asked f
 
 As we recorded it: US government work: public domain (third-party imagery excepted).  
 May we show its content: **yes**.  
-Its terms page, as linked on the site ("Disclaimer"): <https://www.weather.gov/disclaimer> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Disclaimer"): <https://www.weather.gov/disclaimer> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> In addition, this server accesses in realtime a selection of current official weather observations, forecasts, and warnings from U.S. government sources for use by the national and international community.
+
+> NOAA Weather Radio NOAA Weather Wire EMWIN® NOAAPORT National Weather Service Offices and Centers Use of NOAA/NWS Data and Products The information on National Weather Service (NWS) Web pages are in the public domain, unless specifically noted otherwise, and may be used without charge for any lawful purpose so long as you do not:
+
+> Use of the NWS name ("National Weather Service") and/or visual identifier are protected under trademark law and may not be used without permission from the NWS.
+
+> Permission may be requested for this use at https://www.weather.gov/logorequest .
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

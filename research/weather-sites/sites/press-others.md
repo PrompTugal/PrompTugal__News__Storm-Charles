@@ -1,6 +1,6 @@
 # JN, DN, Correio da Manhã, Negócios, ECO, TSF, Renascença, Lusa, Notícias ao Minuto, SAPO
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · press · Portugal
 
@@ -37,7 +37,17 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Termos de Utilização"): <https://www.dn.pt/termos-de-utilizacao> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos de Utilização"): <https://www.dn.pt/termos-de-utilizacao> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Todos os direitos de autor, direitos conexos e propriedade industrial relacionados com o conteúdo são detidos pelo GMG ou pelos seus licenciadores, pelo que o utilizador não pode copiar, modificar, distribuir ou utilizar o conteúdo para fins comerciais sem autorização prévia.
+
+> É proibida qualquer utilização dos conteúdos que possa prejudicar a imagem do GMG ou violar a legislação em vigor.
+
+> As assinaturas são renovadas automaticamente no final de cada período subscrito, exceto no caso de pagamentos que requerem uma renovação manual.
+
+> O utilizador pode alterar o plano de assinatura, cancelar a renovação automática ou solicitar reembolsos enviando um pedido para o serviço de apoio ao cliente, aplicando-se as condições em vigor.
 
 ## Storm Charles
 

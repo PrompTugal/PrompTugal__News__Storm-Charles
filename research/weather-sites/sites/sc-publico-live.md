@@ -1,6 +1,6 @@
 # Público: "Ao Minuto" on Charles
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · liveblog · Portugal
 
@@ -37,7 +37,17 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Termos & Condições"): <https://www.publico.pt/assinaturas/termos-e-condicoes> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos & Condições"): <https://www.publico.pt/assinaturas/termos-e-condicoes> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Todos os conteúdos são protegidos por Direitos de Autor ao abrigo da Legislação Portuguesa, da União Europeia e dos Tratados Internacionais, não podendo ser utilizados fora das condições de uso livre permitidas por lei, sem o consentimento expresso e escrito do PÚBLICO — Comunicação Social, S.A..
+
+> Os conteúdos disponibilizados ao Utilizador Assinante não poderão ser copiados, alterados ou distribuídos salvo com autorização expressa do PÚBLICO — Comunicação Social, S.A..
+
+> O PÚBLICO — Comunicação Social, S.A. reserva-se o direito de alterar o preço e as demais condições de comercialização dos produtos apresentados neste sítio.
+
+> O PÚBLICO —Comunicação Social, S.A. não conserva os referidos dados, sendo os mesmos automaticamente transmitidos para a Unicre, no momento da subscrição de uma assinatura.
 
 ## Storm Charles
 

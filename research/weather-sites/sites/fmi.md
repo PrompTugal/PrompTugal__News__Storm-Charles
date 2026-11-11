@@ -1,6 +1,6 @@
 # Finnish Meteorological Institute
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Finland
 
@@ -37,7 +37,19 @@ WFS open data, no key for most
 
 As we recorded it: CC BY 4.0 (read on its licence page).  
 May we show its content: **yes with attribution**.  
-Its terms page, as linked on the site ("» License"): <https://en.ilmatieteenlaitos.fi/open-data-licence> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("» License"): <https://en.ilmatieteenlaitos.fi/open-data-licence> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> License - Finnish Meteorological Institute Skip to main content Search for local weather.
+
+> Enter location Search Creative Commons Attribution 4.0 International license The Creative Commons Attribution 4.0 International license (CC BY 4.0) shall be used by the Finnish Meteorological Institute's open data service.
+
+> The license shall apply to the FMI's and the Radiation and Nuclear Safety Authority's open data sets as well as air quality data sets that are stored in the open data web-service.
+
+> License: https://creativecommons.org/licenses/by/4.0/ Additional information:
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

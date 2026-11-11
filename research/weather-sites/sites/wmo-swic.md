@@ -1,6 +1,6 @@
 # WMO Severe Weather Information Centre
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · warnings-aggregator · International
 
@@ -37,7 +37,11 @@ CAP feeds via the WMO Alert Hub
 
 As we recorded it: per issuing service.  
 May we show its content: **per issuing service**.  
-Its terms page, as linked on the site ("Disclaimer"): <https://wmo.int/disclaimer> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Disclaimer"): <https://wmo.int/disclaimer> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Unless otherwise specified, materials contained on this website are covered by intellectual and industrial property rights, and their reproduction or adaptation is in all cases subject to permission (go to copyright and permissions).
 
 ## Storm Charles
 

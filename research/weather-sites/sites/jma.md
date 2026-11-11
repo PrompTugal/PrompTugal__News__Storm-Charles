@@ -1,6 +1,6 @@
 # Japan Meteorological Agency
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Japan
 
@@ -37,7 +37,19 @@ JSON behind the map, undocumented but stable; XML feeds
 
 As we recorded it: government terms of use, compatible with CC BY (not re-read).  
 May we show its content: **yes with attribution (to confirm)**.  
-Its terms page, as linked on the site ("Legal Notice"): <https://www.jma.go.jp/jma/en/copyright.html> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Legal Notice"): <https://www.jma.go.jp/jma/en/copyright.html> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Using the content on the Japan Meteorological Agency website Information made available on the Japan Meteorological Agency website (hereinafter referred to as “Content”) may be used in accordance with the terms and conditions of use stipulated in Public Data License (Version 1.0), unless otherwise indicated by a specific rights notice.
+
+> Public Data License (Version 1.0) For information applicable only to the Japan Meteorological Agency website, such as examples of source citation in relation to Public Data License (Version 1.0), please refer to the “Important note on Public Data License (Version 1.0)” below.
+
+> Important note on Public Data License (Version 1.0) 1) Source citation The user must cite the source when using the Content.
+
+> The Terms of Use are compatible with the Creative Commons Attribution License 4.0 (hereinafter referred to as the CC License).
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

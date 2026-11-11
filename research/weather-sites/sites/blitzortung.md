@@ -1,6 +1,6 @@
 # Blitzortung / LightningMaps
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · lightning · Germany
 
@@ -37,7 +37,19 @@ data for contributing station owners
 
 As we recorded it: non-commercial; raw data only for participants (read).  
 May we show its content: **link only**.  
-Its terms page, as linked on the site ("Disclaimer"): <https://www.blitzortung.org/en/contact.php#contribution_3> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Disclaimer"): <https://www.blitzortung.org/en/contact.php#contribution_3> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> All images marked by "CC BY-SA" are licensed under the "Creative Commons Attribution-ShareAlike 4.0" license (CC BY-SA 4.0) and may therefore be included on other websites under this license without further approval from us.
+
+> Our website use Google AdSense (a program run by Google to serve automatic advertisements), Matomo (an open source web analytics platform), and MyBB (a free and open source forum software).
+
+> Please contact commercial location services for such queries.
+
+> All data remain under the CC-BY-SA 4.0 license.
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

@@ -1,6 +1,6 @@
 # Notícias ao Minuto: "AO MINUTO"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · liveblog · Portugal
 
@@ -37,7 +37,17 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Termos & condições"): <https://www.noticiasaominuto.com/termos-e-condicoes> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos & condições"): <https://www.noticiasaominuto.com/termos-e-condicoes> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Descrição do Serviço O serviço de email marketing consiste em enviar, via e-mail, informações e publicidade sobre produtos e serviços adequados ao perfil sociodemográfico do utilizador, desde que exista o consentimento expresso do utilizador correspondente.
+
+> O utilizador expressa o conhecimento e está ciente de que os dados fornecidos (as "Informações de Registo") serão incorporados num arquivo automatizado e num processo para tratar e gerir esses dados.
+
+> O utilizador autoriza a New aDventures, Lda a manter e utilizar os dados do utilizador, com o objetivo de oferecer ao utilizador outros serviços e produtos da New aDventures, Lda e de outras organizações, mediante consentimento prévio.
+
+> Utilizadores, Patrocinadores e Anunciantes concordam em não dar ou fazer uso comercial do serviço sem o consentimento expresso da New aDventures, Lda.
 
 ## Storm Charles
 

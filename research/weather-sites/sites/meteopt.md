@@ -1,6 +1,6 @@
 # MeteoPT
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · amateur · Portugal
 
@@ -37,7 +37,19 @@ none
 
 As we recorded it: posts belong to their authors.  
 May we show its content: **link only; no names of private people**.  
-Its terms page, as linked on the site ("menu_terms_of_use"): <https://www.meteopt.com/termos-de-uso> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("menu_terms_of_use"): <https://www.meteopt.com/termos-de-uso> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> É proibido o uso do site ou do fórum para fins ilegais ou não autorizados.
+
+> Licença de conteúdo Todo o conteúdo original disponibilizado neste site, incluindo textos, imagens e outros materiais, está licenciado sob a licença Creative Commons Atribuição-NãoComercial 4.0 Internacional (CC BY-NC 4.0) , salvo indicação em contrário.
+
+> Pode partilhar (copiar e redistribuir o material em qualquer meio ou formato) e adaptar (remixar, transformar e criar a partir do material), desde que :
+
+> Para mais informações sobre esta licença, visite https ://creativecommons.org /licenses /by -nc /4.0/ .
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

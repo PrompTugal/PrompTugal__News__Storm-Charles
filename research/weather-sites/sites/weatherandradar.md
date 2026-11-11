@@ -1,6 +1,6 @@
 # Weather & Radar
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · commercial · Germany
 
@@ -37,7 +37,9 @@ none public
 
 As we recorded it: all rights reserved.  
 May we show its content: **no**.  
-Its terms page, as linked on the site ("Legal info"): <https://www.weatherandradar.co.uk/imprint> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Legal info"): <https://www.weatherandradar.co.uk/imprint> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+Its terms page was not read: almost no text in the HTML: the page is drawn by script; not read.
 
 ## Storm Charles
 

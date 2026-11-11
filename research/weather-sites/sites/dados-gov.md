@@ -1,6 +1,6 @@
 # dados.gov.pt
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · open-data · Portugal
 
@@ -37,7 +37,19 @@ catalogue API
 
 As we recorded it: per dataset.  
 May we show its content: **per dataset**.  
-Its terms page, as linked on the site ("Termos e condições"): <https://dados.gov.pt/termos-de-utilizacao> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos e condições"): <https://dados.gov.pt/termos-de-utilizacao> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Open Data : data that may be freely used, reused and redistributed by anyone.
+
+> Registration on dados.gov.pt and access to specific features Any individual or legal entity, whether public or private, may contribute to dados.gov.pt by publishing datasets, instances of reuse, content, resources and comments relating to datasets.
+
+> Licences All data uploaded by government bodies is published under a Creative Commons CC BY 4.0 licence, unless otherwise specified.
+
+> Content created by ARTE Content created by ARTE is published under the CC BY 4.0 licence and may be reused for any purpose.
+
+Words found on that page: an open licence is named; prior permission or consent is required for some uses.
 
 ## Storm Charles
 

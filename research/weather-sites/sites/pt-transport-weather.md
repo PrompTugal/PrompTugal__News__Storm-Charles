@@ -1,6 +1,6 @@
 # Airport and air navigation: ANA, NAV Portugal
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · aviation · Portugal
 
@@ -37,7 +37,19 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **link only**.  
-Its terms page, as linked on the site ("Terms and Conditions"): <https://www.ana.pt/en/terms-and-conditions> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Terms and Conditions"): <https://www.ana.pt/en/terms-and-conditions> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> The purpose of this website is to provide commercial and operational information relevant to users of the Lisbon, Porto, Faro, Madeira and Azores Airports.
+
+> If ANA discovers that the user has attempted to use an unauthorised means of payment, ANA will ban the user, who will be prohibited from using the services at www.ana.pt .
+
+> The presentation of this website embedded in other websites not belonging to ANA shall be prohibited.
+
+> The presentation of this website embedded in other websites not belonging to ANA shall be prohibited.
+
+Words found on that page: prior permission or consent is required for some uses; personal or non-commercial use is named.
 
 ## Storm Charles
 

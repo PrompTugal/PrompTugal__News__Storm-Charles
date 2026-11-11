@@ -1,6 +1,6 @@
 # Wikipedia (en): "2026–27 European windstorm season", section Storm Charles
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · encyclopedia · International
 
@@ -37,7 +37,19 @@ MediaWiki API
 
 As we recorded it: CC BY-SA 4.0.  
 May we show its content: **yes with attribution, share-alike**.  
-Its terms page, as linked on the site ("Disclaimers"): <https://en.wikipedia.org/wiki/Wikipedia:General_disclaimer> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Disclaimers"): <https://en.wikipedia.org/wiki/Wikipedia:General_disclaimer> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> You are being granted a limited license to copy anything from this site; it does not create or imply any contractual or extracontractual liability on the part of Wikipedia or any of its agents, members, organizers, or other users.
+
+> Their use here does not imply that you may use them for any purpose other than for the same or a similar informational use as contemplated by the original authors of these Wikipedia articles under the CC BY-SA and GFDL licensing schemes.
+
+> Wikipedia does not encourage the violation of any laws, and cannot be responsible for any violations of such laws, should you link to this domain, or use, reproduce, or republish the information contained herein.
+
+> Not professional advice If you need specific advice (for example, medical, legal, financial, or risk management), please seek a professional who is licensed or knowledgeable in that area.
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

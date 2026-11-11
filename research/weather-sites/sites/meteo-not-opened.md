@@ -1,6 +1,6 @@
 # Not opened: Meteo Trás-os-Montes, BestWeather, Troposfera, Meteomoita
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · amateur · Portugal
 

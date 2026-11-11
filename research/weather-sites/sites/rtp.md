@@ -1,6 +1,6 @@
 # RTP Notícias
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · broadcaster · Portugal
 
@@ -37,7 +37,9 @@ RSS
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Termos e condições"): <http://media.rtp.pt/rgpd/termos-e-condicoes/> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos e condições"): <http://media.rtp.pt/rgpd/termos-e-condicoes/> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+Its terms page was not read: the terms page did not open.
 
 ## Storm Charles
 

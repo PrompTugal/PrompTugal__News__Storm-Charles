@@ -1,6 +1,6 @@
 # Observador: special "Charles: o que a distingue da Kristin e quão grave pode ser?"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · explainer · Portugal
 
@@ -37,7 +37,17 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Termos e Condições"): <https://observador.pt/termos-e-condicoes/> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos e Condições"): <https://observador.pt/termos-e-condicoes/> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Todo este conteúdo é propriedade do Observador, é protegido por direitos de autor ao abrigo das leis portuguesas e da União Europeia – pelo que não pode ser utilizado sem o consentimento, expressamente definido como tal, do Observador, exceto para os fins de utilização privada permitidos pela lei.
+
+> A aquisição do plano pressupõe a transação comercial entre o utilizador e o Observador.
+
+> Não prejudicar a sociedade Observador On Time, S.A. nem nenhum dos seus utilizadores, nomeadamente através da tentativa de quebra da segurança do sistema e/ou da utilização indevida de mensagens comerciais ou propagandísticas;
+
+> Publicidade/Patrocínios As plataformas do Observador poderão conter publicidade e outras referências a marcas, produtos e/ou serviços de índole comercial.
 
 ## Storm Charles
 

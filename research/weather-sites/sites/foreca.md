@@ -1,6 +1,6 @@
 # Foreca
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · commercial · Finland
 
@@ -37,7 +37,15 @@ commercial
 
 As we recorded it: all rights reserved.  
 May we show its content: **no**.  
-Its terms page, as linked on the site ("Terms & Conditions"): <https://www.foreca.com/terms-and-conditions> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Terms & Conditions"): <https://www.foreca.com/terms-and-conditions> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Authorisation to reproduce our logo(s) should be obtained from Foreca.
+
+> Permission to reproduce Foreca-protected material does not extend to material on this site that is identified as being the copyright of a third party.
+
+> Authorisation to reproduce such material must be obtained from the copyright holders concerned.
 
 ## Storm Charles
 

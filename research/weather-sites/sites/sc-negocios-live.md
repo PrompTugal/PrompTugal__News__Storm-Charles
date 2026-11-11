@@ -1,6 +1,6 @@
 # Jornal de Negócios: live "País em estado de alerta esta quarta-feira"
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · liveblog · Portugal
 
@@ -37,7 +37,19 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Disclaimer"): <https://www.jornaldenegocios.pt/institucional/detalhe/20150902-1659-33jn-1-3-disclaimer> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Disclaimer"): <https://www.jornaldenegocios.pt/institucional/detalhe/20150902-1659-33jn-1-3-disclaimer> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Salvo se autorizado pela Cofina Media, S.A ou, consoante o caso, pelos terceiros titulares dos direitos correspondentes, o Utilizador não poderá reproduzir, transformar, modificar, desmontar, realizar engenharia reversa, distribuir, alugar, prestar, colocar à disposição ou permitir o acesso ao público, por meio de qualquer forma de comunicação pública de nenhum dos elementos referidos no parágrafo anterior.
+
+> O Utilizador deverá utilizar os materiais, elementos e informação a que aceda através da utilização da Página unicamente para as suas necessidades pessoais, obrigando-se a não realizar, directa ou indirectamente, uma exploração comercial dos materiais, elementos e informação obtidos através dos mesmos.
+
+> Além disso, não poderão ser endereçados à Página quaisquer links para sites pornográficos ou obscenos, e os serviços de fórum, chat ou SMS não poderão ser utilizados para qualquer fim comercial, distribuição de publicidade, angariação de fundos, ou de produtos ou serviços, nem para qualquer tipo de aliciamento de utilizadores para adesão a serviços online concorrentes.
+
+> A informação recolhida na Página de Análise Técnica foi elaborada por Noesis Análisis Financiero e Bolsamania Tech Solutions e contém informação baseada em fontes consideradas como fiáveis, embora nem a Noesis AF nem a Bolsamania Tech Solutions podem garantir o seu conteúdo.
+
+Words found on that page: prior permission or consent is required for some uses; automated access, scraping or AI is named; personal or non-commercial use is named.
 
 ## Storm Charles
 

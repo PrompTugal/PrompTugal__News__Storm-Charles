@@ -1,6 +1,6 @@
 # Met Éireann (Ireland)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Ireland
 
@@ -37,7 +37,11 @@ open data (warnings JSON/XML, forecast API)
 
 As we recorded it: CC BY 4.0 (not re-read).  
 May we show its content: **yes with attribution**.  
-Its terms page, as linked on the site ("Legal Weather Reports Information"): <https://www.met.ie/about-us/legal-reports-information> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Legal Weather Reports Information"): <https://www.met.ie/about-us/legal-reports-information> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> It is our experience over many years that the weather report is often not a source of contention.
 
 ## Storm Charles
 

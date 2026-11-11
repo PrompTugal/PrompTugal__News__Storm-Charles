@@ -1,6 +1,6 @@
 # Deutscher Wetterdienst (Germany)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Germany
 
@@ -37,7 +37,9 @@ opendata.dwd.de: files over HTTPS, no key (GRIB, BUFR, CAP, CSV)
 
 As we recorded it: CC BY 4.0 with source named (read on its legal notice).  
 May we show its content: **yes with attribution**.  
-Its terms page, as linked on the site ("Imprint"): <https://www.dwd.de/EN/Home/EN/service/imprint/imprint_node.html> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Imprint"): <https://www.dwd.de/EN/Home/EN/service/imprint/imprint_node.html> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+Its terms page was not read: the terms page did not open.
 
 ## Storm Charles
 

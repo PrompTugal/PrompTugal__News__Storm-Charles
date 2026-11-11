@@ -1,6 +1,6 @@
 # Every weather site, one page each
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 One page per entry of [sites.json](../sites.json): what it shows and how, the data and models it says it uses, its API, its licence and terms as published, whether it covered Storm Charles, and its own contact page. [Compare them in one table](../compare.md) · [the ranking and the ten ideas](../README.md).
 

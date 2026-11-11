@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -150,6 +150,14 @@ The exact terms, quoted, with each licence page's address, are in [imagery.json]
 | MeteoAlarm | [terms and conditions](https://www.meteoalarm.org/en/live/page/terms-and-conditions) | its maps: no | **Redraw, do not copy.** The warnings may be reused (terms equivalent to CC BY 4.0) with IPMA named, the issue time, a link to meteoalarm.org, its disclaimer sentence and a delay under ten minutes; its own maps, icons and layout belong to EUMETNET. |
 
 **For the designer:** no radar may be put on the page today without asking IPMA. What can be built now: (1) our own warnings map from IPMA's JSON (source named, logo, link); (2) text links "Radar: IPMA" and "Satellite: EUMETView"; then (3) a satellite frame at least one hour old from EUMETSAT, once a person has accepted its licence. Three asks for a person are listed in `imagery.json`.
+
+## The licence of each site: can we read it, can we reuse it?
+
+Data: [terms.json](terms.json) (each site's own terms page, with the sentences about reuse, verbatim) and [links.json](links.json) (the terms and contact links as printed on each site). Read 11 November, 02:15 UTC. Of 106 entries: a terms link was found on 63; 52 terms pages gave text about reuse; 11 did not open or are drawn by script; 43 sites showed no terms link in the HTML we read. Every [site page](sites/README.md) carries its own sentences. Not legal advice.
+
+- **An open licence is named** on the terms pages of: Met Office (Open Government Licence), US National Weather Service, Yr / MET Norway, KNMI (CC0 for the website), FMI, JMA, ECMWF, Open-Meteo, the Iowa Mesonet, dados.gov.pt, Wikipedia. With IPMA (non-profit use, source named), DWD (CC BY 4.0), MeteoAlarm and EUMETSAT (see imagery above), these are the sources we can build on.
+- **The press is all rights reserved**: Público, Observador, ECO and others say their content may not be used without consent. We quote a headline or a sentence with a link, as the law's free uses allow, and nothing more.
+- **Three sites restrict automated reading or use by AI systems in their terms**: tempo.pt (Meteored) forbids "a extração massiva de dados (scraping) por meio de spiders, bots ou sistemas automatizados" and use of its texts or data to train AI models; The Portugal News says public access "does not constitute permission or a licence for such automated or commercial uses"; Zoom Earth's sharing terms exclude "automated or systematic access". We had read each once before reading its terms. **From 02:40 UTC we no longer request their pages**: we keep the link and a short description, capture nothing, and leave the question of asking permission to a person.
 
 ## Our own use of IPMA's warnings against MeteoAlarm's terms
 

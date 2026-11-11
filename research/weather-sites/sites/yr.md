@@ -1,6 +1,6 @@
 # Yr (MET Norway and NRK)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Norway
 
@@ -39,7 +39,19 @@ api.met.no (Locationforecast and others): JSON, no key, an identifying User-Agen
 
 As we recorded it: NLOD 2.0 and CC BY 4.0; credit MET Norway (read on its licence page).  
 May we show its content: **yes with attribution**.  
-Its terms page, as linked on the site ("License"): <https://api.met.no/doc/License> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("License"): <https://api.met.no/doc/License> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Documentation Licensing and Data Policy Unless specified otherwise, all data and products are licensed under the Norwegian Licence for Open Government Data (NLOD) 2.0 and Creative Commons 4.0 BY International licences.
+
+> Credit should be given to The Norwegian Meteorological Institute, shortened MET Norway , as the source of data.
+
+> A link to the source where the data can be downloaded would also be appreciated.
+
+> Lewis Hine, New Haven, CN 1909 (public domain) Weather: © Vyacheslav Argenberg (CC BY 4.0) Marine: © Defence Imagery (CC BY-SA 2.0) Aviation: © Eric Salard (CC BY-SA 2.0) Images: © EUMETSAT/MET Military: © PAO FOH/Forsvaret Observations: © Ketil Isaksen/MET Other: © NRK Changelog: © Jason Biro (CC BY 2.0) 2020-05-29, Geir Aalberg
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

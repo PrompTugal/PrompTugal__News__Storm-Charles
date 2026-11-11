@@ -1,6 +1,6 @@
 # KNMI (Netherlands)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · Netherlands
 
@@ -37,7 +37,17 @@ KNMI Data Platform: Open Data API, EDR API, notification service (key needed)
 
 As we recorded it: CC BY 4.0 on the datasets read.  
 May we show its content: **yes with attribution**.  
-Its terms page, as linked on the site ("Copyright"): <https://www.knmi.nl/copyright> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Copyright"): <https://www.knmi.nl/copyright> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Sluiten Copyright Tenzij anders vermeld is op de inhoud van deze website de Creative Commons zero verklaring (CC0) van toepassing.
+
+> Rechten die ongewijzigd blijven De volgende rechten worden door Creative Commons zero verklaring niet gewijzigd en blijven dus van kracht:
+
+> Meer informatie Nederlandse vertaling van de CCO verklaring Uitleg Creative Commons licenties
+
+Words found on that page: an open licence is named.
 
 ## Storm Charles
 

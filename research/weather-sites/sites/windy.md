@@ -1,6 +1,6 @@
 # Windy
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · model-viewer · Czechia
 
@@ -39,7 +39,11 @@ paid Point Forecast and Map Forecast APIs; free embed widget (iframe)
 
 As we recorded it: all rights reserved; embed allowed as provided.  
 May we show its content: **embed only**.  
-Its terms page, as linked on the site ("Terms Terms of use of the Webcams API"): <https://api.windy.com/webcams/terms> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Terms Terms of use of the Webcams API"): <https://api.windy.com/webcams/terms> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Webcam page URL is available in: webcam.urls Timelapse player URL is available in: webcam.player Don't want to link or embed us?
 
 ## Storm Charles
 

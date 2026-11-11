@@ -1,6 +1,6 @@
 # FU Berlin: Aktion Wetterpate
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · storm-naming · Germany
 
@@ -37,7 +37,9 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **link only**.  
-Its terms page, as linked on the site ("Impressum"): <https://www.wetterpate.de/impressum/index.html> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Impressum"): <https://www.wetterpate.de/impressum/index.html> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+Its terms page was not read: no text about reuse was found in it.
 
 ## Storm Charles
 

@@ -1,6 +1,6 @@
 # Beachcam (MEO)
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Portugal · webcams · Portugal
 
@@ -37,7 +37,13 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **link only**.  
-Its terms page, as linked on the site ("Termos e Condições aplicáveis"): <https://beachcam.meo.pt/termos-e-condicoes/> (found 23:39 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos e Condições aplicáveis"): <https://beachcam.meo.pt/termos-e-condicoes/> (found 23:39 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Este conteúdo advém Beachcam e é protegido por direitos de autor ao abrigo das leis portuguesas e da União Europeia, não podendo ser utilizado fora das condições admitidas no uso deste site, sem consentimento do Beachcam.
+
+> O conteúdo deste site não poderá ser copiado, alterado ou distribuído, salvo com autorização expressa do Beachcam.
 
 ## Storm Charles
 

@@ -1,6 +1,6 @@
 # TSF: path "incerto", critical period Wednesday afternoon; transport
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · explainer · Portugal
 
@@ -37,7 +37,19 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Termos e Privacidade"): <https://www.tsf.pt/termos-e-condicoes> (found 23:40 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos e Privacidade"): <https://www.tsf.pt/termos-e-condicoes> (found 23:40 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> Todo o conteúdo deste site é protegido por Direitos de Autor e Direitos Conexos, e Direitos da Propriedade Industrial, ao abrigo das leis Portuguesas e da União Europeia, convenções internacionais e outras leis, não podendo ser utilizado fora das condições admitidas neste site e sem consentimento da NI.
+
+> O conteúdo presente neste site não poderá ser copiado, alterado ou distribuído salvo com autorização expressa da NI.
+
+> Está terminantemente proibida a utilização do site para fins ilegais ou quaisquer outros que possam ser considerados prejudiciais para a imagem que a NI tem no mercado.
+
+> A NI reserva-se o direito de proceder judicialmente contra os autores de qualquer cópia, reprodução ou outra utilização não autorizada do (s) seu (s) conteúdo (s) por terceiros.
+
+Words found on that page: personal or non-commercial use is named.
 
 ## Storm Charles
 

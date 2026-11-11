@@ -1,6 +1,6 @@
 # tempo.pt (Meteored): seven forecast pieces
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Storm Charles coverage · specialist-press · Portugal
 
@@ -9,7 +9,7 @@
 
 ## Screenshot
 
-None yet. Requested from incident.archivist@ in [addresses.json](../addresses.json) (capture: only if its terms allow: otherwise the link). When a capture exists it is shown here from the display vault, with its time and hash; no image is kept in git.
+None yet. Requested from incident.archivist@ in [addresses.json](../addresses.json) (capture: no: its terms restrict automated access; link only). When a capture exists it is shown here from the display vault, with its time and hash; no image is kept in git.
 
 ## What it shows, and how
 
@@ -37,7 +37,21 @@ none
 
 As we recorded it: all rights reserved.  
 May we show its content: **short quotation with link**.  
-Its terms page, as linked on the site ("Termos de utilização"): <https://www.tempo.pt/aviso_legal.html> (found 23:41 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Termos de utilização"): <https://www.tempo.pt/aviso_legal.html> (found 23:41 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> A reprodução, distribuição, comunicação pública e transformação, total ou parcial, de tal conteúdo para fins comerciais, em qualquer suporte e por qualquer meio técnico, é estritamente proibida sem a autorização prévia, expressa e por escrito da Empresa.
+
+> 2.2 A extração massiva de dados (scraping) por meio de spiders, bots ou sistemas automatizados, bem como a sua utilização comercial ou redistribuição corporativa, é estritamente proibida.
+
+> Além disso, é estritamente proibido ao Utilizador utilizar as Plataformas, APIs, textos ou dados meteorológicos para treinar, desenvolver ou aperfeiçoar quaisquer modelos de Inteligência Artificial (LLMs, Machine Learning, etc.) .
+
+> REDISTRIBUÇÃO E WIDGETS 9.1 A Meteored autoriza a redistribuição de produtos gráficos ou textuais disponíveis nas suas Plataformas única e exclusivamente para fins informativos pessoais, privados ou não comerciais, desde que a Meteored seja explicitamente citada como a fonte do referido produto.
+
+Words found on that page: automated access, scraping or AI is named; personal or non-commercial use is named.
+
+**Its terms restrict automated access or use by AI systems (see the sentences above).** We read this site once before reading its terms; since 11 November 2026, 02:40 UTC we no longer request its pages, we keep only the link and the short description, and nothing of it is captured. Whether to ask for permission is for a person to decide.
 
 ## Storm Charles
 

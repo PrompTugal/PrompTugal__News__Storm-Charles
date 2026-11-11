@@ -1,6 +1,6 @@
 # Windfinder
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · specialist · Germany
 
@@ -37,7 +37,19 @@ commercial
 
 As we recorded it: all rights reserved.  
 May we show its content: **no**.  
-Its terms page, as linked on the site ("Terms of use"): <https://www.windfinder.com/contact/terms> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Terms of use"): <https://www.windfinder.com/contact/terms> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+**From its terms page as published** (read 02:15 UTC, 2026-11-11; sentences picked by a script from the page's text, verbatim: they point to the passage and are not the whole terms):
+
+> The order is automatically extended by the initially ordered period at the respective valid price, unless you have canceled via the respective App Store using the method provided there at the latest before the end of the ordered period.
+
+> You are not authorized to change the data, reproduce it for third parties, make it accessible, forward it, sell it or use it commercially in any other form, unless we have expressly permitted this use in advance.
+
+> If your subscription is automatically renewed, the fee will be collected in advance at the beginning of the respective renewal period.
+
+> Data To the extent necessary for the fulfillment of the respective contractual purpose, we grant you a simple and non-transferable right of use to the data provided by us to use the respective protected content in non-commercial form within the scope of the contractual provisions.
+
+Words found on that page: prior permission or consent is required for some uses; personal or non-commercial use is named.
 
 ## Storm Charles
 

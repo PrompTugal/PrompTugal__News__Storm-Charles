@@ -1,6 +1,6 @@
 # Météo-France: Vigilance
 
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:25 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 02:40 UTC
 
 [All weather sites](../README.md) · [compare](../compare.md) · Worldwide · national-service · France
 
@@ -39,7 +39,9 @@ meteo.data.gouv.fr and a public API portal (key needed)
 
 As we recorded it: French open licence (Etalab) for public data; not re-read in this pass.  
 May we show its content: **yes with attribution (to confirm)**.  
-Its terms page, as linked on the site ("Mentions Légales"): <https://meteofrance.fr/mentions-legales> (found 23:38 UTC, 2026-11-10; the terms themselves were not read line by line unless the line above says "read").
+Its terms page, as linked on the site ("Mentions Légales"): <https://meteofrance.fr/mentions-legales> (found 23:38 UTC, 2026-11-10; excerpts below where the page opened).
+
+Its terms page was not read: no text about reuse was found in it.
 
 ## Storm Charles
 
