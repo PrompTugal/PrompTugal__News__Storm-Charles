@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Shellfish harvesting bans by production zone
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:30 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:31 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 

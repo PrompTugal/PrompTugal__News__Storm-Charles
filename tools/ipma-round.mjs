@@ -27,7 +27,8 @@ if (fs.existsSync(path.join(STORE, '.sg_vault'))) {
     try {
         const info = sg('vault', 'info')
         const id = (info.match(/Vault ID:\s+(\S+)/) || [])[1], read = (info.match(/Read key:\s+(sgit_[a-z_]*read_[0-9a-f]+)/) || [])[1], server = (info.match(/^\s*URL:\s+(https:\/\/[a-z0-9.-]+)\/?\s*$/m) || [])[1]   // the remote's line only: the 'Web URL' line carries the vault key
-        ds.vault = { kind: 'data vault (normal, not packed)', id, server, read_key: read, how_to_read: 'sgit clone <read_key>:<id> (read-only)' }
+        const pub = read && read.replace(/^sgit_[a-z]+_read_/, 'sgit_public_read_')   // the same read key under sgit's prefix for a key meant to be published (as data/vaults.json does); a data vault's read key is public by RESTRUCTURE.md
+        ds.vault = { kind: 'data vault (normal, not packed)', id, server, read_key: pub, clone: `sgit clone ${pub}:${id}`, note: 'a read key is derived one-way and cannot write' }
         const st = sg('status')
         if (!/Nothing to commit/.test(st)) sg('commit', '-m', `IPMA open data: read ${now()}`)
         if (process.env.SG_SEND_ACCESS_TOKEN) { sg('--token', process.env.SG_SEND_ACCESS_TOKEN, 'push'); ds.vault.pushed_utc = now() } else ds.vault.note = 'not pushed in this round: no access token in the environment'

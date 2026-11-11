@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # Browse the files
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:30 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 02:31 UTC
 
 [IPMA's open data](index.md) · [Warnings over time](warnings.md) · [Stations](stations.md) · [The sea](sea.md) · [Cities: forecast and observed](cities.md) · [The API, mapped](api.md) · [Browse the files](data.md) · [Licence and terms](licence.md)
 
@@ -29,4 +29,4 @@ Pick a file above: **Table** shows its rows, **Schema** its shape (keys and type
 | [listing.json](listing.json) | 143409 | IPMA's own directory listings under https://api.ipma.pt/open-data/, as its server lists them (name, date and size are IPMA's columns; the dates carry no time zone). A listing, not a download: files are read only where sources/ipma/api.json says so. A directory |
 | [nodes.json](nodes.json) | 122942 | Nodes from IPMA's open data for incident.entities@ to adopt: the body, each data set, the warning levels and types, the 25 warning areas, the forecast places, the coastal places, the stations and the weather types. Ids are stable (they are built from IPMA's ow |
 | [source.json](source.json) | 9039 | IPMA as a source for this site: who it is, what it publishes as open data, its terms exactly as published, and how we read it. The map of its API is api.json; what we hold is latest.json. |
-| [dataset.json](dataset.json) | 10859 | Where IPMA's full responses are kept: a data vault (SG/Send, made with sgit), never git. latest/ is overwritten by each read; a dated folder per hour (UTC) keeps every file that changed in that hour, a <file>.diff.json beside it saying what changed, and a mani |
+| [dataset.json](dataset.json) | 10975 | Where IPMA's full responses are kept: a data vault (SG/Send, made with sgit), never git. latest/ is overwritten by each read; a dated folder per hour (UTC) keeps every file that changed in that hour, a <file>.diff.json beside it saying what changed, and a mani |
