@@ -38,7 +38,8 @@ function scrub(c) {
   // an editor's summary may name a chatbot product: the fact stays, the product's name does not (no model names in what we push)
   let s = c.replace(/\b(ChatGPT|GPT-?\d[\w.]*|Claude|Gemini|Copilot|Grok|Llama|Mistral|DeepSeek|Perplexity)\b[^,;.)(]*(\s*\([^)]*\))?/gi, 'a named chatbot ')
     .replace(/\[\[\s*(Special|Especial|Spezial|Spécial|Speciale|Speciaal):[^\]|]*(Contrib|Contribuciones|Beiträge|Bijdragen)[^\]]*\]\]/gi, '[editor]')
-    .replace(/\[\[\s*(User|Usuário|Usuária|Utilizador|Utilizadora|Usuario|Usuaria|Benutzer|Benutzerin|Utilisateur|Utilisatrice|Utente|Gebruiker|Usuari|Lankide)([ _](talk|Discussão|discusión|Diskussion|Discussion))?:[^\]]*\]\]/gi, '[editor]')
+    .replace(/\b(Suggested by|Sugerido por|Vorgeschlagen von|Suggéré par|Activated by)\s+[^|/;,)\]]+/gi, '$1 [editor] ')
+    .replace(/\[\[\s*:?(?:w:)?(?:[a-z-]{2,12}:)?\s*(User|Usuário|Usuária|Utilizador|Utilizadora|Usuario|Usuaria|Benutzer|Benutzerin|Utilisateur|Utilisatrice|Utente|Gebruiker|Usuari|Lankide)([ _](talk|Discussão|discusión|Diskussion|Discussion))?:[^\]]*\]\]/gi, '[editor]')
     .replace(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g, '[ip]').replace(/\b[0-9a-f]{1,4}(:[0-9a-f]{0,4}){4,7}\b/gi, '[ip]')
   if (/\b(revert|reverted|undid|undo|rollback|desfeita|desfez|revertid|reversão|deshecha|deshecho|revertido|annulation|révocation|rückgängig|zurückgesetzt|annullat|ongedaan|desfeta)\b/i.test(s)) {
     const m = s.match(/\b(\d{6,})\b/)
