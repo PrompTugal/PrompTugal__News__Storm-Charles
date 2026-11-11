@@ -1,7 +1,7 @@
 {
  "about": "Licences as data: for each source in the meteorology lineage, the exact licence or terms with the page that states them, and four plain answers: may we read it, store it, show it, transform it; and with what attribution. \"unclear\" where the terms are silent or not yet read. A careful reading of public terms by an agent, not legal advice: the decision in a doubtful case is Dinis's. Each row is checked against its page by tools/meteorology-read.mjs (state, read_utc, quote).",
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:41Z",
+ "updated": "2026-11-11T02:47Z",
  "answers": [
   "yes",
   "yes, with attribution",
@@ -180,8 +180,7 @@
    "covers": [
     "data-ipma-open",
     "obs-ipma-stations",
-    "svc-ipma-warnings",
-    "site-ipma"
+    "svc-ipma-warnings"
    ],
    "licence": "IPMA's own terms on api.ipma.pt: personal or public use, never for profit or offence, the source always named",
    "source": "https://api.ipma.pt/",
@@ -233,36 +232,6 @@
    "quote": "(after accepting a free licence in its user portal); newer than one hour on a public site needs a paid licence. MeteoAlarm's warnings may be redrawn by us under its conditions; its own map images may not be copied. Safest now: a text link \\\"IPMA radar\\\" and \\\"EUMETView\\\" with the time;"
   },
   {
-   "id": "lic-eumetsat",
-   "name": "EUMETSAT (Meteosat and Metop data and imagery)",
-   "covers": [
-    "data-eumetsat",
-    "obs-meteosat",
-    "obs-metop",
-    "site-eumetsat"
-   ],
-   "licence": "EUMETSAT data policy: a licence per product",
-   "source": "https://www.eumetsat.int/legal-framework/data-policy",
-   "expect": [
-    "EUMETSAT Data Policy",
-    "licences"
-   ],
-   "may": {
-    "read": "yes",
-    "store": "unclear",
-    "show": "yes for Meteosat images one hour old or more, with attribution (incident.weatherwatch@'s reading); newer: unclear",
-    "transform": "unclear"
-   },
-   "attribution": "\"© EUMETSAT [year]\".",
-   "conditions": "The licensing page is drawn by script; our read is recorded below. Until it is read in full, treat everything but an hour-old image with credit as unclear.",
-   "read_utc": "2026-11-11T02:41Z",
-   "http": 200,
-   "sha256": "345ed466ec3fda2279a9c691a4e38a03285b8b96fd5055ae6337c4de79f47600",
-   "state": "stated",
-   "note": "The policy itself is a PDF and the licences are listed on a further page: neither read in full yet. Until then, everything but an hour-old image with credit is unclear (the hour rule is incident.weatherwatch@'s reading, research/weather-sites/imagery.json).",
-   "quote": "tribunal serving as legal remedy for the settlement of employment-related disputes within the organisation. The EUMETSAT Data Policy is a document that has been established and approved by EUMETSAT Member States. Last Updated 28 February 2025 Published on 26 March 2020 The EUMETSAT"
-  },
-  {
    "id": "lic-copernicus-era5",
    "name": "Copernicus Climate Change Service (ERA5)",
    "covers": [
@@ -293,13 +262,13 @@
    "id": "lic-cmems",
    "name": "Copernicus Marine Service",
    "covers": [
-    "data-cmems"
+    "data-cmems",
+    "model-ibi-waves"
    ],
    "licence": "Copernicus Marine service licence (free of charge, attribution)",
-   "source": "https://marine.copernicus.eu/user-corner/service-commitments-and-licence",
+   "source": "https://marine.copernicus.eu/access-data",
    "expect": [
-    "Licence",
-    "Copernicus"
+    "free, open, regular and systematic"
    ],
    "may": {
     "read": "yes, with a free account",
@@ -309,11 +278,11 @@
    },
    "attribution": "\"Generated using E.U. Copernicus Marine Service Information\" with the product's DOI.",
    "conditions": "The licence text itself is a linked document not yet read: transform is \"unclear\" until it is.",
-   "read_utc": "2026-11-11T02:41Z",
+   "read_utc": "2026-11-11T02:46Z",
    "http": 200,
-   "sha256": "9993fc8972b86cff432377678f44bed3e084643b5e65c0e9262d3a43f69cef16",
+   "sha256": "d0bd153176475fcb0b352ca33b9f079bfc0c372f970eb75b95fa214b3f1d7ff8",
    "state": "stated",
-   "quote": "Quality Product Roadmap All Product Ocean Monitoring Indicators Service Get Inspired Service Commitments and Licence Contact Us Education About About How we work Observation requirements About Producers R&D Projects Service Evolution Strategy 1st call for tenders 2nd call for tenders"
+   "quote": "environment for the ultimate benefit of all European and global citizens. Copernicus Marine Service Provides free, open, regular and systematic reference information on the blue (physical), white (sea ice), and green (biogeochemical) ocean state, variability and dynamics across the"
   },
   {
    "id": "lic-meteofrance",
@@ -456,11 +425,144 @@
    "covers": [
     "model-aurora"
    ],
-   "licence": "Stated in the repository's licence section",
-   "source": "https://raw.githubusercontent.com/microsoft/aurora/main/README.md",
+   "licence": "MIT (code: LICENSE.txt; the model card on Hugging Face also reads \"License: mit\")",
+   "source": "https://raw.githubusercontent.com/microsoft/aurora/main/LICENSE.txt",
    "expect": [
-    "License",
-    "Aurora"
+    "MIT License",
+    "Microsoft Corporation"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, with the copyright notice kept",
+    "transform": "yes, with the copyright notice kept"
+   },
+   "attribution": "Microsoft, with the paper cited.",
+   "conditions": "The README has a licence section; its text was not matched in this read: unclear until read.",
+   "read_utc": "2026-11-11T02:46Z",
+   "http": 200,
+   "sha256": "131a2e309aba5813556c5af4e81dcc9ae26786593025ac694875eb626e5d5adf",
+   "state": "stated",
+   "note": "Running it needs an analysis to start from and a GPU.",
+   "quote": "MIT License Implementation of the Aurora model. Copyright (c) Microsoft Corporation. Permission is hereby granted, free of charge, to any person obtaining a copy of this software"
+  },
+  {
+   "id": "lic-eumetsat-core",
+   "name": "EUMETSAT \"Core\" data and products",
+   "covers": [
+    "data-eumetsat"
+   ],
+   "licence": "CC BY 4.0, without charge",
+   "source": "https://user.eumetsat.int/resources/user-guides/data-registration-and-licensing",
+   "expect": [
+    "made available without charge under a CC-BY-4.0 licence"
+   ],
+   "may": {
+    "read": "yes, after registering in its user portal",
+    "store": "yes",
+    "show": "yes, with attribution",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "\"[Contains modified] EUMETSAT [Meteosat/Metop] [data/product] [year]\"",
+   "note": "Which products are \"Core\" is stated product by product in EUMETSAT's catalogue: check the product before using this row.",
+   "render": true,
+   "read_utc": "2026-11-11T02:47Z",
+   "http": 200,
+   "sha256": "42bdcf46d4dbdb241428602fe455d0365e7fe5bc32780177196c38653c0a93ea",
+   "state": "stated",
+   "quote": "'Recommended’ data and products. ‘Core': All EUMETSAT data and products declared as ‘Core’ by the EUMETSAT Council are made available without charge under a CC-BY-4.0 licence. You may share (copy and redistribute the material in any medium or format for any purpose, even commercially) and"
+  },
+  {
+   "id": "lic-eumetsat-1h",
+   "name": "EUMETSAT Meteosat level 1 data one hour old or more, and some global Metop data (\"Recommended\")",
+   "covers": [
+    "obs-meteosat",
+    "obs-metop",
+    "site-eumetsat"
+   ],
+   "licence": "EUMETSAT licence for Meteosat level 1 data with a latency of one hour or more: any purpose, attribution, no redistribution of the original numerical data",
+   "source": "https://user.eumetsat.int/resources/user-guides/data-registration-and-licensing",
+   "expect": [
+    "latency of more than or equal to 1 hour",
+    "Redistribute the Original Numerical Data"
+   ],
+   "may": {
+    "read": "yes, after registering and accepting the licence",
+    "store": "yes",
+    "show": "yes, as an image or product we make from it, with attribution; never the original numerical data",
+    "transform": "yes, with attribution"
+   },
+   "attribution": "\"[Contains modified] EUMETSAT [Meteosat/Metop] [data/product] [year]\"",
+   "note": "No fee. The design rule on this site stays: no satellite image is embedded or hotlinked until Dinis decides; this row says what the licence would allow.",
+   "render": true,
+   "read_utc": "2026-11-11T02:47Z",
+   "http": 200,
+   "sha256": "42bdcf46d4dbdb241428602fe455d0365e7fe5bc32780177196c38653c0a93ea",
+   "state": "stated",
+   "quote": "acceptance of licensing terms and conditions, as summarised below. Licence for Meteosat level 1 data, with a latency of more than or equal to 1 hour, and some Global Metop data The following table provides an overview of the Recommended data covered by this licence. Data currently"
+  },
+  {
+   "id": "lic-eumetsat-rt",
+   "name": "EUMETSAT Meteosat level 1 data newer than one hour",
+   "covers": [
+    "obs-meteosat"
+   ],
+   "licence": "EUMETSAT licence by kind of use: personal, educational and research use only without a further licence",
+   "source": "https://user.eumetsat.int/resources/user-guides/data-registration-and-licensing",
+   "expect": [
+    "latency of less than 1 hour",
+    "including broadcasting in any form"
+   ],
+   "may": {
+    "read": "yes, for non-commercial, non-operational study",
+    "store": "yes, for our own study",
+    "show": "no: showing it on a public site is broadcasting; that needs the service-provider or broadcaster licence",
+    "transform": "yes, for our own study; not for publication"
+   },
+   "attribution": "\"[Contains modified] EUMETSAT [Meteosat/Metop] [data/product] [year]\"",
+   "note": "The storm as it happens, from space, is the one layer we may look at and not show.",
+   "render": true,
+   "read_utc": "2026-11-11T02:47Z",
+   "http": 200,
+   "sha256": "42bdcf46d4dbdb241428602fe455d0365e7fe5bc32780177196c38653c0a93ea",
+   "state": "stated",
+   "quote": "register in the user portal and accept the related terms and conditions. Licence for Meteosat level 1 data with a latency of less than 1 hour The following table provides an overview of the Recommended data covered by this licence. Data currently available to users include a link to the"
+  },
+  {
+   "id": "lic-fourcastnet",
+   "name": "FourCastNet (code)",
+   "covers": [
+    "model-fourcastnet"
+   ],
+   "licence": "BSD 3-Clause",
+   "source": "https://raw.githubusercontent.com/NVlabs/FourCastNet/master/LICENSE",
+   "expect": [
+    "BSD 3-Clause License"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "yes",
+    "show": "yes, with the copyright notice kept",
+    "transform": "yes, with the copyright notice kept"
+   },
+   "attribution": "FourCastNet authors, with the licence text.",
+   "note": "The licence of the trained weights was not read: unclear for the weights.",
+   "read_utc": "2026-11-11T02:47Z",
+   "http": 200,
+   "sha256": "4739fc15761da2a1039bb548d5f45001025b5ed54f83977b762067da052a626f",
+   "state": "stated",
+   "quote": "#BSD 3-Clause License # #Copyright (c) 2022, FourCastNet authors #All rights reserved. # #Redistribution and use in source and binary forms, with or without #modification,"
+  },
+  {
+   "id": "lic-copernicus-ems",
+   "name": "Copernicus Emergency Management Service (mapping products)",
+   "covers": [
+    "data-copernicus-ems"
+   ],
+   "licence": "Described as a \"free of charge mapping service\"; the licence of the products themselves not yet read",
+   "source": "https://mapping.emergency.copernicus.eu/",
+   "expect": [
+    "free of charge mapping service"
    ],
    "may": {
     "read": "yes",
@@ -468,13 +570,40 @@
     "show": "unclear",
     "transform": "unclear"
    },
-   "attribution": "Microsoft, with the paper cited.",
-   "conditions": "The README has a licence section; its text was not matched in this read: unclear until read.",
-   "read_utc": "2026-11-11T02:40Z",
+   "attribution": "Not yet read; Copernicus products usually ask for \"Copernicus Emergency Management Service (© European Union), [activation code]\".",
+   "note": "No activation for Storm Charles when probed (sources).",
+   "read_utc": "2026-11-11T02:47Z",
    "http": 200,
-   "sha256": "73535361d411738555fba1054f88e97aed8a746b6174391e0feb11db08c04c92",
+   "sha256": "b43b08d5d3a7ade4f4add3607c558d7b7388bb875ecce5ae0a029cb776737c7b",
    "state": "stated",
-   "quote": "- [What is Aurora?](#what-is-aurora) - [Getting Started](#getting-started) - [Contributing](#contributing) - [License](#license) - [Security](#security) - [Responsible AI Transparency Documentation](#responsible-ai-transparency-documentation) - [Trademarks](#trademarks) - [FAQ](#faq)"
+   "quote": "Emergency Management Service - On Demand Mapping We use satellite imagery and other geospatial data to provide free of charge mapping service in cases of natural hazards, human-made emergency situations and humanitarian crises throughout the world. 2 activations Ongoing 90 for Preparedness"
+  },
+  {
+   "id": "lic-ipma-site",
+   "name": "IPMA website (pages, charts, radar and satellite images)",
+   "covers": [
+    "site-ipma",
+    "obs-radar-ipma"
+   ],
+   "licence": "IPMA's site terms: personal or public use, never for profit or offence, the source always named",
+   "source": "https://www.ipma.pt/pt/siteinfo/index.html?page=index.xml",
+   "expect": [
+    "finalidades lucrativas",
+    "referir, sempre, a fonte"
+   ],
+   "may": {
+    "read": "yes",
+    "store": "unclear",
+    "show": "yes, non-profit, with the source named; loading its images from our pages (hotlinking) is not addressed",
+    "transform": "unclear"
+   },
+   "attribution": "\"Fonte: IPMA\", with a link.",
+   "note": "incident.weatherwatch@ read the same page for the radar (research/weather-sites/imagery.json): the terms are silent on hotlinking, so the site links to the radar as text.",
+   "read_utc": "2026-11-11T02:47Z",
+   "http": 200,
+   "sha256": "4119c8a84d7380a5b9b601790c841419b8943a48237cc2f4911b9c9211409761",
+   "state": "stated",
+   "quote": "símbolos nacionais existentes neste site para uso pessoal ou público desde que dessa utilização não decorram finalidades lucrativas ou ofensivas. O Utilizador deve referir, sempre, a fonte de informação. No que respeita aos sítios para que este site faz ligação deverá ser obtida"
   }
  ]
 }

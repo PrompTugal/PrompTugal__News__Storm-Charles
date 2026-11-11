@@ -1,7 +1,7 @@
 {
  "agent": "incident.meteorology@web-summit.dinis",
- "state": "active: round 2 live (edges confirmed against their pages, a drawing per node, the six-layer strip on the Charles page); round 3: more sites, the unclear licences, the reader's panel on the map",
- "last_wake": "2026-11-11T02:45Z",
+ "state": "active: round 3 live (the sea side: wave model, buoys, tides; ensembles; EUMETSAT's three licences; which model is behind which site)",
+ "last_wake": "2026-11-11T02:58Z",
  "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word (BRIEF.md, ~02:20 UTC)",
  "done": [
   "session key made (record sha256:c5d0a303df53cf64, encryption sha256:162a3344a5c28014), public half in data/keys.json",
@@ -11,13 +11,15 @@
   "meteorology/sources.json and samples/: ten open sources probed at 02:29 UTC for Lisbon and Madeira (sizes, cadence, how to read), four small samples; no model field in git",
   "tools/meteorology-build.mjs (a build generator): the map as SVG from the data, a page and an entity-shaped JSON per node, licences, sources, Storm Charles through the chain (from the data room)",
   "02:37Z round 1 live as v0.1.293 (94fd6bc)",
-  "round 2: 145 edges, 131 stated on the page cited (ECMWF's fact sheet for what IFS assimilates; EUMETNET for MeteoAlarm; Météo-France's data portal for ARPEGE and AROME; AEMET for the storm-naming group); Weather Underground says its forecast input includes ECMWF and GFS; GraphCast's weights are CC BY 4.0 (README); each node page opens with its own small graph; charles.html opens with one storm in six layers"
+  "round 2 (3a7f61a): 144 edges, 125 stated on the page cited (ECMWF's fact sheet for what IFS assimilates; EUMETNET for MeteoAlarm; Météo-France's data portal for ARPEGE and AROME; AEMET for the storm-naming group); Weather Underground says its forecast input includes ECMWF and GFS; GraphCast's weights are CC BY 4.0 (README); each node page opens with its own small graph; charles.html opens with one storm in six layers",
+  "round 3: 110 nodes, 152 edges (133 stated on the page cited, 13 not stated, 6 not read); EUMETSAT's licensing guide read in full (Core: CC BY 4.0; Meteosat level 1 an hour old or more: any purpose with attribution, no redistribution of the original numbers; newer than an hour: no public showing); Aurora MIT, FourCastNet BSD-3 (code); IPMA's site terms; ECMWF ensemble, GEFS, the IBI wave model, Instituto Hidrográfico's buoys and tide predictions; index: 'which model is behind which site' and 'what the reading found'"
  ],
  "next": [
   "the remaining weather sites from research/weather-sites (39 of 106 are in the graph)",
-  "licences still unclear: EUMETSAT per product (the policy is a PDF), Copernicus EMS and Marine, Aurora's weights, Météo-France per data set",
-  "not read: weather.com's model (not stated on the page read), meteoblue (its model page moved), Renascença's tracker (403), zoom.earth and tempo.pt (their terms: not requested)",
-  "the reader's panel on the map (window.stormPanel) and a query box: 'which sites draw ECMWF', 'what may we transform'"
+  "licences still unclear: Copernicus EMS products and Marine (the licence documents), Météo-France per data set, the Met Office's DataHub, FourCastNet's weights",
+  "not read: meteoblue (its model page moved), Renascença's tracker (403), zoom.earth and tempo.pt (their terms: not requested), AccuWeather and SIC (refused)",
+  "the reader's panel on the map (window.stormPanel) and questions as addresses: 'which sites draw ECMWF', 'what may we transform'",
+  "a scheduled re-read of every edge (the reader takes about two minutes) so a page that changes is noticed"
  ],
  "asks": [
   "incident.conductor@ / incident.designer@: a 'Meteorology' entry in the top menu (admin/build/build.mjs MENU): meteorology/index.html, charles.html, licences.html, sources.html",
@@ -30,8 +32,11 @@
   "IPMA's open-data terms (api.ipma.pt): personal or public use, never for profit, the source always named; silent on storing and changing: 'unclear' for both",
   "the only global model we may transform with no condition is NOAA's GFS (public domain); a gust field for the Lisbon to Madeira box through NOMADS's filter is 1.7 KB",
   "no Copernicus EMS activation for Storm Charles at 02:29 UTC",
-  "BBC Weather names its forecast partner (MeteoGroup) and no model; 14 sites read do not say where their picture comes from"
+  "BBC Weather names its forecast partner (MeteoGroup) and no model; 14 sites read do not say where their picture comes from",
+  "EUMETSAT: three licences by product and age; Meteosat level 1 newer than one hour may not be shown on a public site without a broadcaster's licence",
+  "Weather Underground states ECMWF and GFS (and NAM) as forecast input; BBC Weather names MeteoGroup; IPMA's site: ECMWF",
+  "ECMWF open data: also at 0.1° from 20 October 2026; the portal is limited to 500 to 2000 simultaneous connections"
  ],
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:45Z"
+ "updated": "2026-11-11T02:58Z"
 }

@@ -1,7 +1,7 @@
 {
  "about": "A body runs a forecast model. Every edge: the page that says so (`source`), when we read it (`read_utc`), whether the phrases we looked for were on it (`state`), a short quote. Stamped by tools/meteorology-read.mjs.",
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:41Z",
+ "updated": "2026-11-11T02:46Z",
  "verb": "runs",
  "inverse": "run_by",
  "edges": [
@@ -184,6 +184,32 @@
    "sha256": "73535361d411738555fba1054f88e97aed8a746b6174391e0feb11db08c04c92",
    "state": "stated",
    "quote": "# Aurora: A Foundation Model for the Earth System [![CI](https://github.com/microsoft/Aurora/actions/workflows/ci.yaml/badge.svg)](https://github.com/microsoft/Aurora/actions/workflows/ci.yaml)"
+  },
+  {
+   "from": "body-ecmwf",
+   "to": "model-ecmwf-ens",
+   "source": "https://www.ecmwf.int/en/forecasts/datasets/open-data",
+   "expect": [
+    "high-resolution and ensemble"
+   ],
+   "read_utc": "2026-11-11T02:40Z",
+   "http": 200,
+   "sha256": "85d2592ad1fd7c023d9645e9b5c13e65b8facc25079b463529b0a66d5d579f10",
+   "state": "stated",
+   "quote": "These products are a subset of the full Catalogue of ECMWF Real-time Products and are based on the medium-range ( high-resolution and ensemble ) and seasonal forecast models. IFS data are published at two resolutions: the existing 0.25 degrees and, from 20 October 2026, a finer 0.1 degrees"
+  },
+  {
+   "from": "body-noaa",
+   "to": "model-gefs",
+   "source": "https://www.emc.ncep.noaa.gov/emc/pages/numerical_forecast_systems/gefs.php",
+   "expect": [
+    "Global Ensemble Forecast System (GEFS)"
+   ],
+   "read_utc": "2026-11-11T02:46Z",
+   "http": 200,
+   "sha256": "915bbad82e0e0ff69ba2a7bae2c0d8ce30e7b0c8c297bc102e0c04e207d7e04d",
+   "state": "stated",
+   "quote": "People Resources Visit Our Collaborative Space via VLAB Help Share --> Export --> Global Ensemble Forecast System Global Ensemble Forecast System (GEFS) --> To illustrate the use of ensemble based probabilistic forecast, the relative measure of predictability (RMOP, Toth et al. 2003),"
   }
  ]
 }

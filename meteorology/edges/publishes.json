@@ -1,7 +1,7 @@
 {
  "about": "A body publishes a data set or API; or a data set carries a model's output. Every edge: the page that says so (`source`), when we read it (`read_utc`), whether the phrases we looked for were on it (`state`), a short quote. Stamped by tools/meteorology-read.mjs.",
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:41Z",
+ "updated": "2026-11-11T02:46Z",
  "verb": "publishes",
  "inverse": "published_by",
  "edges": [
@@ -270,6 +270,62 @@
    "sha256": "477befe75978080094bd94c95c6f391cebcaf81c31604073f95429e51436d50f",
    "state": "stated",
    "quote": "Feeds | MeteoAlarm Feeds FEEDS API Portal Country Atom Feed Search country Andorra https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-andorra Copy URL WebSub Austria https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-austria"
+  },
+  {
+   "from": "data-ecmwf-open",
+   "to": "model-ecmwf-ens",
+   "source": "https://www.ecmwf.int/en/forecasts/datasets/open-data",
+   "expect": [
+    "high-resolution and ensemble"
+   ],
+   "verb_note": "carries",
+   "read_utc": "2026-11-11T02:40Z",
+   "http": 200,
+   "sha256": "85d2592ad1fd7c023d9645e9b5c13e65b8facc25079b463529b0a66d5d579f10",
+   "state": "stated",
+   "quote": "These products are a subset of the full Catalogue of ECMWF Real-time Products and are based on the medium-range ( high-resolution and ensemble ) and seasonal forecast models. IFS data are published at two resolutions: the existing 0.25 degrees and, from 20 October 2026, a finer 0.1 degrees"
+  },
+  {
+   "from": "data-noaa-nomads",
+   "to": "model-gefs",
+   "source": "https://nomads.ncep.noaa.gov/",
+   "expect": [
+    "GEFS"
+   ],
+   "verb_note": "carries",
+   "read_utc": "2026-11-11T02:40Z",
+   "http": 200,
+   "sha256": "9e1ad0c5c816107b06233688397fa94381f2b819c6ca8ce7e0703674aa0d922c",
+   "state": "stated",
+   "quote": "description of each data access method. Data Set freq grib filter https Global Models AIGFS 6 hours - https AIGEFS 6 hours - https GDAS 6 hours grib filter https GDAS 0.25 6 hours grib filter https GFS 0.25 Degree 6 hours grib filter https GFS 0.25 Degree Hourly 6 hours grib filter"
+  },
+  {
+   "from": "data-cmems",
+   "to": "model-ibi-waves",
+   "source": "https://data.marine.copernicus.eu/product/IBI_ANALYSISFORECAST_WAV_005_005/description",
+   "expect": [
+    "Iberian Biscay Irish",
+    "Wave Analysis and Forecast"
+   ],
+   "verb_note": "carries",
+   "read_utc": "2026-11-11T02:46Z",
+   "http": 200,
+   "sha256": "8cf2052d8ab3b99427a9175b26bc5166b1903f6bec0ae1c86c6f2e484a2cdbd5",
+   "state": "stated",
+   "quote": "Atlantic-Iberian Biscay Irish- Ocean Wave Analysis and Forecast | Copernicus Marine Service Resources News Events Contact English English Español Copernicus Marine Service Resources"
+  },
+  {
+   "from": "body-ih",
+   "to": "data-ih-tides",
+   "source": "https://www.hidrografico.pt/",
+   "expect": [
+    "Previsão de Marés"
+   ],
+   "read_utc": "2026-11-11T02:46Z",
+   "http": 200,
+   "sha256": "8eaafa705d1a7ac2040daff27f43f11ff2c58cf758a31ee2ff104b9d5d3c236f",
+   "state": "stated",
+   "quote": "temporariamente indisponíveis. Tenta novamente mais tarde. Os dados são obtidos através da plataforma: Fechar Previsão de Marés Fechar Dia: Período 1 2 3 4 5 6 7 Os dados de marés estão temporariamente indisponíveis. Tenta novamente mais tarde. Os dados são obtidos através da plataforma:"
   }
  ]
 }

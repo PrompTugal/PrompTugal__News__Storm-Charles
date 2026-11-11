@@ -1,7 +1,7 @@
 {
  "about": "Open sources we could read now, beyond IPMA's and MeteoAlarm's (those are incident.ipma@'s and incident.sources@'s): what each offers for Lisbon and Madeira this week, its format, size, cadence and licence, from a probe of each at the time given. No model field is kept in git (binaries and the 256 KB limit): only what exists, how to read it, and small samples under meteorology/samples/. Explaining and attributing, never forecasting: the warnings are IPMA's.",
  "by": "incident.meteorology@web-summit.dinis",
- "updated": "2026-11-11T02:41Z",
+ "updated": "2026-11-11T02:47Z",
  "sources": [
   {
    "id": "src-open-meteo",
@@ -52,7 +52,7 @@
    "probe_read_utc": "2026-11-11T02:29Z",
    "sample": "samples/ecmwf-open-data-index.json",
    "how_to_read": "Read the .index, find the line for the field (param \"10fg\" for gusts), request its byte range, decode GRIB2 (ecCodes, cfgrib, or the \"ecmwf-opendata\" client).",
-   "limits": "Binary GRIB never goes in git: a decoded point value with its source could. Decoding needs a GRIB library we do not have in the build."
+   "limits": "Binary GRIB never goes in git: a decoded point value with its source could. Decoding needs a GRIB library we do not have in the build. ECMWF says access to the portal is \"currently limited to between 500 and 2000 simultaneous connections\", and that from 20 October 2026 IFS data are also published at 0.1° (read on its open-data page)."
   },
   {
    "id": "src-noaa-nomads",
@@ -105,7 +105,7 @@
    "id": "src-eumetsat-view",
    "name": "EUMETSAT EUMETView (WMS) and Data Store",
    "node": "data-eumetsat",
-   "licence": "lic-eumetsat",
+   "licence": "lic-eumetsat-1h",
    "endpoint": "https://view.eumetsat.int/geoserver/wms?service=WMS&version=1.3.0&request=GetCapabilities",
    "key": "none for map images; a free account for the Data Store API",
    "offers_for_lisbon_and_madeira": "Meteosat imagery as map layers that can be asked for any box and time: cloud mask, cloud top height, infrared, natural colour; the storm seen from space every 5 to 15 minutes.",
@@ -115,13 +115,13 @@
    "this_week": "Read 02:29 UTC: the service answered. The design rule here is that no satellite image is embedded or hotlinked until the licence is read in full: text links only.",
    "probe_read_utc": "2026-11-11T02:29Z",
    "how_to_read": "GetMap with layers=<name>&bbox=…&time=…",
-   "limits": "Images are binaries: never in git. Licence per product: see licences."
+   "limits": "Images are binaries: never in git. Three licences apply by product and age (Core: CC BY 4.0; Meteosat level 1 an hour old or more: show what we make from it, with attribution; newer than an hour: not on a public site): see licences."
   },
   {
    "id": "src-copernicus-ems",
    "name": "Copernicus Emergency Management Service: activations",
    "node": "data-copernicus-ems",
-   "licence": null,
+   "licence": "lic-copernicus-ems",
    "endpoint": "https://mapping.emergency.copernicus.eu/activations/api/activations/",
    "key": "none",
    "offers_for_lisbon_and_madeira": "Flood and damage maps from satellites, made when a country's authority asks (an \"activation\"). If Portugal activates it for Charles, the flood extents would appear here.",
@@ -131,8 +131,7 @@
    "this_week": "Read 02:29 UTC: no activation for Storm Charles. The most recent listed was a flood in Spain of 19 October 2026; the last naming Portugal was for wildfires on 30 July 2026.",
    "probe_read_utc": "2026-11-11T02:29Z",
    "how_to_read": "GET ?limit=N; each result has code, countries, category, name, activationTime.",
-   "limits": "Its licence was not read in this pass (\"unclear\"): the row above points at no licence of its own yet.",
-   "licence_note": "not read yet: unclear"
+   "limits": "Its products' licence was not read in full: see the licence row."
   },
   {
    "id": "src-meteofrance",
