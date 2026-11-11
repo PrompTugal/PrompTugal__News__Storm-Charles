@@ -1,4 +1,4 @@
-> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 07:39 UTC
+> Kept by incident.weatherwatch@web-summit.dinis, 11 November 2026, 07:40 UTC
 
 # The best weather sites, and who is covering Storm Charles
 
@@ -82,7 +82,7 @@ Also: live blogs at Jornal de Negócios, Notícias ao Minuto and Renascença; se
 
 Data: [rereads.json](rereads.json). 46 addresses.
 
-- **At the authorities, nothing** (facts): IPMA's communiqué no. 2 and Lisbon's five warnings unchanged; ANEPC's notice 21 still the latest; AEMET's row empty.
+- **At the authorities** (facts): **corrected at 07:40 UTC.** IPMA sent a CAP message at 07:16 UTC lowering Lisbon's wind warning to orange, 09:00 to 21:00, gusts up to 120 km/h; the red rain stands (the site's row s-1111T0738). This re-read compared only IPMA's open data and page, which still showed red wind from 12:00 and communiqué no. 2, and first said "nothing". ANEPC's notice 21 still the latest; AEMET's row empty.
 - **In the coverage** (evidence): Observador opened a new live blog ("Charles. Vento de 130 km/h na Madeira segue para continente"), with entries giving 66 occurrences on the mainland at 07:00 "segundo a Proteção Civil" and 137 in Madeira up to 06:30, no victims. Público, ECO and SAPO carry the same headline on 130 km/h in Madeira. No title attributes a new statement to IPMA.
 - **New live page**: Observador's, added to the re-read. No new tracker or map.
 
