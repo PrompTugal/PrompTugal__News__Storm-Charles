@@ -1,6 +1,6 @@
 # Hand-over: incident.accountant@
 
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 13:06 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 21:41 UTC
 
 For a fresh accountant session. Read the librarian's pack (`library/pack/start.md`, `library/pack/accountant.md`), this note and [status.json](status.json); open nothing else until you need it.
 
@@ -45,10 +45,21 @@ Seven rounds (7 to 13), briefs 7 to 13. The conductor started the third session 
 - `app/accounts/` not built; the Accounts entry in the menu still asked of the designer (card `a-accountant-1`); the librarian's card `a-librarian-8` is answered (the measure page's commit example, 05:41 UTC) and can close.
 - Nothing was kept outside git that a round needs: the second session's scratch scripts are gone with it, and `tools/accounts-round.mjs` stands for them.
 
-## The third session (from 13:05 UTC, 11 November)
+## The third session (from 13:05 UTC, 11 November): for the fourth
 
-- Took over at 13:05 UTC from the second session (05:40 to 13:06 UTC, rounds 7 to 13). Its key is marked handed over in `data/keys.json`; this session's entry is `incident-accountant-dinis-3` (record sha256:f45587a7246386d1, encryption sha256:744635677e584d8b).
-- Round 13 (684bad8, 12:45) stands; round 14 follows. The wake at :40 fires into this session. No vault key is needed: neither earlier session kept anything outside git that a round needs.
-- Commits: all trailers (Agent, Issue, For, Co-Authored-By, Claude-Session) in one final paragraph, no blank line; Co-Authored-By names no model ("Claude <noreply@anthropic.com>"). The gate warned on 8858e46.
-- Round 22 released at about 20:44 UTC; round 23 at 21:40. When an hour moves, split it into the five first-session agents and the rest before calling it a rise (the 17:00 hour, round 20). Step 2 of a round is now `node tools/accounts-round.mjs | cut -c1-140`.
-- Name a brief by `date -u` when it is written, not the round's nominal :45 (the conductor's word, 14:41 UTC); brief 16 renamed 1445Z to 1442Z.
+Took over at 13:05 UTC from the second (05:40 to 13:06 UTC). Its key is `incident-accountant-dinis-3` (record sha256:f45587a7246386d1, encryption sha256:744635677e584d8b); the fourth marks it handed over in the same commit as its own `-4`. Rounds 14 to 23, briefs 14 to 23. At 21:41 UTC this session was at about 215,000 tokens a call (89 calls); a fresh one starts near 100,000.
+
+**A round, as done now (about ten calls):** `git pull`; `node admin/build/build.mjs`; `node tools/accounts-build.mjs`; `node tools/accounts-round.mjs | cut -c1-140` (sessions, the hours with and without the conductor); a one-off split of each recent hour into three groups (the conductor, the five never handed over: archivist, sources, shadow, perplexity, models; the rest), with share of tokens; then one python script that edits `savings.md` by exact replacements (the table rows in item 2, a new "As read at" bullet above the last one, the header's round and total), writes `accounts/briefs/<date -u>Z.md` (six lines, one "For you"), and updates `status.json`; then `accounts-measure.mjs --append`, build, validate, commit, `release.sh`; three numbered lines to the conductor with the brief's path.
+
+**Where round 23 left the books (21:41 UTC):** 3.30 billion tokens in 12,009 calls, 30 of 41 agents measured. The conductor: one session since 18:56 UTC on 10 November, five compactions (the last just before 19:24, 128,704 a call at 19:42; it grew about 100,000 an hour after the fourth), 36.5% of all tokens, no line since 19:42. The handed-over agents run at 130,000 to 180,000 a call. The five never handed over (held for Dinis, the conductor's word at 19:43): shadow 541,123, archivist 541,115, sources 500,679, perplexity 409,543 (line from 17:51), models 403,575 (line from 09:31); 29% of the 20:00 hour's tokens on 15 of 128 calls. Calls fell from 1,025 an hour at 10:00 to about 130. Model spend 1.06 of 20 US dollars all day.
+
+**Lessons this session:**
+
+- All trailers in one final paragraph; Co-Authored-By names no model (the gate warned on 8858e46).
+- Name a brief by `date -u` at writing, not the round's :45 (the conductor, 14:41 UTC).
+- A rising hour without the conductor can be the mix: split it into the five and the rest before calling it a rise (round 20).
+- The conductor's line comes hours late and its compactions move the ranking: re-rank from its line when it arrives (19:44, brief 21 added to).
+- Release can collide with another accountant session's last commit: take theirs, re-add yours, rebuild the books (round 14).
+
+**Open:** the wind-down (transition/PLAN.md) waits on Dinis's yes: one closing round as `accounts/closing.md`, the exit interview when the planner asks. `app/accounts/` not built; the Accounts menu entry still asked of the designer; eleven agents with no line; `accounts/provider.json` still carries the 02:57 read.
+
