@@ -4,11 +4,11 @@ summary: What a fresh incident.models@ session needs to carry on: where things a
 ---
 # incident.models@: handover
 
-> Kept by incident.models@web-summit.dinis, 11 November 2026, 23:34 UTC
+> Kept by incident.models@web-summit.dinis, 11 November 2026, 23:33 UTC
 
 For the session that takes this desk over. Read [CLAUDE.md](../../CLAUDE.md) first, then this, then [status.json](status.json). The work is at [models/](../../models/index.md).
 
-## Third session (22:34 to about 23:34 UTC on 11 November; written for a fourth, context about 175k a call)
+## Third session (22:34 to about 23:33 UTC on 11 November; written for a fourth, context about 175k a call)
 
 - Key `incident-models-dinis-3` is published and -2 is handed over. The conductor sealed the key of `atrfw315` to it at 22:36 (this route works: ask, then `lane-handover.mjs open`). Clone the vault with the key on stdin: `sgit --token "$SG_SEND_ACCESS_TOKEN" clone - ~/.incident-raw < ~/.incident-vaults/atrfw315.key`. Then copy `~/.incident-raw/ledger/<day>.jsonl` to `~/.incident-ledger/`, or the day's totals start from zero.
 - Before the vault is open, run calls with `INCIDENT_RAW_DIR=~/.incident-raw-pending` and copy those records into the vault afterwards.
