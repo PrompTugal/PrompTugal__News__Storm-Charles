@@ -1,13 +1,13 @@
 {
  "about": "The repository as a map: every top-level folder (and the folders inside it) with its tracked files, bytes, kinds by extension, largest file, and who owns its files under agents/policy.json (a file with no owning glob counts under \"no owner\"; the conductor's catch-all is not ownership). last_change: the newest commit that touched the folder. From git ls-files in the CI agent's clone at head; the working files' sizes. What git must never hold is in holds.never (CLAUDE.md; the gate enforces it).",
  "by": "incident.ci@web-summit.dinis",
- "updated": "2026-11-11T13:22:26Z",
- "head": "52e216ad977b171943a2b1583646c92d3de583ab",
+ "updated": "2026-11-11T14:20:17Z",
+ "head": "a7ccf34d6d48dbc5bb5e5e01540edd4616a18741",
  "totals": {
-  "files": 3026,
-  "bytes": 28334904,
+  "files": 3057,
+  "bytes": 29312710,
   "limit_bytes": 262144,
-  "over_200k": 4,
+  "over_200k": 7,
   "nearest_the_limit": [
    {
     "path": "data/agents/detail-2026-11-11T02.json",
@@ -15,31 +15,31 @@
    },
    {
     "path": "data/agents/index.json",
-    "bytes": 230028
+    "bytes": 247463
    },
    {
     "path": "data/agents/commits.json",
-    "bytes": 229120
+    "bytes": 229655
+   },
+   {
+    "path": "data/agents/sessions.json",
+    "bytes": 221932
    },
    {
     "path": "sources/ipma/listing.json",
     "bytes": 217458
    },
    {
-    "path": "data/agents/sessions.json",
-    "bytes": 198744
-   },
-   {
     "path": "data/keys.json",
-    "bytes": 198662
-   },
-   {
-    "path": "data/graph/tables/coverage.json",
-    "bytes": 195689
+    "bytes": 210278
    },
    {
     "path": "research/media/coverage.json",
-    "bytes": 195041
+    "bytes": 206073
+   },
+   {
+    "path": "data/graph/tables/coverage.json",
+    "bytes": 195757
    },
    {
     "path": "evidence/index.json",
@@ -62,16 +62,16 @@
  "folders": [
   {
    "folder": "data/",
-   "files": 84,
-   "bytes": 6205372,
+   "files": 87,
+   "bytes": 6539103,
    "owners": [
     {
      "agent": "incident.ci",
-     "files": 35
+     "files": 37
     },
     {
      "agent": "incident.observability",
-     "files": 24
+     "files": 25
     },
     {
      "agent": "incident.graph",
@@ -95,7 +95,7 @@
     }
    ],
    "kinds": {
-    "json": 82,
+    "json": 85,
     "md": 2
    },
    "largest": {
@@ -103,37 +103,37 @@
     "bytes": 261222
    },
    "last_change": {
-    "at": "2026-11-11T13:13:25Z",
-    "agent": "incident.reporter",
-    "sha": "7acec75b34"
+    "at": "2026-11-11T14:07:41Z",
+    "agent": "incident.graph",
+    "sha": "a105a7efb5"
    },
    "children": [
     {
      "folder": "data/ci/",
-     "files": 35,
-     "bytes": 3035660,
+     "files": 37,
+     "bytes": 3191146,
      "owners": [
       {
        "agent": "incident.ci",
-       "files": 35
+       "files": 37
       }
      ]
     },
     {
      "folder": "data/agents/",
-     "files": 24,
-     "bytes": 1598624,
+     "files": 25,
+     "bytes": 1714626,
      "owners": [
       {
        "agent": "incident.observability",
-       "files": 24
+       "files": 25
       }
      ]
     },
     {
      "folder": "data/graph/",
      "files": 20,
-     "bytes": 1349323,
+     "bytes": 1399950,
      "owners": [
       {
        "agent": "incident.graph",
@@ -167,8 +167,8 @@
   },
   {
    "folder": "research/",
-   "files": 358,
-   "bytes": 3698534,
+   "files": 362,
+   "bytes": 3895677,
    "owners": [
     {
      "agent": "incident.weatherwatch",
@@ -180,19 +180,19 @@
     },
     {
      "agent": "incident.media",
-     "files": 71
+     "files": 72
     },
     {
      "agent": "incident.wikipedia",
      "files": 22
     },
     {
-     "agent": "incident.social",
-     "files": 12
+     "agent": "incident.perplexity",
+     "files": 14
     },
     {
-     "agent": "incident.perplexity",
-     "files": 11
+     "agent": "incident.social",
+     "files": 12
     },
     {
      "agent": "no owner",
@@ -200,9 +200,9 @@
     }
    ],
    "kinds": {
-    "md": 212,
+    "md": 213,
     "js": 4,
-    "json": 117,
+    "json": 120,
     "txt": 3,
     "mjs": 8,
     "py": 10,
@@ -212,18 +212,18 @@
    },
    "largest": {
     "path": "research/media/coverage.json",
-    "bytes": 195041
+    "bytes": 206073
    },
    "last_change": {
-    "at": "2026-11-11T12:59:17Z",
+    "at": "2026-11-11T13:56:06Z",
     "agent": "incident.wikipedia",
-    "sha": "d801af1c6a"
+    "sha": "3dc9bf5858"
    },
    "children": [
     {
      "folder": "research/weather-sites/",
      "files": 155,
-     "bytes": 1100460,
+     "bytes": 1105110,
      "owners": [
       {
        "agent": "incident.weatherwatch",
@@ -233,19 +233,19 @@
     },
     {
      "folder": "research/media/",
-     "files": 71,
-     "bytes": 1050103,
+     "files": 72,
+     "bytes": 1096545,
      "owners": [
       {
        "agent": "incident.media",
-       "files": 71
+       "files": 72
       }
      ]
     },
     {
      "folder": "research/wikipedia/",
      "files": 22,
-     "bytes": 607301,
+     "bytes": 612115,
      "owners": [
       {
        "agent": "incident.wikipedia",
@@ -267,7 +267,7 @@
     {
      "folder": "research/social/",
      "files": 12,
-     "bytes": 329646,
+     "bytes": 340134,
      "owners": [
       {
        "agent": "incident.social",
@@ -277,12 +277,12 @@
     },
     {
      "folder": "research/perplexity/",
-     "files": 11,
-     "bytes": 124568,
+     "files": 14,
+     "bytes": 255317,
      "owners": [
       {
        "agent": "incident.perplexity",
-       "files": 11
+       "files": 14
       }
      ]
     },
@@ -301,16 +301,16 @@
   },
   {
    "folder": "evidence/",
-   "files": 686,
-   "bytes": 2349151,
+   "files": 691,
+   "bytes": 2366316,
    "owners": [
     {
      "agent": "incident.archivist",
-     "files": 686
+     "files": 691
     }
    ],
    "kinds": {
-    "json": 685,
+    "json": 690,
     "md": 1
    },
    "largest": {
@@ -318,9 +318,9 @@
     "bytes": 185806
    },
    "last_change": {
-    "at": "2026-11-11T12:26:24Z",
+    "at": "2026-11-11T13:28:12Z",
     "agent": "incident.archivist",
-    "sha": "ce0999afc5"
+    "sha": "c292dfd529"
    },
    "children": [
     {
@@ -336,12 +336,12 @@
     },
     {
      "folder": "evidence/ipma/",
-     "files": 39,
-     "bytes": 138893,
+     "files": 41,
+     "bytes": 146670,
      "owners": [
       {
        "agent": "incident.archivist",
-       "files": 39
+       "files": 41
       }
      ]
     },
@@ -380,12 +380,12 @@
     },
     {
      "folder": "evidence/anepc/",
-     "files": 29,
-     "bytes": 84714,
+     "files": 31,
+     "bytes": 90019,
      "owners": [
       {
        "agent": "incident.archivist",
-       "files": 29
+       "files": 31
       }
      ]
     },
@@ -435,12 +435,12 @@
     },
     {
      "folder": "evidence/governo/",
-     "files": 20,
-     "bytes": 58962,
+     "files": 21,
+     "bytes": 62529,
      "owners": [
       {
        "agent": "incident.archivist",
-       "files": 20
+       "files": 21
       }
      ]
     },
@@ -1218,12 +1218,12 @@
   },
   {
    "folder": "sources/",
-   "files": 79,
-   "bytes": 1750906,
+   "files": 80,
+   "bytes": 1883838,
    "owners": [
     {
      "agent": "incident.sources",
-     "files": 79
+     "files": 80
     },
     {
      "agent": "incident.ipma",
@@ -1232,22 +1232,22 @@
    ],
    "kinds": {
     "md": 42,
-    "json": 37
+    "json": 38
    },
    "largest": {
     "path": "sources/ipma/listing.json",
     "bytes": 217458
    },
    "last_change": {
-    "at": "2026-11-11T12:52:08Z",
+    "at": "2026-11-11T13:53:41Z",
     "agent": "incident.ipma",
-    "sha": "134382b137"
+    "sha": "81a700980c"
    },
    "children": [
     {
      "folder": "sources/ipma/",
      "files": 67,
-     "bytes": 1433833,
+     "bytes": 1533487,
      "owners": [
       {
        "agent": "incident.ipma",
@@ -1261,12 +1261,12 @@
     },
     {
      "folder": "sources/meteoalarm/",
-     "files": 9,
-     "bytes": 192757,
+     "files": 10,
+     "bytes": 225977,
      "owners": [
       {
        "agent": "incident.sources",
-       "files": 9
+       "files": 10
       }
      ]
     }
@@ -1275,7 +1275,7 @@
   {
    "folder": "app/",
    "files": 167,
-   "bytes": 1605261,
+   "bytes": 1609927,
    "owners": [
     {
      "agent": "incident.studio",
@@ -1392,9 +1392,9 @@
     "bytes": 120522
    },
    "last_change": {
-    "at": "2026-11-11T13:19:35Z",
-    "agent": "incident.weather",
-    "sha": "251e2e027b"
+    "at": "2026-11-11T14:17:55Z",
+    "agent": "incident.designer",
+    "sha": "a7ccf34d6d"
    },
    "children": [
     {
@@ -1481,7 +1481,7 @@
     {
      "folder": "app/design/",
      "files": 8,
-     "bytes": 60036,
+     "bytes": 62436,
      "owners": [
       {
        "agent": "incident.designer",
@@ -1556,6 +1556,17 @@
      ]
     },
     {
+     "folder": "app/transport/",
+     "files": 2,
+     "bytes": 18439,
+     "owners": [
+      {
+       "agent": "incident.transport",
+       "files": 2
+      }
+     ]
+    },
+    {
      "folder": "app/lens/",
      "files": 4,
      "bytes": 17696,
@@ -1563,17 +1574,6 @@
       {
        "agent": "incident.entities",
        "files": 4
-      }
-     ]
-    },
-    {
-     "folder": "app/transport/",
-     "files": 2,
-     "bytes": 17428,
-     "owners": [
-      {
-       "agent": "incident.transport",
-       "files": 2
       }
      ]
     },
@@ -1624,7 +1624,7 @@
     {
      "folder": "app/perplexity/",
      "files": 2,
-     "bytes": 5972,
+     "bytes": 6166,
      "owners": [
       {
        "agent": "incident.perplexity",
@@ -1659,7 +1659,7 @@
   {
    "folder": "incidents/",
    "files": 70,
-   "bytes": 1362488,
+   "bytes": 1386533,
    "owners": [
     {
      "agent": "incident.researcher",
@@ -1693,18 +1693,18 @@
    },
    "largest": {
     "path": "incidents/2026-11-10-storm-charles/data/signals.json",
-    "bytes": 114462
+    "bytes": 118662
    },
    "last_change": {
-    "at": "2026-11-11T13:04:42Z",
-    "agent": "incident.conductor",
-    "sha": "04b01906fc"
+    "at": "2026-11-11T14:09:05Z",
+    "agent": "incident.transport",
+    "sha": "09dccbaeaa"
    },
    "children": [
     {
      "folder": "incidents/2026-11-10-storm-charles/",
      "files": 70,
-     "bytes": 1362488,
+     "bytes": 1386533,
      "owners": [
       {
        "agent": "incident.researcher",
@@ -1728,6 +1728,88 @@
       },
       {
        "agent": "incident.dev",
+       "files": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "folder": "library/",
+   "files": 51,
+   "bytes": 1247728,
+   "owners": [
+    {
+     "agent": "incident.librarian",
+     "files": 51
+    }
+   ],
+   "kinds": {
+    "json": 41,
+    "md": 9,
+    "js": 1
+   },
+   "largest": {
+    "path": "library/releases/2026-11-11T02.json",
+    "bytes": 85761
+   },
+   "last_change": {
+    "at": "2026-11-11T13:45:50Z",
+    "agent": "incident.librarian",
+    "sha": "9f12292652"
+   },
+   "children": [
+    {
+     "folder": "library/releases/",
+     "files": 18,
+     "bytes": 560466,
+     "owners": [
+      {
+       "agent": "incident.librarian",
+       "files": 18
+      }
+     ]
+    },
+    {
+     "folder": "library/provenance/",
+     "files": 17,
+     "bytes": 454010,
+     "owners": [
+      {
+       "agent": "incident.librarian",
+       "files": 17
+      }
+     ]
+    },
+    {
+     "folder": "library/reading/",
+     "files": 3,
+     "bytes": 64981,
+     "owners": [
+      {
+       "agent": "incident.librarian",
+       "files": 3
+      }
+     ]
+    },
+    {
+     "folder": "library/pack/",
+     "files": 5,
+     "bytes": 37589,
+     "owners": [
+      {
+       "agent": "incident.librarian",
+       "files": 5
+      }
+     ]
+    },
+    {
+     "folder": "library/drafts/",
+     "files": 1,
+     "bytes": 4500,
+     "owners": [
+      {
+       "agent": "incident.librarian",
        "files": 1
       }
      ]
@@ -1783,91 +1865,9 @@
    ]
   },
   {
-   "folder": "library/",
-   "files": 51,
-   "bytes": 1223233,
-   "owners": [
-    {
-     "agent": "incident.librarian",
-     "files": 51
-    }
-   ],
-   "kinds": {
-    "json": 41,
-    "md": 9,
-    "js": 1
-   },
-   "largest": {
-    "path": "library/releases/2026-11-11T02.json",
-    "bytes": 85761
-   },
-   "last_change": {
-    "at": "2026-11-11T13:07:45Z",
-    "agent": "incident.librarian",
-    "sha": "6abd48bc67"
-   },
-   "children": [
-    {
-     "folder": "library/releases/",
-     "files": 18,
-     "bytes": 541643,
-     "owners": [
-      {
-       "agent": "incident.librarian",
-       "files": 18
-      }
-     ]
-    },
-    {
-     "folder": "library/provenance/",
-     "files": 17,
-     "bytes": 448677,
-     "owners": [
-      {
-       "agent": "incident.librarian",
-       "files": 17
-      }
-     ]
-    },
-    {
-     "folder": "library/reading/",
-     "files": 3,
-     "bytes": 64981,
-     "owners": [
-      {
-       "agent": "incident.librarian",
-       "files": 3
-      }
-     ]
-    },
-    {
-     "folder": "library/pack/",
-     "files": 5,
-     "bytes": 37589,
-     "owners": [
-      {
-       "agent": "incident.librarian",
-       "files": 5
-      }
-     ]
-    },
-    {
-     "folder": "library/drafts/",
-     "files": 1,
-     "bytes": 4500,
-     "owners": [
-      {
-       "agent": "incident.librarian",
-       "files": 1
-      }
-     ]
-    }
-   ]
-  },
-  {
    "folder": "tools/",
    "files": 95,
-   "bytes": 1161206,
+   "bytes": 1165519,
    "owners": [
     {
      "agent": "incident.identity",
@@ -1999,16 +1999,16 @@
     "bytes": 62293
    },
    "last_change": {
-    "at": "2026-11-11T13:07:24Z",
-    "agent": "incident.accountant",
-    "sha": "78db3333c6"
+    "at": "2026-11-11T13:46:02Z",
+    "agent": "incident.transport",
+    "sha": "57d66db013"
    },
    "children": []
   },
   {
    "folder": "agents/",
    "files": 149,
-   "bytes": 1057107,
+   "bytes": 1070394,
    "owners": [
     {
      "agent": "incident.conductor",
@@ -2113,9 +2113,9 @@
     "bytes": 30969
    },
    "last_change": {
-    "at": "2026-11-11T13:19:35Z",
-    "agent": "incident.weather",
-    "sha": "251e2e027b"
+    "at": "2026-11-11T14:17:23Z",
+    "agent": "incident.journalist",
+    "sha": "c75d653fbc"
    },
    "children": [
     {
@@ -2167,7 +2167,7 @@
     {
      "folder": "agents/ipma/",
      "files": 6,
-     "bytes": 42403,
+     "bytes": 42376,
      "owners": [
       {
        "agent": "incident.ipma",
@@ -2230,6 +2230,29 @@
      ]
     },
     {
+     "folder": "agents/graph/",
+     "files": 4,
+     "bytes": 38384,
+     "owners": [
+      {
+       "agent": "no owner",
+       "files": 1
+      },
+      {
+       "agent": "incident.observability",
+       "files": 1
+      },
+      {
+       "agent": "incident.librarian",
+       "files": 1
+      },
+      {
+       "agent": "incident.conductor",
+       "files": 1
+      }
+     ]
+    },
+    {
      "folder": "agents/studio/",
      "files": 4,
      "bytes": 36759,
@@ -2253,32 +2276,9 @@
      ]
     },
     {
-     "folder": "agents/graph/",
-     "files": 4,
-     "bytes": 35849,
-     "owners": [
-      {
-       "agent": "no owner",
-       "files": 1
-      },
-      {
-       "agent": "incident.observability",
-       "files": 1
-      },
-      {
-       "agent": "incident.librarian",
-       "files": 1
-      },
-      {
-       "agent": "incident.conductor",
-       "files": 1
-      }
-     ]
-    },
-    {
      "folder": "agents/stories/",
      "files": 4,
-     "bytes": 35408,
+     "bytes": 36604,
      "owners": [
       {
        "agent": "incident.stories",
@@ -2301,7 +2301,7 @@
     {
      "folder": "agents/board/",
      "files": 5,
-     "bytes": 35361,
+     "bytes": 36114,
      "owners": [
       {
        "agent": "incident.board",
@@ -2322,9 +2322,32 @@
      ]
     },
     {
+     "folder": "agents/journalist/",
+     "files": 3,
+     "bytes": 33542,
+     "owners": [
+      {
+       "agent": "incident.journalist",
+       "files": 3
+      },
+      {
+       "agent": "incident.observability",
+       "files": 1
+      },
+      {
+       "agent": "incident.librarian",
+       "files": 1
+      },
+      {
+       "agent": "incident.conductor",
+       "files": 1
+      }
+     ]
+    },
+    {
      "folder": "agents/ci/",
      "files": 7,
-     "bytes": 33034,
+     "bytes": 33443,
      "owners": [
       {
        "agent": "incident.ci",
@@ -2347,7 +2370,7 @@
     {
      "folder": "agents/entities/",
      "files": 4,
-     "bytes": 32921,
+     "bytes": 33387,
      "owners": [
       {
        "agent": "incident.entities",
@@ -2368,32 +2391,9 @@
      ]
     },
     {
-     "folder": "agents/journalist/",
-     "files": 3,
-     "bytes": 32501,
-     "owners": [
-      {
-       "agent": "incident.journalist",
-       "files": 3
-      },
-      {
-       "agent": "incident.observability",
-       "files": 1
-      },
-      {
-       "agent": "incident.librarian",
-       "files": 1
-      },
-      {
-       "agent": "incident.conductor",
-       "files": 1
-      }
-     ]
-    },
-    {
      "folder": "agents/media/",
      "files": 4,
-     "bytes": 31753,
+     "bytes": 31963,
      "owners": [
       {
        "agent": "no owner",
@@ -2416,7 +2416,7 @@
     {
      "folder": "agents/identity/",
      "files": 5,
-     "bytes": 31402,
+     "bytes": 31711,
      "owners": [
       {
        "agent": "no owner",
@@ -2439,7 +2439,7 @@
     {
      "folder": "agents/wikipedia/",
      "files": 4,
-     "bytes": 29032,
+     "bytes": 29368,
      "owners": [
       {
        "agent": "incident.wikipedia",
@@ -2462,7 +2462,7 @@
     {
      "folder": "agents/reporter/",
      "files": 4,
-     "bytes": 27520,
+     "bytes": 27551,
      "owners": [
       {
        "agent": "incident.reporter",
@@ -2489,6 +2489,29 @@
      "owners": [
       {
        "agent": "incident.labs",
+       "files": 4
+      },
+      {
+       "agent": "incident.observability",
+       "files": 1
+      },
+      {
+       "agent": "incident.librarian",
+       "files": 1
+      },
+      {
+       "agent": "incident.conductor",
+       "files": 1
+      }
+     ]
+    },
+    {
+     "folder": "agents/social/",
+     "files": 4,
+     "bytes": 26115,
+     "owners": [
+      {
+       "agent": "incident.social",
        "files": 4
       },
       {
@@ -2573,7 +2596,7 @@
     {
      "folder": "agents/researcher/",
      "files": 3,
-     "bytes": 24138,
+     "bytes": 24438,
      "owners": [
       {
        "agent": "incident.observability",
@@ -2592,7 +2615,7 @@
     {
      "folder": "agents/sources/",
      "files": 4,
-     "bytes": 22814,
+     "bytes": 23325,
      "owners": [
       {
        "agent": "incident.sources",
@@ -2613,12 +2636,12 @@
      ]
     },
     {
-     "folder": "agents/social/",
+     "folder": "agents/accountant/",
      "files": 4,
-     "bytes": 22804,
+     "bytes": 22149,
      "owners": [
       {
-       "agent": "incident.social",
+       "agent": "incident.accountant",
        "files": 4
       },
       {
@@ -2659,29 +2682,6 @@
      ]
     },
     {
-     "folder": "agents/accountant/",
-     "files": 4,
-     "bytes": 21854,
-     "owners": [
-      {
-       "agent": "incident.accountant",
-       "files": 4
-      },
-      {
-       "agent": "incident.observability",
-       "files": 1
-      },
-      {
-       "agent": "incident.librarian",
-       "files": 1
-      },
-      {
-       "agent": "incident.conductor",
-       "files": 1
-      }
-     ]
-    },
-    {
      "folder": "agents/designer/",
      "files": 3,
      "bytes": 20577,
@@ -2703,7 +2703,7 @@
     {
      "folder": "agents/archivist/",
      "files": 3,
-     "bytes": 19645,
+     "bytes": 20351,
      "owners": [
       {
        "agent": "incident.archivist",
@@ -2726,7 +2726,7 @@
     {
      "folder": "agents/meteorologist/",
      "files": 3,
-     "bytes": 18192,
+     "bytes": 18415,
      "owners": [
       {
        "agent": "incident.observability",
@@ -2745,7 +2745,7 @@
     {
      "folder": "agents/perplexity/",
      "files": 3,
-     "bytes": 12994,
+     "bytes": 13616,
      "owners": [
       {
        "agent": "incident.perplexity",
@@ -2783,7 +2783,7 @@
     {
      "folder": "agents/shadow/",
      "files": 3,
-     "bytes": 12369,
+     "bytes": 12411,
      "owners": [
       {
        "agent": "incident.shadow",
@@ -2896,7 +2896,7 @@
     {
      "folder": "agents/broadcast/",
      "files": 2,
-     "bytes": 11021,
+     "bytes": 11039,
      "owners": [
       {
        "agent": "incident.librarian",
@@ -2979,35 +2979,35 @@
   },
   {
    "folder": "board/",
-   "files": 540,
-   "bytes": 857025,
+   "files": 552,
+   "bytes": 877746,
    "owners": [
     {
      "agent": "incident.board",
-     "files": 540
+     "files": 552
     }
    ],
    "kinds": {
-    "json": 540
+    "json": 552
    },
    "largest": {
     "path": "board/items/a-vault-keys-handover.json",
     "bytes": 6084
    },
    "last_change": {
-    "at": "2026-11-11T12:34:55Z",
+    "at": "2026-11-11T13:35:04Z",
     "agent": "incident.board",
-    "sha": "5315e24b28"
+    "sha": "1dbcb10b67"
    },
    "children": [
     {
      "folder": "board/items/",
-     "files": 540,
-     "bytes": 857025,
+     "files": 552,
+     "bytes": 877746,
      "owners": [
       {
        "agent": "incident.board",
-       "files": 540
+       "files": 552
       }
      ]
     }
@@ -3041,33 +3041,33 @@
   },
   {
    "folder": "accounts/",
-   "files": 54,
-   "bytes": 647441,
+   "files": 55,
+   "bytes": 681987,
    "owners": [
     {
      "agent": "incident.accountant",
-     "files": 54
+     "files": 55
     }
    ],
    "kinds": {
     "json": 7,
-    "md": 17,
+    "md": 18,
     "jsonl": 30
    },
    "largest": {
     "path": "accounts/agents.json",
-    "bytes": 60561
+    "bytes": 60819
    },
    "last_change": {
-    "at": "2026-11-11T13:19:23Z",
+    "at": "2026-11-11T14:17:23Z",
     "agent": "incident.journalist",
-    "sha": "d18fa856aa"
+    "sha": "77a463ab1f"
    },
    "children": [
     {
      "folder": "accounts/ledger/",
      "files": 30,
-     "bytes": 503074,
+     "bytes": 533907,
      "owners": [
       {
        "agent": "incident.accountant",
@@ -3077,12 +3077,12 @@
     },
     {
      "folder": "accounts/briefs/",
-     "files": 14,
-     "bytes": 27503,
+     "files": 15,
+     "bytes": 29905,
      "owners": [
       {
        "agent": "incident.accountant",
-       "files": 14
+       "files": 15
       }
      ]
     }
@@ -3091,7 +3091,7 @@
   {
    "folder": "news/",
    "files": 27,
-   "bytes": 642553,
+   "bytes": 671826,
    "owners": [
     {
      "agent": "incident.librarian",
@@ -3107,15 +3107,15 @@
     "bytes": 102103
    },
    "last_change": {
-    "at": "2026-11-11T13:07:45Z",
+    "at": "2026-11-11T13:45:50Z",
     "agent": "incident.librarian",
-    "sha": "6abd48bc67"
+    "sha": "9f12292652"
    },
    "children": [
     {
      "folder": "news/data/",
      "files": 13,
-     "bytes": 534309,
+     "bytes": 560712,
      "owners": [
       {
        "agent": "incident.librarian",
@@ -3127,35 +3127,35 @@
   },
   {
    "folder": "entities/",
-   "files": 240,
-   "bytes": 574122,
+   "files": 243,
+   "bytes": 582208,
    "owners": [
     {
      "agent": "incident.entities",
-     "files": 240
+     "files": 243
     }
    ],
    "kinds": {
-    "json": 240
+    "json": 243
    },
    "largest": {
     "path": "entities/index.json",
-    "bytes": 58317
+    "bytes": 59045
    },
    "last_change": {
-    "at": "2026-11-11T13:10:05Z",
+    "at": "2026-11-11T13:39:09Z",
     "agent": "incident.entities",
-    "sha": "997344af2d"
+    "sha": "4d47905260"
    },
    "children": [
     {
      "folder": "entities/decision/",
-     "files": 64,
-     "bytes": 164351,
+     "files": 66,
+     "bytes": 169823,
      "owners": [
       {
        "agent": "incident.entities",
-       "files": 64
+       "files": 66
       }
      ]
     },
@@ -3206,7 +3206,7 @@
     {
      "folder": "entities/service/",
      "files": 16,
-     "bytes": 25911,
+     "bytes": 26349,
      "owners": [
       {
        "agent": "incident.entities",
@@ -3227,12 +3227,12 @@
     },
     {
      "folder": "entities/organisation/",
-     "files": 7,
-     "bytes": 16093,
+     "files": 8,
+     "bytes": 17430,
      "owners": [
       {
        "agent": "incident.entities",
-       "files": 7
+       "files": 8
       }
      ]
     },
@@ -3294,9 +3294,46 @@
    ]
   },
   {
+   "folder": "shadow/",
+   "files": 20,
+   "bytes": 546655,
+   "owners": [
+    {
+     "agent": "incident.shadow",
+     "files": 20
+    }
+   ],
+   "kinds": {
+    "json": 17,
+    "md": 3
+   },
+   "largest": {
+    "path": "shadow/runs/2026-11-11/02.json",
+    "bytes": 134100
+   },
+   "last_change": {
+    "at": "2026-11-11T14:09:34Z",
+    "agent": "incident.shadow",
+    "sha": "83f17411e9"
+   },
+   "children": [
+    {
+     "folder": "shadow/runs/",
+     "files": 13,
+     "bytes": 342755,
+     "owners": [
+      {
+       "agent": "incident.shadow",
+       "files": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
    "folder": "reporter/",
    "files": 20,
-   "bytes": 478349,
+   "bytes": 481904,
    "owners": [
     {
      "agent": "incident.reporter",
@@ -3309,59 +3346,22 @@
    },
    "largest": {
     "path": "reporter/traces/memory-the-librarian-saves-tokens.json",
-    "bytes": 63594
+    "bytes": 65422
    },
    "last_change": {
-    "at": "2026-11-11T13:14:23Z",
+    "at": "2026-11-11T14:10:13Z",
     "agent": "incident.reporter",
-    "sha": "365f3acb01"
+    "sha": "adfbd32d4c"
    },
    "children": [
     {
      "folder": "reporter/traces/",
      "files": 17,
-     "bytes": 432296,
+     "bytes": 434146,
      "owners": [
       {
        "agent": "incident.reporter",
        "files": 17
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "folder": "shadow/",
-   "files": 19,
-   "bytes": 444761,
-   "owners": [
-    {
-     "agent": "incident.shadow",
-     "files": 19
-    }
-   ],
-   "kinds": {
-    "json": 16,
-    "md": 3
-   },
-   "largest": {
-    "path": "shadow/runs/2026-11-11/02.json",
-    "bytes": 134100
-   },
-   "last_change": {
-    "at": "2026-11-11T13:12:51Z",
-    "agent": "incident.shadow",
-    "sha": "d7e1995153"
-   },
-   "children": [
-    {
-     "folder": "shadow/runs/",
-     "files": 12,
-     "bytes": 266821,
-     "owners": [
-      {
-       "agent": "incident.shadow",
-       "files": 12
       }
      ]
     }
@@ -3543,7 +3543,7 @@
   {
    "folder": "stories/",
    "files": 9,
-   "bytes": 270803,
+   "bytes": 277435,
    "owners": [
     {
      "agent": "incident.stories",
@@ -3556,18 +3556,18 @@
    },
    "largest": {
     "path": "stories/less-wind-for-lisbon/story.json",
-    "bytes": 79713
+    "bytes": 81382
    },
    "last_change": {
-    "at": "2026-11-11T12:54:41Z",
+    "at": "2026-11-11T13:52:28Z",
     "agent": "incident.stories",
-    "sha": "7624fd37bd"
+    "sha": "4249f2f209"
    },
    "children": [
     {
      "folder": "stories/less-wind-for-lisbon/",
      "files": 1,
-     "bytes": 79713,
+     "bytes": 81382,
      "owners": [
       {
        "agent": "incident.stories",
@@ -3600,7 +3600,7 @@
     {
      "folder": "stories/mainland-warned-against-observed/",
      "files": 1,
-     "bytes": 35261,
+     "bytes": 38118,
      "owners": [
       {
        "agent": "incident.stories",
@@ -3622,7 +3622,7 @@
     {
      "folder": "stories/what-nobody-has-said-yet/",
      "files": 1,
-     "bytes": 18670,
+     "bytes": 20063,
      "owners": [
       {
        "agent": "incident.stories",
@@ -3633,7 +3633,7 @@
     {
      "folder": "stories/how-day-2-was-called-off/",
      "files": 1,
-     "bytes": 18588,
+     "bytes": 19301,
      "owners": [
       {
        "agent": "incident.stories",
@@ -3646,7 +3646,7 @@
   {
    "folder": "journal/",
    "files": 28,
-   "bytes": 258031,
+   "bytes": 259087,
    "owners": [
     {
      "agent": "incident.journalist",
@@ -3662,9 +3662,9 @@
     "bytes": 18996
    },
    "last_change": {
-    "at": "2026-11-11T13:19:23Z",
+    "at": "2026-11-11T14:17:23Z",
     "agent": "incident.journalist",
-    "sha": "73505d3054"
+    "sha": "c75d653fbc"
    },
    "children": []
   },
@@ -3708,25 +3708,25 @@
   },
   {
    "folder": "design/",
-   "files": 58,
-   "bytes": 162580,
+   "files": 60,
+   "bytes": 169143,
    "owners": [
     {
      "agent": "incident.designer",
-     "files": 58
+     "files": 60
     }
    ],
    "kinds": {
-    "md": 58
+    "md": 60
    },
    "largest": {
     "path": "design/HANDOVER.md",
-    "bytes": 20402
+    "bytes": 21505
    },
    "last_change": {
-    "at": "2026-11-11T13:20:25Z",
+    "at": "2026-11-11T14:17:55Z",
     "agent": "incident.designer",
-    "sha": "52e216ad97"
+    "sha": "a7ccf34d6d"
    },
    "children": []
   },
@@ -3771,7 +3771,7 @@
   {
    "folder": "admin/",
    "files": 6,
-   "bytes": 120769,
+   "bytes": 121048,
    "owners": [
     {
      "agent": "incident.conductor",
@@ -3787,18 +3787,18 @@
    },
    "largest": {
     "path": "admin/build/build.mjs",
-    "bytes": 108115
+    "bytes": 108394
    },
    "last_change": {
-    "at": "2026-11-11T13:17:56Z",
+    "at": "2026-11-11T14:17:55Z",
     "agent": "incident.designer",
-    "sha": "a0788ce401"
+    "sha": "a7ccf34d6d"
    },
    "children": [
     {
      "folder": "admin/build/",
      "files": 3,
-     "bytes": 117228,
+     "bytes": 117507,
      "owners": [
       {
        "agent": "incident.conductor",
@@ -3822,7 +3822,7 @@
   {
    "folder": "broadcast/",
    "files": 4,
-   "bytes": 87160,
+   "bytes": 87010,
    "owners": [
     {
      "agent": "incident.broadcast",
@@ -3835,18 +3835,18 @@
    },
    "largest": {
     "path": "broadcast/data/field.json",
-    "bytes": 58504
+    "bytes": 58354
    },
    "last_change": {
-    "at": "2026-11-11T12:26:14Z",
+    "at": "2026-11-11T13:32:02Z",
     "agent": "incident.broadcast",
-    "sha": "5af7d11d49"
+    "sha": "cc4d183495"
    },
    "children": [
     {
      "folder": "broadcast/data/",
      "files": 2,
-     "bytes": 78327,
+     "bytes": 78177,
      "owners": [
       {
        "agent": "incident.broadcast",
@@ -3859,7 +3859,7 @@
   {
    "folder": "transport/",
    "files": 12,
-   "bytes": 67426,
+   "bytes": 82627,
    "owners": [
     {
      "agent": "incident.transport",
@@ -3872,12 +3872,12 @@
    },
    "largest": {
     "path": "transport/reads.jsonl",
-    "bytes": 35574
+    "bytes": 47774
    },
    "last_change": {
-    "at": "2026-11-11T12:58:55Z",
+    "at": "2026-11-11T14:09:56Z",
     "agent": "incident.transport",
-    "sha": "0a263a1c41"
+    "sha": "59dc6fe935"
    },
    "children": []
   },
@@ -3981,36 +3981,36 @@
   },
   {
    "folder": "ci/",
-   "files": 8,
-   "bytes": 33217,
+   "files": 7,
+   "bytes": 31590,
    "owners": [
     {
      "agent": "incident.ci",
-     "files": 8
+     "files": 7
     }
    ],
    "kinds": {
     "md": 6,
-    "patch": 2
+    "patch": 1
    },
    "largest": {
     "path": "ci/patches/README.md",
-    "bytes": 11997
+    "bytes": 12213
    },
    "last_change": {
-    "at": "2026-11-11T12:38:27Z",
+    "at": "2026-11-11T13:23:56Z",
     "agent": "incident.ci",
-    "sha": "69d47f1acb"
+    "sha": "6a5293a54b"
    },
    "children": [
     {
      "folder": "ci/patches/",
-     "files": 3,
-     "bytes": 17107,
+     "files": 2,
+     "bytes": 15480,
      "owners": [
       {
        "agent": "incident.ci",
-       "files": 3
+       "files": 2
       }
      ]
     }
@@ -4175,9 +4175,9 @@
     "bytes": 4136
    },
    "last_change": {
-    "at": "2026-11-11T13:12:24Z",
+    "at": "2026-11-11T14:11:19Z",
     "agent": "incident.desk",
-    "sha": "d03ef1783c"
+    "sha": "2556faa380"
    },
    "children": []
   },
