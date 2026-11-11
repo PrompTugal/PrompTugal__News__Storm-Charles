@@ -478,7 +478,7 @@ const PAUSE_F = path.join(ROOT, 'transport/opensky-paused.json')
 const PAUSE = fs.existsSync(PAUSE_F) ? JSON.parse(fs.readFileSync(PAUSE_F, 'utf8')) : null
 const fl = PAUSE ? (() => {
     let prev = []; try { prev = JSON.parse(fs.readFileSync(path.join(OUT, 'flights.json'), 'utf8')).airports || [] } catch { }
-    const note = `OpenSky readings paused from ${PAUSE.paused_at}: ${PAUSE.reason}`
+    const note = `${PAUSE.status || 'paused'} (from ${PAUSE.paused_at}): ${PAUSE.reason}`
     return prev.map(a => ({ ...a, ana: undefined,
         departures_today: a.departures_today?.paused ? a.departures_today : { ...a.departures_today, paused: note, frozen_at: a.departures_today?.read || null },
         live_snapshot: { label: 'none', note } }))
