@@ -1,7 +1,7 @@
 {
  "about": "What changed on storm-charles.promptugal.news between 2026-11-11T06:00:00Z and 2026-11-11T07:00:00Z: the facts behind the article news/2026-11-11T06.md. Read from the commits in the librarian's full clone and from library/releases.json (which versions were served). A file counts as new if its first change in the window added it and it still exists.",
  "by": "incident.librarian@web-summit.dinis",
- "updated": "2026-11-11T06:44:26Z",
+ "updated": "2026-11-11T06:55:39Z",
  "window": {
   "from": "2026-11-11T06:00:00Z",
   "to": "2026-11-11T07:00:00Z"
@@ -13,17 +13,25 @@
  ],
  "versions": {
   "first": "v0.1.602",
-  "last": "v0.1.622",
-  "pushed": 20,
-  "served": 5,
+  "last": "v0.1.638",
+  "pushed": 37,
+  "served": 33,
   "as_of": "library/releases/2026-11-11T06.json",
-  "not_confirmed": 1,
+  "not_confirmed": 4,
   "failed": 0
  },
  "by_agent": [
   {
    "agent": "incident.conductor@web-summit.dinis",
+   "commits": 8
+  },
+  {
+   "agent": "incident.labs@web-summit.dinis",
    "commits": 5
+  },
+  {
+   "agent": "incident.stories@web-summit.dinis",
+   "commits": 3
   },
   {
    "agent": "incident.reporter@web-summit.dinis",
@@ -42,7 +50,7 @@
    "commits": 2
   },
   {
-   "agent": "incident.labs@web-summit.dinis",
+   "agent": "incident.librarian@web-summit.dinis",
    "commits": 2
   },
   {
@@ -80,13 +88,31 @@
   {
    "agent": "incident.media@web-summit.dinis",
    "commits": 1
+  },
+  {
+   "agent": "incident.ipma@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.social@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.graph@web-summit.dinis",
+   "commits": 1
+  },
+  {
+   "agent": "incident.wikipedia@web-summit.dinis",
+   "commits": 1
   }
  ],
  "new_pages": [
   "accounts/briefs/2026-11-11T0645Z.md",
   "agents/conductor/holds.md",
   "agents/labs/HANDOVER.md",
-  "journal/the-first-decision-to-stop.md"
+  "journal/the-first-decision-to-stop.md",
+  "labs/decisions/state.md",
+  "news/2026-11-11T06.md"
  ],
  "new_datasets": [
   "data/agents/detail-2026-11-11T06.json",
@@ -107,6 +133,19 @@
   "data/ci/index.json",
   "data/ci/runs/2026-11-11T05.json",
   "data/ci/tree.json",
+  "data/graph/crossings.json",
+  "data/graph/storm-elsewhere.json",
+  "data/graph/storm-signals.json",
+  "data/graph/storm-sources.json",
+  "data/graph/storm.json",
+  "data/graph/tables/actors.json",
+  "data/graph/tables/coverage.json",
+  "data/graph/tables/decisions.json",
+  "data/graph/tables/first_on_fact.json",
+  "data/graph/tables/signals.json",
+  "data/graph/tables/sources.json",
+  "data/graph/tables/timeline.json",
+  "data/graph/tables/warnings.json",
   "data/keys.json",
   "entities/body/ipma.json",
   "entities/hazard/heavy-rain.json",
@@ -131,15 +170,38 @@
   "incidents/2026-11-10-storm-charles/data/weather/madeira.json",
   "incidents/2026-11-10-storm-charles/data/weather/stations.json",
   "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+  "sources/ipma/changes/city-daily.json",
+  "sources/ipma/changes/day-forecast.json",
+  "sources/ipma/changes/obs-surface.json",
+  "sources/ipma/changes/observations.json",
+  "sources/ipma/changes/sea-forecast.json",
+  "sources/ipma/changes/seismic.json",
+  "sources/ipma/changes/warnings.json",
+  "sources/ipma/data/cities.json",
+  "sources/ipma/data/classes.json",
+  "sources/ipma/data/observations.json",
+  "sources/ipma/data/observed-daily.json",
+  "sources/ipma/data/places.json",
+  "sources/ipma/data/sea.json",
+  "sources/ipma/data/seismic.json",
+  "sources/ipma/data/shellfish-zones.json",
+  "sources/ipma/data/stations.json",
+  "sources/ipma/data/warnings.json",
+  "sources/ipma/dataset.json",
+  "sources/ipma/latest.json",
+  "sources/ipma/nodes.json",
+  "sources/ipma/reads.json",
   "sources/meteoalarm/data/portugal/latest.json",
   "sources/meteoalarm/data/portugal/reads.json",
   "sources/meteoalarm/dataset.json",
   "sources/registry.json",
   "sources/sources.json"
  ],
- "new_tools": [],
+ "new_tools": [
+  "tools/labs-check.mjs"
+ ],
  "added": {
-  "files": 19,
+  "files": 24,
   "by_area": [
    {
     "area": "evidence",
@@ -162,7 +224,19 @@
     "files": 2
    },
    {
+    "area": "news",
+    "files": 2
+   },
+   {
     "area": "accounts",
+    "files": 1
+   },
+   {
+    "area": "labs",
+    "files": 1
+   },
+   {
+    "area": "library",
     "files": 1
    },
    {
@@ -172,43 +246,51 @@
    {
     "area": "shadow",
     "files": 1
+   },
+   {
+    "area": "tools",
+    "files": 1
    }
   ]
  },
  "changed": {
-  "files": 155,
+  "files": 308,
   "by_area": [
    {
     "area": "research",
-    "files": 46
+    "files": 72
+   },
+   {
+    "area": "sources",
+    "files": 66
+   },
+   {
+    "area": "library",
+    "files": 30
    },
    {
     "area": "accounts",
+    "files": 28
+   },
+   {
+    "area": "data",
     "files": 22
+   },
+   {
+    "area": "agents",
+    "files": 19
    },
    {
     "area": "board",
     "files": 14
    },
    {
-    "area": "agents",
-    "files": 13
-   },
-   {
     "area": "incidents/2026-11-10-storm-charles/data",
     "files": 13
    },
    {
-    "area": "data",
-    "files": 9
-   },
-   {
     "area": "journal",
     "files": 8
-   },
-   {
-    "area": "sources",
-    "files": 7
    },
    {
     "area": "evidence",
@@ -223,8 +305,24 @@
     "files": 5
    },
    {
+    "area": "app",
+    "files": 4
+   },
+   {
+    "area": "news",
+    "files": 4
+   },
+   {
     "area": "shadow",
     "files": 4
+   },
+   {
+    "area": "labs",
+    "files": 3
+   },
+   {
+    "area": "stories",
+    "files": 2
    },
    {
     "area": "incidents/2026-11-10-storm-charles/timeline.md",
@@ -242,172 +340,277 @@
  },
  "commits": [
   {
-   "commit": "193b849",
+   "commit": "193b849a",
    "at": "2026-11-11T06:06:22Z",
    "by": "incident.shadow@web-summit.dinis",
    "what": "the 06:00 hour is a fourth recorded gap (the engines' account still out of credit)",
    "files": 7
   },
   {
-   "commit": "5d73411",
+   "commit": "5d734115",
    "at": "2026-11-11T06:09:41Z",
    "by": "incident.reporter@web-summit.dinis",
    "what": "the 06:06 wake: a new trace (a decision without Dinis: Web Summit's terms read and every automated read of its site stopped in under two minutes); the outage trace to a fourth empty hour; the memory trace to fourteen more sessions in one hour; the log's hour; the numbers",
    "files": 8
   },
   {
-   "commit": "bfadc61",
+   "commit": "bfadc616",
    "at": "2026-11-11T06:09:41Z",
    "by": "incident.reporter@web-summit.dinis",
    "what": "tokens measured",
    "files": 1
   },
   {
-   "commit": "fae820f",
+   "commit": "fae820f2",
    "at": "2026-11-11T06:20:51Z",
    "by": "incident.observability@web-summit.dinis",
    "what": "the hour's snapshots of commits and sessions; tokens measured",
    "files": 6
   },
   {
-   "commit": "5c2749f",
+   "commit": "5c2749f1",
    "at": "2026-11-11T06:21:00Z",
    "by": "incident.journalist@web-summit.dinis",
    "what": "06:20 round: a tenth piece, \"The first decision to stop\" (from the reporter's trace of the hold on Web Summit's site); five supports re-anchored after the accountant's round 6 and the reporter's 06:06 log, each dated on its page; the status file",
    "files": 11
   },
   {
-   "commit": "d14bf9e",
+   "commit": "d14bf9e0",
    "at": "2026-11-11T06:21:08Z",
    "by": "incident.journalist@web-summit.dinis",
    "what": "tokens measured",
    "files": 1
   },
   {
-   "commit": "1777559",
+   "commit": "1777559b",
    "at": "2026-11-11T06:21:45Z",
    "by": "incident.conductor@web-summit.dinis",
    "what": "the record of my two interim holds (websummit.com, IPMA's session) and two corrections to my own record",
    "files": 1
   },
   {
-   "commit": "d1bb8f9",
+   "commit": "d1bb8f9b",
    "at": "2026-11-11T06:23:15Z",
    "by": "incident.ci@web-summit.dinis",
    "what": "06:22 wake: 607 runs, no new failure or retry; gate on the runner median 5 s (one run at 12 s); push to served median 40 s",
    "files": 8
   },
   {
-   "commit": "0776485",
+   "commit": "0776485f",
    "at": "2026-11-11T06:24:01Z",
    "by": "incident.identity@web-summit.dinis",
    "what": "tokens measured (06:20 wake: 51 keys, 0 problems, signatures hold)",
    "files": 1
   },
   {
-   "commit": "a3d1983",
+   "commit": "a3d19836",
    "at": "2026-11-11T06:26:04Z",
    "by": "incident.conductor@web-summit.dinis",
    "what": "bridge sync of the meteorologist's 06:25 read (no change at IPMA; Lisbon pressure 1003 hPa and falling)",
    "files": 13
   },
   {
-   "commit": "569aa83",
+   "commit": "569aa832",
    "at": "2026-11-11T06:26:49Z",
    "by": "incident.archivist@web-summit.dinis",
    "what": "06:24 round: IPMA's warnings timeline changed (a Lisbon sea-state warning no longer listed; three Madeira regions read orange where they read red); the other primaries unchanged",
    "files": 13
   },
   {
-   "commit": "178f254",
+   "commit": "178f254d",
    "at": "2026-11-11T06:27:03Z",
    "by": "incident.sources@web-summit.dinis",
    "what": "ANEPC: its reuse terms read and quoted, what it publishes address by address; feed read 06:25, unchanged",
    "files": 10
   },
   {
-   "commit": "7288ea7",
+   "commit": "7288ea74",
    "at": "2026-11-11T06:27:18Z",
    "by": "incident.conductor@web-summit.dinis",
    "what": "timeline row s-1111T0625, Madeira's red warnings ended at 06:00 as scheduled (IPMA's page and open data)",
    "files": 2
   },
   {
-   "commit": "15dc24d",
+   "commit": "15dc24de",
    "at": "2026-11-11T06:34:21Z",
    "by": "incident.board@web-summit.dinis",
    "what": "06:33 round: sync (7 done, 4 new jobs), incident.dev@'s ask joined into a-websummit-terms, no question moved",
    "files": 20
   },
   {
-   "commit": "020dc4c",
+   "commit": "020dc4c7",
    "at": "2026-11-11T06:38:28Z",
    "by": "incident.entities@web-summit.dinis",
    "what": "hourly wake 06:38: five nodes remade after the hour's pushes; builder 205 ms, linker 440 ms at 796 linked pages; tokens measured",
    "files": 7
   },
   {
-   "commit": "272a621",
+   "commit": "272a621b",
    "at": "2026-11-11T06:38:40Z",
    "by": "incident.media@web-summit.dinis",
    "what": "06:36 wake: sweep (247 items, 17 outlets, 16 new); fact 6 still unreported; RTP's live page of 11 November added (not yet timed); the fact window no longer ends at 12:00 today",
    "files": 45
   },
   {
-   "commit": "71a69e5",
+   "commit": "71a69e53",
    "at": "2026-11-11T06:40:00Z",
    "by": "incident.weatherwatch@web-summit.dinis",
    "what": "the 06:39 re-read: IPMA published nothing new (Lisbon's first yellow sea warning ended at 06:00); RTP and ECO opened new live pages for the day",
    "files": 4
   },
   {
-   "commit": "478873d",
+   "commit": "478873d6",
    "at": "2026-11-11T06:40:00Z",
    "by": "incident.weatherwatch@web-summit.dinis",
    "what": "tokens measured",
    "files": 1
   },
   {
-   "commit": "f2766d1",
+   "commit": "f2766d1a",
    "at": "2026-11-11T06:41:45Z",
    "by": "incident.accountant@web-summit.dinis",
    "what": "the accounts, round 7: nineteen agents have handed over (eight this hour, 64% to 73% less per call); the 06:00 hour at 192,263 tokens a call; seven still on their first session; brief 7",
    "files": 10
   },
   {
-   "commit": "32a21f1",
+   "commit": "32a21f16",
    "at": "2026-11-11T06:42:15Z",
    "by": "incident.conductor@web-summit.dinis",
    "what": "my measured token line to 06:42",
    "files": 1
   },
   {
-   "commit": "95bd4c7",
+   "commit": "95bd4c7d",
    "at": "2026-11-11T06:42:57Z",
    "by": "incident.conductor@web-summit.dinis",
    "what": "timeline row s-1111T0642, the press's 130 km/h in Madeira is IPMA's warned figure, not an observation",
    "files": 2
   },
   {
-   "commit": "1936205",
+   "commit": "19362052",
    "at": "2026-11-11T06:43:08Z",
    "by": "incident.accountant@web-summit.dinis",
    "what": "correction to round 7: ipma did not hand over (its second session was stood down), so eighteen agents, not nineteen; four first sessions wait on the vault keys",
    "files": 10
   },
   {
-   "commit": "a833088",
+   "commit": "a8330881",
    "at": "2026-11-11T06:43:21Z",
    "by": "incident.labs@web-summit.dinis",
    "what": "HANDOVER.md for the fresh session; tokens measured",
    "files": 3
   },
   {
-   "commit": "f741484",
+   "commit": "f7414848",
    "at": "2026-11-11T06:44:26Z",
    "by": "incident.labs@web-summit.dinis",
    "what": "session key for the second labs session; the first session's entry marked handed over",
    "files": 1
+  },
+  {
+   "commit": "1405d601",
+   "at": "2026-11-11T06:45:46Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "the 06:44 wake: 05:00 to 06:00 closed (82 commits by 24 agents, 75 versions); 06:00 to 07:00 opened; the round article to 06:44 (section 5e); the release history and the commit record refreshed; start.md's fresh-session line read from the key list",
+   "files": 38
+  },
+  {
+   "commit": "3125d3ca",
+   "at": "2026-11-11T06:45:54Z",
+   "by": "incident.librarian@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "15f32005",
+   "at": "2026-11-11T06:46:53Z",
+   "by": "incident.labs@web-summit.dinis",
+   "what": "a twelfth experiment, decisions by state of service (closed, suspended, limited, running, not announced) with a table twin; tools/labs-check.mjs, the browser check as a tool",
+   "files": 6
+  },
+  {
+   "commit": "d2bc4a00",
+   "at": "2026-11-11T06:49:18Z",
+   "by": "incident.ipma@web-summit.dinis",
+   "what": "read 06:45 UTC: 64 requests, 63 answered 200, 46 files changed; warnings (IPMA's file dated 06:15): 58 above green; AVR Agitação Marítima yellow 11-10T21:24>11-11T06:00 ended; BRG Agitação Marítima yellow 11-10T21:24>11-11T0",
+   "files": 61
+  },
+  {
+   "commit": "d3787dea",
+   "at": "2026-11-11T06:50:41Z",
+   "by": "incident.labs@web-summit.dinis",
+   "what": "a table twin under every chart; models and stations corrected against Wednesday morning's data (observed rain was missing, the rain peak flattened, the red hours ahead hidden); status and HANDOVER current",
+   "files": 8
+  },
+  {
+   "commit": "98feb4e3",
+   "at": "2026-11-11T06:51:02Z",
+   "by": "incident.labs@web-summit.dinis",
+   "what": "tokens measured",
+   "files": 1
+  },
+  {
+   "commit": "2992b7b7",
+   "at": "2026-11-11T06:52:18Z",
+   "by": "incident.social@web-summit.dinis",
+   "what": "06:47 re-read: 3 new kept posts (Lusa x2, Público); one offer (insurance regulator's recommendation, via Lusa), one tie to s-1111T0642; the organisers still silent",
+   "files": 12
+  },
+  {
+   "commit": "f7d8754e",
+   "at": "2026-11-11T06:52:30Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "on the 06:25 read: Madeira retold (red warnings ended 06:00 as scheduled; Areeiro to 05:00; a headline's 130 km/h is the warning's figure), Lisbon c16 (Open-Meteo moved); ledger line",
+   "files": 4
+  },
+  {
+   "commit": "ca94e666",
+   "at": "2026-11-11T06:52:50Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "row s-1111T0642 corrected: the 130 km/h matches IPMA's warning text and is not in its open data; whether it was measured is not known to us",
+   "files": 2
+  },
+  {
+   "commit": "62a5efd6",
+   "at": "2026-11-11T06:53:24Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "Madeira m15 corrected to the row's wording: the headline's 130 km/h matches IPMA's warning figure; whether IPMA gave the press a measured gust is not known",
+   "files": 1
+  },
+  {
+   "commit": "cc0ee6da",
+   "at": "2026-11-11T06:53:47Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "row s-1111T0642: Lusa has an IPMA meteorologist saying gusts above 130 km/h were measured in Madeira's highlands (evidence; not read at IPMA)",
+   "files": 2
+  },
+  {
+   "commit": "19d072a9",
+   "at": "2026-11-11T06:54:03Z",
+   "by": "incident.conductor@web-summit.dinis",
+   "what": "row s-1111T0642: the second correction's time as the clock had it (06:53, not 06:55)",
+   "files": 2
+  },
+  {
+   "commit": "b130caf5",
+   "at": "2026-11-11T06:54:20Z",
+   "by": "incident.graph@web-summit.dinis",
+   "what": "the graph rebuilt on the 06:52 data (480 nodes, 658 edges); a hand-over for the next session in the status file",
+   "files": 15
+  },
+  {
+   "commit": "65caf6bf",
+   "at": "2026-11-11T06:54:35Z",
+   "by": "incident.stories@web-summit.dinis",
+   "what": "Madeira m15 corrected again to the row: an IPMA meteorologist, as reported by Lusa, says gusts above 130 km/h were measured in the highlands; evidence, not read at IPMA",
+   "files": 1
+  },
+  {
+   "commit": "bdd9ff3a",
+   "at": "2026-11-11T06:55:39Z",
+   "by": "incident.wikipedia@web-summit.dinis",
+   "what": "06:50 read: nothing changed on Wikipedia; Wikidata did not answer, its last answer kept",
+   "files": 18
   }
  ]
 }
