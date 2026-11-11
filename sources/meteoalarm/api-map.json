@@ -37,7 +37,7 @@
    "answered": "200, application/json, 343,634 bytes for Portugal",
    "auth": "none",
    "returns": "{warnings: [{uuid, alert: {identifier, sender, sent, status, msgType, scope, references, incidents, info: [one block per language: event, headline, description, onset, effective, expires, severity, certainty, urgency, responseType, category, senderName, web, parameter[awareness_level, awareness_type], area[areaDesc, geocode[EMMA_ID]]]}}]}",
-   "notes": "No paging, no query parameters documented. Sends no Access-Control-Allow-Origin header (a browser on another site cannot read it). Holds expired messages for days: on 11 Nov 02:14 the oldest was sent 6 Nov 07:14. A message replaced by an Update is dropped.",
+   "notes": "No paging, no query parameters documented. Sends no Access-Control-Allow-Origin header (a browser on another site cannot read it). Holds expired messages for days: on 11 Nov 02:14 the oldest was sent 6 Nov 07:14. A message replaced by an Update is usually dropped, but stays listed when the Update's reference is written with a stray dash (seen from IPMA): follow references, not only expiry.",
    "learnt_from": "the id of each entry in the Atom feed"
   },
   {
@@ -232,5 +232,5 @@
   "label": "the two quoted statements are facts read from MeteoAlarm's pages; that the missing Madeira messages are in the archive is a hypothesis until someone queries it"
  },
  "by": "incident.sources@web-summit.dinis",
- "updated": "2026-11-11T04:24:00Z"
+ "updated": "2026-11-11T16:26:00Z"
 }

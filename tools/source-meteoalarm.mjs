@@ -59,7 +59,8 @@ function compact(w) {
     const lvl = String(par.awareness_level || '').split(';').map(s => s.trim())
     const typ = String(par.awareness_type || '').split(';').map(s => s.trim())
     const areas = (en.area || []).map(x => ({ name: x.areaDesc, emma: (x.geocode || []).filter(g => g.valueName === 'EMMA_ID').map(g => g.value).join(',') }))
-    const ref = String(a.references || '').trim().split(/\s+/).filter(Boolean).map(r => { const p = r.split(','); return { id: p[1], sent_utc: utc(p[2]) } })
+    // IPMA sometimes writes a referenced identifier with a stray '-' after the time ('…123313.-PO-01-1939' for '…123313.PO-01-1939'): normalised here, the text as written kept beside it
+    const ref = String(a.references || '').trim().split(/\s+/).filter(Boolean).map(r => { const p = r.split(','), id = String(p[1] || '').replace('.-', '.'); return { id, sent_utc: utc(p[2]), ...(id !== p[1] ? { id_as_written: p[1] } : {}) } })
     return {
         id: a.identifier, uuid: w.uuid, sent_utc: utc(a.sent), msg_type: a.msgType,
         replaces: ref.length ? ref : null,
@@ -119,6 +120,10 @@ async function main() {
     const digest = sha(bytes)
     const feed = JSON.parse(bytes.toString('utf8'))
     const cur = (feed.warnings || []).map(compact).sort((a, b) => (a.sent_utc || '').localeCompare(b.sent_utc || '') || String(a.id).localeCompare(String(b.id)))
+
+    // a message another message in the feed names in its references has been replaced, whatever its own hours say
+    const byIdCur = new Map(cur.map(m => [m.id, m]))
+    for (const m of cur) for (const r of m.replaces || []) { const o = byIdCur.get(r.id); if (o) o.replaced_by = { id: m.id, sent_utc: m.sent_utc } }
 
     const latestFile = path.join(DIR, 'latest.json'), readsFile = path.join(DIR, 'reads.json')
     const prev = readJson(latestFile, null)
@@ -192,6 +197,7 @@ async function main() {
     const counts = {}
     for (const m of cur) { const k = m.level || 'none'; counts[k] = (counts[k] || 0) + 1 }
     const live = cur.filter(m => m.expires_utc > now)
+    const inForce = live.filter(m => !m.replaced_by)
     const latest = {
         about: `MeteoAlarm's ${COUNTRY} warning feed as a compact table: one line per CAP message in the feed at the time read, oldest sent first. The warnings are issued by the national service named in each line (\`sender\`); MeteoAlarm (EUMETNET) carries them. A dated record, not a live feed: read ${now}. ${DISCLAIMER} Not a warning service. Facts.`,
         source: FEED, meteoalarm: 'https://www.meteoalarm.org', atom: ATOM,
@@ -199,8 +205,8 @@ async function main() {
         disclaimer: DISCLAIMER,
         licence: 'CC BY 4.0 with MeteoAlarm\'s additional terms for redistribution (sources/meteoalarm/source.json)',
         read_utc: now, sha256: digest, bytes: bytes.length,
-        counts: { messages: cur.length, not_yet_expired: live.length, by_level: counts, oldest_sent_utc: cur[0]?.sent_utc || null, newest_sent_utc: cur[cur.length - 1]?.sent_utc || null },
-        fields: { id: 'CAP identifier', uuid: "MeteoAlarm's id for the message (its CAP XML is at cap_xml_of_one_message)", sent_utc: 'when the national service issued it', msg_type: 'Alert (new) or Update (replaces another)', replaces: 'the message(s) it names in CAP references, with their sent time', area: 'areaDesc', emma: "MeteoAlarm's region code (EMMA_ID)", level: 'awareness_level: yellow, orange, red', hazard: 'awareness_type', event: 'English event name', event_national: 'the event in the national language', onset_utc: 'start of the warned period', expires_utc: 'end of the warned period', text: 'the English description, unedited', h: 'first 16 hex of the sha256 of the message as JSON' },
+        counts: { messages: cur.length, not_yet_expired: live.length, in_force: inForce.length, in_force_by_level: inForce.reduce((o, m) => (o[m.level || 'none'] = (o[m.level || 'none'] || 0) + 1, o), {}), by_level: counts, oldest_sent_utc: cur[0]?.sent_utc || null, newest_sent_utc: cur[cur.length - 1]?.sent_utc || null },
+        fields: { id: 'CAP identifier', uuid: "MeteoAlarm's id for the message (its CAP XML is at cap_xml_of_one_message)", sent_utc: 'when the national service issued it', msg_type: 'Alert (new) or Update (replaces another)', replaces: 'the message(s) it names in CAP references, with their sent time (the identifier normalised: IPMA sometimes writes it with a stray dash, kept as id_as_written)', replaced_by: 'the later message in this feed that names this one in its references: this one is no longer in force, whatever its hours say', area: 'areaDesc', emma: "MeteoAlarm's region code (EMMA_ID)", level: 'awareness_level: yellow, orange, red', hazard: 'awareness_type', event: 'English event name', event_national: 'the event in the national language', onset_utc: 'start of the warned period', expires_utc: 'end of the warned period', text: 'the English description, unedited', h: 'first 16 hex of the sha256 of the message as JSON' },
         messages: cur, by: BY, updated: now,
     }
     let body = JSON.stringify(latest, null, 0)
@@ -209,6 +215,6 @@ async function main() {
     fs.writeFileSync(latestFile, '{\n' + Object.entries(latest).map(([k, v]) => k === 'messages' ? ` "messages": [\n${v.map(m => '  ' + JSON.stringify(m)).join(',\n')}\n ]` : ` ${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n') + '\n}\n')
 
     const c = entry.changes
-    console.log(`${COUNTRY} ${now} sha256 ${digest.slice(0, 16)} ${bytes.length} B, ${cur.length} messages (${live.length} not yet expired)` + (c ? `; appeared ${c.appeared}, replaced ${c.replaced}, left ${c.left}, expired in feed ${c.expired_in_feed}, changed in place ${c.changed_in_place}` : entry.same_bytes_as_previous ? '; the same bytes as the previous read' : '; first read'))
+    console.log(`${COUNTRY} ${now} sha256 ${digest.slice(0, 16)} ${bytes.length} B, ${cur.length} messages (${live.length} not yet expired, ${inForce.length} in force)` + (c ? `; appeared ${c.appeared}, replaced ${c.replaced}, left ${c.left}, expired in feed ${c.expired_in_feed}, changed in place ${c.changed_in_place}` : entry.same_bytes_as_previous ? '; the same bytes as the previous read' : '; first read'))
 }
 main().catch(e => { console.error('source-meteoalarm: ' + e.message); process.exit(1) })
