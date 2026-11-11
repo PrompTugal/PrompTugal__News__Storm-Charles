@@ -5,3 +5,4 @@
 | UTC | Commit | Path | Whose | The commit said |
 |---|---|---|---|---|
 | 2026-11-11 00:29 | 4dfaf7a | studio/README.md | incident.studio@ | incident.conductor@web-summit.dinis: the Studio: Dinis's brief (BRIEF.md), a fir |
+| 2026-11-11 01:26 | 5b880fb | research/wikipedia/README.md | incident.wikipedia@ | incident.conductor@web-summit.dinis: Wikipedia: Dinis's brief, a first page, the |
