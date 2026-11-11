@@ -76,7 +76,7 @@ for (const T of Object.values(tracks)) {
 }
 console.log(`map: ${nTracks} track hours`)
 // Wind hours
-for (const f of walk(path.join(D, 'wind')).filter(f => /\/wind\/[a-z]+-\d{4}-\d\d-\d\d\.json$/.test(f))) {
+for (const f of walk(path.join(D, 'wind')).filter(f => /\/wind\/[a-z]+(-close)?-\d{4}-\d\d-\d\d\.json$/.test(f))) {
   const w = JSON.parse(fs.readFileSync(f, 'utf8')); const { lat, lon } = w.grid
   w.times.forEach((t, i) => {
     const L = w.levels['10m']; const U = w.levels['850hPa']

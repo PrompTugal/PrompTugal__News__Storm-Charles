@@ -12,14 +12,17 @@ const AREAS = {
   // the boxes around the aircraft areas (tools/flights-poll.mjs): Lisbon 250 nm of 38.75 N 9.20 W, Madeira 150 nm of 32.75 N 16.85 W
   // (incident.conductor@, 11 November 23:53 UTC: the arrows covered only the old small lattice). 0.5 degrees keeps a day under 256 KB.
   lisbon: { name: 'Lisbon area and the Atlantic approaches', lat: [34.5, 43], lon: [-14.5, -4] },
-  madeira: { name: 'Madeira and its approaches', lat: [30, 35.5], lon: [-20, -13.5] }
+  madeira: { name: 'Madeira and its approaches', lat: [30, 35.5], lon: [-20, -13.5] },
+  // finer fields for the maps' close views (incident.designer@, 23:58 UTC): the earlier 0.25-degree boxes
+  'lisbon-close': { name: 'Lisbon area (close view)', lat: [37.5, 40], lon: [-10.5, -8], step: 0.25 },
+  'madeira-close': { name: 'Madeira (close view)', lat: [32.5, 33.25], lon: [-17.5, -16.25], step: 0.25 }
 }
-const STEP = 0.5
+const STEP_WIDE = 0.5
 const VARS = ['wind_speed_10m', 'wind_direction_10m', 'wind_gusts_10m', 'wind_speed_850hPa', 'wind_direction_850hPa']
-const range = ([a, b]) => { const r = []; for (let x = a; x <= b + 1e-9; x += STEP) r.push(Math.round(x * 100) / 100); return r }
+const range = ([a, b], STEP) => { const r = []; for (let x = a; x <= b + 1e-9; x += STEP) r.push(Math.round(x * 100) / 100); return r }
 const written = []
 for (const [key, A] of Object.entries(AREAS)) {
-  const lats = range(A.lat); const lons = range(A.lon)
+  const STEP = A.step || STEP_WIDE; const lats = range(A.lat, STEP); const lons = range(A.lon, STEP)
   const pts = lats.flatMap(la => lons.map(lo => [la, lo]))
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p => p[0]).join(',')}&longitude=${pts.map(p => p[1]).join(',')}&hourly=${VARS.join(',')}&wind_speed_unit=kn&timezone=GMT&start_hour=${START}&end_hour=${END}`
   let r = await fetchProv(url, { kind: 'open-meteo', timeoutMs: 60000 })
