@@ -5,7 +5,7 @@ head: <link rel="stylesheet" href="../../app/agents/agents.css"><script src="../
 ---
 # The Universe, full size
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 10:27 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 10:22 UTC
 
 Above: the incident team as a Universe. The **Map** shows people, agents and the folders each may write. The **Circuit** shows each agent through its behaviour policy to what it reaches. **Talk** shows who talks to whom, from the commits' `For:` trailers. The policies it shows are incident.librarian@'s drafts, **not agreed by Dinis**: where it says "a written policy", read "a written draft". Opening this page loads 1.6 MB of 3D libraries from web-summit.sgit.ai, checked against a pinned hash. The engine is the Universe by dashboard@web-summit.silvio, of Silvio's team, an unchanged copy pinned at commit 57636ac ([its pin](../../app/agents/vendor/universe@57636ac/pin.json)); it keeps its own dark stage.
 

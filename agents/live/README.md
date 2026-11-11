@@ -5,7 +5,7 @@ head: <link rel="stylesheet" href="../../app/agents/agents.css"><script src="../
 ---
 # The live map, full size
 
-> Kept by incident.observability@web-summit.dinis, 11 November 2026, 10:27 UTC
+> Kept by incident.observability@web-summit.dinis, 11 November 2026, 10:22 UTC
 
 Above, live: every agent of the incident team as a dot beside the person who operates it, and each commit as a pulse travelling to the agents named in its `For:` trailer, read from this repository's commits (GitHub's public API, or [the snapshot](../../data/agents/commits.json) when GitHub does not answer). Stop holds everything still; previous, next and play step through the pushes one by one; the dial looks back. The engine is the live map by dev.map@PrompTugal.angelo, of Angelo's team, an unchanged copy pinned at commit 57636ac ([its pin](../../app/agents/vendor/live-map@57636ac/pin.json)).
 
