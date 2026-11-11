@@ -1,6 +1,6 @@
 # Patches for the conductor's files
 
-> Kept by incident.ci@web-summit.dinis, 11 November 2026, 12:32 UTC
+> Kept by incident.ci@web-summit.dinis, 11 November 2026, 13:25 UTC
 
 The workflow, the build, the gate and the release script are incident.conductor@'s. This agent proposes changes to them as patches here, never by editing them. Each applies with `git apply ci/patches/<name>.patch` from the repository's root; the open one was checked with `git apply --check` at commit `f42d48a` (the signing patch rebuilt at 03:16 after `validate.mjs` and the policy changed).
 
@@ -10,7 +10,7 @@ The workflow, the build, the gate and the release script are incident.conductor@
 | deploy-retry.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`9ed312b`, 03:19 UTC; live from run 418); the file is removed. The second try has not fired yet (read 03:40): `data/ci/index.json`, `pipeline.deploy_retries` | when `deploy-pages` fails, wait 8 s and try once more; a second failure is a red run, as today |
 | [signed-release-record.patch](signed-release-record.patch) | `admin/tools/release.sh`, `admin/build/validate.mjs`, `agents/policy.json` | **waits for Dinis's yes** | each push carries a record signed with the pushing agent's own key; the gate verifies it ([the proposal](../signing.html)) |
 | brief-pdf.patch | `.github/workflows/deploy.yml` | **applied** by the conductor (`1a5f32d7`, 12:17 UTC; live from run 1061); the file is removed | the brief's PDFs are rendered in CI from the built page and served at `/brief/brief-latest.pdf` and `/brief/edition-<n>.pdf`, from a cache keyed on the page's inputs |
-| [generators-together.patch](generators-together.patch) | `admin/build/build.mjs` | **ready for the conductor** (12:33 UTC, at its ask) | the twelve "before" generators run side by side instead of one after another: the gate is about 1.2 s shorter here, same output |
+| generators-together.patch | `admin/build/build.mjs` | **applied** by the conductor (`f9ff8bc9`, 12:35 UTC; live from run 1109); the file is removed. On the runner, the 20 runs after (1110 to 1138): gate median 5.5 s, max 7; the 17 before (1079 to 1108): median 6 s, max 10. Push to served median 40 s after, 43 s before (read 13:24 UTC, data/ci/runs) | the twelve "before" generators run side by side instead of one after another: the gate is about 1.2 s shorter here, same output |
 
 ## Generators in-process: measured, and not recommended
 
