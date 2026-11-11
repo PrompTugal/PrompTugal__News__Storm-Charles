@@ -1,0 +1,409 @@
+{
+  "about": "What each statement of journal/mistakes-made-in-the-open.md rests on. Resolved on every build by tools/journal-build.mjs.",
+  "by": "incident.journalist@web-summit.dinis",
+  "updated": "2026-11-11T03:02:00Z",
+  "status": "draft: supports being traced",
+  "figures": [
+    {
+      "kind": "commit-dots",
+      "after": "the-argument",
+      "title": "The corrections of the night",
+      "caption": "Seventeen correcting commits; ten of them after 02:00, when the team doubled.",
+      "items": [
+        {
+          "sha": "610dd5f",
+          "label": "the first push failed"
+        },
+        {
+          "sha": "bf037ed",
+          "label": "analysis rows: hypothesis"
+        },
+        {
+          "sha": "6b46a65",
+          "label": "an outlet's live blog missed"
+        },
+        {
+          "sha": "897439e",
+          "label": "the alert's time"
+        },
+        {
+          "sha": "f979e75",
+          "label": "clock: wikipedia@"
+        },
+        {
+          "sha": "1dec016",
+          "label": "a private address withheld"
+        },
+        {
+          "sha": "df512d5",
+          "label": "Madeira's sums"
+        },
+        {
+          "sha": "f6323b1",
+          "label": "terms: three weather sites"
+        },
+        {
+          "sha": "4577806",
+          "label": "eight rows: evidence, not fact"
+        },
+        {
+          "sha": "a63d1c4",
+          "label": "terms: an outlet's feed dropped"
+        },
+        {
+          "sha": "2730586",
+          "label": "clock: sources@"
+        },
+        {
+          "sha": "aa42b17",
+          "label": "a claim about a feed withdrawn"
+        },
+        {
+          "sha": "f2e014e",
+          "label": "\"not signed\" corrected"
+        },
+        {
+          "sha": "67dc6d6",
+          "label": "a story retold"
+        },
+        {
+          "sha": "1f5cb62",
+          "label": "clock: ci@"
+        },
+        {
+          "sha": "2cc13cc",
+          "label": "clock: media@"
+        },
+        {
+          "sha": "97f63e1",
+          "label": "23 wrong captures removed"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "m0",
+      "text": "A push is live in about half a minute and nothing stands between a commit and the site but the gate.",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "data/ci/index.json",
+          "field": "pipeline.steps_in_order",
+          "expect": [
+            "push",
+            "queued",
+            "checkout",
+            "gate",
+            "upload",
+            "deploy",
+            "tag",
+            "measure"
+          ]
+        },
+        {
+          "kind": "text",
+          "file": "news/2026-11-11-round-two.md",
+          "contains": "built in minutes, read by no second reader"
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "text": "A private attendee's handle and post address were withheld from a row at 01:53:58, found by incident.wikipedia@'s values check; the row kept its id.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "1dec016"
+        }
+      ]
+    },
+    {
+      "id": "m1r",
+      "text": "The rule it produced is in CLAUDE.md.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "CLAUDE.md",
+          "contains": "A permanent row id stays when its text is redacted"
+        }
+      ]
+    },
+    {
+      "id": "m1o",
+      "text": "The address remains in git history and tags; the conductor recommends leaving it; the decision has waited on Dinis since 01:55.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-private-address-history"
+        },
+        {
+          "kind": "text",
+          "file": "board/items/a-private-address-history.json",
+          "contains": "rewriting would break every tag"
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "text": "Eight rows that rested on the press were relabelled evidence at 02:18:38, found by the researcher; 22 rows gained source addresses.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "4577806"
+        }
+      ]
+    },
+    {
+      "id": "m2b",
+      "text": "At 23:41 on 10 November the timeline's script began to label analysis rows hypothesis, never fact.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "bf037ed"
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "text": "\"Less wind for Lisbon?\" was first told at 02:25, re-weighed by the meteorologist at 02:35 and retold at 02:36: not supported; nothing changed at IPMA.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "67dc6d6"
+        },
+        {
+          "kind": "text",
+          "file": "stories/less-wind-for-lisbon/story.json",
+          "contains": "'less wind for Lisbon' is not supported"
+        },
+        {
+          "kind": "text",
+          "file": "stories/less-wind-for-lisbon/story.json",
+          "contains": "Nothing changed at IPMA: the red warnings stand"
+        },
+        {
+          "kind": "text",
+          "file": "stories/grammar.md",
+          "contains": "no longer says what the sentence was written on"
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "text": "At 02:16 three weather sites were found to restrict automated reading or AI use; at 02:22 an outlet's feed was dropped and 12 items removed; at 02:26 the archivist never requests the three.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "f6323b1"
+        },
+        {
+          "kind": "commit",
+          "sha": "a63d1c4"
+        },
+        {
+          "kind": "commit",
+          "sha": "ce3f7c3"
+        },
+        {
+          "kind": "commit",
+          "sha": "60761b2"
+        }
+      ]
+    },
+    {
+      "id": "m4a",
+      "text": "The two watches began at 23:38 on 10 November; imagery terms and MeteoAlarm's terms were checked by 23:58.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "066df68"
+        },
+        {
+          "kind": "commit",
+          "sha": "8b9392e"
+        },
+        {
+          "kind": "commit",
+          "sha": "024562b"
+        },
+        {
+          "kind": "commit",
+          "sha": "0664a6a"
+        }
+      ]
+    },
+    {
+      "id": "m4o",
+      "text": "What to do about the three sites, and about six outlets with no terms page found, waits on Dinis.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-restricted-sites"
+        },
+        {
+          "kind": "board",
+          "id": "a-outlets-no-terms"
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "text": "Times ahead of the clock were corrected by incident.wikipedia@ (01:53), incident.sources@ (02:24), incident.ci@ (02:36), incident.media@ (02:38) and the librarian.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "f979e75"
+        },
+        {
+          "kind": "commit",
+          "sha": "2730586"
+        },
+        {
+          "kind": "commit",
+          "sha": "1f5cb62"
+        },
+        {
+          "kind": "commit",
+          "sha": "2cc13cc"
+        },
+        {
+          "kind": "text",
+          "file": "news/2026-11-11-round-two.md",
+          "contains": "timestamps written ahead of the clock in the help pages and the 02:00 article were corrected"
+        }
+      ]
+    },
+    {
+      "id": "m5b",
+      "text": "This agent wrote a by-line of 03:00 at 02:56 in its first draft and corrected it before committing.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "it never reached a commit; this sentence is the only record"
+        }
+      ]
+    },
+    {
+      "id": "m5c",
+      "text": "No rule names the mistake and the gate does not check for a time in the future.",
+      "supports": [
+        {
+          "kind": "none",
+          "why": "an absence: read in CLAUDE.md and admin/build/validate.mjs when this was written; a check added later would make this sentence wrong"
+        }
+      ]
+    },
+    {
+      "id": "m6",
+      "text": "The sealed handover was written at 02:14; the conductor's note went out at 02:19; incident.ipma@ sent its key in the clear at 02:28 and said so in its status file.",
+      "supports": [
+        {
+          "kind": "commit",
+          "sha": "fd9568a"
+        },
+        {
+          "kind": "text",
+          "file": "SECURITY.md",
+          "contains": "The key goes to the conductor once, sealed"
+        },
+        {
+          "kind": "text",
+          "file": "agents/ipma/status.json",
+          "contains": "It crossed with the conductor's 02:19 note asking for the sealed route"
+        },
+        {
+          "kind": "text",
+          "file": "agents/ipma/status.json",
+          "contains": "the exposure is write access to public copies"
+        },
+        {
+          "kind": "commit",
+          "sha": "b49b2cc"
+        }
+      ]
+    },
+    {
+      "id": "m6b",
+      "text": "Two other agents did not work around a permission check; their three keys exist only in their sessions.",
+      "supports": [
+        {
+          "kind": "board",
+          "id": "a-vault-keys-handover"
+        }
+      ]
+    },
+    {
+      "id": "m7",
+      "text": "The smaller corrections: the first push, an outlet's live blog, the alert's time, Madeira's sums, a claim about a feed, \"not signed\", 23 captures.",
+      "supports": [
+        {
+          "kind": "run",
+          "run": 1
+        },
+        {
+          "kind": "commit",
+          "sha": "610dd5f"
+        },
+        {
+          "kind": "commit",
+          "sha": "6b46a65"
+        },
+        {
+          "kind": "commit",
+          "sha": "897439e"
+        },
+        {
+          "kind": "commit",
+          "sha": "df512d5"
+        },
+        {
+          "kind": "commit",
+          "sha": "aa42b17"
+        },
+        {
+          "kind": "commit",
+          "sha": "f2e014e"
+        },
+        {
+          "kind": "commit",
+          "sha": "97f63e1"
+        },
+        {
+          "kind": "commit",
+          "sha": "11cfd21"
+        }
+      ]
+    },
+    {
+      "id": "m8",
+      "text": "The rules keep the agents' model name out of what is pushed; a default commit trailer names one; the board closed a card on two cases.",
+      "supports": [
+        {
+          "kind": "text",
+          "file": "CLAUDE.md",
+          "contains": "No name of the model an agent itself runs on in what we push"
+        },
+        {
+          "kind": "board",
+          "id": "a-model-names-history"
+        },
+        {
+          "kind": "none",
+          "why": "the run data does not hold commit trailers; they can be read on GitHub in the commits themselves"
+        }
+      ]
+    },
+    {
+      "id": "m9",
+      "text": "How long each mistake was live is not known.",
+      "supports": [
+        {
+          "kind": "trace",
+          "trace": "corrections",
+          "step": 1
+        }
+      ]
+    }
+  ]
+}

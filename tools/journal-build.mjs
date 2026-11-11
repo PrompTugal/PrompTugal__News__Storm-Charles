@@ -127,6 +127,18 @@ function figLanes(fig) {
     const table = ['| Agent | First commit (UTC) | Last in the run data | Commits |', '|---|---|---|---|', ...rows.map(r => `| ${short(r.agent)} | ${dhm(r.first)} | ${dhm(r.last)} | ${r.n} |`)].join('\n')
     return { svg: s, table, key: `Each bar: an agent's first commit to its last in the run data (read ${hm(COMMITS.at(-1).at)} UTC), with its number of commits. Dashed blue lines: Dinis gives direction (about).` }
 }
+// 2b. one row per item of the piece's own list, a dot at the time of the commit that corrected it (the time is the run data's)
+function figDots(fig) {
+    const rows = (fig.items || []).map(i => ({ ...i, c: COMMITS.find(c => c.sha.startsWith(i.sha)) })).filter(i => i.c).sort((p, q) => p.c.at.localeCompare(q.c.at)); if (!rows.length) return null
+    const t0 = T(COMMITS[0].at.slice(0, 13) + ':00:00Z'), t1 = T(COMMITS.at(-1).at), W = 720, L = 250, R = 20, rh = 17, top = 22, H = top + rows.length * rh + 6
+    const x = t => L + (T(t) - t0) / (t1 - t0) * (W - L - R)
+    let s = `<svg class="jr-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(fig.title)}">`
+    for (let t = t0; t <= t1; t += 3600e3) { const X = x(new Date(t).toISOString()); s += `<line class="jr-grid" x1="${X.toFixed(1)}" y1="${top - 4}" x2="${X.toFixed(1)}" y2="${H - 4}"/><text class="jr-ax" x="${X.toFixed(1)}" y="${top - 8}" text-anchor="middle">${new Date(t).toISOString().slice(11, 16)}</text>` }
+    rows.forEach((r, i) => { const y = top + i * rh; s += `<text class="jr-lab" x="${L - 10}" y="${y + 11}" text-anchor="end">${esc(r.label)}</text><line class="jr-grid" x1="${L}" y1="${y + 8}" x2="${x(r.c.at).toFixed(1)}" y2="${y + 8}"/><circle class="jr-dot" cx="${x(r.c.at).toFixed(1)}" cy="${y + 8}" r="4.5"/>` })
+    s += '</svg>'
+    const table = ['| Corrected (UTC) | What | By | Commit |', '|---|---|---|---|', ...rows.map(r => `| ${dhm(r.c.at)} | ${r.label} | ${short(r.c.agent)} | [${r.c.sha.slice(0, 7)}](${REPO}/commit/${r.c.sha}) |`)].join('\n')
+    return { svg: s, table, key: 'Each dot: the commit that corrected it, at its time (UTC).' }
+}
 // 3. the figures, recounted at this build from the files named
 function figNow() {
     const rows = []
@@ -143,7 +155,7 @@ function figNow() {
     if (has('board/items')) { const cards = fs.readdirSync(path.join(ROOT, 'board/items')).filter(f => f.endsWith('.json')).map(f => J('board/items/' + f)); rows.push(`| Cards on the board | ${cards.length} | [board/](../board/index.html) |`, `| Cards waiting on Dinis and not done | ${cards.filter(c => /dinis/i.test(c.waiting_on || '') && c.state !== 'done').length} | [board/for-dinis](../board/for-dinis.html) |`) }
     return { table: ['| Figure | Value | Read from |', '|---|---|---|', ...rows].join('\n'), asOf: CI.updated }
 }
-const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes }
+const DRAW = { 'commits-by-hour': figHours, 'agent-lanes': figLanes, 'commit-dots': figDots }
 
 // ---------------------------------------------------------------- the pieces
 const INDEX = J('journal/index.json') || { pieces: [] }

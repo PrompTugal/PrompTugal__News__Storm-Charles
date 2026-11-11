@@ -1,19 +1,19 @@
 {
   "agent": "incident.journalist@web-summit.dinis",
   "by": "incident.journalist@web-summit.dinis",
-  "updated": "2026-11-11T02:59:00Z",
-  "state": "active: the journal is live with its index and its first piece (a draft: supports being traced); pieces 2 to 5 not written",
-  "last_wake": "2026-11-11T02:59:00Z",
+  "updated": "2026-11-11T03:02:00Z",
+  "state": "active: the journal is live with its index and two pieces (both drafts: supports being traced); pieces 2, 4 and 5 not written",
+  "last_wake": "2026-11-11T03:02:00Z",
   "started_by": "incident.conductor@web-summit.dinis (session_018yvwtQ4XRqTiSE3vjVq9KD), at Dinis Cruz's word",
   "done": [
     "session key made (record sha256:b0d9ea38680bd88f, encryption sha256:6528852cc90c1ff7; pki-agent.mjs checked against the pinned sha256 before it ran), public half in data/keys.json",
     "journal/README.md: the index, how to read a piece, how the journal differs from What's new",
     "journal/a-storm-one-person-one-night.md with its supports as data (journal/a-storm-one-person-one-night.json): 32 statements, 78 supports (commits, runs, sentences of the brief, board cards, data fields), 3 said to be not recorded, 1 waiting for a trace",
     "tools/journal-build.mjs (--out, listed in admin/build/generators.json; --check): resolves every support on every build, draws two pictures from incident.ci@'s run data (commits per hour with Dinis's directions; a lane per agent), their tables, a table of figures recounted at build time, and journal/edition.md (generated, class print-article, never committed)",
-    "app/journal/: the pictures' stylesheet (tokens only) and a small script that places each picture under its heading"
+    "app/journal/: the pictures' stylesheet (tokens only) and a small script that places each picture under its heading",
+    "journal/mistakes-made-in-the-open.md with its supports (20 statements): seven kinds of mistake, who found each, the correcting commit, what each changed in a rule or a tool, what is still open; a picture of the 17 correcting commits on the night's axis"
   ],
   "next": [
-    "piece 3, Mistakes made in the open (the record is in the commits already)",
     "piece 4, What waited on the human, from board/items (waiting_on Dinis, opened_utc, history)",
     "piece 2, From a sentence to a live page, when incident.reporter@'s traces exist (reporter/traces/)",
     "piece 5, What it cost, when incident.accountant@ publishes (accounts/)",
@@ -22,7 +22,8 @@
   "asks": [
     "incident.conductor@: a Journal entry in the menu (admin/build/build.mjs MENU): journal/index.html, under Help or Team as you see fit; and the PDF from journal/edition.html (class print-article; the pictures need the page's script to sit under their headings, otherwise they print at the top)",
     "incident.reporter@: the journal reads reporter/traces/<trace>.json and looks for steps[] with an id (or n) and a 'what'; the first trace it asks for is 'first-word-to-first-page', step 1 (Dinis names the repository and the domain, ~21:00 on 10 November). Tell me the real ids and I will follow them",
-    "incident.ci@: the journal's figures are as fresh as data/ci/ (read 02:36 UTC when this was written); nothing to change, only said"
+    "incident.ci@: the journal's figures are as fresh as data/ci/ (read 02:36 UTC when this was written); nothing to change, only said",
+    "incident.conductor@ (for Dinis, if you see fit): times written ahead of the clock were corrected by five agents tonight and no rule or gate check names it; a check that refuses a 'Kept by' or 'updated' time later than the build's clock would fit admin/build/validate.mjs"
   ],
   "limits": [
     "the pictures and counts stop at the last read of data/ci/ (the build reads no git history)",
