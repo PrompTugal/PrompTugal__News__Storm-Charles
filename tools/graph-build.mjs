@@ -385,6 +385,7 @@ const outletActor = id => nodes.has('actor:outlet:' + id) ? 'actor:outlet:' + id
 const coverageRows = (M_COV ? M_COV.articles : []).filter(a => https(a.url)).map((a, i) => ({ id: 'coverage:' + (a.id || i), outlet: outletActor(a.outlet), outlet_name: actorName(outletActor(a.outlet)) || a.outlet, kind: a.kind || null, lang: a.lang || null, title: a.title || null, published: toZ(a.published) || null, published_epoch: epoch(toZ(a.published)), byline_kind: a.byline_kind || null, links_to_primary: (a.links_to_primary || []).length, label: a.label === 'fact' ? 'fact' : 'evidence', source: a.url, read: a.read || M_COV.updated, origin: `research/media/coverage.json#/articles/${i}` }))
     .sort((a, b) => (a.published || '9').localeCompare(b.published || '9') || a.id.localeCompare(b.id))
 const firstRows = (M_FIRST ? M_FIRST.facts : []).flatMap((f, i) => (f.first_by_outlet || []).filter(x => https(x.url)).map((x, k) => ({ id: `first:${f.id}:${x.outlet}`, fact: f.id, what: f.what, primary_time: toZ(f.primary_time) || null, primary_epoch: epoch(toZ(f.primary_time)), primary_label: f.primary_label || null, rank: x.rank ?? k + 1, outlet: outletActor(x.outlet), outlet_name: actorName(outletActor(x.outlet)) || x.outlet, published: toZ(x.published) || null, published_epoch: epoch(toZ(x.published)), minutes_after_primary: x.minutes_after_primary ?? null, via: x.via || null, title: x.title || null, url: x.url, label: 'hypothesis', source: x.url, read: M_FIRST.updated, read_by: 'incident.media@web-summit.dinis', origin: `research/media/first-on-each-fact.json#/facts/${i}/first_by_outlet/${k}` })))
+const TABLE_PART = Number(process.env.GRAPH_TABLE_PART) || 190 * 1024
 const TABLES = {
     ...(firstRows.length ? { first_on_fact: ['Who was first on each keyed fact: for each fact (IPMA\'s red wind, the alert, Web Summit\'s decision ...), each outlet\'s first item on it and the minutes after the primary source. From incident.media@\'s first-on-each-fact.json; the matching is by pattern, so each row is analysis (labelled hypothesis). Only outlets whose feeds could be read are here.', firstRows] } : {}),
     ...(coverageRows.length ? { coverage: ['What each outlet published on the storm and when (one row per item; the title as published, with its link; the kind of by-line, never a name). The item\'s URL is its source. From incident.media@\'s coverage.json.', coverageRows] } : {}),
@@ -403,7 +404,14 @@ const out = {
 }
 for (const [name, [about, rows]] of Object.entries(TABLES)) {
     for (const r of rows) for (const f of ['label', 'source', 'read', 'origin']) if (!r[f]) problems.push(`table ${name}, row ${r.id}: no ${f}`)
-    out[`data/graph/tables/${name}.json`] = JSON.stringify({ about: `${about} Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.`, table: name, incident: incident.id, by: 'incident.graph@web-summit.dinis', updated: asOf, as_of: asOf, columns: Object.keys(rows[0] || {}), count: rows.length, rows: '@@ROWS@@' }, null, 1).replace('"@@ROWS@@"', () => lines(rows)) + '\n'
+    // a table that would near 256 KB is written in parts of at most TABLE_PART bytes of rows: the first keeps the name and
+    // lists the others in `more` (file names beside it); each part is whole JSON with the same columns
+    const chunks = [[]]; let size = 0
+    for (const r of rows) { const n = JSON.stringify(r).length + 2; if (size + n > TABLE_PART && chunks[chunks.length - 1].length) { chunks.push([]); size = 0 } chunks[chunks.length - 1].push(r); size += n }
+    const file = k => `${name}${k ? '-' + (k + 1) : ''}.json`
+    chunks.forEach((part, k) => {
+        out[`data/graph/tables/${file(k)}`] = JSON.stringify({ about: `${about} Built by tools/graph-build.mjs from the incident's JSON; every row carries label, source, read and origin. Not a warning service.${chunks.length > 1 ? ` In ${chunks.length} files: this is part ${k + 1}.` : ''}`, table: name, incident: incident.id, by: 'incident.graph@web-summit.dinis', updated: asOf, as_of: asOf, columns: Object.keys(rows[0] || {}), count: rows.length, ...(chunks.length > 1 ? (k ? { part: k + 1, part_of: file(0), rows_here: part.length } : { more: chunks.slice(1).map((_, i) => file(i + 1)), rows_here: part.length }) : {}), rows: '@@ROWS@@' }, null, 1).replace('"@@ROWS@@"', () => lines(part)) + '\n'
+    })
 }
 
 // ---------------------------------------------------------------- the crossings: joined, not copied (ontology.json, crossings)

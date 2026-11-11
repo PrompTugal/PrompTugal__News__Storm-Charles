@@ -40,7 +40,10 @@
     const conv = v => v === null || v === undefined ? null : typeof v === 'boolean' ? (v ? 1 : 0) : typeof v === 'object' ? JSON.stringify(v) : v
     let db = null, examples = [], schema = [], quietRun = false
 
-    async function getJSON(u) { const r = await fetch(u, { cache: 'no-cache' }); if (!r.ok) throw new Error(u + ': HTTP ' + r.status); const t = await r.text(); return [JSON.parse(t), t.length] }
+    async function getJSON(u) { const r = await fetch(u, { cache: 'no-cache' }); if (!r.ok) throw new Error(u + ': HTTP ' + r.status); const t = await r.text(), j = JSON.parse(t); let n = t.length
+        // a table too large for one file names the rest in `more` (file names beside it): one table for the reader
+        if (j && j.table && Array.isArray(j.more)) for (const f of j.more) { const [m, k] = await getJSON(new URL(f, new URL(u, location.href)).href); j.rows = j.rows.concat(m.rows); n += k }
+        return [j, n] }
 
     function load(name, columns, rows) {
         const q = c => '"' + c.replace(/"/g, '""') + '"'
