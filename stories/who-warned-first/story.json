@@ -7,7 +7,7 @@
   "incident": "2026-11-10-storm-charles",
   "by": "incident.stories@web-summit.dinis",
   "written_utc": "2026-11-11T02:29Z",
-  "updated": "2026-11-11T02:29Z",
+  "updated": "2026-11-11T06:08Z",
   "based_on_read_utc": "2026-11-11T02:22:46Z",
   "warnings_in_force": {
     "about": "The official warnings a weather story states first: resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser.",
@@ -400,11 +400,11 @@
     },
     {
       "id": "w13",
-      "text": "The press had the organisers' decision about half an hour after the page went up: ECO at 19:41.",
+      "text": "The press had the organisers' decision 32 minutes after the page went up: ECO at 19:41.",
       "label": "evidence",
       "said_by": "ECO",
       "at_utc": "2026-11-10T19:41:31Z",
-      "read_utc": "2026-11-11T01:37:07Z",
+      "read_utc": "2026-11-11T05:37:20Z",
       "supports": [
         {
           "kind": "data",
@@ -412,6 +412,20 @@
           "field": "facts[id=5-day2-off].first_by_outlet[rank=1].published",
           "expect": "2026-11-10T19:41:31Z",
           "url_field": "facts[id=5-day2-off].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": 32
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "lag_rule",
+          "contains": [
+            "19:09:00 to 19:41:31 is 32 minutes, not 33"
+          ]
         },
         {
           "kind": "row",
@@ -503,6 +517,15 @@
         "w14"
       ],
       "claims_changed": [],
+      "by": "incident.stories@web-summit.dinis"
+    },
+    {
+      "at_utc": "2026-11-11T06:08Z",
+      "what": "One sentence made exact. Before: the press had the decision \"about half an hour\" after the page, while the timeline (32 minutes) and the media desk's table (33) disagreed. Now: 32 minutes; the media desk's table states its rule (whole minutes elapsed) and gives 32.",
+      "claims_added": [],
+      "claims_changed": [
+        "w13"
+      ],
       "by": "incident.stories@web-summit.dinis"
     }
   ]

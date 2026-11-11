@@ -1,0 +1,1043 @@
+{
+  "about": "A story as a small graph: claims, each with its label, who said it, when, and the rows and data fields that support it. The page is generated from this file by tools/stories-build.mjs; nothing here is new reporting. See stories/grammar.md.",
+  "id": "what-the-press-had-and-when",
+  "title": "What the press had and when",
+  "standfirst": "Eleven facts of Storm Charles, each with the time its primary source gives and the time the first outlets we could read had it. The press was 32 minutes behind Web Summit's page, ahead of the government's, and, by its titles, silent on one change to a red warning.",
+  "state": "developing",
+  "incident": "2026-11-10-storm-charles",
+  "by": "incident.stories@web-summit.dinis",
+  "written_utc": "2026-11-11T06:05Z",
+  "updated": "2026-11-11T06:05Z",
+  "based_on_read_utc": "2026-11-11T05:37:20Z",
+  "warnings_in_force": {
+    "about": "The official warnings a story about the storm states first: resolved from IPMA's open data in the data room when the page is built, and read again in the reader's browser.",
+    "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+    "list": "lisbon",
+    "levels": [
+      "red"
+    ]
+  },
+  "sections": [
+    {
+      "id": "method",
+      "title": "What is counted, and what is not",
+      "claims": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "monday",
+      "title": "Monday: a name and a warning",
+      "claims": [
+        "p3",
+        "p4"
+      ]
+    },
+    {
+      "id": "tuesday",
+      "title": "Tuesday: the red warning, the alert, the mayor, the recommendation",
+      "claims": [
+        "p5",
+        "p6",
+        "p7",
+        "p8"
+      ]
+    },
+    {
+      "id": "decision",
+      "title": "19:09 to 19:41",
+      "claims": [
+        "p9",
+        "p10"
+      ]
+    },
+    {
+      "id": "night",
+      "title": "Tuesday night: a change nobody carried, and a track told by the press alone",
+      "claims": [
+        "p11",
+        "p12",
+        "p13",
+        "p14",
+        "p15",
+        "p16"
+      ]
+    },
+    {
+      "id": "whose",
+      "title": "Whose words",
+      "claims": [
+        "p17",
+        "p18",
+        "p19"
+      ]
+    }
+  ],
+  "not_known": [
+    {
+      "text": "What the outlets that refuse automated reads published, and when (SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian, AP).",
+      "watch": "research/media/coverage.json"
+    },
+    {
+      "text": "Broadcast: what was said on television and radio is outside the table, apart from the titles of published bulletins. What Antena 1's 22:00 bulletin said was not heard."
+    },
+    {
+      "text": "The minute the minister and the mayor spoke: the first report is the earliest evidence of each."
+    },
+    {
+      "text": "Whether any outlet reported the 21:23 move of the red rain warning inside an article's text: the match is by title and live-entry title only.",
+      "watch": "research/media/first-on-each-fact.json"
+    },
+    {
+      "text": "When Público's headline changed to the track further south: its page gives the first publication time only."
+    },
+    {
+      "text": "Our own dated captures of three of the press pages named here (Observador's live blog, Expresso 23:54, Público's live page): not captured yet, so the times are the pages' own as read by the media desk.",
+      "watch": "evidence/rows.json"
+    }
+  ],
+  "record": [
+    {
+      "at_utc": "2026-11-11T06:05Z",
+      "what": "First telling, on the media desk's tables as updated at 05:37:20 UTC: 19 sentences.",
+      "claims_added": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8",
+        "p9",
+        "p10",
+        "p11",
+        "p12",
+        "p13",
+        "p14",
+        "p15",
+        "p16",
+        "p17",
+        "p18",
+        "p19"
+      ],
+      "claims_changed": [],
+      "by": "incident.stories@web-summit.dinis"
+    }
+  ],
+  "claims": [
+    {
+      "id": "p1",
+      "text": "What is counted here is what the pages themselves say: for each fact, each outlet's first article (by its title) or first timed entry in its live blog, at the time the page gives, set against the time of the primary source. Minutes are whole minutes elapsed.",
+      "label": "evidence",
+      "said_by": "incident.media@web-summit.dinis (its method, as written in the table)",
+      "at_utc": "2026-11-11T05:37:20Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "about",
+          "contains": [
+            "among the outlets we could read"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "lag_rule",
+          "contains": [
+            "whole minutes elapsed, truncated toward zero"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p2",
+      "text": "The table sees only the outlets that answered a plain automated read. SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused, so their absence here says nothing about their coverage. Feeds scroll, and the first read was at 23:45 on Tuesday: older items may simply be gone.",
+      "label": "evidence",
+      "said_by": "incident.media@web-summit.dinis (the limits it states)",
+      "at_utc": "2026-11-11T05:37:20Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/coverage.json",
+          "field": "limits[0]",
+          "contains": [
+            "SIC Notícias, Jornal de Notícias, TSF, Renascença, The Guardian and AP refused (403)"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "research/media/coverage.json",
+          "field": "limits[3]",
+          "contains": [
+            "Feeds scroll",
+            "23:45 UTC, 10 November"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p3",
+      "text": "IPMA named the storm Charles in its communiqué no. 1 on Monday at 13:17. The first title held is Público's, at 15:08, 111 minutes later; Diário de Notícias followed at 16:22. The record of Monday is thin.",
+      "label": "evidence",
+      "said_by": "Público and Diário de Notícias (their pages' own times)",
+      "at_utc": "2026-11-09T15:08:14Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=8-storm-named].primary_time",
+          "expect": "2026-11-09T13:17:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=8-storm-named].first_by_outlet[rank=1].outlet",
+          "expect": "publico"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=8-storm-named].first_by_outlet[rank=1].published",
+          "expect": "2026-11-09T15:08:14Z",
+          "url_field": "facts[id=8-storm-named].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=8-storm-named].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": 111
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=8-storm-named].first_by_outlet[rank=2].outlet",
+          "expect": "dn"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=8-storm-named].first_by_outlet[rank=2].published",
+          "expect": "2026-11-09T16:22:40Z",
+          "url_field": "facts[id=8-storm-named].first_by_outlet[rank=2].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=8-storm-named].notes[0]",
+          "contains": [
+            "Our read of 9 November is thin"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p4",
+      "text": "ANEPC's public warning on the storm (Aviso 21) is dated Monday 20:30. One title on it is held: Notícias ao Minuto's, at 23:37, 187 minutes later.",
+      "label": "evidence",
+      "said_by": "Notícias ao Minuto (its page's own time)",
+      "at_utc": "2026-11-09T23:37:22Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=9-anepc-aviso-21].primary_time",
+          "expect": "2026-11-09T20:30:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=9-anepc-aviso-21].first_by_outlet[rank=1].outlet",
+          "expect": "noticias-ao-minuto"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=9-anepc-aviso-21].first_by_outlet[rank=1].published",
+          "expect": "2026-11-09T23:37:22Z",
+          "url_field": "facts[id=9-anepc-aviso-21].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=9-anepc-aviso-21].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": 187
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=9-anepc-aviso-21].items_matched",
+          "expect": 1
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p5",
+      "text": "IPMA sent the red wind warning for Lisbon at 07:18 on Tuesday. Diário de Notícias' live blog had it at 08:05, 47 minutes later; Observador's at 08:34 and RTP's at 08:41. The press gave the warning's time as 08:31 (\"divulgada às 08h31\"), an hour and thirteen minutes after IPMA's own issue time.",
+      "label": "evidence",
+      "said_by": "Diário de Notícias, Observador and RTP (live blogs, the pages' own times)",
+      "at_utc": "2026-11-10T08:05:24Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T0718"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=1].outlet",
+          "expect": "dn"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T08:05:24Z",
+          "url_field": "facts[id=1-red-wind].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": 47
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=2].outlet",
+          "expect": "observador"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=2].published",
+          "expect": "2026-11-10T08:34:33Z",
+          "url_field": "facts[id=1-red-wind].first_by_outlet[rank=2].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=3].outlet",
+          "expect": "rtp"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=3].published",
+          "expect": "2026-11-10T08:41:00Z",
+          "url_field": "facts[id=1-red-wind].first_by_outlet[rank=3].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].primary_note",
+          "contains": [
+            "divulgada às 08h31"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p6",
+      "text": "On the alert situation the press was ahead of the page. The Interior Minister announced it at a press conference; Diário de Notícias' live blog carried it at 09:14 and Observador's at 09:17. The government's own page is dated 12:10, 175 minutes after the first report.",
+      "label": "evidence",
+      "said_by": "Diário de Notícias and Observador (live blogs); portugal.gov.pt (the page's date)",
+      "at_utc": "2026-11-10T09:14:29Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T0917"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=2-alert-situation].first_by_outlet[rank=1].outlet",
+          "expect": "dn"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=2-alert-situation].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T09:14:29Z",
+          "url_field": "facts[id=2-alert-situation].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=2-alert-situation].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": -175
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=2-alert-situation].first_by_outlet[rank=2].outlet",
+          "expect": "observador"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=2-alert-situation].first_by_outlet[rank=2].published",
+          "expect": "2026-11-10T09:17:23Z",
+          "url_field": "facts[id=2-alert-situation].first_by_outlet[rank=2].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=2-alert-situation].primary_note",
+          "contains": [
+            "the press is ahead of the page"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p7",
+      "text": "The mayor's \"Tudo indica que a Web Summit não poderá funcionar amanhã\" was spoken, and no primary page was found: the first report is the earliest evidence of it. Jornal de Negócios' live blog had it at 13:19, Jornal Económico at 13:23, Diário de Notícias at 13:47 and Público at 14:00.",
+      "label": "evidence",
+      "said_by": "Jornal de Negócios, Jornal Económico, Diário de Notícias and Público (the pages' own times)",
+      "at_utc": "2026-11-10T13:19:00Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1319"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=1].outlet",
+          "expect": "negocios"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T13:19:00Z",
+          "url_field": "facts[id=3-mayor].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=2].outlet",
+          "expect": "jornal-economico"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=2].published",
+          "expect": "2026-11-10T13:23:13Z",
+          "url_field": "facts[id=3-mayor].first_by_outlet[rank=2].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=3].outlet",
+          "expect": "dn"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=3].published",
+          "expect": "2026-11-10T13:47:39Z",
+          "url_field": "facts[id=3-mayor].first_by_outlet[rank=3].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=4].outlet",
+          "expect": "publico"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=4].published",
+          "expect": "2026-11-10T14:00:07Z",
+          "url_field": "facts[id=3-mayor].first_by_outlet[rank=4].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].primary_note",
+          "contains": [
+            "no primary page found"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p8",
+      "text": "The government's recommendation to suspend Web Summit on Wednesday has one timed report among the pages read: Jornal de Negócios' live blog, at 17:53. No government page on it was found, so that entry is also the only time held for the recommendation itself.",
+      "label": "evidence",
+      "said_by": "Jornal de Negócios (live blog)",
+      "at_utc": "2026-11-10T17:53:00Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1753"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=4-government-recommends].first_by_outlet[rank=1].outlet",
+          "expect": "negocios"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=4-government-recommends].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T17:53:00Z",
+          "url_field": "facts[id=4-government-recommends].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=4-government-recommends].items_matched",
+          "expect": 1
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=4-government-recommends].primary_note",
+          "contains": [
+            "no government page found"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p9",
+      "text": "Web Summit published its page at 19:09. ECO had it at 19:41:31 and TEK at 19:41:57, both 32 minutes later; Jornal de Negócios' live blog at 19:42; Diário de Notícias, Observador and RTP by 19:47. Ten outlets had it by 20:39, the last of them Expresso, 90 minutes after the page.",
+      "label": "evidence",
+      "said_by": "ECO, TEK and eight more outlets (the pages' own times)",
+      "at_utc": "2026-11-10T19:41:31Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1909"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1941"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].primary_time",
+          "expect": "2026-11-10T19:09:00Z"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=1].outlet",
+          "expect": "eco"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T19:41:31Z",
+          "url_field": "facts[id=5-day2-off].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=1].minutes_after_primary",
+          "expect": 32
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=2].outlet",
+          "expect": "tek"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=2].published",
+          "expect": "2026-11-10T19:41:57Z",
+          "url_field": "facts[id=5-day2-off].first_by_outlet[rank=2].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=2].minutes_after_primary",
+          "expect": 32
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=3].outlet",
+          "expect": "negocios"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=3].published",
+          "expect": "2026-11-10T19:42:00Z",
+          "url_field": "facts[id=5-day2-off].first_by_outlet[rank=3].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=6].outlet",
+          "expect": "rtp"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=6].published",
+          "expect": "2026-11-10T19:47:00Z",
+          "url_field": "facts[id=5-day2-off].first_by_outlet[rank=6].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=10].outlet",
+          "expect": "expresso"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=10].published",
+          "expect": "2026-11-10T20:39:56Z",
+          "url_field": "facts[id=5-day2-off].first_by_outlet[rank=10].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=10].minutes_after_primary",
+          "expect": 90
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p10",
+      "text": "Those 32 minutes have a context: the page went up on a path that is not in the site's news list or its sitemap, and attendees were told by email at 19:38, as relayed to us, three minutes before the first article.",
+      "label": "evidence",
+      "said_by": "Web Summit's site, as read; the email as relayed",
+      "at_utc": "2026-11-10T19:38Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T1909"
+        },
+        {
+          "kind": "row",
+          "id": "s-1110T1938"
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/decisions/graph.json",
+          "field": "lessons[0]",
+          "contains": [
+            "which is not in sitemap.xml"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p11",
+      "text": "IPMA moved the start of Lisbon's red rain warning three hours earlier, to 09:00 on Wednesday, in a message sent at 21:23 on Tuesday.",
+      "label": "fact",
+      "said_by": "IPMA, warnings (CAP messages through MeteoAlarm)",
+      "at_utc": "2026-11-10T21:23Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T2353"
+        },
+        {
+          "kind": "edge",
+          "id": "ipma-red-rain-0900"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].primary_time",
+          "expect": "2026-11-10T21:23:00Z"
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p12",
+      "text": "No article title and no live-blog entry among the pages read reported that move by 00:15 on Wednesday, and the media desk's table still counted none when this was written.",
+      "label": "hypothesis",
+      "confidence": "limited by method: matched by title only; six outlets refuse automated reads",
+      "said_by": "incident.media@web-summit.dinis (analysis)",
+      "at_utc": "2026-11-11T00:15Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1111T0015"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].items_matched",
+          "expect": 0
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].notes[0]",
+          "contains": [
+            "no article title or live entry we could read reported it"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p13",
+      "text": "Outside the press it was relayed in public at 22:20, 57 minutes after IPMA sent it, by VOST Portugal: a volunteers' association, not an authority and not press.",
+      "label": "evidence",
+      "said_by": "VOST Portugal (a public post), as found by incident.social@",
+      "at_utc": "2026-11-10T22:20Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T2220"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=6-red-rain-0900].notes[0]",
+          "contains": [
+            "57 minutes after IPMA sent it"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p14",
+      "text": "That the storm's track lay further south reached the public through the press alone: there is no timed primary source, and IPMA's own channels had not changed when they were read at 00:29 on Wednesday. Observador's live blog was first, at 22:07, on the models; RTP published Antena 1's 22:00 bulletin at 22:22 with IPMA in its title; at 22:35 Observador carried an IPMA meteorologist's words to its radio. RTP's live blog followed at 23:08, Expresso at 23:54 and CNN Portugal at 00:31.",
+      "label": "evidence",
+      "said_by": "Observador, RTP, Expresso and CNN Portugal (the pages' own times)",
+      "at_utc": "2026-11-10T22:07:49Z",
+      "supports": [
+        {
+          "kind": "row",
+          "id": "s-1110T2235"
+        },
+        {
+          "kind": "row",
+          "id": "s-1111T0029"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=7-track-south].primary_note",
+          "contains": [
+            "IPMA's own channels had not changed"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=7-track-south].first_by_outlet[rank=1].outlet",
+          "expect": "observador"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=7-track-south].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T22:07:49Z",
+          "url_field": "facts[id=7-track-south].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=7-track-south].first_by_outlet[rank=2].outlet",
+          "expect": "rtp"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=7-track-south].first_by_outlet[rank=2].published",
+          "expect": "2026-11-10T22:22:02Z",
+          "url_field": "facts[id=7-track-south].first_by_outlet[rank=2].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=1].outlet",
+          "expect": "observador"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=1].published",
+          "expect": "2026-11-10T22:35:24Z",
+          "url_field": "facts[id=11-meteorologist-line].first_by_outlet[rank=1].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=2].outlet",
+          "expect": "rtp"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=2].published",
+          "expect": "2026-11-10T23:08:00Z",
+          "url_field": "facts[id=11-meteorologist-line].first_by_outlet[rank=2].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=2].minutes_after_primary",
+          "expect": 32
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=3].outlet",
+          "expect": "expresso"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=3].published",
+          "expect": "2026-11-10T23:54:37Z",
+          "url_field": "facts[id=11-meteorologist-line].first_by_outlet[rank=3].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=3].minutes_after_primary",
+          "expect": 79
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=4].outlet",
+          "expect": "cnn-portugal"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=4].published",
+          "expect": "2026-11-11T00:31:00Z",
+          "url_field": "facts[id=11-meteorologist-line].first_by_outlet[rank=4].url"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=11-meteorologist-line].first_by_outlet[rank=4].minutes_after_primary",
+          "expect": 115
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p15",
+      "text": "Two later headlines spoke of less wind: Expresso's, at 23:54 (\"muda trajetória para sul, com menos vento\"), and CNN Portugal's, at 00:31 (\"com menos intensidade\"). A headline is evidence of what the press reports, not of the weather: IPMA's red wind warning for Lisbon, sent at 07:18 on Tuesday, was not replaced.",
+      "label": "evidence",
+      "said_by": "Expresso and CNN Portugal (headlines); IPMA (the warning)",
+      "at_utc": "2026-11-11T00:31Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=7-track-south].notes[1]",
+          "contains": [
+            "muda trajetória para sul, com menos vento",
+            "com menos intensidade",
+            "Headlines are evidence of what the press reports, not of the weather"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "incidents/2026-11-10-storm-charles/data/weather/warnings.json",
+          "field": "lisbon[type=Vento&level=red].sent_utc",
+          "expect": "2026-11-10T07:18:40Z"
+        }
+      ],
+      "qualified_by": [
+        "p14"
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p16",
+      "text": "This site had the order wrong first. Its first table put RTP's 22:22 bulletin ahead and Observador at 23:16, because Observador's storm entries sit inside a live blog whose address names another story. It was corrected at 00:50 on Wednesday.",
+      "label": "evidence",
+      "said_by": "incident.media@web-summit.dinis (its correction, in the table)",
+      "at_utc": "2026-11-11T00:50Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=7-track-south].notes[3]",
+          "contains": [
+            "Correction (00:50 UTC, 11 November)",
+            "its address names another story"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p17",
+      "text": "On Tuesday the first timed report of each of these was an entry in a live blog, with one exception: the organisers' decision, where two articles (ECO, TEK) came before the first live entry by under half a minute.",
+      "label": "evidence",
+      "said_by": "incident.media@web-summit.dinis (the table)",
+      "at_utc": "2026-11-11T05:37:20Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=1-red-wind].first_by_outlet[rank=1].via",
+          "expect": "live blog entry"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=2-alert-situation].first_by_outlet[rank=1].via",
+          "expect": "live blog entry"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=3-mayor].first_by_outlet[rank=1].via",
+          "expect": "live blog entry"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=4-government-recommends].first_by_outlet[rank=1].via",
+          "expect": "live blog entry"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=7-track-south].first_by_outlet[rank=1].via",
+          "expect": "live blog entry"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=1].via",
+          "expect": "article"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=2].via",
+          "expect": "article"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/first-on-each-fact.json",
+          "field": "facts[id=5-day2-off].first_by_outlet[rank=3].via",
+          "expect": "live blog entry"
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p18",
+      "text": "About half of the items whose by-line could be read carry the agency's: Lusa's. Most of those are at Notícias ao Minuto; Observador, CNN Portugal, Público, Correio da Manhã and Diário de Notícias published the wire too. The shares are counted again at each read of the media desk and shown in the supports as they stand.",
+      "label": "evidence",
+      "said_by": "incident.media@web-summit.dinis (counts of by-lines as printed)",
+      "at_utc": "2026-11-11T05:37:20Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/coverage.json",
+          "field": "counts.wire_share"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/coverage.json",
+          "field": "counts.wire_share_note",
+          "contains": [
+            "Lusa's"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "edges[from=noticias-ao-minuto&to=lusa].items"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "edges[from=noticias-ao-minuto&to=lusa].basis",
+          "expect": "the item's by-line names the agency"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "edges[from=observador&to=lusa].verb",
+          "expect": "published the wire of"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "edges[from=cnn-portugal&to=lusa].verb",
+          "expect": "published the wire of"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "edges[from=publico&to=lusa].verb",
+          "expect": "published the wire of"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "edges[from=correio-da-manha&to=lusa].verb",
+          "expect": "published the wire of"
+        },
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "edges[from=dn&to=lusa].verb",
+          "expect": "published the wire of"
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    },
+    {
+      "id": "p19",
+      "text": "The table of who carried whose words sees by-lines and what a live entry says of itself, not quotes or links inside an article. One relay is on record for the track: a Notícias ao Minuto entry gave \"the latest information from IPMA\" as released by RTP Notícias.",
+      "label": "evidence",
+      "said_by": "incident.media@web-summit.dinis (the table)",
+      "at_utc": "2026-11-11T05:37:20Z",
+      "supports": [
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "about",
+          "contains": [
+            "It does not see quotes or links inside an article"
+          ]
+        },
+        {
+          "kind": "data",
+          "file": "research/media/cites.json",
+          "field": "edges[from=noticias-ao-minuto&to=rtp].basis",
+          "contains": [
+            "released by RTP Notícias"
+          ]
+        }
+      ],
+      "read_utc": "2026-11-11T05:37:20Z"
+    }
+  ]
+}
