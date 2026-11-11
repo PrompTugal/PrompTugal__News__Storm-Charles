@@ -128,14 +128,17 @@ function publisher(url, ctx, asOutlet, kind = 'outlet') {
 }
 
 // ---------------------------------------------------------------- sources (decisions/sources.json, then any other cited URL)
+// A Source here is one address that was read; its id is address:<id>. The ids source:* are incident.sources@'s (a body in
+// sources/registry.json): the graph mints none (the conductor's decision, 11 Nov, 03:48) and carries the register's own id
+// on each registered-as crossing (`node`).
 const sourceByUrl = new Map()
 S.sources.forEach((s, i) => {
-    const n = node({ id: 'source:' + s.id, type: 'Source', name: s.id, url: s.url, host: host(s.url), holds: s.holds || null, changes: s.changes || null, machine_readable: s.machine_readable || null, status: s.status || null, reuse: s.reuse || null, label: 'fact', source: s.url, read: s.read || S.updated, read_by: 'incident.researcher@web-summit.dinis', origin: `${DATA}decisions/sources.json#/sources/${i}` })
+    const n = node({ id: 'address:' + s.id, type: 'Source', name: s.id, url: s.url, host: host(s.url), holds: s.holds || null, changes: s.changes || null, machine_readable: s.machine_readable || null, status: s.status || null, reuse: s.reuse || null, label: 'fact', source: s.url, read: s.read || S.updated, read_by: 'incident.researcher@web-summit.dinis', origin: `${DATA}decisions/sources.json#/sources/${i}` })
     if (!sourceByUrl.has(s.url)) sourceByUrl.set(s.url, n.id)
 })
 function sourceNode(url, ctx) {
     if (sourceByUrl.has(url)) return sourceByUrl.get(url)
-    const id = 'source:url:' + sha(url).slice(0, 10)
+    const id = 'address:url:' + sha(url).slice(0, 10)
     node({ id, type: 'Source', name: host(url), url, host: host(url), holds: null, changes: null, machine_readable: null, status: null, reuse: null, label: 'fact', source: url, read: ctx.read, read_by: ctx.read_by || null, derived: true, origin: ctx.origin })
     sourceByUrl.set(url, id); return id
 }
@@ -424,7 +427,7 @@ if (REG) REG.sources.forEach((r, i) => {
     const declared = r.entity && nodes.has(entGraph.get(r.entity)) ? entGraph.get(r.entity) : null
     const [byHost, h] = declared ? [null, null] : actorByHosts(r.hosts)
     const from = declared || byHost; if (!from) return
-    crossing({ from, rel: 'registered-as', to: 'sources/' + r.id, name: r.name, href: `sources/${r.page || r.id + '/index.html'}`, label: declared ? 'fact' : 'hypothesis', why: declared ? `the register names the entity ${r.entity}, and the entity names this node` : `matched by host: ${h} is one of the register's hosts for this body`, source: fileUrl('sources/registry.json'), read: toZ(REG.updated), origin: `/sources/registry.json#/sources/${i}` })
+    crossing({ from, rel: 'registered-as', to: 'sources/' + r.id, node: r.node || null, name: r.name, href: `sources/${r.page || r.id + '/index.html'}`, label: declared ? 'fact' : 'hypothesis', why: declared ? `the register names the entity ${r.entity}, and the entity names this node` : `matched by host: ${h} is one of the register's hosts for this body`, source: fileUrl('sources/registry.json'), read: toZ(REG.updated), origin: `/sources/registry.json#/sources/${i}` })
 })
 // meteorology/: the weather data supply chain. A body there and an actor here are joined by the host of the body's address;
 // a warning goes through the one warning service its body issues alone (a service two bodies issue is nobody's own).

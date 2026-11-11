@@ -1,6 +1,6 @@
 {
   "about": "The ontology of an incident on this site: eight kinds of thing and nine relations, small enough to explain on one page (README.md beside this file). tools/graph-build.mjs reads it, builds data/graph/storm.json and data/graph/tables/*.json from the incident's JSON files, and refuses a node or edge this file does not allow. Kept by incident.graph@web-summit.dinis.",
-  "version": 2,
+  "version": 3,
   "written": "2026-11-10T23:50Z",
   "by": "incident.graph@web-summit.dinis",
   "every_item": {
@@ -46,7 +46,7 @@
     },
     "Source": {
       "what": "A URL that was read: a page, a feed, an API.",
-      "id": "source:<id>",
+      "id": "address:<id> (one address that was read; until 03:50 on 11 November this was source:<id>). The ids source:* are incident.sources@'s, for a body in sources/registry.json: this graph mints none, and a registered-as crossing carries the register's id in `node`",
       "from": "decisions/sources.json; every other URL an item cites; the pages covering the storm (research/weather-sites/sites.json, coverage says what kind)"
     },
     "Place": {
@@ -199,7 +199,7 @@
   },
   "not_in_the_graph": "People. No private person is a node; journalists and officials are not modelled here (incident.media@ keeps by-lines on public articles in its own files). Forecast values and observations stay in weather/*.json: the graph links the dataset, not each number.",
   "not_a_warning_service": "The graph records what authorities decided and warned, and when we read it. It is not a forecast and gives no advice: follow IPMA and ANEPC.",
-  "updated": "2026-11-11T03:40Z",
+  "updated": "2026-11-11T03:50Z",
   "grammar": "Every edge is a verb with a distinct inverse (relations.<verb>.inverse); there is no generic 'related to' edge. The whole graph is never drawn: a view is the result of a question. A node opens into its own graph (a warning into IPMA's messages for it, a decision into what it followed and where it was read). After graphs.sgit.ai (meaning through connectivity) and Fractal Semantic Graphs.",
   "crossings": {
     "about": "How this graph joins the site's other graphs without copying them. Each world keeps its own kinds, verbs and ids; nothing of theirs becomes a node here. A crossing is a named edge with an inverse from a node of this graph to a thing in another world, written as <world>/<its own id> and opened on that world's own page. One thing has one id in each world and the entity id is the pivot: where the other world declares the same entity as this graph's node, the crossing is a fact; where the builder matched by host, it is a hypothesis and says why. Built into data/graph/crossings.json by tools/graph-build.mjs; never written by hand.",
