@@ -141,7 +141,7 @@ function live() {
     const parent = fullName(arg('parent', me)), child = fullName(need('child')), n = arg('n');
     const s = need('session'); if (!/^session_[A-Za-z0-9]+$/.test(s)) { console.error('trace: --session must be a session id'); process.exit(2); }
     out.push(event({ ...base(parent), unit: unitOf(parent), altitude: 'A3', phase: 'step', name: `spawn ${child}${n ? ' session ' + n : ''}`, item: unitOf(child), note: arg('why') }));
-    out.push(event({ ...base(child), unit: unitOf(child), altitude: 'A3', phase: 'start', name: `session ${n || 'new'} begins`, item: s, note: `spawned by ${parent}` }));
+    out.push(event({ ...base(parent), key_fp: undefined, unit: unitOf(child), altitude: 'A3', phase: 'start', name: `session ${n || 'new'} begins`, item: s, note: `spawned by ${parent}` }));
   } else if (cmd === 'fetch') {
     const agent = fullName(arg('agent', me)); const host = need('host'); const status = +need('status');
     const unit = `A0-fetch-${hex(agent + host + at + Math.random(), 12)}`;
