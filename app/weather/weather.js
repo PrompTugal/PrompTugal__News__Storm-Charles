@@ -83,7 +83,7 @@
       '<div class="wxc-hero-main"><p class="kicker">' + esc(I.kicker || 'Storm Charles') + '</p>' +
       '<h1 id="wxc-now">Lisbon now <time datetime="' + iso(t) + '">' + esc(longDay(t)) + ', ' + hm(t) + ' UTC <span>(Lisbon time)</span></time></h1>' +
       (D.warn ? '<h2 class="wxc-sub">' + (live.length ? 'IPMA warnings in force this hour' : 'No IPMA warning above green is in force in Lisbon this hour') + '</h2>' + (live.length ? '<ul class="wxc-ws">' + live.map(line).join('') + '</ul>' : '') +
-        (next.length ? '<h2 class="wxc-sub">Next, as IPMA warns</h2><ul class="wxc-ws next">' + next.map(line).join('') + '</ul>' : '') + '<p>' + wp + '</p>' : '<p class="meta">The warnings file could not be read.</p>') +
+        (next.length ? '<h2 class="wxc-sub">Next, as IPMA warns</h2><ul class="wxc-ws next">' + next.map(line).join('') + '</ul>' : '') + '<p>' + wp + (ok(D.warn.next_read_utc) ? ' <span class="prov">· next read at about ' + hm(D.warn.next_read_utc) + ' UTC</span>' : '') + '</p>' : '<p class="meta">The warnings file could not be read.</p>') +
       '</div><div class="wxc-hero-side">' + nowTiles(t) +
       (h.text ? '<div class="wxc-decision"><p class="wxc-eyebrow">The decision ' + lbl(h.label || 'fact') + '</p><p class="wxc-dtext">' + esc(h.text) + '</p><p class="prov">' + esc(h.source || '') + ', ' + esc(h.at || '') + '. <a href="' + esc(sigUrl ? ROOM.signals + '#' + sigUrl.id : room + 'index.html') + '">In the data room</a></p></div>' : '') +
       '</div></section>'
@@ -166,6 +166,49 @@
       '<p>' + (D.warn ? prov('warn', 'IPMA warnings', D.warn.read_utc) + ' · ' : '') + (D.rain ? prov('rain', 'IPMA stations, rain', D.rain.read_utc) + ' · ' : '') + (D.stations ? prov('stations', 'IPMA stations, wind', D.stations.read_utc) + ' · ' : '') + (D.airport ? prov('airport', 'Lisbon airport (METAR)', D.airport.read_utc) + ' · ' : '') + (D.forecast && D.forecast.hourly ? prov('forecast', 'IPMA automatic forecast', D.forecast.hourly.read_utc) : '') + '</p></section>'
   }
 
+  // wind, observed against warned: one axis (km/h), today's 24 hours. The warned figure is IPMA's own number, read from its sentence
+  // and drawn only across the warning's hours, in the warning's colour with the level written. Observed is solid; the automatic
+  // forecast is grey and dashed. Each mark has a title (hover) and the same values are in the table under the chart.
+  function windChart(t) {
+    var D0 = T(day(t) + 'T00:00:00Z'), D1 = D0 + 864e5, H = 36e5
+    var ws = lisbonWarnings().filter(function (w) { return w.type === 'Vento' && T(w.start_utc) < D1 && T(w.end_utc) > D0 })
+    var ms = ((D.airport || {}).metars || []).filter(function (m) { return T(m.time_utc) >= D0 && T(m.time_utc) < D1 })
+    var ss = (D.stations || {}).stations || [], fr = (((D.forecast || {}).hourly || {}).rows || []).filter(function (r) { return T(r.time_utc) >= Math.max(D0, t - H) && T(r.time_utc) <= D1 && r.wind_mean_kmh != null })
+    if (!ws.length && !ms.length) return ''
+    var mean = []; for (var h = 1; h <= 24; h++) { var x = D0 + h * H, best = null; ss.forEach(function (s) { (s.hourly || []).forEach(function (r) { if (T(r.time_utc) === x && r.wind_mean_kmh != null && (!best || r.wind_mean_kmh > best.v)) best = { v: r.wind_mean_kmh, s: s.name, t: x } }) }); if (best) mean.push(best) }
+    var figs = function (w) { return (String(w.text_pt || '').match(/\d+(?=\s*km\/h)/g) || []).map(Number) }
+    var top = 60; ws.forEach(function (w) { figs(w).forEach(function (v) { if (v > top) top = v }) }); ms.forEach(function (m) { if ((m.gust_kmh || m.wind_kmh || 0) > top) top = m.gust_kmh || m.wind_kmh })
+    top = Math.ceil((top + 10) / 20) * 20
+    var W = 1000, Ht = 300, L = 46, R = 14, Tp = 16, B = 30, X = function (ms_) { return L + (W - L - R) * (ms_ - D0) / 864e5 }, Y = function (v) { return Tp + (Ht - Tp - B) * (1 - v / top) }
+    var g = '', rows = []
+    for (var v = 0; v <= top; v += 20) g += '<line class="c-grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v) + '" y2="' + Y(v) + '"/><text class="c-tick" x="' + (L - 6) + '" y="' + (Y(v) + 4) + '" text-anchor="end">' + v + '</text>'
+    for (var i = 0; i <= 24; i += 3) g += '<text class="c-tick" x="' + X(D0 + i * H) + '" y="' + (Ht - 10) + '" text-anchor="' + (i === 24 ? 'end' : i ? 'middle' : 'start') + '">' + ('0' + (i % 24)).slice(-2) + ':00</text>'
+    ws.forEach(function (w) {
+      var a = Math.max(D0, T(w.start_utc)), b = Math.min(D1, T(w.end_utc)), f = figs(w); if (!f.length) return
+      g += '<rect class="c-win w-' + esc(w.level) + '" x="' + X(a) + '" y="' + Y(top) + '" width="' + (X(b) - X(a)) + '" height="' + (Y(0) - Y(top)) + '"/>'
+      f.forEach(function (v, k) {
+        g += '<line class="c-warn w-' + esc(w.level) + (k ? ' more' : '') + '" x1="' + X(a) + '" x2="' + X(b) + '" y1="' + Y(v) + '" y2="' + Y(v) + '"><title>' + esc('IPMA ' + w.level + ' wind warning, ' + hm(a) + ' to ' + hm(w.end_utc) + ': ' + w.text_pt) + '</title></line>' +
+          '<text class="c-lab" x="' + (X(a) + 6) + '" y="' + (Y(v) - 6) + '">' + (k ? 'up to ' + v + ' km/h in IPMA\'s sentence' : esc(w.level.toUpperCase()) + ' warning: gusts ' + v + ' km/h') + '</text>'
+      })
+      rows.push(['IPMA ' + w.level + ' wind warning', hm(a) + ' to ' + hm(w.end_utc), '<span lang="pt">' + esc(w.text_pt) + '</span>'])
+    })
+    if (fr.length > 1) g += '<polyline class="c-auto" points="' + fr.map(function (r) { return X(T(r.time_utc)) + ',' + Y(r.wind_mean_kmh) }).join(' ') + '"><title>IPMA automatic forecast, mean wind at one point in the city (no gusts in this feed)</title></polyline>'
+    if (mean.length > 1) g += '<polyline class="c-mean" points="' + mean.map(function (m) { return X(m.t) + ',' + Y(m.v) }).join(' ') + '"><title>Observed hourly mean wind, the windiest of IPMA\'s Lisbon stations</title></polyline>'
+    mean.forEach(function (m) { g += '<circle class="c-meanp" cx="' + X(m.t) + '" cy="' + Y(m.v) + '" r="3"><title>' + esc('the hour to ' + hm(m.t) + ': mean wind ' + m.v + ' km/h at ' + m.s) + '</title></circle>' })
+    mean.forEach(function (m) { rows.push(['Observed mean wind, ' + esc(m.s), 'the hour to ' + hm(m.t), m.v + ' km/h']) })
+    ms.forEach(function (m) {
+      if (m.gust_kmh != null) { g += '<circle class="c-gust" cx="' + X(T(m.time_utc)) + '" cy="' + Y(m.gust_kmh) + '" r="5"><title>' + esc(hm(m.time_utc) + ': gust ' + m.gust_kmh + ' km/h at Lisbon airport (mean ' + m.wind_kmh + ')') + '</title></circle>'; rows.push(['Observed gust, Lisbon airport', hm(m.time_utc), m.gust_kmh + ' km/h']) }
+    })
+    if (t >= D0 && t < D1) g += '<line class="c-now" x1="' + X(t) + '" x2="' + X(t) + '" y1="' + Tp + '" y2="' + (Ht - B) + '"/><text class="c-nowt" x="' + (X(t) + 5) + '" y="' + (Tp + 10) + '">now ' + hm(t) + '</text>'
+    var maxG = null; ms.forEach(function (m) { if (m.gust_kmh != null && (!maxG || m.gust_kmh > maxG.gust_kmh)) maxG = m })
+    return '<section class="wxc-sec" aria-labelledby="wxc-h-wind"><h2 id="wxc-h-wind">Wind today: measured against warned <span class="meta">km/h, Lisbon</span></h2>' +
+      '<p class="wxc-lead">' + (maxG ? 'Strongest gust measured at Lisbon airport so far today: <b>' + maxG.gust_kmh + ' km/h</b> at ' + hm(maxG.time_utc) + '.' : 'No gust has been reported at Lisbon airport so far today.') + '</p>' +
+      '<div class="wxc-scroll plain" tabindex="0" role="group" aria-label="Wind chart: scrolls sideways on a small screen"><svg class="wxc-chart" viewBox="0 0 ' + W + ' ' + Ht + '" role="img" aria-label="Wind today in Lisbon: IPMA\'s warned gusts, the gusts and mean wind measured, and IPMA\'s automatic forecast. The values are in the table below.">' + g + '</svg></div>' +
+      '<ul class="wxc-legend"><li><span class="k k-warnline"></span>IPMA\'s warned gusts, over the warning\'s hours</li><li><span class="k k-dot"></span>gust measured at Lisbon airport</li><li><span class="k k-line"></span>mean wind measured (the windiest station)</li><li><span class="k k-dash"></span>IPMA\'s automatic forecast, mean wind</li></ul>' +
+      '<details class="wxc-table"><summary>The same values as a table (' + rows.length + ' rows)</summary><div class="wxc-scroll plain"><table><thead><tr><th>What</th><th>When (UTC)</th><th>Value</th></tr></thead><tbody>' + rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>' }).join('') + '</tbody></table></div></details>' +
+      '<p>' + (D.warn ? prov('warn', 'IPMA warnings', D.warn.read_utc) + ' · ' : '') + (D.airport ? prov('airport', 'Lisbon airport (METAR)', D.airport.read_utc) + ' · ' : '') + (D.stations ? prov('stations', 'IPMA stations', D.stations.read_utc) + ' · ' : '') + (D.forecast && D.forecast.hourly ? prov('forecast', 'IPMA automatic forecast', D.forecast.hourly.read_utc) : '') + '</p></section>'
+  }
+
   // our meteorologist's reading: a hypothesis, never a forecast of ours stated as fact. Dashed, and it says so.
   function reading(t) {
     var A = D.analysis; if (!A) return ''
@@ -246,7 +289,7 @@
   function render() {
     var t = now(), sx = (el.querySelector('.wxc-scroll') || {}).scrollLeft
     var nextRead = D.warn && D.warn.next_read_utc
-    el.innerHTML = '<div class="wxc">' + hero(t) + hours(t) + reading(t) + '<div class="wxc-pair">' + closed(t) + madeira(t) + '</div>' + tomorrow(t) + latest(t) +
+    el.innerHTML = '<div class="wxc">' + hero(t) + hours(t) + windChart(t) + reading(t) + '<div class="wxc-pair">' + closed(t) + madeira(t) + '</div>' + tomorrow(t) + latest(t) +
       '<p class="wxc-foot"><b>Not a warning service.</b> This page shows what IPMA warns and what the authorities decided, as read at the times shown; it makes no forecast and gives no advice of its own. Follow <a href="https://www.ipma.pt/" rel="external">IPMA <span aria-hidden="true">↗</span></a> and <a href="https://prociv.gov.pt/" rel="external">ANEPC <span aria-hidden="true">↗</span></a> (both leave this site). Everything here is read from <a href="' + esc(base + 'datasets.html') + '">the data room</a>' + (ok(nextRead) ? '; its weather files are next read at about ' + hm(nextRead) + ' UTC' : '') + '.' + (failed.length ? ' Could not read: ' + esc(failed.join(', ')) + '.' : '') + (qNow ? ' <b>Shown as at ' + esc(hm(t)) + ' UTC (?now=), not the present.</b>' : '') + '</p></div>'
     var sc = el.querySelector('.wxc-scroll'), nw = el.querySelector('.wxc-head .now')
     if (sc && sx != null) sc.scrollLeft = sx
