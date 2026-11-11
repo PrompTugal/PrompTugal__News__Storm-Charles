@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Daily precipitation by municipality
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 03:42 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 04:37 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,7 +19,7 @@ IPMA's name for it: *Precipitação diária por concelho*. Documented at [api.ip
 | Shape | one line per municipality and day, 20 days |
 | IPMA says it updates | Taxa de atualização diária. |
 | IPMA's file dated (its Last-Modified header) | 2026-11-11 03:10 UTC |
-| We last read it | 2026-11-11 03:42 UTC, 1 file, 635427 bytes |
+| We last read it | 2026-11-11 04:36 UTC, 1 file, 635427 bytes |
 | IPMA's note | "Valores diários obtidos através do processo de interpolação com recurso aos dados das estações meteorológicas automáticas da rede do IPMA. Valores dos últimos 20 dias." |
 
 ## Fields
@@ -54,6 +54,6 @@ IPMA's name for it: *Precipitação diária por concelho*. Documented at [api.ip
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [observation/climate/precipitation/prec-p1d-continental-obssup-idw-concelhos-20d.csv](https://api.ipma.pt/open-data/observation/climate/precipitation/prec-p1d-continental-obssup-idw-concelhos-20d.csv) | 200 | 635427 | `d74de55d629a750a…` | 2026-11-11 03:10 | 2026-11-11 03:42 |
+| [observation/climate/precipitation/prec-p1d-continental-obssup-idw-concelhos-20d.csv](https://api.ipma.pt/open-data/observation/climate/precipitation/prec-p1d-continental-obssup-idw-concelhos-20d.csv) | 200 | 635427 | `d74de55d629a750a…` | 2026-11-11 03:10 | 2026-11-11 04:36 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: [changes/climate-precipitation.json](../changes/climate-precipitation.json).

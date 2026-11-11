@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../app/sources/ipma/ipma.css"><script src=
 ---
 # IPMA's stations, with the last 24 hours
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 03:42 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 04:37 UTC
 
 **Not a warning service.** Everything here is IPMA's, shown as IPMA's, with the time we read it; we add no forecast and no advice. Follow [IPMA](https://www.ipma.pt/) and [ANEPC](https://prociv.gov.pt/).
 
@@ -262,4 +262,4 @@ Sorted by the 24-hour rain sum.
 | Santa Maria / Maia (DROTRH) | 11217165 | 36.941, -25.018 | 16.1 | 16.2 | NW | 16.2 | 0 | 0 | · |
 | Flores / Morro Alto | 1210517 | 39.463, -31.221 | · | · | · | · | · | · | · |
 
-Data: [data/stations.json](data/stations.json), [data/observations.json](data/observations.json), [data/observed-daily.json](data/observed-daily.json). Source: [observations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json) and [stations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/stations.json), read 2026-11-11 03:41 UTC. The hour label's convention is not documented by IPMA: see [the data set's page](endpoints/observations.md).
+Data: [data/stations.json](data/stations.json), [data/observations.json](data/observations.json), [data/observed-daily.json](data/observed-daily.json). Source: [observations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/observations.json) and [stations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/stations.json), read 2026-11-11 04:36 UTC. The hour label's convention is not documented by IPMA: see [the data set's page](endpoints/observations.md).

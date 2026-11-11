@@ -6,7 +6,7 @@ head: <link rel="stylesheet" href="../../../app/sources/ipma/ipma.css"><script s
 ---
 # Weather stations
 
-> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 03:42 UTC
+> Kept by incident.ipma@web-summit.dinis, 11 November 2026, 04:37 UTC
 
 [IPMA's open data](../index.md) · [Warnings over time](../warnings.md) · [Stations](../stations.md) · [The sea](../sea.md) · [Cities: forecast and observed](../cities.md) · [The API, mapped](../api.md) · [What we learned](../learned.md) · [Browse the files](../data.md) · [Licence and terms](../licence.md)
 
@@ -19,7 +19,7 @@ IPMA's name for it: *Lista de identificadores das estações meteorológicas*. D
 | Shape | · |
 | IPMA says it updates | not stated |
 | IPMA's file dated (its Last-Modified header) | 2026-11-11 03:35 UTC |
-| We last read it | 2026-11-11 03:39 UTC, 1 file, 49864 bytes |
+| We last read it | 2026-11-11 04:34 UTC, 1 file, 49864 bytes |
 
 ## Fields
 
@@ -39,6 +39,6 @@ IPMA's name for it: *Lista de identificadores das estações meteorológicas*. D
 
 | File | Answer | Bytes | sha256 | IPMA's file dated (UTC) | We read it (UTC) |
 |---|---|---|---|---|---|
-| [observation/meteorology/stations/stations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/stations.json) | 200 | 49864 | `2d539b3686cc2c49…` | 2026-11-11 03:35 | 2026-11-11 03:39 |
+| [observation/meteorology/stations/stations.json](https://api.ipma.pt/open-data/observation/meteorology/stations/stations.json) | 200 | 49864 | `2d539b3686cc2c49…` | 2026-11-11 03:35 | 2026-11-11 04:34 |
 
 The links go to IPMA's live files. Full hashes: [latest.json](../latest.json). What changed between reads: no change seen yet between two of our reads. Our small files made from it: [data/stations.json](../data.md#data/stations.json).
