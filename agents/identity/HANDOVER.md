@@ -1,6 +1,6 @@
 # Handover: incident.identity@web-summit.dinis
 
-> Kept by incident.identity@web-summit.dinis, 11 November 2026, 05:45 UTC
+> Kept by incident.identity@web-summit.dinis, 11 November 2026, 05:46 UTC
 
 For the session that takes this role next. Written at incident.conductor@'s ask (the session had grown past 330k tokens a call). It holds no key material. Read first: [CLAUDE.md](../../CLAUDE.md), [SECURITY.md](../../SECURITY.md) (the design and every decision so far), [status.json](status.json) (the log, wake by wake), [account/account.md](../../account/account.md).
 
@@ -21,6 +21,7 @@ For the session that takes this role next. Written at incident.conductor@'s ask 
 | `node tools/lane-test.mjs` | the check, throwaway keys (it builds the site; about 8 s). Run it every wake |
 | `node tools/lane-e2e.mjs` | the same in Chromium with a virtual passkey (needs Playwright; skips without) |
 | `node tools/lane-frame.mjs` | copy the frame's notice and footer caption into `account/index.html` when `lane-test` says they drifted |
+| `node tools/lane-keys.mjs` | check every entry of `data/keys.json`. Run it every wake |
 | `node tools/lane-sign.mjs` / `--check` | sign `SECURITY.md`, `PIN.json`, `data/lanes.json` into `signed.json`; check them. **Re-sign after any edit to those three** |
 | `node tools/lane-open.mjs '<m1>'` | (conductor) open and judge what Dinis sealed |
 | `node tools/lane-seal.mjs --to <key id> --text …` | (conductor) reply sealed to Dinis; `--inbox` only after his yes to decision 3 |
@@ -32,9 +33,10 @@ Release: commit (trailers `Agent:`, `Issue: WS-214`, `For:` in one final paragra
 
 ## Keys and signatures
 
-- This session's key: record `sha256:2d91c7d9fe8df5d3` (encryption `sha256:9e6e630e0d1d051a`), id `incident-identity-dinis` in `data/keys.json`. Its private half is in this session's container only and **ends with this session**. It was never used for anything but the three signatures in [signed.json](signed.json) and a self-test.
-- **The next session must:** make its own session key (`pki-agent.mjs keygen --session`, sha256 `fcb28a1c…02ab`), add its public half to `data/keys.json` under a new id, set the old entry's `status` to `ended`, and run `node tools/lane-sign.mjs` (until then `--check` fails on the old key once it is marked ended: expected).
-- No token, no vault key and no enum key has ever been in this session. No lane and no vault exists. `data/lanes.json`: `enabled: false`, `senders: []`, recipient `incident-conductor-dinis`.
+- The second session's key (since 05:45 UTC, 11 November): record `sha256:9fded90149a8a5da` (encryption `sha256:c23c81b2d69bf193`), id `incident-identity-dinis-2` in `data/keys.json`. Its private half is in that session's container only and **ends with the session**. Used only for the three signatures in [signed.json](signed.json). The first session's entry (`incident-identity-dinis`) is marked `handed over`.
+- **The next session must:** make its own session key (`pki-agent.mjs keygen --session`, sha256 `fcb28a1c…02ab`), add its public half to `data/keys.json` as `incident-identity-dinis-3`, set the entry before it to `handed over` (that word: the pack's, and every other agent's) in the same commit, and run `node tools/lane-sign.mjs` (until then `--check` fails, because the signer is no longer an active key: expected).
+- `node tools/lane-keys.mjs` checks the whole key list (both keys parse, fingerprints are theirs, no private half, one active key per agent and it is the latest session). Run it every wake: other agents add entries as their sessions hand over. To see who pushed a change: `git log -p -- data/keys.json` (the clone is shallow).
+- No token, no vault key and no enum key has ever been in either session. No lane and no vault exists. `data/lanes.json`: `enabled: false`, `senders: []`, recipient `incident-conductor-dinis`.
 - The feedback box seals to the **conductor's** key: if the conductor's session and key change, `data/lanes.json` `to_conductor.recipient` must name the new key id (then re-sign).
 
 ## In flight
@@ -49,7 +51,7 @@ Nothing half-done. The working tree was clean and pushed when this was written.
 
 ## What wakes this role
 
-The routine "incident.identity@web-summit.dinis hourly" (`trig_01KBoiikSQeY2Ze8RN4fTgV7`) fires into the old session at about :21 each hour. It must be pointed at the new session, or deleted and made again, by whoever starts it; left alone it keeps waking the old one. Each wake: pull, `lane-test`, `lane-sign --check`, look for Dinis's key in `data/keys.json`, measure tokens (`tools/accounts-measure.mjs --append`), status, release. When nothing changed, do not message the conductor.
+The routine "incident.identity@web-summit.dinis hourly" (`trig_01KBoiikSQeY2Ze8RN4fTgV7`) fired into the first session at about :21 each hour (a fact about that session; the second session's wake, at :20, is the conductor's to set). Each wake: pull, `lane-test`, `lane-keys`, `lane-sign --check`, look for Dinis's key in `data/keys.json`, measure tokens (`tools/accounts-measure.mjs --append`), status, release. When nothing changed, do not message the conductor.
 
 ## Things learned the hard way
 
