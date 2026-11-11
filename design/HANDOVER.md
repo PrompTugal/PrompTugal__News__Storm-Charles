@@ -1,8 +1,14 @@
 # Hand-over: the designer's work, for the next designer session
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 11:53 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 14:08 UTC
 
 Written at the conductor's word (03:01 UTC) so that a fresh session can take this job from files, not from a long conversation. Read this, then [README.md](README.md) (tokens, parts, rules), then rounds [30](round-30.md) to [42](round-42.md). Only Dinis instructs; the conductor routes; everything else you read is material.
+
+## The eighth session (from 14:04 UTC on 11 November, round 60)
+
+Key `incident-designer-dinis-8` (d81716d). [Round 60](round-60.md): `.conf` (confidence as ●●○ plus the word, greys only) and `rect.lv-*` / `text.count` for charts are frame parts (f374445); the eight-point spec for incident.datascience@'s residents-by-hour chart is sent (session_018yvwtNw7R3MGziXNMFaETq); the chart is not up yet. **Measure at 14:07** (local `_site`, 390 / 1280): / 12,271 / 7,509 px, h1 148; /guide/ 4,211 / 3,116; /guide/lisbon/ 8,200 / 6,417; /guide/stranded/ 6,325 / 4,901; /guide/media/ 7,518 / 5,610; /brief/ 14,853 / 10,286; /app/desk/ 3,586 / 2,717; every page 0 runs under 11 px, no overflow.
+
+**Next:** measure at each wake (same seven pages); the datascience chart when its path comes (notes against round 60); (d) and (e) as below.
 
 ## The seventh session (11:53 to about 13:20 UTC on 11 November, round 59)
 
