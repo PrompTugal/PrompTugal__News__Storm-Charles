@@ -1,0 +1,61 @@
+#!/usr/bin/env node
+// Press headlines that may report a decision, read by open-weight models through OpenRouter and matched against the decisions graph: a
+// LEAD LIST for incident.researcher@ (incident.models@web-summit.dinis, 11 November 2026, WS-214; Dinis ~22:00 UTC, BRIEF.md: collectors
+// through OpenRouter, open-source models; run in this desk's session at incident.conductor@'s word, 22:24 UTC, since the researcher's
+// session writes to the old repository and its graph.json is synced here). Each hourly wake:
+//   node tools/models-press-decisions.mjs [--files 2] [--max 10] [--dry] [--wake "hourly HH:31"]
+// For each headline in the newest coverage files (research/media/coverage/*.json, incident.media@'s; read only) that names a decision
+// word (alerta, aviso, encerr-, fech-, suspen-, cancel-, declar-, interdi-, corte, condicionad-), not yet read, at most --max, it asks
+// tools/models-delegate.mjs (task extract-decision: two open-weight models, plus one commercial model for comparison) with this graph's
+// nodes as the deciders (and "none"). Then it matches what the open models agree on against graph.json's edges: same decider, published
+// within 24 hours of the edge's time or inside its effect window. A press headline is never the decision: an agreed decider with no
+// edge is a LEAD, to be read on that body's own channel before any edge is added. Written to models/delegated/press-decisions.json (the researcher reads it; nothing is written to its folder):
+// per article its id, url, outlet, published, each model's decider and hours, the matching edges, lead or not. No headline text and no
+// model text. Every call is in the ledger and published text-free in models/calls/ (tools/models-calls.mjs).
+import fs from 'node:fs'
+import path from 'node:path'
+import crypto from 'node:crypto'
+import { fileURLToPath } from 'node:url'
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), DEC = path.join(ROOT, 'incidents/2026-11-10-storm-charles/data/decisions')
+const { delegate } = await import('./models-delegate.mjs')
+const AGENT = 'incident.models@web-summit.dinis'
+const args = process.argv.slice(2), opt = (k, d) => { const i = args.indexOf(k); return i < 0 ? d : args[i + 1] }
+const FILES = +opt('--files', 2), MAX = +opt('--max', 10), DRY = args.includes('--dry'), WAKE = opt('--wake', process.env.INCIDENT_WAKE || null)
+const OUT = path.join(ROOT, 'models/delegated/press-decisions.json')
+const graph = JSON.parse(fs.readFileSync(path.join(DEC, 'graph.json'), 'utf8'))
+const deciders = [...graph.nodes.map(n => ({ id: n.id, name: n.name })), { id: 'none', name: 'no decision or warning by a public body in this headline' }]
+const WORDS = /alerta|aviso|encerr|fech[aoe]|suspen|cancel|declar|interdi|corte|condicionad/i
+const tsha = t => crypto.createHash('sha256').update(t).digest('hex')
+let out; try { out = JSON.parse(fs.readFileSync(OUT, 'utf8')) } catch { out = null }
+out = out || { about: "Press headlines that may report a decision, read by open-weight models through OpenRouter (task extract-decision of models/delegate.json) and matched against graph.json's edges. Evidence, labelled with the models' names; a press headline is never the decision itself: an agreed decider with no matching edge is a lead to read on the body's own channel. Ids, urls, deciders and hours only. A lead list for incident.researcher@, kept by incident.models@ at incident.conductor@'s word (22:24 UTC, 11 November).", by: AGENT, updated: null, read: {} }
+
+const dir = path.join(ROOT, 'research/media/coverage'), files = fs.readdirSync(dir).filter(f => /^\d{4}-\d\d-\d\dT\d\d\.json$/.test(f)).sort().slice(-FILES)
+const articles = files.flatMap(f => JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).articles || []).filter(a => a.id && a.title && WORDS.test(a.title))
+const todo = articles.filter(a => !out.read[a.id]).sort((a, b) => String(b.published).localeCompare(String(a.published))).slice(0, MAX)
+const byTitle = new Map(Object.values(out.read).filter(x => x.title_sha256).map(x => [x.title_sha256, x]))
+const H = 3600e3, t = s => Date.parse(String(s || '').replace(/Z?$/, 'Z').replace(/ZZ$/, 'Z'))
+const matches = (by, published) => graph.edges.filter(e => e.by === by && (Math.abs(t(e.at) - t(published)) <= 24 * H || (e.effect_from_utc && t(e.effect_from_utc) <= t(published) && (!e.effect_to_utc || t(published) <= t(e.effect_to_utc))))).map(e => e.id)
+let cost = 0, leads = 0
+for (const a of todo) {
+    const k = tsha(a.title), seen = byTitle.get(k)
+    if (seen) { out.read[a.id] = { ...seen, url: a.url, outlet: a.outlet, published: a.published, same_headline_as: seen.id, cost_usd: 0, calls: 0 }; continue }
+    const r = await delegate({ task: 'extract-decision', input: { id: a.id, input: a.title, published_at: `${a.published} (${a.outlet}, a press headline)`, deciders }, agent: AGENT, wake: WAKE })
+    cost += r.cost_usd
+    const open = r.models.filter(m => !m.comparison && m.valid), cmp = r.models.find(m => m.comparison)
+    const agreed = open.length >= 2 && new Set(open.map(m => m.answer.decider)).size === 1 ? open[0].answer.decider : null
+    const edges = agreed && agreed !== 'none' ? matches(agreed, a.published) : []
+    const lead = !!agreed && agreed !== 'none' && !edges.length
+    if (lead) leads++
+    out.read[a.id] = { id: a.id, url: a.url, outlet: a.outlet, published: a.published, at: r.at, trace_id: r.trace_id, label: 'evidence',
+        models: Object.fromEntries(open.map(m => [m.model, { decider: m.answer.decider, effect_from_utc: m.answer.effect_from_utc, effect_to_utc: m.answer.effect_to_utc }])),
+        agreed_decider: agreed, matching_edges: edges, lead,
+        comparison: cmp ? { model: cmp.model, label: 'commercial, for comparison', decider: cmp.valid ? cmp.answer.decider : null } : null, cost_usd: r.cost_usd, calls: r.calls, title_sha256: k }
+    byTitle.set(k, out.read[a.id])
+}
+out.updated = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
+const all = Object.values(out.read)
+out.totals = { read: all.length, matched_an_edge: all.filter(x => x.matching_edges?.length).length, leads: all.filter(x => x.lead).length, no_decision: all.filter(x => x.agreed_decider === 'none').length, models_differ: all.filter(x => !x.agreed_decider).length, cost_usd: +all.reduce((s, x) => s + (x.cost_usd || 0), 0).toFixed(6) }
+if (!DRY) { fs.mkdirSync(path.dirname(OUT), { recursive: true }); fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n') }
+else console.error(JSON.stringify(Object.fromEntries(todo.map(a => [a.id, { title: a.title, ...out.read[a.id] }])), null, 1))
+console.log(JSON.stringify({ agent: AGENT, read_now: todo.length, leads, cost_usd: +cost.toFixed(6), dry: DRY }))
