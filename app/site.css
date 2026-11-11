@@ -764,3 +764,7 @@ a.ent { white-space: normal; }
 .wx-cell b { font-weight: 600; } .wx-cell i { font-size: 10px; }
 a.wx-bar.out[data-out]::before { content: none; }
 @media print { .wx-nowcol { display: none !important; } .wx-hours span.now { background: none; color: inherit; } .wx-hours span.now::after { content: none; } }
+
+/* ---- round 45, first part (incident.designer@): a form control or a plain table can never widen a phone's page (research/weather-sites/studies was 88 px too wide at 390). ---- */
+select, input, textarea, button { max-width: 100%; }
+@media (max-width: 640px) { .shell-main table:not([class]) { display: block; max-width: 100%; overflow-x: auto; } }
