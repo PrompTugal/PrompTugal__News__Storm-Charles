@@ -1,0 +1,2457 @@
+{
+ "about": "The delegated match-fact task (models/delegate.json) measured against incident.media@'s first-on-each-fact: each outlet's first item on each fact, chosen by that desk's ranking and hand-read exclusions, is the gold. Per model: right (its fact is one the item is first on), none, other (another fact; the gold lists only first items, so some of these may be true), invalid. The desk's own pattern on the same title, for comparison. Ids, urls and fact ids only.",
+ "by": "incident.models@web-summit.dinis",
+ "updated": "2026-11-11T22:39:13Z",
+ "label": "fact",
+ "label_note": "our measurement: counted by tools/models-measure-match.mjs from the files named",
+ "source": "research/media/first-on-each-fact.json (gold, incident.media@), research/media/facts.json (fact list and patterns), models/delegate.json (task and models)",
+ "gold_items": 61,
+ "gold_rows": 69,
+ "gold_updated": "2026-11-11T22:18:19Z",
+ "scores": {
+  "meta-llama/llama-4-maverick": {
+   "label": "open-weight",
+   "right": 47,
+   "none": 2,
+   "other": 12,
+   "invalid": 0,
+   "of": 61,
+   "right_rate": 0.77
+  },
+  "google/gemma-4-31b-it": {
+   "label": "open-weight",
+   "right": 44,
+   "none": 8,
+   "other": 9,
+   "invalid": 0,
+   "of": 61,
+   "right_rate": 0.721
+  },
+  "google/gemini-3.5-flash-lite": {
+   "label": "commercial, for comparison",
+   "right": 38,
+   "none": 16,
+   "other": 7,
+   "invalid": 0,
+   "of": 61,
+   "right_rate": 0.623
+  },
+  "pattern (incident.media@)": {
+   "label": "the desk's own pattern",
+   "right": 61,
+   "none": 0,
+   "other": 0,
+   "invalid": 0,
+   "of": 61,
+   "right_rate": 1,
+   "note": "not a comparison: the gold was chosen by this same pattern (rank.mjs), with hand-read exclusions, so it matches by construction"
+  }
+ },
+ "open_weight_both_right": 39,
+ "open_weight_agree": 45,
+ "open_weight_agree_and_right": 39,
+ "cost_usd": 0.031279,
+ "calls": 183,
+ "items": {
+  "A-40e8466d": {
+   "url": "https://www.publico.pt/2026/11/09/azul/noticia/ipma-nome-depressao-charles-preve-avisos-laranja-chuva-vento-forte-2194295",
+   "outlet": "publico",
+   "published": "2026-11-09T15:08:14Z",
+   "via": "article",
+   "gold": [
+    "8-storm-named"
+   ],
+   "pattern": {
+    "facts": [
+     "8-storm-named"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "8-storm-named",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "8-storm-named",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "8-storm-named",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "994e26adf8ea1ea09c6f48c536c38542",
+   "at": "2026-11-11T22:37:02Z",
+   "cost_usd": 0.0006369,
+   "calls": 3
+  },
+  "A-515d259c": {
+   "url": "https://www.dn.pt/sociedade/bruna-e-charles-duas-depresses-colocam-portugal-continental-sob-chuva-e-vento-fortes",
+   "outlet": "dn",
+   "published": "2026-11-09T16:22:40Z",
+   "via": "article",
+   "gold": [
+    "8-storm-named"
+   ],
+   "pattern": {
+    "facts": [
+     "8-storm-named"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "8-storm-named",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "9e8fd0d8ac0481c674a3bb2f16571dd3",
+   "at": "2026-11-11T22:37:04Z",
+   "cost_usd": 0.00049946,
+   "calls": 3
+  },
+  "A-5acfc2da": {
+   "url": "https://www.noticiasaominuto.com/pais/3081224/mau-tempo-protecao-civil-da-madeira-alerta-para-agravamento-devido-a-passagem-do-charles",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-09T18:14:35Z",
+   "via": "article",
+   "gold": [
+    "8-storm-named"
+   ],
+   "pattern": {
+    "facts": [
+     "8-storm-named"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "8-storm-named",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "eeb1b5acda65d9481217f56273454d4f",
+   "at": "2026-11-11T22:37:06Z",
+   "cost_usd": 0.00065721,
+   "calls": 3
+  },
+  "A-511d8043": {
+   "url": "https://www.noticiasaominuto.com/pais/3081340/mau-tempo-agrava-se-nos-proximos-dias-os-conselhos-da-protecao-civil",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-09T23:37:22Z",
+   "via": "article",
+   "gold": [
+    "9-anepc-aviso-21"
+   ],
+   "pattern": {
+    "facts": [
+     "9-anepc-aviso-21"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "9-anepc-aviso-21",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "9-anepc-aviso-21",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "221de4b85856b17499767f6622daf32a",
+   "at": "2026-11-11T22:37:08Z",
+   "cost_usd": 0.00061607,
+   "calls": 3
+  },
+  "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh#2026-11-10T08:05:24Z": {
+   "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
+   "outlet": "dn",
+   "published": "2026-11-10T08:05:24Z",
+   "via": "live blog entry",
+   "gold": [
+    "1-red-wind"
+   ],
+   "pattern": {
+    "facts": [
+     "1-red-wind"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "67bbdebc4d254ba8fda49e6452d102c4",
+   "at": "2026-11-11T22:37:10Z",
+   "cost_usd": 0.00055958,
+   "calls": 3
+  },
+  "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790948-scroll#2026-11-10T08:34:33Z": {
+   "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790948-scroll",
+   "outlet": "observador",
+   "published": "2026-11-10T08:34:33Z",
+   "via": "live blog entry",
+   "gold": [
+    "1-red-wind"
+   ],
+   "pattern": {
+    "facts": [
+     "1-red-wind"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "a89e1ef5fb47dccccef43ff41cfe5486",
+   "at": "2026-11-11T22:37:12Z",
+   "cost_usd": 0.00047975,
+   "calls": 3
+  },
+  "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778038#2026-11-10T08:41:00Z": {
+   "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778038",
+   "outlet": "rtp",
+   "published": "2026-11-10T08:41:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "1-red-wind"
+   ],
+   "pattern": {
+    "facts": [
+     "1-red-wind"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "2de035a39181a94a95100d01c029c34e",
+   "at": "2026-11-11T22:37:14Z",
+   "cost_usd": 0.00047785,
+   "calls": 3
+  },
+  "A-f680416c": {
+   "url": "https://away.iol.pt/aviso-vermelho-ipma/vento/alerta-vermelho-ipma-admite-cenario-semelhante-ao-da-tempestade-kristin-e-aponta-lisboa-como-uma-das-regioes-mais-atingidas/20261110/6af2d9fd0cf2cb2507aa81b4",
+   "outlet": "iol",
+   "published": "2026-11-10T08:46:53Z",
+   "via": "article",
+   "gold": [
+    "1-red-wind"
+   ],
+   "pattern": {
+    "facts": [
+     "1-red-wind"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "5ef46ba34b4497378679d3164e46eccf",
+   "at": "2026-11-11T22:37:15Z",
+   "cost_usd": 0.00054468,
+   "calls": 3
+  },
+  "A-0bfd9287": {
+   "url": "https://www.noticiasaominuto.com/pais/3081457/mau-tempo-oito-distritos-de-portugal-continental-com-aviso-vermelho-para-vento-na-quarta-feira",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-10T08:59:55Z",
+   "via": "article",
+   "gold": [
+    "1-red-wind"
+   ],
+   "pattern": {
+    "facts": [
+     "1-red-wind"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "f5bf20947618e9ef3cf3a1f925c407a5",
+   "at": "2026-11-11T22:37:18Z",
+   "cost_usd": 0.00047751,
+   "calls": 3
+  },
+  "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto#2026-11-10T09:44:00Z": {
+   "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "outlet": "negocios",
+   "published": "2026-11-10T09:44:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "1-red-wind"
+   ],
+   "pattern": {
+    "facts": [
+     "1-red-wind"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "1-red-wind",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "853a3fc8f4457e01d4dca743b66e1d2d",
+   "at": "2026-11-11T22:37:22Z",
+   "cost_usd": 0.00049198,
+   "calls": 3
+  },
+  "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh#2026-11-10T09:14:29Z": {
+   "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
+   "outlet": "dn",
+   "published": "2026-11-10T09:14:29Z",
+   "via": "live blog entry",
+   "gold": [
+    "10-alert-announced",
+    "2-alert-situation"
+   ],
+   "pattern": {
+    "facts": [
+     "2-alert-situation",
+     "10-alert-announced"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "10-alert-announced",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "10-alert-announced",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "10-alert-announced",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "b1ddd7f02eeb3915a26ada46d6839925",
+   "at": "2026-11-11T22:37:24Z",
+   "cost_usd": 0.00049884,
+   "calls": 3
+  },
+  "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll#2026-11-10T09:17:23Z": {
+   "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-790952-scroll",
+   "outlet": "observador",
+   "published": "2026-11-10T09:17:23Z",
+   "via": "live blog entry",
+   "gold": [
+    "10-alert-announced",
+    "2-alert-situation"
+   ],
+   "pattern": {
+    "facts": [
+     "2-alert-situation",
+     "10-alert-announced"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "10-alert-announced",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "10-alert-announced",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "10-alert-announced",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "5b9a1b69af51c46e5185bf3157505689",
+   "at": "2026-11-11T22:37:26Z",
+   "cost_usd": 0.00050101,
+   "calls": 3
+  },
+  "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047#2026-11-10T09:18:00Z": {
+   "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778047",
+   "outlet": "rtp",
+   "published": "2026-11-10T09:18:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "10-alert-announced",
+    "2-alert-situation"
+   ],
+   "pattern": {
+    "facts": [
+     "2-alert-situation",
+     "10-alert-announced"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "1dcd6f5232efa3139f7c1ff04e084772",
+   "at": "2026-11-11T22:37:28Z",
+   "cost_usd": 0.00054597,
+   "calls": 3
+  },
+  "A-7cbf85c1": {
+   "url": "https://www.publico.pt/2026/11/10/sociedade/noticia/escolas-publicas-privadas-fechadas-quartafeira-devido-tempestade-charles-directores-avisam-familias-2194422",
+   "outlet": "publico",
+   "published": "2026-11-10T14:09:32Z",
+   "via": "article",
+   "gold": [
+    "10-alert-announced",
+    "2-alert-situation"
+   ],
+   "pattern": {
+    "facts": [
+     "2-alert-situation",
+     "10-alert-announced"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "2182e6db1ced2ea66ad48c48d8a1faf0",
+   "at": "2026-11-11T22:37:31Z",
+   "cost_usd": 0.00050731,
+   "calls": 3
+  },
+  "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto#2026-11-11T00:09:00Z": {
+   "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "outlet": "negocios",
+   "published": "2026-11-11T00:09:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "10-alert-announced"
+   ],
+   "pattern": {
+    "facts": [
+     "2-alert-situation",
+     "10-alert-announced"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "2-alert-situation",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "2-alert-situation",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "2-alert-situation",
+     "score": "other",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "5b7e080f5486cef898bc641fcbb09c85",
+   "at": "2026-11-11T22:37:34Z",
+   "cost_usd": 0.00049034,
+   "calls": 3
+  },
+  "A-78e1b2d5": {
+   "url": "https://eco.sapo.pt/2026/11/11/portugal-em-situacao-de-alerta-charles-dirige-se-para-o-continente/",
+   "outlet": "eco",
+   "published": "2026-11-11T06:32:58Z",
+   "via": "article",
+   "gold": [
+    "10-alert-announced",
+    "2-alert-situation"
+   ],
+   "pattern": {
+    "facts": [
+     "2-alert-situation",
+     "10-alert-announced"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "4681218529cac6948b8480bfc433f83d",
+   "at": "2026-11-11T22:37:38Z",
+   "cost_usd": 0.00055111,
+   "calls": 3
+  },
+  "A-c87f3a98": {
+   "url": "https://expresso.pt/tempestades/2026-11-11-situacao-de-alerta-nao-sera-prolongada-mai-recusa-excesso-de-zelo-1d821b8b",
+   "outlet": "expresso",
+   "published": "2026-11-11T15:57:41Z",
+   "via": "article",
+   "gold": [
+    "10-alert-announced",
+    "2-alert-situation"
+   ],
+   "pattern": {
+    "facts": [
+     "2-alert-situation",
+     "10-alert-announced"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "2-alert-situation",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "beb761e09d70f37e3fadd41d4c1135a9",
+   "at": "2026-11-11T22:37:40Z",
+   "cost_usd": 0.0005428,
+   "calls": 3
+  },
+  "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto#2026-11-10T09:35:00Z": {
+   "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "outlet": "negocios",
+   "published": "2026-11-10T09:35:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "2-alert-situation"
+   ],
+   "pattern": {
+    "facts": [
+     "2-alert-situation",
+     "10-alert-announced"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "10-alert-announced",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "10-alert-announced",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "10-alert-announced",
+     "score": "other",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "3887021defdd2a8f6c6eef0cbfb0c7fe",
+   "at": "2026-11-11T22:37:41Z",
+   "cost_usd": 0.00051253,
+   "calls": 3
+  },
+  "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto#2026-11-10T13:19:00Z": {
+   "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "outlet": "negocios",
+   "published": "2026-11-10T13:19:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "3-mayor"
+   ],
+   "pattern": {
+    "facts": [
+     "3-mayor"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "d041d0542b026577198ef473332163ca",
+   "at": "2026-11-11T22:37:45Z",
+   "cost_usd": 0.0005031,
+   "calls": 3
+  },
+  "A-4c13b9a2": {
+   "url": "https://jornaleconomico.sapo.pt/noticias/web-summit-fechada-na-quarta-feira-anuncia-autarquia-de-lisboa/",
+   "outlet": "jornal-economico",
+   "published": "2026-11-10T13:23:13Z",
+   "via": "article",
+   "gold": [
+    "3-mayor"
+   ],
+   "pattern": {
+    "facts": [
+     "3-mayor"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "7c6f183f3cf576e293138f2fbb06e526",
+   "at": "2026-11-11T22:37:47Z",
+   "cost_usd": 0.00048425,
+   "calls": 3
+  },
+  "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh#2026-11-10T13:47:39Z": {
+   "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
+   "outlet": "dn",
+   "published": "2026-11-10T13:47:39Z",
+   "via": "live blog entry",
+   "gold": [
+    "3-mayor"
+   ],
+   "pattern": {
+    "facts": [
+     "3-mayor"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "1d750aebfb1036d6e173926db86d67e6",
+   "at": "2026-11-11T22:37:49Z",
+   "cost_usd": 0.00048779,
+   "calls": 3
+  },
+  "A-fb2de4b9": {
+   "url": "https://www.publico.pt/2026/11/10/sociedade/noticia/tempestade-charles-encerra-tuneis-lisboa-coloca-web-summit-duvida-2194442",
+   "outlet": "publico",
+   "published": "2026-11-10T14:00:07Z",
+   "via": "article",
+   "gold": [
+    "3-mayor"
+   ],
+   "pattern": {
+    "facts": [
+     "3-mayor"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "fbc42eb19a240cd232d2e13b43c20c28",
+   "at": "2026-11-11T22:37:52Z",
+   "cost_usd": 0.00049595,
+   "calls": 3
+  },
+  "A-5ec6356c": {
+   "url": "https://tek.sapo.pt/noticias/ciencia/artigos/depressao-charles-web-summit-sob-duvida-pontes-do-tejo-com-limite-de-60-km-h-e-tuneis-de-lisboa-fechados/",
+   "outlet": "tek",
+   "published": "2026-11-10T14:25:47Z",
+   "via": "article",
+   "gold": [
+    "3-mayor"
+   ],
+   "pattern": {
+    "facts": [
+     "3-mayor"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "b0f6f3a3003860a719c867e7f44fc497",
+   "at": "2026-11-11T22:37:53Z",
+   "cost_usd": 0.00049094,
+   "calls": 3
+  },
+  "A-d52455d2": {
+   "url": "https://expresso.pt/tempestades/2026-11-10-lisboa-com-tuneis-jardins-e-equipamentos-culturais-encerrados-web-summit-em-duvida-medidas-serao-reavaliadas-dentro-de-24h-diz-moedas-2c217504",
+   "outlet": "expresso",
+   "published": "2026-11-10T14:41:24Z",
+   "via": "article",
+   "gold": [
+    "3-mayor"
+   ],
+   "pattern": {
+    "facts": [
+     "3-mayor"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "3-mayor",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "33850d425f27e51b6ef47e9a02ea967e",
+   "at": "2026-11-11T22:37:55Z",
+   "cost_usd": 0.0004951,
+   "calls": 3
+  },
+  "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto#2026-11-10T17:53:00Z": {
+   "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "outlet": "negocios",
+   "published": "2026-11-10T17:53:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "4-government-recommends"
+   ],
+   "pattern": {
+    "facts": [
+     "4-government-recommends"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "4-government-recommends",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "4-government-recommends",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "4-government-recommends",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "140864badb313e73d29bff22297d5749",
+   "at": "2026-11-11T22:37:57Z",
+   "cost_usd": 0.00055393,
+   "calls": 3
+  },
+  "A-4438fb2f": {
+   "url": "https://eco.sapo.pt/2026/11/10/web-summit-vai-encerrar-esta-quarta-feira-devido-ao-mau-tempo/",
+   "outlet": "eco",
+   "published": "2026-11-10T19:41:31Z",
+   "via": "article",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "a1e0b45ff6a9398816f4c5e3472155cc",
+   "at": "2026-11-11T22:37:59Z",
+   "cost_usd": 0.00048675,
+   "calls": 3
+  },
+  "A-6b13b29b": {
+   "url": "https://tek.sapo.pt/noticias/negocios/artigos/web-summit-cede-as-pressoes-e-fecha-portas-no-segundo-dia-por-causa-do-mau-tempo/",
+   "outlet": "tek",
+   "published": "2026-11-10T19:41:57Z",
+   "via": "article",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "b62db8d1c3dd488445ed6e4da7429332",
+   "at": "2026-11-11T22:38:00Z",
+   "cost_usd": 0.00049721,
+   "calls": 3
+  },
+  "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto#2026-11-10T19:42:00Z": {
+   "url": "https://www.jornaldenegocios.pt/economia/detalhe/fiquem-em-casa-todos-os-que-puderem-escolas-e-servicos-publicos-encerrados-amanha-siga-ao-minuto",
+   "outlet": "negocios",
+   "published": "2026-11-10T19:42:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "4-government-recommends",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "2066b6a3b35271f61754845e1a235969",
+   "at": "2026-11-11T22:38:02Z",
+   "cost_usd": 0.0005113,
+   "calls": 3
+  },
+  "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh#2026-11-10T19:45:37Z": {
+   "url": "https://www.dn.pt/sociedade/governo-decreta-situao-de-alerta-montenegro-avisa-que-devemos-passar-horas-difceis-amanh",
+   "outlet": "dn",
+   "published": "2026-11-10T19:45:37Z",
+   "via": "live blog entry",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "2b5372e449af2a377fb0851ed8831325",
+   "at": "2026-11-11T22:38:04Z",
+   "cost_usd": 0.00047917,
+   "calls": 3
+  },
+  "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791150-scroll#2026-11-10T19:46:27Z": {
+   "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791150-scroll",
+   "outlet": "observador",
+   "published": "2026-11-10T19:46:27Z",
+   "via": "live blog entry",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "5a0e301cdfc0ecc25467caf933185757",
+   "at": "2026-11-11T22:38:09Z",
+   "cost_usd": 0.00050847,
+   "calls": 3
+  },
+  "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245#2026-11-10T19:47:00Z": {
+   "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778245",
+   "outlet": "rtp",
+   "published": "2026-11-10T19:47:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "c894477bcade8ad5707b8a4d35236890",
+   "at": "2026-11-11T22:38:11Z",
+   "cost_usd": 0.0004903,
+   "calls": 3
+  },
+  "A-cf267d89": {
+   "url": "https://www.noticiasaominuto.com/pais/3082036/web-summit-cancela-segundo-dia-devido-ao-mau-tempo",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-10T20:01:36Z",
+   "via": "article",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "55d8468d5172099c8db746b76829ed0b",
+   "at": "2026-11-11T22:38:12Z",
+   "cost_usd": 0.00048725,
+   "calls": 3
+  },
+  "A-bab4e4f9": {
+   "url": "https://cnnportugal.iol.pt/tempestade-charles/web-summit/tempestade-charles-obriga-ao-cancelamento-da-web-summit-na-quarta-feira/20261110/6af3796cd34e9ce6f1b43dff",
+   "outlet": "cnn-portugal",
+   "published": "2026-11-10T20:15:00Z",
+   "via": "article",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "a725ba658cbc22b9b319b72bf1b0fef0",
+   "at": "2026-11-11T22:38:14Z",
+   "cost_usd": 0.00051031,
+   "calls": 3
+  },
+  "A-55130ccc": {
+   "url": "https://www.euronews.com/2026/11/10/web-summit-lisbon-day-2-cancelled-due-to-storm-charles",
+   "outlet": "euronews",
+   "published": "2026-11-10T20:29:15Z",
+   "via": "article",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "05aab09b8616552be5074265f9147f16",
+   "at": "2026-11-11T22:38:15Z",
+   "cost_usd": 0.00049177,
+   "calls": 3
+  },
+  "A-c46117b5": {
+   "url": "https://expresso.pt/tempestades/2026-11-10-depressao-charles-web-summit-fecha-as-portas-esta-quarta-feira-e-reabre-na-quinta-4c372428",
+   "outlet": "expresso",
+   "published": "2026-11-10T20:39:56Z",
+   "via": "article",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "f17d404b2af530a3e9d72341bd1c86af",
+   "at": "2026-11-11T22:38:17Z",
+   "cost_usd": 0.00048912,
+   "calls": 3
+  },
+  "A-c721319b": {
+   "url": "https://www.portugalresident.com/storm-sees-web-summit-cancel-its-wednesday-schedule/",
+   "outlet": "portugal-resident",
+   "published": "2026-11-11T08:59:02Z",
+   "via": "article",
+   "gold": [
+    "5-day2-off"
+   ],
+   "pattern": {
+    "facts": [
+     "5-day2-off"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "5-day2-off",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "a9e4ee688f643d353fc7428136d4c5cb",
+   "at": "2026-11-11T22:38:19Z",
+   "cost_usd": 0.00048944,
+   "calls": 3
+  },
+  "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791172-scroll#2026-11-10T22:07:49Z": {
+   "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791172-scroll",
+   "outlet": "observador",
+   "published": "2026-11-10T22:07:49Z",
+   "via": "live blog entry",
+   "gold": [
+    "7-track-south"
+   ],
+   "pattern": {
+    "facts": [
+     "7-track-south"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "3b09d946ea72fd2ebc0d0f7c78fa9dc8",
+   "at": "2026-11-11T22:38:20Z",
+   "cost_usd": 0.00049845,
+   "calls": 3
+  },
+  "A-e0a37dc7": {
+   "url": "https://www.rtp.pt/noticias/noticiario-antena1/22h-ipma-depressao-mudou-a-trajetoria-mais-para-sul_a1_1778275",
+   "outlet": "rtp",
+   "published": "2026-11-10T22:22:02Z",
+   "via": "article",
+   "gold": [
+    "7-track-south"
+   ],
+   "pattern": {
+    "facts": [
+     "7-track-south"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "1016ec10ec563a722586c587b5e1b995",
+   "at": "2026-11-11T22:38:25Z",
+   "cost_usd": 0.0005922,
+   "calls": 3
+  },
+  "A-54a875a2": {
+   "url": "https://expresso.pt/tempestades/2026-11-10-depressao-charles-muda-trajetoria-para-sul-com-menos-vento-em-lisboa-e-norte-mais-resguardado-c85a274b",
+   "outlet": "expresso",
+   "published": "2026-11-10T23:54:37Z",
+   "via": "article",
+   "gold": [
+    "7-track-south",
+    "11-meteorologist-line"
+   ],
+   "pattern": {
+    "facts": [
+     "7-track-south",
+     "11-meteorologist-line"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "01487c9ee2677e69bc55e58c17d3e2d9",
+   "at": "2026-11-11T22:38:26Z",
+   "cost_usd": 0.00048561,
+   "calls": 3
+  },
+  "A-29e283c8": {
+   "url": "https://cnnportugal.iol.pt/videos/tempestade-charles-mudou-de-trajetoria-felizmente-enfraqueceu/6af449280cf2051820fb147a",
+   "outlet": "cnn-portugal",
+   "published": "2026-11-11T11:41:00Z",
+   "via": "video",
+   "gold": [
+    "7-track-south"
+   ],
+   "pattern": {
+    "facts": [
+     "7-track-south",
+     "11-meteorologist-line"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "13-communique-3",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "13-communique-3",
+     "score": "other",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "ccc59caab0736df7dd21feb71f158814",
+   "at": "2026-11-11T22:38:29Z",
+   "cost_usd": 0.00048976,
+   "calls": 3
+  },
+  "https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791224-scroll#2026-11-11T08:46:16Z": {
+   "url": "https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791224-scroll",
+   "outlet": "observador",
+   "published": "2026-11-11T08:46:16Z",
+   "via": "live blog entry",
+   "gold": [
+    "6-red-rain-0900",
+    "12-wind-red-to-orange"
+   ],
+   "pattern": {
+    "facts": [
+     "12-wind-red-to-orange"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "17-santarem-rain-lowered",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "6017fbeb8a8aecec4110af9c5b8cacdf",
+   "at": "2026-11-11T22:38:31Z",
+   "cost_usd": 0.00052173,
+   "calls": 3
+  },
+  "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791177-scroll#2026-11-10T22:35:24Z": {
+   "url": "https://observador.pt/liveblogs/manifestantes-detidos-no-porto-pronunciam-se-sobre-suspensao-provisoria-do-processo/#liveblog-entry-791177-scroll",
+   "outlet": "observador",
+   "published": "2026-11-10T22:35:24Z",
+   "via": "live blog entry",
+   "gold": [
+    "11-meteorologist-line"
+   ],
+   "pattern": {
+    "facts": [
+     "7-track-south",
+     "11-meteorologist-line"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "ed0e9ed6a9e12ad0303ccac42688d5ce",
+   "at": "2026-11-11T22:38:33Z",
+   "cost_usd": 0.00049254,
+   "calls": 3
+  },
+  "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277#2026-11-10T23:08:00Z": {
+   "url": "https://www.rtp.pt/noticias/pais/depressao-charles-esperado-agravamento-significativo-das-condicoes-meteorologicas_e1778024#article_content_1778277",
+   "outlet": "rtp",
+   "published": "2026-11-10T23:08:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "11-meteorologist-line"
+   ],
+   "pattern": {
+    "facts": [
+     "7-track-south",
+     "11-meteorologist-line"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "8375067fe14f3c9104086137acab55ec",
+   "at": "2026-11-11T22:38:35Z",
+   "cost_usd": 0.00047764,
+   "calls": 3
+  },
+  "A-7cf0661b": {
+   "url": "https://cnnportugal.iol.pt/videos/algarve-devera-ser-a-regiao-mais-afetada-pela-charles-tempestade-chega-a-lisboa-com-menos-intensidade-do-que-o-previsto/6af3b07a0cf2aafa0453e19a",
+   "outlet": "cnn-portugal",
+   "published": "2026-11-11T00:31:00Z",
+   "via": "video",
+   "gold": [
+    "11-meteorologist-line"
+   ],
+   "pattern": {
+    "facts": [
+     "11-meteorologist-line"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "13-communique-3",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "e801679f9c43603cf3c0e57fd652fda2",
+   "at": "2026-11-11T22:38:37Z",
+   "cost_usd": 0.00049338,
+   "calls": 3
+  },
+  "A-5fff0861": {
+   "url": "https://www.publico.pt/2026/11/11/azul/noticia/depressao-charles-devera-entrar-lisboa-vento-menos-intenso-2194549",
+   "outlet": "publico",
+   "published": "2026-11-11T10:39:02Z",
+   "via": "article",
+   "gold": [
+    "11-meteorologist-line"
+   ],
+   "pattern": {
+    "facts": [
+     "11-meteorologist-line"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "11-meteorologist-line",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "11-meteorologist-line",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "11-meteorologist-line",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "46d58ee5212b0398f9687e6e32df9389",
+   "at": "2026-11-11T22:38:39Z",
+   "cost_usd": 0.00049055,
+   "calls": 3
+  },
+  "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente#2026-11-11T19:04:32Z": {
+   "url": "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente",
+   "outlet": "dn",
+   "published": "2026-11-11T19:04:32Z",
+   "via": "live blog entry",
+   "gold": [
+    "11-meteorologist-line"
+   ],
+   "pattern": {
+    "facts": [
+     "11-meteorologist-line"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "13-communique-3",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "d40724798b761c079ea73a7c7a2eb9d4",
+   "at": "2026-11-11T22:38:42Z",
+   "cost_usd": 0.0004999,
+   "calls": 3
+  },
+  "A-ab28f5ff": {
+   "url": "https://www.noticiasaominuto.com/pais/3082649/mau-tempo-depressao-charles-a-caminho-de-espanha-vento-menos-intenso-minimizou-estragos-ipma",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-11T19:14:14Z",
+   "via": "article",
+   "gold": [
+    "11-meteorologist-line"
+   ],
+   "pattern": {
+    "facts": [
+     "11-meteorologist-line"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "7-track-south",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "13-communique-3",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "22aa109fef764d0c24231aef5327c100",
+   "at": "2026-11-11T22:38:44Z",
+   "cost_usd": 0.00048497,
+   "calls": 3
+  },
+  "A-b45eab6a": {
+   "url": "https://cnnportugal.iol.pt/depressao-charles/tempestade-charles/lisboa-setubal-e-beja-deixam-de-estar-em-aviso-vermelho-para-vento-mas-passam-ao-nivel-maximo-de-alerta-para-chuva/20261111/6af42d3ad34e9ce6f1b43e73",
+   "outlet": "cnn-portugal",
+   "published": "2026-11-11T08:53:00Z",
+   "via": "article",
+   "gold": [
+    "12-wind-red-to-orange"
+   ],
+   "pattern": {
+    "facts": [
+     "12-wind-red-to-orange"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "b2ffb735ee844c1be2b2ec5685b819a5",
+   "at": "2026-11-11T22:38:48Z",
+   "cost_usd": 0.00050807,
+   "calls": 3
+  },
+  "A-d4f70913": {
+   "url": "https://www.noticiasaominuto.com/pais/3082238/mau-tempo-beja-lisboa-e-setubal-deixam-de-estar-sob-aviso-vermelho-para-o-vento",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-11T09:10:37Z",
+   "via": "article",
+   "gold": [
+    "12-wind-red-to-orange"
+   ],
+   "pattern": {
+    "facts": [
+     "12-wind-red-to-orange"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "b8c345e0fa2452144c14cf0f22f903e5",
+   "at": "2026-11-11T22:38:50Z",
+   "cost_usd": 0.00051111,
+   "calls": 3
+  },
+  "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente#2026-11-11T09:14:37Z": {
+   "url": "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente",
+   "outlet": "dn",
+   "published": "2026-11-11T09:14:37Z",
+   "via": "live blog entry",
+   "gold": [
+    "12-wind-red-to-orange"
+   ],
+   "pattern": {
+    "facts": [
+     "12-wind-red-to-orange"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "13-communique-3",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "13-communique-3",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "13-communique-3",
+     "score": "other",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "fdbdaa93fb8fc2d8428186ee7a1b811e",
+   "at": "2026-11-11T22:38:52Z",
+   "cost_usd": 0.00056814,
+   "calls": 3
+  },
+  "https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778369#2026-11-11T09:22:00Z": {
+   "url": "https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778369",
+   "outlet": "rtp",
+   "published": "2026-11-11T09:22:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "12-wind-red-to-orange"
+   ],
+   "pattern": {
+    "facts": [
+     "12-wind-red-to-orange"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "12-wind-red-to-orange",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "a85353add2362f1f5d6e2c825175aad5",
+   "at": "2026-11-11T22:38:54Z",
+   "cost_usd": 0.00051173,
+   "calls": 3
+  },
+  "A-5589594a": {
+   "url": "https://jornaleconomico.sapo.pt/noticias/mau-tempo-aviso-de-chuva-passa-de-vermelho-para-laranja-em-leiria-castelo-branco-beja-e-portalegre/",
+   "outlet": "jornal-economico",
+   "published": "2026-11-11T15:36:05Z",
+   "via": "article",
+   "gold": [
+    "12-wind-red-to-orange"
+   ],
+   "pattern": {
+    "facts": [
+     "12-wind-red-to-orange"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "98b2058d419a74dd33075ab2e720402d",
+   "at": "2026-11-11T22:38:56Z",
+   "cost_usd": 0.00048447,
+   "calls": 3
+  },
+  "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente#2026-11-11T13:44:35Z": {
+   "url": "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente",
+   "outlet": "dn",
+   "published": "2026-11-11T13:44:35Z",
+   "via": "live blog entry",
+   "gold": [
+    "15-lisbon-warnings-shortened"
+   ],
+   "pattern": {
+    "facts": [
+     "15-lisbon-warnings-shortened"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "15-lisbon-warnings-shortened",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "15-lisbon-warnings-shortened",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "15-lisbon-warnings-shortened",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "d468e5a254d990fe22873ec15f7dc771",
+   "at": "2026-11-11T22:38:58Z",
+   "cost_usd": 0.00050913,
+   "calls": 3
+  },
+  "https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791386-scroll#2026-11-11T17:05:09Z": {
+   "url": "https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791386-scroll",
+   "outlet": "observador",
+   "published": "2026-11-11T17:05:09Z",
+   "via": "live blog entry",
+   "gold": [
+    "17-santarem-rain-lowered"
+   ],
+   "pattern": {
+    "facts": [
+     "17-santarem-rain-lowered"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "18-wind-ended-no-red",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "17-santarem-rain-lowered",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "ed7e82000bf7d7257cc5c4b2180caf39",
+   "at": "2026-11-11T22:39:00Z",
+   "cost_usd": 0.0005925,
+   "calls": 3
+  },
+  "A-cb21327f": {
+   "url": "https://www.rtp.pt/noticias/pais/lisboa-santarem-e-setubal-sem-avisos-vermelhos-faro-mantem-nivel-mais-elevado_n1778482",
+   "outlet": "rtp",
+   "published": "2026-11-11T17:17:11Z",
+   "via": "article",
+   "gold": [
+    "17-santarem-rain-lowered"
+   ],
+   "pattern": {
+    "facts": [
+     "17-santarem-rain-lowered"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "18-wind-ended-no-red",
+     "score": "other",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "17-santarem-rain-lowered",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "none",
+     "score": "none",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "f925c554fcd14951c8640ae87bf7d4c3",
+   "at": "2026-11-11T22:39:02Z",
+   "cost_usd": 0.00048298,
+   "calls": 3
+  },
+  "https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791405-scroll#2026-11-11T18:09:18Z": {
+   "url": "https://observador.pt/liveblogs/charles-causou-ventos-de-130-km-hora-na-madeira-e-dirige-se-para-o-continente/#liveblog-entry-791405-scroll",
+   "outlet": "observador",
+   "published": "2026-11-11T18:09:18Z",
+   "via": "live blog entry",
+   "gold": [
+    "18-wind-ended-no-red"
+   ],
+   "pattern": {
+    "facts": [
+     "18-wind-ended-no-red"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "2d21ce3b050fbeef167d78e0373d5a2b",
+   "at": "2026-11-11T22:39:03Z",
+   "cost_usd": 0.00050644,
+   "calls": 3
+  },
+  "A-730f2e70": {
+   "url": "https://www.noticiasaominuto.com/pais/3082627/sem-alertas-vermelhos-portugal-apos-desativacao-em-faro",
+   "outlet": "noticias-ao-minuto",
+   "published": "2026-11-11T18:09:28Z",
+   "via": "article",
+   "gold": [
+    "18-wind-ended-no-red"
+   ],
+   "pattern": {
+    "facts": [
+     "18-wind-ended-no-red"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "3394acc32a4d3efcde78f264a1225f5b",
+   "at": "2026-11-11T22:39:05Z",
+   "cost_usd": 0.00049625,
+   "calls": 3
+  },
+  "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente#2026-11-11T18:09:30Z": {
+   "url": "https://www.dn.pt/sociedade/charles-causou-ventos-de-130-kmhora-na-madeira-agora-est-a-caminho-do-continente",
+   "outlet": "dn",
+   "published": "2026-11-11T18:09:30Z",
+   "via": "live blog entry",
+   "gold": [
+    "18-wind-ended-no-red"
+   ],
+   "pattern": {
+    "facts": [
+     "18-wind-ended-no-red"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "3d3c3194412a541d54446ab0d15f245c",
+   "at": "2026-11-11T22:39:07Z",
+   "cost_usd": 0.00050707,
+   "calls": 3
+  },
+  "A-dc82a62a": {
+   "url": "https://cnnportugal.iol.pt/ipma/tempo/portugal-sem-avisos-vermelhos-apos-desativacao-em-faro-apenas-guarda-vila-real-e-braganca-continuam-sob-aviso/20261111/6af4b3a5d34e5a653d733dad",
+   "outlet": "cnn-portugal",
+   "published": "2026-11-11T18:30:00Z",
+   "via": "article",
+   "gold": [
+    "18-wind-ended-no-red"
+   ],
+   "pattern": {
+    "facts": [
+     "18-wind-ended-no-red"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "da9acd061d8797cb898043d50faf020f",
+   "at": "2026-11-11T22:39:10Z",
+   "cost_usd": 0.00051803,
+   "calls": 3
+  },
+  "A-5ccbfe76": {
+   "url": "https://jornaleconomico.sapo.pt/noticias/mau-tempo-portugal-sem-avisos-vermelhos-apos-desativacao-em-faro/",
+   "outlet": "jornal-economico",
+   "published": "2026-11-11T18:35:09Z",
+   "via": "article",
+   "gold": [
+    "18-wind-ended-no-red"
+   ],
+   "pattern": {
+    "facts": [
+     "18-wind-ended-no-red"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "f3daef6c5437ae4401f226c963d7cc32",
+   "at": "2026-11-11T22:39:12Z",
+   "cost_usd": 0.00050467,
+   "calls": 3
+  },
+  "https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778512#2026-11-11T18:56:00Z": {
+   "url": "https://www.rtp.pt/noticias/mundo/portugal-em-alerta-charles-passa-pela-madeira-e-segue-para-portugal-continental_e1778319#article_content_1778512",
+   "outlet": "rtp",
+   "published": "2026-11-11T18:56:00Z",
+   "via": "live blog entry",
+   "gold": [
+    "18-wind-ended-no-red"
+   ],
+   "pattern": {
+    "facts": [
+     "18-wind-ended-no-red"
+    ],
+    "score": "right"
+   },
+   "models": {
+    "meta-llama/llama-4-maverick": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemma-4-31b-it": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "open-weight"
+    },
+    "google/gemini-3.5-flash-lite": {
+     "fact": "18-wind-ended-no-red",
+     "score": "right",
+     "attempts": 1,
+     "label": "commercial, for comparison"
+    }
+   },
+   "trace_id": "19f147d89d898800af2801d5e776bfda",
+   "at": "2026-11-11T22:39:13Z",
+   "cost_usd": 0.00050884,
+   "calls": 3
+  }
+ },
+ "reading": "On the 61 items media ranked first on a fact, llama-4-maverick named that fact for 47 (77%), gemma-4-31b for 44 (72%), the commercial comparison for 38 (62%). The two open-weight models agree on 45 items and are right on 39 of those: when they agree, 87% right. \"other\" may hide true answers (an item can report a fact it was not first on). A misses-only set: the gold has no item that reports none, so this measures recall, not false matches."
+}
