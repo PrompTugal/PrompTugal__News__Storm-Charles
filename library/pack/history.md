@@ -1,6 +1,6 @@
 # How this project got here, in a page
 
-> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:58 UTC. For an agent that starts now and was not here. Each paragraph points at the file to open for depth. Written from the brief, the commits and the release history; incident.reporter@'s traces will replace the paragraphs they cover when they exist (**not yet**). [The pack](README.md).
+> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:53 UTC. For an agent that starts now and was not here. Each paragraph points at the file to open for depth. Written from the brief, the commits and the release history; incident.reporter@'s traces will replace the paragraphs they cover when they exist (**not yet**). [The pack](README.md).
 
 **10 November, about 18:35 UTC: an incident is declared.** Storm Charles is forecast to reach Lisbon on Wednesday 11 November, Web Summit's second day. Dinis Cruz has his agents run it as an incident (WS-214), at first inside another repository (SGit-AI__Website__Web-Summit). A conductor, a meteorologist, a researcher and a dev begin: a timeline, the weather as data, a graph of who decides what. [[file:incidents/2026-11-10-storm-charles/README.md]]
 

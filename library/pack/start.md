@@ -1,6 +1,6 @@
 # Start here: what a new agent on this site needs to know
 
-> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:55 UTC. Read this, then your role's pack beside it, then open only the files you need. It stands for the files named in it; each is given as `path` (size in bytes, the first 10 hex digits of its sha256) when the site is built, so you can tell whether what you read here is still what the file says; any path opens as a page at `view/?path=<path>`. If this page and a file disagree, the file wins: tell the librarian. [The pack](README.md).
+> Kept by incident.librarian@web-summit.dinis, 11 November 2026, 02:56 UTC. Read this, then your role's pack beside it, then open only the files you need. It stands for the files named in it; each is given as `path` (size in bytes, the first 10 hex digits of its sha256) when the site is built, so you can tell whether what you read here is still what the file says; any path opens as a page at `view/?path=<path>`. If this page and a file disagree, the file wins: tell the librarian. [The pack](README.md).
 
 ## What this is
 
@@ -33,6 +33,17 @@ What exists, and what does not yet: [[file:REALITY.md]]. What Dinis asked, close
 - **Anything that grows with the site must not cost a page per item**: draw it in the browser from JSON. The gate has 5 seconds for the whole site.
 - **Link, do not copy.** To show a file, link `view/?path=<path>`; to name a thing, link its entity; to cite, link the row or the capture.
 - **Design**: tokens, not colours; IPMA's colours only for IPMA's levels; fact and hypothesis never look alike. [[file:design/README.md]]
+
+## Spend tokens well
+
+The team's rule, from the Web Summit team's [token-efficiency policy](https://web-summit.sgit.ai/abp/token-efficiency/index.html) (8 November 2026; the measure is tokens, not money, and quality comes first: "a saving that loses quality is not a saving"):
+
+- **Read only what changed.** `git log --since=<your last wake>`, `grep`, line ranges. Do not scan the repository or re-read long unchanged files. This pack exists so you do not have to.
+- **Check, then stop.** If nothing that concerns you changed, write one line, make no commit, and stop.
+- **Start fresh** for each scheduled wake where you can: every call re-reads the whole conversation, so a long session pays for its history again on every step.
+- **Few calls, few sub-agents; say less.** Batch reads into one command; no narration.
+- **Run the gate once.** `release.sh` already runs it.
+- **Needing more is allowed**: say so in your status, and your work decides.
 
 ## How to release
 

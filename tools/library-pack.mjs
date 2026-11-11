@@ -178,6 +178,12 @@ Bytes are measured at this build. **Tokens are estimated as bytes / 4**; the rea
 
 Estimated saving on the reading alone: **${cost.saving_estimated.against_six} against six files, ${cost.saving_estimated.against_ten} against ten**. It does not count what the agent then opens from the pointers, and a pack that misleads costs more than it saves: the test is whether an agent started from it does the job without re-reading the repository. The figures as data: [sizes.json](sizes.json).
 
+## Why the start matters more than its size
+
+From the Web Summit team's own measurement ([token efficiency: the team's agents](https://web-summit.sgit.ai/people/indi/token-efficiency/index.html), 4 to 8 November 2026, by its accountant): 264 measured wakes from 37 agents cost 180.5 million tokens, **65% of it cache reads**, because every call re-reads the whole conversation. That is their finding (evidence). Our reading of it (a hypothesis until measured here): what an agent reads at its start is paid for again on each later call of the same session, so a start that is 40,000 to 70,000 bytes smaller is that much less to re-read on every call, not once (their accountant weighs a cache read at about a tenth of a fresh token). The rules that follow from their report are in [start.md](start.md), "Spend tokens well"; the policy itself: [token efficiency, one ABP for every agent](https://web-summit.sgit.ai/abp/token-efficiency/index.html).
+
+Not read: the main repository's board cards on the agents' brains (WS-190) and on the accountant (WS-148) are not served on its site, and the librarian's session was refused access to that repository; what is here comes from its two public pages above.
+
 ## The packs
 
 | Pack | For | Bytes | Tokens (est.) | Stands for |
