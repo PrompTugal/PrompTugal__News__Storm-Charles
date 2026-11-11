@@ -2,7 +2,7 @@
 title: The accounts
 summary: What this project costs: model spend against the day's cap, tokens by agent session, CI time, cost per output; each figure with its source and whether it is measured, reported or estimated.
 ---
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 19:42 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 19:43 UTC
 
 # The accounts: what this project costs
 
@@ -14,13 +14,13 @@ This is the cost of running the site, not news of the storm, and not a warning s
 |---|---|---|---|
 | Model spend today | **1.06 of 20 US dollars** (5.3% of the cap) | measured 0.87 + reported 0.19 | [models.json](models.json), from [the model ledger's summary](../models/ledger-summary.json), 11 November, 03:06 UTC |
 | The provider's account | **out of credit: every call refused with HTTP 402 since 02:55 UTC**: credits 165, used 165.33 US dollars (the account serves more than this project) | reported by the provider | [provider.json](provider.json), from [incident.models@'s status](../agents/models/status.json), 11 November, 02:57 UTC |
-| Agent sessions measured | **30 of 41** | measured | [agents.json](agents.json), 11 November, 19:42 UTC |
-| Tokens, measured sessions | **3,210,881,311** in all, 3,168,609,797 of them cache reads (98.7%) | measured | [the ledger lines](ledger/) |
+| Agent sessions measured | **30 of 41** | measured | [agents.json](agents.json), 11 November, 19:43 UTC |
+| Tokens, measured sessions | **3,247,381,377** in all, 3,204,984,591 of them cache reads (98.7%) | measured | [the ledger lines](ledger/) |
 | Most expensive hour, models | 02:00 UTC: 0.87 US dollars, 4,922 calls | measured | [models.json](models.json) |
 | Most expensive hour, tokens | 02:00 UTC: 657,577,281 tokens (27 measured agents) | measured | [agents.json](agents.json) |
 | Busiest hour, CI | 02:00 UTC: 171 runs, 1,932 s | measured | [machine.json](machine.json), from [incident.ci@'s runs](../data/ci/index.json), 11 November, 19:18 UTC |
 | CI | 1,469 runs, 1,055 releases, 26,009 s of runner time | measured | the same |
-| Repository | 3,211 files tracked, 32.6 MB; 2,490 pages built | measured | [machine.json](machine.json), 11 November, 19:42 UTC |
+| Repository | 3,212 files tracked, 32.6 MB; 2,491 pages built | measured | [machine.json](machine.json), 11 November, 19:43 UTC |
 
 The cap: 20 US dollars a day since 02:50 UTC on 11 November (5 before), [Dinis's words in the brief](../BRIEF.md).
 
@@ -30,7 +30,7 @@ Only where both sides are measured. An agent does more than one thing in a sessi
 
 | Output | Count | Cost each | Kind | Source |
 |---|---|---|---|---|
-| timeline row | 133 | 917,610 weighted tokens | measured tokens over a measured count | [data/signals.json](../incidents/2026-11-10-storm-charles/data/signals.json) |
+| timeline row | 133 | 945,901 weighted tokens | measured tokens over a measured count | [data/signals.json](../incidents/2026-11-10-storm-charles/data/signals.json) |
 | story | 7 | 1,399,311 weighted tokens | measured tokens over a measured count | [stories/*/story.json](../stories/) |
 | captured page | 634 | 14,866 weighted tokens | measured tokens over a measured count | [evidence/index.json](../evidence/index.json) |
 | release (a successful CI run) | 1,055 | 24.4 s of CI; tokens not measured: 30 of 41 agents have measured: the team's tokens per release need all of them | measured | [data/ci/runs/*.json](../data/ci/runs/) |
@@ -50,7 +50,7 @@ Each agent measures its own session with [tools/accounts-measure.mjs](../tools/a
 | [brief](../agents/brief/index.html) | not measured | | | | | | | |
 | [broadcast](../agents/broadcast/index.html) | not measured | | | | | | | |
 | [ci](../agents/ci/index.html) | 268 | 531 | 233,607 | 639,553 | 51,512,279 | 98.3% | 165,538 | [19:19 UTC](ledger/ci.jsonl) |
-| [conductor](../agents/conductor/index.html) | 2,552 | 6,122 | 1,149,491 | 4,529,342 | 1,163,571,181 | 99.5% | 736,167 | [18:42 UTC](ledger/conductor.jsonl) |
+| [conductor](../agents/conductor/index.html) | 2,635 | 6,321 | 1,172,772 | 4,631,134 | 1,199,945,975 | 99.5% | 128,704 | [19:42 UTC](ledger/conductor.jsonl) |
 | [datascience](../agents/datascience/index.html) | 70 | 135 | 60,585 | 124,063 | 9,942,226 | 98.2% | 192,133 | [12:01 UTC](ledger/datascience.jsonl) |
 | [designer](../agents/designer/index.html) | 702 | 1,415 | 623,907 | 1,346,710 | 204,743,249 | 99.1% | 169,534 | [11:52 UTC](ledger/designer.jsonl) |
 | [desk](../agents/desk/index.html) | not measured | | | | | | | |
@@ -130,7 +130,7 @@ Reported by other desks (their own statement, not this ledger):
 | Desk | Day | US dollars | Source, read |
 |---|---|---|---|
 | incident.shadow@web-summit.dinis | 2026-11-11 | 0.19 | [agents/shadow/status.json](../agents/shadow/status.json), 11 November, 02:40 UTC |
-| incident.accountant@web-summit.dinis | 2026-11-11 | 0.0000 | [agents/accountant/status.json](../agents/accountant/status.json), 11 November, 19:42 UTC |
+| incident.accountant@web-summit.dinis | 2026-11-11 | 0.0000 | [agents/accountant/status.json](../agents/accountant/status.json), 11 November, 19:44 UTC |
 
 File: [models.json](models.json).
 
@@ -144,8 +144,8 @@ File: [models.json](models.json).
 | Queue seconds | 12,974 s | measured | the same |
 | Push to served | median 40 s, 90th percentile 58 s | measured | the same |
 | Commits | 1,600 by 39 agents, 1,057 tags | measured | the same |
-| Files tracked | 3,211, 32,614,166 bytes | measured | git ls-files, 11 November, 19:42 UTC |
-| Pages built | 2,490 pages, 7,877 files served, 103.2 MB | measured | the build in the accountant's clone, 11 November, 19:42 UTC |
+| Files tracked | 3,212, 32,621,532 bytes | measured | git ls-files, 11 November, 19:43 UTC |
+| Pages built | 2,491 pages, 7,879 files served, 103.2 MB | measured | the build in the accountant's clone, 11 November, 19:43 UTC |
 | Vaults | 3 listed; sizes not published | reported | [data/vaults.json](../data/vaults.json) |
 
 CI by hour (UTC):
