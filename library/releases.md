@@ -1,78 +1,78 @@
 # The release history: every version, what changed, and whether it was served
 
-> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 04:43 UTC. Built by [tools/library-releases.mjs](../tools/library-releases.mjs) from the tags, the commit subjects and the deploy workflow's runs as incident.ci@ keeps them ([the pipeline](../ci/README.md)), read at that time; the data is [releases.json](releases.json). Back to [the library](README.md).
+> Kept by incident.librarian@web-summit.dinis, 2026-11-11, 05:15 UTC. Built by [tools/library-releases.mjs](../tools/library-releases.mjs) from the tags, the commit subjects and the deploy workflow's runs as incident.ci@ keeps them ([the pipeline](../ci/README.md)), read at that time; the data is [releases.json](releases.json). Back to [the library](README.md).
 
-CI numbers every push (`v0.1.<run>`), deploys it and tags it; nobody who pushes writes a number ([BRIEF-CORRECTIONS.md](../BRIEF-CORRECTIONS.md)). Until about 23:55 UTC on 10 November the newest push cancelled a run in progress; since then a running deploy finishes and only a run still waiting is replaced (the workflow's own comment), so a later "cancelled" should mean it never started. **518 runs: 337 served (confirmed by CI), 4 deployed and tagged but cancelled before CI confirmed, 171 cancelled before the tag, 6 failed.**
+CI numbers every push (`v0.1.<run>`), deploys it and tags it; nobody who pushes writes a number ([BRIEF-CORRECTIONS.md](../BRIEF-CORRECTIONS.md)). Until about 23:55 UTC on 10 November the newest push cancelled a run in progress; since then a running deploy finishes and only a run still waiting is replaced (the workflow's own comment), so a later "cancelled" should mean it never started. **579 runs: 355 served (confirmed by CI), 34 deployed and tagged but cancelled before CI confirmed, 171 cancelled before the tag, 6 failed, 13 still running or unknown when read.**
 
 ## Versions never confirmed served
 
-177 of 518. The newest: v0.1.495, v0.1.494, v0.1.491, v0.1.490, v0.1.488, v0.1.487, v0.1.483, v0.1.479, v0.1.472, v0.1.471, v0.1.468, v0.1.467, v0.1.464, v0.1.441, v0.1.439, v0.1.437, v0.1.433, v0.1.426, v0.1.417, v0.1.411, v0.1.409, v0.1.396, v0.1.394, v0.1.393, v0.1.392, v0.1.390, v0.1.387, v0.1.386, v0.1.383, v0.1.381. Each hour's file lists every version with its state.
+177 of 579. The newest: v0.1.495, v0.1.494, v0.1.491, v0.1.490, v0.1.488, v0.1.487, v0.1.483, v0.1.479, v0.1.472, v0.1.471, v0.1.468, v0.1.467, v0.1.464, v0.1.441, v0.1.439, v0.1.437, v0.1.433, v0.1.426, v0.1.417, v0.1.411, v0.1.409, v0.1.396, v0.1.394, v0.1.393, v0.1.392, v0.1.390, v0.1.387, v0.1.386, v0.1.383, v0.1.381. Each hour's file lists every version with its state.
 
 **This is not a list of versions that were never deployed**, and none can be made from the runs alone: a cancelled deploy step can still go live. Run 32: served: /version.json answered v0.1.32 with commit 487818fc40 when read at 23:49 UTC, although the run's deploy step is recorded as cancelled (job 130213112738) and no tag was pushed (incident.librarian@). Each of these versions' commits is contained in the next served version, so no change was lost; what is not known is whether a reader was ever served that exact number.
 
 ## The newest sixty versions
 
-What changed is each commit's own subject, as its agent wrote it. Every version, hour by hour, as data: [11-11 04h](../view/index.html?path=library/releases/2026-11-11T04.json) (56) · [11-11 03h](../view/index.html?path=library/releases/2026-11-11T03.json) (116) · [11-11 02h](../view/index.html?path=library/releases/2026-11-11T02.json) (171) · [11-11 01h](../view/index.html?path=library/releases/2026-11-11T01.json) (34) · [11-11 00h](../view/index.html?path=library/releases/2026-11-11T00.json) (65) · [11-10 23h](../view/index.html?path=library/releases/2026-11-10T23.json) (64) · [11-10 22h](../view/index.html?path=library/releases/2026-11-10T22.json) (2) · [11-10 21h](../view/index.html?path=library/releases/2026-11-10T21.json) (10).
+What changed is each commit's own subject, as its agent wrote it. Every version, hour by hour, as data: [11-11 05h](../view/index.html?path=library/releases/2026-11-11T05.json) (40) · [mmit-foundh](../view/index.html?path=library/releases/no-commit-found.json) (13) · [11-11 04h](../view/index.html?path=library/releases/2026-11-11T04.json) (64) · [11-11 03h](../view/index.html?path=library/releases/2026-11-11T03.json) (116) · [11-11 02h](../view/index.html?path=library/releases/2026-11-11T02.json) (171) · [11-11 01h](../view/index.html?path=library/releases/2026-11-11T01.json) (34) · [11-11 00h](../view/index.html?path=library/releases/2026-11-11T00.json) (65) · [11-10 23h](../view/index.html?path=library/releases/2026-11-10T23.json) (64) · [11-10 22h](../view/index.html?path=library/releases/2026-11-10T22.json) (2) · [11-10 21h](../view/index.html?path=library/releases/2026-11-10T21.json) (10).
 
 | Version | Pushed (UTC) | State | What changed |
 |---|---|---|---|
-| v0.1.518 | 11-11 04:44 | tagged | *incident.ci@* the 04:43 wake: 517 runs and 565 commits; no new failure, no deploy retry fired; tokens measured |
-| v0.1.517 | 11-11 04:37 | served | *incident.ipma@* 04:34 read: nothing changed (it fell before IPMA's hourly rewrite was served); the hourly read moves to :45 |
-| v0.1.516 | 11-11 04:37 | served | *incident.conductor@* timeline row s-1111T0437, the first mainland count (66 occurrences at 03:30), as evidence from Lusa |
-| v0.1.515 | 11-11 04:37 | served | *incident.media@* 04:36 wake: sweep (227 items, 17 outlets) |
-| v0.1.514 | 11-11 04:36 | served | *incident.conductor@* my measured token line to 04:36 (970 calls; context 110k after the second compaction) |
-| v0.1.513 | 11-11 04:36 | served | *incident.accountant@* a hand-over note, so a fresh accountant session starts from the pack and one page |
-| v0.1.512 | 11-11 04:35 | served | *incident.accountant@* the accounts, round 5: eight agents have handed over to fresh sessions (53% to 84% less per call); the team's call is getting cheaper hour by hour; 27 of 30 measured (1.44 billion tokens); brief 5 |
-| v0.1.511 | 11-11 04:33 | served | *incident.weatherwatch@* the 04:32 re-read: authorities unchanged; first mainland count on a front page (66 occurrences by 03:30, SAPO) · *incident.weatherwatch@* tokens measured |
-| v0.1.510 | 11-11 04:32 | served | *incident.archivist@* capture pages made at build time (tools/capture-pages.mjs, in the generators list); the tracked per-capture .md files removed; research captures to 500 addresses |
-| v0.1.509 | 11-11 04:31 | served | *incident.social@* 04:26 re-read (nothing new; Web Summit still silent); a page per listed account, made at build (tools/social-accounts.mjs) · *incident.social@* generators.json: tools/social-accounts.mjs (one line) |
-| v0.1.508 | 11-11 04:31 | served | *incident.board@* the 04:30 round: synced; two new press rows move no question; the conductor's asks to Dinis now live on the board's cards; tokens measured |
-| v0.1.507 | 11-11 04:29 | served | *incident.entities@* nodes regenerated (195 nodes, 377 edges) against the archivist's index of 469 addresses; 124 nodes carry evidence ids |
-| v0.1.506 | 11-11 04:28 | served | *incident.archivist@* 04:24 round: no primary source changed; two rendering differences read and marked same content; the index is one line per address with per-source capture lists; research captures to 465 addresses |
-| v0.1.505 | 11-11 04:28 | served | *incident.stories@* the 04:27 re-check on the 03:23 read: nothing moved at IPMA; two new rows folded in (RTP's 03:00 bulletin title; Madeira's 71 occurrences, as reported); supports name a re-read by its time |
-| v0.1.504 | 11-11 04:24 | served | *incident.sources@* 04:24 round: feed unchanged; one message read as CAP XML (the API map records what it returns) |
-| v0.1.503 | 11-11 04:22 | served | *incident.identity@* 04:21 wake: status (checks green, waiting on Dinis); tokens measured |
-| v0.1.502 | 11-11 04:21 | served | *incident.librarian@* tokens measured |
-| v0.1.501 | 11-11 04:21 | served | *incident.librarian@* 04:00 to 05:00 opened; the journalist's four pack points (supports count as read, library/pack/also.json, commit codes without history, help/print.md); the round article's 5c; start.md: a session is given one or two jobs; the release history refreshed |
-| v0.1.500 | 11-11 04:18 | served | *incident.librarian@* the catalogue and the pack in one pass (one walk, one read and one hash per file; index+pack 539 ms to 428 ms, median of 7); library-pack leaves generators.json because library-index now runs it |
-| v0.1.499 | 11-11 04:18 | served | *incident.journalist@* tokens measured |
-| v0.1.498 | 11-11 04:18 | served | *incident.journalist@* the edition prints at 2.0 MB where it was 12.1 MB (110 pages): the article's soft shadow printed as two full-page mask images per page; a print rule in the journal's stylesheet removes it |
-| v0.1.497 | 11-11 04:16 | served | *incident.board@* a-provider-credit: the first refusal's time (02:53:57, checked) and the reporter's trace of the outage as evidence |
-| v0.1.496 | 11-11 04:16 | served | *incident.librarian@* tokens measured |
-| v0.1.495 | 11-11 04:16 | not confirmed | *incident.conductor@* sync: every decision edge carries an area (lisbon, mainland, national, madeira, porto-santo) |
-| v0.1.494 | 11-11 04:16 | not confirmed | *incident.observability@* /agents/ stays phone-wide when GitHub's API refuses the browser (the error note now wraps); the hour's snapshots; tokens measured |
-| v0.1.493 | 11-11 04:16 | served | *incident.librarian@* the fourth session's key (the third's marked handed over) |
-| v0.1.492 | 11-11 04:14 | served | *incident.reporter@* tokens measured; the index's size in the reporter's README |
-| v0.1.491 | 11-11 04:14 | not confirmed | *incident.librarian@* the third session's hand-over (the conductor's catalogue job and the journalist's four points passed on); tokens measured |
-| v0.1.490 | 11-11 04:14 | not confirmed | *incident.journalist@* tokens measured |
-| v0.1.489 | 11-11 04:14 | served | *incident.reporter@* two traces owed: the Studio (a spoken idea at 00:30 to a player and two chapters in 8 min 19 s, six explanations and a cast by 03:55) and an agent's start (the Perplexity desk: a jobs line to a first page in 12 minutes, a timeline row from its leads 80 s later); ten traces, 131 steps |
-| v0.1.488 | 11-11 04:14 | not confirmed | *incident.journalist@* the seventh piece checked against the reporter's outage trace (it agrees; trace supports and a relay picture added; the 02:38 refusals kept as a difference, said on the page) |
-| v0.1.487 | 11-11 04:14 | not confirmed | *incident.conductor@* the conductor's status brought to 04:15 (session, the hourly wake's steps, what is in flight, what waits on Dinis) |
-| v0.1.486 | 11-11 04:13 | served | *incident.conductor@* the PDF renderer is in the repository (admin/tools/render-pdf.cjs), so the journalist and the librarian can test what prints |
-| v0.1.485 | 11-11 04:13 | served | *incident.librarian@* tokens measured |
-| v0.1.484 | 11-11 04:13 | served | *incident.librarian@* library/pack/conductor-handover.md: what the next conductor session needs to lead from the pack (its rules, the bridge, its wake, the agents with sessions and wakes, what waits on Dinis); the wakes as data; what the pack did not tell the third session |
-| v0.1.483 | 11-11 04:13 | not confirmed | *incident.journalist@* tokens measured |
-| v0.1.482 | 11-11 04:12 | served | *incident.journalist@* the second session's first round: a seventh piece, "An empty account stopped the models, and only the models" (from the record; the reporter's trace is owed); the sixth piece gains this session as its newest example; What it cost gains the books at 03:33; the status says what the pack and the hand-over did not tell a fresh session |
-| v0.1.481 | 11-11 04:12 | served | *incident.librarian@* the pack from a sixth fresh start (the reporter's): who marks an earlier key handed over, tags at every wake, where the context number is; three points left in the hand-over |
-| v0.1.480 | 11-11 04:11 | served | *incident.reporter@* an eighth trace (the model provider's account out of credit at 02:53:57: what stopped, three code changes, one card for Dinis); three more hand-overs in the memory trace (nine in eight roles); the log's 04:00 hour; what the pack and the hand-over did not say |
-| v0.1.479 | 11-11 04:11 | not confirmed | *incident.designer@* round 44: a long bar's words stay in view when a strip is scrolled; the data room prints on a page; two notes for the Weather face; tokens measured |
-| v0.1.478 | 11-11 04:11 | served | *incident.ci@* the 04:10 wake: 477 runs and 523 commits; no new failure, no deploy retry fired; tokens measured |
-| v0.1.477 | 11-11 04:09 | served | *incident.journalist@* tokens measured |
-| v0.1.476 | 11-11 04:09 | served | *incident.journalist@* a second session takes over: its session key's public half; the first session's entry marked handed over |
-| v0.1.475 | 11-11 04:09 | served | *incident.journalist@* handed over to a fresh session (the conductor's word, 04:08): this session's key marked handed over; a hand-over note in the status file; the sixth piece says so; nothing more is pushed from this session |
-| v0.1.474 | 11-11 04:08 | served | *incident.librarian@* tokens measured |
-| v0.1.473 | 11-11 04:07 | served | *incident.librarian@* the third session's key (public half); the second session's entry marked handed over |
-| v0.1.472 | 11-11 04:07 | not confirmed | *incident.reporter@* tokens measured |
-| v0.1.471 | 11-11 04:07 | not confirmed | *incident.journalist@* 04:05 round: a sixth piece, "Starting again is cheaper than remembering" (from the reporter's seventh trace); supports re-anchored where incident.ci@'s and the accountant's files had changed; the mistakes piece records the gate's clock warning; tokens measured |
-| v0.1.470 | 11-11 04:07 | served | *incident.reporter@* a second session takes over: its session key's public half (the first session marked its own entry handed over) |
-| v0.1.469 | 11-11 04:06 | served | *incident.reporter@* the first reporter session's key marked handed over (a fresh session carries on from agents/reporter/HANDOVER.md and the pack); this session pushes nothing more |
-| v0.1.468 | 11-11 04:06 | not confirmed | *incident.shadow@* the 04:00 hour is a second recorded gap (the engines' account still out of credit); shadow-ask reads the wrapper's out-of-credit statuses |
-| v0.1.467 | 11-11 04:06 | not confirmed | *incident.librarian@* the second session's hand-over (context 248,109 after 95 calls; a third session asked of the conductor before 04:44) |
-| v0.1.466 | 11-11 04:06 | served | *incident.board@* a-llm-cap: event_utc from another repository's commit, as reported by incident.reporter@ and marked as not checked here |
-| v0.1.465 | 11-11 04:05 | served | *incident.librarian@* tokens measured |
-| v0.1.464 | 11-11 04:05 | not confirmed | *incident.librarian@* what is new: 03:00 to 04:00 closed (125 commits by 27 agents, 116 versions); the release history refreshed |
-| v0.1.463 | 11-11 04:05 | served | *incident.reporter@* the 04:00 wake: a seventh trace (memory: "the librarian saves tokens" to the pack, the accountant's measurement and six hand-overs in 48 minutes); the log's 03:00 hour; numbers by the board's event time; a hand-over note · *incident.reporter@* tokens measured |
-| v0.1.462 | 11-11 03:56 | served | *incident.librarian@* the pack from a fifth fresh start (the Studio's): a role pack lists each path once and the agent's ledger line; who needs state.json at the start; which fingerprint is which; the build has no --out |
-| v0.1.461 | 11-11 03:55 | served | *incident.studio@* tokens measured |
-| v0.1.460 | 11-11 03:54 | served | *incident.studio@* a sixth explanation, "The hand-over" (the sentence, the pack, the finding, five hand-overs measured); measured figures in "What compression is" (a box under eight scenes and a seventh chapter, each linked to the accountant's file); the player's scene field 'measured'; what the pack and the note did not tell the second session |
-| v0.1.459 | 11-11 03:54 | served | *incident.graph@* in a node's pane each cited source carries our capture on the same line |
+| v0.1.579 | 11-11 05:43 | tagged | *incident.stories@* HANDOVER.md for its next session (what it owns, the tools, the wake's steps, in flight, owed, the routine's id) · *incident.board@* HANDOVER.md for a fresh board session (what is owned, the tools, the hourly round, for-dinis's order and why, what is in flight); tokens measured · *incident.identity@* HANDOVER.md for the next session (what the role owns, tools, keys and signatures, what waits on Dinis, the routine); status · *incident.ci@* agents/ci/HANDOVER.md: everything a fresh incident.ci@ session needs (the wake, the state, the patches, what waits on Dinis) · *incident.ipma@* HANDOVER.md for a fresh session (what is owned, how each data set is read and when, the vault without its key, what waits on Dinis, the routine) |
+| v0.1.578 |  | unknown | no commit found for this run |
+| v0.1.577 |  | unknown | no commit found for this run |
+| v0.1.576 |  | unknown | no commit found for this run |
+| v0.1.575 |  | unknown | no commit found for this run |
+| v0.1.574 | 11-11 05:42 | tagged | *incident.social@* HANDOVER.md for the next session; two offers taken into the timeline (s-1111T0437, s-1111T0541) marked and tied |
+| v0.1.573 | 11-11 05:41 | tagged | *incident.conductor@* timeline row s-1111T0541, Madeira 99 occurrences and power restored (Lusa, evidence) · *incident.accountant@* the second accountant session has started: a new session key, the first session's marked handed over; the measure page's example commit gives the trailers in one paragraph |
+| v0.1.572 |  | unknown | no commit found for this run |
+| v0.1.571 | 11-11 05:40 | tagged | *incident.social@* correction: the word match missed posts counting occurrences (Lusa 04:02 and 04:42 today, four earlier); matcher widened, 7 posts added, two offered; the page says so |
+| v0.1.570 | 11-11 05:40 | tagged | *incident.weatherwatch@* the 05:39 re-read (authorities unchanged; first impact headline from greater Lisbon) and a look at the front page under the orange rain (reviews/2026-11-11T0540.md) · *incident.weatherwatch@* tokens measured |
+| v0.1.569 | 11-11 05:39 | tagged | *incident.accountant@* the accounts, round 6: eleven agents have handed over (53% to 84% less per call); the conductor's session is 28% of 1.65 billion tokens; round 5's hourly figures corrected; brief 6 |
+| v0.1.568 | 11-11 05:38 | tagged | *incident.entities@* hourly wake 05:37: the outlet nodes remade after the media watch's push; builder 179 ms, linker 395 ms at 1,95x pages; tokens measured |
+| v0.1.567 | 11-11 05:38 | tagged | *incident.media@* 05:36 wake: sweep (231 items, 17 outlets, 2 new); fact 6 still unreported; no new-day live page yet · *incident.designer@* the hand-over brought up to date (rounds 43 and 44 done, what is next at 09:35, the scripts, the cost), for a fresh session |
+| v0.1.566 |  | unknown | no commit found for this run |
+| v0.1.565 | 11-11 05:37 | tagged | *incident.designer@* the 05:36 look at the day in progress: the minute line no longer crosses a figure; the wind chart's observed label clear of its line; tokens measured |
+| v0.1.564 | 11-11 05:37 | tagged | *incident.social@* 05:33 re-read: no new post about the storm from any listed account; Web Summit still silent; counts refreshed |
+| v0.1.563 | 11-11 05:32 | tagged | *incident.board@* the 05:32 sync to the status files (no question moved; the round itself went out at 05:27) |
+| v0.1.562 | 11-11 05:29 | tagged | *incident.board@* a-websummit-terms: what keeping the hold means for the screenshots already in the display vault; the clauses checked in sources/registry.json · *incident.entities@* LPPT, LPMA and SRPC are names of the nodes that had them; the Capitania placed in the seed; nodes remade; HANDOVER.md and status current; tokens measured |
+| v0.1.561 |  | unknown | no commit found for this run |
+| v0.1.560 | 11-11 05:29 | tagged | *incident.sources@* Web Summit's record of automated reads completed with incident.dev@'s counts (244 poll reads, about 640 to 660 requests in all, estimated) and what content the repository holds |
+| v0.1.559 | 11-11 05:28 | tagged | *incident.archivist@* status: the Web Summit hold covers 9 addresses (I had written 17) · *incident.stories@* the 05:27 re-check on the 04:23 read: nothing moved at IPMA; Open-Meteo moved and Madeira's stations gained an hour (Areeiro 232.1 mm in six hourly values): both retold and dated · *incident.stories@* on the 05:22 read: the 05:00 airport forecast keeps the 45-knot gusts, now to 18:00 ("Less wind for Lisbon?" retold, dated); IPMA's warnings unchanged |
+| v0.1.558 |  | unknown | no commit found for this run |
+| v0.1.557 | 11-11 05:28 | tagged | *incident.sources@* Web Summit on hold (its terms forbid automated reading; decision with Dinis); its page lists what this site read automatically and when · *incident.board@* Web Summit's terms and the hold on automated reads as a card for Dinis (second on his list); the five questions only Web Summit can answer move from watching to open; tokens measured · *incident.entities@* the linker writes each page in place (no truncate first): about 650 ms to about 400 ms in the build at 1,932 pages, output byte for byte the same; mentions.json now says where its time goes by family of pages · *incident.archivist@* Web Summit hold: no further read of websummit.com; its captures kept privately and not shown (address, title, time and hashes stay) |
+| v0.1.556 |  | unknown | no commit found for this run |
+| v0.1.555 |  | unknown | no commit found for this run |
+| v0.1.554 |  | unknown | no commit found for this run |
+| v0.1.553 | 11-11 05:27 | tagged | *incident.conductor@* bridge sync of the meteorologist's 05:22 read (new airport forecast, stations, warnings) · *incident.perplexity@* the conductor's interim hold on websummit.com: the checker no longer requests it; capture asks for its pages withdrawn; the page says so · *incident.perplexity@* tokens measured |
+| v0.1.552 |  | unknown | no commit found for this run |
+| v0.1.551 | 11-11 05:27 | tagged | *incident.weather@* the 05:25 check: a past hour with no measurement read yet says so (it showed the automatic forecast); the rain tile names its hour |
+| v0.1.550 | 11-11 05:26 | tagged | *incident.media@* second session starts (session key incident-media-dinis-2, the first marked handed over); sweep: 229 items, 17 outlets, 2 new; fact 6 still unreported; live.mjs keeps a blog's earlier record when a fresh cache can time no entry |
+| v0.1.549 | 11-11 05:26 | tagged | *incident.sources@* Web Summit's terms read and quoted: automated access, archiving and summarising of its websites are forbidden (a decision for Dinis); feed read 05:25, unchanged |
+| v0.1.548 | 11-11 05:25 | tagged | *incident.archivist@* 05:23 round: the seven primary pages unchanged since the first captures |
+| v0.1.547 | 11-11 05:24 | tagged | *incident.entities@* IPMA's nodes joined, not copied (card a-ipma-7): district names and codes, forecast and coastal places, qualified station names, warning types and levels link to their place on IPMA's pages; 635 more mentions linked, the linker's time unchanged |
+| v0.1.546 | 11-11 05:23 | tagged | *incident.meteorology@* tokens measured (second session, first round) |
+| v0.1.545 | 11-11 05:23 | tagged | *incident.meteorology@* second session: new session key (the first handed over); re-read of every edge and licence (0 changed state); nodes carry stated joins (entity, of, source) for the graph; two sharper names for the linker; status and handover |
+| v0.1.544 | 11-11 05:21 | tagged | *incident.identity@* 05:21 wake: status (checks green, waiting on Dinis); tokens measured |
+| v0.1.543 | 11-11 05:20 | tagged | *incident.entities@* second session started: its session key's public half in data/keys.json, the first session's entry handed over; status |
+| v0.1.542 | 11-11 05:19 | tagged | *incident.meteorology@* agents/meteorology/HANDOVER.md (what it owns, the reader and builder and how to run them, in flight, what waits on Dinis); status; tokens measured · *incident.media@* agents/media/HANDOVER.md for a fresh session (what I own, the tools, the wake's steps, the rules, what is in flight, what waits on Dinis) |
+| v0.1.541 |  | unknown | no commit found for this run |
+| v0.1.540 | 11-11 05:19 | tagged | *incident.entities@* agents/entities/HANDOVER.md (what I own, how to run, check and time the builder and the linker, what is in flight, what is owed); nodes current |
+| v0.1.539 | 11-11 05:18 | tagged | *incident.journalist@* tokens measured |
+| v0.1.538 | 11-11 05:17 | tagged | *incident.journalist@* the third session starts: its session key (the second session's entry marked handed over); a ninth piece, "An explanation that is data" (from the reporter's trace of the Studio); the sixth piece carries the accountant's eight hand-overs; the status file |
+| v0.1.537 | 11-11 05:16 | tagged | *incident.observability@* the hour's snapshots of commits and sessions; tokens measured · *incident.observability@* the snapshot files sized as written so they stay under the gate's limit (commits.json had passed it and the gate refused the push); the index carries a short done list |
+| v0.1.536 | 11-11 05:16 | tagged | *incident.ci@* the 05:15 wake: 535 runs and 584 commits; no new failure, no deploy retry fired; tokens measured |
+| v0.1.535 | 11-11 05:14 | served | *incident.journalist@* tokens measured |
+| v0.1.534 | 11-11 05:14 | served | *incident.journalist@* 05:12 round: an eighth piece, "An agent's first twelve minutes" (from the reporter's trace of a start); the seventh piece re-anchored where the board's card and the reporter's log were reworded, with the reporter's correction of its outage trace recorded; What it cost carries the books at 04:35; a hand-over written into the status |
+| v0.1.533 | 11-11 05:11 | served | *incident.librarian@* start.md: the gate's budget is 8 s and a warning (it said 5 s), at the conductor's word |
+| v0.1.532 | 11-11 05:11 | served | *incident.reporter@* the third session starts: its session key added, the second session's entry marked handed over, the status file · *incident.reporter@* tokens measured |
+| v0.1.531 | 11-11 05:09 | served | *incident.reporter@* the hand-over note brought up to date by the second session (225,862 tokens a call at 05:08: a fresh session at the next wake is sensible) |
+| v0.1.530 | 11-11 05:08 | served | *incident.reporter@* tokens measured |
+| v0.1.529 | 11-11 05:08 | served | *incident.reporter@* the 05:06 wake: the outage trace corrected in the open (five calls refused for credit before 02:39:15 went unrecognised; found by incident.journalist@) and brought to a third empty hour; the memory trace to ten hand-overs; the log's 04:00 hour; the numbers |
+| v0.1.528 | 11-11 05:06 | served | *incident.shadow@* the 05:00 hour is a third recorded gap (the engines' account still out of credit) |
+| v0.1.527 | 11-11 05:03 | served | *incident.conductor@* 05:02 wake: bridge sync (weather data, decision entities, status); IPMA Lisbon unchanged at 05:03 |
+| v0.1.526 | 11-11 04:57 | served | *incident.graph@* the graph rebuilt on the 04:37 data (475 nodes, 647 edges) |
+| v0.1.525 | 11-11 04:49 | served | *incident.ipma@* 04:46 read: 46 files changed; warnings rewritten at 04:15 with the same content (69 above green); a served file can be about twenty minutes old |
+| v0.1.524 | 11-11 04:49 | served | *incident.archivist@* an unchanged re-read keeps only its hashes, summary and text in the private vault (no second copy of the HTML and pictures) |
+| v0.1.523 | 11-11 04:48 | served | *incident.archivist@* the research round is done: 542 addresses, 557 captures; status and vault numbers |
+| v0.1.522 | 11-11 04:48 | served | *incident.wikipedia@* 04:39 read: nothing changed on Wikipedia since 03:44; eight 429s waited out; the wake's tokens measured |
+| v0.1.521 | 11-11 04:47 | served | *incident.archivist@* research captures recorded after the container restart (press pages kept privately) |
+| v0.1.520 | 11-11 04:45 | served | *incident.librarian@* tokens measured |

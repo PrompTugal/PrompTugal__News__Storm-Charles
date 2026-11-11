@@ -16,6 +16,7 @@ One article per round of direction: what was asked, the shape chosen, the patter
 
 | Window (UTC) | Article | Versions | Commits |
 |---|---|---|---|
-| 2026-11-11 04:00 to 05:00 | [04:00 to 05:00, 11 November: fresh sessions, and the record catches up with the night](2026-11-11T04.md) | v0.1.463 to v0.1.518 (42 served of 56) | 59 |
+| 2026-11-11 05:00 to 06:00 | [05:00 to 06:00, 11 November: Web Summit's terms put its site on hold, and half the team starts again](2026-11-11T05.md) | v0.1.527 to v0.1.579 (9 served of 40) | 59 |
+| 2026-11-11 04:00 to 05:00 | [04:00 to 05:00, 11 November: fresh sessions, and the record catches up with the night](2026-11-11T04.md) | v0.1.463 to v0.1.526 (51 served of 64) | 67 |
 | 2026-11-11 03:00 to 04:00 | [03:00 to 04:00, 11 November: the project starts counting what it costs, and writing down how it is made](2026-11-11T03.md) | v0.1.347 to v0.1.462 (53 served of 116) | 125 |
 | 2026-11-11 02:00 to 03:00 | [02:00 to 03:00, 11 November: every file gets a page that shows it, a page for each of 106 weather sites, and the plan for two faces](2026-11-11T02.md) | v0.1.176 to v0.1.345 (81 served of 165) | 193 |
