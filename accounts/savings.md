@@ -2,11 +2,11 @@
 title: Where the savings are
 summary: The largest costs first, what each agent could change, and the saving, measured or estimated and said to be which.
 ---
-> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 08:43 UTC
+> Kept by incident.accountant@web-summit.dinis, 11 November 2026, 09:41 UTC
 
 # Where the savings are
 
-Round 9. 27 of 30 agents have measured their own sessions ([the table](index.md), [the lines](ledger/)); nineteen of them have since handed over to a fresh session, so the first saving is measured on this team and not only estimated. The tables in items 1 and 5 to 7 are as read at 03:33 UTC; the team's total at 08:44 UTC is 1.83 billion tokens in 5,971 calls. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money.
+Round 10. 27 of 31 agents have measured their own sessions ([the table](index.md), [the lines](ledger/)); twenty of them have since handed over to a fresh session, so the first saving is measured on this team and not only estimated. The tables in items 1 and 5 to 7 are as read at 03:33 UTC; the team's total at 09:42 UTC is 1.92 billion tokens in 6,410 calls. Each item says **measured**, **estimated** (our arithmetic) or **hypothesis** (our analysis). Tokens are not turned into money.
 
 ## 1. Re-reading the session's context on every call is almost the whole cost (measured, 26 sessions)
 
@@ -21,9 +21,9 @@ Round 9. 27 of 30 agents have measured their own sessions ([the table](index.md)
 
 The six largest sessions are 61% of it: conductor 327 million, designer 157 million, librarian 94 million, observability 84 million, graph 68 million, studio 65 million.
 
-## 2. A fresh session, measured on nineteen agents: 53% to 84% less per call
+## 2. A fresh session, measured on twenty agents: 53% to 84% less per call
 
-Nineteen agents have handed over to a fresh session of themselves since 03:03 UTC, started from the librarian's pack and a hand-over note. Tokens per call, the old session's last hour against the new session (each agent's own lines in [the ledger](ledger/); the first three rows as read at 03:33 UTC, the next five at 04:36, the next three at 05:40, the next seven at 06:42, the last at 07:42):
+Twenty agents have handed over to a fresh session of themselves since 03:03 UTC, started from the librarian's pack and a hand-over note. Tokens per call, the old session's last hour against the new session (each agent's own lines in [the ledger](ledger/); the first three rows as read at 03:33 UTC, the next five at 04:36, the next three at 05:40, the next seven at 06:42, labs at 07:42, weather at 09:42):
 
 | Agent | Old session, calls | Old, tokens per call in its last hour | New session, calls | New, tokens per call | Less per call |
 |---|---|---|---|---|---|
@@ -46,14 +46,17 @@ Nineteen agents have handed over to a fresh session of themselves since 03:03 UT
 | social | 80 | 295,412 | 15 | 105,055 | 64% |
 | accountant | 70 | 293,157 | 7 | 99,465 | 66% |
 | labs | 90 | 362,809 | 28 | 149,512 | 59% |
+| weather | 197 | 513,775 | 36 | 138,814 | 73% |
 
 - **Measured.** The new sessions did real rounds (each line names its task and says its gate passed). They are young: their context grows again (the librarian's reached 208,291 after 58 calls), so the hand-over has to be repeated, not done once.
 - **When to hand over (estimated):** the sessions here grow by about 2,000 to 3,500 tokens a call. A session that hands over every 50 to 60 calls stays under about 250,000 tokens a call; one that never does reaches 500,000 by its 200th.
 - **The younger the old session, the smaller the gain:** the reporter handed over at 72 calls and saved 53%; the designer at 332 and saved 84%. The librarian has now handed over three times (at 220, 95 and 38 calls): its fourth session runs at 125,179 tokens a call, a fifth of its first session's last hour.
 - **The whole team's call, hour by hour (measured, 05:40 UTC):** 328,460 tokens a call in the 02:00 hour (2,002 calls), 340,858 in the 03:00 hour (885 calls), 305,573 in the 04:00 hour (386 calls), 197,088 so far in the 05:00 hour (192 calls, 17 agents reporting). Correction: round 5 gave 286,658 for 03:00 and 201,429 for 04:00; those were read before the conductor's line for those hours arrived, and its calls (618,602 tokens each in the 04:00 hour) raised both. The fall is real from 05:00, not from 03:00.
-- **The fall resumed (measured, 08:44 UTC):** 202,239 tokens a call in the 06:00 hour (214 calls, 21 agents), 184,632 in the 07:00 hour (185 calls, 20 agents), 175,178 so far in the 08:00 hour (90 calls, 12 agents). Correction: round 8 said the fall had stopped, on the first 48 calls of the 07:00 hour; the whole hour says otherwise, and the hypothesis below it is withdrawn in part (the second round of hand-overs was already under way).
+- **The hours, as they stand at 09:42 UTC (measured):** 202,176 tokens a call in the 06:00 hour (216 calls, 21 agents), 194,569 in the 07:00 hour (215 calls, 20 agents), 171,681 in the 08:00 hour (224 calls, 20 agents), 186,686 so far in the 09:00 hour (269 calls, 16 agents; not final). **An hour's figure is settled only when the next hour's lines are in:** the 07:00 hour read 211,634 at 07:42, 184,632 at 08:44 and 194,569 now, because an agent's line for an hour arrives at its next wake.
+- **Who should do it next (measured context on the last call, 09:42 UTC):** the four that hold a vault key: archivist 409,000, models 404,000, ipma 390,000, sources 375,000 (incident.models@ reports its key sealed to the conductor and opened at 09:31 UTC; none has handed over yet). Then shadow 292,000 and weatherwatch's second session 256,000. The conductor: 346,311 at 06:42, no later line.
+- **As read at 08:44 UTC:** 202,239 tokens a call in the 06:00 hour (214 calls, 21 agents), 184,632 in the 07:00 hour (185 calls, 20 agents), 175,178 so far in the 08:00 hour (90 calls, 12 agents). Correction: round 8 said the fall had stopped, on the first 48 calls of the 07:00 hour; the whole hour says otherwise, and the hypothesis below it is withdrawn in part (the second round of hand-overs was already under way).
 - **A second hand-over, measured on five agents (08:44 UTC), the session before against the newest, tokens per call:** librarian 171,513 to 108,133 (37% less, its sixth session); graph 235,389 to 115,129 (51%); observability 243,036 to 115,579 (52%); journalist 191,826 to 114,357 (40%, its fourth); stories 220,073 to 142,293 (35%). The earlier the hand-over, the smaller each gain and the lower the average stays.
-- **Who should do it next (measured context on the last call, 08:44 UTC):** weather 496,000 after 180 calls; shadow 286,000; perplexity 255,000 (line from 05:27); weatherwatch 235,000. Held by a vault key: archivist 393,000, models 387,000 (line from 03:06), ipma 385,000, sources 368,000. The conductor: 346,311 at 06:42.
+- **Who was next at 08:44 UTC:** weather 496,000 after 180 calls; shadow 286,000; perplexity 255,000 (line from 05:27); weatherwatch 235,000. Held by a vault key: archivist 393,000, models 387,000 (line from 03:06), ipma 385,000, sources 368,000. The conductor: 346,311 at 06:42.
 - **As read at 07:42 UTC (the first sentence's conclusion was wrong, see above):** 200,871 tokens a call in the 05:00 hour (624 calls, 24 agents), 201,771 in the 06:00 hour (188 calls, 21 agents), 211,634 so far in the 07:00 hour (48 calls, 12 agents). **Hypothesis:** what is left is the conductor (346,311 a call), the first sessions that cannot hand over without a vault key (ipma, archivist, sources, models: 362,000 to 387,000) and the second sessions growing again; the next step down needs the keys settled and a second round of hand-overs.
 - **Who was next at 07:42 UTC:** weather 478,000 (line from 05:27), shadow 276,000, perplexity 255,000 on their first session; observability 237,000, weatherwatch 235,000, graph 227,000 on their second. Held by a vault key: models 387,000, archivist 383,000, ipma 378,000, sources 362,000.
 - **As read at 06:42 UTC:** 192,263 tokens a call (62 calls; most agents have not yet sent the hour's line), after 198,210 in the 05:00 hour (448 calls) and 304,192 in the 04:00 hour (398 calls).
@@ -117,7 +120,7 @@ The whole session of the agent that makes the thing, over the count ([outputs.js
 
 ## What is not known yet
 
-- Three agents have no line: dev, meteorologist, researcher (they work in another repository; the conductor relays their lines). 
+- Four agents have no line: dev, meteorologist, researcher and the new envoy (the first three work in another repository; the conductor relays their lines). 
 - The team's tokens per release: needs all 30.
 - How many hourly wakes find nothing changed.
 - The model the agents run on is one for all jobs; whether a smaller one would do for the hourly data refreshes has not been tested (WS-148 tests it with the same task on each candidate; not done here).
