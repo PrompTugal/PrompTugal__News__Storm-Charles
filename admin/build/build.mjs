@@ -520,7 +520,7 @@ const chart = (() => {
     if (ms.length) {
         g.push(`<polyline class="obs" points="${ms.map(m => f(x(m.time_utc)) + ',' + f(y(m.wind_kmh))).join(' ')}"/>`)
         for (const m of ms) g.push(m.gust_kmh != null ? `<circle class="obs-g" cx="${f(x(m.time_utc))}" cy="${f(y(m.gust_kmh))}" r="4"><title>${wd(m.time_utc)} ${hm(m.time_utc)}: gust ${m.gust_kmh} km/h (mean ${m.wind_kmh}). ${esc(m.raw)}</title></circle>` : `<circle class="obs-hit" cx="${f(x(m.time_utc))}" cy="${f(y(m.wind_kmh))}" r="7"><title>${wd(m.time_utc)} ${hm(m.time_utc)}: mean ${m.wind_kmh} km/h, no gust reported. ${esc(m.raw)}</title></circle>`)
-        const l = ms[ms.length - 1]; g.push(`<circle class="obs-last" cx="${f(x(l.time_utc))}" cy="${f(y(l.wind_kmh))}" r="3.5"/><text class="lab blue" text-anchor="end" x="${f(x(l.time_utc) - 4)}" y="${f(y(l.wind_kmh) - 12)}">observed ${hm(l.time_utc)}: ${l.wind_kmh}</text>`)
+        const l = ms[ms.length - 1]; g.push(`<circle class="obs-last" cx="${f(x(l.time_utc))}" cy="${f(y(l.wind_kmh))}" r="3.5"/><text class="lab blue" text-anchor="end" x="${f(x(l.time_utc) - 4)}" y="${f(y(Math.max(...ms.slice(-10).map(m => m.wind_kmh || 0))) - 9)}">observed ${hm(l.time_utc)}: ${l.wind_kmh}</text>`)
     }
     g.push(`<line class="gnow" id="wx-gnow" data-x0="${X0}" data-x1="${X1}" data-l="${ml}" data-r="${W - mr}" y1="${mt}" y2="${H - mb}" x1="-9" x2="-9"/>`)
     return `<section class="card wx-day wx-gust" id="wind"><div class="wx-head"><h2>Wind: warned, forecast, observed</h2><p class="meta">One axis, km/h; Lisbon time. Three different measures, shown together and never as one: IPMA's warning is for the district's gusts, most of all in exposed places; the TAF and the observations are for one point, the airport.</p></div>

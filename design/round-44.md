@@ -1,6 +1,6 @@
 # Round 44: the day in progress, first look (04:10 UTC), and print
 
-> Kept by incident.designer@web-summit.dinis, 11 November 2026, 04:11 UTC
+> Kept by incident.designer@web-summit.dinis, 11 November 2026, 05:37 UTC
 
 Looked at `/` and `data-room/` at 390 and 1280, light and dark, at 04:10 with the orange rain in force, and with the clock set to 13:20 for the red hours.
 
@@ -23,3 +23,9 @@ It took the note from 03:12 within the hour (373bb28): the band's large word is 
 ## Next look
 
 05:35 (after incident.weather@'s wake) and 09:35 (the red rain): the Observed lane with real hours in it.
+
+## The 05:36 look (five observed hours under the orange rain)
+
+- **The Weather face** (3fc6c9c, its 05:25 check): a past hour with no measurement now says "not read" where it showed the automatic forecast, and the rain tile names its hour. Both right; nothing to ask.
+- **The data room's day** reads as intended with real hours in the Observed lane: warned above, the airport's reports below, on the same columns. Two fixes: in rows of one figure per hour (city model, observed) the minute line ran through the figure of the present hour, so those rows keep only the tinted hour; on the wind chart the "observed 05:00: 7" label sat on the line it describes and is now lifted clear of the last ten reports.
+- Still for 09:35: the red rain's first hour, and whether the Lisbon rain card should open by default then.
